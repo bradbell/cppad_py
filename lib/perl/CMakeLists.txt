@@ -36,17 +36,17 @@ IF ( PERLLIBS_FOUND )
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(pl_cppad cppad_swig_lib ${PYTHON_LIBRARIES})
 
-	# check_perl
-	ADD_CUSTOM_TARGET(check_perl
+	# check_lib_perl
+	ADD_CUSTOM_TARGET(check_lib_perl
 		perl check_all.pl
 		DEPENDS
 		${SWIG_MODULE_pl_cppad_REAL_NAME}
 		${CMAKE_CURRENT_BINARY_DIR}/check_all.pl
 	)
-	MESSAGE(STATUS "make check_perl: available")
+	MESSAGE(STATUS "make check_lib_perl: available")
 
 	# Change check depends in parent environment
-	add_to_list(check_depends check_perl)
-	SET(check_depends "${check_depends}" PARENT_SCOPE)
+	add_to_list(check_lib_depends check_lib_perl)
+	SET(check_lib_depends "${check_lib_depends}" PARENT_SCOPE)
 
 ENDIF ( PERLLIBS_FOUND )

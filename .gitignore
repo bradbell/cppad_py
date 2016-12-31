@@ -2,12 +2,13 @@
 git_commit.sh
 # only one directory
 build
-# extension in specific directory
-python/*.pyc
-# extensiion in any directory
+# compiled python files in specific directory
+lib/python/*.pyc
+# vi swap file in any directory
 *.swp
 */*.swp
 */*/*.swp
+#
 # root file name is junk in any directory
 junk
 junk.*
@@ -15,3 +16,7 @@ junk.*
 */junk.*
 */*/junk
 */*/junk.*
+# directory is new in any directory
+new
+*/new
+*/*/new

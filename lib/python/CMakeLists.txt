@@ -47,17 +47,17 @@ IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(py_cppad cppad_swig_lib ${PYTHON_LIBRARIES})
 
-	# check_python
-	ADD_CUSTOM_TARGET(check_python
+	# check_lib_python
+	ADD_CUSTOM_TARGET(check_lib_python
 		python check_all.py
 		DEPENDS
 		${SWIG_MODULE_py_cppad_REAL_NAME}
 		${CMAKE_CURRENT_BINARY_DIR}/check_all.py
 	)
-	MESSAGE(STATUS "make check_python: available")
+	MESSAGE(STATUS "make check_lib_python: available")
 
 	# Change check depends in parent environment
-	add_to_list(check_depends check_python)
-	SET(check_depends "${check_depends}" PARENT_SCOPE)
+	add_to_list(check_lib_depends check_lib_python)
+	SET(check_lib_depends "${check_lib_depends}" PARENT_SCOPE)
 
 ENDIF ( PythonLibs_FOUND AND PythonInterp_FOUND)

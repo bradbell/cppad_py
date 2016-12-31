@@ -94,6 +94,12 @@ MACRO(add_to_list variable_list constant_value )
 	ENDIF( "${${variable_list}}" STREQUAL "" )
 ENDMACRO(add_to_list)
 # -----------------------------------------------------------------------------
+# make sure we have SWIG available
+FIND_PACKAGE(SWIG)
+IF( NOT SWIG_FOUND )
+	MESSAGE(FATAL_ERROR "Aborting because cmake cannot find SWIG")
+ENDIF( NOT SWIG_FOUND )
+# -----------------------------------------------------------------------------
 # print important system variables
 print_variable(CMAKE_VERBOSE_MAKEFILE)
 print_variable(CMAKE_CXX_FLAGS)
@@ -110,47 +116,14 @@ INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
 # Initialize list of tests as empty (added to by sub-directories below)
 SET(check_depends "")
 #
-# example runs with out environment used for other subdirectories
+# sub-directories
 ADD_SUBDIRECTORY(example)
+ADD_SUBDIRECTORY(lib)
 #
-# directory used for cppad_swig include files
-INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/include )
+IF( "${check_depends}" STREQUAL "" )
+	MESSAGE(FATAL_ERROR "no correctnes checks are available")
+ENDIF( "${check_depends}" STREQUAL "" )
 #
-# check if we have swig
-FIND_PACKAGE(SWIG)
-IF( SWIG_FOUND )
-
-	# include the swig specific macros
-	INCLUDE( ${CMAKE_ROOT}/Modules/UseSWIG.cmake )
-
-	# swig_control_file: used by the subdirectories below
-	SET(swig_control_file "${CMAKE_CURRENT_SOURCE_DIR}/cppad_swig.i" )
-
-	# cppad_swig_lib
-	# library used by subdirectories below
-	ADD_LIBRARY(cppad_swig_lib SHARED EXCLUDE_FROM_ALL
-		a_double.cpp
-		a_fun.cpp
-		function.cpp
-	)
-
-	# SWIG_MODULE_cppad_swig_EXTRA_DEPS
-	# swig extra dependencies used by subdirectories below
-	SET(SWIG_MODULE_cppad_swig_EXTRA_DEPS
-		"${CMAKE_CURRENT_SOURCE_DIR}/a_double.hpp"
-		"${CMAKE_CURRENT_SOURCE_DIR}/a_fun.hpp"
-		"${CMAKE_CURRENT_SOURCE_DIR}/function.hpp"
-	)
-
-	# subdirectories that use swig_cpapd_files
-	ADD_SUBDIRECTORY(python)
-	ADD_SUBDIRECTORY(octave)
-	ADD_SUBDIRECTORY(perl)
-
-ENDIF( SWIG_FOUND )
-
-IF( NOT( "${check_depends}" STREQUAL "" ) )
-	# Add the check target
-	ADD_CUSTOM_TARGET(check DEPENDS ${check_depends})
-	MESSAGE(STATUS "make check: available")
-ENDIF( NOT( "${check_depends}" STREQUAL "" ) )
+# Add the check target
+ADD_CUSTOM_TARGET(check DEPENDS ${check_depends})
+MESSAGE(STATUS "make check: available")
