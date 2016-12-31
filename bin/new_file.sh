@@ -36,6 +36,7 @@ then
 	exit 1
 fi
 case $ext in
+	# =========================================================================
 	sh)
 	dir=`echo $file_name | sed -e 's|\(.*\)/[^/]*$|\1|'`
 	if [ "$dir" != 'bin' ]
@@ -72,6 +73,19 @@ exit 0
 EOF
 	echo_eval chmod +x $file_name
 	;;
+	# =========================================================================
+	txt)
+	cat << EOF > $file_name
+# -----------------------------------------------------------------------------
+#         cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#              This program is distributed under the terms of the
+#          GNU Affero General Public License version 3.0 or later see
+#                     http://www.gnu.org/licenses/agpl.txt
+# -----------------------------------------------------------------------------
+EOF
+	;;
+
 
 	*)
 	echo "bin/new_file.sh: extension $ext is not yet supported."
