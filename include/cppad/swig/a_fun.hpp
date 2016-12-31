@@ -1,4 +1,3 @@
-// $Id$
 # ifndef CPPAD_SWIG_A_FUN_HPP
 # define CPPAD_SWIG_A_FUN_HPP
 /* -----------------------------------------------------------------------------

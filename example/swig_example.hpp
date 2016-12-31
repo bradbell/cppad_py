@@ -1,4 +1,3 @@
-/* $Id$ */
 # ifndef CPPAD_SWIG_EXAMPLE_SWIG_EXAMPLE_HPP
 # define CPPAD_SWIG_EXAMPLE_SWIG_EXAMPLE_HPP
 /* -----------------------------------------------------------------------------
