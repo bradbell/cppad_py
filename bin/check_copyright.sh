@@ -25,24 +25,14 @@ then
 	exit 0
 fi
 # -----------------------------------------------------------------------------
-list=`git status | sed -n \
-	-e '/^[#\t ]*deleted:/p' \
-	-e '/^[#\t ]*modified:/p' \
-	-e '/^[#\t ]*both modified:/p' \
-	-e '/^[#\t ]*renamed:/p' \
-	-e '/^[#\t ]*new file:/p' \
-	| sed \
-	-e 's/^.*: *//' -e 's/ -> /\n/' \
-	| sed \
-	-e '/^.gitignore$/d' \
-	-e '/\/check_copyright.sh$/d' \
-	| sort -u`
+list=`git ls-files | sed -e '/^.gitignore$/d'`
 ok='yes'
+text='Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)'
 for file in $list
 do
 	if [ -e $file ]
 	then
-		if ! grep 'Copyright (C) [0-9]*-[0-9][0-9]' $file > /dev/null
+		if ! grep "$text" $file > /dev/null
 		then
 			ok='no'
 			echo "Cannot find copyright message in $file"
