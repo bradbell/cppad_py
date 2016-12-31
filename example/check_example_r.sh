@@ -19,7 +19,7 @@ echo_eval() {
 	eval $*
 }
 # -----------------------------------------------------------------------------
-if ! grep "swig_module *= *'$swig_module'" check_swig_example.R > /dev/null
+if ! grep "swig_module *= *'$swig_module'" check_example.R > /dev/null
 then
 	echo 'Cannot find following line in swig_example.R:'
 	echo "swig_module *= *'$swig_module'"
@@ -41,12 +41,12 @@ echo_eval g++ -fPIC -g -c \
 #
 echo_eval g++ -shared $objects $r_library -o $swig_module.so
 #
-if ! R CMD BATCH $current_source_dir/check_swig_example.R
+if ! R CMD BATCH $current_source_dir/check_example.R
 then
-	cat check_swig_example.Rout
-	echo 'check_swig_r.sh: Error'
+	cat check_example.Rout
+	echo 'check_r.sh: Error'
 	exit 1
 fi
-sed check_swig_example.Rout -e '1,/options(echo *= *FALSE)/d'
-echo 'check_swig_r.sh: OK'
+sed check_example.Rout -e '1,/options(echo *= *FALSE)/d'
+echo 'check_r.sh: OK'
 exit 0

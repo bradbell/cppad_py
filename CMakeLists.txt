@@ -108,7 +108,7 @@ INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
 # -----------------------------------------------------------------------------
 #
 # Initialize list of tests as empty (added to by sub-directories below)
-SET(check_swig_depends "")
+SET(check_depends "")
 #
 # example runs with out environment used for other subdirectories
 ADD_SUBDIRECTORY(example)
@@ -149,8 +149,8 @@ IF( SWIG_FOUND )
 
 ENDIF( SWIG_FOUND )
 
-IF( NOT( "${check_swig_depends}" STREQUAL "" ) )
-	# Add the check_swig target
-	ADD_CUSTOM_TARGET(check_swig DEPENDS ${check_swig_depends})
-	MESSAGE(STATUS "make check_swig: available")
-ENDIF( NOT( "${check_swig_depends}" STREQUAL "" ) )
+IF( NOT( "${check_depends}" STREQUAL "" ) )
+	# Add the check target
+	ADD_CUSTOM_TARGET(check DEPENDS ${check_depends})
+	MESSAGE(STATUS "make check: available")
+ENDIF( NOT( "${check_depends}" STREQUAL "" ) )

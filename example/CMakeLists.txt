@@ -8,8 +8,8 @@
 # use debug build type for initial swig implementation
 SET(CMAKE_BUILD_TYPE DEBUG)
 
-# initialize check_swig_example_depends
-SET(check_swig_example_depends "")
+# initialize check_example_depends
+SET(check_example_depends "")
 # ----------------------------------------------------------------------------
 # check if we are using swig
 SET( use_swig FALSE )
@@ -70,23 +70,23 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND)
 	SET(CMAKE_SWIG_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}")
 
 	# copy test program to directory with swig module is located
-	ADD_CUSTOM_TARGEt(check_swig_example_py
+	ADD_CUSTOM_TARGEt(check_example_py
 		"${CMAKE_COMMAND}" -E copy
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_swig_example.py"
-		"${CMAKE_CURRENT_BINARY_DIR}/check_swig_example.py"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_example.py"
+		"${CMAKE_CURRENT_BINARY_DIR}/check_example.py"
 		DEPENDS
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_swig_example.py"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_example.py"
 	)
 
-	# check_swig_example_python
-	ADD_CUSTOM_TARGET(check_swig_example_python
-		python check_swig_example.py
-		DEPENDS ${SWIG_MODULE_py_example_REAL_NAME} check_swig_example_py
+	# check_example_python
+	ADD_CUSTOM_TARGET(check_example_python
+		python check_example.py
+		DEPENDS ${SWIG_MODULE_py_example_REAL_NAME} check_example_py
 	)
-	MESSAGE(STATUS "make check_swig_example_python: available")
+	MESSAGE(STATUS "make check_example_python: available")
 
 	# add to list for all checks
-	add_to_list(check_swig_example_depends check_swig_example_python)
+	add_to_list(check_example_depends check_example_python)
 
 ENDIF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND)
 # ----------------------------------------------------------------------------
@@ -136,22 +136,22 @@ IF( SWIG_FOUND AND octave_config )
 	SWIG_LINK_LIBRARIES(m_example
 		${octave_liboctinterp} ${octave_liboctave}
 	)
-	ADD_CUSTOM_TARGET(check_swig_example_m
+	ADD_CUSTOM_TARGET(check_example_m
 		${CMAKE_COMMAND} -E copy
-		${CMAKE_CURRENT_SOURCE_DIR}/check_swig_example.m
-		${CMAKE_CURRENT_BINARY_DIR}/check_swig_example.m
+		${CMAKE_CURRENT_SOURCE_DIR}/check_example.m
+		${CMAKE_CURRENT_BINARY_DIR}/check_example.m
 		DEPENDS
-		${CMAKE_CURRENT_SOURCE_DIR}/check_swig_example.m
+		${CMAKE_CURRENT_SOURCE_DIR}/check_example.m
 	)
-	# check_swig_example_octave
-	ADD_CUSTOM_TARGET(check_swig_example_octave
-		octave check_swig_example.m
-		DEPENDS ${SWIG_MODULE_m_example_REAL_NAME} check_swig_example_m
+	# check_example_octave
+	ADD_CUSTOM_TARGET(check_example_octave
+		octave check_example.m
+		DEPENDS ${SWIG_MODULE_m_example_REAL_NAME} check_example_m
 	)
-	MESSAGE(STATUS "make check_swig_example_octave: available")
+	MESSAGE(STATUS "make check_example_octave: available")
 
 	# add to list for all checks
-	add_to_list(check_swig_example_depends check_swig_example_octave)
+	add_to_list(check_example_depends check_example_octave)
 
 ENDIF( SWIG_FOUND AND octave_config )
 # ----------------------------------------------------------------------------
@@ -171,32 +171,32 @@ IF( SWIG_FOUND AND PERLLIBS_FOUND )
 	SET(CMAKE_SWIG_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}")
 	#
 	# copy test program to directory with swig module is located
-	ADD_CUSTOM_TARGEt(check_swig_example_pl
+	ADD_CUSTOM_TARGEt(check_example_pl
 		"${CMAKE_COMMAND}" -E copy
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_swig_example.pl"
-		"${CMAKE_CURRENT_BINARY_DIR}/check_swig_example.pl"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_example.pl"
+		"${CMAKE_CURRENT_BINARY_DIR}/check_example.pl"
 		DEPENDS
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_swig_example.pl"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_example.pl"
 	)
 	#
-	# check_swig_example_perl
-	ADD_CUSTOM_TARGET(check_swig_example_perl
-		perl check_swig_example.pl
-		DEPENDS ${SWIG_MODULE_pl_example_REAL_NAME} check_swig_example_pl
+	# check_example_perl
+	ADD_CUSTOM_TARGET(check_example_perl
+		perl check_example.pl
+		DEPENDS ${SWIG_MODULE_pl_example_REAL_NAME} check_example_pl
 	)
-	MESSAGE(STATUS "make check_swig_example_perl: available")
+	MESSAGE(STATUS "make check_example_perl: available")
 	#
 	# add to list for all checks
-	add_to_list(check_swig_example_depends check_swig_example_perl)
+	add_to_list(check_example_depends check_example_perl)
 	#
 ENDIF( SWIG_FOUND AND PERLLIBS_FOUND )
 # ----------------------------------------------------------------------------
-IF( NOT( "${check_swig_example_depends}" STREQUAL "" ) )
-	# Add the check_swig_example target
-	ADD_CUSTOM_TARGET(check_swig_example DEPENDS ${check_swig_example_depends})
-	MESSAGE(STATUS "make check_swig_example: available")
+IF( NOT( "${check_example_depends}" STREQUAL "" ) )
+	# Add the check_example target
+	ADD_CUSTOM_TARGET(check_example DEPENDS ${check_example_depends})
+	MESSAGE(STATUS "make check_example: available")
 
 	# Change check depends in parent environment
-	add_to_list(check_swig_depends check_swig_example)
-	SET(check_swig_depends "${check_swig_depends}" PARENT_SCOPE)
-ENDIF( NOT( "${check_swig_example_depends}" STREQUAL "" ) )
+	add_to_list(check_depends check_example)
+	SET(check_depends "${check_depends}" PARENT_SCOPE)
+ENDIF( NOT( "${check_example_depends}" STREQUAL "" ) )
