@@ -22,9 +22,9 @@ Please visit http://www.coin-or.org/CppAD/ for information on other licenses.
 -------------------------------------------------------------------------- */
 /* cppad_swig.i */
 %{
-# include <swig/a_double.hpp>
-# include <swig/a_fun.hpp>
-# include <swig/function.hpp>
+# include <cppad/swig/a_double.hpp>
+# include <cppad/swig/a_fun.hpp>
+# include <cppad/swig/function.hpp>
 %}
 
 # ifdef SWIGPYTHON
@@ -39,9 +39,9 @@ Please visit http://www.coin-or.org/CppAD/ for information on other licenses.
 
 %ignore  ptr;
 %include "std_vector.i"
-%include <swig/a_double.hpp>
-%include <swig/a_fun.hpp>
-%include <swig/function.hpp>
+%include <cppad/swig/a_double.hpp>
+%include <cppad/swig/a_fun.hpp>
+%include <cppad/swig/function.hpp>
 
 %template(vector_double) std::vector<double>;
 %template(vector_ad)     std::vector<a_double>;

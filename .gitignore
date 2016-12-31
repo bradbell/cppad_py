@@ -1,0 +1,17 @@
+# only on file
+git_commit.sh
+# only one directory
+build
+# extension in specific directory
+python/*.pyc
+# extensiion in any directory
+*.swp
+*/*.swp
+*/*/*.swp
+# root file name is junk in any directory
+junk
+junk.*
+*/junk
+*/junk.*
+*/*/junk
+*/*/junk.*
