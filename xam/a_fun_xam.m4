@@ -1,13 +1,10 @@
 header_(a_fun_xam)
 c_ -----------------------------------------------------------------------------
-c_ CppAD: C++ Algorithmic Differentiation: Copyright (C) 2003-16 Bradley M. Bell
-c_
-c_ CppAD is distributed under multiple licenses. This distribution is under
-c_ the terms of the
-c_                     Eclipse Public License Version 1.0.
-c_
-c_ A copy of this license is included in the COPYING file of this distribution.
-c_ Please visit http://www.coin-or.org/CppAD/ for information on other licenses.
+c_         cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+c_              This program is distributed under the terms of the
+c_          GNU Affero General Public License version 3.0 or later see
+c_                     http://www.gnu.org/licenses/agpl.txt
 c_ -----------------------------------------------------------------------------
 c_ std::vector<a_double>
 c_ -----------------------------------------------------------------------------
