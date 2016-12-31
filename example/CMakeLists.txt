@@ -5,9 +5,6 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
-# use debug build type for initial swig implementation
-SET(CMAKE_BUILD_TYPE DEBUG)
-
 # initialize check_example_depends
 SET(check_example_depends "")
 # ----------------------------------------------------------------------------
@@ -127,7 +124,7 @@ IF( SWIG_FOUND AND octave_config )
 	)
 	#
 	# include directory determined by find octive-config
-	INCLUDE_DIRECTORIES(${octave_include_dirs})
+	INCLUDE_DIRECTORIES( SYSTEM ${octave_include_dirs})
 	#
 	# SWIG_ADD_MODULE(name language [ files ])
 	SWIG_ADD_MODULE(m_example octave swig_example.i swig_example.cpp)
@@ -159,7 +156,7 @@ ENDIF( SWIG_FOUND AND octave_config )
 IF( SWIG_FOUND AND PERLLIBS_FOUND )
 	#
 	# include directory determined by find PythonLibs
-	INCLUDE_DIRECTORIES(${PERL_INCLUDE_PATH})
+	INCLUDE_DIRECTORIES( SYSTEM ${PERL_INCLUDE_PATH})
 	#
 	# SWIG_ADD_MODULE(name language [ files ])
 	SWIG_ADD_MODULE(pl_example perl swig_example.i swig_example.cpp)

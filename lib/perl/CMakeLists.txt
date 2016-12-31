@@ -5,9 +5,6 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
-# used debug during initial development of swig interface
-SET(CMAKE_BUILD_TYPE DEBUG)
-
 assert( SWIG_FOUND )
 FIND_PACKAGE(PerlLibs)
 # ----------------------------------------------------------------------------
@@ -28,7 +25,7 @@ IF ( PERLLIBS_FOUND )
 	SET(CMAKE_SWIG_FLAGS -Wextra -w367,368 )
 
 	# include directory determined by find PerlLibs
-	INCLUDE_DIRECTORIES(${PERL_INCLUDE_PATH})
+	INCLUDE_DIRECTORIES( SYSTEM ${PERL_INCLUDE_PATH})
 
 	# SWIG_ADD_MODULE(name language [ files ])
 	SWIG_ADD_MODULE(pl_cppad perl ${swig_control_file} )

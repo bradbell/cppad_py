@@ -5,9 +5,6 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
-# used debug during initial development of swig interface
-SET(CMAKE_BUILD_TYPE DEBUG)
-
 assert( SWIG_FOUND )
 FIND_PROGRAM(octave_config NAMES octave-config)
 IF( octave_config )
@@ -61,7 +58,7 @@ IF( octave_config )
 	)
 
 	# include directory determined by find octive-config
-	INCLUDE_DIRECTORIES(${octave_include_dirs})
+	INCLUDE_DIRECTORIES( SYSTEM ${octave_include_dirs})
 
 	# SWIG_ADD_MODULE(name language [ files ])
 	SWIG_ADD_MODULE(m_cppad octave ${swig_control_file} )

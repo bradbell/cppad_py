@@ -5,9 +5,6 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
-# used debug during initial development of swig interface
-SET(CMAKE_BUILD_TYPE DEBUG)
-
 assert( SWIG_FOUND )
 FIND_PACKAGE(PythonInterp)
 FIND_PACKAGE(PythonLibs)
