@@ -53,20 +53,25 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND)
 			"cmake python library ${lib} not same as interpertor ${interp}"
 		)
 	ENDIF( NOT ( "${lib}" STREQUAL "${interp}" ) )
-
+	#
 	# include directory determined by find PythonLibs
 	INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
-
+	#
 	# SWIG_ADD_MODULE(name language [ files ])
 	SWIG_ADD_MODULE(py_example python swig_example.i swig_example.cpp)
-
+	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(py_example ${PYTHON_LIBRARIES})
-
+	#
+	# additional flags for compiling swig wrapper
+	SET_TARGET_PROPERTIES( ${SWIG_MODULE_py_example_REAL_NAME}
+		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
+	)
+	#
 	# example use of CMAKE_SWIG_OUTDIR (not necessary in this case)
 	SET(CMAKE_SWIG_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}")
-
-	# copy test program to directory with swig module is located
+	#
+	# copy check_example.py from source to binary directory
 	ADD_CUSTOM_TARGEt(check_example_py
 		"${CMAKE_COMMAND}" -E copy
 		"${CMAKE_CURRENT_SOURCE_DIR}/check_example.py"
@@ -74,17 +79,17 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND)
 		DEPENDS
 		"${CMAKE_CURRENT_SOURCE_DIR}/check_example.py"
 	)
-
+	#
 	# check_example_python
 	ADD_CUSTOM_TARGET(check_example_python
 		python check_example.py
 		DEPENDS ${SWIG_MODULE_py_example_REAL_NAME} check_example_py
 	)
 	MESSAGE(STATUS "make check_example_python: available")
-
+	#
 	# add to list for all checks
 	add_to_list(check_example_depends check_example_python)
-
+	#
 ENDIF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND)
 # ----------------------------------------------------------------------------
 # octave
@@ -133,6 +138,13 @@ IF( SWIG_FOUND AND octave_config )
 	SWIG_LINK_LIBRARIES(m_example
 		${octave_liboctinterp} ${octave_liboctave}
 	)
+	#
+	# additional flags for compiling swig wrapper
+	SET_TARGET_PROPERTIES( ${SWIG_MODULE_m_example_REAL_NAME}
+		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
+	)
+	#
+	# copy check_example.m from source to binary directory
 	ADD_CUSTOM_TARGET(check_example_m
 		${CMAKE_COMMAND} -E copy
 		${CMAKE_CURRENT_SOURCE_DIR}/check_example.m
@@ -146,10 +158,10 @@ IF( SWIG_FOUND AND octave_config )
 		DEPENDS ${SWIG_MODULE_m_example_REAL_NAME} check_example_m
 	)
 	MESSAGE(STATUS "make check_example_octave: available")
-
+	#
 	# add to list for all checks
 	add_to_list(check_example_depends check_example_octave)
-
+	#
 ENDIF( SWIG_FOUND AND octave_config )
 # ----------------------------------------------------------------------------
 # perl
@@ -164,10 +176,15 @@ IF( SWIG_FOUND AND PERLLIBS_FOUND )
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(pl_example ${PERL_LIBRARY})
 	#
+	# additional flags for compiling swig wrapper
+	SET_TARGET_PROPERTIES( ${SWIG_MODULE_pl_example_REAL_NAME}
+		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
+	)
+	#
 	# example use of CMAKE_SWIG_OUTDIR (not necessary in this case)
 	SET(CMAKE_SWIG_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}")
 	#
-	# copy test program to directory with swig module is located
+	# copy check_exmaple.pl from source to binary directory
 	ADD_CUSTOM_TARGEt(check_example_pl
 		"${CMAKE_COMMAND}" -E copy
 		"${CMAKE_CURRENT_SOURCE_DIR}/check_example.pl"
@@ -192,7 +209,7 @@ IF( NOT( "${check_example_depends}" STREQUAL "" ) )
 	# Add the check_example target
 	ADD_CUSTOM_TARGET(check_example DEPENDS ${check_example_depends})
 	MESSAGE(STATUS "make check_example: available")
-
+	#
 	# Change check depends in parent environment
 	add_to_list(check_depends check_example)
 	SET(check_depends "${check_depends}" PARENT_SCOPE)

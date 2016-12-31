@@ -24,14 +24,16 @@ then
 fi
 echo_eval cd build
 # -----------------------------------------------------------------------------
-verbose_makefile='false'
-cxx_flags='-std=c++11'
-build_type='debug'
+cmake_verbose_makefile='false'
+cmake_build_type='debug'
+cppad_cxx_flags='-Wall -pedantic-errors'
+swig_cxx_flags='-Wall -Wno-sign-compare'
 #
 cmake \
-	-D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
-	-D CMAKE_CXX_FLAGS="$cxx_flags" \
-	-D CMAKE_BUILD_TYPE="$build_type" \
+	-D CMAKE_VERBOSE_MAKEFILE="$cmake_verbose_makefile" \
+	-D CMAKE_BUILD_TYPE="$cmake_build_type" \
+	-D cppad_cxx_flags="$cppad_cxx_flags" \
+	-D swig_cxx_flags="$swig_cxx_flags" \
 	..
 # -----------------------------------------------------------------------------
 echo 'bin/run_cmake.sh: OK'

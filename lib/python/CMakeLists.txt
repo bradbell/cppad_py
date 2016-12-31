@@ -44,6 +44,11 @@ IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(py_cppad cppad_swig_lib ${PYTHON_LIBRARIES})
 
+	# additional flags for compiling swig wrapper
+	SET_TARGET_PROPERTIES( ${SWIG_MODULE_py_cppad_REAL_NAME}
+		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
+	)
+
 	# check_lib_python
 	ADD_CUSTOM_TARGET(check_lib_python
 		python check_all.py

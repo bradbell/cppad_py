@@ -68,6 +68,11 @@ IF( octave_config )
 		cppad_swig_lib ${octave_liboctinterp} ${octave_liboctave}
 	)
 
+	# additional flags for compiling swig wrapper
+	SET_TARGET_PROPERTIES( ${SWIG_MODULE_m_cppad_REAL_NAME}
+		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
+	)
+
 	# check_lib_octave
 	ADD_CUSTOM_TARGET(check_lib_octave
 		octave check_all.m

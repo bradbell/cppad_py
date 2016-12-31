@@ -80,7 +80,6 @@ ENDMACRO( cmake_argument )
 # ${constant_value}: (in)
 # Is the value we are adding to the list. This value cannot be empty.
 MACRO(add_to_list variable_list constant_value )
-	MESSAGE(STATUS "add_to_list(${variable_list}, ${constant_value})")
 	IF( "${constant_value}" STREQUAL "" )
 		print_variable(variable_list)
 		print_variable(constant_value)
@@ -110,6 +109,14 @@ IF( NOT cppad_prefix )
 	MESSAGE(FATAL_ERROR "cppad_prefix is not defined by cmake command line")
 ENDIF( NOT cppad_prefix )
 INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
+# -----------------------------------------------------------------------------
+# compiler flags
+cmake_argument(cppad_cxx_flags "" STRING
+"Flags, in addititon to CMAKE_CXX_FLAGS, used when compiling cppad_swig code."
+)
+cmake_argument(swig_cxx_flags "" STRING
+"Flags, in addititon to CMAKE_CXX_FLAGS, used when swig wrapper code."
+)
 # -----------------------------------------------------------------------------
 #
 # Initialize list of tests as empty (added to by sub-directories below)

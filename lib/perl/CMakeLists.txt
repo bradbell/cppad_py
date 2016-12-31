@@ -33,6 +33,11 @@ IF ( PERLLIBS_FOUND )
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(pl_cppad cppad_swig_lib ${PYTHON_LIBRARIES})
 
+	# additional flags for compiling swig wrapper
+	SET_TARGET_PROPERTIES( ${SWIG_MODULE_pl_cppad_REAL_NAME}
+		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
+	)
+
 	# check_lib_perl
 	ADD_CUSTOM_TARGET(check_lib_perl
 		perl check_all.pl

@@ -28,6 +28,11 @@ ADD_LIBRARY(cppad_swig_lib SHARED
 	function.cpp
 )
 #
+# additional flags for compiling cppad_swig library
+SET_TARGET_PROPERTIES(
+	cppad_swig_lib PROPERTIES COMPILE_FLAGS "${cppad_cxx_flags}"
+)
+#
 # swig extra dependencies used by sub-directories below
 SET(SWIG_MODULE_cppad_swig_EXTRA_DEPS
 	"${CMAKE_SOURCE_DIR}/include/cppad/swig/a_double.hpp"
