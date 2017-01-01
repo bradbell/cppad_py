@@ -51,7 +51,7 @@ IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
 
 	# check_lib_python
 	ADD_CUSTOM_TARGET(check_lib_python
-		python check_all.py
+		${PYTHON_EXECUTABLE} check_all.py
 		DEPENDS
 		${SWIG_MODULE_py_cppad_REAL_NAME}
 		${CMAKE_CURRENT_BINARY_DIR}/check_all.py

@@ -24,6 +24,7 @@ then
 fi
 echo_eval cd build
 # -----------------------------------------------------------------------------
+cmake_generator='Unix Makefiles'
 cmake_verbose_makefile='false'
 cmake_build_type='debug'
 cppad_prefix="$HOME/prefix/cppad"
@@ -31,6 +32,7 @@ cppad_cxx_flags='-Wall -pedantic-errors'
 swig_cxx_flags='-Wall -Wno-sign-compare'
 #
 cmake \
+	-G "$cmake_generator" \
 	-D CMAKE_VERBOSE_MAKEFILE="$cmake_verbose_makefile" \
 	-D CMAKE_BUILD_TYPE="$cmake_build_type" \
 	-D cppad_prefix="$cppad_prefix" \

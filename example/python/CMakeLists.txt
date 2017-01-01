@@ -59,7 +59,7 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND )
 	#
 	# check_example_python
 	ADD_CUSTOM_TARGET(check_example_python
-		python check_example.py
+		${PYTHON_EXECUTABLE} check_example.py
 		DEPENDS ${SWIG_MODULE_py_example_REAL_NAME} check_example_py
 	)
 	MESSAGE(STATUS "make check_example_python: available")
