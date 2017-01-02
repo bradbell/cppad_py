@@ -13,6 +13,13 @@
                        http://www.gnu.org/licenses/agpl.txt
 ----------------------------------------------------------------------------- */
 /* cppad_swig.i */
+# ifdef SWIG
+# define CPPAD_SWIG_LIB_PUBLIC
+# else
+# include <cppad_swig_lib_export.h>
+# endif
+
+
 %{
 # include <cppad/swig/a_double.hpp>
 # include <cppad/swig/a_fun.hpp>

@@ -16,7 +16,10 @@ junk.*
 */junk.*
 */*/junk
 */*/junk.*
-# directory is new in any directory
+# directory is new or new.* in any directory
 new
+new.*
 */new
+*/new.*
 */*/new
+*/*/new.*

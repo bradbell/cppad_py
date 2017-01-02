@@ -9,6 +9,11 @@
 ----------------------------------------------------------------------------- */
 # include <vector>
 # include <cppad/swig/a_double.hpp>
+# ifdef SWIG
+#	define CPPAD_SWIG_LIB_PUBLIC
+# else
+#	include <cppad_swig_lib_export.h>
+# endif
 
 // declarations without definitions
 namespace CppAD {
@@ -16,7 +21,7 @@ namespace CppAD {
 }
 
 /// swig class that acts the same as CppAD::ADFun<double>
-class a_fun
+class CPPAD_SWIG_LIB_PUBLIC a_fun
 {	// private members are not in swig interface
 	private:
 	/// ADFun<double> representation
