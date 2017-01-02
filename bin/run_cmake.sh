@@ -24,11 +24,17 @@ then
 fi
 echo_eval cd build
 # -----------------------------------------------------------------------------
+# see https://cmake.org/cmake/help/v3.0/manual/cmake-generators.7.html
 cmake_generator='Unix Makefiles'
+# verbose printing during make commands
 cmake_verbose_makefile='false'
+# debug or release
 cmake_build_type='debug'
+# where CppAD is installed
 cppad_prefix="$HOME/prefix/cppad"
+# extra flags when compiling code that used CppAD
 cppad_cxx_flags='-Wall -pedantic-errors'
+# extra flags when compiling SWIG wrappers
 swig_cxx_flags='-Wall -Wno-sign-compare'
 #
 cmake \
