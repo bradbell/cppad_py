@@ -5,7 +5,7 @@
             GNU Affero General Public License version 3.0 or later see
                        http://www.gnu.org/licenses/agpl.txt
 ----------------------------------------------------------------------------- */
-# include "swig_example.hpp"
+# include "example.hpp"
 # include <string>
 # include <limits>
 

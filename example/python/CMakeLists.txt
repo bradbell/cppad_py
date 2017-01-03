@@ -26,16 +26,16 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND )
 	INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/.. )
 	#
 	# treat like a C++ files
-	SET_SOURCE_FILES_PROPERTIES(../swig_example.i PROPERTIES CPLUSPLUS ON)
+	SET_SOURCE_FILES_PROPERTIES(../example.i PROPERTIES CPLUSPLUS ON)
 	#
 	# swig flags when processing this file
-	SET_SOURCE_FILES_PROPERTIES(./swig_example.i PROPERTIES SWIG_FLAGS "-Wall")
+	SET_SOURCE_FILES_PROPERTIES(./example.i PROPERTIES SWIG_FLAGS "-Wall")
 	#
 	# include directory determined by find PythonLibs
 	INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
 	#
 	# SWIG_ADD_MODULE(name language [ files ])
-	SWIG_ADD_MODULE(py_example python ../swig_example.i ../swig_example.cpp)
+	SWIG_ADD_MODULE(py_example python ../example.i ../example.cpp)
 	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(py_example ${PYTHON_LIBRARIES})

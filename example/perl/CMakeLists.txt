@@ -17,17 +17,17 @@ IF( SWIG_FOUND AND PERLLIBS_FOUND )
 	INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/.. )
 	#
 	# treat like a C++ files
-	SET_SOURCE_FILES_PROPERTIES(../swig_example.i PROPERTIES CPLUSPLUS ON)
+	SET_SOURCE_FILES_PROPERTIES(../example.i PROPERTIES CPLUSPLUS ON)
 	#
 	# swig flags when processing this file
-	SET_SOURCE_FILES_PROPERTIES(./swig_example.i PROPERTIES SWIG_FLAGS "-Wall")
+	SET_SOURCE_FILES_PROPERTIES(./example.i PROPERTIES SWIG_FLAGS "-Wall")
 	#
 	# include directory determined by find PythonLibs
 	# (treat like system include files to suppress warnings)
 	INCLUDE_DIRECTORIES( SYSTEM ${PERL_INCLUDE_PATH})
 	#
 	# SWIG_ADD_MODULE(name language [ files ])
-	SWIG_ADD_MODULE(pl_example perl ../swig_example.i ../swig_example.cpp)
+	SWIG_ADD_MODULE(pl_example perl ../example.i ../example.cpp)
 	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(pl_example ${PERL_LIBRARY})

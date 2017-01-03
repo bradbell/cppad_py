@@ -5,9 +5,9 @@
             GNU Affero General Public License version 3.0 or later see
                        http://www.gnu.org/licenses/agpl.txt
 ----------------------------------------------------------------------------- */
-/* swig_example.i */
+/* example.i */
 %{
-# include "swig_example.hpp"
+# include "example.hpp"
 %}
 
 # ifdef SWIGPYTHON
@@ -30,7 +30,7 @@
 
 %include "std_vector.i"
 
-%include "swig_example.hpp"
+%include "example.hpp"
 
 %template(double_class)  template_class<double>;
 %template(vector_double) std::vector<double>;

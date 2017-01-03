@@ -1,5 +1,5 @@
-# ifndef CPPAD_SWIG_EXAMPLE_SWIG_EXAMPLE_HPP
-# define CPPAD_SWIG_EXAMPLE_SWIG_EXAMPLE_HPP
+# ifndef CPPAD_SWIG_EXAMPLE_EXAMPLE_HPP
+# define CPPAD_SWIG_EXAMPLE_EXAMPLE_HPP
 /* -----------------------------------------------------------------------------
            cppad_swig: A C++ Object Library and SWIG Interface to CppAD
             Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
