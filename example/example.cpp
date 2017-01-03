@@ -9,32 +9,36 @@
 # include <string>
 # include <limits>
 
-// factorial_by_val
+// BEGIN factorial_by_val
 int factorial_by_val(int n) {
 	if (n <= 1) return 1;
 	else return n * factorial_by_val(n - 1);
 }
+// END factorial_by_val
 
-// message_of_void
+// BEGIN message_of_void
 const char* message_of_void(void)
 {	return "OK";
 }
+// END message_of_void
 
-// add_by_ptadd_by_ptr
+// BEGIN add_by_ptr
 void add_by_ptr(int x, int y, int* result)
 {	*result = x + y;
 }
+// END add_by_ptr
 
-// max_array_ptr
-int max_array_by_ptr(int n, int* x)
+// BEGIN max_array_by_ptr
+int max_array_by_ptr(int n, const int* x)
 {	int result = x[0];
 	for(int i = 1; i < 10; i++)
 		if( x[i] > result )
 			result = x[i];
 	return result;
 }
+// END max_array_by_ptr
 
-// max_std_vector_double
+// BEGIN max_std_vector_double
 double max_std_vector_double(const std::vector<double>& x)
 {	double result = - std::numeric_limits<double>::infinity();
 	for(size_t i = 0; i < x.size(); i++)
@@ -42,10 +46,10 @@ double max_std_vector_double(const std::vector<double>& x)
 			result = x[i];
 	return result;
 }
+// END max_std_vector_double
 
 
-
-// raise_exception or return previous error message
+// BEGIN raise_exception
 const char* raise_exception(const char* message) throw(const char*)
 {	// previous error message
 	static std::string previous = "";
@@ -59,6 +63,7 @@ const char* raise_exception(const char* message) throw(const char*)
 	// never get to here
 	return "";
 }
+// END raise_exception
 
 // -----------------------------------------------------------------------
 // normal_class

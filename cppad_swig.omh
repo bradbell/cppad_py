@@ -65,7 +65,8 @@ $codei%
 for each such test.
 
 $childtable%
-	bin/run_cmake.sh
+	bin/run_cmake.sh%
+	example/example_lib.omh
 %$$
 
 
