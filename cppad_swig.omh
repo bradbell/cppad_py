@@ -1,0 +1,73 @@
+-------------------------------------------------------------------------------
+          cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+           Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+           GNU Affero General Public License version 3.0 or later see
+                      http://www.gnu.org/licenses/agpl.txt
+-------------------------------------------------------------------------------
+$begin cppad_swig$$
+$comment -------------------------------------------------------------
+default automatic indexing command for all cppad_swig documentaiton
+$$
+$aindex section head subhead$$
+$comment -------------------------------------------------------------$$
+$spell
+	cppad
+	CppAD
+	Linux
+	msys
+	perl
+	cppad
+	cmake
+	Affero
+$$
+
+$section cppad_swig: A C++ Object Library and SWIG Interface to CppAD$$
+
+$head Goal$$
+Provide a link from any scripting language supported by
+$href%http://www.swig.org%swig%$$
+to the
+$href%https://www.coin-or.org/CppAD%cppad%$$
+algorithmic differentiation package.
+In addition, the C++ library that does the computations is specified
+and can be linked directly by other programs (besides swig wrappers).
+
+$head Under Construction$$
+This is a preliminary version of $code cppad_swig$$.
+Only a few AD functions have been implemented and are being used
+for initial testing.
+The currently working scripting languages, operating systems are:
+$table
+python $cnext Linux, msys $rnext
+octave $cnext Linux $rnext
+perl   $cnext Linux
+$tend
+Only testing, and no installation, is currently implemented.
+
+$head License$$
+This program is distributed under the terms of the
+GNU Affero General Public License version 3.0 or later see
+$href%http://www.gnu.org/licenses/agpl.txt%agpl.txt%$$.
+
+$head Testing$$
+You must first configure cppad_swig for your system using
+$cref run_cmake.sh$$.
+When you do so, the set of available tests would be output
+as messages of the form
+$codei%
+	make check_%test_name%: available
+%$$
+You can change into the $code build$$ subdirectory and enter the command
+$codei%
+	make check_%test_name%
+%$$
+for each such test.
+
+$childtable%
+	bin/run_cmake.sh
+%$$
+
+
+
+$end

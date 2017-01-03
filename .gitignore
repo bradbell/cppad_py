@@ -2,6 +2,7 @@
 git_commit.sh
 # only one directory
 build
+doc
 # compiled python files in specific directory
 lib/python/*.pyc
 # vi swap file in any directory
