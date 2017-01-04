@@ -23,7 +23,8 @@ $section Swig Input File example.i$$
 
 $children%
 	example/python/check_py_example.py%
-	example/octave/check_m_example.m
+	example/octave/check_m_example.m%
+	example/perl/check_pl_example.pl
 %$$
 
 $head C++ Includes$$
@@ -59,6 +60,7 @@ $codep */
 %module pl_example
 # endif
 /* $$
+see $cref check_pl_example.pl$$.
 
 $head int_class$$
 This is a Swig interface to a an integer value.
