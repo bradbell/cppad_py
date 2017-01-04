@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and Swig Interface to CppAD
+#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #          GNU Affero General Public License version 3.0 or later see
@@ -53,7 +53,7 @@ ENDMACRO(print_variable)
 #	BOOL, if the variable only has the values true or false.
 #
 # ${description}: (in)
-# Is a description of how the variable affects the CppAD install procedure.
+# Is a description of how the variable affects the Cppad install procedure.
 MACRO(cmake_argument variable default type description)
 	IF( NOT ( ${type} STREQUAL "STRING" ) )
 	IF( NOT ( ${type} STREQUAL "PATH" ) )
@@ -104,7 +104,7 @@ print_variable(CMAKE_CXX_FLAGS)
 print_variable(CMAKE_BUILD_TYPE)
 # -----------------------------------------------------------------------------
 # cppad_prefix
-cmake_argument(cppad_prefix NOTFOUND PATH "prefix used to install CppAD" )
+cmake_argument(cppad_prefix NOTFOUND PATH "prefix used to install Cppad" )
 IF( NOT cppad_prefix )
 	MESSAGE(FATAL_ERROR "cppad_prefix is not defined by cmake command line")
 ENDIF( NOT cppad_prefix )

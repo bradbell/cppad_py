@@ -1,6 +1,6 @@
 divert(-1)
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and Swig Interface to CppAD
+#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #          GNU Affero General Public License version 3.0 or later see
@@ -25,7 +25,7 @@ c_ This file can be automatically generaeted using the following command
 define(begin_bool_fun_0_,
 def $2() :
 	c_
-	c_ load the cppad Swig library
+	c_ load the Cppad Swig library
 	import module_
 	c_
 	c_ initialize return variable

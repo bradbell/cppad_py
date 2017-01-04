@@ -2,7 +2,7 @@
 % This file can be automatically generaeted using the following command
 % m4 ../octave.m4 ../xam/a_fun_xam.m4 > a_fun_xam.m
 % -----------------------------------------------------------------------------
-%         cppad_swig: A C++ Object Library and Swig Interface to CppAD
+%         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 %          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 %              This program is distributed under the terms of the
 %          GNU Affero General Public License version 3.0 or later see
@@ -12,7 +12,7 @@
 % -----------------------------------------------------------------------------
 function ok = a_fun_xam()
 	%
-	% load the cppad Swig library
+	% load the Cppad Swig library
 	m_cppad
 	%
 	% initialize return variable

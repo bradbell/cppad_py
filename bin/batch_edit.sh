@@ -13,22 +13,22 @@ move_list='
 move_sed='s|/local/|/core/|'
 #
 cat << EOF > junk.sed
-s|[Ss][Ww][Ii][Gg]|Swig|g
-s|cppad_Swig|cppad_swig|g
-s|Swig_FOUND|SWIG_FOUND|g
-s|FIND_PACKAGE(Swig)|FIND_PACKAGE(SWIG)|g
-s|Swig/|swig/|g
-s|\$code Swig\$\\\$|Swig|g
-s|SwigPYTHON|SWIGPYTHON|g
-s|SwigOCTAVE|SWIGOCTAVE|g
-s|SwigPERL|SWIGPERL|g
-s|UseSwig|UseSWIG|g
-s|^# *ifdef Swig|# ifdef SWIG|
+s|[Cc][Pp][Pp][Aa][Dd]|Cppad|g
+s|Cppad::|CppAD::|g
+s|pl_CppAD::|pl_cppad::|g
+s|Cppad_swig|cppad_swig|g
+s|\$code cppad\$\\\$|Cppad|g
+s|<Cppad/|<cppad/|g
+s|/Cppad/|/cppad/|g
+s|/Cppad.hpp>|/cppad.hpp>|g
+s|namespace Cppad|namespace CppAD|g
+s|m_Cppad|m_cppad|g
+s|prefix/Cppad"|prefix/cppad"|g
 #
-s|\\([a-z][a-z][a-z]*\\)_Swig|\\1_swig|g
-s|Swig_\\([a-z][a-z][a-z]*\\)|swig_\\1|g
-s|\\([A-Z][A-Z][A-Z]*\\)_Swig|\\1_SWIG|g
-s|Swig_\\([A-Z][A-Z][A-Z]*\\)|SWIG_\\1|g
+s|\\([a-z][a-z][a-z]*\\)_Cppad|\\1_cppad|g
+s|Cppad_\\([a-z][a-z][a-z]*\\)|cppad_\\1|g
+s|\\([A-Z][A-Z][A-Z]*\\)_Cppad|\\1_CPPAD|g
+s|Cppad_\\([A-Z][A-Z][A-Z]*\\)|CPPAD_\\1|g
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

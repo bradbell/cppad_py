@@ -1,5 +1,5 @@
 /* -----------------------------------------------------------------------------
-           cppad_swig: A C++ Object Library and Swig Interface to CppAD
+           cppad_swig: A C++ Object Library and Swig Interface to Cppad
             Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
             GNU Affero General Public License version 3.0 or later see
@@ -26,7 +26,7 @@ a_fun::a_fun(
 {	ptr_ = new CppAD::ADFun<double>();
 	size_t n = ax.size();
 	size_t m = ay.size();
-	// copy and convert from Swig vector to CppAD vectors
+	// copy and convert from Swig vector to Cppad vectors
 	std::vector< CppAD::AD<double> > ax_copy(n), ay_copy(m);
 	for(size_t j = 0; j < n; j++)
 		ax_copy[j] = *( ax[j].ptr() );

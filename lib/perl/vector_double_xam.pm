@@ -2,7 +2,7 @@
 # This file can be automatically generaeted using the following command
 # m4 ../perl.m4 ../xam/vector_double_xam.m4 > vector_double_xam.pl
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and Swig Interface to CppAD
+#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #          GNU Affero General Public License version 3.0 or later see
@@ -16,7 +16,7 @@ sub vector_double_xam() {
 	use strict;
 	use warnings;
 	#
-	# load the cppad Swig library
+	# load the Cppad Swig library
 	use pl_cppad;
 	#
 	# initilaize return variable

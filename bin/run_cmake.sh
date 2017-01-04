@@ -1,6 +1,6 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and Swig Interface to CppAD
+#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #          GNU Affero General Public License version 3.0 or later see
@@ -49,8 +49,7 @@ exit 0
 # $spell
 #	Makefiles
 #	Rel
-#	CppAD
-#	cppad
+#	Cppad
 #	cmake
 #	hpp
 #	cxx
@@ -95,14 +94,14 @@ exit 0
 #	cmake_build_type%$$.
 #
 # $head cppad_prefix$$
-# The prefix used to install CppAD.
+# The prefix used to install Cppad.
 # For example, the following include file must exist
 # $codei%
-#	%cppad_prefix%/include/cppad.hpp
+#	%cppad_prefix%/include/Cppad.hpp
 # %$$
 #
 # $head cppad_cxx_flags$$
-# Extra C++ compiler flags used when compiling code that includes CppAD
+# Extra C++ compiler flags used when compiling code that includes Cppad
 # header files.
 #
 # $head swig_cxx_flags$$
