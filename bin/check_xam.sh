@@ -19,7 +19,7 @@ then
 fi
 # -----------------------------------------------------------------------------
 cd lib
-list=`ls xam/*.m4 | sed -e 's|^xam/||' -e '/junk.m4$/d' -e 's|\.m4$||'`
+list=`ls xam/*.xam | sed -e 's|^xam/||' -e 's|\.xam$||'`
 ok='yes'
 declare -A ext
 ext['octave']='m'
@@ -34,7 +34,7 @@ do
 		then
 			touch $lang_file
 		fi
-		m4 $lang.m4 xam/$name.m4 > check_swig_xam.$$
+		m4 $lang.m4 xam/$name.xam > check_swig_xam.$$
 		if diff $lang_file check_swig_xam.$$ > /dev/null
 		then
 			rm check_swig_xam.$$
@@ -44,7 +44,7 @@ do
 				echo '---------------------------------------------------------'
 			fi
 			mv check_swig_xam.$$ $lang_file
-			echo "xam/$lang_file changed."
+			echo "$lang_file changed."
 			ok='no'
 		fi
 	done
