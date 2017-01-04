@@ -7,6 +7,7 @@
 # -----------------------------------------------------------------------------
 # $begin check_py_example.py$$ $newlinech #$$
 # $spell
+#	std
 #	py
 #	ptr
 # $$
@@ -31,6 +32,7 @@ else :
 	print('py_example.factorial_by_val: Error')
 	error_count = error_count + 1
 # %$$
+# see C++ $cref/factorial_by_val/example_function/factorial_by_val/$$.
 #
 # $head message_of_void$$
 # $srccode%cpp%
@@ -40,6 +42,7 @@ else :
 	print('py_example.message_of_void: Error')
 	error_count = error_count + 1
 # %$$
+# see C++ $cref/message_of_void/example_function/message_of_void/$$.
 #
 # $head int_class$$
 # $srccode%cpp%
@@ -51,6 +54,8 @@ else :
 	print('py_example.add_by_ptr: Error')
 	error_count = error_count + 1
 # %$$
+# see Swig $cref/int_class/example.i/int_class/$$ and
+# C++ $cref/add_by_ptr/example_function/add_by_ptr/$$.
 #
 # $head int_array_ptr$$
 # $srccode%cpp%
@@ -66,6 +71,8 @@ else :
 	error_count = error_count + 1
 py_example.delete_int_array_ptr(array_ptr)
 # %$$
+# see Swig $cref/int_array_ptr/example.i/int_array_ptr/$$ and
+# C++ $cref/max_array_by_ptr/example_function/max_array_by_ptr/$$.
 #
 # $head int_array_class$$
 # $srccode%cpp%
@@ -80,6 +87,8 @@ else :
 	print('py_example.max_array_by_ptr: class: Error')
 	error_count = error_count + 1
 # %$$
+# see Swig $cref/int_array_class/example.i/int_array_class/$$ and
+# C++ $cref/max_array_by_ptr/example_function/max_array_by_ptr/$$.
 #
 # $head vector_double$$
 # $srccode%cpp%
@@ -94,6 +103,8 @@ else :
 	print('py_example.max_std_vector_double: class: Error')
 	error_count = error_count + 1
 # %$$
+# see Swig $cref/vector_double/example.i/vector_double/$$ and
+# C++ $cref/max_std_vector_double/example_function/max_std_vector_double/$$.
 #
 # $head raise_exception$$
 # $srccode%cpp%
@@ -108,6 +119,7 @@ else :
 	print('py_example.raise_exception.message_of_void: Error')
 	error_count = error_count + 1
 # %$$
+# see C++ $cref/raise_exception/example_function/raise_exception/$$.
 #
 # $head normal_class$$
 # $srccode%cpp%
@@ -122,6 +134,7 @@ else :
 	print('py_example.normal_class: Error')
 	error_count = error_count + 1
 # %$$
+# see C++ $cref example_normal_class$$.
 #
 # $head double_class$$
 # $srccode%cpp%
@@ -136,6 +149,7 @@ else :
 	print('py_example.double_class: Error')
 	error_count = error_count + 1
 # %$$
+# see Swig $cref/double_class/example.i/double_class/$$.
 #
 # $head Set Exit Code$$
 # $srccode%cpp%

@@ -31,6 +31,7 @@ else
 	error_count = error_count + 1;
 end
 % #$$
+% see C++ $cref/factorial_by_val/example_function/factorial_by_val/$$.
 %
 % $head message_of_void$$
 % $srccode#cpp#
@@ -41,6 +42,7 @@ else
 	error_count = error_count + 1;
 end
 % #$$
+% see C++ $cref/message_of_void/example_function/message_of_void/$$.
 %
 % $head int_class$$
 % $srccode#cpp#
@@ -53,6 +55,8 @@ else
 	error_count = error_count + 1;
 end
 % #$$
+% see Swig $cref/int_class/example.i/int_class/$$ and
+% C++ $cref/add_by_ptr/example_function/add_by_ptr/$$.
 %
 % $head int_array_ptr$$
 % $srccode#cpp#
@@ -69,6 +73,8 @@ else
 end
 m_example.delete_int_array_ptr(array_ptr);
 % #$$
+% see Swig $cref/int_array_ptr/example.i/int_array_ptr/$$ and
+% C++ $cref/max_array_by_ptr/example_function/max_array_by_ptr/$$.
 %
 % $head int_array_class$$
 % $srccode#cpp#
@@ -84,6 +90,8 @@ else
 	error_count = error_count + 1;
 end
 % #$$
+% see Swig $cref/int_array_class/example.i/int_array_class/$$ and
+% C++ $cref/max_array_by_ptr/example_function/max_array_by_ptr/$$.
 %
 % $head raise_exception$$
 % $srccode#cpp#
@@ -100,6 +108,7 @@ else
 	error_count = error_count + 1
 end
 % #$$
+% see C++ $cref/raise_exception/example_function/raise_exception/$$.
 %
 % $head normal_class$$
 % $srccode#cpp#
@@ -115,6 +124,7 @@ else
 	error_count = error_count + 1
 end
 % #$$
+% see C++ $cref example_normal_class$$.
 %
 % $head double_class$$
 % $srccode#cpp#
@@ -130,6 +140,7 @@ else
 	error_count = error_count + 1
 end
 % #$$
+% see Swig $cref/double_class/example.i/double_class/$$.
 %
 % $head Set Exit Code$$
 % $srccode#cpp#

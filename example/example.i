@@ -76,6 +76,11 @@ This is a Swig interface to a pointer to an array of integer values.
 $codep */
 %include "carrays.i"
 %array_functions(int, int_array_ptr);
+/* $$
+
+$head int_array_class$$
+This is a Swig interface to a pointer to an integer array class
+$codep */
 %array_class(int, int_array_class);
 /* $$
 

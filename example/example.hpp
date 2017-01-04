@@ -139,7 +139,7 @@ template <class Type> class template_class
 $begin example_template_class$$
 
 
-$section An Example C++ Class$$
+$section An Example C++ Template Class$$
 
 
 $head Prototypes$$
