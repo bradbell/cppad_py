@@ -7,6 +7,7 @@
 % -----------------------------------------------------------------------------
 % $begin check_m_example.m$$ $newlinech %$$
 % $spell
+%	std
 %	ptr
 % #$$
 %
@@ -64,7 +65,7 @@ n   = 10;
 array_ptr = m_example.new_int_array_ptr(n);
 for i = 0 : (n-1)
 	m_example.int_array_ptr_setitem(array_ptr, i, 2 * i);
-endfor
+end
 if( m_example.max_array_by_ptr(n, array_ptr) == 18 )
 	printf('m_example.max_array_by_ptr: pointer:  OK\n')
 else
@@ -82,7 +83,7 @@ n   = 10;
 array_obj = m_example.int_array_class(n);
 for i = 0 : (n-1)
 	array_obj(i) = 2 * i;
-endfor
+end
 if( m_example.max_array_by_ptr(n, array_obj) == 18 )
 	printf('m_example.max_array_by_ptr: class:  OK\n')
 else
@@ -92,6 +93,23 @@ end
 % #$$
 % see Swig $cref/int_array_class/example.i/int_array_class/$$ and
 % C++ $cref/max_array_by_ptr/example_function/max_array_by_ptr/$$.
+%
+% $head vector_double$$
+% $srccode%cpp%
+n   = 10;
+vec = m_example.vector_double(n);
+for i = [ 0 : (n-1) ]
+	vec(i) = 2.0 * i;
+end
+if( m_example.max_std_vector_double(vec) == 18.0 )
+	printf('m_example.max_std_vector_double: class: OK\n')
+else
+	printf('m_example.max_std_vector_double: class: Error\n')
+	error_count = error_count + 1;
+end
+% %$$
+% see Swig $cref/vector_double/example.i/vector_double/$$ and
+% C++ $cref/max_std_vector_double/example_function/max_std_vector_double/$$.
 %
 % $head raise_exception$$
 % $srccode#cpp#
