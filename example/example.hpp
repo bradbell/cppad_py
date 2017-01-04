@@ -17,58 +17,37 @@ double      max_std_vector_double(const std::vector<double>& x);
 const char* raise_exception(const char* message) throw(const char*);
 // END function prototypes
 /*
-$begin example_hpp$$
+$begin functions_hpp$$
 $spell
 	ptr
 	std
 $$
 
-$section Example C++ Functions$$
+$section Example C++ Function Specifications$$
 
 $head Prototypes$$
 $srcfile%example/example.hpp%0
 	%// BEGIN function prototypes%// END function prototypes%$$
 
 $head factorial_by_val$$
-$subhead Specification$$
 The return value is the factorial of the argument $icode n$$.
-$subhead Implementation$$
-$srcfile%example/example.cpp%0
-	%// BEGIN factorial_by_val%// END factorial_by_val%$$
 
 $head message_of_void$$
-$subhead Specification$$
 The return value is the text $code OK$$.
-$subhead Implementation$$
-$srcfile%example/example.cpp%0
-	%// BEGIN message_of_void%// END message_of_void%$$
 
 $head add_by_ptr$$
-$subhead Specification$$
 The input value of $icode result$$ does not matter.
 Upon return $icode%result% = %x% + %y%$$.
-$subhead Implementation$$
-$srcfile%example/example.cpp%0
-	%// BEGIN add_by_ptr%// END add_by_ptr%$$
 
 $head max_array_by_ptr$$
-$subhead Specification$$
 The array $icode x$$ has length $icode n$$ and the return value
 is the maximum of the elements of $icode x$$.
-$subhead Implementation$$
-$srcfile%example/example.cpp%0
-	%// BEGIN max_array_by_ptr%// END max_array_by_ptr%$$
 
 $head max_std_vector_double$$
-$subhead Specification$$
 The return value is the maximum of the elements of $icode x$$.
-$subhead Implementation$$
-$srcfile%example/example.cpp%0
-	%// BEGIN max_std_vector_double%// END max_std_vector_double%$$
 
 
 $head raise_exception$$
-$subhead Specification$$
 It $icode message$$ is the empty C string,
 the return value is the string corresponding to the previous
 call to $code raise_exception$$ when $icode message$$ was non-empty.
@@ -80,31 +59,64 @@ $codei%
 %$$
 The message storage is done using a static variable and hence is
 not thread safe.
-$subhead Implementation$$
-$srcfile%example/example.cpp%0
-	%// BEGIN raise_exception%// END raise_exception%$$
 
 $end
 ------------------------------------------------------------------------------
 */
 
-
+// BEGIN normal_class prototype
 class normal_class
 {	private:
 		int value_;
 	public:
-		// ctor
+		// normal_class()
 		normal_class(void);
+		// normal_class(value)
 		normal_class(int value);
 		// destructor
 		~normal_class(void);
-		// int
+		// value()
 		int value(void) const;
 		// additon
 		normal_class operator+(const normal_class& right) const;
 		// equality
 		bool operator==(const normal_class& right) const;
 };
+// END normal_class prototype
+/*
+$begin normal_class$$
+
+
+$section An Example C++ Class$$
+
+
+$head Prototypes$$
+$srcfile%example/example.hpp%0
+	%// BEGIN normal_class prototype%// END normal_class prototype%$$
+
+$head normal_class()$$
+This creates a $code normal_class$$ object with no further specifications.
+
+$head normal_class(value)$$
+This creates a $code normal_class$$ object that has the
+specified $icode value$$.
+
+$head value()$$
+Returns the value corresponding to this object.
+
+$head addition$$
+The return value is the sum of the this object and the object to its right.
+
+$head equality$$
+True is returned, if the value for
+this object is equal to the value for the object to its right.
+Otherwise false is returned.
+
+$end
+------------------------------------------------------------------------------
+*/
+
+
 
 template <class Type> class template_class
 {	private:
