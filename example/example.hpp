@@ -120,25 +120,55 @@ $end
 ------------------------------------------------------------------------------
 */
 
-
-
+// BEGIN template_class prototype
 template <class Type> class template_class
 {	private:
 		Type value_;
 	public:
 		// ctor
-		template_class(const Type& value) : value_(value)
-		{ }
+		template_class(const Type& value);
 		// value
-		Type value(void) const
-		{	return value_; }
+		Type value(void) const;
 		// addition
-		template_class operator+(const template_class& right) const
-		{	return template_class( value_ + right.value_ ); }
+		template_class operator+(const template_class& right) const;
 		// equality
-		bool operator==(const template_class& right) const
-		{	return (value_ == right.value_); }
+		bool operator==(const template_class& right) const;
 };
+// END template_class prototype
+/*
+$begin example_template_class$$
 
+
+$section An Example C++ Class$$
+
+
+$head Prototypes$$
+$srcfile%example/example.hpp%0
+	%// BEGIN template_class prototype%// END template_class prototype%$$
+
+$head Type$$
+Is the type of the value in each object.
+
+$head template_class(value)$$
+This creates a $code template_class$$ object that has the
+specified $icode value$$.
+
+$head value()$$
+Returns the value corresponding to this object.
+
+$head addition$$
+The return value is the sum of the this object and the object to its right.
+
+$head equality$$
+True is returned, if the value for
+this object is equal to the value for the object to its right.
+Otherwise false is returned.
+
+$childtable%example/template_class.hpp%$$
+
+$end
+------------------------------------------------------------------------------
+*/
+# include "template_class.hpp"
 
 # endif

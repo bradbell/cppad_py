@@ -21,6 +21,7 @@ echo_eval_log() {
 			echo 'check_all.sh: see check_all.log for errors'
 		fi
 		cat $tmpfile >> $logfile
+		rm $tmpfile
 		exit 1
 	fi
 	cat $tmpfile >> $logfile
