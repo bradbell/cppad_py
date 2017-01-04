@@ -18,8 +18,8 @@ then
 	exit 1
 fi
 # -----------------------------------------------------------------------------
-cd lib
-list=`ls xam/*.xam | sed -e 's|^xam/||' -e 's|\.xam$||'`
+cd lib/xam
+list=`ls *.xam | sed -e 's|\.xam$||'`
 ok='yes'
 declare -A ext
 ext['octave']='m'
@@ -30,12 +30,12 @@ do
 	for lang in octave perl python
 	do
 		lang_file="$lang/$name.${ext[${lang}]}"
-		if [ ! -e "$lang_file" ]
+		if [ ! -e "../$lang_file" ]
 		then
-			touch $lang_file
+			touch ../$lang_file
 		fi
-		m4 $lang.m4 xam/$name.xam > check_swig_xam.$$
-		if diff $lang_file check_swig_xam.$$ > /dev/null
+		m4 $lang.m4 $name.xam > check_swig_xam.$$
+		if diff ../$lang_file check_swig_xam.$$ > /dev/null
 		then
 			rm check_swig_xam.$$
 		else
@@ -43,8 +43,8 @@ do
 			then
 				echo '---------------------------------------------------------'
 			fi
-			mv check_swig_xam.$$ $lang_file
-			echo "$lang_file changed."
+			mv check_swig_xam.$$ ../$lang_file
+			echo "lib/$lang_file changed."
 			ok='no'
 		fi
 	done
