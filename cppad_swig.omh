@@ -39,9 +39,9 @@ Only a few AD functions have been implemented and are being used
 for initial testing.
 The currently working scripting languages, operating systems are:
 $table
-python $cnext Linux, msys $rnext
-octave $cnext Linux $rnext
-perl   $cnext Linux
+Python $cnext Linux, msys $rnext
+Octave $cnext Linux $rnext
+Perl   $cnext Linux
 $tend
 Only testing, and no installation, is currently implemented.
 

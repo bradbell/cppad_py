@@ -20,7 +20,7 @@ IF ( PERLLIBS_FOUND )
 		${swig_control_file} PROPERTIES CPLUSPLUS ON
 	)
 
-	# Swig -perl warns that it does not support *=, or /=,
+	# Swig Perl warns that it does not support *=, or /=,
 	# supress these warnings.
 	SET(CMAKE_SWIG_FLAGS -Wextra -w367,368 )
 

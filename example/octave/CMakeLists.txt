@@ -21,7 +21,7 @@ IF( SWIG_FOUND AND octave_config )
 	# Swig flags when processing this file
 	SET_SOURCE_FILES_PROPERTIES(./example.i PROPERTIES SWIG_FLAGS "-Wall")
 	#
-	# getg octave include directories
+	# get Octave include directories
 	EXECUTE_PROCESS(
 		COMMAND ${octave_config} -p OCTINCLUDEDIR
 		OUTPUT_VARIABLE  octave_include_dirs
@@ -36,7 +36,7 @@ IF( SWIG_FOUND AND octave_config )
 		"\\octave$" "" octave_include_dirs ${octave_include_dirs}
 	)
 	#
-	# octave library directories
+	# Octave library directories
 	EXECUTE_PROCESS(
 		COMMAND ${octave_config} -p OCTLIBDIR
 		OUTPUT_VARIABLE  octave_library_dirs

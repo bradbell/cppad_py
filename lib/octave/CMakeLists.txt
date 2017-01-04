@@ -19,11 +19,11 @@ IF( octave_config )
 		${swig_control_file} PROPERTIES CPLUSPLUS ON
 	)
 
-	# Swig -octave warns that it does not support +=, -=, *=, or /=,
+	# Swig Octave warns that it does not support +=, -=, *=, or /=,
 	# (but is does and the code works) so supress these warnings.
 	SET(CMAKE_SWIG_FLAGS -Wextra -w365,366,367,368 )
 
-	# octave include directories
+	# Octave include directories
 	EXECUTE_PROCESS(
 		COMMAND ${octave_config} -p OCTINCLUDEDIR
 		OUTPUT_VARIABLE  octave_include_dirs
@@ -38,7 +38,7 @@ IF( octave_config )
 		"\\octave$" "" octave_include_dirs ${octave_include_dirs}
 	)
 
-	# octave library dcirectories
+	# Octave library dcirectories
 	EXECUTE_PROCESS(
 		COMMAND ${octave_config} -p OCTLIBDIR
 		OUTPUT_VARIABLE  octave_library_dirs

@@ -16,12 +16,12 @@ IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
 		${CMAKE_CURRENT_BINARY_DIR}/check_all.py
 	)
 
-	# which version of python did we find
+	# which version of Python did we find
 	SET(lib    "${PYTHONLIBS_VERSION_STRING}" )
 	SET(interp "${PYTHON_VERSION_STRING}" )
 	IF( NOT ( "${lib}" STREQUAL "${interp}" ) )
 		MESSAGE(FATAL_ERROR,
-			"cmake python library ${lib} not same as interpertor ${interp}"
+			"cmake Python library ${lib} not same as interpertor ${interp}"
 		)
 	ENDIF( NOT ( "${lib}" STREQUAL "${interp}" ) )
 

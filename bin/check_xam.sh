@@ -44,7 +44,7 @@ do
 				echo '---------------------------------------------------------'
 			fi
 			mv check_swig_xam.$$ $lang_file
-			echo "swig/$lang_file changed."
+			echo "xam/$lang_file changed."
 			ok='no'
 		fi
 	done
