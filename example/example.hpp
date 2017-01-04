@@ -17,7 +17,7 @@ double      max_std_vector_double(const std::vector<double>& x);
 const char* raise_exception(const char* message) throw(const char*);
 // END function prototypes
 /*
-$begin example_function_hpp$$
+$begin example_function$$
 $spell
 	ptr
 	std

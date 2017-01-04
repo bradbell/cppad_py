@@ -42,8 +42,27 @@ echo_eval_log bin/run_omhelp.sh xml
 echo_eval_log bin/run_cmake.sh
 echo_eval_log cd build
 echo_eval_log make check
-#
 rm $tmpfile
+#
+check_list='
+	example_python
+	example_octave
+	example_perl
+	example
+	lib_python
+	lib_octave
+	lib_perl
+	lib
+'
+for check in $check_list
+do
+	if ! grep "make check_$check: available" $logfile > /dev/null
+	then
+		echo "check_all.sh:	make check_$check is missing"
+		exit 1
+	fi
+done
+#
 if grep -i 'warning' $logfile
 then
 	echo 'check_all.sh: Error: see warnings in check_all.log'
