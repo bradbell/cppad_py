@@ -21,10 +21,11 @@ $$
 
 $section Swig Input File example.i$$
 
-$children%
+$childtable%
 	example/python/check_py_example.py%
 	example/octave/check_m_example.m%
-	example/perl/check_pl_example.pl
+	example/perl/check_pl_example.pl%
+	example/example_lib.omh
 %$$
 
 $head C++ Includes$$
@@ -34,6 +35,7 @@ $codep */
 # include "example.hpp"
 %}
 /* $$
+see $cref example_lib$$.
 
 $head py_example$$
 This is the name of the Python Swig interface to the C++ library.
