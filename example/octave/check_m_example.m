@@ -23,16 +23,16 @@ m_example
 error_count = 0;
 % #$$
 %
-% $head factorial_by_val$$
+% $head factorial_by_value$$
 % $srccode#cpp#
-if (m_example.factorial_by_val(4) == 24)
-	printf('m_example.factorial_by_val: OK\n')
+if (m_example.factorial_by_value(4) == 24)
+	printf('m_example.factorial_by_value: OK\n')
 else
-	printf('m_example.factorial_by_val: Error\n')
+	printf('m_example.factorial_by_value: Error\n')
 	error_count = error_count + 1;
 end
 % #$$
-% see C++ $cref/factorial_by_val/example_function/factorial_by_val/$$.
+% see C++ $cref/factorial_by_value/example_function/factorial_by_value/$$.
 %
 % $head message_of_void$$
 % $srccode#cpp#

@@ -9,7 +9,7 @@
 ----------------------------------------------------------------------------- */
 # include <vector>
 // BEGIN function prototypes
-int         factorial_by_val(int n);
+int         factorial_by_value(int n);
 const char* message_of_void();
 void        add_by_ptr(int x, int y, int* result);
 int         max_array_by_ptr(int n, const int* x);
@@ -29,7 +29,7 @@ $head Prototypes$$
 $srcfile%example/example.hpp%0
 	%// BEGIN function prototypes%// END function prototypes%$$
 
-$head factorial_by_val$$
+$head factorial_by_value$$
 The return value is the factorial of the argument $icode n$$.
 
 $head message_of_void$$

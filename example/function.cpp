@@ -10,10 +10,10 @@
 # include <string>
 # include <limits>
 
-// factorial_by_val
-int factorial_by_val(int n) {
+// factorial_by_value
+int factorial_by_value(int n) {
 	if (n <= 1) return 1;
-	else return n * factorial_by_val(n - 1);
+	else return n * factorial_by_value(n - 1);
 }
 
 // message_of_void

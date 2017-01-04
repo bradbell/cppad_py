@@ -24,15 +24,15 @@ import py_example
 error_count = 0
 # %$$
 #
-# $head factorial_by_val$$
+# $head factorial_by_value$$
 # $srccode%cpp%
-if py_example.factorial_by_val(4) == 24 :
-	print('py_example.factorial_by_val: OK')
+if py_example.factorial_by_value(4) == 24 :
+	print('py_example.factorial_by_value: OK')
 else :
-	print('py_example.factorial_by_val: Error')
+	print('py_example.factorial_by_value: Error')
 	error_count = error_count + 1
 # %$$
-# see C++ $cref/factorial_by_val/example_function/factorial_by_val/$$.
+# see C++ $cref/factorial_by_value/example_function/factorial_by_value/$$.
 #
 # $head message_of_void$$
 # $srccode%cpp%
