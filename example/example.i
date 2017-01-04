@@ -19,7 +19,7 @@ $spell
 	std
 $$
 
-$section Swig Input File example.i$$
+$section A Simple Example for Using Swig with C++$$
 
 $childtable%
 	example/python/check_py_example.py%
