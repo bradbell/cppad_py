@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+#         cppad_swig: A C++ Object Library and Swig Interface to CppAD
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #          GNU Affero General Public License version 3.0 or later see
@@ -92,10 +92,10 @@ MACRO(add_to_list variable_list constant_value )
 	ENDIF( "${${variable_list}}" STREQUAL "" )
 ENDMACRO(add_to_list)
 # -----------------------------------------------------------------------------
-# make sure we have SWIG available
+# make sure we have Swig available
 FIND_PACKAGE(SWIG)
 IF( NOT SWIG_FOUND )
-	MESSAGE(FATAL_ERROR "Aborting because cmake cannot find SWIG")
+	MESSAGE(FATAL_ERROR "Aborting because cmake cannot find Swig")
 ENDIF( NOT SWIG_FOUND )
 # -----------------------------------------------------------------------------
 # print important system variables
@@ -115,7 +115,7 @@ cmake_argument(cppad_cxx_flags "" STRING
 "Flags, in addititon to CMAKE_CXX_FLAGS, used when compiling cppad_swig code."
 )
 cmake_argument(swig_cxx_flags "" STRING
-"Flags, in addititon to CMAKE_CXX_FLAGS, used when swig wrapper code."
+"Flags, in addititon to CMAKE_CXX_FLAGS, used when Swig wrapper code."
 )
 # -----------------------------------------------------------------------------
 #

@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+#         cppad_swig: A C++ Object Library and Swig Interface to CppAD
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #          GNU Affero General Public License version 3.0 or later see
@@ -19,7 +19,7 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND )
 		)
 	ENDIF( NOT ( "${lib}" STREQUAL "${interp}" ) )
 	#
-	# include the swig specific macros
+	# include the Swig specific macros
 	INCLUDE( ${CMAKE_ROOT}/Modules/UseSWIG.cmake )
 	#
 	# use include files in parent directory
@@ -28,7 +28,7 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND )
 	# treat like a C++ files
 	SET_SOURCE_FILES_PROPERTIES(../example.i PROPERTIES CPLUSPLUS ON)
 	#
-	# swig flags when processing this file
+	# Swig flags when processing this file
 	SET_SOURCE_FILES_PROPERTIES(./example.i PROPERTIES SWIG_FLAGS "-Wall")
 	#
 	# include directory determined by find PythonLibs
@@ -41,7 +41,7 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND )
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(py_example ${PYTHON_LIBRARIES})
 	#
-	# additional flags for compiling swig wrapper
+	# additional flags for compiling Swig wrapper
 	SET_TARGET_PROPERTIES( ${SWIG_MODULE_py_example_REAL_NAME}
 		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
 	)

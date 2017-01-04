@@ -1,6 +1,6 @@
 header_(a_fun_xam)
 c_ -----------------------------------------------------------------------------
-c_         cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+c_         cppad_swig: A C++ Object Library and Swig Interface to CppAD
 c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 c_              This program is distributed under the terms of the
 c_          GNU Affero General Public License version 3.0 or later see

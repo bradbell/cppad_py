@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+#         cppad_swig: A C++ Object Library and Swig Interface to CppAD
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #          GNU Affero General Public License version 3.0 or later see
@@ -19,7 +19,7 @@ IF( octave_config )
 		${swig_control_file} PROPERTIES CPLUSPLUS ON
 	)
 
-	# swig -octave warns that it does not support +=, -=, *=, or /=,
+	# Swig -octave warns that it does not support +=, -=, *=, or /=,
 	# (but is does and the code works) so supress these warnings.
 	SET(CMAKE_SWIG_FLAGS -Wextra -w365,366,367,368 )
 
@@ -68,7 +68,7 @@ IF( octave_config )
 		cppad_swig_lib ${octave_liboctinterp} ${octave_liboctave}
 	)
 
-	# additional flags for compiling swig wrapper
+	# additional flags for compiling Swig wrapper
 	SET_TARGET_PROPERTIES( ${SWIG_MODULE_m_cppad_REAL_NAME}
 		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
 	)

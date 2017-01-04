@@ -1,12 +1,12 @@
 
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+#         cppad_swig: A C++ Object Library and Swig Interface to CppAD
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
-# parent directory should ensure SWIG was found
+# parent directory should ensure Swig was found
 assert( SWIG_FOUND )
 #
 # Initialize check for this directory
@@ -16,7 +16,7 @@ SET(check_lib_depends "")
 INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/include )
 INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_BINARY_DIR} )
 #
-# include the swig specific macros
+# include the Swig specific macros
 INCLUDE( ${CMAKE_ROOT}/Modules/UseSWIG.cmake )
 #
 # swig_control_file: used by the sub-directories below
@@ -48,7 +48,7 @@ SET_TARGET_PROPERTIES(
 	cppad_swig_lib PROPERTIES COMPILE_FLAGS "${cppad_cxx_flags}"
 )
 #
-# swig extra dependencies used by sub-directories below
+# Swig extra dependencies used by sub-directories below
 SET(SWIG_MODULE_cppad_swig_EXTRA_DEPS
 	"${CMAKE_SOURCE_DIR}/include/cppad/swig/a_double.hpp"
 	"${CMAKE_SOURCE_DIR}/include/cppad/swig/a_fun.hpp"

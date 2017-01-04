@@ -13,7 +13,22 @@ move_list='
 move_sed='s|/local/|/core/|'
 #
 cat << EOF > junk.sed
-s|factorial_by_val|factorial_by_value|g
+s|[Ss][Ww][Ii][Gg]|Swig|g
+s|cppad_Swig|cppad_swig|g
+s|Swig_FOUND|SWIG_FOUND|g
+s|FIND_PACKAGE(Swig)|FIND_PACKAGE(SWIG)|g
+s|Swig/|swig/|g
+s|\$code Swig\$\\\$|Swig|g
+s|SwigPYTHON|SWIGPYTHON|g
+s|SwigOCTAVE|SWIGOCTAVE|g
+s|SwigPERL|SWIGPERL|g
+s|UseSwig|UseSWIG|g
+s|^# *ifdef Swig|# ifdef SWIG|
+#
+s|\\([a-z][a-z][a-z]*\\)_Swig|\\1_swig|g
+s|Swig_\\([a-z][a-z][a-z]*\\)|swig_\\1|g
+s|\\([A-Z][A-Z][A-Z]*\\)_Swig|\\1_SWIG|g
+s|Swig_\\([A-Z][A-Z][A-Z]*\\)|SWIG_\\1|g
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

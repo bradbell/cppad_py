@@ -1,6 +1,6 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+#         cppad_swig: A C++ Object Library and Swig Interface to CppAD
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #          GNU Affero General Public License version 3.0 or later see
@@ -83,7 +83,7 @@ exit 0
 #
 # $head cmake_verbose_makefile$$
 # This is either $code true$$ or $code false$$.
-# If it is true, many of the compiler and $code swig$$ options used to
+# If it is true, many of the compiler and Swig options used to
 # build the system are output during the $code make$$ commands.
 # If it is false, the output during the make commands just describes
 # whats is being done without so much detail.
@@ -107,7 +107,7 @@ exit 0
 #
 # $head swig_cxx_flags$$
 # Extra C++ compiler flags used when compiling code that is created
-# by $code swig$$.
+# by Swig.
 #
 # $end
 # -----------------------------------------------------------------------------

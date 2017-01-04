@@ -1,6 +1,6 @@
 divert(-1)
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+#         cppad_swig: A C++ Object Library and Swig Interface to CppAD
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #          GNU Affero General Public License version 3.0 or later see
@@ -26,7 +26,7 @@ c_ m4 ../octave.m4 ../xam/$1.m4 > $1.ext_)
 define(begin_bool_fun_0_,
 function $1 = $2()
 	c_
-	c_ load the cppad swig library
+	c_ load the cppad Swig library
 	module_
 	c_
 	c_ initialize return variable

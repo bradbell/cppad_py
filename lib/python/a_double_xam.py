@@ -2,7 +2,7 @@
 # This file can be automatically generaeted using the following command
 # m4 ../python.m4 ../xam/a_double_xam.m4 > a_double_xam.py
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+#         cppad_swig: A C++ Object Library and Swig Interface to CppAD
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #          GNU Affero General Public License version 3.0 or later see
@@ -12,7 +12,7 @@
 # -----------------------------------------------------------------------------
 def a_double_xam() :
 	#
-	# load the cppad swig library
+	# load the cppad Swig library
 	import py_cppad
 	#
 	# initialize return variable

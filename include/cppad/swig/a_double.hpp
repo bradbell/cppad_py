@@ -1,7 +1,7 @@
 # ifndef CPPAD_SWIG_A_DOUBLE_HPP
 # define CPPAD_SWIG_A_DOUBLE_HPP
 /* -----------------------------------------------------------------------------
-           cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+           cppad_swig: A C++ Object Library and Swig Interface to CppAD
             Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
             GNU Affero General Public License version 3.0 or later see
@@ -30,14 +30,14 @@ struct a_double_data {
 	CPPAD_TAPE_ADDR_TYPE   taddr;
 };
 
-/// swig class that acts the same as CppAD::AD<double>
+/// Swig class that acts the same as CppAD::AD<double>
 class  CPPAD_SWIG_LIB_PUBLIC a_double
-{	// private members are not in swig interface
+{	// private members are not in Swig interface
 	private:
 	/// data for this object
 	a_double_data        data_;
 	// -----------------------------------------------------------------------
-	// public members not in swig interface (see %ignore ptr)
+	// public members not in Swig interface (see %ignore ptr)
 	public:
 	/// pointer to this as an AD<double> object
 	CppAD::AD<double>* ptr(void);
@@ -46,7 +46,7 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	/// ctor from CppAD::AD<double>
 	a_double(const CppAD::AD<double>* ad_ptr);
 	// -----------------------------------------------------------------------
-	// public members in swig interface
+	// public members in Swig interface
 	public:
 	/// default ctor
 	a_double(void);

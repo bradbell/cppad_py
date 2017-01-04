@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+#         cppad_swig: A C++ Object Library and Swig Interface to CppAD
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #          GNU Affero General Public License version 3.0 or later see
@@ -9,7 +9,7 @@ FIND_PACKAGE(SWIG)
 FIND_PROGRAM(octave_config NAMES octave-config)
 IF( SWIG_FOUND AND octave_config )
 	#
-	# include the swig specific macros
+	# include the Swig specific macros
 	INCLUDE( ${CMAKE_ROOT}/Modules/UseSWIG.cmake )
 	#
 	# use include files in parent directory
@@ -18,7 +18,7 @@ IF( SWIG_FOUND AND octave_config )
 	# treat like a C++ files
 	SET_SOURCE_FILES_PROPERTIES(../example.i PROPERTIES CPLUSPLUS ON)
 	#
-	# swig flags when processing this file
+	# Swig flags when processing this file
 	SET_SOURCE_FILES_PROPERTIES(./example.i PROPERTIES SWIG_FLAGS "-Wall")
 	#
 	# getg octave include directories
@@ -68,7 +68,7 @@ IF( SWIG_FOUND AND octave_config )
 		${octave_liboctinterp} ${octave_liboctave}
 	)
 	#
-	# additional flags for compiling swig wrapper
+	# additional flags for compiling Swig wrapper
 	SET_TARGET_PROPERTIES( ${SWIG_MODULE_m_example_REAL_NAME}
 		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
 	)

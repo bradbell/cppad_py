@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
-          cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+          cppad_swig: A C++ Object Library and Swig Interface to CppAD
            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
            GNU Affero General Public License version 3.0 or later see
@@ -22,16 +22,16 @@ $spell
 	Affero
 $$
 
-$section cppad_swig: A C++ Object Library and SWIG Interface to CppAD$$
+$section cppad_swig: A C++ Object Library and Swig Interface to CppAD$$
 
 $head Goal$$
 Provide a link from any scripting language supported by
-$href%http://www.swig.org%swig%$$
+$href%http://www.Swig.org%Swig%$$
 to the
 $href%https://www.coin-or.org/CppAD%cppad%$$
 algorithmic differentiation package.
 In addition, the C++ library that does the computations is specified
-and can be linked directly by other programs (besides swig wrappers).
+and can be linked directly by other programs (besides Swig wrappers).
 
 $head Under Construction$$
 This is a preliminary version of $code cppad_swig$$.

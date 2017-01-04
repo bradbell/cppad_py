@@ -1,7 +1,7 @@
 # ifndef CPPAD_SWIG_A_FUN_HPP
 # define CPPAD_SWIG_A_FUN_HPP
 /* -----------------------------------------------------------------------------
-           cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+           cppad_swig: A C++ Object Library and Swig Interface to CppAD
             Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
             GNU Affero General Public License version 3.0 or later see
@@ -20,14 +20,14 @@ namespace CppAD {
 	template <class Base> class ADFun;
 }
 
-/// swig class that acts the same as CppAD::ADFun<double>
+/// Swig class that acts the same as CppAD::ADFun<double>
 class CPPAD_SWIG_LIB_PUBLIC a_fun
-{	// private members are not in swig interface
+{	// private members are not in Swig interface
 	private:
 	/// ADFun<double> representation
 	CppAD::ADFun<double>* ptr_;
 	// -----------------------------------------------------------------------
-	// public members are in swig interface
+	// public members are in Swig interface
 	public:
 	/// default ctor
 	a_fun(void);

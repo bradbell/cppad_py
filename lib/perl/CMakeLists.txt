@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and SWIG Interface to CppAD
+#         cppad_swig: A C++ Object Library and Swig Interface to CppAD
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #          GNU Affero General Public License version 3.0 or later see
@@ -20,7 +20,7 @@ IF ( PERLLIBS_FOUND )
 		${swig_control_file} PROPERTIES CPLUSPLUS ON
 	)
 
-	# swig -perl warns that it does not support *=, or /=,
+	# Swig -perl warns that it does not support *=, or /=,
 	# supress these warnings.
 	SET(CMAKE_SWIG_FLAGS -Wextra -w367,368 )
 
@@ -33,7 +33,7 @@ IF ( PERLLIBS_FOUND )
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(pl_cppad cppad_swig_lib ${PYTHON_LIBRARIES})
 
-	# additional flags for compiling swig wrapper
+	# additional flags for compiling Swig wrapper
 	SET_TARGET_PROPERTIES( ${SWIG_MODULE_pl_cppad_REAL_NAME}
 		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
 	)
