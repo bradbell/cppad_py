@@ -5,28 +5,44 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
-# load the modules
-import sys
-import py_example
+# $begin check_py_example.py$$ $newlinech #$$
+# $spell
+#	py
+#	ptr
+# $$
 #
-# initialze error_count
+# $section Python Script That Tests py_example Swig Module$$
+#
+# $head Load the Module$$
+# $srccode%cpp%
+import py_example
+# %$$
+#
+# $head Initialize Error Count$$
+# $srccode%cpp%
 error_count = 0
-# --------------------------------------------
-# factorial_by_val
+# %$$
+#
+# $head factorial_by_val$$
+# $srccode%cpp%
 if py_example.factorial_by_val(4) == 24 :
 	print('py_example.factorial_by_val: OK')
 else :
 	print('py_example.factorial_by_val: Error')
 	error_count = error_count + 1
-# --------------------------------------------
-# message_of_void
+# %$$
+#
+# $head message_of_void$$
+# $srccode%cpp%
 if py_example.message_of_void() == 'OK' :
 	print('py_example.message_of_void: OK')
 else :
 	print('py_example.message_of_void: Error')
 	error_count = error_count + 1
-# --------------------------------------------
-# add_by_ptr: pointer_class(int, int_class)
+# %$$
+#
+# $head int_class$$
+# $srccode%cpp%
 obj = py_example.int_class()
 py_example.add_by_ptr(3, 4, obj)
 if obj.value() == 7 :
@@ -34,8 +50,10 @@ if obj.value() == 7 :
 else :
 	print('py_example.add_by_ptr: Error')
 	error_count = error_count + 1
-# --------------------------------------------
-# max_array_ptr: array_functions(int, int_array_ptr)
+# %$$
+#
+# $head int_array_ptr$$
+# $srccode%cpp%
 n   = 10
 array_ptr = py_example.new_int_array_ptr(n)
 for i in range(n) :
@@ -47,8 +65,10 @@ else :
 	print('py_example.max_array_by_ptr: pointer: Error')
 	error_count = error_count + 1
 py_example.delete_int_array_ptr(array_ptr)
-# --------------------------------------------
-# max_array_ptr: array_class(int, int_array_class)
+# %$$
+#
+# $head int_array_class$$
+# $srccode%cpp%
 n   = 10
 array_obj = py_example.int_array_class(n)
 for i in range(n) :
@@ -59,8 +79,10 @@ if py_example.max_array_by_ptr(n, array_obj) == 18 :
 else :
 	print('py_example.max_array_by_ptr: class: Error')
 	error_count = error_count + 1
-# --------------------------------------------
-# max_std_vector_double: std::vector<double>
+# %$$
+#
+# $head vector_double$$
+# $srccode%cpp%
 n   = 10
 vec = py_example.vector_double(n)
 for i in range(n) :
@@ -71,7 +93,10 @@ if py_example.max_std_vector_double(vec) == 18.0 :
 else :
 	print('py_example.max_std_vector_double: class: Error')
 	error_count = error_count + 1
-# --------------------------------------------
+# %$$
+#
+# $head raise_exception$$
+# $srccode%cpp%
 try :
 	py_example.raise_exception('test message')
 	message = ''
@@ -82,7 +107,10 @@ if message == 'test message' :
 else :
 	print('py_example.raise_exception.message_of_void: Error')
 	error_count = error_count + 1
-# --------------------------------------------
+# %$$
+#
+# $head normal_class$$
+# $srccode%cpp%
 two   = py_example.normal_class(2)
 three = py_example.normal_class(3)
 five  = two + three
@@ -93,8 +121,10 @@ if ok :
 else :
 	print('py_example.normal_class: Error')
 	error_count = error_count + 1
-# --------------------------------------------
-# double instantiation of a template class
+# %$$
+#
+# $head double_class$$
+# $srccode%cpp%
 two   = py_example.double_class(2.0)
 three = py_example.double_class(3.0)
 five  = two + three
@@ -105,6 +135,12 @@ if ok :
 else :
 	print('py_example.double_class: Error')
 	error_count = error_count + 1
-# --------------------------------------------
-# return error_count
+# %$$
+#
+# $head Set Exit Code$$
+# $srccode%cpp%
+import sys
 sys.exit(error_count)
+# %$$
+#
+# $end

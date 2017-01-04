@@ -21,6 +21,10 @@ $$
 
 $section Swig Input File example.i$$
 
+$children%
+	example/python/check_py_example.py
+%$$
+
 $head C++ Includes$$
 This include file defines the interface to the C++ object library.
 $codep */
@@ -36,6 +40,7 @@ $codep */
 %module py_example
 # endif
 /*$$
+see $cref check_py_example.py$$.
 
 $head m_example$$
 This is the name of the Octave Swig interface to the C++ library.
