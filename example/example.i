@@ -22,7 +22,8 @@ $$
 $section Swig Input File example.i$$
 
 $children%
-	example/python/check_py_example.py
+	example/python/check_py_example.py%
+	example/octave/check_m_example.m
 %$$
 
 $head C++ Includes$$
@@ -49,6 +50,7 @@ $codep */
 %module m_example
 # endif
 /*$$
+see $cref check_m_example.m$$.
 
 $head pl_example$$
 This is the name of the Perl Swig interface to the C++ library.
