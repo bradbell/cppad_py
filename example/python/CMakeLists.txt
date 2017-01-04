@@ -49,19 +49,19 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND )
 	# example use of CMAKE_SWIG_OUTDIR (not necessary in this case)
 	SET(CMAKE_SWIG_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}")
 	#
-	# copy check_example.py from source to binary directory
-	ADD_CUSTOM_TARGEt(check_example_py
+	# copy check_py_example.py from source to binary directory
+	ADD_CUSTOM_TARGET(check_py_example
 		"${CMAKE_COMMAND}" -E copy
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_example.py"
-		"${CMAKE_CURRENT_BINARY_DIR}/check_example.py"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_py_example.py"
+		"${CMAKE_CURRENT_BINARY_DIR}/check_py_example.py"
 		DEPENDS
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_example.py"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_py_example.py"
 	)
 	#
 	# check_example_python
 	ADD_CUSTOM_TARGET(check_example_python
-		${PYTHON_EXECUTABLE} check_example.py
-		DEPENDS ${SWIG_MODULE_py_example_REAL_NAME} check_example_py
+		${PYTHON_EXECUTABLE} check_py_example.py
+		DEPENDS ${SWIG_MODULE_py_example_REAL_NAME} check_py_example
 	)
 	MESSAGE(STATUS "make check_example_python: available")
 	#

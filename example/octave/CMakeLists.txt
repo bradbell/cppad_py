@@ -73,18 +73,18 @@ IF( SWIG_FOUND AND octave_config )
 		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
 	)
 	#
-	# copy check_example.m from source to binary directory
-	ADD_CUSTOM_TARGET(check_example_m
+	# copy check_m_example.m from source to binary directory
+	ADD_CUSTOM_TARGET(check_m_example
 		"${CMAKE_COMMAND}" -E copy
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_example.m"
-		"${CMAKE_CURRENT_BINARY_DIR}/check_example.m"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_m_example.m"
+		"${CMAKE_CURRENT_BINARY_DIR}/check_m_example.m"
 		DEPENDS
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_example.m"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_m_example.m"
 	)
 	# check_example_octave
 	ADD_CUSTOM_TARGET(check_example_octave
-		octave check_example.m
-		DEPENDS ${SWIG_MODULE_m_example_REAL_NAME} check_example_m
+		octave check_m_example.m
+		DEPENDS ${SWIG_MODULE_m_example_REAL_NAME} check_m_example
 	)
 	MESSAGE(STATUS "make check_example_octave: available")
 	#

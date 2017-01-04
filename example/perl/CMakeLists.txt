@@ -42,18 +42,18 @@ IF( SWIG_FOUND AND PERLLIBS_FOUND )
 	SET(CMAKE_SWIG_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}")
 	#
 	# copy check_exmaple.pl from source to binary directory
-	ADD_CUSTOM_TARGEt(check_example_pl
+	ADD_CUSTOM_TARGET(check_pl_example
 		"${CMAKE_COMMAND}" -E copy
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_example.pl"
-		"${CMAKE_CURRENT_BINARY_DIR}/check_example.pl"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_pl_example.pl"
+		"${CMAKE_CURRENT_BINARY_DIR}/check_pl_example.pl"
 		DEPENDS
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_example.pl"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_pl_example.pl"
 	)
 	#
 	# check_example_perl
 	ADD_CUSTOM_TARGET(check_example_perl
-		perl check_example.pl
-		DEPENDS ${SWIG_MODULE_pl_example_REAL_NAME} check_example_pl
+		perl check_pl_example.pl
+		DEPENDS ${SWIG_MODULE_pl_example_REAL_NAME} check_pl_example
 	)
 	MESSAGE(STATUS "make check_example_perl: available")
 	#
