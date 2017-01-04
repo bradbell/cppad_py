@@ -35,7 +35,8 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND )
 	INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
 	#
 	# SWIG_ADD_MODULE(name language [ files ])
-	SWIG_ADD_MODULE(py_example python ../example.i ../example.cpp)
+	SET(module_files ../example.i ../function.cpp ../normal_class.cpp)
+	SWIG_ADD_MODULE(py_example python ${module_files})
 	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(py_example ${PYTHON_LIBRARIES})

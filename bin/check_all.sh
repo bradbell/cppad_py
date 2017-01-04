@@ -12,7 +12,17 @@ tmpfile=`pwd`/check_all.$$
 echo_eval_log() {
 	echo "$* >> check_all.log"
 	echo $* >> $logfile
-	eval $* >& $tmpfile
+	if ! eval $* >& $tmpfile
+	then
+		if grep -i 'error' $tmpfile
+		then
+			echo 'check_all.sh: errors above are in check_all.log'
+		else
+			echo 'check_all.sh: see check_all.log for errors'
+		fi
+		cat $tmpfile >> $logfile
+		exit 1
+	fi
 	cat $tmpfile >> $logfile
 }
 # -----------------------------------------------------------------------------

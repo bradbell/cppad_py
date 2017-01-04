@@ -27,7 +27,8 @@ IF( SWIG_FOUND AND PERLLIBS_FOUND )
 	INCLUDE_DIRECTORIES( SYSTEM ${PERL_INCLUDE_PATH})
 	#
 	# SWIG_ADD_MODULE(name language [ files ])
-	SWIG_ADD_MODULE(pl_example perl ../example.i ../example.cpp)
+	SET(module_files ../example.i ../function.cpp ../normal_class.cpp)
+	SWIG_ADD_MODULE(pl_example perl ${module_files})
 	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(pl_example ${PERL_LIBRARY})

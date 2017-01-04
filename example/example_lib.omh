@@ -12,8 +12,7 @@ $$
 $section Example C++ Library That is Called by SWIG$$
 
 $childtable%
-	example/example.hpp%
-	example/example.cpp
+	example/example.hpp
 %$$
 
 

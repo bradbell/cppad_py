@@ -17,7 +17,7 @@ double      max_std_vector_double(const std::vector<double>& x);
 const char* raise_exception(const char* message) throw(const char*);
 // END function prototypes
 /*
-$begin functions_hpp$$
+$begin example_function_hpp$$
 $spell
 	ptr
 	std
@@ -60,6 +60,8 @@ $codei%
 The message storage is done using a static variable and hence is
 not thread safe.
 
+$childtable%example/function.cpp%$$
+
 $end
 ------------------------------------------------------------------------------
 */
@@ -84,7 +86,7 @@ class normal_class
 };
 // END normal_class prototype
 /*
-$begin normal_class$$
+$begin example_normal_class$$
 
 
 $section An Example C++ Class$$
@@ -111,6 +113,8 @@ $head equality$$
 True is returned, if the value for
 this object is equal to the value for the object to its right.
 Otherwise false is returned.
+
+$childtable%example/normal_class.cpp%$$
 
 $end
 ------------------------------------------------------------------------------

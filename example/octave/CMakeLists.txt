@@ -60,7 +60,8 @@ IF( SWIG_FOUND AND octave_config )
 	INCLUDE_DIRECTORIES( SYSTEM ${octave_include_dirs})
 	#
 	# SWIG_ADD_MODULE(name language [ files ])
-	SWIG_ADD_MODULE(m_example octave ../example.i ../example.cpp)
+	SET(module_files ../example.i ../function.cpp ../normal_class.cpp)
+	SWIG_ADD_MODULE(m_example octave ${module_files})
 	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(m_example

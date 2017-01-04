@@ -5,15 +5,11 @@
             GNU Affero General Public License version 3.0 or later see
                        http://www.gnu.org/licenses/agpl.txt
 ----------------------------------------------------------------------------- */
-// BEGIN include
+// BEGIN C++
 # include "example.hpp"
 # include <string>
 # include <limits>
-// END includes
 
-// -----------------------------------------------------------------------
-
-// BEGIN functions
 // factorial_by_val
 int factorial_by_val(int n) {
 	if (n <= 1) return 1;
@@ -62,53 +58,14 @@ const char* raise_exception(const char* message) throw(const char*)
 	// never get to here
 	return "";
 }
-// END funtions
+// END C++
 /*
-$begin  functions_cpp$$
+$begin example_function_cpp$$
 
 $section Example C++ Function Implementations$$
 
-$srcfile%example/example.cpp%0
-	%// BEGIN include%// END include%$$
-$srcfile%example/example.cpp%0
-	%// BEGIN functions%// END functions%$$
-$end
---------------------------------------------------------------------------
-*/
-// BEGIN normal_class
-// normal_class()
-normal_class::normal_class(void)
-{ };
+$srcfile%example/function.cpp%0%// BEGIN C++%// END C++%$$
 
-// normal_class(value)
-normal_class::normal_class(int value) : value_(value)
-{ };
-
-// destructor
-normal_class::~normal_class(void)
-{ };
-
-// value()
-int normal_class::value (void) const
-{	return value_; }
-
-// additon
-normal_class normal_class::operator+(const normal_class& right) const
-{	return normal_class( value_ + right.value_ ); }
-
-// equality
-bool normal_class::operator==(const normal_class& right) const
-{	return ( value_ == right.value_ ); }
-// END normal_class
-/*
-$begin  normal_class_cpp$$
-
-$section Example C++ Class Implementations$$
-
-$srcfile%example/example.cpp%0
-	%// BEGIN include%// END include%$$
-$srcfile%example/example.cpp%0
-	%// BEGIN normal_class%// END normal_class%$$
 $end
 --------------------------------------------------------------------------
 */
