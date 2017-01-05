@@ -1,0 +1,301 @@
+-------------------------------------------------------------------------------
+          cppad_swig: A C++ Object Library and Swig Interface to Cppad
+           Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+           GNU Affero General Public License version 3.0 or later see
+                      http://www.gnu.org/licenses/agpl.txt
+-------------------------------------------------------------------------------
+$begin macro$$
+$dollar @$$
+$spell
+	printf
+	vec
+	var
+	perl
+	xam
+	py
+	cppad
+	bool
+$$
+
+$section Specifications for m4 Macros$$
+
+$head Purpose$$
+For each scripting language, Python, Octave, and Perl,
+there is corresponding m4 file
+python.m4, octave.m4, and perl.m4.
+These files define macros that convert the *.xam files
+to examples (and tests) in the corresponding language.
+This is the specifications for the macros in an arbitrary scripting language.
+
+$head Convention$$
+All macro names end with a lower case letter or decimal digit
+followed by an under-bar.
+
+$comment ---------------------------------------------------------------$$
+$head No Arguments$$
+
+$subhead ext_$$
+This is the file extension used for scripting language; e.g.,
+$code py$$ for Python files.
+
+$subhead model_$$
+This is the name of the module in $cref example.i$$
+for scripting language; e.g., $code py_cppad$$ for Python.
+
+$subhead true_$$
+This is a constant representing the value true in the scripting language;
+e.g. $code True$$ for Python.
+
+$subhead false_$$
+This is a constant representing the value false in the scripting language;
+e.g. $code True$$ for Python.
+
+$subhead and_$$
+This is a logical binary operator; e.g. $code and$$ for Python.
+
+$subhead end_$$
+This is the text that goes on a line, by itself, to terminate a block
+of code; e.g., $code end$$ for Octave.
+Note that in Python, the comment symbol $code #$$ is used.
+This suffices because the level of indentation (by tabs)
+is reduced by one when the block terminates.
+
+$subhead c_$$
+This is the text that starts a comment that lasts for the current line;
+e.g., $code #$$ for Python.
+
+$comment ---------------------------------------------------------------$$
+$head Module Functions$$
+
+$subhead module_fun_1_$$
+The text corresponding to
+$codei|
+	module_fun_1_(|fun_name|, |argument|)
+|$$
+generates a call to the specified module function
+with the specified $icode argument$$.
+For example, in Octave it might be
+$codei|
+	m_module.|fun_name|(|argument|)
+|$$
+
+$subhead module_fun_2_$$
+The text corresponding to
+$codei|
+	module_fun_2_(|fun_name|, |argument_1|, |argument_2|)
+|$$
+generates a call to the specified module function
+with the specified $icode argument$$.
+For example, in Python it might be
+$codei|
+	py_module.|fun_name|(|argument_1|, |argument_2|)
+|$$
+
+$comment ---------------------------------------------------------------$$
+$head Assignment$$
+
+$subhead new_var_$$
+The text corresponding to
+$codei|
+	new_var_(|variable|, |value|)
+|$$
+declares the new specified variable
+and assigns it the specified value.
+For example, in Octave it could be
+$codei|
+	|variable| = |value|;
+|$$
+Note the semi-colon at the end which suppressed printing the value
+(in the Octave language).
+
+$subhead new_var_new_$$
+The text corresponding to
+$codei|
+	new_var_new_(|variable|, |value|)
+|$$
+declares the new specified variable
+and assigns it the specified value.
+In addition, the value is the result of a module object constructor.
+For example, in Python it could be
+$codei|
+	|variable| = |value|
+|$$
+while in Perl, it would be
+$codei|
+	my @|variable| = new |value|;
+|$$
+It is an unfortunate feature of Perl that it requires a $code new$$
+in this case.
+
+$subhead assign_$$
+The text corresponding to
+$codei|
+	assign_(|variable|, |value|)
+|$$
+assigns the specified value to an existing variable.
+For example, in Python it could be
+$codei|
+	|variable| = |value|
+|$$
+
+$subhead and_assign_$$
+The text corresponding to
+$codei|
+	and_assign_(|variable|, |value|)
+|$$
+assigns the specified logical variable to the binary expression
+of itself and the value.
+For example, in Octave it could be
+$codei|
+	|variable| = |variable| && |value|;
+|$$
+
+$subhead vec_set_$$
+The text corresponding to
+$codei|
+	vec_set_(|vector|, |index|, |value|)
+|$$
+sets the element with the specified index, in the specified vector, to the
+specified value.
+For example, in Python it might be
+$codei|
+	|vector|[|index|] = |argument|
+|$$
+
+$comment ---------------------------------------------------------------$$
+
+$head Member Functions$$
+
+$subhead member_fun_0_$$
+The text corresponding to
+$codei|
+	member_fun_0_(|variable|, |member_fun|)
+|$$
+generates a call to the specified member function with no arguments.
+For example, in Perl it might be
+$codei|
+	@|variable|->|fun_name|()
+|$$
+
+$subhead member_fun_1_$$
+The text corresponding to
+$codei|
+	member_fun_1_(|variable|, |member_fun|, |argument|)
+|$$
+generates a call to the specified member function with the specified argument.
+For example, in Octave it might be
+$codei|
+	|variable|.|fun_name|(|argument|)
+|$$
+
+$subhead member_fun_2_$$
+The text corresponding to
+$codei|
+	member_fun_2_(|variable|, |member_fun|, |argument_1|, |argument_2|)
+|$$
+generates a call to the specified member function with the specified arguments.
+For example, in Python it might be
+$codei|
+	|variable|.|fun_name|(|argument_1|, |argument_2|)
+|$$
+
+$subhead vec_get_$$
+The text corresponding to
+$codei|
+	vec_get_(|vector|, |index|)
+|$$
+gets the value of the element with the specified index,
+in the specified vector.
+For example, in Perl it might be
+$codei|
+	@|vector|->get(|index|)
+|$$
+
+$comment ---------------------------------------------------------------$$
+
+$head Function Statements$$
+
+$subhead begin_bool_fun_0_$$
+The text corresponding to
+$codei|
+	begin_bool_fun_0_(|return_variable|, |fun_name|)
+|$$
+is placed at the beginning of function that has zero arguments
+and a boolean return value.
+This must initialize $icode return_variable$$ as true.
+For example, in Octave it might be
+$codei|
+	function |return_variable| = |fun_name|()
+		%
+		% load the Cppad Swig library
+		m_cppad
+		%
+		% initialize return value
+		|return_variable| = true;
+|$$
+
+
+$subhead return_$$
+The text corresponding to
+$codei|
+	return_(|return_variable|)
+|$$
+terminates the current function with the specified return value.
+For example, in Python it might be
+$codei|
+	return |return_variable|
+|$$
+Note that this $icode return_variable$$ is the same as in
+$cref/begin_bool_fun_0_/macro/Function Statements/begin_bool_fun_0_/$$.
+
+
+$comment ---------------------------------------------------------------$$
+$head Other$$
+
+$subhead var_$$
+The text corresponding to
+$codei|
+	var_(|variable|)
+|$$
+retrieves the value of the specified variable.
+For example, in Python it could be $icode variable$$
+while in Perl it could be $codei|@|variable|$$.
+
+$subhead header_$$
+The text corresponding to
+$codei|
+	header_(|test_name|)
+|$$
+is placed at the top of the file,
+above the copyright message.
+For example, in Python it might be
+$codei|
+	# This file can be automatically generated using the following command:
+	# m4 ../xam/python.m4 ../xam/|test_name|.m4 > |test_name|.pl
+|$$
+
+$subhead begin_for_$$
+The text corresponding to
+$codei|
+	begin_for(|variable|, |upper|)
+|$$
+starts a for loop the specified index variable.
+The initial value of the variable is zero.
+The variable increases by one each time through the loop.
+The value of the index the last time through the loop is $icode|upper|-1|$$.
+The block inside the loop is terminated by an
+$cref/end_/macro/No Arguments/end_/$$.
+
+$subhead print_text_$$
+The text corresponding to
+$codei|
+	print_text_(|argument|)
+|$$
+prints the text specified by $icode argument$$ followed by a new line.
+For example, in Octave it might be
+$codei|
+	printf('argument\n')
+|$$
+
+$end
