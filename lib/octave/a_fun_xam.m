@@ -17,7 +17,6 @@ function ok = a_fun_xam()
 	% initialize return variable
 	ok = true;
 	n = 2;
-	m = 1;
 	%
 	% create ax
 	x = m_cppad.vector_double(n);

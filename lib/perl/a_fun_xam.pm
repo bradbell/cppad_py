@@ -21,7 +21,6 @@ sub a_fun_xam() {
 	# initilaize return variable
 	my $ok = 1;
 	my $n = 2;
-	my $m = 1;
 	#
 	# create ax
 	my $x = new pl_cppad::vector_double(n);

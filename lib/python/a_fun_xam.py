@@ -17,7 +17,6 @@ def a_fun_xam() :
 	# initialize return variable
 	ok = True
 	n = 2
-	m = 1
 	#
 	# create ax
 	x = py_cppad.vector_double(n)

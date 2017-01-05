@@ -66,10 +66,9 @@ define(begin_bool_fun_0_,
 `#' include <cppad/swig/a_double.hpp>
 `#' include <cppad/swig/a_fun.hpp>
 `#' include <cppad/swig/function.hpp>
+`#' include <cppad/swig/typedef.hpp>
 
 bool $2(void) {
-	typedef std::vector<double>   vector_double;
-	typedef std::vector<a_double> vector_ad;
 	c_
 	c_ initialize return variable
 	bool $1 = true_;)

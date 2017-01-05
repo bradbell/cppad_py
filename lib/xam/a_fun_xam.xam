@@ -10,7 +10,6 @@ c_ std::vector<a_double>
 c_ -----------------------------------------------------------------------------
 begin_bool_fun_0_(ok, a_fun_xam)
 	new_var_(size_t, n, 2)
-	new_var_(size_t, m, 1)
 	c_
 	c_ create ax
 	new_var_new_(vector_double, x, module_fun_1_(vector_double, n))

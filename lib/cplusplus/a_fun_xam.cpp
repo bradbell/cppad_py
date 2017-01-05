@@ -13,15 +13,13 @@
 # include <cppad/swig/a_double.hpp>
 # include <cppad/swig/a_fun.hpp>
 # include <cppad/swig/function.hpp>
+# include <cppad/swig/typedef.hpp>
 
 bool a_fun_xam(void) {
-	typedef std::vector<double>   vector_double;
-	typedef std::vector<a_double> vector_ad;
 	//
 	// initialize return variable
 	bool ok = true;
 	size_t n = 2;
-	size_t m = 1;
 	//
 	// create ax
 	vector_double x = vector_double(n);
