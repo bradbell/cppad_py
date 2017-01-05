@@ -70,7 +70,7 @@ def $2() :
 	c_ initialize return variable
 	$1 = true_)
 
-# return_(expression)
+# return_(return_variable)
 define(return_, return( $1 ))
 
 # -----------------------------------------------------------------------------

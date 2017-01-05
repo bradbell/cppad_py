@@ -74,7 +74,7 @@ sub $2() {
 	c_ initilaize return variable
 	my `$'$1 = true_;)
 
-# return_(expression)
+# return_(return_variable)
 define(return_, return( $1 );)
 
 # -----------------------------------------------------------------------------
