@@ -7,72 +7,72 @@ divert(-1)
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
 # No Arguments
-define(ext_, pl)
-define(module_, pl_cppad)
-define(true_, 1)
-define(false_, 0)
+define(ext_, cpp)
+define(module_, )
+define(true_, true)
+define(false_,fFlase)
 define(and_, &&)
-define(end_, })
-define(c_, `#')
+define(end_, `}')
+define(c_, `//')
 
 # -----------------------------------------------------------------------------
 # Module Functions
 
 # module_fun_1_(fun_name, argument)
-define(module_fun_1_, module_::$1($2))
+define(module_fun_1_, $1($2))
 
 # module_fun_2_(fun_name, argument1, argument2)
-define(module_fun_2_, module_::$1($2, $3))
+define(module_fun_2_, $1($2, $3))
 
 # -----------------------------------------------------------------------------
 # Assignment
 
 # new_var_(type, variable, value)
-define(new_var_, my `$'$2 = $3;)
+define(new_var_, $1 $2 = $3;)
 
-# new_var_new_(type variable, value)
-define(new_var_new_, my `$'$2 = new $3;)
+# new_var_new_(type, variable, value)
+define(new_var_new_, $1 $2 = $3;)
 
 # assign_(variable, value)
-define(assign_, `$'$1 = $2;)
+define(assign_, $1 = $2;)
 
 # and_assign_(variable, value)
-define(and_assign_, `$'$1 = `$'$1 and_ $2;)
+define(and_assign_, $1 = $1 and_ $2;)
 
 # vec_set_(vector, index, value)
-define(vec_set_, `$'$1->set($2, $3);)
+define(vec_set_, $1[$2] = $3;)
 
 # -----------------------------------------------------------------------------
 # Member Functions
 
 # member_fun_0_(variable, member_fun)
-define(member_fun_0_, `$'$1->$2())
+define(member_fun_0_, $1.$2())
 
 # member_fun_1_(variable, member_fun, argument)
-define(member_fun_1_, `$'$1->$2($3))
+define(member_fun_1_, $1.$2($3))
 
 # member_fun_2_(variable, member_fun, argument1, argument2)
-define(member_fun_2_, `$'$1->$2($3, $4))
+define(member_fun_2_, $1.$2($3, $4))
 
 # vec_get_(vector, index)
-define(vec_get_, `$'$1->get($2))
+define(vec_get_, $1[$2])
 
 # -----------------------------------------------------------------------------
 # Function Statements
 
 # begin_bool_fun_0_(return_variable, fun_name)
 define(begin_bool_fun_0_,
-package $2;
-sub $2() {
-	c_ check for standard perl programming conventions
-	use strict;
-	use warnings;
+`#' include <cstdio>
+`#' include <cppad/swig/a_double.hpp>
+`#' include <cppad/swig/a_fun.hpp>
+`#' include <cppad/swig/function.hpp>
+
+bool $2(void) {
+	typedef std::vector<double>   vector_double;
+	typedef std::vector<a_double> vector_ad;
 	c_
-	c_ load the Cppad Swig library
-	use module_;
-	c_
-	c_ initilaize return variable
-	my `$'$1 = true_;)
+	c_ initialize return variable
+	bool $1 = true_;)
 
 # return_(return_variable)
 define(return_, return( $1 );)
@@ -81,17 +81,17 @@ define(return_, return( $1 );)
 # Other
 
 # var_(variable)
-define(var_, `$'$1)
+define(var_, $1)
 
-# header_(example)
+# header_(language)
 define(header_,
 c_ This file can be automatically generaeted using the following command
-`#' m4 ../perl.m4 ../xam/$1.m4 > $1.ext_)
+c_ m4 ../cpp.m4 ../xam/$1.m4 > $1.ext_)
 
 # begin_for_(variable, upper)
-define(begin_for_, for(my `$'$1 = 0; `$'$1 < $2; `$'$1++) {)
+define(begin_for_, for(size_t $1 = 0; $1 < $2; $1++) {)
 
 # print_text_(text)
-define(print_text_, print "$1\n";)
+define(print_text_, std::printf("$1\n"))
 
 divert(0)dnl ingnore this end of line

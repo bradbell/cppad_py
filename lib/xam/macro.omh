@@ -99,9 +99,9 @@ $head Assignment$$
 $subhead new_var_$$
 The text corresponding to
 $codei|
-	new_var_(|variable|, |value|)
+	new_var_(|type|, |variable|, |value|)
 |$$
-declares the new specified variable
+declares the new specified variable with the specified type
 and assigns it the specified value.
 For example, in Octave it could be
 $codei|
@@ -109,13 +109,17 @@ $codei|
 |$$
 Note the semi-colon at the end which suppressed printing the value
 (in the Octave language).
+In C++, it could be
+$codei|
+	|type| |variable| = |value|;
+|$$
 
 $subhead new_var_new_$$
 The text corresponding to
 $codei|
-	new_var_new_(|variable|, |value|)
+	new_var_new_(|type|, |variable|, |value|)
 |$$
-declares the new specified variable
+declares the new specified variable with the specified type
 and assigns it the specified value.
 In addition, the value is the result of a module object constructor.
 For example, in Python it could be

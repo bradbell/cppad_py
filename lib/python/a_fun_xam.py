@@ -23,6 +23,7 @@ def a_fun_xam() :
 	x = py_cppad.vector_double(n)
 	for i in range( n  ) :
 		x[i] = i + 1.0
+	#
 	ax = py_cppad.independent(x)
 	#
 	# create af

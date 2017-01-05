@@ -23,6 +23,7 @@ function ok = a_fun_xam()
 	x = m_cppad.vector_double(n);
 	for i = [ 0 :(n -1) ]
 		x(i) = i + 1.0;
+	end
 	ax = m_cppad.independent(x);
 	%
 	% create af

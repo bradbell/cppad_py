@@ -27,6 +27,7 @@ sub a_fun_xam() {
 	my $x = new pl_cppad::vector_double(n);
 	for(my $i = 0; $i < $n ; $i++) {
 		$x->set($i, $i + 1.0);
+	}
 	my $ax = pl_cppad::independent(x);
 	#
 	# create af

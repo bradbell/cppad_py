@@ -56,6 +56,7 @@ SET(SWIG_MODULE_cppad_swig_EXTRA_DEPS
 )
 #
 # sub-directories for each language
+ADD_SUBDIRECTORY(cplusplus)
 ADD_SUBDIRECTORY(python)
 ADD_SUBDIRECTORY(octave)
 ADD_SUBDIRECTORY(perl)

@@ -25,9 +25,10 @@ declare -A ext
 ext['octave']='m'
 ext['perl']='pm'
 ext['python']='py'
+ext['cplusplus']='cpp'
 for name in $list
 do
-	for lang in octave perl python
+	for lang in cplusplus octave perl python
 	do
 		lang_file="$lang/$name.${ext[${lang}]}"
 		if [ ! -e "../$lang_file" ]
