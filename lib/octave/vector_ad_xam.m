@@ -1,4 +1,3 @@
-
 % This file can be automatically generaeted using the following command
 % m4 ../octave.m4 ../xam/vector_ad_xam.m4 > vector_ad_xam.m
 % -----------------------------------------------------------------------------

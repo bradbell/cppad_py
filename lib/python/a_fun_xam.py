@@ -1,4 +1,3 @@
-
 # This file can be automatically generaeted using the following command
 # m4 ../python.m4 ../xam/a_fun_xam.m4 > a_fun_xam.py
 # -----------------------------------------------------------------------------

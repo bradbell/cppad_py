@@ -90,4 +90,4 @@ define(begin_for_, for $1 = [ 0 :($2-1) ])
 # print_text_(text)
 define(print_text_, printf('$1\n'))
 
-divert
+divert(0)dnl ingnore this end of line

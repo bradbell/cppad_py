@@ -94,4 +94,4 @@ define(begin_for_, for(my `$'$1 = 0; `$'$1 < $2; `$'$1++) {)
 # print_text_(text)
 define(print_text_, print "$1\n";)
 
-divert
+divert(0)dnl ingnore this end of line

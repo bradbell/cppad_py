@@ -90,4 +90,4 @@ define(begin_for_, for $1 in range( $2 ) :)
 # print_text_(text)
 define(print_text_, print('$1'))
 
-divert
+divert(0)dnl ingnore this end of line

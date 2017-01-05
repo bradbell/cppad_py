@@ -1,4 +1,3 @@
-
 # This file can be automatically generaeted using the following command
 # m4 ../perl.m4 ../xam/vector_double_xam.m4 > vector_double_xam.pl
 # -----------------------------------------------------------------------------
