@@ -28,6 +28,7 @@ a_double a_double::operator op(const a_double& ad)\
 	return *this; \
 }
 
+namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 
 // pointer to this as an AD<double> object
 CppAD::AD<double>* a_double::ptr(void)
@@ -85,3 +86,4 @@ COMPUTED_ASSIGNMENT_OP(-=)
 COMPUTED_ASSIGNMENT_OP(*=)
 COMPUTED_ASSIGNMENT_OP(/=)
 
+} // END_CPPAD_SWIG_NAMESPACE

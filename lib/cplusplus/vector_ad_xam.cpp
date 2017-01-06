@@ -16,6 +16,7 @@
 # include <cppad/swig/typedef.hpp>
 
 bool vector_ad_xam(void) {
+	using cppad_swig::a_double;
 	//
 	// initialize return variable
 	bool ok = true;

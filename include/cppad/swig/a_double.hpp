@@ -30,6 +30,8 @@ struct a_double_data {
 	CPPAD_TAPE_ADDR_TYPE   taddr;
 };
 
+namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
+
 /// Swig class that acts the same as CppAD::AD<double>
 class  CPPAD_SWIG_LIB_PUBLIC a_double
 {	// private members are not in Swig interface
@@ -76,5 +78,7 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	a_double operator*=(const a_double& ad);
 	a_double operator/=(const a_double& ad);
 };
+
+} // END_CPPAD_SWIG_NAMESPACE
 
 # endif

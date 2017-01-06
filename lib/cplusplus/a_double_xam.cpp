@@ -16,6 +16,7 @@
 # include <cppad/swig/typedef.hpp>
 
 bool a_double_xam(void) {
+	using cppad_swig::a_double;
 	//
 	// initialize return variable
 	bool ok = true;

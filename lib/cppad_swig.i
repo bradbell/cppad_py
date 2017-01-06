@@ -43,5 +43,5 @@
 %include <cppad/swig/function.hpp>
 
 %template(vector_double) std::vector<double>;
-%template(vector_ad)     std::vector<a_double>;
+%template(vector_ad)     std::vector<cppad_swig::a_double>;
 
