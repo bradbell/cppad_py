@@ -21,19 +21,19 @@ bool vector_ad_xam(void) {
 	// initialize return variable
 	bool ok = true;
 	size_t n = 4;
-	vector_ad a_vec = vector_ad(n);
+	cppad_swig::vector_ad a_vec = cppad_swig::vector_ad(n);
 	//
 	// check size
 	ok = ok && a_vec.size() == n;
 	//
 	// setting elements
 	for(size_t i = 0; i < n ; i++) {
-		a_double ad = a_double(2.0 * i);
+		cppad_swig::a_double ad = cppad_swig::a_double(2.0 * i);
 		a_vec[i] = ad;
 	}
 	// getting elements
 	for(size_t i = 0; i < n ; i++) {
-		a_double a_element = a_vec[i];
+		cppad_swig::a_double a_element = a_vec[i];
 		ok = ok && a_element.value() == 2.0 * i;
 	}
 	return( ok );

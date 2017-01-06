@@ -21,7 +21,7 @@ bool vector_double_xam(void) {
 	// initialize return variable
 	bool ok = true;
 	size_t n = 4;
-	vector_double vec = vector_double(n);
+	cppad_swig::vector_double vec = cppad_swig::vector_double(n);
 	//
 	// check size
 	ok = ok && vec.size() == n;

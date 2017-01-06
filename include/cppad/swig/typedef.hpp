@@ -10,7 +10,11 @@
 # include <vector>
 # include <cppad/swig/a_double.hpp>
 
+namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
+
 typedef std::vector<double>               vector_double;
 typedef std::vector<cppad_swig::a_double> vector_ad;
+
+} // END_CPPAD_SWIG_NAMESPACE
 
 # endif

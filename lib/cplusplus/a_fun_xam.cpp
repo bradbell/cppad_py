@@ -23,23 +23,23 @@ bool a_fun_xam(void) {
 	size_t n = 2;
 	//
 	// create ax
-	vector_double x = vector_double(n);
+	cppad_swig::vector_double x = cppad_swig::vector_double(n);
 	for(size_t i = 0; i < n ; i++) {
 		x[i] = i + 1.0;
 	}
-	vector_ad ax = cppad_swig::independent(x);
+	cppad_swig::vector_ad ax = cppad_swig::independent(x);
 	//
 	// create af
 	a_double ax0 = ax[0];
 	a_double ax1 = ax[1];
-	vector_ad ay = vector_ad(1);
+	cppad_swig::vector_ad ay = cppad_swig::vector_ad(1);
 	ay[0] = ax0 + ax0 - ax1;
 	cppad_swig::a_fun af = cppad_swig::a_fun(ax, ay);
 	//
 	// zero order forward
 	x[0] = 3.0;
 	x[1] = 1.0;
-	vector_double y = af.forward(0, x);
+	cppad_swig::vector_double y = af.forward(0, x);
 	ok = ok && y[0] == 5.0;
 	//
 	// first order forward

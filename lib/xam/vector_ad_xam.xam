@@ -10,19 +10,19 @@ c_ std::vector<a_double>
 c_ -----------------------------------------------------------------------------
 begin_bool_fun_0_(ok, vector_ad_xam)
 	new_var_(size_t, n, 4)
-	new_var_new_(vector_ad, a_vec, module_fun_1_(vector_ad, n))
+	new_var_new_(module_(vector_ad), a_vec, module_(vector_ad)(n))
 	c_
 	c_ check size
 	and_assign_(ok, member_fun_0_(a_vec, size) == n)
 	c_
 	c_ setting elements
 	begin_for_(i, var_(n) )
-		new_var_new_(a_double, ad, module_fun_1_(a_double, 2.0 * i))
+		new_var_new_(module_(a_double), ad, module_(a_double)(2.0 * i))
 		vec_set_(a_vec, var_(i), var_(ad))
 	end_
 	c_ getting elements
 	begin_for_(i, var_(n) )
-		new_var_(a_double, a_element, vec_get_(a_vec, var_(i)))
+		new_var_(module_(a_double), a_element, vec_get_(a_vec, var_(i)))
 		and_assign_(ok, member_fun_0_(a_element, value) == 2.0 * var_(i))
 	end_
 	return_(var_(ok))

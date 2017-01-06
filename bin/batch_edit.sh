@@ -7,28 +7,18 @@
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
 revert_list='
+	lib/xam/cplusplus.m4
+	lib/xam/python.m4
+	lib/xam/octave.m4
+	lib/xam/perl.m4
+	lib/xam/macro.omh
 '
 move_list='
 '
 move_sed='s|/local/|/core/|'
 #
 cat << EOF > junk.sed
-s|[Cc][Pp][Pp][Aa][Dd]|Cppad|g
-s|Cppad::|CppAD::|g
-s|pl_CppAD::|pl_cppad::|g
-s|Cppad_swig|cppad_swig|g
-s|\$code cppad\$\\\$|Cppad|g
-s|<Cppad/|<cppad/|g
-s|/Cppad/|/cppad/|g
-s|/Cppad.hpp>|/cppad.hpp>|g
-s|namespace Cppad|namespace CppAD|g
-s|m_Cppad|m_cppad|g
-s|prefix/Cppad"|prefix/cppad"|g
-#
-s|\\([a-z][a-z][a-z]*\\)_Cppad|\\1_cppad|g
-s|Cppad_\\([a-z][a-z][a-z]*\\)|cppad_\\1|g
-s|\\([A-Z][A-Z][A-Z]*\\)_Cppad|\\1_CPPAD|g
-s|Cppad_\\([A-Z][A-Z][A-Z]*\\)|CPPAD_\\1|g
+s|module_fun_1_(\\([^,]*\\), *|module_(\\1)(|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]
