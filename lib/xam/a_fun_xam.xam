@@ -28,13 +28,13 @@ begin_bool_fun_0_(ok, a_fun_xam)
 	c_ zero order forward
 	vec_set_(x, 0, 3.0)
 	vec_set_(x, 1, 1.0)
-	new_var_(module_(vector_double), y, member_fun_2_(af, forward, 0, var_(x)))
+	new_var_(module_(vector_double), y, member_(af, forward)(0, var_(x)))
 	and_assign_(ok, vec_get_(y, 0) == 5.0)
 	c_
 	c_ first order forward
 	vec_set_(x, 0, 0.0)
 	vec_set_(x, 1, 1.0)
-	assign_(y, member_fun_2_(af, forward, 1, var_(x)))
+	assign_(y, member_(af, forward)(1, var_(x)))
 	and_assign_(ok, vec_get_(y, 0) == -1.0)
 	c_
 	return_(var_(ok))

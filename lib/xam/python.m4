@@ -20,6 +20,9 @@ define(c_, `#')
 # module_ or module_(object)
 define(module_, `ifelse($#, 0, py_cppad, py_cppad.$1)')
 
+# member_(variable, name)
+define(member_, $1.$2)
+
 # -----------------------------------------------------------------------------
 # Assignment
 
@@ -40,15 +43,6 @@ define(vec_set_, $1[$2] = $3)
 
 # -----------------------------------------------------------------------------
 # Member Functions
-
-# member_fun_0_(variable, member_fun)
-define(member_fun_0_, $1.$2())
-
-# member_fun_1_(variable, member_fun, argument)
-define(member_fun_1_, $1.$2($3))
-
-# member_fun_2_(variable, member_fun, argument1, argument2)
-define(member_fun_2_, $1.$2($3, $4))
 
 # vec_get_(vector, index)
 define(vec_get_, $1[$2])

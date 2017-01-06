@@ -20,8 +20,8 @@ bool a_double_xam(void) {
 	//
 	// initialize return variable
 	bool ok = true;
-	a_double two = a_double(2.0);
-	a_double three = a_double(3.0);
+	a_double two = cppad_swig::a_double(2.0);
+	a_double three = cppad_swig::a_double(3.0);
 	//
 	a_double five = two + three;
 	a_double six = two * three;
@@ -30,7 +30,6 @@ bool a_double_xam(void) {
 	//
 	ok = ok && five.value() == 5.0;
 	ok = ok && six.value() == 6.0;
-	ok = ok && neg_one.value() == -1.0;
 	ok = ok && neg_one.value() == -1.0;
 	ok = ok && 0.5 < two_thirds.value();
 	ok = ok && two_thirds.value() < 1.0;

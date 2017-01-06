@@ -27,7 +27,6 @@ function ok = a_double_xam()
 	ok = ok && five.value() == 5.0;
 	ok = ok && six.value() == 6.0;
 	ok = ok && neg_one.value() == -1.0;
-	ok = ok && neg_one.value() == -1.0;
 	ok = ok && 0.5 < two_thirds.value();
 	ok = ok && two_thirds.value() < 1.0;
 	ok = ok && five < six;

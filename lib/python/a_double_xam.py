@@ -27,7 +27,6 @@ def a_double_xam() :
 	ok = ok and five.value() == 5.0
 	ok = ok and six.value() == 6.0
 	ok = ok and neg_one.value() == -1.0
-	ok = ok and neg_one.value() == -1.0
 	ok = ok and 0.5 < two_thirds.value()
 	ok = ok and two_thirds.value() < 1.0
 	ok = ok and five < six

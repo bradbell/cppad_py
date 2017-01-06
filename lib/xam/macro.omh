@@ -40,10 +40,6 @@ $subhead ext_$$
 This is the file extension used for scripting language; e.g.,
 $code py$$ for Python files.
 
-$subhead model_$$
-This is the name of the module in $cref example.i$$
-for scripting language; e.g., $code py_cppad$$ for Python.
-
 $subhead true_$$
 This is a constant representing the value true in the scripting language;
 e.g. $code True$$ for Python.
@@ -67,30 +63,34 @@ This is the text that starts a comment that lasts for the current line;
 e.g., $code #$$ for Python.
 
 $comment ---------------------------------------------------------------$$
-$head Module Functions$$
+$head module_$$
 
-$subhead module_fun_1_$$
+$subhead No Arguments$$
+If $code module_$$ has no arguments,
+it is the name of the module in $cref example.i$$
+for scripting language; e.g., $code py_cppad$$ for Python.
+
+$subhead One Argument$$
 The text corresponding to
 $codei|
-	module_(|fun_name|)(|argument|)
+	module_(|name|)
 |$$
-generates a call to the specified module function
-with the specified $icode argument$$.
+references the specified name in the swig module.
 For example, in Octave it might be
 $codei|
-	m_module.|fun_name|(|argument|)
+	m_module.|name|
 |$$
 
-$subhead module_fun_2_$$
+$head member_$$
 The text corresponding to
 $codei|
-	module_(|fun_name|)(|argument_1|, |argument_2|)
+	member_(|variable|, |name|)
 |$$
-generates a call to the specified module function
-with the specified $icode argument$$.
-For example, in Python it might be
+references the specified member function or data
+in the context of the specified variable.
+For example, in C++ it might be
 $codei|
-	py_module.|fun_name|(|argument_1|, |argument_2|)
+	|variable|.|name|
 |$$
 
 $comment ---------------------------------------------------------------$$

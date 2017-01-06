@@ -9,7 +9,7 @@ c_ -----------------------------------------------------------------------------
 c_ a_double
 c_ -----------------------------------------------------------------------------
 begin_bool_fun_0_(ok, a_double_xam)
-	new_var_new_(a_double, two,   module_(a_double)(2.0))
+	new_var_new_(a_double, two,    module_(a_double)(2.0))
 	new_var_new_(a_double, three,  module_(a_double)(3.0))
 	c_
 	new_var_(a_double, five,       var_(two) + var_(three))
@@ -17,12 +17,11 @@ begin_bool_fun_0_(ok, a_double_xam)
 	new_var_(a_double, neg_one,    var_(two) - var_(three))
 	new_var_(a_double, two_thirds, var_(two) / var_(three))
 	c_
-	and_assign_(ok, member_fun_0_(five,     value) == 5.0)
-	and_assign_(ok, member_fun_0_(six,      value) == 6.0)
-	and_assign_(ok, member_fun_0_(neg_one,  value) == -1.0)
-	and_assign_(ok, member_fun_0_(neg_one,  value) == -1.0)
-	and_assign_(ok, 0.5 < member_fun_0_(two_thirds,  value))
-	and_assign_(ok, member_fun_0_(two_thirds,  value) < 1.0)
+	and_assign_(ok, member_(five, value)() == 5.0)
+	and_assign_(ok, member_(six, value)() == 6.0)
+	and_assign_(ok, member_(neg_one, value)() == -1.0)
+	and_assign_(ok, 0.5 < member_(two_thirds, value)())
+	and_assign_(ok, member_(two_thirds, value)() < 1.0)
 	and_assign_(ok, five < six)
 	c_
 	return_(var_(ok))
