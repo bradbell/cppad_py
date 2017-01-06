@@ -6,6 +6,8 @@ divert(-1)
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
+# NOTE: order of these macros is same as order of documentation in macro.omh
+# -----------------------------------------------------------------------------
 # No Arguments
 define(ext_, cpp)
 define(true_, true)
@@ -15,10 +17,13 @@ define(end_, `}')
 define(c_, `//')
 
 # -----------------------------------------------------------------------------
-# Module and Member
+# module, var, and member
 
 # module_ or module_(name)
 define(module_, `ifelse($#, 0, cppad_swig, cppad_swig::$1)')
+
+# var_(variable)
+define(var_, $1)
 
 # member_(variable, name)
 define(member_, $1.$2)
@@ -38,11 +43,11 @@ define(assign_, $1 = $2;)
 # and_assign_(variable, value)
 define(and_assign_, $1 = $1 and_ $2;)
 
+# -----------------------------------------------------------------------------
+# Vector Operations
+
 # vec_set_(vector, index, value)
 define(vec_set_, $1[$2] = $3;)
-
-# -----------------------------------------------------------------------------
-# Member Functions
 
 # vec_get_(vector, index)
 define(vec_get_, $1[$2])
@@ -70,9 +75,6 @@ define(return_, return( $1 );)
 # -----------------------------------------------------------------------------
 # Other
 
-# var_(variable)
-define(var_, $1)
-
 # header_(language)
 define(header_,
 c_ This file can be automatically generaeted using the following command
@@ -84,4 +86,4 @@ define(begin_for_, for(size_t $1 = 0; $1 < $2; $1++) {)
 # print_text_(text)
 define(print_text_, std::printf("$1\n"))
 
-divert(0)dnl ingnore this end of line
+divert(0)dnl turn on output and ingnore this end of line

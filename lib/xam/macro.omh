@@ -30,8 +30,7 @@ to examples (and tests) in the corresponding language.
 This is the specifications for the macros in an arbitrary scripting language.
 
 $head Convention$$
-All macro names end with a lower case letter or decimal digit
-followed by an under-bar.
+All macro names end with a lower case letter followed by an under-bar.
 
 $comment ---------------------------------------------------------------$$
 $head No Arguments$$
@@ -80,6 +79,15 @@ For example, in Octave it might be
 $codei|
 	m_module.|name|
 |$$
+
+$head var_$$
+The text corresponding to
+$codei|
+	var_(|variable|)
+|$$
+retrieves the value of the specified variable.
+For example, in Python it could be $icode variable$$
+while in Perl it could be $codei|@|variable|$$.
 
 $head member_$$
 The text corresponding to
@@ -156,6 +164,10 @@ $codei|
 	|variable| = |variable| && |value|;
 |$$
 
+$comment ---------------------------------------------------------------$$
+
+$head Vector Operations$$
+
 $subhead vec_set_$$
 The text corresponding to
 $codei|
@@ -168,42 +180,7 @@ $codei|
 	|vector|[|index|] = |argument|
 |$$
 
-$comment ---------------------------------------------------------------$$
 
-$head Member Functions$$
-
-$subhead member_fun_0_$$
-The text corresponding to
-$codei|
-	member_fun_0_(|variable|, |member_fun|)
-|$$
-generates a call to the specified member function with no arguments.
-For example, in Perl it might be
-$codei|
-	@|variable|->|fun_name|()
-|$$
-
-$subhead member_fun_1_$$
-The text corresponding to
-$codei|
-	member_fun_1_(|variable|, |member_fun|, |argument|)
-|$$
-generates a call to the specified member function with the specified argument.
-For example, in Octave it might be
-$codei|
-	|variable|.|fun_name|(|argument|)
-|$$
-
-$subhead member_fun_2_$$
-The text corresponding to
-$codei|
-	member_fun_2_(|variable|, |member_fun|, |argument_1|, |argument_2|)
-|$$
-generates a call to the specified member function with the specified arguments.
-For example, in Python it might be
-$codei|
-	|variable|.|fun_name|(|argument_1|, |argument_2|)
-|$$
 
 $subhead vec_get_$$
 The text corresponding to
@@ -239,6 +216,8 @@ $codei|
 		% initialize return value
 		|return_variable| = true;
 |$$
+Note that this begins a block of code that will be terminated
+by a corresponding $code end_$$.
 
 
 $subhead return_$$
@@ -251,21 +230,12 @@ For example, in Python it might be
 $codei|
 	return |return_variable|
 |$$
-Note that this $icode return_variable$$ is the same as in
-$cref/begin_bool_fun_0_/macro/Function Statements/begin_bool_fun_0_/$$.
+The block inside this function is terminated by a matching
+$cref/end_/macro/No Arguments/end_/$$.
 
 
 $comment ---------------------------------------------------------------$$
 $head Other$$
-
-$subhead var_$$
-The text corresponding to
-$codei|
-	var_(|variable|)
-|$$
-retrieves the value of the specified variable.
-For example, in Python it could be $icode variable$$
-while in Perl it could be $codei|@|variable|$$.
 
 $subhead header_$$
 The text corresponding to
@@ -289,7 +259,7 @@ starts a for loop the specified index variable.
 The initial value of the variable is zero.
 The variable increases by one each time through the loop.
 The value of the index the last time through the loop is $icode|upper|-1|$$.
-The block inside the loop is terminated by an
+The block inside the loop is terminated by a matching
 $cref/end_/macro/No Arguments/end_/$$.
 
 $subhead print_text_$$
