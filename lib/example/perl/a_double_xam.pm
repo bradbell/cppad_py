@@ -1,5 +1,5 @@
 # This file can be automatically generaeted using the following command
-# m4 ../python.m4 ../xam/a_double_xam.m4 > a_double_xam.py
+# m4 ../perl.m4 ../../xam/a_double_xam.xam > a_double_xam.pl
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -9,27 +9,31 @@
 # -----------------------------------------------------------------------------
 # a_double
 # -----------------------------------------------------------------------------
-def a_double_xam() :
+package a_double_xam;
+sub a_double_xam() {
+	# check for standard perl programming conventions
+	use strict;
+	use warnings;
 	#
 	# load the Cppad Swig library
-	import py_cppad
+	use pl_cppad;
 	#
-	# initialize return variable
-	ok = True
-	two = py_cppad.a_double(2.0)
-	three = py_cppad.a_double(3.0)
+	# initilaize return variable
+	my $ok = 1;
+	my $two = new pl_cppad::a_double(2.0);
+	my $three = new pl_cppad::a_double(3.0);
 	#
-	five = two + three
-	six = two * three
-	neg_one = two - three
-	two_thirds = two / three
+	my $five = $two + $three;
+	my $six = $two * $three;
+	my $neg_one = $two - $three;
+	my $two_thirds = $two / $three;
 	#
-	ok = ok and five.value() == 5.0
-	ok = ok and six.value() == 6.0
-	ok = ok and neg_one.value() == -1.0
-	ok = ok and 0.5 < two_thirds.value()
-	ok = ok and two_thirds.value() < 1.0
-	ok = ok and five < six
+	$ok = $ok && $five->value() == 5.0;
+	$ok = $ok && $six->value() == 6.0;
+	$ok = $ok && $neg_one->value() == -1.0;
+	$ok = $ok && 0.5 < $two_thirds->value();
+	$ok = $ok && $two_thirds->value() < 1.0;
+	$ok = $ok && five < six;
 	#
-	return( ok )
-#
+	return( $ok );
+}

@@ -1,5 +1,5 @@
 # This file can be automatically generaeted using the following command
-# m4 ../python.m4 ../xam/vector_ad_xam.m4 > vector_ad_xam.py
+# m4 ../python.m4 ../../xam/vector_ad_xam.xam > vector_ad_xam.py
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)

@@ -1,5 +1,5 @@
 # This file can be automatically generaeted using the following command
-# m4 ../perl.m4 ../xam/a_fun_xam.m4 > a_fun_xam.pl
+# m4 ../perl.m4 ../../xam/vector_ad_xam.xam > vector_ad_xam.pl
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -9,8 +9,8 @@
 # -----------------------------------------------------------------------------
 # std::vector<a_double>
 # -----------------------------------------------------------------------------
-package a_fun_xam;
-sub a_fun_xam() {
+package vector_ad_xam;
+sub vector_ad_xam() {
 	# check for standard perl programming conventions
 	use strict;
 	use warnings;
@@ -20,33 +20,21 @@ sub a_fun_xam() {
 	#
 	# initilaize return variable
 	my $ok = 1;
-	my $n = 2;
+	my $n = 4;
+	my $a_vec = new pl_cppad::vector_ad(n);
 	#
-	# create ax
-	my $x = new pl_cppad::vector_double(n);
+	# check size
+	$ok = $ok && $a_vec->size() == n;
+	#
+	# setting elements
 	for(my $i = 0; $i < $n ; $i++) {
-		$x->set($i, $i + 1.0);
+		my $ad = new pl_cppad::a_double(2.0 * i);
+		$a_vec->set($i, $ad);
 	}
-	my $ax = pl_cppad::independent(x);
-	#
-	# create af
-	my $ax0 = $ax->get(0);
-	my $ax1 = $ax->get(1);
-	my $ay = new pl_cppad::vector_ad(1);
-	$ay->set(0, $ax0 + $ax0 - $ax1);
-	my $af = new pl_cppad::a_fun($ax, $ay);
-	#
-	# zero order forward
-	$x->set(0, 3.0);
-	$x->set(1, 1.0);
-	my $y = $af->forward(0, $x);
-	$ok = $ok && $y->get(0) == 5.0;
-	#
-	# first order forward
-	$x->set(0, 0.0);
-	$x->set(1, 1.0);
-	$y = $af->forward(1, $x);
-	$ok = $ok && $y->get(0) == -1.0;
-	#
+	# getting elements
+	for(my $i = 0; $i < $n ; $i++) {
+		my $a_element = $a_vec->get($i);
+		$ok = $ok && $a_element->value() == 2.0 * $i;
+	}
 	return( $ok );
 }

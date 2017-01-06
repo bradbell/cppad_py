@@ -1,5 +1,5 @@
 # This file can be automatically generaeted using the following command
-# m4 ../python.m4 ../xam/a_fun_xam.m4 > a_fun_xam.py
+# m4 ../python.m4 ../../xam/a_fun_xam.xam > a_fun_xam.py
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)

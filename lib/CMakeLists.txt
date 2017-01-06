@@ -56,10 +56,10 @@ SET(SWIG_MODULE_cppad_swig_EXTRA_DEPS
 )
 #
 # sub-directories for each language
-ADD_SUBDIRECTORY(cplusplus)
-ADD_SUBDIRECTORY(python)
-ADD_SUBDIRECTORY(octave)
-ADD_SUBDIRECTORY(perl)
+ADD_SUBDIRECTORY(example/cplusplus)
+ADD_SUBDIRECTORY(example/python)
+ADD_SUBDIRECTORY(example/octave)
+ADD_SUBDIRECTORY(example/perl)
 #
 IF( NOT( "${check_lib_depends}" STREQUAL "" ) )
 	# Add the check target

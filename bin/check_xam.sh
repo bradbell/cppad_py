@@ -30,7 +30,7 @@ for name in $list
 do
 	for lang in cplusplus octave perl python
 	do
-		lang_file="$lang/$name.${ext[${lang}]}"
+		lang_file="example/$lang/$name.${ext[${lang}]}"
 		if [ ! -e "../$lang_file" ]
 		then
 			touch ../$lang_file

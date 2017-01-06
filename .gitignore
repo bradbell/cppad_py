@@ -6,7 +6,7 @@ doc
 # log file in the root directory
 *.log
 # compiled python files in specific directory
-lib/python/*.pyc
+lib/example/python/*.pyc
 # vi swap file in any directory
 *.swp
 */*.swp

@@ -74,7 +74,7 @@ define(return_, return( $1 ))
 # header_(language)
 define(header_,
 c_ This file can be automatically generaeted using the following command
-`#' m4 ../python.m4 ../xam/$1.m4 > $1.ext_)
+`#' m4 ../python.m4 ../../xam/$1.xam > $1.ext_)
 
 # begin_for_(variable, upper)
 define(begin_for_, for $1 in range( $2 ) :)

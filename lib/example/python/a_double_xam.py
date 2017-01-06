@@ -1,5 +1,5 @@
 # This file can be automatically generaeted using the following command
-# m4 ../perl.m4 ../xam/vector_ad_xam.m4 > vector_ad_xam.pl
+# m4 ../python.m4 ../../xam/a_double_xam.xam > a_double_xam.py
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -7,34 +7,29 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
-# std::vector<a_double>
+# a_double
 # -----------------------------------------------------------------------------
-package vector_ad_xam;
-sub vector_ad_xam() {
-	# check for standard perl programming conventions
-	use strict;
-	use warnings;
+def a_double_xam() :
 	#
 	# load the Cppad Swig library
-	use pl_cppad;
+	import py_cppad
 	#
-	# initilaize return variable
-	my $ok = 1;
-	my $n = 4;
-	my $a_vec = new pl_cppad::vector_ad(n);
+	# initialize return variable
+	ok = True
+	two = py_cppad.a_double(2.0)
+	three = py_cppad.a_double(3.0)
 	#
-	# check size
-	$ok = $ok && $a_vec->size() == n;
+	five = two + three
+	six = two * three
+	neg_one = two - three
+	two_thirds = two / three
 	#
-	# setting elements
-	for(my $i = 0; $i < $n ; $i++) {
-		my $ad = new pl_cppad::a_double(2.0 * i);
-		$a_vec->set($i, $ad);
-	}
-	# getting elements
-	for(my $i = 0; $i < $n ; $i++) {
-		my $a_element = $a_vec->get($i);
-		$ok = $ok && $a_element->value() == 2.0 * $i;
-	}
-	return( $ok );
-}
+	ok = ok and five.value() == 5.0
+	ok = ok and six.value() == 6.0
+	ok = ok and neg_one.value() == -1.0
+	ok = ok and 0.5 < two_thirds.value()
+	ok = ok and two_thirds.value() < 1.0
+	ok = ok and five < six
+	#
+	return( ok )
+#

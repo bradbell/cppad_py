@@ -1,5 +1,5 @@
 // This file can be automatically generaeted using the following command
-// m4 ../cpp.m4 ../xam/vector_double_xam.m4 > vector_double_xam.cpp
+// m4 ../../xam/cplusplus.m4 ../../xam/vector_double_xam.xam > vector_double_xam.cpp
 // -----------------------------------------------------------------------------
 //         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 //          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
