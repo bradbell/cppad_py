@@ -10,7 +10,7 @@
 # include <vector>
 # include <cppad/swig/a_double.hpp>
 
-typedef std::vector<double> vector_double;
+typedef std::vector<double>   vector_double;
 typedef std::vector<a_double> vector_ad;
 
 # endif

@@ -26,14 +26,14 @@ bool a_fun_xam(void) {
 	for(size_t i = 0; i < n ; i++) {
 		x[i] = i + 1.0;
 	}
-	vector_ad ax = independent(x);
+	vector_ad ax = cppad_swig::independent(x);
 	//
 	// create af
 	a_double ax0 = ax[0];
 	a_double ax1 = ax[1];
 	vector_ad ay = vector_ad(1);
 	ay[0] = ax0 + ax0 - ax1;
-	a_fun af = a_fun(ax, ay);
+	cppad_swig::a_fun af = cppad_swig::a_fun(ax, ay);
 	//
 	// zero order forward
 	x[0] = 3.0;

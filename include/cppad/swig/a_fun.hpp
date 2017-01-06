@@ -20,6 +20,9 @@ namespace CppAD {
 	template <class Base> class ADFun;
 }
 
+
+namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
+
 /// Swig class that acts the same as CppAD::ADFun<double>
 class CPPAD_SWIG_LIB_PUBLIC a_fun
 {	// private members are not in Swig interface
@@ -38,5 +41,7 @@ class CPPAD_SWIG_LIB_PUBLIC a_fun
 	/// forward
 	std::vector<double> forward(int p, const std::vector<double>& xp );
 };
+
+} // END_CPPAD_SWIG_NAMESPACE
 
 # endif

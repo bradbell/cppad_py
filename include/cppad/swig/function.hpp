@@ -15,6 +15,8 @@
 #	include <cppad_swig_lib_export.h>
 # endif
 
+namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
+
 // independent
 CPPAD_SWIG_LIB_PUBLIC
 std::vector<a_double> independent(const std::vector<double>& x);
@@ -22,5 +24,7 @@ std::vector<a_double> independent(const std::vector<double>& x);
 // abort_recording
 CPPAD_SWIG_LIB_PUBLIC
 void abort_recording(void);
+
+} // END_CPPAD_SWIG_NAMESPACE
 
 # endif

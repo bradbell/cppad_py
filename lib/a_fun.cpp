@@ -8,6 +8,8 @@
 # include <cppad/cppad.hpp>
 # include <cppad/swig/a_fun.hpp>
 
+namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
+
 // ctor default
 a_fun::a_fun(void)
 {	ptr_ = new CppAD::ADFun<double>();
@@ -39,3 +41,5 @@ a_fun::a_fun(
 std::vector<double> a_fun::forward(int p, const std::vector<double>& xp)
 {	return ptr_->Forward( size_t(p), xp);
 }
+
+} // END_CPPAD_SWIG_NAMESPACE

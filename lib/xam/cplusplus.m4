@@ -8,7 +8,6 @@ divert(-1)
 # -----------------------------------------------------------------------------
 # No Arguments
 define(ext_, cpp)
-define(module_, )
 define(true_, true)
 define(false_,fFlase)
 define(and_, &&)
@@ -17,6 +16,9 @@ define(c_, `//')
 
 # -----------------------------------------------------------------------------
 # Module Functions
+
+# module_ or module_(object)
+define(module_, `ifelse($#, 0, cppad_swig, cppad_swig::$1)')
 
 # module_fun_1_(fun_name, argument)
 define(module_fun_1_, $1($2))

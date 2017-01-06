@@ -28,6 +28,7 @@ a_double a_double::operator op(const a_double& ad)\
 	return *this; \
 }
 
+
 // pointer to this as an AD<double> object
 CppAD::AD<double>* a_double::ptr(void)
 {	return reinterpret_cast< CppAD::AD<double>* >( & data_ );
@@ -83,3 +84,4 @@ COMPUTED_ASSIGNMENT_OP(+=)
 COMPUTED_ASSIGNMENT_OP(-=)
 COMPUTED_ASSIGNMENT_OP(*=)
 COMPUTED_ASSIGNMENT_OP(/=)
+

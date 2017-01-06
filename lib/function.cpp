@@ -8,6 +8,8 @@
 # include <cppad/cppad.hpp>
 # include <cppad/swig/function.hpp>
 
+namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
+
 // independent is a friend for ad_double
 std::vector<a_double> independent(const std::vector<double>& x)
 {	using CppAD::AD;
@@ -26,3 +28,5 @@ std::vector<a_double> independent(const std::vector<double>& x)
 void abort_recording(void)
 {	CppAD::AD<double>::abort_recording();
 }
+
+} // END_CPPAD_SWIG_NAMESPACE

@@ -8,7 +8,6 @@ divert(-1)
 # -----------------------------------------------------------------------------
 # No Arguments
 define(ext_, pl)
-define(module_, pl_cppad)
 define(true_, 1)
 define(false_, 0)
 define(and_, &&)
@@ -18,11 +17,14 @@ define(c_, `#')
 # -----------------------------------------------------------------------------
 # Module Functions
 
+# module_ or module_(object)
+define(module_, `ifelse($#, 0, pl_cppad, pl_cppad::$1)')
+
 # module_fun_1_(fun_name, argument)
-define(module_fun_1_, module_::$1($2))
+define(module_fun_1_, module_($1)($2))
 
 # module_fun_2_(fun_name, argument1, argument2)
-define(module_fun_2_, module_::$1($2, $3))
+define(module_fun_2_, module_($1)($2, $3))
 
 # -----------------------------------------------------------------------------
 # Assignment
