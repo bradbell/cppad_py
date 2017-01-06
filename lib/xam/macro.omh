@@ -72,7 +72,7 @@ $head Module Functions$$
 $subhead module_fun_1_$$
 The text corresponding to
 $codei|
-	module_fun_1_(|fun_name|, |argument|)
+	module_(|fun_name|)(|argument|)
 |$$
 generates a call to the specified module function
 with the specified $icode argument$$.
@@ -84,7 +84,7 @@ $codei|
 $subhead module_fun_2_$$
 The text corresponding to
 $codei|
-	module_fun_2_(|fun_name|, |argument_1|, |argument_2|)
+	module_(|fun_name|)(|argument_1|, |argument_2|)
 |$$
 generates a call to the specified module function
 with the specified $icode argument$$.

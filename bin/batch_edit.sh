@@ -7,11 +7,6 @@
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
 revert_list='
-	lib/xam/cplusplus.m4
-	lib/xam/python.m4
-	lib/xam/octave.m4
-	lib/xam/perl.m4
-	lib/xam/macro.omh
 '
 move_list='
 '
@@ -19,6 +14,7 @@ move_sed='s|/local/|/core/|'
 #
 cat << EOF > junk.sed
 s|module_fun_1_(\\([^,]*\\), *|module_(\\1)(|
+s|module_fun_2_(\\([^,]*\\), *|module_(\\1)(|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

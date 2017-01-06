@@ -15,16 +15,10 @@ define(end_, `}')
 define(c_, `//')
 
 # -----------------------------------------------------------------------------
-# Module Functions
+# Module
 
 # module_ or module_(object)
 define(module_, `ifelse($#, 0, cppad_swig, cppad_swig::$1)')
-
-# module_fun_1_(fun_name, argument)
-define(module_fun_1_, $1($2))
-
-# module_fun_2_(fun_name, argument1, argument2)
-define(module_fun_2_, $1($2, $3))
 
 # -----------------------------------------------------------------------------
 # Assignment

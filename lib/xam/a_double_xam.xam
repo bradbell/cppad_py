@@ -9,8 +9,8 @@ c_ -----------------------------------------------------------------------------
 c_ a_double
 c_ -----------------------------------------------------------------------------
 begin_bool_fun_0_(ok, a_double_xam)
-	new_var_new_(a_double, two,   module_fun_1_(a_double, 2.0))
-	new_var_new_(a_double, three,  module_fun_1_(a_double, 3.0))
+	new_var_new_(a_double, two,   module_(a_double)(2.0))
+	new_var_new_(a_double, three,  module_(a_double)(3.0))
 	c_
 	new_var_(a_double, five,       var_(two) + var_(three))
 	new_var_(a_double, six,        var_(two) * var_(three))

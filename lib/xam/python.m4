@@ -20,12 +20,6 @@ define(c_, `#')
 # module_ or module_(object)
 define(module_, `ifelse($#, 0, py_cppad, py_cppad.$1)')
 
-# module_fun_1_(fun_name, argument)
-define(module_fun_1_, module_($1)($2))
-
-# module_fun_2_(fun_name, argument1, argument2)
-define(module_fun_2_, module_($1)($2, $3))
-
 # -----------------------------------------------------------------------------
 # Assignment
 
