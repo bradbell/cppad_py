@@ -44,7 +44,7 @@ def a_double_xam() :
 #	cppad
 #	xam
 # $$
-# $section py_cppad: a_double_xam: Example and Test$$
+# $section python: a_double Example and Test$$
 # $srcfile|lib/example/python/a_double_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

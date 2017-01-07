@@ -44,7 +44,7 @@ end
 %	xam
 % $$
 % $code
-% $section m_cppad: vector_ad_xam: Example and Test$$
+% $section octave: vector_ad Example and Test$$
 % $verbatim|lib/example/octave/vector_ad_xam.m|0|% BEGIN SOURCE|% END SOURCE|$$
 % $$
 % $end

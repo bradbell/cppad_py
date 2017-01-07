@@ -48,7 +48,7 @@ $spell
 	cppad
 	xam
 $$
-$section cppad_swig: vector_double_xam: Example and Test$$
+$section cplusplus: vector_double Example and Test$$
 $srcfile|lib/example/cplusplus/vector_double_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */

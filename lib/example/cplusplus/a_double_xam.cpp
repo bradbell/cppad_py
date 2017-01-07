@@ -48,7 +48,7 @@ $spell
 	cppad
 	xam
 $$
-$section cppad_swig: a_double_xam: Example and Test$$
+$section cplusplus: a_double Example and Test$$
 $srcfile|lib/example/cplusplus/a_double_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */

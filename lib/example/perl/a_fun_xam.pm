@@ -61,7 +61,7 @@ sub a_fun_xam() {
 #	cppad
 #	xam
 # $$
-# $section pm_cppad: a_fun_xam: Example and Test$$
+# $section perl: a_fun Example and Test$$
 # $srcfile|lib/example/perl/a_fun_xam.pm|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

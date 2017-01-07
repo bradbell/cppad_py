@@ -57,7 +57,7 @@ def a_fun_xam() :
 #	cppad
 #	xam
 # $$
-# $section py_cppad: a_fun_xam: Example and Test$$
+# $section python: a_fun Example and Test$$
 # $srcfile|lib/example/python/a_fun_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

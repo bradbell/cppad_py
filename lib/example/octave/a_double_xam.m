@@ -43,7 +43,7 @@ end
 %	xam
 % $$
 % $code
-% $section m_cppad: a_double_xam: Example and Test$$
+% $section octave: a_double Example and Test$$
 % $verbatim|lib/example/octave/a_double_xam.m|0|% BEGIN SOURCE|% END SOURCE|$$
 % $$
 % $end

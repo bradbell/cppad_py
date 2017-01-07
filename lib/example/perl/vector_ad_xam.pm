@@ -49,7 +49,7 @@ sub vector_ad_xam() {
 #	cppad
 #	xam
 # $$
-# $section pm_cppad: vector_ad_xam: Example and Test$$
+# $section perl: vector_ad Example and Test$$
 # $srcfile|lib/example/perl/vector_ad_xam.pm|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

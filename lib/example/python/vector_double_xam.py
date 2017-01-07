@@ -44,7 +44,7 @@ def vector_double_xam() :
 #	cppad
 #	xam
 # $$
-# $section py_cppad: vector_double_xam: Example and Test$$
+# $section python: vector_double Example and Test$$
 # $srcfile|lib/example/python/vector_double_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

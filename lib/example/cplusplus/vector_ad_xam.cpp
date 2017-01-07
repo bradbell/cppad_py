@@ -49,7 +49,7 @@ $spell
 	cppad
 	xam
 $$
-$section cppad_swig: vector_ad_xam: Example and Test$$
+$section cplusplus: vector_ad Example and Test$$
 $srcfile|lib/example/cplusplus/vector_ad_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */

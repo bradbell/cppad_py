@@ -61,7 +61,7 @@ $spell
 	cppad
 	xam
 $$
-$section cppad_swig: a_fun_xam: Example and Test$$
+$section cplusplus: a_fun Example and Test$$
 $srcfile|lib/example/cplusplus/a_fun_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */

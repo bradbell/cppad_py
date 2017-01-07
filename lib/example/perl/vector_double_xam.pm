@@ -48,7 +48,7 @@ sub vector_double_xam() {
 #	cppad
 #	xam
 # $$
-# $section pm_cppad: vector_double_xam: Example and Test$$
+# $section perl: vector_double Example and Test$$
 # $srcfile|lib/example/perl/vector_double_xam.pm|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

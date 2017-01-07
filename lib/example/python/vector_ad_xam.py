@@ -45,7 +45,7 @@ def vector_ad_xam() :
 #	cppad
 #	xam
 # $$
-# $section py_cppad: vector_ad_xam: Example and Test$$
+# $section python: vector_ad Example and Test$$
 # $srcfile|lib/example/python/vector_ad_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

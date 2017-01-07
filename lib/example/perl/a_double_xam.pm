@@ -48,7 +48,7 @@ sub a_double_xam() {
 #	cppad
 #	xam
 # $$
-# $section pm_cppad: a_double_xam: Example and Test$$
+# $section perl: a_double Example and Test$$
 # $srcfile|lib/example/perl/a_double_xam.pm|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

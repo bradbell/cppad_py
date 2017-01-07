@@ -30,4 +30,4 @@ begin_bool_fun_0_(ok, vector_double_xam)
 end_
 c_ END SOURCE
 c_
-omhelp_(vector_double_xam)
+omhelp_(vector_double_xam, language_: vector_double Example and Test)

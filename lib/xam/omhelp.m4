@@ -16,44 +16,44 @@
 # $section m4 Macro That Include Omhelp to Display Source Code$$
 #
 # $head Syntax$$
-# $codei%omhelp_(%name_xam%)%$$
+# $codei%omhelp_(%name_xam%, %omhelp_title%)%$$
 #
 # $head name_xam$$
 # is the name of module object that is tested by this file.
 #
+# $head omhelp_title$$
+# is the title of this Omhelp section that displays this source code.
+#
 # $head omhelp_tag$$
-# is the Omhelp cross reference tag that will be used for this section is
+# The Omhelp cross reference tag that will be used for this section is
 # $codei%
 #	%name_xam%.%ext%
 # %$$
 # where $icode ext$$ is the file extension used for the
 # current language.
 #
-# $head file_name$$
-# is the name of the source code file where the current output is placed.
-# This is assumed to be
+#
+# $head Assumption$$
+#
+# $subhead file_name$$
+# The name of the source code file where the current output is placed
+# is assumed to be
 # $codei%
 #	lib/example/%language%.%name_xam%.%ext%
 # %$$
 # where $icode language$$ is $code cplusplus$$, $code octave$$,
 # $code perl$$, or $code python$$.
 #
-# $head omhelp_title$$
-# is the title of the Omhelp section contains the module, $icode name$$
-# and the text $code Example and Text$$.
-#
-# $head Assumption$$
-# $list number$$
-# The $icode source code$$ is surrounded in the following way:
+# $subhead Formatting$$
+# Let $icode source code$$ denote the language specific souce code
+# and $icode comment$$ denote the commenting characters.
+# The input file is assumed to have the following format / order:
 # $codei%
 #	%comment% BEGIN SOURCE
 #	%source code%
 #	%comment% END SOURCE
+#	omhelp_(%name_xam%, %omhelp_title%)
 # %$$
-# $lnext
-# The $code omhelp_$$ command comes after $code END SOURCE$$ above;
-# i.e., its output appears below $code END SOURCE$$ in the output file.
-# $lend
 #
 # $end
 # -----------------------------------------------------------------------------
@@ -105,10 +105,10 @@ define(omhelp_any_,
 	`omhelp_octave_($1,$2,$3)',
 	`omhelp_other_($1,$2,$3)')'
 )
-# omhelp_(name_xam)
+# omhelp_(name_xam, omhelp_title)
 define(omhelp_, omhelp_any_(
 	`$1.ext_',dnl                       omhelp_tag
 	`lib/example/language_/$1.ext_',dnl file_name
-	`module_: $1: Example and Test'dnl  omhelp_title
+	`$2'dnl                             omhelp_title
 ))
 # -----------------------------------------------------------------------------

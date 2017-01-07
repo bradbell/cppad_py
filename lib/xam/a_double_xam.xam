@@ -30,4 +30,4 @@ begin_bool_fun_0_(ok, a_double_xam)
 end_
 c_ END SOURCE
 c_
-omhelp_(a_double_xam)
+omhelp_(a_double_xam, language_: a_double Example and Test)
