@@ -61,6 +61,16 @@ ADD_SUBDIRECTORY(example/python)
 ADD_SUBDIRECTORY(example/octave)
 ADD_SUBDIRECTORY(example/perl)
 #
+# target that builds automated sourced
+ADD_CUSTOM_TARGET(auto_lib DEPENDS
+	auto_lib_cplusplus
+	auto_lib_python
+	auto_lib_octave
+	auto_lib_perl
+)
+MESSAGE(STATUS "make auto_lib: available")
+#
+#
 IF( NOT( "${check_lib_depends}" STREQUAL "" ) )
 	# Add the check target
 	ADD_CUSTOM_TARGET(check_lib DEPENDS ${check_lib_depends})

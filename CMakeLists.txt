@@ -92,6 +92,13 @@ MACRO(add_to_list variable_list constant_value )
 	ENDIF( "${${variable_list}}" STREQUAL "" )
 ENDMACRO(add_to_list)
 # -----------------------------------------------------------------------------
+# make sure we have m4 macro package
+FIND_PROGRAM(m4_executable m4)
+print_variable(m4_executable)
+IF( NOT m4_executable )
+	MESSAGE(FATAL_ERROR "Aborting because cmake cannot find m4 macro program")
+ENDIF( NOT m4_executable )
+# -----------------------------------------------------------------------------
 # make sure we have Swig available
 FIND_PACKAGE(SWIG)
 IF( NOT SWIG_FOUND )

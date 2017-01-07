@@ -45,7 +45,7 @@
 # $code perl$$, or $code python$$.
 #
 # $subhead Formatting$$
-# Let $icode source code$$ denote the language specific souce code
+# Let $icode source code$$ denote the language specific source code
 # and $icode comment$$ denote the commenting characters.
 # The input file is assumed to have the following format / order:
 # $codei%

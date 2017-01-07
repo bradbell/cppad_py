@@ -5,14 +5,34 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
+assert(m4_executable)
 #
-# lib_cplusplus_check_all
-ADD_EXECUTABLE(lib_cplusplus_check_all EXCLUDE_FROM_ALL
+# List of automatically generated source files
+SET(auto_list
 	a_double_xam.cpp
 	a_fun_xam.cpp
-	check_all.cpp
 	vector_ad_xam.cpp
 	vector_double_xam.cpp
+)
+SET(auto_output_list "")
+FOREACH( cpp_file ${auto_list} )
+	STRING(REGEX REPLACE "[.]cpp" ".xam" xam_file ${cpp_file})
+	ADD_CUSTOM_COMMAND(
+		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${cpp_file}
+		COMMAND ${m4_executable}
+		-D language_=cplusplus
+		-I ${CMAKE_SOURCE_DIR}/lib/xam
+		${CMAKE_SOURCE_DIR}/lib/xam/${xam_file}
+		> ${CMAKE_CURRENT_BINARY_DIR}/${cpp_file}
+	)
+	add_to_list(auto_output_list ${CMAKE_CURRENT_BINARY_DIR}/${cpp_file} )
+ENDFOREACH( cpp_file ${auto_list} )
+ADD_CUSTOM_TARGET(auto_lib_cplusplus DEPENDS ${auto_output_list} )
+MESSAGE(STATUS "make auto_lib_cplusplus: available")
+# -----------------------------------------------------------------------------
+# lib_cplusplus_check_all
+ADD_EXECUTABLE(lib_cplusplus_check_all EXCLUDE_FROM_ALL
+	check_all.cpp ${auto_output_list}
 )
 # additional flags for compiling cppad code
 SET_TARGET_PROPERTIES(

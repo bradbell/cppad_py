@@ -5,6 +5,33 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
+assert(m4_executable)
+#
+# List of automatically generated source files
+SET(auto_list
+	a_double_xam.m
+	a_fun_xam.m
+	vector_ad_xam.m
+	vector_double_xam.m
+)
+SET(auto_depends "")
+FOREACH( m_file ${auto_list} )
+	STRING(REGEX REPLACE "[.]m" ".xam" xam_file ${m_file})
+	STRING(REGEX REPLACE "[.]m" "_m" target   ${m_file})
+	SET(target lib_${target})
+	ADD_CUSTOM_TARGET(${target}
+		COMMAND ${m4_executable}
+		-D language_=octave
+		-I ${CMAKE_SOURCE_DIR}/lib/xam
+		${CMAKE_SOURCE_DIR}/lib/xam/${xam_file}
+		> ${CMAKE_CURRENT_BINARY_DIR}/${m_file}
+	)
+	add_to_list(auto_depends ${target})
+ENDFOREACH( m_file ${auto_list} )
+ADD_CUSTOM_TARGET(auto_lib_octave DEPENDS ${auto_depends} )
+MESSAGE(STATUS "make auto_lib_octave: available")
+#
+# -----------------------------------------------------------------------------
 assert( SWIG_FOUND )
 FIND_PROGRAM(octave_config NAMES octave-config)
 IF( octave_config )

@@ -24,6 +24,16 @@ then
 	exit 1
 fi
 # -----------------------------------------------------------------------------
+if [ ! -e build ]
+then
+	echo 'bin/run_omhelp.sh: build directory does not exist.'
+	echo 'execut bin/run_cmake.sh to create it and then re-run this command'
+	exit 1
+fi
+cd build
+make auto_lib
+cd ..
+# -----------------------------------------------------------------------------
 if [ -e doc ]
 then
 	echo_eval rm -r doc

@@ -9,11 +9,18 @@ divert(-1)
 # $begin xam.m4$$ $newlinech #$$
 # $spell
 #	xam
+#	cplusplus
+#	perl
 # $$
 # $section Include File for Library Example Setup$$
 #
 # $head Syntax$$
 # $code include(xam.m4)$$
+#
+# $head language_$$
+# It is assumed that the macro $code language_$$ has been defined to
+# be one of the available languages; i.e.,
+# $code cplusplus$$, $code octave$$, $code perl$$, or $code python$$.
 #
 # $head Directory$$
 # The include command above must be executed in the $code lib/xam$$

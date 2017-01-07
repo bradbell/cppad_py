@@ -5,9 +5,35 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
+assert(m4_executable)
+#
+# List of automatically generated source files
+SET(auto_list
+	a_double_xam.pm
+	a_fun_xam.pm
+	vector_ad_xam.pm
+	vector_double_xam.pm
+)
+SET(auto_depends "")
+FOREACH( pm_file ${auto_list} )
+	STRING(REGEX REPLACE "[.]pm" ".xam" xam_file ${pm_file})
+	STRING(REGEX REPLACE "[.]pm" "_pm" target   ${pm_file})
+	SET(target lib_${target})
+	ADD_CUSTOM_TARGET(${target}
+		COMMAND ${m4_executable}
+		-D language_=perl
+		-I ${CMAKE_SOURCE_DIR}/lib/xam
+		${CMAKE_SOURCE_DIR}/lib/xam/${xam_file}
+		> ${CMAKE_CURRENT_BINARY_DIR}/${pm_file}
+	)
+	add_to_list(auto_depends ${target})
+ENDFOREACH( pm_file ${auto_list} )
+ADD_CUSTOM_TARGET(auto_lib_perl DEPENDS ${auto_depends} )
+MESSAGE(STATUS "make auto_lib_perl: available")
+#
+# ----------------------------------------------------------------------------
 assert( SWIG_FOUND )
 FIND_PACKAGE(PerlLibs)
-# ----------------------------------------------------------------------------
 IF ( PERLLIBS_FOUND )
 	# create check_all.pl for this directory
 	CONFIGURE_FILE(

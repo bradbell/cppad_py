@@ -5,10 +5,36 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
+assert(m4_executable)
+#
+# List of automatically generated source files
+SET(auto_list
+	a_double_xam.py
+	a_fun_xam.py
+	vector_ad_xam.py
+	vector_double_xam.py
+)
+SET(auto_depends "")
+FOREACH( py_file ${auto_list} )
+	STRING(REGEX REPLACE "[.]py" ".xam" xam_file ${py_file})
+	STRING(REGEX REPLACE "[.]py" "_py" target   ${py_file})
+	SET(target lib_${target})
+	ADD_CUSTOM_TARGET(${target}
+		COMMAND ${m4_executable}
+		-D language_=python
+		-I ${CMAKE_SOURCE_DIR}/lib/xam
+		${CMAKE_SOURCE_DIR}/lib/xam/${xam_file}
+		> ${CMAKE_CURRENT_BINARY_DIR}/${py_file}
+	)
+	add_to_list(auto_depends ${target})
+ENDFOREACH( py_file ${auto_list} )
+ADD_CUSTOM_TARGET(auto_lib_python DEPENDS ${auto_depends} )
+MESSAGE(STATUS "make auto_lib_python: available")
+#
+# ----------------------------------------------------------------------------
 assert( SWIG_FOUND )
 FIND_PACKAGE(PythonInterp)
 FIND_PACKAGE(PythonLibs)
-# ----------------------------------------------------------------------------
 IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
 	# create check_all.py for this directory
 	CONFIGURE_FILE(
