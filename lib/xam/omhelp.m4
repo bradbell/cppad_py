@@ -67,7 +67,7 @@ define(omhelp_cpp_,
 */)
 # omhelp_any_(comment, omhelp_tag, file_name, title)
 define(omhelp_any_,
-`ifelse(`$1', //, `omhelp_cpp_($2,$3,$4)', `omhelp_other_(`$1',$2,$3,$4)' )'
+`ifelse(`$1', //, `omhelp_cpp_($2,$3,$4)', `omhelp_other_(`$1',$2,$3,$4)')'
 )
 # omhelp_(name_xam)
 define(omhelp_, omhelp_any_(
