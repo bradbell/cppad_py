@@ -28,13 +28,13 @@ IF ( PERLLIBS_FOUND )
 	INCLUDE_DIRECTORIES( SYSTEM ${PERL_INCLUDE_PATH})
 
 	# SWIG_ADD_MODULE(name language [ files ])
-	SWIG_ADD_MODULE(pl_cppad perl ${swig_control_file} )
+	SWIG_ADD_MODULE(pm_cppad perl ${swig_control_file} )
 
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
-	SWIG_LINK_LIBRARIES(pl_cppad cppad_swig_lib ${PYTHON_LIBRARIES})
+	SWIG_LINK_LIBRARIES(pm_cppad cppad_swig_lib ${PYTHON_LIBRARIES})
 
 	# additional flags for compiling Swig wrapper
-	SET_TARGET_PROPERTIES( ${SWIG_MODULE_pl_cppad_REAL_NAME}
+	SET_TARGET_PROPERTIES( ${SWIG_MODULE_pm_cppad_REAL_NAME}
 		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
 	)
 
@@ -42,7 +42,7 @@ IF ( PERLLIBS_FOUND )
 	ADD_CUSTOM_TARGET(check_lib_perl
 		perl check_all.pl
 		DEPENDS
-		${SWIG_MODULE_pl_cppad_REAL_NAME}
+		${SWIG_MODULE_pm_cppad_REAL_NAME}
 		${CMAKE_CURRENT_BINARY_DIR}/check_all.pl
 	)
 	MESSAGE(STATUS "make check_lib_perl: available")

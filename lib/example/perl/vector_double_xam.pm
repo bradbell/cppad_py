@@ -18,12 +18,12 @@ sub vector_double_xam() {
 	use warnings;
 	#
 	# load the Cppad Swig library
-	use pl_cppad;
+	use pm_cppad;
 	#
 	# initilaize return variable
 	my $ok = 1;
 	my $n = 4;
-	my $vec = new pl_cppad::vector_double(n);
+	my $vec = new pm_cppad::vector_double(n);
 	#
 	# check size
 	$ok = $ok && $vec->size() == n;
@@ -48,7 +48,7 @@ sub vector_double_xam() {
 #	cppad
 #	xam
 # $$
-# $section pl_cppad: vector_double_xam: Example and Test$$
+# $section pm_cppad: vector_double_xam: Example and Test$$
 # $srcfile|lib/example/perl/vector_double_xam.pm|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

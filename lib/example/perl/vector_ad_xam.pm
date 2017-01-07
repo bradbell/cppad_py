@@ -18,19 +18,19 @@ sub vector_ad_xam() {
 	use warnings;
 	#
 	# load the Cppad Swig library
-	use pl_cppad;
+	use pm_cppad;
 	#
 	# initilaize return variable
 	my $ok = 1;
 	my $n = 4;
-	my $a_vec = new pl_cppad::vector_ad(n);
+	my $a_vec = new pm_cppad::vector_ad(n);
 	#
 	# check size
 	$ok = $ok && $a_vec->size() == n;
 	#
 	# setting elements
 	for(my $i = 0; $i < $n ; $i++) {
-		my $ad = new pl_cppad::a_double(2.0 * i);
+		my $ad = new pm_cppad::a_double(2.0 * i);
 		$a_vec->set($i, $ad);
 	}
 	# getting elements
@@ -49,7 +49,7 @@ sub vector_ad_xam() {
 #	cppad
 #	xam
 # $$
-# $section pl_cppad: vector_ad_xam: Example and Test$$
+# $section pm_cppad: vector_ad_xam: Example and Test$$
 # $srcfile|lib/example/perl/vector_ad_xam.pm|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

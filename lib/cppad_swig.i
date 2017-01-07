@@ -34,7 +34,7 @@
 %module m_cppad
 # endif
 # ifdef SWIGPERL
-%module pl_cppad
+%module pm_cppad
 # endif
 
 %ignore  ptr;

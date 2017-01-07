@@ -19,7 +19,7 @@ define(c_, `#')
 # module, var, and member
 
 # module_ or module_(object)
-define(module_, `ifelse($#, 0, pl_cppad, pl_cppad::$1)')
+define(module_, `ifelse($#, 0, pm_cppad, pm_cppad::$1)')
 
 # var_(variable)
 define(var_, `$'$1)

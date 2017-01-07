@@ -18,12 +18,12 @@ sub a_double_xam() {
 	use warnings;
 	#
 	# load the Cppad Swig library
-	use pl_cppad;
+	use pm_cppad;
 	#
 	# initilaize return variable
 	my $ok = 1;
-	my $two = new pl_cppad::a_double(2.0);
-	my $three = new pl_cppad::a_double(3.0);
+	my $two = new pm_cppad::a_double(2.0);
+	my $three = new pm_cppad::a_double(3.0);
 	#
 	my $five = $two + $three;
 	my $six = $two * $three;
@@ -48,7 +48,7 @@ sub a_double_xam() {
 #	cppad
 #	xam
 # $$
-# $section pl_cppad: a_double_xam: Example and Test$$
+# $section pm_cppad: a_double_xam: Example and Test$$
 # $srcfile|lib/example/perl/a_double_xam.pm|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

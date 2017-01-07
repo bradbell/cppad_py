@@ -18,25 +18,25 @@ sub a_fun_xam() {
 	use warnings;
 	#
 	# load the Cppad Swig library
-	use pl_cppad;
+	use pm_cppad;
 	#
 	# initilaize return variable
 	my $ok = 1;
 	my $n = 2;
 	#
 	# create ax
-	my $x = new pl_cppad::vector_double(n);
+	my $x = new pm_cppad::vector_double(n);
 	for(my $i = 0; $i < $n ; $i++) {
 		$x->set($i, $i + 1.0);
 	}
-	my $ax = pl_cppad::independent(x);
+	my $ax = pm_cppad::independent(x);
 	#
 	# create af
 	my $ax0 = $ax->get(0);
 	my $ax1 = $ax->get(1);
-	my $ay = new pl_cppad::vector_ad(1);
+	my $ay = new pm_cppad::vector_ad(1);
 	$ay->set(0, $ax0 + $ax0 - $ax1);
-	my $af = new pl_cppad::a_fun($ax, $ay);
+	my $af = new pm_cppad::a_fun($ax, $ay);
 	#
 	# zero order forward
 	$x->set(0, 3.0);
@@ -61,7 +61,7 @@ sub a_fun_xam() {
 #	cppad
 #	xam
 # $$
-# $section pl_cppad: a_fun_xam: Example and Test$$
+# $section pm_cppad: a_fun_xam: Example and Test$$
 # $srcfile|lib/example/perl/a_fun_xam.pm|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 
