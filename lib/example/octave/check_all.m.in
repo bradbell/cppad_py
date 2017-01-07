@@ -6,8 +6,7 @@
 %                     http://www.gnu.org/licenses/agpl.txt
 % -----------------------------------------------------------------------------
 % path to test source code
-source_dir = '@CMAKE_CURRENT_SOURCE_DIR@';
-addpath('@CMAKE_CURRENT_SOURCE_DIR@')
+source_dir = '@CMAKE_SOURCE_DIR@/lib/xam';
 %
 error_count = 0;
 function ok = run_test(name)
@@ -19,11 +18,11 @@ function ok = run_test(name)
 		error_count = error_count + 1;
 	end
 end
-source_list = dir( strcat(source_dir, '/*.m') );
+source_list = dir( strcat(source_dir, '*.xam') );
 n_test      = length(source_list);
 for i = [1 : n_test]
 	name = source_list(i).name;
-	name = name(1 : length(name) - 2 );
+	name = name(1 : length(name) - 3 );
 	run_test(name);
 end
 %

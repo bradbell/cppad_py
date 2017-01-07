@@ -8,7 +8,6 @@
 use strict;
 use warnings;
 use feature 'say';
-use lib '@CMAKE_CURRENT_SOURCE_DIR@';
 #
 my $error_count = 0;
 sub run_test
@@ -24,16 +23,16 @@ sub run_test
 	}
 }
 #
-my $source_dir = '@CMAKE_CURRENT_SOURCE_DIR@';
+my $source_dir = '@CMAKE_SOURCE_DIR@/lib/xam';
 opendir (my $dir_handle, $source_dir) or die $!;
 while (my $file_name = readdir($dir_handle))
 {	my $len = length($file_name);
 	my $ext = '';
-	if( $len > 3 )
-	{	$ext = substr($file_name, $len - 3, 3);
+	if( $len > 4 )
+	{	$ext = substr($file_name, $len - 4, 4);
 	}
-	if( $ext eq '.pm' )
-	{	my $name = substr($file_name, 0, $len - 3);
+	if( $ext eq '.xam' )
+	{	my $name = substr($file_name, 0, $len - 4);
 		run_test($name);
 	}
 }
