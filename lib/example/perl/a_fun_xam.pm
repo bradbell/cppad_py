@@ -1,5 +1,5 @@
 
-# This file can be automatically generaeted using the following command
+# This file can be automatically generated using the following command
 # m4 ../perl.m4 ../../xam/a_fun_xam.xam > a_fun_xam.pm
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad

@@ -13,7 +13,7 @@ move_list='
 move_sed='s|/local/|/core/|'
 #
 cat << EOF > junk.sed
-s|pl_cppad|pm_cppad|g
+s|generaeted|generated|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

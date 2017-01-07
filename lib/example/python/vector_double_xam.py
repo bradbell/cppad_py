@@ -1,5 +1,5 @@
 
-# This file can be automatically generaeted using the following command
+# This file can be automatically generated using the following command
 # m4 ../python.m4 ../../xam/vector_double_xam.xam > vector_double_xam.py
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad

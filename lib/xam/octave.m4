@@ -73,7 +73,7 @@ define(return_, return;)
 
 # header_(example)
 define(header_,
-c_ This file can be automatically generaeted using the following command
+c_ This file can be automatically generated using the following command
 c_ m4 ../octave.m4 ../../xam/$1.xam > $1.ext_)
 
 # begin_for_(variable, upper)

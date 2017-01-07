@@ -1,5 +1,5 @@
 
-% This file can be automatically generaeted using the following command
+% This file can be automatically generated using the following command
 % m4 ../octave.m4 ../../xam/vector_ad_xam.xam > vector_ad_xam.m
 % -----------------------------------------------------------------------------
 %         cppad_swig: A C++ Object Library and Swig Interface to Cppad
