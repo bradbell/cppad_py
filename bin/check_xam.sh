@@ -39,6 +39,7 @@ This file was automatically created by bin/check_xam.sh
 -------------------------------------------------------------------------------
 EOF
 	echo "\$begin lib_example_$lang\$\$"          >> temp.1.$$
+	echo "\$spell $lang \$\$"                     >> temp.1.$$
 	echo "\$section $lang Examples and Tests\$\$" >> temp.1.$$
 	first='yes'
 	for name in $list

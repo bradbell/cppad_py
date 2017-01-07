@@ -7,6 +7,7 @@ This file was automatically created by bin/check_xam.sh
                       http://www.gnu.org/licenses/agpl.txt
 -------------------------------------------------------------------------------
 $begin lib_example_octave$$
+$spell octave $$
 $section octave Examples and Tests$$
 $childtable%lib/example/octave/a_double_xam.m
 	%lib/example/octave/a_fun_xam.m

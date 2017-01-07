@@ -54,8 +54,15 @@ bool a_fun_xam(void) {
 }
 // END SOURCE
 //
-// $begin a_fun.cpp$$
-// $section cppad_swig::a_fun: Example and Test$$
-// $srcfile|example/cplusplus/a_fun.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
-// $end
+/*
+$begin a_fun_xam.cpp$$
+$spell
+	cplusplus
+	cppad
+	xam
+$$
+$section cppad_swig: a_fun_xam: Example and Test$$
+$srcfile|lib/example/cplusplus/a_fun_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$end
+*/
 

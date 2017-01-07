@@ -37,8 +37,14 @@ def a_double_xam() :
 #
 # END SOURCE
 #
-# $begin a_double.py$$
-# $section py_cppad.a_double: Example and Test$$
-# $srcfile|example/python/a_double.py|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $begin a_double_xam.py$$ $newlinech #$$
+# $spell
+#	py
+#	perl
+#	cppad
+#	xam
+# $$
+# $section py_cppad: a_double_xam: Example and Test$$
+# $srcfile|lib/example/python/a_double_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

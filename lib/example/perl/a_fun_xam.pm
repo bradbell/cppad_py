@@ -1,6 +1,6 @@
 
 # This file can be automatically generaeted using the following command
-# m4 ../perl.m4 ../../xam/a_fun_xam.xam > a_fun_xam.pl
+# m4 ../perl.m4 ../../xam/a_fun_xam.xam > a_fun_xam.pm
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -54,8 +54,14 @@ sub a_fun_xam() {
 }
 # END SOURCE
 #
-# $begin a_fun.pl$$
-# $section pl_cppad::a_fun: Example and Test$$
-# $srcfile|example/perl/a_fun.pl|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $begin a_fun_xam.pm$$ $newlinech #$$
+# $spell
+#	py
+#	perl
+#	cppad
+#	xam
+# $$
+# $section pl_cppad: a_fun_xam: Example and Test$$
+# $srcfile|lib/example/perl/a_fun_xam.pm|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

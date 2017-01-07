@@ -8,7 +8,7 @@
 # NOTE: order of these macros is same as order of documentation in macro.omh
 # -----------------------------------------------------------------------------
 # No Arguments
-define(ext_, pl)
+define(ext_, pm)
 define(true_, 1)
 define(false_, 0)
 define(and_, &&)

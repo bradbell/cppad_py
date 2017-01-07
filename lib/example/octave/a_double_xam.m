@@ -37,8 +37,14 @@ function ok = a_double_xam()
 end
 % END SOURCE
 %
-% $begin a_double.m$$
-% $section m_cppad.a_double: Example and Test$$
-% $srcfile|example/octave/a_double.m|0|% BEGIN SOURCE|% END SOURCE|$$
+% $begin a_double_xam.m$$ $newlinech %$$
+% $spell
+%	cppad
+%	xam
+% $$
+% $code
+% $section m_cppad: a_double_xam: Example and Test$$
+% $verbatim|lib/example/octave/a_double_xam.m|0|% BEGIN SOURCE|% END SOURCE|$$
+% $$
 % $end
 

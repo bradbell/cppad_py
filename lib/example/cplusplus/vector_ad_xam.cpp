@@ -42,8 +42,15 @@ bool vector_ad_xam(void) {
 }
 // END SOURCE
 //
-// $begin vector_ad.cpp$$
-// $section cppad_swig::vector_ad: Example and Test$$
-// $srcfile|example/cplusplus/vector_ad.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
-// $end
+/*
+$begin vector_ad_xam.cpp$$
+$spell
+	cplusplus
+	cppad
+	xam
+$$
+$section cppad_swig: vector_ad_xam: Example and Test$$
+$srcfile|lib/example/cplusplus/vector_ad_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$end
+*/
 

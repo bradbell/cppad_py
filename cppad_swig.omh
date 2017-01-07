@@ -67,6 +67,7 @@ for each such test.
 $childtable%
 	bin/run_cmake.sh%
 	example/example.i%
+	lib/example/example.omh%
 	lib/xam/lang_m4.omh
 %$$
 

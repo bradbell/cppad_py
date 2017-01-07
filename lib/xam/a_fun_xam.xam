@@ -43,4 +43,4 @@ begin_bool_fun_0_(ok, a_fun_xam)
 end_
 c_ END SOURCE
 c_
-omhelp_(a_fun)
+omhelp_(a_fun_xam)

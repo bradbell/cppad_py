@@ -1,6 +1,6 @@
 
 # This file can be automatically generaeted using the following command
-# m4 ../perl.m4 ../../xam/vector_ad_xam.xam > vector_ad_xam.pl
+# m4 ../perl.m4 ../../xam/vector_ad_xam.xam > vector_ad_xam.pm
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -42,8 +42,14 @@ sub vector_ad_xam() {
 }
 # END SOURCE
 #
-# $begin vector_ad.pl$$
-# $section pl_cppad::vector_ad: Example and Test$$
-# $srcfile|example/perl/vector_ad.pl|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $begin vector_ad_xam.pm$$ $newlinech #$$
+# $spell
+#	py
+#	perl
+#	cppad
+#	xam
+# $$
+# $section pl_cppad: vector_ad_xam: Example and Test$$
+# $srcfile|lib/example/perl/vector_ad_xam.pm|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

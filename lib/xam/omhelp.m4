@@ -51,29 +51,58 @@
 #
 # $end
 # -----------------------------------------------------------------------------
-# omhelp_other_(comment, omhelp_tag, file_name, omhelp_title)
+# omhelp_other_(omhelp_tag, file_name, omhelp_title)
 define(omhelp_other_,
-$1 `$'begin $2`$$'
-$1 `$'section $4`$$'
-$1 `$'srcfile|$3|0|$1 BEGIN SOURCE|$1 END SOURCE|`$$'
-$1 `$'end)
+`#' `$'begin $1`$$' `$'newlinech `#$$'
+`#' `$'spell
+`#'	py
+`#'	perl
+`#'	cppad
+`#'	xam
+`#' `$$'
+`#' `$'section $3`$$'
+`#' `$'srcfile|$2|0|`#' BEGIN SOURCE|`#' END SOURCE|`$$'
+`#' `$'end)
+# omhelp_octave_(omhelp_tag, file_name, omhelp_title)
+define(omhelp_octave_,
+% `$'begin $1`$$' `$'newlinech `%$$'
+% `$'spell
+%	cppad
+%	xam
+% `$$'
+% `$'code
+% `$'section $3`$$'
+% `$'verbatim|$2|0|% BEGIN SOURCE|% END SOURCE|`$$'
+% `$$'
+% `$'end)
 # omhelp_cpp_(omhelp_tag, file_name, omhelp_title)
 define(omhelp_cpp_,
 /*
 `$'begin $1`$$'
+`$'spell
+	cplusplus
+	cppad
+	xam
+`$$'
 `$'section $3`$$'
 `$'srcfile|$2|0|// BEGIN SOURCE|// END SOURCE|`$$'
 `$'end
 */)
-# omhelp_any_(comment, omhelp_tag, file_name, title)
+# omhelp_any_(omhelp_tag, file_name, omhelp_title)
 define(omhelp_any_,
-`ifelse(`$1', //, `omhelp_cpp_($2,$3,$4)', `omhelp_other_(`$1',$2,$3,$4)')'
+`ifelse(
+	language_,
+	cplusplus,
+	`omhelp_cpp_($1,$2,$3)',
+	language_,
+	octave,
+	`omhelp_octave_($1,$2,$3)',
+	`omhelp_other_($1,$2,$3)')'
 )
 # omhelp_(name_xam)
 define(omhelp_, omhelp_any_(
-	`c_',dnl
-	`$1.ext_',dnl
-	`example/language_/$1.ext_',dnl
-	`module_($1): Example and Test'dnl
+	`$1.ext_',dnl                       omhelp_tag
+	`lib/example/language_/$1.ext_',dnl file_name
+	`module_: $1: Example and Test'dnl  omhelp_title
 ))
 # -----------------------------------------------------------------------------

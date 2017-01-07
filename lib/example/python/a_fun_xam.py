@@ -50,8 +50,14 @@ def a_fun_xam() :
 #
 # END SOURCE
 #
-# $begin a_fun.py$$
-# $section py_cppad.a_fun: Example and Test$$
-# $srcfile|example/python/a_fun.py|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $begin a_fun_xam.py$$ $newlinech #$$
+# $spell
+#	py
+#	perl
+#	cppad
+#	xam
+# $$
+# $section py_cppad: a_fun_xam: Example and Test$$
+# $srcfile|lib/example/python/a_fun_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

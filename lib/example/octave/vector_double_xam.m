@@ -37,8 +37,14 @@ function ok = vector_double_xam()
 end
 % END SOURCE
 %
-% $begin vector_double.m$$
-% $section m_cppad.vector_double: Example and Test$$
-% $srcfile|example/octave/vector_double.m|0|% BEGIN SOURCE|% END SOURCE|$$
+% $begin vector_double_xam.m$$ $newlinech %$$
+% $spell
+%	cppad
+%	xam
+% $$
+% $code
+% $section m_cppad: vector_double_xam: Example and Test$$
+% $verbatim|lib/example/octave/vector_double_xam.m|0|% BEGIN SOURCE|% END SOURCE|$$
+% $$
 % $end
 

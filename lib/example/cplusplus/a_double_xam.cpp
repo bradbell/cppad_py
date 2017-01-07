@@ -41,8 +41,15 @@ bool a_double_xam(void) {
 }
 // END SOURCE
 //
-// $begin a_double.cpp$$
-// $section cppad_swig::a_double: Example and Test$$
-// $srcfile|example/cplusplus/a_double.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
-// $end
+/*
+$begin a_double_xam.cpp$$
+$spell
+	cplusplus
+	cppad
+	xam
+$$
+$section cppad_swig: a_double_xam: Example and Test$$
+$srcfile|lib/example/cplusplus/a_double_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$end
+*/
 

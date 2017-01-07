@@ -38,8 +38,14 @@ def vector_ad_xam() :
 #
 # END SOURCE
 #
-# $begin vector_ad.py$$
-# $section py_cppad.vector_ad: Example and Test$$
-# $srcfile|example/python/vector_ad.py|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $begin vector_ad_xam.py$$ $newlinech #$$
+# $spell
+#	py
+#	perl
+#	cppad
+#	xam
+# $$
+# $section py_cppad: vector_ad_xam: Example and Test$$
+# $srcfile|lib/example/python/vector_ad_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

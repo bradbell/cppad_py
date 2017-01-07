@@ -37,8 +37,14 @@ def vector_double_xam() :
 #
 # END SOURCE
 #
-# $begin vector_double.py$$
-# $section py_cppad.vector_double: Example and Test$$
-# $srcfile|example/python/vector_double.py|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $begin vector_double_xam.py$$ $newlinech #$$
+# $spell
+#	py
+#	perl
+#	cppad
+#	xam
+# $$
+# $section py_cppad: vector_double_xam: Example and Test$$
+# $srcfile|lib/example/python/vector_double_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

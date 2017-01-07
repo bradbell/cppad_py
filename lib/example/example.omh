@@ -1,4 +1,3 @@
-This file was automatically created by bin/check_xam.sh
 -------------------------------------------------------------------------------
           cppad_swig: A C++ Object Library and Swig Interface to Cppad
            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -6,12 +5,14 @@ This file was automatically created by bin/check_xam.sh
            GNU Affero General Public License version 3.0 or later see
                       http://www.gnu.org/licenses/agpl.txt
 -------------------------------------------------------------------------------
-$begin lib_example_perl$$
-$spell perl $$
-$section perl Examples and Tests$$
-$childtable%lib/example/perl/a_double_xam.pm
-	%lib/example/perl/a_fun_xam.pm
-	%lib/example/perl/vector_ad_xam.pm
-	%lib/example/perl/vector_double_xam.pm
+$begin lib_example$$
+
+$section Library Examples and Tests$$
+
+$childtable%lib/example/cplusplus/cplusplus.omh
+	%lib/example/octave/octave.omh
+	%lib/example/perl/perl.omh
+	%lib/example/python/python.omh
 %$$
+
 $end

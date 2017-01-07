@@ -1,6 +1,6 @@
 
 # This file can be automatically generaeted using the following command
-# m4 ../perl.m4 ../../xam/a_double_xam.xam > a_double_xam.pl
+# m4 ../perl.m4 ../../xam/a_double_xam.xam > a_double_xam.pm
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -41,8 +41,14 @@ sub a_double_xam() {
 }
 # END SOURCE
 #
-# $begin a_double.pl$$
-# $section pl_cppad::a_double: Example and Test$$
-# $srcfile|example/perl/a_double.pl|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $begin a_double_xam.pm$$ $newlinech #$$
+# $spell
+#	py
+#	perl
+#	cppad
+#	xam
+# $$
+# $section pl_cppad: a_double_xam: Example and Test$$
+# $srcfile|lib/example/perl/a_double_xam.pm|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 

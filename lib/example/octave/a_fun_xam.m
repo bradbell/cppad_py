@@ -50,8 +50,14 @@ function ok = a_fun_xam()
 end
 % END SOURCE
 %
-% $begin a_fun.m$$
-% $section m_cppad.a_fun: Example and Test$$
-% $srcfile|example/octave/a_fun.m|0|% BEGIN SOURCE|% END SOURCE|$$
+% $begin a_fun_xam.m$$ $newlinech %$$
+% $spell
+%	cppad
+%	xam
+% $$
+% $code
+% $section m_cppad: a_fun_xam: Example and Test$$
+% $verbatim|lib/example/octave/a_fun_xam.m|0|% BEGIN SOURCE|% END SOURCE|$$
+% $$
 % $end
 
