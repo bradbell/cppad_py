@@ -26,33 +26,65 @@ ext['octave']='m'
 ext['perl']='pm'
 ext['python']='py'
 ext['cplusplus']='cpp'
-for name in $list
+for lang in cplusplus octave perl python
 do
-	for lang in cplusplus octave perl python
+cat << EOF > temp.1.$$
+This file was automatically created by bin/check_xam.sh
+-------------------------------------------------------------------------------
+          cppad_swig: A C++ Object Library and Swig Interface to Cppad
+           Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+           GNU Affero General Public License version 3.0 or later see
+                      http://www.gnu.org/licenses/agpl.txt
+-------------------------------------------------------------------------------
+EOF
+	echo "\$begin lib_example_$lang\$\$"          >> temp.1.$$
+	echo "\$section $lang Examples and Tests\$\$" >> temp.1.$$
+	first='yes'
+	for name in $list
 	do
 		lang_file="example/$lang/$name.${ext[${lang}]}"
+		if [ "$first" == 'yes' ]
+		then
+			echo "\$childtable%lib/$lang_file" >> temp.1.$$
+			first='no'
+		else
+			echo "	%lib/$lang_file" >> temp.1.$$
+		fi
 		if [ ! -e "../$lang_file" ]
 		then
 			touch ../$lang_file
 		fi
-		m4 -D "language_=$lang" $name.xam > check_swig_xam.$$
-		if diff ../$lang_file check_swig_xam.$$ > /dev/null
+		m4 -D "language_=$lang" $name.xam > temp.2.$$
+		if diff ../$lang_file temp.2.$$ > /dev/null
 		then
-			rm check_swig_xam.$$
+			rm temp.2.$$
 		else
 			if [ "$ok" == 'yes' ]
 			then
 				echo '---------------------------------------------------------'
 			fi
-			mv check_swig_xam.$$ ../$lang_file
+			mv temp.2.$$ ../$lang_file
 			echo "lib/$lang_file changed."
 			ok='no'
 		fi
 	done
+	#
+	echo '%$$'  >> temp.1.$$
+	echo '$end' >> temp.1.$$
+	#
+	if diff temp.1.$$ ../example/$lang/$lang.omh > /dev/null
+	then
+		rm temp.1.$$
+	else
+		mv temp.1.$$ ../example/$lang/$lang.omh
+		echo "lib/example/$lang.omh changed."
+		ok='no'
+	fi
 done
 if [ "$ok" != 'yes' ]
 then
-	echo 'check_swig_xam.sh: changed some language specific files'
+	echo 'check_xam.sh: changed some language specific files'
 	exit 1
 fi
 # -----------------------------------------------------------------------------
