@@ -5,7 +5,7 @@
            GNU Affero General Public License version 3.0 or later see
                       http://www.gnu.org/licenses/agpl.txt
 -------------------------------------------------------------------------------
-$begin macro$$
+$begin lang_m4$$
 $dollar @$$
 $escape $$
 $spell
@@ -19,7 +19,7 @@ $spell
 	bool
 $$
 
-$section Specifications for m4 Macros$$
+$section Language Specific m4 Macros$$
 
 $head Purpose$$
 For each scripting language, Python, Octave, and Perl,
@@ -231,7 +231,7 @@ $codei|
 	return |return_variable|
 |$$
 The block inside this function is terminated by a matching
-$cref/end_/macro/No Arguments/end_/$$.
+$cref/end_/lang_m4/No Arguments/end_/$$.
 
 
 $comment ---------------------------------------------------------------$$
@@ -260,7 +260,7 @@ The initial value of the variable is zero.
 The variable increases by one each time through the loop.
 The value of the index the last time through the loop is $icode|upper|-1|$$.
 The block inside the loop is terminated by a matching
-$cref/end_/macro/No Arguments/end_/$$.
+$cref/end_/lang_m4/No Arguments/end_/$$.
 
 $subhead print_text_$$
 The text corresponding to

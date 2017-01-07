@@ -38,6 +38,18 @@ fi
 # -----------------------------------------------------------------------------
 case $ext in
 	# =========================================================================
+	cpp)
+	cat << EOF  > $file_name
+/* ----------------------------------------------------------------------------
+          cppad_swig: A C++ Object Library and Swig Interface to Cppad
+           Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+           GNU Affero General Public License version 3.0 or later see
+                      http://www.gnu.org/licenses/agpl.txt
+---------------------------------------------------------------------------- */
+EOF
+	;;
+	# =========================================================================
 	hpp)
 	dir=`echo $file_name | sed -e 's|\(.*\)/[^/]*$|\1|'`
 	if [ "$dir" != 'include/cppad/swig' ]
@@ -63,15 +75,26 @@ case $ext in
 EOF
 	;;
 	# =========================================================================
-	cpp)
+	m4)
+	dir=`echo $file_name | sed -e 's|\(.*\)/[^/]*$|\1|'`
+	if [ "$dir" != 'lib/xam' ]
+	then
+		echo "new_file.sh: directory = $dir"
+		echo "files with .sh extension must be in lib/xam directory"
+		exit 1
+	fi
 	cat << EOF  > $file_name
-/* ----------------------------------------------------------------------------
-          cppad_swig: A C++ Object Library and Swig Interface to Cppad
-           Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
-               This program is distributed under the terms of the
-           GNU Affero General Public License version 3.0 or later see
-                      http://www.gnu.org/licenses/agpl.txt
----------------------------------------------------------------------------- */
+divert(-1)
+# -----------------------------------------------------------------------------
+#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#              This program is distributed under the terms of the
+#          GNU Affero General Public License version 3.0 or later see
+#                     http://www.gnu.org/licenses/agpl.txt
+# -----------------------------------------------------------------------------
+REPLACE THIS LINE BY THE CODE FOR THIS SCRIPT.
+# -----------------------------------------------------------------------------
+divert(0)dnl trun on output and ignore this end of line
 EOF
 	;;
 	# =========================================================================
