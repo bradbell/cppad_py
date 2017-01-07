@@ -39,7 +39,7 @@
 # The name of the source code file where the current output is placed
 # is assumed to be
 # $codei%
-#	lib/example/%language%.%name_xam%.%ext%
+#	build/lib/example/%language%.%name_xam%.%ext%
 # %$$
 # where $icode language$$ is $code cplusplus$$, $code octave$$,
 # $code perl$$, or $code python$$.
@@ -107,8 +107,8 @@ define(omhelp_any_,
 )
 # omhelp_(name_xam, omhelp_title)
 define(omhelp_, omhelp_any_(
-	`$1.ext_',dnl                       omhelp_tag
-	`lib/example/language_/$1.ext_',dnl file_name
-	`$2'dnl                             omhelp_title
+	`$1.ext_',dnl                         omhelp_tag
+	`build/lib/example/language_/$1.ext_',dnl file_name
+	`$2'dnl                               omhelp_title
 ))
 # -----------------------------------------------------------------------------
