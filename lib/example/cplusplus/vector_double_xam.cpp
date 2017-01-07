@@ -1,3 +1,4 @@
+
 // This file can be automatically generaeted using the following command
 // m4 ../../xam/cplusplus.m4 ../../xam/vector_double_xam.xam > vector_double_xam.cpp
 // -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 // -----------------------------------------------------------------------------
 // std::vector<double>
 // -----------------------------------------------------------------------------
+// BEGIN SOURCE
 # include <cstdio>
 # include <cppad/swig/a_double.hpp>
 # include <cppad/swig/a_fun.hpp>
@@ -37,3 +39,10 @@ bool vector_double_xam(void) {
 	}
 	return( ok );
 }
+// END SOURCE
+//
+// $begin vector_double.cpp$$
+// $section cppad_swig::vector_double: Example and Test$$
+// $srcfile|example/cplusplus/vector_double.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+// $end
+

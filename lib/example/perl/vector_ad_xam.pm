@@ -1,3 +1,4 @@
+
 # This file can be automatically generaeted using the following command
 # m4 ../perl.m4 ../../xam/vector_ad_xam.xam > vector_ad_xam.pl
 # -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 # -----------------------------------------------------------------------------
 # std::vector<a_double>
 # -----------------------------------------------------------------------------
+# BEGIN SOURCE
 package vector_ad_xam;
 sub vector_ad_xam() {
 	# check for standard perl programming conventions
@@ -38,3 +40,10 @@ sub vector_ad_xam() {
 	}
 	return( $ok );
 }
+# END SOURCE
+#
+# $begin vector_ad.pl$$
+# $section pl_cppad::vector_ad: Example and Test$$
+# $srcfile|example/perl/vector_ad.pl|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $end
+

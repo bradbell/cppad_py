@@ -1,4 +1,3 @@
-divert(-1)
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -81,5 +80,3 @@ define(begin_for_, for $1 in range( $2 ) :)
 
 # print_text_(text)
 define(print_text_, print('$1'))
-
-divert(0)dnl turn on outut and ingnore this end of line

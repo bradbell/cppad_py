@@ -1,3 +1,4 @@
+
 // This file can be automatically generaeted using the following command
 // m4 ../../xam/cplusplus.m4 ../../xam/a_fun_xam.xam > a_fun_xam.cpp
 // -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 // -----------------------------------------------------------------------------
 // std::vector<a_double>
 // -----------------------------------------------------------------------------
+// BEGIN SOURCE
 # include <cstdio>
 # include <cppad/swig/a_double.hpp>
 # include <cppad/swig/a_fun.hpp>
@@ -50,3 +52,10 @@ bool a_fun_xam(void) {
 	//
 	return( ok );
 }
+// END SOURCE
+//
+// $begin a_fun.cpp$$
+// $section cppad_swig::a_fun: Example and Test$$
+// $srcfile|example/cplusplus/a_fun.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+// $end
+

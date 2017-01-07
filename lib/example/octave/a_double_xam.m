@@ -1,3 +1,4 @@
+
 % This file can be automatically generaeted using the following command
 % m4 ../octave.m4 ../../xam/a_double_xam.xam > a_double_xam.m
 % -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 % -----------------------------------------------------------------------------
 % a_double
 % -----------------------------------------------------------------------------
+% BEGIN SOURCE
 function ok = a_double_xam()
 	%
 	% load the Cppad Swig library
@@ -33,3 +35,10 @@ function ok = a_double_xam()
 	%
 	return;
 end
+% END SOURCE
+%
+% $begin a_double.m$$
+% $section m_cppad.a_double: Example and Test$$
+% $srcfile|example/octave/a_double.m|0|% BEGIN SOURCE|% END SOURCE|$$
+% $end
+

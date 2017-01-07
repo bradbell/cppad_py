@@ -1,3 +1,4 @@
+
 # This file can be automatically generaeted using the following command
 # m4 ../perl.m4 ../../xam/a_fun_xam.xam > a_fun_xam.pl
 # -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 # -----------------------------------------------------------------------------
 # std::vector<a_double>
 # -----------------------------------------------------------------------------
+# BEGIN SOURCE
 package a_fun_xam;
 sub a_fun_xam() {
 	# check for standard perl programming conventions
@@ -50,3 +52,10 @@ sub a_fun_xam() {
 	#
 	return( $ok );
 }
+# END SOURCE
+#
+# $begin a_fun.pl$$
+# $section pl_cppad::a_fun: Example and Test$$
+# $srcfile|example/perl/a_fun.pl|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $end
+

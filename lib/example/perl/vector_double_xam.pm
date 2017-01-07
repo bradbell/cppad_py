@@ -1,3 +1,4 @@
+
 # This file can be automatically generaeted using the following command
 # m4 ../perl.m4 ../../xam/vector_double_xam.xam > vector_double_xam.pl
 # -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 # -----------------------------------------------------------------------------
 # std::vector<double>
 # -----------------------------------------------------------------------------
+# BEGIN SOURCE
 package vector_double_xam;
 sub vector_double_xam() {
 	# check for standard perl programming conventions
@@ -37,3 +39,10 @@ sub vector_double_xam() {
 	}
 	return( $ok );
 }
+# END SOURCE
+#
+# $begin vector_double.pl$$
+# $section pl_cppad::vector_double: Example and Test$$
+# $srcfile|example/perl/vector_double.pl|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $end
+

@@ -1,3 +1,4 @@
+
 # This file can be automatically generaeted using the following command
 # m4 ../perl.m4 ../../xam/a_double_xam.xam > a_double_xam.pl
 # -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 # -----------------------------------------------------------------------------
 # a_double
 # -----------------------------------------------------------------------------
+# BEGIN SOURCE
 package a_double_xam;
 sub a_double_xam() {
 	# check for standard perl programming conventions
@@ -37,3 +39,10 @@ sub a_double_xam() {
 	#
 	return( $ok );
 }
+# END SOURCE
+#
+# $begin a_double.pl$$
+# $section pl_cppad::a_double: Example and Test$$
+# $srcfile|example/perl/a_double.pl|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $end
+

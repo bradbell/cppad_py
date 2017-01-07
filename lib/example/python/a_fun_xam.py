@@ -1,3 +1,4 @@
+
 # This file can be automatically generaeted using the following command
 # m4 ../python.m4 ../../xam/a_fun_xam.xam > a_fun_xam.py
 # -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 # -----------------------------------------------------------------------------
 # std::vector<a_double>
 # -----------------------------------------------------------------------------
+# BEGIN SOURCE
 def a_fun_xam() :
 	#
 	# load the Cppad Swig library
@@ -46,3 +48,10 @@ def a_fun_xam() :
 	#
 	return( ok )
 #
+# END SOURCE
+#
+# $begin a_fun.py$$
+# $section py_cppad.a_fun: Example and Test$$
+# $srcfile|example/python/a_fun.py|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $end
+

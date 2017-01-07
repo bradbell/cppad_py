@@ -1,3 +1,4 @@
+
 # This file can be automatically generaeted using the following command
 # m4 ../python.m4 ../../xam/vector_ad_xam.xam > vector_ad_xam.py
 # -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 # -----------------------------------------------------------------------------
 # std::vector<a_double>
 # -----------------------------------------------------------------------------
+# BEGIN SOURCE
 def vector_ad_xam() :
 	#
 	# load the Cppad Swig library
@@ -34,3 +36,10 @@ def vector_ad_xam() :
 	#
 	return( ok )
 #
+# END SOURCE
+#
+# $begin vector_ad.py$$
+# $section py_cppad.vector_ad: Example and Test$$
+# $srcfile|example/python/vector_ad.py|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $end
+

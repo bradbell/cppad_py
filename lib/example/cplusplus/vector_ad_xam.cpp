@@ -1,3 +1,4 @@
+
 // This file can be automatically generaeted using the following command
 // m4 ../../xam/cplusplus.m4 ../../xam/vector_ad_xam.xam > vector_ad_xam.cpp
 // -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 // -----------------------------------------------------------------------------
 // std::vector<a_double>
 // -----------------------------------------------------------------------------
+// BEGIN SOURCE
 # include <cstdio>
 # include <cppad/swig/a_double.hpp>
 # include <cppad/swig/a_fun.hpp>
@@ -38,3 +40,10 @@ bool vector_ad_xam(void) {
 	}
 	return( ok );
 }
+// END SOURCE
+//
+// $begin vector_ad.cpp$$
+// $section cppad_swig::vector_ad: Example and Test$$
+// $srcfile|example/cplusplus/vector_ad.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+// $end
+

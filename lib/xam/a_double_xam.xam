@@ -1,3 +1,4 @@
+include(xam.m4)
 header_(a_double_xam)
 c_ -----------------------------------------------------------------------------
 c_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
@@ -8,6 +9,7 @@ c_                     http://www.gnu.org/licenses/agpl.txt
 c_ -----------------------------------------------------------------------------
 c_ a_double
 c_ -----------------------------------------------------------------------------
+c_ BEGIN SOURCE
 begin_bool_fun_0_(ok, a_double_xam)
 	new_var_new_(a_double, two,    module_(a_double)(2.0))
 	new_var_new_(a_double, three,  module_(a_double)(3.0))
@@ -26,3 +28,6 @@ begin_bool_fun_0_(ok, a_double_xam)
 	c_
 	return_(var_(ok))
 end_
+c_ END SOURCE
+c_
+omhelp_(a_double)

@@ -1,3 +1,4 @@
+
 // This file can be automatically generaeted using the following command
 // m4 ../../xam/cplusplus.m4 ../../xam/a_double_xam.xam > a_double_xam.cpp
 // -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 // -----------------------------------------------------------------------------
 // a_double
 // -----------------------------------------------------------------------------
+// BEGIN SOURCE
 # include <cstdio>
 # include <cppad/swig/a_double.hpp>
 # include <cppad/swig/a_fun.hpp>
@@ -37,3 +39,10 @@ bool a_double_xam(void) {
 	//
 	return( ok );
 }
+// END SOURCE
+//
+// $begin a_double.cpp$$
+// $section cppad_swig::a_double: Example and Test$$
+// $srcfile|example/cplusplus/a_double.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+// $end
+

@@ -35,7 +35,7 @@ do
 		then
 			touch ../$lang_file
 		fi
-		m4 $lang.m4 $name.xam > check_swig_xam.$$
+		m4 -D "language_=$lang" $name.xam > check_swig_xam.$$
 		if diff ../$lang_file check_swig_xam.$$ > /dev/null
 		then
 			rm check_swig_xam.$$

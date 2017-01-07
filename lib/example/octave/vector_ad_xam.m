@@ -1,3 +1,4 @@
+
 % This file can be automatically generaeted using the following command
 % m4 ../octave.m4 ../../xam/vector_ad_xam.xam > vector_ad_xam.m
 % -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 % -----------------------------------------------------------------------------
 % std::vector<a_double>
 % -----------------------------------------------------------------------------
+% BEGIN SOURCE
 function ok = vector_ad_xam()
 	%
 	% load the Cppad Swig library
@@ -34,3 +36,10 @@ function ok = vector_ad_xam()
 	end
 	return;
 end
+% END SOURCE
+%
+% $begin vector_ad.m$$
+% $section m_cppad.vector_ad: Example and Test$$
+% $srcfile|example/octave/vector_ad.m|0|% BEGIN SOURCE|% END SOURCE|$$
+% $end
+

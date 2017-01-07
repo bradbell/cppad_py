@@ -1,4 +1,3 @@
-divert(-1)
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -85,5 +84,3 @@ define(begin_for_, for(my `$'$1 = 0; `$'$1 < $2; `$'$1++) {)
 
 # print_text_(text)
 define(print_text_, print "$1\n";)
-
-divert(0)dnl turn on output and ingnore this end of line

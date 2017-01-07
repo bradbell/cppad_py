@@ -1,3 +1,4 @@
+
 % This file can be automatically generaeted using the following command
 % m4 ../octave.m4 ../../xam/a_fun_xam.xam > a_fun_xam.m
 % -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 % -----------------------------------------------------------------------------
 % std::vector<a_double>
 % -----------------------------------------------------------------------------
+% BEGIN SOURCE
 function ok = a_fun_xam()
 	%
 	% load the Cppad Swig library
@@ -46,3 +48,10 @@ function ok = a_fun_xam()
 	%
 	return;
 end
+% END SOURCE
+%
+% $begin a_fun.m$$
+% $section m_cppad.a_fun: Example and Test$$
+% $srcfile|example/octave/a_fun.m|0|% BEGIN SOURCE|% END SOURCE|$$
+% $end
+

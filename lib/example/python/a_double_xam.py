@@ -1,3 +1,4 @@
+
 # This file can be automatically generaeted using the following command
 # m4 ../python.m4 ../../xam/a_double_xam.xam > a_double_xam.py
 # -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 # -----------------------------------------------------------------------------
 # a_double
 # -----------------------------------------------------------------------------
+# BEGIN SOURCE
 def a_double_xam() :
 	#
 	# load the Cppad Swig library
@@ -33,3 +35,10 @@ def a_double_xam() :
 	#
 	return( ok )
 #
+# END SOURCE
+#
+# $begin a_double.py$$
+# $section py_cppad.a_double: Example and Test$$
+# $srcfile|example/python/a_double.py|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $end
+

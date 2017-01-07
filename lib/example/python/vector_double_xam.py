@@ -1,3 +1,4 @@
+
 # This file can be automatically generaeted using the following command
 # m4 ../python.m4 ../../xam/vector_double_xam.xam > vector_double_xam.py
 # -----------------------------------------------------------------------------
@@ -9,6 +10,7 @@
 # -----------------------------------------------------------------------------
 # std::vector<double>
 # -----------------------------------------------------------------------------
+# BEGIN SOURCE
 def vector_double_xam() :
 	#
 	# load the Cppad Swig library
@@ -33,3 +35,10 @@ def vector_double_xam() :
 	#
 	return( ok )
 #
+# END SOURCE
+#
+# $begin vector_double.py$$
+# $section py_cppad.vector_double: Example and Test$$
+# $srcfile|example/python/vector_double.py|0|c_ BEGIN SOURCE|c_ END SOURCE|$$
+# $end
+
