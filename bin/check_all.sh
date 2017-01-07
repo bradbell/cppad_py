@@ -38,6 +38,14 @@ then
 	echo check_all.log
 	rm $logfile
 fi
+list=`ls bin/check_*`
+for check in $list
+do
+	if [ "$check" != 'bin/check_all.sh' ]
+	then
+		echo_eval $check
+	fi
+done
 echo_eval_log bin/run_cmake.sh
 echo_eval_log bin/run_omhelp.sh xml
 echo_eval_log cd build
