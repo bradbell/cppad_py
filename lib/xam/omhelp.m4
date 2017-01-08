@@ -76,10 +76,8 @@ define(omhelp_octave_,
 %	cppad
 %	xam
 % $$
-% $code
 % $section $3$$
-% $verbatim|$2|0|% BEGIN SOURCE|% END SOURCE|$$
-% $$
+% $srcfile|$2|0|% BEGIN SOURCE|% END SOURCE|$$
 % $end)
 # omhelp_cpp_(omhelp_tag, file_name, omhelp_title)
 define(omhelp_cpp_,
