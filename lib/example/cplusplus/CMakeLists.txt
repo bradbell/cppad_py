@@ -15,18 +15,18 @@ SET(auto_list
 	vector_double_xam.cpp
 )
 SET(auto_output_list "")
-FOREACH( cpp_file ${auto_list} )
-	STRING(REGEX REPLACE "[.]cpp" ".xam" xam_file ${cpp_file})
+FOREACH( source_file ${auto_list} )
+	STRING(REGEX REPLACE "[.]cpp" ".xam" xam_file ${source_file})
 	ADD_CUSTOM_COMMAND(
-		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${cpp_file}
+		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
 		COMMAND ${m4_executable}
 		-D language_=cplusplus
 		-I ${CMAKE_SOURCE_DIR}/lib/xam
 		${CMAKE_SOURCE_DIR}/lib/xam/${xam_file}
-		> ${CMAKE_CURRENT_BINARY_DIR}/${cpp_file}
+		> ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
 	)
-	add_to_list(auto_output_list ${CMAKE_CURRENT_BINARY_DIR}/${cpp_file} )
-ENDFOREACH( cpp_file ${auto_list} )
+	add_to_list(auto_output_list ${CMAKE_CURRENT_BINARY_DIR}/${source_file} )
+ENDFOREACH( source_file ${auto_list} )
 ADD_CUSTOM_TARGET(auto_lib_cplusplus DEPENDS ${auto_output_list} )
 MESSAGE(STATUS "make auto_lib_cplusplus: available")
 # -----------------------------------------------------------------------------

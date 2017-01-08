@@ -49,6 +49,7 @@ done
 echo_eval_log bin/run_cmake.sh
 echo_eval_log bin/run_omhelp.sh xml
 echo_eval_log cd build
+echo_eval_log make clean
 echo_eval_log make check
 rm $tmpfile
 #

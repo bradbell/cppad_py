@@ -14,21 +14,20 @@ SET(auto_list
 	vector_ad_xam.py
 	vector_double_xam.py
 )
-SET(auto_depends "")
-FOREACH( py_file ${auto_list} )
-	STRING(REGEX REPLACE "[.]py" ".xam" xam_file ${py_file})
-	STRING(REGEX REPLACE "[.]py" "_py" target   ${py_file})
-	SET(target lib_${target})
-	ADD_CUSTOM_TARGET(${target}
+SET(auto_output_list "")
+FOREACH( source_file ${auto_list} )
+	STRING(REGEX REPLACE "[.]py" ".xam" xam_file ${source_file})
+	ADD_CUSTOM_COMMAND(
+		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
 		COMMAND ${m4_executable}
 		-D language_=python
 		-I ${CMAKE_SOURCE_DIR}/lib/xam
 		${CMAKE_SOURCE_DIR}/lib/xam/${xam_file}
-		> ${CMAKE_CURRENT_BINARY_DIR}/${py_file}
+		> ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
 	)
-	add_to_list(auto_depends ${target})
-ENDFOREACH( py_file ${auto_list} )
-ADD_CUSTOM_TARGET(auto_lib_python DEPENDS ${auto_depends} )
+	add_to_list(auto_output_list ${CMAKE_CURRENT_BINARY_DIR}/${source_file} )
+ENDFOREACH( source_file ${auto_list} )
+ADD_CUSTOM_TARGET(auto_lib_python DEPENDS ${auto_output_list} )
 MESSAGE(STATUS "make auto_lib_python: available")
 #
 # ----------------------------------------------------------------------------
@@ -81,6 +80,7 @@ IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
 		DEPENDS
 		${SWIG_MODULE_py_cppad_REAL_NAME}
 		${CMAKE_CURRENT_BINARY_DIR}/check_all.py
+		auto_lib_python
 	)
 	MESSAGE(STATUS "make check_lib_python: available")
 

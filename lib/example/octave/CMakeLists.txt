@@ -14,21 +14,20 @@ SET(auto_list
 	vector_ad_xam.m
 	vector_double_xam.m
 )
-SET(auto_depends "")
-FOREACH( m_file ${auto_list} )
-	STRING(REGEX REPLACE "[.]m" ".xam" xam_file ${m_file})
-	STRING(REGEX REPLACE "[.]m" "_m" target   ${m_file})
-	SET(target lib_${target})
-	ADD_CUSTOM_TARGET(${target}
+SET(auto_output_list "")
+FOREACH( source_file ${auto_list} )
+	STRING(REGEX REPLACE "[.]m" ".xam" xam_file ${source_file})
+	ADD_CUSTOM_COMMAND(
+		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
 		COMMAND ${m4_executable}
 		-D language_=octave
 		-I ${CMAKE_SOURCE_DIR}/lib/xam
 		${CMAKE_SOURCE_DIR}/lib/xam/${xam_file}
-		> ${CMAKE_CURRENT_BINARY_DIR}/${m_file}
+		> ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
 	)
-	add_to_list(auto_depends ${target})
-ENDFOREACH( m_file ${auto_list} )
-ADD_CUSTOM_TARGET(auto_lib_octave DEPENDS ${auto_depends} )
+	add_to_list(auto_output_list ${CMAKE_CURRENT_BINARY_DIR}/${source_file} )
+ENDFOREACH( source_file ${auto_list} )
+ADD_CUSTOM_TARGET(auto_lib_octave DEPENDS ${auto_output_list} )
 MESSAGE(STATUS "make auto_lib_octave: available")
 #
 # -----------------------------------------------------------------------------
@@ -106,6 +105,7 @@ IF( octave_config )
 		DEPENDS
 		${SWIG_MODULE_m_cppad_REAL_NAME}
 		${CMAKE_CURRENT_BINARY_DIR}/check_all.m
+		auto_lib_octave
 	)
 	MESSAGE(STATUS "make check_lib_octave: available")
 
