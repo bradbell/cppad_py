@@ -51,35 +51,53 @@ a_double::a_double(const CppAD::AD<double>* ad_ptr)
 $begin a_double_ctor$$
 $spell
 	cppad
+	const
+	perl
+	py
 $$
 
-$section The C++ a_double Constructor$$
+$section The a_double Constructor$$
 
 $head Syntax$$
-$codei%cppad_swig::a_double()
+$icode%ad% = %module_ref_%a_double()
 %$$
-$codei%cppad_swig::a_double(%d%)
+$icode%ad% = %module_ref_%a_double(%d%)
 %$$
-$codei%cppad_swig::a_double(%ad%)
+$icode%ad% = %module_ref_%a_double(%ad_other%)
 %$$
-
-$head Prototype$$
-$srcfile%include/cppad/swig/a_double.hpp%
-	0%// BEGIN a_double_ctor%// END a_double_ctor%$$
 
 $head Purpose$$
 Creates a $code cppad_swig::a_double$$ object that can be use
 to track floating point operations and preform algorithmic differentiation.
 
+$head module_ref_$$
+This is a reference to the Cppad Swig module which is
+language dependent as follows:
+$table
+C++        $cnext $code cppad_swig::$$ $rnext
+Octave     $cnext $code m_cppad.$$     $rnext
+Perl       $cnext $code pm_cppad::$$   $rnext
+Python     $cnext $code py_cppad.$$
+$tend
+
 $head d$$
-In the case where the argument is a $code double$$,
-the resulting $code a_double$$ variable represents
+This argument has prototype
+$codei%
+	const double& %d%
+%$$
+The resulting $icode ad$$ variable represents
 a constant function equal to $icode d$$.
 
+$head ad_other$$
+This argument has prototype
+$codei%
+	const a_double& %ad_other%
+%$$
+The resulting $icode ad$$ variable is the same function
+of the independent variables as $icode ad_other$$.
+
 $head ad$$
-In the case where the argument is a $code a_double$$,
-the resulting $code a_double$$ variable is the same function
-of the independent variables as $icode ad$$.
+is the $code a_double$$ object that is constructed.
 
 $head Example$$
 All of the other $code a_double$$ examples use an $code a_double$$
@@ -94,9 +112,6 @@ a_double::a_double(void)
 	CPPAD_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
 	new ( & data_ ) CppAD::AD<double>();
 }
-// a_double destructor
-a_double::~a_double(void)
-{ }
 // a_double ctor from double
 a_double::a_double(const double& d)
 {	CPPAD_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
@@ -107,6 +122,41 @@ a_double::a_double(const a_double& ad)
 {	CPPAD_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
 	new ( & data_ ) CppAD::AD<double>(*ad.ptr());
 }
+// a_double destructor
+a_double::~a_double(void)
+{ }
+/*
+-------------------------------------------------------------------------------
+$begin a_double_value$$
+
+$section Conversion From a_double to double$$
+$spell
+	const
+$$
+
+$head Syntax$$
+$icode%d% = ad%.value()%$$
+
+$head ad$$
+This object has prototype
+$codei%
+	const a_double& %ad%
+%$$
+In addition it must represent a constant functions; i.e.,
+it must not depend on the independent variable.
+If it does depend on the independent variables,
+you will have to wait until the current recording is terminated
+before you can access its value.
+
+$head d$$
+The result has prototype
+$codei%
+	double %d%
+%$$
+It is the value of $icode ad$$, as a constant function.
+
+$end
+*/
 /// conversion to double
 double a_double::value(void) const
 {	double result = Value( *ptr() );
