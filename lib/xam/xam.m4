@@ -11,20 +11,30 @@ divert(-1)
 #	xam
 #	cplusplus
 #	perl
+#	cppad
 # $$
 # $section Include File for Library Example Setup$$
 #
 # $head Syntax$$
 # $code include(xam.m4)$$
 #
-# $head language_$$
-# It is assumed that the macro $code language_$$ has been defined to
-# be one of the available languages; i.e.,
+# $head m4 Command$$
+# For this documentation, it is assumed that the m4 command is a follows:
+# $codei%
+#	m4 -I %directory% -D language_=%language% %input_file%
+# %$$
+#
+# $head directory$$
+# is the directory where the $code xam.m4$$ file is located; i.e.,
+# $code lib/xam/xam.m4$$ relative to the cppad_swig source directory.
+#
+# $head language$$
+# is one of the available languages; i.e.,
 # $code cplusplus$$, $code octave$$, $code perl$$, or $code python$$.
 #
-# $head Directory$$
-# The include command above must be executed in the $code lib/xam$$
-# directory.
+# $head input_file$$
+# is the input file that can use the $cref lang_m4$$ and $cref omhelp.m4$$
+# macros.
 #
 # $childtable%lib/xam/lang_m4.omh
 #	%lib/xam/omhelp.m4
