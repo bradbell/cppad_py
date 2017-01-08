@@ -26,7 +26,7 @@ divert(-1)
 #
 # $head directory$$
 # is the directory where the $code xam.m4$$ file is located; i.e.,
-# $code lib/xam/xam.m4$$ relative to the cppad_swig source directory.
+# $code lib/xam/xam.m4$$ relative to the Cppad Swig source directory.
 #
 # $head language$$
 # is one of the available languages; i.e.,

@@ -15,6 +15,16 @@
 #	include <cppad_swig_lib_export.h>
 # endif
 
+/*
+$begin a_double$$
+
+$section The C++ a_double Class$$
+
+$childtable%lib/a_double.cpp%$$
+
+$end
+*/
+
 // declarations without definitions
 namespace CppAD {
 	template <class Base> class AD;
@@ -50,14 +60,13 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	// -----------------------------------------------------------------------
 	// public members in Swig interface
 	public:
-	/// default ctor
+	// BEGIN a_double_ctor
 	a_double(void);
+	a_double(const double& d);
+	a_double(const a_double& ad);
+	// END a_double_ctor
 	/// destructor
 	~a_double(void);
-	/// ctor from double
-	a_double(const double& value);
-	/// ctor from a_double
-	a_double(const a_double& ad);
 	/// conversion to double
 	double value(void) const;
 	// binary operators with a_double result

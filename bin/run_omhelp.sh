@@ -31,6 +31,7 @@ then
 	exit 1
 fi
 cd build
+echo 'Building automatically generated library example files'
 make auto_lib
 cd ..
 # -----------------------------------------------------------------------------
@@ -38,13 +39,20 @@ if [ -e doc ]
 then
 	echo_eval rm -r doc
 fi
+echo 'Building doc directory'
 mkdir doc
 cd doc
 if [ "$1" == 'htm' ]
 then
-	omhelp ../cppad_swig.omh -noframe -debug
+	omhelp ../cppad_swig.omh -noframe -debug       > ../omhelp.log
 else
-	omhelp ../cppad_swig.omh -noframe -debug -xml
+	omhelp ../cppad_swig.omh -noframe -debug -xml  > ../omhelp.log
+fi
+# -----------------------------------------------------------------------------
+if grep -i 'warning' ../omhelp.log
+then
+	echo 'bin/run_omhelp.sh: omhelp warnings; see ./omhelp.log'
+	exit 1
 fi
 # -----------------------------------------------------------------------------
 echo 'bin/run_omhelp.sh: OK'

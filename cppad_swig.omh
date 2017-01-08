@@ -66,8 +66,9 @@ for each such test.
 
 $childtable%
 	bin/run_cmake.sh%
-	example/example.i%
+	include/cppad/swig/a_double.hpp%
 	lib/example/example.omh%
+	example/example.i%
 	lib/xam/xam.m4
 %$$
 
