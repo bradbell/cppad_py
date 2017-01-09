@@ -126,19 +126,63 @@ a_double::a_double(const a_double& ad)
 a_double::~a_double(void)
 { }
 /*
+$begin a_double_unary$$
+
+$section a_double Unary Plus and Minus$$
+$spell
+	const
+	perl
+$$
+
+$head Syntax$$
+$icode%ay% = +%ax%
+%$$
+$icode%ay% = -%ax%
+%$$
+
+$head ax$$
+This object has prototype
+$codei%
+	const a_double& %ax%
+%$$
+
+$head ay$$
+If the operator is $code +$$, the result is equal to $icode ax$$.
+If it is $code -$$, the result is the negative of $icode ax$$.
+
+$children%
+	build/lib/example/cplusplus/a_double_unary_xam.cpp%
+	build/lib/example/octave/a_double_unary_xam.m%
+	build/lib/example/perl/a_double_unary_xam.pm%
+	build/lib/example/python/a_double_unary_xam.py
+%$$
+$head Example$$
+$cref/C++/a_double_unary_xam.cpp/$$,
+$cref/octave/a_double_unary_xam.m/$$,
+$cref/perl/a_double_unary_xam.pm/$$,
+$cref/python/a_double_unary_xam.py/$$.
+
+$end
+*/
+const a_double& a_double::operator+(void) const
+{	return *this; }
+a_double a_double::operator-(void) const
+{	a_double result;
+	*result.ptr() = - *ptr();
+	return result;
+}
+/*
 -------------------------------------------------------------------------------
 $begin a_double_value$$
 $spell
+	const
 	perl
 $$
 
 $section Conversion From a_double to double$$
-$spell
-	const
-$$
 
 $head Syntax$$
-$icode%d% = ad%.value()%$$
+$icode%d% = %ad%.value()%$$
 
 $head ad$$
 This object has prototype

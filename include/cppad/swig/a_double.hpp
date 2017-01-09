@@ -87,6 +87,9 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	a_double operator-=(const a_double& ad);
 	a_double operator*=(const a_double& ad);
 	a_double operator/=(const a_double& ad);
+	// unary + and -
+	const a_double& operator+(void) const;
+	a_double operator-(void) const;
 };
 
 } // END_CPPAD_SWIG_NAMESPACE

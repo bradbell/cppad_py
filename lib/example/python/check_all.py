@@ -22,6 +22,7 @@ def run_test(name) :
 #
 fun_list = [
 	'a_double_value_xam',
+	'a_double_unary_xam',
 	'a_double_assign_xam',
 	'a_double_ad_binary_xam',
 	'a_double_compare_xam',
