@@ -46,3 +46,26 @@
 %template(vector_double) std::vector<double>;
 %template(vector_ad)     std::vector<cppad_swig::a_double>;
 
+
+/*
+-------------------------------------------------------------------------------
+$begin a_double$$
+
+$section The a_double Class$$
+
+$childtable%lib/a_double.cpp%$$
+
+$end
+-------------------------------------------------------------------------------
+$begin vector$$
+$spell
+	Cppad
+$$
+
+$section Cppad Swig Vectors$$
+
+$childtable%lib/vector.omh%$$
+
+$end
+-------------------------------------------------------------------------------
+*/

@@ -216,7 +216,6 @@ $cref/python/a_double_value_xam.py/$$.
 
 $end
 */
-/// conversion to double
 double a_double::value(void) const
 {	double result = Value( *ptr() );
 	return result;

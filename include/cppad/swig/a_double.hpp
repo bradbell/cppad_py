@@ -15,16 +15,6 @@
 #	include <cppad_swig_lib_export.h>
 # endif
 
-/*
-$begin a_double$$
-
-$section The a_double Class$$
-
-$childtable%lib/a_double.cpp%$$
-
-$end
-*/
-
 // declarations without definitions
 namespace CppAD {
 	template <class Base> class AD;
@@ -70,6 +60,9 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	a_double(const a_double& ad);
 	/// conversion to double
 	double value(void) const;
+	// unary + and -
+	const a_double& operator+(void) const;
+	a_double operator-(void) const;
 	// binary operators with a_double result
 	a_double operator+(const a_double& ad) const;
 	a_double operator-(const a_double& ad) const;
@@ -87,9 +80,6 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	a_double operator-=(const a_double& ad);
 	a_double operator*=(const a_double& ad);
 	a_double operator/=(const a_double& ad);
-	// unary + and -
-	const a_double& operator+(void) const;
-	a_double operator-(void) const;
 };
 
 } // END_CPPAD_SWIG_NAMESPACE

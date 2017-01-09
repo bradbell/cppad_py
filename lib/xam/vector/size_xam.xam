@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-header_(`a_double/unary_xam.xam')
+header_(`vector/size.xam')
 c_ -----------------------------------------------------------------------------
 c_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -7,21 +7,22 @@ c_              This program is distributed under the terms of the
 c_          GNU Affero General Public License version 3.0 or later see
 c_                     http://www.gnu.org/licenses/agpl.txt
 c_ -----------------------------------------------------------------------------
-c_ a_double unary operators
+c_ vector size()
 c_ -----------------------------------------------------------------------------
 c_ BEGIN SOURCE
-c_ This test fails in Octave and so is skipped by make check_lib_octave
-begin_bool_fun_0_(ok, a_double_unary_xam)
-	new_var_new_(a_double, two,       module_(a_double)(2.0))
-	new_var_new_(a_double, plus_two,   + two )
-	new_var_new_(a_double, minus_two,  - two )
+begin_bool_fun_0_(ok, vector_size_xam)
+	new_var_new_(vector_double, v0, module_(vector_double)())
+	new_var_new_(vector_double, v9, module_(vector_double)(9))
+	and_assign_(ok, member_(v0, size)() == 0 )
+	and_assign_(ok, member_(v9, size)() == 9)
 	c_
-	and_assign_(ok, member_(plus_two,  value)() == 2.0)
-	and_assign_(ok, member_(minus_two, value)() == -2.0)
+	new_var_new_(vector_ad, av0, module_(vector_ad)())
+	new_var_new_(vector_ad, av5, module_(vector_ad)(5))
+	and_assign_(ok, member_(av0, size)() == 0 )
+	and_assign_(ok, member_(av5, size)() == 5 )
 	c_
 	return_(var_(ok))
 end_
 c_ END SOURCE
 c_
-omhelp_(a_double_unary_xam,
-language_: a_double Unary Plus and Minus: Example and Test)
+omhelp_(vector_size_xam, language_: Size of Vectors: Example and Test)

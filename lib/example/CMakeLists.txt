@@ -13,9 +13,10 @@ SET(xam_file_list
 	a_double/assign_xam.xam
 	a_double/ad_binary_xam.xam
 	a_double/compare_xam.xam
-	a_fun/a_fun_xam.xam
+	vector/size_xam.xam
 	vector/ad_xam.xam
 	vector/double_xam.xam
+	a_fun/a_fun_xam.xam
 )
 #
 # sub-directories for each language (add to check_lib_depend)

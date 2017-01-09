@@ -62,6 +62,8 @@ define(begin_bool_fun_0_,
 
 bool $2(void) {
 	using cppad_swig::a_double;
+	using cppad_swig::vector_double;
+	using cppad_swig::vector_ad;
 	c_
 	c_ initialize return variable
 	bool $1 = true_;)
