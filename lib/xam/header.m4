@@ -5,14 +5,15 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
-# $begin header$$
+# $begin header.m4$$ $newlinech #$$
 # $spell
+#	xam
 # $$
 #
-# $section Comment Shwoing How to Generate This Output$$
+# $section Comment Showing How to Generate This Output$$
 #
 # $head Syntax$$
-# $codei%header_(%xam_file_name%)
+# $codei%header_(%xam_file_name%)%$$
 #
 # $head xam_file_name$$
 # Is the name of the $icode%*%.xam%$$ file, relative to the
@@ -21,7 +22,7 @@
 # $head Assumptions$$
 # It is assumed that the following macros have been set:
 # $cref/c_/lang_m4/No Arguments/c_/$$,
-# $cref/language_/xam.m4/No Arguments/language_/$$.
+# $cref/language_/xam.m4/language/$$.
 #
 # $end
 # -----------------------------------------------------------------------------

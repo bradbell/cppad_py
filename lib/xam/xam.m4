@@ -21,7 +21,7 @@ divert(-1)
 # $head m4 Command$$
 # For this documentation, it is assumed that the m4 command is a follows:
 # $codei%
-#	m4 -I %directory% -D language_=%language% %input_file%
+#	m4 -I %directory% -D language_=%language% %xam_file_name%
 # %$$
 #
 # $head directory$$
@@ -32,13 +32,16 @@ divert(-1)
 # is one of the available languages; i.e.,
 # $code cplusplus$$, $code octave$$, $code perl$$, or $code python$$.
 #
-# $head input_file$$
-# is the input file that can use the $cref lang_m4$$ and $cref omhelp.m4$$
-# macros.
+# $head xam_file_name$$
+# is the name of one of the *.xam files relative to the $code lib/xam$$
+# directory; e.g., $code vector/ad_xam.xam$$.
+# This, combined with the language, determines the example / test
+# that is being created.
 #
 # $childtable%lib/xam/lang_m4.omh
 #	%lib/xam/omhelp.m4
 #	%lib/xam/xam_file_name.m4
+#	%lib/xam/header.m4
 # %$$
 #
 # $end
