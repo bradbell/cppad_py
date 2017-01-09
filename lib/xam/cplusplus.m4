@@ -57,10 +57,7 @@ define(vec_get_, $1[$2])
 # begin_bool_fun_0_(return_variable, fun_name)
 define(begin_bool_fun_0_,
 `#' include <cstdio>
-`#' include <cppad/swig/a_double.hpp>
-`#' include <cppad/swig/a_fun.hpp>
-`#' include <cppad/swig/function.hpp>
-`#' include <cppad/swig/typedef.hpp>
+`#' include <cppad/swig/cppad_swig.hpp>
 
 bool $2(void) {
 	using cppad_swig::a_double;
