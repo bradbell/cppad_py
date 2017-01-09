@@ -35,9 +35,11 @@ MESSAGE(STATUS "make auto_lib_perl: available")
 assert( SWIG_FOUND )
 FIND_PACKAGE(PerlLibs)
 IF ( PERLLIBS_FOUND )
-	# create check_all.pl for this directory
-	CONFIGURE_FILE(
-		${CMAKE_CURRENT_SOURCE_DIR}/check_all.pl.in
+	ADD_CUSTOM_COMMAND(
+		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/check_all.pl
+		COMMAND
+		${CMAKE_COMMAND} -E copy
+		${CMAKE_CURRENT_SOURCE_DIR}/check_all.pl
 		${CMAKE_CURRENT_BINARY_DIR}/check_all.pl
 	)
 

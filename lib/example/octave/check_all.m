@@ -5,9 +5,6 @@
 %          GNU Affero General Public License version 3.0 or later see
 %                     http://www.gnu.org/licenses/agpl.txt
 % -----------------------------------------------------------------------------
-% path to test source code
-xam_dir = '@CMAKE_SOURCE_DIR@/lib/xam';
-%
 error_count = 0;
 function ok = run_test(name)
 	eval( strcat( 'ok = ' , name , '();' ) )

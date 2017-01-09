@@ -36,12 +36,13 @@ assert( SWIG_FOUND )
 FIND_PACKAGE(PythonInterp)
 FIND_PACKAGE(PythonLibs)
 IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
-	# create check_all.py for this directory
-	CONFIGURE_FILE(
-		${CMAKE_CURRENT_SOURCE_DIR}/check_all.py.in
+	ADD_CUSTOM_COMMAND(
+		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/check_all.py
+		COMMAND
+		${CMAKE_COMMAND} -E copy
+		${CMAKE_CURRENT_SOURCE_DIR}/check_all.py
 		${CMAKE_CURRENT_BINARY_DIR}/check_all.py
 	)
-
 	# which version of Python did we find
 	SET(lib    "${PYTHONLIBS_VERSION_STRING}" )
 	SET(interp "${PYTHON_VERSION_STRING}" )

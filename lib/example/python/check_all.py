@@ -7,7 +7,6 @@
 # -----------------------------------------------------------------------------
 import sys
 import os
-xam_dir = '@CMAKE_SOURCE_DIR@/lib/xam'
 # cppad_swig_lib.dll is in .. directory
 os.environ['PATH'] = '..;' + os.environ['PATH']
 #

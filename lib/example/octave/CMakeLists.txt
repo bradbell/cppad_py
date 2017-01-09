@@ -28,12 +28,13 @@ MESSAGE(STATUS "make auto_lib_octave: available")
 assert( SWIG_FOUND )
 FIND_PROGRAM(octave_config NAMES octave-config)
 IF( octave_config )
-	# create check_all.m for this directory
-	CONFIGURE_FILE(
-		${CMAKE_CURRENT_SOURCE_DIR}/check_all.m.in
+	ADD_CUSTOM_COMMAND(
+		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/check_all.m
+		COMMAND
+		${CMAKE_COMMAND} -E copy
+		${CMAKE_CURRENT_SOURCE_DIR}/check_all.m
 		${CMAKE_CURRENT_BINARY_DIR}/check_all.m
 	)
-
 	# treat like a C++ files
 	SET_SOURCE_FILES_PROPERTIES(
 		${swig_control_file} PROPERTIES CPLUSPLUS ON
