@@ -48,7 +48,11 @@ This is a constant representing the value false in the scripting language;
 e.g. $code True$$ for Python.
 
 $subhead and_$$
-This is a logical binary operator; e.g. $code and$$ for Python.
+This is the logical binary and operator; e.g. $code and$$ for Python.
+
+$subhead not_$$
+This is the logical unary operator not; e.g. $code !$$ for Perl.
+
 
 $subhead end_$$
 This is the text that goes on a line, by itself, to terminate a block

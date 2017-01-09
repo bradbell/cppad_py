@@ -12,6 +12,7 @@ define(ext_, pm)
 define(true_, 1)
 define(false_, 0)
 define(and_, &&)
+define(not_, !)
 define(end_, })
 define(c_, `#')
 

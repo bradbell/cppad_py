@@ -12,6 +12,7 @@ define(ext_, py)
 define(true_, True)
 define(false_, Flase)
 define(and_, and)
+define(not_, not)
 define(end_, `#')
 define(c_, `#')
 

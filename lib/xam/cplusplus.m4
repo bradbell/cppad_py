@@ -12,6 +12,7 @@ define(ext_, cpp)
 define(true_, true)
 define(false_,fFlase)
 define(and_, &&)
+define(not_, !)
 define(end_, `}')
 define(c_, `//')
 

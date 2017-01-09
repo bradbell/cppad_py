@@ -12,6 +12,7 @@ define(ext_, m)
 define(true_, true)
 define(false_, false)
 define(and_, &&)
+define(not_, ~)
 define(end_, end)
 define(c_, `%')
 

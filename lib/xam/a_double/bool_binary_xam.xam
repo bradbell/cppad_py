@@ -21,6 +21,10 @@ begin_bool_fun_0_(ok, a_double_bool_binary_xam)
 	and_assign_(ok, var_(three) != var_(two))
 	and_assign_(ok, var_(three) == var_(three))
 	c_
+	and_assign_(ok, not_ `(var_(two) >  var_(three))' )
+	and_assign_(ok, not_ `(var_(two) >= var_(three))' )
+	and_assign_(ok, not_ `(var_(two) == var_(three))' )
+	c_
 	return_(var_(ok))
 end_
 c_ END SOURCE
