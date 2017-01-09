@@ -9,9 +9,9 @@ This file was automatically created by bin/check_xam.sh
 $begin lib_example_octave$$
 $spell octave $$
 $section octave Examples and Tests$$
-$childtable%build/lib/example/octave/a_double_a_double_xam.m
-	%build/lib/example/octave/a_fun_a_fun_xam.m
-	%build/lib/example/octave/vector_ad_xam.m
-	%build/lib/example/octave/vector_double_xam.m
+$childtable%
+	build/lib/example/octave/a_fun_a_fun_xam.m%
+	build/lib/example/octave/vector_ad_xam.m%
+	build/lib/example/octave/vector_double_xam.m
 %$$
 $end
