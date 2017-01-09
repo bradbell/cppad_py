@@ -44,9 +44,17 @@ mkdir doc
 cd doc
 if [ "$1" == 'htm' ]
 then
-	omhelp ../cppad_swig.omh -noframe -debug       > ../omhelp.log
+	if ! omhelp ../cppad_swig.omh -noframe -debug       > ../omhelp.log
+	then
+		echo 'run_omhelp.sh: Error: see omhelp.log'
+		exit 1
+	fi
 else
-	omhelp ../cppad_swig.omh -noframe -debug -xml  > ../omhelp.log
+	if ! omhelp ../cppad_swig.omh -noframe -debug -xml  > ../omhelp.log
+	then
+		echo 'run_omhelp.sh: Error: see omhelp.log'
+		exit 1
+	fi
 fi
 # -----------------------------------------------------------------------------
 if grep -i 'warning' ../omhelp.log

@@ -10,6 +10,7 @@ assert(m4_executable)
 SET(auto_output_list "")
 FOREACH( xam_file ${xam_file_list} )
 	STRING(REGEX REPLACE "[.]xam" ".m" source_file ${xam_file})
+	STRING(REGEX REPLACE "/"      "_"  source_file ${source_file})
 	ADD_CUSTOM_COMMAND(
 		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
 		COMMAND ${m4_executable}

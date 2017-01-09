@@ -9,8 +9,8 @@ This file was automatically created by bin/check_xam.sh
 $begin lib_example_python$$
 $spell python $$
 $section python Examples and Tests$$
-$childtable%build/lib/example/python/a_double_xam.py
-	%build/lib/example/python/a_fun_xam.py
+$childtable%build/lib/example/python/a_double_a_double_xam.py
+	%build/lib/example/python/a_fun_a_fun_xam.py
 	%build/lib/example/python/vector_ad_xam.py
 	%build/lib/example/python/vector_double_xam.py
 %$$

@@ -6,12 +6,12 @@
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
 #
-# List of xam example / test files
+# List of *.xam files in relative to lib/xam directory
 SET(xam_file_list
-	a_double_xam.xam
-	a_fun_xam.xam
-	vector_ad_xam.xam
-	vector_double_xam.xam
+	a_double/a_double_xam.xam
+	a_fun/a_fun_xam.xam
+	vector/ad_xam.xam
+	vector/double_xam.xam
 )
 #
 # sub-directories for each language (add to check_lib_depend)

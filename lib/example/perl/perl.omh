@@ -9,8 +9,8 @@ This file was automatically created by bin/check_xam.sh
 $begin lib_example_perl$$
 $spell perl $$
 $section perl Examples and Tests$$
-$childtable%build/lib/example/perl/a_double_xam.pm
-	%build/lib/example/perl/a_fun_xam.pm
+$childtable%build/lib/example/perl/a_double_a_double_xam.pm
+	%build/lib/example/perl/a_fun_a_fun_xam.pm
 	%build/lib/example/perl/vector_ad_xam.pm
 	%build/lib/example/perl/vector_double_xam.pm
 %$$
