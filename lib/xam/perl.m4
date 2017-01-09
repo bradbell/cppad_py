@@ -74,11 +74,6 @@ define(return_, return( $1 );)
 # -----------------------------------------------------------------------------
 # Other
 
-# header_(example)
-define(header_,
-c_ This file can be automatically generated using the following command
-`#' m4 ../perl.m4 ../../xam/$1.xam > $1.ext_)
-
 # begin_for_(variable, upper)
 define(begin_for_, for(my `$'$1 = 0; `$'$1 < $2; `$'$1++) {)
 

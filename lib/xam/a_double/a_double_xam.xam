@@ -1,5 +1,5 @@
-include(xam.m4)
-header_(a_double_a_double_xam)
+include(xam.m4)dnl this comments out end of line character
+header_(`a_double/a_double_xam.xam')
 c_ -----------------------------------------------------------------------------
 c_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)

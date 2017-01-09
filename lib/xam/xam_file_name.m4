@@ -23,11 +23,6 @@
 # Is the name of an $icode%*%.xam%$$ file relative to the
 # $code lib/xam$$ directory.
 #
-# $head lang_m4$$
-# It is assumed that the macros in $cref lang_m4$$ have been
-# set for the $cref/language/xam.m4/language/$$
-# that the output corresponds to.
-#
 # $head function_name_$$
 # The output value of $code function$$ has all the forward slash
 # $code /$$ characters converted to under bar $code _$$ characters
@@ -37,6 +32,10 @@
 # The output value of $code lang_file_name_$$ has all the forward slash
 # $code /$$ characters converted to under bar $code _$$ characters
 # and the file extension $code .xam$$ converted to
+# $cref/ext_/lang_m4/No Arguments/ext_/$$.
+#
+# $head Assumptions$$
+# It is assumed that the following macro has been set:
 # $cref/ext_/lang_m4/No Arguments/ext_/$$.
 #
 # $end

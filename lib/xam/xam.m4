@@ -46,5 +46,6 @@ divert(-1)
 include(language_.m4)
 include(omhelp.m4)
 include(xam_file_name.m4)
+include(header.m4)
 # -----------------------------------------------------------------------------
 divert(0)dnl trun on output and ignore this end of line

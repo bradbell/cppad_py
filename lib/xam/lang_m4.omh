@@ -237,19 +237,6 @@ $cref/end_/lang_m4/No Arguments/end_/$$.
 $comment ---------------------------------------------------------------$$
 $head Other$$
 
-$subhead header_$$
-The text corresponding to
-$codei|
-	header_(|test_name|)
-|$$
-is placed at the top of the file,
-above the copyright message.
-For example, in Python it might be
-$codei|
-	# This file can be automatically generated using the following command:
-	# m4 ../xam/python.m4 ../xam/|test_name|.m4 > |test_name|.pl
-|$$
-
 $subhead begin_for_$$
 The text corresponding to
 $codei|
