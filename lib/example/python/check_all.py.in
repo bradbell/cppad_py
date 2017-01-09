@@ -21,12 +21,15 @@ def run_test(name) :
 		print('python: ' + name + ': Error')
 		error_count = error_count + 1
 #
-for directory in [ 'a_double', 'vector', 'a_fun' ] :
-	for file_name in os.listdir(xam_dir + '/' + directory ) :
-		if file_name.endswith('.xam') :
-			name = file_name[0 : -4 ]
-			name = directory + "_" + name
-			run_test(name)
+fun_list = [
+	'a_double_a_double_xam',
+	'a_double_value_xam',
+	'a_fun_a_fun_xam',
+	'vector_ad_xam',
+	'vector_double_xam'
+]
+for name in fun_list :
+	run_test(name)
 #
 if error_count > 0 :
 	print('python: check_all: error_count = ', error_count)

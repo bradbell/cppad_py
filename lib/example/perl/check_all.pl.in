@@ -23,23 +23,16 @@ sub run_test
 	}
 }
 #
-my $xam_dir      = '@CMAKE_SOURCE_DIR@/lib/xam';
-my @sub_dir_list = ('a_double', 'vector', 'a_fun' );
-for( my $i = 0; $i <= $#sub_dir_list; $i++)
-{	my $directory = $xam_dir . '/' . $sub_dir_list[$i];
-	opendir (my $dir_handle, $directory) or die $!;
-	while (my $file_name = readdir($dir_handle))
-	{	my $len = length($file_name);
-		my $ext = '';
-		if( $len > 4 )
-		{	$ext = substr($file_name, $len - 4, 4);
-		}
-		if( $ext eq '.xam' )
-		{	my $name = substr($file_name, 0, $len - 4);
-			$name = $sub_dir_list[$i] . '_' . $name;
-			run_test($name);
-		}
-	}
+my @fun_list = (
+	'a_double_a_double_xam',
+	'a_double_value_xam',
+	'a_fun_a_fun_xam',
+	'vector_ad_xam',
+	'vector_double_xam'
+);
+for( my $i = 0; $i <= $#fun_list; $i++)
+{	my $name = $fun_list[$i];
+	run_test($name);
 }
 if( $error_count > 0 )
 {	print 'perl: check_all: error_count = ', $error_count, "\n";
