@@ -5,13 +5,13 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
-# $begin xam_file_name$$
+# $begin xam_file_name.m4$$ $newlinech #$$
 # $spell
 #	xam
 #	lang
 # $$
 #
-# $section Convert xam File Name to Language Specific File name$$
+# $section Function and File Naming$$
 #
 # $head Syntax$$
 # $codei%lang_file_name_(%xam_file_name%)
@@ -23,12 +23,12 @@
 # Is the name of an $icode%*%.xam%$$ file relative to the
 # $code lib/xam$$ directory.
 #
-# $head function_name_$$
-# The output value of $code function$$ has all the forward slash
+# $head function_name$$
+# The output value of $code function_name_$$ has all the forward slash
 # $code /$$ characters converted to under bar $code _$$ characters
 # and the file extension $code .xam$$ removed.
 #
-# $head lang_file_name_$$
+# $head lang_file_name$$
 # The output value of $code lang_file_name_$$ has all the forward slash
 # $code /$$ characters converted to under bar $code _$$ characters
 # and the file extension $code .xam$$ converted to

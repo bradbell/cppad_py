@@ -17,10 +17,11 @@
 # $section m4 Macro That Include Omhelp to Display Source Code$$
 #
 # $head Syntax$$
-# $codei%omhelp_(%name_xam%, %omhelp_title%)%$$
+# $codei%omhelp_(%function_name%, %omhelp_title%)%$$
 #
-# $head name_xam$$
-# is the name of module object that is tested by this file.
+# $head function_name$$
+# is the name of function corresponding to this output file; see
+# $cref/function_name/xam_file_name.m4/function_name/$$.
 #
 # $head omhelp_title$$
 # is the title of this Omhelp section that displays this source code.
@@ -41,14 +42,14 @@
 # set for the $cref/language/xam.m4/language/$$
 # that the output corresponds to.
 #
-# $subhead file_name$$
+# $subhead lang_file_name$$
 # The name of the source code file where the current output is placed
 # is assumed to be
 # $codei%
-#	build/lib/example/%language%.%name_xam%.%ext%
+#	build/lib/example/%language%/%lang_file_name%
 # %$$
-# where $icode language$$ is $code cplusplus$$, $code octave$$,
-# $code perl$$, or $code python$$.
+# see $cref/language/xam.m4/language/$$ and
+# $cref/lang_file_name/xam_file_name.m4/lang_file_name/$$.
 #
 # $subhead Formatting$$
 # Let $icode source code$$ denote the language specific source code

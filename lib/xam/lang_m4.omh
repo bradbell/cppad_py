@@ -201,14 +201,14 @@ $head Function Statements$$
 $subhead begin_bool_fun_0_$$
 The text corresponding to
 $codei|
-	begin_bool_fun_0_(|return_variable|, |fun_name|)
+	begin_bool_fun_0_(|return_variable|, |function_name|)
 |$$
 is placed at the beginning of function that has zero arguments
 and a boolean return value.
 This must initialize $icode return_variable$$ as true.
 For example, in Octave it might be
 $codei|
-	function |return_variable| = |fun_name|()
+	function |return_variable| = |function_name|()
 		%
 		% load the Cppad Swig library
 		m_cppad
@@ -218,6 +218,9 @@ $codei|
 |$$
 Note that this begins a block of code that will be terminated
 by a corresponding $code end_$$.
+The argument $icode function_name$$ should be related to
+the xam input file as follows:
+$cref/function_name/xam_file_name.m4/function_name/$$.
 
 
 $subhead return_$$
