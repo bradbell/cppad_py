@@ -7,7 +7,7 @@
 # -----------------------------------------------------------------------------
 import sys
 import os
-source_dir = '@CMAKE_SOURCE_DIR@/lib/xam'
+xam_dir = '@CMAKE_SOURCE_DIR@/lib/xam'
 # cppad_swig_lib.dll is in .. directory
 os.environ['PATH'] = '..;' + os.environ['PATH']
 #
@@ -21,10 +21,12 @@ def run_test(name) :
 		print('python: ' + name + ': Error')
 		error_count = error_count + 1
 #
-for file_name in os.listdir(source_dir) :
-	if file_name.endswith('.xam') :
-		name = file_name[0 : -4 ]
-		run_test(name)
+for directory in [ 'a_double', 'vector', 'a_fun' ] :
+	for file_name in os.listdir(xam_dir + '/' + directory ) :
+		if file_name.endswith('.xam') :
+			name = file_name[0 : -4 ]
+			name = directory + "_" + name
+			run_test(name)
 #
 if error_count > 0 :
 	print('python: check_all: error_count = ', error_count)

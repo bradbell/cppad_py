@@ -128,6 +128,9 @@ a_double::~a_double(void)
 /*
 -------------------------------------------------------------------------------
 $begin a_double_value$$
+$spell
+	perl
+$$
 
 $section Conversion From a_double to double$$
 $spell
@@ -154,6 +157,18 @@ $codei%
 	double %d%
 %$$
 It is the value of $icode ad$$, as a constant function.
+
+$children%
+	build/lib/example/cplusplus/a_double_value_xam.cpp%
+	build/lib/example/octave/a_double_value_xam.m%
+	build/lib/example/perl/a_double_value_xam.pm%
+	build/lib/example/python/a_double_value_xam.py
+%$$
+$head Example$$
+$cref/C++/a_double_value_xam.cpp/$$,
+$cref/octave/a_double_value_xam.m/$$,
+$cref/perl/a_double_value_xam.pm/$$,
+$cref/python/a_double_value_xam.py/$$.
 
 $end
 */

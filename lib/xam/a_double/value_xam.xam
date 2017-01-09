@@ -1,0 +1,24 @@
+include(xam.m4)dnl this comments out end of line character
+header_(`a_double/value.xam')
+c_ -----------------------------------------------------------------------------
+c_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+c_              This program is distributed under the terms of the
+c_          GNU Affero General Public License version 3.0 or later see
+c_                     http://www.gnu.org/licenses/agpl.txt
+c_ -----------------------------------------------------------------------------
+c_ a_double value()
+c_ -----------------------------------------------------------------------------
+c_ BEGIN SOURCE
+begin_bool_fun_0_(ok, a_double_value_xam)
+	new_var_new_(a_double, two,    module_(a_double)(2.0))
+	new_var_new_(a_double, three,  module_(a_double)(3.0))
+	c_
+	and_assign_(ok, member_(two, value)()   == 2.0)
+	and_assign_(ok, member_(three, value)() == 3.0)
+	c_
+	return_(var_(ok))
+end_
+c_ END SOURCE
+c_
+omhelp_(a_double_value_xam, language_: a_double value() Example and Test)

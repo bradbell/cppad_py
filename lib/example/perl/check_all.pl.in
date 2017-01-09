@@ -23,17 +23,22 @@ sub run_test
 	}
 }
 #
-my $source_dir = '@CMAKE_SOURCE_DIR@/lib/xam';
-opendir (my $dir_handle, $source_dir) or die $!;
-while (my $file_name = readdir($dir_handle))
-{	my $len = length($file_name);
-	my $ext = '';
-	if( $len > 4 )
-	{	$ext = substr($file_name, $len - 4, 4);
-	}
-	if( $ext eq '.xam' )
-	{	my $name = substr($file_name, 0, $len - 4);
-		run_test($name);
+my $xam_dir      = '@CMAKE_SOURCE_DIR@/lib/xam';
+my @sub_dir_list = ('a_double', 'vector', 'a_fun' );
+for( my $i = 0; $i <= $#sub_dir_list; $i++)
+{	my $directory = $xam_dir . '/' . $sub_dir_list[$i];
+	opendir (my $dir_handle, $directory) or die $!;
+	while (my $file_name = readdir($dir_handle))
+	{	my $len = length($file_name);
+		my $ext = '';
+		if( $len > 4 )
+		{	$ext = substr($file_name, $len - 4, 4);
+		}
+		if( $ext eq '.xam' )
+		{	my $name = substr($file_name, 0, $len - 4);
+			$name = $sub_dir_list[$i] . '_' . $name;
+			run_test($name);
+		}
 	}
 }
 if( $error_count > 0 )
