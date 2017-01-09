@@ -15,8 +15,8 @@ SET(auto_list
 	vector_double_xam.py
 )
 SET(auto_output_list "")
-FOREACH( source_file ${auto_list} )
-	STRING(REGEX REPLACE "[.]py" ".xam" xam_file ${source_file})
+FOREACH( xam_file ${xam_file_list} )
+	STRING(REGEX REPLACE "[.]xam" ".py" source_file ${xam_file})
 	ADD_CUSTOM_COMMAND(
 		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
 		COMMAND ${m4_executable}
@@ -26,7 +26,7 @@ FOREACH( source_file ${auto_list} )
 		> ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
 	)
 	add_to_list(auto_output_list ${CMAKE_CURRENT_BINARY_DIR}/${source_file} )
-ENDFOREACH( source_file ${auto_list} )
+ENDFOREACH( xam_file ${xam_file_list} )
 ADD_CUSTOM_TARGET(auto_lib_python DEPENDS ${auto_output_list} )
 MESSAGE(STATUS "make auto_lib_python: available")
 #

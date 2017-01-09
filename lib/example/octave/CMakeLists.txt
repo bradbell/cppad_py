@@ -7,16 +7,9 @@
 # -----------------------------------------------------------------------------
 assert(m4_executable)
 #
-# List of automatically generated source files
-SET(auto_list
-	a_double_xam.m
-	a_fun_xam.m
-	vector_ad_xam.m
-	vector_double_xam.m
-)
 SET(auto_output_list "")
-FOREACH( source_file ${auto_list} )
-	STRING(REGEX REPLACE "[.]m" ".xam" xam_file ${source_file})
+FOREACH( xam_file ${xam_file_list} )
+	STRING(REGEX REPLACE "[.]xam" ".m" source_file ${xam_file})
 	ADD_CUSTOM_COMMAND(
 		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
 		COMMAND ${m4_executable}
@@ -26,7 +19,7 @@ FOREACH( source_file ${auto_list} )
 		> ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
 	)
 	add_to_list(auto_output_list ${CMAKE_CURRENT_BINARY_DIR}/${source_file} )
-ENDFOREACH( source_file ${auto_list} )
+ENDFOREACH( xam_file ${xam_file_list} )
 ADD_CUSTOM_TARGET(auto_lib_octave DEPENDS ${auto_output_list} )
 MESSAGE(STATUS "make auto_lib_octave: available")
 #
