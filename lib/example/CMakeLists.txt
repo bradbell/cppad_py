@@ -10,6 +10,7 @@
 SET(xam_file_list
 	a_double/value_xam.xam
 	a_double/ad_binary_xam.xam
+	a_double/bool_binary_xam.xam
 	a_fun/a_fun_xam.xam
 	vector/ad_xam.xam
 	vector/double_xam.xam

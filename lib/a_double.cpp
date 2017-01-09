@@ -181,7 +181,7 @@ double a_double::value(void) const
 -------------------------------------------------------------------------------
 $begin a_double_ad_binary$$
 
-$section Binary Operators with an a_double Result$$
+$section ad_double Binary Operators with an a_double Result$$
 $spell
 	const
 	az
@@ -194,10 +194,10 @@ $icode%az% = %ax% %op% %ay%$$
 
 $head op$$
 The binary operator $icode op$$ is one of the following:
-addition $code +$$,
-subtraction $code -$$,
-multiplication $code *$$,
-division $code /$$.
+$code +$$ (addition),
+$code -$$ (subtraction),
+$code *$$ (multiplication),
+$code /$$ (division).
 
 $head ax$$
 This object has prototype
@@ -235,6 +235,63 @@ BINARY_OP_AD_RESULT(+)
 BINARY_OP_AD_RESULT(-)
 BINARY_OP_AD_RESULT(*)
 BINARY_OP_AD_RESULT(/)
+/*
+-------------------------------------------------------------------------------
+$begin a_double_bool_binary$$
+
+$section ad_double Binary Operators with a Boolean Result$$
+$spell
+	const
+	az
+	op
+	perl
+	bool
+$$
+
+$head Syntax$$
+$icode%b% = %ax% %op% %ay%$$
+
+$head op$$
+The binary operator $icode op$$ is one of the following:
+$code <$$ (less than),
+$code <=$$ (less than or equal),
+$code >$$ (greater than),
+$code >=$$ (greater than or equal),
+$code ==$$ (equal),
+$code !=$$ (equal),
+
+$head ax$$
+This object has prototype
+$codei%
+	const a_double& %ax%
+%$$
+
+$head ay$$
+This object has prototype
+$codei%
+	const a_double& %ay%
+%$$
+
+$head b$$
+The result has prototype
+$codei%
+	bool %b%
+%$$
+
+$children%
+	build/lib/example/cplusplus/a_double_bool_binary_xam.cpp%
+	build/lib/example/octave/a_double_bool_binary_xam.m%
+	build/lib/example/perl/a_double_bool_binary_xam.pm%
+	build/lib/example/python/a_double_bool_binary_xam.py
+%$$
+$head Example$$
+$cref/C++/a_double_bool_binary_xam.cpp/$$,
+$cref/octave/a_double_bool_binary_xam.m/$$,
+$cref/perl/a_double_bool_binary_xam.pm/$$,
+$cref/python/a_double_bool_binary_xam.py/$$.
+
+$end
+*/
 // comparison operators
 COMPARISON_OP(<)
 COMPARISON_OP(<=)
