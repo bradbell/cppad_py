@@ -292,17 +292,67 @@ $cref/python/a_double_compare_xam.py/$$.
 
 $end
 */
-// comparison operators
 COMPARISON_OP(<)
 COMPARISON_OP(<=)
 COMPARISON_OP(>)
 COMPARISON_OP(>=)
 COMPARISON_OP(==)
 COMPARISON_OP(!=)
-// computed assignment operators
+/*
+-------------------------------------------------------------------------------
+$begin a_double_assign$$
+
+$section ad_double Assignment Operators$$
+$spell
+	const
+	az
+	op
+	perl
+$$
+
+$head Syntax$$
+$icode%ay% %op% %ax%%$$
+
+$head op$$
+The assignment operator $icode op$$ is one of the following:
+$table
+$icode op$$ $pre  $$ $cnext Meaning            $rnext
+$code =$$ $cnext  simple assignment            $rnext
+$code +=$$ $cnext $icode%ay% = %ay% + %ax%$$   $rnext
+$code -=$$ $cnext $icode%ay% = %ay% - %ax%$$   $rnext
+$code *=$$ $cnext $icode%ay% = %ay% * %ax%$$   $rnext
+$code /=$$ $cnext $icode%ay% = %ay% / %ax%$$
+$tend
+
+$head ax$$
+This object has prototype
+$codei%
+	const a_double& %ax%
+%$$
+
+$head ay$$
+This object has prototype
+$codei%
+	a_double& %ay%
+%$$
+
+$children%
+	build/lib/example/cplusplus/a_double_assign_xam.cpp%
+	build/lib/example/octave/a_double_assign_xam.m%
+	build/lib/example/perl/a_double_assign_xam.pm%
+	build/lib/example/python/a_double_assign_xam.py
+%$$
+$head Example$$
+$cref/C++/a_double_assign_xam.cpp/$$,
+$cref/octave/a_double_assign_xam.m/$$,
+$cref/perl/a_double_assign_xam.pm/$$,
+$cref/python/a_double_assign_xam.py/$$.
+
+$end
+*/
 COMPUTED_ASSIGNMENT_OP(+=)
 COMPUTED_ASSIGNMENT_OP(-=)
 COMPUTED_ASSIGNMENT_OP(*=)
 COMPUTED_ASSIGNMENT_OP(/=)
-
+// --------------------------------------------------------------------------
 } // END_CPPAD_SWIG_NAMESPACE
