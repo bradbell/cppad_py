@@ -15,8 +15,6 @@ SET(xam_file_list
 	a_double/compare_xam.xam
 	vector/size_xam.xam
 	vector/set_get_xam.xam
-	vector/ad_xam.xam
-	vector/double_xam.xam
 	a_fun/a_fun_xam.xam
 )
 #

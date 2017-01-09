@@ -10,8 +10,6 @@ $begin lib_example_octave$$
 $spell octave $$
 $section octave Examples and Tests$$
 $childtable%
-	build/lib/example/octave/a_fun_a_fun_xam.m%
-	build/lib/example/octave/vector_ad_xam.m%
-	build/lib/example/octave/vector_double_xam.m
+	build/lib/example/octave/a_fun_a_fun_xam.m
 %$$
 $end

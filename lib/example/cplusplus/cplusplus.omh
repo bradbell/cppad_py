@@ -10,8 +10,6 @@ $begin lib_example_cplusplus$$
 $spell cplusplus $$
 $section cplusplus Examples and Tests$$
 $childtable%
-	build/lib/example/cplusplus/a_fun_a_fun_xam.cpp%
-	build/lib/example/cplusplus/vector_ad_xam.cpp%
-	build/lib/example/cplusplus/vector_double_xam.cpp
+	build/lib/example/cplusplus/a_fun_a_fun_xam.cpp
 %$$
 $end
