@@ -38,11 +38,13 @@ divert(-1)
 #
 # $childtable%lib/xam/lang_m4.omh
 #	%lib/xam/omhelp.m4
+#	%lib/xam/xam_file_name.m4
 # %$$
 #
 # $end
 #
 include(language_.m4)
 include(omhelp.m4)
+include(xam_file_name.m4)
 # -----------------------------------------------------------------------------
 divert(0)dnl trun on output and ignore this end of line

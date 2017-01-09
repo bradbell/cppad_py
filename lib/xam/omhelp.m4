@@ -7,6 +7,7 @@
 # -----------------------------------------------------------------------------
 # $begin omhelp.m4$$ $newlinech #$$
 # $spell
+#	lang
 #	Omhelp
 #	xam
 #	cplusplus
@@ -34,6 +35,11 @@
 #
 #
 # $head Assumption$$
+#
+# $subhead lang_m4$$
+# It is assumed that the macros in $cref lang_m4$$ have been
+# set for the $cref/language/xam.m4/language/$$
+# that the output corresponds to.
 #
 # $subhead file_name$$
 # The name of the source code file where the current output is placed

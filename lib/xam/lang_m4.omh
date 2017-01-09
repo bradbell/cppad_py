@@ -36,8 +36,8 @@ $comment ---------------------------------------------------------------$$
 $head No Arguments$$
 
 $subhead ext_$$
-This is the file extension used for scripting language; e.g.,
-$code py$$ for Python files.
+This is the file extension (without the $code .$$)
+used for scripting language; e.g., $code py$$ for Python files.
 
 $subhead true_$$
 This is a constant representing the value true in the scripting language;
