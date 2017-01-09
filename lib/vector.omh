@@ -62,7 +62,7 @@ $$
 $section Size of a Vector$$
 
 $head Syntax$$
-$codei%n% = %v%.size()%$$
+$icode%n% = %v%.size()%$$
 
 $head v$$
 The object $icode v$$ has one of the following prototypes:
@@ -90,5 +90,80 @@ $cref/C++/vector_size_xam.cpp/$$,
 $cref/octave/vector_size_xam.m/$$,
 $cref/perl/vector_size_xam.pm/$$,
 $cref/python/vector_size_xam.py/$$.
+
+$end
+-------------------------------------------------------------------------------
+$begin vector_set_get$$
+$spell
+	Cppad
+	Perl
+	const
+$$
+
+$section Setting and Getting Vector Elements$$
+
+$head Syntax$$
+$icode%u%[%i%] = %x%
+%$$
+$codei%y% = %v%[%i%]
+%$$
+
+$head u$$
+The object $icode u$$ has one of the following prototypes:
+$codei%
+	vector_double& %u%
+	vector_ad&     %u%
+%$$
+
+$head x$$
+If $icode u$$ has type $code vector_double$$,
+$icode x$$ has prototype
+$codei%
+	const double& %x%
+%$$
+If $icode u$$ has type $code vector_ad$$,
+$icode x$$ has prototype
+$codei%
+	const a_double& %x%
+%$$
+
+$head v$$
+The object $icode v$$ has one of the following prototypes:
+$codei%
+	const vector_double& %v%
+	const vector_ad&     %v%
+%$$
+
+$head y$$
+If $icode v$$ has type $code vector_double$$,
+$icode y$$ has prototype
+$codei%
+	double %y%
+%$$
+If $icode v$$ has type $code vector_ad$$,
+$icode y$$ has prototype
+$codei%
+	a_double %y%
+%$$
+
+$head Octave$$
+Note that Octave uses parenthesis $code ()$$ instead of brackets
+$code []$$ for element access.
+
+$head Perl$$
+Note that Perl does not support the element syntax above
+and instead uses $code set$$ and $code get$$ member functions.
+
+$children%
+	build/lib/example/cplusplus/vector_set_get_xam.cpp%
+	build/lib/example/octave/vector_set_get_xam.m%
+	build/lib/example/perl/vector_set_get_xam.pm%
+	build/lib/example/python/vector_set_get_xam.py
+%$$
+$head Example$$
+$cref/C++/vector_set_get_xam.cpp/$$,
+$cref/octave/vector_set_get_xam.m/$$,
+$cref/perl/vector_set_get_xam.pm/$$,
+$cref/python/vector_set_get_xam.py/$$.
 
 $end

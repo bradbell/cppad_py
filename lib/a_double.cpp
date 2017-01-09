@@ -150,6 +150,10 @@ $head ay$$
 If the operator is $code +$$, the result is equal to $icode ax$$.
 If it is $code -$$, the result is the negative of $icode ax$$.
 
+$head Octave$$
+Note that Octave does not support these unary operators
+(the reason why is unclear at this time).
+
 $children%
 	build/lib/example/cplusplus/a_double_unary_xam.cpp%
 	build/lib/example/octave/a_double_unary_xam.m%

@@ -27,6 +27,7 @@ fun_list = [
 	'a_double_ad_binary_xam',
 	'a_double_compare_xam',
 	'vector_size_xam',
+	'vector_set_get_xam',
         'vector_ad_xam',
 	'vector_double_xam',
 	'a_fun_a_fun_xam'
