@@ -9,11 +9,13 @@
 revert_list='
 '
 move_list='
+	lib/xam/a_double/bool_binary_xam.xam
 '
-move_sed='s|/local/|/core/|'
+move_sed='s|bool_binary_xam|compare_xam|'
 #
 cat << EOF > junk.sed
-s|generaeted|generated|
+s|a_double_bool_binary|a_double_compare|g
+s|a_double/bool_binary|a_double/compare|g
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

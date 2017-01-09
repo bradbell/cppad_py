@@ -237,9 +237,9 @@ BINARY_OP_AD_RESULT(*)
 BINARY_OP_AD_RESULT(/)
 /*
 -------------------------------------------------------------------------------
-$begin a_double_bool_binary$$
+$begin a_double_compare$$
 
-$section ad_double Binary Operators with a Boolean Result$$
+$section ad_double Comparison Operators$$
 $spell
 	const
 	az
@@ -258,7 +258,7 @@ $code <=$$ (less than or equal),
 $code >$$ (greater than),
 $code >=$$ (greater than or equal),
 $code ==$$ (equal),
-$code !=$$ (equal),
+$code !=$$ (not equal).
 
 $head ax$$
 This object has prototype
@@ -279,16 +279,16 @@ $codei%
 %$$
 
 $children%
-	build/lib/example/cplusplus/a_double_bool_binary_xam.cpp%
-	build/lib/example/octave/a_double_bool_binary_xam.m%
-	build/lib/example/perl/a_double_bool_binary_xam.pm%
-	build/lib/example/python/a_double_bool_binary_xam.py
+	build/lib/example/cplusplus/a_double_compare_xam.cpp%
+	build/lib/example/octave/a_double_compare_xam.m%
+	build/lib/example/perl/a_double_compare_xam.pm%
+	build/lib/example/python/a_double_compare_xam.py
 %$$
 $head Example$$
-$cref/C++/a_double_bool_binary_xam.cpp/$$,
-$cref/octave/a_double_bool_binary_xam.m/$$,
-$cref/perl/a_double_bool_binary_xam.pm/$$,
-$cref/python/a_double_bool_binary_xam.py/$$.
+$cref/C++/a_double_compare_xam.cpp/$$,
+$cref/octave/a_double_compare_xam.m/$$,
+$cref/perl/a_double_compare_xam.pm/$$,
+$cref/python/a_double_compare_xam.py/$$.
 
 $end
 */
