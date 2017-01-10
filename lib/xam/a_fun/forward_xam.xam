@@ -21,7 +21,7 @@ begin_bool_fun_0_(ok, a_fun_forward_xam)
 	end_
 	new_var_(vector_ad, ax, module_(independent)(xp))
 	c_
-	c_ creage ay with size m and ay0 = ax0 * ax1
+	c_ create ay with size m and ay0 = ax0 * ax1
 	new_var_(a_double, ax0, vec_get_(ax, 0))
 	new_var_(a_double, ax1, vec_get_(ax, 1))
 	new_var_new_(vector_ad, ay, module_(vector_ad)(m))

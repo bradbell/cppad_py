@@ -24,6 +24,7 @@ fun_list = {
 	'vector_size_xam',
 	'vector_set_get_xam',
 	'a_fun_forward_xam',
+	'a_fun_reverse_xam',
 	'a_fun_abort_xam'
 }';
 for fun = fun_list

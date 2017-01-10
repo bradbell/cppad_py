@@ -1,0 +1,63 @@
+include(xam.m4)dnl this comments out end of line character
+header_(a_fun/reverse_xam.xam)
+c_ -----------------------------------------------------------------------------
+c_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+c_              This program is distributed under the terms of the
+c_          GNU Affero General Public License version 3.0 or later see
+c_                     http://www.gnu.org/licenses/agpl.txt
+c_ -----------------------------------------------------------------------------
+c_ std::vector<a_double>
+c_ -----------------------------------------------------------------------------
+c_ BEGIN SOURCE
+begin_bool_fun_0_(ok, a_fun_reverse_xam)
+	new_var_(size_t, n, 3)
+	new_var_(size_t, m, 1)
+	c_
+	c_ create the independent variables ax with size n
+	new_var_new_(vector_double, xp, module_(vector_double)(n))
+	begin_for_(i, var_(n) )
+		vec_set_(xp, var_(i), var_(i))
+	end_
+	new_var_(vector_ad, ax, module_(independent)(xp))
+	c_
+	c_ create ay with size m and ay0 = ax_0 * ax_1 * ax_2
+	new_var_(a_double, ax_0, vec_get_(ax, 0))
+	new_var_(a_double, ax_1, vec_get_(ax, 1))
+	new_var_(a_double, ax_2, vec_get_(ax, 2))
+	new_var_new_(vector_ad, ay, module_(vector_ad)(m))
+	vec_set_(ay, 0, var_(ax_0) * var_(ax_1) * var_(ax_2))
+	c_
+	c_ define af corresponding to f(x) = x_0 * x_1 * x_2
+	new_var_new_(a_fun, af, module_(a_fun)(var_(ax), var_(ay)))
+	c_
+	c_ define X(t) = (2 + t, 3 + t, 4 + t)
+	c_ it follows that Y(t) = f(X(t)) = (2 + t) * (3 + t) * (4 + t)
+	c_
+	c_ Y(0) = 6 and p ! = 1
+	new_var_(size_t, p, 0)
+	vec_set_(xp, 0, 2.0)
+	vec_set_(xp, 1, 3.0)
+	vec_set_(xp, 2, 4.0)
+	new_var_(vector_double, yp, member_(af, forward)(p, var_(xp)))
+	and_assign_(ok, vec_get_(yp, 0) == 24.0)
+	c_
+	c_ Compute derivative of G w.r.t x zero order Taylor coefficients
+	c_ define G( Y_0^0 ) = Y_0^0 = X_0^0 * X_1^0 * X_2^0
+	new_var_(size_t, q, 1)
+	new_var_(vector_double, y1, module_(vector_double)(m))
+	vec_set_(y1, 0, 1.0)
+	new_var_(vector_double, x1, member_(af, reverse)(q, var_(y1)))
+	c_ partial G w.r.t X_0^0
+	and_assign_(ok, vec_get_(x1, 0) == 3.0 * 4.0 )
+	c_ partial G w.r.t X_1^0
+	and_assign_(ok, vec_get_(x1, 1) == 2.0 * 4.0 )
+	c_ partial G w.r.t X_2^0
+	and_assign_(ok, vec_get_(x1, 2) == 2.0 * 3.0 )
+	c_
+	return_(var_(ok))
+end_
+c_ END SOURCE
+c_
+omhelp_(a_fun_reverse_xam,
+language_: Reverse Mode AD: Example and Test)

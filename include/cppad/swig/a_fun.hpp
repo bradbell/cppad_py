@@ -48,6 +48,8 @@ class CPPAD_SWIG_LIB_PUBLIC a_fun
 	a_fun( const std::vector<a_double>& ax, const std::vector<a_double>& ay );
 	// forward
 	std::vector<double> forward(size_t p, const std::vector<double>& xp );
+	// reverse
+	std::vector<double> reverse(size_t q, const std::vector<double>& yq );
 };
 
 } // END_CPPAD_SWIG_NAMESPACE

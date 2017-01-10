@@ -203,13 +203,16 @@ $spell
 $$
 
 $section Forward Mode AD$$
+$spell
+	xp
+$$
 
 $head Syntax$$
 $icode%yp% = %af%.forward(%p%, %xp%)%$$
 
 $head Taylor Coefficient$$
 For a function $latex g(t)$$ of a scalar argument $latex t \in \B{R}$$,
-the $icode p$$-th order Taylor coefficient is its
+the $th p$$ order Taylor coefficient is its
 $code p$$-th order derivative divided by $icode p$$ factorial
 and evaluated at $latex t = 0$$; i.e.,
 $latex \[
@@ -232,6 +235,14 @@ Note that $icode n$$ is the size of $cref/ax/a_fun_ctor/ax/$$
 and $icode m$$ is the size of $cref/ay/a_fun_ctor/ay/$$
 in to the constructor for $icode af$$.
 
+$head X(t)$$
+We use the notation $latex X : \B{R} \rightarrow \B{R}^n$$
+for a function that the calling routine chooses.
+
+$head Y(t)$$
+We define the function $latex Y : \B{R} \rightarrow \B{R}^n$$
+by $latex Y(t) = f(X(t))$$.
+
 $head p$$
 This argument has prototype
 $codei%
@@ -246,8 +257,7 @@ $codei%
 	const vector_double& %xp%
 %$$
 and its size must be $icode n$$.
-It specifies the $icode p$$ order Taylor coefficients for
-a function $latex X : \B{R} \rightarrow \B{R}^n$$.
+It specifies the $th p$$ order Taylor coefficients for $icode X(t)$$.
 
 $head yp$$
 The result has prototype
@@ -255,9 +265,7 @@ $codei%
 	vector_double %yp%
 %$$
 and its size is $icode m$$.
-It is the $icode p$$ order Taylor coefficients for
-the function $latex Y : \B{R} \rightarrow \B{R}^n$$
-defined by $latex Y(t) = f(X(t))$$.
+It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
 
 $children%
 	build/lib/example/cplusplus/a_fun_forward_xam.cpp%
@@ -276,6 +284,115 @@ $end
 */
 std::vector<double> a_fun::forward(size_t p, const std::vector<double>& xp)
 {	return ptr_->Forward(p, xp);
+}
+/*
+-------------------------------------------------------------------------------
+$begin a_fun_reverse$$
+$spell
+	af
+	xq
+	Taylor
+	yq
+	const
+	Perl
+$$
+
+$section Reverse Mode AD$$
+
+$head Syntax$$
+$icode%xq% = %af%.reverse(%q%, %yq%)%$$
+
+$head af$$
+This object has prototype
+$codei%
+	a_fun %af%
+%$$
+Note that it is effectively $code const$$,
+but some details that are not visible to the user may change,
+so it is not declared $code const$$.
+
+$head Notation$$
+
+$subhead f(x)$$
+We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
+for the function corresponding to $icode af$$.
+Note that $icode n$$ is the size of $cref/ax/a_fun_ctor/ax/$$
+and $icode m$$ is the size of $cref/ay/a_fun_ctor/ay/$$
+in to the constructor for $icode af$$.
+
+$subhead X(t), S$$
+This is the same function as
+$cref/X(t)/a_fun_forward/X(t)/$$ in the previous call to
+$icode%af%.forward%$$.
+We use $latex S \in \B{R}^{n \times q}$$ to denote the Taylor coefficients
+of $latex X(t)$$.
+
+$subhead Y(t), T$$
+This is the same function as
+$cref/Y(t)/a_fun_forward/Y(t)/$$ in the previous call to
+$icode%af%.forward%$$.
+We use $latex T \in \B{R}^{m \times q}$$ to denote the Taylor coefficients
+of $latex Y(t)$$.
+We also use the notation $latex T(S)$$ to express the fact that
+the Taylor coefficients for $latex Y(t)$$ are a function of the
+Taylor coefficients of $latex X(t)$$.
+
+$subhead G(T)$$
+We use the notation $latex G : \B{R}^{m \times p} \rightarrow \B{R}$$
+for a function that the calling routine chooses.
+
+$head q$$
+This argument has prototype
+$codei%
+	size_t %p%
+%$$
+i.e., it is a positive integer.
+Its value is the number of the Taylor coefficient (for each variable)
+that we are computing the derivative with respect to.
+
+$head yq$$
+This argument has prototype
+$codei%
+	const vector_double& %yq%
+%$$
+and its size must be $icode%m%*%q%$$.
+For $icode%0% <= %i% < %m%$$ and $icode%0% <= %k% < %q%$$,
+$icode%yq%[ %i% * %q% + %k% ]%$$ is the partial derivative of
+$latex G(T)$$ with respect to the $th k$$ order Taylor coefficient
+for the $th i$$ component function; i.e.,
+the partial derivative of $latex G(T)$$ w.r.t. $latex Y_i^{(k)} (t) / k !$$.
+
+$head xq$$
+The result has prototype
+$codei%
+	vector_double %xq%
+%$$
+and its size is $icode%n%*%q%$$.
+For $icode%0% <= %j% < %n%$$ and $icode%0% <= %k% < %q%$$,
+$icode%yq%[ %j% * %q% + %k% ]%$$ is the partial derivative of
+$latex G(T(S))$$ with respect to the $th k$$ order Taylor coefficient
+for the $th j$$ component function; i.e.,
+the partial derivative of
+$latex G(T(S))$$ w.r.t. $latex S_j^{(k)} (t) / k !$$.
+
+$children%
+	build/lib/example/cplusplus/a_fun_reverse_xam.cpp%
+	build/lib/example/octave/a_fun_reverse_xam.m%
+	build/lib/example/perl/a_fun_reverse_xam.pm%
+	build/lib/example/python/a_fun_reverse_xam.py
+%$$
+$head Example$$
+$cref/C++/a_fun_reverse_xam.cpp/$$,
+$cref/Octave/a_fun_reverse_xam.m/$$,
+$cref/Perl/a_fun_reverse_xam.pm/$$,
+$cref/Python/a_fun_reverse_xam.py/$$.
+
+
+$end
+*/
+std::vector<double> a_fun::reverse(size_t q, const std::vector<double>& yq)
+{	// 2DO: raise exception if yq.size() != q * ptr_->Range()
+	return ptr_->Reverse(q, yq);
 }
 
 } // END_CPPAD_SWIG_NAMESPACE
