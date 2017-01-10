@@ -192,6 +192,83 @@ a_fun::a_fun(
 	ptr_->Dependent(ax_copy, ay_copy);
 }
 /*
+------------------------------------------------------------------------------
+$begin a_fun_jacobian$$
+$spell
+	af
+	Taylor
+	const
+	Perl
+	Jacobian
+$$
+
+$section Jacobian of an AD Function$$
+$spell
+$$
+
+$head Syntax$$
+$icode%J% = %af%.jacobian(%x%)%$$
+
+$head af$$
+This object has prototype
+$codei%
+	a_fun %af%
+%$$
+Note that its state is changed by this operation.
+The zero order
+$cref/Taylor coefficients/a_fun_forward/Taylor Coefficient/$$ in $icode af$$
+correspond to the value of $icode x$$.
+The other Taylor coefficients in $icode af$$ are unspecified.
+
+$head f(x)$$
+We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
+for the function corresponding to $icode af$$.
+Note that $icode n$$ is the size of $cref/ax/a_fun_ctor/ax/$$
+and $icode m$$ is the size of $cref/ay/a_fun_ctor/ay/$$
+in to the constructor for $icode af$$.
+
+$head x$$
+This argument has prototype
+$codei%
+	const vector_double& %x%
+%$$
+and its size must be $icode n$$.
+It specifies the argument value at we are computing the Jacobian
+$latex f'(x)$$.
+
+$head J$$
+The result has prototype
+$codei%
+	vector_double %J%
+%$$
+and its size is $icode%m%*%n%$$.
+For $icode i$$ between zero and $icode%m%-1%$$
+and $icode j$$ between zero and $icode%n%-1%$$,
+$latex \[
+	J [ i * n + j ] = \frac{ \partial f_i }{ \partial x_j } (x)
+\] $$
+
+
+$children%
+	build/lib/example/cplusplus/a_fun_jacobian_xam.cpp%
+	build/lib/example/octave/a_fun_jacobian_xam.m%
+	build/lib/example/perl/a_fun_jacobian_xam.pm%
+	build/lib/example/python/a_fun_jacobian_xam.py
+%$$
+$head Example$$
+$cref/C++/a_fun_jacobian_xam.cpp/$$,
+$cref/Octave/a_fun_jacobian_xam.m/$$,
+$cref/Perl/a_fun_jacobian_xam.pm/$$,
+$cref/Python/a_fun_jacobian_xam.py/$$.
+
+
+$end
+*/
+std::vector<double> a_fun::jacobian(const std::vector<double>& x)
+{	return ptr_->Jacobian(x);
+}
+/*
+------------------------------------------------------------------------------
 $begin a_fun_forward$$
 $spell
 	af

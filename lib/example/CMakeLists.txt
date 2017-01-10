@@ -15,6 +15,7 @@ SET(xam_file_list
 	a_double/compare_xam.xam
 	vector/size_xam.xam
 	vector/set_get_xam.xam
+	a_fun/jacobian_xam.xam
 	a_fun/forward_xam.xam
 	a_fun/reverse_xam.xam
 	a_fun/abort_xam.xam

@@ -46,6 +46,8 @@ class CPPAD_SWIG_LIB_PUBLIC a_fun
 	~a_fun(void);
 	// constrtuctor
 	a_fun( const std::vector<a_double>& ax, const std::vector<a_double>& ay );
+	// jacobian
+	std::vector<double> jacobian(const std::vector<double>& x);
 	// forward
 	std::vector<double> forward(size_t p, const std::vector<double>& xp );
 	// reverse
