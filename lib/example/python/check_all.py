@@ -21,7 +21,7 @@ def run_test(name) :
 		error_count = error_count + 1
 #
 fun_list = [
-	'a_double_value_xam',
+	'a_double_property_xam',
 	'a_double_unary_xam',
 	'a_double_assign_xam',
 	'a_double_ad_binary_xam',

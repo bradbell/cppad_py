@@ -58,16 +58,24 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	a_double(const double& value);
 	/// ctor from a_double
 	a_double(const a_double& ad);
-	/// conversion to double
+	//
+	// conversion to double
 	double value(void) const;
+	// is this object a paramemter
+	bool parameter(void) const;
+	// is this object a variable
+	bool variable(void) const;
+	//
 	// unary + and -
 	const a_double& operator+(void) const;
 	a_double operator-(void) const;
+	//
 	// binary operators with a_double result
 	a_double operator+(const a_double& ad) const;
 	a_double operator-(const a_double& ad) const;
 	a_double operator*(const a_double& ad) const;
 	a_double operator/(const a_double& ad) const;
+	//
 	// comparison operators
 	bool operator< (const a_double& ad) const;
 	bool operator<=(const a_double& ad) const;
@@ -75,6 +83,7 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	bool operator>=(const a_double& ad) const;
 	bool operator==(const a_double& ad) const;
 	bool operator!=(const a_double& ad) const;
+	//
 	// compound assignment operators
 	a_double operator+=(const a_double& ad);
 	a_double operator-=(const a_double& ad);

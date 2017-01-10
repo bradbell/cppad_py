@@ -177,51 +177,83 @@ a_double a_double::operator-(void) const
 }
 /*
 -------------------------------------------------------------------------------
-$begin a_double_value$$
+$begin a_double_property$$
 $spell
 	const
 	perl
+	bool
 $$
 
-$section Conversion From a_double to double$$
+$section Properties of an a_double Object$$
 
 $head Syntax$$
-$icode%d% = %ad%.value()%$$
+$icode%d% = %ad%.value()
+%$$
+$icode%p% = %ad%.parameter()
+%$$
+$icode%v% = %ad%.variable()
+%$$
+
 
 $head ad$$
 This object has prototype
 $codei%
 	const a_double& %ad%
 %$$
-In addition it must represent a constant functions; i.e.,
-it must not depend on the independent variable.
-If it does depend on the independent variables,
-you will have to wait until the current recording is terminated
-before you can access its value.
 
-$head d$$
-The result has prototype
+$head value$$
+The result $icode d$$ has prototype
 $codei%
 	double %d%
 %$$
 It is the value of $icode ad$$, as a constant function.
+In addition it must represent a constant functions; i.e.,
+$icode ad$$ not depend on the
+$cref independent$$ variables when $icode%ad%.value()%$$ is called.
+If it does depend on the independent variables,
+you will have to wait until the current recording is terminated
+before you can access its value.
+
+$head parameter$$
+The result $icode p$$ has prototype
+$codei%
+	bool %p%
+%$$
+It is true if $icode ad$$ represent a constant functions; i.e.,
+$icode ad$$ not depend on the $cref independent$$ variables.
+
+$head variable$$
+The result $icode v$$ has prototype
+$codei%
+	bool %v%
+%$$
+It is true if $icode ad$$ is not a constant function; i.e.,
+$icode ad$$ depends on the $cref independent$$ variables.
 
 $children%
-	build/lib/example/cplusplus/a_double_value_xam.cpp%
-	build/lib/example/octave/a_double_value_xam.m%
-	build/lib/example/perl/a_double_value_xam.pm%
-	build/lib/example/python/a_double_value_xam.py
+	build/lib/example/cplusplus/a_double_property_xam.cpp%
+	build/lib/example/octave/a_double_property_xam.m%
+	build/lib/example/perl/a_double_property_xam.pm%
+	build/lib/example/python/a_double_property_xam.py
 %$$
 $head Example$$
-$cref/C++/a_double_value_xam.cpp/$$,
-$cref/octave/a_double_value_xam.m/$$,
-$cref/perl/a_double_value_xam.pm/$$,
-$cref/python/a_double_value_xam.py/$$.
+$cref/C++/a_double_property_xam.cpp/$$,
+$cref/octave/a_double_property_xam.m/$$,
+$cref/perl/a_double_property_xam.pm/$$,
+$cref/python/a_double_property_xam.py/$$.
 
 $end
 */
 double a_double::value(void) const
 {	double result = Value( *ptr() );
+	return result;
+}
+bool a_double::parameter(void) const
+{	bool result = Parameter( *ptr() );
+	return result;
+}
+bool a_double::variable(void) const
+{	bool result = Variable( *ptr() );
 	return result;
 }
 /*
