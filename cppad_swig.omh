@@ -26,38 +26,32 @@ $spell
 	Cppad
 	cmake
 	Affero
+	Github
 $$
 
-$section cppad_swig: A C++ Object Library and Swig Interface to Cppad$$
+$section A C++ AD Library with a Swig Interface$$
 
 $head Goal$$
-Provide a link from any scripting language supported by
+Provide a link from a subset of the scripting language supported by
 $href%http://www.Swig.org%Swig%$$
-to the
-$href%https://www.coin-or.org/Cppad%Cppad%$$
-algorithmic differentiation package.
-In addition, the C++ library that does the computations is specified
-and can be linked directly by other programs (besides Swig wrappers).
+to a C++ library that includes a subset of the features supported by
+$href%https://www.coin-or.org/Cppad%Cppad%$$.
 
-$head Under Construction$$
-This is a preliminary version of $code cppad_swig$$.
-Only a few AD functions have been implemented and are being used
-for initial testing.
-The currently working scripting languages, operating systems are:
-$table
-Python $cnext Linux, msys $rnext
-Octave $cnext Linux $rnext
-Perl   $cnext Linux
-$tend
-Only testing, and no installation, is currently implemented.
+$head Getting Started$$
+The following is a good place to see what the interface is for
+the currently supported languages:
+$cref/C++/a_fun_jacobian_xam.cpp/$$,
+$cref/Octave/a_fun_jacobian_xam.m/$$,
+$cref/Perl/a_fun_jacobian_xam.pm/$$,
+$cref/Python/a_fun_jacobian_xam.py/$$.
 
-$head License$$
-This program is distributed under the terms of the
-GNU Affero General Public License version 3.0 or later see
-$href%http://www.gnu.org/licenses/agpl.txt%agpl.txt%$$.
+$head Git Repository$$
+Currently, one gets the source code from Github at
+$href%https://github.com/bradbell/cppad_swig%$$.
+
 
 $head Testing$$
-You must first configure cppad_swig for your system using
+You must first configure Cppad Swig for your system using
 $cref run_cmake.sh$$.
 When you do so, the set of available tests would be output
 as messages of the form
@@ -70,6 +64,11 @@ $codei%
 %$$
 for each such test.
 
+$head License$$
+This program is distributed under the terms of the
+GNU Affero General Public License version 3.0 or later see
+$href%http://www.gnu.org/licenses/agpl.txt%agpl.txt%$$.
+
 $childtable%
 	bin/run_cmake.sh%
 	lib/cppad_swig.i%
@@ -77,6 +76,10 @@ $childtable%
 	lib/xam/xam.m4
 %$$
 
+$head Whats New$$
+
+$subhead 2017-01-10$$
+First uploading of this documentation.
 
 
 $end
