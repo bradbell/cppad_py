@@ -108,9 +108,9 @@ $children%
 %$$
 $head Example$$
 $cref/C++/a_fun_abort_xam.cpp/$$,
-$cref/octave/a_fun_abort_xam.m/$$,
-$cref/perl/a_fun_abort_xam.pm/$$,
-$cref/python/a_fun_abort_xam.py/$$.
+$cref/Octave/a_fun_abort_xam.m/$$,
+$cref/Perl/a_fun_abort_xam.pm/$$,
+$cref/Python/a_fun_abort_xam.py/$$.
 
 $end
 */

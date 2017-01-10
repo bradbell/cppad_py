@@ -162,9 +162,9 @@ $children%
 %$$
 $head Example$$
 $cref/C++/a_double_unary_xam.cpp/$$,
-$cref/octave/a_double_unary_xam.m/$$,
-$cref/perl/a_double_unary_xam.pm/$$,
-$cref/python/a_double_unary_xam.py/$$.
+$cref/Octave/a_double_unary_xam.m/$$,
+$cref/Perl/a_double_unary_xam.pm/$$,
+$cref/Python/a_double_unary_xam.py/$$.
 
 $end
 */
@@ -238,9 +238,9 @@ $children%
 %$$
 $head Example$$
 $cref/C++/a_double_property_xam.cpp/$$,
-$cref/octave/a_double_property_xam.m/$$,
-$cref/perl/a_double_property_xam.pm/$$,
-$cref/python/a_double_property_xam.py/$$.
+$cref/Octave/a_double_property_xam.m/$$,
+$cref/Perl/a_double_property_xam.pm/$$,
+$cref/Python/a_double_property_xam.py/$$.
 
 $end
 */
@@ -304,9 +304,9 @@ $children%
 %$$
 $head Example$$
 $cref/C++/a_double_ad_binary_xam.cpp/$$,
-$cref/octave/a_double_ad_binary_xam.m/$$,
-$cref/perl/a_double_ad_binary_xam.pm/$$,
-$cref/python/a_double_ad_binary_xam.py/$$.
+$cref/Octave/a_double_ad_binary_xam.m/$$,
+$cref/Perl/a_double_ad_binary_xam.pm/$$,
+$cref/Python/a_double_ad_binary_xam.py/$$.
 
 $end
 */
@@ -365,9 +365,9 @@ $children%
 %$$
 $head Example$$
 $cref/C++/a_double_compare_xam.cpp/$$,
-$cref/octave/a_double_compare_xam.m/$$,
-$cref/perl/a_double_compare_xam.pm/$$,
-$cref/python/a_double_compare_xam.py/$$.
+$cref/Octave/a_double_compare_xam.m/$$,
+$cref/Perl/a_double_compare_xam.pm/$$,
+$cref/Python/a_double_compare_xam.py/$$.
 
 $end
 */
@@ -423,9 +423,9 @@ $children%
 %$$
 $head Example$$
 $cref/C++/a_double_assign_xam.cpp/$$,
-$cref/octave/a_double_assign_xam.m/$$,
-$cref/perl/a_double_assign_xam.pm/$$,
-$cref/python/a_double_assign_xam.py/$$.
+$cref/Octave/a_double_assign_xam.m/$$,
+$cref/Perl/a_double_assign_xam.pm/$$,
+$cref/Python/a_double_assign_xam.py/$$.
 
 $end
 */

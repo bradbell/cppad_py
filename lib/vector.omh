@@ -87,9 +87,9 @@ $children%
 %$$
 $head Example$$
 $cref/C++/vector_size_xam.cpp/$$,
-$cref/octave/vector_size_xam.m/$$,
-$cref/perl/vector_size_xam.pm/$$,
-$cref/python/vector_size_xam.py/$$.
+$cref/Octave/vector_size_xam.m/$$,
+$cref/Perl/vector_size_xam.pm/$$,
+$cref/Python/vector_size_xam.py/$$.
 
 $end
 -------------------------------------------------------------------------------
@@ -162,8 +162,8 @@ $children%
 %$$
 $head Example$$
 $cref/C++/vector_set_get_xam.cpp/$$,
-$cref/octave/vector_set_get_xam.m/$$,
-$cref/perl/vector_set_get_xam.pm/$$,
-$cref/python/vector_set_get_xam.py/$$.
+$cref/Octave/vector_set_get_xam.m/$$,
+$cref/Perl/vector_set_get_xam.pm/$$,
+$cref/Python/vector_set_get_xam.py/$$.
 
 $end

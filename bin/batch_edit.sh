@@ -15,7 +15,9 @@ move_list='
 move_sed='s|bool_binary_xam|compare_xam|'
 #
 cat << EOF > junk.sed
-s|///|//|
+s|\$cref/octave/|\$cref/Octave/|
+s|\$cref/perl/|\$cref/Perl/|
+s|\$cref/python/|\$cref/Python/|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]
