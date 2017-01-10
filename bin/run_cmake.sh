@@ -33,6 +33,10 @@ then
 	echo_eval mkdir "$cmake_binary_dir"
 fi
 echo_eval cd "$cmake_binary_dir"
+if [ -e CMakeCache.txt ]
+then
+	echo_eval make clean
+fi
 cmake \
 	-G "$cmake_generator" \
 	-D CMAKE_VERBOSE_MAKEFILE="$cmake_verbose_makefile" \
