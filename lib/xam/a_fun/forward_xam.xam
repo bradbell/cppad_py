@@ -12,32 +12,53 @@ c_ -----------------------------------------------------------------------------
 c_ BEGIN SOURCE
 begin_bool_fun_0_(ok, a_fun_forward_xam)
 	new_var_(size_t, n, 2)
+	new_var_(size_t, m, 1)
 	c_
-	c_ create ax
-	new_var_new_(module_(vector_double), x, module_(vector_double)(n))
+	c_ create the independent variables ax with size n
+	new_var_new_(vector_double, xp, module_(vector_double)(n))
 	begin_for_(i, var_(n) )
-		vec_set_(x, var_(i), var_(i) + 1.0)
+		vec_set_(xp, var_(i), var_(i) + 1.0)
 	end_
-	new_var_(module_(vector_ad), ax, module_(independent)(x))
+	new_var_(vector_ad, ax, module_(independent)(xp))
 	c_
-	c_ create af
+	c_ creage ay with size m and ay0 = ax0 * ax1
 	new_var_(a_double, ax0, vec_get_(ax, 0))
 	new_var_(a_double, ax1, vec_get_(ax, 1))
-	new_var_new_(module_(vector_ad), ay, module_(vector_ad)(1))
-	vec_set_(ay, 0, var_(ax0) + var_(ax0) - var_(ax1))
-	new_var_new_(module_(a_fun), af, module_(a_fun)(var_(ax), var_(ay)))
+	new_var_new_(vector_ad, ay, module_(vector_ad)(m))
+	vec_set_(ay, 0, var_(ax0) * var_(ax1))
 	c_
-	c_ zero order forward
-	vec_set_(x, 0, 3.0)
-	vec_set_(x, 1, 1.0)
-	new_var_(module_(vector_double), y, member_(af, forward)(0, var_(x)))
-	and_assign_(ok, vec_get_(y, 0) == 5.0)
+	c_ define af corresponding to f(x) = x0 * x1
+	new_var_new_(a_fun, af, module_(a_fun)(var_(ax), var_(ay)))
 	c_
-	c_ first order forward
-	vec_set_(x, 0, 0.0)
-	vec_set_(x, 1, 1.0)
-	assign_(y, member_(af, forward)(1, var_(x)))
-	and_assign_(ok, vec_get_(y, 0) == -1.0)
+	c_ define X(t) = (3 + t, 2 + t)
+	c_ it follows that Y(t) = f(X(t)) = (3 + t) * (2 + t)
+	c_
+	c_ Y(0) = 6 and p ! = 1
+	new_var_(size_t, p, 0)
+	vec_set_(xp, 0, 3.0)
+	vec_set_(xp, 1, 2.0)
+	new_var_(vector_double, yp, member_(af, forward)(p, var_(xp)))
+	and_assign_(ok, vec_get_(yp, 0) == 6.0)
+	c_
+	c_ first order Taylor coefficients for X(t)
+	assign_(p, 1)
+	vec_set_(xp, 0, 1.0)
+	vec_set_(xp, 1, 1.0)
+	c_
+	c_ first order Taylor coefficient for Y(t)
+	c_ Y'(0) = 3 + 2 = 5 and p ! = 1
+	assign_(yp, member_(af, forward)(p, var_(xp)))
+	and_assign_(ok, vec_get_(yp, 0) == 5.0)
+	c_
+	c_ second order Taylor coefficients for X(t)
+	assign_(p, 2)
+	vec_set_(xp, 0, 0.0)
+	vec_set_(xp, 1, 0.0)
+	c_
+	c_ second order Taylor coefficient for Y(t)
+	c_ Y''(0) = 2.0 and p ! = 2
+	assign_(yp, member_(af, forward)(p, var_(xp)))
+	and_assign_(ok, vec_get_(yp, 0) == 1.0)
 	c_
 	return_(var_(ok))
 end_

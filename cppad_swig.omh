@@ -10,6 +10,12 @@ $comment -------------------------------------------------------------
 default automatic indexing command for all cppad_swig documentaiton
 $$
 $aindex section head subhead$$
+$comment -------------------------------------------------------------
+Latex macros used throughout Cppad Swig documentation
+$$
+$latex
+\newcommand{\B}[1]{ {\rm #1} }
+$$
 $comment -------------------------------------------------------------$$
 $spell
 	Cppad

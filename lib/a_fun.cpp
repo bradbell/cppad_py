@@ -160,10 +160,11 @@ that mapped the independent variables to the dependent variables.
 These operations define the function that can be differentiated.
 
 $head Example$$
-All of the $code a_fun$$ examples use this function.
+All of the $code a_fun$$ examples use an $code a_fun$$ constructor.
 
 $end
 */
+// a_fun(void) (not yet documented or tested)
 a_fun::a_fun(void)
 {	ptr_ = new CppAD::ADFun<double>();
 	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
@@ -190,10 +191,91 @@ a_fun::a_fun(
 	// store the recording
 	ptr_->Dependent(ax_copy, ay_copy);
 }
+/*
+$begin a_fun_forward$$
+$spell
+	af
+	xp
+	Taylor
+	yp
+	const
+	Perl
+$$
 
-// forward(p, xp)
-std::vector<double> a_fun::forward(int p, const std::vector<double>& xp)
-{	return ptr_->Forward( size_t(p), xp);
+$section Forward Mode AD$$
+
+$head Syntax$$
+$icode%yp% = %af%.forward(%p%, %xp%)%$$
+
+$head Taylor Coefficient$$
+For a function $latex g(t)$$ of a scalar argument $latex t \in \B{R}$$,
+the $icode p$$-th order Taylor coefficient is its
+$code p$$-th order derivative divided by $icode p$$ factorial
+and evaluated at $latex t = 0$$; i.e.,
+$latex \[
+	g^{(p)} (0) /  p !
+\]$$
+
+$head af$$
+This object has prototype
+$codei%
+	a_fun %af%
+%$$
+Note that its state is changed by this operation because it keeps
+all the Taylor coefficient that it calculates for every
+variable in recording it stored.
+
+$head f(x)$$
+We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
+for the function corresponding to $icode af$$.
+Note that $icode n$$ is the size of $cref/ax/a_fun_ctor/ax/$$
+and $icode m$$ is the size of $cref/ay/a_fun_ctor/ay/$$
+in to the constructor for $icode af$$.
+
+$head p$$
+This argument has prototype
+$codei%
+	size_t %p%
+%$$
+i.e., it is a positive integer.
+Its value is the order of the Taylor coefficient being calculated.
+
+$head xp$$
+This argument has prototype
+$codei%
+	const vector_double& %xp%
+%$$
+and its size must be $icode n$$.
+It specifies the $icode p$$ order Taylor coefficients for
+a function $latex X : \B{R} \rightarrow \B{R}^n$$.
+
+$head yp$$
+The result has prototype
+$codei%
+	vector_double %yp%
+%$$
+and its size is $icode m$$.
+It is the $icode p$$ order Taylor coefficients for
+the function $latex Y : \B{R} \rightarrow \B{R}^n$$
+defined by $latex Y(t) = f(X(t))$$.
+
+$children%
+	build/lib/example/cplusplus/a_fun_forward_xam.cpp%
+	build/lib/example/octave/a_fun_forward_xam.m%
+	build/lib/example/perl/a_fun_forward_xam.pm%
+	build/lib/example/python/a_fun_forward_xam.py
+%$$
+$head Example$$
+$cref/C++/a_fun_forward_xam.cpp/$$,
+$cref/Octave/a_fun_forward_xam.m/$$,
+$cref/Perl/a_fun_forward_xam.pm/$$,
+$cref/Python/a_fun_forward_xam.py/$$.
+
+
+$end
+*/
+std::vector<double> a_fun::forward(size_t p, const std::vector<double>& xp)
+{	return ptr_->Forward(p, xp);
 }
 
 } // END_CPPAD_SWIG_NAMESPACE

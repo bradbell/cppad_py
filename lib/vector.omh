@@ -76,8 +76,8 @@ The result has prototype
 $codei%
 	size_t %n%
 %$$
-It is the number of elements in the vector $icode v$$
-($code size_t$$ is C++ jargon for a non-negative integer type).
+i.e., it is a positive integer.
+Its value is the number of elements in the vector $icode v$$.
 
 $children%
 	build/lib/example/cplusplus/vector_size_xam.cpp%
