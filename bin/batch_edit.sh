@@ -6,16 +6,24 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
+delete_list='
+	include/cppad/swig/function.hpp
+	lib/function.cpp
+'
 revert_list='
+	example/example.hpp
+	example/function.cpp
+	example/octave/CMakeLists.txt
+	example/perl/CMakeLists.txt
+	example/python/CMakeLists.txt
 '
 move_list='
-	lib/xam/a_double/bool_binary_xam.xam
 '
 move_sed='s|bool_binary_xam|compare_xam|'
 #
 cat << EOF > junk.sed
-s|a_double_bool_binary|a_double_compare|g
-s|a_double/bool_binary|a_double/compare|g
+/function[.]hpp/d
+/function[.]cpp/d
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]
@@ -74,6 +82,11 @@ fi
 for file in $revert_list
 do
 	echo_eval git checkout $file
+done
+# ----------------------------------------------------------------------------
+for file in $delete_list
+do
+	echo_eval git rm -f $file
 done
 # ----------------------------------------------------------------------------
 cp $HOME/trash/batch_edit.sh bin/batch_edit.sh

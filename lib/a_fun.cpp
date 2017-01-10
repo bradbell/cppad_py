@@ -10,6 +10,26 @@
 
 namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 
+// independent
+std::vector<a_double> independent(const std::vector<double>& x)
+{	using CppAD::AD;
+	size_t n = x.size();
+	CppAD::vector< AD<double> > ax(n);
+	for(size_t j = 0; j < n; j++)
+		ax[j] = x[j];
+	CppAD::Independent(ax);
+	std::vector<a_double> result(n);
+	for(size_t j = 0; j < n; j++)
+		result[j] = a_double( &ax[j] );
+	return result;
+}
+
+// abort_recording
+void abort_recording(void)
+{	CppAD::AD<double>::abort_recording();
+}
+
+
 // ctor default
 a_fun::a_fun(void)
 {	ptr_ = new CppAD::ADFun<double>();

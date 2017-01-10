@@ -10,7 +10,6 @@
 
 # include <cppad/swig/a_double.hpp>
 # include <cppad/swig/a_fun.hpp>
-# include <cppad/swig/function.hpp>
 # include <cppad/swig/typedef.hpp>
 
 # endif

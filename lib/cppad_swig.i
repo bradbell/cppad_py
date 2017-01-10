@@ -23,7 +23,6 @@
 %{
 # include <cppad/swig/a_double.hpp>
 # include <cppad/swig/a_fun.hpp>
-# include <cppad/swig/function.hpp>
 # include <cppad/swig/typedef.hpp>
 %}
 
@@ -41,7 +40,6 @@
 %include "std_vector.i"
 %include <cppad/swig/a_double.hpp>
 %include <cppad/swig/a_fun.hpp>
-%include <cppad/swig/function.hpp>
 
 %template(vector_double) std::vector<double>;
 %template(vector_ad)     std::vector<cppad_swig::a_double>;
