@@ -23,10 +23,22 @@ begin_bool_fun_0_(ok, a_fun_abort_xam)
 	c_ preform some a_double operations
 	new_var_(a_double, ax0, vec_get_(ax, 0))
 	new_var_(a_double, ax1, vec_get_(ax, 1))
-	new_var_(a_double, ax2, var_(ax0) + var_(ax0) - var_(ax1))
+	new_var_(a_double, ay, var_(ax0) + var_(ax1))
+	c_
+	c_ check that ay is a variable; its value depends on the value of ax
+	and_assign_(ok, member_(ay, variable)())
 	c_
 	c_ abort this recording
 	module_(abort_recording)()eos_
+	c_
+	c_ check that ay is now a parameter, no longer a variable.
+	and_assign_(ok, member_(ay, parameter)())
+	c_
+	c_ since it is a parameter, we can retrieve its value
+	new_var_(double, y, member_(ay, value)())
+	c_
+	c_ its value should be x0 + x1
+	and_assign_(ok, y == vec_get_(x, 0) + vec_get_(x, 1))
 	c_
 	c_ an abort when not recording has no effect
 	module_(abort_recording)()eos_
