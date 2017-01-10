@@ -31,22 +31,22 @@ std::vector<a_double> independent(const std::vector<double>& x);
 CPPAD_SWIG_LIB_PUBLIC void abort_recording(void);
 
 
-/// Swig class that acts the same as CppAD::ADFun<double>
+// Swig class that acts the same as CppAD::ADFun<double>
 class CPPAD_SWIG_LIB_PUBLIC a_fun
 {	// private members are not in Swig interface
 	private:
-	/// ADFun<double> representation
+	// ADFun<double> representation
 	CppAD::ADFun<double>* ptr_;
 	// -----------------------------------------------------------------------
 	// public members are in Swig interface
 	public:
-	/// default ctor
+	// default ctor
 	a_fun(void);
-	/// destructor
+	// destructor
 	~a_fun(void);
-	/// constrtuctor
+	// constrtuctor
 	a_fun( const std::vector<a_double>& ax, const std::vector<a_double>& ay );
-	/// forward
+	// forward
 	std::vector<double> forward(int p, const std::vector<double>& xp );
 };
 

@@ -20,43 +20,43 @@ namespace CppAD {
 	template <class Base> class AD;
 }
 
-/// structure with exact same member data as AD<double>
+// structure with exact same member data as AD<double>
 struct a_double_data {
-	/// Base value corresponding to this object
+	// Base value corresponding to this object
 	double                 value;
-	/// tape identifier correspoding to taddr
+	// tape identifier correspoding to taddr
 	CPPAD_TAPE_ID_TYPE     tape_id;
-	/// tape address for this object
+	// tape address for this object
 	CPPAD_TAPE_ADDR_TYPE   taddr;
 };
 
 namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 
-/// Swig class that acts the same as CppAD::AD<double>
+// Swig class that acts the same as CppAD::AD<double>
 class  CPPAD_SWIG_LIB_PUBLIC a_double
 {	// private members are not in Swig interface
 	private:
-	/// data for this object
+	// data for this object
 	a_double_data        data_;
 	// -----------------------------------------------------------------------
 	// public members not in Swig interface (see %ignore ptr)
 	public:
-	/// pointer to this as an AD<double> object
+	// pointer to this as an AD<double> object
 	CppAD::AD<double>* ptr(void);
-	/// const version of pointer to this as an AD<double> object
+	// const version of pointer to this as an AD<double> object
 	const CppAD::AD<double>* ptr(void) const;
-	/// ctor from CppAD::AD<double>
+	// ctor from CppAD::AD<double>
 	a_double(const CppAD::AD<double>* ad_ptr);
 	// -----------------------------------------------------------------------
 	// public members in Swig interface
 	public:
-	/// default ctor
+	// default ctor
 	a_double(void);
-	/// destructor
+	// destructor
 	~a_double(void);
-	/// ctor from double
+	// ctor from double
 	a_double(const double& value);
-	/// ctor from a_double
+	// ctor from a_double
 	a_double(const a_double& ad);
 	//
 	// conversion to double
