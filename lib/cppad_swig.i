@@ -66,4 +66,15 @@ $childtable%lib/vector.omh%$$
 
 $end
 -------------------------------------------------------------------------------
+$begin a_fun$$
+$spell
+	Cppad
+$$
+
+$section Algorithmic Functions$$
+
+$childtable%lib/a_fun.cpp%$$
+
+$end
+-------------------------------------------------------------------------------
 */

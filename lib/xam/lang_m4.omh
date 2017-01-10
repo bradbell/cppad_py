@@ -17,6 +17,8 @@ $spell
 	py
 	cppad
 	bool
+	eos
+	newline
 $$
 
 $section Language Specific m4 Macros$$
@@ -65,6 +67,11 @@ $subhead c_$$
 This is the text that starts a comment that lasts for the current line;
 e.g., $code #$$ for Python.
 
+$subhead eos_$$
+All statements will be following by a newline in the input text.
+This macro provides any characters, beside the newline, that are required to
+terminate a statement. For example, in C++ it could be $code ;$$.
+
 $comment ---------------------------------------------------------------$$
 $head module_$$
 
@@ -106,7 +113,7 @@ $codei|
 |$$
 
 $comment ---------------------------------------------------------------$$
-$head Assignment$$
+$head Assignment Statements$$
 
 $subhead new_var_$$
 The text corresponding to
@@ -244,7 +251,7 @@ $cref/end_/lang_m4/No Arguments/end_/$$.
 $comment ---------------------------------------------------------------$$
 $head Other$$
 
-$subhead begin_for_$$
+$subhead begin_for_ Statement$$
 The text corresponding to
 $codei|
 	begin_for(|variable|, |upper|)
@@ -256,7 +263,7 @@ The value of the index the last time through the loop is $icode|upper|-1|$$.
 The block inside the loop is terminated by a matching
 $cref/end_/lang_m4/No Arguments/end_/$$.
 
-$subhead print_text_$$
+$subhead print_text_ Statement$$
 The text corresponding to
 $codei|
 	print_text_(|argument|)

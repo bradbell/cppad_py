@@ -15,6 +15,7 @@ define(and_, &&)
 define(not_, !)
 define(end_, })
 define(c_, `#')
+define(eos, `;')
 
 # -----------------------------------------------------------------------------
 # module, var, and member

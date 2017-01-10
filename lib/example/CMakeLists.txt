@@ -16,6 +16,7 @@ SET(xam_file_list
 	vector/size_xam.xam
 	vector/set_get_xam.xam
 	a_fun/a_fun_xam.xam
+	a_fun/abort_xam.xam
 )
 #
 # sub-directories for each language (add to check_lib_depend)

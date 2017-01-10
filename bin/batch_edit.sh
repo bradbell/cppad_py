@@ -7,23 +7,15 @@
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
 delete_list='
-	include/cppad/swig/function.hpp
-	lib/function.cpp
 '
 revert_list='
-	example/example.hpp
-	example/function.cpp
-	example/octave/CMakeLists.txt
-	example/perl/CMakeLists.txt
-	example/python/CMakeLists.txt
 '
 move_list='
 '
 move_sed='s|bool_binary_xam|compare_xam|'
 #
 cat << EOF > junk.sed
-/function[.]hpp/d
-/function[.]cpp/d
+s|aitons|ations|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]
