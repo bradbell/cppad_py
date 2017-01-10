@@ -227,6 +227,8 @@ $codei%
 Note that its state is changed by this operation because it keeps
 all the Taylor coefficient that it calculates for every
 variable in recording it stored.
+See more discussion of this fact under the heading
+$cref/p/a_fun_forward/p/$$ below.
 
 $head f(x)$$
 We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
@@ -250,6 +252,12 @@ $codei%
 %$$
 i.e., it is a positive integer.
 Its value is the order of the Taylor coefficient being calculated.
+If there was no call to $code forward$$ for this $icode af$$,
+the value of $icode p$$ must be zero.
+Otherwise, it must be between zero and one greater that its
+value for the previous call using this $icode af$$.
+After this call, the Taylor coefficients for orders zero though $icode p$$,
+and for every variable in the recording, will be stored in $icode af$$.
 
 $head xp$$
 This argument has prototype
@@ -344,11 +352,16 @@ for a function that the calling routine chooses.
 $head q$$
 This argument has prototype
 $codei%
-	size_t %p%
+	size_t %q%
 %$$
-i.e., it is a positive integer.
 Its value is the number of the Taylor coefficient (for each variable)
 that we are computing the derivative with respect to.
+It must be greater than zero, and
+less than or equal $icode%p% + 1%$$,
+the number of Taylor coefficient stored in $icode af$$.
+(The number of Taylor coefficients is equal to $icode%p%+1%$$ where
+$cref/p/a_fun_forward/p/$$ is the order for the previous $code forward$$
+call using $icode af$$.)
 
 $head yq$$
 This argument has prototype
