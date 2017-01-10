@@ -20,6 +20,7 @@ FOREACH( xam_file ${xam_file_list} )
 		> ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
 		DEPENDS
 		${CMAKE_SOURCE_DIR}/lib/xam/${xam_file}
+		${CMAKE_SOURCE_DIR}/lib/xam/cplusplus.m4
 	)
 	add_to_list(auto_output_list ${CMAKE_CURRENT_BINARY_DIR}/${source_file} )
 ENDFOREACH( xam_file ${xam_file_list} )

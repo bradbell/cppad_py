@@ -11,17 +11,18 @@ c_ std::vector<a_double>
 c_ -----------------------------------------------------------------------------
 c_ BEGIN SOURCE
 begin_bool_fun_0_(ok, a_fun_reverse_xam)
-	new_var_(size_t, n, 3)
+	c_ number of dependent and independent variables
 	new_var_(size_t, m, 1)
+	new_var_(size_t, n, 3)
 	c_
-	c_ create the independent variables ax with size n
+	c_ create the independent variables ax
 	new_var_new_(vector_double, xp, module_(vector_double)(n))
 	begin_for_(i, var_(n) )
 		vec_set_(xp, var_(i), var_(i))
 	end_
 	new_var_(vector_ad, ax, module_(independent)(xp))
 	c_
-	c_ create ay with size m and ay0 = ax_0 * ax_1 * ax_2
+	c_ create dependent variables ay with ay0 = ax_0 * ax_1 * ax_2
 	new_var_(a_double, ax_0, vec_get_(ax, 0))
 	new_var_(a_double, ax_1, vec_get_(ax, 1))
 	new_var_(a_double, ax_2, vec_get_(ax, 2))

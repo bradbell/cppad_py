@@ -68,7 +68,8 @@ sub $2() {
 	use module_;
 	c_
 	c_ initilaize return variable
-	my `$'$1 = true_;)
+	my `$'$1 = true_;
+	`c_' ---------------------------------------------------------------------)
 
 # return_(return_variable)
 define(return_, return( $1 );)

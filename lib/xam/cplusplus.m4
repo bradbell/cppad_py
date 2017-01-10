@@ -68,7 +68,8 @@ bool $2(void) {
 	using cppad_swig::a_fun;
 	c_
 	c_ initialize return variable
-	bool $1 = true_;)
+	bool $1 = true_;
+	c_------------------------------------------------------------------------)
 
 # return_(return_variable)
 define(return_, return( $1 );)

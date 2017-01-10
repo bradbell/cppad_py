@@ -65,7 +65,8 @@ function $1 = $2()
 	module_
 	c_
 	c_ initialize return variable
-	$1 = true_;)
+	$1 = true_;
+	c_ -----------------------------------------------------------------------)
 
 # return_(return_variable)
 define(return_, return;)
