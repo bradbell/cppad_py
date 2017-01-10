@@ -21,8 +21,8 @@ bool a_double::operator op(const a_double& ad) const \
 {	bool result =  *ptr() op *ad.ptr(); \
 	return result; \
 }
-// computed assignment operators
-# define COMPUTED_ASSIGNMENT_OP(op) \
+// compound assignment operators
+# define COMPOUND_ASSIGNMENT_OP(op) \
 a_double a_double::operator op(const a_double& ad)\
 {	*ptr() op *ad.ptr(); \
 	return *this; \
@@ -397,9 +397,9 @@ $cref/python/a_double_assign_xam.py/$$.
 
 $end
 */
-COMPUTED_ASSIGNMENT_OP(+=)
-COMPUTED_ASSIGNMENT_OP(-=)
-COMPUTED_ASSIGNMENT_OP(*=)
-COMPUTED_ASSIGNMENT_OP(/=)
+COMPOUND_ASSIGNMENT_OP(+=)
+COMPOUND_ASSIGNMENT_OP(-=)
+COMPOUND_ASSIGNMENT_OP(*=)
+COMPOUND_ASSIGNMENT_OP(/=)
 // --------------------------------------------------------------------------
 } // END_CPPAD_SWIG_NAMESPACE

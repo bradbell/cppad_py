@@ -15,7 +15,8 @@ move_list='
 move_sed='s|bool_binary_xam|compare_xam|'
 #
 cat << EOF > junk.sed
-s|aitons|ations|
+s|computed assignment|compound assignment|
+s|COMPUTED_ASSIGNMENT|COMPOUND_ASSIGNMENT|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

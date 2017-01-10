@@ -75,7 +75,7 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	bool operator>=(const a_double& ad) const;
 	bool operator==(const a_double& ad) const;
 	bool operator!=(const a_double& ad) const;
-	// computed assignment operators
+	// compound assignment operators
 	a_double operator+=(const a_double& ad);
 	a_double operator-=(const a_double& ad);
 	a_double operator*=(const a_double& ad);
