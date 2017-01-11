@@ -15,7 +15,9 @@ define(and_, &&)
 define(not_, ~)
 define(end_, end)
 define(c_, `%')
-define(eos_, `')
+define(eos_, `;')
+define(try_, try)
+define(catch_, catch)
 
 # -----------------------------------------------------------------------------
 # module, var, and member
@@ -28,6 +30,9 @@ define(var_, $1)
 
 # member_(variable, name)
 define(member_, $1.$2)
+
+# string_equal_(left, right)
+define(string_equal_, `strcmp($1, $2)')
 
 # -----------------------------------------------------------------------------
 # Assignment

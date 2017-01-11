@@ -80,6 +80,8 @@ $head Whats New$$
 
 $subhead 2017-01-10$$
 First uploading of this documentation.
+$subhead 2017-01-11$$
+Add exception handling; see $cref error_msg$$.
 
 
 $end

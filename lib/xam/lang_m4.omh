@@ -19,6 +19,7 @@ $spell
 	bool
 	eos
 	newline
+	std
 $$
 
 $section Language Specific m4 Macros$$
@@ -72,6 +73,14 @@ All statements will be following by a newline in the input text.
 This macro provides any characters, beside the newline, that are required to
 terminate a statement. For example, in C++ it could be $code ;$$.
 
+$subhead try_$$
+This text starts an exception try block.
+It is assumed that the block will be terminated by a $code catch_$$.
+
+$subhead catch_$$
+This text terminates a try block and starts an exception catch block.
+It is assumed that the block will be terminated by an $code end_$$.
+
 $comment ---------------------------------------------------------------$$
 $head module_$$
 
@@ -90,8 +99,11 @@ For example, in Octave it might be
 $codei|
 	m_module.|name|
 |$$
+$comment ---------------------------------------------------------------$$
 
-$head var_$$
+$head Non-Statements With Arguments$$
+
+$subhead var_$$
 The text corresponding to
 $codei|
 	var_(|variable|)
@@ -100,7 +112,7 @@ retrieves the value of the specified variable.
 For example, in Python it could be $icode variable$$
 while in Perl it could be $codei|@|variable|$$.
 
-$head member_$$
+$subhead member_$$
 The text corresponding to
 $codei|
 	member_(|variable|, |name|)
@@ -111,6 +123,16 @@ For example, in C++ it might be
 $codei|
 	|variable|.|name|
 |$$
+
+$subhead string_equal_$$
+The text corresponding to
+$codei|
+	string_equal_(|left|, |right|)
+|$$
+results in true (false), if the string $icode left$$
+is equal (not equal) to the string $icode right$$.
+(Note that in C++, left operand must be a
+$code std::string$$ while the right might be a $code char*$$.)
 
 $comment ---------------------------------------------------------------$$
 $head Assignment Statements$$
@@ -188,7 +210,7 @@ sets the element with the specified index, in the specified vector, to the
 specified value.
 For example, in Python it might be
 $codei|
-	|vector|[|index|] = |argument|
+	|vector|[|index|] = |value|
 |$$
 
 

@@ -10,12 +10,14 @@
 # No Arguments
 define(ext_, py)
 define(true_, True)
-define(false_, Flase)
+define(false_, False)
 define(and_, and)
 define(not_, not)
 define(end_, `#')
 define(c_, `#')
 define(eos_, `')
+define(try_, `try :')
+define(catch_, `except : c_ catch')
 
 # -----------------------------------------------------------------------------
 # module, var and member_
@@ -28,6 +30,9 @@ define(var_, $1)
 
 # member_(variable, name)
 define(member_, $1.$2)
+
+# string_equal_(left, right)
+define(string_equal_, ($1 == $2))
 
 # -----------------------------------------------------------------------------
 # Assignment

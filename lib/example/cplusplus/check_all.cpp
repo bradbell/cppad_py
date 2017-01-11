@@ -22,6 +22,7 @@ extern bool a_fun_jacobian_xam(void);
 extern bool a_fun_forward_xam(void);
 extern bool a_fun_reverse_xam(void);
 extern bool a_fun_abort_xam(void);
+extern bool a_other_error_msg_xam(void);
 
 namespace {
 	// function that runs one test
@@ -51,12 +52,13 @@ int main(void)
 	ok &= Run( a_double_assign_xam,       "a_double_assign_xam"       );
 	ok &= Run( a_double_ad_binary_xam,    "a_double_ad_binary_xam"    );
 	ok &= Run( a_double_compare_xam,      "a_double_compare_xam"      );
-	ok &= Run( a_vector_size_xam,         "vector_size_xam"           );
-	ok &= Run( a_vector_set_get_xam,      "vector_set_get_xam"        );
+	ok &= Run( a_vector_size_xam,         "a_vector_size_xam"         );
+	ok &= Run( a_vector_set_get_xam,      "a_vector_set_get_xam"      );
 	ok &= Run( a_fun_jacobian_xam,        "a_fun_jacobian_xam"        );
 	ok &= Run( a_fun_forward_xam,         "a_fun_forward_xam"         );
 	ok &= Run( a_fun_reverse_xam,         "a_fun_reverse_xam"         );
 	ok &= Run( a_fun_abort_xam,           "a_fun_abort_xam"           );
+	ok &= Run( a_other_error_msg_xam,     "a_other_error_msg_xam"     );
 	//
 	assert( ok || (Run_error_count > 0) );
 

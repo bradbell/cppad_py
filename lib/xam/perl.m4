@@ -15,8 +15,9 @@ define(and_, &&)
 define(not_, !)
 define(end_, })
 define(c_, `#')
-define(eos, `;')
-
+define(eos_, `')
+define(try_, `eval { c_ try')
+define(catch_, `}; if( $@ ) { c_ catch')
 # -----------------------------------------------------------------------------
 # module, var, and member
 
@@ -28,6 +29,9 @@ define(var_, `$'$1)
 
 # member_(variable, name)
 define(member_, `$'$1->$2)
+
+# string_equal_(left, right)
+define(string_equal_, $1 eq $2)
 
 # -----------------------------------------------------------------------------
 # Assignment

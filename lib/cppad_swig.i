@@ -24,6 +24,7 @@
 # include <cppad/swig/a_double.hpp>
 # include <cppad/swig/a_fun.hpp>
 # include <cppad/swig/a_vector.hpp>
+# include <cppad/swig/a_other.hpp>
 %}
 
 # ifdef SWIGPYTHON
@@ -40,6 +41,7 @@
 %include "std_vector.i"
 %include <cppad/swig/a_double.hpp>
 %include <cppad/swig/a_fun.hpp>
+%include <cppad/swig/a_other.hpp>
 
 %template(vector_double) std::vector<double>;
 %template(vector_ad)     std::vector<cppad_swig::a_double>;
@@ -48,8 +50,11 @@
 /*
 -------------------------------------------------------------------------------
 $begin a_double$$
+$spell
+	Cppad
+$$
 
-$section The a_double Class$$
+$section The Cppad Swig a_double Class$$
 
 $childtable%lib/a_double.cpp%$$
 
@@ -71,9 +76,20 @@ $spell
 	Cppad
 $$
 
-$section Algorithmic Functions$$
+$section Cppad Swig AD Functions$$
 
 $childtable%lib/a_fun.cpp%$$
+
+$end
+-------------------------------------------------------------------------------
+$begin a_other$$
+$spell
+	Cppad
+$$
+
+$section Other Cppad Swig Functions and Documentation$$
+
+$childtable%lib/a_other.cpp%$$
 
 $end
 -------------------------------------------------------------------------------

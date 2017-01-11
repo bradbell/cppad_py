@@ -10,12 +10,14 @@
 # No Arguments
 define(ext_, cpp)
 define(true_, true)
-define(false_,fFlase)
+define(false_, false)
 define(and_, &&)
 define(not_, !)
 define(end_, `}')
 define(c_, `//')
 define(eos_, `;')
+define(try_, `try {')
+define(catch_, `} catch (...) {')
 
 # -----------------------------------------------------------------------------
 # module, var, and member
@@ -28,6 +30,9 @@ define(var_, $1)
 
 # member_(variable, name)
 define(member_, $1.$2)
+
+# string_equal_(left, right)
+define(string_equal_, $1 == $2)
 
 # -----------------------------------------------------------------------------
 # Assignment
@@ -59,6 +64,7 @@ define(vec_get_, $1[$2])
 # begin_bool_fun_0_(return_variable, fun_name)
 define(begin_bool_fun_0_,
 `#' include <cstdio>
+`#' include <string>
 `#' include <cppad/swig/cppad_swig.hpp>
 
 bool $2(void) {
@@ -66,6 +72,7 @@ bool $2(void) {
 	using cppad_swig::vector_double;
 	using cppad_swig::vector_ad;
 	using cppad_swig::a_fun;
+	using std::string;
 	c_
 	c_ initialize return variable
 	bool $1 = true_;
