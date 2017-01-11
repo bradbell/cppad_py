@@ -11,13 +11,13 @@ delete_list='
 revert_list='
 '
 move_list='
+	include/cppad/swig/typedef.hpp
 '
-move_sed='s|bool_binary_xam|compare_xam|'
+move_sed='s|typedef.hpp|a_vector.hpp|'
 #
 cat << EOF > junk.sed
-s|\$cref/octave/|\$cref/Octave/|
-s|\$cref/perl/|\$cref/Perl/|
-s|\$cref/python/|\$cref/Python/|
+s|typedef.hpp|a_vector.hpp|g
+s|TYPEDEF|A_VECTOR|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

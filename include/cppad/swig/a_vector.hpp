@@ -1,5 +1,5 @@
-# ifndef CPPAD_SWIG_TYPEDEF_HPP
-# define CPPAD_SWIG_TYPEDEF_HPP
+# ifndef CPPAD_SWIG_A_VECTOR_HPP
+# define CPPAD_SWIG_A_VECTOR_HPP
 /* ----------------------------------------------------------------------------
           cppad_swig: A C++ Object Library and Swig Interface to Cppad
            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
