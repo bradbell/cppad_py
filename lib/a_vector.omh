@@ -16,9 +16,9 @@ $$
 $section Cppad Swig Vector Constructors$$
 
 $head Syntax$$
-$icode%v%  = %module_ref_%vector_double%(%n%)
+$icode%v%  = %module_ref_%vector_double(%n%)
 %$$
-$icode%av% = %module_ref_%vector_ad%(%n%)
+$icode%av% = %module_ref_%vector_ad(%n%)
 %$$
 
 $head Purpose$$
@@ -105,7 +105,7 @@ $section Setting and Getting Vector Elements$$
 $head Syntax$$
 $icode%u%[%i%] = %x%
 %$$
-$codei%y% = %v%[%i%]
+$icode%y% = %v%[%i%]
 %$$
 
 $head u$$
