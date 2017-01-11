@@ -118,7 +118,7 @@ try
 	message = '';
 catch
 	message = m_example.raise_exception('');
-end_try_catch
+end
 if( message == 'test message' )
 	printf('m_example.m_example.raise_exception: OK\n')
 else

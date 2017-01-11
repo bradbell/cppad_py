@@ -118,9 +118,12 @@ else
 # &head raise_exception&&
 # &srccode%cpp%
 $message = "";
-eval { pl_example::raise_exception("test message\n"); };
-if( $@ )
-{	$message = pl_example::raise_exception(""); }
+eval { # acts like 'try {' in other languages
+	pl_example::raise_exception("test message\n");
+}
+; if( $@ ) { # acts like 'catch {' in other languages
+	$message = pl_example::raise_exception("");
+}
 if( $message == "test message" )
 {	print "pl_example::pl_example::raise_exception: OK\n"; }
 else
