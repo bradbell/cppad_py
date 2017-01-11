@@ -61,7 +61,7 @@ begin_bool_fun_0_(ok, a_fun_forward_xam)
 	assign_(yp, member_(af, forward)(var_(p), var_(xp)))
 	and_assign_(ok, vec_get_(yp, 0) == 1.0)
 	c_
-	return_(var_(ok))
+	return_(ok)
 end_
 c_ END SOURCE
 c_

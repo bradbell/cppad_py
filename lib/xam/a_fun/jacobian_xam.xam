@@ -43,7 +43,7 @@ begin_bool_fun_0_(ok, a_fun_jacobian_xam)
 	and_assign_(ok, vec_get_(fp, 0 * n + 1) == x_0 * x_2 )
 	and_assign_(ok, vec_get_(fp, 0 * n + 2) == x_0 * x_1 )
 	c_
-	return_(var_(ok))
+	return_(ok)
 end_
 c_ END SOURCE
 c_

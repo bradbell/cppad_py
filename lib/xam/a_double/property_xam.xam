@@ -17,7 +17,7 @@ begin_bool_fun_0_(ok, a_double_property_xam)
 	and_assign_(ok, member_(two, parameter)())
 	and_assign_(ok, not_ member_(two, variable)())
 	c_
-	return_(var_(ok))
+	return_(ok)
 end_
 c_ END SOURCE
 c_

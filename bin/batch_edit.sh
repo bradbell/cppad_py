@@ -11,18 +11,11 @@ delete_list='
 revert_list='
 '
 move_list='
-	lib/xam/vector
-	lib/vector.omh
 '
 move_sed='s|vector|a_vector|'
 #
 cat << EOF > junk.sed
-s|vector[/_]set_get_xam|a_&|
-s|vector[/_]size_xam|a_&|
-s|\\(a_vector_set_get_xam,*\\)  |\\1|
-s|\\(a_vector_size_xam,*\\)  |\\1|
-s|\$begin vector|\$begin a_vector|
-s|lib/vector.omh|lib/a_vector.omh|
+s|return_( *var_(ok) *)|return_(ok)|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

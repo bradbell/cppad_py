@@ -36,7 +36,7 @@ my @fun_list = (
 #	'a_fun_jacobian_xam',
 #	'a_fun_forward_xam',
 #	'a_fun_reverse_xam',
-#	'a_fun_abort_xam',
+	'a_fun_abort_xam',
 	'a_other_error_msg_xam'
 );
 for( my $i = 0; $i <= $#fun_list; $i++)

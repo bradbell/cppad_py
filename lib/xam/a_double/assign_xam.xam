@@ -28,7 +28,7 @@ begin_bool_fun_0_(ok, a_double_assign_xam)
 	var_(x) /= module_(a_double(4.0));
 	and_assign_(ok, member_(x, value)() == 3.0)
 	c_
-	return_(var_(ok))
+	return_(ok)
 end_
 c_ END SOURCE
 c_

@@ -81,7 +81,7 @@ begin_bool_fun_0_(ok, a_fun_reverse_xam)
 	and_assign_(ok, vec_get_(xq2, 2 * var_(q) + 0) == 2.0 + 3.0)
 	c_ -----------------------------------------------------------------------
 	c_
-	return_(var_(ok))
+	return_(ok)
 end_
 c_ END SOURCE
 c_
