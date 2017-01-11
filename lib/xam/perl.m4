@@ -15,7 +15,7 @@ define(and_, &&)
 define(not_, !)
 define(end_, })
 define(c_, `#')
-define(eos_, `')
+define(eos_, `;')
 define(try_, `eval { c_ try')
 define(catch_, `}; if( $@ ) { c_ catch')
 # -----------------------------------------------------------------------------
@@ -76,7 +76,7 @@ sub $2() {
 	`c_' ---------------------------------------------------------------------)
 
 # return_(return_variable)
-define(return_, return( $1 );)
+define(return_, return( `$'$1 );)
 
 # -----------------------------------------------------------------------------
 # Other

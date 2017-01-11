@@ -52,8 +52,8 @@ IF ( PERLLIBS_FOUND )
 	)
 
 	# Swig Perl warns that it does not support *=, or /=,
-	# supress these warnings.
-	SET(CMAKE_SWIG_FLAGS -Wextra -w367,368 )
+	# and that it does not know about std::exception: suppress these warnings.
+	SET(CMAKE_SWIG_FLAGS -Wextra -w367,368,401 )
 
 	# include directory determined by find PerlLibs
 	INCLUDE_DIRECTORIES( SYSTEM ${PERL_INCLUDE_PATH})

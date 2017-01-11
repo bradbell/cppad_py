@@ -7,8 +7,13 @@
            GNU Affero General Public License version 3.0 or later see
                       http://www.gnu.org/licenses/agpl.txt
 ---------------------------------------------------------------------------- */
+# include <exception>
+
 namespace cppad_swig {
-	const char* error_msg(const char* message) throw(const char*);
+	class exception : public std::exception
+	{	virtual const char* what(void) const throw();
+	};
+	const char* error_msg(const char* message) throw(cppad_swig::exception);
 }
 
 # endif

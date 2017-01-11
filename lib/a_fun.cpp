@@ -7,6 +7,7 @@
 ----------------------------------------------------------------------------- */
 # include <cppad/cppad.hpp>
 # include <cppad/swig/a_fun.hpp>
+# include <cppad/swig/a_other.hpp>
 
 namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 
@@ -481,7 +482,8 @@ $cref/Python/a_fun_reverse_xam.py/$$.
 $end
 */
 std::vector<double> a_fun::reverse(size_t q, const std::vector<double>& yq)
-{	// 2DO: raise exception if yq.size() != q * ptr_->Range()
+{	if( yq.size() != q * ptr_->Range() )
+		error_msg("cppad_swig::a_fun::reverse yq.size() error");
 	return ptr_->Reverse(q, yq);
 }
 

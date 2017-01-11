@@ -38,7 +38,7 @@ begin_bool_fun_0_(ok, a_fun_abort_xam)
 	new_var_(double, y, member_(ay, value)())
 	c_
 	c_ its value should be x0 + x1
-	and_assign_(ok, y == vec_get_(x, 0) + vec_get_(x, 1))
+	and_assign_(ok, var_(y)  == vec_get_(x, 0) + vec_get_(x, 1))
 	c_
 	c_ an abort when not recording has no effect
 	module_(abort_recording)()eos_

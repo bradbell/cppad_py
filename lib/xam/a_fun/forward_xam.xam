@@ -38,7 +38,7 @@ begin_bool_fun_0_(ok, a_fun_forward_xam)
 	new_var_(size_t, p, 0)
 	vec_set_(xp, 0, 3.0)
 	vec_set_(xp, 1, 2.0)
-	new_var_(vector_double, yp, member_(af, forward)(p, var_(xp)))
+	new_var_(vector_double, yp, member_(af, forward)(var_(p), var_(xp)))
 	and_assign_(ok, vec_get_(yp, 0) == 6.0)
 	c_
 	c_ first order Taylor coefficients for X(t)
@@ -48,7 +48,7 @@ begin_bool_fun_0_(ok, a_fun_forward_xam)
 	c_
 	c_ first order Taylor coefficient for Y(t)
 	c_ Y'(0) = 3 + 2 = 5 and p ! = 1
-	assign_(yp, member_(af, forward)(p, var_(xp)))
+	assign_(yp, member_(af, forward)(var_(p), var_(xp)))
 	and_assign_(ok, vec_get_(yp, 0) == 5.0)
 	c_
 	c_ second order Taylor coefficients for X(t)
@@ -58,7 +58,7 @@ begin_bool_fun_0_(ok, a_fun_forward_xam)
 	c_
 	c_ second order Taylor coefficient for Y(t)
 	c_ Y''(0) = 2.0 and p ! = 2
-	assign_(yp, member_(af, forward)(p, var_(xp)))
+	assign_(yp, member_(af, forward)(var_(p), var_(xp)))
 	and_assign_(ok, vec_get_(yp, 0) == 1.0)
 	c_
 	return_(var_(ok))

@@ -16,7 +16,7 @@ begin_bool_fun_0_(ok, a_fun_reverse_xam)
 	new_var_(size_t, n, 3)
 	c_
 	c_ create the independent variables ax
-	new_var_new_(vector_double, xp, module_(vector_double)(n))
+	new_var_new_(vector_double, xp, module_(vector_double)(var_(n)))
 	begin_for_(i, var_(n) )
 		vec_set_(xp, var_(i), var_(i))
 	end_
@@ -26,7 +26,7 @@ begin_bool_fun_0_(ok, a_fun_reverse_xam)
 	new_var_(a_double, ax_0, vec_get_(ax, 0))
 	new_var_(a_double, ax_1, vec_get_(ax, 1))
 	new_var_(a_double, ax_2, vec_get_(ax, 2))
-	new_var_new_(vector_ad, ay, module_(vector_ad)(m))
+	new_var_new_(vector_ad, ay, module_(vector_ad)(var_(m)))
 	vec_set_(ay, 0, var_(ax_0) * var_(ax_1) * var_(ax_2))
 	c_
 	c_ define af corresponding to f(x) = x_0 * x_1 * x_2
@@ -41,15 +41,15 @@ begin_bool_fun_0_(ok, a_fun_reverse_xam)
 	vec_set_(xp, 0, 2.0)
 	vec_set_(xp, 1, 3.0)
 	vec_set_(xp, 2, 4.0)
-	new_var_(vector_double, yp, member_(af, forward)(p, var_(xp)))
+	new_var_(vector_double, yp, member_(af, forward)(var_(p), var_(xp)))
 	and_assign_(ok, vec_get_(yp, 0) == 24.0)
 	c_ -----------------------------------------------------------------------
 	c_ first order reverse (derivative of zero order forward)
 	c_ define G( Y ) = y_0 = x_0 * x_1 * x_2
 	new_var_(size_t, q, 1)
-	new_var_(vector_double, yq1, module_(vector_double)(m))
+	new_var_(vector_double, yq1, module_(vector_double)(var_(m)))
 	vec_set_(yq1, 0, 1.0)
-	new_var_(vector_double, xq1, member_(af, reverse)(q, var_(yq1)))
+	new_var_(vector_double, xq1, member_(af, reverse)(var_(q), var_(yq1)))
 	c_ partial G w.r.t x_0
 	and_assign_(ok, vec_get_(xq1, 0) == 3.0 * 4.0 )
 	c_ partial G w.r.t x_1
@@ -62,23 +62,23 @@ begin_bool_fun_0_(ok, a_fun_reverse_xam)
 	vec_set_(xp, 0, 1.0)
 	vec_set_(xp, 1, 1.0)
 	vec_set_(xp, 2, 1.0)
-	assign_(yp, member_(af, forward)(p, var_(xp)))
+	assign_(yp, member_(af, forward)(var_(p), var_(xp)))
 	and_assign_(ok, vec_get_(yp, 0) == 3.0*4.0 + 2.0*4.0 + 2.0*3.0)
 	c_ -----------------------------------------------------------------------
 	c_ second order reverse (derivative of first order forward)
 	c_ define G( y_0^0 , y_0^1 ) = y_0^1
 	c_ = x_1^0 * x_2^0  +  x_0^0 * x_2^0  +  x_0^0  *  x_1^0
 	assign_(q, 2)
-	new_var_(vector_double, yq2, module_(vector_double)(m * q))
-	vec_set_(yq2, 0 * q + 0, 0.0) c_ partial of G w.r.t y_0^0
-	vec_set_(yq2, 0 * q + 1, 1.0) c_ partial of G w.r.t y_0^1
-	new_var_(vector_double, xq2, member_(af, reverse)(q, var_(yq2)))
+	new_var_(vector_double, yq2, module_(vector_double)(var_(m) * var_(q)))
+	vec_set_(yq2, 0 * var_(q) + 0, 0.0) c_ partial of G w.r.t y_0^0
+	vec_set_(yq2, 0 * var_(q) + 1, 1.0) c_ partial of G w.r.t y_0^1
+	new_var_(vector_double, xq2, member_(af, reverse)(var_(q), var_(yq2)))
 	c_ partial G w.r.t x_0^0
-	and_assign_(ok, vec_get_(xq2, 0 * q + 0) == 3.0 + 4.0)
+	and_assign_(ok, vec_get_(xq2, 0 * var_(q) + 0) == 3.0 + 4.0)
 	c_ partial G w.r.t x_1^0
-	and_assign_(ok, vec_get_(xq2, 1 * q + 0) == 2.0 + 4.0)
+	and_assign_(ok, vec_get_(xq2, 1 * var_(q) + 0) == 2.0 + 4.0)
 	c_ partial G w.r.t x_2^0
-	and_assign_(ok, vec_get_(xq2, 2 * q + 0) == 2.0 + 3.0)
+	and_assign_(ok, vec_get_(xq2, 2 * var_(q) + 0) == 2.0 + 3.0)
 	c_ -----------------------------------------------------------------------
 	c_
 	return_(var_(ok))

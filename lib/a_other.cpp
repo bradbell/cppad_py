@@ -14,6 +14,8 @@
 $begin error_msg$$
 $spell
 	Perl
+	cppad
+	std
 $$
 
 $section Exception Handling$$
@@ -24,8 +26,13 @@ $icode%stored_message% = error_msg(%message%)%$$
 $head In Try Block$$
 If $icode message$$ is $bold not$$ the empty string,
 it is stored in $code error_msg$$ and an exception is thrown.
-The type of the exception is not specified.
 This is intended to be done inside a $code try$$ block.
+
+$head exception$$
+The type of the exception is $code cppad_swig::exception$$
+which is derived from $code std::exception$$.
+If the standard exception $code what()$$ is called,
+the return value will be the stored message.
 
 $head In Catch Block$$
 If $icode message$$ is the empty string,
@@ -51,7 +58,9 @@ $cref/Python/a_other_error_msg_xam.py/$$.
 $end
 */
 namespace cppad_swig {
-	const char* error_msg(const char* message) throw(const char*)
+	const char* exception::what(void) const throw()
+	{	return error_msg(""); }
+	const char* error_msg(const char* message) throw(cppad_swig::exception)
 	{	// previous error message
 		static std::string previous = "";
 		if( message[0] == '\0' )
@@ -59,7 +68,7 @@ namespace cppad_swig {
 		previous = message;
 		//
 		// raise exception
-		throw message;
+		throw cppad_swig::exception();
 		//
 		// never get to here
 		return "";
