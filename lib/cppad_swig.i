@@ -55,14 +55,14 @@ $childtable%lib/a_double.cpp%$$
 
 $end
 -------------------------------------------------------------------------------
-$begin vector$$
+$begin a_vector$$
 $spell
 	Cppad
 $$
 
 $section Cppad Swig Vectors$$
 
-$childtable%lib/vector.omh%$$
+$childtable%lib/a_vector.omh%$$
 
 $end
 -------------------------------------------------------------------------------

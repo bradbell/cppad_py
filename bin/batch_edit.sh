@@ -11,13 +11,18 @@ delete_list='
 revert_list='
 '
 move_list='
-	include/cppad/swig/typedef.hpp
+	lib/xam/vector
+	lib/vector.omh
 '
-move_sed='s|typedef.hpp|a_vector.hpp|'
+move_sed='s|vector|a_vector|'
 #
 cat << EOF > junk.sed
-s|typedef.hpp|a_vector.hpp|g
-s|TYPEDEF|A_VECTOR|
+s|vector[/_]set_get_xam|a_&|
+s|vector[/_]size_xam|a_&|
+s|\\(a_vector_set_get_xam,*\\)  |\\1|
+s|\\(a_vector_size_xam,*\\)  |\\1|
+s|\$begin vector|\$begin a_vector|
+s|lib/vector.omh|lib/a_vector.omh|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]
