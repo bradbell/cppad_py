@@ -16,7 +16,7 @@ begin_bool_fun_0_(ok, a_other_error_msg_xam)
 		module_(error_msg("test message"))eos_
 	catch_
 		new_var_(string, stored_message, module_(error_msg)(""))
-		assign_(ok, string_equal_(stored_message, "test message"))
+		assign_(ok, string_equal_(var_(stored_message), "test message"))
 	end_
 	return_( ok )
 end_
@@ -24,3 +24,4 @@ c_ END SOURCE
 c_ -----------------------------------------------------------------------------
 omhelp_(a_other_error_msg_xam,
 language_: Cppad Swig Exception Handling: Example and Test)
+eof_

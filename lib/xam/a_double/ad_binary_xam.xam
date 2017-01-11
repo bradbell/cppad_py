@@ -32,3 +32,4 @@ c_ END SOURCE
 c_
 omhelp_(a_double_ad_binary_xam,
 language_: a_double Binary Operators With AD Result: Example and Test)
+eof_

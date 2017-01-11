@@ -81,6 +81,11 @@ $subhead catch_$$
 This text terminates a try block and starts an exception catch block.
 It is assumed that the block will be terminated by an $code end_$$.
 
+$subhead eof_$$
+This is extra text that should be added at the end of file.
+(For some strange reason, perl requires a true value at the end of
+each $icode%*%.pm%$$ file.)
+
 $comment ---------------------------------------------------------------$$
 $head module_$$
 

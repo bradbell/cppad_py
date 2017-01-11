@@ -17,7 +17,8 @@ define(end_, })
 define(c_, `#')
 define(eos_, `;')
 define(try_, `eval { c_ try')
-define(catch_, `}; if( $@ ) { c_ catch')
+define(catch_, `}; if( `$'@ ) { c_ catch')
+define(eof_, 1;)
 # -----------------------------------------------------------------------------
 # module, var, and member
 

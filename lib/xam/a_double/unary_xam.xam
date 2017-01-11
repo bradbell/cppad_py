@@ -25,3 +25,4 @@ c_ END SOURCE
 c_
 omhelp_(a_double_unary_xam,
 language_: a_double Unary Plus and Minus: Example and Test)
+eof_

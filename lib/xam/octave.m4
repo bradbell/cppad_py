@@ -18,7 +18,7 @@ define(c_, `%')
 define(eos_, `;')
 define(try_, try)
 define(catch_, catch)
-
+define(eof_, c_)
 # -----------------------------------------------------------------------------
 # module, var, and member
 

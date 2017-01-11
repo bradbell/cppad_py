@@ -31,3 +31,4 @@ c_ END SOURCE
 c_
 omhelp_(a_double_compare_xam,
 language_: a_double Comparison Operators: Example and Test)
+eof_

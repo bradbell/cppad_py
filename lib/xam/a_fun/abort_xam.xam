@@ -49,3 +49,4 @@ c_ END SOURCE
 c_
 omhelp_(a_fun_abort_xam,
 language_: Abort Recording a_double Operations: Example and Test)
+eof_
