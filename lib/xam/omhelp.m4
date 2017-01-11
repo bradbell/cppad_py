@@ -72,6 +72,7 @@ define(omhelp_other_,
 `#'	perl
 `#'	cppad
 `#'	xam
+`#'	Jacobian
 `#' $$
 `#' $section $3$$
 `#' $srcfile|$2|0|`#' BEGIN SOURCE|`#' END SOURCE|$$
@@ -82,6 +83,7 @@ define(omhelp_octave_,
 % $spell
 %	cppad
 %	xam
+%	Jacobian
 % $$
 % $section $3$$
 % $srcfile|$2|0|% BEGIN SOURCE|% END SOURCE|$$
@@ -94,6 +96,7 @@ $spell
 	cplusplus
 	cppad
 	xam
+	Jacobian
 $$
 $section $3$$
 $srcfile|$2|0|// BEGIN SOURCE|// END SOURCE|$$

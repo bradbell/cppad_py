@@ -48,4 +48,4 @@ end_
 c_ END SOURCE
 c_
 omhelp_(a_fun_jacobian_xam,
-language_: Reverse Mode AD: Example and Test)
+language_: General Jacobian Using AD: Example and Test)
