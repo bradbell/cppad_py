@@ -51,11 +51,11 @@ divert(-1)
 # $list number$$
 # $icode%language%.m4%$$
 # $lnext
+# $cref lang_name.m4$$
+# $lnext
 # $cref xam_file_name.m4$$
 # $lnext
 # $cref header.m4$$
-# $lnext
-# $cref lang_name.m4$$
 # $lnext
 # $cref omhelp.m4$$
 # $lend
@@ -71,6 +71,7 @@ divert(-1)
 # $end
 #
 include(Language_.m4)
+include(lang_name.m4)
 include(header.m4)
 include(xam_file_name.m4)
 include(omhelp.m4)

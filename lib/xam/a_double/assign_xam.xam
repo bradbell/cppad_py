@@ -33,5 +33,5 @@ End_
 C_ END SOURCE
 C_
 Omhelp_(a_double_assign_xam,
-Language_: a_double Assignment Operators: Example and Test)
+LangName_: a_double Assignment Operators: Example and Test)
 Eof_

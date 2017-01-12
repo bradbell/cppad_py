@@ -25,5 +25,5 @@ BeginBoolFun__(ok, a_vector_size_xam)
 End_
 C_ END SOURCE
 C_
-Omhelp_(a_vector_size_xam, Language_: Size of Vectors: Example and Test)
+Omhelp_(a_vector_size_xam, LangName_: Size of Vectors: Example and Test)
 Eof_

@@ -31,5 +31,5 @@ End_
 C_ END SOURCE
 C_
 Omhelp_(a_double_ad_binary_xam,
-Language_: a_double Binary Operators With AD Result: Example and Test)
+LangName_: a_double Binary Operators With AD Result: Example and Test)
 Eof_

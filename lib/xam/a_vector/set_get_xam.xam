@@ -34,5 +34,5 @@ End_
 C_ END SOURCE
 C_
 Omhelp_(a_vector_set_get_xam,
-Language_: Setting and Getting Vector Elements: Example and Test)
+LangName_: Setting and Getting Vector Elements: Example and Test)
 Eof_
