@@ -12,11 +12,13 @@ divert(-1)
 #	cplusplus
 #	perl
 #	cppad
+#	dnl
+#	newline
 # $$
 # $section Include File for Library Example Setup$$
 #
 # $head Syntax$$
-# $code include(xam.m4)$$
+# $code include(xam.m4)dnl$$
 #
 # $head m4 Command$$
 # For this documentation, it is assumed that the m4 command is a follows:
@@ -26,7 +28,7 @@ divert(-1)
 #
 # $head directory$$
 # is the directory where the $code xam.m4$$ file is located; i.e.,
-# $code lib/xam/xam.m4$$ relative to the Cppad Swig source directory.
+# $code lib/xam$$ relative to the Cppad Swig source directory.
 #
 # $head language$$
 # is one of the available languages; i.e.,
@@ -38,17 +40,39 @@ divert(-1)
 # This, combined with the language, determines the example / test
 # that is being created.
 #
-# $childtable%lib/xam/lang_m4.omh
-#	%lib/xam/omhelp.m4
+# $children%lib/xam/lang_m4.omh
 #	%lib/xam/xam_file_name.m4
 #	%lib/xam/header.m4
+#	%lib/xam/lang_name.m4
+#	%lib/xam/omhelp.m4
 # %$$
+# $head Includes$$
+# Including $code xam.m4$$ includes the following macros:
+# $list number$$
+# $icode%language%.m4%$$
+# $lnext
+# $cref xam_file_name.m4$$
+# $lnext
+# $cref header.m4$$
+# $lnext
+# $cref lang_name.m4$$
+# $lnext
+# $cref omhelp.m4$$
+# $lend
+#
+# $head Output$$
+# There is no output during the include of $code xam.m4$$.
+# To be specific, the output is diverted to $code -1$$ during the
+# include of $code xam.m4$$ and restored to $code 0$$ after it.
+# The $code dnl$$
+# in the $cref/syntax/xam.m4/Syntax/$$ above suppresses the output
+# of the newline at the end of the include of $code xam.m4$$.
 #
 # $end
 #
 include(Language_.m4)
-include(omhelp.m4)
-include(xam_file_name.m4)
 include(header.m4)
+include(xam_file_name.m4)
+include(omhelp.m4)
 # -----------------------------------------------------------------------------
 divert(0)dnl trun on output and ignore this end of line

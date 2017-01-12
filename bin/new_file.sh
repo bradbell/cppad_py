@@ -84,7 +84,6 @@ EOF
 		exit 1
 	fi
 	cat << EOF  > $file_name
-divert(-1)
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -92,9 +91,12 @@ divert(-1)
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
-REPLACE THIS LINE BY THE CODE FOR THIS SCRIPT.
-# -----------------------------------------------------------------------------
-divert(0)dnl trun on output and ignore this end of line
+# \$begin $file_name\$\$ \$newlinech #\$\$
+# \$spell
+# \$\$
+# \$section REPLACE THIS TEXT\$\$
+# REPLACE THIS TEXT
+# \$end
 EOF
 	;;
 	# =========================================================================
@@ -190,6 +192,7 @@ c_ END SOURCE
 c_ -----------------------------------------------------------------------------
 omhelp_($local_name,
 Language_: REPLACE THIS WITH TITLE: Example and Test)
+Eof_
 EOF
 	;;
 	# =========================================================================
