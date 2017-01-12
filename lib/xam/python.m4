@@ -13,14 +13,14 @@ define(True_, True)
 define(False_, False)
 define(And_, and)
 define(Not_, not)
-define(end_, `#')
+define(End_, `#')
 define(C_, `#')
 define(Eos_, `')
 define(Try_, `try :')
-define(catch_, `except : C_ catch')
-define(eof_, `C_')
+define(Catch_, `except : C_ catch')
+define(Eof_, `C_')
 # -----------------------------------------------------------------------------
-# module, var and member_
+# module, var and Member_
 
 # Module_ or Module_(object)
 define(Module_, `ifelse($#, 0, py_cppad, py_cppad.$1)')
@@ -34,8 +34,8 @@ define(ModuleCtor_, py_cppad.$1)
 # Var_(variable)
 define(Var_, $1)
 
-# member_(variable, name)
-define(member_, $1.$2)
+# Member_(variable, name)
+define(Member_, $1.$2)
 
 # StringEqual_(left, right)
 define(StringEqual_, ($1 == $2))
@@ -75,8 +75,8 @@ def $2() :
 	$1 = True_
 	`C_' ---------------------------------------------------------------------)
 
-# return_(return_variable)
-define(return_, return( $1 ))
+# Return_(return_variable)
+define(Return_, return( $1 ))
 
 # -----------------------------------------------------------------------------
 # Other

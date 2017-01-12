@@ -34,7 +34,9 @@ to examples (and tests) in the corresponding language.
 This is the specifications for the macros in an arbitrary scripting language.
 
 $head Convention$$
-All macro names end with a lower case letter followed by an under-bar.
+All macro names are an upper case letter,
+following by lower and upper case letters,
+and end with an under-bar.
 
 $comment ---------------------------------------------------------------$$
 $head No Arguments$$
@@ -49,7 +51,7 @@ e.g. $code True$$ for Python.
 
 $subhead False_$$
 This is a constant representing the value false in the scripting language;
-e.g. $code True$$ for Python.
+e.g. $code False$$ for Python.
 
 $subhead And_$$
 This is the logical binary and operator; e.g. $code and$$ for Python.
@@ -57,8 +59,7 @@ This is the logical binary and operator; e.g. $code and$$ for Python.
 $subhead Not_$$
 This is the logical unary operator not; e.g. $code !$$ for Perl.
 
-
-$subhead end_$$
+$subhead End_$$
 This is the text that goes on a line, by itself, to terminate a block
 of code; e.g., $code end$$ for Octave.
 Note that in Python, the comment symbol $code #$$ is used.
@@ -73,16 +74,18 @@ $subhead Eos_$$
 All statements will be following by a newline in the input text.
 This macro provides any characters, beside the newline, that are required to
 terminate a statement. For example, in C++ it could be $code ;$$.
+Note that this text use automatically included by macros that
+are documented as statements.
 
 $subhead Try_$$
 This text starts an exception try block.
-It is assumed that the block will be terminated by a $code catch_$$.
+It is assumed that the block will be terminated by a $code Catch_$$.
 
-$subhead catch_$$
+$subhead Catch_$$
 This text terminates a try block and starts an exception catch block.
-It is assumed that the block will be terminated by an $code end_$$.
+It is assumed that the block will be terminated by an $code End_$$.
 
-$subhead eof_$$
+$subhead Eof_$$
 This is extra text that should be added at the end of file.
 (For some strange reason, perl requires a true value at the end of
 each $icode%*%.pm%$$ file.)
@@ -122,7 +125,7 @@ $codei|
 |$$
 $comment ---------------------------------------------------------------$$
 
-$head Non-Statements With Arguments$$
+$head Macro With Arguments That are Not Statements$$
 
 $subhead Var_$$
 The text corresponding to
@@ -132,17 +135,20 @@ $codei|
 retrieves the value of the specified variable.
 For example, in Python it could be $icode variable$$
 while in Perl it could be $codei|@|variable|$$.
+Note that this text is automatically included for macro arguments
+that are documented as being a $icode variable$$; e.g.,
+seen $code Member_$$ below.
 
-$subhead member_$$
+$subhead Member_$$
 The text corresponding to
 $codei|
-	member_(|variable|, |name|)
+	Member_(|variable|, |name|)
 |$$
 references the specified member function or data
 in the context of the specified variable.
-For example, in C++ it might be
+For example, in Perl it might be
 $codei|
-	|variable|.|name|
+	@|variable|->|name|
 |$$
 
 $subhead StringEqual_$$
@@ -236,14 +242,14 @@ $head Function Statements$$
 $subhead BeginBoolFun__$$
 The text corresponding to
 $codei|
-	BeginBoolFun__(|return_variable|, |function_name|)
+	BeginBoolFun__(|return_variable|, |FunctionName_|)
 |$$
 is placed at the beginning of function that has zero arguments
 and a boolean return value.
 This must initialize $icode return_variable$$ as true.
 For example, in Octave it might be
 $codei|
-	function |return_variable| = |function_name|()
+	function |return_variable| = |FunctionName_|()
 		%
 		% load the Cppad Swig library
 		m_cppad
@@ -252,30 +258,29 @@ $codei|
 		|return_variable| = true;
 |$$
 Note that this begins a block of code that will be terminated
-by a corresponding $code end_$$.
-The argument $icode function_name$$ should be related to
+by a corresponding $code End_$$.
+The argument $icode FunctionName_$$ should be related to
 the xam input file as follows:
-$cref/function_name/xam_file_name.m4/function_name/$$.
+$cref/FunctionName_/xam_file_name.m4/FunctionName_/$$.
 
 
-$subhead return_$$
+$subhead Return_$$
 The text corresponding to
 $codei|
-	return_(|return_variable|)
+	Return_(|return_variable|)
 |$$
-terminates the current function with the specified return value.
+terminates the current function block with the specified return value
+a matching $cref/End_/lang_m4/No Arguments/End_/$$.
 For example, in Python it might be
 $codei|
 	return |return_variable|
 |$$
-The block inside this function is terminated by a matching
-$cref/end_/lang_m4/No Arguments/end_/$$.
 
 
 $comment ---------------------------------------------------------------$$
-$head Other$$
+$head Other Statements$$
 
-$subhead BeginFor_ Statement$$
+$subhead BeginFor_$$
 The text corresponding to
 $codei|
 	begin_for(|variable|, |upper|)
@@ -285,9 +290,9 @@ The initial value of the variable is zero.
 The variable increases by one each time through the loop.
 The value of the index the last time through the loop is $icode|upper|-1|$$.
 The block inside the loop is terminated by a matching
-$cref/end_/lang_m4/No Arguments/end_/$$.
+$cref/End_/lang_m4/No Arguments/End_/$$.
 
-$subhead print_tExt_ Statement$$
+$subhead print_tExt_$$
 The text corresponding to
 $codei|
 	print_tExt_(|argument|)

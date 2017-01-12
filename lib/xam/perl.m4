@@ -13,12 +13,12 @@ define(True_, 1)
 define(False_, 0)
 define(And_, &&)
 define(Not_, !)
-define(end_, })
+define(End_, })
 define(C_, `#')
 define(Eos_, `;')
 define(Try_, `eval { C_ try')
-define(catch_, `}; if( `$'@ ) { C_ catch')
-define(eof_, 1;)
+define(Catch_, `}; if( `$'@ ) { C_ catch')
+define(Eof_, 1;)
 # -----------------------------------------------------------------------------
 # module
 
@@ -34,8 +34,8 @@ define(ModuleCtor_, new pm_cppad::$1)
 # Var_(variable)
 define(Var_, `$'$1)
 
-# member_(variable, name)
-define(member_, `$'$1->$2)
+# Member_(variable, name)
+define(Member_, `$'$1->$2)
 
 # StringEqual_(left, right)
 define(StringEqual_, $1 eq $2)
@@ -79,8 +79,8 @@ sub $2() {
 	my `$'$1 = True_;
 	`C_' ---------------------------------------------------------------------)
 
-# return_(return_variable)
-define(return_, return( `$'$1 );)
+# Return_(return_variable)
+define(Return_, return( `$'$1 );)
 
 # -----------------------------------------------------------------------------
 # Other

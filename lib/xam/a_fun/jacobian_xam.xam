@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-header_(a_fun/jacobian_xam.xam)
+Header_(a_fun/jacobian_xam.xam)
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -19,7 +19,7 @@ BeginBoolFun__(ok, a_fun_jacobian_xam)
 	NewVar_(vector_double, x, ModuleCtor_(vector_double)(Var_(n)))
 	BeginFor_(i, Var_(n) )
 		VecSet_(x, Var_(i), Var_(i) + 2.0)
-	end_
+	End_
 	NewVar_(vector_ad, ax, Module_(independent)(Var_(x)))
 	C_
 	C_ create dependent variables ay with ay0 = ax_0 * ax_1 * ax_2
@@ -33,7 +33,7 @@ BeginBoolFun__(ok, a_fun_jacobian_xam)
 	NewVar_(a_fun, af, ModuleCtor_(a_fun)(Var_(ax), Var_(ay)))
 	C_
 	C_ compute the Jacobian f'(x) = ( x_1*x_2, x_0*x_2, x_0*x_1 )
-	NewVar_(vector_double, fp, member_(af, jacobian)(Var_(x)))
+	NewVar_(vector_double, fp, Member_(af, jacobian)(Var_(x)))
 	C_
 	C_ check Jacobian
 	NewVar_(double, x_0, VecGet_(x, 0))
@@ -43,10 +43,10 @@ BeginBoolFun__(ok, a_fun_jacobian_xam)
 	AndAssign_(ok, VecGet_(fp, 0 * Var_(n) + 1) == Var_(x_0) * Var_(x_2) )
 	AndAssign_(ok, VecGet_(fp, 0 * Var_(n) + 2) == Var_(x_0) * Var_(x_1) )
 	C_
-	return_(ok)
-end_
+	Return_(ok)
+End_
 C_ END SOURCE
 C_
-omhelp_(a_fun_jacobian_xam,
+Omhelp_(a_fun_jacobian_xam,
 language_: General Jacobian Using AD: Example and Test)
-eof_
+Eof_

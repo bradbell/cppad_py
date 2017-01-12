@@ -13,12 +13,12 @@ define(True_, true)
 define(False_, false)
 define(And_, &&)
 define(Not_, ~)
-define(end_, end)
+define(End_, end)
 define(C_, `%')
 define(Eos_, `;')
 define(Try_, try)
-define(catch_, catch)
-define(eof_, C_)
+define(Catch_, catch)
+define(Eof_, C_)
 # -----------------------------------------------------------------------------
 # module, var, and member
 
@@ -34,8 +34,8 @@ define(ModuleCtor_, m_cppad.$1)
 # Var_(variable)
 define(Var_, $1)
 
-# member_(variable, name)
-define(member_, $1.$2)
+# Member_(variable, name)
+define(Member_, $1.$2)
 
 # StringEqual_(left, right)
 define(StringEqual_, `strcmp($1, $2)')
@@ -76,8 +76,8 @@ function $1 = $2()
 	$1 = True_;
 	C_ -----------------------------------------------------------------------)
 
-# return_(return_variable)
-define(return_, return;)
+# Return_(return_variable)
+define(Return_, return;)
 
 # -----------------------------------------------------------------------------
 # Other

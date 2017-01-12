@@ -17,16 +17,16 @@
 # $section m4 Macro That Include Omhelp to Display Source Code$$
 #
 # $head Syntax$$
-# $codei%omhelp_(%function_name%, %omhelp_title%)%$$
+# $codei%Omhelp_(%FunctionName_%, %Omhelp_title%)%$$
 #
-# $head function_name$$
+# $head FunctionName_$$
 # is the name of function corresponding to this output file; see
-# $cref/function_name/xam_file_name.m4/function_name/$$.
+# $cref/FunctionName_/xam_file_name.m4/FunctionName_/$$.
 #
-# $head omhelp_title$$
+# $head Omhelp_title$$
 # is the title of this Omhelp section that displays this source code.
 #
-# $head omhelp_tag$$
+# $head Omhelp_tag$$
 # The Omhelp cross reference tag that will be used for this section is
 # $codei%
 #	%name_xam%.%ext%
@@ -59,13 +59,13 @@
 #	%comment% BEGIN SOURCE
 #	%source code%
 #	%comment% END SOURCE
-#	omhelp_(%name_xam%, %omhelp_title%)
+#	Omhelp_(%name_xam%, %Omhelp_title%)
 # %$$
 #
 # $end
 # -----------------------------------------------------------------------------
-# omhelp_other_(omhelp_tag, file_name, omhelp_title)
-define(omhelp_other_,
+# OmhelpOther_(Omhelp_tag, file_name, Omhelp_title)
+define(OmhelpOther_,
 `#' `$'begin $1$$ $newlinech `#$$'
 `#' $spell
 `#'	py
@@ -77,8 +77,8 @@ define(omhelp_other_,
 `#' $section $3$$
 `#' $srcfile|$2|0|`#' BEGIN SOURCE|`#' END SOURCE|$$
 `#' $end)
-# omhelp_octave_(omhelp_tag, file_name, omhelp_title)
-define(omhelp_octave_,
+# OmhelpOctave_(Omhelp_tag, file_name, Omhelp_title)
+define(OmhelpOctave_,
 % `$'begin $1$$ $newlinech %$$
 % $spell
 %	cppad
@@ -88,8 +88,8 @@ define(omhelp_octave_,
 % $section $3$$
 % $srcfile|$2|0|% BEGIN SOURCE|% END SOURCE|$$
 % $end)
-# omhelp_cpp_(omhelp_tag, file_name, omhelp_title)
-define(omhelp_cpp_,
+# OmhelpCpp_(Omhelp_tag, file_name, Omhelp_title)
+define(OmhelpCpp_,
 /*
 `$'begin $1$$
 $spell
@@ -102,20 +102,20 @@ $section $3$$
 $srcfile|$2|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */)
-# omhelp_any_(omhelp_tag, file_name, omhelp_title)
-define(omhelp_any_,
+# OmhelpAny_(Omhelp_tag, file_name, Omhelp_title)
+define(OmhelpAny_,
 ``ifelse(
 	language_,
 	cplusplus,
-	`omhelp_cpp_($1,$2,$3)',
+	`OmhelpCpp_($1,$2,$3)',
 	language_,
 	octave,
-	`omhelp_octave_($1,$2,$3)',
-	`omhelp_other_($1,$2,$3)')'')
-# omhelp_(name_xam, omhelp_title)
-define(omhelp_, omhelp_any_(
-	`$1.Ext_',dnl                         omhelp_tag
+	`OmhelpOctave_($1,$2,$3)',
+	`OmhelpOther_($1,$2,$3)')'')
+# Omhelp_(name_xam, Omhelp_title)
+define(Omhelp_, OmhelpAny_(
+	`$1.Ext_',dnl                         Omhelp_tag
 	`build/lib/example/language_/$1.Ext_',dnl file_name
-	`$2'dnl                               omhelp_title
+	`$2'dnl                               Omhelp_title
 ))
 # -----------------------------------------------------------------------------

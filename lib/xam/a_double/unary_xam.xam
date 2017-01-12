@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-header_(`a_double/unary_xam.xam')
+Header_(`a_double/unary_xam.xam')
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -16,13 +16,13 @@ BeginBoolFun__(ok, a_double_unary_xam)
 	NewVar_(a_double, plus_two,   + Var_(two) )
 	NewVar_(a_double, minus_two,  - Var_(two) )
 	C_
-	AndAssign_(ok, member_(plus_two,  value)() == 2.0)
-	AndAssign_(ok, member_(minus_two, value)() == -2.0)
+	AndAssign_(ok, Member_(plus_two,  value)() == 2.0)
+	AndAssign_(ok, Member_(minus_two, value)() == -2.0)
 	C_
-	return_(ok)
-end_
+	Return_(ok)
+End_
 C_ END SOURCE
 C_
-omhelp_(a_double_unary_xam,
+Omhelp_(a_double_unary_xam,
 language_: a_double Unary Plus and Minus: Example and Test)
-eof_
+Eof_

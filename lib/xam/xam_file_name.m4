@@ -14,22 +14,22 @@
 # $section Function and File Naming$$
 #
 # $head Syntax$$
-# $codei%lang_file_name_(%xam_file_name%)
+# $codei%LangFileName_(%xam_file_name%)
 # %$$
-# $codei%function_name_(%xam_file_name%)
+# $codei%FunctionName__(%xam_file_name%)
 # %$$
 #
 # $head xam_file_name$$
 # Is the name of an $icode%*%.xam%$$ file relative to the
 # $code lib/xam$$ directory.
 #
-# $head function_name$$
-# The output value of $code function_name_$$ has all the forward slash
+# $head FunctionName_$$
+# The output value of $code FunctionName__$$ has all the forward slash
 # $code /$$ characters converted to under bar $code _$$ characters
 # and the file extension $code .xam$$ removed.
 #
 # $head lang_file_name$$
-# The output value of $code lang_file_name_$$ has all the forward slash
+# The output value of $code LangFileName_$$ has all the forward slash
 # $code /$$ characters converted to under bar $code _$$ characters
 # and the file extension $code .xam$$ converted to
 # $cref/Ext_/lang_m4/No Arguments/Ext_/$$.
@@ -40,5 +40,5 @@
 #
 # $end
 # -----------------------------------------------------------------------------
-define(function_name_,  `patsubst( `patsubst(`$1', /, _)', [.]xam, `')')
-define(lang_file_name_, `patsubst( `patsubst(`$1', /, _)', [.]xam, .Ext_)')
+define(FunctionName__,  `patsubst( `patsubst(`$1', /, _)', [.]xam, `')')
+define(LangFileName_, `patsubst( `patsubst(`$1', /, _)', [.]xam, .Ext_)')

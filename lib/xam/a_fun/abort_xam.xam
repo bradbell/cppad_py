@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-header_(a_fun/abort_xam.xam)
+Header_(a_fun/abort_xam.xam)
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -17,7 +17,7 @@ BeginBoolFun__(ok, a_fun_abort_xam)
 	NewVar_(vector_double, x, ModuleCtor_(vector_double)(Var_(n)))
 	BeginFor_(i, Var_(n) )
 		VecSet_(x, Var_(i), Var_(i) + 1.0)
-	end_
+	End_
 	NewVar_(vector_ad, ax, Module_(independent)(Var_(x)))
 	C_
 	C_ preform some a_double operations
@@ -26,16 +26,16 @@ BeginBoolFun__(ok, a_fun_abort_xam)
 	NewVar_(a_double, ay, Var_(ax0) + Var_(ax1))
 	C_
 	C_ check that ay is a variable; its value depends on the value of ax
-	AndAssign_(ok, member_(ay, variable)())
+	AndAssign_(ok, Member_(ay, variable)())
 	C_
 	C_ abort this recording
 	Module_(abort_recording)()Eos_
 	C_
 	C_ check that ay is now a parameter, no longer a variable.
-	AndAssign_(ok, member_(ay, parameter)())
+	AndAssign_(ok, Member_(ay, parameter)())
 	C_
 	C_ since it is a parameter, we can retrieve its value
-	NewVar_(double, y, member_(ay, value)())
+	NewVar_(double, y, Member_(ay, value)())
 	C_
 	C_ its value should be x0 + x1
 	AndAssign_(ok, Var_(y)  == VecGet_(x, 0) + VecGet_(x, 1))
@@ -43,10 +43,10 @@ BeginBoolFun__(ok, a_fun_abort_xam)
 	C_ an abort when not recording has no effect
 	Module_(abort_recording)()Eos_
 	C_
-	return_(ok)
-end_
+	Return_(ok)
+End_
 C_ END SOURCE
 C_
-omhelp_(a_fun_abort_xam,
+Omhelp_(a_fun_abort_xam,
 language_: Abort Recording a_double Operations: Example and Test)
-eof_
+Eof_

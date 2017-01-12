@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-header_(`a_double/compare_xam.xam')
+Header_(`a_double/compare_xam.xam')
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -25,10 +25,10 @@ BeginBoolFun__(ok, a_double_compare_xam)
 	AndAssign_(ok, Not_ `(Var_(two) >= Var_(three))' )
 	AndAssign_(ok, Not_ `(Var_(two) == Var_(three))' )
 	C_
-	return_(ok)
-end_
+	Return_(ok)
+End_
 C_ END SOURCE
 C_
-omhelp_(a_double_compare_xam,
+Omhelp_(a_double_compare_xam,
 language_: a_double Comparison Operators: Example and Test)
-eof_
+Eof_

@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-header_(`a_double/property_xam.xam')
+Header_(`a_double/property_xam.xam')
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -13,14 +13,14 @@ C_ BEGIN SOURCE
 BeginBoolFun__(ok, a_double_property_xam)
 	NewVar_(a_double, two, ModuleCtor_(a_double)(2.0))
 	C_
-	AndAssign_(ok, member_(two, value)()   == 2.0)
-	AndAssign_(ok, member_(two, parameter)())
-	AndAssign_(ok, Not_ member_(two, variable)())
+	AndAssign_(ok, Member_(two, value)()   == 2.0)
+	AndAssign_(ok, Member_(two, parameter)())
+	AndAssign_(ok, Not_ Member_(two, variable)())
 	C_
-	return_(ok)
-end_
+	Return_(ok)
+End_
 C_ END SOURCE
 C_
-omhelp_(a_double_property_xam,
+Omhelp_(a_double_property_xam,
 language_: Properties of an a_double: Example and Test)
-eof_
+Eof_

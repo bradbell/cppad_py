@@ -13,7 +13,7 @@
 # $section Comment Showing How to Generate This Output$$
 #
 # $head Syntax$$
-# $codei%header_(%xam_file_name%)%$$
+# $codei%Header_(%xam_file_name%)%$$
 #
 # $head xam_file_name$$
 # Is the name of the $icode%*%.xam%$$ file, relative to the
@@ -26,6 +26,6 @@
 #
 # $end
 # -----------------------------------------------------------------------------
-define(header_,dnl
+define(Header_,dnl
 `C_' This file can be generated in the lib/xam directory using the command:
 `C_' m4 -D ``language_''=language_ $1)

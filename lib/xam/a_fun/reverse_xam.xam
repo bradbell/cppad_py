@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-header_(a_fun/reverse_xam.xam)
+Header_(a_fun/reverse_xam.xam)
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -19,7 +19,7 @@ BeginBoolFun__(ok, a_fun_reverse_xam)
 	NewVar_(vector_double, xp, ModuleCtor_(vector_double)(Var_(n)))
 	BeginFor_(i, Var_(n) )
 		VecSet_(xp, Var_(i), Var_(i))
-	end_
+	End_
 	NewVar_(vector_ad, ax, Module_(independent)(Var_(xp)))
 	C_
 	C_ create dependent variables ay with ay0 = ax_0 * ax_1 * ax_2
@@ -41,7 +41,7 @@ BeginBoolFun__(ok, a_fun_reverse_xam)
 	VecSet_(xp, 0, 2.0)
 	VecSet_(xp, 1, 3.0)
 	VecSet_(xp, 2, 4.0)
-	NewVar_(vector_double, yp, member_(af, forward)(Var_(p), Var_(xp)))
+	NewVar_(vector_double, yp, Member_(af, forward)(Var_(p), Var_(xp)))
 	AndAssign_(ok, VecGet_(yp, 0) == 24.0)
 	C_ -----------------------------------------------------------------------
 	C_ first order reverse (derivative of zero order forward)
@@ -49,7 +49,7 @@ BeginBoolFun__(ok, a_fun_reverse_xam)
 	NewVar_(size_t, q, 1)
 	NewVar_(vector_double, yq1, ModuleCtor_(vector_double)(Var_(m)))
 	VecSet_(yq1, 0, 1.0)
-	NewVar_(vector_double, xq1, member_(af, reverse)(Var_(q), Var_(yq1)))
+	NewVar_(vector_double, xq1, Member_(af, reverse)(Var_(q), Var_(yq1)))
 	C_ partial G w.r.t x_0
 	AndAssign_(ok, VecGet_(xq1, 0) == 3.0 * 4.0 )
 	C_ partial G w.r.t x_1
@@ -62,7 +62,7 @@ BeginBoolFun__(ok, a_fun_reverse_xam)
 	VecSet_(xp, 0, 1.0)
 	VecSet_(xp, 1, 1.0)
 	VecSet_(xp, 2, 1.0)
-	Assign_(yp, member_(af, forward)(Var_(p), Var_(xp)))
+	Assign_(yp, Member_(af, forward)(Var_(p), Var_(xp)))
 	AndAssign_(ok, VecGet_(yp, 0) == 3.0*4.0 + 2.0*4.0 + 2.0*3.0)
 	C_ -----------------------------------------------------------------------
 	C_ second order reverse (derivative of first order forward)
@@ -72,7 +72,7 @@ BeginBoolFun__(ok, a_fun_reverse_xam)
 	NewVar_(vector_double, yq2, ModuleCtor_(vector_double)(Var_(m) * Var_(q)))
 	VecSet_(yq2, 0 * Var_(q) + 0, 0.0) C_ partial of G w.r.t y_0^0
 	VecSet_(yq2, 0 * Var_(q) + 1, 1.0) C_ partial of G w.r.t y_0^1
-	NewVar_(vector_double, xq2, member_(af, reverse)(Var_(q), Var_(yq2)))
+	NewVar_(vector_double, xq2, Member_(af, reverse)(Var_(q), Var_(yq2)))
 	C_ partial G w.r.t x_0^0
 	AndAssign_(ok, VecGet_(xq2, 0 * Var_(q) + 0) == 3.0 + 4.0)
 	C_ partial G w.r.t x_1^0
@@ -81,10 +81,10 @@ BeginBoolFun__(ok, a_fun_reverse_xam)
 	AndAssign_(ok, VecGet_(xq2, 2 * Var_(q) + 0) == 2.0 + 3.0)
 	C_ -----------------------------------------------------------------------
 	C_
-	return_(ok)
-end_
+	Return_(ok)
+End_
 C_ END SOURCE
 C_
-omhelp_(a_fun_reverse_xam,
+Omhelp_(a_fun_reverse_xam,
 language_: Reverse Mode AD: Example and Test)
-eof_
+Eof_

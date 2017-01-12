@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-header_(a_fun/forward_xam.xam)
+Header_(a_fun/forward_xam.xam)
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -19,7 +19,7 @@ BeginBoolFun__(ok, a_fun_forward_xam)
 	NewVar_(vector_double, xp, ModuleCtor_(vector_double)(Var_(n)))
 	BeginFor_(i, Var_(n) )
 		VecSet_(xp, Var_(i), Var_(i) + 1.0)
-	end_
+	End_
 	NewVar_(vector_ad, ax, Module_(independent)(Var_(xp)))
 	C_
 	C_ create dependent varialbes ay with ay0 = ax0 * ax1
@@ -38,7 +38,7 @@ BeginBoolFun__(ok, a_fun_forward_xam)
 	NewVar_(size_t, p, 0)
 	VecSet_(xp, 0, 3.0)
 	VecSet_(xp, 1, 2.0)
-	NewVar_(vector_double, yp, member_(af, forward)(Var_(p), Var_(xp)))
+	NewVar_(vector_double, yp, Member_(af, forward)(Var_(p), Var_(xp)))
 	AndAssign_(ok, VecGet_(yp, 0) == 6.0)
 	C_
 	C_ first order Taylor coefficients for X(t)
@@ -48,7 +48,7 @@ BeginBoolFun__(ok, a_fun_forward_xam)
 	C_
 	C_ first order Taylor coefficient for Y(t)
 	C_ Y'(0) = 3 + 2 = 5 and p ! = 1
-	Assign_(yp, member_(af, forward)(Var_(p), Var_(xp)))
+	Assign_(yp, Member_(af, forward)(Var_(p), Var_(xp)))
 	AndAssign_(ok, VecGet_(yp, 0) == 5.0)
 	C_
 	C_ second order Taylor coefficients for X(t)
@@ -58,13 +58,13 @@ BeginBoolFun__(ok, a_fun_forward_xam)
 	C_
 	C_ second order Taylor coefficient for Y(t)
 	C_ Y''(0) = 2.0 and p ! = 2
-	Assign_(yp, member_(af, forward)(Var_(p), Var_(xp)))
+	Assign_(yp, Member_(af, forward)(Var_(p), Var_(xp)))
 	AndAssign_(ok, VecGet_(yp, 0) == 1.0)
 	C_
-	return_(ok)
-end_
+	Return_(ok)
+End_
 C_ END SOURCE
 C_
-omhelp_(a_fun_forward_xam,
+Omhelp_(a_fun_forward_xam,
 language_: Forward Mode AD: Example and Test)
-eof_
+Eof_

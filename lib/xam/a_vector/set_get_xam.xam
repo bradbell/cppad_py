@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-header_(a_vector/set_get_xam.xam)
+Header_(a_vector/set_get_xam.xam)
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -19,20 +19,20 @@ BeginBoolFun__(ok, a_vector_set_get_xam)
 	BeginFor_(i, Var_(n) )
 		VecSet_(v, Var_(i), 2.0 * Var_(i))
 		VecSet_(av, Var_(i), ModuleCtor_(a_double)(2.0 * Var_(i)))
-	end_
+	End_
 	C_ getting elements
 	BeginFor_(i, Var_(n) )
 		NewVar_(double, e, VecGet_(v, Var_(i)))
 		AndAssign_(ok, Var_(e) == 2.0 * Var_(i))
 		C_
 		NewVar_(a_double, ae, VecGet_(av, Var_(i)))
-		AndAssign_(ok, member_(ae, value)() == 2.0 * Var_(i))
-	end_
+		AndAssign_(ok, Member_(ae, value)() == 2.0 * Var_(i))
+	End_
 	C_
-	return_(ok)
-end_
+	Return_(ok)
+End_
 C_ END SOURCE
 C_
-omhelp_(a_vector_set_get_xam,
+Omhelp_(a_vector_set_get_xam,
 language_: Setting and Getting Vector Elements: Example and Test)
-eof_
+Eof_

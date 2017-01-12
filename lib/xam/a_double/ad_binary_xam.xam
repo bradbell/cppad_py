@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-header_(`a_double/ad_binary_xam.xam')
+Header_(`a_double/ad_binary_xam.xam')
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -19,17 +19,17 @@ BeginBoolFun__(ok, a_double_ad_binary_xam)
 	NewVar_(a_double, neg_one,    Var_(two) - Var_(three))
 	NewVar_(a_double, two_thirds, Var_(two) / Var_(three))
 	C_
-	AndAssign_(ok, member_(five, value)() == 5.0)
-	AndAssign_(ok, member_(six, value)() == 6.0)
-	AndAssign_(ok, member_(neg_one, value)() == -1.0)
-	AndAssign_(ok, 0.5 < member_(two_thirds, value)())
-	AndAssign_(ok, member_(two_thirds, value)() < 1.0)
+	AndAssign_(ok, Member_(five, value)() == 5.0)
+	AndAssign_(ok, Member_(six, value)() == 6.0)
+	AndAssign_(ok, Member_(neg_one, value)() == -1.0)
+	AndAssign_(ok, 0.5 < Member_(two_thirds, value)())
+	AndAssign_(ok, Member_(two_thirds, value)() < 1.0)
 	AndAssign_(ok, Var_(five) < Var_(six))
 	C_
-	return_(ok)
-end_
+	Return_(ok)
+End_
 C_ END SOURCE
 C_
-omhelp_(a_double_ad_binary_xam,
+Omhelp_(a_double_ad_binary_xam,
 language_: a_double Binary Operators With AD Result: Example and Test)
-eof_
+Eof_

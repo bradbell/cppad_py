@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-header_(`a_double/assign_xam.xam')
+Header_(`a_double/assign_xam.xam')
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -14,24 +14,24 @@ BeginBoolFun__(ok, a_double_assign_xam)
 	NewVar_(a_double, x, ModuleCtor_(a_double)(2.0))
 	C_
 	Var_(x) = ModuleCtor_(a_double)(3.0);
-	AndAssign_(ok, member_(x, value)() == 3.0)
+	AndAssign_(ok, Member_(x, value)() == 3.0)
 	C_
 	Var_(x) += ModuleCtor_(a_double)(2.0);
-	AndAssign_(ok, member_(x, value)() == 5.0)
+	AndAssign_(ok, Member_(x, value)() == 5.0)
 	C_
 	Var_(x) -= ModuleCtor_(a_double(1.0));
-	AndAssign_(ok, member_(x, value)() == 4.0)
+	AndAssign_(ok, Member_(x, value)() == 4.0)
 	C_
 	Var_(x) *= ModuleCtor_(a_double(3.0));
-	AndAssign_(ok, member_(x, value)() == 12.0)
+	AndAssign_(ok, Member_(x, value)() == 12.0)
 	C_
 	Var_(x) /= ModuleCtor_(a_double(4.0));
-	AndAssign_(ok, member_(x, value)() == 3.0)
+	AndAssign_(ok, Member_(x, value)() == 3.0)
 	C_
-	return_(ok)
-end_
+	Return_(ok)
+End_
 C_ END SOURCE
 C_
-omhelp_(a_double_assign_xam,
+Omhelp_(a_double_assign_xam,
 language_: a_double Assignment Operators: Example and Test)
-eof_
+Eof_
