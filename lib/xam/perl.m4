@@ -20,10 +20,16 @@ define(try_, `eval { c_ try')
 define(catch_, `}; if( `$'@ ) { c_ catch')
 define(eof_, 1;)
 # -----------------------------------------------------------------------------
-# module, var, and member
+# module
 
-# module_ or module_(object)
+# module_ or module_(name)
 define(module_, `ifelse($#, 0, pm_cppad, pm_cppad::$1)')
+
+# module_ctor_(name)
+define(module_ctor_, new pm_cppad::$1)
+
+# -----------------------------------------------------------------------------
+# non-statements with arguments
 
 # var_(variable)
 define(var_, `$'$1)

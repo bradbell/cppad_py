@@ -25,6 +25,12 @@ define(eof_, `c_')
 # module_ or module_(object)
 define(module_, `ifelse($#, 0, py_cppad, py_cppad.$1)')
 
+# module_ctor_(name)
+define(module_ctor_, py_cppad.$1)
+
+# -----------------------------------------------------------------------------
+# non-statements with arguments
+
 # var_(variable)
 define(var_, $1)
 

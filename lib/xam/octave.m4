@@ -25,6 +25,12 @@ define(eof_, c_)
 # module_ or module_(name)
 define(module_, `ifelse($#, 0, m_cppad, m_cppad.$1)')
 
+# module_ctor_(name)
+define(module_ctor_, m_cppad.$1)
+
+# -----------------------------------------------------------------------------
+# non-statements with arguments
+
 # var_(variable)
 define(var_, $1)
 

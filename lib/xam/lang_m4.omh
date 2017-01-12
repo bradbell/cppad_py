@@ -9,6 +9,7 @@ $begin lang_m4$$
 $dollar @$$
 $escape $$
 $spell
+	ctor
 	printf
 	vec
 	var
@@ -102,7 +103,22 @@ $codei|
 references the specified name in the swig module.
 For example, in Octave it might be
 $codei|
-	m_module.|name|
+	m_cppad.|name|
+|$$
+
+$subhead Constructor$$
+The text corresponding to
+$codei|
+	module_ctor_(|name|)
+|$$
+references the specified constructor in the swig module.
+For example, in Octave it might be
+$codei|
+	m_cppad.|name|
+|$$
+while in Perl it could be
+$codei|
+	new pm_cppad::|name|
 |$$
 $comment ---------------------------------------------------------------$$
 
