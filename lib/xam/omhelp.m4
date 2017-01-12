@@ -104,15 +104,14 @@ $end
 */)
 # omhelp_any_(omhelp_tag, file_name, omhelp_title)
 define(omhelp_any_,
-`ifelse(
+``ifelse(
 	language_,
 	cplusplus,
 	`omhelp_cpp_($1,$2,$3)',
 	language_,
 	octave,
 	`omhelp_octave_($1,$2,$3)',
-	`omhelp_other_($1,$2,$3)')'
-)
+	`omhelp_other_($1,$2,$3)')'')
 # omhelp_(name_xam, omhelp_title)
 define(omhelp_, omhelp_any_(
 	`$1.ext_',dnl                         omhelp_tag
