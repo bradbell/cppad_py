@@ -22,10 +22,10 @@
 # $head Assumptions$$
 # It is assumed that the following macros have been set:
 # $cref/C_/lang_m4/No Arguments/C_/$$,
-# $cref/language_/xam.m4/language/$$.
+# $cref/Language_/xam.m4/language/$$.
 #
 # $end
 # -----------------------------------------------------------------------------
 define(Header_,dnl
 `C_' This file can be generated in the lib/xam directory using the command:
-`C_' m4 -D ``language_''=language_ $1)
+`C_' m4 -D ``Language_''=Language_ $1)

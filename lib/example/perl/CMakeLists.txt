@@ -21,7 +21,7 @@ FOREACH( xam_file ${xam_file_list} )
 	ADD_CUSTOM_COMMAND(
 		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
 		COMMAND ${m4_executable}
-		-D language_=perl
+		-D Language_=perl
 		-I ${CMAKE_SOURCE_DIR}/lib/xam
 		${CMAKE_SOURCE_DIR}/lib/xam/${xam_file}
 		> ${CMAKE_CURRENT_BINARY_DIR}/${source_file}

@@ -189,7 +189,7 @@ end_
 c_ END SOURCE
 c_ -----------------------------------------------------------------------------
 omhelp_($local_name,
-language_: REPLACE THIS WITH TITLE: Example and Test)
+Language_: REPLACE THIS WITH TITLE: Example and Test)
 EOF
 	;;
 	# =========================================================================

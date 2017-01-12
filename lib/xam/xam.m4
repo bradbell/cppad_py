@@ -21,7 +21,7 @@ divert(-1)
 # $head m4 Command$$
 # For this documentation, it is assumed that the m4 command is a follows:
 # $codei%
-#	m4 -I %directory% -D language_=%language% %xam_file_name%
+#	m4 -I %directory% -D Language_=%language% %xam_file_name%
 # %$$
 #
 # $head directory$$
@@ -46,7 +46,7 @@ divert(-1)
 #
 # $end
 #
-include(language_.m4)
+include(Language_.m4)
 include(omhelp.m4)
 include(xam_file_name.m4)
 include(header.m4)

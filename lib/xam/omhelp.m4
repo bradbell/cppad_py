@@ -105,17 +105,17 @@ $end
 # OmhelpAny_(Omhelp_tag, file_name, Omhelp_title)
 define(OmhelpAny_,
 ``ifelse(
-	language_,
+	Language_,
 	cplusplus,
 	`OmhelpCpp_($1,$2,$3)',
-	language_,
+	Language_,
 	octave,
 	`OmhelpOctave_($1,$2,$3)',
 	`OmhelpOther_($1,$2,$3)')'')
 # Omhelp_(name_xam, Omhelp_title)
 define(Omhelp_, OmhelpAny_(
 	`$1.Ext_',dnl                         Omhelp_tag
-	`build/lib/example/language_/$1.Ext_',dnl file_name
+	`build/lib/example/Language_/$1.Ext_',dnl file_name
 	`$2'dnl                               Omhelp_title
 ))
 # -----------------------------------------------------------------------------

@@ -48,5 +48,5 @@ End_
 C_ END SOURCE
 C_
 Omhelp_(a_fun_jacobian_xam,
-language_: General Jacobian Using AD: Example and Test)
+Language_: General Jacobian Using AD: Example and Test)
 Eof_

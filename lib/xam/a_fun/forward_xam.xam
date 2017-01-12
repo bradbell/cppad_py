@@ -66,5 +66,5 @@ End_
 C_ END SOURCE
 C_
 Omhelp_(a_fun_forward_xam,
-language_: Forward Mode AD: Example and Test)
+Language_: Forward Mode AD: Example and Test)
 Eof_
