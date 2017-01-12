@@ -24,7 +24,7 @@ begin_bool_fun_0_(ok, a_double_ad_binary_xam)
 	and_assign_(ok, member_(neg_one, value)() == -1.0)
 	and_assign_(ok, 0.5 < member_(two_thirds, value)())
 	and_assign_(ok, member_(two_thirds, value)() < 1.0)
-	and_assign_(ok, five < six)
+	and_assign_(ok, var_(five) < var_(six))
 	c_
 	return_(ok)
 end_

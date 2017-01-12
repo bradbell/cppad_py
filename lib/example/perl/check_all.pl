@@ -26,13 +26,13 @@ sub run_test
 }
 #
 my @fun_list = (
-#	'a_double_property_xam',
-#	'a_double_unary_xam',
-#	'a_double_assign_xam',
-#	'a_double_ad_binary_xam',
-#	'a_double_compare_xam',
-#	'a_vector_size_xam',
-#	'a_vector_set_get_xam',
+	'a_double_property_xam',
+	'a_double_unary_xam',
+	'a_double_assign_xam',
+	'a_double_ad_binary_xam',
+	'a_double_compare_xam',
+	'a_vector_size_xam',
+	'a_vector_set_get_xam',
 	'a_fun_jacobian_xam',
 	'a_fun_forward_xam',
 	'a_fun_reverse_xam',
@@ -47,5 +47,5 @@ if( $error_count > 0 )
 {	print 'perl: check_all: error_count = ', $error_count, "\n";
 	exit 1;
 }
-print "perl: check_all: Missing tests need fixing\n";
+print "perl: check_all: OK\n";
 exit 0;

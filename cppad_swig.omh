@@ -81,7 +81,13 @@ $head Whats New$$
 $subhead 2017-01-10$$
 First uploading of this documentation.
 $subhead 2017-01-11$$
+$list number$$
 Add exception handling; see $cref error_msg$$.
+$lnext
+Fix the Perl examples / tests
+(exception handling revealed they were not working).
+$lend
+
 
 
 $end
