@@ -1,52 +1,52 @@
 include(xam.m4)dnl this comments out end of line character
 header_(a_fun/abort_xam.xam)
-c_ -----------------------------------------------------------------------------
-c_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
-c_              This program is distributed under the terms of the
-c_          GNU Affero General Public License version 3.0 or later see
-c_                     http://www.gnu.org/licenses/agpl.txt
-c_ -----------------------------------------------------------------------------
-c_ std::vector<a_double>
-c_ -----------------------------------------------------------------------------
-c_ BEGIN SOURCE
-begin_bool_fun_0_(ok, a_fun_abort_xam)
-	new_var_(size_t, n, 2)
-	c_
-	c_ create ax
-	new_var_(vector_double, x, module_ctor_(vector_double)(var_(n)))
-	begin_for_(i, var_(n) )
-		vec_set_(x, var_(i), var_(i) + 1.0)
+C_ -----------------------------------------------------------------------------
+C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+C_              This program is distributed under the terms of the
+C_          GNU Affero General Public License version 3.0 or later see
+C_                     http://www.gnu.org/licenses/agpl.txt
+C_ -----------------------------------------------------------------------------
+C_ std::vector<a_double>
+C_ -----------------------------------------------------------------------------
+C_ BEGIN SOURCE
+BeginBoolFun__(ok, a_fun_abort_xam)
+	NewVar_(size_t, n, 2)
+	C_
+	C_ create ax
+	NewVar_(vector_double, x, ModuleCtor_(vector_double)(Var_(n)))
+	BeginFor_(i, Var_(n) )
+		VecSet_(x, Var_(i), Var_(i) + 1.0)
 	end_
-	new_var_(vector_ad, ax, module_(independent)(var_(x)))
-	c_
-	c_ preform some a_double operations
-	new_var_(a_double, ax0, vec_get_(ax, 0))
-	new_var_(a_double, ax1, vec_get_(ax, 1))
-	new_var_(a_double, ay, var_(ax0) + var_(ax1))
-	c_
-	c_ check that ay is a variable; its value depends on the value of ax
-	and_assign_(ok, member_(ay, variable)())
-	c_
-	c_ abort this recording
-	module_(abort_recording)()eos_
-	c_
-	c_ check that ay is now a parameter, no longer a variable.
-	and_assign_(ok, member_(ay, parameter)())
-	c_
-	c_ since it is a parameter, we can retrieve its value
-	new_var_(double, y, member_(ay, value)())
-	c_
-	c_ its value should be x0 + x1
-	and_assign_(ok, var_(y)  == vec_get_(x, 0) + vec_get_(x, 1))
-	c_
-	c_ an abort when not recording has no effect
-	module_(abort_recording)()eos_
-	c_
+	NewVar_(vector_ad, ax, Module_(independent)(Var_(x)))
+	C_
+	C_ preform some a_double operations
+	NewVar_(a_double, ax0, VecGet_(ax, 0))
+	NewVar_(a_double, ax1, VecGet_(ax, 1))
+	NewVar_(a_double, ay, Var_(ax0) + Var_(ax1))
+	C_
+	C_ check that ay is a variable; its value depends on the value of ax
+	AndAssign_(ok, member_(ay, variable)())
+	C_
+	C_ abort this recording
+	Module_(abort_recording)()Eos_
+	C_
+	C_ check that ay is now a parameter, no longer a variable.
+	AndAssign_(ok, member_(ay, parameter)())
+	C_
+	C_ since it is a parameter, we can retrieve its value
+	NewVar_(double, y, member_(ay, value)())
+	C_
+	C_ its value should be x0 + x1
+	AndAssign_(ok, Var_(y)  == VecGet_(x, 0) + VecGet_(x, 1))
+	C_
+	C_ an abort when not recording has no effect
+	Module_(abort_recording)()Eos_
+	C_
 	return_(ok)
 end_
-c_ END SOURCE
-c_
+C_ END SOURCE
+C_
 omhelp_(a_fun_abort_xam,
 language_: Abort Recording a_double Operations: Example and Test)
 eof_

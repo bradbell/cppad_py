@@ -1,26 +1,26 @@
 include(xam.m4)dnl this comments out end of line character
 header_(`a_double/property_xam.xam')
-c_ -----------------------------------------------------------------------------
-c_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
-c_              This program is distributed under the terms of the
-c_          GNU Affero General Public License version 3.0 or later see
-c_                     http://www.gnu.org/licenses/agpl.txt
-c_ -----------------------------------------------------------------------------
-c_ a_double properties
-c_ -----------------------------------------------------------------------------
-c_ BEGIN SOURCE
-begin_bool_fun_0_(ok, a_double_property_xam)
-	new_var_(a_double, two, module_ctor_(a_double)(2.0))
-	c_
-	and_assign_(ok, member_(two, value)()   == 2.0)
-	and_assign_(ok, member_(two, parameter)())
-	and_assign_(ok, not_ member_(two, variable)())
-	c_
+C_ -----------------------------------------------------------------------------
+C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+C_              This program is distributed under the terms of the
+C_          GNU Affero General Public License version 3.0 or later see
+C_                     http://www.gnu.org/licenses/agpl.txt
+C_ -----------------------------------------------------------------------------
+C_ a_double properties
+C_ -----------------------------------------------------------------------------
+C_ BEGIN SOURCE
+BeginBoolFun__(ok, a_double_property_xam)
+	NewVar_(a_double, two, ModuleCtor_(a_double)(2.0))
+	C_
+	AndAssign_(ok, member_(two, value)()   == 2.0)
+	AndAssign_(ok, member_(two, parameter)())
+	AndAssign_(ok, Not_ member_(two, variable)())
+	C_
 	return_(ok)
 end_
-c_ END SOURCE
-c_
+C_ END SOURCE
+C_
 omhelp_(a_double_property_xam,
 language_: Properties of an a_double: Example and Test)
 eof_

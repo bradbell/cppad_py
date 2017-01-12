@@ -32,13 +32,13 @@
 # The output value of $code lang_file_name_$$ has all the forward slash
 # $code /$$ characters converted to under bar $code _$$ characters
 # and the file extension $code .xam$$ converted to
-# $cref/ext_/lang_m4/No Arguments/ext_/$$.
+# $cref/Ext_/lang_m4/No Arguments/Ext_/$$.
 #
 # $head Assumptions$$
 # It is assumed that the following macro has been set:
-# $cref/ext_/lang_m4/No Arguments/ext_/$$.
+# $cref/Ext_/lang_m4/No Arguments/Ext_/$$.
 #
 # $end
 # -----------------------------------------------------------------------------
 define(function_name_,  `patsubst( `patsubst(`$1', /, _)', [.]xam, `')')
-define(lang_file_name_, `patsubst( `patsubst(`$1', /, _)', [.]xam, .ext_)')
+define(lang_file_name_, `patsubst( `patsubst(`$1', /, _)', [.]xam, .Ext_)')

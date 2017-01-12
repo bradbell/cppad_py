@@ -39,22 +39,22 @@ All macro names end with a lower case letter followed by an under-bar.
 $comment ---------------------------------------------------------------$$
 $head No Arguments$$
 
-$subhead ext_$$
+$subhead Ext_$$
 This is the file extension (without the $code .$$)
 used for scripting language; e.g., $code py$$ for Python files.
 
-$subhead true_$$
+$subhead True_$$
 This is a constant representing the value true in the scripting language;
 e.g. $code True$$ for Python.
 
-$subhead false_$$
+$subhead False_$$
 This is a constant representing the value false in the scripting language;
 e.g. $code True$$ for Python.
 
-$subhead and_$$
+$subhead And_$$
 This is the logical binary and operator; e.g. $code and$$ for Python.
 
-$subhead not_$$
+$subhead Not_$$
 This is the logical unary operator not; e.g. $code !$$ for Perl.
 
 
@@ -65,16 +65,16 @@ Note that in Python, the comment symbol $code #$$ is used.
 This suffices because the level of indentation (by tabs)
 is reduced by one when the block terminates.
 
-$subhead c_$$
+$subhead C_$$
 This is the text that starts a comment that lasts for the current line;
 e.g., $code #$$ for Python.
 
-$subhead eos_$$
+$subhead Eos_$$
 All statements will be following by a newline in the input text.
 This macro provides any characters, beside the newline, that are required to
 terminate a statement. For example, in C++ it could be $code ;$$.
 
-$subhead try_$$
+$subhead Try_$$
 This text starts an exception try block.
 It is assumed that the block will be terminated by a $code catch_$$.
 
@@ -88,17 +88,17 @@ This is extra text that should be added at the end of file.
 each $icode%*%.pm%$$ file.)
 
 $comment ---------------------------------------------------------------$$
-$head module_$$
+$head Module_$$
 
 $subhead No Arguments$$
-If $code module_$$ has no arguments,
+If $code Module_$$ has no arguments,
 it is the name of the module in $cref example.i$$
 for scripting language; e.g., $code py_cppad$$ for Python.
 
 $subhead One Argument$$
 The text corresponding to
 $codei|
-	module_(|name|)
+	Module_(|name|)
 |$$
 references the specified name in the swig module.
 For example, in Octave it might be
@@ -109,7 +109,7 @@ $codei|
 $subhead Constructor$$
 The text corresponding to
 $codei|
-	module_ctor_(|name|)
+	ModuleCtor_(|name|)
 |$$
 references the specified constructor in the swig module.
 For example, in Octave it might be
@@ -124,10 +124,10 @@ $comment ---------------------------------------------------------------$$
 
 $head Non-Statements With Arguments$$
 
-$subhead var_$$
+$subhead Var_$$
 The text corresponding to
 $codei|
-	var_(|variable|)
+	Var_(|variable|)
 |$$
 retrieves the value of the specified variable.
 For example, in Python it could be $icode variable$$
@@ -145,10 +145,10 @@ $codei|
 	|variable|.|name|
 |$$
 
-$subhead string_equal_$$
+$subhead StringEqual_$$
 The text corresponding to
 $codei|
-	string_equal_(|left|, |right|)
+	StringEqual_(|left|, |right|)
 |$$
 results in true (false), if the string $icode left$$
 is equal (not equal) to the string $icode right$$.
@@ -158,10 +158,10 @@ $code std::string$$ while the right might be a $code char*$$.)
 $comment ---------------------------------------------------------------$$
 $head Assignment Statements$$
 
-$subhead new_var_$$
+$subhead NewVar_$$
 The text corresponding to
 $codei|
-	new_var_(|type|, |variable|, |value|)
+	NewVar_(|type|, |variable|, |value|)
 |$$
 declares the new specified variable with the specified type
 and assigns it the specified value.
@@ -176,10 +176,10 @@ $codei|
 	|type| |variable| = |value|;
 |$$
 
-$subhead assign_$$
+$subhead Assign_$$
 The text corresponding to
 $codei|
-	assign_(|variable|, |value|)
+	Assign_(|variable|, |value|)
 |$$
 assigns the specified value to an existing variable.
 For example, in Python it could be
@@ -187,10 +187,10 @@ $codei|
 	|variable| = |value|
 |$$
 
-$subhead and_assign_$$
+$subhead AndAssign_$$
 The text corresponding to
 $codei|
-	and_assign_(|variable|, |value|)
+	AndAssign_(|variable|, |value|)
 |$$
 assigns the specified logical variable to the binary expression
 of itself and the value.
@@ -203,10 +203,10 @@ $comment ---------------------------------------------------------------$$
 
 $head Vector Operations$$
 
-$subhead vec_set_$$
+$subhead VecSet_$$
 The text corresponding to
 $codei|
-	vec_set_(|vector|, |index|, |value|)
+	VecSet_(|vector|, |index|, |value|)
 |$$
 sets the element with the specified index, in the specified vector, to the
 specified value.
@@ -217,10 +217,10 @@ $codei|
 
 
 
-$subhead vec_get_$$
+$subhead VecGet_$$
 The text corresponding to
 $codei|
-	vec_get_(|vector|, |index|)
+	VecGet_(|vector|, |index|)
 |$$
 gets the value of the element with the specified index,
 in the specified vector.
@@ -233,10 +233,10 @@ $comment ---------------------------------------------------------------$$
 
 $head Function Statements$$
 
-$subhead begin_bool_fun_0_$$
+$subhead BeginBoolFun__$$
 The text corresponding to
 $codei|
-	begin_bool_fun_0_(|return_variable|, |function_name|)
+	BeginBoolFun__(|return_variable|, |function_name|)
 |$$
 is placed at the beginning of function that has zero arguments
 and a boolean return value.
@@ -275,7 +275,7 @@ $cref/end_/lang_m4/No Arguments/end_/$$.
 $comment ---------------------------------------------------------------$$
 $head Other$$
 
-$subhead begin_for_ Statement$$
+$subhead BeginFor_ Statement$$
 The text corresponding to
 $codei|
 	begin_for(|variable|, |upper|)
@@ -287,10 +287,10 @@ The value of the index the last time through the loop is $icode|upper|-1|$$.
 The block inside the loop is terminated by a matching
 $cref/end_/lang_m4/No Arguments/end_/$$.
 
-$subhead print_text_ Statement$$
+$subhead print_tExt_ Statement$$
 The text corresponding to
 $codei|
-	print_text_(|argument|)
+	print_tExt_(|argument|)
 |$$
 prints the text specified by $icode argument$$ followed by a new line.
 For example, in Octave it might be

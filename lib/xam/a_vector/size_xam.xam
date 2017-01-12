@@ -1,29 +1,29 @@
 include(xam.m4)dnl this comments out end of line character
 header_(`vector/size.xam')
-c_ -----------------------------------------------------------------------------
-c_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
-c_              This program is distributed under the terms of the
-c_          GNU Affero General Public License version 3.0 or later see
-c_                     http://www.gnu.org/licenses/agpl.txt
-c_ -----------------------------------------------------------------------------
-c_ vector size()
-c_ -----------------------------------------------------------------------------
-c_ BEGIN SOURCE
-begin_bool_fun_0_(ok, a_vector_size_xam)
-	new_var_(vector_double, v0, module_ctor_(vector_double)())
-	new_var_(vector_double, v9, module_ctor_(vector_double)(9))
-	and_assign_(ok, member_(v0, size)() == 0 )
-	and_assign_(ok, member_(v9, size)() == 9)
-	c_
-	new_var_(vector_ad, av0, module_ctor_(vector_ad)())
-	new_var_(vector_ad, av5, module_ctor_(vector_ad)(5))
-	and_assign_(ok, member_(av0, size)() == 0 )
-	and_assign_(ok, member_(av5, size)() == 5 )
-	c_
+C_ -----------------------------------------------------------------------------
+C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+C_              This program is distributed under the terms of the
+C_          GNU Affero General Public License version 3.0 or later see
+C_                     http://www.gnu.org/licenses/agpl.txt
+C_ -----------------------------------------------------------------------------
+C_ vector size()
+C_ -----------------------------------------------------------------------------
+C_ BEGIN SOURCE
+BeginBoolFun__(ok, a_vector_size_xam)
+	NewVar_(vector_double, v0, ModuleCtor_(vector_double)())
+	NewVar_(vector_double, v9, ModuleCtor_(vector_double)(9))
+	AndAssign_(ok, member_(v0, size)() == 0 )
+	AndAssign_(ok, member_(v9, size)() == 9)
+	C_
+	NewVar_(vector_ad, av0, ModuleCtor_(vector_ad)())
+	NewVar_(vector_ad, av5, ModuleCtor_(vector_ad)(5))
+	AndAssign_(ok, member_(av0, size)() == 0 )
+	AndAssign_(ok, member_(av5, size)() == 5 )
+	C_
 	return_(ok)
 end_
-c_ END SOURCE
-c_
+C_ END SOURCE
+C_
 omhelp_(a_vector_size_xam, language_: Size of Vectors: Example and Test)
 eof_

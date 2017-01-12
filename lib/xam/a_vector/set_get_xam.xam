@@ -1,38 +1,38 @@
 include(xam.m4)dnl this comments out end of line character
 header_(a_vector/set_get_xam.xam)
-c_ -----------------------------------------------------------------------------
-c_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
-c_              This program is distributed under the terms of the
-c_          GNU Affero General Public License version 3.0 or later see
-c_                     http://www.gnu.org/licenses/agpl.txt
-c_ -----------------------------------------------------------------------------
-c_ std::vector<double>
-c_ -----------------------------------------------------------------------------
-c_ BEGIN SOURCE
-begin_bool_fun_0_(ok, a_vector_set_get_xam)
-	new_var_(size_t, n, 4)
-	new_var_(vector_double, v, module_ctor_(vector_double)(var_(n)))
-	new_var_(vector_ad, av, module_ctor_(vector_ad)(var_(n)))
-	c_
-	c_ setting elements
-	begin_for_(i, var_(n) )
-		vec_set_(v, var_(i), 2.0 * var_(i))
-		vec_set_(av, var_(i), module_ctor_(a_double)(2.0 * var_(i)))
+C_ -----------------------------------------------------------------------------
+C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+C_              This program is distributed under the terms of the
+C_          GNU Affero General Public License version 3.0 or later see
+C_                     http://www.gnu.org/licenses/agpl.txt
+C_ -----------------------------------------------------------------------------
+C_ std::vector<double>
+C_ -----------------------------------------------------------------------------
+C_ BEGIN SOURCE
+BeginBoolFun__(ok, a_vector_set_get_xam)
+	NewVar_(size_t, n, 4)
+	NewVar_(vector_double, v, ModuleCtor_(vector_double)(Var_(n)))
+	NewVar_(vector_ad, av, ModuleCtor_(vector_ad)(Var_(n)))
+	C_
+	C_ setting elements
+	BeginFor_(i, Var_(n) )
+		VecSet_(v, Var_(i), 2.0 * Var_(i))
+		VecSet_(av, Var_(i), ModuleCtor_(a_double)(2.0 * Var_(i)))
 	end_
-	c_ getting elements
-	begin_for_(i, var_(n) )
-		new_var_(double, e, vec_get_(v, var_(i)))
-		and_assign_(ok, var_(e) == 2.0 * var_(i))
-		c_
-		new_var_(a_double, ae, vec_get_(av, var_(i)))
-		and_assign_(ok, member_(ae, value)() == 2.0 * var_(i))
+	C_ getting elements
+	BeginFor_(i, Var_(n) )
+		NewVar_(double, e, VecGet_(v, Var_(i)))
+		AndAssign_(ok, Var_(e) == 2.0 * Var_(i))
+		C_
+		NewVar_(a_double, ae, VecGet_(av, Var_(i)))
+		AndAssign_(ok, member_(ae, value)() == 2.0 * Var_(i))
 	end_
-	c_
+	C_
 	return_(ok)
 end_
-c_ END SOURCE
-c_
+C_ END SOURCE
+C_
 omhelp_(a_vector_set_get_xam,
 language_: Setting and Getting Vector Elements: Example and Test)
 eof_

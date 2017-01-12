@@ -8,64 +8,64 @@
 # NOTE: order of these macros is same as order of documentation in macro.omh
 # -----------------------------------------------------------------------------
 # No Arguments
-define(ext_, cpp)
-define(true_, true)
-define(false_, false)
-define(and_, &&)
-define(not_, !)
+define(Ext_, cpp)
+define(True_, true)
+define(False_, false)
+define(And_, &&)
+define(Not_, !)
 define(end_, `}')
-define(c_, `//')
-define(eos_, `;')
-define(try_, `try {')
+define(C_, `//')
+define(Eos_, `;')
+define(Try_, `try {')
 define(catch_, `} catch (...) {')
-define(eof_, c_)
+define(eof_, C_)
 # -----------------------------------------------------------------------------
 # module, var, and member
 
-# module_ or module_(name)
-define(module_, `ifelse($#, 0, cppad_swig, cppad_swig::$1)')
+# Module_ or Module_(name)
+define(Module_, `ifelse($#, 0, cppad_swig, cppad_swig::$1)')
 
-# module_ctor_(name)
-define(module_ctor_, cppad_swig::$1)
+# ModuleCtor_(name)
+define(ModuleCtor_, cppad_swig::$1)
 
 # -----------------------------------------------------------------------------
 # non-statements with arguments
 
-# var_(variable)
-define(var_, $1)
+# Var_(variable)
+define(Var_, $1)
 
 # member_(variable, name)
 define(member_, $1.$2)
 
-# string_equal_(left, right)
-define(string_equal_, $1 == $2)
+# StringEqual_(left, right)
+define(StringEqual_, $1 == $2)
 
 # -----------------------------------------------------------------------------
 # Assignment
 
-# new_var_(type, variable, value)
-define(new_var_, $1 $2 = $3;)
+# NewVar_(type, variable, value)
+define(NewVar_, $1 $2 = $3;)
 
-# assign_(variable, value)
-define(assign_, $1 = $2;)
+# Assign_(variable, value)
+define(Assign_, $1 = $2;)
 
-# and_assign_(variable, value)
-define(and_assign_, $1 = $1 and_ $2;)
+# AndAssign_(variable, value)
+define(AndAssign_, $1 = $1 And_ $2;)
 
 # -----------------------------------------------------------------------------
 # Vector Operations
 
-# vec_set_(vector, index, value)
-define(vec_set_, $1[$2] = $3;)
+# VecSet_(vector, index, value)
+define(VecSet_, $1[$2] = $3;)
 
-# vec_get_(vector, index)
-define(vec_get_, $1[$2])
+# VecGet_(vector, index)
+define(VecGet_, $1[$2])
 
 # -----------------------------------------------------------------------------
 # Function Statements
 
-# begin_bool_fun_0_(return_variable, fun_name)
-define(begin_bool_fun_0_,
+# BeginBoolFun__(return_variable, fun_name)
+define(BeginBoolFun__,
 `#' include <cstdio>
 `#' include <string>
 `#' include <cppad/swig/cppad_swig.hpp>
@@ -76,10 +76,10 @@ bool $2(void) {
 	using cppad_swig::vector_ad;
 	using cppad_swig::a_fun;
 	using std::string;
-	c_
-	c_ initialize return variable
-	bool $1 = true_;
-	c_------------------------------------------------------------------------)
+	C_
+	C_ initialize return variable
+	bool $1 = True_;
+	C_------------------------------------------------------------------------)
 
 # return_(return_variable)
 define(return_, return( $1 );)
@@ -87,8 +87,8 @@ define(return_, return( $1 );)
 # -----------------------------------------------------------------------------
 # Other
 
-# begin_for_(variable, upper)
-define(begin_for_, for(size_t $1 = 0; $1 < $2; $1++) {)
+# BeginFor_(variable, upper)
+define(BeginFor_, for(size_t $1 = 0; $1 < $2; $1++) {)
 
-# print_text_(text)
-define(print_text_, std::printf("$1\n"))
+# print_tExt_(text)
+define(print_tExt_, std::printf("$1\n"))

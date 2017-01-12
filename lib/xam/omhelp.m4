@@ -114,8 +114,8 @@ define(omhelp_any_,
 	`omhelp_other_($1,$2,$3)')'')
 # omhelp_(name_xam, omhelp_title)
 define(omhelp_, omhelp_any_(
-	`$1.ext_',dnl                         omhelp_tag
-	`build/lib/example/language_/$1.ext_',dnl file_name
+	`$1.Ext_',dnl                         omhelp_tag
+	`build/lib/example/language_/$1.Ext_',dnl file_name
 	`$2'dnl                               omhelp_title
 ))
 # -----------------------------------------------------------------------------

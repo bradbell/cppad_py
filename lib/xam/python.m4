@@ -8,72 +8,72 @@
 # NOTE: order of these macros is same as order of documentation in macro.omh
 # -----------------------------------------------------------------------------
 # No Arguments
-define(ext_, py)
-define(true_, True)
-define(false_, False)
-define(and_, and)
-define(not_, not)
+define(Ext_, py)
+define(True_, True)
+define(False_, False)
+define(And_, and)
+define(Not_, not)
 define(end_, `#')
-define(c_, `#')
-define(eos_, `')
-define(try_, `try :')
-define(catch_, `except : c_ catch')
-define(eof_, `c_')
+define(C_, `#')
+define(Eos_, `')
+define(Try_, `try :')
+define(catch_, `except : C_ catch')
+define(eof_, `C_')
 # -----------------------------------------------------------------------------
 # module, var and member_
 
-# module_ or module_(object)
-define(module_, `ifelse($#, 0, py_cppad, py_cppad.$1)')
+# Module_ or Module_(object)
+define(Module_, `ifelse($#, 0, py_cppad, py_cppad.$1)')
 
-# module_ctor_(name)
-define(module_ctor_, py_cppad.$1)
+# ModuleCtor_(name)
+define(ModuleCtor_, py_cppad.$1)
 
 # -----------------------------------------------------------------------------
 # non-statements with arguments
 
-# var_(variable)
-define(var_, $1)
+# Var_(variable)
+define(Var_, $1)
 
 # member_(variable, name)
 define(member_, $1.$2)
 
-# string_equal_(left, right)
-define(string_equal_, ($1 == $2))
+# StringEqual_(left, right)
+define(StringEqual_, ($1 == $2))
 
 # -----------------------------------------------------------------------------
 # Assignment
 
-# new_var_(type, variable, value)
-define(new_var_, $2 = $3)
+# NewVar_(type, variable, value)
+define(NewVar_, $2 = $3)
 
-# assign_(variable, value)
-define(assign_, $1 = $2)
+# Assign_(variable, value)
+define(Assign_, $1 = $2)
 
-# and_assign_(variable, value)
-define(and_assign_, $1 = $1 and_ $2)
+# AndAssign_(variable, value)
+define(AndAssign_, $1 = $1 And_ $2)
 
 # -----------------------------------------------------------------------------
 # Vector Operations
 
-# vec_set_(vector, index, value)
-define(vec_set_, $1[$2] = $3)
+# VecSet_(vector, index, value)
+define(VecSet_, $1[$2] = $3)
 
-# vec_get_(vector, index)
-define(vec_get_, $1[$2])
+# VecGet_(vector, index)
+define(VecGet_, $1[$2])
 
 # -----------------------------------------------------------------------------
 # Function Statements
 
-# begin_bool_fun_0_(return_variable, fun_name)
-define(begin_bool_fun_0_,
+# BeginBoolFun__(return_variable, fun_name)
+define(BeginBoolFun__,
 def $2() :
-	c_
-	c_ load the Cppad Swig library
-	import module_
-	c_
-	c_ initialize return variable
-	$1 = true_
-	`c_' ---------------------------------------------------------------------)
+	C_
+	C_ load the Cppad Swig library
+	import Module_
+	C_
+	C_ initialize return variable
+	$1 = True_
+	`C_' ---------------------------------------------------------------------)
 
 # return_(return_variable)
 define(return_, return( $1 ))
@@ -81,8 +81,8 @@ define(return_, return( $1 ))
 # -----------------------------------------------------------------------------
 # Other
 
-# begin_for_(variable, upper)
-define(begin_for_, for $1 in range( $2 ) :)
+# BeginFor_(variable, upper)
+define(BeginFor_, for $1 in range( $2 ) :)
 
-# print_text_(text)
-define(print_text_, print('$1'))
+# print_tExt_(text)
+define(print_tExt_, print('$1'))

@@ -1,37 +1,37 @@
 include(xam.m4)dnl this comments out end of line character
 header_(`a_double/assign_xam.xam')
-c_ -----------------------------------------------------------------------------
-c_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
-c_              This program is distributed under the terms of the
-c_          GNU Affero General Public License version 3.0 or later see
-c_                     http://www.gnu.org/licenses/agpl.txt
-c_ -----------------------------------------------------------------------------
-c_ a_double
-c_ -----------------------------------------------------------------------------
-c_ BEGIN SOURCE
-begin_bool_fun_0_(ok, a_double_assign_xam)
-	new_var_(a_double, x, module_ctor_(a_double)(2.0))
-	c_
-	var_(x) = module_ctor_(a_double)(3.0);
-	and_assign_(ok, member_(x, value)() == 3.0)
-	c_
-	var_(x) += module_ctor_(a_double)(2.0);
-	and_assign_(ok, member_(x, value)() == 5.0)
-	c_
-	var_(x) -= module_ctor_(a_double(1.0));
-	and_assign_(ok, member_(x, value)() == 4.0)
-	c_
-	var_(x) *= module_ctor_(a_double(3.0));
-	and_assign_(ok, member_(x, value)() == 12.0)
-	c_
-	var_(x) /= module_ctor_(a_double(4.0));
-	and_assign_(ok, member_(x, value)() == 3.0)
-	c_
+C_ -----------------------------------------------------------------------------
+C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+C_              This program is distributed under the terms of the
+C_          GNU Affero General Public License version 3.0 or later see
+C_                     http://www.gnu.org/licenses/agpl.txt
+C_ -----------------------------------------------------------------------------
+C_ a_double
+C_ -----------------------------------------------------------------------------
+C_ BEGIN SOURCE
+BeginBoolFun__(ok, a_double_assign_xam)
+	NewVar_(a_double, x, ModuleCtor_(a_double)(2.0))
+	C_
+	Var_(x) = ModuleCtor_(a_double)(3.0);
+	AndAssign_(ok, member_(x, value)() == 3.0)
+	C_
+	Var_(x) += ModuleCtor_(a_double)(2.0);
+	AndAssign_(ok, member_(x, value)() == 5.0)
+	C_
+	Var_(x) -= ModuleCtor_(a_double(1.0));
+	AndAssign_(ok, member_(x, value)() == 4.0)
+	C_
+	Var_(x) *= ModuleCtor_(a_double(3.0));
+	AndAssign_(ok, member_(x, value)() == 12.0)
+	C_
+	Var_(x) /= ModuleCtor_(a_double(4.0));
+	AndAssign_(ok, member_(x, value)() == 3.0)
+	C_
 	return_(ok)
 end_
-c_ END SOURCE
-c_
+C_ END SOURCE
+C_
 omhelp_(a_double_assign_xam,
 language_: a_double Assignment Operators: Example and Test)
 eof_

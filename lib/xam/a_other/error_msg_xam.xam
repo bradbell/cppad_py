@@ -1,27 +1,27 @@
 include(xam.m4)dnl this comments out end of line character
 header_(a_other/error_msg_xam.xam)
-c_ -----------------------------------------------------------------------------
-c_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
-c_              This program is distributed under the terms of the
-c_          GNU Affero General Public License version 3.0 or later see
-c_                     http://www.gnu.org/licenses/agpl.txt
-c_ -----------------------------------------------------------------------------
-c_ a_other_error_msg_xam
-c_ -----------------------------------------------------------------------------
-c_ BEGIN SOURCE
-begin_bool_fun_0_(ok, a_other_error_msg_xam)
-	assign_(ok, false_)
-	try_
-		module_(error_msg("test message"))eos_
+C_ -----------------------------------------------------------------------------
+C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+C_              This program is distributed under the terms of the
+C_          GNU Affero General Public License version 3.0 or later see
+C_                     http://www.gnu.org/licenses/agpl.txt
+C_ -----------------------------------------------------------------------------
+C_ a_other_error_msg_xam
+C_ -----------------------------------------------------------------------------
+C_ BEGIN SOURCE
+BeginBoolFun__(ok, a_other_error_msg_xam)
+	Assign_(ok, False_)
+	Try_
+		Module_(error_msg("test message"))Eos_
 	catch_
-		new_var_(string, stored_message, module_(error_msg)(""))
-		assign_(ok, string_equal_(var_(stored_message), "test message"))
+		NewVar_(string, stored_message, Module_(error_msg)(""))
+		Assign_(ok, StringEqual_(Var_(stored_message), "test message"))
 	end_
 	return_( ok )
 end_
-c_ END SOURCE
-c_ -----------------------------------------------------------------------------
+C_ END SOURCE
+C_ -----------------------------------------------------------------------------
 omhelp_(a_other_error_msg_xam,
 language_: Cppad Swig Exception Handling: Example and Test)
 eof_

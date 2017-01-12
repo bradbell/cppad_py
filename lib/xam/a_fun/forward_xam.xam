@@ -1,70 +1,70 @@
 include(xam.m4)dnl this comments out end of line character
 header_(a_fun/forward_xam.xam)
-c_ -----------------------------------------------------------------------------
-c_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
-c_              This program is distributed under the terms of the
-c_          GNU Affero General Public License version 3.0 or later see
-c_                     http://www.gnu.org/licenses/agpl.txt
-c_ -----------------------------------------------------------------------------
-c_ std::vector<a_double>
-c_ -----------------------------------------------------------------------------
-c_ BEGIN SOURCE
-begin_bool_fun_0_(ok, a_fun_forward_xam)
-	c_ number of dependent and independent variables
-	new_var_(size_t, m, 1)
-	new_var_(size_t, n, 2)
-	c_
-	c_ create the independent variables ax
-	new_var_(vector_double, xp, module_ctor_(vector_double)(var_(n)))
-	begin_for_(i, var_(n) )
-		vec_set_(xp, var_(i), var_(i) + 1.0)
+C_ -----------------------------------------------------------------------------
+C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+C_              This program is distributed under the terms of the
+C_          GNU Affero General Public License version 3.0 or later see
+C_                     http://www.gnu.org/licenses/agpl.txt
+C_ -----------------------------------------------------------------------------
+C_ std::vector<a_double>
+C_ -----------------------------------------------------------------------------
+C_ BEGIN SOURCE
+BeginBoolFun__(ok, a_fun_forward_xam)
+	C_ number of dependent and independent variables
+	NewVar_(size_t, m, 1)
+	NewVar_(size_t, n, 2)
+	C_
+	C_ create the independent variables ax
+	NewVar_(vector_double, xp, ModuleCtor_(vector_double)(Var_(n)))
+	BeginFor_(i, Var_(n) )
+		VecSet_(xp, Var_(i), Var_(i) + 1.0)
 	end_
-	new_var_(vector_ad, ax, module_(independent)(var_(xp)))
-	c_
-	c_ create dependent varialbes ay with ay0 = ax0 * ax1
-	new_var_(a_double, ax0, vec_get_(ax, 0))
-	new_var_(a_double, ax1, vec_get_(ax, 1))
-	new_var_(vector_ad, ay, module_ctor_(vector_ad)(var_(m)))
-	vec_set_(ay, 0, var_(ax0) * var_(ax1))
-	c_
-	c_ define af corresponding to f(x) = x0 * x1
-	new_var_(a_fun, af, module_ctor_(a_fun)(var_(ax), var_(ay)))
-	c_
-	c_ define X(t) = (3 + t, 2 + t)
-	c_ it follows that Y(t) = f(X(t)) = (3 + t) * (2 + t)
-	c_
-	c_ Y(0) = 6 and p ! = 1
-	new_var_(size_t, p, 0)
-	vec_set_(xp, 0, 3.0)
-	vec_set_(xp, 1, 2.0)
-	new_var_(vector_double, yp, member_(af, forward)(var_(p), var_(xp)))
-	and_assign_(ok, vec_get_(yp, 0) == 6.0)
-	c_
-	c_ first order Taylor coefficients for X(t)
-	assign_(p, 1)
-	vec_set_(xp, 0, 1.0)
-	vec_set_(xp, 1, 1.0)
-	c_
-	c_ first order Taylor coefficient for Y(t)
-	c_ Y'(0) = 3 + 2 = 5 and p ! = 1
-	assign_(yp, member_(af, forward)(var_(p), var_(xp)))
-	and_assign_(ok, vec_get_(yp, 0) == 5.0)
-	c_
-	c_ second order Taylor coefficients for X(t)
-	assign_(p, 2)
-	vec_set_(xp, 0, 0.0)
-	vec_set_(xp, 1, 0.0)
-	c_
-	c_ second order Taylor coefficient for Y(t)
-	c_ Y''(0) = 2.0 and p ! = 2
-	assign_(yp, member_(af, forward)(var_(p), var_(xp)))
-	and_assign_(ok, vec_get_(yp, 0) == 1.0)
-	c_
+	NewVar_(vector_ad, ax, Module_(independent)(Var_(xp)))
+	C_
+	C_ create dependent varialbes ay with ay0 = ax0 * ax1
+	NewVar_(a_double, ax0, VecGet_(ax, 0))
+	NewVar_(a_double, ax1, VecGet_(ax, 1))
+	NewVar_(vector_ad, ay, ModuleCtor_(vector_ad)(Var_(m)))
+	VecSet_(ay, 0, Var_(ax0) * Var_(ax1))
+	C_
+	C_ define af corresponding to f(x) = x0 * x1
+	NewVar_(a_fun, af, ModuleCtor_(a_fun)(Var_(ax), Var_(ay)))
+	C_
+	C_ define X(t) = (3 + t, 2 + t)
+	C_ it follows that Y(t) = f(X(t)) = (3 + t) * (2 + t)
+	C_
+	C_ Y(0) = 6 and p ! = 1
+	NewVar_(size_t, p, 0)
+	VecSet_(xp, 0, 3.0)
+	VecSet_(xp, 1, 2.0)
+	NewVar_(vector_double, yp, member_(af, forward)(Var_(p), Var_(xp)))
+	AndAssign_(ok, VecGet_(yp, 0) == 6.0)
+	C_
+	C_ first order Taylor coefficients for X(t)
+	Assign_(p, 1)
+	VecSet_(xp, 0, 1.0)
+	VecSet_(xp, 1, 1.0)
+	C_
+	C_ first order Taylor coefficient for Y(t)
+	C_ Y'(0) = 3 + 2 = 5 and p ! = 1
+	Assign_(yp, member_(af, forward)(Var_(p), Var_(xp)))
+	AndAssign_(ok, VecGet_(yp, 0) == 5.0)
+	C_
+	C_ second order Taylor coefficients for X(t)
+	Assign_(p, 2)
+	VecSet_(xp, 0, 0.0)
+	VecSet_(xp, 1, 0.0)
+	C_
+	C_ second order Taylor coefficient for Y(t)
+	C_ Y''(0) = 2.0 and p ! = 2
+	Assign_(yp, member_(af, forward)(Var_(p), Var_(xp)))
+	AndAssign_(ok, VecGet_(yp, 0) == 1.0)
+	C_
 	return_(ok)
 end_
-c_ END SOURCE
-c_
+C_ END SOURCE
+C_
 omhelp_(a_fun_forward_xam,
 language_: Forward Mode AD: Example and Test)
 eof_
