@@ -87,6 +87,11 @@ $lnext
 Fix the Perl examples / tests
 (exception handling revealed they were not working).
 $lend
+$subhead 2017-01-12$$
+Change
+$cref xam.m4$$ macros to all start with Capital letters and use Camel case
+This is relevant to understanding on Cppad Swig generates examples
+for all languages from a single source.
 
 
 
