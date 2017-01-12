@@ -12,8 +12,8 @@ c_ -----------------------------------------------------------------------------
 c_ BEGIN SOURCE
 begin_bool_fun_0_(ok, a_vector_set_get_xam)
 	new_var_(size_t, n, 4)
-	new_var_new_(vector_double, v, module_(vector_double)(var_(n)))
-	new_var_new_(vector_ad,    av, module_(vector_ad)(var_(n)))
+	new_var_(vector_double, v, module_ctor_(vector_double)(var_(n)))
+	new_var_(vector_ad, av, module_ctor_(vector_ad)(var_(n)))
 	c_
 	c_ setting elements
 	begin_for_(i, var_(n) )

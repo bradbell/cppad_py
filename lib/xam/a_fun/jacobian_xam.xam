@@ -16,7 +16,7 @@ begin_bool_fun_0_(ok, a_fun_jacobian_xam)
 	new_var_(size_t, n, 3)
 	c_
 	c_ create the independent variables ax
-	new_var_new_(vector_double, x, module_(vector_double)(var_(n)))
+	new_var_(vector_double, x, module_ctor_(vector_double)(var_(n)))
 	begin_for_(i, var_(n) )
 		vec_set_(x, var_(i), var_(i) + 2.0)
 	end_
@@ -26,11 +26,11 @@ begin_bool_fun_0_(ok, a_fun_jacobian_xam)
 	new_var_(a_double, ax_0, vec_get_(ax, 0))
 	new_var_(a_double, ax_1, vec_get_(ax, 1))
 	new_var_(a_double, ax_2, vec_get_(ax, 2))
-	new_var_new_(vector_ad, ay, module_(vector_ad)(var_(m)))
+	new_var_(vector_ad, ay, module_ctor_(vector_ad)(var_(m)))
 	vec_set_(ay, 0, var_(ax_0) * var_(ax_1) * var_(ax_2))
 	c_
 	c_ define af corresponding to f(x) = x_0 * x_1 * x_2
-	new_var_new_(a_fun, af, module_(a_fun)(var_(ax), var_(ay)))
+	new_var_(a_fun, af, module_ctor_(a_fun)(var_(ax), var_(ay)))
 	c_
 	c_ compute the Jacobian f'(x) = ( x_1*x_2, x_0*x_2, x_0*x_1 )
 	new_var_(vector_double, fp, member_(af, jacobian)(var_(x)))

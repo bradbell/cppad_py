@@ -16,7 +16,7 @@ begin_bool_fun_0_(ok, a_fun_reverse_xam)
 	new_var_(size_t, n, 3)
 	c_
 	c_ create the independent variables ax
-	new_var_new_(vector_double, xp, module_(vector_double)(var_(n)))
+	new_var_(vector_double, xp, module_ctor_(vector_double)(var_(n)))
 	begin_for_(i, var_(n) )
 		vec_set_(xp, var_(i), var_(i))
 	end_
@@ -26,11 +26,11 @@ begin_bool_fun_0_(ok, a_fun_reverse_xam)
 	new_var_(a_double, ax_0, vec_get_(ax, 0))
 	new_var_(a_double, ax_1, vec_get_(ax, 1))
 	new_var_(a_double, ax_2, vec_get_(ax, 2))
-	new_var_new_(vector_ad, ay, module_(vector_ad)(var_(m)))
+	new_var_(vector_ad, ay, module_ctor_(vector_ad)(var_(m)))
 	vec_set_(ay, 0, var_(ax_0) * var_(ax_1) * var_(ax_2))
 	c_
 	c_ define af corresponding to f(x) = x_0 * x_1 * x_2
-	new_var_new_(a_fun, af, module_(a_fun)(var_(ax), var_(ay)))
+	new_var_(a_fun, af, module_ctor_(a_fun)(var_(ax), var_(ay)))
 	c_ -----------------------------------------------------------------------
 	c_ define          X(t) = (x_0 + t, x_1 + t, x_2 + t)
 	c_ it follows that Y(t) = f(X(t)) = (x_0 + t) * (x_1 + t) * (x_2 + t)
@@ -47,7 +47,7 @@ begin_bool_fun_0_(ok, a_fun_reverse_xam)
 	c_ first order reverse (derivative of zero order forward)
 	c_ define G( Y ) = y_0 = x_0 * x_1 * x_2
 	new_var_(size_t, q, 1)
-	new_var_new_(vector_double, yq1, module_(vector_double)(var_(m)))
+	new_var_(vector_double, yq1, module_ctor_(vector_double)(var_(m)))
 	vec_set_(yq1, 0, 1.0)
 	new_var_(vector_double, xq1, member_(af, reverse)(var_(q), var_(yq1)))
 	c_ partial G w.r.t x_0
@@ -69,7 +69,7 @@ begin_bool_fun_0_(ok, a_fun_reverse_xam)
 	c_ define G( y_0^0 , y_0^1 ) = y_0^1
 	c_ = x_1^0 * x_2^0  +  x_0^0 * x_2^0  +  x_0^0  *  x_1^0
 	assign_(q, 2)
-	new_var_new_(vector_double, yq2, module_(vector_double)(var_(m) * var_(q)))
+	new_var_(vector_double, yq2, module_ctor_(vector_double)(var_(m) * var_(q)))
 	vec_set_(yq2, 0 * var_(q) + 0, 0.0) c_ partial of G w.r.t y_0^0
 	vec_set_(yq2, 0 * var_(q) + 1, 1.0) c_ partial of G w.r.t y_0^1
 	new_var_(vector_double, xq2, member_(af, reverse)(var_(q), var_(yq2)))

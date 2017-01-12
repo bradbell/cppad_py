@@ -11,13 +11,13 @@ c_ vector size()
 c_ -----------------------------------------------------------------------------
 c_ BEGIN SOURCE
 begin_bool_fun_0_(ok, a_vector_size_xam)
-	new_var_new_(vector_double, v0, module_(vector_double)())
-	new_var_new_(vector_double, v9, module_(vector_double)(9))
+	new_var_(vector_double, v0, module_ctor_(vector_double)())
+	new_var_(vector_double, v9, module_ctor_(vector_double)(9))
 	and_assign_(ok, member_(v0, size)() == 0 )
 	and_assign_(ok, member_(v9, size)() == 9)
 	c_
-	new_var_new_(vector_ad, av0, module_(vector_ad)())
-	new_var_new_(vector_ad, av5, module_(vector_ad)(5))
+	new_var_(vector_ad, av0, module_ctor_(vector_ad)())
+	new_var_(vector_ad, av5, module_ctor_(vector_ad)(5))
 	and_assign_(ok, member_(av0, size)() == 0 )
 	and_assign_(ok, member_(av5, size)() == 5 )
 	c_

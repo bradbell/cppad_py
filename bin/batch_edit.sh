@@ -15,7 +15,10 @@ move_list='
 move_sed='s|vector|a_vector|'
 #
 cat << EOF > junk.sed
-s|return_( *var_(ok) *)|return_(ok)|
+s|new_var_new_(a_double, *\\([0-9a-z_]*\\), *module_(a_double)|new_var_(a_double, \\1, module_ctor_(a_double)|
+s|new_var_new_(vector_double, *\\([0-9a-z_]*\\), *module_(vector_double)|new_var_(vector_double, \\1, module_ctor_(vector_double)|
+s|new_var_new_(vector_ad, *\\([0-9a-z_]*\\), *module_(vector_ad)|new_var_(vector_ad, \\1, module_ctor_(vector_ad)|
+s|new_var_new_(a_fun, *\\([0-9a-z_]*\\), *module_(a_fun)|new_var_(a_fun, \\1, module_ctor_(a_fun)|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]
