@@ -176,25 +176,6 @@ $codei|
 	|type| |variable| = |value|;
 |$$
 
-$subhead new_var_new_$$
-The text corresponding to
-$codei|
-	new_var_new_(|type|, |variable|, |value|)
-|$$
-declares the new specified variable with the specified type
-and assigns it the specified value.
-In addition, the value is the result of a module object constructor.
-For example, in Python it could be
-$codei|
-	|variable| = |value|
-|$$
-while in Perl, it would be
-$codei|
-	my @|variable| = new |value|;
-|$$
-It is an unfortunate feature of Perl that it requires a $code new$$
-in this case.
-
 $subhead assign_$$
 The text corresponding to
 $codei|

@@ -46,9 +46,6 @@ define(string_equal_, $1 == $2)
 # new_var_(type, variable, value)
 define(new_var_, $1 $2 = $3;)
 
-# new_var_new_(type, variable, value)
-define(new_var_new_, $1 $2 = $3;)
-
 # assign_(variable, value)
 define(assign_, $1 = $2;)
 
