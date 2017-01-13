@@ -92,7 +92,9 @@ Change
 $cref xam.m4$$ macros to all start with Capital letters and use Camel case
 This is relevant to understanding on Cppad Swig generates examples
 for all languages from a single source.
-
+$subhead 2017-01-13$$
+Change $cref error_msg$$ to push and pop error messages so it handles
+multiple exceptions and deleting old exceptions.
 
 
 $end

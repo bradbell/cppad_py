@@ -8,10 +8,19 @@
                       http://www.gnu.org/licenses/agpl.txt
 ---------------------------------------------------------------------------- */
 # include <exception>
+# include <string>
 
 namespace cppad_swig {
 	class exception : public std::exception
-	{	virtual const char* what(void) const throw();
+	{	public:
+		// message for this exception
+		const std::string message_;
+		// ctor
+		exception(const char* message);
+		// dtor
+		virtual ~exception() throw();
+		// what
+		virtual const char* what(void) const throw();
 	};
 	const char* error_msg(const char* message) throw(cppad_swig::exception);
 }
