@@ -1,5 +1,3 @@
-# ifndef CPPAD_SWIG_EXAMPLE_TEMPLATE_CLASS
-# define CPPAD_SWIG_EXAMPLE_TEMPLATE_CLASS
 /* -----------------------------------------------------------------------------
            cppad_swig: A C++ Object Library and Swig Interface to Cppad
             Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -10,34 +8,37 @@
 // BEGIN C++
 # include "example.hpp"
 
-// template_class(value)
-template <class Type>
-template_class<Type>::template_class(const Type& value) : value_(value)
+// normal_class()
+normal_class::normal_class(void)
+{ };
+
+// normal_class(value)
+normal_class::normal_class(int value) : value_(value)
+{ };
+
+// destructor
+normal_class::~normal_class(void)
 { };
 
 // value()
-template <class Type>
-Type template_class<Type>::value (void) const
+int normal_class::value (void) const
 {	return value_; }
 
 // additon
-template <class Type> template_class<Type>
-template_class<Type>::operator+(const template_class& right) const
-{	return template_class( value_ + right.value_ ); }
+normal_class normal_class::operator+(const normal_class& right) const
+{	return normal_class( value_ + right.value_ ); }
 
 // equality
-template <class Type> bool
-template_class<Type>::operator==(const template_class& right) const
+bool normal_class::operator==(const normal_class& right) const
 {	return ( value_ == right.value_ ); }
 // END C++
 /*
-$begin  example_template_class.hpp$$
+$begin  example_normal_class_cpp$$
 
-$section Example C++ Template Class Implementations$$
+$section Example C++ Class Implementations$$
 
-$srcfile%example/template_class.hpp%0%// BEGIN C++%// END C++%$$
+$srcfile%swig_xam/normal_class.cpp%0%// BEGIN C++%// END C++%$$
 
 $end
 --------------------------------------------------------------------------
 */
-# endif

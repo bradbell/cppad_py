@@ -22,10 +22,10 @@ $$
 $section A Simple Example for Using Swig with C++$$
 
 $childtable%
-	example/python/check_py_example.py%
-	example/octave/check_m_example.m%
-	example/perl/check_pl_example.pl%
-	example/example_lib.omh
+	swig_xam/python/check_py_example.py%
+	swig_xam/octave/check_m_example.m%
+	swig_xam/perl/check_pl_example.pl%
+	swig_xam/example_lib.omh
 %$$
 
 $head C++ Includes$$

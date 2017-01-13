@@ -64,7 +64,7 @@ $begin example_function_cpp$$
 
 $section Example C++ Function Implementations$$
 
-$srcfile%example/function.cpp%0%// BEGIN C++%// END C++%$$
+$srcfile%swig_xam/function.cpp%0%// BEGIN C++%// END C++%$$
 
 $end
 --------------------------------------------------------------------------

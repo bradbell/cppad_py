@@ -130,7 +130,7 @@ cmake_argument(swig_cxx_flags "" STRING
 SET(check_depends "")
 #
 # sub-directories
-ADD_SUBDIRECTORY(example)
+ADD_SUBDIRECTORY(swig_xam)
 ADD_SUBDIRECTORY(lib)
 #
 IF( "${check_depends}" STREQUAL "" )
