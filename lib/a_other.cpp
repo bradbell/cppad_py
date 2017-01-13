@@ -6,9 +6,11 @@
                        http://www.gnu.org/licenses/agpl.txt
 ----------------------------------------------------------------------------- */
 // BEGIN C++
-# include <cppad/swig/a_other.hpp>
 # include <string>
 # include <stack>
+# include <cppad/swig/a_other.hpp>
+# include <cppad/utility/error_handler.hpp>
+# include <cppad/utility/to_string.hpp>
 
 /*
 -----------------------------------------------------------------------------
@@ -44,6 +46,10 @@ If there are no more messages stored in $code error_message$$,
 the empty string is returned.
 This is intended to be done inside a $code catch$$ block.
 
+$head Cppad Errors$$
+Calls to the Cppad error handler get mapped to a call
+to $code error_message$$.
+
 $head Not Thread Safe$$
 The message storage is done using static information in
 $code error_message$$ and hence is not thread safe.
@@ -63,6 +69,29 @@ $cref/Python/a_other_error_message_xam.py/$$.
 $end
 */
 namespace cppad_swig {
+	// -----------------------------------------------------------------------
+	// map Cppad error handler to Cppad Swig error handler
+	void cppad_error_handler(
+		bool known       ,
+		int  line        ,
+		const char *file ,
+		const char *exp  ,
+		const char *msg  )
+	{	std::string message = "Cppad Error:\n";
+		if( known )
+			message += msg;
+		else
+			message += "reason for the error is unknown";
+		message += "\nline = ";
+		message += CppAD::to_string(line);
+		message += "\nfile = ";
+		message += file;
+		message += "\nsource code = ";
+		message += exp;
+		//
+		error_message(message.c_str());
+	}
+	CppAD::ErrorHandler cppad_error_mapper(cppad_error_handler);
 	// -----------------------------------------------------------------------
 	// ctor
 	exception::exception(const char* message) : message_(message)

@@ -93,9 +93,15 @@ $cref xam.m4$$ macros to all start with Capital letters and use Camel case
 This is relevant to understanding on Cppad Swig generates examples
 for all languages from a single source.
 $subhead 2017-01-13$$
+$list number$$
 Change $code error_msg$$ to push and pop error messages
-(so it handles multiple exceptions and deletes old exceptions)
-and move it to $cref error_message$$.
+so it handles multiple exceptions and deletes old messages.
+$lnext
+Move $code error_msg$$ to $cref error_message$$.
+$lnext
+Map calls to the Cppad error handler to
+calls to $code error_message$$.
+$lend
 
 
 $end
