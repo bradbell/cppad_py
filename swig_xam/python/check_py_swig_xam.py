@@ -5,18 +5,19 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
-# $begin check_py_example.py$$ $newlinech #$$
+# $begin check_py_swig_xam.py$$ $newlinech #$$
 # $spell
+#	xam
 #	std
 #	py
 #	ptr
 # $$
 #
-# $section Python Script That Tests py_example Swig Module$$
+# $section Python Script That Tests py_swig_xam Swig Module$$
 #
 # $head Load the Module$$
 # $srccode%cpp%
-import py_example
+import py_swig_xam
 # %$$
 #
 # $head Initialize Error Count$$
@@ -26,32 +27,32 @@ error_count = 0
 #
 # $head factorial_by_value$$
 # $srccode%cpp%
-if py_example.factorial_by_value(4) == 24 :
-	print('py_example.factorial_by_value: OK')
+if py_swig_xam.factorial_by_value(4) == 24 :
+	print('py_swig_xam.factorial_by_value: OK')
 else :
-	print('py_example.factorial_by_value: Error')
+	print('py_swig_xam.factorial_by_value: Error')
 	error_count = error_count + 1
 # %$$
 # see C++ $cref/factorial_by_value/example_function/factorial_by_value/$$.
 #
 # $head message_of_void$$
 # $srccode%cpp%
-if py_example.message_of_void() == 'OK' :
-	print('py_example.message_of_void: OK')
+if py_swig_xam.message_of_void() == 'OK' :
+	print('py_swig_xam.message_of_void: OK')
 else :
-	print('py_example.message_of_void: Error')
+	print('py_swig_xam.message_of_void: Error')
 	error_count = error_count + 1
 # %$$
 # see C++ $cref/message_of_void/example_function/message_of_void/$$.
 #
 # $head int_class$$
 # $srccode%cpp%
-obj = py_example.int_class()
-py_example.add_by_ptr(3, 4, obj)
+obj = py_swig_xam.int_class()
+py_swig_xam.add_by_ptr(3, 4, obj)
 if obj.value() == 7 :
-	print('py_example.add_by_ptr: OK')
+	print('py_swig_xam.add_by_ptr: OK')
 else :
-	print('py_example.add_by_ptr: Error')
+	print('py_swig_xam.add_by_ptr: Error')
 	error_count = error_count + 1
 # %$$
 # see Swig $cref/int_class/example.i/int_class/$$ and
@@ -60,16 +61,16 @@ else :
 # $head int_array_ptr$$
 # $srccode%cpp%
 n   = 10
-array_ptr = py_example.new_int_array_ptr(n)
+array_ptr = py_swig_xam.new_int_array_ptr(n)
 for i in range(n) :
-	py_example.int_array_ptr_setitem(array_ptr, i, 2 * i)
+	py_swig_xam.int_array_ptr_setitem(array_ptr, i, 2 * i)
 #
-if py_example.max_array_by_ptr(n, array_ptr) == 18 :
-	print('py_example.max_array_by_ptr: pointer: OK')
+if py_swig_xam.max_array_by_ptr(n, array_ptr) == 18 :
+	print('py_swig_xam.max_array_by_ptr: pointer: OK')
 else :
-	print('py_example.max_array_by_ptr: pointer: Error')
+	print('py_swig_xam.max_array_by_ptr: pointer: Error')
 	error_count = error_count + 1
-py_example.delete_int_array_ptr(array_ptr)
+py_swig_xam.delete_int_array_ptr(array_ptr)
 # %$$
 # see Swig $cref/int_array_ptr/example.i/int_array_ptr/$$ and
 # C++ $cref/max_array_by_ptr/example_function/max_array_by_ptr/$$.
@@ -77,14 +78,14 @@ py_example.delete_int_array_ptr(array_ptr)
 # $head int_array_class$$
 # $srccode%cpp%
 n   = 10
-array_obj = py_example.int_array_class(n)
+array_obj = py_swig_xam.int_array_class(n)
 for i in range(n) :
 	array_obj[i] = 2 * i
 #
-if py_example.max_array_by_ptr(n, array_obj) == 18 :
-	print('py_example.max_array_by_ptr: class: OK')
+if py_swig_xam.max_array_by_ptr(n, array_obj) == 18 :
+	print('py_swig_xam.max_array_by_ptr: class: OK')
 else :
-	print('py_example.max_array_by_ptr: class: Error')
+	print('py_swig_xam.max_array_by_ptr: class: Error')
 	error_count = error_count + 1
 # %$$
 # see Swig $cref/int_array_class/example.i/int_array_class/$$ and
@@ -93,14 +94,14 @@ else :
 # $head vector_double$$
 # $srccode%cpp%
 n   = 10
-vec = py_example.vector_double(n)
+vec = py_swig_xam.vector_double(n)
 for i in range(n) :
 	vec[i] = 2.0 * i;
 #
-if py_example.max_std_vector_double(vec) == 18.0 :
-	print('py_example.max_std_vector_double: class: OK')
+if py_swig_xam.max_std_vector_double(vec) == 18.0 :
+	print('py_swig_xam.max_std_vector_double: class: OK')
 else :
-	print('py_example.max_std_vector_double: class: Error')
+	print('py_swig_xam.max_std_vector_double: class: Error')
 	error_count = error_count + 1
 # %$$
 # see Swig $cref/vector_double/example.i/vector_double/$$ and
@@ -109,44 +110,44 @@ else :
 # $head raise_exception$$
 # $srccode%cpp%
 try :
-	py_example.raise_exception('test message')
+	py_swig_xam.raise_exception('test message')
 	message = ''
 except :
-	message = py_example.raise_exception('')
+	message = py_swig_xam.raise_exception('')
 if message == 'test message' :
-	print('py_example.py_example.raise_exception: OK')
+	print('py_swig_xam.py_swig_xam.raise_exception: OK')
 else :
-	print('py_example.raise_exception.message_of_void: Error')
+	print('py_swig_xam.raise_exception.message_of_void: Error')
 	error_count = error_count + 1
 # %$$
 # see C++ $cref/raise_exception/example_function/raise_exception/$$.
 #
 # $head normal_class$$
 # $srccode%cpp%
-two   = py_example.normal_class(2)
-three = py_example.normal_class(3)
+two   = py_swig_xam.normal_class(2)
+three = py_swig_xam.normal_class(3)
 five  = two + three
-ok       = five == py_example.normal_class(5)
+ok       = five == py_swig_xam.normal_class(5)
 ok       = ok and 4 < five.value()  and five.value() < 6
 if ok :
-	print('py_example.normal_class: OK')
+	print('py_swig_xam.normal_class: OK')
 else :
-	print('py_example.normal_class: Error')
+	print('py_swig_xam.normal_class: Error')
 	error_count = error_count + 1
 # %$$
 # see C++ $cref example_normal_class$$.
 #
 # $head double_class$$
 # $srccode%cpp%
-two   = py_example.double_class(2.0)
-three = py_example.double_class(3.0)
+two   = py_swig_xam.double_class(2.0)
+three = py_swig_xam.double_class(3.0)
 five  = two + three
-ok       = five == py_example.double_class(5.0)
+ok       = five == py_swig_xam.double_class(5.0)
 ok       = ok and 4.5 < five.value()  and five.value() < 5.5
 if ok :
-	print('py_example.double_class: OK')
+	print('py_swig_xam.double_class: OK')
 else :
-	print('py_example.double_class: Error')
+	print('py_swig_xam.double_class: Error')
 	error_count = error_count + 1
 # %$$
 # see Swig $cref/double_class/example.i/double_class/$$.

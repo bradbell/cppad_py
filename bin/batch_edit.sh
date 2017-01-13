@@ -11,12 +11,12 @@ delete_list='
 revert_list='
 '
 move_list='
-	swig_xam/octave/check_m_example.m
+	swig_xam/python/check_py_example.py
 '
-move_sed='s|m_example.m|m_swig_xam.m|'
+move_sed='s|py_example.py|py_swig_xam.py|'
 #
 cat << EOF > junk.sed
-s|m_example|m_swig_xam|g
+s|py_example|py_swig_xam|g
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

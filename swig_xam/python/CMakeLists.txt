@@ -36,32 +36,32 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND )
 	#
 	# SWIG_ADD_MODULE(name language [ files ])
 	SET(module_files ../example.i ../function.cpp ../normal_class.cpp)
-	SWIG_ADD_MODULE(py_example python ${module_files})
+	SWIG_ADD_MODULE(py_swig_xam python ${module_files})
 	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
-	SWIG_LINK_LIBRARIES(py_example ${PYTHON_LIBRARIES})
+	SWIG_LINK_LIBRARIES(py_swig_xam ${PYTHON_LIBRARIES})
 	#
 	# additional flags for compiling Swig wrapper
-	SET_TARGET_PROPERTIES( ${SWIG_MODULE_py_example_REAL_NAME}
+	SET_TARGET_PROPERTIES( ${SWIG_MODULE_py_swig_xam_REAL_NAME}
 		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
 	)
 	#
 	# example use of CMAKE_SWIG_OUTDIR (not necessary in this case)
 	SET(CMAKE_SWIG_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}")
 	#
-	# copy check_py_example.py from source to binary directory
-	ADD_CUSTOM_TARGET(check_py_example
+	# copy check_py_swig_xam.py from source to binary directory
+	ADD_CUSTOM_TARGET(check_py_swig_xam
 		"${CMAKE_COMMAND}" -E copy
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_py_example.py"
-		"${CMAKE_CURRENT_BINARY_DIR}/check_py_example.py"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_py_swig_xam.py"
+		"${CMAKE_CURRENT_BINARY_DIR}/check_py_swig_xam.py"
 		DEPENDS
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_py_example.py"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_py_swig_xam.py"
 	)
 	#
 	# check_example_python
 	ADD_CUSTOM_TARGET(check_example_python
-		${PYTHON_EXECUTABLE} check_py_example.py
-		DEPENDS ${SWIG_MODULE_py_example_REAL_NAME} check_py_example
+		${PYTHON_EXECUTABLE} check_py_swig_xam.py
+		DEPENDS ${SWIG_MODULE_py_swig_xam_REAL_NAME} check_py_swig_xam
 	)
 	MESSAGE(STATUS "make check_example_python: available")
 	#
