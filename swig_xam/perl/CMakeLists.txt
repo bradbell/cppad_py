@@ -28,13 +28,13 @@ IF( SWIG_FOUND AND PERLLIBS_FOUND )
 	#
 	# SWIG_ADD_MODULE(name language [ files ])
 	SET(module_files ../example.i ../function.cpp ../normal_class.cpp)
-	SWIG_ADD_MODULE(pl_example perl ${module_files})
+	SWIG_ADD_MODULE(pl_swig_xam perl ${module_files})
 	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
-	SWIG_LINK_LIBRARIES(pl_example ${PERL_LIBRARY})
+	SWIG_LINK_LIBRARIES(pl_swig_xam ${PERL_LIBRARY})
 	#
 	# additional flags for compiling Swig wrapper
-	SET_TARGET_PROPERTIES( ${SWIG_MODULE_pl_example_REAL_NAME}
+	SET_TARGET_PROPERTIES( ${SWIG_MODULE_pl_swig_xam_REAL_NAME}
 		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
 	)
 	#
@@ -42,18 +42,18 @@ IF( SWIG_FOUND AND PERLLIBS_FOUND )
 	SET(CMAKE_SWIG_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}")
 	#
 	# copy check_exmaple.pl from source to binary directory
-	ADD_CUSTOM_TARGET(check_pl_example
+	ADD_CUSTOM_TARGET(check_pl_swig_xam
 		"${CMAKE_COMMAND}" -E copy
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_pl_example.pl"
-		"${CMAKE_CURRENT_BINARY_DIR}/check_pl_example.pl"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_pl_swig_xam.pl"
+		"${CMAKE_CURRENT_BINARY_DIR}/check_pl_swig_xam.pl"
 		DEPENDS
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_pl_example.pl"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_pl_swig_xam.pl"
 	)
 	#
 	# check_example_perl
 	ADD_CUSTOM_TARGET(check_example_perl
-		perl check_pl_example.pl
-		DEPENDS ${SWIG_MODULE_pl_example_REAL_NAME} check_pl_example
+		perl check_pl_swig_xam.pl
+		DEPENDS ${SWIG_MODULE_pl_swig_xam_REAL_NAME} check_pl_swig_xam
 	)
 	MESSAGE(STATUS "make check_example_perl: available")
 	#

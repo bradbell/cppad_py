@@ -8,19 +8,20 @@
 # The script uses the $ in its perl syntax
 # $OMhelpKeyCharacter=&
 #
-# &begin check_pl_example.pl&& &newlinech #&&
+# &begin check_pl_swig_xam.pl&& &newlinech #&&
 # &spell
+#	xam
 #	std
 #	pl
 #	ptr
 #	Perl
 # &&
 #
-# &section Perl Script That Tests pl_example Swig Module&&
+# &section Perl Script That Tests pl_swig_xam Swig Module&&
 #
 # &head Load the Module&&
 # &srccode%cpp%
-use pl_example;
+use pl_swig_xam;
 # %&&
 #
 # &head Initialize Error Count&&
@@ -30,10 +31,10 @@ $error_count = 0;
 #
 # &head factorial_by_value&&
 # &srccode%cpp%
-if( pl_example::factorial_by_value(4) == 24 )
-{	print "pl_example::factorial_by_value: OK\n"; }
+if( pl_swig_xam::factorial_by_value(4) == 24 )
+{	print "pl_swig_xam::factorial_by_value: OK\n"; }
 else
-{	print "pl_example::factorial_by_value: Error\n";
+{	print "pl_swig_xam::factorial_by_value: Error\n";
 	$error_count = $error_count + 1;
 }
 # %&&
@@ -41,10 +42,10 @@ else
 #
 # &head message_of_void&&
 # &srccode%cpp%
-if( pl_example::message_of_void() == "OK" )
-{	print "pl_example::message_of_void: OK\n"; }
+if( pl_swig_xam::message_of_void() == "OK" )
+{	print "pl_swig_xam::message_of_void: OK\n"; }
 else
-{	print "pl_example::message_of_void: Error\n";
+{	print "pl_swig_xam::message_of_void: Error\n";
 	$error_count = $error_count + 1;
 }
 # %&&
@@ -52,12 +53,12 @@ else
 #
 # &head int_class&&
 # &srccode%cpp%
-$obj = new pl_example::int_class();
-pl_example::add_by_ptr(3, 4, $obj);
+$obj = new pl_swig_xam::int_class();
+pl_swig_xam::add_by_ptr(3, 4, $obj);
 if( $obj->value() == 7 )
-{	print "pl_example::add_by_ptr: OK\n"; }
+{	print "pl_swig_xam::add_by_ptr: OK\n"; }
 else
-{	print "pl_example::add_by_ptr: Error\n";
+{	print "pl_swig_xam::add_by_ptr: Error\n";
 	$error_count = $error_count + 1;
 }
 # %&&
@@ -67,17 +68,17 @@ else
 # &head int_array_ptr&&
 # &srccode%cpp%
 $n = 10;
-$array_ptr = pl_example::new_int_array_ptr($n);
+$array_ptr = pl_swig_xam::new_int_array_ptr($n);
 for($i = 0; $i < $n; $i++)
-{	pl_example::int_array_ptr_setitem($array_ptr, $i, 2 * $i); }
+{	pl_swig_xam::int_array_ptr_setitem($array_ptr, $i, 2 * $i); }
 #
-if( pl_example::max_array_by_ptr($n, $array_ptr) == 18 )
-{	print "pl_example::max_array_by_ptr: pointer: OK\n"; }
+if( pl_swig_xam::max_array_by_ptr($n, $array_ptr) == 18 )
+{	print "pl_swig_xam::max_array_by_ptr: pointer: OK\n"; }
 else
-{	print "pl_example::max_array_by_ptr: pointer: Error\n";
+{	print "pl_swig_xam::max_array_by_ptr: pointer: Error\n";
 	$error_count = $error_count + 1;
 }
-pl_example::delete_int_array_ptr($array_ptr);
+pl_swig_xam::delete_int_array_ptr($array_ptr);
 # %&&
 # see Swig &cref/int_array_ptr/example.i/int_array_ptr/&& and
 # C++ &cref/max_array_by_ptr/example_function/max_array_by_ptr/&&.
@@ -85,13 +86,13 @@ pl_example::delete_int_array_ptr($array_ptr);
 # &head int_array_class&&
 # &srccode%cpp%
 $n         = 10;
-$array_obj = new pl_example::int_array_class($n);
+$array_obj = new pl_swig_xam::int_array_class($n);
 for($i = 0; $i < $n; $i++)
 {	$array_obj[$i] = 2 * i; }
-if( pl_example::max_array_by_ptr($n, $array_obj) == 18 )
-{	print "pl_example::max_array_by_ptr: class: OK\n"; }
+if( pl_swig_xam::max_array_by_ptr($n, $array_obj) == 18 )
+{	print "pl_swig_xam::max_array_by_ptr: class: OK\n"; }
 else
-{	print "pl_example::max_array_by_ptr: class: Error\n";
+{	print "pl_swig_xam::max_array_by_ptr: class: Error\n";
 	$error_count = $error_count + 1;
 }
 # %&&
@@ -101,14 +102,14 @@ else
 # &head vector_double&&
 # &srccode%cpp%
 $n   = 10;
-$vec = new pl_example::vector_double($n);
+$vec = new pl_swig_xam::vector_double($n);
 for($i = 0; $i < $n; $i++)
 {	$vec->set($i, 2.0 * $i); }
 #
-if( pl_example::max_std_vector_double($vec) == 18.0 )
-{	print "pl_example::max_std_vector_double: class: OK\n"; }
+if( pl_swig_xam::max_std_vector_double($vec) == 18.0 )
+{	print "pl_swig_xam::max_std_vector_double: class: OK\n"; }
 else
-{	print "pl_example::max_std_vector_double: class: Error\n";
+{	print "pl_swig_xam::max_std_vector_double: class: Error\n";
 	$error_count = $error_count + 1;
 }
 # %&&
@@ -119,15 +120,15 @@ else
 # &srccode%cpp%
 $message = "";
 eval { # acts like 'try {' in other languages
-	pl_example::raise_exception("test message\n");
+	pl_swig_xam::raise_exception("test message\n");
 }
 ; if( $@ ) { # acts like 'catch {' in other languages
-	$message = pl_example::raise_exception("");
+	$message = pl_swig_xam::raise_exception("");
 }
 if( $message == "test message" )
-{	print "pl_example::pl_example::raise_exception: OK\n"; }
+{	print "pl_swig_xam::pl_swig_xam::raise_exception: OK\n"; }
 else
-{	print "pl_example::raise_exception.message_of_void: Error\n";
+{	print "pl_swig_xam::raise_exception.message_of_void: Error\n";
 	$error_count = $error_count + 1;
 }
 # %&&
@@ -135,16 +136,16 @@ else
 #
 # &head normal_class&&
 # &srccode%cpp%
-$two   = new pl_example::normal_class(2);
-$three = new pl_example::normal_class(3);
+$two   = new pl_swig_xam::normal_class(2);
+$three = new pl_swig_xam::normal_class(3);
 $five  = $two + $three;
-$check = new pl_example::normal_class(5);
+$check = new pl_swig_xam::normal_class(5);
 $ok    = $five == $check;
 $ok    = $ok and 4 < $five->value()  and $five->value() < 6;
 if( ok )
-{	print "pl_example::normal_class: OK\n"; }
+{	print "pl_swig_xam::normal_class: OK\n"; }
 else
-{	print "pl_example::normal_class: Error\n";
+{	print "pl_swig_xam::normal_class: Error\n";
 	$error_count = $error_count + 1;
 }
 # %&&
@@ -152,16 +153,16 @@ else
 #
 # &head double_class&&
 # &srccode%cpp%
-$two   = new pl_example::double_class(2.0);
-$three = new pl_example::double_class(3.0);
+$two   = new pl_swig_xam::double_class(2.0);
+$three = new pl_swig_xam::double_class(3.0);
 $five  = $two + $three;
-$check = new pl_example::double_class(5.0);
+$check = new pl_swig_xam::double_class(5.0);
 $ok    = $five == $check;
 $ok    = $ok and 4.5 < $five->value()  and $five->value() < 5.5;
 if( ok )
-{	print "pl_example::double_class: OK\n"; }
+{	print "pl_swig_xam::double_class: OK\n"; }
 else
-{	print "pl_example::double_class: Error\n";
+{	print "pl_swig_xam::double_class: Error\n";
 	$error_count = $error_count + 1;
 }
 # %&&
