@@ -19,7 +19,7 @@ SET(xam_file_list
 	a_fun/forward_xam.xam
 	a_fun/reverse_xam.xam
 	a_fun/abort_xam.xam
-	a_other/error_msg_xam.xam
+	a_other/error_message_xam.xam
 )
 #
 # sub-directories for each language (add to check_lib_depend)

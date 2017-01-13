@@ -483,7 +483,7 @@ $end
 */
 std::vector<double> a_fun::reverse(size_t q, const std::vector<double>& yq)
 {	if( yq.size() != q * ptr_->Range() )
-		error_msg("cppad_swig::a_fun::reverse yq.size() error");
+		error_message("cppad_swig::a_fun::reverse yq.size() error");
 	return ptr_->Reverse(q, yq);
 }
 

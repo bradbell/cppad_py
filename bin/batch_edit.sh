@@ -11,11 +11,12 @@ delete_list='
 revert_list='
 '
 move_list='
+	lib/xam/a_other/error_msg_xam.xam
 '
-move_sed='s|vector|a_vector|'
+move_sed='s|error_msg_xam|error_message_xam|'
 #
 cat << EOF > junk.sed
-s|language_|Language_|g
+s|error_msg|error_message|g
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

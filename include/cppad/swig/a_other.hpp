@@ -22,7 +22,7 @@ namespace cppad_swig {
 		// what
 		virtual const char* what(void) const throw();
 	};
-	const char* error_msg(const char* message) throw(cppad_swig::exception);
+	const char* error_message(const char* message) throw(cppad_swig::exception);
 }
 
 # endif

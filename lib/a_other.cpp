@@ -12,7 +12,7 @@
 
 /*
 -----------------------------------------------------------------------------
-$begin error_msg$$
+$begin error_message$$
 $spell
 	Perl
 	cppad
@@ -22,11 +22,11 @@ $$
 $section Exception Handling$$
 
 $head Syntax$$
-$icode%stored_message% = error_msg(%input_message%)%$$
+$icode%stored_message% = error_message(%input_message%)%$$
 
 $head In Try Block$$
 If $icode input_message$$ is $bold not$$ the empty string,
-it is stored in $code error_msg$$ and an exception is thrown.
+it is stored in $code error_message$$ and an exception is thrown.
 This is intended to be done inside a $code try$$ block.
 
 $head exception$$
@@ -38,27 +38,27 @@ when the exception was thrown.
 
 $head In Catch Block$$
 If $icode input_message$$ is the empty string,
-the most recently stored message in $code error_msg$$ is returned.
-In addition, the message is deleted from $code error_msg$$.
-If there are no more messages stored in $code error_msg$$,
+the most recently stored message in $code error_message$$ is returned.
+In addition, the message is deleted from $code error_message$$.
+If there are no more messages stored in $code error_message$$,
 the empty string is returned.
 This is intended to be done inside a $code catch$$ block.
 
 $head Not Thread Safe$$
 The message storage is done using static information in
-$code error_msg$$ and hence is not thread safe.
+$code error_message$$ and hence is not thread safe.
 
 $children%
-	build/lib/example/cplusplus/a_other_error_msg_xam.cpp%
-	build/lib/example/octave/a_other_error_msg_xam.m%
-	build/lib/example/perl/a_other_error_msg_xam.pm%
-	build/lib/example/python/a_other_error_msg_xam.py
+	build/lib/example/cplusplus/a_other_error_message_xam.cpp%
+	build/lib/example/octave/a_other_error_message_xam.m%
+	build/lib/example/perl/a_other_error_message_xam.pm%
+	build/lib/example/python/a_other_error_message_xam.py
 %$$
 $head Example$$
-$cref/C++/a_other_error_msg_xam.cpp/$$,
-$cref/Octave/a_other_error_msg_xam.m/$$,
-$cref/Perl/a_other_error_msg_xam.pm/$$,
-$cref/Python/a_other_error_msg_xam.py/$$.
+$cref/C++/a_other_error_message_xam.cpp/$$,
+$cref/Octave/a_other_error_message_xam.m/$$,
+$cref/Perl/a_other_error_message_xam.pm/$$,
+$cref/Python/a_other_error_message_xam.py/$$.
 
 $end
 */
@@ -75,7 +75,7 @@ namespace cppad_swig {
 	{   return message_.c_str(); }
 	// -----------------------------------------------------------------------
 	const char*
-	error_msg(const char* input_message) throw(cppad_swig::exception)
+	error_message(const char* input_message) throw(cppad_swig::exception)
 	{	 //
 		// message_stack
 		static std::stack<std::string> message_stack;

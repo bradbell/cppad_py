@@ -82,7 +82,7 @@ $subhead 2017-01-10$$
 First uploading of this documentation.
 $subhead 2017-01-11$$
 $list number$$
-Add exception handling; see $cref error_msg$$.
+Add exception handling; see $cref error_message$$.
 $lnext
 Fix the Perl examples / tests
 (exception handling revealed they were not working).
@@ -93,8 +93,9 @@ $cref xam.m4$$ macros to all start with Capital letters and use Camel case
 This is relevant to understanding on Cppad Swig generates examples
 for all languages from a single source.
 $subhead 2017-01-13$$
-Change $cref error_msg$$ to push and pop error messages so it handles
-multiple exceptions and deleting old exceptions.
+Change $code error_msg$$ to push and pop error messages
+(so it handles multiple exceptions and deletes old exceptions)
+and move it to $cref error_message$$.
 
 
 $end

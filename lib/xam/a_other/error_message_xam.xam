@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-Header_(a_other/error_msg_xam.xam)
+Header_(a_other/error_message_xam.xam)
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -7,21 +7,21 @@ C_              This program is distributed under the terms of the
 C_          GNU Affero General Public License version 3.0 or later see
 C_                     http://www.gnu.org/licenses/agpl.txt
 C_ -----------------------------------------------------------------------------
-C_ a_other_error_msg_xam
+C_ a_other_error_message_xam
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
-BeginBoolFun__(ok, a_other_error_msg_xam)
+BeginBoolFun__(ok, a_other_error_message_xam)
 	Assign_(ok, False_)
 	Try_
-		Module_(error_msg("test message"))Eos_
+		Module_(error_message("test message"))Eos_
 	Catch_
-		NewVar_(string, stored_message, Module_(error_msg)(""))
+		NewVar_(string, stored_message, Module_(error_message)(""))
 		Assign_(ok, StringEqual_(Var_(stored_message), "test message"))
 	End_
 	Return_( ok )
 End_
 C_ END SOURCE
 C_ -----------------------------------------------------------------------------
-Omhelp_(a_other_error_msg_xam,
+Omhelp_(a_other_error_message_xam,
 LangName_: Cppad Swig Exception Handling: Example and Test)
 Eof_
