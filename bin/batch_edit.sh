@@ -11,12 +11,12 @@ delete_list='
 revert_list='
 '
 move_list='
-	lib/xam/a_other/error_msg_xam.xam
+	swig_xam/octave/check_m_example.m
 '
-move_sed='s|error_msg_xam|error_message_xam|'
+move_sed='s|m_example.m|m_swig_xam.m|'
 #
 cat << EOF > junk.sed
-s|error_msg|error_message|g
+s|m_example|m_swig_xam|g
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

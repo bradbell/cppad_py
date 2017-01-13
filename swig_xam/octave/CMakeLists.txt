@@ -61,30 +61,30 @@ IF( SWIG_FOUND AND octave_config )
 	#
 	# SWIG_ADD_MODULE(name language [ files ])
 	SET(module_files ../example.i ../function.cpp ../normal_class.cpp)
-	SWIG_ADD_MODULE(m_example octave ${module_files})
+	SWIG_ADD_MODULE(m_swig_xam octave ${module_files})
 	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
-	SWIG_LINK_LIBRARIES(m_example
+	SWIG_LINK_LIBRARIES(m_swig_xam
 		${octave_liboctinterp} ${octave_liboctave}
 	)
 	#
 	# additional flags for compiling Swig wrapper
-	SET_TARGET_PROPERTIES( ${SWIG_MODULE_m_example_REAL_NAME}
+	SET_TARGET_PROPERTIES( ${SWIG_MODULE_m_swig_xam_REAL_NAME}
 		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
 	)
 	#
-	# copy check_m_example.m from source to binary directory
-	ADD_CUSTOM_TARGET(check_m_example
+	# copy check_m_swig_xam.m from source to binary directory
+	ADD_CUSTOM_TARGET(check_m_swig_xam
 		"${CMAKE_COMMAND}" -E copy
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_m_example.m"
-		"${CMAKE_CURRENT_BINARY_DIR}/check_m_example.m"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_m_swig_xam.m"
+		"${CMAKE_CURRENT_BINARY_DIR}/check_m_swig_xam.m"
 		DEPENDS
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_m_example.m"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_m_swig_xam.m"
 	)
 	# check_example_octave
 	ADD_CUSTOM_TARGET(check_example_octave
-		octave check_m_example.m
-		DEPENDS ${SWIG_MODULE_m_example_REAL_NAME} check_m_example
+		octave check_m_swig_xam.m
+		DEPENDS ${SWIG_MODULE_m_swig_xam_REAL_NAME} check_m_swig_xam
 	)
 	MESSAGE(STATUS "make check_example_octave: available")
 	#

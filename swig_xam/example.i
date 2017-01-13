@@ -8,6 +8,7 @@
 /*
 $begin example.i$$
 $spell
+	xam
 	hpp
 	py
 	ifdef
@@ -23,7 +24,7 @@ $section A Simple Example for Using Swig with C++$$
 
 $childtable%
 	swig_xam/python/check_py_example.py%
-	swig_xam/octave/check_m_example.m%
+	swig_xam/octave/check_m_swig_xam.m%
 	swig_xam/perl/check_pl_example.pl%
 	swig_xam/example_lib.omh
 %$$
@@ -46,14 +47,14 @@ $codep */
 /*$$
 see $cref check_py_example.py$$.
 
-$head m_example$$
+$head m_swig_xam$$
 This is the name of the Octave Swig interface to the C++ library.
 $codep */
 # ifdef SWIGOCTAVE
-%module m_example
+%module m_swig_xam
 # endif
 /*$$
-see $cref check_m_example.m$$.
+see $cref check_m_swig_xam.m$$.
 
 $head pl_example$$
 This is the name of the Perl Swig interface to the C++ library.
