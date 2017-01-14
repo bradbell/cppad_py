@@ -16,10 +16,10 @@ IF( SWIG_FOUND AND octave_config )
 	INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/.. )
 	#
 	# treat like a C++ files
-	SET_SOURCE_FILES_PROPERTIES(../example.i PROPERTIES CPLUSPLUS ON)
+	SET_SOURCE_FILES_PROPERTIES(../swig_xam.i PROPERTIES CPLUSPLUS ON)
 	#
 	# Swig flags when processing this file
-	SET_SOURCE_FILES_PROPERTIES(./example.i PROPERTIES SWIG_FLAGS "-Wall")
+	SET_SOURCE_FILES_PROPERTIES(./swig_xam.i PROPERTIES SWIG_FLAGS "-Wall")
 	#
 	# get Octave include directories
 	EXECUTE_PROCESS(
@@ -60,7 +60,7 @@ IF( SWIG_FOUND AND octave_config )
 	INCLUDE_DIRECTORIES( SYSTEM ${octave_include_dirs})
 	#
 	# SWIG_ADD_MODULE(name language [ files ])
-	SET(module_files ../example.i ../function.cpp ../normal_class.cpp)
+	SET(module_files ../swig_xam.i ../function.cpp ../normal_class.cpp)
 	SWIG_ADD_MODULE(m_swig_xam octave ${module_files})
 	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])

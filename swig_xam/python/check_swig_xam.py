@@ -55,7 +55,7 @@ else :
 	print('py_swig_xam.add_by_ptr: Error')
 	error_count = error_count + 1
 # %$$
-# see Swig $cref/int_class/example.i/int_class/$$ and
+# see Swig $cref/int_class/swig_xam.i/int_class/$$ and
 # C++ $cref/add_by_ptr/example_function/add_by_ptr/$$.
 #
 # $head int_array_ptr$$
@@ -72,7 +72,7 @@ else :
 	error_count = error_count + 1
 py_swig_xam.delete_int_array_ptr(array_ptr)
 # %$$
-# see Swig $cref/int_array_ptr/example.i/int_array_ptr/$$ and
+# see Swig $cref/int_array_ptr/swig_xam.i/int_array_ptr/$$ and
 # C++ $cref/max_array_by_ptr/example_function/max_array_by_ptr/$$.
 #
 # $head int_array_class$$
@@ -88,7 +88,7 @@ else :
 	print('py_swig_xam.max_array_by_ptr: class: Error')
 	error_count = error_count + 1
 # %$$
-# see Swig $cref/int_array_class/example.i/int_array_class/$$ and
+# see Swig $cref/int_array_class/swig_xam.i/int_array_class/$$ and
 # C++ $cref/max_array_by_ptr/example_function/max_array_by_ptr/$$.
 #
 # $head vector_double$$
@@ -104,7 +104,7 @@ else :
 	print('py_swig_xam.max_std_vector_double: class: Error')
 	error_count = error_count + 1
 # %$$
-# see Swig $cref/vector_double/example.i/vector_double/$$ and
+# see Swig $cref/vector_double/swig_xam.i/vector_double/$$ and
 # C++ $cref/max_std_vector_double/example_function/max_std_vector_double/$$.
 #
 # $head raise_exception$$
@@ -150,7 +150,7 @@ else :
 	print('py_swig_xam.double_class: Error')
 	error_count = error_count + 1
 # %$$
-# see Swig $cref/double_class/example.i/double_class/$$.
+# see Swig $cref/double_class/swig_xam.i/double_class/$$.
 #
 # $head Set Exit Code$$
 # $srccode%cpp%

@@ -6,7 +6,7 @@
                        http://www.gnu.org/licenses/agpl.txt
 ----------------------------------------------------------------------------- */
 /*
-$begin example.i$$
+$begin swig_xam.i$$
 $spell
 	xam
 	hpp

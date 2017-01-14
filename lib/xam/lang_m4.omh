@@ -95,7 +95,7 @@ $head Module_$$
 
 $subhead No Arguments$$
 If $code Module_$$ has no arguments,
-it is the name of the module in $cref example.i$$
+it is the name of the module in $cref swig_xam.i$$
 for scripting language; e.g., $code py_cppad$$ for Python.
 
 $subhead One Argument$$
