@@ -16,9 +16,11 @@ $section Cppad Swig Changes during 2017$$
 
 $head 01-14$$
 Change the Swig example directory, and file names,
-from $code example$$ $code swig_xam$$.
+from $code example$$ to $code swig_xam$$.
 This distinguishes them from the Cppad Swig
 examples in $code lib/example$$.
+Group the $cref cppad_swig_lib$$ into one section
+and improve documentation of $cref/module names/module/$$.
 
 $head 01-13$$
 $list number$$
