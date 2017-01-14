@@ -5,13 +5,6 @@
             GNU Affero General Public License version 3.0 or later see
                        http://www.gnu.org/licenses/agpl.txt
 ----------------------------------------------------------------------------- */
-/* -----------------------------------------------------------------------------
-           cppad_swig: A C++ Object Library and Swig Interface to Cppad
-            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
-                This program is distributed under the terms of the
-            GNU Affero General Public License version 3.0 or later see
-                       http://www.gnu.org/licenses/agpl.txt
------------------------------------------------------------------------------ */
 /* cppad_swig.i */
 # ifdef SWIG
 # define CPPAD_SWIG_LIB_PUBLIC
@@ -27,6 +20,25 @@
 # include <cppad/swig/a_other.hpp>
 %}
 
+/*
+$begin module_name$$
+$spell
+	Cppad
+	Perl
+	py
+$$
+
+$section Cppad Swig Module Name By Language$$
+
+$table
+Language          $cnext Module           $rnext
+Octave            $cnext $code m_cppad$$  $rnext
+Perl              $cnext $code pm_cppad$$ $rnext
+Python            $cnext $code py_cppad$$ $rnext
+$tend
+
+$end
+*/
 # ifdef SWIGPYTHON
 %module py_cppad
 # endif
@@ -36,6 +48,8 @@
 # ifdef SWIGPERL
 %module pm_cppad
 # endif
+/* ------------------------------------------------------------------------- */
+
 
 %ignore  ptr;
 %include "std_vector.i"
