@@ -24,7 +24,7 @@ $section A Simple Example for Using Swig with C++$$
 
 $childtable%
 	swig_xam/python/check_swig_xam.py%
-	swig_xam/octave/check_m_swig_xam.m%
+	swig_xam/octave/check_swig_xam.m%
 	swig_xam/perl/check_swig_xam.pl%
 	swig_xam/example_lib.omh
 %$$
@@ -54,7 +54,7 @@ $codep */
 %module m_swig_xam
 # endif
 /*$$
-see $cref check_m_swig_xam.m$$.
+see $cref check_swig_xam.m$$.
 
 $head pl_swig_xam$$
 This is the name of the Perl Swig interface to the C++ library.

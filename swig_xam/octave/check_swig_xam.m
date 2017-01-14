@@ -5,7 +5,7 @@
 %          GNU Affero General Public License version 3.0 or later see
 %                     http://www.gnu.org/licenses/agpl.txt
 % -----------------------------------------------------------------------------
-% $begin check_m_swig_xam.m$$ $newlinech %$$
+% $begin check_swig_xam.m$$ $newlinech %$$
 % $spell
 %	xam
 %	std

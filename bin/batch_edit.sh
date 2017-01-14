@@ -11,13 +11,16 @@ delete_list='
 revert_list='
 '
 move_list='
-	swig_xam/perl/check_pl_swig_xam.pl
+	swig_xam/octave/check_m_swig_xam.m
 '
-move_sed='s|pl_swig_xam|swig_xam|'
+move_sed='s|m_swig_xam|swig_xam|'
 #
 cat << EOF > junk.sed
-s|pl_swig_xam\\([._]\\)pl|swig_xam\\1pl|
-s|check_pl_swig_xam|check_swig_xam_pl|
+s|m_swig_xam\\([._]\\)m|swig_xam\\1m|
+s|check_m_swig_xam|check_swig_xam_m|
+#
+s|\\([(' ]\\)swig_xam.message_|\\1m_swig_xam.message_|
+s|\\([(' ]\\)swig_xam.max_|\\1m_swig_xam.max_|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

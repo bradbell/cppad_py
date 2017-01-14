@@ -73,18 +73,18 @@ IF( SWIG_FOUND AND octave_config )
 		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
 	)
 	#
-	# copy check_m_swig_xam.m from source to binary directory
-	ADD_CUSTOM_TARGET(check_m_swig_xam
+	# copy check_swig_xam.m from source to binary directory
+	ADD_CUSTOM_TARGET(check_swig_xam_m
 		"${CMAKE_COMMAND}" -E copy
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_m_swig_xam.m"
-		"${CMAKE_CURRENT_BINARY_DIR}/check_m_swig_xam.m"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_swig_xam.m"
+		"${CMAKE_CURRENT_BINARY_DIR}/check_swig_xam.m"
 		DEPENDS
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_m_swig_xam.m"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_swig_xam.m"
 	)
 	# check_swig_xam_octave
 	ADD_CUSTOM_TARGET(check_swig_xam_octave
-		octave check_m_swig_xam.m
-		DEPENDS ${SWIG_MODULE_m_swig_xam_REAL_NAME} check_m_swig_xam
+		octave check_swig_xam.m
+		DEPENDS ${SWIG_MODULE_m_swig_xam_REAL_NAME} check_swig_xam_m
 	)
 	MESSAGE(STATUS "make check_swig_xam_octave: available")
 	#
