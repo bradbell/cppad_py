@@ -121,7 +121,7 @@ catch
 	message = m_swig_xam.raise_exception('');
 end
 if( message == 'test message' )
-	printf('m_swig_xam.m_swig_xam.raise_exception: OK\n')
+	printf('m_swig_xam.raise_exception: OK\n')
 else
 	printf('m_swig_xam.raise_exception.message_of_void: Error\n')
 	error_count = error_count + 1

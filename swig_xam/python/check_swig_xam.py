@@ -115,7 +115,7 @@ try :
 except :
 	message = py_swig_xam.raise_exception('')
 if message == 'test message' :
-	print('swig_xam.py_swig_xam.raise_exception: OK')
+	print('py_swig_xam.raise_exception: OK')
 else :
 	print('py_swig_xam.raise_exception.message_of_void: Error')
 	error_count = error_count + 1

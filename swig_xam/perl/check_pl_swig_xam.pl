@@ -126,9 +126,9 @@ eval { # acts like 'try {' in other languages
 	$message = pl_swig_xam::raise_exception("");
 }
 if( $message == "test message" )
-{	print "pl_swig_xam::pl_swig_xam::raise_exception: OK\n"; }
+{	print "pl_swig_xam::raise_exception: OK\n"; }
 else
-{	print "pl_swig_xam::raise_exception.message_of_void: Error\n";
+{	print "pl_swig_xam::raise_exception: Error\n";
 	$error_count = $error_count + 1;
 }
 # %&&
