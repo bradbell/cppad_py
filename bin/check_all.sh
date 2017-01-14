@@ -54,10 +54,10 @@ echo_eval_log make check
 rm $tmpfile
 #
 check_list='
-	example_python
-	example_octave
-	example_perl
-	example
+	swig_xam_python
+	swig_xam_octave
+	swig_xam_perl
+	swig_xam
 	lib_python
 	lib_octave
 	lib_perl

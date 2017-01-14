@@ -5,20 +5,20 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
-# initialize check_example_depends
-SET(check_example_depends "")
+# initialize check_swig_xam_depends
+SET(check_swig_xam_depends "")
 #
 ADD_SUBDIRECTORY(python)
 ADD_SUBDIRECTORY(octave)
 ADD_SUBDIRECTORY(perl)
 #
-IF( NOT( "${check_example_depends}" STREQUAL "" ) )
+IF( NOT( "${check_swig_xam_depends}" STREQUAL "" ) )
 	#
-	# Add the check_example target
-	ADD_CUSTOM_TARGET(check_example DEPENDS ${check_example_depends})
-	MESSAGE(STATUS "make check_example: available")
+	# Add the check_swig_xam target
+	ADD_CUSTOM_TARGET(check_swig_xam DEPENDS ${check_swig_xam_depends})
+	MESSAGE(STATUS "make check_swig_xam: available")
 	#
 	# Change check depends in parent environment
-	SET(check_depends ${check_depends} check_example PARENT_SCOPE)
+	SET(check_depends ${check_depends} check_swig_xam PARENT_SCOPE)
 	#
-ENDIF( NOT( "${check_example_depends}" STREQUAL "" ) )
+ENDIF( NOT( "${check_swig_xam_depends}" STREQUAL "" ) )

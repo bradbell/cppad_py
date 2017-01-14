@@ -58,16 +58,16 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND )
 		"${CMAKE_CURRENT_SOURCE_DIR}/check_py_swig_xam.py"
 	)
 	#
-	# check_example_python
-	ADD_CUSTOM_TARGET(check_example_python
+	# check_swig_xam_python
+	ADD_CUSTOM_TARGET(check_swig_xam_python
 		${PYTHON_EXECUTABLE} check_py_swig_xam.py
 		DEPENDS ${SWIG_MODULE_py_swig_xam_REAL_NAME} check_py_swig_xam
 	)
-	MESSAGE(STATUS "make check_example_python: available")
+	MESSAGE(STATUS "make check_swig_xam_python: available")
 	#
 	# add this check to list of checks for parent directory
-	SET(check_example_depends
-		${check_example_depends} check_example_python PARENT_SCOPE
+	SET(check_swig_xam_depends
+		${check_swig_xam_depends} check_swig_xam_python PARENT_SCOPE
 	)
 	#
 ENDIF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND)

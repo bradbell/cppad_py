@@ -81,16 +81,16 @@ IF( SWIG_FOUND AND octave_config )
 		DEPENDS
 		"${CMAKE_CURRENT_SOURCE_DIR}/check_m_swig_xam.m"
 	)
-	# check_example_octave
-	ADD_CUSTOM_TARGET(check_example_octave
+	# check_swig_xam_octave
+	ADD_CUSTOM_TARGET(check_swig_xam_octave
 		octave check_m_swig_xam.m
 		DEPENDS ${SWIG_MODULE_m_swig_xam_REAL_NAME} check_m_swig_xam
 	)
-	MESSAGE(STATUS "make check_example_octave: available")
+	MESSAGE(STATUS "make check_swig_xam_octave: available")
 	#
 	# add this check to list of checks for parent directory
-	SET(check_example_depends
-		${check_example_depends} check_example_octave PARENT_SCOPE
+	SET(check_swig_xam_depends
+		${check_swig_xam_depends} check_swig_xam_octave PARENT_SCOPE
 	)
 	#
 ENDIF( SWIG_FOUND AND octave_config )

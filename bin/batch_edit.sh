@@ -11,12 +11,11 @@ delete_list='
 revert_list='
 '
 move_list='
-	swig_xam/perl/check_pl_example.pl
 '
 move_sed='s|pl_example.pl|pl_swig_xam.pl|'
 #
 cat << EOF > junk.sed
-s|pl_example|pl_swig_xam|g
+s|check_example|check_swig_xam|g
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

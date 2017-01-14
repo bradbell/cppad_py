@@ -50,16 +50,16 @@ IF( SWIG_FOUND AND PERLLIBS_FOUND )
 		"${CMAKE_CURRENT_SOURCE_DIR}/check_pl_swig_xam.pl"
 	)
 	#
-	# check_example_perl
-	ADD_CUSTOM_TARGET(check_example_perl
+	# check_swig_xam_perl
+	ADD_CUSTOM_TARGET(check_swig_xam_perl
 		perl check_pl_swig_xam.pl
 		DEPENDS ${SWIG_MODULE_pl_swig_xam_REAL_NAME} check_pl_swig_xam
 	)
-	MESSAGE(STATUS "make check_example_perl: available")
+	MESSAGE(STATUS "make check_swig_xam_perl: available")
 	#
 	# add this check to list of checks for parent directory
-	SET(check_example_depends
-		${check_example_depends} check_example_perl PARENT_SCOPE
+	SET(check_swig_xam_depends
+		${check_swig_xam_depends} check_swig_xam_perl PARENT_SCOPE
 	)
 	#
 ENDIF( SWIG_FOUND AND PERLLIBS_FOUND )
