@@ -17,7 +17,7 @@
 #	Perl
 # &&
 #
-# &section Perl Script That Tests pl_swig_xam Swig Module&&
+# &section Perl Script That Tests pl_swig_xam&&
 #
 # &head Load the Module&&
 # &srccode%cpp%
