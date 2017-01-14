@@ -136,7 +136,7 @@ template <class Type> class template_class
 };
 // END template_class prototype
 /*
-$begin example_template_class$$
+$begin swig_xam_template_class$$
 
 
 $section An Example C++ Template Class$$

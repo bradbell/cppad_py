@@ -31,7 +31,7 @@ template_class<Type>::operator==(const template_class& right) const
 {	return ( value_ == right.value_ ); }
 // END C++
 /*
-$begin  example_template_class.hpp$$
+$begin  swig_xam_template_class.hpp$$
 
 $section Example C++ Template Class Implementations$$
 

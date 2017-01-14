@@ -80,7 +80,7 @@ $codep */
 
 $head double_class$$
 This is a Swig interface to a $codei%template_class<%Type%>%$$
-where $cref/Type/example_template_class/Type/$$ is $code double$$.
+where $cref/Type/swig_xam_template_class/Type/$$ is $code double$$.
 $codep */
 %include "swig_xam.hpp"
 %template(double_class)  template_class<double>;
