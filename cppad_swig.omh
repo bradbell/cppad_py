@@ -19,7 +19,6 @@ $$
 $comment -------------------------------------------------------------$$
 $spell
 	Cppad
-	Cppad
 	Linux
 	msys
 	perl
@@ -73,35 +72,9 @@ $childtable%
 	bin/run_cmake.sh%
 	swig_xam/swig_xam.i%
 	lib/cppad_swig.i%
-	lib/xam/xam.m4
+	lib/xam/xam.m4%
+	news_2017.omh
 %$$
-
-$head Whats New$$
-
-$subhead 2017-01-10$$
-First uploading of this documentation.
-$subhead 2017-01-11$$
-$list number$$
-Add exception handling; see $cref error_message$$.
-$lnext
-Fix the Perl examples / tests
-(exception handling revealed they were not working).
-$lend
-$subhead 2017-01-12$$
-Change
-$cref xam.m4$$ macros to all start with Capital letters and use Camel case
-This is relevant to understanding on Cppad Swig generates examples
-for all languages from a single source.
-$subhead 2017-01-13$$
-$list number$$
-Change $code error_msg$$ to push and pop error messages
-so it handles multiple exceptions and deletes old messages.
-$lnext
-Move $code error_msg$$ to $cref error_message$$.
-$lnext
-Map calls to the Cppad error handler to
-calls to $code error_message$$.
-$lend
 
 
 $end

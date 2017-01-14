@@ -1,0 +1,51 @@
+-------------------------------------------------------------------------------
+          cppad_swig: A C++ Object Library and Swig Interface to Cppad
+           Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+           GNU Affero General Public License version 3.0 or later see
+                      http://www.gnu.org/licenses/agpl.txt
+-------------------------------------------------------------------------------
+$begin news_2017$$
+$spell
+	Cppad
+	xam
+	Perl
+$$
+
+$section Cppad Swig Changes during 2017$$
+
+$head 01-14$$
+Change the Swig example directory, and file names,
+from $code example$$ $code swig_xam$$.
+This distinguishes them from the Cppad Swig
+examples in $code lib/example$$.
+
+$head 01-13$$
+$list number$$
+Change $code error_msg$$ to push and pop error messages
+so it handles multiple exceptions and deletes old messages.
+$lnext
+Move $code error_msg$$ to $cref error_message$$.
+$lnext
+Map calls to the Cppad error handler to
+calls to $code error_message$$.
+$lend
+
+$head 01-12$$
+Change
+$cref xam.m4$$ macros to all start with Capital letters and use Camel case
+This is relevant to understanding on Cppad Swig generates examples
+for all languages from a single source.
+
+$head 01-11$$
+$list number$$
+Add exception handling; see $cref error_message$$.
+$lnext
+Fix the Perl examples / tests
+(exception handling revealed they were not working).
+$lend
+
+$head 01-10$$
+First uploading of this documentation.
+
+$end
