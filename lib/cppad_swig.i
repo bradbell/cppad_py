@@ -46,6 +46,7 @@ $head Module Reference$$
 This is the source code, in the particular language,
 used to reference functions that are in the module.
 
+$head Table$$
 $table
 Language     $cnext Module Name        $cnext Module Reference      $rnext
 C++          $cnext $code cppad_swig$$ $cnext $code cppad_swig::$$  $rnext

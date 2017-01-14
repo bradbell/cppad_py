@@ -16,24 +16,17 @@ $$
 $section Cppad Swig Vector Constructors$$
 
 $head Syntax$$
-$icode%v%  = %module_ref_%vector_double(%n%)
+$icode%v%  = %module_ref% vector_double(%n%)
 %$$
-$icode%av% = %module_ref_%vector_ad(%n%)
+$icode%av% = %module_ref% vector_ad(%n%)
 %$$
 
 $head Purpose$$
 Creates a vector with $icode n$$ elements.
 
-$head module_ref_$$
-This is a reference to the Cppad Swig module which is
-language dependent as follows:
-$table
-C++        $cnext $code cppad_swig::$$ $rnext
-Octave     $cnext $code m_cppad.$$     $rnext
-Perl       $cnext $code pm_cppad::$$   $rnext
-Python     $cnext $code py_cppad.$$
-$tend
-
+$head module_ref$$
+This is a $cref/module reference/module/Module Reference/$$
+for the particular language.
 
 $head n$$
 The argument $icode n$$ is a non-negative integer.

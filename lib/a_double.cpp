@@ -59,26 +59,20 @@ $$
 $section The a_double Constructor$$
 
 $head Syntax$$
-$icode%ad% = %module_ref_%a_double()
+$icode%ad% = %module_ref% a_double()
 %$$
-$icode%ad% = %module_ref_%a_double(%d%)
+$icode%ad% = %module_ref% a_double(%d%)
 %$$
-$icode%ad% = %module_ref_%a_double(%ad_other%)
+$icode%ad% = %module_ref% a_double(%ad_other%)
 %$$
 
 $head Purpose$$
 Creates a $code cppad_swig::a_double$$ object that can be use
 to track floating point operations and preform algorithmic differentiation.
 
-$head module_ref_$$
-This is a reference to the Cppad Swig module which is
-language dependent as follows:
-$table
-C++        $cnext $code cppad_swig::$$ $rnext
-Octave     $cnext $code m_cppad.$$     $rnext
-Perl       $cnext $code pm_cppad::$$   $rnext
-Python     $cnext $code py_cppad.$$
-$tend
+$head module_ref$$
+This is a $cref/module reference/module/Module Reference/$$
+for the particular language.
 
 $head d$$
 This argument has prototype

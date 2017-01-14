@@ -15,7 +15,7 @@ move_list='
 move_sed='s|example|swig_xam|'
 #
 cat << EOF > junk.sed
-s|example_template_class|swig_xam_template_class|g
+s|module_ref_%|module_ref% |
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

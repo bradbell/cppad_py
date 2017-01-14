@@ -24,17 +24,11 @@ $$
 $section Declare Independent Variables and Start Recording$$
 
 $head Syntax$$
-$icode%ax% = %module_ref_%independent(%x%)%$$
+$icode%ax% = %module_ref% independent(%x%)%$$
 
-$head module_ref_$$
-This is a reference to the Cppad Swig module which is
-language dependent as follows:
-$table
-C++        $cnext $code cppad_swig::$$ $rnext
-Octave     $cnext $code m_cppad.$$     $rnext
-Perl       $cnext $code pm_cppad::$$   $rnext
-Python     $cnext $code py_cppad.$$
-$tend
+$head module_ref$$
+This is a $cref/module reference/module/Module Reference/$$
+for the particular language.
 
 $head x$$
 This argument has prototype
@@ -95,11 +89,15 @@ $$
 $section Abort Recording$$
 
 $head Syntax$$
-$icode%module_ref_%abort_recording(%x%)%$$
+$icode%module_ref% abort_recording(%x%)%$$
 
 $head Purpose$$
 This aborts the current recording (if it exists)
 started by the most recent call to $cref independent$$.
+
+$head module_ref$$
+This is a $cref/module reference/module/Module Reference/$$
+for the particular language.
 
 $children%
 	build/lib/example/cplusplus/a_fun_abort_xam.cpp%
