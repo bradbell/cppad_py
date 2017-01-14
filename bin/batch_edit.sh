@@ -11,11 +11,13 @@ delete_list='
 revert_list='
 '
 move_list='
+	swig_xam/python/check_py_swig_xam.py
 '
-move_sed='s|pl_example.pl|pl_swig_xam.pl|'
+move_sed='s|py_swig_xam|swig_xam|'
 #
 cat << EOF > junk.sed
-s|check_example|check_swig_xam|g
+s|py_swig_xam\\([._]\\)py|swig_xam\\1py|
+s|check_py_swig_xam|check_swig_xam_py|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

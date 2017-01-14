@@ -49,19 +49,19 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND )
 	# example use of CMAKE_SWIG_OUTDIR (not necessary in this case)
 	SET(CMAKE_SWIG_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}")
 	#
-	# copy check_py_swig_xam.py from source to binary directory
-	ADD_CUSTOM_TARGET(check_py_swig_xam
+	# copy check_swig_xam.py from source to binary directory
+	ADD_CUSTOM_TARGET(check_swig_xam_py
 		"${CMAKE_COMMAND}" -E copy
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_py_swig_xam.py"
-		"${CMAKE_CURRENT_BINARY_DIR}/check_py_swig_xam.py"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_swig_xam.py"
+		"${CMAKE_CURRENT_BINARY_DIR}/check_swig_xam.py"
 		DEPENDS
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_py_swig_xam.py"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_swig_xam.py"
 	)
 	#
 	# check_swig_xam_python
 	ADD_CUSTOM_TARGET(check_swig_xam_python
-		${PYTHON_EXECUTABLE} check_py_swig_xam.py
-		DEPENDS ${SWIG_MODULE_py_swig_xam_REAL_NAME} check_py_swig_xam
+		${PYTHON_EXECUTABLE} check_swig_xam.py
+		DEPENDS ${SWIG_MODULE_py_swig_xam_REAL_NAME} check_swig_xam_py
 	)
 	MESSAGE(STATUS "make check_swig_xam_python: available")
 	#

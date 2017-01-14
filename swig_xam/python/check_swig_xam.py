@@ -5,7 +5,7 @@
 #          GNU Affero General Public License version 3.0 or later see
 #                     http://www.gnu.org/licenses/agpl.txt
 # -----------------------------------------------------------------------------
-# $begin check_py_swig_xam.py$$ $newlinech #$$
+# $begin check_swig_xam.py$$ $newlinech #$$
 # $spell
 #	xam
 #	std
@@ -115,7 +115,7 @@ try :
 except :
 	message = py_swig_xam.raise_exception('')
 if message == 'test message' :
-	print('py_swig_xam.py_swig_xam.raise_exception: OK')
+	print('swig_xam.py_swig_xam.raise_exception: OK')
 else :
 	print('py_swig_xam.raise_exception.message_of_void: Error')
 	error_count = error_count + 1
