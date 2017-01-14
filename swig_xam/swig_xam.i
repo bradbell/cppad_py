@@ -20,7 +20,7 @@ $spell
 	std
 $$
 
-$section A Simple Example for Using Swig with C++$$
+$section Example Using Swig with C++$$
 
 $head C++ Includes$$
 This include file defines the interface to the C++ object library.

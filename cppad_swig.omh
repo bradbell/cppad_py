@@ -71,8 +71,8 @@ $href%http://www.gnu.org/licenses/agpl.txt%agpl.txt%$$.
 
 $childtable%
 	bin/run_cmake.sh%
-	lib/cppad_swig.i%
 	swig_xam/swig_xam.i%
+	lib/cppad_swig.i%
 	lib/xam/xam.m4
 %$$
 
