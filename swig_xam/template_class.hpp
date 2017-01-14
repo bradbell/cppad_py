@@ -8,7 +8,7 @@
                        http://www.gnu.org/licenses/agpl.txt
 ----------------------------------------------------------------------------- */
 // BEGIN C++
-# include "example.hpp"
+# include "swig_xam.hpp"
 
 // template_class(value)
 template <class Type>

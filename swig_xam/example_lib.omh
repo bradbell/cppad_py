@@ -12,7 +12,7 @@ $$
 $section Example C++ Library That is Called by Swig$$
 
 $childtable%
-	swig_xam/example.hpp
+	swig_xam/swig_xam.hpp
 %$$
 
 

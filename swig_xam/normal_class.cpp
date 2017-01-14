@@ -6,7 +6,7 @@
                        http://www.gnu.org/licenses/agpl.txt
 ----------------------------------------------------------------------------- */
 // BEGIN C++
-# include "example.hpp"
+# include "swig_xam.hpp"
 
 // normal_class()
 normal_class::normal_class(void)

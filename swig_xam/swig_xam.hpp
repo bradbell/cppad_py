@@ -26,7 +26,7 @@ $$
 $section Example C++ Function Specifications$$
 
 $head Prototypes$$
-$srcfile%swig_xam/example.hpp%0
+$srcfile%swig_xam/swig_xam.hpp%0
 	%// BEGIN function prototypes%// END function prototypes%$$
 
 $head factorial_by_value$$
@@ -93,7 +93,7 @@ $section An Example C++ Class$$
 
 
 $head Prototypes$$
-$srcfile%swig_xam/example.hpp%0
+$srcfile%swig_xam/swig_xam.hpp%0
 	%// BEGIN normal_class prototype%// END normal_class prototype%$$
 
 $head normal_class()$$
@@ -143,7 +143,7 @@ $section An Example C++ Template Class$$
 
 
 $head Prototypes$$
-$srcfile%swig_xam/example.hpp%0
+$srcfile%swig_xam/swig_xam.hpp%0
 	%// BEGIN template_class prototype%// END template_class prototype%$$
 
 $head Type$$
