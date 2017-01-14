@@ -33,7 +33,7 @@ else :
 	print('py_swig_xam.factorial_by_value: Error')
 	error_count = error_count + 1
 # %$$
-# see C++ $cref/factorial_by_value/example_function/factorial_by_value/$$.
+# see C++ $cref/factorial_by_value/swig_xam_function/factorial_by_value/$$.
 #
 # $head message_of_void$$
 # $srccode%cpp%
@@ -43,7 +43,7 @@ else :
 	print('py_swig_xam.message_of_void: Error')
 	error_count = error_count + 1
 # %$$
-# see C++ $cref/message_of_void/example_function/message_of_void/$$.
+# see C++ $cref/message_of_void/swig_xam_function/message_of_void/$$.
 #
 # $head int_class$$
 # $srccode%cpp%
@@ -56,7 +56,7 @@ else :
 	error_count = error_count + 1
 # %$$
 # see Swig $cref/int_class/swig_xam.i/int_class/$$ and
-# C++ $cref/add_by_ptr/example_function/add_by_ptr/$$.
+# C++ $cref/add_by_ptr/swig_xam_function/add_by_ptr/$$.
 #
 # $head int_array_ptr$$
 # $srccode%cpp%
@@ -73,7 +73,7 @@ else :
 py_swig_xam.delete_int_array_ptr(array_ptr)
 # %$$
 # see Swig $cref/int_array_ptr/swig_xam.i/int_array_ptr/$$ and
-# C++ $cref/max_array_by_ptr/example_function/max_array_by_ptr/$$.
+# C++ $cref/max_array_by_ptr/swig_xam_function/max_array_by_ptr/$$.
 #
 # $head int_array_class$$
 # $srccode%cpp%
@@ -89,7 +89,7 @@ else :
 	error_count = error_count + 1
 # %$$
 # see Swig $cref/int_array_class/swig_xam.i/int_array_class/$$ and
-# C++ $cref/max_array_by_ptr/example_function/max_array_by_ptr/$$.
+# C++ $cref/max_array_by_ptr/swig_xam_function/max_array_by_ptr/$$.
 #
 # $head vector_double$$
 # $srccode%cpp%
@@ -105,7 +105,7 @@ else :
 	error_count = error_count + 1
 # %$$
 # see Swig $cref/vector_double/swig_xam.i/vector_double/$$ and
-# C++ $cref/max_std_vector_double/example_function/max_std_vector_double/$$.
+# C++ $cref/max_std_vector_double/swig_xam_function/max_std_vector_double/$$.
 #
 # $head raise_exception$$
 # $srccode%cpp%
@@ -120,7 +120,7 @@ else :
 	print('py_swig_xam.raise_exception.message_of_void: Error')
 	error_count = error_count + 1
 # %$$
-# see C++ $cref/raise_exception/example_function/raise_exception/$$.
+# see C++ $cref/raise_exception/swig_xam_function/raise_exception/$$.
 #
 # $head normal_class$$
 # $srccode%cpp%
