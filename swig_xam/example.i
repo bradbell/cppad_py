@@ -22,13 +22,6 @@ $$
 
 $section A Simple Example for Using Swig with C++$$
 
-$childtable%
-	swig_xam/python/check_swig_xam.py%
-	swig_xam/octave/check_swig_xam.m%
-	swig_xam/perl/check_swig_xam.pl%
-	swig_xam/example_lib.omh
-%$$
-
 $head C++ Includes$$
 This include file defines the interface to the C++ object library.
 $codep */
@@ -100,6 +93,13 @@ $codep */
 %include "std_vector.i"
 %template(vector_double) std::vector<double>;
 /* $$
+
+$childtable%
+	swig_xam/example_lib.omh%
+	swig_xam/python/check_swig_xam.py%
+	swig_xam/octave/check_swig_xam.m%
+	swig_xam/perl/check_swig_xam.pl
+%$$
 $end
 */
 
