@@ -33,7 +33,7 @@ template_class<Type>::operator==(const template_class& right) const
 /*
 $begin  swig_xam_template_class.hpp$$
 
-$section Example C++ Template Class Implementations$$
+$section Swig Example: C++ Template Class Implementation$$
 
 $srcfile%swig_xam/template_class.hpp%0%// BEGIN C++%// END C++%$$
 

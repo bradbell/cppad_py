@@ -13,7 +13,7 @@
 #	ptr
 # $$
 #
-# $section Python Script That Tests py_swig_xam$$
+# $section Swig Example / Test: Python Script$$
 #
 # $head Load the Module$$
 # $srccode%cpp%

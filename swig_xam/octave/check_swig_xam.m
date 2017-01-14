@@ -12,7 +12,7 @@
 %	ptr
 % #$$
 %
-% $section Octave Script That Tests m_swig_xam$$
+% $section Swig Example / Test: Octave Script$$
 %
 % $head Load the Module$$
 % $srccode#cpp#

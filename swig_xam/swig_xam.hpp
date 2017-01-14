@@ -23,7 +23,7 @@ $spell
 	std
 $$
 
-$section Example C++ Function Specifications$$
+$section Swig Example: C++ Function Specifications$$
 
 $head Prototypes$$
 $srcfile%swig_xam/swig_xam.hpp%0
@@ -89,7 +89,7 @@ class normal_class
 $begin swig_xam_normal_class$$
 
 
-$section An Example C++ Class$$
+$section Swig Example: C++ Class$$
 
 
 $head Prototypes$$
@@ -139,7 +139,7 @@ template <class Type> class template_class
 $begin swig_xam_template_class$$
 
 
-$section An Example C++ Template Class$$
+$section Swig Example: C++ Template Class$$
 
 
 $head Prototypes$$

@@ -62,7 +62,7 @@ const char* raise_exception(const char* message) throw(const char*)
 /*
 $begin swig_xam_function.cpp$$
 
-$section Example C++ Function Implementations$$
+$section Swig Example: C++ Function Implementation$$
 
 $srcfile%swig_xam/function.cpp%0%// BEGIN C++%// END C++%$$
 
