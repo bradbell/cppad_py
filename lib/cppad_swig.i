@@ -21,20 +21,37 @@
 %}
 
 /*
-$begin module_name$$
+$begin module$$
 $spell
 	Cppad
 	Perl
 	py
+	namespace
 $$
 
-$section Cppad Swig Module Name By Language$$
+$section Cppad Swig Modules and Languages$$
+
+$head Language$$
+Is a source code language.
+Note that in C++, the library functions are accessed directly,
+while in the other languages they are accessed through the
+corresponding Swig module.
+
+$head Module Name$$
+This is the name of the Swig module.
+In C++ this is actually a $code namespace$$, instead of a
+Swig module.
+
+$head Module Reference$$
+This is the source code, in the particular language,
+used to reference functions that are in the module.
 
 $table
-Language          $cnext Module           $rnext
-Octave            $cnext $code m_cppad$$  $rnext
-Perl              $cnext $code pm_cppad$$ $rnext
-Python            $cnext $code py_cppad$$ $rnext
+Language     $cnext Module Name        $cnext Module Reference      $rnext
+C++          $cnext $code cppad_swig$$ $cnext $code cppad_swig::$$  $rnext
+Octave       $cnext $code m_cppad$$    $cnext $code m_cppad.$$      $rnext
+Perl         $cnext $code pm_cppad$$   $cnext $code pm_cppad::$$    $rnext
+Python       $cnext $code py_cppad$$   $cnext $code m_cppad.$$
 $tend
 
 $end
