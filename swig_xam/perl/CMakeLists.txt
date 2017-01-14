@@ -42,18 +42,18 @@ IF( SWIG_FOUND AND PERLLIBS_FOUND )
 	SET(CMAKE_SWIG_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}")
 	#
 	# copy check_exmaple.pl from source to binary directory
-	ADD_CUSTOM_TARGET(check_pl_swig_xam
+	ADD_CUSTOM_TARGET(check_swig_xam_pl
 		"${CMAKE_COMMAND}" -E copy
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_pl_swig_xam.pl"
-		"${CMAKE_CURRENT_BINARY_DIR}/check_pl_swig_xam.pl"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_swig_xam.pl"
+		"${CMAKE_CURRENT_BINARY_DIR}/check_swig_xam.pl"
 		DEPENDS
-		"${CMAKE_CURRENT_SOURCE_DIR}/check_pl_swig_xam.pl"
+		"${CMAKE_CURRENT_SOURCE_DIR}/check_swig_xam.pl"
 	)
 	#
 	# check_swig_xam_perl
 	ADD_CUSTOM_TARGET(check_swig_xam_perl
-		perl check_pl_swig_xam.pl
-		DEPENDS ${SWIG_MODULE_pl_swig_xam_REAL_NAME} check_pl_swig_xam
+		perl check_swig_xam.pl
+		DEPENDS ${SWIG_MODULE_pl_swig_xam_REAL_NAME} check_swig_xam_pl
 	)
 	MESSAGE(STATUS "make check_swig_xam_perl: available")
 	#

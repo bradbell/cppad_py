@@ -25,7 +25,7 @@ $section A Simple Example for Using Swig with C++$$
 $childtable%
 	swig_xam/python/check_swig_xam.py%
 	swig_xam/octave/check_m_swig_xam.m%
-	swig_xam/perl/check_pl_swig_xam.pl%
+	swig_xam/perl/check_swig_xam.pl%
 	swig_xam/example_lib.omh
 %$$
 
@@ -63,7 +63,7 @@ $codep */
 %module pl_swig_xam
 # endif
 /* $$
-see $cref check_pl_swig_xam.pl$$.
+see $cref check_swig_xam.pl$$.
 
 $head int_class$$
 This is a Swig interface to a an integer value.

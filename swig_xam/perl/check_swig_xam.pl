@@ -8,7 +8,7 @@
 # The script uses the $ in its perl syntax
 # $OMhelpKeyCharacter=&
 #
-# &begin check_pl_swig_xam.pl&& &newlinech #&&
+# &begin check_swig_xam.pl&& &newlinech #&&
 # &spell
 #	xam
 #	std
