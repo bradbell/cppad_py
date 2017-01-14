@@ -86,7 +86,7 @@ class normal_class
 };
 // END normal_class prototype
 /*
-$begin example_normal_class$$
+$begin swig_xam_normal_class$$
 
 
 $section An Example C++ Class$$

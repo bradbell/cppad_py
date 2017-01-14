@@ -135,7 +135,7 @@ else :
 	print('py_swig_xam.normal_class: Error')
 	error_count = error_count + 1
 # %$$
-# see C++ $cref example_normal_class$$.
+# see C++ $cref swig_xam_normal_class$$.
 #
 # $head double_class$$
 # $srccode%cpp%

@@ -33,7 +33,7 @@ bool normal_class::operator==(const normal_class& right) const
 {	return ( value_ == right.value_ ); }
 // END C++
 /*
-$begin  example_normal_class_cpp$$
+$begin  swig_xam_normal_class.cpp$$
 
 $section Example C++ Class Implementations$$
 
