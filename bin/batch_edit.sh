@@ -11,12 +11,12 @@ delete_list='
 revert_list='
 '
 move_list='
-	swig_xam/example.hpp
+	swig_xam/example_lib.omh
 '
-move_sed='s|example|swig_xam|'
+move_sed='s|example_lib|swig_xam_lib|'
 #
 cat << EOF > junk.sed
-s|example\\.hpp|swig_xam.hpp|
+s|example_lib|swig_xam_lib|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

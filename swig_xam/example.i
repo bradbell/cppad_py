@@ -29,7 +29,7 @@ $codep */
 # include "swig_xam.hpp"
 %}
 /* $$
-see $cref example_lib$$.
+see $cref swig_xam_lib$$.
 
 $head py_swig_xam$$
 This is the name of the Python Swig interface to the C++ library.
@@ -95,7 +95,7 @@ $codep */
 /* $$
 
 $childtable%
-	swig_xam/example_lib.omh%
+	swig_xam/swig_xam_lib.omh%
 	swig_xam/python/check_swig_xam.py%
 	swig_xam/octave/check_swig_xam.m%
 	swig_xam/perl/check_swig_xam.pl
