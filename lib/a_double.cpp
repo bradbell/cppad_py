@@ -8,6 +8,10 @@
 # include <cppad/cppad.hpp>
 # include <cppad/swig/a_double.hpp>
 
+// ---------------------------------------------------------------------------
+// Macros
+// ---------------------------------------------------------------------------
+
 // binary operators with ad results
 # define BINARY_OP_AD_RESULT(op) \
 a_double a_double::operator op(const a_double& ad) const \
@@ -27,6 +31,14 @@ a_double a_double::operator op(const a_double& ad)\
 {	*ptr() op *ad.ptr(); \
 	return *this; \
 }
+// unary functions with ad results
+# define UNARY_FUN_AD_RESULT(fun) \
+a_double a_double::fun(void) const \
+{	a_double result; \
+	*result.ptr() = CppAD::fun( *ptr() ); \
+	return result; \
+}
+// ---------------------------------------------------------------------------
 
 namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 
@@ -239,22 +251,22 @@ $cref/Python/a_double_property_xam.py/$$.
 $end
 */
 double a_double::value(void) const
-{	double result = Value( *ptr() );
+{	double result = CppAD::Value( *ptr() );
 	return result;
 }
 bool a_double::parameter(void) const
-{	bool result = Parameter( *ptr() );
+{	bool result = CppAD::Parameter( *ptr() );
 	return result;
 }
 bool a_double::variable(void) const
-{	bool result = Variable( *ptr() );
+{	bool result = CppAD::Variable( *ptr() );
 	return result;
 }
 /*
 -------------------------------------------------------------------------------
 $begin a_double_ad_binary$$
 
-$section ad_double Binary Operators with an a_double Result$$
+$section ad_double Binary Operators with an AD Result$$
 $spell
 	const
 	az
@@ -427,5 +439,94 @@ COMPOUND_ASSIGNMENT_OP(+=)
 COMPOUND_ASSIGNMENT_OP(-=)
 COMPOUND_ASSIGNMENT_OP(*=)
 COMPOUND_ASSIGNMENT_OP(/=)
+/*
+-------------------------------------------------------------------------------
+$begin a_double_unary_fun$$
+$spell
+	const
+	perl
+	bool
+
+	acos
+	asin
+	atan
+	cos
+	exp
+	fabs
+	sqrt
+	tanh
+	asinh
+	acosh
+	atanh
+	expm
+$$
+
+$section Unary Functions with AD Result$$
+
+$head Syntax$$
+$icode%ay% = %ax%.%fun%()
+%$$
+
+$head ax$$
+This object has prototype
+$codei%
+	const a_double& %ax%
+%$$
+This is the argument for the function evaluation.
+
+$head fun$$
+This specifies which function is being evaluated and is one
+of  following value:
+$code acos$$,
+$code asin$$,
+$code atan$$,
+$code cos$$,
+$code cosh$$,
+$code exp$$,
+$code fabs$$,
+$code log$$,
+$code sin$$,
+$code sinh$$,
+$code sqrt$$,
+$code tan$$,
+$code tanh$$.
+2DO: Add the C++11 functions
+asinh, acosh, atanh, expm1, and log1p to this list.
+
+$head ay$$
+The result object has prototype
+$codei%
+	a_double %ay%
+%$$
+and is the specified function evaluated at the specified argument; i.e.,
+$icode%
+	%ay% = %fun%( %ax% )
+%$$
+
+$children%
+	build/lib/example/cplusplus/a_double_unary_fun_xam.cpp%
+	build/lib/example/octave/a_double_unary_fun_xam.m%
+	build/lib/example/perl/a_double_unary_fun_xam.pm%
+	build/lib/example/python/a_double_unary_fun_xam.py
+%$$
+$head Example$$
+$cref/C++/a_double_unary_fun_xam.cpp/$$,
+$cref/Octave/a_double_unary_fun_xam.m/$$,
+$cref/Perl/a_double_unary_fun_xam.pm/$$,
+$cref/Python/a_double_unary_fun_xam.py/$$.
+
+$end
+*/
+UNARY_FUN_AD_RESULT(acos)
+UNARY_FUN_AD_RESULT(asin)
+UNARY_FUN_AD_RESULT(atan)
+UNARY_FUN_AD_RESULT(cos)
+UNARY_FUN_AD_RESULT(cosh)
+UNARY_FUN_AD_RESULT(exp)
+UNARY_FUN_AD_RESULT(fabs)
+UNARY_FUN_AD_RESULT(log)
+UNARY_FUN_AD_RESULT(sinh)
+UNARY_FUN_AD_RESULT(tan)
+UNARY_FUN_AD_RESULT(tanh)
 // --------------------------------------------------------------------------
 } // END_CPPAD_SWIG_NAMESPACE

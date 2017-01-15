@@ -70,7 +70,7 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	const a_double& operator+(void) const;
 	a_double operator-(void) const;
 	//
-	// binary operators with a_double result
+	// binary operators with AD result
 	a_double operator+(const a_double& ad) const;
 	a_double operator-(const a_double& ad) const;
 	a_double operator*(const a_double& ad) const;
@@ -89,6 +89,19 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	a_double operator-=(const a_double& ad);
 	a_double operator*=(const a_double& ad);
 	a_double operator/=(const a_double& ad);
+	//
+	// unary functions with AD result
+	a_double acos(void) const;
+	a_double asin(void) const;
+	a_double atan(void) const;
+	a_double cos(void) const;
+	a_double cosh(void) const;
+	a_double exp(void) const;
+	a_double fabs(void) const;
+	a_double log(void) const;
+	a_double sinh(void) const;
+	a_double tan(void) const;
+	a_double tanh(void) const;
 };
 
 } // END_CPPAD_SWIG_NAMESPACE

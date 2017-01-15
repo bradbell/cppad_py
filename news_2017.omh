@@ -14,6 +14,10 @@ $$
 
 $section Cppad Swig Changes during 2017$$
 
+$head 01-15$$
+Add the C++98 standard math functions to the $code a_double$$ class; see
+$cref a_double_unary_fun$$.
+
 $head 01-14$$
 Change the Swig example directory, and file names,
 from $code example$$ to $code swig_xam$$.
