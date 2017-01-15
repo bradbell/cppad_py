@@ -45,6 +45,7 @@ IF( octave_config )
 
 	# Swig Octave warns that it does not support +=, -=, *=, or /=,
 	# (but is does and the code works) so supress these warnings.
+	# 2DO: Ask swig mailing list what is going on here.
 	SET(CMAKE_SWIG_FLAGS -Wextra -w365,366,367,368 )
 
 	# Octave include directories

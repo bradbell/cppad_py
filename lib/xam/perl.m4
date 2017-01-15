@@ -54,6 +54,7 @@ define(AndAssign_, `$'$1 = `$'$1 And_ $2;)
 
 # -----------------------------------------------------------------------------
 # Vector Operations
+# 2DO: ask swig mailing list why cannot use [] or () operators for this.
 
 # VecSet_(vector, index, value)
 define(VecSet_, `$'$1->set($2, $3);)

@@ -120,7 +120,7 @@ a_double::a_double(const a_double& ad)
 a_double::~a_double(void)
 { }
 /*
-$begin a_double_unary$$
+$begin a_double_unary_op$$
 
 $section a_double Unary Plus and Minus$$
 $spell

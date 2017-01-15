@@ -31,6 +31,7 @@ fun_list = {
 }';
 for fun = fun_list
 	name  = cell2mat(fun);
+	% 2DO: ask swig mailing list what is going on here.
 	if( strcmp(name, 'a_double_unary_op_xam') )
 		printf( strcat('octave: ', name , ': Skip Test\n') )
 	else
