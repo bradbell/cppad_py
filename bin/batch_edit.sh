@@ -11,11 +11,14 @@ delete_list='
 revert_list='
 '
 move_list='
+	lib/xam/a_double/unary_xam.xam
 '
-move_sed='s|example|swig_xam|'
+move_sed='s|unary_xam|unary_op_xam|'
 #
 cat << EOF > junk.sed
-s|module_ref_%|module_ref% |
+s|unary_xam|unary_op_xam|g
+s|unary_op_xam,   |unary_op_xam,|
+s|unary_op_xam"   |unary_op_xam"|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

@@ -149,16 +149,16 @@ Note that Octave does not support these unary operators
 (the reason why is unclear at this time).
 
 $children%
-	build/lib/example/cplusplus/a_double_unary_xam.cpp%
-	build/lib/example/octave/a_double_unary_xam.m%
-	build/lib/example/perl/a_double_unary_xam.pm%
-	build/lib/example/python/a_double_unary_xam.py
+	build/lib/example/cplusplus/a_double_unary_op_xam.cpp%
+	build/lib/example/octave/a_double_unary_op_xam.m%
+	build/lib/example/perl/a_double_unary_op_xam.pm%
+	build/lib/example/python/a_double_unary_op_xam.py
 %$$
 $head Example$$
-$cref/C++/a_double_unary_xam.cpp/$$,
-$cref/Octave/a_double_unary_xam.m/$$,
-$cref/Perl/a_double_unary_xam.pm/$$,
-$cref/Python/a_double_unary_xam.py/$$.
+$cref/C++/a_double_unary_op_xam.cpp/$$,
+$cref/Octave/a_double_unary_op_xam.m/$$,
+$cref/Perl/a_double_unary_op_xam.pm/$$,
+$cref/Python/a_double_unary_op_xam.py/$$.
 
 $end
 */

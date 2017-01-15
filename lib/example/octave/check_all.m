@@ -17,7 +17,7 @@ function ok = run_test(name)
 end
 fun_list = {
 	'a_double_property_xam',
-	'a_double_unary_xam',
+	'a_double_unary_op_xam',
 	'a_double_assign_xam',
 	'a_double_ad_binary_xam',
 	'a_double_compare_xam',
@@ -31,7 +31,7 @@ fun_list = {
 }';
 for fun = fun_list
 	name  = cell2mat(fun);
-	if( strcmp(name, 'a_double_unary_xam') )
+	if( strcmp(name, 'a_double_unary_op_xam') )
 		printf( strcat('octave: ', name , ': Skip Test\n') )
 	else
 		run_test(name);
