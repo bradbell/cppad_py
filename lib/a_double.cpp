@@ -570,7 +570,7 @@ $$
 $section AD Conditional Assignment$$
 
 $head Syntax$$
-$icode%target%.%cond_assign%(%cop%, %left%, %right%, %if_true%, %if_false%)
+$icode%target%.cond_assign(%cop%, %left%, %right%, %if_true%, %if_false%)
 %$$
 
 $head Purpose$$
