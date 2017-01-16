@@ -108,6 +108,13 @@ $codei%
 	vector_ad&     %u%
 %$$
 
+$head i$$
+This argument has prototype
+$codei%
+	size_t %i%
+%$$
+It must be between zero and the size of the vector minus one.
+
 $head x$$
 If $icode u$$ has type $code vector_double$$,
 $icode x$$ has prototype
