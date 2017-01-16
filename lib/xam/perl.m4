@@ -88,6 +88,3 @@ define(Return_, return( `$'$1 );)
 
 # For_(variable, upper)
 define(For_, for(my `$'$1 = 0; `$'$1 < $2; `$'$1++) {)
-
-# print_tExt_(text)
-define(print_tExt_, print "$1\n";)
