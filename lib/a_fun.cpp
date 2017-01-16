@@ -334,21 +334,21 @@ and its size is $icode%n%*%n%$$.
 For $icode i$$ between zero and $icode%n%-1%$$
 and $icode j$$ between zero and $icode%n%-1%$$,
 $latex \[
-	H [ i * n + j ] = \frac{ \partial g }{ \partial x_i \partial x_j } (x)
+	H [ i * n + j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
 \] $$
 
 
-$comment%
+$children%
 	build/lib/example/cplusplus/a_fun_hessian_xam.cpp%
 	build/lib/example/octave/a_fun_hessian_xam.m%
 	build/lib/example/perl/a_fun_hessian_xam.pm%
 	build/lib/example/python/a_fun_hessian_xam.py
 %$$
 $head Example$$
-$comment/C++/a_fun_hessian_xam.cpp/$$,
-$comment/Octave/a_fun_hessian_xam.m/$$,
-$comment/Perl/a_fun_hessian_xam.pm/$$,
-$comment/Python/a_fun_hessian_xam.py/$$.
+$cref/C++/a_fun_hessian_xam.cpp/$$,
+$cref/Octave/a_fun_hessian_xam.m/$$,
+$cref/Perl/a_fun_hessian_xam.pm/$$,
+$cref/Python/a_fun_hessian_xam.py/$$.
 
 
 $end

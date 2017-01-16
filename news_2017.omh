@@ -16,7 +16,8 @@ $section Cppad Swig Changes during 2017$$
 
 $head 01-16$$
 Include $cref/conditional assignment/a_double_cond_assign/$$
-in the library.
+and $cref/hessian/a_fun_hessian/$$ in the library.
+
 
 $head 01-15$$
 $list number$$

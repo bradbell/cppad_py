@@ -36,18 +36,23 @@ BeginBoolFun__(ok, a_fun_hessian_xam)
 	NewVar_(vector_double, w, ModuleCtor_(vector_double)(Var_(m)))
 	VecSet_(w, 0, 1.0)
 	C_
-	C_ compute the Hessian f''(x) = ( x_1*x_2, x_0*x_2, x_0*x_1 )
+	C_ compute Hessian
 	NewVar_(vector_double, fpp, Member_(af, hessian)(Var_(x), Var_(w)))
 	C_
-	C_ check Hessian
-	For_(i, Var_(n))
-		For_(j, Var_(n))
-			NewVar_(size_t, ij, Var_(i) * Var_(n) + Var_(j))
-			If_( Var_(i) == Var_(j) )
-				AndAssign_(ok, VecGet_(fpp, Var_(ij)) == 0.0 )
-			End_
-		End_
-	End_
+	C_          [ 0.0 , x_2 , x_1 ]
+	C_ f''(x) = [ x_2 , 0.0 , x_0 ]
+	C_          [ x_1 , x_0 , 0.0 ]
+	AndAssign_(ok, VecGet_(fpp, 0 * Var_(n) + 0) == 0.0 )
+	AndAssign_(ok, VecGet_(fpp, 0 * Var_(n) + 1) == VecGet_(x, 2) )
+	AndAssign_(ok, VecGet_(fpp, 0 * Var_(n) + 2) == VecGet_(x, 1) )
+	C_
+	AndAssign_(ok, VecGet_(fpp, 1 * Var_(n) + 0) == VecGet_(x, 2) )
+	AndAssign_(ok, VecGet_(fpp, 1 * Var_(n) + 1) == 0.0 )
+	AndAssign_(ok, VecGet_(fpp, 1 * Var_(n) + 2) == VecGet_(x, 0) )
+	C_
+	AndAssign_(ok, VecGet_(fpp, 2 * Var_(n) + 0) == VecGet_(x, 1) )
+	AndAssign_(ok, VecGet_(fpp, 2 * Var_(n) + 1) == VecGet_(x, 0) )
+	AndAssign_(ok, VecGet_(fpp, 2 * Var_(n) + 2) == 0.0 )
 	C_
 	Return_(ok)
 End_
