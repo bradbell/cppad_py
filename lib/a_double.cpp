@@ -188,6 +188,7 @@ $spell
 	const
 	perl
 	bool
+	ae
 $$
 
 $section Properties of an a_double Object$$
@@ -198,6 +199,8 @@ $icode%d% = %ad%.value()
 $icode%p% = %ad%.parameter()
 %$$
 $icode%v% = %ad%.variable()
+%$$
+$icode%n% = %ad%.near_equal(%ae%)
 %$$
 
 
@@ -236,6 +239,23 @@ $codei%
 It is true if $icode ad$$ is not a constant function; i.e.,
 $icode ad$$ depends on the $cref independent$$ variables.
 
+$head near_equal$$
+The argument $icode ae$$,
+and the result $icode n$$, have prototype
+$codei%
+	const a_double& %ae%
+	bool %n%
+%$$
+The result is true if $icode ae$$ is nearly equal to $icode ae$$.
+To be specific, the result is
+$latex \[
+	| d - e | \leq 100 \; \varepsilon \; ( |d| + |e| )
+\] $$
+where $icode d$$ and $icode e$$ are the value corresponding to
+$icode ad$$ and $icode ae$$ and
+$latex \varepsilon$$ is machine epsilon corresponding
+to the type $code double$$.
+
 $children%
 	build/lib/example/cplusplus/a_double_property_xam.cpp%
 	build/lib/example/octave/a_double_property_xam.m%
@@ -261,6 +281,14 @@ bool a_double::parameter(void) const
 bool a_double::variable(void) const
 {	bool result = CppAD::Variable( *ptr() );
 	return result;
+}
+bool a_double::near_equal(const a_double& ae)
+{	double d       = CppAD::Value( CppAD::Var2Par( *ptr() ) );
+	double e       = CppAD::Value( CppAD::Var2Par( *ae.ptr() ) );
+	double diff    = std::fabs( d - e );
+	double eps     = std::numeric_limits<double>::epsilon();
+	double sum_abs = std::fabs(d) + std::fabs(e);
+	return diff <= 100.0 * eps * sum_abs;
 }
 /*
 -------------------------------------------------------------------------------
@@ -499,7 +527,7 @@ $codei%
 	a_double %ay%
 %$$
 and is the specified function evaluated at the specified argument; i.e.,
-$icode%
+$codei%
 	%ay% = %fun%( %ax% )
 %$$
 
@@ -525,7 +553,9 @@ UNARY_FUN_AD_RESULT(cosh)
 UNARY_FUN_AD_RESULT(exp)
 UNARY_FUN_AD_RESULT(fabs)
 UNARY_FUN_AD_RESULT(log)
+UNARY_FUN_AD_RESULT(sin)
 UNARY_FUN_AD_RESULT(sinh)
+UNARY_FUN_AD_RESULT(sqrt)
 UNARY_FUN_AD_RESULT(tan)
 UNARY_FUN_AD_RESULT(tanh)
 // --------------------------------------------------------------------------

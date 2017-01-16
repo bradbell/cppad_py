@@ -11,11 +11,15 @@ C_ a_double properties
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun__(ok, a_double_property_xam)
-	NewVar_(a_double, two, ModuleCtor_(a_double)(2.0))
+	NewVar_(a_double, three, ModuleCtor_(a_double)(3.0))
 	C_
-	AndAssign_(ok, Member_(two, value)()   == 2.0)
-	AndAssign_(ok, Member_(two, parameter)())
-	AndAssign_(ok, Not_ Member_(two, variable)())
+	AndAssign_(ok, Member_(three, value)()   == 3.0)
+	AndAssign_(ok, Member_(three, parameter)())
+	AndAssign_(ok, Not_ Member_(three, variable)())
+	C_
+	C_ near_equal
+	NewVar_(a_double, r3, Member_(three,  sqrt)() )
+	AndAssign_(ok, Member_(three, near_equal)( Var_(r3) * Var_(r3)) );
 	C_
 	Return_(ok)
 End_

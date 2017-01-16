@@ -65,6 +65,8 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	bool parameter(void) const;
 	// is this object a variable
 	bool variable(void) const;
+	// is the value of this object nearly equal
+	bool near_equal(const a_double& ae);
 	//
 	// unary + and -
 	const a_double& operator+(void) const;
@@ -99,7 +101,9 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	a_double exp(void) const;
 	a_double fabs(void) const;
 	a_double log(void) const;
+	a_double sin(void) const;
 	a_double sinh(void) const;
+	a_double sqrt(void) const;
 	a_double tan(void) const;
 	a_double tanh(void) const;
 };
