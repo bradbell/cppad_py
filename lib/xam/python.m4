@@ -83,3 +83,6 @@ define(Return_, return( $1 ))
 
 # For_(variable, upper)
 define(For_, for $1 in range( $2 ) :)
+
+# If_(expression)
+define(If_, if $1 :)

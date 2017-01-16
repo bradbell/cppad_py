@@ -21,6 +21,7 @@ extern bool a_double_compare_xam(void);
 extern bool a_vector_size_xam(void);
 extern bool a_vector_set_get_xam(void);
 extern bool a_fun_jacobian_xam(void);
+extern bool a_fun_hessian_xam(void);
 extern bool a_fun_forward_xam(void);
 extern bool a_fun_reverse_xam(void);
 extern bool a_fun_abort_xam(void);
@@ -59,6 +60,7 @@ int main(void)
 	ok &= Run( a_vector_size_xam,         "a_vector_size_xam"         );
 	ok &= Run( a_vector_set_get_xam,      "a_vector_set_get_xam"      );
 	ok &= Run( a_fun_jacobian_xam,        "a_fun_jacobian_xam"        );
+	ok &= Run( a_fun_hessian_xam,         "a_fun_hessian_xam"         );
 	ok &= Run( a_fun_forward_xam,         "a_fun_forward_xam"         );
 	ok &= Run( a_fun_reverse_xam,         "a_fun_reverse_xam"         );
 	ok &= Run( a_fun_abort_xam,           "a_fun_abort_xam"           );

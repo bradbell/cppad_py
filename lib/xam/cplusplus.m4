@@ -89,3 +89,6 @@ define(Return_, return( $1 );)
 
 # For_(variable, upper)
 define(For_, for(size_t $1 = 0; $1 < $2; $1++) {)
+
+# If_(expression)
+define(If_, if( $1 ) {)

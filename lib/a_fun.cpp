@@ -315,7 +315,7 @@ $codei%
 %$$
 and its size must be $icode n$$.
 It specifies the argument value at we are computing the Hessian
-$latex f^{(2)}(x)$$.
+$latex g^{(2)}(x)$$.
 
 $head w$$
 This argument has prototype
