@@ -16,12 +16,12 @@ BeginBoolFun__(ok, a_vector_set_get_xam)
 	NewVar_(vector_ad, av, ModuleCtor_(vector_ad)(Var_(n)))
 	C_
 	C_ setting elements
-	BeginFor_(i, Var_(n) )
+	For_(i, Var_(n) )
 		VecSet_(v, Var_(i), 2.0 * Var_(i))
 		VecSet_(av, Var_(i), ModuleCtor_(a_double)(2.0 * Var_(i)))
 	End_
 	C_ getting elements
-	BeginFor_(i, Var_(n) )
+	For_(i, Var_(n) )
 		NewVar_(double, e, VecGet_(v, Var_(i)))
 		AndAssign_(ok, Var_(e) == 2.0 * Var_(i))
 		C_

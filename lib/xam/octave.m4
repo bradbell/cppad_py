@@ -82,8 +82,8 @@ define(Return_, return;)
 # -----------------------------------------------------------------------------
 # Other
 
-# BeginFor_(variable, upper)
-define(BeginFor_, for $1 = [ 0 :($2-1) ])
+# For_(variable, upper)
+define(For_, for $1 = [ 0 :($2-1) ])
 
 # print_tExt_(text)
 define(print_tExt_, printf('$1\n'))

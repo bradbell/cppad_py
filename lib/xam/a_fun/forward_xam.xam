@@ -17,7 +17,7 @@ BeginBoolFun__(ok, a_fun_forward_xam)
 	C_
 	C_ create the independent variables ax
 	NewVar_(vector_double, xp, ModuleCtor_(vector_double)(Var_(n)))
-	BeginFor_(i, Var_(n) )
+	For_(i, Var_(n) )
 		VecSet_(xp, Var_(i), Var_(i) + 1.0)
 	End_
 	NewVar_(vector_ad, ax, Module_(independent)(Var_(xp)))

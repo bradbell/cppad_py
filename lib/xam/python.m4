@@ -81,8 +81,8 @@ define(Return_, return( $1 ))
 # -----------------------------------------------------------------------------
 # Other
 
-# BeginFor_(variable, upper)
-define(BeginFor_, for $1 in range( $2 ) :)
+# For_(variable, upper)
+define(For_, for $1 in range( $2 ) :)
 
 # print_tExt_(text)
 define(print_tExt_, print('$1'))

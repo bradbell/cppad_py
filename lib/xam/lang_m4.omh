@@ -280,10 +280,10 @@ $codei|
 $comment ---------------------------------------------------------------$$
 $head Other Statements$$
 
-$subhead BeginFor_$$
+$subhead For_$$
 The text corresponding to
 $codei|
-	begin_for(|variable|, |upper|)
+	For_(|variable|, |upper|)
 |$$
 starts a for loop the specified index variable.
 The initial value of the variable is zero.
