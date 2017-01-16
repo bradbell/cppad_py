@@ -15,8 +15,13 @@ $$
 $section Cppad Swig Changes during 2017$$
 
 $head 01-15$$
+$list number$$
 Add the C++98 standard math functions to the $code a_double$$ class; see
 $cref a_double_unary_fun$$.
+$lnext
+Add $cref/near_equal/a_double_property/near_equal/$$ for
+testing purposes.
+$lend
 
 $head 01-14$$
 Change the Swig example directory, and file names,
