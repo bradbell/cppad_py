@@ -101,19 +101,20 @@ $icode%u%[%i%] = %x%
 $icode%y% = %v%[%i%]
 %$$
 
-$head u$$
-The object $icode u$$ has one of the following prototypes:
-$codei%
-	vector_double& %u%
-	vector_ad&     %u%
-%$$
-
 $head i$$
 This argument has prototype
 $codei%
 	size_t %i%
 %$$
 It must be between zero and the size of the vector minus one.
+
+
+$head u$$
+The object $icode u$$ has one of the following prototypes:
+$codei%
+	vector_double& %u%
+	vector_ad&     %u%
+%$$
 
 $head x$$
 If $icode u$$ has type $code vector_double$$,
