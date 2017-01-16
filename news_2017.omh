@@ -14,6 +14,10 @@ $$
 
 $section Cppad Swig Changes during 2017$$
 
+$head 01-16$$
+Include $cref/conditional assignment/a_double_cond_assign/$$
+in the library.
+
 $head 01-15$$
 $list number$$
 Add the C++98 standard math functions to the $code a_double$$ class; see
@@ -22,10 +26,6 @@ $lnext
 Add $cref/near_equal/a_double_property/near_equal/$$ for
 testing purposes.
 $lend
-
-$head 01-16$$
-Include $cref/conditional assignment/a_double_cond_assign/$$
-in the library.
 
 $head 01-14$$
 Change the Swig example directory, and file names,
