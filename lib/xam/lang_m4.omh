@@ -292,10 +292,10 @@ The value of the index the last time through the loop is $icode|upper|-1|$$.
 The block inside the loop is terminated by a matching
 $cref/End_/lang_m4/No Arguments/End_/$$.
 
-$subhead print_tExt_$$
+$subhead print_text_$$
 The text corresponding to
 $codei|
-	print_tExt_(|argument|)
+	print_text_(|argument|)
 |$$
 prints the text specified by $icode argument$$ followed by a new line.
 For example, in Octave it might be

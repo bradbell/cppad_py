@@ -49,7 +49,7 @@ divert(-1)
 # $head Includes$$
 # Including $code xam.m4$$ includes the following macros:
 # $list number$$
-# $icode%language%.m4%$$
+# $cref lang_m4$$
 # $lnext
 # $cref lang_name.m4$$
 # $lnext

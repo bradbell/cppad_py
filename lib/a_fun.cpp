@@ -268,6 +268,98 @@ std::vector<double> a_fun::jacobian(const std::vector<double>& x)
 }
 /*
 ------------------------------------------------------------------------------
+$begin a_fun_hessian$$
+$spell
+	af
+	Taylor
+	const
+	Perl
+$$
+
+$section Hessian of an AD Function$$
+$spell
+$$
+
+$head Syntax$$
+$icode%H% = %af%.hessian(%x%, %w%)%$$
+
+$head af$$
+This object has prototype
+$codei%
+	a_fun %af%
+%$$
+Note that its state is changed by this operation.
+The zero order
+$cref/Taylor coefficients/a_fun_forward/Taylor Coefficient/$$ in $icode af$$
+correspond to the value of $icode x$$.
+The other Taylor coefficients in $icode af$$ are unspecified.
+
+$head f(x)$$
+We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
+for the function corresponding to $icode af$$.
+Note that $icode n$$ is the size of $cref/ax/a_fun_ctor/ax/$$
+and $icode m$$ is the size of $cref/ay/a_fun_ctor/ay/$$
+in to the constructor for $icode af$$.
+
+$head g(x)$$
+We use the notation $latex g: \B{R}^n \rightarrow \B{R}$$
+for the function defined by
+$latex \[
+	g(x) = \sum_{i=0}^{n-1} w_i f_i (x)
+\] $$
+
+$head x$$
+This argument has prototype
+$codei%
+	const vector_double& %x%
+%$$
+and its size must be $icode n$$.
+It specifies the argument value at we are computing the Hessian
+$latex f^{(2)}(x)$$.
+
+$head w$$
+This argument has prototype
+$codei%
+	const vector_double& %w%
+%$$
+and its size must be $icode m$$.
+It specifies the vector $icode w$$ in the definition of $latex g(x)$$ above.
+
+$head H$$
+The result has prototype
+$codei%
+	vector_double %H%
+%$$
+and its size is $icode%n%*%n%$$.
+For $icode i$$ between zero and $icode%n%-1%$$
+and $icode j$$ between zero and $icode%n%-1%$$,
+$latex \[
+	H [ i * n + j ] = \frac{ \partial g }{ \partial x_i \partial x_j } (x)
+\] $$
+
+
+$comment%
+	build/lib/example/cplusplus/a_fun_hessian_xam.cpp%
+	build/lib/example/octave/a_fun_hessian_xam.m%
+	build/lib/example/perl/a_fun_hessian_xam.pm%
+	build/lib/example/python/a_fun_hessian_xam.py
+%$$
+$head Example$$
+$comment/C++/a_fun_hessian_xam.cpp/$$,
+$comment/Octave/a_fun_hessian_xam.m/$$,
+$comment/Perl/a_fun_hessian_xam.pm/$$,
+$comment/Python/a_fun_hessian_xam.py/$$.
+
+
+$end
+*/
+std::vector<double> a_fun::hessian(
+	const std::vector<double>& x  ,
+	const std::vector<double>& w  )
+{	return ptr_->Hessian(x, w);
+}
+/*
+------------------------------------------------------------------------------
 $begin a_fun_forward$$
 $spell
 	af
