@@ -12,10 +12,30 @@ C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 C_ This test fails in Octave and so is skipped by make check_lib_octave
 BeginBoolFun__(ok, a_double_unary_fun_xam)
-	NewVar_(a_double, neg_two,  ModuleCtor_(a_double)(-2.0))
-	NewVar_(a_double, abs_neg_two,  Member_(neg_two, fabs)())
 	C_
-	AndAssign_(ok, Member_(abs_neg_two,  value)() == 2.0)
+	C_ fabs
+	NewVar_(a_double, one,  ModuleCtor_(a_double)(1.0))
+	NewVar_(a_double, abs_one,  Member_(one, fabs)())
+	AndAssign_(ok, Member_(abs_one,  value)() == 1.0)
+	C_
+	C_ pi/4
+	NewVar_(a_double, pi_4, Member_(one, atan)())
+	C_
+	C_ sqrt(2)
+	NewVar_(a_double, tmp,  ModuleCtor_(a_double)(2.0))
+	NewVar_(a_double, r2, Member_(tmp, sqrt)())
+	C_
+	C_ sin(pi/4)  * sqrt(2) = 1.0;
+	Assign_(tmp, Var_(r2) * Member_(pi_4, sin)() )
+	AndAssign_(ok, Member_(tmp, near_equal)(Var_(one)) )
+	C_
+	C_ cos(pi/4)  * sqrt(2) = 1.0;
+	Assign_(tmp, Var_(r2) * Member_(pi_4, cos)() )
+	AndAssign_(ok, Member_(tmp, near_equal)(Var_(one)) )
+	C_
+	C_ tan(pi/4)  = 1.0;
+	Assign_(tmp, Member_(pi_4, tan)() )
+	AndAssign_(ok, Member_(tmp, near_equal)(Var_(one)) )
 	C_
 	Return_(ok)
 End_
