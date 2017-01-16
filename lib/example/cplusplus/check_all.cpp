@@ -11,6 +11,7 @@
 # include <cassert>
 
 // external compiled tests
+extern bool a_double_cond_assign_xam(void);
 extern bool a_double_property_xam(void);
 extern bool a_double_unary_fun_xam(void);
 extern bool a_double_unary_op_xam(void);
@@ -48,6 +49,7 @@ namespace {
 int main(void)
 {	bool ok = true;
 	//
+	ok &= Run( a_double_cond_assign_xam,  "a_double_cond_assign_xam"  );
 	ok &= Run( a_double_property_xam,     "a_double_property_xam"     );
 	ok &= Run( a_double_unary_fun_xam,    "a_double_unary_fun_xam"    );
 	ok &= Run( a_double_unary_op_xam,     "a_double_unary_op_xam"     );

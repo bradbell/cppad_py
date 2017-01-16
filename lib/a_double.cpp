@@ -6,7 +6,7 @@
                        http://www.gnu.org/licenses/agpl.txt
 ----------------------------------------------------------------------------- */
 # include <cppad/cppad.hpp>
-# include <cppad/swig/a_double.hpp>
+# include <cppad/swig/cppad_swig.hpp>
 
 // ---------------------------------------------------------------------------
 // Macros
@@ -558,5 +558,146 @@ UNARY_FUN_AD_RESULT(sinh)
 UNARY_FUN_AD_RESULT(sqrt)
 UNARY_FUN_AD_RESULT(tan)
 UNARY_FUN_AD_RESULT(tanh)
+/*
+-------------------------------------------------------------------------------
+$begin a_double_cond_assign$$
+$spell
+	const
+	perl
+	cond
+$$
+
+$section AD Conditional Assignment$$
+
+$head Syntax$$
+$icode%target%.%cond_assign%(%cop%, %left%, %right%, %if_true%, %if_false%)
+%$$
+
+$head Purpose$$
+The code
+$codei%
+	if( %left% %cop% %right% )
+		%target% = %if_true%
+	else
+		%target% = %if_false%
+%$$
+records either the true or false case depending on the value
+of $icode left$$ and $icode right$$; see $cref a_fun_ctor$$.
+If $icode left$$ or $icode right$$ is a
+$cref/variable/a_double_property/variable/$$,
+it may be desirable to switch between $icode if_true$$ and $icode if_false$$
+depending of the value of the independent variable during
+calls to order zero $cref a_fun_forward$$.
+The $code cond_assign$$ does this.
+
+$head target$$
+This object has prototype
+$codei%
+	a_double& %target%
+%$$
+
+$head cop$$
+This argument has prototype
+$codei%
+	const char *cop
+%$$
+The comparison is
+$codei%
+	%left% %cop% %right%
+%$$
+where $icode cop$$ is one of the following:
+$table
+$icode cop$$  $cnext                       $rnext
+$code <$$     $cnext less than             $rnext
+$code <=$$    $cnext less than or equal    $rnext
+$code ==$$    $cnext equal                 $rnext
+$code >=$$    $cnext greater than or equal $rnext
+$code >$$     $cnext greater than
+$tend
+
+$head left$$
+This argument has prototype
+$codei%
+	const a_double& %left%
+%$$
+It specifies the left operand in the comparison.
+
+$head right$$
+This argument has prototype
+$codei%
+	const a_double& %right%
+%$$
+It specifies the right operand in the comparison.
+
+$head if_true$$
+This argument has prototype
+$codei%
+	const a_double& %if_true%
+%$$
+It specifies the value assigned to $icode ad$$ if the result
+of the comparison is true.
+
+$head if_false$$
+This argument has prototype
+$codei%
+	const a_double& %if_false%
+%$$
+It specifies the value assigned to $icode ad$$ if the result
+of the comparison is false.
+
+
+$children%
+	build/lib/example/cplusplus/a_double_cond_assign_xam.cpp%
+	build/lib/example/octave/a_double_cond_assign_xam.m%
+	build/lib/example/perl/a_double_cond_assign_xam.pm%
+	build/lib/example/python/a_double_cond_assign_xam.py
+%$$
+$head Example$$
+$cref/C++/a_double_cond_assign_xam.cpp/$$,
+$cref/Octave/a_double_cond_assign_xam.m/$$,
+$cref/Perl/a_double_cond_assign_xam.pm/$$,
+$cref/Python/a_double_cond_assign_xam.py/$$.
+
+$end
+*/
+void a_double::cond_assign(
+	const char*     cop       ,
+	const a_double& left      ,
+	const a_double& right     ,
+	const a_double& if_true   ,
+	const a_double& if_false  )
+{	std::string cop_string(cop);
+	if( cop_string == "<" )
+	{	*ptr() = CppAD::CondExpLt(
+			*left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+		);
+	}
+	else if( cop_string == "<=" )
+	{	*ptr() = CppAD::CondExpLe(
+			*left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+		);
+	}
+	else if( cop_string == "==" )
+	{	*ptr() = CppAD::CondExpEq(
+			*left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+		);
+	}
+	else if( cop_string == ">=" )
+	{	*ptr() = CppAD::CondExpGe(
+			*left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+		);
+	}
+	else if( cop_string == ">" )
+	{	*ptr() = CppAD::CondExpGt(
+			*left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+		);
+	}
+	else
+	{	std::string message = "a_double::cond_assing:: cop = '";
+		message += cop;
+		message += "' is not a valid comparison operator";
+		error_message(message.c_str());
+	}
+}
 // --------------------------------------------------------------------------
 } // END_CPPAD_SWIG_NAMESPACE

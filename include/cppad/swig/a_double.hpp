@@ -106,6 +106,15 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	a_double sqrt(void) const;
 	a_double tan(void) const;
 	a_double tanh(void) const;
+	//
+	// conditional assignment
+	void cond_assign(
+		const char*     cop       ,
+		const a_double& left      ,
+		const a_double& right     ,
+		const a_double& if_true   ,
+		const a_double& if_false
+	);
 };
 
 } // END_CPPAD_SWIG_NAMESPACE

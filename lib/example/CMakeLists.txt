@@ -8,6 +8,7 @@
 #
 # List of *.xam files in relative to lib/xam directory
 SET(xam_file_list
+	a_double/cond_assign_xam.xam
 	a_double/property_xam.xam
 	a_double/unary_fun_xam.xam
 	a_double/unary_op_xam.xam
