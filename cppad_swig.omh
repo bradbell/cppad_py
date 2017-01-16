@@ -30,11 +30,19 @@ $$
 
 $section A C++ AD Library with a Swig Interface$$
 
-$head Goal$$
-Provide a link from a subset of the scripting language supported by
-$href%http://www.Swig.org%Swig%$$
-to a C++ library that includes a subset of the features supported by
+$head Purpose$$
+Provide Algorithmic Differentiation (AD),
+for any $href%http://www.Swig.org%Swig%$$ scripting language,
+using a C++ object library that connects some of the features of
 $href%https://www.coin-or.org/Cppad%Cppad%$$.
+This interface is limited by the fact that it is for any
+scripting language and for C++.
+It is expected that one will write special purpose wrapping operations,
+in each particular language, to make a more natural interface for that
+language.
+For example, in Python, one might create
+$href%http://www.numpy.org/%numpy%$$ versions of the
+$cref a_vector$$ classes.
 
 $head Getting Started$$
 The following is a good place to see what the interface is for
