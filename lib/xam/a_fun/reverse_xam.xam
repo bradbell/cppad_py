@@ -12,12 +12,12 @@ C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun_(ok, a_fun_reverse_xam)
 	C_ number of dependent and independent variables
-	NewVar_(size_t, m, 1)
-	NewVar_(size_t, n, 3)
+	NewVar_(size_t, n_dep, 1)
+	NewVar_(size_t, n_ind, 3)
 	C_
 	C_ create the independent variables ax
-	NewVar_(vec_double, xp, ModuleCtor_(vec_double)(Var_(n)))
-	For_(i, Var_(n) )
+	NewVar_(vec_double, xp, ModuleCtor_(vec_double)(Var_(n_ind)))
+	For_(i, Var_(n_ind) )
 		VecSet_(xp, Var_(i), Var_(i))
 	End_
 	NewVar_(vec_a_double, ax, Module_(independent)(Var_(xp)))
@@ -26,7 +26,7 @@ BeginBoolFun_(ok, a_fun_reverse_xam)
 	NewVar_(a_double, ax_0, VecGet_(ax, 0))
 	NewVar_(a_double, ax_1, VecGet_(ax, 1))
 	NewVar_(a_double, ax_2, VecGet_(ax, 2))
-	NewVar_(vec_a_double, ay, ModuleCtor_(vec_a_double)(Var_(m)))
+	NewVar_(vec_a_double, ay, ModuleCtor_(vec_a_double)(Var_(n_dep)))
 	VecSet_(ay, 0, Var_(ax_0) * Var_(ax_1) * Var_(ax_2))
 	C_
 	C_ define af corresponding to f(x) = x_0 * x_1 * x_2
@@ -47,7 +47,7 @@ BeginBoolFun_(ok, a_fun_reverse_xam)
 	C_ first order reverse (derivative of zero order forward)
 	C_ define G( Y ) = y_0 = x_0 * x_1 * x_2
 	NewVar_(size_t, q, 1)
-	NewVar_(vec_double, yq1, ModuleCtor_(vec_double)(Var_(m)))
+	NewVar_(vec_double, yq1, ModuleCtor_(vec_double)(Var_(n_dep)))
 	VecSet_(yq1, 0, 1.0)
 	NewVar_(vec_double, xq1, Member_(af, reverse)(Var_(q), Var_(yq1)))
 	C_ partial G w.r.t x_0
@@ -69,7 +69,7 @@ BeginBoolFun_(ok, a_fun_reverse_xam)
 	C_ define G( y_0^0 , y_0^1 ) = y_0^1
 	C_ = x_1^0 * x_2^0  +  x_0^0 * x_2^0  +  x_0^0  *  x_1^0
 	Assign_(q, 2)
-	NewVar_(vec_double, yq2, ModuleCtor_(vec_double)(Var_(m) * Var_(q)))
+	NewVar_(vec_double, yq2, ModuleCtor_(vec_double)(Var_(n_dep) * Var_(q)))
 	VecSet_(yq2, 0 * Var_(q) + 0, 0.0) C_ partial of G w.r.t y_0^0
 	VecSet_(yq2, 0 * Var_(q) + 1, 1.0) C_ partial of G w.r.t y_0^1
 	NewVar_(vec_double, xq2, Member_(af, reverse)(Var_(q), Var_(yq2)))

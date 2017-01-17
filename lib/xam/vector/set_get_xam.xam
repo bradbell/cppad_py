@@ -11,17 +11,17 @@ C_ std::vector<double>
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun_(ok, vector_set_get_xam)
-	NewVar_(size_t, n, 4)
-	NewVar_(vec_double, v, ModuleCtor_(vec_double)(Var_(n)))
-	NewVar_(vec_a_double, av, ModuleCtor_(vec_a_double)(Var_(n)))
+	NewVar_(size_t, n_ind, 4)
+	NewVar_(vec_double, v, ModuleCtor_(vec_double)(Var_(n_ind)))
+	NewVar_(vec_a_double, av, ModuleCtor_(vec_a_double)(Var_(n_ind)))
 	C_
 	C_ setting elements
-	For_(i, Var_(n) )
+	For_(i, Var_(n_ind) )
 		VecSet_(v, Var_(i), 2.0 * Var_(i))
 		VecSet_(av, Var_(i), ModuleCtor_(a_double)(2.0 * Var_(i)))
 	End_
 	C_ getting elements
-	For_(i, Var_(n) )
+	For_(i, Var_(n_ind) )
 		NewVar_(double, e, VecGet_(v, Var_(i)))
 		AndAssign_(ok, Var_(e) == 2.0 * Var_(i))
 		C_
