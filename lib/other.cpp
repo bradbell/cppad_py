@@ -8,7 +8,7 @@
 // BEGIN C++
 # include <string>
 # include <stack>
-# include <cppad/swig/a_other.hpp>
+# include <cppad/swig/other.hpp>
 # include <cppad/utility/error_handler.hpp>
 # include <cppad/utility/to_string.hpp>
 
@@ -56,16 +56,16 @@ The message storage is done using static information in
 $code error_message$$ and hence is not thread safe.
 
 $children%
-	build/lib/example/cplusplus/a_other_error_message_xam.cpp%
-	build/lib/example/octave/a_other_error_message_xam.m%
-	build/lib/example/perl/a_other_error_message_xam.pm%
-	build/lib/example/python/a_other_error_message_xam.py
+	build/lib/example/cplusplus/other_error_message_xam.cpp%
+	build/lib/example/octave/other_error_message_xam.m%
+	build/lib/example/perl/other_error_message_xam.pm%
+	build/lib/example/python/other_error_message_xam.py
 %$$
 $head Example$$
-$cref/C++/a_other_error_message_xam.cpp/$$,
-$cref/Octave/a_other_error_message_xam.m/$$,
-$cref/Perl/a_other_error_message_xam.pm/$$,
-$cref/Python/a_other_error_message_xam.py/$$.
+$cref/C++/other_error_message_xam.cpp/$$,
+$cref/Octave/other_error_message_xam.m/$$,
+$cref/Perl/other_error_message_xam.pm/$$,
+$cref/Python/other_error_message_xam.py/$$.
 
 $end
 */

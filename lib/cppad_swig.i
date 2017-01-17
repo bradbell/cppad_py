@@ -17,7 +17,7 @@
 # include <cppad/swig/a_double.hpp>
 # include <cppad/swig/a_fun.hpp>
 # include <cppad/swig/vector.hpp>
-# include <cppad/swig/a_other.hpp>
+# include <cppad/swig/other.hpp>
 %}
 
 /*
@@ -73,7 +73,7 @@ $end
 %include "std_vector.i"
 %include <cppad/swig/a_double.hpp>
 %include <cppad/swig/a_fun.hpp>
-%include <cppad/swig/a_other.hpp>
+%include <cppad/swig/other.hpp>
 
 %template(vec_double) std::vector<double>;
 %template(vec_a_double)     std::vector<cppad_swig::a_double>;
@@ -114,14 +114,14 @@ $childtable%lib/a_fun.cpp%$$
 
 $end
 -------------------------------------------------------------------------------
-$begin a_other$$
+$begin other$$
 $spell
 	Cppad
 $$
 
 $section Other Cppad Swig Functions and Documentation$$
 
-$childtable%lib/a_other.cpp%$$
+$childtable%lib/other.cpp%$$
 
 $end
 -------------------------------------------------------------------------------

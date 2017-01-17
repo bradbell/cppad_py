@@ -27,7 +27,7 @@ extern bool a_fun_hessian_xam(void);
 extern bool a_fun_forward_xam(void);
 extern bool a_fun_reverse_xam(void);
 extern bool a_fun_abort_xam(void);
-extern bool a_other_error_message_xam(void);
+extern bool other_error_message_xam(void);
 
 namespace {
 	// function that runs one test
@@ -68,7 +68,7 @@ int main(void)
 	ok &= Run( a_fun_forward_xam,         "a_fun_forward_xam"         );
 	ok &= Run( a_fun_reverse_xam,         "a_fun_reverse_xam"         );
 	ok &= Run( a_fun_abort_xam,           "a_fun_abort_xam"           );
-	ok &= Run( a_other_error_message_xam,     "a_other_error_message_xam"     );
+	ok &= Run( other_error_message_xam,     "other_error_message_xam"     );
 	//
 	assert( ok || (Run_error_count > 0) );
 
