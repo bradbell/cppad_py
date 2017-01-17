@@ -35,6 +35,7 @@ my @fun_list = (
 	'a_double_compare_xam',
 	'a_vector_size_xam',
 	'a_vector_set_get_xam',
+	'a_fun_property_xam',
 	'a_fun_jacobian_xam',
 	'a_fun_hessian_xam',
 	'a_fun_forward_xam',

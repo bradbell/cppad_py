@@ -174,23 +174,23 @@ EOF
 	local_name=`echo $local_file | sed -e 's|/|_|g' -e 's|\.xam||'`
 	cat << EOF > $file_name
 include(xam.m4)dnl this comments out end of line character
-header_($local_file)
-c_ -----------------------------------------------------------------------------
-c_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-c_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
-c_              This program is distributed under the terms of the
-c_          GNU Affero General Public License version 3.0 or later see
-c_                     http://www.gnu.org/licenses/agpl.txt
-c_ -----------------------------------------------------------------------------
-c_ $local_name
-c_ -----------------------------------------------------------------------------
-c_ BEGIN SOURCE
-begin_bool_fun_0_(ok, $local_name)
+Header_($local_file)
+C_ -----------------------------------------------------------------------------
+C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+C_              This program is distributed under the terms of the
+C_          GNU Affero General Public License version 3.0 or later see
+C_                     http://www.gnu.org/licenses/agpl.txt
+C_ -----------------------------------------------------------------------------
+C_ $local_name
+C_ -----------------------------------------------------------------------------
+C_ BEGIN SOURCE
+BeginBoolFun_(ok, $local_name)
 REPLACE THIS WITH SOURCE CODE
-end_
-c_ END SOURCE
-c_ -----------------------------------------------------------------------------
-omhelp_($local_name,
+End_
+C_ END SOURCE
+C_ -----------------------------------------------------------------------------
+Omhelp_($local_name,
 Language_: REPLACE THIS WITH TITLE: Example and Test)
 Eof_
 EOF

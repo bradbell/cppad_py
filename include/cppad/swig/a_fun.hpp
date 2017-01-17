@@ -59,6 +59,11 @@ class CPPAD_SWIG_LIB_PUBLIC a_fun
 	std::vector<double> reverse(size_t q, const std::vector<double>& yq );
 	// optimize
 	void optimize(void);
+	// a_fun properties
+	size_t size_ind(void) const;
+	size_t size_dep(void) const;
+	size_t size_var() const;
+	size_t size_op() const;
 };
 
 } // END_CPPAD_SWIG_NAMESPACE

@@ -1,0 +1,56 @@
+include(xam.m4)dnl this comments out end of line character
+Header_(a_fun/property_xam.xam)
+C_ -----------------------------------------------------------------------------
+C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+C_              This program is distributed under the terms of the
+C_          GNU Affero General Public License version 3.0 or later see
+C_                     http://www.gnu.org/licenses/agpl.txt
+C_ -----------------------------------------------------------------------------
+C_ a_fun_property_xam
+C_ -----------------------------------------------------------------------------
+C_ BEGIN SOURCE
+BeginBoolFun__(ok, a_fun_property_xam)
+	NewVar_(size_t, n_ind, 1) C_ number of independent variables
+	NewVar_(size_t, n_dep, 2) C_ number of dependent variables
+	NewVar_(size_t, n_var, 1) C_ phantom variable at address 0
+	NewVar_(size_t, n_op, 1)  C_ special operator at beginning
+	C_
+	C_ dimension some vectors
+	NewVar_(vector_double, x, ModuleCtor_(vector_double)(Var_(n_ind)))
+	NewVar_(vector_ad, ay, ModuleCtor_(vector_ad)(Var_(n_dep)))
+	C_
+	C_ independent variables
+	VecSet_(x, 0, 1.0)
+	NewVar_(vector_ad, ax, Module_(independent)(Var_(x)))
+	Assign_(n_var, Var_(n_var) + Var_(n_ind)) C_ one for each indpendent
+	Assign_(n_op,  Var_(n_op) + Var_(n_ind))
+	C_
+	C_ first dependent variable
+	VecSet_(ay, 0, VecGet_(ax, 0) + VecGet_(ax, 0))
+	Assign_(n_var, Var_(n_var) + 1) C_ one variable and operator
+	Assign_(n_op, Var_(n_op) + 1)
+	C_
+	C_ second dependent variable
+	NewVar_(a_double, ax0, VecGet_(ax, 0))
+	VecSet_(ay, 1, Member_(ax0, sin)())
+	Assign_(n_var, Var_(n_var) + 2) C_ two varialbes, one operator
+	Assign_(n_op, Var_(n_op) + 1)
+	C_
+	C_ define f(x) = y
+	NewVar_(a_fun, af, ModuleCtor_(a_fun)(Var_(ax), Var_(ay)))
+	Assign_(n_op, Var_(n_op) + 1) C_ speical operator at end
+	C_
+	C_ check af properties
+	AndAssign_(ok, Member_(af, size_ind)() == Var_(n_ind))
+	AndAssign_(ok, Member_(af, size_dep)() == Var_(n_dep))
+	AndAssign_(ok, Member_(af, size_var)() == Var_(n_var))
+	AndAssign_(ok, Member_(af, size_op)() == Var_(n_op))
+	C_
+	Return_( ok )
+End_
+C_ END SOURCE
+C_ -----------------------------------------------------------------------------
+Omhelp_(a_fun_property_xam,
+Language_: Properties of an a_fun: Example and Test)
+Eof_

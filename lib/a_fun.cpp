@@ -621,5 +621,100 @@ $end
 */
 void a_fun::optimize(void)
 {	ptr_->optimize(); }
+/*
+------------------------------------------------------------------------------
+$begin a_fun_property$$
+$spell
+	ind
+	dep
+$$
+
+$section Properties of an AD Function$$
+$spell
+	af
+	var
+	op
+	const
+	Perl
+$$
+
+$head Syntax$$
+$icode%n% = %af%.size_ind()
+%$$
+$icode%m% = %af%.size_dep()
+%$$
+$icode%v% = %af%.size_var()
+%$$
+$icode%p% = %af%.size_op()
+%$$
+
+$head af$$
+This object has prototype
+$codei%
+	const a_fun %af%
+%$$
+
+$head size_ind$$
+The return value has prototype
+$codei%
+	size_t %n%
+%$$
+an is the size of the vector
+$cref/ax/a_fun_ctor/ax/$$ in the function constructor; i.e.,
+the number of independent variables.
+
+$head size_dep$$
+The return value has prototype
+$codei%
+	size_t %m%
+%$$
+an is the size of the vector
+$cref/ay/a_fun_ctor/ay/$$ in the function constructor; i.e.,
+the number of dependent variables.
+
+$head size_var$$
+The return value has prototype
+$codei%
+	size_t %v%
+%$$
+an is the number of variables in the function.
+This includes the independent variables, dependent variables,
+and any variables that are used to compute the dependent variables
+from the independent variables.
+
+$head size_op$$
+The return value has prototype
+$codei%
+	size_t %p%
+%$$
+an is the number of atomic operations that are used to express
+the dependent variables as a function of the independent variables.
+
+$children%
+	build/lib/example/cplusplus/a_fun_property_xam.cpp%
+	build/lib/example/octave/a_fun_property_xam.m%
+	build/lib/example/perl/a_fun_property_xam.pm%
+	build/lib/example/python/a_fun_property_xam.py
+%$$
+$head Example$$
+$cref/C++/a_fun_property_xam.cpp/$$,
+$cref/Octave/a_fun_property_xam.m/$$,
+$cref/Perl/a_fun_property_xam.pm/$$,
+$cref/Python/a_fun_property_xam.py/$$.
+
+$end
+*/
+// size_ind
+size_t a_fun::size_ind(void) const
+{	return ptr_->Domain(); }
+// size_dep
+size_t a_fun::size_dep(void) const
+{	return ptr_->Range(); }
+// size_var
+size_t a_fun::size_var(void) const
+{	return ptr_->size_var(); }
+// size_op
+size_t a_fun::size_op(void) const
+{	return ptr_->size_op(); }
 // ----------------------------------------------------------------------------
 } // END_CPPAD_SWIG_NAMESPACE
