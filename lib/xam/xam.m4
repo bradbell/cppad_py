@@ -15,7 +15,7 @@ divert(-1)
 #	dnl
 #	newline
 # $$
-# $section Include File for Library Example Setup$$
+# $section Generating Language Specific Example Files Using M4 Macros$$
 #
 # $head Syntax$$
 # $code include(xam.m4)dnl$$

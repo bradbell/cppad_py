@@ -13,7 +13,8 @@ $$
 $section The Cppad Swig Library$$
 
 $childtable%
-	lib/cppad_swig.i
+	lib/cppad_swig.i%
+	lib/xam/xam.m4
 %$$
 
 
