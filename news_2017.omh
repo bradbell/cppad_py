@@ -15,9 +15,11 @@ $$
 $section Cppad Swig Changes during 2017$$
 
 $head 01-16$$
-Include $cref/conditional assignment/a_double_cond_assign/$$
-and $cref/hessian/a_fun_hessian/$$ in the library.
-
+Add
+a_double $cref/conditional assignment/a_double_cond_assign/$$,
+a_fun $cref/hessian/a_fun_hessian/$$,
+a_fun $cref/property/a_fun_property/$$, and
+a_fun $cref/optimize/a_fun_optimize/$$.
 
 $head 01-15$$
 $list number$$
