@@ -63,7 +63,7 @@ exit 0
 #	executables
 # $$
 #
-# $section Configure cppad_swig for A system$$
+# $section Configure Cppad Swig for A system$$
 #
 # $head Syntax$$
 # $codei%bin/run_cmake.sh%$$
