@@ -86,7 +86,7 @@ $spell
 	Cppad
 $$
 
-$section The Cppad Swig a_double Class$$
+$section Cppad Swig AD Scalars$$
 
 $childtable%lib/a_double.cpp%$$
 
@@ -119,7 +119,7 @@ $spell
 	Cppad
 $$
 
-$section Other Cppad Swig Functions and Documentation$$
+$section Cppad Swig Other Functions and Documentation$$
 
 $childtable%lib/other.cpp%$$
 

@@ -10,7 +10,7 @@ $spell
 	Cppad
 $$
 
-$section The C++ AD Library and Swig Interface$$
+$section The Cppad Swig Library$$
 
 $childtable%
 	lib/cppad_swig.i
