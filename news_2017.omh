@@ -16,9 +16,21 @@ $$
 $section Cppad Swig Changes during 2017$$
 
 $head 01-17$$
+$list number$$
 Change $code vector_double$$ -> $code vec_double$$ and
 $code vector_ad$$ -> $code vec_a_double$$; see
 $cref vector_ctor$$.
+$lnext
+Improve documentation:
+Change name of some sections; e.g. cppad_swig_lib -> library.
+Fix capitalization of Cppad Swig, M4, and other names in titles
+and headings.
+Include the
+$cref/optimize example/a_fun_optimize/Example/$$
+in the documentation.
+Move M4 macro $cref/documentation/xam.m4/$$
+inside of library section.
+$lend
 
 $head 01-16$$
 Add
