@@ -15,9 +15,7 @@ move_list='
 move_sed='s|a_other|other|'
 #
 cat << EOF > junk.sed
-s|\$section\\(.*\\)m4|\$section\\1M4|
-s|\$header\\(.*\\)m4|\$header\\1M4|
-s|\$subheader\\(.*\\)m4|\$subheader\\1M4|
+s|Language_:|LangName_:|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

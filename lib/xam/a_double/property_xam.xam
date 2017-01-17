@@ -26,5 +26,5 @@ End_
 C_ END SOURCE
 C_
 Omhelp_(a_double_property_xam,
-LangName_: Properties of an a_double: Example and Test)
+LangName_: a_double Properties: Example and Test)
 Eof_

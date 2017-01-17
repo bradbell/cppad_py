@@ -54,5 +54,5 @@ End_
 C_ END SOURCE
 C_ -----------------------------------------------------------------------------
 Omhelp_(a_fun_optimize_xam,
-Language_: Optimize an a_fun: Example and Test)
+LangName_: Optimize an a_fun: Example and Test)
 Eof_

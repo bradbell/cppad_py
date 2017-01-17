@@ -52,5 +52,5 @@ End_
 C_ END SOURCE
 C_ -----------------------------------------------------------------------------
 Omhelp_(a_fun_property_xam,
-Language_: Properties of an a_fun: Example and Test)
+LangName_: a_fun Properties: Example and Test)
 Eof_
