@@ -590,14 +590,11 @@ std::vector<double> a_fun::reverse(size_t q, const std::vector<double>& yq)
 ------------------------------------------------------------------------------
 $begin a_fun_optimize$$
 $spell
-	vec
 	af
+	Perl
 $$
 
 $section Optimize an AD Function$$
-$spell
-	vec
-$$
 
 $head Syntax$$
 $icode%af%.optimize()%$$
@@ -616,17 +613,17 @@ $codei%
 %$$
 
 
-$comment%
+$children%
 	build/lib/example/cplusplus/a_fun_optimize_xam.cpp%
 	build/lib/example/octave/a_fun_optimize_xam.m%
 	build/lib/example/perl/a_fun_optimize_xam.pm%
 	build/lib/example/python/a_fun_optimize_xam.py
 %$$
-$comment Example$$
-$comment/C++/a_fun_optimize_xam.cpp/$$,
-$comment/Octave/a_fun_optimize_xam.m/$$,
-$comment/Perl/a_fun_optimize_xam.pm/$$,
-$comment/Python/a_fun_optimize_xam.py/$$.
+$head Example$$
+$cref/C++/a_fun_optimize_xam.cpp/$$,
+$cref/Octave/a_fun_optimize_xam.m/$$,
+$cref/Perl/a_fun_optimize_xam.pm/$$,
+$cref/Python/a_fun_optimize_xam.py/$$.
 
 
 $end
