@@ -84,6 +84,3 @@ define(Return_, return;)
 
 # For_(variable, upper)
 define(For_, for $1 = [ 0 :($2-1) ])
-
-# If_(expression)
-define(If_, if $1)
