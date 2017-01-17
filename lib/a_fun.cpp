@@ -576,5 +576,50 @@ std::vector<double> a_fun::reverse(size_t q, const std::vector<double>& yq)
 		error_message("cppad_swig::a_fun::reverse yq.size() error");
 	return ptr_->Reverse(q, yq);
 }
+/*
+------------------------------------------------------------------------------
+$begin a_fun_optimize$$
+$spell
+	af
+$$
 
+$section Optimize an AD Function$$
+$spell
+$$
+
+$head Syntax$$
+$icode%af%.optimize()%$$
+
+$head Purpose$$
+This reduces the number of operations
+(hence to time and memory) used to compute the function
+stored in $icode af$$
+On the other hand, the optimization may take a significant amount
+of time and memory.
+
+$head af$$
+This object has prototype
+$codei%
+	a_fun %af%
+%$$
+
+
+$comment%
+	build/lib/example/cplusplus/a_fun_optimize_xam.cpp%
+	build/lib/example/octave/a_fun_optimize_xam.m%
+	build/lib/example/perl/a_fun_optimize_xam.pm%
+	build/lib/example/python/a_fun_optimize_xam.py
+%$$
+$comment Example$$
+$comment/C++/a_fun_optimize_xam.cpp/$$,
+$comment/Octave/a_fun_optimize_xam.m/$$,
+$comment/Perl/a_fun_optimize_xam.pm/$$,
+$comment/Python/a_fun_optimize_xam.py/$$.
+
+
+$end
+*/
+void a_fun::optimize(void)
+{	ptr_->optimize(); }
+// ----------------------------------------------------------------------------
 } // END_CPPAD_SWIG_NAMESPACE
