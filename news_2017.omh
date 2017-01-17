@@ -10,9 +10,15 @@ $spell
 	Cppad
 	xam
 	Perl
+	vec
 $$
 
 $section Cppad Swig Changes during 2017$$
+
+$head 01-17$$
+Change $code vector_double$$ -> $code vec_double$$ and
+$code vector_ad$$ -> $code vec_a_double$$; see
+$cref a_vector_ctor$$.
 
 $head 01-16$$
 Add
