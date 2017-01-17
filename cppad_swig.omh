@@ -52,6 +52,14 @@ $cref/Octave/a_fun_jacobian_xam.m/$$,
 $cref/Perl/a_fun_jacobian_xam.pm/$$,
 $cref/Python/a_fun_jacobian_xam.py/$$.
 
+$head C++ Function Speed$$
+One can use Cppad Swig to get faster function evaluation in scripting languages,
+when the sequence of floating point operations does not depend on the
+independent variables.
+Once an $cref a_fun$$ is recorded, zero order
+$cref/forward mode/a_fun_forward/$$ can be used to
+effectively evaluate the function in C++ instead of the scripting language.
+
 $head Git Repository$$
 This is a preliminary version of this package.
 Currently, one gets the source code from Github at
