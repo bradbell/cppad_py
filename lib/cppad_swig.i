@@ -16,7 +16,7 @@
 %{
 # include <cppad/swig/a_double.hpp>
 # include <cppad/swig/a_fun.hpp>
-# include <cppad/swig/a_vector.hpp>
+# include <cppad/swig/vector.hpp>
 # include <cppad/swig/a_other.hpp>
 %}
 
@@ -92,14 +92,14 @@ $childtable%lib/a_double.cpp%$$
 
 $end
 -------------------------------------------------------------------------------
-$begin a_vector$$
+$begin vector$$
 $spell
 	Cppad
 $$
 
 $section Cppad Swig Vectors$$
 
-$childtable%lib/a_vector.omh%$$
+$childtable%lib/vector.omh%$$
 
 $end
 -------------------------------------------------------------------------------

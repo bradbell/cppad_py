@@ -42,7 +42,7 @@ in each particular language, to make a more natural interface for that
 language.
 For example, in Python, one might create
 $href%http://www.numpy.org/%numpy%$$ versions of the
-$cref a_vector$$ classes.
+$cref vector$$ classes.
 
 $head Getting Started$$
 The following is a good place to see what the interface is for

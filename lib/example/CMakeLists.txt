@@ -15,8 +15,8 @@ SET(xam_file_list
 	a_double/assign_xam.xam
 	a_double/ad_binary_xam.xam
 	a_double/compare_xam.xam
-	a_vector/size_xam.xam
-	a_vector/set_get_xam.xam
+	vector/size_xam.xam
+	vector/set_get_xam.xam
 	a_fun/property_xam.xam
 	a_fun/optimize_xam.xam
 	a_fun/jacobian_xam.xam

@@ -11,11 +11,16 @@ delete_list='
 revert_list='
 '
 move_list='
+	lib/a_vector.omh
+	lib/xam/a_vector
+	include/cppad/swig/a_vector.hpp
 '
-move_sed='s|unary_xam|unary_op_xam|'
+move_sed='s|a_vector|vector|'
 #
 cat << EOF > junk.sed
-s|BeginBoolFun__|BeginBoolFun_|g
+s|begin a_vector|begin vector|g
+s|a_vector.omh|vector.omh|
+s|a_vector\\([_a-z]*\\)|vector\\1|g
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

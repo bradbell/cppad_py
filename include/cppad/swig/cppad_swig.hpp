@@ -10,7 +10,7 @@
 
 # include <cppad/swig/a_double.hpp>
 # include <cppad/swig/a_fun.hpp>
-# include <cppad/swig/a_vector.hpp>
+# include <cppad/swig/vector.hpp>
 # include <cppad/swig/a_other.hpp>
 
 # endif

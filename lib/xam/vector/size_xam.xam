@@ -10,7 +10,7 @@ C_ -----------------------------------------------------------------------------
 C_ vector size()
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
-BeginBoolFun_(ok, a_vector_size_xam)
+BeginBoolFun_(ok, vector_size_xam)
 	NewVar_(vec_double, v0, ModuleCtor_(vec_double)())
 	NewVar_(vec_double, v9, ModuleCtor_(vec_double)(9))
 	AndAssign_(ok, Member_(v0, size)() == 0 )
@@ -25,5 +25,5 @@ BeginBoolFun_(ok, a_vector_size_xam)
 End_
 C_ END SOURCE
 C_
-Omhelp_(a_vector_size_xam, LangName_: Size of Vectors: Example and Test)
+Omhelp_(vector_size_xam, LangName_: Size of Vectors: Example and Test)
 Eof_

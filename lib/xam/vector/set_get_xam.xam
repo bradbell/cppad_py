@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-Header_(a_vector/set_get_xam.xam)
+Header_(vector/set_get_xam.xam)
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -10,7 +10,7 @@ C_ -----------------------------------------------------------------------------
 C_ std::vector<double>
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
-BeginBoolFun_(ok, a_vector_set_get_xam)
+BeginBoolFun_(ok, vector_set_get_xam)
 	NewVar_(size_t, n, 4)
 	NewVar_(vec_double, v, ModuleCtor_(vec_double)(Var_(n)))
 	NewVar_(vec_a_double, av, ModuleCtor_(vec_a_double)(Var_(n)))
@@ -33,6 +33,6 @@ BeginBoolFun_(ok, a_vector_set_get_xam)
 End_
 C_ END SOURCE
 C_
-Omhelp_(a_vector_set_get_xam,
+Omhelp_(vector_set_get_xam,
 LangName_: Setting and Getting Vector Elements: Example and Test)
 Eof_
