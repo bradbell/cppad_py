@@ -23,7 +23,7 @@ $spell
 	std
 $$
 
-$section Language Specific m4 Macros$$
+$section Language Specific M4 Macros$$
 
 $head Purpose$$
 For each scripting language, Python, Octave, and Perl,

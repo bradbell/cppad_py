@@ -14,7 +14,7 @@
 #	perl
 # $$
 #
-# $section m4 Macro That Include Omhelp to Display Source Code$$
+# $section M4 Macro That Include Omhelp to Display Source Code$$
 #
 # $head Syntax$$
 # $codei%Omhelp_(%FunctionName_%, %Omhelp_title%)%$$
