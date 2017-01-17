@@ -15,8 +15,7 @@ move_list='
 move_sed='s|unary_xam|unary_op_xam|'
 #
 cat << EOF > junk.sed
-s|BeginFor_|For_|g
-s|begin_for|For_|g
+s|BeginBoolFun__|BeginBoolFun_|g
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

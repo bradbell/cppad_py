@@ -10,7 +10,7 @@ C_ -----------------------------------------------------------------------------
 C_ std::vector<a_double>
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
-BeginBoolFun__(ok, a_fun_abort_xam)
+BeginBoolFun_(ok, a_fun_abort_xam)
 	NewVar_(size_t, n, 2)
 	C_
 	C_ create ax

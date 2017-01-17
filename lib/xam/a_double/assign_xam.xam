@@ -10,7 +10,7 @@ C_ -----------------------------------------------------------------------------
 C_ a_double
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
-BeginBoolFun__(ok, a_double_assign_xam)
+BeginBoolFun_(ok, a_double_assign_xam)
 	NewVar_(a_double, x, ModuleCtor_(a_double)(2.0))
 	C_
 	Var_(x) = ModuleCtor_(a_double)(3.0);

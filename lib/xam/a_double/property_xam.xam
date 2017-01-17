@@ -10,7 +10,7 @@ C_ -----------------------------------------------------------------------------
 C_ a_double properties
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
-BeginBoolFun__(ok, a_double_property_xam)
+BeginBoolFun_(ok, a_double_property_xam)
 	NewVar_(a_double, three, ModuleCtor_(a_double)(3.0))
 	C_
 	AndAssign_(ok, Member_(three, value)()   == 3.0)

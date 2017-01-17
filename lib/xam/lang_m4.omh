@@ -239,10 +239,10 @@ $comment ---------------------------------------------------------------$$
 
 $head Function Statements$$
 
-$subhead BeginBoolFun__$$
+$subhead BeginBoolFun_$$
 The text corresponding to
 $codei|
-	BeginBoolFun__(|return_variable|, |FunctionName_|)
+	BeginBoolFun_(|return_variable|, |FunctionName_|)
 |$$
 is placed at the beginning of function that has zero arguments
 and a boolean return value.

@@ -64,8 +64,8 @@ define(VecGet_, $1[$2])
 # -----------------------------------------------------------------------------
 # Function Statements
 
-# BeginBoolFun__(return_variable, fun_name)
-define(BeginBoolFun__,
+# BeginBoolFun_(return_variable, fun_name)
+define(BeginBoolFun_,
 def $2() :
 	C_
 	C_ load the Cppad Swig library

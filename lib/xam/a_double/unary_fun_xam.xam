@@ -11,7 +11,7 @@ C_ a_double unary operators
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 C_ This test fails in Octave and so is skipped by make check_lib_octave
-BeginBoolFun__(ok, a_double_unary_fun_xam)
+BeginBoolFun_(ok, a_double_unary_fun_xam)
 	C_
 	C_ fabs
 	NewVar_(a_double, one,  ModuleCtor_(a_double)(1.0))

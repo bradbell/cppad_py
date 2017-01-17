@@ -10,7 +10,7 @@ C_ -----------------------------------------------------------------------------
 C_ a_other_error_message_xam
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
-BeginBoolFun__(ok, a_other_error_message_xam)
+BeginBoolFun_(ok, a_other_error_message_xam)
 	Assign_(ok, False_)
 	Try_
 		Module_(error_message("test message"))Eos_

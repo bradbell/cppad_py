@@ -10,7 +10,7 @@ C_ -----------------------------------------------------------------------------
 C_ std::vector<a_double>
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
-BeginBoolFun__(ok, a_fun_hessian_xam)
+BeginBoolFun_(ok, a_fun_hessian_xam)
 	C_ number of dependent and independent variables
 	NewVar_(size_t, m, 1)
 	NewVar_(size_t, n, 3)

@@ -65,8 +65,8 @@ define(VecGet_, `$'$1->get($2))
 # -----------------------------------------------------------------------------
 # Function Statements
 
-# BeginBoolFun__(return_variable, fun_name)
-define(BeginBoolFun__,
+# BeginBoolFun_(return_variable, fun_name)
+define(BeginBoolFun_,
 package $2;
 sub $2() {
 	C_ check for standard perl programming conventions
