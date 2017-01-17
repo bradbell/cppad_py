@@ -75,8 +75,8 @@ $end
 %include <cppad/swig/a_fun.hpp>
 %include <cppad/swig/a_other.hpp>
 
-%template(vector_double) std::vector<double>;
-%template(vector_ad)     std::vector<cppad_swig::a_double>;
+%template(vec_double) std::vector<double>;
+%template(vec_a_double)     std::vector<cppad_swig::a_double>;
 
 
 /*

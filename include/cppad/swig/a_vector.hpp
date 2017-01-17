@@ -12,8 +12,8 @@
 
 namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 
-typedef std::vector<double>               vector_double;
-typedef std::vector<cppad_swig::a_double> vector_ad;
+typedef std::vector<double>               vec_double;
+typedef std::vector<cppad_swig::a_double> vec_a_double;
 
 } // END_CPPAD_SWIG_NAMESPACE
 

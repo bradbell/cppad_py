@@ -11,8 +11,8 @@ assert(m4_executable)
 SET(auto_list
 	a_double_xam.pm
 	a_fun_xam.pm
-	vector_ad_xam.pm
-	vector_double_xam.pm
+	vec_a_double_xam.pm
+	vec_double_xam.pm
 )
 SET(auto_output_list "")
 FOREACH( xam_file ${xam_file_list} )

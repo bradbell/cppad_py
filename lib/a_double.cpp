@@ -62,6 +62,7 @@ a_double::a_double(const CppAD::AD<double>* ad_ptr)
 -------------------------------------------------------------------------------
 $begin a_double_ctor$$
 $spell
+	vec
 	cppad
 	const
 	perl
@@ -136,6 +137,7 @@ $begin a_double_unary_op$$
 
 $section a_double Unary Plus and Minus$$
 $spell
+	vec
 	const
 	perl
 $$
@@ -185,6 +187,7 @@ a_double a_double::operator-(void) const
 -------------------------------------------------------------------------------
 $begin a_double_property$$
 $spell
+	vec
 	const
 	perl
 	bool
@@ -296,6 +299,7 @@ $begin a_double_ad_binary$$
 
 $section ad_double Binary Operators with an AD Result$$
 $spell
+	vec
 	const
 	az
 	op
@@ -354,6 +358,7 @@ $begin a_double_compare$$
 
 $section ad_double Comparison Operators$$
 $spell
+	vec
 	const
 	az
 	op
@@ -417,6 +422,7 @@ $begin a_double_assign$$
 
 $section ad_double Assignment Operators$$
 $spell
+	vec
 	const
 	az
 	op
@@ -471,6 +477,7 @@ COMPOUND_ASSIGNMENT_OP(/=)
 -------------------------------------------------------------------------------
 $begin a_double_unary_fun$$
 $spell
+	vec
 	const
 	perl
 	bool
@@ -562,6 +569,7 @@ UNARY_FUN_AD_RESULT(tanh)
 -------------------------------------------------------------------------------
 $begin a_double_cond_assign$$
 $spell
+	vec
 	const
 	perl
 	cond

@@ -16,16 +16,16 @@ BeginBoolFun_(ok, a_fun_forward_xam)
 	NewVar_(size_t, n, 2)
 	C_
 	C_ create the independent variables ax
-	NewVar_(vector_double, xp, ModuleCtor_(vector_double)(Var_(n)))
+	NewVar_(vec_double, xp, ModuleCtor_(vec_double)(Var_(n)))
 	For_(i, Var_(n) )
 		VecSet_(xp, Var_(i), Var_(i) + 1.0)
 	End_
-	NewVar_(vector_ad, ax, Module_(independent)(Var_(xp)))
+	NewVar_(vec_a_double, ax, Module_(independent)(Var_(xp)))
 	C_
 	C_ create dependent varialbes ay with ay0 = ax0 * ax1
 	NewVar_(a_double, ax0, VecGet_(ax, 0))
 	NewVar_(a_double, ax1, VecGet_(ax, 1))
-	NewVar_(vector_ad, ay, ModuleCtor_(vector_ad)(Var_(m)))
+	NewVar_(vec_a_double, ay, ModuleCtor_(vec_a_double)(Var_(m)))
 	VecSet_(ay, 0, Var_(ax0) * Var_(ax1))
 	C_
 	C_ define af corresponding to f(x) = x0 * x1
@@ -38,7 +38,7 @@ BeginBoolFun_(ok, a_fun_forward_xam)
 	NewVar_(size_t, p, 0)
 	VecSet_(xp, 0, 3.0)
 	VecSet_(xp, 1, 2.0)
-	NewVar_(vector_double, yp, Member_(af, forward)(Var_(p), Var_(xp)))
+	NewVar_(vec_double, yp, Member_(af, forward)(Var_(p), Var_(xp)))
 	AndAssign_(ok, VecGet_(yp, 0) == 6.0)
 	C_
 	C_ first order Taylor coefficients for X(t)

@@ -16,28 +16,28 @@ BeginBoolFun_(ok, a_fun_hessian_xam)
 	NewVar_(size_t, n, 3)
 	C_
 	C_ create the independent variables ax
-	NewVar_(vector_double, x, ModuleCtor_(vector_double)(Var_(n)))
+	NewVar_(vec_double, x, ModuleCtor_(vec_double)(Var_(n)))
 	For_(i, Var_(n) )
 		VecSet_(x, Var_(i), Var_(i) + 2.0)
 	End_
-	NewVar_(vector_ad, ax, Module_(independent)(Var_(x)))
+	NewVar_(vec_a_double, ax, Module_(independent)(Var_(x)))
 	C_
 	C_ create dependent variables ay with ay0 = ax_0 * ax_1 * ax_2
 	NewVar_(a_double, ax_0, VecGet_(ax, 0))
 	NewVar_(a_double, ax_1, VecGet_(ax, 1))
 	NewVar_(a_double, ax_2, VecGet_(ax, 2))
-	NewVar_(vector_ad, ay, ModuleCtor_(vector_ad)(Var_(m)))
+	NewVar_(vec_a_double, ay, ModuleCtor_(vec_a_double)(Var_(m)))
 	VecSet_(ay, 0, Var_(ax_0) * Var_(ax_1) * Var_(ax_2))
 	C_
 	C_ define af corresponding to f(x) = x_0 * x_1 * x_2
 	NewVar_(a_fun, af, ModuleCtor_(a_fun)(Var_(ax), Var_(ay)))
 	C_
 	C_ g(x) = w_0 * f_0 (x) = f(x)
-	NewVar_(vector_double, w, ModuleCtor_(vector_double)(Var_(m)))
+	NewVar_(vec_double, w, ModuleCtor_(vec_double)(Var_(m)))
 	VecSet_(w, 0, 1.0)
 	C_
 	C_ compute Hessian
-	NewVar_(vector_double, fpp, Member_(af, hessian)(Var_(x), Var_(w)))
+	NewVar_(vec_double, fpp, Member_(af, hessian)(Var_(x), Var_(w)))
 	C_
 	C_          [ 0.0 , x_2 , x_1 ]
 	C_ f''(x) = [ x_2 , 0.0 , x_0 ]

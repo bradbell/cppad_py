@@ -15,6 +15,7 @@ namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 -------------------------------------------------------------------------------
 $begin independent$$
 $spell
+	vec
 	Cppad
 	Perl
 	py
@@ -33,7 +34,7 @@ for the particular language.
 $head x$$
 This argument has prototype
 $codei%
-	const vector_double& %x%
+	const vec_double& %x%
 %$$
 Its specifies the number of independent variables
 and their values during the recording.
@@ -43,7 +44,7 @@ to denote the number of independent variables.
 $head ax$$
 The result has prototype
 $codei%
-	vector_ad& %ax%
+	vec_a_double& %ax%
 %$$
 This is the vector of independent variables.
 It has size $icode n$$ and for
@@ -81,6 +82,7 @@ std::vector<a_double> independent(const std::vector<double>& x)
 -------------------------------------------------------------------------------
 $begin abort_recording$$
 $spell
+	vec
 	af
 	const
 	perl
@@ -120,6 +122,7 @@ void abort_recording(void)
 -------------------------------------------------------------------------------
 $begin a_fun_ctor$$
 $spell
+	vec
 	af
 	const
 $$
@@ -132,7 +135,7 @@ $icode%af% = %model_ref_%a_fun(%ax%, %ay%)%$$
 $head ax$$
 This argument has prototype
 $codei%
-	const vector_ad& %ax%
+	const vec_a_double& %ax%
 %$$
 It must be the same as
 $cref/ax/independent/ax/$$ in the previous call to $code independent$$.
@@ -143,7 +146,7 @@ to denote the number of independent variables.
 $head ay$$
 This argument has prototype
 $codei%
-	const vector_ad& %ax%
+	const vec_a_double& %ax%
 %$$
 It specifies the dependent variables.
 We use the notation $icode%m% = %ax%.size()%$$
@@ -194,6 +197,7 @@ a_fun::a_fun(
 ------------------------------------------------------------------------------
 $begin a_fun_jacobian$$
 $spell
+	vec
 	af
 	Taylor
 	const
@@ -203,6 +207,7 @@ $$
 
 $section Jacobian of an AD Function$$
 $spell
+	vec
 $$
 
 $head Syntax$$
@@ -229,7 +234,7 @@ in to the constructor for $icode af$$.
 $head x$$
 This argument has prototype
 $codei%
-	const vector_double& %x%
+	const vec_double& %x%
 %$$
 and its size must be $icode n$$.
 It specifies the argument value at we are computing the Jacobian
@@ -238,7 +243,7 @@ $latex f'(x)$$.
 $head J$$
 The result has prototype
 $codei%
-	vector_double %J%
+	vec_double %J%
 %$$
 and its size is $icode%m%*%n%$$.
 For $icode i$$ between zero and $icode%m%-1%$$
@@ -270,6 +275,7 @@ std::vector<double> a_fun::jacobian(const std::vector<double>& x)
 ------------------------------------------------------------------------------
 $begin a_fun_hessian$$
 $spell
+	vec
 	af
 	Taylor
 	const
@@ -278,6 +284,7 @@ $$
 
 $section Hessian of an AD Function$$
 $spell
+	vec
 $$
 
 $head Syntax$$
@@ -311,7 +318,7 @@ $latex \[
 $head x$$
 This argument has prototype
 $codei%
-	const vector_double& %x%
+	const vec_double& %x%
 %$$
 and its size must be $icode n$$.
 It specifies the argument value at we are computing the Hessian
@@ -320,7 +327,7 @@ $latex g^{(2)}(x)$$.
 $head w$$
 This argument has prototype
 $codei%
-	const vector_double& %w%
+	const vec_double& %w%
 %$$
 and its size must be $icode m$$.
 It specifies the vector $icode w$$ in the definition of $latex g(x)$$ above.
@@ -328,7 +335,7 @@ It specifies the vector $icode w$$ in the definition of $latex g(x)$$ above.
 $head H$$
 The result has prototype
 $codei%
-	vector_double %H%
+	vec_double %H%
 %$$
 and its size is $icode%n%*%n%$$.
 For $icode i$$ between zero and $icode%n%-1%$$
@@ -362,6 +369,7 @@ std::vector<double> a_fun::hessian(
 ------------------------------------------------------------------------------
 $begin a_fun_forward$$
 $spell
+	vec
 	af
 	xp
 	Taylor
@@ -372,6 +380,7 @@ $$
 
 $section Forward Mode AD$$
 $spell
+	vec
 	xp
 $$
 
@@ -430,7 +439,7 @@ and for every variable in the recording, will be stored in $icode af$$.
 $head xp$$
 This argument has prototype
 $codei%
-	const vector_double& %xp%
+	const vec_double& %xp%
 %$$
 and its size must be $icode n$$.
 It specifies the $th p$$ order Taylor coefficients for $icode X(t)$$.
@@ -438,7 +447,7 @@ It specifies the $th p$$ order Taylor coefficients for $icode X(t)$$.
 $head yp$$
 The result has prototype
 $codei%
-	vector_double %yp%
+	vec_double %yp%
 %$$
 and its size is $icode m$$.
 It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
@@ -465,6 +474,7 @@ std::vector<double> a_fun::forward(size_t p, const std::vector<double>& xp)
 -------------------------------------------------------------------------------
 $begin a_fun_reverse$$
 $spell
+	vec
 	af
 	xq
 	Taylor
@@ -534,7 +544,7 @@ call using $icode af$$.)
 $head yq$$
 This argument has prototype
 $codei%
-	const vector_double& %yq%
+	const vec_double& %yq%
 %$$
 and its size must be $icode%m%*%q%$$.
 For $icode%0% <= %i% < %m%$$ and $icode%0% <= %k% < %q%$$,
@@ -546,7 +556,7 @@ the partial derivative of $latex G(T)$$ w.r.t. $latex Y_i^{(k)} (t) / k !$$.
 $head xq$$
 The result has prototype
 $codei%
-	vector_double %xq%
+	vec_double %xq%
 %$$
 and its size is $icode%n%*%q%$$.
 For $icode%0% <= %j% < %n%$$ and $icode%0% <= %k% < %q%$$,
@@ -580,11 +590,13 @@ std::vector<double> a_fun::reverse(size_t q, const std::vector<double>& yq)
 ------------------------------------------------------------------------------
 $begin a_fun_optimize$$
 $spell
+	vec
 	af
 $$
 
 $section Optimize an AD Function$$
 $spell
+	vec
 $$
 
 $head Syntax$$
@@ -625,12 +637,14 @@ void a_fun::optimize(void)
 ------------------------------------------------------------------------------
 $begin a_fun_property$$
 $spell
+	vec
 	ind
 	dep
 $$
 
 $section Properties of an AD Function$$
 $spell
+	vec
 	af
 	var
 	op

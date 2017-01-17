@@ -12,8 +12,8 @@ C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun_(ok, a_vector_set_get_xam)
 	NewVar_(size_t, n, 4)
-	NewVar_(vector_double, v, ModuleCtor_(vector_double)(Var_(n)))
-	NewVar_(vector_ad, av, ModuleCtor_(vector_ad)(Var_(n)))
+	NewVar_(vec_double, v, ModuleCtor_(vec_double)(Var_(n)))
+	NewVar_(vec_a_double, av, ModuleCtor_(vec_a_double)(Var_(n)))
 	C_
 	C_ setting elements
 	For_(i, Var_(n) )

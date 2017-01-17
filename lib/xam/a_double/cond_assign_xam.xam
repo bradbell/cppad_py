@@ -15,12 +15,12 @@ BeginBoolFun_(ok, a_double_cond_assign_xam)
 	NewVar_(size_t, m, 1)
 	C_
 	C_ create ax (value of independent variables does not matter)
-	NewVar_(vector_double, x, ModuleCtor_(vector_double)(Var_(n)))
+	NewVar_(vec_double, x, ModuleCtor_(vec_double)(Var_(n)))
 	VecSet_(x, 0, 0.0)
 	VecSet_(x, 1, 1.0)
 	VecSet_(x, 2, 2.0)
 	VecSet_(x, 3, 3.0)
-	NewVar_(vector_ad, ax, Module_(independent)(Var_(x)))
+	NewVar_(vec_a_double, ax, Module_(independent)(Var_(x)))
 	C_
 	C_ arguments to conditional assignment
 	NewVar_(a_double, left,  VecGet_(ax, 0))
@@ -39,7 +39,7 @@ BeginBoolFun_(ok, a_double_cond_assign_xam)
 	)Eos_
 	C_
 	C_ f(x) = taget
-	NewVar_(vector_ad, ay, ModuleCtor_(vector_ad)(Var_(m)))
+	NewVar_(vec_a_double, ay, ModuleCtor_(vec_a_double)(Var_(m)))
 	VecSet_(ay, 0, Var_(target))
 	NewVar_(a_fun, af, ModuleCtor_(a_fun)(Var_(ax), Var_(ay)))
 	C_
@@ -49,7 +49,7 @@ BeginBoolFun_(ok, a_double_cond_assign_xam)
 	VecSet_(x, 2, 7.0) C_ if_true
 	VecSet_(x, 3, 6.0) C_ if_false
 	NewVar_(size_t, p, 0)
-	NewVar_(vector_double, y, Member_(af, forward)(Var_(p), Var_(x)))
+	NewVar_(vec_double, y, Member_(af, forward)(Var_(p), Var_(x)))
 	AndAssign_(ok, VecGet_(y, 0) == 6.0)
 	C_
 	Return_( ok )

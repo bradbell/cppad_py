@@ -7,6 +7,7 @@
 -------------------------------------------------------------------------------
 $begin a_vector_ctor$$
 $spell
+	vec
 	Cppad
 	av
 	Perl
@@ -16,9 +17,9 @@ $$
 $section Cppad Swig Vector Constructors$$
 
 $head Syntax$$
-$icode%v%  = %module_ref% vector_double(%n%)
+$icode%v%  = %module_ref% vec_double(%n%)
 %$$
-$icode%av% = %module_ref% vector_ad(%n%)
+$icode%av% = %module_ref% vec_a_double(%n%)
 %$$
 
 $head Purpose$$
@@ -41,12 +42,13 @@ $cref a_double$$.
 
 $head Example$$
 All of the other vector examples use a
-$code vector_double$$ or $code vector_ad$$ constructor.
+$code vec_double$$ or $code vec_a_double$$ constructor.
 
 $end
 -------------------------------------------------------------------------------
 $begin a_vector_size$$
 $spell
+	vec
 	Cppad
 	Perl
 	const
@@ -60,8 +62,8 @@ $icode%n% = %v%.size()%$$
 $head v$$
 The object $icode v$$ has one of the following prototypes:
 $codei%
-	const vector_double& %v%
-	const vector_ad&     %v%
+	const vec_double& %v%
+	const vec_a_double&     %v%
 %$$
 
 $head n$$
@@ -88,6 +90,7 @@ $end
 -------------------------------------------------------------------------------
 $begin a_vector_set_get$$
 $spell
+	vec
 	Cppad
 	Perl
 	const
@@ -112,17 +115,17 @@ It must be between zero and the size of the vector minus one.
 $head u$$
 The object $icode u$$ has one of the following prototypes:
 $codei%
-	vector_double& %u%
-	vector_ad&     %u%
+	vec_double& %u%
+	vec_a_double&     %u%
 %$$
 
 $head x$$
-If $icode u$$ has type $code vector_double$$,
+If $icode u$$ has type $code vec_double$$,
 $icode x$$ has prototype
 $codei%
 	const double& %x%
 %$$
-If $icode u$$ has type $code vector_ad$$,
+If $icode u$$ has type $code vec_a_double$$,
 $icode x$$ has prototype
 $codei%
 	const a_double& %x%
@@ -131,17 +134,17 @@ $codei%
 $head v$$
 The object $icode v$$ has one of the following prototypes:
 $codei%
-	const vector_double& %v%
-	const vector_ad&     %v%
+	const vec_double& %v%
+	const vec_a_double&     %v%
 %$$
 
 $head y$$
-If $icode v$$ has type $code vector_double$$,
+If $icode v$$ has type $code vec_double$$,
 $icode y$$ has prototype
 $codei%
 	double %y%
 %$$
-If $icode v$$ has type $code vector_ad$$,
+If $icode v$$ has type $code vec_a_double$$,
 $icode y$$ has prototype
 $codei%
 	a_double %y%

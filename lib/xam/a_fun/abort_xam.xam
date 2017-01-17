@@ -14,11 +14,11 @@ BeginBoolFun_(ok, a_fun_abort_xam)
 	NewVar_(size_t, n, 2)
 	C_
 	C_ create ax
-	NewVar_(vector_double, x, ModuleCtor_(vector_double)(Var_(n)))
+	NewVar_(vec_double, x, ModuleCtor_(vec_double)(Var_(n)))
 	For_(i, Var_(n) )
 		VecSet_(x, Var_(i), Var_(i) + 1.0)
 	End_
-	NewVar_(vector_ad, ax, Module_(independent)(Var_(x)))
+	NewVar_(vec_a_double, ax, Module_(independent)(Var_(x)))
 	C_
 	C_ preform some a_double operations
 	NewVar_(a_double, ax0, VecGet_(ax, 0))

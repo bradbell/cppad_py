@@ -17,12 +17,12 @@ BeginBoolFun_(ok, a_fun_optimize_xam)
 	NewVar_(size_t, n_op, 1)  C_ special operator at beginning
 	C_
 	C_ dimension some vectors
-	NewVar_(vector_double, x, ModuleCtor_(vector_double)(Var_(n_ind)))
-	NewVar_(vector_ad, ay, ModuleCtor_(vector_ad)(Var_(n_dep)))
+	NewVar_(vec_double, x, ModuleCtor_(vec_double)(Var_(n_ind)))
+	NewVar_(vec_a_double, ay, ModuleCtor_(vec_a_double)(Var_(n_dep)))
 	C_
 	C_ independent variables
 	VecSet_(x, 0, 1.0)
-	NewVar_(vector_ad, ax, Module_(independent)(Var_(x)))
+	NewVar_(vec_a_double, ax, Module_(independent)(Var_(x)))
 	Assign_(n_var, Var_(n_var) + Var_(n_ind)) C_ one for each indpendent
 	Assign_(n_op,  Var_(n_op) + Var_(n_ind))
 	C_

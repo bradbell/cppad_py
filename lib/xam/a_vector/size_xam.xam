@@ -11,13 +11,13 @@ C_ vector size()
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun_(ok, a_vector_size_xam)
-	NewVar_(vector_double, v0, ModuleCtor_(vector_double)())
-	NewVar_(vector_double, v9, ModuleCtor_(vector_double)(9))
+	NewVar_(vec_double, v0, ModuleCtor_(vec_double)())
+	NewVar_(vec_double, v9, ModuleCtor_(vec_double)(9))
 	AndAssign_(ok, Member_(v0, size)() == 0 )
 	AndAssign_(ok, Member_(v9, size)() == 9)
 	C_
-	NewVar_(vector_ad, av0, ModuleCtor_(vector_ad)())
-	NewVar_(vector_ad, av5, ModuleCtor_(vector_ad)(5))
+	NewVar_(vec_a_double, av0, ModuleCtor_(vec_a_double)())
+	NewVar_(vec_a_double, av5, ModuleCtor_(vec_a_double)(5))
 	AndAssign_(ok, Member_(av0, size)() == 0 )
 	AndAssign_(ok, Member_(av5, size)() == 5 )
 	C_
