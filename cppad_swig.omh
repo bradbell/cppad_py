@@ -74,14 +74,14 @@ $codei%
 %$$
 will run all of the tests.
 
-$head Installing$$
+$head Support$$
 As yet, there is no install procedure for this package.
 Part of the problem here is that it would be different for different
 scripting languages.
 Contact the
 $href%http://www.seanet.com/~bradbell/home.htm%author%$$
 if you are working with a particular language
-and have need of an install procedure.
+and have need of an install procedure or other support.
 
 $head License$$
 This program is distributed under the terms of the
