@@ -88,7 +88,7 @@ pl_swig_xam::delete_int_array_ptr($array_ptr);
 $n         = 10;
 $array_obj = new pl_swig_xam::int_array_class($n);
 for($i = 0; $i < $n; $i++)
-{	$array_obj[$i] = 2 * i; }
+{	pl_swig_xam::int_array_ptr_setitem($array_obj, $i, 2 * $i); }
 if( pl_swig_xam::max_array_by_ptr($n, $array_obj) == 18 )
 {	print "pl_swig_xam::max_array_by_ptr: class: OK\n"; }
 else
