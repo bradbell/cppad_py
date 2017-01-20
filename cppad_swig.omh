@@ -63,6 +63,7 @@ effectively evaluate the function in C++ instead of the scripting language.
 $head Git Repository$$
 This is a preliminary version of this package.
 Currently, one gets the source code from Github at
+$href%https://github.com/bradbell/cppad_swig%cppad_swig%$$.
 
 $head Testing$$
 You must first configure Cppad Swig for your system using
