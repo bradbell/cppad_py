@@ -3,8 +3,8 @@
 #         cppad_swig: A C++ Object Library and SWIG Interface to CppAD
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
-#          GNU Affero General Public License version 3.0 or later see
-#                     http://www.gnu.org/licenses/agpl.txt
+#              GNU General Public License version 3.0 or later see
+#                    http://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 delete_list='
 '
@@ -15,7 +15,9 @@ move_list='
 move_sed='s|a_other|other|'
 #
 cat << EOF > junk.sed
-s|Language_:|LangName_:|
+s|GNU Affero General Public License|    GNU General Public License|
+s| http://www.gnu.org/licenses/agpl.txt|https://www.gnu.org/licenses/gpl-3.0.txt|
+s|agpl\\.txt|gpl-3.0.txt|g
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

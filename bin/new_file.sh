@@ -3,8 +3,8 @@
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
-#          GNU Affero General Public License version 3.0 or later see
-#                     http://www.gnu.org/licenses/agpl.txt
+#              GNU General Public License version 3.0 or later see
+#                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
@@ -44,8 +44,8 @@ case $ext in
           cppad_swig: A C++ Object Library and Swig Interface to Cppad
            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
-           GNU Affero General Public License version 3.0 or later see
-                      http://www.gnu.org/licenses/agpl.txt
+               GNU General Public License version 3.0 or later see
+                     https://www.gnu.org/licenses/gpl-3.0.txt
 ---------------------------------------------------------------------------- */
 EOF
 	;;
@@ -67,8 +67,8 @@ EOF
           cppad_swig: A C++ Object Library and Swig Interface to Cppad
            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
-           GNU Affero General Public License version 3.0 or later see
-                      http://www.gnu.org/licenses/agpl.txt
+               GNU General Public License version 3.0 or later see
+                     https://www.gnu.org/licenses/gpl-3.0.txt
 ---------------------------------------------------------------------------- */
 
 # endif
@@ -88,8 +88,8 @@ EOF
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
-#          GNU Affero General Public License version 3.0 or later see
-#                     http://www.gnu.org/licenses/agpl.txt
+#              GNU General Public License version 3.0 or later see
+#                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 # \$begin $file_name\$\$ \$newlinech #\$\$
 # \$spell
@@ -107,8 +107,8 @@ EOF
           cppad_swig: A C++ Object Library and Swig Interface to Cppad
            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
-           GNU Affero General Public License version 3.0 or later see
-                      http://www.gnu.org/licenses/agpl.txt
+               GNU General Public License version 3.0 or later see
+                     https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 \$begin $root_name\$\$
 \$spell
@@ -134,8 +134,8 @@ EOF
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
-#          GNU Affero General Public License version 3.0 or later see
-#                     http://www.gnu.org/licenses/agpl.txt
+#              GNU General Public License version 3.0 or later see
+#                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
@@ -163,8 +163,8 @@ EOF
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 #          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
-#          GNU Affero General Public License version 3.0 or later see
-#                     http://www.gnu.org/licenses/agpl.txt
+#              GNU General Public License version 3.0 or later see
+#                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 EOF
 	;;
@@ -179,8 +179,8 @@ C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
 C_              This program is distributed under the terms of the
-C_          GNU Affero General Public License version 3.0 or later see
-C_                     http://www.gnu.org/licenses/agpl.txt
+C_              GNU General Public License version 3.0 or later see
+C_                    https://www.gnu.org/licenses/gpl-3.0.txt
 C_ -----------------------------------------------------------------------------
 C_ $local_name
 C_ -----------------------------------------------------------------------------
