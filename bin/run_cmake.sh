@@ -23,8 +23,9 @@ cmake_binary_dir='build'
 cmake_generator='Unix Makefiles'
 cmake_verbose_makefile='false'
 cmake_build_type='debug'
-cppad_cxx_flags='-Wall -pedantic-errors'
 swig_cxx_flags='-Wall -Wno-sign-compare'
+cppad_cxx_flags='-Wall -pedantic-errors'
+test_cppad='yes'
 # END user settings
 # -----------------------------------------------------------------------------
 # CppAD version information
@@ -58,6 +59,10 @@ then
 		-D cppad_prefix="$cmake_binary_path/prefix"  \
 		-D cppad_cxx_flags="$cppad_cxx_flags" \
 		..
+	if [ "$test_cppad" == 'yes' ]
+	then
+		echo_eval make check
+	fi
 	echo_eval make install
 	echo "End getting $local_repo"
 	cd ../../
@@ -127,13 +132,18 @@ exit 0
 # $href%https://cmake.org/cmake/help/v3.0/variable/CMAKE_BUILD_TYPE.html%
 #	cmake_build_type%$$.
 #
+# $head swig_cxx_flags$$
+# Extra C++ compiler flags used when compiling code that is created
+# by Swig.
+#
 # $head cppad_cxx_flags$$
 # Extra C++ compiler flags used when compiling code that includes Cppad
 # header files.
 #
-# $head swig_cxx_flags$$
-# Extra C++ compiler flags used when compiling code that is created
-# by Swig.
+# $head test_cppad$$
+# If this is $code yes$$, then the Cppad tests will be built and run
+# as a separate check (each time a new version of Cppad is retrieved).
+# This may take a significant amount of time and you may like to avoid it.
 #
 # $end
 # -----------------------------------------------------------------------------
