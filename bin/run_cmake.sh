@@ -23,16 +23,46 @@ cmake_binary_dir='build'
 cmake_generator='Unix Makefiles'
 cmake_verbose_makefile='false'
 cmake_build_type='debug'
-cppad_prefix="$HOME/prefix/cppad"
 cppad_cxx_flags='-Wall -pedantic-errors'
 swig_cxx_flags='-Wall -Wno-sign-compare'
 # END user settings
-#
+# -----------------------------------------------------------------------------
+# CppAD version information
+remote_repo='https://github.com/coin-or/CppAD.git'
+version='20170219'
+hash_code='ac0bf985d7664ae33cf446f806ecc7183d3631fc'
+# -----------------------------------------------------------------------------
+# Change into cmake binary directory
 if [ ! -e "$cmake_binary_dir" ]
 then
-	echo_eval mkdir "$cmake_binary_dir"
+	echo_eval mkdir $cmake_binary_dir
 fi
-echo_eval cd "$cmake_binary_dir"
+echo_eval cd $cmake_binary_dir
+cmake_binary_path=`pwd`
+# -----------------------------------------------------------------------------
+# Check if we need to install this version of CppAD
+local_repo="cppad-$version.git"
+if [ ! -e "$local_repo" ]
+then
+	echo "Start getting $local_repo"
+	echo_eval git clone $remote_repo $local_repo
+	echo_eval cd $local_repo
+	echo_eval git checkout $hash_code
+	# -------------------------------------------------------------------------
+	if [ ! -e 'build' ]
+	then
+		echo_eval mkdir build
+	fi
+	echo_eval cd build
+	cmake -D CMAKE_VERBOSE_MAKEFILE="$cmake_verbose_makefile" \
+		-D cppad_prefix="$cmake_binary_path/prefix"  \
+		-D cppad_cxx_flags="$cppad_cxx_flags" \
+		..
+	echo_eval make install
+	echo "End getting $local_repo"
+	cd ../../
+fi
+# -----------------------------------------------------------------------------
 if [ -e CMakeCache.txt ]
 then
 	echo_eval make clean
@@ -41,7 +71,7 @@ cmake \
 	-G "$cmake_generator" \
 	-D CMAKE_VERBOSE_MAKEFILE="$cmake_verbose_makefile" \
 	-D CMAKE_BUILD_TYPE="$cmake_build_type" \
-	-D cppad_prefix="$cppad_prefix" \
+	-D cppad_prefix="$cmake_binary_path/prefix" \
 	-D cppad_cxx_flags="$cppad_cxx_flags" \
 	-D swig_cxx_flags="$swig_cxx_flags" \
 	..
@@ -63,7 +93,7 @@ exit 0
 #	executables
 # $$
 #
-# $section Configure Cppad Swig for A system$$
+# $section Get CppAD and Configure Cppad Swig for A system$$
 #
 # $head Syntax$$
 # $codei%bin/run_cmake.sh%$$
@@ -75,7 +105,7 @@ exit 0
 # each of these settings is described below:
 #
 # $head cmake_binary_dir$$
-# This is the directory where object libraries and executables are built.
+# This is the sub-directory where object libraries and executables are built.
 # It is also the directory where $code make$$ commands are executed.
 #
 # $head cmake_generator$$
@@ -96,13 +126,6 @@ exit 0
 # or $code MinSizeRel$$; see
 # $href%https://cmake.org/cmake/help/v3.0/variable/CMAKE_BUILD_TYPE.html%
 #	cmake_build_type%$$.
-#
-# $head cppad_prefix$$
-# The prefix used to install Cppad.
-# For example, the following include file must exist
-# $codei%
-#	%cppad_prefix%/include/Cppad.hpp
-# %$$
 #
 # $head cppad_cxx_flags$$
 # Extra C++ compiler flags used when compiling code that includes Cppad
