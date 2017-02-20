@@ -59,14 +59,17 @@ then
 		-D cppad_prefix="$cmake_binary_path/prefix"  \
 		-D cppad_cxx_flags="$cppad_cxx_flags" \
 		..
-	if [ "$test_cppad" == 'yes' ]
-	then
-		echo_eval make check
-	fi
-	echo_eval make install
+	cd ../..
 	echo "End getting $local_repo"
-	cd ../../
 fi
+cd $local_repo/build
+if [ "$test_cppad" == 'yes' ]
+then
+	echo_eval make check
+fi
+echo 'Installing Cppad'
+make install | sed -e '/Up-to-date/d'
+echo_eval cd ../..
 # -----------------------------------------------------------------------------
 if [ -e CMakeCache.txt ]
 then
