@@ -32,6 +32,7 @@ fun_list = {
 	'a_fun_forward_xam',
 	'a_fun_reverse_xam',
 	'a_fun_abort_xam',
+	'sparse_rc_xam',
 	'other_error_message_xam'
 }';
 for fun = fun_list

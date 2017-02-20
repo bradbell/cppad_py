@@ -1,0 +1,24 @@
+include(xam.m4)dnl this comments out end of line character
+Header_(sparse/sparse_rc.xam)
+C_ -----------------------------------------------------------------------------
+C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+C_              This program is distributed under the terms of the
+C_              GNU General Public License version 3.0 or later see
+C_                    https://www.gnu.org/licenses/gpl-3.0.txt
+C_ -----------------------------------------------------------------------------
+C_ sparse_rc
+C_ -----------------------------------------------------------------------------
+C_ BEGIN SOURCE
+BeginBoolFun_(ok, sparse_rc_xam)
+	C_
+	C_ create a sparsity pattern
+	NewVar_(sparse_rc, pattern, ModuleCtor_(sparse_rc)())
+	C_
+	Return_(ok)
+End_
+C_ END SOURCE
+C_
+Omhelp_(sparse_rc_xam,
+LangName_: Sparsity Patterns: Example and Test)
+Eof_

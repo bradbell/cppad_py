@@ -173,8 +173,7 @@ a_fun::a_fun(void)
 }
 // destructor
 a_fun::~a_fun(void)
-{	if( ptr_ != CPPAD_NULL )
-	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	delete ptr_;
 }
 // a_fun(ax, ay)
