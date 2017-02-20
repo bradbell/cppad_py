@@ -29,7 +29,7 @@ $codep */
 # include "swig_xam.hpp"
 %}
 /* $$
-see $cref swig_xam_lib$$.
+see $cref swig_xam.hpp$$.
 
 $head py_swig_xam$$
 This is the name of the Python Swig interface to the C++ library.
@@ -78,14 +78,6 @@ $codep */
 %array_class(int, int_array_class);
 /* $$
 
-$head double_class$$
-This is a Swig interface to a $codei%template_class<%Type%>%$$
-where $cref/Type/swig_xam_template_class/Type/$$ is $code double$$.
-$codep */
-%include "swig_xam.hpp"
-%template(double_class)  template_class<double>;
-/* $$
-
 $head vector_double$$
 This is a Swig interface to a $codei%std::vector<%Type%>%$$
 where $icode Type$$ is $code double$$.
@@ -93,9 +85,24 @@ $codep */
 %include "std_vector.i"
 %template(vector_double) std::vector<double>;
 /* $$
+$head swig_xam.hpp$$
+This include file defines the normal functions and normal classes interfaces
+that are part of this Swig example.
+$codep */
+%include "swig_xam.hpp"
+/* $$
+
+$head double_class$$
+This is a Swig interface to a $codei%template_class<%Type%>%$$
+where $cref/Type/swig_xam_template_class/Type/$$ is $code double$$.
+Note that it uses $cref/template_class/swig_xam_template_class/$$
+which is defined as part of $code swig_xam.hpp$$.
+$codep */
+%template(double_class)  template_class<double>;
+/* $$
 
 $childtable%
-	swig_xam/swig_xam_lib.omh%
+	swig_xam/swig_xam_hpp.omh%
 	swig_xam/python/check_swig_xam.py%
 	swig_xam/octave/check_swig_xam.m%
 	swig_xam/perl/check_swig_xam.pl
