@@ -424,7 +424,7 @@ by $latex Y(t) = f(X(t))$$.
 $head p$$
 This argument has prototype
 $codei%
-	size_t %p%
+	int %p%
 %$$
 i.e., it is a positive integer.
 Its value is the order of the Taylor coefficient being calculated.
@@ -466,7 +466,7 @@ $cref/Python/a_fun_forward_xam.py/$$.
 
 $end
 */
-std::vector<double> a_fun::forward(size_t p, const std::vector<double>& xp)
+std::vector<double> a_fun::forward(int p, const std::vector<double>& xp)
 {	return ptr_->Forward(p, xp);
 }
 /*
@@ -529,7 +529,7 @@ for a function that the calling routine chooses.
 $head q$$
 This argument has prototype
 $codei%
-	size_t %q%
+	int %q%
 %$$
 Its value is the number of the Taylor coefficient (for each variable)
 that we are computing the derivative with respect to.
@@ -580,7 +580,7 @@ $cref/Python/a_fun_reverse_xam.py/$$.
 
 $end
 */
-std::vector<double> a_fun::reverse(size_t q, const std::vector<double>& yq)
+std::vector<double> a_fun::reverse(int q, const std::vector<double>& yq)
 {	if( yq.size() != q * ptr_->Range() )
 		error_message("cppad_swig::a_fun::reverse yq.size() error");
 	return ptr_->Reverse(q, yq);
@@ -667,7 +667,7 @@ $codei%
 $head size_ind$$
 The return value has prototype
 $codei%
-	size_t %n%
+	int %n%
 %$$
 an is the size of the vector
 $cref/ax/a_fun_ctor/ax/$$ in the function constructor; i.e.,
@@ -676,7 +676,7 @@ the number of independent variables.
 $head size_dep$$
 The return value has prototype
 $codei%
-	size_t %m%
+	int %m%
 %$$
 an is the size of the vector
 $cref/ay/a_fun_ctor/ay/$$ in the function constructor; i.e.,
@@ -685,7 +685,7 @@ the number of dependent variables.
 $head size_var$$
 The return value has prototype
 $codei%
-	size_t %v%
+	int %v%
 %$$
 an is the number of variables in the function.
 This includes the independent variables, dependent variables,
@@ -695,7 +695,7 @@ from the independent variables.
 $head size_op$$
 The return value has prototype
 $codei%
-	size_t %p%
+	int %p%
 %$$
 an is the number of atomic operations that are used to express
 the dependent variables as a function of the independent variables.
@@ -715,16 +715,16 @@ $cref/Python/a_fun_property_xam.py/$$.
 $end
 */
 // size_ind
-size_t a_fun::size_ind(void) const
+int a_fun::size_ind(void) const
 {	return ptr_->Domain(); }
 // size_dep
-size_t a_fun::size_dep(void) const
+int a_fun::size_dep(void) const
 {	return ptr_->Range(); }
 // size_var
-size_t a_fun::size_var(void) const
+int a_fun::size_var(void) const
 {	return ptr_->size_var(); }
 // size_op
-size_t a_fun::size_op(void) const
+int a_fun::size_op(void) const
 {	return ptr_->size_op(); }
 // ----------------------------------------------------------------------------
 } // END_CPPAD_SWIG_NAMESPACE

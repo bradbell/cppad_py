@@ -90,4 +90,4 @@ define(Return_, return( $1 );)
 # Other
 
 # For_(variable, upper)
-define(For_, for(size_t $1 = 0; $1 < $2; $1++) {)
+define(For_, for(int $1 = 0; $1 < $2; $1++) {)

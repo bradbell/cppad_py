@@ -12,8 +12,8 @@ C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun_(ok, a_fun_jacobian_xam)
 	C_ number of dependent and independent variables
-	NewVar_(size_t, n_dep, 1)
-	NewVar_(size_t, n_ind, 3)
+	NewVar_(int, n_dep, 1)
+	NewVar_(int, n_ind, 3)
 	C_
 	C_ create the independent variables ax
 	NewVar_(vec_double, x, ModuleCtor_(vec_double)(Var_(n_ind)))

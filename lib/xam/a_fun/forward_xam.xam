@@ -12,8 +12,8 @@ C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun_(ok, a_fun_forward_xam)
 	C_ number of dependent and independent variables
-	NewVar_(size_t, n_dep, 1)
-	NewVar_(size_t, n_ind, 2)
+	NewVar_(int, n_dep, 1)
+	NewVar_(int, n_ind, 2)
 	C_
 	C_ create the independent variables ax
 	NewVar_(vec_double, xp, ModuleCtor_(vec_double)(Var_(n_ind)))
@@ -35,7 +35,7 @@ BeginBoolFun_(ok, a_fun_forward_xam)
 	C_ it follows that Y(t) = f(X(t)) = (3 + t) * (2 + t)
 	C_
 	C_ Y(0) = 6 and p ! = 1
-	NewVar_(size_t, p, 0)
+	NewVar_(int, p, 0)
 	VecSet_(xp, 0, 3.0)
 	VecSet_(xp, 1, 2.0)
 	NewVar_(vec_double, yp, Member_(af, forward)(Var_(p), Var_(xp)))

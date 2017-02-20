@@ -11,10 +11,10 @@ C_ a_fun_optimize_xam
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun_(ok, a_fun_optimize_xam)
-	NewVar_(size_t, n_ind, 1) C_ number of independent variables
-	NewVar_(size_t, n_dep, 1) C_ number of dependent variables
-	NewVar_(size_t, n_var, 1) C_ phantom variable at address 0
-	NewVar_(size_t, n_op, 1)  C_ special operator at beginning
+	NewVar_(int, n_ind, 1) C_ number of independent variables
+	NewVar_(int, n_dep, 1) C_ number of dependent variables
+	NewVar_(int, n_var, 1) C_ phantom variable at address 0
+	NewVar_(int, n_op, 1)  C_ special operator at beginning
 	C_
 	C_ dimension some vectors
 	NewVar_(vec_double, x, ModuleCtor_(vec_double)(Var_(n_ind)))

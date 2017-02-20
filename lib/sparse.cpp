@@ -61,7 +61,7 @@ except during its constructor, $code resize$$, and $code put$$.
 $head nr$$
 This argument has prototype
 $codei%
-	size_t %nr%
+	int %nr%
 %$$
 It specifies the number of rows in the sparsity pattern.
 The function call $code nr()$$ returns the value of $icode nr$$.
@@ -69,7 +69,7 @@ The function call $code nr()$$ returns the value of $icode nr$$.
 $head nc$$
 This argument has prototype
 $codei%
-	size_t %nc%
+	int %nc%
 %$$
 It specifies the number of columns in the sparsity pattern.
 The function call $code nc()$$ returns the value of $icode nc$$.
@@ -77,7 +77,7 @@ The function call $code nc()$$ returns the value of $icode nc$$.
 $head nnz$$
 This argument has prototype
 $codei%
-	size_t %nnz%
+	int %nnz%
 %$$
 It specifies the number of possibly non-zero
 index pairs in the sparsity pattern.
@@ -100,14 +100,14 @@ because $code set$$ it is a built-in name in Python.)
 $subhead k$$
 This argument has type
 $codei%
-	size_t %k%
+	int %k%
 %$$
 and must be less than $icode nnz$$.
 
 $subhead r$$
 This argument has type
 $codei%
-	size_t %r%
+	int %r%
 %$$
 It specifies the value assigned to $icode%row%[%k%]%$$ and must
 be less than $icode nr$$.
@@ -115,7 +115,7 @@ be less than $icode nr$$.
 $subhead c$$
 This argument has type
 $codei%
-	size_t %c%
+	int %c%
 %$$
 It specifies the value assigned to $icode%col%[%k%]%$$ and must
 be less than $icode nc$$.
@@ -165,28 +165,28 @@ sparse_rc::~sparse_rc(void)
 	delete ptr_;
 }
 // resize
-void sparse_rc::resize(size_t nr, size_t nc, size_t nnz)
+void sparse_rc::resize(int nr, int nc, int nnz)
 {	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	ptr_->resize(nr, nc, nnz);
 	return;
 }
 // number of rows in matrix
-size_t sparse_rc::nr(void) const
+int sparse_rc::nr(void) const
 {	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nr();
 }
 // number of columns in matrix
-size_t sparse_rc::nc(void) const
+int sparse_rc::nc(void) const
 {	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nc();
 }
 // number of columns in matrix
-size_t sparse_rc::nnz(void) const
+int sparse_rc::nnz(void) const
 {	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nnz();
 }
 // set row and column for a possibly non-zero element
-void sparse_rc::put(size_t k, size_t r, size_t c)
+void sparse_rc::put(int k, int r, int c)
 {	ptr_->set(k, r, c);
 	return;
 }

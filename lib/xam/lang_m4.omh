@@ -285,7 +285,7 @@ The text corresponding to
 $codei|
 	For_(|variable|, |upper|)
 |$$
-starts a for loop the specified index variable.
+starts a for loop the specified integer index variable.
 The initial value of the variable is zero.
 The variable increases by one each time through the loop.
 The value of the index the last time through the loop is $icode|upper|-1|$$.

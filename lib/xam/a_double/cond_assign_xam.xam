@@ -11,8 +11,8 @@ C_ std::vector<a_double>
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun_(ok, a_double_cond_assign_xam)
-	NewVar_(size_t, n_ind, 4)
-	NewVar_(size_t, n_dep, 1)
+	NewVar_(int, n_ind, 4)
+	NewVar_(int, n_dep, 1)
 	C_
 	C_ create ax (value of independent variables does not matter)
 	NewVar_(vec_double, x, ModuleCtor_(vec_double)(Var_(n_ind)))
@@ -48,7 +48,7 @@ BeginBoolFun_(ok, a_double_cond_assign_xam)
 	VecSet_(x, 1, 8.0) C_ right
 	VecSet_(x, 2, 7.0) C_ if_true
 	VecSet_(x, 3, 6.0) C_ if_false
-	NewVar_(size_t, p, 0)
+	NewVar_(int, p, 0)
 	NewVar_(vec_double, y, Member_(af, forward)(Var_(p), Var_(x)))
 	AndAssign_(ok, VecGet_(y, 0) == 6.0)
 	C_

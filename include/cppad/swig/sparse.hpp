@@ -37,15 +37,15 @@ class CPPAD_SWIG_LIB_PUBLIC sparse_rc
 	// destructor
 	~sparse_rc(void);
 	// resize
-	void resize(size_t nr, size_t nc, size_t nnz);
+	void resize(int nr, int nc, int nnz);
 	// number of rows in matrix
-	size_t nr(void) const;
+	int nr(void) const;
 	// number of columns in matrix
-	size_t nc(void) const;
+	int nc(void) const;
 	// number of possibly non-zero elements in matrix
-	size_t nnz(void) const;
+	int nnz(void) const;
 	// set row and column for a possibly non-zero element
-	void put(size_t k, size_t r, size_t c);
+	void put(int k, int r, int c);
 	// row indices
 	std::vector<int> row(void) const;
 	// column indices

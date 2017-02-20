@@ -11,7 +11,7 @@ C_ std::vector<a_double>
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun_(ok, a_fun_abort_xam)
-	NewVar_(size_t, n_ind, 2)
+	NewVar_(int, n_ind, 2)
 	C_
 	C_ create ax
 	NewVar_(vec_double, x, ModuleCtor_(vec_double)(Var_(n_ind)))

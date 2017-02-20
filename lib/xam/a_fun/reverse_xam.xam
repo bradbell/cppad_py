@@ -12,8 +12,8 @@ C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun_(ok, a_fun_reverse_xam)
 	C_ number of dependent and independent variables
-	NewVar_(size_t, n_dep, 1)
-	NewVar_(size_t, n_ind, 3)
+	NewVar_(int, n_dep, 1)
+	NewVar_(int, n_ind, 3)
 	C_
 	C_ create the independent variables ax
 	NewVar_(vec_double, xp, ModuleCtor_(vec_double)(Var_(n_ind)))
@@ -37,7 +37,7 @@ BeginBoolFun_(ok, a_fun_reverse_xam)
 	C_ and that       Y'(0) = x_1 * x_2 + x_0 * x_2 + x_0 * x_1
 	C_ -----------------------------------------------------------------------
 	C_ zero order forward mode
-	NewVar_(size_t, p, 0)
+	NewVar_(int, p, 0)
 	VecSet_(xp, 0, 2.0)
 	VecSet_(xp, 1, 3.0)
 	VecSet_(xp, 2, 4.0)
@@ -46,7 +46,7 @@ BeginBoolFun_(ok, a_fun_reverse_xam)
 	C_ -----------------------------------------------------------------------
 	C_ first order reverse (derivative of zero order forward)
 	C_ define G( Y ) = y_0 = x_0 * x_1 * x_2
-	NewVar_(size_t, q, 1)
+	NewVar_(int, q, 1)
 	NewVar_(vec_double, yq1, ModuleCtor_(vec_double)(Var_(n_dep)))
 	VecSet_(yq1, 0, 1.0)
 	NewVar_(vec_double, xq1, Member_(af, reverse)(Var_(q), Var_(yq1)))

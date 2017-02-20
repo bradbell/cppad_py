@@ -15,9 +15,9 @@ BeginBoolFun_(ok, sparse_rc_xam)
 	C_ create a sparsity pattern
 	NewVar_(sparse_rc, pattern, ModuleCtor_(sparse_rc)())
 	C_
-	NewVar_(size_t, nr,  6)
-	NewVar_(size_t, nc,  5)
-	NewVar_(size_t, nnz, 4)
+	NewVar_(int, nr,  6)
+	NewVar_(int, nc,  5)
+	NewVar_(int, nnz, 4)
 	C_
 	C_ resize
 	Member_(pattern, resize)(Var_(nr), Var_(nc), Var_(nnz))Eos_
@@ -37,9 +37,9 @@ BeginBoolFun_(ok, sparse_rc_xam)
 	C_
 	C_ check row and column indices
 	For_(k, Var_(nnz))
-		NewVar_(size_t, r, VecGet_(row, Var_(k)))
+		NewVar_(int, r, VecGet_(row, Var_(k)))
 		AndAssign_(ok, Var_(r) == Var_(k))
-		NewVar_(size_t, c, VecGet_(col, Var_(k)))
+		NewVar_(int, c, VecGet_(col, Var_(k)))
 		AndAssign_(ok, Var_(c) == Var_(k)+1)
 	End_
 	C_
