@@ -18,6 +18,12 @@ $$
 
 $section Cppad Swig Changes during 2017$$
 
+$head 02-20$$
+Change all the $code size_t$$ variables in the interface to by
+$code int$$ (this seems to work better in Swig).
+For example
+$cref/p/a_fun_forward/p/$$ is not an $code int$$ instead of $code size_t$$.
+
 $head 01-18$$
 Fix a problem with the perl Swig example
 $cref/int_array_class/check_swig_xam.pl/int_array_class/$$.
