@@ -77,8 +77,9 @@ $end
 %include <cppad/swig/sparse.hpp>
 %include <cppad/swig/other.hpp>
 
-%template(vec_double) std::vector<double>;
-%template(vec_a_double)     std::vector<cppad_swig::a_double>;
+%template(vec_int)       std::vector<int>;
+%template(vec_double)    std::vector<double>;
+%template(vec_a_double)  std::vector<cppad_swig::a_double>;
 
 
 /*

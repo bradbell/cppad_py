@@ -72,6 +72,7 @@ define(BeginBoolFun_,
 
 bool $2(void) {
 	using cppad_swig::a_double;
+	using cppad_swig::vec_int;
 	using cppad_swig::vec_double;
 	using cppad_swig::vec_a_double;
 	using cppad_swig::a_fun;

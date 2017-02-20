@@ -7,6 +7,7 @@
 ----------------------------------------------------------------------------- */
 # include <cppad/cppad.hpp>
 # include <cppad/swig/sparse.hpp>
+# include <cppad/swig/vector.hpp>
 
 namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 
@@ -22,6 +23,7 @@ $spell
 	resize
 	const
 	Cppad
+	vec
 $$
 
 $section Sparsity Pattern Constructor$$
@@ -41,6 +43,10 @@ $icode%pattern%.nc()
 $icode%pattern%.nnz()
 %$$
 $icode%pattern%.put(%k%, %r%, %c%)
+%$$
+$icode%row% = %pattern%.row()
+%$$
+$icode%col% = %pattern%.col()
 %$$
 
 $head pattern$$
@@ -114,6 +120,26 @@ $codei%
 It specifies the value assigned to $icode%col%[%k%]%$$ and must
 be less than $icode nc$$.
 
+$head row$$
+This result has type
+$codei%
+	vec_int %row%
+%$$
+and its size is $icode nnz$$.
+For $icode%k% = 0, %...%, %nnz%-1%$$,
+$icode%row%[%k%]%$$ is the row index for the $th k$$ possibly non-zero
+entry in the matrix.
+
+$head col$$
+This result has type
+$codei%
+	vec_int %col%
+%$$
+and its size is $icode nnz$$.
+For $icode%k% = 0, %...%, %nnz%-1%$$,
+$icode%col%[%k%]%$$ is the column index for the $th k$$ possibly non-zero
+entry in the matrix.
+
 $children%
 	build/lib/example/cplusplus/sparse_rc_xam.cpp%
 	build/lib/example/octave/sparse_rc_xam.m%
@@ -130,7 +156,7 @@ $end
 */
 // sparse_rc ctor
 sparse_rc::sparse_rc(void)
-{	ptr_ = new CppAD::sparse_rc<s_vector>();
+{	ptr_ = new CppAD::sparse_rc< std::vector<size_t> >();
 	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 // destructor
@@ -163,6 +189,22 @@ size_t sparse_rc::nnz(void) const
 void sparse_rc::put(size_t k, size_t r, size_t c)
 {	ptr_->set(k, r, c);
 	return;
+}
+// row indices
+std::vector<int> sparse_rc::row(void) const
+{	size_t nnz = ptr_->nnz();
+	std::vector<int> row(nnz);
+	for(size_t k = 0; k < nnz; k++)
+		row[k] = static_cast<int>( ptr_->row()[k] );
+	return row;
+}
+// col indices
+std::vector<int> sparse_rc::col(void) const
+{	size_t nnz = ptr_->nnz();
+	std::vector<int> col(nnz);
+	for(size_t k = 0; k < nnz; k++)
+		col[k] = static_cast<int>( ptr_->col()[k] );
+	return col;
 }
 // ----------------------------------------------------------------------------
 } // END_CPPAD_SWIG_NAMESPACE

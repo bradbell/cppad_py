@@ -25,12 +25,10 @@ namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 // Swig class that acts the same as CppAD::sparse_rc< std::vector<size_t> >
 class CPPAD_SWIG_LIB_PUBLIC sparse_rc
 {	public:
-	// s_vector: type used for row and column index vectors
-	typedef std::vector<size_t> s_vector;
 	// private members are not in Swig interface
 	private:
-	// sparse_rc<s_vector> representation
-	CppAD::sparse_rc<s_vector>* ptr_;
+	// sparse_rc< std::vector<size_t> > representation
+	CppAD::sparse_rc< std::vector<size_t> >* ptr_;
 	// -----------------------------------------------------------------------
 	// public members are in Swig interface
 	public:
@@ -48,15 +46,15 @@ class CPPAD_SWIG_LIB_PUBLIC sparse_rc
 	size_t nnz(void) const;
 	// set row and column for a possibly non-zero element
 	void put(size_t k, size_t r, size_t c);
-# if 0
 	// row indices
-	const s_vector& row(void) const;
+	std::vector<int> row(void) const;
 	// column indices
-	const s_vector& col(void) const;
+	std::vector<int> col(void) const;
+# if 0
 	// row-major order
-	s_vector row_major(void) const;
+	std::vector<int> row_major(void) const;
 	// column-major order
-	s_vector col_major(void) const;
+	std::vector<int> col_major(void) const;
 # endif
 };
 

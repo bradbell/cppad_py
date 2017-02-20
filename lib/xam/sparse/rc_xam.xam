@@ -26,9 +26,21 @@ BeginBoolFun_(ok, sparse_rc_xam)
 	AndAssign_(ok, Member_(pattern, nc)()  == Var_(nc) )
 	AndAssign_(ok, Member_(pattern, nnz)() == Var_(nnz) )
 	C_
-	C_ set index for first nnz diagonal entries
+	C_ indices corresponding to upper-diagonal
 	For_(k, Var_(nnz))
-		Member_(pattern, put)(Var_(k), Var_(k), Var_(k))Eos_
+		Member_(pattern, put)(Var_(k), Var_(k), Var_(k)+1)Eos_
+	End_
+	C_
+	C_ row and column indices
+	NewVar_(vec_int, row, Member_(pattern, row)())
+	NewVar_(vec_int, col, Member_(pattern, col)())
+	C_
+	C_ check row and column indices
+	For_(k, Var_(nnz))
+		NewVar_(size_t, r, VecGet_(row, Var_(k)))
+		AndAssign_(ok, Var_(r) == Var_(k))
+		NewVar_(size_t, c, VecGet_(col, Var_(k)))
+		AndAssign_(ok, Var_(c) == Var_(k)+1)
 	End_
 	C_
 	Return_(ok)
