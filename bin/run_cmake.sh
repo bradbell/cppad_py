@@ -25,7 +25,7 @@ cmake_verbose_makefile='false'
 cmake_build_type='debug'
 swig_cxx_flags='-Wall -Wno-sign-compare'
 cppad_cxx_flags='-Wall -pedantic-errors'
-test_cppad='yes'
+test_cppad='no'
 # END user settings
 # -----------------------------------------------------------------------------
 # CppAD version information
@@ -144,9 +144,9 @@ exit 0
 # header files.
 #
 # $head test_cppad$$
-# If this is $code yes$$, then the Cppad tests will be built and run
-# as a separate check (each time a new version of Cppad is retrieved).
-# This may take a significant amount of time and you may like to avoid it.
+# If this is $code yes$$, Cppad will build and run it's separate check system
+# each time $code bin/run_cmake.sh$$ is run. If you have any problems, it may
+# help to isolate the problem by changing this setting to $code yes$$.
 #
 # $end
 # -----------------------------------------------------------------------------
