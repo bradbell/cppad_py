@@ -38,17 +38,17 @@ class CPPAD_SWIG_LIB_PUBLIC sparse_rc
 	sparse_rc(void);
 	// destructor
 	~sparse_rc(void);
-# if 0
 	// resize
 	void resize(size_t nr, size_t nc, size_t nnz);
-	// set row and column for a possibly non-zero element
-	void set(size_t k, size_t r, size_t c);
 	// number of rows in matrix
 	size_t nr(void) const;
 	// number of columns in matrix
 	size_t nc(void) const;
 	// number of possibly non-zero elements in matrix
 	size_t nnz(void) const;
+# if 0
+	// set row and column for a possibly non-zero element
+	void set(size_t k, size_t r, size_t c);
 	// row indices
 	const s_vector& row(void) const;
 	// column indices

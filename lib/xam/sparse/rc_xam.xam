@@ -15,6 +15,17 @@ BeginBoolFun_(ok, sparse_rc_xam)
 	C_ create a sparsity pattern
 	NewVar_(sparse_rc, pattern, ModuleCtor_(sparse_rc)())
 	C_
+	NewVar_(size_t, nr,  4)
+	NewVar_(size_t, nc,  5)
+	NewVar_(size_t, nnz, 6)
+	C_
+	C_ resize
+	Member_(pattern, resize)(Var_(nr), Var_(nc), Var_(nnz))Eos_
+	C_
+	AndAssign_(ok, Member_(pattern, nr)() == 4 )
+	AndAssign_(ok, Member_(pattern, nc)() == 5 )
+	AndAssign_(ok, Member_(pattern, nnz)() == 6 )
+	C_
 	Return_(ok)
 End_
 C_ END SOURCE
