@@ -21,6 +21,7 @@ $spell
 	nnz
 	resize
 	const
+	Cppad
 $$
 
 $section Sparsity Pattern Constructor$$
@@ -39,6 +40,8 @@ $icode%pattern%.nc()
 %$$
 $icode%pattern%.nnz()
 %$$
+$icode%pattern%.put(%k%, %r%, %c%)
+%$$
 
 $head pattern$$
 The result has prototype
@@ -47,7 +50,7 @@ $codei%
 %$$
 It is used to hold a sparsity pattern for a matrix.
 The sparsity $icode pattern$$ is $code const$$
-except during its constructor, $code resize$$, and $code set$$.
+except during its constructor, $code resize$$, and $code put$$.
 
 $head nr$$
 This argument has prototype
@@ -77,7 +80,39 @@ The function call $code nnz()$$ returns the value of $icode nnz$$.
 $head resize$$
 The current sparsity pattern is lost and a new one is started
 with the specified parameters. The elements in the $icode row$$
-and $icode col$$ vectors should be assigned using $code set$$.
+and $icode col$$ vectors should be assigned using $code put$$.
+
+$head put$$
+This function sets the values
+$codei%
+	%row%[%k%] = %r%
+	%col%[%k%] = %c%
+%$$
+(The name $code set$$ is used by Cppad, but not used here,
+because $code set$$ it is a built-in name in Python.)
+
+$subhead k$$
+This argument has type
+$codei%
+	size_t %k%
+%$$
+and must be less than $icode nnz$$.
+
+$subhead r$$
+This argument has type
+$codei%
+	size_t %r%
+%$$
+It specifies the value assigned to $icode%row%[%k%]%$$ and must
+be less than $icode nr$$.
+
+$subhead c$$
+This argument has type
+$codei%
+	size_t %c%
+%$$
+It specifies the value assigned to $icode%col%[%k%]%$$ and must
+be less than $icode nc$$.
 
 $children%
 	build/lib/example/cplusplus/sparse_rc_xam.cpp%
@@ -123,6 +158,11 @@ size_t sparse_rc::nc(void) const
 size_t sparse_rc::nnz(void) const
 {	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nnz();
+}
+// set row and column for a possibly non-zero element
+void sparse_rc::put(size_t k, size_t r, size_t c)
+{	ptr_->set(k, r, c);
+	return;
 }
 // ----------------------------------------------------------------------------
 } // END_CPPAD_SWIG_NAMESPACE

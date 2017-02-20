@@ -46,9 +46,9 @@ class CPPAD_SWIG_LIB_PUBLIC sparse_rc
 	size_t nc(void) const;
 	// number of possibly non-zero elements in matrix
 	size_t nnz(void) const;
-# if 0
 	// set row and column for a possibly non-zero element
-	void set(size_t k, size_t r, size_t c);
+	void put(size_t k, size_t r, size_t c);
+# if 0
 	// row indices
 	const s_vector& row(void) const;
 	// column indices
