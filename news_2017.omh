@@ -19,10 +19,15 @@ $$
 $section Cppad Swig Changes during 2017$$
 
 $head 02-20$$
+$list number$$
 Change all the $code size_t$$ variables in the interface to by
 $code int$$ (this seems to work better in Swig).
 For example
 $cref/p/a_fun_forward/p/$$ is not an $code int$$ instead of $code size_t$$.
+$lnext
+Added class for sparsity patterns $cref sparse_rc$$
+(not yet hooked up to sparsity calculations).
+$lend
 
 $head 01-18$$
 Fix a problem with the perl Swig example

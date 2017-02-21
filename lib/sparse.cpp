@@ -28,9 +28,6 @@ $$
 
 $section Sparsity Pattern Constructor$$
 
-$head Under Construction$$
-This class is under construction and not yet ready for general use.
-
 $head Syntax$$
 $icode%pattern% = %model_ref_%sparse_rc()
 %$$
@@ -47,6 +44,10 @@ $icode%pattern%.put(%k%, %r%, %c%)
 $icode%row% = %pattern%.row()
 %$$
 $icode%col% = %pattern%.col()
+%$$
+$icode%row_major% = %pattern%.row_major()
+%$$
+$icode%col_major% = %pattern%.col_major()
 %$$
 
 $head pattern$$
@@ -140,6 +141,42 @@ For $icode%k% = 0, %...%, %nnz%-1%$$,
 $icode%col%[%k%]%$$ is the column index for the $th k$$ possibly non-zero
 entry in the matrix.
 
+$head row_major$$
+This vector has prototype
+$codei%
+	vec_int %row_major%
+%$$
+and its size $icode nnz$$.
+It sorts the sparsity pattern in row-major order.
+To be specific,
+$codei%
+	%col%[ %row_major%[%k%] ] <= %col%[ %row_major%[%k%+1] ]
+%$$
+and if $icode%col%[ %row_major%[%k%] ] == %col%[ %row_major%[%k%+1] ]%$$,
+$codei%
+	%row%[ %row_major%[%k%] ] < %row%[ %row_major%[%k%+1] ]
+%$$
+This routine generates an assert if there are two entries with the same
+row and column values (if $code NDEBUG$$ is not defined).
+
+$head col_major$$
+This vector has prototype
+$codei%
+	vec_int %col_major%
+%$$
+and its size $icode nnz$$.
+It sorts the sparsity pattern in column-major order.
+To be specific,
+$codei%
+	%row%[ %col_major%[%k%] ] <= %row%[ %col_major%[%k%+1] ]
+%$$
+and if $icode%row%[ %col_major%[%k%] ] == %row%[ %col_major%[%k%+1] ]%$$,
+$codei%
+	%col%[ %col_major%[%k%] ] < %col%[ %col_major%[%k%+1] ]
+%$$
+This routine generates an assert if there are two entries with the same
+row and column values (if $code NDEBUG$$ is not defined).
+
 $children%
 	build/lib/example/cplusplus/sparse_rc_xam.cpp%
 	build/lib/example/octave/sparse_rc_xam.m%
@@ -205,6 +242,24 @@ std::vector<int> sparse_rc::col(void) const
 	for(size_t k = 0; k < nnz; k++)
 		col[k] = static_cast<int>( ptr_->col()[k] );
 	return col;
+}
+// row_major
+std::vector<int> sparse_rc::row_major(void) const
+{	size_t nnz = ptr_->nnz();
+	std::vector<size_t> row_major = ptr_->row_major();
+	std::vector<int> result(nnz);
+	for(size_t k = 0; k < nnz; k++)
+		result[k] = static_cast<int>( row_major[k] );
+	return result;
+}
+// col_major
+std::vector<int> sparse_rc::col_major(void) const
+{	size_t nnz = ptr_->nnz();
+	std::vector<size_t> col_major = ptr_->col_major();
+	std::vector<int> result(nnz);
+	for(size_t k = 0; k < nnz; k++)
+		result[k] = static_cast<int>( col_major[k] );
+	return result;
 }
 // ----------------------------------------------------------------------------
 } // END_CPPAD_SWIG_NAMESPACE

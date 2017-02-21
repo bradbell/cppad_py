@@ -37,10 +37,16 @@ BeginBoolFun_(ok, sparse_rc_xam)
 	C_
 	C_ check row and column indices
 	For_(k, Var_(nnz))
-		NewVar_(int, r, VecGet_(row, Var_(k)))
-		AndAssign_(ok, Var_(r) == Var_(k))
-		NewVar_(int, c, VecGet_(col, Var_(k)))
-		AndAssign_(ok, Var_(c) == Var_(k)+1)
+		AndAssign_(ok, VecGet_(row, Var_(k)) == Var_(k))
+		AndAssign_(ok, VecGet_(col, Var_(k)) == Var_(k)+1)
+	End_
+	C_
+	C_ For this case, row_major and col_major order are same as original order
+	NewVar_(vec_int, row_major, Member_(pattern, row_major)())
+	NewVar_(vec_int, col_major, Member_(pattern, col_major)())
+	For_(k, Var_(nnz))
+		AndAssign_(ok, VecGet_(row_major, Var_(k)) == Var_(k))
+		AndAssign_(ok, VecGet_(col_major, Var_(k)) == Var_(k))
 	End_
 	C_
 	Return_(ok)

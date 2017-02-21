@@ -50,12 +50,10 @@ class CPPAD_SWIG_LIB_PUBLIC sparse_rc
 	std::vector<int> row(void) const;
 	// column indices
 	std::vector<int> col(void) const;
-# if 0
 	// row-major order
 	std::vector<int> row_major(void) const;
 	// column-major order
 	std::vector<int> col_major(void) const;
-# endif
 };
 
 } // END_CPPAD_SWIG_NAMESPACE
