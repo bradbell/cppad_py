@@ -26,7 +26,7 @@ $spell
 	vec
 $$
 
-$section Sparsity Pattern Constructor$$
+$section Sparsity Patterns$$
 
 $head Syntax$$
 $icode%pattern% = %model_ref_%sparse_rc()
@@ -191,6 +191,11 @@ $cref/Python/sparse_rc_xam.py/$$.
 
 $end
 */
+// ---------------------------------------------------------------------------
+// public member function not in Swig interface (see %ignore ptr)
+const CppAD::sparse_rc< std::vector<size_t> >* sparse_rc::ptr(void) const
+{	return ptr_; }
+// ---------------------------------------------------------------------------
 // sparse_rc ctor
 sparse_rc::sparse_rc(void)
 {	ptr_ = new CppAD::sparse_rc< std::vector<size_t> >();
@@ -217,7 +222,7 @@ int sparse_rc::nc(void) const
 {	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nc();
 }
-// number of columns in matrix
+// number of possibley non-zero elements in matrix
 int sparse_rc::nnz(void) const
 {	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nnz();
@@ -261,5 +266,255 @@ std::vector<int> sparse_rc::col_major(void) const
 		result[k] = static_cast<int>( col_major[k] );
 	return result;
 }
+/*
+-------------------------------------------------------------------------------
+$begin sparse_rcv$$
+$spell
+	rc
+	rcv
+	Perl
+	nr
+	nc
+	nnz
+	resize
+	const
+	Cppad
+	vec
+$$
+
+$section Sparse Matrices$$
+
+$head Under Construction$$
+This class is under construction and not yet suitable for public use.
+
+$head Syntax$$
+$icode%matrix% = %model_ref_%sparse_rcv(%pattern%)
+%$$
+$icode%nr% = %matrix%.nr()
+%$$
+$icode%nc% = %matrix%.nc()
+%$$
+$icode%nnz% = matrix%.nnz()
+%$$
+$icode%matrix%.put(%k%, %v%)
+%$$
+$icode%row% = %matrix%.row()
+%$$
+$icode%col% = %matrix%.col()
+%$$
+$icode%row_major% = %matrix%.row_major()
+%$$
+$icode%col_major% = %matrix%.col_major()
+%$$
+
+$head pattern$$
+This argument has prototype
+$codei%
+	const sparse_rc& %pattern%
+%$$
+It specifies the number of rows, number of columns and
+the possibly non-zero entries in the $icode matrix$$.
+
+$head matrix$$
+This is a sparse matrix object with the sparsity specified by $icode pattern$$.
+Only the $icode val$$ vector can be changed. All other values returned by
+$icode matrix$$ are fixed during the constructor and constant there after.
+The $icode val$$ vector is only changed by the constructor
+and the $code set$$ function.
+
+$head nr$$
+This return value has prototype
+$codei%
+	int %nr%
+%$$
+and is the number of rows in the matrix.
+
+$head nc$$
+This return value has prototype
+$codei%
+	int %nc%
+%$$
+and is the number of columns in the matrix.
+
+$head nnz$$
+This return value has prototype
+$codei%
+	int %nnz%
+%$$
+and is the number of possibly non-zero values in the matrix.
+
+$head put$$
+This function sets the value
+$codei%
+	%val%[%k%] = %v%
+%$$
+(The name $code set$$ is used by Cppad, but not used here,
+because $code set$$ it is a built-in name in Python.)
+
+$subhead k$$
+This argument has type
+$codei%
+	int %k%
+%$$
+and must be less than $icode nnz$$.
+
+$subhead v$$
+This argument has type
+$codei%
+	double %v%
+%$$
+It specifies the value assigned to $icode%val%[%k%]%$$.
+
+$head row$$
+This result has type
+$codei%
+	vec_int %row%
+%$$
+and its size is $icode nnz$$.
+For $icode%k% = 0, %...%, %nnz%-1%$$,
+$icode%row%[%k%]%$$ is the row index for the $th k$$ possibly non-zero
+entry in the matrix.
+
+$head col$$
+This result has type
+$codei%
+	vec_int %col%
+%$$
+and its size is $icode nnz$$.
+For $icode%k% = 0, %...%, %nnz%-1%$$,
+$icode%col%[%k%]%$$ is the column index for the $th k$$ possibly non-zero
+entry in the matrix.
+
+$head val$$
+This result has type
+$codei%
+	vec_double %val%
+%$$
+and its size is $icode nnz$$.
+For $icode%k% = 0, %...%, %nnz%-1%$$,
+$icode%val%[%k%]%$$ is the value of the $th k$$ possibly non-zero
+entry in the matrix (the value may be zero).
+
+$head row_major$$
+This vector has prototype
+$codei%
+	vec_int %row_major%
+%$$
+and its size $icode nnz$$.
+It sorts the sparsity pattern in row-major order.
+To be specific,
+$codei%
+	%col%[ %row_major%[%k%] ] <= %col%[ %row_major%[%k%+1] ]
+%$$
+and if $icode%col%[ %row_major%[%k%] ] == %col%[ %row_major%[%k%+1] ]%$$,
+$codei%
+	%row%[ %row_major%[%k%] ] < %row%[ %row_major%[%k%+1] ]
+%$$
+This routine generates an assert if there are two entries with the same
+row and column values (if $code NDEBUG$$ is not defined).
+
+$head col_major$$
+This vector has prototype
+$codei%
+	vec_int %col_major%
+%$$
+and its size $icode nnz$$.
+It sorts the sparsity pattern in column-major order.
+To be specific,
+$codei%
+	%row%[ %col_major%[%k%] ] <= %row%[ %col_major%[%k%+1] ]
+%$$
+and if $icode%row%[ %col_major%[%k%] ] == %row%[ %col_major%[%k%+1] ]%$$,
+$codei%
+	%col%[ %col_major%[%k%] ] < %col%[ %col_major%[%k%+1] ]
+%$$
+This routine generates an assert if there are two entries with the same
+row and column values (if $code NDEBUG$$ is not defined).
+
+$comment%
+	build/lib/example/cplusplus/sparse_rcv_xam.cpp%
+	build/lib/example/octave/sparse_rcv_xam.m%
+	build/lib/example/perl/sparse_rcv_xam.pm%
+	build/lib/example/python/sparse_rcv_xam.py
+%$$
+$head Example$$
+$comment/C++/sparse_rcv_xam.cpp/$$,
+$comment/Octave/sparse_rcv_xam.m/$$,
+$comment/Perl/sparse_rcv_xam.pm/$$,
+$comment/Python/sparse_rcv_xam.py/$$.
+
+$end
+*/
+// sparse_rcv ctor
+sparse_rcv::sparse_rcv(const sparse_rc& pattern)
+{	ptr_ = new CppAD::sparse_rcv< std::vector<size_t> , std::vector<double> >(
+		*pattern.ptr()
+	);
+	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+}
+// destructor
+sparse_rcv::~sparse_rcv(void)
+{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	delete ptr_;
+}
+// number of rows in matrix
+int sparse_rcv::nr(void) const
+{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	return ptr_->nr();
+}
+// number of columns in matrix
+int sparse_rcv::nc(void) const
+{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	return ptr_->nc();
+}
+// number of possibley non-zero elements in matrix
+int sparse_rcv::nnz(void) const
+{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	return ptr_->nnz();
+}
+// set row and column for a possibly non-zero element
+void sparse_rcv::put(int k, double v)
+{	ptr_->set(k, v);
+	return;
+}
+// row indices
+std::vector<int> sparse_rcv::row(void) const
+{	size_t nnz = ptr_->nnz();
+	std::vector<int> row(nnz);
+	for(size_t k = 0; k < nnz; k++)
+		row[k] = static_cast<int>( ptr_->row()[k] );
+	return row;
+}
+// col indices
+std::vector<int> sparse_rcv::col(void) const
+{	size_t nnz = ptr_->nnz();
+	std::vector<int> col(nnz);
+	for(size_t k = 0; k < nnz; k++)
+		col[k] = static_cast<int>( ptr_->col()[k] );
+	return col;
+}
+// values
+std::vector<double> sparse_rcv::val(void) const
+{	return ptr_->val(); }
+// row_major
+std::vector<int> sparse_rcv::row_major(void) const
+{	size_t nnz = ptr_->nnz();
+	std::vector<size_t> row_major = ptr_->row_major();
+	std::vector<int> result(nnz);
+	for(size_t k = 0; k < nnz; k++)
+		result[k] = static_cast<int>( row_major[k] );
+	return result;
+}
+// col_major
+std::vector<int> sparse_rcv::col_major(void) const
+{	size_t nnz = ptr_->nnz();
+	std::vector<size_t> col_major = ptr_->col_major();
+	std::vector<int> result(nnz);
+	for(size_t k = 0; k < nnz; k++)
+		result[k] = static_cast<int>( col_major[k] );
+	return result;
+}
 // ----------------------------------------------------------------------------
+
+
 } // END_CPPAD_SWIG_NAMESPACE

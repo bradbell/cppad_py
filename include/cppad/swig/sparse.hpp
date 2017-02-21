@@ -8,6 +8,8 @@
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
 # include <vector>
+# include <cppad/utility/sparse_rcv.hpp>
+
 # ifdef SWIG
 #	define CPPAD_SWIG_LIB_PUBLIC
 # else
@@ -19,20 +21,22 @@ namespace CppAD {
 	template <class SizeVector> class sparse_rc;
 }
 
-
 namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 
 // Swig class that acts the same as CppAD::sparse_rc< std::vector<size_t> >
 class CPPAD_SWIG_LIB_PUBLIC sparse_rc
-{	public:
-	// private members are not in Swig interface
+{	// private members are not in Swig interface
 	private:
 	// sparse_rc< std::vector<size_t> > representation
 	CppAD::sparse_rc< std::vector<size_t> >* ptr_;
 	// -----------------------------------------------------------------------
-	// public members are in Swig interface
+	// public members not in Swig interface (see %ignore ptr)
 	public:
-	// default ctor
+	const CppAD::sparse_rc< std::vector<size_t> >* ptr(void) const;
+	// -----------------------------------------------------------------------
+	// public members in Swig interface
+	public:
+	// constructor
 	sparse_rc(void);
 	// destructor
 	~sparse_rc(void);
@@ -50,6 +54,40 @@ class CPPAD_SWIG_LIB_PUBLIC sparse_rc
 	std::vector<int> row(void) const;
 	// column indices
 	std::vector<int> col(void) const;
+	// row-major order
+	std::vector<int> row_major(void) const;
+	// column-major order
+	std::vector<int> col_major(void) const;
+	// -----------------------------------------------------------------------
+};
+
+// Swig class that acts the same as CppAD::sparse_rcv< std::vector<size_t> >
+class CPPAD_SWIG_LIB_PUBLIC sparse_rcv
+{	// private members are not in Swig interface
+	private:
+	// sparse_rc< std::vector<size_t> > representation
+	CppAD::sparse_rcv< std::vector<size_t>, std::vector<double> >* ptr_;
+	// -----------------------------------------------------------------------
+	// public members are in Swig interface
+	public:
+	// constructor
+	sparse_rcv(const sparse_rc& pattern);
+	// destructor
+	~sparse_rcv(void);
+	// set k-th possibly non-zero value
+	void put(int k, const double v);
+	// number of rows in matrix
+	int nr(void) const;
+	// number of columns in matrix
+	int nc(void) const;
+	// number of possibly non-zero elements in matrix
+	int nnz(void) const;
+	// row indices
+	std::vector<int> row(void) const;
+	// column indices
+	std::vector<int> col(void) const;
+	// value of possibly non-zero matrix elements
+	std::vector<double> val(void) const;
 	// row-major order
 	std::vector<int> row_major(void) const;
 	// column-major order
