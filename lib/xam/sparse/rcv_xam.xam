@@ -1,0 +1,55 @@
+include(xam.m4)dnl this comments out end of line character
+Header_(sparse/sparse_rcv.xam)
+C_ -----------------------------------------------------------------------------
+C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+C_              This program is distributed under the terms of the
+C_              GNU General Public License version 3.0 or later see
+C_                    https://www.gnu.org/licenses/gpl-3.0.txt
+C_ -----------------------------------------------------------------------------
+C_ sparse_rcv
+C_ -----------------------------------------------------------------------------
+C_ BEGIN SOURCE
+BeginBoolFun_(ok, sparse_rcv_xam)
+	C_
+	C_ create sparsity pattern for n by n identity matrix
+	NewVar_(sparse_rc, pattern, ModuleCtor_(sparse_rc)())
+	NewVar_(int, n,  5)
+	Member_(pattern, resize)(Var_(n), Var_(n), Var_(n))Eos_
+	For_(k, Var_(n))
+		Member_(pattern, put)(Var_(k), Var_(k), Var_(k))Eos_
+	End_
+	C_
+	C_ create n by n sparse representation of identity matrix
+	NewVar_(sparse_rcv, matrix, ModuleCtor_(sparse_rcv)(Var_(pattern)))
+	For_(k, Var_(n))
+		Member_(matrix, put)(Var_(k), 1.0)Eos_
+	End_
+	C_
+	C_ row, column indices
+	NewVar_(vec_int,    row, Member_(matrix, row)())
+	NewVar_(vec_int,    col, Member_(matrix, col)())
+	NewVar_(vec_double, val, Member_(matrix, val)())
+	C_
+	C_ check results
+	For_(k, Var_(n))
+		AndAssign_(ok, VecGet_(row, Var_(k)) == Var_(k))
+		AndAssign_(ok, VecGet_(col, Var_(k)) == Var_(k))
+		AndAssign_(ok, VecGet_( val, Var_(k)) == 1.0)
+	End_
+	C_
+	C_ For this case, row_major and col_major order are same as original order
+	NewVar_(vec_int, row_major, Member_(matrix, row_major)())
+	NewVar_(vec_int, col_major, Member_(matrix, col_major)())
+	For_(k, Var_(n))
+		AndAssign_(ok, VecGet_(row_major, Var_(k)) == Var_(k))
+		AndAssign_(ok, VecGet_(col_major, Var_(k)) == Var_(k))
+	End_
+	C_
+	Return_(ok)
+End_
+C_ END SOURCE
+C_
+Omhelp_(sparse_rcv_xam,
+LangName_: Sparsity Patterns: Example and Test)
+Eof_

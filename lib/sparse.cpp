@@ -284,9 +284,6 @@ $$
 
 $section Sparse Matrices$$
 
-$head Under Construction$$
-This class is under construction and not yet suitable for public use.
-
 $head Syntax$$
 $icode%matrix% = %model_ref_%sparse_rcv(%pattern%)
 %$$
@@ -431,17 +428,17 @@ $codei%
 This routine generates an assert if there are two entries with the same
 row and column values (if $code NDEBUG$$ is not defined).
 
-$comment%
+$children%
 	build/lib/example/cplusplus/sparse_rcv_xam.cpp%
 	build/lib/example/octave/sparse_rcv_xam.m%
 	build/lib/example/perl/sparse_rcv_xam.pm%
 	build/lib/example/python/sparse_rcv_xam.py
 %$$
 $head Example$$
-$comment/C++/sparse_rcv_xam.cpp/$$,
-$comment/Octave/sparse_rcv_xam.m/$$,
-$comment/Perl/sparse_rcv_xam.pm/$$,
-$comment/Python/sparse_rcv_xam.py/$$.
+$cref/C++/sparse_rcv_xam.cpp/$$,
+$cref/Octave/sparse_rcv_xam.m/$$,
+$cref/Perl/sparse_rcv_xam.pm/$$,
+$cref/Python/sparse_rcv_xam.py/$$.
 
 $end
 */

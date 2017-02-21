@@ -43,6 +43,7 @@ my @fun_list = (
 	'a_fun_reverse_xam',
 	'a_fun_abort_xam',
 	'sparse_rc_xam',
+	'sparse_rcv_xam',
 	'other_error_message_xam'
 );
 for( my $i = 0; $i <= $#fun_list; $i++)
