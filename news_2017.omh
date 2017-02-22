@@ -14,9 +14,17 @@ $spell
 	obj
 	ptr
 	setitem
+	txt
+	cygwin
 $$
 
 $section Cppad Swig Changes during 2017$$
+
+$head 02-22$$
+The command $code make check_lib__perl$$
+was not working on cygwin because of an error in
+$code lib/example/perl/CMakeLists.txt$$.
+This has been fixed (but is still not working on cygwin).
 
 $head 02-21$$
 Add the $cref/supporting packages/cppad_swig/Supporting Packages/$$

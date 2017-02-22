@@ -63,7 +63,7 @@ IF ( PERLLIBS_FOUND )
 	SWIG_ADD_MODULE(pm_cppad perl ${swig_control_file} )
 
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
-	SWIG_LINK_LIBRARIES(pm_cppad cppad_swig_lib ${PYTHON_LIBRARIES})
+	SWIG_LINK_LIBRARIES(pm_cppad cppad_swig_lib ${PERL_LIBRARIES})
 
 	# additional flags for compiling Swig wrapper
 	SET_TARGET_PROPERTIES( ${SWIG_MODULE_pm_cppad_REAL_NAME}
