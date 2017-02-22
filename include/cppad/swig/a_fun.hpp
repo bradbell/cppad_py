@@ -9,11 +9,7 @@
 ----------------------------------------------------------------------------- */
 # include <vector>
 # include <cppad/swig/a_double.hpp>
-# ifdef SWIG
-#	define CPPAD_SWIG_LIB_PUBLIC
-# else
-#	include <cppad_swig_lib_export.h>
-# endif
+# include <cppad/swig/public_lib.hpp>
 
 // declarations without definitions
 namespace CppAD {
