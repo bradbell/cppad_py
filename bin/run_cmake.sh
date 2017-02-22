@@ -73,7 +73,11 @@ echo_eval cd ../..
 # -----------------------------------------------------------------------------
 if [ -e CMakeCache.txt ]
 then
-	echo_eval make clean
+	echo_eval rm CMakeCache.txt
+fi
+if [ -e CMakeFiles ]
+then
+	echo_eval rm -r CMakeFiles
 fi
 cmake \
 	-G "$cmake_generator" \

@@ -67,10 +67,11 @@ installed by $cref run_cmake.sh$$.
 The following packages are not automatically installed:
 
 $subhead Required$$
-$href%http://www.swig.org/download.html%Swig%$$,
-$href%https://git-scm.com/download/linux%Git%$$,
-$href%https://cmake.org/download%Cmake%$$,
 $href%https://en.wikipedia.org/wiki/C++%C++%$$,
+$href%https://cmake.org%Cmake%$$,
+$href%https://git-scm.com%Git%$$,
+$href%https://www.gnu.org/software/m4/m4.html%m4%$$,
+$href%http://www.swig.org%Swig%$$,
 
 $subhead Optional$$
 $href%https://www.gnu.org/software/octave/#install%Octave%$$,
