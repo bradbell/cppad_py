@@ -9,9 +9,10 @@
 ---------------------------------------------------------------------------- */
 # include <exception>
 # include <string>
+# include <cppad/swig/public_lib.hpp>
 
 namespace cppad_swig {
-	class exception : public std::exception
+	class CPPAD_SWIG_LIB_PUBLIC exception : public std::exception
 	{	public:
 		// message for this exception
 		const std::string message_;
@@ -22,6 +23,7 @@ namespace cppad_swig {
 		// what
 		virtual const char* what(void) const throw();
 	};
+	CPPAD_SWIG_LIB_PUBLIC
 	const char* error_message(const char* message) throw(cppad_swig::exception);
 }
 

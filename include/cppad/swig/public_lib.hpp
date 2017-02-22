@@ -7,12 +7,10 @@
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
-# ifdef SWIG
-#	define cppad_swig_lib_EXPORTS
-# endif
 
-// this file is automatically created by lib/CMakeLists.txt
-// It defines CPPAD_SWIG_LIB_PUBLIC as the prototype for export or import
+// The file included below is automatically created by lib/CMakeLists.txt.
+// If cppad_swig_lib_EXPORTS is defined (not defined), CPPAD_SWIG_LIB_PUBLIC
+// is defined as the proper prototype for for export (import) of the library.
 # include <cppad_swig_lib_export.h>
 
 # endif
