@@ -30,8 +30,8 @@ test_cppad='no'
 # -----------------------------------------------------------------------------
 # CppAD version information
 remote_repo='https://github.com/coin-or/CppAD.git'
-version='20170219'
-hash_code='6db3ea273d6125798d4452302236d422d7858dab'
+version='20170221'
+hash_code='1577ac668ab2c5241346b7c9a359181df7214ac0'
 # -----------------------------------------------------------------------------
 # Change into cmake binary directory
 if [ ! -e "$cmake_binary_dir" ]

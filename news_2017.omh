@@ -18,6 +18,10 @@ $$
 
 $section Cppad Swig Changes during 2017$$
 
+$head 02-21$$
+Add the $cref/supporting packages/cppad_swig/Supporting Packages/$$
+heading to aid the install procedure.
+
 $head 02-20$$
 $list number$$
 Change all the $code size_t$$ variables in the interface to by
