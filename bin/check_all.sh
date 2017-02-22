@@ -43,7 +43,7 @@ for check in $list
 do
 	if [ "$check" != 'bin/check_all.sh' ]
 	then
-		echo_eval $check
+		echo_eval_log $check
 	fi
 done
 echo_eval_log bin/run_cmake.sh
