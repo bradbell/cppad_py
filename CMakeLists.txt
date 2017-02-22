@@ -8,6 +8,8 @@
 # preamble
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 PROJECT(cppad_swig)
+# Suppress warnging that WIN32 not defined on cygwin
+SET(CMAKE_LEGACY_CYGWIN_WIN32 0)
 # =============================================================================
 # MACROS
 # =============================================================================
