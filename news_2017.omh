@@ -15,16 +15,25 @@ $spell
 	ptr
 	setitem
 	txt
-	cygwin
+	Cygwin
+	lang
+	Dll
 $$
 
 $section Cppad Swig Changes during 2017$$
 
+$head 02-23$$
+Fix Cygwin version of $codei%make check_lib_%lang%$$ for $icode lang$$ equal to
+$code python$$ and $code perl$$. (The execution path needs to include
+the directory where the $code cppad_swig_lib$$ Dll is located.)
+This make command is still not working on Cygwin when
+$icode lang$$ is $code octave$$.
+
 $head 02-22$$
 The command $code make check_lib__perl$$
-was not working on cygwin because of an error in
+was not working on Cygwin because of an error in
 $code lib/example/perl/CMakeLists.txt$$.
-This has been fixed (but is still not working on cygwin).
+This has been fixed (but is still not working on Cygwin).
 
 $head 02-21$$
 Add the $cref/supporting packages/cppad_swig/Supporting Packages/$$

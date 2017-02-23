@@ -8,6 +8,8 @@
 use strict;
 use warnings;
 use feature 'say';
+# on cygwin, cppad_swig_lib.dll is in ../.. directory
+$ENV{PATH}="../..:$ENV{PATH}";
 #
 my $error_count = 0;
 sub run_test

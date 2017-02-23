@@ -5,6 +5,9 @@
 %              GNU General Public License version 3.0 or later see
 %                    https://www.gnu.org/licenses/gpl-3.0.txt
 % -----------------------------------------------------------------------------
+% on cygwin, cppad_swig_lib.dll is in ../.. directory
+setenv('PATH', strcat( '../..:' , getenv('PATH') ) )
+%
 error_count = 0;
 function ok = run_test(name)
 	eval( strcat( 'ok = ' , name , '();' ) )

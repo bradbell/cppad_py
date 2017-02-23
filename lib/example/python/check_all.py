@@ -7,8 +7,8 @@
 # -----------------------------------------------------------------------------
 import sys
 import os
-# cppad_swig_lib.dll is in .. directory
-os.environ['PATH'] = '..;' + os.environ['PATH']
+# on cygwin, cppad_swig_lib.dll is in ../.. directory
+os.environ['PATH'] = '../..:' + os.environ['PATH']
 #
 error_count = 0
 def run_test(name) :
