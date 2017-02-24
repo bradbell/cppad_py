@@ -28,6 +28,7 @@ class CPPAD_SWIG_LIB_PUBLIC sparse_rc
 	// public members not in Swig interface (see %ignore ptr)
 	public:
 	const CppAD::sparse_rc< std::vector<size_t> >* ptr(void) const;
+	CppAD::sparse_rc< std::vector<size_t> >* ptr(void);
 	// -----------------------------------------------------------------------
 	// public members in Swig interface
 	public:

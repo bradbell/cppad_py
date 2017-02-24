@@ -79,7 +79,10 @@ def $2() :
 define(Return_, return( $1 ))
 
 # -----------------------------------------------------------------------------
-# Other
+# Control flow
 
 # For_(variable, upper)
 define(For_, for $1 in range( $2 ) :)
+
+# If_(expression)
+define(If_, if $1 :)

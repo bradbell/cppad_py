@@ -10,6 +10,7 @@
 # include <vector>
 # include <cppad/swig/a_double.hpp>
 # include <cppad/swig/public_lib.hpp>
+# include <cppad/swig/sparse.hpp>
 
 // declarations without definitions
 namespace CppAD {
@@ -60,6 +61,17 @@ class CPPAD_SWIG_LIB_PUBLIC a_fun
 	int size_dep(void) const;
 	int size_var() const;
 	int size_op() const;
+	// ------------------------------------------------------------------------
+	// public member in Swig interface that compute sparse results
+	// (these are implemented in sparse.cpp isntead of a_fun.cpp).
+	void for_jac_sparsity(
+		const sparse_rc&  pattern_in    ,
+		sparse_rc&        pattern_out
+	);
+	void rev_jac_sparsity(
+		const sparse_rc&  pattern_in    ,
+		sparse_rc&        pattern_out
+	);
 };
 
 } // END_CPPAD_SWIG_NAMESPACE

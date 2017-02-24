@@ -8,6 +8,7 @@
 # include <cppad/cppad.hpp>
 # include <cppad/swig/sparse.hpp>
 # include <cppad/swig/vector.hpp>
+# include <cppad/swig/a_fun.hpp>
 
 namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 
@@ -194,6 +195,8 @@ $end
 // ---------------------------------------------------------------------------
 // public member function not in Swig interface (see %ignore ptr)
 const CppAD::sparse_rc< std::vector<size_t> >* sparse_rc::ptr(void) const
+{	return ptr_; }
+CppAD::sparse_rc< std::vector<size_t> >* sparse_rc::ptr(void)
 {	return ptr_; }
 // ---------------------------------------------------------------------------
 // sparse_rc ctor
@@ -512,6 +515,127 @@ std::vector<int> sparse_rcv::col_major(void) const
 	return result;
 }
 // ----------------------------------------------------------------------------
+/*
+$begin jac_sparsity$$
+$spell
+	af
+	Jacobian
+	jac
+	bool
+	const
+	rc
+	cpp
+	Perl
+$$
+
+$section Jacobian Sparsity Patterns$$
+
+$head Syntax$$
+$icode%af%.for_jac_sparsity(%pattern_in%, %pattern_out%)
+%$$
+$icode%af%.rev_jac_sparsity(%pattern_in%, %pattern_out%)%$$
+
+$head Purpose$$
+We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
+function corresponding to the operation sequence stored in $icode af$$.
+
+$subhead for_jac_sparsity$$
+Fix $latex R \in \B{R}^{n \times \ell}$$ and define the function
+$latex \[
+	J(x) = F^{(1)} ( x ) * R
+\] $$
+Given a sparsity pattern for $latex R$$,
+$code for_jac_sparsity$$ computes a sparsity pattern for $latex J(x)$$.
+
+$subhead rev_jac_sparsity$$
+Fix $latex R \in \B{R}^{\ell \times m}$$ and define the function
+$latex \[
+	J(x) = R * F^{(1)} ( x )
+\] $$
+Given a sparsity pattern for $latex R$$,
+$code rev_jac_sparsity$$ computes a sparsity pattern for $latex J(x)$$.
+
+$head x$$
+Note that a sparsity pattern for $latex J(x)$$ corresponds to the
+operation sequence stored in $icode af$$ and does not depend on
+the argument $icode x$$.
+
+$head af$$
+The object $icode af$$ has prototype
+$codei%
+	a_fun %af%
+%$$
+The object $icode af$$ is not $code const$$ when using
+$code for_jac_sparsity$$.
+After a call to $code for_jac_sparsity$$, a sparsity pattern
+for each of the variables in the operation sequence
+is held in $icode af$$ for possible later use during
+reverse Hessian sparsity calculations.
+
+$head pattern_in$$
+The argument $icode pattern_in$$ has prototype
+$codei%
+	const sparse_rc& %pattern_in%
+%$$
+see $cref sparse_rc$$.
+This is a sparsity pattern for $latex R$$.
+
+$head pattern_out$$
+This argument has prototype
+$codei%
+	sparse_rc<%SizeVector%>& %pattern_out%
+%$$
+This input value of $icode pattern_out$$ does not matter.
+Upon return $icode pattern_out$$ is a sparsity pattern for
+$latex J(x)$$.
+
+$head Sparsity for Entire Jacobian$$
+Suppose that $latex R$$ is the identity matrix.
+In this case, $icode pattern_out$$ is a sparsity pattern for
+$latex F^{(1)} ( x )$$.
+
+$children%
+	build/lib/example/cplusplus/sparse_jac_pattern_xam.cpp%
+	build/lib/example/octave/sparse_jac_pattern_xam.m%
+	build/lib/example/perl/sparse_jac_pattern_xam.pm%
+	build/lib/example/python/sparse_jac_pattern_xam.py
+%$$
+$head Example$$
+$cref/C++/sparse_jac_pattern_xam.cpp/$$,
+$cref/Octave/sparse_jac_pattern_xam.m/$$,
+$cref/Perl/sparse_jac_pattern_xam.pm/$$,
+$cref/Python/sparse_jac_pattern_xam.py/$$.
+
+$end
+-----------------------------------------------------------------------------
+*/
+void a_fun::for_jac_sparsity(
+	const sparse_rc&  pattern_in    ,
+	sparse_rc&        pattern_out   )
+{	const CppAD::sparse_rc< std::vector<size_t> >* ptr_in  = pattern_in.ptr();
+	CppAD::sparse_rc< std::vector<size_t> >*       ptr_out = pattern_out.ptr();
+	bool transpose     = false;
+	bool dependency    = false;
+	bool internal_bool = false;
+	ptr_->for_jac_sparsity(
+		*ptr_in, transpose, dependency, internal_bool, *ptr_out
+	);
+	return;
+}
+void a_fun::rev_jac_sparsity(
+	const sparse_rc&  pattern_in    ,
+	sparse_rc&        pattern_out   )
+{	const CppAD::sparse_rc< std::vector<size_t> >* ptr_in  = pattern_in.ptr();
+	CppAD::sparse_rc< std::vector<size_t> >*       ptr_out = pattern_out.ptr();
+	bool transpose     = false;
+	bool dependency    = false;
+	bool internal_bool = false;
+	ptr_->rev_jac_sparsity(
+		*ptr_in, transpose, dependency, internal_bool, *ptr_out
+	);
+	return;
+}
+
 
 
 } // END_CPPAD_SWIG_NAMESPACE

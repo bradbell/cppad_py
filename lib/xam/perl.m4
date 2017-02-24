@@ -84,7 +84,10 @@ sub $2() {
 define(Return_, return( `$'$1 );)
 
 # -----------------------------------------------------------------------------
-# Other
+# Control Flow
 
 # For_(variable, upper)
 define(For_, for(my `$'$1 = 0; `$'$1 < $2; `$'$1++) {)
+
+# If_(expression)
+define(If_, if( $1 ) {)

@@ -29,6 +29,7 @@ extern bool a_fun_reverse_xam(void);
 extern bool a_fun_abort_xam(void);
 extern bool sparse_rc_xam(void);
 extern bool sparse_rcv_xam(void);
+extern bool sparse_jac_pattern_xam(void);
 extern bool other_error_message_xam(void);
 
 namespace {
@@ -72,6 +73,7 @@ int main(void)
 	ok &= Run( a_fun_abort_xam,           "a_fun_abort_xam"           );
 	ok &= Run( sparse_rc_xam,             "sparse_rc_xam" );
 	ok &= Run( sparse_rcv_xam,            "sparse_rcv_xam" );
+	ok &= Run( sparse_jac_pattern_xam,    "sparse_jac_pattern_xam" );
 	ok &= Run( other_error_message_xam,   "other_error_message_xam" );
 	//
 	assert( ok || (Run_error_count > 0) );

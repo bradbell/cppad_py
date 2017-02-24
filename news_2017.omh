@@ -18,9 +18,13 @@ $spell
 	Cygwin
 	lang
 	Dll
+	Jacobian
 $$
 
 $section Cppad Swig Changes during 2017$$
+
+$head 02-24$$
+Add calculation of Jacobian sparsity patterns, $cref jac_sparsity$$.
 
 $head 02-23$$
 Fix Cygwin version of $codei%make check_lib_%lang%$$ for $icode lang$$ equal to

@@ -15,8 +15,8 @@
 
 %{
 # include <cppad/swig/a_double.hpp>
-# include <cppad/swig/a_fun.hpp>
 # include <cppad/swig/sparse.hpp>
+# include <cppad/swig/a_fun.hpp>
 # include <cppad/swig/vector.hpp>
 # include <cppad/swig/other.hpp>
 %}
@@ -73,8 +73,8 @@ $end
 %ignore  ptr;
 %include "std_vector.i"
 %include <cppad/swig/a_double.hpp>
-%include <cppad/swig/a_fun.hpp>
 %include <cppad/swig/sparse.hpp>
+%include <cppad/swig/a_fun.hpp>
 %include <cppad/swig/other.hpp>
 
 %template(vec_int)       std::vector<int>;
