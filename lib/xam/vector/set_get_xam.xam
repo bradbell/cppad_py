@@ -11,22 +11,32 @@ C_ std::vector<double>
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun_(ok, vector_set_get_xam)
-	NewVar_(int, n_ind, 4)
-	NewVar_(vec_double, v, ModuleCtor_(vec_double)(Var_(n_ind)))
-	NewVar_(vec_a_double, av, ModuleCtor_(vec_a_double)(Var_(n_ind)))
+	NewVar_(int, n, 4)
+	NewVar_(vec_bool, bv, ModuleCtor_(vec_bool)(Var_(n)))
+	NewVar_(vec_int, iv, ModuleCtor_(vec_int)(Var_(n)))
+	NewVar_(vec_double, dv, ModuleCtor_(vec_double)(Var_(n)))
+	NewVar_(vec_a_double, av, ModuleCtor_(vec_a_double)(Var_(n)))
 	C_
 	C_ setting elements
-	For_(i, Var_(n_ind) )
-		VecSet_(v, Var_(i), 2.0 * Var_(i))
-		VecSet_(av, Var_(i), ModuleCtor_(a_double)(2.0 * Var_(i)))
+	For_(i, Var_(n) )
+		VecSet_(bv, Var_(i), Var_(i) > Var_(n) / 2)
+		VecSet_(iv, Var_(i), 2 * Var_(i))
+		VecSet_(dv, Var_(i), 3.0 * Var_(i))
+		VecSet_(av, Var_(i), ModuleCtor_(a_double)(4.0 * Var_(i)))
 	End_
-	C_ getting elements
-	For_(i, Var_(n_ind) )
-		NewVar_(double, e, VecGet_(v, Var_(i)))
-		AndAssign_(ok, Var_(e) == 2.0 * Var_(i))
+	C_
+	For_(i, Var_(n) )
+		NewVar_(bool, be, VecGet_(bv, Var_(i)))
+		AndAssign_(ok, Var_(be) == (Var_(i) > Var_(n) / 2) )
+		C_
+		NewVar_(int, ie, VecGet_(iv, Var_(i)))
+		AndAssign_(ok, Var_(ie) == 2 * Var_(i) )
+		C_
+		NewVar_(double, de, VecGet_(dv, Var_(i)))
+		AndAssign_(ok, Var_(de) == 3.0 * Var_(i) )
 		C_
 		NewVar_(a_double, ae, VecGet_(av, Var_(i)))
-		AndAssign_(ok, Member_(ae, value)() == 2.0 * Var_(i))
+		AndAssign_(ok, Member_(ae, value)() == 4.0 * Var_(i) )
 	End_
 	C_
 	Return_(ok)

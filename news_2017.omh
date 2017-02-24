@@ -19,12 +19,19 @@ $spell
 	lang
 	Dll
 	Jacobian
+	bool
 $$
 
 $section Cppad Swig Changes during 2017$$
 
 $head 02-24$$
+$list number$$
 Add calculation of Jacobian sparsity patterns, $cref jac_sparsity$$.
+$lnext
+Improve the documentation and examples for $cref/vectors/vector/$$.
+In addition,
+add $cref/vec_bool/vector_ctor/vec_bool/$$ to the list of vector types
+$lend
 
 $head 02-23$$
 Fix Cygwin version of $codei%make check_lib_%lang%$$ for $icode lang$$ equal to

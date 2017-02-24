@@ -12,6 +12,7 @@
 
 namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 
+typedef std::vector<bool>                 vec_bool;
 typedef std::vector<int>                  vec_int;
 typedef std::vector<double>               vec_double;
 typedef std::vector<cppad_swig::a_double> vec_a_double;

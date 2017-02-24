@@ -12,12 +12,19 @@ $spell
 	av
 	Perl
 	py
+	bv
+	bool
+	dv
 $$
 
 $section Cppad Swig Vector Constructors$$
 
 $head Syntax$$
-$icode%v%  = %module_ref% vec_double(%n%)
+$icode%bv%  = %module_ref% vec_bool(%n%)
+%$$
+$icode%iv%  = %module_ref% vec_int(%n%)
+%$$
+$icode%dv%  = %module_ref% vec_double(%n%)
 %$$
 $icode%av% = %module_ref% vec_a_double(%n%)
 %$$
@@ -30,19 +37,23 @@ This is a $cref/module reference/module/Module Reference/$$
 for the particular language.
 
 $head n$$
-The argument $icode n$$ is a non-negative integer.
-If it is not present, the default value zero is used.
+The argument $icode n$$ is a non-negative integer with default value zero;
+i.e., if it is not present, zero is used.
 
-$head v$$
-This result is a vector with elements of type $code double$$
+$head vec_bool$$
+This result $icode bv$$ is a vector with elements of type $code bool$$
 
-$head av$$
-This result is a vector with elements of type
-$cref a_double$$.
+$head vec_int$$
+This result $icode bv$$ is a vector with elements of type $code int$$
+
+$head vec_double$$
+This result $icode bv$$ is a vector with elements of type $code double$$
+
+$head vec_a_double$$
+This result $code av$$ is a vector with elements of type $cref a_double$$.
 
 $head Example$$
-All of the other vector examples use a
-$code vec_double$$ or $code vec_a_double$$ constructor.
+All of the other vector examples use the vector constructors.
 
 $end
 -------------------------------------------------------------------------------
@@ -52,6 +63,7 @@ $spell
 	Cppad
 	Perl
 	const
+	bool
 $$
 
 $section Size of a Vector$$
@@ -62,8 +74,10 @@ $icode%n% = %v%.size()%$$
 $head v$$
 The object $icode v$$ has one of the following prototypes:
 $codei%
-	const vec_double& %v%
-	const vec_a_double&     %v%
+	const vec_bool&      %v%
+	const vec_int&       %v%
+	const vec_double&    %v%
+	const vec_a_double&  %v%
 %$$
 
 $head n$$
@@ -94,6 +108,7 @@ $spell
 	Cppad
 	Perl
 	const
+	bool
 $$
 
 $section Setting and Getting Vector Elements$$
@@ -104,6 +119,11 @@ $icode%u%[%i%] = %x%
 $icode%y% = %v%[%i%]
 %$$
 
+$head element_type$$
+We use $icode element_type$$ to denote the type of elements in the
+vector. It must be one of the following types:
+$code bool$$, $code int$$, $code double$$, $code a_double$$.
+
 $head i$$
 This argument has prototype
 $codei%
@@ -111,43 +131,28 @@ $codei%
 %$$
 It must be between zero and the size of the vector minus one.
 
-
 $head u$$
-The object $icode u$$ has one of the following prototypes:
+The object $icode u$$ has prototype
 $codei%
-	vec_double& %u%
-	vec_a_double&     %u%
+	vec_%element_type%&   %u%
 %$$
 
 $head x$$
-If $icode u$$ has type $code vec_double$$,
-$icode x$$ has prototype
+The argument $icode x$$ has prototype
 $codei%
-	const double& %x%
-%$$
-If $icode u$$ has type $code vec_a_double$$,
-$icode x$$ has prototype
-$codei%
-	const a_double& %x%
+	const %element_type%& %x%
 %$$
 
 $head v$$
-The object $icode v$$ has one of the following prototypes:
+The object $icode v$$ has the following prototype
 $codei%
-	const vec_double& %v%
-	const vec_a_double&     %v%
+	const vec_%element_type%& %v%
 %$$
 
 $head y$$
-If $icode v$$ has type $code vec_double$$,
-$icode y$$ has prototype
+The result $icode y$$ has prototype
 $codei%
-	double %y%
-%$$
-If $icode v$$ has type $code vec_a_double$$,
-$icode y$$ has prototype
-$codei%
-	a_double %y%
+	%element_type% %y%
 %$$
 
 $head Octave$$
