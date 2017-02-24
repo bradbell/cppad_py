@@ -11,14 +11,12 @@ delete_list='
 revert_list='
 '
 move_list='
-	lib/xam/error/error_message_xam.xam
 '
 move_sed='s|error/error_|error/|'
 #
 cat << EOF > junk.sed
-s|error_error_message|error_message|
-s|error/error_message|error/message|
-: end
+s|CPPAD_ASSERT_UNKNOWN|CPPAD_SWIG_ASSERT_UNKNOWN|
+s|CPPAD_ASSERT_KNOWN|CPPAD_SWIG_ASSERT_KNOWN|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

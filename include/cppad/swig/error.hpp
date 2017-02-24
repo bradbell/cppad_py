@@ -1,5 +1,5 @@
-# ifndef CPPAD_SWIG_A_OTHER_HPP
-# define CPPAD_SWIG_A_OTHER_HPP
+# ifndef CPPAD_SWIG_ERROR_HPP
+# define CPPAD_SWIG_ERROR_HPP
 /* ----------------------------------------------------------------------------
           cppad_swig: A C++ Object Library and Swig Interface to Cppad
            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -26,5 +26,19 @@ namespace cppad_swig {
 	CPPAD_SWIG_LIB_PUBLIC
 	const char* error_message(const char* message) throw(cppad_swig::exception);
 }
+
+# ifdef NDEBUG
+# define CPPAD_SWIG_ASSERT_UNKNOWN(exp)  // do nothing
+# else
+# define CPPAD_SWIG_ASSERT_UNKNOWN(exp) \
+{	if( ! ( exp ) ) error_message( #exp " is false in " __FILE__ ); }
+# endif
+
+# ifdef NDEBUG
+# define CPPAD_SWIG_ASSERT_KNOWN(exp, msg)  // do nothing
+# else
+# define CPPAD_SWIG_ASSERT_KNOWN(exp, msg) \
+{	if( ! ( exp ) ) error_message(msg); }
+# endif
 
 # endif

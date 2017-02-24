@@ -6,7 +6,8 @@
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
 # include <cppad/cppad.hpp>
-# include <cppad/swig/cppad_swig.hpp>
+# include <cppad/swig/error.hpp>
+# include <cppad/swig/a_double.hpp>
 
 // ---------------------------------------------------------------------------
 // Macros
@@ -55,7 +56,7 @@ const CppAD::AD<double>* a_double::ptr(void) const
 }
 // ctor from CppAD::AD<double>
 a_double::a_double(const CppAD::AD<double>* ad_ptr)
-{	CPPAD_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+{	CPPAD_SWIG_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
 	new ( & data_ ) CppAD::AD<double>(*ad_ptr);
 }
 /*
@@ -116,17 +117,17 @@ $end
 // default a_double ctor
 a_double::a_double(void)
 {	// placement version of new operator uses this->data_ for memory
-	CPPAD_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+	CPPAD_SWIG_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
 	new ( & data_ ) CppAD::AD<double>();
 }
 // a_double ctor from double
 a_double::a_double(const double& d)
-{	CPPAD_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+{	CPPAD_SWIG_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
 	new ( & data_ ) CppAD::AD<double>(d);
 }
 // ctor from a_double
 a_double::a_double(const a_double& ad)
-{	CPPAD_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+{	CPPAD_SWIG_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
 	new ( & data_ ) CppAD::AD<double>(*ad.ptr());
 }
 // a_double destructor

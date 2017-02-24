@@ -9,6 +9,7 @@
 # include <cppad/swig/sparse.hpp>
 # include <cppad/swig/vector.hpp>
 # include <cppad/swig/a_fun.hpp>
+# include <cppad/swig/error.hpp>
 
 namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 
@@ -202,32 +203,32 @@ CppAD::sparse_rc< std::vector<size_t> >* sparse_rc::ptr(void)
 // sparse_rc ctor
 sparse_rc::sparse_rc(void)
 {	ptr_ = new CppAD::sparse_rc< std::vector<size_t> >();
-	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 // destructor
 sparse_rc::~sparse_rc(void)
-{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	delete ptr_;
 }
 // resize
 void sparse_rc::resize(int nr, int nc, int nnz)
-{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	ptr_->resize(nr, nc, nnz);
 	return;
 }
 // number of rows in matrix
 int sparse_rc::nr(void) const
-{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nr();
 }
 // number of columns in matrix
 int sparse_rc::nc(void) const
-{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nc();
 }
 // number of possibley non-zero elements in matrix
 int sparse_rc::nnz(void) const
-{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nnz();
 }
 // set row and column for a possibly non-zero element
@@ -450,26 +451,26 @@ sparse_rcv::sparse_rcv(const sparse_rc& pattern)
 {	ptr_ = new CppAD::sparse_rcv< std::vector<size_t> , std::vector<double> >(
 		*pattern.ptr()
 	);
-	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 // destructor
 sparse_rcv::~sparse_rcv(void)
-{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	delete ptr_;
 }
 // number of rows in matrix
 int sparse_rcv::nr(void) const
-{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nr();
 }
 // number of columns in matrix
 int sparse_rcv::nc(void) const
-{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nc();
 }
 // number of possibley non-zero elements in matrix
 int sparse_rcv::nnz(void) const
-{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nnz();
 }
 // set row and column for a possibly non-zero element

@@ -169,11 +169,11 @@ $end
 // a_fun(void) (not yet documented or tested)
 a_fun::a_fun(void)
 {	ptr_ = new CppAD::ADFun<double>();
-	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 // destructor
 a_fun::~a_fun(void)
-{	CPPAD_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	delete ptr_;
 }
 // a_fun(ax, ay)
