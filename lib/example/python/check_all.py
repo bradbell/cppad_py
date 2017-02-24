@@ -40,7 +40,7 @@ fun_list = [
 	'sparse_rc_xam',
 	'sparse_rcv_xam',
 	'sparse_jac_pattern_xam',
-	'error_error_message_xam'
+	'error_message_xam'
 ]
 for name in fun_list :
 	run_test(name)

@@ -11,28 +11,13 @@ delete_list='
 revert_list='
 '
 move_list='
-	lib/xam/other
-	lib/other.cpp
-	include/cppad/swig/other.hpp
+	lib/xam/error/error_message_xam.xam
 '
-move_sed='s|other|error|'
+move_sed='s|error/error_|error/|'
 #
 cat << EOF > junk.sed
-/begin other/! b one
-N
-s|\$|\\
-	messaging|
-s|begin other|begin error|
-b end
-#
-: one
-s|other.hpp|error.hpp|
-s|other.cpp|error.cpp|
-s|begin other|begin error|
-s|Cppad Swig Other Functions and Documentation|Cppad Swig Error Messaging|
-s|other/error_message_xam.xam|error/error_message_xam.xam|
-s|other_error_message_xam|error_error_message_xam|
-#
+s|error_error_message|error_message|
+s|error/error_message|error/message|
 : end
 EOF
 # -----------------------------------------------------------------------------

@@ -38,7 +38,7 @@ fun_list = {
 	'sparse_rc_xam',
 	'sparse_rcv_xam',
 	'sparse_jac_pattern_xam',
-	'error_error_message_xam'
+	'error_message_xam'
 }';
 for fun = fun_list
 	name  = cell2mat(fun);
