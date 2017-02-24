@@ -14,7 +14,8 @@ $comment -------------------------------------------------------------
 Latex macros used throughout Cppad Swig documentation
 $$
 $latex
-\newcommand{\B}[1]{ {\rm #1} }
+\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }
 $$
 $comment -------------------------------------------------------------$$
 $spell

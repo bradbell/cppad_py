@@ -26,7 +26,8 @@ $section Cppad Swig Changes during 2017$$
 
 $head 02-24$$
 $list number$$
-Add calculation of Jacobian sparsity patterns, $cref jac_sparsity$$.
+Add calculation of Jacobian sparsity $cref jac_sparsity$$
+and Hessian sparsity $cref hes_sparsity$$.
 $lnext
 Improve the documentation and examples for $cref/vectors/vector/$$.
 In addition,

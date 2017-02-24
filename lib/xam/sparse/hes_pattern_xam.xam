@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-Header_(sparse/jac_pattern_xam.xam)
+Header_(sparse/hes_pattern_xam.xam)
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -10,7 +10,7 @@ C_ -----------------------------------------------------------------------------
 C_ std::vector<a_double>
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
-BeginBoolFun_(ok, sparse_jac_pattern_xam)
+BeginBoolFun_(ok, sparse_hes_pattern_xam)
 	C_ number of dependent and independent variables
 	NewVar_(int, n, 3)
 	C_
@@ -21,52 +21,57 @@ BeginBoolFun_(ok, sparse_jac_pattern_xam)
 	End_
 	NewVar_(vec_a_double, ax, Module_(independent)(Var_(x)))
 	C_
-	C_ create dependent variables ay with ay[i] = ax[j]
-	C_ where i = mod(j + 1, n)
+	C_ create dependent variables ay with ay[i] = ax[j] * ax[ (j+1) mod n ]
 	NewVar_(vec_a_double, ay, ModuleCtor_(vec_a_double)(Var_(n)))
 	For_(j, Var_(n) )
 		NewVar_(int, i, Var_(j)+1)
 		If_( Var_(i) >= Var_(n) )
 			Assign_(i, Var_(i) - Var_(n))
 		End_
-		NewVar_(a_double, ay_i, VecGet_(ax, Var_(j)))
+		NewVar_(a_double, ay_i, VecGet_(ax, Var_(i)) * VecGet_(ax, Var_(j)))
 		VecSet_(ay, Var_(i), Var_(ay_i))
 	End_
 	C_
 	C_ define af corresponding to f(x)
 	NewVar_(a_fun, af, ModuleCtor_(a_fun)(Var_(ax), Var_(ay)))
 	C_
-	C_ sparsity pattern for identity matrix
-	NewVar_(sparse_rc, pat_in, ModuleCtor_(sparse_rc)())
-	Member_(pat_in, resize)(Var_(n), Var_(n), Var_(n))Eos_
-	For_(k, Var_(n))
-		Member_(pat_in, put)(Var_(k), Var_(k), Var_(k))Eos_
+	C_ Set select_d (domain) to all true, initial select_r (range) to all false
+	NewVar_(vec_bool, select_d, ModuleCtor_(vec_bool)(Var_(n)))
+	NewVar_(vec_bool, select_r, ModuleCtor_(vec_bool)(Var_(n)))
+	For_(i, Var_(n))
+		VecSet_(select_d, Var_(i), True_)
+		VecSet_(select_r, Var_(i), False_)
 	End_
+	C_
+	C_ only select component 0 of the range function
+	C_ f_0 (x) = x_0 * x_{n-1}
+	VecSet_(select_r, 0, True_)
 	C_
 	C_ loop over forward and reverse mode
 	For_(mode, 2)
 		NewVar_(sparse_rc, pat_out, ModuleCtor_(sparse_rc)())
 		If_( Var_(mode) == 0 )
-			Member_(af, for_jac_sparsity)(Var_(pat_in), Var_(pat_out))Eos_
+			Member_(af, for_hes_sparsity)(Var_(select_d), Var_(select_r), Var_(pat_out))Eos_
 		End_
 		If_( Var_(mode) == 1 )
-			Member_(af, rev_jac_sparsity)(Var_(pat_in), Var_(pat_out))Eos_
+			Member_(af, rev_hes_sparsity)(Var_(select_d), Var_(select_r), Var_(pat_out))Eos_
 		End_
 		C_
-		C_ check that result is sparsity pattern for Jacobian
-		NewVar_(vec_int, col_major, Member_(pat_out, col_major)())
+		C_ check that result is sparsity pattern for Hessian of f_0 (x)
+		AndAssign_(ok, Member_(pat_out, nnz)() == 2 )
 		NewVar_(vec_int, row, Member_(pat_out, row)())
 		NewVar_(vec_int, col, Member_(pat_out, col)())
-		For_(k, Var_(n))
-			NewVar_(int, ell, VecGet_(col_major, Var_(k)))
-			NewVar_(int, r, VecGet_(row, Var_(ell)))
-			NewVar_(int, c, VecGet_(col, Var_(ell)))
-			NewVar_(int, i, Var_(c)+1)
-			If_( Var_(i) >=  Var_(n) )
-				Assign_(i, Var_(i) - Var_(n))
+		For_(k, 2)
+			NewVar_(int, r, VecGet_(row, Var_(k)))
+			NewVar_(int, c, VecGet_(col, Var_(k)))
+			If_( Var_(r) <= Var_(c) )
+				AndAssign_(ok, Var_(r) == 0)
+				AndAssign_(ok, Var_(c) == Var_(n)-1)
 			End_
-			AndAssign_(ok, Var_(c) == Var_(k))
-			AndAssign_(ok, Var_(r) == Var_(i))
+			If_( Var_(r) >= Var_(c) )
+				AndAssign_(ok, Var_(r) == Var_(n)-1)
+				AndAssign_(ok, Var_(c) == 0)
+			End_
 		End_
 	End_
 	C_
@@ -74,6 +79,6 @@ BeginBoolFun_(ok, sparse_jac_pattern_xam)
 End_
 C_ END SOURCE
 C_
-Omhelp_(sparse_jac_pattern_xam,
-LangName_: Jacobian Sparsity Patterns: Example and Test)
+Omhelp_(sparse_hes_pattern_xam,
+LangName_: Hessian Sparsity Patterns: Example and Test)
 Eof_

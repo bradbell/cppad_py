@@ -72,6 +72,16 @@ class CPPAD_SWIG_LIB_PUBLIC a_fun
 		const sparse_rc&  pattern_in    ,
 		sparse_rc&        pattern_out
 	);
+	void for_hes_sparsity(
+		const std::vector<bool>& select_domain,
+		const std::vector<bool>& select_range ,
+		sparse_rc&               pattern_out
+	);
+	void rev_hes_sparsity(
+		const std::vector<bool>& select_domain,
+		const std::vector<bool>& select_range ,
+		sparse_rc&               pattern_out
+	);
 };
 
 } // END_CPPAD_SWIG_NAMESPACE

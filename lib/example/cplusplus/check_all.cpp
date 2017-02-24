@@ -30,6 +30,7 @@ extern bool a_fun_abort_xam(void);
 extern bool sparse_rc_xam(void);
 extern bool sparse_rcv_xam(void);
 extern bool sparse_jac_pattern_xam(void);
+extern bool sparse_hes_pattern_xam(void);
 extern bool error_message_xam(void);
 
 namespace {
@@ -62,8 +63,8 @@ int main(void)
 	ok &= Run( a_double_assign_xam,       "a_double_assign_xam"       );
 	ok &= Run( a_double_ad_binary_xam,    "a_double_ad_binary_xam"    );
 	ok &= Run( a_double_compare_xam,      "a_double_compare_xam"      );
-	ok &= Run( vector_size_xam,         "vector_size_xam"         );
-	ok &= Run( vector_set_get_xam,      "vector_set_get_xam"      );
+	ok &= Run( vector_size_xam,           "vector_size_xam"         );
+	ok &= Run( vector_set_get_xam,        "vector_set_get_xam"      );
 	ok &= Run( a_fun_property_xam,        "a_fun_property_xam"        );
 	ok &= Run( a_fun_optimize_xam,        "a_fun_optimize_xam"        );
 	ok &= Run( a_fun_jacobian_xam,        "a_fun_jacobian_xam"        );
@@ -74,7 +75,8 @@ int main(void)
 	ok &= Run( sparse_rc_xam,             "sparse_rc_xam" );
 	ok &= Run( sparse_rcv_xam,            "sparse_rcv_xam" );
 	ok &= Run( sparse_jac_pattern_xam,    "sparse_jac_pattern_xam" );
-	ok &= Run( error_message_xam,   "other_error_message_xam" );
+	ok &= Run( sparse_hes_pattern_xam,    "sparse_hes_pattern_xam" );
+	ok &= Run( error_message_xam,         "error_message_xam" );
 	//
 	assert( ok || (Run_error_count > 0) );
 

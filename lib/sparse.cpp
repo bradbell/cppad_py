@@ -608,7 +608,6 @@ $cref/Perl/sparse_jac_pattern_xam.pm/$$,
 $cref/Python/sparse_jac_pattern_xam.py/$$.
 
 $end
------------------------------------------------------------------------------
 */
 void a_fun::for_jac_sparsity(
 	const sparse_rc&  pattern_in    ,
@@ -621,6 +620,11 @@ void a_fun::for_jac_sparsity(
 	ptr_->for_jac_sparsity(
 		*ptr_in, transpose, dependency, internal_bool, *ptr_out
 	);
+	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_->size_forward_bool() == 0 );
+	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_->size_forward_set() != 0 );
+	// free stored forward pattern
+	ptr_->size_forward_set(0);
+	//
 	return;
 }
 void a_fun::rev_jac_sparsity(
@@ -636,7 +640,172 @@ void a_fun::rev_jac_sparsity(
 	);
 	return;
 }
+// ----------------------------------------------------------------------------
+/*
+$begin hes_sparsity$$
+$spell
+	hes
+	af
+	const
+	vec
+	bool
+	rc
+	Perl
+$$
 
+$section Hessian Sparsity Patterns$$
+
+$head Syntax$$
+$icode%af%.for_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)
+%$$
+$icode%af%.rev_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)%$$
+
+$head Purpose$$
+We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
+function corresponding to the operation sequence stored in $icode af$$.
+Fix a diagonal matrix $latex D \in \B{R}^{n \times n}$$, fix a vector
+$latex r \in \B{R}^m$$, and define
+$latex \[
+	H(x) = D (r^\R{T} F)^{(2)} ( x ) D
+\] $$
+Given a sparsity pattern for $latex D$$ and $latex r$$,
+these routines compute a sparsity pattern for $latex H(x)$$.
+
+$head x$$
+Note that a sparsity pattern for $latex H(x)$$ corresponds to the
+operation sequence stored in $icode af$$ and does not depend on
+the argument $icode x$$.
+
+$head af$$
+The object $icode af$$ has prototype
+$codei%
+	a_fun %af%
+%$$
+
+$head select_domain$$
+The argument $icode select_domain$$ has prototype
+$codei%
+	const vec_bool& %select_domain%
+%$$
+It has size $icode n$$ and is a sparsity pattern for the diagonal of
+$latex D$$; i.e., $icode%select_domain%[%j%]%$$ is true if and only if
+$latex D_{j,j}$$ is possibly non-zero.
+
+$head select_range$$
+The argument $icode select_range$$ has prototype
+$codei%
+	const vec_bool& %select_range%
+%$$
+It has size $icode m$$ and is a sparsity pattern for the vector
+$latex r$$; i.e., $icode%select_range%[%i%]%$$ is true if and only if
+$latex r_i$$ is possibly non-zero.
+
+$head pattern_out$$
+This argument has prototype
+$codei%
+	sparse_rc<%SizeVector%>& %pattern_out%
+%$$
+This input value of $icode pattern_out$$ does not matter.
+Upon return $icode pattern_out$$ is a sparsity pattern for
+$latex J(x)$$.
+
+$head Sparsity for Component Wise Hessian$$
+Suppose that $latex D$$ is the identity matrix,
+and only the $th i$$ component of $icode r$$ is possibly non-zero.
+In this case, $icode pattern_out$$ is a sparsity pattern for
+$latex F_i^{(2)} ( x )$$.
+
+$children%
+	build/lib/example/cplusplus/sparse_hes_pattern_xam.cpp%
+	build/lib/example/octave/sparse_hes_pattern_xam.m%
+	build/lib/example/perl/sparse_hes_pattern_xam.pm%
+	build/lib/example/python/sparse_hes_pattern_xam.py
+%$$
+$head Example$$
+$cref/C++/sparse_hes_pattern_xam.cpp/$$,
+$cref/Octave/sparse_hes_pattern_xam.m/$$,
+$cref/Perl/sparse_hes_pattern_xam.pm/$$,
+$cref/Python/sparse_hes_pattern_xam.py/$$.
+
+$end
+*/
+void a_fun::for_hes_sparsity(
+	const std::vector<bool>& select_domain ,
+	const std::vector<bool>& select_range  ,
+	sparse_rc&               pattern_out   )
+{	CppAD::sparse_rc< std::vector<size_t> >* ptr_out = pattern_out.ptr();
+	bool internal_bool = false;
+	ptr_->for_hes_sparsity(
+		select_domain, select_range, internal_bool, *ptr_out
+	);
+	return;
+}
+void a_fun::rev_hes_sparsity(
+	const std::vector<bool>& select_domain ,
+	const std::vector<bool>& select_range  ,
+	sparse_rc&               pattern_out   )
+{	CPPAD_SWIG_ASSERT_KNOWN(
+		select_domain.size() == ptr_->Domain() ,
+		"rev_hes_sparsity: select_domain does not have proper size"
+	);
+	CPPAD_SWIG_ASSERT_KNOWN(
+		select_range.size() == ptr_->Range() ,
+		"rev_hes_sparsity: select_range does not have proper size"
+	);
+	typedef std::vector<size_t> s_vector;
+	CppAD::sparse_rc<s_vector>* ptr_out = pattern_out.ptr();
+	//
+	// count the number of domain components present
+	size_t n        = select_domain.size();
+	size_t n_subset = 0;
+	for(size_t j = 0; j < n; j++)
+		if( select_domain[j] )
+			++n_subset;
+	//
+	// compute forward Jacobian sparsity with R a diagonal matrix
+	// that only includes the specified subset of the domain vector
+	CppAD::sparse_rc<s_vector> pattern_R;
+	pattern_R.resize(n, n_subset, n_subset);
+	s_vector subset2domain(n_subset);
+	size_t ell = 0;
+	for(size_t j = 0; j < n; j++)
+	{	if( select_domain[j] )
+		{	pattern_R.set(j, j, ell);
+			subset2domain[ell] = j;
+			++ell;
+		}
+	}
+	bool transpose     = false;
+	bool dependency    = false;
+	bool internal_bool = false;
+	CppAD::sparse_rc<s_vector> pattern_jac;
+	ptr_->for_jac_sparsity(
+		pattern_R, transpose, dependency, internal_bool, pattern_jac
+	);
+	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_->size_forward_bool() == 0 );
+	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_->size_forward_set() != 0 );
+	//
+	// CppAD's version of rev_hes_sparsity computes a sparsity pattern for
+	// R^T (r^T * F)^{(2)} (x)
+	CppAD::sparse_rc<s_vector> pattern_hes;
+	ptr_->rev_hes_sparsity(
+		select_range, transpose, internal_bool, pattern_hes
+	);
+	//
+	// map row indices from subset used to speed calculation to
+	// entire set of domain indices
+	size_t nnz = pattern_hes.nnz();
+	const s_vector& row( pattern_hes.row() );
+	const s_vector& col( pattern_hes.col() );
+	ptr_out->resize(n, n, nnz);
+	for(size_t k = 0; k < nnz; k++)
+		ptr_out->set(k, subset2domain[ row[k] ], col[k] );
+	//
+	// free memory used for forward sparstiy pattern
+	ptr_->size_forward_set(0);
+	//
+	return;
+}
 
 
 } // END_CPPAD_SWIG_NAMESPACE
