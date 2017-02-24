@@ -18,7 +18,7 @@
 # include <cppad/swig/sparse.hpp>
 # include <cppad/swig/a_fun.hpp>
 # include <cppad/swig/vector.hpp>
-# include <cppad/swig/other.hpp>
+# include <cppad/swig/error.hpp>
 %}
 
 /*
@@ -75,7 +75,7 @@ $end
 %include <cppad/swig/a_double.hpp>
 %include <cppad/swig/sparse.hpp>
 %include <cppad/swig/a_fun.hpp>
-%include <cppad/swig/other.hpp>
+%include <cppad/swig/error.hpp>
 
 %template(vec_bool)      std::vector<bool>;
 %template(vec_int)       std::vector<int>;
@@ -129,14 +129,15 @@ $childtable%lib/sparse.cpp%$$
 
 $end
 -------------------------------------------------------------------------------
-$begin other$$
+$begin error$$
 $spell
+	messaging
 	Cppad
 $$
 
-$section Cppad Swig Other Functions and Documentation$$
+$section Cppad Swig Error Messaging$$
 
-$childtable%lib/other.cpp%$$
+$childtable%lib/error.cpp%$$
 
 $end
 -------------------------------------------------------------------------------

@@ -31,7 +31,7 @@ ADD_LIBRARY(cppad_swig_lib SHARED
 	a_double.cpp
 	a_fun.cpp
 	sparse.cpp
-	other.cpp
+	error.cpp
 )
 # The file cppad_swig_lib_export.h, in the current binary directory, will
 # define the symbol CPPAD_SWIG_LIB_PUBLIC. This symbol should be used to
@@ -54,7 +54,7 @@ SET(SWIG_MODULE_cppad_swig_EXTRA_DEPS
 	"${CMAKE_SOURCE_DIR}/include/cppad/swig/a_double.hpp"
 	"${CMAKE_SOURCE_DIR}/include/cppad/swig/a_fun.hpp"
 	"${CMAKE_SOURCE_DIR}/include/cppad/swig/sparse.hpp"
-	"${CMAKE_SOURCE_DIR}/include/cppad/swig/other.hpp"
+	"${CMAKE_SOURCE_DIR}/include/cppad/swig/error.hpp"
 )
 #
 # example / test directory (add to check_lib_depends)

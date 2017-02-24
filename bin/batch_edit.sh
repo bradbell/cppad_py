@@ -11,13 +11,29 @@ delete_list='
 revert_list='
 '
 move_list='
+	lib/xam/other
+	lib/other.cpp
+	include/cppad/swig/other.hpp
 '
-move_sed='s|a_other|other|'
+move_sed='s|other|error|'
 #
 cat << EOF > junk.sed
-s|GNU Affero General Public License|    GNU General Public License|
-s| http://www.gnu.org/licenses/agpl.txt|https://www.gnu.org/licenses/gpl-3.0.txt|
-s|agpl\\.txt|gpl-3.0.txt|g
+/begin other/! b one
+N
+s|\$|\\
+	messaging|
+s|begin other|begin error|
+b end
+#
+: one
+s|other.hpp|error.hpp|
+s|other.cpp|error.cpp|
+s|begin other|begin error|
+s|Cppad Swig Other Functions and Documentation|Cppad Swig Error Messaging|
+s|other/error_message_xam.xam|error/error_message_xam.xam|
+s|other_error_message_xam|error_error_message_xam|
+#
+: end
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

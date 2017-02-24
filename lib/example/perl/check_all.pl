@@ -47,7 +47,7 @@ my @fun_list = (
 	'sparse_rc_xam',
 	'sparse_rcv_xam',
 	'sparse_jac_pattern_xam',
-	'other_error_message_xam'
+	'error_error_message_xam'
 );
 for( my $i = 0; $i <= $#fun_list; $i++)
 {	my $name = $fun_list[$i];

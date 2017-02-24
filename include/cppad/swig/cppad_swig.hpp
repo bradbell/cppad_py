@@ -12,6 +12,6 @@
 # include <cppad/swig/a_fun.hpp>
 # include <cppad/swig/sparse.hpp>
 # include <cppad/swig/vector.hpp>
-# include <cppad/swig/other.hpp>
+# include <cppad/swig/error.hpp>
 
 # endif

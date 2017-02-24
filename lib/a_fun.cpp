@@ -7,7 +7,7 @@
 ----------------------------------------------------------------------------- */
 # include <cppad/cppad.hpp>
 # include <cppad/swig/a_fun.hpp>
-# include <cppad/swig/other.hpp>
+# include <cppad/swig/error.hpp>
 
 namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
 

@@ -27,7 +27,7 @@ SET(xam_file_list
 	sparse/rc_xam.xam
 	sparse/rcv_xam.xam
 	sparse/jac_pattern_xam.xam
-	other/error_message_xam.xam
+	error/error_message_xam.xam
 )
 #
 # sub-directories for each language (add to check_lib_depend)
