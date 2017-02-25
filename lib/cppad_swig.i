@@ -43,13 +43,12 @@ This is the name of the Swig module.
 In C++ this is actually a $code namespace$$, instead of a
 Swig module.
 
-$head Module Reference$$
-This is the source code, in the particular language,
-used to reference functions that are in the module.
-
-$head Table$$
+$head module_ref$$
+We use $icode module_ref$$ to denote the source code used to reference
+the Cppad Swig module for a particular language.
+It has the following value (depending on the language):
 $table
-Language     $cnext Module Name        $cnext Module Reference      $rnext
+Language     $cnext Module Name        $cnext module_ref            $rnext
 C++          $cnext $code cppad_swig$$ $cnext $code cppad_swig::$$  $rnext
 Octave       $cnext $code m_cppad$$    $cnext $code m_cppad.$$      $rnext
 Perl         $cnext $code pm_cppad$$   $cnext $code pm_cppad::$$    $rnext

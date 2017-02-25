@@ -24,6 +24,10 @@ $$
 
 $section Cppad Swig Changes during 2017$$
 
+$head 02-25$$
+Fix some documentation references to $code model_ref$$ that should have been
+$cref/module_ref/module/module_ref/$$.
+
 $head 02-24$$
 $list number$$
 Add calculation of Jacobian sparsity $cref jac_sparsity$$

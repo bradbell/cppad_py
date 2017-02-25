@@ -31,7 +31,7 @@ $$
 $section Sparsity Patterns$$
 
 $head Syntax$$
-$icode%pattern% = %model_ref_%sparse_rc()
+$icode%pattern% = %module_ref% %sparse_rc()
 %$$
 $icode%pattern%.resize(%nr%, %nc%, %nnz%)
 %$$
@@ -51,6 +51,10 @@ $icode%row_major% = %pattern%.row_major()
 %$$
 $icode%col_major% = %pattern%.col_major()
 %$$
+
+$head module_ref$$
+This is the $cref/module reference/module/module_ref/$$
+for the particular language.
 
 $head pattern$$
 The result has prototype
@@ -289,7 +293,7 @@ $$
 $section Sparse Matrices$$
 
 $head Syntax$$
-$icode%matrix% = %model_ref_%sparse_rcv(%pattern%)
+$icode%matrix% = %module_ref% %sparse_rcv(%pattern%)
 %$$
 $icode%nr% = %matrix%.nr()
 %$$
@@ -309,6 +313,10 @@ $icode%row_major% = %matrix%.row_major()
 %$$
 $icode%col_major% = %matrix%.col_major()
 %$$
+
+$head module_ref$$
+This is the $cref/module reference/module/module_ref/$$
+for the particular language.
 
 $head pattern$$
 This argument has prototype
@@ -834,7 +842,7 @@ $$
 $section Computing Sparse Jacobians$$
 
 $head Syntax$$
-$icode%work% = %model_ref_%sparse_jac_work()
+$icode%work% = %module_ref% %sparse_jac_work()
 %$$
 $icode%n_sweep% = %af%.sparse_jac_for(%subset%, %x%, %pattern%, %work%)
 %$$
@@ -843,6 +851,10 @@ $icode%n_sweep% = %af%.sparse_jac_rev(%subset%, %x%, %pattern%, %work%)%$$
 $head Under Construction$$
 This function is under construction and not yet appropriate for
 public use.
+
+$head module_ref$$
+This is the $cref/module reference/module/module_ref/$$
+for the particular language.
 
 $head Purpose$$
 We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the

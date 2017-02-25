@@ -85,7 +85,7 @@ Creates a $code cppad_swig::a_double$$ object that can be use
 to track floating point operations and preform algorithmic differentiation.
 
 $head module_ref$$
-This is a $cref/module reference/module/Module Reference/$$
+This is the $cref/module reference/module/module_ref/$$
 for the particular language.
 
 $head d$$

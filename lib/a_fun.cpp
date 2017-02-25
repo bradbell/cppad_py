@@ -27,8 +27,9 @@ $section Declare Independent Variables and Start Recording$$
 $head Syntax$$
 $icode%ax% = %module_ref% independent(%x%)%$$
 
+
 $head module_ref$$
-This is a $cref/module reference/module/Module Reference/$$
+This is the $cref/module reference/module/module_ref/$$
 for the particular language.
 
 $head x$$
@@ -98,7 +99,7 @@ This aborts the current recording (if it exists)
 started by the most recent call to $cref independent$$.
 
 $head module_ref$$
-This is a $cref/module reference/module/Module Reference/$$
+This is a $cref/module reference/module/module_ref/$$
 for the particular language.
 
 $children%
@@ -130,7 +131,11 @@ $$
 $section Stop Current Recording and Store in an a_fun Object$$
 
 $head Syntax$$
-$icode%af% = %model_ref_%a_fun(%ax%, %ay%)%$$
+$icode%af% = %module_ref% a_fun(%ax%, %ay%)%$$
+
+$head module_ref$$
+This is the $cref/module reference/module/module_ref/$$
+for the particular language.
 
 $head ax$$
 This argument has prototype
