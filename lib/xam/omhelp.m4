@@ -73,6 +73,7 @@ define(OmhelpOther_,
 `#'	cppad
 `#'	xam
 `#'	Jacobian
+`#'	Jacobians
 `#' $$
 `#' $section $3$$
 `#' $srcfile|$2|0|`#' BEGIN SOURCE|`#' END SOURCE|$$
@@ -84,6 +85,7 @@ define(OmhelpOctave_,
 %	cppad
 %	xam
 %	Jacobian
+%	Jacobians
 % $$
 % $section $3$$
 % $srcfile|$2|0|% BEGIN SOURCE|% END SOURCE|$$
@@ -97,6 +99,7 @@ $spell
 	cppad
 	xam
 	Jacobian
+	Jacobians
 $$
 $section $3$$
 $srcfile|$2|0|// BEGIN SOURCE|// END SOURCE|$$

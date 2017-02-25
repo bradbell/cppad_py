@@ -30,6 +30,7 @@ extern bool a_fun_abort_xam(void);
 extern bool sparse_rc_xam(void);
 extern bool sparse_rcv_xam(void);
 extern bool sparse_jac_pattern_xam(void);
+extern bool sparse_jac_xam(void);
 extern bool sparse_hes_pattern_xam(void);
 extern bool error_message_xam(void);
 
@@ -75,6 +76,7 @@ int main(void)
 	ok &= Run( sparse_rc_xam,             "sparse_rc_xam" );
 	ok &= Run( sparse_rcv_xam,            "sparse_rcv_xam" );
 	ok &= Run( sparse_jac_pattern_xam,    "sparse_jac_pattern_xam" );
+	ok &= Run( sparse_jac_xam,            "sparse_jac_xam" );
 	ok &= Run( sparse_hes_pattern_xam,    "sparse_hes_pattern_xam" );
 	ok &= Run( error_message_xam,         "error_message_xam" );
 	//

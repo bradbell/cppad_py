@@ -79,6 +79,7 @@ bool $2(void) {
 	using cppad_swig::a_fun;
 	using cppad_swig::sparse_rc;
 	using cppad_swig::sparse_rcv;
+	using cppad_swig::sparse_jac_work;
 	using std::string;
 	C_
 	C_ initialize return variable

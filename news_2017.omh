@@ -19,14 +19,19 @@ $spell
 	lang
 	Dll
 	Jacobian
+	Jacobians
 	bool
 $$
 
 $section Cppad Swig Changes during 2017$$
 
 $head 02-25$$
+$list number$$
+Add calculation of sparse Jacobians; see $cref sparse_jac$$.
+$lnext
 Fix some documentation references to $code model_ref$$ that should have been
 $cref/module_ref/module/module_ref/$$.
+$lend
 
 $head 02-24$$
 $list number$$

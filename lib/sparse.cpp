@@ -837,20 +837,17 @@ $spell
 	const
 	vec
 	rc
+	Perl
 $$
 
 $section Computing Sparse Jacobians$$
 
 $head Syntax$$
-$icode%work% = %module_ref% %sparse_jac_work()
+$icode%work% = %module_ref% sparse_jac_work()
 %$$
 $icode%n_sweep% = %af%.sparse_jac_for(%subset%, %x%, %pattern%, %work%)
 %$$
 $icode%n_sweep% = %af%.sparse_jac_rev(%subset%, %x%, %pattern%, %work%)%$$
-
-$head Under Construction$$
-This function is under construction and not yet appropriate for
-public use.
 
 $head module_ref$$
 This is the $cref/module reference/module/module_ref/$$
@@ -957,17 +954,17 @@ $codei%
 %$$
 All the other forward mode coefficients are unspecified.
 
-$comment%
+$children%
 	build/lib/example/cplusplus/sparse_jac_xam.cpp%
 	build/lib/example/octave/sparse_jac_xam.m%
 	build/lib/example/perl/sparse_jac_xam.pm%
 	build/lib/example/python/sparse_jac_xam.py
 %$$
 $head Example$$
-$comment/C++/sparse_jac_xam.cpp/$$,
-$comment/Octave/sparse_jac_xam.m/$$,
-$comment/Perl/sparse_jac_xam.pm/$$,
-$comment/Python/sparse_jac_xam.py/$$.
+$cref/C++/sparse_jac_xam.cpp/$$,
+$cref/Octave/sparse_jac_xam.m/$$,
+$cref/Perl/sparse_jac_xam.pm/$$,
+$cref/Python/sparse_jac_xam.py/$$.
 
 $end
 */

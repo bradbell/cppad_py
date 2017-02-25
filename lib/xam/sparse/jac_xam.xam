@@ -1,5 +1,5 @@
 include(xam.m4)dnl this comments out end of line character
-Header_(sparse/jac_pattern_xam.xam)
+Header_(sparse/jac_xam.xam)
 C_ -----------------------------------------------------------------------------
 C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
 C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
@@ -10,9 +10,11 @@ C_ -----------------------------------------------------------------------------
 C_ std::vector<a_double>
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
-BeginBoolFun_(ok, sparse_jac_pattern_xam)
+BeginBoolFun_(ok, sparse_jac_xam)
 	C_ number of dependent and independent variables
 	NewVar_(int, n, 3)
+	C_ one
+	NewVar_(a_double, aone, ModuleCtor_(a_double)(1.0))
 	C_
 	C_ create the independent variables ax
 	NewVar_(vec_double, x, ModuleCtor_(vec_double)(Var_(n)))
@@ -21,7 +23,7 @@ BeginBoolFun_(ok, sparse_jac_pattern_xam)
 	End_
 	NewVar_(vec_a_double, ax, Module_(independent)(Var_(x)))
 	C_
-	C_ create dependent variables ay with ay[i] = ax[j]
+	C_ create dependent variables ay with ay[i] = (j+1) * ax[j]
 	C_ where i = mod(j + 1, n)
 	NewVar_(vec_a_double, ay, ModuleCtor_(vec_a_double)(Var_(n)))
 	For_(j, Var_(n) )
@@ -29,7 +31,8 @@ BeginBoolFun_(ok, sparse_jac_pattern_xam)
 		If_( Var_(i) >= Var_(n) )
 			Assign_(i, Var_(i) - Var_(n))
 		End_
-		NewVar_(a_double, ay_i, VecGet_(ax, Var_(j)))
+		NewVar_(a_double, aj, ModuleCtor_(a_double)(Var_(j)));
+		NewVar_(a_double, ay_i, (Var_(aj) + Var_(aone)) * VecGet_(ax, Var_(j)))
 		VecSet_(ay, Var_(i), Var_(ay_i))
 	End_
 	C_
@@ -37,37 +40,48 @@ BeginBoolFun_(ok, sparse_jac_pattern_xam)
 	NewVar_(a_fun, af, ModuleCtor_(a_fun)(Var_(ax), Var_(ay)))
 	C_
 	C_ sparsity pattern for identity matrix
-	NewVar_(sparse_rc, pat_in, ModuleCtor_(sparse_rc)())
-	Member_(pat_in, resize)(Var_(n), Var_(n), Var_(n))Eos_
+	NewVar_(sparse_rc, pat_eye, ModuleCtor_(sparse_rc)())
+	Member_(pat_eye, resize)(Var_(n), Var_(n), Var_(n))Eos_
 	For_(k, Var_(n))
-		Member_(pat_in, put)(Var_(k), Var_(k), Var_(k))Eos_
+		Member_(pat_eye, put)(Var_(k), Var_(k), Var_(k))Eos_
 	End_
+	C_
+	C_ sparsity pattern for the Jacobian
+	NewVar_(sparse_rc, pat_jac, ModuleCtor_(sparse_rc)())
+	Member_(af, for_jac_sparsity)(Var_(pat_eye), Var_(pat_jac))Eos_
 	C_
 	C_ loop over forward and reverse mode
 	For_(mode, 2)
-		NewVar_(sparse_rc, pat_out, ModuleCtor_(sparse_rc)())
+		C_ compute all possibly non-zero entries in Jacobian
+		NewVar_(sparse_rcv, subset, ModuleCtor_(sparse_rcv)(Var_(pat_jac)))
+		C_ work space used to save time for multiple calls
+		NewVar_(sparse_jac_work, work, ModuleCtor_(sparse_jac_work)())
+		C_ point at which we are computing the Jacobian
 		If_( Var_(mode) == 0 )
-			Member_(af, for_jac_sparsity)(Var_(pat_in), Var_(pat_out))Eos_
+			Member_(af, sparse_jac_for)(Var_(subset), Var_(x), Var_(pat_jac), Var_(work))Eos_
 		End_
 		If_( Var_(mode) == 1 )
-			Member_(af, rev_jac_sparsity)(Var_(pat_in), Var_(pat_out))Eos_
+			Member_(af, sparse_jac_rev)(Var_(subset), Var_(x), Var_(pat_jac), Var_(work))Eos_
 		End_
 		C_
-		C_ check that result is sparsity pattern for Jacobian
-		AndAssign_(ok, Var_(n) == Member_(pat_out, nnz)())
-		NewVar_(vec_int, col_major, Member_(pat_out, col_major)())
-		NewVar_(vec_int, row, Member_(pat_out, row)())
-		NewVar_(vec_int, col, Member_(pat_out, col)())
+		C_ check result
+		AndAssign_(ok, Var_(n) == Member_(subset, nnz)())
+		NewVar_(vec_int, col_major, Member_(subset, col_major)())
+		NewVar_(vec_int, row, Member_(subset, row)())
+		NewVar_(vec_int, col, Member_(subset, col)())
+		NewVar_(vec_double, val, Member_(subset, val)())
 		For_(k, Var_(n))
 			NewVar_(int, ell, VecGet_(col_major, Var_(k)))
 			NewVar_(int, r, VecGet_(row, Var_(ell)))
 			NewVar_(int, c, VecGet_(col, Var_(ell)))
+			NewVar_(double, v, VecGet_(val, Var_(ell)))
 			NewVar_(int, i, Var_(c)+1)
 			If_( Var_(i) >=  Var_(n) )
 				Assign_(i, Var_(i) - Var_(n))
 			End_
 			AndAssign_(ok, Var_(c) == Var_(k))
 			AndAssign_(ok, Var_(r) == Var_(i))
+			AndAssign_(ok, Var_(v) == Var_(c) + 1.0)
 		End_
 	End_
 	C_
@@ -75,6 +89,6 @@ BeginBoolFun_(ok, sparse_jac_pattern_xam)
 End_
 C_ END SOURCE
 C_
-Omhelp_(sparse_jac_pattern_xam,
-LangName_: Jacobian Sparsity Patterns: Example and Test)
+Omhelp_(sparse_jac_xam,
+LangName_: Computing Sparse Jacobians: Example and Test)
 Eof_
