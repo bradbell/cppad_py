@@ -303,6 +303,8 @@ $icode%row% = %matrix%.row()
 %$$
 $icode%col% = %matrix%.col()
 %$$
+$icode%val% = %matrix%.val()
+%$$
 $icode%row_major% = %matrix%.row_major()
 %$$
 $icode%col_major% = %matrix%.col_major()
@@ -446,6 +448,12 @@ $cref/Python/sparse_rcv_xam.py/$$.
 
 $end
 */
+// ---------------------------------------------------------------------------
+// public member function not in Swig interface (see %ignore ptr)
+CppAD::sparse_rcv< std::vector<size_t> , std::vector<double> >*
+	sparse_rcv::ptr(void)
+		{	return ptr_; }
+// ---------------------------------------------------------------------------
 // sparse_rcv ctor
 sparse_rcv::sparse_rcv(const sparse_rc& pattern)
 {	ptr_ = new CppAD::sparse_rcv< std::vector<size_t> , std::vector<double> >(
@@ -752,8 +760,8 @@ void a_fun::rev_hes_sparsity(
 		select_range.size() == ptr_->Range() ,
 		"rev_hes_sparsity: select_range does not have proper size"
 	);
-	typedef std::vector<size_t> s_vector;
-	CppAD::sparse_rc<s_vector>* ptr_out = pattern_out.ptr();
+	typedef std::vector<size_t> vec_size_t;
+	CppAD::sparse_rc<vec_size_t>* ptr_out = pattern_out.ptr();
 	//
 	// count the number of domain components present
 	size_t n        = select_domain.size();
@@ -764,9 +772,9 @@ void a_fun::rev_hes_sparsity(
 	//
 	// compute forward Jacobian sparsity with R a diagonal matrix
 	// that only includes the specified subset of the domain vector
-	CppAD::sparse_rc<s_vector> pattern_R;
+	CppAD::sparse_rc<vec_size_t> pattern_R;
 	pattern_R.resize(n, n_subset, n_subset);
-	s_vector subset2domain(n_subset);
+	vec_size_t subset2domain(n_subset);
 	size_t ell = 0;
 	for(size_t j = 0; j < n; j++)
 	{	if( select_domain[j] )
@@ -778,7 +786,7 @@ void a_fun::rev_hes_sparsity(
 	bool transpose     = false;
 	bool dependency    = false;
 	bool internal_bool = false;
-	CppAD::sparse_rc<s_vector> pattern_jac;
+	CppAD::sparse_rc<vec_size_t> pattern_jac;
 	ptr_->for_jac_sparsity(
 		pattern_R, transpose, dependency, internal_bool, pattern_jac
 	);
@@ -787,7 +795,7 @@ void a_fun::rev_hes_sparsity(
 	//
 	// CppAD's version of rev_hes_sparsity computes a sparsity pattern for
 	// R^T (r^T * F)^{(2)} (x)
-	CppAD::sparse_rc<s_vector> pattern_hes;
+	CppAD::sparse_rc<vec_size_t> pattern_hes;
 	ptr_->rev_hes_sparsity(
 		select_range, transpose, internal_bool, pattern_hes
 	);
@@ -795,8 +803,8 @@ void a_fun::rev_hes_sparsity(
 	// map row indices from subset used to speed calculation to
 	// entire set of domain indices
 	size_t nnz = pattern_hes.nnz();
-	const s_vector& row( pattern_hes.row() );
-	const s_vector& col( pattern_hes.col() );
+	const vec_size_t& row( pattern_hes.row() );
+	const vec_size_t& col( pattern_hes.col() );
 	ptr_out->resize(n, n, nnz);
 	for(size_t k = 0; k < nnz; k++)
 		ptr_out->set(k, subset2domain[ row[k] ], col[k] );
@@ -806,6 +814,196 @@ void a_fun::rev_hes_sparsity(
 	//
 	return;
 }
+/*
+------------------------------------------------------------------------------
+$begin sparse_jac$$
+$spell
+	Jacobians
+	jac
+	af
+	Jacobian
+	Taylor
+	rcv
+	nr
+	nc
+	const
+	vec
+	rc
+$$
 
+$section Computing Sparse Jacobians$$
+
+$head Syntax$$
+$icode%work% = %model_ref_%sparse_jac_work()
+%$$
+$icode%n_sweep% = %af%.sparse_jac_for(%subset%, %x%, %pattern%, %work%)
+%$$
+$icode%n_sweep% = %af%.sparse_jac_rev(%subset%, %x%, %pattern%, %work%)%$$
+
+$head Under Construction$$
+This function is under construction and not yet appropriate for
+public use.
+
+$head Purpose$$
+We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
+function corresponding to $icode af$$.
+The syntax above takes advantage of sparsity when computing the Jacobian
+$latex \[
+	J(x) = F^{(1)} (x)
+\] $$
+In the sparse case, this should be faster and take less memory than
+$cref a_fun_jacobian$$.
+We use the notation $latex J_{i,j} (x)$$ to denote the partial of
+$latex F_i (x)$$ with respect to $latex x_j$$.
+
+$head sparse_jac_for$$
+This function uses first order forward mode sweeps $cref a_fun_forward$$
+to compute multiple columns of the Jacobian at the same time.
+
+$head sparse_jac_rev$$
+This function uses first order reverse mode sweeps $cref a_fun_reverse$$
+to compute multiple rows of the Jacobian at the same time.
+
+$head af$$
+This object has prototype
+$codei%
+	ADFun<%Base%> %af%
+%$$
+Note that the Taylor coefficients stored in $icode af$$ are affected
+by this operation; see
+$cref/uses forward/sparse_jac/Uses Forward/$$ below.
+
+$head subset$$
+This argument has prototype
+$codei%
+	sparse_rcv& %subset%
+%$$
+Its row size is $icode%subset%.nr() == %m%$$,
+and its column size is $icode%subset%.nc() == %n%$$.
+It specifies which elements of the Jacobian are computed.
+The input value of its value vector
+$icode%subset%.val()%$$ does not matter.
+Upon return it contains the value of the corresponding elements
+of the Jacobian.
+All of the row, column pairs in $icode subset$$ must also appear in
+$icode pattern$$; i.e., they must be possibly non-zero.
+
+$head x$$
+This argument has prototype
+$codei%
+	const vec_double& %x%
+%$$
+and its size is $icode n$$.
+It specifies the point at which to evaluate the Jacobian $latex J(x)$$.
+
+$head pattern$$
+This argument has prototype
+$codei%
+	const sparse_rc& %pattern%
+%$$
+Its row size is $icode%pattern%.nr() == %m%$$,
+and its column size is $icode%pattern%.nc() == %n%$$.
+It is a sparsity pattern for the Jacobian $latex J(x)$$.
+This argument is not used (and need not satisfy any conditions),
+when $cref/work/sparse_jac/work/$$ is non-empty.
+
+$head work$$
+This argument has prototype
+$codei%
+	sparse_jac_work& %work%
+%$$
+We refer to its initial value,
+and its value after $icode%work%.clear()%$$, as empty.
+If it is empty, information is stored in $icode work$$.
+This can be used to reduce computation when
+a future call is for the same object $icode af$$,
+the same member function $code sparse_jac_for$$ or $code sparse_jac_rev$$,
+and the same subset of the Jacobian.
+If any of these values change, use $icode%work%.clear()%$$ to
+empty this structure.
+
+$head n_sweep$$
+The return value $icode n_sweep$$ has prototype
+$codei%
+	int %n_sweep%
+%$$
+If $code sparse_jac_for$$ ($code sparse_jac_rev$$) is used,
+$icode n_sweep$$ is the number of first order forward (reverse) sweeps
+used to compute the requested Jacobian values.
+This is proportional to the total computational work,
+not counting the zero order forward sweep,
+or combining multiple columns (rows) into a single sweep.
+
+$head Uses Forward$$
+After each call to $cref a_fun_forward$$,
+the object $icode af$$ contains the corresponding Taylor coefficients
+for all the variables in the operation sequence..
+After a call to $code sparse_jac_forward$$ or $code sparse_jac_rev$$,
+the zero order coefficients correspond to
+$codei%
+	%af%.forward(0, %x%)
+%$$
+All the other forward mode coefficients are unspecified.
+
+$comment%
+	build/lib/example/cplusplus/sparse_jac_xam.cpp%
+	build/lib/example/octave/sparse_jac_xam.m%
+	build/lib/example/perl/sparse_jac_xam.pm%
+	build/lib/example/python/sparse_jac_xam.py
+%$$
+$head Example$$
+$comment/C++/sparse_jac_xam.cpp/$$,
+$comment/Octave/sparse_jac_xam.m/$$,
+$comment/Perl/sparse_jac_xam.pm/$$,
+$comment/Python/sparse_jac_xam.py/$$.
+
+$end
+*/
+// ---------------------------------------------------------------------------
+// public member function not in Swig interface (see %ignore ptr)
+CppAD::sparse_jac_work* sparse_jac_work::ptr(void)
+{	return ptr_; }
+//
+// sparse_jac_work ctor
+sparse_jac_work::sparse_jac_work(void)
+{	ptr_ = new CppAD::sparse_jac_work();
+	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+}
+// sparse_jac_work destructor
+sparse_jac_work::~sparse_jac_work(void)
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	delete ptr_;
+}
+// sparse_jac_work clear
+void sparse_jac_work::clear(void)
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	ptr_->clear();
+	return;
+}
+// sparse_jac_for
+int a_fun::sparse_jac_for(
+	sparse_rcv&                subset   ,
+	const std::vector<double>& x        ,
+	const sparse_rc&           pattern  ,
+	sparse_jac_work&           work     )
+{	size_t      group_max = 1;
+	std::string coloring  = "cppad";
+	size_t n_sweep = ptr_->sparse_jac_for(
+		group_max, x, *subset.ptr(), *pattern.ptr(), coloring, *work.ptr()
+	);
+	return int(n_sweep);
+}
+// sparse_jac_rev
+int a_fun::sparse_jac_rev(
+	sparse_rcv&                subset   ,
+	const std::vector<double>& x        ,
+	const sparse_rc&           pattern  ,
+	sparse_jac_work&           work     )
+{	std::string coloring  = "cppad";
+	size_t n_sweep = ptr_->sparse_jac_rev(
+		x, *subset.ptr(), *pattern.ptr(), coloring, *work.ptr()
+	);
+	return int(n_sweep);
+}
 
 } // END_CPPAD_SWIG_NAMESPACE

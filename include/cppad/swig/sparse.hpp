@@ -14,6 +14,7 @@
 // declarations without definitions
 namespace CppAD {
 	template <class SizeVector> class sparse_rc;
+	class sparse_jac_work;
 }
 
 namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
@@ -61,8 +62,12 @@ class CPPAD_SWIG_LIB_PUBLIC sparse_rc
 class CPPAD_SWIG_LIB_PUBLIC sparse_rcv
 {	// private members are not in Swig interface
 	private:
-	// sparse_rc< std::vector<size_t> > representation
+	// CppAD::sparse_rc< std::vector<size_t> > representation
 	CppAD::sparse_rcv< std::vector<size_t>, std::vector<double> >* ptr_;
+	// -----------------------------------------------------------------------
+	// public members not in Swig interface (see %ignore ptr)
+	public:
+	CppAD::sparse_rcv< std::vector<size_t> , std::vector<double> >* ptr(void);
 	// -----------------------------------------------------------------------
 	// public members are in Swig interface
 	public:
@@ -88,6 +93,27 @@ class CPPAD_SWIG_LIB_PUBLIC sparse_rcv
 	std::vector<int> row_major(void) const;
 	// column-major order
 	std::vector<int> col_major(void) const;
+};
+
+// Swig class that actis the same as CppAD::sparse_jac_work
+class CPPAD_SWIG_LIB_PUBLIC sparse_jac_work
+{	// private members not in Swig interface
+	private:
+	// CppAD::sparse_rc< std::vector<size_t> > representation
+	CppAD::sparse_jac_work* ptr_;
+	// -----------------------------------------------------------------------
+	// public members not in Swig interface (see %ignore ptr)
+	public:
+	CppAD::sparse_jac_work* ptr(void);
+	// -----------------------------------------------------------------------
+	// public members are in Swig interface
+	public:
+	// constructor
+	sparse_jac_work(void);
+	// destructor
+	~sparse_jac_work(void);
+	// clear
+	void clear(void);
 };
 
 } // END_CPPAD_SWIG_NAMESPACE

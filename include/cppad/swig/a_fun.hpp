@@ -15,6 +15,7 @@
 // declarations without definitions
 namespace CppAD {
 	template <class Base> class ADFun;
+	class sparse_jac_work;
 }
 
 
@@ -81,6 +82,18 @@ class CPPAD_SWIG_LIB_PUBLIC a_fun
 		const std::vector<bool>& select_domain,
 		const std::vector<bool>& select_range ,
 		sparse_rc&               pattern_out
+	);
+	int sparse_jac_for(
+		sparse_rcv&                subset   ,
+		const std::vector<double>& x        ,
+		const sparse_rc&           pattern  ,
+		sparse_jac_work&           work
+	);
+	int sparse_jac_rev(
+		sparse_rcv&                subset  ,
+		const std::vector<double>& x       ,
+		const sparse_rc&           pattern ,
+		sparse_jac_work&           work
 	);
 };
 
