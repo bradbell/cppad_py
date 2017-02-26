@@ -7,7 +7,7 @@ C_              This program is distributed under the terms of the
 C_              GNU General Public License version 3.0 or later see
 C_                    https://www.gnu.org/licenses/gpl-3.0.txt
 C_ -----------------------------------------------------------------------------
-C_ std::vector<a_double>
+C_ jacobian
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun_(ok, a_fun_jacobian_xam)
@@ -48,5 +48,5 @@ End_
 C_ END SOURCE
 C_
 Omhelp_(a_fun_jacobian_xam,
-LangName_: General Jacobian Using AD: Example and Test)
+LangName_: Dense Jacobian Using AD: Example and Test)
 Eof_

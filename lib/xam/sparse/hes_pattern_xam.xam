@@ -7,7 +7,7 @@ C_              This program is distributed under the terms of the
 C_              GNU General Public License version 3.0 or later see
 C_                    https://www.gnu.org/licenses/gpl-3.0.txt
 C_ -----------------------------------------------------------------------------
-C_ std::vector<a_double>
+C_ for_hes_sparsity, rev_hes_sparsity
 C_ -----------------------------------------------------------------------------
 C_ BEGIN SOURCE
 BeginBoolFun_(ok, sparse_hes_pattern_xam)
