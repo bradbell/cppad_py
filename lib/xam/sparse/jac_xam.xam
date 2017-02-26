@@ -31,7 +31,7 @@ BeginBoolFun_(ok, sparse_jac_xam)
 		If_( Var_(i) >= Var_(n) )
 			Assign_(i, Var_(i) - Var_(n))
 		End_
-		NewVar_(a_double, aj, ModuleCtor_(a_double)(Var_(j)));
+		NewVar_(a_double, aj, ModuleCtor_(a_double)(Var_(j)))
 		NewVar_(a_double, ay_i, (Var_(aj) + Var_(aone)) * VecGet_(ax, Var_(j)))
 		VecSet_(ay, Var_(i), Var_(ay_i))
 	End_
@@ -56,7 +56,6 @@ BeginBoolFun_(ok, sparse_jac_xam)
 		NewVar_(sparse_rcv, subset, ModuleCtor_(sparse_rcv)(Var_(pat_jac)))
 		C_ work space used to save time for multiple calls
 		NewVar_(sparse_jac_work, work, ModuleCtor_(sparse_jac_work)())
-		C_ point at which we are computing the Jacobian
 		If_( Var_(mode) == 0 )
 			Member_(af, sparse_jac_for)(Var_(subset), Var_(x), Var_(pat_jac), Var_(work))Eos_
 		End_

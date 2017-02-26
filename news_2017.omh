@@ -27,7 +27,8 @@ $section Cppad Swig Changes during 2017$$
 
 $head 02-25$$
 $list number$$
-Add calculation of sparse Jacobians; see $cref sparse_jac$$.
+Add calculation of sparse Jacobians and Hessians;
+see $cref sparse_jac$$ and $cref sparse_hes$$.
 $lnext
 Fix some documentation references to $code model_ref$$ that should have been
 $cref/module_ref/module/module_ref/$$.

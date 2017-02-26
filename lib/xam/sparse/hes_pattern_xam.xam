@@ -21,7 +21,8 @@ BeginBoolFun_(ok, sparse_hes_pattern_xam)
 	End_
 	NewVar_(vec_a_double, ax, Module_(independent)(Var_(x)))
 	C_
-	C_ create dependent variables ay with ay[i] = ax[j] * ax[ (j+1) mod n ]
+	C_ create dependent variables ay with ay[i] = ax[j] * ax[i]
+	C_ where i = mod(j + 1, n)
 	NewVar_(vec_a_double, ay, ModuleCtor_(vec_a_double)(Var_(n)))
 	For_(j, Var_(n) )
 		NewVar_(int, i, Var_(j)+1)

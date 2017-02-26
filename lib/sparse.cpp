@@ -1039,9 +1039,6 @@ $icode%work% = %module_ref% sparse_hes_work()
 $icode%n_sweep% = %af%.sparse_hes(%subset%, %x%, %r%, %pattern%, %work%)
 %$$
 
-$head Under Construction$$
-This routine is under construction and not yet appropriate for public use.
-
 $head module_ref$$
 This is the $cref/module reference/module/module_ref/$$
 for the particular language.
@@ -1146,17 +1143,17 @@ $codei%
 %$$
 All the other forward mode coefficients are unspecified.
 
-$comment%
+$children%
 	build/lib/example/cplusplus/sparse_hes_xam.cpp%
 	build/lib/example/octave/sparse_hes_xam.m%
 	build/lib/example/perl/sparse_hes_xam.pm%
 	build/lib/example/python/sparse_hes_xam.py
 %$$
 $head Example$$
-$comment/C++/sparse_hes_xam.cpp/$$,
-$comment/Octave/sparse_hes_xam.m/$$,
-$comment/Perl/sparse_hes_xam.pm/$$,
-$comment/Python/sparse_hes_xam.py/$$.
+$cref/C++/sparse_hes_xam.cpp/$$,
+$cref/Octave/sparse_hes_xam.m/$$,
+$cref/Perl/sparse_hes_xam.pm/$$,
+$cref/Python/sparse_hes_xam.py/$$.
 
 $end
 */

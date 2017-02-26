@@ -29,6 +29,7 @@ SET(xam_file_list
 	sparse/jac_pattern_xam.xam
 	sparse/hes_pattern_xam.xam
 	sparse/jac_xam.xam
+	sparse/hes_xam.xam
 	error/message_xam.xam
 )
 #

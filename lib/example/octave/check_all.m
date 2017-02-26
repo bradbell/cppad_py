@@ -39,6 +39,7 @@ fun_list = {
 	'sparse_rcv_xam',
 	'sparse_jac_pattern_xam',
 	'sparse_jac_xam',
+	'sparse_hes_xam',
 	'sparse_hes_pattern_xam',
 	'error_message_xam'
 }';
