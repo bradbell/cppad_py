@@ -19,14 +19,17 @@ $latex
 $$
 $comment -------------------------------------------------------------$$
 $spell
+
 	Cppad
 	Linux
 	msys
 	perl
 	Cppad
 	cmake
-	Affero
 	Github
+	xam
+	lang
+	cplusplus
 $$
 
 $section A C++ AD Library with a Swig Interface$$
@@ -98,11 +101,29 @@ You can change into the $code build$$ subdirectory and enter the command
 $codei%
 	make check_%name%
 %$$
-for each such test. The command
+
+$subhead check_swig_xam$$
+For $icode lang$$ equal
+$code cplusplus$$, $code octave$$, $code perl$$, $code python$$,
+$codei%
+	make check_swig_xam_%lang%
+%$$
+runs a simple test of Swig, for the particular language, on your system.
+
+$subhead check_lib$$
+For $icode lang$$ equal
+$code cplusplus$$, $code octave$$, $code perl$$, $code python$$,
+$codei%
+	make check_lib_%lang%
+%$$
+runs a test of Cppad Swig, for the particular language, on your system.
+
+$subhead check$$
+The command
 $codei%
 	make check
 %$$
-will run all of the tests.
+will run all of the available tests.
 
 $head Support$$
 As yet, there is no install procedure for this package.
