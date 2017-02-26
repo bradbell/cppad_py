@@ -23,7 +23,13 @@ $spell
 	bool
 $$
 
-$section Cppad Swig Changes during 2017$$
+$section Cppad Swig Changes During 2017$$
+
+$head 02-16$$
+Advance to $code cppad-20170226$$
+This avoids a warning about WIN32 during the $cref run_cmake.sh$$ command
+(while getting current version of Cppad on Cygwin systems).
+
 
 $head 02-25$$
 $list number$$

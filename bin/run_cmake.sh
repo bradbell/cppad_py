@@ -30,8 +30,8 @@ test_cppad='no'
 # -----------------------------------------------------------------------------
 # CppAD version information
 remote_repo='https://github.com/coin-or/CppAD.git'
-version='20170221'
-hash_code='1577ac668ab2c5241346b7c9a359181df7214ac0'
+version='20170226'
+hash_code='bbaf187407aefd4d986bd03df75379b05239d613'
 # -----------------------------------------------------------------------------
 # Change into cmake binary directory
 if [ ! -e "$cmake_binary_dir" ]
@@ -48,7 +48,14 @@ then
 	echo "Start getting $local_repo"
 	echo_eval git clone $remote_repo $local_repo
 	echo_eval cd $local_repo
-	echo_eval git checkout $hash_code
+	echo_eval git checkout --quiet $hash_code
+	get_version=`bin/version.sh get`
+	if [ "$get_version" != "$version" ]
+	then
+		echo "bin/run_cmake.sh: Cppad version = $version"
+		echo "version corresponding bin/version.sh get = $get_version"
+		exit 1
+	fi
 	# -------------------------------------------------------------------------
 	if [ ! -e 'build' ]
 	then
