@@ -1048,7 +1048,7 @@ We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
 function corresponding to $icode af$$.
 Given a vector $latex r \in \B{R}^m$$, define
 $latex \[
-	H(x) = r^\R{T} F)^{(2)} ( x )
+	H(x) = (r^\R{T} F)^{(2)} ( x )
 \] $$
 This routine takes advantage of sparsity when computing elements
 of the Hessian $latex H(x)$$.
