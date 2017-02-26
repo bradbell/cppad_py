@@ -1014,5 +1014,185 @@ int a_fun::sparse_jac_rev(
 	);
 	return int(n_sweep);
 }
+/*
+------------------------------------------------------------------------------
+$begin sparse_hes$$
+$spell
+	af
+	Jacobian
+	Taylor
+	rcv
+	nr
+	nc
+	const
+	vec
+	rc
+	Perl
+	hes
+$$
+
+$section Computing Sparse Hessians$$
+
+$head Syntax$$
+$icode%work% = %module_ref% sparse_hes_work()
+%$$
+$icode%n_sweep% = %af%.sparse_hes(%subset%, %x%, %r%, %pattern%, %work%)
+%$$
+
+$head Under Construction$$
+This routine is under construction and not yet appropriate for public use.
+
+$head module_ref$$
+This is the $cref/module reference/module/module_ref/$$
+for the particular language.
+
+$head Purpose$$
+We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
+function corresponding to $icode af$$.
+Given a vector $latex r \in \B{R}^m$$, define
+$latex \[
+	H(x) = r^\R{T} F)^{(2)} ( x )
+\] $$
+This routine takes advantage of sparsity when computing elements
+of the Hessian $latex H(x)$$.
+
+$head af$$
+This object has prototype
+$codei%
+	ADFun<%Base%> %af%
+%$$
+Note that the Taylor coefficients stored in $icode af$$ are affected
+by this operation; see
+$cref/uses forward/sparse_hes/Uses Forward/$$ below.
+
+$head subset$$
+This argument has prototype
+$codei%
+	sparse_rcv& %subset%
+%$$
+Its row size and column size is $icode n$$; i.e.,
+$icode%subset%.nr() == %n%$$ and $icode%subset%.nc() == %n%$$.
+It specifies which elements of the Hessian are computed.
+The input value of its value vector
+$icode%subset%.val()%$$ does not matter.
+Upon return it contains the value of the corresponding elements
+of the Jacobian.
+All of the row, column pairs in $icode subset$$ must also appear in
+$icode pattern$$; i.e., they must be possibly non-zero.
+
+$head x$$
+This argument has prototype
+$codei%
+	const vec_double& %x%
+%$$
+and its size is $icode n$$.
+It specifies the point at which to evaluate the Hessian $latex H(x)$$.
+
+$head r$$
+This argument has prototype
+$codei%
+	const vec_double& %r%
+%$$
+and its size is $icode m$$.
+It specifies the multiplier for each component of $latex F(x)$$;
+i.e., $latex r_i$$ is the multiplier for $latex F_i (x)$$.
+
+$head pattern$$
+This argument has prototype
+$codei%
+	const sparse_rc& %pattern%
+%$$
+Its row size and column size is $icode n$$; i.e.,
+$icode%pattern%.nr() == %n%$$ and $icode%pattern%.nc() == %n%$$.
+It is a sparsity pattern for the Hessian $latex H(x)$$.
+This argument is not used (and need not satisfy any conditions),
+when $cref/work/sparse_hes/work/$$ is non-empty.
+
+$head work$$
+This argument has prototype
+$codei%
+	sparse_hes_work& %work%
+%$$
+We refer to its initial value,
+and its value after $icode%work%.clear()%$$, as empty.
+If it is empty, information is stored in $icode work$$.
+This can be used to reduce computation when
+a future call is for the same object $icode af$$,
+and the same subset of the Hessian.
+If either of these values change, use $icode%work%.clear()%$$ to
+empty this structure.
+
+$head n_sweep$$
+The return value $icode n_sweep$$ has prototype
+$codei%
+	int %n_sweep%
+%$$
+It is the number of first order forward sweeps
+used to compute the requested Hessian values.
+Each first forward sweep is followed by a second order reverse sweep
+so it is also the number of reverse sweeps.
+This is proportional to the total computational work,
+not counting the zero order forward sweep,
+or combining multiple columns and rows into a single sweep.
+
+$head Uses Forward$$
+After each call to $cref a_fun_forward$$,
+the object $icode af$$ contains the corresponding Taylor coefficients
+for all the variables in the operation sequence..
+After a call to $code sparse_hes$$
+the zero order coefficients correspond to
+$codei%
+	%af%.forward(0, %x%)
+%$$
+All the other forward mode coefficients are unspecified.
+
+$comment%
+	build/lib/example/cplusplus/sparse_hes_xam.cpp%
+	build/lib/example/octave/sparse_hes_xam.m%
+	build/lib/example/perl/sparse_hes_xam.pm%
+	build/lib/example/python/sparse_hes_xam.py
+%$$
+$head Example$$
+$comment/C++/sparse_hes_xam.cpp/$$,
+$comment/Octave/sparse_hes_xam.m/$$,
+$comment/Perl/sparse_hes_xam.pm/$$,
+$comment/Python/sparse_hes_xam.py/$$.
+
+$end
+*/
+// ---------------------------------------------------------------------------
+// public member function not in Swig interface (see %ignore ptr)
+CppAD::sparse_hes_work* sparse_hes_work::ptr(void)
+{	return ptr_; }
+//
+// sparse_hes_work ctor
+sparse_hes_work::sparse_hes_work(void)
+{	ptr_ = new CppAD::sparse_hes_work();
+	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+}
+// sparse_hes_work destructor
+sparse_hes_work::~sparse_hes_work(void)
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	delete ptr_;
+}
+// sparse_hes_work clear
+void sparse_hes_work::clear(void)
+{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	ptr_->clear();
+	return;
+}
+// sparse_hes
+int a_fun::sparse_hes(
+	sparse_rcv&                subset   ,
+	const std::vector<double>& x        ,
+	const std::vector<double>& r        ,
+	const sparse_rc&           pattern  ,
+	sparse_hes_work&           work     )
+{	std::string coloring  = "cppad.symmetric";
+	size_t n_sweep = ptr_->sparse_hes(
+		x, r, *subset.ptr(), *pattern.ptr(), coloring, *work.ptr()
+	);
+	return int(n_sweep);
+}
 
 } // END_CPPAD_SWIG_NAMESPACE

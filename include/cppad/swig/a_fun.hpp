@@ -16,6 +16,7 @@
 namespace CppAD {
 	template <class Base> class ADFun;
 	class sparse_jac_work;
+	class sparse_hes_work;
 }
 
 
@@ -64,7 +65,7 @@ class CPPAD_SWIG_LIB_PUBLIC a_fun
 	int size_op() const;
 	// ------------------------------------------------------------------------
 	// public member in Swig interface that compute sparse results
-	// (these are implemented in sparse.cpp isntead of a_fun.cpp).
+	// (these are implemented in sparse.cpp instead of a_fun.cpp).
 	void for_jac_sparsity(
 		const sparse_rc&  pattern_in    ,
 		sparse_rc&        pattern_out
@@ -94,6 +95,13 @@ class CPPAD_SWIG_LIB_PUBLIC a_fun
 		const std::vector<double>& x       ,
 		const sparse_rc&           pattern ,
 		sparse_jac_work&           work
+	);
+	int sparse_hes(
+		sparse_rcv&                subset  ,
+		const std::vector<double>& x       ,
+		const std::vector<double>& r       ,
+		const sparse_rc&           pattern ,
+		sparse_hes_work&           work
 	);
 };
 
