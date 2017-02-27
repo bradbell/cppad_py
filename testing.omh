@@ -53,10 +53,10 @@ $codei%
 will run all of the available tests.
 
 $head Octave$$
-Swig does not support Octave-4.2; see
+Swig versions before 3.0.12 do not support Octave-4.2; see
 $href%https://github.com/swig/swig/pull/875%issue 875%$$.
 For this reason on Cygwin, you should use an older version of Octave
-(until this is fixed).
+(until Swig-3.0.12 or greater is available).
 On Cygwin $code Octave-4.0.1-2$$ has problems in its
 include files that require one to add the flag
 $codei%
