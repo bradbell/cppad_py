@@ -19,7 +19,9 @@ $latex
 $$
 $comment -------------------------------------------------------------$$
 $spell
-
+	Cygwin
+	usr
+	cxx
 	Cppad
 	Linux
 	msys
@@ -82,6 +84,16 @@ $href%https://www.gnu.org/software/octave/#install%Octave%$$,
 $href%https://www.perl.org/get.html%Perl%$$,
 $href%https://www.python.org/%Python%$$
 
+$subhead Cygwin and Octave$$
+The current version of Swig does not support Octave-4.2; see
+$href%https://github.com/swig/swig/pull/875%issue 875%$$.
+For this reason on Cygwin, you should install $code Octave-4.0.1-2$$
+(until this is fixed). This older version of Octave has problems in its
+include files that require one to add the flag
+$codei%
+	-I/usr/include/octave-4.0.1/octave
+%$$
+to the value of $icode swig_cxx_flags$$ in $cref run_cmake.sh$$.
 
 
 $head Getting Source Code$$
@@ -91,7 +103,7 @@ $href%https://github.com/bradbell/cppad_swig%cppad_swig%$$.
 
 $head Testing$$
 You must first configure Cppad Swig for your system using
-$cref%bin/run_cmake.sh%run_cmake.sh%$$.
+$cref run_cmake.sh$$.
 When you do so, the set of available tests are output
 as messages of the form
 $codei%
