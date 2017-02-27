@@ -19,9 +19,7 @@ $latex
 $$
 $comment -------------------------------------------------------------$$
 $spell
-	Cygwin
 	usr
-	cxx
 	Cppad
 	Linux
 	msys
@@ -30,8 +28,6 @@ $spell
 	cmake
 	Github
 	xam
-	lang
-	cplusplus
 $$
 
 $section A C++ AD Library with a Swig Interface$$
@@ -84,58 +80,11 @@ $href%https://www.gnu.org/software/octave/#install%Octave%$$,
 $href%https://www.perl.org/get.html%Perl%$$,
 $href%https://www.python.org/%Python%$$
 
-$subhead Cygwin and Octave$$
-The current version of Swig does not support Octave-4.2; see
-$href%https://github.com/swig/swig/pull/875%issue 875%$$.
-For this reason on Cygwin, you should install $code Octave-4.0.1-2$$
-(until this is fixed). This older version of Octave has problems in its
-include files that require one to add the flag
-$codei%
-	-I/usr/include/octave-4.0.1/octave
-%$$
-to the value of $icode swig_cxx_flags$$ in $cref run_cmake.sh$$.
-
 
 $head Getting Source Code$$
 This is a preliminary version of this package.
 Currently, one gets the source code from Github at
 $href%https://github.com/bradbell/cppad_swig%cppad_swig%$$.
-
-$head Testing$$
-You must first configure Cppad Swig for your system using
-$cref run_cmake.sh$$.
-When you do so, the set of available tests are output
-as messages of the form
-$codei%
-	make check_%name%: available
-%$$
-You can change into the $code build$$ subdirectory and enter the command
-$codei%
-	make check_%name%
-%$$
-
-$subhead check_swig_xam$$
-For $icode lang$$ equal
-$code cplusplus$$, $code octave$$, $code perl$$, $code python$$,
-$codei%
-	make check_swig_xam_%lang%
-%$$
-runs a simple test of Swig, for the particular language, on your system.
-
-$subhead check_lib$$
-For $icode lang$$ equal
-$code cplusplus$$, $code octave$$, $code perl$$, $code python$$,
-$codei%
-	make check_lib_%lang%
-%$$
-runs a test of Cppad Swig, for the particular language, on your system.
-
-$subhead check$$
-The command
-$codei%
-	make check
-%$$
-will run all of the available tests.
 
 $head Support$$
 As yet, there is no install procedure for this package.
@@ -152,14 +101,14 @@ This program is distributed under the terms of the
 $href%http://www.gnu.org/licenses/gpl-3.0.txt%gpl-3.0.txt%$$.
 
 $children%
-	bin/run_cmake.sh%
+	testing.omh%
 	swig_xam/swig_xam.i%
 	lib/library.omh%
 	news_2017.omh
 %$$
 $head Contents$$
 $table
-$rref run_cmake.sh$$
+$rref testing$$
 $rref swig_xam.i$$
 $rref library$$
 $rref news_2017$$

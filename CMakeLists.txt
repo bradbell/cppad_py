@@ -108,6 +108,7 @@ IF( NOT SWIG_FOUND )
 ENDIF( NOT SWIG_FOUND )
 # -----------------------------------------------------------------------------
 # print important system variables
+print_variable(CMAKE_BINARY_DIR)
 print_variable(CMAKE_VERBOSE_MAKEFILE)
 print_variable(CMAKE_CXX_FLAGS)
 print_variable(CMAKE_BUILD_TYPE)

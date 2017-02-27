@@ -1,0 +1,95 @@
+-------------------------------------------------------------------------------
+          cppad_swig: A C++ Object Library and Swig Interface to Cppad
+           Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+               GNU General Public License version 3.0 or later see
+                     https://www.gnu.org/licenses/gpl-3.0.txt
+-------------------------------------------------------------------------------
+$begin testing$$
+$dollar @$$
+$spell
+	xam
+	lang
+	cmake
+	grep
+	Cygwin
+	usr
+	cxx
+	libcppad
+	cplusplus
+	perl
+	Cppad
+$$
+
+$section Running the Cppad Swig Tests$$
+
+$children%
+	bin/run_cmake.sh
+%$$
+$head run_cmake.sh$$
+You must first configure Cppad Swig for your system using
+$cref run_cmake.sh$$.
+
+$head Available Tests$$
+After $code bin/run_cmake.sh$$, the following command will list
+the available tests:
+$codei%
+	grep 'make check' cmake_cppad_swig.log
+%$$
+
+$head CMAKE_BINARY_DIR$$
+You can determine the value for $icode CMAKE_BINARY_DIR$$ with the command
+$codei%
+	grep CMAKE_BINARY_DIR cmake_cppad_swig.log
+%$$
+The rest of the commands below assume you are in the
+$icode CMAKE_BINARY_DIR$$ directory.
+
+$head check$$
+The command
+$codei%
+	make check
+%$$
+will run all of the available tests.
+
+$head Octave$$
+Swig does not support Octave-4.2; see
+$href%https://github.com/swig/swig/pull/875%issue 875%$$.
+For this reason on Cygwin, you should use an older version of Octave
+(until this is fixed).
+On Cygwin $code Octave-4.0.1-2$$ has problems in its
+include files that require one to add the flag
+$codei%
+	-I/usr/include/octave-4.0.1/octave
+%$$
+to the value of $icode swig_cxx_flags$$ in $cref run_cmake.sh$$.
+
+$head cppad_swig_lib$$
+On some systems, the following dynamically linked library may not be found:
+$codei%
+	%CMAKE_BINARY_DIR%/lib/libcppad_swig_lib.%*%
+%$$
+Depending on your system,
+you may be able to use one of the following commands to fix this:
+$codei%
+	PATH="%CMAKE_BINARY_DIR%/lib:@PATH"
+	LD_LIBRARY_PATH="%CMAKE_BINARY_DIR%/lib:@LD_LIBRARY_PATH"
+%$$
+
+$head check_swig_xam$$
+For $icode lang$$ equal
+$code cplusplus$$, $code octave$$, $code perl$$, $code python$$,
+$codei%
+	make check_swig_xam_%lang%
+%$$
+runs a simple test of Swig, for the particular language, on your system.
+
+$subhead check_lib$$
+For $icode lang$$ equal
+$code cplusplus$$, $code octave$$, $code perl$$, $code python$$,
+$codei%
+	make check_lib_%lang%
+%$$
+runs a test of Cppad Swig, for the particular language, on your system.
+
+$end

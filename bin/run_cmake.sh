@@ -33,6 +33,8 @@ remote_repo='https://github.com/coin-or/CppAD.git'
 version='20170226'
 hash_code='bbaf187407aefd4d986bd03df75379b05239d613'
 # -----------------------------------------------------------------------------
+distribution_dir=`pwd`
+# -----------------------------------------------------------------------------
 # Change into cmake binary directory
 if [ ! -e "$cmake_binary_dir" ]
 then
@@ -65,7 +67,7 @@ then
 	cmake -D CMAKE_VERBOSE_MAKEFILE="$cmake_verbose_makefile" \
 		-D cppad_prefix="$cmake_binary_path/prefix"  \
 		-D cppad_cxx_flags="$cppad_cxx_flags" \
-		..
+		.. | tee $distribution_dir/cmake_cppad.log
 	cd ../..
 	echo "End getting $local_repo"
 fi
@@ -93,7 +95,7 @@ cmake \
 	-D cppad_prefix="$cmake_binary_path/prefix" \
 	-D cppad_cxx_flags="$cppad_cxx_flags" \
 	-D swig_cxx_flags="$swig_cxx_flags" \
-	..
+	.. | tee $distribution_dir/cmake_cppad_swig.log
 # -----------------------------------------------------------------------------
 echo 'bin/run_cmake.sh: OK'
 exit 0
