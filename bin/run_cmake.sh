@@ -119,9 +119,13 @@ exit 0
 # $head Syntax$$
 # $codei%bin/run_cmake.sh%$$
 #
-# $head File$$
-# Before running this file $code bin/run_cmake.sh$$
-# the user should check and possible change the following settings:
+# $head Source Directory$$
+# This program must be run from the
+# $cref/source directory/cppad_swig/Source Directory/$$.
+#
+# $head System Settings$$
+# Before running $code bin/run_cmake.sh$$,
+# the user should check and possibly change the following settings:
 # $srcfile%bin/run_cmake.sh%0%# BEGIN user settings%# END user settings%$$
 # each of these settings is described below:
 #

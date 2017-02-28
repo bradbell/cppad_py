@@ -19,6 +19,8 @@ $latex
 $$
 $comment -------------------------------------------------------------$$
 $spell
+	https
+	bradbell
 	usr
 	Cppad
 	Linux
@@ -81,10 +83,16 @@ $href%https://www.perl.org/get.html%Perl%$$,
 $href%https://www.python.org/%Python%$$
 
 
-$head Getting Source Code$$
+$head Source Directory$$
 This is a preliminary version of this package.
 Currently, one gets the source code from Github at
 $href%https://github.com/bradbell/cppad_swig%cppad_swig%$$.
+The corresponding directory is referred to as the source directory.
+For example, if one uses the command
+$codei%
+	git clone https://github.com/bradbell/cppad_swig cppad_swig.git
+%$$
+the source directory is $code cppad_swig.git$$.
 
 $head Support$$
 As yet, there is no install procedure for this package.
