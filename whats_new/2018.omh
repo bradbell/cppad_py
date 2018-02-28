@@ -1,0 +1,33 @@
+-------------------------------------------------------------------------------
+          cppad_swig: A C++ Object Library and Swig Interface to Cppad
+           Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+               GNU General Public License version 3.0 or later see
+                     https://www.gnu.org/licenses/gpl-3.0.txt
+-------------------------------------------------------------------------------
+$begin whats_new_2018$$
+$spell
+	Cppad
+	xam
+	hpp
+$$
+
+$section Cppad Swig Changes During 2018$$
+
+$children%
+	whats_new/2017.omh
+%$$
+$head Previous Years$$
+$cref whats_new_2017$$
+
+$head 02-28$$
+Change $code swig_xam$$ $cref/exceptions/swig_xam.i/exception/$$
+to standard exceptions and remove the $code throw$$ from the
+corresponding function prototype.
+The avoids the warning
+$codei%
+	warning: dynamic exception specifications are deprecated in C++11
+%$$
+in the file $code swig_xam.hpp$$ and needs a similar fix in the library.
+
+$end

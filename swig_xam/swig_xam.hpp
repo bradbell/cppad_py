@@ -14,13 +14,14 @@ const char* message_of_void();
 void        add_by_ptr(int x, int y, int* result);
 int         max_array_by_ptr(int n, const int* x);
 double      max_std_vector_double(const std::vector<double>& x);
-const char* raise_exception(const char* message) throw(const char*);
+const char* raise_exception(const char* message);
 // END function prototypes
 /*
 $begin swig_xam_function$$
 $spell
 	ptr
 	std
+	runtime
 $$
 
 $section Swig Example: C++ Function Specifications$$
@@ -46,7 +47,6 @@ is the maximum of the elements of $icode x$$.
 $head max_std_vector_double$$
 The return value is the maximum of the elements of $icode x$$.
 
-
 $head raise_exception$$
 It $icode message$$ is the empty C string,
 the return value is the string corresponding to the previous
@@ -55,7 +55,7 @@ If $icode message$$ is non-empty,
 the message is store, so it can be retrieved later,
 and the following exception is thrown:
 $codei%
-	throw %message%;
+	std::runtime_error( std::string( %message% ) );
 %$$
 The message storage is done using a static variable and hence is
 not thread safe.

@@ -112,14 +112,14 @@ $children%
 	testing.omh%
 	swig_xam/swig_xam.i%
 	lib/library.omh%
-	news_2017.omh
+	whats_new/2018.omh
 %$$
 $head Contents$$
 $table
 $rref testing$$
 $rref swig_xam.i$$
 $rref library$$
-$rref news_2017$$
+$rref whats_new_2018$$
 $tend
 
 

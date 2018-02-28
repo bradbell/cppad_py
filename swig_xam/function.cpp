@@ -7,6 +7,7 @@
 ----------------------------------------------------------------------------- */
 // BEGIN C++
 # include "swig_xam.hpp"
+# include <stdexcept>
 # include <string>
 # include <limits>
 
@@ -45,7 +46,7 @@ double max_std_vector_double(const std::vector<double>& x)
 }
 
 // raise_exception
-const char* raise_exception(const char* message) throw(const char*)
+const char* raise_exception(const char* message)
 {	// previous error message
 	static std::string previous = "";
 	if( message[0] == '\0' )
@@ -53,7 +54,7 @@ const char* raise_exception(const char* message) throw(const char*)
 	previous = message;
 	//
 	// raise exception
-	throw message;
+	throw std::runtime_error( std::string( message ) );
 	//
 	// never get to here
 	return "";
