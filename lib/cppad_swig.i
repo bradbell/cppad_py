@@ -71,6 +71,15 @@ $end
 
 %ignore  ptr;
 %include "std_vector.i"
+%include "exception.i"
+
+%exception {
+     try { $action }
+     catch (std::runtime_error e) {
+            SWIG_exception(SWIG_RuntimeError, const_cast<char*>( e.what() ) );
+     }
+}
+
 %include <cppad/swig/a_double.hpp>
 %include <cppad/swig/sparse.hpp>
 %include <cppad/swig/a_fun.hpp>
@@ -80,7 +89,6 @@ $end
 %template(vec_int)       std::vector<int>;
 %template(vec_double)    std::vector<double>;
 %template(vec_a_double)  std::vector<cppad_swig::a_double>;
-
 
 /*
 -------------------------------------------------------------------------------

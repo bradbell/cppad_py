@@ -32,8 +32,8 @@ If $icode input_message$$ is $bold not$$ the empty string,
 it is stored in $code error_message$$ and an exception is thrown.
 This is intended to be done inside a $code try$$ block.
 
-$head exception$$
-The type of the exception is $code cppad_swig::exception$$
+$subhead exception$$
+The type of the exception is $code std::runtime_error$$
 which is derived from $code std::exception$$.
 If the standard exception $code what()$$ is called,
 the return value will be the value of $icode input_message$$
@@ -94,19 +94,8 @@ namespace cppad_swig {
 	}
 	CppAD::ErrorHandler cppad_error_mapper(cppad_error_handler);
 	// -----------------------------------------------------------------------
-	// ctor
-	exception::exception(const char* message) : message_(message)
-	{ }
-	// dtor
-	exception::~exception(void) throw()
-	{ }
-	// what
-	const char* exception::what(void) const throw()
-	{   return message_.c_str(); }
-	// -----------------------------------------------------------------------
-	const char*
-	error_message(const char* input_message) throw(cppad_swig::exception)
-	{	 //
+	const char* error_message(const char* input_message)
+	{	//
 		// message_stack
 		static std::stack<std::string> message_stack;
 		//
@@ -116,15 +105,16 @@ namespace cppad_swig {
 		// input value
 		std::string input_string = input_message;
 		//
-		// push message and raise exception
+		// Check for a throw
 		if( input_string != "" )
-		{	message_stack.push(input_string);
-			throw cppad_swig::exception(input_message);
+		{	// push message and raise exception
+			message_stack.push(input_string);
+			throw std::runtime_error( input_string );
 		}
 		//
-		// pop message
 		if( message_stack.size() > 0 )
-		{	return_string = message_stack.top();
+		{	// pop message
+			return_string = message_stack.top();
 			message_stack.pop();
 		}
 		else
