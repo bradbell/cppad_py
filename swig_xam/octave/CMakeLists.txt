@@ -59,9 +59,9 @@ IF( SWIG_FOUND AND octave_config )
 	# (treat like system include files to suppress warnings)
 	INCLUDE_DIRECTORIES( SYSTEM ${octave_include_dirs})
 	#
-	# SWIG_ADD_MODULE(name language [ files ])
+	# add_swig_library(library language files)
 	SET(module_files ../swig_xam.i ../function.cpp ../normal_class.cpp)
-	SWIG_ADD_MODULE(m_swig_xam octave ${module_files})
+	add_swig_library(m_swig_xam octave module_files)
 	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(m_swig_xam

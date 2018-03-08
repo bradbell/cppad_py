@@ -59,8 +59,8 @@ IF ( PERLLIBS_FOUND )
 	# include directory determined by find PerlLibs
 	INCLUDE_DIRECTORIES( SYSTEM ${PERL_INCLUDE_PATH})
 
-	# SWIG_ADD_MODULE(name language [ files ])
-	SWIG_ADD_MODULE(pm_cppad perl ${swig_control_file} )
+	# add_swig_library(library language files)
+	add_swig_library(pm_cppad perl swig_control_file)
 
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(pm_cppad cppad_swig_lib ${PERL_LIBRARIES})

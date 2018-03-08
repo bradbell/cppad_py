@@ -26,6 +26,26 @@ MACRO(assert variable)
      ENDIF( NOT ${variable} )
 ENDMACRO(assert)
 # ----------------------------------------------------------------------------
+# MACRO: add_swig_library(library, language, files)
+#
+# ${libray}: (in)
+# is the name of the swig library
+#
+# ${language}: (in)
+# is the scripting language for this library
+#
+# ${${files}}: (in)
+# are the source code files for this library.
+MACRO(add_swig_library library language files)
+	IF( ${CMAKE_MAJOR_VERSION} LESS 3 )
+		SWIG_ADD_MODULE( ${library} ${language} ${${files}} )
+	ELSEIF( ${CMAKE_MINOR_VERSION} LESS 8 )
+		SWIG_ADD_MODULE( ${library} ${language} ${${files}} )
+	ELSE( ${CMAKE_MINOR_VERSION} LESS 8 )
+		SWIG_ADD_LIBRARY( ${library} LANGUAGE ${language} SOURCES ${${files}} )
+	ENDIF( ${CMAKE_MAJOR_VERSION} LESS 3 )
+ENDMACRO(add_swig_library)
+# ----------------------------------------------------------------------------
 # MACRO: print_variable(variable)
 #
 # ${variable}: (in)
@@ -34,7 +54,7 @@ MACRO(print_variable variable)
 	MESSAGE(STATUS "${variable} = ${${variable}}" )
 ENDMACRO(print_variable)
 # -----------------------------------------------------------------------------
-# cmake_argument(variable default type description)
+# MACRO: cmake_argument(variable default type description)
 #
 # ${variable}: (in)
 # is the variable we are setting to its default value.

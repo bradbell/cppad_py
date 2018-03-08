@@ -34,9 +34,9 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND )
 	# include directory determined by find PythonLibs
 	INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
 	#
-	# SWIG_ADD_MODULE(name language [ files ])
+	# add_swig_library(library language files)
 	SET(module_files ../swig_xam.i ../function.cpp ../normal_class.cpp)
-	SWIG_ADD_MODULE(py_swig_xam python ${module_files})
+	add_swig_library(py_swig_xam python module_files)
 	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(py_swig_xam ${PYTHON_LIBRARIES})

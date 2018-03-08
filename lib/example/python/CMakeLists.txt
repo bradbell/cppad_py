@@ -68,8 +68,8 @@ IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
 	# include directory determined by find PythonLibs
 	INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
 
-	# SWIG_ADD_MODULE(name language [ files ])
-	SWIG_ADD_MODULE(py_cppad python ${swig_control_file} )
+	# add_swig_library(library language files)
+	add_swig_library(py_cppad python swig_control_file)
 
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(py_cppad cppad_swig_lib ${PYTHON_LIBRARIES})

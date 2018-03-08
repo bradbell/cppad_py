@@ -85,8 +85,8 @@ IF( octave_config )
 	# include directory determined by find octive-config
 	INCLUDE_DIRECTORIES( SYSTEM ${octave_include_dirs})
 
-	# SWIG_ADD_MODULE(name language [ files ])
-	SWIG_ADD_MODULE(m_cppad octave ${swig_control_file} )
+	# add_swig_library(library language files)
+	add_swig_library(m_cppad octave swig_control_file)
 
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(m_cppad

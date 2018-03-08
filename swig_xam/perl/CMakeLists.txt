@@ -26,9 +26,9 @@ IF( SWIG_FOUND AND PERLLIBS_FOUND )
 	# (treat like system include files to suppress warnings)
 	INCLUDE_DIRECTORIES( SYSTEM ${PERL_INCLUDE_PATH})
 	#
-	# SWIG_ADD_MODULE(name language [ files ])
+	# add_swig_library(library language files)
 	SET(module_files ../swig_xam.i ../function.cpp ../normal_class.cpp)
-	SWIG_ADD_MODULE(pl_swig_xam perl ${module_files})
+	add_swig_library(pl_swig_xam perl module_files)
 	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(pl_swig_xam ${PERL_LIBRARY})
