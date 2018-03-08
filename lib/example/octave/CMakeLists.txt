@@ -63,7 +63,7 @@ IF( octave_config )
 		"\\octave$" "" octave_include_dirs ${octave_include_dirs}
 	)
 
-	# Octave library dcirectories
+	# Octave library directories
 	EXECUTE_PROCESS(
 		COMMAND ${octave_config} -p OCTLIBDIR
 		OUTPUT_VARIABLE  octave_library_dirs
@@ -100,7 +100,7 @@ IF( octave_config )
 
 	# check_lib_octave
 	ADD_CUSTOM_TARGET(check_lib_octave
-		octave check_all.m
+		octave -W check_all.m
 		DEPENDS
 		${SWIG_MODULE_m_cppad_REAL_NAME}
 		${CMAKE_CURRENT_BINARY_DIR}/check_all.m

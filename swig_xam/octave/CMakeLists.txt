@@ -83,7 +83,7 @@ IF( SWIG_FOUND AND octave_config )
 	)
 	# check_swig_xam_octave
 	ADD_CUSTOM_TARGET(check_swig_xam_octave
-		octave check_swig_xam.m
+		octave -W check_swig_xam.m
 		DEPENDS ${SWIG_MODULE_m_swig_xam_REAL_NAME} check_swig_xam_m
 	)
 	MESSAGE(STATUS "make check_swig_xam_octave: available")

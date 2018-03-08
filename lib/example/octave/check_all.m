@@ -58,4 +58,7 @@ if error_count > 0
 	exit(1)
 end
 printf('octave: check_all: OK\n')
-exit(0)
+%
+% There is a bug in octave 4.2.1; see https://savannah.gnu.org/bugs/?50664
+% using octave -W check_all.m and commenting out exit seems to work for now.
+%exit(0)

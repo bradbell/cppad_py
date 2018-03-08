@@ -162,8 +162,12 @@ end
 % see Swig $cref/double_class/swig_xam.i/double_class/$$.
 %
 % $head Set Exit Code$$
+% There is a bug in octave 4.2.1; see https://savannah.gnu.org/bugs/?50664
+% using octave -W check_all.m and note exiting with zero code work for now.
 % $srccode#cpp#
-exit(error_count)
+if( error_count > 0 )
+	exit(error_count)
+end
 % #$$
 %
 % $end
