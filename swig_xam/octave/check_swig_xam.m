@@ -10,6 +10,8 @@
 %	xam
 %	std
 %	ptr
+%	https
+%	org
 % #$$
 %
 % $section Swig Example / Test: Octave Script$$

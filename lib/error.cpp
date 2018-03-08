@@ -20,6 +20,7 @@ $spell
 	Perl
 	cppad
 	std
+	runtime
 $$
 
 $section Exception Handling$$
