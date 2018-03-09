@@ -1,26 +1,11 @@
-# only on file
-git_commit.sh
-# only one directory
-build
-doc
-# log file in the root directory
-*.log
-# vi swap file in any directory
-*.swp
-*/*.swp
-*/*/*.swp
-#
-# root file name is junk in any directory
+# files to ignore
+/git_commit.sh
 junk
 junk.*
-*/junk
-*/junk.*
-*/*/junk
-*/*/junk.*
-# directory is new or new.* in any directory
+# directories to ignore
+/build/
+/doc/
 new
-new.*
-*/new
-*/new.*
-*/*/new
-*/*/new.*
+# extensions to ignore
+*.log
+*.swp
