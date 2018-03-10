@@ -46,6 +46,7 @@ do
 		echo_eval_log $check
 	fi
 done
+echo_eval_log bin/check_copyright.sh
 echo_eval_log bin/run_cmake.sh
 echo_eval_log run_omhelp.sh -xml doc
 echo_eval_log cd build

@@ -25,7 +25,7 @@ then
 	exit 0
 fi
 # -----------------------------------------------------------------------------
-list=`git ls-files | sed -e '/^.gitignore$/d'`
+list=`git ls-files | sed -e '/^.gitignore$/d' -e '/^bin\/version.sh$'/d`
 ok='yes'
 text='Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)'
 for file in $list
