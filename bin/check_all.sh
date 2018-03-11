@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -46,7 +46,8 @@ do
 		echo_eval_log $check
 	fi
 done
-echo_eval_log bin/check_copyright.sh
+#
+echo_eval_log check_copyright.sh
 echo_eval_log bin/run_cmake.sh
 echo_eval_log run_omhelp.sh -xml doc
 echo_eval_log cd build

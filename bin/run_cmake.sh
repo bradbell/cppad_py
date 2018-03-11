@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -30,7 +30,7 @@ test_cppad='no'
 # -----------------------------------------------------------------------------
 # CppAD version information
 remote_repo='https://github.com/coin-or/CppAD.git'
-version='20170226'
+cppad_version='20170226'
 hash_code='bbaf187407aefd4d986bd03df75379b05239d613'
 # -----------------------------------------------------------------------------
 distribution_dir=`pwd`
@@ -44,18 +44,19 @@ echo_eval cd $cmake_binary_dir
 cmake_binary_path=`pwd`
 # -----------------------------------------------------------------------------
 # Check if we need to install this version of CppAD
-local_repo="cppad-$version.git"
+local_repo="cppad-$cppad_version.git"
 if [ ! -e "$local_repo" ]
 then
 	echo "Start getting $local_repo"
 	echo_eval git clone $remote_repo $local_repo
 	echo_eval cd $local_repo
 	echo_eval git checkout --quiet $hash_code
-	get_version=`bin/version.sh get`
-	if [ "$get_version" != "$version" ]
+	check=`grep '^SET(cppad_version' CMakeLists.txt | \
+		sed -e 's|^[^"]*\([^"]*\).*|\1|'`
+	if [ "$check" != "$cppad_version" ]
 	then
-		echo "bin/run_cmake.sh: Cppad version = $version"
-		echo "version corresponding bin/version.sh get = $get_version"
+		echo "bin/run_cmake.sh: cppad_version = $cppad_version"
+		echo "version in $local_repo/CMakeLists.txt = $check"
 		exit 1
 	fi
 	# -------------------------------------------------------------------------
