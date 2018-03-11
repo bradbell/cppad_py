@@ -9,7 +9,7 @@
 # Suppress warnging that WIN32 not defined on cygwin
 SET(CMAKE_LEGACY_CYGWIN_WIN32 0) # remove when version below >= 2.8.4
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
-SET(cppad_swig_version "20180310")
+SET(cppad_swig_version "20180311")
 PROJECT(cppad_swig)
 # =============================================================================
 # MACROS
