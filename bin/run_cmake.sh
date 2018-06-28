@@ -23,7 +23,7 @@ cmake_binary_dir='build'
 cmake_generator='Unix Makefiles'
 cmake_verbose_makefile='false'
 cmake_build_type='debug'
-swig_cxx_flags='-Wall -Wno-sign-compare'
+swig_cxx_flags='-Wno-sign-compare -Wno-catch-value -Wno-class-memaccess'
 cppad_cxx_flags='-Wall -pedantic-errors'
 test_cppad='no'
 # END user settings
@@ -52,19 +52,20 @@ then
 	echo_eval cd $local_repo
 	echo_eval git checkout --quiet $hash_code
 	check=`grep '^SET(cppad_version' CMakeLists.txt | \
-		sed -e 's|^[^"]*\([^"]*\).*|\1|'`
+		sed -e 's|^[^"]*"\([^"]*\)".*|\1|'`
 	if [ "$check" != "$cppad_version" ]
 	then
 		echo "bin/run_cmake.sh: cppad_version = $cppad_version"
 		echo "version in $local_repo/CMakeLists.txt = $check"
 		exit 1
 	fi
-	# -------------------------------------------------------------------------
-	if [ ! -e 'build' ]
-	then
-		echo_eval mkdir build
-	fi
-	echo_eval cd build
+	cd ..
+fi
+# -------------------------------------------------------------------------
+if [ ! -e "$local_repo/build" ]
+then
+	echo_eval mkdir $local_repo/build
+	echo_eval cd $local_repo/build
 	cmake -D CMAKE_VERBOSE_MAKEFILE="$cmake_verbose_makefile" \
 		-D cppad_prefix="$cmake_binary_path/prefix"  \
 		-D cppad_cxx_flags="$cppad_cxx_flags" \
@@ -72,6 +73,7 @@ then
 	cd ../..
 	echo "End getting $local_repo"
 fi
+# -------------------------------------------------------------------------
 cd $local_repo/build
 if [ "$test_cppad" == 'yes' ]
 then

@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -8,14 +8,14 @@
 use strict;
 use warnings;
 use feature 'say';
-# on cygwin, cppad_swig_lib.dll is in ../.. directory
-$ENV{PATH}="../..:$ENV{PATH}";
+# add current working directory to library path
+use lib "$ENV{PWD}";
 #
 my $error_count = 0;
 sub run_test
 {	my $name = shift;
 	my $ok   = 1;
-	my $command = "use $name ; \$ok = $name::$name();";
+	my $command = "use $name ; \$ok = ${name}::$name();";
 	#
 	eval( $command );die $@ if($@);
 	#

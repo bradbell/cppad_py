@@ -49,10 +49,12 @@ done
 #
 echo_eval_log check_copyright.sh
 echo_eval_log bin/run_cmake.sh
-echo_eval_log run_omhelp.sh -xml doc
 echo_eval_log cd build
 echo_eval_log make clean
 echo_eval_log make check
+echo_eval_log cd ..
+echo_eval_log run_omhelp.sh doc
+echo_eval_log cd build
 rm $tmpfile
 #
 check_list='

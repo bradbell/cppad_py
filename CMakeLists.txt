@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -9,7 +9,7 @@
 # Suppress warnging that WIN32 not defined on cygwin
 SET(CMAKE_LEGACY_CYGWIN_WIN32 0) # remove when version below >= 2.8.4
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
-SET(cppad_swig_version "20180311")
+SET(cppad_swig_version "20180627")
 PROJECT(cppad_swig)
 # =============================================================================
 # MACROS

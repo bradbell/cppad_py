@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -19,18 +19,23 @@
 #
 # &section Swig Example / Test: Perl Script&&
 #
+# &head Add Current Directory To Search Path&&
+# &srccode%pl%
+use lib "$ENV{PWD}";
+# %&&
+#
 # &head Load the Module&&
-# &srccode%cpp%
+# &srccode%pl%
 use pl_swig_xam;
 # %&&
 #
 # &head Initialize Error Count&&
-# &srccode%cpp%
+# &srccode%pl%
 $error_count = 0;
 # %&&
 #
 # &head factorial_by_value&&
-# &srccode%cpp%
+# &srccode%pl%
 if( pl_swig_xam::factorial_by_value(4) == 24 )
 {	print "pl_swig_xam::factorial_by_value: OK\n"; }
 else
@@ -41,7 +46,7 @@ else
 # see C++ &cref/factorial_by_value/swig_xam_function/factorial_by_value/&&.
 #
 # &head message_of_void&&
-# &srccode%cpp%
+# &srccode%pl%
 if( pl_swig_xam::message_of_void() == "OK" )
 {	print "pl_swig_xam::message_of_void: OK\n"; }
 else
@@ -52,7 +57,7 @@ else
 # see C++ &cref/message_of_void/swig_xam_function/message_of_void/&&.
 #
 # &head int_class&&
-# &srccode%cpp%
+# &srccode%pl%
 $obj = new pl_swig_xam::int_class();
 pl_swig_xam::add_by_ptr(3, 4, $obj);
 if( $obj->value() == 7 )
@@ -66,7 +71,7 @@ else
 # C++ &cref/add_by_ptr/swig_xam_function/add_by_ptr/&&.
 #
 # &head int_array_ptr&&
-# &srccode%cpp%
+# &srccode%pl%
 $n = 10;
 $array_ptr = pl_swig_xam::new_int_array_ptr($n);
 for($i = 0; $i < $n; $i++)
@@ -84,7 +89,7 @@ pl_swig_xam::delete_int_array_ptr($array_ptr);
 # C++ &cref/max_array_by_ptr/swig_xam_function/max_array_by_ptr/&&.
 #
 # &head int_array_class&&
-# &srccode%cpp%
+# &srccode%pl%
 $n         = 10;
 $array_obj = new pl_swig_xam::int_array_class($n);
 for($i = 0; $i < $n; $i++)
@@ -100,7 +105,7 @@ else
 # C++ &cref/max_array_by_ptr/swig_xam_function/max_array_by_ptr/&&.
 #
 # &head vector_double&&
-# &srccode%cpp%
+# &srccode%pl%
 $n   = 10;
 $vec = new pl_swig_xam::vector_double($n);
 for($i = 0; $i < $n; $i++)
@@ -117,7 +122,7 @@ else
 # C++ &cref/max_std_vector_double/swig_xam_function/max_std_vector_double/&&.
 #
 # &head raise_exception&&
-# &srccode%cpp%
+# &srccode%pl%
 $message = "";
 eval { # acts like 'try {' in other languages
 	pl_swig_xam::raise_exception("test message\n");
@@ -135,7 +140,7 @@ else
 # see C++ &cref/raise_exception/swig_xam_function/raise_exception/&&.
 #
 # &head normal_class&&
-# &srccode%cpp%
+# &srccode%pl%
 $two   = new pl_swig_xam::normal_class(2);
 $three = new pl_swig_xam::normal_class(3);
 $five  = $two + $three;
@@ -152,7 +157,7 @@ else
 # see C++ &cref swig_xam_normal_class&&.
 #
 # &head double_class&&
-# &srccode%cpp%
+# &srccode%pl%
 $two   = new pl_swig_xam::double_class(2.0);
 $three = new pl_swig_xam::double_class(3.0);
 $five  = $two + $three;
@@ -169,7 +174,7 @@ else
 # see Swig &cref/double_class/swig_xam.i/double_class/&&.
 #
 # &head Set Exit Code&&
-# &srccode%cpp%
+# &srccode%pl%
 if( $error_count == 0 )
 {	exit 0; }
 exit 1;
