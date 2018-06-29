@@ -1,8 +1,8 @@
-# ifndef CPPAD_SWIG_A_DOUBLE_HPP
-# define CPPAD_SWIG_A_DOUBLE_HPP
+# ifndef CPPAD_PY_A_DOUBLE_HPP
+# define CPPAD_PY_A_DOUBLE_HPP
 /* -----------------------------------------------------------------------------
-           cppad_swig: A C++ Object Library and Swig Interface to Cppad
-            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+           cppad_py: A C++ Object Library and Python Interface to Cppad
+            Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
@@ -26,10 +26,10 @@ struct a_double_data {
 	CPPAD_TAPE_ADDR_TYPE   taddr;
 };
 
-namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
+namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
 // Swig class that acts the same as CppAD::AD<double>
-class  CPPAD_SWIG_LIB_PUBLIC a_double
+class  CPPAD_PY_LIB_PUBLIC a_double
 {	// private members are not in Swig interface
 	private:
 	// data for this object
@@ -113,6 +113,6 @@ class  CPPAD_SWIG_LIB_PUBLIC a_double
 	);
 };
 
-} // END_CPPAD_SWIG_NAMESPACE
+} // END_CPPAD_PY_NAMESPACE
 
 # endif

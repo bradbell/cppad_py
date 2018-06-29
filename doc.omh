@@ -1,17 +1,17 @@
 -------------------------------------------------------------------------------
-          cppad_swig: A C++ Object Library and Swig Interface to Cppad
+          cppad_py: A C++ Object Library and Python Interface to Cppad
            Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin cppad_swig$$
+$begin cppad_py$$
 $comment -------------------------------------------------------------
-default automatic indexing command for all cppad_swig documentaiton
+default automatic indexing command for all cppad_py documentaiton
 $$
 $aindex section head subhead$$
 $comment -------------------------------------------------------------
-Latex macros used throughout Cppad Swig documentation
+Latex macros used throughout Cppad Py documentation
 $$
 $latex
 \newcommand{\B}[1]{ {\bf #1} }
@@ -23,16 +23,18 @@ $spell
 	bradbell
 	usr
 	Cppad
+	Py
 	Linux
 	msys
 	perl
 	Cppad
+	Py
 	cmake
 	Github
 	xam
 $$
 
-$section cppad_swig-20180627: A C++ AD Library with a Swig Interface$$
+$section cppad_py-20180627: A C++ AD Library with a Swig Interface$$
 
 $head Purpose$$
 Provide Algorithmic Differentiation (AD),
@@ -57,7 +59,7 @@ $cref/Perl/a_fun_jacobian_xam.pm/$$,
 $cref/Python/a_fun_jacobian_xam.py/$$.
 
 $head C++ Function Speed$$
-One can use Cppad Swig to get faster function evaluation in scripting languages,
+One can use Cppad Py to get faster function evaluation in scripting languages,
 when the sequence of floating point operations does not depend on the
 independent variables.
 Once an $cref a_fun$$ is recorded, zero order
@@ -86,13 +88,13 @@ $href%https://www.python.org/%Python%$$
 $head Source Directory$$
 This is a preliminary version of this package.
 Currently, one gets the source code from Github at
-$href%https://github.com/bradbell/cppad_swig%cppad_swig%$$.
+$href%https://github.com/bradbell/cppad_py%cppad_py%$$.
 The corresponding directory is referred to as the source directory.
 For example, if one uses the command
 $codei%
-	git clone https://github.com/bradbell/cppad_swig cppad_swig.git
+	git clone https://github.com/bradbell/cppad_py cppad_py.git
 %$$
-the source directory is $code cppad_swig.git$$.
+the source directory is $code cppad_py.git$$.
 
 $head Support$$
 As yet, there is no install procedure for this package.

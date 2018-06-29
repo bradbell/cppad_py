@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#         cppad_py: A C++ Object Library and Python Interface to Cppad
+#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -63,7 +63,7 @@ IF ( PERLLIBS_FOUND )
 	add_swig_library(pm_cppad perl swig_control_file)
 
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
-	SWIG_LINK_LIBRARIES(pm_cppad cppad_swig_lib ${PERL_LIBRARIES})
+	SWIG_LINK_LIBRARIES(pm_cppad cppad_py_lib ${PERL_LIBRARIES})
 
 	# additional flags for compiling Swig wrapper
 	SET_TARGET_PROPERTIES( ${SWIG_MODULE_pm_cppad_REAL_NAME}

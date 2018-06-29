@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
-          cppad_swig: A C++ Object Library and Swig Interface to Cppad
-           Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+          cppad_py: A C++ Object Library and Python Interface to Cppad
+           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
@@ -17,6 +17,7 @@ $spell
 	xam
 	py
 	cppad
+	py
 	bool
 	eos
 	newline
@@ -95,7 +96,7 @@ $head Module_$$
 
 $subhead No Arguments$$
 If $code Module_$$ has no arguments,
-it is the Cppad Swig $cref/module name/module/Module Name/$$
+it is the Cppad Py $cref/module name/module/Module Name/$$
 for scripting language; e.g., $code py_cppad$$ for Python.
 
 $subhead One Argument$$
@@ -251,7 +252,7 @@ For example, in Octave it might be
 $codei|
 	function |return_variable| = |FunctionName_|()
 		%
-		% load the Cppad Swig library
+		% load the Cppad Py library
 		m_cppad
 		%
 		% initialize return value

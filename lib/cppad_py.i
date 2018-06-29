@@ -1,15 +1,15 @@
 /* -----------------------------------------------------------------------------
-           cppad_swig: A C++ Object Library and Swig Interface to Cppad
-            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+           cppad_py: A C++ Object Library and Python Interface to Cppad
+            Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
-/* cppad_swig.i */
+/* cppad_py.i */
 # ifdef SWIG
-# define CPPAD_SWIG_LIB_PUBLIC
+# define CPPAD_PY_LIB_PUBLIC
 # else
-# include <cppad_swig_lib_export.h>
+# include <cppad_py_lib_export.h>
 # endif
 
 
@@ -25,12 +25,13 @@
 $begin module$$
 $spell
 	Cppad
+	Py
 	Perl
 	py
 	namespace
 $$
 
-$section Cppad Swig Modules and Languages$$
+$section Cppad Py Modules and Languages$$
 
 $head Language$$
 Is a source code language.
@@ -45,11 +46,11 @@ Swig module.
 
 $head module_ref$$
 We use $icode module_ref$$ to denote the source code used to reference
-the Cppad Swig module for a particular language.
+the Cppad Py module for a particular language.
 It has the following value (depending on the language):
 $table
 Language     $cnext Module Name        $cnext module_ref            $rnext
-C++          $cnext $code cppad_swig$$ $cnext $code cppad_swig::$$  $rnext
+C++          $cnext $code cppad_py$$ $cnext $code cppad_py::$$  $rnext
 Octave       $cnext $code m_cppad$$    $cnext $code m_cppad.$$      $rnext
 Perl         $cnext $code pm_cppad$$   $cnext $code pm_cppad::$$    $rnext
 Python       $cnext $code py_cppad$$   $cnext $code m_cppad.$$
@@ -88,16 +89,17 @@ $end
 %template(vec_bool)      std::vector<bool>;
 %template(vec_int)       std::vector<int>;
 %template(vec_double)    std::vector<double>;
-%template(vec_a_double)  std::vector<cppad_swig::a_double>;
+%template(vec_a_double)  std::vector<cppad_py::a_double>;
 
 /*
 -------------------------------------------------------------------------------
 $begin a_double$$
 $spell
 	Cppad
+	Py
 $$
 
-$section Cppad Swig AD Scalars$$
+$section Cppad Py AD Scalars$$
 
 $childtable%lib/a_double.cpp%$$
 
@@ -106,9 +108,10 @@ $end
 $begin vector$$
 $spell
 	Cppad
+	Py
 $$
 
-$section Cppad Swig Vectors$$
+$section Cppad Py Vectors$$
 
 $childtable%lib/vector.omh%$$
 
@@ -117,9 +120,10 @@ $end
 $begin a_fun$$
 $spell
 	Cppad
+	Py
 $$
 
-$section Cppad Swig AD Functions$$
+$section Cppad Py AD Functions$$
 
 $childtable%lib/a_fun.cpp%$$
 
@@ -128,9 +132,10 @@ $end
 $begin sparse$$
 $spell
 	Cppad
+	Py
 $$
 
-$section Cppad Swig Sparse Calculation$$
+$section Cppad Py Sparse Calculation$$
 
 $childtable%lib/sparse.cpp%$$
 
@@ -140,9 +145,10 @@ $begin error$$
 $spell
 	messaging
 	Cppad
+	Py
 $$
 
-$section Cppad Swig Error Messaging$$
+$section Cppad Py Error Messaging$$
 
 $childtable%lib/error.cpp%$$
 

@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#         cppad_py: A C++ Object Library and Python Interface to Cppad
+#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -41,8 +41,8 @@ case $ext in
 	cpp)
 	cat << EOF  > $file_name
 /* ----------------------------------------------------------------------------
-          cppad_swig: A C++ Object Library and Swig Interface to Cppad
-           Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+          cppad_py: A C++ Object Library and Python Interface to Cppad
+           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
@@ -64,8 +64,8 @@ EOF
 # ifndef $name
 # define $name
 /* ----------------------------------------------------------------------------
-          cppad_swig: A C++ Object Library and Swig Interface to Cppad
-           Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+          cppad_py: A C++ Object Library and Python Interface to Cppad
+           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
@@ -85,8 +85,8 @@ EOF
 	fi
 	cat << EOF  > $file_name
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#         cppad_py: A C++ Object Library and Python Interface to Cppad
+#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -104,8 +104,8 @@ EOF
 	root_name=`echo $file_name | sed -e 's|.*/||' -e 's|\.omh$||'`
 	cat << EOF  > $file_name
 -------------------------------------------------------------------------------
-          cppad_swig: A C++ Object Library and Swig Interface to Cppad
-           Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+          cppad_py: A C++ Object Library and Python Interface to Cppad
+           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
@@ -131,8 +131,8 @@ EOF
 	cat << EOF  > $file_name
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#         cppad_py: A C++ Object Library and Python Interface to Cppad
+#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -160,8 +160,8 @@ EOF
 	txt)
 	cat << EOF > $file_name
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#         cppad_py: A C++ Object Library and Python Interface to Cppad
+#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -176,8 +176,8 @@ EOF
 include(xam.m4)dnl this comments out end of line character
 Header_($local_file)
 C_ -----------------------------------------------------------------------------
-C_         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-C_          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+C_         cppad_py: A C++ Object Library and Python Interface to Cppad
+C_          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 C_              This program is distributed under the terms of the
 C_              GNU General Public License version 3.0 or later see
 C_                    https://www.gnu.org/licenses/gpl-3.0.txt

@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
-           cppad_swig: A C++ Object Library and Swig Interface to Cppad
-            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+           cppad_py: A C++ Object Library and Python Interface to Cppad
+            Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
@@ -9,7 +9,7 @@
 # include <cppad/swig/a_fun.hpp>
 # include <cppad/swig/error.hpp>
 
-namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
+namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
 /*
 -------------------------------------------------------------------------------
@@ -17,6 +17,7 @@ $begin independent$$
 $spell
 	vec
 	Cppad
+	Py
 	Perl
 	py
 	const
@@ -174,11 +175,11 @@ $end
 // a_fun(void) (not yet documented or tested)
 a_fun::a_fun(void)
 {	ptr_ = new CppAD::ADFun<double>();
-	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 // destructor
 a_fun::~a_fun(void)
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	delete ptr_;
 }
 // a_fun(ax, ay)
@@ -587,7 +588,7 @@ $end
 */
 std::vector<double> a_fun::reverse(int q, const std::vector<double>& yq)
 {	if( yq.size() != q * ptr_->Range() )
-		error_message("cppad_swig::a_fun::reverse yq.size() error");
+		error_message("cppad_py::a_fun::reverse yq.size() error");
 	return ptr_->Reverse(q, yq);
 }
 /*
@@ -732,4 +733,4 @@ int a_fun::size_var(void) const
 int a_fun::size_op(void) const
 {	return ptr_->size_op(); }
 // ----------------------------------------------------------------------------
-} // END_CPPAD_SWIG_NAMESPACE
+} // END_CPPAD_PY_NAMESPACE

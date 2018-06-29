@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
-           cppad_swig: A C++ Object Library and Swig Interface to Cppad
-            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+           cppad_py: A C++ Object Library and Python Interface to Cppad
+            Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
@@ -11,7 +11,7 @@
 # include <cppad/swig/a_fun.hpp>
 # include <cppad/swig/error.hpp>
 
-namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
+namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
 /*
 -------------------------------------------------------------------------------
@@ -25,6 +25,7 @@ $spell
 	resize
 	const
 	Cppad
+	Py
 	vec
 $$
 
@@ -207,32 +208,32 @@ CppAD::sparse_rc< std::vector<size_t> >* sparse_rc::ptr(void)
 // sparse_rc ctor
 sparse_rc::sparse_rc(void)
 {	ptr_ = new CppAD::sparse_rc< std::vector<size_t> >();
-	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 // destructor
 sparse_rc::~sparse_rc(void)
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	delete ptr_;
 }
 // resize
 void sparse_rc::resize(int nr, int nc, int nnz)
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	ptr_->resize(nr, nc, nnz);
 	return;
 }
 // number of rows in matrix
 int sparse_rc::nr(void) const
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nr();
 }
 // number of columns in matrix
 int sparse_rc::nc(void) const
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nc();
 }
 // number of possibley non-zero elements in matrix
 int sparse_rc::nnz(void) const
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nnz();
 }
 // set row and column for a possibly non-zero element
@@ -287,6 +288,7 @@ $spell
 	resize
 	const
 	Cppad
+	Py
 	vec
 $$
 
@@ -467,26 +469,26 @@ sparse_rcv::sparse_rcv(const sparse_rc& pattern)
 {	ptr_ = new CppAD::sparse_rcv< std::vector<size_t> , std::vector<double> >(
 		*pattern.ptr()
 	);
-	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 // destructor
 sparse_rcv::~sparse_rcv(void)
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	delete ptr_;
 }
 // number of rows in matrix
 int sparse_rcv::nr(void) const
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nr();
 }
 // number of columns in matrix
 int sparse_rcv::nc(void) const
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nc();
 }
 // number of possibley non-zero elements in matrix
 int sparse_rcv::nnz(void) const
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nnz();
 }
 // set row and column for a possibly non-zero element
@@ -636,8 +638,8 @@ void a_fun::for_jac_sparsity(
 	ptr_->for_jac_sparsity(
 		*ptr_in, transpose, dependency, internal_bool, *ptr_out
 	);
-	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_->size_forward_bool() == 0 );
-	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_->size_forward_set() != 0 );
+	CPPAD_PY_ASSERT_UNKNOWN( ptr_->size_forward_bool() == 0 );
+	CPPAD_PY_ASSERT_UNKNOWN( ptr_->size_forward_set() != 0 );
 	// free stored forward pattern
 	ptr_->size_forward_set(0);
 	//
@@ -760,11 +762,11 @@ void a_fun::rev_hes_sparsity(
 	const std::vector<bool>& select_domain ,
 	const std::vector<bool>& select_range  ,
 	sparse_rc&               pattern_out   )
-{	CPPAD_SWIG_ASSERT_KNOWN(
+{	CPPAD_PY_ASSERT_KNOWN(
 		select_domain.size() == ptr_->Domain() ,
 		"rev_hes_sparsity: select_domain does not have proper size"
 	);
-	CPPAD_SWIG_ASSERT_KNOWN(
+	CPPAD_PY_ASSERT_KNOWN(
 		select_range.size() == ptr_->Range() ,
 		"rev_hes_sparsity: select_range does not have proper size"
 	);
@@ -798,8 +800,8 @@ void a_fun::rev_hes_sparsity(
 	ptr_->for_jac_sparsity(
 		pattern_R, transpose, dependency, internal_bool, pattern_jac
 	);
-	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_->size_forward_bool() == 0 );
-	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_->size_forward_set() != 0 );
+	CPPAD_PY_ASSERT_UNKNOWN( ptr_->size_forward_bool() == 0 );
+	CPPAD_PY_ASSERT_UNKNOWN( ptr_->size_forward_set() != 0 );
 	//
 	// CppAD's version of rev_hes_sparsity computes a sparsity pattern for
 	// R^T (r^T * F)^{(2)} (x)
@@ -976,16 +978,16 @@ CppAD::sparse_jac_work* sparse_jac_work::ptr(void)
 // sparse_jac_work ctor
 sparse_jac_work::sparse_jac_work(void)
 {	ptr_ = new CppAD::sparse_jac_work();
-	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 // sparse_jac_work destructor
 sparse_jac_work::~sparse_jac_work(void)
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	delete ptr_;
 }
 // sparse_jac_work clear
 void sparse_jac_work::clear(void)
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	ptr_->clear();
 	return;
 }
@@ -1165,16 +1167,16 @@ CppAD::sparse_hes_work* sparse_hes_work::ptr(void)
 // sparse_hes_work ctor
 sparse_hes_work::sparse_hes_work(void)
 {	ptr_ = new CppAD::sparse_hes_work();
-	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 // sparse_hes_work destructor
 sparse_hes_work::~sparse_hes_work(void)
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	delete ptr_;
 }
 // sparse_hes_work clear
 void sparse_hes_work::clear(void)
-{	CPPAD_SWIG_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	ptr_->clear();
 	return;
 }
@@ -1192,4 +1194,4 @@ int a_fun::sparse_hes(
 	return int(n_sweep);
 }
 
-} // END_CPPAD_SWIG_NAMESPACE
+} // END_CPPAD_PY_NAMESPACE

@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#         cppad_py: A C++ Object Library and Python Interface to Cppad
+#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -23,10 +23,10 @@ define(Eof_, C_)
 # module, var, and member
 
 # Module_ or Module_(name)
-define(Module_, `ifelse($#, 0, cppad_swig, cppad_swig::$1)')
+define(Module_, `ifelse($#, 0, cppad_py, cppad_py::$1)')
 
 # ModuleCtor_(name)
-define(ModuleCtor_, cppad_swig::$1)
+define(ModuleCtor_, cppad_py::$1)
 
 # -----------------------------------------------------------------------------
 # non-statements with arguments
@@ -68,19 +68,19 @@ define(VecGet_, $1[$2])
 define(BeginBoolFun_,
 `#' include <cstdio>
 `#' include <string>
-`#' include <cppad/swig/cppad_swig.hpp>
+`#' include <cppad/swig/cppad_py.hpp>
 
 bool $2(void) {
-	using cppad_swig::a_double;
-	using cppad_swig::vec_bool;
-	using cppad_swig::vec_int;
-	using cppad_swig::vec_double;
-	using cppad_swig::vec_a_double;
-	using cppad_swig::a_fun;
-	using cppad_swig::sparse_rc;
-	using cppad_swig::sparse_rcv;
-	using cppad_swig::sparse_jac_work;
-	using cppad_swig::sparse_hes_work;
+	using cppad_py::a_double;
+	using cppad_py::vec_bool;
+	using cppad_py::vec_int;
+	using cppad_py::vec_double;
+	using cppad_py::vec_a_double;
+	using cppad_py::a_fun;
+	using cppad_py::sparse_rc;
+	using cppad_py::sparse_rcv;
+	using cppad_py::sparse_jac_work;
+	using cppad_py::sparse_hes_work;
 	using std::string;
 	C_
 	C_ initialize return variable

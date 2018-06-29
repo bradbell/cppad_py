@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
-           cppad_swig: A C++ Object Library and Swig Interface to Cppad
-            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+           cppad_py: A C++ Object Library and Python Interface to Cppad
+            Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
@@ -41,7 +41,7 @@ a_double a_double::fun(void) const \
 }
 // ---------------------------------------------------------------------------
 
-namespace cppad_swig { // BEGIN_CPPAD_SWIG_NAMESPACE
+namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
 // ---------------------------------------------------------------------------
 // public member functions not in Swig interface
@@ -56,7 +56,7 @@ const CppAD::AD<double>* a_double::ptr(void) const
 }
 // ctor from CppAD::AD<double>
 a_double::a_double(const CppAD::AD<double>* ad_ptr)
-{	CPPAD_SWIG_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+{	CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
 	new ( & data_ ) CppAD::AD<double>(*ad_ptr);
 }
 /*
@@ -65,6 +65,7 @@ $begin a_double_ctor$$
 $spell
 	vec
 	cppad
+	py
 	const
 	perl
 	py
@@ -81,7 +82,7 @@ $icode%ad% = %module_ref% a_double(%ad_other%)
 %$$
 
 $head Purpose$$
-Creates a $code cppad_swig::a_double$$ object that can be use
+Creates a $code cppad_py::a_double$$ object that can be use
 to track floating point operations and preform algorithmic differentiation.
 
 $head module_ref$$
@@ -117,17 +118,17 @@ $end
 // default a_double ctor
 a_double::a_double(void)
 {	// placement version of new operator uses this->data_ for memory
-	CPPAD_SWIG_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+	CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
 	new ( & data_ ) CppAD::AD<double>();
 }
 // a_double ctor from double
 a_double::a_double(const double& d)
-{	CPPAD_SWIG_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+{	CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
 	new ( & data_ ) CppAD::AD<double>(d);
 }
 // ctor from a_double
 a_double::a_double(const a_double& ad)
-{	CPPAD_SWIG_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+{	CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
 	new ( & data_ ) CppAD::AD<double>(*ad.ptr());
 }
 // a_double destructor
@@ -709,4 +710,4 @@ void a_double::cond_assign(
 	}
 }
 // --------------------------------------------------------------------------
-} // END_CPPAD_SWIG_NAMESPACE
+} // END_CPPAD_PY_NAMESPACE

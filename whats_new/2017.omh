@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
-          cppad_swig: A C++ Object Library and Swig Interface to Cppad
-           Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+          cppad_py: A C++ Object Library and Python Interface to Cppad
+           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
@@ -8,6 +8,7 @@
 $begin whats_new_2017$$
 $spell
 	Cppad
+	Py
 	xam
 	Perl
 	vec
@@ -23,7 +24,7 @@ $spell
 	bool
 $$
 
-$section Cppad Swig Changes During 2017$$
+$section Cppad Py Changes During 2017$$
 
 $head 02-16$$
 Advance to $code cppad-20170226$$
@@ -53,7 +54,7 @@ $lend
 $head 02-23$$
 Fix Cygwin version of $codei%make check_lib_%lang%$$ for $icode lang$$ equal to
 $code python$$ and $code perl$$. (The execution path needs to include
-the directory where the $code cppad_swig_lib$$ Dll is located.)
+the directory where the $code cppad_py_lib$$ Dll is located.)
 This make command is still not working on Cygwin when
 $icode lang$$ is $code octave$$.
 
@@ -64,7 +65,7 @@ $code lib/example/perl/CMakeLists.txt$$.
 This has been fixed (but is still not working on Cygwin).
 
 $head 02-21$$
-Add the $cref/supporting packages/cppad_swig/Supporting Packages/$$
+Add the $cref/supporting packages/cppad_py/Supporting Packages/$$
 heading to aid the install procedure.
 
 $head 02-20$$
@@ -98,8 +99,8 @@ $code vector_ad$$ -> $code vec_a_double$$; see
 $cref vector_ctor$$.
 $lnext
 Improve documentation:
-Change name of some sections; e.g. cppad_swig_lib -> library.
-Fix capitalization of Cppad Swig, M4, and other names in titles
+Change name of some sections; e.g. cppad_py_lib -> library.
+Fix capitalization of Cppad Py, M4, and other names in titles
 and headings.
 Include the
 $cref/optimize example/a_fun_optimize/Example/$$
@@ -127,7 +128,7 @@ $lend
 $head 01-14$$
 Change the Swig example directory, and file names,
 from $code example$$ to $code swig_xam$$.
-This distinguishes them from the Cppad Swig
+This distinguishes them from the Cppad Py
 examples in $code lib/example$$.
 Group the $cref library$$ into one section
 and improve documentation of $cref/module names/module/$$.
@@ -146,7 +147,7 @@ $lend
 $head 01-12$$
 Change
 $cref xam.m4$$ macros to all start with Capital letters and use Camel case
-This is relevant to understanding on Cppad Swig generates examples
+This is relevant to understanding on Cppad Py generates examples
 for all languages from a single source.
 
 $head 01-11$$

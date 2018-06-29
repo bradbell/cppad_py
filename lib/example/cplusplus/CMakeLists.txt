@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
-#          Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+#         cppad_py: A C++ Object Library and Python Interface to Cppad
+#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -35,8 +35,8 @@ ADD_EXECUTABLE(lib_cplusplus_check_all EXCLUDE_FROM_ALL
 SET_TARGET_PROPERTIES(
 	lib_cplusplus_check_all PROPERTIES COMPILE_FLAGS "${cppad_cxx_flags}"
 )
-# link in cppad_swig library
-TARGET_LINK_LIBRARIES(lib_cplusplus_check_all cppad_swig_lib)
+# link in cppad_py library
+TARGET_LINK_LIBRARIES(lib_cplusplus_check_all cppad_py_lib)
 #
 # check_lib_cplusplus
 ADD_CUSTOM_TARGET(check_lib_cplusplus

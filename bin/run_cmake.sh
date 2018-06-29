@@ -1,6 +1,6 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+#         cppad_py: A C++ Object Library and Python Interface to Cppad
 #          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
@@ -98,7 +98,7 @@ cmake \
 	-D cppad_prefix="$cmake_binary_path/prefix" \
 	-D cppad_cxx_flags="$cppad_cxx_flags" \
 	-D swig_cxx_flags="$swig_cxx_flags" \
-	.. | tee $distribution_dir/cmake_cppad_swig.log
+	.. | tee $distribution_dir/cmake_cppad_py.log
 # -----------------------------------------------------------------------------
 echo 'bin/run_cmake.sh: OK'
 exit 0
@@ -108,6 +108,7 @@ exit 0
 #	Makefiles
 #	Rel
 #	Cppad
+#	Py
 #	cmake
 #	hpp
 #	cxx
@@ -117,14 +118,14 @@ exit 0
 #	executables
 # $$
 #
-# $section Get Cppad and Configure Cppad Swig for A system$$
+# $section Get Cppad and Configure Cppad Py for A system$$
 #
 # $head Syntax$$
 # $codei%bin/run_cmake.sh%$$
 #
 # $head Source Directory$$
 # This program must be run from the
-# $cref/source directory/cppad_swig/Source Directory/$$.
+# $cref/source directory/cppad_py/Source Directory/$$.
 #
 # $head System Settings$$
 # Before running $code bin/run_cmake.sh$$,

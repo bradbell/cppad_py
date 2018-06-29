@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-#         cppad_swig: A C++ Object Library and Swig Interface to Cppad
+#         cppad_py: A C++ Object Library and Python Interface to Cppad
 #          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
@@ -9,8 +9,8 @@
 # Suppress warnging that WIN32 not defined on cygwin
 SET(CMAKE_LEGACY_CYGWIN_WIN32 0) # remove when version below >= 2.8.4
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
-SET(cppad_swig_version "20180627")
-PROJECT(cppad_swig)
+SET(cppad_py_version "20180627")
+PROJECT(cppad_py)
 # =============================================================================
 # MACROS
 # =============================================================================
@@ -143,7 +143,7 @@ INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
 # -----------------------------------------------------------------------------
 # compiler flags
 cmake_argument(cppad_cxx_flags "" STRING
-"Flags, in addititon to CMAKE_CXX_FLAGS, used when compiling cppad_swig code."
+"Flags, in addititon to CMAKE_CXX_FLAGS, used when compiling cppad_py code."
 )
 cmake_argument(swig_cxx_flags "" STRING
 "Flags, in addititon to CMAKE_CXX_FLAGS, used when Swig wrapper code."

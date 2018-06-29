@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
-           cppad_swig: A C++ Object Library and Swig Interface to Cppad
-            Copyright (C) 2017-17 Bradley M. Bell (bradbell@seanet.com)
+           cppad_py: A C++ Object Library and Python Interface to Cppad
+            Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
@@ -19,6 +19,7 @@ $spell
 	vec
 	Perl
 	cppad
+	py
 	std
 	runtime
 $$
@@ -70,9 +71,9 @@ $cref/Python/error_message_xam.py/$$.
 
 $end
 */
-namespace cppad_swig {
+namespace cppad_py {
 	// -----------------------------------------------------------------------
-	// map Cppad error handler to Cppad Swig error handler
+	// map Cppad error handler to Cppad Py error handler
 	void cppad_error_handler(
 		bool known       ,
 		int  line        ,
