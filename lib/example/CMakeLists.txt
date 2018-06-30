@@ -36,8 +36,6 @@ SET(xam_file_list
 # sub-directories for each language (add to check_lib_depend)
 ADD_SUBDIRECTORY(cplusplus)
 ADD_SUBDIRECTORY(python)
-ADD_SUBDIRECTORY(octave)
-ADD_SUBDIRECTORY(perl)
 #
 # Change check_lib_depends in parent environment
 SET(check_lib_depends "${check_lib_depends}" PARENT_SCOPE)

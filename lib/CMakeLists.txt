@@ -63,8 +63,6 @@ ADD_SUBDIRECTORY(example)
 ADD_CUSTOM_TARGET(auto_lib DEPENDS
 	auto_lib_cplusplus
 	auto_lib_python
-	auto_lib_octave
-	auto_lib_perl
 )
 MESSAGE(STATUS "make auto_lib: available")
 #

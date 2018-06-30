@@ -35,8 +35,6 @@ done
 # -----------------------------------------------------------------------------
 lang_file_list='
 	lib/example/cplusplus/check_all.cpp
-	lib/example/octave/check_all.m
-	lib/example/perl/check_all.pl
 	lib/example/python/check_all.py
 '
 for lang_file in $lang_file_list

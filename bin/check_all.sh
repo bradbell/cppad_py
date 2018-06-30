@@ -63,8 +63,6 @@ check_list='
 	swig_xam_perl
 	swig_xam
 	lib_python
-	lib_octave
-	lib_perl
 	lib
 '
 for check in $check_list
