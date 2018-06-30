@@ -9,7 +9,7 @@
 ----------------------------------------------------------------------------- */
 # include <vector>
 # include <cppad/utility/sparse_rcv.hpp>
-# include <cppad/swig/public_lib.hpp>
+# include <cppad/py/public_lib.hpp>
 
 // declarations without definitions
 namespace CppAD {

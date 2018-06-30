@@ -8,7 +8,7 @@
                      https://www.gnu.org/licenses/gpl-3.0.txt
 ---------------------------------------------------------------------------- */
 # include <vector>
-# include <cppad/swig/a_double.hpp>
+# include <cppad/py/a_double.hpp>
 
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 

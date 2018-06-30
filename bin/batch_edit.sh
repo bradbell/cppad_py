@@ -9,27 +9,15 @@
 delete_list='
 '
 revert_list='
+	testing.omh
 '
 move_list='
-	include/cppad/swig/cppad_swig.hpp
-	lib/cppad_swig.i
+	include/cppad/swig
 '
-move_sed='s|cppad_swig|cppad_py|'
+move_sed='s|/swig|/py|'
 #
 cat << EOF > junk.sed
-s|CPPAD_SWIG|CPPAD_PY|
-s|Cppad Swig|Cppad Py|
-s|cppad_swig|cppad_py|g
-s|A C++ Object Library and Swig|A C++ Object Library and Python|
-s|2017-17 Bradley|2017-18 Bradley|
-#
-# py in spell commands
-s|^\\tCppad\$|&\\n\\tPy|
-s|^\\tcppad\$|&\\n\\tpy|
-s|^#\\tCppad\$|&\\n#\\tPy|
-s|^#\\tcppad\$|&\\n#\\tpy|
-s|^%\\tcppad\$|&\\n%\\tpy|
-s|^\\(.#.\\)\\tcppad\$|&\\n\\1\\tpy|
+s|/swig/|/py/|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

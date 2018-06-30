@@ -50,10 +50,10 @@ SET_TARGET_PROPERTIES(
 #
 # Swig extra dependencies used by sub-directories below
 SET(SWIG_MODULE_cppad_py_EXTRA_DEPS
-	"${CMAKE_SOURCE_DIR}/include/cppad/swig/a_double.hpp"
-	"${CMAKE_SOURCE_DIR}/include/cppad/swig/a_fun.hpp"
-	"${CMAKE_SOURCE_DIR}/include/cppad/swig/sparse.hpp"
-	"${CMAKE_SOURCE_DIR}/include/cppad/swig/error.hpp"
+	"${CMAKE_SOURCE_DIR}/include/cppad/py/a_double.hpp"
+	"${CMAKE_SOURCE_DIR}/include/cppad/py/a_fun.hpp"
+	"${CMAKE_SOURCE_DIR}/include/cppad/py/sparse.hpp"
+	"${CMAKE_SOURCE_DIR}/include/cppad/py/error.hpp"
 )
 #
 # example / test directory (add to check_lib_depends)

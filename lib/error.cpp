@@ -8,7 +8,7 @@
 // BEGIN C++
 # include <string>
 # include <stack>
-# include <cppad/swig/error.hpp>
+# include <cppad/py/error.hpp>
 # include <cppad/utility/error_handler.hpp>
 # include <cppad/utility/to_string.hpp>
 

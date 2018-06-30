@@ -14,11 +14,11 @@
 
 
 %{
-# include <cppad/swig/a_double.hpp>
-# include <cppad/swig/sparse.hpp>
-# include <cppad/swig/a_fun.hpp>
-# include <cppad/swig/vector.hpp>
-# include <cppad/swig/error.hpp>
+# include <cppad/py/a_double.hpp>
+# include <cppad/py/sparse.hpp>
+# include <cppad/py/a_fun.hpp>
+# include <cppad/py/vector.hpp>
+# include <cppad/py/error.hpp>
 %}
 
 /*
@@ -81,10 +81,10 @@ $end
      }
 }
 
-%include <cppad/swig/a_double.hpp>
-%include <cppad/swig/sparse.hpp>
-%include <cppad/swig/a_fun.hpp>
-%include <cppad/swig/error.hpp>
+%include <cppad/py/a_double.hpp>
+%include <cppad/py/sparse.hpp>
+%include <cppad/py/a_fun.hpp>
+%include <cppad/py/error.hpp>
 
 %template(vec_bool)      std::vector<bool>;
 %template(vec_int)       std::vector<int>;

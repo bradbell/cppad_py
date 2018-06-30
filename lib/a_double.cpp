@@ -6,8 +6,8 @@
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
 # include <cppad/cppad.hpp>
-# include <cppad/swig/error.hpp>
-# include <cppad/swig/a_double.hpp>
+# include <cppad/py/error.hpp>
+# include <cppad/py/a_double.hpp>
 
 // ---------------------------------------------------------------------------
 // Macros

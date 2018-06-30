@@ -8,9 +8,9 @@
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
 # include <vector>
-# include <cppad/swig/a_double.hpp>
-# include <cppad/swig/public_lib.hpp>
-# include <cppad/swig/sparse.hpp>
+# include <cppad/py/a_double.hpp>
+# include <cppad/py/public_lib.hpp>
+# include <cppad/py/sparse.hpp>
 
 // declarations without definitions
 namespace CppAD {

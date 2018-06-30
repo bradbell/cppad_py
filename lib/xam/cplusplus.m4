@@ -68,7 +68,7 @@ define(VecGet_, $1[$2])
 define(BeginBoolFun_,
 `#' include <cstdio>
 `#' include <string>
-`#' include <cppad/swig/cppad_py.hpp>
+`#' include <cppad/py/cppad_py.hpp>
 
 bool $2(void) {
 	using cppad_py::a_double;

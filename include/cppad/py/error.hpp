@@ -9,7 +9,7 @@
 ---------------------------------------------------------------------------- */
 # include <exception>
 # include <string>
-# include <cppad/swig/public_lib.hpp>
+# include <cppad/py/public_lib.hpp>
 
 namespace cppad_py {
 	CPPAD_PY_LIB_PUBLIC

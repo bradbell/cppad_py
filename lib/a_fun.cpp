@@ -6,8 +6,8 @@
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
 # include <cppad/cppad.hpp>
-# include <cppad/swig/a_fun.hpp>
-# include <cppad/swig/error.hpp>
+# include <cppad/py/a_fun.hpp>
+# include <cppad/py/error.hpp>
 
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
