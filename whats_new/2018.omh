@@ -9,40 +9,11 @@ $begin whats_new_2018$$
 $spell
 	Cppad
 	Py
-	xam
-	hpp
-	cmake
 $$
 
 $section Cppad Py Changes During 2018$$
 
-$children%
-	whats_new/2017.omh
-%$$
-$head Previous Years$$
-$cref whats_new_2017$$
-
-$head 03-08$$
-$list number$$
-Fix catching of exceptions in scripting languages.
-Throwing was working after change on 02-28,
-but catching was not.
-$lnext
-Fix warning during $cref run_cmake.sh$$ command
-with new versions of $code cmake$$.
-To be specific, convert calls from
-$code SWIG_ADD_MODULE$$ to $code SWIG_ADD_LIBRARY$$
-as the warning suggested.
-$lend
-
-$head 02-28$$
-Change $code swig_xam$$ $cref/exceptions/swig_xam.i/exception/$$
-to standard exceptions and remove the $code throw$$ from the
-corresponding function prototype.
-The avoids the warning
-$codei%
-	warning: dynamic exception specifications are deprecated in C++11
-%$$
-in the file $code swig_xam.hpp$$ and needs a similar fix in the library.
+$head 07-03$$
+Birthday when Cppad Py was first extracted from Cppad Swig.
 
 $end

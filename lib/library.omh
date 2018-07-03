@@ -14,8 +14,7 @@ $$
 $section The Cppad Py Library$$
 
 $childtable%
-	lib/cppad_py.i%
-	lib/xam/xam.m4
+	lib/cppad_py.i
 %$$
 
 
