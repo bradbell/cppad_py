@@ -58,8 +58,8 @@ The message storage is done using static information in
 $code error_message$$ and hence is not thread safe.
 
 $children%
-	build/lib/example/cplusplus/error_message_xam.cpp%
-	build/lib/example/python/error_message_xam.py
+	lib/example/cplusplus/error_message_xam.cpp%
+	lib/example/python/error_message_xam.py
 %$$
 $head Example$$
 $cref/C++/error_message_xam.cpp/$$,

@@ -185,8 +185,8 @@ This routine generates an assert if there are two entries with the same
 row and column values (if $code NDEBUG$$ is not defined).
 
 $children%
-	build/lib/example/cplusplus/sparse_rc_xam.cpp%
-	build/lib/example/python/sparse_rc_xam.py
+	lib/example/cplusplus/sparse_rc_xam.cpp%
+	lib/example/python/sparse_rc_xam.py
 %$$
 $head Example$$
 $cref/C++/sparse_rc_xam.cpp/$$,
@@ -441,8 +441,8 @@ This routine generates an assert if there are two entries with the same
 row and column values (if $code NDEBUG$$ is not defined).
 
 $children%
-	build/lib/example/cplusplus/sparse_rcv_xam.cpp%
-	build/lib/example/python/sparse_rcv_xam.py
+	lib/example/cplusplus/sparse_rcv_xam.cpp%
+	lib/example/python/sparse_rcv_xam.py
 %$$
 $head Example$$
 $cref/C++/sparse_rcv_xam.cpp/$$,
@@ -606,8 +606,8 @@ In this case, $icode pattern_out$$ is a sparsity pattern for
 $latex F^{(1)} ( x )$$.
 
 $children%
-	build/lib/example/cplusplus/sparse_jac_pattern_xam.cpp%
-	build/lib/example/python/sparse_jac_pattern_xam.py
+	lib/example/cplusplus/sparse_jac_pattern_xam.cpp%
+	lib/example/python/sparse_jac_pattern_xam.py
 %$$
 $head Example$$
 $cref/C++/sparse_jac_pattern_xam.cpp/$$,
@@ -722,8 +722,8 @@ In this case, $icode pattern_out$$ is a sparsity pattern for
 $latex F_i^{(2)} ( x )$$.
 
 $children%
-	build/lib/example/cplusplus/sparse_hes_pattern_xam.cpp%
-	build/lib/example/python/sparse_hes_pattern_xam.py
+	lib/example/cplusplus/sparse_hes_pattern_xam.cpp%
+	lib/example/python/sparse_hes_pattern_xam.py
 %$$
 $head Example$$
 $cref/C++/sparse_hes_pattern_xam.cpp/$$,
@@ -941,8 +941,8 @@ $codei%
 All the other forward mode coefficients are unspecified.
 
 $children%
-	build/lib/example/cplusplus/sparse_jac_xam.cpp%
-	build/lib/example/python/sparse_jac_xam.py
+	lib/example/cplusplus/sparse_jac_xam.cpp%
+	lib/example/python/sparse_jac_xam.py
 %$$
 $head Example$$
 $cref/C++/sparse_jac_xam.cpp/$$,
@@ -1126,8 +1126,8 @@ $codei%
 All the other forward mode coefficients are unspecified.
 
 $children%
-	build/lib/example/cplusplus/sparse_hes_xam.cpp%
-	build/lib/example/python/sparse_hes_xam.py
+	lib/example/cplusplus/sparse_hes_xam.cpp%
+	lib/example/python/sparse_hes_xam.py
 %$$
 $head Example$$
 $cref/C++/sparse_hes_xam.cpp/$$,

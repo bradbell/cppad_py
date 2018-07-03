@@ -104,8 +104,8 @@ This is a $cref/module reference/module/module_ref/$$
 for the particular language.
 
 $children%
-	build/lib/example/cplusplus/a_fun_abort_xam.cpp%
-	build/lib/example/python/a_fun_abort_xam.py
+	lib/example/cplusplus/a_fun_abort_xam.cpp%
+	lib/example/python/a_fun_abort_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_abort_xam.cpp/$$,
@@ -255,8 +255,8 @@ $latex \[
 
 
 $children%
-	build/lib/example/cplusplus/a_fun_jacobian_xam.cpp%
-	build/lib/example/python/a_fun_jacobian_xam.py
+	lib/example/cplusplus/a_fun_jacobian_xam.cpp%
+	lib/example/python/a_fun_jacobian_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_jacobian_xam.cpp/$$,
@@ -343,8 +343,8 @@ $latex \[
 
 
 $children%
-	build/lib/example/cplusplus/a_fun_hessian_xam.cpp%
-	build/lib/example/python/a_fun_hessian_xam.py
+	lib/example/cplusplus/a_fun_hessian_xam.cpp%
+	lib/example/python/a_fun_hessian_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_hessian_xam.cpp/$$,
@@ -446,8 +446,8 @@ and its size is $icode m$$.
 It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
 
 $children%
-	build/lib/example/cplusplus/a_fun_forward_xam.cpp%
-	build/lib/example/python/a_fun_forward_xam.py
+	lib/example/cplusplus/a_fun_forward_xam.cpp%
+	lib/example/python/a_fun_forward_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_forward_xam.cpp/$$,
@@ -556,8 +556,8 @@ the partial derivative of
 $latex G(T(S))$$ w.r.t. $latex S_j^{(k)} (t) / k !$$.
 
 $children%
-	build/lib/example/cplusplus/a_fun_reverse_xam.cpp%
-	build/lib/example/python/a_fun_reverse_xam.py
+	lib/example/cplusplus/a_fun_reverse_xam.cpp%
+	lib/example/python/a_fun_reverse_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_reverse_xam.cpp/$$,
@@ -599,8 +599,8 @@ $codei%
 
 
 $children%
-	build/lib/example/cplusplus/a_fun_optimize_xam.cpp%
-	build/lib/example/python/a_fun_optimize_xam.py
+	lib/example/cplusplus/a_fun_optimize_xam.cpp%
+	lib/example/python/a_fun_optimize_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_optimize_xam.cpp/$$,
@@ -683,8 +683,8 @@ an is the number of atomic operations that are used to express
 the dependent variables as a function of the independent variables.
 
 $children%
-	build/lib/example/cplusplus/a_fun_property_xam.cpp%
-	build/lib/example/python/a_fun_property_xam.py
+	lib/example/cplusplus/a_fun_property_xam.cpp%
+	lib/example/python/a_fun_property_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_property_xam.cpp/$$,

@@ -165,8 +165,8 @@ Note that Octave does not support these unary operators
 (the reason why is unclear at this time).
 
 $children%
-	build/lib/example/cplusplus/a_double_unary_op_xam.cpp%
-	build/lib/example/python/a_double_unary_op_xam.py
+	lib/example/cplusplus/a_double_unary_op_xam.cpp%
+	lib/example/python/a_double_unary_op_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_unary_op_xam.cpp/$$,
@@ -258,8 +258,8 @@ $latex \varepsilon$$ is machine epsilon corresponding
 to the type $code double$$.
 
 $children%
-	build/lib/example/cplusplus/a_double_property_xam.cpp%
-	build/lib/example/python/a_double_property_xam.py
+	lib/example/cplusplus/a_double_property_xam.cpp%
+	lib/example/python/a_double_property_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_property_xam.cpp/$$,
@@ -329,8 +329,8 @@ $codei%
 %$$
 
 $children%
-	build/lib/example/cplusplus/a_double_ad_binary_xam.cpp%
-	build/lib/example/python/a_double_ad_binary_xam.py
+	lib/example/cplusplus/a_double_ad_binary_xam.cpp%
+	lib/example/python/a_double_ad_binary_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_ad_binary_xam.cpp/$$,
@@ -387,8 +387,8 @@ $codei%
 %$$
 
 $children%
-	build/lib/example/cplusplus/a_double_compare_xam.cpp%
-	build/lib/example/python/a_double_compare_xam.py
+	lib/example/cplusplus/a_double_compare_xam.cpp%
+	lib/example/python/a_double_compare_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_compare_xam.cpp/$$,
@@ -442,8 +442,8 @@ $codei%
 %$$
 
 $children%
-	build/lib/example/cplusplus/a_double_assign_xam.cpp%
-	build/lib/example/python/a_double_assign_xam.py
+	lib/example/cplusplus/a_double_assign_xam.cpp%
+	lib/example/python/a_double_assign_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_assign_xam.cpp/$$,
@@ -521,8 +521,8 @@ $codei%
 %$$
 
 $children%
-	build/lib/example/cplusplus/a_double_unary_fun_xam.cpp%
-	build/lib/example/python/a_double_unary_fun_xam.py
+	lib/example/cplusplus/a_double_unary_fun_xam.cpp%
+	lib/example/python/a_double_unary_fun_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_unary_fun_xam.cpp/$$,
@@ -633,8 +633,8 @@ of the comparison is false.
 
 
 $children%
-	build/lib/example/cplusplus/a_double_cond_assign_xam.cpp%
-	build/lib/example/python/a_double_cond_assign_xam.py
+	lib/example/cplusplus/a_double_cond_assign_xam.cpp%
+	lib/example/python/a_double_cond_assign_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_cond_assign_xam.cpp/$$,

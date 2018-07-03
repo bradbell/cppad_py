@@ -91,8 +91,8 @@ i.e., it is a positive integer.
 Its value is the number of elements in the vector $icode v$$.
 
 $children%
-	build/lib/example/cplusplus/vector_size_xam.cpp%
-	build/lib/example/python/vector_size_xam.py
+	lib/example/cplusplus/vector_size_xam.cpp%
+	lib/example/python/vector_size_xam.py
 %$$
 $head Example$$
 $cref/C++/vector_size_xam.cpp/$$,
@@ -163,8 +163,8 @@ Note that Perl does not support the element syntax above
 and instead uses $code set$$ and $code get$$ member functions.
 
 $children%
-	build/lib/example/cplusplus/vector_set_get_xam.cpp%
-	build/lib/example/python/vector_set_get_xam.py
+	lib/example/cplusplus/vector_set_get_xam.cpp%
+	lib/example/python/vector_set_get_xam.py
 %$$
 $head Example$$
 $cref/C++/vector_set_get_xam.cpp/$$,
