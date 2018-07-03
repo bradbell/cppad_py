@@ -11,7 +11,6 @@
 // -----------------------------------------------------------------------------
 // BEGIN SOURCE
 # include <cstdio>
-# include <string>
 # include <cppad/py/cppad_py.hpp>
 
 bool sparse_rcv_xam(void) {
@@ -19,7 +18,6 @@ bool sparse_rcv_xam(void) {
 	using cppad_py::vec_double;
 	using cppad_py::sparse_rc;
 	using cppad_py::sparse_rcv;
-	using std::string;
 	//
 	// initialize return variable
 	bool ok = true;

@@ -11,7 +11,6 @@
 // -----------------------------------------------------------------------------
 // BEGIN SOURCE
 # include <cstdio>
-# include <string>
 # include <cppad/py/cppad_py.hpp>
 
 bool a_fun_hessian_xam(void) {
@@ -19,7 +18,6 @@ bool a_fun_hessian_xam(void) {
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
 	using cppad_py::a_fun;
-	using std::string;
 	//
 	// initialize return variable
 	bool ok = true;

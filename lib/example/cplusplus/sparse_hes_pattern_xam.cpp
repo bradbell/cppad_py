@@ -11,7 +11,6 @@
 // -----------------------------------------------------------------------------
 // BEGIN SOURCE
 # include <cstdio>
-# include <string>
 # include <cppad/py/cppad_py.hpp>
 
 bool sparse_hes_pattern_xam(void) {
@@ -22,7 +21,6 @@ bool sparse_hes_pattern_xam(void) {
 	using cppad_py::vec_a_double;
 	using cppad_py::a_fun;
 	using cppad_py::sparse_rc;
-	using std::string;
 	//
 	// initialize return variable
 	bool ok = true;

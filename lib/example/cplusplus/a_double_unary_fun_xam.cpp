@@ -12,12 +12,10 @@
 // BEGIN SOURCE
 // This test fails in Octave and so is skipped by make check_lib_octave
 # include <cstdio>
-# include <string>
 # include <cppad/py/cppad_py.hpp>
 
 bool a_double_unary_fun_xam(void) {
 	using cppad_py::a_double;
-	using std::string;
 	//
 	// initialize return variable
 	bool ok = true;

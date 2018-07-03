@@ -11,12 +11,10 @@
 // -----------------------------------------------------------------------------
 // BEGIN SOURCE
 # include <cstdio>
-# include <string>
 # include <cppad/py/cppad_py.hpp>
 
 bool a_double_compare_xam(void) {
 	using cppad_py::a_double;
-	using std::string;
 	//
 	// initialize return variable
 	bool ok = true;

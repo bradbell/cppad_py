@@ -11,13 +11,11 @@
 // -----------------------------------------------------------------------------
 // BEGIN SOURCE
 # include <cstdio>
-# include <string>
 # include <cppad/py/cppad_py.hpp>
 
 bool sparse_rc_xam(void) {
 	using cppad_py::vec_int;
 	using cppad_py::sparse_rc;
-	using std::string;
 	//
 	// initialize return variable
 	bool ok = true;

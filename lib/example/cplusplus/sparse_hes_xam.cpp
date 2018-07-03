@@ -11,7 +11,6 @@
 // -----------------------------------------------------------------------------
 // BEGIN SOURCE
 # include <cstdio>
-# include <string>
 # include <cppad/py/cppad_py.hpp>
 
 bool sparse_hes_xam(void) {
@@ -24,7 +23,6 @@ bool sparse_hes_xam(void) {
 	using cppad_py::sparse_rc;
 	using cppad_py::sparse_rcv;
 	using cppad_py::sparse_hes_work;
-	using std::string;
 	//
 	// initialize return variable
 	bool ok = true;
