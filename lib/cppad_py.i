@@ -26,7 +26,6 @@ $begin module$$
 $spell
 	Cppad
 	Py
-	Perl
 	py
 	namespace
 $$
@@ -50,9 +49,7 @@ the Cppad Py module for a particular language.
 It has the following value (depending on the language):
 $table
 Language     $cnext Module Name        $cnext module_ref            $rnext
-C++          $cnext $code cppad_py$$ $cnext $code cppad_py::$$  $rnext
-Octave       $cnext $code m_cppad$$    $cnext $code m_cppad.$$      $rnext
-Perl         $cnext $code pm_cppad$$   $cnext $code pm_cppad::$$    $rnext
+C++          $cnext $code cppad_py$$   $cnext $code cppad_py::$$    $rnext
 Python       $cnext $code cppad_py$$   $cnext $code m_cppad.$$
 $tend
 

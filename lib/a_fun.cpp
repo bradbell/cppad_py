@@ -18,7 +18,6 @@ $spell
 	vec
 	Cppad
 	Py
-	Perl
 	py
 	const
 $$
@@ -202,7 +201,6 @@ $spell
 	af
 	Taylor
 	const
-	Perl
 	Jacobian
 $$
 
@@ -276,7 +274,6 @@ $spell
 	af
 	Taylor
 	const
-	Perl
 $$
 
 $section Hessian of an AD Function$$
@@ -368,7 +365,6 @@ $spell
 	Taylor
 	yp
 	const
-	Perl
 $$
 
 $section Forward Mode AD$$
@@ -469,7 +465,6 @@ $spell
 	Taylor
 	yq
 	const
-	Perl
 $$
 
 $section Reverse Mode AD$$
@@ -576,7 +571,6 @@ std::vector<double> a_fun::reverse(int q, const std::vector<double>& yq)
 $begin a_fun_optimize$$
 $spell
 	af
-	Perl
 $$
 
 $section Optimize an AD Function$$
@@ -627,7 +621,6 @@ $spell
 	var
 	op
 	const
-	Perl
 $$
 
 $head Syntax$$

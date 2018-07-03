@@ -17,7 +17,6 @@
 $begin error_message$$
 $spell
 	vec
-	Perl
 	cppad
 	py
 	std

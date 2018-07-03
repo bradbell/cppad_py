@@ -18,7 +18,6 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 $begin sparse_rc$$
 $spell
 	rc
-	Perl
 	nr
 	nc
 	nnz
@@ -277,7 +276,6 @@ $begin sparse_rcv$$
 $spell
 	rc
 	rcv
-	Perl
 	nr
 	nc
 	nnz
@@ -536,7 +534,6 @@ $spell
 	const
 	rc
 	cpp
-	Perl
 $$
 
 $section Jacobian Sparsity Patterns$$
@@ -656,7 +653,6 @@ $spell
 	vec
 	bool
 	rc
-	Perl
 $$
 
 $section Hessian Sparsity Patterns$$
@@ -823,7 +819,6 @@ $spell
 	const
 	vec
 	rc
-	Perl
 $$
 
 $section Computing Sparse Jacobians$$
@@ -1009,7 +1004,6 @@ $spell
 	const
 	vec
 	rc
-	Perl
 	hes
 $$
 

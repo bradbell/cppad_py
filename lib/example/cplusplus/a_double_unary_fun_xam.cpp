@@ -10,7 +10,6 @@
 // a_double unary operators
 // -----------------------------------------------------------------------------
 // BEGIN SOURCE
-// This test fails in Octave and so is skipped by make check_lib_octave
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 

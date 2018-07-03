@@ -37,18 +37,13 @@ $$
 $section cppad_py-20180627: A C++ AD Library with a Swig Interface$$
 
 $head Purpose$$
-Provide Algorithmic Differentiation (AD),
-for any $href%http://www.Swig.org%Swig%$$ scripting language,
-using a C++ object library that connects some of the features of
-$href%https://www.coin-or.org/Cppad%Cppad%$$.
-This interface is limited by the fact that it is for any
-scripting language and for C++.
-It is expected that one will write special purpose wrapping operations,
-in each particular language, to make a more natural interface for that
-language.
-For example, in Python, one might create
-$href%http://www.numpy.org/%numpy%$$ versions of the
-$cref vector$$ classes.
+Provide a C++ object library Algorithmic Differentiation (AD)
+that connects any $href%http://www.Swig.org%Swig%$$ scripting language
+to $href%https://www.coin-or.org/Cppad%Cppad%$$.
+As an example, a Python interface to Cppad is included.
+
+$head Under Construction$$
+As yet, there is no install procedure for this package.
 
 $head Getting Started$$
 The following is a good place to see what the interface is for
@@ -57,12 +52,12 @@ $cref/C++/a_fun_jacobian_xam.cpp/$$,
 $cref/Python/a_fun_jacobian_xam.py/$$.
 
 $head C++ Function Speed$$
-One can use Cppad Py to get faster function evaluation in scripting languages,
+One can use Cppad Py to get faster function evaluation in scripting Python,
 when the sequence of floating point operations does not depend on the
 independent variables.
 Once an $cref a_fun$$ is recorded, zero order
 $cref/forward mode/a_fun_forward/$$ can be used to
-effectively evaluate the function in C++ instead of the scripting language.
+effectively evaluate the function in C++ instead of Python.
 
 $head Supporting Packages$$
 The
@@ -74,14 +69,8 @@ $subhead Required$$
 $href%https://en.wikipedia.org/wiki/C++%C++%$$,
 $href%https://cmake.org%Cmake%$$,
 $href%https://git-scm.com%Git%$$,
-$href%https://www.gnu.org/software/m4/m4.html%m4%$$,
 $href%http://www.swig.org%Swig%$$,
-
-$subhead Optional$$
-$href%https://www.gnu.org/software/octave/#install%Octave%$$,
-$href%https://www.perl.org/get.html%Perl%$$,
 $href%https://www.python.org/%Python%$$
-
 
 $head Source Directory$$
 This is a preliminary version of this package.
@@ -93,15 +82,6 @@ $codei%
 	git clone https://github.com/bradbell/cppad_py cppad_py.git
 %$$
 the source directory is $code cppad_py.git$$.
-
-$head Support$$
-As yet, there is no install procedure for this package.
-Part of the problem here is that it would be different for different
-scripting languages.
-Contact the
-$href%http://www.seanet.com/~bradbell/home.htm%author%$$
-if you are working with a particular language
-and have need of an install procedure or other support.
 
 $head License$$
 This program is distributed under the terms of the

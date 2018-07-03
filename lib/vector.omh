@@ -11,7 +11,6 @@ $spell
 	Cppad
 	Py
 	av
-	Perl
 	py
 	bv
 	bool
@@ -63,7 +62,6 @@ $spell
 	vec
 	Cppad
 	Py
-	Perl
 	const
 	bool
 $$
@@ -105,7 +103,6 @@ $spell
 	vec
 	Cppad
 	Py
-	Perl
 	const
 	bool
 $$
@@ -153,14 +150,6 @@ The result $icode y$$ has prototype
 $codei%
 	%element_type% %y%
 %$$
-
-$head Octave$$
-Note that Octave uses parenthesis $code ()$$ instead of brackets
-$code []$$ for element access.
-
-$head Perl$$
-Note that Perl does not support the element syntax above
-and instead uses $code set$$ and $code get$$ member functions.
 
 $children%
 	lib/example/cplusplus/vector_set_get_xam.cpp%
