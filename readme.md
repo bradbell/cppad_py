@@ -1,13 +1,13 @@
 # Title
-cppad\_swig: A C++ AD Library with a Swig Interface
+cppad\_py: A C++ AD Object Library and Python Interface to Cppad
 
 # License
 <pre>
-cppad_py: A C++ Object Library and Python Interface to Cppad
+cppad\_py: A C++ Object Library and Python Interface to Cppad
  Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
      This program is distributed under the terms of the
      GNU General Public License version 3.0 or later see
-           https://www.gnu.org/licenses/gpl-3.0.txt
+          https://www.gnu.org/licenses/gpl-3.0.txt
 </pre>
 
 # Documentation
