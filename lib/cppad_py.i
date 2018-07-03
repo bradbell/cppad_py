@@ -53,13 +53,13 @@ Language     $cnext Module Name        $cnext module_ref            $rnext
 C++          $cnext $code cppad_py$$ $cnext $code cppad_py::$$  $rnext
 Octave       $cnext $code m_cppad$$    $cnext $code m_cppad.$$      $rnext
 Perl         $cnext $code pm_cppad$$   $cnext $code pm_cppad::$$    $rnext
-Python       $cnext $code py_cppad$$   $cnext $code m_cppad.$$
+Python       $cnext $code cppad_py$$   $cnext $code m_cppad.$$
 $tend
 
 $end
 */
 # ifdef SWIGPYTHON
-%module py_cppad
+%module cppad_py
 # endif
 # ifdef SWIGOCTAVE
 %module m_cppad

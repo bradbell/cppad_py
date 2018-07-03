@@ -23,10 +23,10 @@ define(Eof_, `C_')
 # module, var and Member_
 
 # Module_ or Module_(object)
-define(Module_, `ifelse($#, 0, py_cppad, py_cppad.$1)')
+define(Module_, `ifelse($#, 0, cppad_py, cppad_py.$1)')
 
 # ModuleCtor_(name)
-define(ModuleCtor_, py_cppad.$1)
+define(ModuleCtor_, cppad_py.$1)
 
 # -----------------------------------------------------------------------------
 # non-statements with arguments

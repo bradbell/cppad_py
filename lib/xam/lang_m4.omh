@@ -97,7 +97,7 @@ $head Module_$$
 $subhead No Arguments$$
 If $code Module_$$ has no arguments,
 it is the Cppad Py $cref/module name/module/Module Name/$$
-for scripting language; e.g., $code py_cppad$$ for Python.
+for scripting language; e.g., $code cppad_py$$ for Python.
 
 $subhead One Argument$$
 The text corresponding to

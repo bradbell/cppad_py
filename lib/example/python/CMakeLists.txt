@@ -69,13 +69,13 @@ IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
 	INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
 
 	# add_swig_library(library language files)
-	add_swig_library(py_cppad python swig_control_file)
+	add_swig_library(cppad_py python swig_control_file)
 
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
-	SWIG_LINK_LIBRARIES(py_cppad cppad_py_lib ${PYTHON_LIBRARIES})
+	SWIG_LINK_LIBRARIES(cppad_py cppad_py_lib ${PYTHON_LIBRARIES})
 
 	# additional flags for compiling Swig wrapper
-	SET_TARGET_PROPERTIES( ${SWIG_MODULE_py_cppad_REAL_NAME}
+	SET_TARGET_PROPERTIES( ${SWIG_MODULE_cppad_py_REAL_NAME}
 		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
 	)
 
@@ -83,7 +83,7 @@ IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
 	ADD_CUSTOM_TARGET(check_lib_python
 		${PYTHON_EXECUTABLE} check_all.py
 		DEPENDS
-		${SWIG_MODULE_py_cppad_REAL_NAME}
+		${SWIG_MODULE_cppad_py_REAL_NAME}
 		${CMAKE_CURRENT_BINARY_DIR}/check_all.py
 		auto_lib_python
 	)
