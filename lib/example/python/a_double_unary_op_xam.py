@@ -10,7 +10,6 @@
 # a_double unary operators
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
-# This test fails in Octave and so is skipped by make check_lib_octave
 def a_double_unary_op_xam() :
 	#
 	# load the Cppad Py library

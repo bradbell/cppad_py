@@ -56,19 +56,6 @@ $codei%
 %$$
 will run all of the available tests.
 
-$head Octave$$
-Swig versions before 3.0.12 do not support Octave-4.2; see
-$href%https://github.com/swig/swig/pull/875%issue 875%$$.
-For this reason, you should use an older version of Octave
-(until Swig-3.0.12 or greater is available).
-On Cygwin $code Octave-4.0.1-2$$ has problems in its
-include files that require one to add the flag
-$codei%
-	-I/usr/include/octave-4.0.1/octave
-%$$
-to the value of
-$cref/swig_cxx_flags/run_cmake.sh/swig_cxx_flags/$$ in $code run_cmake.sh$$.
-
 $head cppad_py_lib$$
 On some systems, the following dynamically linked library may not be found:
 $codei%
