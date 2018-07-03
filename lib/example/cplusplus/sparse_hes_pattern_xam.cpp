@@ -29,7 +29,7 @@ bool sparse_hes_pattern_xam(void) {
 	int n = 3;
 	//
 	// create the independent variables ax
-	vec_double x = cppad_py::vec_double(n);
+	vec_double x = vec_double(n);
 	for(int i = 0; i < n ; i++) {
 		x[i] = i + 2.0;
 	}
@@ -37,7 +37,7 @@ bool sparse_hes_pattern_xam(void) {
 	//
 	// create dependent variables ay with ay[i] = ax[j] * ax[i]
 	// where i = mod(j + 1, n)
-	vec_a_double ay = cppad_py::vec_a_double(n);
+	vec_a_double ay = vec_a_double(n);
 	for(int j = 0; j < n ; j++) {
 		int i = j+1;
 		if( i >= n  ) {
@@ -48,7 +48,7 @@ bool sparse_hes_pattern_xam(void) {
 	}
 	//
 	// define af corresponding to f(x)
-	a_fun af = cppad_py::a_fun(ax, ay);
+	a_fun af = a_fun(ax, ay);
 	//
 	// Set select_d (domain) to all true, initial select_r (range) to all false
 	vec_bool select_d = cppad_py::vec_bool(n);
@@ -64,7 +64,7 @@ bool sparse_hes_pattern_xam(void) {
 	//
 	// loop over forward and reverse mode
 	for(int mode = 0; mode < 2; mode++) {
-		sparse_rc pat_out = cppad_py::sparse_rc();
+		sparse_rc pat_out = sparse_rc();
 		if( mode == 0  ) {
 			af.for_hes_sparsity(select_d, select_r, pat_out);
 		}

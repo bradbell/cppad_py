@@ -25,16 +25,16 @@ bool vector_set_get_xam(void) {
 	//------------------------------------------------------------------------
 	int n = 4;
 	vec_bool bv = cppad_py::vec_bool(n);
-	vec_int iv = cppad_py::vec_int(n);
-	vec_double dv = cppad_py::vec_double(n);
-	vec_a_double av = cppad_py::vec_a_double(n);
+	vec_int iv = vec_int(n);
+	vec_double dv = vec_double(n);
+	vec_a_double av = vec_a_double(n);
 	//
 	// setting elements
 	for(int i = 0; i < n ; i++) {
 		bv[i] = i > n / 2;
 		iv[i] = 2 * i;
 		dv[i] = 3.0 * i;
-		av[i] = cppad_py::a_double(4.0 * i);
+		av[i] = a_double(4.0 * i);
 	}
 	//
 	for(int i = 0; i < n ; i++) {

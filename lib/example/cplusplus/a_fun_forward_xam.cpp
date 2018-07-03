@@ -27,7 +27,7 @@ bool a_fun_forward_xam(void) {
 	int n_ind = 2;
 	//
 	// create the independent variables ax
-	vec_double xp = cppad_py::vec_double(n_ind);
+	vec_double xp = vec_double(n_ind);
 	for(int i = 0; i < n_ind ; i++) {
 		xp[i] = i + 1.0;
 	}
@@ -36,11 +36,11 @@ bool a_fun_forward_xam(void) {
 	// create dependent varialbes ay with ay0 = ax0 * ax1
 	a_double ax0 = ax[0];
 	a_double ax1 = ax[1];
-	vec_a_double ay = cppad_py::vec_a_double(n_dep);
+	vec_a_double ay = vec_a_double(n_dep);
 	ay[0] = ax0 * ax1;
 	//
 	// define af corresponding to f(x) = x0 * x1
-	a_fun af = cppad_py::a_fun(ax, ay);
+	a_fun af = a_fun(ax, ay);
 	//
 	// define X(t) = (3 + t, 2 + t)
 	// it follows that Y(t) = f(X(t)) = (3 + t) * (2 + t)

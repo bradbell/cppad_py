@@ -28,8 +28,8 @@ bool a_fun_property_xam(void) {
 	int n_op = 1;  // special operator at beginning
 	//
 	// dimension some vectors
-	vec_double x = cppad_py::vec_double(n_ind);
-	vec_a_double ay = cppad_py::vec_a_double(n_dep);
+	vec_double x = vec_double(n_ind);
+	vec_a_double ay = vec_a_double(n_dep);
 	//
 	// independent variables
 	x[0] = 1.0;
@@ -49,7 +49,7 @@ bool a_fun_property_xam(void) {
 	n_op = n_op + 1;
 	//
 	// define f(x) = y
-	a_fun af = cppad_py::a_fun(ax, ay);
+	a_fun af = a_fun(ax, ay);
 	n_op = n_op + 1; // speical operator at end
 	//
 	// check af properties

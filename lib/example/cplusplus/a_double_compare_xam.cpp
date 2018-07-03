@@ -19,8 +19,8 @@ bool a_double_compare_xam(void) {
 	// initialize return variable
 	bool ok = true;
 	//------------------------------------------------------------------------
-	a_double two = cppad_py::a_double(2.0);
-	a_double three = cppad_py::a_double(3.0);
+	a_double two = a_double(2.0);
+	a_double three = a_double(3.0);
 	//
 	ok = ok && two   <  three;
 	ok = ok && two   <= three;

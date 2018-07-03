@@ -25,9 +25,9 @@ bool vector_size_xam(void) {
 	//------------------------------------------------------------------------
 	// create vectors
 	vec_bool bv = cppad_py::vec_bool();
-	vec_int iv = cppad_py::vec_int(1);
-	vec_double dv = cppad_py::vec_double(2);
-	vec_a_double av = cppad_py::vec_a_double(3);
+	vec_int iv = vec_int(1);
+	vec_double dv = vec_double(2);
+	vec_a_double av = vec_a_double(3);
 	//
 	// check size of vectors
 	ok = ok && bv.size() == 0 ;

@@ -29,10 +29,10 @@ bool sparse_jac_xam(void) {
 	// number of dependent and independent variables
 	int n = 3;
 	// one
-	a_double aone = cppad_py::a_double(1.0);
+	a_double aone = a_double(1.0);
 	//
 	// create the independent variables ax
-	vec_double x = cppad_py::vec_double(n);
+	vec_double x = vec_double(n);
 	for(int i = 0; i < n ; i++) {
 		x[i] = i + 2.0;
 	}
@@ -40,37 +40,37 @@ bool sparse_jac_xam(void) {
 	//
 	// create dependent variables ay with ay[i] = (j+1) * ax[j]
 	// where i = mod(j + 1, n)
-	vec_a_double ay = cppad_py::vec_a_double(n);
+	vec_a_double ay = vec_a_double(n);
 	for(int j = 0; j < n ; j++) {
 		int i = j+1;
 		if( i >= n  ) {
 			i = i - n;
 		}
-		a_double aj = cppad_py::a_double(j);
+		a_double aj = a_double(j);
 		a_double ay_i = (aj + aone) * ax[j];
 		ay[i] = ay_i;
 	}
 	//
 	// define af corresponding to f(x)
-	a_fun af = cppad_py::a_fun(ax, ay);
+	a_fun af = a_fun(ax, ay);
 	//
 	// sparsity pattern for identity matrix
-	sparse_rc pat_eye = cppad_py::sparse_rc();
+	sparse_rc pat_eye = sparse_rc();
 	pat_eye.resize(n, n, n);
 	for(int k = 0; k < n; k++) {
 		pat_eye.put(k, k, k);
 	}
 	//
 	// sparsity pattern for the Jacobian
-	sparse_rc pat_jac = cppad_py::sparse_rc();
+	sparse_rc pat_jac = sparse_rc();
 	af.for_jac_sparsity(pat_eye, pat_jac);
 	//
 	// loop over forward and reverse mode
 	for(int mode = 0; mode < 2; mode++) {
 		// compute all possibly non-zero entries in Jacobian
-		sparse_rcv subset = cppad_py::sparse_rcv(pat_jac);
+		sparse_rcv subset = sparse_rcv(pat_jac);
 		// work space used to save time for multiple calls
-		sparse_jac_work work = cppad_py::sparse_jac_work();
+		sparse_jac_work work = sparse_jac_work();
 		if( mode == 0  ) {
 			af.sparse_jac_for(subset, x, pat_jac, work);
 		}

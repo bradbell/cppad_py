@@ -19,21 +19,21 @@ bool a_double_assign_xam(void) {
 	// initialize return variable
 	bool ok = true;
 	//------------------------------------------------------------------------
-	a_double x = cppad_py::a_double(2.0);
+	a_double x = a_double(2.0);
 	//
-	x = cppad_py::a_double(3.0);
+	x = a_double(3.0);
 	ok = ok && x.value() == 3.0;
 	//
-	x += cppad_py::a_double(2.0);
+	x += a_double(2.0);
 	ok = ok && x.value() == 5.0;
 	//
-	x -= cppad_py::a_double(1.0);
+	x -= a_double(1.0);
 	ok = ok && x.value() == 4.0;
 	//
-	x *= cppad_py::a_double(3.0);
+	x *= a_double(3.0);
 	ok = ok && x.value() == 12.0;
 	//
-	x /= cppad_py::a_double(4.0);
+	x /= a_double(4.0);
 	ok = ok && x.value() == 3.0;
 	//
 	return( ok );

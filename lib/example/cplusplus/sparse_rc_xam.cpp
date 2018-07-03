@@ -22,7 +22,7 @@ bool sparse_rc_xam(void) {
 	//------------------------------------------------------------------------
 	//
 	// create a sparsity pattern
-	sparse_rc pattern = cppad_py::sparse_rc();
+	sparse_rc pattern = sparse_rc();
 	//
 	int nr = 6;
 	int nc = 5;

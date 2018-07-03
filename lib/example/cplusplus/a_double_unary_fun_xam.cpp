@@ -21,7 +21,7 @@ bool a_double_unary_fun_xam(void) {
 	//------------------------------------------------------------------------
 	//
 	// fabs
-	a_double one = cppad_py::a_double(1.0);
+	a_double one = a_double(1.0);
 	a_double abs_one = one.fabs();
 	ok = ok && abs_one.value() == 1.0;
 	//
@@ -29,7 +29,7 @@ bool a_double_unary_fun_xam(void) {
 	a_double pi_4 = one.atan();
 	//
 	// sqrt(2)
-	a_double tmp = cppad_py::a_double(2.0);
+	a_double tmp = a_double(2.0);
 	a_double r2 = tmp.sqrt();
 	//
 	// sin(pi/4)  * sqrt(2) = 1.0;

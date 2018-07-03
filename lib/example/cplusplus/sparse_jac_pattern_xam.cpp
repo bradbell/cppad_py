@@ -28,7 +28,7 @@ bool sparse_jac_pattern_xam(void) {
 	int n = 3;
 	//
 	// create the independent variables ax
-	vec_double x = cppad_py::vec_double(n);
+	vec_double x = vec_double(n);
 	for(int i = 0; i < n ; i++) {
 		x[i] = i + 2.0;
 	}
@@ -36,7 +36,7 @@ bool sparse_jac_pattern_xam(void) {
 	//
 	// create dependent variables ay with ay[i] = ax[j]
 	// where i = mod(j + 1, n)
-	vec_a_double ay = cppad_py::vec_a_double(n);
+	vec_a_double ay = vec_a_double(n);
 	for(int j = 0; j < n ; j++) {
 		int i = j+1;
 		if( i >= n  ) {
@@ -47,10 +47,10 @@ bool sparse_jac_pattern_xam(void) {
 	}
 	//
 	// define af corresponding to f(x)
-	a_fun af = cppad_py::a_fun(ax, ay);
+	a_fun af = a_fun(ax, ay);
 	//
 	// sparsity pattern for identity matrix
-	sparse_rc pat_in = cppad_py::sparse_rc();
+	sparse_rc pat_in = sparse_rc();
 	pat_in.resize(n, n, n);
 	for(int k = 0; k < n; k++) {
 		pat_in.put(k, k, k);
@@ -58,7 +58,7 @@ bool sparse_jac_pattern_xam(void) {
 	//
 	// loop over forward and reverse mode
 	for(int mode = 0; mode < 2; mode++) {
-		sparse_rc pat_out = cppad_py::sparse_rc();
+		sparse_rc pat_out = sparse_rc();
 		if( mode == 0  ) {
 			af.for_jac_sparsity(pat_in, pat_out);
 		}

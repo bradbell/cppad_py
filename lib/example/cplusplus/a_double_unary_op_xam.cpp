@@ -19,7 +19,7 @@ bool a_double_unary_op_xam(void) {
 	// initialize return variable
 	bool ok = true;
 	//------------------------------------------------------------------------
-	a_double two = cppad_py::a_double(2.0);
+	a_double two = a_double(2.0);
 	a_double plus_two = + two ;
 	a_double minus_two = - two ;
 	//

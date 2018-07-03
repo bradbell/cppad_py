@@ -28,8 +28,8 @@ bool a_fun_optimize_xam(void) {
 	int n_op = 1;  // special operator at beginning
 	//
 	// dimension some vectors
-	vec_double x = cppad_py::vec_double(n_ind);
-	vec_a_double ay = cppad_py::vec_a_double(n_dep);
+	vec_double x = vec_double(n_ind);
+	vec_a_double ay = vec_a_double(n_dep);
 	//
 	// independent variables
 	x[0] = 1.0;
@@ -39,14 +39,14 @@ bool a_fun_optimize_xam(void) {
 	//
 	// accumulate summation
 	a_double ax0 = ax[0];
-	a_double csum = cppad_py::a_double(0.0);
+	a_double csum = a_double(0.0);
 	csum = ax0 + ax0 + ax0 + ax0;
 	n_var = n_var + 3; // one per + operator
 	n_op = n_op + 3;
 	//
 	// define f(x) = y_0 = csum
 	ay[0] = csum;
-	a_fun af = cppad_py::a_fun(ax, ay);
+	a_fun af = a_fun(ax, ay);
 	n_op = n_op + 1; // speical operator at end
 	//
 	// check number of variables and operators
