@@ -105,14 +105,10 @@ for the particular language.
 
 $children%
 	build/lib/example/cplusplus/a_fun_abort_xam.cpp%
-	build/lib/example/octave/a_fun_abort_xam.m%
-	build/lib/example/perl/a_fun_abort_xam.pm%
 	build/lib/example/python/a_fun_abort_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_abort_xam.cpp/$$,
-$cref/Octave/a_fun_abort_xam.m/$$,
-$cref/Perl/a_fun_abort_xam.pm/$$,
 $cref/Python/a_fun_abort_xam.py/$$.
 
 $end
@@ -260,14 +256,10 @@ $latex \[
 
 $children%
 	build/lib/example/cplusplus/a_fun_jacobian_xam.cpp%
-	build/lib/example/octave/a_fun_jacobian_xam.m%
-	build/lib/example/perl/a_fun_jacobian_xam.pm%
 	build/lib/example/python/a_fun_jacobian_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_jacobian_xam.cpp/$$,
-$cref/Octave/a_fun_jacobian_xam.m/$$,
-$cref/Perl/a_fun_jacobian_xam.pm/$$,
 $cref/Python/a_fun_jacobian_xam.py/$$.
 
 
@@ -352,14 +344,10 @@ $latex \[
 
 $children%
 	build/lib/example/cplusplus/a_fun_hessian_xam.cpp%
-	build/lib/example/octave/a_fun_hessian_xam.m%
-	build/lib/example/perl/a_fun_hessian_xam.pm%
 	build/lib/example/python/a_fun_hessian_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_hessian_xam.cpp/$$,
-$cref/Octave/a_fun_hessian_xam.m/$$,
-$cref/Perl/a_fun_hessian_xam.pm/$$,
 $cref/Python/a_fun_hessian_xam.py/$$.
 
 
@@ -459,14 +447,10 @@ It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
 
 $children%
 	build/lib/example/cplusplus/a_fun_forward_xam.cpp%
-	build/lib/example/octave/a_fun_forward_xam.m%
-	build/lib/example/perl/a_fun_forward_xam.pm%
 	build/lib/example/python/a_fun_forward_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_forward_xam.cpp/$$,
-$cref/Octave/a_fun_forward_xam.m/$$,
-$cref/Perl/a_fun_forward_xam.pm/$$,
 $cref/Python/a_fun_forward_xam.py/$$.
 
 
@@ -573,14 +557,10 @@ $latex G(T(S))$$ w.r.t. $latex S_j^{(k)} (t) / k !$$.
 
 $children%
 	build/lib/example/cplusplus/a_fun_reverse_xam.cpp%
-	build/lib/example/octave/a_fun_reverse_xam.m%
-	build/lib/example/perl/a_fun_reverse_xam.pm%
 	build/lib/example/python/a_fun_reverse_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_reverse_xam.cpp/$$,
-$cref/Octave/a_fun_reverse_xam.m/$$,
-$cref/Perl/a_fun_reverse_xam.pm/$$,
 $cref/Python/a_fun_reverse_xam.py/$$.
 
 
@@ -620,14 +600,10 @@ $codei%
 
 $children%
 	build/lib/example/cplusplus/a_fun_optimize_xam.cpp%
-	build/lib/example/octave/a_fun_optimize_xam.m%
-	build/lib/example/perl/a_fun_optimize_xam.pm%
 	build/lib/example/python/a_fun_optimize_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_optimize_xam.cpp/$$,
-$cref/Octave/a_fun_optimize_xam.m/$$,
-$cref/Perl/a_fun_optimize_xam.pm/$$,
 $cref/Python/a_fun_optimize_xam.py/$$.
 
 
@@ -708,14 +684,10 @@ the dependent variables as a function of the independent variables.
 
 $children%
 	build/lib/example/cplusplus/a_fun_property_xam.cpp%
-	build/lib/example/octave/a_fun_property_xam.m%
-	build/lib/example/perl/a_fun_property_xam.pm%
 	build/lib/example/python/a_fun_property_xam.py
 %$$
 $head Example$$
 $cref/C++/a_fun_property_xam.cpp/$$,
-$cref/Octave/a_fun_property_xam.m/$$,
-$cref/Perl/a_fun_property_xam.pm/$$,
 $cref/Python/a_fun_property_xam.py/$$.
 
 $end

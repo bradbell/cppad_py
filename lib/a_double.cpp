@@ -166,14 +166,10 @@ Note that Octave does not support these unary operators
 
 $children%
 	build/lib/example/cplusplus/a_double_unary_op_xam.cpp%
-	build/lib/example/octave/a_double_unary_op_xam.m%
-	build/lib/example/perl/a_double_unary_op_xam.pm%
 	build/lib/example/python/a_double_unary_op_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_unary_op_xam.cpp/$$,
-$cref/Octave/a_double_unary_op_xam.m/$$,
-$cref/Perl/a_double_unary_op_xam.pm/$$,
 $cref/Python/a_double_unary_op_xam.py/$$.
 
 $end
@@ -263,14 +259,10 @@ to the type $code double$$.
 
 $children%
 	build/lib/example/cplusplus/a_double_property_xam.cpp%
-	build/lib/example/octave/a_double_property_xam.m%
-	build/lib/example/perl/a_double_property_xam.pm%
 	build/lib/example/python/a_double_property_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_property_xam.cpp/$$,
-$cref/Octave/a_double_property_xam.m/$$,
-$cref/Perl/a_double_property_xam.pm/$$,
 $cref/Python/a_double_property_xam.py/$$.
 
 $end
@@ -338,14 +330,10 @@ $codei%
 
 $children%
 	build/lib/example/cplusplus/a_double_ad_binary_xam.cpp%
-	build/lib/example/octave/a_double_ad_binary_xam.m%
-	build/lib/example/perl/a_double_ad_binary_xam.pm%
 	build/lib/example/python/a_double_ad_binary_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_ad_binary_xam.cpp/$$,
-$cref/Octave/a_double_ad_binary_xam.m/$$,
-$cref/Perl/a_double_ad_binary_xam.pm/$$,
 $cref/Python/a_double_ad_binary_xam.py/$$.
 
 $end
@@ -400,14 +388,10 @@ $codei%
 
 $children%
 	build/lib/example/cplusplus/a_double_compare_xam.cpp%
-	build/lib/example/octave/a_double_compare_xam.m%
-	build/lib/example/perl/a_double_compare_xam.pm%
 	build/lib/example/python/a_double_compare_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_compare_xam.cpp/$$,
-$cref/Octave/a_double_compare_xam.m/$$,
-$cref/Perl/a_double_compare_xam.pm/$$,
 $cref/Python/a_double_compare_xam.py/$$.
 
 $end
@@ -459,14 +443,10 @@ $codei%
 
 $children%
 	build/lib/example/cplusplus/a_double_assign_xam.cpp%
-	build/lib/example/octave/a_double_assign_xam.m%
-	build/lib/example/perl/a_double_assign_xam.pm%
 	build/lib/example/python/a_double_assign_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_assign_xam.cpp/$$,
-$cref/Octave/a_double_assign_xam.m/$$,
-$cref/Perl/a_double_assign_xam.pm/$$,
 $cref/Python/a_double_assign_xam.py/$$.
 
 $end
@@ -542,14 +522,10 @@ $codei%
 
 $children%
 	build/lib/example/cplusplus/a_double_unary_fun_xam.cpp%
-	build/lib/example/octave/a_double_unary_fun_xam.m%
-	build/lib/example/perl/a_double_unary_fun_xam.pm%
 	build/lib/example/python/a_double_unary_fun_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_unary_fun_xam.cpp/$$,
-$cref/Octave/a_double_unary_fun_xam.m/$$,
-$cref/Perl/a_double_unary_fun_xam.pm/$$,
 $cref/Python/a_double_unary_fun_xam.py/$$.
 
 $end
@@ -658,14 +634,10 @@ of the comparison is false.
 
 $children%
 	build/lib/example/cplusplus/a_double_cond_assign_xam.cpp%
-	build/lib/example/octave/a_double_cond_assign_xam.m%
-	build/lib/example/perl/a_double_cond_assign_xam.pm%
 	build/lib/example/python/a_double_cond_assign_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_cond_assign_xam.cpp/$$,
-$cref/Octave/a_double_cond_assign_xam.m/$$,
-$cref/Perl/a_double_cond_assign_xam.pm/$$,
 $cref/Python/a_double_cond_assign_xam.py/$$.
 
 $end

@@ -9,15 +9,16 @@
 delete_list='
 '
 revert_list='
-	testing.omh
 '
 move_list='
-	include/cppad/swig
 '
 move_sed='s|/swig|/py|'
 #
 cat << EOF > junk.sed
-s|/swig/|/py/|
+/build\\/lib\\/example\\/perl\\//d
+/build\\/lib\\/example\\/octave\\//d
+/\$cref\\/Perl\\//d
+/\$cref\\/Octave\\//d
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

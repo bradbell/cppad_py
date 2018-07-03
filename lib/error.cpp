@@ -59,14 +59,10 @@ $code error_message$$ and hence is not thread safe.
 
 $children%
 	build/lib/example/cplusplus/error_message_xam.cpp%
-	build/lib/example/octave/error_message_xam.m%
-	build/lib/example/perl/error_message_xam.pm%
 	build/lib/example/python/error_message_xam.py
 %$$
 $head Example$$
 $cref/C++/error_message_xam.cpp/$$,
-$cref/Octave/error_message_xam.m/$$,
-$cref/Perl/error_message_xam.pm/$$,
 $cref/Python/error_message_xam.py/$$.
 
 $end

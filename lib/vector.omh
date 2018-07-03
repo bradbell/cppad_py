@@ -92,14 +92,10 @@ Its value is the number of elements in the vector $icode v$$.
 
 $children%
 	build/lib/example/cplusplus/vector_size_xam.cpp%
-	build/lib/example/octave/vector_size_xam.m%
-	build/lib/example/perl/vector_size_xam.pm%
 	build/lib/example/python/vector_size_xam.py
 %$$
 $head Example$$
 $cref/C++/vector_size_xam.cpp/$$,
-$cref/Octave/vector_size_xam.m/$$,
-$cref/Perl/vector_size_xam.pm/$$,
 $cref/Python/vector_size_xam.py/$$.
 
 $end
@@ -168,14 +164,10 @@ and instead uses $code set$$ and $code get$$ member functions.
 
 $children%
 	build/lib/example/cplusplus/vector_set_get_xam.cpp%
-	build/lib/example/octave/vector_set_get_xam.m%
-	build/lib/example/perl/vector_set_get_xam.pm%
 	build/lib/example/python/vector_set_get_xam.py
 %$$
 $head Example$$
 $cref/C++/vector_set_get_xam.cpp/$$,
-$cref/Octave/vector_set_get_xam.m/$$,
-$cref/Perl/vector_set_get_xam.pm/$$,
 $cref/Python/vector_set_get_xam.py/$$.
 
 $end

@@ -54,8 +54,6 @@ $head Getting Started$$
 The following is a good place to see what the interface is for
 the currently supported languages:
 $cref/C++/a_fun_jacobian_xam.cpp/$$,
-$cref/Octave/a_fun_jacobian_xam.m/$$,
-$cref/Perl/a_fun_jacobian_xam.pm/$$,
 $cref/Python/a_fun_jacobian_xam.py/$$.
 
 $head C++ Function Speed$$

@@ -186,14 +186,10 @@ row and column values (if $code NDEBUG$$ is not defined).
 
 $children%
 	build/lib/example/cplusplus/sparse_rc_xam.cpp%
-	build/lib/example/octave/sparse_rc_xam.m%
-	build/lib/example/perl/sparse_rc_xam.pm%
 	build/lib/example/python/sparse_rc_xam.py
 %$$
 $head Example$$
 $cref/C++/sparse_rc_xam.cpp/$$,
-$cref/Octave/sparse_rc_xam.m/$$,
-$cref/Perl/sparse_rc_xam.pm/$$,
 $cref/Python/sparse_rc_xam.py/$$.
 
 $end
@@ -446,14 +442,10 @@ row and column values (if $code NDEBUG$$ is not defined).
 
 $children%
 	build/lib/example/cplusplus/sparse_rcv_xam.cpp%
-	build/lib/example/octave/sparse_rcv_xam.m%
-	build/lib/example/perl/sparse_rcv_xam.pm%
 	build/lib/example/python/sparse_rcv_xam.py
 %$$
 $head Example$$
 $cref/C++/sparse_rcv_xam.cpp/$$,
-$cref/Octave/sparse_rcv_xam.m/$$,
-$cref/Perl/sparse_rcv_xam.pm/$$,
 $cref/Python/sparse_rcv_xam.py/$$.
 
 $end
@@ -615,14 +607,10 @@ $latex F^{(1)} ( x )$$.
 
 $children%
 	build/lib/example/cplusplus/sparse_jac_pattern_xam.cpp%
-	build/lib/example/octave/sparse_jac_pattern_xam.m%
-	build/lib/example/perl/sparse_jac_pattern_xam.pm%
 	build/lib/example/python/sparse_jac_pattern_xam.py
 %$$
 $head Example$$
 $cref/C++/sparse_jac_pattern_xam.cpp/$$,
-$cref/Octave/sparse_jac_pattern_xam.m/$$,
-$cref/Perl/sparse_jac_pattern_xam.pm/$$,
 $cref/Python/sparse_jac_pattern_xam.py/$$.
 
 $end
@@ -735,14 +723,10 @@ $latex F_i^{(2)} ( x )$$.
 
 $children%
 	build/lib/example/cplusplus/sparse_hes_pattern_xam.cpp%
-	build/lib/example/octave/sparse_hes_pattern_xam.m%
-	build/lib/example/perl/sparse_hes_pattern_xam.pm%
 	build/lib/example/python/sparse_hes_pattern_xam.py
 %$$
 $head Example$$
 $cref/C++/sparse_hes_pattern_xam.cpp/$$,
-$cref/Octave/sparse_hes_pattern_xam.m/$$,
-$cref/Perl/sparse_hes_pattern_xam.pm/$$,
 $cref/Python/sparse_hes_pattern_xam.py/$$.
 
 $end
@@ -958,14 +942,10 @@ All the other forward mode coefficients are unspecified.
 
 $children%
 	build/lib/example/cplusplus/sparse_jac_xam.cpp%
-	build/lib/example/octave/sparse_jac_xam.m%
-	build/lib/example/perl/sparse_jac_xam.pm%
 	build/lib/example/python/sparse_jac_xam.py
 %$$
 $head Example$$
 $cref/C++/sparse_jac_xam.cpp/$$,
-$cref/Octave/sparse_jac_xam.m/$$,
-$cref/Perl/sparse_jac_xam.pm/$$,
 $cref/Python/sparse_jac_xam.py/$$.
 
 $end
@@ -1147,14 +1127,10 @@ All the other forward mode coefficients are unspecified.
 
 $children%
 	build/lib/example/cplusplus/sparse_hes_xam.cpp%
-	build/lib/example/octave/sparse_hes_xam.m%
-	build/lib/example/perl/sparse_hes_xam.pm%
 	build/lib/example/python/sparse_hes_xam.py
 %$$
 $head Example$$
 $cref/C++/sparse_hes_xam.cpp/$$,
-$cref/Octave/sparse_hes_xam.m/$$,
-$cref/Perl/sparse_hes_xam.pm/$$,
 $cref/Python/sparse_hes_xam.py/$$.
 
 $end
