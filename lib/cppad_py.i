@@ -50,19 +50,13 @@ It has the following value (depending on the language):
 $table
 Language     $cnext Module Name        $cnext module_ref            $rnext
 C++          $cnext $code cppad_py$$   $cnext $code cppad_py::$$    $rnext
-Python       $cnext $code cppad_py$$   $cnext $code m_cppad.$$
+Python       $cnext $code cppad_py$$   $cnext $code cppad_py.$$
 $tend
 
 $end
 */
 # ifdef SWIGPYTHON
 %module cppad_py
-# endif
-# ifdef SWIGOCTAVE
-%module m_cppad
-# endif
-# ifdef SWIGPERL
-%module pm_cppad
 # endif
 /* ------------------------------------------------------------------------- */
 
