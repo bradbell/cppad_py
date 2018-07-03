@@ -17,15 +17,6 @@
 
 bool a_double_unary_op_xam(void) {
 	using cppad_py::a_double;
-	using cppad_py::vec_bool;
-	using cppad_py::vec_int;
-	using cppad_py::vec_double;
-	using cppad_py::vec_a_double;
-	using cppad_py::a_fun;
-	using cppad_py::sparse_rc;
-	using cppad_py::sparse_rcv;
-	using cppad_py::sparse_jac_work;
-	using cppad_py::sparse_hes_work;
 	using std::string;
 	//
 	// initialize return variable

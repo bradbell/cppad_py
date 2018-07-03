@@ -23,7 +23,6 @@ bool sparse_hes_xam(void) {
 	using cppad_py::a_fun;
 	using cppad_py::sparse_rc;
 	using cppad_py::sparse_rcv;
-	using cppad_py::sparse_jac_work;
 	using cppad_py::sparse_hes_work;
 	using std::string;
 	//
