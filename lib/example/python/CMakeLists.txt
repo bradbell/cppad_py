@@ -8,12 +8,6 @@
 assert(m4_executable)
 #
 # List of automatically generated source files
-SET(auto_list
-	a_double_xam.py
-	a_fun_xam.py
-	vec_a_double_xam.py
-	vec_double_xam.py
-)
 SET(auto_output_list "")
 FOREACH( xam_file ${xam_file_list} )
 	STRING(REGEX REPLACE "[.]xam" ".py" source_file ${xam_file})
