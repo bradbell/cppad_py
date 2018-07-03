@@ -115,7 +115,7 @@ $spell
 	Jacobians
 $$
 $section C++: Reverse Mode AD: Example and Test$$
-$srcfile|build/lib/example/cplusplus/a_fun_reverse_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/a_fun_reverse_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

@@ -5,27 +5,24 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-assert(m4_executable)
 #
-# List of automatically generated source files
-SET(auto_output_list "")
-FOREACH( xam_file ${xam_file_list} )
-	STRING(REGEX REPLACE "[.]xam" ".py" source_file ${xam_file})
-	STRING(REGEX REPLACE "/"      "_"   source_file ${source_file})
+# list of python source files in CMAKE_CURRENT_SOURCE_DIR
+FILE(GLOB python_source_list "*.py")
+#
+# commands to copy the files to CMAKE_CURRENT_BINARY_DIR
+SET(python_copy_list "")
+FOREACH(source_file ${python_source_list} )
+	STRING(REGEX REPLACE ".*/" "" local_file ${source_file})
 	ADD_CUSTOM_COMMAND(
-		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
-		COMMAND ${m4_executable}
-		-D Language_=python
-		-I ${CMAKE_SOURCE_DIR}/lib/xam
-		${CMAKE_SOURCE_DIR}/lib/xam/${xam_file}
-		> ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
-		DEPENDS
-		${CMAKE_SOURCE_DIR}/lib/xam/${xam_file}
-		${CMAKE_SOURCE_DIR}/lib/xam/python.m4
+		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${local_file}
+		COMMAND
+		${CMAKE_COMMAND} -E copy
+		${CMAKE_CURRENT_SOURCE_DIR}/${local_file}
+		${CMAKE_CURRENT_BINARY_DIR}/${local_file}
 	)
-	add_to_list(auto_output_list ${CMAKE_CURRENT_BINARY_DIR}/${source_file} )
-ENDFOREACH( xam_file ${xam_file_list} )
-ADD_CUSTOM_TARGET(auto_lib_python DEPENDS ${auto_output_list} )
+	add_to_list(python_copy_list ${CMAKE_CURRENT_BINARY_DIR}/${local_file} )
+ENDFOREACH(source_file ${python_source_list} )
+ADD_CUSTOM_TARGET(auto_lib_python DEPENDS ${python_copy_list} )
 MESSAGE(STATUS "make auto_lib_python: available")
 #
 # ----------------------------------------------------------------------------
@@ -33,13 +30,6 @@ assert( SWIG_FOUND )
 FIND_PACKAGE(PythonInterp)
 FIND_PACKAGE(PythonLibs)
 IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
-	ADD_CUSTOM_COMMAND(
-		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/check_all.py
-		COMMAND
-		${CMAKE_COMMAND} -E copy
-		${CMAKE_CURRENT_SOURCE_DIR}/check_all.py
-		${CMAKE_CURRENT_BINARY_DIR}/check_all.py
-	)
 	# which version of Python did we find
 	SET(lib    "${PYTHONLIBS_VERSION_STRING}" )
 	SET(interp "${PYTHON_VERSION_STRING}" )

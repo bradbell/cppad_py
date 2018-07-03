@@ -73,7 +73,7 @@ $spell
 	Jacobians
 $$
 $section C++: Setting and Getting Vector Elements: Example and Test$$
-$srcfile|build/lib/example/cplusplus/vector_set_get_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/vector_set_get_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

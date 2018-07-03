@@ -53,7 +53,7 @@ $spell
 	Jacobians
 $$
 $section C++: a_double Unary Plus and Minus: Example and Test$$
-$srcfile|build/lib/example/cplusplus/a_double_unary_op_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/a_double_unary_op_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

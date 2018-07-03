@@ -118,7 +118,7 @@ $spell
 	Jacobians
 $$
 $section C++: Computing Sparse Jacobians: Example and Test$$
-$srcfile|build/lib/example/cplusplus/sparse_jac_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/sparse_jac_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

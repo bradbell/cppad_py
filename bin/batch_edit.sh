@@ -15,7 +15,7 @@ move_list='
 move_sed='s|/swig|/py|'
 #
 cat << EOF > junk.sed
-s|py_cppad|cppad_py|g
+s|build/lib/example/|lib/example/|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

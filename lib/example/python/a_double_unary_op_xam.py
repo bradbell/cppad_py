@@ -41,6 +41,6 @@ def a_double_unary_op_xam() :
 #	Jacobians
 # $$
 # $section Python: a_double Unary Plus and Minus: Example and Test$$
-# $srcfile|build/lib/example/python/a_double_unary_op_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/a_double_unary_op_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

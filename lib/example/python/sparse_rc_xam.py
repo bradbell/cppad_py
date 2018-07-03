@@ -71,6 +71,6 @@ def sparse_rc_xam() :
 #	Jacobians
 # $$
 # $section Python: Sparsity Patterns: Example and Test$$
-# $srcfile|build/lib/example/python/sparse_rc_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/sparse_rc_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

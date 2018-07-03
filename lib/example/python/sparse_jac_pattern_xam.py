@@ -93,6 +93,6 @@ def sparse_jac_pattern_xam() :
 #	Jacobians
 # $$
 # $section Python: Jacobian Sparsity Patterns: Example and Test$$
-# $srcfile|build/lib/example/python/sparse_jac_pattern_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/sparse_jac_pattern_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

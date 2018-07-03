@@ -95,7 +95,7 @@ $spell
 	Jacobians
 $$
 $section C++: Forward Mode AD: Example and Test$$
-$srcfile|build/lib/example/cplusplus/a_fun_forward_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/a_fun_forward_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

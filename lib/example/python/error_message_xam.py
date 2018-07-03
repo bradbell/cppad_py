@@ -40,6 +40,6 @@ def error_message_xam() :
 #	Jacobians
 # $$
 # $section Python: Cppad Py Exception Handling: Example and Test$$
-# $srcfile|build/lib/example/python/error_message_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/error_message_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

@@ -59,6 +59,6 @@ def a_double_unary_fun_xam() :
 #	Jacobians
 # $$
 # $section Python: a_double Unary Functions with AD Result: Example and Test$$
-# $srcfile|build/lib/example/python/a_double_unary_fun_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/a_double_unary_fun_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

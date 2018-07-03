@@ -74,6 +74,6 @@ def a_double_cond_assign_xam() :
 #	Jacobians
 # $$
 # $section Python: a_double Conditional Assignment: Example and Test$$
-# $srcfile|build/lib/example/python/a_double_cond_assign_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/a_double_cond_assign_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

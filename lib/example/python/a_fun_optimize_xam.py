@@ -71,6 +71,6 @@ def a_fun_optimize_xam() :
 #	Jacobians
 # $$
 # $section Python: Optimize an a_fun: Example and Test$$
-# $srcfile|build/lib/example/python/a_fun_optimize_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/a_fun_optimize_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

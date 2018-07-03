@@ -61,6 +61,6 @@ def vector_set_get_xam() :
 #	Jacobians
 # $$
 # $section Python: Setting and Getting Vector Elements: Example and Test$$
-# $srcfile|build/lib/example/python/vector_set_get_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/vector_set_get_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

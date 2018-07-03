@@ -76,6 +76,6 @@ def a_fun_hessian_xam() :
 #	Jacobians
 # $$
 # $section Python: Dense Hessian Using AD: Example and Test$$
-# $srcfile|build/lib/example/python/a_fun_hessian_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/a_fun_hessian_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

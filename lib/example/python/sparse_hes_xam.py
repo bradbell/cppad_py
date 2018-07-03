@@ -110,6 +110,6 @@ def sparse_hes_xam() :
 #	Jacobians
 # $$
 # $section Python: Hessian Sparsity Patterns: Example and Test$$
-# $srcfile|build/lib/example/python/sparse_hes_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/sparse_hes_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

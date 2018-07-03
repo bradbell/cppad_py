@@ -77,7 +77,7 @@ $spell
 	Jacobians
 $$
 $section C++: Dense Jacobian Using AD: Example and Test$$
-$srcfile|build/lib/example/cplusplus/a_fun_jacobian_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/a_fun_jacobian_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

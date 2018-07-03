@@ -106,6 +106,6 @@ def sparse_jac_xam() :
 #	Jacobians
 # $$
 # $section Python: Computing Sparse Jacobians: Example and Test$$
-# $srcfile|build/lib/example/python/sparse_jac_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/sparse_jac_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

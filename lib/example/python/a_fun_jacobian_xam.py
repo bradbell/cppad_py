@@ -65,6 +65,6 @@ def a_fun_jacobian_xam() :
 #	Jacobians
 # $$
 # $section Python: Dense Jacobian Using AD: Example and Test$$
-# $srcfile|build/lib/example/python/a_fun_jacobian_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/a_fun_jacobian_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

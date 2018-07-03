@@ -5,31 +5,13 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-assert(m4_executable)
+# list of C++ source files in CMAKE_CURRENT_SOURCE_DIR
+FILE(GLOB cplusplus_source_list "*.cpp")
 #
-SET(auto_output_list "")
-FOREACH( xam_file ${xam_file_list} )
-	STRING(REGEX REPLACE "[.]xam" ".cpp" source_file ${xam_file})
-	STRING(REGEX REPLACE "/"      "_"    source_file ${source_file})
-	ADD_CUSTOM_COMMAND(
-		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
-		COMMAND ${m4_executable}
-		-D Language_=cplusplus
-		-I ${CMAKE_SOURCE_DIR}/lib/xam
-		${CMAKE_SOURCE_DIR}/lib/xam/${xam_file}
-		> ${CMAKE_CURRENT_BINARY_DIR}/${source_file}
-		DEPENDS
-		${CMAKE_SOURCE_DIR}/lib/xam/${xam_file}
-		${CMAKE_SOURCE_DIR}/lib/xam/cplusplus.m4
-	)
-	add_to_list(auto_output_list ${CMAKE_CURRENT_BINARY_DIR}/${source_file} )
-ENDFOREACH( xam_file ${xam_file_list} )
-ADD_CUSTOM_TARGET(auto_lib_cplusplus DEPENDS ${auto_output_list} )
-MESSAGE(STATUS "make auto_lib_cplusplus: available")
 # -----------------------------------------------------------------------------
 # lib_cplusplus_check_all
-ADD_EXECUTABLE(lib_cplusplus_check_all EXCLUDE_FROM_ALL
-	check_all.cpp ${auto_output_list}
+ADD_EXECUTABLE(lib_cplusplus_check_all
+	EXCLUDE_FROM_ALL ${cplusplus_source_list}
 )
 # additional flags for compiling cppad code
 SET_TARGET_PROPERTIES(

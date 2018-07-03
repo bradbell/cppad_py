@@ -55,7 +55,7 @@ $spell
 	Jacobians
 $$
 $section C++: a_double Properties: Example and Test$$
-$srcfile|build/lib/example/cplusplus/a_double_property_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/a_double_property_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

@@ -43,6 +43,6 @@ def a_double_property_xam() :
 #	Jacobians
 # $$
 # $section Python: a_double Properties: Example and Test$$
-# $srcfile|build/lib/example/python/a_double_property_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/a_double_property_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

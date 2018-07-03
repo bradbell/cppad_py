@@ -45,6 +45,6 @@ def vector_size_xam() :
 #	Jacobians
 # $$
 # $section Python: Size of Vectors: Example and Test$$
-# $srcfile|build/lib/example/python/vector_size_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/vector_size_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

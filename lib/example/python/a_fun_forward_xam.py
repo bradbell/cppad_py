@@ -83,6 +83,6 @@ def a_fun_forward_xam() :
 #	Jacobians
 # $$
 # $section Python: Forward Mode AD: Example and Test$$
-# $srcfile|build/lib/example/python/a_fun_forward_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/a_fun_forward_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

@@ -69,6 +69,6 @@ def a_fun_property_xam() :
 #	Jacobians
 # $$
 # $section Python: a_fun Properties: Example and Test$$
-# $srcfile|build/lib/example/python/a_fun_property_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/a_fun_property_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

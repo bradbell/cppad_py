@@ -122,7 +122,7 @@ $spell
 	Jacobians
 $$
 $section C++: Hessian Sparsity Patterns: Example and Test$$
-$srcfile|build/lib/example/cplusplus/sparse_hes_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/sparse_hes_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

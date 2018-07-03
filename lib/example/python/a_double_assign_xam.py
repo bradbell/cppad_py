@@ -50,6 +50,6 @@ def a_double_assign_xam() :
 #	Jacobians
 # $$
 # $section Python: a_double Assignment Operators: Example and Test$$
-# $srcfile|build/lib/example/python/a_double_assign_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/a_double_assign_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

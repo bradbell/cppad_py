@@ -48,6 +48,6 @@ def a_double_ad_binary_xam() :
 #	Jacobians
 # $$
 # $section Python: a_double Binary Operators With AD Result: Example and Test$$
-# $srcfile|build/lib/example/python/a_double_ad_binary_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/a_double_ad_binary_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

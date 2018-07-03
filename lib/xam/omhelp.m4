@@ -46,7 +46,7 @@
 # The name of the source code file where the current output is placed
 # is assumed to be
 # $codei%
-#	build/lib/example/%language%/%lang_file_name%
+#	lib/example/%language%/%lang_file_name%
 # %$$
 # see $cref/language/xam.m4/language/$$ and
 # $cref/lang_file_name/xam_file_name.m4/lang_file_name/$$.
@@ -121,7 +121,7 @@ define(OmhelpAny_,
 # Omhelp_(name_xam, Omhelp_title)
 define(Omhelp_, OmhelpAny_(
 	`$1.Ext_',dnl                         Omhelp_tag
-	`build/lib/example/Language_/$1.Ext_',dnl file_name
+	`lib/example/Language_/$1.Ext_',dnl file_name
 	`$2'dnl                               Omhelp_title
 ))
 # -----------------------------------------------------------------------------

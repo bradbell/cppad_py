@@ -59,7 +59,7 @@ $spell
 	Jacobians
 $$
 $section C++: a_double Comparison Operators: Example and Test$$
-$srcfile|build/lib/example/cplusplus/a_double_compare_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/a_double_compare_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

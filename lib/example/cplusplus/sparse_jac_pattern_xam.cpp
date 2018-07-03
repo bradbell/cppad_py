@@ -105,7 +105,7 @@ $spell
 	Jacobians
 $$
 $section C++: Jacobian Sparsity Patterns: Example and Test$$
-$srcfile|build/lib/example/cplusplus/sparse_jac_pattern_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/sparse_jac_pattern_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

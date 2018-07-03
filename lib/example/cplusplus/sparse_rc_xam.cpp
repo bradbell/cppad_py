@@ -83,7 +83,7 @@ $spell
 	Jacobians
 $$
 $section C++: Sparsity Patterns: Example and Test$$
-$srcfile|build/lib/example/cplusplus/sparse_rc_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/sparse_rc_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

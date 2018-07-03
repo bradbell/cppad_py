@@ -62,7 +62,7 @@ $spell
 	Jacobians
 $$
 $section C++: a_double Assignment Operators: Example and Test$$
-$srcfile|build/lib/example/cplusplus/a_double_assign_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/a_double_assign_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

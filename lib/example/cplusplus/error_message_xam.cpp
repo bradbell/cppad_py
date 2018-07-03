@@ -52,7 +52,7 @@ $spell
 	Jacobians
 $$
 $section C++: Cppad Py Exception Handling: Example and Test$$
-$srcfile|build/lib/example/cplusplus/error_message_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/error_message_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

@@ -65,6 +65,6 @@ def a_fun_abort_xam() :
 #	Jacobians
 # $$
 # $section Python: Abort Recording a_double Operations: Example and Test$$
-# $srcfile|build/lib/example/python/a_fun_abort_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/a_fun_abort_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #
