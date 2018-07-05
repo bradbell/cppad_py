@@ -27,8 +27,8 @@ MESSAGE(STATUS "make auto_lib_python: available")
 #
 # ----------------------------------------------------------------------------
 assert( SWIG_FOUND )
-FIND_PACKAGE(PythonInterp)
-FIND_PACKAGE(PythonLibs)
+FIND_PACKAGE(PythonInterp 3)
+FIND_PACKAGE(PythonLibs 3)
 IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
 	# which version of Python did we find
 	SET(lib    "${PYTHONLIBS_VERSION_STRING}" )

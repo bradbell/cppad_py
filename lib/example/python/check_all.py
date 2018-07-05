@@ -12,8 +12,10 @@ os.environ['PATH'] = '../..:' + os.environ['PATH']
 #
 error_count = 0
 def run_test(name) :
-	exec( 'import ' + name )
-	exec( 'ok = ' + name + '.' + name + '()' )
+	namespace = {} # not needed in Python 2
+	exec( 'import ' + name,                     namespace )
+	exec( 'ok = '   + name + '.' + name + '()', namespace )
+	ok = namespace['ok']
 	if ok :
 		print('python: ' + name + ': OK')
 	else :

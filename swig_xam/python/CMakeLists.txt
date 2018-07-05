@@ -6,8 +6,8 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 FIND_PACKAGE(SWIG)
-FIND_PACKAGE(PythonInterp)
-FIND_PACKAGE(PythonLibs)
+FIND_PACKAGE(PythonInterp 3)
+FIND_PACKAGE(PythonLibs 3)
 IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND )
 	#
 	# which version of Python did we find
