@@ -57,8 +57,8 @@ bool sparse_hes_xam(void) {
 	// Set select_d (domain) to all true,
 	// initial select_r (range) to all false
 	// initialize r to all zeros
-	vec_bool select_d = cppad_py::vec_bool(n);
-	vec_bool select_r = cppad_py::vec_bool(n);
+	vec_bool select_d = vec_bool(n);
+	vec_bool select_r = vec_bool(n);
 	vec_double r = vec_double(n);
 	for(int i = 0; i < n; i++) {
 		select_d[i] = true;

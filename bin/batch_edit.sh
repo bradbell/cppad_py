@@ -14,26 +14,9 @@ move_list='
 '
 move_sed='s|/swig|/py|'
 #
-if [ -e 'junk.sed' ]
-then
-	rm junk.sed
-fi
-list='
-	a_double
-	vec_int
-	vec_double
-	vec_a_double
-	a_fun
-	sparse_rc
-	sparse_rcv
-	sparse_jac_work
-'
-for name in $list
-do
-cat << EOF >> junk.sed
-s|cppad_py::$name(|$name(|g
+cat << EOF > junk.sed
+s|cppad_py::vec_bool(|vec_bool(|g
 EOF
-done
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]
 then

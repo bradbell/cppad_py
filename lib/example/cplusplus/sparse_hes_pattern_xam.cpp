@@ -51,8 +51,8 @@ bool sparse_hes_pattern_xam(void) {
 	a_fun af = a_fun(ax, ay);
 	//
 	// Set select_d (domain) to all true, initial select_r (range) to all false
-	vec_bool select_d = cppad_py::vec_bool(n);
-	vec_bool select_r = cppad_py::vec_bool(n);
+	vec_bool select_d = vec_bool(n);
+	vec_bool select_r = vec_bool(n);
 	for(int i = 0; i < n; i++) {
 		select_d[i] = true;
 		select_r[i] = false;

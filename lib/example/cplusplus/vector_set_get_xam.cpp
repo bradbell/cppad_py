@@ -24,7 +24,7 @@ bool vector_set_get_xam(void) {
 	bool ok = true;
 	//------------------------------------------------------------------------
 	int n = 4;
-	vec_bool bv = cppad_py::vec_bool(n);
+	vec_bool bv = vec_bool(n);
 	vec_int iv = vec_int(n);
 	vec_double dv = vec_double(n);
 	vec_a_double av = vec_a_double(n);
