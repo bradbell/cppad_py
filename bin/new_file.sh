@@ -75,31 +75,6 @@ EOF
 EOF
 	;;
 	# =========================================================================
-	m4)
-	dir=`echo $file_name | sed -e 's|\(.*\)/[^/]*$|\1|'`
-	if [ "$dir" != 'lib/xam' ]
-	then
-		echo "new_file.sh: directory = $dir"
-		echo "files with .sh extension must be in lib/xam directory"
-		exit 1
-	fi
-	cat << EOF  > $file_name
-# -----------------------------------------------------------------------------
-#         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
-#              This program is distributed under the terms of the
-#              GNU General Public License version 3.0 or later see
-#                    https://www.gnu.org/licenses/gpl-3.0.txt
-# -----------------------------------------------------------------------------
-# \$begin $file_name\$\$ \$newlinech #\$\$
-# \$spell
-# \$\$
-# \$section REPLACE THIS TEXT\$\$
-# REPLACE THIS TEXT
-# \$end
-EOF
-	;;
-	# =========================================================================
 	omh)
 	root_name=`echo $file_name | sed -e 's|.*/||' -e 's|\.omh$||'`
 	cat << EOF  > $file_name
