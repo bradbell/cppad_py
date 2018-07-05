@@ -7,7 +7,7 @@
 # -----------------------------------------------------------------------------
 import sys
 import os
-# on cygwin, cppad_py_lib.dll is in ../.. directory
+# on cygwin, cppad_swig_lib.dll is in ../.. directory
 os.environ['PATH'] = '../..:' + os.environ['PATH']
 #
 error_count = 0

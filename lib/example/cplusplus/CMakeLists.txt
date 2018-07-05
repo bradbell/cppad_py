@@ -18,7 +18,7 @@ SET_TARGET_PROPERTIES(
 	lib_cplusplus_check_all PROPERTIES COMPILE_FLAGS "${cppad_cxx_flags}"
 )
 # link in cppad_py library
-TARGET_LINK_LIBRARIES(lib_cplusplus_check_all cppad_py_lib)
+TARGET_LINK_LIBRARIES(lib_cplusplus_check_all cppad_swig_lib)
 #
 # check_lib_cplusplus
 ADD_CUSTOM_TARGET(check_lib_cplusplus

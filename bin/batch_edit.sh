@@ -15,9 +15,8 @@ move_list='
 move_sed='s|/swig|/py|'
 #
 cat << EOF > junk.sed
-/This file can be generated in the lib\\/xam directory using the command/d
-/m4 -D Language_=cplusplus/d
-/m4 -D .Language_.=python/d
+s|cppad_py_lib|cppad_swig_lib|g
+s|CPPAD_PY_LIB|CPPAD_SWIG_LIB|g
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

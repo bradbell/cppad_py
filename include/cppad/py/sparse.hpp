@@ -21,7 +21,7 @@ namespace CppAD {
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
 // Swig class that acts the same as CppAD::sparse_rc< std::vector<size_t> >
-class CPPAD_PY_LIB_PUBLIC sparse_rc
+class CPPAD_SWIG_LIB_PUBLIC sparse_rc
 {	// private members are not in Swig interface
 	private:
 	// sparse_rc< std::vector<size_t> > representation
@@ -60,7 +60,7 @@ class CPPAD_PY_LIB_PUBLIC sparse_rc
 };
 
 // Swig class that acts the same as CppAD::sparse_rcv< std::vector<size_t> >
-class CPPAD_PY_LIB_PUBLIC sparse_rcv
+class CPPAD_SWIG_LIB_PUBLIC sparse_rcv
 {	// private members are not in Swig interface
 	private:
 	// CppAD::sparse_rc< std::vector<size_t> > representation
@@ -97,7 +97,7 @@ class CPPAD_PY_LIB_PUBLIC sparse_rcv
 };
 
 // Swig class that acts the same as CppAD::sparse_jac_work
-class CPPAD_PY_LIB_PUBLIC sparse_jac_work
+class CPPAD_SWIG_LIB_PUBLIC sparse_jac_work
 {	// private members not in Swig interface
 	private:
 	// CppAD::sparse_rc< std::vector<size_t> > representation
@@ -119,7 +119,7 @@ class CPPAD_PY_LIB_PUBLIC sparse_jac_work
 
 
 // Swig class that acts the same as CppAD::sparse_hes_work
-class CPPAD_PY_LIB_PUBLIC sparse_hes_work
+class CPPAD_SWIG_LIB_PUBLIC sparse_hes_work
 {	// private members not in Swig interface
 	private:
 	// CppAD::sparse_rc< std::vector<size_t> > representation

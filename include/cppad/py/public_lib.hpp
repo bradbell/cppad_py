@@ -9,10 +9,10 @@
 ----------------------------------------------------------------------------- */
 
 // The file included below is automatically created by lib/CMakeLists.txt.
-// If cppad_py_lib_EXPORTS is defined (not defined), CPPAD_PY_LIB_PUBLIC
+// If cppad_swig_lib_EXPORTS is defined (not defined), CPPAD_SWIG_LIB_PUBLIC
 // is defined as the proper prototype for for export (import) of the library.
 
-// # include <cppad_py_lib_export.h>
-# define CPPAD_PY_LIB_PUBLIC
+// # include <cppad_swig_lib_export.h>
+# define CPPAD_SWIG_LIB_PUBLIC
 
 # endif

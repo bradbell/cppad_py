@@ -12,7 +12,7 @@
 # include <cppad/py/public_lib.hpp>
 
 namespace cppad_py {
-	CPPAD_PY_LIB_PUBLIC
+	CPPAD_SWIG_LIB_PUBLIC
 	const char* error_message(const char* message);
 }
 
