@@ -20,13 +20,13 @@ $$
 $section Cppad Py Vector Constructors$$
 
 $head Syntax$$
-$icode%bv%  = %module_ref% vec_bool(%n%)
+$icode%bv% = cppad_py.vec_bool(%n%)
 %$$
-$icode%iv%  = %module_ref% vec_int(%n%)
+$icode%iv% = cppad_py.vec_int(%n%)
 %$$
-$icode%dv%  = %module_ref% vec_double(%n%)
+$icode%dv% = cppad_py.vec_double(%n%)
 %$$
-$icode%av% = %module_ref% vec_a_double(%n%)
+$icode%av% = cppad_py.vec_a_double(%n%)
 %$$
 
 $head Purpose$$

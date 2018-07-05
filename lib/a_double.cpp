@@ -74,11 +74,11 @@ $$
 $section The a_double Constructor$$
 
 $head Syntax$$
-$icode%ad% = %module_ref% a_double()
+$icode%ad% = cppad_py.a_double()
 %$$
-$icode%ad% = %module_ref% a_double(%d%)
+$icode%ad% = cppad_py.a_double(%d%)
 %$$
-$icode%ad% = %module_ref% a_double(%ad_other%)
+$icode%ad% = cppad_py.a_double(%ad_other%)
 %$$
 
 $head Purpose$$

@@ -26,12 +26,13 @@ $spell
 	Cppad
 	Py
 	vec
+	cppad_py
 $$
 
 $section Sparsity Patterns$$
 
 $head Syntax$$
-$icode%pattern% = %module_ref% %sparse_rc()
+$icode%pattern% = cppad_py.%sparse_rc()
 %$$
 $icode%pattern%.resize(%nr%, %nc%, %nnz%)
 %$$
@@ -284,12 +285,13 @@ $spell
 	Cppad
 	Py
 	vec
+	cppad_py
 $$
 
 $section Sparse Matrices$$
 
 $head Syntax$$
-$icode%matrix% = %module_ref% %sparse_rcv(%pattern%)
+$icode%matrix% = cppad_py.%sparse_rcv(%pattern%)
 %$$
 $icode%nr% = %matrix%.nr()
 %$$
@@ -819,12 +821,13 @@ $spell
 	const
 	vec
 	rc
+	cppad_py
 $$
 
 $section Computing Sparse Jacobians$$
 
 $head Syntax$$
-$icode%work% = %module_ref% sparse_jac_work()
+$icode%work% = cppad_py.sparse_jac_work()
 %$$
 $icode%n_sweep% = %af%.sparse_jac_for(%subset%, %x%, %pattern%, %work%)
 %$$
@@ -1005,12 +1008,13 @@ $spell
 	vec
 	rc
 	hes
+	cppad_py
 $$
 
 $section Computing Sparse Hessians$$
 
 $head Syntax$$
-$icode%work% = %module_ref% sparse_hes_work()
+$icode%work% = cppad_py.sparse_hes_work()
 %$$
 $icode%n_sweep% = %af%.sparse_hes(%subset%, %x%, %r%, %pattern%, %work%)
 %$$

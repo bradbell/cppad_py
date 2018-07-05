@@ -20,12 +20,13 @@ $spell
 	Py
 	py
 	const
+	cppad_py
 $$
 
 $section Declare Independent Variables and Start Recording$$
 
 $head Syntax$$
-$icode%ax% = %module_ref% independent(%x%)%$$
+$icode%ax% = cppad_py.independent(%x%)%$$
 
 
 $head module_ref$$
@@ -92,7 +93,7 @@ $$
 $section Abort Recording$$
 
 $head Syntax$$
-$icode%module_ref% abort_recording(%x%)%$$
+$codei%abort_recording(%x%)%$$
 
 $head Purpose$$
 This aborts the current recording (if it exists)
@@ -122,12 +123,13 @@ $spell
 	vec
 	af
 	const
+	cppad_py
 $$
 
 $section Stop Current Recording and Store in an a_fun Object$$
 
 $head Syntax$$
-$icode%af% = %module_ref% a_fun(%ax%, %ay%)%$$
+$icode%af% = cppad_py.a_fun(%ax%, %ay%)%$$
 
 $head module_ref$$
 This is the $cref/module reference/module/module_ref/$$
