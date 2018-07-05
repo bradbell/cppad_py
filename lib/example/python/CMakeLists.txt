@@ -38,31 +38,34 @@ IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
 			"cmake Python library ${lib} not same as interpertor ${interp}"
 		)
 	ENDIF( NOT ( "${lib}" STREQUAL "${interp}" ) )
-
+	#
+	# report the version of python
+	MESSAGE(STATUS "Python version ${PYTHON_VERSION_STRING}")
+	#
 	# treat like a C++ files
 	SET_SOURCE_FILES_PROPERTIES(
 		${swig_control_file} PROPERTIES CPLUSPLUS ON
 	)
-
+	#
 	# Swig flags when processing this file
 	SET_SOURCE_FILES_PROPERTIES(
 		${swig_control_file} PROPERTIES SWIG_FLAGS "-Wall"
 	)
-
+	#
 	# include directory determined by find PythonLibs
 	INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
-
+	#
 	# add_swig_library(library language files)
 	add_swig_library(cppad_py python swig_control_file)
-
+	#
 	# SWIG_LINK_LIBRARIES(name [ libraries ])
 	SWIG_LINK_LIBRARIES(cppad_py cppad_py_lib ${PYTHON_LIBRARIES})
-
+	#
 	# additional flags for compiling Swig wrapper
 	SET_TARGET_PROPERTIES( ${SWIG_MODULE_cppad_py_REAL_NAME}
 		 PROPERTIES COMPILE_FLAGS "${swig_cxx_flags}"
 	)
-
+	#
 	# check_lib_python
 	ADD_CUSTOM_TARGET(check_lib_python
 		${PYTHON_EXECUTABLE} check_all.py
@@ -72,9 +75,9 @@ IF ( PythonLibs_FOUND AND PythonInterp_FOUND)
 		auto_lib_python
 	)
 	MESSAGE(STATUS "make check_lib_python: available")
-
+	#
 	# Change check depends in parent environment
 	add_to_list(check_lib_depends check_lib_python)
 	SET(check_lib_depends "${check_lib_depends}" PARENT_SCOPE)
-
+	#
 ENDIF ( PythonLibs_FOUND AND PythonInterp_FOUND)

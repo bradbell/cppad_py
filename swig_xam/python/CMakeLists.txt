@@ -19,6 +19,9 @@ IF ( SWIG_FOUND AND PythonLibs_FOUND AND PythonInterp_FOUND )
 		)
 	ENDIF( NOT ( "${lib}" STREQUAL "${interp}" ) )
 	#
+	# report the version of python
+	MESSAGE(STATUS "Python version ${PYTHON_VERSION_STRING}")
+	#
 	# include the Swig specific macros
 	INCLUDE( ${CMAKE_ROOT}/Modules/UseSWIG.cmake )
 	#
