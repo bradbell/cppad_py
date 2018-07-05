@@ -32,10 +32,6 @@ $icode%av% = cppad_py.vec_a_double(%n%)
 $head Purpose$$
 Creates a vector with $icode n$$ elements.
 
-$head module_ref$$
-This is the $cref/module reference/module/module_ref/$$
-for the particular language.
-
 $head n$$
 The argument $icode n$$ is a non-negative integer with default value zero;
 i.e., if it is not present, zero is used.

@@ -53,10 +53,6 @@ $icode%row_major% = %pattern%.row_major()
 $icode%col_major% = %pattern%.col_major()
 %$$
 
-$head module_ref$$
-This is the $cref/module reference/module/module_ref/$$
-for the particular language.
-
 $head pattern$$
 The result has prototype
 $codei%
@@ -311,10 +307,6 @@ $icode%row_major% = %matrix%.row_major()
 %$$
 $icode%col_major% = %matrix%.col_major()
 %$$
-
-$head module_ref$$
-This is the $cref/module reference/module/module_ref/$$
-for the particular language.
 
 $head pattern$$
 This argument has prototype
@@ -833,10 +825,6 @@ $icode%n_sweep% = %af%.sparse_jac_for(%subset%, %x%, %pattern%, %work%)
 %$$
 $icode%n_sweep% = %af%.sparse_jac_rev(%subset%, %x%, %pattern%, %work%)%$$
 
-$head module_ref$$
-This is the $cref/module reference/module/module_ref/$$
-for the particular language.
-
 $head Purpose$$
 We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
 function corresponding to $icode af$$.
@@ -1018,10 +1006,6 @@ $icode%work% = cppad_py.sparse_hes_work()
 %$$
 $icode%n_sweep% = %af%.sparse_hes(%subset%, %x%, %r%, %pattern%, %work%)
 %$$
-
-$head module_ref$$
-This is the $cref/module reference/module/module_ref/$$
-for the particular language.
 
 $head Purpose$$
 We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the

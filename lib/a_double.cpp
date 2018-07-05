@@ -85,10 +85,6 @@ $head Purpose$$
 Creates a $code cppad_py::a_double$$ object that can be use
 to track floating point operations and preform algorithmic differentiation.
 
-$head module_ref$$
-This is the $cref/module reference/module/module_ref/$$
-for the particular language.
-
 $head d$$
 This argument has prototype
 $codei%

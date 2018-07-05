@@ -30,28 +30,14 @@ $spell
 	namespace
 $$
 
-$section Cppad Py Modules and Languages$$
+$section C++ and Python Modules$$
 
 $head Language$$
 Is a source code language.
-Note that in C++, the library functions are accessed directly,
-while in the other languages they are accessed through the
-corresponding Swig module.
-
-$head Module Name$$
-This is the name of the Swig module.
-In C++ this is actually a $code namespace$$, instead of a
-Swig module.
-
-$head module_ref$$
-We use $icode module_ref$$ to denote the source code used to reference
-the Cppad Py module for a particular language.
-It has the following value (depending on the language):
-$table
-Language     $cnext Module Name        $cnext module_ref            $rnext
-C++          $cnext $code cppad_py$$   $cnext $code cppad_py::$$    $rnext
-Python       $cnext $code cppad_py$$   $cnext $code cppad_py.$$
-$tend
+Note that in C++, the library functions are in
+the $code cppad_py$$ namespace,
+while in the Python language is accessed through the
+Swig $code cppad_py$$ module.
 
 $end
 */

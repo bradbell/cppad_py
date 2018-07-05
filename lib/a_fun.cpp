@@ -28,11 +28,6 @@ $section Declare Independent Variables and Start Recording$$
 $head Syntax$$
 $icode%ax% = cppad_py.independent(%x%)%$$
 
-
-$head module_ref$$
-This is the $cref/module reference/module/module_ref/$$
-for the particular language.
-
 $head x$$
 This argument has prototype
 $codei%
@@ -88,20 +83,17 @@ $spell
 	af
 	const
 	perl
+	cppad_py
 $$
 
 $section Abort Recording$$
 
 $head Syntax$$
-$codei%abort_recording(%x%)%$$
+$codei%cppad_py.abort_recording(%x%)%$$
 
 $head Purpose$$
 This aborts the current recording (if it exists)
 started by the most recent call to $cref independent$$.
-
-$head module_ref$$
-This is a $cref/module reference/module/module_ref/$$
-for the particular language.
 
 $children%
 	lib/example/cplusplus/a_fun_abort_xam.cpp%
@@ -130,10 +122,6 @@ $section Stop Current Recording and Store in an a_fun Object$$
 
 $head Syntax$$
 $icode%af% = cppad_py.a_fun(%ax%, %ay%)%$$
-
-$head module_ref$$
-This is the $cref/module reference/module/module_ref/$$
-for the particular language.
 
 $head ax$$
 This argument has prototype
