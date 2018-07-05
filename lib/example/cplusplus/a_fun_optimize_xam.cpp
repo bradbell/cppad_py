@@ -1,5 +1,3 @@
-// This file can be generated in the lib/xam directory using the command:
-// m4 -D Language_=cplusplus a_fun/optimize_xam.xam
 // -----------------------------------------------------------------------------
 //         cppad_py: A C++ Object Library and Python Interface to Cppad
 //          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
