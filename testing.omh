@@ -50,7 +50,7 @@ The rest of the commands below assume you are in the
 Cmake binary directory.
 
 $head check$$
-The command
+If you change int the Cmake binary directory, the command
 $codei%
 	make check
 %$$
@@ -76,12 +76,11 @@ $codei%
 %$$
 runs a simple test of Swig, for the particular language, on your system.
 
-$subhead check_lib$$
-For $icode lang$$ equal
-$code cplusplus$$, $code octave$$, $code perl$$, $code python$$,
+$head check_lib$$
+For $icode lang$$ equal $code cplusplus$$ and $code python$$,
 $codei%
 	make check_lib_%lang%
 %$$
-runs a test of Cppad Py, for the particular language, on your system.
+runs a the tests for the C++ and for Python on your system.
 
 $end

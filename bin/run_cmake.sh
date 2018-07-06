@@ -25,6 +25,7 @@ cmake_verbose_makefile='false'
 cmake_build_type='debug'
 swig_cxx_flags='-Wno-sign-compare -Wno-catch-value -Wno-class-memaccess'
 cppad_cxx_flags='-Wall -pedantic-errors'
+python_major_version='3'
 test_cppad='no'
 # END user settings
 # -----------------------------------------------------------------------------
@@ -69,6 +70,7 @@ then
 	cmake -D CMAKE_VERBOSE_MAKEFILE="$cmake_verbose_makefile" \
 		-D cppad_prefix="$cmake_binary_path/prefix"  \
 		-D cppad_cxx_flags="$cppad_cxx_flags" \
+		-D python_major_version="$python_major_version" \
 		.. | tee $distribution_dir/cmake_cppad.log
 	cd ../..
 	echo "End getting $local_repo"
@@ -97,6 +99,7 @@ cmake \
 	-D CMAKE_BUILD_TYPE="$cmake_build_type" \
 	-D cppad_prefix="$cmake_binary_path/prefix" \
 	-D cppad_cxx_flags="$cppad_cxx_flags" \
+	-D python_major_version="$python_major_version" \
 	-D swig_cxx_flags="$swig_cxx_flags" \
 	.. | tee $distribution_dir/cmake_cppad_py.log
 # -----------------------------------------------------------------------------
@@ -163,6 +166,9 @@ exit 0
 # $head cppad_cxx_flags$$
 # Extra C++ compiler flags used when compiling code that includes Cppad
 # header files.
+#
+# $head python_major_version$$
+# This is the major version for python and must be either 2 or 3.
 #
 # $head test_cppad$$
 # If this is $code yes$$, Cppad will build and run it's separate check system

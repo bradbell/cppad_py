@@ -5,6 +5,13 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
+# cmake \
+#	-D CMAKE_VERBOSE_MAKEFILE=value \
+#	-D cppad_prefix=value  \
+#	-D cppad_cxx_flags=value \
+#	-D python_major_version=value
+#
+# -----------------------------------------------------------------------------
 # preamble
 # Suppress warnging that WIN32 not defined on cygwin
 SET(CMAKE_LEGACY_CYGWIN_WIN32 0) # remove when version below >= 2.8.4
@@ -127,20 +134,27 @@ print_variable(CMAKE_VERBOSE_MAKEFILE)
 print_variable(CMAKE_CXX_FLAGS)
 print_variable(CMAKE_BUILD_TYPE)
 # -----------------------------------------------------------------------------
-# cppad_prefix
+# cppad_prefix and corresponding include directories
 cmake_argument(cppad_prefix NOTFOUND PATH "prefix used to install Cppad" )
 IF( NOT cppad_prefix )
 	MESSAGE(FATAL_ERROR "cppad_prefix is not defined by cmake command line")
 ENDIF( NOT cppad_prefix )
 INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
 # -----------------------------------------------------------------------------
-# compiler flags
+# cppad_prefix, cppad_cxx_flags, swig_cxx_flags, python_major_version
 cmake_argument(cppad_cxx_flags "" STRING
-"Flags, in addititon to CMAKE_CXX_FLAGS, used when compiling cppad_py code."
+	"Flags, added to CMAKE_CXX_FLAGS, used when compiling cppad_py code."
 )
 cmake_argument(swig_cxx_flags "" STRING
-"Flags, in addititon to CMAKE_CXX_FLAGS, used when Swig wrapper code."
+	"Flags, added to CMAKE_CXX_FLAGS, used when Swig wrapper code."
 )
+cmake_argument(python_major_version "" STRING
+	"major version number for python, must be 2 or 3."
+)
+STRING(REGEX MATCH "[23]" python_version_ok "${python_major_version}")
+IF( NOT python_version_ok )
+	MESSAGE(FATAL_ERROR "python_major_version is no 2 or 3")
+ENDIF( NOT python_version_ok )
 # -----------------------------------------------------------------------------
 #
 # Initialize list of tests as empty (added to by sub-directories below)

@@ -11,10 +11,10 @@
 #	cd cppad_py
 #	$python
 #	import cppad.py
-# with python=python3 you get:
+# with python=python3 and python_major_version in bin/run_cmake equal to 3:
 #	ImportError: dynamic module does not define module export function
 #	(PyInit_cppad_py)
-# with python=python2 you get:
+# with python=python3 and python_major_version in bin/run_cmake equal to 2:
 #	ImportError: dynamic module does not define init function (initcppad_py)
 # -----------------------------------------------------------------------------
 import re
