@@ -5,6 +5,18 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
+# Under Construction
+# If you execute the following:
+#	$python setup.py build_ext --inplace
+#	cd cppad_py
+#	$python
+#	import cppad.py
+# with python=python3 you get:
+#	ImportError: dynamic module does not define module export function
+#	(PyInit_cppad_py)
+# with python=python2 you get:
+#	ImportError: dynamic module does not define init function (initcppad_py)
+# -----------------------------------------------------------------------------
 import re
 import os
 import sys
@@ -42,9 +54,9 @@ cppad_py_extension_sources.append(
 cppad_py_include_dirs     = [ cppad_include_dir ]
 cppad_py_include_dirs.append( os.getcwd() + '/build/lib' )
 cppad_py_include_dirs.append( os.getcwd() + '/include' )
+#
 print(cppad_py_include_dirs)
 cppad_py_extension_name   = 'cppad_py/cppad_py'
-cppad_py_include_dirs     = [ os.getcwd() + '/include', cppad_include_dir ]
 extension_module          = Extension(
 	cppad_py_extension_name,
 	cppad_py_extension_sources,
