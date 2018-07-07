@@ -63,11 +63,12 @@ $end
 %include <cppad/py/a_fun.hpp>
 %include <cppad/py/error.hpp>
 
-%template(vec_bool)      std::vector<bool>;
-%template(vec_int)       std::vector<int>;
-%template(vec_double)    std::vector<double>;
-%template(vec_a_double)  std::vector<cppad_py::a_double>;
-
+namespace std {
+     %template(vec_bool)      vector<bool>;
+     %template(vec_int)       vector<int>;
+     %template(vec_double)    vector<double>;
+     %template(vec_a_double)  vector<cppad_py::a_double>;
+}
 /*
 -------------------------------------------------------------------------------
 $begin a_double$$

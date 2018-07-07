@@ -6,20 +6,16 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 # Under Construction
-# If you execute the following:
-#	$python setup.py build_ext --inplace
+# The following commands appear to work:
+#	python3 setup.py build_ext --inplace
 #	cd cppad_py
-#	$python
+#	python3
 #	import cppad.py
-# with python=python3 and python_major_version in bin/run_cmake equal to 3:
-#	ImportError: dynamic module does not define module export function
-#	(PyInit_cppad_py)
-# with python=python3 and python_major_version in bin/run_cmake equal to 2:
-#	ImportError: dynamic module does not define init function (initcppad_py)
 # -----------------------------------------------------------------------------
 import re
 import os
 import sys
+import subprocess
 from distutils.core import setup, Extension
 # -----------------------------------------------------------------------------
 # cppad_include_dir
@@ -41,14 +37,30 @@ if not match :
 	sys.exit('setup.py: cannot find cppad_py version in CMakeLists.txt')
 cppad_py_version = match.group(1)
 # -----------------------------------------------------------------------------
+# build/lib/cppad_py_wrap.cpp, build/lib/cppad_py.py
+#
+# change inpto cppad_py directory so that cppad_py.py is output there
+os.chdir('cppad_py')
+command = [
+	'swig',
+	'-c++',
+	'-python',
+	'-I../include',
+	'-o', 'cppad_py_wrap.cpp',
+	'../lib/cppad_py.i'
+]
+flag    = subprocess.call(command)
+if flag != 0 :
+		sys.exit('setup.py: swig command failed')
+#
+# change back to top soruce directory
+os.chdir('..')
+# -----------------------------------------------------------------------------
 # extension_sources
 cppad_py_extension_sources = list()
 for name in os.listdir('lib') :
 	if name.endswith('.cpp') :
 		cppad_py_extension_sources.append( 'lib/' + name)
-cppad_py_extension_sources.append(
-	'build/lib/example/python/cppad_pyPYTHON_wrap.cxx'
-)
 # -----------------------------------------------------------------------------
 # extension_module
 cppad_py_include_dirs     = [ cppad_include_dir ]
@@ -73,9 +85,7 @@ setup(
 	author_email = 'bradbell at seanet dot com',
 	url          = 'https://github.com/bradbell/cppad_py',
 	ext_modules  = [ extension_module ],
-	packages     = [ 'cppad_py' ],
-	package_dir  = { 'cppad_py' : 'cppad_py' },
-	data_files   = list()
+	packages     = [ 'cppad_py' ]
 )
 # -----------------------------------------------------------------------------
 print('setup.py: OK')

@@ -5,6 +5,7 @@ junk.*
 # directories to ignore
 /build/
 /doc/
+/cppad_py/
 new
 # extensions to ignore
 *.log
