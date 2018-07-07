@@ -14,7 +14,7 @@ $$
 $section The Cppad Py Library$$
 
 $childtable%
-	lib/cppad_py.i
+	lib/cppad_py_swig.i
 %$$
 
 

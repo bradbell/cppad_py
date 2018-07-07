@@ -5,7 +5,7 @@
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
-/* cppad_py.i */
+/* cppad_py_swig.i */
 # ifdef SWIG
 # define CPPAD_SWIG_LIB_PUBLIC
 # else

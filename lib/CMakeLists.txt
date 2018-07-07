@@ -11,7 +11,7 @@ assert( SWIG_FOUND )
 # Initialize check for this directory
 SET(check_lib_depends "")
 #
-# directory used for cppad_py include files
+# directory used for cppad_py_swig.include files
 INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/include )
 INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_BINARY_DIR} )
 #
@@ -19,7 +19,7 @@ INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_BINARY_DIR} )
 INCLUDE( ${CMAKE_ROOT}/Modules/UseSWIG.cmake )
 #
 # swig_control_file: used by the sub-directories below
-SET(swig_control_file "${CMAKE_CURRENT_SOURCE_DIR}/cppad_py.i" )
+SET(swig_control_file "${CMAKE_CURRENT_SOURCE_DIR}/cppad_py_swig.i" )
 #
 # The following enables cmake to handle windows dlls; see
 # https://cmake.org/Wiki/BuildingWinDLL

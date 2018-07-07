@@ -37,7 +37,7 @@ if not match :
 	sys.exit('setup.py: cannot find cppad_py version in CMakeLists.txt')
 cppad_py_version = match.group(1)
 # -----------------------------------------------------------------------------
-# build/lib/cppad_py_wrap.cpp, build/lib/cppad_py.py
+# build/lib/cppad_py_swig_wrap.cpp, build/lib/cppad_py.py
 #
 # change inpto cppad_py directory so that cppad_py.py is output there
 if not os.path.exists('cppad_py') :
@@ -48,8 +48,8 @@ command = [
 	'-c++',
 	'-python',
 	'-I../include',
-	'-o', 'cppad_py_wrap.cpp',
-	'../lib/cppad_py.i'
+	'-o', 'cppad_py_swig_wrap.cpp',
+	'../lib/cppad_py_swig.i'
 ]
 flag    = subprocess.call(command)
 if flag != 0 :
@@ -59,22 +59,22 @@ if flag != 0 :
 os.chdir('..')
 # -----------------------------------------------------------------------------
 # extension_sources
-cppad_py_extension_sources = [ 'cppad_py/cppad_py_wrap.cpp' ]
+cppad_py_extension_sources = [ 'cppad_py/cppad_py_swig_wrap.cpp' ]
 for name in os.listdir('lib') :
 	if name.endswith('.cpp') :
 		cppad_py_extension_sources.append( 'lib/' + name)
 # -----------------------------------------------------------------------------
 # extension_module
-cppad_py_include_dirs     = [ cppad_include_dir ]
-cppad_py_include_dirs.append( os.getcwd() + '/build/lib' )
-cppad_py_include_dirs.append( os.getcwd() + '/include' )
+cppad_py_swig.include_dirs     = [ cppad_include_dir ]
+cppad_py_swig.include_dirs.append( os.getcwd() + '/build/lib' )
+cppad_py_swig.include_dirs.append( os.getcwd() + '/include' )
 #
-print(cppad_py_include_dirs)
+print(cppad_py_swig.include_dirs)
 cppad_py_extension_name   = 'cppad_py/_cppad_py'
 extension_module          = Extension(
 	cppad_py_extension_name,
 	cppad_py_extension_sources,
-	include_dirs = cppad_py_include_dirs
+	include_dirs = cppad_py_swig.include_dirs
 )
 # -----------------------------------------------------------------------------
 # setup
