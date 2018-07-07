@@ -40,6 +40,8 @@ cppad_py_version = match.group(1)
 # build/lib/cppad_py_wrap.cpp, build/lib/cppad_py.py
 #
 # change inpto cppad_py directory so that cppad_py.py is output there
+if not os.path.exists('cppad_py') :
+	os.mkdir('cppad_py')
 os.chdir('cppad_py')
 command = [
 	'swig',
@@ -57,7 +59,7 @@ if flag != 0 :
 os.chdir('..')
 # -----------------------------------------------------------------------------
 # extension_sources
-cppad_py_extension_sources = list()
+cppad_py_extension_sources = [ 'cppad_py/cppad_py_wrap.cpp' ]
 for name in os.listdir('lib') :
 	if name.endswith('.cpp') :
 		cppad_py_extension_sources.append( 'lib/' + name)
@@ -68,7 +70,7 @@ cppad_py_include_dirs.append( os.getcwd() + '/build/lib' )
 cppad_py_include_dirs.append( os.getcwd() + '/include' )
 #
 print(cppad_py_include_dirs)
-cppad_py_extension_name   = 'cppad_py/cppad_py'
+cppad_py_extension_name   = 'cppad_py/_cppad_py'
 extension_module          = Extension(
 	cppad_py_extension_name,
 	cppad_py_extension_sources,

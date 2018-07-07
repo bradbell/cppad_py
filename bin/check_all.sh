@@ -35,7 +35,7 @@ fi
 # -----------------------------------------------------------------------------
 if [ -e $logfile ]
 then
-	echo check_all.log
+	echo "rm check_all.log"
 	rm $logfile
 fi
 list=`ls bin/check_*`
