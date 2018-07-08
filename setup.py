@@ -18,11 +18,23 @@ import re
 import os
 import sys
 import subprocess
+import shutil
 from distutils.core import setup, Extension
 # -----------------------------------------------------------------------------
 def quote_str(s) :
 	return "'" + s + "'"
-
+# -----------------------------------------------------------------------------
+# create cppad_py
+if os.path.exists('cppad_py') :
+	shutil.rmtree('cppad_py')
+os.mkdir('cppad_py')
+file_name = 'cppad_py/__init__.py'
+fp        = open(file_name, 'w')
+data      = \
+'''from cppad_py.cppad_py_swig import *
+'''
+fp.write(data)
+fp.close()
 # -----------------------------------------------------------------------------
 # python_version
 python_major_version = sys.version_info.major
@@ -31,6 +43,7 @@ if python_major_version != 2 and python_major_version != 3 :
 	msg += str( python_major_version ) + ' is not 2 or 3'
 	sys.exit(msg)
 # -----------------------------------------------------------------------------
+# run cmake
 cppad_prefix_absolute = os.getcwd() + '/' + cppad_prefix
 if not os.path.exists('build') :
 	os.mkdir('build')
@@ -142,8 +155,7 @@ sys.exit(0)
 #
 # $head Syntax$$
 # $codei%
-#	%python% setup.py build_ext --inplace
-#	%python% setup.py build_ext --inplace --debug --undef NDEBUG
+#	%python% setup.py build_ext --inplace [--quiet] [--debug] [--undef NDEBUG]
 # %$$
 # where $icode python$$ is the Python executable you will be using with
 # Cppad Py.
@@ -160,29 +172,29 @@ sys.exit(0)
 # $srcfile%setup.py%0%# BEGIN_USER_SETTINGS%# END_USER_SETTINGS%$$.
 # Each of these settings is described below:
 #
-# $head verbose_makefile$$
+# $subhead verbose_makefile$$
 # This is either $code "true"$$ or $code "false"$$.
 # If it is true, many of the compiler and Swig options used to
 # build the system are output during the $code make$$ commands.
 # If it is false, the output during the make commands just describes
 # whats is being done without so much detail.
 #
-# $head build_type$$
+# $subhead build_type$$
 # This is either $code "debug"$$, $code "release"$$.
 #
-# $head swig_cxx_flags$$
+# $subhead swig_cxx_flags$$
 # Extra C++ compiler flags used when compiling code that is created
 # by Swig.
 #
-# $head cppad_cxx_flags$$
+# $subhead cppad_cxx_flags$$
 # Extra C++ compiler flags used when compiling code that includes Cppad
 # header files.
 #
-# $head cppad_prefix$$
+# $subhead cppad_prefix$$
 # This is the directory where $cref get_cppad.sh$$ puts Cppad
 # (relative to the top source directory).
 #
-# $head test_cppad$$
+# $subhead test_cppad$$
 # This is either $code "true"$$ or $code "false"$$.
 # If it is $code "true"$$, $cref get_cppad.sh$$ will build and run
 # a separate check of Cppad for this system.
