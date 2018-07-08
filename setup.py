@@ -27,14 +27,7 @@ def quote_str(s) :
 # create cppad_py
 if os.path.exists('cppad_py') :
 	shutil.rmtree('cppad_py')
-os.mkdir('cppad_py')
-file_name = 'cppad_py/__init__.py'
-fp        = open(file_name, 'w')
-data      = \
-'''from cppad_py.cppad_py_swig import *
-'''
-fp.write(data)
-fp.close()
+shutil.copytree('lib/python', 'cppad_py');
 # -----------------------------------------------------------------------------
 # python_version
 python_major_version = sys.version_info.major
