@@ -5,13 +5,27 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# Under Construction
-# The following commands appear to work:
-#	bin/get_cppad.sh
-#	bin/run_cmake.sh
-#	python3 setup.py build_ext --inplace --debug --undef NDEBUG
-#	cd build
-#	make check
+# $begin setup.py$$ $newlinech #$$
+# $spell
+#	cppad_py
+#	inplace
+#	undef
+# $$
+#
+# $section Build the cppad_py Python Module$$
+#
+# $head Syntax$$
+# $codei%
+#	%python% setup.py build_ext --inplace
+#	%python% setup.py build_ext --inplace --debug --undef NDEBUG
+# %$$
+# where $icode python$$ is the Python executable for the
+# $cref/major version/run_cmake.sh/python_major_version/$$ you are using.
+#
+# $head Requirements$$
+# You must first run $cref get_cppad.sh$$ and $cref run_cmake.sh$$.
+#
+# $end
 # -----------------------------------------------------------------------------
 import re
 import os
@@ -69,13 +83,15 @@ for name in os.listdir('lib') :
 cppad_py_swig_include_dirs     = [ cppad_include_dir ]
 cppad_py_swig_include_dirs.append( os.getcwd() + '/build/lib' )
 cppad_py_swig_include_dirs.append( os.getcwd() + '/include' )
+cppad_py_swig_extra_compile_args = [ '-Wno-class-memaccess' ]
 #
 print(cppad_py_swig_include_dirs)
 cppad_py_extension_name   = 'cppad_py/_cppad_py_swig'
 extension_module          = Extension(
-	cppad_py_extension_name,
-	cppad_py_extension_sources,
-	include_dirs = cppad_py_swig_include_dirs
+	cppad_py_extension_name                               ,
+	cppad_py_extension_sources                            ,
+	include_dirs       = cppad_py_swig_include_dirs       ,
+	extra_compile_args = cppad_py_swig_extra_compile_args
 )
 # -----------------------------------------------------------------------------
 # setup

@@ -15,8 +15,17 @@ $$
 $section Cppad Py Changes During 2018$$
 
 $head 07-08$$
-Advanced to $code cppad-20180703$$ and fix the following warning:
+$list number$$
+Advanced to $code cppad-20180703$$.
+$lnext
+Fix the following warning:
 $code catching polymorphic type class 'std::runtime_error' by value$$.
+$lnext
+Suppress the following warning when running $cref setup.py$$:
+$code clearing an object of non-trivial type class 'cppad_py::a_double'$$;
+see $href%https://github.com/swig/swig/issues/1259%swig issue 1259%$$.
+$lend
+
 
 $head 07-07$$
 Change build of Python module to use Python 3,

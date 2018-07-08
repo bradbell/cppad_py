@@ -28,6 +28,7 @@ $section Running the Cppad Py Tests$$
 
 $children%bin/get_cppad.sh
 	%bin/run_cmake.sh
+	%setup.py
 %$$
 
 $head Configuration$$
@@ -45,13 +46,13 @@ $pre
 	$$$cref%bin/run_cmake.sh%run_cmake.sh%$$
 
 $head setup.py$$
-The next step is the build the Python cppad_py module using the command
-$codep
-	python3 setup.py build_ext --inplace
-$$
-Note that if you change
-$cref/python_major_version/run_cmake.sh/python_major_version/$$ to 2,
-you will have the use the $code python2$$ command above.
+The next step is the build the Python cppad_py module using
+one of the command:
+$codei%
+	%python% setup.py build_ext --inplace
+%$$
+where $icode python$$ is the Python executable for the
+$cref/major version/run_cmake.sh/python_major_version/$$ you are using.
 
 $head check$$
 The next step is to check cppad_py on your system using
