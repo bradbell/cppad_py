@@ -24,6 +24,9 @@ struct a_double_data {
 	CPPAD_TAPE_ID_TYPE     tape_id;
 	// tape address for this object
 	CPPAD_TAPE_ADDR_TYPE   taddr;
+	// is this a dynamic parameter (or a variable)
+	// when tape_id is for current tape and taddr_ is non-zero
+	bool dynamic;
 };
 
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE

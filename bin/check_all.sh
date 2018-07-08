@@ -33,6 +33,10 @@ then
 	exit 1
 fi
 # -----------------------------------------------------------------------------
+# cmake_binary_dir
+cmd=`grep '^cmake_binary_dir=' bin/run_cmake.sh`
+eval $cmd
+# -----------------------------------------------------------------------------
 if [ -e $logfile ]
 then
 	echo "rm check_all.log"
@@ -48,31 +52,14 @@ do
 done
 #
 echo_eval_log check_copyright.sh
+echo_eval_log bin/get_cppad.sh
 echo_eval_log bin/run_cmake.sh
-echo_eval_log cd build
+echo_eval_log python3 setup.py build_ext --inplace
+echo_eval_log cd $cmake_binary_dir
 echo_eval_log make clean
 echo_eval_log make check
 echo_eval_log cd ..
 echo_eval_log run_omhelp.sh doc
-echo_eval_log cd build
-rm $tmpfile
-#
-check_list='
-	swig_xam_python
-	swig_xam_octave
-	swig_xam_perl
-	swig_xam
-	lib_python
-	lib
-'
-for check in $check_list
-do
-	if ! grep "make check_$check: available" $logfile > /dev/null
-	then
-		echo "check_all.sh:	make check_$check is missing"
-		exit 1
-	fi
-done
 #
 if grep -i 'warning' $logfile
 then

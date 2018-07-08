@@ -9,9 +9,18 @@ $begin whats_new_2018$$
 $spell
 	Cppad
 	Py
+	std::runtime_error
 $$
 
 $section Cppad Py Changes During 2018$$
+
+$head 07-08$$
+Advanced to $code cppad-20180703$$ and fix the following warning:
+$code catching polymorphic type class 'std::runtime_error' by value$$.
+
+$head 07-07$$
+Change build of Python module to use Python 3,
+$cref/setup.py/testing/setup.py/$$,
 
 $head 07-03$$
 Birthday when Cppad Py was first extracted from Cppad Swig.

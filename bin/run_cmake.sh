@@ -29,62 +29,18 @@ python_major_version='3'
 test_cppad='no'
 # END user settings
 # -----------------------------------------------------------------------------
-# CppAD version information
-remote_repo='https://github.com/coin-or/CppAD.git'
-cppad_version='20170226'
-hash_code='bbaf187407aefd4d986bd03df75379b05239d613'
-# -----------------------------------------------------------------------------
 distribution_dir=`pwd`
 # -----------------------------------------------------------------------------
-# Change into cmake binary directory
-if [ ! -e "$cmake_binary_dir" ]
+#
+# cmake binary directory
+if [ ! -e $cmake_binary_dir ]
 then
-	echo_eval mkdir $cmake_binary_dir
+	echo "run_cmake.sh: bin/get_cppad.sh should have created $cmake_binary_dir"
+	exit 1
 fi
 echo_eval cd $cmake_binary_dir
 cmake_binary_path=`pwd`
-# -----------------------------------------------------------------------------
-# Check if we need to install this version of CppAD
-local_repo="cppad-$cppad_version.git"
-if [ ! -e "$local_repo" ]
-then
-	echo "Start getting $local_repo"
-	echo_eval git clone $remote_repo $local_repo
-	echo_eval cd $local_repo
-	echo_eval git checkout --quiet $hash_code
-	check=`grep '^SET(cppad_version' CMakeLists.txt | \
-		sed -e 's|^[^"]*"\([^"]*\)".*|\1|'`
-	if [ "$check" != "$cppad_version" ]
-	then
-		echo "bin/run_cmake.sh: cppad_version = $cppad_version"
-		echo "version in $local_repo/CMakeLists.txt = $check"
-		exit 1
-	fi
-	cd ..
-fi
-# -------------------------------------------------------------------------
-if [ ! -e "$local_repo/build" ]
-then
-	echo_eval mkdir $local_repo/build
-	echo_eval cd $local_repo/build
-	cmake -D CMAKE_VERBOSE_MAKEFILE="$cmake_verbose_makefile" \
-		-D cppad_prefix="$cmake_binary_path/prefix"  \
-		-D cppad_cxx_flags="$cppad_cxx_flags" \
-		-D python_major_version="$python_major_version" \
-		.. | tee $distribution_dir/cmake_cppad.log
-	cd ../..
-	echo "End getting $local_repo"
-fi
-# -------------------------------------------------------------------------
-cd $local_repo/build
-if [ "$test_cppad" == 'yes' ]
-then
-	echo_eval make check
-fi
-echo 'Installing Cppad'
-make install | sed -e '/Up-to-date/d'
-echo_eval cd ../..
-# -----------------------------------------------------------------------------
+#
 if [ -e CMakeCache.txt ]
 then
 	echo_eval rm CMakeCache.txt
@@ -101,7 +57,7 @@ cmake \
 	-D cppad_cxx_flags="$cppad_cxx_flags" \
 	-D python_major_version="$python_major_version" \
 	-D swig_cxx_flags="$swig_cxx_flags" \
-	.. | tee $distribution_dir/cmake_cppad_py.log
+	..
 # -----------------------------------------------------------------------------
 echo 'bin/run_cmake.sh: OK'
 exit 0
@@ -121,7 +77,7 @@ exit 0
 #	executables
 # $$
 #
-# $section Get Cppad and Configure Cppad Py for A system$$
+# $section Configure Cppad Py for A system$$
 #
 # $head Syntax$$
 # $codei%bin/run_cmake.sh%$$

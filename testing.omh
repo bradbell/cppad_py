@@ -21,18 +21,30 @@ $spell
 	Cppad
 	Py
 	inplace
+	dir
 $$
 
 $section Running the Cppad Py Tests$$
 
-$children%
-	bin/run_cmake.sh
+$children%bin/get_cppad.sh
+	%bin/run_cmake.sh
 %$$
-$head Configuration$$
-You must first configure Cppad Py for your system using
-$cref run_cmake.sh$$.
 
-$head Build Python Module$$
+$head Configuration$$
+You must edit $cref run_cmake.sh$$
+to configure Cppad Py for your system.
+
+$head get_cppad.sh$$
+The next step is to get a copy of Cppad using the command
+$pre
+	$$$cref%bin/get_cppad.sh%get_cppad.sh%$$
+
+$head run_cmake.sh$$
+The next step is to configure the build using the command
+$pre
+	$$$cref%bin/run_cmake.sh%run_cmake.sh%$$
+
+$head setup.py$$
 The next step is the build the Python cppad_py module using the command
 $codep
 	python3 setup.py build_ext --inplace
@@ -41,42 +53,14 @@ Note that if you change
 $cref/python_major_version/run_cmake.sh/python_major_version/$$ to 2,
 you will have the use the $code python2$$ command above.
 
-$head Available Tests$$
-After $code bin/run_cmake.sh$$, the following command will list
-the available tests:
-$codei%
-	grep 'make check' cmake_cppad_py.log
-%$$
-Note that this command must be executed in the
-$cref/source directory/cppad_py/Source Directory/$$.
-
-$head Binary Directory$$
-You can determine the $icode binary_directory$$ with the command
-$codei%
-	grep CMAKE_BINARY_DIR cmake_cppad_py.log
-%$$
-This, and the previous command, assume your are in the source directory.
-The rest of the commands below assume you are in the
-Cmake binary directory.
-
 $head check$$
-If you change int the Cmake binary directory, the command
+The next step is to check cppad_py on your system using
 $codei%
+	cd %cmake_binary_dir
 	make check
 %$$
-will run all of the available tests.
-
-$head cppad_swig_lib$$
-On some systems, the following dynamically linked library may not be found:
-$codei%
-	%binary_directory%/lib/libcppad_swig_lib.%*%
-%$$
-Depending on your system,
-you may be able to use one of the following commands to fix this:
-$codei%
-	PATH="%binary_directory%/lib:@PATH"
-	LD_LIBRARY_PATH="%binary_directory%/lib:@LD_LIBRARY_PATH"
-%$$
+where $cref/cmake_binary_dir/run_cmake.sh/cmake_binary_dir/$$ is
+as specified by $code bin/run_cmake.sh$$.
 
 $head check_swig_xam$$
 For $icode lang$$ equal
@@ -84,13 +68,13 @@ $code cplusplus$$, $code octave$$, $code perl$$, $code python$$,
 $codei%
 	make check_swig_xam_%lang%
 %$$
-runs a simple test of Swig, for the particular language, on your system.
+only runs a simple test of Swig, for the particular language, on your system.
 
 $head check_lib$$
 For $icode lang$$ equal $code cplusplus$$ and $code python$$,
 $codei%
 	make check_lib_%lang%
 %$$
-runs a the tests for the C++ and for Python on your system.
+only runs a the tests for the C++ or Python on your system.
 
 $end

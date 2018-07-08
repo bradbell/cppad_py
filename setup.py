@@ -7,8 +7,9 @@
 # -----------------------------------------------------------------------------
 # Under Construction
 # The following commands appear to work:
+#	bin/get_cppad.sh
 #	bin/run_cmake.sh
-#	python3 setup.py build_ext --inplace
+#	python3 setup.py build_ext --inplace --debug --undef NDEBUG
 #	cd build
 #	make check
 # -----------------------------------------------------------------------------
@@ -19,12 +20,12 @@ import subprocess
 from distutils.core import setup, Extension
 # -----------------------------------------------------------------------------
 # cppad_include_dir
-fp      = open('bin/run_cmake.sh', 'r')
+fp      = open('bin/get_cppad.sh', 'r')
 string  = fp.read()
 pattern = '\\ncppad_version=\'([0-9]*)\''
 match   = re.search(pattern, string)
 if not match :
-	sys.exit('setup.py: cannot find cppad_version in bin/run_cmake.sh')
+	sys.exit('setup.py: cannot find cppad_version in bin/install_cppad.sh')
 cppad_version     = match.group(1)
 cppad_include_dir = os.getcwd() + '/build/cppad-' + cppad_version + '.git'
 # -----------------------------------------------------------------------------

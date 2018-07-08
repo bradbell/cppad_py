@@ -73,7 +73,6 @@ $href%http://www.swig.org%Swig%$$,
 $href%https://www.python.org/%Python%$$
 
 $head Source Directory$$
-This is a preliminary version of this package.
 Currently, one gets the source code from Github at
 $href%https://github.com/bradbell/cppad_py%cppad_py%$$.
 The corresponding directory is referred to as the source directory.

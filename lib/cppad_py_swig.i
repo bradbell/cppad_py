@@ -53,7 +53,7 @@ $end
 
 %exception {
      try { $action }
-     catch (std::runtime_error e) {
+     catch (std::runtime_error& e) {
             SWIG_exception(SWIG_RuntimeError, const_cast<char*>( e.what() ) );
      }
 }
