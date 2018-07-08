@@ -72,15 +72,15 @@ $href%https://git-scm.com%Git%$$,
 $href%http://www.swig.org%Swig%$$,
 $href%https://www.python.org/%Python%$$
 
-$head Source Directory$$
+$head Top Source Directory$$
 Currently, one gets the source code from Github at
 $href%https://github.com/bradbell/cppad_py%cppad_py%$$.
-The corresponding directory is referred to as the source directory.
+The corresponding directory is referred to as the top source directory.
 For example, if one uses the command
 $codei%
 	git clone https://github.com/bradbell/cppad_py cppad_py.git
 %$$
-the source directory is $code cppad_py.git$$.
+the top source directory is $code cppad_py.git$$.
 
 $head License$$
 This program is distributed under the terms of the

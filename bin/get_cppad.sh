@@ -92,9 +92,9 @@ exit 0
 # $head Syntax$$
 # $codei%bin/get_cppad.sh%$$
 #
-# $head Source Directory$$
+# $head Top Source Directory$$
 # This program must be run from the
-# $cref/source directory/cppad_py/Source Directory/$$.
+# $cref/top source directory/cppad_py/Top Source Directory/$$.
 #
 # $head setup.py$$
 # This program uses some of the settings in $cref setup.py$$.

@@ -10,6 +10,7 @@ $spell
 	Cppad
 	Py
 	std::runtime_error
+	cmake
 $$
 
 $section Cppad Py Changes During 2018$$
@@ -27,7 +28,6 @@ see $href%https://github.com/swig/swig/issues/1259%swig issue 1259%$$.
 $lnext
 Move all settings to $cref setup.py$$ and run $code cmake$$ from there.
 $lend
-
 
 $head 07-07$$
 Change build of Python module to use Python 3,

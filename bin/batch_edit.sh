@@ -11,14 +11,12 @@ delete_list='
 revert_list='
 '
 move_list='
-	lib/cppad_py.i
 '
 move_sed='s|cppad_py.i|cppad_py_swig.i|'
 #
 cat << EOF > junk.sed
-s|cppad_py_wrap.cpp|cppad_py_swig_wrap.cpp|
-s|cppad_py.i|cppad_py_swig.i|g
-s|cppad_py_swig.independent|cppad_py.independent|
+s|Source Directory|Top Source Directory|
+s|source directory|top source directory|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

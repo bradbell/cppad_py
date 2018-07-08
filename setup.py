@@ -150,7 +150,7 @@ sys.exit(0)
 #
 # $head Requirements$$
 # This program must be run from the
-# $cref/source directory/cppad_py/Source Directory/$$
+# $cref/top source directory/cppad_py/Top Source Directory/$$
 # and you must first run $cref get_cppad.sh$$.
 #
 # $head Configure$$
@@ -180,7 +180,7 @@ sys.exit(0)
 #
 # $head cppad_prefix$$
 # This is the directory where $cref get_cppad.sh$$ puts Cppad
-# (relative to the source directory).
+# (relative to the top source directory).
 #
 # $head test_cppad$$
 # This is either $code "true"$$ or $code "false"$$.
