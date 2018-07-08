@@ -7,8 +7,7 @@
 # -----------------------------------------------------------------------------
 import sys
 import os
-# on cygwin, cppad_swig_lib.dll is in ../.. directory
-os.environ['PATH'] = '../..:' + os.environ['PATH']
+sys.path.insert(0, '@CMAKE_SOURCE_DIR@')
 #
 error_count = 0
 def run_test(name) :

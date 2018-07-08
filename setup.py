@@ -7,10 +7,10 @@
 # -----------------------------------------------------------------------------
 # Under Construction
 # The following commands appear to work:
+#	bin/run_cmake.sh
 #	python3 setup.py build_ext --inplace
-#	cd cppad_py
-#	python3
-#	import cppad.py
+#	cd build
+#	make check
 # -----------------------------------------------------------------------------
 import re
 import os
@@ -37,7 +37,7 @@ if not match :
 	sys.exit('setup.py: cannot find cppad_py version in CMakeLists.txt')
 cppad_py_version = match.group(1)
 # -----------------------------------------------------------------------------
-# build/lib/cppad_py_swig_wrap.cpp, build/lib/cppad_py.py
+# build/lib/cppad_py_swig_wrap.cpp, build/lib/cppad_py_swig.py
 #
 # change inpto cppad_py directory so that cppad_py.py is output there
 if not os.path.exists('cppad_py') :
@@ -65,16 +65,16 @@ for name in os.listdir('lib') :
 		cppad_py_extension_sources.append( 'lib/' + name)
 # -----------------------------------------------------------------------------
 # extension_module
-cppad_py_swig.include_dirs     = [ cppad_include_dir ]
-cppad_py_swig.include_dirs.append( os.getcwd() + '/build/lib' )
-cppad_py_swig.include_dirs.append( os.getcwd() + '/include' )
+cppad_py_swig_include_dirs     = [ cppad_include_dir ]
+cppad_py_swig_include_dirs.append( os.getcwd() + '/build/lib' )
+cppad_py_swig_include_dirs.append( os.getcwd() + '/include' )
 #
-print(cppad_py_swig.include_dirs)
-cppad_py_extension_name   = 'cppad_py/_cppad_py'
+print(cppad_py_swig_include_dirs)
+cppad_py_extension_name   = 'cppad_py/_cppad_py_swig'
 extension_module          = Extension(
 	cppad_py_extension_name,
 	cppad_py_extension_sources,
-	include_dirs = cppad_py_swig.include_dirs
+	include_dirs = cppad_py_swig_include_dirs
 )
 # -----------------------------------------------------------------------------
 # setup
