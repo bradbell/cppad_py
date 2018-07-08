@@ -33,10 +33,6 @@ then
 	exit 1
 fi
 # -----------------------------------------------------------------------------
-# cmake_binary_dir
-cmd=`grep '^cmake_binary_dir=' bin/run_cmake.sh`
-eval $cmd
-# -----------------------------------------------------------------------------
 if [ -e $logfile ]
 then
 	echo "rm check_all.log"
@@ -52,14 +48,13 @@ do
 done
 #
 echo_eval_log check_copyright.sh
+echo_eval_log run_omhelp.sh doc
 echo_eval_log bin/get_cppad.sh
-echo_eval_log bin/run_cmake.sh
 echo_eval_log python3 setup.py build_ext --inplace
-echo_eval_log cd $cmake_binary_dir
+echo_eval_log cd build
 echo_eval_log make clean
 echo_eval_log make check
 echo_eval_log cd ..
-echo_eval_log run_omhelp.sh doc
 #
 if grep -i 'warning' $logfile
 then

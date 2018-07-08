@@ -24,6 +24,8 @@ $lnext
 Suppress the following warning when running $cref setup.py$$:
 $code clearing an object of non-trivial type class 'cppad_py::a_double'$$;
 see $href%https://github.com/swig/swig/issues/1259%swig issue 1259%$$.
+$lnext
+Move all settings to $cref setup.py$$ and run $code cmake$$ from there.
 $lend
 
 

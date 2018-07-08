@@ -23,23 +23,30 @@ remote_repo='https://github.com/coin-or/CppAD.git'
 cppad_version='20180703'
 hash_code='643c1a5d43f3d6b8402a5b93773bfb768b0a3fae'
 # -----------------------------------------------------------------------------
-# cmake_binary_dir
-cmd=`grep '^cmake_binary_dir=' bin/run_cmake.sh`
-eval $cmd
-# -----------------------------------------------------------------------------
-# cmake_verbose_makefile
-cmd=`grep '^cmake_verbose_makefile=' bin/run_cmake.sh`
-eval $cmd
-# -----------------------------------------------------------------------------
+# settings in setup.py
+#
+# verbose_makefile
+verbose_makefile=`grep '^verbose_makefile *=' setup.py | \
+	sed -e 's|.*= *||g' -e 's|"||g' -e "s|'||g"`
+#
+# cppad_cxx_flags
+cppad_cxx_flags=`grep '^cppad_cxx_flags *=' setup.py | \
+	sed -e 's|.*= *||g' -e 's|"||g' -e "s|'||g"`
+#
+# cppad_prefix
+cppad_prefix=`grep '^cppad_prefix *=' setup.py | \
+	sed -e 's|.*= *||g' -e 's|"||g' -e "s|'||g"`
+#
 # test_cppad
-cmd=`grep '^test_cppad=' bin/run_cmake.sh`
-eval $cmd
+test_cppad=`grep '^test_cppad *=' setup.py | \
+	sed -e 's|.*= *||g' -e 's|"||g' -e "s|'||g"`
 # -----------------------------------------------------------------------------
-if [ ! -e "$cmake_binary_dir" ]
+top_source_directory=`pwd`
+if [ ! -e 'build' ]
 then
-	echo_eval mkdir $cmake_binary_dir
+	echo_eval mkdir build
 fi
-echo_eval cd $cmake_binary_dir
+echo_eval cd build
 cmake_binary_path=`pwd`
 #
 if [ -e "cppad-$cppad_version.git" ]
@@ -60,12 +67,12 @@ fi
 #
 echo_eval mkdir build
 echo_eval cd build
-cmake -D CMAKE_VERBOSE_MAKEFILE="$cmake_verbose_makefile" \
-	-D cppad_prefix="$cmake_binary_path/prefix"  \
+cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
+	-D cppad_prefix="$top_source_directory/$cppad_prefix"  \
 	-D cppad_cxx_flags="$cppad_cxx_flags" \
 	..
 #
-if [ "$test_cppad" == 'yes' ]
+if [ "$test_cppad" == 'true' ]
 then
 	make check
 fi
@@ -76,7 +83,7 @@ exit 0
 # -----------------------------------------------------------------------------
 # $begin get_cppad.sh$$ $newlinech #$$
 # $spell
-#	Cppad
+#	cppad_py
 #	cmake
 # $$
 #
@@ -89,8 +96,8 @@ exit 0
 # This program must be run from the
 # $cref/source directory/cppad_py/Source Directory/$$.
 #
-# $head run_cmake.sh$$
-# This program uses some of the settings in $cref run_cmake.sh$$.
+# $head setup.py$$
+# This program uses some of the settings in $cref setup.py$$.
 #
 # $end
 # -----------------------------------------------------------------------------

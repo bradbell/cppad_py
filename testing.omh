@@ -26,13 +26,12 @@ $$
 
 $section Running the Cppad Py Tests$$
 
-$children%bin/get_cppad.sh
-	%bin/run_cmake.sh
-	%setup.py
+$children%setup.py
+	%bin/get_cppad.sh
 %$$
 
 $head Configuration$$
-You must edit $cref run_cmake.sh$$
+You must edit $cref setup.py$$
 to configure Cppad Py for your system.
 
 $head get_cppad.sh$$
@@ -40,28 +39,21 @@ The next step is to get a copy of Cppad using the command
 $pre
 	$$$cref%bin/get_cppad.sh%get_cppad.sh%$$
 
-$head run_cmake.sh$$
-The next step is to configure the build using the command
-$pre
-	$$$cref%bin/run_cmake.sh%run_cmake.sh%$$
-
 $head setup.py$$
 The next step is the build the Python cppad_py module using
 one of the command:
 $codei%
 	%python% setup.py build_ext --inplace
 %$$
-where $icode python$$ is the Python executable for the
-$cref/major version/run_cmake.sh/python_major_version/$$ you are using.
+where $icode python$$ is the Python executable you will be
+using with Cppad Py.
 
 $head check$$
 The next step is to check cppad_py on your system using
 $codei%
-	cd %cmake_binary_dir
+	cd build
 	make check
 %$$
-where $cref/cmake_binary_dir/run_cmake.sh/cmake_binary_dir/$$ is
-as specified by $code bin/run_cmake.sh$$.
 
 $head check_swig_xam$$
 For $icode lang$$ equal

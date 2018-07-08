@@ -62,7 +62,7 @@ effectively evaluate the function in C++ instead of Python.
 $head Supporting Packages$$
 The
 $href%https://www.coin-or.org/CppAD/%Cppad%$$ package is automatically
-installed by $cref run_cmake.sh$$.
+installed by $cref get_cppad.sh$$.
 The following packages are not automatically installed:
 
 $subhead Required$$
