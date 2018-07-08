@@ -20,6 +20,7 @@ $spell
 	perl
 	Cppad
 	Py
+	inplace
 $$
 
 $section Running the Cppad Py Tests$$
@@ -30,6 +31,15 @@ $children%
 $head Configuration$$
 You must first configure Cppad Py for your system using
 $cref run_cmake.sh$$.
+
+$head Build Python Module$$
+The next step is the build the Python cppad_py module using the command
+$codep
+	python3 setup.py build_ext --inplace
+$$
+Note that if you change
+$cref/python_major_version/run_cmake.sh/python_major_version/$$ to 2,
+you will have the use the $code python2$$ command above.
 
 $head Available Tests$$
 After $code bin/run_cmake.sh$$, the following command will list
