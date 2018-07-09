@@ -24,7 +24,7 @@ from distutils.core import setup, Extension
 def quote_str(s) :
 	return "'" + s + "'"
 # -----------------------------------------------------------------------------
-# create cppad_py
+# copy lib/python -> cppad_py
 if os.path.exists('cppad_py') :
 	shutil.rmtree('cppad_py')
 shutil.copytree('lib/python', 'cppad_py');

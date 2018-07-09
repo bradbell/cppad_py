@@ -32,6 +32,11 @@ then
 	echo "bin/check_all.sh: must be executed from its parent directory"
 	exit 1
 fi
+if [ ! -e 'build/prefix/include/cppad/cppad.hpp' ]
+then
+	echo 'check_all.sh: must first run bin/get_cppad.sh'
+	exit 1
+fi
 # -----------------------------------------------------------------------------
 if [ -e $logfile ]
 then
@@ -49,8 +54,7 @@ done
 #
 echo_eval_log check_copyright.sh
 echo_eval_log run_omhelp.sh doc
-echo_eval_log bin/get_cppad.sh
-echo_eval_log python3 setup.py build_ext --inplace
+echo_eval_log python3 setup.py build_ext --inplace --quiet
 echo_eval_log cd build
 echo_eval_log make clean
 echo_eval_log make check
