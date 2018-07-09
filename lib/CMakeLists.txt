@@ -27,10 +27,10 @@ include (GenerateExportHeader)
 #
 # cppad_swig_lib (library used by sub-directories below)
 ADD_LIBRARY(cppad_swig_lib SHARED
-	a_double.cpp
-	a_fun.cpp
-	sparse.cpp
-	error.cpp
+	cplusplus/a_double.cpp
+	cplusplus/a_fun.cpp
+	cplusplus/sparse.cpp
+	cplusplus/error.cpp
 )
 # The file cppad_swig_lib_export.h, in the current binary directory, will
 # define the symbol CPPAD_SWIG_LIB_PUBLIC. This symbol should be used to

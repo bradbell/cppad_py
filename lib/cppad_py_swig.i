@@ -79,7 +79,7 @@ $$
 
 $section Cppad Py AD Scalars$$
 
-$childtable%lib/a_double.cpp%$$
+$childtable%lib/cplusplus/a_double.cpp%$$
 
 $end
 -------------------------------------------------------------------------------
@@ -103,7 +103,7 @@ $$
 
 $section Cppad Py AD Functions$$
 
-$childtable%lib/a_fun.cpp%$$
+$childtable%lib/cplusplus/a_fun.cpp%$$
 
 $end
 -------------------------------------------------------------------------------
@@ -115,7 +115,7 @@ $$
 
 $section Cppad Py Sparse Calculation$$
 
-$childtable%lib/sparse.cpp%$$
+$childtable%lib/cplusplus/sparse.cpp%$$
 
 $end
 -------------------------------------------------------------------------------
@@ -128,7 +128,7 @@ $$
 
 $section Cppad Py Error Messaging$$
 
-$childtable%lib/error.cpp%$$
+$childtable%lib/cplusplus/error.cpp%$$
 
 $end
 -------------------------------------------------------------------------------
