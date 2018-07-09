@@ -100,7 +100,8 @@ os.chdir('..')
 # extension_sources
 cppad_py_extension_sources = [ 'cppad_py/cppad_py_swig_wrap.cpp' ]
 for name in os.listdir('lib/cplusplus') :
-	cppad_py_extension_sources.append( 'lib/cplusplus/' + name)
+	if name.endswith('.cpp') :
+		cppad_py_extension_sources.append( 'lib/cplusplus/' + name)
 # -----------------------------------------------------------------------------
 # extension_module
 cppad_py_swig_include_dirs     = [ cppad_include_dir ]

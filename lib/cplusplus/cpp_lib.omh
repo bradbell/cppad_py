@@ -5,17 +5,10 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin library$$
-$spell
-	Cppad
-	Py
-$$
+$begin cpp_lib$$
 
-$section The Cppad Py Libraries$$
+$section The C++ Library$$
 
-$childtable%
-	lib/cplusplus/cpp_lib.omh
-%$$
-
+$childtable%lib/cplusplus/cplusplus.omh%$$
 
 $end
