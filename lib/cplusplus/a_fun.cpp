@@ -13,7 +13,7 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
 /*
 -------------------------------------------------------------------------------
-$begin independent$$
+$begin cpp_independent$$
 $spell
 	vec
 	Cppad
@@ -26,7 +26,7 @@ $$
 $section Declare Independent Variables and Start Recording$$
 
 $head Syntax$$
-$icode%ax% = cppad_py.independent(%x%)%$$
+$icode%ax% = cppad_py::independent(%x%)%$$
 
 $head x$$
 This argument has prototype
@@ -50,16 +50,15 @@ $codei%
 	%ax%[%i%].value() == %x%[%i%]
 %$$
 
-
 $head Purpose$$
-This starts a recording of the $cref a_double$$ operation.
+This starts a recording of the $cref a_double$$ operations.
 This recording is terminated, and the information is stored,
 by calling the $cref/a_fun constructor/a_fun_ctor/$$.
 It is terminated, and the information is lost,
 by calling $cref abort_recording$$.
 
 $head Example$$
-All of the $code a_fun$$ examples use this function.
+All of the c++ $code a_fun$$ examples use this function.
 
 $end
 */
@@ -93,7 +92,7 @@ $codei%cppad_py.abort_recording(%x%)%$$
 
 $head Purpose$$
 This aborts the current recording (if it exists)
-started by the most recent call to $cref independent$$.
+started by the most recent call to $cref/independent/cpp_independent/$$.
 
 $children%
 	lib/example/cplusplus/a_fun_abort_xam.cpp%
@@ -129,7 +128,7 @@ $codei%
 	const vec_a_double& %ax%
 %$$
 It must be the same as
-$cref/ax/independent/ax/$$ in the previous call to $code independent$$.
+$cref/ax/cpp_independent/ax/$$ in the previous call to $code independent$$.
 To be specific, it must be the original independent variables.
 We use the notation $icode%n% = %ax%.size()%$$
 to denote the number of independent variables.

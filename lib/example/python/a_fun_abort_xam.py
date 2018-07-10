@@ -11,6 +11,7 @@
 def a_fun_abort_xam() :
 	#
 	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable
@@ -19,7 +20,7 @@ def a_fun_abort_xam() :
 	n_ind = 2
 	#
 	# create ax
-	x = cppad_py.vec_double(n_ind)
+	x = numpy.zeros(n_ind, dtype=float)
 	for i in range( n_ind  ) :
 		x[i] = i + 1.0
 	#

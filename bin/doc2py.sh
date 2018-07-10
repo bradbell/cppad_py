@@ -51,6 +51,8 @@ cat << EOF > lib/python/$section.py
 # -----------------------------------------------------------------------------
 EOF
 #
+git checkout lib/cplusplus/$file
+#
 sed -n -e "/\$begin $section/,/\$end/p" lib/cplusplus/$file  > doc2bin.$$
 sed doc2bin.$$ \
 	-e 's|^\([^\t]\)| \1|' \
@@ -59,6 +61,11 @@ sed doc2bin.$$ \
 	-e 's|$begin.*\$\$|& $newlinech #$$|' \
 	>> lib/python/$section.py
 rm doc2bin.$$
+#
+sed -i lib/cplusplus/$file \
+	-e "/\$begin $section/,/\$end/s|cppad_py[.]|cppad_py::|" \
+	-e "s|\$begin $section|\$begin cpp_$section|"
+
 # -----------------------------------------------------------------------------
 echo 'bin/doc2py.sh: OK'
 exit 0

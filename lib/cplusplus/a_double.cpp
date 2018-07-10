@@ -211,7 +211,8 @@ $codei%
 It is the value of $icode ad$$, as a constant function.
 In addition it must represent a constant functions; i.e.,
 $icode ad$$ not depend on the
-$cref independent$$ variables when $icode%ad%.value()%$$ is called.
+$cref/independent/cpp_independent/$$
+variables when $icode%ad%.value()%$$ is called.
 If it does depend on the independent variables,
 you will have to wait until the current recording is terminated
 before you can access its value.
@@ -222,7 +223,7 @@ $codei%
 	bool %p%
 %$$
 It is true if $icode ad$$ represent a constant functions; i.e.,
-$icode ad$$ not depend on the $cref independent$$ variables.
+$icode ad$$ not depend on the independent variables.
 
 $head variable$$
 The result $icode v$$ has prototype
@@ -230,7 +231,7 @@ $codei%
 	bool %v%
 %$$
 It is true if $icode ad$$ is not a constant function; i.e.,
-$icode ad$$ depends on the $cref independent$$ variables.
+$icode ad$$ depends on the independent variables.
 
 $head near_equal$$
 The argument $icode ae$$,
