@@ -57,10 +57,14 @@ def fun(x) :
 	# call independent
 	av =  cppad_py.cppad_py_swig.independent(v)
 	#
+	# abort this recording
+	cppad_py.abort_recording()
+	#
 	ax = numpy.zeros(n, dtype = cppad_py.a_double)
 	for i in range(n) :
 		ax[i] = av[i]
 	#
+	print( x[0], ax[0].value() )
 	return ax
 #
 #
@@ -76,28 +80,8 @@ for i in range( n_ind  ) :
 #
 ax = fun(x)
 #
-# preform some a_double operations
-ax0 = ax[0]
-ax1 = ax[1]
-ay = ax0 + ax1
-#
-# check that ay is a variable; its value depends on the value of ax
-ok = ok and ay.variable()
-#
-# abort this recording
-cppad_py.abort_recording()
-#
-# check that ay is now a parameter, no longer a variable.
-ok = ok and ay.parameter()
-#
-# since it is a parameter, we can retrieve its value
-y = ay.value()
-#
-# its value should be x0 + x1
-ok = ok and y  == x[0] + x[1]
-#
-# an abort when not recording has no effect
-cppad_py.abort_recording()
+ok = ok and ax[0].value() == x[0]
+print( x[0], ax[0].value() )
 #
 print('ok = ', ok )
 EOF
