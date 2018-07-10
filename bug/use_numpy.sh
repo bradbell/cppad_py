@@ -42,33 +42,29 @@ import numpy
 sys.path.insert(0, '$cmake_source_dir')
 import cppad_py
 def fun(x) :
-	n = x.size
-	av = cppad_py.vec_a_double(n)
-	for i in range(n) :
-		av[i] = cppad_py.a_double( x[i] )
+	n = 1
+	av    = cppad_py.vec_a_double(n)
+	av[0] = cppad_py.a_double( x[0] )
 	#
 	ax = numpy.zeros(n, dtype = cppad_py.a_double)
-	for i in range(n) :
-		ax[i] = av[i]
+	ax[0] = av[0]
 	#
-	print( x[0], ax[0].value() )
+	print( 'fun:  x[0] = ',  x[0], ', ax[0].value() = ', ax[0].value() )
 	return ax
 #
 #
 # initialize return variable
 ok = True
 # ---------------------------------------------------------------------
-n_ind = 2
+n = 1
 #
-x = numpy.zeros(n_ind, dtype=float)
-for i in range( n_ind  ) :
-	x[i] = i + 1.0
+x    = cppad_py.vec_double(n)
+x[0] = 1.0
 #
 ax = fun(x)
+print( 'main: x[0] = ',  x[0], ', ax[0].value() = ', ax[0].value() )
 #
 ok = ok and ax[0].value() == x[0]
-print( x[0], ax[0].value() )
-#
 print('ok = ', ok )
 EOF
 echo_eval python$python_major_version use_numpy.py
