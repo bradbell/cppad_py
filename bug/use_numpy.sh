@@ -22,8 +22,9 @@ cmake_source_dir=`pwd`
 if [ "$1" != '2' ] && [ "$1" != '3' ]
 then
 	echo 'usage: bug/use_numpy.sh python_major_version'
-	echo 'python_major_version is 2 or 3'
+	echo 'where python_major_version is 2 or 3.'
 	echo 'This program returns ok = False for both versions of python.'
+	echo 'Must run setup.py with same version of python before this script.'
 	exit 1
 fi
 python_major_version="$1"
@@ -41,24 +42,10 @@ import numpy
 sys.path.insert(0, '$cmake_source_dir')
 import cppad_py
 def fun(x) :
-	"""
-	ax = independent(x)
-	creates the indepedent numpy vector ax, with value equal numpy vector x,
-	and starts recording a_double operations.
-	"""
-	# convert x -> v
-	if( len( x.shape ) != 1 ) :
-		msg = 'independent(x): numpy array x is not a vector'
-		raise NotImplementedError(msg)
 	n = x.size
-	v = cppad_py.vec_double(n)
+	av = cppad_py.vec_a_double(n)
 	for i in range(n) :
-		v[i] = x[i]
-	# call independent
-	av =  cppad_py.cppad_py_swig.independent(v)
-	#
-	# abort this recording
-	cppad_py.abort_recording()
+		av[i] = cppad_py.a_double( x[i] )
 	#
 	ax = numpy.zeros(n, dtype = cppad_py.a_double)
 	for i in range(n) :
@@ -73,7 +60,6 @@ ok = True
 # ---------------------------------------------------------------------
 n_ind = 2
 #
-# create ax
 x = numpy.zeros(n_ind, dtype=float)
 for i in range( n_ind  ) :
 	x[i] = i + 1.0
