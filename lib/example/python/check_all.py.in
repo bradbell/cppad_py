@@ -9,7 +9,6 @@ import sys
 import os
 sys.path.insert(0, '@CMAKE_SOURCE_DIR@')
 #
-error_count = 0
 def run_test(name) :
 	namespace = {} # not needed in Python 2
 	exec( 'import ' + name,                     namespace )
@@ -19,7 +18,7 @@ def run_test(name) :
 		print('python: ' + name + ': OK')
 	else :
 		print('python: ' + name + ': Error')
-		error_count = error_count + 1
+	return ok
 #
 fun_list = [
 	'a_double_cond_assign_xam',
@@ -46,8 +45,11 @@ fun_list = [
 	'sparse_hes_pattern_xam',
 	'error_message_xam'
 ]
+error_count = 0
 for name in fun_list :
-	run_test(name)
+	ok = run_test(name)
+	if not ok :
+		error_count += 1
 #
 if error_count > 0 :
 	print('python: check_all: error_count = ', error_count)
