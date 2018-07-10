@@ -41,6 +41,8 @@ cppad_prefix_absolute = os.getcwd() + '/' + cppad_prefix
 if not os.path.exists('build') :
 	os.mkdir('build')
 os.chdir('build')
+if os.path.exists('CMakeCache.txt') :
+	os.remove('CMakeCache.txt')
 command = [
 	'cmake',
 	'-D', 'CMAKE_VERBOSE_MAKEFILE=' + quote_str(verbose_makefile),

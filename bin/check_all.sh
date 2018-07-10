@@ -52,11 +52,6 @@ then
 	echo "rm check_all.log"
 	rm $logfile
 fi
-if [ -e 'build/CMakeCache.txt' ]
-then
-	echo "rm build/CMakeCache.txt"
-	rm build/CMakeCache.txt
-fi
 # -----------------------------------------------------------------------------
 # run checks
 list=`ls bin/check_*`

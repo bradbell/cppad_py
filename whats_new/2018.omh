@@ -12,9 +12,15 @@ $spell
 	std::runtime_error
 	cmake
 	init
+	numpy
 $$
 
 $section Cppad Py Changes During 2018$$
+
+$head 07-10$$
+Add the file $code bug/use_numpy.sh$$ which demonstrates a bug in the
+current plan to have the python user API use $code numpy.array$$
+in place of the c++ $cref vector$$ type.
 
 $head 07-08$$
 $list number$$
