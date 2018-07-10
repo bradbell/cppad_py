@@ -41,15 +41,19 @@ import os
 import numpy
 sys.path.insert(0, '$cmake_source_dir')
 import cppad_py
-def fun(x) :
+def fun() :
 	n = 1
 	av    = cppad_py.vec_a_double(n)
-	av[0] = cppad_py.a_double( x[0] )
+	av[0] = cppad_py.a_double( 1.0 )
 	#
+	# Program passes test if first and second assignments to ax switch places.
+	ax = cppad_py.vec_a_double(n)
 	ax = numpy.zeros(n, dtype = cppad_py.a_double)
+	#
+	# The following does not work
 	ax[0] = av[0]
 	#
-	print( 'fun:  x[0] = ',  x[0], ', ax[0].value() = ', ax[0].value() )
+	print( 'fun:  ax[0].value() = ', ax[0].value() )
 	return ax
 #
 #
@@ -58,13 +62,10 @@ ok = True
 # ---------------------------------------------------------------------
 n = 1
 #
-x    = cppad_py.vec_double(n)
-x[0] = 1.0
+ax = fun()
+print( 'main: ax[0].value() = ', ax[0].value() )
 #
-ax = fun(x)
-print( 'main: x[0] = ',  x[0], ', ax[0].value() = ', ax[0].value() )
-#
-ok = ok and ax[0].value() == x[0]
+ok = ok and ax[0].value() == 1.0
 print('ok = ', ok )
 EOF
 echo_eval python$python_major_version use_numpy.py
