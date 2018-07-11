@@ -55,7 +55,7 @@ This starts a recording of the $cref a_double$$ operations.
 This recording is terminated, and the information is stored,
 by calling the $cref/a_fun constructor/a_fun_ctor/$$.
 It is terminated, and the information is lost,
-by calling $cref abort_recording$$.
+by calling $cref/abort_recording/cpp_abort_recording/$$.
 
 $head Example$$
 All of the c++ $code a_fun$$ examples use this function.
@@ -76,7 +76,7 @@ std::vector<a_double> independent(const std::vector<double>& x)
 }
 /*
 -------------------------------------------------------------------------------
-$begin abort_recording$$
+$begin cpp_abort_recording$$
 $spell
 	vec
 	af
@@ -88,19 +88,17 @@ $$
 $section Abort Recording$$
 
 $head Syntax$$
-$codei%cppad_py.abort_recording(%x%)%$$
+$codei%cppad_py::abort_recording()%$$
 
 $head Purpose$$
 This aborts the current recording (if it exists)
 started by the most recent call to $cref/independent/cpp_independent/$$.
 
 $children%
-	lib/example/cplusplus/a_fun_abort_xam.cpp%
-	lib/example/python/a_fun_abort_xam.py
+	lib/example/cplusplus/a_fun_abort_xam.cpp
 %$$
 $head Example$$
-$cref/C++/a_fun_abort_xam.cpp/$$,
-$cref/Python/a_fun_abort_xam.py/$$.
+$cref/C++/a_fun_abort_xam.cpp/$$.
 
 $end
 */

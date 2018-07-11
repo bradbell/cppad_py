@@ -9,6 +9,7 @@ $begin py_lib$$
 
 $section The Python Library$$
 
-$childtable%lib/python/independent.py%$$
+$childtable%lib/python/independent.py
+	%lib/python/abort_recording.py%$$
 
 $end

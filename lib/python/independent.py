@@ -27,7 +27,7 @@
 # to denote the number of independent variables.
 #
 # $head ax$$
-# The result is a numpy vector will elements that
+# The result is a numpy vector with elements that
 # correspond to c++ $code a_double$$.
 # This is the vector of independent variables.
 # It has size $icode n$$ and for
@@ -41,7 +41,7 @@
 # This recording is terminated, and the information is stored,
 # by calling the $cref/a_fun constructor/a_fun_ctor/$$.
 # It is terminated, and the information is lost,
-# by calling $cref abort_recording$$.
+# by calling $cref/abort_recording/py_abort_recording/$$.
 #
 # $head Example$$
 # All of the python $code a_fun$$ examples use this function.
