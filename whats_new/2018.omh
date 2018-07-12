@@ -13,6 +13,8 @@ $spell
 	cmake
 	init
 	numpy
+	ind
+	dep
 $$
 
 $section Cppad Py Changes During 2018$$
@@ -32,6 +34,9 @@ $lnext
 setup.py was using the git repository version of Cppad instead of the
 one installed in $code build/prefix$$ by $cref get_cppad.sh$$.
 This has been fixed.
+$lnext
+Change $code size_ind$$ to $cref/size_domain/a_fun_property/size_domain/$$
+and $code size_dep$$ to $cref/size_range/a_fun_property/size_range/$$.
 $lend
 
 $head 07-10$$

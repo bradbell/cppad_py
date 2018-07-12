@@ -59,8 +59,8 @@ class CPPAD_SWIG_LIB_PUBLIC a_fun
 	// optimize
 	void optimize(void);
 	// a_fun properties
-	int size_ind(void) const;
-	int size_dep(void) const;
+	int size_domain(void) const;
+	int size_range(void) const;
 	int size_var() const;
 	int size_op() const;
 	// ------------------------------------------------------------------------

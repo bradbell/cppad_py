@@ -15,8 +15,8 @@ move_list='
 move_sed='s|cppad_py.i|cppad_py_swig.i|'
 #
 cat << EOF > junk.sed
-s|Source Directory|Top Source Directory|
-s|source directory|top source directory|
+s|size_ind|size_domain|g
+s|size_dep|size_range|g
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

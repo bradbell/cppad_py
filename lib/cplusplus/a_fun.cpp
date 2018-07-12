@@ -612,9 +612,9 @@ $spell
 $$
 
 $head Syntax$$
-$icode%n% = %af%.size_ind()
+$icode%n% = %af%.size_domain()
 %$$
-$icode%m% = %af%.size_dep()
+$icode%m% = %af%.size_range()
 %$$
 $icode%v% = %af%.size_var()
 %$$
@@ -627,7 +627,7 @@ $codei%
 	const a_fun %af%
 %$$
 
-$head size_ind$$
+$head size_domain$$
 The return value has prototype
 $codei%
 	int %n%
@@ -636,7 +636,7 @@ and is the size of the vector
 $cref/ax/cpp_a_fun_ctor/ax/$$ in the function constructor; i.e.,
 the number of independent variables.
 
-$head size_dep$$
+$head size_range$$
 The return value has prototype
 $codei%
 	int %m%
@@ -673,11 +673,11 @@ $cref/Python/a_fun_property_xam.py/$$.
 
 $end
 */
-// size_ind
-int a_fun::size_ind(void) const
+// size_domain
+int a_fun::size_domain(void) const
 {	return ptr_->Domain(); }
-// size_dep
-int a_fun::size_dep(void) const
+// size_range
+int a_fun::size_range(void) const
 {	return ptr_->Range(); }
 // size_var
 int a_fun::size_var(void) const

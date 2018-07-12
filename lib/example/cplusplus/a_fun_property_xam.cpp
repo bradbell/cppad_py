@@ -51,8 +51,8 @@ bool a_fun_property_xam(void) {
 	n_op = n_op + 1; // speical operator at end
 	//
 	// check af properties
-	ok = ok && af.size_ind() == n_ind;
-	ok = ok && af.size_dep() == n_dep;
+	ok = ok && af.size_domain() == n_ind;
+	ok = ok && af.size_range() == n_dep;
 	ok = ok && af.size_var() == n_var;
 	ok = ok && af.size_op() == n_op;
 	//

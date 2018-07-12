@@ -48,13 +48,13 @@ class a_fun :
 	def optimize(self) :
 		return self.af.optimize()
 	#
-	# size_ind
-	def size_ind(self) :
-		return self.af.size_ind()
+	# size_domain
+	def size_domain(self) :
+		return self.af.size_domain()
 	#
-	# size_dep
-	def size_dep(self) :
-		return self.af.size_dep()
+	# size_range
+	def size_range(self) :
+		return self.af.size_range()
 	#
 	# size_var
 	def size_var(self) :
