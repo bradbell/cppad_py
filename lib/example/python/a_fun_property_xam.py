@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def a_fun_property_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable
@@ -19,28 +19,29 @@ def a_fun_property_xam() :
 	n_ind = 1 # number of independent variables
 	n_dep = 2 # number of dependent variables
 	n_var = 1 # phantom variable at address 0
-	n_op = 1  # special operator at beginning
+	n_op  = 1 # special operator at beginning
 	#
 	# dimension some vectors
-	x = cppad_py.vec_double(n_ind)
-	ay = cppad_py.vec_a_double(n_dep)
+	# x  = cppad_py.vec_double(n_ind)
+	x  = numpy.zeros(n_ind, dtype=float)
+	ay = numpy.zeros(n_dep, dtype=cppad_py.a_double)
 	#
 	# independent variables
-	x[0] = 1.0
-	ax = cppad_py.independent(x)
+	x[0]  = 1.0
+	ax    = cppad_py.independent(x)
 	n_var = n_var + n_ind # one for each indpendent
-	n_op = n_op + n_ind
+	n_op  = n_op + n_ind
 	#
 	# first dependent variable
 	ay[0] = ax[0] + ax[0]
 	n_var = n_var + 1 # one variable and operator
-	n_op = n_op + 1
+	n_op  = n_op + 1
 	#
 	# second dependent variable
-	ax0 = ax[0]
+	ax0   = ax[0]
 	ay[1] = ax0.sin()
 	n_var = n_var + 2 # two varialbes, one operator
-	n_op = n_op + 1
+	n_op  = n_op + 1
 	#
 	# define f(x) = y
 	af = cppad_py.a_fun(ax, ay)

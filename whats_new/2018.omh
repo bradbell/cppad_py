@@ -17,10 +17,14 @@ $$
 
 $section Cppad Py Changes During 2018$$
 
+$head 07-12$$
+Continue conversion of python library to using $code numpy.array$$; see
+$cref py_a_fun_ctor$$.
+
 $head 07-10$$
-Start conversion python library from using
+Start conversion of python library from using
 $code vector$$ to using $code numpy.array$$; see
-$cref py_lib$$ for functions that have been converted so far.
+$cref py_independent$$.
 
 $head 07-08$$
 $list number$$

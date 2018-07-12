@@ -7,6 +7,7 @@
 # -----------------------------------------------------------------------------
 import sys
 import os
+# put top source directory at beginning of python search path
 sys.path.insert(0, '@CMAKE_SOURCE_DIR@')
 #
 def run_test(name) :

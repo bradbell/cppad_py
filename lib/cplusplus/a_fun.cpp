@@ -53,7 +53,7 @@ $codei%
 $head Purpose$$
 This starts a recording of the $cref a_double$$ operations.
 This recording is terminated, and the information is stored,
-by calling the $cref/a_fun constructor/a_fun_ctor/$$.
+by calling the $cref/a_fun constructor/cpp_a_fun_ctor/$$.
 It is terminated, and the information is lost,
 by calling $cref/abort_recording/cpp_abort_recording/$$.
 
@@ -107,7 +107,7 @@ void abort_recording(void)
 }
 /*
 -------------------------------------------------------------------------------
-$begin a_fun_ctor$$
+$begin cpp_a_fun_ctor$$
 $spell
 	vec
 	af
@@ -118,16 +118,17 @@ $$
 $section Stop Current Recording and Store in an a_fun Object$$
 
 $head Syntax$$
-$icode%af% = cppad_py.a_fun(%ax%, %ay%)%$$
+$icode%af% = cppad_py::a_fun(%ax%, %ay%)%$$
 
 $head ax$$
 This argument has prototype
 $codei%
 	const vec_a_double& %ax%
 %$$
-It must be the same as
-$cref/ax/cpp_independent/ax/$$ in the previous call to $code independent$$.
-To be specific, it must be the original independent variables.
+and must be the same as
+$cref/ax/cpp_independent/ax/$$
+returned by the previous call to $code independent$$; i.e.,
+it must be the independent variable vector.
 We use the notation $icode%n% = %ax%.size()%$$
 to denote the number of independent variables.
 
@@ -137,13 +138,13 @@ $codei%
 	const vec_a_double& %ax%
 %$$
 It specifies the dependent variables.
-We use the notation $icode%m% = %ax%.size()%$$
+We use the notation $icode%m% = %ay%.size()%$$
 to denote the number of dependent variables.
 
 $head af$$
 The result has prototype
 $codei%
-	a_fun %af%
+	cppad_py::a_fun %af%
 %$$
 It has a representation for the $cref a_double$$ operations
 that mapped the independent variables to the dependent variables.
@@ -213,8 +214,8 @@ The other Taylor coefficients in $icode af$$ are unspecified.
 $head f(x)$$
 We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
 for the function corresponding to $icode af$$.
-Note that $icode n$$ is the size of $cref/ax/a_fun_ctor/ax/$$
-and $icode m$$ is the size of $cref/ay/a_fun_ctor/ay/$$
+Note that $icode n$$ is the size of $cref/ax/cpp_a_fun_ctor/ax/$$
+and $icode m$$ is the size of $cref/ay/cpp_a_fun_ctor/ay/$$
 in to the constructor for $icode af$$.
 
 $head x$$
@@ -285,8 +286,8 @@ The other Taylor coefficients in $icode af$$ are unspecified.
 $head f(x)$$
 We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
 for the function corresponding to $icode af$$.
-Note that $icode n$$ is the size of $cref/ax/a_fun_ctor/ax/$$
-and $icode m$$ is the size of $cref/ay/a_fun_ctor/ay/$$
+Note that $icode n$$ is the size of $cref/ax/cpp_a_fun_ctor/ax/$$
+and $icode m$$ is the size of $cref/ay/cpp_a_fun_ctor/ay/$$
 in to the constructor for $icode af$$.
 
 $head g(x)$$
@@ -386,8 +387,8 @@ $cref/p/a_fun_forward/p/$$ below.
 $head f(x)$$
 We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
 for the function corresponding to $icode af$$.
-Note that $icode n$$ is the size of $cref/ax/a_fun_ctor/ax/$$
-and $icode m$$ is the size of $cref/ay/a_fun_ctor/ay/$$
+Note that $icode n$$ is the size of $cref/ax/cpp_a_fun_ctor/ax/$$
+and $icode m$$ is the size of $cref/ay/cpp_a_fun_ctor/ay/$$
 in to the constructor for $icode af$$.
 
 $head X(t)$$
@@ -473,8 +474,8 @@ $head Notation$$
 $subhead f(x)$$
 We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
 for the function corresponding to $icode af$$.
-Note that $icode n$$ is the size of $cref/ax/a_fun_ctor/ax/$$
-and $icode m$$ is the size of $cref/ay/a_fun_ctor/ay/$$
+Note that $icode n$$ is the size of $cref/ax/cpp_a_fun_ctor/ax/$$
+and $icode m$$ is the size of $cref/ay/cpp_a_fun_ctor/ay/$$
 in to the constructor for $icode af$$.
 
 $subhead X(t), S$$
@@ -631,8 +632,8 @@ The return value has prototype
 $codei%
 	int %n%
 %$$
-an is the size of the vector
-$cref/ax/a_fun_ctor/ax/$$ in the function constructor; i.e.,
+and is the size of the vector
+$cref/ax/cpp_a_fun_ctor/ax/$$ in the function constructor; i.e.,
 the number of independent variables.
 
 $head size_dep$$
@@ -640,8 +641,8 @@ The return value has prototype
 $codei%
 	int %m%
 %$$
-an is the size of the vector
-$cref/ay/a_fun_ctor/ay/$$ in the function constructor; i.e.,
+and is the size of the vector
+$cref/ay/cpp_a_fun_ctor/ay/$$ in the function constructor; i.e.,
 the number of dependent variables.
 
 $head size_var$$

@@ -39,7 +39,7 @@
 # $head Purpose$$
 # This starts a recording of the $cref a_double$$ operations.
 # This recording is terminated, and the information is stored,
-# by calling the $cref/a_fun constructor/a_fun_ctor/$$.
+# by calling the $cref/a_fun constructor/py_a_fun_ctor/$$.
 # It is terminated, and the information is lost,
 # by calling $cref/abort_recording/py_abort_recording/$$.
 #
@@ -47,11 +47,10 @@
 # All of the python $code a_fun$$ examples use this function.
 #
 # $end
+# -----------------------------------------------------------------------------
 import cppad_py
 import numpy
-
 def independent(x) :
-	import cppad_py
 	"""
 	ax = independent(x)
 	creates the indepedent numpy vector ax, with value equal numpy vector x,

@@ -561,7 +561,7 @@ $codei%
 		%target% = %if_false%
 %$$
 records either the true or false case depending on the value
-of $icode left$$ and $icode right$$; see $cref a_fun_ctor$$.
+of $icode left$$ and $icode right$$; see $cref cpp_a_fun_ctor$$.
 If $icode left$$ or $icode right$$ is a
 $cref/variable/a_double_property/variable/$$,
 it may be desirable to switch between $icode if_true$$ and $icode if_false$$

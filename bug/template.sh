@@ -12,16 +12,18 @@ echo_eval() {
     eval $*
 }
 # -----------------------------------------------------------------------------
-if [ "$0" != 'bug/use_numpy.sh' ]
+program=...
+# -----------------------------------------------------------------------------
+if [ "$0" != "bug/$program.sh" ]
 then
-	echo 'bug/use_numpy.sh must be executed from its parent directory'
+	echo "bug/$program.sh must be executed from its parent directory"
 	exit 1
 fi
-cmake_source_dir=`pwd`
+top_source_dir=`pwd`
 # -----------------------------------------------------------------------------
 if [ "$1" != '2' ] && [ "$1" != '3' ]
 then
-	echo 'usage: bug/use_numpy.sh python_major_version'
+	echo "usage: bug/$program.sh python_major_version"
 	echo 'where python_major_version is 2 or 3.'
 	echo 'This program returns ok = False for both versions of python.'
 	echo 'Must run setup.py with same version of python before this script.'
@@ -35,37 +37,23 @@ then
 fi
 cd build/bug
 # -----------------------------------------------------------------------------
-cat << EOF > use_numpy.py
+cat << EOF > $program.py
 import sys
 import os
 import numpy
-sys.path.insert(0, '$cmake_source_dir')
+sys.path.insert(0, '$top_source_dir')
 import cppad_py
-def fun() :
-	n = 1
-	av    = cppad_py.vec_a_double(n)
-	av[0] = cppad_py.a_double( 1.0 )
-	#
-	# Program passes test if first and second assignments to ax switch places.
-	ax = cppad_py.vec_a_double(n)
-	ax = numpy.zeros(n, dtype = cppad_py.a_double)
-	#
-	# The following does not work
-	ax[0] = av[0]
-	#
-	print( 'fun:  ax[0].value() = ', ax[0].value() )
-	return ax
 #
+def fun() :
+	...
 #
 # initialize return variable
 ok = True
 # ---------------------------------------------------------------------
-n = 1
-#
-ax = fun()
-print( 'main: ax[0].value() = ', ax[0].value() )
-#
-ok = ok and ax[0].value() == 1.0
-print('ok = ', ok )
+...
+# ---------------------------------------------------------------------
+if ok :
+	sys.exit( '$program: OK' )
+sys.exit( '$progam: Error' )
 EOF
-echo_eval python$python_major_version use_numpy.py
+echo_eval python$python_major_version $program.py
