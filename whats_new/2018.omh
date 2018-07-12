@@ -28,6 +28,10 @@ $lnext
 Automatically use $cref/build_type/setup.py/Configure/build_type/$$
 control how setup.py compiles C++
 (one used to use flags on setup.py command line).
+$lnext
+setup.py was using the git repository version of Cppad instead of the
+one installed in $code build/prefix$$ by $cref get_cppad.sh$$.
+This has been fixed.
 $lend
 
 $head 07-10$$

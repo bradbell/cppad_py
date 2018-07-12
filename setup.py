@@ -63,14 +63,7 @@ if flag != 0 :
 os.chdir('..')
 # -----------------------------------------------------------------------------
 # cppad_include_dir
-fp      = open('bin/get_cppad.sh', 'r')
-string  = fp.read()
-pattern = '\\ncppad_version=\'([0-9]*)\''
-match   = re.search(pattern, string)
-if not match :
-	sys.exit('setup.py: cannot find cppad_version in bin/install_cppad.sh')
-cppad_version     = match.group(1)
-cppad_include_dir = os.getcwd() + '/build/cppad-' + cppad_version + '.git'
+cppad_include_dir = os.getcwd() + '/build/prefix/include'
 # -----------------------------------------------------------------------------
 # cppad_py_version
 fp      = open('CMakeLists.txt', 'r')
@@ -157,7 +150,7 @@ sys.exit(0)
 #
 # $head Syntax$$
 # $codei%
-#	%python% setup.py build_ext --inplace
+#	%python% setup.py build_ext --inplace [--quiet] [--debug] [--undef NDEBUG]
 # %$$
 # where $icode python$$ is the Python executable you will be using with
 # Cppad Py.
