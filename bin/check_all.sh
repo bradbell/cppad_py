@@ -75,8 +75,10 @@ echo_eval_log cd ..
 if grep -i 'warning' $logfile
 then
 	echo 'check_all.sh: Error: see warnings in check_all.log'
+	rm $tmpfile
 	exit 1
 fi
 # -----------------------------------------------------------------------------
+rm $tmpfile
 echo 'bin/check_all.sh: OK'
 exit 0

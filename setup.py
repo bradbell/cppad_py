@@ -29,12 +29,15 @@ if os.path.exists('cppad_py') :
 	shutil.rmtree('cppad_py')
 shutil.copytree('lib/python', 'cppad_py');
 # -----------------------------------------------------------------------------
-# python_version
+# python_major_version
 python_major_version = sys.version_info.major
 if python_major_version != 2 and python_major_version != 3 :
 	msg  = 'setup.py: python major version number '
 	msg += str( python_major_version ) + ' is not 2 or 3'
 	sys.exit(msg)
+file_ptr = open('cppad_py/python_major_version', 'w')
+file_ptr.write(str(python_major_version) + '\n')
+file_ptr.close()
 # -----------------------------------------------------------------------------
 # run cmake
 cppad_prefix_absolute = os.getcwd() + '/' + cppad_prefix
