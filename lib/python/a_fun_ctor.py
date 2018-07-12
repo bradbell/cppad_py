@@ -47,11 +47,13 @@
 # -----------------------------------------------------------------------------
 import numpy
 import cppad_py
-def a_fun(ax, ay) :
+#
+# This function is used by __init__ in a_fun class to implement syntax above:
+def a_fun_ctor(ax, ay) :
 	"""
 	a_fun(ax, ay)
 	Stop recording a_double operations and
-	creates a function object that maps ax -> ay.
+	create an AD function object that maps ax -> ay.
 	"""
 	from cppad_py import vec_a_double as vec_a_double
 	# convert ax -> au, ay -> av
