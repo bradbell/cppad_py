@@ -9,7 +9,7 @@
 verbose_makefile = "false"
 build_type       = "debug"
 swig_cxx_flags   = "-Wno-sign-compare -Wno-catch-value -Wno-class-memaccess"
-cppad_cxx_flags  = "-Wall -pedantic-errors"
+cppad_cxx_flags  = "-Wall -pedantic-errors -Wno-unused-result"
 cppad_prefix     = "build/prefix"
 test_cppad       = "false"
 # END_USER_SETTINGS
@@ -109,19 +109,23 @@ for name in os.listdir('lib/cplusplus') :
 		cppad_py_extension_sources.append( 'lib/cplusplus/' + name)
 # -----------------------------------------------------------------------------
 # extension_module
-cppad_py_swig_include_dirs     = [ cppad_include_dir ]
-cppad_py_swig_include_dirs.append( os.getcwd() + '/build/lib' )
-cppad_py_swig_include_dirs.append( os.getcwd() + '/include' )
-cppad_py_swig_extra_compile_args  = cppad_cxx_flags.split()
-cppad_py_swig_extra_compile_args += swig_cxx_flags.split()
+include_dirs     = [ cppad_include_dir ]
+include_dirs.append( os.getcwd() + '/build/lib' )
+include_dirs.append( os.getcwd() + '/include' )
+extra_compile_args  = cppad_cxx_flags.split()
+extra_compile_args += swig_cxx_flags.split()
+undef_macros        = list()
+if build_type == 'debug' :
+	undef_macros = [ 'NDEBUG' ]
+	extra_compile_args.append( '-O1' )
 #
-print(cppad_py_swig_include_dirs)
 cppad_py_extension_name   = 'cppad_py/_cppad_py_swig'
 extension_module          = Extension(
 	cppad_py_extension_name                               ,
 	cppad_py_extension_sources                            ,
-	include_dirs       = cppad_py_swig_include_dirs       ,
-	extra_compile_args = cppad_py_swig_extra_compile_args
+	include_dirs       = include_dirs                     ,
+	extra_compile_args = extra_compile_args               ,
+	undef_macros       = undef_macros
 )
 # -----------------------------------------------------------------------------
 # setup
@@ -153,7 +157,7 @@ sys.exit(0)
 #
 # $head Syntax$$
 # $codei%
-#	%python% setup.py build_ext --inplace [--quiet] [--debug] [--undef NDEBUG]
+#	%python% setup.py build_ext --inplace
 # %$$
 # where $icode python$$ is the Python executable you will be using with
 # Cppad Py.

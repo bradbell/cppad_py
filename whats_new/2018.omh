@@ -24,6 +24,10 @@ $cref py_a_fun_ctor$$.
 $lnext
 Add the file $code cppad_py/python_major_version$$ which contains
 the major version of python that this build of $code cppad_py$$ is for.
+$lnext
+Automatically use $cref/build_type/setup.py/Configure/build_type/$$
+control how setup.py compiles C++
+(one used to use flags on setup.py command line).
 $lend
 
 $head 07-10$$
