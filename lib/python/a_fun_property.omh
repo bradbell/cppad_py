@@ -55,7 +55,7 @@ and any variables that are used to compute the dependent variables
 from the independent variables.
 
 $head size_op$$
-The return value $code p$$ is an $code int$$
+The return value $icode p$$ is an $code int$$
 and is the number of atomic operations that are used to express
 the dependent variables as a function of the independent variables.
 
