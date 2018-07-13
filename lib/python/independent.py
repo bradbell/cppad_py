@@ -19,16 +19,14 @@
 # $icode%ax% = cppad_py.independent(%x%)%$$
 #
 # $head x$$
-# This argument is a numpy vector
-# with elements that correspond to c++ $code double$$.
+# This argument is a numpy vector with $code float$$ elements.
 # It specifies the number of independent variables
 # and their values during the recording.
 # We use $icode%n% = %x%.size%$$
 # to denote the number of independent variables.
 #
 # $head ax$$
-# The result is a numpy vector with elements that
-# correspond to c++ $code a_double$$.
+# The result is a numpy vector with $code a_double$$ elements.
 # This is the vector of independent variables.
 # It has size $icode n$$ and for
 # $icode%i% = 0%$$ to $icode%n%-1%$$

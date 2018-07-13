@@ -40,16 +40,14 @@
 # in to the constructor for $icode af$$.
 #
 # $head x$$
-# This argument is a numpy vector,
-# with elements that correspond to c++ $code double$$,
-# and its size must be $icode n$$.
+# This argument is a numpy vector with $code float$$ elements
+# and size $icode n$$.
 # It specifies the argument value at we are computing the Jacobian
 # $latex f'(x)$$.
 #
 # $head J$$
-# The result is a numpy matrix,
-# with elements that correspond to c++ $code double$$,
-# $icode m$$ rows and $code n$$ columns.
+# The result is a numpy matrix with $code float$$ elements,
+# $icode m$$ rows, and $code n$$ columns.
 # For $icode i$$ between zero and $icode%m%-1%$$
 # and $icode j$$ between zero and $icode%n%-1%$$,
 # $latex \[

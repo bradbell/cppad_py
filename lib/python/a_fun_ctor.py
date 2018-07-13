@@ -28,8 +28,7 @@
 # to denote the number of independent variables (the size of $icode ax$$).
 #
 # $head ay$$
-# This argument is a numpy array with elements that correspond to
-# c++ $code a_double$$.
+# This argument is a numpy array with $code a_double$$ elements.
 # It specifies the dependent variables.
 # We use $icode m$$
 # to denote the number of dependent variables (the size of $icode ay$$).
