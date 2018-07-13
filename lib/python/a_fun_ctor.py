@@ -60,7 +60,7 @@ def a_fun_ctor(ax, ay) :
 		is_numpy = False
 		au       = ax
 		av       = ay
-	elif isinstance(ax, numpy.ndarray) and isinstance(ay, numpy.ndarray):
+	elif isinstance(ax, numpy.ndarray) and isinstance(ay, numpy.ndarray) :
 		is_numpy =  True
 		if len( ax.shape ) != 1 or len( ay.shape ) != 1 :
 			msg = 'a_fun(ax, ay): numpy array ax or ay is not a vector'

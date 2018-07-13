@@ -19,6 +19,7 @@
 #	%lib/python/a_fun_ctor.py
 #	%lib/python/a_fun_property.omh
 #	%lib/python/a_fun_jacobian.py
+#	%lib/python/a_fun_hessian.py
 # %$$
 #
 # $end
@@ -51,9 +52,9 @@ class a_fun :
 	def jacobian(self, x) :
 		return cppad_py.a_fun_jacobian(self.af, x)
 	#
-	# hessian
+	# hessian: see a_fun_hessian.py
 	def hessian(self, x, w) :
-		return self.af.hessian(x, w)
+		return cppad_py.a_fun_hessian(self.af, x, w)
 	#
 	# forward
 	def forward(self, p, xp) :

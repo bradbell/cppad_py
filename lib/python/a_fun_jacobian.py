@@ -16,9 +16,6 @@
 # $$
 #
 # $section Jacobian of an AD Function$$
-# $spell
-#	vec
-# $$
 #
 # $head Syntax$$
 # $icode%J% = %af%.jacobian(%x%)%$$
@@ -79,7 +76,7 @@ def a_fun_jacobian(af, x) :
 	elif isinstance(x, numpy.ndarray) :
 		is_numpy =  True
 		if( len( x.shape ) != 1 ) :
-			msg = 'independent(x): numpy array x is not a vector'
+			msg = 'af.jacobian(x): numpy array x is not a vector'
 			raise NotImplementedError(msg)
 		n = x.size
 		v = cppad_py.vec_double(n)
@@ -103,6 +100,6 @@ def a_fun_jacobian(af, x) :
 		J = numpy.zeros((m, n), dtype = float)
 		for i in range(m) :
 			for j in range(n) :
-				# must a copy because av will be deleted at end of independent
+				# must a copy because av will be deleted
 				J[i, j] = v[i * n + j]
 	return J

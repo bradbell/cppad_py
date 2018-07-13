@@ -344,7 +344,7 @@ std::vector<double> a_fun::jacobian(const std::vector<double>& x)
 }
 /*
 ------------------------------------------------------------------------------
-$begin a_fun_hessian$$
+$begin cpp_a_fun_hessian$$
 $spell
 	vec
 	af
@@ -416,12 +416,10 @@ $latex \[
 
 
 $children%
-	lib/example/cplusplus/a_fun_hessian_xam.cpp%
-	lib/example/python/a_fun_hessian_xam.py
+	lib/example/cplusplus/a_fun_hessian_xam.cpp
 %$$
 $head Example$$
-$cref/C++/a_fun_hessian_xam.cpp/$$,
-$cref/Python/a_fun_hessian_xam.py/$$.
+$cref a_fun_hessian_xam.cpp$$
 
 
 $end

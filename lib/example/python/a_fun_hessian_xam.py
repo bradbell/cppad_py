@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def a_fun_hessian_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable
@@ -21,7 +21,7 @@ def a_fun_hessian_xam() :
 	n_ind = 3
 	#
 	# create the independent variables ax
-	x = cppad_py.vec_double(n_ind)
+	x = numpy.zeros(n_ind, dtype=float)
 	for i in range( n_ind  ) :
 		x[i] = i + 2.0
 	#
@@ -31,14 +31,14 @@ def a_fun_hessian_xam() :
 	ax_0 = ax[0]
 	ax_1 = ax[1]
 	ax_2 = ax[2]
-	ay = cppad_py.vec_a_double(n_dep)
+	ay   = numpy.zeros(n_dep, dtype=cppad_py.a_double)
 	ay[0] = ax_0 * ax_1 * ax_2
 	#
 	# define af corresponding to f(x) = x_0 * x_1 * x_2
 	af = cppad_py.a_fun(ax, ay)
 	#
 	# g(x) = w_0 * f_0 (x) = f(x)
-	w = cppad_py.vec_double(n_dep)
+	w = numpy.zeros(n_dep, dtype=float)
 	w[0] = 1.0
 	#
 	# compute Hessian
@@ -47,17 +47,17 @@ def a_fun_hessian_xam() :
 	#          [ 0.0 , x_2 , x_1 ]
 	# f''(x) = [ x_2 , 0.0 , x_0 ]
 	#          [ x_1 , x_0 , 0.0 ]
-	ok = ok and fpp[0 * n_ind + 0] == 0.0
-	ok = ok and fpp[0 * n_ind + 1] == x[2]
-	ok = ok and fpp[0 * n_ind + 2] == x[1]
+	ok = ok and fpp[0, 0] == 0.0
+	ok = ok and fpp[0, 1] == x[2]
+	ok = ok and fpp[0, 2] == x[1]
 	#
-	ok = ok and fpp[1 * n_ind + 0] == x[2]
-	ok = ok and fpp[1 * n_ind + 1] == 0.0
-	ok = ok and fpp[1 * n_ind + 2] == x[0]
+	ok = ok and fpp[1, 0] == x[2]
+	ok = ok and fpp[1, 1] == 0.0
+	ok = ok and fpp[1, 2] == x[0]
 	#
-	ok = ok and fpp[2 * n_ind + 0] == x[1]
-	ok = ok and fpp[2 * n_ind + 1] == x[0]
-	ok = ok and fpp[2 * n_ind + 2] == 0.0
+	ok = ok and fpp[2, 0] == x[1]
+	ok = ok and fpp[2, 1] == x[0]
+	ok = ok and fpp[2, 2] == 0.0
 	#
 	return( ok )
 #
