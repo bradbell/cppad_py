@@ -1,0 +1,68 @@
+-------------------------------------------------------------------------------
+          cppad_py: A C++ Object Library and Python Interface to Cppad
+           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+               GNU General Public License version 3.0 or later see
+                     https://www.gnu.org/licenses/gpl-3.0.txt
+-------------------------------------------------------------------------------
+$begin py_a_fun_property$$
+$spell
+	vec
+	ind
+	dep
+$$
+
+$section Properties of an AD Function$$
+$spell
+	vec
+	af
+	var
+	op
+	const
+$$
+
+$head Syntax$$
+$icode%n% = %af%.size_domain()
+%$$
+$icode%m% = %af%.size_range()
+%$$
+$icode%v% = %af%.size_var()
+%$$
+$icode%p% = %af%.size_op()
+%$$
+
+$head af$$
+This object must have been returned by a previous call to the python
+$cref/a_fun/py_a_fun_ctor/$$ constructor.
+
+$head size_domain$$
+The return value $icode n$$ is an $code int$$
+and is the size of the vector
+$cref/ax/cpp_a_fun_ctor/ax/$$ in the function constructor; i.e.,
+the number of independent variables.
+
+$head size_range$$
+The return value $icode m$$ is an $code int$$
+and is the size of the vector
+$cref/ay/cpp_a_fun_ctor/ay/$$ in the function constructor; i.e.,
+the number of dependent variables.
+
+$head size_var$$
+The return value $icode v$$ is an $code int$$
+and is the number of variables in the function.
+This includes the independent variables, dependent variables,
+and any variables that are used to compute the dependent variables
+from the independent variables.
+
+$head size_op$$
+The return value $code p$$ is an $code int$$
+and is the number of atomic operations that are used to express
+the dependent variables as a function of the independent variables.
+
+$children%
+	lib/example/python/a_fun_property_xam.py
+%$$
+$head Example$$
+$cref a_fun_property_xam.py$$
+
+$end

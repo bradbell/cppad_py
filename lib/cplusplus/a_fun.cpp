@@ -183,6 +183,96 @@ a_fun::a_fun(
 }
 /*
 ------------------------------------------------------------------------------
+$begin cpp_a_fun_property$$
+$spell
+	vec
+	ind
+	dep
+$$
+
+$section Properties of an AD Function$$
+$spell
+	vec
+	af
+	var
+	op
+	const
+$$
+
+$head Syntax$$
+$icode%n% = %af%.size_domain()
+%$$
+$icode%m% = %af%.size_range()
+%$$
+$icode%v% = %af%.size_var()
+%$$
+$icode%p% = %af%.size_op()
+%$$
+
+$head af$$
+This object has prototype
+$codei%
+	const a_fun %af%
+%$$
+
+$head size_domain$$
+The return value has prototype
+$codei%
+	int %n%
+%$$
+and is the size of the vector
+$cref/ax/cpp_a_fun_ctor/ax/$$ in the function constructor; i.e.,
+the number of independent variables.
+
+$head size_range$$
+The return value has prototype
+$codei%
+	int %m%
+%$$
+and is the size of the vector
+$cref/ay/cpp_a_fun_ctor/ay/$$ in the function constructor; i.e.,
+the number of dependent variables.
+
+$head size_var$$
+The return value has prototype
+$codei%
+	int %v%
+%$$
+and is the number of variables in the function.
+This includes the independent variables, dependent variables,
+and any variables that are used to compute the dependent variables
+from the independent variables.
+
+$head size_op$$
+The return value has prototype
+$codei%
+	int %p%
+%$$
+and is the number of atomic operations that are used to express
+the dependent variables as a function of the independent variables.
+
+$children%
+	lib/example/cplusplus/a_fun_property_xam.cpp
+%$$
+$head Example$$
+$cref a_fun_property_xam.cpp$$
+
+$end
+*/
+// size_domain
+int a_fun::size_domain(void) const
+{	return ptr_->Domain(); }
+// size_range
+int a_fun::size_range(void) const
+{	return ptr_->Range(); }
+// size_var
+int a_fun::size_var(void) const
+{	return ptr_->size_var(); }
+// size_op
+int a_fun::size_op(void) const
+{	return ptr_->size_op(); }
+/*
+------------------------------------------------------------------------------
 $begin a_fun_jacobian$$
 $spell
 	vec
@@ -593,97 +683,5 @@ $end
 */
 void a_fun::optimize(void)
 {	ptr_->optimize(); }
-/*
-------------------------------------------------------------------------------
-$begin a_fun_property$$
-$spell
-	vec
-	ind
-	dep
-$$
-
-$section Properties of an AD Function$$
-$spell
-	vec
-	af
-	var
-	op
-	const
-$$
-
-$head Syntax$$
-$icode%n% = %af%.size_domain()
-%$$
-$icode%m% = %af%.size_range()
-%$$
-$icode%v% = %af%.size_var()
-%$$
-$icode%p% = %af%.size_op()
-%$$
-
-$head af$$
-This object has prototype
-$codei%
-	const a_fun %af%
-%$$
-
-$head size_domain$$
-The return value has prototype
-$codei%
-	int %n%
-%$$
-and is the size of the vector
-$cref/ax/cpp_a_fun_ctor/ax/$$ in the function constructor; i.e.,
-the number of independent variables.
-
-$head size_range$$
-The return value has prototype
-$codei%
-	int %m%
-%$$
-and is the size of the vector
-$cref/ay/cpp_a_fun_ctor/ay/$$ in the function constructor; i.e.,
-the number of dependent variables.
-
-$head size_var$$
-The return value has prototype
-$codei%
-	int %v%
-%$$
-an is the number of variables in the function.
-This includes the independent variables, dependent variables,
-and any variables that are used to compute the dependent variables
-from the independent variables.
-
-$head size_op$$
-The return value has prototype
-$codei%
-	int %p%
-%$$
-an is the number of atomic operations that are used to express
-the dependent variables as a function of the independent variables.
-
-$children%
-	lib/example/cplusplus/a_fun_property_xam.cpp%
-	lib/example/python/a_fun_property_xam.py
-%$$
-$head Example$$
-$cref/C++/a_fun_property_xam.cpp/$$,
-$cref/Python/a_fun_property_xam.py/$$.
-
-$end
-*/
-// size_domain
-int a_fun::size_domain(void) const
-{	return ptr_->Domain(); }
-// size_range
-int a_fun::size_range(void) const
-{	return ptr_->Range(); }
-// size_var
-int a_fun::size_var(void) const
-{	return ptr_->size_var(); }
-// size_op
-int a_fun::size_op(void) const
-{	return ptr_->size_op(); }
 // ----------------------------------------------------------------------------
 } // END_CPPAD_PY_NAMESPACE

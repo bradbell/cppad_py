@@ -18,19 +18,20 @@ then
 	exit 1
 fi
 # -----------------------------------------------------------------------------
-if [ "$1" == '' ]
+if [ "$3" != '.py' ] && [ "$3" != '.omh' ]
 then
-	echo 'usage: bin/doc2py.sh file section'
-	echo 'file: is a file name in the lib/cplusplus directory'
+	echo 'usage: bin/doc2py.sh file section ext'
+	echo 'file:    is a file name in the lib/cplusplus directory'
 	echo 'section: is an omhelp section name in that file.'
+	echo 'ext:     is either .py for wrappers, and .omh if no wrapper needed'
 	exit 1
 fi
 file="$1"
 section="$2"
+ext="$3"
 # -----------------------------------------------------------------------------
 git checkout lib/cplusplus/$file
-git checkout lib/python/py_lib.omh
-new_file="lib/python/$section.py"
+new_file="lib/python/$section$ext"
 # -----------------------------------------------------------------------------
 if ! grep "\$begin $section" lib/cplusplus/$file > /dev/null
 then
@@ -39,46 +40,49 @@ then
 fi
 if [ -e "$new_file" ]
 then
-	echo "The file $new_file already exists."
-	exit 1
+	echo_eval rm $new_file
 fi
 # -----------------------------------------------------------------------------
 echo "creating $new_file"
 #
 cat << EOF > $new_file
-# -----------------------------------------------------------------------------
-#         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
-#              This program is distributed under the terms of the
-#              GNU General Public License version 3.0 or later see
-#                    https://www.gnu.org/licenses/gpl-3.0.txt
-# -----------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+          cppad_py: A C++ Object Library and Python Interface to Cppad
+           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+               GNU General Public License version 3.0 or later see
+                     https://www.gnu.org/licenses/gpl-3.0.txt
+-------------------------------------------------------------------------------
 EOF
-#
-#
-sed -n -e "/\$begin $section/,/\$end/p" lib/cplusplus/$file  > doc2bin.$$
-sed doc2bin.$$ \
-	-e 's|^\([^\t]\)| \1|' \
-	-e 's|^|#|' \
+sed -n -e "/\$begin $section/,/\$end/p" lib/cplusplus/$file  > doc2py.$$
+if [ "$ext" == '.omh' ]
+then
+	sed doc2py.$$ \
+	-e "s|\$begin $section|\$begin py_$section|" \
+	-e "/\$cref.C++.${section}_xam.cpp.\$\\\$,/d" \
+	-e "s|\$cref/Python/${section}_xam.py/.*|\$cref ${section}_xam.py\$\$|" \
+	>> $new_file
+else
+	sed doc2py.$$ \
+	-e '1,7s|^ |#|' \
+	-e '1,7s|^--|# |' \
+	-e '8,$s|^\([^\t]\)| \1|' \
+	-e '8,$s|^|#|' \
 	-e "s|\$begin $section|\$begin py_$section|" \
 	-e 's|$begin.*\$\$|& $newlinech #$$|' \
+	-e "/\$cref.C++.${section}_xam.cpp.\$\\\$,/d" \
+	-e "s|\$cref/Python/${section}_xam.py/.*|\$cref ${section}_xam.py\$\$|" \
 	>> $new_file
-rm doc2bin.$$
-cat << EOF >> $new_file
-# -----------------------------------------------------------------------------
-# If necessary, put special $section code here and change __init__.py
-# to import this version instead of version in cppad_py.cppad_py_swig
-EOF
+fi
+rm doc2py.$$
 git add $new_file
 # -----------------------------------------------------------------------------
 echo "editing lib/cplusplus/$file"
 sed -i lib/cplusplus/$file \
 	-e "/\$begin $section/,/\$end/s|cppad_py[.]|cppad_py::|" \
-	-e "s|\$begin $section|\$begin cpp_$section|"
-# -----------------------------------------------------------------------------
-echo "editing lib/python/py_lib.omh"
-sed -i lib/python/py_lib.omh \
-	-e "s|%\$\\\$|\\n\\t%$new_file&|"
+	-e "s|\$begin $section|\$begin cpp_$section|" \
+	-e "/\$cref.Python.${section}_xam.py.\$\\\$./d" \
+	-e "s|\$cref/C++/${section}_xam.cpp/.*|\$cref ${section}_xam.cpp\$\$|"
 # -----------------------------------------------------------------------------
 echo 'bin/doc2py.sh: OK'
 exit 0

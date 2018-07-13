@@ -16,7 +16,9 @@
 # $comment Files that have Python specific Implementation and Documention$$
 # $childtable%lib/python/independent.py
 #	%lib/python/abort_recording.py
-#	%lib/python/a_fun_ctor.py%$$
+#	%lib/python/a_fun_ctor.py
+#	%lib/python/a_fun_property.omh
+# %$$
 #
 # $end
 # ----------------------------------------------------------------------------
