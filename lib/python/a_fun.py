@@ -18,6 +18,7 @@
 #	%lib/python/abort_recording.omh
 #	%lib/python/a_fun_ctor.py
 #	%lib/python/a_fun_property.omh
+#	%lib/python/a_fun_jacobian.py
 # %$$
 #
 # $end
@@ -26,29 +27,9 @@ import cppad_py
 class a_fun :
 	"""Python interface to CppAD::ADFun<double>"""
 	#
-	# __init__
+	# __init__: see a_fun_ctor.py
 	def __init__(self, ax, ay) :
 		self.af = cppad_py.a_fun_ctor(ax, ay)
-	#
-	# jacobian
-	def jacobian(self, x) :
-		return self.af.jacobian(x)
-	#
-	# hessian
-	def hessian(self, x, w) :
-		return self.af.hessian(x, w)
-	#
-	# forward
-	def forward(self, p, xp) :
-		return self.af.forward(p, xp)
-	#
-	# reverse
-	def reverse(self, q, yq) :
-		return self.af.reverse(q, yq)
-	#
-	# optimize
-	def optimize(self) :
-		return self.af.optimize()
 	#
 	# size_domain
 	def size_domain(self) :
@@ -65,6 +46,26 @@ class a_fun :
 	# size_op
 	def size_op(self) :
 		return self.af.size_op()
+	#
+	# jacobian: see a_fun_jacobian.py
+	def jacobian(self, x) :
+		return cppad_py.a_fun_jacobian(self.af, x)
+	#
+	# hessian
+	def hessian(self, x, w) :
+		return self.af.hessian(x, w)
+	#
+	# forward
+	def forward(self, p, xp) :
+		return self.af.forward(p, xp)
+	#
+	# reverse
+	def reverse(self, q, yq) :
+		return self.af.reverse(q, yq)
+	#
+	# optimize
+	def optimize(self) :
+		return self.af.optimize()
 	#
 	# for_jac_sparsity
 	def for_jac_sparsity(self, pattern_in, pattern_out) :

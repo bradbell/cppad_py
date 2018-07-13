@@ -273,7 +273,7 @@ int a_fun::size_op(void) const
 {	return ptr_->size_op(); }
 /*
 ------------------------------------------------------------------------------
-$begin a_fun_jacobian$$
+$begin cpp_a_fun_jacobian$$
 $spell
 	vec
 	af
@@ -331,12 +331,10 @@ $latex \[
 
 
 $children%
-	lib/example/cplusplus/a_fun_jacobian_xam.cpp%
-	lib/example/python/a_fun_jacobian_xam.py
+	lib/example/cplusplus/a_fun_jacobian_xam.cpp
 %$$
 $head Example$$
-$cref/C++/a_fun_jacobian_xam.cpp/$$,
-$cref/Python/a_fun_jacobian_xam.py/$$.
+$cref a_fun_jacobian_xam.cpp$$
 
 
 $end

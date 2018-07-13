@@ -833,7 +833,7 @@ $latex \[
 	J(x) = F^{(1)} (x)
 \] $$
 In the sparse case, this should be faster and take less memory than
-$cref a_fun_jacobian$$.
+$cref cpp_a_fun_jacobian$$.
 We use the notation $latex J_{i,j} (x)$$ to denote the partial of
 $latex F_i (x)$$ with respect to $latex x_j$$.
 

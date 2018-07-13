@@ -54,16 +54,17 @@ cat << EOF > $new_file
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 EOF
-sed -n -e "/\$begin $section/,/\$end/p" lib/cplusplus/$file  > doc2py.$$
+sed -n -e "/\$begin $section/,/\$end/p" lib/cplusplus/$file  >> $new_file
 if [ "$ext" == '.omh' ]
 then
-	sed doc2py.$$ \
+	sed -i $new_file \
 	-e "s|\$begin $section|\$begin py_$section|" \
 	-e "/\$cref.C++.${section}_xam.cpp.\$\\\$,/d" \
 	-e "s|\$cref/Python/${section}_xam.py/.*|\$cref ${section}_xam.py\$\$|" \
+	-e "/lib.example.cplusplus.${section}_xam.cpp/d" \
 	>> $new_file
 else
-	sed doc2py.$$ \
+	sed -i $new_file \
 	-e '1,7s|^ |#|' \
 	-e '1,7s|^--|# |' \
 	-e '8,$s|^\([^\t]\)| \1|' \
@@ -72,9 +73,9 @@ else
 	-e 's|$begin.*\$\$|& $newlinech #$$|' \
 	-e "/\$cref.C++.${section}_xam.cpp.\$\\\$,/d" \
 	-e "s|\$cref/Python/${section}_xam.py/.*|\$cref ${section}_xam.py\$\$|" \
+	-e "/lib.example.cplusplus.${section}_xam.cpp/d" \
 	>> $new_file
 fi
-rm doc2py.$$
 git add $new_file
 # -----------------------------------------------------------------------------
 echo "editing lib/cplusplus/$file"
@@ -82,7 +83,9 @@ sed -i lib/cplusplus/$file \
 	-e "/\$begin $section/,/\$end/s|cppad_py[.]|cppad_py::|" \
 	-e "s|\$begin $section|\$begin cpp_$section|" \
 	-e "/\$cref.Python.${section}_xam.py.\$\\\$./d" \
-	-e "s|\$cref/C++/${section}_xam.cpp/.*|\$cref ${section}_xam.cpp\$\$|"
+	-e "s|\$cref/C++/${section}_xam.cpp/.*|\$cref ${section}_xam.cpp\$\$|" \
+	-e "/lib.example.python.${section}_xam.py/d" \
+	-e "s|\\(lib.example.cplusplus.${section}_xam.cpp\\)%|\\1|"
 # -----------------------------------------------------------------------------
 echo 'bin/doc2py.sh: OK'
 exit 0

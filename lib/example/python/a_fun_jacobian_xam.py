@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def a_fun_jacobian_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable
@@ -21,17 +21,17 @@ def a_fun_jacobian_xam() :
 	n_ind = 3
 	#
 	# create the independent variables ax
-	x = cppad_py.vec_double(n_ind)
+	x = numpy.zeros(n_ind, dtype=float)
 	for i in range( n_ind  ) :
 		x[i] = i + 2.0
 	#
 	ax = cppad_py.independent(x)
 	#
 	# create dependent variables ay with ay0 = ax_0 * ax_1 * ax_2
-	ax_0 = ax[0]
-	ax_1 = ax[1]
-	ax_2 = ax[2]
-	ay = cppad_py.vec_a_double(n_dep)
+	ax_0  = ax[0]
+	ax_1  = ax[1]
+	ax_2  = ax[2]
+	ay    = numpy.zeros(n_dep, dtype=cppad_py.a_double)
 	ay[0] = ax_0 * ax_1 * ax_2
 	#
 	# define af corresponding to f(x) = x_0 * x_1 * x_2
@@ -44,9 +44,9 @@ def a_fun_jacobian_xam() :
 	x_0 = x[0]
 	x_1 = x[1]
 	x_2 = x[2]
-	ok = ok and fp[0 * n_ind + 0] == x_1 * x_2
-	ok = ok and fp[0 * n_ind + 1] == x_0 * x_2
-	ok = ok and fp[0 * n_ind + 2] == x_0 * x_1
+	ok = ok and fp[0, 0] == x_1 * x_2
+	ok = ok and fp[0, 1] == x_0 * x_2
+	ok = ok and fp[0, 2] == x_0 * x_1
 	#
 	return( ok )
 #

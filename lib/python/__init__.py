@@ -24,6 +24,7 @@ from cppad_py.cppad_py_swig import vec_int
 # END_SORT_THIS_LINE_MINUS_1
 
 # functions that require a python wraper
-from cppad_py.a_fun       import a_fun
-from cppad_py.a_fun_ctor  import a_fun_ctor
-from cppad_py.independent import independent
+from cppad_py.a_fun           import a_fun
+from cppad_py.a_fun_ctor      import a_fun_ctor
+from cppad_py.a_fun_jacobian  import a_fun_jacobian
+from cppad_py.independent     import independent
