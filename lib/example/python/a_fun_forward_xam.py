@@ -21,7 +21,7 @@ def a_fun_forward_xam() :
 	n_ind = 2
 	#
 	# create the independent variables ax
-	xp = cppad_py.vec_double(n_ind)
+	xp = numpy.zeros(n_ind, dtype=float)
 	for i in range( n_ind  ) :
 		xp[i] = i + 1.0
 	#
@@ -30,7 +30,7 @@ def a_fun_forward_xam() :
 	# create dependent varialbes ay with ay0 = ax0 * ax1
 	ax0 = ax[0]
 	ax1 = ax[1]
-	ay = cppad_py.vec_a_double(n_dep)
+	ay = numpy.zeros(n_dep, dtype=cppad.a_double)
 	ay[0] = ax0 * ax1
 	#
 	# define af corresponding to f(x) = x0 * x1

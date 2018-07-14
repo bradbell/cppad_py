@@ -34,7 +34,7 @@ $spell
 	xam
 $$
 
-$section cppad_py-20180713: A C++ AD Library with a Swig Interface$$
+$section cppad_py-20180714: A C++ AD Library with a Swig Interface$$
 
 $head Purpose$$
 Provide a C++ object library Algorithmic Differentiation (AD)
