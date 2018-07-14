@@ -16,9 +16,6 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 $begin cpp_independent$$
 $spell
 	vec
-	Cppad
-	Py
-	py
 	const
 	cppad_py
 $$
@@ -81,7 +78,6 @@ $spell
 	vec
 	af
 	const
-	perl
 	cppad_py
 $$
 
@@ -186,18 +182,14 @@ a_fun::a_fun(
 $begin cpp_a_fun_property$$
 $spell
 	vec
-	ind
-	dep
-$$
-
-$section Properties of an AD Function$$
-$spell
-	vec
 	af
 	var
 	op
 	const
+	Taylor
 $$
+
+$section Properties of an AD Function$$
 
 $head Syntax$$
 $icode%n% = %af%.size_domain()
@@ -207,6 +199,8 @@ $icode%m% = %af%.size_range()
 $icode%v% = %af%.size_var()
 %$$
 $icode%p% = %af%.size_op()
+%$$
+$icode%q% = %af%.size_order()
 %$$
 
 $head af$$
@@ -251,6 +245,17 @@ $codei%
 and is the number of atomic operations that are used to express
 the dependent variables as a function of the independent variables.
 
+$head size_order$$
+The return value has prototype
+$codei%
+	int %q%
+%$$
+and is the number of Taylor coefficients currently stored in $icode af$$,
+for every variable in the operation sequence corresponding to $icode af$$.
+These coefficients are computed by $cref cpp_a_fun_forward$$.
+This is different from the other function properties in that it can change
+(after each call to $icode%af%.forward%$$).
+
 $children%
 	lib/example/cplusplus/a_fun_property_xam.cpp
 %$$
@@ -271,6 +276,9 @@ int a_fun::size_var(void) const
 // size_op
 int a_fun::size_op(void) const
 {	return ptr_->size_op(); }
+// size_order
+int a_fun::size_order(void) const
+{	return ptr_->size_order(); }
 /*
 ------------------------------------------------------------------------------
 $begin cpp_a_fun_jacobian$$
@@ -352,9 +360,6 @@ $spell
 $$
 
 $section Hessian of an AD Function$$
-$spell
-	vec
-$$
 
 $head Syntax$$
 $icode%H% = %af%.hessian(%x%, %w%)%$$
@@ -430,14 +435,12 @@ std::vector<double> a_fun::hessian(
 ------------------------------------------------------------------------------
 $begin cpp_a_fun_forward$$
 $spell
-	vec
 	af
 	xp
 	Taylor
 	yp
 	const
 	vec
-	xp
 $$
 
 $section Forward Mode AD$$
@@ -632,7 +635,7 @@ std::vector<double> a_fun::reverse(int q, const std::vector<double>& yq)
 }
 /*
 ------------------------------------------------------------------------------
-$begin a_fun_optimize$$
+$begin cpp_a_fun_optimize$$
 $spell
 	af
 $$
@@ -655,15 +658,11 @@ $codei%
 	a_fun %af%
 %$$
 
-
 $children%
-	lib/example/cplusplus/a_fun_optimize_xam.cpp%
-	lib/example/python/a_fun_optimize_xam.py
+	lib/example/cplusplus/a_fun_optimize_xam.cpp
 %$$
 $head Example$$
-$cref/C++/a_fun_optimize_xam.cpp/$$,
-$cref/Python/a_fun_optimize_xam.py/$$.
-
+$cref a_fun_optimize_xam.cpp$$
 
 $end
 */

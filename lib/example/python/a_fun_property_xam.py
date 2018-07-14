@@ -49,9 +49,14 @@ def a_fun_property_xam() :
 	#
 	# check af properties
 	ok = ok and af.size_domain() == n_ind
-	ok = ok and af.size_range() == n_dep
-	ok = ok and af.size_var() == n_var
-	ok = ok and af.size_op() == n_op
+	ok = ok and af.size_range()  == n_dep
+	ok = ok and af.size_var()    == n_var
+	ok = ok and af.size_op()     == n_op
+	ok = ok and af.size_order()  == 0
+	#
+	# compute zero order Taylor coefficients
+	y  = af.forward(0, x)
+	ok = ok and af.size_order() == 1
 	#
 	return( ok  )
 #

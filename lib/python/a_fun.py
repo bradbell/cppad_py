@@ -22,6 +22,7 @@
 #	%lib/python/a_fun_hessian.py
 #	%lib/python/a_fun_forward.py
 #	%lib/python/a_fun_reverse.py
+#	%lib/python/a_fun_optimize.omh
 # %$$
 #
 # $end
@@ -49,6 +50,10 @@ class a_fun :
 	# size_op
 	def size_op(self) :
 		return self.af.size_op()
+	#
+	# size_order
+	def size_order(self) :
+		return self.af.size_order()
 	#
 	# jacobian: see a_fun_jacobian.py
 	def jacobian(self, x) :

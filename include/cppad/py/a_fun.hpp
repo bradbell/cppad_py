@@ -63,6 +63,7 @@ class CPPAD_SWIG_LIB_PUBLIC a_fun
 	int size_range(void) const;
 	int size_var() const;
 	int size_op() const;
+	int size_order() const;
 	// ------------------------------------------------------------------------
 	// public member in Swig interface that compute sparse results
 	// (these are implemented in sparse.cpp instead of a_fun.cpp).

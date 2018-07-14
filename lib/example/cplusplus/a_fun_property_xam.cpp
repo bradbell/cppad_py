@@ -23,17 +23,17 @@ bool a_fun_property_xam(void) {
 	int n_ind = 1; // number of independent variables
 	int n_dep = 2; // number of dependent variables
 	int n_var = 1; // phantom variable at address 0
-	int n_op = 1;  // special operator at beginning
+	int n_op  = 1; // special operator at beginning
 	//
 	// dimension some vectors
-	vec_double x = vec_double(n_ind);
+	vec_double x    = vec_double(n_ind);
 	vec_a_double ay = vec_a_double(n_dep);
 	//
 	// independent variables
-	x[0] = 1.0;
+	x[0]            = 1.0;
 	vec_a_double ax = cppad_py::independent(x);
-	n_var = n_var + n_ind; // one for each indpendent
-	n_op = n_op + n_ind;
+	n_var           = n_var + n_ind; // one for each indpendent
+	n_op            = n_op + n_ind;
 	//
 	// first dependent variable
 	ay[0] = ax[0] + ax[0];
@@ -42,19 +42,23 @@ bool a_fun_property_xam(void) {
 	//
 	// second dependent variable
 	a_double ax0 = ax[0];
-	ay[1] = ax0.sin();
-	n_var = n_var + 2; // two varialbes, one operator
-	n_op = n_op + 1;
+	ay[1]        = ax0.sin();
+	n_var        = n_var + 2; // two varialbes, one operator
+	n_op         = n_op + 1;
 	//
 	// define f(x) = y
 	a_fun af = a_fun(ax, ay);
-	n_op = n_op + 1; // speical operator at end
+	n_op     = n_op + 1; // speical operator at end
 	//
 	// check af properties
 	ok = ok && af.size_domain() == n_ind;
-	ok = ok && af.size_range() == n_dep;
-	ok = ok && af.size_var() == n_var;
-	ok = ok && af.size_op() == n_op;
+	ok = ok && af.size_range()  == n_dep;
+	ok = ok && af.size_var()    == n_var;
+	ok = ok && af.size_op()     == n_op;
+	//
+	// compute zero order Taylor coefficients
+	vec_double y  = af.forward(0, x);
+	ok = ok && af.size_order() == 1;
 	//
 	return( ok  );
 }

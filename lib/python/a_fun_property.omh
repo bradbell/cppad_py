@@ -19,6 +19,7 @@ $spell
 	var
 	op
 	const
+	Taylor
 $$
 
 $head Syntax$$
@@ -29,6 +30,8 @@ $icode%m% = %af%.size_range()
 $icode%v% = %af%.size_var()
 %$$
 $icode%p% = %af%.size_op()
+%$$
+$icode%q% = %af%.size_order()
 %$$
 
 $head af$$
@@ -58,6 +61,14 @@ $head size_op$$
 The return value $icode p$$ is an $code int$$
 and is the number of atomic operations that are used to express
 the dependent variables as a function of the independent variables.
+
+$head size_order$$
+The return value $icode q$$ is an $code int$$
+and is the number of Taylor coefficients currently stored in $icode af$$,
+for every variable in the operation sequence corresponding to $icode af$$.
+These coefficients are computed by $cref py_a_fun_forward$$.
+This is different from the other function properties in that it can change
+(after each call to $icode%af%.forward%$$).
 
 $children%
 	lib/example/python/a_fun_property_xam.py
