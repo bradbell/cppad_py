@@ -329,7 +329,6 @@ $latex \[
 	J [ i * n + j ] = \frac{ \partial f_i }{ \partial x_j } (x)
 \] $$
 
-
 $children%
 	lib/example/cplusplus/a_fun_jacobian_xam.cpp
 %$$
@@ -414,13 +413,11 @@ $latex \[
 	H [ i * n + j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
 \] $$
 
-
 $children%
 	lib/example/cplusplus/a_fun_hessian_xam.cpp
 %$$
 $head Example$$
 $cref a_fun_hessian_xam.cpp$$
-
 
 $end
 */
@@ -488,8 +485,8 @@ This argument has prototype
 $codei%
 	int %p%
 %$$
-and is a non-negative integer.
-Its value is the order of the Taylor coefficient being calculated.
+and is non-negative.
+It is the order of the Taylor coefficient being calculated.
 If there was no call to $code forward$$ for this $icode af$$,
 the value of $icode p$$ must be zero.
 Otherwise, it must be between zero and one greater that its
@@ -519,7 +516,6 @@ $children%
 $head Example$$
 $cref a_fun_forward_xam.cpp$$
 
-
 $end
 */
 std::vector<double> a_fun::forward(int p, const std::vector<double>& xp)
@@ -527,7 +523,7 @@ std::vector<double> a_fun::forward(int p, const std::vector<double>& xp)
 }
 /*
 -------------------------------------------------------------------------------
-$begin a_fun_reverse$$
+$begin cpp_a_fun_reverse$$
 $spell
 	vec
 	af
@@ -586,7 +582,8 @@ This argument has prototype
 $codei%
 	int %q%
 %$$
-Its value is the number of the Taylor coefficient (for each variable)
+and is positive.
+It is the number of the Taylor coefficient (for each variable)
 that we are computing the derivative with respect to.
 It must be greater than zero, and
 less than or equal $icode%p% + 1%$$,
@@ -621,13 +618,10 @@ the partial derivative of
 $latex G(T(S))$$ w.r.t. $latex S_j^{(k)} (t) / k !$$.
 
 $children%
-	lib/example/cplusplus/a_fun_reverse_xam.cpp%
-	lib/example/python/a_fun_reverse_xam.py
+	lib/example/cplusplus/a_fun_reverse_xam.cpp
 %$$
 $head Example$$
-$cref/C++/a_fun_reverse_xam.cpp/$$,
-$cref/Python/a_fun_reverse_xam.py/$$.
-
+$cref a_fun_reverse_xam.cpp$$
 
 $end
 */

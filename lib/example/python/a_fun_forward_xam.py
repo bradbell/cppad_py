@@ -28,9 +28,9 @@ def a_fun_forward_xam() :
 	ax = cppad_py.independent(xp)
 	#
 	# create dependent varialbes ay with ay0 = ax0 * ax1
-	ax0 = ax[0]
-	ax1 = ax[1]
-	ay = numpy.zeros(n_dep, dtype=cppad_py.a_double)
+	ax0    = ax[0]
+	ax1    = ax[1]
+	ay    = numpy.zeros(n_dep, dtype=cppad_py.a_double)
 	ay[0] = ax0 * ax1
 	#
 	# define af corresponding to f(x) = x0 * x1
@@ -40,14 +40,14 @@ def a_fun_forward_xam() :
 	# it follows that Y(t) = f(X(t)) = (3 + t) * (2 + t)
 	#
 	# Y(0) = 6 and p ! = 1
-	p = 0
+	p     = 0
 	xp[0] = 3.0
 	xp[1] = 2.0
 	yp = af.forward(p, xp)
 	ok = ok and yp[0] == 6.0
 	#
 	# first order Taylor coefficients for X(t)
-	p = 1
+	p     = 1
 	xp[0] = 1.0
 	xp[1] = 1.0
 	#
@@ -57,7 +57,7 @@ def a_fun_forward_xam() :
 	ok = ok and yp[0] == 5.0
 	#
 	# second order Taylor coefficients for X(t)
-	p = 2
+	p     = 2
 	xp[0] = 0.0
 	xp[1] = 0.0
 	#

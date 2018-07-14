@@ -74,6 +74,7 @@ else
 	-e "/\$cref.C++.${section}_xam.cpp.\$\\\$,/d" \
 	-e "s|\$cref/Python/${section}_xam.py/.*|\$cref ${section}_xam.py\$\$|" \
 	-e "/lib.example.cplusplus.${section}_xam.cpp/d" \
+	-e 's|/cpp_\([a-z_]*\)/|/py_\1/|g' \
 	>> $new_file
 fi
 git add $new_file
@@ -86,6 +87,22 @@ sed -i lib/cplusplus/$file \
 	-e "s|\$cref/C++/${section}_xam.cpp/.*|\$cref ${section}_xam.cpp\$\$|" \
 	-e "/lib.example.python.${section}_xam.py/d" \
 	-e "s|\\(lib.example.cplusplus.${section}_xam.cpp\\)%|\\1|"
+# -----------------------------------------------------------------------------
+# fix cross references in all c++ files
+list=`ls lib/cplusplus/*.cpp`
+for file in $list
+do
+	sed -i $file \
+		-e "s|/${section}/|cpp_&|g" \
+		-e "s|\$cref $section\\\$|\$cref cppad_$section\$|"
+done
+# -----------------------------------------------------------------------------
+# fix cross references in all python files
+list=`ls lib/python/*.py`
+for file in $list
+do
+	sed -i $file -e "s|/${section}/|py_&|g"
+done
 # -----------------------------------------------------------------------------
 echo 'bin/doc2py.sh: OK'
 exit 0

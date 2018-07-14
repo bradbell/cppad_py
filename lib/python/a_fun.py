@@ -21,6 +21,7 @@
 #	%lib/python/a_fun_jacobian.py
 #	%lib/python/a_fun_hessian.py
 #	%lib/python/a_fun_forward.py
+#	%lib/python/a_fun_reverse.py
 # %$$
 #
 # $end
@@ -63,7 +64,7 @@ class a_fun :
 	#
 	# reverse
 	def reverse(self, q, yq) :
-		return self.af.reverse(q, yq)
+		return cppad_py.a_fun_reverse(self.af, q, yq)
 	#
 	# optimize
 	def optimize(self) :

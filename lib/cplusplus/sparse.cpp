@@ -842,7 +842,7 @@ This function uses first order forward mode sweeps $cref cpp_a_fun_forward$$
 to compute multiple columns of the Jacobian at the same time.
 
 $head sparse_jac_rev$$
-This function uses first order reverse mode sweeps $cref a_fun_reverse$$
+This function uses first order reverse mode sweeps $cref cpp_a_fun_reverse$$
 to compute multiple rows of the Jacobian at the same time.
 
 $head af$$

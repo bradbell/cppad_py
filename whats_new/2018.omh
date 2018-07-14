@@ -21,7 +21,7 @@ $section Cppad Py Changes During 2018$$
 
 $head 07-14$$
 Continue conversion of python library to using $code numpy.array$$; see
-$cref py_a_fun_forward$$.
+$cref py_a_fun_forward$$, $cref py_a_fun_reverse$$.
 
 $head 07-13$$
 Continue conversion of python library to using $code numpy.array$$; see
