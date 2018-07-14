@@ -15,13 +15,18 @@ $spell
 	numpy
 	ind
 	dep
+	af
 $$
 
 $section Cppad Py Changes During 2018$$
 
 $head 07-14$$
+$list number$$
 Continue conversion of python library to using $code numpy.array$$; see
 $cref py_a_fun_forward$$, $cref py_a_fun_reverse$$.
+$lnext
+Add the $cref/af.size_order()/py_a_fun_property/size_order/$$ function.
+$lend
 
 $head 07-13$$
 Continue conversion of python library to using $code numpy.array$$; see

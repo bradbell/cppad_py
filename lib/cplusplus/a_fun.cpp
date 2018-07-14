@@ -254,7 +254,8 @@ and is the number of Taylor coefficients currently stored in $icode af$$,
 for every variable in the operation sequence corresponding to $icode af$$.
 These coefficients are computed by $cref cpp_a_fun_forward$$.
 This is different from the other function properties in that it can change
-(after each call to $icode%af%.forward%$$).
+after each call to $icode%af%.forward%$$; see
+$cref/size_order/cpp_a_fun_forward/p/size_order/$$ in the forward mode section.
 
 $children%
 	lib/example/cplusplus/a_fun_property_xam.cpp
@@ -462,9 +463,9 @@ This object has prototype
 $codei%
 	a_fun %af%
 %$$
-Note that its state is changed by this operation because it keeps
+Note that its state is changed by this operation because
 all the Taylor coefficient that it calculates for every
-variable in recording it stored.
+variable in recording are stored.
 See more discussion of this fact under the heading
 $cref/p/cpp_a_fun_forward/p/$$ below.
 
@@ -496,6 +497,10 @@ Otherwise, it must be between zero and one greater that its
 value for the previous call using this $icode af$$.
 After this call, the Taylor coefficients for orders zero though $icode p$$,
 and for every variable in the recording, will be stored in $icode af$$.
+
+$subhead size_order$$
+After this call,
+$cref/af.size_order()/cpp_a_fun_property/size_order/$$ is $icode%p%+1%$$.
 
 $head xp$$
 This argument has prototype
@@ -589,11 +594,9 @@ and is positive.
 It is the number of the Taylor coefficient (for each variable)
 that we are computing the derivative with respect to.
 It must be greater than zero, and
-less than or equal $icode%p% + 1%$$,
-the number of Taylor coefficient stored in $icode af$$.
-(The number of Taylor coefficients is equal to $icode%p%+1%$$ where
-$cref/p/cpp_a_fun_forward/p/$$ is the order for the previous $code forward$$
-call using $icode af$$.)
+less than or equal
+the number of Taylor coefficient stored in $icode af$$; i.e.,
+$cref/af.size_order()/cpp_a_fun_property/size_order/$$.
 
 $head yq$$
 This argument has prototype

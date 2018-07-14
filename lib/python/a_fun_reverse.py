@@ -59,12 +59,9 @@
 # This argument has type $code int$$ and is positive.
 # It is the number of the Taylor coefficient (for each variable)
 # that we are computing the derivative with respect to.
-# It must be greater than zero, and
-# less than or equal $icode%p% + 1%$$,
-# the number of Taylor coefficient stored in $icode af$$.
-# (The number of Taylor coefficients is equal to $icode%p%+1%$$ where
-# $cref/p/py_a_fun_forward/p/$$ is the order for the previous $code forward$$
-# call using $icode af$$.)
+# It must be greater than zero, and less than or equal
+# the number of Taylor coefficient stored in $icode af$$; i.e.,
+# $cref/af.size_order()/py_a_fun_property/size_order/$$.
 #
 # $head yq$$
 # This argument is a numpy matrix with $code float$$ elements,

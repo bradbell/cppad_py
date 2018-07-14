@@ -33,9 +33,9 @@
 # $head af$$
 # This object must have been returned by a previous call to the python
 # $cref/a_fun/py_a_fun_ctor/$$ constructor.
-# Note that its state is changed by this operation because it keeps
+# Note that its state is changed by this operation because
 # all the Taylor coefficient that it calculates for every
-# variable in recording it stored.
+# variable in recording are stored.
 # See more discussion of this fact under the heading
 # $cref/p/py_a_fun_forward/p/$$ below.
 #
@@ -63,6 +63,10 @@
 # value for the previous call using this $icode af$$.
 # After this call, the Taylor coefficients for orders zero though $icode p$$,
 # and for every variable in the recording, will be stored in $icode af$$.
+#
+# $subhead size_order$$
+# After this call,
+# $cref/af.size_order()/py_a_fun_property/size_order/$$ is $icode%p%+1%$$.
 #
 # $head xp$$
 # This argument is a numpy vector with $code float$$ elements

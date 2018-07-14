@@ -68,7 +68,8 @@ and is the number of Taylor coefficients currently stored in $icode af$$,
 for every variable in the operation sequence corresponding to $icode af$$.
 These coefficients are computed by $cref py_a_fun_forward$$.
 This is different from the other function properties in that it can change
-(after each call to $icode%af%.forward%$$).
+after each call to $icode%af%.forward%$$; see
+$cref/size_order/py_a_fun_forward/p/size_order/$$ in the forward mode section.
 
 $children%
 	lib/example/python/a_fun_property_xam.py
