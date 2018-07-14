@@ -24,8 +24,8 @@
 # $cref/a_fun/py_a_fun_ctor/$$ constructor.
 # Note that its state is changed by this operation.
 # The zero order
-# $cref/Taylor coefficients/a_fun_forward/Taylor Coefficient/$$ in $icode af$$
-# correspond to the value of $icode x$$.
+# $cref/Taylor coefficients/py_a_fun_forward/Taylor Coefficient/$$
+# in $icode af$$ correspond to the value of $icode x$$.
 # The other Taylor coefficients in $icode af$$ are unspecified.
 #
 # $head f(x)$$

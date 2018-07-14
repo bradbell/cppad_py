@@ -20,6 +20,7 @@
 #	%lib/python/a_fun_property.omh
 #	%lib/python/a_fun_jacobian.py
 #	%lib/python/a_fun_hessian.py
+#	%lib/python/a_fun_forward.py
 # %$$
 #
 # $end

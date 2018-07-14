@@ -26,6 +26,7 @@ from cppad_py.cppad_py_swig import vec_int
 # functions that require a python wraper
 from cppad_py.a_fun           import a_fun
 from cppad_py.a_fun_ctor      import a_fun_ctor
+from cppad_py.a_fun_forward   import a_fun_forward
 from cppad_py.a_fun_hessian   import a_fun_hessian
 from cppad_py.a_fun_jacobian  import a_fun_jacobian
 from cppad_py.independent     import independent

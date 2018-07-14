@@ -838,7 +838,7 @@ We use the notation $latex J_{i,j} (x)$$ to denote the partial of
 $latex F_i (x)$$ with respect to $latex x_j$$.
 
 $head sparse_jac_for$$
-This function uses first order forward mode sweeps $cref a_fun_forward$$
+This function uses first order forward mode sweeps $cref cpp_a_fun_forward$$
 to compute multiple columns of the Jacobian at the same time.
 
 $head sparse_jac_rev$$
@@ -916,7 +916,7 @@ not counting the zero order forward sweep,
 or combining multiple columns (rows) into a single sweep.
 
 $head Uses Forward$$
-After each call to $cref a_fun_forward$$,
+After each call to $cref cpp_a_fun_forward$$,
 the object $icode af$$ contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
 After a call to $code sparse_jac_forward$$ or $code sparse_jac_rev$$,
@@ -1097,7 +1097,7 @@ not counting the zero order forward sweep,
 or combining multiple columns and rows into a single sweep.
 
 $head Uses Forward$$
-After each call to $cref a_fun_forward$$,
+After each call to $cref cpp_a_fun_forward$$,
 the object $icode af$$ contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
 After a call to $code sparse_hes$$

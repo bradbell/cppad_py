@@ -10,7 +10,6 @@
 #	vec
 #	af
 #	Taylor
-#	const
 #	Jacobian
 #	numpy
 # $$
@@ -25,8 +24,8 @@
 # $cref/a_fun/py_a_fun_ctor/$$ constructor.
 # Note that its state is changed by this operation.
 # The zero order
-# $cref/Taylor coefficients/a_fun_forward/Taylor Coefficient/$$ in $icode af$$
-# correspond to the value of $icode x$$.
+# $cref/Taylor coefficients/py_a_fun_forward/Taylor Coefficient/$$
+# in $icode af$$ correspond to the value of $icode x$$.
 # The other Taylor coefficients in $icode af$$ are unspecified.
 #
 # $head f(x)$$
@@ -68,10 +67,10 @@ def a_fun_jacobian(af, x) :
 	J = af.jacobian(x)
 	computes the Jacobian of the function corresponding to af
 	"""
-	# convert x -> v
+	# convert x -> u
 	if isinstance(x, cppad_py.vec_double) :
 		is_numpy = False
-		v        = x
+		u        = x
 		n        = x.size()
 	elif isinstance(x, numpy.ndarray) :
 		is_numpy =  True
@@ -79,9 +78,9 @@ def a_fun_jacobian(af, x) :
 			msg = 'af.jacobian(x): numpy array x is not a vector'
 			raise NotImplementedError(msg)
 		n = x.size
-		v = cppad_py.vec_double(n)
+		u = cppad_py.vec_double(n)
 		for i in range(n) :
-			v[i] = x[i]
+			u[i] = x[i]
 	else :
 		msg = 'af.jacobian(x): x is not a vec_double or numpy vector'
 		raise NotImplementedError(msg)
@@ -90,7 +89,7 @@ def a_fun_jacobian(af, x) :
 		raise NotImplementedError(msg)
 	#
 	# call jacobian
-	v =  af.jacobian(v)
+	v =  af.jacobian(u)
 	#
 	# convert v -> J
 	if not is_numpy :
@@ -100,6 +99,6 @@ def a_fun_jacobian(af, x) :
 		J = numpy.zeros((m, n), dtype = float)
 		for i in range(m) :
 			for j in range(n) :
-				# must a copy because av will be deleted
+				# do not need to copy because float is not mutable
 				J[i, j] = v[i * n + j]
 	return J

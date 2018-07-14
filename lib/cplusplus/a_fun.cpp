@@ -297,7 +297,7 @@ $codei%
 %$$
 Note that its state is changed by this operation.
 The zero order
-$cref/Taylor coefficients/a_fun_forward/Taylor Coefficient/$$ in $icode af$$
+$cref/Taylor coefficients/cpp_a_fun_forward/Taylor Coefficient/$$ in $icode af$$
 correspond to the value of $icode x$$.
 The other Taylor coefficients in $icode af$$ are unspecified.
 
@@ -367,7 +367,7 @@ $codei%
 %$$
 Note that its state is changed by this operation.
 The zero order
-$cref/Taylor coefficients/a_fun_forward/Taylor Coefficient/$$ in $icode af$$
+$cref/Taylor coefficients/cpp_a_fun_forward/Taylor Coefficient/$$ in $icode af$$
 correspond to the value of $icode x$$.
 The other Taylor coefficients in $icode af$$ are unspecified.
 
@@ -431,7 +431,7 @@ std::vector<double> a_fun::hessian(
 }
 /*
 ------------------------------------------------------------------------------
-$begin a_fun_forward$$
+$begin cpp_a_fun_forward$$
 $spell
 	vec
 	af
@@ -439,13 +439,11 @@ $spell
 	Taylor
 	yp
 	const
-$$
-
-$section Forward Mode AD$$
-$spell
 	vec
 	xp
 $$
+
+$section Forward Mode AD$$
 
 $head Syntax$$
 $icode%yp% = %af%.forward(%p%, %xp%)%$$
@@ -468,7 +466,7 @@ Note that its state is changed by this operation because it keeps
 all the Taylor coefficient that it calculates for every
 variable in recording it stored.
 See more discussion of this fact under the heading
-$cref/p/a_fun_forward/p/$$ below.
+$cref/p/cpp_a_fun_forward/p/$$ below.
 
 $head f(x)$$
 We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
@@ -490,7 +488,7 @@ This argument has prototype
 $codei%
 	int %p%
 %$$
-i.e., it is a positive integer.
+and is a non-negative integer.
 Its value is the order of the Taylor coefficient being calculated.
 If there was no call to $code forward$$ for this $icode af$$,
 the value of $icode p$$ must be zero.
@@ -516,12 +514,10 @@ and its size is $icode m$$.
 It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
 
 $children%
-	lib/example/cplusplus/a_fun_forward_xam.cpp%
-	lib/example/python/a_fun_forward_xam.py
+	lib/example/cplusplus/a_fun_forward_xam.cpp
 %$$
 $head Example$$
-$cref/C++/a_fun_forward_xam.cpp/$$,
-$cref/Python/a_fun_forward_xam.py/$$.
+$cref a_fun_forward_xam.cpp$$
 
 
 $end
@@ -566,14 +562,14 @@ in to the constructor for $icode af$$.
 
 $subhead X(t), S$$
 This is the same function as
-$cref/X(t)/a_fun_forward/X(t)/$$ in the previous call to
+$cref/X(t)/cpp_a_fun_forward/X(t)/$$ in the previous call to
 $icode%af%.forward%$$.
 We use $latex S \in \B{R}^{n \times q}$$ to denote the Taylor coefficients
 of $latex X(t)$$.
 
 $subhead Y(t), T$$
 This is the same function as
-$cref/Y(t)/a_fun_forward/Y(t)/$$ in the previous call to
+$cref/Y(t)/cpp_a_fun_forward/Y(t)/$$ in the previous call to
 $icode%af%.forward%$$.
 We use $latex T \in \B{R}^{m \times q}$$ to denote the Taylor coefficients
 of $latex Y(t)$$.
@@ -596,7 +592,7 @@ It must be greater than zero, and
 less than or equal $icode%p% + 1%$$,
 the number of Taylor coefficient stored in $icode af$$.
 (The number of Taylor coefficients is equal to $icode%p%+1%$$ where
-$cref/p/a_fun_forward/p/$$ is the order for the previous $code forward$$
+$cref/p/cpp_a_fun_forward/p/$$ is the order for the previous $code forward$$
 call using $icode af$$.)
 
 $head yq$$

@@ -566,7 +566,7 @@ If $icode left$$ or $icode right$$ is a
 $cref/variable/a_double_property/variable/$$,
 it may be desirable to switch between $icode if_true$$ and $icode if_false$$
 depending of the value of the independent variable during
-calls to order zero $cref a_fun_forward$$.
+calls to order zero $cref cpp_a_fun_forward$$.
 The $code cond_assign$$ does this.
 
 $head target$$
