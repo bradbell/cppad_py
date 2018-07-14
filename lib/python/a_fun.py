@@ -59,7 +59,7 @@ class a_fun :
 	#
 	# forward
 	def forward(self, p, xp) :
-		return self.af.forward(p, xp)
+		return cppad_py.a_fun_forward(self.af, p, xp)
 	#
 	# reverse
 	def reverse(self, q, yq) :

@@ -115,7 +115,7 @@ def a_fun_forward(af, p, xp) :
 		raise NotImplementedError(msg)
 	#
 	# call forward
-	v =  af.forward(u)
+	v =  af.forward(p, u)
 	#
 	# convert v -> yp
 	if not is_numpy :

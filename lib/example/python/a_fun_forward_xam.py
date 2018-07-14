@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def a_fun_forward_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable
@@ -30,7 +30,7 @@ def a_fun_forward_xam() :
 	# create dependent varialbes ay with ay0 = ax0 * ax1
 	ax0 = ax[0]
 	ax1 = ax[1]
-	ay = numpy.zeros(n_dep, dtype=cppad.a_double)
+	ay = numpy.zeros(n_dep, dtype=cppad_py.a_double)
 	ay[0] = ax0 * ax1
 	#
 	# define af corresponding to f(x) = x0 * x1
