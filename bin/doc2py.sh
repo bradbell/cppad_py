@@ -54,7 +54,7 @@ cat << EOF > $new_file
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 EOF
-sed -n -e "/\$begin $section/,/\$end/p" lib/cplusplus/$file  >> $new_file
+sed -n -e "/\$begin $section\\\$/,/\$end/p" lib/cplusplus/$file  >> $new_file
 if [ "$ext" == '.omh' ]
 then
 	sed -i $new_file \

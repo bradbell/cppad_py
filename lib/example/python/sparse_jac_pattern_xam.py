@@ -52,10 +52,10 @@ def sparse_jac_pattern_xam() :
 	for mode in range( 2 ) :
 		pat_out = cppad_py.sparse_rc()
 		if mode == 0  :
-			af.for_jac_sparsity(pat_in, pat_out)
+			af.for_jac_sparsity(pat_in.rc, pat_out.rc)
 		#
 		if mode == 1  :
-			af.rev_jac_sparsity(pat_in, pat_out)
+			af.rev_jac_sparsity(pat_in.rc, pat_out.rc)
 		#
 		#
 		# check that result is sparsity pattern for Jacobian

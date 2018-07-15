@@ -15,7 +15,7 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
 /*
 -------------------------------------------------------------------------------
-$begin sparse_rc$$
+$begin cpp_sparse_rc$$
 $spell
 	rc
 	nr
@@ -32,7 +32,7 @@ $$
 $section Sparsity Patterns$$
 
 $head Syntax$$
-$icode%pattern%   = cppad_py.%sparse_rc()
+$icode%pattern%   = cppad_py::sparse_rc()
 %$$
 $icode%pattern%.resize(%nr%, %nc%, %nnz%)
 %$$
@@ -60,23 +60,25 @@ $codei%
 %$$
 It is used to hold a sparsity pattern for a matrix.
 The sparsity $icode pattern$$ is $code const$$
-except during its constructor, $code resize$$, and $code put$$.
+except during the $code resize$$ and $code put$$ operations.
 
 $head nr$$
-This argument and result has prototype
+This argument has prototype
 $codei%
 	int %nr%
 %$$
-It is the number of rows in the sparsity pattern.
+is non-negative, and specifies
+the number of rows in the sparsity pattern.
 The function $code nr()$$ returns the value of
 $icode nr$$ in the previous $code resize$$ operation.
 
 $head nc$$
-This argument and result has prototype
+This argument has prototype
 $codei%
 	int %nc%
 %$$
-It is the number of columns in the sparsity pattern.
+is non-negative, and specifies
+the number of columns in the sparsity pattern.
 The function $code nc()$$ returns the value of
 $icode nc$$ in the previous $code resize$$ operation.
 
@@ -110,6 +112,7 @@ This argument has type
 $codei%
 	int %k%
 %$$
+is non-negative,
 and must be less than $icode nnz$$.
 
 $subhead r$$
@@ -117,8 +120,8 @@ This argument has type
 $codei%
 	int %r%
 %$$
+is non-negative, and must be less than $icode nr$$.
 It specifies the value assigned to $icode%row%[%k%]%$$ and must
-be less than $icode nr$$.
 
 $subhead c$$
 This argument has type
@@ -185,12 +188,10 @@ This routine generates an assert if there are two entries with the same
 row and column values (if $code NDEBUG$$ is not defined).
 
 $children%
-	lib/example/cplusplus/sparse_rc_xam.cpp%
-	lib/example/python/sparse_rc_xam.py
+	lib/example/cplusplus/sparse_rc_xam.cpp
 %$$
 $head Example$$
-$cref/C++/sparse_rc_xam.cpp/$$,
-$cref/Python/sparse_rc_xam.py/$$.
+$cref sparse_rc_xam.cpp$$
 
 $end
 */
@@ -273,7 +274,7 @@ std::vector<int> sparse_rc::col_major(void) const
 }
 /*
 -------------------------------------------------------------------------------
-$begin sparse_rcv$$
+$begin cpp_sparse_rcv$$
 $spell
 	rc
 	rcv
@@ -291,7 +292,7 @@ $$
 $section Sparse Matrices$$
 
 $head Syntax$$
-$icode%matrix% = cppad_py.%sparse_rcv(%pattern%)
+$icode%matrix% = cppad_py::%sparse_rcv(%pattern%)
 %$$
 $icode%nr% = %matrix%.nr()
 %$$
@@ -583,7 +584,7 @@ The argument $icode pattern_in$$ has prototype
 $codei%
 	const sparse_rc& %pattern_in%
 %$$
-see $cref sparse_rc$$.
+see $cref cpp_sparse_rc$$.
 This is a sparsity pattern for $latex R$$.
 
 $head pattern_out$$

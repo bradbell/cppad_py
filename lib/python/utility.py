@@ -121,7 +121,10 @@ def numpy2vec(array, dtype, shape, syntax, name) :
 # %$$
 #
 # $head vec$$
-# This must be a $code cppad_py.vec_double$$ or $code vec_py.vec_a_double$$
+# This must have one of the following types:
+# $code cppad_py.vec_int$$,
+# $code cppad_py.vec_double$$,
+#  $code vec_py.vec_a_double$$.
 # with size equal to $icode%nr%*%nc%$$.
 #
 # $head nr$$
@@ -144,7 +147,9 @@ def numpy2vec(array, dtype, shape, syntax, name) :
 # -----------------------------------------------------------------------------
 def vec2numpy(vec, nr, nc = None) :
 	# dtype
-	if type(vec) == cppad_py.vec_double :
+	if type(vec) == cppad_py.vec_int :
+		dtype = int
+	elif type(vec) == cppad_py.vec_double :
 		dtype = float
 	else :
 		assert type(vec) == cppad_py.vec_a_double

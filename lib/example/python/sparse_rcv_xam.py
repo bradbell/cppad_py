@@ -26,7 +26,8 @@ def sparse_rcv_xam() :
 	#
 	#
 	# create n by n sparse representation of identity matrix
-	matrix = cppad_py.sparse_rcv(pattern)
+	# (temporarly use pattern.rc untile sparse_rcv wrapper is built)
+	matrix = cppad_py.sparse_rcv(pattern.rc)
 	for k in range( n ) :
 		matrix.put(k, 1.0)
 	#

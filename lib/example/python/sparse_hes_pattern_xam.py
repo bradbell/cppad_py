@@ -57,10 +57,10 @@ def sparse_hes_pattern_xam() :
 	for mode in range( 2 ) :
 		pat_out = cppad_py.sparse_rc()
 		if mode == 0  :
-			af.for_hes_sparsity(select_d, select_r, pat_out)
+			af.for_hes_sparsity(select_d, select_r, pat_out.rc)
 		#
 		if mode == 1  :
-			af.rev_hes_sparsity(select_d, select_r, pat_out)
+			af.rev_hes_sparsity(select_d, select_r, pat_out.rc)
 		#
 		#
 		# check that result is sparsity pattern for Hessian of f_0 (x)

@@ -58,7 +58,7 @@ def independent(x) :
 	if isinstance(x, cppad_py.vec_double) :
 		is_numpy = False
 		u        = x
-	elif isinstance(x, numpy.ndarray) :
+	else :
 		is_numpy =  True
 		dtype    = float
 		syntax   = 'independent(x)'

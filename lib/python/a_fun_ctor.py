@@ -60,7 +60,7 @@ def a_fun_ctor(ax, ay) :
 		is_numpy = False
 		au       = ax
 		av       = ay
-	elif isinstance(ax, numpy.ndarray) and isinstance(ay, numpy.ndarray) :
+	else :
 		is_numpy = True
 		dtype    = cppad_py.a_double
 		syntax   = 'a_fun(ax, ay)'
