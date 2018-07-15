@@ -97,11 +97,11 @@ class a_fun :
 	#
 	# sparse_jac_for
 	def sparse_jac_for(self, subset, x, pattern, work) :
-		self.af.sparse_jac_for(subset, x, pattern, work)
+		cppad_py.a_fun_sparse_jac_for(self.af, subset, x, pattern, work)
 	#
 	# sparse_jac_rev
 	def sparse_jac_rev(self, subset, x, pattern, work) :
-		self.af.sparse_jac_rev(subset, x, pattern, work)
+		cppad_py.a_fun_sparse_jac_rev(self.af, subset, x, pattern, work)
 	#
 	# sparse_hes
 	def sparse_hes(self, subset, x, r, pattern, work) :

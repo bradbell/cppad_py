@@ -31,6 +31,8 @@ from cppad_py.a_fun_jacobian  import a_fun_jacobian
 from cppad_py.a_fun_reverse   import a_fun_reverse
 from cppad_py.hes_sparsity    import a_fun_for_hes_sparsity
 from cppad_py.hes_sparsity    import a_fun_rev_hes_sparsity
+from cppad_py.sparse_jac      import a_fun_sparse_jac_for
+from cppad_py.sparse_jac      import a_fun_sparse_jac_rev
 from cppad_py.independent     import independent
 from cppad_py.sparse_rc       import sparse_rc
 from cppad_py.sparse_rcv      import sparse_rcv

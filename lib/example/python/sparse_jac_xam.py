@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def sparse_jac_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable
@@ -22,7 +22,7 @@ def sparse_jac_xam() :
 	aone = cppad_py.a_double(1.0)
 	#
 	# create the independent variables ax
-	x = cppad_py.vec_double(n)
+	x = numpy.empty(n, dtype=float)
 	for i in range( n  ) :
 		x[i] = i + 2.0
 	#
@@ -30,7 +30,7 @@ def sparse_jac_xam() :
 	#
 	# create dependent variables ay with ay[i] = (j+1) * ax[j]
 	# where i = mod(j + 1, n)
-	ay = cppad_py.vec_a_double(n)
+	ay = numpy.empty(n, dtype=cppad_py.a_double)
 	for j in range( n  ) :
 		i = j+1
 		if i >= n  :
@@ -62,10 +62,10 @@ def sparse_jac_xam() :
 		# work space used to save time for multiple calls
 		work = cppad_py.sparse_jac_work()
 		if mode == 0  :
-			af.sparse_jac_for(subset.rcv, x, pat_jac.rc, work)
+			af.sparse_jac_for(subset, x, pat_jac, work)
 		#
 		if mode == 1  :
-			af.sparse_jac_rev(subset.rcv, x, pat_jac.rc, work)
+			af.sparse_jac_rev(subset, x, pat_jac, work)
 		#
 		#
 		# check result

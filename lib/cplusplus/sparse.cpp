@@ -640,7 +640,7 @@ void a_fun::rev_jac_sparsity(
 }
 // ----------------------------------------------------------------------------
 /*
-$begin hes_sparsity$$
+$begin cpp_sparsity$$
 $spell
 	hes
 	af
@@ -799,7 +799,7 @@ void a_fun::rev_hes_sparsity(
 }
 /*
 ------------------------------------------------------------------------------
-$begin sparse_jac$$
+$begin cpp_sparse_jac$$
 $spell
 	Jacobians
 	jac
@@ -818,7 +818,7 @@ $$
 $section Computing Sparse Jacobians$$
 
 $head Syntax$$
-$icode%work% = cppad_py.sparse_jac_work()
+$icode%work% = cppad_py::sparse_jac_work()
 %$$
 $icode%n_sweep% = %af%.sparse_jac_for(%subset%, %x%, %pattern%, %work%)
 %$$
@@ -851,7 +851,7 @@ $codei%
 %$$
 Note that the Taylor coefficients stored in $icode af$$ are affected
 by this operation; see
-$cref/uses forward/sparse_jac/Uses Forward/$$ below.
+$cref/uses forward/cpp_sparse_jac/Uses Forward/$$ below.
 
 $head subset$$
 This argument has prototype
@@ -885,7 +885,7 @@ Its row size is $icode%pattern%.nr() == %m%$$,
 and its column size is $icode%pattern%.nc() == %n%$$.
 It is a sparsity pattern for the Jacobian $latex J(x)$$.
 This argument is not used (and need not satisfy any conditions),
-when $cref/work/sparse_jac/work/$$ is non-empty.
+when $cref/work/cpp_sparse_jac/work/$$ is non-empty.
 
 $head work$$
 This argument has prototype
@@ -926,12 +926,10 @@ $codei%
 All the other forward mode coefficients are unspecified.
 
 $children%
-	lib/example/cplusplus/sparse_jac_xam.cpp%
-	lib/example/python/sparse_jac_xam.py
+	lib/example/cplusplus/sparse_jac_xam.cpp
 %$$
 $head Example$$
-$cref/C++/sparse_jac_xam.cpp/$$,
-$cref/Python/sparse_jac_xam.py/$$.
+$cref sparse_jac_xam.cpp$$
 
 $end
 */

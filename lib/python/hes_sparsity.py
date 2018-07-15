@@ -40,7 +40,7 @@
 # the argument $icode x$$.
 #
 # $head af$$
-# his object must have been returned by a previous call to the python
+# This object must have been returned by a previous call to the python
 # $cref/a_fun/py_a_fun_ctor/$$ constructor.
 #
 # $head select_domain$$
