@@ -36,11 +36,11 @@ $icode%pattern% = cppad_py.%sparse_rc()
 %$$
 $icode%pattern%.resize(%nr%, %nc%, %nnz%)
 %$$
-$icode%pattern%.nr()
+$icode%nr% = %pattern%.nr()
 %$$
-$icode%pattern%.nc()
+$icode%nc% = %pattern%.nc()
 %$$
-$icode%pattern%.nnz()
+$icode%nnz% = %pattern%.nnz()
 %$$
 $icode%pattern%.put(%k%, %r%, %c%)
 %$$
@@ -54,7 +54,7 @@ $icode%col_major% = %pattern%.col_major()
 %$$
 
 $head pattern$$
-The result has prototype
+This result has prototype
 $codei%
 	sparse_rc %pattern%
 %$$
@@ -63,33 +63,37 @@ The sparsity $icode pattern$$ is $code const$$
 except during its constructor, $code resize$$, and $code put$$.
 
 $head nr$$
-This argument has prototype
+This argument and result has prototype
 $codei%
 	int %nr%
 %$$
-It specifies the number of rows in the sparsity pattern.
-The function call $code nr()$$ returns the value of $icode nr$$.
+It is the number of rows in the sparsity pattern.
+The function call $icode%pattern%.nr()%$$ returns the value of
+$icode nr$$ in the previous $code resize$$ operation.
 
 $head nc$$
-This argument has prototype
+This argument and result has prototype
 $codei%
 	int %nc%
 %$$
-It specifies the number of columns in the sparsity pattern.
-The function call $code nc()$$ returns the value of $icode nc$$.
+It is the number of columns in the sparsity pattern.
+The function call $icode%pattern%.nc()%$$ returns the value of
+$icode nc$$ in the previous $code resize$$ operation.
 
 $head nnz$$
-This argument has prototype
+This argument and result has prototype
 $codei%
 	int %nnz%
 %$$
-It specifies the number of possibly non-zero
+It is the number of possibly non-zero
 index pairs in the sparsity pattern.
-The function call $code nnz()$$ returns the value of $icode nnz$$.
+The function call $icode%pattern%.nnz()%$$ returns the value of
+$icode nnz$$ in the previous $code resize$$ operation.
 
 $head resize$$
 The current sparsity pattern is lost and a new one is started
-with the specified parameters. The elements in the $icode row$$
+with the specified parameters.
+After each $code resize$$, the elements in the $icode row$$
 and $icode col$$ vectors should be assigned using $code put$$.
 
 $head put$$
