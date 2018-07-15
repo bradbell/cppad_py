@@ -38,8 +38,9 @@ import cppad_py
 # $code bool$$, $code int$$, $code float$$ or $code cppad_py.a_double$$.
 #
 # $head shape$$
-# This either a $code int$$ or a tuple of $code int$$ with length two.
+# This either a $code int$$ or a tuple of $code int$$ with length one or two.
 # If it is an $code int$$, $icode array$$ is expected to be a vector.
+# If it is a tuple with length one, $icode array$$ is expected to be a vector.
 # Otherwise a matrix is expected.
 #
 # $head syntax$$
@@ -62,16 +63,6 @@ def numpy2vec(array, dtype, shape, syntax, name) :
 	#
 	# dtype
 	assert dtype in [bool, int, float, cppad_py.a_double]
-	#
-	# vector, nr, nc
-	vector = isinstance(shape, int)
-	if vector :
-		nr     = shape
-		nc     = 1
-	else :
-		assert len(shape) == 2
-		nr     = shape[0]
-		nc     = shape[1]
 	# -------------------------------------------------------------------------
 	#
 	if not isinstance(array, numpy.ndarray) :
@@ -80,6 +71,21 @@ def numpy2vec(array, dtype, shape, syntax, name) :
 	if not array.dtype == dtype :
 		msg = syntax + ': ' + name + '.dtype is not ' + str(dtype)
 		raise NotImplementedError(msg)
+	#
+	# vector, nr, nc
+	if isinstance(shape, int) :
+		vector = True
+		nr     = shape
+		nc     = 1
+	elif len(shape) == 1 :
+		vector = True
+		nr     = shape[0]
+		nc     = 1
+	else :
+		assert len(shape) == 2
+		vector = False
+		nr     = shape[0]
+		nc     = shape[1]
 	#
 	if vector and len(array.shape) != 1 :
 		msg = syntax + ': ' + name + ' is not a vector'

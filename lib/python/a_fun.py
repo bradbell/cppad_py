@@ -105,4 +105,4 @@ class a_fun :
 	#
 	# sparse_hes
 	def sparse_hes(self, subset, x, r, pattern, work) :
-		self.af.sparse_hes(subset, x, r, pattern, work)
+		cppad_py.a_fun_sparse_hes(self.af, subset, x, r, pattern, work)

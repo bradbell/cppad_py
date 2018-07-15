@@ -93,8 +93,8 @@ list=`ls lib/cplusplus/*.cpp`
 for file in $list
 do
 	sed -i $file \
-		-e "s|/${section}/|cpp_&|g" \
-		-e "s|\$cref $section\\\$|\$cref cppad_$section\$|"
+		-e "s|/${section}/|/cpp_${section}/|g" \
+		-e "s|\$cref $section\\\$|\$cref cpp_$section\$|"
 done
 # -----------------------------------------------------------------------------
 # fix cross references in all python files

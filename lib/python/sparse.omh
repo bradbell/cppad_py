@@ -14,6 +14,7 @@ $childtable%lib/python/sparse_rc.py
 	%lib/python/jac_sparsity.omh
 	%lib/python/hes_sparsity.py
 	%lib/python/sparse_jac.py
+	%lib/python/sparse_hes.py
 %$$
 
 $end

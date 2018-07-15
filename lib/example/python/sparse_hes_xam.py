@@ -20,7 +20,7 @@ def sparse_hes_xam() :
 	n = 3
 	#
 	# create the independent variables ax
-	x = cppad_py.vec_double(n)
+	x = numpy.empty(n, dtype=float)
 	for i in range( n  ) :
 		x[i] = i + 2.0
 	#
@@ -28,7 +28,7 @@ def sparse_hes_xam() :
 	#
 	# ay[i] = j * ax[j] * ax[i]
 	# where i = mod(j + 1, n)
-	ay = cppad_py.vec_a_double(n)
+	ay = numpy.empty(n, dtype=cppad_py.a_double)
 	for j in range( n  ) :
 		i = j+1
 		if i >= n  :
@@ -48,7 +48,7 @@ def sparse_hes_xam() :
 	# initialize r to all zeros
 	select_d = numpy.empty(n, dtype=bool)
 	select_r = numpy.empty(n, dtype=bool)
-	r = cppad_py.vec_double(n)
+	r = numpy.empty(n, dtype=float)
 	for i in range( n ) :
 		select_d[i] = True
 		select_r[i] = False
@@ -71,7 +71,7 @@ def sparse_hes_xam() :
 	# work space used to save time for multiple calls
 	work = cppad_py.sparse_hes_work()
 	#
-	af.sparse_hes(subset.rcv, x, r, pattern.rc, work)
+	af.sparse_hes(subset, x, r, pattern, work)
 	#
 	# check that result is sparsity pattern for Hessian of f_0 (x)
 	ok = ok and subset.nnz() == 2

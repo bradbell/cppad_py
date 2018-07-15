@@ -981,7 +981,7 @@ int a_fun::sparse_jac_rev(
 }
 /*
 ------------------------------------------------------------------------------
-$begin sparse_hes$$
+$begin cpp_sparse_hes$$
 $spell
 	af
 	Jacobian
@@ -999,7 +999,7 @@ $$
 $section Computing Sparse Hessians$$
 
 $head Syntax$$
-$icode%work% = cppad_py.sparse_hes_work()
+$icode%work% = cppad_py::sparse_hes_work()
 %$$
 $icode%n_sweep% = %af%.sparse_hes(%subset%, %x%, %r%, %pattern%, %work%)
 %$$
@@ -1021,7 +1021,7 @@ $codei%
 %$$
 Note that the Taylor coefficients stored in $icode af$$ are affected
 by this operation; see
-$cref/uses forward/sparse_hes/Uses Forward/$$ below.
+$cref/uses forward/cpp_sparse_hes/Uses Forward/$$ below.
 
 $head subset$$
 This argument has prototype
@@ -1060,11 +1060,11 @@ This argument has prototype
 $codei%
 	const sparse_rc& %pattern%
 %$$
-Its row size and column size is $icode n$$; i.e.,
+Its row size and column sizes are $icode n$$; i.e.,
 $icode%pattern%.nr() == %n%$$ and $icode%pattern%.nc() == %n%$$.
 It is a sparsity pattern for the Hessian $latex H(x)$$.
 This argument is not used (and need not satisfy any conditions),
-when $cref/work/sparse_hes/work/$$ is non-empty.
+when $cref/work/cpp_sparse_hes/work/$$ is non-empty.
 
 $head work$$
 This argument has prototype
@@ -1105,12 +1105,10 @@ $codei%
 All the other forward mode coefficients are unspecified.
 
 $children%
-	lib/example/cplusplus/sparse_hes_xam.cpp%
-	lib/example/python/sparse_hes_xam.py
+	lib/example/cplusplus/sparse_hes_xam.cpp
 %$$
 $head Example$$
-$cref/C++/sparse_hes_xam.cpp/$$,
-$cref/Python/sparse_hes_xam.py/$$.
+$cref sparse_hes_xam.cpp$$
 
 $end
 */
