@@ -32,21 +32,21 @@ $$
 $section Sparsity Patterns$$
 
 $head Syntax$$
-$icode%pattern% = cppad_py.%sparse_rc()
+$icode%pattern%   = cppad_py.%sparse_rc()
 %$$
 $icode%pattern%.resize(%nr%, %nc%, %nnz%)
 %$$
-$icode%nr% = %pattern%.nr()
+$icode%nr%        = %pattern%.nr()
 %$$
-$icode%nc% = %pattern%.nc()
+$icode%nc%        = %pattern%.nc()
 %$$
-$icode%nnz% = %pattern%.nnz()
+$icode%nnz%       = %pattern%.nnz()
 %$$
 $icode%pattern%.put(%k%, %r%, %c%)
 %$$
-$icode%row% = %pattern%.row()
+$icode%row%       = %pattern%.row()
 %$$
-$icode%col% = %pattern%.col()
+$icode%col%       = %pattern%.col()
 %$$
 $icode%row_major% = %pattern%.row_major()
 %$$
@@ -68,7 +68,7 @@ $codei%
 	int %nr%
 %$$
 It is the number of rows in the sparsity pattern.
-The function call $icode%pattern%.nr()%$$ returns the value of
+The function $code nr()$$ returns the value of
 $icode nr$$ in the previous $code resize$$ operation.
 
 $head nc$$
@@ -77,7 +77,7 @@ $codei%
 	int %nc%
 %$$
 It is the number of columns in the sparsity pattern.
-The function call $icode%pattern%.nc()%$$ returns the value of
+The function $code nc()$$ returns the value of
 $icode nc$$ in the previous $code resize$$ operation.
 
 $head nnz$$
@@ -87,7 +87,7 @@ $codei%
 %$$
 It is the number of possibly non-zero
 index pairs in the sparsity pattern.
-The function call $icode%pattern%.nnz()%$$ returns the value of
+The function $code nnz()$$ returns the value of
 $icode nnz$$ in the previous $code resize$$ operation.
 
 $head resize$$
