@@ -5,13 +5,11 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin py_lib$$
+$begin py_sparse$$
 
-$section The Python Library$$
+$section Python Sparsity Routines$$
 
-$childtable%lib/python/a_fun.py
-	%lib/python/sparse.omh
-	%lib/python/utility.omh
+$childtable%lib/python/sparse_rc.py
 %$$
 
 $end

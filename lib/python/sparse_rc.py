@@ -17,6 +17,7 @@
 #	Py
 #	vec
 #	cppad_py
+#	numpy
 # $$
 #
 # $section Sparsity Patterns$$
@@ -88,7 +89,7 @@
 #
 # $subhead r$$
 # This argument is a non-negative $code int$$
-# and must be be less than $icode nr$$.
+# and must be less than $icode nr$$.
 # It specifies the value assigned to $icode%row%[%k%]%$$.
 #
 # $subhead c$$
