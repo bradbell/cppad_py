@@ -62,7 +62,7 @@ def independent(x) :
 		is_numpy =  True
 		dtype    = float
 		syntax   = 'independent(x)'
-		u        = cppad_py.numpy2vec(x, dtype, x.size, syntax, 'x')
+		u = cppad_py.utility.numpy2vec(x, dtype, x.size, syntax, 'x')
 	#
 	# call independent
 	av =  cppad_py.cppad_py_swig.independent(u)

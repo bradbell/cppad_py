@@ -110,7 +110,7 @@ def a_fun_forward(af, p, xp) :
 		is_numpy =  True
 		dtype    = float
 		syntax   = 'af.forward(p, xp)'
-		u        = cppad_py.numpy2vec(xp, dtype, n, syntax, 'xp')
+		u = cppad_py.utility.numpy2vec(xp, dtype, n, syntax, 'xp')
 	#
 	# call forward
 	v =  af.forward(p, u)

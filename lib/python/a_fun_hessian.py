@@ -97,8 +97,8 @@ def a_fun_hessian(af, x, w) :
 		is_numpy = True
 		dtype    = float
 		syntax   = 'af.hessian(x, w)'
-		u        = cppad_py.numpy2vec(x, dtype, n, syntax, 'x')
-		v        = cppad_py.numpy2vec(w, dtype, m, syntax, 'w')
+		u = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
+		v = cppad_py.utility.numpy2vec(w, dtype, m, syntax, 'w')
 	# call hessian
 	z =  af.hessian(u, v)
 	#

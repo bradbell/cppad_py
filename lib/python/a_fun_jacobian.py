@@ -80,7 +80,7 @@ def a_fun_jacobian(af, x) :
 		is_numpy = True
 		dtype    = float
 		syntax   = 'af.jacobian(x)'
-		u        = cppad_py.numpy2vec(x, dtype, n, syntax, 'x')
+		u = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
 	# call jacobian
 	v =  af.jacobian(u)
 	#

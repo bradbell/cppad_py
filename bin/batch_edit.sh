@@ -15,7 +15,7 @@ move_list='
 move_sed='s|cppad_py.i|cppad_py_swig.i|'
 #
 cat << EOF > junk.sed
-s|numpy.zeros|numpy.empty|g
+s| *= *cppad_py.numpy2vec| = cppad_py.utility.numpy2vec|
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

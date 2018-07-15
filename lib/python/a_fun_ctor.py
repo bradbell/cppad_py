@@ -64,8 +64,8 @@ def a_fun_ctor(ax, ay) :
 		is_numpy = True
 		dtype    = cppad_py.a_double
 		syntax   = 'a_fun(ax, ay)'
-		au       = cppad_py.numpy2vec(ax, dtype, ax.size, syntax, 'ax')
-		av       = cppad_py.numpy2vec(ay, dtype, ay.size, syntax, 'ay')
+		au = cppad_py.utility.numpy2vec(ax, dtype, ax.size, syntax, 'ax')
+		av = cppad_py.utility.numpy2vec(ay, dtype, ay.size, syntax, 'ay')
 	#
 	# call a_fun and return result
 	return cppad_py.cppad_py_swig.a_fun(au, av)

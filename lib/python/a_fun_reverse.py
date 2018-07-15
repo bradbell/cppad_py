@@ -114,7 +114,7 @@ def a_fun_reverse(af, q, yq) :
 		dtype    = float
 		shape    = (m, q)
 		syntax   = 'af.reverse(q, yq)'
-		u        = cppad_py.numpy2vec(yq, dtype, shape, syntax, 'yq')
+		u = cppad_py.utility.numpy2vec(yq, dtype, shape, syntax, 'yq')
 	#
 	# call reverse
 	v =  af.reverse(q, u)

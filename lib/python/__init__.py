@@ -35,4 +35,4 @@ from cppad_py.independent     import independent
 # END_SORT_THIS_LINE_MINUS_1
 
 # utilities
-from cppad_py.numpy2vec       import numpy2vec
+import cppad_py.utility
