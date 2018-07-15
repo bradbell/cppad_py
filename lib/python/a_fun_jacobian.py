@@ -67,27 +67,20 @@ def a_fun_jacobian(af, x) :
 	J = af.jacobian(x)
 	computes the Jacobian of the function corresponding to af
 	"""
+	#
+	n = af.size_domain()
+	m = af.size_range()
+	#
 	# convert x -> u
 	if isinstance(x, cppad_py.vec_double) :
 		is_numpy = False
 		u        = x
-		n        = x.size()
-	elif isinstance(x, numpy.ndarray) :
-		is_numpy =  True
-		if( len( x.shape ) != 1 ) :
-			msg = 'af.jacobian(x): numpy array x is not a vector'
-			raise NotImplementedError(msg)
-		n = x.size
-		u = cppad_py.vec_double(n)
-		for i in range(n) :
-			u[i] = x[i]
+		assert x.size() == n
 	else :
-		msg = 'af.jacobian(x): x is not a vec_double or numpy vector'
-		raise NotImplementedError(msg)
-	if n != af.size_domain() :
-		msg = 'af.jacobian(x): size of vector x is not equal af.size_domain()'
-		raise NotImplementedError(msg)
-	#
+		is_numpy = True
+		dtype    = float
+		syntax   = 'af.jacobian(x)'
+		u        = cppad_py.numpy2vec(x, dtype, n, syntax, 'x')
 	# call jacobian
 	v =  af.jacobian(u)
 	#

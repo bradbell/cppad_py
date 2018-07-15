@@ -78,40 +78,27 @@ import numpy
 # This function is used by hessian in a_fun class to implement syntax above
 def a_fun_hessian(af, x, w) :
 	"""
-	H = af.hessian(x)
+	H = af.hessian(x, w)
 	computes Hessian of a function corresponding a sum of the components of af
 	"""
 	from cppad_py import vec_double as vec_double
+	#
+	n = af.size_domain()
+	m = af.size_range()
+	#
 	# convert x -> u, w -> v
 	if isinstance(x, vec_double) and isinstance(w, vec_double) :
 		is_numpy = False
 		u        = x
 		v        = w
-		n        = x.size()
-		m        = w.size()
-	elif isinstance(x, numpy.ndarray) and isinstance(w, numpy.ndarray) :
-		is_numpy =  True
-		if( len( x.shape ) != 1 ) or len( w.shape ) != 1 :
-			msg = 'af.hessian(x): numpy array x is not a vector'
-			raise NotImplementedError(msg)
-		n = x.size
-		u = cppad_py.vec_double(n)
-		for i in range(n) :
-			u[i] = x[i]
-		m = w.size
-		v = cppad_py.vec_double(m)
-		for i in range(m) :
-			v[i] = w[i]
+		assert x.size() == n
+		assert w.size() == m
 	else :
-		msg = 'af.hessian(x, w): arguments not both vec_double or numpy vectors'
-		raise NotImplementedError(msg)
-	if n != af.size_domain() :
-		msg = 'af.hessian(x, w): size of vector x is not equal af.size_domain()'
-		raise NotImplementedError(msg)
-	if m != af.size_range() :
-		msg = 'af.hessian(x, w): size of vector w is not equal af.size_range()'
-		raise NotImplementedError(msg)
-	#
+		is_numpy = True
+		dtype    = float
+		syntax   = 'af.hessian(x, w)'
+		u        = cppad_py.numpy2vec(x, dtype, n, syntax, 'x')
+		v        = cppad_py.numpy2vec(w, dtype, m, syntax, 'w')
 	# call hessian
 	z =  af.hessian(u, v)
 	#

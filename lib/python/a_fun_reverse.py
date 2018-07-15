@@ -96,32 +96,25 @@ import numpy
 # This function is used by reverse in a_fun class to implement syntax above
 def a_fun_reverse(af, q, yq) :
 	"""
-	xq = af.reverse(p, yq)
+	xq = af.reverse(q, yq)
 	given Taylor coefficients for X(t), compute Taylor coefficients for
 	Y(t) = f(X(t)).
 	"""
+	#
+	n = af.size_domain()
+	m = af.size_range()
+	#
 	# convert yq -> u
 	if isinstance(yq, cppad_py.vec_double) :
 		is_numpy = False
 		u        = yq
 		mq       = yq.size()
-	elif isinstance(yq, numpy.ndarray) :
-		is_numpy =  True
-		if( len( yq.shape ) != 2 ) :
-			msg = 'af.reverse(p, yq): numpy array yq is not a matrix'
-			raise NotImplementedError(msg)
-		(m, nc) = yq.shape
-		mq       = m * q
-		u        = cppad_py.vec_double(mq)
-		for i in range(m) :
-			for k in range(q) :
-				u[i * q + k] = yq[i, k]
 	else :
-		msg = 'af.reverse(p, yq): yq is not a vec_double or numpy vector'
-		raise NotImplementedError(msg)
-	if mq != af.size_range() * q :
-		msg = 'af.reverse(p, yq): size of yq not equal af.size_range() * q'
-		raise NotImplementedError(msg)
+		is_numpy =  True
+		dtype    = float
+		shape    = (m, q)
+		syntax   = 'af.reverse(q, yq)'
+		u        = cppad_py.numpy2vec(yq, dtype, shape, syntax, 'yq')
 	#
 	# call reverse
 	v =  af.reverse(q, u)

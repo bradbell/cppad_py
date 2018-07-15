@@ -33,3 +33,6 @@ from cppad_py.a_fun_jacobian  import a_fun_jacobian
 from cppad_py.a_fun_reverse   import a_fun_reverse
 from cppad_py.independent     import independent
 # END_SORT_THIS_LINE_MINUS_1
+
+# utilities
+from cppad_py.numpy2vec       import numpy2vec

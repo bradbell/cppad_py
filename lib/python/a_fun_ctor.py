@@ -61,21 +61,11 @@ def a_fun_ctor(ax, ay) :
 		au       = ax
 		av       = ay
 	elif isinstance(ax, numpy.ndarray) and isinstance(ay, numpy.ndarray) :
-		is_numpy =  True
-		if len( ax.shape ) != 1 or len( ay.shape ) != 1 :
-			msg = 'a_fun(ax, ay): numpy array ax or ay is not a vector'
-			raise NotImplementedError(msg)
-		n  = ax.size
-		au = cppad_py.vec_a_double(n)
-		for i in range(n) :
-			au[i] = ax[i]
-		m  = ay.size
-		av = cppad_py.vec_a_double(m)
-		for i in range(m) :
-			av[i] = ay[i]
-	else :
-		msg = 'a_fun(ax, ay): arguments not both vec_a_double or numpy vectors'
-		raise NotImplementedError(msg)
+		is_numpy = True
+		dtype    = cppad_py.a_double
+		syntax   = 'a_fun(ax, ay)'
+		au       = cppad_py.numpy2vec(ax, dtype, ax.size, syntax, 'ax')
+		av       = cppad_py.numpy2vec(ay, dtype, ay.size, syntax, 'ay')
 	#
 	# call a_fun and return result
 	return cppad_py.cppad_py_swig.a_fun(au, av)

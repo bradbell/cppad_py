@@ -97,26 +97,20 @@ def a_fun_forward(af, p, xp) :
 	given Taylor coefficients for X(t), compute Taylor coefficients for
 	Y(t) = f(X(t)).
 	"""
+	#
+	n = af.size_domain()
+	m = af.size_range()
+	#
 	# convert x -> u
 	if isinstance(xp, cppad_py.vec_double) :
 		is_numpy = False
 		u        = xp
-		n        = xp.size()
-	elif isinstance(xp, numpy.ndarray) :
-		is_numpy =  True
-		if( len( xp.shape ) != 1 ) :
-			msg = 'af.forward(p, xp): numpy array xp is not a vector'
-			raise NotImplementedError(msg)
-		n = xp.size
-		u = cppad_py.vec_double(n)
-		for i in range(n) :
-			u[i] = xp[i]
+		assert xp.size() == n
 	else :
-		msg = 'af.forward(p, xp): xp is not a vec_double or numpy vector'
-		raise NotImplementedError(msg)
-	if n != af.size_domain() :
-		msg = 'af.forward(p, xp): size of vector xp not equal af.size_domain()'
-		raise NotImplementedError(msg)
+		is_numpy =  True
+		dtype    = float
+		syntax   = 'af.forward(p, xp)'
+		u        = cppad_py.numpy2vec(xp, dtype, n, syntax, 'xp')
 	#
 	# call forward
 	v =  af.forward(p, u)

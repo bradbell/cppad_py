@@ -54,30 +54,24 @@ def independent(x) :
 	creates the indepedent numpy vector ax, with value equal numpy vector x,
 	and starts recording a_double operations.
 	"""
-	# convert x -> v
+	# convert x -> u
 	if isinstance(x, cppad_py.vec_double) :
 		is_numpy = False
-		v        = x
+		u        = x
 	elif isinstance(x, numpy.ndarray) :
 		is_numpy =  True
-		if( len( x.shape ) != 1 ) :
-			msg = 'independent(x): numpy array x is not a vector'
-			raise NotImplementedError(msg)
-		n = x.size
-		v = cppad_py.vec_double(n)
-		for i in range(n) :
-			v[i] = x[i]
-	else :
-		msg = 'independent(x): x is not a vec_double or numpy vector'
-		raise NotImplementedError(msg)
+		dtype    = float
+		syntax   = 'independent(x)'
+		u        = cppad_py.numpy2vec(x, dtype, x.size, syntax, 'x')
 	#
 	# call independent
-	av =  cppad_py.cppad_py_swig.independent(v)
+	av =  cppad_py.cppad_py_swig.independent(u)
 	#
 	# convert av -> ax
 	if not is_numpy :
 		ax = av
 	else :
+		n  = u.size()
 		ax = numpy.empty(n, dtype = cppad_py.a_double)
 		for i in range(n) :
 			# must make a copy because av will be deleted at end of independent
