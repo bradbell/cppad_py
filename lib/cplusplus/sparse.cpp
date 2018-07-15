@@ -274,7 +274,7 @@ std::vector<int> sparse_rc::col_major(void) const
 }
 /*
 -------------------------------------------------------------------------------
-$begin sparse_rcv$$
+$begin cpp_sparse_rcv$$
 $spell
 	rc
 	rcv
@@ -438,12 +438,10 @@ This routine generates an assert if there are two entries with the same
 row and column values (if $code NDEBUG$$ is not defined).
 
 $children%
-	lib/example/cplusplus/sparse_rcv_xam.cpp%
-	lib/example/python/sparse_rcv_xam.py
+	lib/example/cplusplus/sparse_rcv_xam.cpp
 %$$
 $head Example$$
-$cref/C++/sparse_rcv_xam.cpp/$$,
-$cref/Python/sparse_rcv_xam.py/$$.
+$cref sparse_rcv_xam.cpp$$
 
 $end
 */

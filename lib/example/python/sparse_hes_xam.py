@@ -66,12 +66,12 @@ def sparse_hes_xam() :
 	#
 	# compute all possibly non-zero entries in Hessian
 	# (should only compute lower triangle becuase matrix is symmetric)
-	subset = cppad_py.sparse_rcv(pattern.rc)
+	subset = cppad_py.sparse_rcv(pattern)
 	#
 	# work space used to save time for multiple calls
 	work = cppad_py.sparse_hes_work()
 	#
-	af.sparse_hes(subset, x, r, pattern.rc, work)
+	af.sparse_hes(subset.rcv, x, r, pattern.rc, work)
 	#
 	# check that result is sparsity pattern for Hessian of f_0 (x)
 	ok = ok and subset.nnz() == 2

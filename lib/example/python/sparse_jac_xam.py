@@ -58,14 +58,14 @@ def sparse_jac_xam() :
 	# loop over forward and reverse mode
 	for mode in range( 2 ) :
 		# compute all possibly non-zero entries in Jacobian
-		subset = cppad_py.sparse_rcv(pat_jac.rc)
+		subset = cppad_py.sparse_rcv(pat_jac)
 		# work space used to save time for multiple calls
 		work = cppad_py.sparse_jac_work()
 		if mode == 0  :
-			af.sparse_jac_for(subset, x, pat_jac.rc, work)
+			af.sparse_jac_for(subset.rcv, x, pat_jac.rc, work)
 		#
 		if mode == 1  :
-			af.sparse_jac_rev(subset, x, pat_jac.rc, work)
+			af.sparse_jac_rev(subset.rcv, x, pat_jac.rc, work)
 		#
 		#
 		# check result

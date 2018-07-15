@@ -15,7 +15,6 @@ from cppad_py.cppad_py_swig import a_double
 from cppad_py.cppad_py_swig import error_message
 from cppad_py.cppad_py_swig import sparse_hes_work
 from cppad_py.cppad_py_swig import sparse_jac_work
-from cppad_py.cppad_py_swig import sparse_rcv
 from cppad_py.cppad_py_swig import vec_a_double
 from cppad_py.cppad_py_swig import vec_bool
 from cppad_py.cppad_py_swig import vec_double
@@ -32,6 +31,7 @@ from cppad_py.a_fun_jacobian  import a_fun_jacobian
 from cppad_py.a_fun_reverse   import a_fun_reverse
 from cppad_py.independent     import independent
 from cppad_py.sparse_rc       import sparse_rc
+from cppad_py.sparse_rcv      import sparse_rcv
 # END_SORT_THIS_LINE_MINUS_1
 
 # utilities
