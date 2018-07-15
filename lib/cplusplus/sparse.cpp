@@ -522,7 +522,7 @@ std::vector<int> sparse_rcv::col_major(void) const
 }
 // ----------------------------------------------------------------------------
 /*
-$begin jac_sparsity$$
+$begin cpp_jac_sparsity$$
 $spell
 	af
 	Jacobian
@@ -600,12 +600,10 @@ In this case, $icode pattern_out$$ is a sparsity pattern for
 $latex F^{(1)} ( x )$$.
 
 $children%
-	lib/example/cplusplus/sparse_jac_pattern_xam.cpp%
-	lib/example/python/sparse_jac_pattern_xam.py
+	lib/example/cplusplus/sparse_jac_pattern_xam.cpp
 %$$
 $head Example$$
-$cref/C++/sparse_jac_pattern_xam.cpp/$$,
-$cref/Python/sparse_jac_pattern_xam.py/$$.
+$cref/C++/sparse_jac_pattern_xam.cpp/$$
 
 $end
 */

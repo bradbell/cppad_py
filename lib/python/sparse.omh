@@ -11,6 +11,7 @@ $section Python Sparsity Routines$$
 
 $childtable%lib/python/sparse_rc.py
 	%lib/python/sparse_rcv.py
+	%lib/python/jac_sparsity.omh
 %$$
 
 $end

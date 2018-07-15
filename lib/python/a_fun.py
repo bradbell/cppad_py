@@ -75,13 +75,15 @@ class a_fun :
 	def optimize(self) :
 		return self.af.optimize()
 	#
+	# undocumented fact: pattern.rc is vec_int version of sparsity pattern
+	#
 	# for_jac_sparsity
 	def for_jac_sparsity(self, pattern_in, pattern_out) :
-		self.af.for_jac_sparsity(pattern_in, pattern_out)
+		self.af.for_jac_sparsity(pattern_in.rc, pattern_out.rc)
 	#
 	# rev_jac_sparsity
 	def rev_jac_sparsity(self, pattern_in, pattern_out) :
-		self.af.rev_jac_sparsity(pattern_in, pattern_out)
+		self.af.rev_jac_sparsity(pattern_in.rc, pattern_out.rc)
 	#
 	# for_hes_sparsity
 	def for_hes_sparsity(self, select_domain, select_range, pattern_out) :

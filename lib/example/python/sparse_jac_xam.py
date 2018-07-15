@@ -53,7 +53,7 @@ def sparse_jac_xam() :
 	#
 	# sparsity pattern for the Jacobian
 	pat_jac = cppad_py.sparse_rc()
-	af.for_jac_sparsity(pat_eye.rc, pat_jac.rc)
+	af.for_jac_sparsity(pat_eye, pat_jac)
 	#
 	# loop over forward and reverse mode
 	for mode in range( 2 ) :
