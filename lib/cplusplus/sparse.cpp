@@ -274,7 +274,7 @@ std::vector<int> sparse_rc::col_major(void) const
 }
 /*
 -------------------------------------------------------------------------------
-$begin cpp_sparse_rcv$$
+$begin sparse_rcv$$
 $spell
 	rc
 	rcv
@@ -292,21 +292,21 @@ $$
 $section Sparse Matrices$$
 
 $head Syntax$$
-$icode%matrix% = cppad_py::%sparse_rcv(%pattern%)
+$icode%matrix%    = cppad_py::sparse_rcv(%pattern%)
 %$$
-$icode%nr% = %matrix%.nr()
+$icode%nr%        = %matrix%.nr()
 %$$
-$icode%nc% = %matrix%.nc()
+$icode%nc%        = %matrix%.nc()
 %$$
-$icode%nnz% = matrix%.nnz()
+$icode%nnz%       = matrix%.nnz()
 %$$
 $icode%matrix%.put(%k%, %v%)
 %$$
-$icode%row% = %matrix%.row()
+$icode%row%       = %matrix%.row()
 %$$
-$icode%col% = %matrix%.col()
+$icode%col%       = %matrix%.col()
 %$$
-$icode%val% = %matrix%.val()
+$icode%val%       = %matrix%.val()
 %$$
 $icode%row_major% = %matrix%.row_major()
 %$$
@@ -362,7 +362,7 @@ This argument has type
 $codei%
 	int %k%
 %$$
-and must be less than $icode nnz$$.
+and must be non-negative and less than $icode nnz$$.
 
 $subhead v$$
 This argument has type
