@@ -87,11 +87,13 @@ class a_fun :
 	#
 	# for_hes_sparsity
 	def for_hes_sparsity(self, select_domain, select_range, pattern_out) :
-		self.af.for_hes_sparsity(select_domain, select_range, pattern_out)
+		cppad_py.a_fun_for_hes_sparsity( \
+			self.af, select_domain, select_range, pattern_out)
 	#
 	# rev_hes_sparsity
 	def rev_hes_sparsity(self, select_domain, select_range, pattern_out) :
-		self.af.rev_hes_sparsity(select_domain, select_range, pattern_out)
+		cppad_py.a_fun_rev_hes_sparsity( \
+			self.af, select_domain, select_range, pattern_out)
 	#
 	# sparse_jac_for
 	def sparse_jac_for(self, subset, x, pattern, work) :

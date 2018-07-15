@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def sparse_hes_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable
@@ -46,8 +46,8 @@ def sparse_hes_xam() :
 	# Set select_d (domain) to all true,
 	# initial select_r (range) to all false
 	# initialize r to all zeros
-	select_d = cppad_py.vec_bool(n)
-	select_r = cppad_py.vec_bool(n)
+	select_d = numpy.empty(n, dtype=bool)
+	select_r = numpy.empty(n, dtype=bool)
 	r = cppad_py.vec_double(n)
 	for i in range( n ) :
 		select_d[i] = True
@@ -62,7 +62,7 @@ def sparse_hes_xam() :
 	#
 	# sparisty pattern for Hessian
 	pattern = cppad_py.sparse_rc()
-	af.for_hes_sparsity(select_d, select_r, pattern.rc)
+	af.for_hes_sparsity(select_d, select_r, pattern)
 	#
 	# compute all possibly non-zero entries in Hessian
 	# (should only compute lower triangle becuase matrix is symmetric)

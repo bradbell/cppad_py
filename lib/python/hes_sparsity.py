@@ -1,0 +1,103 @@
+# -----------------------------------------------------------------------------
+#         cppad_py: A C++ Object Library and Python Interface to Cppad
+#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+#              This program is distributed under the terms of the
+#              GNU General Public License version 3.0 or later see
+#                    https://www.gnu.org/licenses/gpl-3.0.txt
+# -----------------------------------------------------------------------------
+# $begin py_hes_sparsity$$ $newlinech #$$
+# $spell
+#	hes
+#	af
+#	const
+#	vec
+#	bool
+#	rc
+#	numpy
+# $$
+#
+# $section Hessian Sparsity Patterns$$
+#
+# $head Syntax$$
+# $icode%af%.for_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)
+# %$$
+# $icode%af%.rev_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)%$$
+#
+# $head Purpose$$
+# We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
+# function corresponding to the operation sequence stored in $icode af$$.
+# Fix a diagonal matrix $latex D \in \B{R}^{n \times n}$$, fix a vector
+# $latex r \in \B{R}^m$$, and define
+# $latex \[
+#	H(x) = D (r^\R{T} F)^{(2)} ( x ) D
+# \] $$
+# Given a sparsity pattern for $latex D$$ and $latex r$$,
+# these routines compute a sparsity pattern for $latex H(x)$$.
+#
+# $head x$$
+# Note that a sparsity pattern for $latex H(x)$$ corresponds to the
+# operation sequence stored in $icode af$$ and does not depend on
+# the argument $icode x$$.
+#
+# $head af$$
+# his object must have been returned by a previous call to the python
+# $cref/a_fun/py_a_fun_ctor/$$ constructor.
+#
+# $head select_domain$$
+# The argument is a numpy vector with $code bool$$ elements.
+# It has size $icode n$$ and is a sparsity pattern for the diagonal of
+# $latex D$$; i.e., $icode%select_domain%[%j%]%$$ is true if and only if
+# $latex D_{j,j}$$ is possibly non-zero.
+#
+# $head select_range$$
+# The argument is a numpy vector with $code bool$$ elements.
+# It has size $icode m$$ and is a sparsity pattern for the vector
+# $latex r$$; i.e., $icode%select_range%[%i%]%$$ is true if and only if
+# $latex r_i$$ is possibly non-zero.
+#
+# $head pattern_out$$
+# This argument must have be a $cref/pattern/py_sparse_rc/pattern/$$
+# returned by the $code sparse_rc$$ constructor.
+# This input value of $icode pattern_out$$ does not matter.
+# Upon return $icode pattern_out$$ is a sparsity pattern for
+# $latex H(x)$$.
+#
+# $head Sparsity for Component Wise Hessian$$
+# Suppose that $latex D$$ is the identity matrix,
+# and only the $th i$$ component of $icode r$$ is possibly non-zero.
+# In this case, $icode pattern_out$$ is a sparsity pattern for
+# $latex F_i^{(2)} ( x )$$.
+#
+# $children%
+#	lib/example/python/sparse_hes_pattern_xam.py
+# %$$
+# $head Example$$
+# $cref/Python/sparse_hes_pattern_xam.py/$$
+#
+# $end
+# -----------------------------------------------------------------------------
+# undocumented fact: pattern.rc is vec_int version of sparsity pattern
+from cppad_py.utility import numpy2vec
+def a_fun_for_hes_sparsity(af, select_domain, select_range, pattern_out) :
+	"""
+	af.for_hes_sparsity(select_domain, select_range, pattern_out)
+	"""
+	n      = af.size_domain()
+	m      = af.size_range()
+	dtype  = bool
+	syntax = 'af.for_hes_sparsity(select_domain, select_range, pattern_out)'
+	u      = numpy2vec(select_domain, dtype, n, syntax, 'select_domain')
+	v      = numpy2vec(select_range,  dtype, m, syntax, 'select_range')
+	af.for_hes_sparsity(u, v, pattern_out.rc)
+#
+def a_fun_rev_hes_sparsity(af, select_domain, select_range, pattern_out) :
+	"""
+	af.rev_hes_sparsity(select_domain, select_range, pattern_out)
+	"""
+	n      = af.size_domain()
+	m      = af.size_range()
+	dtype  = bool
+	syntax = 'af.rev_hes_sparsity(select_domain, select_range, pattern_out)'
+	u      = numpy2vec(select_domain, dtype, n, syntax, 'select_domain')
+	v      = numpy2vec(select_range,  dtype, m, syntax, 'select_range')
+	af.rev_hes_sparsity(u, v, pattern_out.rc)

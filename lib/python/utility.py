@@ -61,7 +61,7 @@ import cppad_py
 def numpy2vec(array, dtype, shape, syntax, name) :
 	#
 	# dtype
-	assert dtype == float or dtype == cppad_py.a_double
+	assert dtype in [bool, int, float, cppad_py.a_double]
 	#
 	# vector, nr, nc
 	vector = isinstance(shape, int)
@@ -95,19 +95,21 @@ def numpy2vec(array, dtype, shape, syntax, name) :
 		vec = cppad_py.vec_int(nr * nc)
 	if dtype == float :
 		vec = cppad_py.vec_double(nr * nc)
-	else :
+	if dtype == cppad_py.a_double :
 		vec = cppad_py.vec_a_double(nr * nc)
 	#
 	if vector :
 		for i in range(nr) :
-			vec[i] = array[i]
+			# must copy data so vec can manage its own memory
+			vec[i] = dtype( array[i] )
 	else :
 		if array.shape[1] != nc :
 			msg = syntax + ': ' + name + '.shape[1] is not ' + str(nc)
 		#
 		for i in range(nr) :
 			for j in range(nc):
-				vec[i * nc + j] = array[i, j]
+				# must copy data so vec can manage its own memory
+				vec[i * nc + j] = dtype( array[i, j] )
 	#
 	return vec
 # -----------------------------------------------------------------------------

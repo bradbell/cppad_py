@@ -713,12 +713,10 @@ In this case, $icode pattern_out$$ is a sparsity pattern for
 $latex F_i^{(2)} ( x )$$.
 
 $children%
-	lib/example/cplusplus/sparse_hes_pattern_xam.cpp%
-	lib/example/python/sparse_hes_pattern_xam.py
+	lib/example/cplusplus/sparse_hes_pattern_xam.cpp
 %$$
 $head Example$$
-$cref/C++/sparse_hes_pattern_xam.cpp/$$,
-$cref/Python/sparse_hes_pattern_xam.py/$$.
+$cref/C++/sparse_hes_pattern_xam.cpp/$$
 
 $end
 */
