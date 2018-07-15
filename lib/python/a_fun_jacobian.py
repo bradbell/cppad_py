@@ -88,10 +88,6 @@ def a_fun_jacobian(af, x) :
 	if not is_numpy :
 		J = v
 	else :
-		m = af.size_range()
-		J = numpy.empty((m, n), dtype = float)
-		for i in range(m) :
-			for j in range(n) :
-				# do not need to copy because float is not mutable
-				J[i, j] = v[i * n + j]
+		J = cppad_py.utility.vec2numpy(v, m, n)
+	#
 	return J

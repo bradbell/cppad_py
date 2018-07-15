@@ -106,9 +106,6 @@ def a_fun_hessian(af, x, w) :
 	if not is_numpy :
 		H = z
 	else :
-		H = numpy.empty((n, n), dtype = float)
-		for i in range(n) :
-			for j in range(n) :
-				# must a copy because av will be deleted
-				H[i, j] = z[i * n + j]
+		H = cppad_py.utility.vec2numpy(z, n, n)
+	#
 	return H

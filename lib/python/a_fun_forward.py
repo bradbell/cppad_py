@@ -119,9 +119,6 @@ def a_fun_forward(af, p, xp) :
 	if not is_numpy :
 		yp = v
 	else :
-		m  = af.size_range()
-		yp = numpy.empty(m, dtype = float)
-		for i in range(m) :
-			# do not need a copy because float is not mutable
-			yp[i] = v[i]
+		yp = cppad_py.utility.vec2numpy(v, m)
+	#
 	return yp
