@@ -20,7 +20,7 @@ def a_fun_abort_xam() :
 	n_ind = 2
 	#
 	# create ax
-	x = numpy.zeros(n_ind, dtype=float)
+	x = numpy.empty(n_ind, dtype=float)
 	for i in range( n_ind  ) :
 		x[i] = i + 1.0
 	#

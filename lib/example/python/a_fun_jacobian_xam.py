@@ -21,7 +21,7 @@ def a_fun_jacobian_xam() :
 	n_ind = 3
 	#
 	# create the independent variables ax
-	x = numpy.zeros(n_ind, dtype=float)
+	x = numpy.empty(n_ind, dtype=float)
 	for i in range( n_ind  ) :
 		x[i] = i + 2.0
 	#
@@ -31,7 +31,7 @@ def a_fun_jacobian_xam() :
 	ax_0  = ax[0]
 	ax_1  = ax[1]
 	ax_2  = ax[2]
-	ay    = numpy.zeros(n_dep, dtype=cppad_py.a_double)
+	ay    = numpy.empty(n_dep, dtype=cppad_py.a_double)
 	ay[0] = ax_0 * ax_1 * ax_2
 	#
 	# define af corresponding to f(x) = x_0 * x_1 * x_2

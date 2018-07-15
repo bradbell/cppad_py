@@ -15,8 +15,7 @@ move_list='
 move_sed='s|cppad_py.i|cppad_py_swig.i|'
 #
 cat << EOF > junk.sed
-s|size_ind|size_domain|g
-s|size_dep|size_range|g
+s|numpy.zeros|numpy.empty|g
 EOF
 # -----------------------------------------------------------------------------
 if [ $0 != "bin/batch_edit.sh" ]

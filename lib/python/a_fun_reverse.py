@@ -131,7 +131,7 @@ def a_fun_reverse(af, q, yq) :
 		xq = v
 	else :
 		n  = af.size_domain()
-		xq = numpy.zeros((n, q), dtype = float)
+		xq = numpy.empty((n, q), dtype = float)
 		for j in range(n) :
 			for k in range(q) :
 				# do not need a copy because float is not mutable

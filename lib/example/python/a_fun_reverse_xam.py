@@ -21,7 +21,7 @@ def a_fun_reverse_xam() :
 	n_ind = 3
 	#
 	# create the independent variables ax
-	xp = numpy.zeros(n_ind, dtype=float)
+	xp = numpy.empty(n_ind, dtype=float)
 	for i in range( n_ind  ) :
 		xp[i] = i
 	#
@@ -31,7 +31,7 @@ def a_fun_reverse_xam() :
 	ax_0  = ax[0]
 	ax_1  = ax[1]
 	ax_2  = ax[2]
-	ay    = numpy.zeros(n_dep, dtype=cppad_py.a_double)
+	ay    = numpy.empty(n_dep, dtype=cppad_py.a_double)
 	ay[0] = ax_0 * ax_1 * ax_2
 	#
 	# define af corresponding to f(x) = x_0 * x_1 * x_2
@@ -53,7 +53,7 @@ def a_fun_reverse_xam() :
 	# define G( Y ) = y_0 = x_0 * x_1 * x_2
 	m         = af.size_range()
 	q         = 1
-	yq1       = numpy.zeros( (m, q), dtype=float)
+	yq1       = numpy.empty( (m, q), dtype=float)
 	yq1[0, 0] = 1.0
 	xq1       = af.reverse(q, yq1)
 	# partial G w.r.t x_0
@@ -75,7 +75,7 @@ def a_fun_reverse_xam() :
 	# define G( y_0^0 , y_0^1 ) = y_0^1
 	# = x_1^0 * x_2^0  +  x_0^0 * x_2^0  +  x_0^0  *  x_1^0
 	q         = 2
-	yq2       = numpy.zeros( (m, q), dtype=float)
+	yq2       = numpy.empty( (m, q), dtype=float)
 	yq2[0, 0] = 0.0 # partial of G w.r.t y_0^0
 	yq2[0, 1] = 1.0 # partial of G w.r.t y_0^1
 	xq2       = af.reverse(q, yq2)

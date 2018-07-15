@@ -21,7 +21,7 @@ def a_fun_hessian_xam() :
 	n_ind = 3
 	#
 	# create the independent variables ax
-	x = numpy.zeros(n_ind, dtype=float)
+	x = numpy.empty(n_ind, dtype=float)
 	for i in range( n_ind  ) :
 		x[i] = i + 2.0
 	#
@@ -31,14 +31,14 @@ def a_fun_hessian_xam() :
 	ax_0 = ax[0]
 	ax_1 = ax[1]
 	ax_2 = ax[2]
-	ay   = numpy.zeros(n_dep, dtype=cppad_py.a_double)
+	ay   = numpy.empty(n_dep, dtype=cppad_py.a_double)
 	ay[0] = ax_0 * ax_1 * ax_2
 	#
 	# define af corresponding to f(x) = x_0 * x_1 * x_2
 	af = cppad_py.a_fun(ax, ay)
 	#
 	# g(x) = w_0 * f_0 (x) = f(x)
-	w = numpy.zeros(n_dep, dtype=float)
+	w = numpy.empty(n_dep, dtype=float)
 	w[0] = 1.0
 	#
 	# compute Hessian

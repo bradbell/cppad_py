@@ -78,7 +78,7 @@ def independent(x) :
 	if not is_numpy :
 		ax = av
 	else :
-		ax = numpy.zeros(n, dtype = cppad_py.a_double)
+		ax = numpy.empty(n, dtype = cppad_py.a_double)
 		for i in range(n) :
 			# must make a copy because av will be deleted at end of independent
 			ax[i] = cppad_py.a_double( av[i] )

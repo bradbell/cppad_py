@@ -96,7 +96,7 @@ def a_fun_jacobian(af, x) :
 		J = v
 	else :
 		m = af.size_range()
-		J = numpy.zeros((m, n), dtype = float)
+		J = numpy.empty((m, n), dtype = float)
 		for i in range(m) :
 			for j in range(n) :
 				# do not need to copy because float is not mutable

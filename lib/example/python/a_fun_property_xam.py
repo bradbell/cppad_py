@@ -23,8 +23,8 @@ def a_fun_property_xam() :
 	#
 	# dimension some vectors
 	# x  = cppad_py.vec_double(n_ind)
-	x  = numpy.zeros(n_ind, dtype=float)
-	ay = numpy.zeros(n_dep, dtype=cppad_py.a_double)
+	x  = numpy.empty(n_ind, dtype=float)
+	ay = numpy.empty(n_dep, dtype=cppad_py.a_double)
 	#
 	# independent variables
 	x[0]  = 1.0

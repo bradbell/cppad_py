@@ -126,7 +126,7 @@ def a_fun_forward(af, p, xp) :
 		yp = v
 	else :
 		m  = af.size_range()
-		yp = numpy.zeros(m, dtype = float)
+		yp = numpy.empty(m, dtype = float)
 		for i in range(m) :
 			# do not need a copy because float is not mutable
 			yp[i] = v[i]
