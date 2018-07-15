@@ -107,7 +107,7 @@
 # or combining multiple columns and rows into a single sweep.
 #
 # $head Uses Forward$$
-# After each call to $cref cpp_a_fun_forward$$,
+# After each call to $cref py_a_fun_forward$$,
 # the object $icode af$$ contains the corresponding Taylor coefficients
 # for all the variables in the operation sequence..
 # After a call to $code sparse_hes$$

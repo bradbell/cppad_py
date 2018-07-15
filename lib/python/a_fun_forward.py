@@ -42,8 +42,8 @@
 # $head f(x)$$
 # We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
 # for the function corresponding to $icode af$$.
-# Note that $icode n$$ is the size of $cref/ax/cpp_a_fun_ctor/ax/$$
-# and $icode m$$ is the size of $cref/ay/cpp_a_fun_ctor/ay/$$
+# Note that $icode n$$ is the size of $cref/ax/py_a_fun_ctor/ax/$$
+# and $icode m$$ is the size of $cref/ay/py_a_fun_ctor/ay/$$
 # in to the constructor for $icode af$$.
 #
 # $head X(t)$$

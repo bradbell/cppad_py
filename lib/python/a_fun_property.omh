@@ -41,13 +41,13 @@ $cref/a_fun/py_a_fun_ctor/$$ constructor.
 $head size_domain$$
 The return value $icode n$$ is an $code int$$
 and is the size of the vector
-$cref/ax/cpp_a_fun_ctor/ax/$$ in the function constructor; i.e.,
+$cref/ax/py_a_fun_ctor/ax/$$ in the function constructor; i.e.,
 the number of independent variables.
 
 $head size_range$$
 The return value $icode m$$ is an $code int$$
 and is the size of the vector
-$cref/ay/cpp_a_fun_ctor/ay/$$ in the function constructor; i.e.,
+$cref/ay/py_a_fun_ctor/ay/$$ in the function constructor; i.e.,
 the number of dependent variables.
 
 $head size_var$$
