@@ -16,6 +16,7 @@ import cppad_py
 #	dtype
 #	tuple
 #	str
+#	bool
 # $$
 #
 # $section Convert a Numpy Array to a cppad_py Vector$$
@@ -33,10 +34,13 @@ import cppad_py
 #
 # $head dtype$$
 # This is the expected data type for the elements of the array.
-# It must be either $code float$$ or $code cppad_py.a_double$$.
+# It must be one of the following:
+# $code bool$$, $code int$$, $code float$$ or $code cppad_py.a_double$$.
 #
 # $head shape$$
-# This either a $code int$$ or a tuple of $code int$$ with length one or two.
+# This either a $code int$$ or a tuple of $code int$$ with length two.
+# If it is an $code int$$, $icode array$$ is expected to be a vector.
+# Otherwise a matrix is expected.
 #
 # $head syntax$$
 # This is the syntax that $icode array$$ appears in.
@@ -55,12 +59,19 @@ import cppad_py
 # $end
 # -----------------------------------------------------------------------------
 def numpy2vec(array, dtype, shape, syntax, name) :
-	# -------------------------------------------------------------------------
-	# check for program errors
+	#
+	# dtype
 	assert dtype == float or dtype == cppad_py.a_double
-	if isinstance(shape, int) :
-		shape = (shape, )
-	assert len(shape) == 1 or len(shape) == 2
+	#
+	# vector, nr, nc
+	vector = isinstance(shape, int)
+	if vector :
+		nr     = shape
+		nc     = 1
+	else :
+		assert len(shape) == 2
+		nr     = shape[0]
+		nc     = shape[1]
 	# -------------------------------------------------------------------------
 	#
 	if not isinstance(array, numpy.ndarray) :
@@ -70,30 +81,29 @@ def numpy2vec(array, dtype, shape, syntax, name) :
 		msg = syntax + ': ' + name + '.dtype is not ' + str(dtype)
 		raise NotImplementedError(msg)
 	#
-	if not len(array.shape) == len(shape) :
-		msg = syntax + ': len(' + name + '.shape) is not ' + str(len(shape))
+	if vector and len(array.shape) != 1 :
+		msg = syntax + ': ' + name + ' is not a vector'
+	elif len(array.shape) != 2 :
+		msg = syntax + ': ' + name + ' is not a matrix'
 	#
-	nr = shape[0]
 	if array.shape[0] != nr :
 		msg = syntax + ': ' + name + '.shape[0] is not ' + str(nr)
 	#
-	if len(shape) == 1 :
-		if dtype == float :
-			vec = cppad_py.vec_double(nr)
-		else :
-			vec = cppad_py.vec_a_double(nr)
-		#
+	if dtype == bool :
+		vec = cppad_py.vec_bool(nr * nc)
+	if dtype == int :
+		vec = cppad_py.vec_int(nr * nc)
+	if dtype == float :
+		vec = cppad_py.vec_double(nr * nc)
+	else :
+		vec = cppad_py.vec_a_double(nr * nc)
+	#
+	if vector :
 		for i in range(nr) :
 			vec[i] = array[i]
 	else :
-		nc = shape[1]
 		if array.shape[1] != nc :
 			msg = syntax + ': ' + name + '.shape[1] is not ' + str(nc)
-		#
-		if dtype == float :
-			vec = cppad_py.vec_double(nr * nc)
-		else :
-			vec = cppad_py.vec_a_double(nr * nc)
 		#
 		for i in range(nr) :
 			for j in range(nc):
