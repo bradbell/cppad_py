@@ -72,22 +72,14 @@ def a_fun_jacobian(af, x) :
 	m = af.size_range()
 	#
 	# convert x -> u
-	if isinstance(x, cppad_py.vec_double) :
-		is_numpy = False
-		u        = x
-		assert x.size() == n
-	else :
-		is_numpy = True
-		dtype    = float
-		syntax   = 'af.jacobian(x)'
-		u = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
+	dtype    = float
+	syntax   = 'af.jacobian(x)'
+	u = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
+	#
 	# call jacobian
 	v =  af.jacobian(u)
 	#
 	# convert v -> J
-	if not is_numpy :
-		J = v
-	else :
-		J = cppad_py.utility.vec2numpy(v, m, n)
+	J = cppad_py.utility.vec2numpy(v, m, n)
 	#
 	return J

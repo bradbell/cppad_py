@@ -105,24 +105,15 @@ def a_fun_reverse(af, q, yq) :
 	m = af.size_range()
 	#
 	# convert yq -> u
-	if isinstance(yq, cppad_py.vec_double) :
-		is_numpy = False
-		u        = yq
-		mq       = yq.size()
-	else :
-		is_numpy =  True
-		dtype    = float
-		shape    = (m, q)
-		syntax   = 'af.reverse(q, yq)'
-		u = cppad_py.utility.numpy2vec(yq, dtype, shape, syntax, 'yq')
+	dtype    = float
+	shape    = (m, q)
+	syntax   = 'af.reverse(q, yq)'
+	u = cppad_py.utility.numpy2vec(yq, dtype, shape, syntax, 'yq')
 	#
 	# call reverse
 	v =  af.reverse(q, u)
 	#
-	# convert v -> xq
-	if not is_numpy :
-		xq = v
-	else :
-		xq = cppad_py.utility.vec2numpy(v, n, q)
+	# convert v -> xp
+	xq = cppad_py.utility.vec2numpy(v, n, q)
 	#
 	return xq

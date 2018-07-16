@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def error_message_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable

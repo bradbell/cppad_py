@@ -102,23 +102,14 @@ def a_fun_forward(af, p, xp) :
 	m = af.size_range()
 	#
 	# convert x -> u
-	if isinstance(xp, cppad_py.vec_double) :
-		is_numpy = False
-		u        = xp
-		assert xp.size() == n
-	else :
-		is_numpy =  True
-		dtype    = float
-		syntax   = 'af.forward(p, xp)'
-		u = cppad_py.utility.numpy2vec(xp, dtype, n, syntax, 'xp')
+	dtype    = float
+	syntax   = 'af.forward(p, xp)'
+	u = cppad_py.utility.numpy2vec(xp, dtype, n, syntax, 'xp')
 	#
 	# call forward
 	v =  af.forward(p, u)
 	#
 	# convert v -> yp
-	if not is_numpy :
-		yp = v
-	else :
-		yp = cppad_py.utility.vec2numpy(v, m)
+	yp = cppad_py.utility.vec2numpy(v, m)
 	#
 	return yp

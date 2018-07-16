@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def sparse_rc_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable

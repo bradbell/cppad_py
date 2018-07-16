@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def a_double_cond_assign_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable
@@ -20,7 +20,7 @@ def a_double_cond_assign_xam() :
 	n_dep = 1
 	#
 	# create ax (value of independent variables does not matter)
-	x = cppad_py.vec_double(n_ind)
+	x = numpy.empty(n_ind, dtype=float)
 	x[0] = 0.0
 	x[1] = 1.0
 	x[2] = 2.0
@@ -44,7 +44,7 @@ def a_double_cond_assign_xam() :
 	)
 	#
 	# f(x) = taget
-	ay = cppad_py.vec_a_double(n_dep)
+	ay = numpy.empty(n_dep, dtype=cppad_py.a_double)
 	ay[0] = target
 	af = cppad_py.a_fun(ax, ay)
 	#

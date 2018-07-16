@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def vector_size_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable

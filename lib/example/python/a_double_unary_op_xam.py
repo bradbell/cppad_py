@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def a_double_unary_op_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable

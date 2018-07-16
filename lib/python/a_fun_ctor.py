@@ -54,18 +54,11 @@ def a_fun_ctor(ax, ay) :
 	Stop recording a_double operations and
 	create an AD function object that maps ax -> ay.
 	"""
-	from cppad_py import vec_a_double as vec_a_double
 	# convert ax -> au, ay -> av
-	if isinstance(ax, vec_a_double) and isinstance(ay, vec_a_double) :
-		is_numpy = False
-		au       = ax
-		av       = ay
-	else :
-		is_numpy = True
-		dtype    = cppad_py.a_double
-		syntax   = 'a_fun(ax, ay)'
-		au = cppad_py.utility.numpy2vec(ax, dtype, ax.size, syntax, 'ax')
-		av = cppad_py.utility.numpy2vec(ay, dtype, ay.size, syntax, 'ay')
+	dtype    = cppad_py.a_double
+	syntax   = 'a_fun(ax, ay)'
+	au       = cppad_py.utility.numpy2vec(ax, dtype, ax.size, syntax, 'ax')
+	av       = cppad_py.utility.numpy2vec(ay, dtype, ay.size, syntax, 'ay')
 	#
 	# call a_fun and return result
 	return cppad_py.cppad_py_swig.a_fun(au, av)

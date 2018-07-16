@@ -22,7 +22,7 @@ def a_fun_property_xam() :
 	n_op  = 1 # special operator at beginning
 	#
 	# dimension some vectors
-	# x  = cppad_py.vec_double(n_ind)
+	# x  = numpy.empty(n_ind, dtype=float)
 	x  = numpy.empty(n_ind, dtype=float)
 	ay = numpy.empty(n_dep, dtype=cppad_py.a_double)
 	#

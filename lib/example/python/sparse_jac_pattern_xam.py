@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def sparse_jac_pattern_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable
@@ -20,7 +20,7 @@ def sparse_jac_pattern_xam() :
 	n = 3
 	#
 	# create the independent variables ax
-	x = cppad_py.vec_double(n)
+	x = numpy.empty(n, dtype=float)
 	for i in range( n  ) :
 		x[i] = i + 2.0
 	#
@@ -28,7 +28,7 @@ def sparse_jac_pattern_xam() :
 	#
 	# create dependent variables ay with ay[i] = ax[j]
 	# where i = mod(j + 1, n)
-	ay = cppad_py.vec_a_double(n)
+	ay = numpy.empty(n, dtype=cppad_py.a_double)
 	for j in range( n  ) :
 		i = j+1
 		if i >= n  :

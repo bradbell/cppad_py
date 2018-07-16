@@ -87,25 +87,14 @@ def a_fun_hessian(af, x, w) :
 	m = af.size_range()
 	#
 	# convert x -> u, w -> v
-	if isinstance(x, vec_double) and isinstance(w, vec_double) :
-		is_numpy = False
-		u        = x
-		v        = w
-		assert x.size() == n
-		assert w.size() == m
-	else :
-		is_numpy = True
-		dtype    = float
-		syntax   = 'af.hessian(x, w)'
-		u = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
-		v = cppad_py.utility.numpy2vec(w, dtype, m, syntax, 'w')
+	dtype    = float
+	syntax   = 'af.hessian(x, w)'
+	u = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
+	v = cppad_py.utility.numpy2vec(w, dtype, m, syntax, 'w')
+	#
 	# call hessian
 	z =  af.hessian(u, v)
 	#
-	# convert v -> J
-	if not is_numpy :
-		H = z
-	else :
-		H = cppad_py.utility.vec2numpy(z, n, n)
+	H = cppad_py.utility.vec2numpy(z, n, n)
 	#
 	return H

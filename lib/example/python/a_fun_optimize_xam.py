@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def a_fun_optimize_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable
@@ -22,8 +22,8 @@ def a_fun_optimize_xam() :
 	n_op  = 1 # special operator at beginning
 	#
 	# dimension some vectors
-	x  = cppad_py.vec_double(n_ind)
-	ay = cppad_py.vec_a_double(n_dep)
+	x  = numpy.empty(n_ind, dtype=float)
+	ay = numpy.empty(n_dep, dtype=cppad_py.a_double)
 	#
 	# independent variables
 	x[0]  = 1.0

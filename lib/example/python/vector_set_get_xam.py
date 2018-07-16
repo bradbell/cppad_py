@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def vector_set_get_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import cppad_py
 	#
 	# initialize return variable
@@ -19,8 +19,8 @@ def vector_set_get_xam() :
 	n = 4
 	bv = cppad_py.vec_bool(n)
 	iv = cppad_py.vec_int(n)
-	dv = cppad_py.vec_double(n)
-	av = cppad_py.vec_a_double(n)
+	dv = numpy.empty(n, dtype=float)
+	av = numpy.empty(n, dtype=cppad_py.a_double)
 	#
 	# setting elements
 	for i in range( n  ) :

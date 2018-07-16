@@ -10,7 +10,7 @@
 # BEGIN SOURCE
 def a_fun_abort_xam() :
 	#
-	# load the Cppad Py library
+	import numpy
 	import numpy
 	import cppad_py
 	#
