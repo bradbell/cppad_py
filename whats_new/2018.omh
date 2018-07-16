@@ -21,9 +21,15 @@ $$
 $section Cppad Py Changes During 2018$$
 
 $head 07-15$$
+$list number$$
 Better error reporting for type and size errors in
 $code numpy.array$$ arguments to $code cppad_py$$ functions using
 $cref numpy2vec$$.
+$lnext
+Finish converting all vectors and matrices in
+$cref py_lib$$ to numpy arrays.
+Note the $cref py_utility$$ routines do the conversion.
+$lend
 
 $head 07-14$$
 $list number$$
