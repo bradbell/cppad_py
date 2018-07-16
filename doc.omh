@@ -34,16 +34,15 @@ $spell
 	xam
 $$
 
-$section cppad_py-20180715: A C++ AD Library with a Swig Interface$$
+$section cppad_py-20180715: A C++ Object Library and Python Interface to Cppad$$
 
 $head Purpose$$
 Provide a C++ object library Algorithmic Differentiation (AD)
-that connects any $href%http://www.Swig.org%Swig%$$ scripting language
-to $href%https://www.coin-or.org/Cppad%Cppad%$$.
-As an example, a Python interface to Cppad is included.
+that connects Python to $href%https://www.coin-or.org/Cppad%Cppad%$$.
 
 $head Under Construction$$
-As yet, there is no install procedure for this package.
+This version is preliminary and the user API is subject to change.
+See $cref whats_new_2018$$ for changes.
 
 $head Getting Started$$
 The following is a good place to see what the interface is for
