@@ -8,10 +8,14 @@
 # BEGIN_USER_SETTINGS
 verbose_makefile = "false"
 build_type       = "debug"
-swig_cxx_flags   = "-Wno-sign-compare -Wno-catch-value -Wno-class-memaccess"
-cppad_cxx_flags  = "-Wall -pedantic-errors -Wno-unused-result"
 cppad_prefix     = "build/prefix"
 test_cppad       = "false"
+#
+swig_cxx_flags = \
+"-Wno-sign-compare -Wno-catch-value -Wno-class-memaccess -std=c++11"
+#
+cppad_cxx_flags = \
+"-Wall -pedantic-errors -Wno-unused-result -std=c++11"
 # END_USER_SETTINGS
 # -----------------------------------------------------------------------------
 import re
@@ -88,6 +92,8 @@ command = [
 	'-o', 'cppad_py_swig_wrap.cpp',
 	'../lib/cppad_py_swig.i'
 ]
+if python_major_version == 3 :
+	command.insert(1, '-py3')
 flag    = subprocess.call(command)
 if flag != 0 :
 		sys.exit('setup.py: swig command failed')
@@ -164,7 +170,7 @@ sys.exit(0)
 # Before running,
 # the user should check and possibly change the following settings
 # near the top of $code setup.py$$:
-# $srcfile%setup.py%0%# BEGIN_USER_SETTINGS%# END_USER_SETTINGS%$$.
+# $srcfile%setup.py%0%# BEGIN_USER_SETTINGS%# END_USER_SETTINGS%$$
 # Each of these settings is described below:
 #
 # $subhead verbose_makefile$$

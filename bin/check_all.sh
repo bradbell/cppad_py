@@ -6,7 +6,6 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 logfile=`pwd`/check_all.log
 tmpfile=`pwd`/check_all.$$

@@ -37,8 +37,16 @@ $$
 $section cppad_py-20180716: A C++ Object Library and Python Interface to Cppad$$
 
 $head Purpose$$
-Provide a C++ object library Algorithmic Differentiation (AD)
-that connects Python to $href%https://www.coin-or.org/Cppad%Cppad%$$.
+$list number$$
+Provide a connection from Python
+to the Algorithmic Differentiation (AD) package Cppad; see $cref py_lib$$.
+$lnext
+Provide an AD object library; see $cref cpp_lib$$.
+$lnext
+Prove a concrete example of how
+$href%https://github.com/bradbell/cppad_swig%cppad_swig%$$
+can be used to connect any scripting language to Cppad.
+$lend
 
 $head Under Construction$$
 This version is preliminary and the user API is subject to change.
@@ -69,7 +77,11 @@ $href%https://en.wikipedia.org/wiki/C++%C++%$$,
 $href%https://cmake.org%Cmake%$$,
 $href%https://git-scm.com%Git%$$,
 $href%http://www.swig.org%Swig%$$,
-$href%https://www.python.org/%Python%$$
+$href%https://www.python.org/%Python%$$.
+
+$subhead Swig$$
+There is a known problem using $code swig-3.0.8$$; see
+$href%https://github.com/bradbell/cppad_py/issues/3%issue 3%$$.
 
 $head Top Source Directory$$
 Currently, one gets the source code from Github at

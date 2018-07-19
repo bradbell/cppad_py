@@ -20,6 +20,15 @@ $$
 
 $section Cppad Py Changes During 2018$$
 
+$head 07-19$$
+Add $code -std=c++11$$ to the default compile flags in
+$cref setup.py$$.
+Add $code -py3$$ to the $code swig$$ builds
+when running $code setup.py$$ using Python 3; see
+$href%http://www.swig.org/Doc1.3/Python.html#Python_python3support
+	%swig python 3
+%$$.
+
 $head 07-15$$
 $list number$$
 Better error reporting for type and size errors in
