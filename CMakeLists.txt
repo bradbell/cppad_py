@@ -149,7 +149,7 @@ cmake_argument(swig_cxx_flags "" STRING
 	"Flags, added to CMAKE_CXX_FLAGS, used when Swig wrapper code."
 )
 cmake_argument(python_version "" STRING
-	"major and min version number for python, major part of must be 2 or 3."
+	"major and minor version number for python, major part of must be 2 or 3."
 )
 STRING(REGEX MATCH "[23][.][0-9.]*" python_version_ok "${python_version}")
 IF( NOT python_version_ok )
