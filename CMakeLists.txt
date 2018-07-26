@@ -9,7 +9,7 @@
 #	-D CMAKE_VERBOSE_MAKEFILE=value \
 #	-D cppad_prefix=value  \
 #	-D cppad_cxx_flags=value \
-#	-D python_major_version=value
+#	-D python_version=value
 #
 # -----------------------------------------------------------------------------
 # preamble
@@ -141,19 +141,23 @@ IF( NOT cppad_prefix )
 ENDIF( NOT cppad_prefix )
 INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
 # -----------------------------------------------------------------------------
-# cppad_prefix, cppad_cxx_flags, swig_cxx_flags, python_major_version
+# cppad_prefix, cppad_cxx_flags, swig_cxx_flags, python_version
 cmake_argument(cppad_cxx_flags "" STRING
 	"Flags, added to CMAKE_CXX_FLAGS, used when compiling cppad_py code."
 )
 cmake_argument(swig_cxx_flags "" STRING
 	"Flags, added to CMAKE_CXX_FLAGS, used when Swig wrapper code."
 )
-cmake_argument(python_major_version "" STRING
-	"major version number for python, must be 2 or 3."
+cmake_argument(python_version "" STRING
+	"major and min version number for python, major part of must be 2 or 3."
 )
-STRING(REGEX MATCH "[23]" python_version_ok "${python_major_version}")
+STRING(REGEX MATCH "[23][.][0-9.]*" python_version_ok "${python_version}")
 IF( NOT python_version_ok )
-	MESSAGE(FATAL_ERROR "python_major_version is no 2 or 3")
+	MESSAGE(FATAL_ERROR "python major version is not 2 or 3")
+ENDIF( NOT python_version_ok )
+STRING(REGEX MATCH "[23][.][0-9]*" python_version_ok "${python_version}")
+IF( NOT python_version_ok )
+	MESSAGE(FATAL_ERROR "python_version not just major and minor numbers")
 ENDIF( NOT python_version_ok )
 # -----------------------------------------------------------------------------
 #

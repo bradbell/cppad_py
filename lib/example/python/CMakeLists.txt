@@ -26,8 +26,8 @@ ENDFOREACH(source_file ${python_source_list} )
 ADD_CUSTOM_TARGET(auto_lib_python DEPENDS ${python_copy_list} )
 MESSAGE(STATUS "make auto_lib_python: available")
 #
-FIND_PACKAGE(PythonInterp ${python_major_version})
-FIND_PACKAGE(PythonLibs ${python_major_version})
+FIND_PACKAGE(PythonInterp ${python_version})
+FIND_PACKAGE(PythonLibs ${python_version})
 IF ( NOT ( PythonLibs_FOUND AND PythonInterp_FOUND ) )
 	MESSAGE(FATAL_ERROR,
 		"cmake cannot find Python or its libraries"

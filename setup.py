@@ -33,14 +33,16 @@ if os.path.exists('cppad_py') :
 	shutil.rmtree('cppad_py')
 shutil.copytree('lib/python', 'cppad_py');
 # -----------------------------------------------------------------------------
-# python_major_version
+# python_version
 python_major_version = sys.version_info.major
+python_minor_version = sys.version_info.minor
 if python_major_version != 2 and python_major_version != 3 :
 	msg  = 'setup.py: python major version number '
 	msg += str( python_major_version ) + ' is not 2 or 3'
 	sys.exit(msg)
-file_ptr = open('cppad_py/python_major_version', 'w')
-file_ptr.write(str(python_major_version) + '\n')
+python_version = str(python_major_version) + "." + str(python_minor_version)
+file_ptr = open('cppad_py/python_version', 'w')
+file_ptr.write(python_version + '\n')
 file_ptr.close()
 # -----------------------------------------------------------------------------
 # run cmake
@@ -56,7 +58,7 @@ command = [
 	'-D', 'CMAKE_BUILD_TYPE='       + quote_str(build_type),
 	'-D', 'cppad_prefix='           + quote_str(cppad_prefix_absolute),
 	'-D', 'cppad_cxx_flags='        + quote_str(cppad_cxx_flags),
-	'-D', 'python_major_version='   + quote_str( str(python_major_version) ),
+	'-D', 'python_version='         + quote_str( python_version ),
 	'-D', 'swig_cxx_flags='         + quote_str(swig_cxx_flags),
 	'..'
 ]

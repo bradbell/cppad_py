@@ -20,6 +20,11 @@ $$
 
 $section Cppad Py Changes During 2018$$
 
+$head 07-26$$
+Change $code cppad_py/python_major_version$$
+to $code cppad_py/python_version$$
+because it now contains both major and minor version numbers.
+
 $head 07-19$$
 Add $code -std=c++11$$ to the default compile flags in
 $cref setup.py$$.
