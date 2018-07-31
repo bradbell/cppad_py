@@ -10,6 +10,7 @@ verbose_makefile = "false"
 build_type       = "debug"
 cppad_prefix     = "build/prefix"
 test_cppad       = "false"
+python_test_dir  = "build/python_test"
 #
 swig_cxx_flags = \
 "-Wno-sign-compare -Wno-catch-value -Wno-class-memaccess -std=c++11"
@@ -67,6 +68,21 @@ flag    = subprocess.call(command)
 if flag != 0 :
 		sys.exit('setup.py: cmake command failed')
 os.chdir('..')
+# -----------------------------------------------------------------------------
+# copy lib/example/python -> build/lib/example/python
+if os.path.exists(python_test_dir) :
+	shutil.rmtree(python_test_dir)
+shutil.copytree('lib/example/python', python_test_dir)
+#
+# map python_test_dir/check_all.py.in -> python_test_dir/check_all.py
+top_srcdir = os.getcwd()
+sed_cmd    = 's|@CMAKE_SOURCE_DIR@|' + top_srcdir + '|'
+sed_in     = open(python_test_dir + '/check_all.py.in', 'r')
+sed_out    = open(python_test_dir + '/check_all.py',    'w')
+command = [ 'sed', '-e', sed_cmd ]
+flag = subprocess.call(command, stdin=sed_in, stdout=sed_out )
+if flag != 0 :
+	sys.exit('setup.py: failed to create ' + python_test_dir + '/check_all.py')
 # -----------------------------------------------------------------------------
 # cppad_include_dir
 cppad_include_dir = os.getcwd() + '/build/prefix/include'

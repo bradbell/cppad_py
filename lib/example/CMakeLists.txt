@@ -8,7 +8,6 @@
 #
 # sub-directories for C++ and Python
 ADD_SUBDIRECTORY(cplusplus)
-ADD_SUBDIRECTORY(python)
 #
 # Change check_lib_depends in parent environment
 SET(check_lib_depends "${check_lib_depends}" PARENT_SCOPE)

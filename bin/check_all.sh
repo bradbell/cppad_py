@@ -69,7 +69,9 @@ echo_eval_log python$python_major_version setup.py build_ext --inplace --quiet
 echo_eval_log cd build
 echo_eval_log make clean
 echo_eval_log make check
-echo_eval_log cd ..
+echo_eval_log cd python_test
+echo_eval_log python$python_major_version check_all.py
+echo_eval_log cd ../..
 #
 if grep -i 'warning' $logfile
 then
