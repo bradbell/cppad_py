@@ -65,8 +65,8 @@ int main(void)
 	ok &= Run( a_double_assign_xam,       "a_double_assign_xam"       );
 	ok &= Run( a_double_ad_binary_xam,    "a_double_ad_binary_xam"    );
 	ok &= Run( a_double_compare_xam,      "a_double_compare_xam"      );
-	ok &= Run( vector_size_xam,           "vector_size_xam"         );
-	ok &= Run( vector_set_get_xam,        "vector_set_get_xam"      );
+	ok &= Run( vector_size_xam,           "vector_size_xam"           );
+	ok &= Run( vector_set_get_xam,        "vector_set_get_xam"        );
 	ok &= Run( a_fun_property_xam,        "a_fun_property_xam"        );
 	ok &= Run( a_fun_optimize_xam,        "a_fun_optimize_xam"        );
 	ok &= Run( a_fun_jacobian_xam,        "a_fun_jacobian_xam"        );
