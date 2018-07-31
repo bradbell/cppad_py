@@ -56,7 +56,6 @@ command = [
 	'-D', 'cppad_prefix='           + quote_str(cppad_prefix_absolute),
 	'-D', 'cppad_cxx_flags='        + quote_str(cppad_cxx_flags),
 	'-D', 'python_version='         + quote_str( python_version ),
-	'-D', 'swig_cxx_flags='         + quote_str(swig_cxx_flags),
 	'..'
 ]
 print( ' '.join(command) )

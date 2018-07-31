@@ -34,26 +34,6 @@ MACRO(assert variable)
      ENDIF( NOT ${variable} )
 ENDMACRO(assert)
 # ----------------------------------------------------------------------------
-# MACRO: add_swig_library(library, language, files)
-#
-# ${libray}: (in)
-# is the name of the swig library
-#
-# ${language}: (in)
-# is the scripting language for this library
-#
-# ${${files}}: (in)
-# are the source code files for this library.
-MACRO(add_swig_library library language files)
-	IF( ${CMAKE_MAJOR_VERSION} LESS 3 )
-		SWIG_ADD_MODULE( ${library} ${language} ${${files}} )
-	ELSEIF( ${CMAKE_MINOR_VERSION} LESS 8 )
-		SWIG_ADD_MODULE( ${library} ${language} ${${files}} )
-	ELSE( ${CMAKE_MINOR_VERSION} LESS 8 )
-		SWIG_ADD_LIBRARY( ${library} LANGUAGE ${language} SOURCES ${${files}} )
-	ENDIF( ${CMAKE_MAJOR_VERSION} LESS 3 )
-ENDMACRO(add_swig_library)
-# ----------------------------------------------------------------------------
 # MACRO: print_variable(variable)
 #
 # ${variable}: (in)
@@ -141,12 +121,9 @@ IF( NOT cppad_prefix )
 ENDIF( NOT cppad_prefix )
 INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
 # -----------------------------------------------------------------------------
-# cppad_prefix, cppad_cxx_flags, swig_cxx_flags, python_version
+# cppad_prefix, cppad_cxx_flags, python_version
 cmake_argument(cppad_cxx_flags "" STRING
 	"Flags, added to CMAKE_CXX_FLAGS, used when compiling cppad_py code."
-)
-cmake_argument(swig_cxx_flags "" STRING
-	"Flags, added to CMAKE_CXX_FLAGS, used when Swig wrapper code."
 )
 cmake_argument(python_version "" STRING
 	"major and minor version number for python, major part of must be 2 or 3."
