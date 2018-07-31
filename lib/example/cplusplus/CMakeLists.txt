@@ -8,7 +8,6 @@
 # list of C++ source files in CMAKE_CURRENT_SOURCE_DIR
 FILE(GLOB cplusplus_source_list "*.cpp")
 #
-# -----------------------------------------------------------------------------
 # lib_cplusplus_check_all
 ADD_EXECUTABLE(lib_cplusplus_check_all
 	EXCLUDE_FROM_ALL ${cplusplus_source_list}
