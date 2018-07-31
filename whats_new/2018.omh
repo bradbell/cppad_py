@@ -16,9 +16,15 @@ $spell
 	ind
 	dep
 	af
+	xam
 $$
 
 $section Cppad Py Changes During 2018$$
+
+$head 07-31$$
+The general purpose Swig example $code swig_xam$$,
+which was not specific to cppad_py,
+has been removed.
 
 $head 07-26$$
 Change $code cppad_py/python_major_version$$

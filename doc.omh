@@ -100,14 +100,12 @@ $href%http://www.gnu.org/licenses/gpl-3.0.txt%gpl-3.0.txt%$$.
 
 $children%
 	testing.omh%
-	swig_xam/swig_xam.i%
 	lib/library.omh%
 	whats_new/2018.omh
 %$$
 $head Contents$$
 $table
 $rref testing$$
-$rref swig_xam.i$$
 $rref library$$
 $rref whats_new_2018$$
 $tend
