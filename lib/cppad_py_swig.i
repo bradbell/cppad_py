@@ -7,9 +7,9 @@
 ----------------------------------------------------------------------------- */
 /* cppad_py_swig.i */
 # ifdef SWIG
-# define CPPAD_SWIG_LIB_PUBLIC
+# define CPPAD_PY_LIB_PUBLIC
 # else
-# include <cppad_swig_lib_export.h>
+# include <cppad_py_lib_export.h>
 # endif
 
 

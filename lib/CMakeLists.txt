@@ -25,27 +25,27 @@ SET(swig_control_file "${CMAKE_CURRENT_SOURCE_DIR}/cppad_py_swig.i" )
 # https://cmake.org/Wiki/BuildingWinDLL
 include (GenerateExportHeader)
 #
-# cppad_swig_lib (library used by sub-directories below)
-ADD_LIBRARY(cppad_swig_lib SHARED
+# cppad_py_lib (library used by sub-directories below)
+ADD_LIBRARY(cppad_py_lib SHARED
 	cplusplus/a_double.cpp
 	cplusplus/a_fun.cpp
 	cplusplus/sparse.cpp
 	cplusplus/error.cpp
 )
-# The file cppad_swig_lib_export.h, in the current binary directory, will
-# define the symbol CPPAD_SWIG_LIB_PUBLIC. This symbol should be used to
-# export cppad_swig_lib, when it is being compiled, and import it when
-# cppad_swig_lib is being linked.
-GENERATE_EXPORT_HEADER( cppad_swig_lib
-	BASE_NAME         cppad_swig_lib
-	EXPORT_MACRO_NAME CPPAD_SWIG_LIB_PUBLIC
-	EXPORT_FILE_NAME  cppad_swig_lib_export.h
-	STATIC_DEFINE     CPPAD_SWIG_LIB_BUILT_AS_STATIC
+# The file cppad_py_lib_export.h, in the current binary directory, will
+# define the symbol CPPAD_PY_LIB_PUBLIC. This symbol should be used to
+# export cppad_py_lib, when it is being compiled, and import it when
+# cppad_py_lib is being linked.
+GENERATE_EXPORT_HEADER( cppad_py_lib
+	BASE_NAME         cppad_py_lib
+	EXPORT_MACRO_NAME CPPAD_PY_LIB_PUBLIC
+	EXPORT_FILE_NAME  cppad_py_lib_export.h
+	STATIC_DEFINE     CPPAD_PY_LIB_BUILT_AS_STATIC
 )
 #
 # additional flags for compiling cppad_py library
 SET_TARGET_PROPERTIES(
-	cppad_swig_lib PROPERTIES COMPILE_FLAGS "${cppad_cxx_flags}"
+	cppad_py_lib PROPERTIES COMPILE_FLAGS "${cppad_cxx_flags}"
 )
 #
 # Swig extra dependencies used by sub-directories below

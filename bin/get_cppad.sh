@@ -27,19 +27,19 @@ hash_code='643c1a5d43f3d6b8402a5b93773bfb768b0a3fae'
 #
 # verbose_makefile
 verbose_makefile=`grep '^verbose_makefile *=' setup.py | \
-	sed -e 's|.*= *||g' -e 's|"||g' -e "s|'||g"`
+	sed -e 's|[^=]*= *||' -e 's|"||g' -e "s|'||g"`
 #
 # cppad_cxx_flags
 cppad_cxx_flags=`grep '^cppad_cxx_flags *=' setup.py | \
-	sed -e 's|.*= *||g' -e 's|"||g' -e "s|'||g"`
+	sed -e 's|[^=]*= *||' -e 's|"||g' -e "s|'||g"`
 #
 # cppad_prefix
 cppad_prefix=`grep '^cppad_prefix *=' setup.py | \
-	sed -e 's|.*= *||g' -e 's|"||g' -e "s|'||g"`
+	sed -e 's|[^=]*= *||' -e 's|"||g' -e "s|'||g"`
 #
 # test_cppad
 test_cppad=`grep '^test_cppad *=' setup.py | \
-	sed -e 's|.*= *||g' -e 's|"||g' -e "s|'||g"`
+	sed -e 's|[^=]*= *||' -e 's|"||g' -e "s|'||g"`
 # -----------------------------------------------------------------------------
 top_source_directory=`pwd`
 if [ ! -e 'build' ]
@@ -67,6 +67,12 @@ fi
 #
 echo_eval mkdir build
 echo_eval cd build
+cat << EOF
+cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
+	-D cppad_prefix="$top_source_directory/$cppad_prefix"  \\
+	-D cppad_cxx_flags="$cppad_cxx_flags" \\
+	..
+EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
 	-D cppad_prefix="$top_source_directory/$cppad_prefix"  \
 	-D cppad_cxx_flags="$cppad_cxx_flags" \

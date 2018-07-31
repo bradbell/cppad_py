@@ -32,7 +32,7 @@ struct a_double_data {
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
 // Swig class that acts the same as CppAD::AD<double>
-class  CPPAD_SWIG_LIB_PUBLIC a_double
+class  CPPAD_PY_LIB_PUBLIC a_double
 {	// private members are not in Swig interface
 	private:
 	// data for this object

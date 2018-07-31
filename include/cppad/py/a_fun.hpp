@@ -23,15 +23,15 @@ namespace CppAD {
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
 // independent
-CPPAD_SWIG_LIB_PUBLIC
+CPPAD_PY_LIB_PUBLIC
 std::vector<a_double> independent(const std::vector<double>& x);
 
 // abort_recording
-CPPAD_SWIG_LIB_PUBLIC void abort_recording(void);
+CPPAD_PY_LIB_PUBLIC void abort_recording(void);
 
 
 // Swig class that acts the same as CppAD::ADFun<double>
-class CPPAD_SWIG_LIB_PUBLIC a_fun
+class CPPAD_PY_LIB_PUBLIC a_fun
 {	// private members are not in Swig interface
 	private:
 	// ADFun<double> representation

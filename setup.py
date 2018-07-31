@@ -5,17 +5,14 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
+# bin/get_cppad.sh assumes variable = value on same line.
 # BEGIN_USER_SETTINGS
 verbose_makefile = "false"
 build_type       = "debug"
 cppad_prefix     = "build/prefix"
-test_cppad       = "false"
-#
-swig_cxx_flags = \
-"-Wno-sign-compare -Wno-catch-value -Wno-class-memaccess -std=c++11"
-#
-cppad_cxx_flags = \
-"-Wall -pedantic-errors -Wno-unused-result -std=c++11"
+test_cppad       = "fasle"
+swig_cxx_flags = "-Wno-sign-compare -Wno-catch-value -Wno-class-memaccess -std=c++11"
+cppad_cxx_flags = "-Wall -pedantic-errors -Wno-unused-result -std=c++11"
 # END_USER_SETTINGS
 # -----------------------------------------------------------------------------
 import re

@@ -66,12 +66,12 @@ done
 echo_eval_log check_copyright.sh
 echo_eval_log run_omhelp.sh doc
 echo_eval_log python$python_major_version setup.py build_ext --inplace --quiet
-echo_eval_log pushd build
+echo_eval_log cd build
 echo_eval_log make clean
 echo_eval_log make check
-echo_eval_log cd lib/example/python
+echo_eval_log cd ../lib/example/python
 echo_eval_log python$python_major_version check_all.py
-echo_eval_log popd
+echo_eval_log cd ../../..
 #
 if grep -i 'warning' $logfile
 then

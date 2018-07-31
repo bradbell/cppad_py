@@ -13,4 +13,5 @@ new
 *.swp
 # files and directory created to run python examples
 /lib/example/python/check_all.py
+/lib/example/python/*.pyc
 /lib/example/python/__pycache__

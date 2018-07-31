@@ -49,25 +49,21 @@ where $icode python$$ is the Python executable you will be
 using with Cppad Py.
 
 $head check$$
-The next step is to check cppad_py on your system using
+
+$subhead python$$
+The next step is to check the cppad_py python interface
+$cref py_lib$$ on your system using
+$codei%
+	cd lib/example/python
+	%python% check_all.py
+%$$
+
+$head c++$$
+You can check the cppad_py c++ interface
+$cref cpp_lib$$ on your system using
 $codei%
 	cd build
-	make check
+	make check_lib_cplusplus
 %$$
-
-$head check_swig_xam$$
-For $icode lang$$ equal
-$code cplusplus$$, $code octave$$, $code perl$$, $code python$$,
-$codei%
-	make check_swig_xam_%lang%
-%$$
-only runs a simple test of Swig, for the particular language, on your system.
-
-$head check_lib$$
-For $icode lang$$ equal $code cplusplus$$ and $code python$$,
-$codei%
-	make check_lib_%lang%
-%$$
-only runs a the tests for the C++ or Python on your system.
 
 $end
