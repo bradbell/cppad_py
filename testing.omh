@@ -58,7 +58,7 @@ $codei%
 	%python% check_all.py
 %$$
 
-$head c++$$
+$subhead c++$$
 You can check the cppad_py c++ interface
 $cref cpp_lib$$ on your system using
 $codei%
