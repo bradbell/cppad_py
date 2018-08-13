@@ -23,11 +23,15 @@ $$
 $section Cppad Py Changes During 2018$$
 
 $head 08-13$$
+$list number$$
 Change $code cppad_cxx_flags$$ to
 $cref/extra_cxx_flags/setup.py/Configure/extra_cxx_flags/$$ in the user
 configuration settings.
 Also remove $code swig_cxx_flags$$ from these user settings
 (set automatically).
+$lnext
+Improve the install instructions; see $cref setup.py$$.
+$lend
 
 $head 07-31$$
 $list number$$
@@ -123,8 +127,8 @@ This has been fixed.
 $lend
 
 $head 07-07$$
-Change build of Python module to use Python 3,
-$cref/setup.py/testing/setup.py/$$,
+Change build of Python module to use Python 3
+(now it can use either 2 or 3).
 
 $head 07-03$$
 Birthday when Cppad Py was first extracted from Cppad Swig.

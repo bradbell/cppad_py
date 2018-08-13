@@ -100,7 +100,7 @@ exit 0
 #
 # $head Top Source Directory$$
 # This program must be run from the
-# $cref/top source directory/cppad_py/Top Source Directory/$$.
+# $cref/top source directory/setup.py/Download/Top Source Directory/$$.
 #
 # $head setup.py$$
 # This program uses some of the settings in $cref setup.py$$.

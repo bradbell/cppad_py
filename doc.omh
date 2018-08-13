@@ -53,9 +53,7 @@ This version is preliminary and the user API is subject to change.
 See $cref whats_new_2018$$ for changes.
 
 $head Getting Started$$
-The following is a good place to see what the interface is for
-the currently supported languages:
-$cref/C++/a_fun_jacobian_xam.cpp/$$,
+The following is a good place to see what the interface is like:
 $cref/Python/a_fun_jacobian_xam.py/$$.
 
 $head C++ Function Speed$$
@@ -66,49 +64,16 @@ Once an $cref a_fun$$ is recorded, zero order
 $cref/forward mode/py_a_fun_forward/$$ can be used to
 effectively evaluate the function in C++ instead of Python.
 
-$head Supporting Packages$$
-The
-$href%https://www.coin-or.org/CppAD/%Cppad%$$ package is automatically
-installed by $cref get_cppad.sh$$.
-The following packages are not automatically installed:
-
-$subhead Required$$
-$href%https://en.wikipedia.org/wiki/C++%C++%$$,
-$href%https://cmake.org%Cmake%$$,
-$href%https://git-scm.com%Git%$$,
-$href%http://www.swig.org%Swig%$$,
-$href%https://www.python.org/%Python%$$.
-
-$subhead Swig$$
-There is a known problem using $code swig-3.0.8$$; see
-$href%https://github.com/bradbell/cppad_py/issues/3%issue 3%$$.
-
-$head Top Source Directory$$
-Currently, one gets the source code from Github at
-$href%https://github.com/bradbell/cppad_py%cppad_py%$$.
-The corresponding directory is referred to as the top source directory.
-For example, if one uses the command
-$codei%
-	git clone https://github.com/bradbell/cppad_py cppad_py.git
-%$$
-the top source directory is $code cppad_py.git$$.
-
 $head License$$
 This program is distributed under the terms of the
     GNU General Public License version 3.0 or later see
 $href%http://www.gnu.org/licenses/gpl-3.0.txt%gpl-3.0.txt%$$.
 
-$children%
-	testing.omh%
+$childtable%
+	setup.py%
 	lib/library.omh%
 	whats_new/2018.omh
 %$$
-$head Contents$$
-$table
-$rref testing$$
-$rref library$$
-$rref whats_new_2018$$
-$tend
 
 
 $end

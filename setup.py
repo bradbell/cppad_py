@@ -156,29 +156,55 @@ sys.exit(0)
 # $spell
 #	makefile
 #	cxx
-#	cppad_py
 #	inplace
 #	undef
+#	https://github.com/bradbell/cppad_py.git
+#	srcdir
+#	cplusplus
+#	sys
 # $$
 #
 # $section Configure and Build the cppad_py Python Module$$
 #
 # $head Syntax$$
-# $codei%
-#	%python% setup.py build_ext --inplace [--quiet] [--debug] [--undef NDEBUG]
+# $icode%python% setup.py build_ext --inplace [--debug] [--undef NDEBUG]
 # %$$
 # where $icode python$$ is the Python executable you will be using with
-# Cppad Py.
+# cppad_py.
 #
-# $head Requirements$$
-# This program must be run from the
-# $cref/top source directory/cppad_py/Top Source Directory/$$
-# and you must first run $cref get_cppad.sh$$.
+# $head External Requirements$$
+# $list number$$
+# $href%https://en.wikipedia.org/wiki/C++%c++%$$.
+# $lnext
+# $href%https://cmake.org%cmake%$$.
+# $lnext
+# $href%https://git-scm.com/%git%$$.
+# $lnext
+# $href%http://www.swig.org/%swig%$$:
+# There seems to be a problem with swig-3.0.8; see
+# $href%https://github.com/bradbell/cppad_py/issues/3%issue 3%$$.
+# $lnext
+# $href%https://www.python.org/%python%$$: version 2 or 3.
+# $lnext
+# $href%http://www.numpy.org/%numpy%$$.
+# $lend
 #
+# $head Download$$
+# Use the following command to download the current version of cppad_py:
+# $codei%
+#	git clone https://github.com/bradbell/cppad_py.git %top_srcdir%
+# %$$
+#
+# $subhead Top Source Directory$$
+# The directory you choose for $icode top_srcdir$$ is
+# referred to as your top source directory.
+#
+# $children%bin/get_cppad.sh
+# %$$
 # $head Configure$$
-# Before running,
-# the user should check and possibly change the following settings
-# near the top of $code setup.py$$:
+# Before running $code setup.py$$ or $cref get_cppad.sh$$,
+# you should check and possibly change the following settings
+# (which are near the top of $icode%top_srcdir%/setup.py%$$):
 # $srcfile%setup.py%0%# BEGIN_USER_SETTINGS%# END_USER_SETTINGS%$$
 # Each of these settings is described below:
 #
@@ -205,6 +231,80 @@ sys.exit(0)
 # a separate check of Cppad for this system.
 # This takes a significant amount of time, but may be useful
 # if you have any problems.
+#
+# $head Get cppad$$
+# The next step is to get a copy of cppad using $cref get_cppad.sh$$.
+#
+# $head Build cppad_py$$
+# The next step is the build the Python cppad_py module using
+# the command:
+# $codei%
+#	%python% setup.py build_ext --inplace --debug --undef NDEBUG
+# %$$
+# where $icode python$$ is the Python executable you will be
+# using with cppad_py.
+# If you want a faster version, with less error reporting, use
+# $codei%
+#	%python% setup.py build_ext --inplace
+# %$$
+#
+# $head Testing$$
+#
+# $subhead python$$
+# The next step is to test the cppad_py on your system by executing
+# the following commands starting in $icode top_srcdir$$:
+# $codei%
+#	cd lib/example/python
+#	%python% check_all.py
+# %$$
+# where $icode python$$ is the same version of python as above.
+#
+# $subhead c++$$
+# You can also test the cppad_py c++ interface
+# $cref cpp_lib$$ on your system by executing the following commands
+# starting in $icode top_srcdir$$:
+# $codei%
+#	cd build
+#	make check_lib_cplusplus
+# %$$
+#
+# $subhead import$$
+# If you are in $icode top_srcdir$$ you should be able to execute the
+# following commands:
+# $codei%
+#	%python%
+#	import cppad_py
+#	quit()
+# %$$
+# We need to install cppad_py so you can import it from any directory.
+#
+#
+# $head Installing$$
+# Use the following command to install the debug version of cppad_py:
+# $codei%
+#	%python% setup.py build_ext --debug --undef NDEBUG install --prefix=%prefix%
+# %$$
+# or the following to install the release version:
+# $codei%
+#	%python% setup.py build_ext install --prefix=%prefix%
+# %$$
+# This will install $code cppad_py$$ in the directory
+# $codei%
+#	%prefix%/lib/python%major%.%minor%/site_packages/cppad_py
+# %$$
+# where $icode major$$ and $icode minor$$ are the major and minor
+# versions for $icode python$$.
+#
+# $head Python Path$$
+# You can check the current setting of your python path using the commands:
+# $codei%
+#	%python%
+#	import sys
+#	print(sys.path)
+#	quit()
+# %$$
+# The directory $icode%%prefix%/lib/python%major%.%minor%/site_packages%$$
+# must be in your python path.
 #
 # $end
 # -----------------------------------------------------------------------------
