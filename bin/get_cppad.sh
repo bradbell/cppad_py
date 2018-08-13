@@ -29,8 +29,8 @@ hash_code='643c1a5d43f3d6b8402a5b93773bfb768b0a3fae'
 verbose_makefile=`grep '^verbose_makefile *=' setup.py | \
 	sed -e 's|[^=]*= *||' -e 's|"||g' -e "s|'||g"`
 #
-# cppad_cxx_flags
-cppad_cxx_flags=`grep '^cppad_cxx_flags *=' setup.py | \
+# extra_cxx_flags
+extra_cxx_flags=`grep '^extra_cxx_flags *=' setup.py | \
 	sed -e 's|[^=]*= *||' -e 's|"||g' -e "s|'||g"`
 #
 # cppad_prefix
@@ -70,12 +70,12 @@ echo_eval cd build
 cat << EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
 	-D cppad_prefix="$top_source_directory/$cppad_prefix"  \\
-	-D cppad_cxx_flags="$cppad_cxx_flags" \\
+	-D cppad_cxx_flags="$extra_cxx_flags" \\
 	..
 EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
 	-D cppad_prefix="$top_source_directory/$cppad_prefix"  \
-	-D cppad_cxx_flags="$cppad_cxx_flags" \
+	-D cppad_cxx_flags="$extra_cxx_flags" \
 	..
 #
 if [ "$test_cppad" == 'true' ]

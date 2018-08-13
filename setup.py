@@ -11,10 +11,11 @@ verbose_makefile = "false"
 build_type       = "debug"
 cppad_prefix     = "build/prefix"
 test_cppad       = "fasle"
-swig_cxx_flags = "-Wno-sign-compare -Wno-catch-value -Wno-class-memaccess -std=c++11"
-cppad_cxx_flags = "-Wall -pedantic-errors -Wno-unused-result -std=c++11"
+extra_cxx_flags  = "-Wall -pedantic-errors -Wno-unused-result -std=c++11"
 # END_USER_SETTINGS
 # -----------------------------------------------------------------------------
+# extra flags to supress wanings in swig code
+swig_cxx_flags = "-Wno-class-memaccess"
 import re
 import os
 import sys
@@ -54,7 +55,7 @@ command = [
 	'-D', 'CMAKE_VERBOSE_MAKEFILE=' + quote_str(verbose_makefile),
 	'-D', 'CMAKE_BUILD_TYPE='       + quote_str(build_type),
 	'-D', 'cppad_prefix='           + quote_str(cppad_prefix_absolute),
-	'-D', 'cppad_cxx_flags='        + quote_str(cppad_cxx_flags),
+	'-D', 'extra_cxx_flags='        + quote_str(extra_cxx_flags),
 	'-D', 'python_version='         + quote_str( python_version ),
 	'..'
 ]
@@ -119,7 +120,7 @@ for name in os.listdir('lib/cplusplus') :
 include_dirs     = [ cppad_include_dir ]
 include_dirs.append( os.getcwd() + '/build/lib' )
 include_dirs.append( os.getcwd() + '/include' )
-extra_compile_args  = cppad_cxx_flags.split()
+extra_compile_args  = extra_cxx_flags.split()
 extra_compile_args += swig_cxx_flags.split()
 undef_macros        = list()
 if build_type == 'debug' :
@@ -191,13 +192,8 @@ sys.exit(0)
 # $subhead build_type$$
 # This is either $code "debug"$$, $code "release"$$.
 #
-# $subhead swig_cxx_flags$$
-# Extra C++ compiler flags used when compiling code that is created
-# by Swig.
-#
-# $subhead cppad_cxx_flags$$
-# Extra C++ compiler flags used when compiling code that includes Cppad
-# header files.
+# $subhead extra_cxx_flags$$
+# Extra compiler flags used when compiling C++ code.
 #
 # $subhead cppad_prefix$$
 # This is the directory where $cref get_cppad.sh$$ puts Cppad

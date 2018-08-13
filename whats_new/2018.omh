@@ -17,9 +17,17 @@ $spell
 	dep
 	af
 	xam
+	cxx
 $$
 
 $section Cppad Py Changes During 2018$$
+
+$head 08-13$$
+Change $code cppad_cxx_flags$$ to
+$cref/extra_cxx_flags/setup.py/Configure/extra_cxx_flags/$$ in the user
+configuration settings.
+Also remove $code swig_cxx_flags$$ from these user settings
+(set automatically).
 
 $head 07-31$$
 $list number$$

@@ -8,7 +8,7 @@
 # cmake \
 #	-D CMAKE_VERBOSE_MAKEFILE=value \
 #	-D cppad_prefix=value  \
-#	-D cppad_cxx_flags=value \
+#	-D extra_cxx_flags=value \
 #	-D python_version=value
 #
 # -----------------------------------------------------------------------------
@@ -16,7 +16,7 @@
 # Suppress warnging that WIN32 not defined on cygwin
 SET(CMAKE_LEGACY_CYGWIN_WIN32 0) # remove when version below >= 2.8.4
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
-SET(cppad_py_version "20180731")
+SET(cppad_py_version "20180813")
 PROJECT(cppad_py)
 # =============================================================================
 # MACROS
@@ -121,10 +121,12 @@ IF( NOT cppad_prefix )
 ENDIF( NOT cppad_prefix )
 INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
 # -----------------------------------------------------------------------------
-# cppad_prefix, cppad_cxx_flags, python_version
-cmake_argument(cppad_cxx_flags "" STRING
+# extra_cxx_flags
+cmake_argument(extra_cxx_flags "" STRING
 	"Flags, added to CMAKE_CXX_FLAGS, used when compiling cppad_py code."
 )
+# -----------------------------------------------------------------------------
+# python_version
 cmake_argument(python_version "" STRING
 	"major and minor version number for python, major part of must be 2 or 3."
 )
