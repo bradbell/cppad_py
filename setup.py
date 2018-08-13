@@ -303,7 +303,7 @@ sys.exit(0)
 #	print(sys.path)
 #	quit()
 # %$$
-# The directory $icode%%prefix%/lib/python%major%.%minor%/site_packages%$$
+# The directory $icode%prefix%/lib/python%major%.%minor%/site_packages%$$
 # must be in your python path.
 #
 # $end
