@@ -28,6 +28,7 @@ from cppad_py.a_fun_ctor      import a_fun_ctor
 from cppad_py.a_fun_forward   import a_fun_forward
 from cppad_py.a_fun_hessian   import a_fun_hessian
 from cppad_py.a_fun_jacobian  import a_fun_jacobian
+from cppad_py.a_fun_objective import a_fun_objective
 from cppad_py.a_fun_reverse   import a_fun_reverse
 from cppad_py.hes_sparsity    import a_fun_for_hes_sparsity
 from cppad_py.hes_sparsity    import a_fun_rev_hes_sparsity

@@ -22,6 +22,7 @@ extern bool vector_size_xam(void);
 extern bool vector_set_get_xam(void);
 extern bool a_fun_property_xam(void);
 extern bool a_fun_optimize_xam(void);
+extern bool a_fun_objective_xam(void);
 extern bool a_fun_jacobian_xam(void);
 extern bool a_fun_hessian_xam(void);
 extern bool a_fun_forward_xam(void);
@@ -69,6 +70,7 @@ int main(void)
 	ok &= Run( vector_set_get_xam,        "vector_set_get_xam"        );
 	ok &= Run( a_fun_property_xam,        "a_fun_property_xam"        );
 	ok &= Run( a_fun_optimize_xam,        "a_fun_optimize_xam"        );
+	ok &= Run( a_fun_objective_xam,       "a_fun_objective_xam"       );
 	ok &= Run( a_fun_jacobian_xam,        "a_fun_jacobian_xam"        );
 	ok &= Run( a_fun_hessian_xam,         "a_fun_hessian_xam"         );
 	ok &= Run( a_fun_forward_xam,         "a_fun_forward_xam"         );
