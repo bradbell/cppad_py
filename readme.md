@@ -1,5 +1,5 @@
 # Title
-cppad\_py: A C++ AD Object Library and Python Interface to Cppad
+cppad\_py: A C++ Algorithmic Differentiation Object Library and Python Interface to Cppad
 
 # License
 <pre>
