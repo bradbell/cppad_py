@@ -65,7 +65,7 @@ bool a_fun_property_xam(void) {
 // END SOURCE
 // -----------------------------------------------------------------------------
 /*
-$begin a_fun_property_xam.cpp$$
+$begin fun_property_xam.cpp$$
 $spell
 	cplusplus
 	cppad
@@ -75,7 +75,7 @@ $spell
 	Jacobians
 $$
 $section C++: a_fun Properties: Example and Test$$
-$srcfile|lib/example/cplusplus/a_fun_property_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/fun_property_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

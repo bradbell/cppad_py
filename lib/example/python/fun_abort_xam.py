@@ -8,7 +8,7 @@
 # abort_recording
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
-def a_fun_abort_xam() :
+def fun_abort_xam() :
 	#
 	import numpy
 	import numpy
@@ -53,7 +53,7 @@ def a_fun_abort_xam() :
 #
 # END SOURCE
 #
-# $begin a_fun_abort_xam.py$$ $newlinech #$$
+# $begin fun_abort_xam.py$$ $newlinech #$$
 # $spell
 #	py
 #	perl
@@ -64,6 +64,6 @@ def a_fun_abort_xam() :
 #	Jacobians
 # $$
 # $section Python: Abort Recording a_double Operations: Example and Test$$
-# $srcfile|lib/example/python/a_fun_abort_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/fun_abort_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

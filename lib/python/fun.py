@@ -16,13 +16,13 @@
 # $comment Files that have Python specific Implementation and Documention$$
 # $childtable%lib/python/independent.py
 #	%lib/python/abort_recording.omh
-#	%lib/python/a_fun_ctor.py
-#	%lib/python/a_fun_property.omh
-#	%lib/python/a_fun_jacobian.py
-#	%lib/python/a_fun_hessian.py
-#	%lib/python/a_fun_forward.py
-#	%lib/python/a_fun_reverse.py
-#	%lib/python/a_fun_optimize.omh
+#	%lib/python/fun_ctor.py
+#	%lib/python/fun_property.omh
+#	%lib/python/fun_jacobian.py
+#	%lib/python/fun_hessian.py
+#	%lib/python/fun_forward.py
+#	%lib/python/fun_reverse.py
+#	%lib/python/fun_optimize.omh
 # %$$
 #
 # $end
@@ -31,7 +31,7 @@ import cppad_py
 class a_fun :
 	"""Python interface to CppAD::ADFun<double>"""
 	#
-	# __init__: see a_fun_ctor.py
+	# __init__: see fun_ctor.py
 	def __init__(self, ax, ay) :
 		self.af = cppad_py.a_fun_ctor(ax, ay)
 	#
@@ -55,11 +55,11 @@ class a_fun :
 	def size_order(self) :
 		return self.af.size_order()
 	#
-	# jacobian: see a_fun_jacobian.py
+	# jacobian: see fun_jacobian.py
 	def jacobian(self, x) :
 		return cppad_py.a_fun_jacobian(self.af, x)
 	#
-	# hessian: see a_fun_hessian.py
+	# hessian: see fun_hessian.py
 	def hessian(self, x, w) :
 		return cppad_py.a_fun_hessian(self.af, x, w)
 	#

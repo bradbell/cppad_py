@@ -19,7 +19,7 @@ include (GenerateExportHeader)
 # cppad_py_lib (library used by sub-directories below)
 ADD_LIBRARY(cppad_py_lib SHARED
 	cplusplus/a_double.cpp
-	cplusplus/a_fun.cpp
+	cplusplus/fun.cpp
 	cplusplus/sparse.cpp
 	cplusplus/error.cpp
 )

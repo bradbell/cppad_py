@@ -54,7 +54,7 @@ See $cref whats_new_2018$$ for changes.
 
 $head Getting Started$$
 The following is a good place to see what the interface is like:
-$cref/Python/a_fun_jacobian_xam.py/$$.
+$cref/Python/fun_jacobian_xam.py/$$.
 
 $head C++ Function Speed$$
 One can use Cppad Py to get faster function evaluation in scripting Python,
