@@ -18,7 +18,6 @@
 #	%lib/python/abort_recording.omh
 #	%lib/python/a_fun_ctor.py
 #	%lib/python/a_fun_property.omh
-#	%lib/python/a_fun_objective.py
 #	%lib/python/a_fun_jacobian.py
 #	%lib/python/a_fun_hessian.py
 #	%lib/python/a_fun_forward.py
@@ -55,10 +54,6 @@ class a_fun :
 	# size_order
 	def size_order(self) :
 		return self.af.size_order()
-	#
-	# jacobian: see a_fun_objective.py
-	def objective(self, x) :
-		return cppad_py.a_fun_objective(self.af, x)
 	#
 	# jacobian: see a_fun_jacobian.py
 	def jacobian(self, x) :
