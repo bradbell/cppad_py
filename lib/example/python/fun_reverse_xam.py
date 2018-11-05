@@ -35,7 +35,7 @@ def fun_reverse_xam() :
 	ay[0] = ax_0 * ax_1 * ax_2
 	#
 	# define af corresponding to f(x) = x_0 * x_1 * x_2
-	af = cppad_py.a_fun(ax, ay)
+	f  = cppad_py.d_fun(ax, ay)
 	# -----------------------------------------------------------------------
 	# define          X(t) = (x_0 + t, x_1 + t, x_2 + t)
 	# it follows that Y(t) = f(X(t)) = (x_0 + t) * (x_1 + t) * (x_2 + t)
@@ -46,16 +46,16 @@ def fun_reverse_xam() :
 	xp[0] = 2.0
 	xp[1] = 3.0
 	xp[2] = 4.0
-	yp = af.forward(p, xp)
+	yp = f.forward(p, xp)
 	ok = ok and yp[0] == 24.0
 	# -----------------------------------------------------------------------
 	# first order reverse (derivative of zero order forward)
 	# define G( Y ) = y_0 = x_0 * x_1 * x_2
-	m         = af.size_range()
+	m         = f.size_range()
 	q         = 1
 	yq1       = numpy.empty( (m, q), dtype=float)
 	yq1[0, 0] = 1.0
-	xq1       = af.reverse(q, yq1)
+	xq1       = f.reverse(q, yq1)
 	# partial G w.r.t x_0
 	ok = ok and xq1[0,0] == 3.0 * 4.0
 	# partial G w.r.t x_1
@@ -68,7 +68,7 @@ def fun_reverse_xam() :
 	xp[0] = 1.0
 	xp[1] = 1.0
 	xp[2] = 1.0
-	yp    = af.forward(p, xp)
+	yp    = f.forward(p, xp)
 	ok    = ok and yp[0] == 3.0*4.0 + 2.0*4.0 + 2.0*3.0
 	# -----------------------------------------------------------------------
 	# second order reverse (derivative of first order forward)
@@ -78,7 +78,7 @@ def fun_reverse_xam() :
 	yq2       = numpy.empty( (m, q), dtype=float)
 	yq2[0, 0] = 0.0 # partial of G w.r.t y_0^0
 	yq2[0, 1] = 1.0 # partial of G w.r.t y_0^1
-	xq2       = af.reverse(q, yq2)
+	xq2       = f.reverse(q, yq2)
 	# partial G w.r.t x_0^0
 	ok = ok and xq2[0, 0] == 3.0 + 4.0
 	# partial G w.r.t x_1^0

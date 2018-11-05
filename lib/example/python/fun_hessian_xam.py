@@ -35,14 +35,14 @@ def fun_hessian_xam() :
 	ay[0] = ax_0 * ax_1 * ax_2
 	#
 	# define af corresponding to f(x) = x_0 * x_1 * x_2
-	af = cppad_py.a_fun(ax, ay)
+	f  = cppad_py.d_fun(ax, ay)
 	#
 	# g(x) = w_0 * f_0 (x) = f(x)
 	w = numpy.empty(n_dep, dtype=float)
 	w[0] = 1.0
 	#
 	# compute Hessian
-	fpp = af.hessian(x, w)
+	fpp = f.hessian(x, w)
 	#
 	#          [ 0.0 , x_2 , x_1 ]
 	# f''(x) = [ x_2 , 0.0 , x_0 ]

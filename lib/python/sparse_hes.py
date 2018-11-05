@@ -7,7 +7,6 @@
 # -----------------------------------------------------------------------------
 # $begin py_sparse_hes$$ $newlinech #$$
 # $spell
-#	af
 #	Jacobian
 #	Taylor
 #	rcv
@@ -26,12 +25,12 @@
 # $head Syntax$$
 # $icode%work% = cppad_py.sparse_hes_work()
 # %$$
-# $icode%n_sweep% = %af%.sparse_hes(%subset%, %x%, %r%, %pattern%, %work%)
+# $icode%n_sweep% = %f%.sparse_hes(%subset%, %x%, %r%, %pattern%, %work%)
 # %$$
 #
 # $head Purpose$$
 # We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-# function corresponding to $icode af$$.
+# function corresponding to $icode f$$.
 # Given a vector $latex r \in \B{R}^m$$, define
 # $latex \[
 #	H(x) = (r^\R{T} F)^{(2)} ( x )
@@ -39,10 +38,10 @@
 # This routine takes advantage of sparsity when computing elements
 # of the Hessian $latex H(x)$$.
 #
-# $head af$$
+# $head f$$
 # This object must have been returned by a previous call to the python
-# $cref/a_fun/py_a_fun_ctor/$$ constructor.
-# Note that the Taylor coefficients stored in $icode af$$ are affected
+# $cref/d_fun/py_d_fun_ctor/$$ constructor.
+# Note that the Taylor coefficients stored in $icode f$$ are affected
 # by this operation; see
 # $cref/uses forward/py_sparse_hes/Uses Forward/$$ below.
 #
@@ -88,7 +87,7 @@
 # and its value after $icode%work%.clear()%$$, as empty.
 # If it is empty, information is stored in $icode work$$.
 # This can be used to reduce computation when
-# a future call is for the same object $icode af$$,
+# a future call is for the same object $icode f$$,
 # and the same subset of the Hessian.
 # If either of these values change, use $icode%work%.clear()%$$ to
 # empty this structure.
@@ -107,13 +106,13 @@
 # or combining multiple columns and rows into a single sweep.
 #
 # $head Uses Forward$$
-# After each call to $cref py_a_fun_forward$$,
-# the object $icode af$$ contains the corresponding Taylor coefficients
+# After each call to $cref py_d_fun_forward$$,
+# the object $icode f$$ contains the corresponding Taylor coefficients
 # for all the variables in the operation sequence..
 # After a call to $code sparse_hes$$
 # the zero order coefficients correspond to
 # $codei%
-#	%af%.forward(0, %x%)
+#	%f%.forward(0, %x%)
 # %$$
 # All the other forward mode coefficients are unspecified.
 #
@@ -128,14 +127,14 @@
 # undocumented fact: pattern.rc (subset.rcv) is vec_int version of
 # sparsity pattern (sparse matrix)
 import cppad_py
-def a_fun_sparse_hes(af, subset, x, r, pattern, work) :
+def d_fun_sparse_hes(f, subset, x, r, pattern, work) :
 	"""
-	n_sweep = af.sparse_hes(subset, x, r, pattern, work)
+	n_sweep = f.sparse_hes(subset, x, r, pattern, work)
 	"""
-	n       = af.size_domain()
-	m       = af.size_range()
+	n       = f.size_domain()
+	m       = f.size_range()
 	dtype   = float
-	syntax  = 'af.sparse_hes(subset, x, r, pattern, work)'
+	syntax  = 'f.sparse_hes(subset, x, r, pattern, work)'
 	u       = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
 	v       = cppad_py.utility.numpy2vec(r, dtype, m, syntax, 'r')
-	af.sparse_hes(subset.rcv, u, v, pattern.rc, work)
+	f.sparse_hes(subset.rcv, u, v, pattern.rc, work)

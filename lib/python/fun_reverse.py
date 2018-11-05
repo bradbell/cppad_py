@@ -5,10 +5,9 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_a_fun_reverse$$ $newlinech #$$
+# $begin py_d_fun_reverse$$ $newlinech #$$
 # $spell
 #	vec
-#	af
 #	xq
 #	Taylor
 #	yq
@@ -18,33 +17,33 @@
 # $section Reverse Mode AD$$
 #
 # $head Syntax$$
-# $icode%xq% = %af%.reverse(%q%, %yq%)%$$
+# $icode%xq% = %f%.reverse(%q%, %yq%)%$$
 #
-# $head af$$
+# $head f$$
 # This object must have been returned by a previous call to the python
-# $cref/a_fun/py_a_fun_ctor/$$ constructor.
+# $cref/d_fun/py_d_fun_ctor/$$ constructor.
 # Note that it is effectively constant; i.e., not changed.
 #
 # $head Notation$$
 #
 # $subhead f(x)$$
 # We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
-# for the function corresponding to $icode af$$.
-# Note that $icode n$$ is the size of $cref/ax/py_a_fun_ctor/ax/$$
-# and $icode m$$ is the size of $cref/ay/py_a_fun_ctor/ay/$$
-# in to the constructor for $icode af$$.
+# for the function corresponding to $icode f$$.
+# Note that $icode n$$ is the size of $cref/ax/py_d_fun_ctor/ax/$$
+# and $icode m$$ is the size of $cref/ay/py_d_fun_ctor/ay/$$
+# in to the constructor for $icode f$$.
 #
 # $subhead X(t), S$$
 # This is the same function as
-# $cref/X(t)/py_a_fun_forward/X(t)/$$ in the previous call to
-# $icode%af%.forward%$$.
+# $cref/X(t)/py_d_fun_forward/X(t)/$$ in the previous call to
+# $icode%f%.forward%$$.
 # We use $latex S \in \B{R}^{n \times q}$$ to denote the Taylor coefficients
 # of $latex X(t)$$.
 #
 # $subhead Y(t), T$$
 # This is the same function as
-# $cref/Y(t)/py_a_fun_forward/Y(t)/$$ in the previous call to
-# $icode%af%.forward%$$.
+# $cref/Y(t)/py_d_fun_forward/Y(t)/$$ in the previous call to
+# $icode%f%.forward%$$.
 # We use $latex T \in \B{R}^{m \times q}$$ to denote the Taylor coefficients
 # of $latex Y(t)$$.
 # We also use the notation $latex T(S)$$ to express the fact that
@@ -60,8 +59,8 @@
 # It is the number of the Taylor coefficient (for each variable)
 # that we are computing the derivative with respect to.
 # It must be greater than zero, and less than or equal
-# the number of Taylor coefficient stored in $icode af$$; i.e.,
-# $cref/af.size_order()/py_a_fun_property/size_order/$$.
+# the number of Taylor coefficient stored in $icode f$$; i.e.,
+# $cref/f.size_order()/py_d_fun_property/size_order/$$.
 #
 # $head yq$$
 # This argument is a numpy matrix with $code float$$ elements,
@@ -93,25 +92,25 @@
 import cppad_py
 import numpy
 #
-# This function is used by reverse in a_fun class to implement syntax above
-def a_fun_reverse(af, q, yq) :
+# This function is used by reverse in d_fun class to implement syntax above
+def d_fun_reverse(f, q, yq) :
 	"""
-	xq = af.reverse(q, yq)
+	xq = f.reverse(q, yq)
 	given Taylor coefficients for X(t), compute Taylor coefficients for
 	Y(t) = f(X(t)).
 	"""
 	#
-	n = af.size_domain()
-	m = af.size_range()
+	n = f.size_domain()
+	m = f.size_range()
 	#
 	# convert yq -> u
 	dtype    = float
 	shape    = (m, q)
-	syntax   = 'af.reverse(q, yq)'
+	syntax   = 'f.reverse(q, yq)'
 	u = cppad_py.utility.numpy2vec(yq, dtype, shape, syntax, 'yq')
 	#
 	# call reverse
-	v =  af.reverse(q, u)
+	v =  f.reverse(q, u)
 	#
 	# convert v -> xp
 	xq = cppad_py.utility.vec2numpy(v, n, q)

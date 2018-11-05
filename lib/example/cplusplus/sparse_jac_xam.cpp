@@ -16,7 +16,7 @@ bool sparse_jac_xam(void) {
 	using cppad_py::vec_int;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
-	using cppad_py::a_fun;
+	using cppad_py::d_fun;
 	using cppad_py::sparse_rc;
 	using cppad_py::sparse_rcv;
 	using cppad_py::sparse_jac_work;
@@ -50,7 +50,7 @@ bool sparse_jac_xam(void) {
 	}
 	//
 	// define af corresponding to f(x)
-	a_fun af = a_fun(ax, ay);
+	d_fun f = d_fun(ax, ay);
 	//
 	// sparsity pattern for identity matrix
 	sparse_rc pat_eye = sparse_rc();
@@ -61,7 +61,7 @@ bool sparse_jac_xam(void) {
 	//
 	// sparsity pattern for the Jacobian
 	sparse_rc pat_jac = sparse_rc();
-	af.for_jac_sparsity(pat_eye, pat_jac);
+	f.for_jac_sparsity(pat_eye, pat_jac);
 	//
 	// loop over forward and reverse mode
 	for(int mode = 0; mode < 2; mode++) {
@@ -70,10 +70,10 @@ bool sparse_jac_xam(void) {
 		// work space used to save time for multiple calls
 		sparse_jac_work work = sparse_jac_work();
 		if( mode == 0  ) {
-			af.sparse_jac_for(subset, x, pat_jac, work);
+			f.sparse_jac_for(subset, x, pat_jac, work);
 		}
 		if( mode == 1  ) {
-			af.sparse_jac_rev(subset, x, pat_jac, work);
+			f.sparse_jac_rev(subset, x, pat_jac, work);
 		}
 		//
 		// check result

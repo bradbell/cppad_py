@@ -34,7 +34,7 @@ def fun_forward_xam() :
 	ay[0] = ax0 * ax1
 	#
 	# define af corresponding to f(x) = x0 * x1
-	af = cppad_py.a_fun(ax, ay)
+	f  = cppad_py.d_fun(ax, ay)
 	#
 	# define X(t) = (3 + t, 2 + t)
 	# it follows that Y(t) = f(X(t)) = (3 + t) * (2 + t)
@@ -43,7 +43,7 @@ def fun_forward_xam() :
 	p     = 0
 	xp[0] = 3.0
 	xp[1] = 2.0
-	yp = af.forward(p, xp)
+	yp = f.forward(p, xp)
 	ok = ok and yp[0] == 6.0
 	#
 	# first order Taylor coefficients for X(t)
@@ -53,7 +53,7 @@ def fun_forward_xam() :
 	#
 	# first order Taylor coefficient for Y(t)
 	# Y'(0) = 3 + 2 = 5 and p ! = 1
-	yp = af.forward(p, xp)
+	yp = f.forward(p, xp)
 	ok = ok and yp[0] == 5.0
 	#
 	# second order Taylor coefficients for X(t)
@@ -63,7 +63,7 @@ def fun_forward_xam() :
 	#
 	# second order Taylor coefficient for Y(t)
 	# Y''(0) = 2.0 and p ! = 2
-	yp = af.forward(p, xp)
+	yp = f.forward(p, xp)
 	ok = ok and yp[0] == 1.0
 	#
 	return( ok )

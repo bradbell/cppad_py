@@ -9,7 +9,6 @@
 # $spell
 #	Jacobians
 #	jac
-#	af
 #	Jacobian
 #	Taylor
 #	rcv
@@ -27,34 +26,34 @@
 # $head Syntax$$
 # $icode%work% = cppad_py.sparse_jac_work()
 # %$$
-# $icode%n_sweep% = %af%.sparse_jac_for(%subset%, %x%, %pattern%, %work%)
+# $icode%n_sweep% = %f%.sparse_jac_for(%subset%, %x%, %pattern%, %work%)
 # %$$
-# $icode%n_sweep% = %af%.sparse_jac_rev(%subset%, %x%, %pattern%, %work%)%$$
+# $icode%n_sweep% = %f%.sparse_jac_rev(%subset%, %x%, %pattern%, %work%)%$$
 #
 # $head Purpose$$
 # We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-# function corresponding to $icode af$$.
+# function corresponding to $icode f$$.
 # The syntax above takes advantage of sparsity when computing the Jacobian
 # $latex \[
 #	J(x) = F^{(1)} (x)
 # \] $$
 # In the sparse case, this should be faster and take less memory than
-# $cref py_a_fun_jacobian$$.
+# $cref py_d_fun_jacobian$$.
 # We use the notation $latex J_{i,j} (x)$$ to denote the partial of
 # $latex F_i (x)$$ with respect to $latex x_j$$.
 #
 # $head sparse_jac_for$$
-# This function uses first order forward mode sweeps $cref py_a_fun_forward$$
+# This function uses first order forward mode sweeps $cref py_d_fun_forward$$
 # to compute multiple columns of the Jacobian at the same time.
 #
 # $head sparse_jac_rev$$
-# This function uses first order reverse mode sweeps $cref py_a_fun_reverse$$
+# This function uses first order reverse mode sweeps $cref py_d_fun_reverse$$
 # to compute multiple rows of the Jacobian at the same time.
 #
-# $head af$$
+# $head f$$
 # This object must have been returned by a previous call to the python
-# $cref/a_fun/py_a_fun_ctor/$$ constructor.
-# Note that the Taylor coefficients stored in $icode af$$ are affected
+# $cref/d_fun/py_d_fun_ctor/$$ constructor.
+# Note that the Taylor coefficients stored in $icode f$$ are affected
 # by this operation; see
 # $cref/uses forward/py_sparse_jac/Uses Forward/$$ below.
 #
@@ -94,7 +93,7 @@
 # and its value after $icode%work%.clear()%$$, as empty.
 # If it is empty, information is stored in $icode work$$.
 # This can be used to reduce computation when
-# a future call is for the same object $icode af$$,
+# a future call is for the same object $icode f$$,
 # the same member function $code sparse_jac_for$$ or $code sparse_jac_rev$$,
 # and the same subset of the Jacobian.
 # If any of these values change, use $icode%work%.clear()%$$ to
@@ -110,13 +109,13 @@
 # or combining multiple columns (rows) into a single sweep.
 #
 # $head Uses Forward$$
-# After each call to $cref py_a_fun_forward$$,
-# the object $icode af$$ contains the corresponding Taylor coefficients
+# After each call to $cref py_d_fun_forward$$,
+# the object $icode f$$ contains the corresponding Taylor coefficients
 # for all the variables in the operation sequence..
 # After a call to $code sparse_jac_forward$$ or $code sparse_jac_rev$$,
 # the zero order coefficients correspond to
 # $codei%
-#	%af%.forward(0, %x%)
+#	%f%.forward(0, %x%)
 # %$$
 # All the other forward mode coefficients are unspecified.
 #
@@ -131,24 +130,24 @@
 # undocumented fact: pattern.rc (subset.rcv) is vec_int version of
 # sparsity pattern (sparse matrix)
 import cppad_py
-def a_fun_sparse_jac_for(af, subset, x, pattern, work) :
+def d_fun_sparse_jac_for(f, subset, x, pattern, work) :
 	"""
-	n_sweep = af.sparse_jac_for(subset, x, pattern, work)
+	n_sweep = f.sparse_jac_for(subset, x, pattern, work)
 	"""
-	n       = af.size_domain()
-	m       = af.size_range()
+	n       = f.size_domain()
+	m       = f.size_range()
 	dtype   = float
-	syntax  = 'af.sparse_jac_for(subset, x, pattern, work)'
+	syntax  = 'f.sparse_jac_for(subset, x, pattern, work)'
 	u       = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
-	af.sparse_jac_for(subset.rcv, u, pattern.rc, work)
+	f.sparse_jac_for(subset.rcv, u, pattern.rc, work)
 #
-def a_fun_sparse_jac_rev(af, subset, x, pattern, work) :
+def d_fun_sparse_jac_rev(f, subset, x, pattern, work) :
 	"""
-	n_sweep = af.sparse_jac_rev(subset, x, pattern, work)
+	n_sweep = f.sparse_jac_rev(subset, x, pattern, work)
 	"""
-	n       = af.size_domain()
-	m       = af.size_range()
+	n       = f.size_domain()
+	m       = f.size_range()
 	dtype   = float
-	syntax  = 'af.sparse_jac_rev(subset, x, pattern, work)'
+	syntax  = 'f.sparse_jac_rev(subset, x, pattern, work)'
 	u       = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
-	af.sparse_jac_rev(subset.rcv, u, pattern.rc, work)
+	f.sparse_jac_rev(subset.rcv, u, pattern.rc, work)
