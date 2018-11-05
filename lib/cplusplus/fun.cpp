@@ -6,7 +6,7 @@
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
 # include <cppad/cppad.hpp>
-# include <cppad/py/a_fun.hpp>
+# include <cppad/py/fun.hpp>
 # include <cppad/py/error.hpp>
 
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
@@ -91,10 +91,10 @@ This aborts the current recording (if it exists)
 started by the most recent call to $cref/independent/cpp_independent/$$.
 
 $children%
-	lib/example/cplusplus/a_fun_abort_xam.cpp
+	lib/example/cplusplus/fun_abort_xam.cpp
 %$$
 $head Example$$
-$cref/C++/a_fun_abort_xam.cpp/$$.
+$cref/C++/fun_abort_xam.cpp/$$.
 
 $end
 */
@@ -258,10 +258,10 @@ after each call to $icode%af%.forward%$$; see
 $cref/size_order/cpp_a_fun_forward/p/size_order/$$ in the forward mode section.
 
 $children%
-	lib/example/cplusplus/a_fun_property_xam.cpp
+	lib/example/cplusplus/fun_property_xam.cpp
 %$$
 $head Example$$
-$cref a_fun_property_xam.cpp$$
+$cref fun_property_xam.cpp$$
 
 $end
 */
@@ -339,10 +339,10 @@ $latex \[
 \] $$
 
 $children%
-	lib/example/cplusplus/a_fun_jacobian_xam.cpp
+	lib/example/cplusplus/fun_jacobian_xam.cpp
 %$$
 $head Example$$
-$cref a_fun_jacobian_xam.cpp$$
+$cref fun_jacobian_xam.cpp$$
 
 
 $end
@@ -420,10 +420,10 @@ $latex \[
 \] $$
 
 $children%
-	lib/example/cplusplus/a_fun_hessian_xam.cpp
+	lib/example/cplusplus/fun_hessian_xam.cpp
 %$$
 $head Example$$
-$cref a_fun_hessian_xam.cpp$$
+$cref fun_hessian_xam.cpp$$
 
 $end
 */
@@ -519,10 +519,10 @@ and its size is $icode m$$.
 It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
 
 $children%
-	lib/example/cplusplus/a_fun_forward_xam.cpp
+	lib/example/cplusplus/fun_forward_xam.cpp
 %$$
 $head Example$$
-$cref a_fun_forward_xam.cpp$$
+$cref fun_forward_xam.cpp$$
 
 $end
 */
@@ -624,10 +624,10 @@ the partial derivative of
 $latex G(T(S))$$ w.r.t. $latex S_j^{(k)} (t) / k !$$.
 
 $children%
-	lib/example/cplusplus/a_fun_reverse_xam.cpp
+	lib/example/cplusplus/fun_reverse_xam.cpp
 %$$
 $head Example$$
-$cref a_fun_reverse_xam.cpp$$
+$cref fun_reverse_xam.cpp$$
 
 $end
 */
@@ -662,10 +662,10 @@ $codei%
 %$$
 
 $children%
-	lib/example/cplusplus/a_fun_optimize_xam.cpp
+	lib/example/cplusplus/fun_optimize_xam.cpp
 %$$
 $head Example$$
-$cref a_fun_optimize_xam.cpp$$
+$cref fun_optimize_xam.cpp$$
 
 $end
 */

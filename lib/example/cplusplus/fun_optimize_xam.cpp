@@ -63,7 +63,7 @@ bool a_fun_optimize_xam(void) {
 // END SOURCE
 // -----------------------------------------------------------------------------
 /*
-$begin a_fun_optimize_xam.cpp$$
+$begin fun_optimize_xam.cpp$$
 $spell
 	cplusplus
 	cppad
@@ -73,7 +73,7 @@ $spell
 	Jacobians
 $$
 $section C++: Optimize an a_fun: Example and Test$$
-$srcfile|lib/example/cplusplus/a_fun_optimize_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/fun_optimize_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

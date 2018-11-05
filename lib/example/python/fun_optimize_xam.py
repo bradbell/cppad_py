@@ -5,10 +5,10 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# a_fun properties
+# optimize
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
-def a_fun_property_xam() :
+def fun_optimize_xam() :
 	#
 	import numpy
 	import cppad_py
@@ -17,12 +17,11 @@ def a_fun_property_xam() :
 	ok = True
 	# ---------------------------------------------------------------------
 	n_ind = 1 # number of independent variables
-	n_dep = 2 # number of dependent variables
+	n_dep = 1 # number of dependent variables
 	n_var = 1 # phantom variable at address 0
 	n_op  = 1 # special operator at beginning
 	#
 	# dimension some vectors
-	# x  = numpy.empty(n_ind, dtype=float)
 	x  = numpy.empty(n_ind, dtype=float)
 	ay = numpy.empty(n_dep, dtype=cppad_py.a_double)
 	#
@@ -32,37 +31,34 @@ def a_fun_property_xam() :
 	n_var = n_var + n_ind # one for each indpendent
 	n_op  = n_op + n_ind
 	#
-	# first dependent variable
-	ay[0] = ax[0] + ax[0]
-	n_var = n_var + 1 # one variable and operator
-	n_op  = n_op + 1
-	#
-	# second dependent variable
+	# accumulate summation
 	ax0   = ax[0]
-	ay[1] = ax0.sin()
-	n_var = n_var + 2 # two varialbes, one operator
-	n_op  = n_op + 1
+	csum  = cppad_py.a_double(0.0)
+	csum  = ax0 + ax0 + ax0 + ax0
+	n_var = n_var + 3 # one per + operator
+	n_op  = n_op + 3
 	#
-	# define f(x) = y
-	af = cppad_py.a_fun(ax, ay)
-	n_op = n_op + 1 # speical operator at end
+	# define f(x) = y_0 = csum
+	ay[0] = csum
+	af    = cppad_py.a_fun(ax, ay)
+	n_op  = n_op + 1 # speical operator at end
 	#
-	# check af properties
-	ok = ok and af.size_domain() == n_ind
-	ok = ok and af.size_range()  == n_dep
-	ok = ok and af.size_var()    == n_var
-	ok = ok and af.size_op()     == n_op
-	ok = ok and af.size_order()  == 0
+	# check number of variables and operators
+	ok = ok and af.size_var() == n_var
+	ok = ok and af.size_op() == n_op
 	#
-	# compute zero order Taylor coefficients
-	y  = af.forward(0, x)
-	ok = ok and af.size_order() == 1
+	# optimize
+	af.optimize()
+	#
+	# number of variables and operators has decreased by two
+	ok = ok and af.size_var() == n_var-2
+	ok = ok and af.size_op() == n_op-2
 	#
 	return( ok  )
 #
 # END SOURCE
 # -----------------------------------------------------------------------------
-# $begin a_fun_property_xam.py$$ $newlinech #$$
+# $begin fun_optimize_xam.py$$ $newlinech #$$
 # $spell
 #	py
 #	perl
@@ -72,7 +68,7 @@ def a_fun_property_xam() :
 #	Jacobian
 #	Jacobians
 # $$
-# $section Python: a_fun Properties: Example and Test$$
-# $srcfile|lib/example/python/a_fun_property_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $section Python: Optimize an a_fun: Example and Test$$
+# $srcfile|lib/example/python/fun_optimize_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

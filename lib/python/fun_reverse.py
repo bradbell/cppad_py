@@ -83,10 +83,10 @@
 # $latex G(T(S))$$ w.r.t. $latex S_j^{(k)} (t) / k !$$.
 #
 # $children%
-#	lib/example/python/a_fun_reverse_xam.py
+#	lib/example/python/fun_reverse_xam.py
 # %$$
 # $head Example$$
-# $cref a_fun_reverse_xam.py$$
+# $cref fun_reverse_xam.py$$
 #
 # $end
 # -----------------------------------------------------------------------------

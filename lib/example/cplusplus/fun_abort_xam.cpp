@@ -57,7 +57,7 @@ bool a_fun_abort_xam(void) {
 // END SOURCE
 //
 /*
-$begin a_fun_abort_xam.cpp$$
+$begin fun_abort_xam.cpp$$
 $spell
 	cplusplus
 	cppad
@@ -67,7 +67,7 @@ $spell
 	Jacobians
 $$
 $section C++: Abort Recording a_double Operations: Example and Test$$
-$srcfile|lib/example/cplusplus/a_fun_abort_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/fun_abort_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

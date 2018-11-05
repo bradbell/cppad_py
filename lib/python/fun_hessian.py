@@ -5,19 +5,19 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_a_fun_jacobian$$ $newlinech #$$
+# $begin py_a_fun_hessian$$ $newlinech #$$
 # $spell
 #	vec
 #	af
 #	Taylor
-#	Jacobian
+#	const
 #	numpy
 # $$
 #
-# $section Jacobian of an AD Function$$
+# $section Hessian of an AD Function$$
 #
 # $head Syntax$$
-# $icode%J% = %af%.jacobian(%x%)%$$
+# $icode%H% = %af%.hessian(%x%, %w%)%$$
 #
 # $head af$$
 # This object must have been returned by a previous call to the python
@@ -35,51 +35,66 @@
 # and $icode m$$ is the size of $cref/ay/py_a_fun_ctor/ay/$$
 # in to the constructor for $icode af$$.
 #
+# $head g(x)$$
+# We use the notation $latex g: \B{R}^n \rightarrow \B{R}$$
+# for the function defined by
+# $latex \[
+#	g(x) = \sum_{i=0}^{n-1} w_i f_i (x)
+# \] $$
+#
 # $head x$$
 # This argument is a numpy vector with $code float$$ elements
 # and size $icode n$$.
-# It specifies the argument value at we are computing the Jacobian
-# $latex f'(x)$$.
+# It specifies the argument value at we are computing the Hessian
+# $latex g^{(2)}(x)$$.
 #
-# $head J$$
+# $head w$$
+# This argument is a numpy vector with $code float$$ elements
+# and size $icode m$$.
+# It specifies the vector $icode w$$ in the definition of $latex g(x)$$ above.
+#
+# $head H$$
 # The result is a numpy matrix with $code float$$ elements,
-# $icode m$$ rows, and $code n$$ columns.
-# For $icode i$$ between zero and $icode%m%-1%$$
+# $icode n$$ rows and $code n$$ columns.
+# For $icode i$$ between zero and $icode%n%-1%$$
 # and $icode j$$ between zero and $icode%n%-1%$$,
 # $latex \[
-#	J [ i,  j ] = \frac{ \partial f_i }{ \partial x_j } (x)
+#	H [ i, j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
 # \] $$
 #
+#
 # $children%
-#	lib/example/python/a_fun_jacobian_xam.py
+#	lib/example/python/fun_hessian_xam.py
 # %$$
 # $head Example$$
-# $cref a_fun_jacobian_xam.py$$
+# $cref fun_hessian_xam.py$$
+#
 #
 # $end
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy
 #
-# This function is used by jacobian in a_fun class to implement syntax above
-def a_fun_jacobian(af, x) :
+# This function is used by hessian in a_fun class to implement syntax above
+def a_fun_hessian(af, x, w) :
 	"""
-	J = af.jacobian(x)
-	computes the Jacobian of the function corresponding to af
+	H = af.hessian(x, w)
+	computes Hessian of a function corresponding a sum of the components of af
 	"""
+	from cppad_py import vec_double as vec_double
 	#
 	n = af.size_domain()
 	m = af.size_range()
 	#
-	# convert x -> u
+	# convert x -> u, w -> v
 	dtype    = float
-	syntax   = 'af.jacobian(x)'
+	syntax   = 'af.hessian(x, w)'
 	u = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
+	v = cppad_py.utility.numpy2vec(w, dtype, m, syntax, 'w')
 	#
-	# call jacobian
-	v =  af.jacobian(u)
+	# call hessian
+	z =  af.hessian(u, v)
 	#
-	# convert v -> J
-	J = cppad_py.utility.vec2numpy(v, m, n)
+	H = cppad_py.utility.vec2numpy(z, n, n)
 	#
-	return J
+	return H

@@ -27,9 +27,9 @@ This object must have been returned by a previous call to the python
 $cref/a_fun/py_a_fun_ctor/$$ constructor.
 
 $children%
-	lib/example/python/a_fun_optimize_xam.py
+	lib/example/python/fun_optimize_xam.py
 %$$
 $head Example$$
-$cref a_fun_optimize_xam.py$$
+$cref fun_optimize_xam.py$$
 
 $end

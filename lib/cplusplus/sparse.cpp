@@ -8,7 +8,7 @@
 # include <cppad/cppad.hpp>
 # include <cppad/py/sparse.hpp>
 # include <cppad/py/vector.hpp>
-# include <cppad/py/a_fun.hpp>
+# include <cppad/py/fun.hpp>
 # include <cppad/py/error.hpp>
 
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE

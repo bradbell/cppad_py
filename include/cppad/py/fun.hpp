@@ -66,7 +66,7 @@ class CPPAD_PY_LIB_PUBLIC a_fun
 	int size_order() const;
 	// ------------------------------------------------------------------------
 	// public member in Swig interface that compute sparse results
-	// (these are implemented in sparse.cpp instead of a_fun.cpp).
+	// (these are implemented in sparse.cpp instead of fun.cpp).
 	void for_jac_sparsity(
 		const sparse_rc&  pattern_in    ,
 		sparse_rc&        pattern_out

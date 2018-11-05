@@ -79,10 +79,10 @@
 # It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
 #
 # $children%
-#	lib/example/python/a_fun_forward_xam.py
+#	lib/example/python/fun_forward_xam.py
 # %$$
 # $head Example$$
-# $cref a_fun_forward_xam.py$$
+# $cref fun_forward_xam.py$$
 #
 #
 # $end

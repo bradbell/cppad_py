@@ -72,9 +72,9 @@ after each call to $icode%af%.forward%$$; see
 $cref/size_order/py_a_fun_forward/p/size_order/$$ in the forward mode section.
 
 $children%
-	lib/example/python/a_fun_property_xam.py
+	lib/example/python/fun_property_xam.py
 %$$
 $head Example$$
-$cref a_fun_property_xam.py$$
+$cref fun_property_xam.py$$
 
 $end

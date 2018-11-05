@@ -8,7 +8,7 @@
 # forward
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
-def a_fun_forward_xam() :
+def fun_forward_xam() :
 	#
 	import numpy
 	import cppad_py
@@ -70,7 +70,7 @@ def a_fun_forward_xam() :
 #
 # END SOURCE
 #
-# $begin a_fun_forward_xam.py$$ $newlinech #$$
+# $begin fun_forward_xam.py$$ $newlinech #$$
 # $spell
 #	py
 #	perl
@@ -81,6 +81,6 @@ def a_fun_forward_xam() :
 #	Jacobians
 # $$
 # $section Python: Forward Mode AD: Example and Test$$
-# $srcfile|lib/example/python/a_fun_forward_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/fun_forward_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

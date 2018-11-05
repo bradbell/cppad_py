@@ -23,12 +23,12 @@ from cppad_py.cppad_py_swig import vec_int
 
 # functions that require a python wraper
 # BEGIN_SORT_THIS_LINE_PLUS_1
-from cppad_py.a_fun           import a_fun
-from cppad_py.a_fun_ctor      import a_fun_ctor
-from cppad_py.a_fun_forward   import a_fun_forward
-from cppad_py.a_fun_hessian   import a_fun_hessian
-from cppad_py.a_fun_jacobian  import a_fun_jacobian
-from cppad_py.a_fun_reverse   import a_fun_reverse
+from cppad_py.fun             import a_fun
+from cppad_py.fun_ctor        import a_fun_ctor
+from cppad_py.fun_forward     import a_fun_forward
+from cppad_py.fun_hessian     import a_fun_hessian
+from cppad_py.fun_jacobian    import a_fun_jacobian
+from cppad_py.fun_reverse     import a_fun_reverse
 from cppad_py.hes_sparsity    import a_fun_for_hes_sparsity
 from cppad_py.hes_sparsity    import a_fun_rev_hes_sparsity
 from cppad_py.sparse_hes      import a_fun_sparse_hes

@@ -5,13 +5,13 @@
 //              GNU General Public License version 3.0 or later see
 //                    https://www.gnu.org/licenses/gpl-3.0.txt
 // -----------------------------------------------------------------------------
-// hessian
+// jacobian
 // -----------------------------------------------------------------------------
 // BEGIN SOURCE
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool a_fun_hessian_xam(void) {
+bool a_fun_jacobian_xam(void) {
 	using cppad_py::a_double;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
@@ -41,34 +41,23 @@ bool a_fun_hessian_xam(void) {
 	// define af corresponding to f(x) = x_0 * x_1 * x_2
 	a_fun af = a_fun(ax, ay);
 	//
-	// g(x) = w_0 * f_0 (x) = f(x)
-	vec_double w = vec_double(n_dep);
-	w[0] = 1.0;
+	// compute the Jacobian f'(x) = ( x_1*x_2, x_0*x_2, x_0*x_1 )
+	vec_double fp = af.jacobian(x);
 	//
-	// compute Hessian
-	vec_double fpp = af.hessian(x, w);
-	//
-	//          [ 0.0 , x_2 , x_1 ]
-	// f''(x) = [ x_2 , 0.0 , x_0 ]
-	//          [ x_1 , x_0 , 0.0 ]
-	ok = ok && fpp[0 * n_ind + 0] == 0.0 ;
-	ok = ok && fpp[0 * n_ind + 1] == x[2] ;
-	ok = ok && fpp[0 * n_ind + 2] == x[1] ;
-	//
-	ok = ok && fpp[1 * n_ind + 0] == x[2] ;
-	ok = ok && fpp[1 * n_ind + 1] == 0.0 ;
-	ok = ok && fpp[1 * n_ind + 2] == x[0] ;
-	//
-	ok = ok && fpp[2 * n_ind + 0] == x[1] ;
-	ok = ok && fpp[2 * n_ind + 1] == x[0] ;
-	ok = ok && fpp[2 * n_ind + 2] == 0.0 ;
+	// check Jacobian
+	double x_0 = x[0];
+	double x_1 = x[1];
+	double x_2 = x[2];
+	ok = ok && fp[0 * n_ind + 0] == x_1 * x_2 ;
+	ok = ok && fp[0 * n_ind + 1] == x_0 * x_2 ;
+	ok = ok && fp[0 * n_ind + 2] == x_0 * x_1 ;
 	//
 	return( ok );
 }
 // END SOURCE
 //
 /*
-$begin a_fun_hessian_xam.cpp$$
+$begin fun_jacobian_xam.cpp$$
 $spell
 	cplusplus
 	cppad
@@ -77,8 +66,8 @@ $spell
 	Jacobian
 	Jacobians
 $$
-$section C++: Dense Hessian Using AD: Example and Test$$
-$srcfile|lib/example/cplusplus/a_fun_hessian_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$section C++: Dense Jacobian Using AD: Example and Test$$
+$srcfile|lib/example/cplusplus/fun_jacobian_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //
