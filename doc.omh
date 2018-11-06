@@ -61,7 +61,7 @@ One can use Cppad Py to get faster function evaluation in scripting Python,
 when the sequence of floating point operations does not depend on the
 independent variables.
 Once an $cref d_fun$$ is recorded, zero order
-$cref/forward mode/py_d_fun_forward/$$ can be used to
+$cref/forward mode/py_fun_forward/$$ can be used to
 effectively evaluate the function in C++ instead of Python.
 
 $head License$$

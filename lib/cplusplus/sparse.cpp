@@ -832,16 +832,16 @@ $latex \[
 	J(x) = F^{(1)} (x)
 \] $$
 In the sparse case, this should be faster and take less memory than
-$cref cpp_d_fun_jacobian$$.
+$cref cpp_fun_jacobian$$.
 We use the notation $latex J_{i,j} (x)$$ to denote the partial of
 $latex F_i (x)$$ with respect to $latex x_j$$.
 
 $head sparse_jac_for$$
-This function uses first order forward mode sweeps $cref cpp_d_fun_forward$$
+This function uses first order forward mode sweeps $cref cpp_fun_forward$$
 to compute multiple columns of the Jacobian at the same time.
 
 $head sparse_jac_rev$$
-This function uses first order reverse mode sweeps $cref cpp_d_fun_reverse$$
+This function uses first order reverse mode sweeps $cref cpp_fun_reverse$$
 to compute multiple rows of the Jacobian at the same time.
 
 $head f$$
@@ -915,7 +915,7 @@ not counting the zero order forward sweep,
 or combining multiple columns (rows) into a single sweep.
 
 $head Uses Forward$$
-After each call to $cref cpp_d_fun_forward$$,
+After each call to $cref cpp_fun_forward$$,
 the object $icode f$$ contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
 After a call to $code sparse_jac_forward$$ or $code sparse_jac_rev$$,
@@ -1094,7 +1094,7 @@ not counting the zero order forward sweep,
 or combining multiple columns and rows into a single sweep.
 
 $head Uses Forward$$
-After each call to $cref cpp_d_fun_forward$$,
+After each call to $cref cpp_fun_forward$$,
 the object $icode f$$ contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
 After a call to $code sparse_hes$$

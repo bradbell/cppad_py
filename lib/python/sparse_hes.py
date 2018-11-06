@@ -40,7 +40,7 @@
 #
 # $head f$$
 # This object must have been returned by a previous call to the python
-# $cref/d_fun/py_d_fun_ctor/$$ constructor.
+# $cref/d_fun/py_fun_ctor/$$ constructor.
 # Note that the Taylor coefficients stored in $icode f$$ are affected
 # by this operation; see
 # $cref/uses forward/py_sparse_hes/Uses Forward/$$ below.
@@ -106,7 +106,7 @@
 # or combining multiple columns and rows into a single sweep.
 #
 # $head Uses Forward$$
-# After each call to $cref py_d_fun_forward$$,
+# After each call to $cref py_fun_forward$$,
 # the object $icode f$$ contains the corresponding Taylor coefficients
 # for all the variables in the operation sequence..
 # After a call to $code sparse_hes$$

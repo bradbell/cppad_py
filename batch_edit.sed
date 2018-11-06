@@ -24,6 +24,5 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|ad_double|a_double|g
-s|ad_other|a_other|g
-s|ad_ptr|a_ptr|
+s|cpp_d_|cpp_|g
+s|py_d_|py_|g

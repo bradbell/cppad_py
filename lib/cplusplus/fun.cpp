@@ -50,7 +50,7 @@ $codei%
 $head Purpose$$
 This starts a recording of the $cref a_double$$ operations.
 This recording is terminated, and the information is stored,
-by calling the $cref/d_fun constructor/cpp_d_fun_ctor/$$.
+by calling the $cref/d_fun constructor/cpp_fun_ctor/$$.
 It is terminated, and the information is lost,
 by calling $cref/abort_recording/cpp_abort_recording/$$.
 
@@ -103,7 +103,7 @@ void abort_recording(void)
 }
 /*
 -------------------------------------------------------------------------------
-$begin cpp_d_fun_ctor$$
+$begin cpp_fun_ctor$$
 $spell
 	vec
 	af
@@ -179,7 +179,7 @@ d_fun::d_fun(
 }
 /*
 ------------------------------------------------------------------------------
-$begin cpp_d_fun_property$$
+$begin cpp_fun_property$$
 $spell
 	vec
 	af
@@ -215,7 +215,7 @@ $codei%
 	int %n%
 %$$
 and is the size of the vector
-$cref/ax/cpp_d_fun_ctor/ax/$$ in the function constructor; i.e.,
+$cref/ax/cpp_fun_ctor/ax/$$ in the function constructor; i.e.,
 the number of independent variables.
 
 $head size_range$$
@@ -224,7 +224,7 @@ $codei%
 	int %m%
 %$$
 and is the size of the vector
-$cref/ay/cpp_d_fun_ctor/ay/$$ in the function constructor; i.e.,
+$cref/ay/cpp_fun_ctor/ay/$$ in the function constructor; i.e.,
 the number of dependent variables.
 
 $head size_var$$
@@ -252,10 +252,10 @@ $codei%
 %$$
 and is the number of Taylor coefficients currently stored in $icode f$$,
 for every variable in the operation sequence corresponding to $icode f$$.
-These coefficients are computed by $cref cpp_d_fun_forward$$.
+These coefficients are computed by $cref cpp_fun_forward$$.
 This is different from the other function properties in that it can change
 after each call to $icode%f%.forward%$$; see
-$cref/size_order/cpp_d_fun_forward/p/size_order/$$ in the forward mode section.
+$cref/size_order/cpp_fun_forward/p/size_order/$$ in the forward mode section.
 
 $children%
 	lib/example/cplusplus/fun_property_xam.cpp
@@ -282,7 +282,7 @@ int d_fun::size_order(void) const
 {	return ptr_->size_order(); }
 /*
 ------------------------------------------------------------------------------
-$begin cpp_d_fun_jacobian$$
+$begin cpp_fun_jacobian$$
 $spell
 	vec
 	af
@@ -306,15 +306,15 @@ $codei%
 %$$
 Note that its state is changed by this operation.
 The zero order
-$cref/Taylor coefficients/cpp_d_fun_forward/Taylor Coefficient/$$ in $icode f$$
+$cref/Taylor coefficients/cpp_fun_forward/Taylor Coefficient/$$ in $icode f$$
 correspond to the value of $icode x$$.
 The other Taylor coefficients in $icode f$$ are unspecified.
 
 $head f(x)$$
 We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
 for the function corresponding to $icode f$$.
-Note that $icode n$$ is the size of $cref/ax/cpp_d_fun_ctor/ax/$$
-and $icode m$$ is the size of $cref/ay/cpp_d_fun_ctor/ay/$$
+Note that $icode n$$ is the size of $cref/ax/cpp_fun_ctor/ax/$$
+and $icode m$$ is the size of $cref/ay/cpp_fun_ctor/ay/$$
 in to the constructor for $icode f$$.
 
 $head x$$
@@ -352,7 +352,7 @@ std::vector<double> d_fun::jacobian(const std::vector<double>& x)
 }
 /*
 ------------------------------------------------------------------------------
-$begin cpp_d_fun_hessian$$
+$begin cpp_fun_hessian$$
 $spell
 	vec
 	af
@@ -372,15 +372,15 @@ $codei%
 %$$
 Note that its state is changed by this operation.
 The zero order
-$cref/Taylor coefficients/cpp_d_fun_forward/Taylor Coefficient/$$ in $icode f$$
+$cref/Taylor coefficients/cpp_fun_forward/Taylor Coefficient/$$ in $icode f$$
 correspond to the value of $icode x$$.
 The other Taylor coefficients in $icode f$$ are unspecified.
 
 $head f(x)$$
 We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
 for the function corresponding to $icode f$$.
-Note that $icode n$$ is the size of $cref/ax/cpp_d_fun_ctor/ax/$$
-and $icode m$$ is the size of $cref/ay/cpp_d_fun_ctor/ay/$$
+Note that $icode n$$ is the size of $cref/ax/cpp_fun_ctor/ax/$$
+and $icode m$$ is the size of $cref/ay/cpp_fun_ctor/ay/$$
 in to the constructor for $icode f$$.
 
 $head g(x)$$
@@ -434,7 +434,7 @@ std::vector<double> d_fun::hessian(
 }
 /*
 ------------------------------------------------------------------------------
-$begin cpp_d_fun_forward$$
+$begin cpp_fun_forward$$
 $spell
 	af
 	xp
@@ -467,13 +467,13 @@ Note that its state is changed by this operation because
 all the Taylor coefficient that it calculates for every
 variable in recording are stored.
 See more discussion of this fact under the heading
-$cref/p/cpp_d_fun_forward/p/$$ below.
+$cref/p/cpp_fun_forward/p/$$ below.
 
 $head f(x)$$
 We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
 for the function corresponding to $icode f$$.
-Note that $icode n$$ is the size of $cref/ax/cpp_d_fun_ctor/ax/$$
-and $icode m$$ is the size of $cref/ay/cpp_d_fun_ctor/ay/$$
+Note that $icode n$$ is the size of $cref/ax/cpp_fun_ctor/ax/$$
+and $icode m$$ is the size of $cref/ay/cpp_fun_ctor/ay/$$
 in to the constructor for $icode f$$.
 
 $head X(t)$$
@@ -500,7 +500,7 @@ and for every variable in the recording, will be stored in $icode f$$.
 
 $subhead size_order$$
 After this call,
-$cref/f.size_order()/cpp_d_fun_property/size_order/$$ is $icode%p%+1%$$.
+$cref/f.size_order()/cpp_fun_property/size_order/$$ is $icode%p%+1%$$.
 
 $head xp$$
 This argument has prototype
@@ -531,7 +531,7 @@ std::vector<double> d_fun::forward(int p, const std::vector<double>& xp)
 }
 /*
 -------------------------------------------------------------------------------
-$begin cpp_d_fun_reverse$$
+$begin cpp_fun_reverse$$
 $spell
 	vec
 	af
@@ -560,20 +560,20 @@ $head Notation$$
 $subhead f(x)$$
 We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
 for the function corresponding to $icode f$$.
-Note that $icode n$$ is the size of $cref/ax/cpp_d_fun_ctor/ax/$$
-and $icode m$$ is the size of $cref/ay/cpp_d_fun_ctor/ay/$$
+Note that $icode n$$ is the size of $cref/ax/cpp_fun_ctor/ax/$$
+and $icode m$$ is the size of $cref/ay/cpp_fun_ctor/ay/$$
 in to the constructor for $icode f$$.
 
 $subhead X(t), S$$
 This is the same function as
-$cref/X(t)/cpp_d_fun_forward/X(t)/$$ in the previous call to
+$cref/X(t)/cpp_fun_forward/X(t)/$$ in the previous call to
 $icode%f%.forward%$$.
 We use $latex S \in \B{R}^{n \times q}$$ to denote the Taylor coefficients
 of $latex X(t)$$.
 
 $subhead Y(t), T$$
 This is the same function as
-$cref/Y(t)/cpp_d_fun_forward/Y(t)/$$ in the previous call to
+$cref/Y(t)/cpp_fun_forward/Y(t)/$$ in the previous call to
 $icode%f%.forward%$$.
 We use $latex T \in \B{R}^{m \times q}$$ to denote the Taylor coefficients
 of $latex Y(t)$$.
@@ -596,7 +596,7 @@ that we are computing the derivative with respect to.
 It must be greater than zero, and
 less than or equal
 the number of Taylor coefficient stored in $icode f$$; i.e.,
-$cref/f.size_order()/cpp_d_fun_property/size_order/$$.
+$cref/f.size_order()/cpp_fun_property/size_order/$$.
 
 $head yq$$
 This argument has prototype
@@ -638,7 +638,7 @@ std::vector<double> d_fun::reverse(int q, const std::vector<double>& yq)
 }
 /*
 ------------------------------------------------------------------------------
-$begin cpp_d_fun_optimize$$
+$begin cpp_fun_optimize$$
 $spell
 	af
 $$

@@ -37,7 +37,7 @@
 # $head Purpose$$
 # This starts a recording of the $cref a_double$$ operations.
 # This recording is terminated, and the information is stored,
-# by calling the $cref/d_fun constructor/py_d_fun_ctor/$$.
+# by calling the $cref/d_fun constructor/py_fun_ctor/$$.
 # It is terminated, and the information is lost,
 # by calling $cref/abort_recording/py_abort_recording/$$.
 #

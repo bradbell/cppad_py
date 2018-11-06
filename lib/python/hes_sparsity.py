@@ -40,7 +40,7 @@
 #
 # $head f$$
 # This object must have been returned by a previous call to the python
-# $cref/d_fun/py_d_fun_ctor/$$ constructor.
+# $cref/d_fun/py_fun_ctor/$$ constructor.
 #
 # $head select_domain$$
 # The argument is a numpy vector with $code bool$$ elements.

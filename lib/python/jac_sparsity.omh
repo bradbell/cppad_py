@@ -50,7 +50,7 @@ the argument $icode x$$.
 
 $head f$$
 This object must have been returned by a previous call to the python
-$cref/d_fun/py_d_fun_ctor/$$ constructor.
+$cref/d_fun/py_fun_ctor/$$ constructor.
 The object $icode f$$ is not constant when using
 $code for_jac_sparsity$$.
 After a call to $code for_jac_sparsity$$, a sparsity pattern

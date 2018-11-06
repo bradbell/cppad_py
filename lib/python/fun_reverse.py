@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_d_fun_reverse$$ $newlinech #$$
+# $begin py_fun_reverse$$ $newlinech #$$
 # $spell
 #	vec
 #	xq
@@ -21,7 +21,7 @@
 #
 # $head f$$
 # This object must have been returned by a previous call to the python
-# $cref/d_fun/py_d_fun_ctor/$$ constructor.
+# $cref/d_fun/py_fun_ctor/$$ constructor.
 # Note that it is effectively constant; i.e., not changed.
 #
 # $head Notation$$
@@ -29,20 +29,20 @@
 # $subhead f(x)$$
 # We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
 # for the function corresponding to $icode f$$.
-# Note that $icode n$$ is the size of $cref/ax/py_d_fun_ctor/ax/$$
-# and $icode m$$ is the size of $cref/ay/py_d_fun_ctor/ay/$$
+# Note that $icode n$$ is the size of $cref/ax/py_fun_ctor/ax/$$
+# and $icode m$$ is the size of $cref/ay/py_fun_ctor/ay/$$
 # in to the constructor for $icode f$$.
 #
 # $subhead X(t), S$$
 # This is the same function as
-# $cref/X(t)/py_d_fun_forward/X(t)/$$ in the previous call to
+# $cref/X(t)/py_fun_forward/X(t)/$$ in the previous call to
 # $icode%f%.forward%$$.
 # We use $latex S \in \B{R}^{n \times q}$$ to denote the Taylor coefficients
 # of $latex X(t)$$.
 #
 # $subhead Y(t), T$$
 # This is the same function as
-# $cref/Y(t)/py_d_fun_forward/Y(t)/$$ in the previous call to
+# $cref/Y(t)/py_fun_forward/Y(t)/$$ in the previous call to
 # $icode%f%.forward%$$.
 # We use $latex T \in \B{R}^{m \times q}$$ to denote the Taylor coefficients
 # of $latex Y(t)$$.
@@ -60,7 +60,7 @@
 # that we are computing the derivative with respect to.
 # It must be greater than zero, and less than or equal
 # the number of Taylor coefficient stored in $icode f$$; i.e.,
-# $cref/f.size_order()/py_d_fun_property/size_order/$$.
+# $cref/f.size_order()/py_fun_property/size_order/$$.
 #
 # $head yq$$
 # This argument is a numpy matrix with $code float$$ elements,

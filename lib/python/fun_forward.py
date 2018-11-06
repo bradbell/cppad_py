@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_d_fun_forward$$ $newlinech #$$
+# $begin py_fun_forward$$ $newlinech #$$
 # $spell
 #	vec
 #	xp
@@ -31,18 +31,18 @@
 #
 # $head f$$
 # This object must have been returned by a previous call to the python
-# $cref/d_fun/py_d_fun_ctor/$$ constructor.
+# $cref/d_fun/py_fun_ctor/$$ constructor.
 # Note that its state is changed by this operation because
 # all the Taylor coefficient that it calculates for every
 # variable in recording are stored.
 # See more discussion of this fact under the heading
-# $cref/p/py_d_fun_forward/p/$$ below.
+# $cref/p/py_fun_forward/p/$$ below.
 #
 # $head f(x)$$
 # We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
 # for the function corresponding to $icode f$$.
-# Note that $icode n$$ is the size of $cref/ax/py_d_fun_ctor/ax/$$
-# and $icode m$$ is the size of $cref/ay/py_d_fun_ctor/ay/$$
+# Note that $icode n$$ is the size of $cref/ax/py_fun_ctor/ax/$$
+# and $icode m$$ is the size of $cref/ay/py_fun_ctor/ay/$$
 # in to the constructor for $icode f$$.
 #
 # $head X(t)$$
@@ -65,7 +65,7 @@
 #
 # $subhead size_order$$
 # After this call,
-# $cref/f.size_order()/py_d_fun_property/size_order/$$ is $icode%p%+1%$$.
+# $cref/f.size_order()/py_fun_property/size_order/$$ is $icode%p%+1%$$.
 #
 # $head xp$$
 # This argument is a numpy vector with $code float$$ elements

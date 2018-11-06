@@ -561,12 +561,12 @@ $codei%
 		%target% = %if_false%
 %$$
 records either the true or false case depending on the value
-of $icode left$$ and $icode right$$; see $cref cpp_d_fun_ctor$$.
+of $icode left$$ and $icode right$$; see $cref cpp_fun_ctor$$.
 If $icode left$$ or $icode right$$ is a
 $cref/variable/a_double_property/variable/$$,
 it may be desirable to switch between $icode if_true$$ and $icode if_false$$
 depending of the value of the independent variable during
-calls to order zero $cref cpp_d_fun_forward$$.
+calls to order zero $cref cpp_fun_forward$$.
 The $code cond_assign$$ does this.
 
 $head target$$
