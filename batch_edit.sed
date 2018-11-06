@@ -11,12 +11,9 @@
 # '
 # list of files and or directories that are moved to new names
 # move_paths='
-# lib/example/cplusplus/a_double_ad_binary_xam.cpp
-# lib/example/python/a_double_ad_binary_xam.py
 # '
 # sed command that maps old file and or directory names to new file names
 # move_sed='
-#	s|a_double_ad_|a_double_|g
 # '
 # list of files that get edited by the extra_sed command
 # extra_files='
@@ -27,5 +24,6 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|a_double_ad_binary_xam,  |a_double_binary_xam,     |
-s|a_double_ad_|a_double_|g
+s|ad_double|a_double|g
+s|ad_other|a_other|g
+s|ad_ptr|a_ptr|
