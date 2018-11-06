@@ -11,11 +11,12 @@
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool d_fun_property_xam(void) {
+bool fun_property_xam(void) {
 	using cppad_py::a_double;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
 	using cppad_py::d_fun;
+	using cppad_py::a_fun;
 	//
 	// initialize return variable
 	bool ok = true;
@@ -50,7 +51,7 @@ bool d_fun_property_xam(void) {
 	d_fun f = d_fun(ax, ay);
 	n_op     = n_op + 1; // speical operator at end
 	//
-	// check af properties
+	// check f properties
 	ok = ok && f.size_domain() == n_ind;
 	ok = ok && f.size_range()  == n_dep;
 	ok = ok && f.size_var()    == n_var;
@@ -59,6 +60,16 @@ bool d_fun_property_xam(void) {
 	// compute zero order Taylor coefficients
 	vec_double y  = f.forward(0, x);
 	ok = ok && f.size_order() == 1;
+	//
+	// create an a_fun object
+	a_fun af = f.base2ad();
+	//
+	// check af properties
+	ok = ok && af.size_domain() == n_ind;
+	ok = ok && af.size_range()  == n_dep;
+	ok = ok && af.size_var()    == n_var;
+	ok = ok && af.size_op()     == n_op;
+	//
 	//
 	return( ok  );
 }

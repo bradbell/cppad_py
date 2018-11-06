@@ -177,6 +177,27 @@ d_fun::d_fun(
 	// store the recording
 	ptr_->Dependent(ax_copy, ay_copy);
 }
+// base2ad
+a_fun d_fun::base2ad(void) const
+{	a_fun af;
+	*(af.a_ptr_) = ptr_->base2ad();
+	return af;
+}
+// --------------------------------------------------------------------------
+// constructor
+a_fun::a_fun(void)
+{	a_ptr_ = new CppAD::ADFun< CppAD::AD<double>, double>();
+	CPPAD_PY_ASSERT_UNKNOWN( a_ptr_ != CPPAD_NULL );
+}
+// destructor
+a_fun::~a_fun(void)
+{	CPPAD_PY_ASSERT_UNKNOWN( a_ptr_ != CPPAD_NULL );
+	delete a_ptr_;
+}
+// assignment
+void a_fun::operator=(const a_fun& ag)
+{	*a_ptr_ = *(ag.a_ptr_); }
+
 /*
 ------------------------------------------------------------------------------
 $begin cpp_fun_property$$
@@ -192,15 +213,37 @@ $$
 $section Properties of an AD Function$$
 
 $head Syntax$$
+$icode%af% = %f%.base2ad()
+%$$
+
+$subhead size_domain$$
 $icode%n% = %f%.size_domain()
 %$$
+$icode%n% = %af%.size_domain()
+%$$
+
+$subhead size_range$$
 $icode%m% = %f%.size_range()
 %$$
+$icode%m% = %af%.size_range()
+%$$
+
+$subhead size_var$$
 $icode%v% = %f%.size_var()
 %$$
+$icode%v% = %af%.size_var()
+%$$
+
+$subhead size_op$$
 $icode%p% = %f%.size_op()
 %$$
+$icode%p% = %af%.size_op()
+%$$
+
+$subhead size_order$$
 $icode%q% = %f%.size_order()
+%$$
+$icode%q% = %af%.size_order()
 %$$
 
 $head f$$
@@ -208,6 +251,13 @@ This object has prototype
 $codei%
 	const d_fun %f%
 %$$
+
+$head af$$
+This object has prototype
+$codei%
+	const d_fun %af%
+%$$
+
 
 $head size_domain$$
 The return value has prototype
@@ -268,18 +318,32 @@ $end
 // size_domain
 int d_fun::size_domain(void) const
 {	return ptr_->Domain(); }
+int a_fun::size_domain(void) const
+{	return a_ptr_->Domain(); }
+//
 // size_range
 int d_fun::size_range(void) const
 {	return ptr_->Range(); }
+int a_fun::size_range(void) const
+{	return a_ptr_->Range(); }
+//
 // size_var
 int d_fun::size_var(void) const
 {	return ptr_->size_var(); }
+int a_fun::size_var(void) const
+{	return a_ptr_->size_var(); }
+//
 // size_op
 int d_fun::size_op(void) const
 {	return ptr_->size_op(); }
+int a_fun::size_op(void) const
+{	return a_ptr_->size_op(); }
+//
 // size_order
 int d_fun::size_order(void) const
 {	return ptr_->size_order(); }
+int a_fun::size_order(void) const
+{	return a_ptr_->size_order(); }
 /*
 ------------------------------------------------------------------------------
 $begin cpp_fun_jacobian$$
@@ -672,4 +736,6 @@ $end
 void d_fun::optimize(void)
 {	ptr_->optimize(); }
 // ----------------------------------------------------------------------------
+
+
 } // END_CPPAD_PY_NAMESPACE
