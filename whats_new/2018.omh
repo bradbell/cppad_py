@@ -23,11 +23,15 @@ $$
 $section Cppad Py Changes During 2018$$
 
 $head 11-05$$
+$list number$$
 $bold API Change$$:
 change $code cppad_py.a_fun$$ to $code cppad_py.d_fun$$
 because it is a function that evaluates in $code double$$
 and plan to use $code cppad_py.a_fun$$ for a function that
 evaluates in $code a_double$$.
+$lnext
+Advance to cppad-20181105 (must re-run $code bin/get_cppad.sh$$).
+$lend
 
 $head 08-13$$
 $list number$$

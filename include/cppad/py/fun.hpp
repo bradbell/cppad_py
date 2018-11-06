@@ -14,7 +14,7 @@
 
 // declarations without definitions
 namespace CppAD {
-	template <class Base> class ADFun;
+	template <class Base, class RecBase> class ADFun;
 	class sparse_jac_work;
 	class sparse_hes_work;
 }
@@ -35,7 +35,7 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 {	// private members are not in Swig interface
 	private:
 	// ADFun<double> representation
-	CppAD::ADFun<double>* ptr_;
+	CppAD::ADFun<double, double>* ptr_;
 	// -----------------------------------------------------------------------
 	// public members are in Swig interface
 	public:
