@@ -16,7 +16,7 @@ extern bool a_double_property_xam(void);
 extern bool a_double_unary_fun_xam(void);
 extern bool a_double_unary_op_xam(void);
 extern bool a_double_assign_xam(void);
-extern bool a_double_ad_binary_xam(void);
+extern bool a_double_binary_xam(void);
 extern bool a_double_compare_xam(void);
 extern bool vector_size_xam(void);
 extern bool vector_set_get_xam(void);
@@ -63,7 +63,7 @@ int main(void)
 	ok &= Run( a_double_unary_fun_xam,    "a_double_unary_fun_xam"    );
 	ok &= Run( a_double_unary_op_xam,     "a_double_unary_op_xam"     );
 	ok &= Run( a_double_assign_xam,       "a_double_assign_xam"       );
-	ok &= Run( a_double_ad_binary_xam,    "a_double_ad_binary_xam"    );
+	ok &= Run( a_double_binary_xam,       "a_double_binary_xam"    );
 	ok &= Run( a_double_compare_xam,      "a_double_compare_xam"      );
 	ok &= Run( vector_size_xam,           "vector_size_xam"           );
 	ok &= Run( vector_set_get_xam,        "vector_set_get_xam"        );

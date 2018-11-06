@@ -282,7 +282,7 @@ bool a_double::near_equal(const a_double& ae)
 }
 /*
 -------------------------------------------------------------------------------
-$begin a_double_ad_binary$$
+$begin a_double_binary$$
 
 $section ad_double Binary Operators with an AD Result$$
 $spell
@@ -322,12 +322,12 @@ $codei%
 %$$
 
 $children%
-	lib/example/cplusplus/a_double_ad_binary_xam.cpp%
-	lib/example/python/a_double_ad_binary_xam.py
+	lib/example/cplusplus/a_double_binary_xam.cpp%
+	lib/example/python/a_double_binary_xam.py
 %$$
 $head Example$$
-$cref/C++/a_double_ad_binary_xam.cpp/$$,
-$cref/Python/a_double_ad_binary_xam.py/$$.
+$cref/C++/a_double_binary_xam.cpp/$$,
+$cref/Python/a_double_binary_xam.py/$$.
 
 $end
 */

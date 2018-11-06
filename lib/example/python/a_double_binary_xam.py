@@ -8,7 +8,7 @@
 # a_double binary operations
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
-def a_double_ad_binary_xam() :
+def a_double_binary_xam() :
 	#
 	import numpy
 	import cppad_py
@@ -35,7 +35,7 @@ def a_double_ad_binary_xam() :
 #
 # END SOURCE
 #
-# $begin a_double_ad_binary_xam.py$$ $newlinech #$$
+# $begin a_double_binary_xam.py$$ $newlinech #$$
 # $spell
 #	py
 #	perl
@@ -46,6 +46,6 @@ def a_double_ad_binary_xam() :
 #	Jacobians
 # $$
 # $section Python: a_double Binary Operators With AD Result: Example and Test$$
-# $srcfile|lib/example/python/a_double_ad_binary_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/a_double_binary_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

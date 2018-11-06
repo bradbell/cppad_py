@@ -11,7 +11,7 @@
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool a_double_ad_binary_xam(void) {
+bool a_double_binary_xam(void) {
 	using cppad_py::a_double;
 	//
 	// initialize return variable
@@ -37,7 +37,7 @@ bool a_double_ad_binary_xam(void) {
 // END SOURCE
 //
 /*
-$begin a_double_ad_binary_xam.cpp$$
+$begin a_double_binary_xam.cpp$$
 $spell
 	cplusplus
 	cppad
@@ -47,7 +47,7 @@ $spell
 	Jacobians
 $$
 $section C++: a_double Binary Operators With AD Result: Example and Test$$
-$srcfile|lib/example/cplusplus/a_double_ad_binary_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/a_double_binary_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //
