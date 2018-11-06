@@ -74,8 +74,8 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 	~d_fun(void);
 	// constrtuctor
 	d_fun( const std::vector<a_double>& ax, const std::vector<a_double>& ay );
-	// base2ad
-	a_fun base2ad(void) const;
+	// double2ad
+	a_fun double2ad(void) const;
 	// jacobian
 	std::vector<double> jacobian(const std::vector<double>& x);
 	// hessian

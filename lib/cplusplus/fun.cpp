@@ -177,8 +177,8 @@ d_fun::d_fun(
 	// store the recording
 	ptr_->Dependent(ax_copy, ay_copy);
 }
-// base2ad
-a_fun d_fun::base2ad(void) const
+// double2ad
+a_fun d_fun::double2ad(void) const
 {	a_fun af;
 	*(af.a_ptr_) = ptr_->base2ad();
 	return af;
@@ -213,7 +213,7 @@ $$
 $section Properties of an AD Function$$
 
 $head Syntax$$
-$icode%af% = %f%.base2ad()
+$icode%af% = %f%.double2ad()
 %$$
 
 $subhead size_domain$$

@@ -62,7 +62,7 @@ bool fun_property_xam(void) {
 	ok = ok && f.size_order() == 1;
 	//
 	// create an a_fun object
-	a_fun af = f.base2ad();
+	a_fun af = f.double2ad();
 	//
 	// check af properties
 	ok = ok && af.size_domain() == n_ind;
