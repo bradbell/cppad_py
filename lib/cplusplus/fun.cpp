@@ -177,27 +177,18 @@ d_fun::d_fun(
 	// store the recording
 	ptr_->Dependent(ax_copy, ay_copy);
 }
-// double2ad
-a_fun d_fun::double2ad(void) const
-{	a_fun af;
-	*(af.a_ptr_) = ptr_->base2ad();
-	return af;
-}
 // --------------------------------------------------------------------------
 // constructor
-a_fun::a_fun(void)
+a_fun::a_fun(const d_fun& f)
 {	a_ptr_ = new CppAD::ADFun< CppAD::AD<double>, double>();
 	CPPAD_PY_ASSERT_UNKNOWN( a_ptr_ != CPPAD_NULL );
+	*a_ptr_ = f.ptr_->base2ad();
 }
 // destructor
 a_fun::~a_fun(void)
 {	CPPAD_PY_ASSERT_UNKNOWN( a_ptr_ != CPPAD_NULL );
 	delete a_ptr_;
 }
-// assignment
-void a_fun::operator=(const a_fun& ag)
-{	*a_ptr_ = *(ag.a_ptr_); }
-
 /*
 ------------------------------------------------------------------------------
 $begin cpp_fun_property$$
@@ -213,7 +204,7 @@ $$
 $section Properties of an AD Function$$
 
 $head Syntax$$
-$icode%af% = %f%.double2ad()
+$codei%a_fun %af%(%f%)
 %$$
 
 $subhead size_domain$$
@@ -255,7 +246,7 @@ $codei%
 $head af$$
 This object has prototype
 $codei%
-	const d_fun %af%
+	const a_fun %af%
 %$$
 
 
