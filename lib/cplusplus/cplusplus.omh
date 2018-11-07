@@ -53,16 +53,15 @@ $childtable%lib/cplusplus/sparse.cpp%$$
 
 $end
 -------------------------------------------------------------------------------
-$begin error$$
+$begin cpp_utility$$
 $spell
-	messaging
-	Cppad
-	Py
 $$
 
-$section Cppad Py Error Messaging$$
+$section C++ Utilities$$
 
-$childtable%lib/cplusplus/error.cpp%$$
+$childtable%lib/cplusplus/utility.cpp
+	%lib/cplusplus/error.cpp
+%$$
 
 $end
 -------------------------------------------------------------------------------
