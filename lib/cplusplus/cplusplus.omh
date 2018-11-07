@@ -59,7 +59,7 @@ $$
 
 $section C++ Utilities$$
 
-$childtable%lib/cplusplus/utility.cpp
+$childtable%lib/cplusplus/cppad_vec.cpp
 	%lib/cplusplus/error.cpp
 %$$
 

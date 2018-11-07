@@ -25,7 +25,7 @@ $icode%v_out% = cppad_py::vec2cppad_double%(%v_in%)
 %$$
 
 $head Prototype$$
-$srcfile%lib/cplusplus/utility.cpp%
+$srcfile%lib/cplusplus/cppad_vec.cpp%
 	0%// BEGIN_PROTOTYPE%// END_PROTOTYPE%1
 %$$
 
@@ -59,7 +59,7 @@ $icode%v_out% = cppad_py::vec2a_double%(%v_in%)
 %$$
 
 $head Prototype$$
-$srcfile%lib/cplusplus/utility.cpp%
+$srcfile%lib/cplusplus/cppad_vec.cpp%
 	0%// BEGIN_PROTOTYPE%// END_PROTOTYPE%1
 %$$
 

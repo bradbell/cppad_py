@@ -1,5 +1,5 @@
-# ifndef CPPAD_PY_UTILITY_HPP
-# define CPPAD_PY_UTILITY_HPP
+# ifndef CPPAD_PY_CPPAD_VEC_HPP
+# define CPPAD_PY_CPPAD_VEC_HPP
 /* ----------------------------------------------------------------------------
           cppad_py: A C++ Object Library and Python Interface to Cppad
            Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
