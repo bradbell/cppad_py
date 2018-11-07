@@ -29,7 +29,7 @@ bool sparse_hes_xam(void) {
 	int n = 3;
 	//
 	// create the independent variables ax
-	vec_double x = vec_double(n);
+	vec_double x(n);
 	for(int i = 0; i < n ; i++) {
 		x[i] = i + 2.0;
 	}
@@ -37,27 +37,27 @@ bool sparse_hes_xam(void) {
 	//
 	// ay[i] = j * ax[j] * ax[i]
 	// where i = mod(j + 1, n)
-	vec_a_double ay = vec_a_double(n);
+	vec_a_double ay(n);
 	for(int j = 0; j < n ; j++) {
 		int i = j+1;
 		if( i >= n  ) {
 			i = i - n;
 		}
-		a_double aj = a_double(j);
+		a_double aj(j);
 		a_double ax_j = ax[j];
 		a_double ax_i = ax[i];
 		ay[i] = aj * ax_j * ax_i;
 	}
 	//
 	// define af corresponding to f(x)
-	d_fun f = d_fun(ax, ay);
+	d_fun f(ax, ay);
 	//
 	// Set select_d (domain) to all true,
 	// initial select_r (range) to all false
 	// initialize r to all zeros
 	vec_bool select_d = vec_bool(n);
 	vec_bool select_r = vec_bool(n);
-	vec_double r = vec_double(n);
+	vec_double r(n);
 	for(int i = 0; i < n; i++) {
 		select_d[i] = true;
 		select_r[i] = false;

@@ -25,7 +25,7 @@ bool d_fun_hessian_xam(void) {
 	int n_ind = 3;
 	//
 	// create the independent variables ax
-	vec_double x = vec_double(n_ind);
+	vec_double x(n_ind);
 	for(int i = 0; i < n_ind ; i++) {
 		x[i] = i + 2.0;
 	}
@@ -35,14 +35,14 @@ bool d_fun_hessian_xam(void) {
 	a_double ax_0 = ax[0];
 	a_double ax_1 = ax[1];
 	a_double ax_2 = ax[2];
-	vec_a_double ay = vec_a_double(n_dep);
+	vec_a_double ay(n_dep);
 	ay[0] = ax_0 * ax_1 * ax_2;
 	//
 	// define af corresponding to f(x) = x_0 * x_1 * x_2
-	d_fun f = d_fun(ax, ay);
+	d_fun f(ax, ay);
 	//
 	// g(x) = w_0 * f_0 (x) = f(x)
-	vec_double w = vec_double(n_dep);
+	vec_double w(n_dep);
 	w[0] = 1.0;
 	//
 	// compute Hessian

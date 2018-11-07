@@ -25,7 +25,7 @@ bool d_fun_forward_xam(void) {
 	int n_ind = 2;
 	//
 	// create the independent variables ax
-	vec_double xp = vec_double(n_ind);
+	vec_double xp(n_ind);
 	for(int i = 0; i < n_ind ; i++) {
 		xp[i] = i + 1.0;
 	}
@@ -34,11 +34,11 @@ bool d_fun_forward_xam(void) {
 	// create dependent varialbes ay with ay0 = ax0 * ax1
 	a_double ax0 = ax[0];
 	a_double ax1 = ax[1];
-	vec_a_double ay = vec_a_double(n_dep);
+	vec_a_double ay(n_dep);
 	ay[0] = ax0 * ax1;
 	//
 	// define af corresponding to f(x) = x0 * x1
-	d_fun f = d_fun(ax, ay);
+	d_fun f(ax, ay);
 	//
 	// define X(t) = (3 + t, 2 + t)
 	// it follows that Y(t) = f(X(t)) = (3 + t) * (2 + t)

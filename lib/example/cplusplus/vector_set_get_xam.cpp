@@ -24,8 +24,8 @@ bool vector_set_get_xam(void) {
 	int n = 4;
 	vec_bool bv = vec_bool(n);
 	vec_int iv = vec_int(n);
-	vec_double dv = vec_double(n);
-	vec_a_double av = vec_a_double(n);
+	vec_double dv(n);
+	vec_a_double av(n);
 	//
 	// setting elements
 	for(int i = 0; i < n ; i++) {

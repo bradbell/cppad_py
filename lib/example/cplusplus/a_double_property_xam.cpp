@@ -17,7 +17,7 @@ bool a_double_property_xam(void) {
 	// initialize return variable
 	bool ok = true;
 	//------------------------------------------------------------------------
-	a_double three = a_double(3.0);
+	a_double three(3.0);
 	//
 	ok = ok && three.value()   == 3.0;
 	ok = ok && three.parameter();

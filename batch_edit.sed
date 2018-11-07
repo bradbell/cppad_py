@@ -24,5 +24,17 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|cpp_d_|cpp_|g
-s|py_d_|py_|g
+s|a_double *\([a-z_][a-z_]*\) *= *a_double()|a_double \1|
+s|a_double *\([a-z_][a-z_]*\) *= *a_double(|a_double \1(|
+#
+s|vec_double *\([a-z_][a-z_]*\) *= *vec_double()|vec_double \1|
+s|vec_double *\([a-z_][a-z_]*\) *= *vec_double(|vec_double \1(|
+#
+s|vec_a_double *\([a-z_][a-z_]*\) *= *vec_a_double()|vec_a_double \1|
+s|vec_a_double *\([a-z_][a-z_]*\) *= *vec_a_double(|vec_a_double \1(|
+#
+s|d_fun *\([a-z_][a-z_]*\) *= *d_fun()|d_fun \1|
+s|d_fun *\([a-z_][a-z_]*\) *= *d_fun(|d_fun \1(|
+#
+s|a_fun *\([a-z_][a-z_]*\) *= *a_fun()|a_fun \1|
+s|a_fun *\([a-z_][a-z_]*\) *= *a_fun(|a_fun \1(|

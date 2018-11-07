@@ -27,8 +27,8 @@ bool fun_property_xam(void) {
 	int n_op  = 1; // special operator at beginning
 	//
 	// dimension some vectors
-	vec_double x    = vec_double(n_ind);
-	vec_a_double ay = vec_a_double(n_dep);
+	vec_double x(n_ind);
+	vec_a_double ay(n_dep);
 	//
 	// independent variables
 	x[0]            = 1.0;
@@ -48,7 +48,7 @@ bool fun_property_xam(void) {
 	n_op         = n_op + 1;
 	//
 	// define f(x) = y
-	d_fun f = d_fun(ax, ay);
+	d_fun f(ax, ay);
 	n_op     = n_op + 1; // speical operator at end
 	//
 	// check f properties

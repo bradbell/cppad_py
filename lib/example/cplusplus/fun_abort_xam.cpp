@@ -23,7 +23,7 @@ bool d_fun_abort_xam(void) {
 	int n_ind = 2;
 	//
 	// create ax
-	vec_double x = vec_double(n_ind);
+	vec_double x(n_ind);
 	for(int i = 0; i < n_ind ; i++) {
 		x[i] = i + 1.0;
 	}
