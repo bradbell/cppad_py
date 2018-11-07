@@ -661,9 +661,11 @@ the number of Taylor coefficient stored in $icode f$$; i.e.,
 $cref/f.size_order()/cpp_fun_property/size_order/$$.
 
 $head yq$$
-This argument has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+this argument has prototype
 $codei%
-	const vec_double& %yq%
+	const vec_double&   %yq%
+	const vec_a_double& %yq%
 %$$
 and its size must be $icode%m%*%q%$$.
 For $icode%0% <= %i% < %m%$$ and $icode%0% <= %k% < %q%$$,
@@ -673,11 +675,13 @@ for the $th i$$ component function; i.e.,
 the partial derivative of $latex G(T)$$ w.r.t. $latex Y_i^{(k)} (t) / k !$$.
 
 $head xq$$
-The result has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+the result has prototype
 $codei%
-	vec_double %xq%
+	const vec_double&   %xq%
+	const vec_a_double& %xq%
 %$$
-and its size is $icode%n%*%q%$$.
+respectively and its size is $icode%n%*%q%$$.
 For $icode%0% <= %j% < %n%$$ and $icode%0% <= %k% < %q%$$,
 $icode%yq%[ %j% * %q% + %k% ]%$$ is the partial derivative of
 $latex G(T(S))$$ with respect to the $th k$$ order Taylor coefficient

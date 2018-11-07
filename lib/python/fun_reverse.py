@@ -64,7 +64,8 @@
 # $cref/f.size_order()/py_fun_property/size_order/$$.
 #
 # $head yq$$
-# This argument is a numpy matrix with $code float$$ elements,
+# If $icode f$$ is a $code d_fun$$ ($code a_fun$$) object, $icode yq$$
+# is a numpy vector with $code float$$ ($code a_double$$) elements,
 # $icode m$$ rows and $icode q$$ columns.
 # For $icode%0% <= %i% < %m%$$ and $icode%0% <= %k% < %q%$$,
 # $icode%yq%[ %i%, %k% ]%$$ is the partial derivative of
@@ -73,7 +74,7 @@
 # the partial derivative of $latex G(T)$$ w.r.t. $latex Y_i^{(k)} (t) / k !$$.
 #
 # $head xq$$
-# The result is a numpy matrix with $code float$$ elements,
+# The result is a numpy vector with $code float$$ ($code a_double$$) elements,
 # $icode n$$ rows and $icode q$$ columns.
 # For $icode%0% <= %j% < %n%$$ and $icode%0% <= %k% < %q%$$,
 # $icode%yq%[ %j%, %k% ]%$$ is the partial derivative of
