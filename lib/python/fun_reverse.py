@@ -20,8 +20,9 @@
 # $icode%xq% = %f%.reverse(%q%, %yq%)%$$
 #
 # $head f$$
-# This object must have been returned by a previous call to the python
-# $cref/d_fun/py_fun_ctor/$$ constructor.
+# This is either a
+# $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ or
+# $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ function object.
 # Note that it is effectively constant; i.e., not changed.
 #
 # $head Notation$$
@@ -91,7 +92,7 @@
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy
-#
+# -----------------------------------------------------------------------------
 # This function is used by reverse in d_fun class to implement syntax above
 def d_fun_reverse(f, q, yq) :
 	"""
@@ -116,3 +117,28 @@ def d_fun_reverse(f, q, yq) :
 	xq = cppad_py.utility.vec2numpy(v, n, q)
 	#
 	return xq
+# -----------------------------------------------------------------------------
+# This function is used by reverse in a_fun class to implement syntax above
+def a_fun_reverse(af, q, ayq) :
+	"""
+	axq = af.reverse(q, ayq)
+	given Taylor coefficients for X(t), compute Taylor coefficients for
+	Y(t) = f(X(t)).
+	"""
+	#
+	n = af.size_domain()
+	m = af.size_range()
+	#
+	# convert yq -> u
+	dtype    = cppad_py.a_double
+	shape    = (m, q)
+	syntax   = 'af.reverse(q, ayq)'
+	au = cppad_py.utility.numpy2vec(ayq, dtype, shape, syntax, 'ayq')
+	#
+	# call reverse
+	av =  af.reverse(q, au)
+	#
+	# convert v -> xp
+	axq = cppad_py.utility.vec2numpy(av, n, q)
+	#
+	return axq

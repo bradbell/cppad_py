@@ -137,3 +137,7 @@ class a_fun :
 	# forward
 	def forward(self, p, axp) :
 		return cppad_py.a_fun_forward(self.af, p, axp)
+	#
+	# reverse
+	def reverse(self, q, ayq) :
+		return cppad_py.a_fun_reverse(self.af, q, ayq)

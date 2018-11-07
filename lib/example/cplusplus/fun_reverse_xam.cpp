@@ -16,6 +16,7 @@ bool d_fun_reverse_xam(void) {
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
 	using cppad_py::d_fun;
+	using cppad_py::a_fun;
 	//
 	// initialize return variable
 	bool ok = true;
@@ -89,6 +90,30 @@ bool d_fun_reverse_xam(void) {
 	// partial G w.r.t x_2^0
 	ok = ok && xq2[2 * q + 0] == 2.0 + 3.0;
 	// -----------------------------------------------------------------------
+	a_fun af(f);
+	ok &= af.size_order() == 0;
+	//
+	// zero order forward
+	vec_a_double axp(n_ind), ayp(n_dep);
+	p      = 0;
+	axp[0] = 2.0;
+	axp[1] = 3.0;
+	axp[2] = 4.0;
+	ayp    = af.forward(p, axp);
+	ok     = ok && ayp[0] == 24.0;
+	ok    &= af.size_order() == 1;
+	//
+	// first order reverse
+	q = 1;
+	vec_a_double ayq1 = vec_a_double(n_dep);
+	ayq1[0]           = 1.0;
+	vec_a_double axq1 = af.reverse(q, ayq1);
+	// partial G w.r.t x_0
+	ok = ok && axq1[0] == 3.0 * 4.0;
+	// partial G w.r.t x_1
+	ok = ok && axq1[1] == 2.0 * 4.0;
+	// partial G w.r.t x_2
+	ok = ok && axq1[2] == 2.0 * 3.0;
 	//
 	return( ok );
 }

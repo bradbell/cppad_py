@@ -576,10 +576,14 @@ $cref fun_forward_xam.cpp$$
 $end
 */
 std::vector<double> d_fun::forward(int p, const std::vector<double>& xp)
-{	return ptr_->Forward(p, xp);
+{	if( xp.size() != ptr_->Domain() )
+		error_message("cppad_py::d_fun::forward xp.size() error");
+	return ptr_->Forward(p, xp);
 }
 std::vector<a_double> a_fun::forward(int p, const std::vector<a_double>& axp)
-{	std::vector< CppAD::AD<double> > aup = vec2cppad_double(axp);
+{	if( axp.size() != a_ptr_->Domain() )
+		error_message("cppad_py::a_fun::forward axp.size() error");
+	std::vector< CppAD::AD<double> > aup = vec2cppad_double(axp);
 	std::vector< CppAD::AD<double> > avp =  a_ptr_->Forward(p, aup);
 	return vec2a_double(avp);
 }
@@ -689,6 +693,13 @@ std::vector<double> d_fun::reverse(int q, const std::vector<double>& yq)
 {	if( yq.size() != q * ptr_->Range() )
 		error_message("cppad_py::d_fun::reverse yq.size() error");
 	return ptr_->Reverse(q, yq);
+}
+std::vector<a_double> a_fun::reverse(int q, const std::vector<a_double>& ayq)
+{	if( ayq.size() != q * a_ptr_->Range() )
+		error_message("cppad_py::a_fun::reverse yq.size() error");
+	std::vector< CppAD::AD<double> > avq = vec2cppad_double(ayq);
+	std::vector< CppAD::AD<double> > auq =  a_ptr_->Reverse(q, avq);
+	return vec2a_double(auq);
 }
 /*
 ------------------------------------------------------------------------------

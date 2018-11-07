@@ -134,6 +134,8 @@ class CPPAD_PY_LIB_PUBLIC a_fun
 	int size_order() const;
 	// forward
 	std::vector<a_double> forward(int p, const std::vector<a_double>& axp );
+	// reverse
+	std::vector<a_double> reverse(int q, const std::vector<a_double>& ayq );
 };
 
 } // END_CPPAD_PY_NAMESPACE

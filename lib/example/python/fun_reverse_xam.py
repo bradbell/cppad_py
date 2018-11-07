@@ -86,6 +86,28 @@ def fun_reverse_xam() :
 	# partial G w.r.t x_2^0
 	ok = ok and xq2[2, 0] == 2.0 + 3.0
 	# -----------------------------------------------------------------------
+	af = cppad_py.a_fun(f)
+	#
+	# zero order forward
+	axp   = numpy.empty(n_ind, dtype=cppad_py.a_double)
+	p     = 0
+	axp[0] = 2.0
+	axp[1] = 3.0
+	axp[2] = 4.0
+	ayp = af.forward(p, axp)
+	ok = ok and ayp[0] == cppad_py.a_double(24.0)
+	#
+	# first order reverse
+	q          = 1
+	ayq1       = numpy.empty( (m, q), dtype=cppad_py.a_double)
+	ayq1[0, 0] = 1.0
+	axq1       = af.reverse(q, ayq1)
+	# partial G w.r.t x_0
+	ok = ok and axq1[0,0] == cppad_py.a_double(3.0 * 4.0)
+	# partial G w.r.t x_1
+	ok = ok and axq1[1,0] == cppad_py.a_double(2.0 * 4.0)
+	# partial G w.r.t x_2
+	ok = ok and axq1[2,0] == cppad_py.a_double(2.0 * 3.0)
 	#
 	return( ok )
 #
