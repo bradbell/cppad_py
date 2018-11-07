@@ -39,7 +39,7 @@ def sparse_jac_pattern_xam() :
 	#
 	#
 	# define af corresponding to f(x)
-	af = cppad_py.a_fun(ax, ay)
+	f  = cppad_py.d_fun(ax, ay)
 	#
 	# sparsity pattern for identity matrix
 	pat_in = cppad_py.sparse_rc()
@@ -52,10 +52,10 @@ def sparse_jac_pattern_xam() :
 	for mode in range( 2 ) :
 		pat_out = cppad_py.sparse_rc()
 		if mode == 0  :
-			af.for_jac_sparsity(pat_in, pat_out)
+			f.for_jac_sparsity(pat_in, pat_out)
 		#
 		if mode == 1  :
-			af.rev_jac_sparsity(pat_in, pat_out)
+			f.rev_jac_sparsity(pat_in, pat_out)
 		#
 		#
 		# check that result is sparsity pattern for Jacobian

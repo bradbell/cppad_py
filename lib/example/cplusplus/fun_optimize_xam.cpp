@@ -11,11 +11,11 @@
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool a_fun_optimize_xam(void) {
+bool d_fun_optimize_xam(void) {
 	using cppad_py::a_double;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
-	using cppad_py::a_fun;
+	using cppad_py::d_fun;
 	//
 	// initialize return variable
 	bool ok = true;
@@ -44,19 +44,19 @@ bool a_fun_optimize_xam(void) {
 	//
 	// define f(x) = y_0 = csum
 	ay[0] = csum;
-	a_fun af = a_fun(ax, ay);
+	d_fun f = d_fun(ax, ay);
 	n_op = n_op + 1; // speical operator at end
 	//
 	// check number of variables and operators
-	ok = ok && af.size_var() == n_var;
-	ok = ok && af.size_op() == n_op;
+	ok = ok && f.size_var() == n_var;
+	ok = ok && f.size_op() == n_op;
 	//
 	// optimize
-	af.optimize();
+	f.optimize();
 	//
 	// number of variables and operators has decreased by two
-	ok = ok && af.size_var() == n_var-2;
-	ok = ok && af.size_op() == n_op-2;
+	ok = ok && f.size_var() == n_var-2;
+	ok = ok && f.size_op() == n_op-2;
 	//
 	return( ok  );
 }
@@ -72,7 +72,7 @@ $spell
 	Jacobian
 	Jacobians
 $$
-$section C++: Optimize an a_fun: Example and Test$$
+$section C++: Optimize an d_fun: Example and Test$$
 $srcfile|lib/example/cplusplus/fun_optimize_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */

@@ -42,7 +42,7 @@ def sparse_jac_xam() :
 	#
 	#
 	# define af corresponding to f(x)
-	af = cppad_py.a_fun(ax, ay)
+	f  = cppad_py.d_fun(ax, ay)
 	#
 	# sparsity pattern for identity matrix
 	pat_eye = cppad_py.sparse_rc()
@@ -53,7 +53,7 @@ def sparse_jac_xam() :
 	#
 	# sparsity pattern for the Jacobian
 	pat_jac = cppad_py.sparse_rc()
-	af.for_jac_sparsity(pat_eye, pat_jac)
+	f.for_jac_sparsity(pat_eye, pat_jac)
 	#
 	# loop over forward and reverse mode
 	for mode in range( 2 ) :
@@ -62,10 +62,10 @@ def sparse_jac_xam() :
 		# work space used to save time for multiple calls
 		work = cppad_py.sparse_jac_work()
 		if mode == 0  :
-			af.sparse_jac_for(subset, x, pat_jac, work)
+			f.sparse_jac_for(subset, x, pat_jac, work)
 		#
 		if mode == 1  :
-			af.sparse_jac_rev(subset, x, pat_jac, work)
+			f.sparse_jac_rev(subset, x, pat_jac, work)
 		#
 		#
 		# check result

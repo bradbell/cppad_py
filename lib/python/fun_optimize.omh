@@ -5,7 +5,7 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin py_a_fun_optimize$$
+$begin py_fun_optimize$$
 $spell
 	af
 $$
@@ -13,18 +13,18 @@ $$
 $section Optimize an AD Function$$
 
 $head Syntax$$
-$icode%af%.optimize()%$$
+$icode%f%.optimize()%$$
 
 $head Purpose$$
 This reduces the number of operations
 (hence to time and memory) used to compute the function
-stored in $icode af$$
+stored in $icode f$$
 On the other hand, the optimization may take a significant amount
 of time and memory.
 
-$head af$$
+$head f$$
 This object must have been returned by a previous call to the python
-$cref/a_fun/py_a_fun_ctor/$$ constructor.
+$cref/d_fun/py_fun_ctor/$$ constructor.
 
 $children%
 	lib/example/python/fun_optimize_xam.py

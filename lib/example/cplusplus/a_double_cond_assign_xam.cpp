@@ -15,7 +15,7 @@ bool a_double_cond_assign_xam(void) {
 	using cppad_py::a_double;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
-	using cppad_py::a_fun;
+	using cppad_py::d_fun;
 	//
 	// initialize return variable
 	bool ok = true;
@@ -50,7 +50,7 @@ bool a_double_cond_assign_xam(void) {
 	// f(x) = taget
 	vec_a_double ay = vec_a_double(n_dep);
 	ay[0] = target;
-	a_fun af = a_fun(ax, ay);
+	d_fun f = d_fun(ax, ay);
 	//
 	// assignment with different independent variable values
 	x[0] = 9.0; // left
@@ -58,7 +58,7 @@ bool a_double_cond_assign_xam(void) {
 	x[2] = 7.0; // if_true
 	x[3] = 6.0; // if_false
 	int p = 0;
-	vec_double y = af.forward(p, x);
+	vec_double y = f.forward(p, x);
 	ok = ok && y[0] == 6.0;
 	//
 	return( ok  );

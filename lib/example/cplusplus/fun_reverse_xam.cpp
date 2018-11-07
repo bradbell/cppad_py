@@ -11,11 +11,11 @@
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool a_fun_reverse_xam(void) {
+bool d_fun_reverse_xam(void) {
 	using cppad_py::a_double;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
-	using cppad_py::a_fun;
+	using cppad_py::d_fun;
 	//
 	// initialize return variable
 	bool ok = true;
@@ -39,7 +39,7 @@ bool a_fun_reverse_xam(void) {
 	ay[0] = ax_0 * ax_1 * ax_2;
 	//
 	// define af corresponding to f(x) = x_0 * x_1 * x_2
-	a_fun af = a_fun(ax, ay);
+	d_fun f = d_fun(ax, ay);
 	// -----------------------------------------------------------------------
 	// define          X(t) = (x_0 + t, x_1 + t, x_2 + t)
 	// it follows that Y(t) = f(X(t)) = (x_0 + t) * (x_1 + t) * (x_2 + t)
@@ -50,7 +50,7 @@ bool a_fun_reverse_xam(void) {
 	xp[0] = 2.0;
 	xp[1] = 3.0;
 	xp[2] = 4.0;
-	vec_double yp = af.forward(p, xp);
+	vec_double yp = f.forward(p, xp);
 	ok = ok && yp[0] == 24.0;
 	// -----------------------------------------------------------------------
 	// first order reverse (derivative of zero order forward)
@@ -58,7 +58,7 @@ bool a_fun_reverse_xam(void) {
 	int q = 1;
 	vec_double yq1 = vec_double(n_dep);
 	yq1[0] = 1.0;
-	vec_double xq1 = af.reverse(q, yq1);
+	vec_double xq1 = f.reverse(q, yq1);
 	// partial G w.r.t x_0
 	ok = ok && xq1[0] == 3.0 * 4.0 ;
 	// partial G w.r.t x_1
@@ -71,7 +71,7 @@ bool a_fun_reverse_xam(void) {
 	xp[0] = 1.0;
 	xp[1] = 1.0;
 	xp[2] = 1.0;
-	yp = af.forward(p, xp);
+	yp = f.forward(p, xp);
 	ok = ok && yp[0] == 3.0*4.0 + 2.0*4.0 + 2.0*3.0;
 	// -----------------------------------------------------------------------
 	// second order reverse (derivative of first order forward)
@@ -81,7 +81,7 @@ bool a_fun_reverse_xam(void) {
 	vec_double yq2 = vec_double(n_dep * q);
 	yq2[0 * q + 0] = 0.0; // partial of G w.r.t y_0^0
 	yq2[0 * q + 1] = 1.0; // partial of G w.r.t y_0^1
-	vec_double xq2 = af.reverse(q, yq2);
+	vec_double xq2 = f.reverse(q, yq2);
 	// partial G w.r.t x_0^0
 	ok = ok && xq2[0 * q + 0] == 3.0 + 4.0;
 	// partial G w.r.t x_1^0

@@ -11,11 +11,11 @@
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool a_fun_forward_xam(void) {
+bool d_fun_forward_xam(void) {
 	using cppad_py::a_double;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
-	using cppad_py::a_fun;
+	using cppad_py::d_fun;
 	//
 	// initialize return variable
 	bool ok = true;
@@ -38,7 +38,7 @@ bool a_fun_forward_xam(void) {
 	ay[0] = ax0 * ax1;
 	//
 	// define af corresponding to f(x) = x0 * x1
-	a_fun af = a_fun(ax, ay);
+	d_fun f = d_fun(ax, ay);
 	//
 	// define X(t) = (3 + t, 2 + t)
 	// it follows that Y(t) = f(X(t)) = (3 + t) * (2 + t)
@@ -47,7 +47,7 @@ bool a_fun_forward_xam(void) {
 	int p = 0;
 	xp[0] = 3.0;
 	xp[1] = 2.0;
-	vec_double yp = af.forward(p, xp);
+	vec_double yp = f.forward(p, xp);
 	ok = ok && yp[0] == 6.0;
 	//
 	// first order Taylor coefficients for X(t)
@@ -57,7 +57,7 @@ bool a_fun_forward_xam(void) {
 	//
 	// first order Taylor coefficient for Y(t)
 	// Y'(0) = 3 + 2 = 5 and p ! = 1
-	yp = af.forward(p, xp);
+	yp = f.forward(p, xp);
 	ok = ok && yp[0] == 5.0;
 	//
 	// second order Taylor coefficients for X(t)
@@ -67,7 +67,7 @@ bool a_fun_forward_xam(void) {
 	//
 	// second order Taylor coefficient for Y(t)
 	// Y''(0) = 2.0 and p ! = 2
-	yp = af.forward(p, xp);
+	yp = f.forward(p, xp);
 	ok = ok && yp[0] == 1.0;
 	//
 	return( ok );

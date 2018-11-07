@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_a_fun$$ $newlinech #$$
+# $begin py_fun$$ $newlinech #$$
 # $spell
 #	Cppad
 #	Py
@@ -28,81 +28,81 @@
 # $end
 # ----------------------------------------------------------------------------
 import cppad_py
-class a_fun :
+class d_fun :
 	"""Python interface to CppAD::ADFun<double>"""
 	#
 	# __init__: see fun_ctor.py
 	def __init__(self, ax, ay) :
-		self.af = cppad_py.a_fun_ctor(ax, ay)
+		self.f = cppad_py.d_fun_ctor(ax, ay)
 	#
 	# size_domain
 	def size_domain(self) :
-		return self.af.size_domain()
+		return self.f.size_domain()
 	#
 	# size_range
 	def size_range(self) :
-		return self.af.size_range()
+		return self.f.size_range()
 	#
 	# size_var
 	def size_var(self) :
-		return self.af.size_var()
+		return self.f.size_var()
 	#
 	# size_op
 	def size_op(self) :
-		return self.af.size_op()
+		return self.f.size_op()
 	#
 	# size_order
 	def size_order(self) :
-		return self.af.size_order()
+		return self.f.size_order()
 	#
 	# jacobian: see fun_jacobian.py
 	def jacobian(self, x) :
-		return cppad_py.a_fun_jacobian(self.af, x)
+		return cppad_py.d_fun_jacobian(self.f, x)
 	#
 	# hessian: see fun_hessian.py
 	def hessian(self, x, w) :
-		return cppad_py.a_fun_hessian(self.af, x, w)
+		return cppad_py.d_fun_hessian(self.f, x, w)
 	#
 	# forward
 	def forward(self, p, xp) :
-		return cppad_py.a_fun_forward(self.af, p, xp)
+		return cppad_py.d_fun_forward(self.f, p, xp)
 	#
 	# reverse
 	def reverse(self, q, yq) :
-		return cppad_py.a_fun_reverse(self.af, q, yq)
+		return cppad_py.d_fun_reverse(self.f, q, yq)
 	#
 	# optimize
 	def optimize(self) :
-		return self.af.optimize()
+		return self.f.optimize()
 	#
 	# undocumented fact: pattern.rc is vec_int version of sparsity pattern
 	#
 	# for_jac_sparsity
 	def for_jac_sparsity(self, pattern_in, pattern_out) :
-		self.af.for_jac_sparsity(pattern_in.rc, pattern_out.rc)
+		self.f.for_jac_sparsity(pattern_in.rc, pattern_out.rc)
 	#
 	# rev_jac_sparsity
 	def rev_jac_sparsity(self, pattern_in, pattern_out) :
-		self.af.rev_jac_sparsity(pattern_in.rc, pattern_out.rc)
+		self.f.rev_jac_sparsity(pattern_in.rc, pattern_out.rc)
 	#
 	# for_hes_sparsity
 	def for_hes_sparsity(self, select_domain, select_range, pattern_out) :
-		cppad_py.a_fun_for_hes_sparsity( \
-			self.af, select_domain, select_range, pattern_out)
+		cppad_py.d_fun_for_hes_sparsity( \
+			self.f, select_domain, select_range, pattern_out)
 	#
 	# rev_hes_sparsity
 	def rev_hes_sparsity(self, select_domain, select_range, pattern_out) :
-		cppad_py.a_fun_rev_hes_sparsity( \
-			self.af, select_domain, select_range, pattern_out)
+		cppad_py.d_fun_rev_hes_sparsity( \
+			self.f, select_domain, select_range, pattern_out)
 	#
 	# sparse_jac_for
 	def sparse_jac_for(self, subset, x, pattern, work) :
-		cppad_py.a_fun_sparse_jac_for(self.af, subset, x, pattern, work)
+		cppad_py.d_fun_sparse_jac_for(self.f, subset, x, pattern, work)
 	#
 	# sparse_jac_rev
 	def sparse_jac_rev(self, subset, x, pattern, work) :
-		cppad_py.a_fun_sparse_jac_rev(self.af, subset, x, pattern, work)
+		cppad_py.d_fun_sparse_jac_rev(self.f, subset, x, pattern, work)
 	#
 	# sparse_hes
 	def sparse_hes(self, subset, x, r, pattern, work) :
-		cppad_py.a_fun_sparse_hes(self.af, subset, x, r, pattern, work)
+		cppad_py.d_fun_sparse_hes(self.f, subset, x, r, pattern, work)

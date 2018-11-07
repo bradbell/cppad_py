@@ -5,10 +5,9 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_a_fun_hessian$$ $newlinech #$$
+# $begin py_fun_hessian$$ $newlinech #$$
 # $spell
 #	vec
-#	af
 #	Taylor
 #	const
 #	numpy
@@ -17,23 +16,23 @@
 # $section Hessian of an AD Function$$
 #
 # $head Syntax$$
-# $icode%H% = %af%.hessian(%x%, %w%)%$$
+# $icode%H% = %f%.hessian(%x%, %w%)%$$
 #
-# $head af$$
+# $head f$$
 # This object must have been returned by a previous call to the python
-# $cref/a_fun/py_a_fun_ctor/$$ constructor.
+# $cref/d_fun/py_fun_ctor/$$ constructor.
 # Note that its state is changed by this operation.
 # The zero order
-# $cref/Taylor coefficients/py_a_fun_forward/Taylor Coefficient/$$
-# in $icode af$$ correspond to the value of $icode x$$.
-# The other Taylor coefficients in $icode af$$ are unspecified.
+# $cref/Taylor coefficients/py_fun_forward/Taylor Coefficient/$$
+# in $icode f$$ correspond to the value of $icode x$$.
+# The other Taylor coefficients in $icode f$$ are unspecified.
 #
 # $head f(x)$$
 # We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
-# for the function corresponding to $icode af$$.
-# Note that $icode n$$ is the size of $cref/ax/py_a_fun_ctor/ax/$$
-# and $icode m$$ is the size of $cref/ay/py_a_fun_ctor/ay/$$
-# in to the constructor for $icode af$$.
+# for the function corresponding to $icode f$$.
+# Note that $icode n$$ is the size of $cref/ax/py_fun_ctor/ax/$$
+# and $icode m$$ is the size of $cref/ay/py_fun_ctor/ay/$$
+# in to the constructor for $icode f$$.
 #
 # $head g(x)$$
 # We use the notation $latex g: \B{R}^n \rightarrow \B{R}$$
@@ -75,25 +74,25 @@
 import cppad_py
 import numpy
 #
-# This function is used by hessian in a_fun class to implement syntax above
-def a_fun_hessian(af, x, w) :
+# This function is used by hessian in d_fun class to implement syntax above
+def d_fun_hessian(f, x, w) :
 	"""
-	H = af.hessian(x, w)
+	H = f.hessian(x, w)
 	computes Hessian of a function corresponding a sum of the components of af
 	"""
 	from cppad_py import vec_double as vec_double
 	#
-	n = af.size_domain()
-	m = af.size_range()
+	n = f.size_domain()
+	m = f.size_range()
 	#
 	# convert x -> u, w -> v
 	dtype    = float
-	syntax   = 'af.hessian(x, w)'
+	syntax   = 'f.hessian(x, w)'
 	u = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
 	v = cppad_py.utility.numpy2vec(w, dtype, m, syntax, 'w')
 	#
 	# call hessian
-	z =  af.hessian(u, v)
+	z =  f.hessian(u, v)
 	#
 	H = cppad_py.utility.vec2numpy(z, n, n)
 	#

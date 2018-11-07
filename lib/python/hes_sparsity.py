@@ -8,7 +8,6 @@
 # $begin py_hes_sparsity$$ $newlinech #$$
 # $spell
 #	hes
-#	af
 #	const
 #	vec
 #	bool
@@ -19,13 +18,13 @@
 # $section Hessian Sparsity Patterns$$
 #
 # $head Syntax$$
-# $icode%af%.for_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)
+# $icode%f%.for_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)
 # %$$
-# $icode%af%.rev_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)%$$
+# $icode%f%.rev_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)%$$
 #
 # $head Purpose$$
 # We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-# function corresponding to the operation sequence stored in $icode af$$.
+# function corresponding to the operation sequence stored in $icode f$$.
 # Fix a diagonal matrix $latex D \in \B{R}^{n \times n}$$, fix a vector
 # $latex r \in \B{R}^m$$, and define
 # $latex \[
@@ -36,12 +35,12 @@
 #
 # $head x$$
 # Note that a sparsity pattern for $latex H(x)$$ corresponds to the
-# operation sequence stored in $icode af$$ and does not depend on
+# operation sequence stored in $icode f$$ and does not depend on
 # the argument $icode x$$.
 #
-# $head af$$
+# $head f$$
 # This object must have been returned by a previous call to the python
-# $cref/a_fun/py_a_fun_ctor/$$ constructor.
+# $cref/d_fun/py_fun_ctor/$$ constructor.
 #
 # $head select_domain$$
 # The argument is a numpy vector with $code bool$$ elements.
@@ -78,26 +77,26 @@
 # -----------------------------------------------------------------------------
 # undocumented fact: pattern.rc is vec_int version of sparsity pattern
 from cppad_py.utility import numpy2vec
-def a_fun_for_hes_sparsity(af, select_domain, select_range, pattern_out) :
+def d_fun_for_hes_sparsity(f, select_domain, select_range, pattern_out) :
 	"""
-	af.for_hes_sparsity(select_domain, select_range, pattern_out)
+	f.for_hes_sparsity(select_domain, select_range, pattern_out)
 	"""
-	n      = af.size_domain()
-	m      = af.size_range()
+	n      = f.size_domain()
+	m      = f.size_range()
 	dtype  = bool
-	syntax = 'af.for_hes_sparsity(select_domain, select_range, pattern_out)'
+	syntax = 'f.for_hes_sparsity(select_domain, select_range, pattern_out)'
 	u      = numpy2vec(select_domain, dtype, n, syntax, 'select_domain')
 	v      = numpy2vec(select_range,  dtype, m, syntax, 'select_range')
-	af.for_hes_sparsity(u, v, pattern_out.rc)
+	f.for_hes_sparsity(u, v, pattern_out.rc)
 #
-def a_fun_rev_hes_sparsity(af, select_domain, select_range, pattern_out) :
+def d_fun_rev_hes_sparsity(f, select_domain, select_range, pattern_out) :
 	"""
-	af.rev_hes_sparsity(select_domain, select_range, pattern_out)
+	f.rev_hes_sparsity(select_domain, select_range, pattern_out)
 	"""
-	n      = af.size_domain()
-	m      = af.size_range()
+	n      = f.size_domain()
+	m      = f.size_range()
 	dtype  = bool
-	syntax = 'af.rev_hes_sparsity(select_domain, select_range, pattern_out)'
+	syntax = 'f.rev_hes_sparsity(select_domain, select_range, pattern_out)'
 	u      = numpy2vec(select_domain, dtype, n, syntax, 'select_domain')
 	v      = numpy2vec(select_range,  dtype, m, syntax, 'select_range')
-	af.rev_hes_sparsity(u, v, pattern_out.rc)
+	f.rev_hes_sparsity(u, v, pattern_out.rc)

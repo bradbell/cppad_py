@@ -14,7 +14,7 @@
 
 // declarations without definitions
 namespace CppAD {
-	template <class Base> class ADFun;
+	template <class Base, class RecBase> class ADFun;
 	class sparse_jac_work;
 	class sparse_hes_work;
 }
@@ -31,20 +31,20 @@ CPPAD_PY_LIB_PUBLIC void abort_recording(void);
 
 
 // Swig class that acts the same as CppAD::ADFun<double>
-class CPPAD_PY_LIB_PUBLIC a_fun
+class CPPAD_PY_LIB_PUBLIC d_fun
 {	// private members are not in Swig interface
 	private:
 	// ADFun<double> representation
-	CppAD::ADFun<double>* ptr_;
+	CppAD::ADFun<double, double>* ptr_;
 	// -----------------------------------------------------------------------
 	// public members are in Swig interface
 	public:
 	// default ctor
-	a_fun(void);
+	d_fun(void);
 	// destructor
-	~a_fun(void);
+	~d_fun(void);
 	// constrtuctor
-	a_fun( const std::vector<a_double>& ax, const std::vector<a_double>& ay );
+	d_fun( const std::vector<a_double>& ax, const std::vector<a_double>& ay );
 	// jacobian
 	std::vector<double> jacobian(const std::vector<double>& x);
 	// hessian
@@ -58,7 +58,7 @@ class CPPAD_PY_LIB_PUBLIC a_fun
 	std::vector<double> reverse(int q, const std::vector<double>& yq );
 	// optimize
 	void optimize(void);
-	// a_fun properties
+	// d_fun properties
 	int size_domain(void) const;
 	int size_range(void) const;
 	int size_var() const;

@@ -35,10 +35,10 @@ def fun_jacobian_xam() :
 	ay[0] = ax_0 * ax_1 * ax_2
 	#
 	# define af corresponding to f(x) = x_0 * x_1 * x_2
-	af = cppad_py.a_fun(ax, ay)
+	f  = cppad_py.d_fun(ax, ay)
 	#
 	# compute the Jacobian f'(x) = ( x_1*x_2, x_0*x_2, x_0*x_1 )
-	fp = af.jacobian(x)
+	fp = f.jacobian(x)
 	#
 	# check Jacobian
 	x_0 = x[0]

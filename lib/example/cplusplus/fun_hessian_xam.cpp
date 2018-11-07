@@ -11,11 +11,11 @@
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool a_fun_hessian_xam(void) {
+bool d_fun_hessian_xam(void) {
 	using cppad_py::a_double;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
-	using cppad_py::a_fun;
+	using cppad_py::d_fun;
 	//
 	// initialize return variable
 	bool ok = true;
@@ -39,14 +39,14 @@ bool a_fun_hessian_xam(void) {
 	ay[0] = ax_0 * ax_1 * ax_2;
 	//
 	// define af corresponding to f(x) = x_0 * x_1 * x_2
-	a_fun af = a_fun(ax, ay);
+	d_fun f = d_fun(ax, ay);
 	//
 	// g(x) = w_0 * f_0 (x) = f(x)
 	vec_double w = vec_double(n_dep);
 	w[0] = 1.0;
 	//
 	// compute Hessian
-	vec_double fpp = af.hessian(x, w);
+	vec_double fpp = f.hessian(x, w);
 	//
 	//          [ 0.0 , x_2 , x_1 ]
 	// f''(x) = [ x_2 , 0.0 , x_0 ]

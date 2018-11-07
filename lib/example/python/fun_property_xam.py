@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# a_fun properties
+# d_fun properties
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
 def fun_property_xam() :
@@ -44,19 +44,19 @@ def fun_property_xam() :
 	n_op  = n_op + 1
 	#
 	# define f(x) = y
-	af = cppad_py.a_fun(ax, ay)
+	f  = cppad_py.d_fun(ax, ay)
 	n_op = n_op + 1 # speical operator at end
 	#
 	# check af properties
-	ok = ok and af.size_domain() == n_ind
-	ok = ok and af.size_range()  == n_dep
-	ok = ok and af.size_var()    == n_var
-	ok = ok and af.size_op()     == n_op
-	ok = ok and af.size_order()  == 0
+	ok = ok and f.size_domain() == n_ind
+	ok = ok and f.size_range()  == n_dep
+	ok = ok and f.size_var()    == n_var
+	ok = ok and f.size_op()     == n_op
+	ok = ok and f.size_order()  == 0
 	#
 	# compute zero order Taylor coefficients
-	y  = af.forward(0, x)
-	ok = ok and af.size_order() == 1
+	y  = f.forward(0, x)
+	ok = ok and f.size_order() == 1
 	#
 	return( ok  )
 #
@@ -72,7 +72,7 @@ def fun_property_xam() :
 #	Jacobian
 #	Jacobians
 # $$
-# $section Python: a_fun Properties: Example and Test$$
+# $section Python: d_fun Properties: Example and Test$$
 # $srcfile|lib/example/python/fun_property_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

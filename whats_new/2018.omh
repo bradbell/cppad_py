@@ -22,6 +22,17 @@ $$
 
 $section Cppad Py Changes During 2018$$
 
+$head 11-05$$
+$list number$$
+$bold API Change$$:
+change $code cppad_py.a_fun$$ to $code cppad_py.d_fun$$
+because it is a function that evaluates in $code double$$
+and plan to use $code cppad_py.a_fun$$ for a function that
+evaluates in $code a_double$$.
+$lnext
+Advance to cppad-20181105 (must re-run $code bin/get_cppad.sh$$).
+$lend
+
 $head 08-13$$
 $list number$$
 Change $code cppad_cxx_flags$$ to
@@ -75,19 +86,19 @@ $lend
 $head 07-14$$
 $list number$$
 Continue conversion of python library to using $code numpy.array$$; see
-$cref py_a_fun_forward$$, $cref py_a_fun_reverse$$.
+$cref py_fun_forward$$, $cref py_fun_reverse$$.
 $lnext
-Add the $cref/af.size_order()/py_a_fun_property/size_order/$$ function.
+Add the $cref/f.size_order()/py_fun_property/size_order/$$ function.
 $lend
 
 $head 07-13$$
 Continue conversion of python library to using $code numpy.array$$; see
-$cref py_a_fun_jacobian$$, $cref py_a_fun_hessian$$.
+$cref py_fun_jacobian$$, $cref py_fun_hessian$$.
 
 $head 07-12$$
 $list number$$
 Continue conversion of python library to using $code numpy.array$$; see
-$cref py_independent$$, $cref py_a_fun_ctor$$.
+$cref py_independent$$, $cref py_fun_ctor$$.
 $lnext
 Add the file $code cppad_py/python_major_version$$ which contains
 the major version of python that this build of $code cppad_py$$ is for.
@@ -100,8 +111,8 @@ setup.py was using the git repository version of Cppad instead of the
 one installed in $code build/prefix$$ by $cref get_cppad.sh$$.
 This has been fixed.
 $lnext
-Change $code size_ind$$ to $cref/size_domain/py_a_fun_property/size_domain/$$
-and $code size_dep$$ to $cref/size_range/py_a_fun_property/size_range/$$.
+Change $code size_ind$$ to $cref/size_domain/py_fun_property/size_domain/$$
+and $code size_dep$$ to $cref/size_range/py_fun_property/size_range/$$.
 $lend
 
 $head 07-10$$

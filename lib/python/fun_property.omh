@@ -5,7 +5,7 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin py_a_fun_property$$
+$begin py_fun_property$$
 $spell
 	vec
 	ind
@@ -23,31 +23,31 @@ $spell
 $$
 
 $head Syntax$$
-$icode%n% = %af%.size_domain()
+$icode%n% = %f%.size_domain()
 %$$
-$icode%m% = %af%.size_range()
+$icode%m% = %f%.size_range()
 %$$
-$icode%v% = %af%.size_var()
+$icode%v% = %f%.size_var()
 %$$
-$icode%p% = %af%.size_op()
+$icode%p% = %f%.size_op()
 %$$
-$icode%q% = %af%.size_order()
+$icode%q% = %f%.size_order()
 %$$
 
-$head af$$
+$head f$$
 This object must have been returned by a previous call to the python
-$cref/a_fun/py_a_fun_ctor/$$ constructor.
+$cref/d_fun/py_fun_ctor/$$ constructor.
 
 $head size_domain$$
 The return value $icode n$$ is an $code int$$
 and is the size of the vector
-$cref/ax/py_a_fun_ctor/ax/$$ in the function constructor; i.e.,
+$cref/ax/py_fun_ctor/ax/$$ in the function constructor; i.e.,
 the number of independent variables.
 
 $head size_range$$
 The return value $icode m$$ is an $code int$$
 and is the size of the vector
-$cref/ay/py_a_fun_ctor/ay/$$ in the function constructor; i.e.,
+$cref/ay/py_fun_ctor/ay/$$ in the function constructor; i.e.,
 the number of dependent variables.
 
 $head size_var$$
@@ -64,12 +64,12 @@ the dependent variables as a function of the independent variables.
 
 $head size_order$$
 The return value $icode q$$ is an $code int$$
-and is the number of Taylor coefficients currently stored in $icode af$$,
-for every variable in the operation sequence corresponding to $icode af$$.
-These coefficients are computed by $cref py_a_fun_forward$$.
+and is the number of Taylor coefficients currently stored in $icode f$$,
+for every variable in the operation sequence corresponding to $icode f$$.
+These coefficients are computed by $cref py_fun_forward$$.
 This is different from the other function properties in that it can change
-after each call to $icode%af%.forward%$$; see
-$cref/size_order/py_a_fun_forward/p/size_order/$$ in the forward mode section.
+after each call to $icode%f%.forward%$$; see
+$cref/size_order/py_fun_forward/p/size_order/$$ in the forward mode section.
 
 $children%
 	lib/example/python/fun_property_xam.py

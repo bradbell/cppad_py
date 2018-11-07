@@ -19,13 +19,13 @@ $$
 $section Jacobian Sparsity Patterns$$
 
 $head Syntax$$
-$icode%af%.for_jac_sparsity(%pattern_in%, %pattern_out%)
+$icode%f%.for_jac_sparsity(%pattern_in%, %pattern_out%)
 %$$
-$icode%af%.rev_jac_sparsity(%pattern_in%, %pattern_out%)%$$
+$icode%f%.rev_jac_sparsity(%pattern_in%, %pattern_out%)%$$
 
 $head Purpose$$
 We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-function corresponding to the operation sequence stored in $icode af$$.
+function corresponding to the operation sequence stored in $icode f$$.
 
 $subhead for_jac_sparsity$$
 Fix $latex R \in \B{R}^{n \times \ell}$$ and define the function
@@ -45,17 +45,17 @@ $code rev_jac_sparsity$$ computes a sparsity pattern for $latex J(x)$$.
 
 $head x$$
 Note that a sparsity pattern for $latex J(x)$$ corresponds to the
-operation sequence stored in $icode af$$ and does not depend on
+operation sequence stored in $icode f$$ and does not depend on
 the argument $icode x$$.
 
-$head af$$
+$head f$$
 This object must have been returned by a previous call to the python
-$cref/a_fun/py_a_fun_ctor/$$ constructor.
-The object $icode af$$ is not constant when using
+$cref/d_fun/py_fun_ctor/$$ constructor.
+The object $icode f$$ is not constant when using
 $code for_jac_sparsity$$.
 After a call to $code for_jac_sparsity$$, a sparsity pattern
 for each of the variables in the operation sequence
-is held in $icode af$$ for possible later use during
+is held in $icode f$$ for possible later use during
 reverse Hessian sparsity calculations.
 
 $head pattern_in$$

@@ -17,7 +17,7 @@ bool sparse_hes_pattern_xam(void) {
 	using cppad_py::vec_int;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
-	using cppad_py::a_fun;
+	using cppad_py::d_fun;
 	using cppad_py::sparse_rc;
 	//
 	// initialize return variable
@@ -46,7 +46,7 @@ bool sparse_hes_pattern_xam(void) {
 	}
 	//
 	// define af corresponding to f(x)
-	a_fun af = a_fun(ax, ay);
+	d_fun f = d_fun(ax, ay);
 	//
 	// Set select_d (domain) to all true, initial select_r (range) to all false
 	vec_bool select_d = vec_bool(n);
@@ -64,10 +64,10 @@ bool sparse_hes_pattern_xam(void) {
 	for(int mode = 0; mode < 2; mode++) {
 		sparse_rc pat_out = sparse_rc();
 		if( mode == 0  ) {
-			af.for_hes_sparsity(select_d, select_r, pat_out);
+			f.for_hes_sparsity(select_d, select_r, pat_out);
 		}
 		if( mode == 1  ) {
-			af.rev_hes_sparsity(select_d, select_r, pat_out);
+			f.rev_hes_sparsity(select_d, select_r, pat_out);
 		}
 		//
 		// check that result is sparsity pattern for Hessian of f_0 (x)

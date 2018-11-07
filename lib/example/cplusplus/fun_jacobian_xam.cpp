@@ -11,11 +11,11 @@
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool a_fun_jacobian_xam(void) {
+bool d_fun_jacobian_xam(void) {
 	using cppad_py::a_double;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
-	using cppad_py::a_fun;
+	using cppad_py::d_fun;
 	//
 	// initialize return variable
 	bool ok = true;
@@ -39,10 +39,10 @@ bool a_fun_jacobian_xam(void) {
 	ay[0] = ax_0 * ax_1 * ax_2;
 	//
 	// define af corresponding to f(x) = x_0 * x_1 * x_2
-	a_fun af = a_fun(ax, ay);
+	d_fun f = d_fun(ax, ay);
 	//
 	// compute the Jacobian f'(x) = ( x_1*x_2, x_0*x_2, x_0*x_1 )
-	vec_double fp = af.jacobian(x);
+	vec_double fp = f.jacobian(x);
 	//
 	// check Jacobian
 	double x_0 = x[0];

@@ -5,17 +5,17 @@
 //              GNU General Public License version 3.0 or later see
 //                    https://www.gnu.org/licenses/gpl-3.0.txt
 // -----------------------------------------------------------------------------
-// a_fun properties
+// d_fun properties
 // -----------------------------------------------------------------------------
 // BEGIN SOURCE
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool a_fun_property_xam(void) {
+bool d_fun_property_xam(void) {
 	using cppad_py::a_double;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
-	using cppad_py::a_fun;
+	using cppad_py::d_fun;
 	//
 	// initialize return variable
 	bool ok = true;
@@ -47,18 +47,18 @@ bool a_fun_property_xam(void) {
 	n_op         = n_op + 1;
 	//
 	// define f(x) = y
-	a_fun af = a_fun(ax, ay);
+	d_fun f = d_fun(ax, ay);
 	n_op     = n_op + 1; // speical operator at end
 	//
 	// check af properties
-	ok = ok && af.size_domain() == n_ind;
-	ok = ok && af.size_range()  == n_dep;
-	ok = ok && af.size_var()    == n_var;
-	ok = ok && af.size_op()     == n_op;
+	ok = ok && f.size_domain() == n_ind;
+	ok = ok && f.size_range()  == n_dep;
+	ok = ok && f.size_var()    == n_var;
+	ok = ok && f.size_op()     == n_op;
 	//
 	// compute zero order Taylor coefficients
-	vec_double y  = af.forward(0, x);
-	ok = ok && af.size_order() == 1;
+	vec_double y  = f.forward(0, x);
+	ok = ok && f.size_order() == 1;
 	//
 	return( ok  );
 }
@@ -74,7 +74,7 @@ $spell
 	Jacobian
 	Jacobians
 $$
-$section C++: a_fun Properties: Example and Test$$
+$section C++: d_fun Properties: Example and Test$$
 $srcfile|lib/example/cplusplus/fun_property_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */

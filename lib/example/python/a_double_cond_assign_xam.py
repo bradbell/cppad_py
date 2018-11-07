@@ -46,7 +46,7 @@ def a_double_cond_assign_xam() :
 	# f(x) = taget
 	ay = numpy.empty(n_dep, dtype=cppad_py.a_double)
 	ay[0] = target
-	af = cppad_py.a_fun(ax, ay)
+	f  = cppad_py.d_fun(ax, ay)
 	#
 	# assignment with different independent variable values
 	x[0] = 9.0 # left
@@ -54,7 +54,7 @@ def a_double_cond_assign_xam() :
 	x[2] = 7.0 # if_true
 	x[3] = 6.0 # if_false
 	p = 0
-	y = af.forward(p, x)
+	y = f.forward(p, x)
 	ok = ok and y[0] == 6.0
 	#
 	return( ok  )

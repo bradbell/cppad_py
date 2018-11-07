@@ -536,13 +536,13 @@ $$
 $section Jacobian Sparsity Patterns$$
 
 $head Syntax$$
-$icode%af%.for_jac_sparsity(%pattern_in%, %pattern_out%)
+$icode%f%.for_jac_sparsity(%pattern_in%, %pattern_out%)
 %$$
-$icode%af%.rev_jac_sparsity(%pattern_in%, %pattern_out%)%$$
+$icode%f%.rev_jac_sparsity(%pattern_in%, %pattern_out%)%$$
 
 $head Purpose$$
 We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-function corresponding to the operation sequence stored in $icode af$$.
+function corresponding to the operation sequence stored in $icode f$$.
 
 $subhead for_jac_sparsity$$
 Fix $latex R \in \B{R}^{n \times \ell}$$ and define the function
@@ -562,19 +562,19 @@ $code rev_jac_sparsity$$ computes a sparsity pattern for $latex J(x)$$.
 
 $head x$$
 Note that a sparsity pattern for $latex J(x)$$ corresponds to the
-operation sequence stored in $icode af$$ and does not depend on
+operation sequence stored in $icode f$$ and does not depend on
 the argument $icode x$$.
 
-$head af$$
-The object $icode af$$ has prototype
+$head f$$
+The object $icode f$$ has prototype
 $codei%
-	a_fun %af%
+	d_fun %f%
 %$$
-The object $icode af$$ is not $code const$$ when using
+The object $icode f$$ is not $code const$$ when using
 $code for_jac_sparsity$$.
 After a call to $code for_jac_sparsity$$, a sparsity pattern
 for each of the variables in the operation sequence
-is held in $icode af$$ for possible later use during
+is held in $icode f$$ for possible later use during
 reverse Hessian sparsity calculations.
 
 $head pattern_in$$
@@ -607,7 +607,7 @@ $cref/C++/sparse_jac_pattern_xam.cpp/$$
 
 $end
 */
-void a_fun::for_jac_sparsity(
+void d_fun::for_jac_sparsity(
 	const sparse_rc&  pattern_in    ,
 	sparse_rc&        pattern_out   )
 {	const CppAD::sparse_rc< std::vector<size_t> >* ptr_in  = pattern_in.ptr();
@@ -625,7 +625,7 @@ void a_fun::for_jac_sparsity(
 	//
 	return;
 }
-void a_fun::rev_jac_sparsity(
+void d_fun::rev_jac_sparsity(
 	const sparse_rc&  pattern_in    ,
 	sparse_rc&        pattern_out   )
 {	const CppAD::sparse_rc< std::vector<size_t> >* ptr_in  = pattern_in.ptr();
@@ -653,13 +653,13 @@ $$
 $section Hessian Sparsity Patterns$$
 
 $head Syntax$$
-$icode%af%.for_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)
+$icode%f%.for_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)
 %$$
-$icode%af%.rev_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)%$$
+$icode%f%.rev_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)%$$
 
 $head Purpose$$
 We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-function corresponding to the operation sequence stored in $icode af$$.
+function corresponding to the operation sequence stored in $icode f$$.
 Fix a diagonal matrix $latex D \in \B{R}^{n \times n}$$, fix a vector
 $latex r \in \B{R}^m$$, and define
 $latex \[
@@ -670,13 +670,13 @@ these routines compute a sparsity pattern for $latex H(x)$$.
 
 $head x$$
 Note that a sparsity pattern for $latex H(x)$$ corresponds to the
-operation sequence stored in $icode af$$ and does not depend on
+operation sequence stored in $icode f$$ and does not depend on
 the argument $icode x$$.
 
-$head af$$
-The object $icode af$$ has prototype
+$head f$$
+The object $icode f$$ has prototype
 $codei%
-	a_fun %af%
+	d_fun %f%
 %$$
 
 $head select_domain$$
@@ -720,7 +720,7 @@ $cref/C++/sparse_hes_pattern_xam.cpp/$$
 
 $end
 */
-void a_fun::for_hes_sparsity(
+void d_fun::for_hes_sparsity(
 	const std::vector<bool>& select_domain ,
 	const std::vector<bool>& select_range  ,
 	sparse_rc&               pattern_out   )
@@ -731,7 +731,7 @@ void a_fun::for_hes_sparsity(
 	);
 	return;
 }
-void a_fun::rev_hes_sparsity(
+void d_fun::rev_hes_sparsity(
 	const std::vector<bool>& select_domain ,
 	const std::vector<bool>& select_range  ,
 	sparse_rc&               pattern_out   )
@@ -820,36 +820,36 @@ $section Computing Sparse Jacobians$$
 $head Syntax$$
 $icode%work% = cppad_py::sparse_jac_work()
 %$$
-$icode%n_sweep% = %af%.sparse_jac_for(%subset%, %x%, %pattern%, %work%)
+$icode%n_sweep% = %f%.sparse_jac_for(%subset%, %x%, %pattern%, %work%)
 %$$
-$icode%n_sweep% = %af%.sparse_jac_rev(%subset%, %x%, %pattern%, %work%)%$$
+$icode%n_sweep% = %f%.sparse_jac_rev(%subset%, %x%, %pattern%, %work%)%$$
 
 $head Purpose$$
 We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-function corresponding to $icode af$$.
+function corresponding to $icode f$$.
 The syntax above takes advantage of sparsity when computing the Jacobian
 $latex \[
 	J(x) = F^{(1)} (x)
 \] $$
 In the sparse case, this should be faster and take less memory than
-$cref cpp_a_fun_jacobian$$.
+$cref cpp_fun_jacobian$$.
 We use the notation $latex J_{i,j} (x)$$ to denote the partial of
 $latex F_i (x)$$ with respect to $latex x_j$$.
 
 $head sparse_jac_for$$
-This function uses first order forward mode sweeps $cref cpp_a_fun_forward$$
+This function uses first order forward mode sweeps $cref cpp_fun_forward$$
 to compute multiple columns of the Jacobian at the same time.
 
 $head sparse_jac_rev$$
-This function uses first order reverse mode sweeps $cref cpp_a_fun_reverse$$
+This function uses first order reverse mode sweeps $cref cpp_fun_reverse$$
 to compute multiple rows of the Jacobian at the same time.
 
-$head af$$
+$head f$$
 This object has prototype
 $codei%
-	ADFun<%Base%> %af%
+	ADFun<%Base%> %f%
 %$$
-Note that the Taylor coefficients stored in $icode af$$ are affected
+Note that the Taylor coefficients stored in $icode f$$ are affected
 by this operation; see
 $cref/uses forward/cpp_sparse_jac/Uses Forward/$$ below.
 
@@ -896,7 +896,7 @@ We refer to its initial value,
 and its value after $icode%work%.clear()%$$, as empty.
 If it is empty, information is stored in $icode work$$.
 This can be used to reduce computation when
-a future call is for the same object $icode af$$,
+a future call is for the same object $icode f$$,
 the same member function $code sparse_jac_for$$ or $code sparse_jac_rev$$,
 and the same subset of the Jacobian.
 If any of these values change, use $icode%work%.clear()%$$ to
@@ -915,13 +915,13 @@ not counting the zero order forward sweep,
 or combining multiple columns (rows) into a single sweep.
 
 $head Uses Forward$$
-After each call to $cref cpp_a_fun_forward$$,
-the object $icode af$$ contains the corresponding Taylor coefficients
+After each call to $cref cpp_fun_forward$$,
+the object $icode f$$ contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
 After a call to $code sparse_jac_forward$$ or $code sparse_jac_rev$$,
 the zero order coefficients correspond to
 $codei%
-	%af%.forward(0, %x%)
+	%f%.forward(0, %x%)
 %$$
 All the other forward mode coefficients are unspecified.
 
@@ -955,7 +955,7 @@ void sparse_jac_work::clear(void)
 	return;
 }
 // sparse_jac_for
-int a_fun::sparse_jac_for(
+int d_fun::sparse_jac_for(
 	sparse_rcv&                subset   ,
 	const std::vector<double>& x        ,
 	const sparse_rc&           pattern  ,
@@ -968,7 +968,7 @@ int a_fun::sparse_jac_for(
 	return int(n_sweep);
 }
 // sparse_jac_rev
-int a_fun::sparse_jac_rev(
+int d_fun::sparse_jac_rev(
 	sparse_rcv&                subset   ,
 	const std::vector<double>& x        ,
 	const sparse_rc&           pattern  ,
@@ -1001,12 +1001,12 @@ $section Computing Sparse Hessians$$
 $head Syntax$$
 $icode%work% = cppad_py::sparse_hes_work()
 %$$
-$icode%n_sweep% = %af%.sparse_hes(%subset%, %x%, %r%, %pattern%, %work%)
+$icode%n_sweep% = %f%.sparse_hes(%subset%, %x%, %r%, %pattern%, %work%)
 %$$
 
 $head Purpose$$
 We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-function corresponding to $icode af$$.
+function corresponding to $icode f$$.
 Given a vector $latex r \in \B{R}^m$$, define
 $latex \[
 	H(x) = (r^\R{T} F)^{(2)} ( x )
@@ -1014,12 +1014,12 @@ $latex \[
 This routine takes advantage of sparsity when computing elements
 of the Hessian $latex H(x)$$.
 
-$head af$$
+$head f$$
 This object has prototype
 $codei%
-	ADFun<%Base%> %af%
+	ADFun<%Base%> %f%
 %$$
-Note that the Taylor coefficients stored in $icode af$$ are affected
+Note that the Taylor coefficients stored in $icode f$$ are affected
 by this operation; see
 $cref/uses forward/cpp_sparse_hes/Uses Forward/$$ below.
 
@@ -1075,7 +1075,7 @@ We refer to its initial value,
 and its value after $icode%work%.clear()%$$, as empty.
 If it is empty, information is stored in $icode work$$.
 This can be used to reduce computation when
-a future call is for the same object $icode af$$,
+a future call is for the same object $icode f$$,
 and the same subset of the Hessian.
 If either of these values change, use $icode%work%.clear()%$$ to
 empty this structure.
@@ -1094,13 +1094,13 @@ not counting the zero order forward sweep,
 or combining multiple columns and rows into a single sweep.
 
 $head Uses Forward$$
-After each call to $cref cpp_a_fun_forward$$,
-the object $icode af$$ contains the corresponding Taylor coefficients
+After each call to $cref cpp_fun_forward$$,
+the object $icode f$$ contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
 After a call to $code sparse_hes$$
 the zero order coefficients correspond to
 $codei%
-	%af%.forward(0, %x%)
+	%f%.forward(0, %x%)
 %$$
 All the other forward mode coefficients are unspecified.
 
@@ -1134,7 +1134,7 @@ void sparse_hes_work::clear(void)
 	return;
 }
 // sparse_hes
-int a_fun::sparse_hes(
+int d_fun::sparse_hes(
 	sparse_rcv&                subset   ,
 	const std::vector<double>& x        ,
 	const std::vector<double>& r        ,

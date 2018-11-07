@@ -45,7 +45,7 @@ class  CPPAD_PY_LIB_PUBLIC a_double
 	// const version of pointer to this as an AD<double> object
 	const CppAD::AD<double>* ptr(void) const;
 	// ctor from CppAD::AD<double>
-	a_double(const CppAD::AD<double>* ad_ptr);
+	a_double(const CppAD::AD<double>* a_ptr);
 	// -----------------------------------------------------------------------
 	// public members in Swig interface
 	public:
