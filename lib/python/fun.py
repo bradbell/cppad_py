@@ -26,8 +26,8 @@
 # %$$
 #
 # $end
-# ----------------------------------------------------------------------------
 import cppad_py
+# ----------------------------------------------------------------------------
 class d_fun :
 	"""Python interface to CppAD::ADFun<double>"""
 	#
@@ -106,3 +106,30 @@ class d_fun :
 	# sparse_hes
 	def sparse_hes(self, subset, x, r, pattern, work) :
 		cppad_py.d_fun_sparse_hes(self.f, subset, x, r, pattern, work)
+# ----------------------------------------------------------------------------
+class a_fun :
+	"""Python interface to CppAD::ADFun<a_double>"""
+	#
+	def __init__(self, f) :
+		# type cppad_py_swig.a_fun
+		self.af = cppad_py.cppad_py_swig.a_fun(f.f)
+	#
+	# size_domain
+	def size_domain(self) :
+		return self.af.size_domain()
+	#
+	# size_range
+	def size_range(self) :
+		return self.af.size_range()
+	#
+	# size_var
+	def size_var(self) :
+		return self.af.size_var()
+	#
+	# size_op
+	def size_op(self) :
+		return self.af.size_op()
+	#
+	# size_order
+	def size_order(self) :
+		return self.af.size_order()

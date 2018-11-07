@@ -7,16 +7,23 @@
 # -----------------------------------------------------------------------------
 # $begin py_fun_ctor$$ $newlinech #$$
 # $spell
-#	vec
-#	const
 #	cppad_py
 #	numpy
+#	af
+#	Taylor
 # $$
 #
-# $section Stop Current Recording and Store in an d_fun Object$$
+# $section Stop Current Recording and Store Function Object$$
 #
 # $head Syntax$$
-# $icode%f% = cppad_py.d_fun(%ax%, %ay%)%$$
+#
+# $subhead d_fun$$
+# $icode%f% = cppad_py.d_fun(%ax%, %ay%)
+# %$$
+#
+# $subhead a_fun$$
+# $icode%af% = cppad_py.a_fun(%f%)
+# %$$
 #
 # $head ax$$
 # This argument must be the same as
@@ -33,13 +40,22 @@
 # to denote the number of dependent variables (the size of $icode ay$$).
 #
 # $head f$$
-# The result is a $code cppad_py.d_fun$$ object.
-# It has a representation for the $cref a_double$$ operations
+# This result is a function object that
+# has a representation for the floating point operations
 # that mapped the independent variables to the dependent variables.
-# These operations define the function that can be differentiated.
+# This object computes function and derivative values using
+# $code double$$
+#
+# $head af$$
+# This result is a function object that
+# has a representation for the same function as $icode f$$.
+# This object computes function and derivative values using
+# $code a_double$$
+# Initially, there are not Taylor coefficient stored in $icode af$$; i.e.,
+# $cref/af.size_order()/py_fun_property/size_order/$$ is zero.
 #
 # $head Example$$
-# All of the $code d_fun$$ examples use an $code d_fun$$ constructor.
+# All of the examples use these constructors.
 #
 # $end
 # -----------------------------------------------------------------------------

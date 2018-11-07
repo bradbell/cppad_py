@@ -20,7 +20,7 @@ bool fun_property_xam(void) {
 	//
 	// initialize return variable
 	bool ok = true;
-	//------------------------------------------------------------------------
+	// ----------------------------------------------------------------------
 	int n_ind = 1; // number of independent variables
 	int n_dep = 2; // number of dependent variables
 	int n_var = 1; // phantom variable at address 0
@@ -56,6 +56,7 @@ bool fun_property_xam(void) {
 	ok = ok && f.size_range()  == n_dep;
 	ok = ok && f.size_var()    == n_var;
 	ok = ok && f.size_op()     == n_op;
+	ok = ok && f.size_order()  == 0;
 	//
 	// compute zero order Taylor coefficients
 	vec_double y  = f.forward(0, x);
@@ -64,12 +65,13 @@ bool fun_property_xam(void) {
 	// create an a_fun object
 	a_fun af(f);
 	//
+	// ----------------------------------------------------------------------
 	// check af properties
 	ok = ok && af.size_domain() == n_ind;
 	ok = ok && af.size_range()  == n_dep;
 	ok = ok && af.size_var()    == n_var;
 	ok = ok && af.size_op()     == n_op;
-	//
+	ok = ok && af.size_order()  == 0;
 	//
 	return( ok  );
 }

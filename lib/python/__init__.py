@@ -23,6 +23,7 @@ from cppad_py.cppad_py_swig import vec_int
 
 # functions that require a python wraper
 # BEGIN_SORT_THIS_LINE_PLUS_1
+from cppad_py.fun             import a_fun
 from cppad_py.fun             import d_fun
 from cppad_py.fun_ctor        import d_fun_ctor
 from cppad_py.fun_forward     import d_fun_forward

@@ -109,12 +109,20 @@ $spell
 	af
 	const
 	cppad_py
+	Taylor
 $$
 
-$section Stop Current Recording and Store in an d_fun Object$$
+$section Stop Current Recording and Store Function Object$$
 
 $head Syntax$$
-$icode%f% = cppad_py::d_fun(%ax%, %ay%)%$$
+
+$subhead d_fun$$
+$icode%f% = cppad_py::d_fun(%ax%, %ay%)
+%$$
+
+$subhead a_fun$$
+$icode%af% = cppad_py::a_fun(%f%)
+%$$
 
 $head ax$$
 This argument has prototype
@@ -138,16 +146,26 @@ We use the notation $icode%m% = %ay%.size()%$$
 to denote the number of dependent variables.
 
 $head f$$
-The result has prototype
+This result has prototype
 $codei%
 	cppad_py::d_fun %f%
 %$$
-It has a representation for the $cref a_double$$ operations
+It has a representation for the floating point operations
 that mapped the independent variables to the dependent variables.
-These operations define the function that can be differentiated.
+This object computes function and derivative values using $code double$$.
+
+$head af$$
+This result has prototype
+$codei%
+	cppad_py::a_fun %af%
+%$$
+It has a representation of the same function as $icode f$$.
+This object computes function and derivative values using $code a_double$$.
+Initially, there are not Taylor coefficient stored in $icode af$$; i.e.,
+$cref/af.size_order()/cpp_fun_property/size_order/$$ is zero.
 
 $head Example$$
-All of the $code d_fun$$ examples use an $code d_fun$$ constructor.
+All of the examples use these constructors.
 
 $end
 */
@@ -201,54 +219,27 @@ $spell
 	Taylor
 $$
 
-$section Properties of an AD Function$$
+$section Properties of a Function Object$$
 
 $head Syntax$$
-$codei%a_fun %af%(%f%)
+$codei%a_fun %f%(%f%)
 %$$
-
-$subhead size_domain$$
 $icode%n% = %f%.size_domain()
 %$$
-$icode%n% = %af%.size_domain()
-%$$
-
-$subhead size_range$$
 $icode%m% = %f%.size_range()
 %$$
-$icode%m% = %af%.size_range()
-%$$
-
-$subhead size_var$$
 $icode%v% = %f%.size_var()
 %$$
-$icode%v% = %af%.size_var()
-%$$
-
-$subhead size_op$$
 $icode%p% = %f%.size_op()
 %$$
-$icode%p% = %af%.size_op()
-%$$
-
-$subhead size_order$$
 $icode%q% = %f%.size_order()
-%$$
-$icode%q% = %af%.size_order()
 %$$
 
 $head f$$
-This object has prototype
-$codei%
-	const d_fun %f%
-%$$
-
-$head af$$
-This object has prototype
-$codei%
-	const a_fun %af%
-%$$
-
+This is either a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
+$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
+and is $code const$$.
 
 $head size_domain$$
 The return value has prototype
@@ -297,6 +288,8 @@ These coefficients are computed by $cref cpp_fun_forward$$.
 This is different from the other function properties in that it can change
 after each call to $icode%f%.forward%$$; see
 $cref/size_order/cpp_fun_forward/p/size_order/$$ in the forward mode section.
+The initial value for this property, when the object $icode f$$
+or $icode af$$ is created, is zero.
 
 $children%
 	lib/example/cplusplus/fun_property_xam.cpp
