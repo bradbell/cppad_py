@@ -29,7 +29,7 @@ $childtable%lib/cplusplus/vector.omh%$$
 
 $end
 -------------------------------------------------------------------------------
-$begin d_fun$$
+$begin cpp_fun$$
 $spell
 	Cppad
 	Py
