@@ -552,19 +552,23 @@ After this call,
 $cref/f.size_order()/cpp_fun_property/size_order/$$ is $icode%p%+1%$$.
 
 $head xp$$
-This argument has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+this argument has prototype
 $codei%
-	const vec_double& %xp%
+	const vec_double&   %xp%
+	const vec_a_double& %xp%
 %$$
-and its size must be $icode n$$.
+respectively and its size must be $icode n$$.
 It specifies the $th p$$ order Taylor coefficients for $icode X(t)$$.
 
 $head yp$$
-The result has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+the result has prototype
 $codei%
-	vec_double %yp%
+	vec_double&   %yp%
+	vec_a_double& %yp%
 %$$
-and its size is $icode m$$.
+respectively and its size is $icode m$$.
 It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
 
 $children%

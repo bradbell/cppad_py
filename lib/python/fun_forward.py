@@ -69,12 +69,13 @@
 # $cref/f.size_order()/py_fun_property/size_order/$$ is $icode%p%+1%$$.
 #
 # $head xp$$
-# This argument is a numpy vector with $code float$$ elements
+# If $icode f$$ is a $code d_fun$$ ($code a_fun$$) object, $icode xp$$
+# is a numpy vector with $code float$$ ($code a_double$$) elements
 # and size $icode n$$.
 # It specifies the $th p$$ order Taylor coefficients for $icode X(t)$$.
 #
 # $head yp$$
-# The result is a numpy vector with $code float$$ elements
+# The result is a numpy vector with $code float$$ ($code a_double$$) elements
 # and size $icode m$$.
 # It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
 #
