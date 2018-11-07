@@ -133,3 +133,7 @@ class a_fun :
 	# size_order
 	def size_order(self) :
 		return self.af.size_order()
+	#
+	# forward
+	def forward(self, p, axp) :
+		return cppad_py.a_fun_forward(self.af, p, axp)

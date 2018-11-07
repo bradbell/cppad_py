@@ -30,8 +30,9 @@
 # \]$$
 #
 # $head f$$
-# This object must have been returned by a previous call to the python
-# $cref/d_fun/py_fun_ctor/$$ constructor.
+# This is either a
+# $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ or
+# $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ function object.
 # Note that its state is changed by this operation because
 # all the Taylor coefficient that it calculates for every
 # variable in recording are stored.
@@ -83,12 +84,11 @@
 # $head Example$$
 # $cref fun_forward_xam.py$$
 #
-#
 # $end
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy
-#
+# ----------------------------------------------------------------------------
 # This function is used by forward in d_fun class to implement syntax above
 def d_fun_forward(f, p, xp) :
 	"""
@@ -112,3 +112,27 @@ def d_fun_forward(f, p, xp) :
 	yp = cppad_py.utility.vec2numpy(v, m)
 	#
 	return yp
+# ----------------------------------------------------------------------------
+# This function is used by forward in a_fun class to implement syntax above
+def a_fun_forward(af, p, axp) :
+	"""
+	ayp = af.forward(p, axp)
+	given Taylor coefficients for X(t), compute Taylor coefficients for
+	Y(t) = f(X(t)).
+	"""
+	#
+	n = af.size_domain()
+	m = af.size_range()
+	#
+	# convert x -> u
+	dtype    = cppad_py.a_double
+	syntax   = 'af.forward(p, axp)'
+	au = cppad_py.utility.numpy2vec(axp, dtype, n, syntax, 'axp')
+	#
+	# call forward
+	av =  af.forward(p, au)
+	#
+	# convert av -> ayp
+	ayp = cppad_py.utility.vec2numpy(av, m)
+	#
+	return ayp

@@ -22,11 +22,13 @@ from cppad_py.cppad_py_swig import vec_int
 # END_SORT_THIS_LINE_MINUS_1
 
 # functions that require a python wraper
-# BEGIN_SORT_THIS_LINE_PLUS_1
 from cppad_py.fun             import a_fun
 from cppad_py.fun             import d_fun
-from cppad_py.fun_ctor        import d_fun_ctor
+#
+from cppad_py.fun_forward     import a_fun_forward
 from cppad_py.fun_forward     import d_fun_forward
+#
+from cppad_py.fun_ctor        import d_fun_ctor
 from cppad_py.fun_hessian     import d_fun_hessian
 from cppad_py.fun_jacobian    import d_fun_jacobian
 from cppad_py.fun_reverse     import d_fun_reverse
@@ -38,7 +40,6 @@ from cppad_py.sparse_jac      import d_fun_sparse_jac_rev
 from cppad_py.independent     import independent
 from cppad_py.sparse_rc       import sparse_rc
 from cppad_py.sparse_rcv      import sparse_rcv
-# END_SORT_THIS_LINE_MINUS_1
 
 # utilities
 import cppad_py.utility

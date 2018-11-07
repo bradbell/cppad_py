@@ -22,6 +22,13 @@ $$
 
 $section Cppad Py Changes During 2018$$
 
+$head 11-07$$
+$list number$$
+Advance to cppad-20181106 (must re-run $code bin/get_cppad.sh$$).
+$lnext
+$code a_fun$$ working with $cref py_fun_forward$$.
+$lend
+
 $head 11-05$$
 $list number$$
 $bold API Change$$:

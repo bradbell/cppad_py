@@ -132,6 +132,8 @@ class CPPAD_PY_LIB_PUBLIC a_fun
 	int size_var() const;
 	int size_op() const;
 	int size_order() const;
+	// forward
+	std::vector<a_double> forward(int p, const std::vector<a_double>& axp );
 };
 
 } // END_CPPAD_PY_NAMESPACE

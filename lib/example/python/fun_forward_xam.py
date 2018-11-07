@@ -65,6 +65,18 @@ def fun_forward_xam() :
 	# Y''(0) = 2.0 and p ! = 2
 	yp = f.forward(p, xp)
 	ok = ok and yp[0] == 1.0
+	# ---------------------------------------------------------------------
+	af = cppad_py.a_fun(f)
+	ok = ok and af.size_order() == 0
+	#
+	# zero order forward
+	p   = 0
+	axp = numpy.empty(n_ind, dtype=cppad_py.a_double)
+	axp[0] = 3.0
+	axp[1] = 2.0
+	ayp    = af.forward(p, axp)
+	ok     = ok and ayp[0] == cppad_py.a_double(6.0)
+	ok     = ok and af.size_order() == 1
 	#
 	return( ok )
 #

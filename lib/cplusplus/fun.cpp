@@ -63,11 +63,13 @@ $end
 std::vector<a_double> independent(const std::vector<double>& x)
 {	using CppAD::AD;
 	size_t n = x.size();
-	std::vector< AD<double> > ax(n);
+	CppAD::vector< AD<double> > ax(n);
 	for(size_t j = 0; j < n; j++)
 		ax[j] = x[j];
 	CppAD::Independent(ax);
-	std::vector<a_double> result = vec2a_double(ax);
+	std::vector<a_double> result(n);
+	for(size_t j = 0; j < n; j++)
+		result[j] = a_double( &ax[j] );
 	return result;
 }
 /*
@@ -506,10 +508,10 @@ $latex \[
 \]$$
 
 $head f$$
-This object has prototype
-$codei%
-	d_fun %f%
-%$$
+This is either a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
+$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
+and is $code const$$.
 Note that its state is changed by this operation because
 all the Taylor coefficient that it calculates for every
 variable in recording are stored.
@@ -575,6 +577,11 @@ $end
 */
 std::vector<double> d_fun::forward(int p, const std::vector<double>& xp)
 {	return ptr_->Forward(p, xp);
+}
+std::vector<a_double> a_fun::forward(int p, const std::vector<a_double>& axp)
+{	std::vector< CppAD::AD<double> > aup = vec2cppad_double(axp);
+	std::vector< CppAD::AD<double> > avp =  a_ptr_->Forward(p, aup);
+	return vec2a_double(avp);
 }
 /*
 -------------------------------------------------------------------------------
