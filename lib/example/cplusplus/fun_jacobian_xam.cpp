@@ -16,6 +16,7 @@ bool d_fun_jacobian_xam(void) {
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
 	using cppad_py::d_fun;
+	using cppad_py::a_fun;
 	//
 	// initialize return variable
 	bool ok = true;
@@ -51,6 +52,16 @@ bool d_fun_jacobian_xam(void) {
 	ok = ok && fp[0 * n_ind + 0] == x_1 * x_2 ;
 	ok = ok && fp[0 * n_ind + 1] == x_0 * x_2 ;
 	ok = ok && fp[0 * n_ind + 2] == x_0 * x_1 ;
+	//------------------------------------------------------------------------
+	a_fun af(f);
+	//
+	// compute the Jacobian f'(x) = ( x_1*x_2, x_0*x_2, x_0*x_1 )
+	vec_a_double afp = af.jacobian(ax);
+	//
+	// check Jacobian
+	ok = ok && afp[0 * n_ind + 0] == x_1 * x_2 ;
+	ok = ok && afp[0 * n_ind + 1] == x_0 * x_2 ;
+	ok = ok && afp[0 * n_ind + 2] == x_0 * x_1 ;
 	//
 	return( ok );
 }

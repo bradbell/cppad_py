@@ -55,14 +55,6 @@ class d_fun :
 	def size_order(self) :
 		return self.f.size_order()
 	#
-	# jacobian: see fun_jacobian.py
-	def jacobian(self, x) :
-		return cppad_py.d_fun_jacobian(self.f, x)
-	#
-	# hessian: see fun_hessian.py
-	def hessian(self, x, w) :
-		return cppad_py.d_fun_hessian(self.f, x, w)
-	#
 	# forward
 	def forward(self, p, xp) :
 		return cppad_py.d_fun_forward(self.f, p, xp)
@@ -70,6 +62,14 @@ class d_fun :
 	# reverse
 	def reverse(self, q, yq) :
 		return cppad_py.d_fun_reverse(self.f, q, yq)
+	#
+	# jacobian: see fun_jacobian.py
+	def jacobian(self, x) :
+		return cppad_py.d_fun_jacobian(self.f, x)
+	#
+	# hessian: see fun_hessian.py
+	def hessian(self, x, w) :
+		return cppad_py.d_fun_hessian(self.f, x, w)
 	#
 	# optimize
 	def optimize(self) :
@@ -141,3 +141,7 @@ class a_fun :
 	# reverse
 	def reverse(self, q, ayq) :
 		return cppad_py.a_fun_reverse(self.af, q, ayq)
+	#
+	# jacobian: see fun_jacobian.py
+	def jacobian(self, ax) :
+		return cppad_py.a_fun_jacobian(self.af, ax)

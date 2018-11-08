@@ -50,6 +50,16 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 	~d_fun(void);
 	// constrtuctor
 	d_fun( const std::vector<a_double>& ax, const std::vector<a_double>& ay );
+	// properties
+	int size_domain(void) const;
+	int size_range(void) const;
+	int size_var() const;
+	int size_op() const;
+	int size_order() const;
+	// forward
+	std::vector<double> forward(int p, const std::vector<double>& xp );
+	// reverse
+	std::vector<double> reverse(int q, const std::vector<double>& yq );
 	// jacobian
 	std::vector<double> jacobian(const std::vector<double>& x);
 	// hessian
@@ -57,18 +67,8 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 		const std::vector<double>& x ,
 		const std::vector<double>& w
 	);
-	// forward
-	std::vector<double> forward(int p, const std::vector<double>& xp );
-	// reverse
-	std::vector<double> reverse(int q, const std::vector<double>& yq );
 	// optimize
 	void optimize(void);
-	// properties
-	int size_domain(void) const;
-	int size_range(void) const;
-	int size_var() const;
-	int size_op() const;
-	int size_order() const;
 	// ------------------------------------------------------------------------
 	// public member in Swig interface that compute sparse results
 	// (these are implemented in sparse.cpp instead of fun.cpp).
@@ -136,6 +136,8 @@ class CPPAD_PY_LIB_PUBLIC a_fun
 	std::vector<a_double> forward(int p, const std::vector<a_double>& axp );
 	// reverse
 	std::vector<a_double> reverse(int q, const std::vector<a_double>& ayq );
+	// jacobian
+	std::vector<a_double> jacobian(const std::vector<a_double>& ax);
 };
 
 } // END_CPPAD_PY_NAMESPACE

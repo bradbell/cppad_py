@@ -349,11 +349,10 @@ $head Syntax$$
 $icode%J% = %f%.jacobian(%x%)%$$
 
 $head f$$
-This object has prototype
-$codei%
-	d_fun %f%
-%$$
-Note that its state is changed by this operation.
+This is either a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
+$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object
+and is $code const$$.
 The zero order
 $cref/Taylor coefficients/cpp_fun_forward/Taylor Coefficient/$$ in $icode f$$
 correspond to the value of $icode x$$.
@@ -367,20 +366,24 @@ and $icode m$$ is the size of $cref/ay/cpp_fun_ctor/ay/$$
 in to the constructor for $icode f$$.
 
 $head x$$
-This argument has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+this argument has prototype
 $codei%
-	const vec_double& %x%
+	const vec_double&   %x%
+	const vec_a_double& %x%
 %$$
 and its size must be $icode n$$.
 It specifies the argument value at we are computing the Jacobian
 $latex f'(x)$$.
 
 $head J$$
-The result has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+the result has prototype
 $codei%
-	vec_double %J%
+	vec_double   %J%
+	vec_a_double %J%
 %$$
-and its size is $icode%m%*%n%$$.
+respectively and its size is $icode%m%*%n%$$.
 For $icode i$$ between zero and $icode%m%-1%$$
 and $icode j$$ between zero and $icode%n%-1%$$,
 $latex \[
@@ -397,7 +400,16 @@ $cref fun_jacobian_xam.cpp$$
 $end
 */
 std::vector<double> d_fun::jacobian(const std::vector<double>& x)
-{	return ptr_->Jacobian(x);
+{	if( x.size() != ptr_->Domain() )
+		error_message("cppad_py::d_fun::jacobian x.size() error");
+	return ptr_->Jacobian(x);
+}
+std::vector<a_double> a_fun::jacobian(const std::vector<a_double>& ax)
+{	if( ax.size() != a_ptr_->Domain() )
+		error_message("cppad_py::a_fun::jacobian ax.size() error");
+	std::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
+	std::vector< CppAD::AD<double> > av = a_ptr_->Jacobian(au);
+	return vec2a_double(av);
 }
 /*
 ------------------------------------------------------------------------------
