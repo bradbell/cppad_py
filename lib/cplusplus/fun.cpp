@@ -239,7 +239,7 @@ $icode%q% = %f%.size_order()
 $head f$$
 This is either a
 $cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
-$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
+$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object
 and is $code const$$.
 
 $head size_domain$$
@@ -351,9 +351,8 @@ $icode%J% = %f%.jacobian(%x%)%$$
 $head f$$
 This is either a
 $cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
-$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object
-and is $code const$$.
-The zero order
+$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
+Upon return, the zero order
 $cref/Taylor coefficients/cpp_fun_forward/Taylor Coefficient/$$ in $icode f$$
 correspond to the value of $icode x$$.
 The other Taylor coefficients in $icode f$$ are unspecified.
@@ -523,7 +522,6 @@ $head f$$
 This is either a
 $cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
 $cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
-and is $code const$$.
 Note that its state is changed by this operation because
 all the Taylor coefficient that it calculates for every
 variable in recording are stored.
@@ -621,13 +619,11 @@ $head Syntax$$
 $icode%xq% = %f%.reverse(%q%, %yq%)%$$
 
 $head f$$
-This object has prototype
-$codei%
-	d_fun %f%
-%$$
-Note that it is effectively $code const$$,
-but some details that are not visible to the user may change,
-so it is not declared $code const$$.
+This is either a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
+$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object
+and is effectively $code const$$.
+(Some details that are not visible to the user may change.)
 
 $head Notation$$
 

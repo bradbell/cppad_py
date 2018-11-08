@@ -22,8 +22,8 @@
 # $head f$$
 # This is either a
 # $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ or
-# $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ function object.
-# Note that it is effectively constant; i.e., not changed.
+# $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ function object
+# and is effectively constant; i.e., not changed.
 #
 # $head Notation$$
 #

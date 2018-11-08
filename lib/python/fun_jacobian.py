@@ -23,7 +23,7 @@
 # $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ or
 # $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ function object.
 # Note that its state is changed by this operation.
-# The zero order
+# Upon return, the zero order
 # $cref/Taylor coefficients/py_fun_forward/Taylor Coefficient/$$
 # in $icode f$$ correspond to the value of $icode x$$.
 # The other Taylor coefficients in $icode f$$ are unspecified.
