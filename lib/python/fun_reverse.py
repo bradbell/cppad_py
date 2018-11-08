@@ -20,9 +20,10 @@
 # $icode%xq% = %f%.reverse(%q%, %yq%)%$$
 #
 # $head f$$
-# This object must have been returned by a previous call to the python
-# $cref/d_fun/py_fun_ctor/$$ constructor.
-# Note that it is effectively constant; i.e., not changed.
+# This is either a
+# $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ or
+# $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ function object
+# and is effectively constant; i.e., not changed.
 #
 # $head Notation$$
 #
@@ -63,7 +64,8 @@
 # $cref/f.size_order()/py_fun_property/size_order/$$.
 #
 # $head yq$$
-# This argument is a numpy matrix with $code float$$ elements,
+# If $icode f$$ is a $code d_fun$$ ($code a_fun$$) object, $icode yq$$
+# is a numpy vector with $code float$$ ($code a_double$$) elements,
 # $icode m$$ rows and $icode q$$ columns.
 # For $icode%0% <= %i% < %m%$$ and $icode%0% <= %k% < %q%$$,
 # $icode%yq%[ %i%, %k% ]%$$ is the partial derivative of
@@ -72,7 +74,7 @@
 # the partial derivative of $latex G(T)$$ w.r.t. $latex Y_i^{(k)} (t) / k !$$.
 #
 # $head xq$$
-# The result is a numpy matrix with $code float$$ elements,
+# The result is a numpy vector with $code float$$ ($code a_double$$) elements,
 # $icode n$$ rows and $icode q$$ columns.
 # For $icode%0% <= %j% < %n%$$ and $icode%0% <= %k% < %q%$$,
 # $icode%yq%[ %j%, %k% ]%$$ is the partial derivative of
@@ -91,7 +93,7 @@
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy
-#
+# -----------------------------------------------------------------------------
 # This function is used by reverse in d_fun class to implement syntax above
 def d_fun_reverse(f, q, yq) :
 	"""
@@ -116,3 +118,28 @@ def d_fun_reverse(f, q, yq) :
 	xq = cppad_py.utility.vec2numpy(v, n, q)
 	#
 	return xq
+# -----------------------------------------------------------------------------
+# This function is used by reverse in a_fun class to implement syntax above
+def a_fun_reverse(af, q, ayq) :
+	"""
+	axq = af.reverse(q, ayq)
+	given Taylor coefficients for X(t), compute Taylor coefficients for
+	Y(t) = f(X(t)).
+	"""
+	#
+	n = af.size_domain()
+	m = af.size_range()
+	#
+	# convert yq -> u
+	dtype    = cppad_py.a_double
+	shape    = (m, q)
+	syntax   = 'af.reverse(q, ayq)'
+	au = cppad_py.utility.numpy2vec(ayq, dtype, shape, syntax, 'ayq')
+	#
+	# call reverse
+	av =  af.reverse(q, au)
+	#
+	# convert v -> xp
+	axq = cppad_py.utility.vec2numpy(av, n, q)
+	#
+	return axq

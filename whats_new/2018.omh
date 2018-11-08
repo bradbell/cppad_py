@@ -22,6 +22,18 @@ $$
 
 $section Cppad Py Changes During 2018$$
 
+$head 11-07$$
+$list number$$
+Advance to cppad-20181106 (must re-run $code bin/get_cppad.sh$$).
+$lnext
+The $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ objects were added.
+This support all the operations that
+$cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ support all the
+$cref py_fun$$ operations with the exception of
+$cref/optimize/py_fun_optimize/$$.
+The $cref py_sparse$$ operations are not yet supported.
+$lend
+
 $head 11-05$$
 $list number$$
 $bold API Change$$:

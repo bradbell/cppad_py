@@ -58,6 +58,18 @@ def fun_hessian_xam() :
 	ok = ok and fpp[2, 0] == x[1]
 	ok = ok and fpp[2, 1] == x[0]
 	ok = ok and fpp[2, 2] == 0.0
+	# ---------------------------------------------------------------------
+	af = cppad_py.a_fun(f)
+	#
+	# compute and check Hessian
+	aw    = numpy.empty(n_dep, dtype=cppad_py.a_double)
+	aw[0] = w[0]
+	afpp  = af.hessian(ax, aw)
+	ok    = ok and afpp.shape == fpp.shape
+	(nr, nc) = fpp.shape
+	for i in range(nr) :
+		for j in range(nc) :
+			ok = ok and afpp[i, j] == cppad_py.a_double( fpp[i, j] )
 	#
 	return( ok )
 #

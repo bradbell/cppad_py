@@ -27,10 +27,10 @@ bool sparse_jac_xam(void) {
 	// number of dependent and independent variables
 	int n = 3;
 	// one
-	a_double aone = a_double(1.0);
+	a_double aone(1.0);
 	//
 	// create the independent variables ax
-	vec_double x = vec_double(n);
+	vec_double x(n);
 	for(int i = 0; i < n ; i++) {
 		x[i] = i + 2.0;
 	}
@@ -38,19 +38,19 @@ bool sparse_jac_xam(void) {
 	//
 	// create dependent variables ay with ay[i] = (j+1) * ax[j]
 	// where i = mod(j + 1, n)
-	vec_a_double ay = vec_a_double(n);
+	vec_a_double ay(n);
 	for(int j = 0; j < n ; j++) {
 		int i = j+1;
 		if( i >= n  ) {
 			i = i - n;
 		}
-		a_double aj = a_double(j);
+		a_double aj(j);
 		a_double ay_i = (aj + aone) * ax[j];
 		ay[i] = ay_i;
 	}
 	//
 	// define af corresponding to f(x)
-	d_fun f = d_fun(ax, ay);
+	d_fun f(ax, ay);
 	//
 	// sparsity pattern for identity matrix
 	sparse_rc pat_eye = sparse_rc();

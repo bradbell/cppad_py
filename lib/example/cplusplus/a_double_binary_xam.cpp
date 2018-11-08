@@ -17,8 +17,8 @@ bool a_double_binary_xam(void) {
 	// initialize return variable
 	bool ok = true;
 	//------------------------------------------------------------------------
-	a_double two = a_double(2.0);
-	a_double three = a_double(3.0);
+	a_double two(2.0);
+	a_double three(3.0);
 	//
 	a_double five = two + three;
 	a_double six = two * three;

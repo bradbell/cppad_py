@@ -20,8 +20,8 @@ fi
 # -----------------------------------------------------------------------------
 # CppAD version information
 remote_repo='https://github.com/coin-or/CppAD.git'
-cppad_version='20181105'
-hash_code='8616e3c7c6dea352b4c69d48b7f4c6ccd7a4ac4a'
+cppad_version='20181106'
+hash_code='1483ddd649bee948b59e58c6fe9fd7a651794511'
 # -----------------------------------------------------------------------------
 # settings in setup.py
 #

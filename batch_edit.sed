@@ -11,9 +11,12 @@
 # '
 # list of files and or directories that are moved to new names
 # move_paths='
+#	include/cppad/py/utility.hpp
+#	lib/cplusplus/utility.cpp
 # '
 # sed command that maps old file and or directory names to new file names
 # move_sed='
+#	s|utility|cppad_vec|
 # '
 # list of files that get edited by the extra_sed command
 # extra_files='
@@ -24,5 +27,6 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|cpp_d_|cpp_|g
-s|py_d_|py_|g
+s|utility.hpp|cppad_vec.hpp|
+s|utility.cpp|cppad_vec.cpp|
+s|UTILITY_HPP|CPPAD_VEC_HPP|

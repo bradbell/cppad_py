@@ -26,8 +26,8 @@ bool d_fun_optimize_xam(void) {
 	int n_op = 1;  // special operator at beginning
 	//
 	// dimension some vectors
-	vec_double x = vec_double(n_ind);
-	vec_a_double ay = vec_a_double(n_dep);
+	vec_double x(n_ind);
+	vec_a_double ay(n_dep);
 	//
 	// independent variables
 	x[0] = 1.0;
@@ -37,14 +37,14 @@ bool d_fun_optimize_xam(void) {
 	//
 	// accumulate summation
 	a_double ax0 = ax[0];
-	a_double csum = a_double(0.0);
+	a_double csum(0.0);
 	csum = ax0 + ax0 + ax0 + ax0;
 	n_var = n_var + 3; // one per + operator
 	n_op = n_op + 3;
 	//
 	// define f(x) = y_0 = csum
 	ay[0] = csum;
-	d_fun f = d_fun(ax, ay);
+	d_fun f(ax, ay);
 	n_op = n_op + 1; // speical operator at end
 	//
 	// check number of variables and operators

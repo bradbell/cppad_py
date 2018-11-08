@@ -57,6 +57,15 @@ def fun_property_xam() :
 	# compute zero order Taylor coefficients
 	y  = f.forward(0, x)
 	ok = ok and f.size_order() == 1
+	# ---------------------------------------------------------------------
+	af = cppad_py.a_fun(f)
+	#
+	# check af properties
+	ok = ok and af.size_domain() == n_ind
+	ok = ok and af.size_range()  == n_dep
+	ok = ok and af.size_var()    == n_var
+	ok = ok and af.size_op()     == n_op
+	ok = ok and af.size_order()  == 0
 	#
 	return( ok  )
 #

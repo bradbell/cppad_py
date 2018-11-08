@@ -7,7 +7,6 @@
 -------------------------------------------------------------------------------
 $begin py_utility$$
 $spell
-	cppad_py
 $$
 
 $section Python Utilities$$

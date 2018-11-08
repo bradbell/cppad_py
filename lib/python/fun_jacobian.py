@@ -19,10 +19,10 @@
 # $icode%J% = %f%.jacobian(%x%)%$$
 #
 # $head f$$
-# This object must have been returned by a previous call to the python
-# $cref/d_fun/py_fun_ctor/$$ constructor.
-# Note that its state is changed by this operation.
-# The zero order
+# This is either a
+# $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ or
+# $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ function object.
+# Upon return, the zero order
 # $cref/Taylor coefficients/py_fun_forward/Taylor Coefficient/$$
 # in $icode f$$ correspond to the value of $icode x$$.
 # The other Taylor coefficients in $icode f$$ are unspecified.
@@ -35,13 +35,14 @@
 # in to the constructor for $icode f$$.
 #
 # $head x$$
-# This argument is a numpy vector with $code float$$ elements
+# If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+# $icode x$$ is a numpy vector with $code float$$ ($code a_double$$) elements
 # and size $icode n$$.
 # It specifies the argument value at we are computing the Jacobian
 # $latex f'(x)$$.
 #
 # $head J$$
-# The result is a numpy matrix with $code float$$ elements,
+# The result is a numpy matrix with $code float$$ ($code a_double$$) elements,
 # $icode m$$ rows, and $code n$$ columns.
 # For $icode i$$ between zero and $icode%m%-1%$$
 # and $icode j$$ between zero and $icode%n%-1%$$,
@@ -59,12 +60,12 @@
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy
-#
+# ----------------------------------------------------------------------------
 # This function is used by jacobian in d_fun class to implement syntax above
 def d_fun_jacobian(f, x) :
 	"""
 	J = f.jacobian(x)
-	computes the Jacobian of the function corresponding to af
+	computes the Jacobian of the function corresponding to f
 	"""
 	#
 	n = f.size_domain()
@@ -82,3 +83,26 @@ def d_fun_jacobian(f, x) :
 	J = cppad_py.utility.vec2numpy(v, m, n)
 	#
 	return J
+# ----------------------------------------------------------------------------
+# This function is used by jacobian in a_fun class to implement syntax above
+def a_fun_jacobian(af, ax) :
+	"""
+	aJ = af.jacobian(ax)
+	computes the Jacobian of the function corresponding to af
+	"""
+	#
+	n = af.size_domain()
+	m = af.size_range()
+	#
+	# convert x -> u
+	dtype    = cppad_py.a_double
+	syntax   = 'af.jacobian(ax)'
+	au = cppad_py.utility.numpy2vec(ax, dtype, n, syntax, 'ax')
+	#
+	# call jacobian
+	av =  af.jacobian(au)
+	#
+	# convert v -> J
+	aJ = cppad_py.utility.vec2numpy(av, m, n)
+	#
+	return aJ

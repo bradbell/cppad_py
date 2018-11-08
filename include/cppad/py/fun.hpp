@@ -29,10 +29,15 @@ std::vector<a_double> independent(const std::vector<double>& x);
 // abort_recording
 CPPAD_PY_LIB_PUBLIC void abort_recording(void);
 
+// forward declare a_fun as a class
+class a_fun;
 
+// ---------------------------------------------------------------------------
 // Swig class that acts the same as CppAD::ADFun<double>
 class CPPAD_PY_LIB_PUBLIC d_fun
-{	// private members are not in Swig interface
+{	friend a_fun;
+	//
+	// private members are not in Swig interface
 	private:
 	// ADFun<double> representation
 	CppAD::ADFun<double, double>* ptr_;
@@ -45,6 +50,16 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 	~d_fun(void);
 	// constrtuctor
 	d_fun( const std::vector<a_double>& ax, const std::vector<a_double>& ay );
+	// properties
+	int size_domain(void) const;
+	int size_range(void) const;
+	int size_var() const;
+	int size_op() const;
+	int size_order() const;
+	// forward
+	std::vector<double> forward(int p, const std::vector<double>& xp );
+	// reverse
+	std::vector<double> reverse(int q, const std::vector<double>& yq );
 	// jacobian
 	std::vector<double> jacobian(const std::vector<double>& x);
 	// hessian
@@ -52,18 +67,8 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 		const std::vector<double>& x ,
 		const std::vector<double>& w
 	);
-	// forward
-	std::vector<double> forward(int p, const std::vector<double>& xp );
-	// reverse
-	std::vector<double> reverse(int q, const std::vector<double>& yq );
 	// optimize
 	void optimize(void);
-	// d_fun properties
-	int size_domain(void) const;
-	int size_range(void) const;
-	int size_var() const;
-	int size_op() const;
-	int size_order() const;
 	// ------------------------------------------------------------------------
 	// public member in Swig interface that compute sparse results
 	// (these are implemented in sparse.cpp instead of fun.cpp).
@@ -103,6 +108,40 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 		const std::vector<double>& r       ,
 		const sparse_rc&           pattern ,
 		sparse_hes_work&           work
+	);
+};
+
+// ---------------------------------------------------------------------------
+// Swig class that acts like CppAD::ADFun<a_double>
+class CPPAD_PY_LIB_PUBLIC a_fun
+{	//
+	// private members are not in Swig interface
+	private:
+	// ADFun<a_double, double> representation
+	CppAD::ADFun< CppAD::AD<double>, double>* a_ptr_;
+	// -----------------------------------------------------------------------
+	// public members are in Swig interface
+	public:
+	// constructor
+	a_fun(const d_fun& g);
+	// destructor
+	~a_fun(void);
+	// properties
+	int size_domain(void) const;
+	int size_range(void) const;
+	int size_var() const;
+	int size_op() const;
+	int size_order() const;
+	// forward
+	std::vector<a_double> forward(int p, const std::vector<a_double>& axp );
+	// reverse
+	std::vector<a_double> reverse(int q, const std::vector<a_double>& ayq );
+	// jacobian
+	std::vector<a_double> jacobian(const std::vector<a_double>& ax);
+	// hessian
+	std::vector<a_double> hessian(
+		const std::vector<a_double>& ax ,
+		const std::vector<a_double>& aw
 	);
 };
 

@@ -24,7 +24,7 @@ bool a_double_cond_assign_xam(void) {
 	int n_dep = 1;
 	//
 	// create ax (value of independent variables does not matter)
-	vec_double x = vec_double(n_ind);
+	vec_double x(n_ind);
 	x[0] = 0.0;
 	x[1] = 1.0;
 	x[2] = 2.0;
@@ -38,7 +38,7 @@ bool a_double_cond_assign_xam(void) {
 	a_double if_false = ax[3];
 	//
 	// assignment
-	a_double target = a_double();
+	a_double target;
 	target.cond_assign(
 		"<",
 		left,
@@ -48,9 +48,9 @@ bool a_double_cond_assign_xam(void) {
 	);
 	//
 	// f(x) = taget
-	vec_a_double ay = vec_a_double(n_dep);
+	vec_a_double ay(n_dep);
 	ay[0] = target;
-	d_fun f = d_fun(ax, ay);
+	d_fun f(ax, ay);
 	//
 	// assignment with different independent variable values
 	x[0] = 9.0; // left

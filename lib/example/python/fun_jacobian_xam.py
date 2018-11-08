@@ -47,6 +47,20 @@ def fun_jacobian_xam() :
 	ok = ok and fp[0, 0] == x_1 * x_2
 	ok = ok and fp[0, 1] == x_0 * x_2
 	ok = ok and fp[0, 2] == x_0 * x_1
+	# ---------------------------------------------------------------------
+	af = cppad_py.a_fun(f)
+	#
+	ax   = numpy.empty(n_ind, dtype=cppad_py.a_double)
+	for i in range( n_ind ) :
+		ax[i] = x[i]
+	#
+	# compute the Jacobian f'(x) = ( x_1*x_2, x_0*x_2, x_0*x_1 )
+	afp = af.jacobian(ax)
+	#
+	# check Jacobian
+	ok = ok and afp[0, 0] == cppad_py.a_double(x_1 * x_2)
+	ok = ok and afp[0, 1] == cppad_py.a_double(x_0 * x_2)
+	ok = ok and afp[0, 2] == cppad_py.a_double(x_0 * x_1)
 	#
 	return( ok )
 #

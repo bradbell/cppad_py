@@ -26,12 +26,12 @@
 # %$$
 #
 # $end
-# ----------------------------------------------------------------------------
 import cppad_py
+# ----------------------------------------------------------------------------
 class d_fun :
 	"""Python interface to CppAD::ADFun<double>"""
 	#
-	# __init__: see fun_ctor.py
+	# __init__
 	def __init__(self, ax, ay) :
 		self.f = cppad_py.d_fun_ctor(ax, ay)
 	#
@@ -55,14 +55,6 @@ class d_fun :
 	def size_order(self) :
 		return self.f.size_order()
 	#
-	# jacobian: see fun_jacobian.py
-	def jacobian(self, x) :
-		return cppad_py.d_fun_jacobian(self.f, x)
-	#
-	# hessian: see fun_hessian.py
-	def hessian(self, x, w) :
-		return cppad_py.d_fun_hessian(self.f, x, w)
-	#
 	# forward
 	def forward(self, p, xp) :
 		return cppad_py.d_fun_forward(self.f, p, xp)
@@ -70,6 +62,14 @@ class d_fun :
 	# reverse
 	def reverse(self, q, yq) :
 		return cppad_py.d_fun_reverse(self.f, q, yq)
+	#
+	# jacobian
+	def jacobian(self, x) :
+		return cppad_py.d_fun_jacobian(self.f, x)
+	#
+	# hessian
+	def hessian(self, x, w) :
+		return cppad_py.d_fun_hessian(self.f, x, w)
 	#
 	# optimize
 	def optimize(self) :
@@ -106,3 +106,46 @@ class d_fun :
 	# sparse_hes
 	def sparse_hes(self, subset, x, r, pattern, work) :
 		cppad_py.d_fun_sparse_hes(self.f, subset, x, r, pattern, work)
+# ----------------------------------------------------------------------------
+class a_fun :
+	"""Python interface to CppAD::ADFun<a_double>"""
+	#
+	def __init__(self, f) :
+		# type cppad_py_swig.a_fun
+		self.af = cppad_py.cppad_py_swig.a_fun(f.f)
+	#
+	# size_domain
+	def size_domain(self) :
+		return self.af.size_domain()
+	#
+	# size_range
+	def size_range(self) :
+		return self.af.size_range()
+	#
+	# size_var
+	def size_var(self) :
+		return self.af.size_var()
+	#
+	# size_op
+	def size_op(self) :
+		return self.af.size_op()
+	#
+	# size_order
+	def size_order(self) :
+		return self.af.size_order()
+	#
+	# forward
+	def forward(self, p, axp) :
+		return cppad_py.a_fun_forward(self.af, p, axp)
+	#
+	# reverse
+	def reverse(self, q, ayq) :
+		return cppad_py.a_fun_reverse(self.af, q, ayq)
+	#
+	# jacobian
+	def jacobian(self, ax) :
+		return cppad_py.a_fun_jacobian(self.af, ax)
+	#
+	# hessian
+	def hessian(self, ax, aw) :
+		return cppad_py.a_fun_hessian(self.af, ax, aw)

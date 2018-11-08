@@ -8,6 +8,7 @@
 # include <cppad/cppad.hpp>
 # include <cppad/py/fun.hpp>
 # include <cppad/py/error.hpp>
+# include <cppad/py/cppad_vec.hpp>
 
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
@@ -109,12 +110,20 @@ $spell
 	af
 	const
 	cppad_py
+	Taylor
 $$
 
-$section Stop Current Recording and Store in an d_fun Object$$
+$section Stop Current Recording and Store Function Object$$
 
 $head Syntax$$
-$icode%f% = cppad_py::d_fun(%ax%, %ay%)%$$
+
+$subhead d_fun$$
+$icode%f% = cppad_py::d_fun(%ax%, %ay%)
+%$$
+
+$subhead a_fun$$
+$icode%af% = cppad_py::a_fun(%f%)
+%$$
 
 $head ax$$
 This argument has prototype
@@ -138,16 +147,26 @@ We use the notation $icode%m% = %ay%.size()%$$
 to denote the number of dependent variables.
 
 $head f$$
-The result has prototype
+This result has prototype
 $codei%
 	cppad_py::d_fun %f%
 %$$
-It has a representation for the $cref a_double$$ operations
+It has a representation for the floating point operations
 that mapped the independent variables to the dependent variables.
-These operations define the function that can be differentiated.
+This object computes function and derivative values using $code double$$.
+
+$head af$$
+This result has prototype
+$codei%
+	cppad_py::a_fun %af%
+%$$
+It has a representation of the same function as $icode f$$.
+This object computes function and derivative values using $code a_double$$.
+Initially, there are not Taylor coefficient stored in $icode af$$; i.e.,
+$cref/af.size_order()/cpp_fun_property/size_order/$$ is zero.
 
 $head Example$$
-All of the $code d_fun$$ examples use an $code d_fun$$ constructor.
+All of the examples use these constructors.
 
 $end
 */
@@ -177,6 +196,18 @@ d_fun::d_fun(
 	// store the recording
 	ptr_->Dependent(ax_copy, ay_copy);
 }
+// --------------------------------------------------------------------------
+// constructor
+a_fun::a_fun(const d_fun& f)
+{	a_ptr_ = new CppAD::ADFun< CppAD::AD<double>, double>();
+	CPPAD_PY_ASSERT_UNKNOWN( a_ptr_ != CPPAD_NULL );
+	*a_ptr_ = f.ptr_->base2ad();
+}
+// destructor
+a_fun::~a_fun(void)
+{	CPPAD_PY_ASSERT_UNKNOWN( a_ptr_ != CPPAD_NULL );
+	delete a_ptr_;
+}
 /*
 ------------------------------------------------------------------------------
 $begin cpp_fun_property$$
@@ -189,9 +220,11 @@ $spell
 	Taylor
 $$
 
-$section Properties of an AD Function$$
+$section Properties of a Function Object$$
 
 $head Syntax$$
+$codei%a_fun %f%(%f%)
+%$$
 $icode%n% = %f%.size_domain()
 %$$
 $icode%m% = %f%.size_range()
@@ -204,10 +237,10 @@ $icode%q% = %f%.size_order()
 %$$
 
 $head f$$
-This object has prototype
-$codei%
-	const d_fun %f%
-%$$
+This is either a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
+$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object
+and is $code const$$.
 
 $head size_domain$$
 The return value has prototype
@@ -256,6 +289,8 @@ These coefficients are computed by $cref cpp_fun_forward$$.
 This is different from the other function properties in that it can change
 after each call to $icode%f%.forward%$$; see
 $cref/size_order/cpp_fun_forward/p/size_order/$$ in the forward mode section.
+The initial value for this property, when the object $icode f$$
+or $icode af$$ is created, is zero.
 
 $children%
 	lib/example/cplusplus/fun_property_xam.cpp
@@ -268,18 +303,32 @@ $end
 // size_domain
 int d_fun::size_domain(void) const
 {	return ptr_->Domain(); }
+int a_fun::size_domain(void) const
+{	return a_ptr_->Domain(); }
+//
 // size_range
 int d_fun::size_range(void) const
 {	return ptr_->Range(); }
+int a_fun::size_range(void) const
+{	return a_ptr_->Range(); }
+//
 // size_var
 int d_fun::size_var(void) const
 {	return ptr_->size_var(); }
+int a_fun::size_var(void) const
+{	return a_ptr_->size_var(); }
+//
 // size_op
 int d_fun::size_op(void) const
 {	return ptr_->size_op(); }
+int a_fun::size_op(void) const
+{	return a_ptr_->size_op(); }
+//
 // size_order
 int d_fun::size_order(void) const
 {	return ptr_->size_order(); }
+int a_fun::size_order(void) const
+{	return a_ptr_->size_order(); }
 /*
 ------------------------------------------------------------------------------
 $begin cpp_fun_jacobian$$
@@ -300,12 +349,10 @@ $head Syntax$$
 $icode%J% = %f%.jacobian(%x%)%$$
 
 $head f$$
-This object has prototype
-$codei%
-	d_fun %f%
-%$$
-Note that its state is changed by this operation.
-The zero order
+This is either a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
+$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
+Upon return, the zero order
 $cref/Taylor coefficients/cpp_fun_forward/Taylor Coefficient/$$ in $icode f$$
 correspond to the value of $icode x$$.
 The other Taylor coefficients in $icode f$$ are unspecified.
@@ -318,20 +365,24 @@ and $icode m$$ is the size of $cref/ay/cpp_fun_ctor/ay/$$
 in to the constructor for $icode f$$.
 
 $head x$$
-This argument has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+this argument has prototype
 $codei%
-	const vec_double& %x%
+	const vec_double&   %x%
+	const vec_a_double& %x%
 %$$
 and its size must be $icode n$$.
 It specifies the argument value at we are computing the Jacobian
 $latex f'(x)$$.
 
 $head J$$
-The result has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+the result has prototype
 $codei%
-	vec_double %J%
+	vec_double   %J%
+	vec_a_double %J%
 %$$
-and its size is $icode%m%*%n%$$.
+respectively and its size is $icode%m%*%n%$$.
 For $icode i$$ between zero and $icode%m%-1%$$
 and $icode j$$ between zero and $icode%n%-1%$$,
 $latex \[
@@ -348,7 +399,16 @@ $cref fun_jacobian_xam.cpp$$
 $end
 */
 std::vector<double> d_fun::jacobian(const std::vector<double>& x)
-{	return ptr_->Jacobian(x);
+{	if( x.size() != ptr_->Domain() )
+		error_message("cppad_py::d_fun::jacobian x.size() error");
+	return ptr_->Jacobian(x);
+}
+std::vector<a_double> a_fun::jacobian(const std::vector<a_double>& ax)
+{	if( ax.size() != a_ptr_->Domain() )
+		error_message("cppad_py::a_fun::jacobian ax.size() error");
+	std::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
+	std::vector< CppAD::AD<double> > av = a_ptr_->Jacobian(au);
+	return vec2a_double(av);
 }
 /*
 ------------------------------------------------------------------------------
@@ -366,12 +426,10 @@ $head Syntax$$
 $icode%H% = %f%.hessian(%x%, %w%)%$$
 
 $head f$$
-This object has prototype
-$codei%
-	d_fun %f%
-%$$
-Note that its state is changed by this operation.
-The zero order
+This is either a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
+$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
+Upon return, the zero order
 $cref/Taylor coefficients/cpp_fun_forward/Taylor Coefficient/$$ in $icode f$$
 correspond to the value of $icode x$$.
 The other Taylor coefficients in $icode f$$ are unspecified.
@@ -391,26 +449,32 @@ $latex \[
 \] $$
 
 $head x$$
-This argument has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+this argument has prototype
 $codei%
-	const vec_double& %x%
+	const vec_double&   %x%
+	const vec_a_double& %x%
 %$$
 and its size must be $icode n$$.
 It specifies the argument value at we are computing the Hessian
 $latex g^{(2)}(x)$$.
 
 $head w$$
-This argument has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+this argument has prototype
 $codei%
-	const vec_double& %w%
+	const vec_double&   %w%
+	const vec_a_double& %w%
 %$$
 and its size must be $icode m$$.
 It specifies the vector $icode w$$ in the definition of $latex g(x)$$ above.
 
 $head H$$
-The result has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+the result has prototype
 $codei%
-	vec_double %H%
+	vec_double   %H%
+	vec_a_double %H%
 %$$
 and its size is $icode%n%*%n%$$.
 For $icode i$$ between zero and $icode%n%-1%$$
@@ -430,7 +494,24 @@ $end
 std::vector<double> d_fun::hessian(
 	const std::vector<double>& x  ,
 	const std::vector<double>& w  )
-{	return ptr_->Hessian(x, w);
+{	if( x.size() != ptr_->Domain() )
+		error_message("cppad_py::d_fun::hessian:: x.size() error");
+	if( w.size() != ptr_->Range() )
+		error_message("cppad_py::d_fun::hessian:: w.size() error");
+	return ptr_->Hessian(x, w);
+}
+std::vector<a_double> a_fun::hessian(
+	const std::vector<a_double>& ax  ,
+	const std::vector<a_double>& aw  )
+{	if( ax.size() != a_ptr_->Domain() )
+		error_message("cppad_py::d_fun::hessian:: x.size() error");
+	if( aw.size() != a_ptr_->Range() )
+		error_message("cppad_py::d_fun::hessian:: w.size() error");
+	//
+	std::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
+	std::vector< CppAD::AD<double> > av = vec2cppad_double(aw);
+	std::vector< CppAD::AD<double> > az = a_ptr_->Hessian(au, av);
+	return vec2a_double(az);
 }
 /*
 ------------------------------------------------------------------------------
@@ -459,10 +540,9 @@ $latex \[
 \]$$
 
 $head f$$
-This object has prototype
-$codei%
-	d_fun %f%
-%$$
+This is either a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
+$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
 Note that its state is changed by this operation because
 all the Taylor coefficient that it calculates for every
 variable in recording are stored.
@@ -503,19 +583,23 @@ After this call,
 $cref/f.size_order()/cpp_fun_property/size_order/$$ is $icode%p%+1%$$.
 
 $head xp$$
-This argument has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+this argument has prototype
 $codei%
-	const vec_double& %xp%
+	const vec_double&   %xp%
+	const vec_a_double& %xp%
 %$$
-and its size must be $icode n$$.
+respectively and its size must be $icode n$$.
 It specifies the $th p$$ order Taylor coefficients for $icode X(t)$$.
 
 $head yp$$
-The result has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+the result has prototype
 $codei%
-	vec_double %yp%
+	vec_double&   %yp%
+	vec_a_double& %yp%
 %$$
-and its size is $icode m$$.
+respectively and its size is $icode m$$.
 It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
 
 $children%
@@ -527,7 +611,16 @@ $cref fun_forward_xam.cpp$$
 $end
 */
 std::vector<double> d_fun::forward(int p, const std::vector<double>& xp)
-{	return ptr_->Forward(p, xp);
+{	if( xp.size() != ptr_->Domain() )
+		error_message("cppad_py::d_fun::forward xp.size() error");
+	return ptr_->Forward(p, xp);
+}
+std::vector<a_double> a_fun::forward(int p, const std::vector<a_double>& axp)
+{	if( axp.size() != a_ptr_->Domain() )
+		error_message("cppad_py::a_fun::forward axp.size() error");
+	std::vector< CppAD::AD<double> > aup = vec2cppad_double(axp);
+	std::vector< CppAD::AD<double> > avp =  a_ptr_->Forward(p, aup);
+	return vec2a_double(avp);
 }
 /*
 -------------------------------------------------------------------------------
@@ -547,13 +640,11 @@ $head Syntax$$
 $icode%xq% = %f%.reverse(%q%, %yq%)%$$
 
 $head f$$
-This object has prototype
-$codei%
-	d_fun %f%
-%$$
-Note that it is effectively $code const$$,
-but some details that are not visible to the user may change,
-so it is not declared $code const$$.
+This is either a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
+$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object
+and is effectively $code const$$.
+(Some details that are not visible to the user may change.)
 
 $head Notation$$
 
@@ -599,9 +690,11 @@ the number of Taylor coefficient stored in $icode f$$; i.e.,
 $cref/f.size_order()/cpp_fun_property/size_order/$$.
 
 $head yq$$
-This argument has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+this argument has prototype
 $codei%
-	const vec_double& %yq%
+	const vec_double&   %yq%
+	const vec_a_double& %yq%
 %$$
 and its size must be $icode%m%*%q%$$.
 For $icode%0% <= %i% < %m%$$ and $icode%0% <= %k% < %q%$$,
@@ -611,11 +704,13 @@ for the $th i$$ component function; i.e.,
 the partial derivative of $latex G(T)$$ w.r.t. $latex Y_i^{(k)} (t) / k !$$.
 
 $head xq$$
-The result has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+the result has prototype
 $codei%
-	vec_double %xq%
+	const vec_double&   %xq%
+	const vec_a_double& %xq%
 %$$
-and its size is $icode%n%*%q%$$.
+respectively and its size is $icode%n%*%q%$$.
 For $icode%0% <= %j% < %n%$$ and $icode%0% <= %k% < %q%$$,
 $icode%yq%[ %j% * %q% + %k% ]%$$ is the partial derivative of
 $latex G(T(S))$$ with respect to the $th k$$ order Taylor coefficient
@@ -635,6 +730,13 @@ std::vector<double> d_fun::reverse(int q, const std::vector<double>& yq)
 {	if( yq.size() != q * ptr_->Range() )
 		error_message("cppad_py::d_fun::reverse yq.size() error");
 	return ptr_->Reverse(q, yq);
+}
+std::vector<a_double> a_fun::reverse(int q, const std::vector<a_double>& ayq)
+{	if( ayq.size() != q * a_ptr_->Range() )
+		error_message("cppad_py::a_fun::reverse yq.size() error");
+	std::vector< CppAD::AD<double> > avq = vec2cppad_double(ayq);
+	std::vector< CppAD::AD<double> > auq =  a_ptr_->Reverse(q, avq);
+	return vec2a_double(auq);
 }
 /*
 ------------------------------------------------------------------------------
@@ -656,10 +758,10 @@ On the other hand, the optimization may take a significant amount
 of time and memory.
 
 $head f$$
-This object has prototype
-$codei%
-	d_fun %f%
-%$$
+This object is a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$.
+Optimizing this $icode f$$ also optimizes the
+corresponding $cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$.
 
 $children%
 	lib/example/cplusplus/fun_optimize_xam.cpp
@@ -672,4 +774,6 @@ $end
 void d_fun::optimize(void)
 {	ptr_->optimize(); }
 // ----------------------------------------------------------------------------
+
+
 } // END_CPPAD_PY_NAMESPACE

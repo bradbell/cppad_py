@@ -24,8 +24,8 @@ bool vector_size_xam(void) {
 	// create vectors
 	vec_bool bv = vec_bool();
 	vec_int iv = vec_int(1);
-	vec_double dv = vec_double(2);
-	vec_a_double av = vec_a_double(3);
+	vec_double dv(2);
+	vec_a_double av(3);
 	//
 	// check size of vectors
 	ok = ok && bv.size() == 0 ;

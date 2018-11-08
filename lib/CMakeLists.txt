@@ -21,6 +21,7 @@ ADD_LIBRARY(cppad_py_lib SHARED
 	cplusplus/a_double.cpp
 	cplusplus/fun.cpp
 	cplusplus/sparse.cpp
+	cplusplus/cppad_vec.cpp
 	cplusplus/error.cpp
 )
 # The file cppad_py_lib_export.h, in the current binary directory, will

@@ -12,7 +12,7 @@ $spell
 	dep
 $$
 
-$section Properties of an AD Function$$
+$section Properties of a Function Object$$
 $spell
 	vec
 	af
@@ -35,8 +35,10 @@ $icode%q% = %f%.size_order()
 %$$
 
 $head f$$
-This object must have been returned by a previous call to the python
-$cref/d_fun/py_fun_ctor/$$ constructor.
+This is either a
+$cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ or
+$cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ function object
+and is constant; i.e., not changed.
 
 $head size_domain$$
 The return value $icode n$$ is an $code int$$

@@ -27,7 +27,7 @@ bool sparse_hes_pattern_xam(void) {
 	int n = 3;
 	//
 	// create the independent variables ax
-	vec_double x = vec_double(n);
+	vec_double x(n);
 	for(int i = 0; i < n ; i++) {
 		x[i] = i + 2.0;
 	}
@@ -35,7 +35,7 @@ bool sparse_hes_pattern_xam(void) {
 	//
 	// create dependent variables ay with ay[i] = ax[j] * ax[i]
 	// where i = mod(j + 1, n)
-	vec_a_double ay = vec_a_double(n);
+	vec_a_double ay(n);
 	for(int j = 0; j < n ; j++) {
 		int i = j+1;
 		if( i >= n  ) {
@@ -46,7 +46,7 @@ bool sparse_hes_pattern_xam(void) {
 	}
 	//
 	// define af corresponding to f(x)
-	d_fun f = d_fun(ax, ay);
+	d_fun f(ax, ay);
 	//
 	// Set select_d (domain) to all true, initial select_r (range) to all false
 	vec_bool select_d = vec_bool(n);
