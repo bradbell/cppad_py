@@ -23,8 +23,10 @@ On the other hand, the optimization may take a significant amount
 of time and memory.
 
 $head f$$
-This object must have been returned by a previous call to the python
-$cref/d_fun/py_fun_ctor/$$ constructor.
+This is a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$.
+Optimizing this $icode f$$ also optimizes the
+corresponding $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$.
 
 $children%
 	lib/example/python/fun_optimize_xam.py

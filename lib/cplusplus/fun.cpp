@@ -758,10 +758,10 @@ On the other hand, the optimization may take a significant amount
 of time and memory.
 
 $head f$$
-This object has prototype
-$codei%
-	d_fun %f%
-%$$
+This object is a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$.
+Optimizing this $icode f$$ also optimizes the
+corresponding $cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$.
 
 $children%
 	lib/example/cplusplus/fun_optimize_xam.cpp
