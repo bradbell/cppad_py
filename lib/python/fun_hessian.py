@@ -19,10 +19,10 @@
 # $icode%H% = %f%.hessian(%x%, %w%)%$$
 #
 # $head f$$
-# This object must have been returned by a previous call to the python
-# $cref/d_fun/py_fun_ctor/$$ constructor.
-# Note that its state is changed by this operation.
-# The zero order
+# This is either a
+# $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ or
+# $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ function object.
+# Upon return, the zero order
 # $cref/Taylor coefficients/py_fun_forward/Taylor Coefficient/$$
 # in $icode f$$ correspond to the value of $icode x$$.
 # The other Taylor coefficients in $icode f$$ are unspecified.
@@ -42,25 +42,26 @@
 # \] $$
 #
 # $head x$$
-# This argument is a numpy vector with $code float$$ elements
+# If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+# $icode x$$ is a numpy vector with $code float$$ ($code a_double$$) elements
 # and size $icode n$$.
 # It specifies the argument value at we are computing the Hessian
 # $latex g^{(2)}(x)$$.
 #
 # $head w$$
-# This argument is a numpy vector with $code float$$ elements
+# If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+# $icode w$$ is a numpy vector with $code float$$ ($code a_double$$) elements
 # and size $icode m$$.
 # It specifies the vector $icode w$$ in the definition of $latex g(x)$$ above.
 #
 # $head H$$
-# The result is a numpy matrix with $code float$$ elements,
+# The result is a numpy matrix with $code float$$ ($code a_double$$) elements,
 # $icode n$$ rows and $code n$$ columns.
 # For $icode i$$ between zero and $icode%n%-1%$$
 # and $icode j$$ between zero and $icode%n%-1%$$,
 # $latex \[
 #	H [ i, j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
 # \] $$
-#
 #
 # $children%
 #	lib/example/python/fun_hessian_xam.py
@@ -73,14 +74,13 @@
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy
-#
+# -----------------------------------------------------------------------------
 # This function is used by hessian in d_fun class to implement syntax above
 def d_fun_hessian(f, x, w) :
 	"""
 	H = f.hessian(x, w)
-	computes Hessian of a function corresponding a sum of the components of af
+	computes Hessian of a function corresponding a sum of the components of f
 	"""
-	from cppad_py import vec_double as vec_double
 	#
 	n = f.size_domain()
 	m = f.size_range()
@@ -97,3 +97,26 @@ def d_fun_hessian(f, x, w) :
 	H = cppad_py.utility.vec2numpy(z, n, n)
 	#
 	return H
+# -----------------------------------------------------------------------------
+# This function is used by hessian in d_fun class to implement syntax above
+def a_fun_hessian(af, ax, aw) :
+	"""
+	aH = af.hessian(ax, aw)
+	computes Hessian of a function corresponding a sum of the components of af
+	"""
+	#
+	n = af.size_domain()
+	m = af.size_range()
+	#
+	# convert x -> u, w -> v
+	dtype    = cppad_py.a_double
+	syntax   = 'f.hessian(x, w)'
+	au = cppad_py.utility.numpy2vec(ax, dtype, n, syntax, 'ax')
+	av = cppad_py.utility.numpy2vec(aw, dtype, m, syntax, 'aw')
+	#
+	# call hessian
+	az =  af.hessian(au, av)
+	#
+	aH = cppad_py.utility.vec2numpy(az, n, n)
+	#
+	return aH

@@ -31,7 +31,7 @@ import cppad_py
 class d_fun :
 	"""Python interface to CppAD::ADFun<double>"""
 	#
-	# __init__: see fun_ctor.py
+	# __init__
 	def __init__(self, ax, ay) :
 		self.f = cppad_py.d_fun_ctor(ax, ay)
 	#
@@ -63,11 +63,11 @@ class d_fun :
 	def reverse(self, q, yq) :
 		return cppad_py.d_fun_reverse(self.f, q, yq)
 	#
-	# jacobian: see fun_jacobian.py
+	# jacobian
 	def jacobian(self, x) :
 		return cppad_py.d_fun_jacobian(self.f, x)
 	#
-	# hessian: see fun_hessian.py
+	# hessian
 	def hessian(self, x, w) :
 		return cppad_py.d_fun_hessian(self.f, x, w)
 	#
@@ -142,6 +142,10 @@ class a_fun :
 	def reverse(self, q, ayq) :
 		return cppad_py.a_fun_reverse(self.af, q, ayq)
 	#
-	# jacobian: see fun_jacobian.py
+	# jacobian
 	def jacobian(self, ax) :
 		return cppad_py.a_fun_jacobian(self.af, ax)
+	#
+	# hessian
+	def hessian(self, ax, aw) :
+		return cppad_py.a_fun_hessian(self.af, ax, aw)

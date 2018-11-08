@@ -426,12 +426,10 @@ $head Syntax$$
 $icode%H% = %f%.hessian(%x%, %w%)%$$
 
 $head f$$
-This object has prototype
-$codei%
-	d_fun %f%
-%$$
-Note that its state is changed by this operation.
-The zero order
+This is either a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
+$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
+Upon return, the zero order
 $cref/Taylor coefficients/cpp_fun_forward/Taylor Coefficient/$$ in $icode f$$
 correspond to the value of $icode x$$.
 The other Taylor coefficients in $icode f$$ are unspecified.
@@ -451,26 +449,32 @@ $latex \[
 \] $$
 
 $head x$$
-This argument has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+this argument has prototype
 $codei%
-	const vec_double& %x%
+	const vec_double&   %x%
+	const vec_a_double& %x%
 %$$
 and its size must be $icode n$$.
 It specifies the argument value at we are computing the Hessian
 $latex g^{(2)}(x)$$.
 
 $head w$$
-This argument has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+this argument has prototype
 $codei%
-	const vec_double& %w%
+	const vec_double&   %w%
+	const vec_a_double& %w%
 %$$
 and its size must be $icode m$$.
 It specifies the vector $icode w$$ in the definition of $latex g(x)$$ above.
 
 $head H$$
-The result has prototype
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+the result has prototype
 $codei%
-	vec_double %H%
+	vec_double   %H%
+	vec_a_double %H%
 %$$
 and its size is $icode%n%*%n%$$.
 For $icode i$$ between zero and $icode%n%-1%$$
@@ -490,7 +494,24 @@ $end
 std::vector<double> d_fun::hessian(
 	const std::vector<double>& x  ,
 	const std::vector<double>& w  )
-{	return ptr_->Hessian(x, w);
+{	if( x.size() != ptr_->Domain() )
+		error_message("cppad_py::d_fun::hessian:: x.size() error");
+	if( w.size() != ptr_->Range() )
+		error_message("cppad_py::d_fun::hessian:: w.size() error");
+	return ptr_->Hessian(x, w);
+}
+std::vector<a_double> a_fun::hessian(
+	const std::vector<a_double>& ax  ,
+	const std::vector<a_double>& aw  )
+{	if( ax.size() != a_ptr_->Domain() )
+		error_message("cppad_py::d_fun::hessian:: x.size() error");
+	if( aw.size() != a_ptr_->Range() )
+		error_message("cppad_py::d_fun::hessian:: w.size() error");
+	//
+	std::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
+	std::vector< CppAD::AD<double> > av = vec2cppad_double(aw);
+	std::vector< CppAD::AD<double> > az = a_ptr_->Hessian(au, av);
+	return vec2a_double(az);
 }
 /*
 ------------------------------------------------------------------------------

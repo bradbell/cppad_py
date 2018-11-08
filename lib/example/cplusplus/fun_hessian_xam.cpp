@@ -16,10 +16,11 @@ bool d_fun_hessian_xam(void) {
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
 	using cppad_py::d_fun;
+	using cppad_py::a_fun;
 	//
 	// initialize return variable
 	bool ok = true;
-	//------------------------------------------------------------------------
+	// -----------------------------------------------------------------------
 	// number of dependent and independent variables
 	int n_dep = 1;
 	int n_ind = 3;
@@ -62,6 +63,16 @@ bool d_fun_hessian_xam(void) {
 	ok = ok && fpp[2 * n_ind + 0] == x[1] ;
 	ok = ok && fpp[2 * n_ind + 1] == x[0] ;
 	ok = ok && fpp[2 * n_ind + 2] == 0.0 ;
+	// -----------------------------------------------------------------------
+	a_fun af(f);
+	//
+	// compute and check Hessian
+	vec_a_double aw(n_dep);
+	aw[0] = w[0];
+	vec_a_double afpp = af.hessian(ax, aw);
+	ok = ok && afpp.size() == fpp.size();
+	for(size_t i = 0; i < fpp.size(); ++i)
+		ok = ok && afpp[i] == fpp[i];
 	//
 	return( ok );
 }

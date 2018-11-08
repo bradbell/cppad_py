@@ -138,6 +138,11 @@ class CPPAD_PY_LIB_PUBLIC a_fun
 	std::vector<a_double> reverse(int q, const std::vector<a_double>& ayq );
 	// jacobian
 	std::vector<a_double> jacobian(const std::vector<a_double>& ax);
+	// hessian
+	std::vector<a_double> hessian(
+		const std::vector<a_double>& ax ,
+		const std::vector<a_double>& aw
+	);
 };
 
 } // END_CPPAD_PY_NAMESPACE

@@ -34,8 +34,10 @@ from cppad_py.fun_reverse     import d_fun_reverse
 from cppad_py.fun_jacobian    import a_fun_jacobian
 from cppad_py.fun_jacobian    import d_fun_jacobian
 #
-from cppad_py.fun_ctor        import d_fun_ctor
+from cppad_py.fun_hessian     import a_fun_hessian
 from cppad_py.fun_hessian     import d_fun_hessian
+#
+from cppad_py.fun_ctor        import d_fun_ctor
 from cppad_py.hes_sparsity    import d_fun_for_hes_sparsity
 from cppad_py.hes_sparsity    import d_fun_rev_hes_sparsity
 from cppad_py.sparse_hes      import d_fun_sparse_hes
