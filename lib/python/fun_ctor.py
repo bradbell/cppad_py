@@ -54,8 +54,13 @@
 # Initially, there are not Taylor coefficient stored in $icode af$$; i.e.,
 # $cref/af.size_order()/py_fun_property/size_order/$$ is zero.
 #
+# $children%
+#	lib/example/python/a_fun_xam.py
+# %$$
 # $head Example$$
-# All of the examples use these constructors.
+# All of the examples use the $code d_fun$$ constructor.
+# The example $cref a_fun_xam.py$$ demonstrates the purpose of
+# $code a_fun$$ objects.
 #
 # $end
 # -----------------------------------------------------------------------------
