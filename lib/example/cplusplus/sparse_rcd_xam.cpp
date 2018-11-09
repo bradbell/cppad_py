@@ -15,7 +15,7 @@ bool sparse_rcd_xam(void) {
 	using cppad_py::vec_int;
 	using cppad_py::vec_double;
 	using cppad_py::sparse_rc;
-	using cppad_py::sparse_rcv;
+	using cppad_py::sparse_rcd;
 	//
 	// initialize return variable
 	bool ok = true;
@@ -30,7 +30,7 @@ bool sparse_rcd_xam(void) {
 	}
 	//
 	// create n by n sparse representation of identity matrix
-	sparse_rcv matrix = sparse_rcd(pattern);
+	sparse_rcd matrix = sparse_rcd(pattern);
 	for(int k = 0; k < n; k++) {
 		matrix.put(k, 1.0);
 	}

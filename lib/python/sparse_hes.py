@@ -124,7 +124,7 @@
 #
 # $end
 # -----------------------------------------------------------------------------
-# undocumented fact: pattern.rc (subset.rcv) is vec_int version of
+# undocumented fact: pattern.rc (subset.rcd) is vec_int version of
 # sparsity pattern (sparse matrix)
 import cppad_py
 def d_fun_sparse_hes(f, subset, x, r, pattern, work) :
@@ -137,4 +137,4 @@ def d_fun_sparse_hes(f, subset, x, r, pattern, work) :
 	syntax  = 'f.sparse_hes(subset, x, r, pattern, work)'
 	u       = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
 	v       = cppad_py.utility.numpy2vec(r, dtype, m, syntax, 'r')
-	f.sparse_hes(subset.rcv, u, v, pattern.rc, work)
+	f.sparse_hes(subset.rcd, u, v, pattern.rc, work)

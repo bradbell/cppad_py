@@ -18,7 +18,7 @@ bool sparse_jac_xam(void) {
 	using cppad_py::vec_a_double;
 	using cppad_py::d_fun;
 	using cppad_py::sparse_rc;
-	using cppad_py::sparse_rcv;
+	using cppad_py::sparse_rcd;
 	using cppad_py::sparse_jac_work;
 	//
 	// initialize return variable
@@ -66,7 +66,7 @@ bool sparse_jac_xam(void) {
 	// loop over forward and reverse mode
 	for(int mode = 0; mode < 2; mode++) {
 		// compute all possibly non-zero entries in Jacobian
-		sparse_rcv subset = sparse_rcd(pat_jac);
+		sparse_rcd subset = sparse_rcd(pat_jac);
 		// work space used to save time for multiple calls
 		sparse_jac_work work = sparse_jac_work();
 		if( mode == 0  ) {
