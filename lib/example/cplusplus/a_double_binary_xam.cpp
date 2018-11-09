@@ -13,24 +13,29 @@
 
 bool a_double_binary_xam(void) {
 	using cppad_py::a_double;
+	bool ok      = true;
+	a_double a2  = 2.0;
+	a_double a3(3.0);
+	// -----------------------------------------------------------------------
+	a_double a5       = a2 + a3;
+	a_double a6       = a2 * a3;
+	a_double a1_minus = a2 - a3;
+	a_double a23      = a2 / a3;
 	//
-	// initialize return variable
-	bool ok = true;
-	//------------------------------------------------------------------------
-	a_double two(2.0);
-	a_double three(3.0);
+	ok = ok && a5 == 5.0;
+	ok = ok && a6 == 6.0;
+	ok = ok && a1_minus == -1.0;
+	ok = ok && a23.near_equal( a_double(2.0 / 3.0 ) );
+	// -----------------------------------------------------------------------
+	a5       = a2 + 3.0;
+	a6       = a2 * 3.0;
+	a1_minus = a2 - 3.0;
+	a23      = a2 / 3.0;
 	//
-	a_double five = two + three;
-	a_double six = two * three;
-	a_double neg_one = two - three;
-	a_double two_thirds = two / three;
-	//
-	ok = ok && five == 5.0;
-	ok = ok && six == 6.0;
-	ok = ok && neg_one == -1.0;
-	ok = ok && 0.5 < two_thirds.value();
-	ok = ok && two_thirds < 1.0;
-	ok = ok && five < six;
+	ok = ok && a5 == 5.0;
+	ok = ok && a6 == 6.0;
+	ok = ok && a1_minus == -1.0;
+	ok = ok && a23.near_equal( a_double(2.0 / 3.0 ) );
 	//
 	return( ok );
 }

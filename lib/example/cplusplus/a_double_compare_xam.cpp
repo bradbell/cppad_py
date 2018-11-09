@@ -13,23 +13,31 @@
 
 bool a_double_compare_xam(void) {
 	using cppad_py::a_double;
-	//
-	// initialize return variable
 	bool ok = true;
+	a_double a2(2.0);
+	a_double a3(3.0);
 	//------------------------------------------------------------------------
-	a_double two(2.0);
-	a_double three(3.0);
+	ok = ok && a2   <  a3;
+	ok = ok && a2   <= a3;
+	ok = ok && a3 >  a2;
+	ok = ok && a3 >= a2;
+	ok = ok && a3 != a2;
+	ok = ok && a3 == a3;
 	//
-	ok = ok && two   <  three;
-	ok = ok && two   <= three;
-	ok = ok && three >  two;
-	ok = ok && three >= two;
-	ok = ok && three != two;
-	ok = ok && three == three;
+	ok = ok && ! (a2 >  a3) ;
+	ok = ok && ! (a2 >= a3) ;
+	ok = ok && ! (a2 == a3) ;
+	//------------------------------------------------------------------------
+	ok = ok && a2   <  3.0;
+	ok = ok && a2   <= 3.0;
+	ok = ok && a3 >  2.0;
+	ok = ok && a3 >= 2.0;
+	ok = ok && a3 != 2.0;
+	ok = ok && a3 == 3.0;
 	//
-	ok = ok && ! (two >  three) ;
-	ok = ok && ! (two >= three) ;
-	ok = ok && ! (two == three) ;
+	ok = ok && ! (a2 >  3.0) ;
+	ok = ok && ! (a2 >= 3.0) ;
+	ok = ok && ! (a2 == 3.0) ;
 	//
 	return( ok );
 }
