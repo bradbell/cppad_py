@@ -17,12 +17,12 @@ bool a_double_unary_op_xam(void) {
 	// initialize return variable
 	bool ok = true;
 	//------------------------------------------------------------------------
-	a_double two(2.0);
-	a_double plus_two = + two ;
-	a_double minus_two = - two ;
+	a_double a2(2.0);
+	a_double aplus2 = + a2 ;
+	a_double aminus2 = - a2 ;
 	//
-	ok = ok && plus_two == 2.0;
-	ok = ok && minus_two == -2.0;
+	ok = ok && aplus2 == 2.0;
+	ok = ok && aminus2 == -2.0;
 	//
 	return( ok );
 }

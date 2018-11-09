@@ -17,15 +17,15 @@ bool a_double_property_xam(void) {
 	// initialize return variable
 	bool ok = true;
 	//------------------------------------------------------------------------
-	a_double three(3.0);
+	a_double a3(3.0);
 	//
-	ok = ok && three   == 3.0;
-	ok = ok && three.parameter();
-	ok = ok && ! three.variable();
+	ok = ok && a3   == 3.0;
+	ok = ok && a3.parameter();
+	ok = ok && ! a3.variable();
 	//
 	// near_equal
-	a_double r3 = three.sqrt() ;
-	ok = ok && three.near_equal( r3 * r3) ;;
+	a_double r3 = a3.sqrt() ;
+	ok = ok && a3.near_equal( r3 * r3) ;;
 	//
 	return( ok );
 }

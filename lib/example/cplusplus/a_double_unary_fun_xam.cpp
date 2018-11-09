@@ -19,28 +19,28 @@ bool a_double_unary_fun_xam(void) {
 	//------------------------------------------------------------------------
 	//
 	// fabs
-	a_double one(1.0);
-	a_double abs_one = one.fabs();
-	ok = ok && abs_one == 1.0;
+	a_double a1(1.0);
+	a_double abs1 = a1.fabs();
+	ok = ok && abs1 == 1.0;
 	//
 	// pi/4
-	a_double pi_4 = one.atan();
+	a_double pi_4 = a1.atan();
 	//
 	// sqrt(2)
-	a_double tmp(2.0);
-	a_double r2 = tmp.sqrt();
+	a_double atmp(2.0);
+	a_double r2 = atmp.sqrt();
 	//
 	// sin(pi/4)  * sqrt(2) = 1.0;
-	tmp = r2 * pi_4.sin() ;
-	ok = ok && tmp.near_equal(one) ;
+	atmp = r2 * pi_4.sin() ;
+	ok = ok && atmp.near_equal(a1) ;
 	//
 	// cos(pi/4)  * sqrt(2) = 1.0;
-	tmp = r2 * pi_4.cos() ;
-	ok = ok && tmp.near_equal(one) ;
+	atmp = r2 * pi_4.cos() ;
+	ok = ok && atmp.near_equal(a1) ;
 	//
 	// tan(pi/4)  = 1.0;
-	tmp = pi_4.tan() ;
-	ok = ok && tmp.near_equal(one) ;
+	atmp = pi_4.tan() ;
+	ok = ok && atmp.near_equal(a1) ;
 	//
 	return( ok );
 }
