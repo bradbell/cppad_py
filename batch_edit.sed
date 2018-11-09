@@ -11,12 +11,9 @@
 # '
 # list of files and or directories that are moved to new names
 # move_paths='
-#	include/cppad/py/utility.hpp
-#	lib/cplusplus/utility.cpp
 # '
 # sed command that maps old file and or directory names to new file names
 # move_sed='
-#	s|utility|cppad_vec|
 # '
 # list of files that get edited by the extra_sed command
 # extra_files='
@@ -27,6 +24,17 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|utility.hpp|cppad_vec.hpp|
-s|utility.cpp|cppad_vec.cpp|
-s|UTILITY_HPP|CPPAD_VEC_HPP|
+s|d_fun_optimize_xam, |fun_optimize_xam,   |
+s|d_fun_jacobian_xam, |fun_jacobian_xam,   |
+s|d_fun_hessian_xam, |fun_hessian_xam,   |
+s|d_fun_forward_xam, |fun_forward_xam,   |
+s|d_fun_reverse_xam, |fun_reverse_xam,   |
+s|d_fun_abort_xam, |fun_abort_xam,   |
+#
+s|d_fun_abort_xam|fun_abort_xam|
+s|d_fun_optimize_xam|fun_optimize_xam|
+s|d_fun_jacobian_xam|fun_jacobian_xam|
+s|d_fun_hessian_xam|fun_hessian_xam|
+s|d_fun_forward_xam|fun_forward_xam|
+s|d_fun_reverse_xam|fun_reverse_xam|
+s|d_fun_abort_xam|fun_abort_xam|

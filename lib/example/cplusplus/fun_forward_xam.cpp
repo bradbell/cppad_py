@@ -11,7 +11,7 @@
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool d_fun_forward_xam(void) {
+bool fun_forward_xam(void) {
 	using cppad_py::a_double;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
