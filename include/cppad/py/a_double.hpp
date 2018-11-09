@@ -77,6 +77,11 @@ class  CPPAD_PY_LIB_PUBLIC a_double
 	a_double operator*(const a_double& ad) const;
 	a_double operator/(const a_double& ad) const;
 	//
+	a_double operator+(const double& d) const;
+	a_double operator-(const double& d) const;
+	a_double operator*(const double& d) const;
+	a_double operator/(const double& d) const;
+	//
 	// comparison operators
 	bool operator< (const a_double& ad) const;
 	bool operator<=(const a_double& ad) const;
@@ -85,11 +90,28 @@ class  CPPAD_PY_LIB_PUBLIC a_double
 	bool operator==(const a_double& ad) const;
 	bool operator!=(const a_double& ad) const;
 	//
-	// compound assignment operators
+	bool operator< (const double& d) const;
+	bool operator<=(const double& d) const;
+	bool operator> (const double& d) const;
+	bool operator>=(const double& d) const;
+	bool operator==(const double& d) const;
+	bool operator!=(const double& d) const;
+	//
+	// assignment operators
 	a_double operator+=(const a_double& ad);
 	a_double operator-=(const a_double& ad);
 	a_double operator*=(const a_double& ad);
 	a_double operator/=(const a_double& ad);
+	//
+	a_double operator+=(const double& d);
+	a_double operator-=(const double& d);
+	a_double operator*=(const double& d);
+	a_double operator/=(const double& d);
+# ifndef SWIG
+	// python swig does not want assignment operator declared
+	a_double operator =(const a_double& ad);
+	a_double operator =(const double& d);
+# endif
 	//
 	// unary functions with AD result
 	a_double acos(void) const;

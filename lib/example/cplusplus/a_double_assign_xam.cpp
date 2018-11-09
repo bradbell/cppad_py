@@ -19,20 +19,20 @@ bool a_double_assign_xam(void) {
 	//------------------------------------------------------------------------
 	a_double x(2.0);
 	//
-	x = a_double(3.0);
-	ok = ok && x.value() == 3.0;
+	x = 3.0;
+	ok = ok && x == 3.0;
 	//
-	x += a_double(2.0);
-	ok = ok && x.value() == 5.0;
+	x += 2.0;
+	ok = ok && x == 5.0;
 	//
-	x -= a_double(1.0);
-	ok = ok && x.value() == 4.0;
+	x -= 1.0;
+	ok = ok && x == 4.0;
 	//
-	x *= a_double(3.0);
-	ok = ok && x.value() == 12.0;
+	x *= 3.0;
+	ok = ok && x == 12.0;
 	//
-	x /= a_double(4.0);
-	ok = ok && x.value() == 3.0;
+	x /= 4.0;
+	ok = ok && x == 3.0;
 	//
 	return( ok );
 }

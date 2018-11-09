@@ -20,8 +20,8 @@ def a_double_unary_op_xam() :
 	plus_two = + two
 	minus_two = - two
 	#
-	ok = ok and plus_two.value() == 2.0
-	ok = ok and minus_two.value() == -2.0
+	ok = ok and plus_two == 2.0
+	ok = ok and minus_two == -2.0
 	#
 	return( ok )
 #

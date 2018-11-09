@@ -19,19 +19,35 @@ a_double a_double::operator op(const a_double& ad) const \
 {	a_double result; \
 	*result.ptr() = *ptr() op *ad.ptr(); \
 	return result; \
+}\
+a_double a_double::operator op(const double& d) const \
+{	a_double result; \
+	*result.ptr() = *ptr() op d; \
+	return result; \
 }
+
 // comparison operators
 # define COMPARISON_OP(op) \
 bool a_double::operator op(const a_double& ad) const \
 {	bool result =  *ptr() op *ad.ptr(); \
 	return result; \
+}\
+bool a_double::operator op(const double& d) const \
+{	bool result =  *ptr() op d; \
+	return result; \
 }
+
 // compound assignment operators
-# define COMPOUND_ASSIGNMENT_OP(op) \
+# define ASSIGNMENT_OP(op) \
 a_double a_double::operator op(const a_double& ad)\
 {	*ptr() op *ad.ptr(); \
 	return *this; \
+}\
+a_double a_double::operator op(const double& d)\
+{	*ptr() op d; \
+	return *this; \
 }
+
 // unary functions with ad results
 # define UNARY_FUN_AD_RESULT(fun) \
 a_double a_double::fun(void) const \
@@ -294,7 +310,10 @@ $spell
 $$
 
 $head Syntax$$
-$icode%az% = %ax% %op% %ay%$$
+$icode%az% = %ax% %op% %ay%
+%$$
+$icode%az% = %ax% %op% %y%
+%$$
 
 $head op$$
 The binary operator $icode op$$ is one of the following:
@@ -313,6 +332,12 @@ $head ay$$
 This object has prototype
 $codei%
 	const a_double& %ay%
+%$$
+
+$head y$$
+This object has prototype
+$codei%
+	const double& %y%
 %$$
 
 $head az$$
@@ -350,7 +375,10 @@ $spell
 $$
 
 $head Syntax$$
-$icode%b% = %ax% %op% %ay%$$
+$icode%b% = %ax% %op% %ay%
+%$$
+$icode%b% = %ax% %op% %y%
+%$$
 
 $head op$$
 The binary operator $icode op$$ is one of the following:
@@ -371,6 +399,12 @@ $head ay$$
 This object has prototype
 $codei%
 	const a_double& %ay%
+%$$
+
+$head y$$
+This object has prototype
+$codei%
+	const double& %y%
 %$$
 
 $head b$$
@@ -409,17 +443,20 @@ $spell
 $$
 
 $head Syntax$$
-$icode%ay% %op% %ax%%$$
+$icode%ax% %op% %ay%
+%$$
+$icode%aw% %op% %y%
+%$$
 
 $head op$$
 The assignment operator $icode op$$ is one of the following:
 $table
 $icode op$$ $pre  $$ $cnext Meaning            $rnext
 $code =$$ $cnext  simple assignment            $rnext
-$code +=$$ $cnext $icode%ay% = %ay% + %ax%$$   $rnext
-$code -=$$ $cnext $icode%ay% = %ay% - %ax%$$   $rnext
-$code *=$$ $cnext $icode%ay% = %ay% * %ax%$$   $rnext
-$code /=$$ $cnext $icode%ay% = %ay% / %ax%$$
+$code +=$$ $cnext $icode%ax% = %ax% + ( %ay% or %y% )%$$   $rnext
+$code -=$$ $cnext $icode%ax% = %ax% - ( %ay% or %y% )%$$   $rnext
+$code *=$$ $cnext $icode%ax% = %ax% * ( %ay% or %y% )%$$   $rnext
+$code /=$$ $cnext $icode%ax% = %ax% / ( %ay% or %y% )%$$   $rnext
 $tend
 
 $head ax$$
@@ -434,6 +471,12 @@ $codei%
 	a_double& %ay%
 %$$
 
+$head y$$
+This object has prototype
+$codei%
+	const double& %y%
+%$$
+
 $children%
 	lib/example/cplusplus/a_double_assign_xam.cpp%
 	lib/example/python/a_double_assign_xam.py
@@ -444,10 +487,11 @@ $cref/Python/a_double_assign_xam.py/$$.
 
 $end
 */
-COMPOUND_ASSIGNMENT_OP(+=)
-COMPOUND_ASSIGNMENT_OP(-=)
-COMPOUND_ASSIGNMENT_OP(*=)
-COMPOUND_ASSIGNMENT_OP(/=)
+ASSIGNMENT_OP(=)
+ASSIGNMENT_OP(+=)
+ASSIGNMENT_OP(-=)
+ASSIGNMENT_OP(*=)
+ASSIGNMENT_OP(/=)
 /*
 -------------------------------------------------------------------------------
 $begin a_double_unary_fun$$

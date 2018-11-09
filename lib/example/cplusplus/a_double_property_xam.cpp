@@ -19,7 +19,7 @@ bool a_double_property_xam(void) {
 	//------------------------------------------------------------------------
 	a_double three(3.0);
 	//
-	ok = ok && three.value()   == 3.0;
+	ok = ok && three   == 3.0;
 	ok = ok && three.parameter();
 	ok = ok && ! three.variable();
 	//

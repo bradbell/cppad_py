@@ -18,7 +18,7 @@ def a_double_property_xam() :
 	# ---------------------------------------------------------------------
 	three = cppad_py.a_double(3.0)
 	#
-	ok = ok and three.value()   == 3.0
+	ok = ok and three   == 3.0
 	ok = ok and three.parameter()
 	ok = ok and not three.variable()
 	#

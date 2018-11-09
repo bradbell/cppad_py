@@ -45,7 +45,7 @@ This is the vector of independent variables.
 It has size $icode n$$ and for
 $icode%i% = 0%$$ to $icode%n%-1%$$
 $codei%
-	%ax%[%i%].value() == %x%[%i%]
+	%ax%[%i%] == %x%[%i%]
 %$$
 
 $head Purpose$$
@@ -69,7 +69,7 @@ std::vector<a_double> independent(const std::vector<double>& x)
 	CppAD::Independent(ax);
 	std::vector<a_double> result(n);
 	for(size_t j = 0; j < n; j++)
-		result[j] = a_double( &ax[j] );
+		result[j] =  &ax[j] ;
 	return result;
 }
 /*

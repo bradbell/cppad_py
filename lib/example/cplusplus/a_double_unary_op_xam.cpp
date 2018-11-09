@@ -21,8 +21,8 @@ bool a_double_unary_op_xam(void) {
 	a_double plus_two = + two ;
 	a_double minus_two = - two ;
 	//
-	ok = ok && plus_two.value() == 2.0;
-	ok = ok && minus_two.value() == -2.0;
+	ok = ok && plus_two == 2.0;
+	ok = ok && minus_two == -2.0;
 	//
 	return( ok );
 }

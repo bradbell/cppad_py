@@ -25,11 +25,11 @@ bool a_double_binary_xam(void) {
 	a_double neg_one = two - three;
 	a_double two_thirds = two / three;
 	//
-	ok = ok && five.value() == 5.0;
-	ok = ok && six.value() == 6.0;
-	ok = ok && neg_one.value() == -1.0;
+	ok = ok && five == 5.0;
+	ok = ok && six == 6.0;
+	ok = ok && neg_one == -1.0;
 	ok = ok && 0.5 < two_thirds.value();
-	ok = ok && two_thirds.value() < 1.0;
+	ok = ok && two_thirds < 1.0;
 	ok = ok && five < six;
 	//
 	return( ok );

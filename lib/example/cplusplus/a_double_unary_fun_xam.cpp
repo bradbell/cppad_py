@@ -21,7 +21,7 @@ bool a_double_unary_fun_xam(void) {
 	// fabs
 	a_double one(1.0);
 	a_double abs_one = one.fabs();
-	ok = ok && abs_one.value() == 1.0;
+	ok = ok && abs_one == 1.0;
 	//
 	// pi/4
 	a_double pi_4 = one.atan();

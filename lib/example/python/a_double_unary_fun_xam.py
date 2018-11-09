@@ -20,7 +20,7 @@ def a_double_unary_fun_xam() :
 	# fabs
 	one = cppad_py.a_double(1.0)
 	abs_one = one.fabs()
-	ok = ok and abs_one.value() == 1.0
+	ok = ok and abs_one == 1.0
 	#
 	# pi/4
 	pi_4 = one.atan()

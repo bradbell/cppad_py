@@ -19,19 +19,19 @@ def a_double_assign_xam() :
 	x = cppad_py.a_double(2.0)
 	#
 	x = cppad_py.a_double(3.0);
-	ok = ok and x.value() == 3.0
+	ok = ok and x == 3.0
 	#
 	x += cppad_py.a_double(2.0);
-	ok = ok and x.value() == 5.0
+	ok = ok and x == 5.0
 	#
 	x -= cppad_py.a_double(1.0);
-	ok = ok and x.value() == 4.0
+	ok = ok and x == 4.0
 	#
 	x *= cppad_py.a_double(3.0);
-	ok = ok and x.value() == 12.0
+	ok = ok and x == 12.0
 	#
 	x /= cppad_py.a_double(4.0);
-	ok = ok and x.value() == 3.0
+	ok = ok and x == 3.0
 	#
 	return( ok )
 #

@@ -32,7 +32,7 @@ bool vector_set_get_xam(void) {
 		bv[i] = i > n / 2;
 		iv[i] = 2 * i;
 		dv[i] = 3.0 * i;
-		av[i] = a_double(4.0 * i);
+		av[i] = 4.0 * i;
 	}
 	//
 	for(int i = 0; i < n ; i++) {
@@ -46,7 +46,7 @@ bool vector_set_get_xam(void) {
 		ok = ok && de == 3.0 * i ;
 		//
 		a_double ae = av[i];
-		ok = ok && ae.value() == 4.0 * i ;
+		ok = ok && ae == 4.0 * i ;
 	}
 	//
 	return( ok );

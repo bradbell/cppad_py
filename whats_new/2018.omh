@@ -22,6 +22,14 @@ $$
 
 $section Cppad Py Changes During 2018$$
 
+$head 11-09$$
+Include binary operations where first operand is an $code a_double$$
+and second operand is a $code double$$; see
+$cref a_double_binary$$,
+$cref a_double_compare$$, and
+$cref a_double_assign$$.
+
+
 $head 11-07$$
 $list number$$
 Advance to cppad-20181106 (must re-run $code bin/get_cppad.sh$$).

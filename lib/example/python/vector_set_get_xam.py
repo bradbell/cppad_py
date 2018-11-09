@@ -41,7 +41,7 @@ def vector_set_get_xam() :
 		ok = ok and de == 3.0 * i
 		#
 		ae = av[i]
-		ok = ok and ae.value() == 4.0 * i
+		ok = ok and ae == 4.0 * i
 	#
 	#
 	return( ok )
