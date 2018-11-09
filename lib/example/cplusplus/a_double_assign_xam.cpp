@@ -17,22 +17,22 @@ bool a_double_assign_xam(void) {
 	// initialize return variable
 	bool ok = true;
 	//------------------------------------------------------------------------
-	a_double x(2.0);
+	a_double ax(2.0);
 	//
-	x = 3.0;
-	ok = ok && x == 3.0;
+	ax = 3.0;
+	ok = ok && ax == 3.0;
 	//
-	x += 2.0;
-	ok = ok && x == 5.0;
+	ax += a_double(2.0);
+	ok = ok && ax == 5.0;
 	//
-	x -= 1.0;
-	ok = ok && x == 4.0;
+	ax -= 1.0;
+	ok = ok && ax == 4.0;
 	//
-	x *= 3.0;
-	ok = ok && x == 12.0;
+	ax *= a_double(3.0);
+	ok = ok && ax == 12.0;
 	//
-	x /= 4.0;
-	ok = ok && x == 3.0;
+	ax /= 4.0;
+	ok = ok && ax == a_double(3.0);
 	//
 	return( ok );
 }
