@@ -91,19 +91,19 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 		sparse_rc&               pattern_out
 	);
 	int sparse_jac_for(
-		sparse_rcv&                subset   ,
+		sparse_rcd&                subset   ,
 		const std::vector<double>& x        ,
 		const sparse_rc&           pattern  ,
 		sparse_jac_work&           work
 	);
 	int sparse_jac_rev(
-		sparse_rcv&                subset  ,
+		sparse_rcd&                subset  ,
 		const std::vector<double>& x       ,
 		const sparse_rc&           pattern ,
 		sparse_jac_work&           work
 	);
 	int sparse_hes(
-		sparse_rcv&                subset  ,
+		sparse_rcd&                subset  ,
 		const std::vector<double>& x       ,
 		const std::vector<double>& r       ,
 		const sparse_rc&           pattern ,

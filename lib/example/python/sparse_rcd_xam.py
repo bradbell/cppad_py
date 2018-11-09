@@ -5,10 +5,10 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# sparse_rcv
+# sparse_rcd
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
-def sparse_rcv_xam() :
+def sparse_rcd_xam() :
 	#
 	import numpy
 	import cppad_py
@@ -26,8 +26,8 @@ def sparse_rcv_xam() :
 	#
 	#
 	# create n by n sparse representation of identity matrix
-	# (temporarly use pattern.rc untile sparse_rcv wrapper is built)
-	matrix = cppad_py.sparse_rcv(pattern)
+	# (temporarly use pattern.rc untile sparse_rcd wrapper is built)
+	matrix = cppad_py.sparse_rcd(pattern)
 	for k in range( n ) :
 		matrix.put(k, 1.0)
 	#
@@ -56,7 +56,7 @@ def sparse_rcv_xam() :
 #
 # END SOURCE
 #
-# $begin sparse_rcv_xam.py$$ $newlinech #$$
+# $begin sparse_rcd_xam.py$$ $newlinech #$$
 # $spell
 #	py
 #	perl
@@ -67,6 +67,6 @@ def sparse_rcv_xam() :
 #	Jacobians
 # $$
 # $section Python: Sparsity Patterns: Example and Test$$
-# $srcfile|lib/example/python/sparse_rcv_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcfile|lib/example/python/sparse_rcd_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

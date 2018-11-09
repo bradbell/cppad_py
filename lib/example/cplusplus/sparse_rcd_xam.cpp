@@ -5,17 +5,17 @@
 //              GNU General Public License version 3.0 or later see
 //                    https://www.gnu.org/licenses/gpl-3.0.txt
 // -----------------------------------------------------------------------------
-// sparse_rcv
+// sparse_rcd
 // -----------------------------------------------------------------------------
 // BEGIN SOURCE
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool sparse_rcv_xam(void) {
+bool sparse_rcd_xam(void) {
 	using cppad_py::vec_int;
 	using cppad_py::vec_double;
 	using cppad_py::sparse_rc;
-	using cppad_py::sparse_rcv;
+	using cppad_py::sparse_rcd;
 	//
 	// initialize return variable
 	bool ok = true;
@@ -30,7 +30,7 @@ bool sparse_rcv_xam(void) {
 	}
 	//
 	// create n by n sparse representation of identity matrix
-	sparse_rcv matrix = sparse_rcv(pattern);
+	sparse_rcd matrix = sparse_rcd(pattern);
 	for(int k = 0; k < n; k++) {
 		matrix.put(k, 1.0);
 	}
@@ -60,7 +60,7 @@ bool sparse_rcv_xam(void) {
 // END SOURCE
 //
 /*
-$begin sparse_rcv_xam.cpp$$
+$begin sparse_rcd_xam.cpp$$
 $spell
 	cplusplus
 	cppad
@@ -70,7 +70,7 @@ $spell
 	Jacobians
 $$
 $section C++: Sparsity Patterns: Example and Test$$
-$srcfile|lib/example/cplusplus/sparse_rcv_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/sparse_rcd_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

@@ -274,7 +274,7 @@ std::vector<int> sparse_rc::col_major(void) const
 }
 /*
 -------------------------------------------------------------------------------
-$begin cpp_sparse_rcv$$
+$begin cpp_sparse_rcd$$
 $spell
 	rc
 	rcv
@@ -292,7 +292,7 @@ $$
 $section Sparse Matrices$$
 
 $head Syntax$$
-$icode%matrix%    = cppad_py::sparse_rcv(%pattern%)
+$icode%matrix%    = cppad_py::sparse_rcd(%pattern%)
 %$$
 $icode%nr%        = %matrix%.nr()
 %$$
@@ -438,53 +438,53 @@ This routine generates an assert if there are two entries with the same
 row and column values (if $code NDEBUG$$ is not defined).
 
 $children%
-	lib/example/cplusplus/sparse_rcv_xam.cpp
+	lib/example/cplusplus/sparse_rcd_xam.cpp
 %$$
 $head Example$$
-$cref sparse_rcv_xam.cpp$$
+$cref sparse_rcd_xam.cpp$$
 
 $end
 */
 // ---------------------------------------------------------------------------
 // public member function not in Swig interface (see %ignore ptr)
 CppAD::sparse_rcv< std::vector<size_t> , std::vector<double> >*
-	sparse_rcv::ptr(void)
+	sparse_rcd::ptr(void)
 		{	return ptr_; }
 // ---------------------------------------------------------------------------
-// sparse_rcv ctor
-sparse_rcv::sparse_rcv(const sparse_rc& pattern)
+// sparse_rcd ctor
+sparse_rcd::sparse_rcd(const sparse_rc& pattern)
 {	ptr_ = new CppAD::sparse_rcv< std::vector<size_t> , std::vector<double> >(
 		*pattern.ptr()
 	);
 	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 // destructor
-sparse_rcv::~sparse_rcv(void)
+sparse_rcd::~sparse_rcd(void)
 {	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	delete ptr_;
 }
 // number of rows in matrix
-int sparse_rcv::nr(void) const
+int sparse_rcd::nr(void) const
 {	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nr();
 }
 // number of columns in matrix
-int sparse_rcv::nc(void) const
+int sparse_rcd::nc(void) const
 {	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nc();
 }
 // number of possibley non-zero elements in matrix
-int sparse_rcv::nnz(void) const
+int sparse_rcd::nnz(void) const
 {	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 	return ptr_->nnz();
 }
 // set row and column for a possibly non-zero element
-void sparse_rcv::put(int k, double v)
+void sparse_rcd::put(int k, double v)
 {	ptr_->set(k, v);
 	return;
 }
 // row indices
-std::vector<int> sparse_rcv::row(void) const
+std::vector<int> sparse_rcd::row(void) const
 {	size_t nnz = ptr_->nnz();
 	std::vector<int> row(nnz);
 	for(size_t k = 0; k < nnz; k++)
@@ -492,7 +492,7 @@ std::vector<int> sparse_rcv::row(void) const
 	return row;
 }
 // col indices
-std::vector<int> sparse_rcv::col(void) const
+std::vector<int> sparse_rcd::col(void) const
 {	size_t nnz = ptr_->nnz();
 	std::vector<int> col(nnz);
 	for(size_t k = 0; k < nnz; k++)
@@ -500,10 +500,10 @@ std::vector<int> sparse_rcv::col(void) const
 	return col;
 }
 // values
-std::vector<double> sparse_rcv::val(void) const
+std::vector<double> sparse_rcd::val(void) const
 {	return ptr_->val(); }
 // row_major
-std::vector<int> sparse_rcv::row_major(void) const
+std::vector<int> sparse_rcd::row_major(void) const
 {	size_t nnz = ptr_->nnz();
 	std::vector<size_t> row_major = ptr_->row_major();
 	std::vector<int> result(nnz);
@@ -512,7 +512,7 @@ std::vector<int> sparse_rcv::row_major(void) const
 	return result;
 }
 // col_major
-std::vector<int> sparse_rcv::col_major(void) const
+std::vector<int> sparse_rcd::col_major(void) const
 {	size_t nnz = ptr_->nnz();
 	std::vector<size_t> col_major = ptr_->col_major();
 	std::vector<int> result(nnz);
@@ -856,7 +856,7 @@ $cref/uses forward/cpp_sparse_jac/Uses Forward/$$ below.
 $head subset$$
 This argument has prototype
 $codei%
-	sparse_rcv& %subset%
+	sparse_rcd& %subset%
 %$$
 Its row size is $icode%subset%.nr() == %m%$$,
 and its column size is $icode%subset%.nc() == %n%$$.
@@ -956,7 +956,7 @@ void sparse_jac_work::clear(void)
 }
 // sparse_jac_for
 int d_fun::sparse_jac_for(
-	sparse_rcv&                subset   ,
+	sparse_rcd&                subset   ,
 	const std::vector<double>& x        ,
 	const sparse_rc&           pattern  ,
 	sparse_jac_work&           work     )
@@ -969,7 +969,7 @@ int d_fun::sparse_jac_for(
 }
 // sparse_jac_rev
 int d_fun::sparse_jac_rev(
-	sparse_rcv&                subset   ,
+	sparse_rcd&                subset   ,
 	const std::vector<double>& x        ,
 	const sparse_rc&           pattern  ,
 	sparse_jac_work&           work     )
@@ -1026,7 +1026,7 @@ $cref/uses forward/cpp_sparse_hes/Uses Forward/$$ below.
 $head subset$$
 This argument has prototype
 $codei%
-	sparse_rcv& %subset%
+	sparse_rcd& %subset%
 %$$
 Its row size and column size is $icode n$$; i.e.,
 $icode%subset%.nr() == %n%$$ and $icode%subset%.nc() == %n%$$.
@@ -1135,7 +1135,7 @@ void sparse_hes_work::clear(void)
 }
 // sparse_hes
 int d_fun::sparse_hes(
-	sparse_rcv&                subset   ,
+	sparse_rcd&                subset   ,
 	const std::vector<double>& x        ,
 	const std::vector<double>& r        ,
 	const sparse_rc&           pattern  ,

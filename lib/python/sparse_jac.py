@@ -59,7 +59,7 @@
 #
 # $head subset$$
 # This argument must have be a $cref/matrix/py_sparse_rcv/matrix/$$
-# returned by the $code sparse_rcv$$ constructor.
+# returned by the $code sparse_rcd$$ constructor.
 # Its row size is $icode%subset%.nr() == %m%$$,
 # and its column size is $icode%subset%.nc() == %n%$$.
 # It specifies which elements of the Jacobian are computed.
@@ -127,7 +127,7 @@
 #
 # $end
 # -----------------------------------------------------------------------------
-# undocumented fact: pattern.rc (subset.rcv) is vec_int version of
+# undocumented fact: pattern.rc (subset.rcd) is vec_int version of
 # sparsity pattern (sparse matrix)
 import cppad_py
 def d_fun_sparse_jac_for(f, subset, x, pattern, work) :
@@ -139,7 +139,7 @@ def d_fun_sparse_jac_for(f, subset, x, pattern, work) :
 	dtype   = float
 	syntax  = 'f.sparse_jac_for(subset, x, pattern, work)'
 	u       = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
-	f.sparse_jac_for(subset.rcv, u, pattern.rc, work)
+	f.sparse_jac_for(subset.rcd, u, pattern.rc, work)
 #
 def d_fun_sparse_jac_rev(f, subset, x, pattern, work) :
 	"""
@@ -150,4 +150,4 @@ def d_fun_sparse_jac_rev(f, subset, x, pattern, work) :
 	dtype   = float
 	syntax  = 'f.sparse_jac_rev(subset, x, pattern, work)'
 	u       = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
-	f.sparse_jac_rev(subset.rcv, u, pattern.rc, work)
+	f.sparse_jac_rev(subset.rcd, u, pattern.rc, work)

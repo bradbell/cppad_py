@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_sparse_rcv$$ $newlinech #$$
+# $begin py_sparse_rcd$$ $newlinech #$$
 # $spell
 #	rc
 #	rcv
@@ -23,7 +23,7 @@
 # $section Sparse Matrices$$
 #
 # $head Syntax$$
-# $icode%matrix%    = cppad_py::sparse_rcv(%pattern%)
+# $icode%matrix%    = cppad_py::sparse_rcd(%pattern%)
 # %$$
 # $icode%nr%        = %matrix%.nr()
 # %$$
@@ -138,69 +138,69 @@
 # row and column values (if $code NDEBUG$$ is not defined).
 #
 # $children%
-#	lib/example/python/sparse_rcv_xam.py
+#	lib/example/python/sparse_rcd_xam.py
 # %$$
 # $head Example$$
-# $cref sparse_rcv_xam.py$$
+# $cref sparse_rcd_xam.py$$
 #
 # $end
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy
-class sparse_rcv :
+class sparse_rcd :
 	"""Python interface to CppAD::sparse_rc"""
 	#
 	def __init__(self, pattern) :
 		# use undocumented fact that pattern.rc is vec_int version of sparsity
-		self.rcv = cppad_py.cppad_py_swig.sparse_rcv(pattern.rc)
+		self.rcd = cppad_py.cppad_py_swig.sparse_rcd(pattern.rc)
 	#
 	# nr
 	def nr(self) :
-		return self.rcv.nr()
+		return self.rcd.nr()
 	#
 	# nc
 	def nc(self) :
-		return self.rcv.nc()
+		return self.rcd.nc()
 	#
 	# nnz
 	def nnz(self) :
-		return self.rcv.nnz()
+		return self.rcd.nnz()
 	#
 	# put
 	def put(self, k, v) :
-		self.rcv.put(k, v)
+		self.rcd.put(k, v)
 	#
 	# row
 	def row(self) :
-		vec   = self.rcv.row()
-		assert vec.size() == self.rcv.nnz()
+		vec   = self.rcd.row()
+		assert vec.size() == self.rcd.nnz()
 		array = cppad_py.utility.vec2numpy(vec, vec.size() )
 		return array
 	#
 	# col
 	def col(self) :
-		vec   = self.rcv.col()
-		assert vec.size() == self.rcv.nnz()
+		vec   = self.rcd.col()
+		assert vec.size() == self.rcd.nnz()
 		array = cppad_py.utility.vec2numpy(vec, vec.size() )
 		return array
 	#
 	# val
 	def val(self) :
-		vec   = self.rcv.val()
-		assert vec.size() == self.rcv.nnz()
+		vec   = self.rcd.val()
+		assert vec.size() == self.rcd.nnz()
 		array = cppad_py.utility.vec2numpy(vec, vec.size() )
 		return array
 	#
 	# row_major
 	def row_major(self) :
-		vec   = self.rcv.row_major()
-		assert vec.size() == self.rcv.nnz()
+		vec   = self.rcd.row_major()
+		assert vec.size() == self.rcd.nnz()
 		array = cppad_py.utility.vec2numpy(vec, vec.size() )
 		return array
 	#
 	# col_major
 	def col_major(self) :
-		vec   = self.rcv.col_major()
-		assert vec.size() == self.rcv.nnz()
+		vec   = self.rcd.col_major()
+		assert vec.size() == self.rcd.nnz()
 		array = cppad_py.utility.vec2numpy(vec, vec.size() )
 		return array

@@ -60,7 +60,7 @@ class CPPAD_PY_LIB_PUBLIC sparse_rc
 };
 
 // Swig class that acts the same as CppAD::sparse_rcv< std::vector<size_t> >
-class CPPAD_PY_LIB_PUBLIC sparse_rcv
+class CPPAD_PY_LIB_PUBLIC sparse_rcd
 {	// private members are not in Swig interface
 	private:
 	// CppAD::sparse_rc< std::vector<size_t> > representation
@@ -73,9 +73,9 @@ class CPPAD_PY_LIB_PUBLIC sparse_rcv
 	// public members are in Swig interface
 	public:
 	// constructor
-	sparse_rcv(const sparse_rc& pattern);
+	sparse_rcd(const sparse_rc& pattern);
 	// destructor
-	~sparse_rcv(void);
+	~sparse_rcd(void);
 	// set k-th possibly non-zero value
 	void put(int k, const double v);
 	// number of rows in matrix
