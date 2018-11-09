@@ -45,7 +45,7 @@ from cppad_py.sparse_jac      import d_fun_sparse_jac_for
 from cppad_py.sparse_jac      import d_fun_sparse_jac_rev
 from cppad_py.independent     import independent
 from cppad_py.sparse_rc       import sparse_rc
-from cppad_py.sparse_rcv      import sparse_rcv
+from cppad_py.sparse_rcv      import sparse_rcd
 
 # utilities
 import cppad_py.utility

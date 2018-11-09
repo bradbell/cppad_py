@@ -59,7 +59,7 @@ $cref/uses forward/sparse_jac/Uses Forward/$$ below.
 
 $head subset$$
 This argument must have be a $cref/matrix/py_sparse_rcv/matrix/$$
-returned by the $code sparse_rcv$$ constructor.
+returned by the $code sparse_rcd$$ constructor.
 Its row size is $icode%subset%.nr() == %m%$$,
 and its column size is $icode%subset%.nc() == %n%$$.
 It specifies which elements of the Jacobian are computed.

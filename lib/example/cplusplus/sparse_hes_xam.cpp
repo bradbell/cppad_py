@@ -75,7 +75,7 @@ bool sparse_hes_xam(void) {
 	//
 	// compute all possibly non-zero entries in Hessian
 	// (should only compute lower triangle becuase matrix is symmetric)
-	sparse_rcv subset = sparse_rcv(pattern);
+	sparse_rcv subset = sparse_rcd(pattern);
 	//
 	// work space used to save time for multiple calls
 	sparse_hes_work work = cppad_py::sparse_hes_work();

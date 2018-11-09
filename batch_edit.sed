@@ -24,17 +24,7 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|d_fun_optimize_xam, |fun_optimize_xam,   |
-s|d_fun_jacobian_xam, |fun_jacobian_xam,   |
-s|d_fun_hessian_xam, |fun_hessian_xam,   |
-s|d_fun_forward_xam, |fun_forward_xam,   |
-s|d_fun_reverse_xam, |fun_reverse_xam,   |
-s|d_fun_abort_xam, |fun_abort_xam,   |
 #
-s|d_fun_abort_xam|fun_abort_xam|
-s|d_fun_optimize_xam|fun_optimize_xam|
-s|d_fun_jacobian_xam|fun_jacobian_xam|
-s|d_fun_hessian_xam|fun_hessian_xam|
-s|d_fun_forward_xam|fun_forward_xam|
-s|d_fun_reverse_xam|fun_reverse_xam|
-s|d_fun_abort_xam|fun_abort_xam|
+s|sparse_rcv\([&,(,%$,::,_]\)|sparse_rcd\1|g
+s|\ sparse_rcv|\ sparse_rcd|g
+s|self.rcv|self.rcd|g

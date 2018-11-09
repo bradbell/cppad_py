@@ -47,7 +47,7 @@
 #
 # $head subset$$
 # This argument must have be a $cref/matrix/py_sparse_rcv/matrix/$$
-# returned by the $code sparse_rcv$$ constructor.
+# returned by the $code sparse_rcd$$ constructor.
 # Its row size and column size is $icode n$$; i.e.,
 # $icode%subset%.nr() == %n%$$ and $icode%subset%.nc() == %n%$$.
 # It specifies which elements of the Hessian are computed.
