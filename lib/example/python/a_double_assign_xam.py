@@ -16,22 +16,21 @@ def a_double_assign_xam() :
 	# initialize return variable
 	ok = True
 	# ---------------------------------------------------------------------
-	x = cppad_py.a_double(2.0)
 	#
-	x = cppad_py.a_double(3.0);
-	ok = ok and x == 3.0
+	ax = cppad_py.a_double(3.0);
+	ok = ok and ax == 3.0
 	#
-	x += cppad_py.a_double(2.0);
-	ok = ok and x == 5.0
+	ax += cppad_py.a_double(2.0);
+	ok = ok and ax == 5.0
 	#
-	x -= cppad_py.a_double(1.0);
-	ok = ok and x == 4.0
+	ax -= 1.0;
+	ok = ok and ax == cppad_py.a_double(4.0)
 	#
-	x *= cppad_py.a_double(3.0);
-	ok = ok and x == 12.0
+	ax *= cppad_py.a_double(3.0);
+	ok = ok and ax == 12.0
 	#
-	x /= cppad_py.a_double(4.0);
-	ok = ok and x == 3.0
+	ax /= 4.0;
+	ok = ok and ax == cppad_py.a_double(3.0)
 	#
 	return( ok )
 #

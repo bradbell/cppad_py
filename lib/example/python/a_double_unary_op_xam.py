@@ -16,12 +16,12 @@ def a_double_unary_op_xam() :
 	# initialize return variable
 	ok = True
 	# ---------------------------------------------------------------------
-	two = cppad_py.a_double(2.0)
-	plus_two = + two
-	minus_two = - two
+	a2 = cppad_py.a_double(2.0)
+	aplus2 = + a2
+	a2_minus = - a2
 	#
-	ok = ok and plus_two == 2.0
-	ok = ok and minus_two == -2.0
+	ok = ok and aplus2 == 2.0
+	ok = ok and a2_minus == -2.0
 	#
 	return( ok )
 #

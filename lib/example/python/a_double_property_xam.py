@@ -16,15 +16,15 @@ def a_double_property_xam() :
 	# initialize return variable
 	ok = True
 	# ---------------------------------------------------------------------
-	three = cppad_py.a_double(3.0)
+	a3 = cppad_py.a_double(3.0)
 	#
-	ok = ok and three   == 3.0
-	ok = ok and three.parameter()
-	ok = ok and not three.variable()
+	ok = ok and a3   == 3.0
+	ok = ok and a3.parameter()
+	ok = ok and not a3.variable()
 	#
 	# near_equal
-	r3 = three.sqrt()
-	ok = ok and three.near_equal( r3 * r3) ;
+	r3 = a3.sqrt()
+	ok = ok and a3.near_equal( r3 * r3) ;
 	#
 	return( ok )
 #

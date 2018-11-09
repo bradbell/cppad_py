@@ -18,28 +18,28 @@ def a_double_unary_fun_xam() :
 	# ---------------------------------------------------------------------
 	#
 	# fabs
-	one = cppad_py.a_double(1.0)
-	abs_one = one.fabs()
-	ok = ok and abs_one == 1.0
+	a1   = cppad_py.a_double(1.0)
+	abs1 = a1.fabs()
+	ok = ok and abs1 == 1.0
 	#
 	# pi/4
-	pi_4 = one.atan()
+	pi_4 = a1.atan()
 	#
 	# sqrt(2)
-	tmp = cppad_py.a_double(2.0)
-	r2 = tmp.sqrt()
+	atmp = cppad_py.a_double(2.0)
+	r2 = atmp.sqrt()
 	#
 	# sin(pi/4)  * sqrt(2) = 1.0;
-	tmp = r2 * pi_4.sin()
-	ok = ok and tmp.near_equal(one)
+	atmp = r2 * pi_4.sin()
+	ok = ok and atmp.near_equal(a1)
 	#
 	# cos(pi/4)  * sqrt(2) = 1.0;
-	tmp = r2 * pi_4.cos()
-	ok = ok and tmp.near_equal(one)
+	atmp = r2 * pi_4.cos()
+	ok = ok and atmp.near_equal(a1)
 	#
 	# tan(pi/4)  = 1.0;
-	tmp = pi_4.tan()
-	ok = ok and tmp.near_equal(one)
+	atmp = pi_4.tan()
+	ok = ok and atmp.near_equal(a1)
 	#
 	return( ok )
 #
