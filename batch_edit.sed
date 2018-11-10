@@ -8,7 +8,6 @@
 # list of files that are not edited by the sed commands in this file
 # (with the possible exception of the extra_sed commands)
 # ignore_files='
-#	lib/python/independent.py
 # '
 # list of files and or directories that are moved to new names
 # move_paths='
@@ -25,5 +24,4 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|\.value()\( *[!=<>][!=<>]*\)|\1|
-s|\([!=<>]\) *a_double(\([^(]*\))|\1 \2|
+s|cppad_py_swig|swig|g

@@ -152,7 +152,7 @@ class sparse_rcv :
 	#
 	def __init__(self, pattern) :
 		# use undocumented fact that pattern.rc is vec_int version of sparsity
-		self.rcv = cppad_py.cppad_py_swig.sparse_rcv(pattern.rc)
+		self.rcv = cppad_py.swig.sparse_rcv(pattern.rc)
 	#
 	# nr
 	def nr(self) :

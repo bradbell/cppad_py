@@ -111,8 +111,8 @@ class a_fun :
 	"""Python interface to CppAD::ADFun<a_double>"""
 	#
 	def __init__(self, f) :
-		# type cppad_py_swig.a_fun
-		self.af = cppad_py.cppad_py_swig.a_fun(f.f)
+		# type swig.a_fun
+		self.af = cppad_py.swig.a_fun(f.f)
 	#
 	# size_domain
 	def size_domain(self) :

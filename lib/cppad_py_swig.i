@@ -42,7 +42,7 @@ Swig $code cppad_py$$ module.
 $end
 */
 # ifdef SWIGPYTHON
-%module cppad_py_swig
+%module swig
 # endif
 /* ------------------------------------------------------------------------- */
 

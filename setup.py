@@ -131,7 +131,7 @@ if build_type == 'debug' :
 	undef_macros = [ 'NDEBUG' ]
 	extra_compile_args.append( '-O1' )
 #
-cppad_py_extension_name   = 'cppad_py/_cppad_py_swig'
+cppad_py_extension_name   = 'cppad_py/_swig'
 extension_module          = Extension(
 	cppad_py_extension_name                               ,
 	cppad_py_extension_sources                            ,

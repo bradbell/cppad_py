@@ -8,7 +8,7 @@
 # Initialize check for this directory
 SET(check_lib_depends "")
 #
-# directory used for cppad_py_swig.include files
+# directory used for swig.include files
 INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/include )
 INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_BINARY_DIR} )
 #

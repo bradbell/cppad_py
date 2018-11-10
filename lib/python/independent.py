@@ -65,7 +65,7 @@ def independent(x) :
 		u = cppad_py.utility.numpy2vec(x, dtype, x.size, syntax, 'x')
 	#
 	# call independent
-	av =  cppad_py.cppad_py_swig.independent(u)
+	av =  cppad_py.swig.independent(u)
 	#
 	# convert av -> ax
 	if not is_numpy :
