@@ -19,12 +19,24 @@ $spell
 	vec
 	const
 	cppad_py
+	nx
+	nd
 $$
 
 $section Declare Independent Variables and Start Recording$$
 
 $head Syntax$$
-$icode%ax% = cppad_py::independent(%x%)%$$
+$icode%ax% = cppad_py::independent(%x%)
+%$$
+$icode%a_both% = cppad_py::independent(%x%, %dynamic%)
+%$$
+
+$head Purpose$$
+This starts recording $cref a_double$$ operations.
+This recording is terminated, and the information is stored,
+by calling the $cref/d_fun constructor/cpp_fun_ctor/$$.
+It can be terminated, and the information is lost,
+by calling $cref/abort_recording/cpp_abort_recording/$$.
 
 $head x$$
 This argument has prototype
@@ -33,30 +45,58 @@ $codei%
 %$$
 Its specifies the number of independent variables
 and their values during the recording.
-We use the notation $icode%n% = %x%.size()%$$
+We use the notation $icode%nx% = %x%.size()%$$
+to denote the number of independent variables.
+
+$head dynamic$$
+This argument has prototype
+$codei%
+	const vec_double& %dynamic%
+%$$
+Its specifies the number of independent dynamic parameters
+and their values during the recording.
+We use the notation $icode%nd% = %dynamic%.size()%$$
 to denote the number of independent variables.
 
 $head ax$$
-The result has prototype
+This result has prototype
 $codei%
 	vec_a_double& %ax%
 %$$
-This is the vector of independent variables.
-It has size $icode n$$ and for
+and is the vector of independent variables.
+It has size $icode nx$$ and for
 $icode%i% = 0%$$ to $icode%n%-1%$$
 $codei%
 	%ax%[%i%] == %x%[%i%]
 %$$
 
-$head Purpose$$
-This starts a recording of the $cref a_double$$ operations.
-This recording is terminated, and the information is stored,
-by calling the $cref/d_fun constructor/cpp_fun_ctor/$$.
-It is terminated, and the information is lost,
-by calling $cref/abort_recording/cpp_abort_recording/$$.
+$head a_both$$
+this result has prototype
+$codei%
+	vec_a_double& %a_both%
+%$$
+and is the vector of both the independent variables
+and independent dynamic parameters.
+It has size $icode%nx% + %nd%$$.
+For $icode%i% = 0%$$ to $icode%nx%-1%$$
+$codei%
+	%a_both%[%i%] == %x%[%i%]
+%$$
+is the $th i$$ independent variable.
+For $icode%i% = 0%$$ to $icode%nd%-1%$$
+$codei%
+	%a_both%[%nx% + %i%] == %dynamic%[%i%]
+%$$
+is the $th i$$ independent dynamic parameter.
 
+$children%
+	lib/example/cplusplus/fun_dynamic_xam.cpp
+%$$
 $head Example$$
-All of the c++ $code d_fun$$ examples use this function.
+Most all of the c++ $code d_fun$$ examples use the $icode ax$$
+return syntax.
+The $cref fun_dynamic_xam.cpp$$ example uses the $icode a_both$$
+return syntax.
 
 $end
 */
@@ -68,10 +108,35 @@ std::vector<a_double> independent(const std::vector<double>& x)
 		ax[j] = x[j];
 	CppAD::Independent(ax);
 	std::vector<a_double> result(n);
+	// use a_double( *AD<double> ) constructor in this assignment loop
 	for(size_t j = 0; j < n; j++)
 		result[j] =  &ax[j] ;
 	return result;
 }
+// BEGIN_A_BOTH_INDEPENDENT_SOURCE
+std::vector<a_double> independent(
+	const std::vector<double>& x       ,
+	const std::vector<double>& dynamic )
+{	using CppAD::AD;
+	size_t nx = x.size();
+	size_t nd = dynamic.size();
+	CppAD::vector< AD<double> > ax(nx), adynamic(nd);
+	for(size_t j = 0; j < nx; j++)
+		ax[j] = x[j];
+	for(size_t j = 0; j < nd; j++)
+		adynamic[j] = dynamic[j];
+	size_t abort_op_index = 0;
+	size_t record_compare = false;
+	CppAD::Independent(ax, abort_op_index, record_compare, adynamic);
+	std::vector<a_double> a_both(nx + nd);
+	// use a_double( *AD<double> ) constructor in these assignment loops
+	for(size_t j = 0; j < nx; j++)
+		a_both[j] =  &ax[j] ;
+	for(size_t j = 0; j < nd; j++)
+		a_both[nx + j] =  &adynamic[j] ;
+	return a_both;
+}
+// END_A_BOTH_INDEPENDENT_SOURCE
 /*
 -------------------------------------------------------------------------------
 $begin cpp_abort_recording$$
@@ -329,6 +394,57 @@ int d_fun::size_order(void) const
 {	return ptr_->size_order(); }
 int a_fun::size_order(void) const
 {	return a_ptr_->size_order(); }
+/*
+------------------------------------------------------------------------------
+$begin cpp_fun_new_dynamic$$
+$spell
+	const
+	vec
+$$
+
+$section Change The Dynamic Parameters$$
+
+$head Syntax$$
+$icode%f%.new_dynamic(%dynamic%)
+%$$
+
+$head f$$
+This is either a
+$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
+$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
+
+$head dynamic$$
+If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+this argument has prototype
+$codei%
+	const vec_double&   %dynamic%
+	const vec_a_double& %dynamic%
+%$$
+and its size must be the same as the size of
+$cref/dynamic/cpp_independent/dynamic/$$ in the corresponding call to
+$code independent$$.
+It specifies new values for the dynamic parameters in $icode f$$.
+
+$head Example$$
+See $cref fun_dynamic_xam.cpp$$.
+$end
+*/
+// BEGIN_NEW_DYNAMIC_SOURCE
+void d_fun::new_dynamic(const std::vector<double>& dynamic)
+{	if( dynamic.size() != ptr_->size_dyn_ind() )
+		error_message("cppad_py::d_fun::new_dynamic dynamic.size() error");
+	ptr_->new_dynamic(dynamic);
+	return;
+}
+void a_fun::new_dynamic(const std::vector<a_double>& adynamic)
+{	if( adynamic.size() != a_ptr_->size_dyn_ind() )
+		error_message("cppad_py::a_fun::jacobian adynamic.size() error");
+	std::vector< CppAD::AD<double> > au = vec2cppad_double(adynamic);
+	a_ptr_->new_dynamic(au);
+	return;
+}
+// END_NEW_DYNAMIC_SOURCE
+
 /*
 ------------------------------------------------------------------------------
 $begin cpp_fun_jacobian$$

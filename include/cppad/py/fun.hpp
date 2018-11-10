@@ -22,9 +22,15 @@ namespace CppAD {
 
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
-// independent
+// ax = independent(x)
 CPPAD_PY_LIB_PUBLIC
 std::vector<a_double> independent(const std::vector<double>& x);
+
+// a_both = independent(x, dynamic)
+CPPAD_PY_LIB_PUBLIC
+std::vector<a_double> independent(
+	const std::vector<double>& x, const std::vector<double>& dynamic
+);
 
 // abort_recording
 CPPAD_PY_LIB_PUBLIC void abort_recording(void);
@@ -56,6 +62,8 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 	int size_var() const;
 	int size_op() const;
 	int size_order() const;
+	// new_dynamic
+	void new_dynamic(const std::vector<double>& dynamic);
 	// forward
 	std::vector<double> forward(int p, const std::vector<double>& xp );
 	// reverse
@@ -132,6 +140,8 @@ class CPPAD_PY_LIB_PUBLIC a_fun
 	int size_var() const;
 	int size_op() const;
 	int size_order() const;
+	// new_dynamic
+	void new_dynamic(const std::vector<a_double>& adynamic);
 	// forward
 	std::vector<a_double> forward(int p, const std::vector<a_double>& axp );
 	// reverse
