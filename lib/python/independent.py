@@ -11,27 +11,49 @@
 # $spell
 #	numpy
 #	cppad_py
+#	adynamic
+#	nx
+#	nd
 # $$
 #
 # $section Declare Independent Variables and Start Recording$$
 #
 # $head Syntax$$
-# $icode%ax% = cppad_py.independent(%x%)%$$
+# $icode%ax% = cppad_py.independent(%x%)
+# %$$
+# $icode%(%ax%, %adynamic)% = cppad_py.independent(%x%)
+# %$$
 #
 # $head x$$
 # This argument is a numpy vector with $code float$$ elements.
 # It specifies the number of independent variables
 # and their values during the recording.
-# We use $icode%n% = %x%.size%$$
+# We use $icode%nx% = %x%.size%$$
 # to denote the number of independent variables.
 #
+# $head dynamic$$
+# This argument is a numpy vector with $code float$$ elements.
+# It specifies the number of independent dynamic parameters
+# and their values during the recording.
+# We use $icode%nd% = %dynamic%.size%$$
+# to denote the number of independent dynamic parameters.
+#
 # $head ax$$
-# The result is a numpy vector with $code a_double$$ elements.
+# This result is a numpy vector with $code a_double$$ elements.
 # This is the vector of independent variables.
-# It has size $icode n$$ and for
+# It has size $icode nx$$ and for
 # $icode%i% = 0%$$ to $icode%n%-1%$$
 # $codei%
 #	%ax%[%i%].value() == %x%[%i%]
+# %$$
+#
+# $head adynamic$$
+# This result is a numpy vector with $code a_double$$ elements.
+# This is the vector of independent dynamic parameters.
+# It has size $icode nd$$ and for
+# $icode%i% = 0%$$ to $icode%n%-1%$$
+# $codei%
+#	%adynamic%[%i%].value() == %dynamic%[%i%]
 # %$$
 #
 # $head Purpose$$
@@ -41,36 +63,48 @@
 # It is terminated, and the information is lost,
 # by calling $cref/abort_recording/py_abort_recording/$$.
 #
+# $children%
+#	lib/example/python/fun_dynamic_xam.py
+# %$$
 # $head Example$$
-# All of the python $code d_fun$$ examples use this function.
+# Most of the python $code d_fun$$ examples use this function.
+# The $cref fun_dynamic_xam.py$$ uses the syntax that includes
+# dynamic parameters.
 #
 # $end
 # -----------------------------------------------------------------------------
+# BEGIN_INDEPENDENT_SOURCE
 import cppad_py
 import numpy
-def independent(x) :
+def independent(x, dynamic = None) :
 	"""
 	ax = independent(x)
 	creates the indepedent numpy vector ax, with value equal numpy vector x,
 	and starts recording a_double operations.
 	"""
 	# convert x -> u
-	if isinstance(x, cppad_py.vec_double) :
-		is_numpy = False
-		u        = x
-	else :
-		is_numpy =  True
-		dtype    = float
+	dtype    = float
+	#
+	nx = x.size
+	if dynamic is None :
 		syntax   = 'independent(x)'
-		u = cppad_py.utility.numpy2vec(x, dtype, x.size, syntax, 'x')
-	#
-	# call independent
-	av =  cppad_py.swig.independent(u)
-	#
-	# convert av -> ax
-	if not is_numpy :
-		ax = av
-	else :
+		u = cppad_py.utility.numpy2vec(x, dtype, nx, syntax, 'x')
+		av = cppad_py.swig.independent(u)
 		ax = cppad_py.utility.vec2numpy(av, av.size());
+		return ax
 	#
-	return ax
+	nd       = dynamic.size
+	syntax   = 'independent(x, dynamic)'
+	u = cppad_py.utility.numpy2vec(x, dtype, nx, syntax, 'x')
+	v = cppad_py.utility.numpy2vec(dynamic, dtype, nd, syntax, 'dynamic')
+	a_both   = cppad_py.swig.independent(u, v)
+	ax       = numpy.empty(nx,       dtype=cppad_py.a_double)
+	adynamic = numpy.empty(nd, dtype=cppad_py.a_double)
+	# use copy constructor so a separate copy is made for numpy arrays
+	for i in range(nx) :
+		ax[i] = cppad_py.a_double( a_both[i] )
+	for i in range(nd) :
+		adynamic[i] = cppad_py.a_double( a_both[nx + i] )
+	#
+	return (ax, adynamic)
+# END_INDEPENDENT_SOURCE

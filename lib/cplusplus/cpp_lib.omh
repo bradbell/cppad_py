@@ -9,6 +9,8 @@ $begin cpp_lib$$
 
 $section The C++ Library$$
 
-$childtable%lib/cplusplus/cplusplus.omh%$$
+$childtable%lib/cplusplus/cplusplus.omh
+	%lib/cplusplus/more_cpp.omh
+%$$
 
 $end

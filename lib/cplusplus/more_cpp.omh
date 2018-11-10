@@ -1,25 +1,34 @@
---------------------------------------------------------------------------------
-           cppad_py: A C++ Object Library and Python Interface to Cppad
-            Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
-                This program is distributed under the terms of the
-                GNU General Public License version 3.0 or later see
-                      https://www.gnu.org/licenses/gpl-3.0.txt
---------------------------------------------------------------------------------
-
-$begin more_cppad$$
+-------------------------------------------------------------------------------
+          cppad_py: A C++ Object Library and Python Interface to Cppad
+           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+               GNU General Public License version 3.0 or later see
+                     https://www.gnu.org/licenses/gpl-3.0.txt
+-------------------------------------------------------------------------------
+$begin more_cpp$$
 $dollar @$$
+$spell
+	CppAD
+	cppad_py
+	hpp
+	cplusplus
+	OMhelp
+	xam
+	bool
+	grep
+$$
 
-$section Step To Add More CppAD Functions$$
+$section Steps To Add More C++ Functions$$
 
 $head Purpose$$
 This section outlines the steps for adding more CppAD functionality
 to cppad_py.
-This is done by example showing how the $cref py_new_dynamic$$ was added.
-This example case was chosen becuase it required both changing one
+This is done by example showing how the $cref cpp_fun_new_dynamic$$ was added.
+This example case was chosen because it required both changing one
 C++ function, $cref cpp_independent$$,
-and adding a new C++ function, $cref cpp_new_dynamic$$.
+and adding a new C++ function, $cref cpp_fun_new_dynamic$$.
 
-$head C++ Include File$$
+$head Include File$$
 
 $subhead independent$$
 The include file $code include/cppad/py/fun.hpp$$
@@ -47,50 +56,49 @@ $srccode%cpp%
 %$$
 
 
-$head C++ Documentation$$
+$head Documentation$$
 
 $subhead independent$$
 The C++ file $code lib/cplusplus/fun.cpp$$
-was edited to add the following documentation:
-The following syntax was added
+was edited to add the following syntax documentation:
 $codei%
 	%a_both% = cppad_py::independent(%x%, %dynamic%)
 %$$
 and the corresponding return value was documented; see
-$cref/a_both/independent/a_both/$$.
+$cref/a_both/cpp_independent/a_both/$$.
 
 $subhead new_dynamic$$
 The $cref cpp_fun_new_dynamic$$ documentation was added.
 
 $subhead Example$$
 The corresponding example file was added to the documentation,
-below the $cref independent$$ section, using the OMhelp commands:
+below the $cref cpp_independent$$ section, using the OMhelp commands:
 $code
 	@children%
 		lib/example/cplusplus/fun_dynamic_xam.cpp
 	%@@
 $$
 In addition, a reference to this example was added under the
-$cref/example/independent/Example/$$ heading in the $code independent$$
+$cref/example/cpp_independent/Example/$$ heading in the $code independent$$
 documentation.
 
-$head C++ Implementation$$
+$head Implementation$$
 
 $subhead independent$$
-The following functiton was added to the $code lib/cplusplus/fun.cpp$$ file:
+The following function was added to the $code lib/cplusplus/fun.cpp$$ file:
 $srcfile%lib/cplusplus/fun.cpp%
-	0%// BEGIN_A_BOTH_INDEPENDENT_SOURCE% // END_A_BOTH_INDEPENDENT_SOURCE%0
+	0%// BEGIN_A_BOTH_INDEPENDENT_SOURCE%// END_A_BOTH_INDEPENDENT_SOURCE%0
 %$$
 
 $subhead new_dynamic$$
-The following functitons
+The following function
 was added to the $code lib/cplusplus/fun.cpp$$ file:
 $srcfile%lib/cplusplus/fun.cpp%
-	0%// BEGIN_NEW_DYNAMIC_SOURCE% // END_NEW_DYNAMIC_SOURCE%0
+	0%// BEGIN_NEW_DYNAMIC_SOURCE%// END_NEW_DYNAMIC_SOURCE%0
 %$$
 A similar function was added to the $code a_fun$$ class.
 
-$head C++ Example$$
+$head Example$$
 The file $code lib/example/cplusplus/fun_dynamic_xam.cpp$$ was added
 with the following contents:
 $cref fun_dynamic_xam.cpp$$.
@@ -104,7 +112,9 @@ $code%
 %$$
 was added to the main program.
 
-$head C++ Testing$$
+$head Testing$$
+You must do a git add for all of the new files before running
+$code bin/check_all.sh$$.
 After all the C++ changes above were implemented,
 $code bin/check_all.sh$$ was run and the changes were made
 until the warnings and errors were fixed.
@@ -112,7 +122,7 @@ The command
 $codep
 	grep 'fun_dynamic_xam' check_all.log
 $$
-was used to make sure that the new example / test was run.
+was used to make sure that the new C++ example / test was run.
 Note that if a particular step in $code bin/check_all.sh$$ is failing,
 you can just re-run that step to see if a particular fix works.
 Once the C++ tests were working, the changes where checked into using

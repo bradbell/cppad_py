@@ -12,6 +12,7 @@ $section The Python Library$$
 $childtable%lib/python/fun.py
 	%lib/python/sparse.omh
 	%lib/python/utility.omh
+	%lib/python/more_py.omh
 %$$
 
 $end

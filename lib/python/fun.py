@@ -18,6 +18,7 @@
 #	%lib/python/abort_recording.omh
 #	%lib/python/fun_ctor.py
 #	%lib/python/fun_property.omh
+#	%lib/python/fun_new_dynamic.py
 #	%lib/python/fun_jacobian.py
 #	%lib/python/fun_hessian.py
 #	%lib/python/fun_forward.py
@@ -54,6 +55,10 @@ class d_fun :
 	# size_order
 	def size_order(self) :
 		return self.f.size_order()
+	#
+	# new_dynamic
+	def new_dynamic(self, dynamic) :
+		return cppad_py.d_fun_new_dynamic(self.f, dynamic)
 	#
 	# forward
 	def forward(self, p, xp) :
@@ -133,6 +138,10 @@ class a_fun :
 	# size_order
 	def size_order(self) :
 		return self.af.size_order()
+	#
+	# new_dynamic
+	def new_dynamic(self, adynamic) :
+		return cppad_py.a_fun_new_dynamic(self.af, adynamic)
 	#
 	# forward
 	def forward(self, p, axp) :

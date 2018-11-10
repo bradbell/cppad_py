@@ -1,0 +1,123 @@
+-------------------------------------------------------------------------------
+          cppad_py: A C++ Object Library and Python Interface to Cppad
+           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+               GNU General Public License version 3.0 or later see
+                     https://www.gnu.org/licenses/gpl-3.0.txt
+-------------------------------------------------------------------------------
+$begin more_py$$
+$dollar @$$
+$spell
+	cppad_py
+	adynamic
+	OMhelp
+	xam
+	init
+	grep
+$$
+
+$section Steps To Add More Python Functions$$
+
+$head Purpose$$
+This section outlines the steps for adding more python functionality
+to cppad_py.
+This is done by example showing how the $cref py_fun_new_dynamic$$ was added.
+This example case was chosen because it required both changing one
+python function, $cref py_independent$$,
+and adding a new python function, $cref py_fun_new_dynamic$$.
+
+$head Documentation$$
+
+$subhead independent$$
+The python file $code lib/python/independent.py$$
+was edited to add the following syntax documentation:
+$codei%
+	(%ax%, %adynamic%) = cppad_py::independent(%x%, %dynamic%)
+%$$
+and the extra return value was documented; see
+$cref/adynamic/py_independent/adynamic/$$.
+
+$subhead new_dynamic$$
+The $cref cpp_fun_new_dynamic$$ documentation was added
+in the file $code lib/python/fun_new_dynamic.py$$.
+In addition, the OMhelp command
+$codep
+	%lib/python/fun_new_dynamic.py
+$$
+was added to the file $code lib/python/fun.py$$.
+
+$subhead Example$$
+An example file was added to the documentation,
+below the $cref py_independent$$ section, using the OMhelp commands:
+$code
+	@children%
+		lib/example/python/fun_dynamic_xam.py
+	%@@
+$$
+In addition, a reference to this example was added under the
+$cref/example/py_independent/Example/$$ heading in the $code independent$$
+documentation.
+
+$head Implementation$$
+
+$subhead independent$$
+The $code independent$$ function in $code lib/python/independent.py$$
+was changed to handle dynamic parameters as follows:
+$srcfile%lib/python/independent.py%
+	0%# BEGIN_INDEPENDENT_SOURCE%# END_INDEPENDENT_SOURCE%0
+%$$
+
+$subhead new_dynamic$$
+The following function declaration was added to the
+$code d_fun$$ class
+in the $code lib/python/fun.py$$ file:
+$srccode%py%
+    def new_dynamic(self, dynamic) :
+        return cppad_py.d_fun_new_dynamic(self.f, dynamic)
+%$$
+A similar declaration was added to the $code a_fun$$ class.
+
+$subhead fun_new_dynamic.py$$
+The implementation of $code d_fun_new_dynamic$$ and
+$code a_fun_new_dynamic$$ were added to the file
+$code fun_new_dynamic.py$$
+
+$subhead __init__.py$$
+The following code was added to the file $code lib/python/__init__.py$$:
+$codep
+from cppad_py.fun_new_dynamic import a_fun_new_dynamic
+from cppad_py.fun_new_dynamic import d_fun_new_dynamic
+$$
+
+
+$head Example$$
+The file $code lib/example/python/fun_dynamic_xam.py$$ was added
+with the following contents:
+$cref fun_dynamic_xam.py$$.
+In addition, in the file $code lib/example/python/check_all.py.in$$,
+$code%
+	'fun_dynamic_xam',
+%$$
+was added to the list of python example files.
+
+$head Testing$$
+You must do a git add for all of the new files before running
+$code bin/check_all.sh$$
+After all the changes above were implemented,
+$code bin/check_all.sh$$ was run and the changes were made
+until the warnings and errors were fixed.
+The command
+$codep
+	grep 'fun_dynamic_xam' check_all.log
+$$
+was used to make sure that the new python example / test was run.
+Note that the python files in $code cppad_py$$ are copies of the
+python files in $code lib/python$$.
+So when you fix errors during testing, you need to fix the
+$code lib/python$$ file.
+Also note that if a particular step in $code bin/check_all.sh$$ is failing,
+you can just re-run that step to see if a particular fix works.
+Once the tests were working, the changes where checked into using
+$code git$$.
+
+$end

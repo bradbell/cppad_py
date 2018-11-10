@@ -93,7 +93,7 @@ $children%
 	lib/example/cplusplus/fun_dynamic_xam.cpp
 %$$
 $head Example$$
-Most all of the c++ $code d_fun$$ examples use the $icode ax$$
+Most of the c++ $code d_fun$$ examples use the $icode ax$$
 return syntax.
 The $cref fun_dynamic_xam.cpp$$ example uses the $icode a_both$$
 return syntax.
@@ -424,6 +424,10 @@ and its size must be the same as the size of
 $cref/dynamic/cpp_independent/dynamic/$$ in the corresponding call to
 $code independent$$.
 It specifies new values for the dynamic parameters in $icode f$$.
+
+$head size_order$$
+After this call
+$cref/f.size_order()/cpp_fun_property/size_order/$$ is zero.
 
 $head Example$$
 See $cref fun_dynamic_xam.cpp$$.

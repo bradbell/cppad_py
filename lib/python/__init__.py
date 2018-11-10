@@ -32,6 +32,8 @@ from cppad_py.fun             import a_fun
 from cppad_py.fun             import d_fun
 from cppad_py.fun_jacobian    import a_fun_jacobian
 from cppad_py.fun_jacobian    import d_fun_jacobian
+from cppad_py.fun_new_dynamic import a_fun_new_dynamic
+from cppad_py.fun_new_dynamic import d_fun_new_dynamic
 from cppad_py.fun_reverse     import a_fun_reverse
 from cppad_py.fun_reverse     import d_fun_reverse
 from cppad_py.hes_sparsity    import d_fun_for_hes_sparsity
