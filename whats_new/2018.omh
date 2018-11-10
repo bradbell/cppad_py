@@ -22,6 +22,15 @@ $$
 
 $section Cppad Py Changes During 2018$$
 
+$head 11-10$$
+$list number$$
+Added the $cref/dynamic/py_independent/dynamic/$$
+argument to the $code independent$$ function and the
+$cref/f.new_dynamic/py_fun_new_dynamic/$$ function.
+$lnext
+Added the sections $cref more_cpp$$ and $cref more_py$$.
+$lend
+
 $head 11-09$$
 Include binary operations where first operand is an $code a_double$$
 and second operand is a $code double$$; see
