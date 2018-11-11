@@ -13,7 +13,7 @@
 # $section New Dynamic Parameters$$
 #
 # $head Syntax$$
-# $icode%%f%.new_dynamic(%dynamic%)%$$
+# $icode%f%.new_dynamic(%dynamic%)%$$
 #
 # $head f$$
 # This is either a
