@@ -21,7 +21,7 @@
 # $head Syntax$$
 # $icode%ax% = cppad_py.independent(%x%)
 # %$$
-# $icode%(%ax%, %adynamic)% = cppad_py.independent(%x%)
+# $codei%(%ax%, %adynamic)% = cppad_py.independent(%x%)
 # %$$
 #
 # $head x$$

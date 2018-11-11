@@ -58,7 +58,7 @@ def fun_dynamic_xam() :
 	return ok
 #  END SOURCE
 # -----------------------------------------------------------------------------
-# $begin fun_dynamic_xam.py$$
+# $begin fun_dynamic_xam.py$$ $newlinech #$$
 # $spell
 # $$
 # $section Python: Using Dynamic Parameters: Example and Test$$

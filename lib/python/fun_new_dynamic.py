@@ -10,7 +10,7 @@
 #	numpy
 # $$
 #
-# $section Forward Mode AD$$
+# $section New Dynamic Parameters$$
 #
 # $head Syntax$$
 # $icode%%f%.new_dynamic(%dynamic%)%$$
