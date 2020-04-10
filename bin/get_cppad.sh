@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -20,8 +20,8 @@ fi
 # -----------------------------------------------------------------------------
 # CppAD version information
 remote_repo='https://github.com/coin-or/CppAD.git'
-cppad_version='20181106'
-hash_code='1483ddd649bee948b59e58c6fe9fd7a651794511'
+cppad_version='20200210'
+hash_code='69d069212c039e1fecc5aba0a7ed2b0b331fe047'
 # -----------------------------------------------------------------------------
 # settings in setup.py
 #
