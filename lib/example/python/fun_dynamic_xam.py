@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
 #          cppad_py: A C++ Object Library and Python Interface to Cppad
-#           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+#           Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 #               This program is distributed under the terms of the
 #               GNU General Public License version 3.0 or later see
 #                     https://www.gnu.org/licenses/gpl-3.0.txt
@@ -62,7 +62,7 @@ def fun_dynamic_xam() :
 # $spell
 # $$
 # $section Python: Using Dynamic Parameters: Example and Test$$
-# $srcfile|lib/example/python/fun_dynamic_xam.py|
+# $srcthisfile|
 #	0|#  BEGIN SOURCE|#  END SOURCE|0
 # |$$
 # $end

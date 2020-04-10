@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -72,6 +72,6 @@ def a_double_cond_assign_xam() :
 #	Jacobians
 # $$
 # $section Python: a_double Conditional Assignment: Example and Test$$
-# $srcfile|lib/example/python/a_double_cond_assign_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $srcthisfile|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

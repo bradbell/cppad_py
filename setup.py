@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -209,7 +209,7 @@ sys.exit(0)
 # Before running $code setup.py$$ or $cref get_cppad.sh$$,
 # you should check and possibly change the following settings
 # (which are near the top of $icode%top_srcdir%/setup.py%$$):
-# $srcfile%setup.py%0%# BEGIN_USER_SETTINGS%# END_USER_SETTINGS%$$
+# $srcthisfile%0%# BEGIN_USER_SETTINGS%# END_USER_SETTINGS%$$
 # Each of these settings is described below:
 #
 # $subhead verbose_makefile$$
