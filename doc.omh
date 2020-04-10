@@ -50,7 +50,7 @@ $lend
 
 $head Under Construction$$
 This version is preliminary and the user API is subject to change.
-See $cref whats_new_2018$$ for changes.
+See $cref whats_new_2020$$ for changes.
 
 $head Getting Started$$
 The following is a good place to see what the interface is like:
@@ -72,7 +72,7 @@ $href%http://www.gnu.org/licenses/gpl-3.0.txt%gpl-3.0.txt%$$.
 $childtable%
 	setup.py%
 	lib/library.omh%
-	whats_new/2018.omh
+	whats_new/2020.omh
 %$$
 
 

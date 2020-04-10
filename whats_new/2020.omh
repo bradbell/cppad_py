@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+          cppad_py: A C++ Object Library and Python Interface to Cppad
+           Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+               GNU General Public License version 3.0 or later see
+                     https://www.gnu.org/licenses/gpl-3.0.txt
+-------------------------------------------------------------------------------
+$begin whats_new_2020$$
+$spell
+    Cppad
+    Py
+    omhelp
+$$
+
+$section Cppad Py Changes During 2020$$
+
+$children%
+    whats_new/2018.omh
+%$$
+$head Previous Years$$
+$cref whats_new_2018$$
+
+
+$head 04-10$$
+Change the documentation display on the web using a more recent version of
+the documentation program $code omhelp-20200130$$.
+
+$end
