@@ -49,12 +49,14 @@ fi
 echo_eval cd build
 cmake_binary_path=`pwd`
 #
-if [ -e "cppad-$cppad_version.git" ]
+if [ ! -e "cppad-$cppad_version.git" ]
 then
-	echo_eval rm -rf cppad-$cppad_version.git
+    echo_eval git clone $remote_repo cppad-$cppad_version.git
 fi
-echo_eval git clone $remote_repo cppad-$cppad_version.git
 echo_eval cd cppad-$cppad_version.git
+echo_eval git reset --hard
+echo_eval git checkout master
+echo_eval git pull
 echo_eval git checkout --quiet $hash_code
 check=`grep '^SET(cppad_version' CMakeLists.txt | \
 		sed -e 's|^[^"]*"\([^"]*\)".*|\1|'`
@@ -65,7 +67,10 @@ then
 	exit 1
 fi
 #
-echo_eval mkdir build
+if [ ! -e build ]
+then
+    echo_eval mkdir build
+fi
 echo_eval cd build
 cat << EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
@@ -91,6 +96,7 @@ exit 0
 # $spell
 #	cppad_py
 #	cmake
+#   yyyymmdd
 # $$
 #
 # $section Get Cppad$$
@@ -104,6 +110,15 @@ exit 0
 #
 # $head setup.py$$
 # This program uses some of the settings in $cref setup.py$$.
+#
+# $head Caching$$
+# This procedure cashes previous builds so that when you re-run
+# this script it does not re-do all the work.
+# If you have trouble, try deleting the directory
+# $codei%
+#   build/cppad-%yyyymmdd%.git
+# %$$
+# and re-running this script.
 #
 # $end
 # -----------------------------------------------------------------------------

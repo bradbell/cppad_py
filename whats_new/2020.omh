@@ -22,7 +22,11 @@ $cref whats_new_2018$$
 
 
 $head 04-10$$
+$list number$$
 Change the documentation display on the web using a more recent version of
 the documentation program $code omhelp-20200130$$.
+$lnext
+Add $cref/caching/get_cppad.sh/Caching/$$ to the Cppad install.
+$lend
 
 $end
