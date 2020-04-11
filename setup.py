@@ -10,7 +10,7 @@
 verbose_makefile = "false"
 build_type       = "debug"
 cppad_prefix     = "build/prefix"
-test_cppad       = "fasle"
+test_cppad       = "false"
 extra_cxx_flags  = "-Wall -pedantic-errors -Wno-unused-result -std=c++11"
 # END_USER_SETTINGS
 # -----------------------------------------------------------------------------
