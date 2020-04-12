@@ -30,6 +30,9 @@ $lnext
 The dynamic parameter argument was missing from the
 $cref/syntax/py_independent/Syntax/$$ for the python version
 of the $code independent$$ function.  This has been fixed.
+$lnext
+Improve the $cref/test/setup.py/Test/$$ and $cref/install/setup.py/Install/$$
+discussion in $code setup.py$$.
 $lend
 
 $head 04-10$$

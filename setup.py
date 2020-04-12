@@ -239,20 +239,22 @@ sys.exit(0)
 # $head Get cppad$$
 # The next step is to get a copy of cppad using $cref get_cppad.sh$$.
 #
-# $head Build cppad_py$$
-# The next step is the build the Python cppad_py module using
-# the command:
+#
+# $head Test$$
+# These steps are optional if you already know that cppad_py
+# works on your system.
+#
+# $subhead Build cppad_py$$
+# Build the Python cppad_py module using the command:
 # $codei%
 #	%python% setup.py build_ext --inplace --debug --undef NDEBUG
 # %$$
 # where $icode python$$ is the Python executable you will be
 # using with cppad_py.
-# If you want a faster version, with less error reporting, use
+# You want can test faster version (release version) using
 # $codei%
 #	%python% setup.py build_ext --inplace
 # %$$
-#
-# $head Testing$$
 #
 # $subhead python$$
 # The next step is to test the cppad_py on your system by executing
@@ -283,32 +285,36 @@ sys.exit(0)
 # We need to install cppad_py so you can import it from any directory.
 #
 #
-# $head Installing$$
-# Use the following command to install the debug version of cppad_py:
+# $head Install$$
+# Use the following command to build and install the debug version of cppad_py:
 # $codei%
 #	%python% setup.py build_ext --debug --undef NDEBUG install --prefix=%prefix%
 # %$$
-# or the following to install the release version:
+# Use the following to build and install the release version:
 # $codei%
 #	%python% setup.py build_ext install --prefix=%prefix%
 # %$$
 # This will install $code cppad_py$$ in the directory
 # $codei%
-#	%prefix%/lib/python%major%.%minor%/site_packages/cppad_py
+#	%prefix%/%lib%/python%major%.%minor%/site_packages/cppad_py
 # %$$
-# where $icode major$$ and $icode minor$$ are the major and minor
-# versions for $icode python$$.
+# where $icode lib$$ is $code lib$$ or $code lib64$$,
+# $icode major$$ ($icode minor$$) is the major (minor)
+# version of $icode python$$.
 #
 # $head Python Path$$
-# You can check the current setting of your python path using the commands:
+# Check that the directory
+# $codei%
+#   %prefix%/%lib%/python%major%.%minor%/site_packages
+# %$$
+# is in your python path.
+# Once it is, you should be able to execute the following commands:
 # $codei%
 #	%python%
 #	import sys
 #	print(sys.path)
 #	quit()
 # %$$
-# The directory $icode%prefix%/lib/python%major%.%minor%/site_packages%$$
-# must be in your python path.
 #
 # $end
 # -----------------------------------------------------------------------------
