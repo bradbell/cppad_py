@@ -29,17 +29,23 @@ def a_double_unary_fun_xam() :
 	atmp = cppad_py.a_double(2.0)
 	r2 = atmp.sqrt()
 	#
-	# sin(pi/4)  * sqrt(2) = 1.0;
+	# sin(pi/4)  * sqrt(2) = 1.0
 	atmp = r2 * pi_4.sin()
 	ok = ok and atmp.near_equal(a1)
 	#
-	# cos(pi/4)  * sqrt(2) = 1.0;
+	# cos(pi/4)  * sqrt(2) = 1.0
 	atmp = r2 * pi_4.cos()
 	ok = ok and atmp.near_equal(a1)
 	#
-	# tan(pi/4)  = 1.0;
+	# tan(pi/4)  = 1.0
 	atmp = pi_4.tan()
 	ok = ok and atmp.near_equal(a1)
+	#
+	# erf(0.5) = 0.5204998778130465
+	acheck = cppad_py.a_double(0.5204998778130465)
+	atmp   = cppad_py.a_double(0.5)
+	atmp   = atmp.erf()
+	ok     = ok and atmp.near_equal(acheck)
 	#
 	return( ok )
 #

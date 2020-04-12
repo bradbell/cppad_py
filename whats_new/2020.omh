@@ -10,6 +10,7 @@ $spell
     Cppad
     Py
     omhelp
+	erf
 $$
 
 $section Cppad Py Changes During 2020$$
@@ -20,6 +21,10 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 04-12$$
+Add the $code erf$$ function was added to the
+list of $code a_double$$ unary $cref/fun/a_double_unary_fun/fun/$$
+that have been implemented.
 
 $head 04-10$$
 $list number$$

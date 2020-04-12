@@ -42,6 +42,12 @@ bool a_double_unary_fun_xam(void) {
 	atmp = pi_4.tan() ;
 	ok = ok && atmp.near_equal(a1) ;
 	//
+	// erf(0.5) = 0.5204998778130465
+	a_double acheck(0.5204998778130465);
+	atmp =  a_double(0.5);
+	atmp = atmp.erf();
+	ok = ok && atmp.near_equal(acheck);
+	//
 	return( ok );
 }
 // END SOURCE

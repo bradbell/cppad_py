@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -45,6 +45,17 @@ set -e
 python_major_version=`expr $random_01 + 2`
 echo "Testing python$python_major_version"
 # -----------------------------------------------------------------------------
+# debug_01
+set +e
+debug_01=`expr $RANDOM % 2`
+set -e
+if [ "$debug_01" == '0' ]
+then
+	echo 'Testing release version'
+else
+	echo 'Testing debug version'
+fi
+# -----------------------------------------------------------------------------
 # clean out old informaiton
 if [ -e $logfile ]
 then
@@ -62,10 +73,20 @@ do
 	fi
 done
 # -----------------------------------------------------------------------------
+if [ "$debug_01" == '0' ]
+then
+	setup_args='build_ext --inplace --quiet'
+elif [ "$debug_01" == '1' ]
+then
+	setup_args='build_ext --inplace --quiet --debug --undef NDEBUG'
+else
+	echo 'bin/check_all.sh: program error'
+	exit 1
+fi
 #
 echo_eval_log check_copyright.sh
 echo_eval_log run_omhelp.sh doc
-echo_eval_log python$python_major_version setup.py build_ext --inplace --quiet
+echo_eval_log python$python_major_version setup.py $setup_args
 echo_eval_log cd build
 echo_eval_log make clean
 echo_eval_log make check

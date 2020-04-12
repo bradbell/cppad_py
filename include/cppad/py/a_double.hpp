@@ -2,7 +2,7 @@
 # define CPPAD_PY_A_DOUBLE_HPP
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
-            Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+            Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
@@ -119,6 +119,7 @@ class  CPPAD_PY_LIB_PUBLIC a_double
 	a_double atan(void) const;
 	a_double cos(void) const;
 	a_double cosh(void) const;
+	a_double erf(void) const;
 	a_double exp(void) const;
 	a_double fabs(void) const;
 	a_double log(void) const;

@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
-            Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+            Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
@@ -513,6 +513,7 @@ $spell
 	acosh
 	atanh
 	expm
+	erf
 $$
 
 $section Unary Functions with AD Result$$
@@ -536,6 +537,7 @@ $code asin$$,
 $code atan$$,
 $code cos$$,
 $code cosh$$,
+$code erf$$,
 $code exp$$,
 $code fabs$$,
 $code log$$,
@@ -572,6 +574,7 @@ UNARY_FUN_AD_RESULT(asin)
 UNARY_FUN_AD_RESULT(atan)
 UNARY_FUN_AD_RESULT(cos)
 UNARY_FUN_AD_RESULT(cosh)
+UNARY_FUN_AD_RESULT(erf)
 UNARY_FUN_AD_RESULT(exp)
 UNARY_FUN_AD_RESULT(fabs)
 UNARY_FUN_AD_RESULT(log)
