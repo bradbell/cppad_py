@@ -34,7 +34,7 @@ $spell
 	xam
 $$
 
-$section cppad_py-20200411: A C++ Object Library and Python Interface to Cppad$$
+$section cppad_py-20200412: A C++ Object Library and Python Interface to Cppad$$
 
 $head Purpose$$
 $list number$$
