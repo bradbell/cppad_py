@@ -22,9 +22,15 @@ $head Previous Years$$
 $cref whats_new_2018$$
 
 $head 04-12$$
+$list number$$
 Add the $code erf$$ function was added to the
 list of $code a_double$$ unary $cref/fun/a_double_unary_fun/fun/$$
 that have been implemented.
+$lnext
+The dynamic parameter argument was missing from the
+$cref/syntax/py_independent/Syntax/$$ for the python version
+of the $code independent$$ function.  This has been fixed.
+$lend
 
 $head 04-10$$
 $list number$$

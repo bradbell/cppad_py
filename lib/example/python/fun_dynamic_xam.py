@@ -44,7 +44,6 @@ def fun_dynamic_xam() :
 	ok = ok and f.size_order()  == 0
 	#
 	# zero order forward mode using same values as during the recording
-	y  = cppad_py.vec_double(1)
 	y  = f.forward(0, x)
 	ok = ok and y[0] == (x[0] + x[1] + dynamic[0] + dynamic[1])
 	#
