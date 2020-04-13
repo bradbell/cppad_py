@@ -66,6 +66,8 @@ class  CPPAD_PY_LIB_PUBLIC a_double
 	bool variable(void) const;
 	// is the value of this object nearly equal
 	bool near_equal(const a_double& ae);
+	// convert possible variable to a parameter
+	a_double var2par(void) const;
 	//
 	// unary + and -
 	const a_double& operator+(void) const;

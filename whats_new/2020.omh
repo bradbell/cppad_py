@@ -11,6 +11,7 @@ $spell
     Py
     omhelp
 	erf
+	var
 $$
 
 $section Cppad Py Changes During 2020$$
@@ -21,9 +22,16 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+
 $head 04-13$$
+$list number$$
 The $icode%z% = pow(%x%, %y%)%$$ functions was added; see
 $cref a_double_binary$$.
+$lnext
+Add the $cref/var2par/a_double_property/var2par/$$ function
+and improve the notation in the
+$cref/near_equal/a_double_property/near_equal/$$ notation.
+$lend
 
 $head 04-12$$
 $list number$$

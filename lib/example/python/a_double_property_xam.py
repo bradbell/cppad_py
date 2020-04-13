@@ -24,7 +24,11 @@ def a_double_property_xam() :
 	#
 	# near_equal
 	r3 = a3.sqrt()
-	ok = ok and a3.near_equal( r3 * r3) ;
+	ok = ok and a3.near_equal( r3 * r3)
+	#
+	# var2par
+	p3  = a3.var2par()
+	ok  = ok and p3.value() == 3.0
 	#
 	return( ok )
 #

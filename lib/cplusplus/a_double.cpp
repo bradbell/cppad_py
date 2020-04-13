@@ -197,7 +197,9 @@ $spell
 	const
 	perl
 	bool
-	ae
+	aother
+	ap
+	var
 $$
 
 $section Properties of an a_double Object$$
@@ -209,7 +211,9 @@ $icode%p% = %ad%.parameter()
 %$$
 $icode%v% = %ad%.variable()
 %$$
-$icode%n% = %ad%.near_equal(%ae%)
+$icode%e% = %ad%.near_equal(%aother%)
+%$$
+$icode%ap% = %ad%.var2par()
 %$$
 
 
@@ -225,13 +229,15 @@ $codei%
 	double %d%
 %$$
 It is the value of $icode ad$$, as a constant function.
-In addition it must represent a constant functions; i.e.,
-$icode ad$$ not depend on the
+
+$subhead Restriction$$
+The object $icode ad$$ must not depend on the
 $cref/independent/cpp_independent/$$
 variables when $icode%ad%.value()%$$ is called.
 If it does depend on the independent variables,
 you will have to wait until the current recording is terminated
-before you can access its value.
+before you can access its value; see
+$cref/var2par/a_double_property/var2par/$$ below.
 
 $head parameter$$
 The result $icode p$$ has prototype
@@ -250,21 +256,31 @@ It is true if $icode ad$$ is not a constant function; i.e.,
 $icode ad$$ depends on the independent variables.
 
 $head near_equal$$
-The argument $icode ae$$,
-and the result $icode n$$, have prototype
+The argument $icode aother$$,
+and the result $icode e$$, have prototype
 $codei%
-	const a_double& %ae%
-	bool %n%
+	const a_double& %aother%
+	bool %e%
 %$$
-The result is true if $icode ae$$ is nearly equal to $icode ae$$.
+The result is true if $icode ad$$ is nearly equal to $icode aother$$.
 To be specific, the result is
 $latex \[
-	| d - e | \leq 100 \; \varepsilon \; ( |d| + |e| )
+	| d - o | \leq 100 \; \varepsilon \; ( |d| + |o| )
 \] $$
-where $icode d$$ and $icode e$$ are the value corresponding to
-$icode ad$$ and $icode ae$$ and
+where $icode d$$ and $icode o$$ are the value corresponding to
+$icode ad$$ and $icode aother$$ and
 $latex \varepsilon$$ is machine epsilon corresponding
 to the type $code double$$.
+
+$head var2par$$
+The result has prototype
+$codei%
+	a_double %ap%
+%$$
+It has the same value as $icode ad$$ and is sure to be a parameter
+($icode ad$$ may or may not be a variable).
+This can be useful when you want to access the value of $icode ad$$
+while is a variable; $cref/value/a_double_property/value/$$ above.
 
 $children%
 	lib/example/cplusplus/a_double_property_xam.cpp%
@@ -288,13 +304,18 @@ bool a_double::variable(void) const
 {	bool result = CppAD::Variable( *ptr() );
 	return result;
 }
-bool a_double::near_equal(const a_double& ae)
+bool a_double::near_equal(const a_double& aother)
 {	double d       = CppAD::Value( CppAD::Var2Par( *ptr() ) );
-	double e       = CppAD::Value( CppAD::Var2Par( *ae.ptr() ) );
-	double diff    = std::fabs( d - e );
+	double o       = CppAD::Value( CppAD::Var2Par( *aother.ptr() ) );
+	double diff    = std::fabs( d - o );
 	double eps     = std::numeric_limits<double>::epsilon();
-	double sum_abs = std::fabs(d) + std::fabs(e);
+	double sum_abs = std::fabs(d) + std::fabs(o);
 	return diff <= 100.0 * eps * sum_abs;
+}
+a_double a_double::var2par() const
+{	a_double result;
+	*result.ptr() = CppAD::Var2Par( *ptr() );
+	return result;
 }
 /*
 -------------------------------------------------------------------------------

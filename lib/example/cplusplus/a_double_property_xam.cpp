@@ -27,6 +27,10 @@ bool a_double_property_xam(void) {
 	a_double r3 = a3.sqrt() ;
 	ok = ok && a3.near_equal( r3 * r3) ;;
 	//
+	// var2par
+	a_double p3 = a3.var2par();
+	ok &= p3.value() == 3.0;
+	//
 	return( ok );
 }
 // END SOURCE
