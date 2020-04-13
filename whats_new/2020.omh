@@ -21,6 +21,10 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 04-13$$
+The $icode%z% = pow(%x%, %y%)%$$ functions was added; see
+$cref a_double_binary$$.
+
 $head 04-12$$
 $list number$$
 Add the $code erf$$ function was added to the

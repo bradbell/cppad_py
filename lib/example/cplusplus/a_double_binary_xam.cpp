@@ -36,6 +36,11 @@ bool a_double_binary_xam(void) {
 	ok = ok && a6 == 6.0;
 	ok = ok && a1_minus == -1.0;
 	ok = ok && a23.near_equal( a_double(2.0 / 3.0 ) );
+	// -----------------------------------------------------------------------
+	a_double a8 = a2.pow(a3);
+	a_double a9 = a3.pow(2.0);
+	ok = ok && a8.near_equal( a_double(8.0) );
+	ok = ok && a9.near_equal( a_double(9.0) );
 	//
 	return( ok );
 }

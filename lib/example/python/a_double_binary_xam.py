@@ -11,10 +11,10 @@
 def a_double_binary_xam() :
 	#
 	import numpy
-	import cppad_py
+	from cppad_py import a_double
 	ok = True
-	a2 = cppad_py.a_double(2.0)
-	a3 = cppad_py.a_double(3.0)
+	a2 = a_double(2.0)
+	a3 = a_double(3.0)
 	# ---------------------------------------------------------------------
 	a5       = a2 + a3
 	a6       = a2 * a3
@@ -24,7 +24,7 @@ def a_double_binary_xam() :
 	ok = ok and a5 == 5.0
 	ok = ok and a6 == 6.0
 	ok = ok and a1_minus == -1.0
-	ok = ok and a23.near_equal( cppad_py.a_double(2.0 / 3.0) )
+	ok = ok and a23.near_equal( a_double(2.0 / 3.0) )
 	# ---------------------------------------------------------------------
 	a5       = a2 + 3.0
 	a6       = a2 * 3.0
@@ -34,7 +34,13 @@ def a_double_binary_xam() :
 	ok = ok and a5 == 5.0
 	ok = ok and a6 == 6.0
 	ok = ok and a1_minus == -1.0
-	ok = ok and a23.near_equal( cppad_py.a_double(2.0 / 3.0) )
+	ok = ok and a23.near_equal( a_double(2.0 / 3.0) )
+	# ---------------------------------------------------------------------
+	a8 = a2.pow(a3)
+	a9 = a3.pow(2.0)
+	ok = ok and a8.near_equal( a_double(8.0) )
+	ok = ok and a9.near_equal( a_double(9.0) )
+	# ---------------------------------------------------------------------
 	#
 	return( ok )
 #

@@ -314,13 +314,17 @@ $icode%az% = %ax% %op% %ay%
 %$$
 $icode%az% = %ax% %op% %y%
 %$$
+$icode%az% = pow(%ax%, %ay%)
+%$$
+$icode%az% = pow(%ax%, %y%)
+%$$
 
 $head op$$
 The binary operator $icode op$$ is one of the following:
-$code +$$ (addition),
-$code -$$ (subtraction),
-$code *$$ (multiplication),
-$code /$$ (division).
+addition $code +$$,
+subtraction $code -$$,
+multiplication $code *$$,
+or division $code /$$.
 
 $head ax$$
 This object has prototype
@@ -360,6 +364,16 @@ BINARY_OP_AD_RESULT(+)
 BINARY_OP_AD_RESULT(-)
 BINARY_OP_AD_RESULT(*)
 BINARY_OP_AD_RESULT(/)
+a_double a_double::pow(const a_double& ad) const
+{	a_double result;
+	*result.ptr() = CppAD::pow( *ptr(), *ad.ptr() );
+	return result;
+}
+a_double a_double::pow(const double& d) const
+{	a_double result;
+	*result.ptr() = CppAD::pow( *ptr(), d );
+	return result;
+}
 /*
 -------------------------------------------------------------------------------
 $begin a_double_compare$$

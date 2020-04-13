@@ -129,6 +129,10 @@ class  CPPAD_PY_LIB_PUBLIC a_double
 	a_double tan(void) const;
 	a_double tanh(void) const;
 	//
+	// binary functions with AD result
+	a_double pow(const a_double& exponent) const;
+	a_double pow(const double& exponent) const;
+	//
 	// conditional assignment
 	void cond_assign(
 		const char*     cop       ,
