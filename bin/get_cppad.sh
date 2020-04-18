@@ -78,9 +78,13 @@ cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
 	-D cppad_cxx_flags="$extra_cxx_flags" \\
 	..
 EOF
+# We use debug_even so that the resulting library will be compiled with
+# CPPAD_DEBUG_AND_RELEASE defined (can be used with both).
+# Note that this causes the library code to be mixed (both debug and release).
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
 	-D cppad_prefix="$top_source_directory/$cppad_prefix"  \
 	-D cppad_cxx_flags="$extra_cxx_flags" \
+	-D cppad_debug_which='debug_even' \
 	..
 #
 if [ "$test_cppad" == 'true' ]
@@ -97,6 +101,8 @@ exit 0
 #	cppad_py
 #	cmake
 #   yyyymmdd
+#	makefile
+#	cxx
 # $$
 #
 # $section Get Cppad$$
@@ -109,7 +115,11 @@ exit 0
 # $cref/top source directory/setup.py/Download/Top Source Directory/$$.
 #
 # $head setup.py$$
-# This program uses some of the settings in $cref setup.py$$.
+# This program uses the following settings in $cref setup.py$$:
+# $code verbose_makefile$$,
+# $code extra_cxx_flags$$,
+# $code cppad_prefix$$,
+# $code test_cppad$$.
 #
 # $head Caching$$
 # This procedure cashes previous builds so that when you re-run
