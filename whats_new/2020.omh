@@ -14,6 +14,7 @@ $spell
 	var
     xq
     yq
+	inplace
 $$
 
 $section Cppad Py Changes During 2020$$
@@ -25,10 +26,15 @@ $head Previous Years$$
 $cref whats_new_2018$$
 
 $head 04-18$$
+$list number$$
 Change $icode yq$$ to $icode xq$$, correct documentation,
 for $icode xq$$ in the
 $cref/c++/cpp_fun_reverse/xq/$$ and $cref/python/py_fun_reverse/xq/$$
 reverse mode documentation.
+$lnext
+Remove the $code --inplace$$ option from the
+$cref/syntax/setup.py/Syntax/$$ for building the cppad_py python module.
+$lend
 
 $head 04-13$$
 $list number$$

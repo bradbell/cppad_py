@@ -167,7 +167,6 @@ sys.exit(0)
 # $spell
 #	makefile
 #	cxx
-#	inplace
 #	undef
 #	https://github.com/bradbell/cppad_py.git
 #	srcdir
@@ -178,7 +177,7 @@ sys.exit(0)
 # $section Configure and Build the cppad_py Python Module$$
 #
 # $head Syntax$$
-# $icode%python% setup.py build_ext --inplace [--debug] [--undef NDEBUG]
+# $icode%python% setup.py build_ext [--debug] [--undef NDEBUG]
 # %$$
 # where $icode python$$ is the Python executable you will be using with
 # cppad_py.
@@ -254,13 +253,13 @@ sys.exit(0)
 # $subhead Build cppad_py$$
 # Build the Python cppad_py module using the command:
 # $codei%
-#	%python% setup.py build_ext --inplace --debug --undef NDEBUG
+#	%python% setup.py build_ext --debug --undef NDEBUG
 # %$$
 # where $icode python$$ is the Python executable you will be
 # using with cppad_py.
 # You want can test faster version (release version) using
 # $codei%
-#	%python% setup.py build_ext --inplace
+#	%python% setup.py build_ext
 # %$$
 #
 # $subhead python$$
@@ -282,9 +281,16 @@ sys.exit(0)
 # %$$
 #
 # $subhead import$$
-# If you are in $icode top_srcdir$$ you should be able to execute the
-# following commands:
+# If you are in $icode top_srcdir$$ there should be sub-directory named
 # $codei%
+#	build/lib.%system%-%major%.%minor%
+# %$$
+# where $icode system$$ describes you system,
+# $icode major$$ and $icode minor$$ are the major and minor
+# version for the python you are using.
+# You should be able to import cppad_py using the following commands:
+# $codei%
+#	cd build/lib.%system%-%major%.%minor%
 #	%python%
 #	import cppad_py
 #	quit()

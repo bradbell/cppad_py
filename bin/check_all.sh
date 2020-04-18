@@ -75,10 +75,10 @@ done
 # -----------------------------------------------------------------------------
 if [ "$debug_01" == '0' ]
 then
-	setup_args='build_ext --inplace --quiet'
+	setup_args='build_ext --quiet'
 elif [ "$debug_01" == '1' ]
 then
-	setup_args='build_ext --inplace --quiet --debug --undef NDEBUG'
+	setup_args='build_ext --quiet --debug --undef NDEBUG'
 else
 	echo 'bin/check_all.sh: program error'
 	exit 1

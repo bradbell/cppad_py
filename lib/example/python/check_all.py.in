@@ -1,14 +1,23 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 import sys
 import os
-# put top source directory at beginning of python search path
-sys.path.insert(0, '@CMAKE_SOURCE_DIR@')
+setup_builddir = '@CMAKE_SOURCE_DIR@/build'
+python_version = '-' + str(sys.version_info[0]) + '.' + str(sys.version_info[1])
+count = 0
+for name in os.listdir(setup_builddir) :
+	if name.startswith('lib.') and name.endswith(python_version) :
+		path2cppad_py = setup_builddir + '/' + name
+		sys.path.insert(0, path2cppad_py)
+		count = count + 1
+if count != 1 :
+	msg  = 'check_all.py: Cannot find the library build by setup.py\n'
+	sys.exit(msg)
 #
 def run_test(name) :
 	namespace = {} # not needed in Python 2
