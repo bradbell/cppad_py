@@ -21,7 +21,10 @@ import os
 import sys
 import subprocess
 import shutil
-from distutils.core import setup, Extension
+if sys.version_info[0] == 3 :
+	from setuptools import setup, Extension
+else :
+	from distutils.core import setup, Extension
 # -----------------------------------------------------------------------------
 def quote_str(s) :
 	return "'" + s + "'"
@@ -152,6 +155,10 @@ setup(
 	ext_modules  = [ extension_module ],
 	packages     = [ 'cppad_py' ]
 )
+# setuptools does not put result in proper directory (distutils does)
+for name in os.listdir('.') :
+	if name.startswith('_swig.') :
+		shutil.move(name, 'cppad_py/' + name)
 # -----------------------------------------------------------------------------
 print('setup.py: OK')
 sys.exit(0)
