@@ -38,13 +38,6 @@ then
 	exit 1
 fi
 # -----------------------------------------------------------------------------
-# python_major_version
-set +e
-random_01=`expr $RANDOM % 2`
-set -e
-python_major_version=`expr $random_01 + 2`
-echo "Testing python$python_major_version"
-# -----------------------------------------------------------------------------
 # debug_01
 set +e
 debug_01=`expr $RANDOM % 2`
@@ -86,12 +79,12 @@ fi
 #
 echo_eval_log check_copyright.sh
 echo_eval_log run_omhelp.sh doc
-echo_eval_log python$python_major_version setup.py $setup_args
+echo_eval_log python3 setup.py $setup_args
 echo_eval_log cd build
 echo_eval_log make clean
 echo_eval_log make check
 echo_eval_log cd ../lib/example/python
-echo_eval_log python$python_major_version check_all.py
+echo_eval_log python3 check_all.py
 echo_eval_log cd ../../..
 #
 # 2DO: figure out where this waring is coming from and what it means
