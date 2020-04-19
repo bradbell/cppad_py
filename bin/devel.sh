@@ -12,7 +12,7 @@ image_link='https://bradbell.github.io/cppad_py'
 # List of files, besides CMakeLists.txt, that have have a copy of the
 # version number (can be empty).
 version_files='
-    doc.omh
+	doc.omh
 '
 #
 # List of special files, for this repository, that the devel tools ignore.
@@ -20,9 +20,10 @@ version_files='
 # Files that are created by a program, and checked into the repository,
 # should also be in this list.
 ignore_files='
-    .gitignore
-    batch_edit.sed
-    bin/devel.sh
+	.gitignore
+	batch_edit.sed
+	bin/devel.sh
+	MANIFEST.in
 '
 # ----------------------------------------------------------------------------
 echo "copyright_owner=$copyright_owner"

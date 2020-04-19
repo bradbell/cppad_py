@@ -118,15 +118,13 @@ else :
 os.chdir('..')
 # -----------------------------------------------------------------------------
 # extension_sources
-cppad_py_extension_sources = [ 'cppad_py/cppad_py_swig_wrap.cpp' ]
+cppad_py_extension_sources = [ 'lib/cppad_py_swig.i' ]
 for name in os.listdir('lib/cplusplus') :
 	if name.endswith('.cpp') :
 		cppad_py_extension_sources.append( 'lib/cplusplus/' + name)
 # -----------------------------------------------------------------------------
 # extension_module
-include_dirs     = [ cppad_include_dir ]
-include_dirs.append( os.getcwd() + '/build/lib' )
-include_dirs.append( os.getcwd() + '/include' )
+include_dirs     = [ cppad_include_dir, 'include' ]
 extra_compile_args  = extra_cxx_flags.split()
 extra_compile_args += swig_cxx_flags.split()
 undef_macros        = list()
@@ -138,6 +136,7 @@ cppad_py_extension_name   = 'cppad_py/_swig'
 extension_module          = Extension(
 	cppad_py_extension_name                               ,
 	cppad_py_extension_sources                            ,
+	swig_opts          = [ '-c++', '-I./include' ]        ,
 	include_dirs       = include_dirs                     ,
 	extra_compile_args = extra_compile_args               ,
 	undef_macros       = undef_macros

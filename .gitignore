@@ -17,3 +17,8 @@ new
 /lib/example/python/check_all.py
 /lib/example/python/*.pyc
 /lib/example/python/__pycache__
+# 
+# files created by swig
+/lib/cppad_py_swig_wrap.cpp 
+/lib/swig.py
+
