@@ -25,6 +25,10 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 04-19$$
+Move the python source that gets distributed from $code lib/python$$
+to $code lib/python/cppad_py$$ so that more like a standard python package.
+
 $head 04-18$$
 $list number$$
 Change $icode yq$$ to $icode xq$$, correct documentation,

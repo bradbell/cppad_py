@@ -7,17 +7,8 @@
 # -----------------------------------------------------------------------------
 import sys
 import os
-setup_builddir = '@CMAKE_SOURCE_DIR@/build'
-python_version = '-' + str(sys.version_info[0]) + '.' + str(sys.version_info[1])
-count = 0
-for name in os.listdir(setup_builddir) :
-	if name.startswith('lib.') and name.endswith(python_version) :
-		path2cppad_py = setup_builddir + '/' + name
-		sys.path.insert(0, path2cppad_py)
-		count = count + 1
-if count != 1 :
-	msg  = 'check_all.py: Cannot find the library build by setup.py\n'
-	sys.exit(msg)
+top_srcdir = '@CMAKE_SOURCE_DIR@'
+sys.path.insert(0, top_srcdir)
 #
 def run_test(name) :
 	namespace = {} # not needed in Python 2

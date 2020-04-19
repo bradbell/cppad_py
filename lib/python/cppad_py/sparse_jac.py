@@ -1,12 +1,14 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_sparse_hes$$ $newlinech #$$
+# $begin py_sparse_jac$$ $newlinech #$$
 # $spell
+#	Jacobians
+#	jac
 #	Jacobian
 #	Taylor
 #	rcv
@@ -15,42 +17,52 @@
 #	const
 #	vec
 #	rc
-#	hes
 #	cppad_py
 #	numpy
 # $$
 #
-# $section Computing Sparse Hessians$$
+# $section Computing Sparse Jacobians$$
 #
 # $head Syntax$$
-# $icode%work% = cppad_py.sparse_hes_work()
+# $icode%work% = cppad_py.sparse_jac_work()
 # %$$
-# $icode%n_sweep% = %f%.sparse_hes(%subset%, %x%, %r%, %pattern%, %work%)
+# $icode%n_sweep% = %f%.sparse_jac_for(%subset%, %x%, %pattern%, %work%)
 # %$$
+# $icode%n_sweep% = %f%.sparse_jac_rev(%subset%, %x%, %pattern%, %work%)%$$
 #
 # $head Purpose$$
 # We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
 # function corresponding to $icode f$$.
-# Given a vector $latex r \in \B{R}^m$$, define
+# The syntax above takes advantage of sparsity when computing the Jacobian
 # $latex \[
-#	H(x) = (r^\R{T} F)^{(2)} ( x )
+#	J(x) = F^{(1)} (x)
 # \] $$
-# This routine takes advantage of sparsity when computing elements
-# of the Hessian $latex H(x)$$.
+# In the sparse case, this should be faster and take less memory than
+# $cref py_fun_jacobian$$.
+# We use the notation $latex J_{i,j} (x)$$ to denote the partial of
+# $latex F_i (x)$$ with respect to $latex x_j$$.
+#
+# $head sparse_jac_for$$
+# This function uses first order forward mode sweeps $cref py_fun_forward$$
+# to compute multiple columns of the Jacobian at the same time.
+#
+# $head sparse_jac_rev$$
+# This function uses first order reverse mode sweeps $cref py_fun_reverse$$
+# to compute multiple rows of the Jacobian at the same time.
 #
 # $head f$$
 # This object must have been returned by a previous call to the python
 # $cref/d_fun/py_fun_ctor/$$ constructor.
 # Note that the Taylor coefficients stored in $icode f$$ are affected
 # by this operation; see
-# $cref/uses forward/py_sparse_hes/Uses Forward/$$ below.
+# $cref/uses forward/py_sparse_jac/Uses Forward/$$ below.
 #
 # $head subset$$
 # This argument must have be a $cref/matrix/py_sparse_rcv/matrix/$$
 # returned by the $code sparse_rcv$$ constructor.
-# Its row size and column size is $icode n$$; i.e.,
-# $icode%subset%.nr() == %n%$$ and $icode%subset%.nc() == %n%$$.
-# It specifies which elements of the Hessian are computed.
+# Its row size is $icode%subset%.nr() == %m%$$,
+# and its column size is $icode%subset%.nc() == %n%$$.
+# It specifies which elements of the Jacobian are computed.
 # The input value of its value vector
 # $icode%subset%.val()%$$ does not matter.
 # Upon return it contains the value of the corresponding elements
@@ -61,55 +73,46 @@
 # $head x$$
 # This argument is a numpy vector with $code float$$ elements
 # and size $icode n$$.
-# It specifies the point at which to evaluate the Hessian $latex H(x)$$.
-#
-# $head r$$
-# This argument is a numpy vector with $code float$$ elements
-# and size $icode m$$.
-# It specifies the multiplier for each component of $latex F(x)$$;
-# i.e., $latex r_i$$ is the multiplier for $latex F_i (x)$$.
+# It specifies the point at which to evaluate the Jacobian $latex J(x)$$.
 #
 # $head pattern$$
 # This argument must have be a $cref/pattern/py_sparse_rc/pattern/$$
 # returned by the $code sparse_rc$$ constructor.
-# Its row size and column sizes are $icode n$$; i.e.,
-# $icode%pattern%.nr() == %n%$$ and $icode%pattern%.nc() == %n%$$.
-# It is a sparsity pattern for the Hessian $latex H(x)$$.
+# Its row size is $icode%pattern%.nr() == %m%$$,
+# and its column size is $icode%pattern%.nc() == %n%$$.
+# It is a sparsity pattern for the Jacobian $latex J(x)$$.
 # This argument is not used (and need not satisfy any conditions),
-# when $cref/work/py_sparse_hes/work/$$ is non-empty.
+# when $cref/work/py_sparse_jac/work/$$ is non-empty.
 #
 # $head work$$
 # This argument must have been constructed by the call
 # $codei%
-#   %work% = cppad_py.sparse_hes_work()
+#	%work% = cppad_py.sparse_jac_work()
 # %$$
 # We refer to its initial value,
 # and its value after $icode%work%.clear()%$$, as empty.
 # If it is empty, information is stored in $icode work$$.
 # This can be used to reduce computation when
 # a future call is for the same object $icode f$$,
-# and the same subset of the Hessian.
-# If either of these values change, use $icode%work%.clear()%$$ to
+# the same member function $code sparse_jac_for$$ or $code sparse_jac_rev$$,
+# and the same subset of the Jacobian.
+# If any of these values change, use $icode%work%.clear()%$$ to
 # empty this structure.
 #
 # $head n_sweep$$
-# The return value $icode n_sweep$$ has prototype
-# $codei%
-#	int %n_sweep%
-# %$$
-# It is the number of first order forward sweeps
-# used to compute the requested Hessian values.
-# Each first forward sweep is followed by a second order reverse sweep
-# so it is also the number of reverse sweeps.
+# This return value is and $code int$$.
+# If $code sparse_jac_for$$ ($code sparse_jac_rev$$) is used,
+# $icode n_sweep$$ is the number of first order forward (reverse) sweeps
+# used to compute the requested Jacobian values.
 # This is proportional to the total computational work,
 # not counting the zero order forward sweep,
-# or combining multiple columns and rows into a single sweep.
+# or combining multiple columns (rows) into a single sweep.
 #
 # $head Uses Forward$$
 # After each call to $cref py_fun_forward$$,
 # the object $icode f$$ contains the corresponding Taylor coefficients
 # for all the variables in the operation sequence..
-# After a call to $code sparse_hes$$
+# After a call to $code sparse_jac_forward$$ or $code sparse_jac_rev$$,
 # the zero order coefficients correspond to
 # $codei%
 #	%f%.forward(0, %x%)
@@ -117,24 +120,34 @@
 # All the other forward mode coefficients are unspecified.
 #
 # $children%
-#	lib/example/python/sparse_hes_xam.py
+#	lib/example/python/sparse_jac_xam.py
 # %$$
 # $head Example$$
-# $cref sparse_hes_xam.py$$
+# $cref sparse_jac_xam.py$$
 #
 # $end
 # -----------------------------------------------------------------------------
 # undocumented fact: pattern.rc (subset.rcv) is vec_int version of
 # sparsity pattern (sparse matrix)
 import cppad_py
-def d_fun_sparse_hes(f, subset, x, r, pattern, work) :
+def d_fun_sparse_jac_for(f, subset, x, pattern, work) :
 	"""
-	n_sweep = f.sparse_hes(subset, x, r, pattern, work)
+	n_sweep = f.sparse_jac_for(subset, x, pattern, work)
 	"""
 	n       = f.size_domain()
 	m       = f.size_range()
 	dtype   = float
-	syntax  = 'f.sparse_hes(subset, x, r, pattern, work)'
+	syntax  = 'f.sparse_jac_for(subset, x, pattern, work)'
 	u       = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
-	v       = cppad_py.utility.numpy2vec(r, dtype, m, syntax, 'r')
-	f.sparse_hes(subset.rcv, u, v, pattern.rc, work)
+	f.sparse_jac_for(subset.rcv, u, pattern.rc, work)
+#
+def d_fun_sparse_jac_rev(f, subset, x, pattern, work) :
+	"""
+	n_sweep = f.sparse_jac_rev(subset, x, pattern, work)
+	"""
+	n       = f.size_domain()
+	m       = f.size_range()
+	dtype   = float
+	syntax  = 'f.sparse_jac_rev(subset, x, pattern, work)'
+	u       = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
+	f.sparse_jac_rev(subset.rcv, u, pattern.rc, work)

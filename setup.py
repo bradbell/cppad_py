@@ -32,7 +32,7 @@ def quote_str(s) :
 # copy lib/python -> cppad_py
 if os.path.exists('cppad_py') :
 	shutil.rmtree('cppad_py')
-shutil.copytree('lib/python', 'cppad_py');
+shutil.copytree('lib/python/cppad_py', 'cppad_py');
 # -----------------------------------------------------------------------------
 # python_version
 python_major_version = sys.version_info.major
@@ -155,10 +155,20 @@ setup(
 	ext_modules  = [ extension_module ],
 	packages     = [ 'cppad_py' ]
 )
-# setuptools does not put result in proper directory (distutils does)
-for name in os.listdir('.') :
-	if name.startswith('_swig.') :
-		shutil.move(name, 'cppad_py/' + name)
+# copy swig extension library to cppad_py
+count = 0
+for dname in os.listdir('build') :
+	if dname.startswith('lib.') and dname.endswith('-' + python_version):
+		for fname in os.listdir('build/' + dname + '/cppad_py' ) :
+			if fname.startswith('_swig.') :
+				src_file = 'build/' + dname + '/cppad_py/' + fname
+				dst_file = 'cppad_py/' + fname
+				shutil.copyfile(src_file, dst_file)
+				shutil.copymode(src_file, dst_file)
+				count = count + 1
+if count != 1 :
+	msg ='setup.py: could not find swig library to copy for testing'
+	sys.exit(msg)
 # -----------------------------------------------------------------------------
 print('setup.py: OK')
 sys.exit(0)
@@ -281,16 +291,9 @@ sys.exit(0)
 # %$$
 #
 # $subhead import$$
-# If you are in $icode top_srcdir$$ there should be sub-directory named
+# If you are in the $icode top_srcdir$$ directory,
+# you should be able to import cppad_py using the following commands:
 # $codei%
-#	build/lib.%system%-%major%.%minor%
-# %$$
-# where $icode system$$ describes you system,
-# $icode major$$ and $icode minor$$ are the major and minor
-# version for the python you are using.
-# You should be able to import cppad_py using the following commands:
-# $codei%
-#	cd build/lib.%system%-%major%.%minor%
 #	%python%
 #	import cppad_py
 #	quit()

@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -14,16 +14,16 @@
 # $section Cppad Py AD Functions$$
 #
 # $comment Files that have Python specific Implementation and Documention$$
-# $childtable%lib/python/independent.py
-#	%lib/python/abort_recording.omh
-#	%lib/python/fun_ctor.py
-#	%lib/python/fun_property.omh
-#	%lib/python/fun_new_dynamic.py
-#	%lib/python/fun_jacobian.py
-#	%lib/python/fun_hessian.py
-#	%lib/python/fun_forward.py
-#	%lib/python/fun_reverse.py
-#	%lib/python/fun_optimize.omh
+# $childtable%lib/python/cppad_py/independent.py
+#	%lib/python/cppad_py/abort_recording.omh
+#	%lib/python/cppad_py/fun_ctor.py
+#	%lib/python/cppad_py/fun_property.omh
+#	%lib/python/cppad_py/fun_new_dynamic.py
+#	%lib/python/cppad_py/fun_jacobian.py
+#	%lib/python/cppad_py/fun_hessian.py
+#	%lib/python/cppad_py/fun_forward.py
+#	%lib/python/cppad_py/fun_reverse.py
+#	%lib/python/cppad_py/fun_optimize.omh
 # %$$
 #
 # $end

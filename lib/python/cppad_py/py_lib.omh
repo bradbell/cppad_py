@@ -1,20 +1,18 @@
 -------------------------------------------------------------------------------
           cppad_py: A C++ Object Library and Python Interface to Cppad
-           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+           Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin py_sparse$$
+$begin py_lib$$
 
-$section Python Sparsity Routines$$
+$section The Python Library$$
 
-$childtable%lib/python/sparse_rc.py
-	%lib/python/sparse_rcv.py
-	%lib/python/jac_sparsity.omh
-	%lib/python/hes_sparsity.py
-	%lib/python/sparse_jac.py
-	%lib/python/sparse_hes.py
+$childtable%lib/python/cppad_py/fun.py
+	%lib/python/cppad_py/sparse.omh
+	%lib/python/cppad_py/utility.omh
+	%lib/python/cppad_py/more_py.omh
 %$$
 
 $end

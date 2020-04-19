@@ -29,7 +29,7 @@ and adding a new python function, $cref py_fun_new_dynamic$$.
 $head Documentation$$
 
 $subhead independent$$
-The python file $code lib/python/independent.py$$
+The python file $code lib/python/cppad_py/independent.py$$
 was edited to add the following syntax documentation:
 $codei%
 	(%ax%, %adynamic%) = cppad_py::independent(%x%, %dynamic%)
@@ -39,12 +39,12 @@ $cref/adynamic/py_independent/adynamic/$$.
 
 $subhead new_dynamic$$
 The $cref cpp_fun_new_dynamic$$ documentation was added
-in the file $code lib/python/fun_new_dynamic.py$$.
+in the file $code lib/python/cppad_py/fun_new_dynamic.py$$.
 In addition, the OMhelp command
 $codep
-	%lib/python/fun_new_dynamic.py
+	%lib/python/cppad_py/fun_new_dynamic.py
 $$
-was added to the file $code lib/python/fun.py$$.
+was added to the file $code lib/python/cppad_py/fun.py$$.
 
 $subhead Example$$
 An example file was added to the documentation,
@@ -61,16 +61,16 @@ documentation.
 $head Implementation$$
 
 $subhead independent$$
-The $code independent$$ function in $code lib/python/independent.py$$
+The $code independent$$ function in $code lib/python/cppad_py/independent.py$$
 was changed to handle dynamic parameters as follows:
-$srcfile%lib/python/independent.py%
+$srcfile%lib/python/cppad_py/independent.py%
 	0%# BEGIN_INDEPENDENT_SOURCE%# END_INDEPENDENT_SOURCE%0
 %$$
 
 $subhead new_dynamic$$
 The following function declaration was added to the
 $code d_fun$$ class
-in the $code lib/python/fun.py$$ file:
+in the $code lib/python/cppad_py/fun.py$$ file:
 $srccode%py%
     def new_dynamic(self, dynamic) :
         return cppad_py.d_fun_new_dynamic(self.f, dynamic)
@@ -83,7 +83,7 @@ $code a_fun_new_dynamic$$ were added to the file
 $code fun_new_dynamic.py$$
 
 $subhead __init__.py$$
-The following code was added to the file $code lib/python/__init__.py$$:
+The following code was added to the file $code lib/python/cppad_py/__init__.py$$:
 $codep
 from cppad_py.fun_new_dynamic import a_fun_new_dynamic
 from cppad_py.fun_new_dynamic import d_fun_new_dynamic
