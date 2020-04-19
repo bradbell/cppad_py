@@ -21,10 +21,7 @@ import os
 import sys
 import subprocess
 import shutil
-if sys.version_info[0] == 3 :
-	from setuptools import setup, Extension
-else :
-	from distutils.core import setup, Extension
+from setuptools import setup, Extension
 # -----------------------------------------------------------------------------
 def quote_str(s) :
 	return "'" + s + "'"
@@ -45,30 +42,6 @@ python_version = str(python_major_version) + "." + str(python_minor_version)
 file_ptr = open('cppad_py/python_version', 'w')
 file_ptr.write(python_version + '\n')
 file_ptr.close()
-# -----------------------------------------------------------------------------
-# run cmake
-cppad_prefix_absolute = os.getcwd() + '/' + cppad_prefix
-if not os.path.exists('build') :
-	os.mkdir('build')
-os.chdir('build')
-if os.path.exists('CMakeCache.txt') :
-	os.remove('CMakeCache.txt')
-command = [
-	'cmake',
-	'-D', 'CMAKE_VERBOSE_MAKEFILE=' + quote_str(verbose_makefile),
-	'-D', 'CMAKE_BUILD_TYPE='       + quote_str(build_type),
-	'-D', 'cppad_prefix='           + quote_str(cppad_prefix_absolute),
-	'-D', 'extra_cxx_flags='        + quote_str(extra_cxx_flags),
-	'-D', 'python_version='         + quote_str( python_version ),
-	'..'
-]
-print( ' '.join(command) )
-flag    = subprocess.call(command)
-if flag != 0 :
-	sys.exit('setup.py: cmake command failed')
-else :
-	print('setup.py: cmake command OK')
-os.chdir('..')
 # -----------------------------------------------------------------------------
 # In lib/example/python: check_all.py.in -> check_all.py
 top_srcdir  = os.getcwd()
