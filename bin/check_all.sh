@@ -77,7 +77,6 @@ fi
 echo_eval_log python3 setup.py $setup_args
 echo_eval_log cd build
 cmake \
-	-D CMAKE_VERBOSE_MAKEFILE="$verbose_maekfile" \
 	-D CMAKE_BUILD_TYPE="$build_type" \
 	-D cppad_prefix="$cppad_prefix" \
 	-D extra_cxx_flags="$extra_cxx_flags" \
@@ -86,7 +85,7 @@ cmake \
 echo_eval_log make check
 echo_eval_log cd ../example/python
 echo_eval_log python3 check_all.py
-echo_eval_log cd ../../..
+echo_eval_log cd ../..
 #
 # 2DO: figure out where this waring is coming from and what it means
 sed -i $logfile -e '/fun\.hpp:52: Warning 362: operator= ignored/d'

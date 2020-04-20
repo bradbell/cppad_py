@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -39,10 +39,6 @@ GENERATE_EXPORT_HEADER( cppad_py_lib
 SET_TARGET_PROPERTIES(
 	cppad_py_lib PROPERTIES COMPILE_FLAGS "${cppad_cxx_flags}"
 )
-#
-# example / test directory (add to check_lib_depends)
-ADD_SUBDIRECTORY(example)
-#
 #
 IF( NOT( "${check_lib_depends}" STREQUAL "" ) )
 	# Add the check target

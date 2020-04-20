@@ -133,12 +133,16 @@ cmake_argument(extra_cxx_flags "" STRING
 	"Flags, added to CMAKE_CXX_FLAGS, used when compiling cppad_py code."
 )
 # -----------------------------------------------------------------------------
+# directory for including <cppad/py/cppad_py.hpp>
+INCLUDE_DIRECTORIES( "${CMAKE_SOURCE_DIR}/include" )
+# -----------------------------------------------------------------------------
 #
 # Initialize list of tests as empty (added to by sub-directories below)
 SET(check_depends "")
 #
 # sub-directories
 ADD_SUBDIRECTORY(lib)
+ADD_SUBDIRECTORY(example)
 #
 IF( "${check_depends}" STREQUAL "" )
 	MESSAGE(FATAL_ERROR "no correctnes checks are available")

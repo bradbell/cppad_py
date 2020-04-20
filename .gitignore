@@ -14,9 +14,9 @@ new
 *.log
 *.swp
 # files and directory created to run python examples
-/lib/example/python/check_all.py
-/lib/example/python/*.pyc
-/lib/example/python/__pycache__
+/example/python/check_all.py
+/example/python/*.pyc
+/example/python/__pycache__
 # 
 # files created by swig
 /lib/python/cppad_py/cppad_py_swig_wrap.cpp 

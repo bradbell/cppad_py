@@ -17,7 +17,7 @@ def sys_exit(msg) :
 	sys.exit( 'setup.py: ' + msg )
 # -----------------------------------------------------------------------------
 # Examples and tests are not included in pip distribution
-pip_distribution = not os.path.isfile( 'example/python/check_all.py' )
+pip_distribution = not os.path.isfile( 'example/python/check_all.py.in' )
 if not pip_distribution :
 	# in example/python: check_all.py.in -> check_all.py
 	# (this is used for local testing)
