@@ -19,6 +19,6 @@ new
 /lib/example/python/__pycache__
 # 
 # files created by swig
-/lib/cppad_py_swig_wrap.cpp 
-/lib/swig.py
+/lib/python/cppad_py/cppad_py_swig_wrap.cpp 
+/lib/python/cppad_py/swig.py
 

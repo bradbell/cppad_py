@@ -26,7 +26,8 @@ from setuptools import setup, Extension
 def quote_str(s) :
 	return "'" + s + "'"
 # -----------------------------------------------------------------------------
-# copy lib/python -> cppad_py
+# initialize cppad_py directory as a copy of lib/python/cppad_py
+# (this directory is used for local build files and testing)
 if os.path.exists('cppad_py') :
 	shutil.rmtree('cppad_py')
 shutil.copytree('lib/python/cppad_py', 'cppad_py');
@@ -38,12 +39,16 @@ if python_major_version != 2 and python_major_version != 3 :
 	msg  = 'setup.py: python major version number '
 	msg += str( python_major_version ) + ' is not 2 or 3'
 	sys.exit(msg)
+#
+# cppad_py/python_version
+# (this is used for local testing)
 python_version = str(python_major_version) + "." + str(python_minor_version)
 file_ptr = open('cppad_py/python_version', 'w')
 file_ptr.write(python_version + '\n')
 file_ptr.close()
 # -----------------------------------------------------------------------------
-# In lib/example/python: check_all.py.in -> check_all.py
+# in lib/example/python: check_all.py.in -> check_all.py
+# (this is used for local testing)
 top_srcdir  = os.getcwd()
 sed_cmd     = 's|@CMAKE_SOURCE_DIR@|' + top_srcdir + '|'
 sed_in      = open('lib/example/python/check_all.py.in', 'r')
@@ -65,15 +70,15 @@ if not match :
 	sys.exit('setup.py: cannot find cppad_py version in CMakeLists.txt')
 cppad_py_version = match.group(1)
 # -----------------------------------------------------------------------------
-# build/lib/cppad_py_swig_wrap.cpp, build/lib/swig.py
-#
-# change inpto cppad_py directory so that cppad_py.py is output there
+# Use swig directly (instead of through setup which seems to have trouble).
+# This creates the files cppad_py_swig_wrap.cpp and swig.py in the
+# lib/python/cppad_py directory.
 command = [
 	'swig',
 	'-c++',
 	'-python',
 	'-I./include',
-	'-o', 'cppad_py/cppad_py_swig_wrap.cpp',
+	'-o', 'lib/python/cppad_py/cppad_py_swig_wrap.cpp',
 	'lib/cppad_py_swig.i'
 ]
 if python_major_version == 3 :
@@ -86,7 +91,9 @@ else :
 #
 # -----------------------------------------------------------------------------
 # extension_sources
-cppad_py_extension_sources = [ 'lib/cppad_py_swig_wrap.cpp' ]
+# Note that cppad_py_swig_wrap.cpp is not really a source file and
+# is overwritten by the swig command above.
+cppad_py_extension_sources = [ 'lib/python/cppad_py/cppad_py_swig_wrap.cpp' ]
 for name in os.listdir('lib/cplusplus') :
 	if name.endswith('.cpp') :
 		cppad_py_extension_sources.append( 'lib/cplusplus/' + name)
