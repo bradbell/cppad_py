@@ -30,11 +30,11 @@ then
 	echo_eval rm -r $name
 fi
 # ---------------------------------------------------------------------------
-cat << EOF > check_install.$$
+cat << EOF > check_install.py
 import cppad_py
 print( 'import cppad_py: OK')
 EOF
-if $python check_install.$$ >& /dev/null
+if $python check_install.py >& /dev/null
 then
 	echo 'cannot remove old copy cppad_py in python path'
 	exit 0
@@ -47,8 +47,8 @@ echo_eval rm -r cppad_py
 # ---------------------------------------------------------------------------
 path2cppad_py=$(find $HOME/prefix/cppad_py -name 'site-packages')
 PYTHONPATH="$path2cppad_py:$PYTHONPATH"
-echo_eval $python check_install.$$
+echo_eval $python check_install.py
 # ---------------------------------------------------------------------------
-rm check_install.$$
+rm check_install.py
 echo 'check_install.sh: OK'
 exit 0

@@ -65,7 +65,7 @@ if not match :
 	sys.exit('setup.py: cannot find cppad_py version in CMakeLists.txt')
 cppad_py_version = match.group(1)
 # -----------------------------------------------------------------------------
-# build/lib/cppad_py_swig_wrap.cpp, build/lib/cppad_py_swig.py
+# build/lib/cppad_py_swig_wrap.cpp, build/lib/swig.py
 #
 # change inpto cppad_py directory so that cppad_py.py is output there
 command = [
@@ -86,7 +86,7 @@ else :
 #
 # -----------------------------------------------------------------------------
 # extension_sources
-cppad_py_extension_sources = [ 'lib/cppad_py_swig.i' ]
+cppad_py_extension_sources = [ 'lib/cppad_py_swig_wrap.cpp' ]
 for name in os.listdir('lib/cplusplus') :
 	if name.endswith('.cpp') :
 		cppad_py_extension_sources.append( 'lib/cplusplus/' + name)

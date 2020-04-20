@@ -38,6 +38,24 @@ then
 	exit 1
 fi
 # -----------------------------------------------------------------------------
+# clean out old informaiton
+if [ -e $logfile ]
+then
+	echo "rm check_all.log"
+	rm $logfile
+fi
+if ls build | grep '^lib\.' > /dev/null
+then
+	echo_eval rm -r "build/lib.*"
+fi
+if ls build | grep '^temp\.' > /dev/null
+then
+	echo_eval rm -r "build/temp.*"
+fi
+# -----------------------------------------------------------------------------
+echo_eval_log check_copyright.sh
+echo_eval_log run_omhelp.sh doc
+# -----------------------------------------------------------------------------
 # debug_01
 set +e
 debug_01=`expr $RANDOM % 2`
@@ -49,23 +67,6 @@ else
 	echo 'Testing debug version'
 fi
 # -----------------------------------------------------------------------------
-# clean out old informaiton
-if [ -e $logfile ]
-then
-	echo "rm check_all.log"
-	rm $logfile
-fi
-# -----------------------------------------------------------------------------
-# run checks
-list=`ls bin/check_*`
-for check in $list
-do
-	if [ "$check" != 'bin/check_all.sh' ]
-	then
-		echo_eval_log $check
-	fi
-done
-# -----------------------------------------------------------------------------
 if [ "$debug_01" == '0' ]
 then
 	setup_args='build_ext --quiet'
@@ -76,12 +77,24 @@ else
 	echo 'bin/check_all.sh: program error'
 	exit 1
 fi
-#
-echo_eval_log check_copyright.sh
-echo_eval_log run_omhelp.sh doc
 echo_eval_log python3 setup.py $setup_args
+# -----------------------------------------------------------------------------
+eval $(grep '^verbose_makefile *=' setup.py | sed -e 's| ||g')
+eval $(grep '^build_type *=' setup.py | sed -e 's| ||g')
+eval $(grep '^cppad_prefix *=' setup.py | sed -e 's| ||g')
+eval $(grep '^extra_cxx_flags *=' setup.py | sed -e 's| ||g')
+if !  echo $cppad_prefix | grep '^/' > /dev/null
+then
+	cppad_prefix=$(pwd)/$cppad_prefix
+fi
 echo_eval_log cd build
-echo_eval_log make clean
+cmake \
+	-D CMAKE_VERBOSE_MAKEFILE="$verbose_maekfile" \
+	-D CMAKE_BUILD_TYPE="$build_type" \
+	-D cppad_prefix="$cppad_prefix" \
+	-D extra_css_flags="$extra_cxx_flags" \
+	..
+#
 echo_eval_log make check
 echo_eval_log cd ../lib/example/python
 echo_eval_log python3 check_all.py

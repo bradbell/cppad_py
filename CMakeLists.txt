@@ -8,8 +8,7 @@
 # cmake \
 #	-D CMAKE_VERBOSE_MAKEFILE=value \
 #	-D cppad_prefix=value  \
-#	-D extra_cxx_flags=value \
-#	-D python_version=value
+#	-D extra_cxx_flags=value
 #
 # -----------------------------------------------------------------------------
 # preamble
@@ -125,19 +124,6 @@ INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
 cmake_argument(extra_cxx_flags "" STRING
 	"Flags, added to CMAKE_CXX_FLAGS, used when compiling cppad_py code."
 )
-# -----------------------------------------------------------------------------
-# python_version
-cmake_argument(python_version "" STRING
-	"major and minor version number for python, major part of must be 2 or 3."
-)
-STRING(REGEX MATCH "[23][.][0-9.]*" python_version_ok "${python_version}")
-IF( NOT python_version_ok )
-	MESSAGE(FATAL_ERROR "python major version is not 2 or 3")
-ENDIF( NOT python_version_ok )
-STRING(REGEX MATCH "[23][.][0-9]*" python_version_ok "${python_version}")
-IF( NOT python_version_ok )
-	MESSAGE(FATAL_ERROR "python_version not just major and minor numbers")
-ENDIF( NOT python_version_ok )
 # -----------------------------------------------------------------------------
 #
 # Initialize list of tests as empty (added to by sub-directories below)
