@@ -197,17 +197,16 @@ sys.exit(0)
 # $list number$$
 # $href%https://en.wikipedia.org/wiki/C++%c++%$$.
 # $lnext
-# $href%https://cmake.org%cmake%$$ (optional).
-# $lnext
 # $href%https://git-scm.com/%git%$$.
 # $lnext
 # $href%http://www.swig.org/%swig%$$:
-# There seems to be a problem with swig-3.0.8; see
 # $href%https://github.com/bradbell/cppad_py/issues/3%issue 3%$$.
 # $lnext
 # $href%https://www.python.org/%python%$$ version 3.
 # $lnext
 # $href%http://www.numpy.org/%numpy%$$.
+# $lnext
+# $href%https://cmake.org%cmake%$$ (optional).
 # $lend
 #
 # $head Download$$

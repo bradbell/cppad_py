@@ -77,7 +77,9 @@ MACRO(cmake_argument variable default type description)
 	ENDIF( NOT ( ${type} STREQUAL "PATH" ) )
 	ENDIF( NOT ( ${type} STREQUAL "STRING" ) )
 	#
-	SET(${variable} "${default}" CACHE ${type} "${description}")
+	IF(NOT ${variable} )
+		SET(${variable} "${default}" CACHE ${type} "${description}")
+	ENDIF(NOT ${variable} )
 	print_variable(${variable})
 ENDMACRO( cmake_argument )
 # -----------------------------------------------------------------------------
@@ -115,6 +117,11 @@ print_variable(CMAKE_CXX_FLAGS)
 print_variable(CMAKE_BUILD_TYPE)
 # -----------------------------------------------------------------------------
 # cppad_prefix and corresponding include directories
+IF ( cppad_prefix )
+	IF( cppad_prefix MATCHES "^[^/]" )
+		SET(cppad_prefix "${CMAKE_SOURCE_DIR}/${cppad_prefix}")
+	ENDIF( cppad_prefix MATCHES "^[^/]" )
+ENDIF ( cppad_prefix )
 cmake_argument(cppad_prefix NOTFOUND PATH "prefix used to install Cppad" )
 IF( NOT cppad_prefix )
 	MESSAGE(FATAL_ERROR "cppad_prefix is not defined by cmake command line")
