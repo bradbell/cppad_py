@@ -68,16 +68,13 @@ cppad_py_version = match.group(1)
 # build/lib/cppad_py_swig_wrap.cpp, build/lib/cppad_py_swig.py
 #
 # change inpto cppad_py directory so that cppad_py.py is output there
-if not os.path.exists('cppad_py') :
-	os.mkdir('cppad_py')
-os.chdir('cppad_py')
 command = [
 	'swig',
 	'-c++',
 	'-python',
-	'-I../include',
-	'-o', 'cppad_py_swig_wrap.cpp',
-	'../lib/cppad_py_swig.i'
+	'-I./include',
+	'-o', 'cppad_py/cppad_py_swig_wrap.cpp',
+	'lib/cppad_py_swig.i'
 ]
 if python_major_version == 3 :
 	command.insert(1, '-py3')
@@ -87,8 +84,6 @@ if flag != 0 :
 else :
 	print('setup.py: swig command OK')
 #
-# change back to top soruce directory
-os.chdir('..')
 # -----------------------------------------------------------------------------
 # extension_sources
 cppad_py_extension_sources = [ 'lib/cppad_py_swig.i' ]
