@@ -1,1 +1,3 @@
 include include/cppad/py/*.hpp
+include bin/get_cppad.sh
+include CMakeLists.txt

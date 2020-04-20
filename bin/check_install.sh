@@ -18,6 +18,7 @@ then
 	exit 1
 fi
 python='python3'
+eval $(grep '^build_type *=' bin/get_cppad.sh)
 # ---------------------------------------------------------------------------
 name="$HOME/prefix/cppad_py"
 if [ -e $name ]
@@ -41,7 +42,13 @@ then
 fi
 # ---------------------------------------------------------------------------
 # install new version
-echo_eval $python setup.py build_ext --debug install \
+if [ "$build_type" == 'debug' ]
+then
+	build_flag='--sebug'
+else
+	build_flag=''
+fi
+echo_eval $python setup.py build_ext $buld_flag install \
 	--prefix=$HOME/prefix/cppad_py
 echo_eval rm -r cppad_py
 # ---------------------------------------------------------------------------

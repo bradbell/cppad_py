@@ -16,6 +16,20 @@ from setuptools import setup, Extension
 def sys_exit(msg) :
 	sys.exit( 'setup.py: ' + msg )
 # -----------------------------------------------------------------------------
+# Examples and tests are not included in pip distribution
+pip_distribution = not os.path.isfile( 'lib/example/python/check_all.py' )
+if not pip_distribution :
+	# in lib/example/python: check_all.py.in -> check_all.py
+	# (this is used for local testing)
+	top_srcdir  = os.getcwd()
+	sed_cmd     = 's|@CMAKE_SOURCE_DIR@|' + top_srcdir + '|'
+	sed_in      = open('lib/example/python/check_all.py.in', 'r')
+	sed_out     = open('lib/example/python/check_all.py',    'w')
+	command = [ 'sed', '-e', sed_cmd ]
+	flag = subprocess.call(command, stdin=sed_in, stdout=sed_out )
+	if flag != 0 :
+		sys_exit('failed to create lib/example/python/check_all.py')
+# -----------------------------------------------------------------------------
 # CMakeLists.txt settings
 #
 # cppad_py_version
@@ -29,6 +43,7 @@ cppad_py_version = match.group(1)
 fp.close()
 # -----------------------------------------------------------------------------
 # bin/get_cppad.sh settings
+#
 fp      = open('bin/get_cppad.sh', 'r')
 string  = fp.read()
 #
@@ -54,10 +69,26 @@ if not match :
 build_type = match.group(1)
 if build_type != 'debug' and build_type != 'release' :
 	sys_exit('build_type is not debug or release in bin/get_cppad.sh')
-if '--debug' in sys.argv  and build_type == 'release' :
-	sys_exit('build_type is release in bin/get_cppad.sh and --debug on command line')
-if '--debug' not in sys.argv  and build_type == 'debug' :
-	sys_exit('build_type is debug in bin/get_cppad.sh and --debug not on command line')
+if 'sdist' not in sys.argv :
+	if '--debug' in sys.argv  and build_type == 'release' :
+		msg  = 'build_type is release in bin/get_cppad.sh '
+		msg += 'and --debug on command line'
+		sys_exit(msg)
+	if '--debug' not in sys.argv  and build_type == 'debug' :
+		msg  = 'build_type is debug in bin/get_cppad.sh '
+		msg += 'and --debug not on command line'
+		sys_exit(msg)
+# -----------------------------------------------------------------------------
+# check if we need to install a local copy of cppad
+cppad_include_file = cppad_prefix + '/include/cppad/cppad.hpp'
+flag = 0
+if not os.path.isfile( cppad_include_file ) :
+	command = [ 'bin/get_cppad.sh' ]
+	flag = subprocess.call(command)
+if flag != 0 or not os.path.isfile( cppad_include_file ) :
+	msg  = 'Cannot find ' + cppad_include_file
+	msg += 'and bin/get_cppad.sh could not create it.'
+	sys_exit(msg)
 # -----------------------------------------------------------------------------
 def quote_str(s) :
 	return "'" + s + "'"
@@ -82,17 +113,6 @@ python_version = str(python_major_version) + "." + str(python_minor_version)
 file_ptr = open('cppad_py/python_version', 'w')
 file_ptr.write(python_version + '\n')
 file_ptr.close()
-# -----------------------------------------------------------------------------
-# in lib/example/python: check_all.py.in -> check_all.py
-# (this is used for local testing)
-top_srcdir  = os.getcwd()
-sed_cmd     = 's|@CMAKE_SOURCE_DIR@|' + top_srcdir + '|'
-sed_in      = open('lib/example/python/check_all.py.in', 'r')
-sed_out     = open('lib/example/python/check_all.py',    'w')
-command = [ 'sed', '-e', sed_cmd ]
-flag = subprocess.call(command, stdin=sed_in, stdout=sed_out )
-if flag != 0 :
-	sys_exit('failed to create lib/example/python/check_all.py')
 # -----------------------------------------------------------------------------
 # cppad_include_dir
 cppad_include_dir = os.getcwd() + '/build/prefix/include'
@@ -167,7 +187,7 @@ for dname in os.listdir('build') :
 				shutil.copyfile(src_file, dst_file)
 				shutil.copymode(src_file, dst_file)
 				count = count + 1
-if count != 1 :
+if not pip_distribution and (count != 1) :
 	msg ='could not find swig library to copy for testing'
 	sys_exit(msg)
 # -----------------------------------------------------------------------------
@@ -195,18 +215,20 @@ sys.exit(0)
 #
 # $head External Requirements$$
 # $list number$$
+# $href%https://www.python.org/%python%$$ version 3.
+# $lnext
+# $href%https://en.wikipedia.org/wiki/Bash_(Unix_shell)%bash%$$
+# $lnext
 # $href%https://en.wikipedia.org/wiki/C++%c++%$$.
+# $lnext
+# $href%https://cmake.org%cmake%$$
 # $lnext
 # $href%https://git-scm.com/%git%$$.
 # $lnext
 # $href%http://www.swig.org/%swig%$$:
 # $href%https://github.com/bradbell/cppad_py/issues/3%issue 3%$$.
 # $lnext
-# $href%https://www.python.org/%python%$$ version 3.
-# $lnext
 # $href%http://www.numpy.org/%numpy%$$.
-# $lnext
-# $href%https://cmake.org%cmake%$$ (optional).
 # $lend
 #
 # $head Download$$

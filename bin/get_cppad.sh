@@ -48,7 +48,7 @@ extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
 # The debug version has more error messaging while the release
 # version runs faster.
 # $srccode%sh%
-build_type='debug'
+build_type='release'
 # %$$
 #
 # $subhead test_cppad$$

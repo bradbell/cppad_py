@@ -80,7 +80,7 @@ cmake \
 	-D CMAKE_VERBOSE_MAKEFILE="$verbose_maekfile" \
 	-D CMAKE_BUILD_TYPE="$build_type" \
 	-D cppad_prefix="$cppad_prefix" \
-	-D extra_css_flags="$extra_cxx_flags" \
+	-D extra_cxx_flags="$extra_cxx_flags" \
 	..
 #
 echo_eval_log make check
