@@ -90,7 +90,7 @@ $codei%
 is the $th i$$ independent dynamic parameter.
 
 $children%
-	lib/example/cplusplus/fun_dynamic_xam.cpp
+	example/cplusplus/fun_dynamic_xam.cpp
 %$$
 $head Example$$
 Most of the c++ $code d_fun$$ examples use the $icode ax$$
@@ -157,7 +157,7 @@ This aborts the current recording (if it exists)
 started by the most recent call to $cref/independent/cpp_independent/$$.
 
 $children%
-	lib/example/cplusplus/fun_abort_xam.cpp
+	example/cplusplus/fun_abort_xam.cpp
 %$$
 $head Example$$
 $cref/C++/fun_abort_xam.cpp/$$.
@@ -358,7 +358,7 @@ The initial value for this property, when the object $icode f$$
 or $icode af$$ is created, is zero.
 
 $children%
-	lib/example/cplusplus/fun_property_xam.cpp
+	example/cplusplus/fun_property_xam.cpp
 %$$
 $head Example$$
 $cref fun_property_xam.cpp$$
@@ -510,7 +510,7 @@ $latex \[
 \] $$
 
 $children%
-	lib/example/cplusplus/fun_jacobian_xam.cpp
+	example/cplusplus/fun_jacobian_xam.cpp
 %$$
 $head Example$$
 $cref fun_jacobian_xam.cpp$$
@@ -604,7 +604,7 @@ $latex \[
 \] $$
 
 $children%
-	lib/example/cplusplus/fun_hessian_xam.cpp
+	example/cplusplus/fun_hessian_xam.cpp
 %$$
 $head Example$$
 $cref fun_hessian_xam.cpp$$
@@ -723,7 +723,7 @@ respectively and its size is $icode m$$.
 It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
 
 $children%
-	lib/example/cplusplus/fun_forward_xam.cpp
+	example/cplusplus/fun_forward_xam.cpp
 %$$
 $head Example$$
 $cref fun_forward_xam.cpp$$
@@ -839,7 +839,7 @@ the partial derivative of
 $latex G(T(S))$$ w.r.t. $latex S_j^{(k)} (t) / k !$$.
 
 $children%
-	lib/example/cplusplus/fun_reverse_xam.cpp
+	example/cplusplus/fun_reverse_xam.cpp
 %$$
 $head Example$$
 $cref fun_reverse_xam.cpp$$
@@ -884,7 +884,7 @@ Optimizing this $icode f$$ also optimizes the
 corresponding $cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$.
 
 $children%
-	lib/example/cplusplus/fun_optimize_xam.cpp
+	example/cplusplus/fun_optimize_xam.cpp
 %$$
 $head Example$$
 $cref fun_optimize_xam.cpp$$

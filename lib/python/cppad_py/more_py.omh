@@ -51,7 +51,7 @@ An example file was added to the documentation,
 below the $cref py_independent$$ section, using the OMhelp commands:
 $codep
 	@children%
-		lib/example/python/fun_dynamic_xam.py
+		example/python/fun_dynamic_xam.py
 	%@@
 $$
 In addition, a reference to this example was added under the
@@ -91,12 +91,12 @@ $$
 
 
 $head Example$$
-The file $code lib/example/python/fun_dynamic_xam.py$$ was added
+The file $code example/python/fun_dynamic_xam.py$$ was added
 with the following contents:
 $cref fun_dynamic_xam.py$$.
 In addition, in the file
 $codep
-    lib/example/python/check_all.py.in
+    example/python/check_all.py.in
 $$
 the following text was added to the list of python example files.
 $codep

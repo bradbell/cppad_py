@@ -117,7 +117,7 @@
 # All the other forward mode coefficients are unspecified.
 #
 # $children%
-#	lib/example/python/sparse_hes_xam.py
+#	example/python/sparse_hes_xam.py
 # %$$
 # $head Example$$
 # $cref sparse_hes_xam.py$$

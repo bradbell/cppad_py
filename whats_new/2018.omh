@@ -83,7 +83,7 @@ A change to $code setup.py$$ was making the
 $cref get_cppad.sh$$ script fail.
 This has been fixed.
 $lnext
-The python tests are no run in $code lib/example/python$$
+The python tests are no run in $code example/python$$
 (not copied to the build directory).
 $lend
 

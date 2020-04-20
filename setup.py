@@ -17,18 +17,18 @@ def sys_exit(msg) :
 	sys.exit( 'setup.py: ' + msg )
 # -----------------------------------------------------------------------------
 # Examples and tests are not included in pip distribution
-pip_distribution = not os.path.isfile( 'lib/example/python/check_all.py' )
+pip_distribution = not os.path.isfile( 'example/python/check_all.py' )
 if not pip_distribution :
-	# in lib/example/python: check_all.py.in -> check_all.py
+	# in example/python: check_all.py.in -> check_all.py
 	# (this is used for local testing)
 	top_srcdir  = os.getcwd()
 	sed_cmd     = 's|@CMAKE_SOURCE_DIR@|' + top_srcdir + '|'
-	sed_in      = open('lib/example/python/check_all.py.in', 'r')
-	sed_out     = open('lib/example/python/check_all.py',    'w')
+	sed_in      = open('example/python/check_all.py.in', 'r')
+	sed_out     = open('example/python/check_all.py',    'w')
 	command = [ 'sed', '-e', sed_cmd ]
 	flag = subprocess.call(command, stdin=sed_in, stdout=sed_out )
 	if flag != 0 :
-		sys_exit('failed to create lib/example/python/check_all.py')
+		sys_exit('failed to create example/python/check_all.py')
 # -----------------------------------------------------------------------------
 # CMakeLists.txt settings
 #
@@ -270,7 +270,7 @@ sys.exit(0)
 # The next step is to test the cppad_py on your system by executing
 # the following commands starting in $icode top_srcdir$$:
 # $codei%
-#	cd lib/example/python
+#	cd example/python
 #	python check_all.py
 # %$$
 #

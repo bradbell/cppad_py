@@ -75,7 +75,7 @@ The corresponding example file was added to the documentation,
 below the $cref cpp_independent$$ section, using the OMhelp commands:
 $code
 	@children%
-		lib/example/cplusplus/fun_dynamic_xam.cpp
+		example/cplusplus/fun_dynamic_xam.cpp
 	%@@
 $$
 In addition, a reference to this example was added under the
@@ -99,10 +99,10 @@ $srcfile%lib/cplusplus/fun.cpp%
 A similar function was added to the $code a_fun$$ class.
 
 $head Example$$
-The file $code lib/example/cplusplus/fun_dynamic_xam.cpp$$ was added
+The file $code example/cplusplus/fun_dynamic_xam.cpp$$ was added
 with the following contents:
 $cref fun_dynamic_xam.cpp$$.
-In addition, in the file $code lib/example/cplusplus/check_all.cpp$$,
+In addition, in the file $code example/cplusplus/check_all.cpp$$,
 $code%
 	extern bool fun_optimize_xam(void);
 %$$

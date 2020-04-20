@@ -55,7 +55,7 @@
 # $cref/af.size_order()/py_fun_property/size_order/$$ is zero.
 #
 # $children%
-#	lib/example/python/a_fun_xam.py
+#	example/python/a_fun_xam.py
 # %$$
 # $head Example$$
 # All of the examples use the $code d_fun$$ constructor.

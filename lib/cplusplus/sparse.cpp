@@ -188,7 +188,7 @@ This routine generates an assert if there are two entries with the same
 row and column values (if $code NDEBUG$$ is not defined).
 
 $children%
-	lib/example/cplusplus/sparse_rc_xam.cpp
+	example/cplusplus/sparse_rc_xam.cpp
 %$$
 $head Example$$
 $cref sparse_rc_xam.cpp$$
@@ -438,7 +438,7 @@ This routine generates an assert if there are two entries with the same
 row and column values (if $code NDEBUG$$ is not defined).
 
 $children%
-	lib/example/cplusplus/sparse_rcv_xam.cpp
+	example/cplusplus/sparse_rcv_xam.cpp
 %$$
 $head Example$$
 $cref sparse_rcv_xam.cpp$$
@@ -600,7 +600,7 @@ In this case, $icode pattern_out$$ is a sparsity pattern for
 $latex F^{(1)} ( x )$$.
 
 $children%
-	lib/example/cplusplus/sparse_jac_pattern_xam.cpp
+	example/cplusplus/sparse_jac_pattern_xam.cpp
 %$$
 $head Example$$
 $cref/C++/sparse_jac_pattern_xam.cpp/$$
@@ -713,7 +713,7 @@ In this case, $icode pattern_out$$ is a sparsity pattern for
 $latex F_i^{(2)} ( x )$$.
 
 $children%
-	lib/example/cplusplus/sparse_hes_pattern_xam.cpp
+	example/cplusplus/sparse_hes_pattern_xam.cpp
 %$$
 $head Example$$
 $cref/C++/sparse_hes_pattern_xam.cpp/$$
@@ -926,7 +926,7 @@ $codei%
 All the other forward mode coefficients are unspecified.
 
 $children%
-	lib/example/cplusplus/sparse_jac_xam.cpp
+	example/cplusplus/sparse_jac_xam.cpp
 %$$
 $head Example$$
 $cref sparse_jac_xam.cpp$$
@@ -1105,7 +1105,7 @@ $codei%
 All the other forward mode coefficients are unspecified.
 
 $children%
-	lib/example/cplusplus/sparse_hes_xam.cpp
+	example/cplusplus/sparse_hes_xam.cpp
 %$$
 $head Example$$
 $cref sparse_hes_xam.cpp$$

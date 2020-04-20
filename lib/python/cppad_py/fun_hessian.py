@@ -64,7 +64,7 @@
 # \] $$
 #
 # $children%
-#	lib/example/python/fun_hessian_xam.py
+#	example/python/fun_hessian_xam.py
 # %$$
 # $head Example$$
 # $cref fun_hessian_xam.py$$

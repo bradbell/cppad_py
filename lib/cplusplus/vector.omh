@@ -85,8 +85,8 @@ i.e., it is a positive integer.
 Its value is the number of elements in the vector $icode v$$.
 
 $children%
-	lib/example/cplusplus/vector_size_xam.cpp%
-	lib/example/python/vector_size_xam.py
+	example/cplusplus/vector_size_xam.cpp%
+	example/python/vector_size_xam.py
 %$$
 $head Example$$
 $cref/C++/vector_size_xam.cpp/$$,
@@ -148,8 +148,8 @@ $codei%
 %$$
 
 $children%
-	lib/example/cplusplus/vector_set_get_xam.cpp%
-	lib/example/python/vector_set_get_xam.py
+	example/cplusplus/vector_set_get_xam.cpp%
+	example/python/vector_set_get_xam.py
 %$$
 $head Example$$
 $cref/C++/vector_set_get_xam.cpp/$$,

@@ -120,7 +120,7 @@ $codei%
 All the other forward mode coefficients are unspecified.
 
 $children%
-	lib/example/python/sparse_jac_xam.py
+	example/python/sparse_jac_xam.py
 %$$
 $head Example$$
 $cref sparse_jac_xam.py$$

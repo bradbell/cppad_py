@@ -84,7 +84,7 @@ cmake \
 	..
 #
 echo_eval_log make check
-echo_eval_log cd ../lib/example/python
+echo_eval_log cd ../example/python
 echo_eval_log python3 check_all.py
 echo_eval_log cd ../../..
 #
