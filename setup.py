@@ -5,15 +5,6 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# bin/get_cppad.sh assumes variable = value on same line.
-# BEGIN_USER_SETTINGS
-verbose_makefile = "false"
-build_type       = "debug"
-cppad_prefix     = "build/prefix"
-test_cppad       = "false"
-extra_cxx_flags  = "-Wall -pedantic-errors -Wno-unused-result -std=c++11"
-# END_USER_SETTINGS
-# -----------------------------------------------------------------------------
 # extra flags to supress wanings in swig code
 swig_cxx_flags = "-Wno-class-memaccess"
 import re
@@ -22,6 +13,51 @@ import sys
 import subprocess
 import shutil
 from setuptools import setup, Extension
+def sys_exit(msg) :
+	sys.exit( 'setup.py: ' + msg )
+# -----------------------------------------------------------------------------
+# CMakeLists.txt settings
+#
+# cppad_py_version
+fp      = open('CMakeLists.txt', 'r')
+string  = fp.read()
+pattern = '\\nSET\( *cppad_py_version  *"([0-9]*)"'
+match   = re.search(pattern, string)
+if not match :
+	sys_exit('cannot find cppad_py version in CMakeLists.txt')
+cppad_py_version = match.group(1)
+fp.close()
+# -----------------------------------------------------------------------------
+# bin/get_cppad.sh settings
+fp      = open('bin/get_cppad.sh', 'r')
+string  = fp.read()
+#
+# extra_cxx_flags
+pattern = r"\nextra_cxx_flags='([^']*)'"
+match   = re.search(pattern, string)
+if not match :
+	sys_exit('cannot find extra_cxx_flags in bin/get_cppad.sh')
+extra_cxx_flags = match.group(1)
+#
+# cppad_prefix
+pattern = r"\ncppad_prefix='([^']*)'"
+match   = re.search(pattern, string)
+if not match :
+	sys_exit('cannot find cppad_prefix in bin/get_cppad.sh')
+cppad_prefix = match.group(1)
+#
+# build_type
+pattern = r"\nbuild_type='([^']*)'"
+match   = re.search(pattern, string)
+if not match :
+	sys_exit('cannot find build_type in bin/get_cppad.sh')
+build_type = match.group(1)
+if build_type != 'debug' and build_type != 'release' :
+	sys_exit('build_type is not debug or release in bin/get_cppad.sh')
+if '--debug' in sys.argv  and build_type == 'release' :
+	sys_exit('build_type is release in bin/get_cppad.sh and --debug on command line')
+if '--debug' not in sys.argv  and build_type == 'debug' :
+	sys_exit('build_type is debug in bin/get_cppad.sh and --debug not on command line')
 # -----------------------------------------------------------------------------
 def quote_str(s) :
 	return "'" + s + "'"
@@ -36,9 +72,9 @@ shutil.copytree('lib/python/cppad_py', 'cppad_py');
 python_major_version = sys.version_info.major
 python_minor_version = sys.version_info.minor
 if python_major_version != 2 and python_major_version != 3 :
-	msg  = 'setup.py: python major version number '
+	msg  = 'python major version number '
 	msg += str( python_major_version ) + ' is not 2 or 3'
-	sys.exit(msg)
+	sys_exit(msg)
 #
 # cppad_py/python_version
 # (this is used for local testing)
@@ -56,19 +92,10 @@ sed_out     = open('lib/example/python/check_all.py',    'w')
 command = [ 'sed', '-e', sed_cmd ]
 flag = subprocess.call(command, stdin=sed_in, stdout=sed_out )
 if flag != 0 :
-	sys.exit('setup.py: failed to create lib/example/python/check_all.py')
+	sys_exit('failed to create lib/example/python/check_all.py')
 # -----------------------------------------------------------------------------
 # cppad_include_dir
 cppad_include_dir = os.getcwd() + '/build/prefix/include'
-# -----------------------------------------------------------------------------
-# cppad_py_version
-fp      = open('CMakeLists.txt', 'r')
-string  = fp.read()
-pattern = '\\nSET\( *cppad_py_version  *"([0-9]*)"'
-match   = re.search(pattern, string)
-if not match :
-	sys.exit('setup.py: cannot find cppad_py version in CMakeLists.txt')
-cppad_py_version = match.group(1)
 # -----------------------------------------------------------------------------
 # Use swig directly (instead of through setup which seems to have trouble).
 # This creates the files cppad_py_swig_wrap.cpp and swig.py in the
@@ -85,7 +112,7 @@ if python_major_version == 3 :
 	command.insert(1, '-py3')
 flag    = subprocess.call(command)
 if flag != 0 :
-	sys.exit('setup.py: swig command failed')
+	sys_exit('swig command failed')
 else :
 	print('setup.py: swig command OK')
 #
@@ -141,8 +168,8 @@ for dname in os.listdir('build') :
 				shutil.copymode(src_file, dst_file)
 				count = count + 1
 if count != 1 :
-	msg ='setup.py: could not find swig library to copy for testing'
-	sys.exit(msg)
+	msg ='could not find swig library to copy for testing'
+	sys_exit(msg)
 # -----------------------------------------------------------------------------
 print('setup.py: OK')
 sys.exit(0)
@@ -155,22 +182,22 @@ sys.exit(0)
 #	https://github.com/bradbell/cppad_py.git
 #	srcdir
 #	cplusplus
+#	python python
+#	cmake
 #	sys
 # $$
 #
 # $section Configure and Build the cppad_py Python Module$$
 #
 # $head Syntax$$
-# $icode%python% setup.py build_ext [--debug] [--undef NDEBUG]
+# $codei%python setup.py build_ext [--debug]
 # %$$
-# where $icode python$$ is the Python executable you will be using with
-# cppad_py.
 #
 # $head External Requirements$$
 # $list number$$
 # $href%https://en.wikipedia.org/wiki/C++%c++%$$.
 # $lnext
-# $href%https://cmake.org%cmake%$$.
+# $href%https://cmake.org%cmake%$$ (optional).
 # $lnext
 # $href%https://git-scm.com/%git%$$.
 # $lnext
@@ -178,7 +205,7 @@ sys.exit(0)
 # There seems to be a problem with swig-3.0.8; see
 # $href%https://github.com/bradbell/cppad_py/issues/3%issue 3%$$.
 # $lnext
-# $href%https://www.python.org/%python%$$: version 2 or 3.
+# $href%https://www.python.org/%python%$$ version 3.
 # $lnext
 # $href%http://www.numpy.org/%numpy%$$.
 # $lend
@@ -196,39 +223,12 @@ sys.exit(0)
 # $children%bin/get_cppad.sh
 # %$$
 # $head Configure$$
-# Before running $code setup.py$$ or $cref get_cppad.sh$$,
-# you should check and possibly change the following settings
-# (which are near the top of $icode%top_srcdir%/setup.py%$$):
-# $srcthisfile%0%# BEGIN_USER_SETTINGS%# END_USER_SETTINGS%$$
-# Each of these settings is described below:
-#
-# $subhead verbose_makefile$$
-# This is either $code "true"$$ or $code "false"$$.
-# If it is true, many of the compiler and Swig options used to
-# build the system are output during the $code make$$ commands.
-# If it is false, the output during the make commands just describes
-# whats is being done without so much detail.
-#
-# $subhead build_type$$
-# This is either $code "debug"$$, $code "release"$$.
-#
-# $subhead extra_cxx_flags$$
-# Extra compiler flags used when compiling C++ code.
-#
-# $subhead cppad_prefix$$
-# This is the directory where $cref get_cppad.sh$$ puts Cppad
-# (relative to the top source directory).
-#
-# $subhead test_cppad$$
-# This is either $code "true"$$ or $code "false"$$.
-# If it is $code "true"$$, $cref get_cppad.sh$$ will build and run
-# a separate check of Cppad for this system.
-# This takes a significant amount of time, but may be useful
-# if you have any problems.
+# Before running $code setup.py$$ or $code bin/get_cppad.sh$$,
+# you should check and possibly change the
+# $cref/settings/get_cppad.sh/Settings/$$ in $code bin/get_cppad.sh$$.
 #
 # $head Get cppad$$
 # The next step is to get a copy of cppad using $cref get_cppad.sh$$.
-#
 #
 # $head Test$$
 # These steps are optional if you already know that cppad_py
@@ -236,14 +236,13 @@ sys.exit(0)
 #
 # $subhead Build cppad_py$$
 # Build the Python cppad_py module using the command:
+# If $cref/build_type/get_cppad.sh/Settings/build_type/$$ is $code debug$$
 # $codei%
-#	%python% setup.py build_ext --debug --undef NDEBUG
+#	python setup.py build_ext --debug
 # %$$
-# where $icode python$$ is the Python executable you will be
-# using with cppad_py.
-# You want can test faster version (release version) using
+# otherwise use
 # $codei%
-#	%python% setup.py build_ext
+#	python setup.py build_ext
 # %$$
 #
 # $subhead python$$
@@ -251,9 +250,8 @@ sys.exit(0)
 # the following commands starting in $icode top_srcdir$$:
 # $codei%
 #	cd lib/example/python
-#	%python% check_all.py
+#	python check_all.py
 # %$$
-# where $icode python$$ is the same version of python as above.
 #
 # $subhead c++$$
 # You can also test the cppad_py c++ interface
@@ -261,14 +259,23 @@ sys.exit(0)
 # starting in $icode top_srcdir$$:
 # $codei%
 #	cd build
+#	cmake \
+#		-D CMAKE_BUILD_TYPE=%build_type% \
+#		-D cppad_prefix=%cppad_prefix% \
+#		-D extra_cxx_flags=%extra_cxx_flags% \
+#	..
 #	make check_lib_cplusplus
 # %$$
+# where $icode build_type$$ is $code debug$$ or $code release$$,
+# $icode cppad_prefix$$ is the prefix where $icode cppad$$ is installed,
+# and $icode extra_cxx_flags$$ are extra flags to use when running the
+# c++ compiler.
 #
 # $subhead import$$
 # If you are in the $icode top_srcdir$$ directory,
 # you should be able to import cppad_py using the following commands:
 # $codei%
-#	%python%
+#	python
 #	import cppad_py
 #	quit()
 # %$$
@@ -277,12 +284,13 @@ sys.exit(0)
 #
 # $head Install$$
 # Use the following command to build and install the debug version of cppad_py:
+# If $cref/build_type/get_cppad.sh/Settings/build_type/$$ is $code debug$$
 # $codei%
-#	%python% setup.py build_ext --debug --undef NDEBUG install --prefix=%prefix%
+#	python setup.py build_ext --debug install --prefix=%prefix%
 # %$$
-# Use the following to build and install the release version:
+# otherwise use
 # $codei%
-#	%python% setup.py build_ext install --prefix=%prefix%
+#	python setup.py build_ext install --prefix=%prefix%
 # %$$
 # This will install $code cppad_py$$ in the directory
 # $codei%
@@ -300,7 +308,7 @@ sys.exit(0)
 # is in your python path.
 # Once it is, you should be able to execute the following commands:
 # $codei%
-#	%python%
+#	python
 #	import sys
 #	print(sys.path)
 #	quit()

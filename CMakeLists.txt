@@ -7,6 +7,7 @@
 # -----------------------------------------------------------------------------
 # cmake \
 #	-D CMAKE_VERBOSE_MAKEFILE=value \
+#	-D CMAKE_BUILD_TYPE=value \
 #	-D cppad_prefix=value  \
 #	-D extra_cxx_flags=value
 #

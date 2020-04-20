@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
           cppad_py: A C++ Object Library and Python Interface to Cppad
-           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+           Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
@@ -65,7 +65,7 @@ $lend
 $head 08-13$$
 $list number$$
 Change $code cppad_cxx_flags$$ to
-$cref/extra_cxx_flags/setup.py/Configure/extra_cxx_flags/$$ in the user
+$cref/extra_cxx_flags/get_cppad.sh/Settings/extra_cxx_flags/$$ in the user
 configuration settings.
 Also remove $code swig_cxx_flags$$ from these user settings
 (set automatically).
@@ -132,7 +132,7 @@ $lnext
 Add the file $code cppad_py/python_major_version$$ which contains
 the major version of python that this build of $code cppad_py$$ is for.
 $lnext
-Automatically use $cref/build_type/setup.py/Configure/build_type/$$
+Automatically use $cref/build_type/get_cppad.sh/Settings/build_type/$$
 control how setup.py compiles C++
 (one used to use flags on setup.py command line).
 $lnext

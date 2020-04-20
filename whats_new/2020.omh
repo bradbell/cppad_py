@@ -25,6 +25,10 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 04-20$$
+Move configuration setting from $cref setup.py$$ to
+$cref%bin/get_cppad.sh%get_cppad.sh%Settings%$$.
+
 $head 04-19$$
 $list number$$
 Move the python source that gets distributed from $code lib/python$$

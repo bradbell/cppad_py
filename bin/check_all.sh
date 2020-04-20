@@ -56,37 +56,25 @@ fi
 echo_eval_log check_copyright.sh
 echo_eval_log run_omhelp.sh doc
 # -----------------------------------------------------------------------------
-# debug_01
-set +e
-debug_01=`expr $RANDOM % 2`
-set -e
-if [ "$debug_01" == '0' ]
-then
-	echo 'Testing release version'
-else
-	echo 'Testing debug version'
-fi
-# -----------------------------------------------------------------------------
-if [ "$debug_01" == '0' ]
-then
-	setup_args='build_ext --quiet'
-elif [ "$debug_01" == '1' ]
-then
-	setup_args='build_ext --quiet --debug --undef NDEBUG'
-else
-	echo 'bin/check_all.sh: program error'
-	exit 1
-fi
-echo_eval_log python3 setup.py $setup_args
-# -----------------------------------------------------------------------------
-eval $(grep '^verbose_makefile *=' setup.py | sed -e 's| ||g')
-eval $(grep '^build_type *=' setup.py | sed -e 's| ||g')
-eval $(grep '^cppad_prefix *=' setup.py | sed -e 's| ||g')
-eval $(grep '^extra_cxx_flags *=' setup.py | sed -e 's| ||g')
+eval $(grep '^build_type *=' bin/get_cppad.sh)
+eval $(grep '^cppad_prefix *=' bin/get_cppad.sh)
+eval $(grep '^extra_cxx_flags *=' bin/get_cppad.sh)
 if !  echo $cppad_prefix | grep '^/' > /dev/null
 then
 	cppad_prefix=$(pwd)/$cppad_prefix
 fi
+# -----------------------------------------------------------------------------
+if [ "$build_type" == 'release' ]
+then
+	setup_args='build_ext'
+elif [ "$build_type" == 'debug' ]
+then
+	setup_args='build_ext --debug'
+else
+	echo 'bin/check_all.sh: build_type in bin/get_cppad.sh not debug or release'
+	exit 1
+fi
+echo_eval_log python3 setup.py $setup_args
 echo_eval_log cd build
 cmake \
 	-D CMAKE_VERBOSE_MAKEFILE="$verbose_maekfile" \
