@@ -7,9 +7,8 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-version=`grep '^SET(cppad_version' CMakeLists.txt | \
+version=`grep '^SET(cppad_py_version' CMakeLists.txt | \
 		sed -e 's|^[^"]*"\([^"]*\)".*|\1|'`
-eval $(grep '^build_type *=' bin/get_cppad.sh)
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
@@ -23,12 +22,6 @@ then
 	exit 1
 fi
 python='python3'
-if [ "$build_type" == 'release' ]
-then
-	debug_flag=''
-else
-	debug_flag='--global-option="--debug"'
-fi
 # ---------------------------------------------------------------------------
 list="
 	cppad_py
@@ -56,8 +49,7 @@ fi
 echo_eval python setup.py sdist
 echo_eval cd dist
 tar -xzf cppad_py-$version.tar.gz
-echo_eval pip install  -v \
-	$debug_flag \
+echo_eval pip install \
 	--install-option="--prefix='/home/bradbell/prefix/cppad_py'" \
 	cppad_py-$version.tar.gz
 # ----------------------------------------------------------------------------

@@ -35,7 +35,8 @@ cppad_prefix='build/prefix'
 # %$$
 #
 # $subhead extra_cxx_flags$$
-# Extra compiler false used when compiling c++ code.
+# Extra compiler false used when compiling c++ code not including the
+# debugging and optimization flags.
 # The ones below are example flags are used by g++:
 # $srccode%sh%
 extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
@@ -91,13 +92,14 @@ then
 	cppad_prefix="$(pwd)/$cppad_prefix"
 fi
 # -----------------------------------------------------------------------------
+# cppad_py build directory
 if [ ! -e 'build' ]
 then
 	echo_eval mkdir build
 fi
 echo_eval cd build
-cmake_binary_path=`pwd`
 #
+# cppad repository directory
 if [ ! -e "cppad-$cppad_version.git" ]
 then
     echo_eval git clone $remote_repo cppad-$cppad_version.git
@@ -116,36 +118,44 @@ then
 	exit 1
 fi
 #
+# cppad build directory
 if [ ! -e build ]
 then
     echo_eval mkdir build
 fi
 echo_eval cd build
-cat << EOF
-cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
-	-D cppad_prefix="$cppad_prefix"  \\
-	-D cppad_cxx_flags="$extra_cxx_flags" \\
-	..
-EOF
+#
+# run cppad cmake command
 if [ "$build_type" == 'debug' ]
 then
 	cppad_debug_which='debug_all'
-elif [ "$build_type" == 'debug' ]
+elif [ "$build_type" == 'release' ]
+then
 	cppad_debug_which='debug_none'
 else
 	echo 'bin/get_cppad.sh: build type is not debug or release'
 	exit 1
 fi
+cat << EOF
+cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
+	-D cppad_prefix="$cppad_prefix"  \\
+	-D cppad_cxx_flags="$extra_cxx_flags" \\
+	-D cppad_debug_which=$cppad_debug_which \\
+	..
+EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
 	-D cppad_prefix="$cppad_prefix"  \
 	-D cppad_cxx_flags="$extra_cxx_flags" \
 	-D cppad_debug_which=$cppad_debug_which \
 	..
 #
+# run check
 if [ "$test_cppad" == 'true' ]
 then
 	make check
 fi
+#
+# install
 make install
 # -----------------------------------------------------------------------------
 echo 'get_cppad.sh: OK'

@@ -35,7 +35,7 @@ if not pip_distribution :
 # cppad_py_version
 fp      = open('CMakeLists.txt', 'r')
 string  = fp.read()
-pattern = '\\nSET\( *cppad_py_version  *"([0-9]*)"'
+pattern = '\\nSET\( *cppad_py_version  *"([0-9]{4}[.][0-9]+[.][0-9]+)"'
 match   = re.search(pattern, string)
 if not match :
 	sys_exit('cannot find cppad_py version in CMakeLists.txt')
@@ -69,16 +69,6 @@ if not match :
 build_type = match.group(1)
 if build_type != 'debug' and build_type != 'release' :
 	sys_exit('build_type is not debug or release in bin/get_cppad.sh')
-# -----------------------------------------------------------------------------
-if 'build' in sys.argv :
-	if '--debug' in sys.argv  and build_type == 'release' :
-		msg  = 'build_type is release in bin/get_cppad.sh '
-		msg += 'and --debug on command line'
-		sys_exit(msg)
-	if '--debug' not in sys.argv  and build_type == 'debug' :
-		msg  = 'build_type is debug in bin/get_cppad.sh '
-		msg += 'and --debug not on command line'
-		sys_exit(msg)
 # -----------------------------------------------------------------------------
 # check if we need to install a local copy of cppad
 cppad_include_file = cppad_prefix + '/include/cppad/cppad.hpp'
@@ -148,8 +138,9 @@ extra_compile_args  = extra_cxx_flags.split()
 extra_compile_args += swig_cxx_flags.split()
 undef_macros        = list()
 if build_type == 'debug' :
-	undef_macros = [ 'NDEBUG' ]
 	extra_compile_args.append( '-O1' )
+	extra_compile_args.append( '-g')
+	undef_macros = [ 'NDEBUG' ]
 #
 cppad_py_extension_name   = 'cppad_py/_swig'
 extension_module          = Extension(
