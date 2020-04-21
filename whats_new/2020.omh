@@ -26,8 +26,13 @@ $head Previous Years$$
 $cref whats_new_2018$$
 
 $head 04-20$$
+$list number$$
 Move configuration setting from $cref setup.py$$ to
 $cref%bin/get_cppad.sh%get_cppad.sh%Settings%$$.
+$lnext
+First version that installs using $code pip$$.
+Install instructions for pip will be added soon.
+$lend
 
 $head 04-19$$
 $list number$$

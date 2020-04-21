@@ -118,9 +118,9 @@ print_variable(CMAKE_BUILD_TYPE)
 # -----------------------------------------------------------------------------
 # cppad_prefix and corresponding include directories
 IF ( cppad_prefix )
-	IF( cppad_prefix MATCHES "^[^/]" )
+	IF( cppad_prefix MATCHES "^[^/].*" )
 		SET(cppad_prefix "${CMAKE_SOURCE_DIR}/${cppad_prefix}")
-	ENDIF( cppad_prefix MATCHES "^[^/]" )
+	ENDIF( cppad_prefix MATCHES "^[^/].*" )
 ENDIF ( cppad_prefix )
 cmake_argument(cppad_prefix NOTFOUND PATH "prefix used to install Cppad" )
 IF( NOT cppad_prefix )

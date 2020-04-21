@@ -87,7 +87,12 @@ remote_repo='https://github.com/coin-or/CppAD.git'
 cppad_version='20200210'
 hash_code='69d069212c039e1fecc5aba0a7ed2b0b331fe047'
 # -----------------------------------------------------------------------------
-top_source_directory=`pwd`
+# convert cppad_prefix rleative to absolute paths
+if ! echo $cppad_prefix | grep '^/' > /dev/null
+then
+	cppad_prefix="$(pwd)/$cppad_prefix"
+fi
+# -----------------------------------------------------------------------------
 if [ ! -e 'build' ]
 then
 	echo_eval mkdir build
@@ -120,7 +125,7 @@ fi
 echo_eval cd build
 cat << EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
-	-D cppad_prefix="$top_source_directory/$cppad_prefix"  \\
+	-D cppad_prefix="$cppad_prefix"  \\
 	-D cppad_cxx_flags="$extra_cxx_flags" \\
 	..
 EOF
@@ -128,7 +133,7 @@ EOF
 # CPPAD_DEBUG_AND_RELEASE defined (can be used with both).
 # Note that this causes the library code to be mixed (both debug and release).
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
-	-D cppad_prefix="$top_source_directory/$cppad_prefix"  \
+	-D cppad_prefix="$cppad_prefix"  \
 	-D cppad_cxx_flags="$extra_cxx_flags" \
 	-D cppad_debug_which='debug_even' \
 	..

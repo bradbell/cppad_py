@@ -86,36 +86,34 @@ if not os.path.isfile( cppad_include_file ) :
 	command = [ 'bin/get_cppad.sh' ]
 	flag = subprocess.call(command)
 if flag != 0 or not os.path.isfile( cppad_include_file ) :
-	msg  = 'Cannot find ' + cppad_include_file
+	msg  = 'Cannot find ' + cppad_include_file + '\n'
 	msg += 'and bin/get_cppad.sh could not create it.'
 	sys_exit(msg)
 # -----------------------------------------------------------------------------
 def quote_str(s) :
 	return "'" + s + "'"
 # -----------------------------------------------------------------------------
-# initialize cppad_py directory as a copy of lib/python/cppad_py
-# (this directory is used for local build files and testing)
-if os.path.exists('cppad_py') :
-	shutil.rmtree('cppad_py')
-shutil.copytree('lib/python/cppad_py', 'cppad_py');
-# -----------------------------------------------------------------------------
-# python_version
-python_major_version = sys.version_info.major
-python_minor_version = sys.version_info.minor
-if python_major_version != 2 and python_major_version != 3 :
-	msg  = 'python major version number '
-	msg += str( python_major_version ) + ' is not 2 or 3'
-	sys_exit(msg)
-#
-# cppad_py/python_version
-# (this is used for local testing)
-python_version = str(python_major_version) + "." + str(python_minor_version)
-file_ptr = open('cppad_py/python_version', 'w')
-file_ptr.write(python_version + '\n')
-file_ptr.close()
-# -----------------------------------------------------------------------------
-# cppad_include_dir
-cppad_include_dir = os.getcwd() + '/build/prefix/include'
+if not pip_distribution :
+	# initialize cppad_py directory as a copy of lib/python/cppad_py
+	# (this directory is used for local build files and testing)
+	if os.path.exists('cppad_py') :
+		shutil.rmtree('cppad_py')
+	shutil.copytree('lib/python/cppad_py', 'cppad_py');
+	#
+	# python_version
+	python_major_version = sys.version_info.major
+	python_minor_version = sys.version_info.minor
+	if python_major_version != 2 and python_major_version != 3 :
+		msg  = 'python major version number '
+		msg += str( python_major_version ) + ' is not 2 or 3'
+		sys_exit(msg)
+	#
+	# cppad_py/python_version
+	# (this is used for local testing)
+	python_version = str(python_major_version) +"."+ str(python_minor_version)
+	file_ptr = open('cppad_py/python_version', 'w')
+	file_ptr.write(python_version + '\n')
+	file_ptr.close()
 # -----------------------------------------------------------------------------
 # Use swig directly (instead of through setup which seems to have trouble).
 # This creates the files cppad_py_swig_wrap.cpp and swig.py in the
@@ -128,8 +126,6 @@ command = [
 	'-o', 'lib/python/cppad_py/cppad_py_swig_wrap.cpp',
 	'lib/cppad_py_swig.i'
 ]
-if python_major_version == 3 :
-	command.insert(1, '-py3')
 flag    = subprocess.call(command)
 if flag != 0 :
 	sys_exit('swig command failed')
@@ -146,7 +142,7 @@ for name in os.listdir('lib/cplusplus') :
 		cppad_py_extension_sources.append( 'lib/cplusplus/' + name)
 # -----------------------------------------------------------------------------
 # extension_module
-include_dirs     = [ cppad_include_dir, 'include' ]
+include_dirs     = [ cppad_prefix + '/include', 'include' ]
 extra_compile_args  = extra_cxx_flags.split()
 extra_compile_args += swig_cxx_flags.split()
 undef_macros        = list()
@@ -171,25 +167,26 @@ setup(
 	license      = 'GPL3',
 	description  = 'A C++ Object Library and Python Interface to Cppad',
 	author       = 'Bradley M. Bell',
-	author_email = 'bradbell at seanet dot com',
+	author_email = 'bradbell@seanet.com',
 	url          = 'https://github.com/bradbell/cppad_py',
 	ext_modules  = [ extension_module ],
 	packages     = [ 'cppad_py' ]
 )
 # copy swig extension library to cppad_py
 count = 0
-for dname in os.listdir('build') :
-	if dname.startswith('lib.') and dname.endswith('-' + python_version):
-		for fname in os.listdir('build/' + dname + '/cppad_py' ) :
-			if fname.startswith('_swig.') :
-				src_file = 'build/' + dname + '/cppad_py/' + fname
-				dst_file = 'cppad_py/' + fname
-				shutil.copyfile(src_file, dst_file)
-				shutil.copymode(src_file, dst_file)
-				count = count + 1
-if not pip_distribution and (count != 1) :
-	msg ='could not find swig library to copy for testing'
-	sys_exit(msg)
+if not pip_distribution :
+	for dname in os.listdir('build') :
+		if dname.startswith('lib.') and dname.endswith('-' + python_version):
+			for fname in os.listdir('build/' + dname + '/cppad_py' ) :
+				if fname.startswith('_swig.') :
+					src_file = 'build/' + dname + '/cppad_py/' + fname
+					dst_file = 'cppad_py/' + fname
+					shutil.copyfile(src_file, dst_file)
+					shutil.copymode(src_file, dst_file)
+					count = count + 1
+	if count != 1 :
+		msg ='could not find swig library to copy for testing'
+		sys_exit(msg)
 # -----------------------------------------------------------------------------
 print('setup.py: OK')
 sys.exit(0)
