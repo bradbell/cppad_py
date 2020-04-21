@@ -14,7 +14,7 @@ Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 ## Pip Install
 
 ### Current Version
-2020.4.21
+2020.4.20
 
 ### Install Command
 ```sh
@@ -52,4 +52,4 @@ assert J[1,1] == 2.0 * x[1]
 ```
 
 ## Documentation
-[documentation]( https://bradbell.github.io/cppad_py/doc)
+<https://bradbell.github.io/cppad_py/doc>

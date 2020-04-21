@@ -22,7 +22,7 @@ $spell
 	https
 	bradbell
 	usr
-	Cppad
+	CppAD
 	Py
 	Linux
 	msys
@@ -34,7 +34,12 @@ $spell
 	xam
 $$
 
-$section cppad_py-2020.4.21: A C++ Object Library and Python Interface to Cppad$$
+$section cppad_py-2020.4.21:
+	A C++ Object Library and Python Interface to CppAD
+$$
+
+$head Git Repository$$
+$href%https://github.com/bradbell/cppad_py%$$
 
 $head Purpose$$
 $list number$$
@@ -43,7 +48,7 @@ to the Algorithmic Differentiation (AD) package Cppad; see $cref py_lib$$.
 $lnext
 Provide an AD object library; see $cref cpp_lib$$.
 $lnext
-Prove a concrete example of how
+Provide a concrete example of how
 $href%https://github.com/bradbell/cppad_swig%cppad_swig%$$
 can be used to connect any scripting language to Cppad.
 $lend
