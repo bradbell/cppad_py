@@ -157,7 +157,7 @@ setup(
 	name         = 'cppad_py',
 	version      = cppad_py_version,
 	license      = 'GPL3',
-	description  = 'A C++ Object Library and Python Interface to Cppad',
+	description  = 'A C++ Object Library and Python Interface to CppAD',
 	author       = 'Bradley M. Bell',
 	author_email = 'bradbell@seanet.com',
 	url          = 'https://github.com/bradbell/cppad_py',
