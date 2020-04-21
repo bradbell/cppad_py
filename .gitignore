@@ -9,7 +9,7 @@ junk.*
 /cppad_py/
 /cppad_py.egg-info/
 /new.*/
-new
+/new/
 # extensions to ignore
 *.log
 *.swp
