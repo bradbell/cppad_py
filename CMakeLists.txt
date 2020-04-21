@@ -120,6 +120,10 @@ print_variable(CMAKE_BUILD_TYPE)
 IF ( cppad_prefix )
 	IF( cppad_prefix MATCHES "^[^/].*" )
 		SET(cppad_prefix "${CMAKE_SOURCE_DIR}/${cppad_prefix}")
+	ELSE( cppad_prefix MATCHES "^[^/].*" )
+		MESSAGE(FATAL_ERROR
+			"cppad_prefix=${cppad_prefix} is not a local directory"
+	)
 	ENDIF( cppad_prefix MATCHES "^[^/].*" )
 ENDIF ( cppad_prefix )
 cmake_argument(cppad_prefix NOTFOUND PATH "prefix used to install Cppad" )

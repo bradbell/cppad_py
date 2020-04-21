@@ -59,10 +59,6 @@ echo_eval_log run_omhelp.sh doc
 eval $(grep '^build_type *=' bin/get_cppad.sh)
 eval $(grep '^cppad_prefix *=' bin/get_cppad.sh)
 eval $(grep '^extra_cxx_flags *=' bin/get_cppad.sh)
-if !  echo $cppad_prefix | grep '^/' > /dev/null
-then
-	cppad_prefix=$(pwd)/$cppad_prefix
-fi
 # -----------------------------------------------------------------------------
 if [ "$build_type" == 'release' ]
 then

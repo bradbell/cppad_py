@@ -15,9 +15,9 @@ import shutil
 from setuptools import setup, Extension
 def sys_exit(msg) :
 	sys.exit( 'setup.py: ' + msg )
+pip_distribution = not os.path.isfile( 'example/python/check_all.py.in' )
 # -----------------------------------------------------------------------------
 # Examples and tests are not included in pip distribution
-pip_distribution = not os.path.isfile( 'example/python/check_all.py.in' )
 if not pip_distribution :
 	# in example/python: check_all.py.in -> check_all.py
 	# (this is used for local testing)
@@ -69,7 +69,8 @@ if not match :
 build_type = match.group(1)
 if build_type != 'debug' and build_type != 'release' :
 	sys_exit('build_type is not debug or release in bin/get_cppad.sh')
-if 'sdist' not in sys.argv :
+# -----------------------------------------------------------------------------
+if 'build' in sys.argv :
 	if '--debug' in sys.argv  and build_type == 'release' :
 		msg  = 'build_type is release in bin/get_cppad.sh '
 		msg += 'and --debug on command line'
@@ -287,7 +288,8 @@ sys.exit(0)
 # where $icode build_type$$ is $code debug$$ or $code release$$,
 # $icode cppad_prefix$$ is the prefix where $icode cppad$$ is installed,
 # and $icode extra_cxx_flags$$ are extra flags to use when running the
-# c++ compiler.
+# c++ compiler. Note that $icode cppad_prefix$$ is relative to the
+# $icode top_srcdir$$ directory not the build directory.
 #
 # $subhead import$$
 # If you are in the $icode top_srcdir$$ directory,

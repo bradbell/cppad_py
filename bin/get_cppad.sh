@@ -28,10 +28,8 @@
 # $head Settings$$
 #
 # $subhead cppad_prefix$$
-# This prefix is used to install cppad locally.
-# If you already have a copy of cppad installed,
-# you can change this to the corresponding value and not run
-# $code bin/get_cppad.sh$$.
+# This prefix is used to install cppad locally relative to the
+# top source director:
 # $srccode%sh%
 cppad_prefix='build/prefix'
 # %$$
@@ -129,13 +127,19 @@ cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
 	-D cppad_cxx_flags="$extra_cxx_flags" \\
 	..
 EOF
-# We use debug_even so that the resulting library will be compiled with
-# CPPAD_DEBUG_AND_RELEASE defined (can be used with both).
-# Note that this causes the library code to be mixed (both debug and release).
+if [ "$build_type" == 'debug' ]
+then
+	cppad_debug_which='debug_all'
+elif [ "$build_type" == 'debug' ]
+	cppad_debug_which='debug_none'
+else
+	echo 'bin/get_cppad.sh: build type is not debug or release'
+	exit 1
+fi
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
 	-D cppad_prefix="$cppad_prefix"  \
 	-D cppad_cxx_flags="$extra_cxx_flags" \
-	-D cppad_debug_which='debug_even' \
+	-D cppad_debug_which=$cppad_debug_which \
 	..
 #
 if [ "$test_cppad" == 'true' ]

@@ -7,7 +7,9 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-version='20200420'
+version=`grep '^SET(cppad_version' CMakeLists.txt | \
+		sed -e 's|^[^"]*"\([^"]*\)".*|\1|'`
+eval $(grep '^build_type *=' bin/get_cppad.sh)
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
@@ -21,11 +23,11 @@ then
 	exit 1
 fi
 python='python3'
-eval $(grep '^build_type *=' bin/get_cppad.sh)
-if [ "$build_type" != 'release' ]
+if [ "$build_type" == 'release' ]
 then
-	echo 'bin/check_pip.hs; build_type in bin/get_cppad.sh is not release'
-	exit 1
+	debug_flag=''
+else
+	debug_flag='--global-option="--debug"'
 fi
 # ---------------------------------------------------------------------------
 list="
@@ -48,10 +50,15 @@ then
 	echo_eval rm -r cppad_py
 fi
 # ----------------------------------------------------------------------------
+# pip install --no-binary :all:
+# --global-option build --global-option --debug PACKAGE
+#
 echo_eval python setup.py sdist
 echo_eval cd dist
 tar -xzf cppad_py-$version.tar.gz
-echo_eval pip -v install  --prefix=$HOME/prefix/cppad_py \
+echo_eval pip install  -v \
+	$debug_flag \
+	--install-option="--prefix='/home/bradbell/prefix/cppad_py'" \
 	cppad_py-$version.tar.gz
 # ----------------------------------------------------------------------------
 # check installed not local copy
