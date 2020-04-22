@@ -36,7 +36,7 @@ if not pip_distribution :
 # cppad_py_version
 fp      = open('CMakeLists.txt', 'r')
 string  = fp.read()
-pattern = '\\nSET\( *cppad_py_version  *"([0-9]{4}[.][0-9]+[.][0-9]+)"'
+pattern = '\\nSET\( *cppad_py_version  *"([0-9]{4}[.][0-9]+[.][.0-9]*)"'
 match   = re.search(pattern, string)
 if not match :
 	sys_exit('cannot find cppad_py version in CMakeLists.txt')

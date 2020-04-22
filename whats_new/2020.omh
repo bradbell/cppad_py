@@ -38,8 +38,9 @@ $icode ay$$ is an $code a_double$$,
 and $icode op$$ is
 $code +$$,
 $code -$$,
-$code *$$, or
-$code /$$.
+$code *$$,
+$code /$$, or
+$code **$$.
 Note that this automatically transfers to numpy arrays; e.g
 $icode%x% * %ay%$$ where $icode x$$ is a double and $icode ay$$
 is a numpy array of $code a_double$$.
