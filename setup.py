@@ -16,6 +16,7 @@ from setuptools import setup, Extension
 def sys_exit(msg) :
 	sys.exit( 'setup.py: ' + msg )
 pip_distribution = not os.path.isfile( 'example/python/check_all.py.in' )
+src_distribution = 'sdist' in sys.argv
 # -----------------------------------------------------------------------------
 # Examples and tests are not included in pip distribution
 if not pip_distribution :
@@ -84,27 +85,6 @@ if flag != 0 or not os.path.isfile( cppad_include_file ) :
 def quote_str(s) :
 	return "'" + s + "'"
 # -----------------------------------------------------------------------------
-if not pip_distribution :
-	# initialize cppad_py directory as a copy of lib/python/cppad_py
-	# (this directory is used for local build files and testing)
-	if os.path.exists('cppad_py') :
-		shutil.rmtree('cppad_py')
-	shutil.copytree('lib/python/cppad_py', 'cppad_py');
-	#
-	# python_version
-	python_major_version = sys.version_info.major
-	python_minor_version = sys.version_info.minor
-	if python_major_version != 2 and python_major_version != 3 :
-		msg  = 'python major version number '
-		msg += str( python_major_version ) + ' is not 2 or 3'
-		sys_exit(msg)
-	#
-	# cppad_py/python_version
-	# (this is used for local testing)
-	python_version = str(python_major_version) +"."+ str(python_minor_version)
-	file_ptr = open('cppad_py/python_version', 'w')
-	file_ptr.write(python_version + '\n')
-	file_ptr.close()
 # -----------------------------------------------------------------------------
 # Use swig directly (instead of through setup which seems to have trouble).
 # This creates the files cppad_py_swig_wrap.cpp and swig.py in the
@@ -162,11 +142,34 @@ setup(
 	author_email = 'bradbell@seanet.com',
 	url          = 'https://github.com/bradbell/cppad_py',
 	ext_modules  = [ extension_module ],
-	packages     = [ 'cppad_py' ]
+	packages     = [ 'cppad_py' ],
+	package_dir  = { 'cppad_py' : 'lib/python/cppad_py' },
 )
-# copy swig extension library to cppad_py
-count = 0
-if not pip_distribution :
+# ---------------------------------------------------------------------------
+if not (pip_distribution or src_distribution) :
+	# create the directory ./cppad_py for testing purposes
+	#
+	# initialize cppad_py directory as a copy of lib/python/cppad_py
+	if os.path.exists('cppad_py') :
+		shutil.rmtree('cppad_py')
+	shutil.copytree('lib/python/cppad_py', 'cppad_py');
+	#
+	# python_version
+	python_major_version = sys.version_info.major
+	python_minor_version = sys.version_info.minor
+	if python_major_version != 2 and python_major_version != 3 :
+		msg  = 'python major version number '
+		msg += str( python_major_version ) + ' is not 2 or 3'
+		sys_exit(msg)
+	#
+	# cppad_py/python_version
+	python_version = str(python_major_version) +"."+ str(python_minor_version)
+	file_ptr = open('cppad_py/python_version', 'w')
+	file_ptr.write(python_version + '\n')
+	file_ptr.close()
+	#
+	# copy swig extension library to cppad_py
+	count = 0
 	for dname in os.listdir('build') :
 		if dname.startswith('lib.') and dname.endswith('-' + python_version):
 			for fname in os.listdir('build/' + dname + '/cppad_py' ) :

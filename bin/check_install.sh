@@ -17,9 +17,12 @@ then
 	echo "bin/check_install.sh: must be executed from its parent directory"
 	exit 1
 fi
+# python
 python='python3'
+# build_type
 eval $(grep '^build_type *=' bin/get_cppad.sh)
 # ---------------------------------------------------------------------------
+# remove old cppad_py
 name="$HOME/prefix/cppad_py"
 if [ -e $name ]
 then
@@ -30,16 +33,22 @@ if [ -e $name ]
 then
 	echo_eval rm -r $name
 fi
-# ---------------------------------------------------------------------------
+#
 cat << EOF > check_install.py
 import cppad_py
 print( 'import cppad_py: OK')
 EOF
 if $python check_install.py >& /dev/null
 then
-	echo 'cannot remove old copy cppad_py in python path'
-	exit 0
+	echo 'cannot remove old copy cppad_py in python path. Try'
+	echo 'pip uninstall cppad-py'
+	exit 1
 fi
+# ---------------------------------------------------------------------------
+cppad_path=`echo 'import numpy; print(numpy.__file__)' | python | sed \
+	-e 's|/numpy/__init__.py||' \
+	-e "s|^/.*/\(lib[^.]*\)/python|$HOME/prefix/cppad_py/\1/python|"`
+PYTHONPATH="$cppad_path:$PYTHONPATH"
 # ---------------------------------------------------------------------------
 # install new version
 if [ "$build_type" == 'debug' ]
@@ -52,8 +61,6 @@ echo_eval $python setup.py build_ext $buld_flag install \
 	--prefix=$HOME/prefix/cppad_py
 echo_eval rm -r cppad_py
 # ---------------------------------------------------------------------------
-path2cppad_py=$(find $HOME/prefix/cppad_py -name 'site-packages')
-PYTHONPATH="$path2cppad_py:$PYTHONPATH"
 echo_eval $python check_install.py
 # ---------------------------------------------------------------------------
 rm check_install.py

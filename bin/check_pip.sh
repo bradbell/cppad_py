@@ -24,16 +24,16 @@ fi
 python='python3'
 # ---------------------------------------------------------------------------
 list="
+	dist
 	cppad_py
 	$HOME/prefix/cppad_py
 	build/bdist.linux-x86_64
 	build/lib.linux-x86_64-3.7
 	build/temp.linux-x86_64-3.7
-	dist/cppad_py-$version
 "
 for name in $list
 do
-	if [ -e build/$name ]
+	if [ -e $name ]
 	then
 		echo_eval rm -r $name
 	fi
@@ -48,9 +48,7 @@ fi
 #
 echo_eval python setup.py sdist
 echo_eval cd dist
-tar -xzf cppad_py-$version.tar.gz
-echo_eval pip install \
-	--install-option="--prefix='/home/bradbell/prefix/cppad_py'" \
+echo_eval pip install --prefix="$HOME/prefix/cppad_py" \
 	cppad_py-$version.tar.gz
 # ----------------------------------------------------------------------------
 # check installed not local copy

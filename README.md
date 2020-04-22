@@ -14,7 +14,8 @@ Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 ## Pip Install
 
 ### Current Version
-2020.4.20
+The current verion number number `2020.4.21`
+corresponds to year 2020, month 4, and day 21.
 
 ### Install Command
 ```sh
