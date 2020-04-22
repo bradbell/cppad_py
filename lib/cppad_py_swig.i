@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
-            Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+            Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
@@ -62,6 +62,25 @@ $end
 %include <cppad/py/sparse.hpp>
 %include <cppad/py/fun.hpp>
 %include <cppad/py/error.hpp>
+
+%extend cppad_py::a_double {
+        cppad_py::a_double __radd__(const double& d) const
+        {       cppad_py::a_double result;
+                return radd(d, *($self));
+        }
+        cppad_py::a_double __rsub__(const double& d) const
+        {       cppad_py::a_double result;
+                return rsub(d, *($self));
+        }
+        cppad_py::a_double __rmul__(const double& d) const
+        {       cppad_py::a_double result;
+                return rmul(d, *($self));
+        }
+        cppad_py::a_double __rtruediv__(const double& d) const
+        {       cppad_py::a_double result;
+                return rdiv(d, *($self));
+        }
+}
 
 namespace std {
      %template(vec_bool)      vector<bool>;

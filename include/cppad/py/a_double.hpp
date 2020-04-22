@@ -25,7 +25,7 @@ struct a_double_data {
 	// tape address for this object
 	CPPAD_TAPE_ADDR_TYPE   taddr;
 	// is this a dynamic parameter (or a variable)
-	// when tape_id is for current tape and taddr_ is non-zero
+	// when tape_id is for current tape and taddr is non-zero
 	bool dynamic;
 };
 
@@ -144,6 +144,13 @@ class  CPPAD_PY_LIB_PUBLIC a_double
 		const a_double& if_false
 	);
 };
+
+// Binary operations with double on left and a_double on right
+a_double radd(const double& d, const a_double& ad);
+a_double rsub(const double& d, const a_double& ad);
+a_double rmul(const double& d, const a_double& ad);
+a_double rdiv(const double& d, const a_double& ad);
+
 
 } // END_CPPAD_PY_NAMESPACE
 
