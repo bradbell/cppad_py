@@ -16,6 +16,7 @@ $spell
 	yq
 	inplace
 	op
+	numpy
 $$
 
 $section Cppad Py Changes During 2020$$
@@ -26,12 +27,12 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
-$head 04-21$$
+$head 04-22$$
 $list number$$
 Instructions were added for
 $cref/installing using pip/setup.py/Install Using Pip/$$.
 $lnext
-The binary operators were extended to include $icode x op ay%$$ where:
+The binary operators were extended to include $icode x op ay$$ where:
 $icode x$$ is a double (python $code float$$),
 $icode ay$$ is an $code a_double$$,
 and $icode op$$ is
@@ -39,6 +40,9 @@ $code +$$,
 $code -$$,
 $code *$$, or
 $code /$$.
+Note that this automatically transfers to numpy arrays; e.g
+$icode%x% * %ay%$$ where $icode x$$ is a double and $icode ay$$
+is a numpy array of $code a_double$$.
 $lend
 
 $head 04-20$$
