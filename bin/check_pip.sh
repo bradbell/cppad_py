@@ -43,6 +43,23 @@ then
 	echo_eval rm -r cppad_py
 fi
 # ----------------------------------------------------------------------------
+cat << EOF > check_pip.$$
+import sys
+import cppad_py
+x = cppad_py.a_double(2.0)
+assert x.value() == 2.0
+sys.exit(0)
+EOF
+if python check_pip.$$ >& /dev/null
+then
+	echo_eval pip uninstall cppad-py
+fi
+if python check_pip.$$ >& /dev/null
+then
+	'check_pip.sh: Cannot remove old copy of cppad_py'
+	exit 1
+fi
+# ----------------------------------------------------------------------------
 # pip install --no-binary :all:
 # --global-option build --global-option --debug PACKAGE
 #
@@ -54,13 +71,13 @@ echo_eval pip install --prefix="$HOME/prefix/cppad_py" \
 # check installed not local copy
 path2cppad_py=$(find $HOME/prefix/cppad_py -name 'site-packages')
 PYTHONPATH="$path2cppad_py:$PYTHONPATH"
-cat << EOF > check_pip.py
-import sys
-import cppad_py
-x = cppad_py.a_double(2.0)
-assert x.value == 2.0
-sys.exit(0)
-EOF
+echo "PYTHONPATH+$PYTHONPATH"
+if ! python ../check_pip.$$
+then
+	echo 'check_pip.sh: install failed'
+	exit 1
+fi
+rm ../check_pip.$$
 # ----------------------------------------------------------------------------
 echo 'check_pip.sh: OK'
 exit 0
