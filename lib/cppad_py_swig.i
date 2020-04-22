@@ -80,6 +80,19 @@ $end
         {       cppad_py::a_double result;
                 return rdiv(d, *($self));
         }
+        /* pow is an operator in python but not c++ */
+        cppad_py::a_double __rpow__(const double& d) const
+        {       cppad_py::a_double result;
+                return pow(d, *($self));
+        }
+        cppad_py::a_double __pow__(const double& d) const
+        {       cppad_py::a_double result;
+                return pow(*($self), d);
+        }
+        cppad_py::a_double __pow__(const a_double& ad) const
+        {       cppad_py::a_double result;
+                return pow(*($self), ad);
+        }
 }
 
 namespace std {

@@ -337,17 +337,15 @@ $icode%az% = %ax% %op% %y%
 %$$
 $icode%az% = %y% %op% %ax%
 %$$
-$icode%az% = pow(%ax%, %ay%)
-%$$
-$icode%az% = pow(%ax%, %y%)
-%$$
 
 $head op$$
 The binary operator $icode op$$ is one of the following:
 addition $code +$$,
 subtraction $code -$$,
 multiplication $code *$$,
-or division $code /$$.
+division $code /$$, or
+exponentiation $code **$$.
+Note that exponentiation is a function is c++ and an operator in python.
 
 $head ax$$
 This object has prototype
@@ -387,17 +385,7 @@ BINARY_OP_AD_RESULT(+)
 BINARY_OP_AD_RESULT(-)
 BINARY_OP_AD_RESULT(*)
 BINARY_OP_AD_RESULT(/)
-// pow
-a_double a_double::pow(const a_double& ad) const
-{	a_double result;
-	*result.ptr() = CppAD::pow( *ptr(), *ad.ptr() );
-	return result;
-}
-a_double a_double::pow(const double& d) const
-{	a_double result;
-	*result.ptr() = CppAD::pow( *ptr(), d );
-	return result;
-}
+//
 // binary operators when right operand is a double
 a_double radd(const double& d, const a_double& ad)
 {	a_double result;
@@ -417,6 +405,23 @@ a_double rmul(const double& d, const a_double& ad)
 a_double rdiv(const double& d, const a_double& ad)
 {	a_double result;
 	*result.ptr() = d / *ad.ptr();
+	return result;
+}
+//
+// pow (operator in python but not c++)
+a_double pow(const a_double& ax, const a_double& ay)
+{	a_double result;
+	*result.ptr() = CppAD::pow( *ax.ptr(), *ay.ptr() );
+	return result;
+}
+a_double pow(const a_double& ad, const double& d)
+{	a_double result;
+	*result.ptr() = CppAD::pow( *ad.ptr(), d );
+	return result;
+}
+a_double pow(const double& d, const a_double& ad)
+{	a_double result;
+	*result.ptr() = CppAD::pow( d, *ad.ptr() );
 	return result;
 }
 /*

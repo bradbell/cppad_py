@@ -131,10 +131,6 @@ class  CPPAD_PY_LIB_PUBLIC a_double
 	a_double tan(void) const;
 	a_double tanh(void) const;
 	//
-	// binary functions with AD result
-	a_double pow(const a_double& exponent) const;
-	a_double pow(const double& exponent) const;
-	//
 	// conditional assignment
 	void cond_assign(
 		const char*     cop       ,
@@ -151,6 +147,10 @@ a_double rsub(const double& d, const a_double& ad);
 a_double rmul(const double& d, const a_double& ad);
 a_double rdiv(const double& d, const a_double& ad);
 
+// The binary pow function (operator in python but not c++)
+a_double  pow(const a_double& ax, const a_double& ay);
+a_double  pow(const a_double& ad, const double& d);
+a_double  pow(const double& d, const a_double& ad);
 
 } // END_CPPAD_PY_NAMESPACE
 

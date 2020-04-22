@@ -51,10 +51,12 @@ bool a_double_binary_xam(void) {
 	ok = ok && a32.near_equal( a_double(3.0 / 2.0 ) );
 	// -----------------------------------------------------------------------
 	// pow
-	a_double a8 = a2.pow(a3);
-	a_double a9 = a3.pow(2.0);
+	a_double a8 = cppad_py::pow(a2, a3);
+	a_double a9 = cppad_py::pow(a3, 2.0);
+	a_double a4 = cppad_py::pow(2.0, a2);
 	ok = ok && a8.near_equal( a_double(8.0) );
 	ok = ok && a9.near_equal( a_double(9.0) );
+	ok = ok && a4.near_equal( a_double(4.0) );
 	//
 	return( ok );
 }

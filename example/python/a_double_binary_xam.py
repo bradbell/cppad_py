@@ -50,10 +50,12 @@ def a_double_binary_xam() :
 	ok = ok and a32.near_equal( a_double(3.0 / 2.0) )
 	# ---------------------------------------------------------------------
 	# pow
-	a8 = a2.pow(a3)
-	a9 = a3.pow(2.0)
+	a8 = a2  ** a3
+	a9 = a3  ** 2.0
+	a4 = 2.0 ** a2
 	ok = ok and a8.near_equal( a_double(8.0) )
 	ok = ok and a9.near_equal( a_double(9.0) )
+	ok = ok and a4.near_equal( a_double(4.0) )
 	# ---------------------------------------------------------------------
 
 	#
