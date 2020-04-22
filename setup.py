@@ -197,6 +197,7 @@ sys.exit(0)
 #	python python
 #	cmake
 #	sys
+#	pypi.org
 # $$
 #
 # $section Configure and Build the cppad_py Python Module$$
@@ -224,19 +225,19 @@ sys.exit(0)
 # $lend
 #
 # $head Install Using Pip$$
-# There is a preliminay version of cppad_py available using $code pip$$.
+# There is a preliminary version of cppad_py available using $code pip$$.
 # To install for you entire system use:
 # $codep
-#	pip install -i https://test.pypi.org/simple/ cppad-py
+#	pip install -i https://test.pypi.org/simple/ cppad_py
 # $$
 # If you do not have the necessary permissions,
 # you can install in your local user space using:
 # $codep
-#	pip install -i https://test.pypi.org/simple/ cppad-py --user
+#	pip install -i https://test.pypi.org/simple/ cppad_py --user
 # $$
 # This will only install the release version.
 # The debug version is included below with the instructions
-# for downloading and building from the soruce code.
+# for downloading and building from the source code.
 #
 # $head Download$$
 # Use the following command to download the current version of cppad_py:

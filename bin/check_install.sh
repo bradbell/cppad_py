@@ -41,7 +41,7 @@ EOF
 if $python check_install.py >& /dev/null
 then
 	echo 'cannot remove old copy cppad_py in python path. Try'
-	echo 'pip uninstall cppad-py'
+	echo 'pip uninstall cppad_py'
 	exit 1
 fi
 # ---------------------------------------------------------------------------

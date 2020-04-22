@@ -52,7 +52,7 @@ sys.exit(0)
 EOF
 if python check_pip.$$ >& /dev/null
 then
-	echo_eval pip uninstall cppad-py
+	echo_eval pip uninstall cppad_py
 fi
 if python check_pip.$$ >& /dev/null
 then

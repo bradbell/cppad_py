@@ -19,7 +19,7 @@ corresponds to year 2020, month 4, and day 21.
 
 ### Install Command
 ```sh
-pip install -i https://test.pypi.org/simple/ cppad-py
+pip install -i https://test.pypi.org/simple/ cppad_py
 ```
 
 ### Error
@@ -29,7 +29,7 @@ If you get the error message:
 
 install a local copy (in your user space) using:
 ```sh
-pip install -i https://test.pypi.org/simple/ cppad-py --user
+pip install -i https://test.pypi.org/simple/ cppad_py --user
 ```
 
 ## Simple Example

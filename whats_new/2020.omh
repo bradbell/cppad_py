@@ -12,9 +12,10 @@ $spell
     omhelp
 	erf
 	var
-    xq
-    yq
+	xq
+	yq
 	inplace
+	op
 $$
 
 $section Cppad Py Changes During 2020$$

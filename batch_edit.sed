@@ -14,12 +14,10 @@
 # '
 # list of files and or directories that are moved to new names
 # move_paths='
-#	lib/example
 # '
 # list of sed commands that map old file and directory names to new names.
 # The characters @s, @d, @n get converted to a space, dollar sign, new line.
 # move_seds='
-#	s|lib/example|example|
 # '
 # list of files that get edited by the extra_seds command
 # extra_files='
@@ -31,4 +29,4 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|lib/example|example|g
+s|cppad-py|cppad_py|
