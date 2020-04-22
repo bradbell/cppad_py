@@ -223,6 +223,21 @@ sys.exit(0)
 # $href%http://www.numpy.org/%numpy%$$.
 # $lend
 #
+# $head Install Using Pip$$
+# There is a preliminay version of cppad_py available using $code pip$$.
+# To install for you entire system use:
+# $codep
+#	pip install -i https://test.pypi.org/simple/ cppad-py
+# $$
+# If you do not have the necessary permissions,
+# you can install in your local user space using:
+# $codep
+#	pip install -i https://test.pypi.org/simple/ cppad-py --user
+# $$
+# This will only install the release version.
+# The debug version is included below with the instructions
+# for downloading and building from the soruce code.
+#
 # $head Download$$
 # Use the following command to download the current version of cppad_py:
 # $codei%

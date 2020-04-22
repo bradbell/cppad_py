@@ -25,6 +25,21 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 04-21$$
+$list number$$
+Instructions were added for
+$cref/installing using pip/setup.py/Install Using Pip/$$.
+$lnext
+The binary operators were extended to include $icode x op ay%$$ where:
+$icode x$$ is a double (python $code float$$),
+$icode ay$$ is an $code a_double$$,
+and $icode op$$ is
+$code +$$,
+$code -$$,
+$code *$$, or
+$code /$$.
+$lend
+
 $head 04-20$$
 $list number$$
 Move configuration setting from $cref setup.py$$ to
