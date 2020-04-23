@@ -27,6 +27,9 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 04-23$$
+Add an $cref install_error$$ section to the documentation.
+
 $head 04-22$$
 $list number$$
 Instructions were added for

@@ -1,0 +1,70 @@
+# -----------------------------------------------------------------------------
+#         cppad_py: A C++ Object Library and Python Interface to Cppad
+#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#              This program is distributed under the terms of the
+#              GNU General Public License version 3.0 or later see
+#                    https://www.gnu.org/licenses/gpl-3.0.txt
+# -----------------------------------------------------------------------------
+$begin install_error$$
+$spell
+    Errno
+    https
+    pypi
+    org
+    cppad
+    py
+    stdlibc
+    cpp
+    stdexcept
+    Travis
+    exp
+    numpy
+    sqrt
+$$
+
+$section Error Messages During Installation$$.
+
+$head Solved$$
+
+$subhead swig$$
+If the error message below occurs, try installing
+$href%swig%http://www.swig.org/%$$ on you system:
+$codei%
+    FileNotFoundError: [Errno 2] No such file or directory: 'swig'
+%$$
+
+$subhead Permissions$$
+If you try to do a system wide install, and do not have permission,
+you will get the following message:
+$codei%
+    ERROR: Could not install packages due to %...%  Permission denied:
+%$$
+Try install in your local user space. For example, if you are using pip,
+$codei%
+    pip install -i https://test.pypi.org/simple/ cppad_py --user
+%$$
+
+$head Unsolved$$
+If you know how to fix and of he errors below, please open an
+$href%https://github.com/bradbell/cppad_py/issues%issue%$$
+and put your solution there.
+
+$subhead Mac$$
+The following error message has occurred on the Mac:
+$codei%
+    warning: include path for stdlibc++ headers not found %...%
+    cppad_py_swig_wrap.cpp:2723:10: fatal error: 'stdexcept' file not found
+        #include <stdexcept>
+%$$
+
+$subhead Travis$$
+The following message occurs on Travis system of unknown configuration;
+i.e., it has not been reproduced outside of Travis.
+$codei%
+    return alpha * p * a_exp( - z * z ) / numpy.sqrt(numpy.pi)[0m
+        TypeError: unsupported operand type(s) for /: 'a_double' and 'float'
+%$$
+Note the same code works on other systems.
+
+
+$end

@@ -230,13 +230,16 @@ sys.exit(0)
 # $codep
 #	pip install -i https://test.pypi.org/simple/ cppad_py
 # $$
-# If you do not have the necessary permissions,
-# you can install in your local user space using:
-# $codep
-#	pip install -i https://test.pypi.org/simple/ cppad_py --user
-# $$
+#
+# $children%
+#   install_error.omh%
+#   bin/get_cppad.sh
+# %$$
+# $head Install Errors$$
+# If you get an error message during the install procedure above,
+# or the one below, see $cref install_error$$.
 # This will only install the release version.
-# The debug version is included below with the instructions
+# Installing a debug version is discussed below in the instructions
 # for downloading and building from the source code.
 #
 # $head Download$$
@@ -249,8 +252,6 @@ sys.exit(0)
 # The directory you choose for $icode top_srcdir$$ is
 # referred to as your top source directory.
 #
-# $children%bin/get_cppad.sh
-# %$$
 # $head Configure$$
 # Before running $code setup.py$$ or $code bin/get_cppad.sh$$,
 # you should check and possibly change the
