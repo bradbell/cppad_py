@@ -20,6 +20,7 @@ $spell
     exp
     numpy
     sqrt
+    swg
 $$
 
 $section Error Messages During Installation$$.
@@ -32,6 +33,11 @@ $href%swig%http://www.swig.org/%$$ on you system:
 $codei%
     FileNotFoundError: [Errno 2] No such file or directory: 'swig'
 %$$
+The following message as also been seen:
+$codei%
+    Error: Unable to find 'python.swg'
+%$$
+In this case try installing $code swig-python$$.
 
 $subhead Permissions$$
 If you try to do a system wide install, and do not have permission,
