@@ -124,12 +124,13 @@ if build_type == 'debug' :
 #
 cppad_py_extension_name   = 'cppad_py/_swig'
 extension_module          = Extension(
-	cppad_py_extension_name                               ,
-	cppad_py_extension_sources                            ,
-	swig_opts          = [ '-c++', '-I./include' ]        ,
-	include_dirs       = include_dirs                     ,
-	extra_compile_args = extra_compile_args               ,
-	undef_macros       = undef_macros
+	cppad_py_extension_name                                     ,
+	cppad_py_extension_sources                                  ,
+	swig_opts          = [ '-c++', '-I./include' ]              ,
+	include_dirs       = include_dirs                           ,
+	extra_compile_args = extra_compile_args + ['-stdlib=libc++'],
+	undef_macros       = undef_macros                           ,
+        extra_link_args    = ['-stdlib=libc++']                     ,
 )
 # -----------------------------------------------------------------------------
 # setup
