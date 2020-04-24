@@ -6,7 +6,6 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 # extra flags to supress wanings in swig code
-swig_cxx_flags = "-Wno-class-memaccess"
 import re
 import os
 import sys
@@ -158,7 +157,6 @@ for name in os.listdir('lib/cplusplus') :
 # extension_module
 include_dirs     = [ cppad_prefix + '/include', 'include' ]
 extra_compile_args  = extra_cxx_flags.split()
-extra_compile_args += swig_cxx_flags.split()
 if cxx_has_stdlib :
 	extra_link_args = ['-stdlib=libc++' ]
 	extra_compile_args.append('-stdlib=libc++')
