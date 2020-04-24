@@ -130,7 +130,7 @@ extension_module          = Extension(
 	include_dirs       = include_dirs                           ,
 	extra_compile_args = extra_compile_args + ['-stdlib=libc++'],
 	undef_macros       = undef_macros                           ,
-        extra_link_args    = ['-stdlib=libc++']                     ,
+	extra_link_args    = ['-stdlib=libc++']                     ,
 )
 # -----------------------------------------------------------------------------
 # setup
