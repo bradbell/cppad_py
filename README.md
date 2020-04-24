@@ -24,7 +24,7 @@ pip install -i https://test.pypi.org/simple/ cppad_py
 
 ### Error
 If you get the error message; see
-[install\_error.htm] (https://bradbell.github.io/cppad_py/doc/install_error.htm)
+[install_error.htm] (https://bradbell.github.io/cppad_py/doc/install_error.htm)
 
 ## Simple Example
 ```python
