@@ -129,18 +129,19 @@ command = [
 	"-D", "extra_cxx_flags="  + extra_cxx_flags,
 	".."
 ]
-result = subprocess.run(command, capture_output=True)
-stdout = str(result.stdout, 'utf-8')
-stderr = str(result.stderr, 'utf-8')
-if result.returncode != 0 :
-	print('cmake stderr =\n', stderr)
+try :
+	output = subprocess.check_output(command, stderr=subprocess.STDOUT)
+except subprocess.CalledProcessError as process_error:
+	output = str(process_error.output, 'utf-8')
+	print(output)
 	sys_exit('cmake command failed')
 else :
 	print('cmake command OK')
-print('cmake stdout =\n', stdout)
-if stdout.find("cxx_has_stdlib = true") != -1 :
+output = str(output, 'utf-8')
+print(output)
+if output.find("cxx_has_stdlib = true") != -1 :
 	cxx_has_stdlib = True
-if stdout.find("cxx_has_stdlib = false") != -1 :
+elif output.find("cxx_has_stdlib = false") != -1 :
 	cxx_has_stdlib = False
 else :
 	sys_exit('cannot find cxx_has_stdlib value in cmake output')

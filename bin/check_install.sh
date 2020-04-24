@@ -40,8 +40,9 @@ print( 'import cppad_py: OK')
 EOF
 if $python check_install.py >& /dev/null
 then
-	echo 'cannot remove old copy cppad_py in python path. Try'
-	echo 'pip uninstall cppad_py'
+	echo 'check_install.py: cannot remove old cppad_py in python path. Try'
+	echo '    pip uninstall cppad_py'
+	echo '    bin/check_install.sh'
 	exit 1
 fi
 # ---------------------------------------------------------------------------
