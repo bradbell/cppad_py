@@ -17,6 +17,8 @@ $spell
 	inplace
 	op
 	numpy
+	-stdlib=libc++
+	cmake
 $$
 
 $section Cppad Py Changes During 2020$$
@@ -26,6 +28,14 @@ $children%
 %$$
 $head Previous Years$$
 $cref whats_new_2018$$
+
+$head 04-24$$
+The newer Mac systems seems to require that one use
+$code -stdlib=libc++$$ compile and link flag.
+The install has been changed to check for and adapt to this condition.
+In addition, $cref setup.py$$ now runs the $code cmake$$ command; i.e.,
+the user no longer needs to run $code cmake$$ to test the
+$cref/c++/setup.py/Test/c++/$$ library.
 
 $head 04-23$$
 Add an $cref install_error$$ section to the documentation.

@@ -85,7 +85,6 @@ if flag != 0 or not os.path.isfile( cppad_include_file ) :
 def quote_str(s) :
 	return "'" + s + "'"
 # -----------------------------------------------------------------------------
-# -----------------------------------------------------------------------------
 # Use swig directly (instead of through setup which seems to have trouble).
 # This creates the files cppad_py_swig_wrap.cpp and swig.py in the
 # lib/python/cppad_py directory.
@@ -101,8 +100,51 @@ flag    = subprocess.call(command)
 if flag != 0 :
 	sys_exit('swig command failed')
 else :
-	print('setup.py: swig command OK')
-#
+	print('swig command OK')
+# -----------------------------------------------------------------------------
+# Run cmake to configure C++ library for testing,
+# also to determine if -stdlib=libc++ is available.
+if pip_distribution :
+	# only using cmake to determine if -stdlib=libc++ is available.
+	fp      = open('CMakeLists.txt', 'r')
+	fp_data = fp.read()
+	fp.close()
+	pattern = r'\nENDIF\( *cxx_has_stdlib *\) *\n'
+	match   = re.search(pattern, fp_data)
+	if match == None :
+		sys_exit('Cannot find ' + pattern + ' in CMakeLists.txt')
+	fp      = open('CMakeLists.txt', 'w')
+	fp.write(fp_data[: match.end() + 1] )
+	fp.close()
+
+if not os.path.isdir('build') :
+	os.path.mkdir('build')
+os.chdir('build')
+if os.path.isfile( 'CMakeCache.txt' ) :
+	os.remove('CMakeCache.txt')
+command = [
+	"cmake",
+	"-D", "CMAKE_BUILD_TYPE=" + build_type,
+	"-D", "cppad_prefix="     + cppad_prefix,
+	"-D", "extra_cxx_flags="  + extra_cxx_flags,
+	".."
+]
+result = subprocess.run(command, capture_output=True)
+stdout = str(result.stdout, 'utf-8')
+stderr = str(result.stderr, 'utf-8')
+if result.returncode != 0 :
+	print('cmake stderr =\n', stderr)
+	sys_exit('cmake command failed')
+else :
+	print('cmake command OK')
+print('cmake stdout =\n', stdout)
+if stdout.find("cxx_has_stdlib = true") != -1 :
+	cxx_has_stdlib = True
+if stdout.find("cxx_has_stdlib = false") != -1 :
+	cxx_has_stdlib = False
+else :
+	sys_exit('cannot find cxx_has_stdlib value in cmake output')
+os.chdir('..')
 # -----------------------------------------------------------------------------
 # extension_sources
 # Note that cppad_py_swig_wrap.cpp is not really a source file and
@@ -116,6 +158,11 @@ for name in os.listdir('lib/cplusplus') :
 include_dirs     = [ cppad_prefix + '/include', 'include' ]
 extra_compile_args  = extra_cxx_flags.split()
 extra_compile_args += swig_cxx_flags.split()
+if cxx_has_stdlib :
+	extra_link_args = ['-stdlib=libc++' ]
+	extra_compile_args.append('-stdlib=libc++')
+else :
+	extra_link_args = list()
 undef_macros        = list()
 if build_type == 'debug' :
 	extra_compile_args.append( '-O1' )
@@ -129,7 +176,8 @@ extension_module          = Extension(
 	swig_opts          = [ '-c++', '-I./include' ]        ,
 	include_dirs       = include_dirs                     ,
 	extra_compile_args = extra_compile_args               ,
-	undef_macros       = undef_macros
+	undef_macros       = undef_macros                     ,
+	extra_link_args    = extra_link_args                  ,
 )
 # -----------------------------------------------------------------------------
 # setup
@@ -203,7 +251,7 @@ sys.exit(0)
 # $section Configure and Build the cppad_py Python Module$$
 #
 # $head Syntax$$
-# $codei%python setup.py build_ext [--debug]
+# $codei%python setup.py build_ext
 # %$$
 #
 # $head External Requirements$$
@@ -266,11 +314,6 @@ sys.exit(0)
 #
 # $subhead Build cppad_py$$
 # Build the Python cppad_py module using the command:
-# If $cref/build_type/get_cppad.sh/Settings/build_type/$$ is $code debug$$
-# $codei%
-#	python setup.py build_ext --debug
-# %$$
-# otherwise use
 # $codei%
 #	python setup.py build_ext
 # %$$
@@ -284,23 +327,14 @@ sys.exit(0)
 # %$$
 #
 # $subhead c++$$
-# You can also test the cppad_py c++ interface
+# After $code setup.py$$ has run,
+# you can also test the cppad_py c++ interface
 # $cref cpp_lib$$ on your system by executing the following commands
 # starting in $icode top_srcdir$$:
 # $codei%
 #	cd build
-#	cmake \
-#		-D CMAKE_BUILD_TYPE=%build_type% \
-#		-D cppad_prefix=%cppad_prefix% \
-#		-D extra_cxx_flags=%extra_cxx_flags% \
-#	..
 #	make check_lib_cplusplus
 # %$$
-# where $icode build_type$$ is $code debug$$ or $code release$$,
-# $icode cppad_prefix$$ is the prefix where $icode cppad$$ is installed,
-# and $icode extra_cxx_flags$$ are extra flags to use when running the
-# c++ compiler. Note that $icode cppad_prefix$$ is relative to the
-# $icode top_srcdir$$ directory not the build directory.
 #
 # $subhead import$$
 # If you are in the $icode top_srcdir$$ directory,
@@ -315,11 +349,6 @@ sys.exit(0)
 #
 # $head Install$$
 # Use the following command to build and install the debug version of cppad_py:
-# If $cref/build_type/get_cppad.sh/Settings/build_type/$$ is $code debug$$
-# $codei%
-#	python setup.py build_ext --debug install --prefix=%prefix%
-# %$$
-# otherwise use
 # $codei%
 #	python setup.py build_ext install --prefix=%prefix%
 # %$$

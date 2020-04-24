@@ -140,6 +140,17 @@ cmake_argument(extra_cxx_flags "" STRING
 # directory for including <cppad/py/cppad_py.hpp>
 INCLUDE_DIRECTORIES( "${CMAKE_SOURCE_DIR}/include" )
 # -----------------------------------------------------------------------------
+# cxx_has_stdlib
+# The message below about value of cxx_has_stdlib is used by setup.py
+include(CheckCXXCompilerFlag)
+CHECK_CXX_COMPILER_FLAG("-stdlib=libc++" cxx_has_stdlib)
+IF( cxx_has_stdlib )
+	MESSAGE(STATUS "cxx_has_stdlib = true" )
+	SET(CMAKE_SHARED_LINKER_LFAGS "-stdlib=libc++")
+	SET(extra_cxx_flags "${extra_cxx_flags} --stdlib=libc++")
+ELSE( cxx_has_stdlib )
+	MESSAGE(STATUS "cxx_has_stdlib = false" )
+ENDIF( cxx_has_stdlib )
 #
 # Initialize list of tests as empty (added to by sub-directories below)
 SET(check_depends "")
