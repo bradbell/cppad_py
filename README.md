@@ -14,8 +14,8 @@ Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 ## Pip Install
 
 ### Current Version
-The current verion number number `2020.4.22.2`
-corresponds to the second release on year 2020, month 4, and day 22.
+The current verion number number `2020.4.24`
+corresponds to  year 2020, month 4, and day 24.
 
 ### Install Command
 ```sh
@@ -24,7 +24,7 @@ pip install -i https://test.pypi.org/simple/ cppad_py
 
 ### Error
 If you get the error message; see
-<https://bradbell.github.io/cppad_py/doc/install_error.htm>
+[install\_error.htm] (https://bradbell.github.io/cppad_py/doc/install_error.htm)
 
 ## Simple Example
 ```python
