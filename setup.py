@@ -14,21 +14,9 @@ import shutil
 from setuptools import setup, Extension
 def sys_exit(msg) :
 	sys.exit( 'setup.py: ' + msg )
-pip_distribution = not os.path.isfile( 'example/python/check_all.py.in' )
 src_distribution = 'sdist' in sys.argv
-# -----------------------------------------------------------------------------
 # Examples and tests are not included in pip distribution
-if not pip_distribution :
-	# in example/python: check_all.py.in -> check_all.py
-	# (this is used for local testing)
-	top_srcdir  = os.getcwd()
-	sed_cmd     = 's|@CMAKE_SOURCE_DIR@|' + top_srcdir + '|'
-	sed_in      = open('example/python/check_all.py.in', 'r')
-	sed_out     = open('example/python/check_all.py',    'w')
-	command = [ 'sed', '-e', sed_cmd ]
-	flag = subprocess.call(command, stdin=sed_in, stdout=sed_out )
-	if flag != 0 :
-		sys_exit('failed to create example/python/check_all.py')
+pip_distribution = not os.path.isfile( 'example/python/check_all.py.in' )
 # -----------------------------------------------------------------------------
 # CMakeLists.txt settings
 #
@@ -195,7 +183,7 @@ extension_module          = Extension(
 )
 # -----------------------------------------------------------------------------
 # setup
-setup(
+setup_result = setup(
 	name         = 'cppad_py',
 	version      = cppad_py_version,
 	license      = 'GPL3',
@@ -209,6 +197,18 @@ setup(
 )
 # ---------------------------------------------------------------------------
 if not (pip_distribution or src_distribution) :
+    # -----------------------------------------------------------------------
+	# in example/python use check_all.py.in to create check_all.py
+	# (this is used for local testing)
+	top_srcdir  = os.getcwd()
+	sed_cmd     = 's|@CMAKE_SOURCE_DIR@|' + top_srcdir + '|'
+	sed_in      = open('example/python/check_all.py.in', 'r')
+	sed_out     = open('example/python/check_all.py',    'w')
+	command = [ 'sed', '-e', sed_cmd ]
+	flag = subprocess.call(command, stdin=sed_in, stdout=sed_out )
+	if flag != 0 :
+		sys_exit('failed to create example/python/check_all.py')
+    # -----------------------------------------------------------------------
 	# create the directory ./cppad_py for testing purposes
 	#
 	# initialize cppad_py directory as a copy of lib/python/cppad_py
