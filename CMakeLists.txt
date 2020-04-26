@@ -116,7 +116,7 @@ print_variable(CMAKE_VERBOSE_MAKEFILE)
 print_variable(CMAKE_CXX_FLAGS)
 print_variable(CMAKE_BUILD_TYPE)
 # -----------------------------------------------------------------------------
-# cppad_prefix and corresponding include directories
+# cppad_prefix, corresponding include directories and library
 IF ( cppad_prefix )
 	IF( cppad_prefix MATCHES "^[^/].*" )
 		SET(cppad_prefix "${CMAKE_SOURCE_DIR}/${cppad_prefix}")
@@ -130,7 +130,27 @@ cmake_argument(cppad_prefix NOTFOUND PATH "prefix used to install Cppad" )
 IF( NOT cppad_prefix )
 	MESSAGE(FATAL_ERROR "cppad_prefix is not defined by cmake command line")
 ENDIF( NOT cppad_prefix )
-INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
+#
+# cppad include directory
+IF(EXISTS ${cppad_prefix}/include)
+	INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
+ELSE(EXISTS ${cppad_prefix}/include)
+	MESSAGE(FATAL_ERROR "cppad include direcotry not ${cppad_prefix}/include")
+ENDIF(EXISTS ${cppad_prefix}/include)
+#
+# cppad_library
+FIND_LIBRARY(
+	cppad_lib_path
+	"cppad_lib"
+	PATHS "${cppad_prefix}/lib"
+	NO_DEFAULT_PATH
+)
+STRING(FIND "${cppad_lib_path}" "${cppad_prefix}" result)
+IF( NOT ${result} EQUAL "0" )
+	MESSAGE(FATAL_ERROR "can't find cppad object library below ${cppad_prefix}")
+ENDIF( NOT ${result} EQUAL "0" )
+# The message below is used by setup.py
+MESSAGE(STATUS "cppad_lib_path = \"${cppad_lib_path}\"")
 # -----------------------------------------------------------------------------
 # extra_cxx_flags
 cmake_argument(extra_cxx_flags "" STRING
@@ -145,11 +165,11 @@ INCLUDE_DIRECTORIES( "${CMAKE_SOURCE_DIR}/include" )
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-stdlib=libc++" cxx_has_stdlib)
 IF( cxx_has_stdlib )
-	MESSAGE(STATUS "cxx_has_stdlib = true" )
+	MESSAGE(STATUS "cxx_has_stdlib = \"true\"" )
 	SET(CMAKE_SHARED_LINKER_LFAGS "-stdlib=libc++")
 	SET(extra_cxx_flags "${extra_cxx_flags} --stdlib=libc++")
 ELSE( cxx_has_stdlib )
-	MESSAGE(STATUS "cxx_has_stdlib = false" )
+	MESSAGE(STATUS "cxx_has_stdlib = \"false\"" )
 ENDIF( cxx_has_stdlib )
 #
 # Initialize list of tests as empty (added to by sub-directories below)

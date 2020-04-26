@@ -19,6 +19,7 @@ $spell
 	numpy
 	-stdlib=libc++
 	cmake
+	json
 $$
 
 $section Cppad Py Changes During 2020$$
@@ -28,6 +29,10 @@ $children%
 %$$
 $head Previous Years$$
 $cref whats_new_2018$$
+
+$head 04-25$$
+The $cref/f.to_json()/cpp_fun_property/to_json/$$ function was added.
+
 
 $head 04-24$$
 The newer Mac systems seems to require that one use

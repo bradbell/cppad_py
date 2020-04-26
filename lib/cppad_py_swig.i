@@ -12,6 +12,9 @@
 # include <cppad_py_lib_export.h>
 # endif
 
+%include "std_string.i"
+%include "std_vector.i"
+%include "exception.i"
 
 %{
 # include <cppad/py/a_double.hpp>
@@ -48,8 +51,6 @@ $end
 
 
 %ignore  ptr;
-%include "std_vector.i"
-%include "exception.i"
 
 %exception {
      try { $action }

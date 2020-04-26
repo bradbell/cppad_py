@@ -38,6 +38,20 @@ then
 	exit 1
 fi
 # -----------------------------------------------------------------------------
+# clean out old distribution
+if [ -d 'cppad_py' ]
+then
+	echo_eval_log rm -r cppad_py
+fi
+if [ -d "$HOME/prefix/cppad_py" ]
+then
+	echo_eval_log rm -r "$HOME/prefix/cppad_py"
+fi
+if echo 'import cppad_py' | python >& /dev/null
+then
+	echo 'y' | pip uninstall cppad_py
+fi
+# -----------------------------------------------------------------------------
 # clean out old informaiton
 if [ -e $logfile ]
 then
@@ -79,6 +93,15 @@ echo_eval_log cd ../..
 #
 # 2DO: figure out where this waring is coming from and what it means
 sed -i $logfile -e '/fun\.hpp:52: Warning 362: operator= ignored/d'
+#
+if [ "$build_type" == 'debug' ]
+then
+	if grep 'warning.*_FORTIFY_SOURCE' $logfile > /dev/null
+	then
+		grep 'warning.*_FORTIFY_SOURCE' $logfile | head -1
+		sed -i $logfile -e '/warning.*_FORTIFY_SOURCE/d'
+	fi
+fi
 #
 if grep -i 'warning' $logfile
 then

@@ -24,8 +24,11 @@
 # $head Top Source Directory$$
 # This program must be run from the
 # $cref/top source directory/setup.py/Download/Top Source Directory/$$.
+# Each time it is run it removes the old $code build$$ directory and
+# starts over.
 #
 # $head Settings$$
+# If you change any of these settings, you must re-run $code get_cppad.sh$$.
 #
 # $subhead cppad_prefix$$
 # This prefix is used to install cppad locally relative to the
@@ -49,6 +52,11 @@ extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
 # $srccode%sh%
 build_type='release'
 # %$$
+# If you used the $code debug$$ build type you may get the following warning
+# from the compiler (because the optimization is totally turned off):
+# $codep
+#	#warning _FORTIFY_SOURCE requires compiling with optimization
+# $$
 #
 # $subhead test_cppad$$
 # This must be must $code true$$ or $code false$$.
@@ -93,21 +101,16 @@ then
 fi
 # -----------------------------------------------------------------------------
 # cppad_py build directory
-if [ ! -e 'build' ]
+if [ -e 'build' ]
 then
-	echo_eval mkdir build
+	echo_eval rm -rf build
 fi
+echo_eval mkdir build
 echo_eval cd build
 #
 # cppad repository directory
-if [ ! -e "cppad-$cppad_version.git" ]
-then
-    echo_eval git clone $remote_repo cppad-$cppad_version.git
-fi
+echo_eval git clone $remote_repo cppad-$cppad_version.git
 echo_eval cd cppad-$cppad_version.git
-echo_eval git reset --hard
-echo_eval git checkout master
-echo_eval git pull
 echo_eval git checkout --quiet $hash_code
 check=`grep '^SET(cppad_version' CMakeLists.txt | \
 		sed -e 's|^[^"]*"\([^"]*\)".*|\1|'`

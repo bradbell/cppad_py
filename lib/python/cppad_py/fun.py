@@ -56,6 +56,10 @@ class d_fun :
 	def size_order(self) :
 		return self.f.size_order()
 	#
+	# to_json
+	def to_json(self) :
+		return self.f.to_json()
+	#
 	# new_dynamic
 	def new_dynamic(self, dynamic) :
 		return cppad_py.d_fun_new_dynamic(self.f, dynamic)

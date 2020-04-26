@@ -102,18 +102,20 @@ else :
 	print('swig command OK')
 # -----------------------------------------------------------------------------
 # Run cmake to configure C++ library for testing,
-# also to determine if -stdlib=libc++ is available.
 if pip_distribution :
-	# only using cmake to determine if -stdlib=libc++ is available.
+	# Only using cmake to determine if -stdlib=libc++ is available
+	# and the location of the cppad_lib library
+	# so remove all SUB_DIRECTORY commands in CMakeLists.txt
 	fp      = open('CMakeLists.txt', 'r')
 	fp_data = fp.read()
 	fp.close()
-	pattern = r'\nENDIF\( *cxx_has_stdlib *\) *\n'
-	match   = re.search(pattern, fp_data)
-	if match == None :
-		sys_exit('Cannot find ' + pattern + ' in CMakeLists.txt')
+	pattern = r'\n(ADD_SUBDIRECTORY\([^(]*\))'
+	fp_data = re.sub(pattern, r'\n# \1', fp_data)
+	pattern = r'FATAL_ERROR ("no correctnes checks are available")'
+	fp_data = re.sub(pattern, r'STATUS \1', fp_data)
+	#
 	fp      = open('CMakeLists.txt', 'w')
-	fp.write(fp_data[: match.end() + 1] )
+	fp.write(fp_data)
 	fp.close()
 
 if not os.path.isdir('build') :
@@ -137,13 +139,25 @@ except subprocess.CalledProcessError as process_error:
 else :
 	print('cmake command OK')
 output = str(output, 'utf-8')
+#
+# cxx_has_stdlib
 print(output)
-if output.find("cxx_has_stdlib = true") != -1 :
+if output.find('cxx_has_stdlib = "true"') != -1 :
 	cxx_has_stdlib = True
-elif output.find("cxx_has_stdlib = false") != -1 :
+elif output.find('cxx_has_stdlib = "false"') != -1 :
 	cxx_has_stdlib = False
 else :
 	sys_exit('cannot find cxx_has_stdlib value in cmake output')
+#
+# cppad_lib_dir
+pattern = r'cppad_lib_path = "([^"]*)"'
+match   = re.search(pattern, output)
+if match == None :
+	sys_exit('cannot find cppad_lib_path value in cmake output')
+cppad_lib_path = match.group(1)
+index          = cppad_lib_path.rfind('/')
+cppad_lib_dir  = cppad_lib_path[ : index ]
+#
 os.chdir('..')
 # -----------------------------------------------------------------------------
 # extension_sources
@@ -164,19 +178,20 @@ else :
 	extra_link_args = list()
 undef_macros        = list()
 if build_type == 'debug' :
-	extra_compile_args.append( '-O1' )
+	extra_compile_args.append( '-O0' )
 	extra_compile_args.append( '-g')
-	undef_macros = [ 'NDEBUG' ]
+	undef_macros = [ 'NDEBUG', '_FORTIFY_SOURCE' ]
 #
 cppad_py_extension_name   = 'cppad_py/_swig'
 extension_module          = Extension(
 	cppad_py_extension_name                               ,
 	cppad_py_extension_sources                            ,
-	swig_opts          = [ '-c++', '-I./include' ]        ,
 	include_dirs       = include_dirs                     ,
 	extra_compile_args = extra_compile_args               ,
 	undef_macros       = undef_macros                     ,
 	extra_link_args    = extra_link_args                  ,
+	library_dirs       = [ cppad_lib_dir ]                ,
+	libraries          = [ 'cppad_lib' ]                  ,
 )
 # -----------------------------------------------------------------------------
 # setup

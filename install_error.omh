@@ -7,6 +7,7 @@
 # -----------------------------------------------------------------------------
 $begin install_error$$
 $spell
+	setuptools
     Errno
     https
     pypi
@@ -52,6 +53,16 @@ Try install in your local user space. For example, if you are using pip,
 $codei%
     pip install -i https://test.pypi.org/simple/ cppad_py --user
 %$$
+
+$head Fortify Source$$
+If you set $cref/build_type/get_cppad.sh/Settings/build_type/$$ to $code debug$$,
+you may get the following warning during the build:
+$codep
+	#warning _FORTIFY_SOURCE requires compiling with optimization
+$$
+This is a problem with the python setuptools,
+one can un-define a macro, but it does not remove a original definition.
+
 
 $head Unsolved$$
 If you know how to fix and of he errors below, please open an

@@ -9,6 +9,12 @@
 # -----------------------------------------------------------------------------
 version=`grep '^SET(cppad_py_version' CMakeLists.txt | \
 		sed -e 's|^[^"]*"\([^"]*\)".*|\1|'`
+eval $(grep '^build_type *=' bin/get_cppad.sh)
+if [ "$build_type" != 'release' ]
+then
+	echo 'check_pip.sh: build_type in get_cpapd.sh is not release'
+	exit 1
+fi
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
@@ -52,7 +58,8 @@ sys.exit(0)
 EOF
 if python check_pip.$$ >& /dev/null
 then
-	echo_eval pip uninstall cppad_py
+	echo_eval # pip uninstall cppad_py
+	echo 'y' | pip uninstll cppad_py
 fi
 if python check_pip.$$ >& /dev/null
 then

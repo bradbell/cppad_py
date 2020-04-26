@@ -2,7 +2,7 @@
 # define CPPAD_PY_A_FUN_HPP
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
-            Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+            Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
@@ -59,9 +59,10 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 	// properties
 	int size_domain(void) const;
 	int size_range(void) const;
-	int size_var() const;
-	int size_op() const;
-	int size_order() const;
+	int size_var(void) const;
+	int size_op(void) const;
+	int size_order(void) const;
+	std::string to_json(void) const;
 	// new_dynamic
 	void new_dynamic(const std::vector<double>& dynamic);
 	// forward
@@ -137,9 +138,9 @@ class CPPAD_PY_LIB_PUBLIC a_fun
 	// properties
 	int size_domain(void) const;
 	int size_range(void) const;
-	int size_var() const;
-	int size_op() const;
-	int size_order() const;
+	int size_var(void) const;
+	int size_op(void) const;
+	int size_order(void) const;
 	// new_dynamic
 	void new_dynamic(const std::vector<a_double>& adynamic);
 	// forward

@@ -16,8 +16,11 @@ ADD_EXECUTABLE(example_cplusplus_check_all
 SET_TARGET_PROPERTIES(
 	example_cplusplus_check_all PROPERTIES COMPILE_FLAGS "${extra_cxx_flags}"
 )
-# link in cppad_py library
-TARGET_LINK_LIBRARIES(example_cplusplus_check_all cppad_py_lib)
+# link in cppad_py and cppad_lib libraries
+TARGET_LINK_LIBRARIES(
+	example_cplusplus_check_all
+	cppad_py_lib ${cppad_lib_path}
+)
 #
 # check_example_cplusplus
 ADD_CUSTOM_TARGET(check_example_cplusplus
