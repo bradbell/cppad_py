@@ -11,20 +11,31 @@ Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
         https://www.gnu.org/licenses/gpl-3.0.txt
 </pre>
 
-## Pip Install
+## Documentation
+<https://bradbell.github.io/cppad_py/doc>
 
-### Current Version
-The current verion number number `2020.4.25`
-corresponds to year 2020, month 4, and day 25, first release.
+## Install
 
-### Install Command
+### Error
+If you get a warning or error message during the install process; see
+[install error](https://bradbell.github.io/cppad_py/doc/install_error.htm)
+
+### Pip
+You can use `pip` to install a release version of this package.
+
+#### Current Version
+The current `pip` version number number is `2020.4.25`.
+This corresponds to year 2020, month 4, and day 25,
+and the first release on that day.
+
+#### Install Command
 ```sh
 pip install -i https://test.pypi.org/simple/ cppad_py
 ```
 
-### Error
-If you get the error message; see
-[install error](https://bradbell.github.io/cppad_py/doc/install_error.htm)
+### setup.py
+You can use `setup.py` to install a debug or release version of this package;
+see [setup.py](https://bradbell.github.io/cppad_py/doc/setup.py.htm)
 
 ## Simple Example
 ```python
@@ -45,6 +56,3 @@ assert J[0,1] == 0.0
 assert J[1,0] == 0.0
 assert J[1,1] == 2.0 * x[1]
 ```
-
-## Documentation
-<https://bradbell.github.io/cppad_py/doc>
