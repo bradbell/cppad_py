@@ -20,6 +20,7 @@ version_files='
 # Files that are created by a program, and checked into the repository,
 # should also be in this list.
 ignore_files='
+	bin/dock_cppad_py.sh
 	.gitignore
 	batch_edit.sed
 	bin/devel.sh
