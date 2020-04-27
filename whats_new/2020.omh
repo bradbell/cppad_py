@@ -30,6 +30,10 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 04-26$$
+The $code setup.py$$ program was modified to try to automatically solve the
+$cref/cppad library missing/install_error/CppAD Library Missing/$$ problem.
+
 $head 04-25$$
 The $cref/f.to_json()/cpp_fun_property/to_json/$$ function was added.
 

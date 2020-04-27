@@ -25,6 +25,7 @@ $spell
 	python python
 	sudo
 	pytest
+	libcppad
 $$
 
 $section Error Messages During Installation$$.
@@ -68,6 +69,18 @@ $head Unsolved$$
 If you know how to fix and of he errors below, please open an
 $href%https://github.com/bradbell/cppad_py/issues%issue%$$
 and put your solution there.
+
+$head CppAD Library Missing$$
+If the error message below occurs, it is because the CppAD library
+is not in your $code LD_LIBRARY_PATH$$:
+$codei%
+	 ImportError: libcppad_lib.so %...% cannot open shared object file
+%$$
+There should be a copy of the library in the
+$codei%build/prefix/%lib%$$ subdirectory where $icode lib$$ is
+$code lib$$ or $code lib64$$.
+What really needs doing here is to make a separate install for CppAD.
+
 
 $subhead Travis$$
 The following message occurs on a Travis system of unknown configuration;

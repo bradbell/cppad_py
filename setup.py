@@ -6,6 +6,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 # extra flags to supress wanings in swig code
+import glob
 import re
 import os
 import sys
@@ -196,8 +197,46 @@ setup_result = setup(
 	package_dir  = { 'cppad_py' : 'lib/python/cppad_py' },
 )
 # ---------------------------------------------------------------------------
+# 2DO: This is a kludge to get around there not being an install for CppAD
+#
+# 1. Determine the extension used for cppad_lib
+index = cppad_lib_path.rfind('.')
+if index < 0 :
+	sys_exit('cannot find an extension at the end of the cppad_lib_path')
+cppad_lib_ext = cppad_lib_path[index + 1 :]
+#
+# 2. Determine the file name user for cppad_lib
+index         = cppad_lib_path.rfind('/')
+if index < 0 :
+	sys_exit('cannot find file name a end of the cppad_lib_path')
+file_name     = cppad_lib_path[index + 1 : ]
+#
+# 3. Determine the users execution path
+user_exec_path = os.environ['PATH'].split(':')
+#
+# 4. Search for a corresponding lib or lib64 directory
+#    and make a copy in most likelily location
+user_lib_dir   = None
+user_lib_path  = None
+user_lib_count = 0
+for exec_path in user_exec_path :
+	index      = exec_path.rfind('/')
+	for subdir in [ '/lib', '/lib64' ] :
+		lib_dir    = exec_path[: index] + subdir
+		dest_file  = lib_dir + '/' + file_name
+		match      = glob.glob(lib_dir + '/*.' + cppad_lib_ext )
+		if len(match) > user_lib_count and os.access(dest_file, os.W_OK) :
+			user_lib_path  = dest_file
+			user_lib_count = len(match)
+if user_lib_path == None :
+	sys_exit( 'could not find a destination directory for ' + file_name)
+else :
+	shutil.copyfile(cppad_lib_path, user_lib_path)
+	shutil.copymode(cppad_lib_path, user_lib_path)
+	print( 'created: ' + user_lib_path )
+# ---------------------------------------------------------------------------
 if not (pip_distribution or src_distribution) :
-    # -----------------------------------------------------------------------
+	# -----------------------------------------------------------------------
 	# in example/python use check_all.py.in to create check_all.py
 	# (this is used for local testing)
 	top_srcdir  = os.getcwd()
@@ -208,7 +247,7 @@ if not (pip_distribution or src_distribution) :
 	flag = subprocess.call(command, stdin=sed_in, stdout=sed_out )
 	if flag != 0 :
 		sys_exit('failed to create example/python/check_all.py')
-    # -----------------------------------------------------------------------
+	# -----------------------------------------------------------------------
 	# create the directory ./cppad_py for testing purposes
 	#
 	# initialize cppad_py directory as a copy of lib/python/cppad_py
