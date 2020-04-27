@@ -7,7 +7,6 @@
 -------------------------------------------------------------------------------
 $begin whats_new_2020$$
 $spell
-    Cppad
     Py
     omhelp
 	erf
@@ -20,15 +19,23 @@ $spell
 	-stdlib=libc++
 	cmake
 	json
+	CppAD
+	cppad
 $$
 
-$section Cppad Py Changes During 2020$$
+$section CppAD Py Changes During 2020$$
 
 $children%
     whats_new/2018.omh
 %$$
 $head Previous Years$$
 $cref whats_new_2018$$
+
+$head 04-27$$
+The $code setup.py$$ program now installs a separate copy of CppAD
+and provides instructions at the end for modifying your
+$code LD_LIBRARY_PATH$$; see
+$cref/cppad library missing/install_error/CppAD Library Missing/$$.
 
 $head 04-26$$
 The $code setup.py$$ program was modified to try to automatically solve the

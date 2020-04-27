@@ -44,7 +44,7 @@ if not match :
 extra_cxx_flags = match.group(1)
 #
 # cppad_prefix
-pattern = r"\ncppad_prefix='([^']*)'"
+pattern = '''\ncppad_prefix=['"]([^'"]*)['"]'''
 match   = re.search(pattern, string)
 if not match :
 	sys_exit('cannot find cppad_prefix in bin/get_cppad.sh')
@@ -58,6 +58,11 @@ if not match :
 build_type = match.group(1)
 if build_type != 'debug' and build_type != 'release' :
 	sys_exit('build_type is not debug or release in bin/get_cppad.sh')
+# -----------------------------------------------------------------------------
+# check for $HOME in cppad_prefix
+index = cppad_prefix.find('$HOME')
+if index >= 0 :
+	cppad_prefix = cppad_prefix.replace( '$HOME', os.environ['HOME'] )
 # -----------------------------------------------------------------------------
 # check if we need to install a local copy of cppad
 cppad_include_file = cppad_prefix + '/include/cppad/cppad.hpp'
@@ -108,7 +113,7 @@ if pip_distribution :
 	fp.close()
 
 if not os.path.isdir('build') :
-	os.path.mkdir('build')
+	os.mkdir('build')
 os.chdir('build')
 if os.path.isfile( 'CMakeCache.txt' ) :
 	os.remove('CMakeCache.txt')
@@ -197,44 +202,6 @@ setup_result = setup(
 	package_dir  = { 'cppad_py' : 'lib/python/cppad_py' },
 )
 # ---------------------------------------------------------------------------
-# 2DO: This is a kludge to get around there not being an install for CppAD
-#
-# 1. Determine the extension used for cppad_lib
-index = cppad_lib_path.rfind('.')
-if index < 0 :
-	sys_exit('cannot find an extension at the end of the cppad_lib_path')
-cppad_lib_ext = cppad_lib_path[index + 1 :]
-#
-# 2. Determine the file name user for cppad_lib
-index         = cppad_lib_path.rfind('/')
-if index < 0 :
-	sys_exit('cannot find file name a end of the cppad_lib_path')
-file_name     = cppad_lib_path[index + 1 : ]
-#
-# 3. Determine the users execution path
-user_exec_path = os.environ['PATH'].split(':')
-#
-# 4. Search for a corresponding lib or lib64 directory
-#    and make a copy in most likelily location
-user_lib_dir   = None
-user_lib_path  = None
-user_lib_count = 0
-for exec_path in user_exec_path :
-	index      = exec_path.rfind('/')
-	for subdir in [ '/lib', '/lib64' ] :
-		lib_dir    = exec_path[: index] + subdir
-		dest_file  = lib_dir + '/' + file_name
-		match      = glob.glob(lib_dir + '/*.' + cppad_lib_ext )
-		if len(match) > user_lib_count and os.access(dest_file, os.W_OK) :
-			user_lib_path  = dest_file
-			user_lib_count = len(match)
-if user_lib_path == None :
-	sys_exit( 'could not find a destination directory for ' + file_name)
-else :
-	shutil.copyfile(cppad_lib_path, user_lib_path)
-	shutil.copymode(cppad_lib_path, user_lib_path)
-	print( 'created: ' + user_lib_path )
-# ---------------------------------------------------------------------------
 if not (pip_distribution or src_distribution) :
 	# -----------------------------------------------------------------------
 	# in example/python use check_all.py.in to create check_all.py
@@ -284,6 +251,8 @@ if not (pip_distribution or src_distribution) :
 		msg ='could not find swig library to copy for testing'
 		sys_exit(msg)
 # -----------------------------------------------------------------------------
+print('If you get a message that the CppAD object library is missing, try:')
+print('    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:' + cppad_lib_dir )
 print('setup.py: OK')
 sys.exit(0)
 # -----------------------------------------------------------------------------

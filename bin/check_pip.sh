@@ -1,5 +1,4 @@
 #! /bin/bash -e
-#! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
 #          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
@@ -29,13 +28,22 @@ then
 fi
 python='python3'
 # ---------------------------------------------------------------------------
+eval $(grep '^cppad_prefix *=' bin/get_cppad.sh)
+#
+if  ls $cppad_prefix/lib/libcppad_lib.* >& /dev/null
+then
+	LD_LIBRARY_PATH="$cppad_prefix/lib:$LD_LIBRARY_PATH"
+elif  ls $cppad_prefix/lib64/libcppad_lib.\* >& /dev/null
+then
+	LD_LIBRARY_PATH="$cppad_prefix/lib64:$LD_LIBRARY_PATH"
+else
+	echo 'check_all.sh: cannot find libcppad_lib.* re-run bin/get_cppad.sh ?'
+	exit 1
+fi
+# -----------------------------------------------------------------------------
 list="
 	dist
 	cppad_py
-	$HOME/prefix/cppad_py
-	build/bdist.linux-x86_64
-	build/lib.linux-x86_64-3.7
-	build/temp.linux-x86_64-3.7
 "
 for name in $list
 do
@@ -59,7 +67,7 @@ EOF
 if python check_pip.$$ >& /dev/null
 then
 	echo_eval # pip uninstall cppad_py
-	echo 'y' | pip uninstll cppad_py
+	echo 'y' | pip uninstall cppad_py
 fi
 if python check_pip.$$ >& /dev/null
 then

@@ -30,7 +30,7 @@ and the first release on that day.
 
 #### Install Command
 ```sh
-pip install -i https://test.pypi.org/simple/ cppad_py
+pip install -i https://test.pypi.org/simple/ cppad_py --verbose
 ```
 
 ### setup.py

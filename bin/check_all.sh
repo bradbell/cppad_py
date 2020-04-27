@@ -32,9 +32,19 @@ then
 	echo "bin/check_all.sh: must be executed from its parent directory"
 	exit 1
 fi
-if [ ! -e 'build/prefix/include/cppad/cppad.hpp' ]
+# -----------------------------------------------------------------------------
+eval $(grep '^build_type *=' bin/get_cppad.sh)
+eval $(grep '^cppad_prefix *=' bin/get_cppad.sh)
+eval $(grep '^extra_cxx_flags *=' bin/get_cppad.sh)
+# -----------------------------------------------------------------------------
+if  ls $cppad_prefix/lib/libcppad_lib.* >& /dev/null
 then
-	echo 'check_all.sh: must first run bin/get_cppad.sh'
+	LD_LIBRARY_PATH="$cppad_prefix/lib:$LD_LIBRARY_PATH"
+elif  ls $cppad_prefix/lib64/libcppad_lib.\* >& /dev/null
+then
+	LD_LIBRARY_PATH="$cppad_prefix/lib64:$LD_LIBRARY_PATH"
+else
+	echo 'check_all.sh: cannot find libcppad_lib.* re-run bin/get_cppad.sh ?'
 	exit 1
 fi
 # -----------------------------------------------------------------------------
@@ -69,10 +79,6 @@ fi
 # -----------------------------------------------------------------------------
 echo_eval_log check_copyright.sh
 echo_eval_log run_omhelp.sh doc
-# -----------------------------------------------------------------------------
-eval $(grep '^build_type *=' bin/get_cppad.sh)
-eval $(grep '^cppad_prefix *=' bin/get_cppad.sh)
-eval $(grep '^extra_cxx_flags *=' bin/get_cppad.sh)
 # -----------------------------------------------------------------------------
 if [ "$build_type" == 'release' ]
 then

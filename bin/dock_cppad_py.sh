@@ -8,10 +8,30 @@ echo_eval() {
 	eval $*
 }
 command="$1"
-if [ "$1" != 'image' ] && [ "$1" != 'start' ] && [ "$1" != 'continue' ]
+if [ "$1" != 'image' ] && \
+	[ "$1" != 'start' ] && \
+	[ "$1" != 'continue' ] && \
+	[ "$1" != 'copy' ]
 then
-	echo 'usage: ./dock_cpapd_py.sh (image|start|continue)'
+	echo 'usage: ./dock_cpapd_py.sh (image|start|continue|copy)'
 	exit 1
+fi
+if [ "$command" == 'copy' ]
+then
+	read -p 'name of file to copy: ' file_name
+	read -p 'copy From or To the container [F/T]: ' direction
+	if [ "$direction" == 'F' ]
+	then
+		echo_eval docker cp $container_name:$file_name $file_name
+	elif [ "$direction" == 'T' ]
+	then
+		echo_eval docker cp $file_name $container_name:$file_name 
+	else
+		echo 'direction is not F (from) or T (to)'
+		exit 1
+	fi
+	echo 'dock_cppad_py.sh copy: OK'
+	exit 0
 fi
 if [ "$command" == 'continue' ]
 then
@@ -26,7 +46,7 @@ then
 	echo "docker exec -it $container_name bash"
 	if ! docker exec -it $container_name bash
 	then
-		echo "dock_cppad_py.sh: could not continue $container_name"
+		echo "dock_cppad_py.sh: container $container_name exits code non zero"
 		echo "Perhaps you need to start it with the command"
 		echo "docker start $container_name"
 		exit 1
@@ -70,7 +90,7 @@ then
 fi
 if [ -e 'Dockerfile' ]
 then
-	echo 'dock_cppad_py.sh: Must first remove ./Dockerfile'
+	echo 'dock_cppad_py.sh image: Must first remove ./Dockerfile'
 	exit 1
 fi
 if docker ps -a | grep "$image_name" > /dev/null
