@@ -27,6 +27,8 @@ You can use `pip` to install a release version of this package.
 The current `pip` version number number is `2020.4.25`.
 This corresponds to year 2020, month 4, and day 25,
 and the first release on that day.
+Note that this version only has the features up that date; see
+[whats_new](https://bradbell.github.io/cppad_py/doc/whats_new_2020.htm)
 
 #### Install Command
 ```sh
