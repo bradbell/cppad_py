@@ -1,0 +1,40 @@
+-------------------------------------------------------------------------------
+          cppad_py: A C++ Object Library and Python Interface to Cppad
+           Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+               GNU General Public License version 3.0 or later see
+                     https://www.gnu.org/licenses/gpl-3.0.txt
+-------------------------------------------------------------------------------
+$begin py_fun_json$$
+$spell
+	Json
+	str
+	CppAD
+$$
+
+$section Json Representation of AD Computation Graph$$
+$spell
+$$
+
+$head Syntax$$
+$icode%json% = %f%.to_json()
+%$$
+
+$head f$$
+This is a $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ function object
+and is constant; i.e., not changed.
+
+$head json$$
+The return value $icode json$$ is a $code str$$ containing
+a Json representation of the computation graph corresponding to
+$icode f$$; see the CppAD documentation for
+$href%https://coin-or.github.io/CppAD/doc/json_ad_graph.htm%json_ad_graph%$$.
+
+
+$children%
+	example/python/fun_json_xam.py
+%$$
+$head Example$$
+$cref fun_to_json_xam.py$$
+
+$end

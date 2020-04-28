@@ -51,7 +51,7 @@ bool fun_property_xam(void) {
 	d_fun f(ax, ay);
 	n_op     = n_op + 1; // speical operator at end
 	//
-	// check f properties except f.to_json
+	// check f properties
 	ok = ok && f.size_domain() == n_ind;
 	ok = ok && f.size_range()  == n_dep;
 	ok = ok && f.size_var()    == n_var;
@@ -73,19 +73,6 @@ bool fun_property_xam(void) {
 	ok = ok && af.size_op()     == n_op;
 	ok = ok && af.size_order()  == 0;
 	// ----------------------------------------------------------------------
-	// check f.to_json
-	std::string json = f.to_json();
-	size_t pos       = json.find("\"op_code\"");
-	size_t start     = json.find(":", pos) + 1;
-	size_t end       = json.find(",", pos);
-	int op_code      = std::atoi( json.substr(start, end - start).c_str() );
-	ok              &= op_code == 1;
-	pos              = json.find("\"name\"", pos);
-	start            = json.find(":", pos);
-	start            = json.find("\"", start + 1) + 1;
-	end              = json.find("\"", start + 1);
-	std::string name = json.substr(start, end - start);
-	ok              &= name == "add" || name == "sin";
 	//
 	return( ok  );
 }
@@ -101,7 +88,7 @@ $spell
 	Jacobian
 	Jacobians
 $$
-$section C++: d_fun Properties: Example and Test$$
+$section C++: function Properties: Example and Test$$
 $srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */

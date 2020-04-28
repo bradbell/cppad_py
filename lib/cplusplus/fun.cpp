@@ -283,9 +283,6 @@ $spell
 	op
 	const
 	Taylor
-	json
-	std
-	CppAD
 $$
 
 $section Properties of a Function Object$$
@@ -302,8 +299,6 @@ $icode%v% = %f%.size_var()
 $icode%p% = %f%.size_op()
 %$$
 $icode%q% = %f%.size_order()
-%$$
-$icode%s% = %f%.to_json()
 %$$
 
 $head f$$
@@ -362,15 +357,6 @@ $cref/size_order/cpp_fun_forward/p/size_order/$$ in the forward mode section.
 The initial value for this property, when the object $icode f$$
 or $icode af$$ is created, is zero.
 
-$head to_json$$
-The return value has prototype
-$codei%
-	std::string %s%
-%$$
-and is a Json representation of the computation graph corresponding to
-$icode f$$; see the CppAD documentation for
-$href%https://coin-or.github.io/CppAD/doc/json_ad_graph.htm%json_ad_graph%$$.
-
 $children%
 	example/cplusplus/fun_property_xam.cpp
 %$$
@@ -408,10 +394,6 @@ int d_fun::size_order(void) const
 {	return ptr_->size_order(); }
 int a_fun::size_order(void) const
 {	return a_ptr_->size_order(); }
-//
-// to_json
-std::string d_fun::to_json(void) const
-{	return ptr_->to_json(); }
 /*
 ------------------------------------------------------------------------------
 $begin cpp_fun_new_dynamic$$
@@ -911,7 +893,45 @@ $end
 */
 void d_fun::optimize(void)
 {	ptr_->optimize(); }
-// ----------------------------------------------------------------------------
+/*
+----------------------------------------------------------------------------
+$begin cpp_fun_json$$
+$spell
+	json
+	std
+	CppAD
+	const
+$$
 
+$section Json Representation of AD Computational Graph$$
+
+$head Syntax$$
+$icode%json% = %f%.to_json()
+%$$
+
+$head f$$
+This is a $cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ object
+and is $code const$$.
+
+$head to_json$$
+The return value has prototype
+$codei%
+	std::string %json%
+%$$
+and is a Json representation of the computation graph corresponding to
+$icode f$$; see the CppAD documentation for
+$href%https://coin-or.github.io/CppAD/doc/json_ad_graph.htm%json_ad_graph%$$.
+
+$children%
+    example/cplusplus/fun_json_xam.cpp
+%$$
+$head Example$$
+$cref fun_to_json_xam.cpp$$
+
+$end
+*/
+// to_json
+std::string d_fun::to_json(void) const
+{	return ptr_->to_json(); }
 
 } // END_CPPAD_PY_NAMESPACE

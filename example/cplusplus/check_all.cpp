@@ -1,6 +1,6 @@
 /* ----------------------------------------------------------------------------
           cppad_py: A C++ Object Library and Python Interface to Cppad
-           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+           Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
@@ -21,6 +21,7 @@ extern bool a_double_compare_xam(void);
 extern bool vector_size_xam(void);
 extern bool vector_set_get_xam(void);
 extern bool fun_property_xam(void);
+extern bool fun_json_xam(void);
 extern bool fun_dynamic_xam(void);
 extern bool fun_optimize_xam(void);
 extern bool fun_jacobian_xam(void);
@@ -69,6 +70,7 @@ int main(void)
 	ok &= Run( vector_size_xam,           "vector_size_xam"           );
 	ok &= Run( vector_set_get_xam,        "vector_set_get_xam"        );
 	ok &= Run( fun_property_xam,          "fun_property_xam"          );
+	ok &= Run( fun_json_xam,              "fun_json_xam"              );
 	ok &= Run( fun_dynamic_xam,           "fun_dynamic_xam"         );
 	ok &= Run( fun_optimize_xam,          "fun_optimize_xam"        );
 	ok &= Run( fun_jacobian_xam,          "fun_jacobian_xam"        );

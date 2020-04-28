@@ -24,6 +24,7 @@
 #	%lib/python/cppad_py/fun_forward.py
 #	%lib/python/cppad_py/fun_reverse.py
 #	%lib/python/cppad_py/fun_optimize.omh
+#	%lib/python/cppad_py/fun_json.omh
 # %$$
 #
 # $end
@@ -56,10 +57,6 @@ class d_fun :
 	def size_order(self) :
 		return self.f.size_order()
 	#
-	# to_json
-	def to_json(self) :
-		return self.f.to_json()
-	#
 	# new_dynamic
 	def new_dynamic(self, dynamic) :
 		return cppad_py.d_fun_new_dynamic(self.f, dynamic)
@@ -83,6 +80,10 @@ class d_fun :
 	# optimize
 	def optimize(self) :
 		return self.f.optimize()
+	#
+	# to_json
+	def to_json(self) :
+		return self.f.to_json()
 	#
 	# undocumented fact: pattern.rc is vec_int version of sparsity pattern
 	#
