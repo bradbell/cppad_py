@@ -12,7 +12,6 @@ def fun_property_xam() :
 	#
 	import numpy
 	import cppad_py
-	import re
 	#
 	# initialize return variable
 	ok = True
@@ -68,16 +67,13 @@ def fun_property_xam() :
 	ok = ok and af.size_op()     == n_op
 	ok = ok and af.size_order()  == 0
 	# ---------------------------------------------------------------------
-	# check f.to_json
-	json     = f.to_json()
-	pattern  = r'"op_code" *: *([^,]*),'
-	match    = re.search(pattern, json)
-	op_code  = int( match.group(1) )
-	ok      &= op_code == 1
-	pattern  = r'"name" *: *"([^"]*)" *,'
-	match    = re.search(pattern, json)
-	name     = match.group(1);
-	ok      &= name == 'add' or name == 'sub'
+	# The empty function
+	f = cppad_py.d_fun()
+	ok = ok and f.size_domain() == 0
+	ok = ok and f.size_range()  == 0
+	ok = ok and f.size_var()    == 0
+	ok = ok and f.size_op()     == 0
+	ok = ok and f.size_order()  == 0
 	#
 	return( ok  )
 #

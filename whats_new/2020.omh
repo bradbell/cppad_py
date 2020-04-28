@@ -31,6 +31,11 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 04-28$$
+The $cref/f.from_json()/py_fun_json/from_json/$$ function was added.
+In addition, the
+$cref/empty function/py_fun_ctor/f/Empty Function/$$ constructor was added.
+
 $head 04-27$$
 The $code setup.py$$ program now installs a separate copy of CppAD
 and provides instructions at the end for modifying your
@@ -42,7 +47,7 @@ The $code setup.py$$ program was modified to try to automatically solve the
 $cref/cppad library missing/install_error/CppAD Library Missing/$$ problem.
 
 $head 04-25$$
-The $cref/f.to_json()/cpp_fun_json/to_json/$$ function was added.
+The $cref/f.to_json()/py_fun_json/to_json/$$ function was added.
 
 
 $head 04-24$$

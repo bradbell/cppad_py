@@ -34,7 +34,7 @@ class d_fun :
 	"""Python interface to CppAD::ADFun<double>"""
 	#
 	# __init__
-	def __init__(self, ax, ay) :
+	def __init__(self, ax=None, ay=None) :
 		self.f = cppad_py.d_fun_ctor(ax, ay)
 	#
 	# size_domain
@@ -84,6 +84,10 @@ class d_fun :
 	# to_json
 	def to_json(self) :
 		return self.f.to_json()
+	#
+	# from_json
+	def from_json(self, json) :
+		self.f.from_json(json)
 	#
 	# undocumented fact: pattern.rc is vec_int version of sparsity pattern
 	#

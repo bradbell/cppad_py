@@ -182,6 +182,7 @@ $section Stop Current Recording and Store Function Object$$
 
 $head Syntax$$
 
+
 $subhead d_fun$$
 $icode%f% = cppad_py::d_fun(%ax%, %ay%)
 %$$
@@ -217,8 +218,14 @@ $codei%
 	cppad_py::d_fun %f%
 %$$
 It has a representation for the floating point operations
-that mapped the independent variables to the dependent variables.
+that mapped the independent variables $icode ax$$
+to the dependent variables $icode ay$$.
 This object computes function and derivative values using $code double$$.
+
+$subhead Empty Function$$
+In the case where $icode ax$$ and $icode ay$$ have size zero,
+the function is 'empty' and all its sizes are zero; see
+$cref cpp_fun_property$$.
 
 $head af$$
 This result has prototype
@@ -235,16 +242,6 @@ All of the examples use these constructors.
 
 $end
 */
-// d_fun(void) (not yet documented or tested)
-d_fun::d_fun(void)
-{	ptr_ = new CppAD::ADFun<double>();
-	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
-}
-// destructor
-d_fun::~d_fun(void)
-{	CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
-	delete ptr_;
-}
 // d_fun(ax, ay)
 d_fun::d_fun(
 	const std::vector<a_double>& ax ,
@@ -252,6 +249,13 @@ d_fun::d_fun(
 {	ptr_ = new CppAD::ADFun<double>();
 	size_t n = ax.size();
 	size_t m = ay.size();
+	CPPAD_PY_ASSERT_UNKNOWN(
+		( (n == 0 ) && (m == 0) ) || ( (n != 0) && (m != 0) )
+	);
+	// check for default constructor
+	if( n == 0 )
+		return;
+
 	// copy and convert from Swig vector to Cppad vectors
 	std::vector< CppAD::AD<double> > ax_copy(n), ay_copy(m);
 	for(size_t j = 0; j < n; j++)
@@ -908,30 +912,45 @@ $section Json Representation of AD Computational Graph$$
 $head Syntax$$
 $icode%json% = %f%.to_json()
 %$$
+$icode%f%.from_json()
+%$$
 
 $head f$$
-This is a $cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ object
-and is $code const$$.
+This is a $cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ object.
+
+$head json$$
+is a Json representation of the computation graph corresponding to
+$icode f$$; see the CppAD documentation for
+$href%https://coin-or.github.io/CppAD/doc/json_ad_graph.htm%json_ad_graph%$$.
 
 $head to_json$$
-The return value has prototype
+In this case, the function object $icode f$$ is $code const$$ and
+the return value $icode json$$ has prototype
 $codei%
 	std::string %json%
 %$$
-and is a Json representation of the computation graph corresponding to
-$icode f$$; see the CppAD documentation for
-$href%https://coin-or.github.io/CppAD/doc/json_ad_graph.htm%json_ad_graph%$$.
+
+$head from_json$$
+In this case, $icode json$$ has prototype
+$codei%
+	const std::string& %json%
+%$$
+and the function $icode f$$ so it corresponds to $icode json$$.
 
 $children%
     example/cplusplus/fun_json_xam.cpp
 %$$
-$head Example$$
-$cref fun_to_json_xam.cpp$$
+$head Examples$$
+$cref fun_to_json_xam.cpp$$,
+$cref fun_from_json_xam.cpp$$.
 
 $end
 */
 // to_json
 std::string d_fun::to_json(void) const
 {	return ptr_->to_json(); }
+void d_fun::from_json(const std::string& json)
+{	return ptr_->from_json(json); }
+
 
 } // END_CPPAD_PY_NAMESPACE

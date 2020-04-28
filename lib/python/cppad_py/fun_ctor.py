@@ -11,6 +11,8 @@
 #	numpy
 #	af
 #	Taylor
+#	cref
+#	cpp
 # $$
 #
 # $section Stop Current Recording and Store Function Object$$
@@ -19,6 +21,8 @@
 #
 # $subhead d_fun$$
 # $icode%f% = cppad_py.d_fun(%ax%, %ay%)
+# %$$
+# $icode%f% = cppad_py.d_fun()
 # %$$
 #
 # $subhead a_fun$$
@@ -42,9 +46,15 @@
 # $head f$$
 # This result is a function object that
 # has a representation for the floating point operations
-# that mapped the independent variables to the dependent variables.
+# that mapped the independent variables $icode ax$$
+# to the dependent variables $icode ay$$.
 # This object computes function and derivative values using
 # $code double$$
+#
+# $subhead Empty Function$$
+# In the case where $icode ax$$ and $icode ay$$ are not present
+# the function is 'empty' and all its sizes are zero; see
+# $cref cpp_fun_property$$.
 #
 # $head af$$
 # This result is a function object that
@@ -74,6 +84,14 @@ def d_fun_ctor(ax, ay) :
 	Stop recording a_double operations and
 	create an AD function object that maps ax -> ay.
 	"""
+	#
+	# This case is used to pass the default constructor through swig
+	if type(ax) == type(None) or type(ay) == type(None) :
+		# python version of defualt consructor does not specify ax or ay
+		assert type(ax) == type(None) and type(ay) == type(None)
+		ax = numpy.empty(0, dtype = cppad_py.a_double)
+		ay = numpy.empty(0, dtype = cppad_py.a_double)
+	#
 	# convert ax -> au, ay -> av
 	dtype    = cppad_py.a_double
 	syntax   = 'd_fun(ax, ay)'

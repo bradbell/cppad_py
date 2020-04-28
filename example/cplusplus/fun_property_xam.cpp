@@ -73,6 +73,15 @@ bool fun_property_xam(void) {
 	ok = ok && af.size_op()     == n_op;
 	ok = ok && af.size_order()  == 0;
 	// ----------------------------------------------------------------------
+	// The empty function
+	ax.resize(0);
+	ay.resize(0);
+	f = d_fun(ax, ay);
+	ok = ok && f.size_domain() == 0;
+	ok = ok && f.size_range()  == 0;
+	ok = ok && f.size_var()    == 0;
+	ok = ok && f.size_op()     == 0;
+	ok = ok && f.size_order()  == 0;
 	//
 	return( ok  );
 }

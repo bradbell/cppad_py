@@ -50,10 +50,6 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 	// -----------------------------------------------------------------------
 	// public members are in Swig interface
 	public:
-	// default ctor
-	d_fun(void);
-	// destructor
-	~d_fun(void);
 	// constrtuctor
 	d_fun( const std::vector<a_double>& ax, const std::vector<a_double>& ay );
 	// properties
@@ -62,7 +58,6 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 	int size_var(void) const;
 	int size_op(void) const;
 	int size_order(void) const;
-	std::string to_json(void) const;
 	// new_dynamic
 	void new_dynamic(const std::vector<double>& dynamic);
 	// forward
@@ -78,6 +73,9 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 	);
 	// optimize
 	void optimize(void);
+	// json
+	std::string to_json(void) const;
+	void from_json(const std::string& json);
 	// ------------------------------------------------------------------------
 	// public member in Swig interface that compute sparse results
 	// (these are implemented in sparse.cpp instead of fun.cpp).

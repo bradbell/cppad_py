@@ -19,22 +19,31 @@ $$
 $head Syntax$$
 $icode%json% = %f%.to_json()
 %$$
+$icode%%f%.from_json(json)
+%$$
 
 $head f$$
-This is a $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ function object
-and is constant; i.e., not changed.
+This is a $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ function object.
 
 $head json$$
-The return value $icode json$$ is a $code str$$ containing
+is a $code str$$ containing
 a Json representation of the computation graph corresponding to
 $icode f$$; see the CppAD documentation for
 $href%https://coin-or.github.io/CppAD/doc/json_ad_graph.htm%json_ad_graph%$$.
 
+$head to_json$$
+In this case, the function object $icode f$$ is constant and
+the return value $icode json$$ is created.
+
+$head from_json$$
+In this case, the argument $icode json$$ is constant and
+the function $icode f$$ is changed so it corresponds to $icode json$$.
 
 $children%
 	example/python/fun_json_xam.py
 %$$
-$head Example$$
-$cref fun_to_json_xam.py$$
+$head Examples$$
+$cref fun_to_json_xam.py$$,
+$cref fun_from_json_xam.py$$.
 
 $end
