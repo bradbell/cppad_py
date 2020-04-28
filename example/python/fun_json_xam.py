@@ -48,7 +48,7 @@ def to_json_xam() :
 # $spell
 #     json
 # $$
-# $section C++: to_json: Example and Test$$
+# $section Python to_json: Example and Test$$
 # $srcthisfile|0|# BEGIN_TO_JSON_XAM|# END_FROM_JSON_XAM|$$
 # $end
 # -----------------------------------------------------------------------------
@@ -109,7 +109,7 @@ def from_json_xam() :
 # $spell
 #     json
 # $$
-# $section C++: from_json: Example and Test$$
+# $section Python from_json: Example and Test$$
 # $srcthisfile|0|# BEGIN_FROM_JSON_XAM|# END_FROM_JSON_XAM|$$
 # $end
 # -----------------------------------------------------------------------------
