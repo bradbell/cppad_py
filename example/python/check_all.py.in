@@ -9,11 +9,12 @@ import sys
 import os
 top_srcdir = '@CMAKE_SOURCE_DIR@'
 sys.path.insert(0, top_srcdir)
+sys.path.insert(0, '.')
 #
-def run_test(name) :
+def run_test(module_name, fun_name) :
 	namespace = {} # not needed in Python 2
-	exec( 'import ' + name,                     namespace )
-	exec( 'ok = '   + name + '.' + name + '()', namespace )
+	exec( 'import ' + module_name,                         namespace )
+	exec( 'ok = '   + module_name + '.' + fun_name + '()', namespace )
 	ok = namespace['ok']
 	if ok :
 		print('python: ' + name + ': OK')
@@ -48,11 +49,18 @@ fun_list = [
 	'sparse_hes_xam',
 	'sparse_hes_pattern_xam',
 	'error_message_xam',
-	'scipy_optimize_xam'
+]
+scipy_list = [
+	'optimize_xam'
 ]
 error_count = 0
 for name in fun_list :
-	ok = run_test(name)
+	ok = run_test(name, name)
+	if not ok :
+		error_count += 1
+os.chdir('scipy')
+for name in scipy_list :
+	ok = run_test(name, 'scipy_' + name)
 	if not ok :
 		error_count += 1
 #

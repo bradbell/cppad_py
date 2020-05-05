@@ -77,7 +77,7 @@ $href%http://www.gnu.org/licenses/gpl-3.0.txt%gpl-3.0.txt%$$.
 
 $childtable%
 	setup.py%
-	example/python/scipy_optimize_xam.py%
+	example/python/scipy/optimize_xam.py%
 	lib/library.omh%
 	whats_new/2020.omh
 %$$
