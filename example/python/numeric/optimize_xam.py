@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin scipy_optimize_xam.py$$ $newlinech #$$
+# $begin numeric_optimize_xam.py$$ $newlinech #$$
 # $spell
 #	Scipy
 #	constr
@@ -51,7 +51,7 @@
 #
 # $end
 # BEGIN_PYTHON
-def scipy_optimize_xam() :
+def numeric_optimize_xam() :
 	#
 	import numpy
 	import cppad_py

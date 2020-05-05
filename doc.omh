@@ -19,7 +19,6 @@ $latex
 $$
 $comment -------------------------------------------------------------$$
 $spell
-	scipy
 	https
 	bradbell
 	usr
@@ -58,9 +57,8 @@ $head Getting Started$$
 The following is a good place to get started using cppad_py:
 $cref/Python/fun_jacobian_xam.py/$$.
 
-$head Optimization$$
-The following is an example using cppad_py with the scipy optimization
-routines: $cref scipy_optimize_xam.py$$.
+$head Numerical Examples$$
+The following is a link to some numerical examples: $cref numeric_xam$$.
 
 $head C++ Function Speed$$
 One can use Cppad Py to get faster function evaluation in scripting Python,
@@ -77,7 +75,7 @@ $href%http://www.gnu.org/licenses/gpl-3.0.txt%gpl-3.0.txt%$$.
 
 $childtable%
 	setup.py%
-	example/python/scipy/optimize_xam.py%
+	example/python/numeric/numeric.omh%
 	lib/library.omh%
 	whats_new/2020.omh
 %$$

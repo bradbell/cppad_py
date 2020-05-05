@@ -31,8 +31,11 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 05-05$$
+Add the $cref numeric_ode_runge_xam.py$$ example.
+
 $head 05-04$$
-The $cref scipy_optimize_xam.py$$ example was added.
+Add the $cref numeric_optimize_xam.py$$ example.
 
 $head 04-28$$
 The $cref/f.from_json()/py_fun_json/from_json/$$ function was added.
