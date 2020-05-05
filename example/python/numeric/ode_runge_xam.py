@@ -14,28 +14,28 @@
 #
 # $head ODE$$
 # $latex \[
-#	\partial_t y_i (t, x) =  f(t, y, x) \left{ \begin{array}{rl}
+#	\partial_t y_i (t, x) =  f(t, y, x) \left\{ \begin{array}{rl}
 #		x_0               & {\rm if} \; i = 0 \\
 #		x_i y_{i-1} (t)   & {\rm otherwise}
-# \end{array} \]$$
+# \end{array} \right. \]$$
 # with the initial condition $latex y(0) = 0$$
 #
 # $head Solution$$
 # This is a special case for which we know the solution
 # $latex \[
-#	y_i (t, x) = \left{ \begin{array}{rl}
+#	y_i (t, x) = \left\{ \begin{array}{rl}
 #		t  x_0                            & {\rm if} \; i = 0 \\
 #		( t^i / (i+1) ! ) \prod_{j=0}^i x_j   & {\rm otherwise}
-# \end{array} \]$$
+# \end{array} \right. \]$$
 #
 # $head Derivative of Solution$$
 # For this special case, the partial derivative of the solution with respect
 # to the j-th component of the vector $latex x$$ is
 # $latex \[
-#	\partil_{x(j)} y_i (t, x) & = & \left{ \begin{array}{rl}
+#	\partial_{x(j)} y_i (t, x) =  \left\{ \begin{array}{rl}
 #		y_i (t, x) / x_j      & {\rm if} \; j \leq i \\
 #		0                     & {\rm otherwise}
-# \end{array} \]$$
+# \end{array} \right. \]$$
 #
 #
 # $head Source Code$$
