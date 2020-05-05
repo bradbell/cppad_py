@@ -14,6 +14,7 @@
 # $$
 #
 # $section Example Using Scipy trust-constr Optimization Method$$
+# $latex \newcommand{\W}[1]{{\; #1 \;}}$$
 #
 # $head Reference$$
 # This problem comes form the
@@ -32,7 +33,7 @@
 # with the starting point $latex x = (1, 5, 5, 1)$$.
 # The optimal value for $latex x$$ is
 # $latex \[
-#	( 1.00000000 ~,~ 4.74299963 ~,~ 3.82114998 ~,~ 1.37940829 )
+#	(1.00000000 \W{,} 4.74299963 \W{,} 3.82114998 \W{,} 1.37940829)
 # \] $$
 #
 # $head trust_constr$$
