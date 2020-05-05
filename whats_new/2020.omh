@@ -31,6 +31,9 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 05-04$$
+The $cref scipy_optimize_xam.py$$ example was added.
+
 $head 04-28$$
 The $cref/f.from_json()/py_fun_json/from_json/$$ function was added.
 In addition, the

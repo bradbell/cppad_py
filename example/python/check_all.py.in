@@ -47,7 +47,8 @@ fun_list = [
 	'sparse_jac_xam',
 	'sparse_hes_xam',
 	'sparse_hes_pattern_xam',
-	'error_message_xam'
+	'error_message_xam',
+	'scipy_optimize_xam'
 ]
 error_count = 0
 for name in fun_list :

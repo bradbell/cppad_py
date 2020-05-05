@@ -11,7 +11,6 @@
 def fun_abort_xam() :
 	#
 	import numpy
-	import numpy
 	import cppad_py
 	#
 	# initialize return variable

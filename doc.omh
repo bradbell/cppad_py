@@ -19,6 +19,7 @@ $latex
 $$
 $comment -------------------------------------------------------------$$
 $spell
+	scipy
 	https
 	bradbell
 	usr
@@ -50,16 +51,16 @@ Provide an AD object library; see $cref cpp_lib$$.
 $lnext
 Provide a concrete example of how
 $href%https://github.com/bradbell/cppad_swig%cppad_swig%$$
-can be used to connect any scripting language to Cppad.
+can be used to connect any scripting language to CppAD.
 $lend
 
-$head Under Construction$$
-This version is preliminary and the user API is subject to change.
-See $cref whats_new_2020$$ for changes.
-
 $head Getting Started$$
-The following is a good place to see what the interface is like:
+The following is a good place to get started using cppad_py:
 $cref/Python/fun_jacobian_xam.py/$$.
+
+$head Optimization$$
+The following is an example using cppad_py with the scipy optimization
+routines: $cref scipy_optimize_xam.py$$.
 
 $head C++ Function Speed$$
 One can use Cppad Py to get faster function evaluation in scripting Python,
@@ -76,6 +77,7 @@ $href%http://www.gnu.org/licenses/gpl-3.0.txt%gpl-3.0.txt%$$.
 
 $childtable%
 	setup.py%
+	example/python/scipy_optimize_xam.py%
 	lib/library.omh%
 	whats_new/2020.omh
 %$$
