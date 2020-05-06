@@ -5,12 +5,12 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin numeric_runge4_step_xam.py$$ $newlinech #$$
+# $begin numeric_runge4_multi_step_xam.py$$ $newlinech #$$
 # $spell
 #	Runge-Kutta
 # $$
 #
-# $section Example Computing Derivative A Runge-Kutta Ode Step$$
+# $section Example Computing Derivative A Runge-Kutta Ode Solution$$
 #
 # $head ODE$$
 # $latex \[
@@ -54,7 +54,7 @@ def f(t, y, x) :
 	y_shift = numpy.concatenate( ( [1.0] , y[0:-1] ) )
 	return x * y_shift
 #
-def runge4_step_xam() :
+def runge4_multi_step_xam() :
 	ok    = True
 	nx    = 4
 	eps99 = 99.0 * numpy.finfo(float).eps
@@ -63,20 +63,23 @@ def runge4_step_xam() :
 	x  = numpy.array( nx * [ 1.0 ] )
 	ax = cppad_py.independent(x)
 	#
-	# function to pass to runge4
+	# function to pass to runge4.multi_step
 	def fun(t, ay) :
 		return f(t, ay, ax)
 	#
 	# initiali value for the ODE
-	ay_start =  numpy.array( nx * [ cppad_py.a_double(0.0) ] )
-	t_start  = 0.0
-	t_step   = 0.75
+	n_step  = 10
+	ay_init =  numpy.array( nx * [ cppad_py.a_double(0.0) ] )
+	t_final = 0.75
+	t_all   =  [ t_final * i / (n_step - 1) for i in range(n_step) ]
+	t_all   =  numpy.array( t_all )
 	#
-	# take one step
-	ay = runge4.one_step(fun, t_start, ay_start, t_step)
+	# take multiple steps
+	ay = runge4.multi_step(fun, t_all, ay_init)
+	ay_final = ay[n_step - 1,:]
 	#
-	# g(x) = y(1, x)
-	g = cppad_py.d_fun(ax, ay)
+	# g(x) = y(t_final, x)
+	g = cppad_py.d_fun(ax, ay_final)
 	#
 	# Check g_i (x) = prod_{j=0}^i x[j] t^(i+1) / (i+1) !
 	# 4th order method should be very accutate for functions
@@ -86,7 +89,9 @@ def runge4_step_xam() :
 	prod = 1.0
 	for i in range(nx) :
 		prod      = prod * x[i]
-		check     = prod * numpy.power(t_step, i+1) / scipy.misc.factorial(i+1)
+		power     = numpy.power(t_final, i+1)
+		factorial = scipy.misc.factorial(i+1)
+		check     = prod * power / factorial
 		rel_error = gx[i] / check - 1.0
 		ok       &= abs(rel_error) < eps99
 	#

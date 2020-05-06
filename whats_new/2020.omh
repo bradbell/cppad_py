@@ -32,10 +32,13 @@ $head Previous Years$$
 $cref whats_new_2018$$
 
 $head 05-06$$
-Add the $cref numeric_optimize_fun_class$$ example.
+Add the following general purpose routine examples:
+$cref numeric_optimize_fun_class$$,
+$cref numeric_runge4_one_step$$,
+$cref numeric_runge4_multi_step$$.
 
 $head 05-05$$
-Add the $cref numeric_runge4_step$$ example.
+Add the $cref numeric_runge4_one_step_xam.py$$ example.
 
 $head 05-04$$
 Add the $cref numeric_optimize_fun_xam.py$$ example.

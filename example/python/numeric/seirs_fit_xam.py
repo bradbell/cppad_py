@@ -33,23 +33,6 @@ import cppad_py
 import runge4
 from optimize_fun_class import optimize_fun_class
 
-def solve_ode(fun, t_all, y_init ) :
-	dtype      = type(y_init[0])
-	n_var      = y_init.size
-	n_step     = t_all.size - 1
-	y_all      = numpy.empty( (n_step+1, n_var), dtype = dtype  )
-	y1         = y_init
-	t1         = t_all[0]
-	y_all[0,:] = y1
-	for i in range(n_step) :
-		y0            = y1
-		t0            = t1
-		t1            = t_all[i+1]
-		t_step        = t1 - t0
-		y1            = runge4.one_step(fun, t0, y0, t_step)
-		y_all[i+1,:]  = copy.copy(y1)
-	return y_all
-
 class seirs :
 	def set_ode_p(self, ode_p) :
 		self.ode_p = ode_p
@@ -76,7 +59,7 @@ class seirs :
 		return numpy.array([ Sdot, Edot, Idot, Rdot])
 
 	def model(self) :
-		y_all     = solve_ode(self.ode, self.t_all, self.y_init)
+		y_all     = runge4.multi_step(self.ode, self.t_all, self.y_init)
 		return y_all
 
 def objective_d_fun(t_all, I_data) :
