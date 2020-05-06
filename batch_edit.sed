@@ -14,10 +14,12 @@
 # '
 # list of files and or directories that are moved to new names
 # move_paths='
+#	example/python/numeric/runge4_step.py
 # '
 # list of sed commands that map old file and directory names to new names.
 # The characters @s, @d, @n get converted to a space, dollar sign, new line.
 # move_seds='
+#	s|/runge4_step.py|/runge4.py|
 # '
 # list of files that get edited by the extra_seds command
 # extra_files='
@@ -29,4 +31,7 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|cppad-py|cppad_py|
+s|/runge4_step.py|/runge4.py|
+s|from runge4_step import runge4_step|import runge4|
+s|runge4_step(|runge4.one_step(|
+s|def runge4.one_step(|def one_step(|

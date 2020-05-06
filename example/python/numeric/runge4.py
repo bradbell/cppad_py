@@ -6,7 +6,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 # BEGIN_PYTHON
-def runge4_step(f, ti, yi, h) :
+def one_step(f, ti, yi, h) :
 	k1     = h * f(ti,           yi)
 	k2     = h * f(ti + h / 2.0, yi + k1 / 2.0)
 	k3     = h * f(ti + h / 2.0, yi + k2 / 2.0)
@@ -27,7 +27,7 @@ def runge4_step(f, ti, yi, h) :
 # $section One Fourth Order Runge-Kutta ODE Step$$
 #
 # $head Syntax$$
-# $icode%yf% = runge4_step(%f%, %ti%, %yi%, %h%)%$$
+# $icode%yf% = runge4.one_step(%f%, %ti%, %yi%, %h%)%$$
 #
 # $head f$$
 # This is a function that evaluates the ordinary differential equation

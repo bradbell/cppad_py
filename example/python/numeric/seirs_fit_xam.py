@@ -30,7 +30,7 @@ import scipy.optimize
 import numpy
 import copy
 import cppad_py
-from runge4_step import runge4_step
+import runge4
 from optimize_fun_class import optimize_fun_class
 
 def solve_ode(fun, t_all, y_init ) :
@@ -46,7 +46,7 @@ def solve_ode(fun, t_all, y_init ) :
 		t0            = t1
 		t1            = t_all[i+1]
 		t_step        = t1 - t0
-		y1            = runge4_step(fun, t0, y0, t_step)
+		y1            = runge4.one_step(fun, t0, y0, t_step)
 		y_all[i+1,:]  = copy.copy(y1)
 	return y_all
 

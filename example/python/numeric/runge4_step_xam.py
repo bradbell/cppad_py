@@ -48,7 +48,7 @@
 import numpy
 import scipy.misc
 import cppad_py
-from runge4_step import runge4_step
+import runge4
 #
 def f(t, y, x) :
 	y_shift = numpy.concatenate( ( [1.0] , y[0:-1] ) )
@@ -73,7 +73,7 @@ def runge4_step_xam() :
 	t_step   = 0.75
 	#
 	# take one step
-	ay = runge4_step(fun, t_start, ay_start, t_step)
+	ay = runge4.one_step(fun, t_start, ay_start, t_step)
 	#
 	# g(x) = y(1, x)
 	g = cppad_py.d_fun(ax, ay)
