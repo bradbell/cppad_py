@@ -138,7 +138,7 @@
 # row and column values (if $code NDEBUG$$ is not defined).
 #
 # $children%
-#	example/python/sparse_rcv_xam.py
+#	example/python/core/sparse_rcv_xam.py
 # %$$
 # $head Example$$
 # $cref sparse_rcv_xam.py$$

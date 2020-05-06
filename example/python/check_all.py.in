@@ -22,7 +22,7 @@ def run_test(module_name, fun_name) :
 		print('python: ' + name + ': Error')
 	return ok
 #
-fun_list = [
+core_list = [
 	'a_double_cond_assign_xam',
 	'a_double_property_xam',
 	'a_double_unary_fun_xam',
@@ -55,11 +55,14 @@ numeric_list = [
 	'ode_runge_xam'
 ]
 error_count = 0
-for name in fun_list :
+#
+os.chdir('core')
+for name in core_list :
 	ok = run_test(name, name)
 	if not ok :
 		error_count += 1
-os.chdir('numeric')
+#
+os.chdir('../numeric')
 for name in numeric_list :
 	ok = run_test(name, 'numeric_' + name)
 	if not ok :

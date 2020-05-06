@@ -24,7 +24,7 @@ This aborts the current recording (if it exists)
 started by the most recent call to $cref/independent/py_independent/$$.
 
 $children%
-	example/python/fun_abort_xam.py
+	example/python/core/fun_abort_xam.py
 %$$
 $head Example$$
 $cref/Python/fun_abort_xam.py/$$

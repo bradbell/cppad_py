@@ -174,7 +174,7 @@ If it is $code -$$, the result is the negative of $icode ax$$.
 
 $children%
 	example/cplusplus/a_double_unary_op_xam.cpp%
-	example/python/a_double_unary_op_xam.py
+	example/python/core/a_double_unary_op_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_unary_op_xam.cpp/$$,
@@ -284,7 +284,7 @@ while is a variable; $cref/value/a_double_property/value/$$ above.
 
 $children%
 	example/cplusplus/a_double_property_xam.cpp%
-	example/python/a_double_property_xam.py
+	example/python/core/a_double_property_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_property_xam.cpp/$$,
@@ -373,7 +373,7 @@ $codei%
 
 $children%
 	example/cplusplus/a_double_binary_xam.cpp%
-	example/python/a_double_binary_xam.py
+	example/python/core/a_double_binary_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_binary_xam.cpp/$$,
@@ -479,7 +479,7 @@ $codei%
 
 $children%
 	example/cplusplus/a_double_compare_xam.cpp%
-	example/python/a_double_compare_xam.py
+	example/python/core/a_double_compare_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_compare_xam.cpp/$$,
@@ -543,7 +543,7 @@ $codei%
 
 $children%
 	example/cplusplus/a_double_assign_xam.cpp%
-	example/python/a_double_assign_xam.py
+	example/python/core/a_double_assign_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_assign_xam.cpp/$$,
@@ -625,7 +625,7 @@ $codei%
 
 $children%
 	example/cplusplus/a_double_unary_fun_xam.cpp%
-	example/python/a_double_unary_fun_xam.py
+	example/python/core/a_double_unary_fun_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_unary_fun_xam.cpp/$$,
@@ -738,7 +738,7 @@ of the comparison is false.
 
 $children%
 	example/cplusplus/a_double_cond_assign_xam.cpp%
-	example/python/a_double_cond_assign_xam.py
+	example/python/core/a_double_cond_assign_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_cond_assign_xam.cpp/$$,

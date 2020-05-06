@@ -51,7 +51,7 @@ An example file was added to the documentation,
 below the $cref py_independent$$ section, using the OMhelp commands:
 $codep
 	@children%
-		example/python/fun_dynamic_xam.py
+		example/python/core/fun_dynamic_xam.py
 	%@@
 $$
 In addition, a reference to this example was added under the
@@ -91,7 +91,7 @@ $$
 
 
 $head Example$$
-The file $code example/python/fun_dynamic_xam.py$$ was added
+The file $code example/python/core/fun_dynamic_xam.py$$ was added
 with the following contents:
 $cref fun_dynamic_xam.py$$.
 In addition, in the file

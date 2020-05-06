@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
           cppad_py: A C++ Object Library and Python Interface to Cppad
-           Copyright (C) 2017-18 Bradley M. Bell (bradbell@seanet.com)
+           Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
@@ -86,7 +86,7 @@ Its value is the number of elements in the vector $icode v$$.
 
 $children%
 	example/cplusplus/vector_size_xam.cpp%
-	example/python/vector_size_xam.py
+	example/python/core/vector_size_xam.py
 %$$
 $head Example$$
 $cref/C++/vector_size_xam.cpp/$$,
@@ -149,7 +149,7 @@ $codei%
 
 $children%
 	example/cplusplus/vector_set_get_xam.cpp%
-	example/python/vector_set_get_xam.py
+	example/python/core/vector_set_get_xam.py
 %$$
 $head Example$$
 $cref/C++/vector_set_get_xam.cpp/$$,

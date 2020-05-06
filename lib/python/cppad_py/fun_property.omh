@@ -74,7 +74,7 @@ after each call to $icode%f%.forward%$$; see
 $cref/size_order/py_fun_forward/p/size_order/$$ in the forward mode section.
 
 $children%
-	example/python/fun_property_xam.py
+	example/python/core/fun_property_xam.py
 %$$
 $head Example$$
 $cref fun_property_xam.py$$

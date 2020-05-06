@@ -64,7 +64,7 @@
 # by calling $cref/abort_recording/py_abort_recording/$$.
 #
 # $children%
-#	example/python/fun_dynamic_xam.py
+#	example/python/core/fun_dynamic_xam.py
 # %$$
 # $head Example$$
 # Most of the python $code d_fun$$ examples use this function.

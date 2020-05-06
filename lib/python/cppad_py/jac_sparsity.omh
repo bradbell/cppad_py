@@ -76,7 +76,7 @@ In this case, $icode pattern_out$$ is a sparsity pattern for
 $latex F^{(1)} ( x )$$.
 
 $children%
-	example/python/sparse_jac_pattern_xam.py
+	example/python/core/sparse_jac_pattern_xam.py
 %$$
 $head Example$$
 $cref/Python/sparse_jac_pattern_xam.py/$$

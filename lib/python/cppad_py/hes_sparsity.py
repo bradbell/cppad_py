@@ -68,7 +68,7 @@
 # $latex F_i^{(2)} ( x )$$.
 #
 # $children%
-#	example/python/sparse_hes_pattern_xam.py
+#	example/python/core/sparse_hes_pattern_xam.py
 # %$$
 # $head Example$$
 # $cref/Python/sparse_hes_pattern_xam.py/$$

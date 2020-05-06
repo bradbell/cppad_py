@@ -51,7 +51,7 @@
 # \] $$
 #
 # $children%
-#	example/python/fun_jacobian_xam.py
+#	example/python/core/fun_jacobian_xam.py
 # %$$
 # $head Example$$
 # $cref fun_jacobian_xam.py$$

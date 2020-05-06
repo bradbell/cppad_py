@@ -142,7 +142,7 @@
 # row and column values (if $code NDEBUG$$ is not defined).
 #
 # $children%
-#	example/python/sparse_rc_xam.py
+#	example/python/core/sparse_rc_xam.py
 # %$$
 # $head Example$$
 # $cref sparse_rc_xam.py$$
