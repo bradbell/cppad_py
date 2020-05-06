@@ -32,11 +32,17 @@ $head Previous Years$$
 $cref whats_new_2018$$
 
 $head 05-06$$
+$list number$$
 Add the following general purpose utility examples:
 $cref numeric_optimize_fun_class$$,
 $cref numeric_runge4_one_step$$,
 $cref numeric_runge4_multi_step$$,
 $cref numeric_seirs_class$$.
+$lnext
+Add mention of using $code DYLD_LIBRARY_PATH$$ in the
+$cref/cppad library missing/install_error/CppAD Library Missing/$$
+install instructions for the Mac.
+$lend
 
 $head 05-05$$
 Add the $cref numeric_runge4_one_step_xam.py$$ example.

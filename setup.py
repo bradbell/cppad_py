@@ -253,6 +253,8 @@ if not (pip_distribution or src_distribution) :
 # -----------------------------------------------------------------------------
 print('If you get a message that the CppAD object library is missing, try:')
 print('    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:' + cppad_lib_dir )
+print('If you have a Mac system, the following may fix this problem:')
+print('    export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:' + cppad_lib_dir )
 print('setup.py: OK')
 sys.exit(0)
 # -----------------------------------------------------------------------------

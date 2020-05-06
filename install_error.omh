@@ -61,9 +61,11 @@ is not in your $code LD_LIBRARY_PATH$$:
 $codei%
 	 ImportError: libcppad_lib.so %...% cannot open shared object file
 %$$
-If you included the $code --verbose$$ option in your $code pip$$ command,
+If you run the $code setup.py$$ script directory, or
+if you included the $code --verbose$$ option in your $code pip$$ command,
 there should be text at the end that tells you how to modify your
 $code LD_LIBRARY_PATH$$.
+If you have a Mac, you may instead need to modify $code DYLD_LIBRARY_PATH$$.
 
 $head Fortify Source$$
 If you set $cref/build_type/get_cppad.sh/Settings/build_type/$$ to $code debug$$,
