@@ -37,18 +37,18 @@ def objective_d_fun(t_all, I_data) :
 	ay_init  = ax[4:8]
 	#
 	# set up seirs model
-	seirs_obj = seirs_class()
-	seirs_obj.set_t_all(t_all)
-	seirs_obj.set_ode_p(aode_p)
-	seirs_obj.set_initial(ay_init)
+	seirs = seirs_class()
+	seirs.set_t_all(t_all)
+	seirs.set_ode_p(aode_p)
+	seirs.set_initial(ay_init)
 	#
 	# compute model for data
-	ay_model = seirs_obj.model()
+	ay_model = seirs.model()
 	#
-	# model for the data
+	# Only have I(t) data.
 	aI_model  = ay_model[:,2] # S=0, E=1, I=2, R=3
 	#
-	# compute loss function
+	# compute Gaussian loss function
 	aresidual = I_data - aI_model
 	aloss     = numpy.sum( aresidual * aresidual)
 	aloss     = numpy.array( [ aloss ] )
@@ -60,28 +60,28 @@ def seirs_fit_xam() :
 	ok = True
 	#
 	# parameter values used to simulate data
-	seirs_obj = seirs_class()
+	seirs = seirs_class()
 	ode_p_true = [
 		0.3,          # beta:  exposure rate
 		1.0 / 5.0,    # sigma: on average 5 days from exposure to infectious
 		1.0 / 20.0,   # gamma: on average 20 days from infectors to recovered
 		0.0,          # xi: immunity is permanent
 	]
-	seirs_obj.set_ode_p(ode_p_true)
+	seirs.set_ode_p(ode_p_true)
 	t_init    = 0.0
 	t_final   = 50.0
 	n_step    = 40
 	t_all     = numpy.linspace(t_init, t_final, n_step)
-	seirs_obj.set_t_all(t_all)
+	seirs.set_t_all(t_all)
 	#
 	I_start      = 0.01
 	E_start      = I_start * ode_p_true[0] / ode_p_true[1]
 	S_start      = 1.0 - E_start - I_start
 	y_init_true  = numpy.array( [ S_start, E_start, I_start, 0.0 ] )
-	seirs_obj.set_initial(y_init_true)
+	seirs.set_initial(y_init_true)
 	#
 	# noiseless simulated data
-	y_model    = seirs_obj.model()
+	y_model    = seirs.model()
 	if False :
 		ax = pyplot.subplot(111)
 		ax.plot(t_all, y_model[:,0], 'b-', label='S')
