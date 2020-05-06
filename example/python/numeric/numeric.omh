@@ -10,8 +10,8 @@ $begin numeric_xam$$
 $section Numerical Examples$$
 
 $childtable%
-	example/python/numeric/optimize_xam.py%
-	example/python/numeric/ode_runge_xam.py
+	example/python/numeric/runge4_step.py%
+	example/python/numeric/optimize_fun_class.py
 %$$
 
 $end

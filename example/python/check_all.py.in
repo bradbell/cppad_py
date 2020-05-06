@@ -51,8 +51,8 @@ core_list = [
 	'error_message_xam',
 ]
 numeric_list = [
-	'optimize_xam',
-	'ode_runge_xam'
+	'optimize_fun_xam',
+	'runge4_step_xam'
 ]
 error_count = 0
 #
@@ -64,7 +64,7 @@ for name in core_list :
 #
 os.chdir('../numeric')
 for name in numeric_list :
-	ok = run_test(name, 'numeric_' + name)
+	ok = run_test(name, name)
 	if not ok :
 		error_count += 1
 #

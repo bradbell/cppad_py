@@ -5,12 +5,12 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin numeric_ode_runge_xam.py$$ $newlinech #$$
+# $begin numeric_runge4_step_xam.py$$ $newlinech #$$
 # $spell
 #	Runge-Kutta
 # $$
 #
-# $section Example Computing Derivative A Runge-Kutta Ode Solution$$
+# $section Example Computing Derivative A Runge-Kutta Ode Step$$
 #
 # $head ODE$$
 # $latex \[
@@ -48,19 +48,13 @@
 import numpy
 import scipy.misc
 import cppad_py
-def runge4(fun, y0, t, h) :
-	k1     = h * fun(t,           y0)
-	k2     = h * fun(t + h / 2.0, y0 + k1 / 2.0)
-	k3     = h * fun(t + h / 2.0, y0 + k2 / 2.0)
-	k4     = h * fun(t + h,       y0 + k3 )
-	y1     = y0 + (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0
-	return y1
+from runge4_step import runge4_step
 #
 def f(t, y, x) :
 	y_shift = numpy.concatenate( ( [1.0] , y[0:-1] ) )
 	return x * y_shift
 #
-def numeric_ode_runge_xam() :
+def runge4_step_xam() :
 	ok    = True
 	nx    = 4
 	eps99 = 99.0 * numpy.finfo(float).eps
@@ -79,7 +73,7 @@ def numeric_ode_runge_xam() :
 	t_step   = 0.75
 	#
 	# take one step
-	ay = runge4(fun, ay_start, t_start, t_step)
+	ay = runge4_step(fun, t_start, ay_start, t_step)
 	#
 	# g(x) = y(1, x)
 	g = cppad_py.d_fun(ax, ay)

@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin numeric_optimize_xam.py$$ $newlinech #$$
+# $begin numeric_optimize_fun_xam.py$$ $newlinech #$$
 # $spell
 #	Scipy
 #	constr
@@ -13,7 +13,7 @@
 #	def
 # $$
 #
-# $section Example Using Scipy trust-constr Optimization Method$$
+# $section Example Using optimize_fun_class with Scipy Optimization$$
 # $latex \newcommand{\W}[1]{{\; #1 \;}}$$
 #
 # $head Reference$$
@@ -51,11 +51,12 @@
 #
 # $end
 # BEGIN_PYTHON
-def numeric_optimize_xam() :
+def optimize_fun_xam() :
 	#
 	import numpy
 	import cppad_py
 	import scipy.optimize
+	from optimize_fun_class import optimize_fun_class
 	#
 	ok = True
 	#
@@ -75,39 +76,18 @@ def numeric_optimize_xam() :
 	ay = numpy.array( a_constraint(ax) )
 	constraint_ad = cppad_py.d_fun(ax, ay)
 	#
-	# objective: fun, jac, hes
-	def objective_fun(x) :
-		return objective_ad.forward(0, x)
-	def objective_jac(x) :
-		# Jacobian as a matrix
-		J = objective_ad.jacobian(x)
-		# change to a vector
-		return numpy.reshape(J, x.size)
-	def objective_hes(x) :
-		w = numpy.array( [ 1.0 ] )
-		H = objective_ad.hessian(x, w)
-		return H
-	#
-	# constraint: fun, jac, hes
-	def constraint_fun(x) :
-		return constraint_ad.forward(0, x)
-	def constraint_jac(x) :
-		# Jacobian as a matrix
-		J = constraint_ad.jacobian(x)
-		return J
-	def constraint_hes(x, v) :
-		H = constraint_ad.hessian(x, v)
-		return H
+	# optimize_fun
+	optimize_fun = optimize_fun_class(objective_ad, constraint_ad)
 	#
 	# constraints
 	lower_bound = [      25.0, 40.0 ]
 	upper_bound = [ numpy.inf, 40.0 ]
 	nonlinear_constraint = scipy.optimize.NonlinearConstraint(
-		constraint_fun,
+		optimize_fun.constraint_fun,
 		lower_bound,
 		upper_bound,
-		jac           = constraint_jac,
-		hess          = constraint_hes,
+		jac           = optimize_fun.constraint_jac,
+		hess          = optimize_fun.constraint_hess,
 		keep_feasible = False
 	)
 	constraints       = [nonlinear_constraint]
@@ -139,11 +119,11 @@ def numeric_optimize_xam() :
 	}
 	#
 	result = scipy.optimize.minimize(
-		objective_fun,
+		optimize_fun.objective_fun,
 		start_point,
 		method      = 'trust-constr',
-		jac         = objective_jac,
-		hess        = objective_hes,
+		jac         = optimize_fun.objective_grad,
+		hess        = optimize_fun.objective_hess,
 		constraints = constraints,
 		options     = options,
 		bounds      = bounds,
