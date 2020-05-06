@@ -30,14 +30,7 @@ import scipy.optimize
 import numpy
 import copy
 import cppad_py
-
-def runge4(fun, y0, t, h) :
-	k1     = h * fun(t,           y0)
-	k2     = h * fun(t + h / 2.0, y0 + k1 / 2.0)
-	k3     = h * fun(t + h / 2.0, y0 + k2 / 2.0)
-	k4     = h * fun(t + h,       y0 + k3 )
-	y1     = y0 + (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0
-	return y1
+from runge4_step import runge4_step
 
 def solve_ode(fun, t_all, y_init ) :
 	dtype      = type(y_init[0])
@@ -52,7 +45,7 @@ def solve_ode(fun, t_all, y_init ) :
 		t0            = t1
 		t1            = t_all[i+1]
 		t_step        = t1 - t0
-		y1            = runge4(fun, y0, t0, t_step)
+		y1            = runge4_step(fun, t0, y0, t_step)
 		y_all[i+1,:]  = copy.copy(y1)
 	return y_all
 
