@@ -31,6 +31,7 @@ import numpy
 import copy
 import cppad_py
 from runge4_step import runge4_step
+from optimize_fun_class import optimize_fun_class
 
 def solve_ode(fun, t_all, y_init ) :
 	dtype      = type(y_init[0])
@@ -147,17 +148,8 @@ def seirs_fit_xam() :
 	I_data = y_model[:,2]
 	objective_ad = objective_d_fun(t_all, I_data)
 	#
-	# objective: fun, jac, hes
-	def objective_fun(x) :
-		res = objective_ad.forward(0, x)
-		return res[0]
-	def objective_grad(x) :
-		J = objective_ad.jacobian(x)
-		return J.flatten()
-	def objective_hess(x) :
-		w = numpy.array( [ 1.0 ] )
-		H = objective_ad.hessian(x, w)
-		return H
+	# objective: fun, grad, hess
+	optimize_fun = optimize_fun_class(objective_ad)
 	#
 	# bounds
 	x_true      = numpy.concatenate( (ode_p_true, y_init_true) )
@@ -176,11 +168,11 @@ def seirs_fit_xam() :
 	}
 	start_point = x_true / 2.0
 	result = scipy.optimize.minimize(
-		objective_fun,
+		optimize_fun.objective_fun,
 		start_point,
 		method  = 'trust-constr',
-		jac     = objective_grad,
-		hess    = objective_hess,
+		jac     = optimize_fun.objective_grad,
+		hess    = optimize_fun.objective_hess,
 		options = options,
 		bounds  = bounds,
 	)
