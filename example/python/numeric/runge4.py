@@ -111,6 +111,7 @@ def multi_step(f, t_all, y_init ) :
 #
 # $head t_all$$
 # This is a vector of time values at which the solution is calculated.
+# It must be either monotone increasing or decreasing.
 # A single Runge-Kutta step is used to calculate the value at the next time
 # given the value at the current time.
 #

@@ -5,25 +5,17 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin seirs$$
+# $begin numeric_seirs_fit_xam.py$$ $newlinech #$$
 #
-# $section A Covid-19 SEIRS Model$$
+# $section Example Fitting an SEIRS Model$$
 #
-# $latex \[
-# \begin{array}{rcl}
-# \dot{S}(t) & = & - \beta(t) S(t) I(t) + \xi R(t)    \\
-# \dot{E}(t) & = & + \beta(t) S(t) I(t) - \sigma E(t) \\
-# \dot{I}(t) & = & + \sigma E(t) - \gamma  I(t) \\
-# \dot{R}(t) & = & + \gamma I(t)
-# \end{array}
-# \] $$
-#
-#
-# \end{array}
-# \] $$
+# $head Source Code$$
+# $srcthisfile%
+#	0%# BEGIN_PYTHON%# END_PYTHON%1
+# %$$
 #
 # $end
-
+# BEGIN_PYTHON
 from pdb import set_trace
 from matplotlib import pyplot
 import scipy.optimize
@@ -32,35 +24,7 @@ import copy
 import cppad_py
 import runge4
 from optimize_fun_class import optimize_fun_class
-
-class seirs :
-	def set_ode_p(self, ode_p) :
-		self.ode_p = ode_p
-
-	def set_t_all(self, t_all) :
-		self.t_all = t_all
-
-	def set_y_init(self, y_init) :
-		self.y_init = y_init
-
-	def ode(self, t, c_vec) :
-		S      = c_vec[0]
-		E      = c_vec[1]
-		I      = c_vec[2]
-		R      = c_vec[3]
-		beta   = self.ode_p[0]
-		sigma  = self.ode_p[1]
-		gamma  = self.ode_p[2]
-		xi     = self.ode_p[3]
-		Sdot   = - beta * S * I - xi * R
-		Edot   = + beta * S * I - sigma * E
-		Idot   = + sigma * E - gamma * I
-		Rdot   = + gamma * I - xi * R
-		return numpy.array([ Sdot, Edot, Idot, Rdot])
-
-	def model(self) :
-		y_all     = runge4.multi_step(self.ode, self.t_all, self.y_init)
-		return y_all
+from seirs_class import seirs_class
 
 def objective_d_fun(t_all, I_data) :
 	#
@@ -73,10 +37,10 @@ def objective_d_fun(t_all, I_data) :
 	ay_init  = ax[4:8]
 	#
 	# set up seirs model
-	seirs_obj = seirs()
+	seirs_obj = seirs_class()
 	seirs_obj.set_t_all(t_all)
 	seirs_obj.set_ode_p(aode_p)
-	seirs_obj.set_y_init(ay_init)
+	seirs_obj.set_initial(ay_init)
 	#
 	# compute model for data
 	ay_model = seirs_obj.model()
@@ -96,7 +60,7 @@ def seirs_fit_xam() :
 	ok = True
 	#
 	# parameter values used to simulate data
-	seirs_obj = seirs()
+	seirs_obj = seirs_class()
 	ode_p_true = [
 		0.3,          # beta:  exposure rate
 		1.0 / 5.0,    # sigma: on average 5 days from exposure to infectious
@@ -114,7 +78,7 @@ def seirs_fit_xam() :
 	E_start      = I_start * ode_p_true[0] / ode_p_true[1]
 	S_start      = 1.0 - E_start - I_start
 	y_init_true  = numpy.array( [ S_start, E_start, I_start, 0.0 ] )
-	seirs_obj.set_y_init(y_init_true)
+	seirs_obj.set_initial(y_init_true)
 	#
 	# noiseless simulated data
 	y_model    = seirs_obj.model()
@@ -169,3 +133,4 @@ def seirs_fit_xam() :
 		ok = ok and abs(rel_error) < 1e-2
 	#
 	return ok
+# END_PYTHON
