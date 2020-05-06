@@ -118,9 +118,11 @@ is not in your <code><font color="blue">LD_LIBRARY_PATH</font></code>:
 <code><font color="blue"><span style='white-space: nowrap'><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImportError:&nbsp;libcppad_lib.so&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>...</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;cannot&nbsp;open&nbsp;shared&nbsp;object&nbsp;file<br>
 </span></font></code>
-If you included the <code><font color="blue">--verbose</font></code> option in your <code><font color="blue">pip</font></code> command,
+If you run the <code><font color="blue">setup.py</font></code> script directory, or
+if you included the <code><font color="blue">--verbose</font></code> option in your <code><font color="blue">pip</font></code> command,
 there should be text at the end that tells you how to modify your
 <code><font color="blue">LD_LIBRARY_PATH</font></code>.
+If you have a Mac, you may instead need to modify <code><font color="blue">DYLD_LIBRARY_PATH</font></code>.
 
 <br>
 <br>
