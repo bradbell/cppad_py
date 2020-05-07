@@ -120,7 +120,7 @@ x
 
 <pre><tt>
 <b><font color="#000080">import</font></b> numpy
-<b><font color="#000080">import</font></b> scipy<font color="#990000">.</font>misc
+<b><font color="#000080">from</font></b>  scipy<font color="#990000">.</font>special <b><font color="#000080">import</font></b> factorial
 <b><font color="#000080">import</font></b> cppad_py
 <b><font color="#000080">import</font></b> runge4
 <i><font color="#9A1900">#</font></i>
@@ -160,7 +160,7 @@ x
      prod <font color="#990000">=</font> <font color="#993399">1.0</font>
      <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nx<font color="#990000">)</font> <font color="#990000">:</font>
           prod      <font color="#990000">=</font> prod <font color="#990000">*</font> x<font color="#990000">[</font>i<font color="#990000">]</font>
-          check     <font color="#990000">=</font> prod <font color="#990000">*</font> numpy<font color="#990000">.</font><b><font color="#000000">power</font></b><font color="#990000">(</font>t_step<font color="#990000">,</font> i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">/</font> scipy<font color="#990000">.</font>misc<font color="#990000">.</font><b><font color="#000000">factorial</font></b><font color="#990000">(</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">)</font>
+          check     <font color="#990000">=</font> prod <font color="#990000">*</font> numpy<font color="#990000">.</font><b><font color="#000000">power</font></b><font color="#990000">(</font>t_step<font color="#990000">,</font> i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">/</font> <b><font color="#000000">factorial</font></b><font color="#990000">(</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">)</font>
           rel_error <font color="#990000">=</font> gx<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">/</font> check <font color="#990000">-</font> <font color="#993399">1.0</font>
           ok       <font color="#990000">&amp;=</font> <b><font color="#000000">abs</font></b><font color="#990000">(</font>rel_error<font color="#990000">)</font> <font color="#990000">&lt;</font> eps99
      <i><font color="#9A1900">#</font></i>
