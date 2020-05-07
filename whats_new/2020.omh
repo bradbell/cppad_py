@@ -21,6 +21,7 @@ $spell
 	json
 	CppAD
 	cppad
+	scipy
 $$
 
 $section CppAD Py Changes During 2020$$
@@ -30,6 +31,11 @@ $children%
 %$$
 $head Previous Years$$
 $cref whats_new_2018$$
+
+$head 05-07$$
+The function $code scipy.misc.factorial$$
+has been deprecated so change it to
+$code scipy.special.factorial$$.
 
 $head 05-06$$
 $list number$$

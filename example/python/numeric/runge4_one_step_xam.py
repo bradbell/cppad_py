@@ -46,7 +46,7 @@
 # $end
 # BEGIN_PYTHON
 import numpy
-import scipy.misc
+from  scipy.special import factorial
 import cppad_py
 import runge4
 #
@@ -86,7 +86,7 @@ def runge4_one_step_xam() :
 	prod = 1.0
 	for i in range(nx) :
 		prod      = prod * x[i]
-		check     = prod * numpy.power(t_step, i+1) / scipy.misc.factorial(i+1)
+		check     = prod * numpy.power(t_step, i+1) / factorial(i+1)
 		rel_error = gx[i] / check - 1.0
 		ok       &= abs(rel_error) < eps99
 	#

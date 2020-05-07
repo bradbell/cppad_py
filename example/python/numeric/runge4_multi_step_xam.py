@@ -46,7 +46,7 @@
 # $end
 # BEGIN_PYTHON
 import numpy
-import scipy.misc
+import scipy.special
 import cppad_py
 import runge4
 #
@@ -90,7 +90,7 @@ def runge4_multi_step_xam() :
 	for i in range(nx) :
 		prod      = prod * x[i]
 		power     = numpy.power(t_final, i+1)
-		factorial = scipy.misc.factorial(i+1)
+		factorial = scipy.special.factorial(i+1)
 		check     = prod * power / factorial
 		rel_error = gx[i] / check - 1.0
 		ok       &= abs(rel_error) < eps99
