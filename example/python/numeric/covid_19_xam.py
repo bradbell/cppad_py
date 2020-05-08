@@ -40,7 +40,7 @@ from seird_model import seird_model
 # t_all
 t_start = 0.0
 t_stop  = 50.0
-t_step  = 0.5
+t_step  = 2.0
 t_all = numpy.arange(t_start, t_stop, t_step)
 #
 # covariates
@@ -82,8 +82,8 @@ class p_fun_class :
 		return p
 #
 # objective_d_fun
-# t_all, D_data, and chi_all are constants relative in the objective function
-def objective_d_fun(t_all, D_data, chi_all) :
+# t_all and D_data, are constants relative in the objective function
+def objective_d_fun(t_all, D_data) :
 	#
 	# x = ( cov_mul, initial )
 	x  = numpy.ones(9)
@@ -104,15 +104,11 @@ def objective_d_fun(t_all, D_data, chi_all) :
 	aseird_all = seird_model(t_all, ap_fun, ainitial)
 	#
 	# Model for the derivative of the death data
-	aI_model   = aseird_all[:,2] # S=0, E=1, I=2, R=3, D=4
-	aDot_model = chi_all * aI_model
+	aD_model   = aseird_all[:,4] # S=0, E=1, I=2, R=3, D=4
 	#
 	# Differences of the death data
-	Ddiff_data = numpy.diff(D_data)
-	#
-	# model for the data difference
-	tdiff        = numpy.diff(t_all)
-	aDdiff_model = tdiff * (aDot_model[0:-1] + aDot_model[1:]) / 2.0
+	Ddiff_data   = numpy.diff(D_data)
+	aDdiff_model = numpy.diff(aD_model)
 	#
 	# compute Gaussian loss function using the average of the model
 	# value for the interval corresponding to each difference
@@ -162,11 +158,7 @@ def covid_19_xam() :
 	#
 	# objective_ad
 	D_data       = seird_all_true[:,4]
-	chi_all      = numpy.empty(t_all.size, dtype=float)
-	for i in range(t_all.size) :
-		p          = p_fun_true( t_all[i] )
-		chi_all[i] = p['chi']
-	objective_ad = objective_d_fun(t_all, D_data, chi_all)
+	objective_ad = objective_d_fun(t_all, D_data)
 	#
 	# objective: fun, grad, hess
 	optimize_fun = optimize_fun_class(objective_ad)
@@ -211,7 +203,7 @@ def covid_19_xam() :
 	x_hat   = result.x
 	for i in range(7) :
 		rel_error = x_hat[i] / x_true[i] - 1.0
-		ok        = ok and abs(rel_error) < 1e-2
+		ok        = ok and abs(rel_error) < 1e-5
 	#
 	return ok
 # END_PYTHON

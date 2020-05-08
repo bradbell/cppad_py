@@ -45,7 +45,7 @@ the infectious rate $latex \beta$$.
 $lnext
 The $code numeric_seirs_model$$ was renamed $cref numeric_seird_model$$,
 the D compartment was added to track total deaths, and
-the data was changed from Infectious to cumulative death.
+the data was changed from Infectious to cumulative death; i.e. D.
 $lend
 
 
