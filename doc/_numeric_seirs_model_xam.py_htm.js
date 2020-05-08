@@ -8,7 +8,8 @@ var list_across0 = [
 var list_up0 = [
 'cppad_py.htm',
 'numeric_xam.htm',
-'numeric_seirs_fit_xam.py.htm'
+'numeric_seirs_model.htm',
+'numeric_seirs_model_xam.py.htm'
 ];
 function choose_across0(item)
 {	var index          = item.selectedIndex;
@@ -21,6 +22,12 @@ function choose_up0(item)
 	item.selectedIndex = 0;
 	if(index > 0)
 		document.location = list_up0[index-1];
+}
+function choose_down3(item)
+{	var index          = item.selectedIndex;
+	item.selectedIndex = 0;
+	if(index > 0)
+		document.location = list_down3[index-1];
 }
 function choose_down2(item)
 {	var index          = item.selectedIndex;

@@ -107,7 +107,7 @@ y^{(1)} (t)
 <br>
 <b><big><a name="t_all" id="t_all">t_all</a></big></b>
 <br>
-This is a vector of time values at which the solution is calculated.
+This is a numpy vector of time values at which the solution is calculated.
 It must be either monotone increasing or decreasing.
 A single Runge-Kutta step is used to calculate the value at the next time
 given the value at the current time.
@@ -121,7 +121,7 @@ y(t)
 @)@</small> at the initial time
 
 <code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i><font color="blue"><span style='white-space: nowrap'>[</span></font><i><font color="black"><span style='white-space: nowrap'>0</span></font></i><font color="blue"><span style='white-space: nowrap'>]</span></font></code>
-.
+ as a numpy vector.
 
 <br>
 <br>
@@ -132,6 +132,14 @@ y(t)
 @)@</small> at all of the
 times specified by 
 <code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i></code>
+ as a numpy array.
+The value 
+<code><i><font color="black"><span style='white-space: nowrap'>y_all</span></font></i><font color="blue"><span style='white-space: nowrap'>[</span></font><i><font color="black"><span style='white-space: nowrap'>i</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>j</span></font></i><font color="blue"><span style='white-space: nowrap'>]</span></font></code>
+ is the value of the j-th
+component of <small>@(@
+y(t)
+@)@</small> at time 
+<code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i><font color="blue"><span style='white-space: nowrap'>[</span></font><i><font color="black"><span style='white-space: nowrap'>i</span></font></i><font color="blue"><span style='white-space: nowrap'>]</span></font></code>
 .
 This solution is 4-th order accurate in time <small>@(@
 t
