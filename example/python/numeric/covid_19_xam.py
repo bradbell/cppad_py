@@ -10,7 +10,7 @@
 #	Covid
 # $$
 #
-# $section Example Fitting an SEIRS Model for Covid-19$$
+# $section Example Fitting an SEIRD Model for Covid-19$$
 #
 # $head Plot Truth$$
 # If you set this variable to True, you will get a plot of the
