@@ -23,6 +23,7 @@ $spell
 	cppad
 	scipy
 	seirs
+	xam
 $$
 
 $section CppAD Py Changes During 2020$$
@@ -33,6 +34,10 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 05-08$$
+The $code numeric_seirs_fit_xam.py$$ example was renamed
+$cref numeric_covid_19_xam.py$$.
+
 $head 05-07$$
 $list number$$
 The function $code scipy.misc.factorial$$
@@ -41,7 +46,7 @@ $code scipy.special.factorial$$.
 $lnext
 Add the $cref numeric_seirs_model$$ utility example
 which allows rates in the ODE to change with time.
-This enabled changing the $cref numeric_seirs_fit_xam.py$$
+This enabled changing the $cref numeric_covid_19_xam.py$$
 example to estimate a $latex \beta$$ coefficient that
 changes with time.
 $lnext

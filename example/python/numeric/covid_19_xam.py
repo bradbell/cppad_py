@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin numeric_seirs_fit_xam.py$$ $newlinech #$$
+# $begin numeric_covid_19_xam.py$$ $newlinech #$$
 #
 # $section Example Fitting an SEIRS Model$$
 #
@@ -103,7 +103,7 @@ def objective_d_fun(t_all, I_data) :
 	objective_ad = cppad_py.d_fun(ax, aloss)
 	return objective_ad
 
-def seirs_fit_xam() :
+def covid_19_xam() :
 	ok = True
 	#
 	# beta_all_true

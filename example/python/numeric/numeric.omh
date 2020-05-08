@@ -13,7 +13,7 @@ $childtable%
 	example/python/numeric/runge4.py%
 	example/python/numeric/optimize_fun_class.py%
 	example/python/numeric/seirs_model.py%
-	example/python/numeric/seirs_fit_xam.py
+	example/python/numeric/covid_19_xam.py
 %$$
 
 $end
