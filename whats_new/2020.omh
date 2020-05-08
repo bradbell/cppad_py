@@ -44,8 +44,9 @@ And it was change to fit covariate multipliers that model
 the infectious rate $latex \beta$$.
 $lnext
 The $code numeric_seirs_model$$ was renamed $cref numeric_seird_model$$,
-the D compartment was added to track total deaths, and
-the data was changed from Infectious to cumulative death; i.e. D.
+the D compartment was added to track total deaths,
+the data was changed from Infectious to cumulative death, and
+noise was added to the data.
 $lend
 
 

@@ -19,6 +19,22 @@
 plot_truth = False
 # %$$
 #
+# $head Coefficient of Variation$$
+# This is the coefficient of variation for the differences
+# in the cumulative death data.
+# It is a fraction, not a percent value and
+# the value zero corresponds to no noise:
+# $srccode%py%
+death_data_cv = 0.2
+# %$$
+#
+# $head Random Seed$$
+# This is the random seed used to simulate noise in the data.
+# The value zero instructs says to us the system clock to seed the data.
+# $srccode%py%
+random_seed = 0
+# %$$
+#
 # $head Source Code$$
 # $srcthisfile%
 #	0%# BEGIN_PYTHON%# END_PYTHON%1
@@ -30,7 +46,8 @@ from pdb import set_trace
 from matplotlib import pyplot
 import scipy.optimize
 import numpy
-import csv
+import random
+import time
 #
 import cppad_py
 import runge4
@@ -119,7 +136,7 @@ def objective_d_fun(t_all, D_data) :
 	objective_ad = cppad_py.d_fun(ax, aloss)
 	return objective_ad
 
-def covid_19_xam() :
+def covid_19_xam(call_count = 0) :
 	ok = True
 	#
 	# cov_mul_true
@@ -156,8 +173,23 @@ def covid_19_xam() :
 		ax.legend()
 		pyplot.show()
 	#
+	# actual_seed
+	if random_seed == 0 :
+		actual_seed = int( time.time() )
+	else :
+		actual_seed = random_seed
+	random.seed(actual_seed)
+	#
+	# D_data
+	D_true       = seird_all_true[:,4]
+	Ddiff_true   = numpy.diff( D_true )
+	mu           = Ddiff_true
+	sigma        = death_data_cv * Ddiff_true
+	Ddiff_data   = random.normalvariate(mu, sigma)
+	D_data       = numpy.cumsum(Ddiff_data)
+	D_data       = numpy.concatenate( ([0.0], D_data) )
+	#
 	# objective_ad
-	D_data       = seird_all_true[:,4]
 	objective_ad = objective_d_fun(t_all, D_data)
 	#
 	# objective: fun, grad, hess
@@ -203,7 +235,15 @@ def covid_19_xam() :
 	x_hat   = result.x
 	for i in range(7) :
 		rel_error = x_hat[i] / x_true[i] - 1.0
-		ok        = ok and abs(rel_error) < 1e-5
+		# print( x_true[i], x_hat[i], rel_error)
+		ok        = ok and abs(rel_error) < (1e-5 + death_data_cv )
 	#
+	if not ok :
+		msg  = 'covid_19_xam: Correctness test failed, '
+		msg += 'actual random seed = ' + str(actual_seed)
+		print( msg )
+		call_count += 1
+		if call_count < 2 :
+			ok = covid_19_xam(call_count)
 	return ok
 # END_PYTHON
