@@ -24,6 +24,7 @@ $spell
 	scipy
 	seirs
 	xam
+	covariate
 $$
 
 $section CppAD Py Changes During 2020$$
@@ -37,6 +38,8 @@ $cref whats_new_2018$$
 $head 05-08$$
 The $code numeric_seirs_fit_xam.py$$ example was renamed
 $cref numeric_covid_19_xam.py$$.
+And it was change to fit covariate multipliers that model
+the infectious rate $latex \beta$$.
 
 $head 05-07$$
 $list number$$

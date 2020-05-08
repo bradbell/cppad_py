@@ -9,6 +9,13 @@
 #
 # $section Example Fitting an SEIRS Model$$
 #
+# $head Plot Truth$$
+# If you set this variable to True, you will get a plot of the
+# values used to simulate the data:
+# $srccode%py%
+plot_truth = False
+# %$$
+#
 # $head Source Code$$
 # $srcthisfile%
 #	0%# BEGIN_PYTHON%# END_PYTHON%1
@@ -20,18 +27,27 @@ from pdb import set_trace
 from matplotlib import pyplot
 import scipy.optimize
 import numpy
-import copy
+import csv
+#
 import cppad_py
 import runge4
 from optimize_fun_class import optimize_fun_class
 from seirs_model import seirs_model
 #
-# t_all
-t_init    = 0.0
-t_final   = 50.0
-n_point   = 40
-t_all     = numpy.linspace(t_init, t_final, n_point)
 #
+# covariates
+n_day         = 51
+base_line     = [ 1.0           for i in range(n_day) ]
+close_school  = [ float(5 < i)  for i in range(n_day) ]
+stay_home     = [ float(10 < i) for i in range(n_day) ]
+essential     = [ float(15 < i) for i in range(n_day) ]
+covariates     = numpy.array( [
+	[ base_line[i],  close_school[i], stay_home[i], essential[i] ]
+	for i in range(n_day)
+] )
+#
+# t_all
+t_all = numpy.array( [ float(i) for i in range(n_day) ] )
 #
 # p_fun_class
 class p_fun_class :
@@ -47,43 +63,31 @@ class p_fun_class :
 		t_diff = t_all[ip] - t_all[i]
 		left   = ( t_all[ip] - t ) / t_diff
 		right  = ( t - t_all[i]  ) / t_diff
-		# only beta changes with time not continuous at all points in t_all
+		# beta changes with time are continuous at all points in t_all
 		# and smooth for times not in t_all
 		beta   = left * self.beta_all[i] + right * self.beta_all[ip]
 		p      = {
 			'beta'  : beta,
-			'sigma' : 1.0 / 5.0,
+			'sigma' : 1.0 / 5.0,   # The other rates are fixed constants
 			'gamma' : 1.0 / 20.0,
-			'chi'   : 1.0 / 365.0,
-			'xi'    : 0.0
+			'chi'   : 1.0 / 200.0,
+			'xi'    : 1.0 / 365.0,
 		}
 		return p
-#
-# beta_all
-def beta_all_fun(beta_vec) :
-	n_point  = t_all.size;
-	beta_all = numpy.empty( n_point, dtype=type( beta_vec[0] ) )
-	for i in range(n_point) :
-		if t_all[i] <= 15 :
-			beta_all[i] = beta_vec[0]
-		elif t_all[i] <= 30 :
-			beta_all[i] = beta_vec[1]
-		else :
-			beta_all[i] = beta_vec[2]
-	return beta_all
 #
 # objective_d_fun
 def objective_d_fun(t_all, I_data) :
 	#
 	# x = ( beta[0], beta[1]. beta[2], S[0], E[0], I[0], R[0] )
-	x  = numpy.ones(7)
+	x  = numpy.ones(8)
 	ax = cppad_py.independent(x)
 	#
 	# abeta_all
-	abeta_all  = beta_all_fun( ax[0:3] )
+	cov_mul    = ax[0:4]
+	abeta_all  = numpy.matmul(covariates, cov_mul)
 	#
 	# ainitial
-	ainitial  = ax[3:7]
+	ainitial  = ax[4:8]
 	#
 	# p_fun
 	ap_fun_obj = p_fun_class(abeta_all)
@@ -106,9 +110,11 @@ def objective_d_fun(t_all, I_data) :
 def covid_19_xam() :
 	ok = True
 	#
+	# cov_mul_true
+	cov_mul_true  = numpy.array( [ 0.35, - 0.1, - 0.1, - 0.1 ] )
+	#
 	# beta_all_true
-	beta_vec_true = numpy.array( [ 0.1, 0.2, 0.3 ] )
-	beta_all_true = beta_all_fun( beta_vec_true )
+	beta_all_true = numpy.matmul(covariates, cov_mul_true)
 	#
 	# p_fun_true
 	p_fun_obj   = p_fun_class(beta_all_true)
@@ -119,13 +125,13 @@ def covid_19_xam() :
 	# initial_true
 	I_start      = 0.02
 	E_start      = 0.02
-	R_start      = 0.10
+	R_start      = 0.02
 	S_start      = 1.0 - E_start - I_start - R_start
 	initial_true = numpy.array( [ S_start, E_start, I_start, R_start ] )
 	#
 	# noiseless simulated data
 	seir_all_true = seirs_model(t_all, p_fun_true, initial_true)
-	if False :
+	if plot_truth :
 		ax = pyplot.subplot(111)
 		ax.plot(t_all, seir_all_true[:,0], 'b-', label='S')
 		ax.plot(t_all, seir_all_true[:,1], 'g-', label='E')
@@ -134,7 +140,7 @@ def covid_19_xam() :
 		ax.legend()
 		pyplot.show()
 	#
-	# objective function for fitting y_init and ode_p to data
+	# objective_ad
 	I_data = seir_all_true[:,2]
 	objective_ad = objective_d_fun(t_all, I_data)
 	#
@@ -142,10 +148,17 @@ def covid_19_xam() :
 	optimize_fun = optimize_fun_class(objective_ad)
 	#
 	# bounds
-	x_true      = numpy.concatenate( (beta_vec_true, initial_true) )
-	lower_bound = x_true / 5.0
-	upper_bound = x_true * 5.0
-	lower_bound[-1] = x_true[-1] # Constrain initial R because data
+	x_true      = numpy.concatenate( (cov_mul_true, initial_true) )
+	lower_bound = numpy.empty(x_true.size, dtype=float)
+	upper_bound = numpy.empty(x_true.size, dtype=float)
+	for i in range(x_true.size) :
+		if x_true[i] > 0.0 :
+			lower_bound[i] = x_true[i] / 5.0
+			upper_bound[i] = x_true[i] * 5.0
+		else :
+			lower_bound[i] = x_true[i] * 5.0
+			upper_bound[i] = x_true[i] / 5.0
+	lower_bound[-1] = x_true[-1] # Constrain initial R to truth because data
 	upper_bound[-1] = x_true[-1] # is not sensitive to it
 	bounds = scipy.optimize.Bounds(
 		lower_bound,
@@ -158,7 +171,8 @@ def covid_19_xam() :
 		'maxiter' : 300,
 		'verbose' : 0,
 	}
-	start_point = x_true / 2.0
+	start_point     = x_true / 2.0
+	start_point[-1] = x_true[-1]
 	result = scipy.optimize.minimize(
 		optimize_fun.objective_fun,
 		start_point,
@@ -172,7 +186,7 @@ def covid_19_xam() :
 	x_hat   = result.x
 	for i in range(7) :
 		rel_error = x_hat[i] / x_true[i] - 1.0
-		ok        = ok and abs(rel_error) < 1e-5
+		ok        = ok and abs(rel_error) < 1e-3
 	#
 	return ok
 # END_PYTHON
