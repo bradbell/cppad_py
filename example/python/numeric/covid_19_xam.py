@@ -102,16 +102,28 @@ class p_fun_class :
 # t_all and D_data, are constants relative in the objective function
 def objective_d_fun(t_all, D_data) :
 	#
-	# x = ( cov_mul, initial )
-	x  = numpy.ones(9)
+	# number of covariates
+	n_time, n_cov = covariates.shape
+	#
+	# number of independent variables in objective function
+	n_x = n_cov + 2
+	#
+	# x = ( cov_mul, E(0), I(0) )
+	# Note that R(0) = D(0) = 0 and S(0) = 1 - E(0) - I(0)
+	x  = 0.1 * numpy.ones(n_x)
 	ax = cppad_py.independent(x)
 	#
 	# abeta_all
-	cov_mul    = ax[0:4]
+	cov_mul    = ax[0 : n_cov]
 	abeta_all  = numpy.matmul(covariates, cov_mul)
 	#
 	# ainitial
-	ainitial  = ax[4:9]
+	aE_0      = ax[n_cov + 0]
+	aI_0      = ax[n_cov + 1]
+	aR_0      = 0.0
+	aD_0      = 0.0
+	aS_0      = 1.0 - aE_0 - aI_0
+	ainitial  = numpy.array( [aS_0, aE_0, aI_0, aR_0, aD_0] )
 	#
 	# p_fun
 	ap_fun_obj = p_fun_class(abeta_all)
@@ -121,7 +133,7 @@ def objective_d_fun(t_all, D_data) :
 	aseird_all = seird_model(t_all, ap_fun, ainitial)
 	#
 	# Model for the derivative of the death data
-	aD_model   = aseird_all[:,4] # S=0, E=1, I=2, R=3, D=4
+	aD_model   = aseird_all[:,4] # column order is S, E, I, R, D
 	#
 	# Differences of the death data
 	Ddiff_data   = numpy.diff(D_data)
@@ -151,11 +163,11 @@ def covid_19_xam(call_count = 0) :
 	#
 	# compute model for data
 	#
-	# initial_true: (must intial constraint S + E + R + I = 1)
+	# initial_true: (must satisfy S + E + I = 1, R = D = 0)
 	I_start      = 0.02
 	E_start      = 0.02
-	R_start      = 0.02
-	S_start      = 1.0 - E_start - I_start - R_start
+	S_start      = 1.0 - E_start - I_start
+	R_start      = 0.0
 	D_start      = 0.0
 	initial_true = numpy.array(
 		[ S_start, E_start, I_start, R_start, D_start ]
@@ -175,7 +187,7 @@ def covid_19_xam(call_count = 0) :
 	#
 	# actual_seed
 	if random_seed == 0 :
-		actual_seed = int( time.time() )
+		actual_seed = int( 13 * time.time() )
 	else :
 		actual_seed = random_seed
 	random.seed(actual_seed)
@@ -196,22 +208,9 @@ def covid_19_xam(call_count = 0) :
 	optimize_fun = optimize_fun_class(objective_ad)
 	#
 	# x_true
-	x_true      = numpy.concatenate( (cov_mul_true, initial_true) )
-	#
-	# constriant
-	# initial S + E + I + R = 1 (initial D is constrined to 0 in bounds)
-	lower_bound = [ 1.0 ]
-	upper_bound = [ 1.0 ]
-	A           = numpy.zeros( x_true.size, dtype=float )
-	for i in range(4) :
-		A[i + 4] = 1.0
-	linear_constraint = scipy.optimize.LinearConstraint(
-		A,
-		lower_bound,
-		upper_bound,
-		keep_feasible = True
-	)
-	constraints = [ linear_constraint ]
+	E_0_true = initial_true[1]
+	I_0_true = initial_true[2]
+	x_true   = numpy.concatenate( (cov_mul_true, [ E_0_true, I_0_true ]) )
 	#
 	# bounds
 	lower_bound = numpy.empty(x_true.size, dtype=float)
@@ -223,22 +222,18 @@ def covid_19_xam(call_count = 0) :
 		else :
 			lower_bound[i] = x_true[i] * 5.0
 			upper_bound[i] = x_true[i] / 5.0
-	# Not fitting initial value for R and D
-	lower_bound[-2:-1] = x_true[-2:-1]
-	upper_bound[-2:-1] = x_true[-2:-1]
 	bounds = scipy.optimize.Bounds(
 		lower_bound,
 		upper_bound,
 		keep_feasible = True
 	)
 	options = {
-		'gtol'    : 1e-9,
+		'gtol'    : 1e-10,
 		'xtol'    : 1e-8,
 		'maxiter' : 300,
 		'verbose' : 0,
 	}
 	start_point     = x_true / 2.0
-	start_point[-1] = x_true[-1]
 	result = scipy.optimize.minimize(
 		optimize_fun.objective_fun,
 		start_point,
@@ -247,11 +242,10 @@ def covid_19_xam(call_count = 0) :
 		hess        = optimize_fun.objective_hess,
 		options     = options,
 		bounds      = bounds,
-		constraints = constraints,
 	)
 	ok      = ok and result.success
 	x_hat   = result.x
-	for i in range(7) :
+	for i in range(x_true.size) :
 		rel_error = x_hat[i] / x_true[i] - 1.0
 		# print( x_true[i], x_hat[i], rel_error)
 		ok        = ok and abs(rel_error) < (1e-5 + death_data_cv )
