@@ -15,7 +15,7 @@ MathJax.Hub.Config({
 <title>Example Fitting an SEIRD Model for Covid-19</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
 <meta name="description" id="description" content="Example Fitting an SEIRD Model for Covid-19">
-<meta name="keywords" id="keywords" content=" example fitting seird model covid-19 plot truth source code ">
+<meta name="keywords" id="keywords" content=" example fitting seird model covid-19 plot truth coefficient variation random seed source code ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -63,6 +63,8 @@ A:active { color : purple }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Example Fitting an SEIRD Model for Covid-19</big></big></b></center>
 
 <br><a href="numeric_covid_19_xam.py.htm#Plot Truth" target="_top">Plot&nbsp;Truth</a>
+<br><a href="numeric_covid_19_xam.py.htm#Coefficient of Variation" target="_top">Coefficient&nbsp;of&nbsp;Variation</a>
+<br><a href="numeric_covid_19_xam.py.htm#Random Seed" target="_top">Random&nbsp;Seed</a>
 <br><a href="numeric_covid_19_xam.py.htm#Source Code" target="_top">Source&nbsp;Code</a>
 <br><br>
 <b><big><a name="Plot Truth" id="Plot Truth">Plot Truth</a></big></b>
@@ -73,6 +75,24 @@ values used to simulate the data:
 plot_truth <font color="#990000">=</font> False
 </tt></pre>
 <br>
+<b><big><a name="Coefficient of Variation" id="Coefficient of Variation">Coefficient of Variation</a></big></b>
+<br>
+This is the coefficient of variation for the differences
+in the cumulative death data.
+It is a fraction, not a percent value and
+the value zero corresponds to no noise:
+<pre style='display:inline'><tt>
+death_data_cv <font color="#990000">=</font> <font color="#993399">0.2</font>
+</tt></pre>
+<br>
+<b><big><a name="Random Seed" id="Random Seed">Random Seed</a></big></b>
+<br>
+This is the random seed used to simulate noise in the data.
+The value zero instructs says to us the system clock to seed the data.
+<pre style='display:inline'><tt>
+random_seed <font color="#990000">=</font> <font color="#993399">0</font>
+</tt></pre>
+<br>
 <b><big><a name="Source Code" id="Source Code">Source Code</a></big></b>
 
 <pre><tt>
@@ -80,7 +100,8 @@ plot_truth <font color="#990000">=</font> False
 <b><font color="#000080">from</font></b> matplotlib <b><font color="#000080">import</font></b> pyplot
 <b><font color="#000080">import</font></b> scipy<font color="#990000">.</font>optimize
 <b><font color="#000080">import</font></b> numpy
-<b><font color="#000080">import</font></b> csv
+<b><font color="#000080">import</font></b> random
+<b><font color="#000080">import</font></b> time
 <i><font color="#9A1900">#</font></i>
 <b><font color="#000080">import</font></b> cppad_py
 <b><font color="#000080">import</font></b> runge4
@@ -169,7 +190,7 @@ covariates     <font color="#990000">=</font> numpy<font color="#990000">.</font
      objective_ad <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> aloss<font color="#990000">)</font>
      <b><font color="#0000FF">return</font></b> objective_ad
 
-<b><font color="#0000FF">def</font></b> <b><font color="#000000">covid_19_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
+<b><font color="#0000FF">def</font></b> <b><font color="#000000">covid_19_xam</font></b><font color="#990000">(</font>call_count <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">)</font> <font color="#990000">:</font>
      ok <font color="#990000">=</font> True
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># cov_mul_true</font></i>
@@ -206,8 +227,23 @@ covariates     <font color="#990000">=</font> numpy<font color="#990000">.</font
           ax<font color="#990000">.</font><b><font color="#000000">legend</font></b><font color="#990000">()</font>
           pyplot<font color="#990000">.</font><b><font color="#000000">show</font></b><font color="#990000">()</font>
      <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># actual_seed</font></i>
+     <b><font color="#0000FF">if</font></b> random_seed <font color="#990000">==</font> <font color="#993399">0</font> <font color="#990000">:</font>
+          actual_seed <font color="#990000">=</font> <b><font color="#000000">int</font></b><font color="#990000">(</font> time<font color="#990000">.</font><b><font color="#000000">time</font></b><font color="#990000">()</font> <font color="#990000">)</font>
+     <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
+          actual_seed <font color="#990000">=</font> random_seed
+     random<font color="#990000">.</font><b><font color="#000000">seed</font></b><font color="#990000">(</font>actual_seed<font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># D_data</font></i>
+     D_true       <font color="#990000">=</font> seird_all_true<font color="#990000">[:,</font><font color="#993399">4</font><font color="#990000">]</font>
+     Ddiff_true   <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">diff</font></b><font color="#990000">(</font> D_true <font color="#990000">)</font>
+     mu           <font color="#990000">=</font> Ddiff_true
+     sigma        <font color="#990000">=</font> death_data_cv <font color="#990000">*</font> Ddiff_true
+     Ddiff_data   <font color="#990000">=</font> random<font color="#990000">.</font><b><font color="#000000">normalvariate</font></b><font color="#990000">(</font>mu<font color="#990000">,</font> sigma<font color="#990000">)</font>
+     D_data       <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">cumsum</font></b><font color="#990000">(</font>Ddiff_data<font color="#990000">)</font>
+     D_data       <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">concatenate</font></b><font color="#990000">(</font> <font color="#990000">([</font><font color="#993399">0.0</font><font color="#990000">],</font> D_data<font color="#990000">)</font> <font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># objective_ad</font></i>
-     D_data       <font color="#990000">=</font> seird_all_true<font color="#990000">[:,</font><font color="#993399">4</font><font color="#990000">]</font>
      objective_ad <font color="#990000">=</font> <b><font color="#000000">objective_d_fun</font></b><font color="#990000">(</font>t_all<font color="#990000">,</font> D_data<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># objective: fun, grad, hess</font></i>
@@ -253,8 +289,16 @@ covariates     <font color="#990000">=</font> numpy<font color="#990000">.</font
      x_hat   <font color="#990000">=</font> result<font color="#990000">.</font>x
      <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font><font color="#993399">7</font><font color="#990000">)</font> <font color="#990000">:</font>
           rel_error <font color="#990000">=</font> x_hat<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">/</font> x_true<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">-</font> <font color="#993399">1.0</font>
-          ok        <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> <b><font color="#000000">abs</font></b><font color="#990000">(</font>rel_error<font color="#990000">)</font> <font color="#990000">&lt;</font> <font color="#993399">1e-5</font>
+          <i><font color="#9A1900"># print( x_true[i], x_hat[i], rel_error)</font></i>
+          ok        <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> <b><font color="#000000">abs</font></b><font color="#990000">(</font>rel_error<font color="#990000">)</font> <font color="#990000">&lt;</font> <font color="#990000">(</font><font color="#993399">1e-5</font> <font color="#990000">+</font> death_data_cv <font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
+     <b><font color="#0000FF">if</font></b> <b><font color="#0000FF">not</font></b> ok <font color="#990000">:</font>
+          msg  <font color="#990000">=</font> <font color="#FF0000">'covid_19_xam: Correctness test failed, '</font>
+          msg <font color="#990000">+=</font> <font color="#FF0000">'actual random seed = '</font> <font color="#990000">+</font> <b><font color="#000000">str</font></b><font color="#990000">(</font>actual_seed<font color="#990000">)</font>
+          <b><font color="#0000FF">print</font></b><font color="#990000">(</font> msg <font color="#990000">)</font>
+          call_count <font color="#990000">+=</font> <font color="#993399">1</font>
+          <b><font color="#0000FF">if</font></b> call_count <font color="#990000">&lt;</font> <font color="#993399">2</font> <font color="#990000">:</font>
+               ok <font color="#990000">=</font> <b><font color="#000000">covid_19_xam</font></b><font color="#990000">(</font>call_count<font color="#990000">)</font>
      <b><font color="#0000FF">return</font></b> ok</tt></pre>
 
 <hr>Input File: example/python/numeric/covid_19_xam.py

@@ -16,7 +16,7 @@ Keyword =
 { tag: 'numeric_optimize_fun_xam.py', title:'Example Using optimize_fun_class with Scipy Optimization', other:' reference problem trust_constr source code' },
 { tag: 'numeric_seird_model', title:'A Susceptible Exposed Infectious Recovered and Death Model', other:' syntax set_t_all p_fun initial seird_all example source code' },
 { tag: 'numeric_seird_model_xam.py', title:'Example Using seris_model', other:'' },
-{ tag: 'numeric_covid_19_xam.py', title:'Example Fitting an SEIRD Model for Covid-19', other:' plot truth source code' },
+{ tag: 'numeric_covid_19_xam.py', title:'Example Fitting an SEIRD Model for Covid-19', other:' plot truth coefficient variation random seed source code' },
 { tag: 'library', title:'The Cppad Py Libraries', other:'' },
 { tag: 'py_lib', title:'The Python Library', other:'' },
 { tag: 'py_fun', title:'Cppad Py AD Functions', other:'' },
