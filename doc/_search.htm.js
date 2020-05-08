@@ -3,7 +3,7 @@
 // ------------------------------------------------------------ 
 Keyword = 
 [
-{ tag: 'cppad_py', title:'cppad_py-2020.5.7: A C++ Object Library and Python Interface to CppAD', other:' git repository purpose getting started numerical examples function speed license' },
+{ tag: 'cppad_py', title:'cppad_py-2020.5.8: A C++ Object Library and Python Interface to CppAD', other:' git repository purpose getting started numerical examples function speed license' },
 { tag: 'setup.py', title:'Configure and Build the cppad_py Python Module', other:' syntax external requirements install using pip errors download top source directory get test c++ import path' },
 { tag: 'install_error', title:'Error Messages During Installation', other:' solved swig permissions cppad library missing fortify source unsolved travis' },
 { tag: 'get_cppad.sh', title:'Get Cppad', other:' syntax top source directory settings cppad_prefix extra_cxx_flags build_type test_cppad caching' },
@@ -16,7 +16,7 @@ Keyword =
 { tag: 'numeric_optimize_fun_xam.py', title:'Example Using optimize_fun_class with Scipy Optimization', other:' reference problem trust_constr source code' },
 { tag: 'numeric_seirs_model', title:'A Susceptible Exposed Infectious Recovered Model', other:' syntax set_t_all p_fun initial seir_all example source code' },
 { tag: 'numeric_seirs_model_xam.py', title:'Example Using seris_model', other:'' },
-{ tag: 'numeric_seirs_fit_xam.py', title:'Example Fitting an SEIRS Model', other:' source code' },
+{ tag: 'numeric_covid_19_xam.py', title:'Example Fitting an SEIRS Model', other:' plot truth source code' },
 { tag: 'library', title:'The Cppad Py Libraries', other:'' },
 { tag: 'py_lib', title:'The Python Library', other:'' },
 { tag: 'py_fun', title:'Cppad Py AD Functions', other:'' },
@@ -133,7 +133,7 @@ Keyword =
 { tag: 'error_message_xam.cpp', title:'C++: Cppad Py Exception Handling: Example and Test', other:'' },
 { tag: 'error_message_xam.py', title:'Python: Cppad Py Exception Handling: Example and Test', other:'' },
 { tag: 'more_cpp', title:'Steps To Add More C++ Functions', other:' purpose include file independent new_dynamic documentation example implementation testing' },
-{ tag: 'whats_new_2020', title:'CppAD Py Changes During 2020', other:' previous years 05-07 05-06 05-05 05-04 04-28 04-27 04-26 04-25 04-24 04-23 04-22 04-20 04-19 04-18 04-13 04-12 04-10' },
+{ tag: 'whats_new_2020', title:'CppAD Py Changes During 2020', other:' previous years 05-08 05-07 05-06 05-05 05-04 04-28 04-27 04-26 04-25 04-24 04-23 04-22 04-20 04-19 04-18 04-13 04-12 04-10' },
 { tag: 'whats_new_2018', title:'Cppad Py Changes During 2018', other:' 11-10 11-09 11-07 11-05 08-13 07-31 07-26 07-19 07-15 07-14 07-13 07-12 07-10 07-08 07-07 07-03' }
 ]
 

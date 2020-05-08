@@ -6,7 +6,7 @@ document.write('\
 <option>numeric_runge4_multi_step</option>\
 <option>numeric_optimize_fun_class</option>\
 <option>numeric_seirs_model</option>\
-<option>numeric_seirs_fit_xam.py</option>\
+<option>numeric_covid_19_xam.py</option>\
 </select>\
 ');
 function numeric_xam_child(item)
@@ -15,7 +15,7 @@ function numeric_xam_child(item)
 		'numeric_runge4_multi_step.htm',
 		'numeric_optimize_fun_class.htm',
 		'numeric_seirs_model.htm',
-		'numeric_seirs_fit_xam.py.htm'
+		'numeric_covid_19_xam.py.htm'
 	];
 	var index = item.selectedIndex;
 	item.selectedIndex = 0;
