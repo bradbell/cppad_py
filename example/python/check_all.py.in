@@ -54,6 +54,7 @@ numeric_list = [
 	'optimize_fun_xam',
 	'runge4_one_step_xam',
 	'runge4_multi_step_xam',
+	'seirs_model_xam',
 	'seirs_fit_xam',
 ]
 error_count = 0
