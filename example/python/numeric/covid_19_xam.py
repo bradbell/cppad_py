@@ -37,20 +37,22 @@ import runge4
 from optimize_fun_class import optimize_fun_class
 from seird_model import seird_model
 #
+# t_all
+t_start = 0.0
+t_stop  = 50.0
+t_step  = 0.5
+t_all = numpy.arange(t_start, t_stop, t_step)
 #
 # covariates
-n_day         = 51
-base_line     = [ 1.0           for i in range(n_day) ]
-close_school  = [ float(5 < i)  for i in range(n_day) ]
-stay_home     = [ float(10 < i) for i in range(n_day) ]
-essential     = [ float(15 < i) for i in range(n_day) ]
+n_time = t_all.size
+base_line     = [ 1.0              for t in t_all ]
+close_school  = [ float(5.0  < t)  for t in t_all ]
+stay_home     = [ float(10.0 < t)  for t in t_all ]
+essential     = [ float(15.0 < t)  for t in t_all ]
 covariates     = numpy.array( [
 	[ base_line[i],  close_school[i], stay_home[i], essential[i] ]
-	for i in range(n_day)
+	for i in range(n_time)
 ] )
-#
-# t_all
-t_all = numpy.array( [ float(i) for i in range(n_day) ] )
 #
 # p_fun_class
 class p_fun_class :
@@ -80,7 +82,8 @@ class p_fun_class :
 		return p
 #
 # objective_d_fun
-def objective_d_fun(t_all, I_data) :
+# t_all, D_data, and chi_all are constants relative in the objective function
+def objective_d_fun(t_all, D_data, chi_all) :
 	#
 	# x = ( cov_mul, initial )
 	x  = numpy.ones(9)
@@ -100,11 +103,20 @@ def objective_d_fun(t_all, I_data) :
 	# compute model for data
 	aseird_all = seird_model(t_all, ap_fun, ainitial)
 	#
-	# Only have I(t) data.
-	aI_model  = aseird_all[:,2] # S=0, E=1, I=2, R=3, D=4
+	# Model for the derivative of the death data
+	aI_model   = aseird_all[:,2] # S=0, E=1, I=2, R=3, D=4
+	aDot_model = chi_all * aI_model
 	#
-	# compute Gaussian loss function
-	aresidual = I_data - aI_model
+	# Differences of the death data
+	Ddiff_data = numpy.diff(D_data)
+	#
+	# model for the data difference
+	tdiff        = numpy.diff(t_all)
+	aDdiff_model = tdiff * (aDot_model[0:-1] + aDot_model[1:]) / 2.0
+	#
+	# compute Gaussian loss function using the average of the model
+	# value for the interval corresponding to each difference
+	aresidual = (Ddiff_data - aDdiff_model) / Ddiff_data
 	aloss     = numpy.sum( aresidual * aresidual)
 	aloss     = numpy.array( [ aloss ] )
 	#
@@ -149,8 +161,12 @@ def covid_19_xam() :
 		pyplot.show()
 	#
 	# objective_ad
-	I_data = seird_all_true[:,2]
-	objective_ad = objective_d_fun(t_all, I_data)
+	D_data       = seird_all_true[:,4]
+	chi_all      = numpy.empty(t_all.size, dtype=float)
+	for i in range(t_all.size) :
+		p          = p_fun_true( t_all[i] )
+		chi_all[i] = p['chi']
+	objective_ad = objective_d_fun(t_all, D_data, chi_all)
 	#
 	# objective: fun, grad, hess
 	optimize_fun = optimize_fun_class(objective_ad)
@@ -195,7 +211,7 @@ def covid_19_xam() :
 	x_hat   = result.x
 	for i in range(7) :
 		rel_error = x_hat[i] / x_true[i] - 1.0
-		ok        = ok and abs(rel_error) < 1e-3
+		ok        = ok and abs(rel_error) < 1e-2
 	#
 	return ok
 # END_PYTHON
