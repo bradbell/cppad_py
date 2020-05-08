@@ -23,7 +23,7 @@ A:link { color : blue }
 A:visited { color : purple }
 A:active { color : purple }
 </style>
-<script type='text/javascript' language='JavaScript' src='_numeric_seirs_model_xam.py_htm.js'>
+<script type='text/javascript' language='JavaScript' src='_numeric_seird_model_xam.py_htm.js'>
 </script>
 </head>
 <body>
@@ -31,7 +31,7 @@ A:active { color : purple }
 <td>
 <a href="https://bradbell.github.io/cppad_py" target="_top"><img border="0" src="_image.gif"></a>
 </td>
-<td><a href="numeric_seirs_model.htm" target="_top">Prev</a>
+<td><a href="numeric_seird_model.htm" target="_top">Prev</a>
 </td><td><a href="numeric_covid_19_xam.py.htm" target="_top">Next</a>
 </td><td>
 <select onchange='choose_across0(this)'>
@@ -48,8 +48,8 @@ A:active { color : purple }
 <option>Up-&gt;</option>
 <option>cppad_py</option>
 <option>numeric_xam</option>
-<option>numeric_seirs_model</option>
-<option>numeric_seirs_model_xam.py</option>
+<option>numeric_seird_model</option>
+<option>numeric_seird_model_xam.py</option>
 </select>
 </td>
 <td>
@@ -59,18 +59,18 @@ A:active { color : purple }
 <script type='text/javascript' language='JavaScript' src='_childtable_numeric_xam_htm.js'></script>
 </td>
 <td>
-<script type='text/javascript' language='JavaScript' src='_childtable_numeric_seirs_model_htm.js'></script>
+<script type='text/javascript' language='JavaScript' src='_childtable_numeric_seird_model_htm.js'></script>
 </td>
-<td>numeric_seirs_model_xam.py</td>
+<td>numeric_seird_model_xam.py</td>
 </tr></table><br>
 @(@\newcommand{\B}[1]{ {\bf #1} }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Example Using seris_model</big></big></b></center>
 
 <br><pre><tt><b><font color="#000080">import</font></b> numpy
-<b><font color="#000080">import</font></b> seirs_model
+<b><font color="#000080">from</font></b> seird_model <b><font color="#000080">import</font></b> seird_model
 <b><font color="#000080">from</font></b> pdb <b><font color="#000080">import</font></b> set_trace
 <i><font color="#9A1900">#</font></i>
-<b><font color="#0000FF">def</font></b> <b><font color="#000000">seirs_model_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
+<b><font color="#0000FF">def</font></b> <b><font color="#000000">seird_model_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
      ok    <font color="#990000">=</font> True
      <i><font color="#9A1900">#</font></i>
      sigma <font color="#990000">=</font> <font color="#993399">1.0</font> <font color="#990000">/</font> <font color="#993399">5.0</font>     <i><font color="#9A1900"># average 5 days between exposure and infectious</font></i>
@@ -110,42 +110,48 @@ A:active { color : purple }
      E_start  <font color="#990000">=</font> <font color="#993399">0.02</font>
      R_start  <font color="#990000">=</font> <font color="#993399">0.02</font>
      S_start  <font color="#990000">=</font> <font color="#993399">1.0</font> <font color="#990000">-</font> I_start <font color="#990000">-</font> E_start <font color="#990000">-</font> R_start
-     initial  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font> S_start<font color="#990000">,</font> E_start<font color="#990000">,</font> I_start<font color="#990000">,</font> R_start <font color="#990000">]</font> <font color="#990000">)</font>
+     D_start  <font color="#990000">=</font> <font color="#993399">0.0</font>
+     initial  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font> S_start<font color="#990000">,</font> E_start<font color="#990000">,</font> I_start<font color="#990000">,</font> R_start<font color="#990000">,</font> D_start <font color="#990000">]</font> <font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># solve the ODE</font></i>
-     seir_all <font color="#990000">=</font> seirs_model<font color="#990000">.</font><b><font color="#000000">seirs_model</font></b><font color="#990000">(</font>t_all<font color="#990000">,</font> p_fun<font color="#990000">,</font> initial<font color="#990000">)</font>
+     seird_all <font color="#990000">=</font> <b><font color="#000000">seird_model</font></b><font color="#990000">(</font>t_all<font color="#990000">,</font> p_fun<font color="#990000">,</font> initial<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># check solution using midpoint values</font></i>
      <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> <b><font color="#000000">len</font></b><font color="#990000">(</font>t_all<font color="#990000">)</font> <font color="#990000">-</font> <font color="#993399">1</font> <font color="#990000">)</font> <font color="#990000">:</font>
           <i><font color="#9A1900"># midpoint values</font></i>
           t     <font color="#990000">=</font> <font color="#990000">(</font>t_all<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">+</font> t_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
-          S     <font color="#990000">=</font> <font color="#990000">(</font>seir_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">+</font> seir_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">0</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
-          E     <font color="#990000">=</font> <font color="#990000">(</font>seir_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">+</font> seir_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">1</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
-          I     <font color="#990000">=</font> <font color="#990000">(</font>seir_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">+</font> seir_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">2</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
-          R     <font color="#990000">=</font> <font color="#990000">(</font>seir_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">+</font> seir_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">3</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
+          S     <font color="#990000">=</font> <font color="#990000">(</font>seird_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">+</font> seird_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">0</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
+          E     <font color="#990000">=</font> <font color="#990000">(</font>seird_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">+</font> seird_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">1</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
+          I     <font color="#990000">=</font> <font color="#990000">(</font>seird_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">+</font> seird_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">2</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
+          R     <font color="#990000">=</font> <font color="#990000">(</font>seird_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">+</font> seird_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">3</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
+          D     <font color="#990000">=</font> <font color="#990000">(</font>seird_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">4</font><font color="#990000">]</font> <font color="#990000">+</font> seird_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">4</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
           N     <font color="#990000">=</font> S <font color="#990000">+</font> E <font color="#990000">+</font> I <font color="#990000">+</font> R
+          <i><font color="#9A1900">#</font></i>
+          <i><font color="#9A1900"># differential equation</font></i>
           p     <font color="#990000">=</font> <b><font color="#000000">p_fun</font></b><font color="#990000">(</font>t<font color="#990000">)</font>
           dot       <font color="#990000">=</font> <b><font color="#000000">dict</font></b><font color="#990000">()</font>
           dot<font color="#990000">[</font><font color="#FF0000">'S'</font><font color="#990000">]</font>  <font color="#990000">=</font> <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'beta'</font><font color="#990000">]</font> <font color="#990000">*</font> S <font color="#990000">*</font> I <font color="#990000">/</font> N <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'xi'</font><font color="#990000">]</font> <font color="#990000">*</font> R
           dot<font color="#990000">[</font><font color="#FF0000">'E'</font><font color="#990000">]</font>  <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'beta'</font><font color="#990000">]</font> <font color="#990000">*</font> S <font color="#990000">*</font> I <font color="#990000">/</font> N <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'sigma'</font><font color="#990000">]</font> <font color="#990000">*</font> E
           dot<font color="#990000">[</font><font color="#FF0000">'I'</font><font color="#990000">]</font>  <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'sigma'</font><font color="#990000">]</font> <font color="#990000">*</font> E        <font color="#990000">-</font> <font color="#990000">(</font>p<font color="#990000">[</font><font color="#FF0000">'gamma'</font><font color="#990000">]</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'chi'</font><font color="#990000">])</font> <font color="#990000">*</font> I
           dot<font color="#990000">[</font><font color="#FF0000">'R'</font><font color="#990000">]</font>  <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'gamma'</font><font color="#990000">]</font> <font color="#990000">*</font> I        <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'xi'</font><font color="#990000">]</font> <font color="#990000">*</font> R
+          dot<font color="#990000">[</font><font color="#FF0000">'D'</font><font color="#990000">]</font>  <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'chi'</font><font color="#990000">]</font> <font color="#990000">*</font> I
           <i><font color="#9A1900">#</font></i>
           <i><font color="#9A1900"># difference over interval</font></i>
           delta         <font color="#990000">=</font> <b><font color="#000000">dict</font></b><font color="#990000">()</font>
           delta<font color="#990000">[</font><font color="#FF0000">'t'</font><font color="#990000">]</font>    <font color="#990000">=</font> t_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">]</font>      <font color="#990000">-</font> t_all<font color="#990000">[</font>i<font color="#990000">]</font>
-          delta<font color="#990000">[</font><font color="#FF0000">'S'</font><font color="#990000">]</font>    <font color="#990000">=</font> seir_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">-</font> seir_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">0</font><font color="#990000">]</font>
-          delta<font color="#990000">[</font><font color="#FF0000">'E'</font><font color="#990000">]</font>    <font color="#990000">=</font> seir_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">-</font> seir_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">1</font><font color="#990000">]</font>
-          delta<font color="#990000">[</font><font color="#FF0000">'I'</font><font color="#990000">]</font>    <font color="#990000">=</font> seir_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">-</font> seir_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">2</font><font color="#990000">]</font>
-          delta<font color="#990000">[</font><font color="#FF0000">'R'</font><font color="#990000">]</font>    <font color="#990000">=</font> seir_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">-</font> seir_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">3</font><font color="#990000">]</font>
+          delta<font color="#990000">[</font><font color="#FF0000">'S'</font><font color="#990000">]</font>    <font color="#990000">=</font> seird_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">-</font> seird_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">0</font><font color="#990000">]</font>
+          delta<font color="#990000">[</font><font color="#FF0000">'E'</font><font color="#990000">]</font>    <font color="#990000">=</font> seird_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">-</font> seird_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">1</font><font color="#990000">]</font>
+          delta<font color="#990000">[</font><font color="#FF0000">'I'</font><font color="#990000">]</font>    <font color="#990000">=</font> seird_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">-</font> seird_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">2</font><font color="#990000">]</font>
+          delta<font color="#990000">[</font><font color="#FF0000">'R'</font><font color="#990000">]</font>    <font color="#990000">=</font> seird_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">-</font> seird_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">3</font><font color="#990000">]</font>
+          delta<font color="#990000">[</font><font color="#FF0000">'D'</font><font color="#990000">]</font>    <font color="#990000">=</font> seird_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">4</font><font color="#990000">]</font> <font color="#990000">-</font> seird_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">4</font><font color="#990000">]</font>
           <i><font color="#9A1900">#</font></i>
-          <b><font color="#0000FF">for</font></b> key <b><font color="#0000FF">in</font></b> <font color="#990000">[</font> <font color="#FF0000">'S'</font><font color="#990000">,</font> <font color="#FF0000">'E'</font><font color="#990000">,</font> <font color="#FF0000">'I'</font><font color="#990000">,</font> <font color="#FF0000">'R'</font> <font color="#990000">]</font> <font color="#990000">:</font>
+          <b><font color="#0000FF">for</font></b> key <b><font color="#0000FF">in</font></b> <font color="#990000">[</font> <font color="#FF0000">'S'</font><font color="#990000">,</font> <font color="#FF0000">'E'</font><font color="#990000">,</font> <font color="#FF0000">'I'</font><font color="#990000">,</font> <font color="#FF0000">'R'</font><font color="#990000">,</font> <font color="#FF0000">'D'</font> <font color="#990000">]</font> <font color="#990000">:</font>
                check     <font color="#990000">=</font> delta<font color="#990000">[</font>key<font color="#990000">]</font> <font color="#990000">/</font> delta<font color="#990000">[</font><font color="#FF0000">'t'</font><font color="#990000">]</font>
                rel_error <font color="#990000">=</font> dot<font color="#990000">[</font>key<font color="#990000">]</font> <font color="#990000">/</font> check <font color="#990000">-</font> <font color="#993399">1.0</font>
                ok        <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> <b><font color="#000000">abs</font></b><font color="#990000">(</font>rel_error<font color="#990000">)</font> <font color="#990000">&lt;</font> <font color="#993399">1e-2</font>
      <b><font color="#0000FF">return</font></b> ok</tt></pre>
 
-<hr>Input File: example/python/numeric/seirs_model_xam.py
+<hr>Input File: example/python/numeric/seird_model_xam.py
 
 </body>
 </html>

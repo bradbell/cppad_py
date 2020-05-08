@@ -276,7 +276,7 @@ changes&#160;<a href="whats_new_2018.htm" target="_top">Cppad&nbsp;Py&nbsp;Chang
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="whats_new_2020.htm" target="_top">CppAD&nbsp;Py&nbsp;Changes&nbsp;During&nbsp;2020</a><br>
 class&#160;<a href="numeric_optimize_fun_class.htm" target="_top">A&nbsp;Helper&nbsp;Class&nbsp;That&nbsp;Defines&nbsp;Functions&nbsp;Needed&nbsp;for&nbsp;Optimization</a><br>
 code&#160;<a href="numeric_covid_19_xam.py.htm#Source Code" target="_top">Example&nbsp;Fitting&nbsp;an&nbsp;SEIRS&nbsp;Model&nbsp;for&nbsp;Covid-19:&#160;Source&nbsp;Code</a><br>
-&#160;&#160;&#160;&#160;&#160;<a href="numeric_seirs_model.htm#Source Code" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model:&#160;Source&nbsp;Code</a><br>
+&#160;&#160;&#160;&#160;&#160;<a href="numeric_seird_model.htm#Source Code" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model:&#160;Source&nbsp;Code</a><br>
 &#160;&#160;&#160;&#160;&#160;<a href="numeric_optimize_fun_xam.py.htm#Source Code" target="_top">Example&nbsp;Using&nbsp;optimize_fun_class&nbsp;with&nbsp;Scipy&nbsp;Optimization:&#160;Source&nbsp;Code</a><br>
 &#160;&#160;&#160;&#160;&#160;<a href="numeric_optimize_fun_class.htm#Source Code" target="_top">A&nbsp;Helper&nbsp;Class&nbsp;That&nbsp;Defines&nbsp;Functions&nbsp;Needed&nbsp;for&nbsp;Optimization:&#160;Source&nbsp;Code</a><br>
 &#160;&#160;&#160;&#160;&#160;<a href="numeric_runge4_multi_step_xam.py.htm#Source Code" target="_top">Example&nbsp;Computing&nbsp;Derivative&nbsp;A&nbsp;Runge-Kutta&nbsp;Ode&nbsp;Solution:&#160;Source&nbsp;Code</a><br>
@@ -361,6 +361,7 @@ d<b>_</b>fun&#160;<a href="cpp_fun_ctor.htm#Syntax.d_fun" target="_top">Stop&nbs
 &#160;&#160;&#160;&#160;&#160;&#160;<a href="py_fun_ctor.htm#Syntax.d_fun" target="_top">Stop&nbsp;Current&nbsp;Recording&nbsp;and&nbsp;Store&nbsp;Function&nbsp;Object:&#160;Syntax.d_fun</a><br>
 d<b>_</b>fun<b>:</b>&#160;<a href="fun_optimize_xam.cpp.htm" target="_top">C++:&nbsp;Optimize&nbsp;an&nbsp;d_fun:&nbsp;Example&nbsp;and&nbsp;Test</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="fun_optimize_xam.py.htm" target="_top">Python:&nbsp;Optimize&nbsp;an&nbsp;d_fun:&nbsp;Example&nbsp;and&nbsp;Test</a><br>
+death&#160;<a href="numeric_seird_model.htm" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model</a><br>
 declare&#160;<a href="cpp_independent.htm" target="_top">Declare&nbsp;Independent&nbsp;Variables&nbsp;and&nbsp;Start&nbsp;Recording</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="py_independent.htm" target="_top">Declare&nbsp;Independent&nbsp;Variables&nbsp;and&nbsp;Start&nbsp;Recording</a><br>
 defines&#160;<a href="numeric_optimize_fun_class.htm" target="_top">A&nbsp;Helper&nbsp;Class&nbsp;That&nbsp;Defines&nbsp;Functions&nbsp;Needed&nbsp;for&nbsp;Optimization</a><br>
@@ -505,8 +506,8 @@ example&#160;<a href="more_cpp.htm#Example" target="_top">Steps&nbsp;To&nbsp;Add
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="fun_dynamic_xam.py.htm" target="_top">Python:&nbsp;Using&nbsp;Dynamic&nbsp;Parameters:&nbsp;Example&nbsp;and&nbsp;Test</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="py_independent.htm#Example" target="_top">Declare&nbsp;Independent&nbsp;Variables&nbsp;and&nbsp;Start&nbsp;Recording:&#160;Example</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm" target="_top">Example&nbsp;Fitting&nbsp;an&nbsp;SEIRS&nbsp;Model&nbsp;for&nbsp;Covid-19</a><br>
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_seirs_model_xam.py.htm" target="_top">Example&nbsp;Using&nbsp;seris_model</a><br>
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_seirs_model.htm#Example" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model:&#160;Example</a><br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_seird_model_xam.py.htm" target="_top">Example&nbsp;Using&nbsp;seris_model</a><br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_seird_model.htm#Example" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model:&#160;Example</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_optimize_fun_xam.py.htm" target="_top">Example&nbsp;Using&nbsp;optimize_fun_class&nbsp;with&nbsp;Scipy&nbsp;Optimization</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_optimize_fun_class.htm#Example" target="_top">A&nbsp;Helper&nbsp;Class&nbsp;That&nbsp;Defines&nbsp;Functions&nbsp;Needed&nbsp;for&nbsp;Optimization:&#160;Example</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_runge4_multi_step_xam.py.htm" target="_top">Example&nbsp;Computing&nbsp;Derivative&nbsp;A&nbsp;Runge-Kutta&nbsp;Ode&nbsp;Solution</a><br>
@@ -522,7 +523,7 @@ exception&#160;<a href="error_message_xam.py.htm" target="_top">Python:&nbsp;Cpp
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="error_message_xam.cpp.htm" target="_top">C++:&nbsp;Cppad&nbsp;Py&nbsp;Exception&nbsp;Handling:&nbsp;Example&nbsp;and&nbsp;Test</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="error_message.htm#In Try Block.exception" target="_top">Exception&nbsp;Handling:&#160;In&nbsp;Try&nbsp;Block.exception</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="error_message.htm" target="_top">Exception&nbsp;Handling</a><br>
-exposed&#160;<a href="numeric_seirs_model.htm" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model</a><br>
+exposed&#160;<a href="numeric_seird_model.htm" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model</a><br>
 external&#160;<a href="setup.py.htm#External Requirements" target="_top">Configure&nbsp;and&nbsp;Build&nbsp;the&nbsp;cppad_py&nbsp;Python&nbsp;Module:&#160;External&nbsp;Requirements</a><br>
 extra<b>_</b>cxx<b>_</b>flags&#160;<a href="get_cppad.sh.htm#Settings.extra_cxx_flags" target="_top">Get&nbsp;Cppad:&#160;Settings.extra_cxx_flags</a><br>
 
@@ -637,8 +638,8 @@ independent&#160;<a href="more_cpp.htm#Implementation.independent" target="_top"
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="more_py.htm#Implementation.independent" target="_top">Steps&nbsp;To&nbsp;Add&nbsp;More&nbsp;Python&nbsp;Functions:&#160;Implementation.independent</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="more_py.htm#Documentation.independent" target="_top">Steps&nbsp;To&nbsp;Add&nbsp;More&nbsp;Python&nbsp;Functions:&#160;Documentation.independent</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="py_independent.htm" target="_top">Declare&nbsp;Independent&nbsp;Variables&nbsp;and&nbsp;Start&nbsp;Recording</a><br>
-infectious&#160;<a href="numeric_seirs_model.htm" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model</a><br>
-initial&#160;<a href="numeric_seirs_model.htm#initial" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model:&#160;initial</a><br>
+infectious&#160;<a href="numeric_seird_model.htm" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model</a><br>
+initial&#160;<a href="numeric_seird_model.htm#initial" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model:&#160;initial</a><br>
 install&#160;<a href="setup.py.htm#Install" target="_top">Configure&nbsp;and&nbsp;Build&nbsp;the&nbsp;cppad_py&nbsp;Python&nbsp;Module:&#160;Install</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="setup.py.htm#Install Errors" target="_top">Configure&nbsp;and&nbsp;Build&nbsp;the&nbsp;cppad_py&nbsp;Python&nbsp;Module:&#160;Install&nbsp;Errors</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="setup.py.htm#Install Using Pip" target="_top">Configure&nbsp;and&nbsp;Build&nbsp;the&nbsp;cppad_py&nbsp;Python&nbsp;Module:&#160;Install&nbsp;Using&nbsp;Pip</a><br>
@@ -708,7 +709,7 @@ mode&#160;<a href="fun_reverse_xam.cpp.htm" target="_top">C++:&nbsp;Reverse&nbsp
 &#160;&#160;&#160;&#160;&#160;<a href="fun_forward_xam.py.htm" target="_top">Python:&nbsp;Forward&nbsp;Mode&nbsp;AD:&nbsp;Example&nbsp;and&nbsp;Test</a><br>
 &#160;&#160;&#160;&#160;&#160;<a href="py_fun_forward.htm" target="_top">Forward&nbsp;Mode&nbsp;AD</a><br>
 model&#160;<a href="numeric_covid_19_xam.py.htm" target="_top">Example&nbsp;Fitting&nbsp;an&nbsp;SEIRS&nbsp;Model&nbsp;for&nbsp;Covid-19</a><br>
-&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_seirs_model.htm" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model</a><br>
+&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_seird_model.htm" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model</a><br>
 module&#160;<a href="setup.py.htm" target="_top">Configure&nbsp;and&nbsp;Build&nbsp;the&nbsp;cppad_py&nbsp;Python&nbsp;Module</a><br>
 more&#160;<a href="more_cpp.htm" target="_top">Steps&nbsp;To&nbsp;Add&nbsp;More&nbsp;C++&nbsp;Functions</a><br>
 &#160;&#160;&#160;&#160;&#160;<a href="more_py.htm" target="_top">Steps&nbsp;To&nbsp;Add&nbsp;More&nbsp;Python&nbsp;Functions</a><br>
@@ -766,7 +767,7 @@ objective<b>_</b>fun&#160;<a href="numeric_optimize_fun_class.htm#optimize_fun.o
 objective<b>_</b>grad&#160;<a href="numeric_optimize_fun_class.htm#optimize_fun.objective_grad" target="_top">A&nbsp;Helper&nbsp;Class&nbsp;That&nbsp;Defines&nbsp;Functions&nbsp;Needed&nbsp;for&nbsp;Optimization:&#160;optimize_fun.objective_grad</a><br>
 objective<b>_</b>hess&#160;<a href="numeric_optimize_fun_class.htm#optimize_fun.objective_hess" target="_top">A&nbsp;Helper&nbsp;Class&nbsp;That&nbsp;Defines&nbsp;Functions&nbsp;Needed&nbsp;for&nbsp;Optimization:&#160;optimize_fun.objective_hess</a><br>
 objects<b>:</b>&#160;<a href="a_fun_xam.py.htm" target="_top">Python:&nbsp;Purpose&nbsp;of&nbsp;a_fun&nbsp;Objects:&nbsp;Example&nbsp;and&nbsp;Test</a><br>
-ode&#160;<a href="numeric_seirs_model.htm#ODE" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model:&#160;ODE</a><br>
+ode&#160;<a href="numeric_seird_model.htm#ODE" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model:&#160;ODE</a><br>
 &#160;&#160;&#160;&#160;<a href="numeric_runge4_multi_step_xam.py.htm#ODE" target="_top">Example&nbsp;Computing&nbsp;Derivative&nbsp;A&nbsp;Runge-Kutta&nbsp;Ode&nbsp;Solution:&#160;ODE</a><br>
 &#160;&#160;&#160;&#160;<a href="numeric_runge4_multi_step_xam.py.htm" target="_top">Example&nbsp;Computing&nbsp;Derivative&nbsp;A&nbsp;Runge-Kutta&nbsp;Ode&nbsp;Solution</a><br>
 &#160;&#160;&#160;&#160;<a href="numeric_runge4_one_step_xam.py.htm#ODE" target="_top">Example&nbsp;Computing&nbsp;Derivative&nbsp;A&nbsp;Runge-Kutta&nbsp;Ode&nbsp;Solution:&#160;ODE</a><br>
@@ -803,7 +804,7 @@ order&#160;<a href="numeric_runge4_multi_step.htm" target="_top">Multiple&nbsp;F
 <br>
 p&#160;<a href="cpp_fun_forward.htm#p" target="_top">Forward&nbsp;Mode&nbsp;AD:&#160;p</a><br>
 &#160;&#160;<a href="py_fun_forward.htm#p" target="_top">Forward&nbsp;Mode&nbsp;AD:&#160;p</a><br>
-p<b>_</b>fun&#160;<a href="numeric_seirs_model.htm#p_fun" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model:&#160;p_fun</a><br>
+p<b>_</b>fun&#160;<a href="numeric_seird_model.htm#p_fun" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model:&#160;p_fun</a><br>
 parameter&#160;<a href="a_double_property.htm#parameter" target="_top">Properties&nbsp;of&nbsp;an&nbsp;a_double&nbsp;Object:&#160;parameter</a><br>
 parameters&#160;<a href="cpp_fun_new_dynamic.htm" target="_top">Change&nbsp;The&nbsp;Dynamic&nbsp;Parameters</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="py_fun_new_dynamic.htm" target="_top">New&nbsp;Dynamic&nbsp;Parameters</a><br>
@@ -947,7 +948,7 @@ recording&#160;<a href="fun_abort_xam.cpp.htm" target="_top">C++:&nbsp;Abort&nbs
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="fun_abort_xam.py.htm" target="_top">Python:&nbsp;Abort&nbsp;Recording&nbsp;a_double&nbsp;Operations:&nbsp;Example&nbsp;and&nbsp;Test</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="py_abort_recording.htm" target="_top">Abort&nbsp;Recording</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="py_independent.htm" target="_top">Declare&nbsp;Independent&nbsp;Variables&nbsp;and&nbsp;Start&nbsp;Recording</a><br>
-recovered&#160;<a href="numeric_seirs_model.htm" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model</a><br>
+recovered&#160;<a href="numeric_seird_model.htm" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model</a><br>
 reference&#160;<a href="numeric_optimize_fun_xam.py.htm#Reference" target="_top">Example&nbsp;Using&nbsp;optimize_fun_class&nbsp;with&nbsp;Scipy&nbsp;Optimization:&#160;Reference</a><br>
 repository&#160;<a href="cppad_py.htm#Git Repository" target="_top">cppad_py-2020.5.8:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;C++&nbsp;Object&nbsp;Library&nbsp;and&nbsp;Python&nbsp;Interface&nbsp;to&nbsp;CppAD:&#160;Git&nbsp;Repository</a><br>
@@ -989,14 +990,14 @@ runge<b>-</b>kutta&#160;<a href="numeric_runge4_multi_step_xam.py.htm" target="_
 safe&#160;<a href="error_message.htm#Not Thread Safe" target="_top">Exception&nbsp;Handling:&#160;Not&nbsp;Thread&nbsp;Safe</a><br>
 scalars&#160;<a href="a_double.htm" target="_top">Cppad&nbsp;Py&nbsp;AD&nbsp;Scalars</a><br>
 scipy&#160;<a href="numeric_optimize_fun_xam.py.htm" target="_top">Example&nbsp;Using&nbsp;optimize_fun_class&nbsp;with&nbsp;Scipy&nbsp;Optimization</a><br>
-seir<b>_</b>all&#160;<a href="numeric_seirs_model.htm#seir_all" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model:&#160;seir_all</a><br>
+seird<b>_</b>all&#160;<a href="numeric_seird_model.htm#seird_all" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model:&#160;seird_all</a><br>
 seirs&#160;<a href="numeric_covid_19_xam.py.htm" target="_top">Example&nbsp;Fitting&nbsp;an&nbsp;SEIRS&nbsp;Model&nbsp;for&nbsp;Covid-19</a><br>
 select<b>_</b>domain&#160;<a href="cpp_sparsity.htm#select_domain" target="_top">Hessian&nbsp;Sparsity&nbsp;Patterns:&#160;select_domain</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="py_hes_sparsity.htm#select_domain" target="_top">Hessian&nbsp;Sparsity&nbsp;Patterns:&#160;select_domain</a><br>
 select<b>_</b>range&#160;<a href="cpp_sparsity.htm#select_range" target="_top">Hessian&nbsp;Sparsity&nbsp;Patterns:&#160;select_range</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="py_hes_sparsity.htm#select_range" target="_top">Hessian&nbsp;Sparsity&nbsp;Patterns:&#160;select_range</a><br>
-seris<b>_</b>model&#160;<a href="numeric_seirs_model_xam.py.htm" target="_top">Example&nbsp;Using&nbsp;seris_model</a><br>
-set<b>_</b>t<b>_</b>all&#160;<a href="numeric_seirs_model.htm#set_t_all" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model:&#160;set_t_all</a><br>
+seris<b>_</b>model&#160;<a href="numeric_seird_model_xam.py.htm" target="_top">Example&nbsp;Using&nbsp;seris_model</a><br>
+set<b>_</b>t<b>_</b>all&#160;<a href="numeric_seird_model.htm#set_t_all" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model:&#160;set_t_all</a><br>
 setting&#160;<a href="vector_set_get_xam.py.htm" target="_top">Python:&nbsp;Setting&nbsp;and&nbsp;Getting&nbsp;Vector&nbsp;Elements:&nbsp;Example&nbsp;and&nbsp;Test</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="vector_set_get_xam.cpp.htm" target="_top">C++:&nbsp;Setting&nbsp;and&nbsp;Getting&nbsp;Vector&nbsp;Elements:&nbsp;Example&nbsp;and&nbsp;Test</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="vector_set_get.htm" target="_top">Setting&nbsp;and&nbsp;Getting&nbsp;Vector&nbsp;Elements</a><br>
@@ -1027,7 +1028,7 @@ solution&#160;<a href="numeric_runge4_multi_step_xam.py.htm#Derivative of Soluti
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_runge4_one_step_xam.py.htm" target="_top">Example&nbsp;Computing&nbsp;Derivative&nbsp;A&nbsp;Runge-Kutta&nbsp;Ode&nbsp;Solution</a><br>
 solved&#160;<a href="install_error.htm#Solved" target="_top">Error&nbsp;Messages&nbsp;During&nbsp;Installation:&#160;Solved</a><br>
 source&#160;<a href="numeric_covid_19_xam.py.htm#Source Code" target="_top">Example&nbsp;Fitting&nbsp;an&nbsp;SEIRS&nbsp;Model&nbsp;for&nbsp;Covid-19:&#160;Source&nbsp;Code</a><br>
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_seirs_model.htm#Source Code" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model:&#160;Source&nbsp;Code</a><br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_seird_model.htm#Source Code" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model:&#160;Source&nbsp;Code</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_optimize_fun_xam.py.htm#Source Code" target="_top">Example&nbsp;Using&nbsp;optimize_fun_class&nbsp;with&nbsp;Scipy&nbsp;Optimization:&#160;Source&nbsp;Code</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_optimize_fun_class.htm#Source Code" target="_top">A&nbsp;Helper&nbsp;Class&nbsp;That&nbsp;Defines&nbsp;Functions&nbsp;Needed&nbsp;for&nbsp;Optimization:&#160;Source&nbsp;Code</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_runge4_multi_step_xam.py.htm#Source Code" target="_top">Example&nbsp;Computing&nbsp;Derivative&nbsp;A&nbsp;Runge-Kutta&nbsp;Ode&nbsp;Solution:&#160;Source&nbsp;Code</a><br>
@@ -1089,7 +1090,7 @@ subset&#160;<a href="cpp_sparse_hes.htm#subset" target="_top">Computing&nbsp;Spa
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="cpp_sparse_jac.htm#subset" target="_top">Computing&nbsp;Sparse&nbsp;Jacobians:&#160;subset</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="py_sparse_hes.htm#subset" target="_top">Computing&nbsp;Sparse&nbsp;Hessians:&#160;subset</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="py_sparse_jac.htm#subset" target="_top">Computing&nbsp;Sparse&nbsp;Jacobians:&#160;subset</a><br>
-susceptible&#160;<a href="numeric_seirs_model.htm" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model</a><br>
+susceptible&#160;<a href="numeric_seird_model.htm" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model</a><br>
 swig&#160;<a href="install_error.htm#Solved.swig" target="_top">Error&nbsp;Messages&nbsp;During&nbsp;Installation:&#160;Solved.swig</a><br>
 syntax&#160;<a href="error_message.htm#Syntax" target="_top">Exception&nbsp;Handling:&#160;Syntax</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="vec2a_double.htm#Syntax" target="_top">Convert&nbsp;a&nbsp;CppAD::AD&lt;double&gt;&nbsp;Vector&nbsp;to&nbsp;an&nbsp;a_double&nbsp;Vector:&#160;Syntax</a><br>
@@ -1142,7 +1143,7 @@ syntax&#160;<a href="error_message.htm#Syntax" target="_top">Exception&nbsp;Hand
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="py_fun_ctor.htm#Syntax" target="_top">Stop&nbsp;Current&nbsp;Recording&nbsp;and&nbsp;Store&nbsp;Function&nbsp;Object:&#160;Syntax</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="py_abort_recording.htm#Syntax" target="_top">Abort&nbsp;Recording:&#160;Syntax</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="py_independent.htm#Syntax" target="_top">Declare&nbsp;Independent&nbsp;Variables&nbsp;and&nbsp;Start&nbsp;Recording:&#160;Syntax</a><br>
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_seirs_model.htm#Syntax" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;Model:&#160;Syntax</a><br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_seird_model.htm#Syntax" target="_top">A&nbsp;Susceptible&nbsp;Exposed&nbsp;Infectious&nbsp;Recovered&nbsp;and&nbsp;Death&nbsp;Model:&#160;Syntax</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_optimize_fun_class.htm#Syntax" target="_top">A&nbsp;Helper&nbsp;Class&nbsp;That&nbsp;Defines&nbsp;Functions&nbsp;Needed&nbsp;for&nbsp;Optimization:&#160;Syntax</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_runge4_multi_step.htm#Syntax" target="_top">Multiple&nbsp;Fourth&nbsp;Order&nbsp;Runge-Kutta&nbsp;ODE&nbsp;Steps:&#160;Syntax</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_runge4_one_step.htm#Syntax" target="_top">One&nbsp;Fourth&nbsp;Order&nbsp;Runge-Kutta&nbsp;ODE&nbsp;Step:&#160;Syntax</a><br>
@@ -1253,7 +1254,7 @@ using&#160;<a href="fun_hessian_xam.cpp.htm" target="_top">C++:&nbsp;Dense&nbsp;
 &#160;&#160;&#160;&#160;&#160;&#160;<a href="fun_hessian_xam.py.htm" target="_top">Python:&nbsp;Dense&nbsp;Hessian&nbsp;Using&nbsp;AD:&nbsp;Example&nbsp;and&nbsp;Test</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;<a href="fun_jacobian_xam.py.htm" target="_top">Python:&nbsp;Dense&nbsp;Jacobian&nbsp;Using&nbsp;AD:&nbsp;Example&nbsp;and&nbsp;Test</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;<a href="fun_dynamic_xam.py.htm" target="_top">Python:&nbsp;Using&nbsp;Dynamic&nbsp;Parameters:&nbsp;Example&nbsp;and&nbsp;Test</a><br>
-&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_seirs_model_xam.py.htm" target="_top">Example&nbsp;Using&nbsp;seris_model</a><br>
+&#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_seird_model_xam.py.htm" target="_top">Example&nbsp;Using&nbsp;seris_model</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;<a href="numeric_optimize_fun_xam.py.htm" target="_top">Example&nbsp;Using&nbsp;optimize_fun_class&nbsp;with&nbsp;Scipy&nbsp;Optimization</a><br>
 &#160;&#160;&#160;&#160;&#160;&#160;<a href="setup.py.htm#Install Using Pip" target="_top">Configure&nbsp;and&nbsp;Build&nbsp;the&nbsp;cppad_py&nbsp;Python&nbsp;Module:&#160;Install&nbsp;Using&nbsp;Pip</a><br>
 utilities&#160;<a href="cpp_utility.htm" target="_top">C++&nbsp;Utilities</a><br>

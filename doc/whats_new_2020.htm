@@ -92,7 +92,8 @@ A:active { color : purple }
 <br>
 <br>
 <b><big><a name="05-08" id="05-08">05-08</a></big></b>
-<br>
+
+<ol type="1"><li>
 The <code><font color="blue">numeric_seirs_fit_xam.py</font></code> example was renamed
 <a href="numeric_covid_19_xam.py.htm" target="_top"><span style='white-space: nowrap'>numeric_covid_19_xam.py</span></a>
 .
@@ -100,6 +101,15 @@ And it was change to fit covariate multipliers that model
 the infectious rate <small>@(@
 \beta
 @)@</small>.
+</li><li>
+
+The <code><font color="blue">numeric_seirs_model</font></code> was renamed <a href="numeric_seird_model.htm" target="_top"><span style='white-space: nowrap'>numeric_seird_model</span></a>
+,
+the D compartment was added to track total deaths, and
+the data was changed from Infectious to cumulative death; i.e. D.
+</li></ol>
+
+
 
 <br>
 <br>
@@ -111,8 +121,7 @@ has been deprecated so change it to
 <code><font color="blue">scipy.special.factorial</font></code>.
 </li><li>
 
-Add the <a href="numeric_seirs_model.htm" target="_top"><span style='white-space: nowrap'>numeric_seirs_model</span></a>
- utility example
+Add the <code><font color="blue">numeric_seirs_model</font></code> utility example
 which allows rates in the ODE to change with time.
 This enabled changing the <a href="numeric_covid_19_xam.py.htm" target="_top"><span style='white-space: nowrap'>numeric_covid_19_xam.py</span></a>
 
@@ -123,7 +132,7 @@ changes with time.
 </li><li>
 
 The <code><font color="blue">numeric_seirs_class</font></code> example was removed because
-<code><font color="blue">numeric_seirs_model</font></code> replaces it with more general
+<code><font color="blue">numeric_seird_model</font></code> replaces it with more general
 capabilities.
 </li></ol>
 
@@ -143,7 +152,7 @@ Add the following utility examples:
 ,
 <code><font color="blue">numeric_seirs_class</font></code>.
 (The <code><font color="blue">numeric_seirs_class</font></code> was later replaced by
-<a href="numeric_seirs_model.htm" target="_top"><span style='white-space: nowrap'>numeric_seirs_model</span></a>
+<a href="numeric_seird_model.htm" target="_top"><span style='white-space: nowrap'>numeric_seird_model</span></a>
 .)
 </li><li>
 
