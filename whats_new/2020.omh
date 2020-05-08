@@ -23,6 +23,7 @@ $spell
 	cppad
 	scipy
 	seirs
+	seird
 	xam
 	covariate
 $$
@@ -36,10 +37,17 @@ $head Previous Years$$
 $cref whats_new_2018$$
 
 $head 05-08$$
+$list number$$
 The $code numeric_seirs_fit_xam.py$$ example was renamed
 $cref numeric_covid_19_xam.py$$.
 And it was change to fit covariate multipliers that model
 the infectious rate $latex \beta$$.
+$lnext
+The $code numeric_seirs_model$$ was renamed
+$cref numeric_seird_model$$ an the compartment D was added to
+track total deaths.
+$lend
+
 
 $head 05-07$$
 $list number$$
@@ -47,14 +55,14 @@ The function $code scipy.misc.factorial$$
 has been deprecated so change it to
 $code scipy.special.factorial$$.
 $lnext
-Add the $cref numeric_seirs_model$$ utility example
+Add the $code numeric_seirs_model$$ utility example
 which allows rates in the ODE to change with time.
 This enabled changing the $cref numeric_covid_19_xam.py$$
 example to estimate a $latex \beta$$ coefficient that
 changes with time.
 $lnext
 The $code numeric_seirs_class$$ example was removed because
-$code numeric_seirs_model$$ replaces it with more general
+$code numeric_seird_model$$ replaces it with more general
 capabilities.
 $lend
 
@@ -67,7 +75,7 @@ $cref numeric_runge4_one_step$$,
 $cref numeric_runge4_multi_step$$,
 $code numeric_seirs_class$$.
 (The $code numeric_seirs_class$$ was later replaced by
-$cref numeric_seirs_model$$.)
+$cref numeric_seird_model$$.)
 $lnext
 Add mention of using $code DYLD_LIBRARY_PATH$$ in the
 $cref/cppad library missing/install_error/CppAD Library Missing/$$

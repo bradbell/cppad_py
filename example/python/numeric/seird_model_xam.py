@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin numeric_seirs_model_xam.py$$ $newlinech #$$
+# $begin numeric_seird_model_xam.py$$ $newlinech #$$
 # $spell
 #	seris
 # $$
@@ -19,10 +19,10 @@
 # $end
 # BEGIN_PYTHON
 import numpy
-import seirs_model
+from seird_model import seird_model
 from pdb import set_trace
 #
-def seirs_model_xam() :
+def seird_model_xam() :
 	ok    = True
 	#
 	sigma = 1.0 / 5.0     # average 5 days between exposure and infectious
@@ -62,36 +62,42 @@ def seirs_model_xam() :
 	E_start  = 0.02
 	R_start  = 0.02
 	S_start  = 1.0 - I_start - E_start - R_start
-	initial  = numpy.array( [ S_start, E_start, I_start, R_start ] )
+	D_start  = 0.0
+	initial  = numpy.array( [ S_start, E_start, I_start, R_start, D_start ] )
 	#
 	# solve the ODE
-	seir_all = seirs_model.seirs_model(t_all, p_fun, initial)
+	seird_all = seird_model(t_all, p_fun, initial)
 	#
 	# check solution using midpoint values
 	for i in range( len(t_all) - 1 ) :
 		# midpoint values
 		t     = (t_all[i] + t_all[i+1]) / 2.0
-		S     = (seir_all[i,0] + seir_all[i+1,0]) / 2.0
-		E     = (seir_all[i,1] + seir_all[i+1,1]) / 2.0
-		I     = (seir_all[i,2] + seir_all[i+1,2]) / 2.0
-		R     = (seir_all[i,3] + seir_all[i+1,3]) / 2.0
+		S     = (seird_all[i,0] + seird_all[i+1,0]) / 2.0
+		E     = (seird_all[i,1] + seird_all[i+1,1]) / 2.0
+		I     = (seird_all[i,2] + seird_all[i+1,2]) / 2.0
+		R     = (seird_all[i,3] + seird_all[i+1,3]) / 2.0
+		D     = (seird_all[i,4] + seird_all[i+1,4]) / 2.0
 		N     = S + E + I + R
+		#
+		# differential equation
 		p     = p_fun(t)
 		dot       = dict()
 		dot['S']  = - p['beta'] * S * I / N + p['xi'] * R
 		dot['E']  = + p['beta'] * S * I / N - p['sigma'] * E
 		dot['I']  = + p['sigma'] * E        - (p['gamma'] + p['chi']) * I
 		dot['R']  = + p['gamma'] * I        - p['xi'] * R
+		dot['D']  = + p['chi'] * I
 		#
 		# difference over interval
 		delta         = dict()
 		delta['t']    = t_all[i+1]      - t_all[i]
-		delta['S']    = seir_all[i+1,0] - seir_all[i,0]
-		delta['E']    = seir_all[i+1,1] - seir_all[i,1]
-		delta['I']    = seir_all[i+1,2] - seir_all[i,2]
-		delta['R']    = seir_all[i+1,3] - seir_all[i,3]
+		delta['S']    = seird_all[i+1,0] - seird_all[i,0]
+		delta['E']    = seird_all[i+1,1] - seird_all[i,1]
+		delta['I']    = seird_all[i+1,2] - seird_all[i,2]
+		delta['R']    = seird_all[i+1,3] - seird_all[i,3]
+		delta['D']    = seird_all[i+1,4] - seird_all[i,4]
 		#
-		for key in [ 'S', 'E', 'I', 'R' ] :
+		for key in [ 'S', 'E', 'I', 'R', 'D' ] :
 			check     = delta[key] / delta['t']
 			rel_error = dot[key] / check - 1.0
 			ok        = ok and abs(rel_error) < 1e-2

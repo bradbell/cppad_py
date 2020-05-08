@@ -35,7 +35,7 @@ import csv
 import cppad_py
 import runge4
 from optimize_fun_class import optimize_fun_class
-from seirs_model import seirs_model
+from seird_model import seird_model
 #
 #
 # covariates
@@ -57,6 +57,7 @@ class p_fun_class :
 	def __init__(self, beta_all) :
 		self.beta_all = beta_all
 	#
+	# There are faster ways to search for interval; e.g., cache previous index
 	def p_fun(self, t) :
 		i = 0
 		while i < len(t_all) - 1 and t_all[i + 1] < t :
@@ -81,8 +82,8 @@ class p_fun_class :
 # objective_d_fun
 def objective_d_fun(t_all, I_data) :
 	#
-	# x = ( beta[0], beta[1]. beta[2], S[0], E[0], I[0], R[0] )
-	x  = numpy.ones(8)
+	# x = ( cov_mul, initial )
+	x  = numpy.ones(9)
 	ax = cppad_py.independent(x)
 	#
 	# abeta_all
@@ -90,17 +91,17 @@ def objective_d_fun(t_all, I_data) :
 	abeta_all  = numpy.matmul(covariates, cov_mul)
 	#
 	# ainitial
-	ainitial  = ax[4:8]
+	ainitial  = ax[4:9]
 	#
 	# p_fun
 	ap_fun_obj = p_fun_class(abeta_all)
 	ap_fun    = ap_fun_obj.p_fun
 	#
 	# compute model for data
-	aseir_all = seirs_model(t_all, ap_fun, ainitial)
+	aseird_all = seird_model(t_all, ap_fun, ainitial)
 	#
 	# Only have I(t) data.
-	aI_model  = aseir_all[:,2] # S=0, E=1, I=2, R=3
+	aI_model  = aseird_all[:,2] # S=0, E=1, I=2, R=3, D=4
 	#
 	# compute Gaussian loss function
 	aresidual = I_data - aI_model
@@ -130,21 +131,25 @@ def covid_19_xam() :
 	E_start      = 0.02
 	R_start      = 0.02
 	S_start      = 1.0 - E_start - I_start - R_start
-	initial_true = numpy.array( [ S_start, E_start, I_start, R_start ] )
+	D_start      = 0.0
+	initial_true = numpy.array(
+		[ S_start, E_start, I_start, R_start, D_start ]
+	)
 	#
 	# noiseless simulated data
-	seir_all_true = seirs_model(t_all, p_fun_true, initial_true)
+	seird_all_true = seird_model(t_all, p_fun_true, initial_true)
 	if plot_truth :
 		ax = pyplot.subplot(111)
-		ax.plot(t_all, seir_all_true[:,0], 'b-', label='S')
-		ax.plot(t_all, seir_all_true[:,1], 'g-', label='E')
-		ax.plot(t_all, seir_all_true[:,2], 'r-', label='I')
-		ax.plot(t_all, seir_all_true[:,3], 'k-', label='R')
+		ax.plot(t_all, seird_all_true[:,0], 'b-', label='S')
+		ax.plot(t_all, seird_all_true[:,1], 'g-', label='E')
+		ax.plot(t_all, seird_all_true[:,2], 'r-', label='I')
+		ax.plot(t_all, seird_all_true[:,3], 'k-', label='R')
+		ax.plot(t_all, seird_all_true[:,4], 'y-', label='D')
 		ax.legend()
 		pyplot.show()
 	#
 	# objective_ad
-	I_data = seir_all_true[:,2]
+	I_data = seird_all_true[:,2]
 	objective_ad = objective_d_fun(t_all, I_data)
 	#
 	# objective: fun, grad, hess
@@ -161,8 +166,9 @@ def covid_19_xam() :
 		else :
 			lower_bound[i] = x_true[i] * 5.0
 			upper_bound[i] = x_true[i] / 5.0
-	lower_bound[-1] = x_true[-1] # Constrain initial R to truth because data
-	upper_bound[-1] = x_true[-1] # is not sensitive to it
+	# Not fitting initial value for R and D
+	lower_bound[-2:-1] = x_true[-2:-1]
+	upper_bound[-2:-1] = x_true[-2:-1]
 	bounds = scipy.optimize.Bounds(
 		lower_bound,
 		upper_bound,

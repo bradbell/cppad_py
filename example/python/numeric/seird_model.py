@@ -8,29 +8,30 @@
 # BEGIN_PYTHON
 import numpy
 import runge4
-def seirs_model(t_all, p_fun, initial) :
+def seird_model(t_all, p_fun, initial) :
 	# private member fuction (not part of class API)
-	def ode(t, seir) :
-		S      = seir[0]
-		E      = seir[1]
-		I      = seir[2]
-		R      = seir[3]
+	def ode(t, seird) :
+		S      = seird[0]
+		E      = seird[1]
+		I      = seird[2]
+		R      = seird[3]
+		D      = seird[4]
 		N      = S + E + I + R
 		p      = p_fun(t)
 		Sdot   = - p['beta'] * S * I / N + p['xi'] * R
 		Edot   = + p['beta'] * S * I / N - p['sigma'] * E
 		Idot   = + p['sigma'] * E        - (p['gamma'] + p['chi']) * I
 		Rdot   = + p['gamma'] * I        - p['xi'] * R
-		return numpy.array([ Sdot, Edot, Idot, Rdot])
+		Ddot   = + p['chi']   * I
+		return numpy.array([ Sdot, Edot, Idot, Rdot, Ddot])
 	#
 	seir_all  = runge4.multi_step(ode, t_all, initial)
 	return seir_all
 # END_PYTHON
 #
-# $begin numeric_seirs_model$$ $newlinech #$$
+# $begin numeric_seird_model$$ $newlinech #$$
 # $spell
-#	seirs
-#	seir
+#	seird
 #	numpy
 #	cppad
 #	py
@@ -38,10 +39,10 @@ def seirs_model(t_all, p_fun, initial) :
 #	interpolant
 # $$
 #
-# $section A Susceptible Exposed Infectious Recovered Model$$
+# $section A Susceptible Exposed Infectious Recovered and Death Model$$
 #
 # $head Syntax$$
-# $icode%seir_all% = seirs_model(%t_all%, %p_fun%, %initial%)
+# $icode%seird_all% = seird_model(%t_all%, %p_fun%, %initial%)
 # %$$
 #
 # $head ODE$$
@@ -52,9 +53,10 @@ def seirs_model(t_all, p_fun, initial) :
 # \dot{E} & = & + \beta S I / N   & - \sigma E             \\
 # \dot{I} & = & + \sigma E        & - ( \gamma + \chi )  I \\
 # \dot{R} & = & + \gamma I        & - \xi R
+# \dot{D} & = & + \chi I          &
 # \end{array}
 # \] $$
-# where $latex N = S + E + I + R$$.
+# where $latex N = S + E + I + R$$ (the population still living).
 # We dropped the time dependence for all the terms in the equations above;
 # e.g., $latex \beta$$ is actually $latex \beta(t)$$.
 #
@@ -85,28 +87,27 @@ def seirs_model(t_all, p_fun, initial) :
 # for all times between the initial and final time and
 # not in $icode t_all$$.
 # It is also assumed to be continuous at the times in $icode t_all$$; e.g,
-# between the times in $icode t_all$$ it could be a piecewise linear
-# interpolant.
+# it could be a piecewise linear interpolant with knots at $icode t_all$$.
 #
 # $head initial$$
 # is a vector of length four containing the initial values for
-# S, E, I, R in that order.
+# S, E, I, R, D in that order.
 #
-# $head seir_all$$
-# The return value $icode seir_all$$ is a numpy matrix with row dimension
+# $head seird_all$$
+# The return value $icode seird_all$$ is a numpy matrix with row dimension
 # equal to the number of elements in $icode t_all$$ and column dimension
-# equal to four. The value $icode%seir_all%[%i%, %j%]%$$ is the
+# equal to five. The value $icode%seird_all%[%i%, %j%]%$$ is the
 # approximate solution for the j-th compartment at time $icode%t_all%[%i%]%$$.
 # The compartments have the same order as in $icode initial$$ and
-# $codei%%seir%[0,:]%$$ is equal to $icode initial$$.
+# $codei%%seird%[0,:]%$$ is equal to $icode initial$$.
 # The sequence of floating point operations only depends on $icode t_all$$
 # and the operations used to compute $icode p_fun$$.
 #
 # $children%
-#	example/python/numeric/seirs_model_xam.py
+#	example/python/numeric/seird_model_xam.py
 # %$$
 # $head Example$$
-# $cref numeric_seirs_model_xam.py$$
+# $cref numeric_seird_model_xam.py$$
 #
 # $head Source Code$$
 # $srcthisfile%
