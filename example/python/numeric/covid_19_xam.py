@@ -6,8 +6,11 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 # $begin numeric_covid_19_xam.py$$ $newlinech #$$
+# $spell
+#	Covid
+# $$
 #
-# $section Example Fitting an SEIRS Model$$
+# $section Example Fitting an SEIRS Model for Covid-19$$
 #
 # $head Plot Truth$$
 # If you set this variable to True, you will get a plot of the
