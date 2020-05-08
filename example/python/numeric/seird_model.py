@@ -52,7 +52,7 @@ def seird_model(t_all, p_fun, initial) :
 # \dot{S} & = & - \beta S I / N   & + \xi R                \\
 # \dot{E} & = & + \beta S I / N   & - \sigma E             \\
 # \dot{I} & = & + \sigma E        & - ( \gamma + \chi )  I \\
-# \dot{R} & = & + \gamma I        & - \xi R
+# \dot{R} & = & + \gamma I        & - \xi R                \\
 # \dot{D} & = & + \chi I          &
 # \end{array}
 # \] $$
