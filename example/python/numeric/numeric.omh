@@ -12,8 +12,8 @@ $section Numerical Examples$$
 $childtable%
 	example/python/numeric/runge4.py%
 	example/python/numeric/optimize_fun_class.py%
-	example/python/numeric/seirs_class.py%
-	example/python/numeric/seirs_model.py
+	example/python/numeric/seirs_model.py%
+	example/python/numeric/seirs_fit_xam.py
 %$$
 
 $end

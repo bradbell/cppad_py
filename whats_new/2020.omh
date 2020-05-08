@@ -22,6 +22,7 @@ $spell
 	CppAD
 	cppad
 	scipy
+	seirs
 $$
 
 $section CppAD Py Changes During 2020$$
@@ -40,6 +41,13 @@ $code scipy.special.factorial$$.
 $lnext
 Add the $cref numeric_seirs_model$$ utility example
 which allows rates in the ODE to change with time.
+This enabled changing the $cref numeric_seirs_fit_xam.py$$
+example to estimate a $latex \beta$$ coefficient that
+changes with time.
+$lnext
+The $code numeric_seirs_class$$ example was removed because
+$code numeric_seirs_model$$ replaces it with more general
+capabilities.
 $lend
 
 
@@ -49,7 +57,9 @@ Add the following utility examples:
 $cref numeric_optimize_fun_class$$,
 $cref numeric_runge4_one_step$$,
 $cref numeric_runge4_multi_step$$,
-$cref numeric_seirs_class$$.
+$code numeric_seirs_class$$.
+(The $code numeric_seirs_class$$ was later replaced by
+$cref numeric_seirs_model$$.)
 $lnext
 Add mention of using $code DYLD_LIBRARY_PATH$$ in the
 $cref/cppad library missing/install_error/CppAD Library Missing/$$

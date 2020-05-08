@@ -41,7 +41,7 @@ def seirs_model(t_all, p_fun, initial) :
 # $section A Susceptible Exposed Infectious Recovered Model$$
 #
 # $head Syntax$$
-# $icode%seirs_all% = seirs_model(%t_all%, %p_fun%, %initial%)
+# $icode%seir_all% = seirs_model(%t_all%, %p_fun%, %initial%)
 # %$$
 #
 # $head ODE$$
@@ -92,7 +92,7 @@ def seirs_model(t_all, p_fun, initial) :
 # is a vector of length four containing the initial values for
 # S, E, I, R in that order.
 #
-# $head seirs$$
+# $head seir_all$$
 # The return value $icode seir_all$$ is a numpy matrix with row dimension
 # equal to the number of elements in $icode t_all$$ and column dimension
 # equal to four. The value $icode%seir_all%[%i%, %j%]%$$ is the
