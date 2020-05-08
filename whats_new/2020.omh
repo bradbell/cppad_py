@@ -26,6 +26,7 @@ $spell
 	seird
 	xam
 	covariate
+	covid
 $$
 
 $section CppAD Py Changes During 2020$$
@@ -47,6 +48,9 @@ The $code numeric_seirs_model$$ was renamed $cref numeric_seird_model$$,
 the D compartment was added to track total deaths,
 the data was changed from Infectious to cumulative death, and
 noise was added to the data.
+$lnext
+Add constraint, in $code numeric_covid_a9_xam$$,
+that initial sum of S+E+I+R is one.
 $lend
 
 

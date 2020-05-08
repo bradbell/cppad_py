@@ -127,10 +127,10 @@ def objective_d_fun(t_all, D_data) :
 	Ddiff_data   = numpy.diff(D_data)
 	aDdiff_model = numpy.diff(aD_model)
 	#
-	# compute Gaussian loss function using the average of the model
-	# value for the interval corresponding to each difference
-	aresidual = (Ddiff_data - aDdiff_model) / Ddiff_data
-	aloss     = numpy.sum( aresidual * aresidual)
+	# compute negative log Gaussian likelihood dropping variance terms
+	# because they are constaint w.r.t the parameters we optimize.
+	aresidual = (Ddiff_data - aDdiff_model) / (death_data_cv * Ddiff_data)
+	aloss     = 0.5 * numpy.sum( aresidual * aresidual)
 	aloss     = numpy.array( [ aloss ] )
 	#
 	objective_ad = cppad_py.d_fun(ax, aloss)
@@ -151,7 +151,7 @@ def covid_19_xam(call_count = 0) :
 	#
 	# compute model for data
 	#
-	# initial_true
+	# initial_true: (must intial constraint S + E + R + I = 1)
 	I_start      = 0.02
 	E_start      = 0.02
 	R_start      = 0.02
@@ -195,8 +195,25 @@ def covid_19_xam(call_count = 0) :
 	# objective: fun, grad, hess
 	optimize_fun = optimize_fun_class(objective_ad)
 	#
-	# bounds
+	# x_true
 	x_true      = numpy.concatenate( (cov_mul_true, initial_true) )
+	#
+	# constriant
+	# initial S + E + I + R = 1 (initial D is constrined to 0 in bounds)
+	lower_bound = [ 1.0 ]
+	upper_bound = [ 1.0 ]
+	A           = numpy.zeros( x_true.size, dtype=float )
+	for i in range(4) :
+		A[i + 4] = 1.0
+	linear_constraint = scipy.optimize.LinearConstraint(
+		A,
+		lower_bound,
+		upper_bound,
+		keep_feasible = True
+	)
+	constraints = [ linear_constraint ]
+	#
+	# bounds
 	lower_bound = numpy.empty(x_true.size, dtype=float)
 	upper_bound = numpy.empty(x_true.size, dtype=float)
 	for i in range(x_true.size) :
@@ -225,11 +242,12 @@ def covid_19_xam(call_count = 0) :
 	result = scipy.optimize.minimize(
 		optimize_fun.objective_fun,
 		start_point,
-		method  = 'trust-constr',
-		jac     = optimize_fun.objective_grad,
-		hess    = optimize_fun.objective_hess,
-		options = options,
-		bounds  = bounds,
+		method      = 'trust-constr',
+		jac         = optimize_fun.objective_grad,
+		hess        = optimize_fun.objective_hess,
+		options     = options,
+		bounds      = bounds,
+		constraints = constraints,
 	)
 	ok      = ok and result.success
 	x_hat   = result.x
@@ -243,7 +261,7 @@ def covid_19_xam(call_count = 0) :
 		msg += 'actual random seed = ' + str(actual_seed)
 		print( msg )
 		call_count += 1
-		if call_count < 2 :
+		if call_count < 2 and random_seed == 0 :
 			ok = covid_19_xam(call_count)
 	return ok
 # END_PYTHON
