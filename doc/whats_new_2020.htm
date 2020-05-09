@@ -108,8 +108,16 @@ The <code><font color="blue">numeric_seirs_model</font></code> was renamed <a hr
 the D compartment was added to track total deaths,
 the data was changed from Infectious to cumulative death, and
 noise was added to the data.
-</li></ol>
+</li><li>
 
+In <code><font color="blue">numeric_covid_a9_xam</font></code>,
+reduce to just E and I as unknowns in initial conditions.
+Initial R = D = 0, S = 1 - E - R.
+</li><li>
+
+Use the observed information matrix to estimate the covariance
+of the optimal parameters.
+</li></ol>
 
 
 <br>
