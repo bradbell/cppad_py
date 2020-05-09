@@ -52,6 +52,9 @@ $lnext
 In $code numeric_covid_a9_xam$$,
 reduce to just E and I as unknowns in initial conditions.
 Initial R = D = 0, S = 1 - E - R.
+$lnext
+Use the observed information matrix to estimate the covariance
+of the optimal parameters.
 $lend
 
 $head 05-07$$

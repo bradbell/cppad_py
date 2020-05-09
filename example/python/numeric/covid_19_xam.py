@@ -21,9 +21,7 @@ plot_truth = False
 #
 # $head Coefficient of Variation$$
 # This is the coefficient of variation for the differences
-# in the cumulative death data.
-# It is a fraction, not a percent value and
-# the value zero corresponds to no noise:
+# in the cumulative death data as a fraction, not a percent.
 # $srccode%py%
 death_data_cv = 0.1
 # %$$
@@ -142,7 +140,7 @@ def objective_d_fun(t_all, D_data) :
 	# compute negative log Gaussian likelihood dropping variance terms
 	# because they are constaint w.r.t the parameters we optimize.
 	aresidual = \
-		(Ddiff_data - aDdiff_model) / (1e-5 + death_data_cv * Ddiff_data)
+		(Ddiff_data - aDdiff_model) / ( death_data_cv * Ddiff_data)
 	aloss     = 0.5 * numpy.sum( aresidual * aresidual)
 	aloss     = numpy.array( [ aloss ] )
 	#
@@ -248,10 +246,22 @@ def covid_19_xam(call_count = 0) :
 	)
 	ok      = ok and result.success
 	x_hat   = result.x
+	#
+	# compute the observed infromation matrix
+	H = optimize_fun.objective_hess(x_hat)
+	#
+	# approxiamtion for covariance of the estimate x_hat
+	Hinv = numpy.linalg.inv(H)
+	#
+	# standard devaition for each component of x_hat
+	std_error = numpy.sqrt( numpy.diag(Hinv) )
+	#
+	# check that all the weighted residuals are less than two
 	for i in range(x_true.size) :
 		rel_error = x_hat[i] / x_true[i] - 1.0
-		# print( x_true[i], x_hat[i], rel_error)
-		ok        = ok and abs(rel_error) < (1e-5 + 10.0 * death_data_cv )
+		residual  = (x_hat[i] - x_true[i]) / std_error[i]
+		# print( x_true[i], x_hat[i], std_error[i], residual )
+		ok        = ok and abs(residual) < 2.0
 	#
 	if not ok :
 		msg  = 'covid_19_xam: Correctness test failed, '
