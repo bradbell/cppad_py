@@ -15,7 +15,7 @@ MathJax.Hub.Config({
 <title>Example Fitting an SEIRD Model for Covid-19</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
 <meta name="description" id="description" content="Example Fitting an SEIRD Model for Covid-19">
-<meta name="keywords" id="keywords" content=" example fitting seird model covid-19 plot truth coefficient variation random seed source code ">
+<meta name="keywords" id="keywords" content=" example fitting seird model covid-19 covariates beta(t) other rates initial values unknown parameter vector data maximum likelihood plot truth coefficient variation random seed source code ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -62,11 +62,148 @@ A:active { color : purple }
 @(@\newcommand{\B}[1]{ {\bf #1} }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Example Fitting an SEIRD Model for Covid-19</big></big></b></center>
 
+<br><a href="numeric_covid_19_xam.py.htm#Model" target="_top">Model</a>
+<br><a href="numeric_covid_19_xam.py.htm#Covariates" target="_top">Covariates</a>
+<br><a href="numeric_covid_19_xam.py.htm#beta(t)" target="_top">beta(t)</a>
+<br><a href="numeric_covid_19_xam.py.htm#Other Rates" target="_top">Other&nbsp;Rates</a>
+<br><a href="numeric_covid_19_xam.py.htm#Initial Values" target="_top">Initial&nbsp;Values</a>
+<br><a href="numeric_covid_19_xam.py.htm#Unknown Parameter Vector" target="_top">Unknown&nbsp;Parameter&nbsp;Vector</a>
+<br><a href="numeric_covid_19_xam.py.htm#Data" target="_top">Data</a>
+<br><a href="numeric_covid_19_xam.py.htm#Maximum Likelihood" target="_top">Maximum&nbsp;Likelihood</a>
 <br><a href="numeric_covid_19_xam.py.htm#Plot Truth" target="_top">Plot&nbsp;Truth</a>
 <br><a href="numeric_covid_19_xam.py.htm#Coefficient of Variation" target="_top">Coefficient&nbsp;of&nbsp;Variation</a>
 <br><a href="numeric_covid_19_xam.py.htm#Random Seed" target="_top">Random&nbsp;Seed</a>
 <br><a href="numeric_covid_19_xam.py.htm#Source Code" target="_top">Source&nbsp;Code</a>
 <br><br>
+<b><big><a name="Model" id="Model">Model</a></big></b>
+<br>
+We use the <a href="numeric_seird_model.htm" target="_top"><span style='white-space: nowrap'>seird</span></a>
+ model and notation.
+
+<br>
+<br>
+<b><big><a name="Covariates" id="Covariates">Covariates</a></big></b>
+<br>
+In this example there are three covariates that
+affect the infectious rate <small>@(@
+\beta
+@)@</small>:
+close schools, stay at home directive, and essential works only directive.
+The corresponding covariate is one (zero) if the order is (is not)
+in effect.
+
+<br>
+<br>
+<b><big><a name="beta(t)" id="beta(t)">beta(t)</a></big></b>
+<br>
+We use 
+<code><i><font color="black"><span style='white-space: nowrap'>baseline</span></font></i></code>
+ for the infectious rate; i.e.,
+the values corresponding to all the covariates being zero.
+Our model for the infectious rate is
+<small>@[@
+
+	\beta(t) = \beta_b * \left( 1 + \sum_{j=0}^2 m_j c_j (t) \right)
+
+@]@</small>
+Here <small>@(@
+\beta_b
+@)@</small> is the baseline value for the infectious rate,
+<small>@(@
+c_j (t)
+@)@</small> is the j-th zero / one covariate as a function of time,
+and <small>@(@
+m_j
+@)@</small> is the j-th covariate multiplier.
+The covariates are known functions of time.
+The covariate multipliers and the baseline infectious rate are unknown.
+parameters in the model (we expect them to be negative).
+
+<br>
+<br>
+<b><big><a name="Other Rates" id="Other Rates">Other Rates</a></big></b>
+<br>
+The other rates
+<small>@(@
+\sigma(t)
+@)@</small>,
+<small>@(@
+\gamma(t)
+@)@</small>,
+<small>@(@
+\xi(t)
+@)@</small>,
+<small>@(@
+\chi(t)
+@)@</small>,
+constant functions with a known value.
+
+<br>
+<br>
+<b><big><a name="Initial Values" id="Initial Values">Initial Values</a></big></b>
+<br>
+The initial values for the Recovered group <small>@(@
+R(0)
+@)@</small>
+and for the Death group <small>@(@
+D(0)
+@)@</small> are zero.
+We use fraction of the total population, so the sum of the
+other initial values is one.
+We treat the initial Exposed group <small>@(@
+E(0)
+@)@</small> and the initial
+infected group <small>@(@
+I(0)
+@)@</small> as unknown parameters in the model
+and use the relation
+<small>@[@
+
+	S(0) = 1 - E(0) - I(0)
+
+@]@</small>
+two expression the initial Susceptible group as a function
+of the unknown parameters.
+
+<br>
+<br>
+<b><big><a name="Unknown Parameter Vector" id="Unknown Parameter Vector">Unknown Parameter Vector</a></big></b>
+<br>
+In summary, the unknown parameter vector in this model is
+<small>@[@
+
+	x = [ E(0), I(0), \beta_b , m_0 , m_1, m_2 ]
+
+@]@</small>
+
+<br>
+<br>
+<b><big><a name="Data" id="Data">Data</a></big></b>
+<br>
+The data in this model is cumulative number of deaths,
+as a fraction of the total population and as a function of time.
+We assume that new deaths are recorded at regular time intervals
+and the cumulative deaths is the sum of these recordings.
+For this reason, we model the difference of the cumulative deaths
+between time points as independent.
+
+<br>
+<br>
+<b><big><a name="Maximum Likelihood" id="Maximum Likelihood">Maximum Likelihood</a></big></b>
+<br>
+We use a Gaussian likelihood for each of the differences in the
+cumulative deaths. The parameters are estimated by maximizing the
+likelihood. The covariance of the parameter estimate is approximated
+by the inverse of the observed information matrix.
+AD is used to compute first and second derivatives of the likelihood
+w.r.t. the unknown parameters <small>@(@
+x
+@)@</small>.
+These derivatives are used during optimization as well as for
+computing the observed information matrix.
+
+<br>
+<br>
 <b><big><a name="Plot Truth" id="Plot Truth">Plot Truth</a></big></b>
 <br>
 If you set this variable to True, you will get a plot of the
@@ -114,13 +251,11 @@ t_all <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font
 <i><font color="#9A1900">#</font></i>
 <i><font color="#9A1900"># covariates</font></i>
 n_time <font color="#990000">=</font> t_all<font color="#990000">.</font>size
-base_line     <font color="#990000">=</font> <font color="#990000">[</font> <font color="#993399">1.0</font>               <b><font color="#0000FF">for</font></b> t <b><font color="#0000FF">in</font></b> t_all <font color="#990000">]</font>
 close_school  <font color="#990000">=</font> <font color="#990000">[</font> <b><font color="#000000">float</font></b><font color="#990000">(</font><font color="#993399">10.0</font>  <font color="#990000">&lt;</font> t<font color="#990000">)</font>  <b><font color="#0000FF">for</font></b> t <b><font color="#0000FF">in</font></b> t_all <font color="#990000">]</font>
 stay_home     <font color="#990000">=</font> <font color="#990000">[</font> <b><font color="#000000">float</font></b><font color="#990000">(</font><font color="#993399">15.0</font> <font color="#990000">&lt;</font> t<font color="#990000">)</font>   <b><font color="#0000FF">for</font></b> t <b><font color="#0000FF">in</font></b> t_all <font color="#990000">]</font>
 essential     <font color="#990000">=</font> <font color="#990000">[</font> <b><font color="#000000">float</font></b><font color="#990000">(</font><font color="#993399">20.0</font> <font color="#990000">&lt;</font> t<font color="#990000">)</font>   <b><font color="#0000FF">for</font></b> t <b><font color="#0000FF">in</font></b> t_all <font color="#990000">]</font>
 covariates     <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font>
-     <font color="#990000">[</font> base_line<font color="#990000">[</font>i<font color="#990000">],</font>  close_school<font color="#990000">[</font>i<font color="#990000">],</font> stay_home<font color="#990000">[</font>i<font color="#990000">],</font> essential<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">]</font>
-     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>n_time<font color="#990000">)</font>
+     <font color="#990000">[</font> close_school<font color="#990000">[</font>i<font color="#990000">],</font> stay_home<font color="#990000">[</font>i<font color="#990000">],</font> essential<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">]</font> <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>n_time<font color="#990000">)</font>
 <font color="#990000">]</font> <font color="#990000">)</font>
 <i><font color="#9A1900">#</font></i>
 <i><font color="#9A1900"># p_fun_class</font></i>
@@ -136,8 +271,8 @@ covariates     <font color="#990000">=</font> numpy<font color="#990000">.</font
           <i><font color="#9A1900"># linear interpolation coefficients</font></i>
           ip     <font color="#990000">=</font> i <font color="#990000">+</font> <font color="#993399">1</font>
           t_diff <font color="#990000">=</font> t_all<font color="#990000">[</font>ip<font color="#990000">]</font> <font color="#990000">-</font> t_all<font color="#990000">[</font>i<font color="#990000">]</font>
-          left   <font color="#990000">=</font> <font color="#990000">(</font> t_all<font color="#990000">[</font>ip<font color="#990000">]</font> <font color="#990000">-</font> t <font color="#990000">)</font> <font color="#990000">/</font> t_diff
-          right  <font color="#990000">=</font> <font color="#990000">(</font> t <font color="#990000">-</font> t_all<font color="#990000">[</font>i<font color="#990000">]</font>  <font color="#990000">)</font> <font color="#990000">/</font> t_diff
+          left   <font color="#990000">=</font> <font color="#990000">(</font> t_all<font color="#990000">[</font>ip<font color="#990000">]</font> <font color="#990000">-</font> t         <font color="#990000">)</font> <font color="#990000">/</font> t_diff
+          right  <font color="#990000">=</font> <font color="#990000">(</font> t         <font color="#990000">-</font> t_all<font color="#990000">[</font>i<font color="#990000">]</font>  <font color="#990000">)</font> <font color="#990000">/</font> t_diff
           <i><font color="#9A1900"># beta changes with time are continuous at all points in t_all</font></i>
           <i><font color="#9A1900"># and smooth for times not in t_all</font></i>
           beta   <font color="#990000">=</font> left <font color="#990000">*</font> self<font color="#990000">.</font>beta_all<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">+</font> right <font color="#990000">*</font> self<font color="#990000">.</font>beta_all<font color="#990000">[</font>ip<font color="#990000">]</font>
@@ -158,24 +293,25 @@ covariates     <font color="#990000">=</font> numpy<font color="#990000">.</font
      n_time<font color="#990000">,</font> n_cov <font color="#990000">=</font> covariates<font color="#990000">.</font>shape
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># n_x</font></i>
-     n_x <font color="#990000">=</font> n_cov <font color="#990000">+</font> <font color="#993399">2</font>
+     n_x <font color="#990000">=</font> n_cov <font color="#990000">+</font> <font color="#993399">3</font>
      <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># x = ( cov_mul, E(0), I(0) )</font></i>
+     <i><font color="#9A1900"># x = ( E(0), I(0), baseline, cov_mul )</font></i>
      <i><font color="#9A1900"># Note that R(0) = D(0) = 0 and S(0) = 1 - E(0) - I(0)</font></i>
      x  <font color="#990000">=</font> <font color="#993399">0.1</font> <font color="#990000">*</font> numpy<font color="#990000">.</font><b><font color="#000000">ones</font></b><font color="#990000">(</font>n_x<font color="#990000">)</font>
      ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># abeta_all</font></i>
-     cov_mul    <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font> <font color="#990000">:</font> n_cov<font color="#990000">]</font>
-     abeta_all  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">matmul</font></b><font color="#990000">(</font>covariates<font color="#990000">,</font> cov_mul<font color="#990000">)</font>
+     abaseline <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font>
+     acov_mul  <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">3</font> <font color="#990000">:]</font>
+     abeta_all <font color="#990000">=</font> abaseline <font color="#990000">*</font> <font color="#990000">(</font><font color="#993399">1.0</font> <font color="#990000">+</font> numpy<font color="#990000">.</font><b><font color="#000000">matmul</font></b><font color="#990000">(</font>covariates<font color="#990000">,</font> acov_mul<font color="#990000">))</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># ainitial</font></i>
-     aE_0      <font color="#990000">=</font> ax<font color="#990000">[</font>n_cov <font color="#990000">+</font> <font color="#993399">0</font><font color="#990000">]</font>
-     aI_0      <font color="#990000">=</font> ax<font color="#990000">[</font>n_cov <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">]</font>
-     aR_0      <font color="#990000">=</font> <font color="#993399">0.0</font>
-     aD_0      <font color="#990000">=</font> <font color="#993399">0.0</font>
-     aS_0      <font color="#990000">=</font> <font color="#993399">1.0</font> <font color="#990000">-</font> aE_0 <font color="#990000">-</font> aI_0
-     ainitial  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font>aS_0<font color="#990000">,</font> aE_0<font color="#990000">,</font> aI_0<font color="#990000">,</font> aR_0<font color="#990000">,</font> aD_0<font color="#990000">]</font> <font color="#990000">)</font>
+     aE0      <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
+     aI0      <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font>
+     aR0      <font color="#990000">=</font> <font color="#993399">0.0</font>
+     aD0      <font color="#990000">=</font> <font color="#993399">0.0</font>
+     aS0      <font color="#990000">=</font> <font color="#993399">1.0</font> <font color="#990000">-</font> aE0 <font color="#990000">-</font> aI0
+     ainitial <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font>aS0<font color="#990000">,</font> aE0<font color="#990000">,</font> aI0<font color="#990000">,</font> aR0<font color="#990000">,</font> aD0<font color="#990000">]</font> <font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># p_fun</font></i>
      ap_fun_obj <font color="#990000">=</font> <b><font color="#000000">p_fun_class</font></b><font color="#990000">(</font>abeta_all<font color="#990000">)</font>
@@ -184,10 +320,10 @@ covariates     <font color="#990000">=</font> numpy<font color="#990000">.</font
      <i><font color="#9A1900"># compute model for data</font></i>
      aseird_all <font color="#990000">=</font> <b><font color="#000000">seird_model</font></b><font color="#990000">(</font>t_all<font color="#990000">,</font> ap_fun<font color="#990000">,</font> ainitial<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># Model for the derivative of the death data</font></i>
+     <i><font color="#9A1900"># Model for the cumulative death as function of time</font></i>
      aD_model   <font color="#990000">=</font> aseird_all<font color="#990000">[:,</font><font color="#993399">4</font><font color="#990000">]</font> <i><font color="#9A1900"># column order is S, E, I, R, D</font></i>
      <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># Differences of the death data</font></i>
+     <i><font color="#9A1900"># Differences of the death over the time intervals</font></i>
      Ddiff_data   <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">diff</font></b><font color="#990000">(</font>D_data<font color="#990000">)</font>
      aDdiff_model <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">diff</font></b><font color="#990000">(</font>aD_model<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
@@ -204,11 +340,15 @@ covariates     <font color="#990000">=</font> numpy<font color="#990000">.</font
 <b><font color="#0000FF">def</font></b> <b><font color="#000000">covid_19_xam</font></b><font color="#990000">(</font>call_count <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">)</font> <font color="#990000">:</font>
      ok <font color="#990000">=</font> True
      <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># baseline_true</font></i>
+     baseline_true <font color="#990000">=</font> <font color="#993399">0.20</font>
+     <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># cov_mul_true</font></i>
-     cov_mul_true  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font> <font color="#993399">0.35</font><font color="#990000">,</font> <font color="#990000">-</font> <font color="#993399">0.1</font><font color="#990000">,</font> <font color="#990000">-</font> <font color="#993399">0.1</font><font color="#990000">,</font> <font color="#990000">-</font> <font color="#993399">0.1</font> <font color="#990000">]</font> <font color="#990000">)</font>
+     cov_mul_true  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font> <font color="#990000">-</font> <font color="#993399">0.2</font><font color="#990000">,</font> <font color="#990000">-</font> <font color="#993399">0.2</font><font color="#990000">,</font> <font color="#990000">-</font> <font color="#993399">0.2</font> <font color="#990000">]</font> <font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># beta_all_true</font></i>
-     beta_all_true <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">matmul</font></b><font color="#990000">(</font>covariates<font color="#990000">,</font> cov_mul_true<font color="#990000">)</font>
+     covariate_effect <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">matmul</font></b><font color="#990000">(</font>covariates<font color="#990000">,</font> cov_mul_true<font color="#990000">)</font>
+     beta_all_true    <font color="#990000">=</font> baseline_true <font color="#990000">*</font> <font color="#990000">(</font><font color="#993399">1.0</font> <font color="#990000">+</font> covariate_effect<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># p_fun_true</font></i>
      p_fun_obj   <font color="#990000">=</font> <b><font color="#000000">p_fun_class</font></b><font color="#990000">(</font>beta_all_true<font color="#990000">)</font>
@@ -217,13 +357,13 @@ covariates     <font color="#990000">=</font> numpy<font color="#990000">.</font
      <i><font color="#9A1900"># compute model for data</font></i>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># initial_true: (must satisfy S + E + I = 1, R = D = 0)</font></i>
-     I_start      <font color="#990000">=</font> <font color="#993399">0.02</font>
-     E_start      <font color="#990000">=</font> <font color="#993399">0.02</font>
-     S_start      <font color="#990000">=</font> <font color="#993399">1.0</font> <font color="#990000">-</font> E_start <font color="#990000">-</font> I_start
-     R_start      <font color="#990000">=</font> <font color="#993399">0.0</font>
-     D_start      <font color="#990000">=</font> <font color="#993399">0.0</font>
+     I0_true     <font color="#990000">=</font> <font color="#993399">0.02</font>
+     E0_true     <font color="#990000">=</font> <font color="#993399">0.02</font>
+     S0_true     <font color="#990000">=</font> <font color="#993399">1.0</font> <font color="#990000">-</font> E0_true <font color="#990000">-</font> I0_true
+     R0_true     <font color="#990000">=</font> <font color="#993399">0.0</font>
+     D0_true     <font color="#990000">=</font> <font color="#993399">0.0</font>
      initial_true <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font>
-          <font color="#990000">[</font> S_start<font color="#990000">,</font> E_start<font color="#990000">,</font> I_start<font color="#990000">,</font> R_start<font color="#990000">,</font> D_start <font color="#990000">]</font>
+          <font color="#990000">[</font> S0_true<font color="#990000">,</font> E0_true<font color="#990000">,</font> I0_true<font color="#990000">,</font> R0_true<font color="#990000">,</font> D0_true <font color="#990000">]</font>
      <font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># noiseless simulated data</font></i>
@@ -238,14 +378,19 @@ covariates     <font color="#990000">=</font> numpy<font color="#990000">.</font
           ax<font color="#990000">.</font><b><font color="#000000">legend</font></b><font color="#990000">()</font>
           pyplot<font color="#990000">.</font><b><font color="#000000">show</font></b><font color="#990000">()</font>
      <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># check conservation of masss in the compartmental model</font></i>
+     sum_all_true <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">sum</font></b><font color="#990000">(</font>seird_all_true<font color="#990000">,</font> axis<font color="#990000">=</font><font color="#993399">1</font><font color="#990000">)</font>
+     eps99 <font color="#990000">=</font> <font color="#993399">99.0</font> <font color="#990000">*</font> numpy<font color="#990000">.</font><b><font color="#000000">finfo</font></b><font color="#990000">(</font>float<font color="#990000">).</font>eps
+     ok    <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> <b><font color="#000000">max</font></b><font color="#990000">(</font> <b><font color="#000000">abs</font></b><font color="#990000">(</font>sum_all_true <font color="#990000">-</font> <font color="#993399">1.0</font><font color="#990000">)</font> <font color="#990000">)</font> <font color="#990000">&lt;</font> eps99
+     <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># actual_seed</font></i>
      <b><font color="#0000FF">if</font></b> random_seed <font color="#990000">==</font> <font color="#993399">0</font> <font color="#990000">:</font>
           actual_seed <font color="#990000">=</font> <b><font color="#000000">int</font></b><font color="#990000">(</font> <font color="#993399">13</font> <font color="#990000">*</font> time<font color="#990000">.</font><b><font color="#000000">time</font></b><font color="#990000">()</font> <font color="#990000">)</font>
      <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
           actual_seed <font color="#990000">=</font> random_seed
      <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># numpy random number generator</font></i>
-     rng <font color="#990000">=</font> numpy<font color="#990000">.</font>random<font color="#990000">.</font><b><font color="#000000">default_rng</font></b><font color="#990000">()</font>
+     <i><font color="#9A1900"># rng: numpy random number generator</font></i>
+     rng <font color="#990000">=</font> numpy<font color="#990000">.</font>random<font color="#990000">.</font><b><font color="#000000">default_rng</font></b><font color="#990000">(</font>seed <font color="#990000">=</font> actual_seed<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># D_data</font></i>
      D_true       <font color="#990000">=</font> seird_all_true<font color="#990000">[:,</font><font color="#993399">4</font><font color="#990000">]</font>
@@ -263,9 +408,10 @@ covariates     <font color="#990000">=</font> numpy<font color="#990000">.</font
      optimize_fun <font color="#990000">=</font> <b><font color="#000000">optimize_fun_class</font></b><font color="#990000">(</font>objective_ad<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># x_true</font></i>
-     E_0_true <font color="#990000">=</font> initial_true<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font>
-     I_0_true <font color="#990000">=</font> initial_true<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font>
-     x_true   <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">concatenate</font></b><font color="#990000">(</font> <font color="#990000">(</font>cov_mul_true<font color="#990000">,</font> <font color="#990000">[</font> E_0_true<font color="#990000">,</font> I_0_true <font color="#990000">])</font> <font color="#990000">)</font>
+     n_cov       <font color="#990000">=</font> cov_mul_true<font color="#990000">.</font>size
+     x_true      <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font> <font color="#993399">3</font> <font color="#990000">+</font> n_cov<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
+     x_true<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">:</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#990000">[</font> E0_true<font color="#990000">,</font> I0_true<font color="#990000">,</font> baseline_true <font color="#990000">]</font>
+     x_true<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">:]</font>  <font color="#990000">=</font> cov_mul_true
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># bounds</font></i>
      lower_bound <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>x_true<font color="#990000">.</font>size<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
@@ -323,6 +469,7 @@ covariates     <font color="#990000">=</font> numpy<font color="#990000">.</font
           <b><font color="#0000FF">print</font></b><font color="#990000">(</font> msg <font color="#990000">)</font>
           call_count <font color="#990000">+=</font> <font color="#993399">1</font>
           <b><font color="#0000FF">if</font></b> call_count <font color="#990000">&lt;</font> <font color="#993399">2</font> <b><font color="#0000FF">and</font></b> random_seed <font color="#990000">==</font> <font color="#993399">0</font> <font color="#990000">:</font>
+               <b><font color="#0000FF">print</font></b><font color="#990000">(</font> <font color="#FF0000">'re-trying with a differenent random seed'</font><font color="#990000">)</font>
                ok <font color="#990000">=</font> <b><font color="#000000">covid_19_xam</font></b><font color="#990000">(</font>call_count<font color="#990000">)</font>
      <b><font color="#0000FF">return</font></b> ok</tt></pre>
 

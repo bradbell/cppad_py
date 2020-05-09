@@ -15,7 +15,7 @@ MathJax.Hub.Config({
 <title>A Susceptible Exposed Infectious Recovered and Death Model</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
 <meta name="description" id="description" content="A Susceptible Exposed Infectious Recovered and Death Model">
-<meta name="keywords" id="keywords" content=" susceptible exposed infectious recovered death model syntax ode set_t_all p_fun initial seird_all example source code ">
+<meta name="keywords" id="keywords" content=" susceptible exposed infectious recovered death model syntax notation ode t_all p_fun initial seird_all conservation mass example source code ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -65,11 +65,13 @@ A:active { color : purple }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>A Susceptible Exposed Infectious Recovered and Death Model</big></big></b></center>
 
 <br><a href="numeric_seird_model.htm#Syntax" target="_top">Syntax</a>
+<br><a href="numeric_seird_model.htm#Notation" target="_top">Notation</a>
 <br><a href="numeric_seird_model.htm#ODE" target="_top">ODE</a>
-<br><a href="numeric_seird_model.htm#set_t_all" target="_top">set_t_all</a>
+<br><a href="numeric_seird_model.htm#t_all" target="_top">t_all</a>
 <br><a href="numeric_seird_model.htm#p_fun" target="_top">p_fun</a>
 <br><a href="numeric_seird_model.htm#initial" target="_top">initial</a>
 <br><a href="numeric_seird_model.htm#seird_all" target="_top">seird_all</a>
+<br><a href="numeric_seird_model.htm#Conservation of Mass" target="_top">Conservation&nbsp;of&nbsp;Mass</a>
 <br><a href="numeric_seird_model.htm#Example" target="_top">Example</a>
 <br><a href="numeric_seird_model.htm#Source Code" target="_top">Source&nbsp;Code</a>
 <br><br>
@@ -80,33 +82,88 @@ A:active { color : purple }
 <code><i><font color="black"><span style='white-space: nowrap'>seird_all</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;seird_model(</span></font><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>p_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>initial</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 <br>
+<b><big><a name="Notation" id="Notation">Notation</a></big></b>
+
+<table><tr><td align='left'  valign='top'>
+
+<small>@(@
+S(t)
+@)@</small>      </td><td align='left'  valign='top'>
+ size of the Susceptible group     </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+E(t)
+@)@</small>      </td><td align='left'  valign='top'>
+ size of the Exposed group         </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+I(t)
+@)@</small>      </td><td align='left'  valign='top'>
+ size of the Infectious group      </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+R(t)
+@)@</small>      </td><td align='left'  valign='top'>
+ size Recovered group              </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+D(t)
+@)@</small>      </td><td align='left'  valign='top'>
+ size of the group that has died   </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+\beta(t)
+@)@</small>  </td><td align='left'  valign='top'>
+ infectious rate                   </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+\sigma(t)
+@)@</small> </td><td align='left'  valign='top'>
+ incubation rate                   </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+\gamma(t)
+@)@</small> </td><td align='left'  valign='top'>
+ recovery rate                     </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+\xi(t)
+@)@</small>    </td><td align='left'  valign='top'>
+ loss of immunity rate             </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+\chi(t)
+@)@</small>   </td><td align='left'  valign='top'>
+ excess mortality rate
+</td></tr>
+</table>
+<br>
 <b><big><a name="ODE" id="ODE">ODE</a></big></b>
 <br>
 The ordinary differential equation for this model is:
 <small>@[@
 
 \begin{array}{rcll}
-\dot{S} & = & - \beta S I / N   & + \xi R                \\
-\dot{E} & = & + \beta S I / N   & - \sigma E             \\
+\dot{S} & = & - \beta S I       & + \xi R                \\
+\dot{E} & = & + \beta S I       & - \sigma E             \\
 \dot{I} & = & + \sigma E        & - ( \gamma + \chi )  I \\
 \dot{R} & = & + \gamma I        & - \xi R                \\
 \dot{D} & = & + \chi I          &
 \end{array}
 
 @]@</small>
-where <small>@(@
-N = S + E + I + R
-@)@</small> (the population still living).
-We dropped the time dependence for all the terms in the equations above;
-e.g., <small>@(@
+where we dropped the time dependence in the equations above.
+This model does not account for death by other causes.
+Some versions of this model use a <small>@(@
 \beta
-@)@</small> is actually <small>@(@
-\beta(t)
+@)@</small>
+that is scaled by the total population <small>@(@
+N
 @)@</small>.
 
 <br>
 <br>
-<b><big><a name="set_t_all" id="set_t_all">set_t_all</a></big></b>
+<b><big><a name="t_all" id="t_all">t_all</a></big></b>
 <br>
 The argument 
 <code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i></code>
@@ -217,6 +274,13 @@ and the operations used to compute
 <code><i><font color="black"><span style='white-space: nowrap'>p_fun</span></font></i></code>
 .
 
+<br>
+<br>
+<b><big><a name="Conservation of Mass" id="Conservation of Mass">Conservation of Mass</a></big></b>
+<br>
+Note that the sum of S, E, I, R, and D should be constant; i.e.,
+up to numerical accuracy, it not depend on time.
+
 
 <br>
 <br>
@@ -241,12 +305,11 @@ and the operations used to compute
           I      <font color="#990000">=</font> seird<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font>
           R      <font color="#990000">=</font> seird<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font>
           D      <font color="#990000">=</font> seird<font color="#990000">[</font><font color="#993399">4</font><font color="#990000">]</font>
-          N      <font color="#990000">=</font> S <font color="#990000">+</font> E <font color="#990000">+</font> I <font color="#990000">+</font> R
           p      <font color="#990000">=</font> <b><font color="#000000">p_fun</font></b><font color="#990000">(</font>t<font color="#990000">)</font>
-          Sdot   <font color="#990000">=</font> <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'beta'</font><font color="#990000">]</font> <font color="#990000">*</font> S <font color="#990000">*</font> I <font color="#990000">/</font> N <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'xi'</font><font color="#990000">]</font> <font color="#990000">*</font> R
-          Edot   <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'beta'</font><font color="#990000">]</font> <font color="#990000">*</font> S <font color="#990000">*</font> I <font color="#990000">/</font> N <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'sigma'</font><font color="#990000">]</font> <font color="#990000">*</font> E
-          Idot   <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'sigma'</font><font color="#990000">]</font> <font color="#990000">*</font> E        <font color="#990000">-</font> <font color="#990000">(</font>p<font color="#990000">[</font><font color="#FF0000">'gamma'</font><font color="#990000">]</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'chi'</font><font color="#990000">])</font> <font color="#990000">*</font> I
-          Rdot   <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'gamma'</font><font color="#990000">]</font> <font color="#990000">*</font> I        <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'xi'</font><font color="#990000">]</font> <font color="#990000">*</font> R
+          Sdot   <font color="#990000">=</font> <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'beta'</font><font color="#990000">]</font> <font color="#990000">*</font>  S <font color="#990000">*</font> I  <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'xi'</font><font color="#990000">]</font> <font color="#990000">*</font> R
+          Edot   <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'beta'</font><font color="#990000">]</font> <font color="#990000">*</font>  S <font color="#990000">*</font> I  <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'sigma'</font><font color="#990000">]</font> <font color="#990000">*</font> E
+          Idot   <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'sigma'</font><font color="#990000">]</font> <font color="#990000">*</font> E      <font color="#990000">-</font> <font color="#990000">(</font>p<font color="#990000">[</font><font color="#FF0000">'gamma'</font><font color="#990000">]</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'chi'</font><font color="#990000">])</font> <font color="#990000">*</font> I
+          Rdot   <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'gamma'</font><font color="#990000">]</font> <font color="#990000">*</font> I      <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'xi'</font><font color="#990000">]</font> <font color="#990000">*</font> R
           Ddot   <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'chi'</font><font color="#990000">]</font>   <font color="#990000">*</font> I
           <b><font color="#0000FF">return</font></b> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">([</font> Sdot<font color="#990000">,</font> Edot<font color="#990000">,</font> Idot<font color="#990000">,</font> Rdot<font color="#990000">,</font> Ddot<font color="#990000">])</font>
      <i><font color="#9A1900">#</font></i>
