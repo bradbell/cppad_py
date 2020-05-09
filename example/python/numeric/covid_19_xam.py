@@ -184,6 +184,11 @@ def covid_19_xam(call_count = 0) :
 		ax.legend()
 		pyplot.show()
 	#
+	# check conversation of masss in the compartmental model
+	sum_all_true = numpy.sum(seird_all_true, axis=1)
+	eps99 = 99.0 * numpy.finfo(float).eps
+	ok    = ok and max( abs(sum_all_true - 1.0) ) < eps99
+	#
 	# actual_seed
 	if random_seed == 0 :
 		actual_seed = int( 13 * time.time() )
@@ -269,6 +274,7 @@ def covid_19_xam(call_count = 0) :
 		print( msg )
 		call_count += 1
 		if call_count < 2 and random_seed == 0 :
+			print( 're-trying with a differenent random seed')
 			ok = covid_19_xam(call_count)
 	return ok
 # END_PYTHON
