@@ -16,12 +16,11 @@ def seird_model(t_all, p_fun, initial) :
 		I      = seird[2]
 		R      = seird[3]
 		D      = seird[4]
-		N      = S + E + I + R
 		p      = p_fun(t)
-		Sdot   = - p['beta'] * S * I / N + p['xi'] * R
-		Edot   = + p['beta'] * S * I / N - p['sigma'] * E
-		Idot   = + p['sigma'] * E        - (p['gamma'] + p['chi']) * I
-		Rdot   = + p['gamma'] * I        - p['xi'] * R
+		Sdot   = - p['beta'] *  S * I  + p['xi'] * R
+		Edot   = + p['beta'] *  S * I  - p['sigma'] * E
+		Idot   = + p['sigma'] * E      - (p['gamma'] + p['chi']) * I
+		Rdot   = + p['gamma'] * I      - p['xi'] * R
 		Ddot   = + p['chi']   * I
 		return numpy.array([ Sdot, Edot, Idot, Rdot, Ddot])
 	#
@@ -45,22 +44,37 @@ def seird_model(t_all, p_fun, initial) :
 # $icode%seird_all% = seird_model(%t_all%, %p_fun%, %initial%)
 # %$$
 #
+# $head Notation$$
+# $table
+# $latex S(t)$$      $cnext size of the Susceptible group     $rnext
+# $latex E(t)$$      $cnext size of the Exposed group         $rnext
+# $latex I(t)$$      $cnext size of the Infectious group      $rnext
+# $latex R(t)$$      $cnext size Recovered group              $rnext
+# $latex D(t)$$      $cnext size of the group that has died   $rnext
+# $latex \beta(t)$$  $cnext infectious rate                   $rnext
+# $latex \sigma(t)$$ $cnext incubation rate                   $rnext
+# $latex \gamma(t)$$ $cnext recovery rate                     $rnext
+# $latex \xi(t)$$    $cnext loss of immunity rate             $rnext
+# $latex \chi(t)$$   $cnext excess mortality rate
+# $tend
+#
 # $head ODE$$
 # The ordinary differential equation for this model is:
 # $latex \[
 # \begin{array}{rcll}
-# \dot{S} & = & - \beta S I / N   & + \xi R                \\
-# \dot{E} & = & + \beta S I / N   & - \sigma E             \\
+# \dot{S} & = & - \beta S I       & + \xi R                \\
+# \dot{E} & = & + \beta S I       & - \sigma E             \\
 # \dot{I} & = & + \sigma E        & - ( \gamma + \chi )  I \\
 # \dot{R} & = & + \gamma I        & - \xi R                \\
 # \dot{D} & = & + \chi I          &
 # \end{array}
 # \] $$
-# where $latex N = S + E + I + R$$ (the population still living).
-# We dropped the time dependence for all the terms in the equations above;
-# e.g., $latex \beta$$ is actually $latex \beta(t)$$.
+# where we dropped the time dependence in the equations above.
+# This model does not account for death by other causes.
+# Some versions of this model use a $latex \beta$$
+# that is scaled by the total population $latex N$$.
 #
-# $head set_t_all$$
+# $head t_all$$
 # The argument $icode t_all$$ is a vector that is monotone
 # increasing or decreasing.
 # The smaller the spacing between time points, the more accurate
@@ -102,6 +116,10 @@ def seird_model(t_all, p_fun, initial) :
 # $codei%%seird%[0,:]%$$ is equal to $icode initial$$.
 # The sequence of floating point operations only depends on $icode t_all$$
 # and the operations used to compute $icode p_fun$$.
+#
+# $head Conservation of Mass$$
+# Note that the sum of S, E, I, R, and D should be constant; i.e.,
+# up to numerical accuracy, it not depend on time.
 #
 # $children%
 #	example/python/numeric/seird_model_xam.py

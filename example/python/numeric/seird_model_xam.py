@@ -77,15 +77,14 @@ def seird_model_xam() :
 		I     = (seird_all[i,2] + seird_all[i+1,2]) / 2.0
 		R     = (seird_all[i,3] + seird_all[i+1,3]) / 2.0
 		D     = (seird_all[i,4] + seird_all[i+1,4]) / 2.0
-		N     = S + E + I + R
 		#
 		# differential equation
 		p     = p_fun(t)
 		dot       = dict()
-		dot['S']  = - p['beta'] * S * I / N + p['xi'] * R
-		dot['E']  = + p['beta'] * S * I / N - p['sigma'] * E
-		dot['I']  = + p['sigma'] * E        - (p['gamma'] + p['chi']) * I
-		dot['R']  = + p['gamma'] * I        - p['xi'] * R
+		dot['S']  = - p['beta'] * S * I + p['xi'] * R
+		dot['E']  = + p['beta'] * S * I - p['sigma'] * E
+		dot['I']  = + p['sigma'] * E    - (p['gamma'] + p['chi']) * I
+		dot['R']  = + p['gamma'] * I    - p['xi'] * R
 		dot['D']  = + p['chi'] * I
 		#
 		# difference over interval
