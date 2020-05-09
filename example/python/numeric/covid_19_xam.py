@@ -25,7 +25,7 @@ plot_truth = False
 # It is a fraction, not a percent value and
 # the value zero corresponds to no noise:
 # $srccode%py%
-death_data_cv = 0.2
+death_data_cv = 0.1
 # %$$
 #
 # $head Random Seed$$
@@ -57,15 +57,15 @@ from seird_model import seird_model
 # t_all
 t_start = 0.0
 t_stop  = 50.0
-t_step  = 2.0
+t_step  = 0.5
 t_all = numpy.arange(t_start, t_stop, t_step)
 #
 # covariates
 n_time = t_all.size
-base_line     = [ 1.0              for t in t_all ]
-close_school  = [ float(5.0  < t)  for t in t_all ]
-stay_home     = [ float(10.0 < t)  for t in t_all ]
-essential     = [ float(15.0 < t)  for t in t_all ]
+base_line     = [ 1.0               for t in t_all ]
+close_school  = [ float(10.0  < t)  for t in t_all ]
+stay_home     = [ float(15.0 < t)   for t in t_all ]
+essential     = [ float(20.0 < t)   for t in t_all ]
 covariates     = numpy.array( [
 	[ base_line[i],  close_school[i], stay_home[i], essential[i] ]
 	for i in range(n_time)
@@ -102,10 +102,10 @@ class p_fun_class :
 # t_all and D_data, are constants relative in the objective function
 def objective_d_fun(t_all, D_data) :
 	#
-	# number of covariates
+	# n_time, n_cov
 	n_time, n_cov = covariates.shape
 	#
-	# number of independent variables in objective function
+	# n_x
 	n_x = n_cov + 2
 	#
 	# x = ( cov_mul, E(0), I(0) )
@@ -141,7 +141,8 @@ def objective_d_fun(t_all, D_data) :
 	#
 	# compute negative log Gaussian likelihood dropping variance terms
 	# because they are constaint w.r.t the parameters we optimize.
-	aresidual = (Ddiff_data - aDdiff_model) / (death_data_cv * Ddiff_data)
+	aresidual = \
+		(Ddiff_data - aDdiff_model) / (1e-5 + death_data_cv * Ddiff_data)
 	aloss     = 0.5 * numpy.sum( aresidual * aresidual)
 	aloss     = numpy.array( [ aloss ] )
 	#
@@ -190,14 +191,16 @@ def covid_19_xam(call_count = 0) :
 		actual_seed = int( 13 * time.time() )
 	else :
 		actual_seed = random_seed
-	random.seed(actual_seed)
+	#
+	# numpy random number generator
+	rng = numpy.random.default_rng()
 	#
 	# D_data
 	D_true       = seird_all_true[:,4]
 	Ddiff_true   = numpy.diff( D_true )
-	mu           = Ddiff_true
 	sigma        = death_data_cv * Ddiff_true
-	Ddiff_data   = random.normalvariate(mu, sigma)
+	noise        = sigma * rng.standard_normal(size = t_all.size - 1)
+	Ddiff_data   = Ddiff_true + noise
 	D_data       = numpy.cumsum(Ddiff_data)
 	D_data       = numpy.concatenate( ([0.0], D_data) )
 	#
@@ -248,7 +251,7 @@ def covid_19_xam(call_count = 0) :
 	for i in range(x_true.size) :
 		rel_error = x_hat[i] / x_true[i] - 1.0
 		# print( x_true[i], x_hat[i], rel_error)
-		ok        = ok and abs(rel_error) < (1e-5 + death_data_cv )
+		ok        = ok and abs(rel_error) < (1e-5 + 10.0 * death_data_cv )
 	#
 	if not ok :
 		msg  = 'covid_19_xam: Correctness test failed, '
