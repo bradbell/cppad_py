@@ -8,15 +8,19 @@
 # $begin numeric_covid_19_xam.py$$ $newlinech #$$
 # $spell
 #	Covid
+#	seird
 # $$
 #
 # $section Example Fitting an SEIRD Model for Covid-19$$
+#
+# $head Model$$
+# We use the $cref/seird/numeric_seird_model/$$ model and notation.
 #
 # $head Plot Truth$$
 # If you set this variable to True, you will get a plot of the
 # values used to simulate the data:
 # $srccode%py%
-plot_truth = False
+plot_truth = True
 # %$$
 #
 # $head Coefficient of Variation$$
@@ -60,13 +64,11 @@ t_all = numpy.arange(t_start, t_stop, t_step)
 #
 # covariates
 n_time = t_all.size
-base_line     = [ 1.0               for t in t_all ]
 close_school  = [ float(10.0  < t)  for t in t_all ]
 stay_home     = [ float(15.0 < t)   for t in t_all ]
 essential     = [ float(20.0 < t)   for t in t_all ]
 covariates     = numpy.array( [
-	[ base_line[i],  close_school[i], stay_home[i], essential[i] ]
-	for i in range(n_time)
+	[ close_school[i], stay_home[i], essential[i] ] for i in range(n_time)
 ] )
 #
 # p_fun_class
@@ -82,8 +84,8 @@ class p_fun_class :
 		# linear interpolation coefficients
 		ip     = i + 1
 		t_diff = t_all[ip] - t_all[i]
-		left   = ( t_all[ip] - t ) / t_diff
-		right  = ( t - t_all[i]  ) / t_diff
+		left   = ( t_all[ip] - t         ) / t_diff
+		right  = ( t         - t_all[i]  ) / t_diff
 		# beta changes with time are continuous at all points in t_all
 		# and smooth for times not in t_all
 		beta   = left * self.beta_all[i] + right * self.beta_all[ip]
@@ -104,24 +106,25 @@ def objective_d_fun(t_all, D_data) :
 	n_time, n_cov = covariates.shape
 	#
 	# n_x
-	n_x = n_cov + 2
+	n_x = n_cov + 3
 	#
-	# x = ( cov_mul, E(0), I(0) )
+	# x = ( E(0), I(0), baseline, cov_mul )
 	# Note that R(0) = D(0) = 0 and S(0) = 1 - E(0) - I(0)
 	x  = 0.1 * numpy.ones(n_x)
 	ax = cppad_py.independent(x)
 	#
 	# abeta_all
-	cov_mul    = ax[0 : n_cov]
-	abeta_all  = numpy.matmul(covariates, cov_mul)
+	abaseline = ax[2]
+	acov_mul  = ax[3 :]
+	abeta_all = abaseline * (1.0 + numpy.matmul(covariates, acov_mul))
 	#
 	# ainitial
-	aE_0      = ax[n_cov + 0]
-	aI_0      = ax[n_cov + 1]
-	aR_0      = 0.0
-	aD_0      = 0.0
-	aS_0      = 1.0 - aE_0 - aI_0
-	ainitial  = numpy.array( [aS_0, aE_0, aI_0, aR_0, aD_0] )
+	aE0      = ax[0]
+	aI0      = ax[1]
+	aR0      = 0.0
+	aD0      = 0.0
+	aS0      = 1.0 - aE0 - aI0
+	ainitial = numpy.array( [aS0, aE0, aI0, aR0, aD0] )
 	#
 	# p_fun
 	ap_fun_obj = p_fun_class(abeta_all)
@@ -130,10 +133,10 @@ def objective_d_fun(t_all, D_data) :
 	# compute model for data
 	aseird_all = seird_model(t_all, ap_fun, ainitial)
 	#
-	# Model for the derivative of the death data
+	# Model for the cumulative death as function of time
 	aD_model   = aseird_all[:,4] # column order is S, E, I, R, D
 	#
-	# Differences of the death data
+	# Differences of the death over the time intervals
 	Ddiff_data   = numpy.diff(D_data)
 	aDdiff_model = numpy.diff(aD_model)
 	#
@@ -150,11 +153,15 @@ def objective_d_fun(t_all, D_data) :
 def covid_19_xam(call_count = 0) :
 	ok = True
 	#
+	# baseline_true
+	baseline_true = 0.20
+	#
 	# cov_mul_true
-	cov_mul_true  = numpy.array( [ 0.35, - 0.1, - 0.1, - 0.1 ] )
+	cov_mul_true  = numpy.array( [ - 0.2, - 0.2, - 0.2 ] )
 	#
 	# beta_all_true
-	beta_all_true = numpy.matmul(covariates, cov_mul_true)
+	covariate_effect = numpy.matmul(covariates, cov_mul_true)
+	beta_all_true    = baseline_true * (1.0 + covariate_effect)
 	#
 	# p_fun_true
 	p_fun_obj   = p_fun_class(beta_all_true)
@@ -163,13 +170,13 @@ def covid_19_xam(call_count = 0) :
 	# compute model for data
 	#
 	# initial_true: (must satisfy S + E + I = 1, R = D = 0)
-	I_start      = 0.02
-	E_start      = 0.02
-	S_start      = 1.0 - E_start - I_start
-	R_start      = 0.0
-	D_start      = 0.0
+	I0_true     = 0.02
+	E0_true     = 0.02
+	S0_true     = 1.0 - E0_true - I0_true
+	R0_true     = 0.0
+	D0_true     = 0.0
 	initial_true = numpy.array(
-		[ S_start, E_start, I_start, R_start, D_start ]
+		[ S0_true, E0_true, I0_true, R0_true, D0_true ]
 	)
 	#
 	# noiseless simulated data
@@ -184,7 +191,7 @@ def covid_19_xam(call_count = 0) :
 		ax.legend()
 		pyplot.show()
 	#
-	# check conversation of masss in the compartmental model
+	# check conservation of masss in the compartmental model
 	sum_all_true = numpy.sum(seird_all_true, axis=1)
 	eps99 = 99.0 * numpy.finfo(float).eps
 	ok    = ok and max( abs(sum_all_true - 1.0) ) < eps99
@@ -195,8 +202,8 @@ def covid_19_xam(call_count = 0) :
 	else :
 		actual_seed = random_seed
 	#
-	# numpy random number generator
-	rng = numpy.random.default_rng()
+	# rng: numpy random number generator
+	rng = numpy.random.default_rng(seed = actual_seed)
 	#
 	# D_data
 	D_true       = seird_all_true[:,4]
@@ -214,9 +221,10 @@ def covid_19_xam(call_count = 0) :
 	optimize_fun = optimize_fun_class(objective_ad)
 	#
 	# x_true
-	E_0_true = initial_true[1]
-	I_0_true = initial_true[2]
-	x_true   = numpy.concatenate( (cov_mul_true, [ E_0_true, I_0_true ]) )
+	n_cov       = cov_mul_true.size
+	x_true      = numpy.empty( 3 + n_cov, dtype=float)
+	x_true[0:3] = [ E0_true, I0_true, baseline_true ]
+	x_true[3:]  = cov_mul_true
 	#
 	# bounds
 	lower_bound = numpy.empty(x_true.size, dtype=float)
@@ -265,7 +273,7 @@ def covid_19_xam(call_count = 0) :
 	for i in range(x_true.size) :
 		rel_error = x_hat[i] / x_true[i] - 1.0
 		residual  = (x_hat[i] - x_true[i]) / std_error[i]
-		# print( x_true[i], x_hat[i], std_error[i], residual )
+		print( x_true[i], x_hat[i], std_error[i], residual )
 		ok        = ok and abs(residual) < 2.0
 	#
 	if not ok :

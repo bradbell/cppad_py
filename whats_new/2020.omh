@@ -37,6 +37,12 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 05-09$$
+The $cref/Covid-19 modeling example/numeric_covid_19_xam.py/$$ application
+of AD is changing on a regular basis, so the details of the
+changes will no longer be tracked in this file, just see current
+example if you are interested.
+
 $head 05-08$$
 $list number$$
 The $code numeric_seirs_fit_xam.py$$ example was renamed
