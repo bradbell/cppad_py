@@ -30,7 +30,7 @@
 # the values corresponding to all the covariates being zero.
 # Our model for the infectious rate is
 # $latex \[
-#	\beta(t) = \beta_b * \left( 1 + \sum_{j=0}^2 m_j c_j (t) \right)
+#	\beta(t) = \beta_b \left( 1 + \sum_{j=0}^2 m_j c_j (t) \right)
 # \] $$
 # Here $latex \beta_b$$ is the baseline value for the infectious rate,
 # $latex c_j (t)$$ is the j-th zero / one covariate as a function of time,
