@@ -14,6 +14,11 @@ Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 ## Documentation
 <https://bradbell.github.io/cppad_py/doc>
 
+## Covid-19
+A Covid-19 model, that is currently being improved,
+is included as an example; see
+[covid_19_xam](https://bradbell.github.io/cppad_py/doc/numeric_covid_19_xam.py.htm)
+
 ## Install
 
 ### Error
