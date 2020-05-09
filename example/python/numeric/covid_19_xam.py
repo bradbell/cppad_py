@@ -9,6 +9,8 @@
 # $spell
 #	Covid
 #	seird
+#	Covariates
+#	Covariate
 # $$
 #
 # $section Example Fitting an SEIRD Model for Covid-19$$
@@ -16,11 +18,78 @@
 # $head Model$$
 # We use the $cref/seird/numeric_seird_model/$$ model and notation.
 #
+# $head Covariates$$
+# In this example there are three covariates that
+# affect the infectious rate $latex \beta$$:
+# close schools, stay at home directive, and essential works only directive.
+# The corresponding covariate is one (zero) if the order is (is not)
+# in effect.
+#
+# $head beta(t)$$
+# We use $icode baseline$$ for the infectious rate; i.e.,
+# the values corresponding to all the covariates being zero.
+# Our model for the infectious rate is
+# $latex \[
+#	\beta(t) = \beta_b * \left( 1 + \sum_{j=0}^2 m_j c_j (t) \right)
+# \] $$
+# Here $latex \beta_b$$ is the baseline value for the infectious rate,
+# $latex c_j (t)$$ is the j-th zero / one covariate as a function of time,
+# and $latex m_j$$ is the j-th covariate multiplier.
+# The covariates are known functions of time.
+# The covariate multipliers and the baseline infectious rate are unknown.
+# parameters in the model (we expect them to be negative).
+#
+# $head Other Rates$$
+# The other rates
+# $latex \sigma(t)$$,
+# $latex \gamma(t)$$,
+# $latex \xi(t)$$,
+# $latex \chi(t)$$,
+# constant functions with a known value.
+#
+# $head Initial Values$$
+# The initial values for the Recovered group $latex R(0)$$
+# and for the Death group $latex D(0)$$ are zero.
+# We use fraction of the total population, so the sum of the
+# other initial values is one.
+# We treat the initial Exposed group $latex E(0)$$ and the initial
+# infected group $latex I(0)$$ as unknown parameters in the model
+# and use the relation
+# $latex \[
+#	S(0) = 1 - E(0) - I(0)
+# \] $$
+# two expression the initial Susceptible group as a function
+# of the unknown parameters.
+#
+# $head Unknown Parameter Vector$$
+# In summary, the unknown parameter vector in this model is
+# $latex \[
+#	x = [ E(0), I(0), \beta_b , m_0 , m_1, m_2 ]
+# \] $$
+#
+# $head Data$$
+# The data in this model is cumulative number of deaths,
+# as a fraction of the total population and as a function of time.
+# We assume that new deaths are recorded at regular time intervals
+# and the cumulative deaths is the sum of these recordings.
+# For this reason, we model the difference of the cumulative deaths
+# between time points as independent.
+#
+# $head Maximum Likelihood$$
+# We use a Gaussian likelihood for each of the differences in the
+# cumulative deaths. The parameters are estimated by maximizing the
+# likelihood. The covariance of the parameter estimate is approximated
+# by the inverse of the observed information matrix.
+# AD is used to compute first and second derivatives of the likelihood
+# w.r.t. the unknown parameters $latex x$$.
+# These derivatives are used during optimization as well as for
+# computing the observed information matrix.
+#
 # $head Plot Truth$$
 # If you set this variable to True, you will get a plot of the
 # values used to simulate the data:
 # $srccode%py%
-plot_truth = True
+plot_truth = False
 # %$$
 #
 # $head Coefficient of Variation$$
@@ -273,7 +342,7 @@ def covid_19_xam(call_count = 0) :
 	for i in range(x_true.size) :
 		rel_error = x_hat[i] / x_true[i] - 1.0
 		residual  = (x_hat[i] - x_true[i]) / std_error[i]
-		print( x_true[i], x_hat[i], std_error[i], residual )
+		# print( x_true[i], x_hat[i], std_error[i], residual )
 		ok        = ok and abs(residual) < 2.0
 	#
 	if not ok :
