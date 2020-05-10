@@ -83,11 +83,10 @@
 # These derivatives are used during optimization as well as for
 # computing the observed information matrix.
 #
-# $head Plot Truth$$
-# If you set this variable to True, you will get a plot of the
-# values used to simulate the data:
+# $head Plot Fit$$
+# If you set this variable to True, you will get a plot of the fit results.
 # $srccode%py%
-plot_truth = False
+plot_fit = False
 # %$$
 #
 # $head Coefficient of Variation$$
@@ -156,6 +155,12 @@ E0_true     = 0.02
 S0_true     = 1.0 - E0_true - I0_true
 R0_true     = 0.0
 D0_true     = 0.0
+#
+# actual_seed
+if random_seed == 0 :
+	actual_seed = int( 13 * time.time() )
+else :
+	actual_seed = random_seed
 #
 # p_fun_class
 class p_fun_class :
@@ -238,7 +243,7 @@ def objective_d_fun(t_all, D_data) :
 	#
 	objective_ad = cppad_py.d_fun(ax, aloss)
 	return objective_ad
-
+#
 def simulate_data() :
 	#
 	x_true = numpy.empty(6, dtype=float)
@@ -247,26 +252,6 @@ def simulate_data() :
 	#
 	# noiseless simulated data
 	seird_all_true = x2seird_all(x_true)
-	if plot_truth :
-		ax = pyplot.subplot(111)
-		ax.plot(t_all, seird_all_true[:,0], 'b-', label='S')
-		ax.plot(t_all, seird_all_true[:,1], 'g-', label='E')
-		ax.plot(t_all, seird_all_true[:,2], 'r-', label='I')
-		ax.plot(t_all, seird_all_true[:,3], 'k-', label='R')
-		ax.plot(t_all, seird_all_true[:,4], 'y-', label='D')
-		ax.legend()
-		pyplot.show()
-	#
-	# check conservation of masss in the compartmental model
-	# sum_all_true = numpy.sum(seird_all_true, axis=1)
-	# eps99 = 99.0 * numpy.finfo(float).eps
-	# ok    = ok and max( abs(sum_all_true - 1.0) ) < eps99
-	#
-	# actual_seed
-	if random_seed == 0 :
-		actual_seed = int( 13 * time.time() )
-	else :
-		actual_seed = random_seed
 	#
 	# rng: numpy random number generator
 	rng = numpy.random.default_rng(seed = actual_seed)
@@ -360,5 +345,23 @@ def covid_19_xam(call_count = 0) :
 		if call_count < 2 and random_seed == 0 :
 			print( 're-trying with a differenent random seed')
 			ok = covid_19_xam(call_count)
+	#
+	# plot_fit
+	seird_all_fit = x2seird_all(x_hat)
+	if plot_fit and ok :
+		ax = pyplot.subplot(111)
+		ax.plot(t_all, seird_all_fit[:,0], 'b-', label='S')
+		ax.plot(t_all, seird_all_fit[:,1], 'g-', label='E')
+		ax.plot(t_all, seird_all_fit[:,2], 'r-', label='I')
+		ax.plot(t_all, seird_all_fit[:,3], 'k-', label='R')
+		ax.plot(t_all, seird_all_fit[:,4], 'y-', label='D')
+		ax.legend()
+		pyplot.show()
+	#
+	# check conservation of masss in the compartmental model
+	sum_all_fit = numpy.sum(seird_all_fit, axis=1)
+	eps99       = 99.0 * numpy.finfo(float).eps
+	ok          = ok and max( abs(sum_all_fit - 1.0) ) < eps99
+	#
 	return ok
 # END_PYTHON
