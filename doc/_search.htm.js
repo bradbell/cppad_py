@@ -3,7 +3,7 @@
 // ------------------------------------------------------------ 
 Keyword = 
 [
-{ tag: 'cppad_py', title:'cppad_py-2020.5.9: A C++ Object Library and Python Interface to CppAD', other:' git repository purpose getting started numerical examples function speed license' },
+{ tag: 'cppad_py', title:'cppad_py-2020.5.10: A C++ Object Library and Python Interface to CppAD', other:' git repository purpose getting started numerical examples function speed license' },
 { tag: 'setup.py', title:'Configure and Build the cppad_py Python Module', other:' syntax external requirements install using pip errors download top source directory get test c++ import path' },
 { tag: 'install_error', title:'Error Messages During Installation', other:' solved swig permissions cppad library missing fortify source unsolved travis' },
 { tag: 'get_cppad.sh', title:'Get Cppad', other:' syntax top source directory settings cppad_prefix extra_cxx_flags build_type test_cppad caching' },
@@ -16,7 +16,7 @@ Keyword =
 { tag: 'numeric_optimize_fun_xam.py', title:'Example Using optimize_fun_class with Scipy Optimization', other:' reference problem trust_constr source code' },
 { tag: 'numeric_seird_model', title:'A Susceptible Exposed Infectious Recovered and Death Model', other:' syntax notation t_all p_fun initial seird_all conservation mass example source code' },
 { tag: 'numeric_seird_model_xam.py', title:'Example Using seris_model', other:'' },
-{ tag: 'numeric_covid_19_xam.py', title:'Example Fitting an SEIRD Model for Covid-19', other:' covariates beta(t) other rates initial values unknown parameter vector data maximum likelihood plot truth coefficient variation random seed source code' },
+{ tag: 'numeric_covid_19_xam.py', title:'Example Fitting an SEIRD Model for Covid-19', other:' covariates beta(t) other rates initial values unknown parameters data maximum likelihood plot print coefficient variation residuals random seed file source code' },
 { tag: 'library', title:'The Cppad Py Libraries', other:'' },
 { tag: 'py_lib', title:'The Python Library', other:'' },
 { tag: 'py_fun', title:'Cppad Py AD Functions', other:'' },
