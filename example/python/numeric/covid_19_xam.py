@@ -128,6 +128,20 @@ death_data_cv = 0.1
 random_seed = 0
 # %$$
 #
+# $head Data File$$
+# If the data file name is the empty string, the cumulative death data,
+# and corresponding covariates, are created by the program.
+# Otherwise, the data file must be a CSV file with header
+# $codei%
+#	day,death,mobility,temperature,testing
+# %$$
+# In this case the data file is used for the
+# cumulative death and corresponding covariates.
+# $srccode%py%
+data_file = '/home/bradbell/trash/covid_19/seird.csv'
+data_file = ''
+# %$$
+#
 # $head Source Code$$
 # $srcthisfile%
 #	0%# BEGIN_PYTHON%# END_PYTHON%1
@@ -141,29 +155,45 @@ import scipy.optimize
 import numpy
 import random
 import time
+import csv
 #
 import cppad_py
 import runge4
 from optimize_fun_class import optimize_fun_class
 from seird_model import seird_model
 #
-# t_all
-t_start = 0.0
-t_stop  = 60.0
-t_step  = 0.5
-t_all = numpy.arange(t_start, t_stop, t_step)
-#
-# covariates
-# Note that we scale and shift our covariates so zero corresponds to the
-# baseline infectious rate and so that their variation is order one.
-n_time = t_all.size
-covariates   = numpy.empty( (n_time, 3) )
-for i in range(n_time) :
-	t               = t_all[i]
-	mobility        = 0.0 if t < 10.0 else -1.0
-	temperature     = numpy.sin(2.0 * numpy.pi * t / t_stop )
-	testing         = t / t_stop
-	covariates[i,:] = [ mobility, temperature, testing ]
+# t_all, covariates
+if data_file != '' :
+	# getting cumulative death and covariates from data_file
+	file_in   = open(data_file, 'r')
+	file_data = list()
+	reader    = csv.DictReader(file_in)
+	for row in reader :
+		file_data.append(row)
+	file_in.close()
+	n_time       = len(file_data)
+	t_all        = numpy.empty(n_time, dtype=float)
+	covariates   = numpy.empty( (n_time, 3) )
+	for i in range(n_time) :
+		t_all[i]        = float( file_data[i]['day'] )
+		covariates[i,0] = float( file_data[i]['mobility'] )
+		covariates[i,1] = float( file_data[i]['temperature'] )
+		covariates[i,2] = float( file_data[i]['testing'] )
+else :
+	# simulating cumulative death and covariates
+	t_start = 0.0
+	t_stop  = 60.0
+	t_step  = 0.5
+	t_all = numpy.arange(t_start, t_stop, t_step)
+	#
+	n_time = t_all.size
+	covariates   = numpy.empty( (n_time, 3) )
+	for i in range(n_time) :
+		t               = t_all[i]
+		mobility        = 0.0 if t < 10.0 else -1.0
+		temperature     = numpy.sin(2.0 * numpy.pi * t / t_stop )
+		testing         = t / t_stop
+		covariates[i,:] = [ mobility, temperature, testing ]
 #
 # baseline_true
 baseline_true = 0.15
