@@ -87,7 +87,7 @@
 # $head Plot Fit$$
 # If you set this variable to True, you will get a plot of the fit results.
 # $srccode%py%
-plot_fit = True
+plot_fit = False
 # %$$
 # There are two plots. One contains the size for all the compartments
 # as a function of time and as a fraction of the total population.
@@ -195,18 +195,18 @@ else :
 		testing         = t / t_stop
 		covariates[i,:] = [ mobility, temperature, testing ]
 #
-# baseline_true
-baseline_true = 0.15
+# baseline_sim
+baseline_sim = 0.15
 #
-# cov_mul_true
-cov_mul_true  = numpy.array( [ - 0.2, - 0.3, - 0.4 ] )
+# cov_mul_sim
+cov_mul_sim  = numpy.array( [ - 0.2, - 0.3, - 0.4 ] )
 #
 # true initial conditions used to simulate data
-I0_true     = 0.02
-E0_true     = 0.02
-S0_true     = 1.0 - E0_true - I0_true
-R0_true     = 0.0
-D0_true     = 0.0
+I0_sim     = 0.02
+E0_sim     = 0.02
+S0_sim     = 1.0 - E0_sim - I0_sim
+R0_sim     = 0.0
+D0_sim     = 0.0
 #
 # actual_seed
 if random_seed == 0 :
@@ -299,24 +299,24 @@ def objective_d_fun(t_all, D_data) :
 #
 def simulate_data() :
 	#
-	x_true = numpy.empty(6, dtype=float)
-	x_true[0:3] = [ E0_true, I0_true, baseline_true ]
-	x_true[3 :] = cov_mul_true
+	x_sim = numpy.empty(6, dtype=float)
+	x_sim[0:3] = [ E0_sim, I0_sim, baseline_sim ]
+	x_sim[3 :] = cov_mul_sim
 	#
 	# noiseless simulated data
-	seird_all_true = x2seird_all(x_true)
+	seird_all_sim = x2seird_all(x_sim)
 	#
 	# rng: numpy random number generator
 	rng = numpy.random.default_rng(seed = actual_seed)
 	#
 	# D_data
-	D_true       = seird_all_true[:,4]
-	Ddiff_true   = numpy.diff( D_true )
-	std          = death_data_cv * Ddiff_true
-	noise        = std * rng.standard_normal(size = t_all.size - 1)
-	Ddiff_data   = Ddiff_true + noise
-	D_data       = numpy.cumsum(Ddiff_data)
-	D_data       = numpy.concatenate( ([0.0], D_data) )
+	D_sim       = seird_all_sim[:,4]
+	Ddiff_sim   = numpy.diff( D_sim )
+	std         = death_data_cv * Ddiff_sim
+	noise       = std * rng.standard_normal(size = t_all.size - 1)
+	Ddiff_data  = Ddiff_sim + noise
+	D_data      = numpy.cumsum(Ddiff_data)
+	D_data      = numpy.concatenate( ([0.0], D_data) )
 	#
 	return D_data
 
@@ -332,21 +332,21 @@ def covid_19_xam(call_count = 0) :
 	# objective: fun, grad, hess
 	optimize_fun = optimize_fun_class(objective_ad)
 	#
-	# x_true
-	x_true      = numpy.empty( 6, dtype=float)
-	x_true[0:3] = [ E0_true, I0_true, baseline_true ]
-	x_true[3:]  = cov_mul_true
+	# x_sim
+	x_sim      = numpy.empty( 6, dtype=float)
+	x_sim[0:3] = [ E0_sim, I0_sim, baseline_sim ]
+	x_sim[3:]  = cov_mul_sim
 	#
 	# bounds
-	lower_bound = numpy.empty(x_true.size, dtype=float)
-	upper_bound = numpy.empty(x_true.size, dtype=float)
-	for i in range(x_true.size) :
-		if x_true[i] > 0.0 :
-			lower_bound[i] = x_true[i] / 5.0
-			upper_bound[i] = x_true[i] * 5.0
+	lower_bound = numpy.empty(x_sim.size, dtype=float)
+	upper_bound = numpy.empty(x_sim.size, dtype=float)
+	for i in range(x_sim.size) :
+		if x_sim[i] > 0.0 :
+			lower_bound[i] = x_sim[i] / 5.0
+			upper_bound[i] = x_sim[i] * 5.0
 		else :
-			lower_bound[i] = x_true[i] * 5.0
-			upper_bound[i] = x_true[i] / 5.0
+			lower_bound[i] = x_sim[i] * 5.0
+			upper_bound[i] = x_sim[i] / 5.0
 	bounds = scipy.optimize.Bounds(
 		lower_bound,
 		upper_bound,
@@ -358,7 +358,7 @@ def covid_19_xam(call_count = 0) :
 		'maxiter' : 300,
 		'verbose' : 0,
 	}
-	start_point     = x_true / 2.0
+	start_point     = x_sim / 2.0
 	result = scipy.optimize.minimize(
 		optimize_fun.objective_fun,
 		start_point,
@@ -381,10 +381,10 @@ def covid_19_xam(call_count = 0) :
 	std_error = numpy.sqrt( numpy.diag(Hinv) )
 	#
 	# check that all the weighted residuals are less than two
-	for i in range(x_true.size) :
-		rel_error = x_fit[i] / x_true[i] - 1.0
-		residual  = (x_fit[i] - x_true[i]) / std_error[i]
-		print( x_true[i], x_fit[i], rel_error, std_error[i], residual )
+	for i in range(x_sim.size) :
+		rel_error = x_fit[i] / x_sim[i] - 1.0
+		residual  = (x_fit[i] - x_sim[i]) / std_error[i]
+		# print( x_sim[i], x_fit[i], rel_error, std_error[i], residual )
 		if death_data_cv > 0.0 :
 			ok = ok and abs(residual) < 2.0
 		else :
