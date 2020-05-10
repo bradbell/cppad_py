@@ -21,23 +21,20 @@
 # $head Covariates$$
 # In this example there are three covariates that
 # affect the infectious rate $latex \beta$$:
-# close schools, stay at home directive, and essential works only directive.
-# The corresponding covariate is one (zero) if the order is (is not)
-# in effect.
+# social mobility, outdoor temperature, and Covid-19 testing.
 #
 # $head beta(t)$$
-# We use $icode baseline$$ for the infectious rate; i.e.,
-# the values corresponding to all the covariates being zero.
 # Our model for the infectious rate is
 # $latex \[
 #	\beta(t) = \beta_b \left( 1 + \sum_{j=0}^2 m_j c_j (t) \right)
 # \] $$
-# Here $latex \beta_b$$ is the baseline value for the infectious rate,
-# $latex c_j (t)$$ is the j-th zero / one covariate as a function of time,
+# where $latex \beta_b$$ is the baseline value for the infectious rate,
+# $latex c_j (t)$$ is the j-th covariate as a function of time,
 # and $latex m_j$$ is the j-th covariate multiplier.
 # The covariates are known functions of time.
-# The covariate multipliers and the baseline infectious rate are unknown.
-# parameters in the model (we expect them to be negative).
+# The baseline value $latex \beta_b$$ is the infectious rate corresponding
+# to all the covariates being zero.
+# The covariate multipliers, and the baseline infectious rate, are unknown.
 #
 # $head Other Rates$$
 # The other rates
@@ -127,18 +124,21 @@ from seird_model import seird_model
 #
 # t_all
 t_start = 0.0
-t_stop  = 50.0
+t_stop  = 60.0
 t_step  = 0.5
 t_all = numpy.arange(t_start, t_stop, t_step)
 #
 # covariates
+# Note that we scale and shift our covariates so zero correpsonds to the
+# baseline infectious rate and so that their variation is order one.
 n_time = t_all.size
-close_school  = [ float(10.0  < t)  for t in t_all ]
-stay_home     = [ float(15.0 < t)   for t in t_all ]
-essential     = [ float(20.0 < t)   for t in t_all ]
-covariates     = numpy.array( [
-	[ close_school[i], stay_home[i], essential[i] ] for i in range(n_time)
-] )
+covariates   = numpy.empty( (n_time, 3) )
+for i in range(n_time) :
+	t               = t_all[i]
+	mobility        = 0.0 if t < 10.0 else -1.0
+	temperature     = numpy.sin(2.0 * numpy.pi * t / t_stop )
+	testing         = t / t_stop
+	covariates[i,:] = [ mobility, temperature, testing ]
 #
 # p_fun_class
 class p_fun_class :
@@ -160,10 +160,10 @@ class p_fun_class :
 		beta   = left * self.beta_all[i] + right * self.beta_all[ip]
 		p      = {
 			'beta'  : beta,
-			'sigma' : 1.0 / 5.0,   # The other rates are fixed constants
-			'gamma' : 1.0 / 20.0,
-			'chi'   : 1.0 / 200.0,
-			'xi'    : 1.0 / 365.0,
+			'sigma' : 1.0 / 5.0,   # average Exposed is 5 days
+			'gamma' : 1.0 / 20.0,  # average Infectious is 20 days
+			'chi'   : 1.0 / 200.0, # rate of death is 1/10 recovery rate
+			'xi'    : 1.0 / 365.0, # average immunity is 365 days
 		}
 		return p
 #
@@ -223,10 +223,10 @@ def covid_19_xam(call_count = 0) :
 	ok = True
 	#
 	# baseline_true
-	baseline_true = 0.20
+	baseline_true = 0.15
 	#
 	# cov_mul_true
-	cov_mul_true  = numpy.array( [ - 0.2, - 0.2, - 0.2 ] )
+	cov_mul_true  = numpy.array( [ - 0.2, - 0.3, - 0.4 ] )
 	#
 	# beta_all_true
 	covariate_effect = numpy.matmul(covariates, cov_mul_true)
@@ -342,7 +342,7 @@ def covid_19_xam(call_count = 0) :
 	for i in range(x_true.size) :
 		rel_error = x_hat[i] / x_true[i] - 1.0
 		residual  = (x_hat[i] - x_true[i]) / std_error[i]
-		# print( x_true[i], x_hat[i], std_error[i], residual )
+		# print( x_true[i], x_hat[i], rel_error, std_error[i], residual )
 		ok        = ok and abs(residual) < 2.0
 	#
 	if not ok :
