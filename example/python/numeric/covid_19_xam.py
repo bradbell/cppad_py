@@ -75,8 +75,8 @@
 #
 # $head Maximum Likelihood$$
 # We use a Gaussian likelihood for each of the differences in the
-# cumulative deaths. The parameters are estimated by maximizing the
-# likelihood. The covariance of the parameter estimate is approximated
+# cumulative deaths. The unknown parameters are estimated by maximizing the
+# likelihood. The covariance of the estimates is approximated
 # by the inverse of the observed information matrix.
 # AD is used to compute first and second derivatives of the likelihood
 # w.r.t. the unknown parameters $latex x$$.
@@ -94,7 +94,8 @@ plot_fit = False
 # in the cumulative death data as a fraction, not a percent.
 # If this value is zero, there is a CV of zero for data simulation
 # and a CV of one in the definition of the likelihood.
-# This enables checking that the parameters are identifiable with perfect data.
+# This enables checking that the unknown parameters can be accurately
+# identified using perfect data.
 # $srccode%py%
 death_data_cv = 0.1
 # %$$
@@ -163,6 +164,7 @@ else :
 	actual_seed = random_seed
 #
 # p_fun_class
+# Returns the parameters in the ODE (not the unknown parameters)
 class p_fun_class :
 	def __init__(self, beta_all) :
 		self.beta_all = beta_all
@@ -234,7 +236,7 @@ def objective_d_fun(t_all, D_data) :
 	aDdiff_model = numpy.diff(aD_model)
 	#
 	# compute negative log Gaussian likelihood dropping variance terms
-	# because they are constaint w.r.t the parameters we optimize.
+	# because they are constaint w.r.t the unknown parameters
 	aresidual = (Ddiff_data - aDdiff_model) / Ddiff_data
 	if death_data_cv > 0.0 :
 		aresidual = aresidual / death_data_cv
@@ -316,22 +318,22 @@ def covid_19_xam(call_count = 0) :
 		bounds      = bounds,
 	)
 	ok      = ok and result.success
-	x_hat   = result.x
+	x_fit   = result.x
 	#
 	# compute the observed infromation matrix
-	H = optimize_fun.objective_hess(x_hat)
+	H = optimize_fun.objective_hess(x_fit)
 	#
-	# approxiamtion for covariance of the estimate x_hat
+	# approxiamtion for covariance of the estimate x_fit
 	Hinv = numpy.linalg.inv(H)
 	#
-	# standard devaition for each component of x_hat
+	# standard devaition for each component of x_fit
 	std_error = numpy.sqrt( numpy.diag(Hinv) )
 	#
 	# check that all the weighted residuals are less than two
 	for i in range(x_true.size) :
-		rel_error = x_hat[i] / x_true[i] - 1.0
-		residual  = (x_hat[i] - x_true[i]) / std_error[i]
-		print( x_true[i], x_hat[i], rel_error, std_error[i], residual )
+		rel_error = x_fit[i] / x_true[i] - 1.0
+		residual  = (x_fit[i] - x_true[i]) / std_error[i]
+		print( x_true[i], x_fit[i], rel_error, std_error[i], residual )
 		if death_data_cv > 0.0 :
 			ok = ok and abs(residual) < 2.0
 		else :
@@ -347,7 +349,7 @@ def covid_19_xam(call_count = 0) :
 			ok = covid_19_xam(call_count)
 	#
 	# plot_fit
-	seird_all_fit = x2seird_all(x_hat)
+	seird_all_fit = x2seird_all(x_fit)
 	if plot_fit and ok :
 		ax = pyplot.subplot(111)
 		ax.plot(t_all, seird_all_fit[:,0], 'b-', label='S')
