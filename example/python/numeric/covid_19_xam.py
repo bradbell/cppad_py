@@ -92,6 +92,9 @@ plot_truth = False
 # $head Coefficient of Variation$$
 # This is the coefficient of variation for the differences
 # in the cumulative death data as a fraction, not a percent.
+# If this value is zero, there is a cv of zero for data simulation
+# and a cv of one in the definition of the likelihood.
+# This enables checking that the parameters are identifiable with perfect data.
 # $srccode%py%
 death_data_cv = 0.1
 # %$$
@@ -211,8 +214,9 @@ def objective_d_fun(t_all, D_data) :
 	#
 	# compute negative log Gaussian likelihood dropping variance terms
 	# because they are constaint w.r.t the parameters we optimize.
-	aresidual = \
-		(Ddiff_data - aDdiff_model) / ( death_data_cv * Ddiff_data)
+	aresidual = (Ddiff_data - aDdiff_model) / Ddiff_data
+	if death_data_cv > 0.0 :
+		aresidual = aresidual / death_data_cv
 	aloss     = 0.5 * numpy.sum( aresidual * aresidual)
 	aloss     = numpy.array( [ aloss ] )
 	#
@@ -277,8 +281,8 @@ def covid_19_xam(call_count = 0) :
 	# D_data
 	D_true       = seird_all_true[:,4]
 	Ddiff_true   = numpy.diff( D_true )
-	sigma        = death_data_cv * Ddiff_true
-	noise        = sigma * rng.standard_normal(size = t_all.size - 1)
+	std          = death_data_cv * Ddiff_true
+	noise        = std * rng.standard_normal(size = t_all.size - 1)
 	Ddiff_data   = Ddiff_true + noise
 	D_data       = numpy.cumsum(Ddiff_data)
 	D_data       = numpy.concatenate( ([0.0], D_data) )
@@ -342,8 +346,11 @@ def covid_19_xam(call_count = 0) :
 	for i in range(x_true.size) :
 		rel_error = x_hat[i] / x_true[i] - 1.0
 		residual  = (x_hat[i] - x_true[i]) / std_error[i]
-		# print( x_true[i], x_hat[i], rel_error, std_error[i], residual )
-		ok        = ok and abs(residual) < 2.0
+		print( x_true[i], x_hat[i], rel_error, std_error[i], residual )
+		if death_data_cv > 0.0 :
+			ok = ok and abs(residual) < 2.0
+		else :
+			ok = ok and abs(rel_error) < 1e-5
 	#
 	if not ok :
 		msg  = 'covid_19_xam: Correctness test failed, '
