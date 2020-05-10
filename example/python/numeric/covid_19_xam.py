@@ -12,6 +12,9 @@
 #	Covariates
 #	Covariate
 #	cv
+#	sim
+#	rel
+#	std
 # $$
 #
 # $section Example Fitting an SEIRD Model for Covid-19$$
@@ -43,7 +46,11 @@
 # $latex \gamma(t)$$,
 # $latex \xi(t)$$,
 # $latex \chi(t)$$,
-# constant functions with a known value.
+# constant functions with the following known values:
+# $srcthisfile%
+#	0%# BEGIN_KNOWN_RATES%# END_KNOWN_RATES%1
+# %$$
+# see $code BEGIN_KNOWN_RATES$$ in the source code below.
 #
 # $head Initial Values$$
 # The initial size of the Recovered group $latex R(0)$$
@@ -85,14 +92,30 @@
 # computing the observed information matrix.
 #
 # $head Plot Fit$$
-# If you set this variable to True, you will get a plot of the fit results.
+# If you set this variable to True,
+# a printout and a plot of the fit results.
 # $srccode%py%
 plot_fit = False
 # %$$
-# There are two plots. One contains the size for all the compartments
-# as a function of time and as a fraction of the total population.
-# The other plot is the weighted residuals for the death difference
-# data as a function of time.
+#
+# $subhead Plot$$
+# There are three plots all with time on the x-axis.
+# The first contains the size for all the compartments
+# as a fraction of the total population.
+# The second contains the model and data for the death difference values.
+# The third contains the weighted residuals corresponding to the death
+# difference data.
+#
+# $subhead Print$$
+# If $icode data_file$$ is empty, there will also be a
+# print out with the following columns:
+# $table
+# $icode x_sim$$ $cnext unknown parameter value used during simulation $rnext
+# $icode x_fit$$ $cnext result of fit for the corresponding parameter  $rnext
+# $icode rel_error$$ $cnext relative error for fit versus simulation   $rnext
+# $icode std_error$$ $cnext asymptotic standard error for the parameter $rnext
+# $icode residual$$ $cnext weighted residual for the fit versus simulation
+# $tend
 #
 # $head Coefficient of Variation$$
 # This is the coefficient of variation for the differences
@@ -138,8 +161,8 @@ random_seed = 0
 # In this case the data file is used for the
 # cumulative death and corresponding covariates.
 # $srccode%py%
-data_file = '/home/bradbell/trash/covid_19/seird.csv'
-data_file = ''
+data_file = '/home/bradbell/trash/covid_19/seird.csv' # example file name
+data_file = ''                                        # empty string
 # %$$
 #
 # $head Source Code$$
@@ -199,7 +222,7 @@ else :
 baseline_sim = 0.15
 #
 # cov_mul_sim
-cov_mul_sim  = numpy.array( [ - 0.2, - 0.3, - 0.4 ] )
+cov_mul_sim  = numpy.array( [ - 0.2, + 0.2, - 0.2 ] )
 #
 # true initial conditions used to simulate data
 I0_sim     = 0.02
@@ -235,10 +258,12 @@ class p_fun_class :
 		beta   = left * self.beta_all[i] + right * self.beta_all[ip]
 		p      = {
 			'beta'  : beta,
-			'sigma' : 1.0 / 5.0,   # average Exposed is 5 days
-			'gamma' : 1.0 / 20.0,  # average Infectious is 20 days
-			'chi'   : 1.0 / 200.0, # rate of death is 1/10 recovery rate
-			'xi'    : 1.0 / 365.0, # average immunity is 365 days
+			# BEGIN_KNOWN_RATES
+			'sigma' : 0.5,
+			'gamma' : 0.1,
+			'chi'   : 0.01,
+			'xi'    : 0.01,
+			# END_KNOWN_RATES
 		}
 		return p
 #
@@ -338,15 +363,8 @@ def covid_19_xam(call_count = 0) :
 	x_sim[3:]  = cov_mul_sim
 	#
 	# bounds
-	lower_bound = numpy.empty(x_sim.size, dtype=float)
-	upper_bound = numpy.empty(x_sim.size, dtype=float)
-	for i in range(x_sim.size) :
-		if x_sim[i] > 0.0 :
-			lower_bound[i] = x_sim[i] / 5.0
-			upper_bound[i] = x_sim[i] * 5.0
-		else :
-			lower_bound[i] = x_sim[i] * 5.0
-			upper_bound[i] = x_sim[i] / 5.0
+	lower_bound = -1.0 * numpy.ones(x_sim.size, dtype=float)
+	upper_bound = +1.0 * numpy.ones(x_sim.size, dtype=float)
 	bounds = scipy.optimize.Bounds(
 		lower_bound,
 		upper_bound,
@@ -358,7 +376,11 @@ def covid_19_xam(call_count = 0) :
 		'maxiter' : 300,
 		'verbose' : 0,
 	}
-	start_point     = x_sim / 2.0
+	if data_file == '' :
+		start_point     = x_sim / 2.0
+	else :
+		start_point      = x_sim
+		start_point[3 :] = 0.0
 	result = scipy.optimize.minimize(
 		optimize_fun.objective_fun,
 		start_point,
@@ -381,27 +403,48 @@ def covid_19_xam(call_count = 0) :
 	std_error = numpy.sqrt( numpy.diag(Hinv) )
 	#
 	# check that all the weighted residuals are less than two
-	for i in range(x_sim.size) :
-		rel_error = x_fit[i] / x_sim[i] - 1.0
-		residual  = (x_fit[i] - x_sim[i]) / std_error[i]
-		# print( x_sim[i], x_fit[i], rel_error, std_error[i], residual )
-		if death_data_cv > 0.0 :
-			ok = ok and abs(residual) < 2.0
-		else :
-			ok = ok and abs(rel_error) < 1e-5
+	if data_file == '' :
+		if plot_fit :
+			fmt = '{:>11s}{:>11s}{:>11s}{:>11s}{:>11s}'
+			line = fmt.format(
+				'x_sim','x_fit','rel_error','std_error','residual'
+			)
+			print(line)
+		for i in range(x_sim.size) :
+			rel_error = x_fit[i] / x_sim[i] - 1.0
+			residual  = (x_fit[i] - x_sim[i]) / std_error[i]
+			if plot_fit :
+				fmt = '{:+11.5f}{:+11.5f}{:+11.5f}{:+11.5f}{:+11.5f}'
+				line = fmt.format(
+					x_sim[i], x_fit[i], rel_error, std_error[i], residual
+				)
+				print(line)
+			if death_data_cv > 0.0 :
+				ok = ok and abs(residual) < 2.0
+			else :
+				ok = ok and abs(rel_error) < 1e-5
 	#
-	if not ok :
-		msg  = 'covid_19_xam: Correctness test failed, '
-		msg += 'actual random seed = ' + str(actual_seed)
-		print( msg )
-		call_count += 1
-		if call_count < 2 and random_seed == 0 :
-			print( 're-trying with a differenent random seed')
-			ok = covid_19_xam(call_count)
+		if not ok :
+			msg  = 'covid_19_xam: Correctness test failed, '
+			msg += 'actual random seed = ' + str(actual_seed)
+			print( msg )
+			call_count += 1
+			if call_count < 2 and random_seed == 0 :
+				print( 're-trying with a differenent random seed')
+				ok = covid_19_xam(call_count)
+	else :
+		print( 'E0_fit = ', x_fit[0] )
+		print( 'I0_fit = ', x_fit[1] )
+		print( 'baseline = ', x_fit[2] )
+		print( 'm_mobility = ', x_fit[3] )
+		print( 'm_temperature = ', x_fit[4] )
+		print( 'm_testing = ', x_fit[5] )
 	#
-	# plot_fit
+	# seird_all_fit
 	seird_all_fit = x2seird_all(x_fit)
-	if plot_fit and ok :
+	#
+	if plot_fit  :
+		#
 		fig1, ax1 = pyplot.subplots()
 		ax1.plot(t_all, seird_all_fit[:,0], 'b-', label='S')
 		ax1.plot(t_all, seird_all_fit[:,1], 'g-', label='E')
@@ -419,12 +462,16 @@ def covid_19_xam(call_count = 0) :
 		residual   = (Ddiff_data - Ddiff_fit) / Ddiff_data
 		if death_data_cv > 0.0 :
 			residual = residual / death_data_cv
-		fig2, ax2 = pyplot.subplots()
-		ax2.plot( t_mid,                 residual,   'k+' )
-		ax2.plot( [t_all[0], t_all[-1]], [0.0, 0.0], 'k-' )
-		ax2.set_xlabel('time')
-		ax2.set_ylabel('data weighted residuals')
-
+		fig2, ax2 = pyplot.subplots(nrows=2, ncols=1, sharex=True)
+		ax2[0].plot(t_mid, Ddiff_data, 'k+' , label='data')
+		ax2[0].plot(t_mid, Ddiff_fit,  'k+' , label='fit')
+		ax2[0].legend()
+		ax2[0].set_ylabel('death differences')
+		#
+		ax2[1].plot( t_mid,                 residual,   'k+' )
+		ax2[1].plot( [t_all[0], t_all[-1]], [0.0, 0.0], 'k-' )
+		ax2[1].set_xlabel('time')
+		ax2[1].set_ylabel('data weighted residuals')
 		#
 		pyplot.show()
 	#
