@@ -46,9 +46,9 @@
 # constant functions with a known value.
 #
 # $head Initial Values$$
-# The initial values for the Recovered group $latex R(0)$$
-# and for the Death group $latex D(0)$$ are zero.
-# We use fraction of the total population, so the sum of the
+# The initial size of the Recovered group $latex R(0)$$
+# and of the Death group $latex D(0)$$ is zero.
+# We use fraction of the total population for sizes, so the sum of the
 # other initial values is one.
 # We treat the initial Exposed group $latex E(0)$$ and the initial
 # infected group $latex I(0)$$ as unknown parameters in the model
@@ -56,10 +56,10 @@
 # $latex \[
 #	S(0) = 1 - E(0) - I(0)
 # \] $$
-# two expression the initial Susceptible group as a function
+# to express the initial Susceptible group as a function
 # of the unknown parameters.
 #
-# $head Unknown Parameter Vector$$
+# $head Unknown Parameters$$
 # In summary, the unknown parameter vector in this model is
 # $latex \[
 #	x = [ E(0), I(0), \beta_b , m_0 , m_1, m_2 ]
@@ -76,7 +76,8 @@
 # $head Maximum Likelihood$$
 # We use a Gaussian likelihood for each of the differences in the
 # cumulative deaths. The unknown parameters are estimated by maximizing the
-# likelihood. The covariance of the estimates is approximated
+# product of these likelihoods; i.e., the differences are modeled as being
+# independent. The covariance of the estimates is approximated
 # by the inverse of the observed information matrix.
 # AD is used to compute first and second derivatives of the likelihood
 # w.r.t. the unknown parameters $latex x$$.
@@ -86,13 +87,17 @@
 # $head Plot Fit$$
 # If you set this variable to True, you will get a plot of the fit results.
 # $srccode%py%
-plot_fit = False
+plot_fit = True
 # %$$
+# There are two plots. One contains the size for all the compartments
+# as a function of time and as a fraction of the total population.
+# The other plot is the weighted residuals for the death difference
+# data as a function of time.
 #
 # $head Coefficient of Variation$$
 # This is the coefficient of variation for the differences
 # in the cumulative death data as a fraction, not a percent.
-# If this value is zero, there is a CV of zero for data simulation
+# If this value is zero, a CV of  zero is used for data simulation
 # and a CV of one in the definition of the likelihood.
 # This enables checking that the unknown parameters can be accurately
 # identified using perfect data.
@@ -100,9 +105,25 @@ plot_fit = False
 death_data_cv = 0.1
 # %$$
 #
+# $head Data Residuals$$
+# The weighted residuals (some times referred to as just the residuals) are
+# $latex \[
+#	r_i = \frac{ ( y_{i+1} - y_i ) - [ D( t_{i+1} ) - D( t_i ) ] }{
+#	\lambda ( y_{i+1} - y_i) }
+# \] $$
+# where $latex y_i$$ is the i-th value for the cumulative death data,
+# $latex D(t)$$ is the model for the cumulative date given the fit results,
+# and $latex \lambda$$ is the $icode death_data_cv$$.
+# (The value $latex \lambda = 1$$ is used in the special case where
+# $icode death_data_cv$$ is zero.)
+# The time corresponding to $latex r_i$$ is $latex ( t_{i+1} + t_i ) / 2$$.
+# We put the data difference in the denominator,
+# instead of the model difference,
+# because it is constant with respect to the unknown parameters.
+#
 # $head Random Seed$$
 # This is the random seed used to simulate noise in the data.
-# The value zero instructs says to us the system clock to seed the data.
+# If this value is zero, the system clock is used to choose the random seed.
 # $srccode%py%
 random_seed = 0
 # %$$
@@ -133,7 +154,7 @@ t_step  = 0.5
 t_all = numpy.arange(t_start, t_stop, t_step)
 #
 # covariates
-# Note that we scale and shift our covariates so zero correpsonds to the
+# Note that we scale and shift our covariates so zero corresponds to the
 # baseline infectious rate and so that their variation is order one.
 n_time = t_all.size
 covariates   = numpy.empty( (n_time, 3) )
@@ -351,13 +372,30 @@ def covid_19_xam(call_count = 0) :
 	# plot_fit
 	seird_all_fit = x2seird_all(x_fit)
 	if plot_fit and ok :
-		ax = pyplot.subplot(111)
-		ax.plot(t_all, seird_all_fit[:,0], 'b-', label='S')
-		ax.plot(t_all, seird_all_fit[:,1], 'g-', label='E')
-		ax.plot(t_all, seird_all_fit[:,2], 'r-', label='I')
-		ax.plot(t_all, seird_all_fit[:,3], 'k-', label='R')
-		ax.plot(t_all, seird_all_fit[:,4], 'y-', label='D')
-		ax.legend()
+		fig1, ax1 = pyplot.subplots()
+		ax1.plot(t_all, seird_all_fit[:,0], 'b-', label='S')
+		ax1.plot(t_all, seird_all_fit[:,1], 'g-', label='E')
+		ax1.plot(t_all, seird_all_fit[:,2], 'r-', label='I')
+		ax1.plot(t_all, seird_all_fit[:,3], 'k-', label='R')
+		ax1.plot(t_all, seird_all_fit[:,4], 'y-', label='D')
+		ax1.legend()
+		ax1.set_xlabel('time')
+		ax1.set_ylabel('population fraction')
+		#
+		t_mid      = (t_all[0 : -1] + t_all[1 :]) / 2.0
+		D_fit      = seird_all_fit[:,4]
+		Ddiff_data = numpy.diff(D_data)
+		Ddiff_fit  = numpy.diff(D_fit)
+		residual   = (Ddiff_data - Ddiff_fit) / Ddiff_data
+		if death_data_cv > 0.0 :
+			residual = residual / death_data_cv
+		fig2, ax2 = pyplot.subplots()
+		ax2.plot( t_mid,                 residual,   'k+' )
+		ax2.plot( [t_all[0], t_all[-1]], [0.0, 0.0], 'k-' )
+		ax2.set_xlabel('time')
+		ax2.set_ylabel('data weighted residuals')
+
+		#
 		pyplot.show()
 	#
 	# check conservation of masss in the compartmental model
