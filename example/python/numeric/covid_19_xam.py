@@ -174,6 +174,7 @@ data_file = ''                                        # empty string
 # BEGIN_PYTHON
 from pdb import set_trace
 from matplotlib import pyplot
+from matplotlib import gridspec
 import scipy.optimize
 import numpy
 import random
@@ -444,8 +445,12 @@ def covid_19_xam(call_count = 0) :
 	seird_all_fit = x2seird_all(x_fit)
 	#
 	if plot_fit  :
+		fig  = pyplot.figure(tight_layout = True)
+		gs   = gridspec.GridSpec(2, 2)
+		ax1  = fig.add_subplot(gs[:,0])
+		ax2  = fig.add_subplot(gs[0,1])
+		ax3  = fig.add_subplot(gs[1,1])
 		#
-		fig1, ax1 = pyplot.subplots()
 		ax1.plot(t_all, seird_all_fit[:,0], 'b-', label='S')
 		ax1.plot(t_all, seird_all_fit[:,1], 'g-', label='E')
 		ax1.plot(t_all, seird_all_fit[:,2], 'r-', label='I')
@@ -462,16 +467,15 @@ def covid_19_xam(call_count = 0) :
 		residual   = (Ddiff_data - Ddiff_fit) / Ddiff_data
 		if death_data_cv > 0.0 :
 			residual = residual / death_data_cv
-		fig2, ax2 = pyplot.subplots(nrows=2, ncols=1, sharex=True)
-		ax2[0].plot(t_mid, Ddiff_data, 'k+' , label='data')
-		ax2[0].plot(t_mid, Ddiff_fit,  'k+' , label='fit')
-		ax2[0].legend()
-		ax2[0].set_ylabel('death differences')
+		ax2.plot(t_mid, Ddiff_data, 'k+' , label='data')
+		ax2.plot(t_mid, Ddiff_fit,  'k-' , label='fit')
+		ax2.legend()
+		ax2.set_ylabel('death differences')
 		#
-		ax2[1].plot( t_mid,                 residual,   'k+' )
-		ax2[1].plot( [t_all[0], t_all[-1]], [0.0, 0.0], 'k-' )
-		ax2[1].set_xlabel('time')
-		ax2[1].set_ylabel('data weighted residuals')
+		ax3.plot( t_mid,                 residual,   'k+' )
+		ax3.plot( [t_all[0], t_all[-1]], [0.0, 0.0], 'k-' )
+		ax3.set_xlabel('time')
+		ax3.set_ylabel('data weighted residuals')
 		#
 		pyplot.show()
 	#
