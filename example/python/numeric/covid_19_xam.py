@@ -230,21 +230,28 @@ else :
 # baseline_sim
 baseline_sim = 0.15
 #
-# cov_mul_sim
-cov_mul_sim  = numpy.array( [ - 0.2, + 0.2, - 0.2 ] )
+# covariate multipliers used in simulation
+m_mobility_sim    = - 0.2
+m_temperature_sim = + 0.2
+m_testing_sim     = - 0.2
 #
-# true initial conditions used to simulate data
+# initial conditions used to simulate data
 I0_sim     = 0.02
 E0_sim     = 0.02
 S0_sim     = 1.0 - E0_sim - I0_sim
 R0_sim     = 0.0
 D0_sim     = 0.0
 #
+# x_sim
+x_sim = numpy.array( [
+	m_mobility_sim, m_temperature_sim, m_testing_sim,
+	E0_sim,	I0_sim,	baseline_sim
+] )
+#
+#
 # actual_seed
-if random_seed == 0 :
-	actual_seed = int( 13 * time.time() )
-else :
-	actual_seed = random_seed
+# see begining of covid_19_xam function.
+actual_seed = [ random_seed ]
 #
 # p_fun_class
 # Returns the parameters in the ODE (not the unknown parameters)
@@ -336,15 +343,11 @@ def objective_d_fun(t_all, D_data) :
 #
 def simulate_data() :
 	#
-	x_sim = numpy.empty(6, dtype=float)
-	x_sim[0 : 3] = cov_mul_sim
-	x_sim[3 : 6] = [ E0_sim, I0_sim, baseline_sim ]
-	#
 	# noiseless simulated data
 	seird_all_sim = x2seird_all(x_sim)
 	#
 	# rng: numpy random number generator
-	rng = numpy.random.default_rng(seed = actual_seed)
+	rng = numpy.random.default_rng(seed = actual_seed[0])
 	#
 	# D_data
 	D_sim       = seird_all_sim[:,4]
@@ -357,8 +360,28 @@ def simulate_data() :
 	#
 	return D_data
 
+def random_start(n_random, x_lower, x_upper, objective) :
+	x_best   = (x_lower + x_upper) / 2.0
+	obj_best = objective(x_best)
+	#
+	# rng: numpy random number generator
+	rng = numpy.random.default_rng(seed = actual_seed[0])
+	#
+	for i in range(n_random) :
+		x_current   = rng.uniform(x_lower, x_upper)
+		obj_current = objective(x_current)
+		if obj_current < obj_best :
+			x_best = x_current
+			obj_best = obj_current
+	#
+	return x_best
+
 def covid_19_xam(call_count = 0) :
 	ok = True
+	#
+	# if random seed is zero, seed of the cloce
+	if random_seed == 0 :
+		actual_seed = [ int( 13 * time.time() ) ]
 	#
 	# D_data
 	if data_file == '' :
@@ -375,14 +398,12 @@ def covid_19_xam(call_count = 0) :
 	# objective: fun, grad, hess
 	optimize_fun = optimize_fun_class(objective_ad)
 	#
-	# x_sim
-	x_sim        = numpy.empty( 6, dtype=float)
-	x_sim[0 : 3] = cov_mul_sim
-	x_sim[3 : 6] = [ E0_sim, I0_sim, baseline_sim ]
-	#
 	# bounds
-	lower_bound = -1.0 * numpy.ones(x_sim.size, dtype=float)
-	upper_bound = +1.0 * numpy.ones(x_sim.size, dtype=float)
+	lower_bound = -0.5 * numpy.ones(x_sim.size, dtype=float)
+	upper_bound = +0.5 * numpy.ones(x_sim.size, dtype=float)
+	lower_bound[3:] = 0.0
+	assert numpy.all( lower_bound < x_sim )
+	assert numpy.all( x_sim < upper_bound )
 	bounds = scipy.optimize.Bounds(
 		lower_bound,
 		upper_bound,
@@ -394,10 +415,10 @@ def covid_19_xam(call_count = 0) :
 		'maxiter' : 300,
 		'verbose' : 0,
 	}
-	if data_file == '' :
-		start_point     = x_sim / 2.0
-	else :
-		start_point      = x_sim
+	n_random    = 2000
+	start_point = random_start(
+			n_random, lower_bound, upper_bound, optimize_fun.objective_fun
+	);
 	result = scipy.optimize.minimize(
 		optimize_fun.objective_fun,
 		start_point,
@@ -418,6 +439,18 @@ def covid_19_xam(call_count = 0) :
 	#
 	# standard devaition for each component of x_fit
 	std_error = numpy.sqrt( numpy.diag(Hinv) )
+	#
+	# seird_all_fit
+	seird_all_fit = x2seird_all(x_fit)
+	#
+	# D_fit
+	D_fit = seird_all_fit[:,4]
+	#
+	# residual_fit
+	residual_fit = weighted_residual(D_data, D_fit)
+	#
+	# check that all the data residuals an less than 3.0
+	ok  = ok and numpy.all( numpy.abs( residual_fit ) < 3.0 )
 	#
 	# check that all the weighted residuals are less than two
 	if data_file == '' :
@@ -443,7 +476,7 @@ def covid_19_xam(call_count = 0) :
 	#
 		if not ok :
 			msg  = 'covid_19_xam: Correctness test failed, '
-			msg += 'actual random seed = ' + str(actual_seed)
+			msg += 'actual random seed = ' + str(actual_seed[0])
 			print( msg )
 			call_count += 1
 			if call_count < 2 and random_seed == 0 :
@@ -452,9 +485,6 @@ def covid_19_xam(call_count = 0) :
 	else :
 		for j in range( len(x_name) ) :
 			print( '{:<15s}={:>+11.5f}'.format( x_name[j], x_fit[j] ) )
-	#
-	# seird_all_fit
-	seird_all_fit = x2seird_all(x_fit)
 	#
 	if plot_fit  :
 		fig  = pyplot.figure(tight_layout = True)
@@ -472,7 +502,6 @@ def covid_19_xam(call_count = 0) :
 		ax1.set_xlabel('time')
 		ax1.set_ylabel('population fraction')
 		#
-		D_fit      = seird_all_fit[:,4]
 		Ddiff_data = numpy.diff(D_data)
 		Ddiff_fit  = numpy.diff(D_fit)
 		t_mid      = (t_all[0 : -1] + t_all[1 :]) / 2.0
@@ -481,8 +510,7 @@ def covid_19_xam(call_count = 0) :
 		ax2.legend()
 		ax2.set_ylabel('death differences')
 		#
-		residual   = weighted_residual(D_data, D_fit)
-		ax3.plot( t_mid,                 residual,   'k+' )
+		ax3.plot( t_mid,                 residual_fit,   'k+' )
 		ax3.plot( [t_all[0], t_all[-1]], [0.0, 0.0], 'k-' )
 		ax3.set_xlabel('time')
 		ax3.set_ylabel('data weighted residuals')
