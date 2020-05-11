@@ -69,7 +69,7 @@
 # $head Unknown Parameters$$
 # In summary, the unknown parameter vector in this model is
 # $latex \[
-#	x = [ E(0), I(0), \beta_b , m_0 , m_1, m_2 ]
+#	x = [ m_0, m_1, m_2, E(0), I(0), \beta_b ]
 # \] $$
 #
 # $head Data$$
@@ -274,10 +274,8 @@ class p_fun_class :
 def x2seird_all(x) :
 	#
 	# unpack x
-	E0       = x[0]
-	I0       = x[1]
-	baseline = x[2]
-	cov_mul  = x[3 :]
+	cov_mul            = x[0 : 3]
+	[E0, I0, baseline] = x[3 : 6]
 	#
 	# beta_all
 	beta_all = baseline * (1.0 + numpy.matmul(covariates, cov_mul))
@@ -334,8 +332,8 @@ def objective_d_fun(t_all, D_data) :
 def simulate_data() :
 	#
 	x_sim = numpy.empty(6, dtype=float)
-	x_sim[0:3] = [ E0_sim, I0_sim, baseline_sim ]
-	x_sim[3 :] = cov_mul_sim
+	x_sim[0 : 3] = cov_mul_sim
+	x_sim[3 : 6] = [ E0_sim, I0_sim, baseline_sim ]
 	#
 	# noiseless simulated data
 	seird_all_sim = x2seird_all(x_sim)
@@ -373,9 +371,9 @@ def covid_19_xam(call_count = 0) :
 	optimize_fun = optimize_fun_class(objective_ad)
 	#
 	# x_sim
-	x_sim      = numpy.empty( 6, dtype=float)
-	x_sim[0:3] = [ E0_sim, I0_sim, baseline_sim ]
-	x_sim[3:]  = cov_mul_sim
+	x_sim        = numpy.empty( 6, dtype=float)
+	x_sim[0 : 3] = cov_mul_sim
+	x_sim[3 : 6] = [ E0_sim, I0_sim, baseline_sim ]
 	#
 	# bounds
 	lower_bound = -1.0 * numpy.ones(x_sim.size, dtype=float)
@@ -447,12 +445,12 @@ def covid_19_xam(call_count = 0) :
 				print( 're-trying with a differenent random seed')
 				ok = covid_19_xam(call_count)
 	else :
-		print( 'E0_fit = ', x_fit[0] )
-		print( 'I0_fit = ', x_fit[1] )
-		print( 'baseline = ', x_fit[2] )
-		print( 'm_mobility = ', x_fit[3] )
-		print( 'm_temperature = ', x_fit[4] )
-		print( 'm_testing = ', x_fit[5] )
+		print( 'm_mobility    = ', x_fit[0] )
+		print( 'm_temperature = ', x_fit[1] )
+		print( 'm_testing     = ', x_fit[2] )
+		print( 'E0_fit        = ', x_fit[3] )
+		print( 'I0_fit        = ', x_fit[4] )
+		print( 'baseline      = ', x_fit[5] )
 	#
 	# seird_all_fit
 	seird_all_fit = x2seird_all(x_fit)
