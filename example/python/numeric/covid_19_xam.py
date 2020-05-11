@@ -30,13 +30,13 @@
 # $head beta(t)$$
 # Our model for the infectious rate is
 # $latex \[
-#	\beta(t) = \beta_b \left( 1 + \sum_{j=0}^2 m_j c_j (t) \right)
+#	\beta(t) = \bar{\beta} \left( 1 + \sum_{j=0}^2 m_j c_j (t) \right)
 # \] $$
-# where $latex \beta_b$$ is the baseline value for the infectious rate,
+# where $latex \bar{\beta}$$ is the baseline value for the infectious rate,
 # $latex c_j (t)$$ is the j-th covariate as a function of time,
 # and $latex m_j$$ is the j-th covariate multiplier.
 # The covariates are known functions of time.
-# The baseline value $latex \beta_b$$ is the infectious rate corresponding
+# The baseline value $latex \bar{\beta}$$ is the infectious rate corresponding
 # to all the covariates being zero.
 # The covariate multipliers, and the baseline infectious rate, are unknown.
 #
@@ -69,7 +69,7 @@
 # $head Unknown Parameters$$
 # In summary, the unknown parameter vector in this model is
 # $latex \[
-#	x = [ m_0, m_1, m_2, E(0), I(0), \beta_b ]
+#	x = [ m_0, m_1, m_2, E(0), I(0), \bar{\beta} ]
 # \] $$
 #
 # $head Data$$
@@ -188,6 +188,11 @@ import cppad_py
 import runge4
 from optimize_fun_class import optimize_fun_class
 from seird_model import seird_model
+#
+# Order of packing the variables into a vector
+x_name = [
+	'm_mobility', 'm_temperature', 'm_testing', 'E(0)', 'I(0)', 'bar_beta'
+]
 #
 # t_all, covariates
 if data_file != '' :
@@ -417,17 +422,17 @@ def covid_19_xam(call_count = 0) :
 	# check that all the weighted residuals are less than two
 	if data_file == '' :
 		if plot_fit :
-			fmt = '{:>11s}{:>11s}{:>11s}{:>11s}{:>11s}'
+			fmt = '{:<15s}{:>11s}{:>11s}{:>11s}{:>11s}{:>11s}'
 			line = fmt.format(
-				'x_sim','x_fit','rel_error','std_error','residual'
+				'', 'x_sim','x_fit','rel_error','std_error','residual'
 			)
 			print(line)
 		for i in range(x_sim.size) :
 			rel_error = x_fit[i] / x_sim[i] - 1.0
 			residual  = (x_fit[i] - x_sim[i]) / std_error[i]
 			if plot_fit :
-				fmt = '{:+11.5f}{:+11.5f}{:+11.5f}{:+11.5f}{:+11.5f}'
-				line = fmt.format(
+				fmt = '{:<15s}{:+11.5f}{:+11.5f}{:+11.5f}{:+11.5f}{:+11.5f}'
+				line = fmt.format(x_name[i],
 					x_sim[i], x_fit[i], rel_error, std_error[i], residual
 				)
 				print(line)
@@ -445,12 +450,8 @@ def covid_19_xam(call_count = 0) :
 				print( 're-trying with a differenent random seed')
 				ok = covid_19_xam(call_count)
 	else :
-		print( 'm_mobility    = ', x_fit[0] )
-		print( 'm_temperature = ', x_fit[1] )
-		print( 'm_testing     = ', x_fit[2] )
-		print( 'E0_fit        = ', x_fit[3] )
-		print( 'I0_fit        = ', x_fit[4] )
-		print( 'baseline      = ', x_fit[5] )
+		for j in range( len(x_name) ) :
+			print( '{:<15s}={:>+11.5f}'.format( x_name[j], x_fit[j] ) )
 	#
 	# seird_all_fit
 	seird_all_fit = x2seird_all(x_fit)
