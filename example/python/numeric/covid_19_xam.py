@@ -129,16 +129,18 @@ death_data_cv = 0.1
 # %$$
 #
 # $head Data Residuals$$
+# If $icode death_data_cv$$ is zero, $latex \lambda = 1$$, otherwise
+# $latex \lambda$$ is equal to $icode death_data_cv$$.
+# Let $latex y_i$$ be the i-th value for the cumulative death data
+# and $latex \delta$$ the minimum of $latex y_{i+1} - y_i$$ with respect to
+# $latex i$$ such that $latex y{i+1} - y_i > 0$$.
 # The weighted residuals (some times referred to as just the residuals) are
 # $latex \[
 #	r_i = \frac{ ( y_{i+1} - y_i ) - [ D( t_{i+1} ) - D( t_i ) ] }{
-#	\lambda ( y_{i+1} - y_i) }
+#	\lambda ( max( \delta , y_{i+1} - y_i ) }
 # \] $$
-# where $latex y_i$$ is the i-th value for the cumulative death data,
-# $latex D(t)$$ is the model for the cumulative date given the fit results,
-# and $latex \lambda$$ is the $icode death_data_cv$$.
-# (The value $latex \lambda = 1$$ is used in the special case where
-# $icode death_data_cv$$ is zero.)
+# where # $latex D(t)$$ is the model for the cumulative data
+# given the fit results.
 # The time corresponding to $latex r_i$$ is $latex ( t_{i+1} + t_i ) / 2$$.
 # We put the data difference in the denominator,
 # instead of the model difference,
@@ -180,6 +182,7 @@ import numpy
 import random
 import time
 import csv
+import copy
 #
 import cppad_py
 import runge4
@@ -294,6 +297,17 @@ def x2seird_all(x) :
 	#
 	return seird_all
 #
+def weighted_residual(D_data, D_model) :
+	Ddiff_data   = numpy.diff(D_data)
+	Ddiff_model  = numpy.diff(D_model)
+	min_Ddiff    = min( Ddiff_data[ Ddiff_data > 0.0 ] )
+	Ddiff_copy   = copy.copy(Ddiff_data)
+	Ddiff_copy[ Ddiff_copy <= 0.0 ] = min_Ddiff
+	residual     = (Ddiff_data - Ddiff_model) / Ddiff_copy
+	if death_data_cv > 0.0 :
+		residual = residual / death_data_cv
+	return residual
+#
 # objective_d_fun
 # t_all and D_data, are constants relative in the objective function
 def objective_d_fun(t_all, D_data) :
@@ -308,15 +322,9 @@ def objective_d_fun(t_all, D_data) :
 	# Model for the cumulative death as function of time
 	aD_model   = aseird_all[:,4] # column order is S, E, I, R, D
 	#
-	# Differences of the death over the time intervals
-	Ddiff_data   = numpy.diff(D_data)
-	aDdiff_model = numpy.diff(aD_model)
-	#
 	# compute negative log Gaussian likelihood dropping variance terms
 	# because they are constaint w.r.t the unknown parameters
-	aresidual = (Ddiff_data - aDdiff_model) / Ddiff_data
-	if death_data_cv > 0.0 :
-		aresidual = aresidual / death_data_cv
+	aresidual = weighted_residual(D_data, aD_model)
 	aloss     = 0.5 * numpy.sum( aresidual * aresidual)
 	aloss     = numpy.array( [ aloss ] )
 	#
@@ -350,7 +358,13 @@ def covid_19_xam(call_count = 0) :
 	ok = True
 	#
 	# D_data
-	D_data = simulate_data()
+	if data_file == '' :
+		D_data = simulate_data()
+	else :
+		D_data = list()
+		for row in file_data :
+			D_data.append( float( row['death'] ) )
+		D_data = numpy.array(D_data)
 	#
 	# objective_ad
 	objective_ad = objective_d_fun(t_all, D_data)
@@ -381,7 +395,6 @@ def covid_19_xam(call_count = 0) :
 		start_point     = x_sim / 2.0
 	else :
 		start_point      = x_sim
-		start_point[3 :] = 0.0
 	result = scipy.optimize.minimize(
 		optimize_fun.objective_fun,
 		start_point,
@@ -460,18 +473,16 @@ def covid_19_xam(call_count = 0) :
 		ax1.set_xlabel('time')
 		ax1.set_ylabel('population fraction')
 		#
-		t_mid      = (t_all[0 : -1] + t_all[1 :]) / 2.0
 		D_fit      = seird_all_fit[:,4]
 		Ddiff_data = numpy.diff(D_data)
 		Ddiff_fit  = numpy.diff(D_fit)
-		residual   = (Ddiff_data - Ddiff_fit) / Ddiff_data
-		if death_data_cv > 0.0 :
-			residual = residual / death_data_cv
+		t_mid      = (t_all[0 : -1] + t_all[1 :]) / 2.0
 		ax2.plot(t_mid, Ddiff_data, 'k+' , label='data')
 		ax2.plot(t_mid, Ddiff_fit,  'k-' , label='fit')
 		ax2.legend()
 		ax2.set_ylabel('death differences')
 		#
+		residual   = weighted_residual(D_data, D_fit)
 		ax3.plot( t_mid,                 residual,   'k+' )
 		ax3.plot( [t_all[0], t_all[-1]], [0.0, 0.0], 'k-' )
 		ax3.set_xlabel('time')
