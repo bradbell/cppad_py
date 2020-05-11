@@ -46,11 +46,13 @@
 # $latex \gamma(t)$$,
 # $latex \xi(t)$$,
 # $latex \chi(t)$$,
-# constant functions with the following known values:
-# $srcthisfile%
-#	0%# BEGIN_KNOWN_RATES%# END_KNOWN_RATES%1
+# constant functions with known values:
+# $srccode%py%
+sigma_known  = 0.5
+gamma_known  = 0.1
+chi_known    = 0.01
+xi_known     = 0.01
 # %$$
-# see $code BEGIN_KNOWN_RATES$$ in the source code below.
 #
 # $head Initial Values$$
 # The initial size of the Recovered group $latex R(0)$$
@@ -107,6 +109,8 @@ plot_fit = False
 # difference data.
 #
 # $subhead Print$$
+# If $icode plot_fit$$ is True, fit result for the unknown parameters will
+# be printed.
 # If $icode data_file$$ is empty, there will also be a
 # print out with the following columns:
 # $table
@@ -137,7 +141,7 @@ death_data_cv = 0.1
 # The weighted residuals (some times referred to as just the residuals) are
 # $latex \[
 #	r_i = \frac{ ( y_{i+1} - y_i ) - [ D( t_{i+1} ) - D( t_i ) ] }{
-#	\lambda ( max( \delta , y_{i+1} - y_i ) }
+#	\lambda ( \max( \delta , y_{i+1} - y_i ) }
 # \] $$
 # where # $latex D(t)$$ is the model for the cumulative data
 # given the fit results.
@@ -191,7 +195,7 @@ from seird_model import seird_model
 #
 # Order of packing the variables into a vector
 x_name = [
-	'm_mobility', 'm_temperature', 'm_testing', 'E(0)', 'I(0)', 'bar_beta'
+	'm_mobility', 'm_temperature', 'm_testing', 'E(0)', 'I(0)', 'beta_bar'
 ]
 #
 # t_all, covariates
@@ -227,8 +231,8 @@ else :
 		testing         = t / t_stop
 		covariates[i,:] = [ mobility, temperature, testing ]
 #
-# baseline_sim
-baseline_sim = 0.15
+# beta_bar_sim
+beta_bar_sim = 0.15
 #
 # covariate multipliers used in simulation
 m_mobility_sim    = - 0.2
@@ -245,7 +249,7 @@ D0_sim     = 0.0
 # x_sim
 x_sim = numpy.array( [
 	m_mobility_sim, m_temperature_sim, m_testing_sim,
-	E0_sim,	I0_sim,	baseline_sim
+	E0_sim, I0_sim, beta_bar_sim
 ] )
 #
 #
@@ -256,8 +260,9 @@ actual_seed = [ random_seed ]
 # p_fun_class
 # Returns the parameters in the ODE (not the unknown parameters)
 class p_fun_class :
-	def __init__(self, beta_all) :
-		self.beta_all = beta_all
+	def __init__(self, beta_all, other_rate) :
+		self.beta_all   = beta_all
+		self.other_rate = other_rate
 	#
 	# There are faster ways to search for interval; e.g., cache previous index
 	def p_fun(self, t) :
@@ -271,26 +276,27 @@ class p_fun_class :
 		right  = ( t         - t_all[i]  ) / t_diff
 		# beta changes with time are continuous at all points in t_all
 		# and smooth for times not in t_all
-		beta   = left * self.beta_all[i] + right * self.beta_all[ip]
-		p      = {
-			'beta'  : beta,
-			# BEGIN_KNOWN_RATES
-			'sigma' : 0.5,
-			'gamma' : 0.1,
-			'chi'   : 0.01,
-			'xi'    : 0.01,
-			# END_KNOWN_RATES
-		}
+		beta      = left * self.beta_all[i] + right * self.beta_all[ip]
+		p         = copy.copy(self.other_rate)
+		p['beta'] = beta
 		return p
 #
 def x2seird_all(x) :
 	#
 	# unpack x
 	cov_mul            = x[0 : 3]
-	[E0, I0, baseline] = x[3 : 6]
+	[E0, I0, beta_bar] = x[3 : 6]
 	#
 	# beta_all
-	beta_all = baseline * (1.0 + numpy.matmul(covariates, cov_mul))
+	beta_all = beta_bar * (1.0 + numpy.matmul(covariates, cov_mul))
+	#
+	# other_rate
+	other_rate = {
+		'sigma' : sigma_known,
+		'gamma' : gamma_known,
+		'chi'   : chi_known,
+		'xi'    : xi_known,
+	}
 	#
 	# initial
 	S0 = 1.0 - E0 - I0
@@ -299,7 +305,7 @@ def x2seird_all(x) :
 	initial  = numpy.array( [S0, E0, I0, R0, D0] )
 	#
 	# p_fun
-	p_fun_obj = p_fun_class(beta_all)
+	p_fun_obj = p_fun_class(beta_all, other_rate)
 	p_fun     = p_fun_obj.p_fun
 	#
 	# seird_all
@@ -322,9 +328,9 @@ def weighted_residual(D_data, D_model) :
 # t_all and D_data, are constants relative in the objective function
 def objective_d_fun(t_all, D_data) :
 	#
-	# x = ( E(0), I(0), baseline, m[0], m[1], m[2] )
-	x  = 0.1 * numpy.ones(6)
-	ax = cppad_py.independent(x)
+	n_x = len(x_name)
+	x   = 0.1 * numpy.ones(n_x)
+	ax  = cppad_py.independent(x)
 	#
 	# compute model for data
 	aseird_all = x2seird_all(ax)
@@ -360,15 +366,27 @@ def simulate_data() :
 	#
 	return D_data
 
-def random_start(n_random, x_lower, x_upper, objective) :
+def random_start(n_random, x_lower, x_upper, log_scale, objective) :
+	n_x      = len(x_lower)
+	#
 	x_best   = (x_lower + x_upper) / 2.0
 	obj_best = objective(x_best)
+	#
+	x_low    = copy.copy(x_lower)
+	x_up     = copy.copy(x_upper)
+	for j in range(n_x) :
+		if log_scale[j] :
+			x_low[j] = numpy.log(x_lower[j])
+			x_up[j]  = numpy.log(x_upper[j])
 	#
 	# rng: numpy random number generator
 	rng = numpy.random.default_rng(seed = actual_seed[0])
 	#
 	for i in range(n_random) :
-		x_current   = rng.uniform(x_lower, x_upper)
+		x_current   = rng.uniform(x_low, x_up)
+		for j in range(n_x) :
+			if log_scale[j] :
+				x_current[j] = numpy.exp(x_current[j])
 		obj_current = objective(x_current)
 		if obj_current < obj_best :
 			x_best = x_current
@@ -399,11 +417,20 @@ def covid_19_xam(call_count = 0) :
 	optimize_fun = optimize_fun_class(objective_ad)
 	#
 	# bounds
-	lower_bound = -0.5 * numpy.ones(x_sim.size, dtype=float)
-	upper_bound = +0.5 * numpy.ones(x_sim.size, dtype=float)
-	lower_bound[3:] = 0.0
+	n_x = len(x_name)
+	lower_bound = x_sim / 5.0
+	upper_bound = x_sim * 5.0
+	for j in range(n_x) :
+		if x_sim[j] < 0.0 :
+			lower_bound[j] = x_sim[j] * 5.0
+			upper_bound[j] = x_sim[j] / 5.0
+	# log scale beta_bar during random_start
+	log_scale    = numpy.array( n_x * [ False ] )
+	log_scale[5] = True
+	#
 	assert numpy.all( lower_bound < x_sim )
 	assert numpy.all( x_sim < upper_bound )
+	#
 	bounds = scipy.optimize.Bounds(
 		lower_bound,
 		upper_bound,
@@ -417,8 +444,13 @@ def covid_19_xam(call_count = 0) :
 	}
 	n_random    = 2000
 	start_point = random_start(
-			n_random, lower_bound, upper_bound, optimize_fun.objective_fun
+		n_random,
+		lower_bound,
+		upper_bound,
+		log_scale,
+		optimize_fun.objective_fun
 	);
+	start_point = x_sim
 	result = scipy.optimize.minimize(
 		optimize_fun.objective_fun,
 		start_point,
@@ -434,7 +466,7 @@ def covid_19_xam(call_count = 0) :
 	# compute the observed infromation matrix
 	H = optimize_fun.objective_hess(x_fit)
 	#
-	# approxiamtion for covariance of the estimate x_fit
+	# approxiamtion for covariance of the estimate x_fit[0:5]
 	Hinv = numpy.linalg.inv(H)
 	#
 	# standard devaition for each component of x_fit
@@ -452,7 +484,10 @@ def covid_19_xam(call_count = 0) :
 	# check that all the data residuals an less than 3.0
 	ok  = ok and numpy.all( numpy.abs( residual_fit ) < 3.0 )
 	#
-	# check that all the weighted residuals are less than two
+	if plot_fit and data_file != '' :
+		for j in range( n_x ) :
+			print( '{:<15s}={:>+11.5f}'.format( x_name[j], x_fit[j] ) )
+	#
 	if data_file == '' :
 		if plot_fit :
 			fmt = '{:<15s}{:>11s}{:>11s}{:>11s}{:>11s}{:>11s}'
@@ -460,7 +495,7 @@ def covid_19_xam(call_count = 0) :
 				'', 'x_sim','x_fit','rel_error','std_error','residual'
 			)
 			print(line)
-		for i in range(x_sim.size) :
+		for i in range( n_x ) :
 			rel_error = x_fit[i] / x_sim[i] - 1.0
 			residual  = (x_fit[i] - x_sim[i]) / std_error[i]
 			if plot_fit :
@@ -469,11 +504,12 @@ def covid_19_xam(call_count = 0) :
 					x_sim[i], x_fit[i], rel_error, std_error[i], residual
 				)
 				print(line)
+			# check that all the weighted residuals are less than two
 			if death_data_cv > 0.0 :
 				ok = ok and abs(residual) < 2.0
 			else :
 				ok = ok and abs(rel_error) < 1e-5
-	#
+		#
 		if not ok :
 			msg  = 'covid_19_xam: Correctness test failed, '
 			msg += 'actual random seed = ' + str(actual_seed[0])
@@ -482,9 +518,6 @@ def covid_19_xam(call_count = 0) :
 			if call_count < 2 and random_seed == 0 :
 				print( 're-trying with a differenent random seed')
 				ok = covid_19_xam(call_count)
-	else :
-		for j in range( len(x_name) ) :
-			print( '{:<15s}={:>+11.5f}'.format( x_name[j], x_fit[j] ) )
 	#
 	if plot_fit  :
 		fig  = pyplot.figure(tight_layout = True)
