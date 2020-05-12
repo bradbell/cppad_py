@@ -40,6 +40,7 @@
 # to all the covariates being zero.
 # The covariate multipliers, and the baseline infectious rate, are unknown.
 #
+#
 # $head Other Rates$$
 # The other rates
 # $latex \sigma(t)$$,
@@ -85,6 +86,27 @@ delta_known  = 0.1
 # $srccode%py%
 x_name = [ 'm_mobility', 'm_testing', 'I(0)', 'W(0)', 'beta_bar' ]
 # %$$
+#
+# $head Constraints$$
+# The unknown parameters have the following constraints:
+# $latex \[
+#	\begin{array}{lcr}
+#	0 & \leq & m_0          \\
+#	m_1 & \leq & 0          \\
+#	0 & \leq & \bar{\beta } \\
+#	0 & \leq & I(0)         \\
+#	0 & \leq & W(0)
+#	\end{array}
+# \] $$
+# The infection rate $latex \beta(t)$$ must be non-negative; i.e.,
+# $latex \[
+#	0 \leq \bar{\beta} \left( 1 + m_0 c_0 (t) + m_1 c_1 (t) \right)
+# \] $$
+# is true for all $latex t$$.
+# We approximation the functional constraint above as follows:
+# $latex \[
+#	0  \leq 1 + m_0 \min_t [ c_0(t) ]  + m_1 \max_t [ c_1 (t) ]
+# \] $$
 #
 # $head Data$$
 # The data in this model is the cumulative number of deaths,
@@ -236,7 +258,7 @@ else :
 beta_bar_sim = 0.05
 #
 # covariate multipliers used in simulation
-m_mobility_sim    = - 0.5
+m_mobility_sim    =   0.5
 m_testing_sim     = - 0.4
 #
 # initial conditions used to simulate data
@@ -369,7 +391,7 @@ def simulate_data() :
 	#
 	return D_data
 
-def random_start(n_random, x_lower, x_upper, log_scale, objective) :
+def random_start(n_random, x_lower, x_upper, log_scale, objective, feasible) :
 	n_x      = len(x_lower)
 	#
 	x_best   = (x_lower + x_upper) / 2.0
@@ -390,11 +412,12 @@ def random_start(n_random, x_lower, x_upper, log_scale, objective) :
 		for j in range(n_x) :
 			if log_scale[j] :
 				x_current[j] = numpy.exp(x_current[j])
-		obj_current = objective(x_current)
-		if obj_current < obj_best :
-			# print(i, obj_current)
-			x_best = x_current
-			obj_best = obj_current
+		if feasible( x_current ) :
+			obj_current = objective(x_current)
+			if obj_current < obj_best :
+				# print(i, obj_current)
+				x_best = x_current
+				obj_best = obj_current
 	#
 	return x_best
 
@@ -430,36 +453,63 @@ def covid_19_xam(call_count = 0) :
 	# -----------------------------------------------------------------------
 	# bounds
 	n_x = len(x_name)
-	lower_bound = x_sim / 5.0
-	upper_bound = x_sim * 5.0
-	for j in range(n_x) :
-		if x_sim[j] < 0.0 :
-			lower_bound[j] = x_sim[j] * 5.0
-			upper_bound[j] = x_sim[j] / 5.0
+	assert numpy.all( x_sim[2:] > 0.0 )
+	assert x_sim[0] > 0.0
+	x_lower    = numpy.zeros( n_x, dtype=float)
+	x_upper    = x_sim * 5.0
+	#
+	# m_1 <= 0
+	x_lower[1] = x_sim[1] * 5.0
+	x_upper[1] = 0.0
+	#
 	#
 	# currently not using log-scaling
 	log_scale    = numpy.array( n_x * [ False ] )
 	#
-	assert numpy.all( lower_bound <= x_sim )
-	assert numpy.all( x_sim <= upper_bound )
+	assert numpy.all( x_lower <= x_sim )
+	assert numpy.all( x_sim <= x_upper )
 	#
 	bounds = scipy.optimize.Bounds(
-		lower_bound,
-		upper_bound,
+		x_lower,
+		x_upper,
 		keep_feasible = True
 	)
 	# ------------------------------------------------------------------------
+	# constraints
+	c0_min = min( covariates[:,0] )
+	c1_max = max( covariates[:,1] )
+	#
+	rest_zero = (n_x - 2) * [ 0.0 ]
+	c_A     = numpy.array( [ [ c0_min, c1_max , *rest_zero ] ] )
+	c_lower = numpy.array( [ -1.0 ] )
+	c_upper = numpy.array( [ numpy.inf ] )
+	linear_constraint = scipy.optimize.LinearConstraint(
+		c_A, c_lower, c_upper, keep_feasible=True
+	)
+	constraints = [ linear_constraint ]
+	# ------------------------------------------------------------------------
 	# start_point
 	n_random    = 2000
+	def feasible(x, trace = False) :
+		ok   = True
+		c_Ax = numpy.matmul(c_A, x)
+		ok   = ok and  numpy.all( c_lower <= c_Ax )
+		ok   = ok and  numpy.all( c_Ax <= c_upper )
+		if trace :
+			print('feasible: x = ', x)
+			print('feasible: c_A = ', c_A)
+			print('feasible: c_Ax = ', c_Ax)
+		return ok
+	#
 	start_point = random_start(
 		n_random,
-		lower_bound,
-		upper_bound,
+		x_lower,
+		x_upper,
 		log_scale,
-		optimize_fun.objective_fun
+		optimize_fun.objective_fun,
+		feasible,
 	);
-	start_point = x_sim
-	#
+	# ------------------------------------------------------------------------
 	# x_fit
 	result = scipy.optimize.minimize(
 		optimize_fun.objective_fun,
@@ -467,6 +517,7 @@ def covid_19_xam(call_count = 0) :
 		method      = 'trust-constr',
 		jac         = optimize_fun.objective_grad,
 		hess        = optimize_fun.objective_hess,
+		constraints = constraints,
 		options     = options,
 		bounds      = bounds,
 	)
