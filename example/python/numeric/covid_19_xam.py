@@ -23,19 +23,19 @@
 # We use the $cref/seirwd/numeric_seirwd_model/$$ model and notation.
 #
 # $head Covariates$$
-# In this example there are three covariates that
+# In this example there are two covariates that
 # affect the infectious rate $latex \beta$$:
-# social mobility, outdoor temperature, and Covid-19 testing.
+# social mobility $latex c_0 (t)$$, and Covid-19 testing $latex c_1 (t)$$.
+# The covariates are known functions of time.
 #
 # $head beta(t)$$
 # Our model for the infectious rate is
 # $latex \[
-#	\beta(t) = \bar{\beta} \left( 1 + \sum_{j=0}^2 m_j c_j (t) \right)
+#	\beta(t) = \bar{\beta} \left( 1 + m_0 c_0 (t) + m_1 c_1 (t) \right)
 # \] $$
 # where $latex \bar{\beta}$$ is the baseline value for the infectious rate,
-# $latex c_j (t)$$ is the j-th covariate as a function of time,
-# and $latex m_j$$ is the j-th covariate multiplier.
-# The covariates are known functions of time.
+# $latex m_0$$ is the social covariate multiplier, and
+# $latex m_1$$ is the Covid-19 testing covariate multiplier.
 # The baseline value $latex \bar{\beta}$$ is the infectious rate corresponding
 # to all the covariates being zero.
 # The covariate multipliers, and the baseline infectious rate, are unknown.
@@ -49,9 +49,9 @@
 # $latex \delta(t)$$,
 # constant functions with known values:
 # $srccode%py%
-sigma_known  = 0.5
+sigma_known  = 0.2
 gamma_known  = 0.1
-chi_known    = 0.01
+chi_known    = 0.02
 xi_known     = 0.00
 delta_known  = 0.1
 # %$$
@@ -68,7 +68,9 @@ delta_known  = 0.1
 # We would like to also solve for the initial exposed population but
 # that model has identifiability problems, so
 # we use the following approximation for the initial exposed group
-# $latex E(0) = I(0) \gamma / \sigma $$.
+# $latex \[
+#	E(0) = I(0) \gamma / \sigma
+# \]$$
 # The initial Susceptible group $latex S(0)$$ is
 # expressed as a function of the other initial conditions:
 # $latex \[
@@ -78,8 +80,11 @@ delta_known  = 0.1
 # $head Unknown Parameters$$
 # In summary, the unknown parameter vector in this model is
 # $latex \[
-#	x = [ m_0, m_1, m_2, I(0), W(0), \bar{\beta} ]
+#	x = [ m_0, m_1, I(0), W(0), \bar{\beta} ]
 # \] $$
+# $srccode%py%
+x_name = [ 'm_mobility', 'm_testing', 'I(0)', 'W(0)', 'beta_bar' ]
+# %$$
 #
 # $head Data$$
 # The data in this model is the cumulative number of deaths,
@@ -165,15 +170,13 @@ random_seed = 0
 # $head Data File$$
 # If the data file name is the empty string, the cumulative death data,
 # and corresponding covariates, are created by the program.
-# Otherwise, the data file must be a CSV file with header
-# $codei%
-#	day,death,mobility,temperature,testing
-# %$$
+# Otherwise, the data file must be a CSV file with the following columns:
+# $icode day$$, $icode death$$, $icode mobility$$, $icode testing$$.
 # In this case the data file is used for the
 # cumulative death and corresponding covariates.
 # $srccode%py%
 data_file = '/home/bradbell/trash/covid_19/seirwd.csv' # example file name
-data_file = ''                                        # empty string
+data_file = ''                                         # empty string
 # %$$
 #
 # $head Source Code$$
@@ -198,11 +201,6 @@ import runge4
 from optimize_fun_class import optimize_fun_class
 from seirwd_model import seirwd_model
 #
-# Order of packing the variables into a vector
-x_name = [
-'m_mobility', 'm_temperature', 'm_testing', 'I(0)', 'W(0)', 'beta_bar'
-]
-#
 # t_all, covariates
 if data_file != '' :
 	# getting cumulative death and covariates from data_file
@@ -214,12 +212,11 @@ if data_file != '' :
 	file_in.close()
 	n_time       = len(file_data)
 	t_all        = numpy.empty(n_time, dtype=float)
-	covariates   = numpy.empty( (n_time, 3) )
+	covariates   = numpy.empty( (n_time, 2) )
 	for i in range(n_time) :
 		t_all[i]        = float( file_data[i]['day'] )
 		covariates[i,0] = float( file_data[i]['mobility'] )
-		covariates[i,1] = float( file_data[i]['temperature'] )
-		covariates[i,2] = float( file_data[i]['testing'] )
+		covariates[i,1] = float( file_data[i]['testing'] )
 else :
 	# simulating cumulative death and covariates
 	t_start = 0.0
@@ -228,25 +225,23 @@ else :
 	t_all = numpy.arange(t_start, t_stop, t_step)
 	#
 	n_time = t_all.size
-	covariates   = numpy.empty( (n_time, 3) )
+	covariates   = numpy.empty( (n_time, 2) )
 	for i in range(n_time) :
 		t               = t_all[i]
 		mobility        = 0.0 if t < 10.0 else -1.0
-		temperature     = numpy.sin(2.0 * numpy.pi * t / t_stop )
 		testing         = t / t_stop
-		covariates[i,:] = [ mobility, temperature, testing ]
+		covariates[i,:] = [ mobility, testing ]
 #
 # beta_bar_sim
-beta_bar_sim = 0.15
+beta_bar_sim = 0.05
 #
 # covariate multipliers used in simulation
-m_mobility_sim    = - 0.2
-m_temperature_sim = + 0.2
-m_testing_sim     = - 0.2
+m_mobility_sim    = - 0.5
+m_testing_sim     = - 0.4
 #
 # initial conditions used to simulate data
-I0_sim     = 0.02
-W0_sim     = 0.002
+I0_sim     = 0.0002
+W0_sim     = 0.00002
 E0_sim     = I0_sim * gamma_known / sigma_known
 S0_sim     = 1.0 - E0_sim - I0_sim - W0_sim
 R0_sim     = 0.0
@@ -254,8 +249,7 @@ D0_sim     = 0.0
 #
 # x_sim
 x_sim = numpy.array( [
-	m_mobility_sim, m_temperature_sim, m_testing_sim,
-	I0_sim, W0_sim, beta_bar_sim
+	m_mobility_sim, m_testing_sim, I0_sim, W0_sim, beta_bar_sim
 ] )
 #
 #
@@ -290,8 +284,8 @@ class p_fun_class :
 def x2seirwd_all(x) :
 	#
 	# unpack x
-	cov_mul            = x[0 : 3]
-	[I0, W0, beta_bar] = x[3 : 6]
+	cov_mul            = x[0 : 2]
+	[I0, W0, beta_bar] = x[2 : 5]
 	#
 	# beta_all
 	beta_all = beta_bar * (1.0 + numpy.matmul(covariates, cov_mul))
@@ -317,7 +311,8 @@ def x2seirwd_all(x) :
 	p_fun     = p_fun_obj.p_fun
 	#
 	# seirwd_all
-	seirwd_all = seirwd_model(t_all, p_fun, initial)
+	n_step = 1
+	seirwd_all = seirwd_model(t_all, p_fun, initial, n_step)
 	#
 	return seirwd_all
 #
@@ -397,6 +392,7 @@ def random_start(n_random, x_lower, x_upper, log_scale, objective) :
 				x_current[j] = numpy.exp(x_current[j])
 		obj_current = objective(x_current)
 		if obj_current < obj_best :
+			# print(i, obj_current)
 			x_best = x_current
 			obj_best = obj_current
 	#
@@ -424,6 +420,14 @@ def covid_19_xam(call_count = 0) :
 	# objective: fun, grad, hess
 	optimize_fun = optimize_fun_class(objective_ad)
 	#
+	# options
+	options = {
+		'gtol'    : 1e-10,
+		'xtol'    : 1e-8,
+		'maxiter' : 300,
+		'verbose' : 0,
+	}
+	# -----------------------------------------------------------------------
 	# bounds
 	n_x = len(x_name)
 	lower_bound = x_sim / 5.0
@@ -436,20 +440,16 @@ def covid_19_xam(call_count = 0) :
 	# currently not using log-scaling
 	log_scale    = numpy.array( n_x * [ False ] )
 	#
-	assert numpy.all( lower_bound < x_sim )
-	assert numpy.all( x_sim < upper_bound )
+	assert numpy.all( lower_bound <= x_sim )
+	assert numpy.all( x_sim <= upper_bound )
 	#
 	bounds = scipy.optimize.Bounds(
 		lower_bound,
 		upper_bound,
 		keep_feasible = True
 	)
-	options = {
-		'gtol'    : 1e-10,
-		'xtol'    : 1e-8,
-		'maxiter' : 300,
-		'verbose' : 0,
-	}
+	# ------------------------------------------------------------------------
+	# start_point
 	n_random    = 2000
 	start_point = random_start(
 		n_random,
@@ -459,6 +459,8 @@ def covid_19_xam(call_count = 0) :
 		optimize_fun.objective_fun
 	);
 	start_point = x_sim
+	#
+	# x_fit
 	result = scipy.optimize.minimize(
 		optimize_fun.objective_fun,
 		start_point,
@@ -468,13 +470,14 @@ def covid_19_xam(call_count = 0) :
 		options     = options,
 		bounds      = bounds,
 	)
+	#
 	ok      = ok and result.success
 	x_fit   = result.x
 	#
-	# compute the observed infromation matrix
+	# H: the observed infromation matrix
 	H = optimize_fun.objective_hess(x_fit)
 	#
-	# approxiamtion for covariance of the estimate x_fit[0:5]
+	# Hinv: approxiamtion for covariance of the estimate x_fit
 	Hinv = numpy.linalg.inv(H)
 	#
 	# standard devaition for each component of x_fit
@@ -492,6 +495,8 @@ def covid_19_xam(call_count = 0) :
 	# check that all the data residuals an less than 3.0
 	ok  = ok and numpy.all( numpy.abs( residual_fit ) < 3.0 )
 	#
+	# -----------------------------------------------------------------------
+	# print and plot results
 	if plot_fit and data_file != '' :
 		for j in range( n_x ) :
 			print( '{:<15s}={:>+11.5f}'.format( x_name[j], x_fit[j] ) )
@@ -504,8 +509,12 @@ def covid_19_xam(call_count = 0) :
 			)
 			print(line)
 		for i in range( n_x ) :
-			rel_error = x_fit[i] / x_sim[i] - 1.0
-			residual  = (x_fit[i] - x_sim[i]) / std_error[i]
+			if x_sim[i] == 0.0 :
+				rel_error = 0.0
+				residual  = 0.0
+			else :
+				rel_error = x_fit[i] / x_sim[i] - 1.0
+				residual  = (x_fit[i] - x_sim[i]) / std_error[i]
 			if plot_fit :
 				fmt = '{:<15s}{:+11.5f}{:+11.5f}{:+11.5f}{:+11.5f}{:+11.5f}'
 				line = fmt.format(x_name[i],
@@ -557,8 +566,8 @@ def covid_19_xam(call_count = 0) :
 		ax3.set_ylabel('data weighted residuals')
 		#
 		pyplot.show()
-	#
-	# check conservation of masss in the compartmental model
+	# -------------------------------------------------------------------------
+	# check conservation of mass in the compartmental model
 	sum_all_fit = numpy.sum(seirwd_all_fit, axis=1)
 	eps99       = 99.0 * numpy.finfo(float).eps
 	ok          = ok and max( abs(sum_all_fit - 1.0) ) < eps99
