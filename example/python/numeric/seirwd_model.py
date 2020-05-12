@@ -8,10 +8,10 @@
 # BEGIN_PYTHON
 import numpy
 import runge4
-def seird_model(t_all, p_fun, initial, n_step = 1) :
+def seirwd_model(t_all, p_fun, initial, n_step = 1) :
 	# private member fuction (not part of class API)
-	def ode(t, seird) :
-		S, E, I, R, W, D = seird
+	def ode(t, seirwd) :
+		S, E, I, R, W, D = seirwd
 		p      = p_fun(t)
 		Sdot   = - p['beta']  *  S * I  + p['xi']    * R
 		Edot   = + p['beta']  *  S * I  - p['sigma'] * E
@@ -22,7 +22,7 @@ def seird_model(t_all, p_fun, initial, n_step = 1) :
 		return numpy.array([ Sdot, Edot, Idot, Rdot, Wdot, Ddot])
 	#
 	if n_step == 1 :
-		seird_all  = runge4.multi_step(ode, t_all, initial)
+		seirwd_all  = runge4.multi_step(ode, t_all, initial)
 	else :
 		# t_refine
 		t_refine = list()
@@ -33,16 +33,16 @@ def seird_model(t_all, p_fun, initial, n_step = 1) :
 		t_refine.append( t_all[-1] )
 		t_refine = numpy.array( t_refine )
 		#
-		seird_refine   = runge4.multi_step(ode, t_refine, initial)
+		seirwd_refine   = runge4.multi_step(ode, t_refine, initial)
 		index_all   = [ i * n_step for i in range(len(t_all)) ]
-		seird_all   = seird_refine[ index_all ]
+		seirwd_all   = seirwd_refine[ index_all ]
 	#
-	return seird_all
+	return seirwd_all
 # END_PYTHON
 #
-# $begin numeric_seird_model$$ $newlinech #$$
+# $begin numeric_seirwd_model$$ $newlinech #$$
 # $spell
-#	seird
+#	seirwd
 #	numpy
 #	cppad
 #	py
@@ -53,7 +53,7 @@ def seird_model(t_all, p_fun, initial, n_step = 1) :
 # $section A Susceptible Exposed Infectious Recovered and Death Model$$
 #
 # $head Syntax$$
-# $icode%seird_all% = seird_model(%t_all%, %p_fun%, %initial%, %n_step% = 1)
+# $icode%seirwd_all% = seirwd_model(%t_all%, %p_fun%, %initial%, %n_step% = 1)
 # %$$
 #
 # $head Notation$$
@@ -137,13 +137,13 @@ def seird_model(t_all, p_fun, initial, n_step = 1) :
 # The larger $icode n_step$$ the more computational effort and the more
 # accurate the solution.  The default value is for $icode n_step$$ is one.
 #
-# $head seird_all$$
-# The return value $icode seird_all$$ is a numpy matrix with row dimension
+# $head seirwd_all$$
+# The return value $icode seirwd_all$$ is a numpy matrix with row dimension
 # equal to the number of elements in $icode t_all$$ and column dimension
-# equal to six. The value $icode%seird_all%[%i%, %j%]%$$ is the
+# equal to six. The value $icode%seirwd_all%[%i%, %j%]%$$ is the
 # approximate solution for the j-th compartment at time $icode%t_all%[%i%]%$$.
 # The compartments have the same order as in $icode initial$$ and
-# $codei%%seird%[0,:]%$$ is equal to $icode initial$$.
+# $codei%%seirwd%[0,:]%$$ is equal to $icode initial$$.
 # The sequence of floating point operations only depends on $icode t_all$$
 # and the operations used to compute $icode p_fun$$.
 #
@@ -152,10 +152,10 @@ def seird_model(t_all, p_fun, initial, n_step = 1) :
 # up to numerical accuracy, it not depend on time.
 #
 # $children%
-#	example/python/numeric/seird_model_xam.py
+#	example/python/numeric/seirwd_model_xam.py
 # %$$
 # $head Example$$
-# $cref numeric_seird_model_xam.py$$
+# $cref numeric_seirwd_model_xam.py$$
 #
 # $head Source Code$$
 # $srcthisfile%

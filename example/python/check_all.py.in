@@ -54,7 +54,7 @@ numeric_list = [
 	'optimize_fun_xam',
 	'runge4_one_step_xam',
 	'runge4_multi_step_xam',
-	'seird_model_xam',
+	'seirwd_model_xam',
 	'covid_19_xam',
 ]
 error_count = 0

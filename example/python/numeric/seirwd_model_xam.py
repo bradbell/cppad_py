@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin numeric_seird_model_xam.py$$ $newlinech #$$
+# $begin numeric_seirwd_model_xam.py$$ $newlinech #$$
 # $spell
 #	seris
 # $$
@@ -19,10 +19,10 @@
 # $end
 # BEGIN_PYTHON
 import numpy
-from seird_model import seird_model
+from seirwd_model import seirwd_model
 from pdb import set_trace
 #
-def seird_model_xam() :
+def seirwd_model_xam() :
 	ok    = True
 	#
 	sigma = 1.0 / 5.0     # average 5 days between exposure and infectious
@@ -69,18 +69,18 @@ def seird_model_xam() :
 	initial  = numpy.array( [ S0, E0, I0, R0, W0, D0 ] )
 	#
 	# solve the ODE
-	seird_all = seird_model(t_all, p_fun, initial)
+	seirwd_all = seirwd_model(t_all, p_fun, initial)
 	#
 	# check solution using midpoint values
 	for i in range( len(t_all) - 1 ) :
 		# midpoint values
 		t     = (t_all[i] + t_all[i+1]) / 2.0
-		S     = (seird_all[i,0] + seird_all[i+1,0]) / 2.0
-		E     = (seird_all[i,1] + seird_all[i+1,1]) / 2.0
-		I     = (seird_all[i,2] + seird_all[i+1,2]) / 2.0
-		R     = (seird_all[i,3] + seird_all[i+1,3]) / 2.0
-		W     = (seird_all[i,4] + seird_all[i+1,4]) / 2.0
-		D     = (seird_all[i,5] + seird_all[i+1,5]) / 2.0
+		S     = (seirwd_all[i,0] + seirwd_all[i+1,0]) / 2.0
+		E     = (seirwd_all[i,1] + seirwd_all[i+1,1]) / 2.0
+		I     = (seirwd_all[i,2] + seirwd_all[i+1,2]) / 2.0
+		R     = (seirwd_all[i,3] + seirwd_all[i+1,3]) / 2.0
+		W     = (seirwd_all[i,4] + seirwd_all[i+1,4]) / 2.0
+		D     = (seirwd_all[i,5] + seirwd_all[i+1,5]) / 2.0
 		#
 		# differential equation
 		p     = p_fun(t)
@@ -95,12 +95,12 @@ def seird_model_xam() :
 		# difference over interval
 		delta         = dict()
 		delta['t']    = t_all[i+1]      - t_all[i]
-		delta['S']    = seird_all[i+1,0] - seird_all[i,0]
-		delta['E']    = seird_all[i+1,1] - seird_all[i,1]
-		delta['I']    = seird_all[i+1,2] - seird_all[i,2]
-		delta['R']    = seird_all[i+1,3] - seird_all[i,3]
-		delta['W']    = seird_all[i+1,4] - seird_all[i,4]
-		delta['D']    = seird_all[i+1,5] - seird_all[i,5]
+		delta['S']    = seirwd_all[i+1,0] - seirwd_all[i,0]
+		delta['E']    = seirwd_all[i+1,1] - seirwd_all[i,1]
+		delta['I']    = seirwd_all[i+1,2] - seirwd_all[i,2]
+		delta['R']    = seirwd_all[i+1,3] - seirwd_all[i,3]
+		delta['W']    = seirwd_all[i+1,4] - seirwd_all[i,4]
+		delta['D']    = seirwd_all[i+1,5] - seirwd_all[i,5]
 		#
 		for key in [ 'S', 'E', 'I', 'R', 'W', 'D' ] :
 			check     = delta[key] / delta['t']
@@ -109,8 +109,8 @@ def seird_model_xam() :
 	#
 	# now check solution using twice as many Runge-Kutta steps
 	n_step      = 2
-	seird_check = seird_model(t_all, p_fun, initial, n_step)
-	error       = seird_all - seird_check
+	seirwd_check = seirwd_model(t_all, p_fun, initial, n_step)
+	error       = seirwd_all - seirwd_check
 	ok          = ok and numpy.all( abs(error) < 1e-9 )
 	#
 	return ok

@@ -23,7 +23,7 @@ $spell
 	cppad
 	scipy
 	seirs
-	seird
+	seirwd
 	xam
 	covariate
 	covid
@@ -42,11 +42,11 @@ $list number$$
 More improvements to were made to
 $cref/Covid-19/numeric_covid_19_xam.py/$$ example.
 $lnext
-The $cref/n_step/numeric_seird_model/n_step/$$ option was added to the
-SEIRD model example.
+The $cref/n_step/numeric_seirwd_model/n_step/$$ option was added to the
+SEIRWD model example.
 $lnext
 A delay between when is no longer infectious and when one dies was
-added to the SEIRD model using a W compartment (Will die compartment).
+added to the SEIRWD model using a W compartment (Will die compartment).
 $lend
 
 
@@ -63,7 +63,7 @@ $cref numeric_covid_19_xam.py$$.
 And it was change to fit covariate multipliers that model
 the infectious rate $latex \beta$$.
 $lnext
-The $code numeric_seirs_model$$ was renamed $cref numeric_seird_model$$,
+The $code numeric_seirs_model$$ was renamed $cref numeric_seirwd_model$$,
 the D compartment was added to track total deaths,
 the data was changed from Infectious to cumulative death, and
 noise was added to the data.
@@ -89,7 +89,7 @@ example to estimate a $latex \beta$$ coefficient that
 changes with time.
 $lnext
 The $code numeric_seirs_class$$ example was removed because
-$code numeric_seird_model$$ replaces it with more general
+$code numeric_seirwd_model$$ replaces it with more general
 capabilities.
 $lend
 
@@ -102,7 +102,7 @@ $cref numeric_runge4_one_step$$,
 $cref numeric_runge4_multi_step$$,
 $code numeric_seirs_class$$.
 (The $code numeric_seirs_class$$ was later replaced by
-$cref numeric_seird_model$$.)
+$cref numeric_seirwd_model$$.)
 $lnext
 Add mention of using $code DYLD_LIBRARY_PATH$$ in the
 $cref/cppad library missing/install_error/CppAD Library Missing/$$

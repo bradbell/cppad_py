@@ -8,7 +8,7 @@
 # $begin numeric_covid_19_xam.py$$ $newlinech #$$
 # $spell
 #	Covid
-#	seird
+#	seirwd
 #	Covariates
 #	Covariate
 #	cv
@@ -17,10 +17,10 @@
 #	std
 # $$
 #
-# $section Example Fitting an SEIRD Model for Covid-19$$
+# $section Example Fitting an SEIRWD Model for Covid-19$$
 #
 # $head Model$$
-# We use the $cref/seird/numeric_seird_model/$$ model and notation.
+# We use the $cref/seirwd/numeric_seirwd_model/$$ model and notation.
 #
 # $head Covariates$$
 # In this example there are three covariates that
@@ -172,7 +172,7 @@ random_seed = 0
 # In this case the data file is used for the
 # cumulative death and corresponding covariates.
 # $srccode%py%
-data_file = '/home/bradbell/trash/covid_19/seird.csv' # example file name
+data_file = '/home/bradbell/trash/covid_19/seirwd.csv' # example file name
 data_file = ''                                        # empty string
 # %$$
 #
@@ -196,7 +196,7 @@ import copy
 import cppad_py
 import runge4
 from optimize_fun_class import optimize_fun_class
-from seird_model import seird_model
+from seirwd_model import seirwd_model
 #
 # Order of packing the variables into a vector
 x_name = [
@@ -287,7 +287,7 @@ class p_fun_class :
 		p['beta'] = beta
 		return p
 #
-def x2seird_all(x) :
+def x2seirwd_all(x) :
 	#
 	# unpack x
 	cov_mul            = x[0 : 3]
@@ -316,10 +316,10 @@ def x2seird_all(x) :
 	p_fun_obj = p_fun_class(beta_all, other_rate)
 	p_fun     = p_fun_obj.p_fun
 	#
-	# seird_all
-	seird_all = seird_model(t_all, p_fun, initial)
+	# seirwd_all
+	seirwd_all = seirwd_model(t_all, p_fun, initial)
 	#
-	return seird_all
+	return seirwd_all
 #
 def weighted_residual(D_data, D_model) :
 	Ddiff_data   = numpy.diff(D_data)
@@ -341,10 +341,10 @@ def objective_d_fun(t_all, D_data) :
 	ax  = cppad_py.independent(x)
 	#
 	# compute model for data
-	aseird_all = x2seird_all(ax)
+	aseirwd_all = x2seirwd_all(ax)
 	#
 	# Model for the cumulative death as function of time
-	aD_model   = aseird_all[:,5] # column order is S, E, I, R, W, D
+	aD_model   = aseirwd_all[:,5] # column order is S, E, I, R, W, D
 	#
 	# compute negative log Gaussian likelihood dropping variance terms
 	# because they are constaint w.r.t the unknown parameters
@@ -358,13 +358,13 @@ def objective_d_fun(t_all, D_data) :
 def simulate_data() :
 	#
 	# noiseless simulated data
-	seird_all_sim = x2seird_all(x_sim)
+	seirwd_all_sim = x2seirwd_all(x_sim)
 	#
 	# rng: numpy random number generator
 	rng = numpy.random.default_rng(seed = actual_seed[0])
 	#
 	# D_data
-	D_sim       = seird_all_sim[:,5]
+	D_sim       = seirwd_all_sim[:,5]
 	Ddiff_sim   = numpy.diff( D_sim )
 	std         = death_data_cv * Ddiff_sim
 	noise       = std * rng.standard_normal(size = t_all.size - 1)
@@ -480,11 +480,11 @@ def covid_19_xam(call_count = 0) :
 	# standard devaition for each component of x_fit
 	std_error = numpy.sqrt( numpy.diag(Hinv) )
 	#
-	# seird_all_fit
-	seird_all_fit = x2seird_all(x_fit)
+	# seirwd_all_fit
+	seirwd_all_fit = x2seirwd_all(x_fit)
 	#
 	# D_fit
-	D_fit = seird_all_fit[:,5]
+	D_fit = seirwd_all_fit[:,5]
 	#
 	# residual_fit
 	residual_fit = weighted_residual(D_data, D_fit)
@@ -534,11 +534,11 @@ def covid_19_xam(call_count = 0) :
 		ax2  = fig.add_subplot(gs[0,1])
 		ax3  = fig.add_subplot(gs[1,1])
 		#
-		ax1.plot(t_all, seird_all_fit[:,1], 'g-', label='E')
-		ax1.plot(t_all, seird_all_fit[:,2], 'r-', label='I')
-		ax1.plot(t_all, seird_all_fit[:,3], 'k-', label='R')
-		ax1.plot(t_all, seird_all_fit[:,4], 'y-', label='W')
-		ax1.plot(t_all, seird_all_fit[:,5], 'b-', label='D')
+		ax1.plot(t_all, seirwd_all_fit[:,1], 'g-', label='E')
+		ax1.plot(t_all, seirwd_all_fit[:,2], 'r-', label='I')
+		ax1.plot(t_all, seirwd_all_fit[:,3], 'k-', label='R')
+		ax1.plot(t_all, seirwd_all_fit[:,4], 'y-', label='W')
+		ax1.plot(t_all, seirwd_all_fit[:,5], 'b-', label='D')
 		ax1.legend()
 		ax1.set_xlabel('time')
 		ax1.set_ylabel('population fraction')
@@ -559,7 +559,7 @@ def covid_19_xam(call_count = 0) :
 		pyplot.show()
 	#
 	# check conservation of masss in the compartmental model
-	sum_all_fit = numpy.sum(seird_all_fit, axis=1)
+	sum_all_fit = numpy.sum(seirwd_all_fit, axis=1)
 	eps99       = 99.0 * numpy.finfo(float).eps
 	ok          = ok and max( abs(sum_all_fit - 1.0) ) < eps99
 	#

@@ -12,7 +12,7 @@ $section Numerical Examples$$
 $childtable%
 	example/python/numeric/runge4.py%
 	example/python/numeric/optimize_fun_class.py%
-	example/python/numeric/seird_model.py%
+	example/python/numeric/seirwd_model.py%
 	example/python/numeric/covid_19_xam.py
 %$$
 
