@@ -15,6 +15,7 @@
 #	sim
 #	rel
 #	std
+#	optimizer
 # $$
 #
 # $section Example Fitting an SEIRWD Model for Covid-19$$
@@ -27,6 +28,12 @@
 # affect the infectious rate $latex \beta$$:
 # social mobility $latex c_0 (t)$$, and Covid-19 testing $latex c_1 (t)$$.
 # The covariates are known functions of time.
+# The mobility covariate has been shifted and scaled
+# so it is in the interval [-1, 0].
+# The testing covariate has been shifted and scaled
+# so it is in the interval [0, 1].
+# Note that the maximum mobility and the minimum testing corresponds to the
+# normal (baseline) condition.
 #
 # $head beta(t)$$
 # Our model for the infectious rate is
@@ -87,26 +94,24 @@ delta_known  = 0.1
 x_name = [ 'm_mobility', 'm_testing', 'I(0)', 'W(0)', 'beta_bar' ]
 # %$$
 #
-# $head Constraints$$
-# The unknown parameters have the following constraints:
-# $latex \[
-#	\begin{array}{lcr}
-#	0 & \leq & m_0          \\
-#	m_1 & \leq & 0          \\
-#	0 & \leq & \bar{\beta } \\
-#	0 & \leq & I(0)         \\
-#	0 & \leq & W(0)
-#	\end{array}
-# \] $$
+# $head Bounds$$
 # The infection rate $latex \beta(t)$$ must be non-negative; i.e.,
 # $latex \[
 #	0 \leq \bar{\beta} \left( 1 + m_0 c_0 (t) + m_1 c_1 (t) \right)
 # \] $$
 # is true for all $latex t$$.
-# We approximation the functional constraint above as follows:
+# Recalling that $latex -1 \leq c_0 (t) \leq 0$$ and
+# $latex 0 \leq c_1 (t) \leq 1$$ for all $latex t$$.
+# The function constraint above is approximation by the following bounds:
 # $latex \[
-#	0  \leq 1 + m_0 \min_t [ c_0(t) ]  + m_1 \max_t [ c_1 (t) ]
+#	\begin{array}{lcr}
+#	0   &  \leq & \bar{\beta }   \\
+#	m_0 &  \leq & 1              \\
+#	-1  & \leq  & m_1
+#	\end{array}
 # \] $$
+# We also include the following bounds to help the optimizer:
+# $latex I(0), W(0), m_0$$ are all non-negative and $latex m_1 \leq 0$$.
 #
 # $head Data$$
 # The data in this model is the cumulative number of deaths,
@@ -254,6 +259,14 @@ else :
 		testing         = t / t_stop
 		covariates[i,:] = [ mobility, testing ]
 #
+# mobility in [-1, 0]
+assert numpy.all( covariates[:,0] <= 0.0 )
+assert numpy.all( -1.0 <= covariates[:,0] )
+#
+# testing in [0, 1]
+assert numpy.all( 0.0 <= covariates[:,1] )
+assert numpy.all( covariates[:,0] <= 1.0 )
+#
 # beta_bar_sim
 beta_bar_sim = 0.05
 #
@@ -391,7 +404,7 @@ def simulate_data() :
 	#
 	return D_data
 
-def random_start(n_random, x_lower, x_upper, log_scale, objective, feasible) :
+def random_start(n_random, x_lower, x_upper, log_scale, objective) :
 	n_x      = len(x_lower)
 	#
 	x_best   = (x_lower + x_upper) / 2.0
@@ -412,12 +425,11 @@ def random_start(n_random, x_lower, x_upper, log_scale, objective, feasible) :
 		for j in range(n_x) :
 			if log_scale[j] :
 				x_current[j] = numpy.exp(x_current[j])
-		if feasible( x_current ) :
-			obj_current = objective(x_current)
-			if obj_current < obj_best :
-				# print(i, obj_current)
-				x_best = x_current
-				obj_best = obj_current
+		obj_current = objective(x_current)
+		if obj_current < obj_best :
+			# print(i, obj_current)
+			x_best = x_current
+			obj_best = obj_current
 	#
 	return x_best
 
@@ -453,15 +465,15 @@ def covid_19_xam(call_count = 0) :
 	# -----------------------------------------------------------------------
 	# bounds
 	n_x = len(x_name)
-	assert numpy.all( x_sim[2:] > 0.0 )
-	assert x_sim[0] > 0.0
 	x_lower    = numpy.zeros( n_x, dtype=float)
 	x_upper    = x_sim * 5.0
 	#
-	# m_1 <= 0
-	x_lower[1] = x_sim[1] * 5.0
-	x_upper[1] = 0.0
+	# 0 <= m_0 <= 1
+	x_upper[0] = 1.0
 	#
+	# -1 <= m_1 <= 0
+	x_lower[1] = -1.0
+	x_upper[1] = 0.0
 	#
 	# currently not using log-scaling
 	log_scale    = numpy.array( n_x * [ False ] )
@@ -475,39 +487,14 @@ def covid_19_xam(call_count = 0) :
 		keep_feasible = True
 	)
 	# ------------------------------------------------------------------------
-	# constraints
-	c0_min = min( covariates[:,0] )
-	c1_max = max( covariates[:,1] )
-	#
-	rest_zero = (n_x - 2) * [ 0.0 ]
-	c_A     = numpy.array( [ [ c0_min, c1_max , *rest_zero ] ] )
-	c_lower = numpy.array( [ -1.0 ] )
-	c_upper = numpy.array( [ numpy.inf ] )
-	linear_constraint = scipy.optimize.LinearConstraint(
-		c_A, c_lower, c_upper, keep_feasible=True
-	)
-	constraints = [ linear_constraint ]
-	# ------------------------------------------------------------------------
 	# start_point
 	n_random    = 2000
-	def feasible(x, trace = False) :
-		ok   = True
-		c_Ax = numpy.matmul(c_A, x)
-		ok   = ok and  numpy.all( c_lower <= c_Ax )
-		ok   = ok and  numpy.all( c_Ax <= c_upper )
-		if trace :
-			print('feasible: x = ', x)
-			print('feasible: c_A = ', c_A)
-			print('feasible: c_Ax = ', c_Ax)
-		return ok
-	#
 	start_point = random_start(
 		n_random,
 		x_lower,
 		x_upper,
 		log_scale,
 		optimize_fun.objective_fun,
-		feasible,
 	);
 	# ------------------------------------------------------------------------
 	# x_fit
@@ -517,7 +504,6 @@ def covid_19_xam(call_count = 0) :
 		method      = 'trust-constr',
 		jac         = optimize_fun.objective_grad,
 		hess        = optimize_fun.objective_hess,
-		constraints = constraints,
 		options     = options,
 		bounds      = bounds,
 	)
