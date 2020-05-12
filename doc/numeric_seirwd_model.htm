@@ -1,0 +1,377 @@
+<html>
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath:  [ ['@(@','@)@'] ] ,
+    displayMath: [ ['@[@','@]@'] ]
+  }
+});
+</script>
+<script type='text/javascript' src=
+'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default'
+>
+</script>
+<head>
+<title>A Susceptible Exposed Infectious Recovered and Death Model</title>
+<meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
+<meta name="description" id="description" content="A Susceptible Exposed Infectious Recovered and Death Model">
+<meta name="keywords" id="keywords" content=" susceptible exposed infectious recovered death model syntax notation ode t_all p_fun initial n_step seirwd_all conservation mass example source code ">
+<style type='text/css'>
+body { color : black }
+body { background-color : white }
+A:link { color : blue }
+A:visited { color : purple }
+A:active { color : purple }
+</style>
+<script type='text/javascript' language='JavaScript' src='_numeric_seirwd_model_htm.js'>
+</script>
+</head>
+<body>
+<table><tr>
+<td>
+<a href="https://bradbell.github.io/cppad_py" target="_top"><img border="0" src="_image.gif"></a>
+</td>
+<td><a href="numeric_optimize_fun_xam.py.htm" target="_top">Prev</a>
+</td><td><a href="numeric_seirwd_model_xam.py.htm" target="_top">Next</a>
+</td><td>
+<select onchange='choose_across0(this)'>
+<option>Index-&gt;</option>
+<option>contents</option>
+<option>reference</option>
+<option>index</option>
+<option>search</option>
+<option>external</option>
+</select>
+</td>
+<td>
+<select onchange='choose_up0(this)'>
+<option>Up-&gt;</option>
+<option>cppad_py</option>
+<option>numeric_xam</option>
+<option>numeric_seirwd_model</option>
+</select>
+</td>
+<td>
+<script type='text/javascript' language='JavaScript' src='_childtable_cppad_py_htm.js'></script>
+</td>
+<td>
+<script type='text/javascript' language='JavaScript' src='_childtable_numeric_xam_htm.js'></script>
+</td>
+<td>
+<script type='text/javascript' language='JavaScript' src='_childtable_numeric_seirwd_model_htm.js'></script>
+</td>
+</tr></table><br>
+@(@\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>A Susceptible Exposed Infectious Recovered and Death Model</big></big></b></center>
+
+<br><a href="numeric_seirwd_model.htm#Syntax" target="_top">Syntax</a>
+<br><a href="numeric_seirwd_model.htm#Notation" target="_top">Notation</a>
+<br><a href="numeric_seirwd_model.htm#ODE" target="_top">ODE</a>
+<br><a href="numeric_seirwd_model.htm#t_all" target="_top">t_all</a>
+<br><a href="numeric_seirwd_model.htm#p_fun" target="_top">p_fun</a>
+<br><a href="numeric_seirwd_model.htm#initial" target="_top">initial</a>
+<br><a href="numeric_seirwd_model.htm#n_step" target="_top">n_step</a>
+<br><a href="numeric_seirwd_model.htm#seirwd_all" target="_top">seirwd_all</a>
+<br><a href="numeric_seirwd_model.htm#Conservation of Mass" target="_top">Conservation&nbsp;of&nbsp;Mass</a>
+<br><a href="numeric_seirwd_model.htm#Example" target="_top">Example</a>
+<br><a href="numeric_seirwd_model.htm#Source Code" target="_top">Source&nbsp;Code</a>
+<br><br>
+<b><big><a name="Syntax" id="Syntax">Syntax</a></big></b>
+
+<br>
+
+<code><i><font color="black"><span style='white-space: nowrap'>seirwd_all</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;seirwd_model(</span></font><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>p_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>initial</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>n_step</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;1)<br>
+</span></font></code>
+<br>
+<b><big><a name="Notation" id="Notation">Notation</a></big></b>
+
+<table><tr><td align='left'  valign='top'>
+
+<small>@(@
+S(t)
+@)@</small>      </td><td align='left'  valign='top'>
+ size of the Susceptible group     </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+E(t)
+@)@</small>      </td><td align='left'  valign='top'>
+ size of the Exposed group         </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+I(t)
+@)@</small>      </td><td align='left'  valign='top'>
+ size of the Infectious group      </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+R(t)
+@)@</small>      </td><td align='left'  valign='top'>
+ size Recovered group              </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+W(t)
+@)@</small>      </td><td align='left'  valign='top'>
+ size of the group that will die   </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+D(t)
+@)@</small>      </td><td align='left'  valign='top'>
+ size of the group that has died   </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+\beta(t)
+@)@</small>  </td><td align='left'  valign='top'>
+ infectious rate                   </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+\sigma(t)
+@)@</small> </td><td align='left'  valign='top'>
+ incubation rate                   </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+\gamma(t)
+@)@</small> </td><td align='left'  valign='top'>
+ recovery rate                     </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+\xi(t)
+@)@</small>    </td><td align='left'  valign='top'>
+ loss of immunity rate             </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+\chi(t)
+@)@</small>   </td><td align='left'  valign='top'>
+ excess mortality rate             </td></tr><tr><td align='left'  valign='top'>
+
+<small>@(@
+\delta(t)
+@)@</small> </td><td align='left'  valign='top'>
+ delay between infectious and death
+</td></tr>
+</table>
+<br>
+<b><big><a name="ODE" id="ODE">ODE</a></big></b>
+<br>
+The ordinary differential equation for this model is:
+<small>@[@
+
+\begin{array}{rcll}
+\dot{S} & = & - \beta  S I      & + \xi    R             \\
+\dot{E} & = & + \beta  S I      & - \sigma E             \\
+\dot{I} & = & + \sigma E        & - ( \gamma + \chi )  I \\
+\dot{R} & = & + \gamma I        & - \xi    R             \\
+\dot{W} & = & + \chi   I        & - \delta W             \\
+\dot{D} & = & + \delta W        &
+\end{array}
+
+@]@</small>
+where we dropped the time dependence in the equations above.
+This model does not account for death by other causes.
+It is similar to the standard
+<a href="https://www.idmod.org/docs/hiv/model-seir.html" target="_top"><span style='white-space: nowrap'>SEIRS</span></a>
+ model
+with the following differences:
+<ol type="1"><li>
+The total population <small>@(@
+N
+@)@</small> is not included in this model,
+so the units for <small>@(@
+\beta
+@)@</small> are different.
+</li><li>
+
+This model tracks death due to the condition using the compartments W and D.
+</li></ol>
+
+
+<br>
+<br>
+<b><big><a name="t_all" id="t_all">t_all</a></big></b>
+<br>
+The argument 
+<code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i></code>
+ is a vector that is monotone
+increasing or decreasing.
+The smaller the spacing between time points, the more accurate
+the approximation is.
+We call 
+<code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i><font color="blue"><span style='white-space: nowrap'>[0]</span></font></code>
+ the initial time and
+
+<code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i><font color="blue"><span style='white-space: nowrap'>[-1]</span></font></code>
+ the final time.
+
+<br>
+<br>
+<b><big><a name="p_fun" id="p_fun">p_fun</a></big></b>
+<br>
+This argument is a function and the syntax
+
+<code><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>p</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>p_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>(</span></font><i><font color="black"><span style='white-space: nowrap'>t</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+</span></font></code>
+sets 
+<code><i><font color="black"><span style='white-space: nowrap'>p</span></font></i></code>
+ to a dictionary with the following keys and values:
+<table><tr><td align='left'  valign='top'>
+
+Key             </td><td align='left'  valign='top'>
+ Value </td></tr><tr><td align='left'  valign='top'>
+
+<code><font color="blue">'beta'</font></code>  </td><td align='left'  valign='top'>
+ <small>@(@
+\beta(t)
+@)@</small>  </td></tr><tr><td align='left'  valign='top'>
+
+<code><font color="blue">'sigma'</font></code> </td><td align='left'  valign='top'>
+ <small>@(@
+\sigma(t)
+@)@</small> </td></tr><tr><td align='left'  valign='top'>
+
+<code><font color="blue">'gamma'</font></code> </td><td align='left'  valign='top'>
+ <small>@(@
+\gamma(t)
+@)@</small> </td></tr><tr><td align='left'  valign='top'>
+
+<code><font color="blue">'xi'</font></code>    </td><td align='left'  valign='top'>
+ <small>@(@
+\xi(t)
+@)@</small>    </td></tr><tr><td align='left'  valign='top'>
+
+<code><font color="blue">'chi'</font></code>   </td><td align='left'  valign='top'>
+ <small>@(@
+\chi(t)
+@)@</small>   </td></tr><tr><td align='left'  valign='top'>
+
+<code><font color="blue">'delta'</font></code> </td><td align='left'  valign='top'>
+ <small>@(@
+\delta(t)
+@)@</small>
+</td></tr>
+</table>
+The value 
+<code><i><font color="black"><span style='white-space: nowrap'>t</span></font></i></code>
+ will be between the initial and final time.
+The parameter functions above are assumed to be smooth
+for all times between the initial and final time and
+not in 
+<code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i></code>
+.
+It is also assumed to be continuous at the times in 
+<code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i></code>
+; e.g,
+it could be a piecewise linear interpolant with knots at 
+<code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i></code>
+.
+
+<br>
+<br>
+<b><big><a name="initial" id="initial">initial</a></big></b>
+<br>
+is a vector of length four containing the initial values for
+S, E, I, R, W, D in that order.
+
+<br>
+<br>
+<b><big><a name="n_step" id="n_step">n_step</a></big></b>
+<br>
+This is the number of numerical integration steps to use for each
+time interval in the 
+<code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i></code>
+ array.
+It must be an <code><font color="blue">int</font></code> greater or equal one.
+The larger 
+<code><i><font color="black"><span style='white-space: nowrap'>n_step</span></font></i></code>
+ the more computational effort and the more
+accurate the solution.  The default value is for 
+<code><i><font color="black"><span style='white-space: nowrap'>n_step</span></font></i></code>
+ is one.
+
+<br>
+<br>
+<b><big><a name="seirwd_all" id="seirwd_all">seirwd_all</a></big></b>
+<br>
+The return value 
+<code><i><font color="black"><span style='white-space: nowrap'>seirwd_all</span></font></i></code>
+ is a numpy matrix with row dimension
+equal to the number of elements in 
+<code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i></code>
+ and column dimension
+equal to six. The value 
+<code><i><font color="black"><span style='white-space: nowrap'>seirwd_all</span></font></i><font color="blue"><span style='white-space: nowrap'>[</span></font><i><font color="black"><span style='white-space: nowrap'>i</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>j</span></font></i><font color="blue"><span style='white-space: nowrap'>]</span></font></code>
+ is the
+approximate solution for the j-th compartment at time 
+<code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i><font color="blue"><span style='white-space: nowrap'>[</span></font><i><font color="black"><span style='white-space: nowrap'>i</span></font></i><font color="blue"><span style='white-space: nowrap'>]</span></font></code>
+.
+The compartments have the same order as in 
+<code><i><font color="black"><span style='white-space: nowrap'>initial</span></font></i></code>
+ and
+
+<code><font color="blue"></font><i><font color="black"><span style='white-space: nowrap'>seirwd</span></font></i><font color="blue"><span style='white-space: nowrap'>[0,:]</span></font></code>
+ is equal to 
+<code><i><font color="black"><span style='white-space: nowrap'>initial</span></font></i></code>
+.
+The sequence of floating point operations only depends on 
+<code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i></code>
+
+and the operations used to compute 
+<code><i><font color="black"><span style='white-space: nowrap'>p_fun</span></font></i></code>
+.
+
+<br>
+<br>
+<b><big><a name="Conservation of Mass" id="Conservation of Mass">Conservation of Mass</a></big></b>
+<br>
+Note that the sum of S, E, I, R, W, and D should be constant; i.e.,
+up to numerical accuracy, it not depend on time.
+
+
+<br>
+<br>
+<b><big><a name="Example" id="Example">Example</a></big></b>
+
+<br>
+<a href="numeric_seirwd_model_xam.py.htm" target="_top"><span style='white-space: nowrap'>numeric_seirwd_model_xam.py</span></a>
+
+
+<br>
+<br>
+<b><big><a name="Source Code" id="Source Code">Source Code</a></big></b>
+
+<pre><tt>
+<b><font color="#000080">import</font></b> numpy
+<b><font color="#000080">import</font></b> runge4
+<b><font color="#0000FF">def</font></b> <b><font color="#000000">seirwd_model</font></b><font color="#990000">(</font>t_all<font color="#990000">,</font> p_fun<font color="#990000">,</font> initial<font color="#990000">,</font> n_step <font color="#990000">=</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">:</font>
+     <i><font color="#9A1900"># private member fuction (not part of class API)</font></i>
+     <b><font color="#0000FF">def</font></b> <b><font color="#000000">ode</font></b><font color="#990000">(</font>t<font color="#990000">,</font> seirwd<font color="#990000">)</font> <font color="#990000">:</font>
+          S<font color="#990000">,</font> E<font color="#990000">,</font> I<font color="#990000">,</font> R<font color="#990000">,</font> W<font color="#990000">,</font> D <font color="#990000">=</font> seirwd
+          p      <font color="#990000">=</font> <b><font color="#000000">p_fun</font></b><font color="#990000">(</font>t<font color="#990000">)</font>
+          Sdot   <font color="#990000">=</font> <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'beta'</font><font color="#990000">]</font>  <font color="#990000">*</font>  S <font color="#990000">*</font> I  <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'xi'</font><font color="#990000">]</font>    <font color="#990000">*</font> R
+          Edot   <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'beta'</font><font color="#990000">]</font>  <font color="#990000">*</font>  S <font color="#990000">*</font> I  <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'sigma'</font><font color="#990000">]</font> <font color="#990000">*</font> E
+          Idot   <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'sigma'</font><font color="#990000">]</font> <font color="#990000">*</font> E       <font color="#990000">-</font> <font color="#990000">(</font>p<font color="#990000">[</font><font color="#FF0000">'gamma'</font><font color="#990000">]</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'chi'</font><font color="#990000">])</font> <font color="#990000">*</font> I
+          Rdot   <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'gamma'</font><font color="#990000">]</font> <font color="#990000">*</font> I       <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'xi'</font><font color="#990000">]</font>    <font color="#990000">*</font> R
+          Wdot   <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'chi'</font><font color="#990000">]</font>   <font color="#990000">*</font> I       <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'delta'</font><font color="#990000">]</font> <font color="#990000">*</font> W
+          Ddot   <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'delta'</font><font color="#990000">]</font> <font color="#990000">*</font> W
+          <b><font color="#0000FF">return</font></b> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">([</font> Sdot<font color="#990000">,</font> Edot<font color="#990000">,</font> Idot<font color="#990000">,</font> Rdot<font color="#990000">,</font> Wdot<font color="#990000">,</font> Ddot<font color="#990000">])</font>
+     <i><font color="#9A1900">#</font></i>
+     <b><font color="#0000FF">if</font></b> n_step <font color="#990000">==</font> <font color="#993399">1</font> <font color="#990000">:</font>
+          seirwd_all  <font color="#990000">=</font> runge4<font color="#990000">.</font><b><font color="#000000">multi_step</font></b><font color="#990000">(</font>ode<font color="#990000">,</font> t_all<font color="#990000">,</font> initial<font color="#990000">)</font>
+     <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
+          <i><font color="#9A1900"># t_refine</font></i>
+          t_refine <font color="#990000">=</font> <b><font color="#000000">list</font></b><font color="#990000">()</font>
+          <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> <b><font color="#000000">len</font></b><font color="#990000">(</font>t_all<font color="#990000">)</font> <font color="#990000">-</font> <font color="#993399">1</font> <font color="#990000">)</font> <font color="#990000">:</font>
+               step <font color="#990000">=</font> <font color="#990000">(</font>t_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">-</font> t_all<font color="#990000">[</font>i<font color="#990000">])</font> <font color="#990000">/</font> n_step
+               <b><font color="#0000FF">for</font></b> j <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>n_step<font color="#990000">)</font> <font color="#990000">:</font>
+                    t_refine<font color="#990000">.</font><b><font color="#000000">append</font></b><font color="#990000">(</font> t_all<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">+</font> j <font color="#990000">*</font> step <font color="#990000">)</font>
+          t_refine<font color="#990000">.</font><b><font color="#000000">append</font></b><font color="#990000">(</font> t_all<font color="#990000">[-</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">)</font>
+          t_refine <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> t_refine <font color="#990000">)</font>
+          <i><font color="#9A1900">#</font></i>
+          seirwd_refine   <font color="#990000">=</font> runge4<font color="#990000">.</font><b><font color="#000000">multi_step</font></b><font color="#990000">(</font>ode<font color="#990000">,</font> t_refine<font color="#990000">,</font> initial<font color="#990000">)</font>
+          index_all   <font color="#990000">=</font> <font color="#990000">[</font> i <font color="#990000">*</font> n_step <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font><b><font color="#000000">len</font></b><font color="#990000">(</font>t_all<font color="#990000">))</font> <font color="#990000">]</font>
+          seirwd_all   <font color="#990000">=</font> seirwd_refine<font color="#990000">[</font> index_all <font color="#990000">]</font>
+     <i><font color="#9A1900">#</font></i>
+     <b><font color="#0000FF">return</font></b> seirwd_all</tt></pre>
+
+<hr>Input File: example/python/numeric/seirwd_model.py
+
+</body>
+</html>

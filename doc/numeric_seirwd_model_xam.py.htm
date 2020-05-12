@@ -1,0 +1,169 @@
+<html>
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath:  [ ['@(@','@)@'] ] ,
+    displayMath: [ ['@[@','@]@'] ]
+  }
+});
+</script>
+<script type='text/javascript' src=
+'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default'
+>
+</script>
+<head>
+<title>Example Using seris_model</title>
+<meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
+<meta name="description" id="description" content="Example Using seris_model">
+<meta name="keywords" id="keywords" content=" example using seris_model ">
+<style type='text/css'>
+body { color : black }
+body { background-color : white }
+A:link { color : blue }
+A:visited { color : purple }
+A:active { color : purple }
+</style>
+<script type='text/javascript' language='JavaScript' src='_numeric_seirwd_model_xam.py_htm.js'>
+</script>
+</head>
+<body>
+<table><tr>
+<td>
+<a href="https://bradbell.github.io/cppad_py" target="_top"><img border="0" src="_image.gif"></a>
+</td>
+<td><a href="numeric_seirwd_model.htm" target="_top">Prev</a>
+</td><td><a href="numeric_covid_19_xam.py.htm" target="_top">Next</a>
+</td><td>
+<select onchange='choose_across0(this)'>
+<option>Index-&gt;</option>
+<option>contents</option>
+<option>reference</option>
+<option>index</option>
+<option>search</option>
+<option>external</option>
+</select>
+</td>
+<td>
+<select onchange='choose_up0(this)'>
+<option>Up-&gt;</option>
+<option>cppad_py</option>
+<option>numeric_xam</option>
+<option>numeric_seirwd_model</option>
+<option>numeric_seirwd_model_xam.py</option>
+</select>
+</td>
+<td>
+<script type='text/javascript' language='JavaScript' src='_childtable_cppad_py_htm.js'></script>
+</td>
+<td>
+<script type='text/javascript' language='JavaScript' src='_childtable_numeric_xam_htm.js'></script>
+</td>
+<td>
+<script type='text/javascript' language='JavaScript' src='_childtable_numeric_seirwd_model_htm.js'></script>
+</td>
+<td>numeric_seirwd_model_xam.py</td>
+</tr></table><br>
+@(@\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Example Using seris_model</big></big></b></center>
+
+<br><pre><tt><b><font color="#000080">import</font></b> numpy
+<b><font color="#000080">from</font></b> seirwd_model <b><font color="#000080">import</font></b> seirwd_model
+<b><font color="#000080">from</font></b> pdb <b><font color="#000080">import</font></b> set_trace
+<i><font color="#9A1900">#</font></i>
+<b><font color="#0000FF">def</font></b> <b><font color="#000000">seirwd_model_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
+     ok    <font color="#990000">=</font> True
+     <i><font color="#9A1900">#</font></i>
+     sigma <font color="#990000">=</font> <font color="#993399">1.0</font> <font color="#990000">/</font> <font color="#993399">5.0</font>     <i><font color="#9A1900"># average 5 days between exposure and infectious</font></i>
+     gamma <font color="#990000">=</font> <font color="#993399">1.0</font> <font color="#990000">/</font> <font color="#993399">20.0</font>    <i><font color="#9A1900"># average 20 days between infectious and recovered</font></i>
+     xi    <font color="#990000">=</font> <font color="#993399">1.0</font> <font color="#990000">/</font> <font color="#993399">365.0</font>   <i><font color="#9A1900"># average 1 year of immunity</font></i>
+     chi   <font color="#990000">=</font> gamma <font color="#990000">/</font> <font color="#993399">10.0</font>  <i><font color="#9A1900"># probabiliy of death is 1/10 that of recovery</font></i>
+     delta <font color="#990000">=</font> <font color="#993399">1.0</font> <font color="#990000">/</font> <font color="#993399">10.0</font>    <i><font color="#9A1900"># to days between no-longer infectious and death</font></i>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># t_all</font></i>
+     t_all <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font> <font color="#993399">0.0</font><font color="#990000">,</font> <font color="#993399">0.1</font><font color="#990000">,</font> <font color="#993399">0.2</font> <font color="#990000">]</font> <font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># p_all</font></i>
+     p_all <font color="#990000">=</font> <font color="#990000">{</font>
+          <font color="#FF0000">'beta'</font>  <font color="#990000">:</font>  <font color="#990000">[</font> <font color="#993399">0.30</font><font color="#990000">,</font> <font color="#993399">0.20</font><font color="#990000">,</font> <font color="#993399">0.10</font> <font color="#990000">],</font>
+          <font color="#FF0000">'sigma'</font> <font color="#990000">:</font> <font color="#993399">3</font> <font color="#990000">*</font> <font color="#990000">[</font> sigma <font color="#990000">],</font>
+          <font color="#FF0000">'gamma'</font> <font color="#990000">:</font> <font color="#993399">3</font> <font color="#990000">*</font> <font color="#990000">[</font> gamma <font color="#990000">],</font>
+          <font color="#FF0000">'xi'</font>    <font color="#990000">:</font> <font color="#993399">3</font> <font color="#990000">*</font> <font color="#990000">[</font> xi <font color="#990000">],</font>
+          <font color="#FF0000">'chi'</font>   <font color="#990000">:</font> <font color="#993399">3</font> <font color="#990000">*</font> <font color="#990000">[</font> chi <font color="#990000">],</font>
+          <font color="#FF0000">'delta'</font> <font color="#990000">:</font> <font color="#993399">3</font> <font color="#990000">*</font> <font color="#990000">[</font> delta <font color="#990000">],</font>
+     <font color="#990000">}</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># p_fun</font></i>
+     <b><font color="#0000FF">def</font></b> <b><font color="#000000">p_fun</font></b><font color="#990000">(</font>t<font color="#990000">)</font> <font color="#990000">:</font>
+          i <font color="#990000">=</font> <font color="#993399">0</font>
+          <b><font color="#0000FF">while</font></b> i <font color="#990000">&lt;</font> <b><font color="#000000">len</font></b><font color="#990000">(</font>t_all<font color="#990000">)</font> <font color="#990000">-</font> <font color="#993399">1</font> <b><font color="#0000FF">and</font></b> t_all<font color="#990000">[</font>i <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">&lt;</font> t <font color="#990000">:</font>
+               i <font color="#990000">+=</font> <font color="#993399">1</font>
+          <i><font color="#9A1900"># linear interpolation coefficients</font></i>
+          ip     <font color="#990000">=</font> i <font color="#990000">+</font> <font color="#993399">1</font>
+          t_diff <font color="#990000">=</font> t_all<font color="#990000">[</font>ip<font color="#990000">]</font> <font color="#990000">-</font> t_all<font color="#990000">[</font>i<font color="#990000">]</font>
+          left   <font color="#990000">=</font> <font color="#990000">(</font> t_all<font color="#990000">[</font>ip<font color="#990000">]</font> <font color="#990000">-</font> t <font color="#990000">)</font> <font color="#990000">/</font> t_diff
+          right  <font color="#990000">=</font> <font color="#990000">(</font> t <font color="#990000">-</font> t_all<font color="#990000">[</font>i<font color="#990000">]</font>  <font color="#990000">)</font> <font color="#990000">/</font> t_diff
+          p      <font color="#990000">=</font> <b><font color="#000000">dict</font></b><font color="#990000">()</font>
+          <b><font color="#0000FF">for</font></b> key <b><font color="#0000FF">in</font></b> <font color="#990000">[</font> <font color="#FF0000">'beta'</font><font color="#990000">,</font> <font color="#FF0000">'sigma'</font><font color="#990000">,</font> <font color="#FF0000">'gamma'</font><font color="#990000">,</font> <font color="#FF0000">'xi'</font><font color="#990000">,</font> <font color="#FF0000">'chi'</font><font color="#990000">,</font> <font color="#FF0000">'delta'</font> <font color="#990000">]</font> <font color="#990000">:</font>
+               p<font color="#990000">[</font>key<font color="#990000">]</font> <font color="#990000">=</font> left <font color="#990000">*</font> p_all<font color="#990000">[</font>key<font color="#990000">][</font>i<font color="#990000">]</font> <font color="#990000">+</font> right <font color="#990000">*</font> p_all<font color="#990000">[</font>key<font color="#990000">][</font>ip<font color="#990000">]</font>
+          <b><font color="#0000FF">return</font></b> p
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># initial</font></i>
+     I0  <font color="#990000">=</font> <font color="#993399">0.02</font>
+     E0  <font color="#990000">=</font> <font color="#993399">0.02</font>
+     R0  <font color="#990000">=</font> <font color="#993399">0.02</font>
+     S0  <font color="#990000">=</font> <font color="#993399">1.0</font> <font color="#990000">-</font> I0 <font color="#990000">-</font> E0 <font color="#990000">-</font> R0
+     W0  <font color="#990000">=</font> <font color="#993399">0.0</font>
+     D0  <font color="#990000">=</font> <font color="#993399">0.0</font>
+     initial  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font> S0<font color="#990000">,</font> E0<font color="#990000">,</font> I0<font color="#990000">,</font> R0<font color="#990000">,</font> W0<font color="#990000">,</font> D0 <font color="#990000">]</font> <font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># solve the ODE</font></i>
+     seirwd_all <font color="#990000">=</font> <b><font color="#000000">seirwd_model</font></b><font color="#990000">(</font>t_all<font color="#990000">,</font> p_fun<font color="#990000">,</font> initial<font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># check solution using midpoint values</font></i>
+     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> <b><font color="#000000">len</font></b><font color="#990000">(</font>t_all<font color="#990000">)</font> <font color="#990000">-</font> <font color="#993399">1</font> <font color="#990000">)</font> <font color="#990000">:</font>
+          <i><font color="#9A1900"># midpoint values</font></i>
+          t     <font color="#990000">=</font> <font color="#990000">(</font>t_all<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">+</font> t_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
+          S     <font color="#990000">=</font> <font color="#990000">(</font>seirwd_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">+</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">0</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
+          E     <font color="#990000">=</font> <font color="#990000">(</font>seirwd_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">+</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">1</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
+          I     <font color="#990000">=</font> <font color="#990000">(</font>seirwd_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">+</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">2</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
+          R     <font color="#990000">=</font> <font color="#990000">(</font>seirwd_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">+</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">3</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
+          W     <font color="#990000">=</font> <font color="#990000">(</font>seirwd_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">4</font><font color="#990000">]</font> <font color="#990000">+</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">4</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
+          D     <font color="#990000">=</font> <font color="#990000">(</font>seirwd_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">5</font><font color="#990000">]</font> <font color="#990000">+</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">5</font><font color="#990000">])</font> <font color="#990000">/</font> <font color="#993399">2.0</font>
+          <i><font color="#9A1900">#</font></i>
+          <i><font color="#9A1900"># differential equation</font></i>
+          p     <font color="#990000">=</font> <b><font color="#000000">p_fun</font></b><font color="#990000">(</font>t<font color="#990000">)</font>
+          dot   <font color="#990000">=</font> <b><font color="#000000">dict</font></b><font color="#990000">()</font>
+          dot<font color="#990000">[</font><font color="#FF0000">'S'</font><font color="#990000">]</font>  <font color="#990000">=</font> <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'beta'</font><font color="#990000">]</font> <font color="#990000">*</font>  S <font color="#990000">*</font> I  <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'xi'</font><font color="#990000">]</font>   <font color="#990000">*</font> R
+          dot<font color="#990000">[</font><font color="#FF0000">'E'</font><font color="#990000">]</font>  <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'beta'</font><font color="#990000">]</font> <font color="#990000">*</font>  S <font color="#990000">*</font> I <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'sigma'</font><font color="#990000">]</font> <font color="#990000">*</font> E
+          dot<font color="#990000">[</font><font color="#FF0000">'I'</font><font color="#990000">]</font>  <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'sigma'</font><font color="#990000">]</font> <font color="#990000">*</font> E     <font color="#990000">-</font> <font color="#990000">(</font>p<font color="#990000">[</font><font color="#FF0000">'gamma'</font><font color="#990000">]</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'chi'</font><font color="#990000">])</font> <font color="#990000">*</font> I
+          dot<font color="#990000">[</font><font color="#FF0000">'R'</font><font color="#990000">]</font>  <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'gamma'</font><font color="#990000">]</font> <font color="#990000">*</font> I     <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'xi'</font><font color="#990000">]</font>    <font color="#990000">*</font> R
+          dot<font color="#990000">[</font><font color="#FF0000">'W'</font><font color="#990000">]</font>  <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'chi'</font><font color="#990000">]</font>   <font color="#990000">*</font> I     <font color="#990000">-</font> p<font color="#990000">[</font><font color="#FF0000">'delta'</font><font color="#990000">]</font> <font color="#990000">*</font> W
+          dot<font color="#990000">[</font><font color="#FF0000">'D'</font><font color="#990000">]</font>  <font color="#990000">=</font> <font color="#990000">+</font> p<font color="#990000">[</font><font color="#FF0000">'delta'</font><font color="#990000">]</font> <font color="#990000">*</font> W
+          <i><font color="#9A1900">#</font></i>
+          <i><font color="#9A1900"># difference over interval</font></i>
+          delta         <font color="#990000">=</font> <b><font color="#000000">dict</font></b><font color="#990000">()</font>
+          delta<font color="#990000">[</font><font color="#FF0000">'t'</font><font color="#990000">]</font>    <font color="#990000">=</font> t_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">]</font>      <font color="#990000">-</font> t_all<font color="#990000">[</font>i<font color="#990000">]</font>
+          delta<font color="#990000">[</font><font color="#FF0000">'S'</font><font color="#990000">]</font>    <font color="#990000">=</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">-</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">0</font><font color="#990000">]</font>
+          delta<font color="#990000">[</font><font color="#FF0000">'E'</font><font color="#990000">]</font>    <font color="#990000">=</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">-</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">1</font><font color="#990000">]</font>
+          delta<font color="#990000">[</font><font color="#FF0000">'I'</font><font color="#990000">]</font>    <font color="#990000">=</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">-</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">2</font><font color="#990000">]</font>
+          delta<font color="#990000">[</font><font color="#FF0000">'R'</font><font color="#990000">]</font>    <font color="#990000">=</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">-</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">3</font><font color="#990000">]</font>
+          delta<font color="#990000">[</font><font color="#FF0000">'W'</font><font color="#990000">]</font>    <font color="#990000">=</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">4</font><font color="#990000">]</font> <font color="#990000">-</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">4</font><font color="#990000">]</font>
+          delta<font color="#990000">[</font><font color="#FF0000">'D'</font><font color="#990000">]</font>    <font color="#990000">=</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">5</font><font color="#990000">]</font> <font color="#990000">-</font> seirwd_all<font color="#990000">[</font>i<font color="#990000">,</font><font color="#993399">5</font><font color="#990000">]</font>
+          <i><font color="#9A1900">#</font></i>
+          <b><font color="#0000FF">for</font></b> key <b><font color="#0000FF">in</font></b> <font color="#990000">[</font> <font color="#FF0000">'S'</font><font color="#990000">,</font> <font color="#FF0000">'E'</font><font color="#990000">,</font> <font color="#FF0000">'I'</font><font color="#990000">,</font> <font color="#FF0000">'R'</font><font color="#990000">,</font> <font color="#FF0000">'W'</font><font color="#990000">,</font> <font color="#FF0000">'D'</font> <font color="#990000">]</font> <font color="#990000">:</font>
+               check     <font color="#990000">=</font> delta<font color="#990000">[</font>key<font color="#990000">]</font> <font color="#990000">/</font> delta<font color="#990000">[</font><font color="#FF0000">'t'</font><font color="#990000">]</font>
+               rel_error <font color="#990000">=</font> dot<font color="#990000">[</font>key<font color="#990000">]</font> <font color="#990000">/</font> check <font color="#990000">-</font> <font color="#993399">1.0</font>
+               ok        <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> <b><font color="#000000">abs</font></b><font color="#990000">(</font>rel_error<font color="#990000">)</font> <font color="#990000">&lt;</font> <font color="#993399">1e-2</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># now check solution using twice as many Runge-Kutta steps</font></i>
+     n_step      <font color="#990000">=</font> <font color="#993399">2</font>
+     seirwd_check <font color="#990000">=</font> <b><font color="#000000">seirwd_model</font></b><font color="#990000">(</font>t_all<font color="#990000">,</font> p_fun<font color="#990000">,</font> initial<font color="#990000">,</font> n_step<font color="#990000">)</font>
+     error       <font color="#990000">=</font> seirwd_all <font color="#990000">-</font> seirwd_check
+     ok          <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> numpy<font color="#990000">.</font><b><font color="#000000">all</font></b><font color="#990000">(</font> <b><font color="#000000">abs</font></b><font color="#990000">(</font>error<font color="#990000">)</font> <font color="#990000">&lt;</font> <font color="#993399">1e-9</font> <font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <b><font color="#0000FF">return</font></b> ok</tt></pre>
+
+<hr>Input File: example/python/numeric/seirwd_model_xam.py
+
+</body>
+</html>
