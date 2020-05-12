@@ -100,5 +100,12 @@ def seird_model_xam() :
 			check     = delta[key] / delta['t']
 			rel_error = dot[key] / check - 1.0
 			ok        = ok and abs(rel_error) < 1e-2
+	#
+	# now check solution using twice as many Runge-Kutta steps
+	n_step      = 2
+	seird_check = seird_model(t_all, p_fun, initial, n_step)
+	error       = seird_all - seird_check
+	ok          = ok and numpy.all( abs(error) < 1e-9 )
+	#
 	return ok
 # END_PYTHON

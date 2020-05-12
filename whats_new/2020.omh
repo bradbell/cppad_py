@@ -37,6 +37,16 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 05-12$$
+$list number$$
+More improvements to were made to
+$cref/Covid-19/numeric_covid_19_xam.py/$$ example.
+$lnext
+The $cref/n_step/numeric_seird_model/n_step/$$ option was added to the
+SEIRD model example.
+$lend
+
+
 $head 05-09$$
 The $cref/Covid-19 modeling example/numeric_covid_19_xam.py/$$ application
 of AD is changing on a regular basis, so the details of the

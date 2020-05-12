@@ -8,7 +8,7 @@
 # BEGIN_PYTHON
 import numpy
 import runge4
-def seird_model(t_all, p_fun, initial) :
+def seird_model(t_all, p_fun, initial, n_step = 1) :
 	# private member fuction (not part of class API)
 	def ode(t, seird) :
 		S      = seird[0]
@@ -17,15 +17,30 @@ def seird_model(t_all, p_fun, initial) :
 		R      = seird[3]
 		D      = seird[4]
 		p      = p_fun(t)
-		Sdot   = - p['beta'] *  S * I  + p['xi'] * R
+		Sdot   = - p['beta'] *  S * I  + p['xi']    * R
 		Edot   = + p['beta'] *  S * I  - p['sigma'] * E
 		Idot   = + p['sigma'] * E      - (p['gamma'] + p['chi']) * I
-		Rdot   = + p['gamma'] * I      - p['xi'] * R
+		Rdot   = + p['gamma'] * I      - p['xi']    * R
 		Ddot   = + p['chi']   * I
 		return numpy.array([ Sdot, Edot, Idot, Rdot, Ddot])
 	#
-	seir_all  = runge4.multi_step(ode, t_all, initial)
-	return seir_all
+	if n_step == 1 :
+		seird_all  = runge4.multi_step(ode, t_all, initial)
+	else :
+		# t_refine
+		t_refine = list()
+		for i in range( len(t_all) - 1 ) :
+			step = (t_all[i+1] - t_all[i]) / n_step
+			for j in range(n_step) :
+				t_refine.append( t_all[i] + j * step )
+		t_refine.append( t_all[-1] )
+		t_refine = numpy.array( t_refine )
+		#
+		seird_refine   = runge4.multi_step(ode, t_refine, initial)
+		index_all   = [ i * n_step for i in range(len(t_all)) ]
+		seird_all   = seird_refine[ index_all ]
+	#
+	return seird_all
 # END_PYTHON
 #
 # $begin numeric_seird_model$$ $newlinech #$$
@@ -41,7 +56,7 @@ def seird_model(t_all, p_fun, initial) :
 # $section A Susceptible Exposed Infectious Recovered and Death Model$$
 #
 # $head Syntax$$
-# $icode%seird_all% = seird_model(%t_all%, %p_fun%, %initial%)
+# $icode%seird_all% = seird_model(%t_all%, %p_fun%, %initial%, %n_step% = 1)
 # %$$
 #
 # $head Notation$$
@@ -106,6 +121,12 @@ def seird_model(t_all, p_fun, initial) :
 # $head initial$$
 # is a vector of length four containing the initial values for
 # S, E, I, R, D in that order.
+#
+# $head n_step$$
+# This is the number of numerical integration steps to use for each
+# time interval in the $icode t_all$$ array. It must be greater or equal one.
+# The larger $icode n_step$$ the more computational effort and the more
+# accurate the solution.  The default value is for $icode n_step$$ is one.
 #
 # $head seird_all$$
 # The return value $icode seird_all$$ is a numpy matrix with row dimension
