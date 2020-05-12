@@ -44,6 +44,9 @@ $cref/Covid-19/numeric_covid_19_xam.py/$$ example.
 $lnext
 The $cref/n_step/numeric_seird_model/n_step/$$ option was added to the
 SEIRD model example.
+$lnext
+A delay between when is no longer infectious and when one dies was
+added to the SEIRD model using a W compartment (Will die compartment).
 $lend
 
 

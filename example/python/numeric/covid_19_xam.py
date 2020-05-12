@@ -46,12 +46,14 @@
 # $latex \gamma(t)$$,
 # $latex \xi(t)$$,
 # $latex \chi(t)$$,
+# $latex \delta(t)$$,
 # constant functions with known values:
 # $srccode%py%
 sigma_known  = 0.5
 gamma_known  = 0.1
 chi_known    = 0.01
-xi_known     = 0.01
+xi_known     = 0.00
+delta_known  = 0.1
 # %$$
 #
 # $head Initial Values$$
@@ -59,25 +61,30 @@ xi_known     = 0.01
 # and of the Death group $latex D(0)$$ is zero.
 # We use fraction of the total population for sizes, so the sum of the
 # other initial values is one.
-# We treat the initial Exposed group $latex E(0)$$ and the initial
-# infected group $latex I(0)$$ as unknown parameters in the model
-# and use the relation
+# We treat the initial
+# Infected group $latex I(0)$$, and
+# Will die group $latex W(0)$$,
+# as unknown parameters in the model.
+# We would like to also solve for the initial exposed population but
+# that model has identifiability problems, so
+# we use the following approximation for the initial exposed group
+# $latex E(0) = I(0) \gamma / \sigma $$.
+# The initial Susceptible group $latex S(0)$$ is
+# expressed as a function of the other initial conditions:
 # $latex \[
-#	S(0) = 1 - E(0) - I(0)
+#	S(0) = 1 - E(0) - I(0) - W(0)
 # \] $$
-# to express the initial Susceptible group as a function
-# of the unknown parameters.
 #
 # $head Unknown Parameters$$
 # In summary, the unknown parameter vector in this model is
 # $latex \[
-#	x = [ m_0, m_1, m_2, E(0), I(0), \bar{\beta} ]
+#	x = [ m_0, m_1, m_2, I(0), W(0), \bar{\beta} ]
 # \] $$
 #
 # $head Data$$
-# The data in this model is cumulative number of deaths,
+# The data in this model is the cumulative number of deaths,
 # as a fraction of the total population and as a function of time.
-# We assume that new deaths are recorded at regular time intervals
+# We assume that new deaths are recorded for time intervals
 # and the cumulative deaths is the sum of these recordings.
 # For this reason, we model the difference of the cumulative deaths
 # between time points as independent.
@@ -102,17 +109,17 @@ plot_fit = False
 #
 # $subhead Plot$$
 # There are three plots all with time on the x-axis.
-# The first contains the size for all the compartments
+# The first contains the size for all the compartments, except S,
 # as a fraction of the total population.
 # The second contains the model and data for the death difference values.
 # The third contains the weighted residuals corresponding to the death
 # difference data.
 #
 # $subhead Print$$
-# If $icode plot_fit$$ is True, fit result for the unknown parameters will
-# be printed.
-# If $icode data_file$$ is empty, there will also be a
-# print out with the following columns:
+# If $icode plot_fit$$ is True and $icode data_file$$ is not empty,
+# fit result for the unknown parameters will be printed.
+# I $icode plot_fit$$ is True and If $icode data_file$$ is empty,
+# there will be a print out with the following columns:
 # $table
 # $icode x_sim$$ $cnext unknown parameter value used during simulation $rnext
 # $icode x_fit$$ $cnext result of fit for the corresponding parameter  $rnext
@@ -135,13 +142,11 @@ death_data_cv = 0.1
 # $head Data Residuals$$
 # If $icode death_data_cv$$ is zero, $latex \lambda = 1$$, otherwise
 # $latex \lambda$$ is equal to $icode death_data_cv$$.
-# Let $latex y_i$$ be the i-th value for the cumulative death data
-# and $latex \delta$$ the minimum of $latex y_{i+1} - y_i$$ with respect to
-# $latex i$$ such that $latex y{i+1} - y_i > 0$$.
+# Let $latex y_i$$ be the i-th value for the cumulative death data.
 # The weighted residuals (some times referred to as just the residuals) are
 # $latex \[
 #	r_i = \frac{ ( y_{i+1} - y_i ) - [ D( t_{i+1} ) - D( t_i ) ] }{
-#	\lambda ( \max( \delta , y_{i+1} - y_i ) }
+#	\lambda ( y_{i+1} - y_i ) }
 # \] $$
 # where # $latex D(t)$$ is the model for the cumulative data
 # given the fit results.
@@ -195,7 +200,7 @@ from seird_model import seird_model
 #
 # Order of packing the variables into a vector
 x_name = [
-	'm_mobility', 'm_temperature', 'm_testing', 'E(0)', 'I(0)', 'beta_bar'
+'m_mobility', 'm_temperature', 'm_testing', 'I(0)', 'W(0)', 'beta_bar'
 ]
 #
 # t_all, covariates
@@ -241,15 +246,16 @@ m_testing_sim     = - 0.2
 #
 # initial conditions used to simulate data
 I0_sim     = 0.02
-E0_sim     = 0.02
-S0_sim     = 1.0 - E0_sim - I0_sim
+W0_sim     = 0.002
+E0_sim     = I0_sim * gamma_known / sigma_known
+S0_sim     = 1.0 - E0_sim - I0_sim - W0_sim
 R0_sim     = 0.0
 D0_sim     = 0.0
 #
 # x_sim
 x_sim = numpy.array( [
 	m_mobility_sim, m_temperature_sim, m_testing_sim,
-	E0_sim, I0_sim, beta_bar_sim
+	I0_sim, W0_sim, beta_bar_sim
 ] )
 #
 #
@@ -285,7 +291,7 @@ def x2seird_all(x) :
 	#
 	# unpack x
 	cov_mul            = x[0 : 3]
-	[E0, I0, beta_bar] = x[3 : 6]
+	[I0, W0, beta_bar] = x[3 : 6]
 	#
 	# beta_all
 	beta_all = beta_bar * (1.0 + numpy.matmul(covariates, cov_mul))
@@ -296,13 +302,15 @@ def x2seird_all(x) :
 		'gamma' : gamma_known,
 		'chi'   : chi_known,
 		'xi'    : xi_known,
+		'delta' : delta_known,
 	}
 	#
 	# initial
-	S0 = 1.0 - E0 - I0
+	E0 = I0 * gamma_known / sigma_known
+	S0 = 1.0 - E0 - I0 - W0
 	R0 = 0.0
 	D0 = 0.0
-	initial  = numpy.array( [S0, E0, I0, R0, D0] )
+	initial  = numpy.array( [S0, E0, I0, R0, W0, D0] )
 	#
 	# p_fun
 	p_fun_obj = p_fun_class(beta_all, other_rate)
@@ -325,7 +333,7 @@ def weighted_residual(D_data, D_model) :
 	return residual
 #
 # objective_d_fun
-# t_all and D_data, are constants relative in the objective function
+# t_all and D_data, are constants relative to the objective function
 def objective_d_fun(t_all, D_data) :
 	#
 	n_x = len(x_name)
@@ -336,7 +344,7 @@ def objective_d_fun(t_all, D_data) :
 	aseird_all = x2seird_all(ax)
 	#
 	# Model for the cumulative death as function of time
-	aD_model   = aseird_all[:,4] # column order is S, E, I, R, D
+	aD_model   = aseird_all[:,5] # column order is S, E, I, R, W, D
 	#
 	# compute negative log Gaussian likelihood dropping variance terms
 	# because they are constaint w.r.t the unknown parameters
@@ -356,7 +364,7 @@ def simulate_data() :
 	rng = numpy.random.default_rng(seed = actual_seed[0])
 	#
 	# D_data
-	D_sim       = seird_all_sim[:,4]
+	D_sim       = seird_all_sim[:,5]
 	Ddiff_sim   = numpy.diff( D_sim )
 	std         = death_data_cv * Ddiff_sim
 	noise       = std * rng.standard_normal(size = t_all.size - 1)
@@ -424,9 +432,9 @@ def covid_19_xam(call_count = 0) :
 		if x_sim[j] < 0.0 :
 			lower_bound[j] = x_sim[j] * 5.0
 			upper_bound[j] = x_sim[j] / 5.0
-	# log scale beta_bar during random_start
+	#
+	# currently not using log-scaling
 	log_scale    = numpy.array( n_x * [ False ] )
-	log_scale[5] = True
 	#
 	assert numpy.all( lower_bound < x_sim )
 	assert numpy.all( x_sim < upper_bound )
@@ -476,7 +484,7 @@ def covid_19_xam(call_count = 0) :
 	seird_all_fit = x2seird_all(x_fit)
 	#
 	# D_fit
-	D_fit = seird_all_fit[:,4]
+	D_fit = seird_all_fit[:,5]
 	#
 	# residual_fit
 	residual_fit = weighted_residual(D_data, D_fit)
@@ -526,11 +534,11 @@ def covid_19_xam(call_count = 0) :
 		ax2  = fig.add_subplot(gs[0,1])
 		ax3  = fig.add_subplot(gs[1,1])
 		#
-		ax1.plot(t_all, seird_all_fit[:,0], 'b-', label='S')
 		ax1.plot(t_all, seird_all_fit[:,1], 'g-', label='E')
 		ax1.plot(t_all, seird_all_fit[:,2], 'r-', label='I')
 		ax1.plot(t_all, seird_all_fit[:,3], 'k-', label='R')
-		ax1.plot(t_all, seird_all_fit[:,4], 'y-', label='D')
+		ax1.plot(t_all, seird_all_fit[:,4], 'y-', label='W')
+		ax1.plot(t_all, seird_all_fit[:,5], 'b-', label='D')
 		ax1.legend()
 		ax1.set_xlabel('time')
 		ax1.set_ylabel('population fraction')
