@@ -58,10 +58,10 @@
 # constant functions with known values:
 # $srccode%py%
 sigma_known  = 0.2
-gamma_known  = 0.1
-chi_known    = 0.02
+gamma_known  = 0.05
+chi_known    = 0.01
 xi_known     = 0.00
-delta_known  = 0.1
+delta_known  = 0.2
 # %$$
 #
 # $head Initial Values$$
@@ -244,6 +244,14 @@ if data_file != '' :
 		t_all[i]        = float( file_data[i]['day'] )
 		covariates[i,0] = float( file_data[i]['mobility'] )
 		covariates[i,1] = float( file_data[i]['testing'] )
+	#
+	# Overwriting testing covariate with values that work for New York
+	n_time_2 = int( n_time / 2 )
+	for i in range(n_time) :
+		if i < n_time_2 :
+			covariates[i,1] = 0.0
+		else :
+			covariates[i,1] = (i - n_time_2) /(n_time_2 - 1)
 else :
 	# simulating cumulative death and covariates
 	t_start = 0.0
@@ -268,7 +276,7 @@ assert numpy.all( 0.0 <= covariates[:,1] )
 assert numpy.all( covariates[:,0] <= 1.0 )
 #
 # beta_bar_sim
-beta_bar_sim = 0.05
+beta_bar_sim = 1.0
 #
 # covariate multipliers used in simulation
 m_mobility_sim    =   0.5
@@ -276,7 +284,7 @@ m_testing_sim     = - 0.4
 #
 # initial conditions used to simulate data
 I0_sim     = 0.0002
-W0_sim     = 0.00002
+W0_sim     = 0.0002
 E0_sim     = I0_sim * gamma_known / sigma_known
 S0_sim     = 1.0 - E0_sim - I0_sim - W0_sim
 R0_sim     = 0.0
@@ -346,7 +354,7 @@ def x2seirwd_all(x) :
 	p_fun     = p_fun_obj.p_fun
 	#
 	# seirwd_all
-	n_step = 1
+	n_step = 2
 	seirwd_all = seirwd_model(t_all, p_fun, initial, n_step)
 	#
 	return seirwd_all
@@ -354,10 +362,7 @@ def x2seirwd_all(x) :
 def weighted_residual(D_data, D_model) :
 	Ddiff_data   = numpy.diff(D_data)
 	Ddiff_model  = numpy.diff(D_model)
-	min_Ddiff    = min( Ddiff_data[ Ddiff_data > 0.0 ] )
-	Ddiff_copy   = copy.copy(Ddiff_data)
-	Ddiff_copy[ Ddiff_copy <= 0.0 ] = min_Ddiff
-	residual     = (Ddiff_data - Ddiff_model) / Ddiff_copy
+	residual     = (Ddiff_data - Ddiff_model) / Ddiff_data
 	if death_data_cv > 0.0 :
 		residual = residual / death_data_cv
 	return residual
