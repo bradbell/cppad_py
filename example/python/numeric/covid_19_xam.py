@@ -132,11 +132,11 @@ x_name = [ 'm_mobility', 'm_testing', 'I(0)', 'W(0)', 'beta_bar' ]
 # These derivatives are used during optimization as well as for
 # computing the observed information matrix.
 #
-# $head Plot Fit$$
+# $head Display Fit Results$$
 # If you set this variable to True,
-# a printout and a plot of the fit results.
+# a printout and a plot of the fit results is generated.
 # $srccode%py%
-plot_fit = False
+display_fit = False
 # %$$
 #
 # $subhead Plot$$
@@ -147,17 +147,18 @@ plot_fit = False
 # The third contains the weighted residuals corresponding to the death
 # difference data.
 #
-# $subhead Print$$
-# If $icode plot_fit$$ is True and $icode data_file$$ is not empty,
-# fit result for the unknown parameters will be printed.
-# I $icode plot_fit$$ is True and If $icode data_file$$ is empty,
-# there will be a print out with the following columns:
+# $subhead Printout$$
+# If $icode data_file$$ is not empty,
+# the fit result for the unknown parameters are printed.
+# If $icode data_file$$ is empty,
+# a table is printed with the following columns:
 # $table
-# $icode x_sim$$ $cnext unknown parameter value used during simulation $rnext
-# $icode x_fit$$ $cnext result of fit for the corresponding parameter  $rnext
-# $icode rel_error$$ $cnext relative error for fit versus simulation   $rnext
-# $icode std_error$$ $cnext asymptotic standard error for the parameter $rnext
-# $icode residual$$ $cnext weighted residual for the fit versus simulation
+# $icode x_sim$$     $cnext known parameter value used during simulation $rnext
+# $icode x_fit$$     $cnext fit result for the unknown parameter         $rnext
+# $icode rel_error$$ $cnext relative error for fit versus simulation     $rnext
+# $icode std_error$$ $cnext asymptotic standard error for the parameter  $rnext
+# $icode residual$$  $cnext
+#	$icode std_error$$ weighted residual for fit versus simulation
 # $tend
 #
 # $head Coefficient of Variation$$
@@ -430,6 +431,80 @@ def random_start(n_random, x_lower, x_upper, log_scale, objective) :
 	#
 	return x_best
 
+def display_fit_results(x_fit, std_error, D_data) :
+	n_x = len(x_fit)
+	# -----------------------------------------------------------------------
+	# printout
+	if data_file != '' :
+		for j in range( n_x ) :
+			print( '{:<15s}={:>+11.7f}'.format( x_name[j], x_fit[j] ) )
+	else :
+		fmt = '{:<15s}{:>11s}{:>11s}{:>11s}{:>11s}{:>11s}'
+		line = fmt.format(
+			'', 'x_sim','x_fit','rel_error','std_error','residual'
+		)
+		print(line)
+		for i in range( n_x ) :
+			if x_sim[i] == 0.0 :
+				rel_error = 0.0
+			else :
+				rel_error = x_fit[i] / x_sim[i] - 1.0
+			residual  = (x_fit[i] - x_sim[i]) / std_error[i]
+			fmt = '{:<15s}{:+11.7f}{:+11.7f}{:+11.7f}{:+11.7f}{:+11.7f}'
+			line = fmt.format(x_name[i],
+				x_sim[i], x_fit[i], rel_error, std_error[i], residual
+			)
+			print(line)
+	# -----------------------------------------------------------------------
+	# plot
+	# -----------------------------------------------------------------------
+	#
+	# seirwd_all_fit
+	seirwd_all_fit = x2seirwd_all(x_fit)
+	#
+	# D_fit
+	D_fit = seirwd_all_fit[:,5]
+	#
+	# residual_fit
+	residual_fit = weighted_residual(D_data, D_fit)
+	#
+	fig  = pyplot.figure(tight_layout = True)
+	gs   = gridspec.GridSpec(3, 2)
+	ax1  = fig.add_subplot(gs[:,0])
+	ax2  = fig.add_subplot(gs[0,1])
+	ax3  = fig.add_subplot(gs[1,1])
+	ax4  = fig.add_subplot(gs[2,1])
+	#
+	ax1.plot(t_all, seirwd_all_fit[:,1], 'g-', label='E')
+	ax1.plot(t_all, seirwd_all_fit[:,2], 'r-', label='I')
+	ax1.plot(t_all, seirwd_all_fit[:,3], 'k-', label='R')
+	ax1.plot(t_all, seirwd_all_fit[:,4], 'y-', label='W')
+	ax1.plot(t_all, seirwd_all_fit[:,5], 'b-', label='D')
+	ax1.legend()
+	ax1.set_xlabel('time')
+	ax1.set_ylabel('population fraction')
+	#
+	Ddiff_data = numpy.diff(D_data)
+	Ddiff_fit  = numpy.diff(D_fit)
+	t_mid      = (t_all[0 : -1] + t_all[1 :]) / 2.0
+	ax2.plot(t_mid, Ddiff_data, 'k+' , label='data')
+	ax2.plot(t_mid, Ddiff_fit,  'k-' , label='fit')
+	ax2.legend()
+	ax2.set_ylabel('death differences')
+	#
+	ax3.plot( t_mid,                 residual_fit,   'k+' )
+	ax3.plot( [t_all[0], t_all[-1]], [0.0, 0.0], 'k-' )
+	ax3.set_ylabel('weighted residuals')
+	#
+	cov_mul  = x_fit[0 : 2]
+	beta_bar = x_fit[4]
+	beta_all = beta_bar * (1.0 + numpy.matmul(covariates, cov_mul))
+	ax4.plot(t_all, beta_all, 'k-')
+	ax4.set_xlabel('time')
+	ax4.set_ylabel('beta(t)')
+	#
+	pyplot.show()
+
 def covid_19_xam(call_count = 0) :
 	ok = True
 	#
@@ -529,36 +604,19 @@ def covid_19_xam(call_count = 0) :
 	# check that all the data residuals an less than 3.0
 	ok  = ok and numpy.all( numpy.abs( residual_fit ) < 3.0 )
 	#
-	# -----------------------------------------------------------------------
-	# print and plot results
-	if plot_fit and data_file != '' :
-		for j in range( n_x ) :
-			print( '{:<15s}={:>+11.7f}'.format( x_name[j], x_fit[j] ) )
-	#
+	# compare fit to simulation truth
 	if data_file == '' :
-		if plot_fit :
-			fmt = '{:<15s}{:>11s}{:>11s}{:>11s}{:>11s}{:>11s}'
-			line = fmt.format(
-				'', 'x_sim','x_fit','rel_error','std_error','residual'
-			)
-			print(line)
 		for i in range( n_x ) :
 			if x_sim[i] == 0.0 :
 				rel_error = 0.0
-				residual  = 0.0
 			else :
 				rel_error = x_fit[i] / x_sim[i] - 1.0
-				residual  = (x_fit[i] - x_sim[i]) / std_error[i]
-			if plot_fit :
-				fmt = '{:<15s}{:+11.7f}{:+11.7f}{:+11.7f}{:+11.7f}{:+11.7f}'
-				line = fmt.format(x_name[i],
-					x_sim[i], x_fit[i], rel_error, std_error[i], residual
-				)
-				print(line)
-			# check that all the weighted residuals are less than two
+			residual  = (x_fit[i] - x_sim[i]) / std_error[i]
 			if death_data_cv > 0.0 :
+				# check that all the weighted residuals are less than two
 				ok = ok and abs(residual) < 2.0
 			else :
+				# check for perfect fit
 				ok = ok and abs(rel_error) < 1e-5
 		#
 		if not ok :
@@ -570,48 +628,14 @@ def covid_19_xam(call_count = 0) :
 				print( 're-trying with a differenent random seed')
 				ok = covid_19_xam(call_count)
 	#
-	if plot_fit  :
-		fig  = pyplot.figure(tight_layout = True)
-		gs   = gridspec.GridSpec(3, 2)
-		ax1  = fig.add_subplot(gs[:,0])
-		ax2  = fig.add_subplot(gs[0,1])
-		ax3  = fig.add_subplot(gs[1,1])
-		ax4  = fig.add_subplot(gs[2,1])
-		#
-		ax1.plot(t_all, seirwd_all_fit[:,1], 'g-', label='E')
-		ax1.plot(t_all, seirwd_all_fit[:,2], 'r-', label='I')
-		ax1.plot(t_all, seirwd_all_fit[:,3], 'k-', label='R')
-		ax1.plot(t_all, seirwd_all_fit[:,4], 'y-', label='W')
-		ax1.plot(t_all, seirwd_all_fit[:,5], 'b-', label='D')
-		ax1.legend()
-		ax1.set_xlabel('time')
-		ax1.set_ylabel('population fraction')
-		#
-		Ddiff_data = numpy.diff(D_data)
-		Ddiff_fit  = numpy.diff(D_fit)
-		t_mid      = (t_all[0 : -1] + t_all[1 :]) / 2.0
-		ax2.plot(t_mid, Ddiff_data, 'k+' , label='data')
-		ax2.plot(t_mid, Ddiff_fit,  'k-' , label='fit')
-		ax2.legend()
-		ax2.set_ylabel('death differences')
-		#
-		ax3.plot( t_mid,                 residual_fit,   'k+' )
-		ax3.plot( [t_all[0], t_all[-1]], [0.0, 0.0], 'k-' )
-		ax3.set_ylabel('weighted residuals')
-		#
-		cov_mul  = x_fit[0 : 2]
-		beta_bar = x_fit[4]
-		beta_all = beta_bar * (1.0 + numpy.matmul(covariates, cov_mul))
-		ax4.plot(t_all, beta_all, 'k-')
-		ax4.set_xlabel('time')
-		ax4.set_ylabel('beta(t)')
-		#
-		pyplot.show()
-	# -------------------------------------------------------------------------
 	# check conservation of mass in the compartmental model
 	sum_all_fit = numpy.sum(seirwd_all_fit, axis=1)
 	eps99       = 99.0 * numpy.finfo(float).eps
 	ok          = ok and max( abs(sum_all_fit - 1.0) ) < eps99
+	#
+	# display_fit_results
+	if display_fit :
+		display_fit_results(x_fit, std_error, D_data)
 	#
 	return ok
 # END_PYTHON
