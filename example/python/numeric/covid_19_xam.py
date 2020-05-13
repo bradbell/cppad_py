@@ -244,14 +244,6 @@ if data_file != '' :
 		t_all[i]        = float( file_data[i]['day'] )
 		covariates[i,0] = float( file_data[i]['mobility'] )
 		covariates[i,1] = float( file_data[i]['testing'] )
-	#
-	# Overwriting testing covariate with values that work for New York
-	n_time_2 = int( n_time / 2 )
-	for i in range(n_time) :
-		if i < n_time_2 :
-			covariates[i,1] = 0.0
-		else :
-			covariates[i,1] = (i - n_time_2) /(n_time_2 - 1)
 else :
 	# simulating cumulative death and covariates
 	t_start = 0.0
@@ -283,8 +275,8 @@ m_mobility_sim    =   0.5
 m_testing_sim     = - 0.4
 #
 # initial conditions used to simulate data
-I0_sim     = 0.0002
-W0_sim     = 0.0002
+I0_sim     = 0.00002
+W0_sim     = 0.00002
 E0_sim     = I0_sim * gamma_known / sigma_known
 S0_sim     = 1.0 - E0_sim - I0_sim - W0_sim
 R0_sim     = 0.0
@@ -471,7 +463,7 @@ def covid_19_xam(call_count = 0) :
 	# bounds
 	n_x = len(x_name)
 	x_lower    = numpy.zeros( n_x, dtype=float)
-	x_upper    = x_sim * 5.0
+	x_upper    = x_sim * 10.0
 	#
 	# 0 <= m_0 <= 1
 	x_upper[0] = 1.0
@@ -541,7 +533,7 @@ def covid_19_xam(call_count = 0) :
 	# print and plot results
 	if plot_fit and data_file != '' :
 		for j in range( n_x ) :
-			print( '{:<15s}={:>+11.5f}'.format( x_name[j], x_fit[j] ) )
+			print( '{:<15s}={:>+11.7f}'.format( x_name[j], x_fit[j] ) )
 	#
 	if data_file == '' :
 		if plot_fit :
@@ -558,7 +550,7 @@ def covid_19_xam(call_count = 0) :
 				rel_error = x_fit[i] / x_sim[i] - 1.0
 				residual  = (x_fit[i] - x_sim[i]) / std_error[i]
 			if plot_fit :
-				fmt = '{:<15s}{:+11.5f}{:+11.5f}{:+11.5f}{:+11.5f}{:+11.5f}'
+				fmt = '{:<15s}{:+11.7f}{:+11.7f}{:+11.7f}{:+11.7f}{:+11.7f}'
 				line = fmt.format(x_name[i],
 					x_sim[i], x_fit[i], rel_error, std_error[i], residual
 				)
@@ -605,7 +597,7 @@ def covid_19_xam(call_count = 0) :
 		ax3.plot( t_mid,                 residual_fit,   'k+' )
 		ax3.plot( [t_all[0], t_all[-1]], [0.0, 0.0], 'k-' )
 		ax3.set_xlabel('time')
-		ax3.set_ylabel('data weighted residuals')
+		ax3.set_ylabel('weighted residuals')
 		#
 		pyplot.show()
 	# -------------------------------------------------------------------------
