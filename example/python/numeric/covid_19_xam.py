@@ -61,7 +61,7 @@ sigma_known  = 0.2
 gamma_known  = 0.05
 chi_known    = 0.01
 xi_known     = 0.00
-delta_known  = 0.2
+delta_known  = 0.1
 # %$$
 #
 # $head Initial Values$$
@@ -572,10 +572,11 @@ def covid_19_xam(call_count = 0) :
 	#
 	if plot_fit  :
 		fig  = pyplot.figure(tight_layout = True)
-		gs   = gridspec.GridSpec(2, 2)
+		gs   = gridspec.GridSpec(3, 2)
 		ax1  = fig.add_subplot(gs[:,0])
 		ax2  = fig.add_subplot(gs[0,1])
 		ax3  = fig.add_subplot(gs[1,1])
+		ax4  = fig.add_subplot(gs[2,1])
 		#
 		ax1.plot(t_all, seirwd_all_fit[:,1], 'g-', label='E')
 		ax1.plot(t_all, seirwd_all_fit[:,2], 'r-', label='I')
@@ -596,8 +597,14 @@ def covid_19_xam(call_count = 0) :
 		#
 		ax3.plot( t_mid,                 residual_fit,   'k+' )
 		ax3.plot( [t_all[0], t_all[-1]], [0.0, 0.0], 'k-' )
-		ax3.set_xlabel('time')
 		ax3.set_ylabel('weighted residuals')
+		#
+		cov_mul  = x_fit[0 : 2]
+		beta_bar = x_fit[4]
+		beta_all = beta_bar * (1.0 + numpy.matmul(covariates, cov_mul))
+		ax4.plot(t_all, beta_all, 'k-')
+		ax4.set_xlabel('time')
+		ax4.set_ylabel('beta(t)')
 		#
 		pyplot.show()
 	# -------------------------------------------------------------------------
