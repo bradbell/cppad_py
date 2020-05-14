@@ -47,6 +47,22 @@
 # to all the covariates being zero.
 # The covariate multipliers, and the baseline infectious rate, are unknown.
 #
+# $subhead Constraint$$
+# The rate $latex \beta(t)$$ cannot be negative; i.e.,
+# $latex \[
+#	0 \leq \bar{\beta} \left( 1 + m_0 c_0 (t) + m_1 c_1 (t) \right)
+# \] $$
+# We are using piecewise linear interpolation of the covariates,
+# it is sufficient to enforce this constraint at each of the knots.
+# This could lead to huge number of constraints.
+# We instead take a refinement approach.
+# We start by solving the optimization problem with no $latex \beta(t)$$
+# constraints.
+# If the minimum value of $latex \beta(t)$$
+# corresponding to the optimal solution is negative,
+# add a constraint at the time where the minimum occurs,
+# repeat the optimization,  and
+# check the new minimum value of $latex \beta(t)$$.
 #
 # $head Other Rates$$
 # The other rates
@@ -402,7 +418,14 @@ def simulate_data() :
 	#
 	return D_data
 
-def random_start(n_random, x_lower, x_upper, log_scale, objective) :
+def random_start(n_random, x_lower, x_upper, log_scale, objective, A) :
+	# check beta constraints
+	def feasible(x) :
+		nr, nc = A.shape
+		if nr == 0 :
+			return True
+		return all( -1.0 <= numpy.matmul(A, x) )
+	#
 	n_x      = len(x_lower)
 	#
 	x_best   = (x_lower + x_upper) / 2.0
@@ -423,11 +446,12 @@ def random_start(n_random, x_lower, x_upper, log_scale, objective) :
 		for j in range(n_x) :
 			if log_scale[j] :
 				x_current[j] = numpy.exp(x_current[j])
-		obj_current = objective(x_current)
-		if obj_current < obj_best :
-			# print(i, obj_current)
-			x_best = x_current
-			obj_best = obj_current
+		if feasible(x_current) :
+			obj_current = objective(x_current)
+			if obj_current < obj_best :
+				# print( 'sample # =', i, ', objective = ', obj_current)
+				x_best = x_current
+				obj_best = obj_current
 	#
 	return x_best
 
@@ -505,6 +529,33 @@ def display_fit_results(x_fit, std_error, D_data) :
 	#
 	pyplot.show()
 
+def new_beta_positive_constraint(x_fit, A_fit) :
+	nr, nc = A_fit.shape
+	assert nc == len(x_fit)
+	#
+	cov_mul  = x_fit[0 : 2]
+	beta_bar = x_fit[4]
+	beta_all = beta_bar * (1.0 + numpy.matmul(covariates, cov_mul))
+	#
+	i_min    = numpy.argmin(beta_all)
+	beta_min = beta_all[i_min]
+	if 0.0 <= beta_min :
+		return A_fit
+	#
+	# covariates at time of minimum
+	c0_min = covariates[i_min,0]
+	c1_min = covariates[i_min,1]
+	#
+	# new row to add to A
+	new_row  = [ c0_min, c1_min, *( (nc-2) * [ 0.0 ] ) ]
+	#
+	A_new    = numpy.empty( (nr+1,nc), dtype=float )
+	if nr > 0 :
+		A_new[0:nr,:] = A_fit
+	A_new[nr, :]  = new_row
+	#
+	return A_new
+
 def covid_19_xam(call_count = 0) :
 	ok = True
 	#
@@ -559,29 +610,51 @@ def covid_19_xam(call_count = 0) :
 		keep_feasible = True
 	)
 	# ------------------------------------------------------------------------
-	# start_point
-	n_random    = 2000
-	start_point = random_start(
-		n_random,
-		x_lower,
-		x_upper,
-		log_scale,
-		optimize_fun.objective_fun,
-	);
-	# ------------------------------------------------------------------------
-	# x_fit
-	result = scipy.optimize.minimize(
-		optimize_fun.objective_fun,
-		start_point,
-		method      = 'trust-constr',
-		jac         = optimize_fun.objective_grad,
-		hess        = optimize_fun.objective_hess,
-		options     = options,
-		bounds      = bounds,
-	)
-	#
-	ok      = ok and result.success
-	x_fit   = result.x
+	# optimizer loop over beta constraints
+	constraints  = list()
+	optimal      = False
+	A_fit        = numpy.empty( (0, n_x), dtype = float )
+	x_fit        = None
+	while ok and not optimal :
+		# start_point
+		n_random    = 2000
+		start_point = random_start(
+			n_random,
+			x_lower,
+			x_upper,
+			log_scale,
+			optimize_fun.objective_fun,
+			A_fit,
+		);
+		# run optimizer
+		result = scipy.optimize.minimize(
+			optimize_fun.objective_fun,
+			start_point,
+			method        = 'trust-constr',
+			jac           = optimize_fun.objective_grad,
+			hess          = optimize_fun.objective_hess,
+			constraints   = constraints,
+			options       = options,
+			bounds        = bounds,
+		)
+		# check optimizer status
+		ok = ok and result.success
+		# print('objective = ', result.fun )
+		if ok :
+			# check beta(t) >= 0
+			x_fit   = result.x
+			A_new   = new_beta_positive_constraint(x_fit, A_fit)
+			optimal = A_new.shape == A_fit.shape
+			if not optimal :
+				# add a new constraint and repeat
+				nr, nc   = A_new.shape
+				c_lower  = numpy.array( nr * [ -1.0 ] )
+				c_upper  = numpy.array( nr * [ numpy.inf ] )
+				linear_constraint = scipy.optimize.LinearConstraint(
+					A_new, c_lower, c_upper, keep_feasible = True
+				)
+				constraints = [linear_constraint]
+				A_fit       = A_new
 	#
 	# H: the observed infromation matrix
 	H = optimize_fun.objective_hess(x_fit)
