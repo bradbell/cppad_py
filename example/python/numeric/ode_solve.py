@@ -6,7 +6,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 # BEGIN_PYTHON
-def one_step(f, ti, yi, h) :
+def runge4_step(f, ti, yi, h) :
 	k1     = h * f(ti,           yi)
 	k2     = h * f(ti + h / 2.0, yi + k1 / 2.0)
 	k3     = h * f(ti + h / 2.0, yi + k2 / 2.0)
@@ -15,7 +15,7 @@ def one_step(f, ti, yi, h) :
 	return yf
 # END_PYTHON
 #
-# $begin numeric_ode_one_step$$ $newlinech #$$
+# $begin numeric_ode_runge4_step$$ $newlinech #$$
 # $spell
 #	Runge-Kutta
 #	yf
@@ -28,7 +28,7 @@ def one_step(f, ti, yi, h) :
 # $section One Fourth Order Runge-Kutta ODE Step$$
 #
 # $head Syntax$$
-# $icode%yf% = ode_solve.one_step(%f%, %ti%, %yi%, %h%)%$$
+# $icode%yf% = ode_solve.runge4_step(%f%, %ti%, %yi%, %h%)%$$
 #
 # $head Purpose$$
 # The routine can be used with $code ad_double$$
@@ -92,7 +92,7 @@ def multi_step(f, t_all, y_init ) :
 		t0            = t1
 		t1            = t_all[i+1]
 		t_step        = t1 - t0
-		y1            = one_step(f, t0, y0, t_step)
+		y1            = runge4_step(f, t0, y0, t_step)
 		y_all[i+1,:]  = copy.copy(y1)
 	return y_all
 # END_PYTHON

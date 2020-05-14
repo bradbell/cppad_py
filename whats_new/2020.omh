@@ -116,7 +116,7 @@ $head 05-06$$
 $list number$$
 Add the following utility examples:
 $cref numeric_optimize_fun_class$$,
-$cref numeric_ode_one_step$$,
+$cref numeric_ode_runge4_step$$,
 $cref numeric_ode_multi_step$$,
 $code numeric_seirs_class$$.
 (The $code numeric_seirs_class$$ was later replaced by
