@@ -15,7 +15,7 @@ MathJax.Hub.Config({
 <title>One Fourth Order Runge-Kutta ODE Step</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
 <meta name="description" id="description" content="One Fourth Order Runge-Kutta ODE Step">
-<meta name="keywords" id="keywords" content=" one fourth order runge-kutta ode step syntax f ti yi h yf example source code ">
+<meta name="keywords" id="keywords" content=" one fourth order runge-kutta ode step syntax purpose f ti yi h yf example source code ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -23,7 +23,7 @@ A:link { color : blue }
 A:visited { color : purple }
 A:active { color : purple }
 </style>
-<script type='text/javascript' language='JavaScript' src='_numeric_runge4_one_step_htm.js'>
+<script type='text/javascript' language='JavaScript' src='_numeric_ode_runge4_step_htm.js'>
 </script>
 </head>
 <body>
@@ -31,8 +31,8 @@ A:active { color : purple }
 <td>
 <a href="https://bradbell.github.io/cppad_py" target="_top"><img border="0" src="_image.gif"></a>
 </td>
-<td><a href="numeric_xam.htm" target="_top">Prev</a>
-</td><td><a href="numeric_runge4_one_step_xam.py.htm" target="_top">Next</a>
+<td><a href="numeric_simple_inv_xam.py.htm" target="_top">Prev</a>
+</td><td><a href="numeric_runge4_step_xam.py.htm" target="_top">Next</a>
 </td><td>
 <select onchange='choose_across0(this)'>
 <option>Index-&gt;</option>
@@ -48,7 +48,7 @@ A:active { color : purple }
 <option>Up-&gt;</option>
 <option>cppad_py</option>
 <option>numeric_xam</option>
-<option>numeric_runge4_one_step</option>
+<option>numeric_ode_runge4_step</option>
 </select>
 </td>
 <td>
@@ -58,27 +58,34 @@ A:active { color : purple }
 <script type='text/javascript' language='JavaScript' src='_childtable_numeric_xam_htm.js'></script>
 </td>
 <td>
-<script type='text/javascript' language='JavaScript' src='_childtable_numeric_runge4_one_step_htm.js'></script>
+<script type='text/javascript' language='JavaScript' src='_childtable_numeric_ode_runge4_step_htm.js'></script>
 </td>
 </tr></table><br>
 @(@\newcommand{\B}[1]{ {\bf #1} }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>One Fourth Order Runge-Kutta ODE Step</big></big></b></center>
 
-<br><a href="numeric_runge4_one_step.htm#Syntax" target="_top">Syntax</a>
-<br><a href="numeric_runge4_one_step.htm#f" target="_top">f</a>
-<br><a href="numeric_runge4_one_step.htm#ti" target="_top">ti</a>
-<br><a href="numeric_runge4_one_step.htm#yi" target="_top">yi</a>
-<br><a href="numeric_runge4_one_step.htm#h" target="_top">h</a>
-<br><a href="numeric_runge4_one_step.htm#yf" target="_top">yf</a>
-<br><a href="numeric_runge4_one_step.htm#Example" target="_top">Example</a>
-<br><a href="numeric_runge4_one_step.htm#Source Code" target="_top">Source&nbsp;Code</a>
+<br><a href="numeric_ode_runge4_step.htm#Syntax" target="_top">Syntax</a>
+<br><a href="numeric_ode_runge4_step.htm#Purpose" target="_top">Purpose</a>
+<br><a href="numeric_ode_runge4_step.htm#f" target="_top">f</a>
+<br><a href="numeric_ode_runge4_step.htm#ti" target="_top">ti</a>
+<br><a href="numeric_ode_runge4_step.htm#yi" target="_top">yi</a>
+<br><a href="numeric_ode_runge4_step.htm#h" target="_top">h</a>
+<br><a href="numeric_ode_runge4_step.htm#yf" target="_top">yf</a>
+<br><a href="numeric_ode_runge4_step.htm#Example" target="_top">Example</a>
+<br><a href="numeric_ode_runge4_step.htm#Source Code" target="_top">Source&nbsp;Code</a>
 <br><br>
 <b><big><a name="Syntax" id="Syntax">Syntax</a></big></b>
 
 <br>
 
-<code><i><font color="black"><span style='white-space: nowrap'>yf</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;runge4.one_step(</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ti</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>yi</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>h</span></font></i><font color="blue"><span style='white-space: nowrap'>)</span></font></code>
+<code><i><font color="black"><span style='white-space: nowrap'>yf</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;runge4_step(</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ti</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>yi</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>h</span></font></i><font color="blue"><span style='white-space: nowrap'>)</span></font></code>
 
+
+<br>
+<br>
+<b><big><a name="Purpose" id="Purpose">Purpose</a></big></b>
+<br>
+The routine can be used with <code><font color="blue">ad_double</font></code>
 
 <br>
 <br>
@@ -101,12 +108,19 @@ y(t)
  is the current derivative <small>@(@
 y^{(1)} (t)
 @)@</small>.
+The type of the elements of 
+<code><i><font color="black"><span style='white-space: nowrap'>t</span></font></i></code>
+ and 
+<code><i><font color="black"><span style='white-space: nowrap'>y</span></font></i></code>
+
+can be <code><font color="blue">float</font></code> or <code><font color="blue">ad_double</font></code>.
 
 <br>
 <br>
 <b><big><a name="ti" id="ti">ti</a></big></b>
 <br>
 This is the initial time for the Runge-Kutta step.
+It can have type <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
 
 <br>
 <br>
@@ -116,6 +130,7 @@ This is the numpy vector containing the
 value of <small>@(@
 y(t)
 @)@</small> at the initial time.
+The type of its elements can be <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
 
 <br>
 <br>
@@ -123,6 +138,7 @@ y(t)
 <br>
 This is the step size in time; i.e., the time at the end of the step
 minus the initial time.
+It can have type <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
 
 <br>
 <br>
@@ -148,7 +164,7 @@ the solution has no truncation error, only round off error.
 <b><big><a name="Example" id="Example">Example</a></big></b>
 
 <br>
-<a href="numeric_runge4_one_step_xam.py.htm" target="_top"><span style='white-space: nowrap'>numeric_runge4_one_step_xam.py</span></a>
+<a href="numeric_runge4_step_xam.py.htm" target="_top"><span style='white-space: nowrap'>numeric_runge4_step_xam.py</span></a>
 
 
 <br>
@@ -156,7 +172,7 @@ the solution has no truncation error, only round off error.
 <b><big><a name="Source Code" id="Source Code">Source Code</a></big></b>
 
 <pre><tt>
-<b><font color="#0000FF">def</font></b> <b><font color="#000000">one_step</font></b><font color="#990000">(</font>f<font color="#990000">,</font> ti<font color="#990000">,</font> yi<font color="#990000">,</font> h<font color="#990000">)</font> <font color="#990000">:</font>
+<b><font color="#0000FF">def</font></b> <b><font color="#000000">runge4_step</font></b><font color="#990000">(</font>f<font color="#990000">,</font> ti<font color="#990000">,</font> yi<font color="#990000">,</font> h<font color="#990000">)</font> <font color="#990000">:</font>
      k1     <font color="#990000">=</font> h <font color="#990000">*</font> <b><font color="#000000">f</font></b><font color="#990000">(</font>ti<font color="#990000">,</font>           yi<font color="#990000">)</font>
      k2     <font color="#990000">=</font> h <font color="#990000">*</font> <b><font color="#000000">f</font></b><font color="#990000">(</font>ti <font color="#990000">+</font> h <font color="#990000">/</font> <font color="#993399">2.0</font><font color="#990000">,</font> yi <font color="#990000">+</font> k1 <font color="#990000">/</font> <font color="#993399">2.0</font><font color="#990000">)</font>
      k3     <font color="#990000">=</font> h <font color="#990000">*</font> <b><font color="#000000">f</font></b><font color="#990000">(</font>ti <font color="#990000">+</font> h <font color="#990000">/</font> <font color="#993399">2.0</font><font color="#990000">,</font> yi <font color="#990000">+</font> k2 <font color="#990000">/</font> <font color="#993399">2.0</font><font color="#990000">)</font>
@@ -164,7 +180,7 @@ the solution has no truncation error, only round off error.
      yf     <font color="#990000">=</font> yi <font color="#990000">+</font> <font color="#990000">(</font>k1 <font color="#990000">+</font> <font color="#993399">2.0</font> <font color="#990000">*</font> k2 <font color="#990000">+</font> <font color="#993399">2.0</font> <font color="#990000">*</font> k3 <font color="#990000">+</font> k4<font color="#990000">)</font> <font color="#990000">/</font> <font color="#993399">6.0</font>
      <b><font color="#0000FF">return</font></b> yf</tt></pre>
 
-<hr>Input File: example/python/numeric/runge4.py
+<hr>Input File: example/python/numeric/runge4_step.py
 
 </body>
 </html>

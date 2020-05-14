@@ -1,0 +1,289 @@
+<html>
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath:  [ ['@(@','@)@'] ] ,
+    displayMath: [ ['@[@','@]@'] ]
+  }
+});
+</script>
+<script type='text/javascript' src=
+'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default'
+>
+</script>
+<head>
+<title>One Third Order Rosenbrock ODE Step</title>
+<meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
+<meta name="description" id="description" content="One Third Order Rosenbrock ODE Step">
+<meta name="keywords" id="keywords" content=" one third order rosenbrock ode step syntax purpose reference fun t y fun.f fun.f_t fun.f_y ti yi h yf example source code ">
+<style type='text/css'>
+body { color : black }
+body { background-color : white }
+A:link { color : blue }
+A:visited { color : purple }
+A:active { color : purple }
+</style>
+<script type='text/javascript' language='JavaScript' src='_numeric_rosen3_step_htm.js'>
+</script>
+</head>
+<body>
+<table><tr>
+<td>
+<a href="https://bradbell.github.io/cppad_py" target="_top"><img border="0" src="_image.gif"></a>
+</td>
+<td><a href="numeric_runge4_step_xam.py.htm" target="_top">Prev</a>
+</td><td><a href="numeric_rosen3_step_xam.py.htm" target="_top">Next</a>
+</td><td>
+<select onchange='choose_across0(this)'>
+<option>Index-&gt;</option>
+<option>contents</option>
+<option>reference</option>
+<option>index</option>
+<option>search</option>
+<option>external</option>
+</select>
+</td>
+<td>
+<select onchange='choose_up0(this)'>
+<option>Up-&gt;</option>
+<option>cppad_py</option>
+<option>numeric_xam</option>
+<option>numeric_rosen3_step</option>
+</select>
+</td>
+<td>
+<script type='text/javascript' language='JavaScript' src='_childtable_cppad_py_htm.js'></script>
+</td>
+<td>
+<script type='text/javascript' language='JavaScript' src='_childtable_numeric_xam_htm.js'></script>
+</td>
+<td>
+<script type='text/javascript' language='JavaScript' src='_childtable_numeric_rosen3_step_htm.js'></script>
+</td>
+</tr></table><br>
+@(@\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>One Third Order Rosenbrock ODE Step</big></big></b></center>
+
+<br><a href="numeric_rosen3_step.htm#Syntax" target="_top">Syntax</a>
+<br><a href="numeric_rosen3_step.htm#Purpose" target="_top">Purpose</a>
+<br><a href="numeric_rosen3_step.htm#Reference" target="_top">Reference</a>
+<br><a href="numeric_rosen3_step.htm#fun" target="_top">fun</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_rosen3_step.htm#fun.t" target="_top">t</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_rosen3_step.htm#fun.y" target="_top">y</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_rosen3_step.htm#fun.fun.f" target="_top">fun.f</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_rosen3_step.htm#fun.fun.f_t" target="_top">fun.f_t</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_rosen3_step.htm#fun.fun.f_y" target="_top">fun.f_y</a>
+<br><a href="numeric_rosen3_step.htm#ti" target="_top">ti</a>
+<br><a href="numeric_rosen3_step.htm#yi" target="_top">yi</a>
+<br><a href="numeric_rosen3_step.htm#h" target="_top">h</a>
+<br><a href="numeric_rosen3_step.htm#yf" target="_top">yf</a>
+<br><a href="numeric_rosen3_step.htm#Example" target="_top">Example</a>
+<br><a href="numeric_rosen3_step.htm#Source Code" target="_top">Source&nbsp;Code</a>
+<br><br>
+<b><big><a name="Syntax" id="Syntax">Syntax</a></big></b>
+
+<br>
+
+<code><i><font color="black"><span style='white-space: nowrap'>yf</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;rosen3_step(</span></font><i><font color="black"><span style='white-space: nowrap'>fun</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ti</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>yi</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>h</span></font></i><font color="blue"><span style='white-space: nowrap'>)</span></font></code>
+
+
+<br>
+<br>
+<b><big><a name="Purpose" id="Purpose">Purpose</a></big></b>
+<br>
+The routine can be used with <code><font color="blue">ad_double</font></code> to solve the initial
+value problem
+<small>@[@
+
+	y^{(1)} (t)  = f( t , y )
+
+@]@</small>
+
+<br>
+<br>
+<b><big><a name="Reference" id="Reference">Reference</a></big></b>
+<br>
+The formulas in this method are taken from page 100 of the following
+reference (except that 98/108 was correct to 97/108):
+Shampine, L.F.,
+<i>Implementation of Rosenbrock Methods</i>,
+ACM Transactions on Mathematical Software, Vol. 8, No. 2, June 1982.
+
+<br>
+<br>
+<b><big><a name="fun" id="fun">fun</a></big></b>
+<br>
+This is a function that evaluates the ordinary differential equation,
+and its partial derivatives,
+
+<br>
+<br>
+<big><a name="fun.t" id="fun.t">t</a></big>
+<br>
+The argument 
+<code><i><font color="black"><span style='white-space: nowrap'>t</span></font></i></code>
+ below is the current time.
+It can be a <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
+
+<br>
+<br>
+<big><a name="fun.y" id="fun.y">y</a></big>
+<br>
+The argument 
+<code><i><font color="black"><span style='white-space: nowrap'>y</span></font></i></code>
+ below is the current value of <small>@(@
+y(t)
+@)@</small>.
+The type of the elements of 
+<code><i><font color="black"><span style='white-space: nowrap'>y</span></font></i></code>
+
+can be <code><font color="blue">float</font></code> or <code><font color="blue">ad_double</font></code>.
+
+<br>
+<br>
+<big><a name="fun.fun.f" id="fun.fun.f">fun.f</a></big>
+<br>
+The syntax 
+<code><font color="blue"><span style='white-space: nowrap'>yp</span></font><i><font color="black"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font></i><font color="blue"><span style='white-space: nowrap'>fun</span></font><i><font color="black"><span style='white-space: nowrap'>.f(&nbsp;</span></font></i><font color="blue"><span style='white-space: nowrap'>t</span></font><i><font color="black"><span style='white-space: nowrap'>&nbsp;,&nbsp;</span></font></i><font color="blue"><span style='white-space: nowrap'>y</span></font><i><font color="black"><span style='white-space: nowrap'>&nbsp;)</span></font></i></code>
+ returns 
+<code><i><font color="black"><span style='white-space: nowrap'>yp</span></font></i></code>
+,
+the current function value <small>@(@
+f(t, y)
+@)@</small>.
+
+<br>
+<br>
+<big><a name="fun.fun.f_t" id="fun.fun.f_t">fun.f_t</a></big>
+<br>
+The syntax 
+<code><font color="blue"><span style='white-space: nowrap'>yp_t</span></font><i><font color="black"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font></i><font color="blue"><span style='white-space: nowrap'>fun</span></font><i><font color="black"><span style='white-space: nowrap'>.f_t(&nbsp;</span></font></i><font color="blue"><span style='white-space: nowrap'>t</span></font><i><font color="black"><span style='white-space: nowrap'>&nbsp;,&nbsp;</span></font></i><font color="blue"><span style='white-space: nowrap'>y</span></font><i><font color="black"><span style='white-space: nowrap'>&nbsp;)</span></font></i></code>
+ returns 
+<code><i><font color="black"><span style='white-space: nowrap'>yp_t</span></font></i></code>
+,
+the current partial value <small>@(@
+\partial_t f(t, y)
+@)@</small>.
+
+<br>
+<br>
+<big><a name="fun.fun.f_y" id="fun.fun.f_y">fun.f_y</a></big>
+<br>
+The syntax 
+<code><font color="blue"><span style='white-space: nowrap'>yp_y</span></font><i><font color="black"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font></i><font color="blue"><span style='white-space: nowrap'>fun</span></font><i><font color="black"><span style='white-space: nowrap'>.f_y(&nbsp;</span></font></i><font color="blue"><span style='white-space: nowrap'>t</span></font><i><font color="black"><span style='white-space: nowrap'>&nbsp;,&nbsp;</span></font></i><font color="blue"><span style='white-space: nowrap'>y</span></font><i><font color="black"><span style='white-space: nowrap'>&nbsp;)</span></font></i></code>
+ returns 
+<code><i><font color="black"><span style='white-space: nowrap'>yp_y</span></font></i></code>
+,
+the current partial value <small>@(@
+\partial_y f(t, y)
+@)@</small>.
+
+<br>
+<br>
+<b><big><a name="ti" id="ti">ti</a></big></b>
+<br>
+This is the initial time for the Rosenbrock step.
+It can have type <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
+
+<br>
+<br>
+<b><big><a name="yi" id="yi">yi</a></big></b>
+<br>
+This is the numpy vector containing the
+value of <small>@(@
+y(t)
+@)@</small> at the initial time.
+The type of its elements can be <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
+
+<br>
+<br>
+<b><big><a name="h" id="h">h</a></big></b>
+<br>
+This is the step size in time; i.e., the time at the end of the step
+minus the initial time.
+It can have type <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
+
+<br>
+<br>
+<b><big><a name="yf" id="yf">yf</a></big></b>
+<br>
+This is the approximate solution for <small>@(@
+y(t)
+@)@</small> at the final time
+as a numpy vector.
+This solution is 3-th order accurate in time <small>@(@
+t
+@)@</small>; e.g., if
+<small>@(@
+y(t)
+@)@</small> is a polynomial in <small>@(@
+t
+@)@</small> of order three or lower,
+the solution has no truncation error, only round off error.
+
+
+<br>
+<br>
+<b><big><a name="Example" id="Example">Example</a></big></b>
+
+<br>
+<a href="numeric_rosen3_step_xam.py.htm" target="_top"><span style='white-space: nowrap'>numeric_rosen3_step_xam.py</span></a>
+
+
+<br>
+<br>
+<b><big><a name="Source Code" id="Source Code">Source Code</a></big></b>
+
+<pre><tt>
+<b><font color="#000080">import</font></b> numpy
+<b><font color="#000080">from</font></b> simple_inv <b><font color="#000080">import</font></b> simple_inv
+<b><font color="#0000FF">def</font></b> <b><font color="#000000">rosen3_step</font></b><font color="#990000">(</font>fun<font color="#990000">,</font> ti<font color="#990000">,</font> yi<font color="#990000">,</font> h<font color="#990000">)</font> <font color="#990000">:</font>
+     <i><font color="#9A1900">#</font></i>
+     r1_2     <font color="#990000">=</font> <font color="#993399">1.0</font>   <font color="#990000">/</font> <font color="#993399">2.0</font>
+     r3_2     <font color="#990000">=</font> <font color="#993399">3.0</font>   <font color="#990000">/</font> <font color="#993399">2.0</font>
+     r3_5     <font color="#990000">=</font> <font color="#993399">3.0</font>   <font color="#990000">/</font> <font color="#993399">5.0</font>
+     r24_25   <font color="#990000">=</font> <font color="#993399">24.0</font>  <font color="#990000">/</font> <font color="#993399">25.0</font>
+     r3_25    <font color="#990000">=</font> <font color="#993399">3.0</font>   <font color="#990000">/</font> <font color="#993399">25.0</font>
+     r121_50  <font color="#990000">=</font> <font color="#993399">121.0</font> <font color="#990000">/</font> <font color="#993399">50.0</font>
+     r186_25  <font color="#990000">=</font> <font color="#993399">186.0</font> <font color="#990000">/</font> <font color="#993399">25.0</font>
+     r6_5     <font color="#990000">=</font> <font color="#993399">6.0</font>   <font color="#990000">/</font> <font color="#993399">5.0</font>
+     r97_108  <font color="#990000">=</font> <font color="#993399">97.0</font>  <font color="#990000">/</font> <font color="#993399">108.0</font>
+     r11_72   <font color="#990000">=</font> <font color="#993399">11.0</font>  <font color="#990000">/</font> <font color="#993399">72.0</font>
+     r25_216  <font color="#990000">=</font> <font color="#993399">25.0</font>  <font color="#990000">/</font> <font color="#993399">216.0</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># Einv</font></i>
+     ny   <font color="#990000">=</font> yi<font color="#990000">.</font>size
+     I    <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">identity</font></b><font color="#990000">(</font>ny<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
+     E    <font color="#990000">=</font> I <font color="#990000">-</font> r1_2 <font color="#990000">*</font> h <font color="#990000">*</font> fun<font color="#990000">.</font><b><font color="#000000">f_y</font></b><font color="#990000">(</font>ti<font color="#990000">,</font> yi<font color="#990000">)</font>
+     Einv <font color="#990000">=</font> <b><font color="#000000">simple_inv</font></b><font color="#990000">(</font>E<font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># f_t</font></i>
+     f_t  <font color="#990000">=</font> fun<font color="#990000">.</font><b><font color="#000000">f_t</font></b><font color="#990000">(</font>ti<font color="#990000">,</font> yi<font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># k1</font></i>
+     k1   <font color="#990000">=</font> fun<font color="#990000">.</font><b><font color="#000000">f</font></b><font color="#990000">(</font>ti<font color="#990000">,</font> yi<font color="#990000">)</font>
+     k1  <font color="#990000">+=</font> r1_2 <font color="#990000">*</font> h <font color="#990000">*</font> f_t
+     k1   <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">matmul</font></b><font color="#990000">(</font>Einv <font color="#990000">,</font> k1<font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># k2</font></i>
+     k2   <font color="#990000">=</font> fun<font color="#990000">.</font><b><font color="#000000">f</font></b><font color="#990000">(</font>ti <font color="#990000">+</font> h<font color="#990000">,</font> yi <font color="#990000">+</font> h <font color="#990000">*</font> k1<font color="#990000">)</font>
+     k2  <font color="#990000">-=</font> r3_2 <font color="#990000">*</font> h <font color="#990000">*</font> f_t
+     k2  <font color="#990000">-=</font> <font color="#993399">4.0</font> <font color="#990000">*</font> k1
+     k2   <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">matmul</font></b><font color="#990000">(</font>Einv <font color="#990000">,</font> k2<font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># k3</font></i>
+     t    <font color="#990000">=</font> ti <font color="#990000">+</font> r3_5 <font color="#990000">*</font> h
+     y    <font color="#990000">=</font> yi <font color="#990000">+</font> r24_25 <font color="#990000">*</font> h <font color="#990000">*</font> k1 <font color="#990000">+</font> r3_25 <font color="#990000">*</font> h <font color="#990000">*</font> k2
+     k3   <font color="#990000">=</font> fun<font color="#990000">.</font><b><font color="#000000">f</font></b><font color="#990000">(</font>t<font color="#990000">,</font> y<font color="#990000">)</font>
+     k3  <font color="#990000">+=</font> r121_50 <font color="#990000">*</font> h <font color="#990000">*</font> f_t
+     k3  <font color="#990000">+=</font> r186_25 <font color="#990000">*</font> k1 <font color="#990000">+</font> r6_5 <font color="#990000">*</font> k2
+     k3   <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">matmul</font></b><font color="#990000">(</font>Einv <font color="#990000">,</font> k3<font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     yf   <font color="#990000">=</font> yi <font color="#990000">+</font> h <font color="#990000">*</font> <font color="#990000">(</font> r97_108 <font color="#990000">*</font> k1 <font color="#990000">+</font> r11_72 <font color="#990000">*</font> k2 <font color="#990000">+</font> r25_216 <font color="#990000">*</font> k3<font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <b><font color="#0000FF">return</font></b> yf</tt></pre>
+
+<hr>Input File: example/python/numeric/rosen3_step.py
+
+</body>
+</html>

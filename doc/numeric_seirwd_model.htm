@@ -15,7 +15,7 @@ MathJax.Hub.Config({
 <title>A Susceptible Exposed Infectious Recovered and Death Model</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
 <meta name="description" id="description" content="A Susceptible Exposed Infectious Recovered and Death Model">
-<meta name="keywords" id="keywords" content=" susceptible exposed infectious recovered death model syntax notation ode t_all p_fun initial n_step seirwd_all conservation mass example source code ">
+<meta name="keywords" id="keywords" content=" susceptible exposed infectious recovered death model purpose syntax notation ode t_all p_fun initial n_step seirwd_all conservation mass example source code ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -64,6 +64,7 @@ A:active { color : purple }
 @(@\newcommand{\B}[1]{ {\bf #1} }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>A Susceptible Exposed Infectious Recovered and Death Model</big></big></b></center>
 
+<br><a href="numeric_seirwd_model.htm#Purpose" target="_top">Purpose</a>
 <br><a href="numeric_seirwd_model.htm#Syntax" target="_top">Syntax</a>
 <br><a href="numeric_seirwd_model.htm#Notation" target="_top">Notation</a>
 <br><a href="numeric_seirwd_model.htm#ODE" target="_top">ODE</a>
@@ -76,6 +77,12 @@ A:active { color : purple }
 <br><a href="numeric_seirwd_model.htm#Example" target="_top">Example</a>
 <br><a href="numeric_seirwd_model.htm#Source Code" target="_top">Source&nbsp;Code</a>
 <br><br>
+<b><big><a name="Purpose" id="Purpose">Purpose</a></big></b>
+<br>
+This routine can be used with <code><font color="blue">ad_double</font></code>.
+
+<br>
+<br>
 <b><big><a name="Syntax" id="Syntax">Syntax</a></big></b>
 
 <br>
@@ -191,6 +198,7 @@ The argument
 <code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i></code>
  is a vector that is monotone
 increasing or decreasing.
+The type of its elements can be <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
 The smaller the spacing between time points, the more accurate
 the approximation is.
 We call 
@@ -250,7 +258,8 @@ Key             </td><td align='left'  valign='top'>
 </table>
 The value 
 <code><i><font color="black"><span style='white-space: nowrap'>t</span></font></i></code>
- will be between the initial and final time.
+ will be between the initial and final time
+and can be a <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
 The parameter functions above are assumed to be smooth
 for all times between the initial and final time and
 not in 
@@ -262,6 +271,9 @@ It is also assumed to be continuous at the times in
 it could be a piecewise linear interpolant with knots at 
 <code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i></code>
 .
+The type of 
+<code><i><font color="black"><span style='white-space: nowrap'>p</span></font></i></code>
+ can be <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
 
 <br>
 <br>
@@ -269,6 +281,7 @@ it could be a piecewise linear interpolant with knots at
 <br>
 is a vector of length four containing the initial values for
 S, E, I, R, W, D in that order.
+The type of its elements can be <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
 
 <br>
 <br>
@@ -339,7 +352,7 @@ up to numerical accuracy, it not depend on time.
 
 <pre><tt>
 <b><font color="#000080">import</font></b> numpy
-<b><font color="#000080">import</font></b> runge4
+<b><font color="#000080">import</font></b> ode_solve
 <b><font color="#0000FF">def</font></b> <b><font color="#000000">seirwd_model</font></b><font color="#990000">(</font>t_all<font color="#990000">,</font> p_fun<font color="#990000">,</font> initial<font color="#990000">,</font> n_step <font color="#990000">=</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">:</font>
      <i><font color="#9A1900"># private member fuction (not part of class API)</font></i>
      <b><font color="#0000FF">def</font></b> <b><font color="#000000">ode</font></b><font color="#990000">(</font>t<font color="#990000">,</font> seirwd<font color="#990000">)</font> <font color="#990000">:</font>
@@ -354,7 +367,7 @@ up to numerical accuracy, it not depend on time.
           <b><font color="#0000FF">return</font></b> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">([</font> Sdot<font color="#990000">,</font> Edot<font color="#990000">,</font> Idot<font color="#990000">,</font> Rdot<font color="#990000">,</font> Wdot<font color="#990000">,</font> Ddot<font color="#990000">])</font>
      <i><font color="#9A1900">#</font></i>
      <b><font color="#0000FF">if</font></b> n_step <font color="#990000">==</font> <font color="#993399">1</font> <font color="#990000">:</font>
-          seirwd_all  <font color="#990000">=</font> runge4<font color="#990000">.</font><b><font color="#000000">multi_step</font></b><font color="#990000">(</font>ode<font color="#990000">,</font> t_all<font color="#990000">,</font> initial<font color="#990000">)</font>
+          seirwd_all  <font color="#990000">=</font> ode_solve<font color="#990000">.</font><b><font color="#000000">multi_step</font></b><font color="#990000">(</font>ode<font color="#990000">,</font> t_all<font color="#990000">,</font> initial<font color="#990000">)</font>
      <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
           <i><font color="#9A1900"># t_refine</font></i>
           t_refine <font color="#990000">=</font> <b><font color="#000000">list</font></b><font color="#990000">()</font>
@@ -365,7 +378,7 @@ up to numerical accuracy, it not depend on time.
           t_refine<font color="#990000">.</font><b><font color="#000000">append</font></b><font color="#990000">(</font> t_all<font color="#990000">[-</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">)</font>
           t_refine <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> t_refine <font color="#990000">)</font>
           <i><font color="#9A1900">#</font></i>
-          seirwd_refine   <font color="#990000">=</font> runge4<font color="#990000">.</font><b><font color="#000000">multi_step</font></b><font color="#990000">(</font>ode<font color="#990000">,</font> t_refine<font color="#990000">,</font> initial<font color="#990000">)</font>
+          seirwd_refine   <font color="#990000">=</font> ode_solve<font color="#990000">.</font><b><font color="#000000">multi_step</font></b><font color="#990000">(</font>ode<font color="#990000">,</font> t_refine<font color="#990000">,</font> initial<font color="#990000">)</font>
           index_all   <font color="#990000">=</font> <font color="#990000">[</font> i <font color="#990000">*</font> n_step <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font><b><font color="#000000">len</font></b><font color="#990000">(</font>t_all<font color="#990000">))</font> <font color="#990000">]</font>
           seirwd_all   <font color="#990000">=</font> seirwd_refine<font color="#990000">[</font> index_all <font color="#990000">]</font>
      <i><font color="#9A1900">#</font></i>

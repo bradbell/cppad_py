@@ -23,7 +23,7 @@ A:link { color : blue }
 A:visited { color : purple }
 A:active { color : purple }
 </style>
-<script type='text/javascript' language='JavaScript' src='_numeric_runge4_multi_step_xam.py_htm.js'>
+<script type='text/javascript' language='JavaScript' src='_numeric_ode_multi_step_xam.py_htm.js'>
 </script>
 </head>
 <body>
@@ -31,7 +31,7 @@ A:active { color : purple }
 <td>
 <a href="https://bradbell.github.io/cppad_py" target="_top"><img border="0" src="_image.gif"></a>
 </td>
-<td><a href="numeric_runge4_multi_step.htm" target="_top">Prev</a>
+<td><a href="numeric_ode_multi_step.htm" target="_top">Prev</a>
 </td><td><a href="numeric_optimize_fun_class.htm" target="_top">Next</a>
 </td><td>
 <select onchange='choose_across0(this)'>
@@ -48,8 +48,8 @@ A:active { color : purple }
 <option>Up-&gt;</option>
 <option>cppad_py</option>
 <option>numeric_xam</option>
-<option>numeric_runge4_multi_step</option>
-<option>numeric_runge4_multi_step_xam.py</option>
+<option>numeric_ode_multi_step</option>
+<option>numeric_ode_multi_step_xam.py</option>
 </select>
 </td>
 <td>
@@ -59,17 +59,17 @@ A:active { color : purple }
 <script type='text/javascript' language='JavaScript' src='_childtable_numeric_xam_htm.js'></script>
 </td>
 <td>
-<script type='text/javascript' language='JavaScript' src='_childtable_numeric_runge4_multi_step_htm.js'></script>
+<script type='text/javascript' language='JavaScript' src='_childtable_numeric_ode_multi_step_htm.js'></script>
 </td>
-<td>numeric_runge4_multi_step_xam.py</td>
+<td>numeric_ode_multi_step_xam.py</td>
 </tr></table><br>
 @(@\newcommand{\B}[1]{ {\bf #1} }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Example Computing Derivative A Runge-Kutta Ode Solution</big></big></b></center>
 
-<br><a href="numeric_runge4_multi_step_xam.py.htm#ODE" target="_top">ODE</a>
-<br><a href="numeric_runge4_multi_step_xam.py.htm#Solution" target="_top">Solution</a>
-<br><a href="numeric_runge4_multi_step_xam.py.htm#Derivative of Solution" target="_top">Derivative&nbsp;of&nbsp;Solution</a>
-<br><a href="numeric_runge4_multi_step_xam.py.htm#Source Code" target="_top">Source&nbsp;Code</a>
+<br><a href="numeric_ode_multi_step_xam.py.htm#ODE" target="_top">ODE</a>
+<br><a href="numeric_ode_multi_step_xam.py.htm#Solution" target="_top">Solution</a>
+<br><a href="numeric_ode_multi_step_xam.py.htm#Derivative of Solution" target="_top">Derivative&nbsp;of&nbsp;Solution</a>
+<br><a href="numeric_ode_multi_step_xam.py.htm#Source Code" target="_top">Source&nbsp;Code</a>
 <br><br>
 <b><big><a name="ODE" id="ODE">ODE</a></big></b>
 
@@ -122,13 +122,13 @@ x
 <b><font color="#000080">import</font></b> numpy
 <b><font color="#000080">import</font></b> scipy<font color="#990000">.</font>special
 <b><font color="#000080">import</font></b> cppad_py
-<b><font color="#000080">import</font></b> runge4
+<b><font color="#000080">import</font></b> ode_solve
 <i><font color="#9A1900">#</font></i>
 <b><font color="#0000FF">def</font></b> <b><font color="#000000">f</font></b><font color="#990000">(</font>t<font color="#990000">,</font> y<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
      y_shift <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">concatenate</font></b><font color="#990000">(</font> <font color="#990000">(</font> <font color="#990000">[</font><font color="#993399">1.0</font><font color="#990000">]</font> <font color="#990000">,</font> y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">:-</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">)</font> <font color="#990000">)</font>
      <b><font color="#0000FF">return</font></b> x <font color="#990000">*</font> y_shift
 <i><font color="#9A1900">#</font></i>
-<b><font color="#0000FF">def</font></b> <b><font color="#000000">runge4_multi_step_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
+<b><font color="#0000FF">def</font></b> <b><font color="#000000">ode_multi_step_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
      ok    <font color="#990000">=</font> True
      nx    <font color="#990000">=</font> <font color="#993399">4</font>
      eps99 <font color="#990000">=</font> <font color="#993399">99.0</font> <font color="#990000">*</font> numpy<font color="#990000">.</font><b><font color="#000000">finfo</font></b><font color="#990000">(</font>float<font color="#990000">).</font>eps
@@ -137,7 +137,7 @@ x
      x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> nx <font color="#990000">*</font> <font color="#990000">[</font> <font color="#993399">1.0</font> <font color="#990000">]</font> <font color="#990000">)</font>
      ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># function to pass to runge4.multi_step</font></i>
+     <i><font color="#9A1900"># function to pass to ode_solve.multi_step</font></i>
      <b><font color="#0000FF">def</font></b> <b><font color="#000000">fun</font></b><font color="#990000">(</font>t<font color="#990000">,</font> ay<font color="#990000">)</font> <font color="#990000">:</font>
           <b><font color="#0000FF">return</font></b> <b><font color="#000000">f</font></b><font color="#990000">(</font>t<font color="#990000">,</font> ay<font color="#990000">,</font> ax<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
@@ -149,7 +149,7 @@ x
      t_all   <font color="#990000">=</font>  numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> t_all <font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># take multiple steps</font></i>
-     ay <font color="#990000">=</font> runge4<font color="#990000">.</font><b><font color="#000000">multi_step</font></b><font color="#990000">(</font>fun<font color="#990000">,</font> t_all<font color="#990000">,</font> ay_init<font color="#990000">)</font>
+     ay <font color="#990000">=</font> ode_solve<font color="#990000">.</font><b><font color="#000000">multi_step</font></b><font color="#990000">(</font>fun<font color="#990000">,</font> t_all<font color="#990000">,</font> ay_init<font color="#990000">)</font>
      ay_final <font color="#990000">=</font> ay<font color="#990000">[</font>n_step <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">,:]</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># g(x) = y(t_final, x)</font></i>
@@ -183,7 +183,7 @@ x
 
      <b><font color="#0000FF">return</font></b> ok</tt></pre>
 
-<hr>Input File: example/python/numeric/runge4_multi_step_xam.py
+<hr>Input File: example/python/numeric/ode_multi_step_xam.py
 
 </body>
 </html>

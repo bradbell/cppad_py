@@ -12,10 +12,10 @@ MathJax.Hub.Config({
 >
 </script>
 <head>
-<title>Example Computing Derivative A Runge-Kutta Ode Solution</title>
+<title>Example Computing Derivative A Rosenbrock Ode Solution</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
-<meta name="description" id="description" content="Example Computing Derivative A Runge-Kutta Ode Solution">
-<meta name="keywords" id="keywords" content=" example computing derivative runge-kutta ode solution source code ">
+<meta name="description" id="description" content="Example Computing Derivative A Rosenbrock Ode Solution">
+<meta name="keywords" id="keywords" content=" example computing derivative rosenbrock ode solution source code ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -23,7 +23,7 @@ A:link { color : blue }
 A:visited { color : purple }
 A:active { color : purple }
 </style>
-<script type='text/javascript' language='JavaScript' src='_numeric_runge4_one_step_xam.py_htm.js'>
+<script type='text/javascript' language='JavaScript' src='_numeric_rosen3_step_xam.py_htm.js'>
 </script>
 </head>
 <body>
@@ -31,8 +31,8 @@ A:active { color : purple }
 <td>
 <a href="https://bradbell.github.io/cppad_py" target="_top"><img border="0" src="_image.gif"></a>
 </td>
-<td><a href="numeric_runge4_one_step.htm" target="_top">Prev</a>
-</td><td><a href="numeric_runge4_multi_step.htm" target="_top">Next</a>
+<td><a href="numeric_rosen3_step.htm" target="_top">Prev</a>
+</td><td><a href="numeric_ode_multi_step.htm" target="_top">Next</a>
 </td><td>
 <select onchange='choose_across0(this)'>
 <option>Index-&gt;</option>
@@ -48,8 +48,8 @@ A:active { color : purple }
 <option>Up-&gt;</option>
 <option>cppad_py</option>
 <option>numeric_xam</option>
-<option>numeric_runge4_one_step</option>
-<option>numeric_runge4_one_step_xam.py</option>
+<option>numeric_rosen3_step</option>
+<option>numeric_rosen3_step_xam.py</option>
 </select>
 </td>
 <td>
@@ -59,17 +59,17 @@ A:active { color : purple }
 <script type='text/javascript' language='JavaScript' src='_childtable_numeric_xam_htm.js'></script>
 </td>
 <td>
-<script type='text/javascript' language='JavaScript' src='_childtable_numeric_runge4_one_step_htm.js'></script>
+<script type='text/javascript' language='JavaScript' src='_childtable_numeric_rosen3_step_htm.js'></script>
 </td>
-<td>numeric_runge4_one_step_xam.py</td>
+<td>numeric_rosen3_step_xam.py</td>
 </tr></table><br>
 @(@\newcommand{\B}[1]{ {\bf #1} }
-\newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Example Computing Derivative A Runge-Kutta Ode Solution</big></big></b></center>
+\newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Example Computing Derivative A Rosenbrock Ode Solution</big></big></b></center>
 
-<br><a href="numeric_runge4_one_step_xam.py.htm#ODE" target="_top">ODE</a>
-<br><a href="numeric_runge4_one_step_xam.py.htm#Solution" target="_top">Solution</a>
-<br><a href="numeric_runge4_one_step_xam.py.htm#Derivative of Solution" target="_top">Derivative&nbsp;of&nbsp;Solution</a>
-<br><a href="numeric_runge4_one_step_xam.py.htm#Source Code" target="_top">Source&nbsp;Code</a>
+<br><a href="numeric_rosen3_step_xam.py.htm#ODE" target="_top">ODE</a>
+<br><a href="numeric_rosen3_step_xam.py.htm#Solution" target="_top">Solution</a>
+<br><a href="numeric_rosen3_step_xam.py.htm#Derivative of Solution" target="_top">Derivative&nbsp;of&nbsp;Solution</a>
+<br><a href="numeric_rosen3_step_xam.py.htm#Source Code" target="_top">Source&nbsp;Code</a>
 <br><br>
 <b><big><a name="ODE" id="ODE">ODE</a></big></b>
 
@@ -122,24 +122,42 @@ x
 <b><font color="#000080">import</font></b> numpy
 <b><font color="#000080">from</font></b>  scipy<font color="#990000">.</font>special <b><font color="#000080">import</font></b> factorial
 <b><font color="#000080">import</font></b> cppad_py
-<b><font color="#000080">import</font></b> runge4
+<b><font color="#000080">from</font></b> rosen3_step <b><font color="#000080">import</font></b> rosen3_step
+<b><font color="#0000FF">class</font></b> fun_class <font color="#990000">:</font>
+     <b><font color="#0000FF">def</font></b> <b><font color="#000000">__init__</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
+          self<font color="#990000">.</font>x <font color="#990000">=</font> x
+
+     <i><font color="#9A1900"># fun.f</font></i>
+     <b><font color="#0000FF">def</font></b> <b><font color="#000000">f</font></b><font color="#990000">(</font>self<font color="#990000">,</font> t<font color="#990000">,</font> y<font color="#990000">)</font> <font color="#990000">:</font>
+          y_shift <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">concatenate</font></b><font color="#990000">(</font> <font color="#990000">(</font> <font color="#990000">[</font><font color="#993399">1.0</font><font color="#990000">]</font> <font color="#990000">,</font> y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">:-</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">)</font> <font color="#990000">)</font>
+          <b><font color="#0000FF">return</font></b> self<font color="#990000">.</font>x <font color="#990000">*</font> y_shift
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># fun.f_t</font></i>
+     <b><font color="#0000FF">def</font></b> <b><font color="#000000">f_t</font></b><font color="#990000">(</font>self<font color="#990000">,</font> t<font color="#990000">,</font> y<font color="#990000">)</font> <font color="#990000">:</font>
+          ny <font color="#990000">=</font> y<font color="#990000">.</font>size
+          <b><font color="#0000FF">return</font></b> numpy<font color="#990000">.</font><b><font color="#000000">zeros</font></b><font color="#990000">(</font> ny<font color="#990000">,</font> dtype<font color="#990000">=</font><b><font color="#000000">type</font></b><font color="#990000">(</font>y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">])</font> <font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># fun.f_y</font></i>
+     <b><font color="#0000FF">def</font></b> <b><font color="#000000">f_y</font></b><font color="#990000">(</font>self<font color="#990000">,</font> t<font color="#990000">,</font> y<font color="#990000">)</font> <font color="#990000">:</font>
+          ny <font color="#990000">=</font> y<font color="#990000">.</font>size
+          J  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">zeros</font></b><font color="#990000">(</font> <font color="#990000">(</font>ny<font color="#990000">,</font> ny<font color="#990000">),</font> dtype<font color="#990000">=</font><b><font color="#000000">type</font></b><font color="#990000">(</font>y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">])</font> <font color="#990000">)</font>
+          <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>ny <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">:</font>
+               J<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font> i<font color="#990000">]</font> <font color="#990000">=</font> self<font color="#990000">.</font>x<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">]</font>
+          <b><font color="#0000FF">return</font></b> J
 <i><font color="#9A1900">#</font></i>
-<b><font color="#0000FF">def</font></b> <b><font color="#000000">f</font></b><font color="#990000">(</font>t<font color="#990000">,</font> y<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
-     y_shift <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">concatenate</font></b><font color="#990000">(</font> <font color="#990000">(</font> <font color="#990000">[</font><font color="#993399">1.0</font><font color="#990000">]</font> <font color="#990000">,</font> y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">:-</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">)</font> <font color="#990000">)</font>
-     <b><font color="#0000FF">return</font></b> x <font color="#990000">*</font> y_shift
-<i><font color="#9A1900">#</font></i>
-<b><font color="#0000FF">def</font></b> <b><font color="#000000">runge4_one_step_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
+<b><font color="#0000FF">def</font></b> <b><font color="#000000">rosen3_step_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
      ok    <font color="#990000">=</font> True
-     nx    <font color="#990000">=</font> <font color="#993399">4</font>
+     nx    <font color="#990000">=</font> <font color="#993399">3</font>
      eps99 <font color="#990000">=</font> <font color="#993399">99.0</font> <font color="#990000">*</font> numpy<font color="#990000">.</font><b><font color="#000000">finfo</font></b><font color="#990000">(</font>float<font color="#990000">).</font>eps
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># independent variables for this g(x) = y(1, x)</font></i>
      x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> nx <font color="#990000">*</font> <font color="#990000">[</font> <font color="#993399">1.0</font> <font color="#990000">]</font> <font color="#990000">)</font>
      ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># function to pass to runge4.one_step</font></i>
-     <b><font color="#0000FF">def</font></b> <b><font color="#000000">fun</font></b><font color="#990000">(</font>t<font color="#990000">,</font> ay<font color="#990000">)</font> <font color="#990000">:</font>
-          <b><font color="#0000FF">return</font></b> <b><font color="#000000">f</font></b><font color="#990000">(</font>t<font color="#990000">,</font> ay<font color="#990000">,</font> ax<font color="#990000">)</font>
+     <i><font color="#9A1900"># fun</font></i>
+     fun <font color="#990000">=</font> <b><font color="#000000">fun_class</font></b><font color="#990000">(</font>ax<font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># function to pass to rosen3_step</font></i>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># initiali value for the ODE</font></i>
      ay_start <font color="#990000">=</font>  numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> nx <font color="#990000">*</font> <font color="#990000">[</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font><font color="#993399">0.0</font><font color="#990000">)</font> <font color="#990000">]</font> <font color="#990000">)</font>
@@ -147,14 +165,14 @@ x
      t_step   <font color="#990000">=</font> <font color="#993399">0.75</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># take one step</font></i>
-     ay <font color="#990000">=</font> runge4<font color="#990000">.</font><b><font color="#000000">one_step</font></b><font color="#990000">(</font>fun<font color="#990000">,</font> t_start<font color="#990000">,</font> ay_start<font color="#990000">,</font> t_step<font color="#990000">)</font>
+     ay <font color="#990000">=</font> <b><font color="#000000">rosen3_step</font></b><font color="#990000">(</font>fun<font color="#990000">,</font> t_start<font color="#990000">,</font> ay_start<font color="#990000">,</font> t_step<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># g(x) = y(t_step, x)</font></i>
      g <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># Check g_i (x) = prod_{j=0}^i x[j] t^(i+1) / (i+1) !</font></i>
-     <i><font color="#9A1900"># 4th order method should be very accutate for functions</font></i>
-     <i><font color="#9A1900"># or order 4 or less in t.</font></i>
+     <i><font color="#9A1900"># 3th order method should be very accutate for functions</font></i>
+     <i><font color="#9A1900"># or order 3 or less in t.</font></i>
      x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">arange</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font> nx<font color="#990000">)</font> <font color="#990000">+</font> <font color="#993399">1.0</font>
      gx <font color="#990000">=</font> g<font color="#990000">.</font><b><font color="#000000">forward</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font> x<font color="#990000">)</font>
      prod <font color="#990000">=</font> <font color="#993399">1.0</font>
@@ -178,7 +196,7 @@ x
 
      <b><font color="#0000FF">return</font></b> ok</tt></pre>
 
-<hr>Input File: example/python/numeric/runge4_one_step_xam.py
+<hr>Input File: example/python/numeric/rosen3_step_xam.py
 
 </body>
 </html>

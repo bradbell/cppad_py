@@ -2,8 +2,10 @@
 document.write('\
 <select onchange="numeric_xam_child(this)">\
 <option>numeric_xam-&gt;</option>\
-<option>numeric_runge4_one_step</option>\
-<option>numeric_runge4_multi_step</option>\
+<option>numeric_simple_inv</option>\
+<option>numeric_ode_runge4_step</option>\
+<option>numeric_rosen3_step</option>\
+<option>numeric_ode_multi_step</option>\
 <option>numeric_optimize_fun_class</option>\
 <option>numeric_seirwd_model</option>\
 <option>numeric_covid_19_xam.py</option>\
@@ -11,8 +13,10 @@ document.write('\
 ');
 function numeric_xam_child(item)
 {	var child_list = [
-		'numeric_runge4_one_step.htm',
-		'numeric_runge4_multi_step.htm',
+		'numeric_simple_inv.htm',
+		'numeric_ode_runge4_step.htm',
+		'numeric_rosen3_step.htm',
+		'numeric_ode_multi_step.htm',
 		'numeric_optimize_fun_class.htm',
 		'numeric_seirwd_model.htm',
 		'numeric_covid_19_xam.py.htm'

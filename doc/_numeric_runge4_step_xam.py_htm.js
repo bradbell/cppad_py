@@ -8,8 +8,8 @@ var list_across0 = [
 var list_up0 = [
 'cppad_py.htm',
 'numeric_xam.htm',
-'numeric_runge4_multi_step.htm',
-'numeric_runge4_multi_step_xam.py.htm'
+'numeric_ode_runge4_step.htm',
+'numeric_runge4_step_xam.py.htm'
 ];
 function choose_across0(item)
 {	var index          = item.selectedIndex;
