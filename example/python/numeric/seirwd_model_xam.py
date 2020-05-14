@@ -74,38 +74,28 @@ def seirwd_model_xam() :
 	# check solution using midpoint values
 	for i in range( len(t_all) - 1 ) :
 		# midpoint values
-		t     = (t_all[i] + t_all[i+1]) / 2.0
-		S     = (seirwd_all[i,0] + seirwd_all[i+1,0]) / 2.0
-		E     = (seirwd_all[i,1] + seirwd_all[i+1,1]) / 2.0
-		I     = (seirwd_all[i,2] + seirwd_all[i+1,2]) / 2.0
-		R     = (seirwd_all[i,3] + seirwd_all[i+1,3]) / 2.0
-		W     = (seirwd_all[i,4] + seirwd_all[i+1,4]) / 2.0
-		D     = (seirwd_all[i,5] + seirwd_all[i+1,5]) / 2.0
+		t_mid      = (t_all[i+1] + t_all[i]) / 2.0
+		seirwd_mid = (seirwd_all[i,:] + seirwd_all[i+1,:]) / 2.0
+		S, E, I, R, W, D = seirwd_mid
 		#
 		# differential equation
-		p     = p_fun(t)
-		dot   = dict()
-		dot['S']  = - p['beta'] *  S * I  + p['xi']   * R
-		dot['E']  = + p['beta'] *  S * I - p['sigma'] * E
-		dot['I']  = + p['sigma'] * E     - (p['gamma'] + p['chi']) * I
-		dot['R']  = + p['gamma'] * I     - p['xi']    * R
-		dot['W']  = + p['chi']   * I     - p['delta'] * W
-		dot['D']  = + p['delta'] * W
+		p       = p_fun(t_mid)
+		dot     = numpy.empty( 6, dtype = float)
+		dot[0]  = - p['beta'] *  S * I  + p['xi']   * R
+		dot[1]  = + p['beta'] *  S * I - p['sigma'] * E
+		dot[2]  = + p['sigma'] * E     - (p['gamma'] + p['chi']) * I
+		dot[3]  = + p['gamma'] * I     - p['xi']    * R
+		dot[4]  = + p['chi']   * I     - p['delta'] * W
+		dot[5]  = + p['delta'] * W
 		#
 		# difference over interval
-		delta         = dict()
-		delta['t']    = t_all[i+1]      - t_all[i]
-		delta['S']    = seirwd_all[i+1,0] - seirwd_all[i,0]
-		delta['E']    = seirwd_all[i+1,1] - seirwd_all[i,1]
-		delta['I']    = seirwd_all[i+1,2] - seirwd_all[i,2]
-		delta['R']    = seirwd_all[i+1,3] - seirwd_all[i,3]
-		delta['W']    = seirwd_all[i+1,4] - seirwd_all[i,4]
-		delta['D']    = seirwd_all[i+1,5] - seirwd_all[i,5]
+		seirwd_delta = seirwd_all[i+1,:] - seirwd_all[i,:]
+		t_delta      = t_all[i+1]      - t_all[i]
 		#
-		for key in [ 'S', 'E', 'I', 'R', 'W', 'D' ] :
-			check     = delta[key] / delta['t']
-			rel_error = dot[key] / check - 1.0
-			ok        = ok and abs(rel_error) < 1e-2
+		check  = seirwd_delta / t_delta
+		rel_error = dot / check - 1.0
+		# print(rel_error)
+		ok        = ok and all( abs(rel_error) < 1e-2 )
 	#
 	# now check solution using twice as many Runge-Kutta steps
 	n_step      = 2
