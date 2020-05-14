@@ -28,6 +28,7 @@ $spell
 	covariate
 	covid
 	fabs
+	runge
 $$
 
 $section CppAD Py Changes During 2020$$
@@ -40,6 +41,9 @@ $cref whats_new_2018$$
 
 $head 05-14$$
 $list number$$
+The example file $code runge4.py$$ was moved to $code ode_solve.py$$
+in preparation for other solvers.
+$lnext
 Add the $cref numeric_simple_inv$$ example routine for
 AD inversion of matrices.
 $lnext
@@ -112,8 +116,8 @@ $head 05-06$$
 $list number$$
 Add the following utility examples:
 $cref numeric_optimize_fun_class$$,
-$cref numeric_runge4_one_step$$,
-$cref numeric_runge4_multi_step$$,
+$cref numeric_ode_one_step$$,
+$cref numeric_ode_multi_step$$,
 $code numeric_seirs_class$$.
 (The $code numeric_seirs_class$$ was later replaced by
 $cref numeric_seirwd_model$$.)
@@ -124,7 +128,7 @@ install instructions for the Mac.
 $lend
 
 $head 05-05$$
-Add the $cref numeric_runge4_one_step_xam.py$$ example.
+Add the $cref numeric_ode_one_step_xam.py$$ example.
 
 $head 05-04$$
 Add the $cref numeric_optimize_fun_xam.py$$ example.

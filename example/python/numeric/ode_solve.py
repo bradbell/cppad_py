@@ -15,7 +15,7 @@ def one_step(f, ti, yi, h) :
 	return yf
 # END_PYTHON
 #
-# $begin numeric_runge4_one_step$$ $newlinech #$$
+# $begin numeric_ode_one_step$$ $newlinech #$$
 # $spell
 #	Runge-Kutta
 #	yf
@@ -28,7 +28,7 @@ def one_step(f, ti, yi, h) :
 # $section One Fourth Order Runge-Kutta ODE Step$$
 #
 # $head Syntax$$
-# $icode%yf% = runge4.one_step(%f%, %ti%, %yi%, %h%)%$$
+# $icode%yf% = ode_solve.one_step(%f%, %ti%, %yi%, %h%)%$$
 #
 # $head Purpose$$
 # The routine can be used with $code ad_double$$
@@ -64,10 +64,10 @@ def one_step(f, ti, yi, h) :
 # the solution has no truncation error, only round off error.
 #
 # $children%
-#	example/python/numeric/runge4_one_step_xam.py
+#	example/python/numeric/ode_one_step_xam.py
 # %$$
 # $head Example$$
-# $cref numeric_runge4_one_step_xam.py$$
+# $cref numeric_ode_one_step_xam.py$$
 #
 # $head Source Code$$
 # $srcthisfile%
@@ -97,7 +97,7 @@ def multi_step(f, t_all, y_init ) :
 	return y_all
 # END_PYTHON
 #
-# $begin numeric_runge4_multi_step$$ $newlinech #$$
+# $begin numeric_ode_multi_step$$ $newlinech #$$
 # $spell
 #	Runge-Kutta
 #	init
@@ -109,7 +109,7 @@ def multi_step(f, t_all, y_init ) :
 # $section Multiple Fourth Order Runge-Kutta ODE Steps$$
 #
 # $head Syntax$$
-# $icode%y_all% = runge4.multi_step(%f%, %t_all%, %y_init%)%$$
+# $icode%y_all% = ode_solve.multi_step(%f%, %t_all%, %y_init%)%$$
 #
 # $head Purpose$$
 # The routine can be used with $code ad_double$$
@@ -146,10 +146,10 @@ def multi_step(f, t_all, y_init ) :
 # the solution has no truncation error, only round off error.
 #
 # $children%
-#	example/python/numeric/runge4_multi_step_xam.py
+#	example/python/numeric/ode_multi_step_xam.py
 # %$$
 # $head Example$$
-# $cref numeric_runge4_multi_step_xam.py$$
+# $cref numeric_ode_multi_step_xam.py$$
 #
 # $head Source Code$$
 # $srcthisfile%

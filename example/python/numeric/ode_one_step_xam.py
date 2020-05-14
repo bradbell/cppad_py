@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin numeric_runge4_one_step_xam.py$$ $newlinech #$$
+# $begin numeric_ode_one_step_xam.py$$ $newlinech #$$
 # $spell
 #	Runge-Kutta
 # $$
@@ -48,13 +48,13 @@
 import numpy
 from  scipy.special import factorial
 import cppad_py
-import runge4
+import ode_solve
 #
 def f(t, y, x) :
 	y_shift = numpy.concatenate( ( [1.0] , y[0:-1] ) )
 	return x * y_shift
 #
-def runge4_one_step_xam() :
+def ode_one_step_xam() :
 	ok    = True
 	nx    = 4
 	eps99 = 99.0 * numpy.finfo(float).eps
@@ -63,7 +63,7 @@ def runge4_one_step_xam() :
 	x  = numpy.array( nx * [ 1.0 ] )
 	ax = cppad_py.independent(x)
 	#
-	# function to pass to runge4.one_step
+	# function to pass to ode_solve.one_step
 	def fun(t, ay) :
 		return f(t, ay, ax)
 	#
@@ -73,7 +73,7 @@ def runge4_one_step_xam() :
 	t_step   = 0.75
 	#
 	# take one step
-	ay = runge4.one_step(fun, t_start, ay_start, t_step)
+	ay = ode_solve.one_step(fun, t_start, ay_start, t_step)
 	#
 	# g(x) = y(t_step, x)
 	g = cppad_py.d_fun(ax, ay)

@@ -7,7 +7,7 @@
 # -----------------------------------------------------------------------------
 # BEGIN_PYTHON
 import numpy
-import runge4
+import ode_solve
 def seirwd_model(t_all, p_fun, initial, n_step = 1) :
 	# private member fuction (not part of class API)
 	def ode(t, seirwd) :
@@ -22,7 +22,7 @@ def seirwd_model(t_all, p_fun, initial, n_step = 1) :
 		return numpy.array([ Sdot, Edot, Idot, Rdot, Wdot, Ddot])
 	#
 	if n_step == 1 :
-		seirwd_all  = runge4.multi_step(ode, t_all, initial)
+		seirwd_all  = ode_solve.multi_step(ode, t_all, initial)
 	else :
 		# t_refine
 		t_refine = list()
@@ -33,7 +33,7 @@ def seirwd_model(t_all, p_fun, initial, n_step = 1) :
 		t_refine.append( t_all[-1] )
 		t_refine = numpy.array( t_refine )
 		#
-		seirwd_refine   = runge4.multi_step(ode, t_refine, initial)
+		seirwd_refine   = ode_solve.multi_step(ode, t_refine, initial)
 		index_all   = [ i * n_step for i in range(len(t_all)) ]
 		seirwd_all   = seirwd_refine[ index_all ]
 	#
