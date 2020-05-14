@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin numeric_ode_one_step_xam.py$$ $newlinech #$$
+# $begin numeric_runge4_step_xam.py$$ $newlinech #$$
 # $spell
 #	Runge-Kutta
 # $$
@@ -54,7 +54,7 @@ def f(t, y, x) :
 	y_shift = numpy.concatenate( ( [1.0] , y[0:-1] ) )
 	return x * y_shift
 #
-def ode_one_step_xam() :
+def runge4_step_xam() :
 	ok    = True
 	nx    = 4
 	eps99 = 99.0 * numpy.finfo(float).eps

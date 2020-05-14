@@ -128,7 +128,7 @@ install instructions for the Mac.
 $lend
 
 $head 05-05$$
-Add the $cref numeric_ode_one_step_xam.py$$ example.
+Add the $cref numeric_runge4_step_xam.py$$ example.
 
 $head 05-04$$
 Add the $cref numeric_optimize_fun_xam.py$$ example.

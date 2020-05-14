@@ -64,10 +64,10 @@ def runge4_step(f, ti, yi, h) :
 # the solution has no truncation error, only round off error.
 #
 # $children%
-#	example/python/numeric/ode_one_step_xam.py
+#	example/python/numeric/runge4_step_xam.py
 # %$$
 # $head Example$$
-# $cref numeric_ode_one_step_xam.py$$
+# $cref numeric_runge4_step_xam.py$$
 #
 # $head Source Code$$
 # $srcthisfile%

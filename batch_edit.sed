@@ -11,14 +11,15 @@
 # (with the possible exception of the extra_seds commands).
 # The files in bin/devel.sh ignore_files are automatically in this list.
 # ignore_files='
-#	example/python/check_all.py.in
 # '
 # list of files and or directories that are moved to new names
 # move_paths='
+#	example/python/numeric/ode_one_step_xam.py
 # '
 # list of sed commands that map old file and directory names to new names.
 # The characters @s, @d, @n get converted to a space, dollar sign, new line.
 # move_seds='
+#	s|ode_one_step_xam|runge4_step_xam|
 # '
 # list of files that get edited by the extra_seds command
 # extra_files='
@@ -30,6 +31,4 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|one_step|runge4_step|g
-s|def ode_runge4_step_xam|def ode_one_step_xam|
-s|ode_runge4_step_xam.py|ode_one_step_xam.py|
+s|ode_one_step_xam|runge4_step_xam|g

@@ -53,7 +53,7 @@ core_list = [
 numeric_list = [
 	'simple_inv_xam',
 	'optimize_fun_xam',
-	'ode_one_step_xam',
+	'runge4_step_xam',
 	'ode_multi_step_xam',
 	'seirwd_model_xam',
 	'covid_19_xam',
