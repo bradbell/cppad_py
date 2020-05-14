@@ -40,6 +40,9 @@ $cref whats_new_2018$$
 
 $head 05-14$$
 $list number$$
+Add the $cref numeric_simple_inv$$ example routine for
+AD inversion of matrices.
+$lnext
 Add the $code a_double$$ member function $code abs$$ to be the same as
 $code fabs$$ (because $icode abs$$ is the standard for python).
 $lnext

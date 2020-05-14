@@ -51,6 +51,7 @@ core_list = [
 	'error_message_xam',
 ]
 numeric_list = [
+	'simple_inv_xam',
 	'optimize_fun_xam',
 	'runge4_one_step_xam',
 	'runge4_multi_step_xam',

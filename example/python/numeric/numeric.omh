@@ -10,6 +10,7 @@ $begin numeric_xam$$
 $section Numerical Examples$$
 
 $childtable%
+	example/python/numeric/simple_inv.py%
 	example/python/numeric/runge4.py%
 	example/python/numeric/optimize_fun_class.py%
 	example/python/numeric/seirwd_model.py%
