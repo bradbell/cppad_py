@@ -18,10 +18,15 @@ bool a_double_unary_fun_xam(void) {
 	bool ok = true;
 	//------------------------------------------------------------------------
 	//
-	// fabs
-	a_double a1(1.0);
-	a_double abs1 = a1.fabs();
+	// abs
+	a_double a1(-1.0);
+	a_double abs1 = a1.abs();
 	ok = ok && abs1 == 1.0;
+	//
+	// fabs
+	a1   = 1.0;
+	abs1 = a1.fabs();
+	ok   = ok && abs1 == 1.0;
 	//
 	// pi/4
 	a_double pi_4 = a1.atan();

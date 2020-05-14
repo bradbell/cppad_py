@@ -27,6 +27,7 @@ $spell
 	xam
 	covariate
 	covid
+	fabs
 $$
 
 $section CppAD Py Changes During 2020$$
@@ -39,6 +40,11 @@ $cref whats_new_2018$$
 
 $head 05-14$$
 $list number$$
+Add the $code a_double$$ member function $code abs$$ to be the same as
+$code fabs$$ (because $icode abs$$ is the standard for python).
+$lnext
+Add mention of which $cref numeric_xam$$ routines can take $code a_double$$ values.
+$lnext
 Simplify the $cref numeric_seirwd_model_xam.py$$ example using numpy vector operations.
 $lnext
 More improvements to were made to

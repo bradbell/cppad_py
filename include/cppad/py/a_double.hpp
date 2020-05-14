@@ -116,6 +116,7 @@ class  CPPAD_PY_LIB_PUBLIC a_double
 # endif
 	//
 	// unary functions with AD result
+	a_double abs(void) const;
 	a_double acos(void) const;
 	a_double asin(void) const;
 	a_double atan(void) const;

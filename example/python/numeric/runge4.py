@@ -30,23 +30,31 @@ def one_step(f, ti, yi, h) :
 # $head Syntax$$
 # $icode%yf% = runge4.one_step(%f%, %ti%, %yi%, %h%)%$$
 #
+# $head Purpose$$
+# The routine can be used with $code ad_double$$
+#
 # $head f$$
 # This is a function that evaluates the ordinary differential equation
 # using the syntax $codei%yp% = %f%( %t% , %y% )%$$ where
 # $icode t$$ # is the current time,
 # $icode y$$ is the current value of $latex y(t)$$, and
 # $icode yp$$ is the current derivative $latex y^{(1)} (t)$$.
+# The type of the elements of $icode t$$ and $icode y$$
+# can be $code float$$ or $code ad_double$$.
 #
 # $head ti$$
 # This is the initial time for the Runge-Kutta step.
+# It can have type $code float$$ or $code a_double$$.
 #
 # $head yi$$
 # This is the numpy vector containing the
 # value of $latex y(t)$$ at the initial time.
+# The type of its elements can be $code float$$ or $code a_double$$.
 #
 # $head h$$
 # This is the step size in time; i.e., the time at the end of the step
 # minus the initial time.
+# It can have type $code float$$ or $code a_double$$.
 #
 # $head yf$$
 # This is the approximate solution for $latex y(t)$$ at the final time
@@ -103,6 +111,9 @@ def multi_step(f, t_all, y_init ) :
 # $head Syntax$$
 # $icode%y_all% = runge4.multi_step(%f%, %t_all%, %y_init%)%$$
 #
+# $head Purpose$$
+# The routine can be used with $code ad_double$$
+#
 # $head f$$
 # This is a function that evaluates the ordinary differential equation
 # using the syntax
@@ -115,6 +126,7 @@ def multi_step(f, t_all, y_init ) :
 #
 # $head t_all$$
 # This is a numpy vector of time values at which the solution is calculated.
+# The type of its elements can be $code float$$ or $code ad_double$$.
 # It must be either monotone increasing or decreasing.
 # A single Runge-Kutta step is used to calculate the value at the next time
 # given the value at the current time.
@@ -122,6 +134,7 @@ def multi_step(f, t_all, y_init ) :
 # $head y_init$$
 # This is the value of $latex y(t)$$ at the initial time
 # $icode%t_all%[%0%]%$$ as a numpy vector.
+# The type of its elements can be $code float$$ or $code ad_double$$.
 #
 # $head y_all$$
 # This is the approximate solution for $latex y(t)$$ at all of the

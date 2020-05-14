@@ -52,6 +52,9 @@ def seirwd_model(t_all, p_fun, initial, n_step = 1) :
 #
 # $section A Susceptible Exposed Infectious Recovered and Death Model$$
 #
+# $head Purpose$$
+# This routine can be used with $code ad_double$$.
+#
 # $head Syntax$$
 # $icode%seirwd_all% = seirwd_model(%t_all%, %p_fun%, %initial%, %n_step% = 1)
 # %$$
@@ -99,6 +102,7 @@ def seirwd_model(t_all, p_fun, initial, n_step = 1) :
 # $head t_all$$
 # The argument $icode t_all$$ is a vector that is monotone
 # increasing or decreasing.
+# The type of its elements can be $code float$$ or $code a_double$$.
 # The smaller the spacing between time points, the more accurate
 # the approximation is.
 # We call $icode%t_all%[0]%$$ the initial time and
@@ -119,16 +123,19 @@ def seirwd_model(t_all, p_fun, initial, n_step = 1) :
 # $code 'chi'$$   $cnext $latex \chi(t)$$   $rnext
 # $code 'delta'$$ $cnext $latex \delta(t)$$
 # $tend
-# The value $icode t$$ will be between the initial and final time.
+# The value $icode t$$ will be between the initial and final time
+# and can be a $code float$$ or $code a_double$$.
 # The parameter functions above are assumed to be smooth
 # for all times between the initial and final time and
 # not in $icode t_all$$.
 # It is also assumed to be continuous at the times in $icode t_all$$; e.g,
 # it could be a piecewise linear interpolant with knots at $icode t_all$$.
+# The type of $icode p$$ can be $code float$$ or $code a_double$$.
 #
 # $head initial$$
 # is a vector of length four containing the initial values for
 # S, E, I, R, W, D in that order.
+# The type of its elements can be $code float$$ or $code a_double$$.
 #
 # $head n_step$$
 # This is the number of numerical integration steps to use for each
