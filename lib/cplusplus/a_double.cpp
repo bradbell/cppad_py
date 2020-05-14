@@ -648,12 +648,6 @@ UNARY_FUN_AD_RESULT(sqrt)
 UNARY_FUN_AD_RESULT(tan)
 UNARY_FUN_AD_RESULT(tanh)
 
-// abs in python is fabs in C++
-a_double a_double::abs(void) const
-{	a_double result;
-	*result.ptr() = CppAD::fabs( *ptr() );
-	return result;
-}
 /*
 -------------------------------------------------------------------------------
 $begin a_double_cond_assign$$
