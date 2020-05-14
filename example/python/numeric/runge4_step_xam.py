@@ -48,7 +48,7 @@
 import numpy
 from  scipy.special import factorial
 import cppad_py
-import ode_solve
+from runge4_step import runge4_step
 #
 def f(t, y, x) :
 	y_shift = numpy.concatenate( ( [1.0] , y[0:-1] ) )
@@ -63,7 +63,7 @@ def runge4_step_xam() :
 	x  = numpy.array( nx * [ 1.0 ] )
 	ax = cppad_py.independent(x)
 	#
-	# function to pass to ode_solve.runge4_step
+	# function to pass to runge4_step
 	def fun(t, ay) :
 		return f(t, ay, ax)
 	#
@@ -73,7 +73,7 @@ def runge4_step_xam() :
 	t_step   = 0.75
 	#
 	# take one step
-	ay = ode_solve.runge4_step(fun, t_start, ay_start, t_step)
+	ay = runge4_step(fun, t_start, ay_start, t_step)
 	#
 	# g(x) = y(t_step, x)
 	g = cppad_py.d_fun(ax, ay)
