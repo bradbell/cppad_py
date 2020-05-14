@@ -8,15 +8,25 @@
 # BEGIN_PYTHON
 import numpy
 import copy
+from cppad_py import a_double
 def simple_inv(A) :
 	nr, nc = A.shape
+	has_a_double = False
+	for e in A.flatten() :
+		has_a_double = has_a_double or type(e) == a_double
 	assert nr == nc
 	#
+	if has_a_double :
+		e_type = a_double
+	else :
+		e_type = float
+	#
 	# initialize Tablue = [A | I]
-	Tablue = numpy.empty( (nr, 2 * nr), dtype=type(A[0,0]) )
+	Tablue = numpy.empty( (nr, 2 * nr), dtype=e_type )
 	Tablue[:,0:nr] = A
 	for i in range(nr) :
 		for j in range(nr) :
+			Tablue[i, j]   = e_type( A[i, j] )
 			Tablue[i,nr+j] = float(i == j)
 	# ------------------------------------------------------------------------
 	# Use row reduction to get convert A to an upper traingular matrix
@@ -25,7 +35,10 @@ def simple_inv(A) :
 	# for each column (except the last) of the matrix
 	for j in range(nr - 1) :
 		# next row is one with maximum absolute element in column j
-		i_max = numpy.argmax( numpy.fabs( Tablue[:,j] ) )
+		if has_a_double :
+			i_max = numpy.argmax( numpy.fabs( Tablue[:,j] ) )
+		else :
+			i_max = numpy.argmax( numpy.abs( Tablue[:,j] ) )
 		#
 		# swap row j and row i_max
 		if i_max != j :
@@ -35,16 +48,16 @@ def simple_inv(A) :
 		#
 		# divide row j by Tablue[j,j]
 		Tablue[j,:] = Tablue[j,:] / Tablue[j,j]
-		Tablue[j,j] = 1.0
+		Tablue[j,j] = e_type(1.0)
 		#
 		# zero out column j in rows after j
 		for k in range(nr - j - 1) :
 			i = j + k + 1
 			Tablue[i,:] = Tablue[i,:] - Tablue[i,j] * Tablue[j,:]
-			Tablue[i,j]    = 0.0
+			Tablue[i,j]    = e_type( 0.0 )
 	# divide the last row of Tablue by the last pivot element
 	Tablue[nr-1,:]     = Tablue[nr-1,:] / Tablue[nr-1,nr-1]
-	Tablue[nr-1, nr-1] = 1.0
+	Tablue[nr-1, nr-1] = e_type( 1.0 )
 	# ------------------------------------------------------------------------
 	# Use row reduction to get convert upper traingular matrix to the identity
 	# ------------------------------------------------------------------------
@@ -53,7 +66,7 @@ def simple_inv(A) :
 		# zero out entries in column j and row less than j
 		for i in range(j) :
 			Tablue[i,:] = Tablue[i,:] - Tablue[i,j] * Tablue[j,:]
-			Tablue[i,j] = 0.0
+			Tablue[i,j] = e_type( 0.0 )
 	# -------------------------------------------------------------------------
 	Ainv = Tablue[:, nr:]
 	return Ainv

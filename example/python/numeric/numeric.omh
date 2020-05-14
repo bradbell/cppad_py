@@ -12,6 +12,7 @@ $section Numerical Examples$$
 $childtable%
 	example/python/numeric/simple_inv.py%
 	example/python/numeric/ode_solve.py%
+	example/python/numeric/rosen3_step.py%
 	example/python/numeric/optimize_fun_class.py%
 	example/python/numeric/seirwd_model.py%
 	example/python/numeric/covid_19_xam.py

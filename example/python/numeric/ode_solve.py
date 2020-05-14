@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# BEGIN_PYTHON
+# BEGIN_RUNGE4_STEP
 def runge4_step(f, ti, yi, h) :
 	k1     = h * f(ti,           yi)
 	k2     = h * f(ti + h / 2.0, yi + k1 / 2.0)
@@ -13,7 +13,7 @@ def runge4_step(f, ti, yi, h) :
 	k4     = h * f(ti + h,       yi + k3 )
 	yf     = yi + (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0
 	return yf
-# END_PYTHON
+# END_RUNGE4_STEP
 #
 # $begin numeric_ode_runge4_step$$ $newlinech #$$
 # $spell
@@ -71,12 +71,12 @@ def runge4_step(f, ti, yi, h) :
 #
 # $head Source Code$$
 # $srcthisfile%
-#	0%# BEGIN_PYTHON%# END_PYTHON%0
+#	0%# BEGIN_RUNGE4_STEP%# END_RUNGE4_STEP%0
 # %$$
 #
 # $end
 # --------------------------------------------------------------------------
-# BEGIN_PYTHON
+# BEGIN_MULTI_STEP
 def multi_step(f, t_all, y_init ) :
 	import numpy
 	import copy
@@ -95,7 +95,7 @@ def multi_step(f, t_all, y_init ) :
 		y1            = runge4_step(f, t0, y0, t_step)
 		y_all[i+1,:]  = copy.copy(y1)
 	return y_all
-# END_PYTHON
+# END_MULTI_STEP
 #
 # $begin numeric_ode_multi_step$$ $newlinech #$$
 # $spell
@@ -153,7 +153,7 @@ def multi_step(f, t_all, y_init ) :
 #
 # $head Source Code$$
 # $srcthisfile%
-#	0%# BEGIN_PYTHON%# END_PYTHON%0
+#	0%# BEGIN_MULTI_STEP%# END_MULTI_STEP%0
 # %$$
 #
 # $end

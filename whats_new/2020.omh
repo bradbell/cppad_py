@@ -41,6 +41,8 @@ $cref whats_new_2018$$
 
 $head 05-14$$
 $list number$$
+The example semi-stiff integrator $cref numeric_rosen3_step$$ was added.
+$lnext
 The example file $code runge4.py$$ was moved to $code ode_solve.py$$
 in preparation for other solvers.
 $lnext
