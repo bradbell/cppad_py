@@ -8,6 +8,7 @@
 # BEGIN_ROSEN3_STEP
 import numpy
 from simple_inv import simple_inv
+import cppad_py
 def rosen3_step(fun, ti, yi, h) :
 	#
 	r1_2     = 1.0   / 2.0
@@ -54,6 +55,40 @@ def rosen3_step(fun, ti, yi, h) :
 	#
 	return yf
 # END_ROSEN3_STEP
+# BEGIN_CHECK_ROSEN3_STEP
+def check_rosen3_step(fun, ti, yi, h) :
+	ok    = True
+	eps99 = 99.0 * numpy.finfo(float).eps
+	#
+	ny    = yi.size
+	both  = numpy.concatenate( (yi, [ti]) )
+	aboth = cppad_py.independent(both)
+	az    = fun.f(aboth[ny], aboth[0:ny] )
+	fun_d = cppad_py.d_fun(aboth, az)
+	#
+	J     = fun_d.jacobian(both)
+	#
+	# check fun.f_t(t, y)
+	fun_t = fun.f_t(ti, yi)
+	for i in range(ny) :
+		if J[i, ny] == 0.0 :
+			ok = ok and fun_t[i] == 0.0
+		else :
+			rel_error = fun_t[i] / J[i,ny] - 1.0
+			ok = ok and abs( rel_error ) < eps99
+	#
+	# check fun.f_y(t, y)
+	fun_y = fun.f_y(ti, yi)
+	for i in range(ny) :
+		for j in range(ny) :
+			if J[i, j] == 0.0 :
+				ok = ok and fun_y[i, j] == 0.0
+			else :
+				rel_error = fun_y[i, j] / J[i, j] - 1.0
+				ok = ok and abs( rel_error ) < eps99
+	#
+	return ok
+# END_CHECK_ROSEN3_STEP
 #
 # $begin numeric_rosen3_step$$ $newlinech #$$
 # $spell
@@ -71,10 +106,14 @@ def rosen3_step(fun, ti, yi, h) :
 # $section One Third Order Rosenbrock ODE Step$$
 #
 # $head Syntax$$
-# $icode%yf% = rosen3_step(%fun%, %ti%, %yi%, %h%)%$$
+# $icode%yf% = rosen3_step(%fun%, %ti%, %yi%, %h%)
+# %$$
+# $icode%ok% = check_rosen3_step(%fun%, %ti%, %yi%, %h%)
+# %$$
 #
 # $head Purpose$$
-# The routine can be used with $code ad_double$$ to solve the initial
+# The routine $code rosen3_step$$ can be used with
+# $code ad_double$$ to solve the initial
 # value problem
 # $latex \[
 #	y^{(1)} (t)  = f( t , y )
@@ -115,16 +154,19 @@ def rosen3_step(fun, ti, yi, h) :
 # $head ti$$
 # This is the initial time for the Rosenbrock step.
 # It can have type $code float$$ or $code a_double$$.
+# (For $code check_rosen3_step$$ only $code float$$ is allowed.)
 #
 # $head yi$$
 # This is the numpy vector containing the
 # value of $latex y(t)$$ at the initial time.
 # The type of its elements can be $code float$$ or $code a_double$$.
+# (For $code check_rosen3_step$$ only $code float$$ is allowed.)
 #
 # $head h$$
 # This is the step size in time; i.e., the time at the end of the step
 # minus the initial time.
 # It can have type $code float$$ or $code a_double$$.
+# (This is not used by $code check_rosen3_step$$.)
 #
 # $head yf$$
 # This is the approximate solution for $latex y(t)$$ at the final time
@@ -133,6 +175,12 @@ def rosen3_step(fun, ti, yi, h) :
 # $latex y(t)$$ is a polynomial in $latex t$$ of order three or lower,
 # the solution has no truncation error, only round off error.
 #
+# $head ok$$
+# This is true if the function $icode%fun%.f(%t%,%y%)%$$
+# and the partials $icode%fun%.f_t(%t%, %y%)%$$,
+# $icode%fun%.f_y(%t%, %y%)%$$ agree.
+# Otherwise AD has detected an error in these functions.
+#
 # $children%
 #	example/python/numeric/rosen3_step_xam.py
 # %$$
@@ -140,8 +188,15 @@ def rosen3_step(fun, ti, yi, h) :
 # $cref numeric_rosen3_step_xam.py$$
 #
 # $head Source Code$$
+#
+# $subhead rosen3_step$$
 # $srcthisfile%
 #	0%# BEGIN_ROSEN3_STEP%# END_ROSEN3_STEP%0
+# %$$
+#
+# $subhead check_rosen3_step$$
+# $srcthisfile%
+#	0%# BEGIN_CHECK_ROSEN3_STEP%# END_CHECK_ROSEN3_STEP%0
 # %$$
 #
 # $end

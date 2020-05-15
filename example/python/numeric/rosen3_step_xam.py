@@ -55,6 +55,7 @@ import numpy
 from  scipy.special import factorial
 import cppad_py
 from rosen3_step import rosen3_step
+from rosen3_step import check_rosen3_step
 # ---------------------------------------------------------------------------
 class first_fun_class :
 	def __init__(self, x) :
@@ -81,7 +82,7 @@ class first_fun_class :
 class second_fun_class :
 	def __init__(self, x) :
 		self.x  = x
-
+	#
 	# fun.f
 	def f(self, t, y) :
 		ny        = y.size
@@ -103,11 +104,30 @@ class second_fun_class :
 			prod        = prod * self.x[i+1]
 			result[i+1] = prod
 			prod        = prod * t / (i + 1)
+		return result
+	#
 	# fun.f_y
 	def f_y(self, t, y) :
 		ny = y.size
 		return numpy.zeros( ny, dtype=type(y[0]) )
 # ---------------------------------------------------------------------------
+# Check derivative claculations in first_fun_class and second_fun_class
+def test_derivative() :
+	ok       = True
+	nx       = 3
+	eps99    = 99.0 * numpy.finfo(float).eps
+	t_start  = 0.0
+	t_step   = 0.75
+	x        = numpy.array( nx * [ 1.0 ] )
+	y_start  = numpy.array( nx * [ 0.0 ] )
+	#
+	fun_1    = first_fun_class(x)
+	ok       = ok and check_rosen3_step(fun_1, t_start, y_start, t_step)
+	#
+	fun_2    = second_fun_class(x)
+	ok       = ok and check_rosen3_step(fun_1, t_start, y_start, t_step)
+	return ok
+
 def test_case(case) :
 	ok    = True
 	nx    = 3
@@ -120,12 +140,9 @@ def test_case(case) :
 	if case == 1 :
 		fun = first_fun_class(ax)
 	elif case == 2 :
-		fun = first_fun_class(ax)
+		fun = second_fun_class(ax)
 	else :
 		assert(False)
-	#
-	#
-	# function to pass to rosen3_step
 	#
 	# initiali value for the ODE
 	ay_start =  numpy.array( nx * [ cppad_py.a_double(0.0) ] )
@@ -166,6 +183,7 @@ def test_case(case) :
 # ---------------------------------------------------------------------------
 def rosen3_step_xam() :
 	ok = True
+	ok = ok and test_derivative()
 	ok = ok and test_case(1)
 	ok = ok and test_case(2)
 	return ok
