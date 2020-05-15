@@ -12,21 +12,27 @@
 #
 # $section Example Computing Derivative A Rosenbrock Ode Solution$$
 #
-# $head ODE$$
+# $head y(t, x)$$
+# The two initial value problems below have the following solution:
 # $latex \[
-#	\partial_t y_i (t, x) =  f(t, y, x) \left\{ \begin{array}{rl}
+#	y_i (t, x) = ( t^{i+1} / (i+1) ! ) \prod_{j=0}^i x_j
+# \]$$
+#
+# $head First ODE$$
+# $latex \[
+# f(t, y, x)  =
+# \left\{ \begin{array}{rl}
 #		x_0               & {\rm if} \; i = 0 \\
 #		x_i y_{i-1} (t)   & {\rm otherwise}
 # \end{array} \right. \]$$
 # with the initial condition $latex y(0) = 0$$
 #
-# $head Solution$$
-# This is a special case for which we know the solution
+# $head Second ODE$$
 # $latex \[
-#	y_i (t, x) = \left\{ \begin{array}{rl}
-#		t  x_0                            & {\rm if} \; i = 0 \\
-#		( t^i / (i+1) ! ) \prod_{j=0}^i x_j   & {\rm otherwise}
-# \end{array} \right. \]$$
+#	f(t, y, x)  = ( t^i / i ! ) \prod_{j=0}^i x_j
+# \]$$
+# with the initial condition $latex y(0) = 0$$
+#
 #
 # $head Derivative of Solution$$
 # For this special case, the partial derivative of the solution with respect
@@ -49,7 +55,8 @@ import numpy
 from  scipy.special import factorial
 import cppad_py
 from rosen3_step import rosen3_step
-class fun_class :
+# ---------------------------------------------------------------------------
+class first_fun_class :
 	def __init__(self, x) :
 		self.x = x
 
@@ -70,8 +77,38 @@ class fun_class :
 		for i in range(ny - 1) :
 			J[i+1, i] = self.x[i+1]
 		return J
-#
-def rosen3_step_xam() :
+# ---------------------------------------------------------------------------
+class second_fun_class :
+	def __init__(self, x) :
+		self.x  = x
+
+	# fun.f
+	def f(self, t, y) :
+		ny        = y.size
+		type_y    = type(y[0])
+		result    = numpy.empty(ny, dtype=type(y[0]) )
+		result[0] = type_y( self.x[0] )
+		for i in range(ny - 1) :
+			result[i+1] = result[i] * self.x[i + 1] * t / float(i+1)
+		return result
+	#
+	# fun.f_t
+	def f_t(self, t, y) :
+		ny = y.size
+		type_y    = type(y[0])
+		result    = numpy.empty(ny, dtype=type(y[0]) )
+		result[0] = type_y( 0.0 )
+		prod      = type_y( self.x[0] )
+		for i in range(ny - 1) :
+			prod        = prod * self.x[i+1]
+			result[i+1] = prod
+			prod        = prod * t / (i + 1)
+	# fun.f_y
+	def f_y(self, t, y) :
+		ny = y.size
+		return numpy.zeros( ny, dtype=type(y[0]) )
+# ---------------------------------------------------------------------------
+def test_case(case) :
 	ok    = True
 	nx    = 3
 	eps99 = 99.0 * numpy.finfo(float).eps
@@ -80,8 +117,13 @@ def rosen3_step_xam() :
 	x  = numpy.array( nx * [ 1.0 ] )
 	ax = cppad_py.independent(x)
 	#
-	# fun
-	fun = fun_class(ax)
+	if case == 1 :
+		fun = first_fun_class(ax)
+	elif case == 2 :
+		fun = first_fun_class(ax)
+	else :
+		assert(False)
+	#
 	#
 	# function to pass to rosen3_step
 	#
@@ -121,4 +163,11 @@ def rosen3_step_xam() :
 				ok       &= abs(rel_error) < eps99
 
 	return ok
+# ---------------------------------------------------------------------------
+def rosen3_step_xam() :
+	ok = True
+	ok = ok and test_case(1)
+	ok = ok and test_case(2)
+	return ok
+
 # END_PYTHON
