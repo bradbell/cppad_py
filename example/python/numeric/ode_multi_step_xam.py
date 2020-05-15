@@ -54,9 +54,16 @@ from runge4_step import runge4_step
 class fun_class :
 	#
 	def __init__(self, x) :
-		self.x = x
+		self.x     = x
+		self.index = None
+	#
+	def set_t_all_index(self, index) :
+		self.index = index
 	#
 	def f(self, t, y) :
+		assert self.index != None
+		# This ode does not depend on the the time index
+		#
 		y_shift = numpy.concatenate( ( [1.0] , y[0:-1] ) )
 		return self.x * y_shift
 #

@@ -8,7 +8,7 @@
 # BEGIN_ODE_MULTI_STEP
 import numpy
 import copy
-def ode_multi_step(one_step, f, t_all, y_init ) :
+def ode_multi_step(one_step, fun, t_all, y_init ) :
 	dtype      = type(y_init[0])
 	n_var      = y_init.size
 	n_step     = t_all.size - 1
@@ -17,11 +17,12 @@ def ode_multi_step(one_step, f, t_all, y_init ) :
 	t1         = t_all[0]
 	y_all[0,:] = y1
 	for i in range(n_step) :
+		fun.set_t_all_index(i)
 		y0            = y1
 		t0            = t1
 		t1            = t_all[i+1]
 		t_step        = t1 - t0
-		y1            = one_step(f, t0, y0, t_step)
+		y1            = one_step(fun, t0, y0, t_step)
 		y_all[i+1,:]  = copy.copy(y1)
 	return y_all
 # END_ODE_MULTI_STEP
@@ -63,13 +64,25 @@ def ode_multi_step(one_step, f, t_all, y_init ) :
 # $subhead y1$$
 # is the approximation for the ODE solution at time $icode%t0% + %t_step%$$.
 #
-# $head f$$
-# This is a function that evaluates the ordinary differential equation
+# $head fun$$
+#
+# $subhead fun.set_t_all_index(index)$$
+# This function call informs $icode fun$$ that we are currently integrating
+# the time interval
+# $codei%
+#	[ %t_all%[%index%] , %t_all%[%index%+1] ]
+# %$$
+# This function will be called at the start of each integration interval
+# and before any of the other $icode fun$$ member functions.
+#
+# $subhead fun.f(t, y)$$
+# This call evaluates the function that defines the ODE
 # $latex \[
 #	y^{(1)} (t) = f [ t , y(t) ]
 # \] $$
-# The specification for this function depend on the $icode one_step$$
-# routine.
+#
+# $subhead one_step$$
+# The routine $icode one_step$$ may put extra requirements on $icode fun$$.
 #
 # $head t_all$$
 # This is a numpy vector of time values at which the solution is calculated.

@@ -13,8 +13,15 @@ from runge4_step import runge4_step
 class fun_class :
 	def __init__(self, p_fun) :
 		self.p_fun = p_fun
+		self.index = None
+	#
+	def set_t_all_index(self, index) :
+		self.index = index
 	#
 	def f(self, t, seirwd) :
+		assert self.index != None
+		# This ODE does not use the time index
+		#
 		S, E, I, R, W, D = seirwd
 		p      = self.p_fun(t)
 		Sdot   = - p['beta']  *  S * I  + p['xi']    * R
