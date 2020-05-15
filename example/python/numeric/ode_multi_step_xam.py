@@ -48,7 +48,8 @@
 import numpy
 import scipy.special
 import cppad_py
-import ode_solve
+from ode_multi_step import ode_multi_step
+from runge4_step import runge4_step
 #
 def f(t, y, x) :
 	y_shift = numpy.concatenate( ( [1.0] , y[0:-1] ) )
@@ -63,9 +64,12 @@ def ode_multi_step_xam() :
 	x  = numpy.array( nx * [ 1.0 ] )
 	ax = cppad_py.independent(x)
 	#
-	# function to pass to ode_solve.multi_step
+	# function to pass to runge4_step
 	def fun(t, ay) :
 		return f(t, ay, ax)
+	#
+	# routine we are usning for each step
+	one_step = runge4_step
 	#
 	# initiali value for the ODE
 	n_step  = 10
@@ -75,7 +79,7 @@ def ode_multi_step_xam() :
 	t_all   =  numpy.array( t_all )
 	#
 	# take multiple steps
-	ay = ode_solve.multi_step(fun, t_all, ay_init)
+	ay = ode_multi_step(one_step, fun, t_all, ay_init)
 	ay_final = ay[n_step - 1,:]
 	#
 	# g(x) = y(t_final, x)

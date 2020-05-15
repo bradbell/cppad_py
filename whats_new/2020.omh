@@ -39,6 +39,11 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 05-15$$
+The file $code ode_solve.py$$ was moved to $code ode_multi_step.py$$
+and $cref numeric_ode_multi_step$$ was extended to allow for different ODE solvers
+(steppers).
+
 $head 05-14$$
 $list number$$
 The example semi-stiff integrator $cref numeric_rosen3_step$$ was added.
