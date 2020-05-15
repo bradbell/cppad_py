@@ -51,9 +51,14 @@ import cppad_py
 from ode_multi_step import ode_multi_step
 from runge4_step import runge4_step
 #
-def f(t, y, x) :
-	y_shift = numpy.concatenate( ( [1.0] , y[0:-1] ) )
-	return x * y_shift
+class fun_class :
+	#
+	def __init__(self, x) :
+		self.x = x
+	#
+	def f(self, t, y) :
+		y_shift = numpy.concatenate( ( [1.0] , y[0:-1] ) )
+		return self.x * y_shift
 #
 def ode_multi_step_xam() :
 	ok    = True
@@ -65,8 +70,7 @@ def ode_multi_step_xam() :
 	ax = cppad_py.independent(x)
 	#
 	# function to pass to runge4_step
-	def fun(t, ay) :
-		return f(t, ay, ax)
+	fun = fun_class(ax)
 	#
 	# routine we are usning for each step
 	one_step = runge4_step

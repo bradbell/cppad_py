@@ -9,11 +9,14 @@
 import numpy
 from ode_multi_step import ode_multi_step
 from runge4_step import runge4_step
-def seirwd_model(t_all, p_fun, initial, n_step = 1) :
-	# private member fuction (not part of class API)
-	def ode(t, seirwd) :
+# -----------------------------------------------------------------------------
+class fun_class :
+	def __init__(self, p_fun) :
+		self.p_fun = p_fun
+	#
+	def f(self, t, seirwd) :
 		S, E, I, R, W, D = seirwd
-		p      = p_fun(t)
+		p      = self.p_fun(t)
 		Sdot   = - p['beta']  *  S * I  + p['xi']    * R
 		Edot   = + p['beta']  *  S * I  - p['sigma'] * E
 		Idot   = + p['sigma'] * E       - (p['gamma'] + p['chi']) * I
@@ -22,9 +25,13 @@ def seirwd_model(t_all, p_fun, initial, n_step = 1) :
 		Ddot   = + p['delta'] * W
 		return numpy.array([ Sdot, Edot, Idot, Rdot, Wdot, Ddot])
 	#
+# -----------------------------------------------------------------------------
+def seirwd_model(t_all, p_fun, initial, n_step = 1) :
+	# private member fuction (not part of class API)
+	fun      = fun_class(p_fun)
 	one_step = runge4_step
 	if n_step == 1 :
-		seirwd_all  = ode_multi_step(one_step, ode, t_all, initial)
+		seirwd_all  = ode_multi_step(one_step, fun, t_all, initial)
 	else :
 		# t_refine
 		t_refine = list()
@@ -35,7 +42,7 @@ def seirwd_model(t_all, p_fun, initial, n_step = 1) :
 		t_refine.append( t_all[-1] )
 		t_refine = numpy.array( t_refine )
 		#
-		seirwd_refine   = ode_multi_step(one_step, ode, t_refine, initial)
+		seirwd_refine   = ode_multi_step(one_step, fun, t_refine, initial)
 		index_all   = [ i * n_step for i in range(len(t_all)) ]
 		seirwd_all   = seirwd_refine[ index_all ]
 	#

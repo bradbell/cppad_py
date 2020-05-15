@@ -6,11 +6,11 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 # BEGIN_RUNGE4_STEP
-def runge4_step(f, ti, yi, h) :
-	k1     = h * f(ti,           yi)
-	k2     = h * f(ti + h / 2.0, yi + k1 / 2.0)
-	k3     = h * f(ti + h / 2.0, yi + k2 / 2.0)
-	k4     = h * f(ti + h,       yi + k3 )
+def runge4_step(fun, ti, yi, h) :
+	k1     = h * fun.f(ti,           yi)
+	k2     = h * fun.f(ti + h / 2.0, yi + k1 / 2.0)
+	k3     = h * fun.f(ti + h / 2.0, yi + k2 / 2.0)
+	k4     = h * fun.f(ti + h,       yi + k3 )
 	yf     = yi + (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0
 	return yf
 # END_RUNGE4_STEP
@@ -28,15 +28,21 @@ def runge4_step(f, ti, yi, h) :
 # $section One Fourth Order Runge-Kutta ODE Step$$
 #
 # $head Syntax$$
-# $icode%yf% = runge4_step(%f%, %ti%, %yi%, %h%)%$$
+# $icode%yf% = runge4_step(%fun%, %ti%, %yi%, %h%)%$$
 #
 # $head Purpose$$
 # The routine can be used with $code ad_double$$
+# to solve the initial value ODE
+# $latex \[
+#   y^{(1)} (t)  = f( t , y )
+# \] $$
 #
-# $head f$$
+# $head fun$$
 # This is a function that evaluates the ordinary differential equation
-# using the syntax $codei%yp% = %f%( %t% , %y% )%$$ where
-# $icode t$$ # is the current time,
+# using the syntax
+# $codei%
+#	%yp% = %fun%.f( %t% , %y% )%$$
+# where $icode t$$ # is the current time,
 # $icode y$$ is the current value of $latex y(t)$$, and
 # $icode yp$$ is the current derivative $latex y^{(1)} (t)$$.
 # The type of the elements of $icode t$$ and $icode y$$

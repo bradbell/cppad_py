@@ -113,8 +113,7 @@ def check_rosen3_step(fun, ti, yi, h) :
 #
 # $head Purpose$$
 # The routine $code rosen3_step$$ can be used with
-# $code ad_double$$ to solve the initial
-# value problem
+# $code ad_double$$ to solve an initial value ODE
 # $latex \[
 #	y^{(1)} (t)  = f( t , y )
 # \] $$
