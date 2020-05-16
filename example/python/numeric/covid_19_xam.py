@@ -317,7 +317,7 @@ x_sim = numpy.array( [
 #
 #
 # actual_seed
-# see begining of covid_19_xam function.
+# Make a list so that we can set its element value inside a routine
 actual_seed = [ random_seed ]
 #
 def x2seirwd_all(x) :
@@ -364,25 +364,30 @@ def weighted_residual(D_data, D_model) :
 		residual = residual / death_data_cv
 	return residual
 #
-# objective_d_fun
+# objective
 # t_all and D_data, are constants relative to the objective function
-def objective_d_fun(t_all, D_data) :
-	#
-	n_x = len(x_name)
-	x   = 0.1 * numpy.ones(n_x)
-	ax  = cppad_py.independent(x)
+def objective(t_all, D_data, x) :
 	#
 	# compute model for data
-	aseirwd_all = x2seirwd_all(ax)
+	seirwd_all = x2seirwd_all(x)
 	#
 	# Model for the cumulative death as function of time
-	aD_model   = aseirwd_all[:,5] # column order is S, E, I, R, W, D
+	D_model   = seirwd_all[:,5] # column order is S, E, I, R, W, D
 	#
 	# compute negative log Gaussian likelihood dropping variance terms
 	# because they are constaint w.r.t the unknown parameters
-	aresidual = weighted_residual(D_data, aD_model)
-	aloss     = 0.5 * numpy.sum( aresidual * aresidual)
-	aloss     = numpy.array( [ aloss ] )
+	residual = weighted_residual(D_data, D_model)
+	loss     = 0.5 * numpy.sum( residual * residual)
+	return loss
+#
+# objective_d_fun
+def objective_d_fun(t_all, D_data) :
+	#
+	n_x   = len(x_name)
+	x     = 0.1 * numpy.ones(n_x)
+	ax    = cppad_py.independent(x)
+	aloss = objective(t_all, D_data, ax)
+	aloss = numpy.array( [ aloss ] )
 	#
 	objective_ad = cppad_py.d_fun(ax, aloss)
 	return objective_ad
@@ -393,7 +398,7 @@ def simulate_data() :
 	seirwd_all_sim = x2seirwd_all(x_sim)
 	#
 	# rng: numpy random number generator
-	rng = numpy.random.default_rng(seed = actual_seed[0])
+	rng = numpy.random.default_rng(actual_seed[0])
 	#
 	# D_data
 	D_sim       = seirwd_all_sim[:,5]
@@ -427,7 +432,7 @@ def random_start(n_random, x_lower, x_upper, log_scale, objective, A) :
 			x_up[j]  = numpy.log(x_upper[j])
 	#
 	# rng: numpy random number generator
-	rng = numpy.random.default_rng(seed = actual_seed[0])
+	rng = numpy.random.default_rng(actual_seed[0])
 	#
 	for i in range(n_random) :
 		x_current   = rng.uniform(x_low, x_up)
@@ -549,7 +554,8 @@ def covid_19_xam(call_count = 0) :
 	#
 	# if random seed is zero, seed of the cloce
 	if random_seed == 0 :
-		actual_seed = [ int( 13 * time.time() ) ]
+		actual_seed[0] = int( 13 * time.time() )
+	# print('actual_seed = ', actual_seed[0])
 	#
 	# D_data
 	if data_file == '' :
@@ -617,7 +623,8 @@ def covid_19_xam(call_count = 0) :
 			A_fit,
 		);
 		# print( 'start_point = ', start_point )
-		# run optimizer
+		# print( 'objective   = ', objective(t_all, D_data, start_point) )
+		# print( 'objective   = ', optimize_fun.objective_fun(start_point) )
 		result = scipy.optimize.minimize(
 			optimize_fun.objective_fun,
 			start_point,
