@@ -356,7 +356,7 @@ def x2seirwd_all(x) :
 	#
 	return seirwd_all
 #
-def weighted_residual(D_data, D_model) :
+def weighted_data_residual(D_data, D_model) :
 	Ddiff_data   = numpy.diff(D_data)
 	Ddiff_model  = numpy.diff(D_model)
 	residual     = (Ddiff_data - Ddiff_model) / Ddiff_data
@@ -376,7 +376,7 @@ def objective(t_all, D_data, x) :
 	#
 	# compute negative log Gaussian likelihood dropping variance terms
 	# because they are constaint w.r.t the unknown parameters
-	residual = weighted_residual(D_data, D_model)
+	residual = weighted_data_residual(D_data, D_model)
 	loss     = 0.5 * numpy.sum( residual * residual)
 	return loss
 #
@@ -491,8 +491,8 @@ def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 	# D_fit
 	D_fit = seirwd_all_fit[:,5]
 	#
-	# residual_fit
-	residual_fit = weighted_residual(D_data, D_fit)
+	# data_residual
+	data_residual = weighted_data_residual(D_data, D_fit)
 	#
 	fig  = pyplot.figure(tight_layout = True)
 	gs   = gridspec.GridSpec(3, 2)
@@ -518,7 +518,7 @@ def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 	ax2.legend()
 	ax2.set_ylabel('death differences')
 	#
-	ax3.plot( t_mid,                 residual_fit,   'k+' )
+	ax3.plot( t_mid,             data_residual,  'k+' )
 	ax3.plot( [t_all[0], t_all[-1]], [0.0, 0.0], 'k-' )
 	ax3.set_ylabel('weighted residuals')
 	#
@@ -680,26 +680,27 @@ def covid_19_xam(call_count = 0) :
 	# D_fit
 	D_fit = seirwd_all_fit[:,5]
 	#
-	# residual_fit
-	residual_fit = weighted_residual(D_data, D_fit)
+	# data_resdidual
+	data_residual = weighted_data_residual(D_data, D_fit)
 	#
 	# check that all the data residuals an less than 3.0
-	ok  = ok and numpy.all( numpy.abs( residual_fit ) < 3.0 )
+	if numpy.any( numpy.abs( data_residual ) >= 3.0 ) :
+		print('covid_19_xam: a weighted data residual >= 3.0')
+		ok = False
 	#
 	# compare fit to simulation truth
 	if data_file == '' :
-		for i in range( n_x ) :
-			if x_sim[i] == 0.0 :
-				rel_error = 0.0
-			else :
-				rel_error = x_fit[i] / x_sim[i] - 1.0
-			residual  = (x_fit[i] - x_sim[i]) / std_error[i]
-			if death_data_cv > 0.0 :
-				# check that all the weighted residuals are less than two
-				ok = ok and abs(residual) < 2.0
-			else :
-				# check for perfect fit
-				ok = ok and abs(rel_error) < 1e-5
+		x_residual = x_fit / x_sim - 1.0
+		x_residual[ x_sim == 0.0 ] = 0.0
+		if death_data_cv > 0.0 :
+			if numpy.any( abs(x_residual) >= 2.0) :
+				print('covid_19_xam: a weight x residual >= 2.0')
+				ok = False
+		else:
+			if numpy.any( abs(x_residual) >= 1e-5 ) :
+				print('covid_19_xam: an x residual >= 1e-5')
+				print('should have prefect fit because death_data_cv = 0')
+				ok = False
 		#
 		if not ok :
 			msg  = 'covid_19_xam: Correctness test failed, '
@@ -713,7 +714,9 @@ def covid_19_xam(call_count = 0) :
 	# check conservation of mass in the compartmental model
 	sum_all_fit = numpy.sum(seirwd_all_fit, axis=1)
 	eps99       = 99.0 * numpy.finfo(float).eps
-	ok          = ok and max( abs(sum_all_fit - 1.0) ) < eps99
+	if numpy.any( abs(sum_all_fit - 1.0) > eps99 ) :
+		print('covid_19_xam: sum of all compartments not equal 1.0')
+		ok = False
 	#
 	# display_fit_results
 	if display_fit :
