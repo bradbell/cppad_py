@@ -16,6 +16,8 @@
 #	rel
 #	std
 #	optimizer
+#	runge
+#	rosen
 # $$
 #
 # $section Example Fitting an SEIRWD Model for Covid-19$$
@@ -66,6 +68,7 @@
 #
 # $head Other Rates$$
 # The other rates
+# $latex \alpha(t)$$,
 # $latex \sigma(t)$$,
 # $latex \gamma(t)$$,
 # $latex \xi(t)$$,
@@ -73,6 +76,7 @@
 # $latex \delta(t)$$,
 # constant functions with known values:
 # $srccode%py%
+alpha_known  = 1.00
 sigma_known  = 0.2
 gamma_known  = 0.05
 chi_known    = 0.01
@@ -100,6 +104,14 @@ delta_known  = 0.1
 # $latex \[
 #	S(0) = 1 - E(0) - I(0) - W(0)
 # \] $$
+#
+# $head ode_method$$
+# There are two choices for solving the ODE,
+# $cref/runge4/numeric_runge4_step/$$ and
+# $cref/rosen3/numeric_rosen3_step/$$.
+# $srccode%py%
+ode_method = 'rosen3'
+# %$$
 #
 # $head Unknown Parameters$$
 # In summary, the unknown parameter vector in this model is
@@ -321,6 +333,7 @@ def x2seirwd_all(x) :
 	p_all = list()
 	for i in range( beta_all.size ) :
 		p = {
+			'alpha' : alpha_known,
 			'sigma' : sigma_known,
 			'gamma' : gamma_known,
 			'chi'   : chi_known,
@@ -339,7 +352,7 @@ def x2seirwd_all(x) :
 	#
 	# seirwd_all
 	n_step = 2
-	seirwd_all = seirwd_model(t_all, p_all, initial, n_step)
+	seirwd_all = seirwd_model(ode_method, t_all, p_all, initial, n_step)
 	#
 	return seirwd_all
 #
@@ -584,6 +597,8 @@ def covid_19_xam(call_count = 0) :
 		x_upper,
 		keep_feasible = True
 	)
+	# print('x_lower =', x_lower)
+	# print('x_lower =', x_lower)
 	# ------------------------------------------------------------------------
 	# optimizer loop over beta constraints
 	constraints  = list()
@@ -601,6 +616,7 @@ def covid_19_xam(call_count = 0) :
 			optimize_fun.objective_fun,
 			A_fit,
 		);
+		# print( 'start_point = ', start_point )
 		# run optimizer
 		result = scipy.optimize.minimize(
 			optimize_fun.objective_fun,

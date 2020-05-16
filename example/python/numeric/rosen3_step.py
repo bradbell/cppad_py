@@ -69,23 +69,38 @@ def check_rosen3_step(fun, ti, yi, h) :
 	J     = fun_d.jacobian(both)
 	#
 	# check fun.f_t(t, y)
-	fun_t = fun.f_t(ti, yi)
+	fun_t   = fun.f_t(ti, yi)
+	printed = False
 	for i in range(ny) :
 		if J[i, ny] == 0.0 :
 			ok = ok and fun_t[i] == 0.0
 		else :
 			rel_error = fun_t[i] / J[i,ny] - 1.0
-			ok = ok and abs( rel_error ) < eps99
+			if abs(rel_error) > eps99 :
+				ok = False
+				if not printed :
+					print('check_rosen3_step: fun.f_t check failed')
+					printed = True
+				print('fun_t[', i, '] = ', fun_t[i], ', check = ', J[i,ny])
 	#
 	# check fun.f_y(t, y)
 	fun_y = fun.f_y(ti, yi)
+	printed = False
 	for i in range(ny) :
 		for j in range(ny) :
 			if J[i, j] == 0.0 :
-				ok = ok and fun_y[i, j] == 0.0
+				ok_ij =fun_y[i, j] == 0.0
 			else :
 				rel_error = fun_y[i, j] / J[i, j] - 1.0
-				ok = ok and abs( rel_error ) < eps99
+				ok_ij = abs( rel_error ) < eps99
+			if (not ok_ij) and (not printed) :
+				print('check_rosen3_step: fun.f_y check failed')
+				printed = True
+			if not ok_ij :
+				msg  = 'fun_y[' + str(i) + ',' + str(j) + '] ='
+				msg += str( fun_y[i, j] )
+				msg += ', check = ' + str( J[i, j] )
+				print(msg)
 	#
 	return ok
 # END_CHECK_ROSEN3_STEP

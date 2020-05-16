@@ -15,7 +15,7 @@ def runge4_step(fun, ti, yi, h) :
 	return yf
 # END_RUNGE4_STEP
 #
-# $begin numeric_ode_runge4_step$$ $newlinech #$$
+# $begin numeric_runge4_step$$ $newlinech #$$
 # $spell
 #	Runge-Kutta
 #	yf

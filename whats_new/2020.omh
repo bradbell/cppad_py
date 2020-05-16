@@ -40,10 +40,15 @@ $head Previous Years$$
 $cref whats_new_2018$$
 
 $head 05-16$$
+$list number$$
 A discussion of some subtile issues,
 when interpolation is used to define an ODE,
 was added to the $code ode_multi_step$$; see
 $cref/set_t_all_index/numeric_ode_multi_step/$$.
+$lnext
+Add the $cref/alpha/numeric_seirwd_model/p_all/alpha/$$ parameter to the
+SEIRWD model.
+$lend
 
 $head 05-15$$
 The file $code ode_solve.py$$ was moved to $code ode_multi_step.py$$
@@ -129,7 +134,7 @@ $head 05-06$$
 $list number$$
 Add the following utility examples:
 $cref numeric_optimize_fun_class$$,
-$cref numeric_ode_runge4_step$$,
+$cref numeric_runge4_step$$,
 $cref numeric_ode_multi_step$$,
 $code numeric_seirs_class$$.
 (The $code numeric_seirs_class$$ was later replaced by

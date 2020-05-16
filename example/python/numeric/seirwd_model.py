@@ -9,6 +9,7 @@
 import numpy
 from ode_multi_step import ode_multi_step
 from rosen3_step import rosen3_step
+from runge4_step import runge4_step
 from rosen3_step import check_rosen3_step
 # -----------------------------------------------------------------------------
 class fun_class :
@@ -35,11 +36,12 @@ class fun_class :
 		#
 		# linearly interpolate the parameter values
 		p      = dict()
-		t_diff = t_all[index + 1] - t_all[index]
-		left   = (t_all[index + 1] - t) / t_diff
-		right  = (t - t_all[index + 0]) / t_diff
-		for key in [ 'beta', 'sigma', 'gamma', 'xi', 'chi', 'delta' ] :
-			p[key] = left * p_all[index][key] + right * p_all[index+1][key]
+		t_left = t_all[index]
+		t_diff = t_all[index + 1] - t_left
+		for key in ['alpha', 'beta', 'sigma', 'gamma', 'xi', 'chi', 'delta'] :
+			p_left = p_all[index][key]
+			p_diff = p_all[index + 1][key] - p_left
+			p[key] = p_left + (t - t_left) * p_diff / t_diff
 		#
 		return p
 	# -----------------------------------------------------------------------
@@ -53,7 +55,7 @@ class fun_class :
 		# linearly interpolate the parameter values
 		p_t    = dict()
 		t_diff = t_all[index + 1] - t_all[index]
-		for key in [ 'beta', 'sigma', 'gamma', 'xi', 'chi', 'delta' ] :
+		for key in ['alpha', 'beta', 'sigma', 'gamma', 'xi', 'chi', 'delta'] :
 			p_diff   = p_all[index + 1][key] - p_all[index][key]
 			p_t[key] = p_diff / t_diff
 		#
@@ -64,26 +66,32 @@ class fun_class :
 		p                = self.get_p(t, seirwd)
 		S, E, I, R, W, D = seirwd
 		#
+		Ia     = pow(I, p['alpha'])
+		#
 		# compute f(t, y)
-		Sdot   = - p['beta']  *  S * I  + p['xi']    * R
-		Edot   = + p['beta']  *  S * I  - p['sigma'] * E
-		Idot   = + p['sigma'] * E       - (p['gamma'] + p['chi']) * I
-		Rdot   = + p['gamma'] * I       - p['xi']    * R
-		Wdot   = + p['chi']   * I       - p['delta'] * W
+		Sdot   = - p['beta']  *  S * Ia  + p['xi']    * R
+		Edot   = + p['beta']  *  S * Ia  - p['sigma'] * E
+		Idot   = + p['sigma'] * E        - (p['gamma'] + p['chi']) * I
+		Rdot   = + p['gamma'] * I        - p['xi']    * R
+		Wdot   = + p['chi']   * I        - p['delta'] * W
 		Ddot   = + p['delta'] * W
 		#
 		return numpy.array([ Sdot, Edot, Idot, Rdot, Wdot, Ddot])
 	# -----------------------------------------------------------------------
 	# f_t
 	def f_t(self, t, seirwd) :
+		p                = self.get_p(t, seirwd)
 		p_t              = self.get_p_t()
 		S, E, I, R, W, D = seirwd
 		#
-		Sdot_t   = - p_t['beta']  *  S * I  + p_t['xi']    * R
-		Edot_t   = + p_t['beta']  *  S * I  - p_t['sigma'] * E
-		Idot_t   = + p_t['sigma'] * E       - (p_t['gamma'] + p_t['chi']) * I
-		Rdot_t   = + p_t['gamma'] * I       - p_t['xi']    * R
-		Wdot_t   = + p_t['chi']   * I       - p_t['delta'] * W
+		Ia     = pow(I, p['alpha'])
+		#
+		#
+		Sdot_t   = - p_t['beta']  *  S * Ia  + p_t['xi']    * R
+		Edot_t   = + p_t['beta']  *  S * Ia  - p_t['sigma'] * E
+		Idot_t   = + p_t['sigma'] * E        - (p_t['gamma'] + p_t['chi']) * I
+		Rdot_t   = + p_t['gamma'] * I        - p_t['xi']    * R
+		Wdot_t   = + p_t['chi']   * I        - p_t['delta'] * W
 		Ddot_t   = + p_t['delta'] * W
 		return numpy.array([ Sdot_t, Edot_t, Idot_t, Rdot_t, Wdot_t, Ddot_t])
 	# -----------------------------------------------------------------------
@@ -92,20 +100,26 @@ class fun_class :
 		p                = self.get_p(t, seirwd)
 		S, E, I, R, W, D = seirwd
 		#
+		Ia     = pow(I, p['alpha'])
+		if p['alpha'] == 1.0 :
+			Ia_I = 1.0
+		else :
+			Ia_I = p['alpha'] * pow(I, p['alpha'] - 1.0 )
+		#
 		ny     = 6
 		type_y = type( seirwd[0] )
 		zero   = type_y( 0.0 )
 		J      = numpy.empty( (ny,ny), dtype = type_y )
 		#
 		# partials of Sdot(t, y) w.r.t. y
-		Sdot_S   = - p['beta']  *  I
-		Sdot_I   = - p['beta']  *  S
+		Sdot_S   = - p['beta']  *  Ia
+		Sdot_I   = - p['beta']  *  S * Ia_I
 		Sdot_R   = + p['xi']
 		J[0,:]   = [ Sdot_S, zero, Sdot_I, Sdot_R, zero, zero ]
 		#
 		# partial of Edot(t, y) w.r.t y
-		Edot_S   = + p['beta']  *  I
-		Edot_I   = + p['beta']  *  S
+		Edot_S   = + p['beta']  *  Ia
+		Edot_I   = + p['beta']  *  S * Ia_I
 		Edot_E   =  - p['sigma']
 		J[1,:]   = [ Edot_S, Edot_E, Edot_I, zero, zero, zero ]
 		#
@@ -130,8 +144,8 @@ class fun_class :
 		#
 		return J
 # -----------------------------------------------------------------------------
-# check_seirwd_model
-def check_seirwd_model(t_all, p_all, initial) :
+# check the fun derivatives required by rosen3_step
+def test_fun_derivatives(t_all, p_all, initial) :
 	ok     = True
 	n_step = 1
 	fun  = fun_class(t_all, p_all, n_step)
@@ -144,9 +158,17 @@ def check_seirwd_model(t_all, p_all, initial) :
 	return ok
 # -----------------------------------------------------------------------------
 # seriwd_model
-def seirwd_model(t_all, p_all, initial, n_step = 1) :
+def seirwd_model(method, t_all, p_all, initial, n_step = 1) :
+	for i in range( len(t_all) - 1 ) :
+		assert p_all[i+1]['alpha'] == p_all[0]['alpha']
+	#
 	fun      = fun_class(t_all, p_all, n_step)
-	one_step = rosen3_step
+	if method == 'runge4' :
+		one_step = runge4_step
+	elif method == 'rosen3' :
+		one_step = rosen3_step
+	else :
+		assert False
 	if n_step == 1 :
 		seirwd_all  = ode_multi_step(one_step, fun, t_all, initial)
 	else :
@@ -174,6 +196,9 @@ def seirwd_model(t_all, p_all, initial, n_step = 1) :
 #	py
 #	xi
 #	interpolant
+#	str
+#	runge
+#	rosen
 # $$
 #
 # $section A Susceptible Exposed Infectious Recovered and Death Model$$
@@ -182,8 +207,9 @@ def seirwd_model(t_all, p_all, initial, n_step = 1) :
 # This routine can be used with $code ad_double$$.
 #
 # $head Syntax$$
-# $icode%seirwd_all% = seirwd_model(%t_all%, %p_all%, %initial%, %n_step% = 1)
-# %$$
+# $icode%seirwd_all% = seirwd_model(
+#	%method%, %t_all%, %p_all%, %initial%, %n_step% = 1
+# )%$$
 #
 # $head Notation$$
 # $table
@@ -193,6 +219,7 @@ def seirwd_model(t_all, p_all, initial, n_step = 1) :
 # $latex R(t)$$      $cnext size Recovered group              $rnext
 # $latex W(t)$$      $cnext size of the group that will die   $rnext
 # $latex D(t)$$      $cnext size of the group that has died   $rnext
+# $latex \alpha(t)$$ $cnext infectious group size exponent    $rnext
 # $latex \beta(t)$$  $cnext infectious rate                   $rnext
 # $latex \sigma(t)$$ $cnext incubation rate                   $rnext
 # $latex \gamma(t)$$ $cnext recovery rate                     $rnext
@@ -205,12 +232,12 @@ def seirwd_model(t_all, p_all, initial, n_step = 1) :
 # The ordinary differential equation for this model is:
 # $latex \[
 # \begin{array}{rcll}
-# \dot{S} & = & - \beta  S I      & + \xi    R             \\
-# \dot{E} & = & + \beta  S I      & - \sigma E             \\
-# \dot{I} & = & + \sigma E        & - ( \gamma + \chi )  I \\
-# \dot{R} & = & + \gamma I        & - \xi    R             \\
-# \dot{W} & = & + \chi   I        & - \delta W             \\
-# \dot{D} & = & + \delta W        &
+# \dot{S} & = & - \beta  S I^\alpha  & + \xi    R             \\
+# \dot{E} & = & + \beta  S I^\alpha  & - \sigma E             \\
+# \dot{I} & = & + \sigma E           & - ( \gamma + \chi )  I \\
+# \dot{R} & = & + \gamma I           & - \xi    R             \\
+# \dot{W} & = & + \chi   I           & - \delta W             \\
+# \dot{D} & = & + \delta W           &
 # \end{array}
 # \] $$
 # where we dropped the time dependence in the equations above.
@@ -225,12 +252,18 @@ def seirwd_model(t_all, p_all, initial, n_step = 1) :
 # This model tracks death due to the condition using the compartments W and D.
 # $lend
 #
+# $head method$$
+# This $code str$$ must be either $code runge4$$ or $code rosen3$$.
+# It determines if $cref/runge4_step/numeric_runge4_step/$$ or
+# $cref/rosen3_step/numeric_rosen3_step/$$ is used to solve the ODE.
+#
 # $head t_all$$
 # The argument $icode t_all$$ is a vector that is monotone
 # increasing or decreasing.
 # The type of its elements can be $code float$$ or $code a_double$$.
 # The smaller the spacing between time points, the more accurate
 # the approximation is.
+# Note two points can be equal; i.e., no zero spacing.
 # We call $icode%t_all%[0]%$$ the initial time and
 # $icode%t_all%[-1]%$$ the final time.
 #
@@ -239,7 +272,8 @@ def seirwd_model(t_all, p_all, initial, n_step = 1) :
 # The i-th element of the list has the following $icode key$$,
 # $icode value$$ pairs:
 # $table
-# $icode key$$    $cnext $icode value$$     $rnext
+# $icode key$$    $cnext $icode value$$         $rnext
+# $code 'alpha'$$ $cnext $latex \alpha( t_i )$$ $rnext
 # $code 'beta'$$  $cnext $latex \beta( t_i )$$  $rnext
 # $code 'sigma'$$ $cnext $latex \sigma( t_i )$$ $rnext
 # $code 'gamma'$$ $cnext $latex \gamma( t_i )$$ $rnext
@@ -251,6 +285,15 @@ def seirwd_model(t_all, p_all, initial, n_step = 1) :
 # The type of $icode value$$ can be $code float$$ or $code a_double$$.
 # Each of the these parameters will be linearly interpolated
 # for times between the those in $icode t_all$$.
+#
+# $subhead alpha$$
+# There is a special restriction that $latex \alpha(t)$$ must be
+# constant; i.e. $latex \alpha( t_i \) = \alpha( t_0 )$$ for
+# all $latex i$$.
+# This is because talking the derivative of $latex I^\alpha$$
+# respect to $latex I$$ has a special representation when $latex \alpha = 1$$.
+# Using a special representation for that case would not work with AD
+# unless $latex \alpha$$ is constant.
 #
 # $head initial$$
 # is a vector of length four containing the initial values for
