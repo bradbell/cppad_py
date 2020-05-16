@@ -39,6 +39,12 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 05-16$$
+A discussion of some subtile issues,
+when interpolation is used to define an ODE,
+was added to the $code ode_multi_step$$; see
+$cref/set_t_all_index/numeric_ode_multi_step/$$.
+
 $head 05-15$$
 The file $code ode_solve.py$$ was moved to $code ode_multi_step.py$$
 and $cref numeric_ode_multi_step$$ was extended to allow for different ODE solvers

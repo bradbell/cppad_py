@@ -41,7 +41,11 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
 # $icode%y_all% = ode_multi_step(%one_step%, %f%, %t_all%, %y_init%)%$$
 #
 # $head Purpose$$
-# The routine can be used with $code ad_double$$.
+# The routine can be used with $code ad_double$$ to solve an initial
+# value ODE
+# $latex \[
+#	y^{(1)} (t) = f( t , y )
+# \] $$
 #
 # $head one_step$$
 # This routine executes one step of an ODE approximation method with the
@@ -67,13 +71,24 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
 # $head fun$$
 #
 # $subhead fun.set_t_all_index(index)$$
-# This function call informs $icode fun$$ that we are currently integrating
-# the time interval
+# Often, we use interpolation with knots to define $latex f(t, y)$$.
+# It is one of the subtitle issues of AD that even though values are the
+# same, derivatives might not be the same; e.g.,
+# piecewise linear interpolation.
+# We must break the integration of the ODE at each of the knot
+# so we can use a method that assumes $latex f(t, y)$$ is smooth.
+# Also so that AD can be used to compute derivatives of our solutions.
+# The function $code set_t_all_index$$
+# informs $icode fun$$ that we are currently integrating the time interval
 # $codei%
 #	[ %t_all%[%index%] , %t_all%[%index%+1] ]
 # %$$
-# This function will be called at the start of each integration interval
-# and before any of the other $icode fun$$ member functions.
+# so that it know which smooth function to represent
+# even if $latex t$$ is at a knot and it matters if it is the interval
+# to the left or right of the knot.
+# The function $code set_t_all_index$$ is called at the start
+# of each integration interval and before any of the other
+# $icode fun$$ member functions.
 #
 # $subhead fun.f(t, y)$$
 # This call evaluates the function that defines the ODE
