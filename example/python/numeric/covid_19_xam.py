@@ -448,15 +448,24 @@ def random_start(n_random, x_lower, x_upper, log_scale, objective, A) :
 	#
 	return x_best
 
-def display_fit_results(x_fit, std_error, D_data) :
+def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 	n_x = len(x_fit)
 	# -----------------------------------------------------------------------
 	# printout
 	if data_file != '' :
-		for j in range( n_x ) :
-			print( '{:<15s}={:>+11.7f}'.format( x_name[j], x_fit[j] ) )
+		fmt = '{:<15s}{:>12s}{:>12s}{:>12s}'
+		line = fmt.format(
+			'', 'x_fit','x_lower','x_upper'
+		)
+		print(line)
+		for i in range( n_x ) :
+			fmt = '{:<15s}{:+12.7f}{:+12.7f}{:+12.7f}'
+			line = fmt.format(
+				x_name[i], x_fit[i], x_lower[i], x_upper[i]
+			)
+			print(line)
 	else :
-		fmt = '{:<15s}{:>11s}{:>11s}{:>11s}{:>11s}{:>11s}'
+		fmt = '{:<15s}{:>12s}{:>12s}{:>12s}{:>12s}{:>12s}'
 		line = fmt.format(
 			'', 'x_sim','x_fit','rel_error','std_error','residual'
 		)
@@ -467,7 +476,7 @@ def display_fit_results(x_fit, std_error, D_data) :
 			else :
 				rel_error = x_fit[i] / x_sim[i] - 1.0
 			residual  = (x_fit[i] - x_sim[i]) / std_error[i]
-			fmt = '{:<15s}{:+11.7f}{:+11.7f}{:+11.7f}{:+11.7f}{:+11.7f}'
+			fmt = '{:<15s}{:+12.7f}{:+12.7f}{:+12.7f}{:+12.7f}{:+12.7f}'
 			line = fmt.format(x_name[i],
 				x_sim[i], x_fit[i], rel_error, std_error[i], residual
 			)
@@ -625,6 +634,8 @@ def covid_19_xam(call_count = 0) :
 		# print( 'start_point = ', start_point )
 		# print( 'objective   = ', objective(t_all, D_data, start_point) )
 		# print( 'objective   = ', optimize_fun.objective_fun(start_point) )
+		if x_fit == None :
+			x_fit = start_point
 		result = scipy.optimize.minimize(
 			optimize_fun.objective_fun,
 			start_point,
@@ -706,7 +717,7 @@ def covid_19_xam(call_count = 0) :
 	#
 	# display_fit_results
 	if display_fit :
-		display_fit_results(x_fit, std_error, D_data)
+		display_fit_results(D_data, x_fit, x_lower, x_upper, std_error)
 	#
 	return ok
 # END_PYTHON
