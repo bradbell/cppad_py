@@ -11,31 +11,47 @@ from ode_multi_step import ode_multi_step
 from runge4_step import runge4_step
 # -----------------------------------------------------------------------------
 class fun_class :
-	def __init__(self, p_fun) :
-		self.p_fun = p_fun
-		self.index = None
+	def __init__(self, t_all, p_all, n_step) :
+		self.t_all  = t_all
+		self.p_all  = p_all
+		self.n_step = n_step
+		self.index  = None
 	#
-	def set_t_all_index(self, index) :
-		self.index = index
+	def set_t_all_index(self, refine_index) :
+		t_all_index  = int( numpy.floor( refine_index / self.n_step ) )
+		self.index   = t_all_index
 	#
 	def f(self, t, seirwd) :
 		assert self.index != None
-		# This ODE does not use the time index
+		t_all = self.t_all
+		p_all = self.p_all
+		index = self.index
 		#
+		# linearly interpolate the parameter values
+		p      = dict()
+		t_diff = t_all[index + 1] - t_all[index]
+		left   = (t_all[index + 1] - t) / t_diff
+		right  = (t - t_all[index + 0]) / t_diff
+		for key in [ 'beta', 'sigma', 'gamma', 'xi', 'chi', 'delta' ] :
+			p[key] = left * p_all[index][key] + right * p_all[index+1][key]
+		#
+		# unpack the comparements
 		S, E, I, R, W, D = seirwd
-		p      = self.p_fun(t)
+		#
+		# compute f(t, y)
 		Sdot   = - p['beta']  *  S * I  + p['xi']    * R
 		Edot   = + p['beta']  *  S * I  - p['sigma'] * E
 		Idot   = + p['sigma'] * E       - (p['gamma'] + p['chi']) * I
 		Rdot   = + p['gamma'] * I       - p['xi']    * R
 		Wdot   = + p['chi']   * I       - p['delta'] * W
 		Ddot   = + p['delta'] * W
+		#
 		return numpy.array([ Sdot, Edot, Idot, Rdot, Wdot, Ddot])
 	#
 # -----------------------------------------------------------------------------
-def seirwd_model(t_all, p_fun, initial, n_step = 1) :
+def seirwd_model(t_all, p_all, initial, n_step = 1) :
 	# private member fuction (not part of class API)
-	fun      = fun_class(p_fun)
+	fun      = fun_class(t_all, p_all, n_step)
 	one_step = runge4_step
 	if n_step == 1 :
 		seirwd_all  = ode_multi_step(one_step, fun, t_all, initial)
@@ -72,7 +88,7 @@ def seirwd_model(t_all, p_fun, initial, n_step = 1) :
 # This routine can be used with $code ad_double$$.
 #
 # $head Syntax$$
-# $icode%seirwd_all% = seirwd_model(%t_all%, %p_fun%, %initial%, %n_step% = 1)
+# $icode%seirwd_all% = seirwd_model(%t_all%, %p_all%, %initial%, %n_step% = 1)
 # %$$
 #
 # $head Notation$$
@@ -124,29 +140,23 @@ def seirwd_model(t_all, p_fun, initial, n_step = 1) :
 # We call $icode%t_all%[0]%$$ the initial time and
 # $icode%t_all%[-1]%$$ the final time.
 #
-# $head p_fun$$
-# This argument is a function and the syntax
-# $codei%
-#	%p% = %p_fun%(%t%)
-# %$$
-# sets $icode p$$ to a dictionary with the following keys and values:
+# $head p_all$$
+# This argument is a list of dictionaries.
+# The i-th element of the list has the following $icode key$$,
+# $icode value$$ pairs:
 # $table
-# Key             $cnext Value $rnext
-# $code 'beta'$$  $cnext $latex \beta(t)$$  $rnext
-# $code 'sigma'$$ $cnext $latex \sigma(t)$$ $rnext
-# $code 'gamma'$$ $cnext $latex \gamma(t)$$ $rnext
-# $code 'xi'$$    $cnext $latex \xi(t)$$    $rnext
-# $code 'chi'$$   $cnext $latex \chi(t)$$   $rnext
-# $code 'delta'$$ $cnext $latex \delta(t)$$
+# $icode key$$    $cnext $icode value$$     $rnext
+# $code 'beta'$$  $cnext $latex \beta( t_i )$$  $rnext
+# $code 'sigma'$$ $cnext $latex \sigma( t_i )$$ $rnext
+# $code 'gamma'$$ $cnext $latex \gamma( t_i )$$ $rnext
+# $code 'xi'$$    $cnext $latex \xi( t_i )$$    $rnext
+# $code 'chi'$$   $cnext $latex \chi( t_i )$$   $rnext
+# $code 'delta'$$ $cnext $latex \delta( t_i )$$
 # $tend
-# The value $icode t$$ will be between the initial and final time
-# and can be a $code float$$ or $code a_double$$.
-# The parameter functions above are assumed to be smooth
-# for all times between the initial and final time and
-# not in $icode t_all$$.
-# It is also assumed to be continuous at the times in $icode t_all$$; e.g,
-# it could be a piecewise linear interpolant with knots at $icode t_all$$.
-# The type of $icode p$$ can be $code float$$ or $code a_double$$.
+# where $icode t_i$$ is the time $icode%t_all%[%i%]%$$.
+# The type of $icode value$$ can be $code float$$ or $code a_double$$.
+# Each of the these parameters will be linearly interpolated
+# for times between the those in $icode t_all$$.
 #
 # $head initial$$
 # is a vector of length four containing the initial values for

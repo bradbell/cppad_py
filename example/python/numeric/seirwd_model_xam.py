@@ -32,32 +32,21 @@ def seirwd_model_xam() :
 	delta = 1.0 / 10.0    # to days between no-longer infectious and death
 	#
 	# t_all
-	t_all = numpy.array( [ 0.0, 0.1, 0.2 ] )
+	t_all    = numpy.array( [ 0.0, 0.1, 0.2 ] )
+	beta_all =  [ 0.30, 0.20, 0.10 ]
 	#
 	# p_all
-	p_all = {
-		'beta'  :  [ 0.30, 0.20, 0.10 ],
-		'sigma' : 3 * [ sigma ],
-		'gamma' : 3 * [ gamma ],
-		'xi'    : 3 * [ xi ],
-		'chi'   : 3 * [ chi ],
-		'delta' : 3 * [ delta ],
-	}
-	#
-	# p_fun
-	def p_fun(t) :
-		i = 0
-		while i < len(t_all) - 1 and t_all[i + 1] < t :
-			i += 1
-		# linear interpolation coefficients
-		ip     = i + 1
-		t_diff = t_all[ip] - t_all[i]
-		left   = ( t_all[ip] - t ) / t_diff
-		right  = ( t - t_all[i]  ) / t_diff
-		p      = dict()
-		for key in [ 'beta', 'sigma', 'gamma', 'xi', 'chi', 'delta' ] :
-			p[key] = left * p_all[key][i] + right * p_all[key][ip]
-		return p
+	p_all    = list()
+	for i in range(t_all.size) :
+		p = {
+			'beta'  : beta_all[i],
+			'sigma' : sigma ,
+			'gamma' : gamma ,
+			'xi'    : xi ,
+			'chi'   : chi ,
+			'delta' : delta ,
+		}
+		p_all.append(p)
 	#
 	# initial
 	I0  = 0.02
@@ -69,7 +58,7 @@ def seirwd_model_xam() :
 	initial  = numpy.array( [ S0, E0, I0, R0, W0, D0 ] )
 	#
 	# solve the ODE
-	seirwd_all = seirwd_model(t_all, p_fun, initial)
+	seirwd_all = seirwd_model(t_all, p_all, initial)
 	#
 	# check solution using midpoint values
 	for i in range( len(t_all) - 1 ) :
@@ -79,7 +68,10 @@ def seirwd_model_xam() :
 		S, E, I, R, W, D = seirwd_mid
 		#
 		# differential equation
-		p       = p_fun(t_mid)
+		p       = dict()
+		for key in [ 'beta', 'sigma', 'gamma', 'xi', 'chi', 'delta' ] :
+			p[key] = (p_all[i][key] + p_all[i+1][key]) / 2.0
+		#
 		dot     = numpy.empty( 6, dtype = float)
 		dot[0]  = - p['beta'] *  S * I  + p['xi']   * R
 		dot[1]  = + p['beta'] *  S * I - p['sigma'] * E
@@ -99,7 +91,7 @@ def seirwd_model_xam() :
 	#
 	# now check solution using twice as many Runge-Kutta steps
 	n_step      = 2
-	seirwd_check = seirwd_model(t_all, p_fun, initial, n_step)
+	seirwd_check = seirwd_model(t_all, p_all, initial, n_step)
 	error       = seirwd_all - seirwd_check
 	ok          = ok and numpy.all( abs(error) < 1e-9 )
 	#

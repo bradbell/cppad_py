@@ -308,30 +308,6 @@ x_sim = numpy.array( [
 # see begining of covid_19_xam function.
 actual_seed = [ random_seed ]
 #
-# p_fun_class
-# Returns the parameters in the ODE (not the unknown parameters)
-class p_fun_class :
-	def __init__(self, beta_all, other_rate) :
-		self.beta_all   = beta_all
-		self.other_rate = other_rate
-	#
-	# There are faster ways to search for interval; e.g., cache previous index
-	def p_fun(self, t) :
-		i = 0
-		while i < len(t_all) - 1 and t_all[i + 1] < t :
-			i += 1
-		# linear interpolation coefficients
-		ip     = i + 1
-		t_diff = t_all[ip] - t_all[i]
-		left   = ( t_all[ip] - t         ) / t_diff
-		right  = ( t         - t_all[i]  ) / t_diff
-		# beta changes with time are continuous at all points in t_all
-		# and smooth for times not in t_all
-		beta      = left * self.beta_all[i] + right * self.beta_all[ip]
-		p         = copy.copy(self.other_rate)
-		p['beta'] = beta
-		return p
-#
 def x2seirwd_all(x) :
 	#
 	# unpack x
@@ -341,14 +317,18 @@ def x2seirwd_all(x) :
 	# beta_all
 	beta_all = beta_bar * (1.0 + numpy.matmul(covariates, cov_mul))
 	#
-	# other_rate
-	other_rate = {
-		'sigma' : sigma_known,
-		'gamma' : gamma_known,
-		'chi'   : chi_known,
-		'xi'    : xi_known,
-		'delta' : delta_known,
-	}
+	# p_all
+	p_all = list()
+	for i in range( beta_all.size ) :
+		p = {
+			'sigma' : sigma_known,
+			'gamma' : gamma_known,
+			'chi'   : chi_known,
+			'xi'    : xi_known,
+			'delta' : delta_known,
+		}
+		p['beta'] = beta_all[i]
+		p_all.append( p )
 	#
 	# initial
 	E0 = I0 * gamma_known / sigma_known
@@ -357,13 +337,9 @@ def x2seirwd_all(x) :
 	D0 = 0.0
 	initial  = numpy.array( [S0, E0, I0, R0, W0, D0] )
 	#
-	# p_fun
-	p_fun_obj = p_fun_class(beta_all, other_rate)
-	p_fun     = p_fun_obj.p_fun
-	#
 	# seirwd_all
 	n_step = 2
-	seirwd_all = seirwd_model(t_all, p_fun, initial, n_step)
+	seirwd_all = seirwd_model(t_all, p_all, initial, n_step)
 	#
 	return seirwd_all
 #
