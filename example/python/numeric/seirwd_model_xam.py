@@ -20,7 +20,7 @@
 # BEGIN_PYTHON
 import numpy
 from seirwd_model import seirwd_model
-from pdb import set_trace
+from seirwd_model import check_seirwd_model
 #
 def seirwd_model_xam() :
 	ok    = True
@@ -56,6 +56,9 @@ def seirwd_model_xam() :
 	W0  = 0.0
 	D0  = 0.0
 	initial  = numpy.array( [ S0, E0, I0, R0, W0, D0 ] )
+	#
+	# check derivatives for ODE needed for rosen3
+	ok = ok and check_seirwd_model(t_all, p_all, initial)
 	#
 	# solve the ODE
 	seirwd_all = seirwd_model(t_all, p_all, initial)
@@ -93,7 +96,8 @@ def seirwd_model_xam() :
 	n_step      = 2
 	seirwd_check = seirwd_model(t_all, p_all, initial, n_step)
 	error       = seirwd_all - seirwd_check
-	ok          = ok and numpy.all( abs(error) < 1e-9 )
+	# print(error)
+	ok          = ok and numpy.all( abs(error) < 1e-7 )
 	#
 	return ok
 # END_PYTHON

@@ -8,20 +8,26 @@
 # BEGIN_PYTHON
 import numpy
 from ode_multi_step import ode_multi_step
-from runge4_step import runge4_step
+from rosen3_step import rosen3_step
+from rosen3_step import check_rosen3_step
 # -----------------------------------------------------------------------------
 class fun_class :
+	# ------------------------------------------------------------------------
+	# init
 	def __init__(self, t_all, p_all, n_step) :
 		self.t_all  = t_all
 		self.p_all  = p_all
 		self.n_step = n_step
 		self.index  = None
-	#
+		self.p      = None
+	# -----------------------------------------------------------------------
+	# set_t_all_index
 	def set_t_all_index(self, refine_index) :
 		t_all_index  = int( numpy.floor( refine_index / self.n_step ) )
 		self.index   = t_all_index
-	#
-	def f(self, t, seirwd) :
+	# -----------------------------------------------------------------------
+	# get_p
+	def get_p(self, t, seirwd) :
 		assert self.index != None
 		t_all = self.t_all
 		p_all = self.p_all
@@ -35,7 +41,27 @@ class fun_class :
 		for key in [ 'beta', 'sigma', 'gamma', 'xi', 'chi', 'delta' ] :
 			p[key] = left * p_all[index][key] + right * p_all[index+1][key]
 		#
-		# unpack the comparements
+		return p
+	# -----------------------------------------------------------------------
+	# get_p_t
+	def get_p_t(self) :
+		assert self.index != None
+		t_all = self.t_all
+		p_all = self.p_all
+		index = self.index
+		#
+		# linearly interpolate the parameter values
+		p_t    = dict()
+		t_diff = t_all[index + 1] - t_all[index]
+		for key in [ 'beta', 'sigma', 'gamma', 'xi', 'chi', 'delta' ] :
+			p_diff   = p_all[index + 1][key] - p_all[index][key]
+			p_t[key] = p_diff / t_diff
+		#
+		return p_t
+	# -----------------------------------------------------------------------
+	# f
+	def f(self, t, seirwd) :
+		p                = self.get_p(t, seirwd)
 		S, E, I, R, W, D = seirwd
 		#
 		# compute f(t, y)
@@ -47,12 +73,80 @@ class fun_class :
 		Ddot   = + p['delta'] * W
 		#
 		return numpy.array([ Sdot, Edot, Idot, Rdot, Wdot, Ddot])
-	#
+	# -----------------------------------------------------------------------
+	# f_t
+	def f_t(self, t, seirwd) :
+		p_t              = self.get_p_t()
+		S, E, I, R, W, D = seirwd
+		#
+		Sdot_t   = - p_t['beta']  *  S * I  + p_t['xi']    * R
+		Edot_t   = + p_t['beta']  *  S * I  - p_t['sigma'] * E
+		Idot_t   = + p_t['sigma'] * E       - (p_t['gamma'] + p_t['chi']) * I
+		Rdot_t   = + p_t['gamma'] * I       - p_t['xi']    * R
+		Wdot_t   = + p_t['chi']   * I       - p_t['delta'] * W
+		Ddot_t   = + p_t['delta'] * W
+		return numpy.array([ Sdot_t, Edot_t, Idot_t, Rdot_t, Wdot_t, Ddot_t])
+	# -----------------------------------------------------------------------
+	# f_y
+	def f_y(self, t, seirwd) :
+		p                = self.get_p(t, seirwd)
+		S, E, I, R, W, D = seirwd
+		#
+		ny     = 6
+		type_y = type( seirwd[0] )
+		zero   = type_y( 0.0 )
+		J      = numpy.empty( (ny,ny), dtype = type_y )
+		#
+		# partials of Sdot(t, y) w.r.t. y
+		Sdot_S   = - p['beta']  *  I
+		Sdot_I   = - p['beta']  *  S
+		Sdot_R   = + p['xi']
+		J[0,:]   = [ Sdot_S, zero, Sdot_I, Sdot_R, zero, zero ]
+		#
+		# partial of Edot(t, y) w.r.t y
+		Edot_S   = + p['beta']  *  I
+		Edot_I   = + p['beta']  *  S
+		Edot_E   =  - p['sigma']
+		J[1,:]   = [ Edot_S, Edot_E, Edot_I, zero, zero, zero ]
+		#
+		# partial of Idot(t, y) w.r.t y
+		Idot_E   = + p['sigma']
+		Idot_I   = - (p['gamma'] + p['chi'])
+		J[2,:]   = [ zero, Idot_E, Idot_I, zero, zero, zero ]
+		#
+		# partial Rdot(t, y) w.r.t y
+		Rdot_I   = + p['gamma']
+		Rdot_R   = - p['xi']
+		J[3,:]   = [ zero, zero, Rdot_I, Rdot_R, zero, zero ]
+		#
+		# partial Wdot(t, y) w.r.t. y
+		Wdot_I   = + p['chi']
+		Wdot_W   = - p['delta']
+		J[4,:]   = [ zero, zero, Wdot_I, zero, Wdot_W, zero ]
+		#
+		# partial Ddot(t, y) w.r.t y
+		Ddot_W   = + p['delta']
+		J[5,:]   = [ zero, zero, zero, zero, Ddot_W, zero ]
+		#
+		return J
 # -----------------------------------------------------------------------------
+# check_seirwd_model
+def check_seirwd_model(t_all, p_all, initial) :
+	ok     = True
+	n_step = 1
+	fun  = fun_class(t_all, p_all, n_step)
+	index  = 0
+	fun.set_t_all_index(index)
+	ti   = t_all[index]
+	yi   = initial
+	h    = t_all[index + 1] - t_all[index]
+	ok   = ok and check_rosen3_step(fun, ti, yi, h)
+	return ok
+# -----------------------------------------------------------------------------
+# seriwd_model
 def seirwd_model(t_all, p_all, initial, n_step = 1) :
-	# private member fuction (not part of class API)
 	fun      = fun_class(t_all, p_all, n_step)
-	one_step = runge4_step
+	one_step = rosen3_step
 	if n_step == 1 :
 		seirwd_all  = ode_multi_step(one_step, fun, t_all, initial)
 	else :
