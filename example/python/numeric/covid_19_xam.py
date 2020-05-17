@@ -223,6 +223,7 @@ death_data_cv = 0.1
 random_seed = 0
 # %$$
 #
+#
 # $head Data File$$
 # If the data file name is the empty string, the cumulative death data,
 # and corresponding covariates, are created by the program.
@@ -233,6 +234,18 @@ random_seed = 0
 # $srccode%py%
 data_file = '/home/bradbell/trash/covid_19/seirwd.csv' # example file name
 data_file = ''                                         # empty string
+# %$$
+#
+# $subhead sample_interval$$
+# If $icode data_file$$ is not empty,
+# it is possible to sub-sample the data in order to reduce noise.
+# The cumulative death data is just sub-sampled since the reduces noise by
+# the summing the differences corresponding to a longer time period.
+# The covariate data is averaged over the sample interval.
+# The $icode sample_interval$$ must be either one or a positive even integer
+# (even so an original data point corresponds to the center of the interval).
+# $srccode%py%
+sample_interval = 2
 # %$$
 #
 # $head Source Code$$
@@ -256,6 +269,31 @@ import cppad_py
 from optimize_fun_class import optimize_fun_class
 from seirwd_model import seirwd_model
 #
+def subsample(file_data) :
+	if sample_interval == 1 :
+		return file_data
+	assert sample_interval % 2 == 0
+	sample_interval_2 = int( sample_interval / 2 )
+	#
+	n_data          = len(file_data)
+	n_data_interval = n_data - 1
+	n_sub_interval  = int( n_data_interval / sample_interval )
+	n_sub           = n_sub_interval
+	sub_data        = list()
+	for j in range(n_sub) :
+		i                = sample_interval * j + sample_interval_2
+		row              = dict()
+		row['day']       = file_data[i]['day']
+		row['death']     = file_data[i]['death']
+		for key in ['mobility', 'testing'] :
+			row[key]  = 0.0
+			for k in range(sample_interval + 1) :
+				i         = sample_interval * j + k
+				row[key] += file_data[i][key]
+			row[key] /= float(sample_interval + 1)
+		sub_data.append(row)
+	return sub_data
+#
 # t_all, covariates
 if data_file != '' :
 	# getting cumulative death and covariates from data_file
@@ -263,15 +301,19 @@ if data_file != '' :
 	file_data = list()
 	reader    = csv.DictReader(file_in)
 	for row in reader :
+		for key in ['day', 'death', 'mobility', 'testing']  :
+			row[key] = float( row[key] )
 		file_data.append(row)
 	file_in.close()
+	file_data = subsample(file_data)
+	#
 	n_time       = len(file_data)
 	t_all        = numpy.empty(n_time, dtype=float)
 	covariates   = numpy.empty( (n_time, 2) )
 	for i in range(n_time) :
-		t_all[i]        = float( file_data[i]['day'] )
-		covariates[i,0] = float( file_data[i]['mobility'] )
-		covariates[i,1] = float( file_data[i]['testing'] )
+		t_all[i]        = file_data[i]['day']
+		covariates[i,0] = file_data[i]['mobility']
+		covariates[i,1] = file_data[i]['testing']
 else :
 	# simulating cumulative death and covariates
 	t_start = 0.0
@@ -634,7 +676,7 @@ def covid_19_xam(call_count = 0) :
 		# print( 'start_point = ', start_point )
 		# print( 'objective   = ', objective(t_all, D_data, start_point) )
 		# print( 'objective   = ', optimize_fun.objective_fun(start_point) )
-		if x_fit == None :
+		if x_fit is None :
 			x_fit = start_point
 		result = scipy.optimize.minimize(
 			optimize_fun.objective_fun,
