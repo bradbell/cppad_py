@@ -288,7 +288,7 @@ def seirwd_model(method, t_all, p_all, initial, n_step = 1) :
 #
 # $subhead alpha$$
 # There is a special restriction that $latex \alpha(t)$$ must be
-# constant; i.e. $latex \alpha( t_i \) = \alpha( t_0 )$$ for
+# constant; i.e. $latex \alpha( t_i ) = \alpha( t_0 )$$ for
 # all $latex i$$.
 # This is because talking the derivative of $latex I^\alpha$$
 # respect to $latex I$$ has a special representation when $latex \alpha = 1$$.
