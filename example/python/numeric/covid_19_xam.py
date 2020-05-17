@@ -236,7 +236,7 @@ data_file = '/home/bradbell/trash/covid_19/seirwd.csv' # example file name
 data_file = ''                                         # empty string
 # %$$
 #
-# $subhead sample_interval$$
+# $subhead Sample Interval$$
 # If $icode data_file$$ is not empty,
 # it is possible to sub-sample the data in order to reduce noise.
 # The cumulative death data is just sub-sampled since the reduces noise by
@@ -245,7 +245,13 @@ data_file = ''                                         # empty string
 # The $icode sample_interval$$ must be either one or a positive even integer
 # (even so an original data point corresponds to the center of the interval).
 # $srccode%py%
-sample_interval = 2
+sample_interval = 1
+# %$$
+#
+# $head Debug Output$$
+# If this flag is true a lot of debugging output is printed.
+# $srccode%py%
+debug_output = False
 # %$$
 #
 # $head Source Code$$
@@ -419,7 +425,7 @@ def objective(t_all, D_data, x) :
 	# compute negative log Gaussian likelihood dropping variance terms
 	# because they are constaint w.r.t the unknown parameters
 	residual = weighted_data_residual(D_data, D_model)
-	loss     = 0.5 * numpy.sum( residual * residual)
+	loss     = 0.5 * numpy.sum( residual * residual )
 	return loss
 #
 # objective_d_fun
@@ -476,6 +482,8 @@ def random_start(n_random, x_lower, x_upper, log_scale, objective, A) :
 	# rng: numpy random number generator
 	rng = numpy.random.default_rng(actual_seed[0])
 	#
+	if debug_output :
+		print('random_start:')
 	for i in range(n_random) :
 		x_current   = rng.uniform(x_low, x_up)
 		for j in range(n_x) :
@@ -484,7 +492,8 @@ def random_start(n_random, x_lower, x_upper, log_scale, objective, A) :
 		if feasible(x_current) :
 			obj_current = objective(x_current)
 			if obj_current < obj_best :
-				# print( 'sample # =', i, ', objective = ', obj_current)
+				if debug_output :
+					print( 'sample # =', i, ', objective = ', obj_current)
 				x_best = x_current
 				obj_best = obj_current
 	#
@@ -606,7 +615,8 @@ def covid_19_xam(call_count = 0) :
 	# if random seed is zero, seed of the cloce
 	if random_seed == 0 :
 		actual_seed[0] = int( 13 * time.time() )
-	# print('actual_seed = ', actual_seed[0])
+	if debug_output :
+		print('actual_seed = ', actual_seed[0])
 	#
 	# D_data
 	if data_file == '' :
@@ -654,8 +664,9 @@ def covid_19_xam(call_count = 0) :
 		x_upper,
 		keep_feasible = True
 	)
-	# print('x_lower =', x_lower)
-	# print('x_lower =', x_lower)
+	if debug_output :
+		print('x_lower =', x_lower)
+		print('x_upper =', x_upper)
 	# ------------------------------------------------------------------------
 	# optimizer loop over beta constraints
 	constraints  = list()
@@ -673,9 +684,10 @@ def covid_19_xam(call_count = 0) :
 			optimize_fun.objective_fun,
 			A_fit,
 		);
-		# print( 'start_point = ', start_point )
-		# print( 'objective   = ', objective(t_all, D_data, start_point) )
-		# print( 'objective   = ', optimize_fun.objective_fun(start_point) )
+		if debug_output :
+			print( 'start_point = ', start_point )
+			print( 'objective   = ', optimize_fun.objective_fun(start_point) )
+			print( 'check       = ', objective(t_all, D_data, start_point) )
 		if x_fit is None :
 			x_fit = start_point
 		result = scipy.optimize.minimize(
@@ -688,9 +700,10 @@ def covid_19_xam(call_count = 0) :
 			options       = options,
 			bounds        = bounds,
 		)
+		if debug_output :
+			print('optimal objective = ', result.fun )
 		# check optimizer status
 		ok = ok and result.success
-		# print('objective = ', result.fun )
 		if ok :
 			# check beta(t) >= 0
 			x_fit   = result.x
