@@ -157,11 +157,17 @@ display_fit = False
 # difference data.
 #
 # $subhead Printout$$
-# If $icode data_file$$ is not empty,
-# the fit result for the unknown parameters are printed.
-# If $icode data_file$$ is empty,
-# a table is printed with the following columns:
+# A table with the following columns is printed:
 # $table
+# $icode x_name$$    $cnext name of the unknown parameter                $rnext
+# $icode x_fit$$     $cnext fit result for the unknown parameter         $rnext
+# $icode x_lower$$   $cnext lower bound used for the fit                 $rnext
+# $icode x_upper$$   $cnext upper bound used for the fit                 $rnext
+# $tend
+# If $icode data_file$$ is empty,
+# a table is printed with the following columns is also printed:
+# $table
+# $icode x_name$$    $cnext name of the unknown parameter                $rnext
 # $icode x_sim$$     $cnext known parameter value used during simulation $rnext
 # $icode x_fit$$     $cnext fit result for the unknown parameter         $rnext
 # $icode rel_error$$ $cnext relative error for fit versus simulation     $rnext
@@ -304,7 +310,7 @@ if data_file != '' :
 else :
 	# simulating cumulative death and covariates
 	t_start = 0.0
-	t_stop  = 60.0
+	t_stop  = 90.0
 	t_step  = 0.5
 	t_all = numpy.arange(t_start, t_stop, t_step)
 	#
@@ -477,22 +483,21 @@ def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 	n_x = len(x_fit)
 	# -----------------------------------------------------------------------
 	# printout
-	if data_file != '' :
-		fmt = '{:<15s}{:>12s}{:>12s}{:>12s}'
+	fmt = '{:<15s}{:>12s}{:>12s}{:>12s}'
+	line = fmt.format(
+		'x_name', 'x_fit','x_lower','x_upper'
+	)
+	print(line)
+	for i in range( n_x ) :
+		fmt = '{:<15s}{:+12.7f}{:+12.7f}{:+12.7f}'
 		line = fmt.format(
-			'', 'x_fit','x_lower','x_upper'
+			x_name[i], x_fit[i], x_lower[i], x_upper[i]
 		)
 		print(line)
-		for i in range( n_x ) :
-			fmt = '{:<15s}{:+12.7f}{:+12.7f}{:+12.7f}'
-			line = fmt.format(
-				x_name[i], x_fit[i], x_lower[i], x_upper[i]
-			)
-			print(line)
 	else :
 		fmt = '{:<15s}{:>12s}{:>12s}{:>12s}{:>12s}{:>12s}'
 		line = fmt.format(
-			'', 'x_sim','x_fit','rel_error','std_error','residual'
+			'x_name', 'x_sim','x_fit','rel_error','std_error','residual'
 		)
 		print(line)
 		for i in range( n_x ) :
@@ -663,6 +668,10 @@ def covid_19_xam(call_count = 0) :
 	# data_resdidual
 	data_residual = weighted_data_residual(D_data, D_fit)
 	#
+	# display_fit_results
+	if display_fit :
+		display_fit_results(D_data, x_fit, x_lower, x_upper, std_error)
+	#
 	# check that all the data residuals an less than 3.0
 	if numpy.any( numpy.abs( data_residual ) >= 3.5 ) :
 		print('covid_19_xam: a weighted data residual >= 3.5')
@@ -697,10 +706,6 @@ def covid_19_xam(call_count = 0) :
 	if numpy.any( abs(sum_all_fit - 1.0) > eps99 ) :
 		print('covid_19_xam: sum of all compartments not equal 1.0')
 		ok = False
-	#
-	# display_fit_results
-	if display_fit :
-		display_fit_results(D_data, x_fit, x_lower, x_upper, std_error)
 	#
 	return ok
 # END_PYTHON
