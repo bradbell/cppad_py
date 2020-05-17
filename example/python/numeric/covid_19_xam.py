@@ -59,12 +59,12 @@
 # $latex \delta(t)$$,
 # constant functions with known values:
 # $srccode%py%
-alpha_known  = 1.00
+alpha_known  = 0.95
 sigma_known  = 0.2
-gamma_known  = 0.05
-chi_known    = 0.01
+gamma_known  = 0.1
+chi_known    = 0.1
 xi_known     = 0.00
-delta_known  = 1.0
+delta_known  = 0.2
 # %$$
 #
 # $head Initial Values$$
@@ -88,12 +88,18 @@ delta_known  = 1.0
 #	S(0) = 1 - E(0) - I(0) - W(0)
 # \] $$
 #
-# $head ode_method$$
-# There are two choices for solving the ODE,
+# $head Ode Solver$$
+# There are two choices for $icode ode_method$$,
+# the method used to solve the ODE:
 # $cref/runge4/numeric_runge4_step/$$ and
 # $cref/rosen3/numeric_rosen3_step/$$.
+# In addition, we can choose $icode ode_n_step$$,
+# the number of step to take for each time interval in $icode t_all$$,
+# before it is sub-sampled using the
+# $cref/sample_interval/numeric_covid_19_xam.py/Data File/Sample Interval/$$.
 # $srccode%py%
-ode_method = 'rosen3'
+ode_method = 'runge4'
+ode_n_step = 4
 # %$$
 #
 # $head Unknown Parameters$$
@@ -232,7 +238,7 @@ data_file = ''                                         # empty string
 # The $icode sample_interval$$ must be either one or a positive even integer
 # (even so an original data point corresponds to the center of the interval).
 # $srccode%py%
-sample_interval = 1
+sample_interval = 2
 # %$$
 #
 # $head Debug Output$$
@@ -386,7 +392,7 @@ def x2seirwd_all(x) :
 	initial  = numpy.array( [S0, E0, I0, R0, W0, D0] )
 	#
 	# seirwd_all
-	n_step = 2
+	n_step = sample_interval * ode_n_step
 	seirwd_all = seirwd_model(ode_method, t_all, p_all, initial, n_step)
 	#
 	return seirwd_all
@@ -494,7 +500,7 @@ def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 			x_name[i], x_fit[i], x_lower[i], x_upper[i]
 		)
 		print(line)
-	else :
+	if display_fit == '' :
 		fmt = '{:<15s}{:>12s}{:>12s}{:>12s}{:>12s}{:>12s}'
 		line = fmt.format(
 			'x_name', 'x_sim','x_fit','rel_error','std_error','residual'
