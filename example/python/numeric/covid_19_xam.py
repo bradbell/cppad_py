@@ -726,8 +726,8 @@ def covid_19_xam(call_count = 0) :
 	data_residual = weighted_data_residual(D_data, D_fit)
 	#
 	# check that all the data residuals an less than 3.0
-	if numpy.any( numpy.abs( data_residual ) >= 3.0 ) :
-		print('covid_19_xam: a weighted data residual >= 3.0')
+	if numpy.any( numpy.abs( data_residual ) >= 3.5 ) :
+		print('covid_19_xam: a weighted data residual >= 3.5')
 		ok = False
 	#
 	# compare fit to simulation truth

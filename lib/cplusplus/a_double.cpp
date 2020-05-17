@@ -633,6 +633,7 @@ $cref/Python/a_double_unary_fun_xam.py/$$.
 
 $end
 */
+UNARY_FUN_AD_RESULT(abs)
 UNARY_FUN_AD_RESULT(acos)
 UNARY_FUN_AD_RESULT(asin)
 UNARY_FUN_AD_RESULT(atan)

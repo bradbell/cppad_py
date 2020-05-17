@@ -39,6 +39,10 @@ $children%
 $head Previous Years$$
 $cref whats_new_2018$$
 
+$head 05-17$$
+The $code abs$$ $cref a_double_unary_fun$$ was added
+(works the same as the $code fabs$$ function).
+
 $head 05-16$$
 $list number$$
 A discussion of some subtile issues,

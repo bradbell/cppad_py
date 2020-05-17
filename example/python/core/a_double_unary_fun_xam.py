@@ -17,6 +17,10 @@ def a_double_unary_fun_xam() :
 	ok = True
 	# ---------------------------------------------------------------------
 	#
+	# abs
+	a1   = cppad_py.a_double(-1.0)
+	abs1 = a1.abs()
+	ok   = ok and abs1 == 1.0
 	# fabs
 	a1   = cppad_py.a_double(1.0)
 	abs1 = a1.fabs()
