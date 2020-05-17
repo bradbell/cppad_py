@@ -1,11 +1,11 @@
-// Child table for section numeric_ode_runge4_step
+// Child table for section numeric_runge4_step
 document.write('\
-<select onchange="numeric_ode_runge4_step_child(this)">\
-<option>numeric_ode_runge4_step-&gt;</option>\
+<select onchange="numeric_runge4_step_child(this)">\
+<option>numeric_runge4_step-&gt;</option>\
 <option>numeric_runge4_step_xam.py</option>\
 </select>\
 ');
-function numeric_ode_runge4_step_child(item)
+function numeric_runge4_step_child(item)
 {	var child_list = [
 		'numeric_runge4_step_xam.py.htm'
 	];

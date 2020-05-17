@@ -15,7 +15,7 @@ MathJax.Hub.Config({
 <title>Example Computing Derivative A Rosenbrock Ode Solution</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
 <meta name="description" id="description" content="Example Computing Derivative A Rosenbrock Ode Solution">
-<meta name="keywords" id="keywords" content=" example computing derivative rosenbrock ode solution source code ">
+<meta name="keywords" id="keywords" content=" example computing derivative rosenbrock ode solution y(t x) first second source code ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -66,17 +66,30 @@ A:active { color : purple }
 @(@\newcommand{\B}[1]{ {\bf #1} }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Example Computing Derivative A Rosenbrock Ode Solution</big></big></b></center>
 
-<br><a href="numeric_rosen3_step_xam.py.htm#ODE" target="_top">ODE</a>
-<br><a href="numeric_rosen3_step_xam.py.htm#Solution" target="_top">Solution</a>
+<br><a href="numeric_rosen3_step_xam.py.htm#y(t, x)" target="_top">y(t,&nbsp;x)</a>
+<br><a href="numeric_rosen3_step_xam.py.htm#First ODE" target="_top">First&nbsp;ODE</a>
+<br><a href="numeric_rosen3_step_xam.py.htm#Second ODE" target="_top">Second&nbsp;ODE</a>
 <br><a href="numeric_rosen3_step_xam.py.htm#Derivative of Solution" target="_top">Derivative&nbsp;of&nbsp;Solution</a>
 <br><a href="numeric_rosen3_step_xam.py.htm#Source Code" target="_top">Source&nbsp;Code</a>
 <br><br>
-<b><big><a name="ODE" id="ODE">ODE</a></big></b>
+<b><big><a name="y(t, x)" id="y(t, x)">y(t, x)</a></big></b>
+<br>
+The two initial value problems below have the following solution:
+<small>@[@
+
+	y_i (t, x) = ( t^{i+1} / (i+1) ! ) \prod_{j=0}^i x_j
+
+@]@</small>
+
+<br>
+<br>
+<b><big><a name="First ODE" id="First ODE">First ODE</a></big></b>
 
 <br>
 <small>@[@
 
-	\partial_t y_i (t, x) =  f(t, y, x) \left\{ \begin{array}{rl}
+f(t, y, x)  =
+\left\{ \begin{array}{rl}
 		x_0               & {\rm if} \; i = 0 \\
 		x_i y_{i-1} (t)   & {\rm otherwise}
 \end{array} \right. 
@@ -86,16 +99,17 @@ y(0) = 0
 
 <br>
 <br>
-<b><big><a name="Solution" id="Solution">Solution</a></big></b>
+<b><big><a name="Second ODE" id="Second ODE">Second ODE</a></big></b>
+
 <br>
-This is a special case for which we know the solution
 <small>@[@
 
-	y_i (t, x) = \left\{ \begin{array}{rl}
-		t  x_0                            & {\rm if} \; i = 0 \\
-		( t^i / (i+1) ! ) \prod_{j=0}^i x_j   & {\rm otherwise}
-\end{array} \right. 
-@]@</small>
+	f(t, y, x)  = ( t^i / i ! ) \prod_{j=0}^i x_j
+
+@]@</small>with the initial condition <small>@(@
+y(0) = 0
+@)@</small>
+
 
 <br>
 <br>
@@ -123,7 +137,9 @@ x
 <b><font color="#000080">from</font></b>  scipy<font color="#990000">.</font>special <b><font color="#000080">import</font></b> factorial
 <b><font color="#000080">import</font></b> cppad_py
 <b><font color="#000080">from</font></b> rosen3_step <b><font color="#000080">import</font></b> rosen3_step
-<b><font color="#0000FF">class</font></b> fun_class <font color="#990000">:</font>
+<b><font color="#000080">from</font></b> rosen3_step <b><font color="#000080">import</font></b> check_rosen3_step
+<i><font color="#9A1900"># ---------------------------------------------------------------------------</font></i>
+<b><font color="#0000FF">class</font></b> first_fun_class <font color="#990000">:</font>
      <b><font color="#0000FF">def</font></b> <b><font color="#000000">__init__</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
           self<font color="#990000">.</font>x <font color="#990000">=</font> x
 
@@ -144,8 +160,57 @@ x
           <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>ny <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">:</font>
                J<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font> i<font color="#990000">]</font> <font color="#990000">=</font> self<font color="#990000">.</font>x<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">]</font>
           <b><font color="#0000FF">return</font></b> J
-<i><font color="#9A1900">#</font></i>
-<b><font color="#0000FF">def</font></b> <b><font color="#000000">rosen3_step_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
+<i><font color="#9A1900"># ---------------------------------------------------------------------------</font></i>
+<b><font color="#0000FF">class</font></b> second_fun_class <font color="#990000">:</font>
+     <b><font color="#0000FF">def</font></b> <b><font color="#000000">__init__</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
+          self<font color="#990000">.</font>x  <font color="#990000">=</font> x
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># fun.f</font></i>
+     <b><font color="#0000FF">def</font></b> <b><font color="#000000">f</font></b><font color="#990000">(</font>self<font color="#990000">,</font> t<font color="#990000">,</font> y<font color="#990000">)</font> <font color="#990000">:</font>
+          ny        <font color="#990000">=</font> y<font color="#990000">.</font>size
+          type_y    <font color="#990000">=</font> <b><font color="#000000">type</font></b><font color="#990000">(</font>y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">])</font>
+          result    <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>ny<font color="#990000">,</font> dtype<font color="#990000">=</font><b><font color="#000000">type</font></b><font color="#990000">(</font>y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">])</font> <font color="#990000">)</font>
+          result<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#000000">type_y</font></b><font color="#990000">(</font> self<font color="#990000">.</font>x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">)</font>
+          <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>ny <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">:</font>
+               result<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> result<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">*</font> self<font color="#990000">.</font>x<font color="#990000">[</font>i <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">*</font> t <font color="#990000">/</font> <b><font color="#000000">float</font></b><font color="#990000">(</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">)</font>
+          <b><font color="#0000FF">return</font></b> result
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># fun.f_t</font></i>
+     <b><font color="#0000FF">def</font></b> <b><font color="#000000">f_t</font></b><font color="#990000">(</font>self<font color="#990000">,</font> t<font color="#990000">,</font> y<font color="#990000">)</font> <font color="#990000">:</font>
+          ny <font color="#990000">=</font> y<font color="#990000">.</font>size
+          type_y    <font color="#990000">=</font> <b><font color="#000000">type</font></b><font color="#990000">(</font>y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">])</font>
+          result    <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>ny<font color="#990000">,</font> dtype<font color="#990000">=</font><b><font color="#000000">type</font></b><font color="#990000">(</font>y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">])</font> <font color="#990000">)</font>
+          result<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#000000">type_y</font></b><font color="#990000">(</font> <font color="#993399">0.0</font> <font color="#990000">)</font>
+          prod      <font color="#990000">=</font> <b><font color="#000000">type_y</font></b><font color="#990000">(</font> self<font color="#990000">.</font>x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">)</font>
+          <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>ny <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">:</font>
+               prod        <font color="#990000">=</font> prod <font color="#990000">*</font> self<font color="#990000">.</font>x<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">]</font>
+               result<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> prod
+               prod        <font color="#990000">=</font> prod <font color="#990000">*</font> t <font color="#990000">/</font> <font color="#990000">(</font>i <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">)</font>
+          <b><font color="#0000FF">return</font></b> result
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># fun.f_y</font></i>
+     <b><font color="#0000FF">def</font></b> <b><font color="#000000">f_y</font></b><font color="#990000">(</font>self<font color="#990000">,</font> t<font color="#990000">,</font> y<font color="#990000">)</font> <font color="#990000">:</font>
+          ny <font color="#990000">=</font> y<font color="#990000">.</font>size
+          <b><font color="#0000FF">return</font></b> numpy<font color="#990000">.</font><b><font color="#000000">zeros</font></b><font color="#990000">(</font> ny<font color="#990000">,</font> dtype<font color="#990000">=</font><b><font color="#000000">type</font></b><font color="#990000">(</font>y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">])</font> <font color="#990000">)</font>
+<i><font color="#9A1900"># ---------------------------------------------------------------------------</font></i>
+<i><font color="#9A1900"># Check derivative claculations in first_fun_class and second_fun_class</font></i>
+<b><font color="#0000FF">def</font></b> <b><font color="#000000">test_derivative</font></b><font color="#990000">()</font> <font color="#990000">:</font>
+     ok       <font color="#990000">=</font> True
+     nx       <font color="#990000">=</font> <font color="#993399">3</font>
+     eps99    <font color="#990000">=</font> <font color="#993399">99.0</font> <font color="#990000">*</font> numpy<font color="#990000">.</font><b><font color="#000000">finfo</font></b><font color="#990000">(</font>float<font color="#990000">).</font>eps
+     t_start  <font color="#990000">=</font> <font color="#993399">0.0</font>
+     t_step   <font color="#990000">=</font> <font color="#993399">0.75</font>
+     x        <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> nx <font color="#990000">*</font> <font color="#990000">[</font> <font color="#993399">1.0</font> <font color="#990000">]</font> <font color="#990000">)</font>
+     y_start  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> nx <font color="#990000">*</font> <font color="#990000">[</font> <font color="#993399">0.0</font> <font color="#990000">]</font> <font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     fun_1    <font color="#990000">=</font> <b><font color="#000000">first_fun_class</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
+     ok       <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> <b><font color="#000000">check_rosen3_step</font></b><font color="#990000">(</font>fun_1<font color="#990000">,</font> t_start<font color="#990000">,</font> y_start<font color="#990000">,</font> t_step<font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     fun_2    <font color="#990000">=</font> <b><font color="#000000">second_fun_class</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
+     ok       <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> <b><font color="#000000">check_rosen3_step</font></b><font color="#990000">(</font>fun_1<font color="#990000">,</font> t_start<font color="#990000">,</font> y_start<font color="#990000">,</font> t_step<font color="#990000">)</font>
+     <b><font color="#0000FF">return</font></b> ok
+
+<b><font color="#0000FF">def</font></b> <b><font color="#000000">test_case</font></b><font color="#990000">(</font>case<font color="#990000">)</font> <font color="#990000">:</font>
      ok    <font color="#990000">=</font> True
      nx    <font color="#990000">=</font> <font color="#993399">3</font>
      eps99 <font color="#990000">=</font> <font color="#993399">99.0</font> <font color="#990000">*</font> numpy<font color="#990000">.</font><b><font color="#000000">finfo</font></b><font color="#990000">(</font>float<font color="#990000">).</font>eps
@@ -154,10 +219,12 @@ x
      x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> nx <font color="#990000">*</font> <font color="#990000">[</font> <font color="#993399">1.0</font> <font color="#990000">]</font> <font color="#990000">)</font>
      ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># fun</font></i>
-     fun <font color="#990000">=</font> <b><font color="#000000">fun_class</font></b><font color="#990000">(</font>ax<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># function to pass to rosen3_step</font></i>
+     <b><font color="#0000FF">if</font></b> case <font color="#990000">==</font> <font color="#993399">1</font> <font color="#990000">:</font>
+          fun <font color="#990000">=</font> <b><font color="#000000">first_fun_class</font></b><font color="#990000">(</font>ax<font color="#990000">)</font>
+     <b><font color="#0000FF">elif</font></b> case <font color="#990000">==</font> <font color="#993399">2</font> <font color="#990000">:</font>
+          fun <font color="#990000">=</font> <b><font color="#000000">second_fun_class</font></b><font color="#990000">(</font>ax<font color="#990000">)</font>
+     <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
+          <b><font color="#0000FF">assert</font></b><font color="#990000">(</font>False<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># initiali value for the ODE</font></i>
      ay_start <font color="#990000">=</font>  numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> nx <font color="#990000">*</font> <font color="#990000">[</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font><font color="#993399">0.0</font><font color="#990000">)</font> <font color="#990000">]</font> <font color="#990000">)</font>
@@ -194,7 +261,15 @@ x
                     rel_error <font color="#990000">=</font> J<font color="#990000">[</font>i<font color="#990000">,</font>j<font color="#990000">]</font> <font color="#990000">/</font> check <font color="#990000">-</font> <font color="#993399">1.0</font>
                     ok       <font color="#990000">&amp;=</font> <b><font color="#000000">abs</font></b><font color="#990000">(</font>rel_error<font color="#990000">)</font> <font color="#990000">&lt;</font> eps99
 
-     <b><font color="#0000FF">return</font></b> ok</tt></pre>
+     <b><font color="#0000FF">return</font></b> ok
+<i><font color="#9A1900"># ---------------------------------------------------------------------------</font></i>
+<b><font color="#0000FF">def</font></b> <b><font color="#000000">rosen3_step_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
+     ok <font color="#990000">=</font> True
+     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> <b><font color="#000000">test_derivative</font></b><font color="#990000">()</font>
+     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> <b><font color="#000000">test_case</font></b><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">)</font>
+     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> <b><font color="#000000">test_case</font></b><font color="#990000">(</font><font color="#993399">2</font><font color="#990000">)</font>
+     <b><font color="#0000FF">return</font></b> ok
+</tt></pre>
 
 <hr>Input File: example/python/numeric/rosen3_step_xam.py
 

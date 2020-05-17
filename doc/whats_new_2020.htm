@@ -15,7 +15,7 @@ MathJax.Hub.Config({
 <title>CppAD Py Changes During 2020</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
 <meta name="description" id="description" content="CppAD Py Changes During 2020">
-<meta name="keywords" id="keywords" content=" cppad py changes during 2020 previous years 05-14 05-12 05-09 05-08 05-07 05-06 05-05 05-04 04-28 04-27 04-26 04-25 04-24 04-23 04-22 04-20 04-19 04-18 04-13 04-12 04-10 ">
+<meta name="keywords" id="keywords" content=" cppad py changes during 2020 previous years 05-16 05-15 05-14 05-12 05-09 05-08 05-07 05-06 05-05 05-04 04-28 04-27 04-26 04-25 04-24 04-23 04-22 04-20 04-19 04-18 04-13 04-12 04-10 ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -64,6 +64,8 @@ A:active { color : purple }
 <center><b><big><big>CppAD Py Changes During 2020</big></big></b></center>
 
 <br><a href="whats_new_2020.htm#Previous Years" target="_top">Previous&nbsp;Years</a>
+<br><a href="whats_new_2020.htm#05-16" target="_top">05-16</a>
+<br><a href="whats_new_2020.htm#05-15" target="_top">05-15</a>
 <br><a href="whats_new_2020.htm#05-14" target="_top">05-14</a>
 <br><a href="whats_new_2020.htm#05-12" target="_top">05-12</a>
 <br><a href="whats_new_2020.htm#05-09" target="_top">05-09</a>
@@ -91,6 +93,33 @@ A:active { color : purple }
 <br>
 <a href="whats_new_2018.htm" target="_top"><span style='white-space: nowrap'>whats_new_2018</span></a>
 
+
+<br>
+<br>
+<b><big><a name="05-16" id="05-16">05-16</a></big></b>
+
+<ol type="1"><li>
+A discussion of some subtile issues,
+when interpolation is used to define an ODE,
+was added to the <code><font color="blue">ode_multi_step</font></code>; see
+<a href="numeric_ode_multi_step.htm" target="_top"><span style='white-space: nowrap'>set_t_all_index</span></a>
+.
+</li><li>
+
+Add the <a href="numeric_seirwd_model.htm#p_all.alpha" target="_top"><span style='white-space: nowrap'>alpha</span></a>
+ parameter to the
+SEIRWD model.
+</li></ol>
+
+
+<br>
+<br>
+<b><big><a name="05-15" id="05-15">05-15</a></big></b>
+<br>
+The file <code><font color="blue">ode_solve.py</font></code> was moved to <code><font color="blue">ode_multi_step.py</font></code>
+and <a href="numeric_ode_multi_step.htm" target="_top"><span style='white-space: nowrap'>numeric_ode_multi_step</span></a>
+ was extended to allow for different ODE solvers
+(steppers).
 
 <br>
 <br>
@@ -221,7 +250,7 @@ capabilities.
 Add the following utility examples:
 <a href="numeric_optimize_fun_class.htm" target="_top"><span style='white-space: nowrap'>numeric_optimize_fun_class</span></a>
 ,
-<a href="numeric_ode_runge4_step.htm" target="_top"><span style='white-space: nowrap'>numeric_ode_runge4_step</span></a>
+<a href="numeric_runge4_step.htm" target="_top"><span style='white-space: nowrap'>numeric_runge4_step</span></a>
 ,
 <a href="numeric_ode_multi_step.htm" target="_top"><span style='white-space: nowrap'>numeric_ode_multi_step</span></a>
 ,

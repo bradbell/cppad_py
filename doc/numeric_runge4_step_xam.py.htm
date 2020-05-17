@@ -31,7 +31,7 @@ A:active { color : purple }
 <td>
 <a href="https://bradbell.github.io/cppad_py" target="_top"><img border="0" src="_image.gif"></a>
 </td>
-<td><a href="numeric_ode_runge4_step.htm" target="_top">Prev</a>
+<td><a href="numeric_runge4_step.htm" target="_top">Prev</a>
 </td><td><a href="numeric_rosen3_step.htm" target="_top">Next</a>
 </td><td>
 <select onchange='choose_across0(this)'>
@@ -48,7 +48,7 @@ A:active { color : purple }
 <option>Up-&gt;</option>
 <option>cppad_py</option>
 <option>numeric_xam</option>
-<option>numeric_ode_runge4_step</option>
+<option>numeric_runge4_step</option>
 <option>numeric_runge4_step_xam.py</option>
 </select>
 </td>
@@ -59,7 +59,7 @@ A:active { color : purple }
 <script type='text/javascript' language='JavaScript' src='_childtable_numeric_xam_htm.js'></script>
 </td>
 <td>
-<script type='text/javascript' language='JavaScript' src='_childtable_numeric_ode_runge4_step_htm.js'></script>
+<script type='text/javascript' language='JavaScript' src='_childtable_numeric_runge4_step_htm.js'></script>
 </td>
 <td>numeric_runge4_step_xam.py</td>
 </tr></table><br>
@@ -124,9 +124,14 @@ x
 <b><font color="#000080">import</font></b> cppad_py
 <b><font color="#000080">from</font></b> runge4_step <b><font color="#000080">import</font></b> runge4_step
 <i><font color="#9A1900">#</font></i>
-<b><font color="#0000FF">def</font></b> <b><font color="#000000">f</font></b><font color="#990000">(</font>t<font color="#990000">,</font> y<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
-     y_shift <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">concatenate</font></b><font color="#990000">(</font> <font color="#990000">(</font> <font color="#990000">[</font><font color="#993399">1.0</font><font color="#990000">]</font> <font color="#990000">,</font> y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">:-</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">)</font> <font color="#990000">)</font>
-     <b><font color="#0000FF">return</font></b> x <font color="#990000">*</font> y_shift
+<b><font color="#0000FF">class</font></b> fun_class <font color="#990000">:</font>
+     <i><font color="#9A1900">#</font></i>
+     <b><font color="#0000FF">def</font></b> <b><font color="#000000">__init__</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
+          self<font color="#990000">.</font>x <font color="#990000">=</font> x
+     <i><font color="#9A1900">#</font></i>
+     <b><font color="#0000FF">def</font></b> <b><font color="#000000">f</font></b><font color="#990000">(</font>self<font color="#990000">,</font> t<font color="#990000">,</font> y<font color="#990000">)</font> <font color="#990000">:</font>
+          y_shift <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">concatenate</font></b><font color="#990000">(</font> <font color="#990000">(</font> <font color="#990000">[</font><font color="#993399">1.0</font><font color="#990000">]</font> <font color="#990000">,</font> y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">:-</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">)</font> <font color="#990000">)</font>
+          <b><font color="#0000FF">return</font></b> self<font color="#990000">.</font>x <font color="#990000">*</font> y_shift
 <i><font color="#9A1900">#</font></i>
 <b><font color="#0000FF">def</font></b> <b><font color="#000000">runge4_step_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
      ok    <font color="#990000">=</font> True
@@ -138,8 +143,7 @@ x
      ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># function to pass to runge4_step</font></i>
-     <b><font color="#0000FF">def</font></b> <b><font color="#000000">fun</font></b><font color="#990000">(</font>t<font color="#990000">,</font> ay<font color="#990000">)</font> <font color="#990000">:</font>
-          <b><font color="#0000FF">return</font></b> <b><font color="#000000">f</font></b><font color="#990000">(</font>t<font color="#990000">,</font> ay<font color="#990000">,</font> ax<font color="#990000">)</font>
+     fun <font color="#990000">=</font> <b><font color="#000000">fun_class</font></b><font color="#990000">(</font>ax<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># initiali value for the ODE</font></i>
      ay_start <font color="#990000">=</font>  numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> nx <font color="#990000">*</font> <font color="#990000">[</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font><font color="#993399">0.0</font><font color="#990000">)</font> <font color="#990000">]</font> <font color="#990000">)</font>

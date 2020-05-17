@@ -15,7 +15,7 @@ MathJax.Hub.Config({
 <title>One Third Order Rosenbrock ODE Step</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
 <meta name="description" id="description" content="One Third Order Rosenbrock ODE Step">
-<meta name="keywords" id="keywords" content=" one third order rosenbrock ode step syntax purpose reference fun t y fun.f fun.f_t fun.f_y ti yi h yf example source code ">
+<meta name="keywords" id="keywords" content=" one third order rosenbrock ode step syntax purpose reference fun t y fun.f fun.f_t fun.f_y ti yi h yf ok example source code rosen3_step check_rosen3_step ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -77,22 +77,26 @@ A:active { color : purple }
 <br><a href="numeric_rosen3_step.htm#yi" target="_top">yi</a>
 <br><a href="numeric_rosen3_step.htm#h" target="_top">h</a>
 <br><a href="numeric_rosen3_step.htm#yf" target="_top">yf</a>
+<br><a href="numeric_rosen3_step.htm#ok" target="_top">ok</a>
 <br><a href="numeric_rosen3_step.htm#Example" target="_top">Example</a>
 <br><a href="numeric_rosen3_step.htm#Source Code" target="_top">Source&nbsp;Code</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_rosen3_step.htm#Source Code.rosen3_step" target="_top">rosen3_step</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_rosen3_step.htm#Source Code.check_rosen3_step" target="_top">check_rosen3_step</a>
 <br><br>
 <b><big><a name="Syntax" id="Syntax">Syntax</a></big></b>
 
 <br>
 
-<code><i><font color="black"><span style='white-space: nowrap'>yf</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;rosen3_step(</span></font><i><font color="black"><span style='white-space: nowrap'>fun</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ti</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>yi</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>h</span></font></i><font color="blue"><span style='white-space: nowrap'>)</span></font></code>
+<code><i><font color="black"><span style='white-space: nowrap'>yf</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;rosen3_step(</span></font><i><font color="black"><span style='white-space: nowrap'>fun</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ti</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>yi</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>h</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+</span></font></code>
 
-
-<br>
+<code><i><font color="black"><span style='white-space: nowrap'>ok</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;check_rosen3_step(</span></font><i><font color="black"><span style='white-space: nowrap'>fun</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ti</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>yi</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>h</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+</span></font></code>
 <br>
 <b><big><a name="Purpose" id="Purpose">Purpose</a></big></b>
 <br>
-The routine can be used with <code><font color="blue">ad_double</font></code> to solve the initial
-value problem
+The routine <code><font color="blue">rosen3_step</font></code> can be used with
+<code><font color="blue">ad_double</font></code> to solve an initial value ODE
 <small>@[@
 
 	y^{(1)} (t)  = f( t , y )
@@ -184,6 +188,7 @@ the current partial value <small>@(@
 <br>
 This is the initial time for the Rosenbrock step.
 It can have type <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
+(For <code><font color="blue">check_rosen3_step</font></code> only <code><font color="blue">float</font></code> is allowed.)
 
 <br>
 <br>
@@ -194,6 +199,7 @@ value of <small>@(@
 y(t)
 @)@</small> at the initial time.
 The type of its elements can be <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
+(For <code><font color="blue">check_rosen3_step</font></code> only <code><font color="blue">float</font></code> is allowed.)
 
 <br>
 <br>
@@ -202,6 +208,7 @@ The type of its elements can be <code><font color="blue">float</font></code> or 
 This is the step size in time; i.e., the time at the end of the step
 minus the initial time.
 It can have type <code><font color="blue">float</font></code> or <code><font color="blue">a_double</font></code>.
+(This is not used by <code><font color="blue">check_rosen3_step</font></code>.)
 
 <br>
 <br>
@@ -221,6 +228,21 @@ t
 @)@</small> of order three or lower,
 the solution has no truncation error, only round off error.
 
+<br>
+<br>
+<b><big><a name="ok" id="ok">ok</a></big></b>
+<br>
+This is true if the function 
+<code><i><font color="black"><span style='white-space: nowrap'>fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.f(</span></font><i><font color="black"><span style='white-space: nowrap'>t</span></font></i><font color="blue"><span style='white-space: nowrap'>,</span></font><i><font color="black"><span style='white-space: nowrap'>y</span></font></i><font color="blue"><span style='white-space: nowrap'>)</span></font></code>
+
+and the partials 
+<code><i><font color="black"><span style='white-space: nowrap'>fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.f_t(</span></font><i><font color="black"><span style='white-space: nowrap'>t</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y</span></font></i><font color="blue"><span style='white-space: nowrap'>)</span></font></code>
+,
+
+<code><i><font color="black"><span style='white-space: nowrap'>fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.f_y(</span></font><i><font color="black"><span style='white-space: nowrap'>t</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y</span></font></i><font color="blue"><span style='white-space: nowrap'>)</span></font></code>
+ agree.
+Otherwise AD has detected an error in these functions.
+
 
 <br>
 <br>
@@ -234,9 +256,15 @@ the solution has no truncation error, only round off error.
 <br>
 <b><big><a name="Source Code" id="Source Code">Source Code</a></big></b>
 
+
+<br>
+<br>
+<big><a name="Source Code.rosen3_step" id="Source Code.rosen3_step">rosen3_step</a></big>
+
 <pre><tt>
 <b><font color="#000080">import</font></b> numpy
 <b><font color="#000080">from</font></b> simple_inv <b><font color="#000080">import</font></b> simple_inv
+<b><font color="#000080">import</font></b> cppad_py
 <b><font color="#0000FF">def</font></b> <b><font color="#000000">rosen3_step</font></b><font color="#990000">(</font>fun<font color="#990000">,</font> ti<font color="#990000">,</font> yi<font color="#990000">,</font> h<font color="#990000">)</font> <font color="#990000">:</font>
      <i><font color="#9A1900">#</font></i>
      r1_2     <font color="#990000">=</font> <font color="#993399">1.0</font>   <font color="#990000">/</font> <font color="#993399">2.0</font>
@@ -282,6 +310,57 @@ the solution has no truncation error, only round off error.
      yf   <font color="#990000">=</font> yi <font color="#990000">+</font> h <font color="#990000">*</font> <font color="#990000">(</font> r97_108 <font color="#990000">*</font> k1 <font color="#990000">+</font> r11_72 <font color="#990000">*</font> k2 <font color="#990000">+</font> r25_216 <font color="#990000">*</font> k3<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <b><font color="#0000FF">return</font></b> yf</tt></pre>
+<br>
+<big><a name="Source Code.check_rosen3_step" id="Source Code.check_rosen3_step">check_rosen3_step</a></big>
+
+<pre><tt>
+<b><font color="#0000FF">def</font></b> <b><font color="#000000">check_rosen3_step</font></b><font color="#990000">(</font>fun<font color="#990000">,</font> ti<font color="#990000">,</font> yi<font color="#990000">,</font> h<font color="#990000">)</font> <font color="#990000">:</font>
+     ok    <font color="#990000">=</font> True
+     eps99 <font color="#990000">=</font> <font color="#993399">99.0</font> <font color="#990000">*</font> numpy<font color="#990000">.</font><b><font color="#000000">finfo</font></b><font color="#990000">(</font>float<font color="#990000">).</font>eps
+     <i><font color="#9A1900">#</font></i>
+     ny    <font color="#990000">=</font> yi<font color="#990000">.</font>size
+     both  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">concatenate</font></b><font color="#990000">(</font> <font color="#990000">(</font>yi<font color="#990000">,</font> <font color="#990000">[</font>ti<font color="#990000">])</font> <font color="#990000">)</font>
+     aboth <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>both<font color="#990000">)</font>
+     az    <font color="#990000">=</font> fun<font color="#990000">.</font><b><font color="#000000">f</font></b><font color="#990000">(</font>aboth<font color="#990000">[</font>ny<font color="#990000">],</font> aboth<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">:</font>ny<font color="#990000">]</font> <font color="#990000">)</font>
+     fun_d <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>aboth<font color="#990000">,</font> az<font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     J     <font color="#990000">=</font> fun_d<font color="#990000">.</font><b><font color="#000000">jacobian</font></b><font color="#990000">(</font>both<font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># check fun.f_t(t, y)</font></i>
+     fun_t   <font color="#990000">=</font> fun<font color="#990000">.</font><b><font color="#000000">f_t</font></b><font color="#990000">(</font>ti<font color="#990000">,</font> yi<font color="#990000">)</font>
+     printed <font color="#990000">=</font> False
+     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>ny<font color="#990000">)</font> <font color="#990000">:</font>
+          <b><font color="#0000FF">if</font></b> J<font color="#990000">[</font>i<font color="#990000">,</font> ny<font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">0.0</font> <font color="#990000">:</font>
+               ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fun_t<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">0.0</font>
+          <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
+               rel_error <font color="#990000">=</font> fun_t<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">/</font> J<font color="#990000">[</font>i<font color="#990000">,</font>ny<font color="#990000">]</font> <font color="#990000">-</font> <font color="#993399">1.0</font>
+               <b><font color="#0000FF">if</font></b> <b><font color="#000000">abs</font></b><font color="#990000">(</font>rel_error<font color="#990000">)</font> <font color="#990000">&gt;</font> eps99 <font color="#990000">:</font>
+                    ok <font color="#990000">=</font> False
+                    <b><font color="#0000FF">if</font></b> <b><font color="#0000FF">not</font></b> printed <font color="#990000">:</font>
+                         <b><font color="#0000FF">print</font></b><font color="#990000">(</font><font color="#FF0000">'check_rosen3_step: fun.f_t check failed'</font><font color="#990000">)</font>
+                         printed <font color="#990000">=</font> True
+                    <b><font color="#0000FF">print</font></b><font color="#990000">(</font><font color="#FF0000">'fun_t['</font><font color="#990000">,</font> i<font color="#990000">,</font> <font color="#FF0000">'] = '</font><font color="#990000">,</font> fun_t<font color="#990000">[</font>i<font color="#990000">],</font> <font color="#FF0000">', check = '</font><font color="#990000">,</font> J<font color="#990000">[</font>i<font color="#990000">,</font>ny<font color="#990000">])</font>
+     <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># check fun.f_y(t, y)</font></i>
+     fun_y <font color="#990000">=</font> fun<font color="#990000">.</font><b><font color="#000000">f_y</font></b><font color="#990000">(</font>ti<font color="#990000">,</font> yi<font color="#990000">)</font>
+     printed <font color="#990000">=</font> False
+     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>ny<font color="#990000">)</font> <font color="#990000">:</font>
+          <b><font color="#0000FF">for</font></b> j <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>ny<font color="#990000">)</font> <font color="#990000">:</font>
+               <b><font color="#0000FF">if</font></b> J<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">0.0</font> <font color="#990000">:</font>
+                    ok_ij <font color="#990000">=</font>fun_y<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">0.0</font>
+               <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
+                    rel_error <font color="#990000">=</font> fun_y<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font> <font color="#990000">/</font> J<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font> <font color="#990000">-</font> <font color="#993399">1.0</font>
+                    ok_ij <font color="#990000">=</font> <b><font color="#000000">abs</font></b><font color="#990000">(</font> rel_error <font color="#990000">)</font> <font color="#990000">&lt;</font> eps99
+               <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#0000FF">not</font></b> ok_ij<font color="#990000">)</font> <b><font color="#0000FF">and</font></b> <font color="#990000">(</font><b><font color="#0000FF">not</font></b> printed<font color="#990000">)</font> <font color="#990000">:</font>
+                    <b><font color="#0000FF">print</font></b><font color="#990000">(</font><font color="#FF0000">'check_rosen3_step: fun.f_y check failed'</font><font color="#990000">)</font>
+                    printed <font color="#990000">=</font> True
+               <b><font color="#0000FF">if</font></b> <b><font color="#0000FF">not</font></b> ok_ij <font color="#990000">:</font>
+                    msg  <font color="#990000">=</font> <font color="#FF0000">'fun_y['</font> <font color="#990000">+</font> <b><font color="#000000">str</font></b><font color="#990000">(</font>i<font color="#990000">)</font> <font color="#990000">+</font> <font color="#FF0000">','</font> <font color="#990000">+</font> <b><font color="#000000">str</font></b><font color="#990000">(</font>j<font color="#990000">)</font> <font color="#990000">+</font> <font color="#FF0000">'] ='</font>
+                    msg <font color="#990000">+=</font> <b><font color="#000000">str</font></b><font color="#990000">(</font> fun_y<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font> <font color="#990000">)</font>
+                    msg <font color="#990000">+=</font> <font color="#FF0000">', check = '</font> <font color="#990000">+</font> <b><font color="#000000">str</font></b><font color="#990000">(</font> J<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font> <font color="#990000">)</font>
+                    <b><font color="#0000FF">print</font></b><font color="#990000">(</font>msg<font color="#990000">)</font>
+     <i><font color="#9A1900">#</font></i>
+     <b><font color="#0000FF">return</font></b> ok</tt></pre>
 
 <hr>Input File: example/python/numeric/rosen3_step.py
 
