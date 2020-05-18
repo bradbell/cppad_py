@@ -80,6 +80,10 @@ A:active { color : purple }
      ok <font color="#990000">=</font> True
      <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
      <i><font color="#9A1900">#</font></i>
+     <i><font color="#9A1900"># abs</font></i>
+     a1   <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(-</font><font color="#993399">1.0</font><font color="#990000">)</font>
+     abs1 <font color="#990000">=</font> a1<font color="#990000">.</font><b><font color="#000000">abs</font></b><font color="#990000">()</font>
+     ok   <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> abs1 <font color="#990000">==</font> <font color="#993399">1.0</font>
      <i><font color="#9A1900"># fabs</font></i>
      a1   <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font><font color="#993399">1.0</font><font color="#990000">)</font>
      abs1 <font color="#990000">=</font> a1<font color="#990000">.</font><b><font color="#000000">fabs</font></b><font color="#990000">()</font>
