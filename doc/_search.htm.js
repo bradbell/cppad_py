@@ -20,7 +20,7 @@ Keyword =
 { tag: 'numeric_optimize_fun_xam.py', title:'Example Using optimize_fun_class with Scipy Optimization', other:' reference problem trust_constr source code' },
 { tag: 'numeric_seirwd_model', title:'A Susceptible Exposed Infectious Recovered and Death Model', other:' purpose syntax notation method t_all p_all alpha initial n_step seirwd_all conservation mass example source code' },
 { tag: 'numeric_seirwd_model_xam.py', title:'Example Using seris_model', other:'' },
-{ tag: 'numeric_covid_19_xam.py', title:'Example Fitting an SEIRWD Model for Covid-19', other:' covariates beta(t) other rates initial values solver unknown parameters bounds data maximum likelihood display results plot printout coefficient variation residuals random seed file sample interval debug output source code' },
+{ tag: 'numeric_covid_19_xam.py', title:'Example Fitting an SEIRWD Model for Covid-19', other:' covariates beta(t) other rates initial values solver unknown parameters bounds data maximum likelihood display results plot printout coefficient variation residuals random seed start file sample interval debug output source code' },
 { tag: 'library', title:'The Cppad Py Libraries', other:'' },
 { tag: 'py_lib', title:'The Python Library', other:'' },
 { tag: 'py_fun', title:'Cppad Py AD Functions', other:'' },

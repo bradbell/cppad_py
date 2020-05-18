@@ -15,7 +15,7 @@ MathJax.Hub.Config({
 <title>Example Fitting an SEIRWD Model for Covid-19</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
 <meta name="description" id="description" content="Example Fitting an SEIRWD Model for Covid-19">
-<meta name="keywords" id="keywords" content=" example fitting seirwd model covid-19 covariates beta(t) other rates initial values ode solver unknown parameters bounds data maximum likelihood display fit results plot printout coefficient variation residuals random seed file sample interval debug output source code ">
+<meta name="keywords" id="keywords" content=" example fitting seirwd model covid-19 covariates beta(t) other rates initial values ode solver unknown parameters bounds data maximum likelihood display fit results plot printout coefficient variation residuals random seed start file sample interval debug output source code ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -78,6 +78,7 @@ A:active { color : purple }
 <br><a href="numeric_covid_19_xam.py.htm#Coefficient of Variation" target="_top">Coefficient&nbsp;of&nbsp;Variation</a>
 <br><a href="numeric_covid_19_xam.py.htm#Data Residuals" target="_top">Data&nbsp;Residuals</a>
 <br><a href="numeric_covid_19_xam.py.htm#Random Seed" target="_top">Random&nbsp;Seed</a>
+<br><a href="numeric_covid_19_xam.py.htm#Random Start" target="_top">Random&nbsp;Start</a>
 <br><a href="numeric_covid_19_xam.py.htm#Data File" target="_top">Data&nbsp;File</a>
 <br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Data File.Sample Interval" target="_top">Sample&nbsp;Interval</a>
 <br><a href="numeric_covid_19_xam.py.htm#Debug Output" target="_top">Debug&nbsp;Output</a>
@@ -468,6 +469,16 @@ This is the random seed used to simulate noise in the data.
 If this value is zero, the system clock is used to choose the random seed.
 <pre style='display:inline'><tt>
 random_seed <font color="#990000">=</font> <font color="#993399">0</font>
+</tt></pre>
+<br>
+<b><big><a name="Random Start" id="Random Start">Random Start</a></big></b>
+<br>
+The optimizer needs a good starting point in order to succeed.
+This is the number of random points, between the lower and upper limits,
+that are checked. The point with the best objective value is chosen
+as the starting point for the optimization.
+<pre style='display:inline'><tt>
+n_random_start <font color="#990000">=</font> <font color="#993399">4000</font>
 </tt></pre>
 <br>
 <b><big><a name="Data File" id="Data File">Data File</a></big></b>
@@ -910,9 +921,8 @@ actual_seed <font color="#990000">=</font> <font color="#990000">[</font> random
           <b><font color="#0000FF">print</font></b><font color="#990000">(</font><font color="#FF0000">'x_upper ='</font><font color="#990000">,</font> x_upper<font color="#990000">)</font>
      <i><font color="#9A1900"># ------------------------------------------------------------------------</font></i>
      <i><font color="#9A1900"># optimizer loop over beta constraints</font></i>
-     n_random    <font color="#990000">=</font> <font color="#993399">2000</font>
      start_point <font color="#990000">=</font> <b><font color="#000000">random_start</font></b><font color="#990000">(</font>
-          n_random<font color="#990000">,</font>
+          n_random_start<font color="#990000">,</font>
           x_lower<font color="#990000">,</font>
           x_upper<font color="#990000">,</font>
           log_scale<font color="#990000">,</font>
@@ -935,6 +945,7 @@ actual_seed <font color="#990000">=</font> <font color="#990000">[</font> random
      <font color="#990000">)</font>
      x_fit <font color="#990000">=</font> result<font color="#990000">.</font>x
      <b><font color="#0000FF">if</font></b> debug_output <font color="#990000">:</font>
+          <b><font color="#0000FF">print</font></b><font color="#990000">(</font><font color="#FF0000">'optimizer success = '</font><font color="#990000">,</font> result<font color="#990000">.</font>success <font color="#990000">)</font>
           <b><font color="#0000FF">print</font></b><font color="#990000">(</font><font color="#FF0000">'optimal objective = '</font><font color="#990000">,</font> result<font color="#990000">.</font>fun <font color="#990000">)</font>
      <i><font color="#9A1900"># check optimizer status</font></i>
      ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> result<font color="#990000">.</font>success
