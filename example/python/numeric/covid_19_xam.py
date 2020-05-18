@@ -18,6 +18,7 @@
 #	optimizer
 #	runge
 #	rosen
+#	sqrt
 # $$
 #
 # $section Example Fitting an SEIRWD Model for Covid-19$$
@@ -192,10 +193,16 @@ display_fit = False
 # $srccode%py%
 death_data_cv = 0.1
 # %$$
+# Note this is the noise level in the original data before it is
+# sub-sampled using
+# $cref/sample_interval/numeric_covid_19_xam.py/Data File/Sample Interval/$$.
 #
 # $head Data Residuals$$
 # If $icode death_data_cv$$ is zero, $latex \lambda = 1$$, otherwise
-# $latex \lambda$$ is equal to $icode death_data_cv$$.
+# $latex \lambda$$ is equal to
+# $codei%
+#	%death_data_cv% * sqrt(%sample_interval%)
+# %$$.
 # Let $latex y_i$$ be the i-th value for the cumulative death data.
 # The weighted residuals (some times referred to as just the residuals) are
 # $latex \[
@@ -230,8 +237,7 @@ data_file = ''                                         # empty string
 # %$$
 #
 # $subhead Sample Interval$$
-# If $icode data_file$$ is not empty,
-# it is possible to sub-sample the data in order to reduce noise.
+# It is possible to sub-sample the data in order to reduce noise.
 # The cumulative death data is just sub-sampled since the reduces noise by
 # the summing the differences corresponding to a longer time period.
 # The covariate data is averaged over the sample interval.
@@ -317,7 +323,7 @@ else :
 	# simulating cumulative death and covariates
 	t_start = 0.0
 	t_stop  = 90.0
-	t_step  = 0.5
+	t_step  = float(sample_interval)
 	t_all = numpy.arange(t_start, t_stop, t_step)
 	#
 	n_time = t_all.size
@@ -402,7 +408,7 @@ def weighted_data_residual(D_data, D_model) :
 	Ddiff_model  = numpy.diff(D_model)
 	residual     = (Ddiff_data - Ddiff_model) / Ddiff_data
 	if death_data_cv > 0.0 :
-		residual = residual / death_data_cv
+		residual = residual / (numpy.sqrt(sample_interval) * death_data_cv)
 	return residual
 #
 # objective
@@ -444,7 +450,7 @@ def simulate_data() :
 	# D_data
 	D_sim       = seirwd_all_sim[:,5]
 	Ddiff_sim   = numpy.diff( D_sim )
-	std         = death_data_cv * Ddiff_sim
+	std         = numpy.sqrt(sample_interval) * death_data_cv * Ddiff_sim
 	noise       = std * rng.standard_normal(size = t_all.size - 1)
 	Ddiff_data  = Ddiff_sim + noise
 	D_data      = numpy.cumsum(Ddiff_data)
@@ -500,7 +506,7 @@ def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 			x_name[i], x_fit[i], x_lower[i], x_upper[i]
 		)
 		print(line)
-	if display_fit == '' :
+	if data_file == '' :
 		fmt = '{:<15s}{:>12s}{:>12s}{:>12s}{:>12s}{:>12s}'
 		line = fmt.format(
 			'x_name', 'x_sim','x_fit','rel_error','std_error','residual'
