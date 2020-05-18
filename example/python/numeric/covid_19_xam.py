@@ -610,11 +610,8 @@ def covid_19_xam(call_count = 0) :
 	x_lower    = numpy.zeros( n_x, dtype=float)
 	x_upper    = x_sim * 10.0
 	#
-	# 0 <= m_0 <= 1
-	x_upper[0] = 2.0
-	#
 	# -1 <= m_1 <= 0
-	x_lower[1] = -2.0
+	x_lower[1] = 10.0 * x_sim[1]
 	x_upper[1] = 0.0
 	#
 	# currently not using log-scaling
