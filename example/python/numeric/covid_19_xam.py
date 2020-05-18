@@ -173,13 +173,19 @@ display_fit = False
 # difference data.
 #
 # $subhead Printout$$
+# $list number$$
+# The following statistics for the weighted data residuals is printed:
+# the maximum, minimum, average, and average of square.
+# $lnext
 # A table with the following columns is printed:
 # $table
 # $icode x_name$$    $cnext name of the unknown parameter                $rnext
 # $icode x_fit$$     $cnext fit result for the unknown parameter         $rnext
 # $icode x_lower$$   $cnext lower bound used for the fit                 $rnext
 # $icode x_upper$$   $cnext upper bound used for the fit                 $rnext
+# $icode std_error$$ $cnext asymptotic standard error for the parameter  $rnext
 # $tend
+# $lnext
 # If $icode data_file$$ is empty,
 # a table is printed with the following columns is also printed:
 # $table
@@ -187,10 +193,10 @@ display_fit = False
 # $icode x_sim$$     $cnext known parameter value used during simulation $rnext
 # $icode x_fit$$     $cnext fit result for the unknown parameter         $rnext
 # $icode rel_error$$ $cnext relative error for fit versus simulation     $rnext
-# $icode std_error$$ $cnext asymptotic standard error for the parameter  $rnext
 # $icode residual$$  $cnext
 #	$icode std_error$$ weighted residual for fit versus simulation
 # $tend
+# $lend
 #
 # $head Coefficient of Variation$$
 # This is the coefficient of variation for the differences
@@ -199,8 +205,10 @@ display_fit = False
 # and a CV of one in the definition of the likelihood.
 # This enables checking that the unknown parameters can be accurately
 # identified using perfect data.
+# For real data (see $cref/data_file/numeric_covid_19_xam.py/Data File/$$)
+# this value should be adjusted so that the average residual has variance one.
 # $srccode%py%
-death_data_cv = 0.1
+death_data_cv = 0.25
 # %$$
 # Note this is the noise level in the original data before it is
 # sub-sampled using
@@ -255,7 +263,7 @@ data_file = ''                                         # empty string
 # The $icode sample_interval$$ must be either one or a positive even integer
 # (even so an original data point corresponds to the center of the interval).
 # $srccode%py%
-sample_interval = 2
+sample_interval = 1
 # %$$
 #
 # $head Debug Output$$
@@ -513,9 +521,28 @@ def random_start(n_random, x_lower, x_upper, log_scale, objective) :
 
 def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 	n_x = len(x_fit)
+	#
+	# seirwd_all_fit
+	seirwd_all_fit = x2seirwd_all(x_fit)
+	#
+	# D_fit
+	D_fit = seirwd_all_fit[:,5]
+	#
+	# data_residual
+	data_residual = weighted_data_residual(D_data, D_fit)
+	#
 	# -----------------------------------------------------------------------
 	# printout
-	fmt = '{:<15s}{:>12s}{:>12s}{:>12s}'
+	residual_sq = data_residual * data_residual
+	print('weighted data residuals')
+	print('maximum           =', numpy.max( numpy.max(data_residual) ) )
+	print('minimum           =', numpy.max( numpy.min(data_residual) ) )
+	print('average           =', numpy.mean(data_residual) )
+	print('average of square =', numpy.mean(residual_sq) )
+	print('')
+	#
+	# table of fit values
+	fmt = '{:<15s}{:>12s}{:>12s}{:>12s}{:>12s}'
 	line = fmt.format(
 		'x_name', 'x_fit','x_lower','x_upper', 'std_error'
 	)
@@ -527,6 +554,8 @@ def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 		)
 		print(line)
 	if data_file == '' :
+		# table of fit versus simulation
+		print('')
 		fmt = '{:<15s}{:>12s}{:>12s}{:>12s}{:>12s}'
 		line = fmt.format(
 			'x_name', 'x_fit','x_sim','rel_error','residual'
@@ -546,15 +575,6 @@ def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 	# -----------------------------------------------------------------------
 	# plot
 	# -----------------------------------------------------------------------
-	#
-	# seirwd_all_fit
-	seirwd_all_fit = x2seirwd_all(x_fit)
-	#
-	# D_fit
-	D_fit = seirwd_all_fit[:,5]
-	#
-	# data_residual
-	data_residual = weighted_data_residual(D_data, D_fit)
 	#
 	fig  = pyplot.figure(tight_layout = True)
 	gs   = gridspec.GridSpec(3, 2)
@@ -706,8 +726,8 @@ def covid_19_xam(call_count = 0) :
 		display_fit_results(D_data, x_fit, x_lower, x_upper, std_error)
 	#
 	# check that all the data residuals an less than 3.0
-	if numpy.any( numpy.abs( data_residual ) >= 3.5 ) :
-		print('covid_19_xam: a weighted data residual >= 3.5')
+	if numpy.any( numpy.abs( data_residual ) >= 4.0 ) :
+		print('covid_19_xam: a weighted data residual >= 4.0')
 		ok = False
 	#
 	# compare fit to simulation truth
@@ -729,7 +749,7 @@ def covid_19_xam(call_count = 0) :
 			msg += 'actual random seed = ' + str(actual_seed[0])
 			print( msg )
 			call_count += 1
-			if call_count < 2 and random_seed == 0 :
+			if call_count < 3 and random_seed == 0 :
 				print( 're-trying with a differenent random seed')
 				ok = covid_19_xam(call_count)
 	#
