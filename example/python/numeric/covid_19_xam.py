@@ -242,6 +242,15 @@ death_data_cv = 0.25
 random_seed = 0
 # %$$
 #
+# $head Random Start$$
+# The optimizer needs a good starting point in order to succeed.
+# This is the number of random points, between the lower and upper limits,
+# that are checked. The point with the best objective value is chosen
+# as the starting point for the optimization.
+# $srccode%py%
+n_random_start = 4000
+# %$$
+#
 #
 # $head Data File$$
 # If the data file name is the empty string, the cumulative death data,
@@ -674,9 +683,8 @@ def covid_19_xam(call_count = 0) :
 		print('x_upper =', x_upper)
 	# ------------------------------------------------------------------------
 	# optimizer loop over beta constraints
-	n_random    = 2000
 	start_point = random_start(
-		n_random,
+		n_random_start,
 		x_lower,
 		x_upper,
 		log_scale,
@@ -699,6 +707,7 @@ def covid_19_xam(call_count = 0) :
 	)
 	x_fit = result.x
 	if debug_output :
+		print('optimizer success = ', result.success )
 		print('optimal objective = ', result.fun )
 	# check optimizer status
 	ok = ok and result.success
