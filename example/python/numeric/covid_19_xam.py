@@ -29,7 +29,9 @@
 # $head Covariates$$
 # In this example there are two covariates that
 # affect the infectious rate $latex \beta$$:
-# social mobility $latex c_0 (t)$$, and Covid-19 testing $latex c_1 (t)$$.
+# social mobility $latex c_0 (t)$$,
+# Covid-19 testing $latex c_1 (t)$$, and
+# scaled time $latex c_2 (t)$$.
 # The covariates are known functions of time.
 # The mobility covariate has been shifted and scaled
 # so it is in the interval [-1, 0].
@@ -37,11 +39,15 @@
 # so it is in the interval [0, 1].
 # Note that the maximum mobility and the minimum testing corresponds to the
 # normal (baseline) condition.
+# The scaled time covariate is shifted and scaled version of time so that
+# it is in the interval [0, 1] with the first data point corresponding to
+# time zero. It is assumed here that the baseline condition corresponds
+# to time zero.
 #
 # $head beta(t)$$
 # Our model for the infectious rate is
 # $latex \[
-#	\beta(t) = \bar{\beta} \exp[ 1 + m_0 c_0 (t) + m_1 c_1 (t) ]
+#	\beta(t) = \bar{\beta} \exp[ m_0 c_0 (t) + m_1 c_1 (t) + m_2 c_2 (t) ]
 # \] $$
 # where $latex \bar{\beta}$$ is the baseline value for the infectious rate,
 # $latex m_0$$ is the social covariate multiplier, and
@@ -106,16 +112,16 @@ ode_n_step = 4
 # $head Unknown Parameters$$
 # In summary, the unknown parameter vector in this model is
 # $latex \[
-#	x = [ m_0, m_1, I(0), W(0), \bar{\beta} ]
+#	x = [ m_0, m_1, m_2, I(0), W(0), \bar{\beta} ]
 # \] $$
 # $srccode%py%
-x_name = [ 'm_mobility', 'm_testing', 'I(0)', 'W(0)', 'beta_bar' ]
+x_name = [ 'm_mobility', 'm_testing', 'm_stime', 'I(0)', 'W(0)', 'beta_bar' ]
 # %$$
 #
 # $head Bounds$$
 # The infection rate $latex \beta(t)$$ must be non-negative; i.e.,
 # $latex \[
-#	0 \leq \bar{\beta} \exp[ 1 + m_0 c_0 (t) + m_1 c_1 (t) ]
+#	0 \leq \bar{\beta} \exp[ m_0 c_0 (t) + m_1 c_1 (t) + m_2 c_2 (t) ]
 # \] $$
 # is true for all $latex t$$.
 # In addition, the size of the groups cannot be negative; i.e.,
@@ -126,8 +132,11 @@ x_name = [ 'm_mobility', 'm_testing', 'I(0)', 'W(0)', 'beta_bar' ]
 #	0   & \leq  & W(0)
 #	\end{array}
 # \] $$
-# Upper and lower bounds are included for all the unknown variables
+# Upper and lower bounds are included for all the unknown parameters
 # as an aid to the optimizer.
+# The problem has not really been solved if bounds,
+# other than the ones above, are active at the solution of the
+# optimization problem.
 #
 # $head Data$$
 # The data in this model is the cumulative number of deaths,
@@ -203,6 +212,8 @@ death_data_cv = 0.1
 # $codei%
 #	%death_data_cv% * sqrt(%sample_interval%)
 # %$$.
+# (Note that the standard deviation of a sum of independent values is the
+# square root of the sum of the variance of each of the values.)
 # Let $latex y_i$$ be the i-th value for the cumulative death data.
 # The weighted residuals (some times referred to as just the residuals) are
 # $latex \[
@@ -314,11 +325,14 @@ if data_file != '' :
 	#
 	n_time       = len(file_data)
 	t_all        = numpy.empty(n_time, dtype=float)
-	covariates   = numpy.empty( (n_time, 2) )
+	covariates   = numpy.empty( (n_time, 3) )
 	for i in range(n_time) :
 		t_all[i]        = file_data[i]['day']
 		covariates[i,0] = file_data[i]['mobility']
 		covariates[i,1] = file_data[i]['testing']
+	for i in range(n_time) :
+		stime           = (t_all[i] - t_all[0]) / (t_all[-1] - t_all[0])
+		covariates[i,2] = stime
 else :
 	# simulating cumulative death and covariates
 	t_start = 0.0
@@ -327,12 +341,13 @@ else :
 	t_all = numpy.arange(t_start, t_stop, t_step)
 	#
 	n_time = t_all.size
-	covariates   = numpy.empty( (n_time, 2) )
+	covariates   = numpy.empty( (n_time, 3) )
 	for i in range(n_time) :
 		t               = t_all[i]
 		mobility        = 0.0 if t < 10.0 else -1.0
-		testing         = t / t_stop
-		covariates[i,:] = [ mobility, testing ]
+		testing         = 0.0 if t < 20.0 else 1.0
+		stime           = t / t_stop
+		covariates[i,:] = [ mobility, testing, stime ]
 #
 # mobility in [-1, 0]
 assert numpy.all( covariates[:,0] <= 0.0 )
@@ -340,14 +355,19 @@ assert numpy.all( -1.0 <= covariates[:,0] )
 #
 # testing in [0, 1]
 assert numpy.all( 0.0 <= covariates[:,1] )
-assert numpy.all( covariates[:,0] <= 1.0 )
+assert numpy.all( covariates[:,1] <= 1.0 )
+#
+# stime in [0, 1]
+assert numpy.all( 0.0 <= covariates[:,2] )
+assert numpy.all( covariates[:,2] <= 1.0 )
 #
 # beta_bar_sim
-beta_bar_sim = 1.0
+beta_bar_sim = 2.0
 #
 # covariate multipliers used in simulation
-m_mobility_sim    =   0.5
-m_testing_sim     = - 0.4
+m_mobility_sim    =   1.0
+m_testing_sim     = - 1.0
+m_stime_sim       = - 1.0
 #
 # initial conditions used to simulate data
 I0_sim     = 0.00002
@@ -359,7 +379,7 @@ D0_sim     = 0.0
 #
 # x_sim
 x_sim = numpy.array( [
-	m_mobility_sim, m_testing_sim, I0_sim, W0_sim, beta_bar_sim
+	m_mobility_sim, m_testing_sim, m_stime_sim, I0_sim, W0_sim, beta_bar_sim
 ] )
 #
 #
@@ -370,8 +390,8 @@ actual_seed = [ random_seed ]
 def x2seirwd_all(x) :
 	#
 	# unpack x
-	cov_mul            = x[0 : 2]
-	[I0, W0, beta_bar] = x[2 : 5]
+	cov_mul            = x[0 : 3]
+	[I0, W0, beta_bar] = x[3 : 6]
 	#
 	# beta_all
 	beta_all = beta_bar * numpy.exp( numpy.matmul(covariates, cov_mul) )
@@ -497,19 +517,19 @@ def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 	# printout
 	fmt = '{:<15s}{:>12s}{:>12s}{:>12s}'
 	line = fmt.format(
-		'x_name', 'x_fit','x_lower','x_upper'
+		'x_name', 'x_fit','x_lower','x_upper', 'std_error'
 	)
 	print(line)
 	for i in range( n_x ) :
-		fmt = '{:<15s}{:+12.7f}{:+12.7f}{:+12.7f}'
+		fmt = '{:<15s}{:+12.7f}{:+12.7f}{:+12.7f}{:+12.7f}'
 		line = fmt.format(
-			x_name[i], x_fit[i], x_lower[i], x_upper[i]
+			x_name[i], x_fit[i], x_lower[i], x_upper[i], std_error[i]
 		)
 		print(line)
 	if data_file == '' :
-		fmt = '{:<15s}{:>12s}{:>12s}{:>12s}{:>12s}{:>12s}'
+		fmt = '{:<15s}{:>12s}{:>12s}{:>12s}{:>12s}'
 		line = fmt.format(
-			'x_name', 'x_sim','x_fit','rel_error','std_error','residual'
+			'x_name', 'x_fit','x_sim','rel_error','residual'
 		)
 		print(line)
 		for i in range( n_x ) :
@@ -518,9 +538,9 @@ def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 			else :
 				rel_error = x_fit[i] / x_sim[i] - 1.0
 			residual  = (x_fit[i] - x_sim[i]) / std_error[i]
-			fmt = '{:<15s}{:+12.7f}{:+12.7f}{:+12.7f}{:+12.7f}{:+12.7f}'
+			fmt = '{:<15s}{:+12.7f}{:+12.7f}{:+12.7f}{:+12.7f}'
 			line = fmt.format(x_name[i],
-				x_sim[i], x_fit[i], rel_error, std_error[i], residual
+				x_fit[i], x_sim[i], rel_error, residual
 			)
 			print(line)
 	# -----------------------------------------------------------------------
@@ -564,8 +584,8 @@ def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 	ax3.plot( [t_all[0], t_all[-1]], [0.0, 0.0], 'k-' )
 	ax3.set_ylabel('weighted residuals')
 	#
-	cov_mul  = x_fit[0 : 2]
-	beta_bar = x_fit[4]
+	cov_mul  = x_fit[0 : 3]
+	beta_bar = x_fit[5]
 	beta_all = beta_bar * numpy.exp( numpy.matmul(covariates, cov_mul) )
 	ax4.plot(t_all, beta_all, 'k-')
 	ax4.set_xlabel('time')
@@ -613,6 +633,10 @@ def covid_19_xam(call_count = 0) :
 	# -1 <= m_1 <= 0
 	x_lower[1] = 10.0 * x_sim[1]
 	x_upper[1] = 0.0
+	#
+	# -1 <= m_2 <= 0
+	x_lower[2] = 10.0 * x_sim[1]
+	x_upper[2] = 0.0
 	#
 	# currently not using log-scaling
 	log_scale    = numpy.array( n_x * [ False ] )
