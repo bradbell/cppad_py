@@ -73,6 +73,7 @@ chi_known    = 0.1
 xi_known     = 0.00
 delta_known  = 0.2
 # %$$
+# All of theses rates must be non-negative.
 #
 # $subhead Initial Values$$
 # The initial size of the Recovered group $latex R(0)$$
@@ -129,13 +130,14 @@ x_name = [ 'm_mobility', 'm_testing', 'm_stime', 'I(0)', 'W(0)', 'beta_bar' ]
 # These derivatives are used during optimization as well as for
 # computing the observed information matrix.
 #
-# $subhead Bounds$$
+# $subhead Model Bounds$$
 # The infection rate $latex \beta(t)$$ must be non-negative; i.e.,
 # $latex \[
 #	0 \leq \bar{\beta} \exp[ m_0 c_0 (t) + m_1 c_1 (t) + m_2 c_2 (t) ]
 # \] $$
 # is true for all $latex t$$.
-# In addition, the size of the groups cannot be negative; i.e.,
+# In addition, the size of the groups cannot be negative.
+# It is sufficient to enforce this constraint on the initial conditions; i.e.,
 # $latex \[
 #	\begin{array}{lcr}
 #	0   &  \leq & \bar{\beta }   \\
@@ -143,11 +145,22 @@ x_name = [ 'm_mobility', 'm_testing', 'm_stime', 'I(0)', 'W(0)', 'beta_bar' ]
 #	0   & \leq  & W(0)
 #	\end{array}
 # \] $$
-# Upper and lower bounds are included for all the unknown parameters
-# as an aid to the optimizer.
+#
+# $subhead Actual Bounds$$
+# The following actual upper and lower bounds for the unknown parameters
+# are used as an as an aid to the optimizer:
+# $srcthisfile%
+#	0%# BEGIN_ACTUAL_BOUNDS%# END_ACTUAL_BOUNDS%1
+# %$$
+# where $icode x_sim$$ is the
+# $cref/simulation/numeric_covid_19_xam.py/Data/Simulation/$$ value
+# for the unknown parameters and $icode actual_bound_factor$$ is chosen below.
 # The problem has not really been solved if bounds,
-# other than the ones above, are active at the solution of the
+# other than the model bounds above, are active at the solution of the
 # optimization problem.
+# $srccode%py%
+actual_bound_factor = 10.0
+# %$$
 #
 # $head Data$$
 # The data in this model is the cumulative number of deaths,
@@ -188,7 +201,7 @@ data_file = ''                                         # empty string
 # and a CV of one in the definition of the likelihood.
 # This enables checking that the unknown parameters can be accurately
 # identified using perfect data.
-# For real data (see $cref/data_file/numeric_covid_19_xam.py/Data/data_file/$$)
+# For real data (when $icode data_file$$ is not empty)
 # this value should be adjusted so that the average residual has variance one.
 # $srccode%py%
 death_data_cv = 0.25
@@ -196,6 +209,19 @@ death_data_cv = 0.25
 # Note this is the noise level in the original data before it is
 # sub-sampled using
 # $cref/sample_interval/numeric_covid_19_xam.py/Data/sample_interval/$$.
+#
+# $subhead Simulation$$
+# If $icode data_file$$ is the empty string, the data is simulated using
+# the following values for the
+# $cref/unknown parameters/numeric_covid_19_xam.py/Unknown Parameters/$$:
+# $srccode%py%
+m_mobility_sim    =   1.0  # m_0
+m_testing_sim     = - 1.0  # m_1
+m_stime_sim       = - 1.0  # m_2
+I0_sim            =  2e-5  # I(0)
+W0_sim            =  2e-5  # W(0)
+beta_bar_sim      =  2.0   # baseline value for beta
+# %$$
 #
 # $subhead Weighted Residuals$$
 # If $icode death_data_cv$$ is zero, $latex \lambda = 1$$, otherwise
@@ -379,17 +405,7 @@ assert numpy.all( covariates[:,1] <= 1.0 )
 assert numpy.all( 0.0 <= covariates[:,2] )
 assert numpy.all( covariates[:,2] <= 1.0 )
 #
-# beta_bar_sim
-beta_bar_sim = 2.0
-#
-# covariate multipliers used in simulation
-m_mobility_sim    =   1.0
-m_testing_sim     = - 1.0
-m_stime_sim       = - 1.0
-#
-# initial conditions used to simulate data
-I0_sim     = 2e-5
-W0_sim     = 2e-5
+# other initial conditions used to simulate data
 E0_sim     = I0_sim * gamma_known / sigma_known
 S0_sim     = 1.0 - E0_sim - I0_sim - W0_sim
 R0_sim     = 0.0
@@ -659,18 +675,14 @@ def covid_19_xam(call_count = 0) :
 		'verbose' : 0,
 	}
 	# -----------------------------------------------------------------------
-	# bounds
+	# This code is used by the $subhead Actual Bounds$$ documentation
+# BEGIN_ACTUAL_BOUNDS
 	n_x = len(x_name)
-	x_lower    = numpy.zeros( n_x, dtype=float)
-	x_upper    = x_sim * 10.0
-	#
-	# -1 <= m_1 <= 0
-	x_lower[1] = 10.0 * x_sim[1]
-	x_upper[1] = 0.0
-	#
-	# -1 <= m_2 <= 0
-	x_lower[2] = 10.0 * x_sim[1]
-	x_upper[2] = 0.0
+	x_lower                = numpy.zeros( n_x, dtype=float)
+	x_upper                = numpy.zeros( n_x, dtype=float)
+	x_upper[ x_sim > 0.0 ] = actual_bound_factor * x_sim[ x_sim > 0.0 ]
+	x_lower[ x_sim < 0.0 ] = actual_bound_factor * x_sim[ x_sim < 0.0 ]
+# END_ACTUAL_BOUNDS
 	#
 	# currently not using log-scaling
 	log_scale    = numpy.array( n_x * [ False ] )
