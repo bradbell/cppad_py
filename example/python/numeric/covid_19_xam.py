@@ -23,9 +23,6 @@
 #
 # $section Example Fitting an SEIRWD Model for Covid-19$$
 #
-# $head Model$$
-# We use the $cref/seirwd/numeric_seirwd_model/$$ model and notation.
-#
 # $head Covariates$$
 # In this example there are two covariates that
 # affect the infectious rate $latex \beta$$:
@@ -44,7 +41,10 @@
 # time zero. It is assumed here that the baseline condition corresponds
 # to time zero.
 #
-# $head beta(t)$$
+# $head Model ODE$$
+# We use the $cref/seirwd/numeric_seirwd_model/$$ model and notation.
+#
+# $subhead beta(t)$$
 # Our model for the infectious rate is
 # $latex \[
 #	\beta(t) = \bar{\beta} \exp[ m_0 c_0 (t) + m_1 c_1 (t) + m_2 c_2 (t) ]
@@ -56,7 +56,7 @@
 # to all the covariates being zero.
 # The covariate multipliers, and the baseline infectious rate, are unknown.
 #
-# $head Other Rates$$
+# $subhead Other Rates$$
 # The other rates
 # $latex \alpha(t)$$,
 # $latex \sigma(t)$$,
@@ -74,7 +74,7 @@ xi_known     = 0.00
 delta_known  = 0.2
 # %$$
 #
-# $head Initial Values$$
+# $subhead Initial Values$$
 # The initial size of the Recovered group $latex R(0)$$
 # and of the Death group $latex D(0)$$ is zero.
 # We use fraction of the total population for sizes, so the sum of the
@@ -95,7 +95,7 @@ delta_known  = 0.2
 #	S(0) = 1 - E(0) - I(0) - W(0)
 # \] $$
 #
-# $head Ode Solver$$
+# $subhead Ode Solver$$
 # There are two choices for $icode ode_method$$,
 # the method used to solve the ODE:
 # $cref/runge4/numeric_runge4_step/$$ and
@@ -110,7 +110,7 @@ ode_n_step = 4
 # %$$
 #
 # $head Unknown Parameters$$
-# In summary, the unknown parameter vector in this model is
+# The unknown parameter vector in this model is
 # $latex \[
 #	x = [ m_0, m_1, m_2, I(0), W(0), \bar{\beta} ]
 # \] $$
@@ -118,7 +118,18 @@ ode_n_step = 4
 x_name = [ 'm_mobility', 'm_testing', 'm_stime', 'I(0)', 'W(0)', 'beta_bar' ]
 # %$$
 #
-# $head Bounds$$
+# $subhead Maximum Likelihood$$
+# We use a Gaussian likelihood for each of the differences in the
+# cumulative deaths. The unknown parameters are estimated by maximizing the
+# product of these likelihoods; i.e., the differences are modeled as being
+# independent. The covariance of the estimates is approximated
+# by the inverse of the observed information matrix.
+# AD is used to compute first and second derivatives of the likelihood
+# w.r.t. the unknown parameters $latex x$$.
+# These derivatives are used during optimization as well as for
+# computing the observed information matrix.
+#
+# $subhead Bounds$$
 # The infection rate $latex \beta(t)$$ must be non-negative; i.e.,
 # $latex \[
 #	0 \leq \bar{\beta} \exp[ m_0 c_0 (t) + m_1 c_1 (t) + m_2 c_2 (t) ]
@@ -170,21 +181,10 @@ data_file = '/home/bradbell/trash/covid_19/seirwd.csv' # New York
 data_file = ''                                         # empty string
 # %$$
 #
-# $head Maximum Likelihood$$
-# We use a Gaussian likelihood for each of the differences in the
-# cumulative deaths. The unknown parameters are estimated by maximizing the
-# product of these likelihoods; i.e., the differences are modeled as being
-# independent. The covariance of the estimates is approximated
-# by the inverse of the observed information matrix.
-# AD is used to compute first and second derivatives of the likelihood
-# w.r.t. the unknown parameters $latex x$$.
-# These derivatives are used during optimization as well as for
-# computing the observed information matrix.
-#
-# $head Coefficient of Variation$$
+# $subhead Coefficient of Variation$$
 # This is the coefficient of variation for the differences
 # in the cumulative death data as a fraction, not a percent.
-# If this value is zero, a CV of  zero is used for data simulation
+# If this value is zero, a CV of zero is used for data simulation
 # and a CV of one in the definition of the likelihood.
 # This enables checking that the unknown parameters can be accurately
 # identified using perfect data.
@@ -197,7 +197,7 @@ death_data_cv = 0.25
 # sub-sampled using
 # $cref/sample_interval/numeric_covid_19_xam.py/Data/sample_interval/$$.
 #
-# $head Data Residuals$$
+# $subhead Weighted Residuals$$
 # If $icode death_data_cv$$ is zero, $latex \lambda = 1$$, otherwise
 # $latex \lambda$$ is equal to
 # $codei%
