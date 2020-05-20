@@ -15,7 +15,7 @@ MathJax.Hub.Config({
 <title>Example Fitting an SEIRWD Model for Covid-19</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
 <meta name="description" id="description" content="Example Fitting an SEIRWD Model for Covid-19">
-<meta name="keywords" id="keywords" content=" example fitting seirwd model covid-19 covariates beta(t) other rates initial values ode solver unknown parameters bounds data maximum likelihood display fit results plot printout coefficient variation residuals random seed start file sample interval debug output source code ">
+<meta name="keywords" id="keywords" content=" example fitting seirwd model covid-19 covariates ode beta(t) other rates initial values solver unknown parameters maximum likelihood bounds actual data sample_interval data_file coefficient variation simulation weighted residuals random seed start display fit results plot printout debug output source code ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -62,35 +62,30 @@ A:active { color : purple }
 @(@\newcommand{\B}[1]{ {\bf #1} }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Example Fitting an SEIRWD Model for Covid-19</big></big></b></center>
 
-<br><a href="numeric_covid_19_xam.py.htm#Model" target="_top">Model</a>
 <br><a href="numeric_covid_19_xam.py.htm#Covariates" target="_top">Covariates</a>
-<br><a href="numeric_covid_19_xam.py.htm#beta(t)" target="_top">beta(t)</a>
-<br><a href="numeric_covid_19_xam.py.htm#Other Rates" target="_top">Other&nbsp;Rates</a>
-<br><a href="numeric_covid_19_xam.py.htm#Initial Values" target="_top">Initial&nbsp;Values</a>
-<br><a href="numeric_covid_19_xam.py.htm#Ode Solver" target="_top">Ode&nbsp;Solver</a>
+<br><a href="numeric_covid_19_xam.py.htm#Model ODE" target="_top">Model&nbsp;ODE</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Model ODE.beta(t)" target="_top">beta(t)</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Model ODE.Other Rates" target="_top">Other&nbsp;Rates</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Model ODE.Initial Values" target="_top">Initial&nbsp;Values</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Model ODE.Ode Solver" target="_top">Ode&nbsp;Solver</a>
 <br><a href="numeric_covid_19_xam.py.htm#Unknown Parameters" target="_top">Unknown&nbsp;Parameters</a>
-<br><a href="numeric_covid_19_xam.py.htm#Bounds" target="_top">Bounds</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Unknown Parameters.Maximum Likelihood" target="_top">Maximum&nbsp;Likelihood</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Unknown Parameters.Model Bounds" target="_top">Model&nbsp;Bounds</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Unknown Parameters.Actual Bounds" target="_top">Actual&nbsp;Bounds</a>
 <br><a href="numeric_covid_19_xam.py.htm#Data" target="_top">Data</a>
-<br><a href="numeric_covid_19_xam.py.htm#Maximum Likelihood" target="_top">Maximum&nbsp;Likelihood</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Data.sample_interval" target="_top">sample_interval</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Data.data_file" target="_top">data_file</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Data.Coefficient of Variation" target="_top">Coefficient&nbsp;of&nbsp;Variation</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Data.Simulation" target="_top">Simulation</a>
+<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Data.Weighted Residuals" target="_top">Weighted&nbsp;Residuals</a>
+<br><a href="numeric_covid_19_xam.py.htm#Random Seed" target="_top">Random&nbsp;Seed</a>
+<br><a href="numeric_covid_19_xam.py.htm#Random Start" target="_top">Random&nbsp;Start</a>
 <br><a href="numeric_covid_19_xam.py.htm#Display Fit Results" target="_top">Display&nbsp;Fit&nbsp;Results</a>
 <br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Display Fit Results.Plot" target="_top">Plot</a>
 <br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Display Fit Results.Printout" target="_top">Printout</a>
-<br><a href="numeric_covid_19_xam.py.htm#Coefficient of Variation" target="_top">Coefficient&nbsp;of&nbsp;Variation</a>
-<br><a href="numeric_covid_19_xam.py.htm#Data Residuals" target="_top">Data&nbsp;Residuals</a>
-<br><a href="numeric_covid_19_xam.py.htm#Random Seed" target="_top">Random&nbsp;Seed</a>
-<br><a href="numeric_covid_19_xam.py.htm#Random Start" target="_top">Random&nbsp;Start</a>
-<br><a href="numeric_covid_19_xam.py.htm#Data File" target="_top">Data&nbsp;File</a>
-<br>&#160;&#160;&#160;&#160;&#160;<a href="numeric_covid_19_xam.py.htm#Data File.Sample Interval" target="_top">Sample&nbsp;Interval</a>
 <br><a href="numeric_covid_19_xam.py.htm#Debug Output" target="_top">Debug&nbsp;Output</a>
 <br><a href="numeric_covid_19_xam.py.htm#Source Code" target="_top">Source&nbsp;Code</a>
 <br><br>
-<b><big><a name="Model" id="Model">Model</a></big></b>
-<br>
-We use the <a href="numeric_seirwd_model.htm" target="_top"><span style='white-space: nowrap'>seirwd</span></a>
- model and notation.
-
-<br>
-<br>
 <b><big><a name="Covariates" id="Covariates">Covariates</a></big></b>
 <br>
 In this example there are two covariates that
@@ -120,7 +115,14 @@ to time zero.
 
 <br>
 <br>
-<b><big><a name="beta(t)" id="beta(t)">beta(t)</a></big></b>
+<b><big><a name="Model ODE" id="Model ODE">Model ODE</a></big></b>
+<br>
+We use the <a href="numeric_seirwd_model.htm" target="_top"><span style='white-space: nowrap'>seirwd</span></a>
+ model and notation.
+
+<br>
+<br>
+<big><a name="Model ODE.beta(t)" id="Model ODE.beta(t)">beta(t)</a></big>
 <br>
 Our model for the infectious rate is
 <small>@[@
@@ -145,7 +147,7 @@ The covariate multipliers, and the baseline infectious rate, are unknown.
 
 <br>
 <br>
-<b><big><a name="Other Rates" id="Other Rates">Other Rates</a></big></b>
+<big><a name="Model ODE.Other Rates" id="Model ODE.Other Rates">Other Rates</a></big>
 <br>
 The other rates
 <small>@(@
@@ -173,8 +175,11 @@ gamma_known  <font color="#990000">=</font> <font color="#993399">0.1</font>
 chi_known    <font color="#990000">=</font> <font color="#993399">0.1</font>
 xi_known     <font color="#990000">=</font> <font color="#993399">0.00</font>
 delta_known  <font color="#990000">=</font> <font color="#993399">0.2</font></tt></pre>
+All of theses rates must be non-negative.
+
 <br>
-<b><big><a name="Initial Values" id="Initial Values">Initial Values</a></big></b>
+<br>
+<big><a name="Model ODE.Initial Values" id="Model ODE.Initial Values">Initial Values</a></big>
 <br>
 The initial size of the Recovered group <small>@(@
 R(0)
@@ -212,7 +217,7 @@ expressed as a function of the other initial conditions:
 
 <br>
 <br>
-<b><big><a name="Ode Solver" id="Ode Solver">Ode Solver</a></big></b>
+<big><a name="Model ODE.Ode Solver" id="Model ODE.Ode Solver">Ode Solver</a></big>
 <br>
 There are two choices for 
 <code><i><font color="black"><span style='white-space: nowrap'>ode_method</span></font></i></code>
@@ -229,7 +234,7 @@ the number of step to take for each time interval in
 <code><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i></code>
 ,
 before it is sub-sampled using the
-<a href="numeric_covid_19_xam.py.htm#Data File.Sample Interval" target="_top"><span style='white-space: nowrap'>sample_interval</span></a>
+<a href="numeric_covid_19_xam.py.htm#Data.sample_interval" target="_top"><span style='white-space: nowrap'>sample_interval</span></a>
 .
 <pre style='display:inline'><tt>
 ode_method <font color="#990000">=</font> <font color="#FF0000">'runge4'</font>
@@ -238,7 +243,7 @@ ode_n_step <font color="#990000">=</font> <font color="#993399">4</font>
 <br>
 <b><big><a name="Unknown Parameters" id="Unknown Parameters">Unknown Parameters</a></big></b>
 <br>
-In summary, the unknown parameter vector in this model is
+The unknown parameter vector in this model is
 <small>@[@
 
 	x = [ m_0, m_1, m_2, I(0), W(0), \bar{\beta} ]
@@ -248,49 +253,7 @@ In summary, the unknown parameter vector in this model is
 x_name <font color="#990000">=</font> <font color="#990000">[</font> <font color="#FF0000">'m_mobility'</font><font color="#990000">,</font> <font color="#FF0000">'m_testing'</font><font color="#990000">,</font> <font color="#FF0000">'m_stime'</font><font color="#990000">,</font> <font color="#FF0000">'I(0)'</font><font color="#990000">,</font> <font color="#FF0000">'W(0)'</font><font color="#990000">,</font> <font color="#FF0000">'beta_bar'</font> <font color="#990000">]</font>
 </tt></pre>
 <br>
-<b><big><a name="Bounds" id="Bounds">Bounds</a></big></b>
-<br>
-The infection rate <small>@(@
-\beta(t)
-@)@</small> must be non-negative; i.e.,
-<small>@[@
-
-	0 \leq \bar{\beta} \exp[ m_0 c_0 (t) + m_1 c_1 (t) + m_2 c_2 (t) ]
-
-@]@</small>
-is true for all <small>@(@
-t
-@)@</small>.
-In addition, the size of the groups cannot be negative; i.e.,
-<small>@[@
-
-	\begin{array}{lcr}
-	0   &  \leq & \bar{\beta }   \\
-	0   &  \leq & I(0)            \\
-	0   & \leq  & W(0)
-	\end{array}
-
-@]@</small>
-Upper and lower bounds are included for all the unknown parameters
-as an aid to the optimizer.
-The problem has not really been solved if bounds,
-other than the ones above, are active at the solution of the
-optimization problem.
-
-<br>
-<br>
-<b><big><a name="Data" id="Data">Data</a></big></b>
-<br>
-The data in this model is the cumulative number of deaths,
-as a fraction of the total population and as a function of time.
-We assume that new deaths are recorded for time intervals
-and the cumulative deaths is the sum of these recordings.
-For this reason, we model the difference of the cumulative deaths
-between time points as independent.
-
-<br>
-<br>
-<b><big><a name="Maximum Likelihood" id="Maximum Likelihood">Maximum Likelihood</a></big></b>
+<big><a name="Unknown Parameters.Maximum Likelihood" id="Unknown Parameters.Maximum Likelihood">Maximum Likelihood</a></big>
 <br>
 We use a Gaussian likelihood for each of the differences in the
 cumulative deaths. The unknown parameters are estimated by maximizing the
@@ -305,6 +268,201 @@ These derivatives are used during optimization as well as for
 computing the observed information matrix.
 
 <br>
+<br>
+<big><a name="Unknown Parameters.Model Bounds" id="Unknown Parameters.Model Bounds">Model Bounds</a></big>
+<br>
+The infection rate <small>@(@
+\beta(t)
+@)@</small> must be non-negative; i.e.,
+<small>@[@
+
+	0 \leq \bar{\beta} \exp[ m_0 c_0 (t) + m_1 c_1 (t) + m_2 c_2 (t) ]
+
+@]@</small>
+is true for all <small>@(@
+t
+@)@</small>.
+In addition, the size of the groups cannot be negative.
+It is sufficient to enforce this constraint on the initial conditions; i.e.,
+<small>@[@
+
+	\begin{array}{lcr}
+	0   &  \leq & \bar{\beta }   \\
+	0   &  \leq & I(0)            \\
+	0   & \leq  & W(0)
+	\end{array}
+
+@]@</small>
+
+<br>
+<br>
+<big><a name="Unknown Parameters.Actual Bounds" id="Unknown Parameters.Actual Bounds">Actual Bounds</a></big>
+<br>
+The following actual upper and lower bounds for the unknown parameters
+are used as an as an aid to the optimizer:
+<pre><tt>     n_x <font color="#990000">=</font> <b><font color="#000000">len</font></b><font color="#990000">(</font>x_name<font color="#990000">)</font>
+     x_lower                <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">zeros</font></b><font color="#990000">(</font> n_x<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
+     x_upper                <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">zeros</font></b><font color="#990000">(</font> n_x<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
+     x_upper<font color="#990000">[</font> x_sim <font color="#990000">&gt;</font> <font color="#993399">0.0</font> <font color="#990000">]</font> <font color="#990000">=</font> actual_bound_factor <font color="#990000">*</font> x_sim<font color="#990000">[</font> x_sim <font color="#990000">&gt;</font> <font color="#993399">0.0</font> <font color="#990000">]</font>
+     x_lower<font color="#990000">[</font> x_sim <font color="#990000">&lt;</font> <font color="#993399">0.0</font> <font color="#990000">]</font> <font color="#990000">=</font> actual_bound_factor <font color="#990000">*</font> x_sim<font color="#990000">[</font> x_sim <font color="#990000">&lt;</font> <font color="#993399">0.0</font> <font color="#990000">]</font></tt></pre>
+where 
+<code><i><font color="black"><span style='white-space: nowrap'>x_sim</span></font></i></code>
+ is the
+<a href="numeric_covid_19_xam.py.htm#Data.Simulation" target="_top"><span style='white-space: nowrap'>simulation</span></a>
+ value
+for the unknown parameters and 
+<code><i><font color="black"><span style='white-space: nowrap'>actual_bound_factor</span></font></i></code>
+ is chosen below.
+The problem has not really been solved if bounds,
+other than the model bounds above, are active at the solution of the
+optimization problem.
+<pre style='display:inline'><tt>
+actual_bound_factor <font color="#990000">=</font> <font color="#993399">10.0</font>
+</tt></pre>
+<br>
+<b><big><a name="Data" id="Data">Data</a></big></b>
+<br>
+The data in this model is the cumulative number of deaths,
+as a fraction of the total population and as a function of time.
+We assume that new deaths are recorded for time intervals
+and the cumulative deaths is the sum of these recordings.
+For this reason, we model the difference of the cumulative deaths
+between time points as independent.
+
+<br>
+<br>
+<big><a name="Data.sample_interval" id="Data.sample_interval">sample_interval</a></big>
+<br>
+It is possible to sub-sample the data in order to reduce noise.
+The cumulative death data is just sub-sampled since the reduces noise by
+the summing the differences corresponding to a longer time period.
+The covariate data is averaged over the sample interval.
+The 
+<code><i><font color="black"><span style='white-space: nowrap'>sample_interval</span></font></i></code>
+ must be either one or a positive even integer
+(even so an original data point corresponds to the center of the interval).
+<pre style='display:inline'><tt>
+sample_interval <font color="#990000">=</font> <font color="#993399">1</font>
+</tt></pre>
+<br>
+<big><a name="Data.data_file" id="Data.data_file">data_file</a></big>
+<br>
+If the data file name is the empty string, the cumulative death data,
+and corresponding covariates, are simulated by the program.
+Otherwise, the data file must be a CSV file with the following columns:
+
+<code><i><font color="black"><span style='white-space: nowrap'>day</span></font></i></code>
+, 
+<code><i><font color="black"><span style='white-space: nowrap'>death</span></font></i></code>
+, 
+<code><i><font color="black"><span style='white-space: nowrap'>mobility</span></font></i></code>
+, 
+<code><i><font color="black"><span style='white-space: nowrap'>testing</span></font></i></code>
+.
+In this case the data file is used for the
+cumulative death and corresponding covariates.
+<pre style='display:inline'><tt>
+data_file <font color="#990000">=</font> <font color="#FF0000">'/home/bradbell/Downloads/561.csv'</font>         <i><font color="#9A1900"># Pennnslyvania</font></i>
+data_file <font color="#990000">=</font> <font color="#FF0000">'/home/bradbell/trash/covid_19/seirwd.csv'</font> <i><font color="#9A1900"># New York</font></i>
+data_file <font color="#990000">=</font> <font color="#FF0000">''</font>                                         <i><font color="#9A1900"># empty string</font></i>
+</tt></pre>
+<br>
+<big><a name="Data.Coefficient of Variation" id="Data.Coefficient of Variation">Coefficient of Variation</a></big>
+<br>
+This is the coefficient of variation for the differences
+in the cumulative death data as a fraction, not a percent.
+If this value is zero, a CV of zero is used for data simulation
+and a CV of one in the definition of the likelihood.
+This enables checking that the unknown parameters can be accurately
+identified using perfect data.
+For real data (when 
+<code><i><font color="black"><span style='white-space: nowrap'>data_file</span></font></i></code>
+ is not empty)
+this value should be adjusted so that the average residual has variance one.
+<pre style='display:inline'><tt>
+death_data_cv <font color="#990000">=</font> <font color="#993399">0.25</font>
+</tt></pre>
+Note this is the noise level in the original data before it is
+sub-sampled using
+<a href="numeric_covid_19_xam.py.htm#Data.sample_interval" target="_top"><span style='white-space: nowrap'>sample_interval</span></a>
+.
+
+<br>
+<br>
+<big><a name="Data.Simulation" id="Data.Simulation">Simulation</a></big>
+<br>
+If 
+<code><i><font color="black"><span style='white-space: nowrap'>data_file</span></font></i></code>
+ is the empty string, the data is simulated using
+the following values for the
+<a href="numeric_covid_19_xam.py.htm#Unknown Parameters" target="_top"><span style='white-space: nowrap'>unknown&nbsp;parameters</span></a>
+:
+<pre><tt>m_mobility_sim    <font color="#990000">=</font>   <font color="#993399">1.0</font>  <i><font color="#9A1900"># m_0</font></i>
+m_testing_sim     <font color="#990000">=</font> <font color="#990000">-</font> <font color="#993399">1.0</font>  <i><font color="#9A1900"># m_1</font></i>
+m_stime_sim       <font color="#990000">=</font> <font color="#990000">-</font> <font color="#993399">1.0</font>  <i><font color="#9A1900"># m_2</font></i>
+I0_sim            <font color="#990000">=</font>  <font color="#993399">2e-5</font>  <i><font color="#9A1900"># I(0)</font></i>
+W0_sim            <font color="#990000">=</font>  <font color="#993399">2e-5</font>  <i><font color="#9A1900"># W(0)</font></i>
+beta_bar_sim      <font color="#990000">=</font>  <font color="#993399">2.0</font>   <i><font color="#9A1900"># baseline value for beta</font></i></tt></pre>
+<br>
+<big><a name="Data.Weighted Residuals" id="Data.Weighted Residuals">Weighted Residuals</a></big>
+<br>
+If 
+<code><i><font color="black"><span style='white-space: nowrap'>death_data_cv</span></font></i></code>
+ is zero, <small>@(@
+\lambda = 1
+@)@</small>, otherwise
+<small>@(@
+\lambda
+@)@</small> is equal to
+
+<code><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>death_data_cv</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;*&nbsp;sqrt(</span></font><i><font color="black"><span style='white-space: nowrap'>sample_interval</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+</span></font></code>
+.
+(Note that the standard deviation of a sum of independent values is the
+square root of the sum of the variance of each of the values.)
+Let <small>@(@
+y_i
+@)@</small> be the i-th value for the cumulative death data.
+The weighted residuals (some times referred to as just the residuals) are
+<small>@[@
+
+	r_i = \frac{ ( y_{i+1} - y_i ) - [ D( t_{i+1} ) - D( t_i ) ] }{
+	\lambda ( y_{i+1} - y_i ) }
+
+@]@</small>
+where # <small>@(@
+D(t)
+@)@</small> is the model for the cumulative data
+given the fit results.
+The time corresponding to <small>@(@
+r_i
+@)@</small> is <small>@(@
+( t_{i+1} + t_i ) / 2
+@)@</small>.
+We put the data difference in the denominator,
+instead of the model difference,
+because it is constant with respect to the unknown parameters.
+
+<br>
+<br>
+<b><big><a name="Random Seed" id="Random Seed">Random Seed</a></big></b>
+<br>
+This is the random seed used to simulate noise in the data.
+If this value is zero, the system clock is used to choose the random seed.
+<pre style='display:inline'><tt>
+random_seed <font color="#990000">=</font> <font color="#993399">0</font>
+</tt></pre>
+<br>
+<b><big><a name="Random Start" id="Random Start">Random Start</a></big></b>
+<br>
+The optimizer needs a good starting point in order to succeed.
+This is the number of random points, between the lower and upper limits,
+that are checked. The point with the best objective value is chosen
+as the starting point for the optimization.
+<pre style='display:inline'><tt>
+n_random_start <font color="#990000">=</font> <font color="#993399">4000</font>
+</tt></pre>
 <br>
 <b><big><a name="Display Fit Results" id="Display Fit Results">Display Fit Results</a></big></b>
 <br>
@@ -399,122 +557,6 @@ a table is printed with the following columns is also printed:
 </td></tr>
 </table>
 </li></ol>
-<br>
-<b><big><a name="Coefficient of Variation" id="Coefficient of Variation">Coefficient of Variation</a></big></b>
-<br>
-This is the coefficient of variation for the differences
-in the cumulative death data as a fraction, not a percent.
-If this value is zero, a CV of  zero is used for data simulation
-and a CV of one in the definition of the likelihood.
-This enables checking that the unknown parameters can be accurately
-identified using perfect data.
-For real data (see <a href="numeric_covid_19_xam.py.htm#Data File" target="_top"><span style='white-space: nowrap'>data_file</span></a>
-)
-this value should be adjusted so that the average residual has variance one.
-<pre style='display:inline'><tt>
-death_data_cv <font color="#990000">=</font> <font color="#993399">0.25</font>
-</tt></pre>
-Note this is the noise level in the original data before it is
-sub-sampled using
-<a href="numeric_covid_19_xam.py.htm#Data File.Sample Interval" target="_top"><span style='white-space: nowrap'>sample_interval</span></a>
-.
-
-<br>
-<br>
-<b><big><a name="Data Residuals" id="Data Residuals">Data Residuals</a></big></b>
-<br>
-If 
-<code><i><font color="black"><span style='white-space: nowrap'>death_data_cv</span></font></i></code>
- is zero, <small>@(@
-\lambda = 1
-@)@</small>, otherwise
-<small>@(@
-\lambda
-@)@</small> is equal to
-
-<code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>death_data_cv</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;*&nbsp;sqrt(</span></font><i><font color="black"><span style='white-space: nowrap'>sample_interval</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
-</span></font></code>
-.
-(Note that the standard deviation of a sum of independent values is the
-square root of the sum of the variance of each of the values.)
-Let <small>@(@
-y_i
-@)@</small> be the i-th value for the cumulative death data.
-The weighted residuals (some times referred to as just the residuals) are
-<small>@[@
-
-	r_i = \frac{ ( y_{i+1} - y_i ) - [ D( t_{i+1} ) - D( t_i ) ] }{
-	\lambda ( y_{i+1} - y_i ) }
-
-@]@</small>
-where # <small>@(@
-D(t)
-@)@</small> is the model for the cumulative data
-given the fit results.
-The time corresponding to <small>@(@
-r_i
-@)@</small> is <small>@(@
-( t_{i+1} + t_i ) / 2
-@)@</small>.
-We put the data difference in the denominator,
-instead of the model difference,
-because it is constant with respect to the unknown parameters.
-
-<br>
-<br>
-<b><big><a name="Random Seed" id="Random Seed">Random Seed</a></big></b>
-<br>
-This is the random seed used to simulate noise in the data.
-If this value is zero, the system clock is used to choose the random seed.
-<pre style='display:inline'><tt>
-random_seed <font color="#990000">=</font> <font color="#993399">0</font>
-</tt></pre>
-<br>
-<b><big><a name="Random Start" id="Random Start">Random Start</a></big></b>
-<br>
-The optimizer needs a good starting point in order to succeed.
-This is the number of random points, between the lower and upper limits,
-that are checked. The point with the best objective value is chosen
-as the starting point for the optimization.
-<pre style='display:inline'><tt>
-n_random_start <font color="#990000">=</font> <font color="#993399">4000</font>
-</tt></pre>
-<br>
-<b><big><a name="Data File" id="Data File">Data File</a></big></b>
-<br>
-If the data file name is the empty string, the cumulative death data,
-and corresponding covariates, are created by the program.
-Otherwise, the data file must be a CSV file with the following columns:
-
-<code><i><font color="black"><span style='white-space: nowrap'>day</span></font></i></code>
-, 
-<code><i><font color="black"><span style='white-space: nowrap'>death</span></font></i></code>
-, 
-<code><i><font color="black"><span style='white-space: nowrap'>mobility</span></font></i></code>
-, 
-<code><i><font color="black"><span style='white-space: nowrap'>testing</span></font></i></code>
-.
-In this case the data file is used for the
-cumulative death and corresponding covariates.
-<pre style='display:inline'><tt>
-data_file <font color="#990000">=</font> <font color="#FF0000">'/home/bradbell/trash/covid_19/seirwd.csv'</font> <i><font color="#9A1900"># example file name</font></i>
-data_file <font color="#990000">=</font> <font color="#FF0000">''</font>                                         <i><font color="#9A1900"># empty string</font></i>
-</tt></pre>
-<br>
-<big><a name="Data File.Sample Interval" id="Data File.Sample Interval">Sample Interval</a></big>
-<br>
-It is possible to sub-sample the data in order to reduce noise.
-The cumulative death data is just sub-sampled since the reduces noise by
-the summing the differences corresponding to a longer time period.
-The covariate data is averaged over the sample interval.
-The 
-<code><i><font color="black"><span style='white-space: nowrap'>sample_interval</span></font></i></code>
- must be either one or a positive even integer
-(even so an original data point corresponds to the center of the interval).
-<pre style='display:inline'><tt>
-sample_interval <font color="#990000">=</font> <font color="#993399">1</font>
-</tt></pre>
 <br>
 <b><big><a name="Debug Output" id="Debug Output">Debug Output</a></big></b>
 <br>
@@ -616,17 +658,7 @@ debug_output <font color="#990000">=</font> False
 <b><font color="#0000FF">assert</font></b> numpy<font color="#990000">.</font><b><font color="#000000">all</font></b><font color="#990000">(</font> <font color="#993399">0.0</font> <font color="#990000">&lt;=</font> covariates<font color="#990000">[:,</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">)</font>
 <b><font color="#0000FF">assert</font></b> numpy<font color="#990000">.</font><b><font color="#000000">all</font></b><font color="#990000">(</font> covariates<font color="#990000">[:,</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">&lt;=</font> <font color="#993399">1.0</font> <font color="#990000">)</font>
 <i><font color="#9A1900">#</font></i>
-<i><font color="#9A1900"># beta_bar_sim</font></i>
-beta_bar_sim <font color="#990000">=</font> <font color="#993399">2.0</font>
-<i><font color="#9A1900">#</font></i>
-<i><font color="#9A1900"># covariate multipliers used in simulation</font></i>
-m_mobility_sim    <font color="#990000">=</font>   <font color="#993399">1.0</font>
-m_testing_sim     <font color="#990000">=</font> <font color="#990000">-</font> <font color="#993399">1.0</font>
-m_stime_sim       <font color="#990000">=</font> <font color="#990000">-</font> <font color="#993399">1.0</font>
-<i><font color="#9A1900">#</font></i>
-<i><font color="#9A1900"># initial conditions used to simulate data</font></i>
-I0_sim     <font color="#990000">=</font> <font color="#993399">0.00002</font>
-W0_sim     <font color="#990000">=</font> <font color="#993399">0.00002</font>
+<i><font color="#9A1900"># other initial conditions used to simulate data</font></i>
 E0_sim     <font color="#990000">=</font> I0_sim <font color="#990000">*</font> gamma_known <font color="#990000">/</font> sigma_known
 S0_sim     <font color="#990000">=</font> <font color="#993399">1.0</font> <font color="#990000">-</font> E0_sim <font color="#990000">-</font> I0_sim <font color="#990000">-</font> W0_sim
 R0_sim     <font color="#990000">=</font> <font color="#993399">0.0</font>
@@ -680,6 +712,10 @@ actual_seed <font color="#990000">=</font> <font color="#990000">[</font> random
 <i><font color="#9A1900">#</font></i>
 <b><font color="#0000FF">def</font></b> <b><font color="#000000">weighted_data_residual</font></b><font color="#990000">(</font>D_data<font color="#990000">,</font> D_model<font color="#990000">)</font> <font color="#990000">:</font>
      Ddiff_data   <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">diff</font></b><font color="#990000">(</font>D_data<font color="#990000">)</font>
+     <b><font color="#0000FF">if</font></b> numpy<font color="#990000">.</font><b><font color="#000000">any</font></b><font color="#990000">(</font> Ddiff_data <font color="#990000">&lt;=</font> <font color="#993399">0</font> <font color="#990000">)</font>  <font color="#990000">:</font>
+          <b><font color="#0000FF">print</font></b><font color="#990000">(</font><font color="#FF0000">'covid_19_xam: cumutative death data not increasing at times: '</font><font color="#990000">)</font>
+          t_msg <font color="#990000">=</font> t_all<font color="#990000">[</font><font color="#993399">0</font> <font color="#990000">:</font> <font color="#990000">-</font><font color="#993399">1</font><font color="#990000">]</font>
+          <b><font color="#0000FF">print</font></b><font color="#990000">(</font> t_msg<font color="#990000">[</font> Ddiff_data <font color="#990000">&lt;=</font> <font color="#993399">0</font> <font color="#990000">]</font> <font color="#990000">)</font>
      Ddiff_model  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">diff</font></b><font color="#990000">(</font>D_model<font color="#990000">)</font>
      residual     <font color="#990000">=</font> <font color="#990000">(</font>Ddiff_data <font color="#990000">-</font> Ddiff_model<font color="#990000">)</font> <font color="#990000">/</font> Ddiff_data
      <b><font color="#0000FF">if</font></b> death_data_cv <font color="#990000">&gt;</font> <font color="#993399">0.0</font> <font color="#990000">:</font>
@@ -789,13 +825,13 @@ actual_seed <font color="#990000">=</font> <font color="#990000">[</font> random
      <b><font color="#0000FF">print</font></b><font color="#990000">(</font><font color="#FF0000">''</font><font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># table of fit values</font></i>
-     fmt <font color="#990000">=</font> <font color="#FF0000">'{:&lt;15s}{:&gt;12s}{:&gt;12s}{:&gt;12s}{:&gt;12s}'</font>
+     fmt <font color="#990000">=</font> <font color="#FF0000">'{:&lt;15s}{:&gt;15s}{:&gt;15s}{:&gt;15s}{:&gt;15s}'</font>
      line <font color="#990000">=</font> fmt<font color="#990000">.</font><b><font color="#000000">format</font></b><font color="#990000">(</font>
           <font color="#FF0000">'x_name'</font><font color="#990000">,</font> <font color="#FF0000">'x_fit'</font><font color="#990000">,</font><font color="#FF0000">'x_lower'</font><font color="#990000">,</font><font color="#FF0000">'x_upper'</font><font color="#990000">,</font> <font color="#FF0000">'std_error'</font>
      <font color="#990000">)</font>
      <b><font color="#0000FF">print</font></b><font color="#990000">(</font>line<font color="#990000">)</font>
      <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n_x <font color="#990000">)</font> <font color="#990000">:</font>
-          fmt <font color="#990000">=</font> <font color="#FF0000">'{:&lt;15s}{:+12.7f}{:+12.7f}{:+12.7f}{:+12.7f}'</font>
+          fmt <font color="#990000">=</font> <font color="#FF0000">'{:&lt;15s}{:+15.9f}{:+15.9f}{:+15.9f}{:+15.9f}'</font>
           line <font color="#990000">=</font> fmt<font color="#990000">.</font><b><font color="#000000">format</font></b><font color="#990000">(</font>
                x_name<font color="#990000">[</font>i<font color="#990000">],</font> x_fit<font color="#990000">[</font>i<font color="#990000">],</font> x_lower<font color="#990000">[</font>i<font color="#990000">],</font> x_upper<font color="#990000">[</font>i<font color="#990000">],</font> std_error<font color="#990000">[</font>i<font color="#990000">]</font>
           <font color="#990000">)</font>
@@ -803,7 +839,7 @@ actual_seed <font color="#990000">=</font> <font color="#990000">[</font> random
      <b><font color="#0000FF">if</font></b> data_file <font color="#990000">==</font> <font color="#FF0000">''</font> <font color="#990000">:</font>
           <i><font color="#9A1900"># table of fit versus simulation</font></i>
           <b><font color="#0000FF">print</font></b><font color="#990000">(</font><font color="#FF0000">''</font><font color="#990000">)</font>
-          fmt <font color="#990000">=</font> <font color="#FF0000">'{:&lt;15s}{:&gt;12s}{:&gt;12s}{:&gt;12s}{:&gt;12s}'</font>
+          fmt <font color="#990000">=</font> <font color="#FF0000">'{:&lt;15s}{:&gt;15s}{:&gt;15s}{:&gt;15s}{:&gt;15s}'</font>
           line <font color="#990000">=</font> fmt<font color="#990000">.</font><b><font color="#000000">format</font></b><font color="#990000">(</font>
                <font color="#FF0000">'x_name'</font><font color="#990000">,</font> <font color="#FF0000">'x_fit'</font><font color="#990000">,</font><font color="#FF0000">'x_sim'</font><font color="#990000">,</font><font color="#FF0000">'rel_error'</font><font color="#990000">,</font><font color="#FF0000">'residual'</font>
           <font color="#990000">)</font>
@@ -814,7 +850,7 @@ actual_seed <font color="#990000">=</font> <font color="#990000">[</font> random
                <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
                     rel_error <font color="#990000">=</font> x_fit<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">/</font> x_sim<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">-</font> <font color="#993399">1.0</font>
                residual  <font color="#990000">=</font> <font color="#990000">(</font>x_fit<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">-</font> x_sim<font color="#990000">[</font>i<font color="#990000">])</font> <font color="#990000">/</font> std_error<font color="#990000">[</font>i<font color="#990000">]</font>
-               fmt <font color="#990000">=</font> <font color="#FF0000">'{:&lt;15s}{:+12.7f}{:+12.7f}{:+12.7f}{:+12.7f}'</font>
+               fmt <font color="#990000">=</font> <font color="#FF0000">'{:&lt;15s}{:+15.9f}{:+15.9f}{:+15.9f}{:+15.9f}'</font>
                line <font color="#990000">=</font> fmt<font color="#990000">.</font><b><font color="#000000">format</font></b><font color="#990000">(</font>x_name<font color="#990000">[</font>i<font color="#990000">],</font>
                     x_fit<font color="#990000">[</font>i<font color="#990000">],</font> x_sim<font color="#990000">[</font>i<font color="#990000">],</font> rel_error<font color="#990000">,</font> residual
                <font color="#990000">)</font>
@@ -892,18 +928,14 @@ actual_seed <font color="#990000">=</font> <font color="#990000">[</font> random
           <font color="#FF0000">'verbose'</font> <font color="#990000">:</font> <font color="#993399">0</font><font color="#990000">,</font>
      <font color="#990000">}</font>
      <i><font color="#9A1900"># -----------------------------------------------------------------------</font></i>
-     <i><font color="#9A1900"># bounds</font></i>
+     <i><font color="#9A1900"># This code is used by the $subhead Actual Bounds$$ documentation</font></i>
+<i><font color="#9A1900"># BEGIN_ACTUAL_BOUNDS</font></i>
      n_x <font color="#990000">=</font> <b><font color="#000000">len</font></b><font color="#990000">(</font>x_name<font color="#990000">)</font>
-     x_lower    <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">zeros</font></b><font color="#990000">(</font> n_x<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
-     x_upper    <font color="#990000">=</font> x_sim <font color="#990000">*</font> <font color="#993399">10.0</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># -1 &lt;= m_1 &lt;= 0</font></i>
-     x_lower<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">10.0</font> <font color="#990000">*</font> x_sim<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font>
-     x_upper<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">0.0</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># -1 &lt;= m_2 &lt;= 0</font></i>
-     x_lower<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">10.0</font> <font color="#990000">*</font> x_sim<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font>
-     x_upper<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">0.0</font>
+     x_lower                <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">zeros</font></b><font color="#990000">(</font> n_x<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
+     x_upper                <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">zeros</font></b><font color="#990000">(</font> n_x<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
+     x_upper<font color="#990000">[</font> x_sim <font color="#990000">&gt;</font> <font color="#993399">0.0</font> <font color="#990000">]</font> <font color="#990000">=</font> actual_bound_factor <font color="#990000">*</font> x_sim<font color="#990000">[</font> x_sim <font color="#990000">&gt;</font> <font color="#993399">0.0</font> <font color="#990000">]</font>
+     x_lower<font color="#990000">[</font> x_sim <font color="#990000">&lt;</font> <font color="#993399">0.0</font> <font color="#990000">]</font> <font color="#990000">=</font> actual_bound_factor <font color="#990000">*</font> x_sim<font color="#990000">[</font> x_sim <font color="#990000">&lt;</font> <font color="#993399">0.0</font> <font color="#990000">]</font>
+<i><font color="#9A1900"># END_ACTUAL_BOUNDS</font></i>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># currently not using log-scaling</font></i>
      log_scale    <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> n_x <font color="#990000">*</font> <font color="#990000">[</font> False <font color="#990000">]</font> <font color="#990000">)</font>
