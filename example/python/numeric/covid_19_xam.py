@@ -260,7 +260,8 @@ n_random_start = 4000
 # In this case the data file is used for the
 # cumulative death and corresponding covariates.
 # $srccode%py%
-data_file = '/home/bradbell/trash/covid_19/seirwd.csv' # example file name
+data_file = '/home/bradbell/Downloads/561.csv'         # Pennnslyvania
+data_file = '/home/bradbell/trash/covid_19/seirwd.csv' # New York
 data_file = ''                                         # empty string
 # %$$
 #
@@ -387,8 +388,8 @@ m_testing_sim     = - 1.0
 m_stime_sim       = - 1.0
 #
 # initial conditions used to simulate data
-I0_sim     = 0.00002
-W0_sim     = 0.00002
+I0_sim     = 2e-5
+W0_sim     = 2e-5
 E0_sim     = I0_sim * gamma_known / sigma_known
 S0_sim     = 1.0 - E0_sim - I0_sim - W0_sim
 R0_sim     = 0.0
@@ -442,6 +443,10 @@ def x2seirwd_all(x) :
 #
 def weighted_data_residual(D_data, D_model) :
 	Ddiff_data   = numpy.diff(D_data)
+	if numpy.any( Ddiff_data <= 0 )  :
+		print('covid_19_xam: cumutative death data not increasing at times: ')
+		t_msg = t_all[0 : -1]
+		print( t_msg[ Ddiff_data <= 0 ] )
 	Ddiff_model  = numpy.diff(D_model)
 	residual     = (Ddiff_data - Ddiff_model) / Ddiff_data
 	if death_data_cv > 0.0 :
@@ -551,13 +556,13 @@ def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 	print('')
 	#
 	# table of fit values
-	fmt = '{:<15s}{:>12s}{:>12s}{:>12s}{:>12s}'
+	fmt = '{:<15s}{:>15s}{:>15s}{:>15s}{:>15s}'
 	line = fmt.format(
 		'x_name', 'x_fit','x_lower','x_upper', 'std_error'
 	)
 	print(line)
 	for i in range( n_x ) :
-		fmt = '{:<15s}{:+12.7f}{:+12.7f}{:+12.7f}{:+12.7f}'
+		fmt = '{:<15s}{:+15.9f}{:+15.9f}{:+15.9f}{:+15.9f}'
 		line = fmt.format(
 			x_name[i], x_fit[i], x_lower[i], x_upper[i], std_error[i]
 		)
@@ -565,7 +570,7 @@ def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 	if data_file == '' :
 		# table of fit versus simulation
 		print('')
-		fmt = '{:<15s}{:>12s}{:>12s}{:>12s}{:>12s}'
+		fmt = '{:<15s}{:>15s}{:>15s}{:>15s}{:>15s}'
 		line = fmt.format(
 			'x_name', 'x_fit','x_sim','rel_error','residual'
 		)
@@ -576,7 +581,7 @@ def display_fit_results(D_data, x_fit, x_lower, x_upper, std_error) :
 			else :
 				rel_error = x_fit[i] / x_sim[i] - 1.0
 			residual  = (x_fit[i] - x_sim[i]) / std_error[i]
-			fmt = '{:<15s}{:+12.7f}{:+12.7f}{:+12.7f}{:+12.7f}'
+			fmt = '{:<15s}{:+15.9f}{:+15.9f}{:+15.9f}{:+15.9f}'
 			line = fmt.format(x_name[i],
 				x_fit[i], x_sim[i], rel_error, residual
 			)
