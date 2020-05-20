@@ -103,7 +103,7 @@ delta_known  = 0.2
 # In addition, we can choose $icode ode_n_step$$,
 # the number of step to take for each time interval in $icode t_all$$,
 # before it is sub-sampled using the
-# $cref/sample_interval/numeric_covid_19_xam.py/Data File/Sample Interval/$$.
+# $cref/sample_interval/numeric_covid_19_xam.py/Data/sample_interval/$$.
 # $srccode%py%
 ode_method = 'runge4'
 ode_n_step = 4
@@ -146,6 +146,30 @@ x_name = [ 'm_mobility', 'm_testing', 'm_stime', 'I(0)', 'W(0)', 'beta_bar' ]
 # For this reason, we model the difference of the cumulative deaths
 # between time points as independent.
 #
+# $subhead sample_interval$$
+# It is possible to sub-sample the data in order to reduce noise.
+# The cumulative death data is just sub-sampled since the reduces noise by
+# the summing the differences corresponding to a longer time period.
+# The covariate data is averaged over the sample interval.
+# The $icode sample_interval$$ must be either one or a positive even integer
+# (even so an original data point corresponds to the center of the interval).
+# $srccode%py%
+sample_interval = 1
+# %$$
+#
+# $subhead data_file$$
+# If the data file name is the empty string, the cumulative death data,
+# and corresponding covariates, are simulated by the program.
+# Otherwise, the data file must be a CSV file with the following columns:
+# $icode day$$, $icode death$$, $icode mobility$$, $icode testing$$.
+# In this case the data file is used for the
+# cumulative death and corresponding covariates.
+# $srccode%py%
+data_file = '/home/bradbell/Downloads/561.csv'         # Pennnslyvania
+data_file = '/home/bradbell/trash/covid_19/seirwd.csv' # New York
+data_file = ''                                         # empty string
+# %$$
+#
 # $head Maximum Likelihood$$
 # We use a Gaussian likelihood for each of the differences in the
 # cumulative deaths. The unknown parameters are estimated by maximizing the
@@ -156,6 +180,60 @@ x_name = [ 'm_mobility', 'm_testing', 'm_stime', 'I(0)', 'W(0)', 'beta_bar' ]
 # w.r.t. the unknown parameters $latex x$$.
 # These derivatives are used during optimization as well as for
 # computing the observed information matrix.
+#
+# $head Coefficient of Variation$$
+# This is the coefficient of variation for the differences
+# in the cumulative death data as a fraction, not a percent.
+# If this value is zero, a CV of  zero is used for data simulation
+# and a CV of one in the definition of the likelihood.
+# This enables checking that the unknown parameters can be accurately
+# identified using perfect data.
+# For real data (see $cref/data_file/numeric_covid_19_xam.py/Data/data_file/$$)
+# this value should be adjusted so that the average residual has variance one.
+# $srccode%py%
+death_data_cv = 0.25
+# %$$
+# Note this is the noise level in the original data before it is
+# sub-sampled using
+# $cref/sample_interval/numeric_covid_19_xam.py/Data/sample_interval/$$.
+#
+# $head Data Residuals$$
+# If $icode death_data_cv$$ is zero, $latex \lambda = 1$$, otherwise
+# $latex \lambda$$ is equal to
+# $codei%
+#	%death_data_cv% * sqrt(%sample_interval%)
+# %$$.
+# (Note that the standard deviation of a sum of independent values is the
+# square root of the sum of the variance of each of the values.)
+# Let $latex y_i$$ be the i-th value for the cumulative death data.
+# The weighted residuals (some times referred to as just the residuals) are
+# $latex \[
+#	r_i = \frac{ ( y_{i+1} - y_i ) - [ D( t_{i+1} ) - D( t_i ) ] }{
+#	\lambda ( y_{i+1} - y_i ) }
+# \] $$
+# where # $latex D(t)$$ is the model for the cumulative data
+# given the fit results.
+# The time corresponding to $latex r_i$$ is $latex ( t_{i+1} + t_i ) / 2$$.
+# We put the data difference in the denominator,
+# instead of the model difference,
+# because it is constant with respect to the unknown parameters.
+#
+# $head Random Seed$$
+# This is the random seed used to simulate noise in the data.
+# If this value is zero, the system clock is used to choose the random seed.
+# $srccode%py%
+random_seed = 0
+# %$$
+#
+# $head Random Start$$
+# The optimizer needs a good starting point in order to succeed.
+# This is the number of random points, between the lower and upper limits,
+# that are checked. The point with the best objective value is chosen
+# as the starting point for the optimization.
+# $srccode%py%
+n_random_start = 4000
+# %$$
+#
 #
 # $head Display Fit Results$$
 # If you set this variable to True,
@@ -197,84 +275,6 @@ display_fit = False
 #	$icode std_error$$ weighted residual for fit versus simulation
 # $tend
 # $lend
-#
-# $head Coefficient of Variation$$
-# This is the coefficient of variation for the differences
-# in the cumulative death data as a fraction, not a percent.
-# If this value is zero, a CV of  zero is used for data simulation
-# and a CV of one in the definition of the likelihood.
-# This enables checking that the unknown parameters can be accurately
-# identified using perfect data.
-# For real data (see $cref/data_file/numeric_covid_19_xam.py/Data File/$$)
-# this value should be adjusted so that the average residual has variance one.
-# $srccode%py%
-death_data_cv = 0.25
-# %$$
-# Note this is the noise level in the original data before it is
-# sub-sampled using
-# $cref/sample_interval/numeric_covid_19_xam.py/Data File/Sample Interval/$$.
-#
-# $head Data Residuals$$
-# If $icode death_data_cv$$ is zero, $latex \lambda = 1$$, otherwise
-# $latex \lambda$$ is equal to
-# $codei%
-#	%death_data_cv% * sqrt(%sample_interval%)
-# %$$.
-# (Note that the standard deviation of a sum of independent values is the
-# square root of the sum of the variance of each of the values.)
-# Let $latex y_i$$ be the i-th value for the cumulative death data.
-# The weighted residuals (some times referred to as just the residuals) are
-# $latex \[
-#	r_i = \frac{ ( y_{i+1} - y_i ) - [ D( t_{i+1} ) - D( t_i ) ] }{
-#	\lambda ( y_{i+1} - y_i ) }
-# \] $$
-# where # $latex D(t)$$ is the model for the cumulative data
-# given the fit results.
-# The time corresponding to $latex r_i$$ is $latex ( t_{i+1} + t_i ) / 2$$.
-# We put the data difference in the denominator,
-# instead of the model difference,
-# because it is constant with respect to the unknown parameters.
-#
-# $head Random Seed$$
-# This is the random seed used to simulate noise in the data.
-# If this value is zero, the system clock is used to choose the random seed.
-# $srccode%py%
-random_seed = 0
-# %$$
-#
-# $head Random Start$$
-# The optimizer needs a good starting point in order to succeed.
-# This is the number of random points, between the lower and upper limits,
-# that are checked. The point with the best objective value is chosen
-# as the starting point for the optimization.
-# $srccode%py%
-n_random_start = 4000
-# %$$
-#
-#
-# $head Data File$$
-# If the data file name is the empty string, the cumulative death data,
-# and corresponding covariates, are created by the program.
-# Otherwise, the data file must be a CSV file with the following columns:
-# $icode day$$, $icode death$$, $icode mobility$$, $icode testing$$.
-# In this case the data file is used for the
-# cumulative death and corresponding covariates.
-# $srccode%py%
-data_file = '/home/bradbell/Downloads/561.csv'         # Pennnslyvania
-data_file = '/home/bradbell/trash/covid_19/seirwd.csv' # New York
-data_file = ''                                         # empty string
-# %$$
-#
-# $subhead Sample Interval$$
-# It is possible to sub-sample the data in order to reduce noise.
-# The cumulative death data is just sub-sampled since the reduces noise by
-# the summing the differences corresponding to a longer time period.
-# The covariate data is averaged over the sample interval.
-# The $icode sample_interval$$ must be either one or a positive even integer
-# (even so an original data point corresponds to the center of the interval).
-# $srccode%py%
-sample_interval = 1
-# %$$
 #
 # $head Debug Output$$
 # If this flag is true a lot of debugging output is printed.
