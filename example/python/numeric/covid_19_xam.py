@@ -159,7 +159,7 @@ x_name = [ 'm_mobility', 'm_testing', 'm_stime', 'I(0)', 'W(0)', 'beta_bar' ]
 # other than the model bounds above, are active at the solution of the
 # optimization problem.
 # $srccode%py%
-actual_bound_factor = 10.0
+actual_bound_factor = 5.0
 # %$$
 #
 # $head Data$$
