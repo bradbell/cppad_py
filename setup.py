@@ -248,8 +248,9 @@ if not (pip_distribution or src_distribution) :
 					shutil.copymode(src_file, dst_file)
 					count = count + 1
 	if count != 1 :
-		msg ='could not find swig library to copy for testing'
-		sys_exit(msg)
+		msg  = "setup.py: warning: can't find swig library to copy for "
+		msg += 'local testing of cppad_py.'
+		print(msg)
 # -----------------------------------------------------------------------------
 print('If you get a message that the CppAD object library is missing, try:')
 print('    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:' + cppad_lib_dir )
