@@ -332,10 +332,10 @@ pattern_resume_sphinxrst  = re.compile( r'\n *\{resume_sphinxrst\}' )
 pattern_begin_sphinxrst   = re.compile( r'\n *\{begin_sphinxrst\s+(\w*)\}' )
 pattern_end_sphinxrst     = re.compile( r'\n *\{end_sphinxrst\s+(\w*)\}' )
 pattern_spell_sphinxrst   = re.compile( r'\n *\{spell_sphinxrst([^}]*)\}' )
-pattern_begin_3quote      = re.compile(
+pattern_begin_code        = re.compile(
     r'\n[^\n`]*(\{code_sphinxrst\s+(\w*)\})[^\n`]*'
 )
-pattern_end_3quote        = re.compile(
+pattern_end_code          = re.compile(
     r'\n[^\n`]*(\{code_sphinxrst\})[^\n`]*'
 )
 pattern_newline           = re.compile( r'\n')
@@ -446,32 +446,32 @@ for file_in in extract_list :
             # ----------------------------------------------------------------
             # remove characters on same line as {code_sphinxrst
             output_index  = 0
-            match_begin_3quote = pattern_begin_3quote.search(output_data)
-            while match_begin_3quote != None :
-                if match_begin_3quote.group(2) == '' :
+            match_begin_code = pattern_begin_code.search(output_data)
+            while match_begin_code != None :
+                if match_begin_code.group(2) == '' :
                     breakpoint()
                     msg  = 'language missing directly after first'
                     msg += ' code_sphinxrst for a code block'
                     sys_exit(msg, file_in, section_name)
-                begin_start = match_begin_3quote.start() + output_index
-                begin_end   = match_begin_3quote.end()   + output_index
+                begin_start = match_begin_code.start() + output_index
+                begin_end   = match_begin_code.end()   + output_index
                 output_rest = output_data[ begin_end : ]
-                match_end_3quote   = pattern_end_3quote.search( output_rest )
-                if match_end_3quote == None :
+                match_end_code   = pattern_end_code.search( output_rest )
+                if match_end_code == None :
                     msg  = 'number of code_sphinxrst commands is not even'
                     sys_exit(msg, file_in, section_name)
-                end_start = match_end_3quote.start() + begin_end
-                end_end   = match_end_3quote.end()   + begin_end
+                end_start = match_end_code.start() + begin_end
+                end_end   = match_end_code.end()   + begin_end
                 #
                 data_left   = output_data[: begin_start + 1 ]
-                data_left  += match_begin_3quote.group(1)
+                data_left  += match_begin_code.group(1)
                 data_left  += output_data[ begin_end : end_start + 1]
-                data_left  += match_end_3quote.group(1)
+                data_left  += match_end_code.group(1)
                 data_right  = output_data[ end_end : ]
                 #
                 output_data  = data_left + data_right
                 output_index = len(data_left)
-                match_begin_3quote  = pattern_begin_3quote.search(data_right)
+                match_begin_code  = pattern_begin_code.search(data_right)
             # ---------------------------------------------------------------
             # num_remove (for indented documentation)
             len_output   = len(output_data)
@@ -490,9 +490,9 @@ for file_in in extract_list :
                     if ch == '\t' :
                         msg  = 'tab in white space at begining of a line'
                         sys_exit(msg, file_in, section_name)
-                    tripple_back_quote = \
+                    code_command = \
                         output_data[next_:].startswith('{code_sphinxrst')
-                    if ch != '\n' and ch != ' ' and not tripple_back_quote :
+                    if ch != '\n' and ch != ' ' and not code_command :
                         num_remove = min(num_remove, next_ - start - 1)
             # ---------------------------------------------------------------
             # write file for this section
@@ -500,16 +500,16 @@ for file_in in extract_list :
             file_ptr          = open(file_out, 'w')
             start_line        = 0
             first_spell_error = True # for this section
-            inside_3quote     = False
+            inside_code       = False
             for newline in newline_list :
-                tripple_back_quote = \
+                code_command = \
                     output_data[start_line:].startswith('{code_sphinxrst')
-                if tripple_back_quote :
-                    inside_3quote = not inside_3quote
-                    if inside_3quote :
-                        end_line = start_line + \
-                            output_data[start_line:].find('\n')
-                        language = output_data[start_line + 16 : end_line - 1]
+                if code_command :
+                    inside_code = not inside_code
+                    if inside_code :
+                        end_cmd = start_line + \
+                            output_data[start_line:].find('}')
+                        language = output_data[start_line + 16 : end_cmd]
                         line     = '.. code-block:: ' + language + '\n\n'
                         file_ptr.write(line)
                     else :
@@ -536,7 +536,7 @@ for file_in in extract_list :
                                 print(msg)
                                 special_list.append(word.lower())
                     # ------------------------------------------------------
-                    if inside_3quote :
+                    if inside_code :
                         line = '    ' + line
                     file_ptr.write( line )
                 else :
