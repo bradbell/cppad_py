@@ -182,17 +182,28 @@ The latex commands corresponding to the letters in the greek alphabet
 are automatically included in the spelling list.
 
 
-Code Blocks
-===========
-A code block within a sphinxrst section begins and ends with three back quotes.
+Code Block
+==========
+A code block, within a section, begins with
+a line containing the following command:
 
-1. Thus there must be an even number of occurrences of three back quotes.
-2. The first three back quotes, for each code block, must have a language name
-   directly after it.  The language name must be a sequence of letters; e.g.,
-   ``python``.
-3. The other characters on the same line as the three back quotes
-   are not included in the sphinxrst output. This enables one to begin or end
-   a comment block without having those characters in the sphinxrst output.
+|space| |space| |space| |space|
+``{code_sphinxrst`` *language*:code:`}`
+
+Here *language* is sequence of letters; e.g., ``python``,
+that specify the language used to highlight the code block.
+Each code block must end with
+a line containing the following command:
+
+|space| |space| |space| |space|
+``{code_sphinxrst}``
+
+The back quote character \` can't be in the same line as either
+of the commands above.
+Other characters on the same line as the two command above
+are not included in the sphinxrst output.
+This enables one to begin or end a comment block
+without having the comment characters in the sphinxrst output.
 
 Indentation
 ===========
@@ -204,8 +215,7 @@ sphinxrst so it is grouped with the proper code block in the source.
 Python Style Guide
 ==================
 Use triple double quotes instead of triple single quotes at beginning
-and end of comments so it is easier to distinguish from triple back quotes.
-
+and end of comments so it is easier to distinguish from back quotes.
 
 Wish List
 =========
@@ -322,8 +332,12 @@ pattern_resume_sphinxrst  = re.compile( r'\n *\{resume_sphinxrst\}' )
 pattern_begin_sphinxrst   = re.compile( r'\n *\{begin_sphinxrst\s+(\w*)\}' )
 pattern_end_sphinxrst     = re.compile( r'\n *\{end_sphinxrst\s+(\w*)\}' )
 pattern_spell_sphinxrst   = re.compile( r'\n *\{spell_sphinxrst([^}]*)\}' )
-pattern_begin_3quote      = re.compile( r'[^\n]*(```([a-zA-Z]*))[^\n]*' )
-pattern_end_3quote        = re.compile( r'[^\n]*(```)[^\n]*' )
+pattern_begin_3quote      = re.compile(
+    r'\n[^\n`]*(\{code_sphinxrst\s+(\w*)\})[^\n`]*'
+)
+pattern_end_3quote        = re.compile(
+    r'\n[^\n`]*(\{code_sphinxrst\})[^\n`]*'
+)
 pattern_newline           = re.compile( r'\n')
 pattern_word              = re.compile( r'[\\A-Za-z][a-z]*' )
 # -----------------------------------------------------------------------------
@@ -430,27 +444,28 @@ for file_in in extract_list :
                 end         = match_spell.end()
                 output_data = output_data[: start] + output_data[end :]
             # ----------------------------------------------------------------
-            # remove characters on same line as triple back quote
+            # remove characters on same line as {code_sphinxrst
             output_index  = 0
             match_begin_3quote = pattern_begin_3quote.search(output_data)
             while match_begin_3quote != None :
                 if match_begin_3quote.group(2) == '' :
+                    breakpoint()
                     msg  = 'language missing directly after first'
-                    msg += ' ``` for a code block'
+                    msg += ' code_sphinxrst for a code block'
                     sys_exit(msg, file_in, section_name)
                 begin_start = match_begin_3quote.start() + output_index
                 begin_end   = match_begin_3quote.end()   + output_index
                 output_rest = output_data[ begin_end : ]
                 match_end_3quote   = pattern_end_3quote.search( output_rest )
                 if match_end_3quote == None :
-                    msg  = 'number of triple backquotes is not even'
+                    msg  = 'number of code_sphinxrst commands is not even'
                     sys_exit(msg, file_in, section_name)
                 end_start = match_end_3quote.start() + begin_end
                 end_end   = match_end_3quote.end()   + begin_end
                 #
-                data_left   = output_data[: begin_start ]
+                data_left   = output_data[: begin_start + 1 ]
                 data_left  += match_begin_3quote.group(1)
-                data_left  += output_data[ begin_end : end_start ]
+                data_left  += output_data[ begin_end : end_start + 1]
                 data_left  += match_end_3quote.group(1)
                 data_right  = output_data[ end_end : ]
                 #
@@ -475,7 +490,8 @@ for file_in in extract_list :
                     if ch == '\t' :
                         msg  = 'tab in white space at begining of a line'
                         sys_exit(msg, file_in, section_name)
-                    tripple_back_quote = output_data[next_:].startswith('```')
+                    tripple_back_quote = \
+                        output_data[next_:].startswith('{code_sphinxrst')
                     if ch != '\n' and ch != ' ' and not tripple_back_quote :
                         num_remove = min(num_remove, next_ - start - 1)
             # ---------------------------------------------------------------
@@ -486,13 +502,14 @@ for file_in in extract_list :
             first_spell_error = True # for this section
             inside_3quote     = False
             for newline in newline_list :
-                tripple_back_quote = output_data[start_line:].startswith('```')
+                tripple_back_quote = \
+                    output_data[start_line:].startswith('{code_sphinxrst')
                 if tripple_back_quote :
                     inside_3quote = not inside_3quote
                     if inside_3quote :
                         end_line = start_line + \
                             output_data[start_line:].find('\n')
-                        language = output_data[start_line + 3 : end_line]
+                        language = output_data[start_line + 16 : end_line - 1]
                         line     = '.. code-block:: ' + language + '\n\n'
                         file_ptr.write(line)
                     else :

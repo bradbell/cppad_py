@@ -11,11 +11,11 @@
 
 Code Block Example / Test
 =========================
-```python"""
+{code_sphinxrst python}"""
 def factorial(n) :
     if n == 1 :
         return 1
     return n * factorial(n-1)
-"""```
+"""{code_sphinxrst}
 {end_sphinxrst code_block_py}
 """
