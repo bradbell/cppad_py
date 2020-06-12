@@ -97,11 +97,11 @@ Special words, for a particular section, are specified using the
 
 .. _extract_rst_py_start_section:
 
-Start Section
+Begin Section
 =============
 The start of a sphinxrst section of the input file is indicated by the
-following text at the start of a line
-(not counting spaces used to indent the text):
+following command at the start of a line
+(not counting spaces used to indent the command):
 
 |space| |space| |space| |space|
 ``{begin_sphinxrst`` *section_name*:code:`}`
@@ -113,8 +113,8 @@ and dot ``.``
 End Section
 ===========
 The end of a sphinxrst section of the input file is indicated by the following
-text at the start of a line
-(not counting spaces used to indent the text):
+command at the start of a line
+(not counting spaces used to indent the command):
 
 |space| |space| |space| |space|
 ``{end_sphinxrst`` *section_name*:code:`}`
@@ -128,7 +128,7 @@ The file ``index.rst`` must exist in the directory
 :ref:`sphinx_dir<extract_rst_py_sphinx_dir>`.
 For each *section_name* in a
 :ref:`start section<extract_rst_py_start_section>` command,
-there must be a line in ``index.rst`` with the following contents:
+there must be a line in ``index.rst`` with the following text:
 
 |space| |space| |space| |space|
 ``extract_rst/`` *section_name*:code:`.rst`
@@ -139,14 +139,14 @@ where there can be any number of spaces before the text above.
 Suspend Extraction
 ==================
 It is possible do suspend the sphinxrst extraction during a section.
-One begins the suspension with the following text at the start of a line
-(not counting spaces used to indent the text):
+One begins the suspension with the following command at the start of a line
+(not counting spaces used to indent the command):
 
 |space| |space| |space| |space|
 ``{suspend_sphinxrst}``
 
-One resumes the output with the following text at the start of a line
-(not counting spaces used to indent the text):
+One resumes the output with the following command at the start of a line
+(not counting spaces used to indent the command):
 
 |space| |space| |space| |space|
 ``{resume_sphinxrst}``
@@ -162,8 +162,8 @@ Spell Command
 The list of words in
 :ref:`spell_list<extract_rst_py_spell_list>` are consider correct spellings
 for all sections. You can specify a special list of words for the current
-section using the following text at the start of a line
-(not counting spaces used to indent the text):
+section using the following command at the start of a line
+(not counting spaces used to indent the command):
 
 |space| |space| |space| |space|
 ``{spell_sphinxrst`` *word_1* ...  *word_n*:code:`}`
