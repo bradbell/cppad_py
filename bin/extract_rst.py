@@ -14,6 +14,7 @@ sphinx_dir = 'sphinx'
 extract_list = [
     'bin/extract_rst.py',
     'sphinx/test/code_block.py',
+    'sphinx/test/indent.py',
 ]
 #
 # List of words that the spell checker will consider correct for all sections:
