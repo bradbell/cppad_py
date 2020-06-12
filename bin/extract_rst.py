@@ -7,13 +7,13 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
-# The extracted files are written to this sub-directory:
-extract_dir = 'extract_rst'
+# Sub-directory of the top git directory where sphinx conf.py file located.
+sphinx_dir = 'sphinx'
 #
 # List of files that contain sphinxrst sections in them:
 extract_list = [
-    'extract_rst.py',
-    'code_block.py',
+    'bin/extract_rst.py',
+    'sphinx/test/code_block.py',
 ]
 #
 # List of words that the spell checker will consider correct for all sections:
@@ -27,6 +27,7 @@ spell_list = [
     'numpy',
     'py',
     'scipy',
+    'unicode',
 
     r'\begin',
     r'\cdot',
@@ -46,12 +47,13 @@ spell_list = [
     r'\sum',
 ]
 # ----------------------------------------------------------------------------
-'''
+"""
 {begin_sphinxrst extract_rst_py}
 {spell_sphinxrst
     sphinxrst
     rst
     underbar
+    conf
 }
 
 .. |space| unicode:: 0xA0
@@ -63,16 +65,18 @@ Syntax
 ======
 ``extract_rst.py``
 
-.. _extract_rst_py_extract_dir:
+.. _extract_rst_py_sphinx_dir:
 
-extract_dir
-===========
-The variable *extract_dir* at the top of ``extract_rst.py`` is a sub-directory
-relative to the directory where ``extract_rst.py`` is executed..
-Any files in this sub-directory, with names that end in ``.rst``,
-are removed at the beginning of execution.
-Thus all the files in this directory with names that end in ``.rst``,
-were extracted from the source code the last time that ``extract_rst``
+sphinx_dir
+==========
+The variable *sphinx_dir* at the top of ``extract_rst.py`` is a sub-directory,
+of the top git repository directory.
+The  sphinx ``conf.py`` and ``index.rst`` files are located in this directory.
+Any files that have names ending in ``.rst`` and that are
+in the directory *sphinx_dir*:code:`/extract_rst`,
+are removed at the beginning of execution of ``extract_rst.py``.
+All the ``.rst`` files in *sphinx_dir*:code:`/extract_rst`
+were extracted from the source code the last time that ``extract_rst.py``
 was executed.
 
 extract_list
@@ -120,12 +124,14 @@ Here *section_name* must be the same as in the corresponding
 
 index.rst
 =========
+The file ``index.rst`` must exist in the directory
+:ref:`sphinx_dir<extract_rst_py_sphinx_dir>`.
 For each *section_name* in a
 :ref:`start section<extract_rst_py_start_section>` command,
-there must be a line in the ``index.rst`` with the following contents:
+there must be a line in ``index.rst`` with the following contents:
 
 |space| |space| |space| |space|
-:ref:`extract_dir<extract_rst_py_extract_dir>`/*section_name*.rst
+``extract_rst/`` *section_name*:code:`.rst`
 
 where there can be any number of spaces before the text above.
 
@@ -156,7 +162,7 @@ Spell Command
 The list of words in
 :ref:`spell_list<extract_rst_py_spell_list>` are consider correct spellings
 for all sections. You can specify a special list of words for the current
-section using the folowing text at the start of a line
+section using the following text at the start of a line
 (not counting spaces used to indent the text):
 
 |space| |space| |space| |space|
@@ -236,7 +242,8 @@ Module
 ------
 Convert the extract program into a python module and provide a pip distribution for it.
 
-{end_sphinxrst extract_rst_py}'''
+{end_sphinxrst extract_rst_py}
+"""
 # ----------------------------------------------------------------------------
 import sys
 import re
@@ -281,7 +288,7 @@ spell_checker.word_frequency.load_words(greek_alphabet_latex_command)
 spell_checker.word_frequency.load_words(spell_list)
 # ---------------------------------------------------------------------------
 #
-# add program name to system error call
+# add file name, section name, and program name to system exit call
 def sys_exit(msg, file_in=None, section_name=None) :
     if file_in != None :
         msg += '\nfile = ' + file_in
@@ -290,12 +297,13 @@ def sys_exit(msg, file_in=None, section_name=None) :
     sys.exit( 'extract_rst.py:\n' + msg )
 #
 # check working directory
-if not os.path.isdir('CVS') :
-    msg = 'must be executed from CVS directory\n'
+if not os.path.isdir('.git') :
+    msg = 'must be executed from to top directory for this git repository\n'
     sys_exit(msg)
 #
-# remove all *.rst files from output directory (so only new ones remain)
-output_dir = extract_dir
+# remove all *.rst files from output directory so only new ones remain aftet
+# this program finishes
+output_dir = sphinx_dir + '/extract_rst'
 if os.path.isdir(output_dir) :
     for file_name in os.listdir(output_dir) :
         if file_name.endswith('.rst') :
@@ -523,7 +531,7 @@ for file_in in extract_list :
             file_index += match_end_sphinxrst.end()
 # -----------------------------------------------------------------------------
 # read index.rst
-file_in   = 'index.rst'
+file_in   = sphinx_dir + '/index.rst'
 file_ptr  = open(file_in, 'r')
 file_data = file_ptr.read()
 file_ptr.close()

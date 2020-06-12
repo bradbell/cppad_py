@@ -10,6 +10,8 @@ junk.*
 /cppad_py.egg-info/
 /new.*/
 /new/
+/sphinx/extract_rst/
+/sphinx/_build/
 # extensions to ignore
 *.log
 *.swp

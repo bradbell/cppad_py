@@ -25,6 +25,9 @@ ignore_files='
 	batch_edit.sed
 	bin/devel.sh
 	MANIFEST.in
+	sphinx/Makefile
+	sphinx/conf.py
+	sphinx/index.rst
 '
 # ----------------------------------------------------------------------------
 echo "copyright_owner=$copyright_owner"
