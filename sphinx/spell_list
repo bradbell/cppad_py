@@ -1,0 +1,32 @@
+#
+# normal words
+covariates
+covariate
+initialized
+initialize
+unicode
+#
+# python commands
+dict
+dtype
+numpy
+py
+scipy
+#
+# latex commands
+\begin
+\cdot
+\circ
+\ell
+\end
+\exp
+\frac
+\int
+\ldots
+\log
+\left
+\mbox
+\partial
+\right
+\sqrt
+\sum

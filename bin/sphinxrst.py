@@ -7,45 +7,6 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
-# List of files that contain sphinxrst sections in them:
-extract_list = [
-    'bin/sphinxrst.py',
-    'sphinx/test/code_block.py',
-    'sphinx/test/indent.py',
-    'sphinx/test/file_block.py',
-]
-#
-# List of words that the spell checker will consider correct for all sections:
-spell_list = [
-    'covariates',
-    'covariate',
-    'dict',
-    'dtype',
-    'initialized',
-    'initialize',
-    'numpy',
-    'py',
-    'scipy',
-    'unicode',
-
-    r'\begin',
-    r'\cdot',
-    r'\circ',
-    r'\ell',
-    r'\end',
-    r'\exp',
-    r'\frac',
-    r'\int',
-    r'\ldots',
-    r'\log',
-    r'\left',
-    r'\mbox',
-    r'\partial',
-    r'\right',
-    r'\sqrt',
-    r'\sum',
-]
-# ----------------------------------------------------------------------------
 """
 {begin_sphinxrst sphinxrst_py}
 {spell_sphinxrst
@@ -62,7 +23,7 @@ Extract Sphinx RST From Source Code
 
 Syntax
 ======
-``sphinxrst.py`` *sphinx_dir*
+``sphinxrst.py`` *sphinx_dir* *file_list* *spell_list*
 
 .. _sphinxrst_py_sphinx_dir:
 
@@ -78,19 +39,27 @@ All the ``.rst`` files in *sphinx_dir*:code:`/sphinxrst`
 were extracted from the source code the last time that ``sphinxrst.py``
 was executed.
 
-extract_list
-============
-The variable *extract_list* at top of ``sphinxrst.py``
-is a list of file names that the sphinxrst files will be extracted from.
-These names are relative to the directory where ``sphinxrst.py``
-is executed.
+file_list
+=========
+The command line argument *file_list* is the name of a file
+in the *sphinx_dir* directory containing a list of file names.
+These file names are one per line and relative to the
+top git repository directory.
+A line that begins with :code:`#` is a comment (not included in the list).
+Leading and trailing white space in a file name are ignored.
+The sphinxrst files will be extracted from the files in this list
+and placed in the *sphinx_dir*:code`/sphinxrst` directory.
 
 .. _sphinxrst_py_spell_list:
 
 spell_list
 ==========
-The variable *spell_list* is a list of words that
-the spell checker will consider correct for all sections.
+The command line argument *spell_list* is the name of a file
+in the *sphinx_dir* directory containing a list of words
+that the spell checker will consider correct for all sections.
+A line that begins with :code:`#` is a comment (not included in the list).
+The words are one per line and
+leading and trailing white space in a word are ignored.
 Special words, for a particular section, are specified using the
 :ref:`spell command<sphinxrst_py_spell_command>`.
 
@@ -283,7 +252,7 @@ import os
 import pdb
 import spellchecker
 # ---------------------------------------------------------------------------
-def init_spell_checker() :
+def init_spell_checker(spell_list) :
     bad_words_in_spellchecker = [
         'thier',
     ]
@@ -343,25 +312,54 @@ def sys_exit(msg, file_in=None, section_name=None) :
         msg += '\nfile = ' + file_in
         if section_name != None :
             msg += ', section = ' + section_name
-    sys.exit( 'bin/sphinxrst.py sphinx_dir\n' + msg )
+    sys.exit( 'bin/sphinxrst.py sphinx_dir file_list spell_list\n' + msg )
+# ---------------------------------------------------------------------------
+def file2list(file_name) :
+    file_ptr  = open(file_name, 'r')
+    result    = list()
+    for line in file_ptr :
+        if not line.startswith('#') :
+            line = line.strip()
+            if not line == '' :
+                result.append(line)
+    file_ptr.close()
+    return result
 # =============================================================================
 # main program
 # =============================================================================
-# sphinx_dir
-if len(sys.argv) != 2 :
-    sys_exit('expected one command line argument')
-sphinx_dir = sys.argv[1]
-if not os.path.isdir(sphinx_dir) :
-    msg  = 'sphinx_dir = ' + sphinx_dir + '\n'
-    msg += 'is not a sub-directory of current working directory'
-    sys_exit(msg)
-#
 # check working directory
 if not os.path.isdir('.git') :
     msg = 'must be executed from to top directory for this git repository\n'
     sys_exit(msg)
 #
-# check sphinx_dir
+# check number of comamnd line arguments
+if len(sys.argv) != 4 :
+    sys_exit('expected three command line argument')
+#
+# sphinx_dir
+sphinx_dir      = sys.argv[1]
+if not os.path.isdir(sphinx_dir) :
+    msg  = 'sphinx_dir = ' + sphinx_dir + '\n'
+    msg += 'is not a sub-directory of current working directory'
+    sys_exit(msg)
+#
+# file_list
+file_path = sphinx_dir + '/' + sys.argv[2]
+if not os.path.isfile(file_path) :
+    msg  = 'sphinx_dir/file_list = ' + sphinx_dir + '/' + sys.argv[2] + '\n'
+    msg += 'is not a file'
+    sys_exit(msg)
+file_list  = file2list(file_path)
+#
+# spell_list
+file_path = sphinx_dir + '/' + sys.argv[3]
+if not os.path.isfile(file_path) :
+    msg  = 'sphinx_dir/spell_list = ' + sphinx_dir + '/' + sys.argv[3] + '\n'
+    msg += 'is not a file'
+    sys_exit(msg)
+spell_list  = file2list(file_path)
+#
+# check for conf.y, index.rst
 for file_name in ['conf.py', 'index.rst'] :
     file_path = sphinx_dir + '/' + file_name
     if not os.path.isfile( file_path ) :
@@ -381,7 +379,7 @@ else :
     os.mkdir(output_dir)
 #
 # spell_checker
-spell_checker = init_spell_checker()
+spell_checker = init_spell_checker(spell_list)
 #
 # initialize list of section names and corresponding file names
 section_list       = list()
@@ -406,7 +404,13 @@ pattern_end_code          = re.compile(
 )
 # -----------------------------------------------------------------------------
 # process each file in the list
-for file_in in extract_list :
+for file_in in file_list :
+    if not os.path.isfile(file_in) :
+        msg  = 'can not file the file: ' + file_in + '\n'
+        msg += 'which is located in sphinx_dir/file_list\n'
+        msg += 'sphinx_dir = ' + sphinx_dir + '\n'
+        msg += 'file_list  = ' + sys.argv[2] + '\n'
+        sys_exit(msg)
     #
     # file_data
     file_ptr   = open(file_in, 'r')

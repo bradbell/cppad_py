@@ -28,6 +28,8 @@ ignore_files='
 	sphinx/Makefile
 	sphinx/conf.py
 	sphinx/index.rst
+	sphinx/file_list
+`	sphinx/spell_list
 '
 # ----------------------------------------------------------------------------
 echo "copyright_owner=$copyright_owner"
