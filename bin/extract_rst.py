@@ -15,6 +15,7 @@ extract_list = [
     'bin/extract_rst.py',
     'sphinx/test/code_block.py',
     'sphinx/test/indent.py',
+    'sphinx/test/file_block.py',
 ]
 #
 # List of words that the spell checker will consider correct for all sections:
@@ -185,7 +186,7 @@ are automatically included in the spelling list.
 
 Code Block
 ==========
-A code block, within a section, begins with
+A code block, directly below in the current input file, begins with
 a line containing the following command:
 
 |space| |space| |space| |space|
@@ -205,6 +206,29 @@ Other characters on the same line as the two command above
 are not included in the sphinxrst output.
 This enables one to begin or end a comment block
 without having the comment characters in the sphinxrst output.
+
+File Block
+==========
+A file code block, from any file, is included by the following command
+at the start of a line
+(not counting spaces used to indent the command):
+
+|space| |space| |space| |space|
+``{file_sphinxrst%`` *file_name* :code:`%` *start* :code:`%` *stop*:code:`%}`
+
+The back quote character \` can't be in the same lines as the command above.
+Leading and trailing white space is not included in
+*file_name*, *start*, or *end*.
+This enables on to put the command on multiple input lines.
+If *file_name* is empty, the current input file is used.
+Otherwise *file_name* is relative to the directory where ``extract_rst.py``
+is executed; i.e., the top directory for this git repository.
+The code block starts with the first occurence
+of the text *start* at the beginning of a line (in the specified file).
+The code block ends with the first occurence
+of the text *stop* at the beginning of a line and after the *start* text.
+The lines containing *start* and *stop* in *file_name* are not included in
+the code block.
 
 Indentation
 ===========
@@ -298,6 +322,21 @@ spell_checker.word_frequency.remove_words(bad_words_in_spellchecker)
 spell_checker.word_frequency.load_words(greek_alphabet_latex_command)
 spell_checker.word_frequency.load_words(spell_list)
 # ---------------------------------------------------------------------------
+# search for raw text at start of line (ignoring white space)
+def find_at_start_of_line(data, text) :
+    index = 0
+    while index < len(data) :
+        index = data.find(text, index)
+        if index <= 0 :
+            return index
+        j = index - 1
+        while j >= 0 and data[j] == ' ' :
+            --j
+        if j < 0 :
+            return index
+        if data[j] == '\n' :
+            return index
+        index = index + 1
 #
 # add file name, section name, and program name to system exit call
 def sys_exit(msg, file_in=None, section_name=None) :
@@ -328,19 +367,22 @@ section_list       = list()
 corresponding_file = list()
 #
 # define some pytyon regular expression patterns
+pattern_newline           = re.compile( r'\n')
+pattern_word              = re.compile( r'[\\A-Za-z][a-z]*' )
 pattern_suspend_sphinxrst = re.compile( r'\n *\{suspend_sphinxrst\}' )
 pattern_resume_sphinxrst  = re.compile( r'\n *\{resume_sphinxrst\}' )
 pattern_begin_sphinxrst   = re.compile( r'\n *\{begin_sphinxrst\s+(\w*)\}' )
 pattern_end_sphinxrst     = re.compile( r'\n *\{end_sphinxrst\s+(\w*)\}' )
 pattern_spell_sphinxrst   = re.compile( r'\n *\{spell_sphinxrst([^}]*)\}' )
+pattern_file_sphinxrst    = re.compile(
+    r'\n[^\n`]*\{file_sphinxrst%([^%]*)%([^%]*)%([^%]*)%[^\n`]*\}'
+)
 pattern_begin_code        = re.compile(
     r'\n[^\n`]*(\{code_sphinxrst\s+(\w*)\})[^\n`]*'
 )
 pattern_end_code          = re.compile(
     r'\n[^\n`]*(\{code_sphinxrst\})[^\n`]*'
 )
-pattern_newline           = re.compile( r'\n')
-pattern_word              = re.compile( r'[\\A-Za-z][a-z]*' )
 # -----------------------------------------------------------------------------
 # process each file in the list
 for file_in in extract_list :
@@ -450,7 +492,6 @@ for file_in in extract_list :
             match_begin_code = pattern_begin_code.search(output_data)
             while match_begin_code != None :
                 if match_begin_code.group(2) == '' :
-                    breakpoint()
                     msg  = 'language missing directly after first'
                     msg += ' code_sphinxrst for a code block'
                     sys_exit(msg, file_in, section_name)
@@ -474,6 +515,76 @@ for file_in in extract_list :
                 output_index = len(data_left)
                 match_begin_code  = pattern_begin_code.search(data_right)
             # ---------------------------------------------------------------
+            # file command: convert start and stop to line numbers
+            output_index     = 0
+            match_file = pattern_file_sphinxrst.search(output_data)
+            while match_file != None :
+                #
+                # file_name
+                file_name = match_file.group(1).strip()
+                if file_name == '' :
+                    file_name = file_in
+                #
+                # start
+                start     = match_file.group(2).strip()
+                if start == '' :
+                    msg = 'file_sphinxrst command: start text is empty'
+                    sys_exit(msg, file_in, section_name)
+                #
+                # stop
+                stop      = match_file.group(3) .strip()
+                if stop == '' :
+                    msg = 'file_sphinxrst command: stop text is empty'
+                    sys_exit(msg, file_in, section_name)
+                #
+                # data
+                file_ptr  = open(file_name, 'r')
+                data      = file_ptr.read()
+                file_ptr.close()
+                #
+                # start_index
+                start_index = find_at_start_of_line(data ,start)
+                if start_index < 0 :
+                    msg  = 'file_sphinxrst command: can not find start = '
+                    msg += '"' + start + '"'
+                    msg += '\nin file_name = "' + file_name + '"'
+                    sys_exit(msg, file_in, section_name)
+                #
+                # stop_index
+                offset     = start_index + len(start)
+                stop_index = find_at_start_of_line(data[offset :] ,stop)
+                if stop_index < 0 :
+                    msg  = 'file_sphinxrst command: can not find'
+                    msg += '\nstop = "' + stop + '"'
+                    msg += ' after start = "' + start + '"'
+                    msg += '\nin file_name = "' + file_name + '"'
+                    sys_exit(msg, file_in, section_name)
+                stop_index += offset
+                #
+                # start_line
+                start_line = data[: start_index].count('\n') + 2
+                #
+                # stop_line
+                stop_line = data[: stop_index].count('\n')
+                #
+                # beginning of lines with command in it
+                begin_line = match_file.start() + output_index;
+                #
+                # end of lines with command in it
+                end_line = match_file.end() + output_index;
+                #
+                # converted version of the command
+                cmd  = f'file_sphinxrst%{file_name}%{start_line}%{stop_line}%'
+                cmd  = '\n{' + cmd  + '}'
+                #
+                data_left  = output_data[: begin_line]
+                data_left += cmd
+                data_right = output_data[ end_line : ]
+                #
+                output_data  = data_left + data_right
+                output_index = len(data_left)
+                match_file  = pattern_begin_code.search(data_right)
+            # ---------------------------------------------------------------
             # num_remove (for indented documentation)
             len_output   = len(output_data)
             num_remove   = len(output_data)
@@ -491,9 +602,9 @@ for file_in in extract_list :
                     if ch == '\t' :
                         msg  = 'tab in white space at begining of a line'
                         sys_exit(msg, file_in, section_name)
-                    code_command = \
-                        output_data[next_:].startswith('{code_sphinxrst')
-                    if ch != '\n' and ch != ' ' and not code_command :
+                    cmd  = output_data[next_:].startswith('{code_sphinxrst')
+                    cmd += output_data[next_:].startswith('{file_sphinxrst')
+                    if ch != '\n' and ch != ' ' and not cmd :
                         num_remove = min(num_remove, next_ - start - 1)
             # ---------------------------------------------------------------
             # write file for this section
@@ -505,7 +616,11 @@ for file_in in extract_list :
             for newline in newline_list :
                 code_command = \
                     output_data[start_line:].startswith('{code_sphinxrst')
+                file_command = \
+                    output_data[start_line:].startswith('{file_sphinxrst')
                 if code_command :
+                    # --------------------------------------------------------
+                    # code command
                     inside_code = not inside_code
                     if inside_code :
                         end_cmd = start_line + \
@@ -514,6 +629,19 @@ for file_in in extract_list :
                         line     = '.. code-block:: ' + language + '\n\n'
                         file_ptr.write(line)
                     else :
+                        file_ptr.write('\n')
+                elif file_command :
+                        line       = output_data[start_line : newline + 1]
+                        line       = line.split('%')
+                        file_name  = line[1]
+                        start_line = line[2]
+                        stop_line  = line[3]
+                        #
+                        file_ptr.write('\n')
+                        line = f'.. literalinclude:: ../../{file_name}\n'
+                        file_ptr.write(line)
+                        line = f'    :lines: {start_line}-{stop_line}\n'
+                        file_ptr.write(line)
                         file_ptr.write('\n')
                 elif start_line + num_remove <= newline :
                     start_line += num_remove
@@ -538,6 +666,7 @@ for file_in in extract_list :
                                 special_list.append(word.lower())
                     # ------------------------------------------------------
                     if inside_code :
+                        # indent code block
                         line = '    ' + line
                     file_ptr.write( line )
                 else :
@@ -565,7 +694,7 @@ for section_name in section_list :
     if match_line == None :
         msg   = 'Can not find following line in ' + file_in + ':\n'
         msg  += '    extract_rst/' + section_name + '\n'
-        msg  += 'Spaces before the text above are options.'
+        msg  += 'Spaces before the text above are optional.'
         sys_exit(msg)
 #
 print('extract.py: OK')

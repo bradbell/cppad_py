@@ -10,6 +10,7 @@ Welcome to extract_rst's documentation!
    extract_rst/extract_rst_py
    extract_rst/code_block_py
    extract_rst/indent_py
+   extract_rst/file_block_py
 
 Indices and tables
 ==================
