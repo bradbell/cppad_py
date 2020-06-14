@@ -186,13 +186,30 @@ The back quote character \` can't be in the same lines as the command above.
 Leading and trailing white space is not included in
 *file_name*, *start*, or *end*.
 This enables on to put the command on multiple input lines.
+
+Notation
+--------
+We say that a string *text* is a the beginning of a line if
+only space characters come before *text* in the line.
+
+
+file_name
+---------
 If *file_name* is empty, the current input file is used.
 Otherwise *file_name* is relative to the directory where ``sphinxrst.py``
 is executed; i.e., the top directory for this git repository.
-The code block starts with the first occurence
-of the text *start* at the beginning of a line (in the specified file).
+
+start
+-----
+The code block starts with the occurence
+of the text *start* at the beginning of a line in *file_name*.
+There can only be one occurence of *start* at the beginning
+of a line in *file_name*.
+
+stop
+----
 The code block ends with the first occurence
-of the text *stop* at the beginning of a line and after the *start* text.
+of the text *stop* at the beginning of a line and after the *start*.
 The lines containing *start* and *stop* in *file_name* are not included in
 the code block.
 
@@ -291,8 +308,8 @@ def init_spell_checker(spell_list) :
     return spell_checker
 # ---------------------------------------------------------------------------
 # search for raw text at start of line (ignoring white space)
-def find_at_start_of_line(data, text) :
-    index = 0
+def find_at_start_of_line(offset, data, text) :
+    index = offset
     while index < len(data) :
         index = data.find(text, index)
         if index <= 0 :
@@ -568,23 +585,28 @@ for file_in in file_list :
                 file_ptr.close()
                 #
                 # start_index
-                start_index = find_at_start_of_line(data ,start)
+                offset      = 0
+                start_index = find_at_start_of_line(offset, data ,start)
                 if start_index < 0 :
                     msg  = 'file_sphinxrst command: can not find start = '
                     msg += '"' + start + '"'
                     msg += '\nin file_name = "' + file_name + '"'
                     sys_exit(msg, file_in, section_name)
+                offset     = start_index + len(start)
+                if 0 <= find_at_start_of_line(offset, data, start) :
+                    msg  = 'file_sphinxrst command: found more than one '
+                    msg += 'start = "' + start + '"'
+                    msg += '\nin file_name = "' + file_name + '"'
+                    sys_exit(msg, file_in, section_name)
                 #
                 # stop_index
-                offset     = start_index + len(start)
-                stop_index = find_at_start_of_line(data[offset :] ,stop)
+                stop_index = find_at_start_of_line(offset, data, stop)
                 if stop_index < 0 :
                     msg  = 'file_sphinxrst command: can not find'
                     msg += '\nstop = "' + stop + '"'
                     msg += ' after start = "' + start + '"'
                     msg += '\nin file_name = "' + file_name + '"'
                     sys_exit(msg, file_in, section_name)
-                stop_index += offset
                 #
                 # start_line
                 start_line = data[: start_index].count('\n') + 2
