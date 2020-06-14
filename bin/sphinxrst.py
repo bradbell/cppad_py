@@ -286,41 +286,43 @@ import os
 import pdb
 import spellchecker
 # ---------------------------------------------------------------------------
-# spell_checker
-bad_words_in_spellchecker = [
-    'thier',
-]
-greek_alphabet_latex_command = [
-    r'\alpha',
-    r'\beta',
-    r'\gamma',
-    r'\delta',
-    r'\epsilon',
-    r'\zeta',
-    r'\eta',
-    r'\theta',
-    r'\iota',
-    r'\kappa',
-    r'\lamda',
-    r'\mu',
-    r'\nu',
-    r'\xi',
-    r'\omicron',
-    r'\pi',
-    r'\rho',
-    r'\sigma',
-    r'\tau',
-    r'\upsilon',
-    r'\phi',
-    r'\chi',
-    r'\psi',
-    r'\omega',
-]
-#
-spell_checker = spellchecker.SpellChecker(distance=1)
-spell_checker.word_frequency.remove_words(bad_words_in_spellchecker)
-spell_checker.word_frequency.load_words(greek_alphabet_latex_command)
-spell_checker.word_frequency.load_words(spell_list)
+def init_spell_checker() :
+    bad_words_in_spellchecker = [
+        'thier',
+    ]
+    greek_alphabet_latex_command = [
+        r'\alpha',
+        r'\beta',
+        r'\gamma',
+        r'\delta',
+        r'\epsilon',
+        r'\zeta',
+        r'\eta',
+        r'\theta',
+        r'\iota',
+        r'\kappa',
+        r'\lamda',
+        r'\mu',
+        r'\nu',
+        r'\xi',
+        r'\omicron',
+        r'\pi',
+        r'\rho',
+        r'\sigma',
+        r'\tau',
+        r'\upsilon',
+        r'\phi',
+        r'\chi',
+        r'\psi',
+        r'\omega',
+    ]
+    #
+    spell_checker = spellchecker.SpellChecker(distance=1)
+    spell_checker.word_frequency.remove_words(bad_words_in_spellchecker)
+    spell_checker.word_frequency.load_words(greek_alphabet_latex_command)
+    spell_checker.word_frequency.load_words(spell_list)
+    #
+    return spell_checker
 # ---------------------------------------------------------------------------
 # search for raw text at start of line (ignoring white space)
 def find_at_start_of_line(data, text) :
@@ -337,7 +339,7 @@ def find_at_start_of_line(data, text) :
         if data[j] == '\n' :
             return index
         index = index + 1
-#
+# ---------------------------------------------------------------------------
 # add file name, section name, and program name to system exit call
 def sys_exit(msg, file_in=None, section_name=None) :
     if file_in != None :
@@ -345,6 +347,9 @@ def sys_exit(msg, file_in=None, section_name=None) :
         if section_name != None :
             msg += ', section = ' + section_name
     sys.exit( 'sphinxrst.py:\n' + msg )
+# =============================================================================
+# main program
+# =============================================================================
 #
 # check working directory
 if not os.path.isdir('.git') :
@@ -361,6 +366,9 @@ if os.path.isdir(output_dir) :
             os.remove(file_path)
 else :
     os.mkdir(output_dir)
+#
+# spell_checker
+spell_checker = init_spell_checker()
 #
 # initialize list of section names and corresponding file names
 section_list       = list()
