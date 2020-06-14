@@ -680,19 +680,19 @@ for file_in in file_list :
                         file_ptr.write('\n')
                     first_line = False
                 elif file_command :
-                        line       = output_data[start_line : newline + 1]
-                        line       = line.split('%')
-                        file_name  = line[1]
-                        start_line = line[2]
-                        stop_line  = line[3]
-                        #
-                        file_ptr.write('\n')
-                        line = f'.. literalinclude:: ../../{file_name}\n'
-                        file_ptr.write(line)
-                        line = f'    :lines: {start_line}-{stop_line}\n'
-                        file_ptr.write(line)
-                        file_ptr.write('\n')
-                        first_line = False
+                    line       = output_data[start_line : newline + 1]
+                    line       = line.split('%')
+                    file_name  = line[1]
+                    start_line = line[2]
+                    stop_line  = line[3]
+                    #
+                    file_ptr.write('\n')
+                    line = f'.. literalinclude:: ../../{file_name}\n'
+                    file_ptr.write(line)
+                    line = f'    :lines: {start_line}-{stop_line}\n'
+                    file_ptr.write(line)
+                    file_ptr.write('\n')
+                    first_line = False
                 elif start_line + num_remove < newline :
                     start_line += num_remove
                     line        = output_data[start_line : newline + 1]
