@@ -1,16 +1,16 @@
 .. vim: set expandtab: 
 
-Welcome to extract_rst's documentation!
+Welcome to sphinxrst's documentation!
 =======================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   extract_rst/extract_rst_py
-   extract_rst/code_block_py
-   extract_rst/indent_py
-   extract_rst/file_block_py
+   sphinxrst/sphinxrst_py
+   sphinxrst/code_block_py
+   sphinxrst/indent_py
+   sphinxrst/file_block_py
 
 Indices and tables
 ==================

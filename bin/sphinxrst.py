@@ -12,7 +12,7 @@ sphinx_dir = 'sphinx'
 #
 # List of files that contain sphinxrst sections in them:
 extract_list = [
-    'bin/extract_rst.py',
+    'bin/sphinxrst.py',
     'sphinx/test/code_block.py',
     'sphinx/test/indent.py',
     'sphinx/test/file_block.py',
@@ -50,7 +50,7 @@ spell_list = [
 ]
 # ----------------------------------------------------------------------------
 """
-{begin_sphinxrst extract_rst_py}
+{begin_sphinxrst sphinxrst_py}
 {spell_sphinxrst
     sphinxrst
     rst
@@ -65,39 +65,39 @@ Extract Sphinx RST From Source Code
 
 Syntax
 ======
-``extract_rst.py``
+``sphinxrst.py``
 
-.. _extract_rst_py_sphinx_dir:
+.. _sphinxrst_py_sphinx_dir:
 
 sphinx_dir
 ==========
-The variable *sphinx_dir* at the top of ``extract_rst.py`` is a sub-directory,
+The variable *sphinx_dir* at the top of ``sphinxrst.py`` is a sub-directory,
 of the top git repository directory.
 The  sphinx ``conf.py`` and ``index.rst`` files are located in this directory.
 Any files that have names ending in ``.rst`` and that are
-in the directory *sphinx_dir*:code:`/extract_rst`,
-are removed at the beginning of execution of ``extract_rst.py``.
-All the ``.rst`` files in *sphinx_dir*:code:`/extract_rst`
-were extracted from the source code the last time that ``extract_rst.py``
+in the directory *sphinx_dir*:code:`/sphinxrst`,
+are removed at the beginning of execution of ``sphinxrst.py``.
+All the ``.rst`` files in *sphinx_dir*:code:`/sphinxrst`
+were extracted from the source code the last time that ``sphinxrst.py``
 was executed.
 
 extract_list
 ============
-The variable *extract_list* at top of ``extract_rst.py``
+The variable *extract_list* at top of ``sphinxrst.py``
 is a list of file names that the sphinxrst files will be extracted from.
-These names are relative to the directory where ``extract_rst.py``
+These names are relative to the directory where ``sphinxrst.py``
 is executed.
 
-.. _extract_rst_py_spell_list:
+.. _sphinxrst_py_spell_list:
 
 spell_list
 ==========
 The variable *spell_list* is a list of words that
 the spell checker will consider correct for all sections.
 Special words, for a particular section, are specified using the
-:ref:`spell command<extract_rst_py_spell_command>`.
+:ref:`spell command<sphinxrst_py_spell_command>`.
 
-.. _extract_rst_py_start_section:
+.. _sphinxrst_py_start_section:
 
 Begin Section
 =============
@@ -122,18 +122,18 @@ command at the start of a line
 ``{end_sphinxrst`` *section_name*:code:`}`
 
 Here *section_name* must be the same as in the corresponding
-:ref:`start section<extract_rst_py_start_section>` command.
+:ref:`start section<sphinxrst_py_start_section>` command.
 
 index.rst
 =========
 The file ``index.rst`` must exist in the directory
-:ref:`sphinx_dir<extract_rst_py_sphinx_dir>`.
+:ref:`sphinx_dir<sphinxrst_py_sphinx_dir>`.
 For each *section_name* in a
-:ref:`start section<extract_rst_py_start_section>` command,
+:ref:`start section<sphinxrst_py_start_section>` command,
 there must be a line in ``index.rst`` with the following text:
 
 |space| |space| |space| |space|
-``extract_rst/`` *section_name*:code:`.rst`
+``sphinxrst/`` *section_name*:code:`.rst`
 
 where there can be any number of spaces before the text above.
 
@@ -157,12 +157,12 @@ Note that this will also suspend the sphinxrst processing; e.g., spell checking.
 Each suspend sphinxrst must have a corresponding resume sphinxrst in same
 section (between the corresponding begin sphinxrst and end sphinxrst commands).
 
-.. _extract_rst_py_spell_command:
+.. _sphinxrst_py_spell_command:
 
 Spell Command
 =============
 The list of words in
-:ref:`spell_list<extract_rst_py_spell_list>` are consider correct spellings
+:ref:`spell_list<sphinxrst_py_spell_list>` are consider correct spellings
 for all sections. You can specify a special list of words for the current
 section using the following command at the start of a line
 (not counting spaces used to indent the command):
@@ -221,7 +221,7 @@ Leading and trailing white space is not included in
 *file_name*, *start*, or *end*.
 This enables on to put the command on multiple input lines.
 If *file_name* is empty, the current input file is used.
-Otherwise *file_name* is relative to the directory where ``extract_rst.py``
+Otherwise *file_name* is relative to the directory where ``sphinxrst.py``
 is executed; i.e., the top directory for this git repository.
 The code block starts with the first occurence
 of the text *start* at the beginning of a line (in the specified file).
@@ -244,7 +244,7 @@ and end of comments so it is easier to distinguish from back quotes.
 
 Wish List
 =========
-The following is a wish list for future improvements to ``extract_rst.py``:
+The following is a wish list for future improvements to ``sphinxrst.py``:
 
 Testing
 -------
@@ -277,7 +277,7 @@ Module
 ------
 Convert the extract program into a python module and provide a pip distribution for it.
 
-{end_sphinxrst extract_rst_py}
+{end_sphinxrst sphinxrst_py}
 """
 # ----------------------------------------------------------------------------
 import sys
@@ -344,7 +344,7 @@ def sys_exit(msg, file_in=None, section_name=None) :
         msg += '\nfile = ' + file_in
         if section_name != None :
             msg += ', section = ' + section_name
-    sys.exit( 'extract_rst.py:\n' + msg )
+    sys.exit( 'sphinxrst.py:\n' + msg )
 #
 # check working directory
 if not os.path.isdir('.git') :
@@ -353,7 +353,7 @@ if not os.path.isdir('.git') :
 #
 # remove all *.rst files from output directory so only new ones remain aftet
 # this program finishes
-output_dir = sphinx_dir + '/extract_rst'
+output_dir = sphinx_dir + '/sphinxrst'
 if os.path.isdir(output_dir) :
     for file_name in os.listdir(output_dir) :
         if file_name.endswith('.rst') :
@@ -685,17 +685,17 @@ file_ptr.close()
 #
 for section_name in section_list :
     # There should be an line in index.rst with the following contents:
-    #     extract_rst/section_name.rst'
+    #     sphinxrst/section_name.rst'
     # where the spaces are optional
-    pattern  = r'\n[ \t]*extract_rst/'
+    pattern  = r'\n[ \t]*sphinxrst/'
     pattern += section_name.replace('.', '[.]')
     #
     match_line = re.search(pattern, file_data)
     if match_line == None :
         msg   = 'Can not find following line in ' + file_in + ':\n'
-        msg  += '    extract_rst/' + section_name + '\n'
+        msg  += '    sphinxrst/' + section_name + '\n'
         msg  += 'Spaces before the text above are optional.'
         sys_exit(msg)
 #
-print('extract.py: OK')
+print('sphinxrst.py: OK')
 sys.exit(0)
