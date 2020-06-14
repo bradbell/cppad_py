@@ -558,8 +558,8 @@ for file_in in file_list :
                 match_begin_code  = pattern_begin_code.search(data_right)
             # ---------------------------------------------------------------
             # file command: convert start and stop to line numbers
-            output_index     = 0
-            match_file = pattern_file_sphinxrst.search(output_data)
+            output_index  = 0
+            match_file    = pattern_file_sphinxrst.search(output_data)
             while match_file != None :
                 #
                 # file_name
@@ -660,6 +660,7 @@ for file_in in file_list :
             start_line        = 0
             first_spell_error = True # for this section
             inside_code       = False
+            first_line        = True
             for newline in newline_list :
                 code_command = \
                     output_data[start_line:].startswith('{code_sphinxrst')
@@ -677,6 +678,7 @@ for file_in in file_list :
                         file_ptr.write(line)
                     else :
                         file_ptr.write('\n')
+                    first_line = False
                 elif file_command :
                         line       = output_data[start_line : newline + 1]
                         line       = line.split('%')
@@ -690,6 +692,7 @@ for file_in in file_list :
                         line = f'    :lines: {start_line}-{stop_line}\n'
                         file_ptr.write(line)
                         file_ptr.write('\n')
+                        first_line = False
                 elif start_line + num_remove < newline :
                     start_line += num_remove
                     line        = output_data[start_line : newline + 1]
@@ -716,7 +719,8 @@ for file_in in file_list :
                         # indent code block
                         line = '    ' + line
                     file_ptr.write( line )
-                else :
+                    first_line = False
+                elif not first_line :
                     file_ptr.write( "\n" )
                 start_line = newline + 1
             file_ptr.close()

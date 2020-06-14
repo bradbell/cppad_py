@@ -4,13 +4,15 @@ Welcome to sphinxrst's documentation!
 =======================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 3
 
    sphinxrst/sphinxrst_py
    sphinxrst/code_block_py
+   sphinxrst/code_block_src
    sphinxrst/indent_py
+   sphinxrst/indent_src
    sphinxrst/file_block_py
+   sphinxrst/file_block_src
 
 Indices and tables
 ==================

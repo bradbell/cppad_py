@@ -28,11 +28,7 @@ ignore_files='
 	sphinx/Makefile
 	sphinx/conf.py
 	sphinx/index.rst
-	sphinx/file_list
-`	sphinx/spell_list
-	sphinx/test_out/code_block_py.rst
-	sphinx/test_out/file_block_py.rst
-	sphinx/test_out/indent_py.rst
+	sphinx/test_out/
 '
 # ----------------------------------------------------------------------------
 echo "copyright_owner=$copyright_owner"

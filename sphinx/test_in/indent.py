@@ -6,16 +6,42 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
+# BEGIN_SRC
 """
     {begin_sphinxrst indent_py}
 
-    Indentation Example / Test
-    ==========================
+    .. _indent_py:
+
+    Indentation Example
+    ===================
     {code_sphinxrst python}"""
     def factorial(n) :
         if n == 1 :
             return 1
         return n * factorial(n-1)
     """{code_sphinxrst}
+
+    Source
+    ------
+    :ref:`indent_src`
+
     {end_sphinxrst indent_py}
+"""
+# END_SRC
+# ----------------------------------------------------------------------------
+"""
+{begin_sphinxrst indent_src}
+
+.. _indent_src:
+
+Indentation Source
+==================
+
+{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
+
+Example
+-------
+:ref:`indent_py`
+
+{end_sphinxrst indent_src}
 """

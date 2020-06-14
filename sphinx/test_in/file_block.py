@@ -6,21 +6,46 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
+# BEGIN_SRC
 # BEGIN_FACTORIAL
 def factorial(n) :
     if n == 1 :
         return 1
     return n * factorial(n-1)
-# END
+# END_FACTORIAL
 """
-    {begin_sphinxrst file_block_py}
+{begin_sphinxrst file_block_py}
 
-    File Code Block Example / Test
-    ==============================
+.. _file_block_py:
 
-    Text before file block.
-    {file_sphinxrst%%# BEGIN_FACTORIAL%# END%}
-    Text after file block.
+File Block Example
+==================
 
-    {end_sphinxrst file_block_py}
+Text before file block.
+{file_sphinxrst%%# BEGIN_FACTORIAL%# END_FACTORIAL%}
+Text after file block.
+
+Source
+------
+:ref:`file_block_src`
+
+{end_sphinxrst file_block_py}
+"""
+# END_SRC
+# --------------------------------------------------------------------------
+"""
+{begin_sphinxrst file_block_src}
+
+.. _file_block_src:
+
+File Block Source
+=================
+
+{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
+
+Example
+-------
+:ref:`file_block_py`
+
+{end_sphinxrst file_block_src}
 """

@@ -1,11 +1,15 @@
+.. _file_block_py:
 
-
-File Code Block Example / Test
-==============================
+File Block Example
+==================
 
 Text before file block.
 
 .. literalinclude:: ../../sphinx/test_in/file_block.py
-    :lines: 10-13
+    :lines: 11-14
 
 Text after file block.
+
+Source
+------
+:ref:`file_block_src`
