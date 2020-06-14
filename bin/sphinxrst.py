@@ -7,9 +7,6 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
-# Sub-directory of the top git directory where sphinx conf.py file located.
-sphinx_dir = 'sphinx'
-#
 # List of files that contain sphinxrst sections in them:
 extract_list = [
     'bin/sphinxrst.py',
@@ -65,13 +62,13 @@ Extract Sphinx RST From Source Code
 
 Syntax
 ======
-``sphinxrst.py``
+``sphinxrst.py`` *sphinx_dir*
 
 .. _sphinxrst_py_sphinx_dir:
 
 sphinx_dir
 ==========
-The variable *sphinx_dir* at the top of ``sphinxrst.py`` is a sub-directory,
+The command line argument *sphinx_dir* is a sub-directory,
 of the top git repository directory.
 The  sphinx ``conf.py`` and ``index.rst`` files are located in this directory.
 Any files that have names ending in ``.rst`` and that are
@@ -346,15 +343,31 @@ def sys_exit(msg, file_in=None, section_name=None) :
         msg += '\nfile = ' + file_in
         if section_name != None :
             msg += ', section = ' + section_name
-    sys.exit( 'sphinxrst.py:\n' + msg )
+    sys.exit( 'bin/sphinxrst.py sphinx_dir\n' + msg )
 # =============================================================================
 # main program
 # =============================================================================
+# sphinx_dir
+if len(sys.argv) != 2 :
+    sys_exit('expected one command line argument')
+sphinx_dir = sys.argv[1]
+if not os.path.isdir(sphinx_dir) :
+    msg  = 'sphinx_dir = ' + sphinx_dir + '\n'
+    msg += 'is not a sub-directory of current working directory'
+    sys_exit(msg)
 #
 # check working directory
 if not os.path.isdir('.git') :
     msg = 'must be executed from to top directory for this git repository\n'
     sys_exit(msg)
+#
+# check sphinx_dir
+for file_name in ['conf.py', 'index.rst'] :
+    file_path = sphinx_dir + '/' + file_name
+    if not os.path.isfile( file_path ) :
+        msg  = 'can not find the file ' + file_name + '\n'
+        msg += 'in sphinx_dir = ' + sphinx_dir
+        sys_exit(msg)
 #
 # remove all *.rst files from output directory so only new ones remain aftet
 # this program finishes
