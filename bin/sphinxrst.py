@@ -690,7 +690,7 @@ for file_in in file_list :
                         line = f'    :lines: {start_line}-{stop_line}\n'
                         file_ptr.write(line)
                         file_ptr.write('\n')
-                elif start_line + num_remove <= newline :
+                elif start_line + num_remove < newline :
                     start_line += num_remove
                     line        = output_data[start_line : newline + 1]
                     # ------------------------------------------------------
