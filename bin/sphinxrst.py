@@ -27,6 +27,18 @@ Syntax
 
 .. _sphinxrst_py_sphinx_dir:
 
+Notation
+========
+
+White Space
+-----------
+We define white space to be a sequence of space and tab characters.
+
+Beginning of a Line
+-------------------
+We say that a string *text* is a the beginning of a line if
+only white space, or nothing, comes before *text* in the line.
+
 sphinx_dir
 ==========
 The command line argument *sphinx_dir* is a sub-directory,
@@ -68,8 +80,7 @@ Special words, for a particular section, are specified using the
 Begin Section
 =============
 The start of a sphinxrst section of the input file is indicated by the
-following command at the start of a line
-(not counting spaces used to indent the command):
+following command at the beginning of a line:
 
 |space| |space| |space| |space|
 ``{begin_sphinxrst`` *section_name*:code:`}`
@@ -81,8 +92,7 @@ and dot ``.``
 End Section
 ===========
 The end of a sphinxrst section of the input file is indicated by the following
-command at the start of a line
-(not counting spaces used to indent the command):
+command at the beginning of a line:
 
 |space| |space| |space| |space|
 ``{end_sphinxrst`` *section_name*:code:`}`
@@ -101,25 +111,24 @@ there must be a line in ``index.rst`` with the following text:
 |space| |space| |space| |space|
 ``sphinxrst/`` *section_name*:code:`.rst`
 
-where there can be any number of spaces before the text above.
+There can white space before the text above.
 
 
 Suspend Extraction
 ==================
-It is possible do suspend the sphinxrst extraction during a section.
-One begins the suspension with the following command at the start of a line
-(not counting spaces used to indent the command):
+It is possible to suspend the sphinxrst extraction during a section.
+One begins the suspension with the following command
+at the beginning of a line:
 
 |space| |space| |space| |space|
 ``{suspend_sphinxrst}``
 
-One resumes the output with the following command at the start of a line
-(not counting spaces used to indent the command):
+Note that this will also suspend the sphinxrst processing; e.g., spell checking.
+One resumes the output with the following command at the beginning of a line:
 
 |space| |space| |space| |space|
 ``{resume_sphinxrst}``
 
-Note that this will also suspend the sphinxrst processing; e.g., spell checking.
 Each suspend sphinxrst must have a corresponding resume sphinxrst in same
 section (between the corresponding begin sphinxrst and end sphinxrst commands).
 
@@ -128,10 +137,9 @@ section (between the corresponding begin sphinxrst and end sphinxrst commands).
 Spell Command
 =============
 The list of words in
-:ref:`spell_list<sphinxrst_py_spell_list>` are consider correct spellings
+:ref:`spell_list<sphinxrst_py_spell_list>` are considered correct spellings
 for all sections. You can specify a special list of words for the current
-section using the following command at the start of a line
-(not counting spaces used to indent the command):
+section using the following command at the beginning of a line:
 
 |space| |space| |space| |space|
 ``{spell_sphinxrst`` *word_1* ...  *word_n*:code:`}`
@@ -148,7 +156,6 @@ The back slash is included as a possible beginning of a word
 so that latex commands can be included in the spelling list.
 The latex commands corresponding to the letters in the greek alphabet
 are automatically included in the spelling list.
-
 
 Code Block
 ==========
@@ -175,23 +182,16 @@ without having the comment characters in the sphinxrst output.
 
 File Block
 ==========
-A file code block, from any file, is included by the following command
-at the start of a line
-(not counting spaces used to indent the command):
+A code block, from any file, is included by the following command
+at the beginning of a line:
 
 |space| |space| |space| |space|
 ``{file_sphinxrst%`` *file_name* :code:`%` *start* :code:`%` *stop*:code:`%}`
 
-The back quote character \` can't be in the same lines as the command above.
+The back quote character \` can not be in the same lines as the command above.
 Leading and trailing white space is not included in
 *file_name*, *start*, or *end*.
-This enables on to put the command on multiple input lines.
-
-Notation
---------
-We say that a string *text* is a the beginning of a line if
-only space characters come before *text* in the line.
-
+This enables one to put the command on multiple input lines.
 
 file_name
 ---------
@@ -211,14 +211,14 @@ stop
 The code block ends with the occurence
 of the text *stop* at the beginning of a line and after *start*.
 There can only be one occurence of *stop* at the beginning of a line
-and after *start*.
+and after *start* and it must come after *start*.
 The lines containing *start* and *stop* in *file_name* are not included in
 the code block.
 
 Indentation
 ===========
 If all of the extracted sphinxrst documentation for a section is indented
-by the same number of space characters, those space characters
+by the same white space characters, those characters
 are not included in the sphinxrst output. This enables one to indent the
 sphinxrst so it is grouped with the proper code block in the source.
 
@@ -315,7 +315,7 @@ def init_spell_checker(spell_list) :
     #
     return spell_checker
 # ---------------------------------------------------------------------------
-# search for raw text at start of line (ignoring white space)
+# search for raw text at beginning of a line
 def find_at_start_of_line(offset, data, text) :
     index = offset
     while index < len(data) :
@@ -323,7 +323,7 @@ def find_at_start_of_line(offset, data, text) :
         if index <= 0 :
             return index
         j = index - 1
-        while j >= 0 and data[j] == ' ' :
+        while j >= 0 and data[j] in ' \t' :
             --j
         if j < 0 :
             return index
@@ -344,7 +344,7 @@ def file2list(file_name) :
     result    = list()
     for line in file_ptr :
         if not line.startswith('#') :
-            line = line.strip()
+            line = line.strip(' \t\n')
             if not line == '' :
                 result.append(line)
     file_ptr.close()
@@ -413,11 +413,11 @@ corresponding_file = list()
 # define some pytyon regular expression patterns
 pattern_newline           = re.compile( r'\n')
 pattern_word              = re.compile( r'[\\A-Za-z][a-z]*' )
-pattern_suspend_sphinxrst = re.compile( r'\n *\{suspend_sphinxrst\}' )
-pattern_resume_sphinxrst  = re.compile( r'\n *\{resume_sphinxrst\}' )
-pattern_begin_sphinxrst   = re.compile( r'\n *\{begin_sphinxrst\s+(\w*)\}' )
-pattern_end_sphinxrst     = re.compile( r'\n *\{end_sphinxrst\s+(\w*)\}' )
-pattern_spell_sphinxrst   = re.compile( r'\n *\{spell_sphinxrst([^}]*)\}' )
+pattern_suspend_sphinxrst = re.compile( r'\n[ \t]*\{suspend_sphinxrst\}' )
+pattern_resume_sphinxrst  = re.compile( r'\n[ \t]*\{resume_sphinxrst\}' )
+pattern_begin_sphinxrst   = re.compile( r'\n[ \t]*\{begin_sphinxrst\s+(\w*)\}' )
+pattern_end_sphinxrst     = re.compile( r'\n[ \t]*\{end_sphinxrst\s+(\w*)\}' )
+pattern_spell_sphinxrst   = re.compile( r'\n[ \t]*\{spell_sphinxrst([^}]*)\}' )
 pattern_file_sphinxrst    = re.compile(
     r'\n[^\n`]*\{file_sphinxrst%([^%]*)%([^%]*)%([^%]*)%[^\n`]*\}'
 )
@@ -431,7 +431,7 @@ pattern_end_code          = re.compile(
 # process each file in the list
 for file_in in file_list :
     if not os.path.isfile(file_in) :
-        msg  = 'can not file the file: ' + file_in + '\n'
+        msg  = 'can not find the file: ' + file_in + '\n'
         msg += 'which is located in sphinx_dir/file_list\n'
         msg += 'sphinx_dir = ' + sphinx_dir + '\n'
         msg += 'file_list  = ' + sys.argv[2] + '\n'
@@ -453,7 +453,6 @@ for file_in in file_list :
         #
         if match_begin_sphinxrst == None :
             if file_index == 0 :
-                # Use @ so does not match pattern_begin_sphinxrst in this file.
                 msg  = 'can not find followng at start of a line:\n'
                 msg += '    {begin_sphinxrst section_name}\n'
                 sys_exit(msg, file_in)
@@ -658,16 +657,32 @@ for file_in in file_list :
                 next_ = start + 1
                 if next_ < len_output and num_remove != 0 :
                     ch = output_data[next_]
-                    while ch == ' ' and next_ + 1 < len_output :
+                    while ch in ' \n' and next_ + 1 < len_output :
                         next_ += 1
                         ch = output_data[next_]
-                    if ch == '\t' :
-                        msg  = 'tab in white space at begining of a line'
-                        sys_exit(msg, file_in, section_name)
                     cmd  = output_data[next_:].startswith('{code_sphinxrst')
                     cmd += output_data[next_:].startswith('{file_sphinxrst')
-                    if ch != '\n' and ch != ' ' and not cmd :
+                    if ch not in ' \t\n' and not cmd :
                         num_remove = min(num_remove, next_ - start - 1)
+            # indent
+            indent = None
+            if num_remove > 0 :
+                startline = 0
+                for newline in newline_list :
+                    indented = not \
+                        output_data[startline:].startswith('{code_sphinxrst')
+                    indented = indented and not \
+                        output_data[startline:].startswith('{file_sphinxrst')
+                    indented = indented and newline - start >= num_remove
+                    if indented :
+                        if indent == None :
+                            indent = output_data[start : newline]
+                        elif indent != output_data[start : newline] :
+                            breakpoint()
+                            msg  = 'inconsistent use of tabs and spaces at '
+                            msg += 'beginning of line'
+                            sys_exit(msg, file_in, section_name)
+                    startline = newline + 1
             # ---------------------------------------------------------------
             # write file for this section
             file_out          = output_dir + '/' + section_name + '.rst'
