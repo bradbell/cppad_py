@@ -1,7 +1,7 @@
-.. _indent_py:
+.. _indent_space_py:
 
-Indentation Example
-===================
+Indent Using Spaces Example
+===========================
 .. code-block:: python
 
     def factorial(n) :
@@ -12,4 +12,4 @@ Indentation Example
 
 Source
 ------
-:ref:`indent_src`
+:ref:`indent_space_src`

@@ -8,12 +8,12 @@
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-    {begin_sphinxrst indent_py}
+    {begin_sphinxrst indent_space_py}
 
-    .. _indent_py:
+    .. _indent_space_py:
 
-    Indentation Example
-    ===================
+    Indent Using Spaces Example
+    ===========================
     {code_sphinxrst python}"""
     def factorial(n) :
         if n == 1 :
@@ -23,25 +23,25 @@
 
     Source
     ------
-    :ref:`indent_src`
+    :ref:`indent_space_src`
 
-    {end_sphinxrst indent_py}
+    {end_sphinxrst indent_space_py}
 """
 # END_SRC
 # ----------------------------------------------------------------------------
 """
-{begin_sphinxrst indent_src}
+{begin_sphinxrst indent_space_src}
 
-.. _indent_src:
+.. _indent_space_src:
 
-Indentation Source
-==================
+Indent Using Spaces Source
+==========================
 
 {file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
 
 Example
 -------
-:ref:`indent_py`
+:ref:`indent_space_py`
 
-{end_sphinxrst indent_src}
+{end_sphinxrst indent_space_src}
 """

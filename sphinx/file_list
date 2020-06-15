@@ -7,5 +7,5 @@
 # ----------------------------------------------------------------------------
 bin/sphinxrst.py
 sphinx/test_in/code_block.py
-sphinx/test_in/indent.py
+sphinx/test_in/indent_space.py
 sphinx/test_in/file_block.py
