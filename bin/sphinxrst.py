@@ -208,8 +208,10 @@ of a line in *file_name*.
 
 stop
 ----
-The code block ends with the first occurence
-of the text *stop* at the beginning of a line and after the *start*.
+The code block ends with the occurence
+of the text *stop* at the beginning of a line and after *start*.
+There can only be one occurence of *stop* at the beginning of a line
+and after *start*.
 The lines containing *start* and *stop* in *file_name* are not included in
 the code block.
 
@@ -229,12 +231,6 @@ Wish List
 =========
 The following is a wish list for future improvements to ``sphinxrst.py``:
 
-Testing
--------
-Include an optional command line argument that indicates test mode
-and runs the extractor through some test files and makes sure the result
-is correct.
-
 Error Messaging
 ---------------
 Improve the error messaging so that it include the line number of the
@@ -249,12 +245,6 @@ Double Word Errors
 ------------------
 Detect double word errors and allow for exceptions by specifying them in a
 ``double_word_sphinxrst`` command.
-
-Moving Code Blocks
-------------------
-Have a way to include code blocks that are not directly below and in the same
-file; e.g., one my automatically transfer the prototype for a function,
-in the same file or a different file, to the documentation for a section.
 
 Module
 ------
@@ -604,6 +594,13 @@ for file_in in file_list :
                 if stop_index < 0 :
                     msg  = 'file_sphinxrst command: can not find'
                     msg += '\nstop = "' + stop + '"'
+                    msg += ' after start = "' + start + '"'
+                    msg += '\nin file_name = "' + file_name + '"'
+                    sys_exit(msg, file_in, section_name)
+                offset     = stop_index + len(stop)
+                if 0 <= find_at_start_of_line(offset, data, stop) :
+                    msg  = 'file_sphinxrst command: found more than one '
+                    msg += 'stop = "' + stop + '"'
                     msg += ' after start = "' + start + '"'
                     msg += '\nin file_name = "' + file_name + '"'
                     sys_exit(msg, file_in, section_name)
