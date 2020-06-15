@@ -250,6 +250,24 @@ Module
 ------
 Convert the extract program into a python module and provide a pip distribution for it.
 
+Tabs
+----
+Allow for using spaces or tabs to indent code.
+
+Links
+-----
+Automatic links for every section heading.
+
+Indexing
+--------
+Add indexing so that there are search links to headings at all levels.
+
+Contents
+--------
+Have a section specify its child sections.
+Sections that are not in ``index.rst`` must be the child of one
+and only one section.
+
 {end_sphinxrst sphinxrst_py}
 """
 # ----------------------------------------------------------------------------
