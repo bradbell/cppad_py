@@ -687,30 +687,30 @@ for file_in in file_list :
             # write file for this section
             file_out          = output_dir + '/' + section_name + '.rst'
             file_ptr          = open(file_out, 'w')
-            start_line        = 0
+            startline         = 0
             first_spell_error = True # for this section
             inside_code       = False
             first_line        = True
             for newline in newline_list :
                 code_command = \
-                    output_data[start_line:].startswith('{code_sphinxrst')
+                    output_data[startline:].startswith('{code_sphinxrst')
                 file_command = \
-                    output_data[start_line:].startswith('{file_sphinxrst')
+                    output_data[startline:].startswith('{file_sphinxrst')
                 if code_command :
                     # --------------------------------------------------------
                     # code command
                     inside_code = not inside_code
                     if inside_code :
-                        end_cmd = start_line + \
-                            output_data[start_line:].find('}')
-                        language = output_data[start_line + 16 : end_cmd]
+                        end_cmd = startline + \
+                            output_data[startline:].find('}')
+                        language = output_data[startline + 16 : end_cmd]
                         line     = '.. code-block:: ' + language + '\n\n'
                         file_ptr.write(line)
                     else :
                         file_ptr.write('\n')
                     first_line = False
                 elif file_command :
-                    line       = output_data[start_line : newline + 1]
+                    line       = output_data[startline : newline + 1]
                     line       = line.split('%')
                     file_name  = line[1]
                     start_line = line[2]
@@ -723,9 +723,9 @@ for file_in in file_list :
                     file_ptr.write(line)
                     file_ptr.write('\n')
                     first_line = False
-                elif start_line + num_remove < newline :
-                    start_line += num_remove
-                    line        = output_data[start_line : newline + 1]
+                elif startline + num_remove < newline :
+                    startline += num_remove
+                    line       = output_data[startline : newline + 1]
                     # ------------------------------------------------------
                     # check spelling
                     word_list = list()
@@ -752,7 +752,7 @@ for file_in in file_list :
                     first_line = False
                 elif not first_line :
                     file_ptr.write( "\n" )
-                start_line = newline + 1
+                startline = newline + 1
             file_ptr.close()
             #
             # file_index
