@@ -377,6 +377,32 @@ def start_line_white_space(data) :
             return white_space
         data_index = data_index + index + 1
     return white_space
+# ----------------------------------------------------------------------------
+# process suspend sphinxrst commands
+def suspend_command(output_data) :
+    pattern_suspend_sphinxrst = re.compile( r'\n[ \t]*\{suspend_sphinxrst\}' )
+    match_suspend = pattern_suspend_sphinxrst.search(output_data)
+    while match_suspend != None :
+        suspend_start = match_suspend.start()
+        suspend_end   = match_suspend.end()
+        output_rest   = output_data[ suspend_end : ]
+        match_resume  = pattern_resume_sphinxrst.search(output_rest)
+        match_suspend = pattern_suspend_sphinxrst.search(output_rest)
+        if match_resume == None :
+            msg  = 'there is a {suspend_sphinxrst} without a '
+            msg += 'corresponding {resume_sphinxrst}'
+            sys_exit(msg, file_in, section_name)
+        if match_suspend != None :
+            if match_suspend.start() < match_resume.start() :
+                pdb.set_trace()
+                msg  = 'there are two {suspend_sphinxrst} without a '
+                msg += '{resume_sphinxrst} between them'
+                sys_exit(msg, file_in, section_name)
+        resume_end  = match_resume.end() + suspend_end
+        output_rest = output_data[ resume_end :]
+        output_data = output_data[: suspend_start] + output_rest
+        # redo match_suppend so relative to new output_data
+        match_suspend = pattern_suspend_sphinxrst.search(output_data)
 # =============================================================================
 # main program
 # =============================================================================
@@ -441,7 +467,6 @@ corresponding_file = list()
 # define some pytyon regular expression patterns
 pattern_newline           = re.compile( r'\n')
 pattern_word              = re.compile( r'[\\A-Za-z][a-z]*' )
-pattern_suspend_sphinxrst = re.compile( r'\n[ \t]*\{suspend_sphinxrst\}' )
 pattern_resume_sphinxrst  = re.compile( r'\n[ \t]*\{resume_sphinxrst\}' )
 pattern_begin_sphinxrst   = re.compile( r'\n[ \t]*\{begin_sphinxrst\s+(\w*)\}' )
 pattern_end_sphinxrst     = re.compile( r'\n[ \t]*\{end_sphinxrst\s+(\w*)\}' )
@@ -524,30 +549,10 @@ for file_in in file_list :
             output_start = file_index
             output_end   = file_index + match_end_sphinxrst.start()
             output_data  = file_data[ output_start : output_end ]
-            # ----------------------------------------------------------------
-            # process suspend sphinxrst commands
-            match_suspend = pattern_suspend_sphinxrst.search(output_data)
-            while match_suspend != None :
-                suspend_start = match_suspend.start()
-                suspend_end   = match_suspend.end()
-                output_rest   = output_data[ suspend_end : ]
-                match_resume  = pattern_resume_sphinxrst.search(output_rest)
-                match_suspend = pattern_suspend_sphinxrst.search(output_rest)
-                if match_resume == None :
-                    msg  = 'there is a {suspend_sphinxrst} without a '
-                    msg += 'corresponding {resume_sphinxrst}'
-                    sys_exit(msg, file_in, section_name)
-                if match_suspend != None :
-                    if match_suspend.start() < match_resume.start() :
-                        pdb.set_trace()
-                        msg  = 'there are two {suspend_sphinxrst} without a '
-                        msg += '{resume_sphinxrst} between them'
-                        sys_exit(msg, file_in, section_name)
-                resume_end  = match_resume.end() + suspend_end
-                output_rest = output_data[ resume_end :]
-                output_data = output_data[: suspend_start] + output_rest
-                # redo match_suppend so relative to new output_data
-                match_suspend = pattern_suspend_sphinxrst.search(output_data)
+            #
+            # process suspend commands
+            suspend_command(output_data)
+            #
             # ----------------------------------------------------------------
             # process spell command
             match_spell = pattern_spell_sphinxrst.search(output_data)
