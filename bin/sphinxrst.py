@@ -393,7 +393,6 @@ def suspend_command(suspend_pattern, resume_pattern, output_data) :
             sys_exit(msg, file_in, section_name)
         if match_suspend != None :
             if match_suspend.start() < match_resume.start() :
-                pdb.set_trace()
                 msg  = 'there are two {suspend_sphinxrst} without a '
                 msg += '{resume_sphinxrst} between them'
                 sys_exit(msg, file_in, section_name)

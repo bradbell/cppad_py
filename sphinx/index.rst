@@ -15,6 +15,8 @@ Welcome to sphinxrst's documentation!
    sphinxrst/indent_tab_src
    sphinxrst/file_block_py
    sphinxrst/file_block_src
+   sphinxrst/suspend_py
+   sphinxrst/suspend_src
 
 Indices and tables
 ==================
