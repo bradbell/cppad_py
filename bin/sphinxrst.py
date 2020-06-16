@@ -442,6 +442,91 @@ def isolate_code_command(code_pattern, output_data) :
         output_index = len(data_left)
         match_begin_code  = code_pattern.search(data_right)
     return output_data
+# -----------------------------------------------------------------------------
+# convert file command start and stop from patterns to line numbers
+def convert_file_command(file_pattern, output_data) :
+    output_index  = 0
+    match_file    = file_pattern.search(output_data)
+    while match_file != None :
+        #
+        # file_name
+        file_name = match_file.group(1).strip()
+        if file_name == '' :
+            file_name = file_in
+        #
+        # start
+        start     = match_file.group(2).strip()
+        if start == '' :
+            msg = 'file_sphinxrst command: start text is empty'
+            sys_exit(msg, file_in, section_name)
+        #
+        # stop
+        stop      = match_file.group(3) .strip()
+        if stop == '' :
+            msg = 'file_sphinxrst command: stop text is empty'
+            sys_exit(msg, file_in, section_name)
+        #
+        # data
+        file_ptr  = open(file_name, 'r')
+        data      = file_ptr.read()
+        file_ptr.close()
+        #
+        # start_index
+        offset      = 0
+        start_index = find_at_start_of_line(offset, data ,start)
+        if start_index < 0 :
+            msg  = 'file_sphinxrst command: can not find start = '
+            msg += '"' + start + '"'
+            msg += '\nin file_name = "' + file_name + '"'
+            sys_exit(msg, file_in, section_name)
+        offset     = start_index + len(start)
+        if 0 <= find_at_start_of_line(offset, data, start) :
+            msg  = 'file_sphinxrst command: found more than one '
+            msg += 'start = "' + start + '"'
+            msg += '\nin file_name = "' + file_name + '"'
+            sys_exit(msg, file_in, section_name)
+        #
+        # stop_index
+        stop_index = find_at_start_of_line(offset, data, stop)
+        if stop_index < 0 :
+            msg  = 'file_sphinxrst command: can not find'
+            msg += '\nstop = "' + stop + '"'
+            msg += ' after start = "' + start + '"'
+            msg += '\nin file_name = "' + file_name + '"'
+            sys_exit(msg, file_in, section_name)
+        offset     = stop_index + len(stop)
+        if 0 <= find_at_start_of_line(offset, data, stop) :
+            msg  = 'file_sphinxrst command: found more than one '
+            msg += 'stop = "' + stop + '"'
+            msg += ' after start = "' + start + '"'
+            msg += '\nin file_name = "' + file_name + '"'
+            sys_exit(msg, file_in, section_name)
+        #
+        # start_line
+        start_line = data[: start_index].count('\n') + 2
+        #
+        # stop_line
+        stop_line = data[: stop_index].count('\n')
+        #
+        # beginning of lines with command in it
+        begin_line = match_file.start() + output_index;
+        #
+        # end of lines with command in it
+        end_line = match_file.end() + output_index;
+        #
+        # converted version of the command
+        cmd  = f'file_sphinxrst%{file_name}%{start_line}%{stop_line}%'
+        cmd  = '\n{' + cmd  + '}'
+        #
+        data_left  = output_data[: begin_line]
+        data_left += cmd
+        data_right = output_data[ end_line : ]
+        #
+        output_data  = data_left + data_right
+        output_index = len(data_left)
+        match_file  = file_pattern.search(data_right)
+    return output_data
+
 # =============================================================================
 # main program
 # =============================================================================
@@ -606,86 +691,10 @@ for file_in in file_list :
             )
             # ---------------------------------------------------------------
             # file command: convert start and stop to line numbers
-            output_index  = 0
-            match_file    = pattern_file_sphinxrst.search(output_data)
-            while match_file != None :
-                #
-                # file_name
-                file_name = match_file.group(1).strip()
-                if file_name == '' :
-                    file_name = file_in
-                #
-                # start
-                start     = match_file.group(2).strip()
-                if start == '' :
-                    msg = 'file_sphinxrst command: start text is empty'
-                    sys_exit(msg, file_in, section_name)
-                #
-                # stop
-                stop      = match_file.group(3) .strip()
-                if stop == '' :
-                    msg = 'file_sphinxrst command: stop text is empty'
-                    sys_exit(msg, file_in, section_name)
-                #
-                # data
-                file_ptr  = open(file_name, 'r')
-                data      = file_ptr.read()
-                file_ptr.close()
-                #
-                # start_index
-                offset      = 0
-                start_index = find_at_start_of_line(offset, data ,start)
-                if start_index < 0 :
-                    msg  = 'file_sphinxrst command: can not find start = '
-                    msg += '"' + start + '"'
-                    msg += '\nin file_name = "' + file_name + '"'
-                    sys_exit(msg, file_in, section_name)
-                offset     = start_index + len(start)
-                if 0 <= find_at_start_of_line(offset, data, start) :
-                    msg  = 'file_sphinxrst command: found more than one '
-                    msg += 'start = "' + start + '"'
-                    msg += '\nin file_name = "' + file_name + '"'
-                    sys_exit(msg, file_in, section_name)
-                #
-                # stop_index
-                stop_index = find_at_start_of_line(offset, data, stop)
-                if stop_index < 0 :
-                    msg  = 'file_sphinxrst command: can not find'
-                    msg += '\nstop = "' + stop + '"'
-                    msg += ' after start = "' + start + '"'
-                    msg += '\nin file_name = "' + file_name + '"'
-                    sys_exit(msg, file_in, section_name)
-                offset     = stop_index + len(stop)
-                if 0 <= find_at_start_of_line(offset, data, stop) :
-                    msg  = 'file_sphinxrst command: found more than one '
-                    msg += 'stop = "' + stop + '"'
-                    msg += ' after start = "' + start + '"'
-                    msg += '\nin file_name = "' + file_name + '"'
-                    sys_exit(msg, file_in, section_name)
-                #
-                # start_line
-                start_line = data[: start_index].count('\n') + 2
-                #
-                # stop_line
-                stop_line = data[: stop_index].count('\n')
-                #
-                # beginning of lines with command in it
-                begin_line = match_file.start() + output_index;
-                #
-                # end of lines with command in it
-                end_line = match_file.end() + output_index;
-                #
-                # converted version of the command
-                cmd  = f'file_sphinxrst%{file_name}%{start_line}%{stop_line}%'
-                cmd  = '\n{' + cmd  + '}'
-                #
-                data_left  = output_data[: begin_line]
-                data_left += cmd
-                data_right = output_data[ end_line : ]
-                #
-                output_data  = data_left + data_right
-                output_index = len(data_left)
-                match_file  = pattern_file_sphinxrst.search(data_right)
+            output_data = convert_file_command(
+                pattern_file_sphinxrst,
+                output_data
+            )
             # ---------------------------------------------------------------
             # white_space
             white_space = start_line_white_space(output_data)
