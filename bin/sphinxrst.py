@@ -698,16 +698,20 @@ for file_in in file_list :
             # ---------------------------------------------------------------
             # white_space
             white_space = start_line_white_space(output_data)
+            # ---------------------------------------------------------------
+            # newlist_list
+            newline_itr  = pattern_newline.finditer(output_data)
+            newline_list = list()
+            for itr in newline_itr :
+                newlist = itr.start()
+                newline_list.append( newlist )
+            # ---------------------------------------------------------------
             #
             # num_remove (for indented documentation)
             len_output   = len(output_data)
             num_remove   = len(output_data)
-            newline_itr  = pattern_newline.finditer(output_data)
-            newline_list = list()
-            for itr in newline_itr :
-                start = itr.start()
-                newline_list.append( start )
-                next_ = start + 1
+            for newline in newline_list :
+                next_ = newline + 1
                 if next_ < len_output and num_remove != 0 :
                     ch = output_data[next_]
                     while ch in ' \t\n' and next_ + 1 < len_output :
@@ -716,7 +720,7 @@ for file_in in file_list :
                     cmd  = output_data[next_:].startswith('{code_sphinxrst')
                     cmd += output_data[next_:].startswith('{file_sphinxrst')
                     if ch not in ' \t\n' and not cmd :
-                        num_remove = min(num_remove, next_ - start - 1)
+                        num_remove = min(num_remove, next_ - newline - 1)
             # ---------------------------------------------------------------
             # write file for this section
             file_out          = output_dir + '/' + section_name + '.rst'
