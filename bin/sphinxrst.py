@@ -379,15 +379,14 @@ def start_line_white_space(data) :
     return white_space
 # ----------------------------------------------------------------------------
 # process suspend sphinxrst commands
-def suspend_command(output_data) :
-    pattern_suspend_sphinxrst = re.compile( r'\n[ \t]*\{suspend_sphinxrst\}' )
-    match_suspend = pattern_suspend_sphinxrst.search(output_data)
+def suspend_command(suspend_pattern, resume_pattern, output_data) :
+    match_suspend = suspend_pattern.search(output_data)
     while match_suspend != None :
         suspend_start = match_suspend.start()
         suspend_end   = match_suspend.end()
         output_rest   = output_data[ suspend_end : ]
-        match_resume  = pattern_resume_sphinxrst.search(output_rest)
-        match_suspend = pattern_suspend_sphinxrst.search(output_rest)
+        match_resume  = resume_pattern.search(output_rest)
+        match_suspend = suspend_pattern.search(output_rest)
         if match_resume == None :
             msg  = 'there is a {suspend_sphinxrst} without a '
             msg += 'corresponding {resume_sphinxrst}'
@@ -402,7 +401,7 @@ def suspend_command(output_data) :
         output_rest = output_data[ resume_end :]
         output_data = output_data[: suspend_start] + output_rest
         # redo match_suppend so relative to new output_data
-        match_suspend = pattern_suspend_sphinxrst.search(output_data)
+        match_suspend = suspend_pattern.search(output_data)
 # =============================================================================
 # main program
 # =============================================================================
@@ -467,6 +466,7 @@ corresponding_file = list()
 # define some pytyon regular expression patterns
 pattern_newline           = re.compile( r'\n')
 pattern_word              = re.compile( r'[\\A-Za-z][a-z]*' )
+pattern_suspend_sphinxrst = re.compile( r'\n[ \t]*\{suspend_sphinxrst\}' )
 pattern_resume_sphinxrst  = re.compile( r'\n[ \t]*\{resume_sphinxrst\}' )
 pattern_begin_sphinxrst   = re.compile( r'\n[ \t]*\{begin_sphinxrst\s+(\w*)\}' )
 pattern_end_sphinxrst     = re.compile( r'\n[ \t]*\{end_sphinxrst\s+(\w*)\}' )
@@ -551,7 +551,11 @@ for file_in in file_list :
             output_data  = file_data[ output_start : output_end ]
             #
             # process suspend commands
-            suspend_command(output_data)
+            suspend_command(
+                pattern_suspend_sphinxrst,
+                pattern_resume_sphinxrst,
+                output_data
+            )
             #
             # ----------------------------------------------------------------
             # process spell command
