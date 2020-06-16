@@ -728,7 +728,7 @@ for file_in in file_list :
             startline         = 0
             first_spell_error = True # for this section
             inside_code       = False
-            first_line        = True
+            previous_line     = None
             for newline in newline_list :
                 code_command = \
                     output_data[startline:].startswith('{code_sphinxrst')
@@ -745,10 +745,10 @@ for file_in in file_list :
                         else :
                             extension = file_in[index + 1 : ]
                         line     = '.. code-block:: ' + extension + '\n\n'
-                        file_ptr.write(line)
                     else :
-                        file_ptr.write('\n')
-                    first_line = False
+                        line = '\n'
+                    file_ptr.write(line)
+                    previous_line = line
                 elif file_command :
                     line       = output_data[startline : newline + 1]
                     line       = line.split('%')
@@ -762,7 +762,7 @@ for file_in in file_list :
                     line = f'    :lines: {start_line}-{stop_line}\n'
                     file_ptr.write(line)
                     file_ptr.write('\n')
-                    first_line = False
+                    previous_line = '\n'
                 elif startline + num_remove < newline :
                     startline += num_remove
                     line       = output_data[startline : newline + 1]
@@ -792,8 +792,8 @@ for file_in in file_list :
                         else :
                             line = '\t' + line
                     file_ptr.write( line )
-                    first_line = False
-                elif not first_line :
+                    previous_line = line
+                elif previous_line is not None :
                     file_ptr.write( "\n" )
                 startline = newline + 1
             file_ptr.close()
