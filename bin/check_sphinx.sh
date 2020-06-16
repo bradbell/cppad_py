@@ -18,17 +18,31 @@ then
 	exit 1
 fi
 # -----------------------------------------------------------------------------
-echo_eval bin/sphinxrst.py sphinx file_list spell_list
+echo_eval bin/sphinxrst.py sphinx file_list spell_list | tee sphinxrst.$$
+if grep '^warning:' sphinxrst.$$ > /dev/null
+then
+	rm sphinxrst.$$
+	echo "$0: exiting due to warnings above"
+	exit 1
+fi
+rm sphinxrst.$$
+#
 echo_eval cd sphinx
 file_list=$(ls sphinxrst/*.rst | sed -e 's|^sphinxrst/||' )
 for file in $file_list
 do
 	if [ "$file" != 'sphinxrst_py.rst' ]
 	then
-		if ! diff sphinxrst/$file test_out/$file
+		if [ ! -e test_out/$file ]
 		then
-			echo "The output file sphinx/sphinxrst/$file has chaned."
-			echo 'If the new file is currect, replace to old check using:'
+			echo "The output file sphinx/test_out/$file does not exist."
+			echo 'Check that the corresponding sectiosn are correct and then:'
+			echo "    cp sphinx/sphinxrst/$file sphinx/test_out/$file"
+		elif ! diff test_out/$file sphinxrst/$file
+		then
+			echo "The output file sphinx/sphinxrst/$file has changed;"
+			echo 'see the differences above. If the new file is currect,'
+			echo 'replace to old version with the new one using:'
 			echo "    cp sphinx/sphinxrst/$file sphinx/test_out/$file"
 			exit 1
 		else

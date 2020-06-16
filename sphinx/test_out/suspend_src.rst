@@ -5,7 +5,7 @@ Suspend Source
 
 
 .. literalinclude:: ../../sphinx/test_in/suspend.py
-    :lines: 10-48
+    :lines: 10-51
 
 
 Example

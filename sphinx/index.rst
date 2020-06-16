@@ -17,6 +17,8 @@ Welcome to sphinxrst's documentation!
    sphinxrst/file_block_src
    sphinxrst/suspend_py
    sphinxrst/suspend_src
+   sphinxrst/spell_py
+   sphinxrst/spell_src
 
 Indices and tables
 ==================

@@ -9,6 +9,9 @@
 # BEGIN_SRC
 """
 {begin_sphinxrst suspend_py}
+{spell_sphinxrst
+    iterable
+}
 
 .. _suspend_py:
 

@@ -6,21 +6,21 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 #
-# normal words
+# example normal words
 covariates
 covariate
 initialized
 initialize
 unicode
 #
-# python commands
+# example python commands
 dict
 dtype
 numpy
 py
 scipy
 #
-# latex commands
+# example latex commands
 \begin
 \cdot
 \circ
