@@ -415,6 +415,33 @@ def spell_command(spell_pattern, word_pattern, output_data) :
         end         = match_spell.end()
         output_data = output_data[: start] + output_data[end :]
     return output_data, special_list
+# -----------------------------------------------------------------------------
+# remove characters on same line as {code_sphinxrst}
+def isolate_code_command(code_pattern, output_data) :
+    output_index  = 0
+    match_begin_code = code_pattern.search(output_data)
+    while match_begin_code != None :
+        begin_start    = match_begin_code.start() + output_index
+        begin_end      = match_begin_code.end()   + output_index
+        output_rest    = output_data[ begin_end : ]
+        match_end_code = code_pattern.search( output_rest )
+        if match_end_code == None :
+            breakpoint()
+            msg  = 'number of code_sphinxrst commands is not even'
+            sys_exit(msg, file_in, section_name)
+        end_start = match_end_code.start() + begin_end
+        end_end   = match_end_code.end()   + begin_end
+        #
+        data_left   = output_data[: begin_start + 1 ]
+        data_left  += '{code_sphinxrst}'
+        data_left  += output_data[ begin_end : end_start + 1]
+        data_left  += '{code_sphinxrst}'
+        data_right  = output_data[ end_end : ]
+        #
+        output_data  = data_left + data_right
+        output_index = len(data_left)
+        match_begin_code  = code_pattern.search(data_right)
+    return output_data
 # =============================================================================
 # main program
 # =============================================================================
@@ -573,29 +600,10 @@ for file_in in file_list :
             )
             # ----------------------------------------------------------------
             # remove characters on same line as {code_sphinxrst}
-            output_index  = 0
-            match_begin_code = pattern_code_sphinxrst.search(output_data)
-            while match_begin_code != None :
-                begin_start    = match_begin_code.start() + output_index
-                begin_end      = match_begin_code.end()   + output_index
-                output_rest    = output_data[ begin_end : ]
-                match_end_code = pattern_code_sphinxrst.search( output_rest )
-                if match_end_code == None :
-                    breakpoint()
-                    msg  = 'number of code_sphinxrst commands is not even'
-                    sys_exit(msg, file_in, section_name)
-                end_start = match_end_code.start() + begin_end
-                end_end   = match_end_code.end()   + begin_end
-                #
-                data_left   = output_data[: begin_start + 1 ]
-                data_left  += '{code_sphinxrst}'
-                data_left  += output_data[ begin_end : end_start + 1]
-                data_left  += '{code_sphinxrst}'
-                data_right  = output_data[ end_end : ]
-                #
-                output_data  = data_left + data_right
-                output_index = len(data_left)
-                match_begin_code  = pattern_code_sphinxrst.search(data_right)
+            output_data = isolate_code_command(
+                pattern_code_sphinxrst,
+                output_data
+            )
             # ---------------------------------------------------------------
             # file command: convert start and stop to line numbers
             output_index  = 0
