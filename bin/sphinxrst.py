@@ -250,10 +250,6 @@ Module
 ------
 Convert the extract program into a python module and provide a pip distribution for it.
 
-Tabs
-----
-Allow for using spaces or tabs to indent code.
-
 Links
 -----
 Automatic links for every section heading.
@@ -349,6 +345,38 @@ def file2list(file_name) :
                 result.append(line)
     file_ptr.close()
     return result
+
+# ----------------------------------------------------------------------------
+def start_line_white_space(data) :
+    data_index  = 0
+    white_space = None
+    #
+    # find first line with a space or tab as first character in the line
+    while white_space == None :
+        if data[data_index] in ' \t' :
+            white_space = data[data_index]
+        else :
+            index = data[data_index :].find('\n')
+            if index < 0 :
+                return ' '
+            data_index = data_index + index + 1
+            if data_index >= len(data) :
+                return ' '
+    # check that white space at beginning of line is same for all lines
+    while data_index < len(data) :
+        while data[data_index] == white_space and data_index < len(data) :
+            data_index += 1
+        if data_index == len(data) :
+            return white_space
+        if data[data_index] in ' \t' :
+            msg  = 'mixing both spaces and tabs for white space at '
+            msg += 'beginning of lines.'
+            sys_exit(msg)
+        index = data[data_index :].find('\n')
+        if index < 0 :
+            return white_space
+        data_index = data_index + index + 1
+    return white_space
 # =============================================================================
 # main program
 # =============================================================================
@@ -646,6 +674,9 @@ for file_in in file_list :
                 output_index = len(data_left)
                 match_file  = pattern_begin_code.search(data_right)
             # ---------------------------------------------------------------
+            # white_space
+            white_space = start_line_white_space(output_data)
+            #
             # num_remove (for indented documentation)
             len_output   = len(output_data)
             num_remove   = len(output_data)
@@ -657,32 +688,13 @@ for file_in in file_list :
                 next_ = start + 1
                 if next_ < len_output and num_remove != 0 :
                     ch = output_data[next_]
-                    while ch in ' \n' and next_ + 1 < len_output :
+                    while ch in ' \t\n' and next_ + 1 < len_output :
                         next_ += 1
                         ch = output_data[next_]
                     cmd  = output_data[next_:].startswith('{code_sphinxrst')
                     cmd += output_data[next_:].startswith('{file_sphinxrst')
                     if ch not in ' \t\n' and not cmd :
                         num_remove = min(num_remove, next_ - start - 1)
-            # indent
-            indent = None
-            if num_remove > 0 :
-                startline = 0
-                for newline in newline_list :
-                    indented = not \
-                        output_data[startline:].startswith('{code_sphinxrst')
-                    indented = indented and not \
-                        output_data[startline:].startswith('{file_sphinxrst')
-                    indented = indented and newline - start >= num_remove
-                    if indented :
-                        if indent == None :
-                            indent = output_data[start : newline]
-                        elif indent != output_data[start : newline] :
-                            breakpoint()
-                            msg  = 'inconsistent use of tabs and spaces at '
-                            msg += 'beginning of line'
-                            sys_exit(msg, file_in, section_name)
-                    startline = newline + 1
             # ---------------------------------------------------------------
             # write file for this section
             file_out          = output_dir + '/' + section_name + '.rst'
@@ -747,7 +759,10 @@ for file_in in file_list :
                     # ------------------------------------------------------
                     if inside_code :
                         # indent code block
-                        line = '    ' + line
+                        if white_space == ' ' :
+                            line = '    ' + line
+                        else :
+                            line = '\t' + line
                     file_ptr.write( line )
                     first_line = False
                 elif not first_line :
