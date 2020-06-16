@@ -2,7 +2,7 @@
 
 Code Block Example
 ==================
-.. code-block:: python
+.. code-block:: py
 
     def factorial(n) :
         if n == 1 :

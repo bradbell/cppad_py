@@ -163,22 +163,18 @@ A code block, directly below in the current input file, begins with
 a line containing the following command:
 
 |space| |space| |space| |space|
-``{code_sphinxrst`` *language*:code:`}`
-
-Here *language* is sequence of letters; e.g., ``python``,
-that specify the language used to highlight the code block.
-Each code block must end with
-a line containing the following command:
-
-|space| |space| |space| |space|
 ``{code_sphinxrst}``
 
-The back quote character \` can't be in the same line as either
-of the commands above.
-Other characters on the same line as the two command above
+Each code block must end with
+a line containing the the same command above.
+
+The back quote character \` can't be in the same line as the two commands.
+Other characters on the same line as the commands
 are not included in the sphinxrst output.
 This enables one to begin or end a comment block
 without having the comment characters in the sphinxrst output.
+The name of the current input file is used to determine the source code
+language for highlighting the code block.
 
 File Block
 ==========
@@ -483,6 +479,7 @@ corresponding_file = list()
 # define some pytyon regular expression patterns
 pattern_newline           = re.compile( r'\n')
 pattern_word              = re.compile( r'[\\A-Za-z][a-z]*' )
+pattern_code_sphinxrst    = re.compile( r'\n[^\n`]*\{code_sphinxrst\}[^\n`]*')
 pattern_suspend_sphinxrst = re.compile( r'\n[ \t]*\{suspend_sphinxrst\}' )
 pattern_resume_sphinxrst  = re.compile( r'\n[ \t]*\{resume_sphinxrst\}' )
 pattern_begin_sphinxrst   = re.compile( r'\n[ \t]*\{begin_sphinxrst\s+(\w*)\}' )
@@ -490,12 +487,6 @@ pattern_end_sphinxrst     = re.compile( r'\n[ \t]*\{end_sphinxrst\s+(\w*)\}' )
 pattern_spell_sphinxrst   = re.compile( r'\n[ \t]*\{spell_sphinxrst([^}]*)\}' )
 pattern_file_sphinxrst    = re.compile(
     r'\n[^\n`]*\{file_sphinxrst%([^%]*)%([^%]*)%([^%]*)%[^\n`]*\}'
-)
-pattern_begin_code        = re.compile(
-    r'\n[^\n`]*(\{code_sphinxrst\s+(\w*)\})[^\n`]*'
-)
-pattern_end_code          = re.compile(
-    r'\n[^\n`]*(\{code_sphinxrst\})[^\n`]*'
 )
 # -----------------------------------------------------------------------------
 # process each file in the list
@@ -581,35 +572,30 @@ for file_in in file_list :
                 output_data
             )
             # ----------------------------------------------------------------
-            # process spell command
-            # ----------------------------------------------------------------
-            # remove characters on same line as {code_sphinxrst
+            # remove characters on same line as {code_sphinxrst}
             output_index  = 0
-            match_begin_code = pattern_begin_code.search(output_data)
+            match_begin_code = pattern_code_sphinxrst.search(output_data)
             while match_begin_code != None :
-                if match_begin_code.group(2) == '' :
-                    msg  = 'language missing directly after first'
-                    msg += ' code_sphinxrst for a code block'
-                    sys_exit(msg, file_in, section_name)
-                begin_start = match_begin_code.start() + output_index
-                begin_end   = match_begin_code.end()   + output_index
-                output_rest = output_data[ begin_end : ]
-                match_end_code   = pattern_end_code.search( output_rest )
+                begin_start    = match_begin_code.start() + output_index
+                begin_end      = match_begin_code.end()   + output_index
+                output_rest    = output_data[ begin_end : ]
+                match_end_code = pattern_code_sphinxrst.search( output_rest )
                 if match_end_code == None :
+                    breakpoint()
                     msg  = 'number of code_sphinxrst commands is not even'
                     sys_exit(msg, file_in, section_name)
                 end_start = match_end_code.start() + begin_end
                 end_end   = match_end_code.end()   + begin_end
                 #
                 data_left   = output_data[: begin_start + 1 ]
-                data_left  += match_begin_code.group(1)
+                data_left  += '{code_sphinxrst}'
                 data_left  += output_data[ begin_end : end_start + 1]
-                data_left  += match_end_code.group(1)
+                data_left  += '{code_sphinxrst}'
                 data_right  = output_data[ end_end : ]
                 #
                 output_data  = data_left + data_right
                 output_index = len(data_left)
-                match_begin_code  = pattern_begin_code.search(data_right)
+                match_begin_code  = pattern_code_sphinxrst.search(data_right)
             # ---------------------------------------------------------------
             # file command: convert start and stop to line numbers
             output_index  = 0
@@ -691,7 +677,7 @@ for file_in in file_list :
                 #
                 output_data  = data_left + data_right
                 output_index = len(data_left)
-                match_file  = pattern_begin_code.search(data_right)
+                match_file  = pattern_file_sphinxrst.search(data_right)
             # ---------------------------------------------------------------
             # white_space
             white_space = start_line_white_space(output_data)
@@ -732,10 +718,12 @@ for file_in in file_list :
                     # code command
                     inside_code = not inside_code
                     if inside_code :
-                        end_cmd = startline + \
-                            output_data[startline:].find('}')
-                        language = output_data[startline + 16 : end_cmd]
-                        line     = '.. code-block:: ' + language + '\n\n'
+                        index = file_in.rfind('.')
+                        if index < 0 :
+                            extension = ''
+                        else :
+                            extension = file_in[index + 1 : ]
+                        line     = '.. code-block:: ' + extension + '\n\n'
                         file_ptr.write(line)
                     else :
                         file_ptr.write('\n')

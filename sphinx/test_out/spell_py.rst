@@ -1,4 +1,3 @@
-
 .. _spell_py:
 
 Spell Example

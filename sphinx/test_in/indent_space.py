@@ -14,7 +14,7 @@
 
     Indent Using Spaces Example
     ===========================
-    {code_sphinxrst python}"""
+    {code_sphinxrst}"""
     def factorial(n) :
         if n == 1 :
             return 1
