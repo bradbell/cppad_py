@@ -378,7 +378,7 @@ def start_line_white_space(data) :
         data_index = data_index + index + 1
     return white_space
 # ----------------------------------------------------------------------------
-# process suspend sphinxrst commands
+# process suspend_sphinxrst commands
 def suspend_command(suspend_pattern, resume_pattern, output_data) :
     match_suspend = suspend_pattern.search(output_data)
     while match_suspend != None :
@@ -402,6 +402,24 @@ def suspend_command(suspend_pattern, resume_pattern, output_data) :
         output_data = output_data[: suspend_start] + output_rest
         # redo match_suppend so relative to new output_data
         match_suspend = suspend_pattern.search(output_data)
+    return output_data
+# -----------------------------------------------------------------------------
+# process spell_sphinx commands
+def spell_command(spell_pattern, word_pattern, output_data) :
+    match_spell = spell_pattern.search(output_data)
+    special_list  = list()
+    if match_spell != None :
+        output_rest   = output_data[ match_spell.end() : ]
+        match_another = pattern_spell_sphinxrst.search(output_rest)
+        if match_another :
+            msg  = 'there are two spell sphinxrst commands'
+            sys_exit(msg, file_in, section_name)
+        for itr in word_pattern.finditer( match_spell.group(1) ) :
+            special_list.append( itr.group(0).lower() )
+        start       = match_spell.start()
+        end         = match_spell.end()
+        output_data = output_data[: start] + output_data[end :]
+    return output_data, special_list
 # =============================================================================
 # main program
 # =============================================================================
@@ -549,29 +567,22 @@ for file_in in file_list :
             output_start = file_index
             output_end   = file_index + match_end_sphinxrst.start()
             output_data  = file_data[ output_start : output_end ]
-            #
+            # ----------------------------------------------------------------
             # process suspend commands
-            suspend_command(
+            output_data = suspend_command(
                 pattern_suspend_sphinxrst,
                 pattern_resume_sphinxrst,
                 output_data
             )
-            #
+            # ----------------------------------------------------------------
+            # process spell commands
+            output_data, special_list = spell_command(
+                pattern_spell_sphinxrst,
+                pattern_word,
+                output_data
+            )
             # ----------------------------------------------------------------
             # process spell command
-            match_spell = pattern_spell_sphinxrst.search(output_data)
-            special_list  = list()
-            if match_spell != None :
-                output_rest   = output_data[ match_spell.end() : ]
-                match_another = pattern_spell_sphinxrst.search(output_rest)
-                if match_another :
-                    msg  = 'there are two spell sphinxrst commands'
-                    sys_exit(msg, file_in, section_name)
-                for itr in pattern_word.finditer( match_spell.group(1) ) :
-                    special_list.append( itr.group(0).lower() )
-                start       = match_spell.start()
-                end         = match_spell.end()
-                output_data = output_data[: start] + output_data[end :]
             # ----------------------------------------------------------------
             # remove characters on same line as {code_sphinxrst
             output_index  = 0

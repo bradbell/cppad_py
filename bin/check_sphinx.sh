@@ -20,7 +20,7 @@ fi
 # -----------------------------------------------------------------------------
 echo_eval bin/sphinxrst.py sphinx file_list spell_list
 echo_eval cd sphinx
-file_list=$(ls sphinxrst)
+file_list=$(ls sphinxrst/*.rst | sed -e 's|^sphinxrst/||' )
 for file in $file_list
 do
 	if [ "$file" != 'sphinxrst_py.rst' ]
