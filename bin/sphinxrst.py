@@ -175,6 +175,7 @@ This enables one to begin or end a comment block
 without having the comment characters in the sphinxrst output.
 The name of the current input file is used to determine the source code
 language for highlighting the code block.
+Code blocks as usually small and spell check is done inside of them.
 
 File Block
 ==========
@@ -188,6 +189,7 @@ The back quote character \` can not be in the same lines as the command above.
 Leading and trailing white space is not included in
 *file_name*, *start*, or *end*.
 This enables one to put the command on multiple input lines.
+File blocks can be large and spell check is NOT done inside of them.
 
 file_name
 ---------
@@ -343,7 +345,7 @@ def file2list(file_name) :
     return result
 
 # ----------------------------------------------------------------------------
-def start_line_white_space(data) :
+def start_line_white_space(data, file_in, section_name) :
     data_index  = 0
     white_space = None
     #
@@ -367,7 +369,7 @@ def start_line_white_space(data) :
         if data[data_index] in ' \t' :
             msg  = 'mixing both spaces and tabs for white space at '
             msg += 'beginning of lines.'
-            sys_exit(msg)
+            sys_exit(msg, file_in, section_name)
         index = data[data_index :].find('\n')
         if index < 0 :
             return white_space
@@ -375,7 +377,9 @@ def start_line_white_space(data) :
     return white_space
 # ----------------------------------------------------------------------------
 # process suspend_sphinxrst commands
-def suspend_command(suspend_pattern, resume_pattern, output_data) :
+def suspend_command(
+    suspend_pattern, resume_pattern, output_data, file_in, section_name
+) :
     match_suspend = suspend_pattern.search(output_data)
     while match_suspend != None :
         suspend_start = match_suspend.start()
@@ -400,7 +404,9 @@ def suspend_command(suspend_pattern, resume_pattern, output_data) :
     return output_data
 # -----------------------------------------------------------------------------
 # process spell_sphinx commands
-def spell_command(spell_pattern, word_pattern, output_data) :
+def spell_command(
+    spell_pattern, word_pattern, output_data, file_in, section_name
+) :
     match_spell = spell_pattern.search(output_data)
     special_list  = list()
     if match_spell != None :
@@ -417,7 +423,7 @@ def spell_command(spell_pattern, word_pattern, output_data) :
     return output_data, special_list
 # -----------------------------------------------------------------------------
 # remove characters on same line as {code_sphinxrst}
-def isolate_code_command(code_pattern, output_data) :
+def isolate_code_command(code_pattern, output_data, file_in, section_name) :
     output_index  = 0
     match_begin_code = code_pattern.search(output_data)
     while match_begin_code != None :
@@ -444,7 +450,7 @@ def isolate_code_command(code_pattern, output_data) :
     return output_data
 # -----------------------------------------------------------------------------
 # convert file command start and stop from patterns to line numbers
-def convert_file_command(file_pattern, output_data) :
+def convert_file_command(file_pattern, output_data, file_in, section_name) :
     output_index  = 0
     match_file    = file_pattern.search(output_data)
     while match_file != None :
@@ -526,6 +532,33 @@ def convert_file_command(file_pattern, output_data) :
         output_index = len(data_left)
         match_file  = file_pattern.search(data_right)
     return output_data
+# -----------------------------------------------------------------------------
+def update_heading_list(
+    previous_line, line, heading_list, file_in, section_name
+) :
+    assert previous_line[-1] == '\n'
+    assert line[-1] == '\n'
+    #
+    n_previous = len(previous_line)
+    n_line     = len(line)
+    #
+    if n_previous < 2 :
+        return heading_list
+    if n_line < n_previous :
+        return heading_list
+    if line[: -1] != n_line * [ line[0] ] :
+        return heading_list
+    character = line[0]
+    #
+    # check for first heading
+    if len( heading_list ) == 0 :
+        heading_list = { 'character':character, 'text':previous_line }
+        return heading_list
+    #
+    # check for attempting to replace first heading
+    if character == heading_list[0]['character'] :
+        msg = 'There are multiple titles for this section'
+        sys_exit(msg, file_in, section_name)
 
 # =============================================================================
 # main program
@@ -674,30 +707,42 @@ for file_in in file_list :
             output_data = suspend_command(
                 pattern_suspend_sphinxrst,
                 pattern_resume_sphinxrst,
-                output_data
+                output_data,
+                file_in,
+                section_name,
             )
             # ----------------------------------------------------------------
             # process spell commands
             output_data, special_list = spell_command(
                 pattern_spell_sphinxrst,
                 pattern_word,
-                output_data
+                output_data,
+                file_in,
+                section_name,
             )
             # ----------------------------------------------------------------
             # remove characters on same line as {code_sphinxrst}
             output_data = isolate_code_command(
                 pattern_code_sphinxrst,
-                output_data
+                output_data,
+                file_in,
+                section_name,
             )
             # ---------------------------------------------------------------
             # file command: convert start and stop to line numbers
             output_data = convert_file_command(
                 pattern_file_sphinxrst,
-                output_data
+                output_data,
+                file_in,
+                section_name,
             )
             # ---------------------------------------------------------------
             # white_space
-            white_space = start_line_white_space(output_data)
+            white_space = start_line_white_space(
+                output_data,
+                file_in,
+                section_name
+            )
             # ---------------------------------------------------------------
             # newlist_list
             newline_itr  = pattern_newline.finditer(output_data)

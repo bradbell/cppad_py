@@ -18,11 +18,18 @@ then
 	exit 1
 fi
 # -----------------------------------------------------------------------------
-echo_eval bin/sphinxrst.py sphinx file_list spell_list | tee sphinxrst.$$
-if grep '^warning:' sphinxrst.$$ > /dev/null
+echo "bin/sphinxrst.py sphinx file_list spell_list"
+if ! bin/sphinxrst.py sphinx file_list spell_list 2> sphinxrst.$$
 then
+	type_error='error'
+else
+	type_error='warning'
+fi
+if [ -s sphinxrst.$$ ]
+then
+	cat sphinxrst.$$
 	rm sphinxrst.$$
-	echo "$0: exiting due to warnings above"
+	echo "$0: exiting due to $type_error above"
 	exit 1
 fi
 rm sphinxrst.$$
