@@ -252,6 +252,9 @@ plus a lower case version of the heading with spaces converted to
 underbars :code:`_`. For example, the label for the heading for this
 paragraph is ``sphinxrst_py.headers_and_links``.
 
+Example
+-------
+:ref:`heading_py`
 
 Indentation
 ===========
