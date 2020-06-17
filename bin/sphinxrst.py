@@ -139,6 +139,10 @@ One resumes the output with the following command at the beginning of a line:
 Each suspend sphinxrst must have a corresponding resume sphinxrst in same
 section (between the corresponding begin sphinxrst and end sphinxrst commands).
 
+Example
+-------
+:ref:`suspend_py`
+
 Spell Command
 =============
 The list of words in
@@ -163,6 +167,10 @@ so that latex commands can be included in the spelling list.
 The latex commands corresponding to the letters in the greek alphabet
 are automatically included in the spelling list.
 
+Example
+-------
+:ref:`spell_py`
+
 Code Block
 ==========
 A code block, directly below in the current input file, begins with
@@ -182,6 +190,10 @@ without having the comment characters in the sphinxrst output.
 The name of the current input file is used to determine the source code
 language for highlighting the code block.
 Code blocks as usually small and spell check is done inside of them.
+
+Example
+-------
+:ref:`code_block_py`
 
 File Block
 ==========
@@ -219,6 +231,10 @@ and after *start* and it must come after *start*.
 The lines containing *start* and *stop* in *file_name* are not included in
 the code block.
 
+Example
+-------
+:ref:`file_block_py`
+
 Headers and Links
 ==================
 Each :ref:`section<sphinxrst_py.section>` can have only one header at
@@ -243,6 +259,10 @@ If all of the extracted sphinxrst documentation for a section is indented
 by the same white space characters, those characters
 are not included in the sphinxrst output. This enables one to indent the
 sphinxrst so it is grouped with the proper code block in the source.
+
+Example
+-------
+:ref:`indent_space_py`, :ref:`indent_tab_py`
 
 Python Style Guide
 ==================
