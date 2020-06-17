@@ -37,8 +37,11 @@ Beginning of a Line
 We say that a string *text* is a the beginning of a line if
 only white space, or nothing, comes before *text* in the line.
 
+Command Line Arguments
+======================
+
 sphinx_dir
-==========
+----------
 The command line argument *sphinx_dir* is a sub-directory,
 of the top git repository directory.
 The  sphinx ``conf.py`` and ``index.rst`` files are located in this directory.
@@ -50,7 +53,7 @@ were extracted from the source code the last time that ``sphinxrst.py``
 was executed.
 
 file_list
-=========
+---------
 The command line argument *file_list* is the name of a file
 in the *sphinx_dir* directory containing a list of file names.
 These file names are one per line and relative to the
@@ -61,7 +64,7 @@ The sphinxrst files will be extracted from the files in this list
 and placed in the *sphinx_dir*:code`/sphinxrst` directory.
 
 spell_list
-==========
+----------
 The command line argument *spell_list* is the name of a file
 in the *sphinx_dir* directory containing a list of words
 that the spell checker will consider correct for all sections.
@@ -97,7 +100,7 @@ Here *section_name* must be the same as in the corresponding
 index.rst
 =========
 The file ``index.rst`` must exist in the directory
-:ref:`sphinx_dir<sphinxrst_py_sphinx_dir>`.
+:ref:`sphinx_dir<sphinxrst_py_command_line_arguments_sphinx_dir>`.
 For each *section_name* in a
 :ref:`begin section<sphinxrst_py_begin_section>` command,
 there must be a line in ``index.rst`` with the following text:
@@ -129,7 +132,8 @@ section (between the corresponding begin sphinxrst and end sphinxrst commands).
 Spell Command
 =============
 The list of words in
-:ref:`spell_list<sphinxrst_py_spell_list>` are considered correct spellings
+:ref:`spell_list<sphinxrst_py_command_line_arguments_spell_list>`
+are considered correct spellings
 for all sections. You can specify a special list of words for the current
 section using the following command at the beginning of a line:
 

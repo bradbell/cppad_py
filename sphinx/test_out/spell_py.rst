@@ -20,7 +20,8 @@ are automatically included as correct spelling.
 Other latex commands in this section; e.g. ``\cos``, ``\sin``, ``\rm``,
 have been included in the spelling command for this section.
 An alternative is to add them to the
-:ref:`spell_list<sphinxrst_py_spell_list>` for all sections:
+:ref:`spell_list<sphinxrst_py_command_line_arguments_spell_list>` 
+for all sections:
 
 .. math::
 
