@@ -8,7 +8,7 @@ Spell Source
     :lines: 10-49
 
 
-.. _spell_src_example:
+.. _spell_src.example:
 
 Example
 -------

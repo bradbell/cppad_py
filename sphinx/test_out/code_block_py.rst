@@ -10,7 +10,7 @@ Code Block Example
         return n * factorial(n-1)
 
 
-.. _code_block_py_source:
+.. _code_block_py.source:
 
 Source
 ------

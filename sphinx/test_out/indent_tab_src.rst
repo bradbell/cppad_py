@@ -8,7 +8,7 @@ Indent Using Tabs Source
     :lines: 10-27
 
 
-.. _indent_tab_src_example:
+.. _indent_tab_src.example:
 
 Example
 -------

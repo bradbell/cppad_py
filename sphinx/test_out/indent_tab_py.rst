@@ -10,7 +10,7 @@ Indent Using Tabs Example
 		return n * factorial(n-1)
 
 
-.. _indent_tab_py_source:
+.. _indent_tab_py.source:
 
 Source
 ------

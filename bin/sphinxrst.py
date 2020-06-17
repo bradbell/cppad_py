@@ -13,6 +13,7 @@
     sphinxrst
     rst
     underbar
+    underbars
     conf
 }
 
@@ -72,7 +73,7 @@ A line that begins with :code:`#` is a comment (not included in the list).
 The words are one per line and
 leading and trailing white space in a word are ignored.
 Special words, for a particular section, are specified using the
-:ref:`spell command<sphinxrst_py_spell_command>`.
+:ref:`spell command<sphinxrst_py.spell_command>`.
 
 Section
 =======
@@ -84,7 +85,7 @@ a-z, 0-9, and underbar ``_``.
 The corresponding sphinxrst output file is
 
 |space| |space| |space| |space|
-:ref:`sphinx_dir<sphinxrst_py_command_line_arguments_sphinx_dir>`
+:ref:`sphinx_dir<sphinxrst_py.command_line_arguments.sphinx_dir>`
 ``/sphinxrst/`` *section_name* ``.rst``
 
 Begin
@@ -109,9 +110,9 @@ begin section command.
 index.rst
 =========
 The file ``index.rst`` must exist in the directory
-:ref:`sphinx_dir<sphinxrst_py_command_line_arguments_sphinx_dir>`.
+:ref:`sphinx_dir<sphinxrst_py.command_line_arguments.sphinx_dir>`.
 For each *section_name* in a
-:ref:`begin section<sphinxrst_py_section_begin>` command,
+:ref:`begin section<sphinxrst_py.section.begin>` command,
 there must be a line in ``index.rst`` with the following text:
 
 |space| |space| |space| |space|
@@ -141,7 +142,7 @@ section (between the corresponding begin sphinxrst and end sphinxrst commands).
 Spell Command
 =============
 The list of words in
-:ref:`spell_list<sphinxrst_py_command_line_arguments_spell_list>`
+:ref:`spell_list<sphinxrst_py.command_line_arguments.spell_list>`
 are considered correct spellings
 for all sections. You can specify a special list of words for the current
 section using the following command at the beginning of a line:
@@ -217,6 +218,24 @@ There can only be one occurence of *stop* at the beginning of a line
 and after *start* and it must come after *start*.
 The lines containing *start* and *stop* in *file_name* are not included in
 the code block.
+
+Headers and Links
+==================
+Each :ref:`section<sphinxrst_py.section>` can have only one header at
+the first level which is a title for the section.
+The *section_name* is used automatically used
+as a label for linking the title for a section; i.e., the
+following will link to the title for *section_name*:
+
+|space| |space| |space| |space|
+``:ref:`` \\`  *linking_text* :code:`<` *section_name* :code:`>` \\`
+
+The label for linking a heading that is not at the first level
+is the label for the heading above it plus a dot character :code`.`,
+plus a lower case version of the heading with spaces converted to
+underbars :code:`_`. For example, the label for the heading for this
+paragraph is ``sphinxrst_py.headers_and_links``.
+
 
 Indentation
 ===========
@@ -590,7 +609,7 @@ def add_labels_for_headings(
                     label = section_name.lower().replace(' ', '_')
                 else :
                     heading = heading_list[level]
-                    label += '_' + heading['text'].lower().replace(' ', '_')
+                    label += '.' + heading['text'].lower().replace(' ', '_')
             #
             # place label in output before the heading
             data_left   = output_data[: previous_index]

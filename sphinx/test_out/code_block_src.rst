@@ -8,7 +8,7 @@ Code Block Source
     :lines: 10-27
 
 
-.. _code_block_src_example:
+.. _code_block_src.example:
 
 Example
 -------

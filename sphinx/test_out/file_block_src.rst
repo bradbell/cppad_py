@@ -8,7 +8,7 @@ File Block Source
     :lines: 9-30
 
 
-.. _file_block_src_example:
+.. _file_block_src.example:
 
 Example
 -------

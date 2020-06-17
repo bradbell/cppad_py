@@ -8,7 +8,7 @@ Suspend Source
     :lines: 10-49
 
 
-.. _suspend_src_example:
+.. _suspend_src.example:
 
 Example
 -------

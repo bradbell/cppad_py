@@ -10,7 +10,7 @@ Text before file block.
 
 Text after file block.
 
-.. _file_block_py_source:
+.. _file_block_py.source:
 
 Source
 ------

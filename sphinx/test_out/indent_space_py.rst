@@ -10,7 +10,7 @@ Indent Using Spaces Example
         return n * factorial(n-1)
 
 
-.. _indent_space_py_source:
+.. _indent_space_py.source:
 
 Source
 ------

@@ -8,7 +8,7 @@ Indent Using Spaces Source
     :lines: 10-27
 
 
-.. _indent_space_src_example:
+.. _indent_space_src.example:
 
 Example
 -------
