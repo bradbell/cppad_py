@@ -562,6 +562,7 @@ def add_labels_for_headings(
 ) :
     indent         = num_remove * white_space
     heading_list   = list()
+    pre_pre_empty  = True
     previous_index = 0
     current_index  = output_data.find('\n', previous_index) + 1
     next_index     = output_data.find('\n', current_index)  + 1
@@ -575,9 +576,11 @@ def add_labels_for_headings(
         n_current  = len(current_line)
         #
         # check if previous_line is a heading
-        heading = num_remove < n_previous and n_previous <= n_current
+        heading = pre_pre_empty
         if heading :
-            heading       = current_line == n_current * current_line[0]
+            heading = num_remove < n_previous and n_previous <= n_current
+            if heading :
+                heading       = current_line == n_current * current_line[0]
         if heading :
             # character and text for this heading
             character = current_line[0]
@@ -618,13 +621,15 @@ def add_labels_for_headings(
             data_right  = output_data[next_index : ]
             output_data = data_left + data_right
             #
-            next_index = 0
+            next_index    = 0
+            pre_pre_empty  = data_right[0] == '\n'
             previous_index = output_data.find('\n', len(data_left) ) + 1
             if 0 < previous_index :
                 current_index  = output_data.find('\n', previous_index) + 1
             if 0 < current_index :
                 next_index  = output_data.find('\n', current_index) + 1
         else :
+            pre_pre_empty  = len( previous_line.strip(' \t') ) == 0
             previous_index = current_index
             current_index  = next_index
             next_index     = output_data.find('\n', current_index) + 1
