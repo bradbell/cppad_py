@@ -10,6 +10,8 @@ Code Block Example
         return n * factorial(n-1)
 
 
+.. _code_block_py_source:
+
 Source
 ------
 :ref:`code_block_src`

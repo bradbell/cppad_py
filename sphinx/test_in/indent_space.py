@@ -10,8 +10,6 @@
 """
     {begin_sphinxrst indent_space_py}
 
-    .. _indent_space_py:
-
     Indent Using Spaces Example
     ===========================
     {code_sphinxrst}"""
@@ -31,8 +29,6 @@
 # ----------------------------------------------------------------------------
 """
 {begin_sphinxrst indent_space_src}
-
-.. _indent_space_src:
 
 Indent Using Spaces Source
 ==========================

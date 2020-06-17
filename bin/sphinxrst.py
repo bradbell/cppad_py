@@ -25,8 +25,6 @@ Syntax
 ======
 ``sphinxrst.py`` *sphinx_dir* *file_list* *spell_list*
 
-.. _sphinxrst_py_sphinx_dir:
-
 Notation
 ========
 
@@ -62,8 +60,6 @@ Leading and trailing white space in a file name are ignored.
 The sphinxrst files will be extracted from the files in this list
 and placed in the *sphinx_dir*:code`/sphinxrst` directory.
 
-.. _sphinxrst_py_spell_list:
-
 spell_list
 ==========
 The command line argument *spell_list* is the name of a file
@@ -74,8 +70,6 @@ The words are one per line and
 leading and trailing white space in a word are ignored.
 Special words, for a particular section, are specified using the
 :ref:`spell command<sphinxrst_py_spell_command>`.
-
-.. _sphinxrst_py_start_section:
 
 Begin Section
 =============
@@ -98,14 +92,14 @@ command at the beginning of a line:
 ``{end_sphinxrst`` *section_name*:code:`}`
 
 Here *section_name* must be the same as in the corresponding
-:ref:`start section<sphinxrst_py_start_section>` command.
+:ref:`begin section<sphinxrst_py_begin_section>` command.
 
 index.rst
 =========
 The file ``index.rst`` must exist in the directory
 :ref:`sphinx_dir<sphinxrst_py_sphinx_dir>`.
 For each *section_name* in a
-:ref:`start section<sphinxrst_py_start_section>` command,
+:ref:`begin section<sphinxrst_py_begin_section>` command,
 there must be a line in ``index.rst`` with the following text:
 
 |space| |space| |space| |space|
@@ -131,8 +125,6 @@ One resumes the output with the following command at the beginning of a line:
 
 Each suspend sphinxrst must have a corresponding resume sphinxrst in same
 section (between the corresponding begin sphinxrst and end sphinxrst commands).
-
-.. _sphinxrst_py_spell_command:
 
 Spell Command
 =============
@@ -432,7 +424,6 @@ def isolate_code_command(code_pattern, output_data, file_in, section_name) :
         output_rest    = output_data[ begin_end : ]
         match_end_code = code_pattern.search( output_rest )
         if match_end_code == None :
-            breakpoint()
             msg  = 'number of code_sphinxrst commands is not even'
             sys_exit(msg, file_in, section_name)
         end_start = match_end_code.start() + begin_end
@@ -533,33 +524,80 @@ def convert_file_command(file_pattern, output_data, file_in, section_name) :
         match_file  = file_pattern.search(data_right)
     return output_data
 # -----------------------------------------------------------------------------
-def update_heading_list(
-    previous_line, line, heading_list, file_in, section_name
+# labels for headings
+def add_labels_for_headings(
+        output_data, num_remove, white_space, file_in, section_name
 ) :
-    assert previous_line[-1] == '\n'
-    assert line[-1] == '\n'
-    #
-    n_previous = len(previous_line)
-    n_line     = len(line)
-    #
-    if n_previous < 2 :
-        return heading_list
-    if n_line < n_previous :
-        return heading_list
-    if line[: -1] != n_line * [ line[0] ] :
-        return heading_list
-    character = line[0]
-    #
-    # check for first heading
-    if len( heading_list ) == 0 :
-        heading_list = { 'character':character, 'text':previous_line }
-        return heading_list
-    #
-    # check for attempting to replace first heading
-    if character == heading_list[0]['character'] :
-        msg = 'There are multiple titles for this section'
-        sys_exit(msg, file_in, section_name)
+    indent         = num_remove * white_space
+    heading_list   = list()
+    previous_index = 0
+    current_index  = output_data.find('\n', previous_index) + 1
+    next_index     = output_data.find('\n', current_index)  + 1
+    while next_index > 0 :
+        previous_line  = output_data[previous_index : current_index - 1]
+        current_line   = output_data[current_index : next_index - 1 ]
+        #
+        n_previous = len(previous_line)
+        n_current  = len(current_line)
+        #
+        # check if previous_line is a heading
+        heading = num_remove < n_previous and n_previous <= n_current
+        if heading :
+            n_current     = n_current - num_remove
+            previous_line = previous_line[num_remove :]
+            current_line  = current_line[num_remove :]
+            heading       = current_line == n_current * current_line[0]
+        if heading :
+            # character and text for this heading
+            character = current_line[0]
+            heading   = { 'character': character, 'text': previous_line }
+            #
+            # check for first heading
+            if len( heading_list ) == 0 :
+                heading_list.append( heading )
+            else :
+                match = character == heading_list[0]['character']
+                if match :
+                    msg = 'There are multiple titles for this section'
+                    sys_exit(msg, file_in, section_name)
+                level = 1
+                while level < len(heading_list) and not match :
+                    match = character == heading_list[level]['character']
+                    if match :
+                        heading_list = heading_list[: level ]
+                        heading_list.append(heading)
+                    else :
+                        level += 1
+                if not match :
+                    # this heading at a deeper level
+                    heading_list.append( heading )
 
+            label = ''
+            for level in range( len(heading_list) ) :
+                if level == 0 :
+                    label = section_name.lower().replace(' ', '_')
+                else :
+                    heading = heading_list[level]
+                    label += '_' + heading['text'].lower().replace(' ', '_')
+            #
+            # place label in output before the heading
+            data_left   = output_data[: previous_index]
+            data_left  += '{label_sphinxrst ' + label + ' }\n'
+            data_left  += output_data[previous_index : next_index]
+            data_right  = output_data[next_index : ]
+            output_data = data_left + data_right
+            #
+            next_index = 0
+            previous_index = output_data.find('\n', len(data_left) ) + 1
+            if 0 < previous_index :
+                current_index  = output_data.find('\n', previous_index) + 1
+            if 0 < current_index :
+                next_index  = output_data.find('\n', current_index) + 1
+        else :
+            previous_index = current_index
+            current_index  = next_index
+            next_index     = output_data.find('\n', current_index) + 1
+    return output_data
 # =============================================================================
 # main program
 # =============================================================================
@@ -744,15 +782,12 @@ for file_in in file_list :
                 section_name
             )
             # ---------------------------------------------------------------
-            # newlist_list
+            # num_remove (for indented documentation)
             newline_itr  = pattern_newline.finditer(output_data)
             newline_list = list()
             for itr in newline_itr :
                 newlist = itr.start()
                 newline_list.append( newlist )
-            # ---------------------------------------------------------------
-            #
-            # num_remove (for indented documentation)
             len_output   = len(output_data)
             num_remove   = len(output_data)
             for newline in newline_list :
@@ -767,7 +802,22 @@ for file_in in file_list :
                     if ch not in ' \t\n' and not cmd :
                         num_remove = min(num_remove, next_ - newline - 1)
             # ---------------------------------------------------------------
+            # add labels corresponding to headings
+            output_data = add_labels_for_headings(
+                output_data,
+                num_remove,
+                white_space,
+                file_in,
+                section_name
+            )
+            # ---------------------------------------------------------------
             # write file for this section
+            #
+            newline_itr  = pattern_newline.finditer(output_data)
+            newline_list = list()
+            for itr in newline_itr :
+                newlist = itr.start()
+                newline_list.append( newlist )
             file_out          = output_dir + '/' + section_name + '.rst'
             file_ptr          = open(file_out, 'w')
             startline         = 0
@@ -775,11 +825,19 @@ for file_in in file_list :
             inside_code       = False
             previous_line     = None
             for newline in newline_list :
-                code_command = \
-                    output_data[startline:].startswith('{code_sphinxrst')
-                file_command = \
-                    output_data[startline:].startswith('{file_sphinxrst')
-                if code_command :
+                line  = output_data[startline : newline + 1]
+                code_command  = line.startswith('{code_sphinxrst')
+                file_command  = line.startswith('{file_sphinxrst')
+                label_command = line.startswith('{label_sphinxrst')
+                if label_command :
+                    # --------------------------------------------------------
+                    # label command
+                    line  = line.split(' ')
+                    label = line[1]
+                    line  = '.. _' + label + ':\n\n'
+                    file_ptr.write(line)
+                    previous_line = line
+                elif code_command :
                     # --------------------------------------------------------
                     # code command
                     inside_code = not inside_code
@@ -795,7 +853,6 @@ for file_in in file_list :
                     file_ptr.write(line)
                     previous_line = line
                 elif file_command :
-                    line       = output_data[startline : newline + 1]
                     line       = line.split('%')
                     file_name  = line[1]
                     start_line = line[2]
@@ -809,8 +866,7 @@ for file_in in file_list :
                     file_ptr.write('\n')
                     previous_line = '\n'
                 elif startline + num_remove < newline :
-                    startline += num_remove
-                    line       = output_data[startline : newline + 1]
+                    line       = line[num_remove : newline + 1]
                     # ------------------------------------------------------
                     # check spelling
                     word_list = list()

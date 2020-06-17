@@ -10,6 +10,8 @@ Indent Using Tabs Example
 		return n * factorial(n-1)
 
 
+.. _indent_tab_py_source:
+
 Source
 ------
 :ref:`indent_tab_src`

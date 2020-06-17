@@ -5,8 +5,10 @@ Code Block Source
 
 
 .. literalinclude:: ../../sphinx/test_in/code_block.py
-    :lines: 10-29
+    :lines: 10-27
 
+
+.. _code_block_src_example:
 
 Example
 -------

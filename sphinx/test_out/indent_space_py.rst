@@ -10,6 +10,8 @@ Indent Using Spaces Example
         return n * factorial(n-1)
 
 
+.. _indent_space_py_source:
+
 Source
 ------
 :ref:`indent_space_src`

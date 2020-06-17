@@ -3,11 +3,15 @@
 Spell Example
 =============
 
+.. _spell_py_text:
+
 Text
 ----
 The words ``iterable`` and ``sphinxrst`` are not the dictionary,
 so we have included them in the spelling command for this section.
 
+
+.. _spell_py_math:
 
 Math
 ----
@@ -21,6 +25,8 @@ An alternative is to add them to the
 .. math::
 
     z = \cos( \theta ) + {\rm i} \sin( \theta )
+
+.. _spell_py_source:
 
 Source
 ------

@@ -1,4 +1,3 @@
-# vim: set expandtab:
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
 #          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
@@ -15,8 +14,6 @@ def factorial(n) :
 # END_FACTORIAL
 """
 {begin_sphinxrst file_block_py}
-
-.. _file_block_py:
 
 File Block Example
 ==================
@@ -35,8 +32,6 @@ Source
 # --------------------------------------------------------------------------
 """
 {begin_sphinxrst file_block_src}
-
-.. _file_block_src:
 
 File Block Source
 =================

@@ -18,8 +18,6 @@
 }
 
 
-.. _spell_py:
-
 Spell Example
 =============
 
@@ -52,8 +50,6 @@ Source
 # ----------------------------------------------------------------------------
 """
 {begin_sphinxrst spell_src}
-
-.. _spell_src:
 
 Spell Source
 ============

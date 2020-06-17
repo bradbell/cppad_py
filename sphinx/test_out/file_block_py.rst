@@ -6,9 +6,11 @@ File Block Example
 Text before file block.
 
 .. literalinclude:: ../../sphinx/test_in/file_block.py
-    :lines: 11-14
+    :lines: 10-13
 
 Text after file block.
+
+.. _file_block_py_source:
 
 Source
 ------

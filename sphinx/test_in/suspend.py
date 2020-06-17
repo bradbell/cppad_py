@@ -13,8 +13,6 @@
     iterable
 }
 
-.. _suspend_py:
-
 Suspend Example
 ===============
 
@@ -53,8 +51,6 @@ Source
 # ----------------------------------------------------------------------------
 """
 {begin_sphinxrst suspend_src}
-
-.. _suspend_src:
 
 Suspend Source
 ==============

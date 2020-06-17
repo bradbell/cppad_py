@@ -10,8 +10,6 @@
 """
 	{begin_sphinxrst indent_tab_py}
 
-	.. _indent_tab_py:
-
 	Indent Using Tabs Example
 	=========================
 	{code_sphinxrst}"""
@@ -31,8 +29,6 @@
 # ----------------------------------------------------------------------------
 """
 {begin_sphinxrst indent_tab_src}
-
-.. _indent_tab_src:
 
 Indent Using Tabs Source
 ========================
