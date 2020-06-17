@@ -19,6 +19,8 @@ Welcome to sphinxrst's documentation!
    sphinxrst/suspend_src
    sphinxrst/spell_py
    sphinxrst/spell_src
+   sphinxrst/heading_py
+   sphinxrst/heading_src
 
 Indices and tables
 ==================
