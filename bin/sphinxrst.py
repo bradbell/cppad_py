@@ -45,8 +45,8 @@ sphinx_dir
 The command line argument *sphinx_dir* is a sub-directory,
 of the top git repository directory.
 The  sphinx ``conf.py`` and ``index.rst`` files are located in this directory.
-Any files that have names ending in ``.rst`` and that are
-in the directory *sphinx_dir*:code:`/sphinxrst`,
+Any files that have names ending in ``.rst``,
+and that are in the directory *sphinx_dir*:code:`/sphinxrst`,
 are removed at the beginning of execution of ``sphinxrst.py``.
 All the ``.rst`` files in *sphinx_dir*:code:`/sphinxrst`
 were extracted from the source code the last time that ``sphinxrst.py``
@@ -74,20 +74,29 @@ leading and trailing white space in a word are ignored.
 Special words, for a particular section, are specified using the
 :ref:`spell command<sphinxrst_py_spell_command>`.
 
-Begin Section
-=============
+Section
+=======
+
+Name
+----
+A *section_name* is a sequence of the following characters
+a-z, 0-9, and underbar ``_``.
+The corresponding sphinxrst output file is
+
+|space| |space| |space| |space|
+:ref:`sphinx_dir<sphinxrst_py_command_line_arguments_sphinx_dir>`
+``/sphinxrst/`` *section_name* ``.rst``
+
+Begin
+-----
 The start of a sphinxrst section of the input file is indicated by the
 following command at the beginning of a line:
 
 |space| |space| |space| |space|
 ``{begin_sphinxrst`` *section_name*:code:`}`
 
-Here *section_name* is the name of output file corresponding to this section.
-The possible characters in *section_name* are A-Z, a-z, 0-9, underbar ``_``,
-and dot ``.``
-
-End Section
-===========
+End
+---
 The end of a sphinxrst section of the input file is indicated by the following
 command at the beginning of a line:
 
@@ -95,14 +104,14 @@ command at the beginning of a line:
 ``{end_sphinxrst`` *section_name*:code:`}`
 
 Here *section_name* must be the same as in the corresponding
-:ref:`begin section<sphinxrst_py_begin_section>` command.
+begin section command.
 
 index.rst
 =========
 The file ``index.rst`` must exist in the directory
 :ref:`sphinx_dir<sphinxrst_py_command_line_arguments_sphinx_dir>`.
 For each *section_name* in a
-:ref:`begin section<sphinxrst_py_begin_section>` command,
+:ref:`begin section<sphinxrst_py_section_begin>` command,
 there must be a line in ``index.rst`` with the following text:
 
 |space| |space| |space| |space|
@@ -540,6 +549,8 @@ def add_labels_for_headings(
     while next_index > 0 :
         previous_line  = output_data[previous_index : current_index - 1]
         current_line   = output_data[current_index : next_index - 1 ]
+        previous_line  = previous_line[num_remove :].rstrip(' \t')
+        current_line   = current_line[num_remove :].rstrip(' \t')
         #
         n_previous = len(previous_line)
         n_current  = len(current_line)
@@ -547,9 +558,6 @@ def add_labels_for_headings(
         # check if previous_line is a heading
         heading = num_remove < n_previous and n_previous <= n_current
         if heading :
-            n_current     = n_current - num_remove
-            previous_line = previous_line[num_remove :]
-            current_line  = current_line[num_remove :]
             heading       = current_line == n_current * current_line[0]
         if heading :
             # character and text for this heading
@@ -669,9 +677,15 @@ pattern_word              = re.compile( r'[\\A-Za-z][a-z]*' )
 pattern_code_sphinxrst    = re.compile( r'\n[^\n`]*\{code_sphinxrst\}[^\n`]*')
 pattern_suspend_sphinxrst = re.compile( r'\n[ \t]*\{suspend_sphinxrst\}' )
 pattern_resume_sphinxrst  = re.compile( r'\n[ \t]*\{resume_sphinxrst\}' )
-pattern_begin_sphinxrst   = re.compile( r'\n[ \t]*\{begin_sphinxrst\s+(\w*)\}' )
-pattern_end_sphinxrst     = re.compile( r'\n[ \t]*\{end_sphinxrst\s+(\w*)\}' )
-pattern_spell_sphinxrst   = re.compile( r'\n[ \t]*\{spell_sphinxrst([^}]*)\}' )
+pattern_begin_sphinxrst   = re.compile(
+    r'\n[ \t]*\{begin_sphinxrst\s+([a-z0-9_]+)\}'
+)
+pattern_end_sphinxrst     = re.compile(
+    r'\n[ \t]*\{end_sphinxrst\s+([a-z0-9_]+)\}'
+)
+pattern_spell_sphinxrst   = re.compile(
+    r'\n[ \t]*\{spell_sphinxrst([^}]*)\}'
+)
 pattern_file_sphinxrst    = re.compile(
     r'\n[^\n`]*\{file_sphinxrst%([^%]*)%([^%]*)%([^%]*)%[^\n`]*\}'
 )
