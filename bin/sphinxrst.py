@@ -457,10 +457,40 @@ def spell_command(
             sys_exit(msg, file_in, section_name)
         for itr in word_pattern.finditer( match_spell.group(1) ) :
             special_list.append( itr.group(0).lower() )
+        # remove spell command
         start       = match_spell.start()
         end         = match_spell.end()
         output_data = output_data[: start] + output_data[end :]
-    return output_data, special_list
+    #
+    # data = output_data with commands removed
+    command_pattern = re.compile( r'\{[a-z]+_sphinxrst[^}]*\}' )
+    data            = ''
+    previous_end    = 0
+    for itr in command_pattern.finditer( output_data ) :
+        start        = itr.start()
+        data        += output_data[previous_end : start ]
+        previous_end = itr.end()
+    data += output_data[previous_end :]
+    #
+    # check for spelling errors
+    first_spell_error = True
+    for itr in word_pattern.finditer( data ) :
+        word = itr.group(0)
+        if len( spell_checker.unknown( [word] ) ) > 0 :
+            if not word.lower() in special_list :
+                if first_spell_error :
+                    msg  = 'warning: file = ' + file_in
+                    msg += ', section = ' + section_name
+                    print(msg)
+                    first_spell_error = False
+                msg  = 'spelling = ' + word
+                suggest = spell_checker.correction(word)
+                if suggest != word :
+                    msg += ', suggest = ' + suggest
+                print(msg)
+                special_list.append(word.lower())
+
+    return output_data
 # -----------------------------------------------------------------------------
 # remove characters on same line as {code_sphinxrst}
 def isolate_code_command(code_pattern, output_data, file_in, section_name) :
@@ -682,7 +712,6 @@ def write_file(
     section_name,
     spell_checker,
     word_pattern,
-    special_list,
 ) :
     #
     newline_pattern = re.compile( r'\n')
@@ -696,7 +725,6 @@ def write_file(
     startline         = 0
     inside_code       = False
     previous_empty    = True
-    first_spell_error = True
     for newline in newline_list :
         line  = output_data[startline : newline + 1]
         # commands that delay some processing to this point
@@ -744,26 +772,7 @@ def write_file(
                 file_ptr.write( "\n" )
                 previous_empty = True
         else :
-            line       = line[num_remove : newline + 1]
-            # ------------------------------------------------------
-            # check spelling
-            word_list = list()
-            for itr in word_pattern.finditer( line ) :
-                word = itr.group(0)
-                if len( spell_checker.unknown( [word] ) ) > 0 :
-                    if not word.lower() in special_list :
-                        if first_spell_error :
-                            msg  = 'warning: file = ' + file_in
-                            msg += ', section = ' + section_name
-                            print(msg)
-                            first_spell_error = False
-                        msg  = 'spelling = ' + word
-                        suggest = spell_checker.correction(word)
-                        if suggest != word :
-                            msg += ', suggest = ' + suggest
-                        print(msg)
-                        special_list.append(word.lower())
-            # ------------------------------------------------------
+            line = line[num_remove : newline + 1]
             if inside_code :
                 # indent code block
                 if white_space == ' ' :
@@ -937,7 +946,7 @@ for file_in in file_list :
             )
             # ----------------------------------------------------------------
             # process spell commands
-            output_data, special_list = spell_command(
+            output_data = spell_command(
                 pattern_spell_sphinxrst,
                 pattern_word,
                 output_data,
@@ -1006,7 +1015,6 @@ for file_in in file_list :
                 section_name,
                 spell_checker,
                 pattern_word,
-                special_list
             )
             # ---------------------------------------------------------------
             # place to search for next file
