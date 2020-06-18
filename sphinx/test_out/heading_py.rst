@@ -1,7 +1,8 @@
 .. _heading_py:
 
+===============
 Heading Example
-###############
+===============
 The label for this heading is the section name ``heading_py``.
 
 .. _heading_py.second_level:

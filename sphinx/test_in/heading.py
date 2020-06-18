@@ -10,8 +10,9 @@
 """
 {begin_sphinxrst heading_py}
 
+===============
 Heading Example
-###############
+===============
 The label for this heading is the section name ``heading_py``.
 
 Second Level

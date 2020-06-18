@@ -235,17 +235,18 @@ Example
 -------
 :ref:`file_block_py`
 
-Headers and Links
+Headings and Links
 ==================
 Each :ref:`section<sphinxrst_py.section>` can have only one header at
 the first level which is a title for the section.
-The *section_name* is used automatically used
+The *section_name* is automatically used
 as a label for linking the title for a section; i.e., the
 following will link to the title for *section_name*:
 
 |space| |space| |space| |space|
 ``:ref:`` \\`  *linking_text* :code:`<` *section_name* :code:`>` \\`
 
+where *linking_text* is the text the user sees.
 The label for linking a heading that is not at the first level
 is the label for the heading above it plus a dot character :code`.`,
 plus a lower case version of the heading with spaces converted to
@@ -583,47 +584,70 @@ def convert_file_command(file_pattern, output_data, file_in, section_name) :
 def add_labels_for_headings(
         output_data, num_remove, white_space, file_in, section_name
 ) :
-    indent         = num_remove * white_space
-    heading_list   = list()
-    pre_pre_empty  = True
-    previous_index = 0
-    current_index  = output_data.find('\n', previous_index) + 1
-    next_index     = output_data.find('\n', current_index)  + 1
-    while next_index > 0 :
-        previous_line  = output_data[previous_index : current_index - 1]
-        current_line   = output_data[current_index : next_index - 1 ]
-        previous_line  = previous_line[num_remove :].rstrip(' \t')
-        current_line   = current_line[num_remove :].rstrip(' \t')
-        #
-        n_previous = len(previous_line)
-        n_current  = len(current_line)
-        #
-        # check if previous_line is a heading
-        heading = pre_pre_empty
-        if heading :
-            heading = num_remove < n_previous and n_previous <= n_current
-            if heading :
-                ch          = current_line[0]
-                punctuation = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
-                heading     = ch in punctuation
-                if heading :
-                    heading = current_line == n_current * ch
-        if heading :
-            # character and text for this heading
-            character = current_line[0]
-            heading   = { 'character': character, 'text': previous_line }
+    punctuation      = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
+    indent           = num_remove * white_space
+    heading_list     = list()
+    next_start       = 0
+    next_newline     = output_data.find('\n', next_start)
+    candidate_start  = None
+    candidate_state  = 'empty'
+    while 0 <= next_newline :
+        next_line = output_data[next_start : next_newline]
+        next_line = next_line[num_remove :].rstrip(' \t')
+        next_len  = len(next_line)
+        if next_len == 0 :
+            candidate_start = next_start
+            candidate_state = 'before_overline'
+        elif candidate_state == 'before_overline' :
+            ch = next_line[0]
+            if ch in punctuation and next_line == ch * next_len :
+                candidate_state = 'before_heading'
+                overline        = next_line
+            else :
+                candidate_state = 'before_underline'
+                overline        = None
+                heading_text    = next_line
+        elif candidate_state == 'before_heading' :
+            candidate_state = 'before_underline'
+            heading_text    = next_line
+        elif candidate_state == 'before_underline' :
+            ch = next_line[0]
+            if len(next_line) < len(heading_text) :
+                candidate_state = 'empty'
+            elif overline is not None and overline != next_line:
+                candidate_state = 'empty'
+            elif next_line[0] not in punctuation :
+                candidate_state = 'empty'
+            elif next_line != next_line[0] * next_len :
+                candidate_state = 'empty'
+            else :
+                candidate_state = 'end'
+                underline       = next_line
+        if candidate_state == 'end' :
+            # overline, character, and text for this heading
+            character = underline[0]
+            overline  =  overline is not None
+            heading   = {
+                'overline' : overline,
+                'character': character,
+                'text':      heading_text
+            }
             #
             # check for first heading
             if len( heading_list ) == 0 :
                 heading_list.append( heading )
             else :
-                match = character == heading_list[0]['character']
+                match = overline == heading_list[0]['overline']
+                if match :
+                    match = character == heading_list[0]['character']
                 if match :
                     msg = 'There are multiple titles for this section'
                     sys_exit(msg, file_in, section_name)
                 level = 1
                 while level < len(heading_list) and not match :
-                    match = character == heading_list[level]['character']
+                    match = overline == heading_list[level]['overline']
+                    if match :
+                        match = character == heading_list[level]['character']
                     if match :
                         heading_list = heading_list[: level ]
                         heading_list.append(heading)
@@ -642,24 +666,19 @@ def add_labels_for_headings(
                     label += '.' + heading['text'].lower().replace(' ', '_')
             #
             # place label in output before the heading
-            data_left   = output_data[: previous_index]
-            data_left  += '{label_sphinxrst ' + label + ' }\n'
-            data_left  += output_data[previous_index : next_index]
-            data_right  = output_data[next_index : ]
+            data_left   = output_data[: candidate_start]
+            data_left  += '\n{label_sphinxrst ' + label + ' }'
+            data_left  += output_data[candidate_start : next_newline]
+            data_right  = output_data[next_newline : ]
             output_data = data_left + data_right
             #
-            next_index    = 0
-            pre_pre_empty  = data_right[0] == '\n'
-            previous_index = output_data.find('\n', len(data_left) ) + 1
-            if 0 < previous_index :
-                current_index  = output_data.find('\n', previous_index) + 1
-            if 0 < current_index :
-                next_index  = output_data.find('\n', current_index) + 1
+            # setup of for next heading
+            candidate_state = 'empty'
+            next_start      = len(data_left) + 1
+            next_newline    = output_data.find('\n', next_start )
         else :
-            pre_pre_empty  = len( previous_line.strip(' \t') ) == 0
-            previous_index = current_index
-            current_index  = next_index
-            next_index     = output_data.find('\n', current_index) + 1
+            next_start   = next_newline + 1
+            next_newline = output_data.find('\n', next_start)
     return output_data
 # =============================================================================
 # main program
