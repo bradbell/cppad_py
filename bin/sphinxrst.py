@@ -253,6 +253,9 @@ Example
 
 Headings and Links
 ==================
+
+Section Level
+-------------
 Each :ref:`section<sphinxrst_py.section>` can have only one header at
 the first level which is a title for the section.
 The *section_name* is automatically used
@@ -263,11 +266,18 @@ following will link to the title for *section_name*:
 ``:ref:`` \\`  *linking_text* :code:`<` *section_name* :code:`>` \\`
 
 where *linking_text* is the text the user sees.
+
+Other Levels
+------------
 The label for linking a heading that is not at the first level
-is the label for the heading above it plus a dot character :code`.`,
+is the label for the heading directly above it plus a dot character :code:`.`,
 plus a lower case version of the heading with spaces converted to
 underbars :code:`_`. For example, the label for the heading for this
-paragraph is ``sphinxrst_py.headers_and_links``.
+paragraph is ``sphinxrst_py.headers_and_links.other_levels``.
+This may seem verbose, but it helps keep the links up to date.
+If a heading changes, all the links to that heading will break.
+This identifies the links that should be checked
+to make sure they are still valid.
 
 Example
 -------
