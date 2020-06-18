@@ -445,9 +445,10 @@ def suspend_command(
 # -----------------------------------------------------------------------------
 # process spell_sphinx commands
 def spell_command(
-    spell_pattern, word_pattern, output_data, file_in, section_name
+    spell_pattern, output_data, file_in, section_name
 ) :
-    match_spell = spell_pattern.search(output_data)
+    word_pattern  = re.compile( r'[\\A-Za-z][a-z]*' )
+    match_spell   = spell_pattern.search(output_data)
     special_list  = list()
     if match_spell != None :
         output_rest   = output_data[ match_spell.end() : ]
@@ -711,7 +712,6 @@ def write_file(
     output_dir,
     section_name,
     spell_checker,
-    word_pattern,
 ) :
     #
     newline_pattern = re.compile( r'\n')
@@ -850,7 +850,6 @@ section_list       = list()
 corresponding_file = list()
 #
 # define some pytyon regular expression patterns
-pattern_word              = re.compile( r'[\\A-Za-z][a-z]*' )
 pattern_code_sphinxrst    = re.compile( r'\n[^\n`]*\{code_sphinxrst\}[^\n`]*')
 pattern_suspend_sphinxrst = re.compile( r'\n[ \t]*\{suspend_sphinxrst\}' )
 pattern_resume_sphinxrst  = re.compile( r'\n[ \t]*\{resume_sphinxrst\}' )
@@ -948,7 +947,6 @@ for file_in in file_list :
             # process spell commands
             output_data = spell_command(
                 pattern_spell_sphinxrst,
-                pattern_word,
                 output_data,
                 file_in,
                 section_name,
@@ -1014,7 +1012,6 @@ for file_in in file_list :
                 output_dir,
                 section_name,
                 spell_checker,
-                pattern_word,
             )
             # ---------------------------------------------------------------
             # place to search for next file
