@@ -15,3 +15,7 @@ Indent Using Tabs Example
 Source
 ------
 :ref:`indent_tab_src`
+
+----
+
+sphinxrst_input_file: ``sphinx/test_in/indent_tab.py``  date: 2020-06-18  time: 09:17:55

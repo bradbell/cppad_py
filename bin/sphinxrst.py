@@ -283,11 +283,6 @@ Error Messaging
 Improve the error messaging so that it include the line number of the
 input file that the error occurred on.
 
-Source File
------------
-Include the path to the source code file that the documentation was
-extracted from (probably at the end of the section).
-
 Double Word Errors
 ------------------
 Detect double word errors and allow for exceptions by specifying them in a
@@ -296,10 +291,6 @@ Detect double word errors and allow for exceptions by specifying them in a
 Module
 ------
 Convert the extract program into a python module and provide a pip distribution for it.
-
-Links
------
-Automatic links for every section heading.
 
 Indexing
 --------
@@ -319,6 +310,7 @@ import re
 import os
 import pdb
 import spellchecker
+import datetime
 # ---------------------------------------------------------------------------
 def init_spell_checker(spell_list) :
     bad_words_in_spellchecker = [
@@ -685,6 +677,8 @@ def add_labels_for_headings(
 # write file corresponding to a section
 # (and finish processing that has been delayed to this point)
 def write_file(
+    file_in,
+    file_in_now,
     output_data,
     output_dir,
     section_name,
@@ -781,6 +775,14 @@ def write_file(
             previous_empty = line == '\n'
             file_ptr.write( line )
         startline = newline + 1
+    # -----------------------------------------------------------------------
+    if not previous_empty :
+        file_ptr.write('\n')
+    file_ptr.write('----\n\n')
+    date = file_in_now.strftime('%Y-%m-%d')
+    time = file_in_now.strftime('%H:%M:%S')
+    file_ptr.write( f'sphinxrst_input_file: ``{file_in}``')
+    file_ptr.write( f'  date: {date}  time: {time}\n')
     file_ptr.close()
 # =============================================================================
 # main program
@@ -874,6 +876,9 @@ for file_in in file_list :
     file_ptr   = open(file_in, 'r')
     file_data  = file_ptr.read()
     file_ptr.close()
+    #
+    # file_in_now
+    file_in_now  = datetime.datetime.now()
     #
     # file_index is where to start search for next pattern in file_data
     file_index  = 0
@@ -1003,6 +1008,8 @@ for file_in in file_list :
             # ---------------------------------------------------------------
             # write file for this section
             write_file(
+                file_in,
+                file_in_now,
                 output_data,
                 output_dir,
                 section_name,

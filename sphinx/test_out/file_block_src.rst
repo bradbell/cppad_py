@@ -13,3 +13,7 @@ File Block Source
 Example
 -------
 :ref:`file_block_py`
+
+----
+
+sphinxrst_input_file: ``sphinx/test_in/file_block.py``  date: 2020-06-18  time: 09:17:55

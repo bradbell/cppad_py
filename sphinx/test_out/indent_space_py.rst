@@ -15,3 +15,7 @@ Indent Using Spaces Example
 Source
 ------
 :ref:`indent_space_src`
+
+----
+
+sphinxrst_input_file: ``sphinx/test_in/indent_space.py``  date: 2020-06-18  time: 09:17:55

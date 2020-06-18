@@ -13,3 +13,7 @@ Indent Using Spaces Source
 Example
 -------
 :ref:`indent_space_py`
+
+----
+
+sphinxrst_input_file: ``sphinx/test_in/indent_space.py``  date: 2020-06-18  time: 09:17:55
