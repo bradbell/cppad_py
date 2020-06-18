@@ -934,7 +934,10 @@ for file_in in file_list :
                     file_ptr.write(line)
                     file_ptr.write('\n')
                     previous_line = '\n'
-                elif startline + num_remove < newline :
+                elif newline <= startline + num_remove :
+                    if previous_line is not None :
+                        file_ptr.write( "\n" )
+                else :
                     line       = line[num_remove : newline + 1]
                     # ------------------------------------------------------
                     # check spelling
@@ -963,8 +966,6 @@ for file_in in file_list :
                             line = '\t' + line
                     file_ptr.write( line )
                     previous_line = line
-                elif previous_line is not None :
-                    file_ptr.write( "\n" )
                 startline = newline + 1
             file_ptr.close()
             #
