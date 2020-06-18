@@ -310,7 +310,6 @@ import re
 import os
 import pdb
 import spellchecker
-import datetime
 # ---------------------------------------------------------------------------
 def init_spell_checker(spell_list) :
     bad_words_in_spellchecker = [
@@ -678,7 +677,6 @@ def add_labels_for_headings(
 # (and finish processing that has been delayed to this point)
 def write_file(
     file_in,
-    file_in_now,
     output_data,
     output_dir,
     section_name,
@@ -779,10 +777,7 @@ def write_file(
     if not previous_empty :
         file_ptr.write('\n')
     file_ptr.write('----\n\n')
-    date = file_in_now.strftime('%Y-%m-%d')
-    time = file_in_now.strftime('%H:%M:%S')
-    file_ptr.write( f'sphinxrst_input_file: ``{file_in}``')
-    file_ptr.write( f'  date: {date}  time: {time}\n')
+    file_ptr.write( f'sphinxrst_input_file: ``{file_in}``\n')
     file_ptr.close()
 # =============================================================================
 # main program
@@ -876,9 +871,6 @@ for file_in in file_list :
     file_ptr   = open(file_in, 'r')
     file_data  = file_ptr.read()
     file_ptr.close()
-    #
-    # file_in_now
-    file_in_now  = datetime.datetime.now()
     #
     # file_index is where to start search for next pattern in file_data
     file_index  = 0
@@ -1009,7 +1001,6 @@ for file_in in file_list :
             # write file for this section
             write_file(
                 file_in,
-                file_in_now,
                 output_data,
                 output_dir,
                 section_name,

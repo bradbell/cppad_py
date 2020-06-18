@@ -35,4 +35,4 @@ Source
 
 ----
 
-sphinxrst_input_file: ``sphinx/test_in/spell.py``  date: 2020-06-18  time: 09:17:55
+sphinxrst_input_file: ``sphinx/test_in/spell.py``
