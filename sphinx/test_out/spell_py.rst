@@ -29,14 +29,13 @@ for all sections:
 
 .. _spell_py.double_words:
 
-Double Words 
+Double Words
 ------------
-It is consider an error to have only white space between 
+It is consider an error to have only white space between
 two occurrences of the same word; e.g.,
 no no would be an error if there
-were not two occurrences of :code:`no` next to each other in the 
+were not two occurrences of :code:`no` next to each other in the
 spelling command for this section.
- 
 
 .. _spell_py.source:
 
