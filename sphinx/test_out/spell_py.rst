@@ -10,7 +10,6 @@ Text
 The words ``iterable`` and ``sphinxrst`` are not the dictionary,
 so we have included them in the spelling command for this section.
 
-
 .. _spell_py.math:
 
 Math

@@ -892,7 +892,7 @@ for file_in in file_list :
             startline         = 0
             first_spell_error = True # for this section
             inside_code       = False
-            previous_line     = None
+            previous_empty    = True
             for newline in newline_list :
                 line  = output_data[startline : newline + 1]
                 code_command  = line.startswith('{code_sphinxrst')
@@ -905,7 +905,7 @@ for file_in in file_list :
                     label = line[1]
                     line  = '.. _' + label + ':\n\n'
                     file_ptr.write(line)
-                    previous_line = line
+                    previous_empty = True
                 elif code_command :
                     # --------------------------------------------------------
                     # code command
@@ -920,7 +920,7 @@ for file_in in file_list :
                     else :
                         line = '\n'
                     file_ptr.write(line)
-                    previous_line = line
+                    previous_empty = True
                 elif file_command :
                     line       = line.split('%')
                     file_name  = line[1]
@@ -933,10 +933,11 @@ for file_in in file_list :
                     line = f'    :lines: {start_line}-{stop_line}\n'
                     file_ptr.write(line)
                     file_ptr.write('\n')
-                    previous_line = '\n'
+                    previous_empty = True
                 elif newline <= startline + num_remove :
-                    if previous_line is not None :
+                    if not previous_empty :
                         file_ptr.write( "\n" )
+                        previous_empty = True
                 else :
                     line       = line[num_remove : newline + 1]
                     # ------------------------------------------------------
@@ -964,8 +965,8 @@ for file_in in file_list :
                             line = '    ' + line
                         else :
                             line = '\t' + line
+                    previous_empty = line == '\n'
                     file_ptr.write( line )
-                    previous_line = line
                 startline = newline + 1
             file_ptr.close()
             #

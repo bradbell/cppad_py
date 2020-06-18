@@ -47,9 +47,9 @@ do
 			echo "    cp sphinx/sphinxrst/$file sphinx/test_out/$file"
 		elif ! diff test_out/$file sphinxrst/$file
 		then
-			echo "The output file sphinx/sphinxrst/$file has changed;"
-			echo 'see the differences above. If the new file is currect,'
-			echo 'replace to old version with the new one using:'
+			echo "The file sphinx/sphinxrst/$file changed; above is output of"
+			echo "	diff test_out/$file sphinxrst/$file"
+			echo 'If the new file is currect, replace old with new using:'
 			echo "    cp sphinx/sphinxrst/$file sphinx/test_out/$file"
 			exit 1
 		else
