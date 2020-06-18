@@ -6,7 +6,7 @@ Spell Source
 
 
 .. literalinclude:: ../../sphinx/test_in/spell.py
-    :lines: 10-50
+    :lines: 10-60
 
 .. _spell_src.example:
 

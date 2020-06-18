@@ -15,6 +15,7 @@
     \cos
     \rm
     \sin
+    no no
 }
 
 
@@ -41,6 +42,15 @@ for all sections:
 .. math::
 
     z = \cos( \theta ) + {\rm i} \sin( \theta )
+
+Double Words
+------------
+It is consider an error to have only white space between
+two occurrences of the same word; e.g.,
+no no would be an error if there
+were not two occurrences of :code:`no` next to each other in the
+spelling command for this section.
+
 
 Source
 ------

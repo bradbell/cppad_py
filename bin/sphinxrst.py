@@ -74,7 +74,7 @@ A line that begins with :code:`#` is a comment (not included in the list).
 The words are one per line and
 leading and trailing white space in a word are ignored.
 Special words, for a particular section, are specified using the
-:ref:`spell command<sphinxrst_py.spell_command>`.
+:ref:`spell command<sphinxrst_py.spell.command>`.
 
 Section
 =======
@@ -144,12 +144,21 @@ Example
 -------
 :ref:`suspend_py`
 
-Spell Command
-=============
+Spell
+=====
+
+spell_list
+----------
 The list of words in
 :ref:`spell_list<sphinxrst_py.command_line_arguments.spell_list>`
 are considered correct spellings
-for all sections. You can specify a special list of words for the current
+for all sections.
+The latex commands corresponding to the letters in the greek alphabet
+are automatically included in this list
+
+Command
+-------
+You can specify a special list of words for the current
 section using the following command at the beginning of a line:
 
 |space| |space| |space| |space|
@@ -160,13 +169,19 @@ In the syntax above the list of words is all in one line,
 but they could be on different lines.
 Each word starts with an upper case letter,
 a lower case letter, or a back slash.
-The rest of the characters in a word are lower case letters.
-The case of the first letter does not matter when checking spelling;
-e.g., if ``abcd`` is *word_1* then ``Abcd`` will be considered a valid word.
 The back slash is included as a possible beginning of a word
 so that latex commands can be included in the spelling list.
-The latex commands corresponding to the letters in the greek alphabet
-are automatically included in the spelling list.
+The rest of the characters in a word are lower case letters.
+
+Checking
+--------
+The case of the first letter does not matter when checking spelling;
+e.g., if ``abcd`` is *word_1* then ``Abcd`` will be considered a valid word.
+
+Double Word
+-----------
+It is considered an error to have only white space between two occurrences
+of the same word.
 
 Example
 -------
@@ -181,7 +196,7 @@ a line containing the following command:
 ``{code_sphinxrst}``
 
 Each code block must end with
-a line containing the the same command above.
+a line containing the same command above.
 
 The back quote character \` can't be in the same line as the two commands.
 Other characters on the same line as the commands
@@ -282,11 +297,6 @@ Error Messaging
 ---------------
 Improve the error messaging so that it include the line number of the
 input file that the error occurred on.
-
-Double Word Errors
-------------------
-Detect double word errors and allow for exceptions by specifying them in a
-``double_word_sphinxrst`` command.
 
 Module
 ------
@@ -490,7 +500,27 @@ def spell_command(
                     msg += ', suggest = ' + suggest
                 print(msg)
                 special_list.append(word.lower())
-
+    #
+    # check for double word errors
+    double_pattern  = re.compile( r'\s+([\\A-Za-z][a-z]*)\s+\1' )
+    for itr in double_pattern.finditer(data) :
+        ok   = False
+        word = itr.group(1)
+        if word in special_list :
+            index = special_list.index(word)
+            if index + 1 < len(special_list) :
+                if special_list[index+1] == word :
+                    ok = True
+        if not ok :
+            if first_spell_error :
+                msg  = 'warning: file = ' + file_in
+                msg += ', section = ' + section_name
+                print(msg)
+                first_spell_error = False
+            double_word = itr.group(0).strip()
+            msg         = 'double word error: "' + double_word + '"'
+            print(msg)
+    #
     return output_data
 # -----------------------------------------------------------------------------
 # remove characters on same line as {code_sphinxrst}
