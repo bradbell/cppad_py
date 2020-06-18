@@ -15,6 +15,7 @@ def factorial(n) :
 """
 {begin_sphinxrst file_block_py}
 
+==================
 File Block Example
 ==================
 
@@ -33,6 +34,7 @@ Source
 """
 {begin_sphinxrst file_block_src}
 
+=================
 File Block Source
 =================
 

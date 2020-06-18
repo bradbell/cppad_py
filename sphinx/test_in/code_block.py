@@ -10,6 +10,7 @@
 """
 {begin_sphinxrst code_block_py}
 
+==================
 Code Block Example
 ==================
 {code_sphinxrst}"""
@@ -30,6 +31,7 @@ Source
 """
 {begin_sphinxrst code_block_src}
 
+=================
 Code Block Source
 =================
 

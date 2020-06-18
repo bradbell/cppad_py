@@ -1,11 +1,12 @@
 .. _spell_src:
 
+============
 Spell Source
 ============
 
 
 .. literalinclude:: ../../sphinx/test_in/spell.py
-    :lines: 10-49
+    :lines: 10-50
 
 .. _spell_src.example:
 

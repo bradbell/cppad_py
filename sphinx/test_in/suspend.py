@@ -13,6 +13,7 @@
     iterable
 }
 
+===============
 Suspend Example
 ===============
 
@@ -52,6 +53,7 @@ Source
 """
 {begin_sphinxrst suspend_src}
 
+==============
 Suspend Source
 ==============
 

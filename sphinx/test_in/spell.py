@@ -18,6 +18,7 @@
 }
 
 
+=============
 Spell Example
 =============
 
@@ -52,6 +53,7 @@ Source
 """
 {begin_sphinxrst spell_src}
 
+============
 Spell Source
 ============
 
