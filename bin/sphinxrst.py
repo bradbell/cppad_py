@@ -603,7 +603,11 @@ def add_labels_for_headings(
         if heading :
             heading = num_remove < n_previous and n_previous <= n_current
             if heading :
-                heading       = current_line == n_current * current_line[0]
+                ch          = current_line[0]
+                punctuation = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
+                heading     = ch in punctuation
+                if heading :
+                    heading = current_line == n_current * ch
         if heading :
             # character and text for this heading
             character = current_line[0]
