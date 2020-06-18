@@ -681,6 +681,107 @@ def add_labels_for_headings(
             next_start   = next_newline + 1
             next_newline = output_data.find('\n', next_start)
     return output_data
+# -----------------------------------------------------------------------------
+# write file corresponding to a section
+# (and finish processing that has been delayed to this point)
+def write_file(
+    output_data,
+    output_dir,
+    section_name,
+    spell_checker,
+    word_pattern,
+    special_list,
+) :
+    #
+    newline_pattern = re.compile( r'\n')
+    newline_itr     = newline_pattern.finditer(output_data)
+    newline_list    = list()
+    for itr in newline_itr :
+        newlist = itr.start()
+        newline_list.append( newlist )
+    file_out          = output_dir + '/' + section_name + '.rst'
+    file_ptr          = open(file_out, 'w')
+    startline         = 0
+    inside_code       = False
+    previous_empty    = True
+    first_spell_error = True
+    for newline in newline_list :
+        line  = output_data[startline : newline + 1]
+        # commands that delay some processing to this point
+        code_command  = line.startswith('{code_sphinxrst')
+        file_command  = line.startswith('{file_sphinxrst')
+        label_command = line.startswith('{label_sphinxrst')
+        if label_command :
+            # --------------------------------------------------------
+            # label command
+            line  = line.split(' ')
+            label = line[1]
+            line  = '.. _' + label + ':\n\n'
+            file_ptr.write(line)
+            previous_empty = True
+        elif code_command :
+            # --------------------------------------------------------
+            # code command
+            inside_code = not inside_code
+            if inside_code :
+                index = file_in.rfind('.')
+                if index < 0 :
+                    extension = ''
+                else :
+                    extension = file_in[index + 1 : ]
+                line     = '.. code-block:: ' + extension + '\n\n'
+            else :
+                line = '\n'
+            file_ptr.write(line)
+            previous_empty = True
+        elif file_command :
+            line       = line.split('%')
+            file_name  = line[1]
+            start_line = line[2]
+            stop_line  = line[3]
+            #
+            file_ptr.write('\n')
+            line = f'.. literalinclude:: ../../{file_name}\n'
+            file_ptr.write(line)
+            line = f'    :lines: {start_line}-{stop_line}\n'
+            file_ptr.write(line)
+            file_ptr.write('\n')
+            previous_empty = True
+        elif newline <= startline + num_remove :
+            if not previous_empty :
+                file_ptr.write( "\n" )
+                previous_empty = True
+        else :
+            line       = line[num_remove : newline + 1]
+            # ------------------------------------------------------
+            # check spelling
+            word_list = list()
+            for itr in word_pattern.finditer( line ) :
+                word = itr.group(0)
+                if len( spell_checker.unknown( [word] ) ) > 0 :
+                    if not word.lower() in special_list :
+                        if first_spell_error :
+                            msg  = 'warning: file = ' + file_in
+                            msg += ', section = ' + section_name
+                            print(msg)
+                            first_spell_error = False
+                        msg  = 'spelling = ' + word
+                        suggest = spell_checker.correction(word)
+                        if suggest != word :
+                            msg += ', suggest = ' + suggest
+                        print(msg)
+                        special_list.append(word.lower())
+            # ------------------------------------------------------
+            if inside_code :
+                # indent code block
+                if white_space == ' ' :
+                    line = '    ' + line
+                else :
+                    line = '\t' + line
+            previous_empty = line == '\n'
+            file_ptr.write( line )
+        startline = newline + 1
+    file_ptr.close()
 # =============================================================================
 # main program
 # =============================================================================
@@ -743,7 +844,6 @@ section_list       = list()
 corresponding_file = list()
 #
 # define some pytyon regular expression patterns
-pattern_newline           = re.compile( r'\n')
 pattern_word              = re.compile( r'[\\A-Za-z][a-z]*' )
 pattern_code_sphinxrst    = re.compile( r'\n[^\n`]*\{code_sphinxrst\}[^\n`]*')
 pattern_suspend_sphinxrst = re.compile( r'\n[ \t]*\{suspend_sphinxrst\}' )
@@ -872,8 +972,9 @@ for file_in in file_list :
             )
             # ---------------------------------------------------------------
             # num_remove (for indented documentation)
-            newline_itr  = pattern_newline.finditer(output_data)
-            newline_list = list()
+            pattern_newline  = re.compile( r'\n')
+            newline_itr      = pattern_newline.finditer(output_data)
+            newline_list     = list()
             for itr in newline_itr :
                 newlist = itr.start()
                 newline_list.append( newlist )
@@ -901,96 +1002,16 @@ for file_in in file_list :
             )
             # ---------------------------------------------------------------
             # write file for this section
-            #
-            newline_itr  = pattern_newline.finditer(output_data)
-            newline_list = list()
-            for itr in newline_itr :
-                newlist = itr.start()
-                newline_list.append( newlist )
-            file_out          = output_dir + '/' + section_name + '.rst'
-            file_ptr          = open(file_out, 'w')
-            startline         = 0
-            first_spell_error = True # for this section
-            inside_code       = False
-            previous_empty    = True
-            for newline in newline_list :
-                line  = output_data[startline : newline + 1]
-                code_command  = line.startswith('{code_sphinxrst')
-                file_command  = line.startswith('{file_sphinxrst')
-                label_command = line.startswith('{label_sphinxrst')
-                if label_command :
-                    # --------------------------------------------------------
-                    # label command
-                    line  = line.split(' ')
-                    label = line[1]
-                    line  = '.. _' + label + ':\n\n'
-                    file_ptr.write(line)
-                    previous_empty = True
-                elif code_command :
-                    # --------------------------------------------------------
-                    # code command
-                    inside_code = not inside_code
-                    if inside_code :
-                        index = file_in.rfind('.')
-                        if index < 0 :
-                            extension = ''
-                        else :
-                            extension = file_in[index + 1 : ]
-                        line     = '.. code-block:: ' + extension + '\n\n'
-                    else :
-                        line = '\n'
-                    file_ptr.write(line)
-                    previous_empty = True
-                elif file_command :
-                    line       = line.split('%')
-                    file_name  = line[1]
-                    start_line = line[2]
-                    stop_line  = line[3]
-                    #
-                    file_ptr.write('\n')
-                    line = f'.. literalinclude:: ../../{file_name}\n'
-                    file_ptr.write(line)
-                    line = f'    :lines: {start_line}-{stop_line}\n'
-                    file_ptr.write(line)
-                    file_ptr.write('\n')
-                    previous_empty = True
-                elif newline <= startline + num_remove :
-                    if not previous_empty :
-                        file_ptr.write( "\n" )
-                        previous_empty = True
-                else :
-                    line       = line[num_remove : newline + 1]
-                    # ------------------------------------------------------
-                    # check spelling
-                    word_list = list()
-                    for itr in pattern_word.finditer( line ) :
-                        word = itr.group(0)
-                        if len( spell_checker.unknown( [word] ) ) > 0 :
-                            if not word.lower() in special_list :
-                                if first_spell_error :
-                                    msg  = 'warning: file = ' + file_in
-                                    msg += ', section = ' + section_name
-                                    print(msg)
-                                    first_spell_error = False
-                                msg  = 'spelling = ' + word
-                                suggest = spell_checker.correction(word)
-                                if suggest != word :
-                                    msg += ', suggest = ' + suggest
-                                print(msg)
-                                special_list.append(word.lower())
-                    # ------------------------------------------------------
-                    if inside_code :
-                        # indent code block
-                        if white_space == ' ' :
-                            line = '    ' + line
-                        else :
-                            line = '\t' + line
-                    previous_empty = line == '\n'
-                    file_ptr.write( line )
-                startline = newline + 1
-            file_ptr.close()
-            #
-            # file_index
+            write_file(
+                output_data,
+                output_dir,
+                section_name,
+                spell_checker,
+                pattern_word,
+                special_list
+            )
+            # ---------------------------------------------------------------
+            # place to search for next file
             file_index += match_end_sphinxrst.end()
 # -----------------------------------------------------------------------------
 # read index.rst
