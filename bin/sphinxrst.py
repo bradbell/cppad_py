@@ -1008,93 +1008,93 @@ for file_in in file_list :
         file_in,
     )
     for i in range( len(section_name_list) ) :
-            #
-            # section_name, output_data
-            section_name = section_name_list[i]
-            output_data  = section_data_list[i]
-            #
-            section_list.append(section_name)
-            corresponding_file.append(file_in)
-            #
-            #
-            # process suspend commands
-            output_data = suspend_command(
-                pattern_suspend_sphinxrst,
-                pattern_resume_sphinxrst,
-                output_data,
-                file_in,
-                section_name,
-            )
-            # ----------------------------------------------------------------
-            # process spell commands
-            output_data = spell_command(
-                pattern_spell_sphinxrst,
-                output_data,
-                file_in,
-                section_name,
-            )
-            # ----------------------------------------------------------------
-            # remove characters on same line as {code_sphinxrst}
-            output_data = isolate_code_command(
-                pattern_code_sphinxrst,
-                output_data,
-                file_in,
-                section_name,
-            )
-            # ---------------------------------------------------------------
-            # file command: convert start and stop to line numbers
-            output_data = convert_file_command(
-                pattern_file_sphinxrst,
-                output_data,
-                file_in,
-                section_name,
-            )
-            # ---------------------------------------------------------------
-            # white_space
-            white_space = start_line_white_space(
-                output_data,
-                file_in,
-                section_name
-            )
-            # ---------------------------------------------------------------
-            # num_remove (for indented documentation)
-            pattern_newline  = re.compile( r'\n')
-            newline_itr      = pattern_newline.finditer(output_data)
-            newline_list     = list()
-            for itr in newline_itr :
-                newlist = itr.start()
-                newline_list.append( newlist )
-            len_output   = len(output_data)
-            num_remove   = len(output_data)
-            for newline in newline_list :
-                next_ = newline + 1
-                if next_ < len_output and num_remove != 0 :
+        #
+        # section_name, output_data
+        section_name = section_name_list[i]
+        output_data  = section_data_list[i]
+        #
+        section_list.append(section_name)
+        corresponding_file.append(file_in)
+        #
+        #
+        # process suspend commands
+        output_data = suspend_command(
+            pattern_suspend_sphinxrst,
+            pattern_resume_sphinxrst,
+            output_data,
+            file_in,
+            section_name,
+        )
+        # ----------------------------------------------------------------
+        # process spell commands
+        output_data = spell_command(
+            pattern_spell_sphinxrst,
+            output_data,
+            file_in,
+            section_name,
+        )
+        # ----------------------------------------------------------------
+        # remove characters on same line as {code_sphinxrst}
+        output_data = isolate_code_command(
+            pattern_code_sphinxrst,
+            output_data,
+            file_in,
+            section_name,
+        )
+        # ---------------------------------------------------------------
+        # file command: convert start and stop to line numbers
+        output_data = convert_file_command(
+            pattern_file_sphinxrst,
+            output_data,
+            file_in,
+            section_name,
+        )
+        # ---------------------------------------------------------------
+        # white_space
+        white_space = start_line_white_space(
+            output_data,
+            file_in,
+            section_name
+        )
+        # ---------------------------------------------------------------
+        # num_remove (for indented documentation)
+        pattern_newline  = re.compile( r'\n')
+        newline_itr      = pattern_newline.finditer(output_data)
+        newline_list     = list()
+        for itr in newline_itr :
+            newlist = itr.start()
+            newline_list.append( newlist )
+        len_output   = len(output_data)
+        num_remove   = len(output_data)
+        for newline in newline_list :
+            next_ = newline + 1
+            if next_ < len_output and num_remove != 0 :
+                ch = output_data[next_]
+                while ch in ' \t\n' and next_ + 1 < len_output :
+                    next_ += 1
                     ch = output_data[next_]
-                    while ch in ' \t\n' and next_ + 1 < len_output :
-                        next_ += 1
-                        ch = output_data[next_]
-                    cmd  = output_data[next_:].startswith('{code_sphinxrst')
-                    cmd += output_data[next_:].startswith('{file_sphinxrst')
-                    if ch not in ' \t\n' and not cmd :
-                        num_remove = min(num_remove, next_ - newline - 1)
-            # ---------------------------------------------------------------
-            # add labels corresponding to headings
-            output_data = add_labels_for_headings(
-                output_data,
-                num_remove,
-                white_space,
-                file_in,
-                section_name
-            )
-            # ---------------------------------------------------------------
-            # write file for this section
-            write_file(
-                file_in,
-                output_data,
-                output_dir,
-                section_name,
-                spell_checker,
-            )
+                cmd  = output_data[next_:].startswith('{code_sphinxrst')
+                cmd += output_data[next_:].startswith('{file_sphinxrst')
+                if ch not in ' \t\n' and not cmd :
+                    num_remove = min(num_remove, next_ - newline - 1)
+        # ---------------------------------------------------------------
+        # add labels corresponding to headings
+        output_data = add_labels_for_headings(
+            output_data,
+            num_remove,
+            white_space,
+            file_in,
+            section_name
+        )
+        # ---------------------------------------------------------------
+        # write file for this section
+        write_file(
+            file_in,
+            output_data,
+            output_dir,
+            section_name,
+            spell_checker,
+        )
 # -----------------------------------------------------------------------------
 # read index.rst
 file_in   = sphinx_dir + '/index.rst'
