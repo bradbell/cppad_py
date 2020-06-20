@@ -462,8 +462,7 @@ def file2list(file_name) :
 def file2file_info(
         pattern_begin_sphinxrst,
         pattern_end_sphinxrst,
-        section_list,
-        correspnding_file,
+        section_info,
         file_in
 ) :
     #
@@ -503,13 +502,13 @@ def file2file_info(
                     msg  = 'begin_sphinxrst ' + section_name
                     msg += ' appears twice in file\n' + file_in
                     sys_exit(msg)
-            if section_name in section_list :
-                # this section appears multiple times
-                index = section_list.index(section_name)
-                msg  = 'begin_sphinxrst ' + section_name
-                msg += ' appears twice; see files\n' + file_in + ' and '
-                msg += corresponding_file[index]
-                sys_exit(msg)
+            for info in section_info :
+                if section_name == info['section_name'] :
+                    input_file = info['file_in']
+                    msg  = 'begin_sphinxrst ' + section_name
+                    msg += ' appears twice; see files\n'
+                    msg +=  file_in + ' and ' + input_file
+                    sys_exit(msg)
             #
             # file_index
             file_index += match_begin_sphinxrst.end()
@@ -1052,10 +1051,6 @@ else :
 # spell_checker
 spell_checker = init_spell_checker(spell_list)
 #
-# initialize list of section names and corresponding file names
-section_list       = list()
-corresponding_file = list()
-#
 # define some pytyon regular expression patterns
 pattern_code_sphinxrst    = re.compile( r'\n[^\n`]*\{code_sphinxrst\}[^\n`]*')
 pattern_suspend_sphinxrst = re.compile( r'\n[ \t]*\{suspend_sphinxrst\}' )
@@ -1074,6 +1069,7 @@ pattern_file_sphinxrst    = re.compile(
 )
 # -----------------------------------------------------------------------------
 # process each file in the list
+section_info  = list()
 for file_in in file_list :
     if not os.path.isfile(file_in) :
         msg  = 'can not find the file: ' + file_in + '\n'
@@ -1086,8 +1082,7 @@ for file_in in file_list :
     file_info = file2file_info(
         pattern_begin_sphinxrst,
         pattern_end_sphinxrst,
-        section_list,
-        corresponding_file,
+        section_info,
         file_in,
     )
     #
@@ -1097,8 +1092,10 @@ for file_in in file_list :
         section_name = info['section_name']
         section_data = info['section_data']
         #
-        section_list.append(section_name)
-        corresponding_file.append(file_in)
+        section_info.append( {
+            'section_name' : section_name,
+            'file_in'      : file_in,
+        } )
         #
         #
         # process suspend commands
@@ -1195,12 +1192,12 @@ file_ptr  = open(file_in, 'r')
 file_data = file_ptr.read()
 file_ptr.close()
 #
-for i in range( len(section_list) ) :
-    section_name = section_list[i]
-    file_in      = corresponding_file[i]
+for i in range( len(section_info) ) :
+    section_name = section_info[i]['section_name']
+    file_in      = section_info[i]['file_in']
     parent       = True
     if i > 0 :
-        parent = file_in != corresponding_file[i-1]
+        parent = file_in != section_info[i-1]['file_in']
     if parent :
         # There should be an line in index.rst with the following contents:
         #     sphinxrst/section_name.rst'
