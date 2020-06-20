@@ -151,7 +151,7 @@ section (between the corresponding begin sphinxrst and end sphinxrst commands).
 
 Example
 -------
-:ref:`suspend_py`
+:ref:`suspend_exam`
 
 Spell
 =====
@@ -956,7 +956,7 @@ def write_file(
             file_ptr.write('   ' + child + '\n')
         file_ptr.write('\n')
     #
-    file_ptr.write( f'sphinxrst_input_file: ``{file_in}``\n')
+    file_ptr.write( f'sphinxrst input file: ``{file_in}``\n')
     file_ptr.close()
 # =============================================================================
 # main program

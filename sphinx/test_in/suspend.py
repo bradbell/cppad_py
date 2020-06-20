@@ -6,16 +6,28 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
-# BEGIN_SRC
 """
-{begin_sphinxrst suspend_py}
-{spell_sphinxrst
-    iterable
-}
+{begin_sphinxrst suspend_exam}
 
 ===============
 Suspend Example
 ===============
+
+{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
+
+{end_sphinxrst suspend_exam}
+"""
+# ----------------------------------------------------------------------------
+# BEGIN_SRC
+"""
+{begin_sphinxrst suspend_res}
+{spell_sphinxrst
+    iterable
+}
+
+==============
+Suspend Result
+==============
 
 Factorial
 ---------
@@ -42,26 +54,8 @@ def product(itr) :
 """
 {resume_sphinxrst}
 
-Source
-------
-:ref:`suspend_src`
+:ref:`suspend_exam`
 
-{end_sphinxrst suspend_py}
+{end_sphinxrst suspend_res}
 """
 # END_SRC
-# ----------------------------------------------------------------------------
-"""
-{begin_sphinxrst suspend_src}
-
-==============
-Suspend Source
-==============
-
-{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
-
-Example
--------
-:ref:`suspend_py`
-
-{end_sphinxrst suspend_src}
-"""

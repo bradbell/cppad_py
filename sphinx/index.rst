@@ -11,7 +11,7 @@ Welcome to sphinxrst's documentation!
    sphinxrst/indent_space_exam
    sphinxrst/indent_tab_exam
    sphinxrst/file_block_exam
-   sphinxrst/suspend_py
+   sphinxrst/suspend_exam
    sphinxrst/spell_exam
    sphinxrst/heading_exam
 
