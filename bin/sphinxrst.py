@@ -602,7 +602,29 @@ def suspend_command(
         match_suspend = suspend_pattern.search(section_data)
     return section_data
 # -----------------------------------------------------------------------------
-# process spell_sphinx commands
+# process children command
+def children_command(
+    children_pattern, section_data, file_in, section_name
+) :
+    children_list = list()
+    match         = children_pattern.search(section_data)
+    if match is None :
+        return section_data, children_list
+    #
+    for file_in in match.group(1).split('%') :
+        file_in.strip()
+        if not os.path.isfile(file_in) :
+            msg  = 'The file ' + file_in + '\n'
+            msg += 'in the children command does not exist'
+            sys_exit(msg, file_in, section_name)
+        children_list.append(file_in)
+    #
+    data_left  = section_data[ : match.start() ]
+    data_right = section_data[ match.end() : ]
+    section_data = data_left + data_right
+    return section_data, children_list
+# -----------------------------------------------------------------------------
+# process spell command
 def spell_command(
     spell_pattern, section_data, file_in, section_name
 ) :
@@ -1067,11 +1089,24 @@ pattern_spell_sphinxrst   = re.compile(
 pattern_file_sphinxrst    = re.compile(
     r'\n[^\n`]*\{file_sphinxrst%([^%]*)%([^%]*)%([^%]*)%[^\n`]*\}'
 )
+pattern_children_sphinxrst = re.compile(
+    r'\n[^\n`]*\{children_sphinxrst%([^}]*)%[^\n`]*\}'
+)
 # -----------------------------------------------------------------------------
 # process each file in the list
-section_info  = list()
-for file_in in file_list :
+section_info   = list()
+file_info_2do  = list()
+file_list.reverse()
+for file_in in file_list  :
+    info = { 'file_in' : file_in, 'parent_index' : None }
+    file_info_2do.append(info)
+while 0 < len(file_info_2do) :
+    info          = file_info_2do.pop()
+    file_in       = info['file_in']
+    parent_index  = info['parent_index']
+    #
     if not os.path.isfile(file_in) :
+        assert parent_index is None
         msg  = 'can not find the file: ' + file_in + '\n'
         msg += 'which is located in sphinx_dir/file_list\n'
         msg += 'sphinx_dir = ' + sphinx_dir + '\n'
@@ -1079,29 +1114,27 @@ for file_in in file_list :
         sys_exit(msg)
     #
     # get sphinxrst docuemntation in this file
-    file_info = file2file_info(
+    this_file_info = file2file_info(
         pattern_begin_sphinxrst,
         pattern_end_sphinxrst,
         section_info,
         file_in,
     )
     #
-    parent_index = len(section_info)
-    for info in file_info :
+    first_section_index = len(section_info)
+    for i in range( len(this_file_info) ) :
         #
         # section_name, section_data
-        section_name = info['section_name']
-        section_data = info['section_data']
+        section_name = this_file_info[i]['section_name']
+        section_data = this_file_info[i]['section_data']
+        if 0 < i :
+            parent_index = first_section_index
         #
         section_info.append( {
             'section_name' : section_name,
             'file_in'      : file_in,
-            'parent_index' : None
+            'parent_index' : parent_index
         } )
-        parent_name =  file_info[0]['section_name']
-        if section_name != parent_name :
-            section_info[-1]['parent_index'] = parent_index
-        #
         #
         # process suspend commands
         section_data = suspend_command(
@@ -1111,6 +1144,20 @@ for file_in in file_list :
             file_in,
             section_name,
         )
+        # ----------------------------------------------------------------
+        # process children command
+        section_data, children_list = children_command(
+            pattern_children_sphinxrst,
+            section_data,
+            file_in,
+            section_name,
+        )
+        section_index = len(section_info) - 1
+        for file_in in children_list :
+            file_info.append( {
+                'file_in'      : file_in,
+                'parent_index' : section_index,
+            } )
         # ----------------------------------------------------------------
         # process spell commands
         section_data = spell_command(
@@ -1175,10 +1222,10 @@ for file_in in file_list :
         # ----------------------------------------------------------------
         # child_list
         child_list = list()
-        parent     =  section_name == file_info[0]['section_name']
+        parent     =  section_name == this_file_info[0]['section_name']
         if parent :
-            for i in range( len(file_info) - 1 ) :
-                child_list.append(  file_info[i+1]['section_name'] )
+            for i in range( len(this_file_info) - 1 ) :
+                child_list.append(  this_file_info[i+1]['section_name'] )
         # ---------------------------------------------------------------
         # write file for this section
         write_file(
