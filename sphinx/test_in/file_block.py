@@ -6,7 +6,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # --------------------------------------------------------------------------
 """
-{begin_sphinxrst file_block_example}
+{begin_sphinxrst file_block_exam}
 
 ==================
 File Block Example
@@ -15,7 +15,7 @@ File Block Example
 {file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
 
 
-{end_sphinxrst file_block_example}
+{end_sphinxrst file_block_exam}
 """
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
@@ -26,7 +26,7 @@ def factorial(n) :
     return n * factorial(n-1)
 # END_FACTORIAL
 """
-{begin_sphinxrst file_block_result}
+{begin_sphinxrst file_block_res}
 
 =================
 File Block Result
@@ -36,8 +36,8 @@ Text before file block.
 {file_sphinxrst%%# BEGIN_FACTORIAL%# END_FACTORIAL%}
 Text after file block.
 
-:ref:`file_block_example`
+:ref:`file_block_exam`
 
-{end_sphinxrst file_block_result}
+{end_sphinxrst file_block_res}
 """
 # END_SRC

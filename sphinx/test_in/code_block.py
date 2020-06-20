@@ -7,7 +7,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{begin_sphinxrst code_block_example}
+{begin_sphinxrst code_block_exam}
 
 ==================
 Code Block Example
@@ -15,12 +15,12 @@ Code Block Example
 
 {file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
 
-{end_sphinxrst code_block_example}
+{end_sphinxrst code_block_exam}
 """
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-{begin_sphinxrst code_block_result}
+{begin_sphinxrst code_block_res}
 
 =================
 Code Block Result
@@ -34,6 +34,6 @@ def factorial(n) :
 
 :ref:`code_block_example`
 
-{end_sphinxrst code_block_result}
+{end_sphinxrst code_block_res}
 """
 # END_SRC

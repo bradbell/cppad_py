@@ -1,4 +1,4 @@
-.. _code_block_example:
+.. _code_block_exam:
 
 ==================
 Code Block Example
@@ -11,6 +11,6 @@ Code Block Example
 .. toctree::
    :maxdepth: 1
 
-   code_block_result
+   code_block_res
 
 sphinxrst_input_file: ``sphinx/test_in/code_block.py``

@@ -7,13 +7,13 @@ Welcome to sphinxrst's documentation!
    :maxdepth: 2
 
    sphinxrst/sphinxrst_py
-   sphinxrst/code_block_example
+   sphinxrst/code_block_exam
    sphinxrst/indent_space_py
    sphinxrst/indent_tab_py
-   sphinxrst/file_block_example
+   sphinxrst/file_block_exam
    sphinxrst/suspend_py
    sphinxrst/spell_py
-   sphinxrst/heading_py
+   sphinxrst/heading_exam
 
 Indices and tables
 ==================

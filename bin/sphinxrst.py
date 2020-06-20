@@ -218,7 +218,7 @@ Code blocks as usually small and spell check is done inside of them.
 
 Example
 -------
-:ref:`code_block_example`
+:ref:`code_block_exam`
 
 File Block
 ==========
@@ -258,7 +258,7 @@ the code block.
 
 Example
 -------
-:ref:`file_block_example`
+:ref:`file_block_exam`
 
 Headings and Links
 ==================
@@ -298,7 +298,7 @@ links easier to find.
 
 Example
 -------
-:ref:`heading_py`
+:ref:`heading_exam`
 
 Indentation
 ===========

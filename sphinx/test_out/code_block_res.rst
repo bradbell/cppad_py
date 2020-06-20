@@ -1,4 +1,4 @@
-.. _code_block_result:
+.. _code_block_res:
 
 =================
 Code Block Result

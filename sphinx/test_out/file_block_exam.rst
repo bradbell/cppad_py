@@ -1,4 +1,4 @@
-.. _file_block_example:
+.. _file_block_exam:
 
 ==================
 File Block Example
@@ -11,6 +11,6 @@ File Block Example
 .. toctree::
    :maxdepth: 1
 
-   file_block_result
+   file_block_res
 
 sphinxrst_input_file: ``sphinx/test_in/file_block.py``
