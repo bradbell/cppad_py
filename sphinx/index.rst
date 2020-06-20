@@ -7,7 +7,7 @@ Welcome to sphinxrst's documentation!
    :maxdepth: 2
 
    sphinxrst/sphinxrst_py
-   sphinxrst/code_block_py
+   sphinxrst/code_block_example
    sphinxrst/indent_space_py
    sphinxrst/indent_tab_py
    sphinxrst/file_block_py

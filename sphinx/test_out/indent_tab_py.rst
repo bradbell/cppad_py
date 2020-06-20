@@ -16,10 +16,6 @@ Source
 ------
 :ref:`indent_tab_src`
 
-
-Children
---------
-
 .. toctree::
    :maxdepth: 1
 

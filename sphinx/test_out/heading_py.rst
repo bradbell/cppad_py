@@ -46,10 +46,6 @@ Source
 ------
 :ref:`heading_src`
 
-
-Children
---------
-
 .. toctree::
    :maxdepth: 1
 

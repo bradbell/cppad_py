@@ -43,7 +43,7 @@ do
 		if [ ! -e test_out/$file ]
 		then
 			echo "The output file sphinx/test_out/$file does not exist."
-			echo 'Check that the corresponding sectiosn are correct and then:'
+			echo 'Check that the corresponding sections are correct and then:'
 			echo "    cp sphinx/sphinxrst/$file sphinx/test_out/$file"
 		elif ! diff test_out/$file sphinxrst/$file
 		then
@@ -55,6 +55,17 @@ do
 		else
 			echo "$file: OK"
 		fi
+	fi
+done
+file_list=$(ls test_out/*.rst | sed -e 's|^test_out/||' )
+for file in $file_list
+do
+	if [ ! -e sphinxrst/$file ]
+	then
+		echo "The output file sphinx/sphinxrst/$file does not nexist."
+		echo "Use he following command to remove sphinx/test_out/$file ?"
+		echo "	git rm sphinx/test_out/$file"
+		exit 1
 	fi
 done
 # -----------------------------------------------------------------------------

@@ -17,10 +17,6 @@ Source
 ------
 :ref:`file_block_src`
 
-
-Children
---------
-
 .. toctree::
    :maxdepth: 1
 

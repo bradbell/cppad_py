@@ -15,6 +15,7 @@
     underbar
     underbars
     conf
+    toctree
 }
 
 .. |space| unicode:: 0xA0
@@ -217,7 +218,7 @@ Code blocks as usually small and spell check is done inside of them.
 
 Example
 -------
-:ref:`code_block_py`
+:ref:`code_block_example`
 
 File Block
 ==========
@@ -290,9 +291,10 @@ to make sure they are still valid.
 Children
 --------
 If a :ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`
-has children, a heading ``Children``, at the second level,
-will be added to the document and links to the children will be placed below
-the heading.
+has children, a ``toctree`` command that provides links to the children
+is included at the end of the section.
+You can place a heading at the end of section to make these
+links easier to find.
 
 Example
 -------
@@ -948,13 +950,7 @@ def write_file(
         file_ptr.write('\n')
     #
     if len(child_list) > 0 :
-        heading = 'Children'
-        line    = len(heading) * children_heading_info['character']
-        if children_heading_info['overline'] :
-            file_ptr.write( line )
-        file_ptr.write(f'\n{heading}\n')
-        file_ptr.write( line )
-        file_ptr.write('\n\n.. toctree::\n')
+        file_ptr.write('.. toctree::\n')
         file_ptr.write('   :maxdepth: 1\n\n')
         for child in child_list :
             file_ptr.write('   ' + child + '\n')

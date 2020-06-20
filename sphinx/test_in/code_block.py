@@ -6,13 +6,25 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
-# BEGIN_SRC
 """
-{begin_sphinxrst code_block_py}
+{begin_sphinxrst code_block_example}
 
 ==================
 Code Block Example
 ==================
+
+{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
+
+{end_sphinxrst code_block_example}
+"""
+# ----------------------------------------------------------------------------
+# BEGIN_SRC
+"""
+{begin_sphinxrst code_block_result}
+
+=================
+Code Block Result
+=================
 {code_sphinxrst}"""
 def factorial(n) :
     if n == 1 :
@@ -20,26 +32,8 @@ def factorial(n) :
     return n * factorial(n-1)
 """{code_sphinxrst}
 
-Source
-------
-:ref:`code_block_src`
+:ref:`code_block_example`
 
-{end_sphinxrst code_block_py}
+{end_sphinxrst code_block_result}
 """
 # END_SRC
-# ----------------------------------------------------------------------------
-"""
-{begin_sphinxrst code_block_src}
-
-=================
-Code Block Source
-=================
-
-{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
-
-Example
--------
-:ref:`code_block_py`
-
-{end_sphinxrst code_block_src}
-"""

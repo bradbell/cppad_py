@@ -22,10 +22,6 @@ Source
 ------
 :ref:`suspend_src`
 
-
-Children
---------
-
 .. toctree::
    :maxdepth: 1
 
