@@ -6,13 +6,25 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
+"""
+{begin_sphinxrst indent_tab_exam}
+
+=========================
+Indent Using Tabs Example
+=========================
+
+{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
+
+{end_sphinxrst indent_tab_exam}
+"""
+# ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-	{begin_sphinxrst indent_tab_py}
+	{begin_sphinxrst indent_tab_res}
 
-	=========================
-	Indent Using Tabs Example
-	=========================
+	========================
+	Indent Using Tabs Result
+	========================
 	{code_sphinxrst}"""
 	def factorial(n) :
 		if n == 1 :
@@ -20,26 +32,8 @@
 		return n * factorial(n-1)
 	"""{code_sphinxrst}
 
-	Source
-	------
-	:ref:`indent_tab_src`
+	:ref:`indent_tab_exam`
 
-	{end_sphinxrst indent_tab_py}
+	{end_sphinxrst indent_tab_res}
 """
 # END_SRC
-# ----------------------------------------------------------------------------
-"""
-{begin_sphinxrst indent_tab_src}
-
-========================
-Indent Using Tabs Source
-========================
-
-{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
-
-Example
--------
-:ref:`indent_tab_py`
-
-{end_sphinxrst indent_tab_src}
-"""

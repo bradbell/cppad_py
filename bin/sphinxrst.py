@@ -309,7 +309,7 @@ sphinxrst so it is grouped with the proper code block in the source.
 
 Example
 -------
-:ref:`indent_space_exam`, :ref:`indent_tab_py`
+:ref:`indent_space_exam`, :ref:`indent_tab_exam`
 
 Python Style Guide
 ==================

@@ -9,7 +9,7 @@ Welcome to sphinxrst's documentation!
    sphinxrst/sphinxrst_py
    sphinxrst/code_block_exam
    sphinxrst/indent_space_exam
-   sphinxrst/indent_tab_py
+   sphinxrst/indent_tab_exam
    sphinxrst/file_block_exam
    sphinxrst/suspend_py
    sphinxrst/spell_py
