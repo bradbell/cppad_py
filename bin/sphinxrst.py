@@ -258,7 +258,7 @@ the code block.
 
 Example
 -------
-:ref:`file_block_py`
+:ref:`file_block_example`
 
 Headings and Links
 ==================

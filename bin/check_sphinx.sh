@@ -45,6 +45,7 @@ do
 			echo "The output file sphinx/test_out/$file does not exist."
 			echo 'Check that the corresponding sections are correct and then:'
 			echo "    cp sphinx/sphinxrst/$file sphinx/test_out/$file"
+			exit 1
 		elif ! diff test_out/$file sphinxrst/$file
 		then
 			echo "The file sphinx/sphinxrst/$file changed; above is output of"

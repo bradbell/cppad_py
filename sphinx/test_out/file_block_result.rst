@@ -1,17 +1,16 @@
-.. _file_block_src:
+.. _file_block_result:
 
 =================
-File Block Source
+File Block Result
 =================
 
+Text before file block.
 
 .. literalinclude:: ../../sphinx/test_in/file_block.py
-    :lines: 9-31
+    :lines: 23-26
 
-.. _file_block_src.example:
+Text after file block.
 
-Example
--------
-:ref:`file_block_py`
+:ref:`file_block_example`
 
 sphinxrst_input_file: ``sphinx/test_in/file_block.py``

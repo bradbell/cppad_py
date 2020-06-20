@@ -1,25 +1,16 @@
-.. _file_block_py:
+.. _file_block_example:
 
 ==================
 File Block Example
 ==================
 
-Text before file block.
 
 .. literalinclude:: ../../sphinx/test_in/file_block.py
-    :lines: 10-13
-
-Text after file block.
-
-.. _file_block_py.source:
-
-Source
-------
-:ref:`file_block_src`
+    :lines: 22-42
 
 .. toctree::
    :maxdepth: 1
 
-   file_block_src
+   file_block_result
 
 sphinxrst_input_file: ``sphinx/test_in/file_block.py``
