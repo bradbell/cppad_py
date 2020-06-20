@@ -194,7 +194,7 @@ of the same word.
 
 Example
 -------
-:ref:`spell_py`
+:ref:`spell_exam`
 
 Code Block
 ==========

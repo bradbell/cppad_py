@@ -6,9 +6,21 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
+"""
+{begin_sphinxrst spell_exam}
+
+=============
+Spell Example
+=============
+
+{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
+
+{end_sphinxrst spell_exam}
+"""
+# ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-{begin_sphinxrst spell_py}
+{begin_sphinxrst spell_res}
 {spell_sphinxrst
     sphinxrst
     iterable
@@ -19,9 +31,9 @@
 }
 
 
-=============
-Spell Example
-=============
+============
+Spell Result
+============
 
 Text
 ----
@@ -51,27 +63,8 @@ no no would be an error if there
 were not two occurrences of :code:`no` next to each other in the
 spelling command for this section.
 
+:ref:`spell_exam`
 
-Source
-------
-:ref:`spell_src`
-
-{end_sphinxrst spell_py}
+{end_sphinxrst spell_res}
 """
 # END_SRC
-# ----------------------------------------------------------------------------
-"""
-{begin_sphinxrst spell_src}
-
-============
-Spell Source
-============
-
-{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
-
-Example
--------
-:ref:`spell_py`
-
-{end_sphinxrst spell_src}
-"""

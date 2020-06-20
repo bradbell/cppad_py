@@ -12,7 +12,7 @@ Welcome to sphinxrst's documentation!
    sphinxrst/indent_tab_exam
    sphinxrst/file_block_exam
    sphinxrst/suspend_py
-   sphinxrst/spell_py
+   sphinxrst/spell_exam
    sphinxrst/heading_exam
 
 Indices and tables

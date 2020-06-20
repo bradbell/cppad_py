@@ -1,17 +1,17 @@
-.. _spell_py:
+.. _spell_res:
 
-=============
-Spell Example
-=============
+============
+Spell Result
+============
 
-.. _spell_py.text:
+.. _spell_res.text:
 
 Text
 ----
 The words ``iterable`` and ``sphinxrst`` are not the dictionary,
 so we have included them in the spelling command for this section.
 
-.. _spell_py.math:
+.. _spell_res.math:
 
 Math
 ----
@@ -27,7 +27,7 @@ for all sections:
 
     z = \cos( \theta ) + {\rm i} \sin( \theta )
 
-.. _spell_py.double_words:
+.. _spell_res.double_words:
 
 Double Words
 ------------
@@ -37,15 +37,6 @@ no no would be an error if there
 were not two occurrences of :code:`no` next to each other in the
 spelling command for this section.
 
-.. _spell_py.source:
-
-Source
-------
-:ref:`spell_src`
-
-.. toctree::
-   :maxdepth: 1
-
-   spell_src
+:ref:`spell_exam`
 
 sphinxrst_input_file: ``sphinx/test_in/spell.py``
