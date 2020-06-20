@@ -524,15 +524,15 @@ def start_line_white_space(data, file_in, section_name) :
 # ----------------------------------------------------------------------------
 # process suspend_sphinxrst commands
 def suspend_command(
-    suspend_pattern, resume_pattern, output_data, file_in, section_name
+    suspend_pattern, resume_pattern, section_data, file_in, section_name
 ) :
-    match_suspend = suspend_pattern.search(output_data)
+    match_suspend = suspend_pattern.search(section_data)
     while match_suspend != None :
         suspend_start = match_suspend.start()
         suspend_end   = match_suspend.end()
-        output_rest   = output_data[ suspend_end : ]
-        match_resume  = resume_pattern.search(output_rest)
-        match_suspend = suspend_pattern.search(output_rest)
+        section_rest  = section_data[ suspend_end : ]
+        match_resume  = resume_pattern.search(section_rest)
+        match_suspend = suspend_pattern.search(section_rest)
         if match_resume == None :
             msg  = 'there is a {suspend_sphinxrst} without a '
             msg += 'corresponding {resume_sphinxrst}'
@@ -542,42 +542,44 @@ def suspend_command(
                 msg  = 'there are two {suspend_sphinxrst} without a '
                 msg += '{resume_sphinxrst} between them'
                 sys_exit(msg, file_in, section_name)
-        resume_end  = match_resume.end() + suspend_end
-        output_rest = output_data[ resume_end :]
-        output_data = output_data[: suspend_start] + output_rest
-        # redo match_suppend so relative to new output_data
-        match_suspend = suspend_pattern.search(output_data)
-    return output_data
+        resume_end   = match_resume.end() + suspend_end
+        section_rest = section_data[ resume_end :]
+        section_data = section_data[: suspend_start] + section_rest
+        #
+        # redo match_suppend so relative to new section_data
+        match_suspend = suspend_pattern.search(section_data)
+    return section_data
 # -----------------------------------------------------------------------------
 # process spell_sphinx commands
 def spell_command(
-    spell_pattern, output_data, file_in, section_name
+    spell_pattern, section_data, file_in, section_name
 ) :
     word_pattern  = re.compile( r'[\\A-Za-z][a-z]*' )
-    match_spell   = spell_pattern.search(output_data)
+    match_spell   = spell_pattern.search(section_data)
     special_list  = list()
     if match_spell != None :
-        output_rest   = output_data[ match_spell.end() : ]
-        match_another = pattern_spell_sphinxrst.search(output_rest)
+        section_rest   = section_data[ match_spell.end() : ]
+        match_another  = pattern_spell_sphinxrst.search(section_rest)
         if match_another :
             msg  = 'there are two spell sphinxrst commands'
             sys_exit(msg, file_in, section_name)
         for itr in word_pattern.finditer( match_spell.group(1) ) :
             special_list.append( itr.group(0).lower() )
+        #
         # remove spell command
-        start       = match_spell.start()
-        end         = match_spell.end()
-        output_data = output_data[: start] + output_data[end :]
+        start        = match_spell.start()
+        end          = match_spell.end()
+        section_data = section_data[: start] + section_data[end :]
     #
-    # data = output_data with commands removed
+    # data = section_data with commands removed
     command_pattern = re.compile( r'\{[a-z]+_sphinxrst[^}]*\}' )
     data            = ''
     previous_end    = 0
-    for itr in command_pattern.finditer( output_data ) :
+    for itr in command_pattern.finditer( section_data ) :
         start        = itr.start()
-        data        += output_data[previous_end : start ]
+        data        += section_data[previous_end : start ]
         previous_end = itr.end()
-    data += output_data[previous_end :]
+    data += section_data[previous_end :]
     #
     # check for spelling errors
     first_spell_error = True
@@ -617,38 +619,38 @@ def spell_command(
             msg         = 'double word error: "' + double_word + '"'
             print(msg)
     #
-    return output_data
+    return section_data
 # -----------------------------------------------------------------------------
 # remove characters on same line as {code_sphinxrst}
-def isolate_code_command(code_pattern, output_data, file_in, section_name) :
-    output_index  = 0
-    match_begin_code = code_pattern.search(output_data)
+def isolate_code_command(code_pattern, section_data, file_in, section_name) :
+    section_index  = 0
+    match_begin_code = code_pattern.search(section_data)
     while match_begin_code != None :
-        begin_start    = match_begin_code.start() + output_index
-        begin_end      = match_begin_code.end()   + output_index
-        output_rest    = output_data[ begin_end : ]
-        match_end_code = code_pattern.search( output_rest )
+        begin_start    = match_begin_code.start() + section_index
+        begin_end      = match_begin_code.end()   + section_index
+        section_rest   = section_data[ begin_end : ]
+        match_end_code = code_pattern.search( section_rest )
         if match_end_code == None :
             msg  = 'number of code_sphinxrst commands is not even'
             sys_exit(msg, file_in, section_name)
         end_start = match_end_code.start() + begin_end
         end_end   = match_end_code.end()   + begin_end
         #
-        data_left   = output_data[: begin_start + 1 ]
+        data_left   = section_data[: begin_start + 1 ]
         data_left  += '{code_sphinxrst}'
-        data_left  += output_data[ begin_end : end_start + 1]
+        data_left  += section_data[ begin_end : end_start + 1]
         data_left  += '{code_sphinxrst}'
-        data_right  = output_data[ end_end : ]
+        data_right  = section_data[ end_end : ]
         #
-        output_data  = data_left + data_right
-        output_index = len(data_left)
+        section_data  = data_left + data_right
+        section_index = len(data_left)
         match_begin_code  = code_pattern.search(data_right)
-    return output_data
+    return section_data
 # -----------------------------------------------------------------------------
 # convert file command start and stop from patterns to line numbers
-def convert_file_command(file_pattern, output_data, file_in, section_name) :
-    output_index  = 0
-    match_file    = file_pattern.search(output_data)
+def convert_file_command(file_pattern, section_data, file_in, section_name) :
+    section_index  = 0
+    match_file    = file_pattern.search(section_data)
     while match_file != None :
         #
         # file_name
@@ -711,37 +713,37 @@ def convert_file_command(file_pattern, output_data, file_in, section_name) :
         stop_line = data[: stop_index].count('\n')
         #
         # beginning of lines with command in it
-        begin_line = match_file.start() + output_index;
+        begin_line = match_file.start() + section_index;
         #
         # end of lines with command in it
-        end_line = match_file.end() + output_index;
+        end_line = match_file.end() + section_index;
         #
         # converted version of the command
         cmd  = f'file_sphinxrst%{file_name}%{start_line}%{stop_line}%'
         cmd  = '\n{' + cmd  + '}'
         #
-        data_left  = output_data[: begin_line]
+        data_left  = section_data[: begin_line]
         data_left += cmd
-        data_right = output_data[ end_line : ]
+        data_right = section_data[ end_line : ]
         #
-        output_data  = data_left + data_right
-        output_index = len(data_left)
+        section_data  = data_left + data_right
+        section_index = len(data_left)
         match_file  = file_pattern.search(data_right)
-    return output_data
+    return section_data
 # -----------------------------------------------------------------------------
 # labels for headings
 def add_labels_for_headings(
-        output_data, num_remove, white_space, file_in, section_name
+        section_data, num_remove, white_space, file_in, section_name
 ) :
     punctuation      = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
     indent           = num_remove * white_space
     heading_list     = list()
     next_start       = 0
-    next_newline     = output_data.find('\n', next_start)
+    next_newline     = section_data.find('\n', next_start)
     candidate_start  = None
     candidate_state  = 'empty'
     while 0 <= next_newline :
-        next_line = output_data[next_start : next_newline]
+        next_line = section_data[next_start : next_newline]
         next_line = next_line[num_remove :].rstrip(' \t')
         next_len  = len(next_line)
         if next_len == 0 :
@@ -815,33 +817,33 @@ def add_labels_for_headings(
                     label += '.' + heading['text'].lower().replace(' ', '_')
             #
             # place label in output before the heading
-            data_left   = output_data[: candidate_start]
+            data_left   = section_data[: candidate_start]
             data_left  += '\n{label_sphinxrst ' + label + ' }'
-            data_left  += output_data[candidate_start : next_newline]
-            data_right  = output_data[next_newline : ]
-            output_data = data_left + data_right
+            data_left  += section_data[candidate_start : next_newline]
+            data_right  = section_data[next_newline : ]
+            section_data = data_left + data_right
             #
             # setup of for next heading
             candidate_state = 'empty'
             next_start      = len(data_left) + 1
-            next_newline    = output_data.find('\n', next_start )
+            next_newline    = section_data.find('\n', next_start )
         else :
             next_start   = next_newline + 1
-            next_newline = output_data.find('\n', next_start)
-    return output_data
+            next_newline = section_data.find('\n', next_start)
+    return section_data
 # -----------------------------------------------------------------------------
 # write file corresponding to a section
 # (and finish processing that has been delayed to this point)
 def write_file(
     file_in,
-    output_data,
+    section_data,
     output_dir,
     section_name,
     spell_checker,
 ) :
     #
     newline_pattern = re.compile( r'\n')
-    newline_itr     = newline_pattern.finditer(output_data)
+    newline_itr     = newline_pattern.finditer(section_data)
     newline_list    = list()
     for itr in newline_itr :
         newlist = itr.start()
@@ -852,7 +854,7 @@ def write_file(
     inside_code       = False
     previous_empty    = True
     for newline in newline_list :
-        line  = output_data[startline : newline + 1]
+        line  = section_data[startline : newline + 1]
         # commands that delay some processing to this point
         code_command  = line.startswith('{code_sphinxrst')
         file_command  = line.startswith('{file_sphinxrst')
@@ -1066,13 +1068,13 @@ for file_in in file_list :
         for itr in newline_itr :
             newlist = itr.start()
             newline_list.append( newlist )
-        len_output   = len(section_data)
+        len_data   = len(section_data)
         num_remove   = len(section_data)
         for newline in newline_list :
             next_ = newline + 1
-            if next_ < len_output and num_remove != 0 :
+            if next_ < len_data and num_remove != 0 :
                 ch = section_data[next_]
-                while ch in ' \t\n' and next_ + 1 < len_output :
+                while ch in ' \t\n' and next_ + 1 < len_data :
                     next_ += 1
                     ch = section_data[next_]
                 cmd  = section_data[next_:].startswith('{code_sphinxrst')
