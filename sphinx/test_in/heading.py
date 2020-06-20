@@ -8,12 +8,20 @@
 # ----------------------------------------------------------------------------
 """
 {begin_sphinxrst heading_exam}
+{spell_sphinxrst sphinxrst}
 
 ===============
 Heading Example
 ===============
 
 {file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
+
+Child Sections
+--------------
+The heading above is an example heading for the
+:ref:`children<sphinxrst_py.headings_and_links.children>`
+of a
+:ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`.
 
 {end_sphinxrst heading_exam}
 """

@@ -18,4 +18,6 @@ Product
 
 :ref:`suspend_exam`
 
-sphinxrst_input_file: ``sphinx/test_in/suspend.py``
+----
+
+sphinxrst input file: ``sphinx/test_in/suspend.py``

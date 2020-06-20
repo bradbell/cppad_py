@@ -12,4 +12,6 @@ Indent Using Spaces Result
 
 :ref:`indent_space_exam`
 
-sphinxrst_input_file: ``sphinx/test_in/indent_space.py``
+----
+
+sphinxrst input file: ``sphinx/test_in/indent_space.py``

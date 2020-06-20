@@ -43,4 +43,6 @@ Links
 
 :ref:`heading_exam`
 
-sphinxrst_input_file: ``sphinx/test_in/heading.py``
+----
+
+sphinxrst input file: ``sphinx/test_in/heading.py``

@@ -13,4 +13,6 @@ Indent Using Tabs Example
 
    indent_tab_res
 
-sphinxrst_input_file: ``sphinx/test_in/indent_tab.py``
+----
+
+sphinxrst input file: ``sphinx/test_in/indent_tab.py``

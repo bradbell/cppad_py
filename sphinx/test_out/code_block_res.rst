@@ -12,4 +12,6 @@ Code Block Result
 
 :ref:`code_block_exam`
 
-sphinxrst_input_file: ``sphinx/test_in/code_block.py``
+----
+
+sphinxrst input file: ``sphinx/test_in/code_block.py``

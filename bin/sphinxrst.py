@@ -290,8 +290,10 @@ to make sure they are still valid.
 
 Children
 --------
-If a :ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`
-has children, a ``toctree`` command that provides links to the children
+If a sphinxrst input file has more than one section,
+the :ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`
+has children.
+In this case, a ``toctree`` command that provides links to the children
 is included at the end of the section.
 You can place a heading at the end of section to make these
 links easier to find.
@@ -327,17 +329,28 @@ input file that the error occurred on.
 
 Module
 ------
-Convert the extract program into a python module and provide a pip distribution for it.
+Convert the program into a python module and provide a pip distribution for it.
 
-Indexing
---------
-Add indexing so that there are search links to headings at all levels.
+Command Order
+-------------
+Change commands from
+:code:`{` *name* ``_sphinxrst}`` to ``{sphinxrst_`` *name* :code:`}`
+and reserve the text ``{sphinxrst_`` [^}]* :code:`}` for sphinxrst commands.
 
-Contents
---------
-Have a section specify its child sections.
-Sections that are not in ``index.rst`` must be the child of one
-and only one section.
+Children Command
+----------------
+Add a command so a section can specify input files as follows:
+
+|space| |space| |space| |space|
+``{children_sphinxrst %file_1%`` ... ``%file_n%}``
+
+For each input file, the parent in the input file is a child of
+the current section.
+
+Ancestors
+---------
+Add a line, at top of each section,
+with the ancestors of the current section and a link to each ancestor.
 
 {end_sphinxrst sphinxrst_py}
 """
@@ -956,6 +969,7 @@ def write_file(
             file_ptr.write('   ' + child + '\n')
         file_ptr.write('\n')
     #
+    file_ptr.write('----\n\n') # sphinx transition
     file_ptr.write( f'sphinxrst input file: ``{file_in}``\n')
     file_ptr.close()
 # =============================================================================

@@ -39,4 +39,6 @@ spelling command for this section.
 
 :ref:`spell_exam`
 
-sphinxrst_input_file: ``sphinx/test_in/spell.py``
+----
+
+sphinxrst input file: ``sphinx/test_in/spell.py``

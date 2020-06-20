@@ -13,4 +13,6 @@ Text after file block.
 
 :ref:`file_block_exam`
 
-sphinxrst_input_file: ``sphinx/test_in/file_block.py``
+----
+
+sphinxrst input file: ``sphinx/test_in/file_block.py``

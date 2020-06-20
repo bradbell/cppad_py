@@ -13,4 +13,6 @@ Indent Using Spaces Example
 
    indent_space_res
 
-sphinxrst_input_file: ``sphinx/test_in/indent_space.py``
+----
+
+sphinxrst input file: ``sphinx/test_in/indent_space.py``

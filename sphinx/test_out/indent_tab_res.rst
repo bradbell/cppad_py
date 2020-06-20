@@ -12,4 +12,6 @@ Indent Using Tabs Result
 
 :ref:`indent_tab_exam`
 
-sphinxrst_input_file: ``sphinx/test_in/indent_tab.py``
+----
+
+sphinxrst input file: ``sphinx/test_in/indent_tab.py``

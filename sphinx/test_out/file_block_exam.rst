@@ -13,4 +13,6 @@ File Block Example
 
    file_block_res
 
-sphinxrst_input_file: ``sphinx/test_in/file_block.py``
+----
+
+sphinxrst input file: ``sphinx/test_in/file_block.py``

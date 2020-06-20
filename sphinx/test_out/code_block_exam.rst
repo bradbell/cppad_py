@@ -13,4 +13,6 @@ Code Block Example
 
    code_block_res
 
-sphinxrst_input_file: ``sphinx/test_in/code_block.py``
+----
+
+sphinxrst input file: ``sphinx/test_in/code_block.py``
