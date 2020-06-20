@@ -403,7 +403,91 @@ def file2list(file_name) :
                 result.append(line)
     file_ptr.close()
     return result
-
+# ----------------------------------------------------------------------------
+# find all the section names and corresponding data in the specified file
+# The returned data does not include the begin and end section commands
+def file2section_info(
+        pattern_begin_sphinxrst,
+        pattern_end_sphinxrst,
+        section_list,
+        correspnding_file,
+        file_in
+) :
+    #
+    # file_data
+    file_ptr   = open(file_in, 'r')
+    file_data  = file_ptr.read()
+    file_ptr.close()
+    #
+    # Initialize return value
+    section_name_list = list()
+    section_data_list = list()
+    #
+    # index to start search for next pattern in file_data
+    file_index  = 0
+    #
+    while file_index < len(file_data) :
+        #
+        # match_begin_sphinxrst
+        data_rest   = file_data[file_index : ]
+        match_begin_sphinxrst = pattern_begin_sphinxrst.search(data_rest)
+        #
+        if match_begin_sphinxrst == None :
+            if file_index == 0 :
+                msg  = 'can not find followng at start of a line:\n'
+                msg += '    {begin_sphinxrst section_name}\n'
+                sys_exit(msg, file_in)
+            file_index = len(file_data)
+        else :
+            # section_name
+            section_name = match_begin_sphinxrst.group(1)
+            if section_name == '' :
+                msg  = 'section_name after begin_sphinxrst is empty'
+                sys_exit(msg, file_in)
+            #
+            # check if section appears multiple times
+            if section_name in section_name_list :
+                msg  = 'begin_sphinxrst ' + section_name
+                msg += ' appears twice in file\n' + file_in
+                sys_exit(msg)
+            if section_name in section_list :
+                # this section appears multiple times
+                index = section_list.index(section_name)
+                msg  = 'begin_sphinxrst ' + section_name
+                msg += ' appears twice; see files\n' + file_in + ' and '
+                msg += corresponding_file[index]
+                sys_exit(msg)
+            #
+            # file_index
+            file_index += match_begin_sphinxrst.end()
+            #
+            # match_end_sphinxrst
+            data_rest = file_data[file_index : ]
+            match_end_sphinxrst = pattern_end_sphinxrst.search(data_rest)
+            #
+            if match_end_sphinxrst == None :
+                msg  = 'can not find followig at start of a line:\n'
+                msg += '    {end_sphinxrst section_name}'
+                sys_exit(msg, file_in, section_name)
+            if match_end_sphinxrst.group(1) != section_name :
+                msg = 'in file ' + file_in + '\nsection names do not match\n'
+                msg += 'begin_sphinxrst section name = '+section_name + '\n'
+                msg += 'end_sphinxrst section name   = '
+                msg += match_end_sphinxrst.group(1) + '\n'
+                sys_exit(msg)
+            #
+            # section_data_list
+            start = file_index
+            end   = file_index + match_end_sphinxrst.start()
+            data  = file_data[ start : end ]
+            section_data_list.append(data)
+            #
+            # section_name_list
+            section_name_list.append(section_name)
+            #
+            # place to start search for next section
+            file_index += match_end_sphinxrst.end()
+    return section_name_list, section_data_list
 # ----------------------------------------------------------------------------
 def start_line_white_space(data, file_in, section_name) :
     data_index  = 0
@@ -915,66 +999,24 @@ for file_in in file_list :
         msg += 'file_list  = ' + sys.argv[2] + '\n'
         sys_exit(msg)
     #
-    # file_data
-    file_ptr   = open(file_in, 'r')
-    file_data  = file_ptr.read()
-    file_ptr.close()
-    #
-    # file_index is where to start search for next pattern in file_data
-    file_index  = 0
-    #
-    while file_index < len(file_data) :
-        #
-        # match_begin_sphinxrst
-        data_rest   = file_data[file_index : ]
-        match_begin_sphinxrst = pattern_begin_sphinxrst.search(data_rest)
-        #
-        if match_begin_sphinxrst == None :
-            if file_index == 0 :
-                msg  = 'can not find followng at start of a line:\n'
-                msg += '    {begin_sphinxrst section_name}\n'
-                sys_exit(msg, file_in)
-            file_index = len(file_data)
-        else :
-            # section_name
-            section_name = match_begin_sphinxrst.group(1)
-            if section_name == '' :
-                msg  = 'section_name after begin_sphinxrst is empty'
-                sys_exit(msg, file_in)
+    # get sphinxrst docuemntation in this file
+    section_name_list, section_data_list = file2section_info(
+        pattern_begin_sphinxrst,
+        pattern_end_sphinxrst,
+        section_list,
+        corresponding_file,
+        file_in,
+    )
+    for i in range( len(section_name_list) ) :
             #
-            if section_name in section_list :
-                # this section appears multiple times
-                index = section_list.index(section_name)
-                msg  = 'begin_sphinxrst ' + section_name
-                msg += ' appears twice; see files\n' + file_in + ' and '
-                msg += corresponding_file[index]
-                sys_exit(msg)
-            section_list.append( section_name )
-            corresponding_file.append( file_in )
+            # section_name, output_data
+            section_name = section_name_list[i]
+            output_data  = section_data_list[i]
             #
-            # file_index
-            file_index += match_begin_sphinxrst.end()
+            section_list.append(section_name)
+            corresponding_file.append(file_in)
             #
-            # match_end_sphinxrst
-            data_rest = file_data[file_index : ]
-            match_end_sphinxrst = pattern_end_sphinxrst.search(data_rest)
             #
-            if match_end_sphinxrst == None :
-                msg  = 'can not find followig at start of a line:\n'
-                msg += '    {end_sphinxrst section_name}'
-                sys_exit(msg, file_in, section_name)
-            if match_end_sphinxrst.group(1) != section_name :
-                msg = 'in file ' + file_in + '\nsection names do not match\n'
-                msg += 'begin_sphinxrst section name = '+section_name + '\n'
-                msg += 'end_sphinxrst section name   = '
-                msg += match_end_sphinxrst.group(1) + '\n'
-                sys_exit(msg)
-            #
-            # output_data
-            output_start = file_index
-            output_end   = file_index + match_end_sphinxrst.start()
-            output_data  = file_data[ output_start : output_end ]
-            # ----------------------------------------------------------------
             # process suspend commands
             output_data = suspend_command(
                 pattern_suspend_sphinxrst,
@@ -1053,9 +1095,6 @@ for file_in in file_list :
                 section_name,
                 spell_checker,
             )
-            # ---------------------------------------------------------------
-            # place to search for next file
-            file_index += match_end_sphinxrst.end()
 # -----------------------------------------------------------------------------
 # read index.rst
 file_in   = sphinx_dir + '/index.rst'
