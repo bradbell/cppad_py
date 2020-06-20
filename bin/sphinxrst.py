@@ -1095,7 +1095,11 @@ for file_in in file_list :
         section_info.append( {
             'section_name' : section_name,
             'file_in'      : file_in,
+            'parent_name'  : None
         } )
+        parent_name =  file_info[0]['section_name']
+        if section_name != parent_name :
+            section_info[-1]['parent_name'] = parent_name
         #
         #
         # process suspend commands
@@ -1192,13 +1196,11 @@ file_ptr  = open(file_in, 'r')
 file_data = file_ptr.read()
 file_ptr.close()
 #
-for i in range( len(section_info) ) :
-    section_name = section_info[i]['section_name']
-    file_in      = section_info[i]['file_in']
-    parent       = True
-    if i > 0 :
-        parent = file_in != section_info[i-1]['file_in']
-    if parent :
+for info in section_info :
+    section_name = info['section_name']
+    file_in      = info['file_in']
+    parent_name  = info['parent_name']
+    if parent_name is None :
         # There should be an line in index.rst with the following contents:
         #     sphinxrst/section_name.rst'
         # where the spaces are optional
