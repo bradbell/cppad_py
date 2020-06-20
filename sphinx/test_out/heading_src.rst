@@ -14,6 +14,4 @@ Example
 -------
 :ref:`heading_py`
 
-----
-
 sphinxrst_input_file: ``sphinx/test_in/heading.py``

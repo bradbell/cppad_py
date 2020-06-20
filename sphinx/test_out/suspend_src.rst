@@ -14,6 +14,4 @@ Example
 -------
 :ref:`suspend_py`
 
-----
-
 sphinxrst_input_file: ``sphinx/test_in/suspend.py``

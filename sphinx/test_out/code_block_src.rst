@@ -14,6 +14,4 @@ Example
 -------
 :ref:`code_block_py`
 
-----
-
 sphinxrst_input_file: ``sphinx/test_in/code_block.py``

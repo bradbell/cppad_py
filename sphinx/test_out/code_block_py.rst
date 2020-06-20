@@ -16,6 +16,13 @@ Source
 ------
 :ref:`code_block_src`
 
-----
+
+Children
+--------
+
+.. toctree::
+   :maxdepth: 1
+
+   code_block_src
 
 sphinxrst_input_file: ``sphinx/test_in/code_block.py``

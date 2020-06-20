@@ -43,6 +43,13 @@ Source
 ------
 :ref:`spell_src`
 
-----
+
+Children
+--------
+
+.. toctree::
+   :maxdepth: 1
+
+   spell_src
 
 sphinxrst_input_file: ``sphinx/test_in/spell.py``

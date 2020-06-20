@@ -16,6 +16,13 @@ Source
 ------
 :ref:`indent_space_src`
 
-----
+
+Children
+--------
+
+.. toctree::
+   :maxdepth: 1
+
+   indent_space_src
 
 sphinxrst_input_file: ``sphinx/test_in/indent_space.py``

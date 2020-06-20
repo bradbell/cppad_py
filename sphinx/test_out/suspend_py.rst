@@ -22,6 +22,13 @@ Source
 ------
 :ref:`suspend_src`
 
-----
+
+Children
+--------
+
+.. toctree::
+   :maxdepth: 1
+
+   suspend_src
 
 sphinxrst_input_file: ``sphinx/test_in/suspend.py``

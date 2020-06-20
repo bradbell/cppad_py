@@ -14,6 +14,4 @@ Example
 -------
 :ref:`spell_py`
 
-----
-
 sphinxrst_input_file: ``sphinx/test_in/spell.py``

@@ -14,6 +14,4 @@ Example
 -------
 :ref:`indent_space_py`
 
-----
-
 sphinxrst_input_file: ``sphinx/test_in/indent_space.py``

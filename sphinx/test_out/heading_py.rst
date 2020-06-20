@@ -46,6 +46,13 @@ Source
 ------
 :ref:`heading_src`
 
-----
+
+Children
+--------
+
+.. toctree::
+   :maxdepth: 1
+
+   heading_src
 
 sphinxrst_input_file: ``sphinx/test_in/heading.py``

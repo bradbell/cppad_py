@@ -108,11 +108,20 @@ command at the beginning of a line:
 Here *section_name* must be the same as in the corresponding
 begin section command.
 
+Table Of Contents
+=================
+
+Parent Section
+--------------
+A single input file may contain multiple sections.
+The first section in a file is called the file's parent section.
+Other sections in a file are children of the parent section.
+
 index.rst
-=========
+---------
 The file ``index.rst`` must exist in the directory
 :ref:`sphinx_dir<sphinxrst_py.command_line_arguments.sphinx_dir>`.
-For each *section_name* in a
+For each parent *section_name* in a
 :ref:`begin section<sphinxrst_py.section.begin>` command,
 there must be a line in ``index.rst`` with the following text:
 
@@ -120,7 +129,6 @@ there must be a line in ``index.rst`` with the following text:
 ``sphinxrst/`` *section_name*:code:`.rst`
 
 There can white space before the text above.
-
 
 Suspend Extraction
 ==================
@@ -278,6 +286,13 @@ This may seem verbose, but it helps keep the links up to date.
 If a heading changes, all the links to that heading will break.
 This identifies the links that should be checked
 to make sure they are still valid.
+
+Children
+--------
+If a :ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`
+has children, a heading ``Children``, at the second level,
+will be added to the document and links to the children will be placed below
+the heading.
 
 Example
 -------
@@ -830,13 +845,31 @@ def add_labels_for_headings(
         else :
             next_start   = next_newline + 1
             next_newline = section_data.find('\n', next_start)
-    return section_data
+    #
+    # children_heading_info
+    if len(heading_list) == 0 :
+        msg = 'There is no titles for this section'
+        sys_exit(msg, file_in, section_name)
+    #
+    if len(heading_list) == 1 :
+        if heading_list[0]['character'] != '=' :
+            character = '='
+        else :
+            character = '-'
+    else :
+        overline  = heading_list[1]['overline']
+        character = heading_list[1]['character']
+    children_heading_info = { 'overline' : overline, 'character' : ch }
+    #
+    return section_data, children_heading_info
 # -----------------------------------------------------------------------------
 # write file corresponding to a section
 # (and finish processing that has been delayed to this point)
 def write_file(
     file_in,
     section_data,
+    child_list,
+    children_heading_info,
     output_dir,
     section_name,
     spell_checker,
@@ -913,7 +946,20 @@ def write_file(
     # -----------------------------------------------------------------------
     if not previous_empty :
         file_ptr.write('\n')
-    file_ptr.write('----\n\n')
+    #
+    if len(child_list) > 0 :
+        heading = 'Children'
+        line    = len(heading) * children_heading_info['character']
+        if children_heading_info['overline'] :
+            file_ptr.write( line )
+        file_ptr.write(f'\n{heading}\n')
+        file_ptr.write( line )
+        file_ptr.write('\n\n.. toctree::\n')
+        file_ptr.write('   :maxdepth: 1\n\n')
+        for child in child_list :
+            file_ptr.write('   ' + child + '\n')
+        file_ptr.write('\n')
+    #
     file_ptr.write( f'sphinxrst_input_file: ``{file_in}``\n')
     file_ptr.close()
 # =============================================================================
@@ -1011,6 +1057,7 @@ for file_in in file_list :
         corresponding_file,
         file_in,
     )
+    #
     for info in file_info :
         #
         # section_name, section_data
@@ -1083,18 +1130,27 @@ for file_in in file_list :
                     num_remove = min(num_remove, next_ - newline - 1)
         # ---------------------------------------------------------------
         # add labels corresponding to headings
-        section_data = add_labels_for_headings(
+        section_data, children_heading_info = add_labels_for_headings(
             section_data,
             num_remove,
             white_space,
             file_in,
             section_name
         )
+        # ----------------------------------------------------------------
+        # child_list
+        child_list = list()
+        parent     =  section_name == file_info[0]['section_name']
+        if parent :
+            for i in range( len(file_info) - 1 ) :
+                child_list.append(  file_info[i+1]['section_name'] )
         # ---------------------------------------------------------------
         # write file for this section
         write_file(
             file_in,
             section_data,
+            child_list,
+            children_heading_info,
             output_dir,
             section_name,
             spell_checker,
@@ -1106,19 +1162,25 @@ file_ptr  = open(file_in, 'r')
 file_data = file_ptr.read()
 file_ptr.close()
 #
-for section_name in section_list :
-    # There should be an line in index.rst with the following contents:
-    #     sphinxrst/section_name.rst'
-    # where the spaces are optional
-    pattern  = r'\n[ \t]*sphinxrst/'
-    pattern += section_name.replace('.', '[.]')
-    #
-    match_line = re.search(pattern, file_data)
-    if match_line == None :
-        msg   = 'Can not find following line in ' + file_in + ':\n'
-        msg  += '    sphinxrst/' + section_name + '\n'
-        msg  += 'Spaces before the text above are optional.'
-        sys_exit(msg)
+for i in range( len(section_list) ) :
+    section_name = section_list[i]
+    file_in      = corresponding_file[i]
+    parent       = True
+    if i > 0 :
+        parent = file_in != corresponding_file[i-1]
+    if parent :
+        # There should be an line in index.rst with the following contents:
+        #     sphinxrst/section_name.rst'
+        # where the spaces are optional
+        pattern  = r'\n[ \t]*sphinxrst/'
+        pattern += section_name.replace('.', '[.]')
+        #
+        match_line = re.search(pattern, file_data)
+        if match_line == None :
+            msg   = 'Can not find following line in ' + file_in + ':\n'
+            msg  += '    sphinxrst/' + section_name + '\n'
+            msg  += 'Spaces before the text above are optional.'
+            sys_exit(msg)
 #
 print('sphinxrst.py: OK')
 sys.exit(0)

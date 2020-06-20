@@ -16,6 +16,13 @@ Source
 ------
 :ref:`indent_tab_src`
 
-----
+
+Children
+--------
+
+.. toctree::
+   :maxdepth: 1
+
+   indent_tab_src
 
 sphinxrst_input_file: ``sphinx/test_in/indent_tab.py``
