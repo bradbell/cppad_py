@@ -75,7 +75,7 @@ A line that begins with :code:`#` is a comment (not included in the list).
 The words are one per line and
 leading and trailing white space in a word are ignored.
 Special words, for a particular section, are specified using the
-:ref:`spell command<sphinxrst_py.spell.command>`.
+:ref:`spell command<sphinxrst_py.spell_checking.spell_command>`.
 
 Section
 =======
@@ -90,16 +90,16 @@ The corresponding sphinxrst output file is
 :ref:`sphinx_dir<sphinxrst_py.command_line_arguments.sphinx_dir>`
 ``/sphinxrst/`` *section_name* ``.rst``
 
-Begin
------
+Begin Command
+-------------
 The start of a sphinxrst section of the input file is indicated by the
 following command at the beginning of a line:
 
 |space| |space| |space| |space|
 ``{begin_sphinxrst`` *section_name*:code:`}`
 
-End
----
+End Command
+-----------
 The end of a sphinxrst section of the input file is indicated by the following
 command at the beginning of a line:
 
@@ -123,7 +123,7 @@ index.rst
 The file ``index.rst`` must exist in the directory
 :ref:`sphinx_dir<sphinxrst_py.command_line_arguments.sphinx_dir>`.
 For each parent *section_name* in a
-:ref:`begin section<sphinxrst_py.section.begin>` command,
+:ref:`begin section<sphinxrst_py.section.begin_command>` command,
 there must be a line in ``index.rst`` with the following text:
 
 |space| |space| |space| |space|
@@ -131,8 +131,8 @@ there must be a line in ``index.rst`` with the following text:
 
 There can white space before the text above.
 
-Suspend Extraction
-==================
+Suspend Command
+===============
 It is possible to suspend the sphinxrst extraction during a section.
 One begins the suspension with the following command
 at the beginning of a line:
@@ -140,21 +140,25 @@ at the beginning of a line:
 |space| |space| |space| |space|
 ``{suspend_sphinxrst}``
 
-Note that this will also suspend the sphinxrst processing; e.g., spell checking.
+Note that this will also suspend the sphinxrst processing; e.g.,
+spell checking.
+
+Resume Command
+--------------
 One resumes the output with the following command at the beginning of a line:
 
 |space| |space| |space| |space|
 ``{resume_sphinxrst}``
 
-Each suspend sphinxrst must have a corresponding resume sphinxrst in same
+Each suspend command must have a corresponding resume command in same
 section (between the corresponding begin sphinxrst and end sphinxrst commands).
 
 Example
 -------
 :ref:`suspend_exam`
 
-Spell
-=====
+Spell Checking
+==============
 
 spell_list
 ----------
@@ -165,8 +169,8 @@ for all sections.
 The latex commands corresponding to the letters in the greek alphabet
 are automatically included in this list
 
-Command
--------
+Spell Command
+-------------
 You can specify a special list of words for the current
 section using the following command at the beginning of a line:
 
@@ -182,13 +186,13 @@ The back slash is included as a possible beginning of a word
 so that latex commands can be included in the spelling list.
 The rest of the characters in a word are lower case letters.
 
-Checking
---------
+Capitalized Words
+-----------------
 The case of the first letter does not matter when checking spelling;
 e.g., if ``abcd`` is *word_1* then ``Abcd`` will be considered a valid word.
 
-Double Word
------------
+Double Words
+------------
 It is considered an error to have only white space between two occurrences
 of the same word.
 
@@ -196,43 +200,58 @@ Example
 -------
 :ref:`spell_exam`
 
-Code Block
-==========
+Code Command
+============
 A code block, directly below in the current input file, begins with
 a line containing the following command:
 
 |space| |space| |space| |space|
 ``{code_sphinxrst}``
 
-Each code block must end with
-a line containing the same command above.
-
+Requirements
+------------
+Each code command ends with
+a line containing another code command.
+Hence there must be an even number of code commands.
 The back quote character \` can't be in the same line as the two commands.
-Other characters on the same line as the commands
+
+Rest of Line
+------------
+Other characters on the same line as a code command
 are not included in the sphinxrst output.
 This enables one to begin or end a comment block
 without having the comment characters in the sphinxrst output.
-The name of the current input file is used to determine the source code
-language for highlighting the code block.
-Code blocks as usually small and spell check is done inside of them.
+The file extension in the name of the current input file is used to
+determine the source code language for highlighting the code block.
+Code blocks as usually small and
+
+Spell Checking
+--------------
+Spell checking is done for these code blocks,
+but not for code blocks included using the
+:ref:`file command<sphinxrst_py.file_command>`.
 
 Example
 -------
 :ref:`code_block_exam`
 
-File Block
-==========
+File Command
+============
 A code block, from any file, is included by the following command
 at the beginning of a line:
 
 |space| |space| |space| |space|
 ``{file_sphinxrst%`` *file_name* :code:`%` *start* :code:`%` *stop*:code:`%}`
 
+Requirements
+------------
 The back quote character \` can not be in the same lines as the command above.
+
+White Space
+-----------
 Leading and trailing white space is not included in
 *file_name*, *start*, or *end*.
 This enables one to put the command on multiple input lines.
-File blocks can be large and spell check is NOT done inside of them.
 
 file_name
 ---------
@@ -255,6 +274,10 @@ There can only be one occurence of *stop* at the beginning of a line
 and after *start* and it must come after *start*.
 The lines containing *start* and *stop* in *file_name* are not included in
 the code block.
+
+Spell Checking
+--------------
+Spell checking is **not** done for these code blocks.
 
 Example
 -------
