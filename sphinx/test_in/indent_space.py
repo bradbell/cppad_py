@@ -6,13 +6,25 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
+"""
+{begin_sphinxrst indent_space_exam}
+
+===========================
+Indent Using Spaces Example
+===========================
+
+{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
+
+{end_sphinxrst indent_space_exam}
+"""
+# ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-    {begin_sphinxrst indent_space_py}
+    {begin_sphinxrst indent_space_res}
 
-    ===========================
-    Indent Using Spaces Example
-    ===========================
+    ==========================
+    Indent Using Spaces Result
+    ==========================
     {code_sphinxrst}"""
     def factorial(n) :
         if n == 1 :
@@ -20,26 +32,8 @@
         return n * factorial(n-1)
     """{code_sphinxrst}
 
-    Source
-    ------
-    :ref:`indent_space_src`
+    :ref:`indent_space_exam`
 
-    {end_sphinxrst indent_space_py}
+    {end_sphinxrst indent_space_res}
 """
 # END_SRC
-# ----------------------------------------------------------------------------
-"""
-{begin_sphinxrst indent_space_src}
-
-==========================
-Indent Using Spaces Source
-==========================
-
-{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
-
-Example
--------
-:ref:`indent_space_py`
-
-{end_sphinxrst indent_space_src}
-"""

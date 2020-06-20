@@ -32,7 +32,7 @@ def factorial(n) :
     return n * factorial(n-1)
 """{code_sphinxrst}
 
-:ref:`code_block_example`
+:ref:`code_block_exam`
 
 {end_sphinxrst code_block_res}
 """

@@ -10,6 +10,6 @@ Code Block Result
             return 1
         return n * factorial(n-1)
 
-:ref:`code_block_example`
+:ref:`code_block_exam`
 
 sphinxrst_input_file: ``sphinx/test_in/code_block.py``

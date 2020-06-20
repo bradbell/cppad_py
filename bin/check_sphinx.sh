@@ -17,9 +17,10 @@ then
 	echo "bin/check_sphinx.sh: must be executed from its parent directory"
 	exit 1
 fi
+sphinxdir='sphinx'
 # -----------------------------------------------------------------------------
-echo "bin/sphinxrst.py sphinx file_list spell_list"
-if ! bin/sphinxrst.py sphinx file_list spell_list 2> sphinxrst.$$
+echo "bin/sphinxrst.py $sphinxdir file_list spell_list"
+if ! bin/sphinxrst.py $sphinxdir file_list spell_list 2> sphinxrst.$$
 then
 	type_error='error'
 else
@@ -33,7 +34,7 @@ then
 	exit 1
 fi
 rm sphinxrst.$$
-#
+# -----------------------------------------------------------------------------
 echo_eval cd sphinx
 file_list=$(ls sphinxrst/*.rst | sed -e 's|^sphinxrst/||' )
 for file in $file_list
@@ -42,16 +43,16 @@ do
 	then
 		if [ ! -e test_out/$file ]
 		then
-			echo "The output file sphinx/test_out/$file does not exist."
+			echo "The output file $sphinxdir/test_out/$file does not exist."
 			echo 'Check that the corresponding sections are correct and then:'
-			echo "    cp sphinx/sphinxrst/$file sphinx/test_out/$file"
+			echo "    cp $sphinxdir/sphinxrst/$file $sphinxdir/test_out/$file"
 			exit 1
 		elif ! diff test_out/$file sphinxrst/$file
 		then
-			echo "The file sphinx/sphinxrst/$file changed; above is output of"
+			echo "$sphinxdir/sphinxrst/$file changed; above is output of"
 			echo "	diff test_out/$file sphinxrst/$file"
 			echo 'If the new file is currect, replace old with new using:'
-			echo "    cp sphinx/sphinxrst/$file sphinx/test_out/$file"
+			echo "    cp $sphinxdir/sphinxrst/$file $sphinxdir/test_out/$file"
 			exit 1
 		else
 			echo "$file: OK"
@@ -63,12 +64,20 @@ for file in $file_list
 do
 	if [ ! -e sphinxrst/$file ]
 	then
-		echo "The output file sphinx/sphinxrst/$file does not nexist."
-		echo "Use he following command to remove sphinx/test_out/$file ?"
-		echo "	git rm sphinx/test_out/$file"
+		echo "The output file $sphinxdir/sphinxrst/$file does not nexist."
+		echo "Use he following command to remove $sphinxdir/test_out/$file ?"
+		echo "	git rm $sphinxdir/test_out/$file"
 		exit 1
 	fi
 done
+# -----------------------------------------------------------------------------
+if ! make html
+then
+	echo 'bin/check_sphinx.sh: see errors above during the command'
+	echo '    cd sphinx'
+	echo '    make html'
+	exit 1
+fi
 # -----------------------------------------------------------------------------
 echo "$0: OK"
 exit 0
