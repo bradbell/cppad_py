@@ -1079,12 +1079,12 @@ if not os.path.isdir(sphinx_dir) :
     sys_exit(msg)
 #
 # file_list
-file_path = sphinx_dir + '/' + sys.argv[2]
-if not os.path.isfile(file_path) :
-    msg  = 'sphinx_dir/file_list = ' + sphinx_dir + '/' + sys.argv[2] + '\n'
+file_list_path = sphinx_dir + '/' + sys.argv[2]
+if not os.path.isfile(file_list_path) :
+    msg  = 'sphinx_dir/file_list = ' + file_list_path + '\n'
     msg += 'is not a file'
     sys_exit(msg)
-file_list  = file2list(file_path)
+file_list  = file2list(file_list_path)
 #
 # spell_list
 file_path = sphinx_dir + '/' + sys.argv[3]
@@ -1139,13 +1139,27 @@ pattern_children_sphinxrst = re.compile(
 # process each file in the list
 section_info     = list()
 file_info_stack  = list()
+file_info_done   = list()
 file_list.reverse()
 for file_in in file_list  :
-    info = { 'file_in' : file_in, 'parent_section' : None }
+    info = {
+        'file_in'        : file_in,
+        'parent_file'    : file_list_path,
+        'parent_section' : None,
+    }
     file_info_stack.append(info)
 while 0 < len(file_info_stack) :
-    info           = file_info_stack.pop()
+    info  = file_info_stack.pop()
+    for info_tmp in file_info_done :
+        if info_tmp['file_in'] == info['file_in'] :
+            msg  = 'The file ' + info['file_in'] + ' is included twice\n'
+            msg += 'Once in ' + info_tmp['parent_file'] + '\n'
+            msg += 'and again in ' + info['parent_file'] + '\n'
+            sys_exit(msg)
+    file_info_done.append(info)
+    #
     file_in        = info['file_in']
+    parent_file    = info['parent_file']
     parent_section = info['parent_section']
     #
     if not os.path.isfile(file_in) :
@@ -1200,7 +1214,8 @@ while 0 < len(file_info_stack) :
         section_index = len(section_info) - 1
         for file_tmp in child_file :
             file_info_stack.append( {
-                'file_in'      : file_tmp,
+                'file_in'        : file_tmp,
+                'parent_file'    : file_in,
                 'parent_section' : section_index,
             } )
         # ----------------------------------------------------------------
