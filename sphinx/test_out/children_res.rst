@@ -14,7 +14,7 @@ Example
 
 Children
 --------
-The Indent example has children, the corresponding links are 
+The Indent example has children, the corresponding links are
 automatically placed at the end of the section; i.e., directly below:
 
 .. toctree::

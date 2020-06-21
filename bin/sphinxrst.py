@@ -1141,15 +1141,15 @@ section_info     = list()
 file_info_stack  = list()
 file_list.reverse()
 for file_in in file_list  :
-    info = { 'file_in' : file_in, 'parent_index' : None }
+    info = { 'file_in' : file_in, 'parent_section' : None }
     file_info_stack.append(info)
 while 0 < len(file_info_stack) :
-    info          = file_info_stack.pop()
-    file_in       = info['file_in']
-    parent_index  = info['parent_index']
+    info           = file_info_stack.pop()
+    file_in        = info['file_in']
+    parent_section = info['parent_section']
     #
     if not os.path.isfile(file_in) :
-        assert parent_index is None
+        assert parent_section is None
         msg  = 'can not find the file: ' + file_in + '\n'
         msg += 'which is located in sphinx_dir/file_list\n'
         msg += 'sphinx_dir = ' + sphinx_dir + '\n'
@@ -1171,12 +1171,12 @@ while 0 < len(file_info_stack) :
         section_name = this_file_info[i]['section_name']
         section_data = this_file_info[i]['section_data']
         if 0 < i :
-            parent_index = first_section_index
+            parent_section = first_section_index
         #
         section_info.append( {
-            'section_name' : section_name,
-            'file_in'      : file_in,
-            'parent_index' : parent_index
+            'section_name'   : section_name,
+            'file_in'        : file_in,
+            'parent_section' : parent_section
         } )
         # ----------------------------------------------------------------
         # process suspend commands
@@ -1201,7 +1201,7 @@ while 0 < len(file_info_stack) :
         for file_tmp in child_file :
             file_info_stack.append( {
                 'file_in'      : file_tmp,
-                'parent_index' : section_index,
+                'parent_section' : section_index,
             } )
         # ----------------------------------------------------------------
         # process spell commands
@@ -1292,10 +1292,10 @@ file_data = file_ptr.read()
 file_ptr.close()
 #
 for info in section_info :
-    section_name = info['section_name']
-    file_in      = info['file_in']
-    parent_index = info['parent_index']
-    if parent_index is None :
+    section_name   = info['section_name']
+    file_in        = info['file_in']
+    parent_section = info['parent_section']
+    if parent_section is None :
         # There should be an line in index.rst with the following contents:
         #     sphinxrst/section_name.rst'
         # where the spaces are optional
