@@ -120,13 +120,13 @@ Other sections in a file are children of the parent section.
 
 Children Command
 ----------------
-A section can specifiy a set of files for which
+A section can specify a set of files for which
 the parent section in each file is a child of the current section.
 This is done using the following command
 at the beginning of a line:
 
 |space| |space| |space| |space|
-``{children_sphinrst%`` *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
+``{children_sphinxrst%`` *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
 
 Requirements
 ............
@@ -134,8 +134,8 @@ The back quote character \` can not be in the same lines as the command above.
 
 White Space
 ............
-Leading and trailing white space is not included in
-*file_name*, *start*, or *end*.
+Leading and trailing white space is not included in the file names.
+In addition, and empty file name is ignored.
 This enables one to put the command on multiple input lines.
 
 index.rst
@@ -632,7 +632,10 @@ def children_command(
     section_data = data_left + data_right
     #
     # file_list
-    file_list = match.group(1).split('%').strip()
+    for child_file in match.group(1).split('%') :
+        child_file = child_file.strip()
+        if child_file != '' :
+            file_list.append(child_file)
     #
     # section_list
     for child_file in file_list :
@@ -641,23 +644,22 @@ def children_command(
             msg += 'in the children command does not exist'
             sys_exit(msg, file_in, section_name)
         #
+        # errors in the begin and end commands will be detected later
+        # when this file is processed.
         file_ptr    = open(child_file, 'r')
         file_data   = file_ptr.read()
         file_ptr.close()
         file_index  = 0
         match       = pattern_begin.search(file_data)
-        while match is not None :
-            child_name  = match.group(1)
-            #
-            file_index += match.end()
-            data_rest   = file_data[file_index :]
-            match       = pattern_end.search(data_rest)
-            if match is not None :
-                section_list.append(child_name)
-                #
-                file_index += match.end()
-                data_rest   = file_data[file_index :]
-                match       = pattern_begin.search(data_rest)
+        if match is None :
+            msg  = 'The file ' + child_file + '\n'
+            msg += 'in the children command does not contain any '
+            msg += 'begin commands'
+            sys_exit(msg, file_in, section_name)
+        #
+        child_name  = match.group(1)
+        if child_name != '' :
+            section_list.append(child_name)
     #
     return section_data, file_list, section_list
 # -----------------------------------------------------------------------------
@@ -1193,7 +1195,7 @@ while 0 < len(file_info_2do) :
         )
         section_index = len(section_info) - 1
         for file_in in child_file :
-            file_info.append( {
+            file_info_2do.append( {
                 'file_in'      : file_in,
                 'parent_index' : section_index,
             } )
