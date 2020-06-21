@@ -4,7 +4,7 @@ Welcome to sphinxrst's documentation!
 =======================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
    sphinxrst/sphinxrst_py
    sphinxrst/code_block_exam

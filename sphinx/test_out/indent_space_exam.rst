@@ -1,3 +1,7 @@
+|
+
+:ref:`children_exam<children_exam>` > :ref:`children_res<children_res>` > indent_space_exam
+
 .. _indent_space_exam:
 
 ===========================

@@ -1,3 +1,7 @@
+|
+
+:ref:`children_exam<children_exam>` > children_res
+
 .. _children_res:
 
 ==========================

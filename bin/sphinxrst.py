@@ -383,11 +383,6 @@ Change commands from
 :code:`{` *name* ``_sphinxrst}`` to ``{sphinxrst_`` *name* :code:`}`
 and reserve the text ``{sphinxrst_`` [^}]* :code:`}` for sphinxrst commands.
 
-Ancestors
----------
-Add a line, at top of each section,
-with the ancestors of the current section and a link to each ancestor.
-
 {end_sphinxrst sphinxrst_py}
 """
 # ----------------------------------------------------------------------------
@@ -970,21 +965,39 @@ def add_labels_for_headings(
 def write_file(
     file_in,
     section_data,
+    section_info,
     child_list,
     children_heading_info,
     output_dir,
     section_name,
     spell_checker,
 ) :
-    #
+    # split section data into lines
     newline_pattern = re.compile( r'\n')
     newline_itr     = newline_pattern.finditer(section_data)
     newline_list    = list()
     for itr in newline_itr :
         newlist = itr.start()
         newline_list.append( newlist )
+    #
+    # open output file
     file_out          = output_dir + '/' + section_name + '.rst'
     file_ptr          = open(file_out, 'w')
+    #
+    # links to ancestors and position in website
+    section_index = len(section_info) - 1
+    assert section_info[section_index]['section_name'] == section_name
+    line  = section_name + '\n'
+    ancestor_index = section_info[section_index]['parent_section']
+    while ancestor_index != None :
+        ancestor_name  = section_info[ancestor_index]['section_name']
+        ancestor_index = section_info[ancestor_index]['parent_section']
+        line  = f':ref:`{ancestor_name}<{ancestor_name}>`' + ' > ' + line
+    file_ptr.write('|\n\n') # vertical space needed by bootstrap theme
+    file_ptr.write(line)
+    file_ptr.write('\n')
+    #
+    # now output the section data
     startline         = 0
     inside_code       = False
     previous_empty    = True
@@ -1293,6 +1306,7 @@ while 0 < len(file_info_stack) :
         write_file(
             file_in,
             section_data,
+            section_info,
             child_list,
             children_heading_info,
             output_dir,

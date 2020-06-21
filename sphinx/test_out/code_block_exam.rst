@@ -1,3 +1,7 @@
+|
+
+code_block_exam
+
 .. _code_block_exam:
 
 ==================

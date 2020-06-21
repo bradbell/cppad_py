@@ -1,3 +1,7 @@
+|
+
+:ref:`spell_exam<spell_exam>` > spell_res
+
 .. _spell_res:
 
 ============

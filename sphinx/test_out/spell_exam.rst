@@ -1,3 +1,7 @@
+|
+
+spell_exam
+
 .. _spell_exam:
 
 =============

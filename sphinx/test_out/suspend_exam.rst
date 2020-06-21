@@ -1,3 +1,7 @@
+|
+
+suspend_exam
+
 .. _suspend_exam:
 
 ===============

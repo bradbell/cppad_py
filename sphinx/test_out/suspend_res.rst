@@ -1,3 +1,7 @@
+|
+
+:ref:`suspend_exam<suspend_exam>` > suspend_res
+
 .. _suspend_res:
 
 ==============
