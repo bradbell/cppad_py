@@ -517,10 +517,10 @@ def file2file_info(
                     sys_exit(msg)
             for info in section_info :
                 if section_name == info['section_name'] :
-                    input_file = info['file_in']
                     msg  = 'begin_sphinxrst ' + section_name
-                    msg += ' appears twice; see files\n'
-                    msg +=  file_in + ' and ' + input_file
+                    msg += ' appears twice\n'
+                    msg += 'Once in file ' + file_in + '\n'
+                    msg += 'And again in file ' + info['file_in'] + '\n'
                     sys_exit(msg)
             #
             # file_index
