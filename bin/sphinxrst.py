@@ -118,12 +118,31 @@ A single input file may contain multiple sections.
 The first section in a file is called the file's parent section.
 Other sections in a file are children of the parent section.
 
+Children Command
+----------------
+A section can specifiy a set of files for which
+the parent section in each file is a child of the current section.
+This is done using the following command
+at the beginning of a line:
+
+|space| |space| |space| |space|
+``{children_sphinrst%`` *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
+
+Requirements
+............
+The back quote character \` can not be in the same lines as the command above.
+
+White Space
+............
+Leading and trailing white space is not included in
+*file_name*, *start*, or *end*.
+This enables one to put the command on multiple input lines.
+
 index.rst
 ---------
 The file ``index.rst`` must exist in the directory
 :ref:`sphinx_dir<sphinxrst_py.command_line_arguments.sphinx_dir>`.
-For each parent *section_name* in a
-:ref:`begin section<sphinxrst_py.section.begin_command>` command,
+For each *section_name*, that is not a child of another section,
 there must be a line in ``index.rst`` with the following text:
 
 |space| |space| |space| |space|
@@ -241,7 +260,7 @@ A code block, from any file, is included by the following command
 at the beginning of a line:
 
 |space| |space| |space| |space|
-``{file_sphinxrst%`` *file_name* :code:`%` *start* :code:`%` *stop*:code:`%}`
+``{file_sphinxrst%`` *file_name* :code:`%` *start* :code:`%` *stop* :code:`%}`
 
 Requirements
 ------------
@@ -359,16 +378,6 @@ Command Order
 Change commands from
 :code:`{` *name* ``_sphinxrst}`` to ``{sphinxrst_`` *name* :code:`}`
 and reserve the text ``{sphinxrst_`` [^}]* :code:`}` for sphinxrst commands.
-
-Children Command
-----------------
-Add a command so a section can specify input files as follows:
-
-|space| |space| |space| |space|
-``{children_sphinxrst %file_1%`` ... ``%file_n%}``
-
-For each input file, the parent in the input file is a child of
-the current section.
 
 Ancestors
 ---------
@@ -604,25 +613,53 @@ def suspend_command(
 # -----------------------------------------------------------------------------
 # process children command
 def children_command(
-    children_pattern, section_data, file_in, section_name
+    children_pattern,
+    pattern_begin,
+    pattern_end,
+    section_data,
+    file_in,
+    section_name,
 ) :
-    children_list = list()
+    file_list    = list()
+    section_list = list()
     match         = children_pattern.search(section_data)
     if match is None :
-        return section_data, children_list
+        return section_data, file_list, section_list
     #
-    for file_in in match.group(1).split('%') :
-        file_in.strip()
-        if not os.path.isfile(file_in) :
-            msg  = 'The file ' + file_in + '\n'
-            msg += 'in the children command does not exist'
-            sys_exit(msg, file_in, section_name)
-        children_list.append(file_in)
-    #
+    # section_data
     data_left  = section_data[ : match.start() ]
     data_right = section_data[ match.end() : ]
     section_data = data_left + data_right
-    return section_data, children_list
+    #
+    # file_list
+    file_list = match.group(1).split('%').strip()
+    #
+    # section_list
+    for child_file in file_list :
+        if not os.path.isfile(child_file) :
+            msg  = 'The file ' + child_file + '\n'
+            msg += 'in the children command does not exist'
+            sys_exit(msg, file_in, section_name)
+        #
+        file_ptr    = open(child_file, 'r')
+        file_data   = file_ptr.read()
+        file_ptr.close()
+        file_index  = 0
+        match       = pattern_begin.search(file_data)
+        while match is not None :
+            child_name  = match.group(1)
+            #
+            file_index += match.end()
+            data_rest   = file_data[file_index :]
+            match       = pattern_end.search(data_rest)
+            if match is not None :
+                section_list.append(child_name)
+                #
+                file_index += match.end()
+                data_rest   = file_data[file_index :]
+                match       = pattern_begin.search(data_rest)
+    #
+    return section_data, file_list, section_list
 # -----------------------------------------------------------------------------
 # process spell command
 def spell_command(
@@ -1146,14 +1183,16 @@ while 0 < len(file_info_2do) :
         )
         # ----------------------------------------------------------------
         # process children command
-        section_data, children_list = children_command(
+        section_data, child_file, child_section = children_command(
             pattern_children_sphinxrst,
+            pattern_begin_sphinxrst,
+            pattern_end_sphinxrst,
             section_data,
             file_in,
             section_name,
         )
         section_index = len(section_info) - 1
-        for file_in in children_list :
+        for file_in in child_file :
             file_info.append( {
                 'file_in'      : file_in,
                 'parent_index' : section_index,
@@ -1221,11 +1260,13 @@ while 0 < len(file_info_2do) :
         )
         # ----------------------------------------------------------------
         # child_list
+        # first section in each file may need to add to child list
+        parent   = section_name == this_file_info[0]['section_name']
         child_list = list()
-        parent     =  section_name == this_file_info[0]['section_name']
         if parent :
             for i in range( len(this_file_info) - 1 ) :
                 child_list.append(  this_file_info[i+1]['section_name'] )
+        child_list = child_list + child_section
         # ---------------------------------------------------------------
         # write file for this section
         write_file(
