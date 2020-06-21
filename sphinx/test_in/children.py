@@ -37,8 +37,8 @@ Example
 
 Children
 --------
-The Indent example has children, the corresponding links are placed
-at the end of the section; i.e., directy below here:
+The Indent example has children, the corresponding links are
+automatically placed at the end of the section; i.e., directly below:
 
 {end_sphinxrst children_res}
 """

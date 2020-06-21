@@ -7,9 +7,8 @@
 # ----------------------------------------------------------------------------
 bin/sphinxrst.py
 sphinx/test_in/code_block.py
-sphinx/test_in/indent_space.py
-sphinx/test_in/indent_tab.py
 sphinx/test_in/file_block.py
 sphinx/test_in/suspend.py
 sphinx/test_in/spell.py
 sphinx/test_in/heading.py
+sphinx/test_in/children.py

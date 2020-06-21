@@ -138,6 +138,10 @@ Leading and trailing white space is not included in the file names.
 In addition, and empty file name is ignored.
 This enables one to put the command on multiple input lines.
 
+Example
+.......
+:ref:`children_exam`
+
 index.rst
 ---------
 The file ``index.rst`` must exist in the directory
@@ -1133,14 +1137,14 @@ pattern_children_sphinxrst = re.compile(
 )
 # -----------------------------------------------------------------------------
 # process each file in the list
-section_info   = list()
-file_info_2do  = list()
+section_info     = list()
+file_info_stack  = list()
 file_list.reverse()
 for file_in in file_list  :
     info = { 'file_in' : file_in, 'parent_index' : None }
-    file_info_2do.append(info)
-while 0 < len(file_info_2do) :
-    info          = file_info_2do.pop()
+    file_info_stack.append(info)
+while 0 < len(file_info_stack) :
+    info          = file_info_stack.pop()
     file_in       = info['file_in']
     parent_index  = info['parent_index']
     #
@@ -1162,7 +1166,7 @@ while 0 < len(file_info_2do) :
     #
     first_section_index = len(section_info)
     for i in range( len(this_file_info) ) :
-        #
+        # ----------------------------------------------------------------
         # section_name, section_data
         section_name = this_file_info[i]['section_name']
         section_data = this_file_info[i]['section_data']
@@ -1174,7 +1178,7 @@ while 0 < len(file_info_2do) :
             'file_in'      : file_in,
             'parent_index' : parent_index
         } )
-        #
+        # ----------------------------------------------------------------
         # process suspend commands
         section_data = suspend_command(
             pattern_suspend_sphinxrst,
@@ -1194,9 +1198,9 @@ while 0 < len(file_info_2do) :
             section_name,
         )
         section_index = len(section_info) - 1
-        for file_in in child_file :
-            file_info_2do.append( {
-                'file_in'      : file_in,
+        for file_tmp in child_file :
+            file_info_stack.append( {
+                'file_in'      : file_tmp,
                 'parent_index' : section_index,
             } )
         # ----------------------------------------------------------------
