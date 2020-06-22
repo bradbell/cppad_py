@@ -16,6 +16,7 @@
     underbars
     conf
     toctree
+    cmd
 }
 
 .. |space| unicode:: 0xA0
@@ -168,10 +169,10 @@ If a sphinxrst input file has more than one section,
 the :ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`
 has children.
 
-- If this section has a :ref:`child link command<child_commands>`
+- If this section has a :ref:`child link command<child_cmd>`
   links to all the children of the current section are place where the
   child link command is located.
-- If this section has a :ref:`children command<child_commands>`
+- If this section has a :ref:`children command<child_cmd>`
   no automatic links to the children of the current section are generated.
 - Otherwise, the links to the children of the current section are placed
   at the end of the section.
@@ -209,11 +210,11 @@ Children
 """
 # ---------------------------------------------------------------------------
 """
-{sphinxrst_begin child_commands}
+{sphinxrst_begin child_cmd}
 
-==============
-Child Commands
-==============
+=================================
+Children and Child Links Commands
+=================================
 
 Syntax
 ------
@@ -249,7 +250,7 @@ Example
    %sphinx/test_in/children.py
 %}
 
-{sphinxrst_end child_commands}
+{sphinxrst_end child_cmd}
 """
 # ---------------------------------------------------------------------------
 """
