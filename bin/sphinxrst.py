@@ -124,7 +124,7 @@ for sections. The only such directive you nedd to enter is in the
 file *sphinx_dir*:code`/index.rst`.
 One entry is for the first section in the
 :ref:`root_file<sphinxrst_py.command_line_arguments.root_file>`.
-Other entires are for ``.rst`` files that are not extracted by
+Other entries are for ``.rst`` files that are not extracted by
 ``sphinxrst.py``.
 
 
@@ -250,51 +250,7 @@ Spell Checking
 --------------
 Spell checking is done for these code blocks,
 but not for code blocks included using the
-:ref:`file command<sphinxrst_py.file_command>`.
-
-File Command
-============
-A code block, from any file, is included by the following command
-at the beginning of a line:
-
-|space| |space| |space| |space|
-``{sphinxrst_file%`` *file_name* :code:`%` *start* :code:`%` *stop* :code:`%}`
-
-Requirements
-------------
-The back quote character \` can not be in the same lines as the command above.
-
-White Space
------------
-Leading and trailing white space is not included in
-*file_name*, *start*, or *end*.
-This enables one to put the command on multiple input lines.
-
-file_name
----------
-If *file_name* is empty, the current input file is used.
-Otherwise *file_name* is relative to the directory where ``sphinxrst.py``
-is executed; i.e., the top directory for this git repository.
-
-start
------
-The code block starts with the occurence
-of the text *start* at the beginning of a line in *file_name*.
-There can only be one occurence of *start* at the beginning
-of a line in *file_name*.
-
-stop
-----
-The code block ends with the occurence
-of the text *stop* at the beginning of a line and after *start*.
-There can only be one occurence of *stop* at the beginning of a line
-and after *start* and it must come after *start*.
-The lines containing *start* and *stop* in *file_name* are not included in
-the code block.
-
-Spell Checking
---------------
-Spell checking is **not** done for these code blocks.
+:ref:`file command<file_command>`.
 
 Headings and Links
 ==================
@@ -357,11 +313,10 @@ Module
 Convert the program into a python module and provide a pip distribution for it.
 
 
-Examples
+Children
 ========
 {sphinxrst_children%
    %sphinx/test_in/code_block.py
-   %sphinx/test_in/file_block.py
    %sphinx/test_in/suspend.py
    %sphinx/test_in/spell.py
    %sphinx/test_in/heading.py
@@ -369,6 +324,64 @@ Examples
 %}
 
 {sphinxrst_end sphinxrst_py}
+"""
+# ---------------------------------------------------------------------------
+"""
+{sphinxrst_begin file_command}
+
+============
+File Command
+============
+
+Syntax
+------
+``{sphinxrst_file%`` *file_name* :code:`%` *start* :code:`%` *stop* :code:`%}`
+
+Purpose
+-------
+A code block, from any file, is included by the command above at the
+:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`:
+
+White Space
+-----------
+Leading and trailing white space is not included in
+*file_name*, *start*, or *end*.
+This enables one to put the command on multiple input lines.
+
+file_name
+---------
+If *file_name* is empty, the current input file is used.
+Otherwise *file_name* is relative to the directory where ``sphinxrst.py``
+is executed; i.e., the top directory for this git repository.
+
+start
+-----
+The code block starts with the occurence
+of the text *start* at the beginning of a line in *file_name*.
+There can only be one occurence of *start* at the beginning
+of a line in *file_name*.
+
+stop
+----
+The code block ends with the occurence
+of the text *stop* at the beginning of a line and after *start*.
+There can only be one occurence of *stop* at the beginning of a line
+and after *start* and it must come after *start*.
+The lines containing *start* and *stop* in *file_name* are not included in
+the code block.
+
+Spell Checking
+--------------
+Spell checking is **not** done for these code blocks.
+
+
+Example
+-------
+{sphinxrst_children%
+   %sphinx/test_in/file_block.py
+%}
+
+{sphinxrst_end file_command}
 """
 # ----------------------------------------------------------------------------
 import sys
