@@ -221,37 +221,6 @@ Double Words
 It is considered an error to have only white space between two occurrences
 of the same word.
 
-Code Command
-============
-A code block, directly below in the current input file, begins with
-a line containing the following command:
-
-|space| |space| |space| |space|
-``{sphinxrst_code}``
-
-Requirements
-------------
-Each code command ends with
-a line containing another code command.
-Hence there must be an even number of code commands.
-The back quote character \` can't be in the same line as the two commands.
-
-Rest of Line
-------------
-Other characters on the same line as a code command
-are not included in the sphinxrst output.
-This enables one to begin or end a comment block
-without having the comment characters in the sphinxrst output.
-The file extension in the name of the current input file is used to
-determine the source code language for highlighting the code block.
-Code blocks as usually small and
-
-Spell Checking
---------------
-Spell checking is done for these code blocks,
-but not for code blocks included using the
-:ref:`file command<file_command>`.
-
 Headings and Links
 ==================
 
@@ -316,7 +285,6 @@ Convert the program into a python module and provide a pip distribution for it.
 Children
 ========
 {sphinxrst_children%
-   %sphinx/test_in/code_block.py
    %sphinx/test_in/suspend.py
    %sphinx/test_in/spell.py
    %sphinx/test_in/heading.py
@@ -324,6 +292,54 @@ Children
 %}
 
 {sphinxrst_end sphinxrst_py}
+"""
+# ---------------------------------------------------------------------------
+"""
+{sphinxrst_begin code_command}
+
+============
+Code Command
+============
+
+Syntax
+------
+``{sphinxrst_code}``
+
+Purpose
+-------
+A code block, directly below in the current input file, begins with
+a line containing the command above.
+
+Requirements
+------------
+Each code command ends with
+a line containing another code command.
+Hence there must be an even number of code commands.
+The back quote character \` can't be in the same line as the commands.
+
+Rest of Line
+------------
+Other characters on the same line as a code command
+are not included in the sphinxrst output.
+This enables one to begin or end a comment block
+without having the comment characters in the sphinxrst output.
+The file extension in the name of the current input file is used to
+determine the source code language for highlighting the code block.
+Code blocks as usually small and
+
+Spell Checking
+--------------
+Spell checking is done for these code blocks,
+but not for code blocks included using the
+:ref:`file command<file_command>`.
+
+Example
+-------
+{sphinxrst_children%
+   %sphinx/test_in/code_block.py
+%}
+
+{sphinxrst_end code_command}
 """
 # ---------------------------------------------------------------------------
 """
