@@ -8,7 +8,6 @@
 # ----------------------------------------------------------------------------
 """
 {sphinxrst_begin heading_exam}
-{sphinxrst_spell sphinxrst}
 
 ===============
 Heading Example

@@ -10,7 +10,7 @@ Heading Example
 
 
 .. literalinclude:: ../../sphinx/test_in/heading.py
-    :lines: 30-67
+    :lines: 29-66
 
 .. _heading_exam.child_sections:
 

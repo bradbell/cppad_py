@@ -22,7 +22,6 @@ Spell Example
 """
 {sphinxrst_begin spell_res}
 {sphinxrst_spell
-    sphinxrst
     iterable
     \cos
     \rm
@@ -49,7 +48,7 @@ Other latex commands in this section; e.g. ``\cos``, ``\sin``, ``\rm``,
 have been included in the spelling command for this section.
 An alternative would be to add them to the
 :ref:`spell_file<sphinxrst_py.command_line_arguments.spell_file>`
-whick applies to all sections:
+which applies to all sections:
 
 .. math::
 
