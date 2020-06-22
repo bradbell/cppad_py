@@ -80,7 +80,7 @@ A line that begins with :code:`#` is a comment (not included in the list).
 The words are one per line and
 leading and trailing white space in a word are ignored.
 Special words, for a particular section, are specified using the
-:ref:`spell command<sphinxrst_py.spell_checking.spell_command>`.
+:ref:`spell command<spell_command>`.
 
 Section
 =======
@@ -160,44 +160,6 @@ Links to all the children of the current section are placed
 at the location of the children command.
 You can place a heading directly before the links to make them easier to find.
 
-Spell Checking
-==============
-
-spell_file
-----------
-The list of words in
-:ref:`spell_file<sphinxrst_py.command_line_arguments.spell_file>`
-are considered correct spellings for all sections.
-The latex commands corresponding to the letters in the greek alphabet
-are automatically added to this list
-
-Spell Command
--------------
-You can specify a special list of words for the current
-section using the following command at the beginning of a line:
-
-|space| |space| |space| |space|
-``{sphinxrst_spell`` *word_1* ...  *word_n*:code:`}`
-
-Here *word_1*, ..., *word_n* is the special list of words for this section.
-In the syntax above the list of words is all in one line,
-but they could be on different lines.
-Each word starts with an upper case letter,
-a lower case letter, or a back slash.
-The back slash is included as a possible beginning of a word
-so that latex commands can be included in the spelling list.
-The rest of the characters in a word are lower case letters.
-
-Capitalized Words
------------------
-The case of the first letter does not matter when checking spelling;
-e.g., if ``abcd`` is *word_1* then ``Abcd`` will be considered a valid word.
-
-Double Words
-------------
-It is considered an error to have only white space between two occurrences
-of the same word.
-
 Headings and Links
 ==================
 
@@ -262,12 +224,67 @@ Convert the program into a python module and provide a pip distribution for it.
 Children
 ========
 {sphinxrst_children%
-   %sphinx/test_in/spell.py
    %sphinx/test_in/heading.py
    %sphinx/test_in/children.py
 %}
 
 {sphinxrst_end sphinxrst_py}
+"""
+# ---------------------------------------------------------------------------
+"""
+{sphinxrst_begin spell_command}
+
+=============
+Spell Command
+=============
+
+Syntax
+------
+``{sphinxrst_spell`` *word_1* ...  *word_n*:code:`}`
+
+Here *word_1*, ..., *word_n* is the special list of words for this section.
+In the syntax above the list of words is all in one line,
+but they could be on different lines.
+Each word starts with an upper case letter,
+a lower case letter, or a back slash.
+The back slash is included as a possible beginning of a word
+so that latex commands can be included in the spelling list.
+The rest of the characters in a word are lower case letters.
+
+
+Purpose
+-------
+You can specify a special list of words
+(not normally considered correct spelling)
+for the current section using the command above at the
+:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
+
+spell_file
+----------
+The list of words in
+:ref:`spell_file<sphinxrst_py.command_line_arguments.spell_file>`
+are considered correct spellings for all sections.
+The latex commands corresponding to the letters in the greek alphabet
+are automatically added to this list.
+
+
+Capitalized Words
+-----------------
+The case of the first letter does not matter when checking spelling;
+e.g., if ``abcd`` is *word_1* then ``Abcd`` will be considered a valid word.
+
+Double Words
+------------
+It is considered an error to have only white space between two occurrences
+of the same word.
+
+Example
+-------
+{sphinxrst_children%
+   %sphinx/test_in/spell.py
+%}
+
+{sphinxrst_end spell_command}
 """
 # ---------------------------------------------------------------------------
 """
@@ -281,23 +298,18 @@ Syntax
 ------
 ``{sphinxrst_suspend}``
 
-|
 
 ``{sphinxrst_resume}``
 
+
 Purpose
 -------
-It is possible to suspend the sphinxrst extraction during a section.
-One begins the suspension with a suspend command at the
+It is possible to suspend (resume) the sphinxrst extraction during a section.
+One begins (ends) the suspension with a suspend command (resume command)
+at the
 :ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
 Note that this will also suspend all other sphinxrst processing; e.g.,
 spell checking.
-
-Resume Command
---------------
-One resumes the extraction with a resume command at the beginning of a line.
-Each suspend command must have a corresponding resume command in same
-section (between the corresponding begin sphinxrst and end sphinxrst commands).
 
 Example
 -------

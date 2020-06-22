@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`spell_exam<spell_exam>` > spell_res
+:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`spell_command<spell_command>` > :ref:`spell_exam<spell_exam>` > spell_res
 
 .. _spell_res:
 
