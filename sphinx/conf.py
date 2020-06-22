@@ -18,8 +18,8 @@ import sphinx_bootstrap_theme
 
 # -- Project information -----------------------------------------------------
 
-project = 'cppad_py'
-copyright = '2017-20, Brad Bell'
+project = 'sphinxrst'
+copyright = '2020'
 author = 'Brad Bell'
 
 # The full version, including alpha/beta/rc tags
@@ -49,8 +49,8 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'test_out']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'bootstrap'
-html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+# html_theme = 'bootstrap'
+# html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

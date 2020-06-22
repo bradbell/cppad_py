@@ -26,7 +26,7 @@ Extract Sphinx RST From Source Code
 
 Syntax
 ======
-``sphinxrst.py`` *sphinx_dir* *file_list* *spell_list*
+``sphinxrst.py`` *sphinx_dir* *root_file* *spell_list*
 
 Notation
 ========
@@ -55,16 +55,20 @@ All the ``.rst`` files in *sphinx_dir*:code:`/sphinxrst`
 were extracted from the source code the last time that ``sphinxrst.py``
 was executed.
 
-file_list
+root_file
 ---------
-The command line argument *file_list* is the name of a file
-in the *sphinx_dir* directory containing a list of file names.
-These file names are one per line and relative to the
-top git repository directory.
-A line that begins with :code:`#` is a comment (not included in the list).
-Leading and trailing white space in a file name are ignored.
-The sphinxrst files will be extracted from the files in this list
-and placed in the *sphinx_dir*:code`/sphinxrst` directory.
+The command line argument *root_file* is the name of a file,
+relative to the top git repository directory.
+The first sphinxrst section in this file will be to root section
+(top section), in the table of contents for this documentation.
+The file *sphinx_dir*:code`/index.rst` must contain the line
+
+|space| |space| |space| |space|
+``sphinxrst/`` *section_name*
+
+where *section_name* is the name
+of the first section in *root_file*.
+
 
 spell_list
 ----------
@@ -137,18 +141,6 @@ White Space
 Leading and trailing white space is not included in the file names.
 In addition, and empty file name is ignored.
 This enables one to put the command on multiple input lines.
-
-index.rst
----------
-The file ``index.rst`` must exist in the directory
-:ref:`sphinx_dir<sphinxrst_py.command_line_arguments.sphinx_dir>`.
-For each *section_name*, that is not a child of another section,
-there must be a line in ``index.rst`` with the following text:
-
-|space| |space| |space| |space|
-``sphinxrst/`` *section_name*:code:`.rst`
-
-There can white space before the text above.
 
 Suspend Command
 ===============
@@ -425,7 +417,7 @@ def sys_exit(msg, file_in=None, section_name=None) :
         msg += '\nfile = ' + file_in
         if section_name != None :
             msg += ', section = ' + section_name
-    sys.exit( 'bin/sphinxrst.py sphinx_dir file_list spell_list\n' + msg )
+    sys.exit(msg )
 # ---------------------------------------------------------------------------
 def file2list(file_name) :
     file_ptr  = open(file_name, 'r')
@@ -1064,13 +1056,12 @@ if not os.path.isdir(sphinx_dir) :
     msg += 'is not a sub-directory of current working directory'
     sys_exit(msg)
 #
-# file_list
-file_list_path = sphinx_dir + '/' + sys.argv[2]
-if not os.path.isfile(file_list_path) :
-    msg  = 'sphinx_dir/file_list = ' + file_list_path + '\n'
+# root_file
+root_file = sys.argv[2]
+if not os.path.isfile(root_file) :
+    msg  = 'root_file = ' + root_file + '\n'
     msg += 'is not a file'
     sys_exit(msg)
-file_list  = file2list(file_list_path)
 #
 # spell_list
 file_path = sphinx_dir + '/' + sys.argv[3]
@@ -1126,16 +1117,15 @@ patten_children_command = re.compile(
 section_info     = list()
 file_info_stack  = list()
 file_info_done   = list()
-file_list.reverse()
-for file_in in file_list  :
-    info = {
-        'file_in'        : file_in,
-        'parent_file'    : file_list_path,
-        'parent_section' : None,
-    }
-    file_info_stack.append(info)
+info = {
+    'file_in'        : root_file,
+    'parent_file'    : None,
+    'parent_section' : None,
+}
+file_info_stack.append(info)
 while 0 < len(file_info_stack) :
     info  = file_info_stack.pop()
+    #
     for info_tmp in file_info_done :
         if info_tmp['file_in'] == info['file_in'] :
             msg  = 'The file ' + info['file_in'] + ' is included twice\n'
@@ -1147,14 +1137,7 @@ while 0 < len(file_info_stack) :
     file_in        = info['file_in']
     parent_file    = info['parent_file']
     parent_section = info['parent_section']
-    #
-    if not os.path.isfile(file_in) :
-        assert parent_section is None
-        msg  = 'can not find the file: ' + file_in + '\n'
-        msg += 'which is located in sphinx_dir/file_list\n'
-        msg += 'sphinx_dir = ' + sphinx_dir + '\n'
-        msg += 'file_list  = ' + sys.argv[2] + '\n'
-        sys_exit(msg)
+    assert os.path.isfile(file_in)
     #
     # get sphinxrst docuemntation in this file
     this_file_info = file2file_info(
@@ -1164,6 +1147,7 @@ while 0 < len(file_info_stack) :
         file_in,
     )
     #
+    # first section for this file (is parent for this file)
     first_section_index = len(section_info)
     for i in range( len(this_file_info) ) :
         # ----------------------------------------------------------------
@@ -1288,28 +1272,27 @@ while 0 < len(file_info_stack) :
         )
 # -----------------------------------------------------------------------------
 # read index.rst
-file_in   = sphinx_dir + '/index.rst'
-file_ptr  = open(file_in, 'r')
-file_data = file_ptr.read()
+index_file   = sphinx_dir + '/index.rst'
+file_ptr     = open(index_file, 'r')
+file_data    = file_ptr.read()
 file_ptr.close()
 #
-for info in section_info :
-    section_name   = info['section_name']
-    file_in        = info['file_in']
-    parent_section = info['parent_section']
-    if parent_section is None :
-        # There should be an line in index.rst with the following contents:
-        #     sphinxrst/section_name.rst'
-        # where the spaces are optional
-        pattern  = r'\n[ \t]*sphinxrst/'
-        pattern += section_name.replace('.', '[.]')
-        #
-        match_line = re.search(pattern, file_data)
-        if match_line == None :
-            msg   = 'Can not find following line in ' + file_in + ':\n'
-            msg  += '    sphinxrst/' + section_name + '\n'
-            msg  += 'Spaces before the text above are optional.'
-            sys_exit(msg)
+# section_info[0] corresponds to the root section
+assert section_info[0]['file_in'] == root_file
+assert section_info[0]['parent_section'] is None
+section_name = section_info[0]['section_name']
+#
+# check section_name is in index file
+pattern  = r'\n[ \t]*sphinxrst/'
+pattern += section_name.replace('.', '[.]')
+match_line = re.search(pattern, file_data)
+if match_line == None :
+    msg  = 'The first section in the root_file is ' + section_name + '\n'
+    msg += 'The following line:\n'
+    msg += '    sphinxrst/' + section_name + '\n'
+    msg += 'must is missing from the toctree command in\n'
+    msg += index_file
+    sys_exit(msg)
 #
 print('sphinxrst.py: OK')
 sys.exit(0)
