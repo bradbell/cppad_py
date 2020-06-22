@@ -134,32 +134,6 @@ A single input file may contain multiple sections.
 The first section in a file is called the file's parent section.
 Other sections in a file are children of the parent section.
 
-Children Command
-----------------
-A section can specify a set of files for which
-the parent section in each file is a child of the current section.
-This is done using the following command
-at the beginning of a line:
-
-|space| |space| |space| |space|
-``{sphinxrst_children%`` *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
-
-Requirements
-............
-The back quote character \` can not be in the same lines as the command above.
-
-White Space
-............
-Leading and trailing white space is not included in the file names.
-In addition, and empty file name is ignored.
-This enables one to put the command on multiple input lines.
-
-Links
-.....
-Links to all the children of the current section are placed
-at the location of the children command.
-You can place a heading directly before the links to make them easier to find.
-
 Headings and Links
 ==================
 
@@ -194,7 +168,7 @@ If a sphinxrst input file has more than one section,
 the :ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`
 has children.
 If this section has a
-:ref:`children command<sphinxrst_py.table_of_contents.children_command>`
+:ref:`children command<children_command>`
 links to the children of the current section are place where the
 children command is located.
 Otherwise, the child links are placed at the end of this section.
@@ -225,10 +199,50 @@ Children
 ========
 {sphinxrst_children%
    %sphinx/test_in/heading.py
-   %sphinx/test_in/children.py
 %}
 
 {sphinxrst_end sphinxrst_py}
+"""
+# ---------------------------------------------------------------------------
+"""
+{sphinxrst_begin children_command}
+
+================
+Children Command
+================
+
+Syntax
+------
+``{sphinxrst_children%`` *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
+
+
+Purpose
+-------
+A section can specify a set of files for which
+the first section in each file (parent section for each file)
+is a child of the current section.
+This is done using the command above at the
+:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
+
+White Space
+-----------
+Leading and trailing white space is not included in the file names.
+In addition, and empty file name is ignored.
+This enables one to put the command on multiple input lines.
+
+Links
+-----
+Links to all the children of the current section are placed
+at the location of the children command.
+You can place a heading directly before the links to make them easier to find.
+
+Example
+-------
+{sphinxrst_children%
+   %sphinx/test_in/children.py
+%}
+
+{sphinxrst_end children_command}
 """
 # ---------------------------------------------------------------------------
 """
