@@ -19,7 +19,7 @@ Syntax
 Purpose
 -------
 A code block, from any file, is included by the command above at the
-:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`:
+:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
 
 .. _file_command.white_space:
 

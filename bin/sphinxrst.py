@@ -160,29 +160,6 @@ Links to all the children of the current section are placed
 at the location of the children command.
 You can place a heading directly before the links to make them easier to find.
 
-
-Suspend Command
-===============
-It is possible to suspend the sphinxrst extraction during a section.
-One begins the suspension with the following command
-at the beginning of a line:
-
-|space| |space| |space| |space|
-``{sphinxrst_suspend}``
-
-Note that this will also suspend the sphinxrst processing; e.g.,
-spell checking.
-
-Resume Command
---------------
-One resumes the output with the following command at the beginning of a line:
-
-|space| |space| |space| |space|
-``{sphinxrst_resume}``
-
-Each suspend command must have a corresponding resume command in same
-section (between the corresponding begin sphinxrst and end sphinxrst commands).
-
 Spell Checking
 ==============
 
@@ -285,13 +262,50 @@ Convert the program into a python module and provide a pip distribution for it.
 Children
 ========
 {sphinxrst_children%
-   %sphinx/test_in/suspend.py
    %sphinx/test_in/spell.py
    %sphinx/test_in/heading.py
    %sphinx/test_in/children.py
 %}
 
 {sphinxrst_end sphinxrst_py}
+"""
+# ---------------------------------------------------------------------------
+"""
+{sphinxrst_begin suspend_command}
+
+===============
+Suspend Command
+===============
+
+Syntax
+------
+``{sphinxrst_suspend}``
+
+|
+
+``{sphinxrst_resume}``
+
+Purpose
+-------
+It is possible to suspend the sphinxrst extraction during a section.
+One begins the suspension with a suspend command at the
+:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
+Note that this will also suspend all other sphinxrst processing; e.g.,
+spell checking.
+
+Resume Command
+--------------
+One resumes the extraction with a resume command at the beginning of a line.
+Each suspend command must have a corresponding resume command in same
+section (between the corresponding begin sphinxrst and end sphinxrst commands).
+
+Example
+-------
+{sphinxrst_children%
+   %sphinx/test_in/suspend.py
+%}
+
+{sphinxrst_end suspend_command}
 """
 # ---------------------------------------------------------------------------
 """
@@ -356,7 +370,7 @@ Syntax
 Purpose
 -------
 A code block, from any file, is included by the command above at the
-:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`:
+:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
 
 White Space
 -----------
