@@ -7,21 +7,21 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{begin_sphinxrst suspend_exam}
+{sphinxrst_begin suspend_exam}
 
 ===============
 Suspend Example
 ===============
 
-{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
+{sphinxrst_file%%# BEGIN_SRC%# END_SRC%}
 
-{end_sphinxrst suspend_exam}
+{sphinxrst_end suspend_exam}
 """
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-{begin_sphinxrst suspend_res}
-{spell_sphinxrst
+{sphinxrst_begin suspend_res}
+{sphinxrst_spell
     iterable
 }
 
@@ -32,19 +32,19 @@ Suspend Result
 Factorial
 ---------
 *f* = ``factorial(`` *positive_integer* ``)``
-{suspend_sphinxrst}
+{sphinxrst_suspend}
 """
 def factorial(n) :
     if n == 1 :
         return 1
     return n * factorial(n-1)
 """
-{resume_sphinxrst}
+{sphinxrst_resume}
 
 Product
 -------
 *p* = ``product(`` *iterable* ``)``
-{suspend_sphinxrst}
+{sphinxrst_suspend}
 """
 def product(itr) :
     p = 1.0
@@ -52,10 +52,10 @@ def product(itr) :
         p *= v
     return p
 """
-{resume_sphinxrst}
+{sphinxrst_resume}
 
 :ref:`suspend_exam`
 
-{end_sphinxrst suspend_res}
+{sphinxrst_end suspend_res}
 """
 # END_SRC

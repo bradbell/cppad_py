@@ -8,8 +8,8 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{begin_sphinxrst sphinxrst_py}
-{spell_sphinxrst
+{sphinxrst_begin sphinxrst_py}
+{sphinxrst_spell
     sphinxrst
     rst
     underbar
@@ -96,7 +96,7 @@ The start of a sphinxrst section of the input file is indicated by the
 following command at the beginning of a line:
 
 |space| |space| |space| |space|
-``{begin_sphinxrst`` *section_name*:code:`}`
+``{sphinxrst_begin`` *section_name*:code:`}`
 
 End Command
 -----------
@@ -104,7 +104,7 @@ The end of a sphinxrst section of the input file is indicated by the following
 command at the beginning of a line:
 
 |space| |space| |space| |space|
-``{end_sphinxrst`` *section_name*:code:`}`
+``{sphinxrst_end`` *section_name*:code:`}`
 
 Here *section_name* must be the same as in the corresponding
 begin section command.
@@ -126,7 +126,7 @@ This is done using the following command
 at the beginning of a line:
 
 |space| |space| |space| |space|
-``{children_sphinxrst%`` *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
+``{sphinxrst_children%`` *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
 
 Requirements
 ............
@@ -161,7 +161,7 @@ One begins the suspension with the following command
 at the beginning of a line:
 
 |space| |space| |space| |space|
-``{suspend_sphinxrst}``
+``{sphinxrst_suspend}``
 
 Note that this will also suspend the sphinxrst processing; e.g.,
 spell checking.
@@ -171,7 +171,7 @@ Resume Command
 One resumes the output with the following command at the beginning of a line:
 
 |space| |space| |space| |space|
-``{resume_sphinxrst}``
+``{sphinxrst_resume}``
 
 Each suspend command must have a corresponding resume command in same
 section (between the corresponding begin sphinxrst and end sphinxrst commands).
@@ -198,7 +198,7 @@ You can specify a special list of words for the current
 section using the following command at the beginning of a line:
 
 |space| |space| |space| |space|
-``{spell_sphinxrst`` *word_1* ...  *word_n*:code:`}`
+``{sphinxrst_spell`` *word_1* ...  *word_n*:code:`}`
 
 Here *word_1*, ..., *word_n* is the special list of words for this section.
 In the syntax above the list of words is all in one line,
@@ -229,7 +229,7 @@ A code block, directly below in the current input file, begins with
 a line containing the following command:
 
 |space| |space| |space| |space|
-``{code_sphinxrst}``
+``{sphinxrst_code}``
 
 Requirements
 ------------
@@ -264,7 +264,7 @@ A code block, from any file, is included by the following command
 at the beginning of a line:
 
 |space| |space| |space| |space|
-``{file_sphinxrst%`` *file_name* :code:`%` *start* :code:`%` *stop* :code:`%}`
+``{sphinxrst_file%`` *file_name* :code:`%` *start* :code:`%` *stop* :code:`%}`
 
 Requirements
 ------------
@@ -359,11 +359,6 @@ Example
 -------
 :ref:`indent_space_exam`, :ref:`indent_tab_exam`
 
-Python Style Guide
-==================
-Use triple double quotes instead of triple single quotes at beginning
-and end of comments so it is easier to distinguish from back quotes.
-
 Wish List
 =========
 The following is a wish list for future improvements to ``sphinxrst.py``:
@@ -377,13 +372,7 @@ Module
 ------
 Convert the program into a python module and provide a pip distribution for it.
 
-Command Order
--------------
-Change commands from
-:code:`{` *name* ``_sphinxrst}`` to ``{sphinxrst_`` *name* :code:`}`
-and reserve the text ``{sphinxrst_`` [^}]* :code:`}` for sphinxrst commands.
-
-{end_sphinxrst sphinxrst_py}
+{sphinxrst_end sphinxrst_py}
 """
 # ----------------------------------------------------------------------------
 import sys
@@ -468,8 +457,8 @@ def file2list(file_name) :
 # find all the section names and corresponding data in the specified file
 # The returned data does not include the begin and end section commands
 def file2file_info(
-        pattern_begin_sphinxrst,
-        pattern_end_sphinxrst,
+        patten_begin_command,
+        patten_end_command,
         section_info,
         file_in
 ) :
@@ -487,58 +476,58 @@ def file2file_info(
     #
     while file_index < len(file_data) :
         #
-        # match_begin_sphinxrst
+        # match_sphinxrst_begin
         data_rest   = file_data[file_index : ]
-        match_begin_sphinxrst = pattern_begin_sphinxrst.search(data_rest)
+        match_sphinxrst_begin = patten_begin_command.search(data_rest)
         #
-        if match_begin_sphinxrst == None :
+        if match_sphinxrst_begin == None :
             if file_index == 0 :
                 msg  = 'can not find followng at start of a line:\n'
-                msg += '    {begin_sphinxrst section_name}\n'
+                msg += '    {sphinxrst_begin section_name}\n'
                 sys_exit(msg, file_in)
             file_index = len(file_data)
         else :
             # section_name
-            section_name = match_begin_sphinxrst.group(1)
+            section_name = match_sphinxrst_begin.group(1)
             if section_name == '' :
-                msg  = 'section_name after begin_sphinxrst is empty'
+                msg  = 'section_name after sphinxrst_begin is empty'
                 sys_exit(msg, file_in)
             #
             # check if section appears multiple times
             for info in file_info :
                 if section_name == info['section_name'] :
-                    msg  = 'begin_sphinxrst ' + section_name
+                    msg  = 'sphinxrst_begin ' + section_name
                     msg += ' appears twice in file\n' + file_in
                     sys_exit(msg)
             for info in section_info :
                 if section_name == info['section_name'] :
-                    msg  = 'begin_sphinxrst ' + section_name
+                    msg  = 'sphinxrst_begin ' + section_name
                     msg += ' appears twice\n'
                     msg += 'Once in file ' + file_in + '\n'
                     msg += 'And again in file ' + info['file_in'] + '\n'
                     sys_exit(msg)
             #
             # file_index
-            file_index += match_begin_sphinxrst.end()
+            file_index += match_sphinxrst_begin.end()
             #
-            # match_end_sphinxrst
+            # match_sphinxrst_end
             data_rest = file_data[file_index : ]
-            match_end_sphinxrst = pattern_end_sphinxrst.search(data_rest)
+            match_sphinxrst_end = patten_end_command.search(data_rest)
             #
-            if match_end_sphinxrst == None :
+            if match_sphinxrst_end == None :
                 msg  = 'can not find followig at start of a line:\n'
-                msg += '    {end_sphinxrst section_name}'
+                msg += '    {sphinxrst_end section_name}'
                 sys_exit(msg, file_in, section_name)
-            if match_end_sphinxrst.group(1) != section_name :
+            if match_sphinxrst_end.group(1) != section_name :
                 msg = 'in file ' + file_in + '\nsection names do not match\n'
-                msg += 'begin_sphinxrst section name = '+section_name + '\n'
-                msg += 'end_sphinxrst section name   = '
-                msg += match_end_sphinxrst.group(1) + '\n'
+                msg += 'sphinxrst_begin section name = '+section_name + '\n'
+                msg += 'sphinxrst_end section name   = '
+                msg += match_sphinxrst_end.group(1) + '\n'
                 sys_exit(msg)
             #
             # section_data
             section_start = file_index
-            section_end   = file_index + match_end_sphinxrst.start()
+            section_end   = file_index + match_sphinxrst_end.start()
             section_data  = file_data[ section_start : section_end ]
             #
             # file_info
@@ -548,7 +537,7 @@ def file2file_info(
             } )
             #
             # place to start search for next section
-            file_index += match_end_sphinxrst.end()
+            file_index += match_sphinxrst_end.end()
     return file_info
 # ----------------------------------------------------------------------------
 def start_line_white_space(data, file_in, section_name) :
@@ -582,7 +571,7 @@ def start_line_white_space(data, file_in, section_name) :
         data_index = data_index + index + 1
     return white_space
 # ----------------------------------------------------------------------------
-# process suspend_sphinxrst commands
+# process sphinxrst_suspend commands
 def suspend_command(
     suspend_pattern, resume_pattern, section_data, file_in, section_name
 ) :
@@ -594,13 +583,13 @@ def suspend_command(
         match_resume  = resume_pattern.search(section_rest)
         match_suspend = suspend_pattern.search(section_rest)
         if match_resume == None :
-            msg  = 'there is a {suspend_sphinxrst} without a '
-            msg += 'corresponding {resume_sphinxrst}'
+            msg  = 'there is a {sphinxrst_suspend} without a '
+            msg += 'corresponding {sphinxrst_resume}'
             sys_exit(msg, file_in, section_name)
         if match_suspend != None :
             if match_suspend.start() < match_resume.start() :
-                msg  = 'there are two {suspend_sphinxrst} without a '
-                msg += '{resume_sphinxrst} between them'
+                msg  = 'there are two {sphinxrst_suspend} without a '
+                msg += '{sphinxrst_resume} between them'
                 sys_exit(msg, file_in, section_name)
         resume_end   = match_resume.end() + suspend_end
         section_rest = section_data[ resume_end :]
@@ -671,7 +660,7 @@ def spell_command(
     special_list  = list()
     if match_spell != None :
         section_rest   = section_data[ match_spell.end() : ]
-        match_another  = pattern_spell_sphinxrst.search(section_rest)
+        match_another  = patten_spell_command.search(section_rest)
         if match_another :
             msg  = 'there are two spell sphinxrst commands'
             sys_exit(msg, file_in, section_name)
@@ -733,7 +722,7 @@ def spell_command(
     #
     return section_data
 # -----------------------------------------------------------------------------
-# remove characters on same line as {code_sphinxrst}
+# remove characters on same line as {sphinxrst_code}
 def isolate_code_command(code_pattern, section_data, file_in, section_name) :
     section_index  = 0
     match_begin_code = code_pattern.search(section_data)
@@ -743,15 +732,15 @@ def isolate_code_command(code_pattern, section_data, file_in, section_name) :
         section_rest   = section_data[ begin_end : ]
         match_end_code = code_pattern.search( section_rest )
         if match_end_code == None :
-            msg  = 'number of code_sphinxrst commands is not even'
+            msg  = 'number of sphinxrst_code commands is not even'
             sys_exit(msg, file_in, section_name)
         end_start = match_end_code.start() + begin_end
         end_end   = match_end_code.end()   + begin_end
         #
         data_left   = section_data[: begin_start + 1 ]
-        data_left  += '{code_sphinxrst}'
+        data_left  += '{sphinxrst_code}'
         data_left  += section_data[ begin_end : end_start + 1]
-        data_left  += '{code_sphinxrst}'
+        data_left  += '{sphinxrst_code}'
         data_right  = section_data[ end_end : ]
         #
         section_data  = data_left + data_right
@@ -773,13 +762,13 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
         # start
         start     = match_file.group(2).strip()
         if start == '' :
-            msg = 'file_sphinxrst command: start text is empty'
+            msg = 'sphinxrst_file command: start text is empty'
             sys_exit(msg, file_in, section_name)
         #
         # stop
         stop      = match_file.group(3) .strip()
         if stop == '' :
-            msg = 'file_sphinxrst command: stop text is empty'
+            msg = 'sphinxrst_file command: stop text is empty'
             sys_exit(msg, file_in, section_name)
         #
         # data
@@ -791,13 +780,13 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
         offset      = 0
         start_index = find_at_start_of_line(offset, data ,start)
         if start_index < 0 :
-            msg  = 'file_sphinxrst command: can not find start = '
+            msg  = 'sphinxrst_file command: can not find start = '
             msg += '"' + start + '"'
             msg += '\nin file_name = "' + file_name + '"'
             sys_exit(msg, file_in, section_name)
         offset     = start_index + len(start)
         if 0 <= find_at_start_of_line(offset, data, start) :
-            msg  = 'file_sphinxrst command: found more than one '
+            msg  = 'sphinxrst_file command: found more than one '
             msg += 'start = "' + start + '"'
             msg += '\nin file_name = "' + file_name + '"'
             sys_exit(msg, file_in, section_name)
@@ -805,14 +794,14 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
         # stop_index
         stop_index = find_at_start_of_line(offset, data, stop)
         if stop_index < 0 :
-            msg  = 'file_sphinxrst command: can not find'
+            msg  = 'sphinxrst_file command: can not find'
             msg += '\nstop = "' + stop + '"'
             msg += ' after start = "' + start + '"'
             msg += '\nin file_name = "' + file_name + '"'
             sys_exit(msg, file_in, section_name)
         offset     = stop_index + len(stop)
         if 0 <= find_at_start_of_line(offset, data, stop) :
-            msg  = 'file_sphinxrst command: found more than one '
+            msg  = 'sphinxrst_file command: found more than one '
             msg += 'stop = "' + stop + '"'
             msg += ' after start = "' + start + '"'
             msg += '\nin file_name = "' + file_name + '"'
@@ -831,7 +820,7 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
         end_line = match_file.end() + section_index;
         #
         # converted version of the command
-        cmd  = f'file_sphinxrst%{file_name}%{start_line}%{stop_line}%'
+        cmd  = f'sphinxrst_file%{file_name}%{start_line}%{stop_line}%'
         cmd  = '\n{' + cmd  + '}'
         #
         data_left  = section_data[: begin_line]
@@ -930,7 +919,7 @@ def add_labels_for_headings(
             #
             # place label in output before the heading
             data_left   = section_data[: candidate_start]
-            data_left  += '\n{label_sphinxrst ' + label + ' }'
+            data_left  += '\n{sphinxrst_label ' + label + ' }'
             data_left  += section_data[candidate_start : next_newline]
             data_right  = section_data[next_newline : ]
             section_data = data_left + data_right
@@ -1004,9 +993,9 @@ def write_file(
     for newline in newline_list :
         line  = section_data[startline : newline + 1]
         # commands that delay some processing to this point
-        code_command  = line.startswith('{code_sphinxrst')
-        file_command  = line.startswith('{file_sphinxrst')
-        label_command = line.startswith('{label_sphinxrst')
+        code_command  = line.startswith('{sphinxrst_code')
+        file_command  = line.startswith('{sphinxrst_file')
+        label_command = line.startswith('{sphinxrst_label')
         if label_command :
             # --------------------------------------------------------
             # label command
@@ -1130,23 +1119,23 @@ else :
 spell_checker = init_spell_checker(spell_list)
 #
 # define some pytyon regular expression patterns
-pattern_code_sphinxrst    = re.compile( r'\n[^\n`]*\{code_sphinxrst\}[^\n`]*')
-pattern_suspend_sphinxrst = re.compile( r'\n[ \t]*\{suspend_sphinxrst\}' )
-pattern_resume_sphinxrst  = re.compile( r'\n[ \t]*\{resume_sphinxrst\}' )
-pattern_begin_sphinxrst   = re.compile(
-    r'\n[ \t]*\{begin_sphinxrst\s+([a-z0-9_]+)\}'
+patten_code_command    = re.compile( r'\n[^\n`]*\{sphinxrst_code\}[^\n`]*')
+patten_suspend_command = re.compile( r'\n[ \t]*\{sphinxrst_suspend\}' )
+patten_resume_command  = re.compile( r'\n[ \t]*\{sphinxrst_resume\}' )
+patten_begin_command   = re.compile(
+    r'\n[ \t]*\{sphinxrst_begin\s+([a-z0-9_]+)\}'
 )
-pattern_end_sphinxrst     = re.compile(
-    r'\n[ \t]*\{end_sphinxrst\s+([a-z0-9_]+)\}'
+patten_end_command     = re.compile(
+    r'\n[ \t]*\{sphinxrst_end\s+([a-z0-9_]+)\}'
 )
-pattern_spell_sphinxrst   = re.compile(
-    r'\n[ \t]*\{spell_sphinxrst([^}]*)\}'
+patten_spell_command   = re.compile(
+    r'\n[ \t]*\{sphinxrst_spell([^}]*)\}'
 )
-pattern_file_sphinxrst    = re.compile(
-    r'\n[^\n`]*\{file_sphinxrst%([^%]*)%([^%]*)%([^%]*)%[^\n`]*\}'
+patten_file_command    = re.compile(
+    r'\n[^\n`]*\{sphinxrst_file%([^%]*)%([^%]*)%([^%]*)%[^\n`]*\}'
 )
-pattern_children_sphinxrst = re.compile(
-    r'\n[^\n`]*\{children_sphinxrst%([^}]*)%[^\n`]*\}'
+patten_children_command = re.compile(
+    r'\n[^\n`]*\{sphinxrst_children%([^}]*)%[^\n`]*\}'
 )
 # -----------------------------------------------------------------------------
 # process each file in the list
@@ -1185,8 +1174,8 @@ while 0 < len(file_info_stack) :
     #
     # get sphinxrst docuemntation in this file
     this_file_info = file2file_info(
-        pattern_begin_sphinxrst,
-        pattern_end_sphinxrst,
+        patten_begin_command,
+        patten_end_command,
         section_info,
         file_in,
     )
@@ -1208,8 +1197,8 @@ while 0 < len(file_info_stack) :
         # ----------------------------------------------------------------
         # process suspend commands
         section_data = suspend_command(
-            pattern_suspend_sphinxrst,
-            pattern_resume_sphinxrst,
+            patten_suspend_command,
+            patten_resume_command,
             section_data,
             file_in,
             section_name,
@@ -1217,9 +1206,9 @@ while 0 < len(file_info_stack) :
         # ----------------------------------------------------------------
         # process children command
         section_data, child_file, child_section = children_command(
-            pattern_children_sphinxrst,
-            pattern_begin_sphinxrst,
-            pattern_end_sphinxrst,
+            patten_children_command,
+            patten_begin_command,
+            patten_end_command,
             section_data,
             file_in,
             section_name,
@@ -1234,15 +1223,15 @@ while 0 < len(file_info_stack) :
         # ----------------------------------------------------------------
         # process spell commands
         section_data = spell_command(
-            pattern_spell_sphinxrst,
+            patten_spell_command,
             section_data,
             file_in,
             section_name,
         )
         # ----------------------------------------------------------------
-        # remove characters on same line as {code_sphinxrst}
+        # remove characters on same line as {sphinxrst_code}
         section_data = isolate_code_command(
-            pattern_code_sphinxrst,
+            patten_code_command,
             section_data,
             file_in,
             section_name,
@@ -1250,7 +1239,7 @@ while 0 < len(file_info_stack) :
         # ---------------------------------------------------------------
         # file command: convert start and stop to line numbers
         section_data = convert_file_command(
-            pattern_file_sphinxrst,
+            patten_file_command,
             section_data,
             file_in,
             section_name,
@@ -1279,8 +1268,8 @@ while 0 < len(file_info_stack) :
                 while ch in ' \t\n' and next_ + 1 < len_data :
                     next_ += 1
                     ch = section_data[next_]
-                cmd  = section_data[next_:].startswith('{code_sphinxrst')
-                cmd += section_data[next_:].startswith('{file_sphinxrst')
+                cmd  = section_data[next_:].startswith('{sphinxrst_code')
+                cmd += section_data[next_:].startswith('{sphinxrst_file')
                 if ch not in ' \t\n' and not cmd :
                     num_remove = min(num_remove, next_ - newline - 1)
         # ---------------------------------------------------------------

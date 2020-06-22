@@ -7,14 +7,14 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{begin_sphinxrst heading_exam}
-{spell_sphinxrst sphinxrst}
+{sphinxrst_begin heading_exam}
+{sphinxrst_spell sphinxrst}
 
 ===============
 Heading Example
 ===============
 
-{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
+{sphinxrst_file%%# BEGIN_SRC%# END_SRC%}
 
 Child Sections
 --------------
@@ -23,12 +23,12 @@ The heading above is an example heading for the
 of a
 :ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`.
 
-{end_sphinxrst heading_exam}
+{sphinxrst_end heading_exam}
 """
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-{begin_sphinxrst heading_res}
+{sphinxrst_begin heading_res}
 
 ==============
 Heading Result
@@ -63,6 +63,6 @@ Links
 
 :ref:`heading_exam`
 
-{end_sphinxrst heading_res}
+{sphinxrst_end heading_res}
 """
 # END_SRC

@@ -7,33 +7,33 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{begin_sphinxrst indent_tab_exam}
+{sphinxrst_begin indent_tab_exam}
 
 =========================
 Indent Using Tabs Example
 =========================
 
-{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
+{sphinxrst_file%%# BEGIN_SRC%# END_SRC%}
 
-{end_sphinxrst indent_tab_exam}
+{sphinxrst_end indent_tab_exam}
 """
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-	{begin_sphinxrst indent_tab_res}
+	{sphinxrst_begin indent_tab_res}
 
 	========================
 	Indent Using Tabs Result
 	========================
-	{code_sphinxrst}"""
+	{sphinxrst_code}"""
 	def factorial(n) :
 		if n == 1 :
 			return 1
 		return n * factorial(n-1)
-	"""{code_sphinxrst}
+	"""{sphinxrst_code}
 
 	:ref:`indent_tab_exam`
 
-	{end_sphinxrst indent_tab_res}
+	{sphinxrst_end indent_tab_res}
 """
 # END_SRC

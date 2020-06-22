@@ -7,33 +7,33 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{begin_sphinxrst code_block_exam}
+{sphinxrst_begin code_block_exam}
 
 ==================
 Code Block Example
 ==================
 
-{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
+{sphinxrst_file%%# BEGIN_SRC%# END_SRC%}
 
-{end_sphinxrst code_block_exam}
+{sphinxrst_end code_block_exam}
 """
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-{begin_sphinxrst code_block_res}
+{sphinxrst_begin code_block_res}
 
 =================
 Code Block Result
 =================
-{code_sphinxrst}"""
+{sphinxrst_code}"""
 def factorial(n) :
     if n == 1 :
         return 1
     return n * factorial(n-1)
-"""{code_sphinxrst}
+"""{sphinxrst_code}
 
 :ref:`code_block_exam`
 
-{end_sphinxrst code_block_res}
+{sphinxrst_end code_block_res}
 """
 # END_SRC

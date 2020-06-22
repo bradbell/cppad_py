@@ -6,6 +6,9 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 #
+# sphinxrst commands
+sphinxrst
+#
 # example normal words
 covariates
 covariate

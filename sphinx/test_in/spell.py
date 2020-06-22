@@ -7,21 +7,21 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{begin_sphinxrst spell_exam}
+{sphinxrst_begin spell_exam}
 
 =============
 Spell Example
 =============
 
-{file_sphinxrst%%# BEGIN_SRC%# END_SRC%}
+{sphinxrst_file%%# BEGIN_SRC%# END_SRC%}
 
-{end_sphinxrst spell_exam}
+{sphinxrst_end spell_exam}
 """
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-{begin_sphinxrst spell_res}
-{spell_sphinxrst
+{sphinxrst_begin spell_res}
+{sphinxrst_spell
     sphinxrst
     iterable
     \cos
@@ -65,6 +65,6 @@ spelling command for this section.
 
 :ref:`spell_exam`
 
-{end_sphinxrst spell_res}
+{sphinxrst_end spell_res}
 """
 # END_SRC
