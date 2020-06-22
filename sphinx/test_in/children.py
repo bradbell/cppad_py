@@ -28,13 +28,18 @@ Indent and Children Result
 
 Children
 --------
-This example has a children command and the corresponding links are
-automatically placed directly below; i.e., where the command is located.
+This example uses a children command and
+the corresponding links are included.
+If it had used a child link command, the same links would have been
+created automatically.
 
 {sphinxrst_children%
     %sphinx/test_in/indent_space.py
     %sphinx/test_in/indent_tab.py
 %}
+
+- :ref:`indent_space_exam`
+- :ref:`indent_tab_exam`
 
 Example
 -------

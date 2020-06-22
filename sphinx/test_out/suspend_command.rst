@@ -12,9 +12,8 @@ Suspend Command
 
 Syntax
 ------
-``{sphinxrst_suspend}``
-
-``{sphinxrst_resume}``
+- ``{sphinxrst_suspend}``
+- ``{sphinxrst_resume}``
 
 .. _suspend_command.purpose:
 

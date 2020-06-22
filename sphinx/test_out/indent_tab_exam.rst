@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`children_command<children_command>` > :ref:`children_exam<children_exam>` > :ref:`children_res<children_res>` > indent_tab_exam
+:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`child_commands<child_commands>` > :ref:`children_exam<children_exam>` > :ref:`children_res<children_res>` > indent_tab_exam
 
 .. _indent_tab_exam:
 

@@ -1,30 +1,33 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > children_command
+:ref:`sphinxrst_py<sphinxrst_py>` > child_commands
 
-.. _children_command:
+.. _child_commands:
 
-================
-Children Command
-================
+==============
+Child Commands
+==============
 
-.. _children_command.syntax:
+.. _child_commands.syntax:
 
 Syntax
 ------
-``{sphinxrst_children%`` *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
+- ``{sphinxrst_children%`` 
+  *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
+- ``{sphinxrst_child_link%`` 
+  *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
 
-.. _children_command.purpose:
+.. _child_commands.purpose:
 
 Purpose
 -------
 A section can specify a set of files for which
 the first section in each file (parent section for each file)
 is a child of the current section.
-This is done using the command above at the
+This is done using the commands above at the
 :ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
 
-.. _children_command.white_space:
+.. _child_commands.white_space:
 
 White Space
 -----------
@@ -32,15 +35,15 @@ Leading and trailing white space is not included in the file names.
 In addition, and empty file name is ignored.
 This enables one to put the command on multiple input lines.
 
-.. _children_command.links:
+.. _child_commands.links:
 
 Links
 -----
-Links to all the children of the current section are placed
-at the location of the children command.
+The child link command also places
+links to all the children of the current at the location of the command.
 You can place a heading directly before the links to make them easier to find.
 
-.. _children_command.example:
+.. _child_commands.example:
 
 Example
 -------

@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`children_command<children_command>` > :ref:`children_exam<children_exam>` > children_res
+:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`child_commands<child_commands>` > :ref:`children_exam<children_exam>` > children_res
 
 .. _children_res:
 
@@ -12,14 +12,20 @@ Indent and Children Result
 
 Children
 --------
-This example has a children command and the corresponding links are
-automatically placed directly below; i.e., where the command is located.
+This example uses a children command and
+the corresponding links are included.
+If it had used a child link command, the same links would have been
+created automatically.
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    indent_space_exam
    indent_tab_exam
+
+- :ref:`indent_space_exam`
+- :ref:`indent_tab_exam`
 
 .. _children_res.example:
 

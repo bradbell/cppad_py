@@ -167,11 +167,15 @@ Children
 If a sphinxrst input file has more than one section,
 the :ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`
 has children.
-If this section has a
-:ref:`children command<children_command>`
-links to the children of the current section are place where the
-children command is located.
-Otherwise, the child links are placed at the end of this section.
+
+- If this section has a :ref:`child link command<child_commands>`
+  links to all the children of the current section are place where the
+  child link command is located.
+- If this section has a :ref:`children command<child_commands>`
+  no automatic links to the children of the current section are generated.
+- Otherwise, the links to the children of the current section are placed
+  at the end of the section.
+
 You can place a heading directly before the links to make them easier to find.
 
 Indentation
@@ -197,7 +201,7 @@ Convert the program into a python module and provide a pip distribution for it.
 
 Children
 ========
-{sphinxrst_children%
+{sphinxrst_child_link%
    %sphinx/test_in/heading.py
 %}
 
@@ -205,15 +209,18 @@ Children
 """
 # ---------------------------------------------------------------------------
 """
-{sphinxrst_begin children_command}
+{sphinxrst_begin child_commands}
 
-================
-Children Command
-================
+==============
+Child Commands
+==============
 
 Syntax
 ------
-``{sphinxrst_children%`` *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
+- ``{sphinxrst_children%``
+  *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
+- ``{sphinxrst_child_link%``
+  *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
 
 
 Purpose
@@ -221,7 +228,7 @@ Purpose
 A section can specify a set of files for which
 the first section in each file (parent section for each file)
 is a child of the current section.
-This is done using the command above at the
+This is done using the commands above at the
 :ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
 
 White Space
@@ -232,17 +239,17 @@ This enables one to put the command on multiple input lines.
 
 Links
 -----
-Links to all the children of the current section are placed
-at the location of the children command.
+The child link command also places
+links to all the children of the current at the location of the command.
 You can place a heading directly before the links to make them easier to find.
 
 Example
 -------
-{sphinxrst_children%
+{sphinxrst_child_link%
    %sphinx/test_in/children.py
 %}
 
-{sphinxrst_end children_command}
+{sphinxrst_end child_commands}
 """
 # ---------------------------------------------------------------------------
 """
@@ -294,7 +301,7 @@ of the same word.
 
 Example
 -------
-{sphinxrst_children%
+{sphinxrst_child_link%
    %sphinx/test_in/spell.py
 %}
 
@@ -310,11 +317,8 @@ Suspend Command
 
 Syntax
 ------
-``{sphinxrst_suspend}``
-
-
-``{sphinxrst_resume}``
-
+- ``{sphinxrst_suspend}``
+- ``{sphinxrst_resume}``
 
 Purpose
 -------
@@ -327,7 +331,7 @@ spell checking.
 
 Example
 -------
-{sphinxrst_children%
+{sphinxrst_child_link%
    %sphinx/test_in/suspend.py
 %}
 
@@ -375,7 +379,7 @@ but not for code blocks included using the
 
 Example
 -------
-{sphinxrst_children%
+{sphinxrst_child_link%
    %sphinx/test_in/code_block.py
 %}
 
@@ -433,7 +437,7 @@ Spell checking is **not** done for these code blocks.
 
 Example
 -------
-{sphinxrst_children%
+{sphinxrst_child_link%
    %sphinx/test_in/file_block.py
 %}
 
@@ -664,9 +668,9 @@ def suspend_command(
         match_suspend = suspend_pattern.search(section_data)
     return section_data
 # -----------------------------------------------------------------------------
-# process children command
-def children_command(
-    children_pattern,
+# process child commands
+def child_commands(
+    pattern_child,
     pattern_begin,
     pattern_end,
     section_data,
@@ -675,21 +679,25 @@ def children_command(
 ) :
     file_list    = list()
     section_list = list()
-    match        = children_pattern.search(section_data)
+    match        = pattern_child.search(section_data)
     if match is None :
         return section_data, file_list, section_list
-    match_tmp    = children_pattern.search(section_data[match.end() :] )
+    match_tmp    = pattern_child.search(section_data[match.end() :] )
     if match_tmp is not None :
-        msg = 'There is more than one children command in'
+        msg = 'There is more than one children or child_link commands in'
         sys_exit(msg, file_in, section_name)
+    #
+    assert match.group(1) == 'children' or match.group(1) == 'child_link'
+    command = match.group(1)
+    replace = '\n{sphinxrst_' + command + '}\n'
     #
     # section_data
     data_left  = section_data[ : match.start() ]
     data_right = section_data[ match.end() : ]
-    section_data = data_left + '\n{sphinxrst_children}\n' + data_right
+    section_data = data_left + replace + data_right
     #
     # file_list
-    for child_file in match.group(1).split('%') :
+    for child_file in match.group(2).split('%') :
         child_file = child_file.strip()
         if child_file != '' :
             file_list.append(child_file)
@@ -698,7 +706,7 @@ def children_command(
     for child_file in file_list :
         if not os.path.isfile(child_file) :
             msg  = 'The file ' + child_file + '\n'
-            msg += 'in the children command does not exist'
+            msg += 'in the ' + command + ' command does not exist'
             sys_exit(msg, file_in, section_name)
         #
         # errors in the begin and end commands will be detected later
@@ -710,7 +718,7 @@ def children_command(
         match       = pattern_begin.search(file_data)
         if match is None :
             msg  = 'The file ' + child_file + '\n'
-            msg += 'in the children command does not contain any '
+            msg += 'in the ' + command + ' command does not contain any '
             msg += 'begin commands'
             sys_exit(msg, file_in, section_name)
         #
@@ -1001,22 +1009,7 @@ def add_labels_for_headings(
             next_start   = next_newline + 1
             next_newline = section_data.find('\n', next_start)
     #
-    # children_heading_info
-    if len(heading_list) == 0 :
-        msg = 'There is no titles for this section'
-        sys_exit(msg, file_in, section_name)
-    #
-    if len(heading_list) == 1 :
-        if heading_list[0]['character'] != '=' :
-            character = '='
-        else :
-            character = '-'
-    else :
-        overline  = heading_list[1]['overline']
-        character = heading_list[1]['character']
-    children_heading_info = { 'overline' : overline, 'character' : ch }
-    #
-    return section_data, children_heading_info
+    return section_data
 # -----------------------------------------------------------------------------
 # write file corresponding to a section
 # (and finish processing that has been delayed to this point)
@@ -1025,7 +1018,6 @@ def write_file(
     section_data,
     section_info,
     child_list,
-    children_heading_info,
     output_dir,
     section_name,
     spell_checker,
@@ -1059,14 +1051,15 @@ def write_file(
     startline         = 0
     inside_code       = False
     previous_empty    = True
-    has_children_cmd  = False
+    has_child_command = False
     for newline in newline_list :
         line  = section_data[startline : newline + 1]
         # commands that delay some processing to this point
-        code_command     = line.startswith('{sphinxrst_code')
-        file_command     = line.startswith('{sphinxrst_file')
-        label_command    = line.startswith('{sphinxrst_label')
-        children_command = line.startswith('{sphinxrst_children')
+        code_command       = line.startswith('{sphinxrst_code')
+        file_command       = line.startswith('{sphinxrst_file')
+        label_command      = line.startswith('{sphinxrst_label')
+        children_command   = line.startswith('{sphinxrst_children')
+        child_link_command = line.startswith('{sphinxrst_child_link')
         if label_command :
             # --------------------------------------------------------
             # label command
@@ -1103,12 +1096,16 @@ def write_file(
             file_ptr.write(line)
             file_ptr.write('\n')
             previous_empty = True
-        elif children_command :
-            assert not has_children_cmd
+        elif children_command or child_link_command :
+            assert not has_child_command
             assert len(child_list) > 0
-            has_children_cmd = True
+            has_child_command = True
+            #
             file_ptr.write('.. toctree::\n')
-            file_ptr.write('   :maxdepth: 1\n\n')
+            file_ptr.write('   :maxdepth: 1\n')
+            if children_command :
+                file_ptr.write('   :hidden:\n')
+            file_ptr.write('\n')
             for child in child_list :
                 file_ptr.write('   ' + child + '\n')
             file_ptr.write('\n')
@@ -1131,7 +1128,7 @@ def write_file(
     if not previous_empty :
         file_ptr.write('\n')
     #
-    if len(child_list) > 0 and not has_children_cmd :
+    if len(child_list) > 0 and not has_child_command :
         file_ptr.write('.. toctree::\n')
         file_ptr.write('   :maxdepth: 1\n\n')
         for child in child_list :
@@ -1213,8 +1210,8 @@ pattern_spell_command   = re.compile(
 pattern_file_command    = re.compile(
     r'\n[ \t]*\{sphinxrst_file%([^%]*)%([^%]*)%([^%]*)%\}'
 )
-pattern_children_command = re.compile(
-    r'\n[ \t]*\{sphinxrst_children%([^}]*)%\}'
+pattern_child_command = re.compile(
+    r'\n[ \t]*\{sphinxrst_(children|child_link)%([^}]*)%\}'
 )
 # -----------------------------------------------------------------------------
 # process each file in the list
@@ -1276,9 +1273,9 @@ while 0 < len(file_info_stack) :
             section_name,
         )
         # ----------------------------------------------------------------
-        # process children command
-        section_data, child_file, child_section = children_command(
-            pattern_children_command,
+        # process child command
+        section_data, child_file, child_section = child_commands(
+            pattern_child_command,
             pattern_begin_command,
             pattern_end_command,
             section_data,
@@ -1342,12 +1339,12 @@ while 0 < len(file_info_stack) :
                     ch = section_data[next_]
                 cmd  = section_data[next_:].startswith('{sphinxrst_code')
                 cmd += section_data[next_:].startswith('{sphinxrst_file')
-                cmd += section_data[next_:].startswith('{sphinxrst_children')
+                cmd += section_data[next_:].startswith('{sphinxrst_child')
                 if ch not in ' \t\n' and not cmd :
                     num_remove = min(num_remove, next_ - newline - 1)
         # ---------------------------------------------------------------
         # add labels corresponding to headings
-        section_data, children_heading_info = add_labels_for_headings(
+        section_data = add_labels_for_headings(
             section_data,
             num_remove,
             white_space,
@@ -1370,7 +1367,6 @@ while 0 < len(file_info_stack) :
             section_data,
             section_info,
             child_list,
-            children_heading_info,
             output_dir,
             section_name,
             spell_checker,
