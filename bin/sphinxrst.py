@@ -1107,10 +1107,10 @@ pattern_spell_command   = re.compile(
     r'\n[ \t]*\{sphinxrst_spell([^}]*)\}'
 )
 pattern_file_command    = re.compile(
-    r'\n[^\n`]*\{sphinxrst_file%([^%]*)%([^%]*)%([^%]*)%[^\n`]*\}'
+    r'\n[ \t]*\{sphinxrst_file%([^%]*)%([^%]*)%([^%]*)%\}'
 )
 pattern_children_command = re.compile(
-    r'\n[^\n`]*\{sphinxrst_children%([^}]*)%[^\n`]*\}'
+    r'\n[ \t]*\{sphinxrst_children%([^}]*)%\}'
 )
 # -----------------------------------------------------------------------------
 # process each file in the list
