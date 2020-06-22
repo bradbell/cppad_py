@@ -340,7 +340,7 @@ Example
 """
 # ---------------------------------------------------------------------------
 """
-{sphinxrst_begin code_command}
+{sphinxrst_begin code_cmd}
 
 ============
 Code Command
@@ -384,7 +384,7 @@ Example
    %sphinx/test_in/code_block.py
 %}
 
-{sphinxrst_end code_command}
+{sphinxrst_end code_cmd}
 """
 # ---------------------------------------------------------------------------
 """
