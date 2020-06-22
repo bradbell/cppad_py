@@ -24,6 +24,14 @@
 Extract Sphinx RST From Source Code
 ###################################
 
+
+.. The indentation examples are included by the child_cmd section.
+
+{sphinxrst_children%
+   %sphinx/test_in/heading.py
+%}
+
+
 Syntax
 ======
 ``sphinxrst.py`` *sphinx_dir* *root_file* *spell_file*
@@ -88,17 +96,17 @@ Table Of Contents
 toctree
 -------
 The sphinx ``toctree`` directives are automatically generated
-for sections. The only such directive you nedd to enter is in the
-file *sphinx_dir*:code`/index.rst`.
+for sections. The only such directive you should directly edit
+is in the file *sphinx_dir*:code`/index.rst`.
 One entry is for the first section in the
 :ref:`root_file<sphinxrst_py.command_line_arguments.root_file>`.
 Other entries are for ``.rst`` files that are not extracted by
 ``sphinxrst.py``.
 
-
 Parent Section
 --------------
-A single input file may contain multiple sections.
+A single input file may contain multiple
+:ref:`sections<begin_cmd.section>`.
 The first section in a file is called the file's parent section.
 Other sections in a file are children of the parent section.
 
@@ -133,19 +141,23 @@ to make sure they are still valid.
 
 Children
 --------
-If a sphinxrst input file has more than one section,
-the :ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`
+If a sphinxrst input file has more than one section, the file's
+ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`
 has children.
 
-- If this section has a :ref:`child link command<child_cmd>`
-  links to all the children of the current section are place where the
+- If a section has a :ref:`child link command<child_cmd>`
+  links to all the children of the section are place where the
   child link command is located.
-- If this section has a :ref:`children command<child_cmd>`
+- If a section has a :ref:`children command<child_cmd>`
   no automatic links to the children of the current section are generated.
-- Otherwise, the links to the children of the current section are placed
-  at the end of the section.
+- Otherwise, the links to the children of a file's parent section are placed
+  at the end of the parent section.
 
 You can place a heading directly before the links to make them easier to find.
+
+Example
+-------
+:ref:`heading_exam`
 
 Indentation
 ===========
@@ -153,6 +165,11 @@ If all of the extracted sphinxrst documentation for a section is indented
 by the same white space characters, those characters
 are not included in the sphinxrst output. This enables one to indent the
 sphinxrst so it is grouped with the proper code block in the source.
+
+Example
+-------
+- :ref:`indent_space_exam`
+- :ref:`indent_tab_exam`
 
 Wish List
 =========
@@ -168,11 +185,16 @@ Module
 Convert the program into a python module and provide a pip distribution for it.
 
 
-Children
+.. All the children of this section are commands except for heading_exam.
+
+Commands
 ========
-{sphinxrst_child_link%
-   %sphinx/test_in/heading.py
-%}
+- :ref:`begin_cmd`
+- :ref:`child_cmd`
+- :ref:`spell_cmd`
+- :ref:`suspend_cmd`
+- :ref:`code_cmd`
+- :ref:`file_cmd`
 
 {sphinxrst_end sphinxrst_py}
 """
