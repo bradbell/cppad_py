@@ -433,8 +433,8 @@ def file2list(file_name) :
 # find all the section names and corresponding data in the specified file
 # The returned data does not include the begin and end section commands
 def file2file_info(
-        patten_begin_command,
-        patten_end_command,
+        pattern_begin_command,
+        pattern_end_command,
         section_info,
         file_in
 ) :
@@ -454,7 +454,7 @@ def file2file_info(
         #
         # match_sphinxrst_begin
         data_rest   = file_data[file_index : ]
-        match_sphinxrst_begin = patten_begin_command.search(data_rest)
+        match_sphinxrst_begin = pattern_begin_command.search(data_rest)
         #
         if match_sphinxrst_begin == None :
             if file_index == 0 :
@@ -488,7 +488,7 @@ def file2file_info(
             #
             # match_sphinxrst_end
             data_rest = file_data[file_index : ]
-            match_sphinxrst_end = patten_end_command.search(data_rest)
+            match_sphinxrst_end = pattern_end_command.search(data_rest)
             #
             if match_sphinxrst_end == None :
                 msg  = 'can not find followig at start of a line:\n'
@@ -636,7 +636,7 @@ def spell_command(
     special_list  = list()
     if match_spell != None :
         section_rest   = section_data[ match_spell.end() : ]
-        match_another  = patten_spell_command.search(section_rest)
+        match_another  = pattern_spell_command.search(section_rest)
         if match_another :
             msg  = 'there are two spell sphinxrst commands'
             sys_exit(msg, file_in, section_name)
@@ -1094,22 +1094,22 @@ spell_list    = file2list(spell_file)
 spell_checker = init_spell_checker(spell_list)
 #
 # define some pytyon regular expression patterns
-patten_code_command    = re.compile( r'\n[^\n`]*\{sphinxrst_code\}[^\n`]*')
-patten_suspend_command = re.compile( r'\n[ \t]*\{sphinxrst_suspend\}' )
-patten_resume_command  = re.compile( r'\n[ \t]*\{sphinxrst_resume\}' )
-patten_begin_command   = re.compile(
+pattern_code_command    = re.compile( r'\n[^\n`]*\{sphinxrst_code\}[^\n`]*')
+pattern_suspend_command = re.compile( r'\n[ \t]*\{sphinxrst_suspend\}' )
+pattern_resume_command  = re.compile( r'\n[ \t]*\{sphinxrst_resume\}' )
+pattern_begin_command   = re.compile(
     r'\n[ \t]*\{sphinxrst_begin\s+([a-z0-9_]+)\}'
 )
-patten_end_command     = re.compile(
+pattern_end_command     = re.compile(
     r'\n[ \t]*\{sphinxrst_end\s+([a-z0-9_]+)\}'
 )
-patten_spell_command   = re.compile(
+pattern_spell_command   = re.compile(
     r'\n[ \t]*\{sphinxrst_spell([^}]*)\}'
 )
-patten_file_command    = re.compile(
+pattern_file_command    = re.compile(
     r'\n[^\n`]*\{sphinxrst_file%([^%]*)%([^%]*)%([^%]*)%[^\n`]*\}'
 )
-patten_children_command = re.compile(
+pattern_children_command = re.compile(
     r'\n[^\n`]*\{sphinxrst_children%([^}]*)%[^\n`]*\}'
 )
 # -----------------------------------------------------------------------------
@@ -1141,8 +1141,8 @@ while 0 < len(file_info_stack) :
     #
     # get sphinxrst docuemntation in this file
     this_file_info = file2file_info(
-        patten_begin_command,
-        patten_end_command,
+        pattern_begin_command,
+        pattern_end_command,
         section_info,
         file_in,
     )
@@ -1165,8 +1165,8 @@ while 0 < len(file_info_stack) :
         # ----------------------------------------------------------------
         # process suspend commands
         section_data = suspend_command(
-            patten_suspend_command,
-            patten_resume_command,
+            pattern_suspend_command,
+            pattern_resume_command,
             section_data,
             file_in,
             section_name,
@@ -1174,9 +1174,9 @@ while 0 < len(file_info_stack) :
         # ----------------------------------------------------------------
         # process children command
         section_data, child_file, child_section = children_command(
-            patten_children_command,
-            patten_begin_command,
-            patten_end_command,
+            pattern_children_command,
+            pattern_begin_command,
+            pattern_end_command,
             section_data,
             file_in,
             section_name,
@@ -1191,7 +1191,7 @@ while 0 < len(file_info_stack) :
         # ----------------------------------------------------------------
         # process spell commands
         section_data = spell_command(
-            patten_spell_command,
+            pattern_spell_command,
             section_data,
             file_in,
             section_name,
@@ -1199,7 +1199,7 @@ while 0 < len(file_info_stack) :
         # ----------------------------------------------------------------
         # remove characters on same line as {sphinxrst_code}
         section_data = isolate_code_command(
-            patten_code_command,
+            pattern_code_command,
             section_data,
             file_in,
             section_name,
@@ -1207,7 +1207,7 @@ while 0 < len(file_info_stack) :
         # ---------------------------------------------------------------
         # file command: convert start and stop to line numbers
         section_data = convert_file_command(
-            patten_file_command,
+            pattern_file_command,
             section_data,
             file_in,
             section_name,
