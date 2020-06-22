@@ -12,7 +12,6 @@
 {sphinxrst_spell
     sphinxrst
     rst
-    underbar
     underbars
     conf
     toctree
@@ -83,38 +82,6 @@ leading and trailing white space in a word are ignored.
 Special words, for a particular section, are specified using the
 :ref:`spell command<spell_cmd>`.
 
-Section
-=======
-
-Name
-----
-A *section_name* is a sequence of the following characters
-a-z, 0-9, and underbar ``_``.
-The corresponding sphinxrst output file is
-
-|space| |space| |space| |space|
-:ref:`sphinx_dir<sphinxrst_py.command_line_arguments.sphinx_dir>`
-``/sphinxrst/`` *section_name* ``.rst``
-
-Begin Command
--------------
-The start of a sphinxrst section of the input file is indicated by the
-following command at the beginning of a line:
-
-|space| |space| |space| |space|
-``{sphinxrst_begin`` *section_name*:code:`}`
-
-End Command
------------
-The end of a sphinxrst section of the input file is indicated by the following
-command at the beginning of a line:
-
-|space| |space| |space| |space|
-``{sphinxrst_end`` *section_name*:code:`}`
-
-Here *section_name* must be the same as in the corresponding
-begin section command.
-
 Table Of Contents
 =================
 
@@ -140,9 +107,10 @@ Headings and Links
 
 Section Level
 -------------
-Each :ref:`section<sphinxrst_py.section>` can have only one header at
+Each :ref:`section<begin_cmd.section>` can have only one header at
 the first level which is a title for the section.
-The *section_name* is automatically used
+The :ref:`section_name<begin_cmd.section_name>`
+is automatically used
 as a label for linking the title for a section; i.e., the
 following will link to the title for *section_name*:
 
@@ -207,6 +175,46 @@ Children
 %}
 
 {sphinxrst_end sphinxrst_py}
+"""
+# ---------------------------------------------------------------------------
+"""
+{sphinxrst_begin begin_cmd}
+{sphinxrst_spell
+    underbar
+    rst
+}
+
+.. |space| unicode:: 0xA0
+
+======================
+Begin and End Commands
+======================
+
+Syntax
+------
+- ``{sphinxrst_begin`` *section_name*:code:`}`
+- ``{sphinxrst_end`` *section_name*:code:`}`
+
+Section
+-------
+The start (end) of a section of the input file is indicated by a
+begin (end) command at the
+:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
+
+section_name
+------------
+A *section_name* is a non-empty sequence of the following characters:
+a-z, 0-9, and underbar ``_``.
+
+Output File
+-----------
+The output file corresponding to *section_name* is
+
+|space| |space| |space| |space|
+:ref:`sphinx_dir<sphinxrst_py.command_line_arguments.sphinx_dir>`
+``/sphinxrst/`` *section_name* ``.rst``
+
+{sphinxrst_end begin_cmd}
 """
 # ---------------------------------------------------------------------------
 """
@@ -341,6 +349,9 @@ Example
 # ---------------------------------------------------------------------------
 """
 {sphinxrst_begin code_cmd}
+{sphinxrst_spell
+    cmd
+}
 
 ============
 Code Command
