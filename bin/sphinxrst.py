@@ -310,11 +310,11 @@ Example
 """
 # ---------------------------------------------------------------------------
 """
-{sphinxrst_begin suspend_command}
+{sphinxrst_begin suspend_cmd}
 
-===============
-Suspend Command
-===============
+==========================
+Suspend and Resume Command
+==========================
 
 Syntax
 ------
@@ -336,7 +336,7 @@ Example
    %sphinx/test_in/suspend.py
 %}
 
-{sphinxrst_end suspend_command}
+{sphinxrst_end suspend_cmd}
 """
 # ---------------------------------------------------------------------------
 """

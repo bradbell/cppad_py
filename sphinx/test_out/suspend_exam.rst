@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`suspend_command<suspend_command>` > suspend_exam
+:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > suspend_exam
 
 .. _suspend_exam:
 

@@ -1,21 +1,21 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > suspend_command
+:ref:`sphinxrst_py<sphinxrst_py>` > suspend_cmd
 
-.. _suspend_command:
+.. _suspend_cmd:
 
-===============
-Suspend Command
-===============
+==========================
+Suspend and Resume Command
+==========================
 
-.. _suspend_command.syntax:
+.. _suspend_cmd.syntax:
 
 Syntax
 ------
 - ``{sphinxrst_suspend}``
 - ``{sphinxrst_resume}``
 
-.. _suspend_command.purpose:
+.. _suspend_cmd.purpose:
 
 Purpose
 -------
@@ -26,7 +26,7 @@ at the
 Note that this will also suspend all other sphinxrst processing; e.g.,
 spell checking.
 
-.. _suspend_command.example:
+.. _suspend_cmd.example:
 
 Example
 -------
