@@ -138,10 +138,6 @@ Leading and trailing white space is not included in the file names.
 In addition, and empty file name is ignored.
 This enables one to put the command on multiple input lines.
 
-Example
-.......
-:ref:`children_exam`
-
 index.rst
 ---------
 The file ``index.rst`` must exist in the directory
@@ -175,10 +171,6 @@ One resumes the output with the following command at the beginning of a line:
 
 Each suspend command must have a corresponding resume command in same
 section (between the corresponding begin sphinxrst and end sphinxrst commands).
-
-Example
--------
-:ref:`suspend_exam`
 
 Spell Checking
 ==============
@@ -219,10 +211,6 @@ Double Words
 It is considered an error to have only white space between two occurrences
 of the same word.
 
-Example
--------
-:ref:`spell_exam`
-
 Code Command
 ============
 A code block, directly below in the current input file, begins with
@@ -253,10 +241,6 @@ Spell Checking
 Spell checking is done for these code blocks,
 but not for code blocks included using the
 :ref:`file command<sphinxrst_py.file_command>`.
-
-Example
--------
-:ref:`code_block_exam`
 
 File Command
 ============
@@ -302,10 +286,6 @@ Spell Checking
 --------------
 Spell checking is **not** done for these code blocks.
 
-Example
--------
-:ref:`file_block_exam`
-
 Headings and Links
 ==================
 
@@ -344,20 +324,12 @@ is included at the end of the section.
 You can place a heading at the end of section to make these
 links easier to find.
 
-Example
--------
-:ref:`heading_exam`
-
 Indentation
 ===========
 If all of the extracted sphinxrst documentation for a section is indented
 by the same white space characters, those characters
 are not included in the sphinxrst output. This enables one to indent the
 sphinxrst so it is grouped with the proper code block in the source.
-
-Example
--------
-:ref:`indent_space_exam`, :ref:`indent_tab_exam`
 
 Wish List
 =========
@@ -371,6 +343,18 @@ input file that the error occurred on.
 Module
 ------
 Convert the program into a python module and provide a pip distribution for it.
+
+
+Examples
+========
+{sphinxrst_children%
+   %sphinx/test_in/code_block.py
+   %sphinx/test_in/file_block.py
+   %sphinx/test_in/suspend.py
+   %sphinx/test_in/spell.py
+   %sphinx/test_in/heading.py
+   %sphinx/test_in/children.py
+%}
 
 {sphinxrst_end sphinxrst_py}
 """

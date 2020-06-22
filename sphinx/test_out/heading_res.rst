@@ -1,6 +1,6 @@
 |
 
-:ref:`heading_exam<heading_exam>` > heading_res
+:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`heading_exam<heading_exam>` > heading_res
 
 .. _heading_res:
 

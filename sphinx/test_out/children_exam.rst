@@ -1,6 +1,6 @@
 |
 
-children_exam
+:ref:`sphinxrst_py<sphinxrst_py>` > children_exam
 
 .. _children_exam:
 

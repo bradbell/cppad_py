@@ -1,6 +1,6 @@
 |
 
-suspend_exam
+:ref:`sphinxrst_py<sphinxrst_py>` > suspend_exam
 
 .. _suspend_exam:
 

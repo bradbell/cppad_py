@@ -1,6 +1,6 @@
 |
 
-file_block_exam
+:ref:`sphinxrst_py<sphinxrst_py>` > file_block_exam
 
 .. _file_block_exam:
 
