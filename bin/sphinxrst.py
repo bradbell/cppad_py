@@ -59,7 +59,7 @@ root_file
 ---------
 The command line argument *root_file* is the name of a file,
 relative to the top git repository directory.
-The first sphinxrst section in this file will be to root section
+The first sphinxrst section in this file will be the *root section*
 (top section), in the table of contents for this documentation.
 The file *sphinx_dir*:code`/index.rst` must contain the line
 
@@ -117,6 +117,17 @@ begin section command.
 Table Of Contents
 =================
 
+toctree
+-------
+The sphinx ``toctree`` directives are automatically generated
+for sections. The only such directive you nedd to enter is in the
+file *sphinx_dir*:code`/index.rst`.
+One entry is for the first section in the
+:ref:`root_file<sphinxrst_py.command_line_arguments.root_file>`.
+Other entires are for ``.rst`` files that are not extracted by
+``sphinxrst.py``.
+
+
 Parent Section
 --------------
 A single input file may contain multiple sections.
@@ -142,6 +153,13 @@ White Space
 Leading and trailing white space is not included in the file names.
 In addition, and empty file name is ignored.
 This enables one to put the command on multiple input lines.
+
+Links
+.....
+Links to all the children of the current section are placed
+at the location of the children command.
+You can place a heading directly before the links to make them easier to find.
+
 
 Suspend Command
 ===============
@@ -311,10 +329,12 @@ Children
 If a sphinxrst input file has more than one section,
 the :ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`
 has children.
-In this case, a ``toctree`` command that provides links to the children
-is included at the end of the section.
-You can place a heading at the end of section to make these
-links easier to find.
+If this section has a
+:ref:`children command<sphinxrst_py.table_of_contents.children_command>`
+links to the children of the current section are place where the
+children command is located.
+Otherwise, the child links are placed at the end of this section.
+You can place a heading directly before the links to make them easier to find.
 
 Indentation
 ===========
@@ -586,14 +606,18 @@ def children_command(
 ) :
     file_list    = list()
     section_list = list()
-    match         = children_pattern.search(section_data)
+    match        = children_pattern.search(section_data)
     if match is None :
         return section_data, file_list, section_list
+    match_tmp    = children_pattern.search(section_data[match.end() :] )
+    if match_tmp is not None :
+        msg = 'There is more than one children command in'
+        sys_exit(msg, file_in, section_name)
     #
     # section_data
     data_left  = section_data[ : match.start() ]
     data_right = section_data[ match.end() : ]
-    section_data = data_left + data_right
+    section_data = data_left + '\n{sphinxrst_children}\n' + data_right
     #
     # file_list
     for child_file in match.group(1).split('%') :
@@ -966,12 +990,14 @@ def write_file(
     startline         = 0
     inside_code       = False
     previous_empty    = True
+    has_children_cmd  = False
     for newline in newline_list :
         line  = section_data[startline : newline + 1]
         # commands that delay some processing to this point
-        code_command  = line.startswith('{sphinxrst_code')
-        file_command  = line.startswith('{sphinxrst_file')
-        label_command = line.startswith('{sphinxrst_label')
+        code_command     = line.startswith('{sphinxrst_code')
+        file_command     = line.startswith('{sphinxrst_file')
+        label_command    = line.startswith('{sphinxrst_label')
+        children_command = line.startswith('{sphinxrst_children')
         if label_command :
             # --------------------------------------------------------
             # label command
@@ -1008,6 +1034,15 @@ def write_file(
             file_ptr.write(line)
             file_ptr.write('\n')
             previous_empty = True
+        elif children_command :
+            assert not has_children_cmd
+            assert len(child_list) > 0
+            has_children_cmd = True
+            file_ptr.write('.. toctree::\n')
+            file_ptr.write('   :maxdepth: 1\n\n')
+            for child in child_list :
+                file_ptr.write('   ' + child + '\n')
+            file_ptr.write('\n')
         elif newline <= startline + num_remove :
             if not previous_empty :
                 file_ptr.write( "\n" )
@@ -1027,7 +1062,7 @@ def write_file(
     if not previous_empty :
         file_ptr.write('\n')
     #
-    if len(child_list) > 0 :
+    if len(child_list) > 0 and not has_children_cmd :
         file_ptr.write('.. toctree::\n')
         file_ptr.write('   :maxdepth: 1\n\n')
         for child in child_list :
@@ -1238,6 +1273,7 @@ while 0 < len(file_info_stack) :
                     ch = section_data[next_]
                 cmd  = section_data[next_:].startswith('{sphinxrst_code')
                 cmd += section_data[next_:].startswith('{sphinxrst_file')
+                cmd += section_data[next_:].startswith('{sphinxrst_children')
                 if ch not in ' \t\n' and not cmd :
                     num_remove = min(num_remove, next_ - newline - 1)
         # ---------------------------------------------------------------

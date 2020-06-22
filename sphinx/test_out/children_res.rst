@@ -8,24 +8,24 @@
 Indent and Children Result
 ==========================
 
-.. _children_res.example:
-
-Example
--------
-:ref:`children_exam`
-
 .. _children_res.children:
 
 Children
 --------
-The Indent example has children, the corresponding links are
-automatically placed at the end of the section; i.e., directly below:
+This example has a children command and the corresponding links are
+automatically placed directly below; i.e., where the command is located.
 
 .. toctree::
    :maxdepth: 1
 
    indent_space_exam
    indent_tab_exam
+
+.. _children_res.example:
+
+Example
+-------
+:ref:`children_exam`
 
 ----
 

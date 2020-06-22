@@ -26,19 +26,19 @@ Indent and Children Example
 Indent and Children Result
 ==========================
 
-Example
--------
-:ref:`children_exam`
+Children
+--------
+This example has a children command and the corresponding links are
+automatically placed directly below; i.e., where the command is located.
 
 {sphinxrst_children%
     %sphinx/test_in/indent_space.py
     %sphinx/test_in/indent_tab.py
 %}
 
-Children
---------
-The Indent example has children, the corresponding links are
-automatically placed at the end of the section; i.e., directly below:
+Example
+-------
+:ref:`children_exam`
 
 {sphinxrst_end children_res}
 """
