@@ -376,7 +376,7 @@ Spell Checking
 --------------
 Spell checking is done for these code blocks,
 but not for code blocks included using the
-:ref:`file command<file_command>`.
+:ref:`file command<file_cmd>`.
 
 Example
 -------
@@ -388,7 +388,7 @@ Example
 """
 # ---------------------------------------------------------------------------
 """
-{sphinxrst_begin file_command}
+{sphinxrst_begin file_cmd}
 
 ============
 File Command
@@ -442,7 +442,7 @@ Example
    %sphinx/test_in/file_block.py
 %}
 
-{sphinxrst_end file_command}
+{sphinxrst_end file_cmd}
 """
 # ----------------------------------------------------------------------------
 import sys

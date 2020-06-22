@@ -48,7 +48,7 @@ Spell Checking
 --------------
 Spell checking is done for these code blocks,
 but not for code blocks included using the
-:ref:`file command<file_command>`.
+:ref:`file command<file_cmd>`.
 
 .. _code_cmd.example:
 

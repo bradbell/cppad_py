@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`file_command<file_command>` > file_block_exam
+:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`file_cmd<file_cmd>` > file_block_exam
 
 .. _file_block_exam:
 
