@@ -19,8 +19,9 @@ then
 fi
 sphinxdir='sphinx'
 # -----------------------------------------------------------------------------
-echo "bin/sphinxrst.py $sphinxdir bin/sphinxrst.py spell_list"
-if ! bin/sphinxrst.py $sphinxdir bin/sphinxrst.py spell_list 2> sphinxrst.$$
+echo "bin/sphinxrst.py $sphinxdir bin/sphinxrst.py $sphinxdir/spell_file"
+if ! bin/sphinxrst.py \
+	$sphinxdir bin/sphinxrst.py $sphinxdir/spell_file 2> sphinxrst.$$
 then
 	type_error='error'
 else

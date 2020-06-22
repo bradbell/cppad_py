@@ -1,16 +1,17 @@
 .. vim: set expandtab: 
 
-Welcome to sphinxrst's documentation!
-=======================================
+Table of Contents
+=================
 
 .. toctree::
    :maxdepth: 4
 
    sphinxrst/sphinxrst_py
 
-Indices and tables
-==================
-
+Index
+=====
 * :ref:`genindex`
-* :ref:`modindex`
+
+Search
+======
 * :ref:`search`

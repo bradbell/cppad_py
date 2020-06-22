@@ -47,9 +47,9 @@ The latex commands for greek letters
 are automatically included as correct spelling.
 Other latex commands in this section; e.g. ``\cos``, ``\sin``, ``\rm``,
 have been included in the spelling command for this section.
-An alternative is to add them to the
-:ref:`spell_list<sphinxrst_py.command_line_arguments.spell_list>`
-for all sections:
+An alternative would be to add them to the
+:ref:`spell_file<sphinxrst_py.command_line_arguments.spell_file>`
+whick applies to all sections:
 
 .. math::
 

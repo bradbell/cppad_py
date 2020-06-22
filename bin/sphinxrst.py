@@ -26,7 +26,7 @@ Extract Sphinx RST From Source Code
 
 Syntax
 ======
-``sphinxrst.py`` *sphinx_dir* *root_file* *spell_list*
+``sphinxrst.py`` *sphinx_dir* *root_file* *spell_file*
 
 Notation
 ========
@@ -70,10 +70,11 @@ where *section_name* is the name
 of the first section in *root_file*.
 
 
-spell_list
+spell_file
 ----------
-The command line argument *spell_list* is the name of a file
-in the *sphinx_dir* directory containing a list of words
+The command line argument *spell_file* is the name of a file,
+relative to the top git repository directory.
+This file contains a list of words
 that the spell checker will consider correct for all sections.
 A line that begins with :code:`#` is a comment (not included in the list).
 The words are one per line and
@@ -167,14 +168,13 @@ section (between the corresponding begin sphinxrst and end sphinxrst commands).
 Spell Checking
 ==============
 
-spell_list
+spell_file
 ----------
 The list of words in
-:ref:`spell_list<sphinxrst_py.command_line_arguments.spell_list>`
-are considered correct spellings
-for all sections.
+:ref:`spell_file<sphinxrst_py.command_line_arguments.spell_file>`
+are considered correct spellings for all sections.
 The latex commands corresponding to the letters in the greek alphabet
-are automatically included in this list
+are automatically added to this list
 
 Spell Command
 -------------
@@ -1063,13 +1063,12 @@ if not os.path.isfile(root_file) :
     msg += 'is not a file'
     sys_exit(msg)
 #
-# spell_list
-file_path = sphinx_dir + '/' + sys.argv[3]
-if not os.path.isfile(file_path) :
-    msg  = 'sphinx_dir/spell_list = ' + sphinx_dir + '/' + sys.argv[3] + '\n'
+# spell_file
+spell_file = sys.argv[3]
+if not os.path.isfile(spell_file) :
+    msg  = 'spell_file = ' + spell_file + '\n'
     msg += 'is not a file'
     sys_exit(msg)
-spell_list  = file2list(file_path)
 #
 # check for conf.y, index.rst
 for file_name in ['conf.py', 'index.rst'] :
@@ -1091,6 +1090,7 @@ else :
     os.mkdir(output_dir)
 #
 # spell_checker
+spell_list    = file2list(spell_file)
 spell_checker = init_spell_checker(spell_list)
 #
 # define some pytyon regular expression patterns
