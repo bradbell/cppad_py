@@ -81,7 +81,7 @@ A line that begins with :code:`#` is a comment (not included in the list).
 The words are one per line and
 leading and trailing white space in a word are ignored.
 Special words, for a particular section, are specified using the
-:ref:`spell command<spell_command>`.
+:ref:`spell command<spell_cmd>`.
 
 Section
 =======
@@ -254,7 +254,7 @@ Example
 """
 # ---------------------------------------------------------------------------
 """
-{sphinxrst_begin spell_command}
+{sphinxrst_begin spell_cmd}
 
 =============
 Spell Command
@@ -306,7 +306,7 @@ Example
    %sphinx/test_in/spell.py
 %}
 
-{sphinxrst_end spell_command}
+{sphinxrst_end spell_cmd}
 """
 # ---------------------------------------------------------------------------
 """
