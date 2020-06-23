@@ -2,6 +2,11 @@
 
 :ref:`sphinxrst_py<sphinxrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`children_exam<children_exam>` > :ref:`children_res<children_res>` > :ref:`indent_tab_exam<indent_tab_exam>` > indent_tab_res
 
+.. meta::
+   :keywords: indent, using, tabs, result
+
+.. index:: indent, using, tabs, result
+
 .. _indent_tab_res:
 
 ========================

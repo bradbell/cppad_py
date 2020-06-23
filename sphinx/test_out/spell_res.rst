@@ -2,11 +2,21 @@
 
 :ref:`sphinxrst_py<sphinxrst_py>` > :ref:`spell_cmd<spell_cmd>` > :ref:`spell_exam<spell_exam>` > spell_res
 
+.. meta::
+   :keywords: spell, result
+
+.. index:: spell, result
+
 .. _spell_res:
 
 ============
 Spell Result
 ============
+
+.. meta::
+   :keywords: text
+
+.. index:: text
 
 .. _spell_res.text:
 
@@ -14,6 +24,11 @@ Text
 ----
 The words ``iterable`` and ``sphinxrst`` are not the dictionary,
 so we have included them in the spelling command for this section.
+
+.. meta::
+   :keywords: math
+
+.. index:: math
 
 .. _spell_res.math:
 
@@ -30,6 +45,11 @@ which applies to all sections:
 .. math::
 
     z = \cos( \theta ) + {\rm i} \sin( \theta )
+
+.. meta::
+   :keywords: double, words
+
+.. index:: double, words
 
 .. _spell_res.double_words:
 

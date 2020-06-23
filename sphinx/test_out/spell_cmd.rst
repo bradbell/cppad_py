@@ -2,11 +2,21 @@
 
 :ref:`sphinxrst_py<sphinxrst_py>` > spell_cmd
 
+.. meta::
+   :keywords: spell, command
+
+.. index:: spell, command
+
 .. _spell_cmd:
 
 =============
 Spell Command
 =============
+
+.. meta::
+   :keywords: syntax
+
+.. index:: syntax
 
 .. _spell_cmd.syntax:
 
@@ -23,6 +33,11 @@ The back slash is included as a possible beginning of a word
 so that latex commands can be included in the spelling list.
 The rest of the characters in a word are lower case letters.
 
+.. meta::
+   :keywords: purpose
+
+.. index:: purpose
+
 .. _spell_cmd.purpose:
 
 Purpose
@@ -31,6 +46,11 @@ You can specify a special list of words
 (not normally considered correct spelling)
 for the current section using the command above at the
 :ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
+
+.. meta::
+   :keywords: spell_file
+
+.. index:: spell_file
 
 .. _spell_cmd.spell_file:
 
@@ -42,6 +62,11 @@ are considered correct spellings for all sections.
 The latex commands corresponding to the letters in the greek alphabet
 are automatically added to this list.
 
+.. meta::
+   :keywords: capitalized, words
+
+.. index:: capitalized, words
+
 .. _spell_cmd.capitalized_words:
 
 Capitalized Words
@@ -49,12 +74,22 @@ Capitalized Words
 The case of the first letter does not matter when checking spelling;
 e.g., if ``abcd`` is *word_1* then ``Abcd`` will be considered a valid word.
 
+.. meta::
+   :keywords: double, words
+
+.. index:: double, words
+
 .. _spell_cmd.double_words:
 
 Double Words
 ------------
 It is considered an error to have only white space between two occurrences
 of the same word.
+
+.. meta::
+   :keywords: example
+
+.. index:: example
 
 .. _spell_cmd.example:
 

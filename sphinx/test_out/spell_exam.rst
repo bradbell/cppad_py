@@ -2,6 +2,11 @@
 
 :ref:`sphinxrst_py<sphinxrst_py>` > :ref:`spell_cmd<spell_cmd>` > spell_exam
 
+.. meta::
+   :keywords: spell, example
+
+.. index:: spell, example
+
 .. _spell_exam:
 
 =============

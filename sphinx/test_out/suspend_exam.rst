@@ -2,6 +2,11 @@
 
 :ref:`sphinxrst_py<sphinxrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > suspend_exam
 
+.. meta::
+   :keywords: suspend, example
+
+.. index:: suspend, example
+
 .. _suspend_exam:
 
 ===============

@@ -2,6 +2,11 @@
 
 :ref:`sphinxrst_py<sphinxrst_py>` > :ref:`file_cmd<file_cmd>` > file_block_exam
 
+.. meta::
+   :keywords: file, block, example
+
+.. index:: file, block, example
+
 .. _file_block_exam:
 
 ==================

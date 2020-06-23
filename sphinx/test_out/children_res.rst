@@ -2,11 +2,21 @@
 
 :ref:`sphinxrst_py<sphinxrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`children_exam<children_exam>` > children_res
 
+.. meta::
+   :keywords: indent, and, children, result
+
+.. index:: indent, and, children, result
+
 .. _children_res:
 
 ==========================
 Indent and Children Result
 ==========================
+
+.. meta::
+   :keywords: children
+
+.. index:: children
 
 .. _children_res.children:
 
@@ -26,6 +36,11 @@ created automatically.
 
 - :ref:`indent_space_exam`
 - :ref:`indent_tab_exam`
+
+.. meta::
+   :keywords: example
+
+.. index:: example
 
 .. _children_res.example:
 

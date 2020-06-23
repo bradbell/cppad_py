@@ -16,6 +16,7 @@
     conf
     toctree
     cmd
+    html
 }
 
 .. |space| unicode:: 0xA0
@@ -112,6 +113,18 @@ Other sections in a file are children of the parent section.
 
 Heading Links
 =============
+- A link is included from the index to a heading
+  for each word in a heading.
+
+- Each word in a heading is added to the html keyword meta data.
+
+- A cross reference label is defined for linking
+  from anywhere to a heading. The details of how to use
+  these labels are described below.
+
+- Headings can also be used to help find links to children
+  of the current section; see the heading
+  :ref:`sphinxrst_py.heading_links.children` below.
 
 Section Level
 -------------
@@ -1034,10 +1047,13 @@ def add_label_and_index_for_headings(
                 else :
                     index += ',' + word
             #
+            cmd  = '\n{sphinxrst_label '
+            cmd += index + ' '
+            cmd += label + ' }'
+            #
             # place label and index entry in output before the heading
             data_left   = section_data[: candidate_start]
-            data_left  += '\n{sphinxrst_index ' + index + ' }'
-            data_left  += '\n{sphinxrst_label ' + label + ' }'
+            data_left  += cmd
             data_left  += section_data[candidate_start : next_newline]
             data_right  = section_data[next_newline : ]
             section_data = data_left + data_right
@@ -1099,23 +1115,18 @@ def write_file(
         code_command       = line.startswith('{sphinxrst_code')
         file_command       = line.startswith('{sphinxrst_file')
         label_command      = line.startswith('{sphinxrst_label')
-        index_command      = line.startswith('{sphinxrst_index')
         children_command   = line.startswith('{sphinxrst_children')
         child_link_command = line.startswith('{sphinxrst_child_link')
         if label_command :
             # --------------------------------------------------------
             # label command
             line  = line.split(' ')
-            label = line[1]
-            line  = '.. _' + label + ':\n\n'
-            file_ptr.write(line)
-            previous_empty = True
-        elif index_command :
-            # --------------------------------------------------------
-            # index command
-            line  = line.split(' ')
-            index = line[1]
-            line  = '.. index:: ' + index + '\n\n'
+            index = line[1].replace(',', ', ')
+            label = line[2]
+            line  = '.. meta::\n'
+            line += '   :keywords: ' + index + '\n\n'
+            line += '.. index:: ' + index + '\n\n'
+            line += '.. _' + label + ':\n\n'
             file_ptr.write(line)
             previous_empty = True
         elif code_command :

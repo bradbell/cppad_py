@@ -2,6 +2,11 @@
 
 :ref:`sphinxrst_py<sphinxrst_py>` > :ref:`child_cmd<child_cmd>` > children_exam
 
+.. meta::
+   :keywords: indent, and, children, example
+
+.. index:: indent, and, children, example
+
 .. _children_exam:
 
 ===========================

@@ -2,6 +2,11 @@
 
 :ref:`sphinxrst_py<sphinxrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`children_exam<children_exam>` > :ref:`children_res<children_res>` > :ref:`indent_space_exam<indent_space_exam>` > indent_space_res
 
+.. meta::
+   :keywords: indent, using, spaces, result
+
+.. index:: indent, using, spaces, result
+
 .. _indent_space_res:
 
 ==========================
