@@ -18,7 +18,7 @@ Heading Example
 Child Sections
 --------------
 The heading above is an example heading for the
-:ref:`children<sphinxrst_py.headings_and_links.children>`
+:ref:`children<sphinxrst_py.heading_links.children>`
 of a
 :ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`.
 

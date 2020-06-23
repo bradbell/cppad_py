@@ -110,8 +110,8 @@ A single input file may contain multiple
 The first section in a file is called the file's parent section.
 Other sections in a file are children of the parent section.
 
-Headings and Links
-==================
+Heading Links
+=============
 
 Section Level
 -------------
@@ -944,7 +944,7 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
     return section_data
 # -----------------------------------------------------------------------------
 # labels for headings
-def add_labels_for_headings(
+def add_label_and_index_for_headings(
         section_data, num_remove, white_space, file_in, section_name
 ) :
     punctuation      = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
@@ -1027,9 +1027,16 @@ def add_labels_for_headings(
                 else :
                     heading = heading_list[level]
                     label += '.' + heading['text'].lower().replace(' ', '_')
+            index = ''
+            for word in heading_list[-1]['text'].lower().split() :
+                if index == '' :
+                    index = word
+                else :
+                    index += ',' + word
             #
-            # place label in output before the heading
+            # place label and index entry in output before the heading
             data_left   = section_data[: candidate_start]
+            data_left  += '\n{sphinxrst_index ' + index + ' }'
             data_left  += '\n{sphinxrst_label ' + label + ' }'
             data_left  += section_data[candidate_start : next_newline]
             data_right  = section_data[next_newline : ]
@@ -1092,6 +1099,7 @@ def write_file(
         code_command       = line.startswith('{sphinxrst_code')
         file_command       = line.startswith('{sphinxrst_file')
         label_command      = line.startswith('{sphinxrst_label')
+        index_command      = line.startswith('{sphinxrst_index')
         children_command   = line.startswith('{sphinxrst_children')
         child_link_command = line.startswith('{sphinxrst_child_link')
         if label_command :
@@ -1100,6 +1108,14 @@ def write_file(
             line  = line.split(' ')
             label = line[1]
             line  = '.. _' + label + ':\n\n'
+            file_ptr.write(line)
+            previous_empty = True
+        elif index_command :
+            # --------------------------------------------------------
+            # index command
+            line  = line.split(' ')
+            index = line[1]
+            line  = '.. index:: ' + index + '\n\n'
             file_ptr.write(line)
             previous_empty = True
         elif code_command :
@@ -1378,7 +1394,7 @@ while 0 < len(file_info_stack) :
                     num_remove = min(num_remove, next_ - newline - 1)
         # ---------------------------------------------------------------
         # add labels corresponding to headings
-        section_data = add_labels_for_headings(
+        section_data = add_label_and_index_for_headings(
             section_data,
             num_remove,
             white_space,
