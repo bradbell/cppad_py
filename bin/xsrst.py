@@ -21,9 +21,9 @@
 
 .. |space| unicode:: 0xA0
 
-###################################
-Extract Sphinx RST From Source Code
-###################################
+##################
+Extract Sphinx RST
+##################
 
 
 .. The indentation examples are included by the child_cmd section.
