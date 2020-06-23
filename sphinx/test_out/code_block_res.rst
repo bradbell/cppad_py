@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`code_cmd<code_cmd>` > :ref:`code_block_exam<code_block_exam>` > code_block_res
+:ref:`xsrst_py<xsrst_py>` > :ref:`code_cmd<code_cmd>` > :ref:`code_block_exam<code_block_exam>` > code_block_res
 
 .. meta::
    :keywords: code, block, result
@@ -23,4 +23,4 @@ Code Block Result
 
 ----
 
-sphinxrst input file: ``sphinx/test_in/code_block.py``
+xsrst input file: ``sphinx/test_in/code_block.py``

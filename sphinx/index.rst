@@ -6,7 +6,7 @@ Table of Contents
 .. toctree::
    :maxdepth: 4
 
-   sphinxrst/sphinxrst_py
+   xsrst/xsrst_py
 
 Index
 =====

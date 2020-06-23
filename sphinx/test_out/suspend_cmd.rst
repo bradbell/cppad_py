@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > suspend_cmd
+:ref:`xsrst_py<xsrst_py>` > suspend_cmd
 
 .. meta::
    :keywords: suspend, and, resume, command
@@ -22,8 +22,8 @@ Suspend and Resume Command
 
 Syntax
 ------
-- ``{sphinxrst_suspend}``
-- ``{sphinxrst_resume}``
+- ``{xsrst_suspend}``
+- ``{xsrst_resume}``
 
 .. meta::
    :keywords: purpose
@@ -34,11 +34,11 @@ Syntax
 
 Purpose
 -------
-It is possible to suspend (resume) the sphinxrst extraction during a section.
+It is possible to suspend (resume) the xsrst extraction during a section.
 One begins (ends) the suspension with a suspend command (resume command)
 at the
-:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
-Note that this will also suspend all other sphinxrst processing; e.g.,
+:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
+Note that this will also suspend all other xsrst processing; e.g.,
 spell checking.
 
 .. meta::
@@ -58,4 +58,4 @@ Example
 
 ----
 
-sphinxrst input file: ``bin/sphinxrst.py``
+xsrst input file: ``bin/xsrst.py``

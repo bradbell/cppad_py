@@ -18,7 +18,7 @@ import sphinx_bootstrap_theme
 
 # -- Project information -----------------------------------------------------
 
-project = 'sphinxrst'
+project = 'xsrst'
 copyright = '2020'
 author = 'Brad Bell'
 

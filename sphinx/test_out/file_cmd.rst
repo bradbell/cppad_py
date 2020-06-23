@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > file_cmd
+:ref:`xsrst_py<xsrst_py>` > file_cmd
 
 .. meta::
    :keywords: file, command
@@ -22,7 +22,7 @@ File Command
 
 Syntax
 ------
-``{sphinxrst_file%`` *file_name* :code:`%` *start* :code:`%` *stop* :code:`%}`
+``{xsrst_file%`` *file_name* :code:`%` *start* :code:`%` *stop* :code:`%}`
 
 .. meta::
    :keywords: purpose
@@ -34,7 +34,7 @@ Syntax
 Purpose
 -------
 A code block, from any file, is included by the command above at the
-:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
+:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 .. meta::
    :keywords: white, space
@@ -59,7 +59,7 @@ This enables one to put the command on multiple input lines.
 file_name
 ---------
 If *file_name* is empty, the current input file is used.
-Otherwise *file_name* is relative to the directory where ``sphinxrst.py``
+Otherwise *file_name* is relative to the directory where ``xsrst.py``
 is executed; i.e., the top directory for this git repository.
 
 .. meta::
@@ -120,4 +120,4 @@ Example
 
 ----
 
-sphinxrst input file: ``bin/sphinxrst.py``
+xsrst input file: ``bin/xsrst.py``

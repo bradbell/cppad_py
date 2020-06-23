@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`child_cmd<child_cmd>` > children_exam
+:ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > children_exam
 
 .. meta::
    :keywords: indent, and, children, example
@@ -24,4 +24,4 @@ Indent and Children Example
 
 ----
 
-sphinxrst input file: ``sphinx/test_in/children.py``
+xsrst input file: ``sphinx/test_in/children.py``

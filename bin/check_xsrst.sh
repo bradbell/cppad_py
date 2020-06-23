@@ -12,48 +12,48 @@ echo_eval() {
 	eval $*
 }
 # -----------------------------------------------------------------------------
-if [ "$0" != "bin/check_sphinx.sh" ]
+if [ "$0" != "bin/check_xsrst.sh" ]
 then
-	echo "bin/check_sphinx.sh: must be executed from its parent directory"
+	echo "bin/check_xsrst.sh: must be executed from its parent directory"
 	exit 1
 fi
 sphinxdir='sphinx'
 # -----------------------------------------------------------------------------
-echo "bin/sphinxrst.py $sphinxdir bin/sphinxrst.py $sphinxdir/spell_file"
-if ! bin/sphinxrst.py \
-	$sphinxdir bin/sphinxrst.py $sphinxdir/spell_file 2> sphinxrst.$$
+echo "bin/xsrst.py $sphinxdir bin/xsrst.py $sphinxdir/spell_file"
+if ! bin/xsrst.py \
+	$sphinxdir bin/xsrst.py $sphinxdir/spell_file 2> xsrst.$$
 then
 	type_error='error'
 else
 	type_error='warning'
 fi
-if [ -s sphinxrst.$$ ]
+if [ -s xsrst.$$ ]
 then
-	cat sphinxrst.$$
-	rm sphinxrst.$$
+	cat xsrst.$$
+	rm xsrst.$$
 	echo "$0: exiting due to $type_error above"
 	exit 1
 fi
-rm sphinxrst.$$
+rm xsrst.$$
 # -----------------------------------------------------------------------------
 echo_eval cd sphinx
-file_list=$(ls sphinxrst/*.rst | sed -e 's|^sphinxrst/||' )
+file_list=$(ls xsrst/*.rst | sed -e 's|^xsrst/||' )
 for file in $file_list
 do
-	if [ "$file" != 'sphinxrst_py.rst' ]
+	if [ "$file" != 'xsrst_py.rst' ]
 	then
 		if [ ! -e test_out/$file ]
 		then
 			echo "The output file $sphinxdir/test_out/$file does not exist."
 			echo 'Check that the corresponding sections are correct and then:'
-			echo "    cp $sphinxdir/sphinxrst/$file $sphinxdir/test_out/$file"
+			echo "    cp $sphinxdir/xsrst/$file $sphinxdir/test_out/$file"
 			exit 1
-		elif ! diff test_out/$file sphinxrst/$file
+		elif ! diff test_out/$file xsrst/$file
 		then
-			echo "$sphinxdir/sphinxrst/$file changed; above is output of"
-			echo "	diff test_out/$file sphinxrst/$file"
+			echo "$sphinxdir/xsrst/$file changed; above is output of"
+			echo "	diff test_out/$file xsrst/$file"
 			echo 'If the new file is currect, replace old with new using:'
-			echo "    cp $sphinxdir/sphinxrst/$file $sphinxdir/test_out/$file"
+			echo "    cp $sphinxdir/xsrst/$file $sphinxdir/test_out/$file"
 			exit 1
 		else
 			echo "$file: OK"
@@ -63,9 +63,9 @@ done
 file_list=$(ls test_out/*.rst | sed -e 's|^test_out/||' )
 for file in $file_list
 do
-	if [ ! -e sphinxrst/$file ]
+	if [ ! -e xsrst/$file ]
 	then
-		echo "The output file $sphinxdir/sphinxrst/$file does not nexist."
+		echo "The output file $sphinxdir/xsrst/$file does not nexist."
 		echo "Use he following command to remove $sphinxdir/test_out/$file ?"
 		echo "	git rm $sphinxdir/test_out/$file"
 		exit 1
@@ -74,7 +74,7 @@ done
 # -----------------------------------------------------------------------------
 if ! make html
 then
-	echo 'bin/check_sphinx.sh: see errors above during the command'
+	echo 'bin/check_xsrst.sh: see errors above during the command'
 	echo '    cd sphinx'
 	echo '    make html'
 	exit 1

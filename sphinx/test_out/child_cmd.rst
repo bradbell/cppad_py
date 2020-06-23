@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > child_cmd
+:ref:`xsrst_py<xsrst_py>` > child_cmd
 
 .. meta::
    :keywords: children, and, child, links, commands
@@ -22,9 +22,9 @@ Children and Child Links Commands
 
 Syntax
 ------
-- ``{sphinxrst_children%``
+- ``{xsrst_children%``
   *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
-- ``{sphinxrst_child_link%``
+- ``{xsrst_child_link%``
   *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
 
 .. meta::
@@ -40,7 +40,7 @@ A section can specify a set of files for which
 the first section in each file (parent section for each file)
 is a child of the current section.
 This is done using the commands above at the
-:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
+:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 .. meta::
    :keywords: white, space
@@ -85,4 +85,4 @@ Example
 
 ----
 
-sphinxrst input file: ``bin/sphinxrst.py``
+xsrst input file: ``bin/xsrst.py``

@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`spell_cmd<spell_cmd>` > :ref:`spell_exam<spell_exam>` > spell_res
+:ref:`xsrst_py<xsrst_py>` > :ref:`spell_cmd<spell_cmd>` > :ref:`spell_exam<spell_exam>` > spell_res
 
 .. meta::
    :keywords: spell, result
@@ -22,7 +22,7 @@ Spell Result
 
 Text
 ----
-The words ``iterable`` and ``sphinxrst`` are not the dictionary,
+The words ``iterable`` and ``xsrst`` are not the dictionary,
 so we have included them in the spelling command for this section.
 
 .. meta::
@@ -39,7 +39,7 @@ are automatically included as correct spelling.
 Other latex commands in this section; e.g. ``\cos``, ``\sin``, ``\rm``,
 have been included in the spelling command for this section.
 An alternative would be to add them to the
-:ref:`spell_file<sphinxrst_py.command_line_arguments.spell_file>`
+:ref:`spell_file<xsrst_py.command_line_arguments.spell_file>`
 which applies to all sections:
 
 .. math::
@@ -65,4 +65,4 @@ spelling command for this section.
 
 ----
 
-sphinxrst input file: ``sphinx/test_in/spell.py``
+xsrst input file: ``sphinx/test_in/spell.py``

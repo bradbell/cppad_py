@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`children_exam<children_exam>` > :ref:`children_res<children_res>` > indent_tab_exam
+:ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`children_exam<children_exam>` > :ref:`children_res<children_res>` > indent_tab_exam
 
 .. meta::
    :keywords: indent, using, tabs, example
@@ -24,4 +24,4 @@ Indent Using Tabs Example
 
 ----
 
-sphinxrst input file: ``sphinx/test_in/indent_tab.py``
+xsrst input file: ``sphinx/test_in/indent_tab.py``

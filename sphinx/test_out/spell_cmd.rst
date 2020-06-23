@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > spell_cmd
+:ref:`xsrst_py<xsrst_py>` > spell_cmd
 
 .. meta::
    :keywords: spell, command
@@ -22,7 +22,7 @@ Spell Command
 
 Syntax
 ------
-``{sphinxrst_spell`` *word_1* ...  *word_n*:code:`}`
+``{xsrst_spell`` *word_1* ...  *word_n*:code:`}`
 
 Here *word_1*, ..., *word_n* is the special list of words for this section.
 In the syntax above the list of words is all in one line,
@@ -45,7 +45,7 @@ Purpose
 You can specify a special list of words
 (not normally considered correct spelling)
 for the current section using the command above at the
-:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
+:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 .. meta::
    :keywords: spell_file
@@ -57,7 +57,7 @@ for the current section using the command above at the
 spell_file
 ----------
 The list of words in
-:ref:`spell_file<sphinxrst_py.command_line_arguments.spell_file>`
+:ref:`spell_file<xsrst_py.command_line_arguments.spell_file>`
 are considered correct spellings for all sections.
 The latex commands corresponding to the letters in the greek alphabet
 are automatically added to this list.
@@ -103,4 +103,4 @@ Example
 
 ----
 
-sphinxrst input file: ``bin/sphinxrst.py``
+xsrst input file: ``bin/xsrst.py``

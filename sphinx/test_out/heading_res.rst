@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`heading_exam<heading_exam>` > heading_res
+:ref:`xsrst_py<xsrst_py>` > :ref:`heading_exam<heading_exam>` > heading_res
 
 .. meta::
    :keywords: heading, result
@@ -79,4 +79,4 @@ Links
 
 ----
 
-sphinxrst input file: ``sphinx/test_in/heading.py``
+xsrst input file: ``sphinx/test_in/heading.py``

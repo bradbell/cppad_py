@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > begin_cmd
+:ref:`xsrst_py<xsrst_py>` > begin_cmd
 
 .. |space| unicode:: 0xA0
 
@@ -24,8 +24,8 @@ Begin and End Commands
 
 Syntax
 ------
-- ``{sphinxrst_begin`` *section_name*:code:`}`
-- ``{sphinxrst_end`` *section_name*:code:`}`
+- ``{xsrst_begin`` *section_name*:code:`}`
+- ``{xsrst_end`` *section_name*:code:`}`
 
 .. meta::
    :keywords: section
@@ -38,7 +38,7 @@ Section
 -------
 The start (end) of a section of the input file is indicated by a
 begin (end) command at the
-:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
+:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 .. meta::
    :keywords: section_name
@@ -64,9 +64,9 @@ Output File
 The output file corresponding to *section_name* is
 
 |space| |space| |space| |space|
-:ref:`sphinx_dir<sphinxrst_py.command_line_arguments.sphinx_dir>`
-``/sphinxrst/`` *section_name* ``.rst``
+:ref:`sphinx_dir<xsrst_py.command_line_arguments.sphinx_dir>`
+``/xsrst/`` *section_name* ``.rst``
 
 ----
 
-sphinxrst input file: ``bin/sphinxrst.py``
+xsrst input file: ``bin/xsrst.py``

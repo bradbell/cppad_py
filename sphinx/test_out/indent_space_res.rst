@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`children_exam<children_exam>` > :ref:`children_res<children_res>` > :ref:`indent_space_exam<indent_space_exam>` > indent_space_res
+:ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`children_exam<children_exam>` > :ref:`children_res<children_res>` > :ref:`indent_space_exam<indent_space_exam>` > indent_space_res
 
 .. meta::
    :keywords: indent, using, spaces, result
@@ -23,4 +23,4 @@ Indent Using Spaces Result
 
 ----
 
-sphinxrst input file: ``sphinx/test_in/indent_space.py``
+xsrst input file: ``sphinx/test_in/indent_space.py``

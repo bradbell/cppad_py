@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > heading_exam
+:ref:`xsrst_py<xsrst_py>` > heading_exam
 
 .. meta::
    :keywords: heading, example
@@ -27,9 +27,9 @@ Heading Example
 Child Sections
 --------------
 The heading above is an example heading for the
-:ref:`children<sphinxrst_py.heading_links.children>`
+:ref:`children<xsrst_py.heading_links.children>`
 of a
-:ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`.
+:ref:`parent section<xsrst_py.table_of_contents.parent_section>`.
 
 .. toctree::
    :maxdepth: 1
@@ -38,4 +38,4 @@ of a
 
 ----
 
-sphinxrst input file: ``sphinx/test_in/heading.py``
+xsrst input file: ``sphinx/test_in/heading.py``

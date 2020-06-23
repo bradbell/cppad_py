@@ -8,9 +8,9 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{sphinxrst_begin sphinxrst_py}
-{sphinxrst_spell
-    sphinxrst
+{xsrst_begin xsrst_py}
+{xsrst_spell
+    xsrst
     rst
     underbars
     conf
@@ -28,14 +28,14 @@ Extract Sphinx RST From Source Code
 
 .. The indentation examples are included by the child_cmd section.
 
-{sphinxrst_children%
+{xsrst_children%
    %sphinx/test_in/heading.py
 %}
 
 
 Syntax
 ======
-``sphinxrst.py`` *sphinx_dir* *root_file* *spell_file*
+``xsrst.py`` *sphinx_dir* *root_file* *spell_file*
 
 Notation
 ========
@@ -58,22 +58,22 @@ The command line argument *sphinx_dir* is a sub-directory,
 of the top git repository directory.
 The  sphinx ``conf.py`` and ``index.rst`` files are located in this directory.
 Any files that have names ending in ``.rst``,
-and that are in the directory *sphinx_dir*:code:`/sphinxrst`,
-are removed at the beginning of execution of ``sphinxrst.py``.
-All the ``.rst`` files in *sphinx_dir*:code:`/sphinxrst`
-were extracted from the source code the last time that ``sphinxrst.py``
+and that are in the directory *sphinx_dir*:code:`/xsrst`,
+are removed at the beginning of execution of ``xsrst.py``.
+All the ``.rst`` files in *sphinx_dir*:code:`/xsrst`
+were extracted from the source code the last time that ``xsrst.py``
 was executed.
 
 root_file
 ---------
 The command line argument *root_file* is the name of a file,
 relative to the top git repository directory.
-The first sphinxrst section in this file will be the *root section*
+The first xsrst section in this file will be the *root section*
 (top section), in the table of contents for this documentation.
 The file *sphinx_dir*:code`/index.rst` must contain the line
 
 |space| |space| |space| |space|
-``sphinxrst/`` *section_name*
+``xsrst/`` *section_name*
 
 where *section_name* is the name
 of the first section in *root_file*.
@@ -100,9 +100,9 @@ The sphinx ``toctree`` directives are automatically generated
 for sections. The only such directive you should directly edit
 is in the file *sphinx_dir*:code`/index.rst`.
 One entry is for the first section in the
-:ref:`root_file<sphinxrst_py.command_line_arguments.root_file>`.
+:ref:`root_file<xsrst_py.command_line_arguments.root_file>`.
 Other entries are for ``.rst`` files that are not extracted by
-``sphinxrst.py``.
+``xsrst.py``.
 
 Parent Section
 --------------
@@ -124,7 +124,7 @@ Heading Links
 
 - Headings can also be used to help find links to children
   of the current section; see the heading
-  :ref:`sphinxrst_py.heading_links.children` below.
+  :ref:`xsrst_py.heading_links.children` below.
 
 Section Level
 -------------
@@ -146,7 +146,7 @@ The label for linking a heading that is not at the first level
 is the label for the heading directly above it plus a dot character :code:`.`,
 plus a lower case version of the heading with spaces converted to
 underbars :code:`_`. For example, the label for the heading for this
-paragraph is ``sphinxrst_py.headers_and_links.other_levels``.
+paragraph is ``xsrst_py.headers_and_links.other_levels``.
 This may seem verbose, but it helps keep the links up to date.
 If a heading changes, all the links to that heading will break.
 This identifies the links that should be checked
@@ -154,8 +154,8 @@ to make sure they are still valid.
 
 Children
 --------
-If a sphinxrst input file has more than one section, the file's
-ref:`parent section<sphinxrst_py.table_of_contents.parent_section>`
+If a xsrst input file has more than one section, the file's
+ref:`parent section<xsrst_py.table_of_contents.parent_section>`
 has children.
 
 - If a section has a :ref:`child link command<child_cmd>`
@@ -174,10 +174,10 @@ Example
 
 Indentation
 ===========
-If all of the extracted sphinxrst documentation for a section is indented
+If all of the extracted xsrst documentation for a section is indented
 by the same white space characters, those characters
-are not included in the sphinxrst output. This enables one to indent the
-sphinxrst so it is grouped with the proper code block in the source.
+are not included in the xsrst output. This enables one to indent the
+xsrst so it is grouped with the proper code block in the source.
 
 Example
 -------
@@ -186,7 +186,7 @@ Example
 
 Wish List
 =========
-The following is a wish list for future improvements to ``sphinxrst.py``:
+The following is a wish list for future improvements to ``xsrst.py``:
 
 Error Messaging
 ---------------
@@ -209,12 +209,12 @@ Commands
 - :ref:`code_cmd`
 - :ref:`file_cmd`
 
-{sphinxrst_end sphinxrst_py}
+{xsrst_end xsrst_py}
 """
 # ---------------------------------------------------------------------------
 """
-{sphinxrst_begin begin_cmd}
-{sphinxrst_spell
+{xsrst_begin begin_cmd}
+{xsrst_spell
     underbar
     rst
 }
@@ -227,14 +227,14 @@ Begin and End Commands
 
 Syntax
 ------
-- ``{sphinxrst_begin`` *section_name*:code:`}`
-- ``{sphinxrst_end`` *section_name*:code:`}`
+- ``{xsrst_begin`` *section_name*:code:`}`
+- ``{xsrst_end`` *section_name*:code:`}`
 
 Section
 -------
 The start (end) of a section of the input file is indicated by a
 begin (end) command at the
-:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
+:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 section_name
 ------------
@@ -246,14 +246,14 @@ Output File
 The output file corresponding to *section_name* is
 
 |space| |space| |space| |space|
-:ref:`sphinx_dir<sphinxrst_py.command_line_arguments.sphinx_dir>`
-``/sphinxrst/`` *section_name* ``.rst``
+:ref:`sphinx_dir<xsrst_py.command_line_arguments.sphinx_dir>`
+``/xsrst/`` *section_name* ``.rst``
 
-{sphinxrst_end begin_cmd}
+{xsrst_end begin_cmd}
 """
 # ---------------------------------------------------------------------------
 """
-{sphinxrst_begin child_cmd}
+{xsrst_begin child_cmd}
 
 =================================
 Children and Child Links Commands
@@ -261,9 +261,9 @@ Children and Child Links Commands
 
 Syntax
 ------
-- ``{sphinxrst_children%``
+- ``{xsrst_children%``
   *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
-- ``{sphinxrst_child_link%``
+- ``{xsrst_child_link%``
   *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
 
 
@@ -273,7 +273,7 @@ A section can specify a set of files for which
 the first section in each file (parent section for each file)
 is a child of the current section.
 This is done using the commands above at the
-:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
+:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 White Space
 -----------
@@ -289,15 +289,15 @@ You can place a heading directly before the links to make them easier to find.
 
 Example
 -------
-{sphinxrst_child_link%
+{xsrst_child_link%
    %sphinx/test_in/children.py
 %}
 
-{sphinxrst_end child_cmd}
+{xsrst_end child_cmd}
 """
 # ---------------------------------------------------------------------------
 """
-{sphinxrst_begin spell_cmd}
+{xsrst_begin spell_cmd}
 
 =============
 Spell Command
@@ -305,7 +305,7 @@ Spell Command
 
 Syntax
 ------
-``{sphinxrst_spell`` *word_1* ...  *word_n*:code:`}`
+``{xsrst_spell`` *word_1* ...  *word_n*:code:`}`
 
 Here *word_1*, ..., *word_n* is the special list of words for this section.
 In the syntax above the list of words is all in one line,
@@ -322,12 +322,12 @@ Purpose
 You can specify a special list of words
 (not normally considered correct spelling)
 for the current section using the command above at the
-:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
+:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 spell_file
 ----------
 The list of words in
-:ref:`spell_file<sphinxrst_py.command_line_arguments.spell_file>`
+:ref:`spell_file<xsrst_py.command_line_arguments.spell_file>`
 are considered correct spellings for all sections.
 The latex commands corresponding to the letters in the greek alphabet
 are automatically added to this list.
@@ -345,15 +345,15 @@ of the same word.
 
 Example
 -------
-{sphinxrst_child_link%
+{xsrst_child_link%
    %sphinx/test_in/spell.py
 %}
 
-{sphinxrst_end spell_cmd}
+{xsrst_end spell_cmd}
 """
 # ---------------------------------------------------------------------------
 """
-{sphinxrst_begin suspend_cmd}
+{xsrst_begin suspend_cmd}
 
 ==========================
 Suspend and Resume Command
@@ -361,30 +361,30 @@ Suspend and Resume Command
 
 Syntax
 ------
-- ``{sphinxrst_suspend}``
-- ``{sphinxrst_resume}``
+- ``{xsrst_suspend}``
+- ``{xsrst_resume}``
 
 Purpose
 -------
-It is possible to suspend (resume) the sphinxrst extraction during a section.
+It is possible to suspend (resume) the xsrst extraction during a section.
 One begins (ends) the suspension with a suspend command (resume command)
 at the
-:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
-Note that this will also suspend all other sphinxrst processing; e.g.,
+:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
+Note that this will also suspend all other xsrst processing; e.g.,
 spell checking.
 
 Example
 -------
-{sphinxrst_child_link%
+{xsrst_child_link%
    %sphinx/test_in/suspend.py
 %}
 
-{sphinxrst_end suspend_cmd}
+{xsrst_end suspend_cmd}
 """
 # ---------------------------------------------------------------------------
 """
-{sphinxrst_begin code_cmd}
-{sphinxrst_spell
+{xsrst_begin code_cmd}
+{xsrst_spell
     cmd
 }
 
@@ -394,7 +394,7 @@ Code Command
 
 Syntax
 ------
-``{sphinxrst_code}``
+``{xsrst_code}``
 
 Purpose
 -------
@@ -411,9 +411,9 @@ The back quote character \` can't be in the same line as the commands.
 Rest of Line
 ------------
 Other characters on the same line as a code command
-are not included in the sphinxrst output.
+are not included in the xsrst output.
 This enables one to begin or end a comment block
-without having the comment characters in the sphinxrst output.
+without having the comment characters in the xsrst output.
 The file extension in the name of the current input file is used to
 determine the source code language for highlighting the code block.
 Code blocks as usually small and
@@ -426,15 +426,15 @@ but not for code blocks included using the
 
 Example
 -------
-{sphinxrst_child_link%
+{xsrst_child_link%
    %sphinx/test_in/code_block.py
 %}
 
-{sphinxrst_end code_cmd}
+{xsrst_end code_cmd}
 """
 # ---------------------------------------------------------------------------
 """
-{sphinxrst_begin file_cmd}
+{xsrst_begin file_cmd}
 
 ============
 File Command
@@ -442,12 +442,12 @@ File Command
 
 Syntax
 ------
-``{sphinxrst_file%`` *file_name* :code:`%` *start* :code:`%` *stop* :code:`%}`
+``{xsrst_file%`` *file_name* :code:`%` *start* :code:`%` *stop* :code:`%}`
 
 Purpose
 -------
 A code block, from any file, is included by the command above at the
-:ref:`beginning of a line<sphinxrst_py.notation.beginning_of_a_line>`.
+:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 White Space
 -----------
@@ -458,7 +458,7 @@ This enables one to put the command on multiple input lines.
 file_name
 ---------
 If *file_name* is empty, the current input file is used.
-Otherwise *file_name* is relative to the directory where ``sphinxrst.py``
+Otherwise *file_name* is relative to the directory where ``xsrst.py``
 is executed; i.e., the top directory for this git repository.
 
 start
@@ -484,11 +484,11 @@ Spell checking is **not** done for these code blocks.
 
 Example
 -------
-{sphinxrst_child_link%
+{xsrst_child_link%
    %sphinx/test_in/file_block.py
 %}
 
-{sphinxrst_end file_cmd}
+{xsrst_end file_cmd}
 """
 # ----------------------------------------------------------------------------
 import sys
@@ -592,58 +592,58 @@ def file2file_info(
     #
     while file_index < len(file_data) :
         #
-        # match_sphinxrst_begin
+        # match_xsrst_begin
         data_rest   = file_data[file_index : ]
-        match_sphinxrst_begin = pattern_begin_command.search(data_rest)
+        match_xsrst_begin = pattern_begin_command.search(data_rest)
         #
-        if match_sphinxrst_begin == None :
+        if match_xsrst_begin == None :
             if file_index == 0 :
                 msg  = 'can not find followng at start of a line:\n'
-                msg += '    {sphinxrst_begin section_name}\n'
+                msg += '    {xsrst_begin section_name}\n'
                 sys_exit(msg, file_in)
             file_index = len(file_data)
         else :
             # section_name
-            section_name = match_sphinxrst_begin.group(1)
+            section_name = match_xsrst_begin.group(1)
             if section_name == '' :
-                msg  = 'section_name after sphinxrst_begin is empty'
+                msg  = 'section_name after xsrst_begin is empty'
                 sys_exit(msg, file_in)
             #
             # check if section appears multiple times
             for info in file_info :
                 if section_name == info['section_name'] :
-                    msg  = 'sphinxrst_begin ' + section_name
+                    msg  = 'xsrst_begin ' + section_name
                     msg += ' appears twice in file\n' + file_in
                     sys_exit(msg)
             for info in section_info :
                 if section_name == info['section_name'] :
-                    msg  = 'sphinxrst_begin ' + section_name
+                    msg  = 'xsrst_begin ' + section_name
                     msg += ' appears twice\n'
                     msg += 'Once in file ' + file_in + '\n'
                     msg += 'And again in file ' + info['file_in'] + '\n'
                     sys_exit(msg)
             #
             # file_index
-            file_index += match_sphinxrst_begin.end()
+            file_index += match_xsrst_begin.end()
             #
-            # match_sphinxrst_end
+            # match_xsrst_end
             data_rest = file_data[file_index : ]
-            match_sphinxrst_end = pattern_end_command.search(data_rest)
+            match_xsrst_end = pattern_end_command.search(data_rest)
             #
-            if match_sphinxrst_end == None :
+            if match_xsrst_end == None :
                 msg  = 'can not find followig at start of a line:\n'
-                msg += '    {sphinxrst_end section_name}'
+                msg += '    {xsrst_end section_name}'
                 sys_exit(msg, file_in, section_name)
-            if match_sphinxrst_end.group(1) != section_name :
+            if match_xsrst_end.group(1) != section_name :
                 msg = 'in file ' + file_in + '\nsection names do not match\n'
-                msg += 'sphinxrst_begin section name = '+section_name + '\n'
-                msg += 'sphinxrst_end section name   = '
-                msg += match_sphinxrst_end.group(1) + '\n'
+                msg += 'xsrst_begin section name = '+section_name + '\n'
+                msg += 'xsrst_end section name   = '
+                msg += match_xsrst_end.group(1) + '\n'
                 sys_exit(msg)
             #
             # section_data
             section_start = file_index
-            section_end   = file_index + match_sphinxrst_end.start()
+            section_end   = file_index + match_xsrst_end.start()
             section_data  = file_data[ section_start : section_end ]
             #
             # file_info
@@ -653,7 +653,7 @@ def file2file_info(
             } )
             #
             # place to start search for next section
-            file_index += match_sphinxrst_end.end()
+            file_index += match_xsrst_end.end()
     return file_info
 # ----------------------------------------------------------------------------
 def start_line_white_space(data, file_in, section_name) :
@@ -687,7 +687,7 @@ def start_line_white_space(data, file_in, section_name) :
         data_index = data_index + index + 1
     return white_space
 # ----------------------------------------------------------------------------
-# process sphinxrst_suspend commands
+# process xsrst_suspend commands
 def suspend_command(
     suspend_pattern, resume_pattern, section_data, file_in, section_name
 ) :
@@ -699,13 +699,13 @@ def suspend_command(
         match_resume  = resume_pattern.search(section_rest)
         match_suspend = suspend_pattern.search(section_rest)
         if match_resume == None :
-            msg  = 'there is a {sphinxrst_suspend} without a '
-            msg += 'corresponding {sphinxrst_resume}'
+            msg  = 'there is a {xsrst_suspend} without a '
+            msg += 'corresponding {xsrst_resume}'
             sys_exit(msg, file_in, section_name)
         if match_suspend != None :
             if match_suspend.start() < match_resume.start() :
-                msg  = 'there are two {sphinxrst_suspend} without a '
-                msg += '{sphinxrst_resume} between them'
+                msg  = 'there are two {xsrst_suspend} without a '
+                msg += '{xsrst_resume} between them'
                 sys_exit(msg, file_in, section_name)
         resume_end   = match_resume.end() + suspend_end
         section_rest = section_data[ resume_end :]
@@ -736,7 +736,7 @@ def child_commands(
     #
     assert match.group(1) == 'children' or match.group(1) == 'child_link'
     command = match.group(1)
-    replace = '\n{sphinxrst_' + command + '}\n'
+    replace = '\n{xsrst_' + command + '}\n'
     #
     # section_data
     data_left  = section_data[ : match.start() ]
@@ -786,7 +786,7 @@ def spell_command(
         section_rest   = section_data[ match_spell.end() : ]
         match_another  = pattern_spell_command.search(section_rest)
         if match_another :
-            msg  = 'there are two spell sphinxrst commands'
+            msg  = 'there are two spell xsrst commands'
             sys_exit(msg, file_in, section_name)
         for itr in word_pattern.finditer( match_spell.group(1) ) :
             special_list.append( itr.group(0).lower() )
@@ -797,7 +797,7 @@ def spell_command(
         section_data = section_data[: start] + section_data[end :]
     #
     # data = section_data with commands removed
-    command_pattern = re.compile( r'\{[a-z]+_sphinxrst[^}]*\}' )
+    command_pattern = re.compile( r'\{[a-z]+_xsrst[^}]*\}' )
     data            = ''
     previous_end    = 0
     for itr in command_pattern.finditer( section_data ) :
@@ -846,7 +846,7 @@ def spell_command(
     #
     return section_data
 # -----------------------------------------------------------------------------
-# remove characters on same line as {sphinxrst_code}
+# remove characters on same line as {xsrst_code}
 def isolate_code_command(code_pattern, section_data, file_in, section_name) :
     section_index  = 0
     match_begin_code = code_pattern.search(section_data)
@@ -856,15 +856,15 @@ def isolate_code_command(code_pattern, section_data, file_in, section_name) :
         section_rest   = section_data[ begin_end : ]
         match_end_code = code_pattern.search( section_rest )
         if match_end_code == None :
-            msg  = 'number of sphinxrst_code commands is not even'
+            msg  = 'number of xsrst_code commands is not even'
             sys_exit(msg, file_in, section_name)
         end_start = match_end_code.start() + begin_end
         end_end   = match_end_code.end()   + begin_end
         #
         data_left   = section_data[: begin_start + 1 ]
-        data_left  += '{sphinxrst_code}'
+        data_left  += '{xsrst_code}'
         data_left  += section_data[ begin_end : end_start + 1]
-        data_left  += '{sphinxrst_code}'
+        data_left  += '{xsrst_code}'
         data_right  = section_data[ end_end : ]
         #
         section_data  = data_left + data_right
@@ -886,13 +886,13 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
         # start
         start     = match_file.group(2).strip()
         if start == '' :
-            msg = 'sphinxrst_file command: start text is empty'
+            msg = 'xsrst_file command: start text is empty'
             sys_exit(msg, file_in, section_name)
         #
         # stop
         stop      = match_file.group(3) .strip()
         if stop == '' :
-            msg = 'sphinxrst_file command: stop text is empty'
+            msg = 'xsrst_file command: stop text is empty'
             sys_exit(msg, file_in, section_name)
         #
         # data
@@ -904,13 +904,13 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
         offset      = 0
         start_index = find_at_start_of_line(offset, data ,start)
         if start_index < 0 :
-            msg  = 'sphinxrst_file command: can not find start = '
+            msg  = 'xsrst_file command: can not find start = '
             msg += '"' + start + '"'
             msg += '\nin file_name = "' + file_name + '"'
             sys_exit(msg, file_in, section_name)
         offset     = start_index + len(start)
         if 0 <= find_at_start_of_line(offset, data, start) :
-            msg  = 'sphinxrst_file command: found more than one '
+            msg  = 'xsrst_file command: found more than one '
             msg += 'start = "' + start + '"'
             msg += '\nin file_name = "' + file_name + '"'
             sys_exit(msg, file_in, section_name)
@@ -918,14 +918,14 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
         # stop_index
         stop_index = find_at_start_of_line(offset, data, stop)
         if stop_index < 0 :
-            msg  = 'sphinxrst_file command: can not find'
+            msg  = 'xsrst_file command: can not find'
             msg += '\nstop = "' + stop + '"'
             msg += ' after start = "' + start + '"'
             msg += '\nin file_name = "' + file_name + '"'
             sys_exit(msg, file_in, section_name)
         offset     = stop_index + len(stop)
         if 0 <= find_at_start_of_line(offset, data, stop) :
-            msg  = 'sphinxrst_file command: found more than one '
+            msg  = 'xsrst_file command: found more than one '
             msg += 'stop = "' + stop + '"'
             msg += ' after start = "' + start + '"'
             msg += '\nin file_name = "' + file_name + '"'
@@ -944,7 +944,7 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
         end_line = match_file.end() + section_index;
         #
         # converted version of the command
-        cmd  = f'sphinxrst_file%{file_name}%{start_line}%{stop_line}%'
+        cmd  = f'xsrst_file%{file_name}%{start_line}%{stop_line}%'
         cmd  = '\n{' + cmd  + '}'
         #
         data_left  = section_data[: begin_line]
@@ -1047,7 +1047,7 @@ def add_label_and_index_for_headings(
                 else :
                     index += ',' + word
             #
-            cmd  = '\n{sphinxrst_label '
+            cmd  = '\n{xsrst_label '
             cmd += index + ' '
             cmd += label + ' }'
             #
@@ -1112,11 +1112,11 @@ def write_file(
     for newline in newline_list :
         line  = section_data[startline : newline + 1]
         # commands that delay some processing to this point
-        code_command       = line.startswith('{sphinxrst_code')
-        file_command       = line.startswith('{sphinxrst_file')
-        label_command      = line.startswith('{sphinxrst_label')
-        children_command   = line.startswith('{sphinxrst_children')
-        child_link_command = line.startswith('{sphinxrst_child_link')
+        code_command       = line.startswith('{xsrst_code')
+        file_command       = line.startswith('{xsrst_file')
+        label_command      = line.startswith('{xsrst_label')
+        children_command   = line.startswith('{xsrst_children')
+        child_link_command = line.startswith('{xsrst_child_link')
         if label_command :
             # --------------------------------------------------------
             # label command
@@ -1197,7 +1197,7 @@ def write_file(
         file_ptr.write('\n')
     #
     file_ptr.write('----\n\n') # sphinx transition
-    file_ptr.write( f'sphinxrst input file: ``{file_in}``\n')
+    file_ptr.write( f'xsrst input file: ``{file_in}``\n')
     file_ptr.close()
 # =============================================================================
 # main program
@@ -1242,7 +1242,7 @@ for file_name in ['conf.py', 'index.rst'] :
 #
 # remove all *.rst files from output directory so only new ones remain aftet
 # this program finishes
-output_dir = sphinx_dir + '/sphinxrst'
+output_dir = sphinx_dir + '/xsrst'
 if os.path.isdir(output_dir) :
     for file_name in os.listdir(output_dir) :
         if file_name.endswith('.rst') :
@@ -1256,23 +1256,23 @@ spell_list    = file2list(spell_file)
 spell_checker = init_spell_checker(spell_list)
 #
 # define some pytyon regular expression patterns
-pattern_code_command    = re.compile( r'\n[^\n`]*\{sphinxrst_code\}[^\n`]*')
-pattern_suspend_command = re.compile( r'\n[ \t]*\{sphinxrst_suspend\}' )
-pattern_resume_command  = re.compile( r'\n[ \t]*\{sphinxrst_resume\}' )
+pattern_code_command    = re.compile( r'\n[^\n`]*\{xsrst_code\}[^\n`]*')
+pattern_suspend_command = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
+pattern_resume_command  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
 pattern_begin_command   = re.compile(
-    r'\n[ \t]*\{sphinxrst_begin\s+([a-z0-9_]+)\}'
+    r'\n[ \t]*\{xsrst_begin\s+([a-z0-9_]+)\}'
 )
 pattern_end_command     = re.compile(
-    r'\n[ \t]*\{sphinxrst_end\s+([a-z0-9_]+)\}'
+    r'\n[ \t]*\{xsrst_end\s+([a-z0-9_]+)\}'
 )
 pattern_spell_command   = re.compile(
-    r'\n[ \t]*\{sphinxrst_spell([^}]*)\}'
+    r'\n[ \t]*\{xsrst_spell([^}]*)\}'
 )
 pattern_file_command    = re.compile(
-    r'\n[ \t]*\{sphinxrst_file%([^%]*)%([^%]*)%([^%]*)%\}'
+    r'\n[ \t]*\{xsrst_file%([^%]*)%([^%]*)%([^%]*)%\}'
 )
 pattern_child_command = re.compile(
-    r'\n[ \t]*\{sphinxrst_(children|child_link)%([^}]*)%\}'
+    r'\n[ \t]*\{xsrst_(children|child_link)%([^}]*)%\}'
 )
 # -----------------------------------------------------------------------------
 # process each file in the list
@@ -1301,7 +1301,7 @@ while 0 < len(file_info_stack) :
     parent_section = info['parent_section']
     assert os.path.isfile(file_in)
     #
-    # get sphinxrst docuemntation in this file
+    # get xsrst docuemntation in this file
     this_file_info = file2file_info(
         pattern_begin_command,
         pattern_end_command,
@@ -1359,7 +1359,7 @@ while 0 < len(file_info_stack) :
             section_name,
         )
         # ----------------------------------------------------------------
-        # remove characters on same line as {sphinxrst_code}
+        # remove characters on same line as {xsrst_code}
         section_data = isolate_code_command(
             pattern_code_command,
             section_data,
@@ -1398,9 +1398,9 @@ while 0 < len(file_info_stack) :
                 while ch in ' \t\n' and next_ + 1 < len_data :
                     next_ += 1
                     ch = section_data[next_]
-                cmd  = section_data[next_:].startswith('{sphinxrst_code')
-                cmd += section_data[next_:].startswith('{sphinxrst_file')
-                cmd += section_data[next_:].startswith('{sphinxrst_child')
+                cmd  = section_data[next_:].startswith('{xsrst_code')
+                cmd += section_data[next_:].startswith('{xsrst_file')
+                cmd += section_data[next_:].startswith('{xsrst_child')
                 if ch not in ' \t\n' and not cmd :
                     num_remove = min(num_remove, next_ - newline - 1)
         # ---------------------------------------------------------------
@@ -1445,16 +1445,16 @@ assert section_info[0]['parent_section'] is None
 section_name = section_info[0]['section_name']
 #
 # check section_name is in index file
-pattern  = r'\n[ \t]*sphinxrst/'
+pattern  = r'\n[ \t]*xsrst/'
 pattern += section_name.replace('.', '[.]')
 match_line = re.search(pattern, file_data)
 if match_line == None :
     msg  = 'The first section in the root_file is ' + section_name + '\n'
     msg += 'The following line:\n'
-    msg += '    sphinxrst/' + section_name + '\n'
+    msg += '    xsrst/' + section_name + '\n'
     msg += 'must is missing from the toctree command in\n'
     msg += index_file
     sys_exit(msg)
 #
-print('sphinxrst.py: OK')
+print('xsrst.py: OK')
 sys.exit(0)

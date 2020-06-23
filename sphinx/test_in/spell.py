@@ -7,21 +7,21 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{sphinxrst_begin spell_exam}
+{xsrst_begin spell_exam}
 
 =============
 Spell Example
 =============
 
-{sphinxrst_file%%# BEGIN_SRC%# END_SRC%}
+{xsrst_file%%# BEGIN_SRC%# END_SRC%}
 
-{sphinxrst_end spell_exam}
+{xsrst_end spell_exam}
 """
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-{sphinxrst_begin spell_res}
-{sphinxrst_spell
+{xsrst_begin spell_res}
+{xsrst_spell
     iterable
     \cos
     \rm
@@ -36,7 +36,7 @@ Spell Result
 
 Text
 ----
-The words ``iterable`` and ``sphinxrst`` are not the dictionary,
+The words ``iterable`` and ``xsrst`` are not the dictionary,
 so we have included them in the spelling command for this section.
 
 
@@ -47,7 +47,7 @@ are automatically included as correct spelling.
 Other latex commands in this section; e.g. ``\cos``, ``\sin``, ``\rm``,
 have been included in the spelling command for this section.
 An alternative would be to add them to the
-:ref:`spell_file<sphinxrst_py.command_line_arguments.spell_file>`
+:ref:`spell_file<xsrst_py.command_line_arguments.spell_file>`
 which applies to all sections:
 
 .. math::
@@ -64,6 +64,6 @@ spelling command for this section.
 
 :ref:`spell_exam`
 
-{sphinxrst_end spell_res}
+{xsrst_end spell_res}
 """
 # END_SRC

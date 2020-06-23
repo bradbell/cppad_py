@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > code_cmd
+:ref:`xsrst_py<xsrst_py>` > code_cmd
 
 .. meta::
    :keywords: code, command
@@ -22,7 +22,7 @@ Code Command
 
 Syntax
 ------
-``{sphinxrst_code}``
+``{xsrst_code}``
 
 .. meta::
    :keywords: purpose
@@ -60,9 +60,9 @@ The back quote character \` can't be in the same line as the commands.
 Rest of Line
 ------------
 Other characters on the same line as a code command
-are not included in the sphinxrst output.
+are not included in the xsrst output.
 This enables one to begin or end a comment block
-without having the comment characters in the sphinxrst output.
+without having the comment characters in the xsrst output.
 The file extension in the name of the current input file is used to
 determine the source code language for highlighting the code block.
 Code blocks as usually small and
@@ -97,4 +97,4 @@ Example
 
 ----
 
-sphinxrst input file: ``bin/sphinxrst.py``
+xsrst input file: ``bin/xsrst.py``

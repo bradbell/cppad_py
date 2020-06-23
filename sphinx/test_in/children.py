@@ -7,20 +7,20 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{sphinxrst_begin children_exam}
+{xsrst_begin children_exam}
 
 ===========================
 Indent and Children Example
 ===========================
 
-{sphinxrst_file%%# BEGIN_SRC%# END_SRC%}
+{xsrst_file%%# BEGIN_SRC%# END_SRC%}
 
-{sphinxrst_end children_exam}
+{xsrst_end children_exam}
 """
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-{sphinxrst_begin children_res}
+{xsrst_begin children_res}
 
 ==========================
 Indent and Children Result
@@ -33,7 +33,7 @@ the corresponding links are included.
 If it had used a child link command, the same links would have been
 created automatically.
 
-{sphinxrst_children%
+{xsrst_children%
     %sphinx/test_in/indent_space.py
     %sphinx/test_in/indent_tab.py
 %}
@@ -45,6 +45,6 @@ Example
 -------
 :ref:`children_exam`
 
-{sphinxrst_end children_res}
+{xsrst_end children_res}
 """
 # END_SRC

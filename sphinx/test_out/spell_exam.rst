@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`spell_cmd<spell_cmd>` > spell_exam
+:ref:`xsrst_py<xsrst_py>` > :ref:`spell_cmd<spell_cmd>` > spell_exam
 
 .. meta::
    :keywords: spell, example
@@ -24,4 +24,4 @@ Spell Example
 
 ----
 
-sphinxrst input file: ``sphinx/test_in/spell.py``
+xsrst input file: ``sphinx/test_in/spell.py``

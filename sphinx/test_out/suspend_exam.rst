@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > suspend_exam
+:ref:`xsrst_py<xsrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > suspend_exam
 
 .. meta::
    :keywords: suspend, example
@@ -24,4 +24,4 @@ Suspend Example
 
 ----
 
-sphinxrst input file: ``sphinx/test_in/suspend.py``
+xsrst input file: ``sphinx/test_in/suspend.py``

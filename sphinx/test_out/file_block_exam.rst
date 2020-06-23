@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`file_cmd<file_cmd>` > file_block_exam
+:ref:`xsrst_py<xsrst_py>` > :ref:`file_cmd<file_cmd>` > file_block_exam
 
 .. meta::
    :keywords: file, block, example
@@ -24,4 +24,4 @@ File Block Example
 
 ----
 
-sphinxrst input file: ``sphinx/test_in/file_block.py``
+xsrst input file: ``sphinx/test_in/file_block.py``

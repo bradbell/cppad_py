@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`children_exam<children_exam>` > :ref:`children_res<children_res>` > :ref:`indent_tab_exam<indent_tab_exam>` > indent_tab_res
+:ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`children_exam<children_exam>` > :ref:`children_res<children_res>` > :ref:`indent_tab_exam<indent_tab_exam>` > indent_tab_res
 
 .. meta::
    :keywords: indent, using, tabs, result
@@ -23,4 +23,4 @@ Indent Using Tabs Result
 
 ----
 
-sphinxrst input file: ``sphinx/test_in/indent_tab.py``
+xsrst input file: ``sphinx/test_in/indent_tab.py``

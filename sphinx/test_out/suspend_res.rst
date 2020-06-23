@@ -1,6 +1,6 @@
 |
 
-:ref:`sphinxrst_py<sphinxrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > :ref:`suspend_exam<suspend_exam>` > suspend_res
+:ref:`xsrst_py<xsrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > :ref:`suspend_exam<suspend_exam>` > suspend_res
 
 .. meta::
    :keywords: suspend, result
@@ -39,4 +39,4 @@ Product
 
 ----
 
-sphinxrst input file: ``sphinx/test_in/suspend.py``
+xsrst input file: ``sphinx/test_in/suspend.py``
