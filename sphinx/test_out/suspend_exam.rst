@@ -15,7 +15,7 @@ Suspend Example
 
 
 .. literalinclude:: ../../sphinx/test_in/suspend.py
-    :lines: 22-60
+    :lines: 24-62
 
 .. toctree::
    :maxdepth: 1

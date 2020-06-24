@@ -13,7 +13,9 @@
 Indent Using Tabs Example
 =========================
 
-{xsrst_file%%# BEGIN_SRC%# END_SRC%}
+{xsrst_file # BEGIN_SRC
+    # END_SRC
+}
 
 {xsrst_end indent_tab_exam}
 """

@@ -13,7 +13,9 @@
 Code Block Example
 ==================
 
-{xsrst_file%%# BEGIN_SRC%# END_SRC%}
+{xsrst_file # BEGIN_SRC
+    # END_SRC
+}
 
 {xsrst_end code_block_exam}
 """

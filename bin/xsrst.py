@@ -442,23 +442,34 @@ File Command
 
 Syntax
 ------
-``{xsrst_file%`` *file_name* :code:`%` *start* :code:`%` *stop* :code:`%}`
+
+| ``{xsrst_file`` *start*
+|   *stop*
+| :code:`}`
+|
+| ``{xsrst_file`` *start*
+|   *stop*
+|   *file_name*
+| :code:`}`
 
 Purpose
 -------
-A code block, from any file, is included by the command above at the
+A code block, from any where in any file,
+is included by the command above at the
 :ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 White Space
 -----------
-Leading and trailing white space is not included in
-*file_name*, *start*, or *end*.
-This enables one to put the command on multiple input lines.
+Leading white space is not included in
+*start*, *stop* or *file_name*.
+The new line character terminates these tokens.
 
 file_name
 ---------
-If *file_name* is empty, the current input file is used.
-Otherwise *file_name* is relative to the directory where ``xsrst.py``
+If *file_name* is not in the syntax,
+the code block is in the current input file.
+Otherwise, the code block is in *file_name*,
+which is relative to the directory where ``xsrst.py``
 is executed; i.e., the top directory for this git repository.
 
 start
@@ -470,10 +481,8 @@ of a line in *file_name*.
 
 stop
 ----
-The code block ends with the occurence
+The code block ends with the first occurence
 of the text *stop* at the beginning of a line and after *start*.
-There can only be one occurence of *stop* at the beginning of a line
-and after *start* and it must come after *start*.
 The lines containing *start* and *stop* in *file_name* are not included in
 the code block.
 
@@ -544,7 +553,7 @@ def find_at_start_of_line(offset, data, text) :
             return index
         j = index - 1
         while j >= 0 and data[j] in ' \t' :
-            --j
+            j -= 1
         if j < 0 :
             return index
         if data[j] == '\n' :
@@ -874,26 +883,28 @@ def isolate_code_command(code_pattern, section_data, file_in, section_name) :
 # -----------------------------------------------------------------------------
 # convert file command start and stop from patterns to line numbers
 def convert_file_command(file_pattern, section_data, file_in, section_name) :
+    assert file_pattern.groups == 2 or file_pattern.groups == 3
     section_index  = 0
-    match_file    = file_pattern.search(section_data)
+    match_file     = file_pattern.search(section_data)
     while match_file != None :
         #
-        # file_name
-        file_name = match_file.group(1).strip()
-        if file_name == '' :
-            file_name = file_in
-        #
         # start
-        start     = match_file.group(2).strip()
+        start     = match_file.group(1).strip()
         if start == '' :
             msg = 'xsrst_file command: start text is empty'
             sys_exit(msg, file_in, section_name)
         #
         # stop
-        stop      = match_file.group(3) .strip()
+        stop      = match_file.group(2) .strip()
         if stop == '' :
             msg = 'xsrst_file command: stop text is empty'
             sys_exit(msg, file_in, section_name)
+        #
+        # file_name
+        if file_pattern.groups == 2 :
+            file_name = file_in
+        else :
+            file_name = match_file.group(3).strip()
         #
         # data
         file_ptr  = open(file_name, 'r')
@@ -906,13 +917,15 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
         if start_index < 0 :
             msg  = 'xsrst_file command: can not find start = '
             msg += '"' + start + '"'
-            msg += '\nin file_name = "' + file_name + '"'
+            msg += '\nat beginning of a line in file_name = "'
+            msg += file_name + '"'
             sys_exit(msg, file_in, section_name)
         offset     = start_index + len(start)
         if 0 <= find_at_start_of_line(offset, data, start) :
             msg  = 'xsrst_file command: found more than one '
             msg += 'start = "' + start + '"'
-            msg += '\nin file_name = "' + file_name + '"'
+            msg += '\nat beginning of a line in file_name = "'
+            msg += file_name + '"'
             sys_exit(msg, file_in, section_name)
         #
         # stop_index
@@ -924,12 +937,6 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
             msg += '\nin file_name = "' + file_name + '"'
             sys_exit(msg, file_in, section_name)
         offset     = stop_index + len(stop)
-        if 0 <= find_at_start_of_line(offset, data, stop) :
-            msg  = 'xsrst_file command: found more than one '
-            msg += 'stop = "' + stop + '"'
-            msg += ' after start = "' + start + '"'
-            msg += '\nin file_name = "' + file_name + '"'
-            sys_exit(msg, file_in, section_name)
         #
         # start_line
         start_line = data[: start_index].count('\n') + 2
@@ -944,7 +951,7 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
         end_line = match_file.end() + section_index;
         #
         # converted version of the command
-        cmd  = f'xsrst_file%{file_name}%{start_line}%{stop_line}%'
+        cmd  = f'xsrst__file {file_name} {start_line} {stop_line} '
         cmd  = '\n{' + cmd  + '}'
         #
         data_left  = section_data[: begin_line]
@@ -1113,7 +1120,7 @@ def write_file(
         line  = section_data[startline : newline + 1]
         # commands that delay some processing to this point
         code_command       = line.startswith('{xsrst_code')
-        file_command       = line.startswith('{xsrst_file')
+        file_command       = line.startswith('{xsrst__file')
         label_command      = line.startswith('{xsrst_label')
         children_command   = line.startswith('{xsrst_children')
         child_link_command = line.startswith('{xsrst_child_link')
@@ -1145,7 +1152,7 @@ def write_file(
             file_ptr.write(line)
             previous_empty = True
         elif file_command :
-            line       = line.split('%')
+            line       = line.split()
             file_name  = line[1]
             start_line = line[2]
             stop_line  = line[3]
@@ -1268,8 +1275,11 @@ pattern_end_command     = re.compile(
 pattern_spell_command   = re.compile(
     r'\n[ \t]*\{xsrst_spell([^}]*)\}'
 )
-pattern_file_command    = re.compile(
-    r'\n[ \t]*\{xsrst_file%([^%]*)%([^%]*)%([^%]*)%\}'
+pattern_file_command_2    = re.compile(
+    r'\n[ \t]*\{xsrst_file[ \t]([^}\n]*)\n([^}\n]*)\n[ \t]*\}'
+)
+pattern_file_command_3    = re.compile(
+    r'\n[ \t]*\{xsrst_file[ \t]([^}\n]*)\n([^}\n]*)\n([^}\n]+)\n[ \t]*\}'
 )
 pattern_child_command = re.compile(
     r'\n[ \t]*\{xsrst_(children|child_link)%([^}]*)%\}'
@@ -1369,11 +1379,25 @@ while 0 < len(file_info_stack) :
         # ---------------------------------------------------------------
         # file command: convert start and stop to line numbers
         section_data = convert_file_command(
-            pattern_file_command,
+            pattern_file_command_2,
             section_data,
             file_in,
             section_name,
         )
+        section_data = convert_file_command(
+            pattern_file_command_3,
+            section_data,
+            file_in,
+            section_name,
+        )
+        index = find_at_start_of_line(0, section_data, '{xsrst_file')
+        if 0 <= index :
+            eol  = section_data.find('\n', index)
+            line = section_data[index : eol]
+            assert 0 < eol
+            msg  = 'syntax error in xsrst_file command in line\n'
+            msg += line
+            sys_exit(msg, file_in, section_name)
         # ---------------------------------------------------------------
         # white_space
         white_space = start_line_white_space(

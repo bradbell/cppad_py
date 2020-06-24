@@ -15,7 +15,7 @@ Heading Example
 
 
 .. literalinclude:: ../../sphinx/test_in/heading.py
-    :lines: 29-66
+    :lines: 31-68
 
 .. meta::
    :keywords: child, sections

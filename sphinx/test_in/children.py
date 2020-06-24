@@ -13,7 +13,9 @@
 Indent and Children Example
 ===========================
 
-{xsrst_file%%# BEGIN_SRC%# END_SRC%}
+{xsrst_file # BEGIN_SRC
+    # END_SRC
+}
 
 {xsrst_end children_exam}
 """

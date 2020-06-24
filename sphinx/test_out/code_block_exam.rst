@@ -15,7 +15,7 @@ Code Block Example
 
 
 .. literalinclude:: ../../sphinx/test_in/code_block.py
-    :lines: 22-38
+    :lines: 24-40
 
 .. toctree::
    :maxdepth: 1

@@ -12,7 +12,9 @@
 File Block Example
 ==================
 
-{xsrst_file%%# BEGIN_SRC%# END_SRC%}
+{xsrst_file # BEGIN_SRC
+    # END_SRC
+}
 
 
 {xsrst_end file_block_exam}
@@ -33,7 +35,9 @@ File Block Result
 =================
 
 Text before file block.
-{xsrst_file%%# BEGIN_FACTORIAL%# END_FACTORIAL%}
+{xsrst_file # BEGIN_FACTORIAL
+    # END_FACTORIAL
+}
 Text after file block.
 
 :ref:`file_block_exam`

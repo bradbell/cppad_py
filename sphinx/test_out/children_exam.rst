@@ -15,7 +15,7 @@ Indent and Children Example
 
 
 .. literalinclude:: ../../sphinx/test_in/children.py
-    :lines: 22-49
+    :lines: 24-51
 
 .. toctree::
    :maxdepth: 1

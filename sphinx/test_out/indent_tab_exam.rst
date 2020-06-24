@@ -15,7 +15,7 @@ Indent Using Tabs Example
 
 
 .. literalinclude:: ../../sphinx/test_in/indent_tab.py
-    :lines: 22-38
+    :lines: 24-40
 
 .. toctree::
    :maxdepth: 1

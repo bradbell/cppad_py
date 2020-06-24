@@ -13,7 +13,9 @@
 Heading Example
 ===============
 
-{xsrst_file%%# BEGIN_SRC%# END_SRC%}
+{xsrst_file # BEGIN_SRC
+    # END_SRC
+}
 
 Child Sections
 --------------

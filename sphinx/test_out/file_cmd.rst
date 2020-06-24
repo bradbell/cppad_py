@@ -22,7 +22,15 @@ File Command
 
 Syntax
 ------
-``{xsrst_file%`` *file_name* :code:`%` *start* :code:`%` *stop* :code:`%}`
+
+| ``{xsrst_file`` *start*
+|   *stop*
+| :code:`}`
+|
+| ``{xsrst_file`` *start*
+|   *stop*
+|   *file_name*
+| :code:`}`
 
 .. meta::
    :keywords: purpose
@@ -33,7 +41,8 @@ Syntax
 
 Purpose
 -------
-A code block, from any file, is included by the command above at the
+A code block, from any where in any file,
+is included by the command above at the
 :ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 .. meta::
@@ -45,9 +54,9 @@ A code block, from any file, is included by the command above at the
 
 White Space
 -----------
-Leading and trailing white space is not included in
-*file_name*, *start*, or *end*.
-This enables one to put the command on multiple input lines.
+Leading white space is not included in
+*start*, *stop* or *file_name*.
+The new line character terminates these tokens.
 
 .. meta::
    :keywords: file_name
@@ -58,8 +67,10 @@ This enables one to put the command on multiple input lines.
 
 file_name
 ---------
-If *file_name* is empty, the current input file is used.
-Otherwise *file_name* is relative to the directory where ``xsrst.py``
+If *file_name* is not in the syntax,
+the code block is in the current input file.
+Otherwise, the code block is in *file_name*,
+which is relative to the directory where ``xsrst.py``
 is executed; i.e., the top directory for this git repository.
 
 .. meta::
@@ -85,10 +96,8 @@ of a line in *file_name*.
 
 stop
 ----
-The code block ends with the occurence
+The code block ends with the first occurence
 of the text *stop* at the beginning of a line and after *start*.
-There can only be one occurence of *stop* at the beginning of a line
-and after *start* and it must come after *start*.
 The lines containing *start* and *stop* in *file_name* are not included in
 the code block.
 
