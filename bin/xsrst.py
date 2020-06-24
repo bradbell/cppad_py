@@ -223,6 +223,48 @@ Commands
 """
 # ---------------------------------------------------------------------------
 """
+{xsrst_begin comment_ch}
+
+============================
+Special Begin Line Character
+============================
+
+Syntax
+------
+``{xsrst_comment_ch`` *ch*:code:`}`
+
+Purpose
+-------
+Some languages have a special character that
+indicates the rest of the line is a comment.
+If you embed sphinx documentation in this type of comment,
+you need to inform xsrst of the special character so it does
+not end up in your ``.rst`` output file.
+
+ch
+--
+The value of *ch* must be one non white space character.
+There must be at least one white space character
+between `xsrst_comment_ch`` and *ch*.
+Leading and trailing white space aroupd *ch* is ignored.
+There can be only one occurance of this command within a file,
+it's effect lasts for the entire file, and
+it must come before the first :ref:`begin_cmd` in the file.
+
+
+Beginning of a Line
+-------------------
+A sequence of characters *text* is at the beginning of a line if there only
+space and tab characters between the previous new line character
+and *text*.
+In addition, the special character *ch* can be the first character
+after the new line and before *text*.
+
+
+{xsrst_end comment_ch}
+"""
+# ---------------------------------------------------------------------------
+"""
 {xsrst_begin begin_cmd}
 {xsrst_spell
     underbar
@@ -609,22 +651,70 @@ def file2list(file_name) :
     file_ptr.close()
     return result
 # ----------------------------------------------------------------------------
+def pattern_begin_end(file_data, file_in) :
+    #
+    # comment_ch
+    pattern_comment_ch = re.compile(r'{xsrst_comment_ch\s+([^}])\s*\}')
+    match_comment_ch   = pattern_comment_ch.search(file_data)
+    if not match_comment_ch :
+        comment_ch = ''
+    else :
+        comment_ch = match_comment_ch.group(1)
+        data_rest  = file_data[ match_comment_ch.end() : ]
+        match      = pattern_comment_ch.search(file_in)
+        if match :
+            msg = 'There are multiple command_ch commands in this file'
+            sys_exit(msg, file_in)
+        if comment_ch == ']' :
+            msg  = 'Cannot use "]" as the speical comment charater\n'
+            msg += 'in a comment_ch command.'
+            sys_exit(msg, file_in)
+    #
+    # pattern_begin
+    if comment_ch == '' :
+        pattern_begin = re.compile(
+            r'\n[ \t]*\{xsrst_begin\s+([a-z0-9_]+)\}'
+        )
+    else :
+        pattern_begin = re.compile(
+            r'\n[' + comment_ch + r']?[ \t]*\{xsrst_begin\s+([a-z0-9_]+)\}'
+        )
+    #
+    # pattern_end
+    if comment_ch == '' :
+        pattern_end = re.compile(
+            r'\n[ \t]*\{xsrst_end\s+([a-z0-9_]+)\}'
+        )
+    else :
+        pattern_end = re.compile(
+            r'\n[' + comment_ch + r']?[ \t]*\{xsrst_end\s+([a-z0-9_]+)\}'
+        )
+    return pattern_begin, pattern_end, match_comment_ch
+
+# ----------------------------------------------------------------------------
 # find all the section names and corresponding data in the specified file
 # The returned data does not include the begin and end section commands
 def file2file_info(
-        pattern_begin_command,
-        pattern_end_command,
         section_info,
         file_in
 ) :
-    #
     # file_data
     file_ptr   = open(file_in, 'r')
     file_data  = file_ptr.read()
     file_ptr.close()
     #
-    # Initialize return value
+    # initialize return value
     file_info = list()
+    #
+    pattern_begin_command, pattern_end_command, match_comment_ch = \
+        pattern_begin_end(file_data, file_in)
+    #
+    if match_comment_ch :
+        comment_ch       = match_comment_ch.group(1)
+        comment_ch_index = match_comment_ch.end()
+    else :
+        comment_ch       = ''
+        comment_ch_index = 0
     #
     # index to start search for next pattern in file_data
     file_index  = 0
@@ -647,6 +737,10 @@ def file2file_info(
             if section_name == '' :
                 msg  = 'section_name after xsrst_begin is empty'
                 sys_exit(msg, file_in)
+            #
+            if match_xsrst_begin.start() < comment_ch_index :
+                msg = 'A begin command comes before the comment_ch command'
+                sys_exit(msg, file_in, seciton_name)
             #
             # check if section appears multiple times
             for info in file_info :
@@ -684,6 +778,12 @@ def file2file_info(
             section_start = file_index
             section_end   = file_index + match_xsrst_end.start()
             section_data  = file_data[ section_start : section_end ]
+            #
+            # remove comments at start of lines
+            if comment_ch != '' :
+                ch = comment_ch
+                assert len(ch) == 1
+                section_data.replace('\n' + ch, '\n')
             #
             # file_info
             file_info.append( {
@@ -757,8 +857,6 @@ def suspend_command(
 # process child commands
 def child_commands(
     pattern_child,
-    pattern_begin,
-    pattern_end,
     section_data,
     file_in,
     section_name,
@@ -801,6 +899,10 @@ def child_commands(
         file_data   = file_ptr.read()
         file_ptr.close()
         file_index  = 0
+        #
+        pattern_begin, pattern_end, comment_ch = \
+            pattern_begin_end(file_data, child_file)
+        #
         match       = pattern_begin.search(file_data)
         if match is None :
             msg  = 'The file ' + child_file + '\n'
@@ -1296,9 +1398,6 @@ spell_checker = init_spell_checker(spell_list)
 pattern_code_command    = re.compile( r'\n[^\n`]*\{xsrst_code\}[^\n`]*')
 pattern_suspend_command = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
 pattern_resume_command  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
-pattern_begin_command   = re.compile(
-    r'\n[ \t]*\{xsrst_begin\s+([a-z0-9_]+)\}'
-)
 pattern_end_command     = re.compile(
     r'\n[ \t]*\{xsrst_end\s+([a-z0-9_]+)\}'
 )
@@ -1343,8 +1442,6 @@ while 0 < len(file_info_stack) :
     #
     # get xsrst docuemntation in this file
     this_file_info = file2file_info(
-        pattern_begin_command,
-        pattern_end_command,
         section_info,
         file_in,
     )
@@ -1377,8 +1474,6 @@ while 0 < len(file_info_stack) :
         # process child command
         section_data, child_file, child_section = child_commands(
             pattern_child_command,
-            pattern_begin_command,
-            pattern_end_command,
             section_data,
             file_in,
             section_name,
