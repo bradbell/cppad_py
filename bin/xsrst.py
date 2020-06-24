@@ -17,6 +17,8 @@
     toctree
     cmd
     html
+    stackoverflow
+    https
 }
 
 .. |space| unicode:: 0xA0
@@ -187,6 +189,15 @@ Example
 Wish List
 =========
 The following is a wish list for future improvements to ``xsrst.py``:
+
+.. _stackoverflow: https://stackoverflow.com/questions/1686837/
+   sphinx-documentation-tool-set-tab-width-in-output
+
+Tabs
+----
+Currently tabs in code blocks get expanded to 8 spaces; see stackoverflow_.
+It would be nice to have a way to control the size of tabs in the code blocks
+displayed by :ref:`code_cmd` and :ref:`file_cmd`.
 
 Error Messaging
 ---------------
