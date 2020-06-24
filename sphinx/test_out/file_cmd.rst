@@ -2,6 +2,8 @@
 
 :ref:`xsrst_py<xsrst_py>` > file_cmd
 
+.. |space| unicode:: 0xA0
+
 .. meta::
    :keywords: file, command
 
@@ -23,11 +25,11 @@ File Command
 Syntax
 ------
 
-| ``{xsrst_file`` *start*
+| ``{xsrst_file`` |space| *start*
 |   *stop*
 | :code:`}`
 |
-| ``{xsrst_file`` *start*
+| ``{xsrst_file`` |space| *start*
 |   *stop*
 |   *file_name*
 | :code:`}`
@@ -54,7 +56,7 @@ is included by the command above at the
 
 White Space
 -----------
-Leading white space is not included in
+Leading and trailing white space is not included in
 *start*, *stop* or *file_name*.
 The new line character terminates these tokens.
 
@@ -72,6 +74,8 @@ the code block is in the current input file.
 Otherwise, the code block is in *file_name*,
 which is relative to the directory where ``xsrst.py``
 is executed; i.e., the top directory for this git repository.
+This may seem verbose, but it makes it easier to write scripts
+that move files and automatically change references to them.
 
 .. meta::
    :keywords: start
@@ -86,6 +90,10 @@ The code block starts with the occurence
 of the text *start* at the beginning of a line in *file_name*.
 There can only be one occurence of *start* at the beginning
 of a line in *file_name*.
+Note that the *start* pattern in the command does not
+occur at the beginning of a line.
+Hence it will not match the scan for the start of the code block
+when the code block is in the current input file.
 
 .. meta::
    :keywords: stop

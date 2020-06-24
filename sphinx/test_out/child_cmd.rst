@@ -22,10 +22,18 @@ Children and Child Links Commands
 
 Syntax
 ------
-- ``{xsrst_children%``
-  *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
-- ``{xsrst_child_link%``
-  *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
+
+| ``{xsrst_children``
+|   *file_1* 
+|   ... 
+|   *file_n* 
+| :code:`}`
+|
+| ``{xsrst_child_link``
+|   *file_1* 
+|   ... 
+|   *file_n* 
+| :code:`}`
 
 .. meta::
    :keywords: purpose
@@ -43,17 +51,21 @@ This is done using the commands above at the
 :ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 .. meta::
-   :keywords: white, space
+   :keywords: file, names
 
-.. index:: white, space
+.. index:: file, names
 
-.. _child_cmd.white_space:
+.. _child_cmd.file_names:
 
-White Space
------------
-Leading and trailing white space is not included in the file names.
-In addition, and empty file name is ignored.
-This enables one to put the command on multiple input lines.
+File Names
+----------
+A new line character must precede and follow each 
+of the file names *file_1* ... *file_n*.
+Leading and trailing white space is not included in the names
+The file names are  relative to the directory where ``xsrst.py``
+is executed; i.e., the top directory for this git repository.
+This may seem verbose, but it makes it easier to write scripts
+that move files and automatically change references to them.
 
 .. meta::
    :keywords: links

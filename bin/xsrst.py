@@ -30,10 +30,9 @@ Extract Sphinx RST
 
 .. The indentation examples are included by the child_cmd section.
 
-{xsrst_children%
-   %sphinx/test_in/heading.py
-%}
-
+{xsrst_children
+   sphinx/test_in/heading.py
+}
 
 Syntax
 ======
@@ -272,10 +271,18 @@ Children and Child Links Commands
 
 Syntax
 ------
-- ``{xsrst_children%``
-  *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
-- ``{xsrst_child_link%``
-  *file_1* :code:`%` ... :code:`%` *file_n* :code:`%}`
+
+| ``{xsrst_children``
+|   *file_1*
+|   ...
+|   *file_n*
+| :code:`}`
+|
+| ``{xsrst_child_link``
+|   *file_1*
+|   ...
+|   *file_n*
+| :code:`}`
 
 
 Purpose
@@ -286,11 +293,15 @@ is a child of the current section.
 This is done using the commands above at the
 :ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
-White Space
------------
-Leading and trailing white space is not included in the file names.
-In addition, and empty file name is ignored.
-This enables one to put the command on multiple input lines.
+File Names
+----------
+A new line character must precede and follow each
+of the file names *file_1* ... *file_n*.
+Leading and trailing white space is not included in the names
+The file names are  relative to the directory where ``xsrst.py``
+is executed; i.e., the top directory for this git repository.
+This may seem verbose, but it makes it easier to write scripts
+that move files and automatically change references to them.
 
 Links
 -----
@@ -300,9 +311,9 @@ You can place a heading directly before the links to make them easier to find.
 
 Example
 -------
-{xsrst_child_link%
-   %sphinx/test_in/children.py
-%}
+{xsrst_child_link
+   sphinx/test_in/children.py
+}
 
 {xsrst_end child_cmd}
 """
@@ -356,9 +367,9 @@ of the same word.
 
 Example
 -------
-{xsrst_child_link%
-   %sphinx/test_in/spell.py
-%}
+{xsrst_child_link
+   sphinx/test_in/spell.py
+}
 
 {xsrst_end spell_cmd}
 """
@@ -386,9 +397,9 @@ spell checking.
 
 Example
 -------
-{xsrst_child_link%
-   %sphinx/test_in/suspend.py
-%}
+{xsrst_child_link
+   sphinx/test_in/suspend.py
+}
 
 {xsrst_end suspend_cmd}
 """
@@ -437,15 +448,17 @@ but not for code blocks included using the
 
 Example
 -------
-{xsrst_child_link%
-   %sphinx/test_in/code_block.py
-%}
+{xsrst_child_link
+   sphinx/test_in/code_block.py
+}
 
 {xsrst_end code_cmd}
 """
 # ---------------------------------------------------------------------------
 """
 {xsrst_begin file_cmd}
+
+.. |space| unicode:: 0xA0
 
 ============
 File Command
@@ -454,11 +467,11 @@ File Command
 Syntax
 ------
 
-| ``{xsrst_file`` *start*
+| ``{xsrst_file`` |space| *start*
 |   *stop*
 | :code:`}`
 |
-| ``{xsrst_file`` *start*
+| ``{xsrst_file`` |space| *start*
 |   *stop*
 |   *file_name*
 | :code:`}`
@@ -471,7 +484,7 @@ is included by the command above at the
 
 White Space
 -----------
-Leading white space is not included in
+Leading and trailing white space is not included in
 *start*, *stop* or *file_name*.
 The new line character terminates these tokens.
 
@@ -482,6 +495,8 @@ the code block is in the current input file.
 Otherwise, the code block is in *file_name*,
 which is relative to the directory where ``xsrst.py``
 is executed; i.e., the top directory for this git repository.
+This may seem verbose, but it makes it easier to write scripts
+that move files and automatically change references to them.
 
 start
 -----
@@ -489,6 +504,10 @@ The code block starts with the occurence
 of the text *start* at the beginning of a line in *file_name*.
 There can only be one occurence of *start* at the beginning
 of a line in *file_name*.
+Note that the *start* pattern in the command does not
+occur at the beginning of a line.
+Hence it will not match the scan for the start of the code block
+when the code block is in the current input file.
 
 stop
 ----
@@ -504,9 +523,9 @@ Spell checking is **not** done for these code blocks.
 
 Example
 -------
-{xsrst_child_link%
-   %sphinx/test_in/file_block.py
-%}
+{xsrst_child_link
+   sphinx/test_in/file_block.py
+}
 
 {xsrst_end file_cmd}
 """
@@ -764,7 +783,7 @@ def child_commands(
     section_data = data_left + replace + data_right
     #
     # file_list
-    for child_file in match.group(2).split('%') :
+    for child_file in match.group(2).split('\n') :
         child_file = child_file.strip()
         if child_file != '' :
             file_list.append(child_file)
@@ -1293,7 +1312,7 @@ pattern_file_command_3    = re.compile(
     r'\n[ \t]*\{xsrst_file[ \t]([^}\n]*)\n([^}\n]*)\n([^}\n]+)\n[ \t]*\}'
 )
 pattern_child_command = re.compile(
-    r'\n[ \t]*\{xsrst_(children|child_link)%([^}]*)%\}'
+    r'\n[ \t]*\{xsrst_(children|child_link)([^}]*)\}'
 )
 # -----------------------------------------------------------------------------
 # process each file in the list
