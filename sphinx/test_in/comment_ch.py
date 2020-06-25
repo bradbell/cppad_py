@@ -7,7 +7,9 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{xsrst_begin begin_ch_exam}
+{xsrst_comment_ch #}
+
+{xsrst_begin comment_ch_exam}
 
 ===============================
 Begin Special Character Example
@@ -17,15 +19,19 @@ Begin Special Character Example
     # END_SRC
 }
 
-{xsrst_end begin_ch_exam}
+{xsrst_end comment_ch_exam}
 """
 # ----------------------------------------------------------------------------
+#
 # BEGIN_SRC
-# {xsrst_begin begin_ch_res #}
+# {xsrst_begin comment_ch_res}
 #
 # ==============================
 # Begin Special Character Result
 # ==============================
+# In the original source, the leading characters '#' and ' ' get removed
+# and the remaining text lines up with the ``def`` below:
+#
 # {xsrst_code}
 def factorial(n) :
     if n == 1 :
@@ -33,7 +39,7 @@ def factorial(n) :
     return n * factorial(n-1)
 # {xsrst_code}
 #
-#:ref:`begin_ch_exam`
+# :ref:`comment_ch_exam`
 #
-# {xsrst_end begin_ch_res}
+# {xsrst_end comment_ch_res}
 # END_SRC
