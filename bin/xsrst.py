@@ -812,7 +812,6 @@ def file2file_info(
             if comment_ch != '' :
                 ch = comment_ch
                 assert len(ch) == 1
-                section_data = section_data.replace('\n' + ch + '\t', '\n')
                 section_data = section_data.replace('\n' + ch + ' ', '\n')
                 section_data = section_data.replace('\n' + ch, '\n')
             #
