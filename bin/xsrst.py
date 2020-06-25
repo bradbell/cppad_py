@@ -806,15 +806,14 @@ def file2file_info(
             #
             # section_data
             section_start = file_index
-            section_end   = file_index + match_xsrst_end.start()
+            section_end   = file_index + match_xsrst_end.start() + 1
             section_data  = file_data[ section_start : section_end ]
             #
             # remove comments at start of lines
             if comment_ch != '' :
-                ch = comment_ch
-                assert len(ch) == 1
-                section_data = section_data.replace('\n' + ch + ' ', '\n')
-                section_data = section_data.replace('\n' + ch, '\n')
+                assert len(comment_ch) == 1
+                pattern = re.compile( r'\n[' + comment_ch + r'] ?' )
+                section_data = pattern.sub(r'\n', section_data)
             #
             # file_info
             file_info.append( {
@@ -1241,6 +1240,7 @@ def add_label_and_index_for_headings(
 # write file corresponding to a section
 # (and finish processing that has been delayed to this point)
 def write_file(
+    sphinx_dir,
     file_in,
     section_data,
     section_info,
@@ -1249,6 +1249,12 @@ def write_file(
     section_name,
     spell_checker,
 ) :
+    # If file_path is relative to top git repo directory,
+    # xsrst_dir2top_dir/file_path is relative to sphinx_dir/xsrst directory.
+    depth   =  sphinx_dir.count('/') + 2
+    top_dir =  depth * '../'
+    top_dir = top_dir[:-1]
+    #
     # split section data into lines
     newline_pattern = re.compile( r'\n')
     newline_itr     = newline_pattern.finditer(section_data)
@@ -1321,7 +1327,7 @@ def write_file(
             stop_line  = line[3]
             #
             file_ptr.write('\n')
-            line = f'.. literalinclude:: ../../{file_name}\n'
+            line = f'.. literalinclude:: {top_dir}/{file_name}\n'
             file_ptr.write(line)
             line = f'    :lines: {start_line}-{stop_line}\n'
             file_ptr.write(line)
@@ -1379,7 +1385,8 @@ if not os.path.isdir('.git') :
 #
 # check number of comamnd line arguments
 if len(sys.argv) != 4 :
-    sys_exit('expected three command line argument')
+    usage = 'bin/xsrst.py sphinx_dir root_file spell_file'
+    sys_exit(usage)
 #
 # sphinx_dir
 sphinx_dir      = sys.argv[1]
@@ -1604,6 +1611,7 @@ while 0 < len(file_info_stack) :
         # ---------------------------------------------------------------
         # write file for this section
         write_file(
+            sphinx_dir,
             file_in,
             section_data,
             section_info,
