@@ -1,24 +1,24 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > comment_ch
+:ref:`xsrst_py<xsrst_py>` > comment_ch_cmd
 
 .. meta::
-   :keywords: special, begin, line, character
+   :keywords: comment, ch, command
 
-.. index:: special, begin, line, character
+.. index:: comment, ch, command
 
-.. _comment_ch:
+.. _comment_ch_cmd:
 
-============================
-Special Begin Line Character
-============================
+==================
+Comment Ch Command
+==================
 
 .. meta::
    :keywords: syntax
 
 .. index:: syntax
 
-.. _comment_ch.syntax:
+.. _comment_ch_cmd.syntax:
 
 Syntax
 ------
@@ -29,7 +29,7 @@ Syntax
 
 .. index:: purpose
 
-.. _comment_ch.purpose:
+.. _comment_ch_cmd.purpose:
 
 Purpose
 -------
@@ -44,7 +44,7 @@ not end up in your ``.rst`` output file.
 
 .. index:: ch
 
-.. _comment_ch.ch:
+.. _comment_ch_cmd.ch:
 
 ch
 --
@@ -61,7 +61,7 @@ it must come before the first :ref:`begin_cmd` in the file.
 
 .. index:: beginning, of, a, line
 
-.. _comment_ch.beginning_of_a_line:
+.. _comment_ch_cmd.beginning_of_a_line:
 
 Beginning of a Line
 -------------------
@@ -76,11 +76,11 @@ after the new line and before *text*.
 
 .. index:: indentation
 
-.. _comment_ch.indentation:
+.. _comment_ch_cmd.indentation:
 
 Indentation
 -----------
-The special character (and one space if present directly afrer)
+The special character (and one space if present directly after)
 is removed from the input stream before calculating the amount of
 :ref:`xsrst_py.Indentation` for the current section.
 For example, the following input would line up the heading Factorial
@@ -100,7 +100,7 @@ with the ``def`` token:
 
 .. index:: example
 
-.. _comment_ch.example:
+.. _comment_ch_cmd.example:
 
 Example
 -------

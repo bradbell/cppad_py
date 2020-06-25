@@ -1,6 +1,6 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > :ref:`comment_ch<comment_ch>` > :ref:`comment_ch_exam<comment_ch_exam>` > comment_ch_res
+:ref:`xsrst_py<xsrst_py>` > :ref:`comment_ch_cmd<comment_ch_cmd>` > :ref:`comment_ch_exam<comment_ch_exam>` > comment_ch_res
 
 .. meta::
    :keywords: begin, special, character, result
