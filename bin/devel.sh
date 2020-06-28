@@ -28,6 +28,7 @@ ignore_files='
 	sphinx/Makefile
 	sphinx/conf.py
 	sphinx/index.rst
+	sphinx/setup.rst
 	sphinx/test_out/
 '
 # ----------------------------------------------------------------------------
