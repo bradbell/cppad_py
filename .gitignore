@@ -18,8 +18,8 @@ junk.*
 # files and directories created to run python examples
 /example/python/check_all.py
 __pycache__/
-# 
+#
 # files created by swig
-/lib/python/cppad_py/cppad_py_swig_wrap.cpp 
+/lib/python/cppad_py/cppad_py_swig_wrap.cpp
 /lib/python/cppad_py/swig.py
 
