@@ -20,7 +20,7 @@
 # It follows that
 # $latex \[
 #	A^{-1}(x) =
-#	\frac{1}{x_3 * x_0 - x_1 * x2}
+#	\frac{1}{x_3 * x_0 - x_1 * x_2}
 #	\left( \begin{array}{cc}
 #	x_3 & - x_1 \\
 #	- x_2 & x_0
@@ -28,7 +28,7 @@
 # \] $$
 # We define
 # $latex \[
-#	f(x) = (x_3 * x_0 - x_1 * x2) [
+#	f(x) = (x_3 * x_0 - x_1 * x_2) [
 #	A_{0,0}^{-1} (x),
 #	A_{0,1}^{-1} (x),
 #	A_{1,0}^{-1} (x),
