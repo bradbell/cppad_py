@@ -847,6 +847,7 @@ def start_line_white_space(data, file_in, section_name) :
         if data_index == len(data) :
             return white_space
         if data[data_index] in ' \t' :
+            breakpoint()
             msg  = 'mixing both spaces and tabs for white space at '
             msg += 'beginning of lines.'
             sys_exit(msg, file_in, section_name)
@@ -1640,7 +1641,7 @@ if match_line == None :
     msg  = 'The first section in the root_file is ' + section_name + '\n'
     msg += 'The following line:\n'
     msg += '    xsrst/' + section_name + '\n'
-    msg += 'must is missing from the toctree command in\n'
+    msg += 'is missing from the toctree command in\n'
     msg += index_file
     sys_exit(msg)
 #
