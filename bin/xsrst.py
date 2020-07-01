@@ -1317,6 +1317,8 @@ def write_file(
                 else :
                     extension = file_in[index + 1 : ]
                 line     = '.. code-block:: ' + extension + '\n\n'
+                if not previous_empty :
+                    line = '\n' + line
             else :
                 line = '\n'
             file_ptr.write(line)
