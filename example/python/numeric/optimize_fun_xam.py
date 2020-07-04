@@ -24,10 +24,10 @@
 # $head Problem$$
 # $latex \[
 # \begin{array}{cr}
-#	{\rm minimize}   & x_0 x_3 ( x_0 + x_1 + x_2 ) + x_2   \\
-#	{\rm subject to} &             x_0 x_1 x_2 x_3 \geq 25 \\
-#                    & x_0^2 + x_1^2 + x_2^2 + x_3^2 = 40  \\
-#                    &                    1 \leq x \leq 5
+#	{\rm minimize}      & x_0 x_3 ( x_0 + x_1 + x_2 ) + x_2   \\
+#	{\rm subject \; to} &             x_0 x_1 x_2 x_3 \geq 25 \\
+#	                    & x_0^2 + x_1^2 + x_2^2 + x_3^2 = 40  \\
+#	                    &                    1 \leq x \leq 5
 # \end{array}
 # \]$$
 # with the starting point $latex x = (1, 5, 5, 1)$$.
