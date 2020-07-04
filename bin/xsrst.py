@@ -175,10 +175,13 @@ Example
 
 Indentation
 ===========
-If all of the extracted xsrst documentation for a section is indented
-by the same white space characters, those characters
-are not included in the xsrst output. This enables one to indent the
+If there are a number of spaces or tabs (but not both) before
+all of the xsrst documentation for a section,
+those characters are not included in the xsrst output.
+This enables one to indent the
 xsrst so it is grouped with the proper code block in the source.
+An error message will result if
+you mix spaces and tabs in this indentation.
 
 Example
 -------
@@ -578,8 +581,9 @@ Indentation
 The special character (and one space if present directly after)
 is removed from the input stream before calculating the amount of
 :ref:`xsrst_py.Indentation` for the current section.
-For example, the following input would line up the heading Factorial
-with the ``def`` token:
+For example, if :code:`#` is the special character,
+the following input has the heading Factorial
+and the ``def`` token indented the same amount:
 
 .. code-block:: py
 
@@ -825,37 +829,52 @@ def file2file_info(
             file_index += match_xsrst_end.end()
     return file_info
 # ----------------------------------------------------------------------------
-def start_line_white_space(data, file_in, section_name) :
-    data_index  = 0
-    white_space = None
+def indent_to_remove(section_data, file_in, section_name) :
     #
-    # find first line with a space or tab as first character in the line
-    while white_space == None :
-        if data[data_index] in ' \t' :
-            white_space = data[data_index]
-        else :
-            index = data[data_index :].find('\n')
-            if index < 0 :
-                return ' '
-            data_index = data_index + index + 1
-            if data_index >= len(data) :
-                return ' '
-    # check that white space at beginning of line is same for all lines
-    while data_index < len(data) :
-        while data[data_index] == white_space and data_index < len(data) :
-            data_index += 1
-        if data_index == len(data) :
-            return white_space
-        if data[data_index] in ' \t' :
-            breakpoint()
-            msg  = 'mixing both spaces and tabs for white space at '
-            msg += 'beginning of lines.'
-            sys_exit(msg, file_in, section_name)
-        index = data[data_index :].find('\n')
-        if index < 0 :
-            return white_space
-        data_index = data_index + index + 1
-    return white_space
+    # len_data
+    len_data   = len(section_data)
+    #
+    # newline_list
+    pattern_newline  = re.compile( r'\n')
+    newline_itr      = pattern_newline.finditer(section_data)
+    newline_list     = list()
+    for itr in newline_itr :
+        newlist = itr.start()
+        newline_list.append( newlist )
+    #
+    # num_remove
+    num_remove = len(section_data)
+    for newline in newline_list :
+        next_ = newline + 1
+        if next_ < len_data and 0 < num_remove :
+            ch = section_data[next_]
+            while ch in ' \t' and next_ + 1 < len_data :
+                next_ += 1
+                ch     = section_data[next_]
+            if ch not in ' \t\n' :
+                num_remove = min(num_remove, next_ - newline - 1)
+    if num_remove == 0 :
+        return num_remove
+    #
+    # check indent_ch
+    line      = 0
+    indent_ch = section_data[ newline_list[line] + 1 ]
+    while indent_ch == '\n' :
+        line += 1
+        indent_ch = section_data[ newline_list[line] + 1 ]
+    #
+    check_ch  = indent_ch + '\n'
+    for newline in newline_list :
+        next_ = newline + 1
+        end   = min( len_data, next_ + num_remove )
+        while next_ < end :
+            if section_data[next_] not in check_ch :
+                msg  = 'mixing both spaces and tabs for '
+                msg += 'white space that indents this section.'
+                sys_exit(msg, file_in, section_name)
+            next_ += 1
+    #
+    return num_remove
 # ----------------------------------------------------------------------------
 # process xsrst_suspend commands
 def suspend_command(
@@ -1128,10 +1147,9 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
 # -----------------------------------------------------------------------------
 # labels for headings
 def add_label_and_index_for_headings(
-        section_data, num_remove, white_space, file_in, section_name
+        section_data, num_remove, file_in, section_name
 ) :
     punctuation      = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
-    indent           = num_remove * white_space
     heading_list     = list()
     next_start       = 0
     next_newline     = section_data.find('\n', next_start)
@@ -1355,12 +1373,11 @@ def write_file(
                 previous_empty = True
         else :
             line = line[num_remove : newline + 1]
+            # replace tabs with 4 spaces
+            line = line.replace('\t', 4 * ' ' )
             if inside_code :
-                # indent code block
-                if white_space == ' ' :
-                    line = '    ' + line
-                else :
-                    line = '\t' + line
+                line = 4 * ' ' + line
+            #
             previous_empty = line == '\n'
             file_ptr.write( line )
         startline = newline + 1
@@ -1526,6 +1543,13 @@ while 0 < len(file_info_stack) :
                 'parent_file'    : file_in,
                 'parent_section' : section_index,
             } )
+        # ---------------------------------------------------------------
+        # num_remove, indent_ch
+        num_remove = indent_to_remove(
+            section_data,
+            file_in,
+            section_name
+        )
         # ----------------------------------------------------------------
         # process spell commands
         section_data = spell_command(
@@ -1565,40 +1589,10 @@ while 0 < len(file_info_stack) :
             msg += line
             sys_exit(msg, file_in, section_name)
         # ---------------------------------------------------------------
-        # white_space
-        white_space = start_line_white_space(
-            section_data,
-            file_in,
-            section_name
-        )
-        # ---------------------------------------------------------------
-        # num_remove (for indented documentation)
-        pattern_newline  = re.compile( r'\n')
-        newline_itr      = pattern_newline.finditer(section_data)
-        newline_list     = list()
-        for itr in newline_itr :
-            newlist = itr.start()
-            newline_list.append( newlist )
-        len_data   = len(section_data)
-        num_remove   = len(section_data)
-        for newline in newline_list :
-            next_ = newline + 1
-            if next_ < len_data and num_remove != 0 :
-                ch = section_data[next_]
-                while ch in ' \t\n' and next_ + 1 < len_data :
-                    next_ += 1
-                    ch = section_data[next_]
-                cmd  = section_data[next_:].startswith('{xsrst_code')
-                cmd += section_data[next_:].startswith('{xsrst_file')
-                cmd += section_data[next_:].startswith('{xsrst_child')
-                if ch not in ' \t\n' and not cmd :
-                    num_remove = min(num_remove, next_ - newline - 1)
-        # ---------------------------------------------------------------
         # add labels corresponding to headings
         section_data = add_label_and_index_for_headings(
             section_data,
             num_remove,
-            white_space,
             file_in,
             section_name
         )

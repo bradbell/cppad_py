@@ -83,8 +83,9 @@ Indentation
 The special character (and one space if present directly after)
 is removed from the input stream before calculating the amount of
 :ref:`xsrst_py.Indentation` for the current section.
-For example, the following input would line up the heading Factorial
-with the ``def`` token:
+For example, if :code:`#` is the special character,
+the following input has the heading Factorial
+and the ``def`` token indented the same amount:
 
 .. code-block:: py
 
