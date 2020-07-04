@@ -685,7 +685,7 @@ def pattern_begin_end(file_data, file_in) :
     pattern_comment_ch = re.compile(r'{xsrst_comment_ch\s+([^}])\s*\}')
     match_comment_ch   = pattern_comment_ch.search(file_data)
     if not match_comment_ch :
-        comment_ch = ''
+        comment_ch = None
     else :
         comment_ch = match_comment_ch.group(1)
         data_rest  = file_data[ match_comment_ch.end() : ]
@@ -699,7 +699,7 @@ def pattern_begin_end(file_data, file_in) :
             sys_exit(msg, file_in)
     #
     # pattern_begin
-    if comment_ch == '' :
+    if comment_ch is None :
         pattern_begin = re.compile(
             r'\n[ \t]*\{xsrst_begin\s+([a-z0-9_]+)\}'
         )
@@ -709,7 +709,7 @@ def pattern_begin_end(file_data, file_in) :
         )
     #
     # pattern_end
-    if comment_ch == '' :
+    if comment_ch is None :
         pattern_end = re.compile(
             r'\n[ \t]*\{xsrst_end\s+([a-z0-9_]+)\}'
         )
@@ -742,7 +742,7 @@ def file2file_info(
         comment_ch       = match_comment_ch.group(1)
         comment_ch_index = match_comment_ch.end()
     else :
-        comment_ch       = ''
+        comment_ch       = None
         comment_ch_index = 0
     #
     # index to start search for next pattern in file_data
@@ -810,7 +810,7 @@ def file2file_info(
             section_data  = file_data[ section_start : section_end ]
             #
             # remove comments at start of lines
-            if comment_ch != '' :
+            if comment_ch :
                 assert len(comment_ch) == 1
                 pattern = re.compile( r'\n[' + comment_ch + r'] ?' )
                 section_data = pattern.sub(r'\n', section_data)
