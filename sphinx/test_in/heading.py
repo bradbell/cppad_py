@@ -7,7 +7,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{xsrst_begin heading_exam}
+{xsrst_begin_parent heading_exam}
 
 ===============
 Heading Example

@@ -7,7 +7,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{xsrst_begin indent_space_exam}
+{xsrst_begin_parent indent_space_exam}
 
 ===========================
 Indent Using Spaces Example

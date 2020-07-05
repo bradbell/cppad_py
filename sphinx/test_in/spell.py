@@ -7,7 +7,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{xsrst_begin spell_exam}
+{xsrst_begin_parent spell_exam}
 
 =============
 Spell Example

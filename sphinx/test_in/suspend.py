@@ -7,7 +7,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{xsrst_begin suspend_exam}
+{xsrst_begin_parent suspend_exam}
 
 ===============
 Suspend Example

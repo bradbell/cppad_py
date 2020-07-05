@@ -6,7 +6,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # --------------------------------------------------------------------------
 """
-{xsrst_begin file_block_exam}
+{xsrst_begin_parent file_block_exam}
 
 ==================
 File Block Example

@@ -8,7 +8,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{xsrst_begin xsrst_py}
+{xsrst_begin_parent xsrst_py}
 {xsrst_spell
     xsrst
     rst
@@ -69,15 +69,20 @@ root_file
 ---------
 The command line argument *root_file* is the name of a file,
 relative to the top git repository directory.
-The first xsrst section in this file will be the *root section*
-(top section), in the table of contents for this documentation.
+
+root_section
+............
+If there is only one section in the *root_file* it is called
+the *root_section*; i.e., it is the top section in that table of contents.
+If there is more than one section in the *root_file*,
+the file must have a
+:ref:`begin_cmd.parent_section` and it is the *root_section*.
 The file *sphinx_dir*:code`/index.rst` must contain the line
 
 |space| |space| |space| |space|
 ``xsrst/`` *section_name*
 
-where *section_name* is the name
-of the first section in *root_file*.
+where *section_name* is the name of the *root_section*.
 
 
 spell_file
@@ -100,8 +105,8 @@ toctree
 The sphinx ``toctree`` directives are automatically generated
 for sections. The only such directive you should directly edit
 is in the file *sphinx_dir*:code`/index.rst`.
-One entry is for the first section in the
-:ref:`root_file<xsrst_py.command_line_arguments.root_file>`.
+One entry in this file specifies the
+:ref:`root_section<xsrst_py.command_line_arguments.root_file.root_section>`.
 Other entries are for ``.rst`` files that are not extracted by
 ``xsrst.py``.
 
@@ -109,8 +114,15 @@ Parent Section
 --------------
 A single input file may contain multiple
 :ref:`sections<begin_cmd.section>`.
-The first section in a file is called the file's parent section.
-Other sections in a file are children of the parent section.
+One (and at most one) of these sections may use begin with a
+:ref:`parent begin<begin_cmd.parent_section>` command.
+In this case, the other sections in the file are childrent of this section
+and this section is a child of the section containing the
+:ref:`child command<child_cmd>` that included this file.
+
+If there is no parent section for a file,
+all the sections in the file are children of the section containing the
+child command that included the file.
 
 Heading Links
 =============
@@ -155,17 +167,17 @@ to make sure they are still valid.
 
 Children
 --------
-If a xsrst input file has more than one section, the file's
+If a xsrst input file has a
 ref:`parent section<xsrst_py.table_of_contents.parent_section>`
-has children.
+the other sectins in the file are children of the parent.
 
 - If a section has a :ref:`child link command<child_cmd>`
   links to all the children of the section are place where the
   child link command is located.
 - If a section has a :ref:`children command<child_cmd>`
   no automatic links to the children of the current section are generated.
-- Otherwise, the links to the children of a file's parent section are placed
-  at the end of the parent section.
+- Otherwise, the links to the children of a section are placed
+  at the end of the section.
 
 You can place a heading directly before the links to make them easier to find.
 
@@ -241,8 +253,9 @@ Begin and End Commands
 
 Syntax
 ------
-- ``{xsrst_begin`` *section_name*:code:`}`
-- ``{xsrst_end`` *section_name*:code:`}`
+- ``{xsrst_begin``        *section_name*:code:`}`
+- ``{xsrst_begin_parent`` *section_name*:code:`}`
+- ``{xsrst_end``          *section_name*:code:`}`
 
 Section
 -------
@@ -262,6 +275,18 @@ The output file corresponding to *section_name* is
 |space| |space| |space| |space|
 :ref:`sphinx_dir<xsrst_py.command_line_arguments.sphinx_dir>`
 ``/xsrst/`` *section_name* ``.rst``
+
+Parent Section
+--------------
+There can be at most one begin parent command in an input file.
+In this case there must be other sections in the file
+and they are child of the parent section.
+The parent section is a child
+of the section that included this file using a :ref:`child command<child_cmd>`.
+
+If there is no parent comamnd in an input file,
+all the sections in the file are children
+of the section that included this file using a :ref:`child command<child_cmd>`.
 
 {xsrst_end begin_cmd}
 """
@@ -291,9 +316,11 @@ Syntax
 
 Purpose
 -------
-A section can specify a set of files for which
-the first section in each file (parent section for each file)
+A section can specify a set of files for which the
+:ref:`parent section<begin_cmd.parent_section>` of each file
 is a child of the current section.
+(If there is not parent section in a file,
+all the sections in the file are children of the current section.)
 This is done using the commands above at the
 :ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
@@ -703,23 +730,24 @@ def pattern_begin_end(file_data, file_in) :
             sys_exit(msg, file_in)
     #
     # pattern_begin
-    if comment_ch is None :
+    ch = comment_ch
+    if ch :
         pattern_begin = re.compile(
-            r'\n[ \t]*\{xsrst_begin\s+([a-z0-9_]+)\}'
+        r'\n[' + ch + r']?[ \t]*\{xsrst_(begin|begin_parent)\s+([a-z0-9_]+)\}'
         )
     else :
         pattern_begin = re.compile(
-            r'\n[' + comment_ch + r']?[ \t]*\{xsrst_begin\s+([a-z0-9_]+)\}'
+            r'\n[ \t]*\{xsrst_(begin|begin_parent)\s+([a-z0-9_]+)\}'
         )
     #
     # pattern_end
-    if comment_ch is None :
+    if ch :
         pattern_end = re.compile(
-            r'\n[ \t]*\{xsrst_end\s+([a-z0-9_]+)\}'
+            r'\n[' + ch + r']?[ \t]*\{xsrst_end\s+([a-z0-9_]+)\}'
         )
     else :
         pattern_end = re.compile(
-            r'\n[' + comment_ch + r']?[ \t]*\{xsrst_end\s+([a-z0-9_]+)\}'
+            r'\n[ \t]*\{xsrst_end\s+([a-z0-9_]+)\}'
         )
     return pattern_begin, pattern_end, match_comment_ch
 
@@ -766,7 +794,8 @@ def file2file_info(
             file_index = len(file_data)
         else :
             # section_name
-            section_name = match_xsrst_begin.group(1)
+            section_name = match_xsrst_begin.group(2)
+            is_parent    = match_xsrst_begin.group(1) == 'begin_parent'
             if section_name == '' :
                 msg  = 'section_name after xsrst_begin is empty'
                 sys_exit(msg, file_in)
@@ -789,6 +818,14 @@ def file2file_info(
                     msg += 'Once in file ' + file_in + '\n'
                     msg += 'And again in file ' + info['file_in'] + '\n'
                     sys_exit(msg)
+            #
+            # check if two parent sections in this file
+            if is_parent :
+                for info in file_info :
+                    if info['is_parent'] :
+                        msg  = 'xsrst_begin_parent'
+                        msg += ' appears twice in file\n' + file_in
+                        sys_exit(msg)
             #
             # file_index
             file_index += match_xsrst_begin.end()
@@ -823,6 +860,7 @@ def file2file_info(
             file_info.append( {
                 'section_name' : section_name,
                 'section_data' : section_data,
+                'is_parent'    : is_parent,
             } )
             #
             # place to start search for next section
@@ -960,7 +998,7 @@ def child_commands(
             msg += 'begin commands'
             sys_exit(msg, file_in, section_name)
         #
-        child_name  = match.group(1)
+        child_name  = match.group(2)
         if child_name != '' :
             section_list.append(child_name)
     #
@@ -1493,9 +1531,9 @@ while 0 < len(file_info_stack) :
             sys_exit(msg)
     file_info_done.append(info)
     #
-    file_in        = info['file_in']
-    parent_file    = info['parent_file']
-    parent_section = info['parent_section']
+    file_in              = info['file_in']
+    parent_file          = info['parent_file']
+    grand_parent_section = info['parent_section']
     assert os.path.isfile(file_in)
     #
     # get xsrst docuemntation in this file
@@ -1504,15 +1542,29 @@ while 0 < len(file_info_stack) :
         file_in,
     )
     #
-    # first section for this file (is parent for this file)
-    first_section_index = len(section_info)
+    # determine index of parent section for this file
+    file_parent_section = None
+    for i in range( len(this_file_info) ) :
+        if this_file_info[i]['is_parent'] :
+            file_parent_section = len(section_info) + i
+    if file_parent_section :
+        if len(this_file_info) < 2 :
+            msg  = 'xsrst_begin_parent appreas in a file with only one section'
+            sys_exit(msg, file_in, section_name)
+    #
+    # add this files sections to section_info
     for i in range( len(this_file_info) ) :
         # ----------------------------------------------------------------
         # section_name, section_data
         section_name = this_file_info[i]['section_name']
         section_data = this_file_info[i]['section_data']
-        if 0 < i :
-            parent_section = first_section_index
+        is_parent    = this_file_info[i]['is_parent']
+        if is_parent :
+            parent_section = grand_parent_section
+        elif file_parent_section is not None :
+            parent_section = file_parent_section
+        else :
+            parent_section = grand_parent_section
         #
         section_info.append( {
             'section_name'   : section_name,

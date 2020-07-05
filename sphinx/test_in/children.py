@@ -7,7 +7,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{xsrst_begin children_exam}
+{xsrst_begin_parent children_exam}
 
 ===========================
 Indent and Children Example

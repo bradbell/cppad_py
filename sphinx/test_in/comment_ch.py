@@ -9,7 +9,7 @@
 """
 {xsrst_comment_ch #}
 
-{xsrst_begin comment_ch_exam}
+{xsrst_begin_parent comment_ch_exam}
 
 ===============================
 Begin Special Character Example

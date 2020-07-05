@@ -7,7 +7,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{xsrst_begin indent_tab_exam}
+{xsrst_begin_parent indent_tab_exam}
 
 =========================
 Indent Using Tabs Example

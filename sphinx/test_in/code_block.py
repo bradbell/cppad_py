@@ -7,7 +7,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{xsrst_begin code_block_exam}
+{xsrst_begin_parent code_block_exam}
 
 ==================
 Code Block Example
