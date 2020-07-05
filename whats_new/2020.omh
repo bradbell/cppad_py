@@ -29,6 +29,7 @@ $spell
 	covid
 	fabs
 	runge
+	vec
 $$
 
 $section CppAD Py Changes During 2020$$
@@ -38,6 +39,11 @@ $children%
 %$$
 $head Previous Years$$
 $cref whats_new_2018$$
+
+$head 07-05$$
+The $cref/prototype/vec2a_double/Prototype/$$ for $code vec2a_double$$
+was the same as for $cref vec2cppad_double$$.
+This has been fixed.
 
 $head 05-17$$
 The $code abs$$ $cref a_double_unary_fun$$ was added
