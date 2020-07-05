@@ -207,6 +207,12 @@ The following is a wish list for future improvements to ``xsrst.py``:
 .. _stackoverflow: https://stackoverflow.com/questions/1686837/
    sphinx-documentation-tool-set-tab-width-in-output
 
+Code Blocks
+-----------
+It would be nice to extend the :ref:`code_cmd` to have an optional
+argument that specifies the languages (which might be different from
+the file it appears in).
+
 Tabs
 ----
 Currently tabs in code blocks get expanded to 8 spaces; see stackoverflow_.
@@ -678,6 +684,15 @@ def init_spell_checker(spell_list) :
     spell_checker.word_frequency.load_words(spell_list)
     #
     return spell_checker
+# ---------------------------------------------------------------------------
+def get_code_file_extensions() :
+    import pygments.lexers
+    code_file_extensions = list()
+    for lexer in pygments.lexers.get_all_lexers() :
+        for extension in lexer[2] :
+            extension = extension.replace('*.', '')
+            code_file_extensions.append( extension )
+    return code_file_extensions
 # ---------------------------------------------------------------------------
 # search for raw text at beginning of a line
 def find_at_start_of_line(offset, data, text) :
@@ -1389,6 +1404,8 @@ def write_file(
                     extension = ''
                 else :
                     extension = file_in[index + 1 : ]
+                    if extension not in code_file_extensions :
+                        extension = ''
                 line     = '.. code-block:: ' + extension + '\n\n'
                 if not previous_empty :
                     line = '\n' + line
@@ -1504,8 +1521,9 @@ else :
     os.mkdir(output_dir)
 #
 # spell_checker
-spell_list    = file2list(spell_file)
-spell_checker = init_spell_checker(spell_list)
+spell_list           = file2list(spell_file)
+spell_checker        = init_spell_checker(spell_list)
+code_file_extensions = get_code_file_extensions()
 #
 # define some pytyon regular expression patterns
 pattern_code_command    = re.compile( r'\n[^\n`]*\{xsrst_code\}[^\n`]*')
