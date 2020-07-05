@@ -83,7 +83,7 @@ and they are child of the parent section.
 The parent section is a child
 of the section that included this file using a :ref:`child command<child_cmd>`.
 
-If there is no parent comamnd in an input file,
+If there is no parent command in an input file,
 all the sections in the file are children
 of the section that included this file using a :ref:`child command<child_cmd>`.
 

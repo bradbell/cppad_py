@@ -116,7 +116,7 @@ A single input file may contain multiple
 :ref:`sections<begin_cmd.section>`.
 One (and at most one) of these sections may use begin with a
 :ref:`parent begin<begin_cmd.parent_section>` command.
-In this case, the other sections in the file are childrent of this section
+In this case, the other sections in the file are children of this section
 and this section is a child of the section containing the
 :ref:`child command<child_cmd>` that included this file.
 
@@ -169,7 +169,7 @@ Children
 --------
 If a xsrst input file has a
 ref:`parent section<xsrst_py.table_of_contents.parent_section>`
-the other sectins in the file are children of the parent.
+the other sections in the file are children of the parent.
 
 - If a section has a :ref:`child link command<child_cmd>`
   links to all the children of the section are place where the
@@ -243,6 +243,7 @@ Commands
 {xsrst_spell
     underbar
     rst
+    cmd
 }
 
 .. |space| unicode:: 0xA0
@@ -284,7 +285,7 @@ and they are child of the parent section.
 The parent section is a child
 of the section that included this file using a :ref:`child command<child_cmd>`.
 
-If there is no parent comamnd in an input file,
+If there is no parent command in an input file,
 all the sections in the file are children
 of the section that included this file using a :ref:`child command<child_cmd>`.
 
@@ -293,6 +294,9 @@ of the section that included this file using a :ref:`child command<child_cmd>`.
 # ---------------------------------------------------------------------------
 """
 {xsrst_begin child_cmd}
+{xsrst_spell
+    cmd
+}
 
 =================================
 Children and Child Links Commands
@@ -343,7 +347,7 @@ You can place a heading directly before the links to make them easier to find.
 Example
 -------
 {xsrst_child_link
-   sphinx/test_in/children.py
+   sphinx/test_in/no_parent.xsrst
 }
 
 {xsrst_end child_cmd}
@@ -991,16 +995,29 @@ def child_commands(
         pattern_begin, pattern_end, comment_ch = \
             pattern_begin_end(file_data, child_file)
         #
-        match       = pattern_begin.search(file_data)
+        match  = pattern_begin.search(file_data)
+        offset = 0
         if match is None :
             msg  = 'The file ' + child_file + '\n'
             msg += 'in the ' + command + ' command does not contain any '
             msg += 'begin commands'
             sys_exit(msg, file_in, section_name)
         #
-        child_name  = match.group(2)
-        if child_name != '' :
-            section_list.append(child_name)
+        child_list     = list()
+        found_parent = False
+        while match and not found_parent:
+            found_parent  = match.group(1) == 'begin_parent'
+            child_name    = match.group(2)
+            #
+            if found_parent :
+                child_list = [ child_name ]
+            else :
+                child_list.append( child_name )
+            #
+            offset  = offset + match.end()
+            match   = pattern_begin.search(file_data[offset :])
+        #
+        section_list += child_list
     #
     return section_data, file_list, section_list
 # -----------------------------------------------------------------------------
@@ -1543,26 +1560,28 @@ while 0 < len(file_info_stack) :
     )
     #
     # determine index of parent section for this file
-    file_parent_section = None
+    file_parent_section_index = None
+    file_parent_section_name  = None
     for i in range( len(this_file_info) ) :
         if this_file_info[i]['is_parent'] :
-            file_parent_section = len(section_info) + i
-    if file_parent_section :
+            file_parent_section_index = len(section_info) + i
+            file_parent_section_name  = this_file_info[i]['section_name']
+    if file_parent_section_index :
         if len(this_file_info) < 2 :
             msg  = 'xsrst_begin_parent appreas in a file with only one section'
             sys_exit(msg, file_in, section_name)
     #
     # add this files sections to section_info
-    for i in range( len(this_file_info) ) :
+    for i_file in range( len(this_file_info) ) :
         # ----------------------------------------------------------------
         # section_name, section_data
-        section_name = this_file_info[i]['section_name']
-        section_data = this_file_info[i]['section_data']
-        is_parent    = this_file_info[i]['is_parent']
+        section_name = this_file_info[i_file]['section_name']
+        section_data = this_file_info[i_file]['section_data']
+        is_parent    = this_file_info[i_file]['is_parent']
         if is_parent :
             parent_section = grand_parent_section
-        elif file_parent_section is not None :
-            parent_section = file_parent_section
+        elif file_parent_section_index is not None :
+            parent_section = file_parent_section_index
         else :
             parent_section = grand_parent_section
         #
@@ -1651,11 +1670,11 @@ while 0 < len(file_info_stack) :
         # ----------------------------------------------------------------
         # child_list
         # first section in each file may need to add to child list
-        parent   = section_name == this_file_info[0]['section_name']
         child_list = list()
-        if parent :
-            for i in range( len(this_file_info) - 1 ) :
-                child_list.append(  this_file_info[i+1]['section_name'] )
+        if is_parent :
+            for i in range( len(this_file_info) ) :
+                if i != i_file :
+                    child_list.append(  this_file_info[i]['section_name'] )
         child_list = child_list + child_section
         # ---------------------------------------------------------------
         # write file for this section

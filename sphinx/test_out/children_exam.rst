@@ -1,6 +1,6 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > children_exam
+:ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`no_parent_exam<no_parent_exam>` > :ref:`no_parent_res<no_parent_res>` > children_exam
 
 .. meta::
    :keywords: indent, and, children, example
@@ -15,12 +15,18 @@ Indent and Children Example
 
 
 .. literalinclude:: ../../sphinx/test_in/children.py
-    :lines: 24-51
+    :lines: 29-56
 
-.. toctree::
-   :maxdepth: 1
+.. meta::
+   :keywords: result
 
-   children_res
+.. index:: result
+
+.. _children_exam.result:
+
+Result
+------
+:ref:`children_res`
 
 ----
 

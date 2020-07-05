@@ -6,8 +6,9 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
+# BEGIN_FILE
 """
-{xsrst_begin_parent children_exam}
+{xsrst_begin children_exam}
 
 ===========================
 Indent and Children Example
@@ -16,6 +17,10 @@ Indent and Children Example
 {xsrst_file # BEGIN_SRC
     # END_SRC
 }
+
+Result
+------
+:ref:`children_res`
 
 {xsrst_end children_exam}
 """
@@ -50,3 +55,4 @@ Example
 {xsrst_end children_res}
 """
 # END_SRC
+# END_FILE

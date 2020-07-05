@@ -94,7 +94,7 @@ Example
 .. toctree::
    :maxdepth: 1
 
-   children_exam
+   no_parent_exam
 
 
 ----

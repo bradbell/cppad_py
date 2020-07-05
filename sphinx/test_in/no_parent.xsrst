@@ -1,0 +1,46 @@
+# vim: set expandtab:
+# -----------------------------------------------------------------------------
+#         cppad_py: A C++ Object Library and Python Interface to Cppad
+#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#              This program is distributed under the terms of the
+#              GNU General Public License version 3.0 or later see
+#                    https://www.gnu.org/licenses/gpl-3.0.txt
+# ----------------------------------------------------------------------------
+{xsrst_begin_parent no_parent_exam}
+
+=================
+No Parent Example
+=================
+
+{xsrst_file # BEGIN_SRC
+        # END_SRC
+}
+
+{xsrst_end no_parent_exam}
+------------------------------------------------------------------------------
+# BEGIN_SRC
+{xsrst_begin no_parent_res}
+
+================
+No Parent Result
+================
+
+No Parent File
+--------------
+{xsrst_file # BEGIN_FILE
+    # END_FILE
+    sphinx/test_in/children.py
+}
+
+Include File Using Child Link
+-----------------------------
+{xsrst_child_link
+        sphinx/test_in/children.py
+}
+
+Example
+-------
+:ref:`no_parent_exam`
+
+{xsrst_end no_parent_res}
+# END_SRC
