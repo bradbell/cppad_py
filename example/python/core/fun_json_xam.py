@@ -49,7 +49,7 @@ def to_json_xam() :
 #     json
 # $$
 # $section Python to_json: Example and Test$$
-# $srcthisfile|0|# BEGIN_TO_JSON_XAM|# END_FROM_JSON_XAM|$$
+# $srcthisfile|0|# BEGIN_TO_JSON_XAM|# END_TO_JSON_XAM|$$
 # $end
 # -----------------------------------------------------------------------------
 # BEGIN_FROM_JSON_XAM
@@ -103,7 +103,7 @@ def from_json_xam() :
 	ok       &= abs( rel_error ) < eps99;
 	#
 	return ok
-# END_TO_JSON_XAM
+# END_FROM_JSON_XAM
 #
 # $begin fun_from_json_xam.py$$ $newlinech #$$
 # $spell

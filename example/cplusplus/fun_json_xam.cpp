@@ -135,7 +135,7 @@ $begin fun_from_json_xam.cpp$$
 $spell
     json
 $$
-$section C++: to_json: Example and Test$$
+$section C++: from_json: Example and Test$$
 $srcthisfile|0|// BEGIN_FROM_JSON_XAM|// END_FROM_JSON_XAM|$$
 $end
 */
