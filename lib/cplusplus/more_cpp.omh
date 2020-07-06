@@ -102,13 +102,13 @@ $head Example$$
 The file $code example/cplusplus/fun_dynamic_xam.cpp$$ was added
 with the following contents:
 $cref fun_dynamic_xam.cpp$$.
-In addition, in the file $code example/cplusplus/check_all.cpp$$,
-$code%
+In addition, in the file $code example/cplusplus/check_all.cpp$$:
+$codei%
 	extern bool fun_optimize_xam(void);
 %$$
 was added to the external declarations and
-$code%
-	   ok &= Run( fun_optimize_xam,          "fun_optimize_xam"        );
+$codei%
+	ok &= Run( fun_optimize_xam,          "fun_optimize_xam"        );
 %$$
 was added to the main program.
 
