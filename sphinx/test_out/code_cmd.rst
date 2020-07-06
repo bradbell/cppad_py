@@ -22,6 +22,7 @@ Code Command
 
 Syntax
 ------
+``{xsrst_code`` *language* :code:`}`
 ``{xsrst_code}``
 
 .. meta::
@@ -34,7 +35,8 @@ Syntax
 Purpose
 -------
 A code block, directly below in the current input file, begins with
-a line containing the command above.
+a line containing the first version ( *language* included version)
+of the command above.
 
 .. meta::
    :keywords: requirements
@@ -46,9 +48,22 @@ a line containing the command above.
 Requirements
 ------------
 Each code command ends with
-a line containing another code command.
+a line containing the second version of the command; i.e., ``{xsrst_code}``.
 Hence there must be an even number of code commands.
 The back quote character \` can't be in the same line as the commands.
+
+.. meta::
+   :keywords: language
+
+.. index:: language
+
+.. _code_cmd.language:
+
+language
+--------
+A *language* is a non-empty sequence of non-space the characters.
+It is used to determine the source code language
+for highlighting the code block.
 
 .. meta::
    :keywords: rest, of, line
@@ -63,9 +78,6 @@ Other characters on the same line as a code command
 are not included in the xsrst output.
 This enables one to begin or end a comment block
 without having the comment characters in the xsrst output.
-The file extension in the name of the current input file is used to
-determine the source code language for highlighting the code block.
-Code blocks as usually small and
 
 .. meta::
    :keywords: spell, checking
@@ -76,9 +88,10 @@ Code blocks as usually small and
 
 Spell Checking
 --------------
-Spell checking is done for these code blocks,
-but not for code blocks included using the
-:ref:`file command<file_cmd>`.
+Code blocks as usually small and
+spell checking is done for these code blocks.
+(Spell checking is not done for code blocks included using the
+:ref:`file command<file_cmd>` .)
 
 .. meta::
    :keywords: example

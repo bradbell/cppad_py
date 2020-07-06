@@ -457,19 +457,27 @@ Code Command
 
 Syntax
 ------
+``{xsrst_code`` *language* :code:`}`
 ``{xsrst_code}``
 
 Purpose
 -------
 A code block, directly below in the current input file, begins with
-a line containing the command above.
+a line containing the first version ( *language* included version)
+of the command above.
 
 Requirements
 ------------
 Each code command ends with
-a line containing another code command.
+a line containing the second version of the command; i.e., ``{xsrst_code}``.
 Hence there must be an even number of code commands.
 The back quote character \` can't be in the same line as the commands.
+
+language
+--------
+A *language* is a non-empty sequence of non-space the characters.
+It is used to determine the source code language
+for highlighting the code block.
 
 Rest of Line
 ------------
@@ -477,15 +485,13 @@ Other characters on the same line as a code command
 are not included in the xsrst output.
 This enables one to begin or end a comment block
 without having the comment characters in the xsrst output.
-The file extension in the name of the current input file is used to
-determine the source code language for highlighting the code block.
-Code blocks as usually small and
 
 Spell Checking
 --------------
-Spell checking is done for these code blocks,
-but not for code blocks included using the
-:ref:`file command<file_cmd>`.
+Code blocks as usually small and
+spell checking is done for these code blocks.
+(Spell checking is not done for code blocks included using the
+:ref:`file command<file_cmd>` .)
 
 Example
 -------
@@ -1108,29 +1114,42 @@ def spell_command(
     return section_data
 # -----------------------------------------------------------------------------
 # remove characters on same line as {xsrst_code}
-def isolate_code_command(code_pattern, section_data, file_in, section_name) :
+def isolate_code_command(pattern, section_data, file_in, section_name) :
     section_index  = 0
-    match_begin_code = code_pattern.search(section_data)
+    match_begin_code = pattern['code'].search(section_data)
     while match_begin_code != None :
+        language       = match_begin_code.group(1).strip()
+        if language == '' :
+            msg = 'missing language in first comamnd of a code block pair'
+            sys_exit(msg, file_in, section_name)
+        for ch in language :
+            if ch < 'a' or 'z' < ch :
+                msg = 'code block language character not in a-z.'
+                sys_exit(msg, file_in, section_name)
         begin_start    = match_begin_code.start() + section_index
         begin_end      = match_begin_code.end()   + section_index
         section_rest   = section_data[ begin_end : ]
-        match_end_code = code_pattern.search( section_rest )
+        match_end_code = pattern['code'].search( section_rest )
         if match_end_code == None :
-            msg  = 'number of xsrst_code commands is not even'
+            msg = 'xsrst_code start does not have a corresponding stop'
+            sys_exit(msg, file_in, section_name)
+        if match_end_code.group(1).strip() != '' :
+            msg ='xsrst_code stop command has language argument'
             sys_exit(msg, file_in, section_name)
         end_start = match_end_code.start() + begin_end
         end_end   = match_end_code.end()   + begin_end
         #
+        code_section = section_data[ begin_end : end_start + 1]
+        #
         data_left   = section_data[: begin_start + 1 ]
-        data_left  += '{xsrst_code}'
-        data_left  += section_data[ begin_end : end_start + 1]
+        data_left  += '{xsrst_code ' + language + '}'
+        data_left  += code_section
         data_left  += '{xsrst_code}'
         data_right  = section_data[ end_end : ]
         #
         section_data  = data_left + data_right
         section_index = len(data_left)
-        match_begin_code  = code_pattern.search(data_right)
+        match_begin_code  = pattern['code'].search(data_right)
     return section_data
 # -----------------------------------------------------------------------------
 # convert file command start and stop from patterns to line numbers
@@ -1399,14 +1418,9 @@ def write_file(
             # code command
             inside_code = not inside_code
             if inside_code :
-                index = file_in.rfind('.')
-                if index < 0 :
-                    extension = ''
-                else :
-                    extension = file_in[index + 1 : ]
-                    if extension not in code_file_extensions :
-                        extension = ''
-                line     = '.. code-block:: ' + extension + '\n\n'
+                assert line[-2:] == '}\n'
+                language = line[ len('{xsrst_code') : -2 ].strip()
+                line     = '.. code-block:: ' + language + '\n\n'
                 if not previous_empty :
                     line = '\n' + line
             else :
@@ -1525,8 +1539,13 @@ spell_list           = file2list(spell_file)
 spell_checker        = init_spell_checker(spell_list)
 code_file_extensions = get_code_file_extensions()
 #
+# converting over to using a single dictionary for all patterns
+pattern = dict()
+pattern['code'] = re.compile(
+    r'\n[^\n`]*\{xsrst_code([^}]*)\}[^\n`]*'
+)
+#
 # define some pytyon regular expression patterns
-pattern_code_command    = re.compile( r'\n[^\n`]*\{xsrst_code\}[^\n`]*')
 pattern_suspend_command = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
 pattern_resume_command  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
 pattern_end_command     = re.compile(
@@ -1650,7 +1669,7 @@ while 0 < len(file_info_stack) :
         # ----------------------------------------------------------------
         # remove characters on same line as {xsrst_code}
         section_data = isolate_code_command(
-            pattern_code_command,
+            pattern,
             section_data,
             file_in,
             section_name,

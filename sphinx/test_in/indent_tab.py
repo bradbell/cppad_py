@@ -27,7 +27,7 @@ Indent Using Tabs Example
 	========================
 	Indent Using Tabs Result
 	========================
-	{xsrst_code}"""
+	{xsrst_code py}"""
 	def factorial(n) :
 		if n == 1 :
 			return 1

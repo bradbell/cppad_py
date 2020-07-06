@@ -32,7 +32,7 @@ Begin Special Character Example
 # In the original source, the leading characters '#' and ' ' get removed
 # and the remaining text lines up with the ``def`` below:
 #
-# {xsrst_code}
+# {xsrst_code py}
 def factorial(n) :
     if n == 1 :
         return 1
