@@ -3,9 +3,9 @@
 :ref:`xsrst_py<xsrst_py>` > :ref:`spell_cmd<spell_cmd>` > spell_exam
 
 .. meta::
-   :keywords: spell, example
+   :keywords: spell_exam, spell, example
 
-.. index:: spell, example
+.. index:: spell_exam, spell, example
 
 .. _spell_exam:
 

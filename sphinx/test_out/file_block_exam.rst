@@ -3,9 +3,9 @@
 :ref:`xsrst_py<xsrst_py>` > :ref:`file_cmd<file_cmd>` > file_block_exam
 
 .. meta::
-   :keywords: file, block, example
+   :keywords: file_block_exam, file, block, example
 
-.. index:: file, block, example
+.. index:: file_block_exam, file, block, example
 
 .. _file_block_exam:
 

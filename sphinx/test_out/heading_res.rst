@@ -3,9 +3,9 @@
 :ref:`xsrst_py<xsrst_py>` > :ref:`heading_exam<heading_exam>` > heading_res
 
 .. meta::
-   :keywords: heading, result
+   :keywords: heading_res, heading, result
 
-.. index:: heading, result
+.. index:: heading_res, heading, result
 
 .. _heading_res:
 

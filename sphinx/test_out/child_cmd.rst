@@ -3,9 +3,9 @@
 :ref:`xsrst_py<xsrst_py>` > child_cmd
 
 .. meta::
-   :keywords: children, and, child, links, commands
+   :keywords: child_cmd, children, and, child, links, commands
 
-.. index:: children, and, child, links, commands
+.. index:: child_cmd, children, and, child, links, commands
 
 .. _child_cmd:
 

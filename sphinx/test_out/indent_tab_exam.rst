@@ -3,9 +3,9 @@
 :ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`no_parent_exam<no_parent_exam>` > :ref:`no_parent_res<no_parent_res>` > :ref:`children_res<children_res>` > indent_tab_exam
 
 .. meta::
-   :keywords: indent, using, tabs, example
+   :keywords: indent_tab_exam, indent, using, tabs, example
 
-.. index:: indent, using, tabs, example
+.. index:: indent_tab_exam, indent, using, tabs, example
 
 .. _indent_tab_exam:
 

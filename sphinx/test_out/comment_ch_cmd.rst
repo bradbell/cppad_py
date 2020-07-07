@@ -3,9 +3,9 @@
 :ref:`xsrst_py<xsrst_py>` > comment_ch_cmd
 
 .. meta::
-   :keywords: comment, ch, command
+   :keywords: comment_ch_cmd, comment, ch, command
 
-.. index:: comment, ch, command
+.. index:: comment_ch_cmd, comment, ch, command
 
 .. _comment_ch_cmd:
 

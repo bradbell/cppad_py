@@ -3,9 +3,9 @@
 :ref:`xsrst_py<xsrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > :ref:`suspend_exam<suspend_exam>` > suspend_res
 
 .. meta::
-   :keywords: suspend, result
+   :keywords: suspend_res, suspend, result
 
-.. index:: suspend, result
+.. index:: suspend_res, suspend, result
 
 .. _suspend_res:
 

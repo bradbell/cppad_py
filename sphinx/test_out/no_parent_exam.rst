@@ -3,9 +3,9 @@
 :ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > no_parent_exam
 
 .. meta::
-   :keywords: no, parent, example
+   :keywords: no_parent_exam, no, parent, example
 
-.. index:: no, parent, example
+.. index:: no_parent_exam, no, parent, example
 
 .. _no_parent_exam:
 

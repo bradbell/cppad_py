@@ -3,9 +3,9 @@
 :ref:`xsrst_py<xsrst_py>` > code_cmd
 
 .. meta::
-   :keywords: code, command
+   :keywords: code_cmd, code, command
 
-.. index:: code, command
+.. index:: code_cmd, code, command
 
 .. _code_cmd:
 

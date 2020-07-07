@@ -3,9 +3,9 @@
 :ref:`xsrst_py<xsrst_py>` > suspend_cmd
 
 .. meta::
-   :keywords: suspend, and, resume, command
+   :keywords: suspend_cmd, suspend, and, resume, command
 
-.. index:: suspend, and, resume, command
+.. index:: suspend_cmd, suspend, and, resume, command
 
 .. _suspend_cmd:
 

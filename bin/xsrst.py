@@ -126,8 +126,8 @@ child command that included the file.
 
 Heading Links
 =============
-- A link is included from the index to a heading
-  for each word in a heading.
+- For each word in a heading,
+a link is included in the index from the word to the heading.
 
 - Each word in a heading is added to the html keyword meta data.
 
@@ -272,8 +272,12 @@ begin (end) command at the
 
 section_name
 ------------
-A *section_name* is a non-empty sequence of the following characters:
+The *section_name* is a non-empty sequence of the following characters:
 a-z, 0-9, and underbar ``_``.
+A link is included in the index under the section name
+to the first heading the section.
+The section name is also added to the html keyword meta data.
+
 
 Output File
 -----------
@@ -1314,10 +1318,15 @@ def add_label_and_index_for_headings(
             for level in range( len(heading_list) ) :
                 if level == 0 :
                     label = section_name.lower().replace(' ', '_')
+                    assert label == section_name
                 else :
                     heading = heading_list[level]
                     label += '.' + heading['text'].lower().replace(' ', '_')
-            index = ''
+            # include section link as link to first heading
+            if len(heading_list) == 1 :
+                index = section_name
+            else :
+                index = ''
             for word in heading_list[-1]['text'].lower().split() :
                 if index == '' :
                     index = word

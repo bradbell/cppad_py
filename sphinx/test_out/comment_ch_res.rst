@@ -3,9 +3,9 @@
 :ref:`xsrst_py<xsrst_py>` > :ref:`comment_ch_cmd<comment_ch_cmd>` > :ref:`comment_ch_exam<comment_ch_exam>` > comment_ch_res
 
 .. meta::
-   :keywords: begin, special, character, result
+   :keywords: comment_ch_res, begin, special, character, result
 
-.. index:: begin, special, character, result
+.. index:: comment_ch_res, begin, special, character, result
 
 .. _comment_ch_res:
 

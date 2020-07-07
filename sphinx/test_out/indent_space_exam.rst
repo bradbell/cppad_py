@@ -3,9 +3,9 @@
 :ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`no_parent_exam<no_parent_exam>` > :ref:`no_parent_res<no_parent_res>` > :ref:`children_res<children_res>` > indent_space_exam
 
 .. meta::
-   :keywords: indent, using, spaces, example
+   :keywords: indent_space_exam, indent, using, spaces, example
 
-.. index:: indent, using, spaces, example
+.. index:: indent_space_exam, indent, using, spaces, example
 
 .. _indent_space_exam:
 

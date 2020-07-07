@@ -5,9 +5,9 @@
 .. |space| unicode:: 0xA0
 
 .. meta::
-   :keywords: file, command
+   :keywords: file_cmd, file, command
 
-.. index:: file, command
+.. index:: file_cmd, file, command
 
 .. _file_cmd:
 

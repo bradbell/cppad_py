@@ -5,9 +5,9 @@
 .. |space| unicode:: 0xA0
 
 .. meta::
-   :keywords: begin, and, end, commands
+   :keywords: begin_cmd, begin, and, end, commands
 
-.. index:: begin, and, end, commands
+.. index:: begin_cmd, begin, and, end, commands
 
 .. _begin_cmd:
 
@@ -50,8 +50,11 @@ begin (end) command at the
 
 section_name
 ------------
-A *section_name* is a non-empty sequence of the following characters:
+The *section_name* is a non-empty sequence of the following characters:
 a-z, 0-9, and underbar ``_``.
+A link is included in the index under the section name
+to the first heading the section.
+The section name is also added to the html keyword meta data.
 
 .. meta::
    :keywords: output, file
