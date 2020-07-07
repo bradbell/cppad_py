@@ -48,11 +48,11 @@ $subhead new_dynamic$$
 The include file $code include/cppad/py/fun.hpp$$
 was edited to add the following member function to $code d_fun$$:
 $srccode%cpp%
-    void new_dynamic(const std::vector<double>& dynamic);
+	void new_dynamic(const std::vector<double>& dynamic);
 %$$
 The following member function was added to $code a_fun$$:
 $srccode%cpp%
-    void new_dynamic(const std::vector<a_double>& adynamic);
+	void new_dynamic(const std::vector<a_double>& adynamic);
 %$$
 
 
