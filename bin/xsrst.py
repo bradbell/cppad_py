@@ -657,6 +657,15 @@ import os
 import pdb
 import spellchecker
 # ---------------------------------------------------------------------------
+def newline_indices(data) :
+    pattern_newline  = re.compile( r'\n')
+    newline_itr      = pattern_newline.finditer(data)
+    newline_list     = list()
+    for itr in newline_itr :
+        newlist = itr.start()
+        newline_list.append( newlist )
+    return newline_list
+# ---------------------------------------------------------------------------
 def init_spell_checker(spell_list) :
     bad_words_in_spellchecker = [
         'thier',
@@ -893,12 +902,7 @@ def indent_to_remove(section_data, file_in, section_name) :
     len_data   = len(section_data)
     #
     # newline_list
-    pattern_newline  = re.compile( r'\n')
-    newline_itr      = pattern_newline.finditer(section_data)
-    newline_list     = list()
-    for itr in newline_itr :
-        newlist = itr.start()
-        newline_list.append( newlist )
+    newline_list = newline_indices(section_data)
     #
     # num_remove
     num_remove = len(section_data)
@@ -1364,16 +1368,11 @@ def write_file(
     top_dir = top_dir[:-1]
     #
     # split section data into lines
-    newline_pattern = re.compile( r'\n')
-    newline_itr     = newline_pattern.finditer(section_data)
-    newline_list    = list()
-    for itr in newline_itr :
-        newlist = itr.start()
-        newline_list.append( newlist )
+    newline_list = newline_indices(section_data)
     #
     # open output file
-    file_out          = output_dir + '/' + section_name + '.rst'
-    file_ptr          = open(file_out, 'w')
+    file_out = output_dir + '/' + section_name + '.rst'
+    file_ptr = open(file_out, 'w')
     #
     # links to ancestors and position in website
     section_index = len(section_info) - 1
