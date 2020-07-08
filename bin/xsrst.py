@@ -1089,7 +1089,6 @@ def child_commands(
 def spell_command(
     pattern, section_data, file_in, section_name
 ) :
-    word_pattern  = re.compile( r'[\\A-Za-z][a-z]*' )
     match_spell   = pattern['spell'].search(section_data)
     special_list  = list()
     if match_spell != None :
@@ -1098,7 +1097,7 @@ def spell_command(
         if match_another :
             msg  = 'there are two spell xsrst commands'
             sys_exit(msg, file_in, section_name)
-        for itr in word_pattern.finditer( match_spell.group(1) ) :
+        for itr in pattern['word'].finditer( match_spell.group(1) ) :
             special_list.append( itr.group(0).lower() )
         #
         # remove spell command
@@ -1106,19 +1105,9 @@ def spell_command(
         end          = match_spell.end()
         section_data = section_data[: start] + section_data[end :]
     #
-    # data = section_data with commands removed
-    command_pattern = re.compile( r'\{[a-z]+_xsrst[^}]*\}' )
-    data            = ''
-    previous_end    = 0
-    for itr in command_pattern.finditer( section_data ) :
-        start        = itr.start()
-        data        += section_data[previous_end : start ]
-        previous_end = itr.end()
-    data += section_data[previous_end :]
-    #
     # check for spelling errors
     first_spell_error = True
-    for itr in word_pattern.finditer( data ) :
+    for itr in pattern['word'].finditer( section_data ) :
         word = itr.group(0)
         if len( spell_checker.unknown( [word] ) ) > 0 :
             if not word.lower() in special_list :
@@ -1135,8 +1124,7 @@ def spell_command(
                 special_list.append(word.lower())
     #
     # check for double word errors
-    double_pattern  = re.compile( r'\s+([\\A-Za-z][a-z]*)\s+\1' )
-    for itr in double_pattern.finditer(data) :
+    for itr in pattern['double_word'].finditer(section_data) :
         ok   = False
         word = itr.group(1)
         if word in special_list :
@@ -1588,6 +1576,9 @@ spell_checker        = init_spell_checker(spell_list)
 #
 # regular expressions corresponding to xsrst commands
 pattern = dict()
+pattern['word']        = re.compile( r'[\\A-Za-z][a-z]*' )
+pattern['double_word'] = re.compile( r'\s+([\\A-Za-z][a-z]*)\s+\1' )
+#
 pattern['line']    = re.compile(r'\{xsrst_line [0-9]+\}')
 pattern['suspend'] = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
 pattern['resume']  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
