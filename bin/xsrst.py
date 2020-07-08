@@ -666,6 +666,48 @@ def newline_indices(data) :
         newline_list.append( newlist )
     return newline_list
 # ---------------------------------------------------------------------------
+def add_line_numbers(data) :
+    newline_list = newline_indices(data)
+    result       = ""
+    previous     = 0
+    for i in range( len(newline_list) ) :
+        current = newline_list[i]
+        line    = data[previous : current]
+        if line[-1] != '\n' :
+            line += '{xsrst_line ' + str(i + 1) + '}'
+        result  += line
+        previous = current
+    assert previous == len(data) - 1
+    result += '\n'
+    #
+    # remove line numbers that are inside of other commands
+    pattern  = re.compile(r'(\{xsrst_[a-z][^}]*)\{xsrst_line [0-9]+\}\n')
+    match    = pattern.search(result)
+    while match :
+        before  = result[: match.start() ]
+        after   = result[match.end() :]
+        replace = match.group(1) + '\n'
+        result  = before + replace + after
+        match    = pattern.search(result)
+    return result
+# ---------------------------------------------------------------------------
+def remove_line_numbers(pattern, data) :
+    match   = pattern['line'].search(data)
+    offset  = 0
+    result  = ""
+    while match :
+        start   = offset + match.start()
+        end     = offset + match.end()
+        #
+        before  = data[offset : start]
+        after   = data[end :]
+        result += before
+        #
+        offset   = end
+        match    = pattern['line'].search(data[end :])
+    result += data[offset :]
+    return result
+# ---------------------------------------------------------------------------
 def init_spell_checker(spell_list) :
     bad_words_in_spellchecker = [
         'thier',
@@ -792,6 +834,8 @@ def file2file_info(
     file_ptr   = open(file_in, 'r')
     file_data  = file_ptr.read()
     file_ptr.close()
+    #
+    file_data = add_line_numbers(file_data)
     #
     # initialize return value
     file_info = list()
@@ -1235,7 +1279,7 @@ def convert_file_command(file_pattern, section_data, file_in, section_name) :
 # -----------------------------------------------------------------------------
 # labels for headings
 def add_label_and_index_for_headings(
-        section_data, num_remove, file_in, section_name
+        pattern, section_data, num_remove, file_in, section_name
 ) :
     punctuation      = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
     heading_list     = list()
@@ -1245,6 +1289,7 @@ def add_label_and_index_for_headings(
     candidate_state  = 'empty'
     while 0 <= next_newline :
         next_line = section_data[next_start : next_newline]
+        next_line = pattern['line'].sub('', next_line)
         next_line = next_line[num_remove :].rstrip(' \t')
         next_len  = len(next_line)
         if next_len == 0 :
@@ -1352,6 +1397,7 @@ def add_label_and_index_for_headings(
 # write file corresponding to a section
 # (and finish processing that has been delayed to this point)
 def write_file(
+    pattern,
     sphinx_dir,
     file_in,
     section_data,
@@ -1366,6 +1412,9 @@ def write_file(
     depth   =  sphinx_dir.count('/') + 2
     top_dir =  depth * '../'
     top_dir = top_dir[:-1]
+    #
+    # remove xsrst_line commands
+    section_data = remove_line_numbers(pattern, section_data)
     #
     # split section data into lines
     newline_list = newline_indices(section_data)
@@ -1539,6 +1588,7 @@ spell_checker        = init_spell_checker(spell_list)
 #
 # regular expressions corresponding to xsrst commands
 pattern = dict()
+pattern['line']    = re.compile(r'\{xsrst_line [0-9]+\}')
 pattern['suspend'] = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
 pattern['resume']  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
 pattern['code']    = re.compile(
@@ -1686,6 +1736,7 @@ while 0 < len(file_info_stack) :
         # ---------------------------------------------------------------
         # add labels corresponding to headings
         section_data = add_label_and_index_for_headings(
+            pattern,
             section_data,
             num_remove,
             file_in,
@@ -1703,6 +1754,7 @@ while 0 < len(file_info_stack) :
         # ---------------------------------------------------------------
         # write file for this section
         write_file(
+            pattern,
             sphinx_dir,
             file_in,
             section_data,
