@@ -1048,14 +1048,14 @@ def child_commands(
 # -----------------------------------------------------------------------------
 # process spell command
 def spell_command(
-    spell_pattern, section_data, file_in, section_name
+    pattern, section_data, file_in, section_name
 ) :
     word_pattern  = re.compile( r'[\\A-Za-z][a-z]*' )
-    match_spell   = spell_pattern.search(section_data)
+    match_spell   = pattern['spell'].search(section_data)
     special_list  = list()
     if match_spell != None :
         section_rest   = section_data[ match_spell.end() : ]
-        match_another  = pattern_spell_command.search(section_rest)
+        match_another  = pattern['spell'].search(section_rest)
         if match_another :
             msg  = 'there are two spell xsrst commands'
             sys_exit(msg, file_in, section_name)
@@ -1557,7 +1557,7 @@ pattern['code'] = re.compile(
 # define some pytyon regular expression patterns
 pattern['suspend'] = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
 pattern['resume']  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
-pattern_spell_command   = re.compile(
+pattern['spell']   = re.compile(
     r'\n[ \t]*\{xsrst_spell([^}]*)\}'
 )
 pattern_file_command_2    = re.compile(
@@ -1666,7 +1666,7 @@ while 0 < len(file_info_stack) :
         # ----------------------------------------------------------------
         # process spell commands
         section_data = spell_command(
-            pattern_spell_command,
+            pattern,
             section_data,
             file_in,
             section_name,
