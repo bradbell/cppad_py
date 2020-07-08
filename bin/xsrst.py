@@ -127,7 +127,7 @@ child command that included the file.
 Heading Links
 =============
 - For each word in a heading,
-a link is included in the index from the word to the heading.
+  a link is included in the index from the word to the heading.
 
 - Each word in a heading is added to the html keyword meta data.
 
