@@ -945,15 +945,15 @@ def indent_to_remove(section_data, file_in, section_name) :
 # ----------------------------------------------------------------------------
 # process xsrst_suspend commands
 def suspend_command(
-    suspend_pattern, resume_pattern, section_data, file_in, section_name
+    pattern, section_data, file_in, section_name
 ) :
-    match_suspend = suspend_pattern.search(section_data)
+    match_suspend = pattern['suspend'].search(section_data)
     while match_suspend != None :
         suspend_start = match_suspend.start()
         suspend_end   = match_suspend.end()
         section_rest  = section_data[ suspend_end : ]
-        match_resume  = resume_pattern.search(section_rest)
-        match_suspend = suspend_pattern.search(section_rest)
+        match_resume  = pattern['resume'].search(section_rest)
+        match_suspend = pattern['suspend'].search(section_rest)
         if match_resume == None :
             msg  = 'there is a {xsrst_suspend} without a '
             msg += 'corresponding {xsrst_resume}'
@@ -968,7 +968,7 @@ def suspend_command(
         section_data = section_data[: suspend_start] + section_rest
         #
         # redo match_suppend so relative to new section_data
-        match_suspend = suspend_pattern.search(section_data)
+        match_suspend = pattern['suspend'].search(section_data)
     return section_data
 # -----------------------------------------------------------------------------
 # process child commands
@@ -1555,8 +1555,8 @@ pattern['code'] = re.compile(
 )
 #
 # define some pytyon regular expression patterns
-pattern_suspend_command = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
-pattern_resume_command  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
+pattern['suspend'] = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
+pattern['resume']  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
 pattern_end_command     = re.compile(
     r'\n[ \t]*\{xsrst_end\s+([a-z0-9_]+)\}'
 )
@@ -1639,8 +1639,7 @@ while 0 < len(file_info_stack) :
         # ----------------------------------------------------------------
         # process suspend commands
         section_data = suspend_command(
-            pattern_suspend_command,
-            pattern_resume_command,
+            pattern,
             section_data,
             file_in,
             section_name,
