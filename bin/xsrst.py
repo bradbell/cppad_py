@@ -973,17 +973,17 @@ def suspend_command(
 # -----------------------------------------------------------------------------
 # process child commands
 def child_commands(
-    pattern_child,
+    pattern,
     section_data,
     file_in,
     section_name,
 ) :
     file_list    = list()
     section_list = list()
-    match        = pattern_child.search(section_data)
+    match        = pattern['child'].search(section_data)
     if match is None :
         return section_data, file_list, section_list
-    match_tmp    = pattern_child.search(section_data[match.end() :] )
+    match_tmp    = pattern['child'].search(section_data[match.end() :] )
     if match_tmp is not None :
         msg = 'There is more than one children or child_link commands in'
         sys_exit(msg, file_in, section_name)
@@ -1566,7 +1566,7 @@ pattern_file_command_2    = re.compile(
 pattern_file_command_3    = re.compile(
     r'\n[ \t]*\{xsrst_file[ \t]([^}\n]*)\n([^}\n]*)\n([^}\n]+)\n[ \t]*\}'
 )
-pattern_child_command = re.compile(
+pattern['child'] = re.compile(
     r'\n[ \t]*\{xsrst_(children|child_link)([^}]*)\}'
 )
 # -----------------------------------------------------------------------------
@@ -1644,7 +1644,7 @@ while 0 < len(file_info_stack) :
         # ----------------------------------------------------------------
         # process child command
         section_data, child_file, child_section = child_commands(
-            pattern_child_command,
+            pattern,
             section_data,
             file_in,
             section_name,
