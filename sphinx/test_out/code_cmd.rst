@@ -22,8 +22,8 @@ Code Command
 
 Syntax
 ------
-``{xsrst_code`` *language* :code:`}`
-``{xsrst_code}``
+- ``{xsrst_code`` *language* :code:`}`
+- ``{xsrst_code}``
 
 .. meta::
    :keywords: purpose

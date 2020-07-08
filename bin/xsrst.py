@@ -461,8 +461,8 @@ Code Command
 
 Syntax
 ------
-``{xsrst_code`` *language* :code:`}`
-``{xsrst_code}``
+- ``{xsrst_code`` *language* :code:`}`
+- ``{xsrst_code}``
 
 Purpose
 -------
@@ -694,15 +694,6 @@ def init_spell_checker(spell_list) :
     spell_checker.word_frequency.load_words(spell_list)
     #
     return spell_checker
-# ---------------------------------------------------------------------------
-def get_code_file_extensions() :
-    import pygments.lexers
-    code_file_extensions = list()
-    for lexer in pygments.lexers.get_all_lexers() :
-        for extension in lexer[2] :
-            extension = extension.replace('*.', '')
-            code_file_extensions.append( extension )
-    return code_file_extensions
 # ---------------------------------------------------------------------------
 # search for raw text at beginning of a line
 def find_at_start_of_line(offset, data, text) :
@@ -1546,7 +1537,6 @@ else :
 # spell_checker
 spell_list           = file2list(spell_file)
 spell_checker        = init_spell_checker(spell_list)
-code_file_extensions = get_code_file_extensions()
 #
 # regular expressions corresponding to xsrst commands
 pattern = dict()
