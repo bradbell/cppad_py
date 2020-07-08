@@ -1548,25 +1548,23 @@ spell_list           = file2list(spell_file)
 spell_checker        = init_spell_checker(spell_list)
 code_file_extensions = get_code_file_extensions()
 #
-# converting over to using a single dictionary for all patterns
+# regular expressions corresponding to xsrst commands
 pattern = dict()
-pattern['code'] = re.compile(
-    r'\n[^\n`]*\{xsrst_code([^}]*)\}[^\n`]*'
-)
-#
-# define some pytyon regular expression patterns
 pattern['suspend'] = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
 pattern['resume']  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
+pattern['code']    = re.compile(
+    r'\n[^\n`]*\{xsrst_code([^}]*)\}[^\n`]*'
+)
 pattern['spell']   = re.compile(
     r'\n[ \t]*\{xsrst_spell([^}]*)\}'
 )
-pattern_file_command_2    = re.compile(
+pattern['file_2']  = re.compile(
     r'\n[ \t]*\{xsrst_file[ \t]([^}\n]*)\n([^}\n]*)\n[ \t]*\}'
 )
-pattern_file_command_3    = re.compile(
+pattern['file_3']  = re.compile(
     r'\n[ \t]*\{xsrst_file[ \t]([^}\n]*)\n([^}\n]*)\n([^}\n]+)\n[ \t]*\}'
 )
-pattern['child'] = re.compile(
+pattern['child']   = re.compile(
     r'\n[ \t]*\{xsrst_(children|child_link)([^}]*)\}'
 )
 # -----------------------------------------------------------------------------
@@ -1681,18 +1679,13 @@ while 0 < len(file_info_stack) :
         )
         # ---------------------------------------------------------------
         # file command: convert start and stop to line numbers
-        section_data = convert_file_command(
-            pattern_file_command_2,
-            section_data,
-            file_in,
-            section_name,
-        )
-        section_data = convert_file_command(
-            pattern_file_command_3,
-            section_data,
-            file_in,
-            section_name,
-        )
+        for key in [ 'file_2', 'file_3' ] :
+            section_data = convert_file_command(
+                pattern[key],
+                section_data,
+                file_in,
+                section_name,
+            )
         index = find_at_start_of_line(0, section_data, '{xsrst_file')
         if 0 <= index :
             eol  = section_data.find('\n', index)
