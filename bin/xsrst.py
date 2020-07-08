@@ -1557,9 +1557,6 @@ pattern['code'] = re.compile(
 # define some pytyon regular expression patterns
 pattern['suspend'] = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
 pattern['resume']  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
-pattern_end_command     = re.compile(
-    r'\n[ \t]*\{xsrst_end\s+([a-z0-9_]+)\}'
-)
 pattern_spell_command   = re.compile(
     r'\n[ \t]*\{xsrst_spell([^}]*)\}'
 )
