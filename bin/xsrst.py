@@ -686,7 +686,8 @@ def add_line_numbers(data) :
     result += '\n'
     #
     # remove line numbers that are inside of other commands
-    pattern  = re.compile(r'(\{xsrst_[a-z][^}]*)\{xsrst_line [0-9]+\}\n')
+    cmd      = r'(\{xsrst_(file|children|child_link|spell)[^{]*)'
+    pattern  = re.compile( cmd + r'\{xsrst_line [0-9]+\}\n')
     match    = pattern.search(result)
     while match :
         before  = result[: match.start() ]
