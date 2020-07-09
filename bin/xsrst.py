@@ -1604,11 +1604,12 @@ pattern['code']    = re.compile(
 pattern['spell']   = re.compile(
     r'\n[ \t]*\{xsrst_spell([^}]*)\}'
 )
+arg = r'([^}\n]*)\n'
 pattern['file_2']  = re.compile(
-    r'\n[ \t]*\{xsrst_file[ \t]([^}\n]*)\n([^}\n]*)\n[ \t]*\}'
+    r'\n[ \t]*\{xsrst_file[ \t]' + arg + arg + r'[ \t]*\}'
 )
 pattern['file_3']  = re.compile(
-    r'\n[ \t]*\{xsrst_file[ \t]([^}\n]*)\n([^}\n]*)\n([^}\n]+)\n[ \t]*\}'
+    r'\n[ \t]*\{xsrst_file[ \t]' + arg + arg + arg + r'[ \t]*\}'
 )
 pattern['child']   = re.compile(
     r'\n[ \t]*\{xsrst_(children|child_link)([^}]*)\}'
