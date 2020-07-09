@@ -825,21 +825,21 @@ def pattern_begin_end(file_data, file_in) :
     ch = comment_ch
     if ch :
         pattern_begin = re.compile(
-        r'\n[' + ch + r']?[ \t]*\{xsrst_(begin|begin_parent)\s+([a-z0-9_]+)\}'
+        r'\n[' + ch + r']?[ \t]*\{xsrst_(begin|begin_parent)\s+([a-z0-9_]*)\}'
         )
     else :
         pattern_begin = re.compile(
-            r'\n[ \t]*\{xsrst_(begin|begin_parent)\s+([a-z0-9_]+)\}'
+            r'\n[ \t]*\{xsrst_(begin|begin_parent)\s+([a-z0-9_]*)\}'
         )
     #
     # pattern_end
     if ch :
         pattern_end = re.compile(
-            r'\n[' + ch + r']?[ \t]*\{xsrst_end\s+([a-z0-9_]+)\}'
+            r'\n[' + ch + r']?[ \t]*\{xsrst_end\s+([a-z0-9_]*)\}'
         )
     else :
         pattern_end = re.compile(
-            r'\n[ \t]*\{xsrst_end\s+([a-z0-9_]+)\}'
+            r'\n[ \t]*\{xsrst_end\s+([a-z0-9_]*)\}'
         )
     return pattern_begin, pattern_end, match_comment_ch
 
@@ -892,7 +892,9 @@ def file2file_info(
             is_parent    = match_xsrst_begin.group(1) == 'begin_parent'
             if section_name == '' :
                 msg  = 'section_name after xsrst_begin is empty'
-                sys_exit(msg, fname=file_in)
+                sys_exit(msg,
+                    fname=file_in, match=match_xsrst_begin, data=data_rest
+                )
             #
             begin_index = file_index + match_xsrst_begin.start()
             if begin_index < comment_ch_index :
