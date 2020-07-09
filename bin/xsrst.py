@@ -1032,16 +1032,26 @@ def suspend_command(
         suspend_end   = match_suspend.end()
         section_rest  = section_data[ suspend_end : ]
         match_resume  = pattern['resume'].search(section_rest)
-        match_suspend = pattern['suspend'].search(section_rest)
         if match_resume == None :
             msg  = 'there is a {xsrst_suspend} without a '
             msg += 'corresponding {xsrst_resume}'
-            sys_exit(msg, fname=file_in, sname=section_name)
+            sys_exit(msg,
+                fname=file_in,
+                sname=section_name,
+                match=match_suspend,
+                data=section_data
+            )
+        match_suspend = pattern['suspend'].search(section_rest)
         if match_suspend != None :
             if match_suspend.start() < match_resume.start() :
                 msg  = 'there are two {xsrst_suspend} without a '
                 msg += '{xsrst_resume} between them'
-                sys_exit(msg, fname=file_in, sname=section_name)
+                sys_exit(msg,
+                    fname=file_in,
+                    sname=section_name,
+                    match=match_suspend,
+                    data=section_rest
+                )
         resume_end   = match_resume.end() + suspend_end
         section_rest = section_data[ resume_end :]
         section_data = section_data[: suspend_start] + section_rest
