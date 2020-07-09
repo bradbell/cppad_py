@@ -1409,23 +1409,24 @@ def add_label_and_index_for_headings(
             if len( heading_list ) == 0 :
                 heading_list.append( heading )
             else :
-                match = overline == heading_list[0]['overline']
-                if match :
-                    match = character == heading_list[0]['character']
-                if match :
+                same_level = overline == heading_list[0]['overline']
+                if same_level :
+                    same_level = character == heading_list[0]['character']
+                if same_level :
                     msg = 'There are multiple titles for this section'
                     sys_exit(msg, fname=file_in, sname=section_name)
                 level = 1
-                while level < len(heading_list) and not match :
-                    match = overline == heading_list[level]['overline']
-                    if match :
-                        match = character == heading_list[level]['character']
-                    if match :
+                while level < len(heading_list) and not same_level :
+                    same_level = overline == heading_list[level]['overline']
+                    if same_level :
+                        same_level = \
+                            character == heading_list[level]['character']
+                    if same_level :
                         heading_list = heading_list[: level ]
                         heading_list.append(heading)
                     else :
                         level += 1
-                if not match :
+                if not same_level :
                     # this heading at a deeper level
                     heading_list.append( heading )
 
