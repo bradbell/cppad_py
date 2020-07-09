@@ -784,7 +784,7 @@ def sys_exit(msg, fname=None, sname=None, match=None, data=None) :
         match_line  = pattern['line'].search( data[match.end() :] )
         assert match_line
         line_number = match_line.group(1)
-        extra += 'in or before line = ' + line_number
+        extra += 'line = ' + line_number
     if extra != '' :
         msg += '\n' + extra
     sys.exit(msg )
@@ -899,14 +899,23 @@ def file2file_info(
             begin_index = file_index + match_xsrst_begin.start()
             if begin_index < comment_ch_index :
                 msg = 'A begin command comes before the comment_ch command'
-                sys_exit(msg, fname=file_in, sname=section_name)
+                sys_exit(msg,
+                    fname=file_in,
+                    sname=section_name,
+                    match=match_xsrst_begin,
+                    data=data_rest,
+                )
             #
             # check if section appears multiple times
             for info in file_info :
                 if section_name == info['section_name'] :
-                    msg  = 'xsrst_begin ' + section_name
-                    msg += ' appears twice in file\n' + file_in
-                    sys_exit(msg)
+                    msg  = 'xsrst_begin: section appears multiple times'
+                    sys_exit(msg,
+                        fname=file_in,
+                        sname=section_name,
+                        match=match_xsrst_begin,
+                        data=data_rest
+                    )
             for info in section_info :
                 if section_name == info['section_name'] :
                     msg  = 'xsrst_begin ' + section_name
@@ -1150,7 +1159,7 @@ def spell_command(
                 suggest = spell_checker.correction(word)
                 if suggest != word :
                     msg += ', suggest = ' + suggest
-                msg += ', in or before line ' + line_number
+                msg += ', line ' + line_number
                 #
                 print(msg)
                 special_list.append(word.lower())
