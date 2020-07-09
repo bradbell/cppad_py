@@ -679,20 +679,20 @@ def add_line_numbers(data) :
         current = newline_list[i]
         line    = data[previous : current]
         if line[-1] != '\n' :
-            line += '{xsrst_line ' + str(i + 1) + '}'
+            line += '{xsrst_line ' + str(i + 1) + '@'
         result  += line
         previous = current
     assert previous == len(data) - 1
     result += '\n'
     #
     # remove line numbers that are inside of other commands
-    cmd      = r'(\{xsrst_(file|children|child_link|spell)[^{]*)'
-    pattern  = re.compile( cmd + r'\{xsrst_line [0-9]+\}\n')
+    cmd      = r'(\{xsrst_(file|children|child_link)[^{]*)'
+    pattern  = re.compile( cmd + r'\{xsrst_line [0-9]+@')
     match    = pattern.search(result)
     while match :
         before  = result[: match.start() ]
         after   = result[match.end() :]
-        replace = match.group(1) + '\n'
+        replace = match.group(1)
         result  = before + replace + after
         match    = pattern.search(result)
     return result
@@ -1415,6 +1415,7 @@ def add_label_and_index_for_headings(
                     same_level = character == heading_list[0]['character']
                 if same_level :
                     msg = 'There are multiple titles for this section'
+                    breakpoint()
                     sys_exit(msg, fname=file_in, sname=section_name)
                 level = 1
                 while level < len(heading_list) and not same_level :
@@ -1668,7 +1669,7 @@ pattern = dict()
 pattern['word']        = re.compile( r'[\\A-Za-z][a-z]*' )
 pattern['double_word'] = re.compile( r'\s+([\\A-Za-z][a-z]*)\s+\1' )
 #
-pattern['line']    = re.compile(r'\{xsrst_line ([0-9]+)\}')
+pattern['line']    = re.compile(r'\{xsrst_line ([0-9]+)@')
 pattern['suspend'] = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
 pattern['resume']  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
 pattern['code']    = re.compile(
