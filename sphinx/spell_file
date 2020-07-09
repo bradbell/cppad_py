@@ -10,6 +10,10 @@
 xsrst
 rst
 #
+# example sphinx command
+http
+www
+#
 # example normal words
 covariates
 covariate
@@ -33,11 +37,14 @@ scipy
 \exp
 \frac
 \int
+\in
 \ldots
 \log
 \left
 \mbox
 \partial
 \right
+\rightarrow
 \sqrt
 \sum
+\times

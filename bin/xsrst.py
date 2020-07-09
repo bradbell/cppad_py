@@ -221,8 +221,13 @@ displayed by :ref:`code_cmd` and :ref:`file_cmd`.
 
 Error Messaging
 ---------------
-Improve the error messaging so that it include the line number of the
-input file that the error occurred on.
+Improve the error messaging so that more messages include the line number
+of the input file that the error occurred on.
+
+File Commands
+-------------
+Automatically exclude the line that the start and stop pattern are in
+so that start can be on a separate line for ``{xsrst_file``.
 
 Module
 ------
@@ -1112,14 +1117,23 @@ def spell_command(
         if len( spell_checker.unknown( [word] ) ) > 0 :
             if not word.lower() in special_list :
                 if first_spell_error :
-                    msg  = 'warning: file = ' + file_in
+                    msg  = '\nwarning: file = ' + file_in
                     msg += ', section = ' + section_name
                     print(msg)
                     first_spell_error = False
+                # line_number
+                offset = itr.start()
+                match  = pattern['line'].search(section_data[offset :] )
+                assert match
+                line_number = match.group(1)
+                #
+                # msg
                 msg  = 'spelling = ' + word
                 suggest = spell_checker.correction(word)
                 if suggest != word :
                     msg += ', suggest = ' + suggest
+                msg += ', in or before line ' + line_number
+                #
                 print(msg)
                 special_list.append(word.lower())
     #
@@ -1579,7 +1593,7 @@ pattern = dict()
 pattern['word']        = re.compile( r'[\\A-Za-z][a-z]*' )
 pattern['double_word'] = re.compile( r'\s+([\\A-Za-z][a-z]*)\s+\1' )
 #
-pattern['line']    = re.compile(r'\{xsrst_line [0-9]+\}')
+pattern['line']    = re.compile(r'\{xsrst_line ([0-9]+)\}')
 pattern['suspend'] = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
 pattern['resume']  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
 pattern['code']    = re.compile(
