@@ -781,7 +781,7 @@ def sys_exit(msg, fname=None, sname=None, match=None, data=None) :
         assert data
         if extra != '' :
             extra += ', '
-        match_line  = pattern['line'].search( data[match.end() :] )
+        match_line  = pattern['line'].search( data[match.start() :] )
         assert match_line
         line_number = match_line.group(1)
         extra += 'line = ' + line_number
@@ -1074,8 +1074,13 @@ def child_commands(
         return section_data, file_list, section_list
     match_tmp    = pattern['child'].search(section_data[match.end() :] )
     if match_tmp is not None :
-        msg = 'There is more than one children or child_link commands in'
-        sys_exit(msg, fname=file_in, sname=section_name)
+        msg = 'More than one children or child_link command in a section.'
+        sys_exit(msg,
+            fname=file_in,
+            sname=section_name,
+            match=match_tmp,
+            data=section_data[match.end():]
+        )
     #
     assert match.group(1) == 'children' or match.group(1) == 'child_link'
     command = match.group(1)
@@ -1211,7 +1216,12 @@ def isolate_code_command(pattern, section_data, file_in, section_name) :
         language       = match_begin_code.group(1).strip()
         if language == '' :
             msg = 'missing language in first comamnd of a code block pair'
-            sys_exit(msg, fname=file_in, sname=section_name)
+            sys_exit(msg,
+                fname=file_in,
+                sname=section_name,
+                match=match_begin_code,
+                data=section_data
+            )
         for ch in language :
             if ch < 'a' or 'z' < ch :
                 msg = 'code block language character not in a-z.'
