@@ -13,6 +13,7 @@ rst
 # example sphinx command
 http
 www
+html
 #
 # example normal words
 covariates
