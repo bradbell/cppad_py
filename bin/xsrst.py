@@ -929,8 +929,13 @@ def file2file_info(
                 for info in file_info :
                     if info['is_parent'] :
                         msg  = 'xsrst_begin_parent'
-                        msg += ' appears twice in file\n' + file_in
-                        sys_exit(msg)
+                        msg += ' appears twice in same file'
+                        sys_exit(msg,
+                            fname=file_in,
+                            sname=section_name,
+                            match=match_xsrst_begin,
+                            data=data_rest
+                        )
             #
             # file_index
             file_index += match_xsrst_begin.end()
@@ -944,11 +949,14 @@ def file2file_info(
                 msg += '    {xsrst_end section_name}'
                 sys_exit(msg, fname=file_in, sname=section_name)
             if match_xsrst_end.group(1) != section_name :
-                msg = 'in file ' + file_in + '\nsection names do not match\n'
-                msg += 'xsrst_begin section name = '+section_name + '\n'
-                msg += 'xsrst_end section name   = '
-                msg += match_xsrst_end.group(1) + '\n'
-                sys_exit(msg)
+                msg = 'begin and end section names do not match\n'
+                msg += 'begin name = ' + section_name + '\n'
+                msg += 'end name   = ' + match_xsrst_end.group(1)
+                sys_exit(msg,
+                    fname=file_in,
+                    match=match_xsrst_end,
+                    data=data_rest
+                )
             #
             # section_data
             section_start = file_index
