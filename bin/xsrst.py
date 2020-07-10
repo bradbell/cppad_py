@@ -1143,15 +1143,21 @@ def spell_command(
     pattern, section_data, file_in, section_name
 ) :
     match_spell   = pattern['spell'].search(section_data)
-    special_list  = list()
+    special_used  = dict()
+    double_used   = dict()
     if match_spell != None :
         section_rest   = section_data[ match_spell.end() : ]
         match_another  = pattern['spell'].search(section_rest)
         if match_another :
             msg  = 'there are two spell xsrst commands'
             sys_exit(msg, fname=file_in, sname=section_name)
+        previous_word = ''
         for itr in pattern['word'].finditer( match_spell.group(1) ) :
-            special_list.append( itr.group(0).lower() )
+            word_lower = itr.group(0).lower()
+            special_used[ word_lower ] = False
+            if word_lower == previous_word :
+                double_used[ word_lower ] = False
+            previous_word = word_lower
         #
         # remove spell command
         start        = match_spell.start()
@@ -1163,7 +1169,8 @@ def spell_command(
     for itr in pattern['word'].finditer( section_data ) :
         word = itr.group(0)
         if len( spell_checker.unknown( [word] ) ) > 0 :
-            if not word.lower() in special_list :
+            word_lower = word.lower()
+            if not word_lower in special_used :
                 if first_spell_error :
                     msg  = '\nwarning: file = ' + file_in
                     msg += ', section = ' + section_name
@@ -1183,18 +1190,12 @@ def spell_command(
                 msg += ', line ' + line_number
                 #
                 print(msg)
-                special_list.append(word.lower())
+            special_used[word_lower] = True
     #
     # check for double word errors
     for itr in pattern['double_word'].finditer(section_data) :
-        ok   = False
-        word = itr.group(1)
-        if word in special_list :
-            index = special_list.index(word)
-            if index + 1 < len(special_list) :
-                if special_list[index+1] == word :
-                    ok = True
-        if not ok :
+        word_lower = itr.group(1).lower()
+        if not word_lower in double_used :
             if first_spell_error :
                 msg  = 'warning: file = ' + file_in
                 msg += ', section = ' + section_name
@@ -1202,6 +1203,18 @@ def spell_command(
                 first_spell_error = False
             double_word = itr.group(0).strip()
             msg         = 'double word error: "' + double_word + '"'
+            print(msg)
+        double_used[word_lower] = True
+    #
+    # check for words that were not used
+    for word_lower in special_used :
+        if not special_used[word_lower] :
+            msg = 'spelling word "' + word_lower + '" not needed'
+            print(msg)
+    for word_lower in double_used :
+        if not double_used[word_lower] :
+            msg  = 'double word "' + word_lower + ' ' + word_lower
+            msg += '" not needed'
             print(msg)
     #
     return section_data
