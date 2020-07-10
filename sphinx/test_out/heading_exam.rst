@@ -1,6 +1,9 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > heading_exam
+Ancestors: :ref:`xsrst_py<xsrst_py>` > heading_exam
+
+
+Children: :ref:`heading_res<heading_res>`
 
 .. meta::
    :keywords: heading_exam, heading, example

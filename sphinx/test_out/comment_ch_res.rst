@@ -1,6 +1,7 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > :ref:`comment_ch_cmd<comment_ch_cmd>` > :ref:`comment_ch_exam<comment_ch_exam>` > comment_ch_res
+Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`comment_ch_cmd<comment_ch_cmd>` > :ref:`comment_ch_exam<comment_ch_exam>` > comment_ch_res
+
 
 .. meta::
    :keywords: comment_ch_res, begin, special, character, result

@@ -1,6 +1,9 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > child_cmd
+Ancestors: :ref:`xsrst_py<xsrst_py>` > child_cmd
+
+
+Children: :ref:`no_parent_exam<no_parent_exam>`
 
 .. meta::
    :keywords: child_cmd, children, and, child, links, commands

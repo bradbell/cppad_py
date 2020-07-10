@@ -1,6 +1,7 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > :ref:`heading_exam<heading_exam>` > heading_res
+Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`heading_exam<heading_exam>` > heading_res
+
 
 .. meta::
    :keywords: heading_res, heading, result

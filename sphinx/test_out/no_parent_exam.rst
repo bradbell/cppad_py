@@ -1,6 +1,9 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > no_parent_exam
+Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > no_parent_exam
+
+
+Children: :ref:`no_parent_res<no_parent_res>`
 
 .. meta::
    :keywords: no_parent_exam, no, parent, example
@@ -18,7 +21,7 @@ because ``children.py`` does not have a
 :ref:`parent section<begin_cmd.parent_section>`:
 
 .. literalinclude:: ../../sphinx/test_in/no_parent.xsrst
-    :lines: 26-50
+    :lines: 27-51
 
 .. toctree::
    :maxdepth: 1

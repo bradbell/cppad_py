@@ -1,6 +1,9 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`no_parent_exam<no_parent_exam>` > :ref:`no_parent_res<no_parent_res>` > :ref:`children_res<children_res>` > indent_tab_exam
+Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`no_parent_exam<no_parent_exam>` > :ref:`no_parent_res<no_parent_res>` > :ref:`children_res<children_res>` > indent_tab_exam
+
+
+Children: :ref:`indent_tab_res<indent_tab_res>`
 
 .. meta::
    :keywords: indent_tab_exam, indent, using, tabs, example

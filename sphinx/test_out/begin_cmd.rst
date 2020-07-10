@@ -1,6 +1,7 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > begin_cmd
+Ancestors: :ref:`xsrst_py<xsrst_py>` > begin_cmd
+
 
 .. |space| unicode:: 0xA0
 

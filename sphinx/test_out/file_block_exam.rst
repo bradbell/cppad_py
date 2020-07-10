@@ -1,6 +1,9 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > :ref:`file_cmd<file_cmd>` > file_block_exam
+Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`file_cmd<file_cmd>` > file_block_exam
+
+
+Children: :ref:`file_block_res<file_block_res>`
 
 .. meta::
    :keywords: file_block_exam, file, block, example

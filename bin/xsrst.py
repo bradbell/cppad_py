@@ -19,6 +19,7 @@
     html
     stackoverflow
     https
+    pyspellchecker
 }
 
 .. |space| unicode:: 0xA0
@@ -37,6 +38,11 @@ Extract Sphinx RST
 Syntax
 ======
 ``xsrst.py`` *sphinx_dir* *root_file* *spell_file*
+
+Requirements
+============
+- ``pip install --user pyspellchecker``
+- ``pip install --user sphinx``
 
 Notation
 ========
@@ -1528,8 +1534,11 @@ def write_file(
     file_out = output_dir + '/' + section_name + '.rst'
     file_ptr = open(file_out, 'w')
     #
-    # links to ancestors and position in website
+    # index of this section
     section_index = len(section_info) - 1
+    file_ptr.write('|\n\n') # vertical space needed by bootstrap theme
+    #
+    # links to ancestors; i.e., position of this section in website
     assert section_info[section_index]['section_name'] == section_name
     line  = section_name + '\n'
     ancestor_index = section_info[section_index]['parent_section']
@@ -1537,9 +1546,20 @@ def write_file(
         ancestor_name  = section_info[ancestor_index]['section_name']
         ancestor_index = section_info[ancestor_index]['parent_section']
         line  = f':ref:`{ancestor_name}<{ancestor_name}>`' + ' > ' + line
-    file_ptr.write('|\n\n') # vertical space needed by bootstrap theme
+    file_ptr.write('Ancestors: ')
     file_ptr.write(line)
-    file_ptr.write('\n')
+    file_ptr.write('\n\n')
+    #
+    # links to children of this section
+    if len(child_list) > 0 :
+        line = ''
+        for child in child_list :
+            if line != '' :
+                line = line + ' | '
+            line  = line + f':ref:`{child}<{child}>`'
+        file_ptr.write('Children: ')
+        file_ptr.write(line)
+        file_ptr.write('\n\n')
     #
     # now output the section data
     startline         = 0

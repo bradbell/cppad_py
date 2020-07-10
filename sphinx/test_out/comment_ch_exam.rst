@@ -1,6 +1,9 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > :ref:`comment_ch_cmd<comment_ch_cmd>` > comment_ch_exam
+Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`comment_ch_cmd<comment_ch_cmd>` > comment_ch_exam
+
+
+Children: :ref:`comment_ch_res<comment_ch_res>`
 
 .. meta::
    :keywords: comment_ch_exam, begin, special, character, example

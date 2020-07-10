@@ -1,6 +1,9 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > :ref:`code_cmd<code_cmd>` > code_block_exam
+Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`code_cmd<code_cmd>` > code_block_exam
+
+
+Children: :ref:`code_block_res<code_block_res>`
 
 .. meta::
    :keywords: code_block_exam, code, block, example

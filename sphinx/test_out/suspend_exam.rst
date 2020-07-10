@@ -1,6 +1,9 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > suspend_exam
+Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > suspend_exam
+
+
+Children: :ref:`suspend_res<suspend_res>`
 
 .. meta::
    :keywords: suspend_exam, suspend, example

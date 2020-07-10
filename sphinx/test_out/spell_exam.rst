@@ -1,6 +1,9 @@
 |
 
-:ref:`xsrst_py<xsrst_py>` > :ref:`spell_cmd<spell_cmd>` > spell_exam
+Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`spell_cmd<spell_cmd>` > spell_exam
+
+
+Children: :ref:`spell_res<spell_res>`
 
 .. meta::
    :keywords: spell_exam, spell, example
