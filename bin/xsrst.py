@@ -207,27 +207,11 @@ The following is a wish list for future improvements to ``xsrst.py``:
 .. _stackoverflow: https://stackoverflow.com/questions/1686837/
    sphinx-documentation-tool-set-tab-width-in-output
 
-Code Blocks
------------
-It would be nice to extend the :ref:`code_cmd` to have an optional
-argument that specifies the languages (which might be different from
-the file it appears in).
-
 Tabs
 ----
 Currently tabs in code blocks get expanded to 8 spaces; see stackoverflow_.
 It would be nice to have a way to control the size of tabs in the code blocks
 displayed by :ref:`code_cmd` and :ref:`file_cmd`.
-
-Error Messaging
----------------
-Improve the error messaging so that more messages include the line number
-of the input file that the error occurred on.
-
-File Commands
--------------
-Automatically exclude the line that the start and stop pattern are in
-so that start can be on a separate line for ``{xsrst_file``.
 
 Module
 ------
