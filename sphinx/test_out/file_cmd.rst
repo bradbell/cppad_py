@@ -86,14 +86,12 @@ that move files and automatically change references to them.
 
 start
 -----
-The code block starts with the occurence
-of the text *start* at the beginning of a line in *file_name*.
-There can only be one occurence of *start* at the beginning
-of a line in *file_name*.
-Note that the *start* pattern in the command does not
-occur at the beginning of a line.
-Hence it will not match the scan for the start of the code block
-when the code block is in the current input file.
+The code block starts with the line following the occurence
+of the text *start* in *file_name*.
+If this is the same as the file containing the command,
+the text *start* in the command will not match itself. 
+There must be one and only one occurence of *start* in *file_name*,
+not counting the comamnd itself when the files are the same.
 
 .. meta::
    :keywords: stop
@@ -104,10 +102,12 @@ when the code block is in the current input file.
 
 stop
 ----
-The code block ends with the first occurence
-of the text *stop* at the beginning of a line and after *start*.
-The lines containing *start* and *stop* in *file_name* are not included in
-the code block.
+The code block ends with the line before the occurence
+of the text *start* in *file_name*.
+If this is the same as the file containing the command,
+the text *stop* in the command will not match itself. 
+There must be one and only one occurence of *stop* in *file_name*,
+not counting the comamnd itself when the files are the same.
 
 .. meta::
    :keywords: spell, checking
