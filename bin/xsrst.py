@@ -515,6 +515,8 @@ Example
 {xsrst_begin file_cmd}
 
 .. |space| unicode:: 0xA0
+.. |tab| replace:: |space| |space| |space| |space|
+
 
 ============
 File Command
@@ -523,13 +525,15 @@ File Command
 Syntax
 ------
 
-| ``{xsrst_file`` |space| *start*
-|   *stop*
+| ``{xsrst_file``
+| |tab| *start*
+| |tab| *stop*
 | :code:`}`
 |
-| ``{xsrst_file`` |space| *start*
-|   *stop*
-|   *file_name*
+| ``{xsrst_file``
+| |tab| *start*
+| |tab| *stop*
+| |tab| *file_name*
 | :code:`}`
 
 Purpose
@@ -542,14 +546,14 @@ White Space
 -----------
 Leading and trailing white space is not included in
 *start*, *stop* or *file_name*.
-The new line character terminates these tokens.
+The new line character separates these tokens.
 
 file_name
 ---------
 If *file_name* is not in the syntax,
 the code block is in the current input file.
-Otherwise, the code block is in *file_name*,
-which is relative to the directory where ``xsrst.py``
+Otherwise, the code block is in *file_name*.
+This file name is relative to the directory where ``xsrst.py``
 is executed; i.e., the top directory for this git repository.
 This may seem verbose, but it makes it easier to write scripts
 that move files and automatically change references to them.
@@ -1711,10 +1715,10 @@ pattern['spell']   = re.compile(
 )
 arg = r'([^{]*)\{xsrst_line ([0-9]+)@\n'
 pattern['file_2']  = re.compile(
-    r'\n[ \t]*\{xsrst_file[ \t]' + arg + arg + r'[ \t]*\}'
+    r'\n[ \t]*\{xsrst_file[^\n]*\n' + arg + arg + r'[ \t]*\}'
 )
 pattern['file_3']  = re.compile(
-    r'\n[ \t]*\{xsrst_file[ \t]' + arg + arg + arg + r'[ \t]*\}'
+    r'\n[ \t]*\{xsrst_file[^\n]*\n' + arg + arg + arg + r'[ \t]*\}'
 )
 pattern['child']   = re.compile(
     r'\n[ \t]*\{xsrst_(children|child_link)([^}]*)\}'

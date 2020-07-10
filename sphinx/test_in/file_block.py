@@ -12,7 +12,8 @@
 File Block Example
 ==================
 
-{xsrst_file # BEGIN_SRC
+{xsrst_file
+    # BEGIN_SRC
     # END_SRC
 }
 
@@ -35,7 +36,8 @@ File Block Result
 =================
 
 Text before file block.
-{xsrst_file # BEGIN_FACTORIAL
+{xsrst_file
+    # BEGIN_FACTORIAL
     # END_FACTORIAL
 }
 Text after file block.

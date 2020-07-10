@@ -16,7 +16,7 @@ File Block Result
 Text before file block.
 
 .. literalinclude:: ../../sphinx/test_in/file_block.py
-    :lines: 25-28
+    :lines: 26-29
 
 Text after file block.
 

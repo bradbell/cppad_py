@@ -15,7 +15,7 @@ Begin Special Character Example
 
 
 .. literalinclude:: ../../sphinx/test_in/comment_ch.py
-    :lines: 27-44
+    :lines: 28-45
 
 .. toctree::
    :maxdepth: 1

@@ -15,7 +15,7 @@ No Parent Example
 
 
 .. literalinclude:: ../../sphinx/test_in/no_parent.xsrst
-    :lines: 22-45
+    :lines: 23-47
 
 .. toctree::
    :maxdepth: 1

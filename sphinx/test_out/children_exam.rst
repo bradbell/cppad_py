@@ -15,7 +15,7 @@ Indent and Children Example
 
 
 .. literalinclude:: ../../sphinx/test_in/children.py
-    :lines: 29-56
+    :lines: 30-57
 
 .. meta::
    :keywords: result

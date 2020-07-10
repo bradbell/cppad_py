@@ -12,8 +12,9 @@
 No Parent Example
 =================
 
-{xsrst_file # BEGIN_SRC
-        # END_SRC
+{xsrst_file
+    # BEGIN_SRC
+    # END_SRC
 }
 
 {xsrst_end no_parent_exam}
@@ -27,7 +28,8 @@ No Parent Result
 
 No Parent File
 --------------
-{xsrst_file # BEGIN_FILE
+{xsrst_file
+    # BEGIN_FILE
     # END_FILE
     sphinx/test_in/children.py
 }

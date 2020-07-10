@@ -13,7 +13,8 @@
 Code Block Example
 ==================
 
-{xsrst_file # BEGIN_SRC
+{xsrst_file
+    # BEGIN_SRC
     # END_SRC
 }
 

@@ -24,7 +24,7 @@ No Parent File
 --------------
 
 .. literalinclude:: ../../sphinx/test_in/children.py
-    :lines: 10-57
+    :lines: 10-58
 
 .. meta::
    :keywords: include, file, using, child, link
