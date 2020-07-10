@@ -563,7 +563,7 @@ start
 The code block starts with the line following the occurence
 of the text *start* in *file_name*.
 If this is the same as the file containing the command,
-the text *start* in the command will not match itself.
+the text *start* will not match any text in the command.
 There must be one and only one occurence of *start* in *file_name*,
 not counting the command itself when the files are the same.
 
@@ -572,7 +572,7 @@ stop
 The code block ends with the line before the occurence
 of the text *start* in *file_name*.
 If this is the same as the file containing the command,
-the text *stop* in the command will not match itself.
+the text *stop* will not match any text in the command.
 There must be one and only one occurence of *stop* in *file_name*,
 not counting the command itself when the files are the same.
 
@@ -750,10 +750,13 @@ def find_text_line(data, text, exclude=None) :
     assert len(text) > 0
     result = list()
     #
+    if exclude == None :
+        exclude = (0, 0)
+    #
     index = data.find(text)
     while 0 <= index :
         line_number = data[: index].count('\n') + 1
-        if line_number != exclude :
+        if line_number < exclude[0] or exclude[1] < line_number :
             result.append( line_number )
         index = data.find(text, index + len(text))
     return result
@@ -1275,38 +1278,45 @@ def isolate_code_command(pattern, section_data, file_in, section_name) :
 # -----------------------------------------------------------------------------
 # convert file command start and stop from patterns to line numbers
 def convert_file_command(pattern, section_data, file_in, section_name) :
-    assert pattern['file_2'].groups == 4
-    assert pattern['file_3'].groups == 6
+    assert pattern['file_2'].groups == 6
+    assert pattern['file_3'].groups == 8
     for key in [ 'file_2', 'file_3' ] :
         offset      = 0
         match_file  = pattern[key].search(section_data)
         while match_file != None :
             #
-            # start
-            start      = match_file.group(1).strip()
-            start_line = int( match_file.group(2) )
+            # exclude
+            cmd_start = int( match_file.group(1) )
+            if key == 'file_2' :
+                cmd_end = int( match_file.group(6) )
+            else :
+                cmd_end = int( match_file.group(8) )
+            exclude = (cmd_start, cmd_end)
+            #
+            # start, start_line
+            start      = match_file.group(2).strip()
+            start_line = int( match_file.group(3) )
             if start == '' :
                 msg = 'xsrst_file command: start text is empty'
                 sys_exit(msg,
                     fname=file_in, sname=section_name, line=start_line
                 )
             #
-            # stop
-            stop      = match_file.group(3) .strip()
-            stop_line = int( match_file.group(4) )
+            # stop, stop_line
+            stop      = match_file.group(4) .strip()
+            stop_line = int( match_file.group(5) )
             if stop == '' :
                 msg = 'xsrst_file command: stop text is empty'
                 sys_exit(msg,
                     fname=file_in, sname=section_name, line=stop_line
                 )
             #
-            # file_name
+            # file_name, same_file
             if key == 'file_2' :
                 file_name = file_in
                 same_file = True
             else :
-                file_name  = match_file.group(5).strip()
-                file_line  = match_file.group(6)
+                file_name  = match_file.group(6).strip()
                 same_file  = os.path.samefile(file_name, file_in)
             #
             # data
@@ -1317,7 +1327,7 @@ def convert_file_command(pattern, section_data, file_in, section_name) :
             # start_list
             offset     = 0
             if same_file :
-                start_list = find_text_line(data ,start, start_line)
+                start_list = find_text_line(data ,start, exclude)
             else :
                 start_list = find_text_line(data ,start)
             if len(start_list) == 0 :
@@ -1337,7 +1347,7 @@ def convert_file_command(pattern, section_data, file_in, section_name) :
             #
             # stop_list
             if same_file :
-                stop_list = find_text_line(data, stop, stop_line)
+                stop_list = find_text_line(data, stop, exclude)
             else :
                 stop_list = find_text_line(data, stop)
             if len(stop_list) == 0 :
@@ -1377,7 +1387,7 @@ def convert_file_command(pattern, section_data, file_in, section_name) :
             #
             # converted version of the command
             cmd  = f'xsrst__file {file_name} {start_line} {stop_line} '
-            cmd  = '\n{' + cmd  + '}'
+            cmd  = '\n{' + cmd  + '}\n'
             #
             data_left  = section_data[: begin_line]
             data_left += cmd
@@ -1714,11 +1724,12 @@ pattern['spell']   = re.compile(
     r'\n[ \t]*\{xsrst_spell([^}]*)\}'
 )
 arg = r'([^{]*)\{xsrst_line ([0-9]+)@\n'
+lin = r'[ \t]*\{xsrst_line ([0-9]+)@\n'
 pattern['file_2']  = re.compile(
-    r'\n[ \t]*\{xsrst_file[^\n]*\n' + arg + arg + r'[ \t]*\}'
+    r'\n[ \t]*\{xsrst_file' + lin + arg + arg + r'[ \t]*\}' + lin
 )
 pattern['file_3']  = re.compile(
-    r'\n[ \t]*\{xsrst_file[^\n]*\n' + arg + arg + arg + r'[ \t]*\}'
+    r'\n[ \t]*\{xsrst_file' + lin + arg + arg + arg + r'[ \t]*\}' + lin
 )
 pattern['child']   = re.compile(
     r'\n[ \t]*\{xsrst_(children|child_link)([^}]*)\}'
