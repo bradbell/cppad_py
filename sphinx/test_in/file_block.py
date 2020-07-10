@@ -17,17 +17,23 @@ File Block Example
     # END_SRC
 }
 
-
 {xsrst_end file_block_exam}
 """
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
+#
 # BEGIN_FACTORIAL
 def factorial(n) :
     if n == 1 :
         return 1
     return n * factorial(n-1)
 # END_FACTORIAL
+#
+# BEGIN_SQUARE
+def square(x) :
+	# END_SQUARE
+	return x * x
+#
 """
 {xsrst_begin file_block_res}
 
@@ -35,14 +41,19 @@ def factorial(n) :
 File Block Result
 =================
 
-Text before file block.
+factorial
+=========
 {xsrst_file
     # BEGIN_FACTORIAL
     # END_FACTORIAL
 }
-Text after file block.
 
-:ref:`file_block_exam`
+square
+======
+{xsrst_file
+    # BEGIN_SQUARE
+    # END_SQUARE
+}
 
 {xsrst_end file_block_res}
 """

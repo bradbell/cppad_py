@@ -15,7 +15,7 @@ File Block Example
 
 
 .. literalinclude:: ../../sphinx/test_in/file_block.py
-    :lines: 25-48
+    :lines: 24-59
 
 .. toctree::
    :maxdepth: 1

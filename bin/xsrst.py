@@ -1281,7 +1281,7 @@ def convert_file_command(pattern, section_data, file_in, section_name) :
     assert pattern['file_2'].groups == 6
     assert pattern['file_3'].groups == 8
     for key in [ 'file_2', 'file_3' ] :
-        offset      = 0
+        file_offset = 0
         match_file  = pattern[key].search(section_data)
         while match_file != None :
             #
@@ -1325,7 +1325,6 @@ def convert_file_command(pattern, section_data, file_in, section_name) :
             file_ptr.close()
             #
             # start_list
-            offset     = 0
             if same_file :
                 start_list = find_text_line(data ,start, exclude)
             else :
@@ -1380,10 +1379,10 @@ def convert_file_command(pattern, section_data, file_in, section_name) :
             #
             #
             # beginning of lines with command in it
-            begin_line = match_file.start() + offset;
+            begin_line = match_file.start() + file_offset;
             #
             # end of lines with command in it
-            end_line = match_file.end() + offset;
+            end_line = match_file.end() + file_offset;
             #
             # converted version of the command
             cmd  = f'xsrst__file {file_name} {start_line} {stop_line} '
@@ -1394,7 +1393,7 @@ def convert_file_command(pattern, section_data, file_in, section_name) :
             data_right = section_data[ end_line : ]
             #
             section_data  = data_left + data_right
-            offset        = len(data_left)
+            file_offset   = len(data_left)
             match_file  = pattern[key].search(data_right)
     return section_data
 # -----------------------------------------------------------------------------
@@ -1460,7 +1459,6 @@ def add_label_and_index_for_headings(
                     same_level = character == heading_list[0]['character']
                 if same_level :
                     msg = 'There are multiple titles for this section'
-                    breakpoint()
                     sys_exit(msg, fname=file_in, sname=section_name)
                 level = 1
                 while level < len(heading_list) and not same_level :

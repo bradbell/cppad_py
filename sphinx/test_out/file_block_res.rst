@@ -13,14 +13,31 @@
 File Block Result
 =================
 
-Text before file block.
+.. meta::
+   :keywords: factorial
+
+.. index:: factorial
+
+.. _file_block_res.factorial:
+
+factorial
+=========
 
 .. literalinclude:: ../../sphinx/test_in/file_block.py
     :lines: 26-29
 
-Text after file block.
+.. meta::
+   :keywords: square
 
-:ref:`file_block_exam`
+.. index:: square
+
+.. _file_block_res.square:
+
+square
+======
+
+.. literalinclude:: ../../sphinx/test_in/file_block.py
+    :lines: 33-33
 
 ----
 
