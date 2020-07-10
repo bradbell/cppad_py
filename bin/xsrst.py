@@ -561,7 +561,7 @@ of the text *start* in *file_name*.
 If this is the same as the file containing the command,
 the text *start* in the command will not match itself.
 There must be one and only one occurence of *start* in *file_name*,
-not counting the comamnd itself when the files are the same.
+not counting the command itself when the files are the same.
 
 stop
 ----
@@ -570,7 +570,7 @@ of the text *start* in *file_name*.
 If this is the same as the file containing the command,
 the text *stop* in the command will not match itself.
 There must be one and only one occurence of *stop* in *file_name*,
-not counting the comamnd itself when the files are the same.
+not counting the command itself when the files are the same.
 
 Spell Checking
 --------------
@@ -682,19 +682,9 @@ def add_line_numbers(data) :
             line += '{xsrst_line ' + str(i + 1) + '@'
         result  += line
         previous = current
+    #
     assert previous == len(data) - 1
     result += '\n'
-    #
-    # remove line numbers that are inside of other commands
-    cmd      = r'(\{xsrst_(children|child_link)[^{]*)'
-    pattern  = re.compile( cmd + r'\{xsrst_line [0-9]+@')
-    match    = pattern.search(result)
-    while match :
-        before  = result[: match.start() ]
-        after   = result[match.end() :]
-        replace = match.group(1)
-        result  = before + replace + after
-        match    = pattern.search(result)
     return result
 # ---------------------------------------------------------------------------
 def remove_line_numbers(pattern, data) :
@@ -1067,6 +1057,7 @@ def child_commands(
     section_name,
 ) :
     file_list    = list()
+    file_line    = list()
     section_list = list()
     match        = pattern['child'].search(section_data)
     if match is None :
@@ -1090,18 +1081,27 @@ def child_commands(
     data_right = section_data[ match.end() : ]
     section_data = data_left + replace + data_right
     #
-    # file_list
-    for child_file in match.group(2).split('\n') :
-        child_file = child_file.strip()
+    # file_list, file_line
+    for child_pair in match.group(2).split('\n') :
+        match_line = pattern['line'].search(child_pair)
+        if match_line :
+            line_number = match_line.group(1)
+        child_file  = pattern['line'].sub('', child_pair).strip()
         if child_file != '' :
+            assert match_line
             file_list.append(child_file)
+            file_line.append(line_number)
     #
     # section_list
-    for child_file in file_list :
+    for i in range( len(file_list) ) :
+        child_file = file_list[i]
+        child_line = file_line[i]
         if not os.path.isfile(child_file) :
             msg  = 'The file ' + child_file + '\n'
             msg += 'in the ' + command + ' command does not exist'
-            sys_exit(msg, fname=file_in, sname=section_name)
+            sys_exit(msg,
+                fname=file_in, sname=section_name, line=child_line
+            )
         #
         # errors in the begin and end commands will be detected later
         # when this file is processed.
@@ -1119,7 +1119,9 @@ def child_commands(
             msg  = 'The file ' + child_file + '\n'
             msg += 'in the ' + command + ' command does not contain any '
             msg += 'begin commands'
-            sys_exit(msg, fname=file_in, sname=section_name)
+            sys_exit(msg,
+                fname=file_in, sname=section_name, line=child_line
+            )
         #
         child_list     = list()
         found_parent = False
@@ -1215,7 +1217,7 @@ def isolate_code_command(pattern, section_data, file_in, section_name) :
     while match_begin_code != None :
         language       = match_begin_code.group(1).strip()
         if language == '' :
-            msg = 'missing language in first comamnd of a code block pair'
+            msg = 'missing language in first command of a code block pair'
             sys_exit(msg,
                 fname=file_in,
                 sname=section_name,
@@ -1644,7 +1646,7 @@ if not os.path.isdir('.git') :
     msg = 'must be executed from to top directory for this git repository\n'
     sys_exit(msg)
 #
-# check number of comamnd line arguments
+# check number of command line arguments
 if len(sys.argv) != 4 :
     usage = 'bin/xsrst.py sphinx_dir root_file spell_file'
     sys_exit(usage)

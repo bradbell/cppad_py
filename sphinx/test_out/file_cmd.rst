@@ -89,9 +89,9 @@ start
 The code block starts with the line following the occurence
 of the text *start* in *file_name*.
 If this is the same as the file containing the command,
-the text *start* in the command will not match itself. 
+the text *start* in the command will not match itself.
 There must be one and only one occurence of *start* in *file_name*,
-not counting the comamnd itself when the files are the same.
+not counting the command itself when the files are the same.
 
 .. meta::
    :keywords: stop
@@ -105,9 +105,9 @@ stop
 The code block ends with the line before the occurence
 of the text *start* in *file_name*.
 If this is the same as the file containing the command,
-the text *stop* in the command will not match itself. 
+the text *stop* in the command will not match itself.
 There must be one and only one occurence of *stop* in *file_name*,
-not counting the comamnd itself when the files are the same.
+not counting the command itself when the files are the same.
 
 .. meta::
    :keywords: spell, checking
