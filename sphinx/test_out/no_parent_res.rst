@@ -14,27 +14,27 @@ No Parent Result
 ================
 
 .. meta::
-   :keywords: no, parent, file
+   :keywords: children.py, file
 
-.. index:: no, parent, file
+.. index:: children.py, file
 
-.. _no_parent_res.no_parent_file:
+.. _no_parent_res.children.py_file:
 
-No Parent File
---------------
+children.py File
+----------------
 
 .. literalinclude:: ../../sphinx/test_in/children.py
     :lines: 10-58
 
 .. meta::
-   :keywords: include, file, using, child, link
+   :keywords: child, link, children.py
 
-.. index:: include, file, using, child, link
+.. index:: child, link, children.py
 
-.. _no_parent_res.include_file_using_child_link:
+.. _no_parent_res.child_link_children.py:
 
-Include File Using Child Link
------------------------------
+Child Link children.py
+----------------------
 .. toctree::
    :maxdepth: 1
 

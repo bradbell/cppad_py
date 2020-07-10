@@ -12,10 +12,12 @@
 =================
 No Parent Example
 =================
-
+The section below has all the sections in
+``sphinx/test_in/children.py`` as children
+because that file does not have a begin parent command:
 
 .. literalinclude:: ../../sphinx/test_in/no_parent.xsrst
-    :lines: 23-47
+    :lines: 25-49
 
 .. toctree::
    :maxdepth: 1

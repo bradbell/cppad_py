@@ -26,7 +26,7 @@ File Command
 Syntax
 ------
 
-| ``{xsrst_file`` 
+| ``{xsrst_file``
 | |tab| *start*
 | |tab| *stop*
 | :code:`}`

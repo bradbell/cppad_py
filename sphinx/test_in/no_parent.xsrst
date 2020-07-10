@@ -11,7 +11,9 @@
 =================
 No Parent Example
 =================
-
+The section below has all the sections in
+``sphinx/test_in/children.py`` as children
+because that file does not have a begin parent command:
 {xsrst_file
     # BEGIN_SRC
     # END_SRC
@@ -26,16 +28,16 @@ No Parent Example
 No Parent Result
 ================
 
-No Parent File
---------------
+children.py File
+----------------
 {xsrst_file
     # BEGIN_FILE
     # END_FILE
     sphinx/test_in/children.py
 }
 
-Include File Using Child Link
------------------------------
+Child Link children.py
+----------------------
 {xsrst_child_link
         sphinx/test_in/children.py
 }
