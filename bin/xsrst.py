@@ -1152,7 +1152,9 @@ def spell_command(
             msg  = 'there are two spell xsrst commands'
             sys_exit(msg, fname=file_in, sname=section_name)
         previous_word = ''
-        for itr in pattern['word'].finditer( match_spell.group(1) ) :
+        spell_arg = match_spell.group(1)
+        spell_arg = pattern['line'].sub('', spell_arg)
+        for itr in pattern['word'].finditer( spell_arg ) :
             word_lower = itr.group(0).lower()
             special_used[ word_lower ] = False
             if word_lower == previous_word :
