@@ -78,7 +78,7 @@ The case of the first letter does not matter when checking spelling;
 e.g., if ``abcd`` is *word_1* then ``Abcd`` will be considered a valid word.
 Each capital letter starts a new word; e.g., `CamelCase` is considered to
 be the two words 'camel' and 'case'.
-Single letter words are always correct and not included in the 
+Single letter words are always correct and not included in the
 special word list; e.g., the word list entry ``CppAD`` is the same as ``Cpp``.
 
 .. meta::
