@@ -6,22 +6,20 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
-"""
-{xsrst_comment_ch #}
-
-{xsrst_begin_parent comment_ch_exam}
-
-===============================
-Begin Special Character Example
-===============================
-
-{xsrst_file
-    # BEGIN_SRC
-    # END_SRC
-}
-
-{xsrst_end comment_ch_exam}
-"""
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin_parent comment_ch_exam}
+#
+# ===============================
+# Begin Special Character Example
+# ===============================
+#
+# {xsrst_file
+#     # BEGIN_SRC
+#     # END_SRC
+# }
+#
+# {xsrst_end comment_ch_exam}
 # ----------------------------------------------------------------------------
 #
 # BEGIN_SRC
