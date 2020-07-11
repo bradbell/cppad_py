@@ -58,18 +58,6 @@ only white space, or nothing, comes before *text* in the line.
 Command Line Arguments
 **********************
 
-sphinx_dir
-==========
-The command line argument *sphinx_dir* is a sub-directory,
-of the top git repository directory.
-The  sphinx ``conf.py`` and ``index.rst`` files are located in this directory.
-Any files that have names ending in ``.rst``,
-and that are in the directory *sphinx_dir*:code:`/xsrst`,
-are removed at the beginning of execution of ``xsrst.py``.
-All the ``.rst`` files in *sphinx_dir*:code:`/xsrst`
-were extracted from the source code the last time that ``xsrst.py``
-was executed.
-
 root_file
 =========
 The command line argument *root_file* is the name of a file,
@@ -89,11 +77,22 @@ The file *sphinx_dir*:code`/index.rst` must contain the line
 
 where *section_name* is the name of the *root_section*.
 
+sphinx_dir
+==========
+The command line argument *sphinx_dir* is a sub-directory,
+of the top git repository directory.
+The  sphinx ``conf.py`` and ``index.rst`` files are located in this directory.
+Any files that have names ending in ``.rst``,
+and that are in the directory *sphinx_dir*:code:`/xsrst`,
+are removed at the beginning of execution of ``xsrst.py``.
+All the ``.rst`` files in *sphinx_dir*:code:`/xsrst`
+were extracted from the source code the last time that ``xsrst.py``
+was executed.
 
 spell_file
 ==========
 The command line argument *spell_file* is the name of a file,
-relative to the top git repository directory.
+relative to the *sphinx_dir* directory.
 This file contains a list of words
 that the spell checker will consider correct for all sections.
 A line that begins with :code:`#` is a comment (not included in the list).
@@ -1678,27 +1677,28 @@ if not os.path.isdir('.git') :
 #
 # check number of command line arguments
 if len(sys.argv) != 4 :
-    usage = 'bin/xsrst.py sphinx_dir root_file spell_file'
+    usage = 'bin/xsrst.py root_file sphinx_dir spell_file'
     sys_exit(usage)
 #
-# sphinx_dir
-sphinx_dir      = sys.argv[1]
-if not os.path.isdir(sphinx_dir) :
-    msg  = 'sphinx_dir = ' + sphinx_dir + '\n'
-    msg += 'is not a sub-directory of current working directory'
-    sys_exit(msg)
-#
 # root_file
-root_file = sys.argv[2]
+root_file = sys.argv[1]
 if not os.path.isfile(root_file) :
     msg  = 'root_file = ' + root_file + '\n'
     msg += 'is not a file'
     sys_exit(msg)
 #
+# sphinx_dir
+sphinx_dir      = sys.argv[2]
+if not os.path.isdir(sphinx_dir) :
+    msg  = 'sphinx_dir = ' + sphinx_dir + '\n'
+    msg += 'is not a sub-directory of current working directory'
+    sys_exit(msg)
+#
 # spell_file
 spell_file = sys.argv[3]
-if not os.path.isfile(spell_file) :
-    msg  = 'spell_file = ' + spell_file + '\n'
+spell_path = sphinx_dir + '/' + spell_file
+if not os.path.isfile(spell_path) :
+    msg  = 'sphinx_dir/spell_file = ' + spell_path + '\n'
     msg += 'is not a file'
     sys_exit(msg)
 #
@@ -1722,7 +1722,7 @@ else :
     os.mkdir(output_dir)
 #
 # spell_checker
-spell_list           = file2list(spell_file)
+spell_list           = file2list(spell_path)
 spell_checker        = init_spell_checker(spell_list)
 #
 # regular expressions corresponding to xsrst commands
