@@ -24,7 +24,6 @@
 
 .. |space| unicode:: 0xA0
 
-##################
 Extract Sphinx RST
 ##################
 
@@ -36,31 +35,31 @@ Extract Sphinx RST
 }
 
 Syntax
-======
+******
 ``xsrst.py`` *sphinx_dir* *root_file* *spell_file*
 
 Requirements
-============
+************
 - ``pip install --user pyspellchecker``
 - ``pip install --user sphinx``
 
 Notation
-========
+********
 
 White Space
------------
+===========
 We define white space to be a sequence of space and tab characters.
 
 Beginning of a Line
--------------------
+===================
 We say that a string *text* is a the beginning of a line if
 only white space, or nothing, comes before *text* in the line.
 
 Command Line Arguments
-======================
+**********************
 
 sphinx_dir
-----------
+==========
 The command line argument *sphinx_dir* is a sub-directory,
 of the top git repository directory.
 The  sphinx ``conf.py`` and ``index.rst`` files are located in this directory.
@@ -72,12 +71,12 @@ were extracted from the source code the last time that ``xsrst.py``
 was executed.
 
 root_file
----------
+=========
 The command line argument *root_file* is the name of a file,
 relative to the top git repository directory.
 
 root_section
-............
+------------
 If there is only one section in the *root_file* it is called
 the *root_section*; i.e., it is the top section in that table of contents.
 If there is more than one section in the *root_file*,
@@ -92,7 +91,7 @@ where *section_name* is the name of the *root_section*.
 
 
 spell_file
-----------
+==========
 The command line argument *spell_file* is the name of a file,
 relative to the top git repository directory.
 This file contains a list of words
@@ -104,10 +103,10 @@ Special words, for a particular section, are specified using the
 :ref:`spell command<spell_cmd>`.
 
 Table Of Contents
-=================
+*****************
 
 toctree
--------
+=======
 The sphinx ``toctree`` directives are automatically generated
 for sections. The only such directive you should directly edit
 is in the file *sphinx_dir*:code`/index.rst`.
@@ -117,7 +116,7 @@ Other entries are for ``.rst`` files that are not extracted by
 ``xsrst.py``.
 
 Parent Section
---------------
+==============
 A single input file may contain multiple
 :ref:`sections<begin_cmd.section>`.
 One (and at most one) of these sections may use begin with a
@@ -131,7 +130,7 @@ all the sections in the file are children of the section containing the
 child command that included the file.
 
 Heading Links
-=============
+*************
 - For each word in a heading,
   a link is included in the index from the word to the heading.
 
@@ -146,7 +145,7 @@ Heading Links
   :ref:`xsrst_py.heading_links.children` below.
 
 Section Level
--------------
+=============
 Each :ref:`section<begin_cmd.section>` can have only one header at
 the first level which is a title for the section.
 The :ref:`section_name<begin_cmd.section_name>`
@@ -160,7 +159,7 @@ following will link to the title for *section_name*:
 where *linking_text* is the text the user sees.
 
 Other Levels
-------------
+============
 The label for linking a heading that is not at the first level
 is the label for the heading directly above it plus a dot character :code:`.`,
 plus a lower case version of the heading with spaces converted to
@@ -172,7 +171,7 @@ This identifies the links that should be checked
 to make sure they are still valid.
 
 Children
---------
+========
 If a xsrst input file has a
 ref:`parent section<xsrst_py.table_of_contents.parent_section>`
 the other sections in the file are children of the parent.
@@ -188,11 +187,11 @@ the other sections in the file are children of the parent.
 You can place a heading directly before the links to make them easier to find.
 
 Example
--------
+=======
 :ref:`heading_exam`
 
 Indentation
-===========
+***********
 If there are a number of spaces or tabs (but not both) before
 all of the xsrst documentation for a section,
 those characters are not included in the xsrst output.
@@ -202,32 +201,32 @@ An error message will result if
 you mix spaces and tabs in this indentation.
 
 Example
--------
+=======
 - :ref:`indent_space_exam`
 - :ref:`indent_tab_exam`
 
 Wish List
-=========
+*********
 The following is a wish list for future improvements to ``xsrst.py``:
 
 .. _stackoverflow: https://stackoverflow.com/questions/1686837/
    sphinx-documentation-tool-set-tab-width-in-output
 
 Tabs
-----
+====
 Currently tabs in code blocks get expanded to 8 spaces; see stackoverflow_.
 It would be nice to have a way to control the size of tabs in the code blocks
 displayed by :ref:`code_cmd` and :ref:`file_cmd`.
 
 Module
-------
+======
 Convert the program into a python module and provide a pip distribution for it.
 
 
 .. All the children of this section are commands except for heading_exam.
 
 Commands
-========
+********
 - :ref:`begin_cmd`
 - :ref:`child_cmd`
 - :ref:`spell_cmd`
