@@ -9,9 +9,8 @@
 """
 {xsrst_begin_parent suspend_exam}
 
-===============
 Suspend Example
-===============
+###############
 
 {xsrst_file
     # BEGIN_SRC
@@ -28,12 +27,11 @@ Suspend Example
     iterable
 }
 
-==============
 Suspend Result
-==============
+##############
 
 Factorial
----------
+*********
 *f* = ``factorial(`` *positive_integer* ``)``
 {xsrst_suspend}
 """
@@ -45,7 +43,7 @@ def factorial(n) :
 {xsrst_resume}
 
 Product
--------
+*******
 *p* = ``product(`` *iterable* ``)``
 {xsrst_suspend}
 """

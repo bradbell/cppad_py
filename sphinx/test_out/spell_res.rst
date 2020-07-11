@@ -10,9 +10,8 @@ Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`spell_cmd<spell_cmd>` > :ref:`spell
 
 .. _spell_res:
 
-============
 Spell Result
-============
+############
 
 .. meta::
    :keywords: text
@@ -22,7 +21,7 @@ Spell Result
 .. _spell_res.text:
 
 Text
-----
+****
 The words ``iterable`` and ``xsrst`` are not the dictionary,
 so we have included them in the spelling command for this section.
 
@@ -34,7 +33,7 @@ so we have included them in the spelling command for this section.
 .. _spell_res.math:
 
 Math
-----
+****
 The latex commands for greek letters
 are automatically included as correct spelling.
 Other latex commands in this section; e.g. ``\cos``, ``\sin``, ``\rm``,
@@ -55,7 +54,7 @@ which applies to all sections:
 .. _spell_res.double_words:
 
 Double Words
-------------
+************
 It is consider an error to have only white space between
 two occurrences of the same word; e.g.,
 no no would be an error if there

@@ -12,13 +12,12 @@ Children: :ref:`suspend_res<suspend_res>`
 
 .. _suspend_exam:
 
-===============
 Suspend Example
-===============
+###############
 
 
 .. literalinclude:: ../../sphinx/test_in/suspend.py
-    :lines: 25-63
+    :lines: 24-61
 
 .. toctree::
    :maxdepth: 1

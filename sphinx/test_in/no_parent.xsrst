@@ -9,9 +9,8 @@
 {xsrst_begin_parent no_parent_exam}
 {xsrst_spell cmd }
 
-=================
 No Parent Example
-=================
+#################
 All the sections in the file ``children.py``
 are children of the section below
 because ``children.py`` does not have a
@@ -26,12 +25,11 @@ because ``children.py`` does not have a
 # BEGIN_SRC
 {xsrst_begin no_parent_res}
 
-================
 No Parent Result
-================
+################
 
 children.py File
-----------------
+****************
 {xsrst_file
     # BEGIN_FILE
     # END_FILE
@@ -39,13 +37,13 @@ children.py File
 }
 
 Child Link children.py
-----------------------
+**********************
 {xsrst_child_link
         sphinx/test_in/children.py
 }
 
 Example
--------
+*******
 :ref:`no_parent_exam`
 
 {xsrst_end no_parent_res}

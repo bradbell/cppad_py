@@ -10,13 +10,12 @@ Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`no_pa
 
 .. _children_exam:
 
-===========================
 Indent and Children Example
-===========================
+###########################
 
 
 .. literalinclude:: ../../sphinx/test_in/children.py
-    :lines: 30-57
+    :lines: 29-55
 
 .. meta::
    :keywords: result
@@ -26,7 +25,7 @@ Indent and Children Example
 .. _children_exam.result:
 
 Result
-------
+******
 :ref:`children_res`
 
 ----

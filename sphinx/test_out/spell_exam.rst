@@ -12,13 +12,12 @@ Children: :ref:`spell_res<spell_res>`
 
 .. _spell_exam:
 
-=============
 Spell Example
-=============
+#############
 
 
 .. literalinclude:: ../../sphinx/test_in/spell.py
-    :lines: 25-71
+    :lines: 24-69
 
 .. toctree::
    :maxdepth: 1

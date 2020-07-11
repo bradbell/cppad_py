@@ -10,9 +10,8 @@ Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`code_cmd<code_cmd>` > :ref:`code_bl
 
 .. _code_block_res:
 
-=================
 Code Block Result
-=================
+#################
 
 .. code-block:: py
 

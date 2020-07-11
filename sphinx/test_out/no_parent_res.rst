@@ -12,9 +12,8 @@ Children: :ref:`children_exam<children_exam>` | :ref:`children_res<children_res>
 
 .. _no_parent_res:
 
-================
 No Parent Result
-================
+################
 
 .. meta::
    :keywords: children.py, file
@@ -24,10 +23,10 @@ No Parent Result
 .. _no_parent_res.children.py_file:
 
 children.py File
-----------------
+****************
 
 .. literalinclude:: ../../sphinx/test_in/children.py
-    :lines: 10-58
+    :lines: 10-56
 
 .. meta::
    :keywords: child, link, children.py
@@ -37,7 +36,7 @@ children.py File
 .. _no_parent_res.child_link_children.py:
 
 Child Link children.py
-----------------------
+**********************
 .. toctree::
    :maxdepth: 1
 
@@ -53,7 +52,7 @@ Child Link children.py
 .. _no_parent_res.example:
 
 Example
--------
+*******
 :ref:`no_parent_exam`
 
 ----

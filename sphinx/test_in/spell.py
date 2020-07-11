@@ -9,9 +9,8 @@
 """
 {xsrst_begin_parent spell_exam}
 
-=============
 Spell Example
-=============
+#############
 
 {xsrst_file
     # BEGIN_SRC
@@ -33,18 +32,17 @@ Spell Example
 }
 
 
-============
 Spell Result
-============
+############
 
 Text
-----
+****
 The words ``iterable`` and ``xsrst`` are not the dictionary,
 so we have included them in the spelling command for this section.
 
 
 Math
-----
+****
 The latex commands for greek letters
 are automatically included as correct spelling.
 Other latex commands in this section; e.g. ``\cos``, ``\sin``, ``\rm``,
@@ -58,7 +56,7 @@ which applies to all sections:
     z = \cos( \theta ) + {\rm i} \sin( \theta )
 
 Double Words
-------------
+************
 It is consider an error to have only white space between
 two occurrences of the same word; e.g.,
 no no would be an error if there

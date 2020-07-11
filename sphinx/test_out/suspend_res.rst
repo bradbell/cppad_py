@@ -10,9 +10,8 @@ Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > :ref:`s
 
 .. _suspend_res:
 
-==============
 Suspend Result
-==============
+##############
 
 .. meta::
    :keywords: factorial
@@ -22,7 +21,7 @@ Suspend Result
 .. _suspend_res.factorial:
 
 Factorial
----------
+*********
 *f* = ``factorial(`` *positive_integer* ``)``
 
 .. meta::
@@ -33,7 +32,7 @@ Factorial
 .. _suspend_res.product:
 
 Product
--------
+*******
 *p* = ``product(`` *iterable* ``)``
 
 :ref:`suspend_exam`

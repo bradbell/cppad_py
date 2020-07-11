@@ -12,13 +12,12 @@ Children: :ref:`indent_tab_res<indent_tab_res>`
 
 .. _indent_tab_exam:
 
-=========================
 Indent Using Tabs Example
-=========================
+#########################
 
 
 .. literalinclude:: ../../sphinx/test_in/indent_tab.py
-    :lines: 25-41
+    :lines: 24-40
 
 .. toctree::
    :maxdepth: 1

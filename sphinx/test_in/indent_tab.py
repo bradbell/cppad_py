@@ -9,9 +9,8 @@
 """
 {xsrst_begin_parent indent_tab_exam}
 
-=========================
 Indent Using Tabs Example
-=========================
+#########################
 
 {xsrst_file
     # BEGIN_SRC

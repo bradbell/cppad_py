@@ -10,9 +10,8 @@ Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`file_cmd<file_cmd>` > :ref:`file_bl
 
 .. _file_block_res:
 
-=================
 File Block Result
-=================
+#################
 
 .. meta::
    :keywords: factorial
@@ -22,10 +21,10 @@ File Block Result
 .. _file_block_res.factorial:
 
 factorial
-=========
+*********
 
 .. literalinclude:: ../../sphinx/test_in/file_block.py
-    :lines: 26-29
+    :lines: 25-28
 
 .. meta::
    :keywords: square
@@ -35,10 +34,10 @@ factorial
 .. _file_block_res.square:
 
 square
-======
+******
 
 .. literalinclude:: ../../sphinx/test_in/file_block.py
-    :lines: 33-33
+    :lines: 32-32
 
 ----
 

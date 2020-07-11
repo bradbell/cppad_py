@@ -12,13 +12,12 @@ Children: :ref:`indent_space_res<indent_space_res>`
 
 .. _indent_space_exam:
 
-===========================
 Indent Using Spaces Example
-===========================
+###########################
 
 
 .. literalinclude:: ../../sphinx/test_in/indent_space.py
-    :lines: 25-41
+    :lines: 24-40
 
 .. toctree::
    :maxdepth: 1

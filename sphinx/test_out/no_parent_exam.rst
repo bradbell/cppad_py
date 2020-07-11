@@ -12,16 +12,15 @@ Children: :ref:`no_parent_res<no_parent_res>`
 
 .. _no_parent_exam:
 
-=================
 No Parent Example
-=================
+#################
 All the sections in the file ``children.py``
 are children of the section below
 because ``children.py`` does not have a
 :ref:`parent section<begin_cmd.parent_section>`:
 
 .. literalinclude:: ../../sphinx/test_in/no_parent.xsrst
-    :lines: 27-51
+    :lines: 26-49
 
 .. toctree::
    :maxdepth: 1

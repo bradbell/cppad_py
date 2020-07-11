@@ -8,9 +8,8 @@
 """
 {xsrst_begin_parent file_block_exam}
 
-==================
 File Block Example
-==================
+##################
 
 {xsrst_file
     # BEGIN_SRC
@@ -37,19 +36,18 @@ def square(x) :
 """
 {xsrst_begin file_block_res}
 
-=================
 File Block Result
-=================
+#################
 
 factorial
-=========
+*********
 {xsrst_file
     # BEGIN_FACTORIAL
     # END_FACTORIAL
 }
 
 square
-======
+******
 {xsrst_file
     # BEGIN_SQUARE
     # END_SQUARE

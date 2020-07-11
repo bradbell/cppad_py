@@ -9,9 +9,8 @@
 """
 {xsrst_begin_parent indent_space_exam}
 
-===========================
 Indent Using Spaces Example
-===========================
+###########################
 
 {xsrst_file
     # BEGIN_SRC

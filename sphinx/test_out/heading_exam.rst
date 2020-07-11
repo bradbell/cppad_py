@@ -12,13 +12,12 @@ Children: :ref:`heading_res<heading_res>`
 
 .. _heading_exam:
 
-===============
 Heading Example
-===============
+###############
 
 
 .. literalinclude:: ../../sphinx/test_in/heading.py
-    :lines: 32-69
+    :lines: 31-67
 
 .. meta::
    :keywords: child, sections
@@ -28,7 +27,7 @@ Heading Example
 .. _heading_exam.child_sections:
 
 Child Sections
---------------
+**************
 The heading above is an example heading for the
 :ref:`children<xsrst_py.heading_links.children>`
 of a

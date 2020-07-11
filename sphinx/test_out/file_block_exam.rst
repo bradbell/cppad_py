@@ -12,13 +12,12 @@ Children: :ref:`file_block_res<file_block_res>`
 
 .. _file_block_exam:
 
-==================
 File Block Example
-==================
+##################
 
 
 .. literalinclude:: ../../sphinx/test_in/file_block.py
-    :lines: 24-59
+    :lines: 23-57
 
 .. toctree::
    :maxdepth: 1

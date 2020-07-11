@@ -12,13 +12,12 @@ Children: :ref:`code_block_res<code_block_res>`
 
 .. _code_block_exam:
 
-==================
 Code Block Example
-==================
+##################
 
 
 .. literalinclude:: ../../sphinx/test_in/code_block.py
-    :lines: 25-41
+    :lines: 24-39
 
 .. toctree::
    :maxdepth: 1

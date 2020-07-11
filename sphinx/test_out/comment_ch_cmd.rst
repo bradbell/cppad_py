@@ -74,16 +74,17 @@ In addition, the special character *ch* can be the first character
 after the new line and before *text*.
 
 .. meta::
-   :keywords: indentation
+   :keywords: input, stream
 
-.. index:: indentation
+.. index:: input, stream
 
-.. _comment_ch_cmd.indentation:
+.. _comment_ch_cmd.input_stream:
 
-Indentation
-***********
+Input Stream
+************
 The special character (and one space if present directly after)
-is removed from the input stream before calculating the amount of
+is removed from the input stream before any xsrst processing; e.g.,
+calculating the amount of
 :ref:`xsrst_py.Indentation` for the current section.
 For example, if :code:`#` is the special character,
 the following input has the heading Factorial

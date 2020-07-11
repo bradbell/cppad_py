@@ -10,9 +10,8 @@
 """
 {xsrst_begin children_exam}
 
-===========================
 Indent and Children Example
-===========================
+###########################
 
 {xsrst_file
     # BEGIN_SRC
@@ -20,7 +19,7 @@ Indent and Children Example
 }
 
 Result
-------
+******
 :ref:`children_res`
 
 {xsrst_end children_exam}
@@ -30,12 +29,11 @@ Result
 """
 {xsrst_begin children_res}
 
-==========================
 Indent and Children Result
-==========================
+##########################
 
 Children
---------
+********
 This example uses a children command and
 the corresponding links are included.
 If it had used a child link command, the same links would have been
@@ -50,7 +48,7 @@ created automatically.
 - :ref:`indent_tab_exam`
 
 Example
--------
+*******
 :ref:`children_exam`
 
 {xsrst_end children_res}

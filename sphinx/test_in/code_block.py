@@ -9,9 +9,8 @@
 """
 {xsrst_begin_parent code_block_exam}
 
-==================
 Code Block Example
-==================
+##################
 
 {xsrst_file
     # BEGIN_SRC
@@ -25,9 +24,8 @@ Code Block Example
 """
 {xsrst_begin code_block_res}
 
-=================
 Code Block Result
-=================
+#################
 {xsrst_code py}"""
 def factorial(n) :
     if n == 1 :

@@ -9,9 +9,8 @@
 """
 {xsrst_begin_parent heading_exam}
 
-===============
 Heading Example
-===============
+###############
 
 {xsrst_file
     # BEGIN_SRC
@@ -19,7 +18,7 @@ Heading Example
 }
 
 Child Sections
---------------
+**************
 The heading above is an example heading for the
 :ref:`children<xsrst_py.heading_links.children>`
 of a
@@ -32,30 +31,29 @@ of a
 """
 {xsrst_begin heading_res}
 
-==============
 Heading Result
-==============
+##############
 The label for this heading is the section name ``heading_res``.
 
 Second Level
-============
+************
 The label for this heading is ``heading_res.second_level``.
 
 Third Level
------------
+===========
 The label for this heading is ``heading_res.second_level.third_level``.
 
 Another Second Level
-====================
+********************
 The label for this heading is ``heading_res.another_second_level``.
 
 Third Level
------------
+===========
 The label for this heading is
 ``heading_res.another_second_level.third_level``.
 
 Links
-=====
+*****
 
 1. :ref:`heading_res`
 2. :ref:`heading_res.second_level`

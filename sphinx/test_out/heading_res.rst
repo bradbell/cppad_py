@@ -10,9 +10,8 @@ Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`heading_exam<heading_exam>` > headi
 
 .. _heading_res:
 
-==============
 Heading Result
-==============
+##############
 The label for this heading is the section name ``heading_res``.
 
 .. meta::
@@ -23,7 +22,7 @@ The label for this heading is the section name ``heading_res``.
 .. _heading_res.second_level:
 
 Second Level
-============
+************
 The label for this heading is ``heading_res.second_level``.
 
 .. meta::
@@ -34,7 +33,7 @@ The label for this heading is ``heading_res.second_level``.
 .. _heading_res.second_level.third_level:
 
 Third Level
------------
+===========
 The label for this heading is ``heading_res.second_level.third_level``.
 
 .. meta::
@@ -45,7 +44,7 @@ The label for this heading is ``heading_res.second_level.third_level``.
 .. _heading_res.another_second_level:
 
 Another Second Level
-====================
+********************
 The label for this heading is ``heading_res.another_second_level``.
 
 .. meta::
@@ -56,7 +55,7 @@ The label for this heading is ``heading_res.another_second_level``.
 .. _heading_res.another_second_level.third_level:
 
 Third Level
------------
+===========
 The label for this heading is
 ``heading_res.another_second_level.third_level``.
 
@@ -68,7 +67,7 @@ The label for this heading is
 .. _heading_res.links:
 
 Links
-=====
+*****
 
 1. :ref:`heading_res`
 2. :ref:`heading_res.second_level`
