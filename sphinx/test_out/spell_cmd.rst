@@ -66,16 +66,20 @@ The latex commands corresponding to the letters in the greek alphabet
 are automatically added to this list.
 
 .. meta::
-   :keywords: capitalized, words
+   :keywords: capital, letters
 
-.. index:: capitalized, words
+.. index:: capital, letters
 
-.. _spell_cmd.capitalized_words:
+.. _spell_cmd.capital_letters:
 
-Capitalized Words
------------------
+Capital Letters
+---------------
 The case of the first letter does not matter when checking spelling;
 e.g., if ``abcd`` is *word_1* then ``Abcd`` will be considered a valid word.
+Each capital letter starts a new word; e.g., `CamelCase` is considered to
+be the two words 'camel' and 'case'.
+Single letter words are always correct and not included in the 
+special word list; e.g., the word list entry ``CppAD`` is the same as ``Cpp``.
 
 .. meta::
    :keywords: double, words
@@ -87,7 +91,8 @@ e.g., if ``abcd`` is *word_1* then ``Abcd`` will be considered a valid word.
 Double Words
 ------------
 It is considered an error to have only white space between two occurrences
-of the same word.
+of the same word. You can make an exception for this by entering
+the same word twice (next to each other) in the special word list.
 
 .. meta::
    :keywords: example

@@ -395,15 +395,20 @@ The latex commands corresponding to the letters in the greek alphabet
 are automatically added to this list.
 
 
-Capitalized Words
------------------
+Capital Letters
+---------------
 The case of the first letter does not matter when checking spelling;
 e.g., if ``abcd`` is *word_1* then ``Abcd`` will be considered a valid word.
+Each capital letter starts a new word; e.g., `CamelCase` is considered to
+be the two words 'camel' and 'case'.
+Single letter words are always correct and not included in the
+special word list; e.g., the word list entry ``CppAD`` is the same as ``Cpp``.
 
 Double Words
 ------------
 It is considered an error to have only white space between two occurrences
-of the same word.
+of the same word. You can make an exception for this by entering
+the same word twice (next to each other) in the special word list.
 
 Example
 -------
@@ -1156,9 +1161,10 @@ def spell_command(
         spell_arg = pattern['line'].sub('', spell_arg)
         for itr in pattern['word'].finditer( spell_arg ) :
             word_lower = itr.group(0).lower()
-            special_used[ word_lower ] = False
-            if word_lower == previous_word :
-                double_used[ word_lower ] = False
+            if len(word_lower) > 1 :
+                special_used[ word_lower ] = False
+                if word_lower == previous_word :
+                    double_used[ word_lower ] = False
             previous_word = word_lower
         #
         # remove spell command
