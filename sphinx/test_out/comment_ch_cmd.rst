@@ -12,9 +12,8 @@ Children: :ref:`comment_ch_exam<comment_ch_exam>`
 
 .. _comment_ch_cmd:
 
-==================
 Comment Ch Command
-==================
+##################
 
 .. meta::
    :keywords: syntax
@@ -24,7 +23,7 @@ Comment Ch Command
 .. _comment_ch_cmd.syntax:
 
 Syntax
-------
+******
 ``{xsrst_comment_ch`` *ch*:code:`}`
 
 .. meta::
@@ -35,7 +34,7 @@ Syntax
 .. _comment_ch_cmd.purpose:
 
 Purpose
--------
+*******
 Some languages have a special character that
 indicates the rest of the line is a comment.
 If you embed sphinx documentation in this type of comment,
@@ -47,7 +46,7 @@ not end up in your ``.rst`` output file.
 
 .. index:: ch
 
-.. _comment_ch_cmd.ch:
+.. _comment_ch_cmd.purpose.ch:
 
 ch
 --
@@ -67,7 +66,7 @@ it must come before the first :ref:`begin_cmd` in the file.
 .. _comment_ch_cmd.beginning_of_a_line:
 
 Beginning of a Line
--------------------
+*******************
 A sequence of characters *text* is at the beginning of a line if there
 are only spaces and tab characters
 between the previous new line character and *text*.
@@ -82,7 +81,7 @@ after the new line and before *text*.
 .. _comment_ch_cmd.indentation:
 
 Indentation
------------
+***********
 The special character (and one space if present directly after)
 is removed from the input stream before calculating the amount of
 :ref:`xsrst_py.Indentation` for the current section.
@@ -107,7 +106,7 @@ and the ``def`` token indented the same amount:
 .. _comment_ch_cmd.example:
 
 Example
--------
+*******
 .. toctree::
    :maxdepth: 1
 

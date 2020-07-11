@@ -248,24 +248,23 @@ Commands
 
 .. |space| unicode:: 0xA0
 
-======================
 Begin and End Commands
-======================
+######################
 
 Syntax
-------
+******
 - ``{xsrst_begin``        *section_name*:code:`}`
 - ``{xsrst_begin_parent`` *section_name*:code:`}`
 - ``{xsrst_end``          *section_name*:code:`}`
 
 Section
--------
+*******
 The start (end) of a section of the input file is indicated by a
 begin (end) command at the
 :ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 section_name
-------------
+************
 The *section_name* is a non-empty sequence of the following characters:
 a-z, 0-9, and underbar ``_``.
 A link is included in the index under the section name
@@ -274,7 +273,7 @@ The section name is also added to the html keyword meta data.
 
 
 Output File
------------
+***********
 The output file corresponding to *section_name* is
 
 |space| |space| |space| |space|
@@ -282,7 +281,7 @@ The output file corresponding to *section_name* is
 ``/xsrst/`` *section_name* ``.rst``
 
 Parent Section
---------------
+**************
 There can be at most one begin parent command in an input file.
 In this case there must be other sections in the file
 and they are child of the parent section.
@@ -302,12 +301,11 @@ of the section that included this file using a :ref:`child command<child_cmd>`.
     cmd
 }
 
-=================================
 Children and Child Links Commands
-=================================
+#################################
 
 Syntax
-------
+******
 
 | ``{xsrst_children``
 |   *file_1*
@@ -323,7 +321,7 @@ Syntax
 
 
 Purpose
--------
+*******
 A section can specify a set of files for which the
 :ref:`parent section<begin_cmd.parent_section>` of each file
 is a child of the current section.
@@ -333,7 +331,7 @@ This is done using the commands above at the
 :ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 File Names
-----------
+**********
 A new line character must precede and follow each
 of the file names *file_1* ... *file_n*.
 Leading and trailing white space is not included in the names
@@ -343,13 +341,13 @@ This may seem verbose, but it makes it easier to write scripts
 that move files and automatically change references to them.
 
 Links
------
+*****
 The child link command also places
 links to all the children of the current at the location of the command.
 You can place a heading directly before the links to make them easier to find.
 
 Example
--------
+*******
 {xsrst_child_link
    sphinx/test_in/no_parent.xsrst
 }
@@ -360,12 +358,11 @@ Example
 """
 {xsrst_begin spell_cmd}
 
-=============
 Spell Command
-=============
+#############
 
 Syntax
-------
+******
 ``{xsrst_spell`` *word_1* ...  *word_n*:code:`}`
 
 Here *word_1*, ..., *word_n* is the special list of words for this section.
@@ -379,14 +376,14 @@ The rest of the characters in a word are lower case letters.
 
 
 Purpose
--------
+*******
 You can specify a special list of words
 (not normally considered correct spelling)
 for the current section using the command above at the
 :ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 spell_file
-----------
+**********
 The list of words in
 :ref:`spell_file<xsrst_py.command_line_arguments.spell_file>`
 are considered correct spellings for all sections.
@@ -395,7 +392,7 @@ are automatically added to this list.
 
 
 Capital Letters
----------------
+***************
 The case of the first letter does not matter when checking spelling;
 e.g., if ``abcd`` is *word_1* then ``Abcd`` will be considered a valid word.
 Each capital letter starts a new word; e.g., `CamelCase` is considered to
@@ -404,13 +401,13 @@ Single letter words are always correct and not included in the
 special word list; e.g., the word list entry ``CppAD`` is the same as ``Cpp``.
 
 Double Words
-------------
+************
 It is considered an error to have only white space between two occurrences
 of the same word. You can make an exception for this by entering
 the same word twice (next to each other) in the special word list.
 
 Example
--------
+*******
 {xsrst_child_link
    sphinx/test_in/spell.py
 }
@@ -421,17 +418,16 @@ Example
 """
 {xsrst_begin suspend_cmd}
 
-==========================
 Suspend and Resume Command
-==========================
+##########################
 
 Syntax
-------
+******
 - ``{xsrst_suspend}``
 - ``{xsrst_resume}``
 
 Purpose
--------
+*******
 It is possible to suspend (resume) the xsrst extraction during a section.
 One begins (ends) the suspension with a suspend command (resume command)
 at the
@@ -440,7 +436,7 @@ Note that this will also suspend all other xsrst processing; e.g.,
 spell checking.
 
 Example
--------
+*******
 {xsrst_child_link
    sphinx/test_in/suspend.py
 }
@@ -454,50 +450,49 @@ Example
     cmd
 }
 
-============
 Code Command
-============
+############
 
 Syntax
-------
+******
 - ``{xsrst_code`` *language* :code:`}`
 - ``{xsrst_code}``
 
 Purpose
--------
+*******
 A code block, directly below in the current input file, begins with
 a line containing the first version ( *language* included version)
 of the command above.
 
 Requirements
-------------
+************
 Each code command ends with
 a line containing the second version of the command; i.e., ``{xsrst_code}``.
 Hence there must be an even number of code commands.
 The back quote character \` can't be in the same line as the commands.
 
 language
---------
+********
 A *language* is a non-empty sequence of non-space the characters.
 It is used to determine the source code language
 for highlighting the code block.
 
 Rest of Line
-------------
+************
 Other characters on the same line as a code command
 are not included in the xsrst output.
 This enables one to begin or end a comment block
 without having the comment characters in the xsrst output.
 
 Spell Checking
---------------
+**************
 Code blocks as usually small and
 spell checking is done for these code blocks.
 (Spell checking is not done for code blocks included using the
 :ref:`file command<file_cmd>` .)
 
 Example
--------
+*******
 {xsrst_child_link
    sphinx/test_in/code_block.py
 }
@@ -512,12 +507,11 @@ Example
 .. |tab| replace:: |space| |space| |space| |space|
 
 
-============
 File Command
-============
+############
 
 Syntax
-------
+******
 
 | ``{xsrst_file``
 | |tab| *start*
@@ -531,19 +525,19 @@ Syntax
 | :code:`}`
 
 Purpose
--------
+*******
 A code block, from any where in any file,
 is included by the command above at the
 :ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 White Space
------------
+***********
 Leading and trailing white space is not included in
 *start*, *stop* or *file_name*.
 The new line character separates these tokens.
 
 file_name
----------
+*********
 If *file_name* is not in the syntax,
 the code block is in the current input file.
 Otherwise, the code block is in *file_name*.
@@ -553,7 +547,7 @@ This may seem verbose, but it makes it easier to write scripts
 that move files and automatically change references to them.
 
 start
------
+*****
 The code block starts with the line following the occurence
 of the text *start* in *file_name*.
 If this is the same as the file containing the command,
@@ -562,7 +556,7 @@ There must be one and only one occurence of *start* in *file_name*,
 not counting the command itself when the files are the same.
 
 stop
-----
+****
 The code block ends with the line before the occurence
 of the text *start* in *file_name*.
 If this is the same as the file containing the command,
@@ -571,12 +565,12 @@ There must be one and only one occurence of *stop* in *file_name*,
 not counting the command itself when the files are the same.
 
 Spell Checking
---------------
+**************
 Spell checking is **not** done for these code blocks.
 
 
 Example
--------
+*******
 {xsrst_child_link
    sphinx/test_in/file_block.py
 }
@@ -591,16 +585,15 @@ Example
     cmd
 }
 
-==================
 Comment Ch Command
-==================
+##################
 
 Syntax
-------
+******
 ``{xsrst_comment_ch`` *ch*:code:`}`
 
 Purpose
--------
+*******
 Some languages have a special character that
 indicates the rest of the line is a comment.
 If you embed sphinx documentation in this type of comment,
@@ -619,7 +612,7 @@ it must come before the first :ref:`begin_cmd` in the file.
 
 
 Beginning of a Line
--------------------
+*******************
 A sequence of characters *text* is at the beginning of a line if there
 are only spaces and tab characters
 between the previous new line character and *text*.
@@ -627,7 +620,7 @@ In addition, the special character *ch* can be the first character
 after the new line and before *text*.
 
 Indentation
------------
+***********
 The special character (and one space if present directly after)
 is removed from the input stream before calculating the amount of
 :ref:`xsrst_py.Indentation` for the current section.
@@ -646,7 +639,7 @@ and the ``def`` token indented the same amount:
 
 
 Example
--------
+*******
 {xsrst_child_link
     sphinx/test_in/comment_ch.py
 }

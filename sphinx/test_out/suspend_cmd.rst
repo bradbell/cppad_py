@@ -12,9 +12,8 @@ Children: :ref:`suspend_exam<suspend_exam>`
 
 .. _suspend_cmd:
 
-==========================
 Suspend and Resume Command
-==========================
+##########################
 
 .. meta::
    :keywords: syntax
@@ -24,7 +23,7 @@ Suspend and Resume Command
 .. _suspend_cmd.syntax:
 
 Syntax
-------
+******
 - ``{xsrst_suspend}``
 - ``{xsrst_resume}``
 
@@ -36,7 +35,7 @@ Syntax
 .. _suspend_cmd.purpose:
 
 Purpose
--------
+*******
 It is possible to suspend (resume) the xsrst extraction during a section.
 One begins (ends) the suspension with a suspend command (resume command)
 at the
@@ -52,7 +51,7 @@ spell checking.
 .. _suspend_cmd.example:
 
 Example
--------
+*******
 .. toctree::
    :maxdepth: 1
 

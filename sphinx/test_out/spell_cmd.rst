@@ -12,9 +12,8 @@ Children: :ref:`spell_exam<spell_exam>`
 
 .. _spell_cmd:
 
-=============
 Spell Command
-=============
+#############
 
 .. meta::
    :keywords: syntax
@@ -24,7 +23,7 @@ Spell Command
 .. _spell_cmd.syntax:
 
 Syntax
-------
+******
 ``{xsrst_spell`` *word_1* ...  *word_n*:code:`}`
 
 Here *word_1*, ..., *word_n* is the special list of words for this section.
@@ -44,7 +43,7 @@ The rest of the characters in a word are lower case letters.
 .. _spell_cmd.purpose:
 
 Purpose
--------
+*******
 You can specify a special list of words
 (not normally considered correct spelling)
 for the current section using the command above at the
@@ -58,7 +57,7 @@ for the current section using the command above at the
 .. _spell_cmd.spell_file:
 
 spell_file
-----------
+**********
 The list of words in
 :ref:`spell_file<xsrst_py.command_line_arguments.spell_file>`
 are considered correct spellings for all sections.
@@ -73,7 +72,7 @@ are automatically added to this list.
 .. _spell_cmd.capital_letters:
 
 Capital Letters
----------------
+***************
 The case of the first letter does not matter when checking spelling;
 e.g., if ``abcd`` is *word_1* then ``Abcd`` will be considered a valid word.
 Each capital letter starts a new word; e.g., `CamelCase` is considered to
@@ -89,7 +88,7 @@ special word list; e.g., the word list entry ``CppAD`` is the same as ``Cpp``.
 .. _spell_cmd.double_words:
 
 Double Words
-------------
+************
 It is considered an error to have only white space between two occurrences
 of the same word. You can make an exception for this by entering
 the same word twice (next to each other) in the special word list.
@@ -102,7 +101,7 @@ the same word twice (next to each other) in the special word list.
 .. _spell_cmd.example:
 
 Example
--------
+*******
 .. toctree::
    :maxdepth: 1
 

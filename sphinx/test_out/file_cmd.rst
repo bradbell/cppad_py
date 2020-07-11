@@ -15,9 +15,8 @@ Children: :ref:`file_block_exam<file_block_exam>`
 
 .. _file_cmd:
 
-============
 File Command
-============
+############
 
 .. meta::
    :keywords: syntax
@@ -27,7 +26,7 @@ File Command
 .. _file_cmd.syntax:
 
 Syntax
-------
+******
 
 | ``{xsrst_file``
 | |tab| *start*
@@ -48,7 +47,7 @@ Syntax
 .. _file_cmd.purpose:
 
 Purpose
--------
+*******
 A code block, from any where in any file,
 is included by the command above at the
 :ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
@@ -61,7 +60,7 @@ is included by the command above at the
 .. _file_cmd.white_space:
 
 White Space
------------
+***********
 Leading and trailing white space is not included in
 *start*, *stop* or *file_name*.
 The new line character separates these tokens.
@@ -74,7 +73,7 @@ The new line character separates these tokens.
 .. _file_cmd.file_name:
 
 file_name
----------
+*********
 If *file_name* is not in the syntax,
 the code block is in the current input file.
 Otherwise, the code block is in *file_name*.
@@ -91,7 +90,7 @@ that move files and automatically change references to them.
 .. _file_cmd.start:
 
 start
------
+*****
 The code block starts with the line following the occurence
 of the text *start* in *file_name*.
 If this is the same as the file containing the command,
@@ -107,7 +106,7 @@ not counting the command itself when the files are the same.
 .. _file_cmd.stop:
 
 stop
-----
+****
 The code block ends with the line before the occurence
 of the text *start* in *file_name*.
 If this is the same as the file containing the command,
@@ -123,7 +122,7 @@ not counting the command itself when the files are the same.
 .. _file_cmd.spell_checking:
 
 Spell Checking
---------------
+**************
 Spell checking is **not** done for these code blocks.
 
 .. meta::
@@ -134,7 +133,7 @@ Spell checking is **not** done for these code blocks.
 .. _file_cmd.example:
 
 Example
--------
+*******
 .. toctree::
    :maxdepth: 1
 
