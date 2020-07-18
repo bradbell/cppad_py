@@ -30,6 +30,7 @@ $spell
     fabs
     runge
     vec
+    xsrst
 $$
 
 $section CppAD Py Changes During 2020$$
@@ -39,6 +40,17 @@ $children%
 %$$
 $head Previous Years$$
 $cref whats_new_2018$$
+
+$head 07-18$$
+$list number$$
+The experimental $code bin/xsrst.py$$ program was added.
+This program runs its tests and builds its documentation
+(in the $code sphinx$$) directory with the command $code bin/check_xsrst.sh$$.
+The intention is to convert the cppad_py documentation from omhelp to sphinx.
+$lnext
+Convert all the cppad_py source code to use spaces instead of tabs
+(with tab stops at multiples of 4 spaces).
+$lend
 
 $head 07-05$$
 $list number$$

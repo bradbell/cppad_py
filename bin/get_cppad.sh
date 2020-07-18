@@ -54,7 +54,7 @@ extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
 # The debug version has more error messaging while the release
 # version runs faster.
 # @srccode%sh%
-build_type='debug'
+build_type='release'
 # %@@
 # If you used the @code debug@@ build type you may get the following warning
 # from the compiler (because the optimization is totally turned off):
