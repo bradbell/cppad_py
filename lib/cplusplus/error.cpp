@@ -16,11 +16,11 @@
 -----------------------------------------------------------------------------
 $begin error_message$$
 $spell
-	vec
-	cppad
-	py
-	std
-	runtime
+    vec
+    cppad
+    py
+    std
+    runtime
 $$
 
 $section Exception Handling$$
@@ -57,8 +57,8 @@ The message storage is done using static information in
 $code error_message$$ and hence is not thread safe.
 
 $children%
-	example/cplusplus/error_message_xam.cpp%
-	example/python/core/error_message_xam.py
+    example/cplusplus/error_message_xam.cpp%
+    example/python/core/error_message_xam.py
 %$$
 $head Example$$
 $cref/C++/error_message_xam.cpp/$$,
@@ -67,56 +67,56 @@ $cref/Python/error_message_xam.py/$$.
 $end
 */
 namespace cppad_py {
-	// -----------------------------------------------------------------------
-	// map Cppad error handler to Cppad Py error handler
-	void cppad_error_handler(
-		bool known       ,
-		int  line        ,
-		const char *file ,
-		const char *exp  ,
-		const char *msg  )
-	{	std::string message = "Cppad Error:\n";
-		if( known )
-			message += msg;
-		else
-			message += "reason for the error is unknown";
-		message += "\nline = ";
-		message += CppAD::to_string(line);
-		message += "\nfile = ";
-		message += file;
-		message += "\nsource code = ";
-		message += exp;
-		//
-		error_message(message.c_str());
-	}
-	CppAD::ErrorHandler cppad_error_mapper(cppad_error_handler);
-	// -----------------------------------------------------------------------
-	const char* error_message(const char* input_message)
-	{	//
-		// message_stack
-		static std::stack<std::string> message_stack;
-		//
-		// return value
-		static std::string return_string;
-		//
-		// input value
-		std::string input_string = input_message;
-		//
-		// Check for a throw
-		if( input_string != "" )
-		{	// push message and raise exception
-			message_stack.push(input_string);
-			throw std::runtime_error( input_string );
-		}
-		//
-		if( message_stack.size() > 0 )
-		{	// pop message
-			return_string = message_stack.top();
-			message_stack.pop();
-		}
-		else
-			return_string = "";
-		return return_string.c_str();
-	}
-	// -----------------------------------------------------------------------
+    // -----------------------------------------------------------------------
+    // map Cppad error handler to Cppad Py error handler
+    void cppad_error_handler(
+        bool known       ,
+        int  line        ,
+        const char *file ,
+        const char *exp  ,
+        const char *msg  )
+    {   std::string message = "Cppad Error:\n";
+        if( known )
+            message += msg;
+        else
+            message += "reason for the error is unknown";
+        message += "\nline = ";
+        message += CppAD::to_string(line);
+        message += "\nfile = ";
+        message += file;
+        message += "\nsource code = ";
+        message += exp;
+        //
+        error_message(message.c_str());
+    }
+    CppAD::ErrorHandler cppad_error_mapper(cppad_error_handler);
+    // -----------------------------------------------------------------------
+    const char* error_message(const char* input_message)
+    {   //
+        // message_stack
+        static std::stack<std::string> message_stack;
+        //
+        // return value
+        static std::string return_string;
+        //
+        // input value
+        std::string input_string = input_message;
+        //
+        // Check for a throw
+        if( input_string != "" )
+        {   // push message and raise exception
+            message_stack.push(input_string);
+            throw std::runtime_error( input_string );
+        }
+        //
+        if( message_stack.size() > 0 )
+        {   // pop message
+            return_string = message_stack.top();
+            message_stack.pop();
+        }
+        else
+            return_string = "";
+        return return_string.c_str();
+    }
+    // -----------------------------------------------------------------------
 }

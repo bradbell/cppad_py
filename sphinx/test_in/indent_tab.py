@@ -22,20 +22,20 @@ Indent Using Tabs Example
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-	{xsrst_begin indent_tab_res}
+    {xsrst_begin indent_tab_res}
 
-	========================
-	Indent Using Tabs Result
-	========================
-	{xsrst_code py}"""
-	def factorial(n) :
-		if n == 1 :
-			return 1
-		return n * factorial(n-1)
-	"""{xsrst_code}
+    ========================
+    Indent Using Tabs Result
+    ========================
+    {xsrst_code py}"""
+    def factorial(n) :
+        if n == 1 :
+            return 1
+        return n * factorial(n-1)
+    """{xsrst_code}
 
-	:ref:`indent_tab_exam`
+    :ref:`indent_tab_exam`
 
-	{xsrst_end indent_tab_res}
+    {xsrst_end indent_tab_res}
 """
 # END_SRC

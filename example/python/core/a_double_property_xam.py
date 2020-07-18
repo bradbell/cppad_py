@@ -9,40 +9,40 @@
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
 def a_double_property_xam() :
-	#
-	import numpy
-	import cppad_py
-	#
-	# initialize return variable
-	ok = True
-	# ---------------------------------------------------------------------
-	a3 = cppad_py.a_double(3.0)
-	#
-	ok = ok and a3   == 3.0
-	ok = ok and a3.parameter()
-	ok = ok and not a3.variable()
-	#
-	# near_equal
-	r3 = a3.sqrt()
-	ok = ok and a3.near_equal( r3 * r3)
-	#
-	# var2par
-	p3  = a3.var2par()
-	ok  = ok and p3.value() == 3.0
-	#
-	return( ok )
+    #
+    import numpy
+    import cppad_py
+    #
+    # initialize return variable
+    ok = True
+    # ---------------------------------------------------------------------
+    a3 = cppad_py.a_double(3.0)
+    #
+    ok = ok and a3   == 3.0
+    ok = ok and a3.parameter()
+    ok = ok and not a3.variable()
+    #
+    # near_equal
+    r3 = a3.sqrt()
+    ok = ok and a3.near_equal( r3 * r3)
+    #
+    # var2par
+    p3  = a3.var2par()
+    ok  = ok and p3.value() == 3.0
+    #
+    return( ok )
 #
 # END SOURCE
 #
 # $begin a_double_property_xam.py$$ $newlinech #$$
 # $spell
-#	py
-#	perl
-#	cppad
-#	py
-#	xam
-#	Jacobian
-#	Jacobians
+#   py
+#   perl
+#   cppad
+#   py
+#   xam
+#   Jacobian
+#   Jacobians
 # $$
 # $section Python: a_double Properties: Example and Test$$
 # $srcthisfile|0|# BEGIN SOURCE|# END SOURCE|$$

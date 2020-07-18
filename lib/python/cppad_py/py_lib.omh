@@ -10,9 +10,9 @@ $begin py_lib$$
 $section The Python Library$$
 
 $childtable%lib/python/cppad_py/fun.py
-	%lib/python/cppad_py/sparse.omh
-	%lib/python/cppad_py/utility.omh
-	%lib/python/cppad_py/more_py.omh
+    %lib/python/cppad_py/sparse.omh
+    %lib/python/cppad_py/utility.omh
+    %lib/python/cppad_py/more_py.omh
 %$$
 
 $end

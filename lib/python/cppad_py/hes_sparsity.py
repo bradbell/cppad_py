@@ -7,12 +7,12 @@
 # -----------------------------------------------------------------------------
 # $begin py_hes_sparsity$$ $newlinech #$$
 # $spell
-#	hes
-#	const
-#	vec
-#	bool
-#	rc
-#	numpy
+#   hes
+#   const
+#   vec
+#   bool
+#   rc
+#   numpy
 # $$
 #
 # $section Hessian Sparsity Patterns$$
@@ -28,7 +28,7 @@
 # Fix a diagonal matrix $latex D \in \B{R}^{n \times n}$$, fix a vector
 # $latex r \in \B{R}^m$$, and define
 # $latex \[
-#	H(x) = D (r^\R{T} F)^{(2)} ( x ) D
+#   H(x) = D (r^\R{T} F)^{(2)} ( x ) D
 # \] $$
 # Given a sparsity pattern for $latex D$$ and $latex r$$,
 # these routines compute a sparsity pattern for $latex H(x)$$.
@@ -68,7 +68,7 @@
 # $latex F_i^{(2)} ( x )$$.
 #
 # $children%
-#	example/python/core/sparse_hes_pattern_xam.py
+#   example/python/core/sparse_hes_pattern_xam.py
 # %$$
 # $head Example$$
 # $cref/Python/sparse_hes_pattern_xam.py/$$
@@ -78,25 +78,25 @@
 # undocumented fact: pattern.rc is vec_int version of sparsity pattern
 from cppad_py.utility import numpy2vec
 def d_fun_for_hes_sparsity(f, select_domain, select_range, pattern_out) :
-	"""
-	f.for_hes_sparsity(select_domain, select_range, pattern_out)
-	"""
-	n      = f.size_domain()
-	m      = f.size_range()
-	dtype  = bool
-	syntax = 'f.for_hes_sparsity(select_domain, select_range, pattern_out)'
-	u      = numpy2vec(select_domain, dtype, n, syntax, 'select_domain')
-	v      = numpy2vec(select_range,  dtype, m, syntax, 'select_range')
-	f.for_hes_sparsity(u, v, pattern_out.rc)
+    """
+    f.for_hes_sparsity(select_domain, select_range, pattern_out)
+    """
+    n      = f.size_domain()
+    m      = f.size_range()
+    dtype  = bool
+    syntax = 'f.for_hes_sparsity(select_domain, select_range, pattern_out)'
+    u      = numpy2vec(select_domain, dtype, n, syntax, 'select_domain')
+    v      = numpy2vec(select_range,  dtype, m, syntax, 'select_range')
+    f.for_hes_sparsity(u, v, pattern_out.rc)
 #
 def d_fun_rev_hes_sparsity(f, select_domain, select_range, pattern_out) :
-	"""
-	f.rev_hes_sparsity(select_domain, select_range, pattern_out)
-	"""
-	n      = f.size_domain()
-	m      = f.size_range()
-	dtype  = bool
-	syntax = 'f.rev_hes_sparsity(select_domain, select_range, pattern_out)'
-	u      = numpy2vec(select_domain, dtype, n, syntax, 'select_domain')
-	v      = numpy2vec(select_range,  dtype, m, syntax, 'select_range')
-	f.rev_hes_sparsity(u, v, pattern_out.rc)
+    """
+    f.rev_hes_sparsity(select_domain, select_range, pattern_out)
+    """
+    n      = f.size_domain()
+    m      = f.size_range()
+    dtype  = bool
+    syntax = 'f.rev_hes_sparsity(select_domain, select_range, pattern_out)'
+    u      = numpy2vec(select_domain, dtype, n, syntax, 'select_domain')
+    v      = numpy2vec(select_range,  dtype, m, syntax, 'select_range')
+    f.rev_hes_sparsity(u, v, pattern_out.rc)

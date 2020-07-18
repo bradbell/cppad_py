@@ -7,11 +7,11 @@
 # -----------------------------------------------------------------------------
 # $begin py_fun_reverse$$ $newlinech #$$
 # $spell
-#	vec
-#	xq
-#	Taylor
-#	yq
-#	numpy
+#   vec
+#   xq
+#   Taylor
+#   yq
+#   numpy
 # $$
 #
 # $section Reverse Mode AD$$
@@ -84,7 +84,7 @@
 # $latex G(T(S))$$ w.r.t. $latex S_j^{(k)} (t) / k !$$.
 #
 # $children%
-#	example/python/core/fun_reverse_xam.py
+#   example/python/core/fun_reverse_xam.py
 # %$$
 # $head Example$$
 # $cref fun_reverse_xam.py$$
@@ -96,50 +96,50 @@ import numpy
 # -----------------------------------------------------------------------------
 # This function is used by reverse in d_fun class to implement syntax above
 def d_fun_reverse(f, q, yq) :
-	"""
-	xq = f.reverse(q, yq)
-	given Taylor coefficients for X(t), compute Taylor coefficients for
-	Y(t) = f(X(t)).
-	"""
-	#
-	n = f.size_domain()
-	m = f.size_range()
-	#
-	# convert yq -> u
-	dtype    = float
-	shape    = (m, q)
-	syntax   = 'f.reverse(q, yq)'
-	u = cppad_py.utility.numpy2vec(yq, dtype, shape, syntax, 'yq')
-	#
-	# call reverse
-	v =  f.reverse(q, u)
-	#
-	# convert v -> xp
-	xq = cppad_py.utility.vec2numpy(v, n, q)
-	#
-	return xq
+    """
+    xq = f.reverse(q, yq)
+    given Taylor coefficients for X(t), compute Taylor coefficients for
+    Y(t) = f(X(t)).
+    """
+    #
+    n = f.size_domain()
+    m = f.size_range()
+    #
+    # convert yq -> u
+    dtype    = float
+    shape    = (m, q)
+    syntax   = 'f.reverse(q, yq)'
+    u = cppad_py.utility.numpy2vec(yq, dtype, shape, syntax, 'yq')
+    #
+    # call reverse
+    v =  f.reverse(q, u)
+    #
+    # convert v -> xp
+    xq = cppad_py.utility.vec2numpy(v, n, q)
+    #
+    return xq
 # -----------------------------------------------------------------------------
 # This function is used by reverse in a_fun class to implement syntax above
 def a_fun_reverse(af, q, ayq) :
-	"""
-	axq = af.reverse(q, ayq)
-	given Taylor coefficients for X(t), compute Taylor coefficients for
-	Y(t) = f(X(t)).
-	"""
-	#
-	n = af.size_domain()
-	m = af.size_range()
-	#
-	# convert yq -> u
-	dtype    = cppad_py.a_double
-	shape    = (m, q)
-	syntax   = 'af.reverse(q, ayq)'
-	au = cppad_py.utility.numpy2vec(ayq, dtype, shape, syntax, 'ayq')
-	#
-	# call reverse
-	av =  af.reverse(q, au)
-	#
-	# convert v -> xp
-	axq = cppad_py.utility.vec2numpy(av, n, q)
-	#
-	return axq
+    """
+    axq = af.reverse(q, ayq)
+    given Taylor coefficients for X(t), compute Taylor coefficients for
+    Y(t) = f(X(t)).
+    """
+    #
+    n = af.size_domain()
+    m = af.size_range()
+    #
+    # convert yq -> u
+    dtype    = cppad_py.a_double
+    shape    = (m, q)
+    syntax   = 'af.reverse(q, ayq)'
+    au = cppad_py.utility.numpy2vec(ayq, dtype, shape, syntax, 'ayq')
+    #
+    # call reverse
+    av =  af.reverse(q, au)
+    #
+    # convert v -> xp
+    axq = cppad_py.utility.vec2numpy(av, n, q)
+    #
+    return axq

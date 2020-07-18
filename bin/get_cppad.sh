@@ -9,14 +9,14 @@
 # $OMhelpKeyCharacter=@
 # @begin get_cppad.sh@@ @newlinech #@@
 # @spell
-#	cppad_py
-#	cmake
+#   cppad_py
+#   cmake
 #   yyyymmdd
-#	makefile
-#	cxx
-#	messaging
-#	CppAD
-#	usr
+#   makefile
+#   cxx
+#   messaging
+#   CppAD
+#   usr
 # @@
 #
 # @section Get Cppad@@
@@ -54,12 +54,12 @@ extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
 # The debug version has more error messaging while the release
 # version runs faster.
 # @srccode%sh%
-build_type='release'
+build_type='debug'
 # %@@
 # If you used the @code debug@@ build type you may get the following warning
 # from the compiler (because the optimization is totally turned off):
 # @codep
-#	#warning _FORTIFY_SOURCE requires compiling with optimization
+#   #warning _FORTIFY_SOURCE requires compiling with optimization
 # @@
 #
 # @subhead test_cppad@@
@@ -83,14 +83,14 @@ test_cppad='false'
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
-	echo $*
-	eval $*
+    echo $*
+    eval $*
 }
 # -----------------------------------------------------------------------------
 if [ "$0" != "bin/get_cppad.sh" ]
 then
-	echo "bin/get_cppad.sh: must be executed from its parent directory"
-	exit 1
+    echo "bin/get_cppad.sh: must be executed from its parent directory"
+    exit 1
 fi
 # -----------------------------------------------------------------------------
 # CppAD version information
@@ -101,13 +101,13 @@ hash_code='69d069212c039e1fecc5aba0a7ed2b0b331fe047'
 # convert cppad_prefix relative to absolute paths
 if ! echo $cppad_prefix | grep '^/' > /dev/null
 then
-	cppad_prefix="$(pwd)/$cppad_prefix"
+    cppad_prefix="$(pwd)/$cppad_prefix"
 fi
 # -----------------------------------------------------------------------------
 # cppad_py build directory
 if [ -e 'build' ]
 then
-	echo_eval rm -rf build
+    echo_eval rm -rf build
 fi
 echo_eval mkdir build
 echo_eval cd build
@@ -117,12 +117,12 @@ echo_eval git clone $remote_repo cppad-$cppad_version.git
 echo_eval cd cppad-$cppad_version.git
 echo_eval git checkout --quiet $hash_code
 check=`grep '^SET(cppad_version' CMakeLists.txt | \
-		sed -e 's|^[^"]*"\([^"]*\)".*|\1|'`
+        sed -e 's|^[^"]*"\([^"]*\)".*|\1|'`
 if [ "$check" != "$cppad_version" ]
 then
-	echo "get_cppad.sh: cppad_version = $cppad_version"
-	echo "cppad_version in cppad-$cppad_version.git/CMakeLists.txt = $check"
-	exit 1
+    echo "get_cppad.sh: cppad_version = $cppad_version"
+    echo "cppad_version in cppad-$cppad_version.git/CMakeLists.txt = $check"
+    exit 1
 fi
 #
 # cppad build directory
@@ -135,31 +135,31 @@ echo_eval cd build
 # run cppad cmake command
 if [ "$build_type" == 'debug' ]
 then
-	cppad_debug_which='debug_all'
+    cppad_debug_which='debug_all'
 elif [ "$build_type" == 'release' ]
 then
-	cppad_debug_which='debug_none'
+    cppad_debug_which='debug_none'
 else
-	echo 'bin/get_cppad.sh: build type is not debug or release'
-	exit 1
+    echo 'bin/get_cppad.sh: build type is not debug or release'
+    exit 1
 fi
 cat << EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
-	-D cppad_prefix="$cppad_prefix"  \\
-	-D cppad_cxx_flags="$extra_cxx_flags" \\
-	-D cppad_debug_which=$cppad_debug_which \\
-	..
+    -D cppad_prefix="$cppad_prefix"  \\
+    -D cppad_cxx_flags="$extra_cxx_flags" \\
+    -D cppad_debug_which=$cppad_debug_which \\
+    ..
 EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
-	-D cppad_prefix="$cppad_prefix"  \
-	-D cppad_cxx_flags="$extra_cxx_flags" \
-	-D cppad_debug_which=$cppad_debug_which \
-	..
+    -D cppad_prefix="$cppad_prefix"  \
+    -D cppad_cxx_flags="$extra_cxx_flags" \
+    -D cppad_debug_which=$cppad_debug_which \
+    ..
 #
 # run check
 if [ "$test_cppad" == 'true' ]
 then
-	make check
+    make check
 fi
 #
 # install

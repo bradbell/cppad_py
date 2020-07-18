@@ -16,11 +16,11 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 -------------------------------------------------------------------------------
 $begin cpp_independent$$
 $spell
-	vec
-	const
-	cppad_py
-	nx
-	nd
+    vec
+    const
+    cppad_py
+    nx
+    nd
 $$
 
 $section Declare Independent Variables and Start Recording$$
@@ -41,7 +41,7 @@ by calling $cref/abort_recording/cpp_abort_recording/$$.
 $head x$$
 This argument has prototype
 $codei%
-	const vec_double& %x%
+    const vec_double& %x%
 %$$
 Its specifies the number of independent variables
 and their values during the recording.
@@ -51,7 +51,7 @@ to denote the number of independent variables.
 $head dynamic$$
 This argument has prototype
 $codei%
-	const vec_double& %dynamic%
+    const vec_double& %dynamic%
 %$$
 Its specifies the number of independent dynamic parameters
 and their values during the recording.
@@ -61,36 +61,36 @@ to denote the number of independent variables.
 $head ax$$
 This result has prototype
 $codei%
-	vec_a_double& %ax%
+    vec_a_double& %ax%
 %$$
 and is the vector of independent variables.
 It has size $icode nx$$ and for
 $icode%i% = 0%$$ to $icode%n%-1%$$
 $codei%
-	%ax%[%i%] == %x%[%i%]
+    %ax%[%i%] == %x%[%i%]
 %$$
 
 $head a_both$$
 this result has prototype
 $codei%
-	vec_a_double& %a_both%
+    vec_a_double& %a_both%
 %$$
 and is the vector of both the independent variables
 and independent dynamic parameters.
 It has size $icode%nx% + %nd%$$.
 For $icode%i% = 0%$$ to $icode%nx%-1%$$
 $codei%
-	%a_both%[%i%] == %x%[%i%]
+    %a_both%[%i%] == %x%[%i%]
 %$$
 is the $th i$$ independent variable.
 For $icode%i% = 0%$$ to $icode%nd%-1%$$
 $codei%
-	%a_both%[%nx% + %i%] == %dynamic%[%i%]
+    %a_both%[%nx% + %i%] == %dynamic%[%i%]
 %$$
 is the $th i$$ independent dynamic parameter.
 
 $children%
-	example/cplusplus/fun_dynamic_xam.cpp
+    example/cplusplus/fun_dynamic_xam.cpp
 %$$
 $head Example$$
 Most of the c++ $code d_fun$$ examples use the $icode ax$$
@@ -101,50 +101,50 @@ return syntax.
 $end
 */
 std::vector<a_double> independent(const std::vector<double>& x)
-{	using CppAD::AD;
-	size_t n = x.size();
-	CppAD::vector< AD<double> > ax(n);
-	for(size_t j = 0; j < n; j++)
-		ax[j] = x[j];
-	CppAD::Independent(ax);
-	std::vector<a_double> result(n);
-	// use a_double( *AD<double> ) constructor in this assignment loop
-	for(size_t j = 0; j < n; j++)
-		result[j] =  &ax[j] ;
-	return result;
+{   using CppAD::AD;
+    size_t n = x.size();
+    CppAD::vector< AD<double> > ax(n);
+    for(size_t j = 0; j < n; j++)
+        ax[j] = x[j];
+    CppAD::Independent(ax);
+    std::vector<a_double> result(n);
+    // use a_double( *AD<double> ) constructor in this assignment loop
+    for(size_t j = 0; j < n; j++)
+        result[j] =  &ax[j] ;
+    return result;
 }
 // BEGIN_A_BOTH_INDEPENDENT_SOURCE
 std::vector<a_double> independent(
-	const std::vector<double>& x       ,
-	const std::vector<double>& dynamic )
-{	using CppAD::AD;
-	size_t nx = x.size();
-	size_t nd = dynamic.size();
-	CppAD::vector< AD<double> > ax(nx), adynamic(nd);
-	for(size_t j = 0; j < nx; j++)
-		ax[j] = x[j];
-	for(size_t j = 0; j < nd; j++)
-		adynamic[j] = dynamic[j];
-	size_t abort_op_index = 0;
-	size_t record_compare = false;
-	CppAD::Independent(ax, abort_op_index, record_compare, adynamic);
-	std::vector<a_double> a_both(nx + nd);
-	// use a_double( *AD<double> ) constructor in these assignment loops
-	for(size_t j = 0; j < nx; j++)
-		a_both[j] =  &ax[j] ;
-	for(size_t j = 0; j < nd; j++)
-		a_both[nx + j] =  &adynamic[j] ;
-	return a_both;
+    const std::vector<double>& x       ,
+    const std::vector<double>& dynamic )
+{   using CppAD::AD;
+    size_t nx = x.size();
+    size_t nd = dynamic.size();
+    CppAD::vector< AD<double> > ax(nx), adynamic(nd);
+    for(size_t j = 0; j < nx; j++)
+        ax[j] = x[j];
+    for(size_t j = 0; j < nd; j++)
+        adynamic[j] = dynamic[j];
+    size_t abort_op_index = 0;
+    size_t record_compare = false;
+    CppAD::Independent(ax, abort_op_index, record_compare, adynamic);
+    std::vector<a_double> a_both(nx + nd);
+    // use a_double( *AD<double> ) constructor in these assignment loops
+    for(size_t j = 0; j < nx; j++)
+        a_both[j] =  &ax[j] ;
+    for(size_t j = 0; j < nd; j++)
+        a_both[nx + j] =  &adynamic[j] ;
+    return a_both;
 }
 // END_A_BOTH_INDEPENDENT_SOURCE
 /*
 -------------------------------------------------------------------------------
 $begin cpp_abort_recording$$
 $spell
-	vec
-	af
-	const
-	cppad_py
+    vec
+    af
+    const
+    cppad_py
 $$
 
 $section Abort Recording$$
@@ -157,7 +157,7 @@ This aborts the current recording (if it exists)
 started by the most recent call to $cref/independent/cpp_independent/$$.
 
 $children%
-	example/cplusplus/fun_abort_xam.cpp
+    example/cplusplus/fun_abort_xam.cpp
 %$$
 $head Example$$
 $cref/C++/fun_abort_xam.cpp/$$.
@@ -165,17 +165,17 @@ $cref/C++/fun_abort_xam.cpp/$$.
 $end
 */
 void abort_recording(void)
-{	CppAD::AD<double>::abort_recording();
+{   CppAD::AD<double>::abort_recording();
 }
 /*
 -------------------------------------------------------------------------------
 $begin cpp_fun_ctor$$
 $spell
-	vec
-	af
-	const
-	cppad_py
-	Taylor
+    vec
+    af
+    const
+    cppad_py
+    Taylor
 $$
 
 $section Stop Current Recording and Store Function Object$$
@@ -194,7 +194,7 @@ $icode%af% = cppad_py::a_fun(%f%)
 $head ax$$
 This argument has prototype
 $codei%
-	const vec_a_double& %ax%
+    const vec_a_double& %ax%
 %$$
 and must be the same as
 $cref/ax/cpp_independent/ax/$$
@@ -206,7 +206,7 @@ to denote the number of independent variables.
 $head ay$$
 This argument has prototype
 $codei%
-	const vec_a_double& %ax%
+    const vec_a_double& %ax%
 %$$
 It specifies the dependent variables.
 We use the notation $icode%m% = %ay%.size()%$$
@@ -215,7 +215,7 @@ to denote the number of dependent variables.
 $head f$$
 This result has prototype
 $codei%
-	cppad_py::d_fun %f%
+    cppad_py::d_fun %f%
 %$$
 It has a representation for the floating point operations
 that mapped the independent variables $icode ax$$
@@ -230,7 +230,7 @@ $cref cpp_fun_property$$.
 $head af$$
 This result has prototype
 $codei%
-	cppad_py::a_fun %af%
+    cppad_py::a_fun %af%
 %$$
 It has a representation of the same function as $icode f$$.
 This object computes function and derivative values using $code a_double$$.
@@ -244,49 +244,49 @@ $end
 */
 // d_fun(ax, ay)
 d_fun::d_fun(
-	const std::vector<a_double>& ax ,
-	const std::vector<a_double>& ay )
-{	ptr_ = new CppAD::ADFun<double>();
-	size_t n = ax.size();
-	size_t m = ay.size();
-	CPPAD_PY_ASSERT_UNKNOWN(
-		( (n == 0 ) && (m == 0) ) || ( (n != 0) && (m != 0) )
-	);
-	// check for default constructor
-	if( n == 0 )
-		return;
+    const std::vector<a_double>& ax ,
+    const std::vector<a_double>& ay )
+{   ptr_ = new CppAD::ADFun<double>();
+    size_t n = ax.size();
+    size_t m = ay.size();
+    CPPAD_PY_ASSERT_UNKNOWN(
+        ( (n == 0 ) && (m == 0) ) || ( (n != 0) && (m != 0) )
+    );
+    // check for default constructor
+    if( n == 0 )
+        return;
 
-	// copy and convert from Swig vector to Cppad vectors
-	std::vector< CppAD::AD<double> > ax_copy(n), ay_copy(m);
-	for(size_t j = 0; j < n; j++)
-		ax_copy[j] = *( ax[j].ptr() );
-	for(size_t i = 0; i < m; i++)
-		ay_copy[i] = *( ay[i].ptr() );
-	// store the recording
-	ptr_->Dependent(ax_copy, ay_copy);
+    // copy and convert from Swig vector to Cppad vectors
+    std::vector< CppAD::AD<double> > ax_copy(n), ay_copy(m);
+    for(size_t j = 0; j < n; j++)
+        ax_copy[j] = *( ax[j].ptr() );
+    for(size_t i = 0; i < m; i++)
+        ay_copy[i] = *( ay[i].ptr() );
+    // store the recording
+    ptr_->Dependent(ax_copy, ay_copy);
 }
 // --------------------------------------------------------------------------
 // constructor
 a_fun::a_fun(const d_fun& f)
-{	a_ptr_ = new CppAD::ADFun< CppAD::AD<double>, double>();
-	CPPAD_PY_ASSERT_UNKNOWN( a_ptr_ != CPPAD_NULL );
-	*a_ptr_ = f.ptr_->base2ad();
+{   a_ptr_ = new CppAD::ADFun< CppAD::AD<double>, double>();
+    CPPAD_PY_ASSERT_UNKNOWN( a_ptr_ != CPPAD_NULL );
+    *a_ptr_ = f.ptr_->base2ad();
 }
 // destructor
 a_fun::~a_fun(void)
-{	CPPAD_PY_ASSERT_UNKNOWN( a_ptr_ != CPPAD_NULL );
-	delete a_ptr_;
+{   CPPAD_PY_ASSERT_UNKNOWN( a_ptr_ != CPPAD_NULL );
+    delete a_ptr_;
 }
 /*
 ------------------------------------------------------------------------------
 $begin cpp_fun_property$$
 $spell
-	vec
-	af
-	var
-	op
-	const
-	Taylor
+    vec
+    af
+    var
+    op
+    const
+    Taylor
 $$
 
 $section Properties of a Function Object$$
@@ -314,7 +314,7 @@ and is $code const$$.
 $head size_domain$$
 The return value has prototype
 $codei%
-	int %n%
+    int %n%
 %$$
 and is the size of the vector
 $cref/ax/cpp_fun_ctor/ax/$$ in the function constructor; i.e.,
@@ -323,7 +323,7 @@ the number of independent variables.
 $head size_range$$
 The return value has prototype
 $codei%
-	int %m%
+    int %m%
 %$$
 and is the size of the vector
 $cref/ay/cpp_fun_ctor/ay/$$ in the function constructor; i.e.,
@@ -332,7 +332,7 @@ the number of dependent variables.
 $head size_var$$
 The return value has prototype
 $codei%
-	int %v%
+    int %v%
 %$$
 and is the number of variables in the function.
 This includes the independent variables, dependent variables,
@@ -342,7 +342,7 @@ from the independent variables.
 $head size_op$$
 The return value has prototype
 $codei%
-	int %p%
+    int %p%
 %$$
 and is the number of atomic operations that are used to express
 the dependent variables as a function of the independent variables.
@@ -350,7 +350,7 @@ the dependent variables as a function of the independent variables.
 $head size_order$$
 The return value has prototype
 $codei%
-	int %q%
+    int %q%
 %$$
 and is the number of Taylor coefficients currently stored in $icode f$$,
 for every variable in the operation sequence corresponding to $icode f$$.
@@ -362,7 +362,7 @@ The initial value for this property, when the object $icode f$$
 or $icode af$$ is created, is zero.
 
 $children%
-	example/cplusplus/fun_property_xam.cpp
+    example/cplusplus/fun_property_xam.cpp
 %$$
 $head Example$$
 $cref fun_property_xam.cpp$$
@@ -371,39 +371,39 @@ $end
 */
 // size_domain
 int d_fun::size_domain(void) const
-{	return ptr_->Domain(); }
+{   return ptr_->Domain(); }
 int a_fun::size_domain(void) const
-{	return a_ptr_->Domain(); }
+{   return a_ptr_->Domain(); }
 //
 // size_range
 int d_fun::size_range(void) const
-{	return ptr_->Range(); }
+{   return ptr_->Range(); }
 int a_fun::size_range(void) const
-{	return a_ptr_->Range(); }
+{   return a_ptr_->Range(); }
 //
 // size_var
 int d_fun::size_var(void) const
-{	return ptr_->size_var(); }
+{   return ptr_->size_var(); }
 int a_fun::size_var(void) const
-{	return a_ptr_->size_var(); }
+{   return a_ptr_->size_var(); }
 //
 // size_op
 int d_fun::size_op(void) const
-{	return ptr_->size_op(); }
+{   return ptr_->size_op(); }
 int a_fun::size_op(void) const
-{	return a_ptr_->size_op(); }
+{   return a_ptr_->size_op(); }
 //
 // size_order
 int d_fun::size_order(void) const
-{	return ptr_->size_order(); }
+{   return ptr_->size_order(); }
 int a_fun::size_order(void) const
-{	return a_ptr_->size_order(); }
+{   return a_ptr_->size_order(); }
 /*
 ------------------------------------------------------------------------------
 $begin cpp_fun_new_dynamic$$
 $spell
-	const
-	vec
+    const
+    vec
 $$
 
 $section Change The Dynamic Parameters$$
@@ -421,8 +421,8 @@ $head dynamic$$
 If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
 this argument has prototype
 $codei%
-	const vec_double&   %dynamic%
-	const vec_a_double& %dynamic%
+    const vec_double&   %dynamic%
+    const vec_a_double& %dynamic%
 %$$
 and its size must be the same as the size of
 $cref/dynamic/cpp_independent/dynamic/$$ in the corresponding call to
@@ -439,17 +439,17 @@ $end
 */
 // BEGIN_NEW_DYNAMIC_SOURCE
 void d_fun::new_dynamic(const std::vector<double>& dynamic)
-{	if( dynamic.size() != ptr_->size_dyn_ind() )
-		error_message("cppad_py::d_fun::new_dynamic dynamic.size() error");
-	ptr_->new_dynamic(dynamic);
-	return;
+{   if( dynamic.size() != ptr_->size_dyn_ind() )
+        error_message("cppad_py::d_fun::new_dynamic dynamic.size() error");
+    ptr_->new_dynamic(dynamic);
+    return;
 }
 void a_fun::new_dynamic(const std::vector<a_double>& adynamic)
-{	if( adynamic.size() != a_ptr_->size_dyn_ind() )
-		error_message("cppad_py::a_fun::jacobian adynamic.size() error");
-	std::vector< CppAD::AD<double> > au = vec2cppad_double(adynamic);
-	a_ptr_->new_dynamic(au);
-	return;
+{   if( adynamic.size() != a_ptr_->size_dyn_ind() )
+        error_message("cppad_py::a_fun::jacobian adynamic.size() error");
+    std::vector< CppAD::AD<double> > au = vec2cppad_double(adynamic);
+    a_ptr_->new_dynamic(au);
+    return;
 }
 // END_NEW_DYNAMIC_SOURCE
 
@@ -457,16 +457,16 @@ void a_fun::new_dynamic(const std::vector<a_double>& adynamic)
 ------------------------------------------------------------------------------
 $begin cpp_fun_jacobian$$
 $spell
-	vec
-	af
-	Taylor
-	const
-	Jacobian
+    vec
+    af
+    Taylor
+    const
+    Jacobian
 $$
 
 $section Jacobian of an AD Function$$
 $spell
-	vec
+    vec
 $$
 
 $head Syntax$$
@@ -492,8 +492,8 @@ $head x$$
 If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
 this argument has prototype
 $codei%
-	const vec_double&   %x%
-	const vec_a_double& %x%
+    const vec_double&   %x%
+    const vec_a_double& %x%
 %$$
 and its size must be $icode n$$.
 It specifies the argument value at we are computing the Jacobian
@@ -503,18 +503,18 @@ $head J$$
 If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
 the result has prototype
 $codei%
-	vec_double   %J%
-	vec_a_double %J%
+    vec_double   %J%
+    vec_a_double %J%
 %$$
 respectively and its size is $icode%m%*%n%$$.
 For $icode i$$ between zero and $icode%m%-1%$$
 and $icode j$$ between zero and $icode%n%-1%$$,
 $latex \[
-	J [ i * n + j ] = \frac{ \partial f_i }{ \partial x_j } (x)
+    J [ i * n + j ] = \frac{ \partial f_i }{ \partial x_j } (x)
 \] $$
 
 $children%
-	example/cplusplus/fun_jacobian_xam.cpp
+    example/cplusplus/fun_jacobian_xam.cpp
 %$$
 $head Example$$
 $cref fun_jacobian_xam.cpp$$
@@ -523,25 +523,25 @@ $cref fun_jacobian_xam.cpp$$
 $end
 */
 std::vector<double> d_fun::jacobian(const std::vector<double>& x)
-{	if( x.size() != ptr_->Domain() )
-		error_message("cppad_py::d_fun::jacobian x.size() error");
-	return ptr_->Jacobian(x);
+{   if( x.size() != ptr_->Domain() )
+        error_message("cppad_py::d_fun::jacobian x.size() error");
+    return ptr_->Jacobian(x);
 }
 std::vector<a_double> a_fun::jacobian(const std::vector<a_double>& ax)
-{	if( ax.size() != a_ptr_->Domain() )
-		error_message("cppad_py::a_fun::jacobian ax.size() error");
-	std::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
-	std::vector< CppAD::AD<double> > av = a_ptr_->Jacobian(au);
-	return vec2a_double(av);
+{   if( ax.size() != a_ptr_->Domain() )
+        error_message("cppad_py::a_fun::jacobian ax.size() error");
+    std::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
+    std::vector< CppAD::AD<double> > av = a_ptr_->Jacobian(au);
+    return vec2a_double(av);
 }
 /*
 ------------------------------------------------------------------------------
 $begin cpp_fun_hessian$$
 $spell
-	vec
-	af
-	Taylor
-	const
+    vec
+    af
+    Taylor
+    const
 $$
 
 $section Hessian of an AD Function$$
@@ -569,15 +569,15 @@ $head g(x)$$
 We use the notation $latex g: \B{R}^n \rightarrow \B{R}$$
 for the function defined by
 $latex \[
-	g(x) = \sum_{i=0}^{n-1} w_i f_i (x)
+    g(x) = \sum_{i=0}^{n-1} w_i f_i (x)
 \] $$
 
 $head x$$
 If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
 this argument has prototype
 $codei%
-	const vec_double&   %x%
-	const vec_a_double& %x%
+    const vec_double&   %x%
+    const vec_a_double& %x%
 %$$
 and its size must be $icode n$$.
 It specifies the argument value at we are computing the Hessian
@@ -587,8 +587,8 @@ $head w$$
 If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
 this argument has prototype
 $codei%
-	const vec_double&   %w%
-	const vec_a_double& %w%
+    const vec_double&   %w%
+    const vec_a_double& %w%
 %$$
 and its size must be $icode m$$.
 It specifies the vector $icode w$$ in the definition of $latex g(x)$$ above.
@@ -597,18 +597,18 @@ $head H$$
 If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
 the result has prototype
 $codei%
-	vec_double   %H%
-	vec_a_double %H%
+    vec_double   %H%
+    vec_a_double %H%
 %$$
 and its size is $icode%n%*%n%$$.
 For $icode i$$ between zero and $icode%n%-1%$$
 and $icode j$$ between zero and $icode%n%-1%$$,
 $latex \[
-	H [ i * n + j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
+    H [ i * n + j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
 \] $$
 
 $children%
-	example/cplusplus/fun_hessian_xam.cpp
+    example/cplusplus/fun_hessian_xam.cpp
 %$$
 $head Example$$
 $cref fun_hessian_xam.cpp$$
@@ -616,37 +616,37 @@ $cref fun_hessian_xam.cpp$$
 $end
 */
 std::vector<double> d_fun::hessian(
-	const std::vector<double>& x  ,
-	const std::vector<double>& w  )
-{	if( x.size() != ptr_->Domain() )
-		error_message("cppad_py::d_fun::hessian:: x.size() error");
-	if( w.size() != ptr_->Range() )
-		error_message("cppad_py::d_fun::hessian:: w.size() error");
-	return ptr_->Hessian(x, w);
+    const std::vector<double>& x  ,
+    const std::vector<double>& w  )
+{   if( x.size() != ptr_->Domain() )
+        error_message("cppad_py::d_fun::hessian:: x.size() error");
+    if( w.size() != ptr_->Range() )
+        error_message("cppad_py::d_fun::hessian:: w.size() error");
+    return ptr_->Hessian(x, w);
 }
 std::vector<a_double> a_fun::hessian(
-	const std::vector<a_double>& ax  ,
-	const std::vector<a_double>& aw  )
-{	if( ax.size() != a_ptr_->Domain() )
-		error_message("cppad_py::d_fun::hessian:: x.size() error");
-	if( aw.size() != a_ptr_->Range() )
-		error_message("cppad_py::d_fun::hessian:: w.size() error");
-	//
-	std::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
-	std::vector< CppAD::AD<double> > av = vec2cppad_double(aw);
-	std::vector< CppAD::AD<double> > az = a_ptr_->Hessian(au, av);
-	return vec2a_double(az);
+    const std::vector<a_double>& ax  ,
+    const std::vector<a_double>& aw  )
+{   if( ax.size() != a_ptr_->Domain() )
+        error_message("cppad_py::d_fun::hessian:: x.size() error");
+    if( aw.size() != a_ptr_->Range() )
+        error_message("cppad_py::d_fun::hessian:: w.size() error");
+    //
+    std::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
+    std::vector< CppAD::AD<double> > av = vec2cppad_double(aw);
+    std::vector< CppAD::AD<double> > az = a_ptr_->Hessian(au, av);
+    return vec2a_double(az);
 }
 /*
 ------------------------------------------------------------------------------
 $begin cpp_fun_forward$$
 $spell
-	af
-	xp
-	Taylor
-	yp
-	const
-	vec
+    af
+    xp
+    Taylor
+    yp
+    const
+    vec
 $$
 
 $section Forward Mode AD$$
@@ -660,7 +660,7 @@ the $th p$$ order Taylor coefficient is its
 $code p$$-th order derivative divided by $icode p$$ factorial
 and evaluated at $latex t = 0$$; i.e.,
 $latex \[
-	g^{(p)} (0) /  p !
+    g^{(p)} (0) /  p !
 \]$$
 
 $head f$$
@@ -691,7 +691,7 @@ by $latex Y(t) = f(X(t))$$.
 $head p$$
 This argument has prototype
 $codei%
-	int %p%
+    int %p%
 %$$
 and is non-negative.
 It is the order of the Taylor coefficient being calculated.
@@ -710,8 +710,8 @@ $head xp$$
 If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
 this argument has prototype
 $codei%
-	const vec_double&   %xp%
-	const vec_a_double& %xp%
+    const vec_double&   %xp%
+    const vec_a_double& %xp%
 %$$
 respectively and its size must be $icode n$$.
 It specifies the $th p$$ order Taylor coefficients for $icode X(t)$$.
@@ -720,14 +720,14 @@ $head yp$$
 If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
 the result has prototype
 $codei%
-	vec_double&   %yp%
-	vec_a_double& %yp%
+    vec_double&   %yp%
+    vec_a_double& %yp%
 %$$
 respectively and its size is $icode m$$.
 It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
 
 $children%
-	example/cplusplus/fun_forward_xam.cpp
+    example/cplusplus/fun_forward_xam.cpp
 %$$
 $head Example$$
 $cref fun_forward_xam.cpp$$
@@ -735,27 +735,27 @@ $cref fun_forward_xam.cpp$$
 $end
 */
 std::vector<double> d_fun::forward(int p, const std::vector<double>& xp)
-{	if( xp.size() != ptr_->Domain() )
-		error_message("cppad_py::d_fun::forward xp.size() error");
-	return ptr_->Forward(p, xp);
+{   if( xp.size() != ptr_->Domain() )
+        error_message("cppad_py::d_fun::forward xp.size() error");
+    return ptr_->Forward(p, xp);
 }
 std::vector<a_double> a_fun::forward(int p, const std::vector<a_double>& axp)
-{	if( axp.size() != a_ptr_->Domain() )
-		error_message("cppad_py::a_fun::forward axp.size() error");
-	std::vector< CppAD::AD<double> > aup = vec2cppad_double(axp);
-	std::vector< CppAD::AD<double> > avp =  a_ptr_->Forward(p, aup);
-	return vec2a_double(avp);
+{   if( axp.size() != a_ptr_->Domain() )
+        error_message("cppad_py::a_fun::forward axp.size() error");
+    std::vector< CppAD::AD<double> > aup = vec2cppad_double(axp);
+    std::vector< CppAD::AD<double> > avp =  a_ptr_->Forward(p, aup);
+    return vec2a_double(avp);
 }
 /*
 -------------------------------------------------------------------------------
 $begin cpp_fun_reverse$$
 $spell
-	vec
-	af
-	xq
-	Taylor
-	yq
-	const
+    vec
+    af
+    xq
+    Taylor
+    yq
+    const
 $$
 
 $section Reverse Mode AD$$
@@ -803,7 +803,7 @@ for a function that the calling routine chooses.
 $head q$$
 This argument has prototype
 $codei%
-	int %q%
+    int %q%
 %$$
 and is positive.
 It is the number of the Taylor coefficient (for each variable)
@@ -817,8 +817,8 @@ $head yq$$
 If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
 this argument has prototype
 $codei%
-	const vec_double&   %yq%
-	const vec_a_double& %yq%
+    const vec_double&   %yq%
+    const vec_a_double& %yq%
 %$$
 and its size must be $icode%m%*%q%$$.
 For $icode%0% <= %i% < %m%$$ and $icode%0% <= %k% < %q%$$,
@@ -831,8 +831,8 @@ $head xq$$
 If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
 the result has prototype
 $codei%
-	const vec_double&   %xq%
-	const vec_a_double& %xq%
+    const vec_double&   %xq%
+    const vec_a_double& %xq%
 %$$
 respectively and its size is $icode%n%*%q%$$.
 For $icode%0% <= %j% < %n%$$ and $icode%0% <= %k% < %q%$$,
@@ -843,7 +843,7 @@ the partial derivative of
 $latex G(T(S))$$ w.r.t. $latex S_j^{(k)} (t) / k !$$.
 
 $children%
-	example/cplusplus/fun_reverse_xam.cpp
+    example/cplusplus/fun_reverse_xam.cpp
 %$$
 $head Example$$
 $cref fun_reverse_xam.cpp$$
@@ -851,22 +851,22 @@ $cref fun_reverse_xam.cpp$$
 $end
 */
 std::vector<double> d_fun::reverse(int q, const std::vector<double>& yq)
-{	if( yq.size() != q * ptr_->Range() )
-		error_message("cppad_py::d_fun::reverse yq.size() error");
-	return ptr_->Reverse(q, yq);
+{   if( yq.size() != q * ptr_->Range() )
+        error_message("cppad_py::d_fun::reverse yq.size() error");
+    return ptr_->Reverse(q, yq);
 }
 std::vector<a_double> a_fun::reverse(int q, const std::vector<a_double>& ayq)
-{	if( ayq.size() != q * a_ptr_->Range() )
-		error_message("cppad_py::a_fun::reverse yq.size() error");
-	std::vector< CppAD::AD<double> > avq = vec2cppad_double(ayq);
-	std::vector< CppAD::AD<double> > auq =  a_ptr_->Reverse(q, avq);
-	return vec2a_double(auq);
+{   if( ayq.size() != q * a_ptr_->Range() )
+        error_message("cppad_py::a_fun::reverse yq.size() error");
+    std::vector< CppAD::AD<double> > avq = vec2cppad_double(ayq);
+    std::vector< CppAD::AD<double> > auq =  a_ptr_->Reverse(q, avq);
+    return vec2a_double(auq);
 }
 /*
 ------------------------------------------------------------------------------
 $begin cpp_fun_optimize$$
 $spell
-	af
+    af
 $$
 
 $section Optimize an AD Function$$
@@ -888,7 +888,7 @@ Optimizing this $icode f$$ also optimizes the
 corresponding $cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$.
 
 $children%
-	example/cplusplus/fun_optimize_xam.cpp
+    example/cplusplus/fun_optimize_xam.cpp
 %$$
 $head Example$$
 $cref fun_optimize_xam.cpp$$
@@ -896,15 +896,15 @@ $cref fun_optimize_xam.cpp$$
 $end
 */
 void d_fun::optimize(void)
-{	ptr_->optimize(); }
+{   ptr_->optimize(); }
 /*
 ----------------------------------------------------------------------------
 $begin cpp_fun_json$$
 $spell
-	json
-	std
-	CppAD
-	const
+    json
+    std
+    CppAD
+    const
 $$
 
 $section Json Representation of AD Computational Graph$$
@@ -927,13 +927,13 @@ $head to_json$$
 In this case, the function object $icode f$$ is $code const$$ and
 the return value $icode json$$ has prototype
 $codei%
-	std::string %json%
+    std::string %json%
 %$$
 
 $head from_json$$
 In this case, $icode json$$ has prototype
 $codei%
-	const std::string& %json%
+    const std::string& %json%
 %$$
 and the function $icode f$$ so it corresponds to $icode json$$.
 
@@ -948,9 +948,9 @@ $end
 */
 // to_json
 std::string d_fun::to_json(void) const
-{	return ptr_->to_json(); }
+{   return ptr_->to_json(); }
 void d_fun::from_json(const std::string& json)
-{	return ptr_->from_json(json); }
+{   return ptr_->from_json(json); }
 
 
 } // END_CPPAD_PY_NAMESPACE

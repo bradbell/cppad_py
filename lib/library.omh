@@ -7,14 +7,14 @@
 -------------------------------------------------------------------------------
 $begin library$$
 $spell
-	Cppad
-	Py
+    Cppad
+    Py
 $$
 
 $section The Cppad Py Libraries$$
 
 $childtable%lib/python/cppad_py/py_lib.omh
-	%lib/cplusplus/cpp_lib.omh
+    %lib/cplusplus/cpp_lib.omh
 %$$
 
 

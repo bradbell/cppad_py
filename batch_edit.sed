@@ -14,12 +14,12 @@
 # '
 # list of files and or directories that are moved to new names
 # move_paths='
-#	example/python/numeric/ode_one_step_xam.py
+#   example/python/numeric/ode_one_step_xam.py
 # '
 # list of sed commands that map old file and directory names to new names.
 # The characters @s, @d, @n get converted to a space, dollar sign, new line.
 # move_seds='
-#	s|ode_one_step_xam|runge4_step_xam|
+#   s|ode_one_step_xam|runge4_step_xam|
 # '
 # list of files that get edited by the extra_seds command
 # extra_files='

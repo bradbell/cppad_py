@@ -7,17 +7,17 @@
 -------------------------------------------------------------------------------
 $begin whats_new_2018$$
 $spell
-	Cppad
-	Py
-	std::runtime_error
-	cmake
-	init
-	numpy
-	ind
-	dep
-	af
-	xam
-	cxx
+    Cppad
+    Py
+    std::runtime_error
+    cmake
+    init
+    numpy
+    ind
+    dep
+    af
+    xam
+    cxx
 $$
 
 $section Cppad Py Changes During 2018$$
@@ -98,7 +98,7 @@ $cref setup.py$$.
 Add $code -py3$$ to the $code swig$$ builds
 when running $code setup.py$$ using Python 3; see
 $href%http://www.swig.org/Doc1.3/Python.html#Python_python3support
-	%swig python 3
+    %swig python 3
 %$$.
 
 $head 07-15$$

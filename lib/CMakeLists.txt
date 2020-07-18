@@ -18,34 +18,34 @@ include (GenerateExportHeader)
 #
 # cppad_py_lib (library used by sub-directories below)
 ADD_LIBRARY(cppad_py_lib SHARED
-	cplusplus/a_double.cpp
-	cplusplus/fun.cpp
-	cplusplus/sparse.cpp
-	cplusplus/cppad_vec.cpp
-	cplusplus/error.cpp
+    cplusplus/a_double.cpp
+    cplusplus/fun.cpp
+    cplusplus/sparse.cpp
+    cplusplus/cppad_vec.cpp
+    cplusplus/error.cpp
 )
 # The file cppad_py_lib_export.h, in the current binary directory, will
 # define the symbol CPPAD_PY_LIB_PUBLIC. This symbol should be used to
 # export cppad_py_lib, when it is being compiled, and import it when
 # cppad_py_lib is being linked.
 GENERATE_EXPORT_HEADER( cppad_py_lib
-	BASE_NAME           cppad_py_lib
-	EXPORT_MACRO_NAME   CPPAD_PY_LIB_PUBLIC
-	EXPORT_FILE_NAME    cppad_py_lib_export.h
-	STATIC_DEFINE       CPPAD_PY_LIB_BUILT_AS_STATIC
+    BASE_NAME           cppad_py_lib
+    EXPORT_MACRO_NAME   CPPAD_PY_LIB_PUBLIC
+    EXPORT_FILE_NAME    cppad_py_lib_export.h
+    STATIC_DEFINE       CPPAD_PY_LIB_BUILT_AS_STATIC
 )
 #
 # additional flags for compiling cppad_py library
 SET_TARGET_PROPERTIES(
-	cppad_py_lib PROPERTIES COMPILE_FLAGS "${cppad_cxx_flags}"
+    cppad_py_lib PROPERTIES COMPILE_FLAGS "${cppad_cxx_flags}"
 )
 #
 IF( NOT( "${check_lib_depends}" STREQUAL "" ) )
-	# Add the check target
-	ADD_CUSTOM_TARGET(check_lib DEPENDS ${check_lib_depends})
-	MESSAGE(STATUS "make check_lib: available")
-	#
-	# Change check depends in parent environment
-	add_to_list(check_depends check_lib )
-	SET(check_depends "${check_depends}" PARENT_SCOPE)
+    # Add the check target
+    ADD_CUSTOM_TARGET(check_lib DEPENDS ${check_lib_depends})
+    MESSAGE(STATUS "make check_lib: available")
+    #
+    # Change check depends in parent environment
+    add_to_list(check_depends check_lib )
+    SET(check_depends "${check_depends}" PARENT_SCOPE)
 ENDIF( NOT( "${check_lib_depends}" STREQUAL "" ) )

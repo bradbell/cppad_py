@@ -9,33 +9,33 @@
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
 def error_message_xam() :
-	#
-	import numpy
-	import cppad_py
-	#
-	# initialize return variable
-	ok = True
-	# ---------------------------------------------------------------------
-	ok = False
-	try :
-		cppad_py.error_message("test message")
-	except : # catch
-		stored_message = cppad_py.error_message("")
-		ok = (stored_message == "test message")
-	#
-	return( ok  )
+    #
+    import numpy
+    import cppad_py
+    #
+    # initialize return variable
+    ok = True
+    # ---------------------------------------------------------------------
+    ok = False
+    try :
+        cppad_py.error_message("test message")
+    except : # catch
+        stored_message = cppad_py.error_message("")
+        ok = (stored_message == "test message")
+    #
+    return( ok  )
 #
 # END SOURCE
 # -----------------------------------------------------------------------------
 # $begin error_message_xam.py$$ $newlinech #$$
 # $spell
-#	py
-#	perl
-#	cppad
-#	py
-#	xam
-#	Jacobian
-#	Jacobians
+#   py
+#   perl
+#   cppad
+#   py
+#   xam
+#   Jacobian
+#   Jacobians
 # $$
 # $section Python: Cppad Py Exception Handling: Example and Test$$
 # $srcthisfile|0|# BEGIN SOURCE|# END SOURCE|$$

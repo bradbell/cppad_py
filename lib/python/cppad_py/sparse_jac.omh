@@ -7,18 +7,18 @@
 -------------------------------------------------------------------------------
 $begin py_sparse_jac$$
 $spell
-	Jacobians
-	jac
-	af
-	Jacobian
-	Taylor
-	rcv
-	nr
-	nc
-	const
-	vec
-	rc
-	cppad_py
+    Jacobians
+    jac
+    af
+    Jacobian
+    Taylor
+    rcv
+    nr
+    nc
+    const
+    vec
+    rc
+    cppad_py
 $$
 
 $section Computing Sparse Jacobians$$
@@ -35,7 +35,7 @@ We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
 function corresponding to $icode f$$.
 The syntax above takes advantage of sparsity when computing the Jacobian
 $latex \[
-	J(x) = F^{(1)} (x)
+    J(x) = F^{(1)} (x)
 \] $$
 In the sparse case, this should be faster and take less memory than
 $cref py_fun_jacobian$$.
@@ -87,7 +87,7 @@ when $cref/work/sparse_jac/work/$$ is non-empty.
 $head work$$
 This argument must have been constructed by the call
 $codei%
-	%work% = cppad_py.sparse_jac_work()
+    %work% = cppad_py.sparse_jac_work()
 %$$
 We refer to its initial value,
 and its value after $icode%work%.clear()%$$, as empty.
@@ -115,12 +115,12 @@ for all the variables in the operation sequence..
 After a call to $code sparse_jac_forward$$ or $code sparse_jac_rev$$,
 the zero order coefficients correspond to
 $codei%
-	%f%.forward(0, %x%)
+    %f%.forward(0, %x%)
 %$$
 All the other forward mode coefficients are unspecified.
 
 $children%
-	example/python/core/sparse_jac_xam.py
+    example/python/core/sparse_jac_xam.py
 %$$
 $head Example$$
 $cref sparse_jac_xam.py$$

@@ -8,14 +8,14 @@
 $begin more_cpp$$
 $dollar @$$
 $spell
-	CppAD
-	cppad_py
-	hpp
-	cplusplus
-	OMhelp
-	xam
-	bool
-	grep
+    CppAD
+    cppad_py
+    hpp
+    cplusplus
+    OMhelp
+    xam
+    bool
+    grep
 $$
 
 $section Steps To Add More C++ Functions$$
@@ -34,10 +34,10 @@ $subhead independent$$
 The include file $code include/cppad/py/fun.hpp$$
 was edited to add the following prototype:
 $srccode%cpp%
-	CPPAD_PY_LIB_PUBLIC
-	std::vector<a_double> independent(
-		const std::vector<double>& x, const std::vector<double>& dynamic
-	);
+    CPPAD_PY_LIB_PUBLIC
+    std::vector<a_double> independent(
+        const std::vector<double>& x, const std::vector<double>& dynamic
+    );
 %$$
 The $code independent$$ function is not part of the
 $code d_fun$$ or $code a_fun$$ class, but
@@ -48,11 +48,11 @@ $subhead new_dynamic$$
 The include file $code include/cppad/py/fun.hpp$$
 was edited to add the following member function to $code d_fun$$:
 $srccode%cpp%
-	void new_dynamic(const std::vector<double>& dynamic);
+    void new_dynamic(const std::vector<double>& dynamic);
 %$$
 The following member function was added to $code a_fun$$:
 $srccode%cpp%
-	void new_dynamic(const std::vector<a_double>& adynamic);
+    void new_dynamic(const std::vector<a_double>& adynamic);
 %$$
 
 
@@ -62,7 +62,7 @@ $subhead independent$$
 The C++ file $code lib/cplusplus/fun.cpp$$
 was edited to add the following syntax documentation:
 $codei%
-	%a_both% = cppad_py::independent(%x%, %dynamic%)
+    %a_both% = cppad_py::independent(%x%, %dynamic%)
 %$$
 and the corresponding return value was documented; see
 $cref/a_both/cpp_independent/a_both/$$.
@@ -74,9 +74,9 @@ $subhead Example$$
 The corresponding example file was added to the documentation,
 below the $cref cpp_independent$$ section, using the OMhelp commands:
 $codep
-	@children%
-		example/cplusplus/fun_dynamic_xam.cpp
-	%@@
+    @children%
+        example/cplusplus/fun_dynamic_xam.cpp
+    %@@
 $$
 In addition, a reference to this example was added under the
 $cref/example/cpp_independent/Example/$$ heading in the $code independent$$
@@ -87,14 +87,14 @@ $head Implementation$$
 $subhead independent$$
 The following function was added to the $code lib/cplusplus/fun.cpp$$ file:
 $srcfile%lib/cplusplus/fun.cpp%
-	0%// BEGIN_A_BOTH_INDEPENDENT_SOURCE%// END_A_BOTH_INDEPENDENT_SOURCE%0
+    0%// BEGIN_A_BOTH_INDEPENDENT_SOURCE%// END_A_BOTH_INDEPENDENT_SOURCE%0
 %$$
 
 $subhead new_dynamic$$
 The following function
 was added to the $code lib/cplusplus/fun.cpp$$ file:
 $srcfile%lib/cplusplus/fun.cpp%
-	0%// BEGIN_NEW_DYNAMIC_SOURCE%// END_NEW_DYNAMIC_SOURCE%0
+    0%// BEGIN_NEW_DYNAMIC_SOURCE%// END_NEW_DYNAMIC_SOURCE%0
 %$$
 A similar function was added to the $code a_fun$$ class.
 
@@ -104,11 +104,11 @@ with the following contents:
 $cref fun_dynamic_xam.cpp$$.
 In addition, in the file $code example/cplusplus/check_all.cpp$$:
 $codei%
-	extern bool fun_optimize_xam(void);
+    extern bool fun_optimize_xam(void);
 %$$
 was added to the external declarations and
 $codei%
-	ok &= Run( fun_optimize_xam,          "fun_optimize_xam"        );
+    ok &= Run( fun_optimize_xam,          "fun_optimize_xam"        );
 %$$
 was added to the main program.
 
@@ -120,7 +120,7 @@ $code bin/check_all.sh$$ was run and the changes were made
 until the warnings and errors were fixed.
 The command
 $codep
-	grep 'fun_dynamic_xam' check_all.log
+    grep 'fun_dynamic_xam' check_all.log
 $$
 was used to make sure that the new C++ example / test was run.
 Note that if a particular step in $code bin/check_all.sh$$ is failing,

@@ -12,69 +12,69 @@ sys.path.insert(0, top_srcdir)
 sys.path.insert(0, '.')
 #
 def run_test(module_name, fun_name) :
-	namespace = {} # not needed in Python 2
-	exec( 'import ' + module_name,                         namespace )
-	exec( 'ok = '   + module_name + '.' + fun_name + '()', namespace )
-	ok = namespace['ok']
-	if ok :
-		print('python: ' + name + ': OK')
-	else :
-		print('python: ' + name + ': Error')
-	return ok
+    namespace = {} # not needed in Python 2
+    exec( 'import ' + module_name,                         namespace )
+    exec( 'ok = '   + module_name + '.' + fun_name + '()', namespace )
+    ok = namespace['ok']
+    if ok :
+        print('python: ' + name + ': OK')
+    else :
+        print('python: ' + name + ': Error')
+    return ok
 #
 core_list = [
-	'a_double_cond_assign_xam',
-	'a_double_property_xam',
-	'a_double_unary_fun_xam',
-	'a_double_unary_op_xam',
-	'a_double_assign_xam',
-	'a_double_binary_xam',
-	'a_double_compare_xam',
-	'a_fun_xam',
-	'vector_size_xam',
-	'vector_set_get_xam',
-	'fun_dynamic_xam',
-	'fun_property_xam',
-	'fun_optimize_xam',
-	'fun_jacobian_xam',
-	'fun_hessian_xam',
-	'fun_forward_xam',
-	'fun_reverse_xam',
-	'fun_abort_xam',
-	'fun_json_xam',
-	'sparse_rc_xam',
-	'sparse_rcv_xam',
-	'sparse_jac_pattern_xam',
-	'sparse_jac_xam',
-	'sparse_hes_xam',
-	'sparse_hes_pattern_xam',
-	'error_message_xam',
+    'a_double_cond_assign_xam',
+    'a_double_property_xam',
+    'a_double_unary_fun_xam',
+    'a_double_unary_op_xam',
+    'a_double_assign_xam',
+    'a_double_binary_xam',
+    'a_double_compare_xam',
+    'a_fun_xam',
+    'vector_size_xam',
+    'vector_set_get_xam',
+    'fun_dynamic_xam',
+    'fun_property_xam',
+    'fun_optimize_xam',
+    'fun_jacobian_xam',
+    'fun_hessian_xam',
+    'fun_forward_xam',
+    'fun_reverse_xam',
+    'fun_abort_xam',
+    'fun_json_xam',
+    'sparse_rc_xam',
+    'sparse_rcv_xam',
+    'sparse_jac_pattern_xam',
+    'sparse_jac_xam',
+    'sparse_hes_xam',
+    'sparse_hes_pattern_xam',
+    'error_message_xam',
 ]
 numeric_list = [
-	'simple_inv_xam',
-	'optimize_fun_xam',
-	'runge4_step_xam',
-	'rosen3_step_xam',
-	'ode_multi_step_xam',
-	'seirwd_model_xam',
-	'covid_19_xam',
+    'simple_inv_xam',
+    'optimize_fun_xam',
+    'runge4_step_xam',
+    'rosen3_step_xam',
+    'ode_multi_step_xam',
+    'seirwd_model_xam',
+    'covid_19_xam',
 ]
 error_count = 0
 #
 os.chdir('core')
 for name in core_list :
-	ok = run_test(name, name)
-	if not ok :
-		error_count += 1
+    ok = run_test(name, name)
+    if not ok :
+        error_count += 1
 #
 os.chdir('../numeric')
 for name in numeric_list :
-	ok = run_test(name, name)
-	if not ok :
-		error_count += 1
+    ok = run_test(name, name)
+    if not ok :
+        error_count += 1
 #
 if error_count > 0 :
-	print('python: check_all: error_count = ', error_count)
-	sys.exit(1)
+    print('python: check_all: error_count = ', error_count)
+    sys.exit(1)
 print('python: check_all: OK')
 sys.exit(0)

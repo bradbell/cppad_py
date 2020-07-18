@@ -10,111 +10,111 @@ import numpy
 from simple_inv import simple_inv
 import cppad_py
 def rosen3_step(fun, ti, yi, h) :
-	#
-	r1_2     = 1.0   / 2.0
-	r3_2     = 3.0   / 2.0
-	r3_5     = 3.0   / 5.0
-	r24_25   = 24.0  / 25.0
-	r3_25    = 3.0   / 25.0
-	r121_50  = 121.0 / 50.0
-	r186_25  = 186.0 / 25.0
-	r6_5     = 6.0   / 5.0
-	r97_108  = 97.0  / 108.0
-	r11_72   = 11.0  / 72.0
-	r25_216  = 25.0  / 216.0
-	#
-	# Einv
-	ny   = yi.size
-	I    = numpy.identity(ny, dtype=float)
-	E    = I - r1_2 * h * fun.f_y(ti, yi)
-	Einv = simple_inv(E)
-	#
-	# f_t
-	f_t  = fun.f_t(ti, yi)
-	#
-	# k1
-	k1   = fun.f(ti, yi)
-	k1  += r1_2 * h * f_t
-	k1   = numpy.matmul(Einv , k1)
-	#
-	# k2
-	k2   = fun.f(ti + h, yi + h * k1)
-	k2  -= r3_2 * h * f_t
-	k2  -= 4.0 * k1
-	k2   = numpy.matmul(Einv , k2)
-	#
-	# k3
-	t    = ti + r3_5 * h
-	y    = yi + r24_25 * h * k1 + r3_25 * h * k2
-	k3   = fun.f(t, y)
-	k3  += r121_50 * h * f_t
-	k3  += r186_25 * k1 + r6_5 * k2
-	k3   = numpy.matmul(Einv , k3)
-	#
-	yf   = yi + h * ( r97_108 * k1 + r11_72 * k2 + r25_216 * k3)
-	#
-	return yf
+    #
+    r1_2     = 1.0   / 2.0
+    r3_2     = 3.0   / 2.0
+    r3_5     = 3.0   / 5.0
+    r24_25   = 24.0  / 25.0
+    r3_25    = 3.0   / 25.0
+    r121_50  = 121.0 / 50.0
+    r186_25  = 186.0 / 25.0
+    r6_5     = 6.0   / 5.0
+    r97_108  = 97.0  / 108.0
+    r11_72   = 11.0  / 72.0
+    r25_216  = 25.0  / 216.0
+    #
+    # Einv
+    ny   = yi.size
+    I    = numpy.identity(ny, dtype=float)
+    E    = I - r1_2 * h * fun.f_y(ti, yi)
+    Einv = simple_inv(E)
+    #
+    # f_t
+    f_t  = fun.f_t(ti, yi)
+    #
+    # k1
+    k1   = fun.f(ti, yi)
+    k1  += r1_2 * h * f_t
+    k1   = numpy.matmul(Einv , k1)
+    #
+    # k2
+    k2   = fun.f(ti + h, yi + h * k1)
+    k2  -= r3_2 * h * f_t
+    k2  -= 4.0 * k1
+    k2   = numpy.matmul(Einv , k2)
+    #
+    # k3
+    t    = ti + r3_5 * h
+    y    = yi + r24_25 * h * k1 + r3_25 * h * k2
+    k3   = fun.f(t, y)
+    k3  += r121_50 * h * f_t
+    k3  += r186_25 * k1 + r6_5 * k2
+    k3   = numpy.matmul(Einv , k3)
+    #
+    yf   = yi + h * ( r97_108 * k1 + r11_72 * k2 + r25_216 * k3)
+    #
+    return yf
 # END_ROSEN3_STEP
 # BEGIN_CHECK_ROSEN3_STEP
 def check_rosen3_step(fun, ti, yi, h) :
-	ok    = True
-	eps99 = 99.0 * numpy.finfo(float).eps
-	#
-	ny    = yi.size
-	both  = numpy.concatenate( (yi, [ti]) )
-	aboth = cppad_py.independent(both)
-	az    = fun.f(aboth[ny], aboth[0:ny] )
-	fun_d = cppad_py.d_fun(aboth, az)
-	#
-	J     = fun_d.jacobian(both)
-	#
-	# check fun.f_t(t, y)
-	fun_t   = fun.f_t(ti, yi)
-	printed = False
-	for i in range(ny) :
-		if J[i, ny] == 0.0 :
-			ok = ok and fun_t[i] == 0.0
-		else :
-			rel_error = fun_t[i] / J[i,ny] - 1.0
-			if abs(rel_error) > eps99 :
-				ok = False
-				if not printed :
-					print('check_rosen3_step: fun.f_t check failed')
-					printed = True
-				print('fun_t[', i, '] = ', fun_t[i], ', check = ', J[i,ny])
-	#
-	# check fun.f_y(t, y)
-	fun_y = fun.f_y(ti, yi)
-	printed = False
-	for i in range(ny) :
-		for j in range(ny) :
-			if J[i, j] == 0.0 :
-				ok_ij =fun_y[i, j] == 0.0
-			else :
-				rel_error = fun_y[i, j] / J[i, j] - 1.0
-				ok_ij = abs( rel_error ) < eps99
-			if (not ok_ij) and (not printed) :
-				print('check_rosen3_step: fun.f_y check failed')
-				printed = True
-			if not ok_ij :
-				msg  = 'fun_y[' + str(i) + ',' + str(j) + '] ='
-				msg += str( fun_y[i, j] )
-				msg += ', check = ' + str( J[i, j] )
-				print(msg)
-	#
-	return ok
+    ok    = True
+    eps99 = 99.0 * numpy.finfo(float).eps
+    #
+    ny    = yi.size
+    both  = numpy.concatenate( (yi, [ti]) )
+    aboth = cppad_py.independent(both)
+    az    = fun.f(aboth[ny], aboth[0:ny] )
+    fun_d = cppad_py.d_fun(aboth, az)
+    #
+    J     = fun_d.jacobian(both)
+    #
+    # check fun.f_t(t, y)
+    fun_t   = fun.f_t(ti, yi)
+    printed = False
+    for i in range(ny) :
+        if J[i, ny] == 0.0 :
+            ok = ok and fun_t[i] == 0.0
+        else :
+            rel_error = fun_t[i] / J[i,ny] - 1.0
+            if abs(rel_error) > eps99 :
+                ok = False
+                if not printed :
+                    print('check_rosen3_step: fun.f_t check failed')
+                    printed = True
+                print('fun_t[', i, '] = ', fun_t[i], ', check = ', J[i,ny])
+    #
+    # check fun.f_y(t, y)
+    fun_y = fun.f_y(ti, yi)
+    printed = False
+    for i in range(ny) :
+        for j in range(ny) :
+            if J[i, j] == 0.0 :
+                ok_ij =fun_y[i, j] == 0.0
+            else :
+                rel_error = fun_y[i, j] / J[i, j] - 1.0
+                ok_ij = abs( rel_error ) < eps99
+            if (not ok_ij) and (not printed) :
+                print('check_rosen3_step: fun.f_y check failed')
+                printed = True
+            if not ok_ij :
+                msg  = 'fun_y[' + str(i) + ',' + str(j) + '] ='
+                msg += str( fun_y[i, j] )
+                msg += ', check = ' + str( J[i, j] )
+                print(msg)
+    #
+    return ok
 # END_CHECK_ROSEN3_STEP
 #
 # $begin numeric_rosen3_step$$ $newlinech #$$
 # $spell
-#	Rosenbrock
-#	rosen
-#	yf
-#	yi
-#	yp
-#	numpy
-#	Shampine
-#	Rosenbrock
+#   Rosenbrock
+#   rosen
+#   yf
+#   yi
+#   yp
+#   numpy
+#   Shampine
+#   Rosenbrock
 # $$
 #
 #
@@ -130,7 +130,7 @@ def check_rosen3_step(fun, ti, yi, h) :
 # The routine $code rosen3_step$$ can be used with
 # $code ad_double$$ to solve an initial value ODE
 # $latex \[
-#	y^{(1)} (t)  = f( t , y )
+#   y^{(1)} (t)  = f( t , y )
 # \] $$
 #
 # $head Reference$$
@@ -196,7 +196,7 @@ def check_rosen3_step(fun, ti, yi, h) :
 # Otherwise AD has detected an error in these functions.
 #
 # $children%
-#	example/python/numeric/rosen3_step_xam.py
+#   example/python/numeric/rosen3_step_xam.py
 # %$$
 # $head Example$$
 # $cref numeric_rosen3_step_xam.py$$
@@ -205,12 +205,12 @@ def check_rosen3_step(fun, ti, yi, h) :
 #
 # $subhead rosen3_step$$
 # $srcthisfile%
-#	0%# BEGIN_ROSEN3_STEP%# END_ROSEN3_STEP%0
+#   0%# BEGIN_ROSEN3_STEP%# END_ROSEN3_STEP%0
 # %$$
 #
 # $subhead check_rosen3_step$$
 # $srcthisfile%
-#	0%# BEGIN_CHECK_ROSEN3_STEP%# END_CHECK_ROSEN3_STEP%0
+#   0%# BEGIN_CHECK_ROSEN3_STEP%# END_CHECK_ROSEN3_STEP%0
 # %$$
 #
 # $end

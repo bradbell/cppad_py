@@ -27,10 +27,10 @@
 /*
 $begin module$$
 $spell
-	Cppad
-	Py
-	py
-	namespace
+    Cppad
+    Py
+    py
+    namespace
 $$
 
 $section C++ and Python Modules$$

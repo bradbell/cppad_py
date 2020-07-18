@@ -7,17 +7,17 @@
 # -----------------------------------------------------------------------------
 # $begin py_sparse_rc$$ $newlinech #$$
 # $spell
-#	rc
-#	nr
-#	nc
-#	nnz
-#	resize
-#	const
-#	Cppad
-#	Py
-#	vec
-#	cppad_py
-#	numpy
+#   rc
+#   nr
+#   nc
+#   nnz
+#   resize
+#   const
+#   Cppad
+#   Py
+#   vec
+#   cppad_py
+#   numpy
 # $$
 #
 # $section Sparsity Patterns$$
@@ -77,8 +77,8 @@
 # $head put$$
 # This function sets the values
 # $codei%
-#	%row%[%k%] = %r%
-#	%col%[%k%] = %c%
+#   %row%[%k%] = %r%
+#   %col%[%k%] = %c%
 # %$$
 # (The name $code set$$ is used by Cppad, but not used here,
 # because $code set$$ it is a built-in name in Python.)
@@ -117,11 +117,11 @@
 # It sorts the sparsity pattern in row-major order.
 # To be specific,
 # $codei%
-#	%col%[ %row_major%[%k%] ] <= %col%[ %row_major%[%k%+1] ]
+#   %col%[ %row_major%[%k%] ] <= %col%[ %row_major%[%k%+1] ]
 # %$$
 # and if $icode%col%[ %row_major%[%k%] ] == %col%[ %row_major%[%k%+1] ]%$$,
 # $codei%
-#	%row%[ %row_major%[%k%] ] < %row%[ %row_major%[%k%+1] ]
+#   %row%[ %row_major%[%k%] ] < %row%[ %row_major%[%k%+1] ]
 # %$$
 # This routine generates an assert if there are two entries with the same
 # row and column values (if $code NDEBUG$$ is not defined).
@@ -132,17 +132,17 @@
 # It sorts the sparsity pattern in column-major order.
 # To be specific,
 # $codei%
-#	%row%[ %col_major%[%k%] ] <= %row%[ %col_major%[%k%+1] ]
+#   %row%[ %col_major%[%k%] ] <= %row%[ %col_major%[%k%+1] ]
 # %$$
 # and if $icode%row%[ %col_major%[%k%] ] == %row%[ %col_major%[%k%+1] ]%$$,
 # $codei%
-#	%col%[ %col_major%[%k%] ] < %col%[ %col_major%[%k%+1] ]
+#   %col%[ %col_major%[%k%] ] < %col%[ %col_major%[%k%+1] ]
 # %$$
 # This routine generates an assert if there are two entries with the same
 # row and column values (if $code NDEBUG$$ is not defined).
 #
 # $children%
-#	example/python/core/sparse_rc_xam.py
+#   example/python/core/sparse_rc_xam.py
 # %$$
 # $head Example$$
 # $cref sparse_rc_xam.py$$
@@ -152,55 +152,55 @@
 import cppad_py
 import numpy
 class sparse_rc :
-	"""Python interface to CppAD::sparse_rc"""
-	#
-	def __init__(self) :
-		self.rc = cppad_py.swig.sparse_rc()
-	#
-	# resize
-	def resize(self, nr, nc, nnz) :
-		self.rc.resize(nr, nc, nnz)
-	#
-	# nr
-	def nr(self) :
-		return self.rc.nr()
-	#
-	# nc
-	def nc(self) :
-		return self.rc.nc()
-	#
-	# nnz
-	def nnz(self) :
-		return self.rc.nnz()
-	#
-	# put
-	def put(self, k, r, c) :
-		self.rc.put(k, r, c)
-	#
-	# row
-	def row(self) :
-		vec   = self.rc.row()
-		assert vec.size() == self.rc.nnz()
-		array = cppad_py.utility.vec2numpy(vec, vec.size() )
-		return array
-	#
-	# col
-	def col(self) :
-		vec   = self.rc.col()
-		assert vec.size() == self.rc.nnz()
-		array = cppad_py.utility.vec2numpy(vec, vec.size() )
-		return array
-	#
-	# row_major
-	def row_major(self) :
-		vec   = self.rc.row_major()
-		assert vec.size() == self.rc.nnz()
-		array = cppad_py.utility.vec2numpy(vec, vec.size() )
-		return array
-	#
-	# col_major
-	def col_major(self) :
-		vec   = self.rc.col_major()
-		assert vec.size() == self.rc.nnz()
-		array = cppad_py.utility.vec2numpy(vec, vec.size() )
-		return array
+    """Python interface to CppAD::sparse_rc"""
+    #
+    def __init__(self) :
+        self.rc = cppad_py.swig.sparse_rc()
+    #
+    # resize
+    def resize(self, nr, nc, nnz) :
+        self.rc.resize(nr, nc, nnz)
+    #
+    # nr
+    def nr(self) :
+        return self.rc.nr()
+    #
+    # nc
+    def nc(self) :
+        return self.rc.nc()
+    #
+    # nnz
+    def nnz(self) :
+        return self.rc.nnz()
+    #
+    # put
+    def put(self, k, r, c) :
+        self.rc.put(k, r, c)
+    #
+    # row
+    def row(self) :
+        vec   = self.rc.row()
+        assert vec.size() == self.rc.nnz()
+        array = cppad_py.utility.vec2numpy(vec, vec.size() )
+        return array
+    #
+    # col
+    def col(self) :
+        vec   = self.rc.col()
+        assert vec.size() == self.rc.nnz()
+        array = cppad_py.utility.vec2numpy(vec, vec.size() )
+        return array
+    #
+    # row_major
+    def row_major(self) :
+        vec   = self.rc.row_major()
+        assert vec.size() == self.rc.nnz()
+        array = cppad_py.utility.vec2numpy(vec, vec.size() )
+        return array
+    #
+    # col_major
+    def col_major(self) :
+        vec   = self.rc.col_major()
+        assert vec.size() == self.rc.nnz()
+        array = cppad_py.utility.vec2numpy(vec, vec.size() )
+        return array

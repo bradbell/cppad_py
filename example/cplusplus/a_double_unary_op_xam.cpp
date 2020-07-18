@@ -12,31 +12,31 @@
 # include <cppad/py/cppad_py.hpp>
 
 bool a_double_unary_op_xam(void) {
-	using cppad_py::a_double;
-	//
-	// initialize return variable
-	bool ok = true;
-	//------------------------------------------------------------------------
-	a_double a2(2.0);
-	a_double aplus2 = + a2 ;
-	a_double aminus2 = - a2 ;
-	//
-	ok = ok && aplus2 == 2.0;
-	ok = ok && aminus2 == -2.0;
-	//
-	return( ok );
+    using cppad_py::a_double;
+    //
+    // initialize return variable
+    bool ok = true;
+    //------------------------------------------------------------------------
+    a_double a2(2.0);
+    a_double aplus2 = + a2 ;
+    a_double aminus2 = - a2 ;
+    //
+    ok = ok && aplus2 == 2.0;
+    ok = ok && aminus2 == -2.0;
+    //
+    return( ok );
 }
 // END SOURCE
 //
 /*
 $begin a_double_unary_op_xam.cpp$$
 $spell
-	cplusplus
-	cppad
-	py
-	xam
-	Jacobian
-	Jacobians
+    cplusplus
+    cppad
+    py
+    xam
+    Jacobian
+    Jacobians
 $$
 $section C++: a_double Unary Plus and Minus: Example and Test$$
 $srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$

@@ -16,44 +16,44 @@
 // binary operators with ad results
 # define BINARY_OP_AD_RESULT(op) \
 a_double a_double::operator op(const a_double& ad) const \
-{	a_double result; \
-	*result.ptr() = *ptr() op *ad.ptr(); \
-	return result; \
+{   a_double result; \
+    *result.ptr() = *ptr() op *ad.ptr(); \
+    return result; \
 }\
 a_double a_double::operator op(const double& d) const \
-{	a_double result; \
-	*result.ptr() = *ptr() op d; \
-	return result; \
+{   a_double result; \
+    *result.ptr() = *ptr() op d; \
+    return result; \
 }
 
 // comparison operators
 # define COMPARISON_OP(op) \
 bool a_double::operator op(const a_double& ad) const \
-{	bool result =  *ptr() op *ad.ptr(); \
-	return result; \
+{   bool result =  *ptr() op *ad.ptr(); \
+    return result; \
 }\
 bool a_double::operator op(const double& d) const \
-{	bool result =  *ptr() op d; \
-	return result; \
+{   bool result =  *ptr() op d; \
+    return result; \
 }
 
 // compound assignment operators
 # define ASSIGNMENT_OP(op) \
 a_double a_double::operator op(const a_double& ad)\
-{	*ptr() op *ad.ptr(); \
-	return *this; \
+{   *ptr() op *ad.ptr(); \
+    return *this; \
 }\
 a_double a_double::operator op(const double& d)\
-{	*ptr() op d; \
-	return *this; \
+{   *ptr() op d; \
+    return *this; \
 }
 
 // unary functions with ad results
 # define UNARY_FUN_AD_RESULT(fun) \
 a_double a_double::fun(void) const \
-{	a_double result; \
-	*result.ptr() = CppAD::fun( *ptr() ); \
-	return result; \
+{   a_double result; \
+    *result.ptr() = CppAD::fun( *ptr() ); \
+    return result; \
 }
 // ---------------------------------------------------------------------------
 
@@ -64,27 +64,27 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 // ---------------------------------------------------------------------------
 // pointer to this as an AD<double> object
 CppAD::AD<double>* a_double::ptr(void)
-{	return reinterpret_cast< CppAD::AD<double>* >( & data_ );
+{   return reinterpret_cast< CppAD::AD<double>* >( & data_ );
 }
 // const version of pointer to this as an AD<double> object
 const CppAD::AD<double>* a_double::ptr(void) const
-{	return reinterpret_cast< const CppAD::AD<double>* >( & data_ );
+{   return reinterpret_cast< const CppAD::AD<double>* >( & data_ );
 }
 // ctor from CppAD::AD<double>
 a_double::a_double(const CppAD::AD<double>* a_ptr)
-{	CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
-	new ( & data_ ) CppAD::AD<double>(*a_ptr);
+{   CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+    new ( & data_ ) CppAD::AD<double>(*a_ptr);
 }
 /*
 -------------------------------------------------------------------------------
 $begin a_double_ctor$$
 $spell
-	vec
-	cppad
-	py
-	const
-	perl
-	py
+    vec
+    cppad
+    py
+    const
+    perl
+    py
 $$
 
 $section The a_double Constructor$$
@@ -104,7 +104,7 @@ to track floating point operations and preform algorithmic differentiation.
 $head d$$
 This argument has prototype
 $codei%
-	const double& %d%
+    const double& %d%
 %$$
 The resulting $icode ad$$ variable represents
 a constant function equal to $icode d$$.
@@ -112,7 +112,7 @@ a constant function equal to $icode d$$.
 $head a_other$$
 This argument has prototype
 $codei%
-	const a_double& %a_other%
+    const a_double& %a_other%
 %$$
 The resulting $icode ad$$ variable is the same function
 of the independent variables as $icode a_other$$.
@@ -129,19 +129,19 @@ $end
 */
 // default a_double ctor
 a_double::a_double(void)
-{	// placement version of new operator uses this->data_ for memory
-	CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
-	new ( & data_ ) CppAD::AD<double>();
+{   // placement version of new operator uses this->data_ for memory
+    CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+    new ( & data_ ) CppAD::AD<double>();
 }
 // a_double ctor from double
 a_double::a_double(const double& d)
-{	CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
-	new ( & data_ ) CppAD::AD<double>(d);
+{   CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+    new ( & data_ ) CppAD::AD<double>(d);
 }
 // ctor from a_double
 a_double::a_double(const a_double& ad)
-{	CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
-	new ( & data_ ) CppAD::AD<double>(*ad.ptr());
+{   CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+    new ( & data_ ) CppAD::AD<double>(*ad.ptr());
 }
 // a_double destructor
 a_double::~a_double(void)
@@ -151,9 +151,9 @@ $begin a_double_unary_op$$
 
 $section a_double Unary Plus and Minus$$
 $spell
-	vec
-	const
-	perl
+    vec
+    const
+    perl
 $$
 
 $head Syntax$$
@@ -165,7 +165,7 @@ $icode%ay% = -%ax%
 $head ax$$
 This object has prototype
 $codei%
-	const a_double& %ax%
+    const a_double& %ax%
 %$$
 
 $head ay$$
@@ -173,8 +173,8 @@ If the operator is $code +$$, the result is equal to $icode ax$$.
 If it is $code -$$, the result is the negative of $icode ax$$.
 
 $children%
-	example/cplusplus/a_double_unary_op_xam.cpp%
-	example/python/core/a_double_unary_op_xam.py
+    example/cplusplus/a_double_unary_op_xam.cpp%
+    example/python/core/a_double_unary_op_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_unary_op_xam.cpp/$$,
@@ -183,23 +183,23 @@ $cref/Python/a_double_unary_op_xam.py/$$.
 $end
 */
 const a_double& a_double::operator+(void) const
-{	return *this; }
+{   return *this; }
 a_double a_double::operator-(void) const
-{	a_double result;
-	*result.ptr() = - *ptr();
-	return result;
+{   a_double result;
+    *result.ptr() = - *ptr();
+    return result;
 }
 /*
 -------------------------------------------------------------------------------
 $begin a_double_property$$
 $spell
-	vec
-	const
-	perl
-	bool
-	aother
-	ap
-	var
+    vec
+    const
+    perl
+    bool
+    aother
+    ap
+    var
 $$
 
 $section Properties of an a_double Object$$
@@ -220,13 +220,13 @@ $icode%ap% = %ad%.var2par()
 $head ad$$
 This object has prototype
 $codei%
-	const a_double& %ad%
+    const a_double& %ad%
 %$$
 
 $head value$$
 The result $icode d$$ has prototype
 $codei%
-	double %d%
+    double %d%
 %$$
 It is the value of $icode ad$$, as a constant function.
 
@@ -242,7 +242,7 @@ $cref/var2par/a_double_property/var2par/$$ below.
 $head parameter$$
 The result $icode p$$ has prototype
 $codei%
-	bool %p%
+    bool %p%
 %$$
 It is true if $icode ad$$ represent a constant functions; i.e.,
 $icode ad$$ not depend on the independent variables.
@@ -250,7 +250,7 @@ $icode ad$$ not depend on the independent variables.
 $head variable$$
 The result $icode v$$ has prototype
 $codei%
-	bool %v%
+    bool %v%
 %$$
 It is true if $icode ad$$ is not a constant function; i.e.,
 $icode ad$$ depends on the independent variables.
@@ -259,13 +259,13 @@ $head near_equal$$
 The argument $icode aother$$,
 and the result $icode e$$, have prototype
 $codei%
-	const a_double& %aother%
-	bool %e%
+    const a_double& %aother%
+    bool %e%
 %$$
 The result is true if $icode ad$$ is nearly equal to $icode aother$$.
 To be specific, the result is
 $latex \[
-	| d - o | \leq 100 \; \varepsilon \; ( |d| + |o| )
+    | d - o | \leq 100 \; \varepsilon \; ( |d| + |o| )
 \] $$
 where $icode d$$ and $icode o$$ are the value corresponding to
 $icode ad$$ and $icode aother$$ and
@@ -275,7 +275,7 @@ to the type $code double$$.
 $head var2par$$
 The result has prototype
 $codei%
-	a_double %ap%
+    a_double %ap%
 %$$
 It has the same value as $icode ad$$ and is sure to be a parameter
 ($icode ad$$ may or may not be a variable).
@@ -283,8 +283,8 @@ This can be useful when you want to access the value of $icode ad$$
 while is a variable; $cref/value/a_double_property/value/$$ above.
 
 $children%
-	example/cplusplus/a_double_property_xam.cpp%
-	example/python/core/a_double_property_xam.py
+    example/cplusplus/a_double_property_xam.cpp%
+    example/python/core/a_double_property_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_property_xam.cpp/$$,
@@ -293,29 +293,29 @@ $cref/Python/a_double_property_xam.py/$$.
 $end
 */
 double a_double::value(void) const
-{	double result = CppAD::Value( *ptr() );
-	return result;
+{   double result = CppAD::Value( *ptr() );
+    return result;
 }
 bool a_double::parameter(void) const
-{	bool result = CppAD::Parameter( *ptr() );
-	return result;
+{   bool result = CppAD::Parameter( *ptr() );
+    return result;
 }
 bool a_double::variable(void) const
-{	bool result = CppAD::Variable( *ptr() );
-	return result;
+{   bool result = CppAD::Variable( *ptr() );
+    return result;
 }
 bool a_double::near_equal(const a_double& aother)
-{	double d       = CppAD::Value( CppAD::Var2Par( *ptr() ) );
-	double o       = CppAD::Value( CppAD::Var2Par( *aother.ptr() ) );
-	double diff    = std::fabs( d - o );
-	double eps     = std::numeric_limits<double>::epsilon();
-	double sum_abs = std::fabs(d) + std::fabs(o);
-	return diff <= 100.0 * eps * sum_abs;
+{   double d       = CppAD::Value( CppAD::Var2Par( *ptr() ) );
+    double o       = CppAD::Value( CppAD::Var2Par( *aother.ptr() ) );
+    double diff    = std::fabs( d - o );
+    double eps     = std::numeric_limits<double>::epsilon();
+    double sum_abs = std::fabs(d) + std::fabs(o);
+    return diff <= 100.0 * eps * sum_abs;
 }
 a_double a_double::var2par() const
-{	a_double result;
-	*result.ptr() = CppAD::Var2Par( *ptr() );
-	return result;
+{   a_double result;
+    *result.ptr() = CppAD::Var2Par( *ptr() );
+    return result;
 }
 /*
 -------------------------------------------------------------------------------
@@ -323,11 +323,11 @@ $begin a_double_binary$$
 
 $section a_double Binary Operators with an AD Result$$
 $spell
-	vec
-	const
-	az
-	op
-	perl
+    vec
+    const
+    az
+    op
+    perl
 $$
 
 $head Syntax$$
@@ -350,30 +350,30 @@ Note that exponentiation is a function is c++ and an operator in python.
 $head ax$$
 This object has prototype
 $codei%
-	const a_double& %ax%
+    const a_double& %ax%
 %$$
 
 $head ay$$
 This object has prototype
 $codei%
-	const a_double& %ay%
+    const a_double& %ay%
 %$$
 
 $head y$$
 This object has prototype
 $codei%
-	const double& %y%
+    const double& %y%
 %$$
 
 $head az$$
 The result has prototype
 $codei%
-	a_double %az%
+    a_double %az%
 %$$
 
 $children%
-	example/cplusplus/a_double_binary_xam.cpp%
-	example/python/core/a_double_binary_xam.py
+    example/cplusplus/a_double_binary_xam.cpp%
+    example/python/core/a_double_binary_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_binary_xam.cpp/$$,
@@ -388,41 +388,41 @@ BINARY_OP_AD_RESULT(/)
 //
 // binary operators when right operand is a double
 a_double radd(const double& d, const a_double& ad)
-{	a_double result;
-	*result.ptr() = d + *ad.ptr();
-	return result;
+{   a_double result;
+    *result.ptr() = d + *ad.ptr();
+    return result;
 }
 a_double rsub(const double& d, const a_double& ad)
-{	a_double result;
-	*result.ptr() = d - *ad.ptr();
-	return result;
+{   a_double result;
+    *result.ptr() = d - *ad.ptr();
+    return result;
 }
 a_double rmul(const double& d, const a_double& ad)
-{	a_double result;
-	*result.ptr() = d * *ad.ptr();
-	return result;
+{   a_double result;
+    *result.ptr() = d * *ad.ptr();
+    return result;
 }
 a_double rdiv(const double& d, const a_double& ad)
-{	a_double result;
-	*result.ptr() = d / *ad.ptr();
-	return result;
+{   a_double result;
+    *result.ptr() = d / *ad.ptr();
+    return result;
 }
 //
 // pow (operator in python but not c++)
 a_double pow(const a_double& ax, const a_double& ay)
-{	a_double result;
-	*result.ptr() = CppAD::pow( *ax.ptr(), *ay.ptr() );
-	return result;
+{   a_double result;
+    *result.ptr() = CppAD::pow( *ax.ptr(), *ay.ptr() );
+    return result;
 }
 a_double pow(const a_double& ad, const double& d)
-{	a_double result;
-	*result.ptr() = CppAD::pow( *ad.ptr(), d );
-	return result;
+{   a_double result;
+    *result.ptr() = CppAD::pow( *ad.ptr(), d );
+    return result;
 }
 a_double pow(const double& d, const a_double& ad)
-{	a_double result;
-	*result.ptr() = CppAD::pow( d, *ad.ptr() );
-	return result;
+{   a_double result;
+    *result.ptr() = CppAD::pow( d, *ad.ptr() );
+    return result;
 }
 /*
 -------------------------------------------------------------------------------
@@ -430,12 +430,12 @@ $begin a_double_compare$$
 
 $section a_double Comparison Operators$$
 $spell
-	vec
-	const
-	az
-	op
-	perl
-	bool
+    vec
+    const
+    az
+    op
+    perl
+    bool
 $$
 
 $head Syntax$$
@@ -456,30 +456,30 @@ $code !=$$ (not equal).
 $head ax$$
 This object has prototype
 $codei%
-	const a_double& %ax%
+    const a_double& %ax%
 %$$
 
 $head ay$$
 This object has prototype
 $codei%
-	const a_double& %ay%
+    const a_double& %ay%
 %$$
 
 $head y$$
 This object has prototype
 $codei%
-	const double& %y%
+    const double& %y%
 %$$
 
 $head b$$
 The result has prototype
 $codei%
-	bool %b%
+    bool %b%
 %$$
 
 $children%
-	example/cplusplus/a_double_compare_xam.cpp%
-	example/python/core/a_double_compare_xam.py
+    example/cplusplus/a_double_compare_xam.cpp%
+    example/python/core/a_double_compare_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_compare_xam.cpp/$$,
@@ -499,11 +499,11 @@ $begin a_double_assign$$
 
 $section a_double Assignment Operators$$
 $spell
-	vec
-	const
-	az
-	op
-	perl
+    vec
+    const
+    az
+    op
+    perl
 $$
 
 $head Syntax$$
@@ -526,24 +526,24 @@ $tend
 $head ax$$
 This object has prototype
 $codei%
-	const a_double& %ax%
+    const a_double& %ax%
 %$$
 
 $head ay$$
 This object has prototype
 $codei%
-	a_double& %ay%
+    a_double& %ay%
 %$$
 
 $head y$$
 This object has prototype
 $codei%
-	const double& %y%
+    const double& %y%
 %$$
 
 $children%
-	example/cplusplus/a_double_assign_xam.cpp%
-	example/python/core/a_double_assign_xam.py
+    example/cplusplus/a_double_assign_xam.cpp%
+    example/python/core/a_double_assign_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_assign_xam.cpp/$$,
@@ -560,23 +560,23 @@ ASSIGNMENT_OP(/=)
 -------------------------------------------------------------------------------
 $begin a_double_unary_fun$$
 $spell
-	vec
-	const
-	perl
-	bool
-	acos
-	asin
-	atan
-	cos
-	exp
-	fabs
-	sqrt
-	tanh
-	asinh
-	acosh
-	atanh
-	expm
-	erf
+    vec
+    const
+    perl
+    bool
+    acos
+    asin
+    atan
+    cos
+    exp
+    fabs
+    sqrt
+    tanh
+    asinh
+    acosh
+    atanh
+    expm
+    erf
 $$
 
 $section Unary Functions with AD Result$$
@@ -588,7 +588,7 @@ $icode%ay% = %ax%.%fun%()
 $head ax$$
 This object has prototype
 $codei%
-	const a_double& %ax%
+    const a_double& %ax%
 %$$
 This is the argument for the function evaluation.
 
@@ -616,16 +616,16 @@ asinh, acosh, atanh, expm1, and log1p to this list.
 $head ay$$
 The result object has prototype
 $codei%
-	a_double %ay%
+    a_double %ay%
 %$$
 and is the specified function evaluated at the specified argument; i.e.,
 $codei%
-	%ay% = %fun%( %ax% )
+    %ay% = %fun%( %ax% )
 %$$
 
 $children%
-	example/cplusplus/a_double_unary_fun_xam.cpp%
-	example/python/core/a_double_unary_fun_xam.py
+    example/cplusplus/a_double_unary_fun_xam.cpp%
+    example/python/core/a_double_unary_fun_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_unary_fun_xam.cpp/$$,
@@ -653,10 +653,10 @@ UNARY_FUN_AD_RESULT(tanh)
 -------------------------------------------------------------------------------
 $begin a_double_cond_assign$$
 $spell
-	vec
-	const
-	perl
-	cond
+    vec
+    const
+    perl
+    cond
 $$
 
 $section AD Conditional Assignment$$
@@ -668,10 +668,10 @@ $icode%target%.cond_assign(%cop%, %left%, %right%, %if_true%, %if_false%)
 $head Purpose$$
 The code
 $codei%
-	if( %left% %cop% %right% )
-		%target% = %if_true%
-	else
-		%target% = %if_false%
+    if( %left% %cop% %right% )
+        %target% = %if_true%
+    else
+        %target% = %if_false%
 %$$
 records either the true or false case depending on the value
 of $icode left$$ and $icode right$$; see $cref cpp_fun_ctor$$.
@@ -685,17 +685,17 @@ The $code cond_assign$$ does this.
 $head target$$
 This object has prototype
 $codei%
-	a_double& %target%
+    a_double& %target%
 %$$
 
 $head cop$$
 This argument has prototype
 $codei%
-	const char *cop
+    const char *cop
 %$$
 The comparison is
 $codei%
-	%left% %cop% %right%
+    %left% %cop% %right%
 %$$
 where $icode cop$$ is one of the following:
 $table
@@ -710,21 +710,21 @@ $tend
 $head left$$
 This argument has prototype
 $codei%
-	const a_double& %left%
+    const a_double& %left%
 %$$
 It specifies the left operand in the comparison.
 
 $head right$$
 This argument has prototype
 $codei%
-	const a_double& %right%
+    const a_double& %right%
 %$$
 It specifies the right operand in the comparison.
 
 $head if_true$$
 This argument has prototype
 $codei%
-	const a_double& %if_true%
+    const a_double& %if_true%
 %$$
 It specifies the value assigned to $icode ad$$ if the result
 of the comparison is true.
@@ -732,15 +732,15 @@ of the comparison is true.
 $head if_false$$
 This argument has prototype
 $codei%
-	const a_double& %if_false%
+    const a_double& %if_false%
 %$$
 It specifies the value assigned to $icode ad$$ if the result
 of the comparison is false.
 
 
 $children%
-	example/cplusplus/a_double_cond_assign_xam.cpp%
-	example/python/core/a_double_cond_assign_xam.py
+    example/cplusplus/a_double_cond_assign_xam.cpp%
+    example/python/core/a_double_cond_assign_xam.py
 %$$
 $head Example$$
 $cref/C++/a_double_cond_assign_xam.cpp/$$,
@@ -749,43 +749,43 @@ $cref/Python/a_double_cond_assign_xam.py/$$.
 $end
 */
 void a_double::cond_assign(
-	const char*     cop       ,
-	const a_double& left      ,
-	const a_double& right     ,
-	const a_double& if_true   ,
-	const a_double& if_false  )
-{	std::string cop_string(cop);
-	if( cop_string == "<" )
-	{	*ptr() = CppAD::CondExpLt(
-			*left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
-		);
-	}
-	else if( cop_string == "<=" )
-	{	*ptr() = CppAD::CondExpLe(
-			*left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
-		);
-	}
-	else if( cop_string == "==" )
-	{	*ptr() = CppAD::CondExpEq(
-			*left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
-		);
-	}
-	else if( cop_string == ">=" )
-	{	*ptr() = CppAD::CondExpGe(
-			*left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
-		);
-	}
-	else if( cop_string == ">" )
-	{	*ptr() = CppAD::CondExpGt(
-			*left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
-		);
-	}
-	else
-	{	std::string message = "a_double::cond_assing:: cop = '";
-		message += cop;
-		message += "' is not a valid comparison operator";
-		error_message(message.c_str());
-	}
+    const char*     cop       ,
+    const a_double& left      ,
+    const a_double& right     ,
+    const a_double& if_true   ,
+    const a_double& if_false  )
+{   std::string cop_string(cop);
+    if( cop_string == "<" )
+    {   *ptr() = CppAD::CondExpLt(
+            *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+        );
+    }
+    else if( cop_string == "<=" )
+    {   *ptr() = CppAD::CondExpLe(
+            *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+        );
+    }
+    else if( cop_string == "==" )
+    {   *ptr() = CppAD::CondExpEq(
+            *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+        );
+    }
+    else if( cop_string == ">=" )
+    {   *ptr() = CppAD::CondExpGe(
+            *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+        );
+    }
+    else if( cop_string == ">" )
+    {   *ptr() = CppAD::CondExpGt(
+            *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+        );
+    }
+    else
+    {   std::string message = "a_double::cond_assing:: cop = '";
+        message += cop;
+        message += "' is not a valid comparison operator";
+        error_message(message.c_str());
+    }
 }
 // --------------------------------------------------------------------------
 } // END_CPPAD_PY_NAMESPACE

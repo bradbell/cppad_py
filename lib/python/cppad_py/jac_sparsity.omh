@@ -7,13 +7,13 @@
 -------------------------------------------------------------------------------
 $begin py_jac_sparsity$$
 $spell
-	af
-	Jacobian
-	jac
-	bool
-	const
-	rc
-	cpp
+    af
+    Jacobian
+    jac
+    bool
+    const
+    rc
+    cpp
 $$
 
 $section Jacobian Sparsity Patterns$$
@@ -30,7 +30,7 @@ function corresponding to the operation sequence stored in $icode f$$.
 $subhead for_jac_sparsity$$
 Fix $latex R \in \B{R}^{n \times \ell}$$ and define the function
 $latex \[
-	J(x) = F^{(1)} ( x ) * R
+    J(x) = F^{(1)} ( x ) * R
 \] $$
 Given a sparsity pattern for $latex R$$,
 $code for_jac_sparsity$$ computes a sparsity pattern for $latex J(x)$$.
@@ -38,7 +38,7 @@ $code for_jac_sparsity$$ computes a sparsity pattern for $latex J(x)$$.
 $subhead rev_jac_sparsity$$
 Fix $latex R \in \B{R}^{\ell \times m}$$ and define the function
 $latex \[
-	J(x) = R * F^{(1)} ( x )
+    J(x) = R * F^{(1)} ( x )
 \] $$
 Given a sparsity pattern for $latex R$$,
 $code rev_jac_sparsity$$ computes a sparsity pattern for $latex J(x)$$.
@@ -76,7 +76,7 @@ In this case, $icode pattern_out$$ is a sparsity pattern for
 $latex F^{(1)} ( x )$$.
 
 $children%
-	example/python/core/sparse_jac_pattern_xam.py
+    example/python/core/sparse_jac_pattern_xam.py
 %$$
 $head Example$$
 $cref/Python/sparse_jac_pattern_xam.py/$$

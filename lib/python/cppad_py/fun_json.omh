@@ -7,9 +7,9 @@
 -------------------------------------------------------------------------------
 $begin py_fun_json$$
 $spell
-	Json
-	str
-	CppAD
+    Json
+    str
+    CppAD
 $$
 
 $section Json Representation of AD Computation Graph$$
@@ -40,7 +40,7 @@ In this case, the argument $icode json$$ is constant and
 the function $icode f$$ is changed so it corresponds to $icode json$$.
 
 $children%
-	example/python/core/fun_json_xam.py
+    example/python/core/fun_json_xam.py
 %$$
 $head Examples$$
 $cref fun_to_json_xam.py$$,

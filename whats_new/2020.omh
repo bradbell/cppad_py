@@ -9,27 +9,27 @@ $begin whats_new_2020$$
 $spell
     Py
     omhelp
-	erf
-	var
-	xq
-	yq
-	inplace
-	op
-	numpy
-	-stdlib=libc++
-	cmake
-	json
-	CppAD
-	cppad
-	scipy
-	seirs
-	seirwd
-	xam
-	covariate
-	covid
-	fabs
-	runge
-	vec
+    erf
+    var
+    xq
+    yq
+    inplace
+    op
+    numpy
+    -stdlib=libc++
+    cmake
+    json
+    CppAD
+    cppad
+    scipy
+    seirs
+    seirwd
+    xam
+    covariate
+    covid
+    fabs
+    runge
+    vec
 $$
 
 $section CppAD Py Changes During 2020$$

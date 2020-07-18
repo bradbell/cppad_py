@@ -30,8 +30,8 @@ def factorial(n) :
 #
 # BEGIN_SQUARE
 def square(x) :
-	# END_SQUARE
-	return x * x
+    # END_SQUARE
+    return x * x
 #
 """
 {xsrst_begin file_block_res}

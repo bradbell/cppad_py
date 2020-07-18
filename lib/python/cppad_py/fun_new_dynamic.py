@@ -7,7 +7,7 @@
 # -----------------------------------------------------------------------------
 # $begin py_fun_new_dynamic$$ $newlinech #$$
 # $spell
-#	numpy
+#   numpy
 # $$
 #
 # $section New Dynamic Parameters$$
@@ -45,28 +45,28 @@ import numpy
 # ----------------------------------------------------------------------------
 # This function is used by d_fun class to implement syntax above
 def d_fun_new_dynamic(f, dynamic) :
-	"""
-	f.new_dynamic(dynamic)
-	Set the independent dynamic parameters and compute the others.
-	"""
-	#
-	# convert x -> u
-	dtype    = float
-	syntax   = 'f.dynamic(p, dynamic)'
-	n        = dynamic.size
-	u        = cppad_py.utility.numpy2vec(dynamic, dtype, n, syntax, 'xp')
-	f.new_dynamic(u)
+    """
+    f.new_dynamic(dynamic)
+    Set the independent dynamic parameters and compute the others.
+    """
+    #
+    # convert x -> u
+    dtype    = float
+    syntax   = 'f.dynamic(p, dynamic)'
+    n        = dynamic.size
+    u        = cppad_py.utility.numpy2vec(dynamic, dtype, n, syntax, 'xp')
+    f.new_dynamic(u)
 # ----------------------------------------------------------------------------
 # This function is used by a_fun class to implement syntax above
 def a_fun_new_dynamic(af, adynamic) :
-	"""
-	af.new_dynamic(adynamic)
-	Set the independent dynamic parameters and compute the others.
-	"""
-	#
-	# convert x -> u
-	dtype    = cppad_py.a_double
-	syntax   = 'af.dynamic(adynamic)'
-	n        = adynamic.size
-	au       = cppad_py.utility.numpy2vec(adynamic, dtype, n, syntax, 'dynamic')
-	af.new_dynamic(au)
+    """
+    af.new_dynamic(adynamic)
+    Set the independent dynamic parameters and compute the others.
+    """
+    #
+    # convert x -> u
+    dtype    = cppad_py.a_double
+    syntax   = 'af.dynamic(adynamic)'
+    n        = adynamic.size
+    au       = cppad_py.utility.numpy2vec(adynamic, dtype, n, syntax, 'dynamic')
+    af.new_dynamic(au)

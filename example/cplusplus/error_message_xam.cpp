@@ -13,31 +13,31 @@
 # include <cppad/py/cppad_py.hpp>
 
 bool error_message_xam(void) {
-	using std::string;
-	//
-	// initialize return variable
-	bool ok = true;
-	//------------------------------------------------------------------------
-	ok = false;
-	try {
-		cppad_py::error_message("test message");
-	} catch (...) {
-		string stored_message = cppad_py::error_message("");
-		ok = stored_message == "test message";
-	}
-	return( ok  );
+    using std::string;
+    //
+    // initialize return variable
+    bool ok = true;
+    //------------------------------------------------------------------------
+    ok = false;
+    try {
+        cppad_py::error_message("test message");
+    } catch (...) {
+        string stored_message = cppad_py::error_message("");
+        ok = stored_message == "test message";
+    }
+    return( ok  );
 }
 // END SOURCE
 // -----------------------------------------------------------------------------
 /*
 $begin error_message_xam.cpp$$
 $spell
-	cplusplus
-	cppad
-	py
-	xam
-	Jacobian
-	Jacobians
+    cplusplus
+    cppad
+    py
+    xam
+    Jacobian
+    Jacobians
 $$
 $section C++: Cppad Py Exception Handling: Example and Test$$
 $srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$

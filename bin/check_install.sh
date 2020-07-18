@@ -8,14 +8,14 @@
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
-	echo $*
-	eval $*
+    echo $*
+    eval $*
 }
 # -----------------------------------------------------------------------------
 if [ "$0" != "bin/check_install.sh" ]
 then
-	echo "bin/check_install.sh: must be executed from its parent directory"
-	exit 1
+    echo "bin/check_install.sh: must be executed from its parent directory"
+    exit 1
 fi
 # python
 python='python3'
@@ -26,12 +26,12 @@ eval $(grep '^build_type *=' bin/get_cppad.sh)
 name="$HOME/prefix/cppad_py"
 if [ -e $name ]
 then
-	echo_eval rm -r $name
+    echo_eval rm -r $name
 fi
 name="cppad_py"
 if [ -e $name ]
 then
-	echo_eval rm -r $name
+    echo_eval rm -r $name
 fi
 #
 cat << EOF > check_install.py
@@ -40,26 +40,26 @@ print( 'import cppad_py: OK')
 EOF
 if $python check_install.py >& /dev/null
 then
-	echo 'check_install.py: cannot remove old cppad_py in python path. Try'
-	echo '    pip uninstall cppad_py'
-	echo '    bin/check_install.sh'
-	exit 1
+    echo 'check_install.py: cannot remove old cppad_py in python path. Try'
+    echo '    pip uninstall cppad_py'
+    echo '    bin/check_install.sh'
+    exit 1
 fi
 # ---------------------------------------------------------------------------
 cppad_path=`echo 'import numpy; print(numpy.__file__)' | python | sed \
-	-e 's|/numpy/__init__.py||' \
-	-e "s|^/.*/\(lib[^.]*\)/python|$HOME/prefix/cppad_py/\1/python|"`
+    -e 's|/numpy/__init__.py||' \
+    -e "s|^/.*/\(lib[^.]*\)/python|$HOME/prefix/cppad_py/\1/python|"`
 PYTHONPATH="$cppad_path:$PYTHONPATH"
 # ---------------------------------------------------------------------------
 # install new version
 if [ "$build_type" == 'debug' ]
 then
-	build_flag='--sebug'
+    build_flag='--sebug'
 else
-	build_flag=''
+    build_flag=''
 fi
 echo_eval $python setup.py build_ext $buld_flag install \
-	--prefix=$HOME/prefix/cppad_py
+    --prefix=$HOME/prefix/cppad_py
 echo_eval rm -r cppad_py
 # ---------------------------------------------------------------------------
 echo_eval $python check_install.py

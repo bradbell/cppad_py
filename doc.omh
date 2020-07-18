@@ -19,23 +19,23 @@ $latex
 $$
 $comment -------------------------------------------------------------$$
 $spell
-	https
-	bradbell
-	usr
-	CppAD
-	Py
-	Linux
-	msys
-	perl
-	Cppad
-	Py
-	cmake
-	Github
-	xam
+    https
+    bradbell
+    usr
+    CppAD
+    Py
+    Linux
+    msys
+    perl
+    Cppad
+    Py
+    cmake
+    Github
+    xam
 $$
 
 $section cppad_py-2020.7.7:
-	A C++ Object Library and Python Interface to CppAD
+    A C++ Object Library and Python Interface to CppAD
 $$
 
 $head Git Repository$$
@@ -74,10 +74,10 @@ This program is distributed under the terms of the
 $href%http://www.gnu.org/licenses/gpl-3.0.txt%gpl-3.0.txt%$$.
 
 $childtable%
-	setup.py%
-	example/python/numeric/numeric.omh%
-	lib/library.omh%
-	whats_new/2020.omh
+    setup.py%
+    example/python/numeric/numeric.omh%
+    lib/library.omh%
+    whats_new/2020.omh
 %$$
 
 

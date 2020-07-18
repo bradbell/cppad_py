@@ -10,11 +10,11 @@ $begin py_sparse$$
 $section Python Sparsity Routines$$
 
 $childtable%lib/python/cppad_py/sparse_rc.py
-	%lib/python/cppad_py/sparse_rcv.py
-	%lib/python/cppad_py/jac_sparsity.omh
-	%lib/python/cppad_py/hes_sparsity.py
-	%lib/python/cppad_py/sparse_jac.py
-	%lib/python/cppad_py/sparse_hes.py
+    %lib/python/cppad_py/sparse_rcv.py
+    %lib/python/cppad_py/jac_sparsity.omh
+    %lib/python/cppad_py/hes_sparsity.py
+    %lib/python/cppad_py/sparse_jac.py
+    %lib/python/cppad_py/sparse_hes.py
 %$$
 
 $end

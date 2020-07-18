@@ -7,7 +7,7 @@
 -------------------------------------------------------------------------------
 $begin py_fun_optimize$$
 $spell
-	af
+    af
 $$
 
 $section Optimize an AD Function$$
@@ -29,7 +29,7 @@ Optimizing this $icode f$$ also optimizes the
 corresponding $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$.
 
 $children%
-	example/python/core/fun_optimize_xam.py
+    example/python/core/fun_optimize_xam.py
 %$$
 $head Example$$
 $cref fun_optimize_xam.py$$

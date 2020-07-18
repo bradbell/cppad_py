@@ -7,21 +7,21 @@
 # -----------------------------------------------------------------------------
 # BEGIN_RUNGE4_STEP
 def runge4_step(fun, ti, yi, h) :
-	k1     = h * fun.f(ti,           yi)
-	k2     = h * fun.f(ti + h / 2.0, yi + k1 / 2.0)
-	k3     = h * fun.f(ti + h / 2.0, yi + k2 / 2.0)
-	k4     = h * fun.f(ti + h,       yi + k3 )
-	yf     = yi + (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0
-	return yf
+    k1     = h * fun.f(ti,           yi)
+    k2     = h * fun.f(ti + h / 2.0, yi + k1 / 2.0)
+    k3     = h * fun.f(ti + h / 2.0, yi + k2 / 2.0)
+    k4     = h * fun.f(ti + h,       yi + k3 )
+    yf     = yi + (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0
+    return yf
 # END_RUNGE4_STEP
 #
 # $begin numeric_runge4_step$$ $newlinech #$$
 # $spell
-#	Runge-Kutta
-#	yf
-#	yi
-#	yp
-#	numpy
+#   Runge-Kutta
+#   yf
+#   yi
+#   yp
+#   numpy
 # $$
 #
 #
@@ -41,7 +41,7 @@ def runge4_step(fun, ti, yi, h) :
 # This is a function that evaluates the ordinary differential equation
 # using the syntax
 # $codei%
-#	%yp% = %fun%.f( %t% , %y% )%$$
+#   %yp% = %fun%.f( %t% , %y% )%$$
 # where $icode t$$ # is the current time,
 # $icode y$$ is the current value of $latex y(t)$$, and
 # $icode yp$$ is the current derivative $latex y^{(1)} (t)$$.
@@ -70,14 +70,14 @@ def runge4_step(fun, ti, yi, h) :
 # the solution has no truncation error, only round off error.
 #
 # $children%
-#	example/python/numeric/runge4_step_xam.py
+#   example/python/numeric/runge4_step_xam.py
 # %$$
 # $head Example$$
 # $cref numeric_runge4_step_xam.py$$
 #
 # $head Source Code$$
 # $srcthisfile%
-#	0%# BEGIN_RUNGE4_STEP%# END_RUNGE4_STEP%0
+#   0%# BEGIN_RUNGE4_STEP%# END_RUNGE4_STEP%0
 # %$$
 #
 # $end

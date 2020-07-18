@@ -9,29 +9,29 @@
 import numpy
 import copy
 def ode_multi_step(one_step, fun, t_all, y_init ) :
-	dtype      = type(y_init[0])
-	n_var      = y_init.size
-	n_step     = t_all.size - 1
-	y_all      = numpy.empty( (n_step+1, n_var), dtype = dtype  )
-	y1         = y_init
-	t1         = t_all[0]
-	y_all[0,:] = y1
-	for i in range(n_step) :
-		fun.set_t_all_index(i)
-		y0            = y1
-		t0            = t1
-		t1            = t_all[i+1]
-		t_step        = t1 - t0
-		y1            = one_step(fun, t0, y0, t_step)
-		y_all[i+1,:]  = copy.copy(y1)
-	return y_all
+    dtype      = type(y_init[0])
+    n_var      = y_init.size
+    n_step     = t_all.size - 1
+    y_all      = numpy.empty( (n_step+1, n_var), dtype = dtype  )
+    y1         = y_init
+    t1         = t_all[0]
+    y_all[0,:] = y1
+    for i in range(n_step) :
+        fun.set_t_all_index(i)
+        y0            = y1
+        t0            = t1
+        t1            = t_all[i+1]
+        t_step        = t1 - t0
+        y1            = one_step(fun, t0, y0, t_step)
+        y_all[i+1,:]  = copy.copy(y1)
+    return y_all
 # END_ODE_MULTI_STEP
 #
 # $begin numeric_ode_multi_step$$ $newlinech #$$
 # $spell
-#	init
-#	yp
-#	numpy
+#   init
+#   yp
+#   numpy
 # $$
 #
 #
@@ -44,14 +44,14 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
 # The routine can be used with $code ad_double$$ to solve an initial
 # value ODE
 # $latex \[
-#	y^{(1)} (t) = f( t , y )
+#   y^{(1)} (t) = f( t , y )
 # \] $$
 #
 # $head one_step$$
 # This routine executes one step of an ODE approximation method with the
 # following syntax:
 # $codei%
-#	%y1% = %one_step%(%f%, %t0%, %y0%, %t_step%)
+#   %y1% = %one_step%(%f%, %t0%, %y0%, %t_step%)
 # %$$
 # The elements of $icode y0$$ and the scalars above can be
 # $code float$$ or $code a_double$$.
@@ -81,7 +81,7 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
 # The function $code set_t_all_index$$
 # informs $icode fun$$ that we are currently integrating the time interval
 # $codei%
-#	[ %t_all%[%index%] , %t_all%[%index%+1] ]
+#   [ %t_all%[%index%] , %t_all%[%index%+1] ]
 # %$$
 # so that it know which smooth function to represent
 # even if $latex t$$ is at a knot and it matters if it is the interval
@@ -93,7 +93,7 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
 # $subhead fun.f(t, y)$$
 # This call evaluates the function that defines the ODE
 # $latex \[
-#	y^{(1)} (t) = f [ t , y(t) ]
+#   y^{(1)} (t) = f [ t , y(t) ]
 # \] $$
 #
 # $subhead one_step$$
@@ -116,14 +116,14 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
 # component of $latex y(t)$$ at time $icode%t_all%[%i%]%$$.
 #
 # $children%
-#	example/python/numeric/ode_multi_step_xam.py
+#   example/python/numeric/ode_multi_step_xam.py
 # %$$
 # $head Example$$
 # $cref numeric_ode_multi_step_xam.py$$
 #
 # $head Source Code$$
 # $srcthisfile%
-#	0%# BEGIN_ODE_MULTI_STEP%# END_ODE_MULTI_STEP%0
+#   0%# BEGIN_ODE_MULTI_STEP%# END_ODE_MULTI_STEP%0
 # %$$
 #
 # $end

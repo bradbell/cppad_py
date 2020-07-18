@@ -7,7 +7,7 @@
 # -----------------------------------------------------------------------------
 $begin install_error$$
 $spell
-	setuptools
+    setuptools
     Errno
     https
     pypi
@@ -22,10 +22,10 @@ $spell
     numpy
     sqrt
     swg
-	python python
-	sudo
-	pytest
-	libcppad
+    python python
+    sudo
+    pytest
+    libcppad
 $$
 
 $section Error Messages During Installation$$
@@ -59,7 +59,7 @@ $head CppAD Library Missing$$
 If the error message below occurs, it is because the CppAD library
 is not in your $code LD_LIBRARY_PATH$$:
 $codei%
-	 ImportError: libcppad_lib.so %...% cannot open shared object file
+     ImportError: libcppad_lib.so %...% cannot open shared object file
 %$$
 If you run the $code setup.py$$ script directory, or
 if you included the $code --verbose$$ option in your $code pip$$ command,
@@ -71,7 +71,7 @@ $head Fortify Source$$
 If you set $cref/build_type/get_cppad.sh/Settings/build_type/$$ to $code debug$$,
 you may get the following warning during the build:
 $codep
-	#warning _FORTIFY_SOURCE requires compiling with optimization
+    #warning _FORTIFY_SOURCE requires compiling with optimization
 $$
 This is a problem with the python setuptools,
 one can un-define a macro, but it does not remove a original definition.
