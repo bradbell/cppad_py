@@ -110,7 +110,7 @@ r \in \B{R}^m
 @)@</small>, define
 <small>@[@
 
-	H(x) = (r^\R{T} F)^{(2)} ( x )
+    H(x) = (r^\R{T} F)^{(2)} ( x )
 
 @]@</small>
 This routine takes advantage of sparsity when computing elements
@@ -125,7 +125,7 @@ H(x)
 This object has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADFun&lt;</span></font><i><font color="black"><span style='white-space: nowrap'>Base</span></font></i><font color="blue"><span style='white-space: nowrap'>&gt;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ADFun&lt;</span></font><i><font color="black"><span style='white-space: nowrap'>Base</span></font></i><font color="blue"><span style='white-space: nowrap'>&gt;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 Note that the Taylor coefficients stored in 
 <code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i></code>
@@ -141,7 +141,7 @@ by this operation; see
 This argument has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sparse_rcv&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>subset</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;sparse_rcv&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>subset</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 Its row size and column size is 
 <code><i><font color="black"><span style='white-space: nowrap'>n</span></font></i></code>
@@ -172,7 +172,7 @@ All of the row, column pairs in
 This argument has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;vec_double&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;vec_double&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 and its size is 
 <code><i><font color="black"><span style='white-space: nowrap'>n</span></font></i></code>
@@ -188,7 +188,7 @@ H(x)
 This argument has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;vec_double&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>r</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;vec_double&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>r</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 and its size is 
 <code><i><font color="black"><span style='white-space: nowrap'>m</span></font></i></code>
@@ -209,7 +209,7 @@ F_i (x)
 This argument has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;sparse_rc&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>pattern</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;sparse_rc&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>pattern</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 Its row size and column sizes are 
 <code><i><font color="black"><span style='white-space: nowrap'>n</span></font></i></code>
@@ -233,7 +233,7 @@ when <a href="cpp_sparse_hes.htm#work" target="_top"><span style='white-space: n
 This argument has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sparse_hes_work&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>work</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;sparse_hes_work&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>work</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 We refer to its initial value,
 and its value after 
@@ -261,7 +261,7 @@ The return value
  has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>n_sweep</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>n_sweep</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 It is the number of first order forward sweeps
 used to compute the requested Hessian values.
@@ -285,7 +285,7 @@ After a call to <code><font color="blue">sparse_hes</font></code>
 the zero order coefficients correspond to
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>.forward(0,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>.forward(0,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 All the other forward mode coefficients are unspecified.
 

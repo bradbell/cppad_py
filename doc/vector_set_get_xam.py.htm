@@ -72,42 +72,42 @@ A:active { color : purple }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Python: Setting and Getting Vector Elements: Example and Test</big></big></b></center>
 
 <br><pre><tt><b><font color="#0000FF">def</font></b> <b><font color="#000000">vector_set_get_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#000080">import</font></b> numpy
-     <b><font color="#000080">import</font></b> cppad_py
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># initialize return variable</font></i>
-     ok <font color="#990000">=</font> True
-     <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
-     n <font color="#990000">=</font> <font color="#993399">4</font>
-     bv <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">vec_bool</font></b><font color="#990000">(</font>n<font color="#990000">)</font>
-     iv <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">vec_int</font></b><font color="#990000">(</font>n<font color="#990000">)</font>
-     dv <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
-     av <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># setting elements</font></i>
-     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n  <font color="#990000">)</font> <font color="#990000">:</font>
-          bv<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> i <font color="#990000">&gt;</font> n <font color="#990000">/</font> <font color="#993399">2</font>
-          iv<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">2</font> <font color="#990000">*</font> i
-          dv<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">3.0</font> <font color="#990000">*</font> i
-          av<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font><font color="#993399">4.0</font> <font color="#990000">*</font> i<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n  <font color="#990000">)</font> <font color="#990000">:</font>
-          be <font color="#990000">=</font> bv<font color="#990000">[</font>i<font color="#990000">]</font>
-          ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> be <font color="#990000">==</font> <font color="#990000">(</font>i <font color="#990000">&gt;</font> n <font color="#990000">/</font> <font color="#993399">2</font><font color="#990000">)</font>
-          <i><font color="#9A1900">#</font></i>
-          ie <font color="#990000">=</font> iv<font color="#990000">[</font>i<font color="#990000">]</font>
-          ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> ie <font color="#990000">==</font> <font color="#993399">2</font> <font color="#990000">*</font> i
-          <i><font color="#9A1900">#</font></i>
-          de <font color="#990000">=</font> dv<font color="#990000">[</font>i<font color="#990000">]</font>
-          ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> de <font color="#990000">==</font> <font color="#993399">3.0</font> <font color="#990000">*</font> i
-          <i><font color="#9A1900">#</font></i>
-          ae <font color="#990000">=</font> av<font color="#990000">[</font>i<font color="#990000">]</font>
-          ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> ae <font color="#990000">==</font> <font color="#993399">4.0</font> <font color="#990000">*</font> i
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#000080">import</font></b> numpy
+    <b><font color="#000080">import</font></b> cppad_py
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># initialize return variable</font></i>
+    ok <font color="#990000">=</font> True
+    <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
+    n <font color="#990000">=</font> <font color="#993399">4</font>
+    bv <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">vec_bool</font></b><font color="#990000">(</font>n<font color="#990000">)</font>
+    iv <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">vec_int</font></b><font color="#990000">(</font>n<font color="#990000">)</font>
+    dv <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
+    av <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># setting elements</font></i>
+    <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n  <font color="#990000">)</font> <font color="#990000">:</font>
+        bv<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> i <font color="#990000">&gt;</font> n <font color="#990000">/</font> <font color="#993399">2</font>
+        iv<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">2</font> <font color="#990000">*</font> i
+        dv<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">3.0</font> <font color="#990000">*</font> i
+        av<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font><font color="#993399">4.0</font> <font color="#990000">*</font> i<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n  <font color="#990000">)</font> <font color="#990000">:</font>
+        be <font color="#990000">=</font> bv<font color="#990000">[</font>i<font color="#990000">]</font>
+        ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> be <font color="#990000">==</font> <font color="#990000">(</font>i <font color="#990000">&gt;</font> n <font color="#990000">/</font> <font color="#993399">2</font><font color="#990000">)</font>
+        <i><font color="#9A1900">#</font></i>
+        ie <font color="#990000">=</font> iv<font color="#990000">[</font>i<font color="#990000">]</font>
+        ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> ie <font color="#990000">==</font> <font color="#993399">2</font> <font color="#990000">*</font> i
+        <i><font color="#9A1900">#</font></i>
+        de <font color="#990000">=</font> dv<font color="#990000">[</font>i<font color="#990000">]</font>
+        ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> de <font color="#990000">==</font> <font color="#993399">3.0</font> <font color="#990000">*</font> i
+        <i><font color="#9A1900">#</font></i>
+        ae <font color="#990000">=</font> av<font color="#990000">[</font>i<font color="#990000">]</font>
+        ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> ae <font color="#990000">==</font> <font color="#993399">4.0</font> <font color="#990000">*</font> i
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">)</font>
 <i><font color="#9A1900">#</font></i></tt></pre>
 
 <hr>Input File: example/python/core/vector_set_get_xam.py

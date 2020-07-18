@@ -72,28 +72,28 @@ A:active { color : purple }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Python: a_double Properties: Example and Test</big></big></b></center>
 
 <br><pre><tt><b><font color="#0000FF">def</font></b> <b><font color="#000000">a_double_property_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#000080">import</font></b> numpy
-     <b><font color="#000080">import</font></b> cppad_py
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># initialize return variable</font></i>
-     ok <font color="#990000">=</font> True
-     <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
-     a3 <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font><font color="#993399">3.0</font><font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> a3   <font color="#990000">==</font> <font color="#993399">3.0</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> a3<font color="#990000">.</font><b><font color="#000000">parameter</font></b><font color="#990000">()</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> <b><font color="#0000FF">not</font></b> a3<font color="#990000">.</font><b><font color="#000000">variable</font></b><font color="#990000">()</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># near_equal</font></i>
-     r3 <font color="#990000">=</font> a3<font color="#990000">.</font><b><font color="#000000">sqrt</font></b><font color="#990000">()</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> a3<font color="#990000">.</font><b><font color="#000000">near_equal</font></b><font color="#990000">(</font> r3 <font color="#990000">*</font> r3<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># var2par</font></i>
-     p3  <font color="#990000">=</font> a3<font color="#990000">.</font><b><font color="#000000">var2par</font></b><font color="#990000">()</font>
-     ok  <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> p3<font color="#990000">.</font><b><font color="#000000">value</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">3.0</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#000080">import</font></b> numpy
+    <b><font color="#000080">import</font></b> cppad_py
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># initialize return variable</font></i>
+    ok <font color="#990000">=</font> True
+    <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
+    a3 <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font><font color="#993399">3.0</font><font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> a3   <font color="#990000">==</font> <font color="#993399">3.0</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> a3<font color="#990000">.</font><b><font color="#000000">parameter</font></b><font color="#990000">()</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> <b><font color="#0000FF">not</font></b> a3<font color="#990000">.</font><b><font color="#000000">variable</font></b><font color="#990000">()</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># near_equal</font></i>
+    r3 <font color="#990000">=</font> a3<font color="#990000">.</font><b><font color="#000000">sqrt</font></b><font color="#990000">()</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> a3<font color="#990000">.</font><b><font color="#000000">near_equal</font></b><font color="#990000">(</font> r3 <font color="#990000">*</font> r3<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># var2par</font></i>
+    p3  <font color="#990000">=</font> a3<font color="#990000">.</font><b><font color="#000000">var2par</font></b><font color="#990000">()</font>
+    ok  <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> p3<font color="#990000">.</font><b><font color="#000000">value</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">3.0</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">)</font>
 <i><font color="#9A1900">#</font></i></tt></pre>
 
 <hr>Input File: example/python/core/a_double_property_xam.py

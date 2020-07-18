@@ -74,91 +74,91 @@ A:active { color : purple }
 <center><b><big><big>Python: Hessian Sparsity Patterns: Example and Test</big></big></b></center>
 
 <br><pre><tt><b><font color="#0000FF">def</font></b> <b><font color="#000000">sparse_hes_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#000080">import</font></b> numpy
-     <b><font color="#000080">import</font></b> cppad_py
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># initialize return variable</font></i>
-     ok <font color="#990000">=</font> True
-     <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
-     <i><font color="#9A1900"># number of dependent and independent variables</font></i>
-     n <font color="#990000">=</font> <font color="#993399">3</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># create the independent variables ax</font></i>
-     x <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
-     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n  <font color="#990000">)</font> <font color="#990000">:</font>
-          x<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> i <font color="#990000">+</font> <font color="#993399">2.0</font>
-     <i><font color="#9A1900">#</font></i>
-     ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># ay[i] = j * ax[j] * ax[i]</font></i>
-     <i><font color="#9A1900"># where i = mod(j + 1, n)</font></i>
-     ay <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
-     <b><font color="#0000FF">for</font></b> j <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n  <font color="#990000">)</font> <font color="#990000">:</font>
-          i <font color="#990000">=</font> j<font color="#990000">+</font><font color="#993399">1</font>
-          <b><font color="#0000FF">if</font></b> i <font color="#990000">&gt;=</font> n  <font color="#990000">:</font>
-               i <font color="#990000">=</font> i <font color="#990000">-</font> n
-          <i><font color="#9A1900">#</font></i>
-          aj <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font>j<font color="#990000">)</font>
-          ax_j <font color="#990000">=</font> ax<font color="#990000">[</font>j<font color="#990000">]</font>
-          ax_i <font color="#990000">=</font> ax<font color="#990000">[</font>i<font color="#990000">]</font>
-          ay<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> aj <font color="#990000">*</font> ax_j <font color="#990000">*</font> ax_i
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># define af corresponding to f(x)</font></i>
-     f  <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># Set select_d (domain) to all true,</font></i>
-     <i><font color="#9A1900"># initial select_r (range) to all false</font></i>
-     <i><font color="#9A1900"># initialize r to all zeros</font></i>
-     select_d <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>bool<font color="#990000">)</font>
-     select_r <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>bool<font color="#990000">)</font>
-     r <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
-     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n <font color="#990000">)</font> <font color="#990000">:</font>
-          select_d<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> True
-          select_r<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> False
-          r<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">0.0</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># only select component n-1 of the range function</font></i>
-     <i><font color="#9A1900"># f_0 (x) = (n-1) * x_{n-1} * x_0</font></i>
-     select_r<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> True
-     r<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">1.0</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># sparisty pattern for Hessian</font></i>
-     pattern <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">sparse_rc</font></b><font color="#990000">()</font>
-     f<font color="#990000">.</font><b><font color="#000000">for_hes_sparsity</font></b><font color="#990000">(</font>select_d<font color="#990000">,</font> select_r<font color="#990000">,</font> pattern<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># compute all possibly non-zero entries in Hessian</font></i>
-     <i><font color="#9A1900"># (should only compute lower triangle becuase matrix is symmetric)</font></i>
-     subset <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">sparse_rcv</font></b><font color="#990000">(</font>pattern<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># work space used to save time for multiple calls</font></i>
-     work <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">sparse_hes_work</font></b><font color="#990000">()</font>
-     <i><font color="#9A1900">#</font></i>
-     f<font color="#990000">.</font><b><font color="#000000">sparse_hes</font></b><font color="#990000">(</font>subset<font color="#990000">,</font> x<font color="#990000">,</font> r<font color="#990000">,</font> pattern<font color="#990000">,</font> work<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># check that result is sparsity pattern for Hessian of f_0 (x)</font></i>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> subset<font color="#990000">.</font><b><font color="#000000">nnz</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">2</font>
-     row <font color="#990000">=</font> subset<font color="#990000">.</font><b><font color="#000000">row</font></b><font color="#990000">()</font>
-     col <font color="#990000">=</font> subset<font color="#990000">.</font><b><font color="#000000">col</font></b><font color="#990000">()</font>
-     val <font color="#990000">=</font> subset<font color="#990000">.</font><b><font color="#000000">val</font></b><font color="#990000">()</font>
-     <b><font color="#0000FF">for</font></b> k <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> <font color="#993399">2</font> <font color="#990000">)</font> <font color="#990000">:</font>
-          i <font color="#990000">=</font> row<font color="#990000">[</font>k<font color="#990000">]</font>
-          j <font color="#990000">=</font> col<font color="#990000">[</font>k<font color="#990000">]</font>
-          v <font color="#990000">=</font> val<font color="#990000">[</font>k<font color="#990000">]</font>
-          <b><font color="#0000FF">if</font></b> i <font color="#990000">&lt;=</font> j  <font color="#990000">:</font>
-               ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> i <font color="#990000">==</font> <font color="#993399">0</font>
-               ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> j <font color="#990000">==</font> n<font color="#990000">-</font><font color="#993399">1</font>
-          <i><font color="#9A1900">#</font></i>
-          <b><font color="#0000FF">if</font></b> i <font color="#990000">&gt;=</font> j  <font color="#990000">:</font>
-               ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> i <font color="#990000">==</font> n<font color="#990000">-</font><font color="#993399">1</font>
-               ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> j <font color="#990000">==</font> <font color="#993399">0</font>
-          <i><font color="#9A1900">#</font></i>
-          ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> v <font color="#990000">==</font> n<font color="#990000">-</font><font color="#993399">1</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#000080">import</font></b> numpy
+    <b><font color="#000080">import</font></b> cppad_py
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># initialize return variable</font></i>
+    ok <font color="#990000">=</font> True
+    <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
+    <i><font color="#9A1900"># number of dependent and independent variables</font></i>
+    n <font color="#990000">=</font> <font color="#993399">3</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># create the independent variables ax</font></i>
+    x <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
+    <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n  <font color="#990000">)</font> <font color="#990000">:</font>
+        x<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> i <font color="#990000">+</font> <font color="#993399">2.0</font>
+    <i><font color="#9A1900">#</font></i>
+    ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># ay[i] = j * ax[j] * ax[i]</font></i>
+    <i><font color="#9A1900"># where i = mod(j + 1, n)</font></i>
+    ay <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
+    <b><font color="#0000FF">for</font></b> j <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n  <font color="#990000">)</font> <font color="#990000">:</font>
+        i <font color="#990000">=</font> j<font color="#990000">+</font><font color="#993399">1</font>
+        <b><font color="#0000FF">if</font></b> i <font color="#990000">&gt;=</font> n  <font color="#990000">:</font>
+            i <font color="#990000">=</font> i <font color="#990000">-</font> n
+        <i><font color="#9A1900">#</font></i>
+        aj <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font>j<font color="#990000">)</font>
+        ax_j <font color="#990000">=</font> ax<font color="#990000">[</font>j<font color="#990000">]</font>
+        ax_i <font color="#990000">=</font> ax<font color="#990000">[</font>i<font color="#990000">]</font>
+        ay<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> aj <font color="#990000">*</font> ax_j <font color="#990000">*</font> ax_i
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># define af corresponding to f(x)</font></i>
+    f  <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># Set select_d (domain) to all true,</font></i>
+    <i><font color="#9A1900"># initial select_r (range) to all false</font></i>
+    <i><font color="#9A1900"># initialize r to all zeros</font></i>
+    select_d <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>bool<font color="#990000">)</font>
+    select_r <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>bool<font color="#990000">)</font>
+    r <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
+    <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n <font color="#990000">)</font> <font color="#990000">:</font>
+        select_d<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> True
+        select_r<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> False
+        r<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">0.0</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># only select component n-1 of the range function</font></i>
+    <i><font color="#9A1900"># f_0 (x) = (n-1) * x_{n-1} * x_0</font></i>
+    select_r<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> True
+    r<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">1.0</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># sparisty pattern for Hessian</font></i>
+    pattern <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">sparse_rc</font></b><font color="#990000">()</font>
+    f<font color="#990000">.</font><b><font color="#000000">for_hes_sparsity</font></b><font color="#990000">(</font>select_d<font color="#990000">,</font> select_r<font color="#990000">,</font> pattern<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># compute all possibly non-zero entries in Hessian</font></i>
+    <i><font color="#9A1900"># (should only compute lower triangle becuase matrix is symmetric)</font></i>
+    subset <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">sparse_rcv</font></b><font color="#990000">(</font>pattern<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># work space used to save time for multiple calls</font></i>
+    work <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">sparse_hes_work</font></b><font color="#990000">()</font>
+    <i><font color="#9A1900">#</font></i>
+    f<font color="#990000">.</font><b><font color="#000000">sparse_hes</font></b><font color="#990000">(</font>subset<font color="#990000">,</font> x<font color="#990000">,</font> r<font color="#990000">,</font> pattern<font color="#990000">,</font> work<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># check that result is sparsity pattern for Hessian of f_0 (x)</font></i>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> subset<font color="#990000">.</font><b><font color="#000000">nnz</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">2</font>
+    row <font color="#990000">=</font> subset<font color="#990000">.</font><b><font color="#000000">row</font></b><font color="#990000">()</font>
+    col <font color="#990000">=</font> subset<font color="#990000">.</font><b><font color="#000000">col</font></b><font color="#990000">()</font>
+    val <font color="#990000">=</font> subset<font color="#990000">.</font><b><font color="#000000">val</font></b><font color="#990000">()</font>
+    <b><font color="#0000FF">for</font></b> k <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> <font color="#993399">2</font> <font color="#990000">)</font> <font color="#990000">:</font>
+        i <font color="#990000">=</font> row<font color="#990000">[</font>k<font color="#990000">]</font>
+        j <font color="#990000">=</font> col<font color="#990000">[</font>k<font color="#990000">]</font>
+        v <font color="#990000">=</font> val<font color="#990000">[</font>k<font color="#990000">]</font>
+        <b><font color="#0000FF">if</font></b> i <font color="#990000">&lt;=</font> j  <font color="#990000">:</font>
+            ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> i <font color="#990000">==</font> <font color="#993399">0</font>
+            ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> j <font color="#990000">==</font> n<font color="#990000">-</font><font color="#993399">1</font>
+        <i><font color="#9A1900">#</font></i>
+        <b><font color="#0000FF">if</font></b> i <font color="#990000">&gt;=</font> j  <font color="#990000">:</font>
+            ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> i <font color="#990000">==</font> n<font color="#990000">-</font><font color="#993399">1</font>
+            ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> j <font color="#990000">==</font> <font color="#993399">0</font>
+        <i><font color="#9A1900">#</font></i>
+        ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> v <font color="#990000">==</font> n<font color="#990000">-</font><font color="#993399">1</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">)</font>
 <i><font color="#9A1900">#</font></i></tt></pre>
 
 <hr>Input File: example/python/core/sparse_hes_xam.py

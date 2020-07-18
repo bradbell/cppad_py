@@ -119,66 +119,66 @@ It also optimizes out both addition and multiplication by the constant zero.
 <b><font color="#000080">import</font></b> copy
 <b><font color="#000080">from</font></b> cppad_py <b><font color="#000080">import</font></b> a_double
 <b><font color="#0000FF">def</font></b> <b><font color="#000000">simple_inv</font></b><font color="#990000">(</font>A<font color="#990000">)</font> <font color="#990000">:</font>
-     nr<font color="#990000">,</font> nc <font color="#990000">=</font> A<font color="#990000">.</font>shape
-     has_a_double <font color="#990000">=</font> False
-     <b><font color="#0000FF">for</font></b> e <b><font color="#0000FF">in</font></b> A<font color="#990000">.</font><b><font color="#000000">flatten</font></b><font color="#990000">()</font> <font color="#990000">:</font>
-          has_a_double <font color="#990000">=</font> has_a_double <b><font color="#0000FF">or</font></b> <b><font color="#000000">type</font></b><font color="#990000">(</font>e<font color="#990000">)</font> <font color="#990000">==</font> a_double
-     <b><font color="#0000FF">assert</font></b> nr <font color="#990000">==</font> nc
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">if</font></b> has_a_double <font color="#990000">:</font>
-          e_type <font color="#990000">=</font> a_double
-     <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
-          e_type <font color="#990000">=</font> float
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># initialize Tablue = [A | I]</font></i>
-     Tablue <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font> <font color="#990000">(</font>nr<font color="#990000">,</font> <font color="#993399">2</font> <font color="#990000">*</font> nr<font color="#990000">),</font> dtype<font color="#990000">=</font>e_type <font color="#990000">)</font>
-     Tablue<font color="#990000">[:,</font><font color="#993399">0</font><font color="#990000">:</font>nr<font color="#990000">]</font> <font color="#990000">=</font> A
-     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nr<font color="#990000">)</font> <font color="#990000">:</font>
-          <b><font color="#0000FF">for</font></b> j <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nr<font color="#990000">)</font> <font color="#990000">:</font>
-               Tablue<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font>   <font color="#990000">=</font> <b><font color="#000000">e_type</font></b><font color="#990000">(</font> A<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font> <font color="#990000">)</font>
-               Tablue<font color="#990000">[</font>i<font color="#990000">,</font>nr<font color="#990000">+</font>j<font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#000000">float</font></b><font color="#990000">(</font>i <font color="#990000">==</font> j<font color="#990000">)</font>
-     <i><font color="#9A1900"># ------------------------------------------------------------------------</font></i>
-     <i><font color="#9A1900"># Use row reduction to get convert A to an upper traingular matrix</font></i>
-     <i><font color="#9A1900"># with ones along the diagonal</font></i>
-     <i><font color="#9A1900"># ------------------------------------------------------------------------</font></i>
-     <i><font color="#9A1900"># for each column (except the last) of the matrix</font></i>
-     <b><font color="#0000FF">for</font></b> j <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nr <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">:</font>
-          <i><font color="#9A1900"># next row is one with maximum absolute element in column j</font></i>
-          <b><font color="#0000FF">if</font></b> has_a_double <font color="#990000">:</font>
-               i_max <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">argmax</font></b><font color="#990000">(</font> numpy<font color="#990000">.</font><b><font color="#000000">fabs</font></b><font color="#990000">(</font> Tablue<font color="#990000">[:,</font>j<font color="#990000">]</font> <font color="#990000">)</font> <font color="#990000">)</font>
-          <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
-               i_max <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">argmax</font></b><font color="#990000">(</font> numpy<font color="#990000">.</font><b><font color="#000000">abs</font></b><font color="#990000">(</font> Tablue<font color="#990000">[:,</font>j<font color="#990000">]</font> <font color="#990000">)</font> <font color="#990000">)</font>
-          <i><font color="#9A1900">#</font></i>
-          <i><font color="#9A1900"># swap row j and row i_max</font></i>
-          <b><font color="#0000FF">if</font></b> i_max <font color="#990000">!=</font> j <font color="#990000">:</font>
-               tmp              <font color="#990000">=</font> copy<font color="#990000">.</font><b><font color="#000000">copy</font></b><font color="#990000">(</font> Tablue<font color="#990000">[</font>j<font color="#990000">,:]</font> <font color="#990000">)</font>
-               Tablue<font color="#990000">[</font>j<font color="#990000">,:]</font>      <font color="#990000">=</font> Tablue<font color="#990000">[</font>i_max<font color="#990000">,:]</font>
-               Tablue<font color="#990000">[</font>i_max<font color="#990000">,:]</font>  <font color="#990000">=</font> tmp
-          <i><font color="#9A1900">#</font></i>
-          <i><font color="#9A1900"># divide row j by Tablue[j,j]</font></i>
-          Tablue<font color="#990000">[</font>j<font color="#990000">,:]</font> <font color="#990000">=</font> Tablue<font color="#990000">[</font>j<font color="#990000">,:]</font> <font color="#990000">/</font> Tablue<font color="#990000">[</font>j<font color="#990000">,</font>j<font color="#990000">]</font>
-          Tablue<font color="#990000">[</font>j<font color="#990000">,</font>j<font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#000000">e_type</font></b><font color="#990000">(</font><font color="#993399">1.0</font><font color="#990000">)</font>
-          <i><font color="#9A1900">#</font></i>
-          <i><font color="#9A1900"># zero out column j in rows after j</font></i>
-          <b><font color="#0000FF">for</font></b> k <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nr <font color="#990000">-</font> j <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">:</font>
-               i <font color="#990000">=</font> j <font color="#990000">+</font> k <font color="#990000">+</font> <font color="#993399">1</font>
-               Tablue<font color="#990000">[</font>i<font color="#990000">,:]</font> <font color="#990000">=</font> Tablue<font color="#990000">[</font>i<font color="#990000">,:]</font> <font color="#990000">-</font> Tablue<font color="#990000">[</font>i<font color="#990000">,</font>j<font color="#990000">]</font> <font color="#990000">*</font> Tablue<font color="#990000">[</font>j<font color="#990000">,:]</font>
-               Tablue<font color="#990000">[</font>i<font color="#990000">,</font>j<font color="#990000">]</font>    <font color="#990000">=</font> <b><font color="#000000">e_type</font></b><font color="#990000">(</font> <font color="#993399">0.0</font> <font color="#990000">)</font>
-     <i><font color="#9A1900"># divide the last row of Tablue by the last pivot element</font></i>
-     Tablue<font color="#990000">[</font>nr<font color="#990000">-</font><font color="#993399">1</font><font color="#990000">,:]</font>     <font color="#990000">=</font> Tablue<font color="#990000">[</font>nr<font color="#990000">-</font><font color="#993399">1</font><font color="#990000">,:]</font> <font color="#990000">/</font> Tablue<font color="#990000">[</font>nr<font color="#990000">-</font><font color="#993399">1</font><font color="#990000">,</font>nr<font color="#990000">-</font><font color="#993399">1</font><font color="#990000">]</font>
-     Tablue<font color="#990000">[</font>nr<font color="#990000">-</font><font color="#993399">1</font><font color="#990000">,</font> nr<font color="#990000">-</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#000000">e_type</font></b><font color="#990000">(</font> <font color="#993399">1.0</font> <font color="#990000">)</font>
-     <i><font color="#9A1900"># ------------------------------------------------------------------------</font></i>
-     <i><font color="#9A1900"># Use row reduction to get convert upper traingular matrix to the identity</font></i>
-     <i><font color="#9A1900"># ------------------------------------------------------------------------</font></i>
-     <b><font color="#0000FF">for</font></b> jm <b><font color="#0000FF">in</font></b> <b><font color="#000000">reversed</font></b><font color="#990000">(</font><b><font color="#000000">range</font></b><font color="#990000">(</font>nr <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">)</font> <font color="#990000">:</font>
-          j <font color="#990000">=</font> jm <font color="#990000">+</font> <font color="#993399">1</font>
-          <i><font color="#9A1900"># zero out entries in column j and row less than j</font></i>
-          <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>j<font color="#990000">)</font> <font color="#990000">:</font>
-               Tablue<font color="#990000">[</font>i<font color="#990000">,:]</font> <font color="#990000">=</font> Tablue<font color="#990000">[</font>i<font color="#990000">,:]</font> <font color="#990000">-</font> Tablue<font color="#990000">[</font>i<font color="#990000">,</font>j<font color="#990000">]</font> <font color="#990000">*</font> Tablue<font color="#990000">[</font>j<font color="#990000">,:]</font>
-               Tablue<font color="#990000">[</font>i<font color="#990000">,</font>j<font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#000000">e_type</font></b><font color="#990000">(</font> <font color="#993399">0.0</font> <font color="#990000">)</font>
-     <i><font color="#9A1900"># -------------------------------------------------------------------------</font></i>
-     Ainv <font color="#990000">=</font> Tablue<font color="#990000">[:,</font> nr<font color="#990000">:]</font>
-     <b><font color="#0000FF">return</font></b> Ainv</tt></pre>
+    nr<font color="#990000">,</font> nc <font color="#990000">=</font> A<font color="#990000">.</font>shape
+    has_a_double <font color="#990000">=</font> False
+    <b><font color="#0000FF">for</font></b> e <b><font color="#0000FF">in</font></b> A<font color="#990000">.</font><b><font color="#000000">flatten</font></b><font color="#990000">()</font> <font color="#990000">:</font>
+        has_a_double <font color="#990000">=</font> has_a_double <b><font color="#0000FF">or</font></b> <b><font color="#000000">type</font></b><font color="#990000">(</font>e<font color="#990000">)</font> <font color="#990000">==</font> a_double
+    <b><font color="#0000FF">assert</font></b> nr <font color="#990000">==</font> nc
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">if</font></b> has_a_double <font color="#990000">:</font>
+        e_type <font color="#990000">=</font> a_double
+    <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
+        e_type <font color="#990000">=</font> float
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># initialize Tablue = [A | I]</font></i>
+    Tablue <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font> <font color="#990000">(</font>nr<font color="#990000">,</font> <font color="#993399">2</font> <font color="#990000">*</font> nr<font color="#990000">),</font> dtype<font color="#990000">=</font>e_type <font color="#990000">)</font>
+    Tablue<font color="#990000">[:,</font><font color="#993399">0</font><font color="#990000">:</font>nr<font color="#990000">]</font> <font color="#990000">=</font> A
+    <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nr<font color="#990000">)</font> <font color="#990000">:</font>
+        <b><font color="#0000FF">for</font></b> j <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nr<font color="#990000">)</font> <font color="#990000">:</font>
+            Tablue<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font>   <font color="#990000">=</font> <b><font color="#000000">e_type</font></b><font color="#990000">(</font> A<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font> <font color="#990000">)</font>
+            Tablue<font color="#990000">[</font>i<font color="#990000">,</font>nr<font color="#990000">+</font>j<font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#000000">float</font></b><font color="#990000">(</font>i <font color="#990000">==</font> j<font color="#990000">)</font>
+    <i><font color="#9A1900"># ------------------------------------------------------------------------</font></i>
+    <i><font color="#9A1900"># Use row reduction to get convert A to an upper traingular matrix</font></i>
+    <i><font color="#9A1900"># with ones along the diagonal</font></i>
+    <i><font color="#9A1900"># ------------------------------------------------------------------------</font></i>
+    <i><font color="#9A1900"># for each column (except the last) of the matrix</font></i>
+    <b><font color="#0000FF">for</font></b> j <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nr <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">:</font>
+        <i><font color="#9A1900"># next row is one with maximum absolute element in column j</font></i>
+        <b><font color="#0000FF">if</font></b> has_a_double <font color="#990000">:</font>
+            i_max <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">argmax</font></b><font color="#990000">(</font> numpy<font color="#990000">.</font><b><font color="#000000">fabs</font></b><font color="#990000">(</font> Tablue<font color="#990000">[:,</font>j<font color="#990000">]</font> <font color="#990000">)</font> <font color="#990000">)</font>
+        <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
+            i_max <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">argmax</font></b><font color="#990000">(</font> numpy<font color="#990000">.</font><b><font color="#000000">abs</font></b><font color="#990000">(</font> Tablue<font color="#990000">[:,</font>j<font color="#990000">]</font> <font color="#990000">)</font> <font color="#990000">)</font>
+        <i><font color="#9A1900">#</font></i>
+        <i><font color="#9A1900"># swap row j and row i_max</font></i>
+        <b><font color="#0000FF">if</font></b> i_max <font color="#990000">!=</font> j <font color="#990000">:</font>
+            tmp              <font color="#990000">=</font> copy<font color="#990000">.</font><b><font color="#000000">copy</font></b><font color="#990000">(</font> Tablue<font color="#990000">[</font>j<font color="#990000">,:]</font> <font color="#990000">)</font>
+            Tablue<font color="#990000">[</font>j<font color="#990000">,:]</font>      <font color="#990000">=</font> Tablue<font color="#990000">[</font>i_max<font color="#990000">,:]</font>
+            Tablue<font color="#990000">[</font>i_max<font color="#990000">,:]</font>  <font color="#990000">=</font> tmp
+        <i><font color="#9A1900">#</font></i>
+        <i><font color="#9A1900"># divide row j by Tablue[j,j]</font></i>
+        Tablue<font color="#990000">[</font>j<font color="#990000">,:]</font> <font color="#990000">=</font> Tablue<font color="#990000">[</font>j<font color="#990000">,:]</font> <font color="#990000">/</font> Tablue<font color="#990000">[</font>j<font color="#990000">,</font>j<font color="#990000">]</font>
+        Tablue<font color="#990000">[</font>j<font color="#990000">,</font>j<font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#000000">e_type</font></b><font color="#990000">(</font><font color="#993399">1.0</font><font color="#990000">)</font>
+        <i><font color="#9A1900">#</font></i>
+        <i><font color="#9A1900"># zero out column j in rows after j</font></i>
+        <b><font color="#0000FF">for</font></b> k <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nr <font color="#990000">-</font> j <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">:</font>
+            i <font color="#990000">=</font> j <font color="#990000">+</font> k <font color="#990000">+</font> <font color="#993399">1</font>
+            Tablue<font color="#990000">[</font>i<font color="#990000">,:]</font> <font color="#990000">=</font> Tablue<font color="#990000">[</font>i<font color="#990000">,:]</font> <font color="#990000">-</font> Tablue<font color="#990000">[</font>i<font color="#990000">,</font>j<font color="#990000">]</font> <font color="#990000">*</font> Tablue<font color="#990000">[</font>j<font color="#990000">,:]</font>
+            Tablue<font color="#990000">[</font>i<font color="#990000">,</font>j<font color="#990000">]</font>    <font color="#990000">=</font> <b><font color="#000000">e_type</font></b><font color="#990000">(</font> <font color="#993399">0.0</font> <font color="#990000">)</font>
+    <i><font color="#9A1900"># divide the last row of Tablue by the last pivot element</font></i>
+    Tablue<font color="#990000">[</font>nr<font color="#990000">-</font><font color="#993399">1</font><font color="#990000">,:]</font>     <font color="#990000">=</font> Tablue<font color="#990000">[</font>nr<font color="#990000">-</font><font color="#993399">1</font><font color="#990000">,:]</font> <font color="#990000">/</font> Tablue<font color="#990000">[</font>nr<font color="#990000">-</font><font color="#993399">1</font><font color="#990000">,</font>nr<font color="#990000">-</font><font color="#993399">1</font><font color="#990000">]</font>
+    Tablue<font color="#990000">[</font>nr<font color="#990000">-</font><font color="#993399">1</font><font color="#990000">,</font> nr<font color="#990000">-</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#000000">e_type</font></b><font color="#990000">(</font> <font color="#993399">1.0</font> <font color="#990000">)</font>
+    <i><font color="#9A1900"># ------------------------------------------------------------------------</font></i>
+    <i><font color="#9A1900"># Use row reduction to get convert upper traingular matrix to the identity</font></i>
+    <i><font color="#9A1900"># ------------------------------------------------------------------------</font></i>
+    <b><font color="#0000FF">for</font></b> jm <b><font color="#0000FF">in</font></b> <b><font color="#000000">reversed</font></b><font color="#990000">(</font><b><font color="#000000">range</font></b><font color="#990000">(</font>nr <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">)</font> <font color="#990000">:</font>
+        j <font color="#990000">=</font> jm <font color="#990000">+</font> <font color="#993399">1</font>
+        <i><font color="#9A1900"># zero out entries in column j and row less than j</font></i>
+        <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>j<font color="#990000">)</font> <font color="#990000">:</font>
+            Tablue<font color="#990000">[</font>i<font color="#990000">,:]</font> <font color="#990000">=</font> Tablue<font color="#990000">[</font>i<font color="#990000">,:]</font> <font color="#990000">-</font> Tablue<font color="#990000">[</font>i<font color="#990000">,</font>j<font color="#990000">]</font> <font color="#990000">*</font> Tablue<font color="#990000">[</font>j<font color="#990000">,:]</font>
+            Tablue<font color="#990000">[</font>i<font color="#990000">,</font>j<font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#000000">e_type</font></b><font color="#990000">(</font> <font color="#993399">0.0</font> <font color="#990000">)</font>
+    <i><font color="#9A1900"># -------------------------------------------------------------------------</font></i>
+    Ainv <font color="#990000">=</font> Tablue<font color="#990000">[:,</font> nr<font color="#990000">:]</font>
+    <b><font color="#0000FF">return</font></b> Ainv</tt></pre>
 
 <hr>Input File: example/python/numeric/simple_inv.py
 

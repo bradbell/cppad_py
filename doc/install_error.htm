@@ -113,7 +113,7 @@ If the error message below occurs, it is because the CppAD library
 is not in your <code><font color="blue">LD_LIBRARY_PATH</font></code>:
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImportError:&nbsp;libcppad_lib.so&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>...</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;cannot&nbsp;open&nbsp;shared&nbsp;object&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImportError:&nbsp;libcppad_lib.so&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>...</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;cannot&nbsp;open&nbsp;shared&nbsp;object&nbsp;file<br>
 </span></font></code>
 If you run the <code><font color="blue">setup.py</font></code> script directory, or
 if you included the <code><font color="blue">--verbose</font></code> option in your <code><font color="blue">pip</font></code> command,
@@ -129,7 +129,7 @@ If you set <a href="get_cppad.sh.htm#Settings.build_type" target="_top"><span st
  to <code><font color="blue">debug</font></code>,
 you may get the following warning during the build:
 <code><font color='blue'><pre style='display:inline'> 
-     #warning _FORTIFY_SOURCE requires compiling with optimization
+    #warning _FORTIFY_SOURCE requires compiling with optimization
 </pre></font></code>
 This is a problem with the python setuptools,
 one can un-define a macro, but it does not remove a original definition.

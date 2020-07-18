@@ -124,7 +124,7 @@ A:active { color : purple }
 There is a preliminary version of cppad_py available using <code><font color="blue">pip</font></code>.
 To install for you entire system use:
 <code><font color='blue'><pre style='display:inline'> 
-     pip install -i https://test.pypi.org/simple/ cppad_py
+  pip install -i https://test.pypi.org/simple/ cppad_py
 </pre></font></code>
 <br>
 <b><big><a name="Install Errors" id="Install Errors">Install Errors</a></big></b>
@@ -143,7 +143,7 @@ for downloading and building from the source code.
 Use the following command to download the current version of cppad_py:
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git&nbsp;clone&nbsp;https://github.com/bradbell/cppad_py.git&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>top_srcdir</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;git&nbsp;clone&nbsp;https://github.com/bradbell/cppad_py.git&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>top_srcdir</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 <br>
 <big><a name="Download.Top Source Directory" id="Download.Top Source Directory">Top Source Directory</a></big>
@@ -183,7 +183,7 @@ works on your system.
 Build the Python cppad_py module using the command:
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python&nbsp;setup.py&nbsp;build_ext<br>
+&nbsp;&nbsp;python&nbsp;setup.py&nbsp;build_ext<br>
 </span></font></code>
 <br>
 <big><a name="Test.python" id="Test.python">python</a></big>
@@ -194,8 +194,8 @@ the following commands starting in
 :
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd&nbsp;example/python<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python&nbsp;check_all.py<br>
+&nbsp;&nbsp;cd&nbsp;example/python<br>
+&nbsp;&nbsp;python&nbsp;check_all.py<br>
 </span></font></code>
 <br>
 <big><a name="Test.c++" id="Test.c++">c++</a></big>
@@ -209,8 +209,8 @@ starting in
 :
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd&nbsp;build<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make&nbsp;check_lib_cplusplus<br>
+&nbsp;&nbsp;cd&nbsp;build<br>
+&nbsp;&nbsp;make&nbsp;check_lib_cplusplus<br>
 </span></font></code>
 <br>
 <big><a name="Test.import" id="Test.import">import</a></big>
@@ -221,9 +221,9 @@ If you are in the
 you should be able to import cppad_py using the following commands:
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;cppad_py<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quit()<br>
+&nbsp;&nbsp;python<br>
+&nbsp;&nbsp;import&nbsp;cppad_py<br>
+&nbsp;&nbsp;quit()<br>
 </span></font></code>
 We need to install cppad_py so you can import it from any directory.
 
@@ -235,12 +235,12 @@ We need to install cppad_py so you can import it from any directory.
 Use the following command to build and install the debug version of cppad_py:
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python&nbsp;setup.py&nbsp;build_ext&nbsp;install&nbsp;--prefix=</span></font><i><font color="black"><span style='white-space: nowrap'>prefix</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;python&nbsp;setup.py&nbsp;build_ext&nbsp;install&nbsp;--prefix=</span></font><i><font color="black"><span style='white-space: nowrap'>prefix</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 This will install <code><font color="blue">cppad_py</font></code> in the directory
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>prefix</span></font></i><font color="blue"><span style='white-space: nowrap'>/</span></font><i><font color="black"><span style='white-space: nowrap'>lib</span></font></i><font color="blue"><span style='white-space: nowrap'>/python</span></font><i><font color="black"><span style='white-space: nowrap'>major</span></font></i><font color="blue"><span style='white-space: nowrap'>.</span></font><i><font color="black"><span style='white-space: nowrap'>minor</span></font></i><font color="blue"><span style='white-space: nowrap'>/site_packages/cppad_py<br>
+&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>prefix</span></font></i><font color="blue"><span style='white-space: nowrap'>/</span></font><i><font color="black"><span style='white-space: nowrap'>lib</span></font></i><font color="blue"><span style='white-space: nowrap'>/python</span></font><i><font color="black"><span style='white-space: nowrap'>major</span></font></i><font color="blue"><span style='white-space: nowrap'>.</span></font><i><font color="black"><span style='white-space: nowrap'>minor</span></font></i><font color="blue"><span style='white-space: nowrap'>/site_packages/cppad_py<br>
 </span></font></code>
 where 
 <code><i><font color="black"><span style='white-space: nowrap'>lib</span></font></i></code>
@@ -267,10 +267,10 @@ is in your python path.
 Once it is, you should be able to execute the following commands:
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;sys<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(sys.path)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quit()<br>
+&nbsp;&nbsp;python<br>
+&nbsp;&nbsp;import&nbsp;sys<br>
+&nbsp;&nbsp;print(sys.path)<br>
+&nbsp;&nbsp;quit()<br>
 </span></font></code>
 
 <hr>Input File: setup.py

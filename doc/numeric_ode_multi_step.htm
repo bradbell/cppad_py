@@ -96,7 +96,7 @@ The routine can be used with <code><font color="blue">ad_double</font></code> to
 value ODE
 <small>@[@
 
-	y^{(1)} (t) = f( t , y )
+  y^{(1)} (t) = f( t , y )
 
 @]@</small>
 
@@ -108,7 +108,7 @@ This routine executes one step of an ODE approximation method with the
 following syntax:
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y1</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>one_step</span></font></i><font color="blue"><span style='white-space: nowrap'>(</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>t0</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y0</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>t_step</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y1</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>one_step</span></font></i><font color="blue"><span style='white-space: nowrap'>(</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>t0</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y0</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>t_step</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 The elements of 
 <code><i><font color="black"><span style='white-space: nowrap'>y0</span></font></i></code>
@@ -169,7 +169,7 @@ informs
  that we are currently integrating the time interval
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i><font color="blue"><span style='white-space: nowrap'>[</span></font><i><font color="black"><span style='white-space: nowrap'>index</span></font></i><font color="blue"><span style='white-space: nowrap'>]&nbsp;,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i><font color="blue"><span style='white-space: nowrap'>[</span></font><i><font color="black"><span style='white-space: nowrap'>index</span></font></i><font color="blue"><span style='white-space: nowrap'>+1]&nbsp;]<br>
+&nbsp;&nbsp;[&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i><font color="blue"><span style='white-space: nowrap'>[</span></font><i><font color="black"><span style='white-space: nowrap'>index</span></font></i><font color="blue"><span style='white-space: nowrap'>]&nbsp;,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>t_all</span></font></i><font color="blue"><span style='white-space: nowrap'>[</span></font><i><font color="black"><span style='white-space: nowrap'>index</span></font></i><font color="blue"><span style='white-space: nowrap'>+1]&nbsp;]<br>
 </span></font></code>
 so that it know which smooth function to represent
 even if <small>@(@
@@ -189,7 +189,7 @@ of each integration interval and before any of the other
 This call evaluates the function that defines the ODE
 <small>@[@
 
-	y^{(1)} (t) = f [ t , y(t) ]
+  y^{(1)} (t) = f [ t , y(t) ]
 
 @]@</small>
 
@@ -259,22 +259,22 @@ y(t)
 <b><font color="#000080">import</font></b> numpy
 <b><font color="#000080">import</font></b> copy
 <b><font color="#0000FF">def</font></b> <b><font color="#000000">ode_multi_step</font></b><font color="#990000">(</font>one_step<font color="#990000">,</font> fun<font color="#990000">,</font> t_all<font color="#990000">,</font> y_init <font color="#990000">)</font> <font color="#990000">:</font>
-     dtype      <font color="#990000">=</font> <b><font color="#000000">type</font></b><font color="#990000">(</font>y_init<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">])</font>
-     n_var      <font color="#990000">=</font> y_init<font color="#990000">.</font>size
-     n_step     <font color="#990000">=</font> t_all<font color="#990000">.</font>size <font color="#990000">-</font> <font color="#993399">1</font>
-     y_all      <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font> <font color="#990000">(</font>n_step<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font> n_var<font color="#990000">),</font> dtype <font color="#990000">=</font> dtype  <font color="#990000">)</font>
-     y1         <font color="#990000">=</font> y_init
-     t1         <font color="#990000">=</font> t_all<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
-     y_all<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">,:]</font> <font color="#990000">=</font> y1
-     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>n_step<font color="#990000">)</font> <font color="#990000">:</font>
-          fun<font color="#990000">.</font><b><font color="#000000">set_t_all_index</font></b><font color="#990000">(</font>i<font color="#990000">)</font>
-          y0            <font color="#990000">=</font> y1
-          t0            <font color="#990000">=</font> t1
-          t1            <font color="#990000">=</font> t_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">]</font>
-          t_step        <font color="#990000">=</font> t1 <font color="#990000">-</font> t0
-          y1            <font color="#990000">=</font> <b><font color="#000000">one_step</font></b><font color="#990000">(</font>fun<font color="#990000">,</font> t0<font color="#990000">,</font> y0<font color="#990000">,</font> t_step<font color="#990000">)</font>
-          y_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,:]</font>  <font color="#990000">=</font> copy<font color="#990000">.</font><b><font color="#000000">copy</font></b><font color="#990000">(</font>y1<font color="#990000">)</font>
-     <b><font color="#0000FF">return</font></b> y_all</tt></pre>
+    dtype      <font color="#990000">=</font> <b><font color="#000000">type</font></b><font color="#990000">(</font>y_init<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">])</font>
+    n_var      <font color="#990000">=</font> y_init<font color="#990000">.</font>size
+    n_step     <font color="#990000">=</font> t_all<font color="#990000">.</font>size <font color="#990000">-</font> <font color="#993399">1</font>
+    y_all      <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font> <font color="#990000">(</font>n_step<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,</font> n_var<font color="#990000">),</font> dtype <font color="#990000">=</font> dtype  <font color="#990000">)</font>
+    y1         <font color="#990000">=</font> y_init
+    t1         <font color="#990000">=</font> t_all<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
+    y_all<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">,:]</font> <font color="#990000">=</font> y1
+    <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>n_step<font color="#990000">)</font> <font color="#990000">:</font>
+        fun<font color="#990000">.</font><b><font color="#000000">set_t_all_index</font></b><font color="#990000">(</font>i<font color="#990000">)</font>
+        y0            <font color="#990000">=</font> y1
+        t0            <font color="#990000">=</font> t1
+        t1            <font color="#990000">=</font> t_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">]</font>
+        t_step        <font color="#990000">=</font> t1 <font color="#990000">-</font> t0
+        y1            <font color="#990000">=</font> <b><font color="#000000">one_step</font></b><font color="#990000">(</font>fun<font color="#990000">,</font> t0<font color="#990000">,</font> y0<font color="#990000">,</font> t_step<font color="#990000">)</font>
+        y_all<font color="#990000">[</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">,:]</font>  <font color="#990000">=</font> copy<font color="#990000">.</font><b><font color="#000000">copy</font></b><font color="#990000">(</font>y1<font color="#990000">)</font>
+    <b><font color="#0000FF">return</font></b> y_all</tt></pre>
 
 <hr>Input File: example/python/numeric/ode_multi_step.py
 

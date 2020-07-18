@@ -72,55 +72,55 @@ A:active { color : purple }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Python: a_double Conditional Assignment: Example and Test</big></big></b></center>
 
 <br><pre><tt><b><font color="#0000FF">def</font></b> <b><font color="#000000">a_double_cond_assign_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#000080">import</font></b> numpy
-     <b><font color="#000080">import</font></b> cppad_py
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># initialize return variable</font></i>
-     ok <font color="#990000">=</font> True
-     <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
-     n_ind <font color="#990000">=</font> <font color="#993399">4</font>
-     n_dep <font color="#990000">=</font> <font color="#993399">1</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># create ax (value of independent variables does not matter)</font></i>
-     x <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_ind<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
-     x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">0.0</font>
-     x<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">1.0</font>
-     x<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">2.0</font>
-     x<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">3.0</font>
-     ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># arguments to conditional assignment</font></i>
-     left <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
-     right <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font>
-     if_true <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font>
-     if_false <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># assignment</font></i>
-     target <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">()</font>
-     target<font color="#990000">.</font><b><font color="#000000">cond_assign</font></b><font color="#990000">(</font>
-          <font color="#FF0000">"&lt;"</font><font color="#990000">,</font>
-          left<font color="#990000">,</font>
-          right<font color="#990000">,</font>
-          if_true<font color="#990000">,</font>
-          if_false
-     <font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># f(x) = taget</font></i>
-     ay <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_dep<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
-     ay<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> target
-     f  <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># assignment with different independent variable values</font></i>
-     x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">9.0</font> <i><font color="#9A1900"># left</font></i>
-     x<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">8.0</font> <i><font color="#9A1900"># right</font></i>
-     x<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">7.0</font> <i><font color="#9A1900"># if_true</font></i>
-     x<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">6.0</font> <i><font color="#9A1900"># if_false</font></i>
-     p <font color="#990000">=</font> <font color="#993399">0</font>
-     y <font color="#990000">=</font> f<font color="#990000">.</font><b><font color="#000000">forward</font></b><font color="#990000">(</font>p<font color="#990000">,</font> x<font color="#990000">)</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">6.0</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok  <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#000080">import</font></b> numpy
+    <b><font color="#000080">import</font></b> cppad_py
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># initialize return variable</font></i>
+    ok <font color="#990000">=</font> True
+    <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
+    n_ind <font color="#990000">=</font> <font color="#993399">4</font>
+    n_dep <font color="#990000">=</font> <font color="#993399">1</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># create ax (value of independent variables does not matter)</font></i>
+    x <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_ind<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
+    x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">0.0</font>
+    x<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">1.0</font>
+    x<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">2.0</font>
+    x<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">3.0</font>
+    ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># arguments to conditional assignment</font></i>
+    left <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
+    right <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font>
+    if_true <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font>
+    if_false <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># assignment</font></i>
+    target <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">()</font>
+    target<font color="#990000">.</font><b><font color="#000000">cond_assign</font></b><font color="#990000">(</font>
+        <font color="#FF0000">"&lt;"</font><font color="#990000">,</font>
+        left<font color="#990000">,</font>
+        right<font color="#990000">,</font>
+        if_true<font color="#990000">,</font>
+        if_false
+    <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># f(x) = taget</font></i>
+    ay <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_dep<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
+    ay<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> target
+    f  <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># assignment with different independent variable values</font></i>
+    x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">9.0</font> <i><font color="#9A1900"># left</font></i>
+    x<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">8.0</font> <i><font color="#9A1900"># right</font></i>
+    x<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">7.0</font> <i><font color="#9A1900"># if_true</font></i>
+    x<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">6.0</font> <i><font color="#9A1900"># if_false</font></i>
+    p <font color="#990000">=</font> <font color="#993399">0</font>
+    y <font color="#990000">=</font> f<font color="#990000">.</font><b><font color="#000000">forward</font></b><font color="#990000">(</font>p<font color="#990000">,</font> x<font color="#990000">)</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">6.0</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok  <font color="#990000">)</font>
 <i><font color="#9A1900">#</font></i></tt></pre>
 
 <hr>Input File: example/python/core/a_double_cond_assign_xam.py

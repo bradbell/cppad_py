@@ -111,7 +111,7 @@ function corresponding to
 The syntax above takes advantage of sparsity when computing the Jacobian
 <small>@[@
 
-	J(x) = F^{(1)} (x)
+  J(x) = F^{(1)} (x)
 
 @]@</small>
 In the sparse case, this should be faster and take less memory than
@@ -222,7 +222,7 @@ when <a href="py_sparse_jac.htm#work" target="_top"><span style='white-space: no
 This argument must have been constructed by the call
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>work</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;cppad_py.sparse_jac_work()<br>
+&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>work</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;cppad_py.sparse_jac_work()<br>
 </span></font></code>
 We refer to its initial value,
 and its value after 
@@ -270,7 +270,7 @@ After a call to <code><font color="blue">sparse_jac_forward</font></code> or <co
 the zero order coefficients correspond to
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>.forward(0,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>.forward(0,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 All the other forward mode coefficients are unspecified.
 

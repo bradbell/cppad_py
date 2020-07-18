@@ -108,7 +108,7 @@ The python file <code><font color="blue">lib/python/cppad_py/independent.py</fon
 was edited to add the following syntax documentation:
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(</span></font><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>adynamic</span></font></i><font color="blue"><span style='white-space: nowrap'>)&nbsp;=&nbsp;cppad_py::independent(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>dynamic</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(</span></font><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>adynamic</span></font></i><font color="blue"><span style='white-space: nowrap'>)&nbsp;=&nbsp;cppad_py::independent(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>dynamic</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 and the extra return value was documented; see
 <a href="py_independent.htm#adynamic" target="_top"><span style='white-space: nowrap'>adynamic</span></a>
@@ -123,7 +123,7 @@ The <a href="cpp_fun_new_dynamic.htm" target="_top"><span style='white-space: no
 in the file <code><font color="blue">lib/python/cppad_py/fun_new_dynamic.py</font></code>.
 In addition, the OMhelp command
 <code><font color='blue'><pre style='display:inline'> 
-     %lib/python/cppad_py/fun_new_dynamic.py
+    %lib/python/cppad_py/fun_new_dynamic.py
 </pre></font></code>
 was added to the file <code><font color="blue">lib/python/cppad_py/fun.py</font></code>.
 
@@ -135,9 +135,9 @@ An example file was added to the documentation,
 below the <a href="py_independent.htm" target="_top"><span style='white-space: nowrap'>py_independent</span></a>
  section, using the OMhelp commands:
 <code><font color='blue'><pre style='display:inline'> 
-     $children%
-          example/python/core/fun_dynamic_xam.py
-     %$$
+    $children%
+        example/python/core/fun_dynamic_xam.py
+    %$$
 </pre></font></code>
 In addition, a reference to this example was added under the
 <a href="py_independent.htm#Example" target="_top"><span style='white-space: nowrap'>example</span></a>
@@ -158,36 +158,36 @@ was changed to handle dynamic parameters as follows:
 <pre><tt><b><font color="#000080">import</font></b> cppad_py
 <b><font color="#000080">import</font></b> numpy
 <b><font color="#0000FF">def</font></b> <b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">,</font> dynamic <font color="#990000">=</font> None<font color="#990000">)</font> <font color="#990000">:</font>
-<i><font color="#9A1900">     """</font></i>
-<i><font color="#9A1900">     ax = independent(x)</font></i>
-<i><font color="#9A1900">     creates the indepedent numpy vector ax, with value equal numpy vector x,</font></i>
-<i><font color="#9A1900">     and starts recording a_double operations.</font></i>
-<i><font color="#9A1900">     """</font></i>
-     <i><font color="#9A1900"># convert x -&gt; u</font></i>
-     dtype    <font color="#990000">=</font> float
-     <i><font color="#9A1900">#</font></i>
-     nx <font color="#990000">=</font> x<font color="#990000">.</font>size
-     <b><font color="#0000FF">if</font></b> dynamic <b><font color="#0000FF">is</font></b> None <font color="#990000">:</font>
-          syntax   <font color="#990000">=</font> <font color="#FF0000">'independent(x)'</font>
-          u <font color="#990000">=</font> cppad_py<font color="#990000">.</font>utility<font color="#990000">.</font><b><font color="#000000">numpy2vec</font></b><font color="#990000">(</font>x<font color="#990000">,</font> dtype<font color="#990000">,</font> nx<font color="#990000">,</font> syntax<font color="#990000">,</font> <font color="#FF0000">'x'</font><font color="#990000">)</font>
-          av <font color="#990000">=</font> cppad_py<font color="#990000">.</font>swig<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>u<font color="#990000">)</font>
-          ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font>utility<font color="#990000">.</font><b><font color="#000000">vec2numpy</font></b><font color="#990000">(</font>av<font color="#990000">,</font> av<font color="#990000">.</font><b><font color="#000000">size</font></b><font color="#990000">());</font>
-          <b><font color="#0000FF">return</font></b> ax
-     <i><font color="#9A1900">#</font></i>
-     nd       <font color="#990000">=</font> dynamic<font color="#990000">.</font>size
-     syntax   <font color="#990000">=</font> <font color="#FF0000">'independent(x, dynamic)'</font>
-     u <font color="#990000">=</font> cppad_py<font color="#990000">.</font>utility<font color="#990000">.</font><b><font color="#000000">numpy2vec</font></b><font color="#990000">(</font>x<font color="#990000">,</font> dtype<font color="#990000">,</font> nx<font color="#990000">,</font> syntax<font color="#990000">,</font> <font color="#FF0000">'x'</font><font color="#990000">)</font>
-     v <font color="#990000">=</font> cppad_py<font color="#990000">.</font>utility<font color="#990000">.</font><b><font color="#000000">numpy2vec</font></b><font color="#990000">(</font>dynamic<font color="#990000">,</font> dtype<font color="#990000">,</font> nd<font color="#990000">,</font> syntax<font color="#990000">,</font> <font color="#FF0000">'dynamic'</font><font color="#990000">)</font>
-     a_both   <font color="#990000">=</font> cppad_py<font color="#990000">.</font>swig<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>u<font color="#990000">,</font> v<font color="#990000">)</font>
-     ax       <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>nx<font color="#990000">,</font>       dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
-     adynamic <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>nd<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
-     <i><font color="#9A1900"># use copy constructor so a separate copy is made for numpy arrays</font></i>
-     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nx<font color="#990000">)</font> <font color="#990000">:</font>
-          ax<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font> a_both<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">)</font>
-     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nd<font color="#990000">)</font> <font color="#990000">:</font>
-          adynamic<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font> a_both<font color="#990000">[</font>nx <font color="#990000">+</font> i<font color="#990000">]</font> <font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">return</font></b> <font color="#990000">(</font>ax<font color="#990000">,</font> adynamic<font color="#990000">)</font></tt></pre>
+<i><font color="#9A1900">    """</font></i>
+<i><font color="#9A1900">    ax = independent(x)</font></i>
+<i><font color="#9A1900">    creates the indepedent numpy vector ax, with value equal numpy vector x,</font></i>
+<i><font color="#9A1900">    and starts recording a_double operations.</font></i>
+<i><font color="#9A1900">    """</font></i>
+    <i><font color="#9A1900"># convert x -&gt; u</font></i>
+    dtype    <font color="#990000">=</font> float
+    <i><font color="#9A1900">#</font></i>
+    nx <font color="#990000">=</font> x<font color="#990000">.</font>size
+    <b><font color="#0000FF">if</font></b> dynamic <b><font color="#0000FF">is</font></b> None <font color="#990000">:</font>
+        syntax   <font color="#990000">=</font> <font color="#FF0000">'independent(x)'</font>
+        u <font color="#990000">=</font> cppad_py<font color="#990000">.</font>utility<font color="#990000">.</font><b><font color="#000000">numpy2vec</font></b><font color="#990000">(</font>x<font color="#990000">,</font> dtype<font color="#990000">,</font> nx<font color="#990000">,</font> syntax<font color="#990000">,</font> <font color="#FF0000">'x'</font><font color="#990000">)</font>
+        av <font color="#990000">=</font> cppad_py<font color="#990000">.</font>swig<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>u<font color="#990000">)</font>
+        ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font>utility<font color="#990000">.</font><b><font color="#000000">vec2numpy</font></b><font color="#990000">(</font>av<font color="#990000">,</font> av<font color="#990000">.</font><b><font color="#000000">size</font></b><font color="#990000">());</font>
+        <b><font color="#0000FF">return</font></b> ax
+    <i><font color="#9A1900">#</font></i>
+    nd       <font color="#990000">=</font> dynamic<font color="#990000">.</font>size
+    syntax   <font color="#990000">=</font> <font color="#FF0000">'independent(x, dynamic)'</font>
+    u <font color="#990000">=</font> cppad_py<font color="#990000">.</font>utility<font color="#990000">.</font><b><font color="#000000">numpy2vec</font></b><font color="#990000">(</font>x<font color="#990000">,</font> dtype<font color="#990000">,</font> nx<font color="#990000">,</font> syntax<font color="#990000">,</font> <font color="#FF0000">'x'</font><font color="#990000">)</font>
+    v <font color="#990000">=</font> cppad_py<font color="#990000">.</font>utility<font color="#990000">.</font><b><font color="#000000">numpy2vec</font></b><font color="#990000">(</font>dynamic<font color="#990000">,</font> dtype<font color="#990000">,</font> nd<font color="#990000">,</font> syntax<font color="#990000">,</font> <font color="#FF0000">'dynamic'</font><font color="#990000">)</font>
+    a_both   <font color="#990000">=</font> cppad_py<font color="#990000">.</font>swig<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>u<font color="#990000">,</font> v<font color="#990000">)</font>
+    ax       <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>nx<font color="#990000">,</font>       dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
+    adynamic <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>nd<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
+    <i><font color="#9A1900"># use copy constructor so a separate copy is made for numpy arrays</font></i>
+    <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nx<font color="#990000">)</font> <font color="#990000">:</font>
+        ax<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font> a_both<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">)</font>
+    <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nd<font color="#990000">)</font> <font color="#990000">:</font>
+        adynamic<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font> a_both<font color="#990000">[</font>nx <font color="#990000">+</font> i<font color="#990000">]</font> <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">return</font></b> <font color="#990000">(</font>ax<font color="#990000">,</font> adynamic<font color="#990000">)</font></tt></pre>
 <br>
 <big><a name="Implementation.new_dynamic" id="Implementation.new_dynamic">new_dynamic</a></big>
 <br>
@@ -230,7 +230,7 @@ In addition, in the file
 </pre></font></code>
 the following text was added to the list of python example files.
 <code><font color='blue'><pre style='display:inline'> 
-     'fun_dynamic_xam',
+    'fun_dynamic_xam',
 </pre></font></code>
 <br>
 <b><big><a name="Testing" id="Testing">Testing</a></big></b>
@@ -242,7 +242,7 @@ After all the changes above were implemented,
 until the warnings and errors were fixed.
 The command
 <code><font color='blue'><pre style='display:inline'> 
-     grep 'fun_dynamic_xam' check_all.log
+    grep 'fun_dynamic_xam' check_all.log
 </pre></font></code>
 was used to make sure that the new python example / test was run.
 Note that the python files in <code><font color="blue">cppad_py</font></code> are copies of the

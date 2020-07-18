@@ -74,69 +74,69 @@ A:active { color : purple }
 <center><b><big><big>Python: Dense Hessian Using AD: Example and Test</big></big></b></center>
 
 <br><pre><tt><b><font color="#0000FF">def</font></b> <b><font color="#000000">fun_hessian_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#000080">import</font></b> numpy
-     <b><font color="#000080">import</font></b> cppad_py
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># initialize return variable</font></i>
-     ok <font color="#990000">=</font> True
-     <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
-     <i><font color="#9A1900"># number of dependent and independent variables</font></i>
-     n_dep <font color="#990000">=</font> <font color="#993399">1</font>
-     n_ind <font color="#990000">=</font> <font color="#993399">3</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># create the independent variables ax</font></i>
-     x <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_ind<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
-     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n_ind  <font color="#990000">)</font> <font color="#990000">:</font>
-          x<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> i <font color="#990000">+</font> <font color="#993399">2.0</font>
-     <i><font color="#9A1900">#</font></i>
-     ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># create dependent variables ay with ay0 = ax_0 * ax_1 * ax_2</font></i>
-     ax_0 <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
-     ax_1 <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font>
-     ax_2 <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font>
-     ay   <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_dep<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
-     ay<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> ax_0 <font color="#990000">*</font> ax_1 <font color="#990000">*</font> ax_2
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># define af corresponding to f(x) = x_0 * x_1 * x_2</font></i>
-     f  <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># g(x) = w_0 * f_0 (x) = f(x)</font></i>
-     w <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_dep<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
-     w<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">1.0</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># compute Hessian</font></i>
-     fpp <font color="#990000">=</font> f<font color="#990000">.</font><b><font color="#000000">hessian</font></b><font color="#990000">(</font>x<font color="#990000">,</font> w<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900">#          [ 0.0 , x_2 , x_1 ]</font></i>
-     <i><font color="#9A1900"># f''(x) = [ x_2 , 0.0 , x_0 ]</font></i>
-     <i><font color="#9A1900">#          [ x_1 , x_0 , 0.0 ]</font></i>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">0.0</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">,</font> <font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">,</font> <font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font>
-     <i><font color="#9A1900">#</font></i>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">,</font> <font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">0.0</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">,</font> <font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
-     <i><font color="#9A1900">#</font></i>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">,</font> <font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">,</font> <font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">0.0</font>
-     <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
-     af <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_fun</font></b><font color="#990000">(</font>f<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># compute and check Hessian</font></i>
-     aw    <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_dep<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
-     aw<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> w<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
-     afpp  <font color="#990000">=</font> af<font color="#990000">.</font><b><font color="#000000">hessian</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> aw<font color="#990000">)</font>
-     ok    <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> afpp<font color="#990000">.</font>shape <font color="#990000">==</font> fpp<font color="#990000">.</font>shape
-     <font color="#990000">(</font>nr<font color="#990000">,</font> nc<font color="#990000">)</font> <font color="#990000">=</font> fpp<font color="#990000">.</font>shape
-     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nr<font color="#990000">)</font> <font color="#990000">:</font>
-          <b><font color="#0000FF">for</font></b> j <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nc<font color="#990000">)</font> <font color="#990000">:</font>
-               ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> afpp<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font> <font color="#990000">==</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font> fpp<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font> <font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#000080">import</font></b> numpy
+    <b><font color="#000080">import</font></b> cppad_py
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># initialize return variable</font></i>
+    ok <font color="#990000">=</font> True
+    <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
+    <i><font color="#9A1900"># number of dependent and independent variables</font></i>
+    n_dep <font color="#990000">=</font> <font color="#993399">1</font>
+    n_ind <font color="#990000">=</font> <font color="#993399">3</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># create the independent variables ax</font></i>
+    x <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_ind<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
+    <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n_ind  <font color="#990000">)</font> <font color="#990000">:</font>
+        x<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> i <font color="#990000">+</font> <font color="#993399">2.0</font>
+    <i><font color="#9A1900">#</font></i>
+    ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># create dependent variables ay with ay0 = ax_0 * ax_1 * ax_2</font></i>
+    ax_0 <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
+    ax_1 <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font>
+    ax_2 <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font>
+    ay   <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_dep<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
+    ay<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> ax_0 <font color="#990000">*</font> ax_1 <font color="#990000">*</font> ax_2
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># define af corresponding to f(x) = x_0 * x_1 * x_2</font></i>
+    f  <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># g(x) = w_0 * f_0 (x) = f(x)</font></i>
+    w <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_dep<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
+    w<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">1.0</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># compute Hessian</font></i>
+    fpp <font color="#990000">=</font> f<font color="#990000">.</font><b><font color="#000000">hessian</font></b><font color="#990000">(</font>x<font color="#990000">,</font> w<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900">#          [ 0.0 , x_2 , x_1 ]</font></i>
+    <i><font color="#9A1900"># f''(x) = [ x_2 , 0.0 , x_0 ]</font></i>
+    <i><font color="#9A1900">#          [ x_1 , x_0 , 0.0 ]</font></i>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">0.0</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">,</font> <font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">,</font> <font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font>
+    <i><font color="#9A1900">#</font></i>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">,</font> <font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">0.0</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">,</font> <font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
+    <i><font color="#9A1900">#</font></i>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">,</font> <font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> fpp<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">,</font> <font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">0.0</font>
+    <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
+    af <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_fun</font></b><font color="#990000">(</font>f<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># compute and check Hessian</font></i>
+    aw    <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_dep<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
+    aw<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> w<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
+    afpp  <font color="#990000">=</font> af<font color="#990000">.</font><b><font color="#000000">hessian</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> aw<font color="#990000">)</font>
+    ok    <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> afpp<font color="#990000">.</font>shape <font color="#990000">==</font> fpp<font color="#990000">.</font>shape
+    <font color="#990000">(</font>nr<font color="#990000">,</font> nc<font color="#990000">)</font> <font color="#990000">=</font> fpp<font color="#990000">.</font>shape
+    <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nr<font color="#990000">)</font> <font color="#990000">:</font>
+        <b><font color="#0000FF">for</font></b> j <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nc<font color="#990000">)</font> <font color="#990000">:</font>
+            ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> afpp<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font> <font color="#990000">==</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font> fpp<font color="#990000">[</font>i<font color="#990000">,</font> j<font color="#990000">]</font> <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">)</font>
 <i><font color="#9A1900">#</font></i></tt></pre>
 
 <hr>Input File: example/python/core/fun_hessian_xam.py

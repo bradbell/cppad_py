@@ -92,10 +92,10 @@ A:active { color : purple }
 This class is an aid solving optimization problems of the form
 <small>@[@
 
-	\begin{array}{rl}
-	{\rm minimize}       & f(x) \; {\rm w.r.t} \; x \\
-	{\rm subject \; to}  & a \leq g(x) \leq b \\
-	\end{array}
+    \begin{array}{rl}
+    {\rm minimize}       & f(x) \; {\rm w.r.t} \; x \\
+    {\rm subject \; to}  & a \leq g(x) \leq b \\
+    \end{array}
 
 @]@</small>
 where <small>@(@
@@ -149,7 +149,7 @@ This class object has the following functions defined:
 The syntax
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>optimize_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.objective_fun(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>optimize_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.objective_fun(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 sets <small>@(@
 y = f(x)
@@ -170,7 +170,7 @@ and
 The syntax
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>z</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>optimize_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.objective_grad(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>z</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>optimize_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.objective_grad(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 sets <small>@(@
 z = f^{(1)} (x)
@@ -190,7 +190,7 @@ z = f^{(1)} (x)
 The syntax
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>h</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>optimize_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.objective_hess(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>h</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>optimize_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.objective_hess(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 sets <small>@(@
 h = f^{(2)} (x)
@@ -215,7 +215,7 @@ and
 The syntax
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>optimize_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.constraint_fun(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>optimize_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.constraint_fun(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 sets <small>@(@
 y = g(x)
@@ -238,7 +238,7 @@ y = g(x)
 The syntax
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>J</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>optimize_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.constraint_jac(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>J</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>optimize_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.constraint_jac(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 sets <small>@(@
 J = g^{(1)} (x)
@@ -263,12 +263,12 @@ and
 The syntax
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>H</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>optimize_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.constraint_hess(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>v</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>H</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>optimize_fun</span></font></i><font color="blue"><span style='white-space: nowrap'>.constraint_hess(</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>v</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 sets
 <small>@[@
 
-	H = \sum_{i=0}^{m-1} v_k g_i^{(2)} (x)
+    H = \sum_{i=0}^{m-1} v_k g_i^{(2)} (x)
 
 @]@</small>
 where 
@@ -302,37 +302,37 @@ and
 <b><font color="#000080">import</font></b> cppad_py
 
 <b><font color="#0000FF">class</font></b> optimize_fun_class <font color="#990000">:</font>
-     <b><font color="#0000FF">def</font></b> <b><font color="#000000">__init__</font></b><font color="#990000">(</font>self<font color="#990000">,</font> objective_ad<font color="#990000">,</font> constraint_ad<font color="#990000">=</font>None<font color="#990000">)</font> <font color="#990000">:</font>
-          self<font color="#990000">.</font>objective_ad  <font color="#990000">=</font> objective_ad
-          self<font color="#990000">.</font>constraint_ad <font color="#990000">=</font> constraint_ad
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">def</font></b> <b><font color="#000000">objective_fun</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
-          <i><font color="#9A1900"># objective as a vector</font></i>
-          y <font color="#990000">=</font> self<font color="#990000">.</font>objective_ad<font color="#990000">.</font><b><font color="#000000">forward</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font> x<font color="#990000">)</font>
-          <b><font color="#0000FF">return</font></b> y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">def</font></b> <b><font color="#000000">objective_grad</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
-          <i><font color="#9A1900"># Jacobian as a matrix</font></i>
-          J <font color="#990000">=</font> self<font color="#990000">.</font>objective_ad<font color="#990000">.</font><b><font color="#000000">jacobian</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
-          <i><font color="#9A1900"># change to a vector</font></i>
-          <b><font color="#0000FF">return</font></b> J<font color="#990000">.</font><b><font color="#000000">flatten</font></b><font color="#990000">()</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">def</font></b> <b><font color="#000000">objective_hess</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
-          w <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font> <font color="#993399">1.0</font> <font color="#990000">]</font> <font color="#990000">)</font>
-          H <font color="#990000">=</font> self<font color="#990000">.</font>objective_ad<font color="#990000">.</font><b><font color="#000000">hessian</font></b><font color="#990000">(</font>x<font color="#990000">,</font> w<font color="#990000">)</font>
-          <b><font color="#0000FF">return</font></b> H
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">def</font></b> <b><font color="#000000">constraint_fun</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
-          <b><font color="#0000FF">return</font></b> self<font color="#990000">.</font>constraint_ad<font color="#990000">.</font><b><font color="#000000">forward</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font> x<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">def</font></b> <b><font color="#000000">constraint_jac</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
-          <i><font color="#9A1900"># Jacobian as a matrix</font></i>
-          J <font color="#990000">=</font> self<font color="#990000">.</font>constraint_ad<font color="#990000">.</font><b><font color="#000000">jacobian</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
-          <b><font color="#0000FF">return</font></b> J
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">def</font></b> <b><font color="#000000">constraint_hess</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">,</font> v<font color="#990000">)</font> <font color="#990000">:</font>
-          H <font color="#990000">=</font> self<font color="#990000">.</font>constraint_ad<font color="#990000">.</font><b><font color="#000000">hessian</font></b><font color="#990000">(</font>x<font color="#990000">,</font> v<font color="#990000">)</font>
-          <b><font color="#0000FF">return</font></b> H</tt></pre>
+    <b><font color="#0000FF">def</font></b> <b><font color="#000000">__init__</font></b><font color="#990000">(</font>self<font color="#990000">,</font> objective_ad<font color="#990000">,</font> constraint_ad<font color="#990000">=</font>None<font color="#990000">)</font> <font color="#990000">:</font>
+        self<font color="#990000">.</font>objective_ad  <font color="#990000">=</font> objective_ad
+        self<font color="#990000">.</font>constraint_ad <font color="#990000">=</font> constraint_ad
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">def</font></b> <b><font color="#000000">objective_fun</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
+        <i><font color="#9A1900"># objective as a vector</font></i>
+        y <font color="#990000">=</font> self<font color="#990000">.</font>objective_ad<font color="#990000">.</font><b><font color="#000000">forward</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font> x<font color="#990000">)</font>
+        <b><font color="#0000FF">return</font></b> y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">def</font></b> <b><font color="#000000">objective_grad</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
+        <i><font color="#9A1900"># Jacobian as a matrix</font></i>
+        J <font color="#990000">=</font> self<font color="#990000">.</font>objective_ad<font color="#990000">.</font><b><font color="#000000">jacobian</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
+        <i><font color="#9A1900"># change to a vector</font></i>
+        <b><font color="#0000FF">return</font></b> J<font color="#990000">.</font><b><font color="#000000">flatten</font></b><font color="#990000">()</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">def</font></b> <b><font color="#000000">objective_hess</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
+        w <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font> <font color="#993399">1.0</font> <font color="#990000">]</font> <font color="#990000">)</font>
+        H <font color="#990000">=</font> self<font color="#990000">.</font>objective_ad<font color="#990000">.</font><b><font color="#000000">hessian</font></b><font color="#990000">(</font>x<font color="#990000">,</font> w<font color="#990000">)</font>
+        <b><font color="#0000FF">return</font></b> H
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">def</font></b> <b><font color="#000000">constraint_fun</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
+        <b><font color="#0000FF">return</font></b> self<font color="#990000">.</font>constraint_ad<font color="#990000">.</font><b><font color="#000000">forward</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font> x<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">def</font></b> <b><font color="#000000">constraint_jac</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
+        <i><font color="#9A1900"># Jacobian as a matrix</font></i>
+        J <font color="#990000">=</font> self<font color="#990000">.</font>constraint_ad<font color="#990000">.</font><b><font color="#000000">jacobian</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
+        <b><font color="#0000FF">return</font></b> J
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">def</font></b> <b><font color="#000000">constraint_hess</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">,</font> v<font color="#990000">)</font> <font color="#990000">:</font>
+        H <font color="#990000">=</font> self<font color="#990000">.</font>constraint_ad<font color="#990000">.</font><b><font color="#000000">hessian</font></b><font color="#990000">(</font>x<font color="#990000">,</font> v<font color="#990000">)</font>
+        <b><font color="#0000FF">return</font></b> H</tt></pre>
 
 <hr>Input File: example/python/numeric/optimize_fun_class.py
 

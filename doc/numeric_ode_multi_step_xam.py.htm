@@ -76,9 +76,9 @@ A:active { color : purple }
 <br>
 <small>@[@
 
-	\partial_t y_i (t, x) =  f(t, y, x) \left\{ \begin{array}{rl}
-		x_0               & {\rm if} \; i = 0 \\
-		x_i y_{i-1} (t)   & {\rm otherwise}
+  \partial_t y_i (t, x) =  f(t, y, x) \left\{ \begin{array}{rl}
+  	x_0               & {\rm if} \; i = 0 \\
+  	x_i y_{i-1} (t)   & {\rm otherwise}
 \end{array} \right. 
 @]@</small>with the initial condition <small>@(@
 y(0) = 0
@@ -91,9 +91,9 @@ y(0) = 0
 This is a special case for which we know the solution
 <small>@[@
 
-	y_i (t, x) = \left\{ \begin{array}{rl}
-		t  x_0                            & {\rm if} \; i = 0 \\
-		( t^i / (i+1) ! ) \prod_{j=0}^i x_j   & {\rm otherwise}
+  y_i (t, x) = \left\{ \begin{array}{rl}
+  	t  x_0                            & {\rm if} \; i = 0 \\
+  	( t^i / (i+1) ! ) \prod_{j=0}^i x_j   & {\rm otherwise}
 \end{array} \right. 
 @]@</small>
 
@@ -107,9 +107,9 @@ x
 @)@</small> is
 <small>@[@
 
-	\partial_{x(j)} y_i (t, x) =  \left\{ \begin{array}{rl}
-		y_i (t, x) / x_j      & {\rm if} \; j \leq i \\
-		0                     & {\rm otherwise}
+  \partial_{x(j)} y_i (t, x) =  \left\{ \begin{array}{rl}
+  	y_i (t, x) / x_j      & {\rm if} \; j \leq i \\
+  	0                     & {\rm otherwise}
 \end{array} \right. 
 @]@</small>
 
@@ -126,77 +126,77 @@ x
 <b><font color="#000080">from</font></b> runge4_step <b><font color="#000080">import</font></b> runge4_step
 <i><font color="#9A1900">#</font></i>
 <b><font color="#0000FF">class</font></b> fun_class <font color="#990000">:</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">def</font></b> <b><font color="#000000">__init__</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
-          self<font color="#990000">.</font>x     <font color="#990000">=</font> x
-          self<font color="#990000">.</font>index <font color="#990000">=</font> None
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">def</font></b> <b><font color="#000000">set_t_all_index</font></b><font color="#990000">(</font>self<font color="#990000">,</font> index<font color="#990000">)</font> <font color="#990000">:</font>
-          self<font color="#990000">.</font>index <font color="#990000">=</font> index
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">def</font></b> <b><font color="#000000">f</font></b><font color="#990000">(</font>self<font color="#990000">,</font> t<font color="#990000">,</font> y<font color="#990000">)</font> <font color="#990000">:</font>
-          <b><font color="#0000FF">assert</font></b> self<font color="#990000">.</font>index <font color="#990000">!=</font> None
-          <i><font color="#9A1900"># This ode does not depend on the the time index</font></i>
-          <i><font color="#9A1900">#</font></i>
-          y_shift <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">concatenate</font></b><font color="#990000">(</font> <font color="#990000">(</font> <font color="#990000">[</font><font color="#993399">1.0</font><font color="#990000">]</font> <font color="#990000">,</font> y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">:-</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">)</font> <font color="#990000">)</font>
-          <b><font color="#0000FF">return</font></b> self<font color="#990000">.</font>x <font color="#990000">*</font> y_shift
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">def</font></b> <b><font color="#000000">__init__</font></b><font color="#990000">(</font>self<font color="#990000">,</font> x<font color="#990000">)</font> <font color="#990000">:</font>
+        self<font color="#990000">.</font>x     <font color="#990000">=</font> x
+        self<font color="#990000">.</font>index <font color="#990000">=</font> None
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">def</font></b> <b><font color="#000000">set_t_all_index</font></b><font color="#990000">(</font>self<font color="#990000">,</font> index<font color="#990000">)</font> <font color="#990000">:</font>
+        self<font color="#990000">.</font>index <font color="#990000">=</font> index
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">def</font></b> <b><font color="#000000">f</font></b><font color="#990000">(</font>self<font color="#990000">,</font> t<font color="#990000">,</font> y<font color="#990000">)</font> <font color="#990000">:</font>
+        <b><font color="#0000FF">assert</font></b> self<font color="#990000">.</font>index <font color="#990000">!=</font> None
+        <i><font color="#9A1900"># This ode does not depend on the the time index</font></i>
+        <i><font color="#9A1900">#</font></i>
+        y_shift <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">concatenate</font></b><font color="#990000">(</font> <font color="#990000">(</font> <font color="#990000">[</font><font color="#993399">1.0</font><font color="#990000">]</font> <font color="#990000">,</font> y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">:-</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">)</font> <font color="#990000">)</font>
+        <b><font color="#0000FF">return</font></b> self<font color="#990000">.</font>x <font color="#990000">*</font> y_shift
 <i><font color="#9A1900">#</font></i>
 <b><font color="#0000FF">def</font></b> <b><font color="#000000">ode_multi_step_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
-     ok    <font color="#990000">=</font> True
-     nx    <font color="#990000">=</font> <font color="#993399">4</font>
-     eps99 <font color="#990000">=</font> <font color="#993399">99.0</font> <font color="#990000">*</font> numpy<font color="#990000">.</font><b><font color="#000000">finfo</font></b><font color="#990000">(</font>float<font color="#990000">).</font>eps
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># independent variables for this g(x) = y(1, x)</font></i>
-     x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> nx <font color="#990000">*</font> <font color="#990000">[</font> <font color="#993399">1.0</font> <font color="#990000">]</font> <font color="#990000">)</font>
-     ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># function to pass to runge4_step</font></i>
-     fun <font color="#990000">=</font> <b><font color="#000000">fun_class</font></b><font color="#990000">(</font>ax<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># routine we are usning for each step</font></i>
-     one_step <font color="#990000">=</font> runge4_step
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># initiali value for the ODE</font></i>
-     n_step  <font color="#990000">=</font> <font color="#993399">10</font>
-     ay_init <font color="#990000">=</font>  numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> nx <font color="#990000">*</font> <font color="#990000">[</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font><font color="#993399">0.0</font><font color="#990000">)</font> <font color="#990000">]</font> <font color="#990000">)</font>
-     t_final <font color="#990000">=</font> <font color="#993399">0.75</font>
-     t_all   <font color="#990000">=</font>  <font color="#990000">[</font> t_final <font color="#990000">*</font> i <font color="#990000">/</font> <font color="#990000">(</font>n_step <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">)</font> <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>n_step<font color="#990000">)</font> <font color="#990000">]</font>
-     t_all   <font color="#990000">=</font>  numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> t_all <font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># take multiple steps</font></i>
-     ay <font color="#990000">=</font> <b><font color="#000000">ode_multi_step</font></b><font color="#990000">(</font>one_step<font color="#990000">,</font> fun<font color="#990000">,</font> t_all<font color="#990000">,</font> ay_init<font color="#990000">)</font>
-     ay_final <font color="#990000">=</font> ay<font color="#990000">[</font>n_step <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">,:]</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># g(x) = y(t_final, x)</font></i>
-     g <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay_final<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># Check g_i (x) = prod_{j=0}^i x[j] t^(i+1) / (i+1) !</font></i>
-     <i><font color="#9A1900"># 4th order method should be very accutate for functions</font></i>
-     <i><font color="#9A1900"># or order 4 or less in t.</font></i>
-     x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">arange</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font> nx<font color="#990000">)</font> <font color="#990000">+</font> <font color="#993399">1.0</font>
-     gx <font color="#990000">=</font> g<font color="#990000">.</font><b><font color="#000000">forward</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font> x<font color="#990000">)</font>
-     prod <font color="#990000">=</font> <font color="#993399">1.0</font>
-     <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nx<font color="#990000">)</font> <font color="#990000">:</font>
-          prod      <font color="#990000">=</font> prod <font color="#990000">*</font> x<font color="#990000">[</font>i<font color="#990000">]</font>
-          power     <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">power</font></b><font color="#990000">(</font>t_final<font color="#990000">,</font> i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">)</font>
-          factorial <font color="#990000">=</font> scipy<font color="#990000">.</font>special<font color="#990000">.</font><b><font color="#000000">factorial</font></b><font color="#990000">(</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">)</font>
-          check     <font color="#990000">=</font> prod <font color="#990000">*</font> power <font color="#990000">/</font> factorial
-          rel_error <font color="#990000">=</font> gx<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">/</font> check <font color="#990000">-</font> <font color="#993399">1.0</font>
-          ok       <font color="#990000">&amp;=</font> <b><font color="#000000">abs</font></b><font color="#990000">(</font>rel_error<font color="#990000">)</font> <font color="#990000">&lt;</font> eps99
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># Check derivative of g_i (x) w.r.t x_j</font></i>
-     <i><font color="#9A1900"># is zero for i &lt; j and  g_i(x) / x_j otherwise</font></i>
-     J <font color="#990000">=</font> g<font color="#990000">.</font><b><font color="#000000">jacobian</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
-     <b><font color="#0000FF">for</font></b> j <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nx<font color="#990000">)</font> <font color="#990000">:</font>
-          <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nx<font color="#990000">)</font> <font color="#990000">:</font>
-               <b><font color="#0000FF">if</font></b> i <font color="#990000">&lt;</font> j <font color="#990000">:</font>
-                    ok <font color="#990000">&amp;=</font> J<font color="#990000">[</font>i<font color="#990000">,</font>j<font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">0.0</font>
-               <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
-                    check     <font color="#990000">=</font> gx<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">/</font> x<font color="#990000">[</font>j<font color="#990000">]</font>
-                    rel_error <font color="#990000">=</font> J<font color="#990000">[</font>i<font color="#990000">,</font>j<font color="#990000">]</font> <font color="#990000">/</font> check <font color="#990000">-</font> <font color="#993399">1.0</font>
-                    ok       <font color="#990000">&amp;=</font> <b><font color="#000000">abs</font></b><font color="#990000">(</font>rel_error<font color="#990000">)</font> <font color="#990000">&lt;</font> eps99
+    ok    <font color="#990000">=</font> True
+    nx    <font color="#990000">=</font> <font color="#993399">4</font>
+    eps99 <font color="#990000">=</font> <font color="#993399">99.0</font> <font color="#990000">*</font> numpy<font color="#990000">.</font><b><font color="#000000">finfo</font></b><font color="#990000">(</font>float<font color="#990000">).</font>eps
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># independent variables for this g(x) = y(1, x)</font></i>
+    x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> nx <font color="#990000">*</font> <font color="#990000">[</font> <font color="#993399">1.0</font> <font color="#990000">]</font> <font color="#990000">)</font>
+    ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># function to pass to runge4_step</font></i>
+    fun <font color="#990000">=</font> <b><font color="#000000">fun_class</font></b><font color="#990000">(</font>ax<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># routine we are usning for each step</font></i>
+    one_step <font color="#990000">=</font> runge4_step
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># initiali value for the ODE</font></i>
+    n_step  <font color="#990000">=</font> <font color="#993399">10</font>
+    ay_init <font color="#990000">=</font>  numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> nx <font color="#990000">*</font> <font color="#990000">[</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_double</font></b><font color="#990000">(</font><font color="#993399">0.0</font><font color="#990000">)</font> <font color="#990000">]</font> <font color="#990000">)</font>
+    t_final <font color="#990000">=</font> <font color="#993399">0.75</font>
+    t_all   <font color="#990000">=</font>  <font color="#990000">[</font> t_final <font color="#990000">*</font> i <font color="#990000">/</font> <font color="#990000">(</font>n_step <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">)</font> <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>n_step<font color="#990000">)</font> <font color="#990000">]</font>
+    t_all   <font color="#990000">=</font>  numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> t_all <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># take multiple steps</font></i>
+    ay <font color="#990000">=</font> <b><font color="#000000">ode_multi_step</font></b><font color="#990000">(</font>one_step<font color="#990000">,</font> fun<font color="#990000">,</font> t_all<font color="#990000">,</font> ay_init<font color="#990000">)</font>
+    ay_final <font color="#990000">=</font> ay<font color="#990000">[</font>n_step <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">,:]</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># g(x) = y(t_final, x)</font></i>
+    g <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay_final<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># Check g_i (x) = prod_{j=0}^i x[j] t^(i+1) / (i+1) !</font></i>
+    <i><font color="#9A1900"># 4th order method should be very accutate for functions</font></i>
+    <i><font color="#9A1900"># or order 4 or less in t.</font></i>
+    x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">arange</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font> nx<font color="#990000">)</font> <font color="#990000">+</font> <font color="#993399">1.0</font>
+    gx <font color="#990000">=</font> g<font color="#990000">.</font><b><font color="#000000">forward</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font> x<font color="#990000">)</font>
+    prod <font color="#990000">=</font> <font color="#993399">1.0</font>
+    <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nx<font color="#990000">)</font> <font color="#990000">:</font>
+        prod      <font color="#990000">=</font> prod <font color="#990000">*</font> x<font color="#990000">[</font>i<font color="#990000">]</font>
+        power     <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">power</font></b><font color="#990000">(</font>t_final<font color="#990000">,</font> i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">)</font>
+        factorial <font color="#990000">=</font> scipy<font color="#990000">.</font>special<font color="#990000">.</font><b><font color="#000000">factorial</font></b><font color="#990000">(</font>i<font color="#990000">+</font><font color="#993399">1</font><font color="#990000">)</font>
+        check     <font color="#990000">=</font> prod <font color="#990000">*</font> power <font color="#990000">/</font> factorial
+        rel_error <font color="#990000">=</font> gx<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">/</font> check <font color="#990000">-</font> <font color="#993399">1.0</font>
+        ok       <font color="#990000">&amp;=</font> <b><font color="#000000">abs</font></b><font color="#990000">(</font>rel_error<font color="#990000">)</font> <font color="#990000">&lt;</font> eps99
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># Check derivative of g_i (x) w.r.t x_j</font></i>
+    <i><font color="#9A1900"># is zero for i &lt; j and  g_i(x) / x_j otherwise</font></i>
+    J <font color="#990000">=</font> g<font color="#990000">.</font><b><font color="#000000">jacobian</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
+    <b><font color="#0000FF">for</font></b> j <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nx<font color="#990000">)</font> <font color="#990000">:</font>
+        <b><font color="#0000FF">for</font></b> i <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font>nx<font color="#990000">)</font> <font color="#990000">:</font>
+            <b><font color="#0000FF">if</font></b> i <font color="#990000">&lt;</font> j <font color="#990000">:</font>
+                ok <font color="#990000">&amp;=</font> J<font color="#990000">[</font>i<font color="#990000">,</font>j<font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">0.0</font>
+            <b><font color="#0000FF">else</font></b> <font color="#990000">:</font>
+                check     <font color="#990000">=</font> gx<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">/</font> x<font color="#990000">[</font>j<font color="#990000">]</font>
+                rel_error <font color="#990000">=</font> J<font color="#990000">[</font>i<font color="#990000">,</font>j<font color="#990000">]</font> <font color="#990000">/</font> check <font color="#990000">-</font> <font color="#993399">1.0</font>
+                ok       <font color="#990000">&amp;=</font> <b><font color="#000000">abs</font></b><font color="#990000">(</font>rel_error<font color="#990000">)</font> <font color="#990000">&lt;</font> eps99
 
-     <b><font color="#0000FF">return</font></b> ok</tt></pre>
+    <b><font color="#0000FF">return</font></b> ok</tt></pre>
 
 <hr>Input File: example/python/numeric/ode_multi_step_xam.py
 

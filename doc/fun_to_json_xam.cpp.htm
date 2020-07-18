@@ -72,45 +72,45 @@ A:active { color : purple }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>C++: to_json: Example and Test</big></big></b></center>
 
 <br><pre><tt><font color="#009900">bool</font> <b><font color="#000000">to_json_xam</font></b><font color="#990000">(</font><font color="#009900">void</font><font color="#990000">)</font> <font color="#FF0000">{</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>a_double<font color="#990000">;</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>vec_double<font color="#990000">;</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>vec_a_double<font color="#990000">;</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>d_fun<font color="#990000">;</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>a_fun<font color="#990000">;</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// initialize return variable</font></i>
-     <font color="#009900">bool</font> ok <font color="#990000">=</font> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
-     <i><font color="#9A1900">// ----------------------------------------------------------------------</font></i>
-     <font color="#009900">int</font> n <font color="#990000">=</font> <font color="#993399">1</font><font color="#990000">;</font> <i><font color="#9A1900">// number of independent variables</font></i>
-     <font color="#009900">int</font> m <font color="#990000">=</font> <font color="#993399">2</font><font color="#990000">;</font> <i><font color="#9A1900">// number of dependent variables</font></i>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// dimension some vectors</font></i>
-     <font color="#008080">vec_double</font> <b><font color="#000000">x</font></b><font color="#990000">(</font>n<font color="#990000">);</font>
-     <font color="#008080">vec_a_double</font> <b><font color="#000000">ay</font></b><font color="#990000">(</font>m<font color="#990000">);</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// independent variables</font></i>
-     x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>            <font color="#990000">=</font> <font color="#993399">1.0</font><font color="#990000">;</font>
-     <font color="#008080">vec_a_double</font> ax <font color="#990000">=</font> cppad_py<font color="#990000">::</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">);</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// f(x) = [ x0 + x0, sin(x0) ]</font></i>
-     ay<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">+</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">];</font>
-     ay<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">].</font><b><font color="#000000">sin</font></b><font color="#990000">();</font>
-     <font color="#008080">d_fun</font> <b><font color="#000000">f</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">);</font>
-     <i><font color="#9A1900">//</font></i>
-     std<font color="#990000">::</font><font color="#008080">string</font> json <font color="#990000">=</font> f<font color="#990000">.</font><b><font color="#000000">to_json</font></b><font color="#990000">();</font>
-     <font color="#008080">size_t</font> pos       <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#CC33CC">\"</font><font color="#FF0000">op_code</font><font color="#CC33CC">\"</font><font color="#FF0000">"</font><font color="#990000">);</font>
-     <font color="#008080">size_t</font> start     <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">":"</font><font color="#990000">,</font> pos<font color="#990000">)</font> <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">;</font>
-     <font color="#008080">size_t</font> end       <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">","</font><font color="#990000">,</font> pos<font color="#990000">);</font>
-     <font color="#009900">int</font> op_code      <font color="#990000">=</font> std<font color="#990000">::</font><b><font color="#000000">atoi</font></b><font color="#990000">(</font> json<font color="#990000">.</font><b><font color="#000000">substr</font></b><font color="#990000">(</font>start<font color="#990000">,</font> end <font color="#990000">-</font> start<font color="#990000">).</font><b><font color="#000000">c_str</font></b><font color="#990000">()</font> <font color="#990000">);</font>
-     ok              <font color="#990000">&amp;=</font> op_code <font color="#990000">==</font> <font color="#993399">1</font><font color="#990000">;</font>
-     pos              <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#CC33CC">\"</font><font color="#FF0000">name</font><font color="#CC33CC">\"</font><font color="#FF0000">"</font><font color="#990000">,</font> pos<font color="#990000">);</font>
-     start            <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">":"</font><font color="#990000">,</font> pos<font color="#990000">);</font>
-     start            <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#CC33CC">\"</font><font color="#FF0000">"</font><font color="#990000">,</font> start <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">;</font>
-     end              <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#CC33CC">\"</font><font color="#FF0000">"</font><font color="#990000">,</font> start <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">);</font>
-     std<font color="#990000">::</font><font color="#008080">string</font> name <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">substr</font></b><font color="#990000">(</font>start<font color="#990000">,</font> end <font color="#990000">-</font> start<font color="#990000">);</font>
-     ok              <font color="#990000">&amp;=</font> name <font color="#990000">==</font> <font color="#FF0000">"add"</font> <font color="#990000">||</font> name <font color="#990000">==</font> <font color="#FF0000">"sin"</font><font color="#990000">;</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>a_double<font color="#990000">;</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>vec_double<font color="#990000">;</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>vec_a_double<font color="#990000">;</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>d_fun<font color="#990000">;</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>a_fun<font color="#990000">;</font>
     <i><font color="#9A1900">//</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok  <font color="#990000">);</font>
+    <i><font color="#9A1900">// initialize return variable</font></i>
+    <font color="#009900">bool</font> ok <font color="#990000">=</font> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
+    <i><font color="#9A1900">// ----------------------------------------------------------------------</font></i>
+    <font color="#009900">int</font> n <font color="#990000">=</font> <font color="#993399">1</font><font color="#990000">;</font> <i><font color="#9A1900">// number of independent variables</font></i>
+    <font color="#009900">int</font> m <font color="#990000">=</font> <font color="#993399">2</font><font color="#990000">;</font> <i><font color="#9A1900">// number of dependent variables</font></i>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// dimension some vectors</font></i>
+    <font color="#008080">vec_double</font> <b><font color="#000000">x</font></b><font color="#990000">(</font>n<font color="#990000">);</font>
+    <font color="#008080">vec_a_double</font> <b><font color="#000000">ay</font></b><font color="#990000">(</font>m<font color="#990000">);</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// independent variables</font></i>
+    x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>            <font color="#990000">=</font> <font color="#993399">1.0</font><font color="#990000">;</font>
+    <font color="#008080">vec_a_double</font> ax <font color="#990000">=</font> cppad_py<font color="#990000">::</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">);</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// f(x) = [ x0 + x0, sin(x0) ]</font></i>
+    ay<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">+</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">];</font>
+    ay<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">].</font><b><font color="#000000">sin</font></b><font color="#990000">();</font>
+    <font color="#008080">d_fun</font> <b><font color="#000000">f</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">);</font>
+    <i><font color="#9A1900">//</font></i>
+    std<font color="#990000">::</font><font color="#008080">string</font> json <font color="#990000">=</font> f<font color="#990000">.</font><b><font color="#000000">to_json</font></b><font color="#990000">();</font>
+    <font color="#008080">size_t</font> pos       <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#CC33CC">\"</font><font color="#FF0000">op_code</font><font color="#CC33CC">\"</font><font color="#FF0000">"</font><font color="#990000">);</font>
+    <font color="#008080">size_t</font> start     <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">":"</font><font color="#990000">,</font> pos<font color="#990000">)</font> <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">;</font>
+    <font color="#008080">size_t</font> end       <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">","</font><font color="#990000">,</font> pos<font color="#990000">);</font>
+    <font color="#009900">int</font> op_code      <font color="#990000">=</font> std<font color="#990000">::</font><b><font color="#000000">atoi</font></b><font color="#990000">(</font> json<font color="#990000">.</font><b><font color="#000000">substr</font></b><font color="#990000">(</font>start<font color="#990000">,</font> end <font color="#990000">-</font> start<font color="#990000">).</font><b><font color="#000000">c_str</font></b><font color="#990000">()</font> <font color="#990000">);</font>
+    ok              <font color="#990000">&amp;=</font> op_code <font color="#990000">==</font> <font color="#993399">1</font><font color="#990000">;</font>
+    pos              <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#CC33CC">\"</font><font color="#FF0000">name</font><font color="#CC33CC">\"</font><font color="#FF0000">"</font><font color="#990000">,</font> pos<font color="#990000">);</font>
+    start            <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">":"</font><font color="#990000">,</font> pos<font color="#990000">);</font>
+    start            <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#CC33CC">\"</font><font color="#FF0000">"</font><font color="#990000">,</font> start <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">;</font>
+    end              <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">find</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#CC33CC">\"</font><font color="#FF0000">"</font><font color="#990000">,</font> start <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">);</font>
+    std<font color="#990000">::</font><font color="#008080">string</font> name <font color="#990000">=</font> json<font color="#990000">.</font><b><font color="#000000">substr</font></b><font color="#990000">(</font>start<font color="#990000">,</font> end <font color="#990000">-</font> start<font color="#990000">);</font>
+    ok              <font color="#990000">&amp;=</font> name <font color="#990000">==</font> <font color="#FF0000">"add"</font> <font color="#990000">||</font> name <font color="#990000">==</font> <font color="#FF0000">"sin"</font><font color="#990000">;</font>
+    <i><font color="#9A1900">//</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok  <font color="#990000">);</font>
 <font color="#FF0000">}</font></tt></pre>
 
 <hr>Input File: example/cplusplus/fun_json_xam.cpp

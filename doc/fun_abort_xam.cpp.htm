@@ -75,47 +75,47 @@ A:active { color : purple }
 <b><font color="#000080"># include</font></b> <font color="#FF0000">&lt;cppad/py/cppad_py.hpp&gt;</font>
 
 <font color="#009900">bool</font> <b><font color="#000000">fun_abort_xam</font></b><font color="#990000">(</font><font color="#009900">void</font><font color="#990000">)</font> <font color="#FF0000">{</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>a_double<font color="#990000">;</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>vec_double<font color="#990000">;</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>vec_a_double<font color="#990000">;</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>d_fun<font color="#990000">;</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// initialize return variable</font></i>
-     <font color="#009900">bool</font> ok <font color="#990000">=</font> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
-     <i><font color="#9A1900">//------------------------------------------------------------------------</font></i>
-     <font color="#009900">int</font> n_ind <font color="#990000">=</font> <font color="#993399">2</font><font color="#990000">;</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// create ax</font></i>
-     <font color="#008080">vec_double</font> <b><font color="#000000">x</font></b><font color="#990000">(</font>n_ind<font color="#990000">);</font>
-     <b><font color="#0000FF">for</font></b><font color="#990000">(</font><font color="#009900">int</font> i <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> i <font color="#990000">&lt;</font> n_ind <font color="#990000">;</font> i<font color="#990000">++)</font> <font color="#FF0000">{</font>
-          x<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> i <font color="#990000">+</font> <font color="#993399">1.0</font><font color="#990000">;</font>
-     <font color="#FF0000">}</font>
-     <font color="#008080">vec_a_double</font> ax <font color="#990000">=</font> cppad_py<font color="#990000">::</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">);</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// preform some a_double operations</font></i>
-     <font color="#008080">a_double</font> ax0 <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">];</font>
-     <font color="#008080">a_double</font> ax1 <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">];</font>
-     <font color="#008080">a_double</font> ay <font color="#990000">=</font> ax0 <font color="#990000">+</font> ax1<font color="#990000">;</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// check that ay is a variable; its value depends on the value of ax</font></i>
-     ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> ay<font color="#990000">.</font><b><font color="#000000">variable</font></b><font color="#990000">();</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// abort this recording</font></i>
-     cppad_py<font color="#990000">::</font><b><font color="#000000">abort_recording</font></b><font color="#990000">();</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// check that ay is now a parameter, no longer a variable.</font></i>
-     ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> ay<font color="#990000">.</font><b><font color="#000000">parameter</font></b><font color="#990000">();</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// since it is a parameter, we can retrieve its value</font></i>
-     <font color="#009900">double</font> y <font color="#990000">=</font> ay<font color="#990000">.</font><b><font color="#000000">value</font></b><font color="#990000">();</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// its value should be x0 + x1</font></i>
-     ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> y  <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">+</font> x<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">];</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// an abort when not recording has no effect</font></i>
-     cppad_py<font color="#990000">::</font><b><font color="#000000">abort_recording</font></b><font color="#990000">();</font>
-     <i><font color="#9A1900">//</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">);</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>a_double<font color="#990000">;</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>vec_double<font color="#990000">;</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>vec_a_double<font color="#990000">;</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>d_fun<font color="#990000">;</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// initialize return variable</font></i>
+    <font color="#009900">bool</font> ok <font color="#990000">=</font> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
+    <i><font color="#9A1900">//------------------------------------------------------------------------</font></i>
+    <font color="#009900">int</font> n_ind <font color="#990000">=</font> <font color="#993399">2</font><font color="#990000">;</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// create ax</font></i>
+    <font color="#008080">vec_double</font> <b><font color="#000000">x</font></b><font color="#990000">(</font>n_ind<font color="#990000">);</font>
+    <b><font color="#0000FF">for</font></b><font color="#990000">(</font><font color="#009900">int</font> i <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> i <font color="#990000">&lt;</font> n_ind <font color="#990000">;</font> i<font color="#990000">++)</font> <font color="#FF0000">{</font>
+        x<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> i <font color="#990000">+</font> <font color="#993399">1.0</font><font color="#990000">;</font>
+    <font color="#FF0000">}</font>
+    <font color="#008080">vec_a_double</font> ax <font color="#990000">=</font> cppad_py<font color="#990000">::</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">);</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// preform some a_double operations</font></i>
+    <font color="#008080">a_double</font> ax0 <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">];</font>
+    <font color="#008080">a_double</font> ax1 <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">];</font>
+    <font color="#008080">a_double</font> ay <font color="#990000">=</font> ax0 <font color="#990000">+</font> ax1<font color="#990000">;</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// check that ay is a variable; its value depends on the value of ax</font></i>
+    ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> ay<font color="#990000">.</font><b><font color="#000000">variable</font></b><font color="#990000">();</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// abort this recording</font></i>
+    cppad_py<font color="#990000">::</font><b><font color="#000000">abort_recording</font></b><font color="#990000">();</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// check that ay is now a parameter, no longer a variable.</font></i>
+    ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> ay<font color="#990000">.</font><b><font color="#000000">parameter</font></b><font color="#990000">();</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// since it is a parameter, we can retrieve its value</font></i>
+    <font color="#009900">double</font> y <font color="#990000">=</font> ay<font color="#990000">.</font><b><font color="#000000">value</font></b><font color="#990000">();</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// its value should be x0 + x1</font></i>
+    ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> y  <font color="#990000">==</font> x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">+</font> x<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">];</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// an abort when not recording has no effect</font></i>
+    cppad_py<font color="#990000">::</font><b><font color="#000000">abort_recording</font></b><font color="#990000">();</font>
+    <i><font color="#9A1900">//</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">);</font>
 <font color="#FF0000">}</font></tt></pre>
 
 <hr>Input File: example/cplusplus/fun_abort_xam.cpp

@@ -72,26 +72,26 @@ A:active { color : purple }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Python: Size of Vectors: Example and Test</big></big></b></center>
 
 <br><pre><tt><b><font color="#0000FF">def</font></b> <b><font color="#000000">vector_size_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#000080">import</font></b> numpy
-     <b><font color="#000080">import</font></b> cppad_py
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># initialize return variable</font></i>
-     ok <font color="#990000">=</font> True
-     <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
-     <i><font color="#9A1900"># create vectors</font></i>
-     bv <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">vec_bool</font></b><font color="#990000">()</font>
-     iv <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">vec_int</font></b><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">)</font>
-     dv <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">vec_double</font></b><font color="#990000">(</font><font color="#993399">2</font><font color="#990000">)</font>
-     av <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">vec_a_double</font></b><font color="#990000">(</font><font color="#993399">3</font><font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># check size of vectors</font></i>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> bv<font color="#990000">.</font><b><font color="#000000">size</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">0</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> iv<font color="#990000">.</font><b><font color="#000000">size</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">1</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> dv<font color="#990000">.</font><b><font color="#000000">size</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">2</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> av<font color="#990000">.</font><b><font color="#000000">size</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">3</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#000080">import</font></b> numpy
+    <b><font color="#000080">import</font></b> cppad_py
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># initialize return variable</font></i>
+    ok <font color="#990000">=</font> True
+    <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
+    <i><font color="#9A1900"># create vectors</font></i>
+    bv <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">vec_bool</font></b><font color="#990000">()</font>
+    iv <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">vec_int</font></b><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">)</font>
+    dv <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">vec_double</font></b><font color="#990000">(</font><font color="#993399">2</font><font color="#990000">)</font>
+    av <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">vec_a_double</font></b><font color="#990000">(</font><font color="#993399">3</font><font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># check size of vectors</font></i>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> bv<font color="#990000">.</font><b><font color="#000000">size</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">0</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> iv<font color="#990000">.</font><b><font color="#000000">size</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">1</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> dv<font color="#990000">.</font><b><font color="#000000">size</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">2</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> av<font color="#990000">.</font><b><font color="#000000">size</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">3</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">)</font>
 <i><font color="#9A1900">#</font></i></tt></pre>
 
 <hr>Input File: example/python/core/vector_size_xam.py

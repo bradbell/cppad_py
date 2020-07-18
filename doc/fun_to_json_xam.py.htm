@@ -73,49 +73,40 @@ A:active { color : purple }
 
 <center><b><big><big>Python to_json: Example and Test</big></big></b></center>
 
-<br><pre style='display:inline'><tt>
-<b><font color="#0000FF">def</font></b> <b><font color="#000000">to_json_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#000080">import</font></b> numpy
-     <b><font color="#000080">import</font></b> cppad_py
-     <b><font color="#000080">import</font></b> re
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># initialize return variable</font></i>
-     ok <font color="#990000">=</font> True
-     <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
-     n <font color="#990000">=</font> <font color="#993399">1</font> <i><font color="#9A1900"># number of independent variables</font></i>
-     m <font color="#990000">=</font> <font color="#993399">2</font> <i><font color="#9A1900"># number of dependent variables</font></i>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># independent variables</font></i>
-     x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font> <font color="#993399">1.0</font> <font color="#990000">]</font> <font color="#990000">)</font>
-     ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># f(x) = [ x0 + x0, sin(x0) ]</font></i>
-     ay <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>m<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
-     ay<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">+</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
-     ay<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">].</font><b><font color="#000000">sin</font></b><font color="#990000">()</font>
-     f     <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># check f.to_json</font></i>
-     json     <font color="#990000">=</font> f<font color="#990000">.</font><b><font color="#000000">to_json</font></b><font color="#990000">()</font>
-     pattern  <font color="#990000">=</font> r<font color="#FF0000">'"op_code" *: *([^,]*),'</font>
-     match    <font color="#990000">=</font> re<font color="#990000">.</font><b><font color="#000000">search</font></b><font color="#990000">(</font>pattern<font color="#990000">,</font> json<font color="#990000">)</font>
-     op_code  <font color="#990000">=</font> <b><font color="#000000">int</font></b><font color="#990000">(</font> match<font color="#990000">.</font><b><font color="#000000">group</font></b><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">)</font>
-     ok      <font color="#990000">&amp;=</font> op_code <font color="#990000">==</font> <font color="#993399">1</font>
-     pattern  <font color="#990000">=</font> r<font color="#FF0000">'"name" *: *"([^"]*)" *,'</font>
-     match    <font color="#990000">=</font> re<font color="#990000">.</font><b><font color="#000000">search</font></b><font color="#990000">(</font>pattern<font color="#990000">,</font> json<font color="#990000">)</font>
-     name     <font color="#990000">=</font> match<font color="#990000">.</font><b><font color="#000000">group</font></b><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">);</font>
-     ok      <font color="#990000">&amp;=</font> name <font color="#990000">==</font> <font color="#FF0000">'add'</font> <b><font color="#0000FF">or</font></b> name <font color="#990000">==</font> <font color="#FF0000">'sub'</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">return</font></b> ok
-<i><font color="#9A1900"># END_TO_JSON_XAM</font></i>
-<i><font color="#9A1900">#</font></i>
-<i><font color="#9A1900"># $begin fun_to_json_xam.py$$ $newlinech #$$</font></i>
-<i><font color="#9A1900"># $spell</font></i>
-<i><font color="#9A1900">#     json</font></i>
-<i><font color="#9A1900"># $$</font></i>
-<i><font color="#9A1900"># $section Python to_json: Example and Test$$</font></i>
-<i><font color="#9A1900"># $srcthisfile|0|# BEGIN_TO_JSON_XAM|</font></i></tt></pre>
+<br><pre><tt><b><font color="#0000FF">def</font></b> <b><font color="#000000">to_json_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#000080">import</font></b> numpy
+    <b><font color="#000080">import</font></b> cppad_py
+    <b><font color="#000080">import</font></b> re
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># initialize return variable</font></i>
+    ok <font color="#990000">=</font> True
+    <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
+    n <font color="#990000">=</font> <font color="#993399">1</font> <i><font color="#9A1900"># number of independent variables</font></i>
+    m <font color="#990000">=</font> <font color="#993399">2</font> <i><font color="#9A1900"># number of dependent variables</font></i>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># independent variables</font></i>
+    x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font> <font color="#993399">1.0</font> <font color="#990000">]</font> <font color="#990000">)</font>
+    ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># f(x) = [ x0 + x0, sin(x0) ]</font></i>
+    ay <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>m<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
+    ay<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">+</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
+    ay<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">].</font><b><font color="#000000">sin</font></b><font color="#990000">()</font>
+    f     <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># check f.to_json</font></i>
+    json     <font color="#990000">=</font> f<font color="#990000">.</font><b><font color="#000000">to_json</font></b><font color="#990000">()</font>
+    pattern  <font color="#990000">=</font> r<font color="#FF0000">'"op_code" *: *([^,]*),'</font>
+    match    <font color="#990000">=</font> re<font color="#990000">.</font><b><font color="#000000">search</font></b><font color="#990000">(</font>pattern<font color="#990000">,</font> json<font color="#990000">)</font>
+    op_code  <font color="#990000">=</font> <b><font color="#000000">int</font></b><font color="#990000">(</font> match<font color="#990000">.</font><b><font color="#000000">group</font></b><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">)</font>
+    ok      <font color="#990000">&amp;=</font> op_code <font color="#990000">==</font> <font color="#993399">1</font>
+    pattern  <font color="#990000">=</font> r<font color="#FF0000">'"name" *: *"([^"]*)" *,'</font>
+    match    <font color="#990000">=</font> re<font color="#990000">.</font><b><font color="#000000">search</font></b><font color="#990000">(</font>pattern<font color="#990000">,</font> json<font color="#990000">)</font>
+    name     <font color="#990000">=</font> match<font color="#990000">.</font><b><font color="#000000">group</font></b><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">);</font>
+    ok      <font color="#990000">&amp;=</font> name <font color="#990000">==</font> <font color="#FF0000">'add'</font> <b><font color="#0000FF">or</font></b> name <font color="#990000">==</font> <font color="#FF0000">'sub'</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">return</font></b> ok</tt></pre>
 
 <hr>Input File: example/python/core/fun_json_xam.py
 

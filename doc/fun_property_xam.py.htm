@@ -74,73 +74,73 @@ A:active { color : purple }
 <center><b><big><big>Python: d_fun Properties: Example and Test</big></big></b></center>
 
 <br><pre><tt><b><font color="#0000FF">def</font></b> <b><font color="#000000">fun_property_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#000080">import</font></b> numpy
-     <b><font color="#000080">import</font></b> cppad_py
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># initialize return variable</font></i>
-     ok <font color="#990000">=</font> True
-     <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
-     n_ind <font color="#990000">=</font> <font color="#993399">1</font> <i><font color="#9A1900"># number of independent variables</font></i>
-     n_dep <font color="#990000">=</font> <font color="#993399">2</font> <i><font color="#9A1900"># number of dependent variables</font></i>
-     n_var <font color="#990000">=</font> <font color="#993399">1</font> <i><font color="#9A1900"># phantom variable at address 0</font></i>
-     n_op  <font color="#990000">=</font> <font color="#993399">1</font> <i><font color="#9A1900"># special operator at beginning</font></i>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># dimension some vectors</font></i>
-     <i><font color="#9A1900"># x  = numpy.empty(n_ind, dtype=float)</font></i>
-     x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_ind<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
-     ay <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_dep<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># independent variables</font></i>
-     x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>  <font color="#990000">=</font> <font color="#993399">1.0</font>
-     ax    <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
-     n_var <font color="#990000">=</font> n_var <font color="#990000">+</font> n_ind <i><font color="#9A1900"># one for each indpendent</font></i>
-     n_op  <font color="#990000">=</font> n_op <font color="#990000">+</font> n_ind
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># first dependent variable</font></i>
-     ay<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">+</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
-     n_var <font color="#990000">=</font> n_var <font color="#990000">+</font> <font color="#993399">1</font> <i><font color="#9A1900"># one variable and operator</font></i>
-     n_op  <font color="#990000">=</font> n_op <font color="#990000">+</font> <font color="#993399">1</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># second dependent variable</font></i>
-     ax0   <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
-     ay<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> ax0<font color="#990000">.</font><b><font color="#000000">sin</font></b><font color="#990000">()</font>
-     n_var <font color="#990000">=</font> n_var <font color="#990000">+</font> <font color="#993399">2</font> <i><font color="#9A1900"># two varialbes, one operator</font></i>
-     n_op  <font color="#990000">=</font> n_op <font color="#990000">+</font> <font color="#993399">1</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># define f(x) = y</font></i>
-     f  <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
-     n_op <font color="#990000">=</font> n_op <font color="#990000">+</font> <font color="#993399">1</font> <i><font color="#9A1900"># speical operator at end</font></i>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># check af properties except f.to_json</font></i>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_domain</font></b><font color="#990000">()</font> <font color="#990000">==</font> n_ind
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_range</font></b><font color="#990000">()</font>  <font color="#990000">==</font> n_dep
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_var</font></b><font color="#990000">()</font>    <font color="#990000">==</font> n_var
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_op</font></b><font color="#990000">()</font>     <font color="#990000">==</font> n_op
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_order</font></b><font color="#990000">()</font>  <font color="#990000">==</font> <font color="#993399">0</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># compute zero order Taylor coefficients</font></i>
-     y  <font color="#990000">=</font> f<font color="#990000">.</font><b><font color="#000000">forward</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font> x<font color="#990000">)</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_order</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">1</font>
-     <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
-     af <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_fun</font></b><font color="#990000">(</font>f<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># check af properties</font></i>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> af<font color="#990000">.</font><b><font color="#000000">size_domain</font></b><font color="#990000">()</font> <font color="#990000">==</font> n_ind
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> af<font color="#990000">.</font><b><font color="#000000">size_range</font></b><font color="#990000">()</font>  <font color="#990000">==</font> n_dep
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> af<font color="#990000">.</font><b><font color="#000000">size_var</font></b><font color="#990000">()</font>    <font color="#990000">==</font> n_var
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> af<font color="#990000">.</font><b><font color="#000000">size_op</font></b><font color="#990000">()</font>     <font color="#990000">==</font> n_op
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> af<font color="#990000">.</font><b><font color="#000000">size_order</font></b><font color="#990000">()</font>  <font color="#990000">==</font> <font color="#993399">0</font>
-     <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
-     <i><font color="#9A1900"># The empty function</font></i>
-     f <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">()</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_domain</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">0</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_range</font></b><font color="#990000">()</font>  <font color="#990000">==</font> <font color="#993399">0</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_var</font></b><font color="#990000">()</font>    <font color="#990000">==</font> <font color="#993399">0</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_op</font></b><font color="#990000">()</font>     <font color="#990000">==</font> <font color="#993399">0</font>
-     ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_order</font></b><font color="#990000">()</font>  <font color="#990000">==</font> <font color="#993399">0</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok  <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#000080">import</font></b> numpy
+    <b><font color="#000080">import</font></b> cppad_py
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># initialize return variable</font></i>
+    ok <font color="#990000">=</font> True
+    <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
+    n_ind <font color="#990000">=</font> <font color="#993399">1</font> <i><font color="#9A1900"># number of independent variables</font></i>
+    n_dep <font color="#990000">=</font> <font color="#993399">2</font> <i><font color="#9A1900"># number of dependent variables</font></i>
+    n_var <font color="#990000">=</font> <font color="#993399">1</font> <i><font color="#9A1900"># phantom variable at address 0</font></i>
+    n_op  <font color="#990000">=</font> <font color="#993399">1</font> <i><font color="#9A1900"># special operator at beginning</font></i>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># dimension some vectors</font></i>
+    <i><font color="#9A1900"># x  = numpy.empty(n_ind, dtype=float)</font></i>
+    x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_ind<font color="#990000">,</font> dtype<font color="#990000">=</font>float<font color="#990000">)</font>
+    ay <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_dep<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># independent variables</font></i>
+    x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>  <font color="#990000">=</font> <font color="#993399">1.0</font>
+    ax    <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
+    n_var <font color="#990000">=</font> n_var <font color="#990000">+</font> n_ind <i><font color="#9A1900"># one for each indpendent</font></i>
+    n_op  <font color="#990000">=</font> n_op <font color="#990000">+</font> n_ind
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># first dependent variable</font></i>
+    ay<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">+</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
+    n_var <font color="#990000">=</font> n_var <font color="#990000">+</font> <font color="#993399">1</font> <i><font color="#9A1900"># one variable and operator</font></i>
+    n_op  <font color="#990000">=</font> n_op <font color="#990000">+</font> <font color="#993399">1</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># second dependent variable</font></i>
+    ax0   <font color="#990000">=</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font>
+    ay<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> ax0<font color="#990000">.</font><b><font color="#000000">sin</font></b><font color="#990000">()</font>
+    n_var <font color="#990000">=</font> n_var <font color="#990000">+</font> <font color="#993399">2</font> <i><font color="#9A1900"># two varialbes, one operator</font></i>
+    n_op  <font color="#990000">=</font> n_op <font color="#990000">+</font> <font color="#993399">1</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># define f(x) = y</font></i>
+    f  <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
+    n_op <font color="#990000">=</font> n_op <font color="#990000">+</font> <font color="#993399">1</font> <i><font color="#9A1900"># speical operator at end</font></i>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># check af properties except f.to_json</font></i>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_domain</font></b><font color="#990000">()</font> <font color="#990000">==</font> n_ind
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_range</font></b><font color="#990000">()</font>  <font color="#990000">==</font> n_dep
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_var</font></b><font color="#990000">()</font>    <font color="#990000">==</font> n_var
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_op</font></b><font color="#990000">()</font>     <font color="#990000">==</font> n_op
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_order</font></b><font color="#990000">()</font>  <font color="#990000">==</font> <font color="#993399">0</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># compute zero order Taylor coefficients</font></i>
+    y  <font color="#990000">=</font> f<font color="#990000">.</font><b><font color="#000000">forward</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">,</font> x<font color="#990000">)</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_order</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">1</font>
+    <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
+    af <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_fun</font></b><font color="#990000">(</font>f<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># check af properties</font></i>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> af<font color="#990000">.</font><b><font color="#000000">size_domain</font></b><font color="#990000">()</font> <font color="#990000">==</font> n_ind
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> af<font color="#990000">.</font><b><font color="#000000">size_range</font></b><font color="#990000">()</font>  <font color="#990000">==</font> n_dep
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> af<font color="#990000">.</font><b><font color="#000000">size_var</font></b><font color="#990000">()</font>    <font color="#990000">==</font> n_var
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> af<font color="#990000">.</font><b><font color="#000000">size_op</font></b><font color="#990000">()</font>     <font color="#990000">==</font> n_op
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> af<font color="#990000">.</font><b><font color="#000000">size_order</font></b><font color="#990000">()</font>  <font color="#990000">==</font> <font color="#993399">0</font>
+    <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
+    <i><font color="#9A1900"># The empty function</font></i>
+    f <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">()</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_domain</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">0</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_range</font></b><font color="#990000">()</font>  <font color="#990000">==</font> <font color="#993399">0</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_var</font></b><font color="#990000">()</font>    <font color="#990000">==</font> <font color="#993399">0</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_op</font></b><font color="#990000">()</font>     <font color="#990000">==</font> <font color="#993399">0</font>
+    ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> f<font color="#990000">.</font><b><font color="#000000">size_order</font></b><font color="#990000">()</font>  <font color="#990000">==</font> <font color="#993399">0</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok  <font color="#990000">)</font>
 <i><font color="#9A1900">#</font></i></tt></pre>
 
 <hr>Input File: example/python/core/fun_property_xam.py

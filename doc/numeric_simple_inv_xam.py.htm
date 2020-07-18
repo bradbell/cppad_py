@@ -74,32 +74,32 @@ A:active { color : purple }
 We define
 <small>@[@
 
-	A(x) = \left( \begin{array}{cc}
-	x_0 & x_1 \\
-	x_2 & x_3
-	\end{array} \right)
+  A(x) = \left( \begin{array}{cc}
+  x_0 & x_1 \\
+  x_2 & x_3
+  \end{array} \right)
 
 @]@</small>
 It follows that
 <small>@[@
 
-	A^{-1}(x) =
-	\frac{1}{x_3 * x_0 - x_1 * x_2}
-	\left( \begin{array}{cc}
-	x_3 & - x_1 \\
-	- x_2 & x_0
-	\end{array} \right)
+  A^{-1}(x) =
+  \frac{1}{x_3 * x_0 - x_1 * x_2}
+  \left( \begin{array}{cc}
+  x_3 & - x_1 \\
+  - x_2 & x_0
+  \end{array} \right)
 
 @]@</small>
 We define
 <small>@[@
 
-	f(x) = (x_3 * x_0 - x_1 * x_2) [
-	A_{0,0}^{-1} (x),
-	A_{0,1}^{-1} (x),
-	A_{1,0}^{-1} (x),
-	A_{1,1}^{-1} (x)
-	]
+  f(x) = (x_3 * x_0 - x_1 * x_2) [
+  A_{0,0}^{-1} (x),
+  A_{0,1}^{-1} (x),
+  A_{1,0}^{-1} (x),
+  A_{1,1}^{-1} (x)
+  ]
 = [ x_3, -x_1, -x_2, x_0]
 
 @]@</small>
@@ -116,34 +116,34 @@ f(x)
 <b><font color="#000080">import</font></b> cppad_py
 <b><font color="#000080">from</font></b> simple_inv <b><font color="#000080">import</font></b> simple_inv
 <b><font color="#0000FF">def</font></b> <b><font color="#000000">simple_inv_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
-     ok <font color="#990000">=</font> True
-     x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font><font color="#993399">1.0</font><font color="#990000">,</font> <font color="#993399">2.0</font><font color="#990000">,</font> <font color="#993399">3.0</font><font color="#990000">,</font> <font color="#993399">4.0</font><font color="#990000">]</font> <font color="#990000">)</font>
-     ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># create the matrix [ [x_0, x_1], [x_2, x_3] ]</font></i>
-     aA <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">reshape</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> <font color="#990000">(</font><font color="#993399">2</font><font color="#990000">,</font><font color="#993399">2</font><font color="#990000">),</font> order<font color="#990000">=</font><font color="#FF0000">'C'</font> <font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># compute inverse of A</font></i>
-     aAinv <font color="#990000">=</font> <b><font color="#000000">simple_inv</font></b><font color="#990000">(</font>aA<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># create f(x)</font></i>
-     ay <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">reshape</font></b><font color="#990000">(</font>aAinv<font color="#990000">,</font> <font color="#993399">4</font><font color="#990000">,</font> order<font color="#990000">=</font><font color="#FF0000">'C'</font> <font color="#990000">)</font>
-     ay <font color="#990000">=</font> <font color="#990000">(</font>ax<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">*</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">-</font> ax<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">*</font> ax<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">])</font> <font color="#990000">*</font> ay
-     f  <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># evaluate the derivative f'(x)</font></i>
-     J      <font color="#990000">=</font> f<font color="#990000">.</font><b><font color="#000000">jacobian</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># Check the derivative</font></i>
-     check      <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">zeros</font></b><font color="#990000">(</font> <font color="#990000">(</font><font color="#993399">4</font><font color="#990000">,</font> <font color="#993399">4</font><font color="#990000">)</font> <font color="#990000">)</font>
-     check<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">,</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">=</font>  <font color="#993399">1.0</font>
-     check<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#990000">-</font><font color="#993399">1.0</font>
-     check<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">,</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#990000">-</font><font color="#993399">1.0</font>
-     check<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">,</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font>  <font color="#993399">1.0</font>
-     <i><font color="#9A1900">#</font></i>
-     eps99 <font color="#990000">=</font> <font color="#993399">99.0</font> <font color="#990000">*</font> numpy<font color="#990000">.</font><b><font color="#000000">finfo</font></b><font color="#990000">(</font>float<font color="#990000">).</font>eps
-     ok   <font color="#990000">&amp;=</font> numpy<font color="#990000">.</font><b><font color="#000000">all</font></b><font color="#990000">(</font> numpy<font color="#990000">.</font><b><font color="#000000">fabs</font></b><font color="#990000">(</font>J <font color="#990000">-</font> check<font color="#990000">)</font> <font color="#990000">&lt;</font> eps99 <font color="#990000">)</font>
-     <b><font color="#0000FF">return</font></b> ok
+    ok <font color="#990000">=</font> True
+    x  <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">array</font></b><font color="#990000">(</font> <font color="#990000">[</font><font color="#993399">1.0</font><font color="#990000">,</font> <font color="#993399">2.0</font><font color="#990000">,</font> <font color="#993399">3.0</font><font color="#990000">,</font> <font color="#993399">4.0</font><font color="#990000">]</font> <font color="#990000">)</font>
+    ax <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">independent</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># create the matrix [ [x_0, x_1], [x_2, x_3] ]</font></i>
+    aA <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">reshape</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> <font color="#990000">(</font><font color="#993399">2</font><font color="#990000">,</font><font color="#993399">2</font><font color="#990000">),</font> order<font color="#990000">=</font><font color="#FF0000">'C'</font> <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># compute inverse of A</font></i>
+    aAinv <font color="#990000">=</font> <b><font color="#000000">simple_inv</font></b><font color="#990000">(</font>aA<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># create f(x)</font></i>
+    ay <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">reshape</font></b><font color="#990000">(</font>aAinv<font color="#990000">,</font> <font color="#993399">4</font><font color="#990000">,</font> order<font color="#990000">=</font><font color="#FF0000">'C'</font> <font color="#990000">)</font>
+    ay <font color="#990000">=</font> <font color="#990000">(</font>ax<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">*</font> ax<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">-</font> ax<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">*</font> ax<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">])</font> <font color="#990000">*</font> ay
+    f  <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># evaluate the derivative f'(x)</font></i>
+    J      <font color="#990000">=</font> f<font color="#990000">.</font><b><font color="#000000">jacobian</font></b><font color="#990000">(</font>x<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># Check the derivative</font></i>
+    check      <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">zeros</font></b><font color="#990000">(</font> <font color="#990000">(</font><font color="#993399">4</font><font color="#990000">,</font> <font color="#993399">4</font><font color="#990000">)</font> <font color="#990000">)</font>
+    check<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">,</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">=</font>  <font color="#993399">1.0</font>
+    check<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">,</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#990000">-</font><font color="#993399">1.0</font>
+    check<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">,</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#990000">-</font><font color="#993399">1.0</font>
+    check<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">,</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font>  <font color="#993399">1.0</font>
+    <i><font color="#9A1900">#</font></i>
+    eps99 <font color="#990000">=</font> <font color="#993399">99.0</font> <font color="#990000">*</font> numpy<font color="#990000">.</font><b><font color="#000000">finfo</font></b><font color="#990000">(</font>float<font color="#990000">).</font>eps
+    ok   <font color="#990000">&amp;=</font> numpy<font color="#990000">.</font><b><font color="#000000">all</font></b><font color="#990000">(</font> numpy<font color="#990000">.</font><b><font color="#000000">fabs</font></b><font color="#990000">(</font>J <font color="#990000">-</font> check<font color="#990000">)</font> <font color="#990000">&lt;</font> eps99 <font color="#990000">)</font>
+    <b><font color="#0000FF">return</font></b> ok
 </tt></pre>
 
 <hr>Input File: example/python/numeric/simple_inv_xam.py

@@ -3,7 +3,7 @@
 // ------------------------------------------------------------ 
 Keyword = 
 [
-{ tag: 'cppad_py', title:'cppad_py-2020.7.5: A C++ Object Library and Python Interface to CppAD', other:' git repository purpose getting started numerical examples function speed license' },
+{ tag: 'cppad_py', title:'cppad_py-2020.7.18: A C++ Object Library and Python Interface to CppAD', other:' git repository purpose getting started numerical examples function speed license' },
 { tag: 'setup.py', title:'Configure and Build the cppad_py Python Module', other:' syntax external requirements install using pip errors download top source directory get test c++ import path' },
 { tag: 'install_error', title:'Error Messages During Installation', other:' solved swig permissions cppad library missing fortify source unsolved travis' },
 { tag: 'get_cppad.sh', title:'Get Cppad', other:' syntax top source directory settings cppad_prefix extra_cxx_flags build_type test_cppad caching' },
@@ -118,7 +118,7 @@ Keyword =
 { tag: 'fun_reverse_xam.cpp', title:'C++: Reverse Mode AD: Example and Test', other:'' },
 { tag: 'fun_optimize_xam.cpp', title:'C++: Optimize an d_fun: Example and Test', other:'' },
 { tag: 'fun_to_json_xam.cpp', title:'C++: to_json: Example and Test', other:'' },
-{ tag: 'fun_from_json_xam.cpp', title:'C++: to_json: Example and Test', other:'' },
+{ tag: 'fun_from_json_xam.cpp', title:'C++: from_json: Example and Test', other:'' },
 { tag: 'cpp_sparse_rc', title:'Sparsity Patterns', other:' syntax nr nc nnz resize put k row col row_major col_major example' },
 { tag: 'cpp_sparse_rcv', title:'Sparse Matrices', other:' syntax pattern matrix nr nc nnz put k row col val row_major col_major example' },
 { tag: 'cpp_jac_sparsity', title:'Jacobian Sparsity Patterns', other:' syntax purpose for_jac_sparsity rev_jac_sparsity pattern_in pattern_out entire example' },
@@ -137,7 +137,7 @@ Keyword =
 { tag: 'error_message_xam.cpp', title:'C++: Cppad Py Exception Handling: Example and Test', other:'' },
 { tag: 'error_message_xam.py', title:'Python: Cppad Py Exception Handling: Example and Test', other:'' },
 { tag: 'more_cpp', title:'Steps To Add More C++ Functions', other:' purpose include file independent new_dynamic documentation example implementation testing' },
-{ tag: 'whats_new_2020', title:'CppAD Py Changes During 2020', other:' previous years 07-05 05-17 05-16 05-15 05-14 05-12 05-09 05-08 05-07 05-06 05-05 05-04 04-28 04-27 04-26 04-25 04-24 04-23 04-22 04-20 04-19 04-18 04-13 04-12 04-10' },
+{ tag: 'whats_new_2020', title:'CppAD Py Changes During 2020', other:' previous years 07-18 07-05 05-17 05-16 05-15 05-14 05-12 05-09 05-08 05-07 05-06 05-05 05-04 04-28 04-27 04-26 04-25 04-24 04-23 04-22 04-20 04-19 04-18 04-13 04-12 04-10' },
 { tag: 'whats_new_2018', title:'Cppad Py Changes During 2018', other:' 11-10 11-09 11-07 11-05 08-13 07-31 07-26 07-19 07-15 07-14 07-13 07-12 07-10 07-08 07-07 07-03' }
 ]
 

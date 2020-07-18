@@ -107,7 +107,7 @@ r \in \B{R}^m
 @)@</small>, define
 <small>@[@
 
-	H(x) = (r^\R{T} F)^{(2)} ( x )
+  H(x) = (r^\R{T} F)^{(2)} ( x )
 
 @]@</small>
 This routine takes advantage of sparsity when computing elements
@@ -244,7 +244,7 @@ The return value
  has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>n_sweep</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;int&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>n_sweep</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 It is the number of first order forward sweeps
 used to compute the requested Hessian values.
@@ -268,7 +268,7 @@ After a call to <code><font color="blue">sparse_hes</font></code>
 the zero order coefficients correspond to
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>.forward(0,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>.forward(0,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 All the other forward mode coefficients are unspecified.
 

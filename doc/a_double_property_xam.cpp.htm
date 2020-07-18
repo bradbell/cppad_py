@@ -75,26 +75,26 @@ A:active { color : purple }
 <b><font color="#000080"># include</font></b> <font color="#FF0000">&lt;cppad/py/cppad_py.hpp&gt;</font>
 
 <font color="#009900">bool</font> <b><font color="#000000">a_double_property_xam</font></b><font color="#990000">(</font><font color="#009900">void</font><font color="#990000">)</font> <font color="#FF0000">{</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>a_double<font color="#990000">;</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// initialize return variable</font></i>
-     <font color="#009900">bool</font> ok <font color="#990000">=</font> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
-     <i><font color="#9A1900">//------------------------------------------------------------------------</font></i>
-     <font color="#008080">a_double</font> <b><font color="#000000">a3</font></b><font color="#990000">(</font><font color="#993399">3.0</font><font color="#990000">);</font>
-     <i><font color="#9A1900">//</font></i>
-     ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> a3   <font color="#990000">==</font> <font color="#993399">3.0</font><font color="#990000">;</font>
-     ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> a3<font color="#990000">.</font><b><font color="#000000">parameter</font></b><font color="#990000">();</font>
-     ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> <font color="#990000">!</font> a3<font color="#990000">.</font><b><font color="#000000">variable</font></b><font color="#990000">();</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// near_equal</font></i>
-     <font color="#008080">a_double</font> r3 <font color="#990000">=</font> a3<font color="#990000">.</font><b><font color="#000000">sqrt</font></b><font color="#990000">()</font> <font color="#990000">;</font>
-     ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> a3<font color="#990000">.</font><b><font color="#000000">near_equal</font></b><font color="#990000">(</font> r3 <font color="#990000">*</font> r3<font color="#990000">)</font> <font color="#990000">;;</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// var2par</font></i>
-     <font color="#008080">a_double</font> p3 <font color="#990000">=</font> a3<font color="#990000">.</font><b><font color="#000000">var2par</font></b><font color="#990000">();</font>
-     ok <font color="#990000">&amp;=</font> p3<font color="#990000">.</font><b><font color="#000000">value</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">3.0</font><font color="#990000">;</font>
-     <i><font color="#9A1900">//</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">);</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>a_double<font color="#990000">;</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// initialize return variable</font></i>
+    <font color="#009900">bool</font> ok <font color="#990000">=</font> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
+    <i><font color="#9A1900">//------------------------------------------------------------------------</font></i>
+    <font color="#008080">a_double</font> <b><font color="#000000">a3</font></b><font color="#990000">(</font><font color="#993399">3.0</font><font color="#990000">);</font>
+    <i><font color="#9A1900">//</font></i>
+    ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> a3   <font color="#990000">==</font> <font color="#993399">3.0</font><font color="#990000">;</font>
+    ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> a3<font color="#990000">.</font><b><font color="#000000">parameter</font></b><font color="#990000">();</font>
+    ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> <font color="#990000">!</font> a3<font color="#990000">.</font><b><font color="#000000">variable</font></b><font color="#990000">();</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// near_equal</font></i>
+    <font color="#008080">a_double</font> r3 <font color="#990000">=</font> a3<font color="#990000">.</font><b><font color="#000000">sqrt</font></b><font color="#990000">()</font> <font color="#990000">;</font>
+    ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> a3<font color="#990000">.</font><b><font color="#000000">near_equal</font></b><font color="#990000">(</font> r3 <font color="#990000">*</font> r3<font color="#990000">)</font> <font color="#990000">;;</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// var2par</font></i>
+    <font color="#008080">a_double</font> p3 <font color="#990000">=</font> a3<font color="#990000">.</font><b><font color="#000000">var2par</font></b><font color="#990000">();</font>
+    ok <font color="#990000">&amp;=</font> p3<font color="#990000">.</font><b><font color="#000000">value</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">3.0</font><font color="#990000">;</font>
+    <i><font color="#9A1900">//</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">);</font>
 <font color="#FF0000">}</font></tt></pre>
 
 <hr>Input File: example/cplusplus/a_double_property_xam.cpp

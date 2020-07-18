@@ -72,21 +72,21 @@ A:active { color : purple }
 \newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Python: Cppad Py Exception Handling: Example and Test</big></big></b></center>
 
 <br><pre><tt><b><font color="#0000FF">def</font></b> <b><font color="#000000">error_message_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#000080">import</font></b> numpy
-     <b><font color="#000080">import</font></b> cppad_py
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># initialize return variable</font></i>
-     ok <font color="#990000">=</font> True
-     <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
-     ok <font color="#990000">=</font> False
-     <b><font color="#0000FF">try</font></b> <font color="#990000">:</font>
-          cppad_py<font color="#990000">.</font><b><font color="#000000">error_message</font></b><font color="#990000">(</font><font color="#FF0000">"test message"</font><font color="#990000">)</font>
-     <b><font color="#0000FF">except</font></b> <font color="#990000">:</font> <i><font color="#9A1900"># catch</font></i>
-          stored_message <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">error_message</font></b><font color="#990000">(</font><font color="#FF0000">""</font><font color="#990000">)</font>
-          ok <font color="#990000">=</font> <font color="#990000">(</font>stored_message <font color="#990000">==</font> <font color="#FF0000">"test message"</font><font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok  <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#000080">import</font></b> numpy
+    <b><font color="#000080">import</font></b> cppad_py
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># initialize return variable</font></i>
+    ok <font color="#990000">=</font> True
+    <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
+    ok <font color="#990000">=</font> False
+    <b><font color="#0000FF">try</font></b> <font color="#990000">:</font>
+        cppad_py<font color="#990000">.</font><b><font color="#000000">error_message</font></b><font color="#990000">(</font><font color="#FF0000">"test message"</font><font color="#990000">)</font>
+    <b><font color="#0000FF">except</font></b> <font color="#990000">:</font> <i><font color="#9A1900"># catch</font></i>
+        stored_message <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">error_message</font></b><font color="#990000">(</font><font color="#FF0000">""</font><font color="#990000">)</font>
+        ok <font color="#990000">=</font> <font color="#990000">(</font>stored_message <font color="#990000">==</font> <font color="#FF0000">"test message"</font><font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok  <font color="#990000">)</font>
 <i><font color="#9A1900">#</font></i></tt></pre>
 
 <hr>Input File: example/python/core/error_message_xam.py

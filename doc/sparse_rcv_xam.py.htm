@@ -74,50 +74,50 @@ A:active { color : purple }
 <center><b><big><big>Python: Sparsity Patterns: Example and Test</big></big></b></center>
 
 <br><pre><tt><b><font color="#0000FF">def</font></b> <b><font color="#000000">sparse_rcv_xam</font></b><font color="#990000">()</font> <font color="#990000">:</font>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#000080">import</font></b> numpy
-     <b><font color="#000080">import</font></b> cppad_py
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># initialize return variable</font></i>
-     ok <font color="#990000">=</font> True
-     <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># create sparsity pattern for n by n identity matrix</font></i>
-     pattern <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">sparse_rc</font></b><font color="#990000">()</font>
-     n <font color="#990000">=</font> <font color="#993399">5</font>
-     pattern<font color="#990000">.</font><b><font color="#000000">resize</font></b><font color="#990000">(</font>n<font color="#990000">,</font> n<font color="#990000">,</font> n<font color="#990000">)</font>
-     <b><font color="#0000FF">for</font></b> k <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n <font color="#990000">)</font> <font color="#990000">:</font>
-          pattern<font color="#990000">.</font><b><font color="#000000">put</font></b><font color="#990000">(</font>k<font color="#990000">,</font> k<font color="#990000">,</font> k<font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># create n by n sparse representation of identity matrix</font></i>
-     <i><font color="#9A1900"># (temporarly use pattern.rc untile sparse_rcv wrapper is built)</font></i>
-     matrix <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">sparse_rcv</font></b><font color="#990000">(</font>pattern<font color="#990000">)</font>
-     <b><font color="#0000FF">for</font></b> k <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n <font color="#990000">)</font> <font color="#990000">:</font>
-          matrix<font color="#990000">.</font><b><font color="#000000">put</font></b><font color="#990000">(</font>k<font color="#990000">,</font> <font color="#993399">1.0</font><font color="#990000">)</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># row, column indices</font></i>
-     row <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">row</font></b><font color="#990000">()</font>
-     col <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">col</font></b><font color="#990000">()</font>
-     val <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">val</font></b><font color="#990000">()</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># check results</font></i>
-     <b><font color="#0000FF">for</font></b> k <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n <font color="#990000">)</font> <font color="#990000">:</font>
-          ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> row<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k
-          ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> col<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k
-          ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> val<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">1.0</font>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900"># For this case, row_major and col_major order are same as original order</font></i>
-     row_major <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">row_major</font></b><font color="#990000">()</font>
-     col_major <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">col_major</font></b><font color="#990000">()</font>
-     <b><font color="#0000FF">for</font></b> k <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n <font color="#990000">)</font> <font color="#990000">:</font>
-          ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> row_major<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k
-          ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> col_major<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k
-     <i><font color="#9A1900">#</font></i>
-     <i><font color="#9A1900">#</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#000080">import</font></b> numpy
+    <b><font color="#000080">import</font></b> cppad_py
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># initialize return variable</font></i>
+    ok <font color="#990000">=</font> True
+    <i><font color="#9A1900"># ---------------------------------------------------------------------</font></i>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># create sparsity pattern for n by n identity matrix</font></i>
+    pattern <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">sparse_rc</font></b><font color="#990000">()</font>
+    n <font color="#990000">=</font> <font color="#993399">5</font>
+    pattern<font color="#990000">.</font><b><font color="#000000">resize</font></b><font color="#990000">(</font>n<font color="#990000">,</font> n<font color="#990000">,</font> n<font color="#990000">)</font>
+    <b><font color="#0000FF">for</font></b> k <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n <font color="#990000">)</font> <font color="#990000">:</font>
+        pattern<font color="#990000">.</font><b><font color="#000000">put</font></b><font color="#990000">(</font>k<font color="#990000">,</font> k<font color="#990000">,</font> k<font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># create n by n sparse representation of identity matrix</font></i>
+    <i><font color="#9A1900"># (temporarly use pattern.rc untile sparse_rcv wrapper is built)</font></i>
+    matrix <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">sparse_rcv</font></b><font color="#990000">(</font>pattern<font color="#990000">)</font>
+    <b><font color="#0000FF">for</font></b> k <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n <font color="#990000">)</font> <font color="#990000">:</font>
+        matrix<font color="#990000">.</font><b><font color="#000000">put</font></b><font color="#990000">(</font>k<font color="#990000">,</font> <font color="#993399">1.0</font><font color="#990000">)</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># row, column indices</font></i>
+    row <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">row</font></b><font color="#990000">()</font>
+    col <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">col</font></b><font color="#990000">()</font>
+    val <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">val</font></b><font color="#990000">()</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># check results</font></i>
+    <b><font color="#0000FF">for</font></b> k <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n <font color="#990000">)</font> <font color="#990000">:</font>
+        ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> row<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k
+        ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> col<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k
+        ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> val<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">1.0</font>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900"># For this case, row_major and col_major order are same as original order</font></i>
+    row_major <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">row_major</font></b><font color="#990000">()</font>
+    col_major <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">col_major</font></b><font color="#990000">()</font>
+    <b><font color="#0000FF">for</font></b> k <b><font color="#0000FF">in</font></b> <b><font color="#000000">range</font></b><font color="#990000">(</font> n <font color="#990000">)</font> <font color="#990000">:</font>
+        ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> row_major<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k
+        ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> col_major<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k
+    <i><font color="#9A1900">#</font></i>
+    <i><font color="#9A1900">#</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">)</font>
 <i><font color="#9A1900">#</font></i></tt></pre>
 
 <hr>Input File: example/python/core/sparse_rcv_xam.py

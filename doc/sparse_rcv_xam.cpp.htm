@@ -75,50 +75,50 @@ A:active { color : purple }
 <b><font color="#000080"># include</font></b> <font color="#FF0000">&lt;cppad/py/cppad_py.hpp&gt;</font>
 
 <font color="#009900">bool</font> <b><font color="#000000">sparse_rcv_xam</font></b><font color="#990000">(</font><font color="#009900">void</font><font color="#990000">)</font> <font color="#FF0000">{</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>vec_int<font color="#990000">;</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>vec_double<font color="#990000">;</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>sparse_rc<font color="#990000">;</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>sparse_rcv<font color="#990000">;</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// initialize return variable</font></i>
-     <font color="#009900">bool</font> ok <font color="#990000">=</font> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
-     <i><font color="#9A1900">//------------------------------------------------------------------------</font></i>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// create sparsity pattern for n by n identity matrix</font></i>
-     <font color="#008080">sparse_rc</font> pattern <font color="#990000">=</font> <b><font color="#000000">sparse_rc</font></b><font color="#990000">();</font>
-     <font color="#009900">int</font> n <font color="#990000">=</font> <font color="#993399">5</font><font color="#990000">;</font>
-     pattern<font color="#990000">.</font><b><font color="#000000">resize</font></b><font color="#990000">(</font>n<font color="#990000">,</font> n<font color="#990000">,</font> n<font color="#990000">);</font>
-     <b><font color="#0000FF">for</font></b><font color="#990000">(</font><font color="#009900">int</font> k <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> k <font color="#990000">&lt;</font> n<font color="#990000">;</font> k<font color="#990000">++)</font> <font color="#FF0000">{</font>
-          pattern<font color="#990000">.</font><b><font color="#000000">put</font></b><font color="#990000">(</font>k<font color="#990000">,</font> k<font color="#990000">,</font> k<font color="#990000">);</font>
-     <font color="#FF0000">}</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// create n by n sparse representation of identity matrix</font></i>
-     <font color="#008080">sparse_rcv</font> matrix <font color="#990000">=</font> <b><font color="#000000">sparse_rcv</font></b><font color="#990000">(</font>pattern<font color="#990000">);</font>
-     <b><font color="#0000FF">for</font></b><font color="#990000">(</font><font color="#009900">int</font> k <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> k <font color="#990000">&lt;</font> n<font color="#990000">;</font> k<font color="#990000">++)</font> <font color="#FF0000">{</font>
-          matrix<font color="#990000">.</font><b><font color="#000000">put</font></b><font color="#990000">(</font>k<font color="#990000">,</font> <font color="#993399">1.0</font><font color="#990000">);</font>
-     <font color="#FF0000">}</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// row, column indices</font></i>
-     <font color="#008080">vec_int</font> row <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">row</font></b><font color="#990000">();</font>
-     <font color="#008080">vec_int</font> col <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">col</font></b><font color="#990000">();</font>
-     <font color="#008080">vec_double</font> val <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">val</font></b><font color="#990000">();</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// check results</font></i>
-     <b><font color="#0000FF">for</font></b><font color="#990000">(</font><font color="#009900">int</font> k <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> k <font color="#990000">&lt;</font> n<font color="#990000">;</font> k<font color="#990000">++)</font> <font color="#FF0000">{</font>
-          ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> row<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k<font color="#990000">;</font>
-          ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> col<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k<font color="#990000">;</font>
-          ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> val<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">1.0</font><font color="#990000">;</font>
-     <font color="#FF0000">}</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// For this case, row_major and col_major order are same as original order</font></i>
-     <font color="#008080">vec_int</font> row_major <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">row_major</font></b><font color="#990000">();</font>
-     <font color="#008080">vec_int</font> col_major <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">col_major</font></b><font color="#990000">();</font>
-     <b><font color="#0000FF">for</font></b><font color="#990000">(</font><font color="#009900">int</font> k <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> k <font color="#990000">&lt;</font> n<font color="#990000">;</font> k<font color="#990000">++)</font> <font color="#FF0000">{</font>
-          ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> row_major<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k<font color="#990000">;</font>
-          ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> col_major<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k<font color="#990000">;</font>
-     <font color="#FF0000">}</font>
-     <i><font color="#9A1900">//</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">);</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>vec_int<font color="#990000">;</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>vec_double<font color="#990000">;</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>sparse_rc<font color="#990000">;</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>sparse_rcv<font color="#990000">;</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// initialize return variable</font></i>
+    <font color="#009900">bool</font> ok <font color="#990000">=</font> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
+    <i><font color="#9A1900">//------------------------------------------------------------------------</font></i>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// create sparsity pattern for n by n identity matrix</font></i>
+    <font color="#008080">sparse_rc</font> pattern <font color="#990000">=</font> <b><font color="#000000">sparse_rc</font></b><font color="#990000">();</font>
+    <font color="#009900">int</font> n <font color="#990000">=</font> <font color="#993399">5</font><font color="#990000">;</font>
+    pattern<font color="#990000">.</font><b><font color="#000000">resize</font></b><font color="#990000">(</font>n<font color="#990000">,</font> n<font color="#990000">,</font> n<font color="#990000">);</font>
+    <b><font color="#0000FF">for</font></b><font color="#990000">(</font><font color="#009900">int</font> k <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> k <font color="#990000">&lt;</font> n<font color="#990000">;</font> k<font color="#990000">++)</font> <font color="#FF0000">{</font>
+        pattern<font color="#990000">.</font><b><font color="#000000">put</font></b><font color="#990000">(</font>k<font color="#990000">,</font> k<font color="#990000">,</font> k<font color="#990000">);</font>
+    <font color="#FF0000">}</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// create n by n sparse representation of identity matrix</font></i>
+    <font color="#008080">sparse_rcv</font> matrix <font color="#990000">=</font> <b><font color="#000000">sparse_rcv</font></b><font color="#990000">(</font>pattern<font color="#990000">);</font>
+    <b><font color="#0000FF">for</font></b><font color="#990000">(</font><font color="#009900">int</font> k <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> k <font color="#990000">&lt;</font> n<font color="#990000">;</font> k<font color="#990000">++)</font> <font color="#FF0000">{</font>
+        matrix<font color="#990000">.</font><b><font color="#000000">put</font></b><font color="#990000">(</font>k<font color="#990000">,</font> <font color="#993399">1.0</font><font color="#990000">);</font>
+    <font color="#FF0000">}</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// row, column indices</font></i>
+    <font color="#008080">vec_int</font> row <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">row</font></b><font color="#990000">();</font>
+    <font color="#008080">vec_int</font> col <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">col</font></b><font color="#990000">();</font>
+    <font color="#008080">vec_double</font> val <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">val</font></b><font color="#990000">();</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// check results</font></i>
+    <b><font color="#0000FF">for</font></b><font color="#990000">(</font><font color="#009900">int</font> k <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> k <font color="#990000">&lt;</font> n<font color="#990000">;</font> k<font color="#990000">++)</font> <font color="#FF0000">{</font>
+        ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> row<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k<font color="#990000">;</font>
+        ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> col<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k<font color="#990000">;</font>
+        ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> val<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">1.0</font><font color="#990000">;</font>
+    <font color="#FF0000">}</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// For this case, row_major and col_major order are same as original order</font></i>
+    <font color="#008080">vec_int</font> row_major <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">row_major</font></b><font color="#990000">();</font>
+    <font color="#008080">vec_int</font> col_major <font color="#990000">=</font> matrix<font color="#990000">.</font><b><font color="#000000">col_major</font></b><font color="#990000">();</font>
+    <b><font color="#0000FF">for</font></b><font color="#990000">(</font><font color="#009900">int</font> k <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> k <font color="#990000">&lt;</font> n<font color="#990000">;</font> k<font color="#990000">++)</font> <font color="#FF0000">{</font>
+        ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> row_major<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k<font color="#990000">;</font>
+        ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> col_major<font color="#990000">[</font>k<font color="#990000">]</font> <font color="#990000">==</font> k<font color="#990000">;</font>
+    <font color="#FF0000">}</font>
+    <i><font color="#9A1900">//</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">);</font>
 <font color="#FF0000">}</font></tt></pre>
 
 <hr>Input File: example/cplusplus/sparse_rcv_xam.cpp

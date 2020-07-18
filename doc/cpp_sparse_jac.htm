@@ -114,7 +114,7 @@ function corresponding to
 The syntax above takes advantage of sparsity when computing the Jacobian
 <small>@[@
 
-	J(x) = F^{(1)} (x)
+    J(x) = F^{(1)} (x)
 
 @]@</small>
 In the sparse case, this should be faster and take less memory than
@@ -152,7 +152,7 @@ to compute multiple rows of the Jacobian at the same time.
 This object has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADFun&lt;</span></font><i><font color="black"><span style='white-space: nowrap'>Base</span></font></i><font color="blue"><span style='white-space: nowrap'>&gt;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ADFun&lt;</span></font><i><font color="black"><span style='white-space: nowrap'>Base</span></font></i><font color="blue"><span style='white-space: nowrap'>&gt;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 Note that the Taylor coefficients stored in 
 <code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i></code>
@@ -168,7 +168,7 @@ by this operation; see
 This argument has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sparse_rcv&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>subset</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;sparse_rcv&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>subset</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 Its row size is 
 <code><i><font color="black"><span style='white-space: nowrap'>subset</span></font></i><font color="blue"><span style='white-space: nowrap'>.nr()&nbsp;==&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>m</span></font></i></code>
@@ -197,7 +197,7 @@ All of the row, column pairs in
 This argument has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;vec_double&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;vec_double&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 and its size is 
 <code><i><font color="black"><span style='white-space: nowrap'>n</span></font></i></code>
@@ -213,7 +213,7 @@ J(x)
 This argument has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;sparse_rc&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>pattern</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;sparse_rc&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>pattern</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 Its row size is 
 <code><i><font color="black"><span style='white-space: nowrap'>pattern</span></font></i><font color="blue"><span style='white-space: nowrap'>.nr()&nbsp;==&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>m</span></font></i></code>
@@ -235,7 +235,7 @@ when <a href="cpp_sparse_jac.htm#work" target="_top"><span style='white-space: n
 This argument has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sparse_jac_work&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>work</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;sparse_jac_work&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>work</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 We refer to its initial value,
 and its value after 
@@ -264,7 +264,7 @@ The return value
  has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>n_sweep</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>n_sweep</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 If <code><font color="blue">sparse_jac_for</font></code> (<code><font color="blue">sparse_jac_rev</font></code>) is used,
 
@@ -289,7 +289,7 @@ After a call to <code><font color="blue">sparse_jac_forward</font></code> or <co
 the zero order coefficients correspond to
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>.forward(0,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>.forward(0,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 All the other forward mode coefficients are unspecified.
 

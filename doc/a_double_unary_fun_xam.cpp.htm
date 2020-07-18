@@ -75,46 +75,46 @@ A:active { color : purple }
 <b><font color="#000080"># include</font></b> <font color="#FF0000">&lt;cppad/py/cppad_py.hpp&gt;</font>
 
 <font color="#009900">bool</font> <b><font color="#000000">a_double_unary_fun_xam</font></b><font color="#990000">(</font><font color="#009900">void</font><font color="#990000">)</font> <font color="#FF0000">{</font>
-     <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>a_double<font color="#990000">;</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// initialize return variable</font></i>
-     <font color="#009900">bool</font> ok <font color="#990000">=</font> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
-     <i><font color="#9A1900">//------------------------------------------------------------------------</font></i>
-     <i><font color="#9A1900">//</font></i>
-     <font color="#008080">a_double</font> <b><font color="#000000">a1</font></b><font color="#990000">(-</font><font color="#993399">1.0</font><font color="#990000">);</font>
-     <font color="#008080">a_double</font> abs1 <font color="#990000">=</font> a1<font color="#990000">.</font><b><font color="#000000">abs</font></b><font color="#990000">();</font>
-     ok  <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> abs1 <font color="#990000">==</font> <font color="#993399">1.0</font><font color="#990000">;</font>
-     <i><font color="#9A1900">//</font></i>
-     a1   <font color="#990000">=</font> <font color="#993399">1.0</font><font color="#990000">;</font>
-     abs1 <font color="#990000">=</font> a1<font color="#990000">.</font><b><font color="#000000">fabs</font></b><font color="#990000">();</font>
-     ok   <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> abs1 <font color="#990000">==</font> <font color="#993399">1.0</font><font color="#990000">;</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// pi/4</font></i>
-     <font color="#008080">a_double</font> pi_4 <font color="#990000">=</font> a1<font color="#990000">.</font><b><font color="#000000">atan</font></b><font color="#990000">();</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// sqrt(2)</font></i>
-     <font color="#008080">a_double</font> <b><font color="#000000">atmp</font></b><font color="#990000">(</font><font color="#993399">2.0</font><font color="#990000">);</font>
-     <font color="#008080">a_double</font> r2 <font color="#990000">=</font> atmp<font color="#990000">.</font><b><font color="#000000">sqrt</font></b><font color="#990000">();</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// sin(pi/4)  * sqrt(2) = 1.0;</font></i>
-     atmp <font color="#990000">=</font> r2 <font color="#990000">*</font> pi_4<font color="#990000">.</font><b><font color="#000000">sin</font></b><font color="#990000">()</font> <font color="#990000">;</font>
-     ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> atmp<font color="#990000">.</font><b><font color="#000000">near_equal</font></b><font color="#990000">(</font>a1<font color="#990000">)</font> <font color="#990000">;</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// cos(pi/4)  * sqrt(2) = 1.0;</font></i>
-     atmp <font color="#990000">=</font> r2 <font color="#990000">*</font> pi_4<font color="#990000">.</font><b><font color="#000000">cos</font></b><font color="#990000">()</font> <font color="#990000">;</font>
-     ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> atmp<font color="#990000">.</font><b><font color="#000000">near_equal</font></b><font color="#990000">(</font>a1<font color="#990000">)</font> <font color="#990000">;</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// tan(pi/4)  = 1.0;</font></i>
-     atmp <font color="#990000">=</font> pi_4<font color="#990000">.</font><b><font color="#000000">tan</font></b><font color="#990000">()</font> <font color="#990000">;</font>
-     ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> atmp<font color="#990000">.</font><b><font color="#000000">near_equal</font></b><font color="#990000">(</font>a1<font color="#990000">)</font> <font color="#990000">;</font>
-     <i><font color="#9A1900">//</font></i>
-     <i><font color="#9A1900">// erf(0.5) = 0.5204998778130465</font></i>
-     <font color="#008080">a_double</font> <b><font color="#000000">acheck</font></b><font color="#990000">(</font><font color="#993399">0.5204998778130465</font><font color="#990000">);</font>
-     atmp <font color="#990000">=</font>  <b><font color="#000000">a_double</font></b><font color="#990000">(</font><font color="#993399">0.5</font><font color="#990000">);</font>
-     atmp <font color="#990000">=</font> atmp<font color="#990000">.</font><b><font color="#000000">erf</font></b><font color="#990000">();</font>
-     ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> atmp<font color="#990000">.</font><b><font color="#000000">near_equal</font></b><font color="#990000">(</font>acheck<font color="#990000">);</font>
-     <i><font color="#9A1900">//</font></i>
-     <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">);</font>
+    <b><font color="#0000FF">using</font></b> cppad_py<font color="#990000">::</font>a_double<font color="#990000">;</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// initialize return variable</font></i>
+    <font color="#009900">bool</font> ok <font color="#990000">=</font> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
+    <i><font color="#9A1900">//------------------------------------------------------------------------</font></i>
+    <i><font color="#9A1900">//</font></i>
+    <font color="#008080">a_double</font> <b><font color="#000000">a1</font></b><font color="#990000">(-</font><font color="#993399">1.0</font><font color="#990000">);</font>
+    <font color="#008080">a_double</font> abs1 <font color="#990000">=</font> a1<font color="#990000">.</font><b><font color="#000000">abs</font></b><font color="#990000">();</font>
+    ok  <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> abs1 <font color="#990000">==</font> <font color="#993399">1.0</font><font color="#990000">;</font>
+    <i><font color="#9A1900">//</font></i>
+    a1   <font color="#990000">=</font> <font color="#993399">1.0</font><font color="#990000">;</font>
+    abs1 <font color="#990000">=</font> a1<font color="#990000">.</font><b><font color="#000000">fabs</font></b><font color="#990000">();</font>
+    ok   <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> abs1 <font color="#990000">==</font> <font color="#993399">1.0</font><font color="#990000">;</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// pi/4</font></i>
+    <font color="#008080">a_double</font> pi_4 <font color="#990000">=</font> a1<font color="#990000">.</font><b><font color="#000000">atan</font></b><font color="#990000">();</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// sqrt(2)</font></i>
+    <font color="#008080">a_double</font> <b><font color="#000000">atmp</font></b><font color="#990000">(</font><font color="#993399">2.0</font><font color="#990000">);</font>
+    <font color="#008080">a_double</font> r2 <font color="#990000">=</font> atmp<font color="#990000">.</font><b><font color="#000000">sqrt</font></b><font color="#990000">();</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// sin(pi/4)  * sqrt(2) = 1.0;</font></i>
+    atmp <font color="#990000">=</font> r2 <font color="#990000">*</font> pi_4<font color="#990000">.</font><b><font color="#000000">sin</font></b><font color="#990000">()</font> <font color="#990000">;</font>
+    ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> atmp<font color="#990000">.</font><b><font color="#000000">near_equal</font></b><font color="#990000">(</font>a1<font color="#990000">)</font> <font color="#990000">;</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// cos(pi/4)  * sqrt(2) = 1.0;</font></i>
+    atmp <font color="#990000">=</font> r2 <font color="#990000">*</font> pi_4<font color="#990000">.</font><b><font color="#000000">cos</font></b><font color="#990000">()</font> <font color="#990000">;</font>
+    ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> atmp<font color="#990000">.</font><b><font color="#000000">near_equal</font></b><font color="#990000">(</font>a1<font color="#990000">)</font> <font color="#990000">;</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// tan(pi/4)  = 1.0;</font></i>
+    atmp <font color="#990000">=</font> pi_4<font color="#990000">.</font><b><font color="#000000">tan</font></b><font color="#990000">()</font> <font color="#990000">;</font>
+    ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> atmp<font color="#990000">.</font><b><font color="#000000">near_equal</font></b><font color="#990000">(</font>a1<font color="#990000">)</font> <font color="#990000">;</font>
+    <i><font color="#9A1900">//</font></i>
+    <i><font color="#9A1900">// erf(0.5) = 0.5204998778130465</font></i>
+    <font color="#008080">a_double</font> <b><font color="#000000">acheck</font></b><font color="#990000">(</font><font color="#993399">0.5204998778130465</font><font color="#990000">);</font>
+    atmp <font color="#990000">=</font>  <b><font color="#000000">a_double</font></b><font color="#990000">(</font><font color="#993399">0.5</font><font color="#990000">);</font>
+    atmp <font color="#990000">=</font> atmp<font color="#990000">.</font><b><font color="#000000">erf</font></b><font color="#990000">();</font>
+    ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> atmp<font color="#990000">.</font><b><font color="#000000">near_equal</font></b><font color="#990000">(</font>acheck<font color="#990000">);</font>
+    <i><font color="#9A1900">//</font></i>
+    <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">);</font>
 <font color="#FF0000">}</font></tt></pre>
 
 <hr>Input File: example/cplusplus/a_double_unary_fun_xam.cpp
