@@ -9,13 +9,10 @@
 """
 {xsrst_begin_parent xsrst_py}
 {xsrst_spell
-    xsrst
-    rst
     underbars
     conf
     toctree
     cmd
-    html
     stackoverflow
     https
     pyspellchecker
@@ -47,7 +44,8 @@ Notation
 
 White Space
 ===========
-We define white space to be a sequence of space and tab characters.
+We define white space to be a sequence of space characters; e.g.,
+tabs are not consider white space by xsrst.
 
 Beginning of a Line
 ===================
@@ -190,13 +188,13 @@ Example
 
 Indentation
 ***********
-If there are a number of spaces or tabs (but not both) before
+If there are a number of spaces before
 all of the xsrst documentation for a section,
 those characters are not included in the xsrst output.
 This enables one to indent the
 xsrst so it is grouped with the proper code block in the source.
 An error message will result if
-you mix spaces and tabs in this indentation.
+you use tabs in the indentation.
 
 Example
 =======
@@ -211,9 +209,11 @@ The following is a wish list for future improvements to ``xsrst.py``:
 
 Tabs
 ====
-Currently tabs in code blocks get expanded to 8 spaces; see stackoverflow_.
+Tabs in a code blocks get expanded to 8 spaces; see stackoverflow_.
 It would be nice to have a way to control the size of tabs in the code blocks
 displayed by :ref:`code_cmd` and :ref:`file_cmd`.
+Perhaps it would be good to support tabs as a method for
+indenting xsrst input sections.
 
 Module
 ======
@@ -239,7 +239,6 @@ Commands
 {xsrst_begin begin_cmd}
 {xsrst_spell
     underbar
-    rst
     cmd
 }
 
@@ -578,7 +577,6 @@ Example
 """
 {xsrst_begin comment_ch_cmd}
 {xsrst_spell
-    rst
     cmd
 }
 
@@ -611,7 +609,7 @@ it must come before the first :ref:`begin_cmd` in the file.
 Beginning of a Line
 *******************
 A sequence of characters *text* is at the beginning of a line if there
-are only spaces and tab characters
+are only space characters
 between the previous new line character and *text*.
 In addition, the special character *ch* can be the first character
 after the new line and before *text*.
@@ -1202,11 +1200,17 @@ def spell_command(
             double_word = itr.group(0).strip()
             msg         = 'double word error: "' + double_word + '"'
             print(msg)
-        double_used[word_lower] = True
+        double_used[word_lower]  = True
+        special_used[word_lower] = True
     #
     # check for words that were not used
     for word_lower in special_used :
         if not special_used[word_lower] :
+            if first_spell_error :
+                msg  = '\nwarning: file = ' + file_in
+                msg += ', section = ' + section_name
+                print(msg)
+                first_spell_error = False
             msg = 'spelling word "' + word_lower + '" not needed'
             print(msg)
     for word_lower in double_used :
