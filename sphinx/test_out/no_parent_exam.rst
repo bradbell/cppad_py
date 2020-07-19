@@ -20,7 +20,7 @@ because ``children.py`` does not have a
 :ref:`parent section<begin_cmd.parent_section>`:
 
 .. literalinclude:: ../../sphinx/test_in/no_parent.xsrst
-    :lines: 26-49
+    :lines: 25-48
 
 .. toctree::
    :maxdepth: 1

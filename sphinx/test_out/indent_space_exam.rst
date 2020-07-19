@@ -17,7 +17,7 @@ Indent Using Spaces Example
 
 
 .. literalinclude:: ../../sphinx/test_in/indent_space.py
-    :lines: 24-40
+    :lines: 23-39
 
 .. toctree::
    :maxdepth: 1

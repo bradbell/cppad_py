@@ -26,7 +26,7 @@ children.py File
 ****************
 
 .. literalinclude:: ../../sphinx/test_in/children.py
-    :lines: 10-54
+    :lines: 9-53
 
 .. meta::
    :keywords: child, link, children.py
