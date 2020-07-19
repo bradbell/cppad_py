@@ -62,8 +62,8 @@ then
     then
         echo 'dock_dismod_at.sh Error'
         echo "Must first remove the old $container_name container:"
-        echo "	docker stop $container_name"
-        echo "	docker rm $container_name"
+        echo "    docker stop $container_name"
+        echo "    docker rm $container_name"
         exit 1
     fi
     # create a new dismod_at container

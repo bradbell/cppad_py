@@ -91,17 +91,17 @@ bool from_json_xam(void) {
         "{\n"
         "   'function_name' : 'tangent function',\n"
         "   'op_define_vec' : [ 3, [\n"
-        "   	{ 'op_code':1, 'name':'sin', 'n_arg':1 } ,\n"
-        "   	{ 'op_code':2, 'name':'cos', 'n_arg':1 } ,\n"
-        "   	{ 'op_code':3, 'name':'div', 'n_arg':2 } ]\n"
+        "       { 'op_code':1, 'name':'sin', 'n_arg':1 } ,\n"
+        "       { 'op_code':2, 'name':'cos', 'n_arg':1 } ,\n"
+        "       { 'op_code':3, 'name':'div', 'n_arg':2 } ]\n"
         "   ],\n"
         "   'n_dynamic_ind'  : 0,\n"
         "   'n_variable_ind' : 1,\n"
         "   'constant_vec'   : [ 0, [ ] ],\n"
         "   'op_usage_vec'   : [ 3, [\n"
-        "   	[ 1, 1 ]   ,\n"  // node_2: sin(x[0])
-        "   	[ 2, 1 ]   ,\n"  // node_3: cos(x[0])
-        "   	[ 3, 2, 3] ]\n"  // node_4: sin(x[0]) / cos(x[0])
+        "       [ 1, 1 ]   ,\n"  // node_2: sin(x[0])
+        "       [ 2, 1 ]   ,\n"  // node_3: cos(x[0])
+        "       [ 3, 2, 3] ]\n"  // node_4: sin(x[0]) / cos(x[0])
         "   ],\n"
         "   'dependent_vec' : [ 1, [4] ]\n"
         "}\n";

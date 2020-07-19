@@ -15,8 +15,8 @@
 # $head ODE$$
 # $latex \[
 #   \partial_t y_i (t, x) =  f(t, y, x) \left\{ \begin{array}{rl}
-#   	x_0               & {\rm if} \; i = 0 \\
-#   	x_i y_{i-1} (t)   & {\rm otherwise}
+#       x_0               & {\rm if} \; i = 0 \\
+#       x_i y_{i-1} (t)   & {\rm otherwise}
 # \end{array} \right. \]$$
 # with the initial condition $latex y(0) = 0$$
 #
@@ -24,8 +24,8 @@
 # This is a special case for which we know the solution
 # $latex \[
 #   y_i (t, x) = \left\{ \begin{array}{rl}
-#   	t  x_0                            & {\rm if} \; i = 0 \\
-#   	( t^i / (i+1) ! ) \prod_{j=0}^i x_j   & {\rm otherwise}
+#       t  x_0                            & {\rm if} \; i = 0 \\
+#       ( t^i / (i+1) ! ) \prod_{j=0}^i x_j   & {\rm otherwise}
 # \end{array} \right. \]$$
 #
 # $head Derivative of Solution$$
@@ -33,8 +33,8 @@
 # to the j-th component of the vector $latex x$$ is
 # $latex \[
 #   \partial_{x(j)} y_i (t, x) =  \left\{ \begin{array}{rl}
-#   	y_i (t, x) / x_j      & {\rm if} \; j \leq i \\
-#   	0                     & {\rm otherwise}
+#       y_i (t, x) / x_j      & {\rm if} \; j \leq i \\
+#       0                     & {\rm otherwise}
 # \end{array} \right. \]$$
 #
 #
