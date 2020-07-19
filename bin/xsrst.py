@@ -202,7 +202,6 @@ you mix spaces and tabs in this indentation.
 Example
 =======
 - :ref:`indent_space_exam`
-- :ref:`indent_tab_exam`
 
 Wish List
 *********

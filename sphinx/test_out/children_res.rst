@@ -3,7 +3,7 @@
 Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`no_parent_exam<no_parent_exam>` > :ref:`no_parent_res<no_parent_res>` > children_res
 
 
-Children: :ref:`indent_space_exam<indent_space_exam>` | :ref:`indent_tab_exam<indent_tab_exam>`
+Children: :ref:`indent_space_exam<indent_space_exam>`
 
 .. meta::
    :keywords: children_res, indent, and, children, result
@@ -25,8 +25,8 @@ Indent and Children Result
 Children
 ********
 This example uses a children command and
-the corresponding links are included.
-If it had used a child link command, the same links would have been
+the corresponding link is included.
+If it had used a child link command, the same link would have been
 created automatically.
 
 .. toctree::
@@ -34,10 +34,8 @@ created automatically.
    :hidden:
 
    indent_space_exam
-   indent_tab_exam
 
 - :ref:`indent_space_exam`
-- :ref:`indent_tab_exam`
 
 .. meta::
    :keywords: example
