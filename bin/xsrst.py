@@ -314,6 +314,12 @@ Syntax
 |   ...
 |   *file_n*
 | :code:`}`
+|
+| ``{xsrst_child_table``
+|   *file_1*
+|   ...
+|   *file_n*
+| :code:`}`
 
 
 Purpose
@@ -338,13 +344,15 @@ that move files and automatically change references to them.
 
 Links
 *****
-The child link command also places
+The child link and table commands also place
 links to all the children of the current at the location of the command.
+The links are displayed using the title for eeach section.
+The child table command includes the section name next to the title.
 You can place a heading directly before the links to make them easier to find.
 
 Example
 *******
-{xsrst_child_link
+{xsrst_child_table
    sphinx/test_in/no_parent.xsrst
 }
 
@@ -1062,7 +1070,7 @@ def child_commands(
             data=section_data[match.end():]
         )
     #
-    assert match.group(1) == 'children' or match.group(1) == 'child_link'
+    assert match.group(1) in [ 'children', 'child_link', 'child_table']
     command = match.group(1)
     replace = '\n{xsrst_' + command + '}\n'
     #
@@ -1584,11 +1592,12 @@ def write_file(
     for newline in newline_list :
         line  = section_data[startline : newline + 1]
         # commands that delay some processing to this point
-        code_command       = line.startswith('{xsrst_code')
-        file_command       = line.startswith('{xsrst__file')
-        label_command      = line.startswith('{xsrst_label')
-        children_command   = line.startswith('{xsrst_children')
-        child_link_command = line.startswith('{xsrst_child_link')
+        code_command        = line.startswith('{xsrst_code')
+        file_command        = line.startswith('{xsrst__file')
+        label_command       = line.startswith('{xsrst_label')
+        children_command    = line.startswith('{xsrst_children')
+        child_link_command  = line.startswith('{xsrst_child_link')
+        child_table_command = line.startswith('{xsrst_child_table')
         if label_command :
             # --------------------------------------------------------
             # label command
@@ -1628,19 +1637,23 @@ def write_file(
             file_ptr.write(line)
             file_ptr.write('\n')
             previous_empty = True
-        elif children_command or child_link_command :
+        elif children_command or child_link_command or child_table_command :
             assert not has_child_command
             assert len(child_list) > 0
             has_child_command = True
             #
             file_ptr.write('.. toctree::\n')
             file_ptr.write('   :maxdepth: 1\n')
-            if children_command :
+            if children_command or child_table_command :
                 file_ptr.write('   :hidden:\n')
             file_ptr.write('\n')
             for child in child_list :
                 file_ptr.write('   ' + child + '\n')
             file_ptr.write('\n')
+            #
+            if child_table_command :
+                for child in child_list :
+                    file_ptr.write('#. ' + child + ' :ref:`'+ child + '`\n' )
         elif newline <= startline + num_remove :
             if not previous_empty :
                 file_ptr.write( "\n" )
@@ -1750,7 +1763,7 @@ pattern['file_3']  = re.compile(
     r'\n[ \t]*\{xsrst_file' + lin + arg + arg + arg + r'[ \t]*\}' + lin
 )
 pattern['child']   = re.compile(
-    r'\n[ \t]*\{xsrst_(children|child_link)([^}]*)\}'
+    r'\n[ \t]*\{xsrst_(children|child_link|child_table)([^}]*)\}'
 )
 # -----------------------------------------------------------------------------
 # process each file in the list

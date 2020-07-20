@@ -68,7 +68,7 @@ it must come before the first :ref:`begin_cmd` in the file.
 Beginning of a Line
 *******************
 A sequence of characters *text* is at the beginning of a line if there
-are only spaces and tab characters
+are only space characters
 between the previous new line character and *text*.
 In addition, the special character *ch* can be the first character
 after the new line and before *text*.
