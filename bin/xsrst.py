@@ -297,8 +297,8 @@ of the section that included this file using a :ref:`child command<child_cmd>`.
     cmd
 }
 
-Children and Child Links Commands
-#################################
+Children, Child Link and List Commands
+######################################
 
 Syntax
 ******
@@ -315,7 +315,7 @@ Syntax
 |   *file_n*
 | :code:`}`
 |
-| ``{xsrst_child_table``
+| ``{xsrst_child_list``
 |   *file_1*
 |   ...
 |   *file_n*
@@ -344,15 +344,15 @@ that move files and automatically change references to them.
 
 Links
 *****
-The child link and table commands also place
+The child link and list commands also place
 links to all the children of the current at the location of the command.
 The links are displayed using the title for eeach section.
-The child table command includes the section name next to the title.
+The child list command includes the section name next to the title.
 You can place a heading directly before the links to make them easier to find.
 
 Example
 *******
-{xsrst_child_table
+{xsrst_child_list
    sphinx/test_in/no_parent.xsrst
 }
 
@@ -1070,7 +1070,7 @@ def child_commands(
             data=section_data[match.end():]
         )
     #
-    assert match.group(1) in [ 'children', 'child_link', 'child_table']
+    assert match.group(1) in [ 'children', 'child_link', 'child_list']
     command = match.group(1)
     replace = '\n{xsrst_' + command + '}\n'
     #
@@ -1121,21 +1121,21 @@ def child_commands(
                 fname=file_in, sname=section_name, line=child_line
             )
         #
-        child_list     = list()
+        list_children     = list()
         found_parent = False
         while match and not found_parent:
             found_parent  = match.group(1) == 'begin_parent'
             child_name    = match.group(2)
             #
             if found_parent :
-                child_list = [ child_name ]
+                list_children = [ child_name ]
             else :
-                child_list.append( child_name )
+                list_children.append( child_name )
             #
             offset  = offset + match.end()
             match   = pattern_begin.search(file_data[offset :])
         #
-        section_list += child_list
+        section_list += list_children
     #
     return section_data, file_list, section_list
 # -----------------------------------------------------------------------------
@@ -1536,7 +1536,7 @@ def write_file(
     file_in,
     section_data,
     section_info,
-    child_list,
+    list_children,
     output_dir,
     section_name,
     spell_checker,
@@ -1574,9 +1574,9 @@ def write_file(
     file_ptr.write('\n\n')
     #
     # links to children of this section
-    if len(child_list) > 0 :
+    if len(list_children) > 0 :
         line = ''
-        for child in child_list :
+        for child in list_children :
             if line != '' :
                 line = line + ' | '
             line  = line + f':ref:`{child}<{child}>`'
@@ -1597,7 +1597,7 @@ def write_file(
         label_command       = line.startswith('{xsrst_label')
         children_command    = line.startswith('{xsrst_children')
         child_link_command  = line.startswith('{xsrst_child_link')
-        child_table_command = line.startswith('{xsrst_child_table')
+        child_list_command  = line.startswith('{xsrst_child_list')
         if label_command :
             # --------------------------------------------------------
             # label command
@@ -1637,22 +1637,22 @@ def write_file(
             file_ptr.write(line)
             file_ptr.write('\n')
             previous_empty = True
-        elif children_command or child_link_command or child_table_command :
+        elif children_command or child_link_command or child_list_command :
             assert not has_child_command
-            assert len(child_list) > 0
+            assert len(list_children) > 0
             has_child_command = True
             #
             file_ptr.write('.. toctree::\n')
             file_ptr.write('   :maxdepth: 1\n')
-            if children_command or child_table_command :
+            if children_command or child_list_command :
                 file_ptr.write('   :hidden:\n')
             file_ptr.write('\n')
-            for child in child_list :
+            for child in list_children :
                 file_ptr.write('   ' + child + '\n')
             file_ptr.write('\n')
             #
-            if child_table_command :
-                for child in child_list :
+            if child_list_command :
+                for child in list_children :
                     file_ptr.write('#. ' + child + ' :ref:`'+ child + '`\n' )
         elif newline <= startline + num_remove :
             if not previous_empty :
@@ -1672,10 +1672,10 @@ def write_file(
     if not previous_empty :
         file_ptr.write('\n')
     #
-    if len(child_list) > 0 and not has_child_command :
+    if len(list_children) > 0 and not has_child_command :
         file_ptr.write('.. toctree::\n')
         file_ptr.write('   :maxdepth: 1\n\n')
-        for child in child_list :
+        for child in list_children :
             file_ptr.write('   ' + child + '\n')
         file_ptr.write('\n')
     #
@@ -1763,7 +1763,7 @@ pattern['file_3']  = re.compile(
     r'\n[ \t]*\{xsrst_file' + lin + arg + arg + arg + r'[ \t]*\}' + lin
 )
 pattern['child']   = re.compile(
-    r'\n[ \t]*\{xsrst_(children|child_link|child_table)([^}]*)\}'
+    r'\n[ \t]*\{xsrst_(children|child_link|child_list)([^}]*)\}'
 )
 # -----------------------------------------------------------------------------
 # process each file in the list
@@ -1893,14 +1893,14 @@ while 0 < len(file_info_stack) :
             section_name
         )
         # ----------------------------------------------------------------
-        # child_list
+        # list_children
         # first section in each file may need to add to child list
-        child_list = list()
+        list_children = list()
         if is_parent :
             for i in range( len(this_file_info) ) :
                 if i != i_file :
-                    child_list.append(  this_file_info[i]['section_name'] )
-        child_list = child_list + child_section
+                    list_children.append(  this_file_info[i]['section_name'] )
+        list_children = list_children + child_section
         # ---------------------------------------------------------------
         # write file for this section
         write_file(
@@ -1909,7 +1909,7 @@ while 0 < len(file_info_stack) :
             file_in,
             section_data,
             section_info,
-            child_list,
+            list_children,
             output_dir,
             section_name,
             spell_checker,
