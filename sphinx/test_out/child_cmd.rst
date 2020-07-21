@@ -107,7 +107,7 @@ Example
 
    no_parent_exam
 
-#. no_parent_exam :ref:`no_parent_exam`
+#. no_parent_exam: :ref:`no_parent_exam`
 
 ----
 

@@ -1653,7 +1653,7 @@ def write_file(
             #
             if child_list_command :
                 for child in list_children :
-                    file_ptr.write('#. ' + child + ' :ref:`'+ child + '`\n' )
+                    file_ptr.write('#. ' + child + ': :ref:`'+ child + '`\n' )
         elif newline <= startline + num_remove :
             if not previous_empty :
                 file_ptr.write( "\n" )
