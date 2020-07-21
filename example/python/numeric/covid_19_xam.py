@@ -237,7 +237,7 @@ beta_bar_sim      =  2.0   # baseline value for beta
 #   r_i = \frac{ ( y_{i+1} - y_i ) - [ D( t_{i+1} ) - D( t_i ) ] }{
 #   \lambda ( y_{i+1} - y_i ) }
 # \] $$
-# where # $latex D(t)$$ is the model for the cumulative data
+# where $latex D(t)$$ is the model for the cumulative data
 # given the fit results.
 # The time corresponding to $latex r_i$$ is $latex ( t_{i+1} + t_i ) / 2$$.
 # We put the data difference in the denominator,
