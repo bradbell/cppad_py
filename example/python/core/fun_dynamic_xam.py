@@ -4,10 +4,10 @@
 #               This program is distributed under the terms of the
 #               GNU General Public License version 3.0 or later see
 #                     https://www.gnu.org/licenses/gpl-3.0.txt
-#  -----------------------------------------------------------------------------
-#  fun_dynamid
-#  -----------------------------------------------------------------------------
-#  BEGIN SOURCE
+# -----------------------------------------------------------------------------
+# fun_dynamid
+# -----------------------------------------------------------------------------
+# BEGIN SOURCE
 import numpy
 import cppad_py
 def fun_dynamic_xam() :
@@ -55,13 +55,13 @@ def fun_dynamic_xam() :
     ok  = ok and y[0] == (x[0] + x[1] + dynamic[0] + dynamic[1])
     #
     return ok
-#  END SOURCE
+# END SOURCE
 # -----------------------------------------------------------------------------
 # $begin fun_dynamic_xam.py$$ $newlinech #$$
 # $spell
 # $$
 # $section Python: Using Dynamic Parameters: Example and Test$$
 # $srcthisfile|
-#   0|#  BEGIN SOURCE|#  END SOURCE|0
+#   0|# BEGIN SOURCE|# END SOURCE|0
 # |$$
 # $end

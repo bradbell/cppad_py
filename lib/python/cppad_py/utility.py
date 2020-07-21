@@ -142,7 +142,7 @@ def numpy2vec(array, dtype, shape, syntax, name) :
 # This must have one of the following types:
 # $code cppad_py.vec_int$$,
 # $code cppad_py.vec_double$$,
-#  $code vec_py.vec_a_double$$.
+# $code vec_py.vec_a_double$$.
 # with size equal to $icode%nr%*%nc%$$.
 #
 # $head nr$$
