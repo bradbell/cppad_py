@@ -100,7 +100,7 @@ Example
 .. toctree::
    :maxdepth: 1
 
-   code_block_exam
+   code_exam
 
 
 ----

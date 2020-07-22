@@ -498,7 +498,7 @@ spell checking is done for these code blocks.
 Example
 *******
 {xsrst_child_link
-   sphinx/test_in/code_block.py
+   sphinx/test_in/code.py
 }
 
 {xsrst_end code_cmd}

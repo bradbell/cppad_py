@@ -6,7 +6,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{xsrst_begin_parent code_block_exam}
+{xsrst_begin_parent code_exam}
 
 Code Example
 ############
@@ -16,12 +16,12 @@ Code Example
     # END_SRC
 }
 
-{xsrst_end code_block_exam}
+{xsrst_end code_exam}
 """
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-{xsrst_begin code_block_res}
+{xsrst_begin code_res}
 
 Code Result
 ###########
@@ -32,8 +32,8 @@ def factorial(n) :
     return n * factorial(n-1)
 """{xsrst_code}
 
-:ref:`code_block_exam`
+:ref:`code_exam`
 
-{xsrst_end code_block_res}
+{xsrst_end code_res}
 """
 # END_SRC
