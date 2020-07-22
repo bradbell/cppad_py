@@ -6,7 +6,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # --------------------------------------------------------------------------
 """
-{xsrst_begin_parent file_block_exam}
+{xsrst_begin_parent file_exam}
 
 File Example
 ############
@@ -16,7 +16,7 @@ File Example
     # END_SRC
 }
 
-{xsrst_end file_block_exam}
+{xsrst_end file_exam}
 """
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
@@ -34,7 +34,7 @@ def square(x) :
     return x * x
 #
 """
-{xsrst_begin file_block_res}
+{xsrst_begin file_res}
 
 File Result
 ###########
@@ -53,6 +53,6 @@ square
     # END_SQUARE
 }
 
-{xsrst_end file_block_res}
+{xsrst_end file_res}
 """
 # END_SRC

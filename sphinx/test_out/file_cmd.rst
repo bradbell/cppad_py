@@ -130,7 +130,7 @@ Example
 .. toctree::
    :maxdepth: 1
 
-   file_block_exam
+   file_exam
 
 
 ----
