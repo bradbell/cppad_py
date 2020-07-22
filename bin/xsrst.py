@@ -1640,9 +1640,12 @@ def write_file(
             line  = line.split(' ')
             index = line[1].replace(',', ', ')
             label = line[2]
-            line  = '.. meta::\n'
-            line += '   :keywords: ' + index + '\n\n'
-            line += '.. index:: ' + index + '\n\n'
+            line  = ''
+            if index != '' :
+                # index is empty if index_file ingnores all words in heading
+                line += '.. meta::\n'
+                line += '   :keywords: ' + index + '\n\n'
+                line += '.. index:: ' + index + '\n\n'
             line += '.. _' + label + ':\n\n'
             file_ptr.write(line)
             previous_empty = True
