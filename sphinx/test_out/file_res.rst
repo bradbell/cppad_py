@@ -20,9 +20,9 @@ File Result
 factorial
 *********
 
-.. literalinclude:: ../../sphinx/test_in/file.py
-    :lines: 25-28
-    :language: py
+.. literalinclude:: ../../sphinx/test_in/file.cpp
+    :lines: 24-28
+    :language: cpp
 
 .. meta::
    :keywords: square
@@ -34,10 +34,10 @@ factorial
 square
 ******
 
-.. literalinclude:: ../../sphinx/test_in/file.py
+.. literalinclude:: ../../sphinx/test_in/file.cpp
     :lines: 32-32
-    :language: py
+    :language: cpp
 
 ----
 
-xsrst input file: ``sphinx/test_in/file.py``
+xsrst input file: ``sphinx/test_in/file.cpp``

@@ -9,9 +9,9 @@ File Example
 ############
 
 
-.. literalinclude:: ../../sphinx/test_in/file.py
-    :lines: 23-57
-    :language: py
+.. literalinclude:: ../../sphinx/test_in/file.cpp
+    :lines: 23-59
+    :language: cpp
 
 .. toctree::
    :maxdepth: 1
@@ -20,4 +20,4 @@ File Example
 
 ----
 
-xsrst input file: ``sphinx/test_in/file.py``
+xsrst input file: ``sphinx/test_in/file.cpp``

@@ -591,7 +591,7 @@ Spell checking is **not** done for these code blocks.
 Example
 *******
 {xsrst_child_link
-   sphinx/test_in/file.py
+   sphinx/test_in/file.cpp
 }
 
 {xsrst_end file_cmd}
