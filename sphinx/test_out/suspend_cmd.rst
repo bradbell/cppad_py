@@ -7,10 +7,6 @@
 
 Suspend and Resume Command
 ##########################
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > suspend_cmd
-
-
-**Children:** :ref:`suspend_exam<suspend_exam>`
 
 .. meta::
    :keywords: syntax

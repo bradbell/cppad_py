@@ -1,14 +1,12 @@
 .. meta::
-   :keywords: file_block_res, file, block, result
+   :keywords: file_block_res, file, result
 
-.. index:: file_block_res, file, block, result
+.. index:: file_block_res, file, result
 
 .. _file_block_res:
 
-File Block Result
-#################
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`file_cmd<file_cmd>` > :ref:`file_block_exam<file_block_exam>` > file_block_res
-
+File Result
+###########
 
 .. meta::
    :keywords: factorial

@@ -1,16 +1,12 @@
 .. meta::
-   :keywords: comment_ch_cmd, comment, ch, command
+   :keywords: comment_ch_cmd, comment, character, command
 
-.. index:: comment_ch_cmd, comment, ch, command
+.. index:: comment_ch_cmd, comment, character, command
 
 .. _comment_ch_cmd:
 
-Comment Ch Command
-##################
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > comment_ch_cmd
-
-
-**Children:** :ref:`comment_ch_exam<comment_ch_exam>`
+Comment Character Command
+#########################
 
 .. meta::
    :keywords: syntax

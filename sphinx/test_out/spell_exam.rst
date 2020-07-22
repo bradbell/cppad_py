@@ -7,10 +7,6 @@
 
 Spell Example
 #############
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`spell_cmd<spell_cmd>` > spell_exam
-
-
-**Children:** :ref:`spell_res<spell_res>`
 
 
 .. literalinclude:: ../../sphinx/test_in/spell.py

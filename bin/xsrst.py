@@ -280,7 +280,7 @@ Parent Section
 **************
 There can be at most one begin parent command in an input file.
 In this case there must be other sections in the file
-and they are child of the parent section.
+and they are children of the parent section.
 The parent section is a child
 of the section that included this file using a :ref:`child command<child_cmd>`.
 
@@ -297,8 +297,8 @@ of the section that included this file using a :ref:`child command<child_cmd>`.
     cmd
 }
 
-Children, Child Link and List Commands
-######################################
+Children Commands
+#################
 
 Syntax
 ******
@@ -588,8 +588,8 @@ Example
     cmd
 }
 
-Comment Ch Command
-##################
+Comment Character Command
+#########################
 
 Syntax
 ******
@@ -1599,12 +1599,14 @@ def write_file(
         child_link_command  = line.startswith('{xsrst_child_link')
         child_list_command  = line.startswith('{xsrst_child_list')
         if navigate_command :
-            file_ptr.write(ancestor_line)
-            file_ptr.write('\n\n')
-            if child_line :
-                file_ptr.write(child_line)
+            # not currently including these links
+            if False :
+                file_ptr.write(ancestor_line)
                 file_ptr.write('\n\n')
-            previous_empty = True
+                if child_line :
+                    file_ptr.write(child_line)
+                    file_ptr.write('\n\n')
+                previous_empty = True
         elif label_command :
             # --------------------------------------------------------
             # label command

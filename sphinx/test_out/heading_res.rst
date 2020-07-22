@@ -7,9 +7,6 @@
 
 Heading Result
 ##############
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`heading_exam<heading_exam>` > heading_res
-
-
 The label for this heading is the section name ``heading_res``.
 
 .. meta::

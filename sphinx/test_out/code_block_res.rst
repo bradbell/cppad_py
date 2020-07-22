@@ -1,14 +1,12 @@
 .. meta::
-   :keywords: code_block_res, code, block, result
+   :keywords: code_block_res, code, result
 
-.. index:: code_block_res, code, block, result
+.. index:: code_block_res, code, result
 
 .. _code_block_res:
 
-Code Block Result
-#################
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`code_cmd<code_cmd>` > :ref:`code_block_exam<code_block_exam>` > code_block_res
-
+Code Result
+###########
 
 .. code-block:: py
 

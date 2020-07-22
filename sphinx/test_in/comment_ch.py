@@ -9,9 +9,9 @@
 #
 # {xsrst_begin_parent comment_ch_exam}
 #
-# ===============================
-# Begin Special Character Example
-# ===============================
+# =========================
+# Comment Character Example
+# =========================
 #
 # {xsrst_file
 #     # BEGIN_SRC
@@ -24,9 +24,9 @@
 # BEGIN_SRC
 # {xsrst_begin comment_ch_res}
 #
-# ==============================
-# Begin Special Character Result
-# ==============================
+# ========================
+# Comment Character Result
+# ========================
 # In the original source, the leading characters '#' and ' ' get removed
 # and the remaining text lines up with the ``def`` below:
 #

@@ -7,8 +7,6 @@
 
 Suspend Result
 ##############
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > :ref:`suspend_exam<suspend_exam>` > suspend_res
-
 
 .. meta::
    :keywords: factorial

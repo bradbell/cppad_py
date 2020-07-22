@@ -18,7 +18,7 @@ Heading Example
 
 Child Sections
 **************
-The heading above is an example heading for the
+The heading above (Child Sections) is an example heading for the
 :ref:`children<xsrst_py.heading_links.children>`
 of a
 :ref:`parent section<xsrst_py.table_of_contents.parent_section>`.

@@ -7,10 +7,6 @@
 
 Spell Command
 #############
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > spell_cmd
-
-
-**Children:** :ref:`spell_exam<spell_exam>`
 
 .. meta::
    :keywords: syntax

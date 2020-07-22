@@ -1,17 +1,13 @@
 .. meta::
-   :keywords: comment_ch_exam, begin, special, character, example
+   :keywords: comment_ch_exam, comment, character, example
 
-.. index:: comment_ch_exam, begin, special, character, example
+.. index:: comment_ch_exam, comment, character, example
 
 .. _comment_ch_exam:
 
-===============================
-Begin Special Character Example
-===============================
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`comment_ch_cmd<comment_ch_cmd>` > comment_ch_exam
-
-
-**Children:** :ref:`comment_ch_res<comment_ch_res>`
+=========================
+Comment Character Example
+=========================
 
 
 .. literalinclude:: ../../sphinx/test_in/comment_ch.py

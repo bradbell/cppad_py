@@ -9,8 +9,6 @@
 
 Begin and End Commands
 ######################
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > begin_cmd
-
 
 .. meta::
    :keywords: syntax
@@ -79,7 +77,7 @@ Parent Section
 **************
 There can be at most one begin parent command in an input file.
 In this case there must be other sections in the file
-and they are child of the parent section.
+and they are children of the parent section.
 The parent section is a child
 of the section that included this file using a :ref:`child command<child_cmd>`.
 

@@ -7,11 +7,6 @@
 
 No Parent Example
 #################
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > no_parent_exam
-
-
-**Children:** :ref:`no_parent_res<no_parent_res>`
-
 All the sections in the file ``children.py``
 are children of the section below
 because ``children.py`` does not have a

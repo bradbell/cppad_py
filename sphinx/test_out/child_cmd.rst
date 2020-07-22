@@ -1,16 +1,12 @@
 .. meta::
-   :keywords: child_cmd, children, , child, link, and, list, commands
+   :keywords: child_cmd, children, commands
 
-.. index:: child_cmd, children, , child, link, and, list, commands
+.. index:: child_cmd, children, commands
 
 .. _child_cmd:
 
-Children, Child Link and List Commands
-######################################
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > child_cmd
-
-
-**Children:** :ref:`no_parent_exam<no_parent_exam>`
+Children Commands
+#################
 
 .. meta::
    :keywords: syntax

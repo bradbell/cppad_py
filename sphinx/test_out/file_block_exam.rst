@@ -1,16 +1,12 @@
 .. meta::
-   :keywords: file_block_exam, file, block, example
+   :keywords: file_block_exam, file, example
 
-.. index:: file_block_exam, file, block, example
+.. index:: file_block_exam, file, example
 
 .. _file_block_exam:
 
-File Block Example
-##################
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`file_cmd<file_cmd>` > file_block_exam
-
-
-**Children:** :ref:`file_block_res<file_block_res>`
+File Example
+############
 
 
 .. literalinclude:: ../../sphinx/test_in/file_block.py

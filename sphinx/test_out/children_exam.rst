@@ -7,8 +7,6 @@
 
 Indent and Children Example
 ###########################
-**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`no_parent_exam<no_parent_exam>` > :ref:`no_parent_res<no_parent_res>` > children_exam
-
 
 
 .. literalinclude:: ../../sphinx/test_in/children.py
