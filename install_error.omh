@@ -95,14 +95,14 @@ The $code .travis.yml$$ file is included below:
 $codep
     language: python
     python:
-      - "3.7"
+        - "3.7"
     install:
-      - sudo apt-get install swig
-      - python setup.py install
-      - pip install -i https://test.pypi.org/simple/ cppad_py
+        - sudo apt-get install swig
+        - python setup.py install
+        - pip install -i https://test.pypi.org/simple/ cppad_py
     script:
-      - pytest tests
-      - make examples
+        - pytest tests
+        - make examples
 $$
 
 
