@@ -1,10 +1,3 @@
-|
-
-Ancestors: :ref:`xsrst_py<xsrst_py>` > comment_ch_cmd
-
-
-Children: :ref:`comment_ch_exam<comment_ch_exam>`
-
 .. meta::
    :keywords: comment_ch_cmd, comment, ch, command
 
@@ -14,6 +7,10 @@ Children: :ref:`comment_ch_exam<comment_ch_exam>`
 
 Comment Ch Command
 ##################
+**Ancestors:** :ref:`xsrst_py<xsrst_py>` > comment_ch_cmd
+
+
+**Children:** :ref:`comment_ch_exam<comment_ch_exam>`
 
 .. meta::
    :keywords: syntax

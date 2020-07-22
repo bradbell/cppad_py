@@ -1,10 +1,3 @@
-|
-
-Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`no_parent_exam<no_parent_exam>` > no_parent_res
-
-
-Children: :ref:`children_exam<children_exam>` | :ref:`children_res<children_res>`
-
 .. meta::
    :keywords: no_parent_res, no, parent, result
 
@@ -14,6 +7,10 @@ Children: :ref:`children_exam<children_exam>` | :ref:`children_res<children_res>
 
 No Parent Result
 ################
+**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`child_cmd<child_cmd>` > :ref:`no_parent_exam<no_parent_exam>` > no_parent_res
+
+
+**Children:** :ref:`children_exam<children_exam>` | :ref:`children_res<children_res>`
 
 .. meta::
    :keywords: children.py, file

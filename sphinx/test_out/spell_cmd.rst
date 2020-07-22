@@ -1,10 +1,3 @@
-|
-
-Ancestors: :ref:`xsrst_py<xsrst_py>` > spell_cmd
-
-
-Children: :ref:`spell_exam<spell_exam>`
-
 .. meta::
    :keywords: spell_cmd, spell, command
 
@@ -14,6 +7,10 @@ Children: :ref:`spell_exam<spell_exam>`
 
 Spell Command
 #############
+**Ancestors:** :ref:`xsrst_py<xsrst_py>` > spell_cmd
+
+
+**Children:** :ref:`spell_exam<spell_exam>`
 
 .. meta::
    :keywords: syntax

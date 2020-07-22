@@ -1,10 +1,3 @@
-|
-
-Ancestors: :ref:`xsrst_py<xsrst_py>` > heading_exam
-
-
-Children: :ref:`heading_res<heading_res>`
-
 .. meta::
    :keywords: heading_exam, heading, example
 
@@ -14,6 +7,10 @@ Children: :ref:`heading_res<heading_res>`
 
 Heading Example
 ###############
+**Ancestors:** :ref:`xsrst_py<xsrst_py>` > heading_exam
+
+
+**Children:** :ref:`heading_res<heading_res>`
 
 
 .. literalinclude:: ../../sphinx/test_in/heading.py

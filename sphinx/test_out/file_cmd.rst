@@ -1,10 +1,3 @@
-|
-
-Ancestors: :ref:`xsrst_py<xsrst_py>` > file_cmd
-
-
-Children: :ref:`file_block_exam<file_block_exam>`
-
 .. |space| unicode:: 0xA0
 .. |tab| replace:: |space| |space| |space| |space|
 
@@ -17,6 +10,10 @@ Children: :ref:`file_block_exam<file_block_exam>`
 
 File Command
 ############
+**Ancestors:** :ref:`xsrst_py<xsrst_py>` > file_cmd
+
+
+**Children:** :ref:`file_block_exam<file_block_exam>`
 
 .. meta::
    :keywords: syntax

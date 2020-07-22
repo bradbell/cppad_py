@@ -1,8 +1,3 @@
-|
-
-Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`code_cmd<code_cmd>` > :ref:`code_block_exam<code_block_exam>` > code_block_res
-
-
 .. meta::
    :keywords: code_block_res, code, block, result
 
@@ -12,6 +7,8 @@ Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`code_cmd<code_cmd>` > :ref:`code_bl
 
 Code Block Result
 #################
+**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`code_cmd<code_cmd>` > :ref:`code_block_exam<code_block_exam>` > code_block_res
+
 
 .. code-block:: py
 

@@ -1,10 +1,3 @@
-|
-
-Ancestors: :ref:`xsrst_py<xsrst_py>` > child_cmd
-
-
-Children: :ref:`no_parent_exam<no_parent_exam>`
-
 .. meta::
    :keywords: child_cmd, children, , child, link, and, list, commands
 
@@ -14,6 +7,10 @@ Children: :ref:`no_parent_exam<no_parent_exam>`
 
 Children, Child Link and List Commands
 ######################################
+**Ancestors:** :ref:`xsrst_py<xsrst_py>` > child_cmd
+
+
+**Children:** :ref:`no_parent_exam<no_parent_exam>`
 
 .. meta::
    :keywords: syntax
@@ -88,7 +85,7 @@ Links
 *****
 The child link and list commands also place
 links to all the children of the current at the location of the command.
-The links are displayed using the title for eeach section.
+The links are displayed using the title for each section.
 The child list command includes the section name next to the title.
 You can place a heading directly before the links to make them easier to find.
 

@@ -1,8 +1,3 @@
-|
-
-Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`file_cmd<file_cmd>` > :ref:`file_block_exam<file_block_exam>` > file_block_res
-
-
 .. meta::
    :keywords: file_block_res, file, block, result
 
@@ -12,6 +7,8 @@ Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`file_cmd<file_cmd>` > :ref:`file_bl
 
 File Block Result
 #################
+**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`file_cmd<file_cmd>` > :ref:`file_block_exam<file_block_exam>` > file_block_res
+
 
 .. meta::
    :keywords: factorial

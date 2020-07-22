@@ -1,8 +1,3 @@
-|
-
-Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > :ref:`suspend_exam<suspend_exam>` > suspend_res
-
-
 .. meta::
    :keywords: suspend_res, suspend, result
 
@@ -12,6 +7,8 @@ Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > :ref:`s
 
 Suspend Result
 ##############
+**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`suspend_cmd<suspend_cmd>` > :ref:`suspend_exam<suspend_exam>` > suspend_res
+
 
 .. meta::
    :keywords: factorial

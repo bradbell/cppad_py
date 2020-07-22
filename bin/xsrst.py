@@ -346,7 +346,7 @@ Links
 *****
 The child link and list commands also place
 links to all the children of the current at the location of the command.
-The links are displayed using the title for eeach section.
+The links are displayed using the title for each section.
 The child list command includes the section name next to the title.
 You can place a heading directly before the links to make them easier to find.
 
@@ -1515,6 +1515,8 @@ def add_label_and_index_for_headings(
             data_left   = section_data[: candidate_start]
             data_left  += cmd
             data_left  += section_data[candidate_start : next_newline]
+            if len(heading_list) == 1 :
+                data_left += '\n{xsrst_navigate}'
             data_right  = section_data[next_newline : ]
             section_data = data_left + data_right
             #
@@ -1559,30 +1561,27 @@ def write_file(
     #
     # index of this section
     section_index = len(section_info) - 1
-    file_ptr.write('|\n\n') # vertical space needed by bootstrap theme
     #
     # links to ancestors; i.e., position of this section in website
     assert section_info[section_index]['section_name'] == section_name
-    line  = section_name + '\n'
+    line           = section_name + '\n'
     ancestor_index = section_info[section_index]['parent_section']
     while ancestor_index != None :
         ancestor_name  = section_info[ancestor_index]['section_name']
         ancestor_index = section_info[ancestor_index]['parent_section']
         line  = f':ref:`{ancestor_name}<{ancestor_name}>`' + ' > ' + line
-    file_ptr.write('Ancestors: ')
-    file_ptr.write(line)
-    file_ptr.write('\n\n')
+    ancestor_line = '**Ancestors:** ' + line
     #
     # links to children of this section
-    if len(list_children) > 0 :
+    if len(list_children) == 0 :
+        child_line = None
+    else :
         line = ''
         for child in list_children :
             if line != '' :
                 line = line + ' | '
             line  = line + f':ref:`{child}<{child}>`'
-        file_ptr.write('Children: ')
-        file_ptr.write(line)
-        file_ptr.write('\n\n')
+        child_line = '**Children:** ' + line
     #
     # now output the section data
     startline         = 0
@@ -1592,13 +1591,21 @@ def write_file(
     for newline in newline_list :
         line  = section_data[startline : newline + 1]
         # commands that delay some processing to this point
+        navigate_command    = line.startswith('{xsrst_navigate')
         code_command        = line.startswith('{xsrst_code')
         file_command        = line.startswith('{xsrst__file')
         label_command       = line.startswith('{xsrst_label')
         children_command    = line.startswith('{xsrst_children')
         child_link_command  = line.startswith('{xsrst_child_link')
         child_list_command  = line.startswith('{xsrst_child_list')
-        if label_command :
+        if navigate_command :
+            file_ptr.write(ancestor_line)
+            file_ptr.write('\n\n')
+            if child_line :
+                file_ptr.write(child_line)
+                file_ptr.write('\n\n')
+            previous_empty = True
+        elif label_command :
             # --------------------------------------------------------
             # label command
             line  = line.split(' ')

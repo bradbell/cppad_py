@@ -1,8 +1,3 @@
-|
-
-Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`spell_cmd<spell_cmd>` > :ref:`spell_exam<spell_exam>` > spell_res
-
-
 .. meta::
    :keywords: spell_res, spell, result
 
@@ -12,6 +7,8 @@ Ancestors: :ref:`xsrst_py<xsrst_py>` > :ref:`spell_cmd<spell_cmd>` > :ref:`spell
 
 Spell Result
 ############
+**Ancestors:** :ref:`xsrst_py<xsrst_py>` > :ref:`spell_cmd<spell_cmd>` > :ref:`spell_exam<spell_exam>` > spell_res
+
 
 .. meta::
    :keywords: text

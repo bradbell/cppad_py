@@ -1,8 +1,3 @@
-|
-
-Ancestors: :ref:`xsrst_py<xsrst_py>` > begin_cmd
-
-
 .. |space| unicode:: 0xA0
 
 .. meta::
@@ -14,6 +9,8 @@ Ancestors: :ref:`xsrst_py<xsrst_py>` > begin_cmd
 
 Begin and End Commands
 ######################
+**Ancestors:** :ref:`xsrst_py<xsrst_py>` > begin_cmd
+
 
 .. meta::
    :keywords: syntax
