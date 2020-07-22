@@ -15,6 +15,7 @@ because ``children.py`` does not have a
 
 .. literalinclude:: ../../sphinx/test_in/no_parent.xsrst
     :lines: 25-48
+    :language: rst
 
 .. toctree::
    :maxdepth: 1

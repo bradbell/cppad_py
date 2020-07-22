@@ -11,6 +11,7 @@ Spell Example
 
 .. literalinclude:: ../../sphinx/test_in/spell.py
     :lines: 23-68
+    :language: py
 
 .. toctree::
    :maxdepth: 1

@@ -12,6 +12,7 @@ Heading Example
 
 .. literalinclude:: ../../sphinx/test_in/heading.py
     :lines: 30-66
+    :language: py
 
 .. meta::
    :keywords: child, sections

@@ -22,6 +22,7 @@ factorial
 
 .. literalinclude:: ../../sphinx/test_in/file.py
     :lines: 25-28
+    :language: py
 
 .. meta::
    :keywords: square
@@ -35,6 +36,7 @@ square
 
 .. literalinclude:: ../../sphinx/test_in/file.py
     :lines: 32-32
+    :language: py
 
 ----
 

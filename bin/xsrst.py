@@ -1674,6 +1674,17 @@ def write_file(
             file_ptr.write(line)
             line = f'    :lines: {start_line}-{stop_line}\n'
             file_ptr.write(line)
+            #
+            # Add language to literalinclude, sphinx seems to be brain
+            # dead and does not do this automatically.
+            index = file_name.rfind('.')
+            if 0 <= index and index + 1 < len(file_name) :
+                extension = file_name[index + 1 :]
+                if extension == 'xsrst' :
+                    extension = 'rst'
+                line = f'    :language: {extension}\n'
+                file_ptr.write(line)
+            #
             file_ptr.write('\n')
             previous_empty = True
         elif children_command or child_link_command or child_list_command :

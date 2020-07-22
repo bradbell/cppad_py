@@ -11,6 +11,7 @@ File Example
 
 .. literalinclude:: ../../sphinx/test_in/file.py
     :lines: 23-57
+    :language: py
 
 .. toctree::
    :maxdepth: 1
