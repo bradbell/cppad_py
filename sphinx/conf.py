@@ -13,7 +13,8 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-import sphinx_bootstrap_theme
+# import sphinx_bootstrap_theme
+import sphinx_rtd_theme
 
 
 # -- Project information -----------------------------------------------------
@@ -33,6 +34,7 @@ release = '2202.5.22'
 # ones.
 extensions = [
     'sphinx.ext.mathjax',
+    'sphinx_rtd_theme',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -54,8 +56,15 @@ exclude_patterns = [
 # sphinx navitation frame (xsrst generates better navigation links at 
 # the top of each page). 
 #
-html_theme = 'bootstrap'
-html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+# html_theme = 'bootstrap'
+# html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+#
+# See https://sphinx-rtd-theme.readthedocs.io/en/stable/configuring.html
+html_theme = 'sphinx_rtd_theme'
+html_theme_options = {
+    'navigation_depth' : -1   ,
+    'titles_only'      : True ,
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
