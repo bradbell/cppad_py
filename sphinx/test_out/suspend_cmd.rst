@@ -1,7 +1,7 @@
 .. meta::
-   :keywords: suspend_cmd, suspend, and, resume, command
+   :keywords: suspend_cmd, suspend, resume, command
 
-.. index:: suspend_cmd, suspend, and, resume, command
+.. index:: suspend_cmd, suspend, resume, command
 
 .. _suspend_cmd:
 

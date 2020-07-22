@@ -1,7 +1,7 @@
 .. meta::
-   :keywords: children_exam, indent, and, children, example
+   :keywords: children_exam, indent, children, example
 
-.. index:: children_exam, indent, and, children, example
+.. index:: children_exam, indent, children, example
 
 .. _children_exam:
 

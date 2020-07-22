@@ -1,7 +1,7 @@
 .. meta::
-   :keywords: children_res, indent, and, children, result
+   :keywords: children_res, indent, children, result
 
-.. index:: children_res, indent, and, children, result
+.. index:: children_res, indent, children, result
 
 .. _children_res:
 

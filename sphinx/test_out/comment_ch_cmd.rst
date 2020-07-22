@@ -58,9 +58,9 @@ it's effect lasts for the entire file, and
 it must come before the first :ref:`begin_cmd` in the file.
 
 .. meta::
-   :keywords: beginning, of, a, line
+   :keywords: beginning, line
 
-.. index:: beginning, of, a, line
+.. index:: beginning, line
 
 .. _comment_ch_cmd.beginning_of_a_line:
 

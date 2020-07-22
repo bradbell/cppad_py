@@ -1,9 +1,9 @@
 .. |space| unicode:: 0xA0
 
 .. meta::
-   :keywords: begin_cmd, begin, and, end, commands
+   :keywords: begin_cmd, begin, end, commands
 
-.. index:: begin_cmd, begin, and, end, commands
+.. index:: begin_cmd, begin, end, commands
 
 .. _begin_cmd:
 

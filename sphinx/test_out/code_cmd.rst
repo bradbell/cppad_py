@@ -68,9 +68,9 @@ It is used to determine the source code language
 for highlighting the code block.
 
 .. meta::
-   :keywords: rest, of, line
+   :keywords: rest, line
 
-.. index:: rest, of, line
+.. index:: rest, line
 
 .. _code_cmd.rest_of_line:
 

@@ -32,7 +32,7 @@ Extract Sphinx RST
 
 Syntax
 ******
-``xsrst.py`` *sphinx_dir* *root_file* *spell_file*
+``xsrst.py`` *sphinx_dir* *root_file* *spell_file* *index_file*
 
 Requirements
 ************
@@ -91,12 +91,27 @@ spell_file
 The command line argument *spell_file* is the name of a file,
 relative to the *sphinx_dir* directory.
 This file contains a list of words
-that the spell checker will consider correct for all sections.
+that the spell checker will consider correct for all sections
+(it can be an empty file).
 A line that begins with :code:`#` is a comment (not included in the list).
 The words are one per line and
 leading and trailing white space in a word are ignored.
 Special words, for a particular section, are specified using the
 :ref:`spell command<spell_cmd>`.
+
+index_file
+==========
+The command line argument *index_file* is the name of a file,
+relative to the *sphinx_dir* directory.
+This file contains a list of words (in lower case)
+that should not be included in the index
+(it can be an empty file).
+For example, a heading might contain the word ``The`` but you
+might not want to incude ``the`` as a entry in the
+:ref:`genindex`.
+The words are one per line and
+leading and trailing white space in a word are ignored.
+A line that begins with :code:`#` is a comment (not included in the list).
 
 Table Of Contents
 *****************
@@ -1412,7 +1427,7 @@ def convert_file_command(pattern, section_data, file_in, section_name) :
 # -----------------------------------------------------------------------------
 # labels for headings
 def add_label_and_index_for_headings(
-        pattern, section_data, num_remove, file_in, section_name
+        pattern, section_data, num_remove, file_in, section_name, index_list
 ) :
     punctuation      = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
     heading_list     = list()
@@ -1503,10 +1518,11 @@ def add_label_and_index_for_headings(
             else :
                 index = ''
             for word in heading_list[-1]['text'].lower().split() :
-                if index == '' :
-                    index = word
-                else :
-                    index += ',' + word
+                if word not in index_list :
+                    if index == '' :
+                        index = word
+                    else :
+                        index += ',' + word
             #
             # jump_table entry for this heading
             level       = len(heading_list) - 1
@@ -1711,8 +1727,8 @@ if not os.path.isdir('.git') :
     sys_exit(msg)
 #
 # check number of command line arguments
-if len(sys.argv) != 4 :
-    usage = 'bin/xsrst.py root_file sphinx_dir spell_file'
+if len(sys.argv) != 5 :
+    usage = 'bin/xsrst.py root_file sphinx_dir spell_file index_file'
     sys_exit(usage)
 #
 # root_file
@@ -1734,6 +1750,14 @@ spell_file = sys.argv[3]
 spell_path = sphinx_dir + '/' + spell_file
 if not os.path.isfile(spell_path) :
     msg  = 'sphinx_dir/spell_file = ' + spell_path + '\n'
+    msg += 'is not a file'
+    sys_exit(msg)
+#
+# index_file
+index_file = sys.argv[4]
+index_path = sphinx_dir + '/' + index_file
+if not os.path.isfile(index_path) :
+    msg  = 'sphinx_dir/index_file = ' + index_path + '\n'
     msg += 'is not a file'
     sys_exit(msg)
 #
@@ -1759,6 +1783,9 @@ else :
 # spell_checker
 spell_list           = file2list(spell_path)
 spell_checker        = init_spell_checker(spell_list)
+#
+# index_list
+index_list           = file2list(index_path)
 #
 # regular expressions corresponding to xsrst commands
 pattern = dict()
@@ -1910,7 +1937,8 @@ while 0 < len(file_info_stack) :
             section_data,
             num_remove,
             file_in,
-            section_name
+            section_name,
+            index_list,
         )
         # ----------------------------------------------------------------
         # list_children
