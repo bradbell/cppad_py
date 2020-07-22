@@ -7,6 +7,8 @@
 
 Indent and Children Result
 ##########################
+- :ref:`children_res.children`
+- :ref:`children_res.example`
 
 .. meta::
    :keywords: children

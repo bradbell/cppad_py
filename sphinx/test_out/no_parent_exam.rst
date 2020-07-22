@@ -7,6 +7,7 @@
 
 No Parent Example
 #################
+
 All the sections in the file ``children.py``
 are children of the section below
 because ``children.py`` does not have a

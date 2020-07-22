@@ -7,6 +7,8 @@
 
 File Result
 ###########
+- :ref:`file_res.factorial`
+- :ref:`file_res.square`
 
 .. meta::
    :keywords: factorial

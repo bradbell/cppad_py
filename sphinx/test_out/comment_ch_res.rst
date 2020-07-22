@@ -8,6 +8,7 @@
 ========================
 Comment Character Result
 ========================
+
 In the original source, the leading characters '#' and ' ' get removed
 and the remaining text lines up with the ``def`` below:
 

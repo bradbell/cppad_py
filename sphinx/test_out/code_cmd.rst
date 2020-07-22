@@ -7,6 +7,13 @@
 
 Code Command
 ############
+- :ref:`code_cmd.syntax`
+- :ref:`code_cmd.purpose`
+- :ref:`code_cmd.requirements`
+- :ref:`code_cmd.language`
+- :ref:`code_cmd.rest_of_line`
+- :ref:`code_cmd.spell_checking`
+- :ref:`code_cmd.example`
 
 .. meta::
    :keywords: syntax

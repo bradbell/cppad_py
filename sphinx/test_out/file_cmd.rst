@@ -10,6 +10,14 @@
 
 File Command
 ############
+- :ref:`file_cmd.syntax`
+- :ref:`file_cmd.purpose`
+- :ref:`file_cmd.white_space`
+- :ref:`file_cmd.file_name`
+- :ref:`file_cmd.start`
+- :ref:`file_cmd.stop`
+- :ref:`file_cmd.spell_checking`
+- :ref:`file_cmd.example`
 
 .. meta::
    :keywords: syntax

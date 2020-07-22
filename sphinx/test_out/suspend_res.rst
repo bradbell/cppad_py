@@ -7,6 +7,8 @@
 
 Suspend Result
 ##############
+- :ref:`suspend_res.factorial`
+- :ref:`suspend_res.product`
 
 .. meta::
    :keywords: factorial

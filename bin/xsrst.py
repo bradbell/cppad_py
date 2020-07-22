@@ -1420,6 +1420,7 @@ def add_label_and_index_for_headings(
     next_newline     = section_data.find('\n', next_start)
     candidate_start  = None
     candidate_state  = 'empty'
+    jump_table       = ''
     while 0 <= next_newline :
         next_line = section_data[next_start : next_newline]
         next_line = pattern['line'].sub('', next_line)
@@ -1507,6 +1508,13 @@ def add_label_and_index_for_headings(
                 else :
                     index += ',' + word
             #
+            # jump_table entry for this heading
+            level       = len(heading_list) - 1
+            if 0 < level :
+                line        = (4 * (level - 1)) * ' ' + '- '
+                line       += ':ref:`' + label + '`\n'
+                jump_table += line
+            #
             cmd  = '\n{xsrst_label '
             cmd += index + ' '
             cmd += label + ' }'
@@ -1528,7 +1536,7 @@ def add_label_and_index_for_headings(
             next_start   = next_newline + 1
             next_newline = section_data.find('\n', next_start)
     #
-    return section_data
+    return section_data, jump_table
 # -----------------------------------------------------------------------------
 # write file corresponding to a section
 # (and finish processing that has been delayed to this point)
@@ -1539,6 +1547,7 @@ def write_file(
     section_data,
     section_info,
     list_children,
+    jump_table,
     output_dir,
     section_name,
     spell_checker,
@@ -1607,6 +1616,8 @@ def write_file(
                     file_ptr.write(child_line)
                     file_ptr.write('\n\n')
                 previous_empty = True
+            file_ptr.write(jump_table + '\n')
+            previous_empty = True
         elif label_command :
             # --------------------------------------------------------
             # label command
@@ -1894,7 +1905,7 @@ while 0 < len(file_info_stack) :
         )
         # ---------------------------------------------------------------
         # add labels corresponding to headings
-        section_data = add_label_and_index_for_headings(
+        section_data, jump_table = add_label_and_index_for_headings(
             pattern,
             section_data,
             num_remove,
@@ -1919,6 +1930,7 @@ while 0 < len(file_info_stack) :
             section_data,
             section_info,
             list_children,
+            jump_table,
             output_dir,
             section_name,
             spell_checker,

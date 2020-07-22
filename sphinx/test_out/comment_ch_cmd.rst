@@ -7,6 +7,12 @@
 
 Comment Character Command
 #########################
+- :ref:`comment_ch_cmd.syntax`
+- :ref:`comment_ch_cmd.purpose`
+    - :ref:`comment_ch_cmd.purpose.ch`
+- :ref:`comment_ch_cmd.beginning_of_a_line`
+- :ref:`comment_ch_cmd.input_stream`
+- :ref:`comment_ch_cmd.example`
 
 .. meta::
    :keywords: syntax

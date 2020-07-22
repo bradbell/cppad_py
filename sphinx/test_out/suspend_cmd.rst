@@ -7,6 +7,9 @@
 
 Suspend and Resume Command
 ##########################
+- :ref:`suspend_cmd.syntax`
+- :ref:`suspend_cmd.purpose`
+- :ref:`suspend_cmd.example`
 
 .. meta::
    :keywords: syntax

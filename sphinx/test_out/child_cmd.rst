@@ -7,6 +7,11 @@
 
 Children Commands
 #################
+- :ref:`child_cmd.syntax`
+- :ref:`child_cmd.purpose`
+- :ref:`child_cmd.file_names`
+- :ref:`child_cmd.links`
+- :ref:`child_cmd.example`
 
 .. meta::
    :keywords: syntax

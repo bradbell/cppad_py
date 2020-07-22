@@ -7,6 +7,7 @@
 
 Indent and Children Example
 ###########################
+- :ref:`children_exam.result`
 
 
 .. literalinclude:: ../../sphinx/test_in/children.py

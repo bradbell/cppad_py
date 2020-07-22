@@ -9,6 +9,11 @@
 
 Begin and End Commands
 ######################
+- :ref:`begin_cmd.syntax`
+- :ref:`begin_cmd.section`
+- :ref:`begin_cmd.section_name`
+- :ref:`begin_cmd.output_file`
+- :ref:`begin_cmd.parent_section`
 
 .. meta::
    :keywords: syntax

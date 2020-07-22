@@ -7,6 +7,7 @@
 
 Heading Example
 ###############
+- :ref:`heading_exam.child_sections`
 
 
 .. literalinclude:: ../../sphinx/test_in/heading.py

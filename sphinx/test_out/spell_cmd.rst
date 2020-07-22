@@ -7,6 +7,12 @@
 
 Spell Command
 #############
+- :ref:`spell_cmd.syntax`
+- :ref:`spell_cmd.purpose`
+- :ref:`spell_cmd.spell_file`
+- :ref:`spell_cmd.capital_letters`
+- :ref:`spell_cmd.double_words`
+- :ref:`spell_cmd.example`
 
 .. meta::
    :keywords: syntax
