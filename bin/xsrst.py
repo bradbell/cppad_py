@@ -1188,6 +1188,7 @@ def spell_command(
     section_tmp = pattern['file_2'].sub('', section_tmp)
     section_tmp = pattern['file_3'].sub('', section_tmp)
     section_tmp = pattern['child'].sub('', section_tmp)
+    section_tmp = section_tmp.replace('csv-table', '')
     #
     # check for spelling errors
     first_spell_error = True
