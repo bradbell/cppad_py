@@ -1,3 +1,7 @@
+!!!!!!!!!!!!!!
+comment_ch_res
+!!!!!!!!!!!!!!
+
 .. meta::
    :keywords: comment_ch_res, comment, character, result
 

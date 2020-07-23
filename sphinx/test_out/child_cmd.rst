@@ -1,3 +1,7 @@
+!!!!!!!!!
+child_cmd
+!!!!!!!!!
+
 .. meta::
    :keywords: child_cmd, children, commands
 

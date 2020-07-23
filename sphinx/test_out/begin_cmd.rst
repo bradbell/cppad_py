@@ -1,3 +1,7 @@
+!!!!!!!!!
+begin_cmd
+!!!!!!!!!
+
 .. |space| unicode:: 0xA0
 
 .. meta::

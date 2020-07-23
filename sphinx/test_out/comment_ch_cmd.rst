@@ -1,3 +1,7 @@
+!!!!!!!!!!!!!!
+comment_ch_cmd
+!!!!!!!!!!!!!!
+
 .. meta::
    :keywords: comment_ch_cmd, comment, character, command
 

@@ -1425,11 +1425,14 @@ def convert_file_command(pattern, section_data, file_in, section_name) :
             match_file  = pattern[key].search(data_right)
     return section_data
 # -----------------------------------------------------------------------------
-# labels for headings
-def add_label_and_index_for_headings(
+# add labels and indices for headings
+def process_headings(
         pattern, section_data, num_remove, file_in, section_name, index_list
 ) :
-    punctuation      = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
+    punctuation      = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+    assert len(punctuation) == 34 - 2 # two escape sequences
+    #
+    punctuation_used = set()
     heading_list     = list()
     next_start       = 0
     next_newline     = section_data.find('\n', next_start)
@@ -1478,6 +1481,8 @@ def add_label_and_index_for_headings(
                 'character': character,
                 'text':      heading_text
             }
+            if overline :
+                punctuation_used.add(character)
             #
             # check for first heading
             if len( heading_list ) == 0 :
@@ -1552,7 +1557,17 @@ def add_label_and_index_for_headings(
             next_start   = next_newline + 1
             next_newline = section_data.find('\n', next_start)
     #
-    return section_data, jump_table
+    i = 0
+    while punctuation[i] in punctuation_used :
+        i += 1
+        if i == len(punctuation) :
+            msg  = 'more than ' + len(punctuation) - 1
+            msg += ' overlined heading levels'
+            sys_exit(msg, fname = file_in, sname = section_name)
+    line           = len(section_name) * punctuation[i] + '\n'
+    pseudo_heading = line + section_name + '\n' + line + '\n'
+    #
+    return section_data, pseudo_heading, jump_table
 # -----------------------------------------------------------------------------
 # write file corresponding to a section
 # (and finish processing that has been delayed to this point)
@@ -1563,6 +1578,7 @@ def write_file(
     section_data,
     section_info,
     list_children,
+    pseudo_heading,
     jump_table,
     output_dir,
     section_name,
@@ -1579,10 +1595,6 @@ def write_file(
     #
     # split section data into lines
     newline_list = newline_indices(section_data)
-    #
-    # open output file
-    file_out = output_dir + '/' + section_name + '.rst'
-    file_ptr = open(file_out, 'w')
     #
     # index of this section
     section_index = len(section_info) - 1
@@ -1608,6 +1620,22 @@ def write_file(
             line  = line + f':ref:`{child}<{child}>`'
         child_line = '**Children:** ' + line
     #
+    # open output file
+    file_out = output_dir + '/' + section_name + '.rst'
+    file_ptr = open(file_out, 'w')
+    #
+    # no longer including these links
+    if False :
+        file_ptr.write(ancestor_line)
+        file_ptr.write('\n\n')
+        if child_line :
+            file_ptr.write(child_line)
+            file_ptr.write('\n\n')
+            previous_empty = True
+    #
+    # put pseudo heading at top of the file
+    file_ptr.write(pseudo_heading)
+    #
     # now output the section data
     startline         = 0
     inside_code       = False
@@ -1624,14 +1652,6 @@ def write_file(
         child_link_command  = line.startswith('{xsrst_child_link')
         child_list_command  = line.startswith('{xsrst_child_list')
         if navigate_command :
-            # not currently including these links
-            if False :
-                file_ptr.write(ancestor_line)
-                file_ptr.write('\n\n')
-                if child_line :
-                    file_ptr.write(child_line)
-                    file_ptr.write('\n\n')
-                previous_empty = True
             file_ptr.write(jump_table + '\n')
             previous_empty = True
         elif label_command :
@@ -1945,8 +1965,8 @@ while 0 < len(file_info_stack) :
             section_name,
         )
         # ---------------------------------------------------------------
-        # add labels corresponding to headings
-        section_data, jump_table = add_label_and_index_for_headings(
+        # add labels and indices corresponding to headings
+        section_data, pseudo_heading, jump_table = process_headings(
             pattern,
             section_data,
             num_remove,
@@ -1972,6 +1992,7 @@ while 0 < len(file_info_stack) :
             section_data,
             section_info,
             list_children,
+            pseudo_heading,
             jump_table,
             output_dir,
             section_name,

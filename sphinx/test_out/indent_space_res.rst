@@ -1,3 +1,7 @@
+!!!!!!!!!!!!!!!!
+indent_space_res
+!!!!!!!!!!!!!!!!
+
 .. meta::
    :keywords: indent_space_res, indent, using, spaces, result
 

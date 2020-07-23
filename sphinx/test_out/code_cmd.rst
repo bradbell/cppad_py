@@ -1,3 +1,7 @@
+!!!!!!!!
+code_cmd
+!!!!!!!!
+
 .. meta::
    :keywords: code_cmd, code, command
 

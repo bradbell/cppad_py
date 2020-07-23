@@ -1,3 +1,7 @@
+!!!!!!!!!
+spell_cmd
+!!!!!!!!!
+
 .. meta::
    :keywords: spell_cmd, spell, command
 

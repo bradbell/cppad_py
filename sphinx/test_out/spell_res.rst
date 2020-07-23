@@ -1,3 +1,7 @@
+!!!!!!!!!
+spell_res
+!!!!!!!!!
+
 .. meta::
    :keywords: spell_res, spell, result
 
