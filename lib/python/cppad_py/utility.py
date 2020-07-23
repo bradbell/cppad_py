@@ -23,7 +23,7 @@ import cppad_py
 #
 # $head Syntax$$
 # $icode%vec% = cppad_py.utility.numpy2vec(
-#   %array%, %dtype%, %shape%, %syntax%, %name%
+#   %array%, %dtype%, %shape%, %context%, %name%
 # )%$$
 #
 # $head array$$
@@ -43,12 +43,13 @@ import cppad_py
 # If it is a tuple with length one, $icode array$$ is expected to be a vector.
 # Otherwise a matrix is expected.
 #
-# $head syntax$$
-# This is the syntax that $icode array$$ appears in.
+# $head context$$
+# This is the context that $icode array$$ appears in
+# (often to syntax for some other operation).
 # It is a $code str$$ that is used for error reporting.
 #
 # $head name$$
-# This is the name used for $icode array$$ in $icode syntax$$.
+# This is the name used for $icode array$$ in $icode context$$.
 # It is a $code str$$ that is used for error reporting.
 #
 # $head vec$$
@@ -59,17 +60,17 @@ import cppad_py
 #
 # $end
 # -----------------------------------------------------------------------------
-def numpy2vec(array, dtype, shape, syntax, name) :
+def numpy2vec(array, dtype, shape, context, name) :
     #
     # dtype
     assert dtype in [bool, int, float, cppad_py.a_double]
     # -------------------------------------------------------------------------
     #
     if not isinstance(array, numpy.ndarray) :
-        msg = syntax + ': ' + name + ' is not an numpy.ndarray'
+        msg = context + ': ' + name + ' is not an numpy.ndarray'
         raise NotImplementedError(msg)
     if not array.dtype == dtype :
-        msg = syntax + ': ' + name + '.dtype is not ' + str(dtype)
+        msg = context + ': ' + name + '.dtype is not ' + str(dtype)
         raise NotImplementedError(msg)
     #
     # vector, nr, nc
@@ -88,12 +89,12 @@ def numpy2vec(array, dtype, shape, syntax, name) :
         nc     = shape[1]
     #
     if vector and len(array.shape) != 1 :
-        msg = syntax + ': ' + name + ' is not a vector'
+        msg = context + ': ' + name + ' is not a vector'
     elif len(array.shape) != 2 :
-        msg = syntax + ': ' + name + ' is not a matrix'
+        msg = context + ': ' + name + ' is not a matrix'
     #
     if array.shape[0] != nr :
-        msg = syntax + ': ' + name + '.shape[0] is not ' + str(nr)
+        msg = context + ': ' + name + '.shape[0] is not ' + str(nr)
     #
     if dtype == bool :
         vec = cppad_py.vec_bool(nr * nc)
@@ -110,7 +111,7 @@ def numpy2vec(array, dtype, shape, syntax, name) :
             vec[i] = dtype( array[i] )
     else :
         if array.shape[1] != nc :
-            msg = syntax + ': ' + name + '.shape[1] is not ' + str(nc)
+            msg = context + ': ' + name + '.shape[1] is not ' + str(nc)
         #
         for i in range(nr) :
             for j in range(nc):

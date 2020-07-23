@@ -34,7 +34,7 @@ $spell
     xam
 $$
 
-$section cppad_py-2020.7.21:
+$section cppad_py-2020.7.23:
     A C++ Object Library and Python Interface to CppAD
 $$
 
@@ -70,7 +70,7 @@ effectively evaluate the function in C++ instead of Python.
 
 $head License$$
 This program is distributed under the terms of the
-    GNU General Public License version 3.0 or later see
+GNU General Public License version 3.0 or later see
 $href%http://www.gnu.org/licenses/gpl-3.0.txt%gpl-3.0.txt%$$.
 
 $childtable%
