@@ -10,7 +10,7 @@
 xsrst
 rst
 #
-# example sphinx command
+# example sphinx commands
 http
 www
 html
@@ -20,6 +20,7 @@ covariates
 covariate
 initialized
 initialize
+unary
 unicode
 #
 # example python commands

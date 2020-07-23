@@ -7,7 +7,7 @@
 -------------------------------------------------------------------------------
 $begin cppad_py$$
 $comment -------------------------------------------------------------
-default automatic indexing command for all cppad_py documentaiton
+default automatic indexing command for all cppad_py documentation
 $$
 $aindex section head subhead$$
 $comment -------------------------------------------------------------
