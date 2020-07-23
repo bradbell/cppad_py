@@ -1183,9 +1183,15 @@ def spell_command(
         end          = match_spell.end()
         section_data = section_data[: start] + section_data[end :]
     #
+    # version of section_data with certain commands removed
+    section_tmp = pattern['code'].sub('', section_data)
+    section_tmp = pattern['file_2'].sub('', section_tmp)
+    section_tmp = pattern['file_3'].sub('', section_tmp)
+    section_tmp = pattern['child'].sub('', section_tmp)
+    #
     # check for spelling errors
     first_spell_error = True
-    for itr in pattern['word'].finditer( section_data ) :
+    for itr in pattern['word'].finditer( section_tmp ) :
         word = itr.group(0)
         if len( spell_checker.unknown( [word] ) ) > 0 :
             word_lower = word.lower()
@@ -1919,6 +1925,16 @@ while 0 < len(file_info_stack) :
             section_name,
         )
         # ----------------------------------------------------------------
+        # process spell commands
+        # do after suspend and before other commands to help ignore sections
+        # of text that do not need spell checking
+        section_data = spell_command(
+            pattern,
+            section_data,
+            file_in,
+            section_name,
+        )
+        # ----------------------------------------------------------------
         # process child command
         section_data, child_file, child_section = child_commands(
             pattern,
@@ -1939,14 +1955,6 @@ while 0 < len(file_info_stack) :
             section_data,
             file_in,
             section_name
-        )
-        # ----------------------------------------------------------------
-        # process spell commands
-        section_data = spell_command(
-            pattern,
-            section_data,
-            file_in,
-            section_name,
         )
         # ----------------------------------------------------------------
         # remove characters on same line as {xsrst_code}
