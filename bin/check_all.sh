@@ -78,7 +78,8 @@ then
 fi
 # -----------------------------------------------------------------------------
 echo_eval_log check_copyright.sh
-echo_eval_log run_omhelp.sh doc
+echo_eval_log bin/run_xsrst.sh xsrst
+echo_eval_log bin/run_xsrst.sh sphinx
 # -----------------------------------------------------------------------------
 if [ "$build_type" == 'release' ]
 then
