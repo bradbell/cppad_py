@@ -266,7 +266,6 @@ sys.exit(0)
 # .. include:: ../preamble.rst
 #
 # {xsrst_spell
-#   com
 #   bradbell
 #   cppad
 #   srcdir

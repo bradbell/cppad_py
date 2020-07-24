@@ -22,6 +22,8 @@
     sudo
     pytest
     libcppad
+    bradbell
+    travis
 }
 
 Error Messages During Installation
@@ -59,7 +61,7 @@ CppAD Library Missing
 If the error message below occurs, it is because the CppAD library
 is not in your ``LD_LIBRARY_PATH`` :
 
-| |tab| ``ImportError: libcppad_lib.so`` ... ``cannot open shared object file``
+| |tab| ``ImportError: libcppad_lib.so`` ... ``can not open shared object file``
 
 If you run the ``setup.py`` script directory, or
 if you included the ``--verbose`` option in your ``pip`` command,
