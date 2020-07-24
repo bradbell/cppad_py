@@ -1184,11 +1184,11 @@ def spell_command(
         section_data = section_data[: start] + section_data[end :]
     #
     # version of section_data with certain commands removed
+    # (comamnds do not need spell checking; e.g., file names must be correct)
     section_tmp = pattern['code'].sub('', section_data)
     section_tmp = pattern['file_2'].sub('', section_tmp)
     section_tmp = pattern['file_3'].sub('', section_tmp)
     section_tmp = pattern['child'].sub('', section_tmp)
-    section_tmp = section_tmp.replace('csv-table', '')
     #
     # check for spelling errors
     first_spell_error = True

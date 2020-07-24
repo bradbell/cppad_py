@@ -6,16 +6,21 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 #
-# xsrst commands
+# example words special for this projext
+ctor
+xam
+#
+# example words in xsrst commands
 xsrst
 rst
 #
-# example sphinx commands
+# example words in sphinx commands
 http
 https
 www
 html
 github
+csv
 #
 # example normal words
 covariates
@@ -24,9 +29,6 @@ initialized
 initialize
 unary
 unicode
-#
-# example documentation jargon
-ctor
 #
 # example python commands
 dict
