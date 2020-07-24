@@ -15,6 +15,7 @@
     stackoverflow
     pyspellchecker
     cmd
+    cppad
 }
 
 .. |space| unicode:: 0xA0
@@ -66,7 +67,7 @@ the *root_section*; i.e., it is the top section in that table of contents.
 If there is more than one section in the *root_file*,
 the file must have a
 :ref:`begin_cmd.parent_section` and it is the *root_section*.
-The file *sphinx_dir*:code`/index.rst` must contain the line
+The file *sphinx_dir* :code`/index.rst` must contain the line
 
 |space| |space| |space| |space|
 ``xsrst/`` *section_name*
@@ -79,9 +80,9 @@ The command line argument *sphinx_dir* is a sub-directory,
 of the top git repository directory.
 The  sphinx ``conf.py`` and ``index.rst`` files are located in this directory.
 Any files that have names ending in ``.rst``,
-and that are in the directory *sphinx_dir*:code:`/xsrst`,
+and that are in the directory *sphinx_dir* :code:`/xsrst`,
 are removed at the beginning of execution of ``xsrst.py``.
-All the ``.rst`` files in *sphinx_dir*:code:`/xsrst`
+All the ``.rst`` files in *sphinx_dir* :code:`/xsrst`
 were extracted from the source code the last time that ``xsrst.py``
 was executed.
 
@@ -119,7 +120,7 @@ toctree
 =======
 The sphinx ``toctree`` directives are automatically generated
 for sections. The only such directive you should directly edit
-is in the file *sphinx_dir*:code`/index.rst`.
+is in the file *sphinx_dir* :code`/index.rst`.
 One entry in this file specifies the
 :ref:`root_section<xsrst_py.command_line_arguments.root_file.root_section>`.
 Other entries are for ``.rst`` files that are not extracted by
@@ -164,7 +165,7 @@ as a label for linking the title for a section; i.e., the
 following will link to the title for *section_name*:
 
 |space| |space| |space| |space|
-``:ref:`` \\`  *linking_text* :code:`<` *section_name* :code:`>` \\`
+``:ref:``  ` *linking_text* :code:`<` *section_name* :code:`>` `
 
 where *linking_text* is the text the user sees.
 
@@ -232,6 +233,9 @@ indenting xsrst input sections.
 Module
 ======
 Convert the program into a python module and provide a pip distribution for it.
+It would at least be nice for cppad_py to install the ``xsrst.py`` program
+so that users would not have to copy it to a directory in
+their execution path.
 
 
 .. All the children of this section are commands except for heading_exam.
@@ -262,9 +266,9 @@ Begin and End Commands
 
 Syntax
 ******
-- ``{xsrst_begin``        *section_name*:code:`}`
-- ``{xsrst_begin_parent`` *section_name*:code:`}`
-- ``{xsrst_end``          *section_name*:code:`}`
+- ``{xsrst_begin``        *section_name* :code:`}`
+- ``{xsrst_begin_parent`` *section_name* :code:`}`
+- ``{xsrst_end``          *section_name* :code:`}`
 
 Section
 *******
@@ -377,7 +381,7 @@ Spell Command
 
 Syntax
 ******
-``{xsrst_spell`` *word_1* ...  *word_n*:code:`}`
+``{xsrst_spell`` *word_1* ...  *word_n* :code:`}`
 
 Here *word_1*, ..., *word_n* is the special list of words for this section.
 In the syntax above the list of words is all in one line,
@@ -597,7 +601,7 @@ Comment Character Command
 
 Syntax
 ******
-``{xsrst_comment_ch`` *ch*:code:`}`
+``{xsrst_comment_ch`` *ch* :code:`}`
 
 Purpose
 *******
@@ -1249,7 +1253,7 @@ def spell_command(
                     first_spell_error = False
                 # line_number
                 offset = itr.start()
-                match  = pattern['line'].search(section_data[offset :] )
+                match  = pattern['line'].search(section_tmp[offset :] )
                 assert match
                 line_number = match.group(1)
                 #

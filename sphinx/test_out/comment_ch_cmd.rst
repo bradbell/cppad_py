@@ -27,7 +27,7 @@ Comment Character Command
 
 Syntax
 ******
-``{xsrst_comment_ch`` *ch*:code:`}`
+``{xsrst_comment_ch`` *ch* :code:`}`
 
 .. meta::
    :keywords: purpose

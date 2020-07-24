@@ -27,7 +27,7 @@ Spell Command
 
 Syntax
 ******
-``{xsrst_spell`` *word_1* ...  *word_n*:code:`}`
+``{xsrst_spell`` *word_1* ...  *word_n* :code:`}`
 
 Here *word_1*, ..., *word_n* is the special list of words for this section.
 In the syntax above the list of words is all in one line,
