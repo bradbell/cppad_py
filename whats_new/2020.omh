@@ -40,6 +40,18 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+07-24
+*****
+#.  Add the :ref:`xsrst.py<xsrst_py>` program
+    which extracts sphinx ``*.rst`` files from source code.
+    This program is not yet installed but you can use it by placing
+    the script ``bin/xsrst.py`` in your execution path.
+
+#.  Convert the cppad_py documentation to xsrst input files,
+    which are mostly sphinx rst with a few extra xsrst commands.
+
+#.  Use xsrst and sphinx to generate this documentation for cppad_py.
+
 07-18
 *****
 
