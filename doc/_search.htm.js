@@ -3,7 +3,7 @@
 // ------------------------------------------------------------ 
 Keyword = 
 [
-{ tag: 'cppad_py', title:'cppad_py-2020.7.18: A C++ Object Library and Python Interface to CppAD', other:' git repository purpose getting started numerical examples function speed license' },
+{ tag: 'cppad_py', title:'cppad_py-2020.7.23: A C++ Object Library and Python Interface to CppAD', other:' git repository purpose getting started numerical examples function speed license' },
 { tag: 'setup.py', title:'Configure and Build the cppad_py Python Module', other:' syntax external requirements install using pip errors download top source directory get test c++ import path' },
 { tag: 'install_error', title:'Error Messages During Installation', other:' solved swig permissions cppad library missing fortify source unsolved travis' },
 { tag: 'get_cppad.sh', title:'Get Cppad', other:' syntax top source directory settings cppad_prefix extra_cxx_flags build_type test_cppad caching' },
@@ -60,7 +60,7 @@ Keyword =
 { tag: 'py_sparse_hes', title:'Computing Sparse Hessians', other:' syntax purpose f subset pattern work n_sweep uses forward example' },
 { tag: 'sparse_hes_xam.py', title:'Python: Hessian Sparsity Patterns: Example and Test', other:'' },
 { tag: 'py_utility', title:'Python Utilities', other:'' },
-{ tag: 'numpy2vec', title:'Convert a Numpy Array to a cppad_py Vector', other:' syntax dtype shape name' },
+{ tag: 'numpy2vec', title:'Convert a Numpy Array to a cppad_py Vector', other:' syntax dtype shape context name' },
 { tag: 'vec2numpy', title:'Convert a cppad_py Vector to a Numpy Array', other:' syntax nr nc' },
 { tag: 'more_py', title:'Steps To Add More Python Functions', other:' purpose documentation independent new_dynamic example implementation fun_new_dynamic.py __init__.py testing' },
 { tag: 'cpp_lib', title:'The C++ Library', other:'' },

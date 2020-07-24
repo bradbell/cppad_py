@@ -161,14 +161,14 @@ The <code><font color="blue">.travis.yml</font></code> file is included below:
 <code><font color='blue'><pre style='display:inline'> 
     language: python
     python:
-      - &quot;3.7&quot;
+        - &quot;3.7&quot;
     install:
-      - sudo apt-get install swig
-      - python setup.py install
-      - pip install -i https://test.pypi.org/simple/ cppad_py
+        - sudo apt-get install swig
+        - python setup.py install
+        - pip install -i https://test.pypi.org/simple/ cppad_py
     script:
-      - pytest tests
-      - make examples
+        - pytest tests
+        - make examples
 </pre></font></code>
 
 <hr>Input File: install_error.omh

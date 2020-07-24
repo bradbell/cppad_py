@@ -15,7 +15,7 @@ MathJax.Hub.Config({
 <title>Convert a Numpy Array to a cppad_py Vector</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
 <meta name="description" id="description" content="Convert a Numpy Array to a cppad_py Vector">
-<meta name="keywords" id="keywords" content=" convert numpy array to cppad_py vector syntax dtype shape name vec ">
+<meta name="keywords" id="keywords" content=" convert numpy array to cppad_py vector syntax dtype shape context name vec ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -74,7 +74,7 @@ A:active { color : purple }
 <br><a href="numpy2vec.htm#array" target="_top">array</a>
 <br><a href="numpy2vec.htm#dtype" target="_top">dtype</a>
 <br><a href="numpy2vec.htm#shape" target="_top">shape</a>
-<br><a href="numpy2vec.htm#syntax" target="_top">syntax</a>
+<br><a href="numpy2vec.htm#context" target="_top">context</a>
 <br><a href="numpy2vec.htm#name" target="_top">name</a>
 <br><a href="numpy2vec.htm#vec" target="_top">vec</a>
 <br><br>
@@ -83,7 +83,7 @@ A:active { color : purple }
 <br>
 
 <code><i><font color="black"><span style='white-space: nowrap'>vec</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;cppad_py.utility.numpy2vec(<br>
-&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>array</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>dtype</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>shape</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>syntax</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>name</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>array</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>dtype</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>shape</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>context</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>name</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 )</span></font></code>
 
 
@@ -119,11 +119,12 @@ Otherwise a matrix is expected.
 
 <br>
 <br>
-<b><big><a name="syntax" id="syntax">syntax</a></big></b>
+<b><big><a name="context" id="context">context</a></big></b>
 <br>
-This is the syntax that 
+This is the context that 
 <code><i><font color="black"><span style='white-space: nowrap'>array</span></font></i></code>
- appears in.
+ appears in
+(often to syntax for some other operation).
 It is a <code><font color="blue">str</font></code> that is used for error reporting.
 
 <br>
@@ -133,7 +134,7 @@ It is a <code><font color="blue">str</font></code> that is used for error report
 This is the name used for 
 <code><i><font color="black"><span style='white-space: nowrap'>array</span></font></i></code>
  in 
-<code><i><font color="black"><span style='white-space: nowrap'>syntax</span></font></i></code>
+<code><i><font color="black"><span style='white-space: nowrap'>context</span></font></i></code>
 .
 It is a <code><font color="blue">str</font></code> that is used for error reporting.
 
