@@ -5,6 +5,14 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
+# example english words
+covariates
+covariate
+initialized
+initialize
+jacobian
+unary
+unicode
 #
 # example words special for this projext
 ctor
@@ -21,14 +29,6 @@ www
 html
 github
 csv
-#
-# example normal words
-covariates
-covariate
-initialized
-initialize
-unary
-unicode
 #
 # example python commands
 dict
@@ -54,6 +54,7 @@ scipy
 \partial
 \right
 \rightarrow
+\rm
 \sqrt
 \sum
 \times
