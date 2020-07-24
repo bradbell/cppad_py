@@ -300,7 +300,7 @@ the <em>root_section</em>; i.e., it is the top section in that table of contents
 If there is more than one section in the <em>root_file</em>,
 the file must have a
 <a class="reference internal" href="begin_cmd.html#begin-cmd-parent-section"><span class="std std-ref">Parent Section</span></a> and it is the <em>root_section</em>.
-The file <em>sphinx_dir</em>:code`/index.rst` must contain the line</p>
+The file <em>sphinx_dir</em> :code`/index.rst` must contain the line</p>
 <p>       
 <code class="docutils literal notranslate"><span class="pre">xsrst/</span></code> <em>section_name</em></p>
 <p>where <em>section_name</em> is the name of the <em>root_section</em>.</p>
@@ -312,9 +312,9 @@ The file <em>sphinx_dir</em>:code`/index.rst` must contain the line</p>
 of the top git repository directory.
 The  sphinx <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> and <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> files are located in this directory.
 Any files that have names ending in <code class="docutils literal notranslate"><span class="pre">.rst</span></code>,
-and that are in the directory <em>sphinx_dir</em><code class="code docutils literal notranslate"><span class="pre">/xsrst</span></code>,
+and that are in the directory <em>sphinx_dir</em> <code class="code docutils literal notranslate"><span class="pre">/xsrst</span></code>,
 are removed at the beginning of execution of <code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code>.
-All the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files in <em>sphinx_dir</em><code class="code docutils literal notranslate"><span class="pre">/xsrst</span></code>
+All the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files in <em>sphinx_dir</em> <code class="code docutils literal notranslate"><span class="pre">/xsrst</span></code>
 were extracted from the source code the last time that <code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code>
 was executed.</p>
 </div>
@@ -352,7 +352,7 @@ A line that begins with <code class="code docutils literal notranslate"><span cl
 <span id="xsrst-py-table-of-contents-toctree"></span><span id="index-13"></span><h4>toctree<a class="headerlink" href="#toctree" title="Permalink to this headline">¶</a></h4>
 <p>The sphinx <code class="docutils literal notranslate"><span class="pre">toctree</span></code> directives are automatically generated
 for sections. The only such directive you should directly edit
-is in the file <em>sphinx_dir</em>:code`/index.rst`.
+is in the file <em>sphinx_dir</em> :code`/index.rst`.
 One entry in this file specifies the
 <a class="reference internal" href="#xsrst-py-command-line-arguments-root-file-root-section"><span class="std std-ref">root_section</span></a>.
 Other entries are for <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files that are not extracted by
@@ -394,7 +394,7 @@ is automatically used
 as a label for linking the title for a section; i.e., the
 following will link to the title for <em>section_name</em>:</p>
 <p>       
-<code class="docutils literal notranslate"><span class="pre">:ref:</span></code> \`  <em>linking_text</em> <code class="code docutils literal notranslate"><span class="pre">&lt;</span></code> <em>section_name</em> <code class="code docutils literal notranslate"><span class="pre">&gt;</span></code> \`</p>
+<code class="docutils literal notranslate"><span class="pre">:ref:</span></code>  ` <em>linking_text</em> <code class="code docutils literal notranslate"><span class="pre">&lt;</span></code> <em>section_name</em> <code class="code docutils literal notranslate"><span class="pre">&gt;</span></code> `</p>
 <p>where <em>linking_text</em> is the text the user sees.</p>
 </div>
 <div class="section" id="other-levels">
@@ -459,7 +459,10 @@ indenting xsrst input sections.</p>
 </div>
 <div class="section" id="module">
 <span id="xsrst-py-wish-list-module"></span><span id="index-24"></span><h4>Module<a class="headerlink" href="#module" title="Permalink to this headline">¶</a></h4>
-<p>Convert the program into a python module and provide a pip distribution for it.</p>
+<p>Convert the program into a python module and provide a pip distribution for it.
+It would at least be nice for cppad_py to install the <code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code> program
+so that users would not have to copy it to a directory in
+their execution path.</p>
 </div>
 </div>
 <div class="section" id="commands">

@@ -28,9 +28,9 @@ Begin and End Commands
 
 Syntax
 ******
-- ``{xsrst_begin``        *section_name*:code:`}`
-- ``{xsrst_begin_parent`` *section_name*:code:`}`
-- ``{xsrst_end``          *section_name*:code:`}`
+- ``{xsrst_begin``        *section_name* :code:`}`
+- ``{xsrst_begin_parent`` *section_name* :code:`}`
+- ``{xsrst_end``          *section_name* :code:`}`
 
 .. meta::
    :keywords: section
