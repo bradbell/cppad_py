@@ -749,7 +749,7 @@ def init_spell_checker(spell_list) :
         'exponentiation',
         'identifiability',
         'initialize',
-        'initialized'
+        'initialized',
         'jacobian',
         'messaging',
         'optimizes',
