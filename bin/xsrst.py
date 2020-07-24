@@ -715,8 +715,27 @@ def remove_line_numbers(pattern, data) :
     return result
 # ---------------------------------------------------------------------------
 def init_spell_checker(spell_list) :
-    bad_words_in_spellchecker = [
+    remove_from_dictionary = [
+        'af',
+        'ap',
+        'av',
+        'bv',
+        'dv',
+        'cpp',
+        'dep',
+        'exp',
+        'hes',
+        'ind',
+        'jac',
+        'len',
+        'nr',
+        'nc',
+        'nd',
+        'op',
+        'rc',
+        'std',
         'thier',
+        'xp',
     ]
     greek_alphabet_latex_command = [
         r'\alpha',
@@ -746,7 +765,7 @@ def init_spell_checker(spell_list) :
     ]
     #
     spell_checker = spellchecker.SpellChecker(distance=1)
-    spell_checker.word_frequency.remove_words(bad_words_in_spellchecker)
+    spell_checker.word_frequency.remove_words(remove_from_dictionary)
     spell_checker.word_frequency.load_words(greek_alphabet_latex_command)
     spell_checker.word_frequency.load_words(spell_list)
     #

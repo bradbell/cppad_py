@@ -8,14 +8,17 @@
 # example english words
 covariates
 covariate
+debug
 initialized
 initialize
 jacobian
+optimizes
 unary
 unicode
 #
 # example words special for this projext
 ctor
+op
 xam
 #
 # example words in xsrst commands
@@ -33,25 +36,36 @@ csv
 # example python commands
 dict
 dtype
+len
 numpy
 py
 scipy
 #
+# example c++ commands
+extern
+const
+std
+#
 # example latex commands
 \begin
+\bf
 \cdot
 \circ
 \ell
 \end
 \exp
 \frac
+\geq
 \int
 \in
 \ldots
+\leq
 \log
 \left
 \mbox
+\newcommand
 \partial
+\prod
 \right
 \rightarrow
 \rm
