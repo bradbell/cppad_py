@@ -7,71 +7,80 @@
 # -----------------------------------------------------------------------------
 # initialize cppad_py
 # -----------------------------------------------------------------------------
-# $begin py_independent$$ $newlinech #$$
-# $spell
-#   numpy
-#   cppad_py
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin py_independent}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+#   cppad
 #   adynamic
 #   nx
 #   nd
-# $$
+# }
 #
-# $section Declare Independent Variables and Start Recording$$
+# Declare Independent Variables and Start Recording
+# #################################################
 #
-# $head Syntax$$
-# $icode%ax% = cppad_py.independent(%x%)
-# %$$
-# $codei%(%ax%, %adynamic)% = cppad_py.independent(%x%, %dynamic%)
-# %$$
+# Syntax
+# ******
 #
-# $head x$$
-# This argument is a numpy vector with $code float$$ elements.
+# | *ax* =  ``cppad_py.independent`` ( *x* )
+# | ( *ax* , *adynamic* ) =  ``cppad_py.independent`` ( *x* , *dynamic* )
+#
+# x
+# *
+# This argument is a numpy vector with ``float`` elements.
 # It specifies the number of independent variables
 # and their values during the recording.
-# We use $icode%nx% = %x%.size%$$
+# We use *nx* = *x* . ``size``
 # to denote the number of independent variables.
 #
-# $head dynamic$$
-# This argument is a numpy vector with $code float$$ elements.
+# dynamic
+# *******
+# This argument is a numpy vector with ``float`` elements.
 # It specifies the number of independent dynamic parameters
 # and their values during the recording.
-# We use $icode%nd% = %dynamic%.size%$$
+# We use *nd* = *dynamic* . ``size``
 # to denote the number of independent dynamic parameters.
 #
-# $head ax$$
-# This result is a numpy vector with $code a_double$$ elements.
+# ax
+# **
+# This result is a numpy vector with ``a_double`` elements.
 # This is the vector of independent variables.
-# It has size $icode nx$$ and for
-# $icode%i% = 0%$$ to $icode%n%-1%$$
-# $codei%
-#   %ax%[%i%].value() == %x%[%i%]
-# %$$
+# It has size *nx* and for
+# *i* = 0 to *n* -1
 #
-# $head adynamic$$
-# This result is a numpy vector with $code a_double$$ elements.
+# | |tab| *ax* [ *i* ]. ``value`` () == *x* [ *i* ]
+#
+# adynamic
+# ********
+# This result is a numpy vector with ``a_double`` elements.
 # This is the vector of independent dynamic parameters.
-# It has size $icode nd$$ and for
-# $icode%i% = 0%$$ to $icode%n%-1%$$
-# $codei%
-#   %adynamic%[%i%].value() == %dynamic%[%i%]
-# %$$
+# It has size *nd* and for
+# *i* = 0 to *n* -1
 #
-# $head Purpose$$
-# This starts a recording of the $cref a_double$$ operations.
+# | |tab| *adynamic* [ *i* ]. ``value`` () == *dynamic* [ *i* ]
+#
+# Purpose
+# *******
+# This starts a recording of the :ref:`a_double<a_double>` operations.
 # This recording is terminated, and the information is stored,
-# by calling the $cref/d_fun constructor/py_fun_ctor/$$.
+# by calling the :ref:`d_fun_constructor<py_fun_ctor>`.
 # It is terminated, and the information is lost,
-# by calling $cref/abort_recording/py_abort_recording/$$.
+# by calling :ref:`abort_recording<py_abort_recording>`.
 #
-# $children%
+# {xsrst_children
 #   example/python/core/fun_dynamic_xam.py
-# %$$
-# $head Example$$
-# Most of the python $code d_fun$$ examples use this function.
-# The $cref fun_dynamic_xam.py$$ uses the syntax that includes
+# }
+# Example
+# *******
+# Most of the python ``d_fun`` examples use this function.
+# The :ref:`fun_dynamic_xam_py<fun_dynamic_xam_py>` uses the syntax that includes
 # dynamic parameters.
 #
-# $end
+# {xsrst_end py_independent}
 # -----------------------------------------------------------------------------
 # BEGIN_INDEPENDENT_SOURCE
 import cppad_py

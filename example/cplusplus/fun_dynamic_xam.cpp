@@ -77,11 +77,16 @@ bool fun_dynamic_xam(void) {
 // END SOURCE
 //
 /*
-$begin fun_dynamic_xam.cpp$$
-$spell
-$$
-$section C++: Using Dynamic Parameters: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin fun_dynamic_xam_cpp}
+
+.. include:: ../preamble.rst
+
+C++: Using Dynamic Parameters: Example and Test
+###############################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end fun_dynamic_xam_cpp}
 */
 //

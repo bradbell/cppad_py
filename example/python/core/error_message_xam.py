@@ -27,17 +27,20 @@ def error_message_xam() :
 #
 # END SOURCE
 # -----------------------------------------------------------------------------
-# $begin error_message_xam.py$$ $newlinech #$$
-# $spell
-#   py
-#   perl
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin error_message_xam_py}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
 #   cppad
-#   py
-#   xam
-#   Jacobian
-#   Jacobians
-# $$
-# $section Python: Cppad Py Exception Handling: Example and Test$$
-# $srcthisfile|0|# BEGIN SOURCE|# END SOURCE|$$
-# $end
+# }
+# Python: Cppad Py Exception Handling: Example and Test
+# #####################################################
+# {xsrst_file
+#   # BEGIN SOURCE
+#   # END SOURCE
+# }
+# {xsrst_end error_message_xam_py}
 #

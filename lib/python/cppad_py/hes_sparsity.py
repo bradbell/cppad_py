@@ -5,75 +5,89 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_hes_sparsity$$ $newlinech #$$
-# $spell
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin py_hes_sparsity}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
 #   hes
-#   const
-#   vec
 #   bool
-#   rc
-#   numpy
-# $$
+# }
 #
-# $section Hessian Sparsity Patterns$$
+# Hessian Sparsity Patterns
+# #########################
 #
-# $head Syntax$$
-# $icode%f%.for_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)
-# %$$
-# $icode%f%.rev_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)%$$
+# Syntax
+# ******
 #
-# $head Purpose$$
-# We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-# function corresponding to the operation sequence stored in $icode f$$.
-# Fix a diagonal matrix $latex D \in \B{R}^{n \times n}$$, fix a vector
-# $latex r \in \B{R}^m$$, and define
-# $latex \[
-#   H(x) = D (r^\R{T} F)^{(2)} ( x ) D
-# \] $$
-# Given a sparsity pattern for $latex D$$ and $latex r$$,
-# these routines compute a sparsity pattern for $latex H(x)$$.
+# | *f* . ``for_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
 #
-# $head x$$
-# Note that a sparsity pattern for $latex H(x)$$ corresponds to the
-# operation sequence stored in $icode f$$ and does not depend on
-# the argument $icode x$$.
+# *f* . ``rev_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
 #
-# $head f$$
+# Purpose
+# *******
+# We use :math:`F : \B{R}^n \rightarrow \B{R}^m` to denote the
+# function corresponding to the operation sequence stored in *f* .
+# Fix a diagonal matrix :math:`D \in \B{R}^{n \times n}`, fix a vector
+# :math:`r \in \B{R}^m`, and define
+#
+# .. math::
+#
+#    H(x) = D (r^\R{T} F)^{(2)} ( x ) D
+#
+# Given a sparsity pattern for :math:`D` and :math:`r`,
+# these routines compute a sparsity pattern for :math:`H(x)`.
+#
+# x
+# *
+# Note that a sparsity pattern for :math:`H(x)` corresponds to the
+# operation sequence stored in *f* and does not depend on
+# the argument *x* .
+#
+# f
+# *
 # This object must have been returned by a previous call to the python
-# $cref/d_fun/py_fun_ctor/$$ constructor.
+# :ref:`d_fun<py_fun_ctor>` constructor.
 #
-# $head select_domain$$
-# The argument is a numpy vector with $code bool$$ elements.
-# It has size $icode n$$ and is a sparsity pattern for the diagonal of
-# $latex D$$; i.e., $icode%select_domain%[%j%]%$$ is true if and only if
-# $latex D_{j,j}$$ is possibly non-zero.
+# select_domain
+# *************
+# The argument is a numpy vector with ``bool`` elements.
+# It has size *n* and is a sparsity pattern for the diagonal of
+# :math:`D`; i.e., *select_domain* [ *j* ] is true if and only if
+# :math:`D_{j,j}` is possibly non-zero.
 #
-# $head select_range$$
-# The argument is a numpy vector with $code bool$$ elements.
-# It has size $icode m$$ and is a sparsity pattern for the vector
-# $latex r$$; i.e., $icode%select_range%[%i%]%$$ is true if and only if
-# $latex r_i$$ is possibly non-zero.
+# select_range
+# ************
+# The argument is a numpy vector with ``bool`` elements.
+# It has size *m* and is a sparsity pattern for the vector
+# :math:`r`; i.e., *select_range* [ *i* ] is true if and only if
+# :math:`r_i` is possibly non-zero.
 #
-# $head pattern_out$$
-# This argument must have be a $cref/pattern/py_sparse_rc/pattern/$$
-# returned by the $code sparse_rc$$ constructor.
-# This input value of $icode pattern_out$$ does not matter.
-# Upon return $icode pattern_out$$ is a sparsity pattern for
-# $latex H(x)$$.
+# pattern_out
+# ***********
+# This argument must have be a :ref:`pattern<py_sparse_rc.pattern>`
+# returned by the ``sparse_rc`` constructor.
+# This input value of *pattern_out* does not matter.
+# Upon return *pattern_out* is a sparsity pattern for
+# :math:`H(x)`.
 #
-# $head Sparsity for Component Wise Hessian$$
-# Suppose that $latex D$$ is the identity matrix,
-# and only the $th i$$ component of $icode r$$ is possibly non-zero.
-# In this case, $icode pattern_out$$ is a sparsity pattern for
-# $latex F_i^{(2)} ( x )$$.
+# Sparsity for Component Wise Hessian
+# ***********************************
+# Suppose that :math:`D` is the identity matrix,
+# and only the *i*-th component of *r* is possibly non-zero.
+# In this case, *pattern_out* is a sparsity pattern for
+# :math:`F_i^{(2)} ( x )`.
 #
-# $children%
+# {xsrst_children
 #   example/python/core/sparse_hes_pattern_xam.py
-# %$$
-# $head Example$$
-# $cref/Python/sparse_hes_pattern_xam.py/$$
+# }
+# Example
+# *******
+# :ref:`python<sparse_hes_pattern_xam_py>`
 #
-# $end
+# {xsrst_end py_hes_sparsity}
 # -----------------------------------------------------------------------------
 # undocumented fact: pattern.rc is vec_int version of sparsity pattern
 from cppad_py.utility import numpy2vec

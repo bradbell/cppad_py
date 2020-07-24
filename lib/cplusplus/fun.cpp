@@ -14,91 +14,98 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
 /*
 -------------------------------------------------------------------------------
-$begin cpp_independent$$
-$spell
-    vec
-    const
-    cppad_py
+{xsrst_begin cpp_independent}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+    cppad
     nx
     nd
-$$
+}
 
-$section Declare Independent Variables and Start Recording$$
+Declare Independent Variables and Start Recording
+#################################################
 
-$head Syntax$$
-$icode%ax% = cppad_py::independent(%x%)
-%$$
-$icode%a_both% = cppad_py::independent(%x%, %dynamic%)
-%$$
+Syntax
+******
 
-$head Purpose$$
-This starts recording $cref a_double$$ operations.
+| *ax* =  ``cppad_py::independent`` ( *x* )
+| *a_both* =  ``cppad_py::independent`` ( *x* , *dynamic* )
+
+Purpose
+*******
+This starts recording :ref:`a_double<a_double>` operations.
 This recording is terminated, and the information is stored,
-by calling the $cref/d_fun constructor/cpp_fun_ctor/$$.
+by calling the :ref:`d_fun_constructor<cpp_fun_ctor>`.
 It can be terminated, and the information is lost,
-by calling $cref/abort_recording/cpp_abort_recording/$$.
+by calling :ref:`abort_recording<cpp_abort_recording>`.
 
-$head x$$
+x
+*
 This argument has prototype
-$codei%
-    const vec_double& %x%
-%$$
+
+| |tab| ``const vec_double&`` *x*
+
 Its specifies the number of independent variables
 and their values during the recording.
-We use the notation $icode%nx% = %x%.size()%$$
+We use the notation *nx* = *x* . ``size`` ()
 to denote the number of independent variables.
 
-$head dynamic$$
+dynamic
+*******
 This argument has prototype
-$codei%
-    const vec_double& %dynamic%
-%$$
+
+| |tab| ``const vec_double&`` *dynamic*
+
 Its specifies the number of independent dynamic parameters
 and their values during the recording.
-We use the notation $icode%nd% = %dynamic%.size()%$$
+We use the notation *nd* = *dynamic* . ``size`` ()
 to denote the number of independent variables.
 
-$head ax$$
+ax
+**
 This result has prototype
-$codei%
-    vec_a_double& %ax%
-%$$
-and is the vector of independent variables.
-It has size $icode nx$$ and for
-$icode%i% = 0%$$ to $icode%n%-1%$$
-$codei%
-    %ax%[%i%] == %x%[%i%]
-%$$
 
-$head a_both$$
+| |tab| ``vec_a_double&`` *ax*
+
+and is the vector of independent variables.
+It has size *nx* and for
+*i* = 0 to *n* -1
+
+| |tab| *ax* [ *i* ] == *x* [ *i* ]
+
+a_both
+******
 this result has prototype
-$codei%
-    vec_a_double& %a_both%
-%$$
+
+| |tab| ``vec_a_double&`` *a_both*
+
 and is the vector of both the independent variables
 and independent dynamic parameters.
-It has size $icode%nx% + %nd%$$.
-For $icode%i% = 0%$$ to $icode%nx%-1%$$
-$codei%
-    %a_both%[%i%] == %x%[%i%]
-%$$
-is the $th i$$ independent variable.
-For $icode%i% = 0%$$ to $icode%nd%-1%$$
-$codei%
-    %a_both%[%nx% + %i%] == %dynamic%[%i%]
-%$$
-is the $th i$$ independent dynamic parameter.
+It has size *nx* + *nd* .
+For *i* = 0 to *nx* -1
 
-$children%
+| |tab| *a_both* [ *i* ] == *x* [ *i* ]
+
+is the *i*-th independent variable.
+For *i* = 0 to *nd* -1
+
+| |tab| *a_both* [ *nx* + *i* ] == *dynamic* [ *i* ]
+
+is the *i*-th independent dynamic parameter.
+
+{xsrst_children
     example/cplusplus/fun_dynamic_xam.cpp
-%$$
-$head Example$$
-Most of the c++ $code d_fun$$ examples use the $icode ax$$
+}
+Example
+*******
+Most of the c++ ``d_fun`` examples use the *ax*
 return syntax.
-The $cref fun_dynamic_xam.cpp$$ example uses the $icode a_both$$
+The :ref:`fun_dynamic_xam_cpp<fun_dynamic_xam_cpp>` example uses the *a_both*
 return syntax.
 
-$end
+{xsrst_end cpp_independent}
 */
 std::vector<a_double> independent(const std::vector<double>& x)
 {   using CppAD::AD;
@@ -139,108 +146,121 @@ std::vector<a_double> independent(
 // END_A_BOTH_INDEPENDENT_SOURCE
 /*
 -------------------------------------------------------------------------------
-$begin cpp_abort_recording$$
-$spell
-    vec
-    af
-    const
-    cppad_py
-$$
+{xsrst_begin cpp_abort_recording}
 
-$section Abort Recording$$
+.. include:: ../preamble.rst
 
-$head Syntax$$
-$codei%cppad_py::abort_recording()%$$
+{xsrst_spell
+    cppad
+}
 
-$head Purpose$$
+Abort Recording
+###############
+
+Syntax
+******
+``cppad_py::abort_recording`` ()
+
+Purpose
+*******
 This aborts the current recording (if it exists)
-started by the most recent call to $cref/independent/cpp_independent/$$.
+started by the most recent call to :ref:`independent<cpp_independent>`.
 
-$children%
+{xsrst_children
     example/cplusplus/fun_abort_xam.cpp
-%$$
-$head Example$$
-$cref/C++/fun_abort_xam.cpp/$$.
+}
+Example
+*******
+:ref:`c++<fun_abort_xam_cpp>`.
 
-$end
+{xsrst_end cpp_abort_recording}
 */
 void abort_recording(void)
 {   CppAD::AD<double>::abort_recording();
 }
 /*
 -------------------------------------------------------------------------------
-$begin cpp_fun_ctor$$
-$spell
-    vec
+{xsrst_begin cpp_fun_ctor}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     af
-    const
-    cppad_py
-    Taylor
-$$
+    cppad
+}
 
-$section Stop Current Recording and Store Function Object$$
+Stop Current Recording and Store Function Object
+################################################
 
-$head Syntax$$
+Syntax
+******
 
+d_fun
+=====
 
-$subhead d_fun$$
-$icode%f% = cppad_py::d_fun(%ax%, %ay%)
-%$$
+| *f* =  ``cppad_py::d_fun`` ( *ax* , *ay* )
 
-$subhead a_fun$$
-$icode%af% = cppad_py::a_fun(%f%)
-%$$
+a_fun
+=====
 
-$head ax$$
+| *af* =  ``cppad_py::a_fun`` ( *f* )
+
+ax
+**
 This argument has prototype
-$codei%
-    const vec_a_double& %ax%
-%$$
+
+| |tab| ``const vec_a_double&`` *ax*
+
 and must be the same as
-$cref/ax/cpp_independent/ax/$$
-returned by the previous call to $code independent$$; i.e.,
+:ref:`ax<cpp_independent.ax>`
+returned by the previous call to ``independent`` ; i.e.,
 it must be the independent variable vector.
-We use the notation $icode%n% = %ax%.size()%$$
+We use the notation *n* = *ax* . ``size`` ()
 to denote the number of independent variables.
 
-$head ay$$
+ay
+**
 This argument has prototype
-$codei%
-    const vec_a_double& %ax%
-%$$
+
+| |tab| ``const vec_a_double&`` *ax*
+
 It specifies the dependent variables.
-We use the notation $icode%m% = %ay%.size()%$$
+We use the notation *m* = *ay* . ``size`` ()
 to denote the number of dependent variables.
 
-$head f$$
+f
+*
 This result has prototype
-$codei%
-    cppad_py::d_fun %f%
-%$$
+
+| |tab| ``cppad_py::d_fun`` *f*
+
 It has a representation for the floating point operations
-that mapped the independent variables $icode ax$$
-to the dependent variables $icode ay$$.
-This object computes function and derivative values using $code double$$.
+that mapped the independent variables *ax*
+to the dependent variables *ay* .
+This object computes function and derivative values using ``double`` .
 
-$subhead Empty Function$$
-In the case where $icode ax$$ and $icode ay$$ have size zero,
+Empty Function
+==============
+In the case where *ax* and *ay* have size zero,
 the function is 'empty' and all its sizes are zero; see
-$cref cpp_fun_property$$.
+:ref:`cpp_fun_property<cpp_fun_property>`.
 
-$head af$$
+af
+**
 This result has prototype
-$codei%
-    cppad_py::a_fun %af%
-%$$
-It has a representation of the same function as $icode f$$.
-This object computes function and derivative values using $code a_double$$.
-Initially, there are not Taylor coefficient stored in $icode af$$; i.e.,
-$cref/af.size_order()/cpp_fun_property/size_order/$$ is zero.
 
-$head Example$$
+| |tab| ``cppad_py::a_fun`` *af*
+
+It has a representation of the same function as *f* .
+This object computes function and derivative values using ``a_double`` .
+Initially, there are not Taylor coefficient stored in *af* ; i.e.,
+:ref:`af_size_order()<cpp_fun_property.size_order>` is zero.
+
+Example
+*******
 All of the examples use these constructors.
 
-$end
+{xsrst_end cpp_fun_ctor}
 */
 // d_fun(ax, ay)
 d_fun::d_fun(
@@ -279,95 +299,97 @@ a_fun::~a_fun(void)
 }
 /*
 ------------------------------------------------------------------------------
-$begin cpp_fun_property$$
-$spell
-    vec
+{xsrst_begin cpp_fun_property}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     af
-    var
-    op
-    const
-    Taylor
-$$
+}
 
-$section Properties of a Function Object$$
+Properties of a Function Object
+###############################
 
-$head Syntax$$
-$codei%a_fun %f%(%f%)
-%$$
-$icode%n% = %f%.size_domain()
-%$$
-$icode%m% = %f%.size_range()
-%$$
-$icode%v% = %f%.size_var()
-%$$
-$icode%p% = %f%.size_op()
-%$$
-$icode%q% = %f%.size_order()
-%$$
+Syntax
+******
 
-$head f$$
+| ``a_fun`` *f* ( *f* )
+| *n* = *f* . ``size_domain`` ()
+| *m* = *f* . ``size_range`` ()
+| *v* = *f* . ``size_var`` ()
+| *p* = *f* . ``size_op`` ()
+| *q* = *f* . ``size_order`` ()
+
+f
+*
 This is either a
-$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
-$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object
-and is $code const$$.
+:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` or
+:ref:`a_fun<cpp_fun_ctor.syntax.a_fun>` function object
+and is ``const`` .
 
-$head size_domain$$
+size_domain
+***********
 The return value has prototype
-$codei%
-    int %n%
-%$$
+
+| |tab| ``int`` *n*
+
 and is the size of the vector
-$cref/ax/cpp_fun_ctor/ax/$$ in the function constructor; i.e.,
+:ref:`ax<cpp_fun_ctor.ax>` in the function constructor; i.e.,
 the number of independent variables.
 
-$head size_range$$
+size_range
+**********
 The return value has prototype
-$codei%
-    int %m%
-%$$
+
+| |tab| ``int`` *m*
+
 and is the size of the vector
-$cref/ay/cpp_fun_ctor/ay/$$ in the function constructor; i.e.,
+:ref:`ay<cpp_fun_ctor.ay>` in the function constructor; i.e.,
 the number of dependent variables.
 
-$head size_var$$
+size_var
+********
 The return value has prototype
-$codei%
-    int %v%
-%$$
+
+| |tab| ``int`` *v*
+
 and is the number of variables in the function.
 This includes the independent variables, dependent variables,
 and any variables that are used to compute the dependent variables
 from the independent variables.
 
-$head size_op$$
+size_op
+*******
 The return value has prototype
-$codei%
-    int %p%
-%$$
+
+| |tab| ``int`` *p*
+
 and is the number of atomic operations that are used to express
 the dependent variables as a function of the independent variables.
 
-$head size_order$$
+size_order
+**********
 The return value has prototype
-$codei%
-    int %q%
-%$$
-and is the number of Taylor coefficients currently stored in $icode f$$,
-for every variable in the operation sequence corresponding to $icode f$$.
-These coefficients are computed by $cref cpp_fun_forward$$.
+
+| |tab| ``int`` *q*
+
+and is the number of Taylor coefficients currently stored in *f* ,
+for every variable in the operation sequence corresponding to *f* .
+These coefficients are computed by :ref:`cpp_fun_forward<cpp_fun_forward>`.
 This is different from the other function properties in that it can change
-after each call to $icode%f%.forward%$$; see
-$cref/size_order/cpp_fun_forward/p/size_order/$$ in the forward mode section.
-The initial value for this property, when the object $icode f$$
-or $icode af$$ is created, is zero.
+after each call to *f* . ``forward`` ; see
+:ref:`size_order<cpp_fun_forward.p.size_order>` in the forward mode section.
+The initial value for this property, when the object *f*
+or *af* is created, is zero.
 
-$children%
+{xsrst_children
     example/cplusplus/fun_property_xam.cpp
-%$$
-$head Example$$
-$cref fun_property_xam.cpp$$
+}
+Example
+*******
+:ref:`fun_property_xam_cpp<fun_property_xam_cpp>`
 
-$end
+{xsrst_end cpp_fun_property}
 */
 // size_domain
 int d_fun::size_domain(void) const
@@ -400,42 +422,46 @@ int a_fun::size_order(void) const
 {   return a_ptr_->size_order(); }
 /*
 ------------------------------------------------------------------------------
-$begin cpp_fun_new_dynamic$$
-$spell
-    const
-    vec
-$$
+{xsrst_begin cpp_fun_new_dynamic}
 
-$section Change The Dynamic Parameters$$
+.. include:: ../preamble.rst
 
-$head Syntax$$
-$icode%f%.new_dynamic(%dynamic%)
-%$$
+Change The Dynamic Parameters
+#############################
 
-$head f$$
+Syntax
+******
+
+| *f* . ``new_dynamic`` ( *dynamic* )
+
+f
+*
 This is either a
-$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
-$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
+:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` or
+:ref:`a_fun<cpp_fun_ctor.syntax.a_fun>` function object.
 
-$head dynamic$$
-If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+dynamic
+*******
+If *f* is a ``d_fun`` or ``a_fun`` ,
 this argument has prototype
-$codei%
-    const vec_double&   %dynamic%
-    const vec_a_double& %dynamic%
-%$$
+
+| |tab| ``const vec_double&`` *dynamic*
+| |tab| ``const vec_a_double&`` *dynamic*
+
 and its size must be the same as the size of
-$cref/dynamic/cpp_independent/dynamic/$$ in the corresponding call to
-$code independent$$.
-It specifies new values for the dynamic parameters in $icode f$$.
+:ref:`dynamic<cpp_independent.dynamic>` in the corresponding call to
+``independent`` .
+It specifies new values for the dynamic parameters in *f* .
 
-$head size_order$$
+size_order
+**********
 After this call
-$cref/f.size_order()/cpp_fun_property/size_order/$$ is zero.
+:ref:`f_size_order()<cpp_fun_property.size_order>` is zero.
 
-$head Example$$
-See $cref fun_dynamic_xam.cpp$$.
-$end
+Example
+*******
+See :ref:`fun_dynamic_xam_cpp<fun_dynamic_xam_cpp>`.
+{xsrst_end cpp_fun_new_dynamic}
 */
 // BEGIN_NEW_DYNAMIC_SOURCE
 void d_fun::new_dynamic(const std::vector<double>& dynamic)
@@ -455,72 +481,74 @@ void a_fun::new_dynamic(const std::vector<a_double>& adynamic)
 
 /*
 ------------------------------------------------------------------------------
-$begin cpp_fun_jacobian$$
-$spell
-    vec
-    af
-    Taylor
-    const
-    Jacobian
-$$
+{xsrst_begin cpp_fun_jacobian}
 
-$section Jacobian of an AD Function$$
-$spell
-    vec
-$$
+.. include:: ../preamble.rst
 
-$head Syntax$$
-$icode%J% = %f%.jacobian(%x%)%$$
+{xsrst_spell
+}
 
-$head f$$
+Jacobian of an AD Function
+##########################
+
+Syntax
+******
+*J* = *f* . ``jacobian`` ( *x* )
+
+f
+*
 This is either a
-$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
-$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
+:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` or
+:ref:`a_fun<cpp_fun_ctor.syntax.a_fun>` function object.
 Upon return, the zero order
-$cref/Taylor coefficients/cpp_fun_forward/Taylor Coefficient/$$ in $icode f$$
-correspond to the value of $icode x$$.
-The other Taylor coefficients in $icode f$$ are unspecified.
+:ref:`taylor_coefficients<cpp_fun_forward.taylor_coefficient>` in *f*
+correspond to the value of *x* .
+The other Taylor coefficients in *f* are unspecified.
 
-$head f(x)$$
-We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
-for the function corresponding to $icode f$$.
-Note that $icode n$$ is the size of $cref/ax/cpp_fun_ctor/ax/$$
-and $icode m$$ is the size of $cref/ay/cpp_fun_ctor/ay/$$
-in to the constructor for $icode f$$.
+f(x)
+****
+We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
+for the function corresponding to *f* .
+Note that *n* is the size of :ref:`ax<cpp_fun_ctor.ax>`
+and *m* is the size of :ref:`ay<cpp_fun_ctor.ay>`
+in to the constructor for *f* .
 
-$head x$$
-If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+x
+*
+If *f* is a ``d_fun`` or ``a_fun`` ,
 this argument has prototype
-$codei%
-    const vec_double&   %x%
-    const vec_a_double& %x%
-%$$
-and its size must be $icode n$$.
+
+| |tab| ``const vec_double&`` *x*
+| |tab| ``const vec_a_double&`` *x*
+
+and its size must be *n* .
 It specifies the argument value at we are computing the Jacobian
-$latex f'(x)$$.
+:math:`f'(x)`.
 
-$head J$$
-If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+J
+*
+If *f* is a ``d_fun`` or ``a_fun`` ,
 the result has prototype
-$codei%
-    vec_double   %J%
-    vec_a_double %J%
-%$$
-respectively and its size is $icode%m%*%n%$$.
-For $icode i$$ between zero and $icode%m%-1%$$
-and $icode j$$ between zero and $icode%n%-1%$$,
-$latex \[
+
+| |tab| ``vec_double`` *J*
+| |tab| ``vec_a_double`` *J*
+
+respectively and its size is *m* ``*`` *n* .
+For *i* between zero and *m* -1
+and *j* between zero and *n* -1 ,
+
+.. math::
+
     J [ i * n + j ] = \frac{ \partial f_i }{ \partial x_j } (x)
-\] $$
 
-$children%
+{xsrst_children
     example/cplusplus/fun_jacobian_xam.cpp
-%$$
-$head Example$$
-$cref fun_jacobian_xam.cpp$$
+}
+Example
+*******
+:ref:`fun_jacobian_xam_cpp<fun_jacobian_xam_cpp>`
 
-
-$end
+{xsrst_end cpp_fun_jacobian}
 */
 std::vector<double> d_fun::jacobian(const std::vector<double>& x)
 {   if( x.size() != ptr_->Domain() )
@@ -536,84 +564,94 @@ std::vector<a_double> a_fun::jacobian(const std::vector<a_double>& ax)
 }
 /*
 ------------------------------------------------------------------------------
-$begin cpp_fun_hessian$$
-$spell
-    vec
-    af
-    Taylor
-    const
-$$
+{xsrst_begin cpp_fun_hessian}
 
-$section Hessian of an AD Function$$
+.. include:: ../preamble.rst
 
-$head Syntax$$
-$icode%H% = %f%.hessian(%x%, %w%)%$$
+{xsrst_spell
+}
 
-$head f$$
+Hessian of an AD Function
+#########################
+
+Syntax
+******
+*H* = *f* . ``hessian`` ( *x* , *w* )
+
+f
+*
 This is either a
-$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
-$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
+:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` or
+:ref:`a_fun<cpp_fun_ctor.syntax.a_fun>` function object.
 Upon return, the zero order
-$cref/Taylor coefficients/cpp_fun_forward/Taylor Coefficient/$$ in $icode f$$
-correspond to the value of $icode x$$.
-The other Taylor coefficients in $icode f$$ are unspecified.
+:ref:`taylor_coefficients<cpp_fun_forward.taylor_coefficient>` in *f*
+correspond to the value of *x* .
+The other Taylor coefficients in *f* are unspecified.
 
-$head f(x)$$
-We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
-for the function corresponding to $icode f$$.
-Note that $icode n$$ is the size of $cref/ax/cpp_fun_ctor/ax/$$
-and $icode m$$ is the size of $cref/ay/cpp_fun_ctor/ay/$$
-in to the constructor for $icode f$$.
+f(x)
+****
+We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
+for the function corresponding to *f* .
+Note that *n* is the size of :ref:`ax<cpp_fun_ctor.ax>`
+and *m* is the size of :ref:`ay<cpp_fun_ctor.ay>`
+in to the constructor for *f* .
 
-$head g(x)$$
-We use the notation $latex g: \B{R}^n \rightarrow \B{R}$$
+g(x)
+****
+We use the notation :math:`g: \B{R}^n \rightarrow \B{R}`
 for the function defined by
-$latex \[
+
+.. math::
+
     g(x) = \sum_{i=0}^{n-1} w_i f_i (x)
-\] $$
 
-$head x$$
-If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+x
+*
+If *f* is a ``d_fun`` or ``a_fun`` ,
 this argument has prototype
-$codei%
-    const vec_double&   %x%
-    const vec_a_double& %x%
-%$$
-and its size must be $icode n$$.
+
+| |tab| ``const vec_double&`` *x*
+| |tab| ``const vec_a_double&`` *x*
+
+and its size must be *n* .
 It specifies the argument value at we are computing the Hessian
-$latex g^{(2)}(x)$$.
+:math:`g^{(2)}(x)`.
 
-$head w$$
-If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+w
+*
+If *f* is a ``d_fun`` or ``a_fun`` ,
 this argument has prototype
-$codei%
-    const vec_double&   %w%
-    const vec_a_double& %w%
-%$$
-and its size must be $icode m$$.
-It specifies the vector $icode w$$ in the definition of $latex g(x)$$ above.
 
-$head H$$
-If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+| |tab| ``const vec_double&`` *w*
+| |tab| ``const vec_a_double&`` *w*
+
+and its size must be *m* .
+It specifies the vector *w* in the definition of :math:`g(x)` above.
+
+H
+*
+If *f* is a ``d_fun`` or ``a_fun`` ,
 the result has prototype
-$codei%
-    vec_double   %H%
-    vec_a_double %H%
-%$$
-and its size is $icode%n%*%n%$$.
-For $icode i$$ between zero and $icode%n%-1%$$
-and $icode j$$ between zero and $icode%n%-1%$$,
-$latex \[
+
+| |tab| ``vec_double`` *H*
+| |tab| ``vec_a_double`` *H*
+
+and its size is *n* ``*`` *n* .
+For *i* between zero and *n* -1
+and *j* between zero and *n* -1 ,
+
+.. math::
+
     H [ i * n + j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
-\] $$
 
-$children%
+{xsrst_children
     example/cplusplus/fun_hessian_xam.cpp
-%$$
-$head Example$$
-$cref fun_hessian_xam.cpp$$
+}
+Example
+*******
+:ref:`fun_hessian_xam_cpp<fun_hessian_xam_cpp>`
 
-$end
+{xsrst_end cpp_fun_hessian}
 */
 std::vector<double> d_fun::hessian(
     const std::vector<double>& x  ,
@@ -639,100 +677,112 @@ std::vector<a_double> a_fun::hessian(
 }
 /*
 ------------------------------------------------------------------------------
-$begin cpp_fun_forward$$
-$spell
-    af
+{xsrst_begin cpp_fun_forward}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     xp
-    Taylor
     yp
-    const
-    vec
-$$
+}
 
-$section Forward Mode AD$$
+Forward Mode AD
+###############
 
-$head Syntax$$
-$icode%yp% = %f%.forward(%p%, %xp%)%$$
+Syntax
+******
+*yp* = *f* . ``forward`` ( *p* , *xp* )
 
-$head Taylor Coefficient$$
-For a function $latex g(t)$$ of a scalar argument $latex t \in \B{R}$$,
-the $th p$$ order Taylor coefficient is its
-$code p$$-th order derivative divided by $icode p$$ factorial
-and evaluated at $latex t = 0$$; i.e.,
-$latex \[
+Taylor Coefficient
+******************
+For a function :math:`g(t)` of a scalar argument :math:`t \in \B{R}`,
+the *p*-th order Taylor coefficient is its
+``p`` -th order derivative divided by *p* factorial
+and evaluated at :math:`t = 0`; i.e.,
+
+.. math::
+
     g^{(p)} (0) /  p !
-\]$$
 
-$head f$$
+f
+*
 This is either a
-$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
-$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object.
+:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` or
+:ref:`a_fun<cpp_fun_ctor.syntax.a_fun>` function object.
 Note that its state is changed by this operation because
 all the Taylor coefficient that it calculates for every
 variable in recording are stored.
 See more discussion of this fact under the heading
-$cref/p/cpp_fun_forward/p/$$ below.
+:ref:`p<cpp_fun_forward.p>` below.
 
-$head f(x)$$
-We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
-for the function corresponding to $icode f$$.
-Note that $icode n$$ is the size of $cref/ax/cpp_fun_ctor/ax/$$
-and $icode m$$ is the size of $cref/ay/cpp_fun_ctor/ay/$$
-in to the constructor for $icode f$$.
+f(x)
+****
+We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
+for the function corresponding to *f* .
+Note that *n* is the size of :ref:`ax<cpp_fun_ctor.ax>`
+and *m* is the size of :ref:`ay<cpp_fun_ctor.ay>`
+in to the constructor for *f* .
 
-$head X(t)$$
-We use the notation $latex X : \B{R} \rightarrow \B{R}^n$$
+X(t)
+****
+We use the notation :math:`X : \B{R} \rightarrow \B{R}^n`
 for a function that the calling routine chooses.
 
-$head Y(t)$$
-We define the function $latex Y : \B{R} \rightarrow \B{R}^n$$
-by $latex Y(t) = f(X(t))$$.
+Y(t)
+****
+We define the function :math:`Y : \B{R} \rightarrow \B{R}^n`
+by :math:`Y(t) = f(X(t))`.
 
-$head p$$
+p
+*
 This argument has prototype
-$codei%
-    int %p%
-%$$
+
+| |tab| ``int`` *p*
+
 and is non-negative.
 It is the order of the Taylor coefficient being calculated.
-If there was no call to $code forward$$ for this $icode f$$,
-the value of $icode p$$ must be zero.
+If there was no call to ``forward`` for this *f* ,
+the value of *p* must be zero.
 Otherwise, it must be between zero and one greater that its
-value for the previous call using this $icode f$$.
-After this call, the Taylor coefficients for orders zero though $icode p$$,
-and for every variable in the recording, will be stored in $icode f$$.
+value for the previous call using this *f* .
+After this call, the Taylor coefficients for orders zero though *p* ,
+and for every variable in the recording, will be stored in *f* .
 
-$subhead size_order$$
+size_order
+==========
 After this call,
-$cref/f.size_order()/cpp_fun_property/size_order/$$ is $icode%p%+1%$$.
+:ref:`f_size_order()<cpp_fun_property.size_order>` is *p* +1 .
 
-$head xp$$
-If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+xp
+**
+If *f* is a ``d_fun`` or ``a_fun`` ,
 this argument has prototype
-$codei%
-    const vec_double&   %xp%
-    const vec_a_double& %xp%
-%$$
-respectively and its size must be $icode n$$.
-It specifies the $th p$$ order Taylor coefficients for $icode X(t)$$.
 
-$head yp$$
-If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+| |tab| ``const vec_double&`` *xp*
+| |tab| ``const vec_a_double&`` *xp*
+
+respectively and its size must be *n* .
+It specifies the *p*-th order Taylor coefficients for *X(t* ) .
+
+yp
+**
+If *f* is a ``d_fun`` or ``a_fun`` ,
 the result has prototype
-$codei%
-    vec_double&   %yp%
-    vec_a_double& %yp%
-%$$
-respectively and its size is $icode m$$.
-It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
 
-$children%
+| |tab| ``vec_double&`` *yp*
+| |tab| ``vec_a_double&`` *yp*
+
+respectively and its size is *m* .
+It is the *p*-th order Taylor coefficients for :math:`Y(t)`.
+
+{xsrst_children
     example/cplusplus/fun_forward_xam.cpp
-%$$
-$head Example$$
-$cref fun_forward_xam.cpp$$
+}
+Example
+*******
+:ref:`fun_forward_xam_cpp<fun_forward_xam_cpp>`
 
-$end
+{xsrst_end cpp_fun_forward}
 */
 std::vector<double> d_fun::forward(int p, const std::vector<double>& xp)
 {   if( xp.size() != ptr_->Domain() )
@@ -748,107 +798,118 @@ std::vector<a_double> a_fun::forward(int p, const std::vector<a_double>& axp)
 }
 /*
 -------------------------------------------------------------------------------
-$begin cpp_fun_reverse$$
-$spell
-    vec
-    af
+{xsrst_begin cpp_fun_reverse}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     xq
-    Taylor
     yq
-    const
-$$
+}
 
-$section Reverse Mode AD$$
+Reverse Mode AD
+###############
 
-$head Syntax$$
-$icode%xq% = %f%.reverse(%q%, %yq%)%$$
+Syntax
+******
+*xq* = *f* . ``reverse`` ( *q* , *yq* )
 
-$head f$$
+f
+*
 This is either a
-$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ or
-$cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$ function object
-and is effectively $code const$$.
+:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` or
+:ref:`a_fun<cpp_fun_ctor.syntax.a_fun>` function object
+and is effectively ``const`` .
 (Some details that are not visible to the user may change.)
 
-$head Notation$$
+Notation
+********
 
-$subhead f(x)$$
-We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
-for the function corresponding to $icode f$$.
-Note that $icode n$$ is the size of $cref/ax/cpp_fun_ctor/ax/$$
-and $icode m$$ is the size of $cref/ay/cpp_fun_ctor/ay/$$
-in to the constructor for $icode f$$.
+f(x)
+====
+We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
+for the function corresponding to *f* .
+Note that *n* is the size of :ref:`ax<cpp_fun_ctor.ax>`
+and *m* is the size of :ref:`ay<cpp_fun_ctor.ay>`
+in to the constructor for *f* .
 
-$subhead X(t), S$$
+X(t), S
+=======
 This is the same function as
-$cref/X(t)/cpp_fun_forward/X(t)/$$ in the previous call to
-$icode%f%.forward%$$.
-We use $latex S \in \B{R}^{n \times q}$$ to denote the Taylor coefficients
-of $latex X(t)$$.
+:ref:`x(t)<cpp_fun_forward.x(t)>` in the previous call to
+*f* . ``forward`` .
+We use :math:`S \in \B{R}^{n \times q}` to denote the Taylor coefficients
+of :math:`X(t)`.
 
-$subhead Y(t), T$$
+Y(t), T
+=======
 This is the same function as
-$cref/Y(t)/cpp_fun_forward/Y(t)/$$ in the previous call to
-$icode%f%.forward%$$.
-We use $latex T \in \B{R}^{m \times q}$$ to denote the Taylor coefficients
-of $latex Y(t)$$.
-We also use the notation $latex T(S)$$ to express the fact that
-the Taylor coefficients for $latex Y(t)$$ are a function of the
-Taylor coefficients of $latex X(t)$$.
+:ref:`y(t)<cpp_fun_forward.y(t)>` in the previous call to
+*f* . ``forward`` .
+We use :math:`T \in \B{R}^{m \times q}` to denote the Taylor coefficients
+of :math:`Y(t)`.
+We also use the notation :math:`T(S)` to express the fact that
+the Taylor coefficients for :math:`Y(t)` are a function of the
+Taylor coefficients of :math:`X(t)`.
 
-$subhead G(T)$$
-We use the notation $latex G : \B{R}^{m \times p} \rightarrow \B{R}$$
+G(T)
+====
+We use the notation :math:`G : \B{R}^{m \times p} \rightarrow \B{R}`
 for a function that the calling routine chooses.
 
-$head q$$
+q
+*
 This argument has prototype
-$codei%
-    int %q%
-%$$
+
+| |tab| ``int`` *q*
+
 and is positive.
 It is the number of the Taylor coefficient (for each variable)
 that we are computing the derivative with respect to.
 It must be greater than zero, and
 less than or equal
-the number of Taylor coefficient stored in $icode f$$; i.e.,
-$cref/f.size_order()/cpp_fun_property/size_order/$$.
+the number of Taylor coefficient stored in *f* ; i.e.,
+:ref:`f_size_order()<cpp_fun_property.size_order>`.
 
-$head yq$$
-If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+yq
+**
+If *f* is a ``d_fun`` or ``a_fun`` ,
 this argument has prototype
-$codei%
-    const vec_double&   %yq%
-    const vec_a_double& %yq%
-%$$
-and its size must be $icode%m%*%q%$$.
-For $icode%0% <= %i% < %m%$$ and $icode%0% <= %k% < %q%$$,
-$icode%yq%[ %i% * %q% + %k% ]%$$ is the partial derivative of
-$latex G(T)$$ with respect to the $th k$$ order Taylor coefficient
-for the $th i$$ component function; i.e.,
-the partial derivative of $latex G(T)$$ w.r.t. $latex Y_i^{(k)} (t) / k !$$.
 
-$head xq$$
-If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
+| |tab| ``const vec_double&`` *yq*
+| |tab| ``const vec_a_double&`` *yq*
+
+and its size must be *m* ``*`` *q* .
+For 0 <= *i* < *m* and 0 <= *k* < *q* ,
+*yq* [ *i* ``*`` *q* + *k* ] is the partial derivative of
+:math:`G(T)` with respect to the *k*-th order Taylor coefficient
+for the *i*-th component function; i.e.,
+the partial derivative of :math:`G(T)` w.r.t. :math:`Y_i^{(k)} (t) / k !`.
+
+xq
+**
+If *f* is a ``d_fun`` or ``a_fun`` ,
 the result has prototype
-$codei%
-    const vec_double&   %xq%
-    const vec_a_double& %xq%
-%$$
-respectively and its size is $icode%n%*%q%$$.
-For $icode%0% <= %j% < %n%$$ and $icode%0% <= %k% < %q%$$,
-$icode%xq%[ %j% * %q% + %k% ]%$$ is the partial derivative of
-$latex G(T(S))$$ with respect to the $th k$$ order Taylor coefficient
-for the $th j$$ component function; i.e.,
+
+| |tab| ``const vec_double&`` *xq*
+| |tab| ``const vec_a_double&`` *xq*
+
+respectively and its size is *n* ``*`` *q* .
+For 0 <= *j* < *n* and 0 <= *k* < *q* ,
+*xq* [ *j* ``*`` *q* + *k* ] is the partial derivative of
+:math:`G(T(S))` with respect to the *k*-th order Taylor coefficient
+for the *j*-th component function; i.e.,
 the partial derivative of
-$latex G(T(S))$$ w.r.t. $latex S_j^{(k)} (t) / k !$$.
+:math:`G(T(S))` w.r.t. :math:`S_j^{(k)} (t) / k !`.
 
-$children%
+{xsrst_children
     example/cplusplus/fun_reverse_xam.cpp
-%$$
-$head Example$$
-$cref fun_reverse_xam.cpp$$
+}
+Example
+*******
+:ref:`fun_reverse_xam_cpp<fun_reverse_xam_cpp>`
 
-$end
+{xsrst_end cpp_fun_reverse}
 */
 std::vector<double> d_fun::reverse(int q, const std::vector<double>& yq)
 {   if( yq.size() != q * ptr_->Range() )
@@ -864,87 +925,99 @@ std::vector<a_double> a_fun::reverse(int q, const std::vector<a_double>& ayq)
 }
 /*
 ------------------------------------------------------------------------------
-$begin cpp_fun_optimize$$
-$spell
-    af
-$$
+{xsrst_begin cpp_fun_optimize}
 
-$section Optimize an AD Function$$
+.. include:: ../preamble.rst
 
-$head Syntax$$
-$icode%f%.optimize()%$$
+{xsrst_spell
+}
 
-$head Purpose$$
+Optimize an AD Function
+#######################
+
+Syntax
+******
+*f* . ``optimize`` ()
+
+Purpose
+*******
 This reduces the number of operations
 (hence to time and memory) used to compute the function
-stored in $icode f$$
+stored in *f*
 On the other hand, the optimization may take a significant amount
 of time and memory.
 
-$head f$$
+f
+*
 This object is a
-$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$.
-Optimizing this $icode f$$ also optimizes the
-corresponding $cref/a_fun/cpp_fun_ctor/Syntax/a_fun/$$.
+:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>`.
+Optimizing this *f* also optimizes the
+corresponding :ref:`a_fun<cpp_fun_ctor.syntax.a_fun>`.
 
-$children%
+{xsrst_children
     example/cplusplus/fun_optimize_xam.cpp
-%$$
-$head Example$$
-$cref fun_optimize_xam.cpp$$
+}
+Example
+*******
+:ref:`fun_optimize_xam_cpp<fun_optimize_xam_cpp>`
 
-$end
+{xsrst_end cpp_fun_optimize}
 */
 void d_fun::optimize(void)
 {   ptr_->optimize(); }
 /*
 ----------------------------------------------------------------------------
-$begin cpp_fun_json$$
-$spell
+{xsrst_begin cpp_fun_json}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     json
-    std
-    CppAD
-    const
-$$
+}
 
-$section Json Representation of AD Computational Graph$$
+Json Representation of AD Computational Graph
+#############################################
 
-$head Syntax$$
-$icode%json% = %f%.to_json()
-%$$
-$icode%f%.from_json()
-%$$
+Syntax
+******
 
-$head f$$
-This is a $cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$ object.
+| *json* = *f* . ``to_json`` ()
+| *f* . ``from_json`` ()
 
-$head json$$
+f
+*
+This is a :ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` object.
+
+json
+****
 is a Json representation of the computation graph corresponding to
-$icode f$$; see the CppAD documentation for
-$href%https://coin-or.github.io/CppAD/doc/json_ad_graph.htm%json_ad_graph%$$.
+*f* ; see the CppAD documentation for
+`json_ad_graph <https://coin-or.github.io/CppAD/doc/json_ad_graph.htm>`_.
 
-$head to_json$$
-In this case, the function object $icode f$$ is $code const$$ and
-the return value $icode json$$ has prototype
-$codei%
-    std::string %json%
-%$$
+to_json
+*******
+In this case, the function object *f* is ``const`` and
+the return value *json* has prototype
 
-$head from_json$$
-In this case, $icode json$$ has prototype
-$codei%
-    const std::string& %json%
-%$$
-and the function $icode f$$ so it corresponds to $icode json$$.
+| |tab| ``std::string`` *json*
 
-$children%
+from_json
+*********
+In this case, *json* has prototype
+
+| |tab| ``const std::string&`` *json*
+
+and the function *f* so it corresponds to *json* .
+
+{xsrst_children
     example/cplusplus/fun_json_xam.cpp
-%$$
-$head Examples$$
-$cref fun_to_json_xam.cpp$$,
-$cref fun_from_json_xam.cpp$$.
+}
+Examples
+********
+:ref:`fun_to_json_xam_cpp<fun_to_json_xam_cpp>`,
+:ref:`fun_from_json_xam_cpp<fun_from_json_xam_cpp>`.
 
-$end
+{xsrst_end cpp_fun_json}
 */
 // to_json
 std::string d_fun::to_json(void) const

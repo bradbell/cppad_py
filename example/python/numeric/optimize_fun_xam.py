@@ -5,51 +5,61 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin numeric_optimize_fun_xam.py$$ $newlinech #$$
-# $spell
-#   Scipy
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin numeric_optimize_fun_xam_py}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
 #   constr
-#   Ipopt
-#   def
-# $$
+#   ipopt
+# }
 #
-# $section Example Using optimize_fun_class with Scipy Optimization$$
-# $latex \newcommand{\W}[1]{{\; #1 \;}}$$
+# Example Using optimize_fun_class with Scipy Optimization
+# ########################################################
+# :math:`\newcommand{\W}[1]{{\; #1 \;}}`
 #
-# $head Reference$$
+# Reference
+# *********
 # This problem comes form the
-# $href%https://coin-or.github.io/Ipopt/INTERFACES.html%Interfaces%$$
+# `Interfaces <https://coin-or.github.io/Ipopt/INTERFACES.html>`_
 # section of the Ipopt documentation.
 #
-# $head Problem$$
-# $latex \[
-# \begin{array}{cr}
-#   {\rm minimize}      & x_0 x_3 ( x_0 + x_1 + x_2 ) + x_2   \\
-#   {\rm subject \; to} &             x_0 x_1 x_2 x_3 \geq 25 \\
-#                       & x_0^2 + x_1^2 + x_2^2 + x_3^2 = 40  \\
-#                       &                    1 \leq x \leq 5
-# \end{array}
-# \]$$
-# with the starting point $latex x = (1, 5, 5, 1)$$.
-# The optimal value for $latex x$$ is
-# $latex \[
-#   (1.00000000 \W{,} 4.74299963 \W{,} 3.82114998 \W{,} 1.37940829)
-# \] $$
+# Problem
+# *******
 #
-# $head trust_constr$$
+# .. math::
+#
+#    \begin{array}{cr}
+#    {\rm minimize}      & x_0 x_3 ( x_0 + x_1 + x_2 ) + x_2   \\
+#    {\rm subject \; to} &             x_0 x_1 x_2 x_3 \geq 25 \\
+#                         & x_0^2 + x_1^2 + x_2^2 + x_3^2 = 40  \\
+#                         &                    1 \leq x \leq 5
+#    \end{array}
+#
+# with the starting point :math:`x = (1, 5, 5, 1)`.
+# The optimal value for :math:`x` is
+#
+# .. math::
+#
+#    (1.00000000 \W{,} 4.74299963 \W{,} 3.82114998 \W{,} 1.37940829)
+#
+# trust_constr
+# ************
 # This is one of the
-# $href%
-#   https://docs.scipy.org/doc/scipy/reference/optimize.html%
-#   scipy.optimize
-# %$$
+# `scipy.optimize
+# <https://docs.scipy.org/doc/scipy/reference/optimize.html>`_
 # methods.
 #
-# $head Source Code$$
-# $srcthisfile%
-#   0%# BEGIN_PYTHON%# END_PYTHON%1
-# %$$
+# Source Code
+# ***********
+# {xsrst_file
+#   # BEGIN_PYTHON
+#   # END_PYTHON
+# }
 #
-# $end
+# {xsrst_end numeric_optimize_fun_xam_py}
 # BEGIN_PYTHON
 def optimize_fun_xam() :
     #

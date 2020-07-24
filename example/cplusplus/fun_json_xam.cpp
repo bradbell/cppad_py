@@ -59,13 +59,20 @@ bool to_json_xam(void) {
 }
 // END_TO_JSON_XAM
 /*
-$begin fun_to_json_xam.cpp$$
-$spell
+{xsrst_begin fun_to_json_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     json
-$$
-$section C++: to_json: Example and Test$$
-$srcthisfile|0|// BEGIN_TO_JSON_XAM|// END_TO_JSON_XAM|$$
-$end
+}
+C++: to_json: Example and Test
+##############################
+{xsrst_file
+    // BEGIN_TO_JSON_XAM
+    // END_TO_JSON_XAM
+}
+{xsrst_end fun_to_json_xam_cpp}
 -----------------------------------------------------------------------------
 */
 // BEGIN_FROM_JSON_XAM
@@ -131,13 +138,20 @@ bool from_json_xam(void) {
 // END_FROM_JSON_XAM
 // --------------------------------------------------------------------------
 /*
-$begin fun_from_json_xam.cpp$$
-$spell
+{xsrst_begin fun_from_json_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     json
-$$
-$section C++: from_json: Example and Test$$
-$srcthisfile|0|// BEGIN_FROM_JSON_XAM|// END_FROM_JSON_XAM|$$
-$end
+}
+C++: from_json: Example and Test
+################################
+{xsrst_file
+    // BEGIN_FROM_JSON_XAM
+    // END_FROM_JSON_XAM
+}
+{xsrst_end fun_from_json_xam_cpp}
 */
 // ==========================================================================
 } // end empty namespace

@@ -5,17 +5,22 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin library$$
-$spell
-    Cppad
-    Py
-$$
+{xsrst_begin library}
 
-$section The Cppad Py Libraries$$
+.. include:: ../preamble.rst
 
-$childtable%lib/python/cppad_py/py_lib.omh
-    %lib/cplusplus/cpp_lib.omh
-%$$
+{xsrst_spell
+    cppad
+}
 
+The Cppad Py Libraries
+######################
 
-$end
+Children
+********
+{xsrst_child_list
+    lib/python/cppad_py/py_lib.omh
+    lib/cplusplus/cpp_lib.omh
+}
+
+{xsrst_end library}

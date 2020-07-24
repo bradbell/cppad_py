@@ -5,145 +5,150 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_sparse_rcv$$ $newlinech #$$
-# $spell
-#   rc
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin py_sparse_rcv}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
 #   rcv
-#   nr
-#   nc
 #   nnz
-#   resize
-#   const
-#   Cppad
-#   vec
-#   cppad_py
-#   numpy
-# $$
+#   cppad
+#   cppad
+# }
 #
-# $section Sparse Matrices$$
+# Sparse Matrices
+# ###############
 #
-# $head Syntax$$
-# $icode%matrix%    = cppad_py::sparse_rcv(%pattern%)
-# %$$
-# $icode%nr%        = %matrix%.nr()
-# %$$
-# $icode%nc%        = %matrix%.nc()
-# %$$
-# $icode%nnz%       = matrix%.nnz()
-# %$$
-# $icode%matrix%.put(%k%, %v%)
-# %$$
-# $icode%row%       = %matrix%.row()
-# %$$
-# $icode%col%       = %matrix%.col()
-# %$$
-# $icode%val%       = %matrix%.val()
-# %$$
-# $icode%row_major% = %matrix%.row_major()
-# %$$
-# $icode%col_major% = %matrix%.col_major()
-# %$$
+# Syntax
+# ******
 #
-# $head pattern$$
+# | *matrix* =  ``cppad_py::sparse_rcv`` ( *pattern* )
+# | *nr* = *matrix* . ``nr`` ()
+# | *nc* = *matrix* . ``nc`` ()
+# | *nnz* =  ``matrix`` . *nnz* ()
+# | *matrix* . ``put`` ( *k* , *v* )
+# | *row* = *matrix* . ``row`` ()
+# | *col* = *matrix* . ``col`` ()
+# | *val* = *matrix* . ``val`` ()
+# | *row_major* = *matrix* . ``row_major`` ()
+# | *col_major* = *matrix* . ``col_major`` ()
+#
+# pattern
+# *******
 # This argument has prototype
-# $codei%
-#   const sparse_rc& %pattern%
-# %$$
+#
+# | |tab| ``const sparse_rc&`` *pattern*
+#
 # It specifies the number of rows, number of columns and
-# the possibly non-zero entries in the $icode matrix$$.
+# the possibly non-zero entries in the *matrix* .
 #
-# $head matrix$$
-# This is a sparse matrix object with the sparsity specified by $icode pattern$$.
-# Only the $icode val$$ vector can be changed. All other values returned by
-# $icode matrix$$ are fixed during the constructor and constant there after.
-# The $icode val$$ vector is only changed by the constructor
-# and the $code set$$ function.
+# matrix
+# ******
+# This is a sparse matrix object with the sparsity specified by *pattern* .
+# Only the *val* vector can be changed. All other values returned by
+# *matrix* are fixed during the constructor and constant there after.
+# The *val* vector is only changed by the constructor
+# and the ``set`` function.
 #
-# $head nr$$
-# This return value is an $code int$$
+# nr
+# **
+# This return value is an ``int``
 # and is the number of rows in the matrix.
 #
-# $head nc$$
-# This return value is an $code int$$
+# nc
+# **
+# This return value is an ``int``
 # and is the number of columns in the matrix.
 #
-# $head nnz$$
-# This return value is an $code int$$
+# nnz
+# ***
+# This return value is an ``int``
 # and is the number of possibly non-zero values in the matrix.
 #
-# $head put$$
+# put
+# ***
 # This function sets the value
-# $codei%
-#   %val%[%k%] = %v%
-# %$$
-# (The name $code set$$ is used by Cppad, but not used here,
-# because $code set$$ it is a built-in name in Python.)
 #
-# $subhead k$$
-# This is a non-negative $code int$$ and must be less than $icode nnz$$.
+# | |tab| *val* [ *k* ] = *v*
 #
-# $subhead v$$
-# This argument has type $code float$$ and
-# specifies the value assigned to $icode%val%[%k%]%$$.
+# (The name ``set`` is used by Cppad, but not used here,
+# because ``set`` it is a built-in name in Python.)
 #
-# $head row$$
-# This result is a numpy vector with $code int$$ elements
-# and its size is $icode nnz$$.
-# For $icode%k% = 0, %...%, %nnz%-1%$$,
-# $icode%row%[%k%]%$$ is the row index for the $th k$$ possibly non-zero
+# k
+# =
+# This is a non-negative ``int`` and must be less than *nnz* .
+#
+# v
+# =
+# This argument has type ``float`` and
+# specifies the value assigned to *val* [ *k* ] .
+#
+# row
+# ***
+# This result is a numpy vector with ``int`` elements
+# and its size is *nnz* .
+# For *k* = 0, ... , *nnz* -1 ,
+# *row* [ *k* ] is the row index for the *k*-th possibly non-zero
 # entry in the matrix.
 #
-# $head col$$
-# This result is a numpy vector with $code int$$ elements
-# and its size is $icode nnz$$.
-# For $icode%k% = 0, %...%, %nnz%-1%$$,
-# $icode%col%[%k%]%$$ is the column index for the $th k$$ possibly non-zero
+# col
+# ***
+# This result is a numpy vector with ``int`` elements
+# and its size is *nnz* .
+# For *k* = 0, ... , *nnz* -1 ,
+# *col* [ *k* ] is the column index for the *k*-th possibly non-zero
 # entry in the matrix.
 #
-# $head val$$
-# This result is a numpy vector with $code float$$ elements
-# and its size is $icode nnz$$.
-# For $icode%k% = 0, %...%, %nnz%-1%$$,
-# $icode%val%[%k%]%$$ is the value of the $th k$$ possibly non-zero
+# val
+# ***
+# This result is a numpy vector with ``float`` elements
+# and its size is *nnz* .
+# For *k* = 0, ... , *nnz* -1 ,
+# *val* [ *k* ] is the value of the *k*-th possibly non-zero
 # entry in the matrix (the value may be zero).
 #
-# $head row_major$$
-# This result is a numpy vector with $code int$$ elements
-# and its size $icode nnz$$.
+# row_major
+# *********
+# This result is a numpy vector with ``int`` elements
+# and its size *nnz* .
 # It sorts the sparsity pattern in row-major order.
 # To be specific,
-# $codei%
-#   %col%[ %row_major%[%k%] ] <= %col%[ %row_major%[%k%+1] ]
-# %$$
-# and if $icode%col%[ %row_major%[%k%] ] == %col%[ %row_major%[%k%+1] ]%$$,
-# $codei%
-#   %row%[ %row_major%[%k%] ] < %row%[ %row_major%[%k%+1] ]
-# %$$
-# This routine generates an assert if there are two entries with the same
-# row and column values (if $code NDEBUG$$ is not defined).
 #
-# $head col_major$$
-# This result is a numpy vector with $code int$$ elements
-# and its size $icode nnz$$.
+# | |tab| *col* [ *row_major* [ *k* ] ] <= *col* [ *row_major* [ *k* +1] ]
+#
+# and if *col* [ *row_major* [ *k* ] ] == *col* [ *row_major* [ *k* +1] ] ,
+#
+# | |tab| *row* [ *row_major* [ *k* ] ] < *row* [ *row_major* [ *k* +1] ]
+#
+# This routine generates an assert if there are two entries with the same
+# row and column values (if ``NDEBUG`` is not defined).
+#
+# col_major
+# *********
+# This result is a numpy vector with ``int`` elements
+# and its size *nnz* .
 # It sorts the sparsity pattern in column-major order.
 # To be specific,
-# $codei%
-#   %row%[ %col_major%[%k%] ] <= %row%[ %col_major%[%k%+1] ]
-# %$$
-# and if $icode%row%[ %col_major%[%k%] ] == %row%[ %col_major%[%k%+1] ]%$$,
-# $codei%
-#   %col%[ %col_major%[%k%] ] < %col%[ %col_major%[%k%+1] ]
-# %$$
+#
+# | |tab| *row* [ *col_major* [ *k* ] ] <= *row* [ *col_major* [ *k* +1] ]
+#
+# and if *row* [ *col_major* [ *k* ] ] == *row* [ *col_major* [ *k* +1] ] ,
+#
+# | |tab| *col* [ *col_major* [ *k* ] ] < *col* [ *col_major* [ *k* +1] ]
+#
 # This routine generates an assert if there are two entries with the same
-# row and column values (if $code NDEBUG$$ is not defined).
+# row and column values (if ``NDEBUG`` is not defined).
 #
-# $children%
+# {xsrst_children
 #   example/python/core/sparse_rcv_xam.py
-# %$$
-# $head Example$$
-# $cref sparse_rcv_xam.py$$
+# }
+# Example
+# *******
+# :ref:`sparse_rcv_xam_py<sparse_rcv_xam_py>`
 #
-# $end
+# {xsrst_end py_sparse_rcv}
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy

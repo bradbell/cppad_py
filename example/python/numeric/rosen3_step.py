@@ -105,112 +105,135 @@ def check_rosen3_step(fun, ti, yi, h) :
     return ok
 # END_CHECK_ROSEN3_STEP
 #
-# $begin numeric_rosen3_step$$ $newlinech #$$
-# $spell
-#   Rosenbrock
-#   rosen
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin numeric_rosen3_step}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+#   rosenbrock
 #   yf
 #   yi
 #   yp
-#   numpy
-#   Shampine
-#   Rosenbrock
-# $$
+#   shampine
+#   rosenbrock
+# }
 #
+# One Third Order Rosenbrock ODE Step
+# ###################################
 #
-# $section One Third Order Rosenbrock ODE Step$$
+# Syntax
+# ******
 #
-# $head Syntax$$
-# $icode%yf% = rosen3_step(%fun%, %ti%, %yi%, %h%)
-# %$$
-# $icode%ok% = check_rosen3_step(%fun%, %ti%, %yi%, %h%)
-# %$$
+# | *yf* =  ``rosen3_step`` ( *fun* , *ti* , *yi* , *h* )
+# | *ok* =  ``check_rosen3_step`` ( *fun* , *ti* , *yi* , *h* )
 #
-# $head Purpose$$
-# The routine $code rosen3_step$$ can be used with
-# $code ad_double$$ to solve an initial value ODE
-# $latex \[
-#   y^{(1)} (t)  = f( t , y )
-# \] $$
+# Purpose
+# *******
+# The routine ``rosen3_step`` can be used with
+# ``ad_double`` to solve an initial value ODE
 #
-# $head Reference$$
+# .. math::
+#
+#    y^{(1)} (t)  = f( t , y )
+#
+# Reference
+# *********
 # The formulas in this method are taken from page 100 of the following
 # reference (except that 98/108 was correct to 97/108):
 # Shampine, L.F.,
-# $italic Implementation of Rosenbrock Methods$$,
+# *Implementation of Rosenbrock Methods* ,
 # ACM Transactions on Mathematical Software, Vol. 8, No. 2, June 1982.
 #
-# $head fun$$
+# fun
+# ***
 # This is a function that evaluates the ordinary differential equation,
 # and its partial derivatives,
 #
-# $subhead t$$
-# The argument $icode t$$ below is the current time.
-# It can be a $code float$$ or $code a_double$$.
+# t
+# =
+# The argument *t* below is the current time.
+# It can be a ``float`` or ``a_double`` .
 #
-# $subhead y$$
-# The argument $icode y$$ below is the current value of $latex y(t)$$.
-# The type of the elements of $icode y$$
-# can be $code float$$ or $code ad_double$$.
+# y
+# =
+# The argument *y* below is the current value of :math:`y(t)`.
+# The type of the elements of *y*
+# can be ``float`` or ``ad_double`` .
 #
-# $subhead fun.f$$
-# The syntax $codei%yp% = %fun%.f( %t% , %y% )%$$ returns $icode yp$$,
-# the current function value $latex f(t, y)$$.
+# fun.f
+# =====
+# The syntax ``yp`` = ``fun`` . *f* ``t`` , ``y`` ) returns *yp* ,
+# the current function value :math:`f(t, y)`.
 #
-# $subhead fun.f_t$$
-# The syntax $codei%yp_t% = %fun%.f_t( %t% , %y% )%$$ returns $icode yp_t$$,
-# the current partial value $latex \partial_t f(t, y)$$.
+# fun.f_t
+# =======
+# The syntax ``yp_t`` = ``fun`` . *f_t* ( ``t`` , ``y`` ) returns *yp_t* ,
+# the current partial value :math:`\partial_t f(t, y)`.
 #
-# $subhead fun.f_y$$
-# The syntax $codei%yp_y% = %fun%.f_y( %t% , %y% )%$$ returns $icode yp_y$$,
-# the current partial value $latex \partial_y f(t, y)$$.
+# fun.f_y
+# =======
+# The syntax ``yp_y`` = ``fun`` . *f_y* ( ``t`` , ``y`` ) returns *yp_y* ,
+# the current partial value :math:`\partial_y f(t, y)`.
 #
-# $head ti$$
+# ti
+# **
 # This is the initial time for the Rosenbrock step.
-# It can have type $code float$$ or $code a_double$$.
-# (For $code check_rosen3_step$$ only $code float$$ is allowed.)
+# It can have type ``float`` or ``a_double`` .
+# (For ``check_rosen3_step`` only ``float`` is allowed.)
 #
-# $head yi$$
+# yi
+# **
 # This is the numpy vector containing the
-# value of $latex y(t)$$ at the initial time.
-# The type of its elements can be $code float$$ or $code a_double$$.
-# (For $code check_rosen3_step$$ only $code float$$ is allowed.)
+# value of :math:`y(t)` at the initial time.
+# The type of its elements can be ``float`` or ``a_double`` .
+# (For ``check_rosen3_step`` only ``float`` is allowed.)
 #
-# $head h$$
+# h
+# *
 # This is the step size in time; i.e., the time at the end of the step
 # minus the initial time.
-# It can have type $code float$$ or $code a_double$$.
-# (This is not used by $code check_rosen3_step$$.)
+# It can have type ``float`` or ``a_double`` .
+# (This is not used by ``check_rosen3_step`` .)
 #
-# $head yf$$
-# This is the approximate solution for $latex y(t)$$ at the final time
+# yf
+# **
+# This is the approximate solution for :math:`y(t)` at the final time
 # as a numpy vector.
-# This solution is 3-th order accurate in time $latex t$$; e.g., if
-# $latex y(t)$$ is a polynomial in $latex t$$ of order three or lower,
+# This solution is 3-th order accurate in time :math:`t`; e.g., if
+# :math:`y(t)` is a polynomial in :math:`t` of order three or lower,
 # the solution has no truncation error, only round off error.
 #
-# $head ok$$
-# This is true if the function $icode%fun%.f(%t%,%y%)%$$
-# and the partials $icode%fun%.f_t(%t%, %y%)%$$,
-# $icode%fun%.f_y(%t%, %y%)%$$ agree.
+# ok
+# **
+# This is true if the function *fun* . ``f`` *t* , *y* )
+# and the partials *fun* . ``f_t`` ( *t* , *y* ) ,
+# *fun* . ``f_y`` ( *t* , *y* ) agree.
 # Otherwise AD has detected an error in these functions.
 #
-# $children%
+# {xsrst_children
 #   example/python/numeric/rosen3_step_xam.py
-# %$$
-# $head Example$$
-# $cref numeric_rosen3_step_xam.py$$
+# }
+# Example
+# *******
+# :ref:`numeric_rosen3_step_xam_py<numeric_rosen3_step_xam_py>`
 #
-# $head Source Code$$
+# Source Code
+# ***********
 #
-# $subhead rosen3_step$$
-# $srcthisfile%
-#   0%# BEGIN_ROSEN3_STEP%# END_ROSEN3_STEP%0
-# %$$
+# rosen3_step
+# ===========
+# {xsrst_file
+#   # BEGIN_ROSEN3_STEP
+#   # END_ROSEN3_STEP
+# }
 #
-# $subhead check_rosen3_step$$
-# $srcthisfile%
-#   0%# BEGIN_CHECK_ROSEN3_STEP%# END_CHECK_ROSEN3_STEP%0
-# %$$
+# check_rosen3_step
+# =================
+# {xsrst_file
+#   # BEGIN_CHECK_ROSEN3_STEP
+#   # END_CHECK_ROSEN3_STEP
+# }
 #
-# $end
+# {xsrst_end numeric_rosen3_step}

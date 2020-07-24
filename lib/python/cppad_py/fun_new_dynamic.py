@@ -5,40 +5,47 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_fun_new_dynamic$$ $newlinech #$$
-# $spell
-#   numpy
-# $$
+# {xsrst_comment_ch #}
 #
-# $section New Dynamic Parameters$$
+# {xsrst_begin py_fun_new_dynamic}
 #
-# $head Syntax$$
-# $icode%f%.new_dynamic(%dynamic%)%$$
+# .. include:: ../preamble.rst
 #
-# $head f$$
+# New Dynamic Parameters
+# ######################
+#
+# Syntax
+# ******
+# *f* . ``new_dynamic`` ( *dynamic* )
+#
+# f
+# *
 # This is either a
-# $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ or
-# $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$.
-# The independent $cref/dynamic/py_independent/dynamic/$$ parameters
+# :ref:`d_fun<py_fun_ctor.syntax.d_fun>` or
+# :ref:`a_fun<py_fun_ctor.syntax.a_fun>`.
+# The independent :ref:`dynamic<py_independent.dynamic>` parameters
 # are changed to have the specified values.
 # The other dynamic parameters are then computed.
 #
-# $head dynamic$$
-# If $icode f$$ is a $code d_fun$$ ($code a_fun$$) object,
-# $icode dynamic$$ is a numpy vector with $code float$$ ($code a_double$$)
+# dynamic
+# *******
+# If *f* is a ``d_fun`` ( ``a_fun`` ) object,
+# *dynamic* is a numpy vector with ``float`` ( ``a_double`` )
 # elements and its size must be the same as the size of
-# $cref/dynamic/py_independent/dynamic/$$ in the corresponding call to
-# $code independent$$.
-# It specifies new values for the dynamic parameters in $icode f$$.
+# :ref:`dynamic<py_independent.dynamic>` in the corresponding call to
+# ``independent`` .
+# It specifies new values for the dynamic parameters in *f* .
 #
-# $subhead size_order$$
+# size_order
+# ==========
 # After this call,
-# $cref/f.size_order()/py_fun_property/size_order/$$ is zero.
+# :ref:`f_size_order()<py_fun_property.size_order>` is zero.
 #
-# $head Example$$
-# See $cref fun_dynamic_xam.py$$
+# Example
+# *******
+# See :ref:`fun_dynamic_xam_py<fun_dynamic_xam_py>`
 #
-# $end
+# {xsrst_end py_fun_new_dynamic}
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy

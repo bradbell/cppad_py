@@ -113,17 +113,19 @@ def fun_reverse_xam() :
 #
 # END SOURCE
 #
-# $begin fun_reverse_xam.py$$ $newlinech #$$
-# $spell
-#   py
-#   perl
-#   cppad
-#   py
-#   xam
-#   Jacobian
-#   Jacobians
-# $$
-# $section Python: Reverse Mode AD: Example and Test$$
-# $srcthisfile|0|# BEGIN SOURCE|# END SOURCE|$$
-# $end
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin fun_reverse_xam_py}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+# }
+# Python: Reverse Mode AD: Example and Test
+# #########################################
+# {xsrst_file
+#   # BEGIN SOURCE
+#   # END SOURCE
+# }
+# {xsrst_end fun_reverse_xam_py}
 #

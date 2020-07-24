@@ -5,72 +5,80 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_fun_hessian$$ $newlinech #$$
-# $spell
-#   vec
-#   Taylor
-#   const
-#   numpy
-# $$
+# {xsrst_comment_ch #}
 #
-# $section Hessian of an AD Function$$
+# {xsrst_begin py_fun_hessian}
 #
-# $head Syntax$$
-# $icode%H% = %f%.hessian(%x%, %w%)%$$
+# .. include:: ../preamble.rst
 #
-# $head f$$
+# Hessian of an AD Function
+# #########################
+#
+# Syntax
+# ******
+# *H* = *f* . ``hessian`` ( *x* , *w* )
+#
+# f
+# *
 # This is either a
-# $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ or
-# $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ function object.
+# :ref:`d_fun<py_fun_ctor.syntax.d_fun>` or
+# :ref:`a_fun<py_fun_ctor.syntax.a_fun>` function object.
 # Upon return, the zero order
-# $cref/Taylor coefficients/py_fun_forward/Taylor Coefficient/$$
-# in $icode f$$ correspond to the value of $icode x$$.
-# The other Taylor coefficients in $icode f$$ are unspecified.
+# :ref:`taylor_coefficients<py_fun_forward.taylor_coefficient>`
+# in *f* correspond to the value of *x* .
+# The other Taylor coefficients in *f* are unspecified.
 #
-# $head f(x)$$
-# We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
-# for the function corresponding to $icode f$$.
-# Note that $icode n$$ is the size of $cref/ax/py_fun_ctor/ax/$$
-# and $icode m$$ is the size of $cref/ay/py_fun_ctor/ay/$$
-# in to the constructor for $icode f$$.
+# f(x)
+# ****
+# We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
+# for the function corresponding to *f* .
+# Note that *n* is the size of :ref:`ax<py_fun_ctor.ax>`
+# and *m* is the size of :ref:`ay<py_fun_ctor.ay>`
+# in to the constructor for *f* .
 #
-# $head g(x)$$
-# We use the notation $latex g: \B{R}^n \rightarrow \B{R}$$
+# g(x)
+# ****
+# We use the notation :math:`g: \B{R}^n \rightarrow \B{R}`
 # for the function defined by
-# $latex \[
-#   g(x) = \sum_{i=0}^{n-1} w_i f_i (x)
-# \] $$
 #
-# $head x$$
-# If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
-# $icode x$$ is a numpy vector with $code float$$ ($code a_double$$) elements
-# and size $icode n$$.
+# .. math::
+#
+#    g(x) = \sum_{i=0}^{n-1} w_i f_i (x)
+#
+# x
+# *
+# If *f* is a ``d_fun`` or ``a_fun`` ,
+# *x* is a numpy vector with ``float`` ( ``a_double`` ) elements
+# and size *n* .
 # It specifies the argument value at we are computing the Hessian
-# $latex g^{(2)}(x)$$.
+# :math:`g^{(2)}(x)`.
 #
-# $head w$$
-# If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
-# $icode w$$ is a numpy vector with $code float$$ ($code a_double$$) elements
-# and size $icode m$$.
-# It specifies the vector $icode w$$ in the definition of $latex g(x)$$ above.
+# w
+# *
+# If *f* is a ``d_fun`` or ``a_fun`` ,
+# *w* is a numpy vector with ``float`` ( ``a_double`` ) elements
+# and size *m* .
+# It specifies the vector *w* in the definition of :math:`g(x)` above.
 #
-# $head H$$
-# The result is a numpy matrix with $code float$$ ($code a_double$$) elements,
-# $icode n$$ rows and $code n$$ columns.
-# For $icode i$$ between zero and $icode%n%-1%$$
-# and $icode j$$ between zero and $icode%n%-1%$$,
-# $latex \[
-#   H [ i, j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
-# \] $$
+# H
+# *
+# The result is a numpy matrix with ``float`` ( ``a_double`` ) elements,
+# *n* rows and ``n`` columns.
+# For *i* between zero and *n* -1
+# and *j* between zero and *n* -1 ,
 #
-# $children%
+# .. math::
+#
+#    H [ i, j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
+#
+# {xsrst_children
 #   example/python/core/fun_hessian_xam.py
-# %$$
-# $head Example$$
-# $cref fun_hessian_xam.py$$
+# }
+# Example
+# *******
+# :ref:`fun_hessian_xam_py<fun_hessian_xam_py>`
 #
-#
-# $end
+# {xsrst_end py_fun_hessian}
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy

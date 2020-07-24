@@ -88,17 +88,18 @@ bool fun_property_xam(void) {
 // END SOURCE
 // -----------------------------------------------------------------------------
 /*
-$begin fun_property_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: function Properties: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin fun_property_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+}
+C++: function Properties: Example and Test
+##########################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end fun_property_xam_cpp}
 */
 //

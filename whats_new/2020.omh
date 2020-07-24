@@ -5,291 +5,269 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin whats_new_2020$$
-$spell
-    Py
+{xsrst_begin whats_new_2020}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     omhelp
     erf
-    var
     xq
     yq
     inplace
-    op
-    numpy
-    -stdlib=libc++
+    stdlib
+    libc
     cmake
     json
-    CppAD
     cppad
-    scipy
     seirs
     seirwd
-    xam
-    covariate
     covid
     fabs
     runge
-    vec
-    xsrst
-$$
+}
 
-$section CppAD Py Changes During 2020$$
+CppAD Py Changes During 2020
+############################
 
-$children%
+{xsrst_children
     whats_new/2018.omh
-%$$
-$head Previous Years$$
-$cref whats_new_2018$$
+}
+Previous Years
+**************
+:ref:`whats_new_2018<whats_new_2018>`
 
-$head 07-18$$
-$list number$$
-The experimental $code bin/xsrst.py$$ program was added.
-This program runs its tests and builds its documentation
-(in the $code sphinx$$) directory with the command $code bin/check_xsrst.sh$$.
-The intention is to convert the cppad_py documentation from omhelp to sphinx.
-$lnext
-Convert all the cppad_py source code to use spaces instead of tabs
-(with tab stops at multiples of 4 spaces).
-$lend
+07-18
+*****
 
-$head 07-05$$
-$list number$$
-The $cref/prototype/vec2a_double/Prototype/$$ for $code vec2a_double$$
-was the same as for $cref vec2cppad_double$$.
-This has been fixed.
-$lnext
-The limits for the $cref fun_from_json_xam.py$$ and $cref fun_to_json_xam.py$$
-example code were incorrect (this has been fixed).
-$lnext
-The in $cref fun_from_json_xam.cpp$$ the title was corrected; to be specific,
-to_json was changed to from_json
-$lend
+#.  The experimental ``bin/xsrst.py`` program was added.
+    This program runs its tests and builds its documentation
+    (in the ``sphinx`` ) directory with the command ``bin/check_xsrst.sh`` .
+    The intention is to convert the cppad_py documentation from omhelp to sphinx.
+#.  Convert all the cppad_py source code to use spaces instead of tabs
+    (with tab stops at multiples of 4 spaces).
 
+07-05
+*****
 
-$head 05-17$$
-The $code abs$$ $cref a_double_unary_fun$$ was added
-(works the same as the $code fabs$$ function).
+#.  The :ref:`prototype<vec2a_double.prototype>` for ``vec2a_double``
+    was the same as for :ref:`vec2cppad_double<vec2cppad_double>`.
+    This has been fixed.
+#.  The limits for the :ref:`fun_from_json_xam_py<fun_from_json_xam_py>` and :ref:`fun_to_json_xam_py<fun_to_json_xam_py>`
+    example code were incorrect (this has been fixed).
+#.  The in :ref:`fun_from_json_xam_cpp<fun_from_json_xam_cpp>` the title was corrected; to be specific,
+    to_json was changed to from_json
 
-$head 05-16$$
-$list number$$
-A discussion of some subtile issues,
-when interpolation is used to define an ODE,
-was added to the $code ode_multi_step$$; see
-$cref/set_t_all_index/numeric_ode_multi_step/$$.
-$lnext
-Add the $cref/alpha/numeric_seirwd_model/p_all/alpha/$$ parameter to the
-SEIRWD model.
-$lend
+05-17
+*****
+The ``abs`` :ref:`a_double_unary_fun<a_double_unary_fun>` was added
+(works the same as the ``fabs`` function).
 
-$head 05-15$$
-The file $code ode_solve.py$$ was moved to $code ode_multi_step.py$$
-and $cref numeric_ode_multi_step$$ was extended to allow for different ODE solvers
+05-16
+*****
+
+#.  A discussion of some subtile issues,
+    when interpolation is used to define an ODE,
+    was added to the ``ode_multi_step`` ; see
+    :ref:`set_t_all_index<numeric_ode_multi_step>`.
+#.  Add the :ref:`alpha<numeric_seirwd_model.p_all.alpha>` parameter to the
+    SEIRWD model.
+
+05-15
+*****
+The file ``ode_solve.py`` was moved to ``ode_multi_step.py``
+and :ref:`numeric_ode_multi_step<numeric_ode_multi_step>` was extended to allow for different ODE solvers
 (steppers).
 
-$head 05-14$$
-$list number$$
-The example semi-stiff integrator $cref numeric_rosen3_step$$ was added.
-$lnext
-The example file $code runge4.py$$ was moved to $code ode_solve.py$$
-in preparation for other solvers.
-$lnext
-Add the $cref numeric_simple_inv$$ example routine for
-AD inversion of matrices.
-$lnext
-Add mention of which $cref numeric_xam$$ routines can take $code a_double$$ values.
-$lnext
-Simplify the $cref numeric_seirwd_model_xam.py$$ example using numpy vector operations.
-$lnext
-More improvements to were made to
-$cref/Covid-19/numeric_covid_19_xam.py/$$ example.
-$lend
+05-14
+*****
 
-$head 05-12$$
-$list number$$
-More improvements to were made to
-$cref/Covid-19/numeric_covid_19_xam.py/$$ example.
-$lnext
-The $cref/n_step/numeric_seirwd_model/n_step/$$ option was added to the
-SEIRWD model example.
-$lnext
-A delay between when is no longer infectious and when one dies was
-added to the SEIRWD model using a W compartment (Will die compartment).
-$lend
+#.  The example semi-stiff integrator :ref:`numeric_rosen3_step<numeric_rosen3_step>` was added.
+#.  The example file ``runge4.py`` was moved to ``ode_solve.py``
+    in preparation for other solvers.
+#.  Add the :ref:`numeric_simple_inv<numeric_simple_inv>` example routine for
+    AD inversion of matrices.
+#.  Add mention of which :ref:`numeric_xam<numeric_xam>` routines can take ``a_double`` values.
+#.  Simplify the :ref:`numeric_seirwd_model_xam_py<numeric_seirwd_model_xam_py>` example using numpy vector operations.
+#.  More improvements to were made to
+    :ref:`covid-19<numeric_covid_19_xam_py>` example.
 
+05-12
+*****
 
-$head 05-09$$
-The $cref/Covid-19 modeling example/numeric_covid_19_xam.py/$$ application
+#.  More improvements to were made to
+    :ref:`covid-19<numeric_covid_19_xam_py>` example.
+#.  The :ref:`n_step<numeric_seirwd_model.n_step>` option was added to the
+    SEIRWD model example.
+#.  A delay between when is no longer infectious and when one dies was
+    added to the SEIRWD model using a W compartment (Will die compartment).
+
+05-09
+*****
+The :ref:`covid-19_modeling_example<numeric_covid_19_xam_py>` application
 of AD is changing on a regular basis, so the details of the
 changes will no longer be tracked in this file, just see current
 example if you are interested.
 
-$head 05-08$$
-$list number$$
-The $code numeric_seirs_fit_xam.py$$ example was renamed
-$cref numeric_covid_19_xam.py$$.
-And it was change to fit covariate multipliers that model
-the infectious rate $latex \beta$$.
-$lnext
-The $code numeric_seirs_model$$ was renamed $cref numeric_seirwd_model$$,
-the D compartment was added to track total deaths,
-the data was changed from Infectious to cumulative death, and
-noise was added to the data.
-$lnext
-In $code numeric_covid_a9_xam$$,
-reduce to just E and I as unknowns in initial conditions.
-Initial R = D = 0, S = 1 - E - R.
-$lnext
-Use the observed information matrix to estimate the covariance
-of the optimal parameters.
-$lend
+05-08
+*****
 
-$head 05-07$$
-$list number$$
-The function $code scipy.misc.factorial$$
-has been deprecated so change it to
-$code scipy.special.factorial$$.
-$lnext
-Add the $code numeric_seirs_model$$ utility example
-which allows rates in the ODE to change with time.
-This enabled changing the $cref numeric_covid_19_xam.py$$
-example to estimate a $latex \beta$$ coefficient that
-changes with time.
-$lnext
-The $code numeric_seirs_class$$ example was removed because
-$code numeric_seirwd_model$$ replaces it with more general
-capabilities.
-$lend
+#.  The ``numeric_seirs_fit_xam.py`` example was renamed
+    :ref:`numeric_covid_19_xam_py<numeric_covid_19_xam_py>`.
+    And it was change to fit covariate multipliers that model
+    the infectious rate :math:`\beta`.
+#.  The ``numeric_seirs_model`` was renamed :ref:`numeric_seirwd_model<numeric_seirwd_model>`,
+    the D compartment was added to track total deaths,
+    the data was changed from Infectious to cumulative death, and
+    noise was added to the data.
+#.  In ``numeric_covid_a9_xam`` ,
+    reduce to just E and I as unknowns in initial conditions.
+    Initial R = D = 0, S = 1 - E - R.
+#.  Use the observed information matrix to estimate the covariance
+    of the optimal parameters.
 
+05-07
+*****
 
-$head 05-06$$
-$list number$$
-Add the following utility examples:
-$cref numeric_optimize_fun_class$$,
-$cref numeric_runge4_step$$,
-$cref numeric_ode_multi_step$$,
-$code numeric_seirs_class$$.
-(The $code numeric_seirs_class$$ was later replaced by
-$cref numeric_seirwd_model$$.)
-$lnext
-Add mention of using $code DYLD_LIBRARY_PATH$$ in the
-$cref/cppad library missing/install_error/CppAD Library Missing/$$
-install instructions for the Mac.
-$lend
+#.  The function ``scipy.misc.factorial``
+    has been deprecated so change it to
+    ``scipy.special.factorial`` .
+#.  Add the ``numeric_seirs_model`` utility example
+    which allows rates in the ODE to change with time.
+    This enabled changing the :ref:`numeric_covid_19_xam_py<numeric_covid_19_xam_py>`
+    example to estimate a :math:`\beta` coefficient that
+    changes with time.
+#.  The ``numeric_seirs_class`` example was removed because
+    ``numeric_seirwd_model`` replaces it with more general
+    capabilities.
 
-$head 05-05$$
-Add the $cref numeric_runge4_step_xam.py$$ example.
+05-06
+*****
 
-$head 05-04$$
-Add the $cref numeric_optimize_fun_xam.py$$ example.
+#.  Add the following utility examples:
+    :ref:`numeric_optimize_fun_class<numeric_optimize_fun_class>`,
+    :ref:`numeric_runge4_step<numeric_runge4_step>`,
+    :ref:`numeric_ode_multi_step<numeric_ode_multi_step>`,
+    ``numeric_seirs_class`` .
+    (The ``numeric_seirs_class`` was later replaced by
+    :ref:`numeric_seirwd_model<numeric_seirwd_model>`.)
+#.  Add mention of using ``DYLD_LIBRARY_PATH`` in the
+    :ref:`cppad_library_missing<install_error.cppad_library_missing>`
+    install instructions for the Mac.
 
-$head 04-28$$
-The $cref/f.from_json()/py_fun_json/from_json/$$ function was added.
+05-05
+*****
+Add the :ref:`numeric_runge4_step_xam_py<numeric_runge4_step_xam_py>` example.
+
+05-04
+*****
+Add the :ref:`numeric_optimize_fun_xam_py<numeric_optimize_fun_xam_py>` example.
+
+04-28
+*****
+The :ref:`f_from_json()<py_fun_json.from_json>` function was added.
 In addition, the
-$cref/empty function/py_fun_ctor/f/Empty Function/$$ constructor was added.
+:ref:`empty_function<py_fun_ctor.f.empty_function>` constructor was added.
 
-$head 04-27$$
-The $code setup.py$$ program now installs a separate copy of CppAD
+04-27
+*****
+The ``setup.py`` program now installs a separate copy of CppAD
 and provides instructions at the end for modifying your
-$code LD_LIBRARY_PATH$$; see
-$cref/cppad library missing/install_error/CppAD Library Missing/$$.
+``LD_LIBRARY_PATH`` ; see
+:ref:`cppad_library_missing<install_error.cppad_library_missing>`.
 
-$head 04-26$$
-The $code setup.py$$ program was modified to try to automatically solve the
-$cref/cppad library missing/install_error/CppAD Library Missing/$$ problem.
+04-26
+*****
+The ``setup.py`` program was modified to try to automatically solve the
+:ref:`cppad_library_missing<install_error.cppad_library_missing>` problem.
 
-$head 04-25$$
-The $cref/f.to_json()/py_fun_json/to_json/$$ function was added.
+04-25
+*****
+The :ref:`f_to_json()<py_fun_json.to_json>` function was added.
 
-
-$head 04-24$$
+04-24
+*****
 The newer Mac systems seems to require that one use
-$code -stdlib=libc++$$ compile and link flag.
+``-stdlib=libc++`` compile and link flag.
 The install has been changed to check for and adapt to this condition.
-In addition, $cref setup.py$$ now runs the $code cmake$$ command; i.e.,
-the user no longer needs to run $code cmake$$ to test the
-$cref/c++/setup.py/Test/c++/$$ library.
+In addition, :ref:`setup_py<setup_py>` now runs the ``cmake`` command; i.e.,
+the user no longer needs to run ``cmake`` to test the
+:ref:`c++<setup_py.test.c++>` library.
 
-$head 04-23$$
-Add an $cref install_error$$ section to the documentation.
+04-23
+*****
+Add an :ref:`install_error<install_error>` section to the documentation.
 
-$head 04-22$$
-$list number$$
-Instructions were added for
-$cref/installing using pip/setup.py/Install Using Pip/$$.
-$lnext
-The binary operators were extended to include $icode x op ay$$ where:
-$icode x$$ is a double (python $code float$$),
-$icode ay$$ is an $code a_double$$,
-and $icode op$$ is
-$code +$$,
-$code -$$,
-$code *$$,
-$code /$$, or
-$code **$$.
-Note that this automatically transfers to numpy arrays; e.g
-$icode%x% * %ay%$$ where $icode x$$ is a double and $icode ay$$
-is a numpy array of $code a_double$$.
-$lend
+04-22
+*****
 
-$head 04-20$$
-$list number$$
-Move configuration setting from $cref setup.py$$ to
-$cref%bin/get_cppad.sh%get_cppad.sh%Settings%$$.
-$lnext
-First version that installs using $code pip$$.
-Install instructions for pip will be added soon.
-$lend
+#.  Instructions were added for
+    :ref:`installing_using_pip<setup_py.install_using_pip>`.
+#.  The binary operators were extended to include *x* ``op`` *ay* where:
+    *x* is a double (python ``float`` ),
+    *ay* is an ``a_double`` ,
+    and *op* is
+    ``+`` ,
+    ``-`` ,
+    ``*`` ,
+    ``/`` , or
+    ``**`` .
+    Note that this automatically transfers to numpy arrays; e.g
+    *x* ``*`` *ay* where *x* is a double and *ay*
+    is a numpy array of ``a_double`` .
 
-$head 04-19$$
-$list number$$
-Move the python source that gets distributed from $code lib/python$$
-to $code lib/python/cppad_py$$ so that more like a standard python package.
-$lnext
-Drop support for python2. It is not consistent with python3 in
-some of the $code setup.py$$ actions.
-$lend
+04-20
+*****
 
-$head 04-18$$
-$list number$$
-Change $icode yq$$ to $icode xq$$, correct documentation,
-for $icode xq$$ in the
-$cref/c++/cpp_fun_reverse/xq/$$ and $cref/python/py_fun_reverse/xq/$$
-reverse mode documentation.
-$lnext
-Remove the $code --inplace$$ option from the
-$cref/syntax/setup.py/Syntax/$$ for building the cppad_py python module.
-$lend
+#.  Move configuration setting from :ref:`setup_py<setup_py>` to
+    :ref:`bin/get_cppad_sh<get_cppad_sh.settings>`.
+#.  First version that installs using ``pip`` .
+    Install instructions for pip will be added soon.
 
-$head 04-13$$
-$list number$$
-The $icode%z% = pow(%x%, %y%)%$$ functions was added; see
-$cref a_double_binary$$.
-$lnext
-Add the $cref/var2par/a_double_property/var2par/$$ function
-and improve the notation in the
-$cref/near_equal/a_double_property/near_equal/$$ notation.
-$lend
+04-19
+*****
 
-$head 04-12$$
-$list number$$
-Add the $code erf$$ function was added to the
-list of $code a_double$$ unary $cref/fun/a_double_unary_fun/fun/$$
-that have been implemented.
-$lnext
-The dynamic parameter argument was missing from the
-$cref/syntax/py_independent/Syntax/$$ for the python version
-of the $code independent$$ function.  This has been fixed.
-$lnext
-Improve the $cref/test/setup.py/Test/$$ and $cref/install/setup.py/Install/$$
-discussion in $code setup.py$$.
-$lend
+#.  Move the python source that gets distributed from ``lib/python``
+    to ``lib/python/cppad_py`` so that more like a standard python package.
+#.  Drop support for python2. It is not consistent with python3 in
+    some of the ``setup.py`` actions.
 
-$head 04-10$$
-$list number$$
-Change the documentation display on the web using a more recent version of
-the documentation program $code omhelp-20200130$$.
-$lnext
-Add $cref/caching/get_cppad.sh/Caching/$$ to the Cppad install.
-$lend
+04-18
+*****
 
-$end
+#.  Change *yq* to *xq* , correct documentation,
+    for *xq* in the
+    :ref:`c++<cpp_fun_reverse.xq>` and :ref:`python<py_fun_reverse.xq>`
+    reverse mode documentation.
+#.  Remove the ``--inplace`` option from the
+    :ref:`syntax<setup_py.syntax>` for building the cppad_py python module.
+
+04-13
+*****
+
+#.  The *z* =  ``pow`` ( *x* , *y* ) functions was added; see
+    :ref:`a_double_binary<a_double_binary>`.
+#.  Add the :ref:`var2par<a_double_property.var2par>` function
+    and improve the notation in the
+    :ref:`near_equal<a_double_property.near_equal>` notation.
+
+04-12
+*****
+
+#.  Add the ``erf`` function was added to the
+    list of ``a_double`` unary :ref:`fun<a_double_unary_fun.fun>`
+    that have been implemented.
+#.  The dynamic parameter argument was missing from the
+    :ref:`syntax<py_independent.syntax>` for the python version
+    of the ``independent`` function.  This has been fixed.
+#.  Improve the :ref:`test<setup_py.test>` and :ref:`install<setup_py.install>`
+    discussion in ``setup.py`` .
+
+04-10
+*****
+
+#.  Change the documentation display on the web using a more recent version of
+    the documentation program ``omhelp-20200130`` .
+#.  Add :ref:`caching<get_cppad_sh.caching>` to the Cppad install.
+
+{xsrst_end whats_new_2020}

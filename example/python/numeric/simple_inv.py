@@ -72,39 +72,52 @@ def simple_inv(A) :
     return Ainv
 # END_PYTHON
 #
-# $begin numeric_simple_inv$$ $newlinech #$$
-# $spell
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin numeric_simple_inv}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
 #   inv
-#   Ainv
-# $$
+#   ainv
+# }
 #
-# $section An AD Compatible Matrix Inverse Routine$$
+# An AD Compatible Matrix Inverse Routine
+# #######################################
 #
-# $head Syntax$$
-# $icode%Ainv% = simple_inv(%A%)%$$
+# Syntax
+# ******
+# *Ainv* =  ``simple_inv`` ( *A* )
 #
-# $head Purpose$$
-# This routine can be used with $code ad_double$$
+# Purpose
+# *******
+# This routine can be used with ``ad_double``
 #
-# $head A$$
+# A
+# *
 # This must be an invertible square matrix (no singular detection is done).
-# The type of its elements can be $code float$$ or $code a_double$$.
+# The type of its elements can be ``float`` or ``a_double`` .
 #
-# $head Ainv$$
-# This is the matrix inverse of $icode A$$.
+# Ainv
+# ****
+# This is the matrix inverse of *A* .
 #
-# $children%
+# {xsrst_children
 #   example/python/numeric/simple_inv_xam.py
-# %$$
-# $head Example$$
-# $cref numeric_simple_inv_xam.py$$
+# }
+# Example
+# *******
+# :ref:`numeric_simple_inv_xam_py<numeric_simple_inv_xam_py>`
 #
-# $head Source Code$$
+# Source Code
+# ***********
 # When viewing the source code below it is important to know that
 # optimizes out multiplication by the constant one while recording a function.
 # It also optimizes out both addition and multiplication by the constant zero.
-# $srcthisfile%
-#   0%# BEGIN_PYTHON%# END_PYTHON%0
-# %$$
+# {xsrst_file
+#   # BEGIN_PYTHON
+#   # END_PYTHON
+# }
 #
-# $end
+# {xsrst_end numeric_simple_inv}

@@ -57,11 +57,16 @@ def fun_dynamic_xam() :
     return ok
 # END SOURCE
 # -----------------------------------------------------------------------------
-# $begin fun_dynamic_xam.py$$ $newlinech #$$
-# $spell
-# $$
-# $section Python: Using Dynamic Parameters: Example and Test$$
-# $srcthisfile|
-#   0|# BEGIN SOURCE|# END SOURCE|0
-# |$$
-# $end
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin fun_dynamic_xam_py}
+#
+# .. include:: ../preamble.rst
+#
+# Python: Using Dynamic Parameters: Example and Test
+# ##################################################
+# {xsrst_file
+#   # BEGIN SOURCE
+#   # END SOURCE
+# }
+# {xsrst_end fun_dynamic_xam_py}

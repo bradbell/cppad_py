@@ -5,18 +5,25 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin numeric_seirwd_model_xam.py$$ $newlinech #$$
-# $spell
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin numeric_seirwd_model_xam_py}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
 #   seris
-# $$
+# }
 #
-# $section Example Using seris_model$$
+# Example Using seris_model
+# #########################
 #
-# $srcthisfile%
-#   0%# BEGIN_PYTHON%# END_PYTHON%1
-# %$$
+# {xsrst_file
+#   # BEGIN_PYTHON
+#   # END_PYTHON
+# }
 #
-# $end
+# {xsrst_end numeric_seirwd_model_xam_py}
 # BEGIN_PYTHON
 import numpy
 from seirwd_model import seirwd_model

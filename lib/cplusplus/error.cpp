@@ -14,57 +14,64 @@
 
 /*
 -----------------------------------------------------------------------------
-$begin error_message$$
-$spell
-    vec
+{xsrst_begin error_message}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     cppad
-    py
-    std
-    runtime
-$$
+}
 
-$section Exception Handling$$
+Exception Handling
+##################
 
-$head Syntax$$
-$icode%stored_message% = error_message(%input_message%)%$$
+Syntax
+******
+*stored_message* =  ``error_message`` ( *input_message* )
 
-$head In Try Block$$
-If $icode input_message$$ is $bold not$$ the empty string,
-it is stored in $code error_message$$ and an exception is thrown.
-This is intended to be done inside a $code try$$ block.
+In Try Block
+************
+If *input_message* is **not** the empty string,
+it is stored in ``error_message`` and an exception is thrown.
+This is intended to be done inside a ``try`` block.
 
-$subhead exception$$
-The type of the exception is $code std::runtime_error$$
-which is derived from $code std::exception$$.
-If the standard exception $code what()$$ is called,
-the return value will be the value of $icode input_message$$
+exception
+=========
+The type of the exception is ``std::runtime_error``
+which is derived from ``std::exception`` .
+If the standard exception ``what()`` is called,
+the return value will be the value of *input_message*
 when the exception was thrown.
 
-$head In Catch Block$$
-If $icode input_message$$ is the empty string,
-the most recently stored message in $code error_message$$ is returned.
-In addition, the message is deleted from $code error_message$$.
-If there are no more messages stored in $code error_message$$,
+In Catch Block
+**************
+If *input_message* is the empty string,
+the most recently stored message in ``error_message`` is returned.
+In addition, the message is deleted from ``error_message`` .
+If there are no more messages stored in ``error_message`` ,
 the empty string is returned.
-This is intended to be done inside a $code catch$$ block.
+This is intended to be done inside a ``catch`` block.
 
-$head Cppad Errors$$
+Cppad Errors
+************
 Calls to the Cppad error handler get mapped to a call
-to $code error_message$$.
+to ``error_message`` .
 
-$head Not Thread Safe$$
+Not Thread Safe
+***************
 The message storage is done using static information in
-$code error_message$$ and hence is not thread safe.
+``error_message`` and hence is not thread safe.
 
-$children%
-    example/cplusplus/error_message_xam.cpp%
+{xsrst_children
+    example/cplusplus/error_message_xam.cpp
     example/python/core/error_message_xam.py
-%$$
-$head Example$$
-$cref/C++/error_message_xam.cpp/$$,
-$cref/Python/error_message_xam.py/$$.
+}
+Example
+*******
+:ref:`c++<error_message_xam_cpp>`,
+:ref:`python<error_message_xam_py>`.
 
-$end
+{xsrst_end error_message}
 */
 namespace cppad_py {
     // -----------------------------------------------------------------------

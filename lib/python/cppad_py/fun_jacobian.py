@@ -5,58 +5,64 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_fun_jacobian$$ $newlinech #$$
-# $spell
-#   vec
-#   Taylor
-#   Jacobian
-#   numpy
-# $$
+# {xsrst_comment_ch #}
 #
-# $section Jacobian of an AD Function$$
+# {xsrst_begin py_fun_jacobian}
 #
-# $head Syntax$$
-# $icode%J% = %f%.jacobian(%x%)%$$
+# .. include:: ../preamble.rst
 #
-# $head f$$
+# Jacobian of an AD Function
+# ##########################
+#
+# Syntax
+# ******
+# *J* = *f* . ``jacobian`` ( *x* )
+#
+# f
+# *
 # This is either a
-# $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ or
-# $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ function object.
+# :ref:`d_fun<py_fun_ctor.syntax.d_fun>` or
+# :ref:`a_fun<py_fun_ctor.syntax.a_fun>` function object.
 # Upon return, the zero order
-# $cref/Taylor coefficients/py_fun_forward/Taylor Coefficient/$$
-# in $icode f$$ correspond to the value of $icode x$$.
-# The other Taylor coefficients in $icode f$$ are unspecified.
+# :ref:`taylor_coefficients<py_fun_forward.taylor_coefficient>`
+# in *f* correspond to the value of *x* .
+# The other Taylor coefficients in *f* are unspecified.
 #
-# $head f(x)$$
-# We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
-# for the function corresponding to $icode f$$.
-# Note that $icode n$$ is the size of $cref/ax/py_fun_ctor/ax/$$
-# and $icode m$$ is the size of $cref/ay/py_fun_ctor/ay/$$
-# in to the constructor for $icode f$$.
+# f(x)
+# ****
+# We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
+# for the function corresponding to *f* .
+# Note that *n* is the size of :ref:`ax<py_fun_ctor.ax>`
+# and *m* is the size of :ref:`ay<py_fun_ctor.ay>`
+# in to the constructor for *f* .
 #
-# $head x$$
-# If $icode f$$ is a $code d_fun$$ or $code a_fun$$,
-# $icode x$$ is a numpy vector with $code float$$ ($code a_double$$) elements
-# and size $icode n$$.
+# x
+# *
+# If *f* is a ``d_fun`` or ``a_fun`` ,
+# *x* is a numpy vector with ``float`` ( ``a_double`` ) elements
+# and size *n* .
 # It specifies the argument value at we are computing the Jacobian
-# $latex f'(x)$$.
+# :math:`f'(x)`.
 #
-# $head J$$
-# The result is a numpy matrix with $code float$$ ($code a_double$$) elements,
-# $icode m$$ rows, and $code n$$ columns.
-# For $icode i$$ between zero and $icode%m%-1%$$
-# and $icode j$$ between zero and $icode%n%-1%$$,
-# $latex \[
-#   J [ i,  j ] = \frac{ \partial f_i }{ \partial x_j } (x)
-# \] $$
+# J
+# *
+# The result is a numpy matrix with ``float`` ( ``a_double`` ) elements,
+# *m* rows, and ``n`` columns.
+# For *i* between zero and *m* -1
+# and *j* between zero and *n* -1 ,
 #
-# $children%
+# .. math::
+#
+#    J [ i,  j ] = \frac{ \partial f_i }{ \partial x_j } (x)
+#
+# {xsrst_children
 #   example/python/core/fun_jacobian_xam.py
-# %$$
-# $head Example$$
-# $cref fun_jacobian_xam.py$$
+# }
+# Example
+# *******
+# :ref:`fun_jacobian_xam_py<fun_jacobian_xam_py>`
 #
-# $end
+# {xsrst_end py_fun_jacobian}
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy

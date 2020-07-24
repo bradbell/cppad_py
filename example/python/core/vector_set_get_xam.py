@@ -48,17 +48,19 @@ def vector_set_get_xam() :
 #
 # END SOURCE
 #
-# $begin vector_set_get_xam.py$$ $newlinech #$$
-# $spell
-#   py
-#   perl
-#   cppad
-#   py
-#   xam
-#   Jacobian
-#   Jacobians
-# $$
-# $section Python: Setting and Getting Vector Elements: Example and Test$$
-# $srcthisfile|0|# BEGIN SOURCE|# END SOURCE|$$
-# $end
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin vector_set_get_xam_py}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+# }
+# Python: Setting and Getting Vector Elements: Example and Test
+# #############################################################
+# {xsrst_file
+#   # BEGIN SOURCE
+#   # END SOURCE
+# }
+# {xsrst_end vector_set_get_xam_py}
 #

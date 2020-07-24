@@ -56,17 +56,18 @@ bool a_double_unary_fun_xam(void) {
 // END SOURCE
 //
 /*
-$begin a_double_unary_fun_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: a_double Unary Functions with AD Result: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin a_double_unary_fun_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+}
+C++: a_double Unary Functions with AD Result: Example and Test
+##############################################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end a_double_unary_fun_xam_cpp}
 */
 //

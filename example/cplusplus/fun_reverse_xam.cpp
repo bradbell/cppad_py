@@ -120,17 +120,18 @@ bool fun_reverse_xam(void) {
 // END SOURCE
 //
 /*
-$begin fun_reverse_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: Reverse Mode AD: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin fun_reverse_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+}
+C++: Reverse Mode AD: Example and Test
+######################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end fun_reverse_xam_cpp}
 */
 //

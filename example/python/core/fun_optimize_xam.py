@@ -58,17 +58,19 @@ def fun_optimize_xam() :
 #
 # END SOURCE
 # -----------------------------------------------------------------------------
-# $begin fun_optimize_xam.py$$ $newlinech #$$
-# $spell
-#   py
-#   perl
-#   cppad
-#   py
-#   xam
-#   Jacobian
-#   Jacobians
-# $$
-# $section Python: Optimize an d_fun: Example and Test$$
-# $srcthisfile|0|# BEGIN SOURCE|# END SOURCE|$$
-# $end
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin fun_optimize_xam_py}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+# }
+# Python: Optimize an d_fun: Example and Test
+# ###########################################
+# {xsrst_file
+#   # BEGIN SOURCE
+#   # END SOURCE
+# }
+# {xsrst_end fun_optimize_xam_py}
 #

@@ -63,17 +63,18 @@ bool fun_optimize_xam(void) {
 // END SOURCE
 // -----------------------------------------------------------------------------
 /*
-$begin fun_optimize_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: Optimize an d_fun: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin fun_optimize_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+}
+C++: Optimize an d_fun: Example and Test
+########################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end fun_optimize_xam_cpp}
 */
 //

@@ -188,148 +188,168 @@ def seirwd_model(method, t_all, p_all, initial, n_step = 1) :
     return seirwd_all
 # END_PYTHON
 #
-# $begin numeric_seirwd_model$$ $newlinech #$$
-# $spell
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin numeric_seirwd_model}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
 #   seirwd
-#   numpy
-#   cppad
-#   py
-#   xi
-#   interpolant
-#   str
 #   runge
-#   rosen
-# $$
+# }
 #
-# $section A Susceptible Exposed Infectious Recovered and Death Model$$
+# A Susceptible Exposed Infectious Recovered and Death Model
+# ##########################################################
 #
-# $head Purpose$$
-# This routine can be used with $code ad_double$$.
+# Purpose
+# *******
+# This routine can be used with ``ad_double`` .
 #
-# $head Syntax$$
-# $icode%seirwd_all% = seirwd_model(
-#   %method%, %t_all%, %p_all%, %initial%, %n_step% = 1
-# )%$$
+# Syntax
+# ******
 #
-# $head Notation$$
-# $table
-# $latex S(t)$$      $cnext size of the Susceptible group     $rnext
-# $latex E(t)$$      $cnext size of the Exposed group         $rnext
-# $latex I(t)$$      $cnext size of the Infectious group      $rnext
-# $latex R(t)$$      $cnext size Recovered group              $rnext
-# $latex W(t)$$      $cnext size of the group that will die   $rnext
-# $latex D(t)$$      $cnext size of the group that has died   $rnext
-# $latex \alpha(t)$$ $cnext infectious group size exponent    $rnext
-# $latex \beta(t)$$  $cnext infectious rate                   $rnext
-# $latex \sigma(t)$$ $cnext incubation rate                   $rnext
-# $latex \gamma(t)$$ $cnext recovery rate                     $rnext
-# $latex \xi(t)$$    $cnext loss of immunity rate             $rnext
-# $latex \chi(t)$$   $cnext excess mortality rate             $rnext
-# $latex \delta(t)$$ $cnext delay between infectious and death
-# $tend
+# | *seirwd_all* =  ``seirwd_model`` (
+# | |tab| *method* , *t_all* , *p_all* , *initial* , *n_step* = 1
+# | )
 #
-# $head ODE$$
+# Notation
+# ********
+#
+# .. csv-table::
+#   :widths: 4, 34
+#
+#   :math:`S(t)`, size of the Susceptible group
+#   :math:`E(t)`, size of the Exposed group
+#   :math:`I(t)`, size of the Infectious group
+#   :math:`R(t)`, size Recovered group
+#   :math:`W(t)`, size of the group that will die
+#   :math:`D(t)`, size of the group that has died
+#   :math:`\alpha(t)`, infectious group size exponent
+#   :math:`\beta(t)`, infectious rate
+#   :math:`\sigma(t)`, incubation rate
+#   :math:`\gamma(t)`, recovery rate
+#   :math:`\xi(t)`, loss of immunity rate
+#   :math:`\chi(t)`, excess mortality rate
+#   :math:`\delta(t)`, delay between infectious and death
+#
+# ODE
+# ***
 # The ordinary differential equation for this model is:
-# $latex \[
-# \begin{array}{rcll}
-# \dot{S} & = & - \beta  S I^\alpha  & + \xi    R             \\
-# \dot{E} & = & + \beta  S I^\alpha  & - \sigma E             \\
-# \dot{I} & = & + \sigma E           & - ( \gamma + \chi )  I \\
-# \dot{R} & = & + \gamma I           & - \xi    R             \\
-# \dot{W} & = & + \chi   I           & - \delta W             \\
-# \dot{D} & = & + \delta W           &
-# \end{array}
-# \] $$
+#
+# .. math::
+#
+#    \begin{array}{rcll}
+#    \dot{S} & = & - \beta  S I^\alpha  & + \xi    R             \\
+#    \dot{E} & = & + \beta  S I^\alpha  & - \sigma E             \\
+#    \dot{I} & = & + \sigma E           & - ( \gamma + \chi )  I \\
+#    \dot{R} & = & + \gamma I           & - \xi    R             \\
+#    \dot{W} & = & + \chi   I           & - \delta W             \\
+#    \dot{D} & = & + \delta W           &
+#    \end{array}
+#
 # where we dropped the time dependence in the equations above.
 # This model does not account for death by other causes.
 # It is similar to the standard
-# $href%https://www.idmod.org/docs/hiv/model-seir.html%SEIRS%$$ model
+# `SEIRS <https://www.idmod.org/docs/hiv/model-seir.html>`_ model
 # with the following differences:
-# $list number$$
-# The total population $latex N$$ is not included in this model,
-# so the units for $latex \beta$$ are different.
-# $lnext
-# This model tracks death due to the condition using the compartments W and D.
-# $lend
+
+# #. The total population :math:`N` is not included in this model,
+#    so the units for :math:`\beta` are different.
+# #. This model tracks death due to the condition using the compartments W and D.
 #
-# $head method$$
-# This $code str$$ must be either $code runge4$$ or $code rosen3$$.
-# It determines if $cref/runge4_step/numeric_runge4_step/$$ or
-# $cref/rosen3_step/numeric_rosen3_step/$$ is used to solve the ODE.
+# method
+# ******
+# This ``str`` must be either ``runge4`` or ``rosen3`` .
+# It determines if :ref:`runge4_step<numeric_runge4_step>` or
+# :ref:`rosen3_step<numeric_rosen3_step>` is used to solve the ODE.
 #
-# $head t_all$$
-# The argument $icode t_all$$ is a vector that is monotone
+# t_all
+# *****
+# The argument *t_all* is a vector that is monotone
 # increasing or decreasing.
-# The type of its elements can be $code float$$ or $code a_double$$.
+# The type of its elements can be ``float`` or ``a_double`` .
 # The smaller the spacing between time points, the more accurate
 # the approximation is.
 # Note two points can be equal; i.e., no zero spacing.
-# We call $icode%t_all%[0]%$$ the initial time and
-# $icode%t_all%[-1]%$$ the final time.
+# We call *t_all* [0] the initial time and
+# *t_all* [-1] the final time.
 #
-# $head p_all$$
+# p_all
+# *****
 # This argument is a list of dictionaries.
-# The i-th element of the list has the following $icode key$$,
-# $icode value$$ pairs:
-# $table
-# $icode key$$    $cnext $icode value$$         $rnext
-# $code 'alpha'$$ $cnext $latex \alpha( t_i )$$ $rnext
-# $code 'beta'$$  $cnext $latex \beta( t_i )$$  $rnext
-# $code 'sigma'$$ $cnext $latex \sigma( t_i )$$ $rnext
-# $code 'gamma'$$ $cnext $latex \gamma( t_i )$$ $rnext
-# $code 'xi'$$    $cnext $latex \xi( t_i )$$    $rnext
-# $code 'chi'$$   $cnext $latex \chi( t_i )$$   $rnext
-# $code 'delta'$$ $cnext $latex \delta( t_i )$$
-# $tend
-# where $icode t_i$$ is the time $icode%t_all%[%i%]%$$.
-# The type of $icode value$$ can be $code float$$ or $code a_double$$.
+# The i-th element of the list has the following *key* ,
+# *value* pairs:
+#
+# .. csv-table::
+#   :widths: 7, 8
+#
+#   *key* , *value*
+#   ``'alpha'`` , :math:`\alpha( t_i )`
+#   ``'beta'`` , :math:`\beta( t_i )`
+#   ``'sigma'`` , :math:`\sigma( t_i )`
+#   ``'gamma'`` , :math:`\gamma( t_i )`
+#   ``'xi'`` , :math:`\xi( t_i )`
+#   ``'chi'`` , :math:`\chi( t_i )`
+#   ``'delta'`` , :math:`\delta( t_i )`
+#
+# where *t_i* is the time *t_all* [ *i* ] .
+# The type of *value* can be ``float`` or ``a_double`` .
 # Each of the these parameters will be linearly interpolated
-# for times between the those in $icode t_all$$.
+# for times between the those in *t_all* .
 #
-# $subhead alpha$$
-# There is a special restriction that $latex \alpha(t)$$ must be
-# constant; i.e. $latex \alpha( t_i ) = \alpha( t_0 )$$ for
-# all $latex i$$.
-# This is because talking the derivative of $latex I^\alpha$$
-# respect to $latex I$$ has a special representation when $latex \alpha = 1$$.
+# alpha
+# =====
+# There is a special restriction that :math:`\alpha(t)` must be
+# constant; i.e. :math:`\alpha( t_i ) = \alpha( t_0 )` for
+# all :math:`i`.
+# This is because talking the derivative of :math:`I^\alpha`
+# respect to :math:`I` has a special representation when :math:`\alpha = 1`.
 # Using a special representation for that case would not work with AD
-# unless $latex \alpha$$ is constant.
+# unless :math:`\alpha` is constant.
 #
-# $head initial$$
+# initial
+# *******
 # is a vector of length four containing the initial values for
 # S, E, I, R, W, D in that order.
-# The type of its elements can be $code float$$ or $code a_double$$.
+# The type of its elements can be ``float`` or ``a_double`` .
 #
-# $head n_step$$
+# n_step
+# ******
 # This is the number of numerical integration steps to use for each
-# time interval in the $icode t_all$$ array.
-# It must be an $code int$$ greater or equal one.
-# The larger $icode n_step$$ the more computational effort and the more
-# accurate the solution.  The default value is for $icode n_step$$ is one.
+# time interval in the *t_all* array.
+# It must be an ``int`` greater or equal one.
+# The larger *n_step* the more computational effort and the more
+# accurate the solution.  The default value is for *n_step* is one.
 #
-# $head seirwd_all$$
-# The return value $icode seirwd_all$$ is a numpy matrix with row dimension
-# equal to the number of elements in $icode t_all$$ and column dimension
-# equal to six. The value $icode%seirwd_all%[%i%, %j%]%$$ is the
-# approximate solution for the j-th compartment at time $icode%t_all%[%i%]%$$.
-# The compartments have the same order as in $icode initial$$ and
-# $codei%%seirwd%[0,:]%$$ is equal to $icode initial$$.
-# The sequence of floating point operations only depends on $icode t_all$$
-# and the operations used to compute $icode p_fun$$.
+# seirwd_all
+# **********
+# The return value *seirwd_all* is a numpy matrix with row dimension
+# equal to the number of elements in *t_all* and column dimension
+# equal to six. The value *seirwd_all* [ *i* , *j* ] is the
+# approximate solution for the j-th compartment at time *t_all* [ *i* ] .
+# The compartments have the same order as in *initial* and
+# ``seirwd`` [0, *:* is equal to *initial* .
+# The sequence of floating point operations only depends on *t_all*
+# and the operations used to compute *p_fun* .
 #
-# $head Conservation of Mass$$
+# Conservation of Mass
+# ********************
 # Note that the sum of S, E, I, R, W, and D should be constant; i.e.,
 # up to numerical accuracy, it not depend on time.
 #
-# $children%
+# {xsrst_children
 #   example/python/numeric/seirwd_model_xam.py
-# %$$
-# $head Example$$
-# $cref numeric_seirwd_model_xam.py$$
+# }
+# Example
+# *******
+# :ref:`numeric_seirwd_model_xam_py<numeric_seirwd_model_xam_py>`
 #
-# $head Source Code$$
-# $srcthisfile%
-#   0%# BEGIN_PYTHON%# END_PYTHON%0
-# %$$
+# Source Code
+# ***********
+# {xsrst_file
+#   # BEGIN_PYTHON
+#   # END_PYTHON
+# }
 #
-# $end
+# {xsrst_end numeric_seirwd_model}

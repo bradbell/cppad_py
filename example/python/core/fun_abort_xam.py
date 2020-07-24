@@ -52,17 +52,19 @@ def fun_abort_xam() :
 #
 # END SOURCE
 #
-# $begin fun_abort_xam.py$$ $newlinech #$$
-# $spell
-#   py
-#   perl
-#   cppad
-#   py
-#   xam
-#   Jacobian
-#   Jacobians
-# $$
-# $section Python: Abort Recording a_double Operations: Example and Test$$
-# $srcthisfile|0|# BEGIN SOURCE|# END SOURCE|$$
-# $end
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin fun_abort_xam_py}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+# }
+# Python: Abort Recording a_double Operations: Example and Test
+# #############################################################
+# {xsrst_file
+#   # BEGIN SOURCE
+#   # END SOURCE
+# }
+# {xsrst_end fun_abort_xam_py}
 #

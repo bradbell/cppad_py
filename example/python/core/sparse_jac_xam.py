@@ -93,17 +93,20 @@ def sparse_jac_xam() :
 #
 # END SOURCE
 #
-# $begin sparse_jac_xam.py$$ $newlinech #$$
-# $spell
-#   py
-#   perl
-#   cppad
-#   py
-#   xam
-#   Jacobian
-#   Jacobians
-# $$
-# $section Python: Computing Sparse Jacobians: Example and Test$$
-# $srcthisfile|0|# BEGIN SOURCE|# END SOURCE|$$
-# $end
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin sparse_jac_xam_py}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+#   jacobians
+# }
+# Python: Computing Sparse Jacobians: Example and Test
+# ####################################################
+# {xsrst_file
+#   # BEGIN SOURCE
+#   # END SOURCE
+# }
+# {xsrst_end sparse_jac_xam_py}
 #

@@ -79,17 +79,18 @@ bool fun_hessian_xam(void) {
 // END SOURCE
 //
 /*
-$begin fun_hessian_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: Dense Hessian Using AD: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin fun_hessian_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+}
+C++: Dense Hessian Using AD: Example and Test
+#############################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end fun_hessian_xam_cpp}
 */
 //

@@ -8,57 +8,66 @@
 import numpy
 import cppad_py
 # -----------------------------------------------------------------------------
-# $begin numpy2vec$$ $newlinech #$$
-# $spell
-#   Numpy
-#   cppad_py
-#   vec
-#   dtype
-#   tuple
-#   str
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin numpy2vec}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+#   cppad
 #   bool
-# $$
+# }
 #
-# $section Convert a Numpy Array to a cppad_py Vector$$
+# Convert a Numpy Array to a cppad_py Vector
+# ##########################################
 #
-# $head Syntax$$
-# $icode%vec% = cppad_py.utility.numpy2vec(
-#   %array%, %dtype%, %shape%, %context%, %name%
-# )%$$
+# Syntax
+# ******
 #
-# $head array$$
+# | *vec* =  ``cppad_py.utility.numpy2vec`` (
+# | |tab| *array* , *dtype* , *shape* , *context* , *name*
+# | )
+#
+# array
+# *****
 # This is either a vector (only one index) or a matrix
 # (has two indices) that we are converting to a vector.
 # If this array does not match the conditions below,
 # an exception is raised with an appropriate error message.
 #
-# $head dtype$$
+# dtype
+# *****
 # This is the expected data type for the elements of the array.
 # It must be one of the following:
-# $code bool$$, $code int$$, $code float$$ or $code cppad_py.a_double$$.
+# ``bool`` , ``int`` , ``float`` or ``cppad_py.a_double`` .
 #
-# $head shape$$
-# This either a $code int$$ or a tuple of $code int$$ with length one or two.
-# If it is an $code int$$, $icode array$$ is expected to be a vector.
-# If it is a tuple with length one, $icode array$$ is expected to be a vector.
+# shape
+# *****
+# This either a ``int`` or a tuple of ``int`` with length one or two.
+# If it is an ``int`` , *array* is expected to be a vector.
+# If it is a tuple with length one, *array* is expected to be a vector.
 # Otherwise a matrix is expected.
 #
-# $head context$$
-# This is the context that $icode array$$ appears in
+# context
+# *******
+# This is the context that *array* appears in
 # (often to syntax for some other operation).
-# It is a $code str$$ that is used for error reporting.
+# It is a ``str`` that is used for error reporting.
 #
-# $head name$$
-# This is the name used for $icode array$$ in $icode context$$.
-# It is a $code str$$ that is used for error reporting.
+# name
+# ****
+# This is the name used for *array* in *context* .
+# It is a ``str`` that is used for error reporting.
 #
-# $head vec$$
-# This is the values of $icode array$$
+# vec
+# ***
+# This is the values of *array*
 # as a vector is row major order.
-# It has type $code vec_double$$ if $icode dtype$$ is $code float$$,
-# and $code vec_a_double$$ if $icode dtype$$ is $code a_double$$.
+# It has type ``vec_double`` if *dtype* is ``float`` ,
+# and ``vec_a_double`` if *dtype* is ``a_double`` .
 #
-# $end
+# {xsrst_end numpy2vec}
 # -----------------------------------------------------------------------------
 def numpy2vec(array, dtype, shape, context, name) :
     #
@@ -120,49 +129,51 @@ def numpy2vec(array, dtype, shape, context, name) :
     #
     return vec
 # -----------------------------------------------------------------------------
-# $begin vec2numpy$$ $newlinech #$$
+# {xsrst_begin vec2numpy}
 #
-# $spell
-#   cppad_py
-#   numpy
-#   vec
-#   nr
-#   nc
-#   len
-# $$
+# .. include:: ../preamble.rst
 #
-# $section Convert a cppad_py Vector to a Numpy Array$$
+# {xsrst_spell
+#   cppad
+# }
 #
-# $head Syntax$$
-# $icode%array% = cppad_py.utility.vec2numpy(%vec%, %nr%)
-# %$$
-# $icode%array% = cppad_py.utility.vec2numpy(%vec%, %nr%, %nc%)
-# %$$
+# Convert a cppad_py Vector to a Numpy Array
+# ##########################################
 #
-# $head vec$$
+# Syntax
+# ******
+#
+# | *array* =  ``cppad_py.utility.vec2numpy`` ( *vec* , *nr* )
+# | *array* =  ``cppad_py.utility.vec2numpy`` ( *vec* , *nr* , *nc* )
+#
+# vec
+# ***
 # This must have one of the following types:
-# $code cppad_py.vec_int$$,
-# $code cppad_py.vec_double$$,
-# $code vec_py.vec_a_double$$.
-# with size equal to $icode%nr%*%nc%$$.
+# ``cppad_py.vec_int`` ,
+# ``cppad_py.vec_double`` ,
+# ``vec_py.vec_a_double`` .
+# with size equal to *nr* ``*`` *nc* .
 #
-# $head nr$$
-# This is an $code int$$ equal to the number of rows in the array.
-# If the argument $icode nc$$ is not present, the array is a vector; i.e.,
-# $codei%len( %array%.shape ) == 1%$$.
+# nr
+# **
+# This is an ``int`` equal to the number of rows in the array.
+# If the argument *nc* is not present, the array is a vector; i.e.,
+# ``len`` ( *array* . ``shape ) == 1`` .
 #
-# $head nc$$
+# nc
+# **
 # If this argument is present,
-# it is an $code int$$ equal to the number of columns in the array.
+# it is an ``int`` equal to the number of columns in the array.
 # In this case the array is a matrix; i.e.,
-# $codei%len( %array%.shape ) == 2%$$.
+# ``len`` ( *array* . ``shape ) == 2`` .
 #
-# $head array$$
-# This is the array corresponding to $icode vec$$ in row major order.
-# Note that this array can be used after the vector $icode vec$$ drops
+# array
+# *****
+# This is the array corresponding to *vec* in row major order.
+# Note that this array can be used after the vector *vec* drops
 # out of scope (is deleted).
 #
-# $end
+# {xsrst_end vec2numpy}
 # -----------------------------------------------------------------------------
 def vec2numpy(vec, nr, nc = None) :
     # dtype

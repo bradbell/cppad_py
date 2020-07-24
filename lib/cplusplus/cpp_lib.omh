@@ -5,12 +5,18 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin cpp_lib$$
+{xsrst_begin cpp_lib}
 
-$section The C++ Library$$
+.. include:: ../preamble.rst
 
-$childtable%lib/cplusplus/cplusplus.omh
-    %lib/cplusplus/more_cpp.omh
-%$$
+The C++ Library
+###############
 
-$end
+Children
+********
+{xsrst_child_list
+    lib/cplusplus/cplusplus.omh
+    lib/cplusplus/more_cpp.omh
+}
+
+{xsrst_end cpp_lib}

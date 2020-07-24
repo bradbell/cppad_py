@@ -5,172 +5,161 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin whats_new_2018$$
-$spell
-    Cppad
-    Py
-    std::runtime_error
+{xsrst_begin whats_new_2018}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+    cppad
+    error
     cmake
     init
-    numpy
     ind
     dep
-    af
-    xam
     cxx
-$$
+}
 
-$section Cppad Py Changes During 2018$$
+Cppad Py Changes During 2018
+############################
 
-$head 11-10$$
-$list number$$
-Added the $cref/dynamic/py_independent/dynamic/$$
-argument to the $code independent$$ function and the
-$cref/f.new_dynamic/py_fun_new_dynamic/$$ function.
-$lnext
-Added the sections $cref more_cpp$$ and $cref more_py$$.
-$lend
+11-10
+*****
 
-$head 11-09$$
-Include binary operations where first operand is an $code a_double$$
-and second operand is a $code double$$; see
-$cref a_double_binary$$,
-$cref a_double_compare$$, and
-$cref a_double_assign$$.
+#.  Added the :ref:`dynamic<py_independent.dynamic>`
+    argument to the ``independent`` function and the
+    :ref:`f_new_dynamic<py_fun_new_dynamic>` function.
+#.  Added the sections :ref:`more_cpp<more_cpp>` and :ref:`more_py<more_py>`.
 
+11-09
+*****
+Include binary operations where first operand is an ``a_double``
+and second operand is a ``double`` ; see
+:ref:`a_double_binary<a_double_binary>`,
+:ref:`a_double_compare<a_double_compare>`, and
+:ref:`a_double_assign<a_double_assign>`.
 
-$head 11-07$$
-$list number$$
-Advance to cppad-20181106 (must re-run $code bin/get_cppad.sh$$).
-$lnext
-The $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ objects were added.
-This support all the operations that
-$cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ support all the
-$cref py_fun$$ operations with the exception of
-$cref/optimize/py_fun_optimize/$$.
-The $cref py_sparse$$ operations are not yet supported.
-$lend
+11-07
+*****
 
-$head 11-05$$
-$list number$$
-$bold API Change$$:
-change $code cppad_py.a_fun$$ to $code cppad_py.d_fun$$
-because it is a function that evaluates in $code double$$
-and plan to use $code cppad_py.a_fun$$ for a function that
-evaluates in $code a_double$$.
-$lnext
-Advance to cppad-20181105 (must re-run $code bin/get_cppad.sh$$).
-$lend
+#.  Advance to cppad-20181106 (must re-run ``bin/get_cppad.sh`` ).
+#.  The :ref:`a_fun<py_fun_ctor.syntax.a_fun>` objects were added.
+    This support all the operations that
+    :ref:`d_fun<py_fun_ctor.syntax.d_fun>` support all the
+    :ref:`py_fun<py_fun>` operations with the exception of
+    :ref:`optimize<py_fun_optimize>`.
+    The :ref:`py_sparse<py_sparse>` operations are not yet supported.
 
-$head 08-13$$
-$list number$$
-Change $code cppad_cxx_flags$$ to
-$cref/extra_cxx_flags/get_cppad.sh/Settings/extra_cxx_flags/$$ in the user
-configuration settings.
-Also remove $code swig_cxx_flags$$ from these user settings
-(set automatically).
-$lnext
-Improve the install instructions; see $cref setup.py$$.
-$lend
+11-05
+*****
 
-$head 07-31$$
-$list number$$
-The general purpose Swig example $code swig_xam$$,
-which was not specific to cppad_py,
-has been removed.
-$lnext
-A change to $code setup.py$$ was making the
-$cref get_cppad.sh$$ script fail.
-This has been fixed.
-$lnext
-The python tests are no run in $code example/python$$
-(not copied to the build directory).
-$lend
+#.  **API Change** :
+    change ``cppad_py.a_fun`` to ``cppad_py.d_fun``
+    because it is a function that evaluates in ``double``
+    and plan to use ``cppad_py.a_fun`` for a function that
+    evaluates in ``a_double`` .
+#.  Advance to cppad-20181105 (must re-run ``bin/get_cppad.sh`` ).
 
-$head 07-26$$
-Change $code cppad_py/python_major_version$$
-to $code cppad_py/python_version$$
+08-13
+*****
+
+#.  Change ``cppad_cxx_flags`` to
+    :ref:`extra_cxx_flags<get_cppad_sh.settings.extra_cxx_flags>` in the user
+    configuration settings.
+    Also remove ``swig_cxx_flags`` from these user settings
+    (set automatically).
+#.  Improve the install instructions; see :ref:`setup_py<setup_py>`.
+
+07-31
+*****
+
+#.  The general purpose Swig example ``swig_xam`` ,
+    which was not specific to cppad_py,
+    has been removed.
+#.  A change to ``setup.py`` was making the
+    :ref:`get_cppad_sh<get_cppad_sh>` script fail.
+    This has been fixed.
+#.  The python tests are no run in ``example/python``
+    (not copied to the build directory).
+
+07-26
+*****
+Change ``cppad_py/python_major_version``
+to ``cppad_py/python_version``
 because it now contains both major and minor version numbers.
 
-$head 07-19$$
-Add $code -std=c++11$$ to the default compile flags in
-$cref setup.py$$.
-Add $code -py3$$ to the $code swig$$ builds
-when running $code setup.py$$ using Python 3; see
-$href%http://www.swig.org/Doc1.3/Python.html#Python_python3support
-    %swig python 3
-%$$.
+07-19
+*****
+Add ``-std=c++11`` to the default compile flags in
+:ref:`setup_py<setup_py>`.
+Add ``-py3`` to the ``swig`` builds
+when running ``setup.py`` using Python 3; see
+`swig python 3
+<http://www.swig.org/Doc1.3/Python.html#Python_python3support>`_.
 
-$head 07-15$$
-$list number$$
-Better error reporting for type and size errors in
-$code numpy.array$$ arguments to $code cppad_py$$ functions using
-$cref numpy2vec$$.
-$lnext
-Finish converting all vectors and matrices in
-$cref py_lib$$ to numpy arrays.
-Note the $cref py_utility$$ routines do the conversion.
-$lend
+07-15
+*****
 
-$head 07-14$$
-$list number$$
-Continue conversion of python library to using $code numpy.array$$; see
-$cref py_fun_forward$$, $cref py_fun_reverse$$.
-$lnext
-Add the $cref/f.size_order()/py_fun_property/size_order/$$ function.
-$lend
+#.  Better error reporting for type and size errors in
+    ``numpy.array`` arguments to ``cppad_py`` functions using
+    :ref:`numpy2vec<numpy2vec>`.
+#.  Finish converting all vectors and matrices in
+    :ref:`py_lib<py_lib>` to numpy arrays.
+    Note the :ref:`py_utility<py_utility>` routines do the conversion.
 
-$head 07-13$$
-Continue conversion of python library to using $code numpy.array$$; see
-$cref py_fun_jacobian$$, $cref py_fun_hessian$$.
+07-14
+*****
 
-$head 07-12$$
-$list number$$
-Continue conversion of python library to using $code numpy.array$$; see
-$cref py_independent$$, $cref py_fun_ctor$$.
-$lnext
-Add the file $code cppad_py/python_major_version$$ which contains
-the major version of python that this build of $code cppad_py$$ is for.
-$lnext
-Automatically use $cref/build_type/get_cppad.sh/Settings/build_type/$$
-control how setup.py compiles C++
-(one used to use flags on setup.py command line).
-$lnext
-setup.py was using the git repository version of Cppad instead of the
-one installed in $code build/prefix$$ by $cref get_cppad.sh$$.
-This has been fixed.
-$lnext
-Change $code size_ind$$ to $cref/size_domain/py_fun_property/size_domain/$$
-and $code size_dep$$ to $cref/size_range/py_fun_property/size_range/$$.
-$lend
+#.  Continue conversion of python library to using ``numpy.array`` ; see
+    :ref:`py_fun_forward<py_fun_forward>`, :ref:`py_fun_reverse<py_fun_reverse>`.
+#.  Add the :ref:`f_size_order()<py_fun_property.size_order>` function.
 
-$head 07-10$$
+07-13
+*****
+Continue conversion of python library to using ``numpy.array`` ; see
+:ref:`py_fun_jacobian<py_fun_jacobian>`, :ref:`py_fun_hessian<py_fun_hessian>`.
+
+07-12
+*****
+
+#.  Continue conversion of python library to using ``numpy.array`` ; see
+    :ref:`py_independent<py_independent>`, :ref:`py_fun_ctor<py_fun_ctor>`.
+#.  Add the file ``cppad_py/python_major_version`` which contains
+    the major version of python that this build of ``cppad_py`` is for.
+#.  Automatically use :ref:`build_type<get_cppad_sh.settings.build_type>`
+    control how setup.py compiles C++
+    (one used to use flags on setup.py command line).
+#.  setup.py was using the git repository version of Cppad instead of the
+    one installed in ``build/prefix`` by :ref:`get_cppad_sh<get_cppad_sh>`.
+    This has been fixed.
+#.  Change ``size_ind`` to :ref:`size_domain<py_fun_property.size_domain>`
+    and ``size_dep`` to :ref:`size_range<py_fun_property.size_range>`.
+
+07-10
+*****
 Start conversion of python library from using
-$code vector$$ to using $code numpy.array$$; see
-$cref py_independent$$.
+``vector`` to using ``numpy.array`` ; see
+:ref:`py_independent<py_independent>`.
 
-$head 07-08$$
-$list number$$
-Advanced to $code cppad-20180703$$.
-$lnext
-Fix the following warning:
-$code catching polymorphic type class 'std::runtime_error' by value$$.
-$lnext
-Suppress the following warning when running $cref setup.py$$:
-$code clearing an object of non-trivial type class 'cppad_py::a_double'$$;
-see $href%https://github.com/swig/swig/issues/1259%swig issue 1259%$$.
-$lnext
-Move all settings to $cref setup.py$$ and run $code cmake$$ from there.
-$lnext
-The file $code cppad_py/__init__.py$$ was not being created.
-This has been fixed.
-$lend
+07-08
+*****
 
-$head 07-07$$
+#.  Advanced to ``cppad-20180703`` .
+#.  Fix the following warning:
+    ``catching polymorphic type class 'std::runtime_error' by value`` .
+#.  Suppress the following warning when running :ref:`setup_py<setup_py>`:
+    ``clearing an object of non-trivial type class 'cppad_py::a_double'`` ;
+    see `swig issue 1259 <https://github.com/swig/swig/issues/1259>`_.
+#.  Move all settings to :ref:`setup_py<setup_py>` and run ``cmake`` from there.
+#.  The file ``cppad_py/__init__.py`` was not being created.
+    This has been fixed.
+
+07-07
+*****
 Change build of Python module to use Python 3
 (now it can use either 2 or 3).
 
-$head 07-03$$
+07-03
+*****
 Birthday when Cppad Py was first extracted from Cppad Swig.
 
-$end
+{xsrst_end whats_new_2018}

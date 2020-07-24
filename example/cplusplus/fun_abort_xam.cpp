@@ -57,17 +57,18 @@ bool fun_abort_xam(void) {
 // END SOURCE
 //
 /*
-$begin fun_abort_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: Abort Recording a_double Operations: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin fun_abort_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+}
+C++: Abort Recording a_double Operations: Example and Test
+##########################################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end fun_abort_xam_cpp}
 */
 //

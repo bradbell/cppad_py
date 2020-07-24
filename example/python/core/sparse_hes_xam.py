@@ -97,17 +97,19 @@ def sparse_hes_xam() :
 #
 # END SOURCE
 #
-# $begin sparse_hes_xam.py$$ $newlinech #$$
-# $spell
-#   py
-#   perl
-#   cppad
-#   py
-#   xam
-#   Jacobian
-#   Jacobians
-# $$
-# $section Python: Hessian Sparsity Patterns: Example and Test$$
-# $srcthisfile|0|# BEGIN SOURCE|# END SOURCE|$$
-# $end
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin sparse_hes_xam_py}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+# }
+# Python: Hessian Sparsity Patterns: Example and Test
+# ###################################################
+# {xsrst_file
+#   # BEGIN SOURCE
+#   # END SOURCE
+# }
+# {xsrst_end sparse_hes_xam_py}
 #

@@ -30,17 +30,19 @@ bool error_message_xam(void) {
 // END SOURCE
 // -----------------------------------------------------------------------------
 /*
-$begin error_message_xam.cpp$$
-$spell
-    cplusplus
+{xsrst_begin error_message_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: Cppad Py Exception Handling: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+}
+C++: Cppad Py Exception Handling: Example and Test
+##################################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end error_message_xam_cpp}
 */
 //

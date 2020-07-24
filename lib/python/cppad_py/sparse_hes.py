@@ -5,98 +5,106 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_sparse_hes$$ $newlinech #$$
-# $spell
-#   Jacobian
-#   Taylor
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin py_sparse_hes}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
 #   rcv
-#   nr
-#   nc
-#   const
-#   vec
-#   rc
 #   hes
-#   cppad_py
-#   numpy
-# $$
+#   cppad
+# }
 #
-# $section Computing Sparse Hessians$$
+# Computing Sparse Hessians
+# #########################
 #
-# $head Syntax$$
-# $icode%work% = cppad_py.sparse_hes_work()
-# %$$
-# $icode%n_sweep% = %f%.sparse_hes(%subset%, %x%, %r%, %pattern%, %work%)
-# %$$
+# Syntax
+# ******
 #
-# $head Purpose$$
-# We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-# function corresponding to $icode f$$.
-# Given a vector $latex r \in \B{R}^m$$, define
-# $latex \[
-#   H(x) = (r^\R{T} F)^{(2)} ( x )
-# \] $$
+# | *work* =  ``cppad_py.sparse_hes_work`` ()
+# | *n_sweep* = *f* . ``sparse_hes`` ( *subset* , *x* , *r* , *pattern* , *work* )
+#
+# Purpose
+# *******
+# We use :math:`F : \B{R}^n \rightarrow \B{R}^m` to denote the
+# function corresponding to *f* .
+# Given a vector :math:`r \in \B{R}^m`, define
+#
+# .. math::
+#
+#    H(x) = (r^\R{T} F)^{(2)} ( x )
+#
 # This routine takes advantage of sparsity when computing elements
-# of the Hessian $latex H(x)$$.
+# of the Hessian :math:`H(x)`.
 #
-# $head f$$
+# f
+# *
 # This object must have been returned by a previous call to the python
-# $cref/d_fun/py_fun_ctor/$$ constructor.
-# Note that the Taylor coefficients stored in $icode f$$ are affected
+# :ref:`d_fun<py_fun_ctor>` constructor.
+# Note that the Taylor coefficients stored in *f* are affected
 # by this operation; see
-# $cref/uses forward/py_sparse_hes/Uses Forward/$$ below.
+# :ref:`uses_forward<py_sparse_hes.uses_forward>` below.
 #
-# $head subset$$
-# This argument must have be a $cref/matrix/py_sparse_rcv/matrix/$$
-# returned by the $code sparse_rcv$$ constructor.
-# Its row size and column size is $icode n$$; i.e.,
-# $icode%subset%.nr() == %n%$$ and $icode%subset%.nc() == %n%$$.
+# subset
+# ******
+# This argument must have be a :ref:`matrix<py_sparse_rcv.matrix>`
+# returned by the ``sparse_rcv`` constructor.
+# Its row size and column size is *n* ; i.e.,
+# *subset* . ``nr`` () == *n* and *subset* . ``nc`` () == *n* .
 # It specifies which elements of the Hessian are computed.
 # The input value of its value vector
-# $icode%subset%.val()%$$ does not matter.
+# *subset* . ``val`` () does not matter.
 # Upon return it contains the value of the corresponding elements
 # of the Jacobian.
-# All of the row, column pairs in $icode subset$$ must also appear in
-# $icode pattern$$; i.e., they must be possibly non-zero.
+# All of the row, column pairs in *subset* must also appear in
+# *pattern* ; i.e., they must be possibly non-zero.
 #
-# $head x$$
-# This argument is a numpy vector with $code float$$ elements
-# and size $icode n$$.
-# It specifies the point at which to evaluate the Hessian $latex H(x)$$.
+# x
+# *
+# This argument is a numpy vector with ``float`` elements
+# and size *n* .
+# It specifies the point at which to evaluate the Hessian :math:`H(x)`.
 #
-# $head r$$
-# This argument is a numpy vector with $code float$$ elements
-# and size $icode m$$.
-# It specifies the multiplier for each component of $latex F(x)$$;
-# i.e., $latex r_i$$ is the multiplier for $latex F_i (x)$$.
+# r
+# *
+# This argument is a numpy vector with ``float`` elements
+# and size *m* .
+# It specifies the multiplier for each component of :math:`F(x)`;
+# i.e., :math:`r_i` is the multiplier for :math:`F_i (x)`.
 #
-# $head pattern$$
-# This argument must have be a $cref/pattern/py_sparse_rc/pattern/$$
-# returned by the $code sparse_rc$$ constructor.
-# Its row size and column sizes are $icode n$$; i.e.,
-# $icode%pattern%.nr() == %n%$$ and $icode%pattern%.nc() == %n%$$.
-# It is a sparsity pattern for the Hessian $latex H(x)$$.
+# pattern
+# *******
+# This argument must have be a :ref:`pattern<py_sparse_rc.pattern>`
+# returned by the ``sparse_rc`` constructor.
+# Its row size and column sizes are *n* ; i.e.,
+# *pattern* . ``nr`` () == *n* and *pattern* . ``nc`` () == *n* .
+# It is a sparsity pattern for the Hessian :math:`H(x)`.
 # This argument is not used (and need not satisfy any conditions),
-# when $cref/work/py_sparse_hes/work/$$ is non-empty.
+# when :ref:`work<py_sparse_hes.work>` is non-empty.
 #
-# $head work$$
+# work
+# ****
 # This argument must have been constructed by the call
-# $codei%
-#   %work% = cppad_py.sparse_hes_work()
-# %$$
+#
+# | |tab| *work* =  ``cppad_py.sparse_hes_work`` ()
+#
 # We refer to its initial value,
-# and its value after $icode%work%.clear()%$$, as empty.
-# If it is empty, information is stored in $icode work$$.
+# and its value after *work* . ``clear`` () , as empty.
+# If it is empty, information is stored in *work* .
 # This can be used to reduce computation when
-# a future call is for the same object $icode f$$,
+# a future call is for the same object *f* ,
 # and the same subset of the Hessian.
-# If either of these values change, use $icode%work%.clear()%$$ to
+# If either of these values change, use *work* . ``clear`` () to
 # empty this structure.
 #
-# $head n_sweep$$
-# The return value $icode n_sweep$$ has prototype
-# $codei%
-#   int %n_sweep%
-# %$$
+# n_sweep
+# *******
+# The return value *n_sweep* has prototype
+#
+# | |tab| ``int`` *n_sweep*
+#
 # It is the number of first order forward sweeps
 # used to compute the requested Hessian values.
 # Each first forward sweep is followed by a second order reverse sweep
@@ -105,24 +113,26 @@
 # not counting the zero order forward sweep,
 # or combining multiple columns and rows into a single sweep.
 #
-# $head Uses Forward$$
-# After each call to $cref py_fun_forward$$,
-# the object $icode f$$ contains the corresponding Taylor coefficients
+# Uses Forward
+# ************
+# After each call to :ref:`py_fun_forward<py_fun_forward>`,
+# the object *f* contains the corresponding Taylor coefficients
 # for all the variables in the operation sequence..
-# After a call to $code sparse_hes$$
+# After a call to ``sparse_hes``
 # the zero order coefficients correspond to
-# $codei%
-#   %f%.forward(0, %x%)
-# %$$
+#
+# | |tab| *f* . ``forward(0`` , *x* )
+#
 # All the other forward mode coefficients are unspecified.
 #
-# $children%
+# {xsrst_children
 #   example/python/core/sparse_hes_xam.py
-# %$$
-# $head Example$$
-# $cref sparse_hes_xam.py$$
+# }
+# Example
+# *******
+# :ref:`sparse_hes_xam_py<sparse_hes_xam_py>`
 #
-# $end
+# {xsrst_end py_sparse_hes}
 # -----------------------------------------------------------------------------
 # undocumented fact: pattern.rc (subset.rcv) is vec_int version of
 # sparsity pattern (sparse matrix)

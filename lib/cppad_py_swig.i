@@ -25,24 +25,27 @@
 %}
 
 /*
-$begin module$$
-$spell
-    Cppad
-    Py
-    py
+{xsrst_begin module}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+    cppad
     namespace
-$$
+}
 
-$section C++ and Python Modules$$
+C++ and Python Modules
+######################
 
-$head Language$$
+Language
+********
 Is a source code language.
 Note that in C++, the library functions are in
-the $code cppad_py$$ namespace,
+the ``cppad_py`` namespace,
 while in the Python language is accessed through the
-Swig $code cppad_py$$ module.
+Swig ``cppad_py`` module.
 
-$end
+{xsrst_end module}
 */
 # ifdef SWIGPYTHON
 %module swig

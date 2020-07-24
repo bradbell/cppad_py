@@ -5,28 +5,31 @@
              GNU General Public License version 3.0 or later see
                    https://www.gnu.org/licenses/gpl-3.0.txt
 -----------------------------------------------------------------------------
-$begin py_abort_recording$$
-$spell
-    vec
-    af
-    const
-    perl
-    cppad_py
-$$
+{xsrst_begin py_abort_recording}
 
-$section Abort Recording$$
+.. include:: ../preamble.rst
 
-$head Syntax$$
-$codei%cppad_py.abort_recording()%$$
+{xsrst_spell
+    cppad
+}
 
-$head Purpose$$
+Abort Recording
+###############
+
+Syntax
+******
+``cppad_py.abort_recording`` ()
+
+Purpose
+*******
 This aborts the current recording (if it exists)
-started by the most recent call to $cref/independent/py_independent/$$.
+started by the most recent call to :ref:`independent<py_independent>`.
 
-$children%
+{xsrst_children
     example/python/core/fun_abort_xam.py
-%$$
-$head Example$$
-$cref/Python/fun_abort_xam.py/$$
+}
+Example
+*******
+:ref:`python<fun_abort_xam_py>`
 
-$end
+{xsrst_end py_abort_recording}

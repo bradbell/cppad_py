@@ -5,45 +5,50 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin py_fun_json$$
-$spell
-    Json
-    str
-    CppAD
-$$
+{xsrst_begin py_fun_json}
 
-$section Json Representation of AD Computation Graph$$
-$spell
-$$
+.. include:: ../preamble.rst
 
-$head Syntax$$
-$icode%json% = %f%.to_json()
-%$$
-$icode%%f%.from_json(json)
-%$$
+{xsrst_spell
+    json
+}
 
-$head f$$
-This is a $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ function object.
+Json Representation of AD Computation Graph
+###########################################
 
-$head json$$
-is a $code str$$ containing
+Syntax
+******
+
+| *json* = *f* . ``to_json`` ()
+| *f* . ``from_json(json`` )
+
+f
+*
+This is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` function object.
+
+json
+****
+is a ``str`` containing
 a Json representation of the computation graph corresponding to
-$icode f$$; see the CppAD documentation for
-$href%https://coin-or.github.io/CppAD/doc/json_ad_graph.htm%json_ad_graph%$$.
+*f* ; see the CppAD documentation for
+`json_ad_graph <https://coin-or.github.io/CppAD/doc/json_ad_graph.htm>`_.
 
-$head to_json$$
-In this case, the function object $icode f$$ is constant and
-the return value $icode json$$ is created.
+to_json
+*******
+In this case, the function object *f* is constant and
+the return value *json* is created.
 
-$head from_json$$
-In this case, the argument $icode json$$ is constant and
-the function $icode f$$ is changed so it corresponds to $icode json$$.
+from_json
+*********
+In this case, the argument *json* is constant and
+the function *f* is changed so it corresponds to *json* .
 
-$children%
+{xsrst_children
     example/python/core/fun_json_xam.py
-%$$
-$head Examples$$
-$cref fun_to_json_xam.py$$,
-$cref fun_from_json_xam.py$$.
+}
+Examples
+********
+:ref:`fun_to_json_xam_py<fun_to_json_xam_py>`,
+:ref:`fun_from_json_xam_py<fun_from_json_xam_py>`.
 
-$end
+{xsrst_end py_fun_json}

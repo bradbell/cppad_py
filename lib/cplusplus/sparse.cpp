@@ -15,185 +15,189 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
 /*
 -------------------------------------------------------------------------------
-$begin cpp_sparse_rc$$
-$spell
-    rc
-    nr
-    nc
+{xsrst_begin cpp_sparse_rc}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     nnz
     resize
-    const
-    Cppad
-    Py
-    vec
-    cppad_py
-$$
+    cppad
+    cppad
+}
 
-$section Sparsity Patterns$$
+Sparsity Patterns
+#################
 
-$head Syntax$$
-$icode%pattern%   = cppad_py::sparse_rc()
-%$$
-$icode%pattern%.resize(%nr%, %nc%, %nnz%)
-%$$
-$icode%nr%        = %pattern%.nr()
-%$$
-$icode%nc%        = %pattern%.nc()
-%$$
-$icode%nnz%       = %pattern%.nnz()
-%$$
-$icode%pattern%.put(%k%, %r%, %c%)
-%$$
-$icode%row%       = %pattern%.row()
-%$$
-$icode%col%       = %pattern%.col()
-%$$
-$icode%row_major% = %pattern%.row_major()
-%$$
-$icode%col_major% = %pattern%.col_major()
-%$$
+Syntax
+******
 
-$head pattern$$
+| *pattern* =  ``cppad_py::sparse_rc`` ()
+| *pattern* . ``resize`` ( *nr* , *nc* , *nnz* )
+| *nr* = *pattern* . ``nr`` ()
+| *nc* = *pattern* . ``nc`` ()
+| *nnz* = *pattern* . ``nnz`` ()
+| *pattern* . ``put`` ( *k* , *r* , *c* )
+| *row* = *pattern* . ``row`` ()
+| *col* = *pattern* . ``col`` ()
+| *row_major* = *pattern* . ``row_major`` ()
+| *col_major* = *pattern* . ``col_major`` ()
+
+pattern
+*******
 This result has prototype
-$codei%
-    sparse_rc %pattern%
-%$$
-It is used to hold a sparsity pattern for a matrix.
-The sparsity $icode pattern$$ is $code const$$
-except during the $code resize$$ and $code put$$ operations.
 
-$head nr$$
+| |tab| ``sparse_rc`` *pattern*
+
+It is used to hold a sparsity pattern for a matrix.
+The sparsity *pattern* is ``const``
+except during the ``resize`` and ``put`` operations.
+
+nr
+**
 This argument has prototype
-$codei%
-    int %nr%
-%$$
+
+| |tab| ``int`` *nr*
+
 is non-negative, and specifies
 the number of rows in the sparsity pattern.
-The function $code nr()$$ returns the value of
-$icode nr$$ in the previous $code resize$$ operation.
+The function ``nr()`` returns the value of
+*nr* in the previous ``resize`` operation.
 
-$head nc$$
+nc
+**
 This argument has prototype
-$codei%
-    int %nc%
-%$$
+
+| |tab| ``int`` *nc*
+
 is non-negative, and specifies
 the number of columns in the sparsity pattern.
-The function $code nc()$$ returns the value of
-$icode nc$$ in the previous $code resize$$ operation.
+The function ``nc()`` returns the value of
+*nc* in the previous ``resize`` operation.
 
-$head nnz$$
+nnz
+***
 This argument and result has prototype
-$codei%
-    int %nnz%
-%$$
+
+| |tab| ``int`` *nnz*
+
 It is the number of possibly non-zero
 index pairs in the sparsity pattern.
-The function $code nnz()$$ returns the value of
-$icode nnz$$ in the previous $code resize$$ operation.
+The function ``nnz()`` returns the value of
+*nnz* in the previous ``resize`` operation.
 
-$head resize$$
+resize
+******
 The current sparsity pattern is lost and a new one is started
 with the specified parameters.
-After each $code resize$$, the elements in the $icode row$$
-and $icode col$$ vectors should be assigned using $code put$$.
+After each ``resize`` , the elements in the *row*
+and *col* vectors should be assigned using ``put`` .
 
-$head put$$
+put
+***
 This function sets the values
-$codei%
-    %row%[%k%] = %r%
-    %col%[%k%] = %c%
-%$$
-(The name $code set$$ is used by Cppad, but not used here,
-because $code set$$ it is a built-in name in Python.)
 
-$subhead k$$
+| |tab| *row* [ *k* ] = *r*
+| |tab| *col* [ *k* ] = *c*
+
+(The name ``set`` is used by Cppad, but not used here,
+because ``set`` it is a built-in name in Python.)
+
+k
+=
 This argument has type
-$codei%
-    int %k%
-%$$
+
+| |tab| ``int`` *k*
+
 is non-negative,
-and must be less than $icode nnz$$.
+and must be less than *nnz* .
 
-$subhead r$$
+r
+=
 This argument has type
-$codei%
-    int %r%
-%$$
-is non-negative, and must be less than $icode nr$$.
-It specifies the value assigned to $icode%row%[%k%]%$$ and must
 
-$subhead c$$
+| |tab| ``int`` *r*
+
+is non-negative, and must be less than *nr* .
+It specifies the value assigned to *row* [ *k* ] and must
+
+c
+=
 This argument has type
-$codei%
-    int %c%
-%$$
-It specifies the value assigned to $icode%col%[%k%]%$$ and must
-be less than $icode nc$$.
 
-$head row$$
+| |tab| ``int`` *c*
+
+It specifies the value assigned to *col* [ *k* ] and must
+be less than *nc* .
+
+row
+***
 This result has type
-$codei%
-    vec_int %row%
-%$$
-and its size is $icode nnz$$.
-For $icode%k% = 0, %...%, %nnz%-1%$$,
-$icode%row%[%k%]%$$ is the row index for the $th k$$ possibly non-zero
+
+| |tab| ``vec_int`` *row*
+
+and its size is *nnz* .
+For *k* = 0, ... , *nnz* -1 ,
+*row* [ *k* ] is the row index for the *k*-th possibly non-zero
 entry in the matrix.
 
-$head col$$
+col
+***
 This result has type
-$codei%
-    vec_int %col%
-%$$
-and its size is $icode nnz$$.
-For $icode%k% = 0, %...%, %nnz%-1%$$,
-$icode%col%[%k%]%$$ is the column index for the $th k$$ possibly non-zero
+
+| |tab| ``vec_int`` *col*
+
+and its size is *nnz* .
+For *k* = 0, ... , *nnz* -1 ,
+*col* [ *k* ] is the column index for the *k*-th possibly non-zero
 entry in the matrix.
 
-$head row_major$$
+row_major
+*********
 This vector has prototype
-$codei%
-    vec_int %row_major%
-%$$
-and its size $icode nnz$$.
+
+| |tab| ``vec_int`` *row_major*
+
+and its size *nnz* .
 It sorts the sparsity pattern in row-major order.
 To be specific,
-$codei%
-    %col%[ %row_major%[%k%] ] <= %col%[ %row_major%[%k%+1] ]
-%$$
-and if $icode%col%[ %row_major%[%k%] ] == %col%[ %row_major%[%k%+1] ]%$$,
-$codei%
-    %row%[ %row_major%[%k%] ] < %row%[ %row_major%[%k%+1] ]
-%$$
-This routine generates an assert if there are two entries with the same
-row and column values (if $code NDEBUG$$ is not defined).
 
-$head col_major$$
+| |tab| *col* [ *row_major* [ *k* ] ] <= *col* [ *row_major* [ *k* +1] ]
+
+and if *col* [ *row_major* [ *k* ] ] == *col* [ *row_major* [ *k* +1] ] ,
+
+| |tab| *row* [ *row_major* [ *k* ] ] < *row* [ *row_major* [ *k* +1] ]
+
+This routine generates an assert if there are two entries with the same
+row and column values (if ``NDEBUG`` is not defined).
+
+col_major
+*********
 This vector has prototype
-$codei%
-    vec_int %col_major%
-%$$
-and its size $icode nnz$$.
+
+| |tab| ``vec_int`` *col_major*
+
+and its size *nnz* .
 It sorts the sparsity pattern in column-major order.
 To be specific,
-$codei%
-    %row%[ %col_major%[%k%] ] <= %row%[ %col_major%[%k%+1] ]
-%$$
-and if $icode%row%[ %col_major%[%k%] ] == %row%[ %col_major%[%k%+1] ]%$$,
-$codei%
-    %col%[ %col_major%[%k%] ] < %col%[ %col_major%[%k%+1] ]
-%$$
+
+| |tab| *row* [ *col_major* [ *k* ] ] <= *row* [ *col_major* [ *k* +1] ]
+
+and if *row* [ *col_major* [ *k* ] ] == *row* [ *col_major* [ *k* +1] ] ,
+
+| |tab| *col* [ *col_major* [ *k* ] ] < *col* [ *col_major* [ *k* +1] ]
+
 This routine generates an assert if there are two entries with the same
-row and column values (if $code NDEBUG$$ is not defined).
+row and column values (if ``NDEBUG`` is not defined).
 
-$children%
+{xsrst_children
     example/cplusplus/sparse_rc_xam.cpp
-%$$
-$head Example$$
-$cref sparse_rc_xam.cpp$$
+}
+Example
+*******
+:ref:`sparse_rc_xam_cpp<sparse_rc_xam_cpp>`
 
-$end
+{xsrst_end cpp_sparse_rc}
 */
 // ---------------------------------------------------------------------------
 // public member function not in Swig interface (see %ignore ptr)
@@ -274,176 +278,179 @@ std::vector<int> sparse_rc::col_major(void) const
 }
 /*
 -------------------------------------------------------------------------------
-$begin cpp_sparse_rcv$$
-$spell
-    rc
+{xsrst_begin cpp_sparse_rcv}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     rcv
-    nr
-    nc
     nnz
-    resize
-    const
-    Cppad
-    Py
-    vec
-    cppad_py
-$$
+    cppad
+    cppad
+}
 
-$section Sparse Matrices$$
+Sparse Matrices
+###############
 
-$head Syntax$$
-$icode%matrix%    = cppad_py::sparse_rcv(%pattern%)
-%$$
-$icode%nr%        = %matrix%.nr()
-%$$
-$icode%nc%        = %matrix%.nc()
-%$$
-$icode%nnz%       = matrix%.nnz()
-%$$
-$icode%matrix%.put(%k%, %v%)
-%$$
-$icode%row%       = %matrix%.row()
-%$$
-$icode%col%       = %matrix%.col()
-%$$
-$icode%val%       = %matrix%.val()
-%$$
-$icode%row_major% = %matrix%.row_major()
-%$$
-$icode%col_major% = %matrix%.col_major()
-%$$
+Syntax
+******
 
-$head pattern$$
+| *matrix* =  ``cppad_py::sparse_rcv`` ( *pattern* )
+| *nr* = *matrix* . ``nr`` ()
+| *nc* = *matrix* . ``nc`` ()
+| *nnz* =  ``matrix`` . *nnz* ()
+| *matrix* . ``put`` ( *k* , *v* )
+| *row* = *matrix* . ``row`` ()
+| *col* = *matrix* . ``col`` ()
+| *val* = *matrix* . ``val`` ()
+| *row_major* = *matrix* . ``row_major`` ()
+| *col_major* = *matrix* . ``col_major`` ()
+
+pattern
+*******
 This argument has prototype
-$codei%
-    const sparse_rc& %pattern%
-%$$
+
+| |tab| ``const sparse_rc&`` *pattern*
+
 It specifies the number of rows, number of columns and
-the possibly non-zero entries in the $icode matrix$$.
+the possibly non-zero entries in the *matrix* .
 
-$head matrix$$
-This is a sparse matrix object with the sparsity specified by $icode pattern$$.
-Only the $icode val$$ vector can be changed. All other values returned by
-$icode matrix$$ are fixed during the constructor and constant there after.
-The $icode val$$ vector is only changed by the constructor
-and the $code set$$ function.
+matrix
+******
+This is a sparse matrix object with the sparsity specified by *pattern* .
+Only the *val* vector can be changed. All other values returned by
+*matrix* are fixed during the constructor and constant there after.
+The *val* vector is only changed by the constructor
+and the ``set`` function.
 
-$head nr$$
+nr
+**
 This return value has prototype
-$codei%
-    int %nr%
-%$$
+
+| |tab| ``int`` *nr*
+
 and is the number of rows in the matrix.
 
-$head nc$$
+nc
+**
 This return value has prototype
-$codei%
-    int %nc%
-%$$
+
+| |tab| ``int`` *nc*
+
 and is the number of columns in the matrix.
 
-$head nnz$$
+nnz
+***
 This return value has prototype
-$codei%
-    int %nnz%
-%$$
+
+| |tab| ``int`` *nnz*
+
 and is the number of possibly non-zero values in the matrix.
 
-$head put$$
+put
+***
 This function sets the value
-$codei%
-    %val%[%k%] = %v%
-%$$
-(The name $code set$$ is used by Cppad, but not used here,
-because $code set$$ it is a built-in name in Python.)
 
-$subhead k$$
+| |tab| *val* [ *k* ] = *v*
+
+(The name ``set`` is used by Cppad, but not used here,
+because ``set`` it is a built-in name in Python.)
+
+k
+=
 This argument has type
-$codei%
-    int %k%
-%$$
-and must be non-negative and less than $icode nnz$$.
 
-$subhead v$$
+| |tab| ``int`` *k*
+
+and must be non-negative and less than *nnz* .
+
+v
+=
 This argument has type
-$codei%
-    double %v%
-%$$
-It specifies the value assigned to $icode%val%[%k%]%$$.
 
-$head row$$
+| |tab| ``double`` *v*
+
+It specifies the value assigned to *val* [ *k* ] .
+
+row
+***
 This result has type
-$codei%
-    vec_int %row%
-%$$
-and its size is $icode nnz$$.
-For $icode%k% = 0, %...%, %nnz%-1%$$,
-$icode%row%[%k%]%$$ is the row index for the $th k$$ possibly non-zero
+
+| |tab| ``vec_int`` *row*
+
+and its size is *nnz* .
+For *k* = 0, ... , *nnz* -1 ,
+*row* [ *k* ] is the row index for the *k*-th possibly non-zero
 entry in the matrix.
 
-$head col$$
+col
+***
 This result has type
-$codei%
-    vec_int %col%
-%$$
-and its size is $icode nnz$$.
-For $icode%k% = 0, %...%, %nnz%-1%$$,
-$icode%col%[%k%]%$$ is the column index for the $th k$$ possibly non-zero
+
+| |tab| ``vec_int`` *col*
+
+and its size is *nnz* .
+For *k* = 0, ... , *nnz* -1 ,
+*col* [ *k* ] is the column index for the *k*-th possibly non-zero
 entry in the matrix.
 
-$head val$$
+val
+***
 This result has type
-$codei%
-    vec_double %val%
-%$$
-and its size is $icode nnz$$.
-For $icode%k% = 0, %...%, %nnz%-1%$$,
-$icode%val%[%k%]%$$ is the value of the $th k$$ possibly non-zero
+
+| |tab| ``vec_double`` *val*
+
+and its size is *nnz* .
+For *k* = 0, ... , *nnz* -1 ,
+*val* [ *k* ] is the value of the *k*-th possibly non-zero
 entry in the matrix (the value may be zero).
 
-$head row_major$$
+row_major
+*********
 This vector has prototype
-$codei%
-    vec_int %row_major%
-%$$
-and its size $icode nnz$$.
+
+| |tab| ``vec_int`` *row_major*
+
+and its size *nnz* .
 It sorts the sparsity pattern in row-major order.
 To be specific,
-$codei%
-    %col%[ %row_major%[%k%] ] <= %col%[ %row_major%[%k%+1] ]
-%$$
-and if $icode%col%[ %row_major%[%k%] ] == %col%[ %row_major%[%k%+1] ]%$$,
-$codei%
-    %row%[ %row_major%[%k%] ] < %row%[ %row_major%[%k%+1] ]
-%$$
-This routine generates an assert if there are two entries with the same
-row and column values (if $code NDEBUG$$ is not defined).
 
-$head col_major$$
+| |tab| *col* [ *row_major* [ *k* ] ] <= *col* [ *row_major* [ *k* +1] ]
+
+and if *col* [ *row_major* [ *k* ] ] == *col* [ *row_major* [ *k* +1] ] ,
+
+| |tab| *row* [ *row_major* [ *k* ] ] < *row* [ *row_major* [ *k* +1] ]
+
+This routine generates an assert if there are two entries with the same
+row and column values (if ``NDEBUG`` is not defined).
+
+col_major
+*********
 This vector has prototype
-$codei%
-    vec_int %col_major%
-%$$
-and its size $icode nnz$$.
+
+| |tab| ``vec_int`` *col_major*
+
+and its size *nnz* .
 It sorts the sparsity pattern in column-major order.
 To be specific,
-$codei%
-    %row%[ %col_major%[%k%] ] <= %row%[ %col_major%[%k%+1] ]
-%$$
-and if $icode%row%[ %col_major%[%k%] ] == %row%[ %col_major%[%k%+1] ]%$$,
-$codei%
-    %col%[ %col_major%[%k%] ] < %col%[ %col_major%[%k%+1] ]
-%$$
+
+| |tab| *row* [ *col_major* [ *k* ] ] <= *row* [ *col_major* [ *k* +1] ]
+
+and if *row* [ *col_major* [ *k* ] ] == *row* [ *col_major* [ *k* +1] ] ,
+
+| |tab| *col* [ *col_major* [ *k* ] ] < *col* [ *col_major* [ *k* +1] ]
+
 This routine generates an assert if there are two entries with the same
-row and column values (if $code NDEBUG$$ is not defined).
+row and column values (if ``NDEBUG`` is not defined).
 
-$children%
+{xsrst_children
     example/cplusplus/sparse_rcv_xam.cpp
-%$$
-$head Example$$
-$cref sparse_rcv_xam.cpp$$
+}
+Example
+*******
+:ref:`sparse_rcv_xam_cpp<sparse_rcv_xam_cpp>`
 
-$end
+{xsrst_end cpp_sparse_rcv}
 */
 // ---------------------------------------------------------------------------
 // public member function not in Swig interface (see %ignore ptr)
@@ -522,90 +529,101 @@ std::vector<int> sparse_rcv::col_major(void) const
 }
 // ----------------------------------------------------------------------------
 /*
-$begin cpp_jac_sparsity$$
-$spell
-    af
-    Jacobian
-    jac
-    bool
-    const
-    rc
-    cpp
-$$
+{xsrst_begin cpp_jac_sparsity}
 
-$section Jacobian Sparsity Patterns$$
+.. include:: ../preamble.rst
 
-$head Syntax$$
-$icode%f%.for_jac_sparsity(%pattern_in%, %pattern_out%)
-%$$
-$icode%f%.rev_jac_sparsity(%pattern_in%, %pattern_out%)%$$
+{xsrst_spell
+}
 
-$head Purpose$$
-We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-function corresponding to the operation sequence stored in $icode f$$.
+Jacobian Sparsity Patterns
+##########################
 
-$subhead for_jac_sparsity$$
-Fix $latex R \in \B{R}^{n \times \ell}$$ and define the function
-$latex \[
+Syntax
+******
+
+| *f* . ``for_jac_sparsity`` ( *pattern_in* , *pattern_out* )
+| *f* . ``rev_jac_sparsity`` ( *pattern_in* , *pattern_out* )
+
+Purpose
+*******
+We use :math:`F : \B{R}^n \rightarrow \B{R}^m` to denote the
+function corresponding to the operation sequence stored in *f* .
+
+for_jac_sparsity
+================
+Fix :math:`R \in \B{R}^{n \times \ell}` and define the function
+
+.. math::
+
     J(x) = F^{(1)} ( x ) * R
-\] $$
-Given a sparsity pattern for $latex R$$,
-$code for_jac_sparsity$$ computes a sparsity pattern for $latex J(x)$$.
 
-$subhead rev_jac_sparsity$$
-Fix $latex R \in \B{R}^{\ell \times m}$$ and define the function
-$latex \[
+Given a sparsity pattern for :math:`R`,
+``for_jac_sparsity`` computes a sparsity pattern for :math:`J(x)`.
+
+rev_jac_sparsity
+================
+Fix :math:`R \in \B{R}^{\ell \times m}` and define the function
+
+.. math::
+
     J(x) = R * F^{(1)} ( x )
-\] $$
-Given a sparsity pattern for $latex R$$,
-$code rev_jac_sparsity$$ computes a sparsity pattern for $latex J(x)$$.
 
-$head x$$
-Note that a sparsity pattern for $latex J(x)$$ corresponds to the
-operation sequence stored in $icode f$$ and does not depend on
-the argument $icode x$$.
+Given a sparsity pattern for :math:`R`,
+``rev_jac_sparsity`` computes a sparsity pattern for :math:`J(x)`.
 
-$head f$$
-The object $icode f$$ has prototype
-$codei%
-    d_fun %f%
-%$$
-The object $icode f$$ is not $code const$$ when using
-$code for_jac_sparsity$$.
-After a call to $code for_jac_sparsity$$, a sparsity pattern
+x
+*
+Note that a sparsity pattern for :math:`J(x)` corresponds to the
+operation sequence stored in *f* and does not depend on
+the argument *x* .
+
+f
+*
+The object *f* has prototype
+
+| |tab| ``d_fun`` *f*
+
+The object *f* is not ``const`` when using
+``for_jac_sparsity`` .
+After a call to ``for_jac_sparsity`` , a sparsity pattern
 for each of the variables in the operation sequence
-is held in $icode f$$ for possible later use during
+is held in *f* for possible later use during
 reverse Hessian sparsity calculations.
 
-$head pattern_in$$
-The argument $icode pattern_in$$ has prototype
-$codei%
-    const sparse_rc& %pattern_in%
-%$$
-see $cref cpp_sparse_rc$$.
-This is a sparsity pattern for $latex R$$.
+pattern_in
+**********
+The argument *pattern_in* has prototype
 
-$head pattern_out$$
+| |tab| ``const sparse_rc&`` *pattern_in*
+
+see :ref:`cpp_sparse_rc<cpp_sparse_rc>`.
+This is a sparsity pattern for :math:`R`.
+
+pattern_out
+***********
 This argument has prototype
-$codei%
-    sparse_rc<%SizeVector%>& %pattern_out%
-%$$
-This input value of $icode pattern_out$$ does not matter.
-Upon return $icode pattern_out$$ is a sparsity pattern for
-$latex J(x)$$.
 
-$head Sparsity for Entire Jacobian$$
-Suppose that $latex R$$ is the identity matrix.
-In this case, $icode pattern_out$$ is a sparsity pattern for
-$latex F^{(1)} ( x )$$.
+| |tab| ``sparse_rc`` < *SizeVector* > ``&`` *pattern_out*
 
-$children%
+This input value of *pattern_out* does not matter.
+Upon return *pattern_out* is a sparsity pattern for
+:math:`J(x)`.
+
+Sparsity for Entire Jacobian
+****************************
+Suppose that :math:`R` is the identity matrix.
+In this case, *pattern_out* is a sparsity pattern for
+:math:`F^{(1)} ( x )`.
+
+{xsrst_children
     example/cplusplus/sparse_jac_pattern_xam.cpp
-%$$
-$head Example$$
-$cref/C++/sparse_jac_pattern_xam.cpp/$$
+}
+Example
+*******
+:ref:`c++<sparse_jac_pattern_xam_cpp>`
 
-$end
+{xsrst_end cpp_jac_sparsity}
 */
 void d_fun::for_jac_sparsity(
     const sparse_rc&  pattern_in    ,
@@ -640,85 +658,95 @@ void d_fun::rev_jac_sparsity(
 }
 // ----------------------------------------------------------------------------
 /*
-$begin cpp_sparsity$$
-$spell
+{xsrst_begin cpp_sparsity}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     hes
-    af
-    const
-    vec
     bool
-    rc
-$$
+}
 
-$section Hessian Sparsity Patterns$$
+Hessian Sparsity Patterns
+#########################
 
-$head Syntax$$
-$icode%f%.for_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)
-%$$
-$icode%f%.rev_hes_sparsity(%select_domain%, %select_range%, %pattern_out%)%$$
+Syntax
+******
 
-$head Purpose$$
-We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-function corresponding to the operation sequence stored in $icode f$$.
-Fix a diagonal matrix $latex D \in \B{R}^{n \times n}$$, fix a vector
-$latex r \in \B{R}^m$$, and define
-$latex \[
+| *f* . ``for_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
+| *f* . ``rev_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
+
+Purpose
+*******
+We use :math:`F : \B{R}^n \rightarrow \B{R}^m` to denote the
+function corresponding to the operation sequence stored in *f* .
+Fix a diagonal matrix :math:`D \in \B{R}^{n \times n}`, fix a vector
+:math:`r \in \B{R}^m`, and define
+
+.. math::
+
     H(x) = D (r^\R{T} F)^{(2)} ( x ) D
-\] $$
-Given a sparsity pattern for $latex D$$ and $latex r$$,
-these routines compute a sparsity pattern for $latex H(x)$$.
 
-$head x$$
-Note that a sparsity pattern for $latex H(x)$$ corresponds to the
-operation sequence stored in $icode f$$ and does not depend on
-the argument $icode x$$.
+Given a sparsity pattern for :math:`D` and :math:`r`,
+these routines compute a sparsity pattern for :math:`H(x)`.
 
-$head f$$
-The object $icode f$$ has prototype
-$codei%
-    d_fun %f%
-%$$
+x
+*
+Note that a sparsity pattern for :math:`H(x)` corresponds to the
+operation sequence stored in *f* and does not depend on
+the argument *x* .
 
-$head select_domain$$
-The argument $icode select_domain$$ has prototype
-$codei%
-    const vec_bool& %select_domain%
-%$$
-It has size $icode n$$ and is a sparsity pattern for the diagonal of
-$latex D$$; i.e., $icode%select_domain%[%j%]%$$ is true if and only if
-$latex D_{j,j}$$ is possibly non-zero.
+f
+*
+The object *f* has prototype
 
-$head select_range$$
-The argument $icode select_range$$ has prototype
-$codei%
-    const vec_bool& %select_range%
-%$$
-It has size $icode m$$ and is a sparsity pattern for the vector
-$latex r$$; i.e., $icode%select_range%[%i%]%$$ is true if and only if
-$latex r_i$$ is possibly non-zero.
+| |tab| ``d_fun`` *f*
 
-$head pattern_out$$
+select_domain
+*************
+The argument *select_domain* has prototype
+
+| |tab| ``const vec_bool&`` *select_domain*
+
+It has size *n* and is a sparsity pattern for the diagonal of
+:math:`D`; i.e., *select_domain* [ *j* ] is true if and only if
+:math:`D_{j,j}` is possibly non-zero.
+
+select_range
+************
+The argument *select_range* has prototype
+
+| |tab| ``const vec_bool&`` *select_range*
+
+It has size *m* and is a sparsity pattern for the vector
+:math:`r`; i.e., *select_range* [ *i* ] is true if and only if
+:math:`r_i` is possibly non-zero.
+
+pattern_out
+***********
 This argument has prototype
-$codei%
-    sparse_rc<%SizeVector%>& %pattern_out%
-%$$
-This input value of $icode pattern_out$$ does not matter.
-Upon return $icode pattern_out$$ is a sparsity pattern for
-$latex J(x)$$.
 
-$head Sparsity for Component Wise Hessian$$
-Suppose that $latex D$$ is the identity matrix,
-and only the $th i$$ component of $icode r$$ is possibly non-zero.
-In this case, $icode pattern_out$$ is a sparsity pattern for
-$latex F_i^{(2)} ( x )$$.
+| |tab| ``sparse_rc`` < *SizeVector* > ``&`` *pattern_out*
 
-$children%
+This input value of *pattern_out* does not matter.
+Upon return *pattern_out* is a sparsity pattern for
+:math:`J(x)`.
+
+Sparsity for Component Wise Hessian
+***********************************
+Suppose that :math:`D` is the identity matrix,
+and only the *i*-th component of *r* is possibly non-zero.
+In this case, *pattern_out* is a sparsity pattern for
+:math:`F_i^{(2)} ( x )`.
+
+{xsrst_children
     example/cplusplus/sparse_hes_pattern_xam.cpp
-%$$
-$head Example$$
-$cref/C++/sparse_hes_pattern_xam.cpp/$$
+}
+Example
+*******
+:ref:`c++<sparse_hes_pattern_xam_cpp>`
 
-$end
+{xsrst_end cpp_sparsity}
 */
 void d_fun::for_hes_sparsity(
     const std::vector<bool>& select_domain ,
@@ -799,139 +827,147 @@ void d_fun::rev_hes_sparsity(
 }
 /*
 ------------------------------------------------------------------------------
-$begin cpp_sparse_jac$$
-$spell
-    Jacobians
-    jac
-    af
-    Jacobian
-    Taylor
+{xsrst_begin cpp_sparse_jac}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+    jacobians
     rcv
-    nr
-    nc
-    const
-    vec
-    rc
-    cppad_py
-$$
+    cppad
+}
 
-$section Computing Sparse Jacobians$$
+Computing Sparse Jacobians
+##########################
 
-$head Syntax$$
-$icode%work% = cppad_py::sparse_jac_work()
-%$$
-$icode%n_sweep% = %f%.sparse_jac_for(%subset%, %x%, %pattern%, %work%)
-%$$
-$icode%n_sweep% = %f%.sparse_jac_rev(%subset%, %x%, %pattern%, %work%)%$$
+Syntax
+******
 
-$head Purpose$$
-We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-function corresponding to $icode f$$.
+| *work* =  ``cppad_py::sparse_jac_work`` ()
+| *n_sweep* = *f* . ``sparse_jac_for`` ( *subset* , *x* , *pattern* , *work* )
+| *n_sweep* = *f* . ``sparse_jac_rev`` ( *subset* , *x* , *pattern* , *work* )
+
+Purpose
+*******
+We use :math:`F : \B{R}^n \rightarrow \B{R}^m` to denote the
+function corresponding to *f* .
 The syntax above takes advantage of sparsity when computing the Jacobian
-$latex \[
-    J(x) = F^{(1)} (x)
-\] $$
-In the sparse case, this should be faster and take less memory than
-$cref cpp_fun_jacobian$$.
-We use the notation $latex J_{i,j} (x)$$ to denote the partial of
-$latex F_i (x)$$ with respect to $latex x_j$$.
 
-$head sparse_jac_for$$
-This function uses first order forward mode sweeps $cref cpp_fun_forward$$
+.. math::
+
+    J(x) = F^{(1)} (x)
+
+In the sparse case, this should be faster and take less memory than
+:ref:`cpp_fun_jacobian<cpp_fun_jacobian>`.
+We use the notation :math:`J_{i,j} (x)` to denote the partial of
+:math:`F_i (x)` with respect to :math:`x_j`.
+
+sparse_jac_for
+**************
+This function uses first order forward mode sweeps :ref:`cpp_fun_forward<cpp_fun_forward>`
 to compute multiple columns of the Jacobian at the same time.
 
-$head sparse_jac_rev$$
-This function uses first order reverse mode sweeps $cref cpp_fun_reverse$$
+sparse_jac_rev
+**************
+This function uses first order reverse mode sweeps :ref:`cpp_fun_reverse<cpp_fun_reverse>`
 to compute multiple rows of the Jacobian at the same time.
 
-$head f$$
+f
+*
 This object has prototype
-$codei%
-    ADFun<%Base%> %f%
-%$$
-Note that the Taylor coefficients stored in $icode f$$ are affected
-by this operation; see
-$cref/uses forward/cpp_sparse_jac/Uses Forward/$$ below.
 
-$head subset$$
+| |tab| ``ADFun`` < *Base* > *f*
+
+Note that the Taylor coefficients stored in *f* are affected
+by this operation; see
+:ref:`uses_forward<cpp_sparse_jac.uses_forward>` below.
+
+subset
+******
 This argument has prototype
-$codei%
-    sparse_rcv& %subset%
-%$$
-Its row size is $icode%subset%.nr() == %m%$$,
-and its column size is $icode%subset%.nc() == %n%$$.
+
+| |tab| ``sparse_rcv&`` *subset*
+
+Its row size is *subset* . ``nr`` () == *m* ,
+and its column size is *subset* . ``nc`` () == *n* .
 It specifies which elements of the Jacobian are computed.
 The input value of its value vector
-$icode%subset%.val()%$$ does not matter.
+*subset* . ``val`` () does not matter.
 Upon return it contains the value of the corresponding elements
 of the Jacobian.
-All of the row, column pairs in $icode subset$$ must also appear in
-$icode pattern$$; i.e., they must be possibly non-zero.
+All of the row, column pairs in *subset* must also appear in
+*pattern* ; i.e., they must be possibly non-zero.
 
-$head x$$
+x
+*
 This argument has prototype
-$codei%
-    const vec_double& %x%
-%$$
-and its size is $icode n$$.
-It specifies the point at which to evaluate the Jacobian $latex J(x)$$.
 
-$head pattern$$
+| |tab| ``const vec_double&`` *x*
+
+and its size is *n* .
+It specifies the point at which to evaluate the Jacobian :math:`J(x)`.
+
+pattern
+*******
 This argument has prototype
-$codei%
-    const sparse_rc& %pattern%
-%$$
-Its row size is $icode%pattern%.nr() == %m%$$,
-and its column size is $icode%pattern%.nc() == %n%$$.
-It is a sparsity pattern for the Jacobian $latex J(x)$$.
+
+| |tab| ``const sparse_rc&`` *pattern*
+
+Its row size is *pattern* . ``nr`` () == *m* ,
+and its column size is *pattern* . ``nc`` () == *n* .
+It is a sparsity pattern for the Jacobian :math:`J(x)`.
 This argument is not used (and need not satisfy any conditions),
-when $cref/work/cpp_sparse_jac/work/$$ is non-empty.
+when :ref:`work<cpp_sparse_jac.work>` is non-empty.
 
-$head work$$
+work
+****
 This argument has prototype
-$codei%
-    sparse_jac_work& %work%
-%$$
+
+| |tab| ``sparse_jac_work&`` *work*
+
 We refer to its initial value,
-and its value after $icode%work%.clear()%$$, as empty.
-If it is empty, information is stored in $icode work$$.
+and its value after *work* . ``clear`` () , as empty.
+If it is empty, information is stored in *work* .
 This can be used to reduce computation when
-a future call is for the same object $icode f$$,
-the same member function $code sparse_jac_for$$ or $code sparse_jac_rev$$,
+a future call is for the same object *f* ,
+the same member function ``sparse_jac_for`` or ``sparse_jac_rev`` ,
 and the same subset of the Jacobian.
-If any of these values change, use $icode%work%.clear()%$$ to
+If any of these values change, use *work* . ``clear`` () to
 empty this structure.
 
-$head n_sweep$$
-The return value $icode n_sweep$$ has prototype
-$codei%
-    int %n_sweep%
-%$$
-If $code sparse_jac_for$$ ($code sparse_jac_rev$$) is used,
-$icode n_sweep$$ is the number of first order forward (reverse) sweeps
+n_sweep
+*******
+The return value *n_sweep* has prototype
+
+| |tab| ``int`` *n_sweep*
+
+If ``sparse_jac_for`` ( ``sparse_jac_rev`` ) is used,
+*n_sweep* is the number of first order forward (reverse) sweeps
 used to compute the requested Jacobian values.
 This is proportional to the total computational work,
 not counting the zero order forward sweep,
 or combining multiple columns (rows) into a single sweep.
 
-$head Uses Forward$$
-After each call to $cref cpp_fun_forward$$,
-the object $icode f$$ contains the corresponding Taylor coefficients
+Uses Forward
+************
+After each call to :ref:`cpp_fun_forward<cpp_fun_forward>`,
+the object *f* contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
-After a call to $code sparse_jac_forward$$ or $code sparse_jac_rev$$,
+After a call to ``sparse_jac_forward`` or ``sparse_jac_rev`` ,
 the zero order coefficients correspond to
-$codei%
-    %f%.forward(0, %x%)
-%$$
+
+| |tab| *f* . ``forward(0`` , *x* )
+
 All the other forward mode coefficients are unspecified.
 
-$children%
+{xsrst_children
     example/cplusplus/sparse_jac_xam.cpp
-%$$
-$head Example$$
-$cref sparse_jac_xam.cpp$$
+}
+Example
+*******
+:ref:`sparse_jac_xam_cpp<sparse_jac_xam_cpp>`
 
-$end
+{xsrst_end cpp_sparse_jac}
 */
 // ---------------------------------------------------------------------------
 // public member function not in Swig interface (see %ignore ptr)
@@ -981,110 +1017,116 @@ int d_fun::sparse_jac_rev(
 }
 /*
 ------------------------------------------------------------------------------
-$begin cpp_sparse_hes$$
-$spell
-    af
-    Jacobian
-    Taylor
+{xsrst_begin cpp_sparse_hes}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     rcv
-    nr
-    nc
-    const
-    vec
-    rc
     hes
-    cppad_py
-$$
+    cppad
+}
 
-$section Computing Sparse Hessians$$
+Computing Sparse Hessians
+#########################
 
-$head Syntax$$
-$icode%work% = cppad_py::sparse_hes_work()
-%$$
-$icode%n_sweep% = %f%.sparse_hes(%subset%, %x%, %r%, %pattern%, %work%)
-%$$
+Syntax
+******
 
-$head Purpose$$
-We use $latex F : \B{R}^n \rightarrow \B{R}^m$$ to denote the
-function corresponding to $icode f$$.
-Given a vector $latex r \in \B{R}^m$$, define
-$latex \[
+| *work* =  ``cppad_py::sparse_hes_work`` ()
+| *n_sweep* = *f* . ``sparse_hes`` ( *subset* , *x* , *r* , *pattern* , *work* )
+
+Purpose
+*******
+We use :math:`F : \B{R}^n \rightarrow \B{R}^m` to denote the
+function corresponding to *f* .
+Given a vector :math:`r \in \B{R}^m`, define
+
+.. math::
+
     H(x) = (r^\R{T} F)^{(2)} ( x )
-\] $$
+
 This routine takes advantage of sparsity when computing elements
-of the Hessian $latex H(x)$$.
+of the Hessian :math:`H(x)`.
 
-$head f$$
+f
+*
 This object has prototype
-$codei%
-    ADFun<%Base%> %f%
-%$$
-Note that the Taylor coefficients stored in $icode f$$ are affected
-by this operation; see
-$cref/uses forward/cpp_sparse_hes/Uses Forward/$$ below.
 
-$head subset$$
+| |tab| ``ADFun`` < *Base* > *f*
+
+Note that the Taylor coefficients stored in *f* are affected
+by this operation; see
+:ref:`uses_forward<cpp_sparse_hes.uses_forward>` below.
+
+subset
+******
 This argument has prototype
-$codei%
-    sparse_rcv& %subset%
-%$$
-Its row size and column size is $icode n$$; i.e.,
-$icode%subset%.nr() == %n%$$ and $icode%subset%.nc() == %n%$$.
+
+| |tab| ``sparse_rcv&`` *subset*
+
+Its row size and column size is *n* ; i.e.,
+*subset* . ``nr`` () == *n* and *subset* . ``nc`` () == *n* .
 It specifies which elements of the Hessian are computed.
 The input value of its value vector
-$icode%subset%.val()%$$ does not matter.
+*subset* . ``val`` () does not matter.
 Upon return it contains the value of the corresponding elements
 of the Jacobian.
-All of the row, column pairs in $icode subset$$ must also appear in
-$icode pattern$$; i.e., they must be possibly non-zero.
+All of the row, column pairs in *subset* must also appear in
+*pattern* ; i.e., they must be possibly non-zero.
 
-$head x$$
+x
+*
 This argument has prototype
-$codei%
-    const vec_double& %x%
-%$$
-and its size is $icode n$$.
-It specifies the point at which to evaluate the Hessian $latex H(x)$$.
 
-$head r$$
-This argument has prototype
-$codei%
-    const vec_double& %r%
-%$$
-and its size is $icode m$$.
-It specifies the multiplier for each component of $latex F(x)$$;
-i.e., $latex r_i$$ is the multiplier for $latex F_i (x)$$.
+| |tab| ``const vec_double&`` *x*
 
-$head pattern$$
+and its size is *n* .
+It specifies the point at which to evaluate the Hessian :math:`H(x)`.
+
+r
+*
 This argument has prototype
-$codei%
-    const sparse_rc& %pattern%
-%$$
-Its row size and column sizes are $icode n$$; i.e.,
-$icode%pattern%.nr() == %n%$$ and $icode%pattern%.nc() == %n%$$.
-It is a sparsity pattern for the Hessian $latex H(x)$$.
+
+| |tab| ``const vec_double&`` *r*
+
+and its size is *m* .
+It specifies the multiplier for each component of :math:`F(x)`;
+i.e., :math:`r_i` is the multiplier for :math:`F_i (x)`.
+
+pattern
+*******
+This argument has prototype
+
+| |tab| ``const sparse_rc&`` *pattern*
+
+Its row size and column sizes are *n* ; i.e.,
+*pattern* . ``nr`` () == *n* and *pattern* . ``nc`` () == *n* .
+It is a sparsity pattern for the Hessian :math:`H(x)`.
 This argument is not used (and need not satisfy any conditions),
-when $cref/work/cpp_sparse_hes/work/$$ is non-empty.
+when :ref:`work<cpp_sparse_hes.work>` is non-empty.
 
-$head work$$
+work
+****
 This argument has prototype
-$codei%
-    sparse_hes_work& %work%
-%$$
+
+| |tab| ``sparse_hes_work&`` *work*
+
 We refer to its initial value,
-and its value after $icode%work%.clear()%$$, as empty.
-If it is empty, information is stored in $icode work$$.
+and its value after *work* . ``clear`` () , as empty.
+If it is empty, information is stored in *work* .
 This can be used to reduce computation when
-a future call is for the same object $icode f$$,
+a future call is for the same object *f* ,
 and the same subset of the Hessian.
-If either of these values change, use $icode%work%.clear()%$$ to
+If either of these values change, use *work* . ``clear`` () to
 empty this structure.
 
-$head n_sweep$$
-The return value $icode n_sweep$$ has prototype
-$codei%
-    int %n_sweep%
-%$$
+n_sweep
+*******
+The return value *n_sweep* has prototype
+
+| |tab| ``int`` *n_sweep*
+
 It is the number of first order forward sweeps
 used to compute the requested Hessian values.
 Each first forward sweep is followed by a second order reverse sweep
@@ -1093,24 +1135,26 @@ This is proportional to the total computational work,
 not counting the zero order forward sweep,
 or combining multiple columns and rows into a single sweep.
 
-$head Uses Forward$$
-After each call to $cref cpp_fun_forward$$,
-the object $icode f$$ contains the corresponding Taylor coefficients
+Uses Forward
+************
+After each call to :ref:`cpp_fun_forward<cpp_fun_forward>`,
+the object *f* contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
-After a call to $code sparse_hes$$
+After a call to ``sparse_hes``
 the zero order coefficients correspond to
-$codei%
-    %f%.forward(0, %x%)
-%$$
+
+| |tab| *f* . ``forward(0`` , *x* )
+
 All the other forward mode coefficients are unspecified.
 
-$children%
+{xsrst_children
     example/cplusplus/sparse_hes_xam.cpp
-%$$
-$head Example$$
-$cref sparse_hes_xam.cpp$$
+}
+Example
+*******
+:ref:`sparse_hes_xam_cpp<sparse_hes_xam_cpp>`
 
-$end
+{xsrst_end cpp_sparse_hes}
 */
 // ---------------------------------------------------------------------------
 // public member function not in Swig interface (see %ignore ptr)

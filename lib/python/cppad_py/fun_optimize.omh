@@ -5,33 +5,40 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin py_fun_optimize$$
-$spell
-    af
-$$
+{xsrst_begin py_fun_optimize}
 
-$section Optimize an AD Function$$
+.. include:: ../preamble.rst
 
-$head Syntax$$
-$icode%f%.optimize()%$$
+{xsrst_spell
+}
 
-$head Purpose$$
+Optimize an AD Function
+#######################
+
+Syntax
+******
+*f* . ``optimize`` ()
+
+Purpose
+*******
 This reduces the number of operations
 (hence to time and memory) used to compute the function
-stored in $icode f$$
+stored in *f*
 On the other hand, the optimization may take a significant amount
 of time and memory.
 
-$head f$$
+f
+*
 This is a
-$cref/d_fun/cpp_fun_ctor/Syntax/d_fun/$$.
-Optimizing this $icode f$$ also optimizes the
-corresponding $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$.
+:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>`.
+Optimizing this *f* also optimizes the
+corresponding :ref:`a_fun<py_fun_ctor.syntax.a_fun>`.
 
-$children%
+{xsrst_children
     example/python/core/fun_optimize_xam.py
-%$$
-$head Example$$
-$cref fun_optimize_xam.py$$
+}
+Example
+*******
+:ref:`fun_optimize_xam_py<fun_optimize_xam_py>`
 
-$end
+{xsrst_end py_fun_optimize}

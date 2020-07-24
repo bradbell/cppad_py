@@ -102,17 +102,19 @@ bool sparse_jac_xam(void) {
 // END SOURCE
 //
 /*
-$begin sparse_jac_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: Computing Sparse Jacobians: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin sparse_jac_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+    jacobians
+}
+C++: Computing Sparse Jacobians: Example and Test
+#################################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end sparse_jac_xam_cpp}
 */
 //

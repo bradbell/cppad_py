@@ -5,87 +5,102 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_fun_forward$$ $newlinech #$$
-# $spell
-#   vec
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin py_fun_forward}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
 #   xp
-#   Taylor
 #   yp
 #   xp
-#   numpy
-# $$
+# }
 #
-# $section Forward Mode AD$$
+# Forward Mode AD
+# ###############
 #
-# $head Syntax$$
-# $icode%yp% = %f%.forward(%p%, %xp%)%$$
+# Syntax
+# ******
+# *yp* = *f* . ``forward`` ( *p* , *xp* )
 #
-# $head Taylor Coefficient$$
-# For a function $latex g(t)$$ of a scalar argument $latex t \in \B{R}$$,
-# the $th p$$ order Taylor coefficient is its
-# $code p$$-th order derivative divided by $icode p$$ factorial
-# and evaluated at $latex t = 0$$; i.e.,
-# $latex \[
-#   g^{(p)} (0) /  p !
-# \]$$
+# Taylor Coefficient
+# ******************
+# For a function :math:`g(t)` of a scalar argument :math:`t \in \B{R}`,
+# the *p*-th order Taylor coefficient is its
+# ``p`` -th order derivative divided by *p* factorial
+# and evaluated at :math:`t = 0`; i.e.,
 #
-# $head f$$
+# .. math::
+#
+#    g^{(p)} (0) /  p !
+#
+# f
+# *
 # This is either a
-# $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$ or
-# $cref/a_fun/py_fun_ctor/Syntax/a_fun/$$ function object.
+# :ref:`d_fun<py_fun_ctor.syntax.d_fun>` or
+# :ref:`a_fun<py_fun_ctor.syntax.a_fun>` function object.
 # Note that its state is changed by this operation because
 # all the Taylor coefficient that it calculates for every
 # variable in recording are stored.
 # See more discussion of this fact under the heading
-# $cref/p/py_fun_forward/p/$$ below.
+# :ref:`p<py_fun_forward.p>` below.
 #
-# $head f(x)$$
-# We use the notation $latex f: \B{R}^n \rightarrow \B{R}^m$$
-# for the function corresponding to $icode f$$.
-# Note that $icode n$$ is the size of $cref/ax/py_fun_ctor/ax/$$
-# and $icode m$$ is the size of $cref/ay/py_fun_ctor/ay/$$
-# in to the constructor for $icode f$$.
+# f(x)
+# ****
+# We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
+# for the function corresponding to *f* .
+# Note that *n* is the size of :ref:`ax<py_fun_ctor.ax>`
+# and *m* is the size of :ref:`ay<py_fun_ctor.ay>`
+# in to the constructor for *f* .
 #
-# $head X(t)$$
-# We use the notation $latex X : \B{R} \rightarrow \B{R}^n$$
+# X(t)
+# ****
+# We use the notation :math:`X : \B{R} \rightarrow \B{R}^n`
 # for a function that the calling routine chooses.
 #
-# $head Y(t)$$
-# We define the function $latex Y : \B{R} \rightarrow \B{R}^n$$
-# by $latex Y(t) = f(X(t))$$.
+# Y(t)
+# ****
+# We define the function :math:`Y : \B{R} \rightarrow \B{R}^n`
+# by :math:`Y(t) = f(X(t))`.
 #
-# $head p$$
-# This argument has type $code int$$ and is non-negative.
+# p
+# *
+# This argument has type ``int`` and is non-negative.
 # Its value is the order of the Taylor coefficient being calculated.
-# If there was no call to $code forward$$ for this $icode f$$,
-# the value of $icode p$$ must be zero.
+# If there was no call to ``forward`` for this *f* ,
+# the value of *p* must be zero.
 # Otherwise, it must be between zero and one greater that its
-# value for the previous call using this $icode f$$.
-# After this call, the Taylor coefficients for orders zero though $icode p$$,
-# and for every variable in the recording, will be stored in $icode f$$.
+# value for the previous call using this *f* .
+# After this call, the Taylor coefficients for orders zero though *p* ,
+# and for every variable in the recording, will be stored in *f* .
 #
-# $subhead size_order$$
+# size_order
+# ==========
 # After this call,
-# $cref/f.size_order()/py_fun_property/size_order/$$ is $icode%p%+1%$$.
+# :ref:`f_size_order()<py_fun_property.size_order>` is *p* +1 .
 #
-# $head xp$$
-# If $icode f$$ is a $code d_fun$$ ($code a_fun$$) object, $icode xp$$
-# is a numpy vector with $code float$$ ($code a_double$$) elements
-# and size $icode n$$.
-# It specifies the $th p$$ order Taylor coefficients for $icode X(t)$$.
+# xp
+# **
+# If *f* is a ``d_fun`` ( ``a_fun`` ) object, *xp*
+# is a numpy vector with ``float`` ( ``a_double`` ) elements
+# and size *n* .
+# It specifies the *p*-th order Taylor coefficients for *X(t* ) .
 #
-# $head yp$$
-# The result is a numpy vector with $code float$$ ($code a_double$$) elements
-# and size $icode m$$.
-# It is the $th p$$ order Taylor coefficients for $latex Y(t)$$.
+# yp
+# **
+# The result is a numpy vector with ``float`` ( ``a_double`` ) elements
+# and size *m* .
+# It is the *p*-th order Taylor coefficients for :math:`Y(t)`.
 #
-# $children%
+# {xsrst_children
 #   example/python/core/fun_forward_xam.py
-# %$$
-# $head Example$$
-# $cref fun_forward_xam.py$$
+# }
+# Example
+# *******
+# :ref:`fun_forward_xam_py<fun_forward_xam_py>`
 #
-# $end
+# {xsrst_end py_fun_forward}
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy

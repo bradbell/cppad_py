@@ -5,127 +5,144 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin more_cpp$$
-$dollar @$$
-$spell
-    CppAD
-    cppad_py
+{xsrst_begin more_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+    cppad
     hpp
     cplusplus
-    OMhelp
-    xam
+    mhelp
     bool
     grep
-$$
+}
 
-$section Steps To Add More C++ Functions$$
+Steps To Add More C++ Functions
+###############################
 
-$head Purpose$$
+Purpose
+*******
 This section outlines the steps for adding more CppAD functionality
 to cppad_py.
-This is done by example showing how the $cref cpp_fun_new_dynamic$$ was added.
+This is done by example showing how the :ref:`cpp_fun_new_dynamic<cpp_fun_new_dynamic>` was added.
 This example case was chosen because it required both changing one
-C++ function, $cref cpp_independent$$,
-and adding a new C++ function, $cref cpp_fun_new_dynamic$$.
+C++ function, :ref:`cpp_independent<cpp_independent>`,
+and adding a new C++ function, :ref:`cpp_fun_new_dynamic<cpp_fun_new_dynamic>`.
 
-$head Include File$$
+Include File
+************
 
-$subhead independent$$
-The include file $code include/cppad/py/fun.hpp$$
+independent
+===========
+The include file ``include/cppad/py/fun.hpp``
 was edited to add the following prototype:
-$srccode%cpp%
+{xsrst_code cpp}
     CPPAD_PY_LIB_PUBLIC
     std::vector<a_double> independent(
         const std::vector<double>& x, const std::vector<double>& dynamic
     );
-%$$
-The $code independent$$ function is not part of the
-$code d_fun$$ or $code a_fun$$ class, but
+{xsrst_code}
+The ``independent`` function is not part of the
+``d_fun`` or ``a_fun`` class, but
 calling it is the first step in creating these objects.
-This is why its prototype is in the $code fun.hpp$$ file.
+This is why its prototype is in the ``fun.hpp`` file.
 
-$subhead new_dynamic$$
-The include file $code include/cppad/py/fun.hpp$$
-was edited to add the following member function to $code d_fun$$:
-$srccode%cpp%
+new_dynamic
+===========
+The include file ``include/cppad/py/fun.hpp``
+was edited to add the following member function to ``d_fun`` :
+{xsrst_code cpp}
     void new_dynamic(const std::vector<double>& dynamic);
-%$$
-The following member function was added to $code a_fun$$:
-$srccode%cpp%
+{xsrst_code}
+The following member function was added to ``a_fun`` :
+{xsrst_code cpp}
     void new_dynamic(const std::vector<a_double>& adynamic);
-%$$
+{xsrst_code}
 
+Documentation
+*************
 
-$head Documentation$$
-
-$subhead independent$$
-The C++ file $code lib/cplusplus/fun.cpp$$
+independent
+===========
+The C++ file ``lib/cplusplus/fun.cpp``
 was edited to add the following syntax documentation:
-$codei%
-    %a_both% = cppad_py::independent(%x%, %dynamic%)
-%$$
+
+| |tab| *a_both* =  ``cppad_py::independent`` ( *x* , *dynamic* )
+
 and the corresponding return value was documented; see
-$cref/a_both/cpp_independent/a_both/$$.
+:ref:`a_both<cpp_independent.a_both>`.
 
-$subhead new_dynamic$$
-The $cref cpp_fun_new_dynamic$$ documentation was added.
+new_dynamic
+===========
+The :ref:`cpp_fun_new_dynamic<cpp_fun_new_dynamic>` documentation was added.
 
-$subhead Example$$
+Example
+=======
 The corresponding example file was added to the documentation,
-below the $cref cpp_independent$$ section, using the OMhelp commands:
-$codep
-    @children%
-        example/cplusplus/fun_dynamic_xam.cpp
-    %@@
-$$
+below the :ref:`cpp_independent<cpp_independent>` section, using the OMhelp commands:
+
+| |tab| { ``xsrst_dollar}children%``
+| |tab| |tab| ``example/cplusplus/fun_dynamic_xam.cpp``
+| |tab| ``%${xsrst_dollar`` }
+
 In addition, a reference to this example was added under the
-$cref/example/cpp_independent/Example/$$ heading in the $code independent$$
+:ref:`example<cpp_independent.example>` heading in the ``independent``
 documentation.
 
-$head Implementation$$
+Implementation
+**************
 
-$subhead independent$$
-The following function was added to the $code lib/cplusplus/fun.cpp$$ file:
-$srcfile%lib/cplusplus/fun.cpp%
-    0%// BEGIN_A_BOTH_INDEPENDENT_SOURCE%// END_A_BOTH_INDEPENDENT_SOURCE%0
-%$$
+independent
+===========
+The following function was added to the ``lib/cplusplus/fun.cpp`` file:
+{xsrst_file
+    // BEGIN_A_BOTH_INDEPENDENT_SOURCE
+    // END_A_BOTH_INDEPENDENT_SOURCE
+    lib/cplusplus/fun.cpp
+}
 
-$subhead new_dynamic$$
+new_dynamic
+===========
 The following function
-was added to the $code lib/cplusplus/fun.cpp$$ file:
-$srcfile%lib/cplusplus/fun.cpp%
-    0%// BEGIN_NEW_DYNAMIC_SOURCE%// END_NEW_DYNAMIC_SOURCE%0
-%$$
-A similar function was added to the $code a_fun$$ class.
+was added to the ``lib/cplusplus/fun.cpp`` file:
+{xsrst_file
+    // BEGIN_NEW_DYNAMIC_SOURCE
+    // END_NEW_DYNAMIC_SOURCE
+    lib/cplusplus/fun.cpp
+}
+A similar function was added to the ``a_fun`` class.
 
-$head Example$$
-The file $code example/cplusplus/fun_dynamic_xam.cpp$$ was added
+Example
+*******
+The file ``example/cplusplus/fun_dynamic_xam.cpp`` was added
 with the following contents:
-$cref fun_dynamic_xam.cpp$$.
-In addition, in the file $code example/cplusplus/check_all.cpp$$:
-$codei%
-    extern bool fun_optimize_xam(void);
-%$$
+:ref:`fun_dynamic_xam_cpp<fun_dynamic_xam_cpp>`.
+In addition, in the file ``example/cplusplus/check_all.cpp`` :
+
+| |tab| ``extern bool fun_optimize_xam(void);``
+
 was added to the external declarations and
-$codei%
-    ok &= Run( fun_optimize_xam,          "fun_optimize_xam"        );
-%$$
+
+| |tab| ``ok &= Run( fun_optimize_xam,          "fun_optimize_xam"        );``
+
 was added to the main program.
 
-$head Testing$$
+Testing
+*******
 You must do a git add for all of the new files before running
-$code bin/check_all.sh$$.
+``bin/check_all.sh`` .
 After all the C++ changes above were implemented,
-$code bin/check_all.sh$$ was run and the changes were made
+``bin/check_all.sh`` was run and the changes were made
 until the warnings and errors were fixed.
 The command
-$codep
-    grep 'fun_dynamic_xam' check_all.log
-$$
+
+| |tab| ``grep 'fun_dynamic_xam' check_all.log``
+
 was used to make sure that the new C++ example / test was run.
-Note that if a particular step in $code bin/check_all.sh$$ is failing,
+Note that if a particular step in ``bin/check_all.sh`` is failing,
 you can just re-run that step to see if a particular fix works.
 Once the C++ tests were working, the changes where checked into using
-$code git$$.
+``git`` .
 
-$end
+{xsrst_end more_cpp}

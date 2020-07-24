@@ -38,17 +38,18 @@ bool vector_size_xam(void) {
 // END SOURCE
 //
 /*
-$begin vector_size_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: Size of Vectors: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin vector_size_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+}
+C++: Size of Vectors: Example and Test
+######################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end vector_size_xam_cpp}
 */
 //

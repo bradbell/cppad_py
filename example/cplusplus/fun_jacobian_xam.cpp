@@ -68,17 +68,18 @@ bool fun_jacobian_xam(void) {
 // END SOURCE
 //
 /*
-$begin fun_jacobian_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: Dense Jacobian Using AD: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin fun_jacobian_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+}
+C++: Dense Jacobian Using AD: Example and Test
+##############################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end fun_jacobian_xam_cpp}
 */
 //

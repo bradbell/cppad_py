@@ -1,85 +1,95 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-20 Bradley M. Bell (bradbell$seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $OMhelpKeyCharacter=@
-# @begin get_cppad.sh@@ @newlinech #@@
-# @spell
-#   cppad_py
-#   cmake
+#
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin get_cppad_sh}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+#   cppad
 #   yyyymmdd
-#   makefile
 #   cxx
 #   messaging
-#   CppAD
 #   usr
-# @@
+# }
 #
-# @section Get Cppad@@
+# Get Cppad
+# #########
 #
-# @head Syntax@@
-# @codei%bin/get_cppad.sh%@@
+# Syntax
+# ******
+# ``bin/get_cppad.sh``
 #
-# @head Top Source Directory@@
+# Top Source Directory
+# ********************
 # This program must be run from the
-# @cref/top source directory/setup.py/Download/Top Source Directory/@@.
-# Each time it is run it removes the old @code build@@ directory and
+# :ref:`top_source_directory<setup_py.download.top_source_directory>`.
+# Each time it is run it removes the old ``build`` directory and
 # starts over.
 #
-# @head Settings@@
-# If you change any of these settings, you must re-run @code get_cppad.sh@@.
+# Settings
+# ********
+# If you change any of these settings, you must re-run ``get_cppad.sh`` .
 #
-# @subhead cppad_prefix@@
+# cppad_prefix
+# ============
 # This prefix is used to install CppAD may be a local director; e.g.,
-# @code build/prefix@@ or an absolute path; e.g., @code /usr/local@@,
-# it may include the shell variable @code $HOME@@ but no variables:
-# @srccode%sh%
+# ``build/prefix`` or an absolute path; e.g., ``/usr/local`` ,
+# it may include the shell variable ``$HOME`` but no variables:
+# {xsrst_code sh}
 cppad_prefix="$HOME/prefix/cppad"
-# %@@
+# {xsrst_code}
 #
-# @subhead extra_cxx_flags@@
+# extra_cxx_flags
+# ===============
 # Extra compiler false used when compiling c++ code not including the
 # debugging and optimization flags.
 # The ones below are example flags are used by g++:
-# @srccode%sh%
+# {xsrst_code sh}
 extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
-# %@@
+# {xsrst_code}
 #
-# @subhead build_type@@
-# This must be must @code debug@@ or @code release@@.
+# build_type
+# ==========
+# This must be must ``debug`` or ``release`` .
 # The debug version has more error messaging while the release
 # version runs faster.
-# @srccode%sh%
+# {xsrst_code sh}
 build_type='release'
-# %@@
-# If you used the @code debug@@ build type you may get the following warning
+# {xsrst_code}
+# If you used the ``debug`` build type you may get the following warning
 # from the compiler (because the optimization is totally turned off):
-# @codep
-#   #warning _FORTIFY_SOURCE requires compiling with optimization
-# @@
 #
-# @subhead test_cppad@@
-# This must be must @code true@@ or @code false@@.
+# | |tab| ``warning _FORTIFY_SOURCE requires compiling with optimization``
+#
+# test_cppad
+# ==========
+# This must be must ``true`` or ``false`` .
 # Cppad has a huge test suite and this can take a significant amount of time,
 # but it may be useful if you have problems.
-# @srccode%sh%
+# {xsrst_code sh}
 test_cppad='false'
-# %@@
+# {xsrst_code}
 #
-# @head Caching@@
+# Caching
+# *******
 # This procedure cashes previous builds so that when you re-run
 # this script it does not re-do all the work.
 # If you have trouble, try deleting the directory
-# @codei%
-#   build/cppad-%yyyymmdd%.git
-# %@@
+#
+# | |tab| ``build/cppad`` - *yyyymmdd* . ``git``
+#
 # and re-running this script.
 #
-# @end
+# {xsrst_end get_cppad_sh}
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {

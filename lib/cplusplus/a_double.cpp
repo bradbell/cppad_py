@@ -77,54 +77,57 @@ a_double::a_double(const CppAD::AD<double>* a_ptr)
 }
 /*
 -------------------------------------------------------------------------------
-$begin a_double_ctor$$
-$spell
-    vec
+{xsrst_begin a_double_ctor}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     cppad
-    py
-    const
-    perl
-    py
-$$
+}
 
-$section The a_double Constructor$$
+The a_double Constructor
+########################
 
-$head Syntax$$
-$icode%ad% = cppad_py.a_double()
-%$$
-$icode%ad% = cppad_py.a_double(%d%)
-%$$
-$icode%ad% = cppad_py.a_double(%a_other%)
-%$$
+Syntax
+******
 
-$head Purpose$$
-Creates a $code cppad_py::a_double$$ object that can be use
+| *ad* =  ``cppad_py.a_double`` ()
+| *ad* =  ``cppad_py.a_double`` ( *d* )
+| *ad* =  ``cppad_py.a_double`` ( *a_other* )
+
+Purpose
+*******
+Creates a ``cppad_py::a_double`` object that can be use
 to track floating point operations and preform algorithmic differentiation.
 
-$head d$$
+d
+*
 This argument has prototype
-$codei%
-    const double& %d%
-%$$
-The resulting $icode ad$$ variable represents
-a constant function equal to $icode d$$.
 
-$head a_other$$
+| |tab| ``const double&`` *d*
+
+The resulting *ad* variable represents
+a constant function equal to *d* .
+
+a_other
+*******
 This argument has prototype
-$codei%
-    const a_double& %a_other%
-%$$
-The resulting $icode ad$$ variable is the same function
-of the independent variables as $icode a_other$$.
 
-$head ad$$
-is the $code a_double$$ object that is constructed.
+| |tab| ``const a_double&`` *a_other*
 
-$head Example$$
-All of the other $code a_double$$ examples use an $code a_double$$
+The resulting *ad* variable is the same function
+of the independent variables as *a_other* .
+
+ad
+**
+is the ``a_double`` object that is constructed.
+
+Example
+*******
+All of the other ``a_double`` examples use an ``a_double``
 constructor.
 
-$end
+{xsrst_end a_double_ctor}
 -------------------------------------------------------------------------------
 */
 // default a_double ctor
@@ -147,40 +150,43 @@ a_double::a_double(const a_double& ad)
 a_double::~a_double(void)
 { }
 /*
-$begin a_double_unary_op$$
+{xsrst_begin a_double_unary_op}
 
-$section a_double Unary Plus and Minus$$
-$spell
-    vec
-    const
-    perl
-$$
+.. include:: ../preamble.rst
 
-$head Syntax$$
-$icode%ay% = +%ax%
-%$$
-$icode%ay% = -%ax%
-%$$
+a_double Unary Plus and Minus
+#############################
 
-$head ax$$
+{xsrst_spell
+}
+
+Syntax
+******
+
+| *ay* = + *ax*
+| *ay* = - *ax*
+
+ax
+**
 This object has prototype
-$codei%
-    const a_double& %ax%
-%$$
 
-$head ay$$
-If the operator is $code +$$, the result is equal to $icode ax$$.
-If it is $code -$$, the result is the negative of $icode ax$$.
+| |tab| ``const a_double&`` *ax*
 
-$children%
-    example/cplusplus/a_double_unary_op_xam.cpp%
+ay
+**
+If the operator is ``+`` , the result is equal to *ax* .
+If it is ``-`` , the result is the negative of *ax* .
+
+{xsrst_children
+    example/cplusplus/a_double_unary_op_xam.cpp
     example/python/core/a_double_unary_op_xam.py
-%$$
-$head Example$$
-$cref/C++/a_double_unary_op_xam.cpp/$$,
-$cref/Python/a_double_unary_op_xam.py/$$.
+}
+Example
+*******
+:ref:`c++<a_double_unary_op_xam_cpp>`,
+:ref:`python<a_double_unary_op_xam_py>`.
 
-$end
+{xsrst_end a_double_unary_op}
 */
 const a_double& a_double::operator+(void) const
 {   return *this; }
@@ -191,106 +197,111 @@ a_double a_double::operator-(void) const
 }
 /*
 -------------------------------------------------------------------------------
-$begin a_double_property$$
-$spell
-    vec
-    const
-    perl
+{xsrst_begin a_double_property}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     bool
     aother
     ap
-    var
-$$
+}
 
-$section Properties of an a_double Object$$
+Properties of an a_double Object
+################################
 
-$head Syntax$$
-$icode%d% = %ad%.value()
-%$$
-$icode%p% = %ad%.parameter()
-%$$
-$icode%v% = %ad%.variable()
-%$$
-$icode%e% = %ad%.near_equal(%aother%)
-%$$
-$icode%ap% = %ad%.var2par()
-%$$
+Syntax
+******
 
+| *d* = *ad* . ``value`` ()
+| *p* = *ad* . ``parameter`` ()
+| *v* = *ad* . ``variable`` ()
+| *e* = *ad* . ``near_equal`` ( *aother* )
+| *ap* = *ad* . ``var2par`` ()
 
-$head ad$$
+ad
+**
 This object has prototype
-$codei%
-    const a_double& %ad%
-%$$
 
-$head value$$
-The result $icode d$$ has prototype
-$codei%
-    double %d%
-%$$
-It is the value of $icode ad$$, as a constant function.
+| |tab| ``const a_double&`` *ad*
 
-$subhead Restriction$$
-The object $icode ad$$ must not depend on the
-$cref/independent/cpp_independent/$$
-variables when $icode%ad%.value()%$$ is called.
+value
+*****
+The result *d* has prototype
+
+| |tab| ``double`` *d*
+
+It is the value of *ad* , as a constant function.
+
+Restriction
+===========
+The object *ad* must not depend on the
+:ref:`independent<cpp_independent>`
+variables when *ad* . ``value`` () is called.
 If it does depend on the independent variables,
 you will have to wait until the current recording is terminated
 before you can access its value; see
-$cref/var2par/a_double_property/var2par/$$ below.
+:ref:`var2par<a_double_property.var2par>` below.
 
-$head parameter$$
-The result $icode p$$ has prototype
-$codei%
-    bool %p%
-%$$
-It is true if $icode ad$$ represent a constant functions; i.e.,
-$icode ad$$ not depend on the independent variables.
+parameter
+*********
+The result *p* has prototype
 
-$head variable$$
-The result $icode v$$ has prototype
-$codei%
-    bool %v%
-%$$
-It is true if $icode ad$$ is not a constant function; i.e.,
-$icode ad$$ depends on the independent variables.
+| |tab| ``bool`` *p*
 
-$head near_equal$$
-The argument $icode aother$$,
-and the result $icode e$$, have prototype
-$codei%
-    const a_double& %aother%
-    bool %e%
-%$$
-The result is true if $icode ad$$ is nearly equal to $icode aother$$.
+It is true if *ad* represent a constant functions; i.e.,
+*ad* not depend on the independent variables.
+
+variable
+********
+The result *v* has prototype
+
+| |tab| ``bool`` *v*
+
+It is true if *ad* is not a constant function; i.e.,
+*ad* depends on the independent variables.
+
+near_equal
+**********
+The argument *aother* ,
+and the result *e* , have prototype
+
+| |tab| ``const a_double&`` *aother*
+| |tab| ``bool`` *e*
+
+The result is true if *ad* is nearly equal to *aother* .
 To be specific, the result is
-$latex \[
+
+.. math::
+
     | d - o | \leq 100 \; \varepsilon \; ( |d| + |o| )
-\] $$
-where $icode d$$ and $icode o$$ are the value corresponding to
-$icode ad$$ and $icode aother$$ and
-$latex \varepsilon$$ is machine epsilon corresponding
-to the type $code double$$.
 
-$head var2par$$
+where *d* and *o* are the value corresponding to
+*ad* and *aother* and
+:math:`\varepsilon` is machine epsilon corresponding
+to the type ``double`` .
+
+var2par
+*******
 The result has prototype
-$codei%
-    a_double %ap%
-%$$
-It has the same value as $icode ad$$ and is sure to be a parameter
-($icode ad$$ may or may not be a variable).
-This can be useful when you want to access the value of $icode ad$$
-while is a variable; $cref/value/a_double_property/value/$$ above.
 
-$children%
-    example/cplusplus/a_double_property_xam.cpp%
+| |tab| ``a_double`` *ap*
+
+It has the same value as *ad* and is sure to be a parameter
+( *ad* may or may not be a variable).
+This can be useful when you want to access the value of *ad*
+while is a variable; :ref:`value<a_double_property.value>` above.
+
+{xsrst_children
+    example/cplusplus/a_double_property_xam.cpp
     example/python/core/a_double_property_xam.py
-%$$
-$head Example$$
-$cref/C++/a_double_property_xam.cpp/$$,
-$cref/Python/a_double_property_xam.py/$$.
+}
+Example
+*******
+:ref:`c++<a_double_property_xam_cpp>`,
+:ref:`python<a_double_property_xam_py>`.
 
-$end
+{xsrst_end a_double_property}
 */
 double a_double::value(void) const
 {   double result = CppAD::Value( *ptr() );
@@ -319,67 +330,68 @@ a_double a_double::var2par() const
 }
 /*
 -------------------------------------------------------------------------------
-$begin a_double_binary$$
+{xsrst_begin a_double_binary}
 
-$section a_double Binary Operators with an AD Result$$
-$spell
-    vec
-    const
+.. include:: ../preamble.rst
+
+a_double Binary Operators with an AD Result
+###########################################
+
+{xsrst_spell
     az
-    op
-    perl
-$$
+}
 
-$head Syntax$$
-$icode%az% = %ax% %op% %ay%
-%$$
-$icode%az% = %ax% %op% %y%
-%$$
-$icode%az% = %y% %op% %ax%
-%$$
+Syntax
+******
 
-$head op$$
-The binary operator $icode op$$ is one of the following:
-addition $code +$$,
-subtraction $code -$$,
-multiplication $code *$$,
-division $code /$$, or
-exponentiation $code **$$.
+| *az* = *ax* *op* *ay*
+| *az* = *ax* *op* *y*
+| *az* = *y* *op* *ax*
+
+op
+**
+The binary operator *op* is one of the following:
+addition ``+`` ,
+subtraction ``-`` ,
+multiplication ``*`` ,
+division ``/`` , or
+exponentiation ``**`` .
 Note that exponentiation is a function is c++ and an operator in python.
 
-$head ax$$
+ax
+**
 This object has prototype
-$codei%
-    const a_double& %ax%
-%$$
 
-$head ay$$
+| |tab| ``const a_double&`` *ax*
+
+ay
+**
 This object has prototype
-$codei%
-    const a_double& %ay%
-%$$
 
-$head y$$
+| |tab| ``const a_double&`` *ay*
+
+y
+*
 This object has prototype
-$codei%
-    const double& %y%
-%$$
 
-$head az$$
+| |tab| ``const double&`` *y*
+
+az
+**
 The result has prototype
-$codei%
-    a_double %az%
-%$$
 
-$children%
-    example/cplusplus/a_double_binary_xam.cpp%
+| |tab| ``a_double`` *az*
+
+{xsrst_children
+    example/cplusplus/a_double_binary_xam.cpp
     example/python/core/a_double_binary_xam.py
-%$$
-$head Example$$
-$cref/C++/a_double_binary_xam.cpp/$$,
-$cref/Python/a_double_binary_xam.py/$$.
+}
+Example
+*******
+:ref:`c++<a_double_binary_xam_cpp>`,
+:ref:`python<a_double_binary_xam_py>`.
 
-$end
+{xsrst_end a_double_binary}
 */
 BINARY_OP_AD_RESULT(+)
 BINARY_OP_AD_RESULT(-)
@@ -426,66 +438,67 @@ a_double pow(const double& d, const a_double& ad)
 }
 /*
 -------------------------------------------------------------------------------
-$begin a_double_compare$$
+{xsrst_begin a_double_compare}
 
-$section a_double Comparison Operators$$
-$spell
-    vec
-    const
-    az
-    op
-    perl
+.. include:: ../preamble.rst
+
+a_double Comparison Operators
+#############################
+
+{xsrst_spell
     bool
-$$
+}
 
-$head Syntax$$
-$icode%b% = %ax% %op% %ay%
-%$$
-$icode%b% = %ax% %op% %y%
-%$$
+Syntax
+******
 
-$head op$$
-The binary operator $icode op$$ is one of the following:
-$code <$$ (less than),
-$code <=$$ (less than or equal),
-$code >$$ (greater than),
-$code >=$$ (greater than or equal),
-$code ==$$ (equal),
-$code !=$$ (not equal).
+| *b* = *ax* *op* *ay*
+| *b* = *ax* *op* *y*
 
-$head ax$$
+op
+**
+The binary operator *op* is one of the following:
+``<`` (less than),
+``<=`` (less than or equal),
+``>`` (greater than),
+``>=`` (greater than or equal),
+``==`` (equal),
+``!=`` (not equal).
+
+ax
+**
 This object has prototype
-$codei%
-    const a_double& %ax%
-%$$
 
-$head ay$$
+| |tab| ``const a_double&`` *ax*
+
+ay
+**
 This object has prototype
-$codei%
-    const a_double& %ay%
-%$$
 
-$head y$$
+| |tab| ``const a_double&`` *ay*
+
+y
+*
 This object has prototype
-$codei%
-    const double& %y%
-%$$
 
-$head b$$
+| |tab| ``const double&`` *y*
+
+b
+*
 The result has prototype
-$codei%
-    bool %b%
-%$$
 
-$children%
-    example/cplusplus/a_double_compare_xam.cpp%
+| |tab| ``bool`` *b*
+
+{xsrst_children
+    example/cplusplus/a_double_compare_xam.cpp
     example/python/core/a_double_compare_xam.py
-%$$
-$head Example$$
-$cref/C++/a_double_compare_xam.cpp/$$,
-$cref/Python/a_double_compare_xam.py/$$.
+}
+Example
+*******
+:ref:`c++<a_double_compare_xam_cpp>`,
+:ref:`python<a_double_compare_xam_py>`.
 
-$end
+{xsrst_end a_double_compare}
 */
 COMPARISON_OP(<)
 COMPARISON_OP(<=)
@@ -495,61 +508,64 @@ COMPARISON_OP(==)
 COMPARISON_OP(!=)
 /*
 -------------------------------------------------------------------------------
-$begin a_double_assign$$
+{xsrst_begin a_double_assign}
 
-$section a_double Assignment Operators$$
-$spell
-    vec
-    const
-    az
-    op
-    perl
-$$
+.. include:: ../preamble.rst
 
-$head Syntax$$
-$icode%ax% %op% %ay%
-%$$
-$icode%aw% %op% %y%
-%$$
+a_double Assignment Operators
+#############################
 
-$head op$$
-The assignment operator $icode op$$ is one of the following:
-$table
-$icode op$$ $pre  $$ $cnext Meaning            $rnext
-$code =$$ $cnext  simple assignment            $rnext
-$code +=$$ $cnext $icode%ax% = %ax% + ( %ay% or %y% )%$$   $rnext
-$code -=$$ $cnext $icode%ax% = %ax% - ( %ay% or %y% )%$$   $rnext
-$code *=$$ $cnext $icode%ax% = %ax% * ( %ay% or %y% )%$$   $rnext
-$code /=$$ $cnext $icode%ax% = %ax% / ( %ay% or %y% )%$$   $rnext
-$tend
+{xsrst_spell
+}
 
-$head ax$$
+Syntax
+******
+
+| *ax* *op* *ay*
+| *aw* *op* *y*
+
+op
+**
+The assignment operator *op* is one of the following:
+
+.. csv-table::
+    :widths: 2, 30
+
+    *op* , Meaning
+    ``=`` , simple assignment
+    ``+=`` , *ax* = *ax* + ( *ay* ``or`` *y* )
+    ``-=`` , *ax* = *ax* - ( *ay* ``or`` *y* )
+    ``*=`` , *ax* = *ax* ``*`` *ay* ``or`` *y* )
+    ``/=`` , *ax* = *ax* ``/`` *ay* ``or`` *y* )
+
+ax
+**
 This object has prototype
-$codei%
-    const a_double& %ax%
-%$$
 
-$head ay$$
+| |tab| ``const a_double&`` *ax*
+
+ay
+**
 This object has prototype
-$codei%
-    a_double& %ay%
-%$$
 
-$head y$$
+| |tab| ``a_double&`` *ay*
+
+y
+*
 This object has prototype
-$codei%
-    const double& %y%
-%$$
 
-$children%
-    example/cplusplus/a_double_assign_xam.cpp%
+| |tab| ``const double&`` *y*
+
+{xsrst_children
+    example/cplusplus/a_double_assign_xam.cpp
     example/python/core/a_double_assign_xam.py
-%$$
-$head Example$$
-$cref/C++/a_double_assign_xam.cpp/$$,
-$cref/Python/a_double_assign_xam.py/$$.
+}
+Example
+*******
+:ref:`c++<a_double_assign_xam_cpp>`,
+:ref:`python<a_double_assign_xam_py>`.
 
-$end
+{xsrst_end a_double_assign}
 */
 ASSIGNMENT_OP(=)
 ASSIGNMENT_OP(+=)
@@ -558,16 +574,14 @@ ASSIGNMENT_OP(*=)
 ASSIGNMENT_OP(/=)
 /*
 -------------------------------------------------------------------------------
-$begin a_double_unary_fun$$
-$spell
-    vec
-    const
-    perl
-    bool
+{xsrst_begin a_double_unary_fun}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     acos
     asin
     atan
-    cos
     exp
     fabs
     sqrt
@@ -577,61 +591,66 @@ $spell
     atanh
     expm
     erf
-$$
+}
 
-$section Unary Functions with AD Result$$
+Unary Functions with AD Result
+##############################
 
-$head Syntax$$
-$icode%ay% = %ax%.%fun%()
-%$$
+Syntax
+******
 
-$head ax$$
+| *ay* = *ax* . *fun* ()
+
+ax
+**
 This object has prototype
-$codei%
-    const a_double& %ax%
-%$$
+
+| |tab| ``const a_double&`` *ax*
+
 This is the argument for the function evaluation.
 
-$head fun$$
+fun
+***
 This specifies which function is being evaluated and is one
 of  following value:
-$code abs$$,
-$code acos$$,
-$code asin$$,
-$code atan$$,
-$code cos$$,
-$code cosh$$,
-$code erf$$,
-$code exp$$,
-$code fabs$$,
-$code log$$,
-$code sin$$,
-$code sinh$$,
-$code sqrt$$,
-$code tan$$,
-$code tanh$$.
+``abs`` ,
+``acos`` ,
+``asin`` ,
+``atan`` ,
+``cos`` ,
+``cosh`` ,
+``erf`` ,
+``exp`` ,
+``fabs`` ,
+``log`` ,
+``sin`` ,
+``sinh`` ,
+``sqrt`` ,
+``tan`` ,
+``tanh`` .
 2DO: Add the C++11 functions
 asinh, acosh, atanh, expm1, and log1p to this list.
 
-$head ay$$
+ay
+**
 The result object has prototype
-$codei%
-    a_double %ay%
-%$$
+
+| |tab| ``a_double`` *ay*
+
 and is the specified function evaluated at the specified argument; i.e.,
-$codei%
-    %ay% = %fun%( %ax% )
-%$$
 
-$children%
-    example/cplusplus/a_double_unary_fun_xam.cpp%
+| |tab| *ay* = *fun* ( *ax* )
+
+{xsrst_children
+    example/cplusplus/a_double_unary_fun_xam.cpp
     example/python/core/a_double_unary_fun_xam.py
-%$$
-$head Example$$
-$cref/C++/a_double_unary_fun_xam.cpp/$$,
-$cref/Python/a_double_unary_fun_xam.py/$$.
+}
+Example
+*******
+:ref:`c++<a_double_unary_fun_xam_cpp>`,
+:ref:`python<a_double_unary_fun_xam_py>`.
 
-$end
+{xsrst_end a_double_unary_fun}
 */
 UNARY_FUN_AD_RESULT(abs)
 UNARY_FUN_AD_RESULT(acos)
@@ -651,102 +670,112 @@ UNARY_FUN_AD_RESULT(tanh)
 
 /*
 -------------------------------------------------------------------------------
-$begin a_double_cond_assign$$
-$spell
-    vec
-    const
-    perl
+{xsrst_begin a_double_cond_assign}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     cond
-$$
+}
 
-$section AD Conditional Assignment$$
+AD Conditional Assignment
+#########################
 
-$head Syntax$$
-$icode%target%.cond_assign(%cop%, %left%, %right%, %if_true%, %if_false%)
-%$$
+Syntax
+******
 
-$head Purpose$$
+| *target* . ``cond_assign`` ( *cop* , *left* , *right* , *if_true* , *if_false* )
+
+Purpose
+*******
 The code
-$codei%
-    if( %left% %cop% %right% )
-        %target% = %if_true%
-    else
-        %target% = %if_false%
-%$$
+
+| |tab| ``if`` ( *left* *cop* *right* )
+| |tab| |tab| *target* = *if_true*
+| |tab| ``else``
+| |tab| |tab| *target* = *if_false*
+
 records either the true or false case depending on the value
-of $icode left$$ and $icode right$$; see $cref cpp_fun_ctor$$.
-If $icode left$$ or $icode right$$ is a
-$cref/variable/a_double_property/variable/$$,
-it may be desirable to switch between $icode if_true$$ and $icode if_false$$
+of *left* and *right* ; see :ref:`cpp_fun_ctor<cpp_fun_ctor>`.
+If *left* or *right* is a
+:ref:`variable<a_double_property.variable>`,
+it may be desirable to switch between *if_true* and *if_false*
 depending of the value of the independent variable during
-calls to order zero $cref cpp_fun_forward$$.
-The $code cond_assign$$ does this.
+calls to order zero :ref:`cpp_fun_forward<cpp_fun_forward>`.
+The ``cond_assign`` does this.
 
-$head target$$
+target
+******
 This object has prototype
-$codei%
-    a_double& %target%
-%$$
 
-$head cop$$
+| |tab| ``a_double&`` *target*
+
+cop
+***
 This argument has prototype
-$codei%
-    const char *cop
-%$$
+
+| |tab| ``const char *cop``
+
 The comparison is
-$codei%
-    %left% %cop% %right%
-%$$
-where $icode cop$$ is one of the following:
-$table
-$icode cop$$  $cnext                       $rnext
-$code <$$     $cnext less than             $rnext
-$code <=$$    $cnext less than or equal    $rnext
-$code ==$$    $cnext equal                 $rnext
-$code >=$$    $cnext greater than or equal $rnext
-$code >$$     $cnext greater than
-$tend
 
-$head left$$
+| |tab| *left* *cop* *right*
+
+where *cop* is one of the following:
+
+.. csv-table::
+    :widths: 3, 21
+
+    *cop* ,
+    ``<`` , less than
+    ``<=`` , less than or equal
+    ``==`` , equal
+    ``>=`` , greater than or equal
+    ``>`` , greater than
+
+left
+****
 This argument has prototype
-$codei%
-    const a_double& %left%
-%$$
+
+| |tab| ``const a_double&`` *left*
+
 It specifies the left operand in the comparison.
 
-$head right$$
+right
+*****
 This argument has prototype
-$codei%
-    const a_double& %right%
-%$$
+
+| |tab| ``const a_double&`` *right*
+
 It specifies the right operand in the comparison.
 
-$head if_true$$
+if_true
+*******
 This argument has prototype
-$codei%
-    const a_double& %if_true%
-%$$
-It specifies the value assigned to $icode ad$$ if the result
+
+| |tab| ``const a_double&`` *if_true*
+
+It specifies the value assigned to *ad* if the result
 of the comparison is true.
 
-$head if_false$$
+if_false
+********
 This argument has prototype
-$codei%
-    const a_double& %if_false%
-%$$
-It specifies the value assigned to $icode ad$$ if the result
+
+| |tab| ``const a_double&`` *if_false*
+
+It specifies the value assigned to *ad* if the result
 of the comparison is false.
 
-
-$children%
-    example/cplusplus/a_double_cond_assign_xam.cpp%
+{xsrst_children
+    example/cplusplus/a_double_cond_assign_xam.cpp
     example/python/core/a_double_cond_assign_xam.py
-%$$
-$head Example$$
-$cref/C++/a_double_cond_assign_xam.cpp/$$,
-$cref/Python/a_double_cond_assign_xam.py/$$.
+}
+Example
+*******
+:ref:`c++<a_double_cond_assign_xam_cpp>`,
+:ref:`python<a_double_cond_assign_xam_py>`.
 
-$end
+{xsrst_end a_double_cond_assign}
 */
 void a_double::cond_assign(
     const char*     cop       ,

@@ -5,18 +5,23 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin numeric_xam$$
+{xsrst_begin numeric_xam}
 
-$section Numerical Examples$$
+.. include:: ../preamble.rst
 
-$childtable%
-    example/python/numeric/simple_inv.py%
-    example/python/numeric/runge4_step.py%
-    example/python/numeric/rosen3_step.py%
-    example/python/numeric/ode_multi_step.py%
-    example/python/numeric/optimize_fun_class.py%
-    example/python/numeric/seirwd_model.py%
+Numerical Examples
+##################
+
+Children
+********
+{xsrst_child_list
+    example/python/numeric/simple_inv.py
+    example/python/numeric/runge4_step.py
+    example/python/numeric/rosen3_step.py
+    example/python/numeric/ode_multi_step.py
+    example/python/numeric/optimize_fun_class.py
+    example/python/numeric/seirwd_model.py
     example/python/numeric/covid_19_xam.py
-%$$
+}
 
-$end
+{xsrst_end numeric_xam}

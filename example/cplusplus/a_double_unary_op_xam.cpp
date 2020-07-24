@@ -29,17 +29,18 @@ bool a_double_unary_op_xam(void) {
 // END SOURCE
 //
 /*
-$begin a_double_unary_op_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: a_double Unary Plus and Minus: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin a_double_unary_op_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+}
+C++: a_double Unary Plus and Minus: Example and Test
+####################################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end a_double_unary_op_xam_cpp}
 */
 //

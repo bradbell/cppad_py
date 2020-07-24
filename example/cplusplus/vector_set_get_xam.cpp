@@ -54,17 +54,18 @@ bool vector_set_get_xam(void) {
 // END SOURCE
 //
 /*
-$begin vector_set_get_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: Setting and Getting Vector Elements: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin vector_set_get_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+}
+C++: Setting and Getting Vector Elements: Example and Test
+##########################################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end vector_set_get_xam_cpp}
 */
 //

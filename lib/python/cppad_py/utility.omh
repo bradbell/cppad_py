@@ -5,13 +5,17 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin py_utility$$
-$spell
-$$
+{xsrst_begin py_utility}
 
-$section Python Utilities$$
+.. include:: ../preamble.rst
 
-$childtable%lib/python/cppad_py/utility.py
-%$$
+Python Utilities
+################
 
-$end
+Children
+********
+{xsrst_child_list
+    lib/python/cppad_py/utility.py
+}
+
+{xsrst_end py_utility}

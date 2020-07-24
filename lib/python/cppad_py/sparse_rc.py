@@ -5,149 +5,154 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_sparse_rc$$ $newlinech #$$
-# $spell
-#   rc
-#   nr
-#   nc
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin py_sparse_rc}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
 #   nnz
 #   resize
-#   const
-#   Cppad
-#   Py
-#   vec
-#   cppad_py
-#   numpy
-# $$
+#   cppad
+#   cppad
+# }
 #
-# $section Sparsity Patterns$$
+# Sparsity Patterns
+# #################
 #
-# $head Syntax$$
-# $icode%pattern%   = cppad_py.sparse_rc()
-# %$$
-# $icode%pattern%.resize(%nr%, %nc%, %nnz%)
-# %$$
-# $icode%nr%        = %pattern%.nr()
-# %$$
-# $icode%nc%        = %pattern%.nc()
-# %$$
-# $icode%nnz%       = %pattern%.nnz()
-# %$$
-# $icode%pattern%.put(%k%, %r%, %c%)
-# %$$
-# $icode%row%       = %pattern%.row()
-# %$$
-# $icode%col%       = %pattern%.col()
-# %$$
-# $icode%row_major% = %pattern%.row_major()
-# %$$
-# $icode%col_major% = %pattern%.col_major()
-# %$$
+# Syntax
+# ******
 #
-# $head pattern$$
+# | *pattern* =  ``cppad_py.sparse_rc`` ()
+# | *pattern* . ``resize`` ( *nr* , *nc* , *nnz* )
+# | *nr* = *pattern* . ``nr`` ()
+# | *nc* = *pattern* . ``nc`` ()
+# | *nnz* = *pattern* . ``nnz`` ()
+# | *pattern* . ``put`` ( *k* , *r* , *c* )
+# | *row* = *pattern* . ``row`` ()
+# | *col* = *pattern* . ``col`` ()
+# | *row_major* = *pattern* . ``row_major`` ()
+# | *col_major* = *pattern* . ``col_major`` ()
+#
+# pattern
+# *******
 # This result is used to hold a sparsity pattern for a matrix.
 # It is constant
-# except during the $code resize$$ and $code put$$ operations.
+# except during the ``resize`` and ``put`` operations.
 #
-# $head nr$$
-# This argument is a non-negative $code int$$
+# nr
+# **
+# This argument is a non-negative ``int``
 # and is the number of rows in the sparsity pattern.
-# The function $code nr()$$ returns the value of
-# $icode nr$$ in the previous $code resize$$ operation.
+# The function ``nr()`` returns the value of
+# *nr* in the previous ``resize`` operation.
 #
-# $head nc$$
-# This argument is a non-negative $code int$$
+# nc
+# **
+# This argument is a non-negative ``int``
 # and is the number of columns in the sparsity pattern.
-# The function $code nc()$$ returns the value of
-# $icode nc$$ in the previous $code resize$$ operation.
+# The function ``nc()`` returns the value of
+# *nc* in the previous ``resize`` operation.
 #
-# $head nnz$$
-# This argument is a non-negative $code int$$
+# nnz
+# ***
+# This argument is a non-negative ``int``
 # and is the number of possibly non-zero
 # index pairs in the sparsity pattern.
-# The function $code nnz()$$ returns the value of
-# $icode nnz$$ in the previous $code resize$$ operation.
+# The function ``nnz()`` returns the value of
+# *nnz* in the previous ``resize`` operation.
 #
-# $head resize$$
+# resize
+# ******
 # The current sparsity pattern is lost and a new one is started
 # with the specified parameters.
-# After each $code resize$$, the elements in the $icode row$$
-# and $icode col$$ vectors should be assigned using $code put$$.
+# After each ``resize`` , the elements in the *row*
+# and *col* vectors should be assigned using ``put`` .
 #
-# $head put$$
+# put
+# ***
 # This function sets the values
-# $codei%
-#   %row%[%k%] = %r%
-#   %col%[%k%] = %c%
-# %$$
-# (The name $code set$$ is used by Cppad, but not used here,
-# because $code set$$ it is a built-in name in Python.)
 #
-# $subhead k$$
-# This argument is a non-negative $code int$$
-# and must be less than $icode nnz$$.
+# | |tab| *row* [ *k* ] = *r*
+# | |tab| *col* [ *k* ] = *c*
 #
-# $subhead r$$
-# This argument is a non-negative $code int$$
-# and must be less than $icode nr$$.
-# It specifies the value assigned to $icode%row%[%k%]%$$.
+# (The name ``set`` is used by Cppad, but not used here,
+# because ``set`` it is a built-in name in Python.)
 #
-# $subhead c$$
-# This argument is a non-negative $code int$$
-# and must be less than $icode nc$$.
-# It specifies the value assigned to $icode%col%[%k%]%$$.
+# k
+# =
+# This argument is a non-negative ``int``
+# and must be less than *nnz* .
 #
-# $head row$$
-# This result is a numpy vector with $code int$$ elements
-# and its size is $icode nnz$$.
-# For $icode%k% = 0, %...%, %nnz%-1%$$,
-# $icode%row%[%k%]%$$ is the row index for the $th k$$ possibly non-zero
+# r
+# =
+# This argument is a non-negative ``int``
+# and must be less than *nr* .
+# It specifies the value assigned to *row* [ *k* ] .
+#
+# c
+# =
+# This argument is a non-negative ``int``
+# and must be less than *nc* .
+# It specifies the value assigned to *col* [ *k* ] .
+#
+# row
+# ***
+# This result is a numpy vector with ``int`` elements
+# and its size is *nnz* .
+# For *k* = 0, ... , *nnz* -1 ,
+# *row* [ *k* ] is the row index for the *k*-th possibly non-zero
 # entry in the matrix.
 #
-# $head col$$
-# This result is a numpy vector with $code int$$ elements
-# and its size is $icode nnz$$.
-# For $icode%k% = 0, %...%, %nnz%-1%$$,
-# $icode%col%[%k%]%$$ is the column index for the $th k$$ possibly non-zero
+# col
+# ***
+# This result is a numpy vector with ``int`` elements
+# and its size is *nnz* .
+# For *k* = 0, ... , *nnz* -1 ,
+# *col* [ *k* ] is the column index for the *k*-th possibly non-zero
 # entry in the matrix.
 #
-# $head row_major$$
-# This result is a numpy vector with $code int$$ elements
-# and its size $icode nnz$$.
+# row_major
+# *********
+# This result is a numpy vector with ``int`` elements
+# and its size *nnz* .
 # It sorts the sparsity pattern in row-major order.
 # To be specific,
-# $codei%
-#   %col%[ %row_major%[%k%] ] <= %col%[ %row_major%[%k%+1] ]
-# %$$
-# and if $icode%col%[ %row_major%[%k%] ] == %col%[ %row_major%[%k%+1] ]%$$,
-# $codei%
-#   %row%[ %row_major%[%k%] ] < %row%[ %row_major%[%k%+1] ]
-# %$$
-# This routine generates an assert if there are two entries with the same
-# row and column values (if $code NDEBUG$$ is not defined).
 #
-# $head col_major$$
-# This result is a numpy vector with $code int$$ elements
-# and its size $icode nnz$$.
+# | |tab| *col* [ *row_major* [ *k* ] ] <= *col* [ *row_major* [ *k* +1] ]
+#
+# and if *col* [ *row_major* [ *k* ] ] == *col* [ *row_major* [ *k* +1] ] ,
+#
+# | |tab| *row* [ *row_major* [ *k* ] ] < *row* [ *row_major* [ *k* +1] ]
+#
+# This routine generates an assert if there are two entries with the same
+# row and column values (if ``NDEBUG`` is not defined).
+#
+# col_major
+# *********
+# This result is a numpy vector with ``int`` elements
+# and its size *nnz* .
 # It sorts the sparsity pattern in column-major order.
 # To be specific,
-# $codei%
-#   %row%[ %col_major%[%k%] ] <= %row%[ %col_major%[%k%+1] ]
-# %$$
-# and if $icode%row%[ %col_major%[%k%] ] == %row%[ %col_major%[%k%+1] ]%$$,
-# $codei%
-#   %col%[ %col_major%[%k%] ] < %col%[ %col_major%[%k%+1] ]
-# %$$
+#
+# | |tab| *row* [ *col_major* [ *k* ] ] <= *row* [ *col_major* [ *k* +1] ]
+#
+# and if *row* [ *col_major* [ *k* ] ] == *row* [ *col_major* [ *k* +1] ] ,
+#
+# | |tab| *col* [ *col_major* [ *k* ] ] < *col* [ *col_major* [ *k* +1] ]
+#
 # This routine generates an assert if there are two entries with the same
-# row and column values (if $code NDEBUG$$ is not defined).
+# row and column values (if ``NDEBUG`` is not defined).
 #
-# $children%
+# {xsrst_children
 #   example/python/core/sparse_rc_xam.py
-# %$$
-# $head Example$$
-# $cref sparse_rc_xam.py$$
+# }
+# Example
+# *******
+# :ref:`sparse_rc_xam_py<sparse_rc_xam_py>`
 #
-# $end
+# {xsrst_end py_sparse_rc}
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy

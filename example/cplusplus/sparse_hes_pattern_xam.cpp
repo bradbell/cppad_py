@@ -93,17 +93,18 @@ bool sparse_hes_pattern_xam(void) {
 // END SOURCE
 //
 /*
-$begin sparse_hes_pattern_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: Hessian Sparsity Patterns: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin sparse_hes_pattern_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+}
+C++: Hessian Sparsity Patterns: Example and Test
+################################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end sparse_hes_pattern_xam_cpp}
 */
 //

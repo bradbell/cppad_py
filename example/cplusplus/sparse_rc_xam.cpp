@@ -61,17 +61,18 @@ bool sparse_rc_xam(void) {
 // END SOURCE
 //
 /*
-$begin sparse_rc_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: Sparsity Patterns: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin sparse_rc_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+}
+C++: Sparsity Patterns: Example and Test
+########################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end sparse_rc_xam_cpp}
 */
 //

@@ -5,29 +5,38 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_fun$$ $newlinech #$$
-# $spell
-#   Cppad
-#   Py
-# $$
+# {xsrst_comment_ch #}
 #
-# $section Cppad Py AD Functions$$
+# {xsrst_begin py_fun}
 #
-# $comment Files that have Python specific Implementation and Documention$$
-# $childtable%lib/python/cppad_py/independent.py
-#   %lib/python/cppad_py/abort_recording.omh
-#   %lib/python/cppad_py/fun_ctor.py
-#   %lib/python/cppad_py/fun_property.omh
-#   %lib/python/cppad_py/fun_new_dynamic.py
-#   %lib/python/cppad_py/fun_jacobian.py
-#   %lib/python/cppad_py/fun_hessian.py
-#   %lib/python/cppad_py/fun_forward.py
-#   %lib/python/cppad_py/fun_reverse.py
-#   %lib/python/cppad_py/fun_optimize.omh
-#   %lib/python/cppad_py/fun_json.omh
-# %$$
+# .. include:: ../preamble.rst
 #
-# $end
+# {xsrst_spell
+#   cppad
+# }
+#
+# Cppad Py AD Functions
+# #####################
+#
+# .. comment:  Files that have Python specific Implementation and Documention
+#
+# Children
+# ********
+# {xsrst_child_list
+#   lib/python/cppad_py/independent.py
+#   lib/python/cppad_py/abort_recording.omh
+#   lib/python/cppad_py/fun_ctor.py
+#   lib/python/cppad_py/fun_property.omh
+#   lib/python/cppad_py/fun_new_dynamic.py
+#   lib/python/cppad_py/fun_jacobian.py
+#   lib/python/cppad_py/fun_hessian.py
+#   lib/python/cppad_py/fun_forward.py
+#   lib/python/cppad_py/fun_reverse.py
+#   lib/python/cppad_py/fun_optimize.omh
+#   lib/python/cppad_py/fun_json.omh
+# }
+#
+# {xsrst_end py_fun}
 import cppad_py
 # ----------------------------------------------------------------------------
 class d_fun :

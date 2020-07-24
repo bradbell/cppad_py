@@ -43,108 +43,128 @@ class optimize_fun_class :
         return H
 # END_PYTHON
 """
-$begin numeric_optimize_fun_class$$
-$spell
-    numpy
+{xsrst_begin numeric_optimize_fun_class}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
     hess
-    jac
-$$
+}
 
-$section A Helper Class That Defines Functions Needed for Optimization$$
+A Helper Class That Defines Functions Needed for Optimization
+#############################################################
 
-$head Syntax$$
-$icode%optimize_fun% = optimize_fun_class(%objective_ad%, %constraint_ad%)%$$
+Syntax
+******
+*optimize_fun* =  ``optimize_fun_class`` ( *objective_ad* , *constraint_ad* )
 
-$head Purpose$$
+Purpose
+*******
 This class is an aid solving optimization problems of the form
-$latex \[
+
+.. math::
+
     \begin{array}{rl}
     {\rm minimize}       & f(x) \; {\rm w.r.t} \; x \\
     {\rm subject \; to}  & a \leq g(x) \leq b \\
     \end{array}
-\] $$
-where $latex x$$ is a vector,
-$latex f(x)$$ is a scalar, and
-$latex a, g(x), b$$ are all vectors with the same length.
-We use $latex n$$, $latex m$$ for the length of the vectors
-$latex x$$ and $latex g(x)$$ respectively.
 
-$head objective_ad$$
-This is a $cref/d_fun/py_fun_ctor/Syntax/d_fun/$$
-representation of the function $latex f(x)$$.
+where :math:`x` is a vector,
+:math:`f(x)` is a scalar, and
+:math:`a, g(x), b` are all vectors with the same length.
+We use :math:`n`, :math:`m` for the length of the vectors
+:math:`x` and :math:`g(x)` respectively.
 
-$head constraint_ad$$
-This is a $code d_fun$$ representation of the function $latex g(x)$$.
+objective_ad
+************
+This is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>`
+representation of the function :math:`f(x)`.
 
-$head optimize_fun$$
+constraint_ad
+*************
+This is a ``d_fun`` representation of the function :math:`g(x)`.
+
+optimize_fun
+************
 This class object has the following functions defined:
 
-$subhead objective_fun$$
+objective_fun
+=============
 The syntax
-$codei%
-    %y% = %optimize_fun%.objective_fun(%x%)
-%$$
-sets $latex y = f(x)$$ where
-$icode x$$ is a numpy vector with length $icode n$$
-and $icode y$$ is a scalar.
 
-$subhead objective_grad$$
-The syntax
-$codei%
-    %z% = %optimize_fun%.objective_grad(%x%)
-%$$
-sets $latex z = f^{(1)} (x)$$ where
-$icode x$$ and $icode z$$ are numpy vectors with length $icode n$$.
+| |tab| *y* = *optimize_fun* . ``objective_fun`` ( *x* )
 
-$subhead objective_hess$$
-The syntax
-$codei%
-    %h% = %optimize_fun%.objective_hess(%x%)
-%$$
-sets $latex h = f^{(2)} (x)$$ where
-$icode x$$ is a numpy vector with length $icode n$$
-and $icode h$$ is a numpy $icode n$$ by $icode n$$  matrix.
+sets :math:`y = f(x)` where
+*x* is a numpy vector with length *n*
+and *y* is a scalar.
 
-$subhead constraint_fun$$
+objective_grad
+==============
 The syntax
-$codei%
-    %y% = %optimize_fun%.constraint_fun(%x%)
-%$$
-sets $latex y = g(x)$$ where
-$icode x$$ ($icode y$$) is a numpy vector with length
-$icode n$$ ($icode m$$).
 
-$subhead constraint_jac$$
-The syntax
-$codei%
-    %J% = %optimize_fun%.constraint_jac(%x%)
-%$$
-sets $latex J = g^{(1)} (x)$$ where
-$icode x$$ is a numpy vector with length $icode n$$
-and $icode J$$ is a numpy $icode m$$ by $icode n$$  matrix.
+| |tab| *z* = *optimize_fun* . ``objective_grad`` ( *x* )
 
-$subhead constraint_hess$$
+sets :math:`z = f^{(1)} (x)` where
+*x* and *z* are numpy vectors with length *n* .
+
+objective_hess
+==============
 The syntax
-$codei%
-    %H% = %optimize_fun%.constraint_hess(%x%, %v%)
-%$$
+
+| |tab| *h* = *optimize_fun* . ``objective_hess`` ( *x* )
+
+sets :math:`h = f^{(2)} (x)` where
+*x* is a numpy vector with length *n*
+and *h* is a numpy *n* by *n*  matrix.
+
+constraint_fun
+==============
+The syntax
+
+| |tab| *y* = *optimize_fun* . ``constraint_fun`` ( *x* )
+
+sets :math:`y = g(x)` where
+*x* ( *y* ) is a numpy vector with length
+*n* ( *m* ).
+
+constraint_jac
+==============
+The syntax
+
+| |tab| *J* = *optimize_fun* . ``constraint_jac`` ( *x* )
+
+sets :math:`J = g^{(1)} (x)` where
+*x* is a numpy vector with length *n*
+and *J* is a numpy *m* by *n*  matrix.
+
+constraint_hess
+===============
+The syntax
+
+| |tab| *H* = *optimize_fun* . ``constraint_hess`` ( *x* , *v* )
+
 sets
-$latex \[
+
+.. math::
+
     H = \sum_{i=0}^{m-1} v_k g_i^{(2)} (x)
-\]$$
-where $icode x$$ is a numpy vector with length $icode n$$
-and $icode H$$ is a numpy $icode n$$ by $icode n$$  matrix.
 
-$children%
+where *x* is a numpy vector with length *n*
+and *H* is a numpy *n* by *n*  matrix.
+
+{xsrst_children
     example/python/numeric/optimize_fun_xam.py
-%$$
-$head Example$$
-$cref numeric_optimize_fun_xam.py$$
+}
+Example
+*******
+:ref:`numeric_optimize_fun_xam_py<numeric_optimize_fun_xam_py>`
 
-$head Source Code$$
-$srcthisfile%
-    0%# BEGIN_PYTHON%# END_PYTHON%0
-%$$
+Source Code
+***********
+{xsrst_file
+    # BEGIN_PYTHON
+    # END_PYTHON
+}
 
-$end
+{xsrst_end numeric_optimize_fun_class}
 """

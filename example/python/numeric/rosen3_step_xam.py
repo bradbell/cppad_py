@@ -5,51 +5,69 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin numeric_rosen3_step_xam.py$$ $newlinech #$$
-# $spell
-#   Rosenbrock
-# $$
+# {xsrst_comment_ch #}
 #
-# $section Example Computing Derivative A Rosenbrock Ode Solution$$
+# {xsrst_begin numeric_rosen3_step_xam_py}
 #
-# $head y(t, x)$$
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+#   rosenbrock
+# }
+#
+# Example Computing Derivative A Rosenbrock Ode Solution
+# ######################################################
+#
+# y(t, x)
+# *******
 # The two initial value problems below have the following solution:
-# $latex \[
-#   y_i (t, x) = ( t^{i+1} / (i+1) ! ) \prod_{j=0}^i x_j
-# \]$$
 #
-# $head First ODE$$
-# $latex \[
-# f(t, y, x)  =
-# \left\{ \begin{array}{rl}
-#   x_0               & {\rm if} \; i = 0 \\
-#   x_i y_{i-1} (t)   & {\rm otherwise}
-# \end{array} \right. \]$$
-# with the initial condition $latex y(0) = 0$$
+# .. math::
 #
-# $head Second ODE$$
-# $latex \[
-#   f(t, y, x)  = ( t^i / i ! ) \prod_{j=0}^i x_j
-# \]$$
-# with the initial condition $latex y(0) = 0$$
+#    y_i (t, x) = ( t^{i+1} / (i+1) ! ) \prod_{j=0}^i x_j
 #
+# First ODE
+# *********
 #
-# $head Derivative of Solution$$
+# .. math::
+#
+#    f(t, y, x)  =
+#    \left\{ \begin{array}{rl}
+#    x_0               & {\rm if} \; i = 0 \\
+#    x_i y_{i-1} (t)   & {\rm otherwise}
+#    \end{array} \right.
+#
+# with the initial condition :math:`y(0) = 0`
+#
+# Second ODE
+# **********
+#
+# .. math::
+#
+#    f(t, y, x)  = ( t^i / i ! ) \prod_{j=0}^i x_j
+#
+# with the initial condition :math:`y(0) = 0`
+#
+# Derivative of Solution
+# **********************
 # For this special case, the partial derivative of the solution with respect
-# to the j-th component of the vector $latex x$$ is
-# $latex \[
-#   \partial_{x(j)} y_i (t, x) =  \left\{ \begin{array}{rl}
-#       y_i (t, x) / x_j      & {\rm if} \; j \leq i \\
-#       0                     & {\rm otherwise}
-# \end{array} \right. \]$$
+# to the j-th component of the vector :math:`x` is
 #
+# .. math::
 #
-# $head Source Code$$
-# $srcthisfile%
-#   0%# BEGIN_PYTHON%# END_PYTHON%1
-# %$$
+#    \partial_{x(j)} y_i (t, x) =  \left\{ \begin{array}{rl}
+#         y_i (t, x) / x_j      & {\rm if} \; j \leq i \\
+#         0                     & {\rm otherwise}
+#    \end{array} \right.
 #
-# $end
+# Source Code
+# ***********
+# {xsrst_file
+#   # BEGIN_PYTHON
+#   # END_PYTHON
+# }
+#
+# {xsrst_end numeric_rosen3_step_xam_py}
 # BEGIN_PYTHON
 import numpy
 from  scipy.special import factorial

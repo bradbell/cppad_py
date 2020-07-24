@@ -5,80 +5,73 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin cppad_py$$
-$comment -------------------------------------------------------------
-default automatic indexing command for all cppad_py documentation
-$$
-$aindex section head subhead$$
-$comment -------------------------------------------------------------
-Latex macros used throughout Cppad Py documentation
-$$
-$latex
-\newcommand{\B}[1]{ {\bf #1} }
-\newcommand{\R}[1]{ {\rm #1} }
-$$
-$comment -------------------------------------------------------------$$
-$spell
-    https
+{xsrst_begin cppad_py}
+
+.. include:: ../preamble.rst
+
+.. comment:  -------------------------------------------------------------
+    default automatic indexing command for all cppad_py documentation
+
+.. comment:  -------------------------------------------------------------
+    Latex macros used throughout Cppad Py documentation
+
+:math:`\newcommand{\B}[1]{ {\bf #1} } \newcommand{\R}[1]{ {\rm #1} }`
+
+.. comment:  -------------------------------------------------------------
+
+{xsrst_spell
     bradbell
-    usr
-    CppAD
-    Py
-    Linux
-    msys
-    perl
-    Cppad
-    Py
-    cmake
-    Github
-    xam
-$$
+    cppad
+}
 
-$section cppad_py-2020.7.23:
-    A C++ Object Library and Python Interface to CppAD
-$$
+cppad_py-2020.7.23: A C++ Object Library and Python Interface to CppAD
+######################################################################
 
-$head Git Repository$$
-$href%https://github.com/bradbell/cppad_py%$$
+Git Repository
+**************
+https://github.com/bradbell/cppad_py
 
-$head Purpose$$
-$list number$$
-Provide a connection from Python
-to the Algorithmic Differentiation (AD) package Cppad; see $cref py_lib$$.
-$lnext
-Provide an AD object library; see $cref cpp_lib$$.
-$lnext
-Provide a concrete example of how
-$href%https://github.com/bradbell/cppad_swig%cppad_swig%$$
-can be used to connect any scripting language to CppAD.
-$lend
+Purpose
+*******
 
-$head Getting Started$$
+#.  Provide a connection from Python
+    to the Algorithmic Differentiation (AD) package Cppad; see :ref:`py_lib<py_lib>`.
+#.  Provide an AD object library; see :ref:`cpp_lib<cpp_lib>`.
+#.  Provide a concrete example of how
+    `cppad_swig <https://github.com/bradbell/cppad_swig>`_
+    can be used to connect any scripting language to CppAD.
+
+Getting Started
+***************
 The following is a good place to get started using cppad_py:
-$cref/Python/fun_jacobian_xam.py/$$.
+:ref:`python<fun_jacobian_xam_py>`.
 
-$head Numerical Examples$$
-The following is a link to some numerical examples: $cref numeric_xam$$.
+Numerical Examples
+******************
+The following is a link to some numerical examples: :ref:`numeric_xam<numeric_xam>`.
 
-$head C++ Function Speed$$
+C++ Function Speed
+******************
 One can use Cppad Py to get faster function evaluation in scripting Python,
 when the sequence of floating point operations does not depend on the
 independent variables.
-Once an $cref py_fun$$ is recorded, zero order
-$cref/forward mode/py_fun_forward/$$ can be used to
+Once an :ref:`py_fun<py_fun>` is recorded, zero order
+:ref:`forward_mode<py_fun_forward>` can be used to
 effectively evaluate the function in C++ instead of Python.
 
-$head License$$
+License
+*******
 This program is distributed under the terms of the
 GNU General Public License version 3.0 or later see
-$href%http://www.gnu.org/licenses/gpl-3.0.txt%gpl-3.0.txt%$$.
+`gpl-3.0.txt <http://www.gnu.org/licenses/gpl-3.0.txt>`_.
 
-$childtable%
-    setup.py%
-    example/python/numeric/numeric.omh%
-    lib/library.omh%
+Children
+********
+{xsrst_child_list
+    setup.py
+    example/python/numeric/numeric.omh
+    lib/library.omh
     whats_new/2020.omh
-%$$
+}
 
-
-$end
+{xsrst_end cppad_py}

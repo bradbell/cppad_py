@@ -259,145 +259,149 @@ print('    export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:' + cppad_lib_dir )
 print('setup.py: OK')
 sys.exit(0)
 # -----------------------------------------------------------------------------
-# $begin setup.py$$ $newlinech #$$
-# $spell
-#   makefile
-#   cxx
-#   undef
-#   https://github.com/bradbell/cppad_py.git
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin setup_py}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+#   com
+#   bradbell
+#   cppad
 #   srcdir
 #   cplusplus
-#   python python
 #   cmake
-#   sys
-#   pypi.org
-# $$
+#   pypi
+# }
 #
-# $section Configure and Build the cppad_py Python Module$$
+# Configure and Build the cppad_py Python Module
+# ##############################################
 #
-# $head Syntax$$
-# $codei%python setup.py build_ext
-# %$$
+# Syntax
+# ******
 #
-# $head External Requirements$$
-# $list number$$
-# $href%https://www.python.org/%python%$$ version 3.
-# $lnext
-# $href%https://en.wikipedia.org/wiki/Bash_(Unix_shell)%bash%$$
-# $lnext
-# $href%https://en.wikipedia.org/wiki/C++%c++%$$.
-# $lnext
-# $href%https://cmake.org%cmake%$$
-# $lnext
-# $href%https://git-scm.com/%git%$$.
-# $lnext
-# $href%http://www.swig.org/%swig%$$:
-# $href%https://github.com/bradbell/cppad_py/issues/3%issue 3%$$.
-# $lnext
-# $href%http://www.numpy.org/%numpy%$$.
-# $lend
+# | ``python setup.py build_ext``
 #
-# $head Install Using Pip$$
-# There is a preliminary version of cppad_py available using $code pip$$.
+# External Requirements
+# *********************
+
+# #. `python <https://www.python.org/>`_ version 3.
+# #. `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_
+# #. `c++ <https://en.wikipedia.org/wiki/C++>`_.
+# #. `cmake <https://cmake.org>`_
+# #. `git <https://git-scm.com/>`_.
+# #. `swig <http://www.swig.org/>`_:
+#    `issue 3 <https://github.com/bradbell/cppad_py/issues/3>`_.
+# #. `numpy <http://www.numpy.org/>`_.
+#
+# Install Using Pip
+# *****************
+# There is a preliminary version of cppad_py available using ``pip`` .
 # To install for you entire system use:
-# $codep
-#   pip install -i https://test.pypi.org/simple/ cppad_py
-# $$
 #
-# $children%
-#   install_error.omh%
+# | |tab| ``pip install -i https://test.pypi.org/simple/ cppad_py``
+#
+# {xsrst_children
+#   install_error.omh
 #   bin/get_cppad.sh
-# %$$
-# $head Install Errors$$
+# }
+# Install Errors
+# **************
 # If you get an error message during the install procedure above,
-# or the one below, see $cref install_error$$.
+# or the one below, see :ref:`install_error<install_error>`.
 # This will only install the release version.
 # Installing a debug version is discussed below in the instructions
 # for downloading and building from the source code.
 #
-# $head Download$$
+# Download
+# ********
 # Use the following command to download the current version of cppad_py:
-# $codei%
-#   git clone https://github.com/bradbell/cppad_py.git %top_srcdir%
-# %$$
 #
-# $subhead Top Source Directory$$
-# The directory you choose for $icode top_srcdir$$ is
+# | |tab| ``git clone https://github.com/bradbell/cppad_py.git`` *top_srcdir*
+#
+# Top Source Directory
+# ====================
+# The directory you choose for *top_srcdir* is
 # referred to as your top source directory.
 #
-# $head Configure$$
-# Before running $code setup.py$$ or $code bin/get_cppad.sh$$,
+# Configure
+# *********
+# Before running ``setup.py`` or ``bin/get_cppad.sh`` ,
 # you should check and possibly change the
-# $cref/settings/get_cppad.sh/Settings/$$ in $code bin/get_cppad.sh$$.
+# :ref:`settings<get_cppad_sh.settings>` in ``bin/get_cppad.sh`` .
 #
-# $head Get cppad$$
-# The next step is to get a copy of cppad using $cref get_cppad.sh$$.
+# Get cppad
+# *********
+# The next step is to get a copy of cppad using :ref:`get_cppad_sh<get_cppad_sh>`.
 #
-# $head Test$$
+# Test
+# ****
 # These steps are optional if you already know that cppad_py
 # works on your system.
 #
-# $subhead Build cppad_py$$
+# Build cppad_py
+# ==============
 # Build the Python cppad_py module using the command:
-# $codei%
-#   python setup.py build_ext
-# %$$
 #
-# $subhead python$$
+# | |tab| ``python setup.py build_ext``
+#
+# python
+# ======
 # The next step is to test the cppad_py on your system by executing
-# the following commands starting in $icode top_srcdir$$:
-# $codei%
-#   cd example/python
-#   python check_all.py
-# %$$
+# the following commands starting in *top_srcdir* :
 #
-# $subhead c++$$
-# After $code setup.py$$ has run,
+# | |tab| ``cd example/python``
+# | |tab| ``python check_all.py``
+#
+# c++
+# ===
+# After ``setup.py`` has run,
 # you can also test the cppad_py c++ interface
-# $cref cpp_lib$$ on your system by executing the following commands
-# starting in $icode top_srcdir$$:
-# $codei%
-#   cd build
-#   make check_lib_cplusplus
-# %$$
+# :ref:`cpp_lib<cpp_lib>` on your system by executing the following commands
+# starting in *top_srcdir* :
 #
-# $subhead import$$
-# If you are in the $icode top_srcdir$$ directory,
+# | |tab| ``cd build``
+# | |tab| ``make check_lib_cplusplus``
+#
+# import
+# ======
+# If you are in the *top_srcdir* directory,
 # you should be able to import cppad_py using the following commands:
-# $codei%
-#   python
-#   import cppad_py
-#   quit()
-# %$$
+#
+# | |tab| ``python``
+# | |tab| ``import cppad_py``
+# | |tab| ``quit`` ()
+#
 # We need to install cppad_py so you can import it from any directory.
 #
-#
-# $head Install$$
+# Install
+# *******
 # Use the following command to build and install the debug version of cppad_py:
-# $codei%
-#   python setup.py build_ext install --prefix=%prefix%
-# %$$
-# This will install $code cppad_py$$ in the directory
-# $codei%
-#   %prefix%/%lib%/python%major%.%minor%/site_packages/cppad_py
-# %$$
-# where $icode lib$$ is $code lib$$ or $code lib64$$,
-# $icode major$$ ($icode minor$$) is the major (minor)
-# version of $icode python$$.
 #
-# $head Python Path$$
+# | |tab| ``python setup.py build_ext install --prefix`` = *prefix*
+#
+# This will install ``cppad_py`` in the directory
+#
+# | |tab| *prefix* ``/`` *lib* ``/python`` *major* . *minor* ``/site_packages/cppad_py``
+#
+# where *lib* is ``lib`` or ``lib64`` ,
+# *major* ( *minor* ) is the major (minor)
+# version of *python* .
+#
+# Python Path
+# ***********
 # Check that the directory
-# $codei%
-#   %prefix%/%lib%/python%major%.%minor%/site_packages
-# %$$
+#
+# | |tab| *prefix* ``/`` *lib* ``/python`` *major* . *minor* ``/site_packages``
+#
 # is in your python path.
 # Once it is, you should be able to execute the following commands:
-# $codei%
-#   python
-#   import sys
-#   print(sys.path)
-#   quit()
-# %$$
 #
-# $end
+# | |tab| ``python``
+# | |tab| ``import sys``
+# | |tab| ``print(sys.path`` )
+# | |tab| ``quit`` ()
+#
+# {xsrst_end setup_py}
 # -----------------------------------------------------------------------------

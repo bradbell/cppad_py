@@ -5,44 +5,58 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin numeric_simple_inv_xam.py$$ $newlinech #$$
+# {xsrst_comment_ch #}
 #
-# $section Example Computing Derivatives of Matrix Inversion$$
+# {xsrst_begin numeric_simple_inv_xam_py}
 #
-# $head Problem$$
+# .. include:: ../preamble.rst
+#
+# Example Computing Derivatives of Matrix Inversion
+# #################################################
+#
+# Problem
+# *******
 # We define
-# $latex \[
-#   A(x) = \left( \begin{array}{cc}
-#   x_0 & x_1 \\
-#   x_2 & x_3
-#   \end{array} \right)
-# \] $$
+#
+# .. math::
+#
+#    A(x) = \left( \begin{array}{cc}
+#    x_0 & x_1 \\
+#    x_2 & x_3
+#    \end{array} \right)
+#
 # It follows that
-# $latex \[
-#   A^{-1}(x) =
-#   \frac{1}{x_3 * x_0 - x_1 * x_2}
-#   \left( \begin{array}{cc}
-#   x_3 & - x_1 \\
-#   - x_2 & x_0
-#   \end{array} \right)
-# \] $$
-# We define
-# $latex \[
-#   f(x) = (x_3 * x_0 - x_1 * x_2) [
-#   A_{0,0}^{-1} (x),
-#   A_{0,1}^{-1} (x),
-#   A_{1,0}^{-1} (x),
-#   A_{1,1}^{-1} (x)
-#   ]
-# = [ x_3, -x_1, -x_2, x_0]
-# \] $$
-# The following example below check the derivative of $latex f(x)$$
 #
-# $head Source Code$$
-# $srcthisfile%
-#   0%# BEGIN_PYTHON%# END_PYTHON%1
-# %$$
-# $end
+# .. math::
+#
+#    A^{-1}(x) =
+#    \frac{1}{x_3 * x_0 - x_1 * x_2}
+#    \left( \begin{array}{cc}
+#    x_3 & - x_1 \\
+#    - x_2 & x_0
+#    \end{array} \right)
+#
+# We define
+#
+# .. math::
+#
+#    f(x) = (x_3 * x_0 - x_1 * x_2) [
+#    A_{0,0}^{-1} (x),
+#    A_{0,1}^{-1} (x),
+#    A_{1,0}^{-1} (x),
+#    A_{1,1}^{-1} (x)
+#    ]
+#    = [ x_3, -x_1, -x_2, x_0]
+#
+# The following example below check the derivative of :math:`f(x)`
+#
+# Source Code
+# ***********
+# {xsrst_file
+#   # BEGIN_PYTHON
+#   # END_PYTHON
+# }
+# {xsrst_end numeric_simple_inv_xam_py}
 #
 # BEGIN_PYTHON
 import numpy

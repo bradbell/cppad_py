@@ -44,13 +44,22 @@ def to_json_xam() :
     return ok
 # END_TO_JSON_XAM
 #
-# $begin fun_to_json_xam.py$$ $newlinech #$$
-# $spell
-#     json
-# $$
-# $section Python to_json: Example and Test$$
-# $srcthisfile|0|# BEGIN_TO_JSON_XAM|# END_TO_JSON_XAM|$$
-# $end
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin fun_to_json_xam_py}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+#   json
+# }
+# Python to_json: Example and Test
+# ################################
+# {xsrst_file
+#   # BEGIN_TO_JSON_XAM
+#   # END_TO_JSON_XAM
+# }
+# {xsrst_end fun_to_json_xam_py}
 # -----------------------------------------------------------------------------
 # BEGIN_FROM_JSON_XAM
 def from_json_xam() :
@@ -105,13 +114,20 @@ def from_json_xam() :
     return ok
 # END_FROM_JSON_XAM
 #
-# $begin fun_from_json_xam.py$$ $newlinech #$$
-# $spell
-#     json
-# $$
-# $section Python from_json: Example and Test$$
-# $srcthisfile|0|# BEGIN_FROM_JSON_XAM|# END_FROM_JSON_XAM|$$
-# $end
+# {xsrst_begin fun_from_json_xam_py}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+#   json
+# }
+# Python from_json: Example and Test
+# ##################################
+# {xsrst_file
+#   # BEGIN_FROM_JSON_XAM
+#   # END_FROM_JSON_XAM
+# }
+# {xsrst_end fun_from_json_xam_py}
 # -----------------------------------------------------------------------------
 def fun_json_xam() :
     ok  = to_json_xam()

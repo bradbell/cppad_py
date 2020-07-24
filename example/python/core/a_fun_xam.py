@@ -57,9 +57,16 @@ def a_fun_xam() :
     return ok
 # END SOURCE
 #
-# $begin a_fun_xam.py$$ $newlinech #$$
-# $spell
-# $$
-# $section Python: Purpose of a_fun Objects: Example and Test$$
-# $srcthisfile|0|# BEGIN SOURCE|# END SOURCE|$$
-# $end
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin a_fun_xam_py}
+#
+# .. include:: ../preamble.rst
+#
+# Python: Purpose of a_fun Objects: Example and Test
+# ##################################################
+# {xsrst_file
+#   # BEGIN SOURCE
+#   # END SOURCE
+# }
+# {xsrst_end a_fun_xam_py}

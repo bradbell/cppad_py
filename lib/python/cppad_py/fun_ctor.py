@@ -5,74 +5,85 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# $begin py_fun_ctor$$ $newlinech #$$
-# $spell
-#   cppad_py
-#   numpy
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin py_fun_ctor}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+#   cppad
 #   af
-#   Taylor
 #   cref
-#   cpp
-# $$
+# }
 #
-# $section Stop Current Recording and Store Function Object$$
+# Stop Current Recording and Store Function Object
+# ################################################
 #
-# $head Syntax$$
+# Syntax
+# ******
 #
-# $subhead d_fun$$
-# $icode%f% = cppad_py.d_fun(%ax%, %ay%)
-# %$$
-# $icode%f% = cppad_py.d_fun()
-# %$$
+# d_fun
+# =====
 #
-# $subhead a_fun$$
-# $icode%af% = cppad_py.a_fun(%f%)
-# %$$
+# | *f* =  ``cppad_py.d_fun`` ( *ax* , *ay* )
+# | *f* =  ``cppad_py.d_fun`` ()
 #
-# $head ax$$
+# a_fun
+# =====
+#
+# | *af* =  ``cppad_py.a_fun`` ( *f* )
+#
+# ax
+# **
 # This argument must be the same as
-# $cref/ax/py_independent/ax/$$
-# returned by the previous call to $code independent$$; i.e.,
+# :ref:`ax<py_independent.ax>`
+# returned by the previous call to ``independent`` ; i.e.,
 # it must be the independent variable vector.
-# We use $icode%n%$$
-# to denote the number of independent variables (the size of $icode ax$$).
+# We use *n*
+# to denote the number of independent variables (the size of *ax* ).
 #
-# $head ay$$
-# This argument is a numpy array with $code a_double$$ elements.
+# ay
+# **
+# This argument is a numpy array with ``a_double`` elements.
 # It specifies the dependent variables.
-# We use $icode m$$
-# to denote the number of dependent variables (the size of $icode ay$$).
+# We use *m*
+# to denote the number of dependent variables (the size of *ay* ).
 #
-# $head f$$
+# f
+# *
 # This result is a function object that
 # has a representation for the floating point operations
-# that mapped the independent variables $icode ax$$
-# to the dependent variables $icode ay$$.
+# that mapped the independent variables *ax*
+# to the dependent variables *ay* .
 # This object computes function and derivative values using
-# $code double$$
+# ``double``
 #
-# $subhead Empty Function$$
-# In the case where $icode ax$$ and $icode ay$$ are not present
+# Empty Function
+# ==============
+# In the case where *ax* and *ay* are not present
 # the function is 'empty' and all its sizes are zero; see
-# $cref cpp_fun_property$$.
+# :ref:`cpp_fun_property<cpp_fun_property>`.
 #
-# $head af$$
+# af
+# **
 # This result is a function object that
-# has a representation for the same function as $icode f$$.
+# has a representation for the same function as *f* .
 # This object computes function and derivative values using
-# $code a_double$$
-# Initially, there are not Taylor coefficient stored in $icode af$$; i.e.,
-# $cref/af.size_order()/py_fun_property/size_order/$$ is zero.
+# ``a_double``
+# Initially, there are not Taylor coefficient stored in *af* ; i.e.,
+# :ref:`af_size_order()<py_fun_property.size_order>` is zero.
 #
-# $children%
+# {xsrst_children
 #   example/python/core/a_fun_xam.py
-# %$$
-# $head Example$$
-# All of the examples use the $code d_fun$$ constructor.
-# The example $cref a_fun_xam.py$$ demonstrates the purpose of
-# $code a_fun$$ objects.
+# }
+# Example
+# *******
+# All of the examples use the ``d_fun`` constructor.
+# The example :ref:`a_fun_xam_py<a_fun_xam_py>` demonstrates the purpose of
+# ``a_fun`` objects.
 #
-# $end
+# {xsrst_end py_fun_ctor}
 # -----------------------------------------------------------------------------
 import numpy
 import cppad_py

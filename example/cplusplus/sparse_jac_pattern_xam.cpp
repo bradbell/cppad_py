@@ -87,17 +87,18 @@ bool sparse_jac_pattern_xam(void) {
 // END SOURCE
 //
 /*
-$begin sparse_jac_pattern_xam.cpp$$
-$spell
-    cplusplus
-    cppad
-    py
-    xam
-    Jacobian
-    Jacobians
-$$
-$section C++: Jacobian Sparsity Patterns: Example and Test$$
-$srcthisfile|0|// BEGIN SOURCE|// END SOURCE|$$
-$end
+{xsrst_begin sparse_jac_pattern_xam_cpp}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+}
+C++: Jacobian Sparsity Patterns: Example and Test
+#################################################
+{xsrst_file
+    // BEGIN SOURCE
+    // END SOURCE
+}
+{xsrst_end sparse_jac_pattern_xam_cpp}
 */
 //

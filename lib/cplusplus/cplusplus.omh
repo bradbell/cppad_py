@@ -5,63 +5,95 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-$begin a_double$$
-$spell
-    Cppad
-    Py
-$$
+{xsrst_begin a_double}
 
-$section Cppad Py AD Scalars$$
+.. include:: ../preamble.rst
 
-$childtable%lib/cplusplus/a_double.cpp%$$
+{xsrst_spell
+    cppad
+}
 
-$end
+Cppad Py AD Scalars
+###################
+
+Children
+********
+{xsrst_child_list
+    lib/cplusplus/a_double.cpp
+}
+
+{xsrst_end a_double}
 -------------------------------------------------------------------------------
-$begin vector$$
-$spell
-    Cppad
-    Py
-$$
+{xsrst_begin vector}
 
-$section Cppad Py Vectors$$
+.. include:: ../preamble.rst
 
-$childtable%lib/cplusplus/vector.omh%$$
+{xsrst_spell
+    cppad
+}
 
-$end
+Cppad Py Vectors
+################
+
+Children
+********
+{xsrst_child_list
+    lib/cplusplus/vector.omh
+}
+
+{xsrst_end vector}
 -------------------------------------------------------------------------------
-$begin cpp_fun$$
-$spell
-    Cppad
-    Py
-$$
+{xsrst_begin cpp_fun}
 
-$section Cppad Py AD Functions$$
+.. include:: ../preamble.rst
 
-$childtable%lib/cplusplus/fun.cpp%$$
+{xsrst_spell
+    cppad
+}
 
-$end
+Cppad Py AD Functions
+#####################
+
+Children
+********
+{xsrst_child_list
+    lib/cplusplus/fun.cpp
+}
+
+{xsrst_end cpp_fun}
 -------------------------------------------------------------------------------
-$begin sparse$$
-$spell
-    Cppad
-    Py
-$$
+{xsrst_begin sparse}
 
-$section Cppad Py Sparse Calculation$$
+.. include:: ../preamble.rst
 
-$childtable%lib/cplusplus/sparse.cpp%$$
+{xsrst_spell
+    cppad
+}
 
-$end
+Cppad Py Sparse Calculation
+###########################
+
+Children
+********
+{xsrst_child_list
+    lib/cplusplus/sparse.cpp
+}
+
+{xsrst_end sparse}
 -------------------------------------------------------------------------------
-$begin cpp_utility$$
-$spell
-$$
+{xsrst_begin cpp_utility}
 
-$section C++ Utilities$$
+.. include:: ../preamble.rst
 
-$childtable%lib/cplusplus/cppad_vec.cpp
-    %lib/cplusplus/error.cpp
-%$$
+C++ Utilities
+#############
 
-$end
+Children
+********
+{xsrst_child_list
+    lib/cplusplus/cppad_vec.cpp
+    lib/cplusplus/error.cpp
+}
+
+{xsrst_end cpp_utility}
 -------------------------------------------------------------------------------

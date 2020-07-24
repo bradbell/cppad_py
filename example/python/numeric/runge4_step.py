@@ -15,69 +15,86 @@ def runge4_step(fun, ti, yi, h) :
     return yf
 # END_RUNGE4_STEP
 #
-# $begin numeric_runge4_step$$ $newlinech #$$
-# $spell
-#   Runge-Kutta
+# {xsrst_comment_ch #}
+#
+# {xsrst_begin numeric_runge4_step}
+#
+# .. include:: ../preamble.rst
+#
+# {xsrst_spell
+#   runge
+#   kutta
 #   yf
 #   yi
 #   yp
-#   numpy
-# $$
+# }
 #
+# One Fourth Order Runge-Kutta ODE Step
+# #####################################
 #
-# $section One Fourth Order Runge-Kutta ODE Step$$
+# Syntax
+# ******
+# *yf* =  ``runge4_step`` ( *fun* , *ti* , *yi* , *h* )
 #
-# $head Syntax$$
-# $icode%yf% = runge4_step(%fun%, %ti%, %yi%, %h%)%$$
-#
-# $head Purpose$$
-# The routine can be used with $code ad_double$$
+# Purpose
+# *******
+# The routine can be used with ``ad_double``
 # to solve the initial value ODE
-# $latex \[
-#   y^{(1)} (t)  = f( t , y )
-# \] $$
 #
-# $head fun$$
+# .. math::
+#
+#    y^{(1)} (t)  = f( t , y )
+#
+# fun
+# ***
 # This is a function that evaluates the ordinary differential equation
 # using the syntax
-# $codei%
-#   %yp% = %fun%.f( %t% , %y% )%$$
-# where $icode t$$ # is the current time,
-# $icode y$$ is the current value of $latex y(t)$$, and
-# $icode yp$$ is the current derivative $latex y^{(1)} (t)$$.
-# The type of the elements of $icode t$$ and $icode y$$
-# can be $code float$$ or $code ad_double$$.
 #
-# $head ti$$
+# | |tab| *yp* = *fun* . ``f`` *t* , *y* )
+#
+# where *t* # is the current time,
+# *y* is the current value of :math:`y(t)`, and
+# *yp* is the current derivative :math:`y^{(1)} (t)`.
+# The type of the elements of *t* and *y*
+# can be ``float`` or ``ad_double`` .
+#
+# ti
+# **
 # This is the initial time for the Runge-Kutta step.
-# It can have type $code float$$ or $code a_double$$.
+# It can have type ``float`` or ``a_double`` .
 #
-# $head yi$$
+# yi
+# **
 # This is the numpy vector containing the
-# value of $latex y(t)$$ at the initial time.
-# The type of its elements can be $code float$$ or $code a_double$$.
+# value of :math:`y(t)` at the initial time.
+# The type of its elements can be ``float`` or ``a_double`` .
 #
-# $head h$$
+# h
+# *
 # This is the step size in time; i.e., the time at the end of the step
 # minus the initial time.
-# It can have type $code float$$ or $code a_double$$.
+# It can have type ``float`` or ``a_double`` .
 #
-# $head yf$$
-# This is the approximate solution for $latex y(t)$$ at the final time
+# yf
+# **
+# This is the approximate solution for :math:`y(t)` at the final time
 # as a numpy vector.
-# This solution is 4-th order accurate in time $latex t$$; e.g., if
-# $latex y(t)$$ is a polynomial in $latex t$$ of order four or lower,
+# This solution is 4-th order accurate in time :math:`t`; e.g., if
+# :math:`y(t)` is a polynomial in :math:`t` of order four or lower,
 # the solution has no truncation error, only round off error.
 #
-# $children%
+# {xsrst_children
 #   example/python/numeric/runge4_step_xam.py
-# %$$
-# $head Example$$
-# $cref numeric_runge4_step_xam.py$$
+# }
+# Example
+# *******
+# :ref:`numeric_runge4_step_xam_py<numeric_runge4_step_xam_py>`
 #
-# $head Source Code$$
-# $srcthisfile%
-#   0%# BEGIN_RUNGE4_STEP%# END_RUNGE4_STEP%0
-# %$$
+# Source Code
+# ***********
+# {xsrst_file
+#   # BEGIN_RUNGE4_STEP
+#   # END_RUNGE4_STEP
+# }
 #
-# $end
+# {xsrst_end numeric_runge4_step}
