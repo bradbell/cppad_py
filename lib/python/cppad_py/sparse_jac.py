@@ -12,7 +12,6 @@
 # .. include:: ../preamble.rst
 #
 # {xsrst_spell
-#   jacobians
 #   rcv
 #   cppad
 # }

@@ -106,9 +106,6 @@ bool sparse_jac_xam(void) {
 
 .. include:: ../preamble.rst
 
-{xsrst_spell
-    jacobians
-}
 C++: Computing Sparse Jacobians: Example and Test
 #################################################
 {xsrst_file

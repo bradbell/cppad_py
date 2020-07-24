@@ -98,7 +98,7 @@ Syntax
 Purpose
 *******
 Creates a ``cppad_py::a_double`` object that can be use
-to track floating point operations and preform algorithmic differentiation.
+to track floating point operations and perform algorithmic differentiation.
 
 d
 *

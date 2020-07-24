@@ -14,7 +14,6 @@
 # {xsrst_spell
 #   cppad
 #   af
-#   cref
 # }
 #
 # Stop Current Recording and Store Function Object

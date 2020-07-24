@@ -99,9 +99,6 @@ def sparse_jac_xam() :
 #
 # .. include:: ../preamble.rst
 #
-# {xsrst_spell
-#   jacobians
-# }
 # Python: Computing Sparse Jacobians: Example and Test
 # ####################################################
 # {xsrst_file

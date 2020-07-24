@@ -15,7 +15,6 @@
 #   rcv
 #   nnz
 #   cppad
-#   cppad
 # }
 #
 # Sparse Matrices

@@ -830,7 +830,6 @@ void d_fun::rev_hes_sparsity(
 .. include:: ../preamble.rst
 
 {xsrst_spell
-    jacobians
     rcv
     cppad
 }
@@ -1023,7 +1022,6 @@ int d_fun::sparse_jac_rev(
     rcv
     hes
     cppad
-    hessians
 }
 
 Computing Sparse Hessians

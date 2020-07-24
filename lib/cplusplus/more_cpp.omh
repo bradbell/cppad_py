@@ -16,6 +16,7 @@
     mhelp
     bool
     grep
+    adynamic
 }
 
 Steps To Add More C++ Functions

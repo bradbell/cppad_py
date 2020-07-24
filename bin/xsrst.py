@@ -752,6 +752,8 @@ def init_spell_checker(spell_list) :
         'initialize',
         'initialized',
         'jacobian',
+        'jacobians',
+        'hessians',
         'messaging',
         'modeling',
         'optimizes',

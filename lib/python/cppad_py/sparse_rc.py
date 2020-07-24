@@ -15,7 +15,6 @@
 #   nnz
 #   resize
 #   cppad
-#   cppad
 # }
 #
 # Sparsity Patterns

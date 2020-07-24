@@ -18,7 +18,7 @@
 # Cppad Py AD Functions
 # #####################
 #
-# .. comment:  Files that have Python specific Implementation and Documention
+# .. comment:  Files that have Python specific Implementation and Documentation
 #
 # Children
 # ********
