@@ -23,7 +23,6 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
     nnz
     resize
     cppad
-    cppad
 }
 
 Sparsity Patterns
@@ -285,7 +284,6 @@ std::vector<int> sparse_rc::col_major(void) const
 {xsrst_spell
     rcv
     nnz
-    cppad
     cppad
 }
 
@@ -1025,6 +1023,7 @@ int d_fun::sparse_jac_rev(
     rcv
     hes
     cppad
+    hessians
 }
 
 Computing Sparse Hessians

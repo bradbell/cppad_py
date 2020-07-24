@@ -743,6 +743,7 @@ def init_spell_checker(spell_list) :
         'xp',
     ]
     add_to_dictionary = [
+        'aborts',
         'covariate',
         'covariates',
         'debug',

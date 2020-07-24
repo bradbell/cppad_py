@@ -973,6 +973,7 @@ void d_fun::optimize(void)
 
 {xsrst_spell
     json
+    htm
 }
 
 Json Representation of AD Computational Graph
