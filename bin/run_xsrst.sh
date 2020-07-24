@@ -46,6 +46,11 @@ sed -i $sphinx_dir/index.rst -e "s|xsrst/xsrst_py|xsrst/$root_section|"
 echo_eval bin/xsrst.py doc.omh $sphinx_dir spell_file index_file
 echo_eval cd $sphinx_dir
 echo_eval make html
+cat << EOF > _build/index.html
+<html><head><script>
+    window.location.href="html/xsrst/$root_section.html";
+</script></head></html>
+EOF
 # -----------------------------------------------
 echo 'run_xsrst.sh: OK'
 exit 0
