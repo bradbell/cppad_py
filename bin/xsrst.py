@@ -1284,6 +1284,11 @@ def spell_command(
             print(msg)
     for word_lower in double_used :
         if not double_used[word_lower] :
+            if first_spell_error :
+                msg  = '\nwarning: file = ' + file_in
+                msg += ', section = ' + section_name
+                print(msg)
+                first_spell_error = False
             msg  = 'double word "' + word_lower + ' ' + word_lower
             msg += '" not needed'
             print(msg)
