@@ -76,10 +76,14 @@ echo_eval bin/run_xsrst.sh
 echo_eval git checkout gh-pages
 #
 # remove old omhelp documentation
-git rm -r doc
+echo_eval git rm -r doc
+if [ -e 'doc' ]
+then
+    echo_eval rm -r doc
+fi
 #
 # copy new sphinx documentation
-cp -r build/sphinx/_build doc
+mv build/sphinx/_build doc
 #
 # stage all the changes
 git add doc
