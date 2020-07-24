@@ -752,6 +752,7 @@ def init_spell_checker(spell_list) :
         'initialized',
         'jacobian',
         'messaging',
+        'modeling',
         'optimizes',
         'piecewise',
         'unary',
@@ -1875,7 +1876,7 @@ index_list           = file2list(index_path)
 # regular expressions corresponding to xsrst commands
 pattern = dict()
 pattern['word']        = re.compile( r'[\\A-Za-z][a-z]*' )
-pattern['double_word'] = re.compile( r'\s+([\\A-Za-z][a-z]*)\s+\1' )
+pattern['double_word'] = re.compile( r'\s+([\\A-Za-z][a-z]*)\s+\1[^a-z]' )
 #
 pattern['line']    = re.compile(r'\{xsrst_line ([0-9]+)@')
 pattern['suspend'] = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )

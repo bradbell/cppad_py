@@ -25,6 +25,9 @@
     covid
     fabs
     runge
+    steppers
+    inv
+    misc
 }
 
 CppAD Py Changes During 2020
@@ -66,7 +69,7 @@ The ``abs`` :ref:`a_double_unary_fun<a_double_unary_fun>` was added
 05-16
 *****
 
-#.  A discussion of some subtile issues,
+#.  A discussion of some subtle issues,
     when interpolation is used to define an ODE,
     was added to the ``ode_multi_step`` ; see
     :ref:`set_t_all_index<numeric_ode_multi_step>`.

@@ -22,6 +22,8 @@
 {xsrst_spell
     bradbell
     cppad
+    txt
+    gpl
 }
 
 cppad_py-2020.7.23: A C++ Object Library and Python Interface to CppAD
