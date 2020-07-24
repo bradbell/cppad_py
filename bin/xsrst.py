@@ -12,10 +12,9 @@
     underbars
     conf
     toctree
-    cmd
     stackoverflow
-    https
     pyspellchecker
+    cmd
 }
 
 .. |space| unicode:: 0xA0
@@ -107,7 +106,7 @@ This file contains a list of words (in lower case)
 that should not be included in the index
 (it can be an empty file).
 For example, a heading might contain the word ``The`` but you
-might not want to incude ``the`` as a entry in the
+might not want to include ``the`` as a entry in the
 :ref:`genindex`.
 The words are one per line and
 leading and trailing white space in a word are ignored.
@@ -254,7 +253,6 @@ Commands
 {xsrst_begin begin_cmd}
 {xsrst_spell
     underbar
-    cmd
 }
 
 .. |space| unicode:: 0xA0
@@ -308,9 +306,6 @@ of the section that included this file using a :ref:`child command<child_cmd>`.
 # ---------------------------------------------------------------------------
 """
 {xsrst_begin child_cmd}
-{xsrst_spell
-    cmd
-}
 
 Children Commands
 #################
@@ -465,9 +460,6 @@ Example
 # ---------------------------------------------------------------------------
 """
 {xsrst_begin code_cmd}
-{xsrst_spell
-    cmd
-}
 
 Code Command
 ############
@@ -599,9 +591,6 @@ Example
 # ----------------------------------------------------------------------------
 """
 {xsrst_begin comment_ch_cmd}
-{xsrst_spell
-    cmd
-}
 
 Comment Character Command
 #########################
@@ -1234,11 +1223,17 @@ def spell_command(
         section_data = section_data[: start] + section_data[end :]
     #
     # version of section_data with certain commands removed
-    # (comamnds do not need spell checking; e.g., file names must be correct)
-    section_tmp = pattern['code'].sub('', section_data)
+    section_tmp = section_data
+    #
+    # commands with file names as arugments
     section_tmp = pattern['file_2'].sub('', section_tmp)
     section_tmp = pattern['file_3'].sub('', section_tmp)
     section_tmp = pattern['child'].sub('', section_tmp)
+    #
+    # command with section names and headings as arguments
+    section_tmp = pattern['ref_1'].sub('', section_tmp)
+    section_tmp = pattern['ref_2'].sub(r'\1', section_tmp)
+    section_tmp = pattern['code'].sub('', section_tmp)
     #
     # check for spelling errors
     first_spell_error = True
@@ -1883,11 +1878,14 @@ spell_checker        = init_spell_checker(spell_list)
 # index_list
 index_list           = file2list(index_path)
 #
-# regular expressions corresponding to xsrst commands
+# regular expresssions used for spell command
 pattern = dict()
 pattern['word']        = re.compile( r'[\\A-Za-z][a-z]*' )
 pattern['double_word'] = re.compile( r'\s+([\\A-Za-z][a-z]*)\s+\1[^a-z]' )
+pattern['ref_1']       = re.compile( r':ref:`[^\n<`]+`' )
+pattern['ref_2']       = re.compile( r':ref:`([^\n<`]+)<[^\n>`]+>`' )
 #
+# regular expressions corresponding to xsrst commands
 pattern['line']    = re.compile(r'\{xsrst_line ([0-9]+)@')
 pattern['suspend'] = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
 pattern['resume']  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )

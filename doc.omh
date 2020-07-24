@@ -73,6 +73,7 @@ Children
     setup.py
     example/python/numeric/numeric.omh
     lib/library.omh
+    bin/xsrst.py
     whats_new/2020.omh
 }
 
