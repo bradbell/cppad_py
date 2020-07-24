@@ -1,0 +1,62 @@
+!!!!!!!!!!!!!!!!!!!
+cpp_abort_recording
+!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: cpp_abort_recording, abort, recording
+
+.. index:: cpp_abort_recording, abort, recording
+
+.. _cpp_abort_recording:
+
+Abort Recording
+###############
+- :ref:`cpp_abort_recording.syntax`
+- :ref:`cpp_abort_recording.purpose`
+- :ref:`cpp_abort_recording.example`
+
+.. meta::
+   :keywords: syntax
+
+.. index:: syntax
+
+.. _cpp_abort_recording.syntax:
+
+Syntax
+******
+``cppad_py::abort_recording`` ()
+
+.. meta::
+   :keywords: purpose
+
+.. index:: purpose
+
+.. _cpp_abort_recording.purpose:
+
+Purpose
+*******
+This aborts the current recording (if it exists)
+started by the most recent call to :ref:`independent<cpp_independent>`.
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_abort_xam_cpp
+
+.. meta::
+   :keywords: example
+
+.. index:: example
+
+.. _cpp_abort_recording.example:
+
+Example
+*******
+:ref:`c++<fun_abort_xam_cpp>`.
+
+----
+
+xsrst input file: ``lib/cplusplus/fun.cpp``

@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="get_cppad_sh, get, cppad" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="top, source, directory" name="keywords" />
+<meta content="settings" name="keywords" />
+<meta content="cppad_prefix" name="keywords" />
+<meta content="extra_cxx_flags" name="keywords" />
+<meta content="build_type" name="keywords" />
+<meta content="test_cppad" name="keywords" />
+<meta content="caching" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>get_cppad_sh &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="numeric_xam" href="numeric_xam.html" />
+    <link rel="prev" title="install_error" href="install_error.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="setup_py.html">setup_py</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="install_error.html">install_error</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">get_cppad_sh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library.html">library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="setup_py.html">setup_py</a> &raquo;</li>
+        
+      <li>get_cppad_sh</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/get_cppad_sh.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="get-cppad-sh">
+<h1>get_cppad_sh<a class="headerlink" href="#get-cppad-sh" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="get-cppad">
+<span id="id1"></span><h2>Get Cppad<a class="headerlink" href="#get-cppad" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#get-cppad-sh-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#get-cppad-sh-top-source-directory"><span class="std std-ref">Top Source Directory</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#get-cppad-sh-settings"><span class="std std-ref">Settings</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#get-cppad-sh-settings-cppad-prefix"><span class="std std-ref">cppad_prefix</span></a></p></li>
+<li><p><a class="reference internal" href="#get-cppad-sh-settings-extra-cxx-flags"><span class="std std-ref">extra_cxx_flags</span></a></p></li>
+<li><p><a class="reference internal" href="#get-cppad-sh-settings-build-type"><span class="std std-ref">build_type</span></a></p></li>
+<li><p><a class="reference internal" href="#get-cppad-sh-settings-test-cppad"><span class="std std-ref">test_cppad</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#get-cppad-sh-caching"><span class="std std-ref">Caching</span></a></p></li>
+</ul>
+<div class="section" id="syntax">
+<span id="get-cppad-sh-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code></p>
+</div>
+<div class="section" id="top-source-directory">
+<span id="get-cppad-sh-top-source-directory"></span><span id="index-2"></span><h3>Top Source Directory<a class="headerlink" href="#top-source-directory" title="Permalink to this headline">¶</a></h3>
+<p>This program must be run from the
+<a class="reference internal" href="setup_py.html#setup-py-download-top-source-directory"><span class="std std-ref">top_source_directory</span></a>.
+Each time it is run it removes the old <code class="docutils literal notranslate"><span class="pre">build</span></code> directory and
+starts over.</p>
+</div>
+<div class="section" id="settings">
+<span id="get-cppad-sh-settings"></span><span id="index-3"></span><h3>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h3>
+<p>If you change any of these settings, you must re-run <code class="docutils literal notranslate"><span class="pre">get_cppad.sh</span></code> .</p>
+<div class="section" id="cppad-prefix">
+<span id="get-cppad-sh-settings-cppad-prefix"></span><span id="index-4"></span><h4>cppad_prefix<a class="headerlink" href="#cppad-prefix" title="Permalink to this headline">¶</a></h4>
+<p>This prefix is used to install CppAD may be a local director; e.g.,
+<code class="docutils literal notranslate"><span class="pre">build/prefix</span></code> or an absolute path; e.g., <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code> ,
+it may include the shell variable <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> but no variables:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">cppad_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/prefix/cppad&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extra-cxx-flags">
+<span id="get-cppad-sh-settings-extra-cxx-flags"></span><span id="index-5"></span><h4>extra_cxx_flags<a class="headerlink" href="#extra-cxx-flags" title="Permalink to this headline">¶</a></h4>
+<p>Extra compiler false used when compiling c++ code not including the
+debugging and optimization flags.
+The ones below are example flags are used by g++:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">extra_cxx_flags</span><span class="o">=</span><span class="s1">&#39;-Wall -pedantic-errors -Wno-unused-result -std=c++11&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-type">
+<span id="get-cppad-sh-settings-build-type"></span><span id="index-6"></span><h4>build_type<a class="headerlink" href="#build-type" title="Permalink to this headline">¶</a></h4>
+<p>This must be must <code class="docutils literal notranslate"><span class="pre">debug</span></code> or <code class="docutils literal notranslate"><span class="pre">release</span></code> .
+The debug version has more error messaging while the release
+version runs faster.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">build_type</span><span class="o">=</span><span class="s1">&#39;release&#39;</span>
+</pre></div>
+</div>
+<p>If you used the <code class="docutils literal notranslate"><span class="pre">debug</span></code> build type you may get the following warning
+from the compiler (because the optimization is totally turned off):</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">warning</span> <span class="pre">_FORTIFY_SOURCE</span> <span class="pre">requires</span> <span class="pre">compiling</span> <span class="pre">with</span> <span class="pre">optimization</span></code></div>
+</div>
+</div>
+<div class="section" id="test-cppad">
+<span id="get-cppad-sh-settings-test-cppad"></span><span id="index-7"></span><h4>test_cppad<a class="headerlink" href="#test-cppad" title="Permalink to this headline">¶</a></h4>
+<p>This must be must <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> .
+Cppad has a huge test suite and this can take a significant amount of time,
+but it may be useful if you have problems.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">test_cppad</span><span class="o">=</span><span class="s1">&#39;false&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="caching">
+<span id="get-cppad-sh-caching"></span><span id="index-8"></span><h3>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h3>
+<p>This procedure cashes previous builds so that when you re-run
+this script it does not re-do all the work.
+If you have trouble, try deleting the directory</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">build/cppad</span></code> - <em>yyyymmdd</em> . <code class="docutils literal notranslate"><span class="pre">git</span></code></div>
+</div>
+<p>and re-running this script.</p>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="numeric_xam.html" class="btn btn-neutral float-right" title="numeric_xam" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install_error.html" class="btn btn-neutral float-left" title="install_error" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

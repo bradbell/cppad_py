@@ -1,0 +1,90 @@
+!!!!!!!!!!!!!!!!!!
+py_fun_new_dynamic
+!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: py_fun_new_dynamic, new, dynamic, parameters
+
+.. index:: py_fun_new_dynamic, new, dynamic, parameters
+
+.. _py_fun_new_dynamic:
+
+New Dynamic Parameters
+######################
+- :ref:`py_fun_new_dynamic.syntax`
+- :ref:`py_fun_new_dynamic.f`
+- :ref:`py_fun_new_dynamic.dynamic`
+    - :ref:`py_fun_new_dynamic.dynamic.size_order`
+- :ref:`py_fun_new_dynamic.example`
+
+.. meta::
+   :keywords: syntax
+
+.. index:: syntax
+
+.. _py_fun_new_dynamic.syntax:
+
+Syntax
+******
+*f* . ``new_dynamic`` ( *dynamic* )
+
+.. meta::
+   :keywords: f
+
+.. index:: f
+
+.. _py_fun_new_dynamic.f:
+
+f
+*
+This is either a
+:ref:`d_fun<py_fun_ctor.syntax.d_fun>` or
+:ref:`a_fun<py_fun_ctor.syntax.a_fun>`.
+The independent :ref:`dynamic<py_independent.dynamic>` parameters
+are changed to have the specified values.
+The other dynamic parameters are then computed.
+
+.. meta::
+   :keywords: dynamic
+
+.. index:: dynamic
+
+.. _py_fun_new_dynamic.dynamic:
+
+dynamic
+*******
+If *f* is a ``d_fun`` ( ``a_fun`` ) object,
+*dynamic* is a numpy vector with ``float`` ( ``a_double`` )
+elements and its size must be the same as the size of
+:ref:`dynamic<py_independent.dynamic>` in the corresponding call to
+``independent`` .
+It specifies new values for the dynamic parameters in *f* .
+
+.. meta::
+   :keywords: size_order
+
+.. index:: size_order
+
+.. _py_fun_new_dynamic.dynamic.size_order:
+
+size_order
+==========
+After this call,
+:ref:`f_size_order()<py_fun_property.size_order>` is zero.
+
+.. meta::
+   :keywords: example
+
+.. index:: example
+
+.. _py_fun_new_dynamic.example:
+
+Example
+*******
+See :ref:`fun_dynamic_xam_py<fun_dynamic_xam_py>`
+
+----
+
+xsrst input file: ``lib/python/cppad_py/fun_new_dynamic.py``

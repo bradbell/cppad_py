@@ -1,0 +1,153 @@
+!!!!!!!!!!!!!
+install_error
+!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: install_error, error, messages, during, installation
+
+.. index:: install_error, error, messages, during, installation
+
+.. _install_error:
+
+Error Messages During Installation
+##################################
+- :ref:`install_error.solved`
+    - :ref:`install_error.solved.swig`
+    - :ref:`install_error.solved.permissions`
+- :ref:`install_error.cppad_library_missing`
+- :ref:`install_error.fortify_source`
+- :ref:`install_error.unsolved`
+    - :ref:`install_error.unsolved.travis`
+
+.. meta::
+   :keywords: solved
+
+.. index:: solved
+
+.. _install_error.solved:
+
+Solved
+******
+
+.. meta::
+   :keywords: swig
+
+.. index:: swig
+
+.. _install_error.solved.swig:
+
+swig
+====
+If the error message below occurs, try installing
+`http://www.swig.org/ <swig>`_ on you system:
+
+| |tab| ``FileNotFoundError: [Errno 2] No such file or directory: 'swig'``
+
+The following message as also been seen:
+
+| |tab| ``Error: Unable to find 'python.swg'``
+
+In this case try installing ``swig-python`` .
+
+.. meta::
+   :keywords: permissions
+
+.. index:: permissions
+
+.. _install_error.solved.permissions:
+
+Permissions
+===========
+If you try to do a system wide install, and do not have permission,
+you will get the following message:
+
+| |tab| ``ERROR: Could not install packages due to`` ... ``Permission denied:``
+
+Try install in your local user space. For example, if you are using pip,
+
+| |tab| ``pip install -i https://test.pypi.org/simple/ cppad_py --user --verbose``
+
+.. meta::
+   :keywords: cppad, library, missing
+
+.. index:: cppad, library, missing
+
+.. _install_error.cppad_library_missing:
+
+CppAD Library Missing
+*********************
+If the error message below occurs, it is because the CppAD library
+is not in your ``LD_LIBRARY_PATH`` :
+
+| |tab| ``ImportError: libcppad_lib.so`` ... ``can not open shared object file``
+
+If you run the ``setup.py`` script directory, or
+if you included the ``--verbose`` option in your ``pip`` command,
+there should be text at the end that tells you how to modify your
+``LD_LIBRARY_PATH`` .
+If you have a Mac, you may instead need to modify ``DYLD_LIBRARY_PATH`` .
+
+.. meta::
+   :keywords: fortify, source
+
+.. index:: fortify, source
+
+.. _install_error.fortify_source:
+
+Fortify Source
+**************
+If you set :ref:`build_type<get_cppad_sh.settings.build_type>` to ``debug`` ,
+you may get the following warning during the build:
+
+| |tab| ``#warning _FORTIFY_SOURCE requires compiling with optimization``
+
+This is a problem with the python setuptools,
+one can un-define a macro, but it does not remove a original definition.
+
+.. meta::
+   :keywords: unsolved
+
+.. index:: unsolved
+
+.. _install_error.unsolved:
+
+Unsolved
+********
+If you know how to fix and of he errors below, please open an
+`issue <https://github.com/bradbell/cppad_py/issues>`_
+and put your solution there.
+
+.. meta::
+   :keywords: travis
+
+.. index:: travis
+
+.. _install_error.unsolved.travis:
+
+Travis
+======
+The following message occurs on a Travis system of unknown configuration;
+i.e., it has not been reproduced outside of Travis.
+
+| |tab| ``return alpha * p * a_exp( - z * z ) / numpy.sqrt(numpy.pi)[0m``
+| |tab| |tab| ``TypeError: unsupported operand type(s) for /: 'a_double' and 'float'``
+
+Note the same code works on other systems.
+The ``.travis.yml`` file is included below:
+
+| |tab| ``language: python``
+| |tab| ``python:``
+| |tab| |tab| -  ``"3.7"``
+| |tab| ``install:``
+| |tab| |tab| -  ``sudo apt-get install swig``
+| |tab| |tab| -  ``python setup.py install``
+| |tab| |tab| -  ``pip install -i https://test.pypi.org/simple/ cppad_py``
+| |tab| ``script:``
+| |tab| |tab| -  ``pytest tests``
+| |tab| |tab| -  ``make examples``
+
+----
+
+xsrst input file: ``install_error.omh``

@@ -1,0 +1,41 @@
+!!!!!!
+vector
+!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: vector, cppad, py, vectors
+
+.. index:: vector, cppad, py, vectors
+
+.. _vector:
+
+Cppad Py Vectors
+################
+- :ref:`vector.children`
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _vector.children:
+
+Children
+********
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   vector_ctor
+   vector_size
+   vector_set_get
+
+#. vector_ctor: :ref:`vector_ctor`
+#. vector_size: :ref:`vector_size`
+#. vector_set_get: :ref:`vector_set_get`
+
+----
+
+xsrst input file: ``lib/cplusplus/cplusplus.omh``

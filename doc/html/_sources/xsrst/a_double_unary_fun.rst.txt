@@ -1,0 +1,116 @@
+!!!!!!!!!!!!!!!!!!
+a_double_unary_fun
+!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: a_double_unary_fun, unary, functions, with, ad, result
+
+.. index:: a_double_unary_fun, unary, functions, with, ad, result
+
+.. _a_double_unary_fun:
+
+Unary Functions with AD Result
+##############################
+- :ref:`a_double_unary_fun.syntax`
+- :ref:`a_double_unary_fun.ax`
+- :ref:`a_double_unary_fun.fun`
+- :ref:`a_double_unary_fun.ay`
+- :ref:`a_double_unary_fun.example`
+
+.. meta::
+   :keywords: syntax
+
+.. index:: syntax
+
+.. _a_double_unary_fun.syntax:
+
+Syntax
+******
+
+| *ay* = *ax* . *fun* ()
+
+.. meta::
+   :keywords: ax
+
+.. index:: ax
+
+.. _a_double_unary_fun.ax:
+
+ax
+**
+This object has prototype
+
+| |tab| ``const a_double&`` *ax*
+
+This is the argument for the function evaluation.
+
+.. meta::
+   :keywords: fun
+
+.. index:: fun
+
+.. _a_double_unary_fun.fun:
+
+fun
+***
+This specifies which function is being evaluated and is one
+of  following value:
+``abs`` ,
+``acos`` ,
+``asin`` ,
+``atan`` ,
+``cos`` ,
+``cosh`` ,
+``erf`` ,
+``exp`` ,
+``fabs`` ,
+``log`` ,
+``sin`` ,
+``sinh`` ,
+``sqrt`` ,
+``tan`` ,
+``tanh`` .
+2DO: Add the C++11 functions
+asinh, acosh, atanh, expm1, and log1p to this list.
+
+.. meta::
+   :keywords: ay
+
+.. index:: ay
+
+.. _a_double_unary_fun.ay:
+
+ay
+**
+The result object has prototype
+
+| |tab| ``a_double`` *ay*
+
+and is the specified function evaluated at the specified argument; i.e.,
+
+| |tab| *ay* = *fun* ( *ax* )
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   a_double_unary_fun_xam_cpp
+   a_double_unary_fun_xam_py
+
+.. meta::
+   :keywords: example
+
+.. index:: example
+
+.. _a_double_unary_fun.example:
+
+Example
+*******
+:ref:`c++<a_double_unary_fun_xam_cpp>`,
+:ref:`python<a_double_unary_fun_xam_py>`.
+
+----
+
+xsrst input file: ``lib/cplusplus/a_double.cpp``

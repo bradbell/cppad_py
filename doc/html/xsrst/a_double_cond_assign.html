@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="a_double_cond_assign, ad, conditional, assignment" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="purpose" name="keywords" />
+<meta content="target" name="keywords" />
+<meta content="cop" name="keywords" />
+<meta content="left" name="keywords" />
+<meta content="right" name="keywords" />
+<meta content="if_true" name="keywords" />
+<meta content="if_false" name="keywords" />
+<meta content="example" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>a_double_cond_assign &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="a_double_cond_assign_xam_cpp" href="a_double_cond_assign_xam_cpp.html" />
+    <link rel="prev" title="a_double_unary_fun_xam_py" href="a_double_unary_fun_xam_py.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="a_double.html">a_double</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="a_double_ctor.html">a_double_ctor</a></li>
+<li class="toctree-l5"><a class="reference internal" href="a_double_unary_op.html">a_double_unary_op</a></li>
+<li class="toctree-l5"><a class="reference internal" href="a_double_property.html">a_double_property</a></li>
+<li class="toctree-l5"><a class="reference internal" href="a_double_binary.html">a_double_binary</a></li>
+<li class="toctree-l5"><a class="reference internal" href="a_double_compare.html">a_double_compare</a></li>
+<li class="toctree-l5"><a class="reference internal" href="a_double_assign.html">a_double_assign</a></li>
+<li class="toctree-l5"><a class="reference internal" href="a_double_unary_fun.html">a_double_unary_fun</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">a_double_cond_assign</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="a_double_cond_assign_xam_cpp.html">a_double_cond_assign_xam_cpp</a></li>
+<li class="toctree-l6"><a class="reference internal" href="a_double_cond_assign_xam_py.html">a_double_cond_assign_xam_py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="vector.html">vector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cpp_utility.html">cpp_utility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="library.html">library</a> &raquo;</li>
+        
+          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
+        
+          <li><a href="a_double.html">a_double</a> &raquo;</li>
+        
+      <li>a_double_cond_assign</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/a_double_cond_assign.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="a-double-cond-assign">
+<h1>a_double_cond_assign<a class="headerlink" href="#a-double-cond-assign" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="ad-conditional-assignment">
+<span id="id1"></span><h2>AD Conditional Assignment<a class="headerlink" href="#ad-conditional-assignment" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#a-double-cond-assign-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#a-double-cond-assign-purpose"><span class="std std-ref">Purpose</span></a></p></li>
+<li><p><a class="reference internal" href="#a-double-cond-assign-target"><span class="std std-ref">target</span></a></p></li>
+<li><p><a class="reference internal" href="#a-double-cond-assign-cop"><span class="std std-ref">cop</span></a></p></li>
+<li><p><a class="reference internal" href="#a-double-cond-assign-left"><span class="std std-ref">left</span></a></p></li>
+<li><p><a class="reference internal" href="#a-double-cond-assign-right"><span class="std std-ref">right</span></a></p></li>
+<li><p><a class="reference internal" href="#a-double-cond-assign-if-true"><span class="std std-ref">if_true</span></a></p></li>
+<li><p><a class="reference internal" href="#a-double-cond-assign-if-false"><span class="std std-ref">if_false</span></a></p></li>
+<li><p><a class="reference internal" href="#a-double-cond-assign-example"><span class="std std-ref">Example</span></a></p></li>
+</ul>
+<div class="section" id="syntax">
+<span id="a-double-cond-assign-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><em>target</em> . <code class="docutils literal notranslate"><span class="pre">cond_assign</span></code> ( <em>cop</em> , <em>left</em> , <em>right</em> , <em>if_true</em> , <em>if_false</em> )</div>
+</div>
+</div>
+<div class="section" id="purpose">
+<span id="a-double-cond-assign-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<p>The code</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">if</span></code> ( <em>left</em> <em>cop</em> <em>right</em> )</div>
+<div class="line">                <em>target</em> = <em>if_true</em></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">else</span></code></div>
+<div class="line">                <em>target</em> = <em>if_false</em></div>
+</div>
+<p>records either the true or false case depending on the value
+of <em>left</em> and <em>right</em> ; see <a class="reference internal" href="cpp_fun_ctor.html#id1"><span class="std std-ref">cpp_fun_ctor</span></a>.
+If <em>left</em> or <em>right</em> is a
+<a class="reference internal" href="a_double_property.html#a-double-property-variable"><span class="std std-ref">variable</span></a>,
+it may be desirable to switch between <em>if_true</em> and <em>if_false</em>
+depending of the value of the independent variable during
+calls to order zero <a class="reference internal" href="cpp_fun_forward.html#id1"><span class="std std-ref">cpp_fun_forward</span></a>.
+The <code class="docutils literal notranslate"><span class="pre">cond_assign</span></code> does this.</p>
+</div>
+<div class="section" id="target">
+<span id="a-double-cond-assign-target"></span><span id="index-3"></span><h3>target<a class="headerlink" href="#target" title="Permalink to this headline">¶</a></h3>
+<p>This object has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">a_double&amp;</span></code> <em>target</em></div>
+</div>
+</div>
+<div class="section" id="cop">
+<span id="a-double-cond-assign-cop"></span><span id="index-4"></span><h3>cop<a class="headerlink" href="#cop" title="Permalink to this headline">¶</a></h3>
+<p>This argument has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*cop</span></code></div>
+</div>
+<p>The comparison is</p>
+<div class="line-block">
+<div class="line">        <em>left</em> <em>cop</em> <em>right</em></div>
+</div>
+<p>where <em>cop</em> is one of the following:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 88%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>cop</em></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>less than</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>less than or equal</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>equal</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>greater than or equal</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>greater than</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="left">
+<span id="a-double-cond-assign-left"></span><span id="index-5"></span><h3>left<a class="headerlink" href="#left" title="Permalink to this headline">¶</a></h3>
+<p>This argument has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>left</em></div>
+</div>
+<p>It specifies the left operand in the comparison.</p>
+</div>
+<div class="section" id="right">
+<span id="a-double-cond-assign-right"></span><span id="index-6"></span><h3>right<a class="headerlink" href="#right" title="Permalink to this headline">¶</a></h3>
+<p>This argument has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>right</em></div>
+</div>
+<p>It specifies the right operand in the comparison.</p>
+</div>
+<div class="section" id="if-true">
+<span id="a-double-cond-assign-if-true"></span><span id="index-7"></span><h3>if_true<a class="headerlink" href="#if-true" title="Permalink to this headline">¶</a></h3>
+<p>This argument has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>if_true</em></div>
+</div>
+<p>It specifies the value assigned to <em>ad</em> if the result
+of the comparison is true.</p>
+</div>
+<div class="section" id="if-false">
+<span id="a-double-cond-assign-if-false"></span><span id="index-8"></span><h3>if_false<a class="headerlink" href="#if-false" title="Permalink to this headline">¶</a></h3>
+<p>This argument has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>if_false</em></div>
+</div>
+<p>It specifies the value assigned to <em>ad</em> if the result
+of the comparison is false.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="example">
+<span id="a-double-cond-assign-example"></span><span id="index-9"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="a_double_cond_assign_xam_cpp.html#id1"><span class="std std-ref">c++</span></a>,
+<a class="reference internal" href="a_double_cond_assign_xam_py.html#id1"><span class="std std-ref">python</span></a>.</p>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/a_double.cpp</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="a_double_cond_assign_xam_cpp.html" class="btn btn-neutral float-right" title="a_double_cond_assign_xam_cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="a_double_unary_fun_xam_py.html" class="btn btn-neutral float-left" title="a_double_unary_fun_xam_py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="numeric_simple_inv_xam_py, example, computing, derivatives, matrix, inversion" name="keywords" />
+<meta content="problem" name="keywords" />
+<meta content="source, code" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>numeric_simple_inv_xam_py &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="numeric_runge4_step" href="numeric_runge4_step.html" />
+    <link rel="prev" title="numeric_simple_inv" href="numeric_simple_inv.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="numeric_xam.html">numeric_xam</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="numeric_simple_inv.html">numeric_simple_inv</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">numeric_simple_inv_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_runge4_step.html">numeric_runge4_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_rosen3_step.html">numeric_rosen3_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_ode_multi_step.html">numeric_ode_multi_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_optimize_fun_class.html">numeric_optimize_fun_class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_seirwd_model.html">numeric_seirwd_model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_covid_19_xam_py.html">numeric_covid_19_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="library.html">library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="numeric_xam.html">numeric_xam</a> &raquo;</li>
+        
+          <li><a href="numeric_simple_inv.html">numeric_simple_inv</a> &raquo;</li>
+        
+      <li>numeric_simple_inv_xam_py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/numeric_simple_inv_xam_py.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="numeric-simple-inv-xam-py">
+<h1>numeric_simple_inv_xam_py<a class="headerlink" href="#numeric-simple-inv-xam-py" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="example-computing-derivatives-of-matrix-inversion">
+<span id="id1"></span><h2>Example Computing Derivatives of Matrix Inversion<a class="headerlink" href="#example-computing-derivatives-of-matrix-inversion" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#numeric-simple-inv-xam-py-problem"><span class="std std-ref">Problem</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-simple-inv-xam-py-source-code"><span class="std std-ref">Source Code</span></a></p></li>
+</ul>
+<div class="section" id="problem">
+<span id="numeric-simple-inv-xam-py-problem"></span><span id="index-1"></span><h3>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h3>
+<p>We define</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A(x) = \left( \begin{array}{cc}
+x_0 &amp; x_1 \\
+x_2 &amp; x_3
+\end{array} \right)\end{split}\]</div>
+<p>It follows that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A^{-1}(x) =
+\frac{1}{x_3 * x_0 - x_1 * x_2}
+\left( \begin{array}{cc}
+x_3 &amp; - x_1 \\
+- x_2 &amp; x_0
+\end{array} \right)\end{split}\]</div>
+<p>We define</p>
+<div class="math notranslate nohighlight">
+\[f(x) = (x_3 * x_0 - x_1 * x_2) [
+A_{0,0}^{-1} (x),
+A_{0,1}^{-1} (x),
+A_{1,0}^{-1} (x),
+A_{1,1}^{-1} (x)
+]
+= [ x_3, -x_1, -x_2, x_0]\]</div>
+<p>The following example below check the derivative of <span class="math notranslate nohighlight">\(f(x)\)</span></p>
+</div>
+<div class="section" id="source-code">
+<span id="numeric-simple-inv-xam-py-source-code"></span><span id="index-2"></span><h3>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">cppad_py</span>
+<span class="kn">from</span> <span class="nn">simple_inv</span> <span class="kn">import</span> <span class="n">simple_inv</span>
+<span class="k">def</span> <span class="nf">simple_inv_xam</span><span class="p">()</span> <span class="p">:</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">x</span>  <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]</span> <span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">independent</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># create the matrix [ [x_0, x_1], [x_2, x_3] ]</span>
+    <span class="n">aA</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># compute inverse of A</span>
+    <span class="n">aAinv</span> <span class="o">=</span> <span class="n">simple_inv</span><span class="p">(</span><span class="n">aA</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># create f(x)</span>
+    <span class="n">ay</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">aAinv</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span> <span class="p">)</span>
+    <span class="n">ay</span> <span class="o">=</span> <span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">ay</span>
+    <span class="n">f</span>  <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">d_fun</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># evaluate the derivative f&#39;(x)</span>
+    <span class="n">J</span>      <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># Check the derivative</span>
+    <span class="n">check</span>      <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">check</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span>  <span class="mf">1.0</span>
+    <span class="n">check</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+    <span class="n">check</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+    <span class="n">check</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span>  <span class="mf">1.0</span>
+    <span class="c1">#</span>
+    <span class="n">eps99</span> <span class="o">=</span> <span class="mf">99.0</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+    <span class="n">ok</span>   <span class="o">&amp;=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span> <span class="n">numpy</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">J</span> <span class="o">-</span> <span class="n">check</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps99</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">ok</span>
+
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">example/python/numeric/simple_inv_xam.py</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="numeric_runge4_step.html" class="btn btn-neutral float-right" title="numeric_runge4_step" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="numeric_simple_inv.html" class="btn btn-neutral float-left" title="numeric_simple_inv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

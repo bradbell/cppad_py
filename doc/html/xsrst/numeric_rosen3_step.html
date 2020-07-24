@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="numeric_rosen3_step, one, third, order, rosenbrock, ode, step" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="purpose" name="keywords" />
+<meta content="reference" name="keywords" />
+<meta content="fun" name="keywords" />
+<meta content="t" name="keywords" />
+<meta content="y" name="keywords" />
+<meta content="fun.f" name="keywords" />
+<meta content="fun.f_t" name="keywords" />
+<meta content="fun.f_y" name="keywords" />
+<meta content="ti" name="keywords" />
+<meta content="yi" name="keywords" />
+<meta content="h" name="keywords" />
+<meta content="yf" name="keywords" />
+<meta content="ok" name="keywords" />
+<meta content="example" name="keywords" />
+<meta content="source, code" name="keywords" />
+<meta content="rosen3_step" name="keywords" />
+<meta content="check_rosen3_step" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>numeric_rosen3_step &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="numeric_rosen3_step_xam_py" href="numeric_rosen3_step_xam_py.html" />
+    <link rel="prev" title="numeric_runge4_step_xam_py" href="numeric_runge4_step_xam_py.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="numeric_xam.html">numeric_xam</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="numeric_simple_inv.html">numeric_simple_inv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_runge4_step.html">numeric_runge4_step</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">numeric_rosen3_step</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="numeric_rosen3_step_xam_py.html">numeric_rosen3_step_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_ode_multi_step.html">numeric_ode_multi_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_optimize_fun_class.html">numeric_optimize_fun_class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_seirwd_model.html">numeric_seirwd_model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_covid_19_xam_py.html">numeric_covid_19_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="library.html">library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="numeric_xam.html">numeric_xam</a> &raquo;</li>
+        
+      <li>numeric_rosen3_step</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/numeric_rosen3_step.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="numeric-rosen3-step">
+<h1>numeric_rosen3_step<a class="headerlink" href="#numeric-rosen3-step" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="one-third-order-rosenbrock-ode-step">
+<span id="id1"></span><h2>One Third Order Rosenbrock ODE Step<a class="headerlink" href="#one-third-order-rosenbrock-ode-step" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#numeric-rosen3-step-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-purpose"><span class="std std-ref">Purpose</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-reference"><span class="std std-ref">Reference</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#numeric-rosen3-step-fun"><span class="std std-ref">fun</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-fun-t"><span class="std std-ref">t</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-fun-y"><span class="std std-ref">y</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-fun-fun-f"><span class="std std-ref">fun.f</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-fun-fun-f-t"><span class="std std-ref">fun.f_t</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-fun-fun-f-y"><span class="std std-ref">fun.f_y</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-ti"><span class="std std-ref">ti</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-yi"><span class="std std-ref">yi</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-h"><span class="std std-ref">h</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-yf"><span class="std std-ref">yf</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-ok"><span class="std std-ref">ok</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-example"><span class="std std-ref">Example</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#numeric-rosen3-step-source-code"><span class="std std-ref">Source Code</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-source-code-rosen3-step"><span class="std std-ref">rosen3_step</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-source-code-check-rosen3-step"><span class="std std-ref">check_rosen3_step</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="section" id="syntax">
+<span id="numeric-rosen3-step-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><em>yf</em> =  <code class="docutils literal notranslate"><span class="pre">rosen3_step</span></code> ( <em>fun</em> , <em>ti</em> , <em>yi</em> , <em>h</em> )</div>
+<div class="line"><em>ok</em> =  <code class="docutils literal notranslate"><span class="pre">check_rosen3_step</span></code> ( <em>fun</em> , <em>ti</em> , <em>yi</em> , <em>h</em> )</div>
+</div>
+</div>
+<div class="section" id="purpose">
+<span id="numeric-rosen3-step-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<p>The routine <code class="docutils literal notranslate"><span class="pre">rosen3_step</span></code> can be used with
+<code class="docutils literal notranslate"><span class="pre">ad_double</span></code> to solve an initial value ODE</p>
+<div class="math notranslate nohighlight">
+\[y^{(1)} (t)  = f( t , y )\]</div>
+</div>
+<div class="section" id="reference">
+<span id="numeric-rosen3-step-reference"></span><span id="index-3"></span><h3>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h3>
+<p>The formulas in this method are taken from page 100 of the following
+reference (except that 98/108 was correct to 97/108):
+Shampine, L.F.,
+<em>Implementation of Rosenbrock Methods</em> ,
+ACM Transactions on Mathematical Software, Vol. 8, No. 2, June 1982.</p>
+</div>
+<div class="section" id="fun">
+<span id="numeric-rosen3-step-fun"></span><span id="index-4"></span><h3>fun<a class="headerlink" href="#fun" title="Permalink to this headline">¶</a></h3>
+<p>This is a function that evaluates the ordinary differential equation,
+and its partial derivatives,</p>
+<div class="section" id="t">
+<span id="numeric-rosen3-step-fun-t"></span><span id="index-5"></span><h4>t<a class="headerlink" href="#t" title="Permalink to this headline">¶</a></h4>
+<p>The argument <em>t</em> below is the current time.
+It can be a <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">a_double</span></code> .</p>
+</div>
+<div class="section" id="y">
+<span id="numeric-rosen3-step-fun-y"></span><span id="index-6"></span><h4>y<a class="headerlink" href="#y" title="Permalink to this headline">¶</a></h4>
+<p>The argument <em>y</em> below is the current value of <span class="math notranslate nohighlight">\(y(t)\)</span>.
+The type of the elements of <em>y</em>
+can be <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">ad_double</span></code> .</p>
+</div>
+<div class="section" id="fun-f">
+<span id="numeric-rosen3-step-fun-fun-f"></span><span id="index-7"></span><h4>fun.f<a class="headerlink" href="#fun-f" title="Permalink to this headline">¶</a></h4>
+<p>The syntax <code class="docutils literal notranslate"><span class="pre">yp</span></code> = <code class="docutils literal notranslate"><span class="pre">fun</span></code> . <em>f</em> <code class="docutils literal notranslate"><span class="pre">t</span></code> , <code class="docutils literal notranslate"><span class="pre">y</span></code> ) returns <em>yp</em> ,
+the current function value <span class="math notranslate nohighlight">\(f(t, y)\)</span>.</p>
+</div>
+<div class="section" id="fun-f-t">
+<span id="numeric-rosen3-step-fun-fun-f-t"></span><span id="index-8"></span><h4>fun.f_t<a class="headerlink" href="#fun-f-t" title="Permalink to this headline">¶</a></h4>
+<p>The syntax <code class="docutils literal notranslate"><span class="pre">yp_t</span></code> = <code class="docutils literal notranslate"><span class="pre">fun</span></code> . <em>f_t</em> ( <code class="docutils literal notranslate"><span class="pre">t</span></code> , <code class="docutils literal notranslate"><span class="pre">y</span></code> ) returns <em>yp_t</em> ,
+the current partial value <span class="math notranslate nohighlight">\(\partial_t f(t, y)\)</span>.</p>
+</div>
+<div class="section" id="fun-f-y">
+<span id="numeric-rosen3-step-fun-fun-f-y"></span><span id="index-9"></span><h4>fun.f_y<a class="headerlink" href="#fun-f-y" title="Permalink to this headline">¶</a></h4>
+<p>The syntax <code class="docutils literal notranslate"><span class="pre">yp_y</span></code> = <code class="docutils literal notranslate"><span class="pre">fun</span></code> . <em>f_y</em> ( <code class="docutils literal notranslate"><span class="pre">t</span></code> , <code class="docutils literal notranslate"><span class="pre">y</span></code> ) returns <em>yp_y</em> ,
+the current partial value <span class="math notranslate nohighlight">\(\partial_y f(t, y)\)</span>.</p>
+</div>
+</div>
+<div class="section" id="ti">
+<span id="numeric-rosen3-step-ti"></span><span id="index-10"></span><h3>ti<a class="headerlink" href="#ti" title="Permalink to this headline">¶</a></h3>
+<p>This is the initial time for the Rosenbrock step.
+It can have type <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">a_double</span></code> .
+(For <code class="docutils literal notranslate"><span class="pre">check_rosen3_step</span></code> only <code class="docutils literal notranslate"><span class="pre">float</span></code> is allowed.)</p>
+</div>
+<div class="section" id="yi">
+<span id="numeric-rosen3-step-yi"></span><span id="index-11"></span><h3>yi<a class="headerlink" href="#yi" title="Permalink to this headline">¶</a></h3>
+<p>This is the numpy vector containing the
+value of <span class="math notranslate nohighlight">\(y(t)\)</span> at the initial time.
+The type of its elements can be <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">a_double</span></code> .
+(For <code class="docutils literal notranslate"><span class="pre">check_rosen3_step</span></code> only <code class="docutils literal notranslate"><span class="pre">float</span></code> is allowed.)</p>
+</div>
+<div class="section" id="h">
+<span id="numeric-rosen3-step-h"></span><span id="index-12"></span><h3>h<a class="headerlink" href="#h" title="Permalink to this headline">¶</a></h3>
+<p>This is the step size in time; i.e., the time at the end of the step
+minus the initial time.
+It can have type <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">a_double</span></code> .
+(This is not used by <code class="docutils literal notranslate"><span class="pre">check_rosen3_step</span></code> .)</p>
+</div>
+<div class="section" id="yf">
+<span id="numeric-rosen3-step-yf"></span><span id="index-13"></span><h3>yf<a class="headerlink" href="#yf" title="Permalink to this headline">¶</a></h3>
+<p>This is the approximate solution for <span class="math notranslate nohighlight">\(y(t)\)</span> at the final time
+as a numpy vector.
+This solution is 3-th order accurate in time <span class="math notranslate nohighlight">\(t\)</span>; e.g., if
+<span class="math notranslate nohighlight">\(y(t)\)</span> is a polynomial in <span class="math notranslate nohighlight">\(t\)</span> of order three or lower,
+the solution has no truncation error, only round off error.</p>
+</div>
+<div class="section" id="ok">
+<span id="numeric-rosen3-step-ok"></span><span id="index-14"></span><h3>ok<a class="headerlink" href="#ok" title="Permalink to this headline">¶</a></h3>
+<p>This is true if the function <em>fun</em> . <code class="docutils literal notranslate"><span class="pre">f</span></code> <em>t</em> , <em>y</em> )
+and the partials <em>fun</em> . <code class="docutils literal notranslate"><span class="pre">f_t</span></code> ( <em>t</em> , <em>y</em> ) ,
+<em>fun</em> . <code class="docutils literal notranslate"><span class="pre">f_y</span></code> ( <em>t</em> , <em>y</em> ) agree.
+Otherwise AD has detected an error in these functions.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="example">
+<span id="numeric-rosen3-step-example"></span><span id="index-15"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="numeric_rosen3_step_xam_py.html#id1"><span class="std std-ref">numeric_rosen3_step_xam_py</span></a></p>
+</div>
+<div class="section" id="source-code">
+<span id="numeric-rosen3-step-source-code"></span><span id="index-16"></span><h3>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="rosen3-step">
+<span id="numeric-rosen3-step-source-code-rosen3-step"></span><span id="index-17"></span><h4>rosen3_step<a class="headerlink" href="#rosen3-step" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">simple_inv</span> <span class="kn">import</span> <span class="n">simple_inv</span>
+<span class="kn">import</span> <span class="nn">cppad_py</span>
+<span class="k">def</span> <span class="nf">rosen3_step</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="p">:</span>
+    <span class="c1">#</span>
+    <span class="n">r1_2</span>     <span class="o">=</span> <span class="mf">1.0</span>   <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="n">r3_2</span>     <span class="o">=</span> <span class="mf">3.0</span>   <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="n">r3_5</span>     <span class="o">=</span> <span class="mf">3.0</span>   <span class="o">/</span> <span class="mf">5.0</span>
+    <span class="n">r24_25</span>   <span class="o">=</span> <span class="mf">24.0</span>  <span class="o">/</span> <span class="mf">25.0</span>
+    <span class="n">r3_25</span>    <span class="o">=</span> <span class="mf">3.0</span>   <span class="o">/</span> <span class="mf">25.0</span>
+    <span class="n">r121_50</span>  <span class="o">=</span> <span class="mf">121.0</span> <span class="o">/</span> <span class="mf">50.0</span>
+    <span class="n">r186_25</span>  <span class="o">=</span> <span class="mf">186.0</span> <span class="o">/</span> <span class="mf">25.0</span>
+    <span class="n">r6_5</span>     <span class="o">=</span> <span class="mf">6.0</span>   <span class="o">/</span> <span class="mf">5.0</span>
+    <span class="n">r97_108</span>  <span class="o">=</span> <span class="mf">97.0</span>  <span class="o">/</span> <span class="mf">108.0</span>
+    <span class="n">r11_72</span>   <span class="o">=</span> <span class="mf">11.0</span>  <span class="o">/</span> <span class="mf">72.0</span>
+    <span class="n">r25_216</span>  <span class="o">=</span> <span class="mf">25.0</span>  <span class="o">/</span> <span class="mf">216.0</span>
+    <span class="c1">#</span>
+    <span class="c1"># Einv</span>
+    <span class="n">ny</span>   <span class="o">=</span> <span class="n">yi</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">I</span>    <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">ny</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">E</span>    <span class="o">=</span> <span class="n">I</span> <span class="o">-</span> <span class="n">r1_2</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">fun</span><span class="o">.</span><span class="n">f_y</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
+    <span class="n">Einv</span> <span class="o">=</span> <span class="n">simple_inv</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># f_t</span>
+    <span class="n">f_t</span>  <span class="o">=</span> <span class="n">fun</span><span class="o">.</span><span class="n">f_t</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># k1</span>
+    <span class="n">k1</span>   <span class="o">=</span> <span class="n">fun</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
+    <span class="n">k1</span>  <span class="o">+=</span> <span class="n">r1_2</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">f_t</span>
+    <span class="n">k1</span>   <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Einv</span> <span class="p">,</span> <span class="n">k1</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># k2</span>
+    <span class="n">k2</span>   <span class="o">=</span> <span class="n">fun</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">ti</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">yi</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
+    <span class="n">k2</span>  <span class="o">-=</span> <span class="n">r3_2</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">f_t</span>
+    <span class="n">k2</span>  <span class="o">-=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">k1</span>
+    <span class="n">k2</span>   <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Einv</span> <span class="p">,</span> <span class="n">k2</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># k3</span>
+    <span class="n">t</span>    <span class="o">=</span> <span class="n">ti</span> <span class="o">+</span> <span class="n">r3_5</span> <span class="o">*</span> <span class="n">h</span>
+    <span class="n">y</span>    <span class="o">=</span> <span class="n">yi</span> <span class="o">+</span> <span class="n">r24_25</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="n">r3_25</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k2</span>
+    <span class="n">k3</span>   <span class="o">=</span> <span class="n">fun</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">k3</span>  <span class="o">+=</span> <span class="n">r121_50</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">f_t</span>
+    <span class="n">k3</span>  <span class="o">+=</span> <span class="n">r186_25</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="n">r6_5</span> <span class="o">*</span> <span class="n">k2</span>
+    <span class="n">k3</span>   <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Einv</span> <span class="p">,</span> <span class="n">k3</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">yf</span>   <span class="o">=</span> <span class="n">yi</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span> <span class="n">r97_108</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="n">r11_72</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="n">r25_216</span> <span class="o">*</span> <span class="n">k3</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">yf</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="check-rosen3-step">
+<span id="numeric-rosen3-step-source-code-check-rosen3-step"></span><span id="index-18"></span><h4>check_rosen3_step<a class="headerlink" href="#check-rosen3-step" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_rosen3_step</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">ok</span>    <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">eps99</span> <span class="o">=</span> <span class="mf">99.0</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+    <span class="c1">#</span>
+    <span class="n">ny</span>    <span class="o">=</span> <span class="n">yi</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">both</span>  <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span> <span class="p">(</span><span class="n">yi</span><span class="p">,</span> <span class="p">[</span><span class="n">ti</span><span class="p">])</span> <span class="p">)</span>
+    <span class="n">aboth</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">independent</span><span class="p">(</span><span class="n">both</span><span class="p">)</span>
+    <span class="n">az</span>    <span class="o">=</span> <span class="n">fun</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">aboth</span><span class="p">[</span><span class="n">ny</span><span class="p">],</span> <span class="n">aboth</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">ny</span><span class="p">]</span> <span class="p">)</span>
+    <span class="n">fun_d</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">d_fun</span><span class="p">(</span><span class="n">aboth</span><span class="p">,</span> <span class="n">az</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">J</span>     <span class="o">=</span> <span class="n">fun_d</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">both</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># check fun.f_t(t, y)</span>
+    <span class="n">fun_t</span>   <span class="o">=</span> <span class="n">fun</span><span class="o">.</span><span class="n">f_t</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
+    <span class="n">printed</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ny</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">J</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span> <span class="p">:</span>
+            <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">fun_t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">rel_error</span> <span class="o">=</span> <span class="n">fun_t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">J</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">ny</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.0</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">rel_error</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">eps99</span> <span class="p">:</span>
+                <span class="n">ok</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">printed</span> <span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;check_rosen3_step: fun.f_t check failed&#39;</span><span class="p">)</span>
+                    <span class="n">printed</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fun_t[&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39;] = &#39;</span><span class="p">,</span> <span class="n">fun_t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">&#39;, check = &#39;</span><span class="p">,</span> <span class="n">J</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">ny</span><span class="p">])</span>
+    <span class="c1">#</span>
+    <span class="c1"># check fun.f_y(t, y)</span>
+    <span class="n">fun_y</span> <span class="o">=</span> <span class="n">fun</span><span class="o">.</span><span class="n">f_y</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
+    <span class="n">printed</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ny</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ny</span><span class="p">)</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">J</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span> <span class="p">:</span>
+                <span class="n">ok_ij</span> <span class="o">=</span><span class="n">fun_y</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="n">rel_error</span> <span class="o">=</span> <span class="n">fun_y</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">/</span> <span class="n">J</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.0</span>
+                <span class="n">ok_ij</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span> <span class="n">rel_error</span> <span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps99</span>
+            <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">ok_ij</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">printed</span><span class="p">)</span> <span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;check_rosen3_step: fun.f_y check failed&#39;</span><span class="p">)</span>
+                <span class="n">printed</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">ok_ij</span> <span class="p">:</span>
+                <span class="n">msg</span>  <span class="o">=</span> <span class="s1">&#39;fun_y[&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;] =&#39;</span>
+                <span class="n">msg</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span> <span class="n">fun_y</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="p">)</span>
+                <span class="n">msg</span> <span class="o">+=</span> <span class="s1">&#39;, check = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span> <span class="n">J</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">ok</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">example/python/numeric/rosen3_step.py</span></code></p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="numeric_rosen3_step_xam_py.html" class="btn btn-neutral float-right" title="numeric_rosen3_step_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="numeric_runge4_step_xam_py.html" class="btn btn-neutral float-left" title="numeric_runge4_step_xam_py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

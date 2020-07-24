@@ -1,0 +1,47 @@
+!!!!!!!
+cpp_lib
+!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: cpp_lib, the, c++, library
+
+.. index:: cpp_lib, the, c++, library
+
+.. _cpp_lib:
+
+The C++ Library
+###############
+- :ref:`cpp_lib.children`
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _cpp_lib.children:
+
+Children
+********
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   a_double
+   vector
+   cpp_fun
+   sparse
+   cpp_utility
+   more_cpp
+
+#. a_double: :ref:`a_double`
+#. vector: :ref:`vector`
+#. cpp_fun: :ref:`cpp_fun`
+#. sparse: :ref:`sparse`
+#. cpp_utility: :ref:`cpp_utility`
+#. more_cpp: :ref:`more_cpp`
+
+----
+
+xsrst input file: ``lib/cplusplus/cpp_lib.omh``

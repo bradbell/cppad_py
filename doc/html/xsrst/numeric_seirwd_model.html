@@ -1,0 +1,655 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="numeric_seirwd_model, susceptible, exposed, infectious, recovered, death, model" name="keywords" />
+<meta content="purpose" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="notation" name="keywords" />
+<meta content="ode" name="keywords" />
+<meta content="method" name="keywords" />
+<meta content="t_all" name="keywords" />
+<meta content="p_all" name="keywords" />
+<meta content="alpha" name="keywords" />
+<meta content="initial" name="keywords" />
+<meta content="n_step" name="keywords" />
+<meta content="seirwd_all" name="keywords" />
+<meta content="conservation, mass" name="keywords" />
+<meta content="example" name="keywords" />
+<meta content="source, code" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>numeric_seirwd_model &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="numeric_seirwd_model_xam_py" href="numeric_seirwd_model_xam_py.html" />
+    <link rel="prev" title="numeric_optimize_fun_xam_py" href="numeric_optimize_fun_xam_py.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="numeric_xam.html">numeric_xam</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="numeric_simple_inv.html">numeric_simple_inv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_runge4_step.html">numeric_runge4_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_rosen3_step.html">numeric_rosen3_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_ode_multi_step.html">numeric_ode_multi_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_optimize_fun_class.html">numeric_optimize_fun_class</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">numeric_seirwd_model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="numeric_seirwd_model_xam_py.html">numeric_seirwd_model_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_covid_19_xam_py.html">numeric_covid_19_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="library.html">library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="numeric_xam.html">numeric_xam</a> &raquo;</li>
+        
+      <li>numeric_seirwd_model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/numeric_seirwd_model.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="numeric-seirwd-model">
+<h1>numeric_seirwd_model<a class="headerlink" href="#numeric-seirwd-model" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="a-susceptible-exposed-infectious-recovered-and-death-model">
+<span id="id1"></span><h2>A Susceptible Exposed Infectious Recovered and Death Model<a class="headerlink" href="#a-susceptible-exposed-infectious-recovered-and-death-model" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#numeric-seirwd-model-purpose"><span class="std std-ref">Purpose</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-seirwd-model-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-seirwd-model-notation"><span class="std std-ref">Notation</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-seirwd-model-ode"><span class="std std-ref">ODE</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-seirwd-model-method"><span class="std std-ref">method</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-seirwd-model-t-all"><span class="std std-ref">t_all</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#numeric-seirwd-model-p-all"><span class="std std-ref">p_all</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#numeric-seirwd-model-p-all-alpha"><span class="std std-ref">alpha</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#numeric-seirwd-model-initial"><span class="std std-ref">initial</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-seirwd-model-n-step"><span class="std std-ref">n_step</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-seirwd-model-seirwd-all"><span class="std std-ref">seirwd_all</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-seirwd-model-conservation-of-mass"><span class="std std-ref">Conservation of Mass</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-seirwd-model-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-seirwd-model-source-code"><span class="std std-ref">Source Code</span></a></p></li>
+</ul>
+<div class="section" id="purpose">
+<span id="numeric-seirwd-model-purpose"></span><span id="index-1"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<p>This routine can be used with <code class="docutils literal notranslate"><span class="pre">ad_double</span></code> .</p>
+</div>
+<div class="section" id="syntax">
+<span id="numeric-seirwd-model-syntax"></span><span id="index-2"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><em>seirwd_all</em> =  <code class="docutils literal notranslate"><span class="pre">seirwd_model</span></code> (</div>
+<div class="line">        <em>method</em> , <em>t_all</em> , <em>p_all</em> , <em>initial</em> , <em>n_step</em> = 1</div>
+<div class="line">)</div>
+</div>
+</div>
+<div class="section" id="notation">
+<span id="numeric-seirwd-model-notation"></span><span id="index-3"></span><h3>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(S(t)\)</span></p></td>
+<td><p>size of the Susceptible group</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(E(t)\)</span></p></td>
+<td><p>size of the Exposed group</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(I(t)\)</span></p></td>
+<td><p>size of the Infectious group</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(R(t)\)</span></p></td>
+<td><p>size Recovered group</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(W(t)\)</span></p></td>
+<td><p>size of the group that will die</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(D(t)\)</span></p></td>
+<td><p>size of the group that has died</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\alpha(t)\)</span></p></td>
+<td><p>infectious group size exponent</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\beta(t)\)</span></p></td>
+<td><p>infectious rate</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\sigma(t)\)</span></p></td>
+<td><p>incubation rate</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\gamma(t)\)</span></p></td>
+<td><p>recovery rate</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\xi(t)\)</span></p></td>
+<td><p>loss of immunity rate</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\chi(t)\)</span></p></td>
+<td><p>excess mortality rate</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\delta(t)\)</span></p></td>
+<td><p>delay between infectious and death</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ode">
+<span id="numeric-seirwd-model-ode"></span><span id="index-4"></span><h3>ODE<a class="headerlink" href="#ode" title="Permalink to this headline">¶</a></h3>
+<p>The ordinary differential equation for this model is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{rcll}
+\dot{S} &amp; = &amp; - \beta  S I^\alpha  &amp; + \xi    R             \\
+\dot{E} &amp; = &amp; + \beta  S I^\alpha  &amp; - \sigma E             \\
+\dot{I} &amp; = &amp; + \sigma E           &amp; - ( \gamma + \chi )  I \\
+\dot{R} &amp; = &amp; + \gamma I           &amp; - \xi    R             \\
+\dot{W} &amp; = &amp; + \chi   I           &amp; - \delta W             \\
+\dot{D} &amp; = &amp; + \delta W           &amp;
+\end{array}\end{split}\]</div>
+<p>where we dropped the time dependence in the equations above.
+This model does not account for death by other causes.
+It is similar to the standard
+<a class="reference external" href="https://www.idmod.org/docs/hiv/model-seir.html">SEIRS</a> model
+with the following differences:</p>
+<ol class="arabic simple">
+<li><p>The total population <span class="math notranslate nohighlight">\(N\)</span> is not included in this model,
+so the units for <span class="math notranslate nohighlight">\(\beta\)</span> are different.</p></li>
+<li><p>This model tracks death due to the condition using the compartments W and D.</p></li>
+</ol>
+</div>
+<div class="section" id="method">
+<span id="numeric-seirwd-model-method"></span><span id="index-5"></span><h3>method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h3>
+<p>This <code class="docutils literal notranslate"><span class="pre">str</span></code> must be either <code class="docutils literal notranslate"><span class="pre">runge4</span></code> or <code class="docutils literal notranslate"><span class="pre">rosen3</span></code> .
+It determines if <a class="reference internal" href="numeric_runge4_step.html#id1"><span class="std std-ref">runge4_step</span></a> or
+<a class="reference internal" href="numeric_rosen3_step.html#id1"><span class="std std-ref">rosen3_step</span></a> is used to solve the ODE.</p>
+</div>
+<div class="section" id="t-all">
+<span id="numeric-seirwd-model-t-all"></span><span id="index-6"></span><h3>t_all<a class="headerlink" href="#t-all" title="Permalink to this headline">¶</a></h3>
+<p>The argument <em>t_all</em> is a vector that is monotone
+increasing or decreasing.
+The type of its elements can be <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">a_double</span></code> .
+The smaller the spacing between time points, the more accurate
+the approximation is.
+Note two points can be equal; i.e., no zero spacing.
+We call <em>t_all</em> [0] the initial time and
+<em>t_all</em> [-1] the final time.</p>
+</div>
+<div class="section" id="p-all">
+<span id="numeric-seirwd-model-p-all"></span><span id="index-7"></span><h3>p_all<a class="headerlink" href="#p-all" title="Permalink to this headline">¶</a></h3>
+<p>This argument is a list of dictionaries.
+The i-th element of the list has the following <em>key</em> ,
+<em>value</em> pairs:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>key</em></p></td>
+<td><p><em>value</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'alpha'</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha( t_i )\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'beta'</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta( t_i )\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'sigma'</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma( t_i )\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'gamma'</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\gamma( t_i )\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'xi'</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\xi( t_i )\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'chi'</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\chi( t_i )\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'delta'</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\delta( t_i )\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where <em>t_i</em> is the time <em>t_all</em> [ <em>i</em> ] .
+The type of <em>value</em> can be <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">a_double</span></code> .
+Each of the these parameters will be linearly interpolated
+for times between the those in <em>t_all</em> .</p>
+<div class="section" id="alpha">
+<span id="numeric-seirwd-model-p-all-alpha"></span><span id="index-8"></span><h4>alpha<a class="headerlink" href="#alpha" title="Permalink to this headline">¶</a></h4>
+<p>There is a special restriction that <span class="math notranslate nohighlight">\(\alpha(t)\)</span> must be
+constant; i.e. <span class="math notranslate nohighlight">\(\alpha( t_i ) = \alpha( t_0 )\)</span> for
+all <span class="math notranslate nohighlight">\(i\)</span>.
+This is because talking the derivative of <span class="math notranslate nohighlight">\(I^\alpha\)</span>
+respect to <span class="math notranslate nohighlight">\(I\)</span> has a special representation when <span class="math notranslate nohighlight">\(\alpha = 1\)</span>.
+Using a special representation for that case would not work with AD
+unless <span class="math notranslate nohighlight">\(\alpha\)</span> is constant.</p>
+</div>
+</div>
+<div class="section" id="initial">
+<span id="numeric-seirwd-model-initial"></span><span id="index-9"></span><h3>initial<a class="headerlink" href="#initial" title="Permalink to this headline">¶</a></h3>
+<p>is a vector of length four containing the initial values for
+S, E, I, R, W, D in that order.
+The type of its elements can be <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">a_double</span></code> .</p>
+</div>
+<div class="section" id="n-step">
+<span id="numeric-seirwd-model-n-step"></span><span id="index-10"></span><h3>n_step<a class="headerlink" href="#n-step" title="Permalink to this headline">¶</a></h3>
+<p>This is the number of numerical integration steps to use for each
+time interval in the <em>t_all</em> array.
+It must be an <code class="docutils literal notranslate"><span class="pre">int</span></code> greater or equal one.
+The larger <em>n_step</em> the more computational effort and the more
+accurate the solution.  The default value is for <em>n_step</em> is one.</p>
+</div>
+<div class="section" id="seirwd-all">
+<span id="numeric-seirwd-model-seirwd-all"></span><span id="index-11"></span><h3>seirwd_all<a class="headerlink" href="#seirwd-all" title="Permalink to this headline">¶</a></h3>
+<p>The return value <em>seirwd_all</em> is a numpy matrix with row dimension
+equal to the number of elements in <em>t_all</em> and column dimension
+equal to six. The value <em>seirwd_all</em> [ <em>i</em> , <em>j</em> ] is the
+approximate solution for the j-th compartment at time <em>t_all</em> [ <em>i</em> ] .
+The compartments have the same order as in <em>initial</em> and
+<code class="docutils literal notranslate"><span class="pre">seirwd</span></code> [0, <em>:</em> is equal to <em>initial</em> .
+The sequence of floating point operations only depends on <em>t_all</em>
+and the operations used to compute <em>p_fun</em> .</p>
+</div>
+<div class="section" id="conservation-of-mass">
+<span id="numeric-seirwd-model-conservation-of-mass"></span><span id="index-12"></span><h3>Conservation of Mass<a class="headerlink" href="#conservation-of-mass" title="Permalink to this headline">¶</a></h3>
+<p>Note that the sum of S, E, I, R, W, and D should be constant; i.e.,
+up to numerical accuracy, it not depend on time.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="example">
+<span id="numeric-seirwd-model-example"></span><span id="index-13"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="numeric_seirwd_model_xam_py.html#id1"><span class="std std-ref">numeric_seirwd_model_xam_py</span></a></p>
+</div>
+<div class="section" id="source-code">
+<span id="numeric-seirwd-model-source-code"></span><span id="index-14"></span><h3>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">ode_multi_step</span> <span class="kn">import</span> <span class="n">ode_multi_step</span>
+<span class="kn">from</span> <span class="nn">rosen3_step</span> <span class="kn">import</span> <span class="n">rosen3_step</span>
+<span class="kn">from</span> <span class="nn">runge4_step</span> <span class="kn">import</span> <span class="n">runge4_step</span>
+<span class="kn">from</span> <span class="nn">rosen3_step</span> <span class="kn">import</span> <span class="n">check_rosen3_step</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">fun_class</span> <span class="p">:</span>
+    <span class="c1"># ------------------------------------------------------------------------</span>
+    <span class="c1"># init</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_all</span><span class="p">,</span> <span class="n">p_all</span><span class="p">,</span> <span class="n">n_step</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_all</span>  <span class="o">=</span> <span class="n">t_all</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_all</span>  <span class="o">=</span> <span class="n">p_all</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_step</span> <span class="o">=</span> <span class="n">n_step</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span>  <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p</span>      <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># set_t_all_index</span>
+    <span class="k">def</span> <span class="nf">set_t_all_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">refine_index</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">t_all_index</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">numpy</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span> <span class="n">refine_index</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_step</span> <span class="p">)</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span>   <span class="o">=</span> <span class="n">t_all_index</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># get_p</span>
+    <span class="k">def</span> <span class="nf">get_p</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">seirwd</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">!=</span> <span class="kc">None</span>
+        <span class="n">t_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_all</span>
+        <span class="n">p_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_all</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span>
+        <span class="c1">#</span>
+        <span class="c1"># linearly interpolate the parameter values</span>
+        <span class="n">p</span>      <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">t_left</span> <span class="o">=</span> <span class="n">t_all</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="n">t_diff</span> <span class="o">=</span> <span class="n">t_all</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_left</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;beta&#39;</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">,</span> <span class="s1">&#39;xi&#39;</span><span class="p">,</span> <span class="s1">&#39;chi&#39;</span><span class="p">,</span> <span class="s1">&#39;delta&#39;</span><span class="p">]</span> <span class="p">:</span>
+            <span class="n">p_left</span> <span class="o">=</span> <span class="n">p_all</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">p_diff</span> <span class="o">=</span> <span class="n">p_all</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">-</span> <span class="n">p_left</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_left</span> <span class="o">+</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">t_left</span><span class="p">)</span> <span class="o">*</span> <span class="n">p_diff</span> <span class="o">/</span> <span class="n">t_diff</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="n">p</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># get_p_t</span>
+    <span class="k">def</span> <span class="nf">get_p_t</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">!=</span> <span class="kc">None</span>
+        <span class="n">t_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_all</span>
+        <span class="n">p_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_all</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span>
+        <span class="c1">#</span>
+        <span class="c1"># linearly interpolate the parameter values</span>
+        <span class="n">p_t</span>    <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">t_diff</span> <span class="o">=</span> <span class="n">t_all</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_all</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;beta&#39;</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">,</span> <span class="s1">&#39;xi&#39;</span><span class="p">,</span> <span class="s1">&#39;chi&#39;</span><span class="p">,</span> <span class="s1">&#39;delta&#39;</span><span class="p">]</span> <span class="p">:</span>
+            <span class="n">p_diff</span>   <span class="o">=</span> <span class="n">p_all</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">-</span> <span class="n">p_all</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">p_t</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_diff</span> <span class="o">/</span> <span class="n">t_diff</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="n">p_t</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># f</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">seirwd</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">p</span>                <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_p</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">seirwd</span><span class="p">)</span>
+        <span class="n">S</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">seirwd</span>
+        <span class="c1">#</span>
+        <span class="n">Ia</span>     <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">])</span>
+        <span class="c1">#</span>
+        <span class="c1"># compute f(t, y)</span>
+        <span class="n">Sdot</span>   <span class="o">=</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span>  <span class="o">*</span>  <span class="n">S</span> <span class="o">*</span> <span class="n">Ia</span>  <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;xi&#39;</span><span class="p">]</span>    <span class="o">*</span> <span class="n">R</span>
+        <span class="n">Edot</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span>  <span class="o">*</span>  <span class="n">S</span> <span class="o">*</span> <span class="n">Ia</span>  <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">E</span>
+        <span class="n">Idot</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">E</span>        <span class="o">-</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;chi&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">I</span>
+        <span class="n">Rdot</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">I</span>        <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;xi&#39;</span><span class="p">]</span>    <span class="o">*</span> <span class="n">R</span>
+        <span class="n">Wdot</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;chi&#39;</span><span class="p">]</span>   <span class="o">*</span> <span class="n">I</span>        <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;delta&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">W</span>
+        <span class="n">Ddot</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;delta&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">W</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">Sdot</span><span class="p">,</span> <span class="n">Edot</span><span class="p">,</span> <span class="n">Idot</span><span class="p">,</span> <span class="n">Rdot</span><span class="p">,</span> <span class="n">Wdot</span><span class="p">,</span> <span class="n">Ddot</span><span class="p">])</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># f_t</span>
+    <span class="k">def</span> <span class="nf">f_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">seirwd</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">p</span>                <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_p</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">seirwd</span><span class="p">)</span>
+        <span class="n">p_t</span>              <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_p_t</span><span class="p">()</span>
+        <span class="n">S</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">seirwd</span>
+        <span class="c1">#</span>
+        <span class="n">Ia</span>     <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">])</span>
+        <span class="c1">#</span>
+        <span class="c1">#</span>
+        <span class="n">Sdot_t</span>   <span class="o">=</span> <span class="o">-</span> <span class="n">p_t</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span>  <span class="o">*</span>  <span class="n">S</span> <span class="o">*</span> <span class="n">Ia</span>  <span class="o">+</span> <span class="n">p_t</span><span class="p">[</span><span class="s1">&#39;xi&#39;</span><span class="p">]</span>    <span class="o">*</span> <span class="n">R</span>
+        <span class="n">Edot_t</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p_t</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span>  <span class="o">*</span>  <span class="n">S</span> <span class="o">*</span> <span class="n">Ia</span>  <span class="o">-</span> <span class="n">p_t</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">E</span>
+        <span class="n">Idot_t</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p_t</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">E</span>        <span class="o">-</span> <span class="p">(</span><span class="n">p_t</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">p_t</span><span class="p">[</span><span class="s1">&#39;chi&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">I</span>
+        <span class="n">Rdot_t</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p_t</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">I</span>        <span class="o">-</span> <span class="n">p_t</span><span class="p">[</span><span class="s1">&#39;xi&#39;</span><span class="p">]</span>    <span class="o">*</span> <span class="n">R</span>
+        <span class="n">Wdot_t</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p_t</span><span class="p">[</span><span class="s1">&#39;chi&#39;</span><span class="p">]</span>   <span class="o">*</span> <span class="n">I</span>        <span class="o">-</span> <span class="n">p_t</span><span class="p">[</span><span class="s1">&#39;delta&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">W</span>
+        <span class="n">Ddot_t</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p_t</span><span class="p">[</span><span class="s1">&#39;delta&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">W</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">Sdot_t</span><span class="p">,</span> <span class="n">Edot_t</span><span class="p">,</span> <span class="n">Idot_t</span><span class="p">,</span> <span class="n">Rdot_t</span><span class="p">,</span> <span class="n">Wdot_t</span><span class="p">,</span> <span class="n">Ddot_t</span><span class="p">])</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># f_y</span>
+    <span class="k">def</span> <span class="nf">f_y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">seirwd</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">p</span>                <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_p</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">seirwd</span><span class="p">)</span>
+        <span class="n">S</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">seirwd</span>
+        <span class="c1">#</span>
+        <span class="n">Ia</span>     <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span> <span class="p">:</span>
+            <span class="n">Ia_I</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">Ia_I</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">ny</span>     <span class="o">=</span> <span class="mi">6</span>
+        <span class="n">type_y</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span> <span class="n">seirwd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+        <span class="n">zero</span>   <span class="o">=</span> <span class="n">type_y</span><span class="p">(</span> <span class="mf">0.0</span> <span class="p">)</span>
+        <span class="n">J</span>      <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span> <span class="p">(</span><span class="n">ny</span><span class="p">,</span><span class="n">ny</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">type_y</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1"># partials of Sdot(t, y) w.r.t. y</span>
+        <span class="n">Sdot_S</span>   <span class="o">=</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span>  <span class="o">*</span>  <span class="n">Ia</span>
+        <span class="n">Sdot_I</span>   <span class="o">=</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span>  <span class="o">*</span>  <span class="n">S</span> <span class="o">*</span> <span class="n">Ia_I</span>
+        <span class="n">Sdot_R</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;xi&#39;</span><span class="p">]</span>
+        <span class="n">J</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>   <span class="o">=</span> <span class="p">[</span> <span class="n">Sdot_S</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">Sdot_I</span><span class="p">,</span> <span class="n">Sdot_R</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">zero</span> <span class="p">]</span>
+        <span class="c1">#</span>
+        <span class="c1"># partial of Edot(t, y) w.r.t y</span>
+        <span class="n">Edot_S</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span>  <span class="o">*</span>  <span class="n">Ia</span>
+        <span class="n">Edot_I</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span>  <span class="o">*</span>  <span class="n">S</span> <span class="o">*</span> <span class="n">Ia_I</span>
+        <span class="n">Edot_E</span>   <span class="o">=</span>  <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span>
+        <span class="n">J</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span>   <span class="o">=</span> <span class="p">[</span> <span class="n">Edot_S</span><span class="p">,</span> <span class="n">Edot_E</span><span class="p">,</span> <span class="n">Edot_I</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">zero</span> <span class="p">]</span>
+        <span class="c1">#</span>
+        <span class="c1"># partial of Idot(t, y) w.r.t y</span>
+        <span class="n">Idot_E</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span>
+        <span class="n">Idot_I</span>   <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;chi&#39;</span><span class="p">])</span>
+        <span class="n">J</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span>   <span class="o">=</span> <span class="p">[</span> <span class="n">zero</span><span class="p">,</span> <span class="n">Idot_E</span><span class="p">,</span> <span class="n">Idot_I</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">zero</span> <span class="p">]</span>
+        <span class="c1">#</span>
+        <span class="c1"># partial Rdot(t, y) w.r.t y</span>
+        <span class="n">Rdot_I</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">]</span>
+        <span class="n">Rdot_R</span>   <span class="o">=</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;xi&#39;</span><span class="p">]</span>
+        <span class="n">J</span><span class="p">[</span><span class="mi">3</span><span class="p">,:]</span>   <span class="o">=</span> <span class="p">[</span> <span class="n">zero</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">Rdot_I</span><span class="p">,</span> <span class="n">Rdot_R</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">zero</span> <span class="p">]</span>
+        <span class="c1">#</span>
+        <span class="c1"># partial Wdot(t, y) w.r.t. y</span>
+        <span class="n">Wdot_I</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;chi&#39;</span><span class="p">]</span>
+        <span class="n">Wdot_W</span>   <span class="o">=</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;delta&#39;</span><span class="p">]</span>
+        <span class="n">J</span><span class="p">[</span><span class="mi">4</span><span class="p">,:]</span>   <span class="o">=</span> <span class="p">[</span> <span class="n">zero</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">Wdot_I</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">Wdot_W</span><span class="p">,</span> <span class="n">zero</span> <span class="p">]</span>
+        <span class="c1">#</span>
+        <span class="c1"># partial Ddot(t, y) w.r.t y</span>
+        <span class="n">Ddot_W</span>   <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;delta&#39;</span><span class="p">]</span>
+        <span class="n">J</span><span class="p">[</span><span class="mi">5</span><span class="p">,:]</span>   <span class="o">=</span> <span class="p">[</span> <span class="n">zero</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">Ddot_W</span><span class="p">,</span> <span class="n">zero</span> <span class="p">]</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="n">J</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># check the fun derivatives required by rosen3_step</span>
+<span class="k">def</span> <span class="nf">test_fun_derivatives</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">p_all</span><span class="p">,</span> <span class="n">initial</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">ok</span>     <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">n_step</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">fun</span>  <span class="o">=</span> <span class="n">fun_class</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">p_all</span><span class="p">,</span> <span class="n">n_step</span><span class="p">)</span>
+    <span class="n">index</span>  <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">fun</span><span class="o">.</span><span class="n">set_t_all_index</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">ti</span>   <span class="o">=</span> <span class="n">t_all</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">yi</span>   <span class="o">=</span> <span class="n">initial</span>
+    <span class="n">h</span>    <span class="o">=</span> <span class="n">t_all</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_all</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">ok</span>   <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">check_rosen3_step</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ok</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># seriwd_model</span>
+<span class="k">def</span> <span class="nf">seirwd_model</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">t_all</span><span class="p">,</span> <span class="n">p_all</span><span class="p">,</span> <span class="n">initial</span><span class="p">,</span> <span class="n">n_step</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_all</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">:</span>
+        <span class="k">assert</span> <span class="n">p_all</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">p_all</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="n">fun</span>      <span class="o">=</span> <span class="n">fun_class</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">p_all</span><span class="p">,</span> <span class="n">n_step</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;runge4&#39;</span> <span class="p">:</span>
+        <span class="n">one_step</span> <span class="o">=</span> <span class="n">runge4_step</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;rosen3&#39;</span> <span class="p">:</span>
+        <span class="n">one_step</span> <span class="o">=</span> <span class="n">rosen3_step</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">assert</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">n_step</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+        <span class="n">seirwd_all</span>  <span class="o">=</span> <span class="n">ode_multi_step</span><span class="p">(</span><span class="n">one_step</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">t_all</span><span class="p">,</span> <span class="n">initial</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="c1"># t_refine</span>
+        <span class="n">t_refine</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_all</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">:</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_all</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_all</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">n_step</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_step</span><span class="p">)</span> <span class="p">:</span>
+                <span class="n">t_refine</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">t_all</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">j</span> <span class="o">*</span> <span class="n">step</span> <span class="p">)</span>
+        <span class="n">t_refine</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">t_all</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+        <span class="n">t_refine</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">t_refine</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">seirwd_refine</span>   <span class="o">=</span> <span class="n">ode_multi_step</span><span class="p">(</span><span class="n">one_step</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">t_refine</span><span class="p">,</span> <span class="n">initial</span><span class="p">)</span>
+        <span class="n">index_all</span>   <span class="o">=</span> <span class="p">[</span> <span class="n">i</span> <span class="o">*</span> <span class="n">n_step</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_all</span><span class="p">))</span> <span class="p">]</span>
+        <span class="n">seirwd_all</span>   <span class="o">=</span> <span class="n">seirwd_refine</span><span class="p">[</span> <span class="n">index_all</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">seirwd_all</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">example/python/numeric/seirwd_model.py</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="numeric_seirwd_model_xam_py.html" class="btn btn-neutral float-right" title="numeric_seirwd_model_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="numeric_optimize_fun_xam_py.html" class="btn btn-neutral float-left" title="numeric_optimize_fun_xam_py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

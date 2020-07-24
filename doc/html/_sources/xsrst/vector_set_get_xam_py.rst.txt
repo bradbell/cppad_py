@@ -1,0 +1,24 @@
+!!!!!!!!!!!!!!!!!!!!!
+vector_set_get_xam_py
+!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: vector_set_get_xam_py, python:, setting, getting, vector, elements:, example, test
+
+.. index:: vector_set_get_xam_py, python:, setting, getting, vector, elements:, example, test
+
+.. _vector_set_get_xam_py:
+
+Python: Setting and Getting Vector Elements: Example and Test
+#############################################################
+
+
+.. literalinclude:: ../../../example/python/core/vector_set_get_xam.py
+    :lines: 11-48
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/vector_set_get_xam.py``

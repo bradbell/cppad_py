@@ -1,0 +1,17 @@
+.. vim: set expandtab: 
+
+Table of Contents
+=================
+
+.. toctree::
+   :maxdepth: 4
+
+   xsrst/cppad_py
+
+Index
+=====
+* :ref:`genindex`
+
+Search
+======
+* :ref:`search`

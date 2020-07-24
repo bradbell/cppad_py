@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="numeric_seirwd_model_xam_py, example, using, seris_model" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>numeric_seirwd_model_xam_py &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="numeric_covid_19_xam_py" href="numeric_covid_19_xam_py.html" />
+    <link rel="prev" title="numeric_seirwd_model" href="numeric_seirwd_model.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="numeric_xam.html">numeric_xam</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="numeric_simple_inv.html">numeric_simple_inv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_runge4_step.html">numeric_runge4_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_rosen3_step.html">numeric_rosen3_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_ode_multi_step.html">numeric_ode_multi_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_optimize_fun_class.html">numeric_optimize_fun_class</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="numeric_seirwd_model.html">numeric_seirwd_model</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">numeric_seirwd_model_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_covid_19_xam_py.html">numeric_covid_19_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="library.html">library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="numeric_xam.html">numeric_xam</a> &raquo;</li>
+        
+          <li><a href="numeric_seirwd_model.html">numeric_seirwd_model</a> &raquo;</li>
+        
+      <li>numeric_seirwd_model_xam_py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/numeric_seirwd_model_xam_py.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="numeric-seirwd-model-xam-py">
+<h1>numeric_seirwd_model_xam_py<a class="headerlink" href="#numeric-seirwd-model-xam-py" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="example-using-seris-model">
+<span id="id1"></span><h2>Example Using seris_model<a class="headerlink" href="#example-using-seris-model" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">seirwd_model</span> <span class="kn">import</span> <span class="n">seirwd_model</span>
+<span class="kn">from</span> <span class="nn">seirwd_model</span> <span class="kn">import</span> <span class="n">test_fun_derivatives</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">check_method</span><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">ok</span>    <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1">#</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">9.5</span>           <span class="c1"># exponent in infectious group size</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mf">5.0</span>     <span class="c1"># average 5 days between exposure and infectious</span>
+    <span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mf">20.0</span>    <span class="c1"># average 20 days between infectious and recovered</span>
+    <span class="n">xi</span>    <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mf">365.0</span>   <span class="c1"># average 1 year of immunity</span>
+    <span class="n">chi</span>   <span class="o">=</span> <span class="n">gamma</span> <span class="o">/</span> <span class="mf">10.0</span>  <span class="c1"># probabiliy of death is 1/10 that of recovery</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mf">10.0</span>    <span class="c1"># to days between no-longer infectious and death</span>
+    <span class="c1">#</span>
+    <span class="c1"># t_all</span>
+    <span class="n">t_all</span>    <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span> <span class="p">]</span> <span class="p">)</span>
+    <span class="n">beta_all</span> <span class="o">=</span>  <span class="p">[</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.10</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="c1"># p_all</span>
+    <span class="n">p_all</span>    <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">t_all</span><span class="o">.</span><span class="n">size</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;alpha&#39;</span> <span class="p">:</span> <span class="n">alpha</span><span class="p">,</span>
+            <span class="s1">&#39;beta&#39;</span>  <span class="p">:</span> <span class="n">beta_all</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="s1">&#39;sigma&#39;</span> <span class="p">:</span> <span class="n">sigma</span> <span class="p">,</span>
+            <span class="s1">&#39;gamma&#39;</span> <span class="p">:</span> <span class="n">gamma</span> <span class="p">,</span>
+            <span class="s1">&#39;xi&#39;</span>    <span class="p">:</span> <span class="n">xi</span> <span class="p">,</span>
+            <span class="s1">&#39;chi&#39;</span>   <span class="p">:</span> <span class="n">chi</span> <span class="p">,</span>
+            <span class="s1">&#39;delta&#39;</span> <span class="p">:</span> <span class="n">delta</span> <span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">p_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># initial</span>
+    <span class="n">I0</span>  <span class="o">=</span> <span class="mf">0.02</span>
+    <span class="n">E0</span>  <span class="o">=</span> <span class="mf">0.02</span>
+    <span class="n">R0</span>  <span class="o">=</span> <span class="mf">0.02</span>
+    <span class="n">S0</span>  <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">I0</span> <span class="o">-</span> <span class="n">E0</span> <span class="o">-</span> <span class="n">R0</span>
+    <span class="n">W0</span>  <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">D0</span>  <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">initial</span>  <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span> <span class="n">S0</span><span class="p">,</span> <span class="n">E0</span><span class="p">,</span> <span class="n">I0</span><span class="p">,</span> <span class="n">R0</span><span class="p">,</span> <span class="n">W0</span><span class="p">,</span> <span class="n">D0</span> <span class="p">]</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># check derivatives in seirwd_model needed when method is rosen3</span>
+    <span class="c1"># (This is not part of the User API for seirwd_model)</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;rosen3&#39;</span> <span class="p">:</span>
+        <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">test_fun_derivatives</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">p_all</span><span class="p">,</span> <span class="n">initial</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># solve the ODE</span>
+    <span class="n">seirwd_all</span> <span class="o">=</span> <span class="n">seirwd_model</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">t_all</span><span class="p">,</span> <span class="n">p_all</span><span class="p">,</span> <span class="n">initial</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># check solution using midpoint values</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_all</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">:</span>
+        <span class="c1"># midpoint values</span>
+        <span class="n">t_mid</span>      <span class="o">=</span> <span class="p">(</span><span class="n">t_all</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t_all</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="n">seirwd_mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">seirwd_all</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">seirwd_all</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,:])</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="n">S</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">seirwd_mid</span>
+        <span class="c1">#</span>
+        <span class="c1"># differential equation</span>
+        <span class="n">p</span>       <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;beta&#39;</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">,</span> <span class="s1">&#39;xi&#39;</span><span class="p">,</span> <span class="s1">&#39;chi&#39;</span><span class="p">,</span> <span class="s1">&#39;delta&#39;</span><span class="p">]</span> <span class="p">:</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_all</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">+</span> <span class="n">p_all</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">key</span><span class="p">])</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="c1">#</span>
+        <span class="n">dot</span>     <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span> <span class="mi">6</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">)</span>
+        <span class="n">Ia</span>      <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">])</span>
+        <span class="n">dot</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">=</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span> <span class="o">*</span>  <span class="n">S</span> <span class="o">*</span> <span class="n">Ia</span>  <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;xi&#39;</span><span class="p">]</span>   <span class="o">*</span> <span class="n">R</span>
+        <span class="n">dot</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span> <span class="o">*</span>  <span class="n">S</span> <span class="o">*</span> <span class="n">Ia</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">E</span>
+        <span class="n">dot</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">E</span>      <span class="o">-</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;chi&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">I</span>
+        <span class="n">dot</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">I</span>      <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;xi&#39;</span><span class="p">]</span>    <span class="o">*</span> <span class="n">R</span>
+        <span class="n">dot</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>  <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;chi&#39;</span><span class="p">]</span>   <span class="o">*</span> <span class="n">I</span>      <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;delta&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">W</span>
+        <span class="n">dot</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>  <span class="o">=</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;delta&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">W</span>
+        <span class="c1">#</span>
+        <span class="c1"># difference over interval</span>
+        <span class="n">seirwd_delta</span> <span class="o">=</span> <span class="n">seirwd_all</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">-</span> <span class="n">seirwd_all</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span>
+        <span class="n">t_delta</span>      <span class="o">=</span> <span class="n">t_all</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>      <span class="o">-</span> <span class="n">t_all</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1">#</span>
+        <span class="n">check</span>  <span class="o">=</span> <span class="n">seirwd_delta</span> <span class="o">/</span> <span class="n">t_delta</span>
+        <span class="n">rel_error</span> <span class="o">=</span> <span class="n">dot</span> <span class="o">/</span> <span class="n">check</span> <span class="o">-</span> <span class="mf">1.0</span>
+        <span class="c1"># print(rel_error)</span>
+        <span class="n">ok</span>        <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span> <span class="nb">abs</span><span class="p">(</span><span class="n">rel_error</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-2</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># now check solution using twice as many Runge-Kutta steps</span>
+    <span class="n">n_step</span>      <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">seirwd_check</span> <span class="o">=</span> <span class="n">seirwd_model</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">t_all</span><span class="p">,</span> <span class="n">p_all</span><span class="p">,</span> <span class="n">initial</span><span class="p">,</span> <span class="n">n_step</span><span class="p">)</span>
+    <span class="n">error</span>       <span class="o">=</span> <span class="n">seirwd_all</span> <span class="o">-</span> <span class="n">seirwd_check</span>
+    <span class="c1"># print(error)</span>
+    <span class="n">ok</span>          <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span> <span class="nb">abs</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-7</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">ok</span>
+
+<span class="k">def</span> <span class="nf">seirwd_model_xam</span><span class="p">()</span> <span class="p">:</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">check_method</span><span class="p">(</span><span class="s1">&#39;runge4&#39;</span><span class="p">);</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">check_method</span><span class="p">(</span><span class="s1">&#39;rosen3&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">ok</span>
+
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">example/python/numeric/seirwd_model_xam.py</span></code></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="numeric_covid_19_xam_py.html" class="btn btn-neutral float-right" title="numeric_covid_19_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="numeric_seirwd_model.html" class="btn btn-neutral float-left" title="numeric_seirwd_model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

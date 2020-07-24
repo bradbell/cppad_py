@@ -1,0 +1,39 @@
+!!!!!!!
+library
+!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: library, the, cppad, py, libraries
+
+.. index:: library, the, cppad, py, libraries
+
+.. _library:
+
+The Cppad Py Libraries
+######################
+- :ref:`library.children`
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _library.children:
+
+Children
+********
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   py_lib
+   cpp_lib
+
+#. py_lib: :ref:`py_lib`
+#. cpp_lib: :ref:`cpp_lib`
+
+----
+
+xsrst input file: ``lib/library.omh``

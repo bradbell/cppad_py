@@ -1,0 +1,1122 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="numeric_covid_19_xam_py, example, fitting, an, seirwd, model, for, covid-19" name="keywords" />
+<meta content="covariates" name="keywords" />
+<meta content="model, ode" name="keywords" />
+<meta content="beta(t)" name="keywords" />
+<meta content="other, rates" name="keywords" />
+<meta content="initial, values" name="keywords" />
+<meta content="ode, solver" name="keywords" />
+<meta content="unknown, parameters" name="keywords" />
+<meta content="maximum, likelihood" name="keywords" />
+<meta content="model, bounds" name="keywords" />
+<meta content="actual, bounds" name="keywords" />
+<meta content="data" name="keywords" />
+<meta content="sample_interval" name="keywords" />
+<meta content="data_file" name="keywords" />
+<meta content="coefficient, variation" name="keywords" />
+<meta content="simulation" name="keywords" />
+<meta content="weighted, residuals" name="keywords" />
+<meta content="random, seed" name="keywords" />
+<meta content="random, start" name="keywords" />
+<meta content="display, fit, results" name="keywords" />
+<meta content="plot" name="keywords" />
+<meta content="printout" name="keywords" />
+<meta content="debug, output" name="keywords" />
+<meta content="source, code" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>numeric_covid_19_xam_py &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="library" href="library.html" />
+    <link rel="prev" title="numeric_seirwd_model_xam_py" href="numeric_seirwd_model_xam_py.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="numeric_xam.html">numeric_xam</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="numeric_simple_inv.html">numeric_simple_inv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_runge4_step.html">numeric_runge4_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_rosen3_step.html">numeric_rosen3_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_ode_multi_step.html">numeric_ode_multi_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_optimize_fun_class.html">numeric_optimize_fun_class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_seirwd_model.html">numeric_seirwd_model</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">numeric_covid_19_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="library.html">library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="numeric_xam.html">numeric_xam</a> &raquo;</li>
+        
+      <li>numeric_covid_19_xam_py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/numeric_covid_19_xam_py.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="numeric-covid-19-xam-py">
+<h1>numeric_covid_19_xam_py<a class="headerlink" href="#numeric-covid-19-xam-py" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="example-fitting-an-seirwd-model-for-covid-19">
+<span id="id1"></span><h2>Example Fitting an SEIRWD Model for Covid-19<a class="headerlink" href="#example-fitting-an-seirwd-model-for-covid-19" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-covariates"><span class="std std-ref">Covariates</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#numeric-covid-19-xam-py-model-ode"><span class="std std-ref">Model ODE</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-model-ode-beta-t"><span class="std std-ref">beta(t)</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-model-ode-other-rates"><span class="std std-ref">Other Rates</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-model-ode-initial-values"><span class="std std-ref">Initial Values</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-model-ode-ode-solver"><span class="std std-ref">Ode Solver</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#numeric-covid-19-xam-py-unknown-parameters"><span class="std std-ref">Unknown Parameters</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-unknown-parameters-maximum-likelihood"><span class="std std-ref">Maximum Likelihood</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-unknown-parameters-model-bounds"><span class="std std-ref">Model Bounds</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-unknown-parameters-actual-bounds"><span class="std std-ref">Actual Bounds</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#numeric-covid-19-xam-py-data"><span class="std std-ref">Data</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-data-sample-interval"><span class="std std-ref">sample_interval</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-data-data-file"><span class="std std-ref">data_file</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-data-coefficient-of-variation"><span class="std std-ref">Coefficient of Variation</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-data-simulation"><span class="std std-ref">Simulation</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-data-weighted-residuals"><span class="std std-ref">Weighted Residuals</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-random-seed"><span class="std std-ref">Random Seed</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-random-start"><span class="std std-ref">Random Start</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#numeric-covid-19-xam-py-display-fit-results"><span class="std std-ref">Display Fit Results</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-display-fit-results-plot"><span class="std std-ref">Plot</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-display-fit-results-printout"><span class="std std-ref">Printout</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-debug-output"><span class="std std-ref">Debug Output</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-source-code"><span class="std std-ref">Source Code</span></a></p></li>
+</ul>
+<div class="section" id="covariates">
+<span id="numeric-covid-19-xam-py-covariates"></span><span id="index-1"></span><h3>Covariates<a class="headerlink" href="#covariates" title="Permalink to this headline">¶</a></h3>
+<p>In this example there are two covariates that
+affect the infectious rate <span class="math notranslate nohighlight">\(\beta\)</span>:
+social mobility <span class="math notranslate nohighlight">\(c_0 (t)\)</span>,
+Covid-19 testing <span class="math notranslate nohighlight">\(c_1 (t)\)</span>, and
+scaled time <span class="math notranslate nohighlight">\(c_2 (t)\)</span>.
+The covariates are known functions of time.
+The mobility covariate has been shifted and scaled
+so it is in the interval [-1, 0].
+The testing covariate has been shifted and scaled
+so it is in the interval [0, 1].
+Note that the maximum mobility and the minimum testing corresponds to the
+normal (baseline) condition.
+The scaled time covariate is shifted and scaled version of time so that
+it is in the interval [0, 1] with the first data point corresponding to
+time zero. It is assumed here that the baseline condition corresponds
+to time zero.</p>
+</div>
+<div class="section" id="model-ode">
+<span id="numeric-covid-19-xam-py-model-ode"></span><span id="index-2"></span><h3>Model ODE<a class="headerlink" href="#model-ode" title="Permalink to this headline">¶</a></h3>
+<p>We use the <a class="reference internal" href="numeric_seirwd_model.html#id1"><span class="std std-ref">seirwd</span></a> model and notation.</p>
+<div class="section" id="beta-t">
+<span id="numeric-covid-19-xam-py-model-ode-beta-t"></span><span id="index-3"></span><h4>beta(t)<a class="headerlink" href="#beta-t" title="Permalink to this headline">¶</a></h4>
+<p>Our model for the infectious rate is</p>
+<div class="math notranslate nohighlight">
+\[\beta(t) = \bar{\beta} \exp[ m_0 c_0 (t) + m_1 c_1 (t) + m_2 c_2 (t) ]\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{\beta}\)</span> is the baseline value for the infectious rate,
+<span class="math notranslate nohighlight">\(m_0\)</span> is the social covariate multiplier, and
+<span class="math notranslate nohighlight">\(m_1\)</span> is the Covid-19 testing covariate multiplier.
+The baseline value <span class="math notranslate nohighlight">\(\bar{\beta}\)</span> is the infectious rate corresponding
+to all the covariates being zero.
+The covariate multipliers, and the baseline infectious rate, are unknown.</p>
+</div>
+<div class="section" id="other-rates">
+<span id="numeric-covid-19-xam-py-model-ode-other-rates"></span><span id="index-4"></span><h4>Other Rates<a class="headerlink" href="#other-rates" title="Permalink to this headline">¶</a></h4>
+<p>The other rates
+<span class="math notranslate nohighlight">\(\alpha(t)\)</span>,
+<span class="math notranslate nohighlight">\(\sigma(t)\)</span>,
+<span class="math notranslate nohighlight">\(\gamma(t)\)</span>,
+<span class="math notranslate nohighlight">\(\xi(t)\)</span>,
+<span class="math notranslate nohighlight">\(\chi(t)\)</span>,
+<span class="math notranslate nohighlight">\(\delta(t)\)</span>,
+constant functions with known values:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">alpha_known</span>  <span class="o">=</span> <span class="mf">0.95</span>
+<span class="n">sigma_known</span>  <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">gamma_known</span>  <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">chi_known</span>    <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">xi_known</span>     <span class="o">=</span> <span class="mf">0.00</span>
+<span class="n">delta_known</span>  <span class="o">=</span> <span class="mf">0.2</span>
+</pre></div>
+</div>
+<p>All of theses rates must be non-negative.</p>
+</div>
+<div class="section" id="initial-values">
+<span id="numeric-covid-19-xam-py-model-ode-initial-values"></span><span id="index-5"></span><h4>Initial Values<a class="headerlink" href="#initial-values" title="Permalink to this headline">¶</a></h4>
+<p>The initial size of the Recovered group <span class="math notranslate nohighlight">\(R(0)\)</span>
+and of the Death group <span class="math notranslate nohighlight">\(D(0)\)</span> is zero.
+We use fraction of the total population for sizes, so the sum of the
+other initial values is one.
+We treat the initial
+Infected group <span class="math notranslate nohighlight">\(I(0)\)</span>, and
+Will die group <span class="math notranslate nohighlight">\(W(0)\)</span>,
+as unknown parameters in the model.
+We would like to also solve for the initial exposed population but
+that model has identifiability problems, so
+we use the following approximation for the initial exposed group</p>
+<div class="math notranslate nohighlight">
+\[E(0) = I(0) \gamma / \sigma\]</div>
+<p>The initial Susceptible group <span class="math notranslate nohighlight">\(S(0)\)</span> is
+expressed as a function of the other initial conditions:</p>
+<div class="math notranslate nohighlight">
+\[S(0) = 1 - E(0) - I(0) - W(0)\]</div>
+</div>
+<div class="section" id="ode-solver">
+<span id="numeric-covid-19-xam-py-model-ode-ode-solver"></span><span id="index-6"></span><h4>Ode Solver<a class="headerlink" href="#ode-solver" title="Permalink to this headline">¶</a></h4>
+<p>There are two choices for <em>ode_method</em> ,
+the method used to solve the ODE:
+<a class="reference internal" href="numeric_runge4_step.html#id1"><span class="std std-ref">runge4</span></a> and
+<a class="reference internal" href="numeric_rosen3_step.html#id1"><span class="std std-ref">rosen3</span></a>.
+In addition, we can choose <em>ode_n_step</em> ,
+the number of step to take for each time interval in <em>t_all</em> ,
+before it is sub-sampled using the
+<a class="reference internal" href="#numeric-covid-19-xam-py-data-sample-interval"><span class="std std-ref">sample_interval</span></a>.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">ode_method</span> <span class="o">=</span> <span class="s1">&#39;runge4&#39;</span>
+<span class="n">ode_n_step</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="unknown-parameters">
+<span id="numeric-covid-19-xam-py-unknown-parameters"></span><span id="index-7"></span><h3>Unknown Parameters<a class="headerlink" href="#unknown-parameters" title="Permalink to this headline">¶</a></h3>
+<p>The unknown parameter vector in this model is</p>
+<div class="math notranslate nohighlight">
+\[x = [ m_0, m_1, m_2, I(0), W(0), \bar{\beta} ]\]</div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">x_name</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;m_mobility&#39;</span><span class="p">,</span> <span class="s1">&#39;m_testing&#39;</span><span class="p">,</span> <span class="s1">&#39;m_stime&#39;</span><span class="p">,</span> <span class="s1">&#39;I(0)&#39;</span><span class="p">,</span> <span class="s1">&#39;W(0)&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_bar&#39;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="maximum-likelihood">
+<span id="numeric-covid-19-xam-py-unknown-parameters-maximum-likelihood"></span><span id="index-8"></span><h4>Maximum Likelihood<a class="headerlink" href="#maximum-likelihood" title="Permalink to this headline">¶</a></h4>
+<p>We use a Gaussian likelihood for each of the differences in the
+cumulative deaths. The unknown parameters are estimated by maximizing the
+product of these likelihoods; i.e., the differences are modeled as being
+independent. The covariance of the estimates is approximated
+by the inverse of the observed information matrix.
+AD is used to compute first and second derivatives of the likelihood
+w.r.t. the unknown parameters <span class="math notranslate nohighlight">\(x\)</span>.
+These derivatives are used during optimization as well as for
+computing the observed information matrix.</p>
+</div>
+<div class="section" id="model-bounds">
+<span id="numeric-covid-19-xam-py-unknown-parameters-model-bounds"></span><span id="index-9"></span><h4>Model Bounds<a class="headerlink" href="#model-bounds" title="Permalink to this headline">¶</a></h4>
+<p>The infection rate <span class="math notranslate nohighlight">\(\beta(t)\)</span> must be non-negative; i.e.,</p>
+<div class="math notranslate nohighlight">
+\[0 \leq \bar{\beta} \exp[ m_0 c_0 (t) + m_1 c_1 (t) + m_2 c_2 (t) ]\]</div>
+<p>is true for all <span class="math notranslate nohighlight">\(t\)</span>.
+In addition, the size of the groups can not be negative.
+It is sufficient to enforce this constraint on the initial conditions; i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{lcr}
+0   &amp;  \leq &amp; \bar{\beta }   \\
+0   &amp;  \leq &amp; I(0)            \\
+0   &amp; \leq  &amp; W(0)
+\end{array}\end{split}\]</div>
+</div>
+<div class="section" id="actual-bounds">
+<span id="numeric-covid-19-xam-py-unknown-parameters-actual-bounds"></span><span id="index-10"></span><h4>Actual Bounds<a class="headerlink" href="#actual-bounds" title="Permalink to this headline">¶</a></h4>
+<p>The following actual upper and lower bounds for the unknown parameters
+are used as an as an aid to the optimizer:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="n">n_x</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_name</span><span class="p">)</span>
+    <span class="n">x_lower</span>                <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="n">n_x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">x_upper</span>                <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="n">n_x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">x_upper</span><span class="p">[</span> <span class="n">x_sim</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="p">]</span> <span class="o">=</span> <span class="n">actual_bound_factor</span> <span class="o">*</span> <span class="n">x_sim</span><span class="p">[</span> <span class="n">x_sim</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="p">]</span>
+    <span class="n">x_lower</span><span class="p">[</span> <span class="n">x_sim</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="p">]</span> <span class="o">=</span> <span class="n">actual_bound_factor</span> <span class="o">*</span> <span class="n">x_sim</span><span class="p">[</span> <span class="n">x_sim</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>where <em>x_sim</em> is the
+<a class="reference internal" href="#numeric-covid-19-xam-py-data-simulation"><span class="std std-ref">simulation</span></a> value
+for the unknown parameters and <em>actual_bound_factor</em> is chosen below.
+The problem has not really been solved if bounds,
+other than the model bounds above, are active at the solution of the
+optimization problem.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">actual_bound_factor</span> <span class="o">=</span> <span class="mf">5.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="data">
+<span id="numeric-covid-19-xam-py-data"></span><span id="index-11"></span><h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
+<p>The data in this model is the cumulative number of deaths,
+as a fraction of the total population and as a function of time.
+We assume that new deaths are recorded for time intervals
+and the cumulative deaths is the sum of these recordings.
+For this reason, we model the difference of the cumulative deaths
+between time points as independent.</p>
+<div class="section" id="sample-interval">
+<span id="numeric-covid-19-xam-py-data-sample-interval"></span><span id="index-12"></span><h4>sample_interval<a class="headerlink" href="#sample-interval" title="Permalink to this headline">¶</a></h4>
+<p>It is possible to sub-sample the data in order to reduce noise.
+The cumulative death data is just sub-sampled since the reduces noise by
+the summing the differences corresponding to a longer time period.
+The covariate data is averaged over the sample interval.
+The <em>sample_interval</em> must be either one or a positive even integer
+(even so an original data point corresponds to the center of the interval).</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">sample_interval</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-file">
+<span id="numeric-covid-19-xam-py-data-data-file"></span><span id="index-13"></span><h4>data_file<a class="headerlink" href="#data-file" title="Permalink to this headline">¶</a></h4>
+<p>If the data file name is the empty string, the cumulative death data,
+and corresponding covariates, are simulated by the program.
+Otherwise, the data file must be a CSV file with the following columns:
+<em>day</em> , <em>death</em> , <em>mobility</em> , <em>testing</em> .
+In this case the data file is used for the
+cumulative death and corresponding covariates.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s1">&#39;/home/bradbell/Downloads/561.csv&#39;</span>         <span class="c1"># Pennsylvania</span>
+<span class="n">data_file</span> <span class="o">=</span> <span class="s1">&#39;/home/bradbell/trash/covid_19/seirwd.csv&#39;</span> <span class="c1"># New York</span>
+<span class="n">data_file</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>                                         <span class="c1"># empty string</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="coefficient-of-variation">
+<span id="numeric-covid-19-xam-py-data-coefficient-of-variation"></span><span id="index-14"></span><h4>Coefficient of Variation<a class="headerlink" href="#coefficient-of-variation" title="Permalink to this headline">¶</a></h4>
+<p>This is the coefficient of variation for the differences
+in the cumulative death data as a fraction, not a percent.
+If this value is zero, a CV of zero is used for data simulation
+and a CV of one in the definition of the likelihood.
+This enables checking that the unknown parameters can be accurately
+identified using perfect data.
+For real data (when <em>data_file</em> is not empty)
+this value should be adjusted so that the average residual has variance one.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">death_data_cv</span> <span class="o">=</span> <span class="mf">0.25</span>
+</pre></div>
+</div>
+<p>Note this is the noise level in the original data before it is
+sub-sampled using
+<a class="reference internal" href="#numeric-covid-19-xam-py-data-sample-interval"><span class="std std-ref">sample_interval</span></a>.</p>
+</div>
+<div class="section" id="simulation">
+<span id="numeric-covid-19-xam-py-data-simulation"></span><span id="index-15"></span><h4>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h4>
+<p>If <em>data_file</em> is the empty string, the data is simulated using
+the following values for the
+<a class="reference internal" href="#numeric-covid-19-xam-py-unknown-parameters"><span class="std std-ref">unknown_parameters</span></a>:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">m_mobility_sim</span>    <span class="o">=</span>   <span class="mf">1.0</span>  <span class="c1"># m_0</span>
+<span class="n">m_testing_sim</span>     <span class="o">=</span> <span class="o">-</span> <span class="mf">1.0</span>  <span class="c1"># m_1</span>
+<span class="n">m_stime_sim</span>       <span class="o">=</span> <span class="o">-</span> <span class="mf">1.0</span>  <span class="c1"># m_2</span>
+<span class="n">I0_sim</span>            <span class="o">=</span>  <span class="mf">2e-5</span>  <span class="c1"># I(0)</span>
+<span class="n">W0_sim</span>            <span class="o">=</span>  <span class="mf">2e-5</span>  <span class="c1"># W(0)</span>
+<span class="n">beta_bar_sim</span>      <span class="o">=</span>  <span class="mf">2.0</span>   <span class="c1"># baseline value for beta</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="weighted-residuals">
+<span id="numeric-covid-19-xam-py-data-weighted-residuals"></span><span id="index-16"></span><h4>Weighted Residuals<a class="headerlink" href="#weighted-residuals" title="Permalink to this headline">¶</a></h4>
+<p>If <em>death_data_cv</em> is zero, <span class="math notranslate nohighlight">\(\lambda = 1\)</span>, otherwise
+<span class="math notranslate nohighlight">\(\lambda\)</span> is equal to</p>
+<div class="line-block">
+<div class="line">        <em>death_data_cv</em> <code class="docutils literal notranslate"><span class="pre">*</span> <span class="pre">sqrt</span></code> ( <em>sample_interval</em> )</div>
+</div>
+<p>.
+(Note that the standard deviation of a sum of independent values is the
+square root of the sum of the variance of each of the values.)
+Let <span class="math notranslate nohighlight">\(y_i\)</span> be the i-th value for the cumulative death data.
+The weighted residuals (some times referred to as just the residuals) are</p>
+<div class="math notranslate nohighlight">
+\[r_i = \frac{ ( y_{i+1} - y_i ) - [ D( t_{i+1} ) - D( t_i ) ] }{
+\lambda ( y_{i+1} - y_i ) }\]</div>
+<p>where <span class="math notranslate nohighlight">\(D(t)\)</span> is the model for the cumulative data
+given the fit results.
+The time corresponding to <span class="math notranslate nohighlight">\(r_i\)</span> is <span class="math notranslate nohighlight">\(( t_{i+1} + t_i ) / 2\)</span>.
+We put the data difference in the denominator,
+instead of the model difference,
+because it is constant with respect to the unknown parameters.</p>
+</div>
+</div>
+<div class="section" id="random-seed">
+<span id="numeric-covid-19-xam-py-random-seed"></span><span id="index-17"></span><h3>Random Seed<a class="headerlink" href="#random-seed" title="Permalink to this headline">¶</a></h3>
+<p>This is the random seed used to simulate noise in the data.
+If this value is zero, the system clock is used to choose the random seed.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">random_seed</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="random-start">
+<span id="numeric-covid-19-xam-py-random-start"></span><span id="index-18"></span><h3>Random Start<a class="headerlink" href="#random-start" title="Permalink to this headline">¶</a></h3>
+<p>The optimizer needs a good starting point in order to succeed.
+This is the number of random points, between the lower and upper limits,
+that are checked. The point with the best objective value is chosen
+as the starting point for the optimization.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">n_random_start</span> <span class="o">=</span> <span class="mi">4000</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="display-fit-results">
+<span id="numeric-covid-19-xam-py-display-fit-results"></span><span id="index-19"></span><h3>Display Fit Results<a class="headerlink" href="#display-fit-results" title="Permalink to this headline">¶</a></h3>
+<p>If you set this variable to True,
+a printout and a plot of the fit results is generated.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">display_fit</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<div class="section" id="plot">
+<span id="numeric-covid-19-xam-py-display-fit-results-plot"></span><span id="index-20"></span><h4>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h4>
+<p>There are three plots all with time on the x-axis.
+The first contains the size for all the compartments, except S,
+as a fraction of the total population.
+The second contains the model and data for the death difference values.
+The third contains the weighted residuals corresponding to the death
+difference data.</p>
+</div>
+<div class="section" id="printout">
+<span id="numeric-covid-19-xam-py-display-fit-results-printout"></span><span id="index-21"></span><h4>Printout<a class="headerlink" href="#printout" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic">
+<li><p>The following statistics for the weighted data residuals is printed:
+the maximum, minimum, average, and average of square.</p></li>
+<li><p>A table with the following columns is printed:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>x_name</em></p></td>
+<td><p>name of the unknown parameter</p></td>
+</tr>
+<tr class="row-even"><td><p><em>x_fit</em></p></td>
+<td><p>fit result for the unknown parameter</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>x_lower</em></p></td>
+<td><p>lower bound used for the fit</p></td>
+</tr>
+<tr class="row-even"><td><p><em>x_upper</em></p></td>
+<td><p>upper bound used for the fit</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>std_error</em></p></td>
+<td><p>asymptotic standard error for the parameter</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>If <em>data_file</em> is empty,
+a table is printed with the following columns is also printed:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 85%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>x_name</em></p></td>
+<td><p>name of the unknown parameter</p></td>
+</tr>
+<tr class="row-even"><td><p><em>x_sim</em></p></td>
+<td><p>known parameter value used during simulation</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>x_fit</em></p></td>
+<td><p>fit result for the unknown parameter</p></td>
+</tr>
+<tr class="row-even"><td><p><em>rel_error</em></p></td>
+<td><p>relative error for fit versus simulation</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>residual</em></p></td>
+<td><p><em>std_error</em> weighted residual for fit versus simulation</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="debug-output">
+<span id="numeric-covid-19-xam-py-debug-output"></span><span id="index-22"></span><h3>Debug Output<a class="headerlink" href="#debug-output" title="Permalink to this headline">¶</a></h3>
+<p>If this flag is true a lot of debugging output is printed.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">debug_output</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="source-code">
+<span id="numeric-covid-19-xam-py-source-code"></span><span id="index-23"></span><h3>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pdb</span> <span class="kn">import</span> <span class="n">set_trace</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">gridspec</span>
+<span class="kn">import</span> <span class="nn">scipy.optimize</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">cppad_py</span>
+<span class="kn">from</span> <span class="nn">optimize_fun_class</span> <span class="kn">import</span> <span class="n">optimize_fun_class</span>
+<span class="kn">from</span> <span class="nn">seirwd_model</span> <span class="kn">import</span> <span class="n">seirwd_model</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">subsample</span><span class="p">(</span><span class="n">file_data</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">sample_interval</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">file_data</span>
+    <span class="k">assert</span> <span class="n">sample_interval</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">sample_interval_2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">sample_interval</span> <span class="o">/</span> <span class="mi">2</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">n_data</span>          <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_data</span><span class="p">)</span>
+    <span class="n">n_data_interval</span> <span class="o">=</span> <span class="n">n_data</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">n_sub_interval</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">n_data_interval</span> <span class="o">/</span> <span class="n">sample_interval</span> <span class="p">)</span>
+    <span class="n">n_sub</span>           <span class="o">=</span> <span class="n">n_sub_interval</span>
+    <span class="n">sub_data</span>        <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_sub</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">i</span>                <span class="o">=</span> <span class="n">sample_interval</span> <span class="o">*</span> <span class="n">j</span> <span class="o">+</span> <span class="n">sample_interval_2</span>
+        <span class="n">row</span>              <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="n">file_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;day&#39;</span><span class="p">]</span>
+        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;death&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="n">file_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;death&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;mobility&#39;</span><span class="p">,</span> <span class="s1">&#39;testing&#39;</span><span class="p">]</span> <span class="p">:</span>
+            <span class="n">row</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sample_interval</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+                <span class="n">i</span>         <span class="o">=</span> <span class="n">sample_interval</span> <span class="o">*</span> <span class="n">j</span> <span class="o">+</span> <span class="n">k</span>
+                <span class="n">row</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="n">file_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">row</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">/=</span> <span class="nb">float</span><span class="p">(</span><span class="n">sample_interval</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">sub_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sub_data</span>
+<span class="c1">#</span>
+<span class="c1"># t_all, covariates</span>
+<span class="k">if</span> <span class="n">data_file</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span> <span class="p">:</span>
+    <span class="c1"># getting cumulative death and covariates from data_file</span>
+    <span class="n">file_in</span>   <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">file_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">reader</span>    <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file_in</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;death&#39;</span><span class="p">,</span> <span class="s1">&#39;mobility&#39;</span><span class="p">,</span> <span class="s1">&#39;testing&#39;</span><span class="p">]</span>  <span class="p">:</span>
+            <span class="n">row</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">row</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="p">)</span>
+        <span class="n">file_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="n">file_in</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">file_data</span> <span class="o">=</span> <span class="n">subsample</span><span class="p">(</span><span class="n">file_data</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">n_time</span>       <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_data</span><span class="p">)</span>
+    <span class="n">t_all</span>        <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n_time</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">covariates</span>   <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span> <span class="p">(</span><span class="n">n_time</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_time</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">t_all</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>        <span class="o">=</span> <span class="n">file_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;day&#39;</span><span class="p">]</span>
+        <span class="n">covariates</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;mobility&#39;</span><span class="p">]</span>
+        <span class="n">covariates</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;testing&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_time</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">stime</span>           <span class="o">=</span> <span class="p">(</span><span class="n">t_all</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_all</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">t_all</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_all</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">covariates</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">stime</span>
+<span class="k">else</span> <span class="p">:</span>
+    <span class="c1"># simulating cumulative death and covariates</span>
+    <span class="n">t_start</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">t_stop</span>  <span class="o">=</span> <span class="mf">90.0</span>
+    <span class="n">t_step</span>  <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">sample_interval</span><span class="p">)</span>
+    <span class="n">t_all</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_start</span><span class="p">,</span> <span class="n">t_stop</span><span class="p">,</span> <span class="n">t_step</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">n_time</span> <span class="o">=</span> <span class="n">t_all</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">covariates</span>   <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span> <span class="p">(</span><span class="n">n_time</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_time</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">t</span>               <span class="o">=</span> <span class="n">t_all</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">mobility</span>        <span class="o">=</span> <span class="mf">0.0</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mf">10.0</span> <span class="k">else</span> <span class="o">-</span><span class="mf">1.0</span>
+        <span class="n">testing</span>         <span class="o">=</span> <span class="mf">0.0</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mf">20.0</span> <span class="k">else</span> <span class="mf">1.0</span>
+        <span class="n">stime</span>           <span class="o">=</span> <span class="n">t</span> <span class="o">/</span> <span class="n">t_stop</span>
+        <span class="n">covariates</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">[</span> <span class="n">mobility</span><span class="p">,</span> <span class="n">testing</span><span class="p">,</span> <span class="n">stime</span> <span class="p">]</span>
+<span class="c1">#</span>
+<span class="c1"># mobility in [-1, 0]</span>
+<span class="k">assert</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span> <span class="n">covariates</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">0.0</span> <span class="p">)</span>
+<span class="k">assert</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">&lt;=</span> <span class="n">covariates</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># testing in [0, 1]</span>
+<span class="k">assert</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span> <span class="mf">0.0</span> <span class="o">&lt;=</span> <span class="n">covariates</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+<span class="k">assert</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span> <span class="n">covariates</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">1.0</span> <span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># stime in [0, 1]</span>
+<span class="k">assert</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span> <span class="mf">0.0</span> <span class="o">&lt;=</span> <span class="n">covariates</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span>
+<span class="k">assert</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span> <span class="n">covariates</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">1.0</span> <span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># other initial conditions used to simulate data</span>
+<span class="n">E0_sim</span>     <span class="o">=</span> <span class="n">I0_sim</span> <span class="o">*</span> <span class="n">gamma_known</span> <span class="o">/</span> <span class="n">sigma_known</span>
+<span class="n">S0_sim</span>     <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">E0_sim</span> <span class="o">-</span> <span class="n">I0_sim</span> <span class="o">-</span> <span class="n">W0_sim</span>
+<span class="n">R0_sim</span>     <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">D0_sim</span>     <span class="o">=</span> <span class="mf">0.0</span>
+<span class="c1">#</span>
+<span class="c1"># x_sim</span>
+<span class="n">x_sim</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span>
+    <span class="n">m_mobility_sim</span><span class="p">,</span> <span class="n">m_testing_sim</span><span class="p">,</span> <span class="n">m_stime_sim</span><span class="p">,</span> <span class="n">I0_sim</span><span class="p">,</span> <span class="n">W0_sim</span><span class="p">,</span> <span class="n">beta_bar_sim</span>
+<span class="p">]</span> <span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># actual_seed</span>
+<span class="c1"># Make a list so that we can set its element value inside a routine</span>
+<span class="n">actual_seed</span> <span class="o">=</span> <span class="p">[</span> <span class="n">random_seed</span> <span class="p">]</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">x2seirwd_all</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="c1">#</span>
+    <span class="c1"># unpack x</span>
+    <span class="n">cov_mul</span>            <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span> <span class="p">:</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">I0</span><span class="p">,</span> <span class="n">W0</span><span class="p">,</span> <span class="n">beta_bar</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span> <span class="p">:</span> <span class="mi">6</span><span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="c1"># beta_all</span>
+    <span class="n">beta_all</span> <span class="o">=</span> <span class="n">beta_bar</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="n">numpy</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">covariates</span><span class="p">,</span> <span class="n">cov_mul</span><span class="p">)</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># p_all</span>
+    <span class="n">p_all</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">beta_all</span><span class="o">.</span><span class="n">size</span> <span class="p">)</span> <span class="p">:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;alpha&#39;</span> <span class="p">:</span> <span class="n">alpha_known</span><span class="p">,</span>
+            <span class="s1">&#39;sigma&#39;</span> <span class="p">:</span> <span class="n">sigma_known</span><span class="p">,</span>
+            <span class="s1">&#39;gamma&#39;</span> <span class="p">:</span> <span class="n">gamma_known</span><span class="p">,</span>
+            <span class="s1">&#39;chi&#39;</span>   <span class="p">:</span> <span class="n">chi_known</span><span class="p">,</span>
+            <span class="s1">&#39;xi&#39;</span>    <span class="p">:</span> <span class="n">xi_known</span><span class="p">,</span>
+            <span class="s1">&#39;delta&#39;</span> <span class="p">:</span> <span class="n">delta_known</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">p</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">beta_all</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">p_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">p</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># initial</span>
+    <span class="n">E0</span> <span class="o">=</span> <span class="n">I0</span> <span class="o">*</span> <span class="n">gamma_known</span> <span class="o">/</span> <span class="n">sigma_known</span>
+    <span class="n">S0</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">E0</span> <span class="o">-</span> <span class="n">I0</span> <span class="o">-</span> <span class="n">W0</span>
+    <span class="n">R0</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">D0</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">initial</span>  <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span><span class="n">S0</span><span class="p">,</span> <span class="n">E0</span><span class="p">,</span> <span class="n">I0</span><span class="p">,</span> <span class="n">R0</span><span class="p">,</span> <span class="n">W0</span><span class="p">,</span> <span class="n">D0</span><span class="p">]</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># seirwd_all</span>
+    <span class="n">n_step</span> <span class="o">=</span> <span class="n">sample_interval</span> <span class="o">*</span> <span class="n">ode_n_step</span>
+    <span class="n">seirwd_all</span> <span class="o">=</span> <span class="n">seirwd_model</span><span class="p">(</span><span class="n">ode_method</span><span class="p">,</span> <span class="n">t_all</span><span class="p">,</span> <span class="n">p_all</span><span class="p">,</span> <span class="n">initial</span><span class="p">,</span> <span class="n">n_step</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">seirwd_all</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">weighted_data_residual</span><span class="p">(</span><span class="n">D_data</span><span class="p">,</span> <span class="n">D_model</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">Ddiff_data</span>   <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">D_data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">any</span><span class="p">(</span> <span class="n">Ddiff_data</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">)</span>  <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;covid_19_xam: cumutative death data not increasing at times: &#39;</span><span class="p">)</span>
+        <span class="n">t_msg</span> <span class="o">=</span> <span class="n">t_all</span><span class="p">[</span><span class="mi">0</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span> <span class="n">t_msg</span><span class="p">[</span> <span class="n">Ddiff_data</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">]</span> <span class="p">)</span>
+    <span class="n">Ddiff_model</span>  <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">D_model</span><span class="p">)</span>
+    <span class="n">residual</span>     <span class="o">=</span> <span class="p">(</span><span class="n">Ddiff_data</span> <span class="o">-</span> <span class="n">Ddiff_model</span><span class="p">)</span> <span class="o">/</span> <span class="n">Ddiff_data</span>
+    <span class="k">if</span> <span class="n">death_data_cv</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="p">:</span>
+        <span class="n">residual</span> <span class="o">=</span> <span class="n">residual</span> <span class="o">/</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sample_interval</span><span class="p">)</span> <span class="o">*</span> <span class="n">death_data_cv</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">residual</span>
+<span class="c1">#</span>
+<span class="c1"># objective</span>
+<span class="c1"># t_all and D_data, are constants relative to the objective function</span>
+<span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">D_data</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    <span class="c1">#</span>
+    <span class="c1"># compute model for data</span>
+    <span class="n">seirwd_all</span> <span class="o">=</span> <span class="n">x2seirwd_all</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># Model for the cumulative death as function of time</span>
+    <span class="n">D_model</span>   <span class="o">=</span> <span class="n">seirwd_all</span><span class="p">[:,</span><span class="mi">5</span><span class="p">]</span> <span class="c1"># column order is S, E, I, R, W, D</span>
+    <span class="c1">#</span>
+    <span class="c1"># compute negative log Gaussian likelihood dropping variance terms</span>
+    <span class="c1"># because they are constaint w.r.t the unknown parameters</span>
+    <span class="n">residual</span> <span class="o">=</span> <span class="n">weighted_data_residual</span><span class="p">(</span><span class="n">D_data</span><span class="p">,</span> <span class="n">D_model</span><span class="p">)</span>
+    <span class="n">loss</span>     <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">residual</span> <span class="o">*</span> <span class="n">residual</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">loss</span>
+<span class="c1">#</span>
+<span class="c1"># objective_d_fun</span>
+<span class="k">def</span> <span class="nf">objective_d_fun</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">D_data</span><span class="p">)</span> <span class="p">:</span>
+    <span class="c1">#</span>
+    <span class="n">n_x</span>   <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_name</span><span class="p">)</span>
+    <span class="n">x</span>     <span class="o">=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_x</span><span class="p">)</span>
+    <span class="n">ax</span>    <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">independent</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">aloss</span> <span class="o">=</span> <span class="n">objective</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">D_data</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+    <span class="n">aloss</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span> <span class="n">aloss</span> <span class="p">]</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">objective_ad</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">d_fun</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">aloss</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">objective_ad</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">simulate_data</span><span class="p">()</span> <span class="p">:</span>
+    <span class="c1">#</span>
+    <span class="c1"># noiseless simulated data</span>
+    <span class="n">seirwd_all_sim</span> <span class="o">=</span> <span class="n">x2seirwd_all</span><span class="p">(</span><span class="n">x_sim</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># rng: numpy random number generator</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">actual_seed</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1">#</span>
+    <span class="c1"># D_data</span>
+    <span class="n">D_sim</span>       <span class="o">=</span> <span class="n">seirwd_all_sim</span><span class="p">[:,</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">Ddiff_sim</span>   <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span> <span class="n">D_sim</span> <span class="p">)</span>
+    <span class="n">std</span>         <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sample_interval</span><span class="p">)</span> <span class="o">*</span> <span class="n">death_data_cv</span> <span class="o">*</span> <span class="n">Ddiff_sim</span>
+    <span class="n">noise</span>       <span class="o">=</span> <span class="n">std</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="n">t_all</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">Ddiff_data</span>  <span class="o">=</span> <span class="n">Ddiff_sim</span> <span class="o">+</span> <span class="n">noise</span>
+    <span class="n">D_data</span>      <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">Ddiff_data</span><span class="p">)</span>
+    <span class="n">D_data</span>      <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span> <span class="p">([</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">D_data</span><span class="p">)</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">D_data</span>
+
+<span class="k">def</span> <span class="nf">random_start</span><span class="p">(</span><span class="n">n_random</span><span class="p">,</span> <span class="n">x_lower</span><span class="p">,</span> <span class="n">x_upper</span><span class="p">,</span> <span class="n">log_scale</span><span class="p">,</span> <span class="n">objective</span><span class="p">)</span> <span class="p">:</span>
+    <span class="c1"># check beta constraints</span>
+    <span class="n">n_x</span>      <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_lower</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">x_best</span>   <span class="o">=</span> <span class="p">(</span><span class="n">x_lower</span> <span class="o">+</span> <span class="n">x_upper</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="n">obj_best</span> <span class="o">=</span> <span class="n">objective</span><span class="p">(</span><span class="n">x_best</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">x_low</span>    <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x_lower</span><span class="p">)</span>
+    <span class="n">x_up</span>     <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x_upper</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_x</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">log_scale</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="p">:</span>
+            <span class="n">x_low</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x_lower</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">x_up</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>  <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x_upper</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+    <span class="c1">#</span>
+    <span class="c1"># rng: numpy random number generator</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">actual_seed</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">debug_output</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;random_start:&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_random</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">x_current</span>   <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">x_low</span><span class="p">,</span> <span class="n">x_up</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_x</span><span class="p">)</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">log_scale</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="p">:</span>
+                <span class="n">x_current</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x_current</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">obj_current</span> <span class="o">=</span> <span class="n">objective</span><span class="p">(</span><span class="n">x_current</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">obj_current</span> <span class="o">&lt;</span> <span class="n">obj_best</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">debug_output</span> <span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;sample # =&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39;, objective = &#39;</span><span class="p">,</span> <span class="n">obj_current</span><span class="p">)</span>
+            <span class="n">x_best</span> <span class="o">=</span> <span class="n">x_current</span>
+            <span class="n">obj_best</span> <span class="o">=</span> <span class="n">obj_current</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">x_best</span>
+
+<span class="k">def</span> <span class="nf">display_fit_results</span><span class="p">(</span><span class="n">D_data</span><span class="p">,</span> <span class="n">x_fit</span><span class="p">,</span> <span class="n">x_lower</span><span class="p">,</span> <span class="n">x_upper</span><span class="p">,</span> <span class="n">std_error</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">n_x</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_fit</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># seirwd_all_fit</span>
+    <span class="n">seirwd_all_fit</span> <span class="o">=</span> <span class="n">x2seirwd_all</span><span class="p">(</span><span class="n">x_fit</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># D_fit</span>
+    <span class="n">D_fit</span> <span class="o">=</span> <span class="n">seirwd_all_fit</span><span class="p">[:,</span><span class="mi">5</span><span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="c1"># data_residual</span>
+    <span class="n">data_residual</span> <span class="o">=</span> <span class="n">weighted_data_residual</span><span class="p">(</span><span class="n">D_data</span><span class="p">,</span> <span class="n">D_fit</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># printout</span>
+    <span class="n">residual_sq</span> <span class="o">=</span> <span class="n">data_residual</span> <span class="o">*</span> <span class="n">data_residual</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;weighted data residuals&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;maximum           =&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">max</span><span class="p">(</span> <span class="n">numpy</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data_residual</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;minimum           =&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">max</span><span class="p">(</span> <span class="n">numpy</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data_residual</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;average           =&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data_residual</span><span class="p">)</span> <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;average of square =&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">residual_sq</span><span class="p">)</span> <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># table of fit values</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:&lt;15s}{:&gt;15s}{:&gt;15s}{:&gt;15s}{:&gt;15s}</span><span class="s1">&#39;</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="s1">&#39;x_name&#39;</span><span class="p">,</span> <span class="s1">&#39;x_fit&#39;</span><span class="p">,</span><span class="s1">&#39;x_lower&#39;</span><span class="p">,</span><span class="s1">&#39;x_upper&#39;</span><span class="p">,</span> <span class="s1">&#39;std_error&#39;</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">n_x</span> <span class="p">)</span> <span class="p">:</span>
+        <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:&lt;15s}{:+15.9f}{:+15.9f}{:+15.9f}{:+15.9f}</span><span class="s1">&#39;</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">x_name</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x_fit</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x_lower</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x_upper</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">std_error</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">data_file</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="p">:</span>
+        <span class="c1"># table of fit versus simulation</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:&lt;15s}{:&gt;15s}{:&gt;15s}{:&gt;15s}{:&gt;15s}</span><span class="s1">&#39;</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="s1">&#39;x_name&#39;</span><span class="p">,</span> <span class="s1">&#39;x_fit&#39;</span><span class="p">,</span><span class="s1">&#39;x_sim&#39;</span><span class="p">,</span><span class="s1">&#39;rel_error&#39;</span><span class="p">,</span><span class="s1">&#39;residual&#39;</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">n_x</span> <span class="p">)</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">x_sim</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span> <span class="p">:</span>
+                <span class="n">rel_error</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="n">rel_error</span> <span class="o">=</span> <span class="n">x_fit</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">x_sim</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.0</span>
+            <span class="n">residual</span>  <span class="o">=</span> <span class="p">(</span><span class="n">x_fit</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">x_sim</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">std_error</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:&lt;15s}{:+15.9f}{:+15.9f}{:+15.9f}{:+15.9f}</span><span class="s1">&#39;</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x_name</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">x_fit</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x_sim</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">rel_error</span><span class="p">,</span> <span class="n">residual</span>
+            <span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># plot</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1">#</span>
+    <span class="n">fig</span>  <span class="o">=</span> <span class="n">pyplot</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">tight_layout</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">gs</span>   <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax1</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ax2</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax3</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax4</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1">#</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">seirwd_all_fit</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">seirwd_all_fit</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;I&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">seirwd_all_fit</span><span class="p">[:,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">seirwd_all_fit</span><span class="p">[:,</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;y-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;W&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">seirwd_all_fit</span><span class="p">[:,</span><span class="mi">5</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;population fraction&#39;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">Ddiff_data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">D_data</span><span class="p">)</span>
+    <span class="n">Ddiff_fit</span>  <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">D_fit</span><span class="p">)</span>
+    <span class="n">t_mid</span>      <span class="o">=</span> <span class="p">(</span><span class="n">t_all</span><span class="p">[</span><span class="mi">0</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t_all</span><span class="p">[</span><span class="mi">1</span> <span class="p">:])</span> <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_mid</span><span class="p">,</span> <span class="n">Ddiff_data</span><span class="p">,</span> <span class="s1">&#39;k+&#39;</span> <span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_mid</span><span class="p">,</span> <span class="n">Ddiff_fit</span><span class="p">,</span>  <span class="s1">&#39;k-&#39;</span> <span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fit&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;death differences&#39;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">t_mid</span><span class="p">,</span>             <span class="n">data_residual</span><span class="p">,</span>  <span class="s1">&#39;k+&#39;</span> <span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="n">t_all</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t_all</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="s1">&#39;k-&#39;</span> <span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;weighted residuals&#39;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">cov_mul</span>  <span class="o">=</span> <span class="n">x_fit</span><span class="p">[</span><span class="mi">0</span> <span class="p">:</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="n">beta_bar</span> <span class="o">=</span> <span class="n">x_fit</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">beta_all</span> <span class="o">=</span> <span class="n">beta_bar</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="n">numpy</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">covariates</span><span class="p">,</span> <span class="n">cov_mul</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">beta_all</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">)</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;beta(t)&#39;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">covid_19_xam</span><span class="p">(</span><span class="n">call_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1">#</span>
+    <span class="c1"># if random seed is zero, use the clock to see the generator.</span>
+    <span class="k">if</span> <span class="n">random_seed</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="n">actual_seed</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="mi">13</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="p">)</span>
+    <span class="k">if</span> <span class="n">debug_output</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;actual_seed = &#39;</span><span class="p">,</span> <span class="n">actual_seed</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1">#</span>
+    <span class="c1"># D_data</span>
+    <span class="k">if</span> <span class="n">data_file</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="p">:</span>
+        <span class="n">D_data</span> <span class="o">=</span> <span class="n">simulate_data</span><span class="p">()</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">D_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">file_data</span> <span class="p">:</span>
+            <span class="n">D_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="nb">float</span><span class="p">(</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;death&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+        <span class="n">D_data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">D_data</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># objective_ad</span>
+    <span class="n">objective_ad</span> <span class="o">=</span> <span class="n">objective_d_fun</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">D_data</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># objective: fun, grad, hess</span>
+    <span class="n">optimize_fun</span> <span class="o">=</span> <span class="n">optimize_fun_class</span><span class="p">(</span><span class="n">objective_ad</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># options</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;gtol&#39;</span>    <span class="p">:</span> <span class="mf">1e-10</span><span class="p">,</span>
+        <span class="s1">&#39;xtol&#39;</span>    <span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>
+        <span class="s1">&#39;maxiter&#39;</span> <span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+        <span class="s1">&#39;verbose&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># This code is used by the $subhead Actual Bounds$$ documentation</span>
+<span class="c1"># BEGIN_ACTUAL_BOUNDS</span>
+    <span class="n">n_x</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_name</span><span class="p">)</span>
+    <span class="n">x_lower</span>                <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="n">n_x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">x_upper</span>                <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="n">n_x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">x_upper</span><span class="p">[</span> <span class="n">x_sim</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="p">]</span> <span class="o">=</span> <span class="n">actual_bound_factor</span> <span class="o">*</span> <span class="n">x_sim</span><span class="p">[</span> <span class="n">x_sim</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="p">]</span>
+    <span class="n">x_lower</span><span class="p">[</span> <span class="n">x_sim</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="p">]</span> <span class="o">=</span> <span class="n">actual_bound_factor</span> <span class="o">*</span> <span class="n">x_sim</span><span class="p">[</span> <span class="n">x_sim</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="p">]</span>
+<span class="c1"># END_ACTUAL_BOUNDS</span>
+    <span class="c1">#</span>
+    <span class="c1"># currently not using log-scaling</span>
+    <span class="n">log_scale</span>    <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">n_x</span> <span class="o">*</span> <span class="p">[</span> <span class="kc">False</span> <span class="p">]</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">assert</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span> <span class="n">x_lower</span> <span class="o">&lt;=</span> <span class="n">x_sim</span> <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span> <span class="n">x_sim</span> <span class="o">&lt;=</span> <span class="n">x_upper</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">bounds</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">Bounds</span><span class="p">(</span>
+        <span class="n">x_lower</span><span class="p">,</span>
+        <span class="n">x_upper</span><span class="p">,</span>
+        <span class="n">keep_feasible</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">debug_output</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x_lower =&#39;</span><span class="p">,</span> <span class="n">x_lower</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x_upper =&#39;</span><span class="p">,</span> <span class="n">x_upper</span><span class="p">)</span>
+    <span class="c1"># ------------------------------------------------------------------------</span>
+    <span class="c1"># optimizer loop over beta constraints</span>
+    <span class="n">start_point</span> <span class="o">=</span> <span class="n">random_start</span><span class="p">(</span>
+        <span class="n">n_random_start</span><span class="p">,</span>
+        <span class="n">x_lower</span><span class="p">,</span>
+        <span class="n">x_upper</span><span class="p">,</span>
+        <span class="n">log_scale</span><span class="p">,</span>
+        <span class="n">optimize_fun</span><span class="o">.</span><span class="n">objective_fun</span>
+    <span class="p">);</span>
+    <span class="k">if</span> <span class="n">debug_output</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;start_point = &#39;</span><span class="p">,</span> <span class="n">start_point</span> <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;objective   = &#39;</span><span class="p">,</span> <span class="n">optimize_fun</span><span class="o">.</span><span class="n">objective_fun</span><span class="p">(</span><span class="n">start_point</span><span class="p">)</span> <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;check       = &#39;</span><span class="p">,</span> <span class="n">objective</span><span class="p">(</span><span class="n">t_all</span><span class="p">,</span> <span class="n">D_data</span><span class="p">,</span> <span class="n">start_point</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">constraints</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span>
+        <span class="n">optimize_fun</span><span class="o">.</span><span class="n">objective_fun</span><span class="p">,</span>
+        <span class="n">start_point</span><span class="p">,</span>
+        <span class="n">method</span>        <span class="o">=</span> <span class="s1">&#39;trust-constr&#39;</span><span class="p">,</span>
+        <span class="n">jac</span>           <span class="o">=</span> <span class="n">optimize_fun</span><span class="o">.</span><span class="n">objective_grad</span><span class="p">,</span>
+        <span class="n">hess</span>          <span class="o">=</span> <span class="n">optimize_fun</span><span class="o">.</span><span class="n">objective_hess</span><span class="p">,</span>
+        <span class="n">constraints</span>   <span class="o">=</span> <span class="n">constraints</span><span class="p">,</span>
+        <span class="n">options</span>       <span class="o">=</span> <span class="n">options</span><span class="p">,</span>
+        <span class="n">bounds</span>        <span class="o">=</span> <span class="n">bounds</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">x_fit</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span>
+    <span class="k">if</span> <span class="n">debug_output</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimizer success = &#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">success</span> <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimal objective = &#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fun</span> <span class="p">)</span>
+    <span class="c1"># check optimizer status</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">result</span><span class="o">.</span><span class="n">success</span>
+    <span class="c1">#</span>
+    <span class="c1"># H: the observed infromation matrix</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">optimize_fun</span><span class="o">.</span><span class="n">objective_hess</span><span class="p">(</span><span class="n">x_fit</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># Hinv: approxiamtion for covariance of the estimate x_fit</span>
+    <span class="n">Hinv</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># standard devaition for each component of x_fit</span>
+    <span class="n">std_error</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Hinv</span><span class="p">)</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># seirwd_all_fit</span>
+    <span class="n">seirwd_all_fit</span> <span class="o">=</span> <span class="n">x2seirwd_all</span><span class="p">(</span><span class="n">x_fit</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># D_fit</span>
+    <span class="n">D_fit</span> <span class="o">=</span> <span class="n">seirwd_all_fit</span><span class="p">[:,</span><span class="mi">5</span><span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="c1"># data_resdidual</span>
+    <span class="n">data_residual</span> <span class="o">=</span> <span class="n">weighted_data_residual</span><span class="p">(</span><span class="n">D_data</span><span class="p">,</span> <span class="n">D_fit</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># display_fit_results</span>
+    <span class="k">if</span> <span class="n">display_fit</span> <span class="p">:</span>
+        <span class="n">display_fit_results</span><span class="p">(</span><span class="n">D_data</span><span class="p">,</span> <span class="n">x_fit</span><span class="p">,</span> <span class="n">x_lower</span><span class="p">,</span> <span class="n">x_upper</span><span class="p">,</span> <span class="n">std_error</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># check that all the data residuals an less than 3.0</span>
+    <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">any</span><span class="p">(</span> <span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> <span class="n">data_residual</span> <span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">4.0</span> <span class="p">)</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;covid_19_xam: a weighted data residual &gt;= 4.0&#39;</span><span class="p">)</span>
+        <span class="n">ok</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="c1">#</span>
+    <span class="c1"># compare fit to simulation truth</span>
+    <span class="k">if</span> <span class="n">data_file</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="p">:</span>
+        <span class="n">x_residual</span> <span class="o">=</span> <span class="n">x_fit</span> <span class="o">/</span> <span class="n">x_sim</span> <span class="o">-</span> <span class="mf">1.0</span>
+        <span class="n">x_residual</span><span class="p">[</span> <span class="n">x_sim</span> <span class="o">==</span> <span class="mf">0.0</span> <span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">if</span> <span class="n">death_data_cv</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">any</span><span class="p">(</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x_residual</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">2.0</span><span class="p">)</span> <span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;covid_19_xam: a weight x residual &gt;= 2.0&#39;</span><span class="p">)</span>
+                <span class="n">ok</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">any</span><span class="p">(</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x_residual</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">1e-5</span> <span class="p">)</span> <span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;covid_19_xam: an x residual &gt;= 1e-5&#39;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;should have prefect fit because death_data_cv = 0&#39;</span><span class="p">)</span>
+                <span class="n">ok</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ok</span> <span class="p">:</span>
+            <span class="n">msg</span>  <span class="o">=</span> <span class="s1">&#39;covid_19_xam: Correctness test failed, &#39;</span>
+            <span class="n">msg</span> <span class="o">+=</span> <span class="s1">&#39;actual random seed = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">actual_seed</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="nb">print</span><span class="p">(</span> <span class="n">msg</span> <span class="p">)</span>
+            <span class="n">call_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">call_count</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">random_seed</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;re-trying with a differenent random seed&#39;</span><span class="p">)</span>
+                <span class="n">ok</span> <span class="o">=</span> <span class="n">covid_19_xam</span><span class="p">(</span><span class="n">call_count</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># check conservation of mass in the compartmental model</span>
+    <span class="n">sum_all_fit</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">seirwd_all_fit</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">eps99</span>       <span class="o">=</span> <span class="mf">99.0</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+    <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">any</span><span class="p">(</span> <span class="nb">abs</span><span class="p">(</span><span class="n">sum_all_fit</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">eps99</span> <span class="p">)</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;covid_19_xam: sum of all compartments not equal 1.0&#39;</span><span class="p">)</span>
+        <span class="n">ok</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">ok</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">example/python/numeric/covid_19_xam.py</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="library.html" class="btn btn-neutral float-right" title="library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="numeric_seirwd_model_xam_py.html" class="btn btn-neutral float-left" title="numeric_seirwd_model_xam_py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+!!!!!!!!!!
+py_utility
+!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: py_utility, python, utilities
+
+.. index:: py_utility, python, utilities
+
+.. _py_utility:
+
+Python Utilities
+################
+- :ref:`py_utility.children`
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _py_utility.children:
+
+Children
+********
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   numpy2vec
+   vec2numpy
+
+#. numpy2vec: :ref:`numpy2vec`
+#. vec2numpy: :ref:`vec2numpy`
+
+----
+
+xsrst input file: ``lib/python/cppad_py/utility.omh``

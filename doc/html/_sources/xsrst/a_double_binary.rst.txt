@@ -1,0 +1,128 @@
+!!!!!!!!!!!!!!!
+a_double_binary
+!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: a_double_binary, a_double, binary, operators, with, an, ad, result
+
+.. index:: a_double_binary, a_double, binary, operators, with, an, ad, result
+
+.. _a_double_binary:
+
+a_double Binary Operators with an AD Result
+###########################################
+- :ref:`a_double_binary.syntax`
+- :ref:`a_double_binary.op`
+- :ref:`a_double_binary.ax`
+- :ref:`a_double_binary.ay`
+- :ref:`a_double_binary.y`
+- :ref:`a_double_binary.az`
+- :ref:`a_double_binary.example`
+
+.. meta::
+   :keywords: syntax
+
+.. index:: syntax
+
+.. _a_double_binary.syntax:
+
+Syntax
+******
+
+| *az* = *ax* *op* *ay*
+| *az* = *ax* *op* *y*
+| *az* = *y* *op* *ax*
+
+.. meta::
+   :keywords: op
+
+.. index:: op
+
+.. _a_double_binary.op:
+
+op
+**
+The binary operator *op* is one of the following:
+addition ``+`` ,
+subtraction ``-`` ,
+multiplication ``*`` ,
+division ``/`` , or
+exponentiation ``**`` .
+Note that exponentiation is a function is c++ and an operator in python.
+
+.. meta::
+   :keywords: ax
+
+.. index:: ax
+
+.. _a_double_binary.ax:
+
+ax
+**
+This object has prototype
+
+| |tab| ``const a_double&`` *ax*
+
+.. meta::
+   :keywords: ay
+
+.. index:: ay
+
+.. _a_double_binary.ay:
+
+ay
+**
+This object has prototype
+
+| |tab| ``const a_double&`` *ay*
+
+.. meta::
+   :keywords: y
+
+.. index:: y
+
+.. _a_double_binary.y:
+
+y
+*
+This object has prototype
+
+| |tab| ``const double&`` *y*
+
+.. meta::
+   :keywords: az
+
+.. index:: az
+
+.. _a_double_binary.az:
+
+az
+**
+The result has prototype
+
+| |tab| ``a_double`` *az*
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   a_double_binary_xam_cpp
+   a_double_binary_xam_py
+
+.. meta::
+   :keywords: example
+
+.. index:: example
+
+.. _a_double_binary.example:
+
+Example
+*******
+:ref:`c++<a_double_binary_xam_cpp>`,
+:ref:`python<a_double_binary_xam_py>`.
+
+----
+
+xsrst input file: ``lib/cplusplus/a_double.cpp``

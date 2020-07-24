@@ -1,0 +1,24 @@
+!!!!!!!!!!!!!!!!!!!
+fun_to_json_xam_cpp
+!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: fun_to_json_xam_cpp, c++:, to_json:, example, test
+
+.. index:: fun_to_json_xam_cpp, c++:, to_json:, example, test
+
+.. _fun_to_json_xam_cpp:
+
+C++: to_json: Example and Test
+##############################
+
+
+.. literalinclude:: ../../../example/cplusplus/fun_json_xam.cpp
+    :lines: 19-59
+    :language: cpp
+
+----
+
+xsrst input file: ``example/cplusplus/fun_json_xam.cpp``

@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="sparse_hes_xam_py, python:, hessian, sparsity, patterns:, example, test" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sparse_hes_xam_py &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="py_utility" href="py_utility.html" />
+    <link rel="prev" title="py_sparse_hes" href="py_sparse_hes.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="py_lib.html">py_lib</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="py_fun.html">py_fun</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="py_sparse.html">py_sparse</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="py_sparse_rc.html">py_sparse_rc</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py_sparse_rcv.html">py_sparse_rcv</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py_jac_sparsity.html">py_jac_sparsity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py_hes_sparsity.html">py_hes_sparsity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py_sparse_jac.html">py_sparse_jac</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="py_sparse_hes.html">py_sparse_hes</a><ul class="current">
+<li class="toctree-l6 current"><a class="current reference internal" href="#">sparse_hes_xam_py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="py_utility.html">py_utility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="more_py.html">more_py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cpp_lib.html">cpp_lib</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="library.html">library</a> &raquo;</li>
+        
+          <li><a href="py_lib.html">py_lib</a> &raquo;</li>
+        
+          <li><a href="py_sparse.html">py_sparse</a> &raquo;</li>
+        
+          <li><a href="py_sparse_hes.html">py_sparse_hes</a> &raquo;</li>
+        
+      <li>sparse_hes_xam_py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/sparse_hes_xam_py.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sparse-hes-xam-py">
+<h1>sparse_hes_xam_py<a class="headerlink" href="#sparse-hes-xam-py" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="python-hessian-sparsity-patterns-example-and-test">
+<span id="id1"></span><h2>Python: Hessian Sparsity Patterns: Example and Test<a class="headerlink" href="#python-hessian-sparsity-patterns-example-and-test" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sparse_hes_xam</span><span class="p">()</span> <span class="p">:</span>
+    <span class="c1">#</span>
+    <span class="kn">import</span> <span class="nn">numpy</span>
+    <span class="kn">import</span> <span class="nn">cppad_py</span>
+    <span class="c1">#</span>
+    <span class="c1"># initialize return variable</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1"># ---------------------------------------------------------------------</span>
+    <span class="c1"># number of dependent and independent variables</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="c1">#</span>
+    <span class="c1"># create the independent variables ax</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">n</span>  <span class="p">)</span> <span class="p">:</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mf">2.0</span>
+    <span class="c1">#</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">independent</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># ay[i] = j * ax[j] * ax[i]</span>
+    <span class="c1"># where i = mod(j + 1, n)</span>
+    <span class="n">ay</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">cppad_py</span><span class="o">.</span><span class="n">a_double</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">n</span>  <span class="p">)</span> <span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">n</span>  <span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">n</span>
+        <span class="c1">#</span>
+        <span class="n">aj</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">a_double</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+        <span class="n">ax_j</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">ax_i</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">ay</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">aj</span> <span class="o">*</span> <span class="n">ax_j</span> <span class="o">*</span> <span class="n">ax_i</span>
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="c1"># define af corresponding to f(x)</span>
+    <span class="n">f</span>  <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">d_fun</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># Set select_d (domain) to all true,</span>
+    <span class="c1"># initial select_r (range) to all false</span>
+    <span class="c1"># initialize r to all zeros</span>
+    <span class="n">select_d</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="n">select_r</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">n</span> <span class="p">)</span> <span class="p">:</span>
+        <span class="n">select_d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">select_r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="c1"># only select component n-1 of the range function</span>
+    <span class="c1"># f_0 (x) = (n-1) * x_{n-1} * x_0</span>
+    <span class="n">select_r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="c1">#</span>
+    <span class="c1"># sparisty pattern for Hessian</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">sparse_rc</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">for_hes_sparsity</span><span class="p">(</span><span class="n">select_d</span><span class="p">,</span> <span class="n">select_r</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># compute all possibly non-zero entries in Hessian</span>
+    <span class="c1"># (should only compute lower triangle becuase matrix is symmetric)</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">sparse_rcv</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># work space used to save time for multiple calls</span>
+    <span class="n">work</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">sparse_hes_work</span><span class="p">()</span>
+    <span class="c1">#</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">sparse_hes</span><span class="p">(</span><span class="n">subset</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">work</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># check that result is sparsity pattern for Hessian of f_0 (x)</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">subset</span><span class="o">.</span><span class="n">nnz</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">row</span><span class="p">()</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">col</span><span class="p">()</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">val</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="mi">2</span> <span class="p">)</span> <span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">col</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">val</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">j</span>  <span class="p">:</span>
+            <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">j</span>  <span class="p">:</span>
+            <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+            <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="c1">#</span>
+        <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">v</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="k">return</span><span class="p">(</span> <span class="n">ok</span> <span class="p">)</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">example/python/core/sparse_hes_xam.py</span></code></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="py_utility.html" class="btn btn-neutral float-right" title="py_utility" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="py_sparse_hes.html" class="btn btn-neutral float-left" title="py_sparse_hes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

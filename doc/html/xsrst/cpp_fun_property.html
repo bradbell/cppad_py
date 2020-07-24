@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="cpp_fun_property, properties, function, object" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="f" name="keywords" />
+<meta content="size_domain" name="keywords" />
+<meta content="size_range" name="keywords" />
+<meta content="size_var" name="keywords" />
+<meta content="size_op" name="keywords" />
+<meta content="size_order" name="keywords" />
+<meta content="example" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cpp_fun_property &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fun_property_xam_cpp" href="fun_property_xam_cpp.html" />
+    <link rel="prev" title="cpp_fun_ctor" href="cpp_fun_ctor.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="a_double.html">a_double</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vector.html">vector</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="cpp_fun.html">cpp_fun</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="cpp_independent.html">cpp_independent</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_abort_recording.html">cpp_abort_recording</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_fun_ctor.html">cpp_fun_ctor</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">cpp_fun_property</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="fun_property_xam_cpp.html">fun_property_xam_cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_fun_new_dynamic.html">cpp_fun_new_dynamic</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_fun_jacobian.html">cpp_fun_jacobian</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_fun_hessian.html">cpp_fun_hessian</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_fun_forward.html">cpp_fun_forward</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_fun_reverse.html">cpp_fun_reverse</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_fun_optimize.html">cpp_fun_optimize</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_fun_json.html">cpp_fun_json</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cpp_utility.html">cpp_utility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="library.html">library</a> &raquo;</li>
+        
+          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
+        
+          <li><a href="cpp_fun.html">cpp_fun</a> &raquo;</li>
+        
+      <li>cpp_fun_property</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/cpp_fun_property.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cpp-fun-property">
+<h1>cpp_fun_property<a class="headerlink" href="#cpp-fun-property" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="properties-of-a-function-object">
+<span id="id1"></span><h2>Properties of a Function Object<a class="headerlink" href="#properties-of-a-function-object" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cpp-fun-property-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-fun-property-f"><span class="std std-ref">f</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-fun-property-size-domain"><span class="std std-ref">size_domain</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-fun-property-size-range"><span class="std std-ref">size_range</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-fun-property-size-var"><span class="std std-ref">size_var</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-fun-property-size-op"><span class="std std-ref">size_op</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-fun-property-size-order"><span class="std std-ref">size_order</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-fun-property-example"><span class="std std-ref">Example</span></a></p></li>
+</ul>
+<div class="section" id="syntax">
+<span id="cpp-fun-property-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">a_fun</span></code> <em>f</em> ( <em>f</em> )</div>
+<div class="line"><em>n</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">size_domain</span></code> ()</div>
+<div class="line"><em>m</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">size_range</span></code> ()</div>
+<div class="line"><em>v</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">size_var</span></code> ()</div>
+<div class="line"><em>p</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">size_op</span></code> ()</div>
+<div class="line"><em>q</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">size_order</span></code> ()</div>
+</div>
+</div>
+<div class="section" id="f">
+<span id="cpp-fun-property-f"></span><span id="index-2"></span><h3>f<a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
+<p>This is either a
+<a class="reference internal" href="cpp_fun_ctor.html#cpp-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> or
+<a class="reference internal" href="cpp_fun_ctor.html#cpp-fun-ctor-syntax-a-fun"><span class="std std-ref">a_fun</span></a> function object
+and is <code class="docutils literal notranslate"><span class="pre">const</span></code> .</p>
+</div>
+<div class="section" id="size-domain">
+<span id="cpp-fun-property-size-domain"></span><span id="index-3"></span><h3>size_domain<a class="headerlink" href="#size-domain" title="Permalink to this headline">¶</a></h3>
+<p>The return value has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>n</em></div>
+</div>
+<p>and is the size of the vector
+<a class="reference internal" href="cpp_fun_ctor.html#cpp-fun-ctor-ax"><span class="std std-ref">ax</span></a> in the function constructor; i.e.,
+the number of independent variables.</p>
+</div>
+<div class="section" id="size-range">
+<span id="cpp-fun-property-size-range"></span><span id="index-4"></span><h3>size_range<a class="headerlink" href="#size-range" title="Permalink to this headline">¶</a></h3>
+<p>The return value has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>m</em></div>
+</div>
+<p>and is the size of the vector
+<a class="reference internal" href="cpp_fun_ctor.html#cpp-fun-ctor-ay"><span class="std std-ref">ay</span></a> in the function constructor; i.e.,
+the number of dependent variables.</p>
+</div>
+<div class="section" id="size-var">
+<span id="cpp-fun-property-size-var"></span><span id="index-5"></span><h3>size_var<a class="headerlink" href="#size-var" title="Permalink to this headline">¶</a></h3>
+<p>The return value has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>v</em></div>
+</div>
+<p>and is the number of variables in the function.
+This includes the independent variables, dependent variables,
+and any variables that are used to compute the dependent variables
+from the independent variables.</p>
+</div>
+<div class="section" id="size-op">
+<span id="cpp-fun-property-size-op"></span><span id="index-6"></span><h3>size_op<a class="headerlink" href="#size-op" title="Permalink to this headline">¶</a></h3>
+<p>The return value has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>p</em></div>
+</div>
+<p>and is the number of atomic operations that are used to express
+the dependent variables as a function of the independent variables.</p>
+</div>
+<div class="section" id="size-order">
+<span id="cpp-fun-property-size-order"></span><span id="index-7"></span><h3>size_order<a class="headerlink" href="#size-order" title="Permalink to this headline">¶</a></h3>
+<p>The return value has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>q</em></div>
+</div>
+<p>and is the number of Taylor coefficients currently stored in <em>f</em> ,
+for every variable in the operation sequence corresponding to <em>f</em> .
+These coefficients are computed by <a class="reference internal" href="cpp_fun_forward.html#id1"><span class="std std-ref">cpp_fun_forward</span></a>.
+This is different from the other function properties in that it can change
+after each call to <em>f</em> . <code class="docutils literal notranslate"><span class="pre">forward</span></code> ; see
+<a class="reference internal" href="cpp_fun_forward.html#cpp-fun-forward-p-size-order"><span class="std std-ref">size_order</span></a> in the forward mode section.
+The initial value for this property, when the object <em>f</em>
+or <em>af</em> is created, is zero.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="example">
+<span id="cpp-fun-property-example"></span><span id="index-8"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="fun_property_xam_cpp.html#id1"><span class="std std-ref">fun_property_xam_cpp</span></a></p>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/fun.cpp</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fun_property_xam_cpp.html" class="btn btn-neutral float-right" title="fun_property_xam_cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cpp_fun_ctor.html" class="btn btn-neutral float-left" title="cpp_fun_ctor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

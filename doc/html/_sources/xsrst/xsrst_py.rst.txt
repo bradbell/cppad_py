@@ -1,0 +1,450 @@
+!!!!!!!!
+xsrst_py
+!!!!!!!!
+
+.. |space| unicode:: 0xA0
+
+.. meta::
+   :keywords: xsrst_py, extract, sphinx, rst
+
+.. index:: xsrst_py, extract, sphinx, rst
+
+.. _xsrst_py:
+
+Extract Sphinx RST
+##################
+- :ref:`xsrst_py.syntax`
+- :ref:`xsrst_py.requirements`
+- :ref:`xsrst_py.notation`
+    - :ref:`xsrst_py.notation.white_space`
+    - :ref:`xsrst_py.notation.beginning_of_a_line`
+- :ref:`xsrst_py.command_line_arguments`
+    - :ref:`xsrst_py.command_line_arguments.root_file`
+        - :ref:`xsrst_py.command_line_arguments.root_file.root_section`
+    - :ref:`xsrst_py.command_line_arguments.sphinx_dir`
+    - :ref:`xsrst_py.command_line_arguments.spell_file`
+    - :ref:`xsrst_py.command_line_arguments.index_file`
+- :ref:`xsrst_py.table_of_contents`
+    - :ref:`xsrst_py.table_of_contents.toctree`
+    - :ref:`xsrst_py.table_of_contents.parent_section`
+- :ref:`xsrst_py.heading_links`
+    - :ref:`xsrst_py.heading_links.section_level`
+    - :ref:`xsrst_py.heading_links.other_levels`
+    - :ref:`xsrst_py.heading_links.children`
+    - :ref:`xsrst_py.heading_links.example`
+- :ref:`xsrst_py.indentation`
+    - :ref:`xsrst_py.indentation.example`
+- :ref:`xsrst_py.wish_list`
+    - :ref:`xsrst_py.wish_list.tabs`
+    - :ref:`xsrst_py.wish_list.module`
+- :ref:`xsrst_py.commands`
+
+.. The indentation examples are included by the child_cmd section.
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   begin_cmd
+   child_cmd
+   spell_cmd
+   suspend_cmd
+   code_cmd
+   file_cmd
+   comment_ch_cmd
+   heading_exam
+
+.. meta::
+   :keywords: syntax
+
+.. index:: syntax
+
+.. _xsrst_py.syntax:
+
+Syntax
+******
+``xsrst.py`` *sphinx_dir* *root_file* *spell_file* *index_file*
+
+.. meta::
+   :keywords: requirements
+
+.. index:: requirements
+
+.. _xsrst_py.requirements:
+
+Requirements
+************
+- ``pip install --user pyspellchecker``
+- ``pip install --user sphinx``
+
+.. meta::
+   :keywords: notation
+
+.. index:: notation
+
+.. _xsrst_py.notation:
+
+Notation
+********
+
+.. meta::
+   :keywords: white, space
+
+.. index:: white, space
+
+.. _xsrst_py.notation.white_space:
+
+White Space
+===========
+We define white space to be a sequence of space characters; e.g.,
+tabs are not consider white space by xsrst.
+
+.. meta::
+   :keywords: beginning, line
+
+.. index:: beginning, line
+
+.. _xsrst_py.notation.beginning_of_a_line:
+
+Beginning of a Line
+===================
+We say that a string *text* is a the beginning of a line if
+only white space, or nothing, comes before *text* in the line.
+
+.. meta::
+   :keywords: command, line, arguments
+
+.. index:: command, line, arguments
+
+.. _xsrst_py.command_line_arguments:
+
+Command Line Arguments
+**********************
+
+.. meta::
+   :keywords: root_file
+
+.. index:: root_file
+
+.. _xsrst_py.command_line_arguments.root_file:
+
+root_file
+=========
+The command line argument *root_file* is the name of a file,
+relative to the top git repository directory.
+
+.. meta::
+   :keywords: root_section
+
+.. index:: root_section
+
+.. _xsrst_py.command_line_arguments.root_file.root_section:
+
+root_section
+------------
+If there is only one section in the *root_file* it is called
+the *root_section*; i.e., it is the top section in that table of contents.
+If there is more than one section in the *root_file*,
+the file must have a
+:ref:`begin_cmd.parent_section` and it is the *root_section*.
+The file *sphinx_dir*:code`/index.rst` must contain the line
+
+|space| |space| |space| |space|
+``xsrst/`` *section_name*
+
+where *section_name* is the name of the *root_section*.
+
+.. meta::
+   :keywords: sphinx_dir
+
+.. index:: sphinx_dir
+
+.. _xsrst_py.command_line_arguments.sphinx_dir:
+
+sphinx_dir
+==========
+The command line argument *sphinx_dir* is a sub-directory,
+of the top git repository directory.
+The  sphinx ``conf.py`` and ``index.rst`` files are located in this directory.
+Any files that have names ending in ``.rst``,
+and that are in the directory *sphinx_dir*:code:`/xsrst`,
+are removed at the beginning of execution of ``xsrst.py``.
+All the ``.rst`` files in *sphinx_dir*:code:`/xsrst`
+were extracted from the source code the last time that ``xsrst.py``
+was executed.
+
+.. meta::
+   :keywords: spell_file
+
+.. index:: spell_file
+
+.. _xsrst_py.command_line_arguments.spell_file:
+
+spell_file
+==========
+The command line argument *spell_file* is the name of a file,
+relative to the *sphinx_dir* directory.
+This file contains a list of words
+that the spell checker will consider correct for all sections
+(it can be an empty file).
+A line that begins with :code:`#` is a comment (not included in the list).
+The words are one per line and
+leading and trailing white space in a word are ignored.
+Special words, for a particular section, are specified using the
+:ref:`spell command<spell_cmd>`.
+
+.. meta::
+   :keywords: index_file
+
+.. index:: index_file
+
+.. _xsrst_py.command_line_arguments.index_file:
+
+index_file
+==========
+The command line argument *index_file* is the name of a file,
+relative to the *sphinx_dir* directory.
+This file contains a list of words (in lower case)
+that should not be included in the index
+(it can be an empty file).
+For example, a heading might contain the word ``The`` but you
+might not want to include ``the`` as a entry in the
+:ref:`genindex`.
+The words are one per line and
+leading and trailing white space in a word are ignored.
+A line that begins with :code:`#` is a comment (not included in the list).
+
+.. meta::
+   :keywords: table, contents
+
+.. index:: table, contents
+
+.. _xsrst_py.table_of_contents:
+
+Table Of Contents
+*****************
+
+.. meta::
+   :keywords: toctree
+
+.. index:: toctree
+
+.. _xsrst_py.table_of_contents.toctree:
+
+toctree
+=======
+The sphinx ``toctree`` directives are automatically generated
+for sections. The only such directive you should directly edit
+is in the file *sphinx_dir*:code`/index.rst`.
+One entry in this file specifies the
+:ref:`root_section<xsrst_py.command_line_arguments.root_file.root_section>`.
+Other entries are for ``.rst`` files that are not extracted by
+``xsrst.py``.
+
+.. meta::
+   :keywords: parent, section
+
+.. index:: parent, section
+
+.. _xsrst_py.table_of_contents.parent_section:
+
+Parent Section
+==============
+A single input file may contain multiple
+:ref:`sections<begin_cmd.section>`.
+One (and at most one) of these sections may use begin with a
+:ref:`parent begin<begin_cmd.parent_section>` command.
+In this case, the other sections in the file are children of this section
+and this section is a child of the section containing the
+:ref:`child command<child_cmd>` that included this file.
+
+If there is no parent section for a file,
+all the sections in the file are children of the section containing the
+child command that included the file.
+
+.. meta::
+   :keywords: heading, links
+
+.. index:: heading, links
+
+.. _xsrst_py.heading_links:
+
+Heading Links
+*************
+- For each word in a heading,
+  a link is included in the index from the word to the heading.
+
+- Each word in a heading is added to the html keyword meta data.
+
+- A cross reference label is defined for linking
+  from anywhere to a heading. The details of how to use
+  these labels are described below.
+
+- Headings can also be used to help find links to children
+  of the current section; see the heading
+  :ref:`xsrst_py.heading_links.children` below.
+
+.. meta::
+   :keywords: section, level
+
+.. index:: section, level
+
+.. _xsrst_py.heading_links.section_level:
+
+Section Level
+=============
+Each :ref:`section<begin_cmd.section>` can have only one header at
+the first level which is a title for the section.
+The :ref:`section_name<begin_cmd.section_name>`
+is automatically used
+as a label for linking the title for a section; i.e., the
+following will link to the title for *section_name*:
+
+|space| |space| |space| |space|
+``:ref:`` \\`  *linking_text* :code:`<` *section_name* :code:`>` \\`
+
+where *linking_text* is the text the user sees.
+
+.. meta::
+   :keywords: other, levels
+
+.. index:: other, levels
+
+.. _xsrst_py.heading_links.other_levels:
+
+Other Levels
+============
+The label for linking a heading that is not at the first level
+is the label for the heading directly above it plus a dot character :code:`.`,
+plus a lower case version of the heading with spaces converted to
+underbars :code:`_`. For example, the label for the heading for this
+paragraph is ``xsrst_py.headers_and_links.other_levels``.
+This may seem verbose, but it helps keep the links up to date.
+If a heading changes, all the links to that heading will break.
+This identifies the links that should be checked
+to make sure they are still valid.
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _xsrst_py.heading_links.children:
+
+Children
+========
+If a xsrst input file has a
+ref:`parent section<xsrst_py.table_of_contents.parent_section>`
+the other sections in the file are children of the parent.
+
+- If a section has a :ref:`child link command<child_cmd>`
+  links to all the children of the section are place where the
+  child link command is located.
+- If a section has a :ref:`children command<child_cmd>`
+  no automatic links to the children of the current section are generated.
+- Otherwise, the links to the children of a section are placed
+  at the end of the section.
+
+You can place a heading directly before the links to make them easier to find.
+
+.. meta::
+   :keywords: example
+
+.. index:: example
+
+.. _xsrst_py.heading_links.example:
+
+Example
+=======
+:ref:`heading_exam`
+
+.. meta::
+   :keywords: indentation
+
+.. index:: indentation
+
+.. _xsrst_py.indentation:
+
+Indentation
+***********
+If there are a number of spaces before
+all of the xsrst documentation for a section,
+those characters are not included in the xsrst output.
+This enables one to indent the
+xsrst so it is grouped with the proper code block in the source.
+An error message will result if
+you use tabs in the indentation.
+
+.. meta::
+   :keywords: example
+
+.. index:: example
+
+.. _xsrst_py.indentation.example:
+
+Example
+=======
+- :ref:`indent_space_exam`
+
+.. meta::
+   :keywords: wish, list
+
+.. index:: wish, list
+
+.. _xsrst_py.wish_list:
+
+Wish List
+*********
+The following is a wish list for future improvements to ``xsrst.py``:
+
+.. _stackoverflow: https://stackoverflow.com/questions/1686837/
+   sphinx-documentation-tool-set-tab-width-in-output
+
+.. meta::
+   :keywords: tabs
+
+.. index:: tabs
+
+.. _xsrst_py.wish_list.tabs:
+
+Tabs
+====
+Tabs in a code blocks get expanded to 8 spaces; see stackoverflow_.
+It would be nice to have a way to control the size of tabs in the code blocks
+displayed by :ref:`code_cmd` and :ref:`file_cmd`.
+Perhaps it would be good to support tabs as a method for
+indenting xsrst input sections.
+
+.. meta::
+   :keywords: module
+
+.. index:: module
+
+.. _xsrst_py.wish_list.module:
+
+Module
+======
+Convert the program into a python module and provide a pip distribution for it.
+
+.. All the children of this section are commands except for heading_exam.
+
+.. meta::
+   :keywords: commands
+
+.. index:: commands
+
+.. _xsrst_py.commands:
+
+Commands
+********
+- :ref:`begin_cmd`
+- :ref:`child_cmd`
+- :ref:`spell_cmd`
+- :ref:`suspend_cmd`
+- :ref:`code_cmd`
+- :ref:`file_cmd`
+- :ref:`comment_ch_cmd`
+
+----
+
+xsrst input file: ``bin/xsrst.py``

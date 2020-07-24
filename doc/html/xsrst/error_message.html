@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="error_message, exception, handling" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="in, try, block" name="keywords" />
+<meta content="exception" name="keywords" />
+<meta content="in, catch, block" name="keywords" />
+<meta content="cppad, errors" name="keywords" />
+<meta content="not, thread, safe" name="keywords" />
+<meta content="example" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>error_message &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="error_message_xam_cpp" href="error_message_xam_cpp.html" />
+    <link rel="prev" title="vec2a_double" href="vec2a_double.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="a_double.html">a_double</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vector.html">vector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="cpp_utility.html">cpp_utility</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="vec2cppad_double.html">vec2cppad_double</a></li>
+<li class="toctree-l5"><a class="reference internal" href="vec2a_double.html">vec2a_double</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">error_message</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="error_message_xam_cpp.html">error_message_xam_cpp</a></li>
+<li class="toctree-l6"><a class="reference internal" href="error_message_xam_py.html">error_message_xam_py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="library.html">library</a> &raquo;</li>
+        
+          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
+        
+          <li><a href="cpp_utility.html">cpp_utility</a> &raquo;</li>
+        
+      <li>error_message</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/error_message.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="error-message">
+<h1>error_message<a class="headerlink" href="#error-message" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="exception-handling">
+<span id="id1"></span><h2>Exception Handling<a class="headerlink" href="#exception-handling" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#error-message-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#error-message-in-try-block"><span class="std std-ref">In Try Block</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#error-message-in-try-block-exception"><span class="std std-ref">exception</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#error-message-in-catch-block"><span class="std std-ref">In Catch Block</span></a></p></li>
+<li><p><a class="reference internal" href="#error-message-cppad-errors"><span class="std std-ref">Cppad Errors</span></a></p></li>
+<li><p><a class="reference internal" href="#error-message-not-thread-safe"><span class="std std-ref">Not Thread Safe</span></a></p></li>
+<li><p><a class="reference internal" href="#error-message-example"><span class="std std-ref">Example</span></a></p></li>
+</ul>
+<div class="section" id="syntax">
+<span id="error-message-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<p><em>stored_message</em> =  <code class="docutils literal notranslate"><span class="pre">error_message</span></code> ( <em>input_message</em> )</p>
+</div>
+<div class="section" id="in-try-block">
+<span id="error-message-in-try-block"></span><span id="index-2"></span><h3>In Try Block<a class="headerlink" href="#in-try-block" title="Permalink to this headline">¶</a></h3>
+<p>If <em>input_message</em> is <strong>not</strong> the empty string,
+it is stored in <code class="docutils literal notranslate"><span class="pre">error_message</span></code> and an exception is thrown.
+This is intended to be done inside a <code class="docutils literal notranslate"><span class="pre">try</span></code> block.</p>
+<div class="section" id="exception">
+<span id="error-message-in-try-block-exception"></span><span id="index-3"></span><h4>exception<a class="headerlink" href="#exception" title="Permalink to this headline">¶</a></h4>
+<p>The type of the exception is <code class="docutils literal notranslate"><span class="pre">std::runtime_error</span></code>
+which is derived from <code class="docutils literal notranslate"><span class="pre">std::exception</span></code> .
+If the standard exception <code class="docutils literal notranslate"><span class="pre">what()</span></code> is called,
+the return value will be the value of <em>input_message</em>
+when the exception was thrown.</p>
+</div>
+</div>
+<div class="section" id="in-catch-block">
+<span id="error-message-in-catch-block"></span><span id="index-4"></span><h3>In Catch Block<a class="headerlink" href="#in-catch-block" title="Permalink to this headline">¶</a></h3>
+<p>If <em>input_message</em> is the empty string,
+the most recently stored message in <code class="docutils literal notranslate"><span class="pre">error_message</span></code> is returned.
+In addition, the message is deleted from <code class="docutils literal notranslate"><span class="pre">error_message</span></code> .
+If there are no more messages stored in <code class="docutils literal notranslate"><span class="pre">error_message</span></code> ,
+the empty string is returned.
+This is intended to be done inside a <code class="docutils literal notranslate"><span class="pre">catch</span></code> block.</p>
+</div>
+<div class="section" id="cppad-errors">
+<span id="error-message-cppad-errors"></span><span id="index-5"></span><h3>Cppad Errors<a class="headerlink" href="#cppad-errors" title="Permalink to this headline">¶</a></h3>
+<p>Calls to the Cppad error handler get mapped to a call
+to <code class="docutils literal notranslate"><span class="pre">error_message</span></code> .</p>
+</div>
+<div class="section" id="not-thread-safe">
+<span id="error-message-not-thread-safe"></span><span id="index-6"></span><h3>Not Thread Safe<a class="headerlink" href="#not-thread-safe" title="Permalink to this headline">¶</a></h3>
+<p>The message storage is done using static information in
+<code class="docutils literal notranslate"><span class="pre">error_message</span></code> and hence is not thread safe.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="example">
+<span id="error-message-example"></span><span id="index-7"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="error_message_xam_cpp.html#id1"><span class="std std-ref">c++</span></a>,
+<a class="reference internal" href="error_message_xam_py.html#id1"><span class="std std-ref">python</span></a>.</p>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/error.cpp</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="error_message_xam_cpp.html" class="btn btn-neutral float-right" title="error_message_xam_cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vec2a_double.html" class="btn btn-neutral float-left" title="vec2a_double" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

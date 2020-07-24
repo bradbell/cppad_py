@@ -1,0 +1,24 @@
+!!!!!!!!!!!!!!!!!!!!
+fun_property_xam_cpp
+!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: fun_property_xam_cpp, c++:, function, properties:, example, test
+
+.. index:: fun_property_xam_cpp, c++:, function, properties:, example, test
+
+.. _fun_property_xam_cpp:
+
+C++: function Properties: Example and Test
+##########################################
+
+
+.. literalinclude:: ../../../example/cplusplus/fun_property_xam.cpp
+    :lines: 11-87
+    :language: cpp
+
+----
+
+xsrst input file: ``example/cplusplus/fun_property_xam.cpp``

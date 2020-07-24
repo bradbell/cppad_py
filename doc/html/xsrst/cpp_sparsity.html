@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="cpp_sparsity, hessian, sparsity, patterns" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="purpose" name="keywords" />
+<meta content="x" name="keywords" />
+<meta content="f" name="keywords" />
+<meta content="select_domain" name="keywords" />
+<meta content="select_range" name="keywords" />
+<meta content="pattern_out" name="keywords" />
+<meta content="sparsity, for, component, wise, hessian" name="keywords" />
+<meta content="example" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cpp_sparsity &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sparse_hes_pattern_xam_cpp" href="sparse_hes_pattern_xam_cpp.html" />
+    <link rel="prev" title="sparse_jac_pattern_xam_cpp" href="sparse_jac_pattern_xam_cpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="a_double.html">a_double</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vector.html">vector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="sparse.html">sparse</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="cpp_sparse_rc.html">cpp_sparse_rc</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_sparse_rcv.html">cpp_sparse_rcv</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_jac_sparsity.html">cpp_jac_sparsity</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">cpp_sparsity</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="sparse_hes_pattern_xam_cpp.html">sparse_hes_pattern_xam_cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_sparse_jac.html">cpp_sparse_jac</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_sparse_hes.html">cpp_sparse_hes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="cpp_utility.html">cpp_utility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="library.html">library</a> &raquo;</li>
+        
+          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
+        
+          <li><a href="sparse.html">sparse</a> &raquo;</li>
+        
+      <li>cpp_sparsity</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/cpp_sparsity.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cpp-sparsity">
+<h1>cpp_sparsity<a class="headerlink" href="#cpp-sparsity" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="hessian-sparsity-patterns">
+<span id="id1"></span><h2>Hessian Sparsity Patterns<a class="headerlink" href="#hessian-sparsity-patterns" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cpp-sparsity-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparsity-purpose"><span class="std std-ref">Purpose</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparsity-x"><span class="std std-ref">x</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparsity-f"><span class="std std-ref">f</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparsity-select-domain"><span class="std std-ref">select_domain</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparsity-select-range"><span class="std std-ref">select_range</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparsity-pattern-out"><span class="std std-ref">pattern_out</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparsity-sparsity-for-component-wise-hessian"><span class="std std-ref">Sparsity for Component Wise Hessian</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparsity-example"><span class="std std-ref">Example</span></a></p></li>
+</ul>
+<div class="section" id="syntax">
+<span id="cpp-sparsity-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><em>f</em> . <code class="docutils literal notranslate"><span class="pre">for_hes_sparsity</span></code> ( <em>select_domain</em> , <em>select_range</em> , <em>pattern_out</em> )</div>
+<div class="line"><em>f</em> . <code class="docutils literal notranslate"><span class="pre">rev_hes_sparsity</span></code> ( <em>select_domain</em> , <em>select_range</em> , <em>pattern_out</em> )</div>
+</div>
+</div>
+<div class="section" id="purpose">
+<span id="cpp-sparsity-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<p>We use <span class="math notranslate nohighlight">\(F : \B{R}^n \rightarrow \B{R}^m\)</span> to denote the
+function corresponding to the operation sequence stored in <em>f</em> .
+Fix a diagonal matrix <span class="math notranslate nohighlight">\(D \in \B{R}^{n \times n}\)</span>, fix a vector
+<span class="math notranslate nohighlight">\(r \in \B{R}^m\)</span>, and define</p>
+<div class="math notranslate nohighlight">
+\[H(x) = D (r^\R{T} F)^{(2)} ( x ) D\]</div>
+<p>Given a sparsity pattern for <span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(r\)</span>,
+these routines compute a sparsity pattern for <span class="math notranslate nohighlight">\(H(x)\)</span>.</p>
+</div>
+<div class="section" id="x">
+<span id="cpp-sparsity-x"></span><span id="index-3"></span><h3>x<a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h3>
+<p>Note that a sparsity pattern for <span class="math notranslate nohighlight">\(H(x)\)</span> corresponds to the
+operation sequence stored in <em>f</em> and does not depend on
+the argument <em>x</em> .</p>
+</div>
+<div class="section" id="f">
+<span id="cpp-sparsity-f"></span><span id="index-4"></span><h3>f<a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
+<p>The object <em>f</em> has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">d_fun</span></code> <em>f</em></div>
+</div>
+</div>
+<div class="section" id="select-domain">
+<span id="cpp-sparsity-select-domain"></span><span id="index-5"></span><h3>select_domain<a class="headerlink" href="#select-domain" title="Permalink to this headline">¶</a></h3>
+<p>The argument <em>select_domain</em> has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">vec_bool&amp;</span></code> <em>select_domain</em></div>
+</div>
+<p>It has size <em>n</em> and is a sparsity pattern for the diagonal of
+<span class="math notranslate nohighlight">\(D\)</span>; i.e., <em>select_domain</em> [ <em>j</em> ] is true if and only if
+<span class="math notranslate nohighlight">\(D_{j,j}\)</span> is possibly non-zero.</p>
+</div>
+<div class="section" id="select-range">
+<span id="cpp-sparsity-select-range"></span><span id="index-6"></span><h3>select_range<a class="headerlink" href="#select-range" title="Permalink to this headline">¶</a></h3>
+<p>The argument <em>select_range</em> has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">vec_bool&amp;</span></code> <em>select_range</em></div>
+</div>
+<p>It has size <em>m</em> and is a sparsity pattern for the vector
+<span class="math notranslate nohighlight">\(r\)</span>; i.e., <em>select_range</em> [ <em>i</em> ] is true if and only if
+<span class="math notranslate nohighlight">\(r_i\)</span> is possibly non-zero.</p>
+</div>
+<div class="section" id="pattern-out">
+<span id="cpp-sparsity-pattern-out"></span><span id="index-7"></span><h3>pattern_out<a class="headerlink" href="#pattern-out" title="Permalink to this headline">¶</a></h3>
+<p>This argument has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">sparse_rc</span></code> &lt; <em>SizeVector</em> &gt; <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> <em>pattern_out</em></div>
+</div>
+<p>This input value of <em>pattern_out</em> does not matter.
+Upon return <em>pattern_out</em> is a sparsity pattern for
+<span class="math notranslate nohighlight">\(J(x)\)</span>.</p>
+</div>
+<div class="section" id="sparsity-for-component-wise-hessian">
+<span id="cpp-sparsity-sparsity-for-component-wise-hessian"></span><span id="index-8"></span><h3>Sparsity for Component Wise Hessian<a class="headerlink" href="#sparsity-for-component-wise-hessian" title="Permalink to this headline">¶</a></h3>
+<p>Suppose that <span class="math notranslate nohighlight">\(D\)</span> is the identity matrix,
+and only the <em>i</em>-th component of <em>r</em> is possibly non-zero.
+In this case, <em>pattern_out</em> is a sparsity pattern for
+<span class="math notranslate nohighlight">\(F_i^{(2)} ( x )\)</span>.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="example">
+<span id="cpp-sparsity-example"></span><span id="index-9"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="sparse_hes_pattern_xam_cpp.html#id1"><span class="std std-ref">c++</span></a></p>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/sparse.cpp</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sparse_hes_pattern_xam_cpp.html" class="btn btn-neutral float-right" title="sparse_hes_pattern_xam_cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sparse_jac_pattern_xam_cpp.html" class="btn btn-neutral float-left" title="sparse_jac_pattern_xam_cpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

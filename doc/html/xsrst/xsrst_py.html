@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="xsrst_py, extract, sphinx, rst" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="requirements" name="keywords" />
+<meta content="notation" name="keywords" />
+<meta content="white, space" name="keywords" />
+<meta content="beginning, line" name="keywords" />
+<meta content="command, line, arguments" name="keywords" />
+<meta content="root_file" name="keywords" />
+<meta content="root_section" name="keywords" />
+<meta content="sphinx_dir" name="keywords" />
+<meta content="spell_file" name="keywords" />
+<meta content="index_file" name="keywords" />
+<meta content="table, contents" name="keywords" />
+<meta content="toctree" name="keywords" />
+<meta content="parent, section" name="keywords" />
+<meta content="heading, links" name="keywords" />
+<meta content="section, level" name="keywords" />
+<meta content="other, levels" name="keywords" />
+<meta content="children" name="keywords" />
+<meta content="example" name="keywords" />
+<meta content="indentation" name="keywords" />
+<meta content="example" name="keywords" />
+<meta content="wish, list" name="keywords" />
+<meta content="tabs" name="keywords" />
+<meta content="module" name="keywords" />
+<meta content="commands" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>xsrst_py &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="begin_cmd" href="begin_cmd.html" />
+    <link rel="prev" title="more_cpp" href="more_cpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library.html">library</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">xsrst_py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="begin_cmd.html">begin_cmd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="child_cmd.html">child_cmd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spell_cmd.html">spell_cmd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="suspend_cmd.html">suspend_cmd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="code_cmd.html">code_cmd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file_cmd.html">file_cmd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comment_ch_cmd.html">comment_ch_cmd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="heading_exam.html">heading_exam</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+      <li>xsrst_py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/xsrst_py.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="xsrst-py">
+<h1>xsrst_py<a class="headerlink" href="#xsrst-py" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="extract-sphinx-rst">
+<span id="id1"></span><h2>Extract Sphinx RST<a class="headerlink" href="#extract-sphinx-rst" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#xsrst-py-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#xsrst-py-requirements"><span class="std std-ref">Requirements</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#xsrst-py-notation"><span class="std std-ref">Notation</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#xsrst-py-notation-white-space"><span class="std std-ref">White Space</span></a></p></li>
+<li><p><a class="reference internal" href="#xsrst-py-notation-beginning-of-a-line"><span class="std std-ref">Beginning of a Line</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#xsrst-py-command-line-arguments"><span class="std std-ref">Command Line Arguments</span></a></dt><dd><ul>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#xsrst-py-command-line-arguments-root-file"><span class="std std-ref">root_file</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#xsrst-py-command-line-arguments-root-file-root-section"><span class="std std-ref">root_section</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#xsrst-py-command-line-arguments-sphinx-dir"><span class="std std-ref">sphinx_dir</span></a></p></li>
+<li><p><a class="reference internal" href="#xsrst-py-command-line-arguments-spell-file"><span class="std std-ref">spell_file</span></a></p></li>
+<li><p><a class="reference internal" href="#xsrst-py-command-line-arguments-index-file"><span class="std std-ref">index_file</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#xsrst-py-table-of-contents"><span class="std std-ref">Table Of Contents</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#xsrst-py-table-of-contents-toctree"><span class="std std-ref">toctree</span></a></p></li>
+<li><p><a class="reference internal" href="#xsrst-py-table-of-contents-parent-section"><span class="std std-ref">Parent Section</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#xsrst-py-heading-links"><span class="std std-ref">Heading Links</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#xsrst-py-heading-links-section-level"><span class="std std-ref">Section Level</span></a></p></li>
+<li><p><a class="reference internal" href="#xsrst-py-heading-links-other-levels"><span class="std std-ref">Other Levels</span></a></p></li>
+<li><p><a class="reference internal" href="#xsrst-py-heading-links-children"><span class="std std-ref">Children</span></a></p></li>
+<li><p><a class="reference internal" href="#xsrst-py-heading-links-example"><span class="std std-ref">Example</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#xsrst-py-indentation"><span class="std std-ref">Indentation</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#xsrst-py-indentation-example"><span class="std std-ref">Example</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#xsrst-py-wish-list"><span class="std std-ref">Wish List</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#xsrst-py-wish-list-tabs"><span class="std std-ref">Tabs</span></a></p></li>
+<li><p><a class="reference internal" href="#xsrst-py-wish-list-module"><span class="std std-ref">Module</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#xsrst-py-commands"><span class="std std-ref">Commands</span></a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="syntax">
+<span id="xsrst-py-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code> <em>sphinx_dir</em> <em>root_file</em> <em>spell_file</em> <em>index_file</em></p>
+</div>
+<div class="section" id="requirements">
+<span id="xsrst-py-requirements"></span><span id="index-2"></span><h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">pyspellchecker</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">sphinx</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="notation">
+<span id="xsrst-py-notation"></span><span id="index-3"></span><h3>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="white-space">
+<span id="xsrst-py-notation-white-space"></span><span id="index-4"></span><h4>White Space<a class="headerlink" href="#white-space" title="Permalink to this headline">¶</a></h4>
+<p>We define white space to be a sequence of space characters; e.g.,
+tabs are not consider white space by xsrst.</p>
+</div>
+<div class="section" id="beginning-of-a-line">
+<span id="xsrst-py-notation-beginning-of-a-line"></span><span id="index-5"></span><h4>Beginning of a Line<a class="headerlink" href="#beginning-of-a-line" title="Permalink to this headline">¶</a></h4>
+<p>We say that a string <em>text</em> is a the beginning of a line if
+only white space, or nothing, comes before <em>text</em> in the line.</p>
+</div>
+</div>
+<div class="section" id="command-line-arguments">
+<span id="xsrst-py-command-line-arguments"></span><span id="index-6"></span><h3>Command Line Arguments<a class="headerlink" href="#command-line-arguments" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="root-file">
+<span id="xsrst-py-command-line-arguments-root-file"></span><span id="index-7"></span><h4>root_file<a class="headerlink" href="#root-file" title="Permalink to this headline">¶</a></h4>
+<p>The command line argument <em>root_file</em> is the name of a file,
+relative to the top git repository directory.</p>
+<div class="section" id="root-section">
+<span id="xsrst-py-command-line-arguments-root-file-root-section"></span><span id="index-8"></span><h5>root_section<a class="headerlink" href="#root-section" title="Permalink to this headline">¶</a></h5>
+<p>If there is only one section in the <em>root_file</em> it is called
+the <em>root_section</em>; i.e., it is the top section in that table of contents.
+If there is more than one section in the <em>root_file</em>,
+the file must have a
+<a class="reference internal" href="begin_cmd.html#begin-cmd-parent-section"><span class="std std-ref">Parent Section</span></a> and it is the <em>root_section</em>.
+The file <em>sphinx_dir</em>:code`/index.rst` must contain the line</p>
+<p>       
+<code class="docutils literal notranslate"><span class="pre">xsrst/</span></code> <em>section_name</em></p>
+<p>where <em>section_name</em> is the name of the <em>root_section</em>.</p>
+</div>
+</div>
+<div class="section" id="sphinx-dir">
+<span id="xsrst-py-command-line-arguments-sphinx-dir"></span><span id="index-9"></span><h4>sphinx_dir<a class="headerlink" href="#sphinx-dir" title="Permalink to this headline">¶</a></h4>
+<p>The command line argument <em>sphinx_dir</em> is a sub-directory,
+of the top git repository directory.
+The  sphinx <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> and <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> files are located in this directory.
+Any files that have names ending in <code class="docutils literal notranslate"><span class="pre">.rst</span></code>,
+and that are in the directory <em>sphinx_dir</em><code class="code docutils literal notranslate"><span class="pre">/xsrst</span></code>,
+are removed at the beginning of execution of <code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code>.
+All the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files in <em>sphinx_dir</em><code class="code docutils literal notranslate"><span class="pre">/xsrst</span></code>
+were extracted from the source code the last time that <code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code>
+was executed.</p>
+</div>
+<div class="section" id="spell-file">
+<span id="xsrst-py-command-line-arguments-spell-file"></span><span id="index-10"></span><h4>spell_file<a class="headerlink" href="#spell-file" title="Permalink to this headline">¶</a></h4>
+<p>The command line argument <em>spell_file</em> is the name of a file,
+relative to the <em>sphinx_dir</em> directory.
+This file contains a list of words
+that the spell checker will consider correct for all sections
+(it can be an empty file).
+A line that begins with <code class="code docutils literal notranslate"><span class="pre">#</span></code> is a comment (not included in the list).
+The words are one per line and
+leading and trailing white space in a word are ignored.
+Special words, for a particular section, are specified using the
+<a class="reference internal" href="spell_cmd.html#id1"><span class="std std-ref">spell command</span></a>.</p>
+</div>
+<div class="section" id="index-file">
+<span id="xsrst-py-command-line-arguments-index-file"></span><span id="index-11"></span><h4>index_file<a class="headerlink" href="#index-file" title="Permalink to this headline">¶</a></h4>
+<p>The command line argument <em>index_file</em> is the name of a file,
+relative to the <em>sphinx_dir</em> directory.
+This file contains a list of words (in lower case)
+that should not be included in the index
+(it can be an empty file).
+For example, a heading might contain the word <code class="docutils literal notranslate"><span class="pre">The</span></code> but you
+might not want to include <code class="docutils literal notranslate"><span class="pre">the</span></code> as a entry in the
+<a class="reference internal" href="../genindex.html"><span class="std std-ref">Index</span></a>.
+The words are one per line and
+leading and trailing white space in a word are ignored.
+A line that begins with <code class="code docutils literal notranslate"><span class="pre">#</span></code> is a comment (not included in the list).</p>
+</div>
+</div>
+<div class="section" id="table-of-contents">
+<span id="xsrst-py-table-of-contents"></span><span id="index-12"></span><h3>Table Of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="toctree">
+<span id="xsrst-py-table-of-contents-toctree"></span><span id="index-13"></span><h4>toctree<a class="headerlink" href="#toctree" title="Permalink to this headline">¶</a></h4>
+<p>The sphinx <code class="docutils literal notranslate"><span class="pre">toctree</span></code> directives are automatically generated
+for sections. The only such directive you should directly edit
+is in the file <em>sphinx_dir</em>:code`/index.rst`.
+One entry in this file specifies the
+<a class="reference internal" href="#xsrst-py-command-line-arguments-root-file-root-section"><span class="std std-ref">root_section</span></a>.
+Other entries are for <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files that are not extracted by
+<code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code>.</p>
+</div>
+<div class="section" id="parent-section">
+<span id="xsrst-py-table-of-contents-parent-section"></span><span id="index-14"></span><h4>Parent Section<a class="headerlink" href="#parent-section" title="Permalink to this headline">¶</a></h4>
+<p>A single input file may contain multiple
+<a class="reference internal" href="begin_cmd.html#begin-cmd-section"><span class="std std-ref">sections</span></a>.
+One (and at most one) of these sections may use begin with a
+<a class="reference internal" href="begin_cmd.html#begin-cmd-parent-section"><span class="std std-ref">parent begin</span></a> command.
+In this case, the other sections in the file are children of this section
+and this section is a child of the section containing the
+<a class="reference internal" href="child_cmd.html#id1"><span class="std std-ref">child command</span></a> that included this file.</p>
+<p>If there is no parent section for a file,
+all the sections in the file are children of the section containing the
+child command that included the file.</p>
+</div>
+</div>
+<div class="section" id="heading-links">
+<span id="xsrst-py-heading-links"></span><span id="index-15"></span><h3>Heading Links<a class="headerlink" href="#heading-links" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>For each word in a heading,
+a link is included in the index from the word to the heading.</p></li>
+<li><p>Each word in a heading is added to the html keyword meta data.</p></li>
+<li><p>A cross reference label is defined for linking
+from anywhere to a heading. The details of how to use
+these labels are described below.</p></li>
+<li><p>Headings can also be used to help find links to children
+of the current section; see the heading
+<a class="reference internal" href="#xsrst-py-heading-links-children"><span class="std std-ref">Children</span></a> below.</p></li>
+</ul>
+<div class="section" id="section-level">
+<span id="xsrst-py-heading-links-section-level"></span><span id="index-16"></span><h4>Section Level<a class="headerlink" href="#section-level" title="Permalink to this headline">¶</a></h4>
+<p>Each <a class="reference internal" href="begin_cmd.html#begin-cmd-section"><span class="std std-ref">section</span></a> can have only one header at
+the first level which is a title for the section.
+The <a class="reference internal" href="begin_cmd.html#begin-cmd-section-name"><span class="std std-ref">section_name</span></a>
+is automatically used
+as a label for linking the title for a section; i.e., the
+following will link to the title for <em>section_name</em>:</p>
+<p>       
+<code class="docutils literal notranslate"><span class="pre">:ref:</span></code> \`  <em>linking_text</em> <code class="code docutils literal notranslate"><span class="pre">&lt;</span></code> <em>section_name</em> <code class="code docutils literal notranslate"><span class="pre">&gt;</span></code> \`</p>
+<p>where <em>linking_text</em> is the text the user sees.</p>
+</div>
+<div class="section" id="other-levels">
+<span id="xsrst-py-heading-links-other-levels"></span><span id="index-17"></span><h4>Other Levels<a class="headerlink" href="#other-levels" title="Permalink to this headline">¶</a></h4>
+<p>The label for linking a heading that is not at the first level
+is the label for the heading directly above it plus a dot character <code class="code docutils literal notranslate"><span class="pre">.</span></code>,
+plus a lower case version of the heading with spaces converted to
+underbars <code class="code docutils literal notranslate"><span class="pre">_</span></code>. For example, the label for the heading for this
+paragraph is <code class="docutils literal notranslate"><span class="pre">xsrst_py.headers_and_links.other_levels</span></code>.
+This may seem verbose, but it helps keep the links up to date.
+If a heading changes, all the links to that heading will break.
+This identifies the links that should be checked
+to make sure they are still valid.</p>
+</div>
+<div class="section" id="children">
+<span id="xsrst-py-heading-links-children"></span><span id="index-18"></span><h4>Children<a class="headerlink" href="#children" title="Permalink to this headline">¶</a></h4>
+<p>If a xsrst input file has a
+ref:<cite>parent section&lt;xsrst_py.table_of_contents.parent_section&gt;</cite>
+the other sections in the file are children of the parent.</p>
+<ul class="simple">
+<li><p>If a section has a <a class="reference internal" href="child_cmd.html#id1"><span class="std std-ref">child link command</span></a>
+links to all the children of the section are place where the
+child link command is located.</p></li>
+<li><p>If a section has a <a class="reference internal" href="child_cmd.html#id1"><span class="std std-ref">children command</span></a>
+no automatic links to the children of the current section are generated.</p></li>
+<li><p>Otherwise, the links to the children of a section are placed
+at the end of the section.</p></li>
+</ul>
+<p>You can place a heading directly before the links to make them easier to find.</p>
+</div>
+<div class="section" id="example">
+<span id="xsrst-py-heading-links-example"></span><span id="index-19"></span><h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference internal" href="heading_exam.html#id1"><span class="std std-ref">Heading Example</span></a></p>
+</div>
+</div>
+<div class="section" id="indentation">
+<span id="xsrst-py-indentation"></span><span id="index-20"></span><h3>Indentation<a class="headerlink" href="#indentation" title="Permalink to this headline">¶</a></h3>
+<p>If there are a number of spaces before
+all of the xsrst documentation for a section,
+those characters are not included in the xsrst output.
+This enables one to indent the
+xsrst so it is grouped with the proper code block in the source.
+An error message will result if
+you use tabs in the indentation.</p>
+<div class="section" id="xsrst-py-indentation-example">
+<span id="index-21"></span><span id="id2"></span><h4>Example<a class="headerlink" href="#xsrst-py-indentation-example" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference internal" href="indent_space_exam.html#id1"><span class="std std-ref">Indent Using Spaces Example</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="wish-list">
+<span id="xsrst-py-wish-list"></span><span id="index-22"></span><h3>Wish List<a class="headerlink" href="#wish-list" title="Permalink to this headline">¶</a></h3>
+<p>The following is a wish list for future improvements to <code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code>:</p>
+<div class="section" id="tabs">
+<span id="xsrst-py-wish-list-tabs"></span><span id="index-23"></span><h4>Tabs<a class="headerlink" href="#tabs" title="Permalink to this headline">¶</a></h4>
+<p>Tabs in a code blocks get expanded to 8 spaces; see <a class="reference external" href="https://stackoverflow.com/questions/1686837/sphinx-documentation-tool-set-tab-width-in-output">stackoverflow</a>.
+It would be nice to have a way to control the size of tabs in the code blocks
+displayed by <a class="reference internal" href="code_cmd.html#id1"><span class="std std-ref">Code Command</span></a> and <a class="reference internal" href="file_cmd.html#id1"><span class="std std-ref">File Command</span></a>.
+Perhaps it would be good to support tabs as a method for
+indenting xsrst input sections.</p>
+</div>
+<div class="section" id="module">
+<span id="xsrst-py-wish-list-module"></span><span id="index-24"></span><h4>Module<a class="headerlink" href="#module" title="Permalink to this headline">¶</a></h4>
+<p>Convert the program into a python module and provide a pip distribution for it.</p>
+</div>
+</div>
+<div class="section" id="commands">
+<span id="xsrst-py-commands"></span><span id="index-25"></span><h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="begin_cmd.html#id1"><span class="std std-ref">Begin and End Commands</span></a></p></li>
+<li><p><a class="reference internal" href="child_cmd.html#id1"><span class="std std-ref">Children Commands</span></a></p></li>
+<li><p><a class="reference internal" href="spell_cmd.html#id1"><span class="std std-ref">Spell Command</span></a></p></li>
+<li><p><a class="reference internal" href="suspend_cmd.html#id1"><span class="std std-ref">Suspend and Resume Command</span></a></p></li>
+<li><p><a class="reference internal" href="code_cmd.html#id1"><span class="std std-ref">Code Command</span></a></p></li>
+<li><p><a class="reference internal" href="file_cmd.html#id1"><span class="std std-ref">File Command</span></a></p></li>
+<li><p><a class="reference internal" href="comment_ch_cmd.html#id1"><span class="std std-ref">Comment Character Command</span></a></p></li>
+</ul>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">bin/xsrst.py</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="begin_cmd.html" class="btn btn-neutral float-right" title="begin_cmd" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="more_cpp.html" class="btn btn-neutral float-left" title="more_cpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

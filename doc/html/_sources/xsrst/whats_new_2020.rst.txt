@@ -1,0 +1,498 @@
+!!!!!!!!!!!!!!
+whats_new_2020
+!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: whats_new_2020, cppad, py, changes, during, 2020
+
+.. index:: whats_new_2020, cppad, py, changes, during, 2020
+
+.. _whats_new_2020:
+
+CppAD Py Changes During 2020
+############################
+- :ref:`whats_new_2020.previous_years`
+- :ref:`whats_new_2020.07-24`
+- :ref:`whats_new_2020.07-18`
+- :ref:`whats_new_2020.07-05`
+- :ref:`whats_new_2020.05-17`
+- :ref:`whats_new_2020.05-16`
+- :ref:`whats_new_2020.05-15`
+- :ref:`whats_new_2020.05-14`
+- :ref:`whats_new_2020.05-12`
+- :ref:`whats_new_2020.05-09`
+- :ref:`whats_new_2020.05-08`
+- :ref:`whats_new_2020.05-07`
+- :ref:`whats_new_2020.05-06`
+- :ref:`whats_new_2020.05-05`
+- :ref:`whats_new_2020.05-04`
+- :ref:`whats_new_2020.04-28`
+- :ref:`whats_new_2020.04-27`
+- :ref:`whats_new_2020.04-26`
+- :ref:`whats_new_2020.04-25`
+- :ref:`whats_new_2020.04-24`
+- :ref:`whats_new_2020.04-23`
+- :ref:`whats_new_2020.04-22`
+- :ref:`whats_new_2020.04-20`
+- :ref:`whats_new_2020.04-19`
+- :ref:`whats_new_2020.04-18`
+- :ref:`whats_new_2020.04-13`
+- :ref:`whats_new_2020.04-12`
+- :ref:`whats_new_2020.04-10`
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   whats_new_2018
+
+.. meta::
+   :keywords: previous, years
+
+.. index:: previous, years
+
+.. _whats_new_2020.previous_years:
+
+Previous Years
+**************
+:ref:`whats_new_2018<whats_new_2018>`
+
+.. meta::
+   :keywords: 07-24
+
+.. index:: 07-24
+
+.. _whats_new_2020.07-24:
+
+07-24
+*****
+#.  Add the :ref:`xsrst.py<xsrst_py>` program
+    which extracts sphinx ``*.rst`` files from source code.
+    This program is not yet installed but you can use it by placing
+    the script ``bin/xsrst.py`` in your execution path.
+
+#.  Convert the cppad_py documentation to xsrst input files,
+    which are mostly sphinx rst with a few extra xsrst commands.
+
+#.  Use xsrst and sphinx to generate this documentation for cppad_py.
+
+.. meta::
+   :keywords: 07-18
+
+.. index:: 07-18
+
+.. _whats_new_2020.07-18:
+
+07-18
+*****
+
+#.  The experimental ``bin/xsrst.py`` program was added.
+    This program runs its tests and builds its documentation
+    (in the ``sphinx`` ) directory with the command ``bin/check_xsrst.sh`` .
+    The intention is to convert the cppad_py documentation from omhelp to sphinx.
+#.  Convert all the cppad_py source code to use spaces instead of tabs
+    (with tab stops at multiples of 4 spaces).
+
+.. meta::
+   :keywords: 07-05
+
+.. index:: 07-05
+
+.. _whats_new_2020.07-05:
+
+07-05
+*****
+
+#.  The :ref:`prototype<vec2a_double.prototype>` for ``vec2a_double``
+    was the same as for :ref:`vec2cppad_double<vec2cppad_double>`.
+    This has been fixed.
+#.  The limits for the :ref:`fun_from_json_xam_py<fun_from_json_xam_py>` and :ref:`fun_to_json_xam_py<fun_to_json_xam_py>`
+    example code were incorrect (this has been fixed).
+#.  The in :ref:`fun_from_json_xam_cpp<fun_from_json_xam_cpp>` the title was corrected; to be specific,
+    to_json was changed to from_json
+
+.. meta::
+   :keywords: 05-17
+
+.. index:: 05-17
+
+.. _whats_new_2020.05-17:
+
+05-17
+*****
+The ``abs`` :ref:`a_double_unary_fun<a_double_unary_fun>` was added
+(works the same as the ``fabs`` function).
+
+.. meta::
+   :keywords: 05-16
+
+.. index:: 05-16
+
+.. _whats_new_2020.05-16:
+
+05-16
+*****
+
+#.  A discussion of some subtle issues,
+    when interpolation is used to define an ODE,
+    was added to the ``ode_multi_step`` ; see
+    :ref:`set_t_all_index<numeric_ode_multi_step>`.
+#.  Add the :ref:`alpha<numeric_seirwd_model.p_all.alpha>` parameter to the
+    SEIRWD model.
+
+.. meta::
+   :keywords: 05-15
+
+.. index:: 05-15
+
+.. _whats_new_2020.05-15:
+
+05-15
+*****
+The file ``ode_solve.py`` was moved to ``ode_multi_step.py``
+and :ref:`numeric_ode_multi_step<numeric_ode_multi_step>` was extended to allow for different ODE solvers
+(steppers).
+
+.. meta::
+   :keywords: 05-14
+
+.. index:: 05-14
+
+.. _whats_new_2020.05-14:
+
+05-14
+*****
+
+#.  The example semi-stiff integrator :ref:`numeric_rosen3_step<numeric_rosen3_step>` was added.
+#.  The example file ``runge4.py`` was moved to ``ode_solve.py``
+    in preparation for other solvers.
+#.  Add the :ref:`numeric_simple_inv<numeric_simple_inv>` example routine for
+    AD inversion of matrices.
+#.  Add mention of which :ref:`numeric_xam<numeric_xam>` routines can take ``a_double`` values.
+#.  Simplify the :ref:`numeric_seirwd_model_xam_py<numeric_seirwd_model_xam_py>` example using numpy vector operations.
+#.  More improvements to were made to
+    :ref:`covid-19<numeric_covid_19_xam_py>` example.
+
+.. meta::
+   :keywords: 05-12
+
+.. index:: 05-12
+
+.. _whats_new_2020.05-12:
+
+05-12
+*****
+
+#.  More improvements to were made to
+    :ref:`covid-19<numeric_covid_19_xam_py>` example.
+#.  The :ref:`n_step<numeric_seirwd_model.n_step>` option was added to the
+    SEIRWD model example.
+#.  A delay between when is no longer infectious and when one dies was
+    added to the SEIRWD model using a W compartment (Will die compartment).
+
+.. meta::
+   :keywords: 05-09
+
+.. index:: 05-09
+
+.. _whats_new_2020.05-09:
+
+05-09
+*****
+The :ref:`covid-19_modeling_example<numeric_covid_19_xam_py>` application
+of AD is changing on a regular basis, so the details of the
+changes will no longer be tracked in this file, just see current
+example if you are interested.
+
+.. meta::
+   :keywords: 05-08
+
+.. index:: 05-08
+
+.. _whats_new_2020.05-08:
+
+05-08
+*****
+
+#.  The ``numeric_seirs_fit_xam.py`` example was renamed
+    :ref:`numeric_covid_19_xam_py<numeric_covid_19_xam_py>`.
+    And it was change to fit covariate multipliers that model
+    the infectious rate :math:`\beta`.
+#.  The ``numeric_seirs_model`` was renamed :ref:`numeric_seirwd_model<numeric_seirwd_model>`,
+    the D compartment was added to track total deaths,
+    the data was changed from Infectious to cumulative death, and
+    noise was added to the data.
+#.  In ``numeric_covid_a9_xam`` ,
+    reduce to just E and I as unknowns in initial conditions.
+    Initial R = D = 0, S = 1 - E - R.
+#.  Use the observed information matrix to estimate the covariance
+    of the optimal parameters.
+
+.. meta::
+   :keywords: 05-07
+
+.. index:: 05-07
+
+.. _whats_new_2020.05-07:
+
+05-07
+*****
+
+#.  The function ``scipy.misc.factorial``
+    has been deprecated so change it to
+    ``scipy.special.factorial`` .
+#.  Add the ``numeric_seirs_model`` utility example
+    which allows rates in the ODE to change with time.
+    This enabled changing the :ref:`numeric_covid_19_xam_py<numeric_covid_19_xam_py>`
+    example to estimate a :math:`\beta` coefficient that
+    changes with time.
+#.  The ``numeric_seirs_class`` example was removed because
+    ``numeric_seirwd_model`` replaces it with more general
+    capabilities.
+
+.. meta::
+   :keywords: 05-06
+
+.. index:: 05-06
+
+.. _whats_new_2020.05-06:
+
+05-06
+*****
+
+#.  Add the following utility examples:
+    :ref:`numeric_optimize_fun_class<numeric_optimize_fun_class>`,
+    :ref:`numeric_runge4_step<numeric_runge4_step>`,
+    :ref:`numeric_ode_multi_step<numeric_ode_multi_step>`,
+    ``numeric_seirs_class`` .
+    (The ``numeric_seirs_class`` was later replaced by
+    :ref:`numeric_seirwd_model<numeric_seirwd_model>`.)
+#.  Add mention of using ``DYLD_LIBRARY_PATH`` in the
+    :ref:`cppad_library_missing<install_error.cppad_library_missing>`
+    install instructions for the Mac.
+
+.. meta::
+   :keywords: 05-05
+
+.. index:: 05-05
+
+.. _whats_new_2020.05-05:
+
+05-05
+*****
+Add the :ref:`numeric_runge4_step_xam_py<numeric_runge4_step_xam_py>` example.
+
+.. meta::
+   :keywords: 05-04
+
+.. index:: 05-04
+
+.. _whats_new_2020.05-04:
+
+05-04
+*****
+Add the :ref:`numeric_optimize_fun_xam_py<numeric_optimize_fun_xam_py>` example.
+
+.. meta::
+   :keywords: 04-28
+
+.. index:: 04-28
+
+.. _whats_new_2020.04-28:
+
+04-28
+*****
+The :ref:`f_from_json()<py_fun_json.from_json>` function was added.
+In addition, the
+:ref:`empty_function<py_fun_ctor.f.empty_function>` constructor was added.
+
+.. meta::
+   :keywords: 04-27
+
+.. index:: 04-27
+
+.. _whats_new_2020.04-27:
+
+04-27
+*****
+The ``setup.py`` program now installs a separate copy of CppAD
+and provides instructions at the end for modifying your
+``LD_LIBRARY_PATH`` ; see
+:ref:`cppad_library_missing<install_error.cppad_library_missing>`.
+
+.. meta::
+   :keywords: 04-26
+
+.. index:: 04-26
+
+.. _whats_new_2020.04-26:
+
+04-26
+*****
+The ``setup.py`` program was modified to try to automatically solve the
+:ref:`cppad_library_missing<install_error.cppad_library_missing>` problem.
+
+.. meta::
+   :keywords: 04-25
+
+.. index:: 04-25
+
+.. _whats_new_2020.04-25:
+
+04-25
+*****
+The :ref:`f_to_json()<py_fun_json.to_json>` function was added.
+
+.. meta::
+   :keywords: 04-24
+
+.. index:: 04-24
+
+.. _whats_new_2020.04-24:
+
+04-24
+*****
+The newer Mac systems seems to require that one use
+``-stdlib=libc++`` compile and link flag.
+The install has been changed to check for and adapt to this condition.
+In addition, :ref:`setup_py<setup_py>` now runs the ``cmake`` command; i.e.,
+the user no longer needs to run ``cmake`` to test the
+:ref:`c++<setup_py.test.c++>` library.
+
+.. meta::
+   :keywords: 04-23
+
+.. index:: 04-23
+
+.. _whats_new_2020.04-23:
+
+04-23
+*****
+Add an :ref:`install_error<install_error>` section to the documentation.
+
+.. meta::
+   :keywords: 04-22
+
+.. index:: 04-22
+
+.. _whats_new_2020.04-22:
+
+04-22
+*****
+
+#.  Instructions were added for
+    :ref:`installing_using_pip<setup_py.install_using_pip>`.
+#.  The binary operators were extended to include *x* ``op`` *ay* where:
+    *x* is a double (python ``float`` ),
+    *ay* is an ``a_double`` ,
+    and *op* is
+    ``+`` ,
+    ``-`` ,
+    ``*`` ,
+    ``/`` , or
+    ``**`` .
+    Note that this automatically transfers to numpy arrays; e.g
+    *x* ``*`` *ay* where *x* is a double and *ay*
+    is a numpy array of ``a_double`` .
+
+.. meta::
+   :keywords: 04-20
+
+.. index:: 04-20
+
+.. _whats_new_2020.04-20:
+
+04-20
+*****
+
+#.  Move configuration setting from :ref:`setup_py<setup_py>` to
+    :ref:`bin/get_cppad_sh<get_cppad_sh.settings>`.
+#.  First version that installs using ``pip`` .
+    Install instructions for pip will be added soon.
+
+.. meta::
+   :keywords: 04-19
+
+.. index:: 04-19
+
+.. _whats_new_2020.04-19:
+
+04-19
+*****
+
+#.  Move the python source that gets distributed from ``lib/python``
+    to ``lib/python/cppad_py`` so that more like a standard python package.
+#.  Drop support for python2. It is not consistent with python3 in
+    some of the ``setup.py`` actions.
+
+.. meta::
+   :keywords: 04-18
+
+.. index:: 04-18
+
+.. _whats_new_2020.04-18:
+
+04-18
+*****
+
+#.  Change *yq* to *xq* , correct documentation,
+    for *xq* in the
+    :ref:`c++<cpp_fun_reverse.xq>` and :ref:`python<py_fun_reverse.xq>`
+    reverse mode documentation.
+#.  Remove the ``--inplace`` option from the
+    :ref:`syntax<setup_py.syntax>` for building the cppad_py python module.
+
+.. meta::
+   :keywords: 04-13
+
+.. index:: 04-13
+
+.. _whats_new_2020.04-13:
+
+04-13
+*****
+
+#.  The *z* =  ``pow`` ( *x* , *y* ) functions was added; see
+    :ref:`a_double_binary<a_double_binary>`.
+#.  Add the :ref:`var2par<a_double_property.var2par>` function
+    and improve the notation in the
+    :ref:`near_equal<a_double_property.near_equal>` notation.
+
+.. meta::
+   :keywords: 04-12
+
+.. index:: 04-12
+
+.. _whats_new_2020.04-12:
+
+04-12
+*****
+
+#.  Add the ``erf`` function was added to the
+    list of ``a_double`` unary :ref:`fun<a_double_unary_fun.fun>`
+    that have been implemented.
+#.  The dynamic parameter argument was missing from the
+    :ref:`syntax<py_independent.syntax>` for the python version
+    of the ``independent`` function.  This has been fixed.
+#.  Improve the :ref:`test<setup_py.test>` and :ref:`install<setup_py.install>`
+    discussion in ``setup.py`` .
+
+.. meta::
+   :keywords: 04-10
+
+.. index:: 04-10
+
+.. _whats_new_2020.04-10:
+
+04-10
+*****
+
+#.  Change the documentation display on the web using a more recent version of
+    the documentation program ``omhelp-20200130`` .
+#.  Add :ref:`caching<get_cppad_sh.caching>` to the Cppad install.
+
+----
+
+xsrst input file: ``whats_new/2020.omh``

@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="vec2numpy, convert, cppad_py, vector, to, numpy, array" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="vec" name="keywords" />
+<meta content="nr" name="keywords" />
+<meta content="nc" name="keywords" />
+<meta content="array" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>vec2numpy &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="more_py" href="more_py.html" />
+    <link rel="prev" title="numpy2vec" href="numpy2vec.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="py_lib.html">py_lib</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="py_fun.html">py_fun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_sparse.html">py_sparse</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="py_utility.html">py_utility</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="numpy2vec.html">numpy2vec</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">vec2numpy</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="more_py.html">more_py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cpp_lib.html">cpp_lib</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="library.html">library</a> &raquo;</li>
+        
+          <li><a href="py_lib.html">py_lib</a> &raquo;</li>
+        
+          <li><a href="py_utility.html">py_utility</a> &raquo;</li>
+        
+      <li>vec2numpy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/vec2numpy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vec2numpy">
+<h1>vec2numpy<a class="headerlink" href="#vec2numpy" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="convert-a-cppad-py-vector-to-a-numpy-array">
+<span id="id1"></span><h2>Convert a cppad_py Vector to a Numpy Array<a class="headerlink" href="#convert-a-cppad-py-vector-to-a-numpy-array" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#vec2numpy-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#vec2numpy-vec"><span class="std std-ref">vec</span></a></p></li>
+<li><p><a class="reference internal" href="#vec2numpy-nr"><span class="std std-ref">nr</span></a></p></li>
+<li><p><a class="reference internal" href="#vec2numpy-nc"><span class="std std-ref">nc</span></a></p></li>
+<li><p><a class="reference internal" href="#vec2numpy-array"><span class="std std-ref">array</span></a></p></li>
+</ul>
+<div class="section" id="syntax">
+<span id="vec2numpy-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><em>array</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.utility.vec2numpy</span></code> ( <em>vec</em> , <em>nr</em> )</div>
+<div class="line"><em>array</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.utility.vec2numpy</span></code> ( <em>vec</em> , <em>nr</em> , <em>nc</em> )</div>
+</div>
+</div>
+<div class="section" id="vec">
+<span id="vec2numpy-vec"></span><span id="index-2"></span><h3>vec<a class="headerlink" href="#vec" title="Permalink to this headline">¶</a></h3>
+<p>This must have one of the following types:
+<code class="docutils literal notranslate"><span class="pre">cppad_py.vec_int</span></code> ,
+<code class="docutils literal notranslate"><span class="pre">cppad_py.vec_double</span></code> ,
+<code class="docutils literal notranslate"><span class="pre">vec_py.vec_a_double</span></code> .
+with size equal to <em>nr</em> <code class="docutils literal notranslate"><span class="pre">*</span></code> <em>nc</em> .</p>
+</div>
+<div class="section" id="nr">
+<span id="vec2numpy-nr"></span><span id="index-3"></span><h3>nr<a class="headerlink" href="#nr" title="Permalink to this headline">¶</a></h3>
+<p>This is an <code class="docutils literal notranslate"><span class="pre">int</span></code> equal to the number of rows in the array.
+If the argument <em>nc</em> is not present, the array is a vector; i.e.,
+<code class="docutils literal notranslate"><span class="pre">len</span></code> ( <em>array</em> . <code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">)</span> <span class="pre">==</span> <span class="pre">1</span></code> .</p>
+</div>
+<div class="section" id="nc">
+<span id="vec2numpy-nc"></span><span id="index-4"></span><h3>nc<a class="headerlink" href="#nc" title="Permalink to this headline">¶</a></h3>
+<p>If this argument is present,
+it is an <code class="docutils literal notranslate"><span class="pre">int</span></code> equal to the number of columns in the array.
+In this case the array is a matrix; i.e.,
+<code class="docutils literal notranslate"><span class="pre">len</span></code> ( <em>array</em> . <code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">)</span> <span class="pre">==</span> <span class="pre">2</span></code> .</p>
+</div>
+<div class="section" id="array">
+<span id="vec2numpy-array"></span><span id="index-5"></span><h3>array<a class="headerlink" href="#array" title="Permalink to this headline">¶</a></h3>
+<p>This is the array corresponding to <em>vec</em> in row major order.
+Note that this array can be used after the vector <em>vec</em> drops
+out of scope (is deleted).</p>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/python/cppad_py/utility.py</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="more_py.html" class="btn btn-neutral float-right" title="more_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="numpy2vec.html" class="btn btn-neutral float-left" title="numpy2vec" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

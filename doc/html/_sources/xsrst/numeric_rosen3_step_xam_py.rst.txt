@@ -1,0 +1,108 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+numeric_rosen3_step_xam_py
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: numeric_rosen3_step_xam_py, example, computing, derivative, rosenbrock, ode, solution
+
+.. index:: numeric_rosen3_step_xam_py, example, computing, derivative, rosenbrock, ode, solution
+
+.. _numeric_rosen3_step_xam_py:
+
+Example Computing Derivative A Rosenbrock Ode Solution
+######################################################
+- :ref:`numeric_rosen3_step_xam_py.y(t,_x)`
+- :ref:`numeric_rosen3_step_xam_py.first_ode`
+- :ref:`numeric_rosen3_step_xam_py.second_ode`
+- :ref:`numeric_rosen3_step_xam_py.derivative_of_solution`
+- :ref:`numeric_rosen3_step_xam_py.source_code`
+
+.. meta::
+   :keywords: y(t, , x)
+
+.. index:: y(t, , x)
+
+.. _numeric_rosen3_step_xam_py.y(t,_x):
+
+y(t, x)
+*******
+The two initial value problems below have the following solution:
+
+.. math::
+
+   y_i (t, x) = ( t^{i+1} / (i+1) ! ) \prod_{j=0}^i x_j
+
+.. meta::
+   :keywords: first, ode
+
+.. index:: first, ode
+
+.. _numeric_rosen3_step_xam_py.first_ode:
+
+First ODE
+*********
+
+.. math::
+
+   f(t, y, x)  =
+   \left\{ \begin{array}{rl}
+   x_0               & {\rm if} \; i = 0 \\
+   x_i y_{i-1} (t)   & {\rm otherwise}
+   \end{array} \right.
+
+with the initial condition :math:`y(0) = 0`
+
+.. meta::
+   :keywords: second, ode
+
+.. index:: second, ode
+
+.. _numeric_rosen3_step_xam_py.second_ode:
+
+Second ODE
+**********
+
+.. math::
+
+   f(t, y, x)  = ( t^i / i ! ) \prod_{j=0}^i x_j
+
+with the initial condition :math:`y(0) = 0`
+
+.. meta::
+   :keywords: derivative, solution
+
+.. index:: derivative, solution
+
+.. _numeric_rosen3_step_xam_py.derivative_of_solution:
+
+Derivative of Solution
+**********************
+For this special case, the partial derivative of the solution with respect
+to the j-th component of the vector :math:`x` is
+
+.. math::
+
+   \partial_{x(j)} y_i (t, x) =  \left\{ \begin{array}{rl}
+        y_i (t, x) / x_j      & {\rm if} \; j \leq i \\
+        0                     & {\rm otherwise}
+   \end{array} \right.
+
+.. meta::
+   :keywords: source, code
+
+.. index:: source, code
+
+.. _numeric_rosen3_step_xam_py.source_code:
+
+Source Code
+***********
+
+.. literalinclude:: ../../../example/python/numeric/rosen3_step_xam.py
+    :lines: 72-208
+    :language: py
+
+----
+
+xsrst input file: ``example/python/numeric/rosen3_step_xam.py``

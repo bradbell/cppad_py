@@ -1,0 +1,465 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="cpp_sparse_rc, sparsity, patterns" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="pattern" name="keywords" />
+<meta content="nr" name="keywords" />
+<meta content="nc" name="keywords" />
+<meta content="nnz" name="keywords" />
+<meta content="resize" name="keywords" />
+<meta content="put" name="keywords" />
+<meta content="k" name="keywords" />
+<meta content="r" name="keywords" />
+<meta content="c" name="keywords" />
+<meta content="row" name="keywords" />
+<meta content="col" name="keywords" />
+<meta content="row_major" name="keywords" />
+<meta content="col_major" name="keywords" />
+<meta content="example" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cpp_sparse_rc &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sparse_rc_xam_cpp" href="sparse_rc_xam_cpp.html" />
+    <link rel="prev" title="sparse" href="sparse.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="a_double.html">a_double</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vector.html">vector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="sparse.html">sparse</a><ul class="current">
+<li class="toctree-l5 current"><a class="current reference internal" href="#">cpp_sparse_rc</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="sparse_rc_xam_cpp.html">sparse_rc_xam_cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_sparse_rcv.html">cpp_sparse_rcv</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_jac_sparsity.html">cpp_jac_sparsity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_sparsity.html">cpp_sparsity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_sparse_jac.html">cpp_sparse_jac</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_sparse_hes.html">cpp_sparse_hes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="cpp_utility.html">cpp_utility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="library.html">library</a> &raquo;</li>
+        
+          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
+        
+          <li><a href="sparse.html">sparse</a> &raquo;</li>
+        
+      <li>cpp_sparse_rc</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/cpp_sparse_rc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cpp-sparse-rc">
+<h1>cpp_sparse_rc<a class="headerlink" href="#cpp-sparse-rc" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="sparsity-patterns">
+<span id="id1"></span><h2>Sparsity Patterns<a class="headerlink" href="#sparsity-patterns" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cpp-sparse-rc-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-rc-pattern"><span class="std std-ref">pattern</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-rc-nr"><span class="std std-ref">nr</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-rc-nc"><span class="std std-ref">nc</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-rc-nnz"><span class="std std-ref">nnz</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-rc-resize"><span class="std std-ref">resize</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#cpp-sparse-rc-put"><span class="std std-ref">put</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#cpp-sparse-rc-put-k"><span class="std std-ref">k</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-rc-put-r"><span class="std std-ref">r</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-rc-put-c"><span class="std std-ref">c</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#cpp-sparse-rc-row"><span class="std std-ref">row</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-rc-col"><span class="std std-ref">col</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-rc-row-major"><span class="std std-ref">row_major</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-rc-col-major"><span class="std std-ref">col_major</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-rc-example"><span class="std std-ref">Example</span></a></p></li>
+</ul>
+<div class="section" id="syntax">
+<span id="cpp-sparse-rc-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><em>pattern</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py::sparse_rc</span></code> ()</div>
+<div class="line"><em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">resize</span></code> ( <em>nr</em> , <em>nc</em> , <em>nnz</em> )</div>
+<div class="line"><em>nr</em> = <em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">nr</span></code> ()</div>
+<div class="line"><em>nc</em> = <em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">nc</span></code> ()</div>
+<div class="line"><em>nnz</em> = <em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">nnz</span></code> ()</div>
+<div class="line"><em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">put</span></code> ( <em>k</em> , <em>r</em> , <em>c</em> )</div>
+<div class="line"><em>row</em> = <em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">row</span></code> ()</div>
+<div class="line"><em>col</em> = <em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">col</span></code> ()</div>
+<div class="line"><em>row_major</em> = <em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">row_major</span></code> ()</div>
+<div class="line"><em>col_major</em> = <em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">col_major</span></code> ()</div>
+</div>
+</div>
+<div class="section" id="pattern">
+<span id="cpp-sparse-rc-pattern"></span><span id="index-2"></span><h3>pattern<a class="headerlink" href="#pattern" title="Permalink to this headline">¶</a></h3>
+<p>This result has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">sparse_rc</span></code> <em>pattern</em></div>
+</div>
+<p>It is used to hold a sparsity pattern for a matrix.
+The sparsity <em>pattern</em> is <code class="docutils literal notranslate"><span class="pre">const</span></code>
+except during the <code class="docutils literal notranslate"><span class="pre">resize</span></code> and <code class="docutils literal notranslate"><span class="pre">put</span></code> operations.</p>
+</div>
+<div class="section" id="nr">
+<span id="cpp-sparse-rc-nr"></span><span id="index-3"></span><h3>nr<a class="headerlink" href="#nr" title="Permalink to this headline">¶</a></h3>
+<p>This argument has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>nr</em></div>
+</div>
+<p>is non-negative, and specifies
+the number of rows in the sparsity pattern.
+The function <code class="docutils literal notranslate"><span class="pre">nr()</span></code> returns the value of
+<em>nr</em> in the previous <code class="docutils literal notranslate"><span class="pre">resize</span></code> operation.</p>
+</div>
+<div class="section" id="nc">
+<span id="cpp-sparse-rc-nc"></span><span id="index-4"></span><h3>nc<a class="headerlink" href="#nc" title="Permalink to this headline">¶</a></h3>
+<p>This argument has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>nc</em></div>
+</div>
+<p>is non-negative, and specifies
+the number of columns in the sparsity pattern.
+The function <code class="docutils literal notranslate"><span class="pre">nc()</span></code> returns the value of
+<em>nc</em> in the previous <code class="docutils literal notranslate"><span class="pre">resize</span></code> operation.</p>
+</div>
+<div class="section" id="nnz">
+<span id="cpp-sparse-rc-nnz"></span><span id="index-5"></span><h3>nnz<a class="headerlink" href="#nnz" title="Permalink to this headline">¶</a></h3>
+<p>This argument and result has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>nnz</em></div>
+</div>
+<p>It is the number of possibly non-zero
+index pairs in the sparsity pattern.
+The function <code class="docutils literal notranslate"><span class="pre">nnz()</span></code> returns the value of
+<em>nnz</em> in the previous <code class="docutils literal notranslate"><span class="pre">resize</span></code> operation.</p>
+</div>
+<div class="section" id="resize">
+<span id="cpp-sparse-rc-resize"></span><span id="index-6"></span><h3>resize<a class="headerlink" href="#resize" title="Permalink to this headline">¶</a></h3>
+<p>The current sparsity pattern is lost and a new one is started
+with the specified parameters.
+After each <code class="docutils literal notranslate"><span class="pre">resize</span></code> , the elements in the <em>row</em>
+and <em>col</em> vectors should be assigned using <code class="docutils literal notranslate"><span class="pre">put</span></code> .</p>
+</div>
+<div class="section" id="put">
+<span id="cpp-sparse-rc-put"></span><span id="index-7"></span><h3>put<a class="headerlink" href="#put" title="Permalink to this headline">¶</a></h3>
+<p>This function sets the values</p>
+<div class="line-block">
+<div class="line">        <em>row</em> [ <em>k</em> ] = <em>r</em></div>
+<div class="line">        <em>col</em> [ <em>k</em> ] = <em>c</em></div>
+</div>
+<p>(The name <code class="docutils literal notranslate"><span class="pre">set</span></code> is used by Cppad, but not used here,
+because <code class="docutils literal notranslate"><span class="pre">set</span></code> it is a built-in name in Python.)</p>
+<div class="section" id="k">
+<span id="cpp-sparse-rc-put-k"></span><span id="index-8"></span><h4>k<a class="headerlink" href="#k" title="Permalink to this headline">¶</a></h4>
+<p>This argument has type</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>k</em></div>
+</div>
+<p>is non-negative,
+and must be less than <em>nnz</em> .</p>
+</div>
+<div class="section" id="r">
+<span id="cpp-sparse-rc-put-r"></span><span id="index-9"></span><h4>r<a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h4>
+<p>This argument has type</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>r</em></div>
+</div>
+<p>is non-negative, and must be less than <em>nr</em> .
+It specifies the value assigned to <em>row</em> [ <em>k</em> ] and must</p>
+</div>
+<div class="section" id="c">
+<span id="cpp-sparse-rc-put-c"></span><span id="index-10"></span><h4>c<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h4>
+<p>This argument has type</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>c</em></div>
+</div>
+<p>It specifies the value assigned to <em>col</em> [ <em>k</em> ] and must
+be less than <em>nc</em> .</p>
+</div>
+</div>
+<div class="section" id="row">
+<span id="cpp-sparse-rc-row"></span><span id="index-11"></span><h3>row<a class="headerlink" href="#row" title="Permalink to this headline">¶</a></h3>
+<p>This result has type</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">vec_int</span></code> <em>row</em></div>
+</div>
+<p>and its size is <em>nnz</em> .
+For <em>k</em> = 0, … , <em>nnz</em> -1 ,
+<em>row</em> [ <em>k</em> ] is the row index for the <em>k</em>-th possibly non-zero
+entry in the matrix.</p>
+</div>
+<div class="section" id="col">
+<span id="cpp-sparse-rc-col"></span><span id="index-12"></span><h3>col<a class="headerlink" href="#col" title="Permalink to this headline">¶</a></h3>
+<p>This result has type</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">vec_int</span></code> <em>col</em></div>
+</div>
+<p>and its size is <em>nnz</em> .
+For <em>k</em> = 0, … , <em>nnz</em> -1 ,
+<em>col</em> [ <em>k</em> ] is the column index for the <em>k</em>-th possibly non-zero
+entry in the matrix.</p>
+</div>
+<div class="section" id="row-major">
+<span id="cpp-sparse-rc-row-major"></span><span id="index-13"></span><h3>row_major<a class="headerlink" href="#row-major" title="Permalink to this headline">¶</a></h3>
+<p>This vector has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">vec_int</span></code> <em>row_major</em></div>
+</div>
+<p>and its size <em>nnz</em> .
+It sorts the sparsity pattern in row-major order.
+To be specific,</p>
+<div class="line-block">
+<div class="line">        <em>col</em> [ <em>row_major</em> [ <em>k</em> ] ] &lt;= <em>col</em> [ <em>row_major</em> [ <em>k</em> +1] ]</div>
+</div>
+<p>and if <em>col</em> [ <em>row_major</em> [ <em>k</em> ] ] == <em>col</em> [ <em>row_major</em> [ <em>k</em> +1] ] ,</p>
+<div class="line-block">
+<div class="line">        <em>row</em> [ <em>row_major</em> [ <em>k</em> ] ] &lt; <em>row</em> [ <em>row_major</em> [ <em>k</em> +1] ]</div>
+</div>
+<p>This routine generates an assert if there are two entries with the same
+row and column values (if <code class="docutils literal notranslate"><span class="pre">NDEBUG</span></code> is not defined).</p>
+</div>
+<div class="section" id="col-major">
+<span id="cpp-sparse-rc-col-major"></span><span id="index-14"></span><h3>col_major<a class="headerlink" href="#col-major" title="Permalink to this headline">¶</a></h3>
+<p>This vector has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">vec_int</span></code> <em>col_major</em></div>
+</div>
+<p>and its size <em>nnz</em> .
+It sorts the sparsity pattern in column-major order.
+To be specific,</p>
+<div class="line-block">
+<div class="line">        <em>row</em> [ <em>col_major</em> [ <em>k</em> ] ] &lt;= <em>row</em> [ <em>col_major</em> [ <em>k</em> +1] ]</div>
+</div>
+<p>and if <em>row</em> [ <em>col_major</em> [ <em>k</em> ] ] == <em>row</em> [ <em>col_major</em> [ <em>k</em> +1] ] ,</p>
+<div class="line-block">
+<div class="line">        <em>col</em> [ <em>col_major</em> [ <em>k</em> ] ] &lt; <em>col</em> [ <em>col_major</em> [ <em>k</em> +1] ]</div>
+</div>
+<p>This routine generates an assert if there are two entries with the same
+row and column values (if <code class="docutils literal notranslate"><span class="pre">NDEBUG</span></code> is not defined).</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="example">
+<span id="cpp-sparse-rc-example"></span><span id="index-15"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="sparse_rc_xam_cpp.html#id1"><span class="std std-ref">sparse_rc_xam_cpp</span></a></p>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/sparse.cpp</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sparse_rc_xam_cpp.html" class="btn btn-neutral float-right" title="sparse_rc_xam_cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sparse.html" class="btn btn-neutral float-left" title="sparse" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

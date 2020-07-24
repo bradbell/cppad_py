@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="fun_forward_xam_py, python:, forward, mode, ad:, example, test" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fun_forward_xam_py &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="py_fun_reverse" href="py_fun_reverse.html" />
+    <link rel="prev" title="py_fun_forward" href="py_fun_forward.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="py_lib.html">py_lib</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="py_fun.html">py_fun</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="py_independent.html">py_independent</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py_abort_recording.html">py_abort_recording</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py_fun_ctor.html">py_fun_ctor</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py_fun_property.html">py_fun_property</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py_fun_new_dynamic.html">py_fun_new_dynamic</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py_fun_jacobian.html">py_fun_jacobian</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py_fun_hessian.html">py_fun_hessian</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="py_fun_forward.html">py_fun_forward</a><ul class="current">
+<li class="toctree-l6 current"><a class="current reference internal" href="#">fun_forward_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="py_fun_reverse.html">py_fun_reverse</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py_fun_optimize.html">py_fun_optimize</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py_fun_json.html">py_fun_json</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="py_sparse.html">py_sparse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_utility.html">py_utility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="more_py.html">more_py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cpp_lib.html">cpp_lib</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="library.html">library</a> &raquo;</li>
+        
+          <li><a href="py_lib.html">py_lib</a> &raquo;</li>
+        
+          <li><a href="py_fun.html">py_fun</a> &raquo;</li>
+        
+          <li><a href="py_fun_forward.html">py_fun_forward</a> &raquo;</li>
+        
+      <li>fun_forward_xam_py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/fun_forward_xam_py.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fun-forward-xam-py">
+<h1>fun_forward_xam_py<a class="headerlink" href="#fun-forward-xam-py" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="python-forward-mode-ad-example-and-test">
+<span id="id1"></span><h2>Python: Forward Mode AD: Example and Test<a class="headerlink" href="#python-forward-mode-ad-example-and-test" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun_forward_xam</span><span class="p">()</span> <span class="p">:</span>
+    <span class="c1">#</span>
+    <span class="kn">import</span> <span class="nn">numpy</span>
+    <span class="kn">import</span> <span class="nn">cppad_py</span>
+    <span class="c1">#</span>
+    <span class="c1"># initialize return variable</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1"># ---------------------------------------------------------------------</span>
+    <span class="c1"># number of dependent and independent variables</span>
+    <span class="n">n_dep</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">n_ind</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="c1">#</span>
+    <span class="c1"># create the independent variables ax</span>
+    <span class="n">xp</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n_ind</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">n_ind</span>  <span class="p">)</span> <span class="p">:</span>
+        <span class="n">xp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mf">1.0</span>
+    <span class="c1">#</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">independent</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># create dependent varialbes ay with ay0 = ax0 * ax1</span>
+    <span class="n">ax0</span>    <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ax1</span>    <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ay</span>    <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n_dep</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">cppad_py</span><span class="o">.</span><span class="n">a_double</span><span class="p">)</span>
+    <span class="n">ay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ax0</span> <span class="o">*</span> <span class="n">ax1</span>
+    <span class="c1">#</span>
+    <span class="c1"># define af corresponding to f(x) = x0 * x1</span>
+    <span class="n">f</span>  <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">d_fun</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># define X(t) = (3 + t, 2 + t)</span>
+    <span class="c1"># it follows that Y(t) = f(X(t)) = (3 + t) * (2 + t)</span>
+    <span class="c1">#</span>
+    <span class="c1"># Y(0) = 6 and p ! = 1</span>
+    <span class="n">p</span>     <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">xp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.0</span>
+    <span class="n">xp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span>
+    <span class="n">yp</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">xp</span><span class="p">)</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">yp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">6.0</span>
+    <span class="c1">#</span>
+    <span class="c1"># first order Taylor coefficients for X(t)</span>
+    <span class="n">p</span>     <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">xp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">xp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="c1">#</span>
+    <span class="c1"># first order Taylor coefficient for Y(t)</span>
+    <span class="c1"># Y&#39;(0) = 3 + 2 = 5 and p ! = 1</span>
+    <span class="n">yp</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">xp</span><span class="p">)</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">yp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">5.0</span>
+    <span class="c1">#</span>
+    <span class="c1"># second order Taylor coefficients for X(t)</span>
+    <span class="n">p</span>     <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">xp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">xp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="c1">#</span>
+    <span class="c1"># second order Taylor coefficient for Y(t)</span>
+    <span class="c1"># Y&#39;&#39;(0) = 2.0 and p ! = 2</span>
+    <span class="n">yp</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">xp</span><span class="p">)</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">yp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span>
+    <span class="c1"># ---------------------------------------------------------------------</span>
+    <span class="n">af</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">a_fun</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">af</span><span class="o">.</span><span class="n">size_order</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="c1">#</span>
+    <span class="c1"># zero order forward</span>
+    <span class="n">p</span>   <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">axp</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n_ind</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">cppad_py</span><span class="o">.</span><span class="n">a_double</span><span class="p">)</span>
+    <span class="n">axp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.0</span>
+    <span class="n">axp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span>
+    <span class="n">ayp</span>    <span class="o">=</span> <span class="n">af</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">axp</span><span class="p">)</span>
+    <span class="n">ok</span>     <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">ayp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">a_double</span><span class="p">(</span><span class="mf">6.0</span><span class="p">)</span>
+    <span class="n">ok</span>     <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">af</span><span class="o">.</span><span class="n">size_order</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="c1">#</span>
+    <span class="k">return</span><span class="p">(</span> <span class="n">ok</span> <span class="p">)</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">example/python/core/fun_forward_xam.py</span></code></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="py_fun_reverse.html" class="btn btn-neutral float-right" title="py_fun_reverse" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="py_fun_forward.html" class="btn btn-neutral float-left" title="py_fun_forward" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

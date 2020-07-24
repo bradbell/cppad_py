@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="numeric_ode_multi_step, multiple, ode, steps" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="purpose" name="keywords" />
+<meta content="one_step" name="keywords" />
+<meta content="t0" name="keywords" />
+<meta content="y0" name="keywords" />
+<meta content="t_step" name="keywords" />
+<meta content="y1" name="keywords" />
+<meta content="fun" name="keywords" />
+<meta content="fun.set_t_all_index(index)" name="keywords" />
+<meta content="fun.f(t, , y)" name="keywords" />
+<meta content="one_step" name="keywords" />
+<meta content="t_all" name="keywords" />
+<meta content="y_init" name="keywords" />
+<meta content="y_all" name="keywords" />
+<meta content="example" name="keywords" />
+<meta content="source, code" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>numeric_ode_multi_step &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="numeric_ode_multi_step_xam_py" href="numeric_ode_multi_step_xam_py.html" />
+    <link rel="prev" title="numeric_rosen3_step_xam_py" href="numeric_rosen3_step_xam_py.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="numeric_xam.html">numeric_xam</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="numeric_simple_inv.html">numeric_simple_inv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_runge4_step.html">numeric_runge4_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_rosen3_step.html">numeric_rosen3_step</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">numeric_ode_multi_step</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="numeric_ode_multi_step_xam_py.html">numeric_ode_multi_step_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_optimize_fun_class.html">numeric_optimize_fun_class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_seirwd_model.html">numeric_seirwd_model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_covid_19_xam_py.html">numeric_covid_19_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="library.html">library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="numeric_xam.html">numeric_xam</a> &raquo;</li>
+        
+      <li>numeric_ode_multi_step</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/numeric_ode_multi_step.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="numeric-ode-multi-step">
+<h1>numeric_ode_multi_step<a class="headerlink" href="#numeric-ode-multi-step" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="multiple-ode-steps">
+<span id="id1"></span><h2>Multiple Ode Steps<a class="headerlink" href="#multiple-ode-steps" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-purpose"><span class="std std-ref">Purpose</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#numeric-ode-multi-step-one-step"><span class="std std-ref">one_step</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-one-step-t0"><span class="std std-ref">t0</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-one-step-y0"><span class="std std-ref">y0</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-one-step-t-step"><span class="std std-ref">t_step</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-one-step-y1"><span class="std std-ref">y1</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#numeric-ode-multi-step-fun"><span class="std std-ref">fun</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-fun-fun-set-t-all-index-index"><span class="std std-ref">fun.set_t_all_index(index)</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-fun-fun-f-t-y"><span class="std std-ref">fun.f(t, y)</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-fun-one-step"><span class="std std-ref">one_step</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-t-all"><span class="std std-ref">t_all</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-y-init"><span class="std std-ref">y_init</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-y-all"><span class="std std-ref">y_all</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-source-code"><span class="std std-ref">Source Code</span></a></p></li>
+</ul>
+<div class="section" id="syntax">
+<span id="numeric-ode-multi-step-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<p><em>y_all</em> =  <code class="docutils literal notranslate"><span class="pre">ode_multi_step</span></code> ( <em>one_step</em> , <em>f</em> , <em>t_all</em> , <em>y_init</em> )</p>
+</div>
+<div class="section" id="purpose">
+<span id="numeric-ode-multi-step-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<p>The routine can be used with <code class="docutils literal notranslate"><span class="pre">ad_double</span></code> to solve an initial
+value ODE</p>
+<div class="math notranslate nohighlight">
+\[y^{(1)} (t) = f( t , y )\]</div>
+</div>
+<div class="section" id="one-step">
+<span id="numeric-ode-multi-step-one-step"></span><span id="index-3"></span><h3>one_step<a class="headerlink" href="#one-step" title="Permalink to this headline">¶</a></h3>
+<p>This routine executes one step of an ODE approximation method with the
+following syntax:</p>
+<div class="line-block">
+<div class="line">        <em>y1</em> = <em>one_step</em> ( <em>f</em> , <em>t0</em> , <em>y0</em> , <em>t_step</em> )</div>
+</div>
+<p>The elements of <em>y0</em> and the scalars above can be
+<code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">a_double</span></code> .</p>
+<div class="section" id="t0">
+<span id="numeric-ode-multi-step-one-step-t0"></span><span id="index-4"></span><h4>t0<a class="headerlink" href="#t0" title="Permalink to this headline">¶</a></h4>
+<p>is the initial time value for the step.</p>
+</div>
+<div class="section" id="y0">
+<span id="numeric-ode-multi-step-one-step-y0"></span><span id="index-5"></span><h4>y0<a class="headerlink" href="#y0" title="Permalink to this headline">¶</a></h4>
+<p>is the initial value of <span class="math notranslate nohighlight">\(y(t)\)</span> for the step.</p>
+</div>
+<div class="section" id="t-step">
+<span id="numeric-ode-multi-step-one-step-t-step"></span><span id="index-6"></span><h4>t_step<a class="headerlink" href="#t-step" title="Permalink to this headline">¶</a></h4>
+<p>is the is the size of the step (in time).</p>
+</div>
+<div class="section" id="y1">
+<span id="numeric-ode-multi-step-one-step-y1"></span><span id="index-7"></span><h4>y1<a class="headerlink" href="#y1" title="Permalink to this headline">¶</a></h4>
+<p>is the approximation for the ODE solution at time <em>t0</em> + <em>t_step</em> .</p>
+</div>
+</div>
+<div class="section" id="fun">
+<span id="numeric-ode-multi-step-fun"></span><span id="index-8"></span><h3>fun<a class="headerlink" href="#fun" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="fun-set-t-all-index-index">
+<span id="numeric-ode-multi-step-fun-fun-set-t-all-index-index"></span><span id="index-9"></span><h4>fun.set_t_all_index(index)<a class="headerlink" href="#fun-set-t-all-index-index" title="Permalink to this headline">¶</a></h4>
+<p>Often, we use interpolation with knots to define <span class="math notranslate nohighlight">\(f(t, y)\)</span>.
+It is one of the subtitle issues of AD that even though values are the
+same, derivatives might not be the same; e.g.,
+piecewise linear interpolation.
+We must break the integration of the ODE at each of the knot
+so we can use a method that assumes <span class="math notranslate nohighlight">\(f(t, y)\)</span> is smooth.
+Also so that AD can be used to compute derivatives of our solutions.
+The function <code class="docutils literal notranslate"><span class="pre">set_t_all_index</span></code>
+informs <em>fun</em> that we are currently integrating the time interval</p>
+<div class="line-block">
+<div class="line">        [ <em>t_all</em> [ <em>index</em> ] , <em>t_all</em> [ <em>index</em> +1] ]</div>
+</div>
+<p>so that it know which smooth function to represent
+even if <span class="math notranslate nohighlight">\(t\)</span> is at a knot and it matters if it is the interval
+to the left or right of the knot.
+The function <code class="docutils literal notranslate"><span class="pre">set_t_all_index</span></code> is called at the start
+of each integration interval and before any of the other
+<em>fun</em> member functions.</p>
+</div>
+<div class="section" id="fun-f-t-y">
+<span id="numeric-ode-multi-step-fun-fun-f-t-y"></span><span id="index-10"></span><h4>fun.f(t, y)<a class="headerlink" href="#fun-f-t-y" title="Permalink to this headline">¶</a></h4>
+<p>This call evaluates the function that defines the ODE</p>
+<div class="math notranslate nohighlight">
+\[y^{(1)} (t) = f [ t , y(t) ]\]</div>
+</div>
+<div class="section" id="numeric-ode-multi-step-fun-one-step">
+<span id="index-11"></span><span id="id2"></span><h4>one_step<a class="headerlink" href="#numeric-ode-multi-step-fun-one-step" title="Permalink to this headline">¶</a></h4>
+<p>The routine <em>one_step</em> may put extra requirements on <em>fun</em> .</p>
+</div>
+</div>
+<div class="section" id="t-all">
+<span id="numeric-ode-multi-step-t-all"></span><span id="index-12"></span><h3>t_all<a class="headerlink" href="#t-all" title="Permalink to this headline">¶</a></h3>
+<p>This is a numpy vector of time values at which the solution is calculated.
+The type of its elements can be <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">ad_double</span></code> .
+It must be either monotone increasing or decreasing.</p>
+</div>
+<div class="section" id="y-init">
+<span id="numeric-ode-multi-step-y-init"></span><span id="index-13"></span><h3>y_init<a class="headerlink" href="#y-init" title="Permalink to this headline">¶</a></h3>
+<p>This is the value of <span class="math notranslate nohighlight">\(y(t)\)</span> at the initial time
+<em>t_all</em> [ 0 ] as a numpy vector.
+The type of its elements can be <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">ad_double</span></code> .</p>
+</div>
+<div class="section" id="y-all">
+<span id="numeric-ode-multi-step-y-all"></span><span id="index-14"></span><h3>y_all<a class="headerlink" href="#y-all" title="Permalink to this headline">¶</a></h3>
+<p>This is the approximate solution for <span class="math notranslate nohighlight">\(y(t)\)</span> at all of the
+times specified by <em>t_all</em> as a numpy array.
+The value <em>y_all</em> [ <em>i</em> , <em>j</em> ] is the value of the j-th
+component of <span class="math notranslate nohighlight">\(y(t)\)</span> at time <em>t_all</em> [ <em>i</em> ] .</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="example">
+<span id="numeric-ode-multi-step-example"></span><span id="index-15"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="numeric_ode_multi_step_xam_py.html#id1"><span class="std std-ref">numeric_ode_multi_step_xam_py</span></a></p>
+</div>
+<div class="section" id="source-code">
+<span id="numeric-ode-multi-step-source-code"></span><span id="index-16"></span><h3>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="k">def</span> <span class="nf">ode_multi_step</span><span class="p">(</span><span class="n">one_step</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">t_all</span><span class="p">,</span> <span class="n">y_init</span> <span class="p">)</span> <span class="p">:</span>
+    <span class="n">dtype</span>      <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">y_init</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">n_var</span>      <span class="o">=</span> <span class="n">y_init</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">n_step</span>     <span class="o">=</span> <span class="n">t_all</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">y_all</span>      <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span> <span class="p">(</span><span class="n">n_step</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_var</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span>  <span class="p">)</span>
+    <span class="n">y1</span>         <span class="o">=</span> <span class="n">y_init</span>
+    <span class="n">t1</span>         <span class="o">=</span> <span class="n">t_all</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y_all</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_step</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">fun</span><span class="o">.</span><span class="n">set_t_all_index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">y0</span>            <span class="o">=</span> <span class="n">y1</span>
+        <span class="n">t0</span>            <span class="o">=</span> <span class="n">t1</span>
+        <span class="n">t1</span>            <span class="o">=</span> <span class="n">t_all</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">t_step</span>        <span class="o">=</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span>
+        <span class="n">y1</span>            <span class="o">=</span> <span class="n">one_step</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t_step</span><span class="p">)</span>
+        <span class="n">y_all</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span>  <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">y1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y_all</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">example/python/numeric/ode_multi_step.py</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="numeric_ode_multi_step_xam_py.html" class="btn btn-neutral float-right" title="numeric_ode_multi_step_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="numeric_rosen3_step_xam_py.html" class="btn btn-neutral float-left" title="numeric_rosen3_step_xam_py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

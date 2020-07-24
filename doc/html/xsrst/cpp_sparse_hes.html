@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="cpp_sparse_hes, computing, sparse, hessians" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="purpose" name="keywords" />
+<meta content="f" name="keywords" />
+<meta content="subset" name="keywords" />
+<meta content="x" name="keywords" />
+<meta content="r" name="keywords" />
+<meta content="pattern" name="keywords" />
+<meta content="work" name="keywords" />
+<meta content="n_sweep" name="keywords" />
+<meta content="uses, forward" name="keywords" />
+<meta content="example" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cpp_sparse_hes &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sparse_hes_xam_cpp" href="sparse_hes_xam_cpp.html" />
+    <link rel="prev" title="sparse_jac_xam_cpp" href="sparse_jac_xam_cpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="a_double.html">a_double</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vector.html">vector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="sparse.html">sparse</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="cpp_sparse_rc.html">cpp_sparse_rc</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_sparse_rcv.html">cpp_sparse_rcv</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_jac_sparsity.html">cpp_jac_sparsity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_sparsity.html">cpp_sparsity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_sparse_jac.html">cpp_sparse_jac</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">cpp_sparse_hes</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="sparse_hes_xam_cpp.html">sparse_hes_xam_cpp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="cpp_utility.html">cpp_utility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="library.html">library</a> &raquo;</li>
+        
+          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
+        
+          <li><a href="sparse.html">sparse</a> &raquo;</li>
+        
+      <li>cpp_sparse_hes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/cpp_sparse_hes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cpp-sparse-hes">
+<h1>cpp_sparse_hes<a class="headerlink" href="#cpp-sparse-hes" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="computing-sparse-hessians">
+<span id="id1"></span><h2>Computing Sparse Hessians<a class="headerlink" href="#computing-sparse-hessians" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cpp-sparse-hes-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-hes-purpose"><span class="std std-ref">Purpose</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-hes-f"><span class="std std-ref">f</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-hes-subset"><span class="std std-ref">subset</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-hes-x"><span class="std std-ref">x</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-hes-r"><span class="std std-ref">r</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-hes-pattern"><span class="std std-ref">pattern</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-hes-work"><span class="std std-ref">work</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-hes-n-sweep"><span class="std std-ref">n_sweep</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-hes-uses-forward"><span class="std std-ref">Uses Forward</span></a></p></li>
+<li><p><a class="reference internal" href="#cpp-sparse-hes-example"><span class="std std-ref">Example</span></a></p></li>
+</ul>
+<div class="section" id="syntax">
+<span id="cpp-sparse-hes-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><em>work</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py::sparse_hes_work</span></code> ()</div>
+<div class="line"><em>n_sweep</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">sparse_hes</span></code> ( <em>subset</em> , <em>x</em> , <em>r</em> , <em>pattern</em> , <em>work</em> )</div>
+</div>
+</div>
+<div class="section" id="purpose">
+<span id="cpp-sparse-hes-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<p>We use <span class="math notranslate nohighlight">\(F : \B{R}^n \rightarrow \B{R}^m\)</span> to denote the
+function corresponding to <em>f</em> .
+Given a vector <span class="math notranslate nohighlight">\(r \in \B{R}^m\)</span>, define</p>
+<div class="math notranslate nohighlight">
+\[H(x) = (r^\R{T} F)^{(2)} ( x )\]</div>
+<p>This routine takes advantage of sparsity when computing elements
+of the Hessian <span class="math notranslate nohighlight">\(H(x)\)</span>.</p>
+</div>
+<div class="section" id="f">
+<span id="cpp-sparse-hes-f"></span><span id="index-3"></span><h3>f<a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
+<p>This object has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">ADFun</span></code> &lt; <em>Base</em> &gt; <em>f</em></div>
+</div>
+<p>Note that the Taylor coefficients stored in <em>f</em> are affected
+by this operation; see
+<a class="reference internal" href="#cpp-sparse-hes-uses-forward"><span class="std std-ref">uses_forward</span></a> below.</p>
+</div>
+<div class="section" id="subset">
+<span id="cpp-sparse-hes-subset"></span><span id="index-4"></span><h3>subset<a class="headerlink" href="#subset" title="Permalink to this headline">¶</a></h3>
+<p>This argument has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">sparse_rcv&amp;</span></code> <em>subset</em></div>
+</div>
+<p>Its row size and column size is <em>n</em> ; i.e.,
+<em>subset</em> . <code class="docutils literal notranslate"><span class="pre">nr</span></code> () == <em>n</em> and <em>subset</em> . <code class="docutils literal notranslate"><span class="pre">nc</span></code> () == <em>n</em> .
+It specifies which elements of the Hessian are computed.
+The input value of its value vector
+<em>subset</em> . <code class="docutils literal notranslate"><span class="pre">val</span></code> () does not matter.
+Upon return it contains the value of the corresponding elements
+of the Jacobian.
+All of the row, column pairs in <em>subset</em> must also appear in
+<em>pattern</em> ; i.e., they must be possibly non-zero.</p>
+</div>
+<div class="section" id="x">
+<span id="cpp-sparse-hes-x"></span><span id="index-5"></span><h3>x<a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h3>
+<p>This argument has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">vec_double&amp;</span></code> <em>x</em></div>
+</div>
+<p>and its size is <em>n</em> .
+It specifies the point at which to evaluate the Hessian <span class="math notranslate nohighlight">\(H(x)\)</span>.</p>
+</div>
+<div class="section" id="r">
+<span id="cpp-sparse-hes-r"></span><span id="index-6"></span><h3>r<a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h3>
+<p>This argument has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">vec_double&amp;</span></code> <em>r</em></div>
+</div>
+<p>and its size is <em>m</em> .
+It specifies the multiplier for each component of <span class="math notranslate nohighlight">\(F(x)\)</span>;
+i.e., <span class="math notranslate nohighlight">\(r_i\)</span> is the multiplier for <span class="math notranslate nohighlight">\(F_i (x)\)</span>.</p>
+</div>
+<div class="section" id="pattern">
+<span id="cpp-sparse-hes-pattern"></span><span id="index-7"></span><h3>pattern<a class="headerlink" href="#pattern" title="Permalink to this headline">¶</a></h3>
+<p>This argument has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">sparse_rc&amp;</span></code> <em>pattern</em></div>
+</div>
+<p>Its row size and column sizes are <em>n</em> ; i.e.,
+<em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">nr</span></code> () == <em>n</em> and <em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">nc</span></code> () == <em>n</em> .
+It is a sparsity pattern for the Hessian <span class="math notranslate nohighlight">\(H(x)\)</span>.
+This argument is not used (and need not satisfy any conditions),
+when <a class="reference internal" href="#cpp-sparse-hes-work"><span class="std std-ref">work</span></a> is non-empty.</p>
+</div>
+<div class="section" id="work">
+<span id="cpp-sparse-hes-work"></span><span id="index-8"></span><h3>work<a class="headerlink" href="#work" title="Permalink to this headline">¶</a></h3>
+<p>This argument has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">sparse_hes_work&amp;</span></code> <em>work</em></div>
+</div>
+<p>We refer to its initial value,
+and its value after <em>work</em> . <code class="docutils literal notranslate"><span class="pre">clear</span></code> () , as empty.
+If it is empty, information is stored in <em>work</em> .
+This can be used to reduce computation when
+a future call is for the same object <em>f</em> ,
+and the same subset of the Hessian.
+If either of these values change, use <em>work</em> . <code class="docutils literal notranslate"><span class="pre">clear</span></code> () to
+empty this structure.</p>
+</div>
+<div class="section" id="n-sweep">
+<span id="cpp-sparse-hes-n-sweep"></span><span id="index-9"></span><h3>n_sweep<a class="headerlink" href="#n-sweep" title="Permalink to this headline">¶</a></h3>
+<p>The return value <em>n_sweep</em> has prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>n_sweep</em></div>
+</div>
+<p>It is the number of first order forward sweeps
+used to compute the requested Hessian values.
+Each first forward sweep is followed by a second order reverse sweep
+so it is also the number of reverse sweeps.
+This is proportional to the total computational work,
+not counting the zero order forward sweep,
+or combining multiple columns and rows into a single sweep.</p>
+</div>
+<div class="section" id="uses-forward">
+<span id="cpp-sparse-hes-uses-forward"></span><span id="index-10"></span><h3>Uses Forward<a class="headerlink" href="#uses-forward" title="Permalink to this headline">¶</a></h3>
+<p>After each call to <a class="reference internal" href="cpp_fun_forward.html#id1"><span class="std std-ref">cpp_fun_forward</span></a>,
+the object <em>f</em> contains the corresponding Taylor coefficients
+for all the variables in the operation sequence..
+After a call to <code class="docutils literal notranslate"><span class="pre">sparse_hes</span></code>
+the zero order coefficients correspond to</p>
+<div class="line-block">
+<div class="line">        <em>f</em> . <code class="docutils literal notranslate"><span class="pre">forward(0</span></code> , <em>x</em> )</div>
+</div>
+<p>All the other forward mode coefficients are unspecified.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="example">
+<span id="cpp-sparse-hes-example"></span><span id="index-11"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="sparse_hes_xam_cpp.html#id1"><span class="std std-ref">sparse_hes_xam_cpp</span></a></p>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/sparse.cpp</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sparse_hes_xam_cpp.html" class="btn btn-neutral float-right" title="sparse_hes_xam_cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sparse_jac_xam_cpp.html" class="btn btn-neutral float-left" title="sparse_jac_xam_cpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

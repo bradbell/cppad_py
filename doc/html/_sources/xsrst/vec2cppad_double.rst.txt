@@ -1,0 +1,47 @@
+!!!!!!!!!!!!!!!!
+vec2cppad_double
+!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: vec2cppad_double, convert, an, a_double, vector, to, cppad::ad<double>, vector
+
+.. index:: vec2cppad_double, convert, an, a_double, vector, to, cppad::ad<double>, vector
+
+.. _vec2cppad_double:
+
+Convert an a_double Vector to a CppAD::AD<double> Vector
+########################################################
+- :ref:`vec2cppad_double.syntax`
+- :ref:`vec2cppad_double.prototype`
+
+.. meta::
+   :keywords: syntax
+
+.. index:: syntax
+
+.. _vec2cppad_double.syntax:
+
+Syntax
+******
+
+| *v_out* =  ``cppad_py::vec2cppad_double`` ( ``v_in`` )
+
+.. meta::
+   :keywords: prototype
+
+.. index:: prototype
+
+.. _vec2cppad_double.prototype:
+
+Prototype
+*********
+
+.. literalinclude:: ../../../lib/cplusplus/cppad_vec.cpp
+    :lines: 41-42
+    :language: cpp
+
+----
+
+xsrst input file: ``lib/cplusplus/cppad_vec.cpp``

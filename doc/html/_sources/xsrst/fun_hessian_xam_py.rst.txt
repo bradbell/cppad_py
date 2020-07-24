@@ -1,0 +1,24 @@
+!!!!!!!!!!!!!!!!!!
+fun_hessian_xam_py
+!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: fun_hessian_xam_py, python:, dense, hessian, using, ad:, example, test
+
+.. index:: fun_hessian_xam_py, python:, dense, hessian, using, ad:, example, test
+
+.. _fun_hessian_xam_py:
+
+Python: Dense Hessian Using AD: Example and Test
+################################################
+
+
+.. literalinclude:: ../../../example/python/core/fun_hessian_xam.py
+    :lines: 11-75
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/fun_hessian_xam.py``

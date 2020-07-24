@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="numeric_simple_inv, an, ad, compatible, matrix, inverse, routine" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="purpose" name="keywords" />
+<meta content="ainv" name="keywords" />
+<meta content="example" name="keywords" />
+<meta content="source, code" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>numeric_simple_inv &mdash; cppad_py 2202.5.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="numeric_simple_inv_xam_py" href="numeric_simple_inv_xam_py.html" />
+    <link rel="prev" title="numeric_xam" href="numeric_xam.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="numeric_xam.html">numeric_xam</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">numeric_simple_inv</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="numeric_simple_inv_xam_py.html">numeric_simple_inv_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_runge4_step.html">numeric_runge4_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_rosen3_step.html">numeric_rosen3_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_ode_multi_step.html">numeric_ode_multi_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_optimize_fun_class.html">numeric_optimize_fun_class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_seirwd_model.html">numeric_seirwd_model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numeric_covid_19_xam_py.html">numeric_covid_19_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="library.html">library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="numeric_xam.html">numeric_xam</a> &raquo;</li>
+        
+      <li>numeric_simple_inv</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/numeric_simple_inv.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="numeric-simple-inv">
+<h1>numeric_simple_inv<a class="headerlink" href="#numeric-simple-inv" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<div class="section" id="an-ad-compatible-matrix-inverse-routine">
+<span id="id1"></span><h2>An AD Compatible Matrix Inverse Routine<a class="headerlink" href="#an-ad-compatible-matrix-inverse-routine" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#numeric-simple-inv-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-simple-inv-purpose"><span class="std std-ref">Purpose</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-simple-inv-a"><span class="std std-ref">A</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-simple-inv-ainv"><span class="std std-ref">Ainv</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-simple-inv-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-simple-inv-source-code"><span class="std std-ref">Source Code</span></a></p></li>
+</ul>
+<div class="section" id="syntax">
+<span id="numeric-simple-inv-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<p><em>Ainv</em> =  <code class="docutils literal notranslate"><span class="pre">simple_inv</span></code> ( <em>A</em> )</p>
+</div>
+<div class="section" id="purpose">
+<span id="numeric-simple-inv-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<p>This routine can be used with <code class="docutils literal notranslate"><span class="pre">ad_double</span></code></p>
+</div>
+<div class="section" id="a">
+<span id="numeric-simple-inv-a"></span><h3>A<a class="headerlink" href="#a" title="Permalink to this headline">¶</a></h3>
+<p>This must be an invertible square matrix (no singular detection is done).
+The type of its elements can be <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">a_double</span></code> .</p>
+</div>
+<div class="section" id="ainv">
+<span id="numeric-simple-inv-ainv"></span><span id="index-3"></span><h3>Ainv<a class="headerlink" href="#ainv" title="Permalink to this headline">¶</a></h3>
+<p>This is the matrix inverse of <em>A</em> .</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="example">
+<span id="numeric-simple-inv-example"></span><span id="index-4"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="numeric_simple_inv_xam_py.html#id1"><span class="std std-ref">numeric_simple_inv_xam_py</span></a></p>
+</div>
+<div class="section" id="source-code">
+<span id="numeric-simple-inv-source-code"></span><span id="index-5"></span><h3>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
+<p>When viewing the source code below it is important to know that
+optimizes out multiplication by the constant one while recording a function.
+It also optimizes out both addition and multiplication by the constant zero.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">from</span> <span class="nn">cppad_py</span> <span class="kn">import</span> <span class="n">a_double</span>
+<span class="k">def</span> <span class="nf">simple_inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">has_a_double</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">A</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="p">:</span>
+        <span class="n">has_a_double</span> <span class="o">=</span> <span class="n">has_a_double</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">==</span> <span class="n">a_double</span>
+    <span class="k">assert</span> <span class="n">nr</span> <span class="o">==</span> <span class="n">nc</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">has_a_double</span> <span class="p">:</span>
+        <span class="n">e_type</span> <span class="o">=</span> <span class="n">a_double</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">e_type</span> <span class="o">=</span> <span class="nb">float</span>
+    <span class="c1">#</span>
+    <span class="c1"># initialize Tablue = [A | I]</span>
+    <span class="n">Tablue</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span> <span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">nr</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">e_type</span> <span class="p">)</span>
+    <span class="n">Tablue</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="n">nr</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nr</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nr</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">Tablue</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>   <span class="o">=</span> <span class="n">e_type</span><span class="p">(</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="p">)</span>
+            <span class="n">Tablue</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">nr</span><span class="o">+</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span>
+    <span class="c1"># ------------------------------------------------------------------------</span>
+    <span class="c1"># Use row reduction to get convert A to an upper traingular matrix</span>
+    <span class="c1"># with ones along the diagonal</span>
+    <span class="c1"># ------------------------------------------------------------------------</span>
+    <span class="c1"># for each column (except the last) of the matrix</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nr</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="c1"># next row is one with maximum absolute element in column j</span>
+        <span class="k">if</span> <span class="n">has_a_double</span> <span class="p">:</span>
+            <span class="n">i_max</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span> <span class="n">numpy</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span> <span class="n">Tablue</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">i_max</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span> <span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> <span class="n">Tablue</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1"># swap row j and row i_max</span>
+        <span class="k">if</span> <span class="n">i_max</span> <span class="o">!=</span> <span class="n">j</span> <span class="p">:</span>
+            <span class="n">tmp</span>              <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span> <span class="n">Tablue</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span> <span class="p">)</span>
+            <span class="n">Tablue</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span>      <span class="o">=</span> <span class="n">Tablue</span><span class="p">[</span><span class="n">i_max</span><span class="p">,:]</span>
+            <span class="n">Tablue</span><span class="p">[</span><span class="n">i_max</span><span class="p">,:]</span>  <span class="o">=</span> <span class="n">tmp</span>
+        <span class="c1">#</span>
+        <span class="c1"># divide row j by Tablue[j,j]</span>
+        <span class="n">Tablue</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">Tablue</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span> <span class="o">/</span> <span class="n">Tablue</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">Tablue</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">e_type</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1"># zero out column j in rows after j</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nr</span> <span class="o">-</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">Tablue</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">Tablue</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">-</span> <span class="n">Tablue</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">Tablue</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span>
+            <span class="n">Tablue</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>    <span class="o">=</span> <span class="n">e_type</span><span class="p">(</span> <span class="mf">0.0</span> <span class="p">)</span>
+    <span class="c1"># divide the last row of Tablue by the last pivot element</span>
+    <span class="n">Tablue</span><span class="p">[</span><span class="n">nr</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span>     <span class="o">=</span> <span class="n">Tablue</span><span class="p">[</span><span class="n">nr</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">/</span> <span class="n">Tablue</span><span class="p">[</span><span class="n">nr</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">nr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">Tablue</span><span class="p">[</span><span class="n">nr</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">nr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">e_type</span><span class="p">(</span> <span class="mf">1.0</span> <span class="p">)</span>
+    <span class="c1"># ------------------------------------------------------------------------</span>
+    <span class="c1"># Use row reduction to get convert upper traingular matrix to the identity</span>
+    <span class="c1"># ------------------------------------------------------------------------</span>
+    <span class="k">for</span> <span class="n">jm</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">nr</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="p">:</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">jm</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="c1"># zero out entries in column j and row less than j</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">Tablue</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">Tablue</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">-</span> <span class="n">Tablue</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">Tablue</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span>
+            <span class="n">Tablue</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">e_type</span><span class="p">(</span> <span class="mf">0.0</span> <span class="p">)</span>
+    <span class="c1"># -------------------------------------------------------------------------</span>
+    <span class="n">Ainv</span> <span class="o">=</span> <span class="n">Tablue</span><span class="p">[:,</span> <span class="n">nr</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="n">Ainv</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">example/python/numeric/simple_inv.py</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="numeric_simple_inv_xam_py.html" class="btn btn-neutral float-right" title="numeric_simple_inv_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="numeric_xam.html" class="btn btn-neutral float-left" title="numeric_xam" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
