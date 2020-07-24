@@ -14,7 +14,6 @@
     errno
     pypi
     cppad
-    travis
     yml
     exp
     sqrt
@@ -23,7 +22,6 @@
     pytest
     libcppad
     bradbell
-    travis
 }
 
 Error Messages During Installation
