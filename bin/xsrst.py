@@ -732,12 +732,32 @@ def init_spell_checker(spell_list) :
         'nc',
         'nd',
         'op',
+        'rel',
         'rc',
+        'sim',
         'std',
         'thier',
+        'var',
+        'vec',
+        'yi',
         'xp',
     ]
-    greek_alphabet_latex_command = [
+    add_to_dictionary = [
+        'covariate',
+        'covariates',
+        'debug',
+        'exponentiation',
+        'identifiability',
+        'initialize',
+        'initialized'
+        'jacobian',
+        'messaging',
+        'optimizes',
+        'piecewise',
+        'unary',
+        'unicode',
+        #
+        # greek letter latex commands
         r'\alpha',
         r'\beta',
         r'\gamma',
@@ -748,7 +768,7 @@ def init_spell_checker(spell_list) :
         r'\theta',
         r'\iota',
         r'\kappa',
-        r'\lamda',
+        r'\lambda',
         r'\mu',
         r'\nu',
         r'\xi',
@@ -766,7 +786,7 @@ def init_spell_checker(spell_list) :
     #
     spell_checker = spellchecker.SpellChecker(distance=1)
     spell_checker.word_frequency.remove_words(remove_from_dictionary)
-    spell_checker.word_frequency.load_words(greek_alphabet_latex_command)
+    spell_checker.word_frequency.load_words(add_to_dictionary)
     spell_checker.word_frequency.load_words(spell_list)
     #
     return spell_checker

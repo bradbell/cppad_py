@@ -5,20 +5,20 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
-# example english words
-covariates
-covariate
-debug
-initialized
-initialize
-jacobian
-optimizes
-unary
-unicode
+# standard mathematical abbreviations
+grad
+sinh
 #
 # example words special for this projext
 ctor
+jac
+nc
+nr
 op
+jac
+rc
+var
+vec
 xam
 #
 # example words in xsrst commands
@@ -40,10 +40,13 @@ len
 numpy
 py
 scipy
+str
+sys
 #
 # example c++ commands
 extern
 const
+cpp
 std
 #
 # example latex commands
@@ -51,6 +54,7 @@ std
 \bf
 \cdot
 \circ
+\dot
 \ell
 \end
 \exp
@@ -72,3 +76,4 @@ std
 \sqrt
 \sum
 \times
+\varepsilon
