@@ -19,6 +19,9 @@
 #   optimizer
 #   runge
 #   sqrt
+#   stime
+#   bradbell
+#   downloads
 # }
 #
 # Example Fitting an SEIRWD Model for Covid-19
@@ -155,7 +158,7 @@ x_name = [ 'm_mobility', 'm_testing', 'm_stime', 'I(0)', 'W(0)', 'beta_bar' ]
 #    0 \leq \bar{\beta} \exp[ m_0 c_0 (t) + m_1 c_1 (t) + m_2 c_2 (t) ]
 #
 # is true for all :math:`t`.
-# In addition, the size of the groups cannot be negative.
+# In addition, the size of the groups can not be negative.
 # It is sufficient to enforce this constraint on the initial conditions; i.e.,
 #
 # .. math::
@@ -214,7 +217,7 @@ sample_interval = 1
 # In this case the data file is used for the
 # cumulative death and corresponding covariates.
 # {xsrst_code py}
-data_file = '/home/bradbell/Downloads/561.csv'         # Pennnslyvania
+data_file = '/home/bradbell/Downloads/561.csv'         # Pennsylvania
 data_file = '/home/bradbell/trash/covid_19/seirwd.csv' # New York
 data_file = ''                                         # empty string
 # {xsrst_code}

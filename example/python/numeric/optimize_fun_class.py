@@ -47,10 +47,6 @@ class optimize_fun_class :
 
 .. include:: ../preamble.rst
 
-{xsrst_spell
-    hess
-}
-
 A Helper Class That Defines Functions Needed for Optimization
 #############################################################
 
