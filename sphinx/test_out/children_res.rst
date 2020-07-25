@@ -32,9 +32,9 @@ created automatically.
    :maxdepth: 1
    :hidden:
 
-   indent_space_exam
+   indent_exam
 
-- :ref:`indent_space_exam`
+- :ref:`indent_exam`
 
 .. meta::
    :keywords: example

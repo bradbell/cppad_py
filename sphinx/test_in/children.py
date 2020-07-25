@@ -39,10 +39,10 @@ If it had used a child link command, the same link would have been
 created automatically.
 
 {xsrst_children
-    sphinx/test_in/indent_space.py
+    sphinx/test_in/indent.py
 }
 
-- :ref:`indent_space_exam`
+- :ref:`indent_exam`
 
 Example
 *******
