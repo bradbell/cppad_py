@@ -28,13 +28,14 @@
     steppers
     inv
     misc
+    omh
 }
 
 CppAD Py Changes During 2020
 ############################
 
 {xsrst_children
-    whats_new/2018.omh
+    whats_new/2018.xsrst
 }
 Previous Years
 **************
@@ -46,6 +47,8 @@ Previous Years
     :ref:`install<setup_py.install>` procedure
     (not yet available from ``pip``).
 #.  Add a :ref:`purpose<xsrst_py.purpose>` paragraph to xsrst documentation.
+#.  Move the ``*.omh`` files to ``*.xsrst`` files (they have been converted
+    from omhelp input files to xsrst input files).
 
 07-24
 *****

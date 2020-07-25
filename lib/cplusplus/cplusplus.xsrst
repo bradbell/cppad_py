@@ -38,7 +38,7 @@ Cppad Py Vectors
 Children
 ********
 {xsrst_child_list
-    lib/cplusplus/vector.omh
+    lib/cplusplus/vector.xsrst
 }
 
 {xsrst_end vector}

@@ -303,7 +303,7 @@ sys.exit(0)
 # | |tab| ``pip install -i https://test.pypi.org/simple/ cppad_py``
 #
 # {xsrst_children
-#   install_error.omh
+#   install_error.xsrst
 #   bin/get_cppad.sh
 # }
 # Install Errors

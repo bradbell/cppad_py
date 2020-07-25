@@ -5,22 +5,20 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin py_sparse}
+{xsrst_begin py_lib}
 
 .. include:: ../preamble.rst
 
-Python Sparsity Routines
-########################
+The Python Library
+##################
 
 Children
 ********
 {xsrst_child_list
-    lib/python/cppad_py/sparse_rc.py
-    lib/python/cppad_py/sparse_rcv.py
-    lib/python/cppad_py/jac_sparsity.omh
-    lib/python/cppad_py/hes_sparsity.py
-    lib/python/cppad_py/sparse_jac.py
-    lib/python/cppad_py/sparse_hes.py
+    lib/python/cppad_py/fun.py
+    lib/python/cppad_py/sparse.xsrst
+    lib/python/cppad_py/utility.xsrst
+    lib/python/cppad_py/more_py.xsrst
 }
 
-{xsrst_end py_sparse}
+{xsrst_end py_lib}

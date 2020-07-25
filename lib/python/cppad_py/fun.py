@@ -24,16 +24,16 @@
 # ********
 # {xsrst_child_list
 #   lib/python/cppad_py/independent.py
-#   lib/python/cppad_py/abort_recording.omh
+#   lib/python/cppad_py/abort_recording.xsrst
 #   lib/python/cppad_py/fun_ctor.py
-#   lib/python/cppad_py/fun_property.omh
+#   lib/python/cppad_py/fun_property.xsrst
 #   lib/python/cppad_py/fun_new_dynamic.py
 #   lib/python/cppad_py/fun_jacobian.py
 #   lib/python/cppad_py/fun_hessian.py
 #   lib/python/cppad_py/fun_forward.py
 #   lib/python/cppad_py/fun_reverse.py
-#   lib/python/cppad_py/fun_optimize.omh
-#   lib/python/cppad_py/fun_json.omh
+#   lib/python/cppad_py/fun_optimize.xsrst
+#   lib/python/cppad_py/fun_json.xsrst
 # }
 #
 # {xsrst_end py_fun}

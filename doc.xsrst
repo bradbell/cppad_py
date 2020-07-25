@@ -71,10 +71,10 @@ Children
 ********
 {xsrst_child_list
     setup.py
-    example/python/numeric/numeric.omh
-    lib/library.omh
+    example/python/numeric/numeric.xsrst
+    lib/library.xsrst
     bin/xsrst.py
-    whats_new/2020.omh
+    whats_new/2020.xsrst
 }
 
 {xsrst_end cppad_py}
