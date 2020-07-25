@@ -10,3 +10,5 @@
 a
 and
 of
+# exclude whats new mm-dd headings
+[0-9][0-9]-[0-9][0-9]

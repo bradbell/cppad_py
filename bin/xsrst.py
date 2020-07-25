@@ -131,15 +131,19 @@ index_file
 ==========
 The command line argument *index_file* is the name of a file,
 relative to the *sphinx_dir* directory.
-This file contains a list of words (in lower case)
-that should not be included in the index
-(it can be an empty file).
-For example, a heading might contain the word ``The`` but you
-might not want to include ``the`` as a entry in the
-:ref:`genindex`.
-The words are one per line and
-leading and trailing white space in a word are ignored.
-A line that begins with :code:`#` is a comment (not included in the list).
+This file contains a list of python regular expressions for heading tokens
+that should not be included in the index (it can be an empty file).
+A heading token is any sequence of non space or new line characters
+with upper case letters converted to lower case.
+For example, a heading might contain the token ``The`` but you
+might not want to include ``the`` as a entry in the :ref:`genindex`.
+In this case you could have a line containing just ``the`` in *index_file*.
+For another example, you might want to exclude all tokens that are numbers.
+In this case you could have a line containing just ``[0-9]*`` in $index_file*.
+The regular expressions are one per line and
+leading and trailing spaces are ignored.
+A line that begins with :code:`#` is a comment
+(not included in the list of python regular expressions).
 
 Table Of Contents
 *****************
@@ -1612,7 +1616,13 @@ def process_headings(
             else :
                 index = ''
             for word in heading_list[-1]['text'].lower().split() :
-                if word not in index_list :
+                skip = False
+                for regexp in index_list :
+                    match = regexp.search(word)
+                    if match :
+                        if match.group(0) == word :
+                            skip = True
+                if not skip :
                     if index == '' :
                         index = word
                     else :
@@ -1908,7 +1918,9 @@ spell_list           = file2list(spell_path)
 spell_checker        = init_spell_checker(spell_list)
 #
 # index_list
-index_list           = file2list(index_path)
+index_list = list()
+for regexp in file2list(index_path) :
+    index_list.append( re.compile( regexp ) )
 #
 # regular expresssions used for spell command
 pattern = dict()
