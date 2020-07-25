@@ -93,7 +93,7 @@ modify_list=$(git status -s | grep '^ M ' | sed -e 's|^ M ||')
 new_list=$(git status -s | grep '^[?][?] ' | sed -e 's|^[?][?] ||')
 if [ "$modify_list" != '' ] || [ "$new_list" != '' ]
 then
-    echo_eval git add $add_list $modify_list
+    echo_eval git add $new_list $modify_list
 fi
 #
 # -----------------------------------------------------------------------------
