@@ -75,18 +75,27 @@ echo_eval bin/run_xsrst.sh
 # checkout gh-pages
 echo_eval git checkout gh-pages
 #
-# remove old omhelp documentation
-echo_eval git rm -r doc
-if [ -e 'doc' ]
+# remove old version of documentation
+echo_eval rm -r doc
+#
+# copy new version of documentation
+echo_eval cp -r build/sphinx/_build doc
+#
+# delete list
+delete_list=$(git status -s | grep '^ D ' | sed -e 's|^ D ||')
+if [ "$delete_list" != '' ]
 then
-    echo_eval rm -r doc
+    echo_eval git rm $delete_list
 fi
 #
-# copy new sphinx documentation
-mv build/sphinx/_build doc
+# add_list
+modify_list=$(git status -s | grep '^ M ' | sed -e 's|^ M ||')
+new_list=$(git status -s | grep '^[?][?] ' | sed -e 's|^[?][?] ||')
+if [ "$modify_list" != '' ] || [ "$new_list" != '' ]
+then
+    echo_eval git add $add_list $modify_list
+fi
 #
-# stage all the changes
-git add doc
 # -----------------------------------------------------------------------------
 list=`git status -s`
 if [ "$list" != '' ]
