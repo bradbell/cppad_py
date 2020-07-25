@@ -200,6 +200,7 @@ setup_result = setup(
     ext_modules  = [ extension_module ],
     packages     = [ 'cppad_py' ],
     package_dir  = { 'cppad_py' : 'lib/python/cppad_py' },
+    scripts      = [ 'bin/xsrst.py' ],
 )
 # ---------------------------------------------------------------------------
 if not (pip_distribution or src_distribution) :
@@ -376,9 +377,9 @@ sys.exit(0)
 #
 # Install
 # *******
-# Use the following command to build and install the debug version of cppad_py:
+# Use the following command to build and install cppad_py:
 #
-# | |tab| ``python setup.py build_ext install --prefix`` = *prefix*
+# | |tab| ``python setup.py install --prefix`` = *prefix*
 #
 # This will install ``cppad_py`` in the directory
 #

@@ -34,10 +34,6 @@ then
     echo_eval rm -r $name
 fi
 #
-cat << EOF > check_install.py
-import cppad_py
-print( 'import cppad_py: OK')
-EOF
 if $python check_install.py >& /dev/null
 then
     echo 'check_install.py: cannot remove old cppad_py in python path. Try'
@@ -54,16 +50,27 @@ PYTHONPATH="$cppad_path:$PYTHONPATH"
 # install new version
 if [ "$build_type" == 'debug' ]
 then
-    build_flag='--sebug'
+    build_flag='--debug'
 else
     build_flag=''
 fi
-echo_eval $python setup.py build_ext $buld_flag install \
+echo_eval $python setup.py $build_flag install \
     --prefix=$HOME/prefix/cppad_py
 echo_eval rm -r cppad_py
 # ---------------------------------------------------------------------------
+cat << EOF > check_install.py
+import cppad_py
+print( 'import cppad_py: OK')
+EOF
 echo_eval $python check_install.py
-# ---------------------------------------------------------------------------
 rm check_install.py
+# ---------------------------------------------------------------------------
+if ! which xsrst.py >& /dev/null
+then
+    echo 'check_install.sh: cannot find xsrst.py in execution path'
+    echo "PATH=$PATH"
+    exit 1
+fi
+# ---------------------------------------------------------------------------
 echo 'check_install.sh: OK'
 exit 0

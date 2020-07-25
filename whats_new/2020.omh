@@ -40,6 +40,12 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+07-25
+*****
+Install :ref:`xsrst.py<xsrst_py>` during the
+:ref:`install<setup_py.install>` procedure
+(not yet available from ``pip``).
+
 07-24
 *****
 #.  Add the :ref:`xsrst.py<xsrst_py>` program
