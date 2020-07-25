@@ -15,13 +15,13 @@ cppad_py
 .. comment:  -------------------------------------------------------------
 
 .. meta::
-   :keywords: cppad_py, cppad_py-2020.7.24:, c++, object, library, python, interface, to, cppad
+   :keywords: cppad_py, cppad_py-2020.7.25:, c++, object, library, python, interface, to, cppad
 
-.. index:: cppad_py, cppad_py-2020.7.24:, c++, object, library, python, interface, to, cppad
+.. index:: cppad_py, cppad_py-2020.7.25:, c++, object, library, python, interface, to, cppad
 
 .. _cppad_py:
 
-cppad_py-2020.7.24: A C++ Object Library and Python Interface to CppAD
+cppad_py-2020.7.25: A C++ Object Library and Python Interface to CppAD
 ######################################################################
 - :ref:`cppad_py.git_repository`
 - :ref:`cppad_py.purpose`

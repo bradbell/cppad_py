@@ -229,9 +229,9 @@ We need to install cppad_py so you can import it from any directory.
 
 Install
 *******
-Use the following command to build and install the debug version of cppad_py:
+Use the following command to build and install cppad_py:
 
-| |tab| ``python setup.py build_ext install --prefix`` = *prefix*
+| |tab| ``python setup.py install --prefix`` = *prefix*
 
 This will install ``cppad_py`` in the directory
 

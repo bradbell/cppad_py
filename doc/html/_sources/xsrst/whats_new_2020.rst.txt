@@ -14,6 +14,7 @@ whats_new_2020
 CppAD Py Changes During 2020
 ############################
 - :ref:`whats_new_2020.previous_years`
+- :ref:`whats_new_2020.07-25`
 - :ref:`whats_new_2020.07-24`
 - :ref:`whats_new_2020.07-18`
 - :ref:`whats_new_2020.07-05`
@@ -58,6 +59,19 @@ CppAD Py Changes During 2020
 Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
+
+.. meta::
+   :keywords: 07-25
+
+.. index:: 07-25
+
+.. _whats_new_2020.07-25:
+
+07-25
+*****
+Install :ref:`xsrst.py<xsrst_py>` during the
+:ref:`install<setup_py.install>` procedure
+(not yet available from ``pip``).
 
 .. meta::
    :keywords: 07-24
