@@ -42,9 +42,10 @@ Previous Years
 
 07-25
 *****
-Install :ref:`xsrst.py<xsrst_py>` during the
-:ref:`install<setup_py.install>` procedure
-(not yet available from ``pip``).
+#.  Install :ref:`xsrst.py<xsrst_py>` during the
+    :ref:`install<setup_py.install>` procedure
+    (not yet available from ``pip``).
+#.  Add a :ref:`purpose<xsrst_py.purpose>` paragraph to xsrst documentation.
 
 07-24
 *****
@@ -52,10 +53,8 @@ Install :ref:`xsrst.py<xsrst_py>` during the
     which extracts sphinx ``*.rst`` files from source code.
     This program is not yet installed but you can use it by placing
     the script ``bin/xsrst.py`` in your execution path.
-
 #.  Convert the cppad_py documentation to xsrst input files,
     which are mostly sphinx rst with a few extra xsrst commands.
-
 #.  Use xsrst and sphinx to generate this documentation for cppad_py.
 
 07-18
@@ -63,8 +62,9 @@ Install :ref:`xsrst.py<xsrst_py>` during the
 
 #.  The experimental ``bin/xsrst.py`` program was added.
     This program runs its tests and builds its documentation
-    (in the ``sphinx`` ) directory with the command ``bin/check_xsrst.sh`` .
-    The intention is to convert the cppad_py documentation from omhelp to sphinx.
+    (in the ``sphinx`` ) directory with the command ``bin/check_xsrst.sh``.
+    The intention is to convert the cppad_py documentation from omhelp to
+    sphinx.
 #.  Convert all the cppad_py source code to use spaces instead of tabs
     (with tab stops at multiples of 4 spaces).
 

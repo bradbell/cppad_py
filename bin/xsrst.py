@@ -34,6 +34,34 @@ Syntax
 ******
 ``xsrst.py`` *sphinx_dir* *root_file* *spell_file* *index_file*
 
+Purpose
+*******
+This is a pseudo sphinx extension that provides the following features:
+
+#.  The file name for each section is also an abbreviated title used
+    in the navigation bar and for linking to the section. This makes the
+    navigation bar more useful while also having long descriptive titles.
+    It also makes cross reference linking from other sections easier.
+#.  Enables documentation in the comments for source code
+    even when multiple computer languages are used for one package.
+    Allows the documentation for one section to span multiple locations
+    in the source code; see :ref:`suspend command<suspend_cmd>`.
+#.  Allows for multiple sections (rst output files) to be specified by one
+    input file. In addition, one section can be the parent for the
+    other sections in a file.
+#.  Generates the table of contents from the specification
+    of which files are included; see :ref:`child commands<child_cmd>`.
+    Generates a jump table to the headings for each section
+    so that the navigation bar need not include this information.
+#.  Includes a configurable :ref:`spell checker<spell_cmd>` and
+    :ref:`index<genindex>`.
+    Words in each heading are automatically included in the index.
+#.  Makes it easy to include source code, that also executes, from
+    directly below the :ref:`code command<code_cmd>` or from
+    a different location in a :ref:`file<file_cmd>`.
+    Uses tokens in the source, not line numbers in the source,
+    to signify start and stop of inclusion from a file.
+
 Requirements
 ************
 - ``pip install --user pyspellchecker``
@@ -67,7 +95,7 @@ the *root_section*; i.e., it is the top section in that table of contents.
 If there is more than one section in the *root_file*,
 the file must have a
 :ref:`begin_cmd.parent_section` and it is the *root_section*.
-The file *sphinx_dir* :code`/index.rst` must contain the line
+The file *sphinx_dir* :code:`/index.rst` must contain the line
 
 |space| |space| |space| |space|
 ``xsrst/`` *section_name*
@@ -120,7 +148,7 @@ toctree
 =======
 The sphinx ``toctree`` directives are automatically generated
 for sections. The only such directive you should directly edit
-is in the file *sphinx_dir* :code`/index.rst`.
+is in the file *sphinx_dir* :code:`/index.rst`.
 One entry in this file specifies the
 :ref:`root_section<xsrst_py.command_line_arguments.root_file.root_section>`.
 Other entries are for ``.rst`` files that are not extracted by
@@ -436,8 +464,8 @@ Example
 """
 {xsrst_begin suspend_cmd}
 
-Suspend and Resume Command
-##########################
+Suspend and Resume Commands
+###########################
 
 Syntax
 ******
