@@ -230,4 +230,4 @@ Once the tests were working, the changes where checked into using
 
 ----
 
-xsrst input file: ``lib/python/cppad_py/more_py.omh``
+xsrst input file: ``lib/python/cppad_py/more_py.xsrst``

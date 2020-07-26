@@ -82,4 +82,4 @@ Example
 
 ----
 
-xsrst input file: ``lib/cplusplus/vector.omh``
+xsrst input file: ``lib/cplusplus/vector.xsrst``

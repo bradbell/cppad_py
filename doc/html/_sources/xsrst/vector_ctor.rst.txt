@@ -117,4 +117,4 @@ All of the other vector examples use the vector constructors.
 
 ----
 
-xsrst input file: ``lib/cplusplus/vector.omh``
+xsrst input file: ``lib/cplusplus/vector.xsrst``

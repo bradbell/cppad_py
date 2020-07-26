@@ -150,4 +150,4 @@ The ``.travis.yml`` file is included below:
 
 ----
 
-xsrst input file: ``install_error.omh``
+xsrst input file: ``install_error.xsrst``

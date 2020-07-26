@@ -144,4 +144,4 @@ Example
 
 ----
 
-xsrst input file: ``lib/python/cppad_py/fun_property.omh``
+xsrst input file: ``lib/python/cppad_py/fun_property.xsrst``

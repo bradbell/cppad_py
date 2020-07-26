@@ -176,4 +176,4 @@ Example
 
 ----
 
-xsrst input file: ``lib/python/cppad_py/jac_sparsity.omh``
+xsrst input file: ``lib/python/cppad_py/jac_sparsity.xsrst``

@@ -44,4 +44,4 @@ Children
 
 ----
 
-xsrst input file: ``lib/cplusplus/cpp_lib.omh``
+xsrst input file: ``lib/cplusplus/cpp_lib.xsrst``

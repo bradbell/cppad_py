@@ -38,4 +38,4 @@ Children
 
 ----
 
-xsrst input file: ``lib/cplusplus/cplusplus.omh``
+xsrst input file: ``lib/cplusplus/cplusplus.xsrst``

@@ -248,4 +248,4 @@ Once the C++ tests were working, the changes where checked into using
 
 ----
 
-xsrst input file: ``lib/cplusplus/more_cpp.omh``
+xsrst input file: ``lib/cplusplus/more_cpp.xsrst``

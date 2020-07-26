@@ -44,4 +44,4 @@ Children
 
 ----
 
-xsrst input file: ``lib/python/cppad_py/sparse.omh``
+xsrst input file: ``lib/python/cppad_py/sparse.xsrst``

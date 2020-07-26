@@ -77,4 +77,4 @@ Example
 
 ----
 
-xsrst input file: ``lib/python/cppad_py/fun_optimize.omh``
+xsrst input file: ``lib/python/cppad_py/fun_optimize.xsrst``

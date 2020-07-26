@@ -3,14 +3,14 @@ suspend_cmd
 !!!!!!!!!!!
 
 .. meta::
-   :keywords: suspend_cmd, suspend, resume, command
+   :keywords: suspend_cmd, suspend, resume, commands
 
-.. index:: suspend_cmd, suspend, resume, command
+.. index:: suspend_cmd, suspend, resume, commands
 
 .. _suspend_cmd:
 
-Suspend and Resume Command
-##########################
+Suspend and Resume Commands
+###########################
 - :ref:`suspend_cmd.syntax`
 - :ref:`suspend_cmd.purpose`
 - :ref:`suspend_cmd.example`

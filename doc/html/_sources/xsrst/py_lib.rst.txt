@@ -40,4 +40,4 @@ Children
 
 ----
 
-xsrst input file: ``lib/python/cppad_py/py_lib.omh``
+xsrst input file: ``lib/python/cppad_py/py_lib.xsrst``

@@ -46,4 +46,4 @@ Children
 
 ----
 
-xsrst input file: ``example/python/numeric/numeric.omh``
+xsrst input file: ``example/python/numeric/numeric.xsrst``

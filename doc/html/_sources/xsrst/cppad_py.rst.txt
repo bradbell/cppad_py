@@ -138,4 +138,4 @@ Children
 
 ----
 
-xsrst input file: ``doc.omh``
+xsrst input file: ``doc.xsrst``

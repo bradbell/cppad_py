@@ -30,11 +30,6 @@ Cppad Py Changes During 2018
 - :ref:`whats_new_2018.07-07`
 - :ref:`whats_new_2018.07-03`
 
-.. meta::
-   :keywords: 11-10
-
-.. index:: 11-10
-
 .. _whats_new_2018.11-10:
 
 11-10
@@ -45,11 +40,6 @@ Cppad Py Changes During 2018
     :ref:`f_new_dynamic<py_fun_new_dynamic>` function.
 #.  Added the sections :ref:`more_cpp<more_cpp>` and :ref:`more_py<more_py>`.
 
-.. meta::
-   :keywords: 11-09
-
-.. index:: 11-09
-
 .. _whats_new_2018.11-09:
 
 11-09
@@ -59,11 +49,6 @@ and second operand is a ``double`` ; see
 :ref:`a_double_binary<a_double_binary>`,
 :ref:`a_double_compare<a_double_compare>`, and
 :ref:`a_double_assign<a_double_assign>`.
-
-.. meta::
-   :keywords: 11-07
-
-.. index:: 11-07
 
 .. _whats_new_2018.11-07:
 
@@ -78,11 +63,6 @@ and second operand is a ``double`` ; see
     :ref:`optimize<py_fun_optimize>`.
     The :ref:`py_sparse<py_sparse>` operations are not yet supported.
 
-.. meta::
-   :keywords: 11-05
-
-.. index:: 11-05
-
 .. _whats_new_2018.11-05:
 
 11-05
@@ -95,11 +75,6 @@ and second operand is a ``double`` ; see
     evaluates in ``a_double`` .
 #.  Advance to cppad-20181105 (must re-run ``bin/get_cppad.sh`` ).
 
-.. meta::
-   :keywords: 08-13
-
-.. index:: 08-13
-
 .. _whats_new_2018.08-13:
 
 08-13
@@ -111,11 +86,6 @@ and second operand is a ``double`` ; see
     Also remove ``swig_cxx_flags`` from these user settings
     (set automatically).
 #.  Improve the install instructions; see :ref:`setup_py<setup_py>`.
-
-.. meta::
-   :keywords: 07-31
-
-.. index:: 07-31
 
 .. _whats_new_2018.07-31:
 
@@ -131,11 +101,6 @@ and second operand is a ``double`` ; see
 #.  The python tests are no run in ``example/python``
     (not copied to the build directory).
 
-.. meta::
-   :keywords: 07-26
-
-.. index:: 07-26
-
 .. _whats_new_2018.07-26:
 
 07-26
@@ -143,11 +108,6 @@ and second operand is a ``double`` ; see
 Change ``cppad_py/python_major_version``
 to ``cppad_py/python_version``
 because it now contains both major and minor version numbers.
-
-.. meta::
-   :keywords: 07-19
-
-.. index:: 07-19
 
 .. _whats_new_2018.07-19:
 
@@ -159,11 +119,6 @@ Add ``-py3`` to the ``swig`` builds
 when running ``setup.py`` using Python 3; see
 `swig python 3
 <http://www.swig.org/Doc1.3/Python.html#Python_python3support>`_.
-
-.. meta::
-   :keywords: 07-15
-
-.. index:: 07-15
 
 .. _whats_new_2018.07-15:
 
@@ -177,11 +132,6 @@ when running ``setup.py`` using Python 3; see
     :ref:`py_lib<py_lib>` to numpy arrays.
     Note the :ref:`py_utility<py_utility>` routines do the conversion.
 
-.. meta::
-   :keywords: 07-14
-
-.. index:: 07-14
-
 .. _whats_new_2018.07-14:
 
 07-14
@@ -191,22 +141,12 @@ when running ``setup.py`` using Python 3; see
     :ref:`py_fun_forward<py_fun_forward>`, :ref:`py_fun_reverse<py_fun_reverse>`.
 #.  Add the :ref:`f_size_order()<py_fun_property.size_order>` function.
 
-.. meta::
-   :keywords: 07-13
-
-.. index:: 07-13
-
 .. _whats_new_2018.07-13:
 
 07-13
 *****
 Continue conversion of python library to using ``numpy.array`` ; see
 :ref:`py_fun_jacobian<py_fun_jacobian>`, :ref:`py_fun_hessian<py_fun_hessian>`.
-
-.. meta::
-   :keywords: 07-12
-
-.. index:: 07-12
 
 .. _whats_new_2018.07-12:
 
@@ -226,11 +166,6 @@ Continue conversion of python library to using ``numpy.array`` ; see
 #.  Change ``size_ind`` to :ref:`size_domain<py_fun_property.size_domain>`
     and ``size_dep`` to :ref:`size_range<py_fun_property.size_range>`.
 
-.. meta::
-   :keywords: 07-10
-
-.. index:: 07-10
-
 .. _whats_new_2018.07-10:
 
 07-10
@@ -238,11 +173,6 @@ Continue conversion of python library to using ``numpy.array`` ; see
 Start conversion of python library from using
 ``vector`` to using ``numpy.array`` ; see
 :ref:`py_independent<py_independent>`.
-
-.. meta::
-   :keywords: 07-08
-
-.. index:: 07-08
 
 .. _whats_new_2018.07-08:
 
@@ -259,22 +189,12 @@ Start conversion of python library from using
 #.  The file ``cppad_py/__init__.py`` was not being created.
     This has been fixed.
 
-.. meta::
-   :keywords: 07-07
-
-.. index:: 07-07
-
 .. _whats_new_2018.07-07:
 
 07-07
 *****
 Change build of Python module to use Python 3
 (now it can use either 2 or 3).
-
-.. meta::
-   :keywords: 07-03
-
-.. index:: 07-03
 
 .. _whats_new_2018.07-03:
 
@@ -284,4 +204,4 @@ Birthday when Cppad Py was first extracted from Cppad Swig.
 
 ----
 
-xsrst input file: ``whats_new/2018.omh``
+xsrst input file: ``whats_new/2018.xsrst``

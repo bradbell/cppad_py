@@ -36,4 +36,4 @@ Children
 
 ----
 
-xsrst input file: ``lib/library.omh``
+xsrst input file: ``lib/library.xsrst``

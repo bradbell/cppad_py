@@ -36,4 +36,4 @@ Children
 
 ----
 
-xsrst input file: ``lib/python/cppad_py/utility.omh``
+xsrst input file: ``lib/python/cppad_py/utility.xsrst``

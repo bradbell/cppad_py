@@ -103,4 +103,4 @@ Examples
 
 ----
 
-xsrst input file: ``lib/python/cppad_py/fun_json.omh``
+xsrst input file: ``lib/python/cppad_py/fun_json.xsrst``

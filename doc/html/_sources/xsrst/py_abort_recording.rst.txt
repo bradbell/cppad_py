@@ -59,4 +59,4 @@ Example
 
 ----
 
-xsrst input file: ``lib/python/cppad_py/abort_recording.omh``
+xsrst input file: ``lib/python/cppad_py/abort_recording.xsrst``
