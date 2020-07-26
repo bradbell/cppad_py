@@ -41,6 +41,13 @@ then
     echo '    bin/check_install.sh'
     exit 1
 fi
+if which xsrst.py >& /dev/null
+then
+    echo 'check_install.py: cannot remove old xsrst.py from execution path.'
+    echo 'Use the following command to see where it is:'
+    echo '  which sxrst.py'
+    exit 1
+fi
 # ---------------------------------------------------------------------------
 cppad_path=`echo 'import numpy; print(numpy.__file__)' | python | sed \
     -e 's|/numpy/__init__.py||' \
@@ -65,6 +72,8 @@ EOF
 echo_eval $python check_install.py
 rm check_install.py
 # ---------------------------------------------------------------------------
+cppad_path="$HOME/prefix/cppad_py/bin"
+PATH="$cppad_path:$PATH"
 if ! which xsrst.py >& /dev/null
 then
     echo 'check_install.sh: cannot find xsrst.py in execution path'
