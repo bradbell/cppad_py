@@ -49,6 +49,9 @@ Previous Years
 #.  Add a :ref:`purpose<xsrst_py.purpose>` paragraph to xsrst documentation.
 #.  Move the ``*.omh`` files to ``*.xsrst`` files (they have been converted
     from omhelp input files to xsrst input files).
+#.  Change the :ref:`index_file<xsrst_py.command_line_arguments.index_file>`
+    to use python regular expressions and remove the whats new month-day
+    headings from the :ref:`index<genindex>`.
 
 07-24
 *****
