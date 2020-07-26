@@ -55,7 +55,7 @@ ch
 --
 The value of *ch* must be one non white space character.
 There must be at least one white space character
-between `xsrst_comment_ch`` and *ch*.
+between ``xsrst_comment_ch`` and *ch*.
 Leading and trailing white space around *ch* is ignored.
 There can be only one occurence of this command within a file,
 it's effect lasts for the entire file, and

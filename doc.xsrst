@@ -15,10 +15,6 @@
 .. comment:  -------------------------------------------------------------
     Latex macros used throughout Cppad Py documentation
 
-:math:`\newcommand{\B}[1]{ {\bf #1} } \newcommand{\R}[1]{ {\rm #1} }`
-
-.. comment:  -------------------------------------------------------------
-
 {xsrst_spell
     bradbell
     cppad

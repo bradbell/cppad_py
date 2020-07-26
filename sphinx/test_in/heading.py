@@ -53,6 +53,10 @@ The label for this heading is
 
 Links
 *****
+These links would also work from any other section because the
+:ref:`section_name<begin_cmd.section_name>`
+(which is ``heading_res`` in this case)
+is included at the beginning of the target for the link:
 
 1. :ref:`heading_res`
 2. :ref:`heading_res.second_level`

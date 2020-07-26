@@ -18,7 +18,7 @@
     cppad
 }
 
-.. |space| unicode:: 0xA0
+.. include:: ../preamble.rst
 
 Extract Sphinx RST
 ##################
@@ -97,8 +97,7 @@ the file must have a
 :ref:`begin_cmd.parent_section` and it is the *root_section*.
 The file *sphinx_dir* :code:`/index.rst` must contain the line
 
-|space| |space| |space| |space|
-``xsrst/`` *section_name*
+|tab| ``xsrst/`` *section_name*
 
 where *section_name* is the name of the *root_section*.
 
@@ -196,8 +195,7 @@ is automatically used
 as a label for linking the title for a section; i.e., the
 following will link to the title for *section_name*:
 
-|space| |space| |space| |space|
-``:ref:``  ` *linking_text* :code:`<` *section_name* :code:`>` `
+|tab| ``:ref:``  ` *linking_text* :code:`<` *section_name* :code:`>` `
 
 where *linking_text* is the text the user sees.
 
@@ -207,7 +205,10 @@ The label for linking a heading that is not at the first level
 is the label for the heading directly above it plus a dot character :code:`.`,
 plus a lower case version of the heading with spaces converted to
 underbars :code:`_`. For example, the label for the heading for this
-paragraph is ``xsrst_py.headers_and_links.other_levels``.
+paragraph is
+
+|tab| ``xsrst_py.headers_and_links.other_levels``.
+
 This may seem verbose, but it helps keep the links up to date.
 If a heading changes, all the links to that heading will break.
 This identifies the links that should be checked
@@ -216,11 +217,11 @@ to make sure they are still valid.
 Children
 ========
 If a xsrst input file has a
-ref:`parent section<xsrst_py.table_of_contents.parent_section>`
+:ref:`parent section<xsrst_py.table_of_contents.parent_section>`
 the other sections in the file are children of the parent.
 
-- If a section has a :ref:`child link command<child_cmd>`
-  links to all the children of the section are place where the
+- If a section has a :ref:`child link or list command<child_cmd>`
+  links to all the children of the section are placed where the
   child link command is located.
 - If a section has a :ref:`children command<child_cmd>`
   no automatic links to the children of the current section are generated.
@@ -291,7 +292,7 @@ Commands
     underbar
 }
 
-.. |space| unicode:: 0xA0
+.. include:: ../preamble.rst
 
 Begin and End Commands
 ######################
@@ -321,8 +322,7 @@ Output File
 ***********
 The output file corresponding to *section_name* is
 
-|space| |space| |space| |space|
-:ref:`sphinx_dir<xsrst_py.command_line_arguments.sphinx_dir>`
+|tab| :ref:`sphinx_dir<xsrst_py.command_line_arguments.sphinx_dir>`
 ``/xsrst/`` *section_name* ``.rst``
 
 Parent Section
@@ -550,9 +550,7 @@ Example
 """
 {xsrst_begin file_cmd}
 
-.. |space| unicode:: 0xA0
-.. |tab| replace:: |space| |space| |space| |space|
-
+.. include:: ../preamble.rst
 
 File Command
 ############
@@ -647,7 +645,7 @@ ch
 --
 The value of *ch* must be one non white space character.
 There must be at least one white space character
-between `xsrst_comment_ch`` and *ch*.
+between ``xsrst_comment_ch`` and *ch*.
 Leading and trailing white space around *ch* is ignored.
 There can be only one occurence of this command within a file,
 it's effect lasts for the entire file, and

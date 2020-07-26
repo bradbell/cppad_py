@@ -15,7 +15,7 @@ Heading Example
 
 
 .. literalinclude:: ../../sphinx/test_in/heading.py
-    :lines: 30-66
+    :lines: 30-70
     :language: py
 
 .. meta::

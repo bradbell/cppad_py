@@ -2,8 +2,7 @@
 file_cmd
 !!!!!!!!
 
-.. |space| unicode:: 0xA0
-.. |tab| replace:: |space| |space| |space| |space|
+.. include:: ../preamble.rst
 
 .. meta::
    :keywords: file_cmd, file, command
