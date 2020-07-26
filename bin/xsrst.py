@@ -64,8 +64,11 @@ This is a pseudo sphinx extension that provides the following features:
 
 Requirements
 ************
-- ``pip install --user pyspellchecker``
-- ``pip install --user sphinx``
+-   ``pip install --user pyspellchecker``
+-   ``pip install --user sphinx``
+-   The directory
+    :ref:`cppad_prefix<get_cppad_sh.settings.cppad_prefix>` ``/bin``
+    must be in your execution path.
 
 Notation
 ********

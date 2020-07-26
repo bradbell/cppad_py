@@ -43,7 +43,7 @@
 # ============
 # This prefix is used to install CppAD may be a local director; e.g.,
 # ``build/prefix`` or an absolute path; e.g., ``/usr/local`` ,
-# it may include the shell variable ``$HOME`` but no variables:
+# it may include the shell variable ``$HOME`` but no other variables:
 # {xsrst_code sh}
 cppad_prefix="$HOME/prefix/cppad"
 # {xsrst_code}
