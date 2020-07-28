@@ -24,7 +24,7 @@ copyright = '2020'
 author = 'Brad Bell'
 
 # The full version, year.month.date
-version = '2020.7.27'
+version = '2020.7.28'
 
 
 # -- General configuration ---------------------------------------------------
