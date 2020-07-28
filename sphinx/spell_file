@@ -1,10 +1,15 @@
-# -----------------------------------------------------------------------------
-#         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
-#              This program is distributed under the terms of the
-#              GNU General Public License version 3.0 or later see
-#                    https://www.gnu.org/licenses/gpl-3.0.txt
-# ----------------------------------------------------------------------------
+# {xsrst_comment_ch #}
+# {xsrst_begin spell_file}
+#
+# Example spell_file
+# ==================
+#
+# {xsrst_file
+#    # BEGIN_SPELL_FILE
+#    # END_SPELL_FILE
+# }
+# {xsrst_end spell_file}
+# BEGIN_SPELL_FILE
 # standard mathematical abbreviations
 grad
 hess
@@ -79,3 +84,4 @@ std
 \sum
 \times
 \varepsilon
+# END_SPELL_FILE

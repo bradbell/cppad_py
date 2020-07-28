@@ -27,9 +27,12 @@ ignore_files='
     MANIFEST.in
     sphinx/Makefile
     sphinx/conf.py
+    sphinx/configure.xsrst
     sphinx/index.rst
+    sphinx/index_file
     sphinx/preamble.rst
     sphinx/test_out/
+    sphinx/spell_file
 '
 # ----------------------------------------------------------------------------
 echo "copyright_owner=$copyright_owner"

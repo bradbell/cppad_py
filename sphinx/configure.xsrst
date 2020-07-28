@@ -1,0 +1,12 @@
+{xsrst_begin configure}
+
+Example xsrst Configuration Files
+#################################
+
+{xsrst_child_link
+    sphinx/conf.py
+    sphinx/index_file
+    sphinx/spell_file
+}
+
+{xsrst_end configure}

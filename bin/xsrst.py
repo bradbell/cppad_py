@@ -27,7 +27,8 @@ Extract Sphinx RST
 .. The indentation examples are included by the child_cmd section.
 
 {xsrst_children
-   sphinx/test_in/heading.py
+    sphinx/test_in/heading.py
+    sphinx/configure.xsrst
 }
 
 Syntax
@@ -66,9 +67,8 @@ Requirements
 ************
 -   ``pip install --user pyspellchecker``
 -   ``pip install --user sphinx``
--   The directory
-    :ref:`cppad_prefix<get_cppad_sh.settings.cppad_prefix>` ``/bin``
-    must be in your execution path.
+-   The directory *cppad_prefix* ``/bin`` must be in your execution path
+    where *cppad_prefix* is the install prefix for cppad.
 
 Notation
 ********
@@ -116,6 +116,11 @@ All the ``.rst`` files in *sphinx_dir* :code:`/xsrst`
 were extracted from the source code the last time that ``xsrst.py``
 was executed.
 
+Example conf.py
+---------------
+:ref:`conf.py<conf_py>`
+
+
 spell_file
 ==========
 The command line argument *spell_file* is the name of a file,
@@ -128,6 +133,10 @@ The words are one per line and
 leading and trailing white space in a word are ignored.
 Special words, for a particular section, are specified using the
 :ref:`spell command<spell_cmd>`.
+
+Example
+-------
+:ref:`spell_file<spell_file>`
 
 index_file
 ==========
@@ -146,6 +155,10 @@ The regular expressions are one per line and
 leading and trailing spaces are ignored.
 A line that begins with :code:`#` is a comment
 (not included in the list of python regular expressions).
+
+Example
+-------
+:ref:`index_file<index_file>`
 
 Table Of Contents
 *****************
@@ -903,11 +916,12 @@ def pattern_begin_end(file_data, file_in) :
     ch = comment_ch
     if ch :
         pattern_begin = re.compile(
-        r'\n[' + ch + r']?[ \t]*\{xsrst_(begin|begin_parent)\s+([a-z0-9_]*)\}'
+        r'(^|\n)[' + ch +
+            r']?[ \t]*\{xsrst_(begin|begin_parent)\s+([a-z0-9_]*)\}'
         )
     else :
         pattern_begin = re.compile(
-            r'\n[ \t]*\{xsrst_(begin|begin_parent)\s+([a-z0-9_]*)\}'
+            r'(^|\n)[ \t]*\{xsrst_(begin|begin_parent)\s+([a-z0-9_]*)\}'
         )
     #
     # pattern_end
@@ -966,8 +980,8 @@ def file2file_info(
             file_index = len(file_data)
         else :
             # section_name
-            section_name = match_xsrst_begin.group(2)
-            is_parent    = match_xsrst_begin.group(1) == 'begin_parent'
+            section_name = match_xsrst_begin.group(3)
+            is_parent    = match_xsrst_begin.group(2) == 'begin_parent'
             if section_name == '' :
                 msg  = 'section_name after xsrst_begin is empty'
                 sys_exit(msg,
@@ -1215,8 +1229,8 @@ def child_commands(
         list_children     = list()
         found_parent = False
         while match and not found_parent:
-            found_parent  = match.group(1) == 'begin_parent'
-            child_name    = match.group(2)
+            found_parent  = match.group(2) == 'begin_parent'
+            child_name    = match.group(3)
             #
             if found_parent :
                 list_children = [ child_name ]

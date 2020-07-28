@@ -41,6 +41,15 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+07-28
+*****
+#.  Move version number from the title in :ref:`cppad_py<cppad_py>` to
+    the documentation navigation side bar.
+#.  Add the :ref:`configure` section.
+#.  The :ref:`xsrst begin command<begin_cmd>` was not recognized
+    at the beginning of a file
+    (when there is no new line before it). This has been fixed.
+
 07-25
 *****
 #.  Install :ref:`xsrst.py<xsrst_py>` during the
