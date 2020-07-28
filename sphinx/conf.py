@@ -23,8 +23,8 @@ project = 'xsrst'
 copyright = '2020'
 author = 'Brad Bell'
 
-# The full version, including alpha/beta/rc tags
-release = '2020.7.27'
+# The full version, year.month.date
+version = '2020.7.27'
 
 
 # -- General configuration ---------------------------------------------------

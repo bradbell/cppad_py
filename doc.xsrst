@@ -22,8 +22,8 @@
     gpl
 }
 
-cppad_py-2020.7.27: A C++ Object Library and Python Interface to CppAD
-######################################################################
+A C++ Object Library and Python Interface to CppAD
+##################################################
 
 Git Repository
 **************
