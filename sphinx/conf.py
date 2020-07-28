@@ -24,7 +24,7 @@ copyright = '2020'
 author = 'Brad Bell'
 
 # The full version, including alpha/beta/rc tags
-release = '2202.5.22'
+release = '2020.7.26'
 
 
 # -- General configuration ---------------------------------------------------

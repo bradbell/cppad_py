@@ -13,6 +13,7 @@ image_link='https://bradbell.github.io/cppad_py'
 # version number (can be empty).
 version_files='
     doc.xsrst
+    sphinx/conf.py
 '
 #
 # List of special files, for this repository, that the devel tools ignore.
