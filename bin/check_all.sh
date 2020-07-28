@@ -78,6 +78,7 @@ then
 fi
 # -----------------------------------------------------------------------------
 echo_eval_log check_copyright.sh
+bin/check_xsrst.sh
 echo_eval_log bin/run_xsrst.sh
 # -----------------------------------------------------------------------------
 if [ "$build_type" == 'release' ]
