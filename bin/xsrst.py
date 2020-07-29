@@ -108,7 +108,8 @@ sphinx_dir
 ==========
 The command line argument *sphinx_dir* is a sub-directory,
 of the top git repository directory.
-The  sphinx ``conf.py`` and ``index.rst`` files are located in this directory.
+The  sphinx ``conf.py``, ``index.rst``, *spell_file*, and *index_file*
+files are located in this directory.
 Any files that have names ending in ``.rst``,
 and that are in the directory *sphinx_dir* :code:`/xsrst`,
 are removed at the beginning of execution of ``xsrst.py``.
@@ -116,9 +117,13 @@ All the ``.rst`` files in *sphinx_dir* :code:`/xsrst`
 were extracted from the source code the last time that ``xsrst.py``
 was executed.
 
-Example conf.py
----------------
-:ref:`conf.py<conf_py>`
+Example Configuration Files
+---------------------------
+
+| |tab| conf.py: :ref:`conf_py`
+| |tab| index.rst: :ref:`index_rst`
+| |tab| index_file: :ref:`index_file`
+| |tab| spell_file: :ref:`spell_file`
 
 
 spell_file
@@ -133,10 +138,6 @@ The words are one per line and
 leading and trailing white space in a word are ignored.
 Special words, for a particular section, are specified using the
 :ref:`spell command<spell_cmd>`.
-
-Example
--------
-:ref:`spell_file<spell_file>`
 
 index_file
 ==========
@@ -155,10 +156,6 @@ The regular expressions are one per line and
 leading and trailing spaces are ignored.
 A line that begins with :code:`#` is a comment
 (not included in the list of python regular expressions).
-
-Example
--------
-:ref:`index_file<index_file>`
 
 Table Of Contents
 *****************

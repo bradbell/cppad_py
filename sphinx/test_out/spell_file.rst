@@ -10,7 +10,7 @@ spell_file
 .. _spell_file:
 
 Example spell_file
-==================
+##################
 
 
 .. literalinclude:: ../../sphinx/spell_file

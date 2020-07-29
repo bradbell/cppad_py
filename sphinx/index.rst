@@ -1,10 +1,21 @@
-.. vim: set expandtab: 
+.. comment:
+    {xsrst_begin index_rst}
+
+    Example index.rst
+    #################
+
+    {xsrst_file
+        BEGIN_INDEX_RST
+        END_INDEX_RST
+    }
+    {xsrst_end index_rst}
+
+.. comment: BEGIN_INDEX_RST
 
 Table of Contents
 =================
 
 .. toctree::
-   :maxdepth: 4
 
    xsrst/xsrst_py
 
@@ -15,3 +26,5 @@ Index
 Search
 ======
 * :ref:`search`
+
+.. comment: END_INDEX_RST

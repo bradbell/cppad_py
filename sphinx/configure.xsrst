@@ -5,6 +5,7 @@ Example xsrst Configuration Files
 
 {xsrst_child_link
     sphinx/conf.py
+    sphinx/index.rst
     sphinx/index_file
     sphinx/spell_file
 }
