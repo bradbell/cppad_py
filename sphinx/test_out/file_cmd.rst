@@ -143,7 +143,6 @@ Example
 
    file_exam
 
-
 ----
 
 xsrst input file: ``bin/xsrst.py``

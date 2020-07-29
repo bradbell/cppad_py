@@ -57,7 +57,6 @@ Example
 
    suspend_exam
 
-
 ----
 
 xsrst input file: ``bin/xsrst.py``

@@ -33,7 +33,8 @@ Extract Sphinx RST
 
 Syntax
 ******
-``xsrst.py`` *sphinx_dir* *root_file* *spelling* *keyword*
+- ``xsrst.py`` *sphinx_dir* *root_file* *spelling* *keyword*
+- ``xsrst.py`` *sphinx_dir* *root_file* *spelling* *keyword* ``--line_numbers``
 
 Purpose
 *******
@@ -156,6 +157,14 @@ The regular expressions are one per line and
 leading and trailing spaces are ignored.
 A line that begins with :code:`#` is a comment
 (not included in the list of python regular expressions).
+
+--line_numbers
+==============
+If ``--line_numbers`` is present at the end of the command line,
+a table mapping line numbers in the ``*.rst`` output file to
+line numbers in the corresponding xsrst input file is generated
+at the end of the output. This can be useful for finding the source
+of errors reported by sphinx as line numbers in a ``*.rst`` file.
 
 Table Of Contents
 *****************
@@ -733,22 +742,26 @@ def add_line_numbers(data) :
     result += '\n'
     return result
 # ---------------------------------------------------------------------------
-def remove_line_numbers(pattern, data) :
-    match   = pattern['line'].search(data)
-    offset  = 0
-    result  = ""
+def remove_line_numbers(pattern, data_in) :
+    match     = pattern['line'].search(data_in)
+    offset_in = 0
+    line_out  = 1
+    data_out  = ''
+    line_pair = list()
     while match :
-        start   = offset + match.start()
-        end     = offset + match.end()
+        start      = offset_in + match.start()
+        end        = offset_in + match.end()
+        before     = data_in[offset_in : start]
+        line_xsrst = match.group(1)
+        line_out  += before.count('\n')
         #
-        before  = data[offset : start]
-        after   = data[end :]
-        result += before
+        line_pair.append( ( str(line_out), line_xsrst) )
+        data_out += before
         #
-        offset   = end
-        match    = pattern['line'].search(data[end :])
-    result += data[offset :]
-    return result
+        offset_in   = end
+        match       = pattern['line'].search(data_in[end :])
+    data_out += data_in[offset_in :]
+    return data_out, line_pair
 # ---------------------------------------------------------------------------
 def init_spell_checker(spell_list) :
     remove_from_dictionary = [
@@ -1681,7 +1694,7 @@ def process_headings(
     return section_data, pseudo_heading, jump_table
 # -----------------------------------------------------------------------------
 # Compute output corresponding to a section
-# (finish processing that has been delayed to this point)
+# (finishes xsrst processing that has been delayed to this point)
 def compute_output(
     pattern,
     sphinx_dir,
@@ -1692,15 +1705,13 @@ def compute_output(
     jump_table,
     output_dir,
     section_name,
+    line_numbers
 ) :
     # If file_path is relative to top git repo directory,
     # xsrst_dir2top_dir/file_path is relative to sphinx_dir/xsrst directory.
     depth   =  sphinx_dir.count('/') + 2
     top_dir =  depth * '../'
     top_dir = top_dir[:-1]
-    #
-    # remove xsrst_line commands
-    section_data = remove_line_numbers(pattern, section_data)
     #
     # split section data into lines
     newline_list = newline_indices(section_data)
@@ -1800,20 +1811,32 @@ def compute_output(
             if child_list_command :
                 for child in list_children :
                     rst_output += '#. ' + child + ': :ref:`'+ child + '`\n'
-        elif newline <= startline + num_remove :
-            if not previous_empty :
-                rst_output += "\n"
-                previous_empty = True
+                rst_output += '\n'
+            previous_empty = True
         else :
-            line = line[num_remove : newline + 1]
-            # replace tabs with 4 spaces
-            line = line.replace('\t', 4 * ' ' )
+            match = pattern['line'].search(line)
+            if match :
+                empty_line = match.start() <= num_remove
+            else :
+                empty_line = len(line) <= num_remove
+            if empty_line :
+                    line = '\n'
+            else :
+                    line = line[num_remove :]
             if inside_code :
                 line = 4 * ' ' + line
             #
+            if line != '\n' :
+                rst_output += line
+            elif not previous_empty :
+                rst_output += line
+            #
             previous_empty = line == '\n'
-            rst_output += line
         startline = newline + 1
+    #
+    # The last step in converting xsrst commands is removing line numbers
+    # (done last so mapping from output to input line number is correct)
+    rst_output, line_pair = remove_line_numbers(pattern, rst_output)
     # -----------------------------------------------------------------------
     if not previous_empty :
         rst_output += '\n'
@@ -1829,12 +1852,19 @@ def compute_output(
     rst_output += '----\n\n'
     rst_output += f'xsrst input file: ``{file_in}``\n'
     #
+    if line_numbers :
+        rst_output += '\n.. csv-table:: Line Numbers\n'
+        rst_output += 4 * ' ' + ':header: rst file, xsrst input\n'
+        rst_output += 4 * ' ' + ':widths: 10, 10\n\n'
+        for pair in line_pair :
+            rst_output += 4 * ' ' + pair[0] + ',' + pair[1] + '\n'
+    #
     return rst_output
 # -----------------------------------------------------------------------------
 # write file corresponding to a section
 def write_file(
     section_name,
-    rst_output
+    rst_output,
 ) :
     # open output file
     file_out = output_dir + '/' + section_name + '.rst'
@@ -1850,8 +1880,9 @@ if not os.path.isdir('.git') :
     sys_exit(msg)
 #
 # check number of command line arguments
-if len(sys.argv) != 5 :
-    usage = 'bin/xsrst.py root_file sphinx_dir spelling keyword'
+if len(sys.argv) != 5 and len(sys.argv) != 6 :
+    usage  = 'bin/xsrst.py root_file sphinx_dir spelling keyword'
+    usage += ' [--line_numbers]'
     sys_exit(usage)
 #
 # root_file
@@ -1883,6 +1914,13 @@ if not os.path.isfile(keyword_path) :
     msg  = 'sphinx_dir/keyword = ' + keyword_path + '\n'
     msg += 'is not a file'
     sys_exit(msg)
+#
+# line_numbers
+line_numbers = len(sys.argv) == 6
+if line_numbers :
+    if not sys.argv[5] == '--line_numbers' :
+        msg += 'optional arugment at end of command line is not --line_numbers'
+        sys_exit(msg)
 #
 # check for conf.y, index.rst
 for file_name in ['conf.py', 'index.rst'] :
@@ -2091,9 +2129,13 @@ while 0 < len(file_info_stack) :
             jump_table,
             output_dir,
             section_name,
+            line_numbers
         )
         # ---------------------------------------------------------------
-        write_file(section_name, rst_output)
+        write_file(
+            section_name,
+            rst_output,
+        )
 # -----------------------------------------------------------------------------
 # read index.rst
 index_file   = sphinx_dir + '/index.rst'

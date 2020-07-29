@@ -116,7 +116,6 @@ Example
 
    comment_ch_exam
 
-
 ----
 
 xsrst input file: ``bin/xsrst.py``
