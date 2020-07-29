@@ -1680,9 +1680,9 @@ def process_headings(
     #
     return section_data, pseudo_heading, jump_table
 # -----------------------------------------------------------------------------
-# write file corresponding to a section
-# (and finish processing that has been delayed to this point)
-def write_file(
+# Compute output corresponding to a section
+# (finish processing that has been delayed to this point)
+def compute_output(
     pattern,
     sphinx_dir,
     file_in,
@@ -1709,8 +1709,8 @@ def write_file(
     file_out = output_dir + '/' + section_name + '.rst'
     file_ptr = open(file_out, 'w')
     #
-    # put pseudo heading at top of the file
-    file_ptr.write(pseudo_heading)
+    # put pseudo heading at beginning of output
+    rst_output = pseudo_heading
     #
     # now output the section data
     startline         = 0
@@ -1728,7 +1728,7 @@ def write_file(
         child_link_command  = line.startswith('{xsrst_child_link')
         child_list_command  = line.startswith('{xsrst_child_list')
         if navigate_command :
-            file_ptr.write(jump_table + '\n')
+            rst_output += jump_table + '\n'
             previous_empty = True
         elif label_command :
             # --------------------------------------------------------
@@ -1743,7 +1743,7 @@ def write_file(
                 line += '   :keywords: ' + index + '\n\n'
                 line += '.. index:: ' + index + '\n\n'
             line += '.. _' + label + ':\n\n'
-            file_ptr.write(line)
+            rst_output += line
             previous_empty = True
         elif code_command :
             # --------------------------------------------------------
@@ -1757,7 +1757,7 @@ def write_file(
                     line = '\n' + line
             else :
                 line = '\n'
-            file_ptr.write(line)
+            rst_output += line
             previous_empty = True
         elif file_command :
             line       = line.split()
@@ -1765,11 +1765,11 @@ def write_file(
             start_line = line[2]
             stop_line  = line[3]
             #
-            file_ptr.write('\n')
+            rst_output += '\n'
             line = f'.. literalinclude:: {top_dir}/{file_name}\n'
-            file_ptr.write(line)
+            rst_output += line
             line = f'    :lines: {start_line}-{stop_line}\n'
-            file_ptr.write(line)
+            rst_output += line
             #
             # Add language to literalinclude, sphinx seems to be brain
             # dead and does not do this automatically.
@@ -1779,30 +1779,30 @@ def write_file(
                 if extension == 'xsrst' :
                     extension = 'rst'
                 line = f'    :language: {extension}\n'
-                file_ptr.write(line)
+                rst_output += line
             #
-            file_ptr.write('\n')
+            rst_output += '\n'
             previous_empty = True
         elif children_command or child_link_command or child_list_command :
             assert not has_child_command
             assert len(list_children) > 0
             has_child_command = True
             #
-            file_ptr.write('.. toctree::\n')
-            file_ptr.write('   :maxdepth: 1\n')
+            rst_output += '.. toctree::\n'
+            rst_output += '   :maxdepth: 1\n'
             if children_command or child_list_command :
-                file_ptr.write('   :hidden:\n')
-            file_ptr.write('\n')
+                rst_output += '   :hidden:\n'
+            rst_output += '\n'
             for child in list_children :
-                file_ptr.write('   ' + child + '\n')
-            file_ptr.write('\n')
+                rst_output += '   ' + child + '\n'
+            rst_output += '\n'
             #
             if child_list_command :
                 for child in list_children :
-                    file_ptr.write('#. ' + child + ': :ref:`'+ child + '`\n' )
+                    rst_output += '#. ' + child + ': :ref:`'+ child + '`\n'
         elif newline <= startline + num_remove :
             if not previous_empty :
-                file_ptr.write( "\n" )
+                rst_output += "\n"
                 previous_empty = True
         else :
             line = line[num_remove : newline + 1]
@@ -1812,21 +1812,34 @@ def write_file(
                 line = 4 * ' ' + line
             #
             previous_empty = line == '\n'
-            file_ptr.write( line )
+            rst_output += line
         startline = newline + 1
     # -----------------------------------------------------------------------
     if not previous_empty :
-        file_ptr.write('\n')
+        rst_output += '\n'
     #
     if len(list_children) > 0 and not has_child_command :
-        file_ptr.write('.. toctree::\n')
-        file_ptr.write('   :maxdepth: 1\n\n')
+        rst_output += '.. toctree::\n'
+        rst_output += '   :maxdepth: 1\n\n'
         for child in list_children :
-            file_ptr.write('   ' + child + '\n')
-        file_ptr.write('\n')
+            rst_output += '   ' + child + '\n'
+        rst_output += '\n'
     #
-    file_ptr.write('----\n\n') # sphinx transition
-    file_ptr.write( f'xsrst input file: ``{file_in}``\n')
+    # sphinx transition
+    rst_output += '----\n\n'
+    rst_output += f'xsrst input file: ``{file_in}``\n'
+    #
+    return rst_output
+# -----------------------------------------------------------------------------
+# write file corresponding to a section
+def write_file(
+    section_name,
+    rst_output
+) :
+    # open output file
+    file_out = output_dir + '/' + section_name + '.rst'
+    file_ptr = open(file_out, 'w')
+    file_ptr.write(rst_output)
     file_ptr.close()
 # =============================================================================
 # main program
@@ -2068,8 +2081,7 @@ while 0 < len(file_info_stack) :
                     list_children.append(  this_file_info[i]['section_name'] )
         list_children = list_children + child_section
         # ---------------------------------------------------------------
-        # write file for this section
-        write_file(
+        rst_output = compute_output(
             pattern,
             sphinx_dir,
             file_in,
@@ -2080,6 +2092,8 @@ while 0 < len(file_info_stack) :
             output_dir,
             section_name,
         )
+        # ---------------------------------------------------------------
+        write_file(section_name, rst_output)
 # -----------------------------------------------------------------------------
 # read index.rst
 index_file   = sphinx_dir + '/index.rst'
