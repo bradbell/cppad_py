@@ -10,19 +10,15 @@ cppad_py
 .. comment:  -------------------------------------------------------------
     Latex macros used throughout Cppad Py documentation
 
-:math:`\newcommand{\B}[1]{ {\bf #1} } \newcommand{\R}[1]{ {\rm #1} }`
-
-.. comment:  -------------------------------------------------------------
-
 .. meta::
-   :keywords: cppad_py, cppad_py-2020.7.25:, c++, object, library, python, interface, to, cppad
+   :keywords: cppad_py, c++, object, library, python, interface, to, cppad
 
-.. index:: cppad_py, cppad_py-2020.7.25:, c++, object, library, python, interface, to, cppad
+.. index:: cppad_py, c++, object, library, python, interface, to, cppad
 
 .. _cppad_py:
 
-cppad_py-2020.7.25: A C++ Object Library and Python Interface to CppAD
-######################################################################
+A C++ Object Library and Python Interface to CppAD
+##################################################
 - :ref:`cppad_py.git_repository`
 - :ref:`cppad_py.purpose`
 - :ref:`cppad_py.getting_started`

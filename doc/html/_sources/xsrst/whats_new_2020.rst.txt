@@ -14,6 +14,8 @@ whats_new_2020
 CppAD Py Changes During 2020
 ############################
 - :ref:`whats_new_2020.previous_years`
+- :ref:`whats_new_2020.07-29`
+- :ref:`whats_new_2020.07-28`
 - :ref:`whats_new_2020.07-25`
 - :ref:`whats_new_2020.07-24`
 - :ref:`whats_new_2020.07-18`
@@ -60,6 +62,29 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+.. _whats_new_2020.07-29:
+
+07-29
+*****
+Add the optional command line argument
+:ref:`line_increment<xsrst_py.command_line_arguments.line_increment>`.
+This is an aid for finding the source of errors and warnings reported by sphinx.
+
+.. _whats_new_2020.07-28:
+
+07-28
+*****
+#.  Move version number from the title in :ref:`cppad_py<cppad_py>` to
+    the documentation navigation side bar.
+#.  Add the :ref:`configure` section.
+#.  The :ref:`xsrst begin command<begin_cmd>` was not recognized
+    at the beginning of a file
+    (when there is no new line before it). This has been fixed.
+#.  Change the *index_file* to
+    :ref:`keyword<xsrst_py.command_line_arguments.keyword>`
+    and *spell_file* to
+    :ref:`spelling<xsrst_py.command_line_arguments.spelling>`
+
 .. _whats_new_2020.07-25:
 
 07-25
@@ -70,7 +95,7 @@ Previous Years
 #.  Add a :ref:`purpose<xsrst_py.purpose>` paragraph to xsrst documentation.
 #.  Move the ``*.omh`` files to ``*.xsrst`` files (they have been converted
     from omhelp input files to xsrst input files).
-#.  Change the :ref:`index_file<xsrst_py.command_line_arguments.index_file>`
+#.  Change the :ref:`keyword<xsrst_py.command_line_arguments.keyword>`
     to use python regular expressions and remove the whats new month-day
     headings from the :ref:`index<genindex>`.
 

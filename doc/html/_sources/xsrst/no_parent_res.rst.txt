@@ -44,7 +44,6 @@ Child Link children.py
    children_exam
    children_res
 
-
 .. meta::
    :keywords: example
 

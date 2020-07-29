@@ -2,7 +2,7 @@
 begin_cmd
 !!!!!!!!!
 
-.. |space| unicode:: 0xA0
+.. include:: ../preamble.rst
 
 .. meta::
    :keywords: begin_cmd, begin, end, commands
@@ -71,8 +71,7 @@ Output File
 ***********
 The output file corresponding to *section_name* is
 
-|space| |space| |space| |space|
-:ref:`sphinx_dir<xsrst_py.command_line_arguments.sphinx_dir>`
+|tab| :ref:`sphinx_dir<xsrst_py.command_line_arguments.sphinx_dir>`
 ``/xsrst/`` *section_name* ``.rst``
 
 .. meta::
