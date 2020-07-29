@@ -1687,13 +1687,11 @@ def write_file(
     sphinx_dir,
     file_in,
     section_data,
-    section_info,
     list_children,
     pseudo_heading,
     jump_table,
     output_dir,
     section_name,
-    spell_checker,
 ) :
     # If file_path is relative to top git repo directory,
     # xsrst_dir2top_dir/file_path is relative to sphinx_dir/xsrst directory.
@@ -1707,42 +1705,9 @@ def write_file(
     # split section data into lines
     newline_list = newline_indices(section_data)
     #
-    # index of this section
-    section_index = len(section_info) - 1
-    #
-    # links to ancestors; i.e., position of this section in website
-    assert section_info[section_index]['section_name'] == section_name
-    line           = section_name + '\n'
-    ancestor_index = section_info[section_index]['parent_section']
-    while ancestor_index != None :
-        ancestor_name  = section_info[ancestor_index]['section_name']
-        ancestor_index = section_info[ancestor_index]['parent_section']
-        line  = f':ref:`{ancestor_name}<{ancestor_name}>`' + ' > ' + line
-    ancestor_line = '**Ancestors:** ' + line
-    #
-    # links to children of this section
-    if len(list_children) == 0 :
-        child_line = None
-    else :
-        line = ''
-        for child in list_children :
-            if line != '' :
-                line = line + ' | '
-            line  = line + f':ref:`{child}<{child}>`'
-        child_line = '**Children:** ' + line
-    #
     # open output file
     file_out = output_dir + '/' + section_name + '.rst'
     file_ptr = open(file_out, 'w')
-    #
-    # no longer including these links
-    if False :
-        file_ptr.write(ancestor_line)
-        file_ptr.write('\n\n')
-        if child_line :
-            file_ptr.write(child_line)
-            file_ptr.write('\n\n')
-            previous_empty = True
     #
     # put pseudo heading at top of the file
     file_ptr.write(pseudo_heading)
@@ -2108,13 +2073,11 @@ while 0 < len(file_info_stack) :
             sphinx_dir,
             file_in,
             section_data,
-            section_info,
             list_children,
             pseudo_heading,
             jump_table,
             output_dir,
             section_name,
-            spell_checker,
         )
 # -----------------------------------------------------------------------------
 # read index.rst
