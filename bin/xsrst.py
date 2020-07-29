@@ -34,7 +34,7 @@ Extract Sphinx RST
 Syntax
 ******
 - ``xsrst.py`` *sphinx_dir* *root_file* *spelling* *keyword*
-- ``xsrst.py`` *sphinx_dir* *root_file* *spelling* *keyword* ``--line_numbers``
+- ``xsrst.py`` *sphinx_dir* *root_file* *spelling* *keyword* *line_increment*
 
 Purpose
 *******
@@ -158,13 +158,23 @@ leading and trailing spaces are ignored.
 A line that begins with :code:`#` is a comment
 (not included in the list of python regular expressions).
 
---line_numbers
+line_increment
 ==============
-If ``--line_numbers`` is present at the end of the command line,
-a table mapping line numbers in the ``*.rst`` output file to
-line numbers in the corresponding xsrst input file is generated
-at the end of the output. This can be useful for finding the source
-of errors reported by sphinx as line numbers in a ``*.rst`` file.
+This optional argument helps find the source of errors reported by sphinx.
+If the argument *line_increment* is present,
+a table is generated at the end of each output file.
+This table maps line numbers in the output file to
+line numbers in the corresponding xsrst input file.
+The argument *line_increment* is a positive integer specifying the minimum
+difference between xsrst input line numbers for entries in the table.
+The value ``1`` will give the maximum resolution.
+For example, the sphinx warning
+
+| |tab| ... ``/xsrst/children_exam.rst:30: WARNING:`` ...
+
+corresponds to line number 30 in the file ``children_exam.rst``.
+The table at the bottom of that file maps line numbers in
+``children_exam.rst`` to line numbers in the corresponding xsrst input file.
 
 Table Of Contents
 *****************
@@ -755,7 +765,7 @@ def remove_line_numbers(pattern, data_in) :
         line_xsrst = match.group(1)
         line_out  += before.count('\n')
         #
-        line_pair.append( ( str(line_out), line_xsrst) )
+        line_pair.append( ( line_out, int(line_xsrst) ) )
         data_out += before
         #
         offset_in   = end
@@ -1705,7 +1715,7 @@ def compute_output(
     jump_table,
     output_dir,
     section_name,
-    line_numbers
+    line_increment,
 ) :
     # If file_path is relative to top git repo directory,
     # xsrst_dir2top_dir/file_path is relative to sphinx_dir/xsrst directory.
@@ -1852,12 +1862,18 @@ def compute_output(
     rst_output += '----\n\n'
     rst_output += f'xsrst input file: ``{file_in}``\n'
     #
-    if line_numbers :
-        rst_output += '\n.. csv-table:: Line Numbers\n'
+    if line_increment > 0 :
+        rst_output += '\n.. csv-table:: Line Number Mapping\n'
         rst_output += 4 * ' ' + ':header: rst file, xsrst input\n'
         rst_output += 4 * ' ' + ':widths: 10, 10\n\n'
+        previous_line = None
         for pair in line_pair :
-            rst_output += 4 * ' ' + pair[0] + ',' + pair[1] + '\n'
+            if previous_line is None :
+                rst_output   += f'    {pair[0]}, {pair[1]}\n'
+                previous_line = pair[1]
+            elif pair[1] - previous_line >= line_increment :
+                rst_output   += f'    {pair[0]}, {pair[1]}\n'
+                previous_line = pair[1]
     #
     return rst_output
 # -----------------------------------------------------------------------------
@@ -1882,7 +1898,7 @@ if not os.path.isdir('.git') :
 # check number of command line arguments
 if len(sys.argv) != 5 and len(sys.argv) != 6 :
     usage  = 'bin/xsrst.py root_file sphinx_dir spelling keyword'
-    usage += ' [--line_numbers]'
+    usage += ' [line_increment]'
     sys_exit(usage)
 #
 # root_file
@@ -1915,11 +1931,13 @@ if not os.path.isfile(keyword_path) :
     msg += 'is not a file'
     sys_exit(msg)
 #
-# line_numbers
-line_numbers = len(sys.argv) == 6
-if line_numbers :
-    if not sys.argv[5] == '--line_numbers' :
-        msg += 'optional arugment at end of command line is not --line_numbers'
+# line_increment
+if len(sys.argv) == 5 :
+    line_increment = 0
+else :
+    line_increment = int(sys.argv[5])
+    if line_increment < 1 :
+        msg += 'line_increment is not a positive integer'
         sys_exit(msg)
 #
 # check for conf.y, index.rst
@@ -2129,7 +2147,7 @@ while 0 < len(file_info_stack) :
             jump_table,
             output_dir,
             section_name,
-            line_numbers
+            line_increment,
         )
         # ---------------------------------------------------------------
         write_file(

@@ -41,6 +41,12 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+07-29
+*****
+Add the optional command line argument
+:ref:`line_increment<xsrst_py.command_line_arguments.line_increment>`.
+This is an aid for finding the source of errors and warnings reported by sphinx.
+
 07-28
 *****
 #.  Move version number from the title in :ref:`cppad_py<cppad_py>` to
