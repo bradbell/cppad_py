@@ -1243,7 +1243,7 @@ def child_commands(
 # -----------------------------------------------------------------------------
 # process spell command
 def spell_command(
-    pattern, section_data, file_in, section_name
+    pattern, section_data, file_in, section_name, spell_checker
 ) :
     match_spell   = pattern['spell'].search(section_data)
     special_used  = dict()
@@ -2008,6 +2008,7 @@ while 0 < len(file_info_stack) :
             section_data,
             file_in,
             section_name,
+            spell_checker,
         )
         # ----------------------------------------------------------------
         # process child command
