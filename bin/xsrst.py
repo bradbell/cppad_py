@@ -33,7 +33,7 @@ Extract Sphinx RST
 
 Syntax
 ******
-``xsrst.py`` *sphinx_dir* *root_file* *spell_file* *index_file*
+``xsrst.py`` *sphinx_dir* *root_file* *spelling* *keyword*
 
 Purpose
 *******
@@ -108,7 +108,7 @@ sphinx_dir
 ==========
 The command line argument *sphinx_dir* is a sub-directory,
 of the top git repository directory.
-The  sphinx ``conf.py``, ``index.rst``, *spell_file*, and *index_file*
+The  sphinx ``conf.py``, ``index.rst``, *spelling*, and *keyword*
 files are located in this directory.
 Any files that have names ending in ``.rst``,
 and that are in the directory *sphinx_dir* :code:`/xsrst`,
@@ -122,13 +122,13 @@ Example Configuration Files
 
 | |tab| conf.py: :ref:`conf_py`
 | |tab| index.rst: :ref:`index_rst`
-| |tab| index_file: :ref:`index_file`
-| |tab| spell_file: :ref:`spell_file`
+| |tab| keyword: :ref:`keyword`
+| |tab| spelling: :ref:`spelling`
 
 
-spell_file
-==========
-The command line argument *spell_file* is the name of a file,
+spelling
+========
+The command line argument *spelling* is the name of a file,
 relative to the *sphinx_dir* directory.
 This file contains a list of words
 that the spell checker will consider correct for all sections
@@ -139,9 +139,9 @@ leading and trailing white space in a word are ignored.
 Special words, for a particular section, are specified using the
 :ref:`spell command<spell_cmd>`.
 
-index_file
-==========
-The command line argument *index_file* is the name of a file,
+keyword
+=======
+The command line argument *keyword* is the name of a file,
 relative to the *sphinx_dir* directory.
 This file contains a list of python regular expressions for heading tokens
 that should not be included in the index (it can be an empty file).
@@ -149,9 +149,9 @@ A heading token is any sequence of non space or new line characters
 with upper case letters converted to lower case.
 For example, a heading might contain the token ``The`` but you
 might not want to include ``the`` as a entry in the :ref:`genindex`.
-In this case you could have a line containing just ``the`` in *index_file*.
+In this case you could have a line containing just ``the`` in *keyword*.
 For another example, you might want to exclude all tokens that are numbers.
-In this case you could have a line containing just ``[0-9]*`` in $index_file*.
+In this case you could have a line containing just ``[0-9]*`` in *keyword*.
 The regular expressions are one per line and
 leading and trailing spaces are ignored.
 A line that begins with :code:`#` is a comment
@@ -445,10 +445,10 @@ You can specify a special list of words
 for the current section using the command above at the
 :ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
-spell_file
-**********
+spelling
+********
 The list of words in
-:ref:`spell_file<xsrst_py.command_line_arguments.spell_file>`
+:ref:`spelling<xsrst_py.command_line_arguments.spelling>`
 are considered correct spellings for all sections.
 The latex commands corresponding to the letters in the greek alphabet
 are automatically added to this list.
@@ -1773,7 +1773,7 @@ def write_file(
             label = line[2]
             line  = ''
             if index != '' :
-                # index is empty if index_file ingnores all words in heading
+                # index is empty if keyword file ingnores all words in heading
                 line += '.. meta::\n'
                 line += '   :keywords: ' + index + '\n\n'
                 line += '.. index:: ' + index + '\n\n'
@@ -1873,7 +1873,7 @@ if not os.path.isdir('.git') :
 #
 # check number of command line arguments
 if len(sys.argv) != 5 :
-    usage = 'bin/xsrst.py root_file sphinx_dir spell_file index_file'
+    usage = 'bin/xsrst.py root_file sphinx_dir spelling keyword'
     sys_exit(usage)
 #
 # root_file
@@ -1890,19 +1890,19 @@ if not os.path.isdir(sphinx_dir) :
     msg += 'is not a sub-directory of current working directory'
     sys_exit(msg)
 #
-# spell_file
-spell_file = sys.argv[3]
-spell_path = sphinx_dir + '/' + spell_file
+# spelling
+spelling   = sys.argv[3]
+spell_path = sphinx_dir + '/' + spelling
 if not os.path.isfile(spell_path) :
-    msg  = 'sphinx_dir/spell_file = ' + spell_path + '\n'
+    msg  = 'sphinx_dir/spelling = ' + spell_path + '\n'
     msg += 'is not a file'
     sys_exit(msg)
 #
-# index_file
-index_file = sys.argv[4]
-index_path = sphinx_dir + '/' + index_file
-if not os.path.isfile(index_path) :
-    msg  = 'sphinx_dir/index_file = ' + index_path + '\n'
+# keyword
+keyword      = sys.argv[4]
+keyword_path = sphinx_dir + '/' + keyword
+if not os.path.isfile(keyword_path) :
+    msg  = 'sphinx_dir/keyword = ' + keyword_path + '\n'
     msg += 'is not a file'
     sys_exit(msg)
 #
@@ -1931,7 +1931,7 @@ spell_checker        = init_spell_checker(spell_list)
 #
 # index_list
 index_list = list()
-for regexp in file2list(index_path) :
+for regexp in file2list(keyword_path) :
     index_list.append( re.compile( regexp ) )
 #
 # regular expresssions used for spell command

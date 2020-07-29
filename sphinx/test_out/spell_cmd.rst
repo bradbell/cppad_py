@@ -13,7 +13,7 @@ Spell Command
 #############
 - :ref:`spell_cmd.syntax`
 - :ref:`spell_cmd.purpose`
-- :ref:`spell_cmd.spell_file`
+- :ref:`spell_cmd.spelling`
 - :ref:`spell_cmd.capital_letters`
 - :ref:`spell_cmd.double_words`
 - :ref:`spell_cmd.example`
@@ -53,16 +53,16 @@ for the current section using the command above at the
 :ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
 
 .. meta::
-   :keywords: spell_file
+   :keywords: spelling
 
-.. index:: spell_file
+.. index:: spelling
 
-.. _spell_cmd.spell_file:
+.. _spell_cmd.spelling:
 
-spell_file
-**********
+spelling
+********
 The list of words in
-:ref:`spell_file<xsrst_py.command_line_arguments.spell_file>`
+:ref:`spelling<xsrst_py.command_line_arguments.spelling>`
 are considered correct spellings for all sections.
 The latex commands corresponding to the letters in the greek alphabet
 are automatically added to this list.

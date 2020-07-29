@@ -1,15 +1,15 @@
 # {xsrst_comment_ch #}
-# {xsrst_begin spell_file}
+# {xsrst_begin spelling}
 #
-# Example spell_file
-# ##################
+# Example Spelling File
+# #####################
 #
 # {xsrst_file
-#    # BEGIN_SPELL_FILE
-#    # END_SPELL_FILE
+#    # BEGIN_SPELLING
+#    # END_SPELLING
 # }
-# {xsrst_end spell_file}
-# BEGIN_SPELL_FILE
+# {xsrst_end spelling}
+# BEGIN_SPELLING
 # standard mathematical abbreviations
 grad
 hess
@@ -84,4 +84,4 @@ std
 \sum
 \times
 \varepsilon
-# END_SPELL_FILE
+# END_SPELLING

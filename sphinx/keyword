@@ -1,19 +1,19 @@
 # {xsrst_comment_ch #}
-# {xsrst_begin index_file}
+# {xsrst_begin keyword}
 #
-# Example index_file
-# ##################
+# Example Keyword File
+# ####################
 #
 # {xsrst_file
-#    # BEGIN_INDEX_FILE
-#    # END_INDEX_FILE
+#    # BEGIN_KEYWORD
+#    # END_KEYWORD
 # }
-# {xsrst_end index_file}
-# BEGIN_INDEX_FILE
+# {xsrst_end keyword}
+# BEGIN_KEYWORD
 # List of patterns to exclude from the index
 a
 and
 of
 # exclude whats new mm-dd headings used by whats new sections for each year
 [0-9][0-9]-[0-9][0-9]
-# END_INDEX_FILE
+# END_KEYWORD

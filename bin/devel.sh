@@ -29,10 +29,10 @@ ignore_files='
     sphinx/conf.py
     sphinx/configure.xsrst
     sphinx/index.rst
-    sphinx/index_file
+    sphinx/keyword
     sphinx/preamble.rst
     sphinx/test_out/
-    sphinx/spell_file
+    sphinx/spelling
 '
 # ----------------------------------------------------------------------------
 echo "copyright_owner=$copyright_owner"

@@ -29,8 +29,8 @@ list='
     conf.py
     index.rst
     preamble.rst
-    spell_file
-    index_file
+    spelling
+    keyword
     Makefile
 '
 for file in $list
@@ -43,7 +43,7 @@ sed -i $sphinx_dir/conf.py -e "s|^project *=.*|project = 'cppad_py'|"
 echo "sed -i $sphinx_dir/index.rst -e s|xsrst/xsrst_py|xsrst/$root_section|"
 sed -i $sphinx_dir/index.rst -e "s|xsrst/xsrst_py|xsrst/$root_section|"
 #
-echo_eval bin/xsrst.py doc.xsrst $sphinx_dir spell_file index_file
+echo_eval bin/xsrst.py doc.xsrst $sphinx_dir spelling keyword
 echo_eval cd $sphinx_dir
 echo_eval make html
 cat << EOF > _build/index.html

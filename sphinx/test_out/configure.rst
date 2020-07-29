@@ -17,8 +17,8 @@ Example xsrst Configuration Files
 
    conf_py
    index_rst
-   index_file
-   spell_file
+   spelling
+   keyword
 
 ----
 

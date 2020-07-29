@@ -44,10 +44,10 @@ Math
 The latex commands for greek letters
 are automatically included as correct spelling.
 The ``\rm`` command is included by the
-:ref:`spell_file<xsrst_py.command_line_arguments.spell_file>`.
+:ref:`spelling<xsrst_py.command_line_arguments.spelling>`.
 The other latex commands in this section, ``\cos`` and ``\sin``,
 have been included in the spelling command for this section.
-An alternative would be to add them to the *spell_file* .
+An alternative would be to add them to the *spelling* file
 which applies to all sections:
 
 .. math::
