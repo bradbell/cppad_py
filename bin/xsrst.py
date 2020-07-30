@@ -16,6 +16,7 @@
     pyspellchecker
     cmd
     cppad
+    dir
 }
 
 .. include:: ../preamble.rst
@@ -322,6 +323,7 @@ Commands
 {xsrst_begin begin_cmd}
 {xsrst_spell
     underbar
+    dir
 }
 
 .. include:: ../preamble.rst
@@ -776,6 +778,7 @@ def remove_line_numbers(pattern, data_in) :
 def init_spell_checker(spell_list) :
     remove_from_dictionary = [
         'af',
+        'anl',
         'ap',
         'av',
         'bv',
@@ -783,6 +786,7 @@ def init_spell_checker(spell_list) :
         'cg',
         'cpp',
         'dep',
+        'dir',
         'exp',
         'gcc',
         'hes',
@@ -790,6 +794,7 @@ def init_spell_checker(spell_list) :
         'ind',
         'jac',
         'len',
+        'mcs',
         'nr',
         'nc',
         'nd',
@@ -818,6 +823,7 @@ def init_spell_checker(spell_list) :
         'jacobian',
         'jacobians',
         'hessians',
+        'initialization',
         'invertible',
         'likelihoods',
         'messaging',

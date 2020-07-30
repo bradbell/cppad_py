@@ -29,6 +29,9 @@
     inv
     misc
     omh
+    anl
+    dir
+    mcs
 }
 
 CppAD Py Changes During 2020
@@ -40,6 +43,11 @@ CppAD Py Changes During 2020
 Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
+
+07-30
+*****
+The words 'anl', 'dir', 'mcs' were removed from the xsrst dictionary.
+The word 'initialization' was added to the xsrst dictionary.
 
 07-29
 *****
