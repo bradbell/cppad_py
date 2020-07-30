@@ -780,9 +780,11 @@ def init_spell_checker(spell_list) :
         'av',
         'bv',
         'dv',
+        'cg',
         'cpp',
         'dep',
         'exp',
+        'gcc',
         'hes',
         'hess',
         'ind',
@@ -792,6 +794,8 @@ def init_spell_checker(spell_list) :
         'nc',
         'nd',
         'op',
+        'prt',
+        'ptr',
         'rel',
         'rc',
         'sim',
@@ -898,7 +902,7 @@ def sys_exit(msg, fname=None, sname=None, match=None, data=None, line=None) :
         extra += 'line = ' + str(line)
     if extra != '' :
         msg += '\n' + extra
-    sys.exit(msg )
+    sys.exit('\n' + msg)
 # ---------------------------------------------------------------------------
 def file2list(file_name) :
     file_ptr  = open(file_name, 'r')
@@ -1416,6 +1420,10 @@ def isolate_code_command(pattern, section_data, file_in, section_name) :
                 match=match_end_code,
                 data=section_rest
             )
+        # pygments does not recognize hpp ?
+        if language == 'hpp' :
+            language = 'cpp'
+        #
         end_start = match_end_code.start() + begin_end
         end_end   = match_end_code.end()   + begin_end
         #
@@ -1546,7 +1554,7 @@ def convert_file_command(pattern, section_data, file_in, section_name) :
             #
             data_left  = section_data[: begin_line]
             data_left += cmd
-            data_right = section_data[ end_line : ]
+            data_right = '\n' + section_data[ end_line : ]
             #
             section_data  = data_left + data_right
             file_offset   = len(data_left)
@@ -1799,6 +1807,8 @@ def compute_output(
                 extension = file_name[index + 1 :]
                 if extension == 'xsrst' :
                     extension = 'rst'
+                elif extension == 'hpp' :
+                    extension = 'cpp' # pygments does not recognize hpp ?
                 line = f'    :language: {extension}\n'
                 rst_output += line
             #
