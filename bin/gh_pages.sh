@@ -8,8 +8,8 @@
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
-	echo $*
-	eval $*
+    echo $*
+    eval $*
 }
 # -----------------------------------------------------------------------------
 #
@@ -17,8 +17,8 @@ echo_eval() {
 branch=`git branch | sed -n -e '/^\*/p'`
 if [ "$branch" != '* master' ]
 then
-	echo 'gh_pages.sh: can only be executed starting with master branch'
-	exit 1
+    echo 'gh_pages.sh: can only be executed starting with master branch'
+    exit 1
 fi
 #
 # make sure the gh-pages branch exists
@@ -27,43 +27,43 @@ then
 cat << EOF
 gh_pages.sh: Cannot file the gh-pages branch.
 Start with a copy of the remote repository with no extra files; i.e.,
-		git status -s
+        git status -s
 is empty. Then use the following commands to create the gh-pages branch:
 
-	git checkout --orphan gh-pages
-	git reset --hard
-	git show master:.gitignore > .gitignore
-	touch .nojekyll
-	sed -i .gitignore -e 's|^/doc/$|# &|'
+    git checkout --orphan gh-pages
+    git reset --hard
+    git show master:.gitignore > .gitignore
+    touch .nojekyll
+    sed -i .gitignore -e 's|^/doc/$|# &|'
 
-	echo '<html><script>'                     >  index.html
-	echo '	window.location.href="doc/index.html";' >> index.html
-	echo '</script></html>'                  >> index.html
+    echo '<html><script>'                             >  index.html
+    echo '    window.location.href="doc/index.html";' >> index.html
+    echo '</script></html>'                           >> index.html
 
-	git add .nojekyll .gitignore index.html
-	git commit -m 'create gh-pages branch' .nojekyll .gitignore index.html
-	git checkout master
+    git add .nojekyll .gitignore index.html
+    git commit -m 'create gh-pages branch' .nojekyll .gitignore index.html
+    git checkout master
 EOF
-	exit 1
+    exit 1
 fi
 if ! git show-ref --heads --quiet gh-pages
 then
-	echo 'Cannot find local copy of the following gh-pages branches'
-	git show-ref | grep gh-pages
+    echo 'Cannot find local copy of the following gh-pages branches'
+    git show-ref | grep gh-pages
     echo 'Perhaps the following would create the local copy ?'
     echo '  git checkout -b gh-pages origin/gh-pages'
     echo '  git checkout master'
-	exit 1
+    exit 1
 fi
 #
 # make sure certian files exits on gh-pages branch
 for name in .nojekyll .gitignore
 do
-	if ! git show gh-pages:$name > /dev/null
-	then
-		echo "gh_pages.sh: cannot find $name in the gh-pages branch"
-		exit 1
-	fi
+    if ! git show gh-pages:$name > /dev/null
+    then
+        echo "gh_pages.sh: cannot find $name in the gh-pages branch"
+        exit 1
+    fi
 done
 #
 # version
@@ -100,8 +100,8 @@ fi
 list=`git status -s`
 if [ "$list" != '' ]
 then
-	echo 'Currently in the gh-pages branch. The following will commit changes'
-	echo "	git commit -m 'update gh-pages to version $version'"
+    echo 'Currently in the gh-pages branch. The following will commit changes'
+    echo "    git commit -m 'update gh-pages to version $version'"
 fi
 # -----------------------------------------------------------------------------
 echo 'gh_pages.sh: OK'

@@ -50,7 +50,7 @@ do
         elif ! diff test_out/$file xsrst/$file
         then
             echo "$sphinxdir/xsrst/$file changed; above is output of"
-            echo "	diff test_out/$file xsrst/$file"
+            echo "    diff test_out/$file xsrst/$file"
             echo 'If the new file is currect, replace old with new using:'
             echo "    cp $sphinxdir/xsrst/$file $sphinxdir/test_out/$file"
             exit 1
@@ -66,7 +66,7 @@ do
     then
         echo "The output file $sphinxdir/xsrst/$file does not nexist."
         echo "Use he following command to remove $sphinxdir/test_out/$file ?"
-        echo "	git rm $sphinxdir/test_out/$file"
+        echo "    git rm $sphinxdir/test_out/$file"
         exit 1
     fi
 done
