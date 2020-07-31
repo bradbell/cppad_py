@@ -13,7 +13,7 @@ Example index.rst
 #################
 
 
-.. literalinclude:: ../../sphinx/index.rst
+.. literalinclude:: ../../../sphinx/index.rst
     :lines: 14-29
     :language: rst
 

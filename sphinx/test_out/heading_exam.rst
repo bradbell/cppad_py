@@ -14,7 +14,7 @@ Heading Example
 - :ref:`heading_exam.child_sections`
 
 
-.. literalinclude:: ../../sphinx/test_in/heading.py
+.. literalinclude:: ../../../sphinx/test_in/heading.py
     :lines: 30-70
     :language: py
 

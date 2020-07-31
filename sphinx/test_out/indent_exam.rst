@@ -13,7 +13,7 @@ Indent Example
 ##############
 
 
-.. literalinclude:: ../../sphinx/test_in/indent.py
+.. literalinclude:: ../../../sphinx/test_in/indent.py
     :lines: 23-39
     :language: py
 

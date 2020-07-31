@@ -13,7 +13,7 @@ Code Example
 ############
 
 
-.. literalinclude:: ../../sphinx/test_in/code.py
+.. literalinclude:: ../../../sphinx/test_in/code.py
     :lines: 23-38
     :language: py
 

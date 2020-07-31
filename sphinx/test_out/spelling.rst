@@ -13,7 +13,7 @@ Example Spelling File
 #####################
 
 
-.. literalinclude:: ../../sphinx/spelling
+.. literalinclude:: ../../../sphinx/spelling
     :lines: 13-86
 
 ----

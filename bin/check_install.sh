@@ -45,7 +45,7 @@ if which xsrst.py >& /dev/null
 then
     echo 'check_install.py: cannot remove old xsrst.py from execution path.'
     echo 'Use the following command to see where it is:'
-    echo '  which sxrst.py'
+    echo '  which xsrst.py'
     exit 1
 fi
 # ---------------------------------------------------------------------------

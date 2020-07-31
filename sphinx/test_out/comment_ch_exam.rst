@@ -14,7 +14,7 @@ Comment Character Example
 =========================
 
 
-.. literalinclude:: ../../sphinx/test_in/comment_ch.py
+.. literalinclude:: ../../../sphinx/test_in/comment_ch.py
     :lines: 25-42
     :language: py
 

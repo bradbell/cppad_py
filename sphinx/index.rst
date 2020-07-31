@@ -17,7 +17,7 @@ Table of Contents
 
 .. toctree::
 
-   xsrst/xsrst_py
+   xsrst/cppad_py
 
 Index
 =====

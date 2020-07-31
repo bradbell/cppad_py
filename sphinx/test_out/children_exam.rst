@@ -14,7 +14,7 @@ Indent and Children Example
 - :ref:`children_exam.result`
 
 
-.. literalinclude:: ../../sphinx/test_in/children.py
+.. literalinclude:: ../../../sphinx/test_in/children.py
     :lines: 28-52
     :language: py
 

@@ -25,7 +25,7 @@ No Parent Result
 children.py File
 ****************
 
-.. literalinclude:: ../../sphinx/test_in/children.py
+.. literalinclude:: ../../../sphinx/test_in/children.py
     :lines: 9-53
     :language: py
 

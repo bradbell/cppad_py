@@ -17,38 +17,19 @@ then
     echo "bin/run_xsrst.sh: must be executed from its parent directory"
     exit 1
 fi
-# -----------------------------------------------------------------------------
-sphinx_dir='build/sphinx'
-root_section='cppad_py'
-#
-if [ ! -e "$sphinx_dir" ]
+project='cppad_py'
+if ! grep "{xsrst_begin $project}" doc.xsrst > /dev/null
 then
-    echo_eval mkdir $sphinx_dir
+    echo "can not find {xsrst_begin $project} in doc.xsrst"
+    exit 1
 fi
-list='
-    conf.py
-    index.rst
-    preamble.rst
-    spelling
-    keyword
-    Makefile
-'
-for file in $list
-do
-    cp -r sphinx/$file $sphinx_dir/$file
-done
-echo "sed -i $sphinx_dir/conf.py -e s|^project *=.*|project = 'cppad_py'|"
-sed -i $sphinx_dir/conf.py -e "s|^project *=.*|project = 'cppad_py'|"
-#
-echo "sed -i $sphinx_dir/index.rst -e s|xsrst/xsrst_py|xsrst/$root_section|"
-sed -i $sphinx_dir/index.rst -e "s|xsrst/xsrst_py|xsrst/$root_section|"
-#
-echo_eval bin/xsrst.py doc.xsrst $sphinx_dir spelling keyword
-echo_eval cd $sphinx_dir
+# -----------------------------------------------------------------------------
+echo_eval bin/xsrst.py doc.xsrst sphinx spelling keyword
+echo_eval cd sphinx
 echo_eval make html
 cat << EOF > _build/index.html
 <html><head><script>
-    window.location.href="html/xsrst/$root_section.html";
+    window.location.href="html/xsrst/$project.html";
 </script></head></html>
 EOF
 # -----------------------------------------------

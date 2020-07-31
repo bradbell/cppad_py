@@ -20,7 +20,7 @@
 import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
-project   = 'xsrst'
+project   = 'cppad_py'
 copyright = '2020'
 author    = 'Brad Bell'
 version = '2020.7.31'

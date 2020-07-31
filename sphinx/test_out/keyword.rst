@@ -13,7 +13,7 @@ Example Keyword File
 ####################
 
 
-.. literalinclude:: ../../sphinx/keyword
+.. literalinclude:: ../../../sphinx/keyword
     :lines: 13-18
 
 ----

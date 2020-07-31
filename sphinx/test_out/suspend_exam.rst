@@ -13,7 +13,7 @@ Suspend Example
 ###############
 
 
-.. literalinclude:: ../../sphinx/test_in/suspend.py
+.. literalinclude:: ../../../sphinx/test_in/suspend.py
     :lines: 23-60
     :language: py
 

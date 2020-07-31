@@ -13,7 +13,7 @@ File Example
 ############
 
 
-.. literalinclude:: ../../sphinx/test_in/file.cpp
+.. literalinclude:: ../../../sphinx/test_in/file.cpp
     :lines: 23-59
     :language: cpp
 

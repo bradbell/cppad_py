@@ -24,7 +24,7 @@ File Result
 factorial
 *********
 
-.. literalinclude:: ../../sphinx/test_in/file.cpp
+.. literalinclude:: ../../../sphinx/test_in/file.cpp
     :lines: 24-28
     :language: cpp
 
@@ -38,7 +38,7 @@ factorial
 square
 ******
 
-.. literalinclude:: ../../sphinx/test_in/file.cpp
+.. literalinclude:: ../../../sphinx/test_in/file.cpp
     :lines: 32-32
     :language: cpp
 

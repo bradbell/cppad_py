@@ -15,6 +15,7 @@ junk.*
 # extensions to ignore
 *.log
 *.swp
+*.tmp
 # files and directories created to run python examples
 /example/python/check_all.py
 __pycache__/

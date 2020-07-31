@@ -8,7 +8,7 @@
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 logfile=`pwd`/check_all.log
-tmpfile=`pwd`/check_all.$$
+tmpfile=`pwd`/check_all.tmp
 echo_eval_log() {
     echo "$* >> check_all.log"
     echo $* >> $logfile
