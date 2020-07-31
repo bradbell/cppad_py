@@ -23,7 +23,7 @@ import sphinx_rtd_theme
 project   = 'xsrst'
 copyright = '2020'
 author    = 'Brad Bell'
-version = '2020.7.30'
+version = '2020.7.31'
 
 # -- General configuration ---------------------------------------------------
 extensions = [
