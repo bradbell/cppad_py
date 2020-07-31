@@ -23,7 +23,6 @@ import sphinx_rtd_theme
 project   = 'cppad_py'
 copyright = '2020'
 author    = 'Brad Bell'
-version = '2020.7.31'
 
 # -- General configuration ---------------------------------------------------
 extensions = [

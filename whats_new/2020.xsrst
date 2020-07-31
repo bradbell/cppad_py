@@ -44,16 +44,18 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+07-31
+*****
+#.  An empty line at beginning of xsrst input file was causing it to crash
+    (this has been fixed).
+#.  Putting version number in the documentation navigation side bar
+    changes every gh-pages file when version changes. Move it to
+    the first heading under the title :ref:`cppad_py<cppad_py>`
+
 07-30
 *****
 The words 'anl', 'dir', 'mcs' were removed from the xsrst dictionary.
 The word 'initialization' was added to the xsrst dictionary.
-
-07-31
-*****
-An empty line at beginning of xsrst input file was causing it to crash
-(this has been fixed).
-
 
 07-29
 *****

@@ -25,6 +25,9 @@
 A C++ Object Library and Python Interface to CppAD
 ##################################################
 
+Version 2020.7.31
+*****************
+
 Git Repository
 **************
 https://github.com/bradbell/cppad_py
