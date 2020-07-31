@@ -745,7 +745,9 @@ def add_line_numbers(data) :
     for i in range( len(newline_list) ) :
         current = newline_list[i]
         line    = data[previous : current]
-        if line[-1] != '\n' :
+        if previous == current :
+            assert i == 0
+        elif line[-1] != '\n' :
             line += '{xsrst_line ' + str(i + 1) + '@'
         result  += line
         previous = current

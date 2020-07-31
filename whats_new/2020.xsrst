@@ -49,6 +49,12 @@ Previous Years
 The words 'anl', 'dir', 'mcs' were removed from the xsrst dictionary.
 The word 'initialization' was added to the xsrst dictionary.
 
+07-31
+*****
+An empty line at beginning of xsrst input file was causing it to crash
+(this has been fixed).
+
+
 07-29
 *****
 #.  Add the optional command line argument
