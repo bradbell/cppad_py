@@ -15,7 +15,7 @@ C++: function Properties: Example and Test
 ##########################################
 
 
-.. literalinclude:: ../../../example/cplusplus/fun_property_xam.cpp
+.. literalinclude:: ../../example/cplusplus/fun_property_xam.cpp
     :lines: 11-87
     :language: cpp
 

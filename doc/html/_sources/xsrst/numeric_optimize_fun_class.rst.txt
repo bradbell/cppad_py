@@ -229,7 +229,7 @@ Example
 Source Code
 ***********
 
-.. literalinclude:: ../../../example/python/numeric/optimize_fun_class.py
+.. literalinclude:: ../../example/python/numeric/optimize_fun_class.py
     :lines: 9-43
     :language: py
 

@@ -15,7 +15,7 @@ Python: a_double Properties: Example and Test
 #############################################
 
 
-.. literalinclude:: ../../../example/python/core/a_double_property_xam.py
+.. literalinclude:: ../../example/python/core/a_double_property_xam.py
     :lines: 11-34
     :language: py
 

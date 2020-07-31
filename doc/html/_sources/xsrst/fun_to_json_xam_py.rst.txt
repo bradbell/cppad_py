@@ -15,7 +15,7 @@ Python to_json: Example and Test
 ################################
 
 
-.. literalinclude:: ../../../example/python/core/fun_json_xam.py
+.. literalinclude:: ../../example/python/core/fun_json_xam.py
     :lines: 11-44
     :language: py
 

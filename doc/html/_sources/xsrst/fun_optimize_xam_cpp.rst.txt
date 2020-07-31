@@ -15,7 +15,7 @@ C++: Optimize an d_fun: Example and Test
 ########################################
 
 
-.. literalinclude:: ../../../example/cplusplus/fun_optimize_xam.cpp
+.. literalinclude:: ../../example/cplusplus/fun_optimize_xam.cpp
     :lines: 11-62
     :language: cpp
 

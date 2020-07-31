@@ -15,7 +15,7 @@ Python: a_double Comparison Operators: Example and Test
 #######################################################
 
 
-.. literalinclude:: ../../../example/python/core/a_double_compare_xam.py
+.. literalinclude:: ../../example/python/core/a_double_compare_xam.py
     :lines: 11-42
     :language: py
 

@@ -128,7 +128,7 @@ independent
 The ``independent`` function in ``lib/python/cppad_py/independent.py``
 was changed to handle dynamic parameters as follows:
 
-.. literalinclude:: ../../../lib/python/cppad_py/independent.py
+.. literalinclude:: ../../lib/python/cppad_py/independent.py
     :lines: 86-118
     :language: py
 

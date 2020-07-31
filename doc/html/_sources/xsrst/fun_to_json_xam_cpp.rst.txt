@@ -15,7 +15,7 @@ C++: to_json: Example and Test
 ##############################
 
 
-.. literalinclude:: ../../../example/cplusplus/fun_json_xam.cpp
+.. literalinclude:: ../../example/cplusplus/fun_json_xam.cpp
     :lines: 19-59
     :language: cpp
 

@@ -38,7 +38,7 @@ Syntax
 Prototype
 *********
 
-.. literalinclude:: ../../../lib/cplusplus/cppad_vec.cpp
+.. literalinclude:: ../../lib/cplusplus/cppad_vec.cpp
     :lines: 79-80
     :language: cpp
 

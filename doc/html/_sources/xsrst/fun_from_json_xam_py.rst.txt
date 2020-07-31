@@ -15,7 +15,7 @@ Python from_json: Example and Test
 ##################################
 
 
-.. literalinclude:: ../../../example/python/core/fun_json_xam.py
+.. literalinclude:: ../../example/python/core/fun_json_xam.py
     :lines: 65-114
     :language: py
 

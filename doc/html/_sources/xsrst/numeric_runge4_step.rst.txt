@@ -150,7 +150,7 @@ Example
 Source Code
 ***********
 
-.. literalinclude:: ../../../example/python/numeric/runge4_step.py
+.. literalinclude:: ../../example/python/numeric/runge4_step.py
     :lines: 9-15
     :language: py
 

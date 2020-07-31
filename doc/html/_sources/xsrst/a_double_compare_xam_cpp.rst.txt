@@ -15,7 +15,7 @@ C++: a_double Comparison Operators: Example and Test
 ####################################################
 
 
-.. literalinclude:: ../../../example/cplusplus/a_double_compare_xam.cpp
+.. literalinclude:: ../../example/cplusplus/a_double_compare_xam.cpp
     :lines: 11-43
     :language: cpp
 

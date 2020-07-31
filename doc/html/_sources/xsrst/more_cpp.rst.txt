@@ -178,7 +178,7 @@ independent
 ===========
 The following function was added to the ``lib/cplusplus/fun.cpp`` file:
 
-.. literalinclude:: ../../../lib/cplusplus/fun.cpp
+.. literalinclude:: ../../lib/cplusplus/fun.cpp
     :lines: 124-145
     :language: cpp
 
@@ -194,7 +194,7 @@ new_dynamic
 The following function
 was added to the ``lib/cplusplus/fun.cpp`` file:
 
-.. literalinclude:: ../../../lib/cplusplus/fun.cpp
+.. literalinclude:: ../../lib/cplusplus/fun.cpp
     :lines: 467-479
     :language: cpp
 

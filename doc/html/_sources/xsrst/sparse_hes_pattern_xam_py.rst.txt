@@ -15,7 +15,7 @@ Python: Hessian Sparsity Patterns: Example and Test
 ###################################################
 
 
-.. literalinclude:: ../../../example/python/core/sparse_hes_pattern_xam.py
+.. literalinclude:: ../../example/python/core/sparse_hes_pattern_xam.py
     :lines: 11-85
     :language: py
 

@@ -15,7 +15,7 @@ Example Using seris_model
 #########################
 
 
-.. literalinclude:: ../../../example/python/numeric/seirwd_model_xam.py
+.. literalinclude:: ../../example/python/numeric/seirwd_model_xam.py
     :lines: 28-121
     :language: py
 

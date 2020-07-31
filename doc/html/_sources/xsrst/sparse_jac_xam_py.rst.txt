@@ -15,7 +15,7 @@ Python: Computing Sparse Jacobians: Example and Test
 ####################################################
 
 
-.. literalinclude:: ../../../example/python/core/sparse_jac_xam.py
+.. literalinclude:: ../../example/python/core/sparse_jac_xam.py
     :lines: 11-93
     :language: py
 

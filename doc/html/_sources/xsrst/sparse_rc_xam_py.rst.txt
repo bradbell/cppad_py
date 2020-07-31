@@ -15,7 +15,7 @@ Python: Sparsity Patterns: Example and Test
 ###########################################
 
 
-.. literalinclude:: ../../../example/python/core/sparse_rc_xam.py
+.. literalinclude:: ../../example/python/core/sparse_rc_xam.py
     :lines: 11-58
     :language: py
 

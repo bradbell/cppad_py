@@ -15,7 +15,7 @@ C++: a_double Properties: Example and Test
 ##########################################
 
 
-.. literalinclude:: ../../../example/cplusplus/a_double_property_xam.cpp
+.. literalinclude:: ../../example/cplusplus/a_double_property_xam.cpp
     :lines: 11-35
     :language: cpp
 
