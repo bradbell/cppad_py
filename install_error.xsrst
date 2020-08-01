@@ -21,7 +21,6 @@
     sudo
     pytest
     libcppad
-    bradbell
 }
 
 Error Messages During Installation

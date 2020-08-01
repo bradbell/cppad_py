@@ -1318,6 +1318,10 @@ def spell_command(
     section_tmp = pattern['ref_2'].sub(r'\1', section_tmp)
     section_tmp = pattern['code'].sub('', section_tmp)
     #
+    # commands with external urls as arguments
+    section_tmp = pattern['url_1'].sub('', section_tmp)
+    section_tmp = pattern['url_2'].sub(r'\1', section_tmp)
+    #
     # check for spelling errors
     first_spell_error = True
     for itr in pattern['word'].finditer( section_tmp ) :
@@ -1991,7 +1995,9 @@ pattern = dict()
 pattern['word']        = re.compile( r'[\\A-Za-z][a-z]*' )
 pattern['double_word'] = re.compile( r'\s+([\\A-Za-z][a-z]*)\s+\1[^a-z]' )
 pattern['ref_1']       = re.compile( r':ref:`[^\n<`]+`' )
+pattern['url_1']       = re.compile( r'`<[^\n>`]+>`_' )
 pattern['ref_2']       = re.compile( r':ref:`([^\n<`]+)<[^\n>`]+>`' )
+pattern['url_2']       = re.compile( r'`([^\n<`]+)<[^\n>`]+>`_' )
 #
 # regular expressions corresponding to xsrst commands
 pattern['line']    = re.compile(r'\{xsrst_line ([0-9]+)@')

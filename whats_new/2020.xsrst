@@ -32,6 +32,7 @@
     anl
     dir
     mcs
+    url
 }
 
 CppAD Py Changes During 2020
@@ -51,6 +52,8 @@ Previous Years
 #.  Putting version number in the documentation navigation side bar
     changes every gh-pages file when version changes. Move it to
     the first heading under the title :ref:`cppad_py<cppad_py>`
+#.  xsrst spell checking is not done for a *url* of the form
+    \` < *url* > \`_ or \` *text* < *url* > \`_.
 
 07-30
 *****
