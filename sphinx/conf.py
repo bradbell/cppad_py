@@ -39,4 +39,13 @@ html_theme_options = {
     'navigation_depth' : -1   ,
     'titles_only'      : True ,
 }
+
+# -- These folders are copied to the documentation's HTML output ------------
+html_static_path = [ '_static' ]
+
+# -- These paths are either relative to html_static_path --------------------
+# or fully qualified paths (eg. https://...)
+html_css_files = [
+    'css/custom.css',
+]
 # END_CONF_PY

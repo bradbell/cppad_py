@@ -31,6 +31,7 @@ ignore_files='
     sphinx/index.rst
     sphinx/keyword
     sphinx/preamble.rst
+    sphinx/_static/css/custom.css
     sphinx/test_out/
     sphinx/spelling
 '
