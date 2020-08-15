@@ -48,4 +48,12 @@ html_static_path = [ '_static' ]
 html_css_files = [
     'css/custom.css',
 ]
+
+# -- Latex commands used by all sections -------------------------------------
+latex_elements = {
+    'preamble' :  
+        r'\newcommand{\B}[1]{{\bf #1}} ' +
+        r'\newcommand{\R}[1]{{\rm #1}} '
+    ,
+}
 # END_CONF_PY
