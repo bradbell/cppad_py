@@ -1746,10 +1746,6 @@ def compute_output(
     # split section data into lines
     newline_list = newline_indices(section_data)
     #
-    # open output file
-    file_out = output_dir + '/' + section_name + '.rst'
-    file_ptr = open(file_out, 'w')
-    #
     # put pseudo heading at beginning of output
     rst_output = pseudo_heading
     #
