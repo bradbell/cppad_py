@@ -80,7 +80,7 @@ fi
 echo_eval_log check_copyright.sh
 bin/check_tab.sh
 echo_eval bin/check_xsrst.sh
-echo_eval_log bin/run_xsrst.sh
+echo_eval_log bin/run_sphinx.sh html
 # -----------------------------------------------------------------------------
 if [ "$build_type" == 'release' ]
 then

@@ -3,7 +3,7 @@
 .. |tab| replace:: |space| |space| |space| |space|
 
 .. comment BEGIN_LATEX_MACROS
-	These latex macros must also be defined in latex_elements in conf.py
+    These latex macros must also be defined in latex_elements in conf.py
 
 .. rst-class:: hidden
 
