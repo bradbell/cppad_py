@@ -1699,7 +1699,7 @@ def process_headings(
             data_left  += cmd
             data_left  += section_data[candidate_start : next_newline]
             if len(heading_list) == 1 :
-                data_left += '\n{xsrst_navigate}'
+                data_left += '\n{xsrst_jump_table}'
             data_right  = section_data[next_newline : ]
             section_data = data_left + data_right
             #
@@ -1757,14 +1757,14 @@ def compute_output(
     for newline in newline_list :
         line  = section_data[startline : newline + 1]
         # commands that delay some processing to this point
-        navigate_command    = line.startswith('{xsrst_navigate')
+        jump_table_command  = line.startswith('{xsrst_jump_table')
         code_command        = line.startswith('{xsrst_code')
         file_command        = line.startswith('{xsrst__file')
         label_command       = line.startswith('{xsrst_label')
         children_command    = line.startswith('{xsrst_children')
         child_link_command  = line.startswith('{xsrst_child_link')
         child_list_command  = line.startswith('{xsrst_child_list')
-        if navigate_command :
+        if jump_table_command :
             rst_output += jump_table + '\n'
             previous_empty = True
         elif label_command :
