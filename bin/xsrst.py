@@ -729,6 +729,39 @@ import os
 import pdb
 import spellchecker
 # ---------------------------------------------------------------------------
+def table_of_contents(section_info, level, count, section_index) :
+    assert level >= 1
+    assert len(count) == level-1
+    if level != 1 :
+        assert section_index != 0
+        content = ''
+    else :
+        assert section_index == 0
+        content  = '\n'
+        content += 'Table of Contents\n'
+        content += '#################\n'
+    #
+    section_name = section_info[section_index]['section_name']
+    line  = '| '
+    for i in range(level - 1 ) :
+        line += ' |space| '
+    for i in range(level - 1) :
+        line += str(count[i])
+        if i + 1 < level - 1 :
+            line += '.'
+    line  += ' :ref:`'
+    line     += section_name + '`\n'
+    content  += line
+    #
+    child_count = count + [0]
+    for child_index in range( len( section_info ) ) :
+        if section_info[child_index]['parent_section'] == section_index :
+            child_count[-1] += 1
+            content += table_of_contents(
+                section_info, level + 1, child_count, child_index
+            )
+    return content
+# ---------------------------------------------------------------------------
 def newline_indices(data) :
     pattern_newline  = re.compile( r'\n')
     newline_itr      = pattern_newline.finditer(data)
@@ -2171,7 +2204,36 @@ while 0 < len(file_info_stack) :
             rst_output,
         )
 # -----------------------------------------------------------------------------
-# read index.rst
+# xstst_automatic.rst
+file_out    = output_dir + '/' + 'xsrst_automatic.rst'
+file_ptr    = open(file_out, 'w')
+output_data = '.. include:: ../preamble.rst\n'
+file_ptr.write(output_data)
+#
+# Table of Contents
+level         = 1
+count         = list()
+section_index = 0
+output_data   = table_of_contents(section_info, level, count, section_index)
+file_ptr.write(output_data)
+#
+# Index
+output_data  = '\n'
+output_data += 'Search\n'
+output_data += '######\n'
+output_data += '* :ref:`genindex`\n'
+file_ptr.write(output_data)
+#
+# Index
+output_data  = '\n'
+output_data += 'Index\n'
+output_data += '#####\n'
+output_data += '* :ref:`genindex`\n'
+file_ptr.write(output_data)
+#
+file_ptr.close()
+# -----------------------------------------------------------------------------
+# check section_name is in index.rst
 index_file   = sphinx_dir + '/index.rst'
 file_ptr     = open(index_file, 'r')
 file_data    = file_ptr.read()
@@ -2182,7 +2244,6 @@ assert section_info[0]['file_in'] == root_file
 assert section_info[0]['parent_section'] is None
 section_name = section_info[0]['section_name']
 #
-# check section_name is in index file
 pattern  = r'\n[ \t]*xsrst/'
 pattern += section_name.replace('.', '[.]')
 match_line = re.search(pattern, file_data)
@@ -2194,5 +2255,6 @@ if match_line == None :
     msg += index_file
     sys_exit(msg)
 #
+# table
 print('xsrst.py: OK')
 sys.exit(0)
