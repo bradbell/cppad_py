@@ -2040,7 +2040,7 @@ while 0 < len(file_info_stack) :
     #
     file_in              = info['file_in']
     parent_file          = info['parent_file']
-    grand_parent_section = info['parent_section']
+    parent_file_section  = info['parent_section']
     assert os.path.isfile(file_in)
     #
     # get xsrst docuemntation in this file
@@ -2050,13 +2050,11 @@ while 0 < len(file_info_stack) :
     )
     #
     # determine index of parent section for this file
-    file_parent_section_index = None
-    file_parent_section_name  = None
+    this_file_parent_section_index = None
     for i in range( len(this_file_info) ) :
         if this_file_info[i]['is_parent'] :
-            file_parent_section_index = len(section_info) + i
-            file_parent_section_name  = this_file_info[i]['section_name']
-    if file_parent_section_index :
+            this_file_parent_section_index = len(section_info) + i
+    if this_file_parent_section_index :
         if len(this_file_info) < 2 :
             msg  = 'xsrst_begin_parent appreas in a file with only one section'
             sys_exit(msg, fname=file_in, sname=section_name)
@@ -2068,12 +2066,10 @@ while 0 < len(file_info_stack) :
         section_name = this_file_info[i_file]['section_name']
         section_data = this_file_info[i_file]['section_data']
         is_parent    = this_file_info[i_file]['is_parent']
-        if is_parent :
-            parent_section = grand_parent_section
-        elif file_parent_section_index is not None :
-            parent_section = file_parent_section_index
+        if is_parent or this_file_parent_section_index is None :
+            parent_section = parent_file_section
         else :
-            parent_section = grand_parent_section
+            parent_section = this_file_parent_section_index
         #
         section_info.append( {
             'section_name'   : section_name,
