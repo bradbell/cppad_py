@@ -14,7 +14,7 @@ Example index.rst
 
 
 .. literalinclude:: ../../../sphinx/index.rst
-    :lines: 14-29
+    :lines: 14-18
     :language: rst
 
 ----

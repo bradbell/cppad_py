@@ -45,6 +45,14 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+09-12
+*****
+#.  A table of contents that only contains section titles,
+    not headings within a section, was added.
+#.  The following restriction was added: a
+    :ref:`section_name<begin_cmd.section_name>`
+    can not begin with ``xsrst_``.
+
 07-31
 *****
 #.  An empty line at beginning of xsrst input file was causing it to crash

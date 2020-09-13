@@ -56,6 +56,7 @@ section_name
 ************
 The *section_name* is a non-empty sequence of the following characters:
 a-z, 0-9, and underbar ``_``.
+It can not begin with the characters ``xsrst_``.
 A link is included in the index under the section name
 to the first heading the section.
 The section name is also added to the html keyword meta data.

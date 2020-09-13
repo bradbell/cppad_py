@@ -347,6 +347,7 @@ section_name
 ************
 The *section_name* is a non-empty sequence of the following characters:
 a-z, 0-9, and underbar ``_``.
+It can not begin with the characters ``xsrst_``.
 A link is included in the index under the section name
 to the first heading the section.
 The section name is also added to the html keyword meta data.
@@ -739,7 +740,7 @@ def table_of_contents(section_info, level, count, section_index) :
         assert section_index == 0
         content  = '\n'
         content += 'Table of Contents\n'
-        content += '#################\n'
+        content += '*****************\n'
     #
     section_name = section_info[section_index]['section_name']
     line  = '| '
@@ -1052,6 +1053,13 @@ def file2file_info(
                 sys_exit(msg,
                     fname=file_in, match=match_xsrst_begin, data=data_rest
                 )
+            if section_name.startswith('xsrst_') :
+                # section name xsrst_py is used to document this program
+                if section_name != 'xsrst_py' :
+                    msg = 'section_name cannot start with xsrst_'
+                    sys_exit(msg,
+                        fname=file_in, match=match_xsrst_begin, data=data_rest
+                    )
             #
             begin_index = file_index + match_xsrst_begin.start()
             if begin_index < comment_ch_index :
@@ -2210,25 +2218,24 @@ file_ptr    = open(file_out, 'w')
 output_data = '.. include:: ../preamble.rst\n'
 file_ptr.write(output_data)
 #
-# Table of Contents
-level         = 1
-count         = list()
-section_index = 0
-output_data   = table_of_contents(section_info, level, count, section_index)
-file_ptr.write(output_data)
-#
-# Index
+# Automatic Links
 output_data  = '\n'
-output_data += 'Search\n'
-output_data += '######\n'
-output_data += '* :ref:`genindex`\n'
+output_data += 'Automatic Links\n'
+output_data += '###############\n'
 file_ptr.write(output_data)
 #
 # Index
 output_data  = '\n'
 output_data += 'Index\n'
-output_data += '#####\n'
-output_data += '* :ref:`genindex`\n'
+output_data += '*****\n'
+output_data += '* :ref:`Link To Index<genindex>`\n'
+file_ptr.write(output_data)
+#
+# Table of Contents
+level         = 1
+count         = list()
+section_index = 0
+output_data   = table_of_contents(section_info, level, count, section_index)
 file_ptr.write(output_data)
 #
 file_ptr.close()
