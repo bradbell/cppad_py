@@ -733,35 +733,46 @@ import spellchecker
 def table_of_contents(section_info, level, count, section_index) :
     assert level >= 1
     assert len(count) == level-1
-    if level != 1 :
-        assert section_index != 0
-        content = ''
-    else :
+    #
+    section_name = section_info[section_index]['section_name']
+    if level == 1 :
         assert section_index == 0
         content  = '\n'
         content += 'Table of Contents\n'
         content += '*****************\n'
+        content += ':ref:`' + section_name + '`\n\n'
+    else :
+        assert section_index != 0
+        content  = '| '
+        assert level > 1
+        for i in range(level - 2 ) :
+            content += ' |space| '
+        for i in range(level - 1) :
+            content += str(count[i])
+            if i + 1 < level - 1 :
+                content += '.'
+        content  += ' :ref:`'
+        content  += section_name + '`\n'
     #
-    section_name = section_info[section_index]['section_name']
-    line  = '| '
-    for i in range(level - 1 ) :
-        line += ' |space| '
-    for i in range(level - 1) :
-        line += str(count[i])
-        if i + 1 < level - 1 :
-            line += '.'
-    line  += ' :ref:`'
-    line     += section_name + '`\n'
-    content  += line
-    #
-    child_count = count + [0]
+    child_count   = count + [0]
+    child_content = ''
     for child_index in range( len( section_info ) ) :
         if section_info[child_index]['parent_section'] == section_index :
             child_count[-1] += 1
-            content += table_of_contents(
+            child_content += table_of_contents(
                 section_info, level + 1, child_count, child_index
             )
-    return content
+    #
+    # if the number of children greater than one, put a blank line before
+    # and after the child table of contents
+    number_children = child_count[-1]
+    if 1 < number_children :
+        if not child_content.startswith('|\n') :
+            child_content = '|\n' + child_content
+        if not child_content.endswith('|\n') :
+            child_content = child_content + '|\n'
+    #
+    return content + child_content
 # ---------------------------------------------------------------------------
 def newline_indices(data) :
     pattern_newline  = re.compile( r'\n')

@@ -51,6 +51,9 @@ Previous Years
     (see below) that only pertained to the :ref:`xsrst.py<xsrst_py>` program.
 #.  xsrst: The order of the sections in the pdf file and the
     table of contents was corrected.
+#.  xsrst: Put spaces around table of contents levels that have more that one
+    entry. Also remove the level of indentation in table of contents by one
+    because the root section stands out has having not number in front of it.
 
 09-12
 *****
