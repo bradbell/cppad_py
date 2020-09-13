@@ -11,8 +11,9 @@ cpp_lib
 
 .. _cpp_lib:
 
-The C++ Library
-###############
+3.2 The C++ Library
+###################
+
 - :ref:`cpp_lib.children`
 
 .. meta::

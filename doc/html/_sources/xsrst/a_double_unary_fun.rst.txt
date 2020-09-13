@@ -11,8 +11,9 @@ a_double_unary_fun
 
 .. _a_double_unary_fun:
 
-Unary Functions with AD Result
-##############################
+3.2.1.7 Unary Functions with AD Result
+######################################
+
 - :ref:`a_double_unary_fun.syntax`
 - :ref:`a_double_unary_fun.ax`
 - :ref:`a_double_unary_fun.fun`

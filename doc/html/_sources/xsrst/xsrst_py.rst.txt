@@ -11,8 +11,9 @@ xsrst_py
 
 .. _xsrst_py:
 
-Extract Sphinx RST
-##################
+4 Extract Sphinx RST
+####################
+
 - :ref:`xsrst_py.syntax`
 - :ref:`xsrst_py.purpose`
 - :ref:`xsrst_py.requirements`

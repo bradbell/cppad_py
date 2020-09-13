@@ -19,6 +19,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
   
   
@@ -90,6 +91,7 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="xsrst_automatic.html">Automatic Links</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
@@ -180,11 +182,10 @@
             
   <div class="section" id="begin-cmd">
 <h1>begin_cmd<a class="headerlink" href="#begin-cmd" title="Permalink to this headline">¶</a></h1>
-<div class="math notranslate nohighlight">
-\[\newcommand{\B}[1]{ {\bf #1} }
-\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="begin-and-end-commands">
-<span id="id1"></span><h2>Begin and End Commands<a class="headerlink" href="#begin-and-end-commands" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>4.1 Begin and End Commands<a class="headerlink" href="#begin-and-end-commands" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#begin-cmd-syntax"><span class="std std-ref">Syntax</span></a></p></li>
 <li><p><a class="reference internal" href="#begin-cmd-section"><span class="std std-ref">Section</span></a></p></li>
@@ -210,6 +211,7 @@ begin (end) command at the
 <span id="begin-cmd-section-name"></span><span id="index-3"></span><h3>section_name<a class="headerlink" href="#section-name" title="Permalink to this headline">¶</a></h3>
 <p>The <em>section_name</em> is a non-empty sequence of the following characters:
 a-z, 0-9, and underbar <code class="docutils literal notranslate"><span class="pre">_</span></code>.
+It can not begin with the characters <code class="docutils literal notranslate"><span class="pre">xsrst_</span></code>.
 A link is included in the index under the section name
 to the first heading the section.
 The section name is also added to the html keyword meta data.</p>

@@ -11,8 +11,9 @@ py_fun_jacobian
 
 .. _py_fun_jacobian:
 
-Jacobian of an AD Function
-##########################
+3.1.1.6 Jacobian of an AD Function
+##################################
+
 - :ref:`py_fun_jacobian.syntax`
 - :ref:`py_fun_jacobian.f`
 - :ref:`py_fun_jacobian.f(x)`

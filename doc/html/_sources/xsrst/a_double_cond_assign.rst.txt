@@ -11,8 +11,9 @@ a_double_cond_assign
 
 .. _a_double_cond_assign:
 
-AD Conditional Assignment
-#########################
+3.2.1.8 AD Conditional Assignment
+#################################
+
 - :ref:`a_double_cond_assign.syntax`
 - :ref:`a_double_cond_assign.purpose`
 - :ref:`a_double_cond_assign.target`

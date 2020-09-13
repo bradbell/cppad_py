@@ -11,8 +11,9 @@ cpp_fun_property
 
 .. _cpp_fun_property:
 
-Properties of a Function Object
-###############################
+3.2.3.4 Properties of a Function Object
+#######################################
+
 - :ref:`cpp_fun_property.syntax`
 - :ref:`cpp_fun_property.f`
 - :ref:`cpp_fun_property.size_domain`

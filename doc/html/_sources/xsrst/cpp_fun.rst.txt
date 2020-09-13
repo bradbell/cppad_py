@@ -11,8 +11,9 @@ cpp_fun
 
 .. _cpp_fun:
 
-Cppad Py AD Functions
-#####################
+3.2.3 Cppad Py AD Functions
+###########################
+
 - :ref:`cpp_fun.children`
 
 .. meta::

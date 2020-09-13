@@ -11,8 +11,9 @@ py_sparse_rc
 
 .. _py_sparse_rc:
 
-Sparsity Patterns
-#################
+3.1.2.1 Sparsity Patterns
+#########################
+
 - :ref:`py_sparse_rc.syntax`
 - :ref:`py_sparse_rc.pattern`
 - :ref:`py_sparse_rc.nr`

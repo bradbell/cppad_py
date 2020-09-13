@@ -11,8 +11,9 @@ py_fun_forward
 
 .. _py_fun_forward:
 
-Forward Mode AD
-###############
+3.1.1.8 Forward Mode AD
+#######################
+
 - :ref:`py_fun_forward.syntax`
 - :ref:`py_fun_forward.taylor_coefficient`
 - :ref:`py_fun_forward.f`

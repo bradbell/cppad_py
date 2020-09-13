@@ -9,12 +9,13 @@ conf_py
 
 .. _conf_py:
 
-Example conf.py
-###############
+4.9.1 Example conf.py
+#####################
+
 
 
 .. literalinclude:: ../../sphinx/conf.py
-    :lines: 14-41
+    :lines: 14-62
     :language: py
 
 ----

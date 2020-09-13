@@ -11,8 +11,9 @@ vector_size
 
 .. _vector_size:
 
-Size of a Vector
-################
+3.2.2.2 Size of a Vector
+########################
+
 - :ref:`vector_size.syntax`
 - :ref:`vector_size.v`
 - :ref:`vector_size.n`

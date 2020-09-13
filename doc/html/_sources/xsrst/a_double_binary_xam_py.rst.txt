@@ -11,8 +11,9 @@ a_double_binary_xam_py
 
 .. _a_double_binary_xam_py:
 
-Python: a_double Binary Operators With AD Result: Example and Test
-##################################################################
+3.2.1.4.2 Python: a_double Binary Operators With AD Result: Example and Test
+############################################################################
+
 
 
 .. literalinclude:: ../../example/python/core/a_double_binary_xam.py

@@ -18,6 +18,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
   
   
@@ -89,6 +90,7 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="xsrst_automatic.html">Automatic Links</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="numeric_xam.html">numeric_xam</a><ul class="current">
@@ -182,18 +184,16 @@
             
   <div class="section" id="numeric-optimize-fun-xam-py">
 <h1>numeric_optimize_fun_xam_py<a class="headerlink" href="#numeric-optimize-fun-xam-py" title="Permalink to this headline">¶</a></h1>
-<div class="math notranslate nohighlight">
-\[\newcommand{\B}[1]{ {\bf #1} }
-\newcommand{\R}[1]{ {\rm #1} }\]</div>
+<p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="example-using-optimize-fun-class-with-scipy-optimization">
-<span id="id1"></span><h2>Example Using optimize_fun_class with Scipy Optimization<a class="headerlink" href="#example-using-optimize-fun-class-with-scipy-optimization" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>2.5.1 Example Using optimize_fun_class with Scipy Optimization<a class="headerlink" href="#example-using-optimize-fun-class-with-scipy-optimization" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#numeric-optimize-fun-xam-py-reference"><span class="std std-ref">Reference</span></a></p></li>
 <li><p><a class="reference internal" href="#numeric-optimize-fun-xam-py-problem"><span class="std std-ref">Problem</span></a></p></li>
 <li><p><a class="reference internal" href="#numeric-optimize-fun-xam-py-trust-constr"><span class="std std-ref">trust_constr</span></a></p></li>
 <li><p><a class="reference internal" href="#numeric-optimize-fun-xam-py-source-code"><span class="std std-ref">Source Code</span></a></p></li>
 </ul>
-<p><span class="math notranslate nohighlight">\(\newcommand{\W}[1]{{\; #1 \;}}\)</span></p>
 <div class="section" id="reference">
 <span id="numeric-optimize-fun-xam-py-reference"></span><span id="index-1"></span><h3>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h3>
 <p>This problem comes form the
@@ -212,7 +212,8 @@ section of the Ipopt documentation.</p>
 <p>with the starting point <span class="math notranslate nohighlight">\(x = (1, 5, 5, 1)\)</span>.
 The optimal value for <span class="math notranslate nohighlight">\(x\)</span> is</p>
 <div class="math notranslate nohighlight">
-\[(1.00000000 \W{,} 4.74299963 \W{,} 3.82114998 \W{,} 1.37940829)\]</div>
+\[\newcommand{\W}[1]{{\; #1 \;}}
+(1.00000000 \W{,} 4.74299963 \W{,} 3.82114998 \W{,} 1.37940829)\]</div>
 </div>
 <div class="section" id="trust-constr">
 <span id="numeric-optimize-fun-xam-py-trust-constr"></span><span id="index-3"></span><h3>trust_constr<a class="headerlink" href="#trust-constr" title="Permalink to this headline">¶</a></h3>

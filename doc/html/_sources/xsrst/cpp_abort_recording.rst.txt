@@ -11,8 +11,9 @@ cpp_abort_recording
 
 .. _cpp_abort_recording:
 
-Abort Recording
-###############
+3.2.3.2 Abort Recording
+#######################
+
 - :ref:`cpp_abort_recording.syntax`
 - :ref:`cpp_abort_recording.purpose`
 - :ref:`cpp_abort_recording.example`

@@ -11,8 +11,9 @@ a_double_assign_xam_cpp
 
 .. _a_double_assign_xam_cpp:
 
-C++: a_double Assignment Operators: Example and Test
-####################################################
+3.2.1.6.1 C++: a_double Assignment Operators: Example and Test
+##############################################################
+
 
 
 .. literalinclude:: ../../example/cplusplus/a_double_assign_xam.cpp

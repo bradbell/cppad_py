@@ -11,14 +11,13 @@ numeric_optimize_fun_xam_py
 
 .. _numeric_optimize_fun_xam_py:
 
-Example Using optimize_fun_class with Scipy Optimization
-########################################################
+2.5.1 Example Using optimize_fun_class with Scipy Optimization
+##############################################################
+
 - :ref:`numeric_optimize_fun_xam_py.reference`
 - :ref:`numeric_optimize_fun_xam_py.problem`
 - :ref:`numeric_optimize_fun_xam_py.trust_constr`
 - :ref:`numeric_optimize_fun_xam_py.source_code`
-
-:math:`\newcommand{\W}[1]{{\; #1 \;}}`
 
 .. meta::
    :keywords: reference
@@ -57,7 +56,8 @@ The optimal value for :math:`x` is
 
 .. math::
 
-   (1.00000000 \W{,} 4.74299963 \W{,} 3.82114998 \W{,} 1.37940829)
+  \newcommand{\W}[1]{{\; #1 \;}}
+  (1.00000000 \W{,} 4.74299963 \W{,} 3.82114998 \W{,} 1.37940829)
 
 .. meta::
    :keywords: trust_constr

@@ -11,8 +11,9 @@ setup_py
 
 .. _setup_py:
 
-Configure and Build the cppad_py Python Module
-##############################################
+1 Configure and Build the cppad_py Python Module
+################################################
+
 - :ref:`setup_py.syntax`
 - :ref:`setup_py.external_requirements`
 - :ref:`setup_py.install_using_pip`

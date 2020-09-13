@@ -14,6 +14,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
   
   
@@ -85,6 +86,7 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="xsrst_automatic.html">Automatic Links</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
@@ -184,7 +186,7 @@
   <div class="section" id="conf-py">
 <h1>conf_py<a class="headerlink" href="#conf-py" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="example-conf-py">
-<span id="id1"></span><h2>Example conf.py<a class="headerlink" href="#example-conf-py" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>4.9.1 Example conf.py<a class="headerlink" href="#example-conf-py" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configuration file for the Sphinx documentation builder.</span>
 <span class="c1">#</span>
 <span class="c1"># For conf.py documentation see</span>
@@ -212,6 +214,27 @@
 <span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;navigation_depth&#39;</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span>   <span class="p">,</span>
     <span class="s1">&#39;titles_only&#39;</span>      <span class="p">:</span> <span class="kc">True</span> <span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># -- These folders are copied to the documentation&#39;s HTML output ------------</span>
+<span class="c1"># html_static_path = [ &#39;_static&#39; ]</span>
+
+<span class="c1"># -- These paths are either relative to html_static_path --------------------</span>
+<span class="c1"># or fully qualified paths (eg. https://...)</span>
+<span class="n">html_css_files</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;css/custom.css&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># -- Latex commands used by all sections -------------------------------------</span>
+<span class="n">latex_elements</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;preamble&#39;</span> <span class="p">:</span>  
+        <span class="sa">r</span><span class="s1">&#39;\newcommand{\B}[1]{{\bf #1}} &#39;</span>  <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+        <span class="sa">r</span><span class="s1">&#39;\newcommand{\R}[1]{{\rm #1}} &#39;</span>  <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+        <span class="sa">r</span><span class="s1">&#39;\renewcommand{\thesection}{{\hspace{-1em}}}&#39;</span>        <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+        <span class="sa">r</span><span class="s1">&#39;\renewcommand{\thesubsection}{{\hspace{-1em}}}&#39;</span>     <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+        <span class="sa">r</span><span class="s1">&#39;\renewcommand{\thesubsubsection}{{\hspace{-1em}}}&#39;</span>  <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+        <span class="s1">&#39;&#39;</span>
+    <span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>

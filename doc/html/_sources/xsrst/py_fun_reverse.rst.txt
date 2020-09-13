@@ -11,8 +11,9 @@ py_fun_reverse
 
 .. _py_fun_reverse:
 
-Reverse Mode AD
-###############
+3.1.1.9 Reverse Mode AD
+#######################
+
 - :ref:`py_fun_reverse.syntax`
 - :ref:`py_fun_reverse.f`
 - :ref:`py_fun_reverse.notation`

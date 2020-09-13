@@ -11,8 +11,9 @@ py_fun_new_dynamic
 
 .. _py_fun_new_dynamic:
 
-New Dynamic Parameters
-######################
+3.1.1.5 New Dynamic Parameters
+##############################
+
 - :ref:`py_fun_new_dynamic.syntax`
 - :ref:`py_fun_new_dynamic.f`
 - :ref:`py_fun_new_dynamic.dynamic`

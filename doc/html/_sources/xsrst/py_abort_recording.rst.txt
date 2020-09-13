@@ -11,8 +11,9 @@ py_abort_recording
 
 .. _py_abort_recording:
 
-Abort Recording
-###############
+3.1.1.2 Abort Recording
+#######################
+
 - :ref:`py_abort_recording.syntax`
 - :ref:`py_abort_recording.purpose`
 - :ref:`py_abort_recording.example`

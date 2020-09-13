@@ -11,8 +11,9 @@ sparse
 
 .. _sparse:
 
-Cppad Py Sparse Calculation
-###########################
+3.2.4 Cppad Py Sparse Calculation
+#################################
+
 - :ref:`sparse.children`
 
 .. meta::

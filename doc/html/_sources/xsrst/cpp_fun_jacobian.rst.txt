@@ -11,8 +11,9 @@ cpp_fun_jacobian
 
 .. _cpp_fun_jacobian:
 
-Jacobian of an AD Function
-##########################
+3.2.3.6 Jacobian of an AD Function
+##################################
+
 - :ref:`cpp_fun_jacobian.syntax`
 - :ref:`cpp_fun_jacobian.f`
 - :ref:`cpp_fun_jacobian.f(x)`

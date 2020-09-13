@@ -11,8 +11,9 @@ cpp_fun_hessian
 
 .. _cpp_fun_hessian:
 
-Hessian of an AD Function
-#########################
+3.2.3.7 Hessian of an AD Function
+#################################
+
 - :ref:`cpp_fun_hessian.syntax`
 - :ref:`cpp_fun_hessian.f`
 - :ref:`cpp_fun_hessian.f(x)`

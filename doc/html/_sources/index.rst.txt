@@ -12,19 +12,8 @@
 
 .. comment: BEGIN_INDEX_RST
 
-Table of Contents
-=================
-
 .. toctree::
-
-   xsrst/cppad_py
-
-Index
-=====
-* :ref:`genindex`
-
-Search
-======
-* :ref:`search`
+    xsrst/xsrst_automatic
+    xsrst/cppad_py
 
 .. comment: END_INDEX_RST

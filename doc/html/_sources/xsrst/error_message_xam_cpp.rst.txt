@@ -11,8 +11,9 @@ error_message_xam_cpp
 
 .. _error_message_xam_cpp:
 
-C++: Cppad Py Exception Handling: Example and Test
-##################################################
+3.2.5.3.1 C++: Cppad Py Exception Handling: Example and Test
+############################################################
+
 
 
 .. literalinclude:: ../../example/cplusplus/error_message_xam.cpp

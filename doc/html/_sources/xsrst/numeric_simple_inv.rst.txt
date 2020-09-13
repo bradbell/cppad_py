@@ -11,8 +11,9 @@ numeric_simple_inv
 
 .. _numeric_simple_inv:
 
-An AD Compatible Matrix Inverse Routine
-#######################################
+2.1 An AD Compatible Matrix Inverse Routine
+###########################################
+
 - :ref:`numeric_simple_inv.syntax`
 - :ref:`numeric_simple_inv.purpose`
 - :ref:`numeric_simple_inv.a`

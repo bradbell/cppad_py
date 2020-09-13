@@ -11,8 +11,9 @@ error_message
 
 .. _error_message:
 
-Exception Handling
-##################
+3.2.5.3 Exception Handling
+##########################
+
 - :ref:`error_message.syntax`
 - :ref:`error_message.in_try_block`
     - :ref:`error_message.in_try_block.exception`

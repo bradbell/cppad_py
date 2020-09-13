@@ -11,8 +11,9 @@ py_sparse
 
 .. _py_sparse:
 
-Python Sparsity Routines
-########################
+3.1.2 Python Sparsity Routines
+##############################
+
 - :ref:`py_sparse.children`
 
 .. meta::

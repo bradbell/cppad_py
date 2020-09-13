@@ -11,8 +11,9 @@ fun_property_xam_py
 
 .. _fun_property_xam_py:
 
-Python: d_fun Properties: Example and Test
-##########################################
+3.1.1.4.1 Python: d_fun Properties: Example and Test
+####################################################
+
 
 
 .. literalinclude:: ../../example/python/core/fun_property_xam.py

@@ -11,8 +11,9 @@ cpp_utility
 
 .. _cpp_utility:
 
-C++ Utilities
-#############
+3.2.5 C++ Utilities
+###################
+
 - :ref:`cpp_utility.children`
 
 .. meta::

@@ -1,0 +1,810 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter {\sphinxsymbolsname}
+  \item \spxentry{\_\_init\_\_.py}, \hyperpage{123}
+  \item \spxentry{2020.9.13}, \hyperpage{9}
+
+  \indexspace
+  \bigletter {\sphinxnumbersname}
+  \item \spxentry{2018}, \hyperpage{254}
+  \item \spxentry{2020}, \hyperpage{253}
+
+  \indexspace
+  \bigletter A
+  \item \spxentry{a\_both}, \hyperpage{158}
+  \item \spxentry{a\_double}, \hyperpage{70}, \hyperpage{124}, \hyperpage{126--128}, 
+		\hyperpage{130, 131}, \hyperpage{133--140}, \hyperpage{142, 143}, 
+		\hyperpage{146, 147}, \hyperpage{161}, \hyperpage{216, 217}
+  \item \spxentry{a\_double\_assign}, \hyperpage{138}
+  \item \spxentry{a\_double\_assign\_xam\_cpp}, \hyperpage{139}
+  \item \spxentry{a\_double\_assign\_xam\_py}, \hyperpage{140}
+  \item \spxentry{a\_double\_binary}, \hyperpage{131}
+  \item \spxentry{a\_double\_binary\_xam\_cpp}, \hyperpage{133}
+  \item \spxentry{a\_double\_binary\_xam\_py}, \hyperpage{134}
+  \item \spxentry{a\_double\_compare}, \hyperpage{135}
+  \item \spxentry{a\_double\_compare\_xam\_cpp}, \hyperpage{136}
+  \item \spxentry{a\_double\_compare\_xam\_py}, \hyperpage{137}
+  \item \spxentry{a\_double\_cond\_assign}, \hyperpage{144}
+  \item \spxentry{a\_double\_cond\_assign\_xam\_cpp}, \hyperpage{146}
+  \item \spxentry{a\_double\_cond\_assign\_xam\_py}, \hyperpage{147}
+  \item \spxentry{a\_double\_ctor}, \hyperpage{124}
+  \item \spxentry{a\_double\_property}, \hyperpage{128}
+  \item \spxentry{a\_double\_property\_xam\_cpp}, \hyperpage{130}
+  \item \spxentry{a\_double\_property\_xam\_py}, \hyperpage{131}
+  \item \spxentry{a\_double\_unary\_fun}, \hyperpage{141}
+  \item \spxentry{a\_double\_unary\_fun\_xam\_cpp}, \hyperpage{142}
+  \item \spxentry{a\_double\_unary\_fun\_xam\_py}, \hyperpage{143}
+  \item \spxentry{a\_double\_unary\_op}, \hyperpage{126}
+  \item \spxentry{a\_double\_unary\_op\_xam\_cpp}, \hyperpage{127}
+  \item \spxentry{a\_double\_unary\_op\_xam\_py}, \hyperpage{127}
+  \item \spxentry{a\_fun}, \hyperpage{71, 72}, \hyperpage{162}
+  \item \spxentry{a\_fun\_xam\_py}, \hyperpage{72}
+  \item \spxentry{a\_other}, \hyperpage{125}
+  \item \spxentry{abort}, \hyperpage{70}, \hyperpage{160, 161}
+  \item \spxentry{actual}, \hyperpage{54}
+  \item \spxentry{ad}, \hyperpage{18}, \hyperpage{67}, \hyperpage{77}, \hyperpage{80}, 
+		\hyperpage{83}, \hyperpage{86}, \hyperpage{90}, \hyperpage{92}, 
+		\hyperpage{124, 125}, \hyperpage{128}, \hyperpage{131}, \hyperpage{133, 134}, 
+		\hyperpage{141--144}, \hyperpage{156}, \hyperpage{168}, \hyperpage{171}, 
+		\hyperpage{174}, \hyperpage{178}, \hyperpage{182}, \hyperpage{184}
+  \item \spxentry{ad:}, \hyperpage{78}, \hyperpage{81}, \hyperpage{84}, \hyperpage{88}, 
+		\hyperpage{169}, \hyperpage{172}, \hyperpage{176}, \hyperpage{180}
+  \item \spxentry{add}, \hyperpage{121}, \hyperpage{220}
+  \item \spxentry{adynamic}, \hyperpage{68}
+  \item \spxentry{af}, \hyperpage{72}, \hyperpage{163}
+  \item \spxentry{ainv}, \hyperpage{18}
+  \item \spxentry{alpha}, \hyperpage{46}
+  \item \spxentry{an}, \hyperpage{18}, \hyperpage{52}, \hyperpage{77}, \hyperpage{80}, 
+		\hyperpage{90}, \hyperpage{128}, \hyperpage{131}, \hyperpage{168}, \hyperpage{171}, 
+		\hyperpage{182, 183}, \hyperpage{216, 217}
+  \item \spxentry{another}, \hyperpage{244}
+  \item \spxentry{arguments}, \hyperpage{249}
+  \item \spxentry{array}, \hyperpage{118--120}
+  \item \spxentry{assignment}, \hyperpage{138--140}, \hyperpage{144}
+  \item \spxentry{assignment:}, \hyperpage{146, 147}
+  \item \spxentry{ax}, \hyperpage{68}, \hyperpage{72}, \hyperpage{126}, \hyperpage{132}, 
+		\hyperpage{135}, \hyperpage{138}, \hyperpage{141}, \hyperpage{158}, 
+		\hyperpage{162}
+  \item \spxentry{ay}, \hyperpage{72}, \hyperpage{126}, \hyperpage{132}, \hyperpage{136}, 
+		\hyperpage{139}, \hyperpage{141}, \hyperpage{162}
+  \item \spxentry{az}, \hyperpage{132}
+
+  \indexspace
+  \bigletter B
+  \item \spxentry{b}, \hyperpage{136}
+  \item \spxentry{begin}, \hyperpage{224}
+  \item \spxentry{begin\_cmd}, \hyperpage{224}
+  \item \spxentry{beginning}, \hyperpage{242}, \hyperpage{249}
+  \item \spxentry{beta(t)}, \hyperpage{53}
+  \item \spxentry{binary}, \hyperpage{131}, \hyperpage{133, 134}
+  \item \spxentry{block}, \hyperpage{218}
+  \item \spxentry{bounds}, \hyperpage{54}
+  \item \spxentry{build}, \hyperpage{10}, \hyperpage{16}
+  \item \spxentry{build\_type}, \hyperpage{14}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry{c}, \hyperpage{97}, \hyperpage{190}
+  \item \spxentry{c++}, \hyperpage{9, 10}, \hyperpage{16}, \hyperpage{124}, \hyperpage{216}, 
+		\hyperpage{220}
+  \item \spxentry{c++:}, \hyperpage{127}, \hyperpage{130}, \hyperpage{133}, \hyperpage{136}, 
+		\hyperpage{139}, \hyperpage{142}, \hyperpage{146}, \hyperpage{151}, 
+		\hyperpage{154}, \hyperpage{159}, \hyperpage{161}, \hyperpage{166}, 
+		\hyperpage{169}, \hyperpage{172}, \hyperpage{176}, \hyperpage{180}, 
+		\hyperpage{183}, \hyperpage{185, 186}, \hyperpage{192}, \hyperpage{198}, 
+		\hyperpage{201}, \hyperpage{204}, \hyperpage{209}, \hyperpage{214}, 
+		\hyperpage{218}
+  \item \spxentry{caching}, \hyperpage{15}
+  \item \spxentry{calculation}, \hyperpage{188}
+  \item \spxentry{capital}, \hyperpage{232}
+  \item \spxentry{catch}, \hyperpage{218}
+  \item \spxentry{ch}, \hyperpage{241}
+  \item \spxentry{change}, \hyperpage{167}
+  \item \spxentry{changes}, \hyperpage{253, 254}
+  \item \spxentry{character}, \hyperpage{241--243}
+  \item \spxentry{check\_rosen3\_step}, \hyperpage{32}
+  \item \spxentry{checking}, \hyperpage{237}, \hyperpage{239}
+  \item \spxentry{child}, \hyperpage{228}, \hyperpage{244}
+  \item \spxentry{child\_cmd}, \hyperpage{225}
+  \item \spxentry{children}, \hyperpage{10}, \hyperpage{18}, \hyperpage{66, 67}, \hyperpage{95}, 
+		\hyperpage{118}, \hyperpage{124}, \hyperpage{149}, \hyperpage{156}, 
+		\hyperpage{188}, \hyperpage{216}, \hyperpage{225}, \hyperpage{229}, 
+		\hyperpage{252}
+  \item \spxentry{children.py}, \hyperpage{227, 228}
+  \item \spxentry{children\_exam}, \hyperpage{229}
+  \item \spxentry{children\_res}, \hyperpage{229}
+  \item \spxentry{class}, \hyperpage{38}
+  \item \spxentry{code}, \hyperpage{19, 20}, \hyperpage{23}, \hyperpage{25}, \hyperpage{28}, 
+		\hyperpage{31}, \hyperpage{36}, \hyperpage{38}, \hyperpage{41}, \hyperpage{43}, 
+		\hyperpage{49}, \hyperpage{58}, \hyperpage{236--238}
+  \item \spxentry{code\_cmd}, \hyperpage{236}
+  \item \spxentry{code\_exam}, \hyperpage{237}
+  \item \spxentry{code\_res}, \hyperpage{238}
+  \item \spxentry{coefficient}, \hyperpage{55}, \hyperpage{83}, \hyperpage{174}
+  \item \spxentry{col}, \hyperpage{97}, \hyperpage{101}, \hyperpage{191}, \hyperpage{196}
+  \item \spxentry{col\_major}, \hyperpage{98}, \hyperpage{102}, \hyperpage{192}, \hyperpage{197}
+  \item \spxentry{command}, \hyperpage{231}, \hyperpage{236}, \hyperpage{238}, \hyperpage{241}, 
+		\hyperpage{249}
+  \item \spxentry{commands}, \hyperpage{224, 225}, \hyperpage{234}, \hyperpage{253}
+  \item \spxentry{comment}, \hyperpage{241--243}
+  \item \spxentry{comment\_ch\_cmd}, \hyperpage{241}
+  \item \spxentry{comment\_ch\_exam}, \hyperpage{242}
+  \item \spxentry{comment\_ch\_res}, \hyperpage{243}
+  \item \spxentry{comparison}, \hyperpage{135--137}
+  \item \spxentry{compatible}, \hyperpage{18}
+  \item \spxentry{component}, \hyperpage{108}, \hyperpage{204}
+  \item \spxentry{computation}, \hyperpage{92}
+  \item \spxentry{computational}, \hyperpage{184}
+  \item \spxentry{computing}, \hyperpage{19}, \hyperpage{23}, \hyperpage{27}, \hyperpage{35}, 
+		\hyperpage{110}, \hyperpage{112}, \hyperpage{114}, \hyperpage{206}, 
+		\hyperpage{209}, \hyperpage{211}
+  \item \spxentry{conditional}, \hyperpage{144}, \hyperpage{146, 147}
+  \item \spxentry{conf.py}, \hyperpage{245}
+  \item \spxentry{conf\_py}, \hyperpage{245}
+  \item \spxentry{configuration}, \hyperpage{245}, \hyperpage{250}
+  \item \spxentry{configure}, \hyperpage{10}, \hyperpage{16}, \hyperpage{245}
+  \item \spxentry{conservation}, \hyperpage{46}
+  \item \spxentry{constraint\_ad}, \hyperpage{39}
+  \item \spxentry{constraint\_fun}, \hyperpage{40}
+  \item \spxentry{constraint\_hess}, \hyperpage{40}
+  \item \spxentry{constraint\_jac}, \hyperpage{40}
+  \item \spxentry{constructor}, \hyperpage{124}
+  \item \spxentry{constructors}, \hyperpage{149}
+  \item \spxentry{contents}, \hyperpage{251}
+  \item \spxentry{context}, \hyperpage{119}
+  \item \spxentry{convert}, \hyperpage{118}, \hyperpage{120}, \hyperpage{216, 217}
+  \item \spxentry{cop}, \hyperpage{145}
+  \item \spxentry{covariates}, \hyperpage{53}
+  \item \spxentry{covid\sphinxhyphen{}19}, \hyperpage{52}
+  \item \spxentry{cpp\_abort\_recording}, \hyperpage{160}
+  \item \spxentry{cpp\_fun}, \hyperpage{156}
+  \item \spxentry{cpp\_fun\_ctor}, \hyperpage{162}
+  \item \spxentry{cpp\_fun\_forward}, \hyperpage{174}
+  \item \spxentry{cpp\_fun\_hessian}, \hyperpage{171}
+  \item \spxentry{cpp\_fun\_jacobian}, \hyperpage{168}
+  \item \spxentry{cpp\_fun\_json}, \hyperpage{184}
+  \item \spxentry{cpp\_fun\_new\_dynamic}, \hyperpage{167}
+  \item \spxentry{cpp\_fun\_optimize}, \hyperpage{182}
+  \item \spxentry{cpp\_fun\_property}, \hyperpage{164}
+  \item \spxentry{cpp\_fun\_reverse}, \hyperpage{178}
+  \item \spxentry{cpp\_independent}, \hyperpage{157}
+  \item \spxentry{cpp\_jac\_sparsity}, \hyperpage{199}
+  \item \spxentry{cpp\_lib}, \hyperpage{124}
+  \item \spxentry{cpp\_sparse\_hes}, \hyperpage{211}
+  \item \spxentry{cpp\_sparse\_jac}, \hyperpage{206}
+  \item \spxentry{cpp\_sparse\_rc}, \hyperpage{188}
+  \item \spxentry{cpp\_sparse\_rcv}, \hyperpage{193}
+  \item \spxentry{cpp\_sparsity}, \hyperpage{202}
+  \item \spxentry{cpp\_utility}, \hyperpage{216}
+  \item \spxentry{cppad}, \hyperpage{9}, \hyperpage{12}, \hyperpage{14}, \hyperpage{16}, 
+		\hyperpage{66, 67}, \hyperpage{124}, \hyperpage{149}, \hyperpage{156}, 
+		\hyperpage{188}, \hyperpage{218, 219}, \hyperpage{253, 254}
+  \item \spxentry{cppad::ad\textless{}double\textgreater{}}, \hyperpage{216, 217}
+  \item \spxentry{cppad\_prefix}, \hyperpage{14}
+  \item \spxentry{cppad\_py}, \hyperpage{9, 10}, \hyperpage{16}, \hyperpage{118}, \hyperpage{120}
+  \item \spxentry{current}, \hyperpage{71}, \hyperpage{162}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry{d}, \hyperpage{125}
+  \item \spxentry{d\_fun}, \hyperpage{71}, \hyperpage{75}, \hyperpage{162}
+  \item \spxentry{d\_fun:}, \hyperpage{90}, \hyperpage{183}
+  \item \spxentry{data}, \hyperpage{55}
+  \item \spxentry{data\_file}, \hyperpage{55}
+  \item \spxentry{death}, \hyperpage{44}
+  \item \spxentry{debug}, \hyperpage{57}
+  \item \spxentry{declare}, \hyperpage{67}, \hyperpage{157}
+  \item \spxentry{defines}, \hyperpage{38}
+  \item \spxentry{dense}, \hyperpage{78}, \hyperpage{81}, \hyperpage{169}, \hyperpage{172}
+  \item \spxentry{derivative}, \hyperpage{23}, \hyperpage{27, 28}, \hyperpage{35, 36}
+  \item \spxentry{derivatives}, \hyperpage{19}
+  \item \spxentry{directory}, \hyperpage{14}, \hyperpage{16}
+  \item \spxentry{display}, \hyperpage{57}
+  \item \spxentry{documentation}, \hyperpage{121}, \hyperpage{221}
+  \item \spxentry{double}, \hyperpage{232, 233}
+  \item \spxentry{download}, \hyperpage{15}
+  \item \spxentry{dtype}, \hyperpage{119}
+  \item \spxentry{during}, \hyperpage{11}, \hyperpage{253, 254}
+  \item \spxentry{dynamic}, \hyperpage{68}, \hyperpage{77}, \hyperpage{157}, \hyperpage{159}, 
+		\hyperpage{167, 168}
+
+  \indexspace
+  \bigletter E
+  \item \spxentry{element\_type}, \hyperpage{153}
+  \item \spxentry{elements}, \hyperpage{153}
+  \item \spxentry{elements:}, \hyperpage{154, 155}
+  \item \spxentry{empty}, \hyperpage{72}, \hyperpage{163}
+  \item \spxentry{end}, \hyperpage{224}
+  \item \spxentry{entire}, \hyperpage{105}, \hyperpage{200}
+  \item \spxentry{error}, \hyperpage{11}
+  \item \spxentry{error\_message}, \hyperpage{217}
+  \item \spxentry{error\_message\_xam\_cpp}, \hyperpage{218}
+  \item \spxentry{error\_message\_xam\_py}, \hyperpage{219}
+  \item \spxentry{errors}, \hyperpage{15}, \hyperpage{218}
+  \item \spxentry{example}, \hyperpage{19, 20}, \hyperpage{23}, \hyperpage{25}, \hyperpage{27}, 
+		\hyperpage{31}, \hyperpage{35}, \hyperpage{37}, \hyperpage{41}, \hyperpage{43}, 
+		\hyperpage{47, 48}, \hyperpage{52}, \hyperpage{68--73}, \hyperpage{75--79}, 
+		\hyperpage{81, 82}, \hyperpage{84}, \hyperpage{86}, \hyperpage{88--93}, 
+		\hyperpage{98, 99}, \hyperpage{102, 103}, \hyperpage{105, 106}, 
+		\hyperpage{108, 109}, \hyperpage{112, 113}, \hyperpage{116}, \hyperpage{118}, 
+		\hyperpage{122, 123}, \hyperpage{126, 127}, \hyperpage{130, 131}, 
+		\hyperpage{133--140}, \hyperpage{142, 143}, \hyperpage{146--148}, 
+		\hyperpage{150--152}, \hyperpage{154--156}, \hyperpage{159--161}, \hyperpage{163}, 
+		\hyperpage{166--170}, \hyperpage{172}, \hyperpage{174}, \hyperpage{176, 177}, 
+		\hyperpage{180}, \hyperpage{182--186}, \hyperpage{192, 193}, \hyperpage{198}, 
+		\hyperpage{201, 202}, \hyperpage{204}, \hyperpage{206}, \hyperpage{209, 210}, 
+		\hyperpage{214, 215}, \hyperpage{218, 219}, \hyperpage{221, 222}, 
+		\hyperpage{226, 227}, \hyperpage{229--232}, \hyperpage{234}, \hyperpage{237}, 
+		\hyperpage{239}, \hyperpage{242, 243}, \hyperpage{245--248}, \hyperpage{250}, 
+		\hyperpage{252}
+  \item \spxentry{examples}, \hyperpage{9}, \hyperpage{18}, \hyperpage{94}, \hyperpage{187}
+  \item \spxentry{exception}, \hyperpage{217--219}
+  \item \spxentry{exposed}, \hyperpage{44}
+  \item \spxentry{external}, \hyperpage{11}
+  \item \spxentry{extra\_cxx\_flags}, \hyperpage{14}
+  \item \spxentry{extract}, \hyperpage{223}
+
+  \indexspace
+  \bigletter F
+  \item \spxentry{f}, \hyperpage{72}, \hyperpage{74}, \hyperpage{77, 78}, \hyperpage{80}, 
+		\hyperpage{83}, \hyperpage{86}, \hyperpage{90}, \hyperpage{92}, \hyperpage{105}, 
+		\hyperpage{107}, \hyperpage{111}, \hyperpage{114}, \hyperpage{163, 164}, 
+		\hyperpage{168, 169}, \hyperpage{171}, \hyperpage{174}, \hyperpage{178}, 
+		\hyperpage{182}, \hyperpage{184}, \hyperpage{200}, \hyperpage{203}, 
+		\hyperpage{207}, \hyperpage{211}
+  \item \spxentry{f(x)}, \hyperpage{78}, \hyperpage{80}, \hyperpage{83}, \hyperpage{87}, 
+		\hyperpage{169}, \hyperpage{171}, \hyperpage{175}, \hyperpage{178}
+  \item \spxentry{factorial}, \hyperpage{235}, \hyperpage{240}
+  \item \spxentry{file}, \hyperpage{220}, \hyperpage{225--227}, \hyperpage{238--240}, 
+		\hyperpage{247, 248}
+  \item \spxentry{file\_cmd}, \hyperpage{238}
+  \item \spxentry{file\_exam}, \hyperpage{239}
+  \item \spxentry{file\_name}, \hyperpage{239}
+  \item \spxentry{file\_res}, \hyperpage{240}
+  \item \spxentry{files}, \hyperpage{245}, \hyperpage{250}
+  \item \spxentry{first}, \hyperpage{28}
+  \item \spxentry{fit}, \hyperpage{57}
+  \item \spxentry{fitting}, \hyperpage{52}
+  \item \spxentry{for}, \hyperpage{38}, \hyperpage{52}, \hyperpage{105}, \hyperpage{108}, 
+		\hyperpage{200}, \hyperpage{204}
+  \item \spxentry{for\_jac\_sparsity}, \hyperpage{104}, \hyperpage{199}
+  \item \spxentry{fortify}, \hyperpage{12}
+  \item \spxentry{forward}, \hyperpage{83, 84}, \hyperpage{112}, \hyperpage{116}, \hyperpage{174}, 
+		\hyperpage{176}, \hyperpage{208}, \hyperpage{213}
+  \item \spxentry{fourth}, \hyperpage{21}
+  \item \spxentry{from\_json}, \hyperpage{92}, \hyperpage{185}
+  \item \spxentry{from\_json:}, \hyperpage{93}, \hyperpage{186}
+  \item \spxentry{fun}, \hyperpage{22}, \hyperpage{26}, \hyperpage{34}, \hyperpage{141}
+  \item \spxentry{fun.f}, \hyperpage{26}
+  \item \spxentry{fun.f(t}, \hyperpage{35}
+  \item \spxentry{fun.f\_t}, \hyperpage{26}
+  \item \spxentry{fun.f\_y}, \hyperpage{26}
+  \item \spxentry{fun.set\_t\_all\_index(index)}, \hyperpage{34}
+  \item \spxentry{fun\_abort\_xam\_cpp}, \hyperpage{161}
+  \item \spxentry{fun\_abort\_xam\_py}, \hyperpage{70}
+  \item \spxentry{fun\_dynamic\_xam\_cpp}, \hyperpage{159}
+  \item \spxentry{fun\_dynamic\_xam\_py}, \hyperpage{68}
+  \item \spxentry{fun\_forward\_xam\_cpp}, \hyperpage{176}
+  \item \spxentry{fun\_forward\_xam\_py}, \hyperpage{84}
+  \item \spxentry{fun\_from\_json\_xam\_cpp}, \hyperpage{186}
+  \item \spxentry{fun\_from\_json\_xam\_py}, \hyperpage{93}
+  \item \spxentry{fun\_hessian\_xam\_cpp}, \hyperpage{172}
+  \item \spxentry{fun\_hessian\_xam\_py}, \hyperpage{81}
+  \item \spxentry{fun\_jacobian\_xam\_cpp}, \hyperpage{169}
+  \item \spxentry{fun\_jacobian\_xam\_py}, \hyperpage{78}
+  \item \spxentry{fun\_new\_dynamic.py}, \hyperpage{123}
+  \item \spxentry{fun\_optimize\_xam\_cpp}, \hyperpage{183}
+  \item \spxentry{fun\_optimize\_xam\_py}, \hyperpage{90}
+  \item \spxentry{fun\_property\_xam\_cpp}, \hyperpage{166}
+  \item \spxentry{fun\_property\_xam\_py}, \hyperpage{75}
+  \item \spxentry{fun\_reverse\_xam\_cpp}, \hyperpage{180}
+  \item \spxentry{fun\_reverse\_xam\_py}, \hyperpage{88}
+  \item \spxentry{fun\_to\_json\_xam\_cpp}, \hyperpage{185}
+  \item \spxentry{fun\_to\_json\_xam\_py}, \hyperpage{92}
+  \item \spxentry{function}, \hyperpage{10}, \hyperpage{71, 72}, \hyperpage{74}, \hyperpage{77}, 
+		\hyperpage{80}, \hyperpage{90}, \hyperpage{162--164}, \hyperpage{166}, 
+		\hyperpage{168}, \hyperpage{171}, \hyperpage{182}
+  \item \spxentry{functions}, \hyperpage{38}, \hyperpage{67}, \hyperpage{121}, \hyperpage{141--143}, 
+		\hyperpage{156}, \hyperpage{220}
+
+  \indexspace
+  \bigletter G
+  \item \spxentry{g(t)}, \hyperpage{87}, \hyperpage{179}
+  \item \spxentry{g(x)}, \hyperpage{80}, \hyperpage{171}
+  \item \spxentry{get}, \hyperpage{14}, \hyperpage{16}
+  \item \spxentry{get\_cppad\_sh}, \hyperpage{14}
+  \item \spxentry{getting}, \hyperpage{9}, \hyperpage{153--155}
+  \item \spxentry{git}, \hyperpage{9}
+  \item \spxentry{graph}, \hyperpage{92}, \hyperpage{184}
+
+  \indexspace
+  \bigletter H
+  \item \spxentry{h}, \hyperpage{22}, \hyperpage{27}, \hyperpage{81}, \hyperpage{172}
+  \item \spxentry{handling}, \hyperpage{217}
+  \item \spxentry{handling:}, \hyperpage{218, 219}
+  \item \spxentry{heading}, \hyperpage{243, 244}, \hyperpage{251}
+  \item \spxentry{heading\_exam}, \hyperpage{243}
+  \item \spxentry{heading\_res}, \hyperpage{244}
+  \item \spxentry{helper}, \hyperpage{38}
+  \item \spxentry{hessian}, \hyperpage{80, 81}, \hyperpage{107, 108}, \hyperpage{116}, 
+		\hyperpage{171, 172}, \hyperpage{202}, \hyperpage{204}, \hyperpage{214}
+  \item \spxentry{hessians}, \hyperpage{114}, \hyperpage{211}
+
+  \indexspace
+  \bigletter I
+  \item \spxentry{i}, \hyperpage{153}
+  \item \spxentry{if\_false}, \hyperpage{146}
+  \item \spxentry{if\_true}, \hyperpage{146}
+  \item \spxentry{implementation}, \hyperpage{122}, \hyperpage{221}
+  \item \spxentry{import}, \hyperpage{17}
+  \item \spxentry{in}, \hyperpage{218}
+  \item \spxentry{include}, \hyperpage{220}
+  \item \spxentry{indent}, \hyperpage{229, 230}
+  \item \spxentry{indent\_exam}, \hyperpage{230}
+  \item \spxentry{indent\_res}, \hyperpage{230}
+  \item \spxentry{indentation}, \hyperpage{252}
+  \item \spxentry{independent}, \hyperpage{67}, \hyperpage{121, 122}, \hyperpage{157}, 
+		\hyperpage{220, 221}
+  \item \spxentry{index.rst}, \hyperpage{246}
+  \item \spxentry{index\_rst}, \hyperpage{246}
+  \item \spxentry{infectious}, \hyperpage{44}
+  \item \spxentry{initial}, \hyperpage{46}, \hyperpage{53}
+  \item \spxentry{input}, \hyperpage{242}
+  \item \spxentry{install}, \hyperpage{11}, \hyperpage{15}, \hyperpage{17}
+  \item \spxentry{install\_error}, \hyperpage{11}
+  \item \spxentry{installation}, \hyperpage{11}
+  \item \spxentry{interface}, \hyperpage{9}
+  \item \spxentry{inverse}, \hyperpage{18}
+  \item \spxentry{inversion}, \hyperpage{19}
+
+  \indexspace
+  \bigletter J
+  \item \spxentry{j}, \hyperpage{78}, \hyperpage{169}
+  \item \spxentry{jacobian}, \hyperpage{77, 78}, \hyperpage{104, 105}, \hyperpage{168, 169}, 
+		\hyperpage{199--201}
+  \item \spxentry{jacobians}, \hyperpage{110}, \hyperpage{206}
+  \item \spxentry{jacobians:}, \hyperpage{112}, \hyperpage{209}
+  \item \spxentry{json}, \hyperpage{92}, \hyperpage{184}
+
+  \indexspace
+  \bigletter K
+  \item \spxentry{k}, \hyperpage{97}, \hyperpage{101}, \hyperpage{190}, \hyperpage{195}
+  \item \spxentry{keyword}, \hyperpage{248}, \hyperpage{250}
+
+  \indexspace
+  \bigletter L
+  \item \spxentry{language}, \hyperpage{237}
+  \item \spxentry{left}, \hyperpage{145}
+  \item \spxentry{letters}, \hyperpage{232}
+  \item \spxentry{level}, \hyperpage{244, 245}, \hyperpage{251}
+  \item \spxentry{levels}, \hyperpage{252}
+  \item \spxentry{libraries}, \hyperpage{66}
+  \item \spxentry{library}, \hyperpage{9}, \hyperpage{12}, \hyperpage{66, 67}, \hyperpage{124}
+  \item \spxentry{license}, \hyperpage{10}
+  \item \spxentry{likelihood}, \hyperpage{54}
+  \item \spxentry{line}, \hyperpage{237}, \hyperpage{242}, \hyperpage{249}
+  \item \spxentry{line\_increment}, \hyperpage{250}
+  \item \spxentry{link}, \hyperpage{228}
+  \item \spxentry{links}, \hyperpage{226}, \hyperpage{245}, \hyperpage{251}
+  \item \spxentry{list}, \hyperpage{252}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{mass}, \hyperpage{46}
+  \item \spxentry{math}, \hyperpage{233}
+  \item \spxentry{matrices}, \hyperpage{99}, \hyperpage{193}
+  \item \spxentry{matrix}, \hyperpage{18, 19}, \hyperpage{100}, \hyperpage{194}
+  \item \spxentry{maximum}, \hyperpage{54}
+  \item \spxentry{messages}, \hyperpage{11}
+  \item \spxentry{method}, \hyperpage{45}
+  \item \spxentry{minus}, \hyperpage{126}
+  \item \spxentry{minus:}, \hyperpage{127}
+  \item \spxentry{missing}, \hyperpage{12}
+  \item \spxentry{mode}, \hyperpage{83, 84}, \hyperpage{86}, \hyperpage{88}, \hyperpage{174}, 
+		\hyperpage{176}, \hyperpage{178}, \hyperpage{180}
+  \item \spxentry{model}, \hyperpage{44}, \hyperpage{52--54}
+  \item \spxentry{module}, \hyperpage{10}, \hyperpage{253}
+  \item \spxentry{more}, \hyperpage{121}, \hyperpage{220}
+  \item \spxentry{more\_cpp}, \hyperpage{220}
+  \item \spxentry{more\_py}, \hyperpage{121}
+  \item \spxentry{multiple}, \hyperpage{33}
+
+  \indexspace
+  \bigletter N
+  \item \spxentry{n}, \hyperpage{150, 151}
+  \item \spxentry{n\_step}, \hyperpage{46}
+  \item \spxentry{n\_sweep}, \hyperpage{111}, \hyperpage{115}, \hyperpage{208}, \hyperpage{213}
+  \item \spxentry{name}, \hyperpage{119}
+  \item \spxentry{names}, \hyperpage{226}
+  \item \spxentry{nc}, \hyperpage{96}, \hyperpage{100}, \hyperpage{120}, \hyperpage{189}, 
+		\hyperpage{195}
+  \item \spxentry{near\_equal}, \hyperpage{129}
+  \item \spxentry{needed}, \hyperpage{38}
+  \item \spxentry{new}, \hyperpage{77}
+  \item \spxentry{new\_dynamic}, \hyperpage{121}, \hyperpage{123}, \hyperpage{220--222}
+  \item \spxentry{nnz}, \hyperpage{96}, \hyperpage{101}, \hyperpage{189}, \hyperpage{195}
+  \item \spxentry{no}, \hyperpage{227}
+  \item \spxentry{no\_parent\_exam}, \hyperpage{227}
+  \item \spxentry{no\_parent\_res}, \hyperpage{227}
+  \item \spxentry{not}, \hyperpage{218}
+  \item \spxentry{notation}, \hyperpage{44}, \hyperpage{86}, \hyperpage{178}, \hyperpage{249}
+  \item \spxentry{nr}, \hyperpage{96}, \hyperpage{100}, \hyperpage{120}, \hyperpage{189}, 
+		\hyperpage{194}
+  \item \spxentry{numeric\_covid\_19\_xam\_py}, \hyperpage{52}
+  \item \spxentry{numeric\_ode\_multi\_step}, \hyperpage{33}
+  \item \spxentry{numeric\_ode\_multi\_step\_xam\_py}, \hyperpage{35}
+  \item \spxentry{numeric\_optimize\_fun\_class}, \hyperpage{38}
+  \item \spxentry{numeric\_optimize\_fun\_xam\_py}, \hyperpage{41}
+  \item \spxentry{numeric\_rosen3\_step}, \hyperpage{25}
+  \item \spxentry{numeric\_rosen3\_step\_xam\_py}, \hyperpage{27}
+  \item \spxentry{numeric\_runge4\_step}, \hyperpage{21}
+  \item \spxentry{numeric\_runge4\_step\_xam\_py}, \hyperpage{23}
+  \item \spxentry{numeric\_seirwd\_model}, \hyperpage{44}
+  \item \spxentry{numeric\_seirwd\_model\_xam\_py}, \hyperpage{47}
+  \item \spxentry{numeric\_simple\_inv}, \hyperpage{18}
+  \item \spxentry{numeric\_simple\_inv\_xam\_py}, \hyperpage{19}
+  \item \spxentry{numeric\_xam}, \hyperpage{18}
+  \item \spxentry{numerical}, \hyperpage{9}, \hyperpage{18}
+  \item \spxentry{numpy}, \hyperpage{118}, \hyperpage{120}
+  \item \spxentry{numpy2vec}, \hyperpage{118}
+
+  \indexspace
+  \bigletter O
+  \item \spxentry{object}, \hyperpage{9}, \hyperpage{71}, \hyperpage{74}, \hyperpage{128}, 
+		\hyperpage{162}, \hyperpage{164}
+  \item \spxentry{objective\_ad}, \hyperpage{39}
+  \item \spxentry{objective\_fun}, \hyperpage{39}
+  \item \spxentry{objective\_grad}, \hyperpage{39}
+  \item \spxentry{objective\_hess}, \hyperpage{39}
+  \item \spxentry{objects:}, \hyperpage{72}
+  \item \spxentry{ode}, \hyperpage{21}, \hyperpage{23}, \hyperpage{25}, \hyperpage{27, 28}, 
+		\hyperpage{33}, \hyperpage{35}, \hyperpage{45}, \hyperpage{53, 54}
+  \item \spxentry{ok}, \hyperpage{27}
+  \item \spxentry{one}, \hyperpage{21}, \hyperpage{25}
+  \item \spxentry{one\_step}, \hyperpage{34, 35}
+  \item \spxentry{op}, \hyperpage{132}, \hyperpage{135}, \hyperpage{138}
+  \item \spxentry{operations:}, \hyperpage{70}, \hyperpage{161}
+  \item \spxentry{operators}, \hyperpage{131}, \hyperpage{133--135}, \hyperpage{138}
+  \item \spxentry{operators:}, \hyperpage{136, 137}, \hyperpage{139, 140}
+  \item \spxentry{optimization}, \hyperpage{38}, \hyperpage{41}
+  \item \spxentry{optimize}, \hyperpage{90}, \hyperpage{182, 183}
+  \item \spxentry{optimize\_fun}, \hyperpage{39}
+  \item \spxentry{optimize\_fun\_class}, \hyperpage{41}
+  \item \spxentry{order}, \hyperpage{21}, \hyperpage{25}
+  \item \spxentry{other}, \hyperpage{53}, \hyperpage{252}
+  \item \spxentry{output}, \hyperpage{57}, \hyperpage{225}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{p}, \hyperpage{84}, \hyperpage{175}
+  \item \spxentry{p\_all}, \hyperpage{45}
+  \item \spxentry{parameter}, \hyperpage{129}
+  \item \spxentry{parameters}, \hyperpage{54}, \hyperpage{77}, \hyperpage{167}
+  \item \spxentry{parameters:}, \hyperpage{68}, \hyperpage{159}
+  \item \spxentry{parent}, \hyperpage{225}, \hyperpage{227}, \hyperpage{251}
+  \item \spxentry{path}, \hyperpage{17}
+  \item \spxentry{pattern}, \hyperpage{96}, \hyperpage{100}, \hyperpage{111}, \hyperpage{115}, 
+		\hyperpage{189}, \hyperpage{194}, \hyperpage{208}, \hyperpage{212}
+  \item \spxentry{pattern\_in}, \hyperpage{105}, \hyperpage{200}
+  \item \spxentry{pattern\_out}, \hyperpage{105}, \hyperpage{108}, \hyperpage{200}, \hyperpage{204}
+  \item \spxentry{patterns}, \hyperpage{95}, \hyperpage{104}, \hyperpage{107}, \hyperpage{188}, 
+		\hyperpage{199}, \hyperpage{202}
+  \item \spxentry{patterns:}, \hyperpage{98}, \hyperpage{102}, \hyperpage{105}, \hyperpage{108}, 
+		\hyperpage{116}, \hyperpage{192}, \hyperpage{198}, \hyperpage{201}, 
+		\hyperpage{204}, \hyperpage{214}
+  \item \spxentry{permissions}, \hyperpage{12}
+  \item \spxentry{pip}, \hyperpage{11}
+  \item \spxentry{plot}, \hyperpage{57}
+  \item \spxentry{plus}, \hyperpage{126, 127}
+  \item \spxentry{previous}, \hyperpage{257}
+  \item \spxentry{printout}, \hyperpage{57}
+  \item \spxentry{problem}, \hyperpage{19}, \hyperpage{41}
+  \item \spxentry{product}, \hyperpage{236}
+  \item \spxentry{properties}, \hyperpage{74}, \hyperpage{128}, \hyperpage{164}
+  \item \spxentry{properties:}, \hyperpage{75}, \hyperpage{130, 131}, \hyperpage{166}
+  \item \spxentry{prototype}, \hyperpage{216, 217}
+  \item \spxentry{purpose}, \hyperpage{9}, \hyperpage{18}, \hyperpage{22}, \hyperpage{26}, 
+		\hyperpage{34}, \hyperpage{39}, \hyperpage{44}, \hyperpage{68}, \hyperpage{70}, 
+		\hyperpage{72}, \hyperpage{90}, \hyperpage{104}, \hyperpage{107}, \hyperpage{110}, 
+		\hyperpage{114}, \hyperpage{121}, \hyperpage{125}, \hyperpage{144}, 
+		\hyperpage{150}, \hyperpage{157}, \hyperpage{160}, \hyperpage{182}, 
+		\hyperpage{199}, \hyperpage{203}, \hyperpage{206}, \hyperpage{211}, 
+		\hyperpage{220}, \hyperpage{226}, \hyperpage{231}, \hyperpage{234}, 
+		\hyperpage{236}, \hyperpage{238}, \hyperpage{241}, \hyperpage{248}
+  \item \spxentry{put}, \hyperpage{96}, \hyperpage{101}, \hyperpage{190}, \hyperpage{195}
+  \item \spxentry{py}, \hyperpage{66, 67}, \hyperpage{124}, \hyperpage{149}, \hyperpage{156}, 
+		\hyperpage{188}, \hyperpage{218, 219}, \hyperpage{253, 254}
+  \item \spxentry{py\_abort\_recording}, \hyperpage{70}
+  \item \spxentry{py\_fun}, \hyperpage{67}
+  \item \spxentry{py\_fun\_ctor}, \hyperpage{71}
+  \item \spxentry{py\_fun\_forward}, \hyperpage{83}
+  \item \spxentry{py\_fun\_hessian}, \hyperpage{80}
+  \item \spxentry{py\_fun\_jacobian}, \hyperpage{77}
+  \item \spxentry{py\_fun\_json}, \hyperpage{92}
+  \item \spxentry{py\_fun\_new\_dynamic}, \hyperpage{77}
+  \item \spxentry{py\_fun\_optimize}, \hyperpage{90}
+  \item \spxentry{py\_fun\_property}, \hyperpage{74}
+  \item \spxentry{py\_fun\_reverse}, \hyperpage{86}
+  \item \spxentry{py\_hes\_sparsity}, \hyperpage{107}
+  \item \spxentry{py\_independent}, \hyperpage{67}
+  \item \spxentry{py\_jac\_sparsity}, \hyperpage{104}
+  \item \spxentry{py\_lib}, \hyperpage{67}
+  \item \spxentry{py\_sparse}, \hyperpage{95}
+  \item \spxentry{py\_sparse\_hes}, \hyperpage{114}
+  \item \spxentry{py\_sparse\_jac}, \hyperpage{110}
+  \item \spxentry{py\_sparse\_rc}, \hyperpage{95}
+  \item \spxentry{py\_sparse\_rcv}, \hyperpage{99}
+  \item \spxentry{py\_utility}, \hyperpage{118}
+  \item \spxentry{python}, \hyperpage{9, 10}, \hyperpage{16, 17}, \hyperpage{67}, 
+		\hyperpage{92, 93}, \hyperpage{95}, \hyperpage{118}, \hyperpage{121}
+  \item \spxentry{python:}, \hyperpage{68}, \hyperpage{70}, \hyperpage{72}, \hyperpage{75}, 
+		\hyperpage{78}, \hyperpage{81}, \hyperpage{84}, \hyperpage{88}, \hyperpage{90}, 
+		\hyperpage{98}, \hyperpage{102}, \hyperpage{105}, \hyperpage{108}, \hyperpage{112}, 
+		\hyperpage{116}, \hyperpage{127}, \hyperpage{131}, \hyperpage{134}, 
+		\hyperpage{137}, \hyperpage{140}, \hyperpage{143}, \hyperpage{147}, 
+		\hyperpage{152}, \hyperpage{155}, \hyperpage{219}
+
+  \indexspace
+  \bigletter Q
+  \item \spxentry{q}, \hyperpage{87}, \hyperpage{179}
+
+  \indexspace
+  \bigletter R
+  \item \spxentry{r}, \hyperpage{97}, \hyperpage{115}, \hyperpage{190}, \hyperpage{212}
+  \item \spxentry{random}, \hyperpage{56}
+  \item \spxentry{rates}, \hyperpage{53}
+  \item \spxentry{recording}, \hyperpage{67}, \hyperpage{70, 71}, \hyperpage{157}, 
+		\hyperpage{160--162}
+  \item \spxentry{recovered}, \hyperpage{44}
+  \item \spxentry{reference}, \hyperpage{26}, \hyperpage{41}
+  \item \spxentry{repository}, \hyperpage{9}
+  \item \spxentry{representation}, \hyperpage{92}, \hyperpage{184}
+  \item \spxentry{requirements}, \hyperpage{11}, \hyperpage{236}, \hyperpage{249}
+  \item \spxentry{residuals}, \hyperpage{56}
+  \item \spxentry{resize}, \hyperpage{96}, \hyperpage{190}
+  \item \spxentry{rest}, \hyperpage{237}
+  \item \spxentry{restriction}, \hyperpage{129}
+  \item \spxentry{result}, \hyperpage{131}, \hyperpage{141}, \hyperpage{227}, \hyperpage{229, 230}, 
+		\hyperpage{233}, \hyperpage{235}, \hyperpage{238}, \hyperpage{240}, 
+		\hyperpage{243, 244}
+  \item \spxentry{result:}, \hyperpage{133, 134}, \hyperpage{142, 143}
+  \item \spxentry{results}, \hyperpage{57}
+  \item \spxentry{resume}, \hyperpage{234}
+  \item \spxentry{rev\_jac\_sparsity}, \hyperpage{104}, \hyperpage{199}
+  \item \spxentry{reverse}, \hyperpage{86}, \hyperpage{88}, \hyperpage{178}, \hyperpage{180}
+  \item \spxentry{right}, \hyperpage{145}
+  \item \spxentry{root\_file}, \hyperpage{249}
+  \item \spxentry{root\_section}, \hyperpage{249}
+  \item \spxentry{rosen3\_step}, \hyperpage{31}
+  \item \spxentry{rosenbrock}, \hyperpage{25}, \hyperpage{27}
+  \item \spxentry{routine}, \hyperpage{18}
+  \item \spxentry{routines}, \hyperpage{95}
+  \item \spxentry{row}, \hyperpage{97}, \hyperpage{101}, \hyperpage{191}, \hyperpage{196}
+  \item \spxentry{row\_major}, \hyperpage{97}, \hyperpage{101}, \hyperpage{191}, \hyperpage{196}
+  \item \spxentry{rst}, \hyperpage{223}
+  \item \spxentry{runge\sphinxhyphen{}kutta}, \hyperpage{21}, \hyperpage{23}, \hyperpage{35}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{s}, \hyperpage{87}, \hyperpage{178}
+  \item \spxentry{safe}, \hyperpage{218}
+  \item \spxentry{sample\_interval}, \hyperpage{55}
+  \item \spxentry{scalars}, \hyperpage{124}
+  \item \spxentry{scipy}, \hyperpage{41}
+  \item \spxentry{second}, \hyperpage{28}, \hyperpage{244}
+  \item \spxentry{section}, \hyperpage{225}, \hyperpage{251}
+  \item \spxentry{section\_name}, \hyperpage{225}
+  \item \spxentry{sections}, \hyperpage{244}
+  \item \spxentry{seed}, \hyperpage{56}
+  \item \spxentry{seirwd}, \hyperpage{52}
+  \item \spxentry{seirwd\_all}, \hyperpage{46}
+  \item \spxentry{select\_domain}, \hyperpage{108}, \hyperpage{203}
+  \item \spxentry{select\_range}, \hyperpage{108}, \hyperpage{203}
+  \item \spxentry{seris\_model}, \hyperpage{47}
+  \item \spxentry{setting}, \hyperpage{153--155}
+  \item \spxentry{settings}, \hyperpage{14}
+  \item \spxentry{setup\_py}, \hyperpage{10}
+  \item \spxentry{shape}, \hyperpage{119}
+  \item \spxentry{simulation}, \hyperpage{56}
+  \item \spxentry{size}, \hyperpage{151, 152}
+  \item \spxentry{size\_domain}, \hyperpage{74}, \hyperpage{164}
+  \item \spxentry{size\_op}, \hyperpage{75}, \hyperpage{165}
+  \item \spxentry{size\_order}, \hyperpage{75}, \hyperpage{77}, \hyperpage{84}, \hyperpage{165}, 
+		\hyperpage{168}, \hyperpage{175}
+  \item \spxentry{size\_range}, \hyperpage{74}, \hyperpage{164}
+  \item \spxentry{size\_var}, \hyperpage{74}, \hyperpage{165}
+  \item \spxentry{solution}, \hyperpage{23}, \hyperpage{27, 28}, \hyperpage{35, 36}
+  \item \spxentry{solved}, \hyperpage{11}
+  \item \spxentry{solver}, \hyperpage{54}
+  \item \spxentry{source}, \hyperpage{12}, \hyperpage{14}, \hyperpage{16}, \hyperpage{19, 20}, 
+		\hyperpage{23}, \hyperpage{25}, \hyperpage{28}, \hyperpage{31}, \hyperpage{36}, 
+		\hyperpage{38}, \hyperpage{41}, \hyperpage{43}, \hyperpage{49}, \hyperpage{58}
+  \item \spxentry{space}, \hyperpage{239}, \hyperpage{249}
+  \item \spxentry{sparse}, \hyperpage{99}, \hyperpage{110}, \hyperpage{112}, \hyperpage{114}, 
+		\hyperpage{188}, \hyperpage{193}, \hyperpage{206}, \hyperpage{209}, 
+		\hyperpage{211}
+  \item \spxentry{sparse\_hes\_pattern\_xam\_cpp}, \hyperpage{204}
+  \item \spxentry{sparse\_hes\_pattern\_xam\_py}, \hyperpage{108}
+  \item \spxentry{sparse\_hes\_xam\_cpp}, \hyperpage{214}
+  \item \spxentry{sparse\_hes\_xam\_py}, \hyperpage{116}
+  \item \spxentry{sparse\_jac\_for}, \hyperpage{110}, \hyperpage{207}
+  \item \spxentry{sparse\_jac\_pattern\_xam\_cpp}, \hyperpage{201}
+  \item \spxentry{sparse\_jac\_pattern\_xam\_py}, \hyperpage{105}
+  \item \spxentry{sparse\_jac\_rev}, \hyperpage{111}, \hyperpage{207}
+  \item \spxentry{sparse\_jac\_xam\_cpp}, \hyperpage{209}
+  \item \spxentry{sparse\_jac\_xam\_py}, \hyperpage{112}
+  \item \spxentry{sparse\_rc\_xam\_cpp}, \hyperpage{192}
+  \item \spxentry{sparse\_rc\_xam\_py}, \hyperpage{98}
+  \item \spxentry{sparse\_rcv\_xam\_cpp}, \hyperpage{198}
+  \item \spxentry{sparse\_rcv\_xam\_py}, \hyperpage{102}
+  \item \spxentry{sparsity}, \hyperpage{95}, \hyperpage{98}, \hyperpage{102}, \hyperpage{104, 105}, 
+		\hyperpage{107, 108}, \hyperpage{116}, \hyperpage{188}, \hyperpage{192}, 
+		\hyperpage{198--202}, \hyperpage{204}, \hyperpage{214}
+  \item \spxentry{speed}, \hyperpage{10}
+  \item \spxentry{spell}, \hyperpage{231--233}, \hyperpage{237}, \hyperpage{239}
+  \item \spxentry{spell\_cmd}, \hyperpage{231}
+  \item \spxentry{spell\_exam}, \hyperpage{232}
+  \item \spxentry{spell\_res}, \hyperpage{233}
+  \item \spxentry{spelling}, \hyperpage{232}, \hyperpage{247}, \hyperpage{250}
+  \item \spxentry{sphinx}, \hyperpage{223}
+  \item \spxentry{sphinx\_dir}, \hyperpage{250}
+  \item \spxentry{square}, \hyperpage{241}
+  \item \spxentry{start}, \hyperpage{56}, \hyperpage{67}, \hyperpage{157}, \hyperpage{239}
+  \item \spxentry{started}, \hyperpage{9}
+  \item \spxentry{step}, \hyperpage{21}, \hyperpage{25}
+  \item \spxentry{steps}, \hyperpage{33}, \hyperpage{121}, \hyperpage{220}
+  \item \spxentry{stop}, \hyperpage{71}, \hyperpage{162}, \hyperpage{239}
+  \item \spxentry{store}, \hyperpage{71}, \hyperpage{162}
+  \item \spxentry{stream}, \hyperpage{242}
+  \item \spxentry{subset}, \hyperpage{111}, \hyperpage{115}, \hyperpage{207}, \hyperpage{212}
+  \item \spxentry{susceptible}, \hyperpage{44}
+  \item \spxentry{suspend}, \hyperpage{234, 235}
+  \item \spxentry{suspend\_cmd}, \hyperpage{234}
+  \item \spxentry{suspend\_exam}, \hyperpage{234}
+  \item \spxentry{suspend\_res}, \hyperpage{235}
+  \item \spxentry{swig}, \hyperpage{12}
+  \item \spxentry{syntax}, \hyperpage{10}, \hyperpage{14}, \hyperpage{18}, \hyperpage{22}, 
+		\hyperpage{25}, \hyperpage{33}, \hyperpage{38}, \hyperpage{44}, \hyperpage{67}, 
+		\hyperpage{70, 71}, \hyperpage{74}, \hyperpage{77, 78}, \hyperpage{80}, 
+		\hyperpage{83}, \hyperpage{86}, \hyperpage{90}, \hyperpage{92}, \hyperpage{95}, 
+		\hyperpage{100}, \hyperpage{104}, \hyperpage{107}, \hyperpage{110}, 
+		\hyperpage{114}, \hyperpage{119, 120}, \hyperpage{125, 126}, \hyperpage{128}, 
+		\hyperpage{131}, \hyperpage{135}, \hyperpage{138}, \hyperpage{141}, 
+		\hyperpage{144}, \hyperpage{149}, \hyperpage{151}, \hyperpage{153}, 
+		\hyperpage{157}, \hyperpage{160}, \hyperpage{162}, \hyperpage{164}, 
+		\hyperpage{167, 168}, \hyperpage{171}, \hyperpage{174}, \hyperpage{178}, 
+		\hyperpage{182}, \hyperpage{184}, \hyperpage{188}, \hyperpage{194}, 
+		\hyperpage{199}, \hyperpage{203}, \hyperpage{206}, \hyperpage{211}, 
+		\hyperpage{216, 217}, \hyperpage{224, 225}, \hyperpage{231}, \hyperpage{234}, 
+		\hyperpage{236}, \hyperpage{238}, \hyperpage{241}, \hyperpage{248}
+
+  \indexspace
+  \bigletter T
+  \item \spxentry{t}, \hyperpage{26}, \hyperpage{87}, \hyperpage{179}
+  \item \spxentry{t0}, \hyperpage{34}
+  \item \spxentry{t\_all}, \hyperpage{35}, \hyperpage{45}
+  \item \spxentry{t\_step}, \hyperpage{34}
+  \item \spxentry{table}, \hyperpage{251}
+  \item \spxentry{tabs}, \hyperpage{253}
+  \item \spxentry{target}, \hyperpage{144}
+  \item \spxentry{taylor}, \hyperpage{83}, \hyperpage{174}
+  \item \spxentry{test}, \hyperpage{16}, \hyperpage{68}, \hyperpage{70}, \hyperpage{72}, 
+		\hyperpage{75}, \hyperpage{78}, \hyperpage{81}, \hyperpage{84}, \hyperpage{88}, 
+		\hyperpage{90}, \hyperpage{92, 93}, \hyperpage{98}, \hyperpage{102}, 
+		\hyperpage{105}, \hyperpage{108}, \hyperpage{112}, \hyperpage{116}, 
+		\hyperpage{127}, \hyperpage{130, 131}, \hyperpage{133, 134}, \hyperpage{136, 137}, 
+		\hyperpage{139, 140}, \hyperpage{142, 143}, \hyperpage{146, 147}, 
+		\hyperpage{151, 152}, \hyperpage{154, 155}, \hyperpage{159}, \hyperpage{161}, 
+		\hyperpage{166}, \hyperpage{169}, \hyperpage{172}, \hyperpage{176}, 
+		\hyperpage{180}, \hyperpage{183}, \hyperpage{185, 186}, \hyperpage{192}, 
+		\hyperpage{198}, \hyperpage{201}, \hyperpage{204}, \hyperpage{209}, 
+		\hyperpage{214}, \hyperpage{218, 219}
+  \item \spxentry{test\_cppad}, \hyperpage{15}
+  \item \spxentry{testing}, \hyperpage{124}, \hyperpage{223}
+  \item \spxentry{text}, \hyperpage{233}
+  \item \spxentry{that}, \hyperpage{38}
+  \item \spxentry{the}, \hyperpage{10}, \hyperpage{66, 67}, \hyperpage{124}, \hyperpage{167}
+  \item \spxentry{third}, \hyperpage{25}, \hyperpage{244, 245}
+  \item \spxentry{thread}, \hyperpage{218}
+  \item \spxentry{ti}, \hyperpage{22}, \hyperpage{27}
+  \item \spxentry{to}, \hyperpage{9}, \hyperpage{118}, \hyperpage{120, 121}, \hyperpage{216, 217}, 
+		\hyperpage{220}
+  \item \spxentry{to\_json}, \hyperpage{92}, \hyperpage{185}
+  \item \spxentry{to\_json:}, \hyperpage{92}, \hyperpage{185}
+  \item \spxentry{toctree}, \hyperpage{251}
+  \item \spxentry{top}, \hyperpage{14}, \hyperpage{16}
+  \item \spxentry{travis}, \hyperpage{13}
+  \item \spxentry{trust\_constr}, \hyperpage{41}
+  \item \spxentry{try}, \hyperpage{218}
+
+  \indexspace
+  \bigletter U
+  \item \spxentry{u}, \hyperpage{153}
+  \item \spxentry{unary}, \hyperpage{126, 127}, \hyperpage{141--143}
+  \item \spxentry{unknown}, \hyperpage{54}
+  \item \spxentry{unsolved}, \hyperpage{13}
+  \item \spxentry{uses}, \hyperpage{112}, \hyperpage{116}, \hyperpage{208}, \hyperpage{213}
+  \item \spxentry{using}, \hyperpage{11}, \hyperpage{41}, \hyperpage{47}, \hyperpage{68}, 
+		\hyperpage{78}, \hyperpage{81}, \hyperpage{159}, \hyperpage{169}, \hyperpage{172}
+  \item \spxentry{utilities}, \hyperpage{118}, \hyperpage{216}
+
+  \indexspace
+  \bigletter V
+  \item \spxentry{v}, \hyperpage{101}, \hyperpage{151}, \hyperpage{154}, \hyperpage{195}
+  \item \spxentry{val}, \hyperpage{101}, \hyperpage{196}
+  \item \spxentry{value}, \hyperpage{128}
+  \item \spxentry{values}, \hyperpage{53}
+  \item \spxentry{var2par}, \hyperpage{129}
+  \item \spxentry{variable}, \hyperpage{129}
+  \item \spxentry{variables}, \hyperpage{67}, \hyperpage{157}
+  \item \spxentry{variation}, \hyperpage{55}
+  \item \spxentry{vec}, \hyperpage{119, 120}
+  \item \spxentry{vec2a\_double}, \hyperpage{217}
+  \item \spxentry{vec2cppad\_double}, \hyperpage{216}
+  \item \spxentry{vec2numpy}, \hyperpage{120}
+  \item \spxentry{vec\_a\_double}, \hyperpage{150}
+  \item \spxentry{vec\_bool}, \hyperpage{150}
+  \item \spxentry{vec\_double}, \hyperpage{150}
+  \item \spxentry{vec\_int}, \hyperpage{150}
+  \item \spxentry{vector}, \hyperpage{118}, \hyperpage{120}, \hyperpage{149}, \hyperpage{151}, 
+		\hyperpage{153--155}, \hyperpage{216, 217}
+  \item \spxentry{vector\_ctor}, \hyperpage{149}
+  \item \spxentry{vector\_set\_get}, \hyperpage{153}
+  \item \spxentry{vector\_set\_get\_xam\_cpp}, \hyperpage{154}
+  \item \spxentry{vector\_set\_get\_xam\_py}, \hyperpage{155}
+  \item \spxentry{vector\_size}, \hyperpage{151}
+  \item \spxentry{vector\_size\_xam\_cpp}, \hyperpage{151}
+  \item \spxentry{vector\_size\_xam\_py}, \hyperpage{152}
+  \item \spxentry{vectors}, \hyperpage{149}
+  \item \spxentry{vectors:}, \hyperpage{151, 152}
+  \item \spxentry{version}, \hyperpage{9}
+
+  \indexspace
+  \bigletter W
+  \item \spxentry{w}, \hyperpage{81}, \hyperpage{172}
+  \item \spxentry{weighted}, \hyperpage{56}
+  \item \spxentry{whats\_new\_2018}, \hyperpage{254}
+  \item \spxentry{whats\_new\_2020}, \hyperpage{253}
+  \item \spxentry{white}, \hyperpage{239}, \hyperpage{249}
+  \item \spxentry{wise}, \hyperpage{108}, \hyperpage{204}
+  \item \spxentry{wish}, \hyperpage{252}
+  \item \spxentry{with}, \hyperpage{41}, \hyperpage{131}, \hyperpage{133, 134}, 
+		\hyperpage{141--143}
+  \item \spxentry{words}, \hyperpage{232, 233}
+  \item \spxentry{work}, \hyperpage{111}, \hyperpage{115}, \hyperpage{208}, \hyperpage{213}
+
+  \indexspace
+  \bigletter X
+  \item \spxentry{x}, \hyperpage{67}, \hyperpage{78}, \hyperpage{80}, \hyperpage{104}, 
+		\hyperpage{107}, \hyperpage{111}, \hyperpage{115}, \hyperpage{154}, 
+		\hyperpage{157}, \hyperpage{169}, \hyperpage{171}, \hyperpage{200}, 
+		\hyperpage{203}, \hyperpage{207}, \hyperpage{212}
+  \item \spxentry{x(t)}, \hyperpage{83}, \hyperpage{87}, \hyperpage{175}, \hyperpage{178}
+  \item \spxentry{x)}, \hyperpage{27}
+  \item \spxentry{xp}, \hyperpage{84}, \hyperpage{175}
+  \item \spxentry{xq}, \hyperpage{87}, \hyperpage{179}
+  \item \spxentry{xsrst}, \hyperpage{245}
+  \item \spxentry{xsrst\_py}, \hyperpage{223}
+
+  \indexspace
+  \bigletter Y
+  \item \spxentry{y}, \hyperpage{26}, \hyperpage{132}, \hyperpage{136}, \hyperpage{139}, 
+		\hyperpage{154}
+  \item \spxentry{y(t}, \hyperpage{27}
+  \item \spxentry{y(t)}, \hyperpage{84}, \hyperpage{87}, \hyperpage{175}, \hyperpage{179}
+  \item \spxentry{y)}, \hyperpage{35}
+  \item \spxentry{y0}, \hyperpage{34}
+  \item \spxentry{y1}, \hyperpage{34}
+  \item \spxentry{y\_all}, \hyperpage{35}
+  \item \spxentry{y\_init}, \hyperpage{35}
+  \item \spxentry{years}, \hyperpage{257}
+  \item \spxentry{yf}, \hyperpage{22}, \hyperpage{27}
+  \item \spxentry{yi}, \hyperpage{22}, \hyperpage{27}
+  \item \spxentry{yp}, \hyperpage{84}, \hyperpage{175}
+  \item \spxentry{yq}, \hyperpage{87}, \hyperpage{179}
+
+\end{sphinxtheindex}

@@ -11,8 +11,9 @@ numeric_ode_multi_step
 
 .. _numeric_ode_multi_step:
 
-Multiple Ode Steps
-##################
+2.4 Multiple Ode Steps
+######################
+
 - :ref:`numeric_ode_multi_step.syntax`
 - :ref:`numeric_ode_multi_step.purpose`
 - :ref:`numeric_ode_multi_step.one_step`

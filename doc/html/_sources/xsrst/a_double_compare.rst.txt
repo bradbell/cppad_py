@@ -11,8 +11,9 @@ a_double_compare
 
 .. _a_double_compare:
 
-a_double Comparison Operators
-#############################
+3.2.1.5 a_double Comparison Operators
+#####################################
+
 - :ref:`a_double_compare.syntax`
 - :ref:`a_double_compare.op`
 - :ref:`a_double_compare.ax`

@@ -11,8 +11,9 @@ cpp_fun_json
 
 .. _cpp_fun_json:
 
-Json Representation of AD Computational Graph
-#############################################
+3.2.3.11 Json Representation of AD Computational Graph
+######################################################
+
 - :ref:`cpp_fun_json.syntax`
 - :ref:`cpp_fun_json.f`
 - :ref:`cpp_fun_json.json`

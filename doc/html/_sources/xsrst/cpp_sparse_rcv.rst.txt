@@ -11,8 +11,9 @@ cpp_sparse_rcv
 
 .. _cpp_sparse_rcv:
 
-Sparse Matrices
-###############
+3.2.4.2 Sparse Matrices
+#######################
+
 - :ref:`cpp_sparse_rcv.syntax`
 - :ref:`cpp_sparse_rcv.pattern`
 - :ref:`cpp_sparse_rcv.matrix`

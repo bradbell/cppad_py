@@ -11,8 +11,9 @@ vec2cppad_double
 
 .. _vec2cppad_double:
 
-Convert an a_double Vector to a CppAD::AD<double> Vector
-########################################################
+3.2.5.1 Convert an a_double Vector to a CppAD::AD<double> Vector
+################################################################
+
 - :ref:`vec2cppad_double.syntax`
 - :ref:`vec2cppad_double.prototype`
 

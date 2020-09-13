@@ -11,8 +11,9 @@ cpp_fun_reverse
 
 .. _cpp_fun_reverse:
 
-Reverse Mode AD
-###############
+3.2.3.9 Reverse Mode AD
+#######################
+
 - :ref:`cpp_fun_reverse.syntax`
 - :ref:`cpp_fun_reverse.f`
 - :ref:`cpp_fun_reverse.notation`

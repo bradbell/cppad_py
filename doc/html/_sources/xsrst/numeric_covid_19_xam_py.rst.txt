@@ -11,8 +11,9 @@ numeric_covid_19_xam_py
 
 .. _numeric_covid_19_xam_py:
 
-Example Fitting an SEIRWD Model for Covid-19
-############################################
+2.7 Example Fitting an SEIRWD Model for Covid-19
+################################################
+
 - :ref:`numeric_covid_19_xam_py.covariates`
 - :ref:`numeric_covid_19_xam_py.model_ode`
     - :ref:`numeric_covid_19_xam_py.model_ode.beta(t)`

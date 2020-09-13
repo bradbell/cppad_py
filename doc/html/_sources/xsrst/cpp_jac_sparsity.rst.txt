@@ -11,8 +11,9 @@ cpp_jac_sparsity
 
 .. _cpp_jac_sparsity:
 
-Jacobian Sparsity Patterns
-##########################
+3.2.4.3 Jacobian Sparsity Patterns
+##################################
+
 - :ref:`cpp_jac_sparsity.syntax`
 - :ref:`cpp_jac_sparsity.purpose`
     - :ref:`cpp_jac_sparsity.purpose.for_jac_sparsity`

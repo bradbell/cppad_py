@@ -11,8 +11,9 @@ numeric_optimize_fun_class
 
 .. _numeric_optimize_fun_class:
 
-A Helper Class That Defines Functions Needed for Optimization
-#############################################################
+2.5 A Helper Class That Defines Functions Needed for Optimization
+#################################################################
+
 - :ref:`numeric_optimize_fun_class.syntax`
 - :ref:`numeric_optimize_fun_class.purpose`
 - :ref:`numeric_optimize_fun_class.objective_ad`

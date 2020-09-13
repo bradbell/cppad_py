@@ -11,8 +11,9 @@ sparse_rc_xam_py
 
 .. _sparse_rc_xam_py:
 
-Python: Sparsity Patterns: Example and Test
-###########################################
+3.1.2.1.1 Python: Sparsity Patterns: Example and Test
+#####################################################
+
 
 
 .. literalinclude:: ../../example/python/core/sparse_rc_xam.py

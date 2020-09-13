@@ -11,8 +11,9 @@ cpp_fun_optimize
 
 .. _cpp_fun_optimize:
 
-Optimize an AD Function
-#######################
+3.2.3.10 Optimize an AD Function
+################################
+
 - :ref:`cpp_fun_optimize.syntax`
 - :ref:`cpp_fun_optimize.purpose`
 - :ref:`cpp_fun_optimize.f`

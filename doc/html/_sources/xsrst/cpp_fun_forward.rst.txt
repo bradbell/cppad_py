@@ -11,8 +11,9 @@ cpp_fun_forward
 
 .. _cpp_fun_forward:
 
-Forward Mode AD
-###############
+3.2.3.8 Forward Mode AD
+#######################
+
 - :ref:`cpp_fun_forward.syntax`
 - :ref:`cpp_fun_forward.taylor_coefficient`
 - :ref:`cpp_fun_forward.f`

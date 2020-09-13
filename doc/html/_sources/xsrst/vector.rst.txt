@@ -11,8 +11,9 @@ vector
 
 .. _vector:
 
-Cppad Py Vectors
-################
+3.2.2 Cppad Py Vectors
+######################
+
 - :ref:`vector.children`
 
 .. meta::
