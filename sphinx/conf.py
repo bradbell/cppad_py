@@ -52,8 +52,12 @@ html_css_files = [
 # -- Latex commands used by all sections -------------------------------------
 latex_elements = {
     'preamble' :  
-        r'\newcommand{\B}[1]{{\bf #1}} ' +
-        r'\newcommand{\R}[1]{{\rm #1}} '
+        r'\newcommand{\B}[1]{{\bf #1}} '  + '\n' +
+        r'\newcommand{\R}[1]{{\rm #1}} '  + '\n' +
+        r'\renewcommand{\thesection}{{\hspace{-1em}}}'        + '\n' +
+        r'\renewcommand{\thesubsection}{{\hspace{-1em}}}'     + '\n' +
+        r'\renewcommand{\thesubsubsection}{{\hspace{-1em}}}'  + '\n' +
+        ''
     ,
 }
 # END_CONF_PY

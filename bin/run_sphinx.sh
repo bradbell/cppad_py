@@ -49,7 +49,7 @@ cd sphinx
 # html
 if [ "$target" == 'html' ]
 then
-    make html
+    sphinx-build -b html . _build/html
     echo 'run_sphinx.sh: OK'
     exit 0
 fi
@@ -66,8 +66,10 @@ then
 fi
 echo "sed -i preamble.rst -e '/BEGIN_LATEX_MACROS/,/END_LATEX_MACROS/d'"
 sed -i preamble.rst -e '/BEGIN_LATEX_MACROS/,/END_LATEX_MACROS/d'
-make latexpdf
-git checkout preamble.rst
+echo_eval sphinx-build -b latex . _build/latex
+echo_eval git checkout preamble.rst
+echo_eval cd _build/latex
+echo_eval make cppad_py.pdf
 # -----------------------------------------------------------------------------
 echo 'run_sphinx.sh: OK'
 exit 0
