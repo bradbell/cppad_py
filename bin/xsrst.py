@@ -2069,7 +2069,9 @@ info = {
 }
 file_info_stack.append(info)
 while 0 < len(file_info_stack) :
-    info  = file_info_stack.pop()
+    # pop first element is stack so that order in pdf file and
+    # table of contents is correct
+    info  = file_info_stack.pop(0)
     #
     for info_tmp in file_info_done :
         if info_tmp['file_in'] == info['file_in'] :

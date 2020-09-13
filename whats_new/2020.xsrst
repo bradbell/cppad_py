@@ -45,66 +45,73 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+09-13
+*****
+#.  The text ``xsrst:`` was added to the beginning of each whats new item
+    (see below) that only pertained to the :ref:`xsrst.py<xsrst_py>` program.
+#.  xsrst: The order of the sections in the pdf file and the
+    table of contents was corrected.
+
 09-12
 *****
-#.  A table of contents that only contains section titles,
+#.  xsrst: A table of contents that only contains section titles,
     not headings within a section, was added.
-#.  The following restriction was added: a
+#.  xsrst: The following restriction was added: a
     :ref:`section_name<begin_cmd.section_name>`
     can not begin with ``xsrst_``.
 
 07-31
 *****
-#.  An empty line at beginning of xsrst input file was causing it to crash
+#.  xsrst: An empty line at beginning of xsrst input file was causing it to crash
     (this has been fixed).
-#.  Putting version number in the documentation navigation side bar
+#.  xsrst: Putting version number in the documentation navigation side bar
     changes every gh-pages file when version changes. Move it to
     the first heading under the title :ref:`cppad_py<cppad_py>`
-#.  xsrst spell checking is not done for a *url* of the form
+#.  xsrst: spell checking is not done for a *url* of the form
     \` < *url* > \`_ or \` *text* < *url* > \`_.
 
 07-30
 *****
-The words 'anl', 'dir', 'mcs' were removed from the xsrst dictionary.
+xsrst: The words 'anl', 'dir', 'mcs' were removed from the xsrst dictionary.
 The word 'initialization' was added to the xsrst dictionary.
 
 07-29
 *****
-#.  Add the optional command line argument
+#.  xsrst: Add the optional command line argument
     :ref:`line_increment<xsrst_py.command_line_arguments.line_increment>`.
     This is an aid for finding the source of errors and warnings
     reported by sphinx.
-#.  Sometimes xsrst would not recognize a command that came directly after a
+#.  xsrst: Sometimes xsrst would not recognize a command that came directly after a
     Fix :ref:`file_cmd`. This has been fixed.
 
 07-28
 *****
-#.  Move version number from the title in :ref:`cppad_py<cppad_py>` to
+#.  xsrst: Move version number from the title in :ref:`cppad_py<cppad_py>` to
     the documentation navigation side bar.
-#.  Add the :ref:`configure` section.
-#.  The :ref:`xsrst begin command<begin_cmd>` was not recognized
+#.  xsrst: Add the :ref:`configure` section.
+#.  xsrst: The :ref:`xsrst begin command<begin_cmd>` was not recognized
     at the beginning of a file
     (when there is no new line before it). This has been fixed.
-#.  Change the *index_file* to
+#.  xsrst: Change the *index_file* to
     :ref:`keyword<xsrst_py.command_line_arguments.keyword>`
     and *spell_file* to
     :ref:`spelling<xsrst_py.command_line_arguments.spelling>`
 
 07-25
 *****
-#.  Install :ref:`xsrst.py<xsrst_py>` during the
+#.  xsrst: Install :ref:`xsrst.py<xsrst_py>` during the
     :ref:`install<setup_py.install>` procedure
     (not yet available from ``pip``).
-#.  Add a :ref:`purpose<xsrst_py.purpose>` paragraph to xsrst documentation.
+#.  xsrst: Add a :ref:`purpose<xsrst_py.purpose>` paragraph to xsrst documentation.
 #.  Move the ``*.omh`` files to ``*.xsrst`` files (they have been converted
     from omhelp input files to xsrst input files).
-#.  Change the :ref:`keyword<xsrst_py.command_line_arguments.keyword>`
+#.  xsrst: Change the :ref:`keyword<xsrst_py.command_line_arguments.keyword>`
     to use python regular expressions and remove the whats new month-day
     headings from the :ref:`index<genindex>`.
 
 07-24
 *****
-#.  Add the :ref:`xsrst.py<xsrst_py>` program
+#.  xsrst: Add the :ref:`xsrst.py<xsrst_py>` program
     which extracts sphinx ``*.rst`` files from source code.
     This program is not yet installed but you can use it by placing
     the script ``bin/xsrst.py`` in your execution path.
