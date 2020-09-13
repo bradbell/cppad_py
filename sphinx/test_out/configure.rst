@@ -9,8 +9,9 @@ configure
 
 .. _configure:
 
-Example xsrst Configuration Files
-#################################
+9 Example xsrst Configuration Files
+###################################
+
 
 .. toctree::
    :maxdepth: 1

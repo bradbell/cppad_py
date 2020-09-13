@@ -9,8 +9,9 @@ no_parent_res
 
 .. _no_parent_res:
 
-No Parent Result
-################
+2.1.1 No Parent Result
+######################
+
 - :ref:`no_parent_res.children.py_file`
 - :ref:`no_parent_res.child_link_children.py`
 - :ref:`no_parent_res.example`

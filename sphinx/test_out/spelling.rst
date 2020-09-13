@@ -9,8 +9,9 @@ spelling
 
 .. _spelling:
 
-Example Spelling File
-#####################
+9.3 Example Spelling File
+#########################
+
 
 
 .. literalinclude:: ../../../sphinx/spelling

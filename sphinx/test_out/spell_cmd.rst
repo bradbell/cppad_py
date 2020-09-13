@@ -9,8 +9,9 @@ spell_cmd
 
 .. _spell_cmd:
 
-Spell Command
-#############
+3 Spell Command
+###############
+
 - :ref:`spell_cmd.syntax`
 - :ref:`spell_cmd.purpose`
 - :ref:`spell_cmd.spelling`

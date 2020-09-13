@@ -9,8 +9,9 @@ suspend_res
 
 .. _suspend_res:
 
-Suspend Result
-##############
+4.1.1 Suspend Result
+####################
+
 - :ref:`suspend_res.factorial`
 - :ref:`suspend_res.product`
 

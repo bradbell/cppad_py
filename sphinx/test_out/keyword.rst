@@ -9,8 +9,9 @@ keyword
 
 .. _keyword:
 
-Example Keyword File
-####################
+9.4 Example Keyword File
+########################
+
 
 
 .. literalinclude:: ../../../sphinx/keyword

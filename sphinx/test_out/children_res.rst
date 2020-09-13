@@ -9,8 +9,9 @@ children_res
 
 .. _children_res:
 
-Indent and Children Result
-##########################
+2.1.1.2 Indent and Children Result
+##################################
+
 - :ref:`children_res.children`
 - :ref:`children_res.example`
 

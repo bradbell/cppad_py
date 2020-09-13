@@ -9,8 +9,9 @@ index_rst
 
 .. _index_rst:
 
-Example index.rst
-#################
+9.2 Example index.rst
+#####################
+
 
 
 .. literalinclude:: ../../../sphinx/index.rst

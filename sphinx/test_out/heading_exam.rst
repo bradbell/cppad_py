@@ -9,8 +9,9 @@ heading_exam
 
 .. _heading_exam:
 
-Heading Example
-###############
+8 Heading Example
+#################
+
 - :ref:`heading_exam.child_sections`
 
 

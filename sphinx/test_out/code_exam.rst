@@ -9,8 +9,9 @@ code_exam
 
 .. _code_exam:
 
-Code Example
-############
+5.1 Code Example
+################
+
 
 
 .. literalinclude:: ../../../sphinx/test_in/code.py

@@ -9,9 +9,9 @@ comment_ch_exam
 
 .. _comment_ch_exam:
 
-=========================
-Comment Character Example
-=========================
+=============================
+7.1 Comment Character Example
+=============================
 
 
 .. literalinclude:: ../../../sphinx/test_in/comment_ch.py

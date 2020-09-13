@@ -9,9 +9,9 @@ comment_ch_res
 
 .. _comment_ch_res:
 
-========================
-Comment Character Result
-========================
+==============================
+7.1.1 Comment Character Result
+==============================
 
 In the original source, the leading characters '#' and ' ' get removed
 and the remaining text lines up with the ``def`` below:

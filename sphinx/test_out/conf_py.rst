@@ -9,8 +9,9 @@ conf_py
 
 .. _conf_py:
 
-Example conf.py
-###############
+9.1 Example conf.py
+###################
+
 
 
 .. literalinclude:: ../../../sphinx/conf.py

@@ -9,8 +9,9 @@ file_res
 
 .. _file_res:
 
-File Result
-###########
+6.1.1 File Result
+#################
+
 - :ref:`file_res.factorial`
 - :ref:`file_res.square`
 

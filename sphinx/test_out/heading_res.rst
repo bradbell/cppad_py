@@ -9,8 +9,9 @@ heading_res
 
 .. _heading_res:
 
-Heading Result
-##############
+8.1 Heading Result
+##################
+
 - :ref:`heading_res.second_level`
     - :ref:`heading_res.second_level.third_level`
 - :ref:`heading_res.another_second_level`

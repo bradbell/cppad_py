@@ -9,8 +9,9 @@ spell_exam
 
 .. _spell_exam:
 
-Spell Example
-#############
+3.1 Spell Example
+#################
+
 
 
 .. literalinclude:: ../../../sphinx/test_in/spell.py

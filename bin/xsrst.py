@@ -730,6 +730,60 @@ import os
 import pdb
 import spellchecker
 # ---------------------------------------------------------------------------
+def replace_section_number(file_data, section_number) :
+    pattern   = '\n{xsrst_section_number}'
+    if section_number == '' :
+        # This is the root section
+        return file_data.replace(pattern,'')
+    #
+    punctuation = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+    # start of section_number command
+    start_cmd = file_data.find(pattern)
+    assert 0 <= start_cmd
+    # first character after command
+    ch  = file_data[start_cmd + len(pattern)]
+    assert ch == '\n'
+    # second and third newline after command
+    second_index = file_data.index('\n', start_cmd + len(pattern) + 1)
+    third_index  = file_data.index('\n', second_index + 1)
+    # first and second line after comman
+    first_line   = file_data[start_cmd + len(pattern) + 1 : second_index ]
+    second_line  = file_data[ second_index + 1 : third_index ]
+    # check for overline
+    overline = False
+    if first_line[0] * len(first_line) == first_line :
+        if first_line[0] in punctuation :
+            overline = True
+    if not overline :
+        assert second_line[0] in punctuation
+        first_line   = section_number + ' ' + first_line
+        second_line += second_line[0] * ( len(section_number) + 1 )
+        data  = file_data[: start_cmd] + '\n'
+        data += first_line + '\n'
+        data += second_line + '\n'
+        data += file_data[third_index :]
+    else :
+        # fourth newline after command
+            fourth_index = file_data.index('\n', third_index + 1)
+            third_line   = file_data[third_index + 1 : fourth_index]
+            assert first_line == third_line
+            first_line += first_line[0] * ( len(section_number) + 1 )
+            third_line  = first_line
+            second_line = section_number + ' ' + second_line
+    data  = file_data[: start_cmd] + '\n'
+    data += first_line + '\n'
+    data += second_line + '\n'
+    if not overline :
+        data += file_data[third_index :]
+    else :
+        data += third_line
+        data += file_data[fourth_index:]
+    #
+    return data
+    #
+# ---------------------------------------------------------------------------
+# create table of contents and replace '{xsrst_section_number}' commands
+# in *.rst files.
 def table_of_contents(section_info, level, count, section_index) :
     assert level >= 1
     assert len(count) == level-1
@@ -741,18 +795,30 @@ def table_of_contents(section_info, level, count, section_index) :
         content += 'Table of Contents\n'
         content += '*****************\n'
         content += ':ref:`' + section_name + '`\n\n'
+        section_number = ''
     else :
         assert section_index != 0
         content  = '| '
         assert level > 1
         for i in range(level - 2 ) :
             content += ' |space| '
+        section_number = ''
         for i in range(level - 1) :
-            content += str(count[i])
+            section_number += str(count[i])
             if i + 1 < level - 1 :
-                content += '.'
+                section_number += '.'
         content  += ' :ref:`'
         content  += section_name + '`\n'
+    # --------------------------------------------------------------------
+    # replace {xsrst_section_number} in output_dir/section_name.rst
+    file_name = output_dir + '/' + section_name + '.rst'
+    file_ptr  = open(file_name, 'r')
+    file_data = file_ptr.read()
+    file_ptr.close()
+    file_data = replace_section_number(file_data, section_number)
+    file_ptr  = open(file_name, 'w')
+    file_ptr.write(file_data)
+    file_ptr.close()
     #
     child_count   = count + [0]
     child_content = ''
@@ -1748,6 +1814,8 @@ def process_headings(
             #
             # place label and index entry in output before the heading
             data_left   = section_data[: candidate_start]
+            if len(heading_list) == 1 :
+                cmd += '\n{xsrst_section_number}'
             data_left  += cmd
             data_left  += section_data[candidate_start : next_newline]
             if len(heading_list) == 1 :
@@ -1775,8 +1843,11 @@ def process_headings(
     #
     return section_data, pseudo_heading, jump_table
 # -----------------------------------------------------------------------------
-# Compute output corresponding to a section
-# (finishes xsrst processing that has been delayed to this point)
+# Compute output corresponding to a section.
+# This finishes all the xsrst processing that has been delayed to this point
+# with the exception of {xsrst_section_number}. The seciton number is computed
+# after all the sections have been output and replaced during the
+# table_of_contents computation.
 def compute_output(
     pattern,
     sphinx_dir,
@@ -1809,14 +1880,17 @@ def compute_output(
     for newline in newline_list :
         line  = section_data[startline : newline + 1]
         # commands that delay some processing to this point
-        jump_table_command  = line.startswith('{xsrst_jump_table')
-        code_command        = line.startswith('{xsrst_code')
-        file_command        = line.startswith('{xsrst__file')
-        label_command       = line.startswith('{xsrst_label')
-        children_command    = line.startswith('{xsrst_children')
-        child_link_command  = line.startswith('{xsrst_child_link')
-        child_list_command  = line.startswith('{xsrst_child_list')
-        if jump_table_command :
+        section_number_command = line.startswith('{xsrst_section_number}')
+        jump_table_command     = line.startswith('{xsrst_jump_table')
+        code_command           = line.startswith('{xsrst_code')
+        file_command           = line.startswith('{xsrst__file')
+        label_command          = line.startswith('{xsrst_label')
+        children_command       = line.startswith('{xsrst_children')
+        child_link_command     = line.startswith('{xsrst_child_link')
+        child_list_command     = line.startswith('{xsrst_child_list')
+        if section_number_command :
+            rst_output += line
+        elif jump_table_command :
             rst_output += jump_table + '\n'
             previous_empty = True
         elif label_command :

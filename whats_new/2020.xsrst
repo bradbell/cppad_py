@@ -54,8 +54,8 @@ Previous Years
 #.  xsrst: Put spaces around table of contents levels that have more that one
     entry. Also remove the level of indentation in table of contents by one
     because the root section stands out has having not number in front of it.
-#.  The latex numbering of sections is incorrect, so suppress it in the pdf
-    version of the output.
+#.  The latex numbering of sections is incorrect, so change them to the
+    corresponding xsrst section numbers in both the html and pdf output.
 
 09-12
 *****
