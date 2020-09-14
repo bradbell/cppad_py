@@ -9,9 +9,8 @@ code_cmd
 
 .. _code_cmd:
 
-5 Code Command
-##############
-
+Code Command
+############
 - :ref:`code_cmd.syntax`
 - :ref:`code_cmd.purpose`
 - :ref:`code_cmd.requirements`

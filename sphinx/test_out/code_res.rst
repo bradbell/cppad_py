@@ -9,9 +9,8 @@ code_res
 
 .. _code_res:
 
-5.1.1 Code Result
-#################
-
+Code Result
+###########
 
 .. code-block:: py
 

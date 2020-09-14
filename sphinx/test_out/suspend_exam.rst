@@ -9,9 +9,8 @@ suspend_exam
 
 .. _suspend_exam:
 
-4.1 Suspend Example
-###################
-
+Suspend Example
+###############
 
 
 .. literalinclude:: ../../../sphinx/test_in/suspend.py

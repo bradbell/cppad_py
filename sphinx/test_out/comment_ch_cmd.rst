@@ -9,9 +9,8 @@ comment_ch_cmd
 
 .. _comment_ch_cmd:
 
-7 Comment Character Command
-###########################
-
+Comment Character Command
+#########################
 - :ref:`comment_ch_cmd.syntax`
 - :ref:`comment_ch_cmd.purpose`
     - :ref:`comment_ch_cmd.purpose.ch`

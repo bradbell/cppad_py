@@ -17,6 +17,8 @@
     cmd
     cppad
     dir
+    \chapter
+    \paragraph
 }
 
 .. include:: ../preamble.rst
@@ -34,8 +36,9 @@ Extract Sphinx RST
 
 Syntax
 ******
-- ``xsrst.py`` *root_file* *sphinx_dir* *spelling* *keyword*
-- ``xsrst.py`` *root_file* *sphinx_dir* *spelling* *keyword* *line_increment*
+-   ``xsrst.py`` *target* *root_file* *sphinx_dir* *spelling* *keyword*
+-   ``xsrst.py`` *target* *root_file* *sphinx_dir* *spelling* *keyword*
+    *line_increment*
 
 Purpose
 *******
@@ -87,6 +90,25 @@ only white space, or nothing, comes before *text* in the line.
 
 Command Line Arguments
 **********************
+
+target
+======
+The command line argument *target* must be ``html`` or ``pdf`` and
+specifies the type of type output you plan to generate using sphinx.
+If *target* is ``html`` you can generate the sphinx output using
+the following command in the *sphinx_dir* directory:
+{xsrst_code sh}
+    make html
+{xsrst_code}
+If *target* is ``pdf``, you can use the following commands:
+{xsrst_code sh}
+    sed -i preamble.rst -e '/BEGIN_LATEX_MACROS/,/END_LATEX_MACROS/d'
+    sphinx-build -b latex . _build/latex
+    git checkout preamble.rst
+    cd _build/latex
+    sed -i cppad_py.tex -e 's|\\chapter{|\\paragraph{|'
+    make cppad_py.pdf
+{xsrst_code}
 
 root_file
 =========
@@ -784,7 +806,7 @@ def replace_section_number(file_data, section_number) :
 # ---------------------------------------------------------------------------
 # create table of contents and replace '{xsrst_section_number}' commands
 # in *.rst files.
-def table_of_contents(section_info, level, count, section_index) :
+def table_of_contents(target, section_info, level, count, section_index) :
     assert level >= 1
     assert len(count) == level-1
     #
@@ -815,7 +837,10 @@ def table_of_contents(section_info, level, count, section_index) :
     file_ptr  = open(file_name, 'r')
     file_data = file_ptr.read()
     file_ptr.close()
-    file_data = replace_section_number(file_data, section_number)
+    if target == 'pdf' :
+        file_data = replace_section_number(file_data, section_number)
+    else :
+        file_data = replace_section_number(file_data, '')
     file_ptr  = open(file_name, 'w')
     file_ptr.write(file_data)
     file_ptr.close()
@@ -826,7 +851,7 @@ def table_of_contents(section_info, level, count, section_index) :
         if section_info[child_index]['parent_section'] == section_index :
             child_count[-1] += 1
             child_content += table_of_contents(
-                section_info, level + 1, child_count, child_index
+                target, section_info, level + 1, child_count, child_index
             )
     #
     # if the number of children greater than one, put a blank line before
@@ -2045,22 +2070,29 @@ if len(sys.argv) != 5 and len(sys.argv) != 6 :
     usage += ' [line_increment]'
     sys_exit(usage)
 #
+# target
+target = sys.argv[1]
+if target != 'html' and target != 'pdf' :
+    msg  = 'target = ' + target + '\n'
+    msg += 'is not "html" or "pdf"'
+    sys_exit(msg)
+#
 # root_file
-root_file = sys.argv[1]
+root_file = sys.argv[2]
 if not os.path.isfile(root_file) :
     msg  = 'root_file = ' + root_file + '\n'
     msg += 'is not a file'
     sys_exit(msg)
 #
 # sphinx_dir
-sphinx_dir      = sys.argv[2]
+sphinx_dir      = sys.argv[3]
 if not os.path.isdir(sphinx_dir) :
     msg  = 'sphinx_dir = ' + sphinx_dir + '\n'
     msg += 'is not a sub-directory of current working directory'
     sys_exit(msg)
 #
 # spelling
-spelling   = sys.argv[3]
+spelling   = sys.argv[4]
 spell_path = sphinx_dir + '/' + spelling
 if not os.path.isfile(spell_path) :
     msg  = 'sphinx_dir/spelling = ' + spell_path + '\n'
@@ -2068,7 +2100,7 @@ if not os.path.isfile(spell_path) :
     sys_exit(msg)
 #
 # keyword
-keyword      = sys.argv[4]
+keyword      = sys.argv[5]
 keyword_path = sphinx_dir + '/' + keyword
 if not os.path.isfile(keyword_path) :
     msg  = 'sphinx_dir/keyword = ' + keyword_path + '\n'
@@ -2076,10 +2108,10 @@ if not os.path.isfile(keyword_path) :
     sys_exit(msg)
 #
 # line_increment
-if len(sys.argv) == 5 :
+if len(sys.argv) == 6 :
     line_increment = 0
 else :
-    line_increment = int(sys.argv[5])
+    line_increment = int(sys.argv[7])
     if line_increment < 1 :
         msg += 'line_increment is not a positive integer'
         sys_exit(msg)
@@ -2322,7 +2354,9 @@ file_ptr.write(output_data)
 level         = 1
 count         = list()
 section_index = 0
-output_data   = table_of_contents(section_info, level, count, section_index)
+output_data   = table_of_contents(
+    target, section_info, level, count, section_index
+)
 file_ptr.write(output_data)
 #
 file_ptr.close()

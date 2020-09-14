@@ -11,9 +11,8 @@ file_cmd
 
 .. _file_cmd:
 
-6 File Command
-##############
-
+File Command
+############
 - :ref:`file_cmd.syntax`
 - :ref:`file_cmd.purpose`
 - :ref:`file_cmd.white_space`

@@ -42,8 +42,8 @@ sed -i $test_dir/conf.py -e "s|^project *=.*|project = 'xsrst'|"
 echo "sed -i $test_dir/index.rst -e s|xsrst/cppad_py|xsrst/xsrst_py|"
 sed -i $test_dir/index.rst -e "s|xsrst/cppad_py|xsrst/xsrst_py|"
 # -----------------------------------------------------------------------------
-echo "bin/xsrst.py bin/xsrst.py $test_dir spelling keyword"
-if ! bin/xsrst.py bin/xsrst.py $test_dir spelling  keyword 2> xsrst.$$
+echo "bin/xsrst.py html bin/xsrst.py $test_dir spelling keyword"
+if ! bin/xsrst.py html bin/xsrst.py $test_dir spelling  keyword 2> xsrst.$$
 then
     type_error='error'
 else

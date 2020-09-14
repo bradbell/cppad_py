@@ -9,9 +9,8 @@ no_parent_exam
 
 .. _no_parent_exam:
 
-2.1 No Parent Example
-#####################
-
+No Parent Example
+#################
 
 All the sections in the file ``children.py``
 are children of the section below

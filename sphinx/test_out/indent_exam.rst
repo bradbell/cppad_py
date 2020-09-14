@@ -9,9 +9,8 @@ indent_exam
 
 .. _indent_exam:
 
-2.1.1.2.1 Indent Example
-########################
-
+Indent Example
+##############
 
 
 .. literalinclude:: ../../../sphinx/test_in/indent.py

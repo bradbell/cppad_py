@@ -9,9 +9,8 @@ suspend_cmd
 
 .. _suspend_cmd:
 
-4 Suspend and Resume Commands
-#############################
-
+Suspend and Resume Commands
+###########################
 - :ref:`suspend_cmd.syntax`
 - :ref:`suspend_cmd.purpose`
 - :ref:`suspend_cmd.example`

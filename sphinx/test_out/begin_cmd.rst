@@ -11,9 +11,8 @@ begin_cmd
 
 .. _begin_cmd:
 
-1 Begin and End Commands
-########################
-
+Begin and End Commands
+######################
 - :ref:`begin_cmd.syntax`
 - :ref:`begin_cmd.section`
 - :ref:`begin_cmd.section_name`

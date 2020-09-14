@@ -9,9 +9,8 @@ spell_res
 
 .. _spell_res:
 
-3.1.1 Spell Result
-##################
-
+Spell Result
+############
 - :ref:`spell_res.text`
 - :ref:`spell_res.math`
 - :ref:`spell_res.double_words`

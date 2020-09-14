@@ -9,9 +9,8 @@ child_cmd
 
 .. _child_cmd:
 
-2 Children Commands
-###################
-
+Children Commands
+#################
 - :ref:`child_cmd.syntax`
 - :ref:`child_cmd.purpose`
 - :ref:`child_cmd.file_names`

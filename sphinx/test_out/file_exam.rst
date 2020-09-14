@@ -9,9 +9,8 @@ file_exam
 
 .. _file_exam:
 
-6.1 File Example
-################
-
+File Example
+############
 
 
 .. literalinclude:: ../../../sphinx/test_in/file.cpp

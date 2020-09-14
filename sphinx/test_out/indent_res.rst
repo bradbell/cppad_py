@@ -9,9 +9,9 @@ indent_res
 
 .. _indent_res:
 
-=========================
-2.1.1.2.1.1 Indent Result
-=========================
+=============
+Indent Result
+=============
 
 .. code-block:: py
 

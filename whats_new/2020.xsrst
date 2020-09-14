@@ -45,6 +45,14 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+09-14
+*****
+#.  xsrst: the :ref:`target<xsrst_py.command_line_arguments.target>`
+    command line argument was added and the section numbers were removed
+    from the html output. This was done so that adding or removing one
+    section does not cause changes in the github pages for all the other
+    sections.
+
 09-13
 *****
 #.  The text ``xsrst:`` was added to the beginning of each whats new item

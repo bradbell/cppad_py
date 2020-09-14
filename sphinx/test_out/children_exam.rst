@@ -9,9 +9,8 @@ children_exam
 
 .. _children_exam:
 
-2.1.1.1 Indent and Children Example
-###################################
-
+Indent and Children Example
+###########################
 - :ref:`children_exam.result`
 
 
