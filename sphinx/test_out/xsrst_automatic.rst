@@ -1,48 +1,45 @@
 .. include:: ../preamble.rst
 
-Automatic Links
-###############
-
-Index
-*****
-* :ref:`Link To Index<genindex>`
-
 Table of Contents
 *****************
 :ref:`xsrst_py`
 
 |
-|  :ref:`begin_cmd`
-|  :ref:`child_cmd`
-|  |space|  :ref:`no_parent_exam`
-|  |space|  |space|  :ref:`no_parent_res`
+| :ref:`1<begin_cmd>` Begin and End Commands`
+| :ref:`2<child_cmd>` Children Commands`
+|  |space| :ref:`2.1<no_parent_exam>` No Parent Example`
+|  |space|  |space| :ref:`2.1.1<no_parent_res>` No Parent Result`
 |
-|  |space|  |space|  |space|  :ref:`children_exam`
-|  |space|  |space|  |space|  :ref:`children_res`
-|  |space|  |space|  |space|  |space|  :ref:`indent_exam`
-|  |space|  |space|  |space|  |space|  |space|  :ref:`indent_res`
+|  |space|  |space|  |space| :ref:`2.1.1.1<children_exam>` Indent and Children Example`
+|  |space|  |space|  |space| :ref:`2.1.1.2<children_res>` Indent and Children Result`
+|  |space|  |space|  |space|  |space| :ref:`2.1.1.2.1<indent_exam>` Indent Example`
+|  |space|  |space|  |space|  |space|  |space| :ref:`2.1.1.2.1.1<indent_res>` Indent Result`
 |
-|  :ref:`spell_cmd`
-|  |space|  :ref:`spell_exam`
-|  |space|  |space|  :ref:`spell_res`
-|  :ref:`suspend_cmd`
-|  |space|  :ref:`suspend_exam`
-|  |space|  |space|  :ref:`suspend_res`
-|  :ref:`code_cmd`
-|  |space|  :ref:`code_exam`
-|  |space|  |space|  :ref:`code_res`
-|  :ref:`file_cmd`
-|  |space|  :ref:`file_exam`
-|  |space|  |space|  :ref:`file_res`
-|  :ref:`comment_ch_cmd`
-|  |space|  :ref:`comment_ch_exam`
-|  |space|  |space|  :ref:`comment_ch_res`
-|  :ref:`heading_exam`
-|  |space|  :ref:`heading_res`
-|  :ref:`configure`
+| :ref:`3<spell_cmd>` Spell Command`
+|  |space| :ref:`3.1<spell_exam>` Spell Example`
+|  |space|  |space| :ref:`3.1.1<spell_res>` Spell Result`
+| :ref:`4<suspend_cmd>` Suspend and Resume Commands`
+|  |space| :ref:`4.1<suspend_exam>` Suspend Example`
+|  |space|  |space| :ref:`4.1.1<suspend_res>` Suspend Result`
+| :ref:`5<code_cmd>` Code Command`
+|  |space| :ref:`5.1<code_exam>` Code Example`
+|  |space|  |space| :ref:`5.1.1<code_res>` Code Result`
+| :ref:`6<file_cmd>` File Command`
+|  |space| :ref:`6.1<file_exam>` File Example`
+|  |space|  |space| :ref:`6.1.1<file_res>` File Result`
+| :ref:`7<comment_ch_cmd>` Comment Character Command`
+|  |space| :ref:`7.1<comment_ch_exam>` Comment Character Example`
+|  |space|  |space| :ref:`7.1.1<comment_ch_res>` Comment Character Result`
+| :ref:`8<heading_exam>` Heading Example`
+|  |space| :ref:`8.1<heading_res>` Heading Result`
+| :ref:`9<configure>` Example xsrst Configuration Files`
 |
-|  |space|  :ref:`conf_py`
-|  |space|  :ref:`index_rst`
-|  |space|  :ref:`spelling`
-|  |space|  :ref:`keyword`
+|  |space| :ref:`9.1<conf_py>` Example conf.py`
+|  |space| :ref:`9.2<index_rst>` Example index.rst`
+|  |space| :ref:`9.3<spelling>` Example Spelling File`
+|  |space| :ref:`9.4<keyword>` Example Keyword File`
 |
+
+Link to Index
+*************
+* :ref:`genindex`

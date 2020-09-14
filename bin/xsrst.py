@@ -810,7 +810,8 @@ def table_of_contents(target, section_info, level, count, section_index) :
     assert level >= 1
     assert len(count) == level-1
     #
-    section_name = section_info[section_index]['section_name']
+    section_name  = section_info[section_index]['section_name']
+    section_title = section_info[section_index]['section_title']
     if level == 1 :
         assert section_index == 0
         content  = '\n'
@@ -829,8 +830,8 @@ def table_of_contents(target, section_info, level, count, section_index) :
             section_number += str(count[i])
             if i + 1 < level - 1 :
                 section_number += '.'
-        content  += ' :ref:`'
-        content  += section_name + '`\n'
+        content  += f':ref:`{section_number}<{section_name}>` '
+        content  += section_title + '`\n'
     # --------------------------------------------------------------------
     # replace {xsrst_section_number} in output_dir/section_name.rst
     file_name = output_dir + '/' + section_name + '.rst'
@@ -1866,7 +1867,8 @@ def process_headings(
     line           = len(section_name) * punctuation[i] + '\n'
     pseudo_heading = line + section_name + '\n' + line + '\n'
     #
-    return section_data, pseudo_heading, jump_table
+    section_title = heading_list[0]['text']
+    return section_data, section_title, pseudo_heading, jump_table
 # -----------------------------------------------------------------------------
 # Compute output corresponding to a section.
 # This finishes all the xsrst processing that has been delayed to this point
@@ -2295,7 +2297,8 @@ while 0 < len(file_info_stack) :
         )
         # ---------------------------------------------------------------
         # add labels and indices corresponding to headings
-        section_data, pseudo_heading, jump_table = process_headings(
+        section_data, section_title, pseudo_heading, jump_table = \
+        process_headings(
             pattern,
             section_data,
             num_remove,
@@ -2303,6 +2306,8 @@ while 0 < len(file_info_stack) :
             section_name,
             index_list,
         )
+        # section title is used by table_of_contents
+        section_info[section_index]['section_title'] = section_title
         # ----------------------------------------------------------------
         # list_children
         # first section in each file may need to add to child list

@@ -53,6 +53,8 @@ Previous Years
     section does not cause changes in the github pages for all the other
     sections. In addition, the table of contents and link to the index
     now appear in the navigation frame for both the html and pdf output.
+    Furthermore, the table of contents uses the section number for the
+    link so that the title is easier to read.
 
 09-13
 *****
