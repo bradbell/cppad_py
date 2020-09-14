@@ -15,6 +15,9 @@ No Parent Result
 - :ref:`no_parent_res.child_link_children.py`
 - :ref:`no_parent_res.example`
 
+The file ``children.py`` does not contain a begin parent command
+and hence all the sections in that file are children of this section.
+
 .. meta::
    :keywords: children.py, file
 
@@ -24,10 +27,8 @@ No Parent Result
 
 children.py File
 ****************
-
-.. literalinclude:: ../../../sphinx/test_in/children.py
-    :lines: 9-53
-    :language: py
+Go to the heading :ref:`This File<children_exam.this_file>` in
+the children_exam section linked below:
 
 .. meta::
    :keywords: child, link, children.py
@@ -42,7 +43,7 @@ Child Link children.py
    :maxdepth: 1
 
    children_exam
-   children_res
+   children_other
 
 .. meta::
    :keywords: example

@@ -31,6 +31,7 @@ Extract Sphinx RST
 
 {xsrst_children
     sphinx/test_in/heading.py
+    sphinx/test_in/indent.py
     sphinx/configure.xsrst
 }
 

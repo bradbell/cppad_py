@@ -10,10 +10,8 @@ Table of Contents
 |  |space| :ref:`2.1<no_parent_exam>` No Parent Example`
 |  |space|  |space| :ref:`2.1.1<no_parent_res>` No Parent Result`
 |
-|  |space|  |space|  |space| :ref:`2.1.1.1<children_exam>` Indent and Children Example`
-|  |space|  |space|  |space| :ref:`2.1.1.2<children_res>` Indent and Children Result`
-|  |space|  |space|  |space|  |space| :ref:`2.1.1.2.1<indent_exam>` Indent Example`
-|  |space|  |space|  |space|  |space|  |space| :ref:`2.1.1.2.1.1<indent_res>` Indent Result`
+|  |space|  |space|  |space| :ref:`2.1.1.1<children_exam>` Children Example`
+|  |space|  |space|  |space| :ref:`2.1.1.2<children_other>` Other Child`
 |
 | :ref:`3<spell_cmd>` Spell Command`
 |  |space| :ref:`3.1<spell_exam>` Spell Example`
@@ -32,12 +30,14 @@ Table of Contents
 |  |space|  |space| :ref:`7.1.1<comment_ch_res>` Comment Character Result`
 | :ref:`8<heading_exam>` Heading Example`
 |  |space| :ref:`8.1<heading_res>` Heading Result`
-| :ref:`9<configure>` Example xsrst Configuration Files`
+| :ref:`9<indent_exam>` Indent Example`
+|  |space| :ref:`9.1<indent_res>` Indent Result`
+| :ref:`10<configure>` Example xsrst Configuration Files`
 |
-|  |space| :ref:`9.1<conf_py>` Example conf.py`
-|  |space| :ref:`9.2<index_rst>` Example index.rst`
-|  |space| :ref:`9.3<spelling>` Example Spelling File`
-|  |space| :ref:`9.4<keyword>` Example Keyword File`
+|  |space| :ref:`10.1<conf_py>` Example conf.py`
+|  |space| :ref:`10.2<index_rst>` Example index.rst`
+|  |space| :ref:`10.3<spelling>` Example Spelling File`
+|  |space| :ref:`10.4<keyword>` Example Keyword File`
 |
 
 Link to Index

@@ -9,46 +9,34 @@
 """
 {xsrst_begin children_exam}
 
-Indent and Children Example
-###########################
+Children Example
+################
+This file does not contain a begin parent command,
+so all its sections are children of the section that includes it.
 
+Other Section
+*************
+The :ref:`link<children_other>` goes to the other section in this file.
+
+This File
+*********
 {xsrst_file
-    # BEGIN_SRC
-    # END_SRC
+    # BEGIN_FILE
+    # END_FILE
 }
-
-Result
-******
-:ref:`children_res`
 
 {xsrst_end children_exam}
 """
 # ----------------------------------------------------------------------------
-# BEGIN_SRC
 """
-{xsrst_begin children_res}
+{xsrst_begin children_other}
 
-Indent and Children Result
-##########################
+Other Child
+###########
+This is the other child section in
+:ref:`this file<children_exam.this_file>`.
 
-Children
-********
-This example uses a children command and
-the corresponding link is included.
-If it had used a child link command, the same link would have been
-created automatically.
 
-{xsrst_children
-    sphinx/test_in/indent.py
-}
-
-- :ref:`indent_exam`
-
-Example
-*******
-:ref:`children_exam`
-
-{xsrst_end children_res}
+{xsrst_end children_other}
 """
-# END_SRC
 # END_FILE

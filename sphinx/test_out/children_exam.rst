@@ -3,31 +3,44 @@ children_exam
 !!!!!!!!!!!!!
 
 .. meta::
-   :keywords: children_exam, indent, children, example
+   :keywords: children_exam, children, example
 
-.. index:: children_exam, indent, children, example
+.. index:: children_exam, children, example
 
 .. _children_exam:
 
-Indent and Children Example
-###########################
-- :ref:`children_exam.result`
+Children Example
+################
+- :ref:`children_exam.other_section`
+- :ref:`children_exam.this_file`
 
-
-.. literalinclude:: ../../../sphinx/test_in/children.py
-    :lines: 28-52
-    :language: py
+This file does not contain a begin parent command,
+so all its sections are children of the section that includes it.
 
 .. meta::
-   :keywords: result
+   :keywords: other, section
 
-.. index:: result
+.. index:: other, section
 
-.. _children_exam.result:
+.. _children_exam.other_section:
 
-Result
-******
-:ref:`children_res`
+Other Section
+*************
+The :ref:`link<children_other>` goes to the other section in this file.
+
+.. meta::
+   :keywords: this, file
+
+.. index:: this, file
+
+.. _children_exam.this_file:
+
+This File
+*********
+
+.. literalinclude:: ../../../sphinx/test_in/children.py
+    :lines: 9-41
+    :language: py
 
 ----
 
