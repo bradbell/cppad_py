@@ -56,6 +56,10 @@ Previous Years
     Furthermore, the table of contents uses the section number for the
     link so that the title is easier to read.
 
+#.  xsrst: A :ref:`begin_parent<begin_cmd.parent_section>` must be the first
+    begin command in a file. This restriction is new and makes the pdf output
+    for the parent come before its children.
+
 09-13
 *****
 #.  The text ``xsrst:`` was added to the beginning of each whats new item

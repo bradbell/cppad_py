@@ -28,8 +28,8 @@ Begin and End Commands
 
 Syntax
 ******
-- ``{xsrst_begin``        *section_name* :code:`}`
 - ``{xsrst_begin_parent`` *section_name* :code:`}`
+- ``{xsrst_begin``        *section_name* :code:`}`
 - ``{xsrst_end``          *section_name* :code:`}`
 
 .. meta::
@@ -85,12 +85,13 @@ The output file corresponding to *section_name* is
 Parent Section
 **************
 There can be at most one begin parent command in an input file.
-In this case there must be other sections in the file
-and they are children of the parent section.
+In this case it must be the first begin command in the file
+and there must be other sections in the file.
+The other sections are children of the parent section.
 The parent section is a child
 of the section that included this file using a :ref:`child command<child_cmd>`.
 
-If there is no parent command in an input file,
+If there is no begin parent command in an input file,
 all the sections in the file are children
 of the section that included this file using a :ref:`child command<child_cmd>`.
 

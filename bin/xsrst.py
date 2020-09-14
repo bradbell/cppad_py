@@ -199,7 +199,7 @@ corresponds to line number 30 in the file ``children_exam.rst``.
 The table at the bottom of that file maps line numbers in
 ``children_exam.rst`` to line numbers in the corresponding xsrst input file.
 
-Table Of Contents
+Table of Contents
 *****************
 
 toctree
@@ -216,13 +216,13 @@ Parent Section
 ==============
 A single input file may contain multiple
 :ref:`sections<begin_cmd.section>`.
-One (and at most one) of these sections may use begin with a
+The first of these sections may use a
 :ref:`parent begin<begin_cmd.parent_section>` command.
 In this case, the other sections in the file are children of this section
 and this section is a child of the section containing the
 :ref:`child command<child_cmd>` that included this file.
 
-If there is no parent section for a file,
+If there is no begin parent command in a file,
 all the sections in the file are children of the section containing the
 child command that included the file.
 
@@ -355,8 +355,8 @@ Begin and End Commands
 
 Syntax
 ******
-- ``{xsrst_begin``        *section_name* :code:`}`
 - ``{xsrst_begin_parent`` *section_name* :code:`}`
+- ``{xsrst_begin``        *section_name* :code:`}`
 - ``{xsrst_end``          *section_name* :code:`}`
 
 Section
@@ -374,7 +374,6 @@ A link is included in the index under the section name
 to the first heading the section.
 The section name is also added to the html keyword meta data.
 
-
 Output File
 ***********
 The output file corresponding to *section_name* is
@@ -385,12 +384,13 @@ The output file corresponding to *section_name* is
 Parent Section
 **************
 There can be at most one begin parent command in an input file.
-In this case there must be other sections in the file
-and they are children of the parent section.
+In this case it must be the first begin command in the file
+and there must be other sections in the file.
+The other sections are children of the parent section.
 The parent section is a child
 of the section that included this file using a :ref:`child command<child_cmd>`.
 
-If there is no parent command in an input file,
+If there is no begin parent command in an input file,
 all the sections in the file are children
 of the section that included this file using a :ref:`child command<child_cmd>`.
 
@@ -1194,16 +1194,15 @@ def file2file_info(
             #
             # check if two parent sections in this file
             if is_parent :
-                for info in file_info :
-                    if info['is_parent'] :
-                        msg  = 'xsrst_begin_parent'
-                        msg += ' appears twice in same file'
-                        sys_exit(msg,
-                            fname=file_in,
-                            sname=section_name,
-                            match=match_xsrst_begin,
-                            data=data_rest
-                        )
+                if len(file_info) != 0 :
+                    msg  = 'xsrst_begin_parent'
+                    msg += ' is not the first begin command in this file'
+                    sys_exit(msg,
+                        fname=file_in,
+                        sname=section_name,
+                        match=match_xsrst_begin,
+                        data=data_rest
+                    )
             #
             # file_index
             file_index += match_xsrst_begin.end()
