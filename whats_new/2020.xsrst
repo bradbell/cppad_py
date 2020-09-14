@@ -51,7 +51,8 @@ Previous Years
     command line argument was added and the section numbers were removed
     from the html output. This was done so that adding or removing one
     section does not cause changes in the github pages for all the other
-    sections.
+    sections. In addition, the table of contents and link to the index
+    now appear in the navigation frame for both the html and pdf output.
 
 09-13
 *****

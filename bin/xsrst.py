@@ -2332,33 +2332,31 @@ while 0 < len(file_info_stack) :
         )
 # -----------------------------------------------------------------------------
 # xstst_automatic.rst
-file_out    = output_dir + '/' + 'xsrst_automatic.rst'
-file_ptr    = open(file_out, 'w')
 output_data = '.. include:: ../preamble.rst\n'
-file_ptr.write(output_data)
 #
-# Automatic Links
-output_data  = '\n'
-output_data += 'Automatic Links\n'
-output_data += '###############\n'
-file_ptr.write(output_data)
-#
-# Index
-output_data  = '\n'
-output_data += 'Index\n'
-output_data += '*****\n'
-output_data += '* :ref:`Link To Index<genindex>`\n'
-file_ptr.write(output_data)
+if target == 'pdf' :
+    # The top level heading is not included in pdf output
+    output_data += '\n'
+    output_data += 'Dummy Heading\n'
+    output_data += '#############\n'
 #
 # Table of Contents
 level         = 1
 count         = list()
 section_index = 0
-output_data   = table_of_contents(
+output_data  += table_of_contents(
     target, section_info, level, count, section_index
 )
-file_ptr.write(output_data)
+if target == 'html' :
+    # Link to Index
+    output_data += '\n'
+    output_data += 'Link to Index\n'
+    output_data += '*************\n'
+    output_data += '* :ref:`genindex`\n'
 #
+file_out    = output_dir + '/' + 'xsrst_automatic.rst'
+file_ptr    = open(file_out, 'w')
+file_ptr.write(output_data)
 file_ptr.close()
 # -----------------------------------------------------------------------------
 # check section_name is in index.rst
