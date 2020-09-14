@@ -34,8 +34,8 @@ Extract Sphinx RST
 
 Syntax
 ******
-- ``xsrst.py`` *sphinx_dir* *root_file* *spelling* *keyword*
-- ``xsrst.py`` *sphinx_dir* *root_file* *spelling* *keyword* *line_increment*
+- ``xsrst.py`` *root_file* *sphinx_dir* *spelling* *keyword*
+- ``xsrst.py`` *root_file* *sphinx_dir* *spelling* *keyword* *line_increment*
 
 Purpose
 *******

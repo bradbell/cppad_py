@@ -56,6 +56,8 @@ Previous Years
     because the root section stands out has having not number in front of it.
 #.  The latex numbering of sections is incorrect, so change them to the
     corresponding xsrst section numbers in both the html and pdf output.
+#.  xsrst: Correct position of :ref:`sphinx_dir<xsrst_py.syntax>` in the
+    command line syntax.
 
 09-12
 *****
