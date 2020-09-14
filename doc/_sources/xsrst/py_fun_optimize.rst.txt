@@ -11,9 +11,8 @@ py_fun_optimize
 
 .. _py_fun_optimize:
 
-3.1.1.10 Optimize an AD Function
-################################
-
+Optimize an AD Function
+#######################
 - :ref:`py_fun_optimize.syntax`
 - :ref:`py_fun_optimize.purpose`
 - :ref:`py_fun_optimize.f`

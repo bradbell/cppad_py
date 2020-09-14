@@ -11,9 +11,8 @@ fun_abort_xam_py
 
 .. _fun_abort_xam_py:
 
-3.1.1.2.1 Python: Abort Recording a_double Operations: Example and Test
-#######################################################################
-
+Python: Abort Recording a_double Operations: Example and Test
+#############################################################
 
 
 .. literalinclude:: ../../example/python/core/fun_abort_xam.py

@@ -11,9 +11,8 @@ whats_new_2018
 
 .. _whats_new_2018:
 
-5.1 Cppad Py Changes During 2018
-################################
-
+Cppad Py Changes During 2018
+############################
 - :ref:`whats_new_2018.11-10`
 - :ref:`whats_new_2018.11-09`
 - :ref:`whats_new_2018.11-07`

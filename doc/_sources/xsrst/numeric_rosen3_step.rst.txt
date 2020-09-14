@@ -11,9 +11,8 @@ numeric_rosen3_step
 
 .. _numeric_rosen3_step:
 
-2.3 One Third Order Rosenbrock ODE Step
-#######################################
-
+One Third Order Rosenbrock ODE Step
+###################################
 - :ref:`numeric_rosen3_step.syntax`
 - :ref:`numeric_rosen3_step.purpose`
 - :ref:`numeric_rosen3_step.reference`

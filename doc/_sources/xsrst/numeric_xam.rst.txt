@@ -11,9 +11,8 @@ numeric_xam
 
 .. _numeric_xam:
 
-2 Numerical Examples
-####################
-
+Numerical Examples
+##################
 - :ref:`numeric_xam.children`
 
 .. meta::

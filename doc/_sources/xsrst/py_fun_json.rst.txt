@@ -11,9 +11,8 @@ py_fun_json
 
 .. _py_fun_json:
 
-3.1.1.11 Json Representation of AD Computation Graph
-####################################################
-
+Json Representation of AD Computation Graph
+###########################################
 - :ref:`py_fun_json.syntax`
 - :ref:`py_fun_json.f`
 - :ref:`py_fun_json.json`

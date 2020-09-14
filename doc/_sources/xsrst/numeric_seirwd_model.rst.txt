@@ -11,9 +11,8 @@ numeric_seirwd_model
 
 .. _numeric_seirwd_model:
 
-2.6 A Susceptible Exposed Infectious Recovered and Death Model
-##############################################################
-
+A Susceptible Exposed Infectious Recovered and Death Model
+##########################################################
 - :ref:`numeric_seirwd_model.purpose`
 - :ref:`numeric_seirwd_model.syntax`
 - :ref:`numeric_seirwd_model.notation`

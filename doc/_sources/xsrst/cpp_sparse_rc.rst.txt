@@ -11,9 +11,8 @@ cpp_sparse_rc
 
 .. _cpp_sparse_rc:
 
-3.2.4.1 Sparsity Patterns
-#########################
-
+Sparsity Patterns
+#################
 - :ref:`cpp_sparse_rc.syntax`
 - :ref:`cpp_sparse_rc.pattern`
 - :ref:`cpp_sparse_rc.nr`

@@ -11,9 +11,8 @@ more_cpp
 
 .. _more_cpp:
 
-3.2.6 Steps To Add More C++ Functions
-#####################################
-
+Steps To Add More C++ Functions
+###############################
 - :ref:`more_cpp.purpose`
 - :ref:`more_cpp.include_file`
     - :ref:`more_cpp.include_file.independent`

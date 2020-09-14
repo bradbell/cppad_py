@@ -11,9 +11,8 @@ a_double_unary_op
 
 .. _a_double_unary_op:
 
-3.2.1.2 a_double Unary Plus and Minus
-#####################################
-
+a_double Unary Plus and Minus
+#############################
 - :ref:`a_double_unary_op.syntax`
 - :ref:`a_double_unary_op.ax`
 - :ref:`a_double_unary_op.ay`

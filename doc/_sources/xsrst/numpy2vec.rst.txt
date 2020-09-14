@@ -11,9 +11,8 @@ numpy2vec
 
 .. _numpy2vec:
 
-3.1.3.1 Convert a Numpy Array to a cppad_py Vector
-##################################################
-
+Convert a Numpy Array to a cppad_py Vector
+##########################################
 - :ref:`numpy2vec.syntax`
 - :ref:`numpy2vec.array`
 - :ref:`numpy2vec.dtype`

@@ -11,9 +11,8 @@ py_sparse_hes
 
 .. _py_sparse_hes:
 
-3.1.2.6 Computing Sparse Hessians
-#################################
-
+Computing Sparse Hessians
+#########################
 - :ref:`py_sparse_hes.syntax`
 - :ref:`py_sparse_hes.purpose`
 - :ref:`py_sparse_hes.f`

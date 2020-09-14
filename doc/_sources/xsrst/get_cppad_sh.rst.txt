@@ -11,9 +11,8 @@ get_cppad_sh
 
 .. _get_cppad_sh:
 
-1.2 Get Cppad
-#############
-
+Get Cppad
+#########
 - :ref:`get_cppad_sh.syntax`
 - :ref:`get_cppad_sh.top_source_directory`
 - :ref:`get_cppad_sh.settings`

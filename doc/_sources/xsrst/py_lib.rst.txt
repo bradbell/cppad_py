@@ -11,9 +11,8 @@ py_lib
 
 .. _py_lib:
 
-3.1 The Python Library
-######################
-
+The Python Library
+##################
 - :ref:`py_lib.children`
 
 .. meta::

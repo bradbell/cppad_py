@@ -11,9 +11,8 @@ numeric_seirwd_model_xam_py
 
 .. _numeric_seirwd_model_xam_py:
 
-2.6.1 Example Using seris_model
-###############################
-
+Example Using seris_model
+#########################
 
 
 .. literalinclude:: ../../example/python/numeric/seirwd_model_xam.py

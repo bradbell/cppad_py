@@ -11,9 +11,8 @@ install_error
 
 .. _install_error:
 
-1.1 Error Messages During Installation
-######################################
-
+Error Messages During Installation
+##################################
 - :ref:`install_error.solved`
     - :ref:`install_error.solved.swig`
     - :ref:`install_error.solved.permissions`

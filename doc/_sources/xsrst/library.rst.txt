@@ -11,9 +11,8 @@ library
 
 .. _library:
 
-3 The Cppad Py Libraries
-########################
-
+The Cppad Py Libraries
+######################
 - :ref:`library.children`
 
 .. meta::

@@ -11,9 +11,8 @@ numeric_runge4_step
 
 .. _numeric_runge4_step:
 
-2.2 One Fourth Order Runge-Kutta ODE Step
-#########################################
-
+One Fourth Order Runge-Kutta ODE Step
+#####################################
 - :ref:`numeric_runge4_step.syntax`
 - :ref:`numeric_runge4_step.purpose`
 - :ref:`numeric_runge4_step.fun`

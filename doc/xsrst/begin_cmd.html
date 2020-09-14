@@ -91,7 +91,8 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="xsrst_automatic.html">Automatic Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xsrst_automatic.html">Table of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xsrst_automatic.html#link-to-index">Link to Index</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
@@ -105,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="file_cmd.html">file_cmd</a></li>
 <li class="toctree-l3"><a class="reference internal" href="comment_ch_cmd.html">comment_ch_cmd</a></li>
 <li class="toctree-l3"><a class="reference internal" href="heading_exam.html">heading_exam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indent_exam.html">indent_exam</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configure.html">configure</a></li>
 </ul>
 </li>
@@ -185,7 +187,7 @@
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="begin-and-end-commands">
-<span id="id1"></span><h2>4.1 Begin and End Commands<a class="headerlink" href="#begin-and-end-commands" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Begin and End Commands<a class="headerlink" href="#begin-and-end-commands" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#begin-cmd-syntax"><span class="std std-ref">Syntax</span></a></p></li>
 <li><p><a class="reference internal" href="#begin-cmd-section"><span class="std std-ref">Section</span></a></p></li>
@@ -196,8 +198,8 @@
 <div class="section" id="syntax">
 <span id="begin-cmd-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_begin</span></code>        <em>section_name</em> <code class="code docutils literal notranslate"><span class="pre">}</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_begin_parent</span></code> <em>section_name</em> <code class="code docutils literal notranslate"><span class="pre">}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_begin</span></code>        <em>section_name</em> <code class="code docutils literal notranslate"><span class="pre">}</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_end</span></code>          <em>section_name</em> <code class="code docutils literal notranslate"><span class="pre">}</span></code></p></li>
 </ul>
 </div>
@@ -225,11 +227,12 @@ The section name is also added to the html keyword meta data.</p>
 <div class="section" id="parent-section">
 <span id="begin-cmd-parent-section"></span><span id="index-5"></span><h3>Parent Section<a class="headerlink" href="#parent-section" title="Permalink to this headline">¶</a></h3>
 <p>There can be at most one begin parent command in an input file.
-In this case there must be other sections in the file
-and they are children of the parent section.
+In this case it must be the first begin command in the file
+and there must be other sections in the file.
+The other sections are children of the parent section.
 The parent section is a child
 of the section that included this file using a <a class="reference internal" href="child_cmd.html#id1"><span class="std std-ref">child command</span></a>.</p>
-<p>If there is no parent command in an input file,
+<p>If there is no begin parent command in an input file,
 all the sections in the file are children
 of the section that included this file using a <a class="reference internal" href="child_cmd.html#id1"><span class="std std-ref">child command</span></a>.</p>
 <hr class="docutils" />

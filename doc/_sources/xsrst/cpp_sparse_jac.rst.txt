@@ -11,9 +11,8 @@ cpp_sparse_jac
 
 .. _cpp_sparse_jac:
 
-3.2.4.5 Computing Sparse Jacobians
-##################################
-
+Computing Sparse Jacobians
+##########################
 - :ref:`cpp_sparse_jac.syntax`
 - :ref:`cpp_sparse_jac.purpose`
 - :ref:`cpp_sparse_jac.sparse_jac_for`

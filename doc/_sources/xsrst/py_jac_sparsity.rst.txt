@@ -11,9 +11,8 @@ py_jac_sparsity
 
 .. _py_jac_sparsity:
 
-3.1.2.3 Jacobian Sparsity Patterns
-##################################
-
+Jacobian Sparsity Patterns
+##########################
 - :ref:`py_jac_sparsity.syntax`
 - :ref:`py_jac_sparsity.purpose`
     - :ref:`py_jac_sparsity.purpose.for_jac_sparsity`

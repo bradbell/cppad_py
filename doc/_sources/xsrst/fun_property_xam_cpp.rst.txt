@@ -11,9 +11,8 @@ fun_property_xam_cpp
 
 .. _fun_property_xam_cpp:
 
-3.2.3.4.1 C++: function Properties: Example and Test
-####################################################
-
+C++: function Properties: Example and Test
+##########################################
 
 
 .. literalinclude:: ../../example/cplusplus/fun_property_xam.cpp

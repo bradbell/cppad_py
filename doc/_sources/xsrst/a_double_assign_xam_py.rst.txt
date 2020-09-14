@@ -11,9 +11,8 @@ a_double_assign_xam_py
 
 .. _a_double_assign_xam_py:
 
-3.2.1.6.2 Python: a_double Assignment Operators: Example and Test
-#################################################################
-
+Python: a_double Assignment Operators: Example and Test
+#######################################################
 
 
 .. literalinclude:: ../../example/python/core/a_double_assign_xam.py

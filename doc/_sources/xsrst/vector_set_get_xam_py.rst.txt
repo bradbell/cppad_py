@@ -11,9 +11,8 @@ vector_set_get_xam_py
 
 .. _vector_set_get_xam_py:
 
-3.2.2.3.2 Python: Setting and Getting Vector Elements: Example and Test
-#######################################################################
-
+Python: Setting and Getting Vector Elements: Example and Test
+#############################################################
 
 
 .. literalinclude:: ../../example/python/core/vector_set_get_xam.py

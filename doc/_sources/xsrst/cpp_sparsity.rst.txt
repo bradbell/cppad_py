@@ -11,9 +11,8 @@ cpp_sparsity
 
 .. _cpp_sparsity:
 
-3.2.4.4 Hessian Sparsity Patterns
-#################################
-
+Hessian Sparsity Patterns
+#########################
 - :ref:`cpp_sparsity.syntax`
 - :ref:`cpp_sparsity.purpose`
 - :ref:`cpp_sparsity.x`

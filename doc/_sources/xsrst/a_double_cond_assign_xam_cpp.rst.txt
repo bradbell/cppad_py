@@ -11,9 +11,8 @@ a_double_cond_assign_xam_cpp
 
 .. _a_double_cond_assign_xam_cpp:
 
-3.2.1.8.1 C++: a_double Conditional Assignment: Example and Test
-################################################################
-
+C++: a_double Conditional Assignment: Example and Test
+######################################################
 
 
 .. literalinclude:: ../../example/cplusplus/a_double_cond_assign_xam.cpp

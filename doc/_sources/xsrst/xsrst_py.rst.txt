@@ -11,9 +11,8 @@ xsrst_py
 
 .. _xsrst_py:
 
-4 Extract Sphinx RST
-####################
-
+Extract Sphinx RST
+##################
 - :ref:`xsrst_py.syntax`
 - :ref:`xsrst_py.purpose`
 - :ref:`xsrst_py.requirements`
@@ -21,6 +20,7 @@ xsrst_py
     - :ref:`xsrst_py.notation.white_space`
     - :ref:`xsrst_py.notation.beginning_of_a_line`
 - :ref:`xsrst_py.command_line_arguments`
+    - :ref:`xsrst_py.command_line_arguments.target`
     - :ref:`xsrst_py.command_line_arguments.root_file`
         - :ref:`xsrst_py.command_line_arguments.root_file.root_section`
     - :ref:`xsrst_py.command_line_arguments.sphinx_dir`
@@ -57,6 +57,7 @@ xsrst_py
    file_cmd
    comment_ch_cmd
    heading_exam
+   indent_exam
    configure
 
 .. meta::
@@ -68,8 +69,9 @@ xsrst_py
 
 Syntax
 ******
-- ``xsrst.py`` *sphinx_dir* *root_file* *spelling* *keyword*
-- ``xsrst.py`` *sphinx_dir* *root_file* *spelling* *keyword* *line_increment*
+-   ``xsrst.py`` *target* *root_file* *sphinx_dir* *spelling* *keyword*
+-   ``xsrst.py`` *target* *root_file* *sphinx_dir* *spelling* *keyword*
+    *line_increment*
 
 .. meta::
    :keywords: purpose
@@ -163,6 +165,35 @@ only white space, or nothing, comes before *text* in the line.
 
 Command Line Arguments
 **********************
+
+.. meta::
+   :keywords: target
+
+.. index:: target
+
+.. _xsrst_py.command_line_arguments.target:
+
+target
+======
+The command line argument *target* must be ``html`` or ``pdf`` and
+specifies the type of type output you plan to generate using sphinx.
+If *target* is ``html`` you can generate the sphinx output using
+the following command in the *sphinx_dir* directory:
+
+.. code-block:: sh
+
+        make html
+
+If *target* is ``pdf``, you can use the following commands:
+
+.. code-block:: sh
+
+        sed -i preamble.rst -e '/BEGIN_LATEX_MACROS/,/END_LATEX_MACROS/d'
+        sphinx-build -b latex . _build/latex
+        git checkout preamble.rst
+        cd _build/latex
+        sed -i cppad_py.tex -e 's|\\chapter{|\\paragraph{|'
+        make cppad_py.pdf
 
 .. meta::
    :keywords: root_file
@@ -308,7 +339,7 @@ The table at the bottom of that file maps line numbers in
 
 .. _xsrst_py.table_of_contents:
 
-Table Of Contents
+Table of Contents
 *****************
 
 .. meta::
@@ -339,13 +370,13 @@ Parent Section
 ==============
 A single input file may contain multiple
 :ref:`sections<begin_cmd.section>`.
-One (and at most one) of these sections may use begin with a
+The first of these sections may use a
 :ref:`parent begin<begin_cmd.parent_section>` command.
 In this case, the other sections in the file are children of this section
 and this section is a child of the section containing the
 :ref:`child command<child_cmd>` that included this file.
 
-If there is no parent section for a file,
+If there is no begin parent command in a file,
 all the sections in the file are children of the section containing the
 child command that included the file.
 

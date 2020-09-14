@@ -11,9 +11,8 @@ error_message_xam_py
 
 .. _error_message_xam_py:
 
-3.2.5.3.2 Python: Cppad Py Exception Handling: Example and Test
-###############################################################
-
+Python: Cppad Py Exception Handling: Example and Test
+#####################################################
 
 
 .. literalinclude:: ../../example/python/core/error_message_xam.py

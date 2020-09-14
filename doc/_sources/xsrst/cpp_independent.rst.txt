@@ -11,9 +11,8 @@ cpp_independent
 
 .. _cpp_independent:
 
-3.2.3.1 Declare Independent Variables and Start Recording
-#########################################################
-
+Declare Independent Variables and Start Recording
+#################################################
 - :ref:`cpp_independent.syntax`
 - :ref:`cpp_independent.purpose`
 - :ref:`cpp_independent.x`

@@ -11,9 +11,8 @@ a_double_binary
 
 .. _a_double_binary:
 
-3.2.1.4 a_double Binary Operators with an AD Result
-###################################################
-
+a_double Binary Operators with an AD Result
+###########################################
 - :ref:`a_double_binary.syntax`
 - :ref:`a_double_binary.op`
 - :ref:`a_double_binary.ax`

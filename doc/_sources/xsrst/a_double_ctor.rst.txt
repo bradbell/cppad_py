@@ -11,9 +11,8 @@ a_double_ctor
 
 .. _a_double_ctor:
 
-3.2.1.1 The a_double Constructor
-################################
-
+The a_double Constructor
+########################
 - :ref:`a_double_ctor.syntax`
 - :ref:`a_double_ctor.purpose`
 - :ref:`a_double_ctor.d`

@@ -11,9 +11,8 @@ fun_jacobian_xam_cpp
 
 .. _fun_jacobian_xam_cpp:
 
-3.2.3.6.1 C++: Dense Jacobian Using AD: Example and Test
-########################################################
-
+C++: Dense Jacobian Using AD: Example and Test
+##############################################
 
 
 .. literalinclude:: ../../example/cplusplus/fun_jacobian_xam.cpp

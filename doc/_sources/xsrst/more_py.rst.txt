@@ -11,9 +11,8 @@ more_py
 
 .. _more_py:
 
-3.1.4 Steps To Add More Python Functions
-########################################
-
+Steps To Add More Python Functions
+##################################
 - :ref:`more_py.purpose`
 - :ref:`more_py.documentation`
     - :ref:`more_py.documentation.independent`

@@ -11,9 +11,8 @@ py_fun
 
 .. _py_fun:
 
-3.1.1 Cppad Py AD Functions
-###########################
-
+Cppad Py AD Functions
+#####################
 - :ref:`py_fun.children`
 
 .. comment:  Files that have Python specific Implementation and Documentation

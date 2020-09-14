@@ -11,9 +11,8 @@ vector_set_get
 
 .. _vector_set_get:
 
-3.2.2.3 Setting and Getting Vector Elements
-###########################################
-
+Setting and Getting Vector Elements
+###################################
 - :ref:`vector_set_get.syntax`
 - :ref:`vector_set_get.element_type`
 - :ref:`vector_set_get.i`

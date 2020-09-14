@@ -11,9 +11,8 @@ cpp_fun_ctor
 
 .. _cpp_fun_ctor:
 
-3.2.3.3 Stop Current Recording and Store Function Object
-########################################################
-
+Stop Current Recording and Store Function Object
+################################################
 - :ref:`cpp_fun_ctor.syntax`
     - :ref:`cpp_fun_ctor.syntax.d_fun`
     - :ref:`cpp_fun_ctor.syntax.a_fun`

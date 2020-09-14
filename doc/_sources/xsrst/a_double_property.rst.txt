@@ -11,9 +11,8 @@ a_double_property
 
 .. _a_double_property:
 
-3.2.1.3 Properties of an a_double Object
-########################################
-
+Properties of an a_double Object
+################################
 - :ref:`a_double_property.syntax`
 - :ref:`a_double_property.ad`
 - :ref:`a_double_property.value`

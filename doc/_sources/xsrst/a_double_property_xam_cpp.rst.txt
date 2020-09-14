@@ -11,9 +11,8 @@ a_double_property_xam_cpp
 
 .. _a_double_property_xam_cpp:
 
-3.2.1.3.1 C++: a_double Properties: Example and Test
-####################################################
-
+C++: a_double Properties: Example and Test
+##########################################
 
 
 .. literalinclude:: ../../example/cplusplus/a_double_property_xam.cpp

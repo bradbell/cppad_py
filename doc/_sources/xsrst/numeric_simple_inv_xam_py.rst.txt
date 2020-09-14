@@ -11,9 +11,8 @@ numeric_simple_inv_xam_py
 
 .. _numeric_simple_inv_xam_py:
 
-2.1.1 Example Computing Derivatives of Matrix Inversion
-#######################################################
-
+Example Computing Derivatives of Matrix Inversion
+#################################################
 - :ref:`numeric_simple_inv_xam_py.problem`
 - :ref:`numeric_simple_inv_xam_py.source_code`
 

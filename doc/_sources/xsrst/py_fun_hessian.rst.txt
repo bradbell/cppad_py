@@ -11,9 +11,8 @@ py_fun_hessian
 
 .. _py_fun_hessian:
 
-3.1.1.7 Hessian of an AD Function
-#################################
-
+Hessian of an AD Function
+#########################
 - :ref:`py_fun_hessian.syntax`
 - :ref:`py_fun_hessian.f`
 - :ref:`py_fun_hessian.f(x)`

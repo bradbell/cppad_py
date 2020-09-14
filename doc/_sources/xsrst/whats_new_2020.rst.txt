@@ -11,10 +11,10 @@ whats_new_2020
 
 .. _whats_new_2020:
 
-5 CppAD Py Changes During 2020
-##############################
-
+CppAD Py Changes During 2020
+############################
 - :ref:`whats_new_2020.previous_years`
+- :ref:`whats_new_2020.09-14`
 - :ref:`whats_new_2020.09-13`
 - :ref:`whats_new_2020.09-12`
 - :ref:`whats_new_2020.07-31`
@@ -67,6 +67,23 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+.. _whats_new_2020.09-14:
+
+09-14
+*****
+#.  xsrst: the :ref:`target<xsrst_py.command_line_arguments.target>`
+    command line argument was added and the section numbers were removed
+    from the html output. This was done so that adding or removing one
+    section does not cause changes in the github pages for all the other
+    sections. In addition, the table of contents and link to the index
+    now appear in the navigation frame for both the html and pdf output.
+    Furthermore, the table of contents uses the section number for the
+    link so that the title is easier to read.
+
+#.  xsrst: A :ref:`begin_parent<begin_cmd.parent_section>` must be the first
+    begin command in a file. This restriction is new and makes the pdf output
+    for the parent come before its children.
+
 .. _whats_new_2020.09-13:
 
 09-13
@@ -80,6 +97,8 @@ Previous Years
     because the root section stands out has having not number in front of it.
 #.  The latex numbering of sections is incorrect, so change them to the
     corresponding xsrst section numbers in both the html and pdf output.
+#.  xsrst: Correct position of :ref:`sphinx_dir<xsrst_py.syntax>` in the
+    command line syntax.
 
 .. _whats_new_2020.09-12:
 

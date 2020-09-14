@@ -11,9 +11,8 @@ py_sparse_jac
 
 .. _py_sparse_jac:
 
-3.1.2.5 Computing Sparse Jacobians
-##################################
-
+Computing Sparse Jacobians
+##########################
 - :ref:`py_sparse_jac.syntax`
 - :ref:`py_sparse_jac.purpose`
 - :ref:`py_sparse_jac.sparse_jac_for`

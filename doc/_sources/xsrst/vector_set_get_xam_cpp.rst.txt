@@ -11,9 +11,8 @@ vector_set_get_xam_cpp
 
 .. _vector_set_get_xam_cpp:
 
-3.2.2.3.1 C++: Setting and Getting Vector Elements: Example and Test
-####################################################################
-
+C++: Setting and Getting Vector Elements: Example and Test
+##########################################################
 
 
 .. literalinclude:: ../../example/cplusplus/vector_set_get_xam.cpp

@@ -11,9 +11,8 @@ fun_to_json_xam_py
 
 .. _fun_to_json_xam_py:
 
-3.1.1.11.1 Python to_json: Example and Test
-###########################################
-
+Python to_json: Example and Test
+################################
 
 
 .. literalinclude:: ../../example/python/core/fun_json_xam.py

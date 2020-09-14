@@ -11,9 +11,8 @@ a_double
 
 .. _a_double:
 
-3.2.1 Cppad Py AD Scalars
-#########################
-
+Cppad Py AD Scalars
+###################
 - :ref:`a_double.children`
 
 .. meta::

@@ -11,9 +11,8 @@ py_hes_sparsity
 
 .. _py_hes_sparsity:
 
-3.1.2.4 Hessian Sparsity Patterns
-#################################
-
+Hessian Sparsity Patterns
+#########################
 - :ref:`py_hes_sparsity.syntax`
 - :ref:`py_hes_sparsity.purpose`
 - :ref:`py_hes_sparsity.x`

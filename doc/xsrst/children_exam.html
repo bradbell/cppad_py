@@ -4,8 +4,9 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta content="children_exam, indent, children, example" name="keywords" />
-<meta content="result" name="keywords" />
+  <meta content="children_exam, children, example" name="keywords" />
+<meta content="other, section" name="keywords" />
+<meta content="this, file" name="keywords" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -40,7 +41,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="children_res" href="children_res.html" />
+    <link rel="next" title="children_other" href="children_other.html" />
     <link rel="prev" title="no_parent_res" href="no_parent_res.html" /> 
 </head>
 
@@ -87,7 +88,8 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="xsrst_automatic.html">Automatic Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xsrst_automatic.html">Table of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xsrst_automatic.html#link-to-index">Link to Index</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
@@ -98,7 +100,7 @@
 <li class="toctree-l4 current"><a class="reference internal" href="no_parent_exam.html">no_parent_exam</a><ul class="current">
 <li class="toctree-l5 current"><a class="reference internal" href="no_parent_res.html">no_parent_res</a><ul class="current">
 <li class="toctree-l6 current"><a class="current reference internal" href="#">children_exam</a></li>
-<li class="toctree-l6"><a class="reference internal" href="children_res.html">children_res</a></li>
+<li class="toctree-l6"><a class="reference internal" href="children_other.html">children_other</a></li>
 </ul>
 </li>
 </ul>
@@ -111,6 +113,7 @@
 <li class="toctree-l3"><a class="reference internal" href="file_cmd.html">file_cmd</a></li>
 <li class="toctree-l3"><a class="reference internal" href="comment_ch_cmd.html">comment_ch_cmd</a></li>
 <li class="toctree-l3"><a class="reference internal" href="heading_exam.html">heading_exam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indent_exam.html">indent_exam</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configure.html">configure</a></li>
 </ul>
 </li>
@@ -194,41 +197,55 @@
             
   <div class="section" id="children-exam">
 <h1>children_exam<a class="headerlink" href="#children-exam" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="indent-and-children-example">
-<span id="id1"></span><h2>4.2.1.1.1 Indent and Children Example<a class="headerlink" href="#indent-and-children-example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="children-example">
+<span id="id1"></span><h2>Children Example<a class="headerlink" href="#children-example" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="#children-exam-result"><span class="std std-ref">Result</span></a></p></li>
+<li><p><a class="reference internal" href="#children-exam-other-section"><span class="std std-ref">Other Section</span></a></p></li>
+<li><p><a class="reference internal" href="#children-exam-this-file"><span class="std std-ref">This File</span></a></p></li>
 </ul>
+<p>This file does not contain a begin parent command,
+so all its sections are children of the section that includes it.</p>
+<div class="section" id="other-section">
+<span id="children-exam-other-section"></span><span id="index-1"></span><h3>Other Section<a class="headerlink" href="#other-section" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="children_other.html#id1"><span class="std std-ref">link</span></a> goes to the other section in this file.</p>
+</div>
+<div class="section" id="this-file">
+<span id="children-exam-this-file"></span><span id="index-2"></span><h3>This File<a class="headerlink" href="#this-file" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">{xsrst_begin children_res}</span>
+<span class="sd">{xsrst_begin children_exam}</span>
 
-<span class="sd">Indent and Children Result</span>
-<span class="sd">##########################</span>
+<span class="sd">Children Example</span>
+<span class="sd">################</span>
+<span class="sd">This file does not contain a begin parent command,</span>
+<span class="sd">so all its sections are children of the section that includes it.</span>
 
-<span class="sd">Children</span>
-<span class="sd">********</span>
-<span class="sd">This example uses a children command and</span>
-<span class="sd">the corresponding link is included.</span>
-<span class="sd">If it had used a child link command, the same link would have been</span>
-<span class="sd">created automatically.</span>
+<span class="sd">Other Section</span>
+<span class="sd">*************</span>
+<span class="sd">The :ref:`link&lt;children_other&gt;` goes to the other section in this file.</span>
 
-<span class="sd">{xsrst_children</span>
-<span class="sd">    sphinx/test_in/indent.py</span>
+<span class="sd">This File</span>
+<span class="sd">*********</span>
+<span class="sd">{xsrst_file</span>
+<span class="sd">    # BEGIN_FILE</span>
+<span class="sd">    # END_FILE</span>
 <span class="sd">}</span>
 
-<span class="sd">- :ref:`indent_exam`</span>
+<span class="sd">{xsrst_end children_exam}</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{xsrst_begin children_other}</span>
 
-<span class="sd">Example</span>
-<span class="sd">*******</span>
-<span class="sd">:ref:`children_exam`</span>
+<span class="sd">Other Child</span>
+<span class="sd">###########</span>
+<span class="sd">This is the other child section in</span>
+<span class="sd">:ref:`this file&lt;children_exam.this_file&gt;`.</span>
 
-<span class="sd">{xsrst_end children_res}</span>
+
+<span class="sd">{xsrst_end children_other}</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<div class="section" id="result">
-<span id="children-exam-result"></span><span id="index-1"></span><h3>Result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="children_res.html#id1"><span class="std std-ref">4.2.1.1.2 Indent and Children Result</span></a></p>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">sphinx/test_in/children.py</span></code></p>
 </div>
@@ -243,7 +260,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="children_res.html" class="btn btn-neutral float-right" title="children_res" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="children_other.html" class="btn btn-neutral float-right" title="children_other" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="no_parent_res.html" class="btn btn-neutral float-left" title="no_parent_res" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

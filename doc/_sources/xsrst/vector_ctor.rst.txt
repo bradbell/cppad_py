@@ -11,9 +11,8 @@ vector_ctor
 
 .. _vector_ctor:
 
-3.2.2.1 Cppad Py Vector Constructors
-####################################
-
+Cppad Py Vector Constructors
+############################
 - :ref:`vector_ctor.syntax`
 - :ref:`vector_ctor.purpose`
 - :ref:`vector_ctor.n`

@@ -11,9 +11,8 @@ a_double_assign
 
 .. _a_double_assign:
 
-3.2.1.6 a_double Assignment Operators
-#####################################
-
+a_double Assignment Operators
+#############################
 - :ref:`a_double_assign.syntax`
 - :ref:`a_double_assign.op`
 - :ref:`a_double_assign.ax`

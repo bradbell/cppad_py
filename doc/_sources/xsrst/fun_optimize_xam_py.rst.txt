@@ -11,9 +11,8 @@ fun_optimize_xam_py
 
 .. _fun_optimize_xam_py:
 
-3.1.1.10.1 Python: Optimize an d_fun: Example and Test
-######################################################
-
+Python: Optimize an d_fun: Example and Test
+###########################################
 
 
 .. literalinclude:: ../../example/python/core/fun_optimize_xam.py

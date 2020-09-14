@@ -11,9 +11,8 @@ py_sparse_rcv
 
 .. _py_sparse_rcv:
 
-3.1.2.2 Sparse Matrices
-#######################
-
+Sparse Matrices
+###############
 - :ref:`py_sparse_rcv.syntax`
 - :ref:`py_sparse_rcv.pattern`
 - :ref:`py_sparse_rcv.matrix`

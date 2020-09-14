@@ -11,9 +11,8 @@ cpp_sparse_hes
 
 .. _cpp_sparse_hes:
 
-3.2.4.6 Computing Sparse Hessians
-#################################
-
+Computing Sparse Hessians
+#########################
 - :ref:`cpp_sparse_hes.syntax`
 - :ref:`cpp_sparse_hes.purpose`
 - :ref:`cpp_sparse_hes.f`

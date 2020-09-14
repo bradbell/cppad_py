@@ -11,9 +11,8 @@ py_independent
 
 .. _py_independent:
 
-3.1.1.1 Declare Independent Variables and Start Recording
-#########################################################
-
+Declare Independent Variables and Start Recording
+#################################################
 - :ref:`py_independent.syntax`
 - :ref:`py_independent.x`
 - :ref:`py_independent.dynamic`
