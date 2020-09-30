@@ -23,7 +23,7 @@ if [ -e "$test_dir" ]
 then
     echo_eval rm -r $test_dir
 fi
-echo_eval mkdir $test_dir
+echo_eval mkdir -p $test_dir
 list='
     conf.py
     index.rst

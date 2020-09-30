@@ -21,21 +21,50 @@ echo_eval_log() {
             echo 'check_all.sh: see check_all.log for errors'
         fi
         cat $tmpfile >> $logfile
-        rm $tmpfile
-        exit 1
+        exit_code 1
     fi
     cat $tmpfile >> $logfile
+}
+# -----------------------------------------------------------------------------
+# cleanup and exit with specified code
+exit_code() {
+    if [ "$build_type" == 'debug' ]
+    then
+        sed -i bin/get_cppad.sh -e "s|^build_type *=.*|build_type='release'|"
+    fi
+    if [ -e $tmpfile ]
+    then
+        rm $tmpfile
+    fi
+    exit $1
 }
 # -----------------------------------------------------------------------------
 if [ "$0" != "bin/check_all.sh" ]
 then
     echo "bin/check_all.sh: must be executed from its parent directory"
-    exit 1
+    exit_code 1
+fi
+if [ "$1" != 'debug' ] && [ "$1" != 'release' ]
+then
+    echo 'usage: bin/check_all.sh (debug|release)'
+    exit_code 1
 fi
 # -----------------------------------------------------------------------------
 eval $(grep '^build_type *=' bin/get_cppad.sh)
 eval $(grep '^cppad_prefix *=' bin/get_cppad.sh)
 eval $(grep '^extra_cxx_flags *=' bin/get_cppad.sh)
+# -----------------------------------------------------------------------------
+if [ "$build_type" != 'release' ]
+then
+    echo 'build_type in bin/get_cppad.sh is not release'
+    exit_code 1
+fi
+if [ "$1" == 'debug' ]
+then
+    # This change will be undone by the exit_code function
+    sed -i bin/get_cppad.sh -e "s|^build_type *=.*|build_type='debug'|"
+    build_type='debug'
+fi
 # -----------------------------------------------------------------------------
 if  ls $cppad_prefix/lib/libcppad_lib.* >& /dev/null
 then
@@ -45,7 +74,7 @@ then
     LD_LIBRARY_PATH="$cppad_prefix/lib64:$LD_LIBRARY_PATH"
 else
     echo 'check_all.sh: cannot find libcppad_lib.* re-run bin/get_cppad.sh ?'
-    exit 1
+    exit_code 1
 fi
 # -----------------------------------------------------------------------------
 # clean out old distribution
@@ -79,7 +108,7 @@ fi
 # -----------------------------------------------------------------------------
 echo_eval_log check_copyright.sh
 bin/check_tab.sh
-echo_eval bin/check_xsrst.sh
+echo_eval_log bin/check_xsrst.sh
 echo_eval_log bin/run_sphinx.sh html
 # -----------------------------------------------------------------------------
 if [ "$build_type" == 'release' ]
@@ -90,7 +119,7 @@ then
     setup_args='build_ext --debug'
 else
     echo 'bin/check_all.sh: build_type in bin/get_cppad.sh not debug or release'
-    exit 1
+    exit_code 1
 fi
 echo_eval_log python3 setup.py $setup_args
 echo_eval_log cd build
@@ -98,15 +127,14 @@ echo_eval_log make check
 echo_eval_log cd ../example/python
 echo_eval_log python3 check_all.py
 echo_eval_log cd ../..
-#
-# 2DO: figure out where this waring is coming from and what it means
-sed -i $logfile -e '/fun\.hpp:52: Warning 362: operator= ignored/d'
+echo_eval_log bin/check_install.sh
 #
 if [ "$build_type" == 'debug' ]
 then
     if grep 'warning.*_FORTIFY_SOURCE' $logfile > /dev/null
     then
-        grep 'warning.*_FORTIFY_SOURCE' $logfile | head -1
+        count=$(grep 'warning.*_FORTIFY_SOURCE' $logfile | wc -l)
+        echo "$count warinings about _FORTIFY_SOURCE deleted from check_all.log"
         sed -i $logfile -e '/warning.*_FORTIFY_SOURCE/d'
     fi
 fi
@@ -114,12 +142,9 @@ fi
 if grep -i 'warning' $logfile
 then
     echo 'check_all.sh: Error: see warnings in check_all.log'
-    rm $tmpfile
-    exit 1
+    exit_code 1
 fi
-# -----------------------------------------------------------------------------
-bin/check_install.sh
 # -----------------------------------------------------------------------------
 rm $tmpfile
 echo 'bin/check_all.sh: OK'
-exit 0
+exit_code 0

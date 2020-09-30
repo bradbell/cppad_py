@@ -61,7 +61,7 @@ then
 else
     build_flag=''
 fi
-echo_eval $python setup.py $build_flag install \
+echo_eval $python setup.py build_ext $build_flag install \
     --prefix=$HOME/prefix/cppad_py
 echo_eval rm -r cppad_py
 # ---------------------------------------------------------------------------
