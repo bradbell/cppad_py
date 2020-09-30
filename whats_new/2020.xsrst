@@ -45,6 +45,12 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+09-30
+*****
+:ref:`error_message` was changed to use exceptions,
+instead of the ``error_message`` function,
+to return error messages.
+
 09-14
 *****
 #.  xsrst: the :ref:`target<xsrst_py.command_line_arguments.target>`

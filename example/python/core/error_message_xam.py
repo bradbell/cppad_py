@@ -12,18 +12,27 @@ def error_message_xam() :
     #
     import numpy
     import cppad_py
+    import sys
     #
-    # initialize return variable
-    ok = True
-    # ---------------------------------------------------------------------
-    ok = False
+    ok_list = list()
     try :
-        cppad_py.error_message("test message")
-    except : # catch
-        stored_message = cppad_py.error_message("")
-        ok = (stored_message == "test message")
+        left     = cppad_py.a_double(1.0)
+        right    = cppad_py.a_double(2.0)
+        if_true  = cppad_py.a_double(3.0)
+        if_false = cppad_py.a_double(4.0)
+        target   = cppad_py.a_double()
+        target.cond_assign(
+            '<>', left, right, if_true, if_false
+        )
+    except RuntimeError as e: # catch
+        message = str(e)
+        index   = message.find("'<>' is not a valid comparison operator")
+        ok      = 0 <= index
+        ok_list.append( ok )
     #
-    return( ok  )
+    if len( ok_list ) == 0 :
+        ok_list.append(False)
+    return( ok_list[0]  )
 #
 # END SOURCE
 # -----------------------------------------------------------------------------

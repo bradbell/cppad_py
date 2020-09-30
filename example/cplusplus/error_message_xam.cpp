@@ -20,9 +20,9 @@ bool error_message_xam(void) {
     //------------------------------------------------------------------------
     ok = false;
     try {
-        cppad_py::error_message("test message");
-    } catch (...) {
-        string stored_message = cppad_py::error_message("");
+        throw std::runtime_error("test message");
+    } catch (std::runtime_error& e) {
+        string stored_message = e.what();
         ok = stored_message == "test message";
     }
     return( ok  );
