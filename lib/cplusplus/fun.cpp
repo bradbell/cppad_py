@@ -465,14 +465,18 @@ See :ref:`fun_dynamic_xam_cpp<fun_dynamic_xam_cpp>`.
 */
 // BEGIN_NEW_DYNAMIC_SOURCE
 void d_fun::new_dynamic(const std::vector<double>& dynamic)
-{   if( dynamic.size() != ptr_->size_dyn_ind() )
-        error_message("cppad_py::d_fun::new_dynamic dynamic.size() error");
+{   CPPAD_PY_ASSERT_KNOWN(
+        dynamic.size() == ptr_->size_dyn_ind() ,
+        "cppad_py::d_fun::new_dynamic dynamic.size() error"
+    );
     ptr_->new_dynamic(dynamic);
     return;
 }
 void a_fun::new_dynamic(const std::vector<a_double>& adynamic)
-{   if( adynamic.size() != a_ptr_->size_dyn_ind() )
-        error_message("cppad_py::a_fun::jacobian adynamic.size() error");
+{   CPPAD_PY_ASSERT_KNOWN(
+        adynamic.size() == a_ptr_->size_dyn_ind() ,
+        "cppad_py::a_fun::new_dynamic adynamic.size() error"
+    );
     std::vector< CppAD::AD<double> > au = vec2cppad_double(adynamic);
     a_ptr_->new_dynamic(au);
     return;
@@ -551,13 +555,17 @@ Example
 {xsrst_end cpp_fun_jacobian}
 */
 std::vector<double> d_fun::jacobian(const std::vector<double>& x)
-{   if( x.size() != ptr_->Domain() )
-        error_message("cppad_py::d_fun::jacobian x.size() error");
+{   CPPAD_PY_ASSERT_KNOWN(
+        x.size() == ptr_->Domain() ,
+        "cppad_py::d_fun::jacobian x.size() error"
+    );
     return ptr_->Jacobian(x);
 }
 std::vector<a_double> a_fun::jacobian(const std::vector<a_double>& ax)
-{   if( ax.size() != a_ptr_->Domain() )
-        error_message("cppad_py::a_fun::jacobian ax.size() error");
+{   CPPAD_PY_ASSERT_KNOWN(
+        ax.size() == a_ptr_->Domain() ,
+        "cppad_py::a_fun::jacobian ax.size() error"
+    );
     std::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
     std::vector< CppAD::AD<double> > av = a_ptr_->Jacobian(au);
     return vec2a_double(av);
@@ -656,19 +664,27 @@ Example
 std::vector<double> d_fun::hessian(
     const std::vector<double>& x  ,
     const std::vector<double>& w  )
-{   if( x.size() != ptr_->Domain() )
-        error_message("cppad_py::d_fun::hessian:: x.size() error");
-    if( w.size() != ptr_->Range() )
-        error_message("cppad_py::d_fun::hessian:: w.size() error");
+{   CPPAD_PY_ASSERT_KNOWN(
+        x.size() == ptr_->Domain() ,
+        "cppad_py::d_fun::hessian:: x.size() error"
+    );
+    CPPAD_PY_ASSERT_KNOWN(
+        w.size() == ptr_->Range() ,
+        "cppad_py::d_fun::hessian:: w.size() error"
+    );
     return ptr_->Hessian(x, w);
 }
 std::vector<a_double> a_fun::hessian(
     const std::vector<a_double>& ax  ,
     const std::vector<a_double>& aw  )
-{   if( ax.size() != a_ptr_->Domain() )
-        error_message("cppad_py::d_fun::hessian:: x.size() error");
-    if( aw.size() != a_ptr_->Range() )
-        error_message("cppad_py::d_fun::hessian:: w.size() error");
+{   CPPAD_PY_ASSERT_KNOWN(
+        ax.size() == a_ptr_->Domain() ,
+        "cppad_py::d_fun::hessian:: x.size() error"
+    );
+    CPPAD_PY_ASSERT_KNOWN(
+        aw.size() == a_ptr_->Range() ,
+        "cppad_py::d_fun::hessian:: w.size() error"
+    );
     //
     std::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
     std::vector< CppAD::AD<double> > av = vec2cppad_double(aw);
@@ -785,13 +801,17 @@ Example
 {xsrst_end cpp_fun_forward}
 */
 std::vector<double> d_fun::forward(int p, const std::vector<double>& xp)
-{   if( xp.size() != ptr_->Domain() )
-        error_message("cppad_py::d_fun::forward xp.size() error");
+{   CPPAD_PY_ASSERT_KNOWN(
+        xp.size() == ptr_->Domain() ,
+        "cppad_py::d_fun::forward xp.size() error"
+    );
     return ptr_->Forward(p, xp);
 }
 std::vector<a_double> a_fun::forward(int p, const std::vector<a_double>& axp)
-{   if( axp.size() != a_ptr_->Domain() )
-        error_message("cppad_py::a_fun::forward axp.size() error");
+{   CPPAD_PY_ASSERT_KNOWN(
+        axp.size() == a_ptr_->Domain() ,
+        "cppad_py::a_fun::forward axp.size() error"
+    );
     std::vector< CppAD::AD<double> > aup = vec2cppad_double(axp);
     std::vector< CppAD::AD<double> > avp =  a_ptr_->Forward(p, aup);
     return vec2a_double(avp);
@@ -912,13 +932,17 @@ Example
 {xsrst_end cpp_fun_reverse}
 */
 std::vector<double> d_fun::reverse(int q, const std::vector<double>& yq)
-{   if( yq.size() != q * ptr_->Range() )
-        error_message("cppad_py::d_fun::reverse yq.size() error");
+{   CPPAD_PY_ASSERT_KNOWN(
+        yq.size() == q * ptr_->Range() ,
+        "cppad_py::d_fun::reverse yq.size() error"
+    );
     return ptr_->Reverse(q, yq);
 }
 std::vector<a_double> a_fun::reverse(int q, const std::vector<a_double>& ayq)
-{   if( ayq.size() != q * a_ptr_->Range() )
-        error_message("cppad_py::a_fun::reverse yq.size() error");
+{   CPPAD_PY_ASSERT_KNOWN(
+        ayq.size() == q * a_ptr_->Range() ,
+        "cppad_py::a_fun::reverse yq.size() error"
+    );
     std::vector< CppAD::AD<double> > avq = vec2cppad_double(ayq);
     std::vector< CppAD::AD<double> > auq =  a_ptr_->Reverse(q, avq);
     return vec2a_double(auq);
