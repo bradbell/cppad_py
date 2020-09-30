@@ -813,7 +813,7 @@ void a_double::cond_assign(
     {   std::string message = "a_double::cond_assing:: cop = '";
         message += cop;
         message += "' is not a valid comparison operator";
-        error_message(message.c_str());
+        CPPAD_PY_ASSERT_KNOWN(false, message.c_str());
     }
 }
 // --------------------------------------------------------------------------
