@@ -64,7 +64,7 @@ extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
 # The debug version has more error messaging while the release
 # version runs faster.
 # {xsrst_code sh}
-build_type='release'
+build_type='debug'
 # {xsrst_code}
 #
 # cppad_prefix
