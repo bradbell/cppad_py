@@ -5,10 +5,10 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# error_message
+# exception
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
-def error_message_xam() :
+def exception_xam() :
     #
     import numpy
     import cppad_py
@@ -38,7 +38,7 @@ def error_message_xam() :
 # -----------------------------------------------------------------------------
 # {xsrst_comment_ch #}
 #
-# {xsrst_begin error_message_xam_py}
+# {xsrst_begin exception_xam_py}
 #
 # .. include:: ../preamble.rst
 #
@@ -51,5 +51,5 @@ def error_message_xam() :
 #   # BEGIN SOURCE
 #   # END SOURCE
 # }
-# {xsrst_end error_message_xam_py}
+# {xsrst_end exception_xam_py}
 #

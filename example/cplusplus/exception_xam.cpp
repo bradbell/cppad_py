@@ -5,14 +5,14 @@
 //              GNU General Public License version 3.0 or later see
 //                    https://www.gnu.org/licenses/gpl-3.0.txt
 // -----------------------------------------------------------------------------
-// error_message
+// exception
 // -----------------------------------------------------------------------------
 // BEGIN SOURCE
 # include <cstdio>
 # include <string>
 # include <cppad/py/cppad_py.hpp>
 
-bool error_message_xam(void) {
+bool exception_xam(void) {
     using std::string;
     //
     // initialize return variable
@@ -30,7 +30,7 @@ bool error_message_xam(void) {
 // END SOURCE
 // -----------------------------------------------------------------------------
 /*
-{xsrst_begin error_message_xam_cpp}
+{xsrst_begin exception_xam_cpp}
 
 .. include:: ../preamble.rst
 
@@ -43,6 +43,6 @@ C++: Cppad Py Exception Handling: Example and Test
     // BEGIN SOURCE
     // END SOURCE
 }
-{xsrst_end error_message_xam_cpp}
+{xsrst_end exception_xam_cpp}
 */
 //

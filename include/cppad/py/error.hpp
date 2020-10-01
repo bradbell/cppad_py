@@ -12,7 +12,7 @@
 # include <cppad/py/public_lib.hpp>
 /*
 -----------------------------------------------------------------------------
-{xsrst_begin error_message}
+{xsrst_begin exception}
 
 .. include:: ../preamble.rst
 
@@ -34,15 +34,15 @@ a message describing the error.
 
 
 {xsrst_children
-    example/cplusplus/error_message_xam.cpp
-    example/python/core/error_message_xam.py
+    example/cplusplus/exception_xam.cpp
+    example/python/core/exception_xam.py
 }
 Example
 *******
-:ref:`c++<error_message_xam_cpp>`,
-:ref:`python<error_message_xam_py>`.
+:ref:`c++<exception_xam_cpp>`,
+:ref:`python<exception_xam_py>`.
 
-{xsrst_end error_message}
+{xsrst_end exception}
 */
 
 # define CPPAD_PY_ASSERT_UNKNOWN(exp) \

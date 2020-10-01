@@ -35,7 +35,7 @@ extern bool sparse_jac_pattern_xam(void);
 extern bool sparse_hes_pattern_xam(void);
 extern bool sparse_jac_xam(void);
 extern bool sparse_hes_xam(void);
-extern bool error_message_xam(void);
+extern bool exception_xam(void);
 
 namespace {
     // function that runs one test
@@ -84,7 +84,7 @@ int main(void)
     ok &= Run( sparse_jac_xam,            "sparse_jac_xam" );
     ok &= Run( sparse_hes_xam,            "sparse_jac_xam" );
     ok &= Run( sparse_hes_pattern_xam,    "sparse_hes_pattern_xam" );
-    ok &= Run( error_message_xam,         "error_message_xam" );
+    ok &= Run( exception_xam,         "error_message_xam" );
     //
     assert( ok || (Run_error_count > 0) );
 

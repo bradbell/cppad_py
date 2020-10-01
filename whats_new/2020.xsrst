@@ -47,11 +47,13 @@ Previous Years
 
 09-30
 *****
-#.  :ref:`error_message` was changed to use exceptions,
-    instead of the ``error_message`` function, to return error messages.
+#.  The ``error_message`` routine was replaced by :ref:`exceptions<exception>`
+    (``error_message`` was not thread safe).
+    This is a change to the API, you will have to use exceptions objects
+    instead of the ``error_message`` routine to retrieve the error messages.
 
-#.  Change release version so it also throws cppad_py error messages
-    (cppad error messages still require debug version).
+#.  Change the release version so it also throws exceptions for cppad_py error
+    messages (cppad error messages still require using the debug version).
 
 09-14
 *****

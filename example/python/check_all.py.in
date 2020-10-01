@@ -48,7 +48,7 @@ core_list = [
     'sparse_jac_xam',
     'sparse_hes_xam',
     'sparse_hes_pattern_xam',
-    'error_message_xam',
+    'exception_xam',
 ]
 numeric_list = [
     'simple_inv_xam',
