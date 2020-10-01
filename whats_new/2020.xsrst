@@ -45,6 +45,12 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+10-01
+*****
+Change the install process so it both a debug and release version of
+:ref:`cppad_prefix<get_cppad_sh.settings.build_type.cppad_prefix>`
+can be installed at the same time
+
 09-30
 *****
 #.  The ``error_message`` routine was replaced by :ref:`exceptions<exception>`

@@ -32,8 +32,6 @@
 # ********************
 # This program must be run from the
 # :ref:`top_source_directory<setup_py.download.top_source_directory>`.
-# Each time it is run it removes the old ``build`` directory and
-# starts over.
 #
 # Settings
 # ********
@@ -47,6 +45,9 @@
 # {xsrst_code sh}
 cppad_prefix="$HOME/prefix/cppad"
 # {xsrst_code}
+# If this prefix does no start with ``/``, it is relative to the
+# :ref:`top_source_directory<setup_py.download.top_source_directory>`.
+# Note that ``$HOME`` starts with ``/``.
 #
 # extra_cxx_flags
 # ===============
@@ -65,6 +66,21 @@ extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
 # {xsrst_code sh}
 build_type='release'
 # {xsrst_code}
+#
+# cppad_prefix
+# ------------
+# The actual prefix used for the install is
+# *cppad_prefix* ``.`` *build_type*
+# and a soft link is created from *cppad_prefix* to this directory.
+#
+# build
+# -----
+# This subdirectory ``build.`` *build_type*
+# is used to compile and test the software and a soft link is created from
+# ``build`` to this subdirectory.
+#
+# Warning
+# *******
 # If you used the ``debug`` build type you may get the following warning
 # from the compiler (because the optimization is totally turned off):
 #
@@ -108,18 +124,16 @@ remote_repo='https://github.com/coin-or/CppAD.git'
 cppad_version='20200210'
 hash_code='69d069212c039e1fecc5aba0a7ed2b0b331fe047'
 # -----------------------------------------------------------------------------
-# convert cppad_prefix relative to absolute paths
 if ! echo $cppad_prefix | grep '^/' > /dev/null
 then
+    # convert cppad_prefix to an absolute path
     cppad_prefix="$(pwd)/$cppad_prefix"
 fi
 # -----------------------------------------------------------------------------
-# cppad_py build directory
-if [ -e 'build' ]
-then
-    echo_eval rm -rf build
-fi
-echo_eval mkdir build
+# create links to proper version of cppad_prefix and build
+echo_eval bin/build_type.sh
+#
+# change into the build directory
 echo_eval cd build
 #
 # cppad repository directory

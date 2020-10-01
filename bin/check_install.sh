@@ -21,18 +21,25 @@ fi
 python='python3'
 # build_type
 eval $(grep '^build_type *=' bin/get_cppad.sh)
+# cppad_prefix
+eval $(grep '^cppad_prefix *=' bin/get_cppad.sh)
+if ! echo $cppad_prefix | grep '^/' > /dev/null
+then
+    # convert cppad_prefix to an absolute path
+    cppad_prefix="$(pwd)/$cppad_prefix"
+fi
+echo "build_type=$build_type"
+echo "cppad_prefix=$cppad_prefix"
 # ---------------------------------------------------------------------------
 # remove old cppad_py
-name="$HOME/prefix/cppad_py"
-if [ -e $name ]
-then
-    echo_eval rm -r $name
-fi
-name="cppad_py"
-if [ -e $name ]
-then
-    echo_eval rm -r $name
-fi
+list=$(find -L $cppad_prefix -name 'cppad_py')
+for dir in cppad_py $list
+do
+    if [ -e "$dir" ]
+    then
+        echo_eval rm -r $dir
+    fi
+done
 #
 if $python check_install.py >& /dev/null
 then
@@ -43,7 +50,7 @@ then
 fi
 if which xsrst.py >& /dev/null
 then
-    echo 'check_install.py: cannot remove old xsrst.py from execution path.'
+    echo 'check_install.py: cannot remove old xsrst.py in execution path.'
     echo 'Use the following command to see where it is:'
     echo '  which xsrst.py'
     exit 1
@@ -51,7 +58,7 @@ fi
 # ---------------------------------------------------------------------------
 cppad_path=`echo 'import numpy; print(numpy.__file__)' | python | sed \
     -e 's|/numpy/__init__.py||' \
-    -e "s|^/.*/\(lib[^.]*\)/python|$HOME/prefix/cppad_py/\1/python|"`
+    -e "s|^/.*/\(lib[^.]*\)/python|$cppad_prefix/\1/python|"`
 PYTHONPATH="$cppad_path:$PYTHONPATH"
 # ---------------------------------------------------------------------------
 # install new version
@@ -62,7 +69,7 @@ else
     build_flag=''
 fi
 echo_eval $python setup.py build_ext $build_flag install \
-    --prefix=$HOME/prefix/cppad_py
+    --prefix=$cppad_prefix
 echo_eval rm -r cppad_py
 # ---------------------------------------------------------------------------
 cat << EOF > check_install.py
@@ -72,7 +79,7 @@ EOF
 echo_eval $python check_install.py
 rm check_install.py
 # ---------------------------------------------------------------------------
-cppad_path="$HOME/prefix/cppad_py/bin"
+cppad_path="$cppad_prefix/bin"
 PATH="$cppad_path:$PATH"
 if ! which xsrst.py >& /dev/null
 then

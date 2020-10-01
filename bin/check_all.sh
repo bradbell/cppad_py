@@ -53,7 +53,14 @@ fi
 eval $(grep '^build_type *=' bin/get_cppad.sh)
 eval $(grep '^cppad_prefix *=' bin/get_cppad.sh)
 eval $(grep '^extra_cxx_flags *=' bin/get_cppad.sh)
+#
+if ! echo $cppad_prefix | grep '^/' > /dev/null
+then
+    # convert cppad_prefix to an absolute path
+    cppad_prefix="$(pwd)/$cppad_prefix"
+fi
 # -----------------------------------------------------------------------------
+# set build_type
 if [ "$build_type" != 'release' ]
 then
     echo 'build_type in bin/get_cppad.sh is not release'
@@ -66,6 +73,7 @@ then
     sed -i bin/get_cppad.sh -e "s|^build_type *=.*|build_type='debug'|"
     build_type='debug'
 fi
+echo_eval bin/build_type.sh
 # -----------------------------------------------------------------------------
 if  ls $cppad_prefix/lib/libcppad_lib.* >& /dev/null
 then
