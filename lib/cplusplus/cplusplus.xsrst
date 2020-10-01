@@ -92,7 +92,7 @@ Children
 ********
 {xsrst_child_list
     lib/cplusplus/cppad_vec.cpp
-    include/cppad/py/error.hpp
+    include/cppad/py/assert.hpp
 }
 
 {xsrst_end cpp_utility}

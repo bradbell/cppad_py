@@ -7,7 +7,7 @@
 ----------------------------------------------------------------------------- */
 # include <cppad/cppad.hpp>
 # include <cppad/py/fun.hpp>
-# include <cppad/py/error.hpp>
+# include <cppad/py/assert.hpp>
 # include <cppad/py/cppad_vec.hpp>
 
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
