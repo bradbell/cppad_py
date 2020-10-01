@@ -57,6 +57,7 @@ eval $(grep '^extra_cxx_flags *=' bin/get_cppad.sh)
 if [ "$build_type" != 'release' ]
 then
     echo 'build_type in bin/get_cppad.sh is not release'
+    echo 'This has been fixed, you should be able to just re-run this script.'
     exit_code 1
 fi
 if [ "$1" == 'debug' ]

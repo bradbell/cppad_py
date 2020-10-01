@@ -294,7 +294,8 @@ a_fun::a_fun(const d_fun& f)
 }
 // destructor
 a_fun::~a_fun(void)
-{   CPPAD_PY_ASSERT_UNKNOWN( a_ptr_ != CPPAD_NULL );
+{   // desructor should not throw exception
+    assert( a_ptr_ != CPPAD_NULL );
     delete a_ptr_;
 }
 /*

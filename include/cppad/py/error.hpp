@@ -45,23 +45,18 @@ Example
 {xsrst_end error_message}
 */
 
-namespace cppad_py {
-    CPPAD_PY_LIB_PUBLIC
-    const char* error_message(const char* message);
-}
-
 # ifdef NDEBUG
 # define CPPAD_PY_ASSERT_UNKNOWN(exp)  // do nothing
 # else
 # define CPPAD_PY_ASSERT_UNKNOWN(exp) \
-{   if( ! ( exp ) ) error_message( #exp " is false in " __FILE__ ); }
+{   if( ! ( exp ) ) throw std::runtime_error( #exp " is false in " __FILE__ ); }
 # endif
 
 # ifdef NDEBUG
 # define CPPAD_PY_ASSERT_KNOWN(exp, msg)  // do nothing
 # else
 # define CPPAD_PY_ASSERT_KNOWN(exp, msg) \
-{   if( ! ( exp ) ) error_message(msg); }
+{   if( ! ( exp ) ) throw std::runtime_error(msg); }
 # endif
 
 # endif

@@ -212,7 +212,8 @@ sparse_rc::sparse_rc(void)
 }
 // destructor
 sparse_rc::~sparse_rc(void)
-{   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{   // destructor should not throw exception
+    assert( ptr_ != CPPAD_NULL );
     delete ptr_;
 }
 // resize
@@ -465,7 +466,8 @@ sparse_rcv::sparse_rcv(const sparse_rc& pattern)
 }
 // destructor
 sparse_rcv::~sparse_rcv(void)
-{   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{   // destructor should not throw exception
+    assert( ptr_ != CPPAD_NULL );
     delete ptr_;
 }
 // number of rows in matrix
@@ -978,7 +980,8 @@ sparse_jac_work::sparse_jac_work(void)
 }
 // sparse_jac_work destructor
 sparse_jac_work::~sparse_jac_work(void)
-{   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{   // destructor should not throw exception
+    assert( ptr_ != CPPAD_NULL );
     delete ptr_;
 }
 // sparse_jac_work clear
@@ -1165,7 +1168,8 @@ sparse_hes_work::sparse_hes_work(void)
 }
 // sparse_hes_work destructor
 sparse_hes_work::~sparse_hes_work(void)
-{   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{   // destructor should not throw exception
+    assert( ptr_ != CPPAD_NULL );
     delete ptr_;
 }
 // sparse_hes_work clear
