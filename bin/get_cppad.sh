@@ -132,11 +132,15 @@ fi
 # -----------------------------------------------------------------------------
 # create links to proper version of cppad_prefix and build
 echo_eval bin/build_type.sh
-#
-# change into the build directory
-echo_eval cd build
-#
-# cppad repository directory
+# -----------------------------------------------------------------------------
+# change into the build/external
+if [ ! -e build/external ]
+then
+    mkdir build/external
+fi
+echo_eval cd build/external
+# -----------------------------------------------------------------------------
+# clone cppad repository directory
 echo_eval git clone $remote_repo cppad-$cppad_version.git
 echo_eval cd cppad-$cppad_version.git
 echo_eval git checkout --quiet $hash_code
@@ -148,7 +152,8 @@ then
     echo "cppad_version in cppad-$cppad_version.git/CMakeLists.txt = $check"
     exit 1
 fi
-#
+# -----------------------------------------------------------------------------
+# build cppad
 # cppad build directory
 if [ ! -e build ]
 then
