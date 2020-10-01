@@ -14,6 +14,7 @@ whats_new_2020
 CppAD Py Changes During 2020
 ############################
 - :ref:`whats_new_2020.previous_years`
+- :ref:`whats_new_2020.09-30`
 - :ref:`whats_new_2020.09-14`
 - :ref:`whats_new_2020.09-13`
 - :ref:`whats_new_2020.09-12`
@@ -66,6 +67,18 @@ CppAD Py Changes During 2020
 Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
+
+.. _whats_new_2020.09-30:
+
+09-30
+*****
+#.  The ``error_message`` routine was replaced by :ref:`exceptions<exception>`
+    (``error_message`` was not thread safe).
+    This is a change to the API, you will have to use exceptions objects
+    instead of the ``error_message`` routine to retrieve the error messages.
+
+#.  Change the release version so it also throws exceptions for cppad_py error
+    messages (cppad error messages still require using the debug version).
 
 .. _whats_new_2020.09-14:
 
