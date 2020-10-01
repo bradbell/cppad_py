@@ -45,18 +45,10 @@ Example
 {xsrst_end error_message}
 */
 
-# ifdef NDEBUG
-# define CPPAD_PY_ASSERT_UNKNOWN(exp)  // do nothing
-# else
 # define CPPAD_PY_ASSERT_UNKNOWN(exp) \
 {   if( ! ( exp ) ) throw std::runtime_error( #exp " is false in " __FILE__ ); }
-# endif
 
-# ifdef NDEBUG
-# define CPPAD_PY_ASSERT_KNOWN(exp, msg)  // do nothing
-# else
 # define CPPAD_PY_ASSERT_KNOWN(exp, msg) \
 {   if( ! ( exp ) ) throw std::runtime_error(msg); }
-# endif
 
 # endif

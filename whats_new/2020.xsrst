@@ -47,9 +47,11 @@ Previous Years
 
 09-30
 *****
-:ref:`error_message` was changed to use exceptions,
-instead of the ``error_message`` function,
-to return error messages.
+#.  :ref:`error_message` was changed to use exceptions,
+    instead of the ``error_message`` function, to return error messages.
+
+#.  Change release version so it also throws cppad_py error messages
+    (cppad error messages still require debug version).
 
 09-14
 *****
