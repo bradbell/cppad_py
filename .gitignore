@@ -2,8 +2,11 @@
 /git_commit.sh
 junk
 junk.*
+# soft links to ignore
+/build
 # directories to ignore
-/build/
+/build.debug/
+/build.release/
 /dist/
 /doc/
 /cppad_py/

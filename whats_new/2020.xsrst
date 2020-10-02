@@ -45,6 +45,12 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+10-02
+*****
+The documentation for the :ref:`cpp_lib` was improved by
+noting when the syntax for c++ was different from python.
+In addition, other minor improvements were made to this documentation.
+
 09-30
 *****
 #.  The ``error_message`` routine was replaced by :ref:`exceptions<exception>`
