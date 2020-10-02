@@ -25,17 +25,17 @@ Syntax
 
 C++
 ===
-| ``vec_bool``     *bv* =  ``vec_bool`` ( *n* )
-| ``vec_int``      *iv* =  ``vec_int`` ( *n* )
-| ``vec_double``   *dv* =  ``vec_double`` ( *n* )
-| ``vec_a_double`` *av* =  ``vec_a_double`` ( *n* )
+| ``cppad_py::vec_bool``     *bv* ( *n* )
+| ``cppad_py::vec_int``      *iv* ( *n* )
+| ``cppad_py::vec_double``   *dv* ( *n* )
+| ``cppad_py::vec_a_double`` *av* ( *n* )
 
 Python
 ======
-| *bv* =  ``vec_bool`` ( *n* )
-| *iv* =  ``vec_int`` ( *n* )
-| *dv* =  ``vec_double`` ( *n* )
-| *av* =  ``vec_a_double`` ( *n* )
+| *bv* =  ``cppad_py.vec_bool`` ( *n* )
+| *iv* =  ``cppad_py.vec_int`` ( *n* )
+| *dv* =  ``cppad_py.vec_double`` ( *n* )
+| *av* =  ``cppad_py.vec_a_double`` ( *n* )
 
 Purpose
 *******

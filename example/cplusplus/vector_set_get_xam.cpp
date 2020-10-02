@@ -22,9 +22,9 @@ bool vector_set_get_xam(void) {
     bool ok = true;
     //------------------------------------------------------------------------
     int n = 4;
-    vec_bool bv = vec_bool(n);
-    vec_int iv = vec_int(n);
-    vec_double dv(n);
+    vec_bool     bv(n);
+    vec_int      iv(n);
+    vec_double   dv(n);
     vec_a_double av(n);
     //
     // setting elements

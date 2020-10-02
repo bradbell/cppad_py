@@ -47,9 +47,10 @@ Previous Years
 
 10-02
 *****
-The documentation for the :ref:`cpp_lib` was improved by
-noting when the syntax for c++ was different from python.
-In addition, other minor improvements were made to this documentation.
+The library documentation that is for both c++ and python was improved.
+To be specific, both the c++ and python syntax was included.
+Also these sections were moved from children of :ref:`cpp_lib`
+to children of :ref:`library`.
 
 09-30
 *****

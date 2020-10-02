@@ -12,7 +12,6 @@
 # include <cppad/py/cppad_py.hpp>
 
 bool vector_size_xam(void) {
-    using cppad_py::a_double;
     using cppad_py::vec_bool;
     using cppad_py::vec_int;
     using cppad_py::vec_double;
@@ -22,9 +21,9 @@ bool vector_size_xam(void) {
     bool ok = true;
     //------------------------------------------------------------------------
     // create vectors
-    vec_bool bv = vec_bool();
-    vec_int iv = vec_int(1);
-    vec_double dv(2);
+    vec_bool     bv;
+    vec_int      iv(1);
+    vec_double   dv(2);
     vec_a_double av(3);
     //
     // check size of vectors
