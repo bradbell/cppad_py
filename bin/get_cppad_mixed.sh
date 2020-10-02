@@ -47,14 +47,14 @@ version='20200831'
 name='bin/get_cppad_mixed.sh'
 if [ $0 != $name ]
 then
-	echo "$name: must be executed from its parent directory"
-	exit 1
+    echo "$name: must be executed from its parent directory"
+    exit 1
 fi
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
-	echo $*
-	eval $*
+    echo $*
+    eval $*
 }
 # --------------------------------------------------------------------------
 # build_type
@@ -74,14 +74,14 @@ echo_eval bin/build_type.sh
 # cd into build/external
 if [ ! -e build/external ]
 then
-	mkdir build/external
+    mkdir build/external
 fi
 echo_eval cd build/external
 # --------------------------------------------------------------------------
 # clone cppad_mixed.git
 if [ ! -e cppad_mixed.git ]
 then
-	echo_eval git clone $web_page cppad_mixed.git
+    echo_eval git clone $web_page cppad_mixed.git
 fi
 cd cppad_mixed.git
 git reset --hard
@@ -89,11 +89,11 @@ echo_eval git checkout master
 echo_eval git pull
 echo_eval git checkout --quiet $hash_key
 check=`grep '^SET(cppad_mixed_version' CMakeLists.txt | \
-	sed -e 's|^[^"]*"\([^"]*\).*|\1|'`
+    sed -e 's|^[^"]*"\([^"]*\).*|\1|'`
 if [ "$version" != "$check" ]
 then
-	echo 'install_cppad_mixed.sh: version number does not agree with hash_key'
-	exit 1
+    echo 'install_cppad_mixed.sh: version number does not agree with hash_key'
+    exit 1
 fi
 if [ "$build_type" == 'release' ]
 then
