@@ -45,11 +45,20 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+mixed branch
+************
+
 10-01
-*****
+=====
 Change the install process so it both a debug and release version of
 :ref:`cppad_prefix<get_cppad_sh.settings.build_type.cppad_prefix>`
 can be installed at the same time
+
+10-02
+*****
+The documentation for the :ref:`cpp_lib` was improved by
+noting when the syntax for c++ was different from python.
+In addition, other minor improvements were made to this documentation.
 
 09-30
 *****

@@ -91,6 +91,15 @@ The a_double Constructor
 Syntax
 ******
 
+C++
+===
+| ``a_double`` *ad* ()
+| ``a_double`` *ad* ( *d* )
+| ``a_double`` *ad* ( *a_other* )
+
+
+Python
+======
 | *ad* =  ``cppad_py.a_double`` ()
 | *ad* =  ``cppad_py.a_double`` ( *d* )
 | *ad* =  ``cppad_py.a_double`` ( *a_other* )
@@ -102,7 +111,7 @@ to track floating point operations and perform algorithmic differentiation.
 
 d
 *
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const double&`` *d*
 
@@ -111,7 +120,7 @@ a constant function equal to *d* .
 
 a_other
 *******
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const a_double&`` *a_other*
 
@@ -162,7 +171,6 @@ a_double Unary Plus and Minus
 
 Syntax
 ******
-
 | *ay* = + *ax*
 | *ay* = - *ax*
 
@@ -212,7 +220,6 @@ Properties of an a_double Object
 
 Syntax
 ******
-
 | *d* = *ad* . ``value`` ()
 | *p* = *ad* . ``parameter`` ()
 | *v* = *ad* . ``variable`` ()
@@ -221,13 +228,13 @@ Syntax
 
 ad
 **
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const a_double&`` *ad*
 
 value
 *****
-The result *d* has prototype
+The result *d* has c++ prototype
 
 | |tab| ``double`` *d*
 
@@ -245,7 +252,7 @@ before you can access its value; see
 
 parameter
 *********
-The result *p* has prototype
+The result *p* has c++ prototype
 
 | |tab| ``bool`` *p*
 
@@ -254,7 +261,7 @@ It is true if *ad* represent a constant functions; i.e.,
 
 variable
 ********
-The result *v* has prototype
+The result *v* has c++ prototype
 
 | |tab| ``bool`` *v*
 
@@ -264,7 +271,7 @@ It is true if *ad* is not a constant function; i.e.,
 near_equal
 **********
 The argument *aother* ,
-and the result *e* , have prototype
+and the result *e* , c++ have prototype
 
 | |tab| ``const a_double&`` *aother*
 | |tab| ``bool`` *e*
@@ -283,7 +290,7 @@ to the type ``double`` .
 
 var2par
 *******
-The result has prototype
+The result has c++ prototype
 
 | |tab| ``a_double`` *ap*
 
@@ -339,14 +346,27 @@ a_double Binary Operators with an AD Result
 
 {xsrst_spell
     az
+    radd
+    rsub
+    rmul
+    rdiv
 }
 
 Syntax
 ******
 
+Python
+======
 | *az* = *ax* *op* *ay*
 | *az* = *ax* *op* *y*
 | *az* = *y* *op* *ax*
+
+C++
+===
+| *az* = *ax* *op* *ay*
+| *az* = *ax* *op* *y*
+| *az* = *fun* ( *y* , *ax* )
+
 
 op
 **
@@ -356,29 +376,42 @@ subtraction ``-`` ,
 multiplication ``*`` ,
 division ``/`` , or
 exponentiation ``**`` .
-Note that exponentiation is a function is c++ and an operator in python.
+Note that exponentiation in c++ is special and always has the function syntax;
+i.e.,
+
+| *az* = *pow* ( *ax* , *ay* )
+| *az* = *pow* ( *ax* , *y* )
+| *az* = *pow* ( *y* , *ax* )
+
+fun
+***
+This function is one of the following:
+``radd`` (right addition) ,
+``rsub`` (right subtraction) ,
+``rmul`` (right multiplication) ,
+``rdiv`` (right division).
 
 ax
 **
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const a_double&`` *ax*
 
 ay
 **
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const a_double&`` *ay*
 
 y
 *
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const double&`` *y*
 
 az
 **
-The result has prototype
+The result has c++ prototype
 
 | |tab| ``a_double`` *az*
 
@@ -451,7 +484,6 @@ a_double Comparison Operators
 
 Syntax
 ******
-
 | *b* = *ax* *op* *ay*
 | *b* = *ax* *op* *y*
 
@@ -467,25 +499,25 @@ The binary operator *op* is one of the following:
 
 ax
 **
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const a_double&`` *ax*
 
 ay
 **
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const a_double&`` *ay*
 
 y
 *
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const double&`` *y*
 
 b
 *
-The result has prototype
+The result has c++ prototype
 
 | |tab| ``bool`` *b*
 
@@ -520,7 +552,6 @@ a_double Assignment Operators
 
 Syntax
 ******
-
 | *ax* *op* *ay*
 | *aw* *op* *y*
 
@@ -529,30 +560,30 @@ op
 The assignment operator *op* is one of the following:
 
 .. csv-table::
-    :widths: 2, 30
+    :widths: 20, 20, 20
 
-    *op* , Meaning
-    ``=`` , simple assignment
-    ``+=`` , *ax* = *ax* + ( *ay* ``or`` *y* )
-    ``-=`` , *ax* = *ax* - ( *ay* ``or`` *y* )
-    ``*=`` , *ax* = *ax* ``*`` *ay* ``or`` *y* )
-    ``/=`` , *ax* = *ax* ``/`` *ay* ``or`` *y* )
+    *op*   , *ax* Syntax       , *aw* Syntax
+    ``=``  , *ax* = *ay*       , *aw* = *y*
+    ``+=`` , *ax* = *ax* + *ay*, *aw* = *aw* + *y*
+    ``-=`` , *ax* = *ax* - *ay*, *aw* = *aw* - *y*
+    ``*=`` , *ax* = *ax* * *ay*, *aw* = *aw* * *y*
+    ``/=`` , *ax* = *ax* / *ay*, *aw* = *aw* / *y*
 
 ax
 **
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const a_double&`` *ax*
 
 ay
 **
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``a_double&`` *ay*
 
 y
 *
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const double&`` *y*
 
@@ -598,7 +629,6 @@ Unary Functions with AD Result
 
 Syntax
 ******
-
 | *ay* = *ax* . *fun* ()
 
 ax
@@ -633,11 +663,11 @@ asinh, acosh, atanh, expm1, and log1p to this list.
 
 ay
 **
-The result object has prototype
+The result object has c++ prototype
 
 | |tab| ``a_double`` *ay*
 
-and is the specified function evaluated at the specified argument; i.e.,
+and is the value of the function *fun* evaluated at the argument *ax*; i.e.,
 
 | |tab| *ay* = *fun* ( *ax* )
 
@@ -683,7 +713,6 @@ AD Conditional Assignment
 
 Syntax
 ******
-
 | *target* . ``cond_assign`` ( *cop* , *left* , *right* , *if_true* , *if_false* )
 
 Purpose
@@ -706,13 +735,13 @@ The ``cond_assign`` does this.
 
 target
 ******
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``a_double&`` *target*
 
 cop
 ***
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const char *cop``
 
@@ -723,7 +752,7 @@ The comparison is
 where *cop* is one of the following:
 
 .. csv-table::
-    :widths: 3, 21
+    :widths: 10, 10
 
     *cop* ,
     ``<`` , less than
@@ -734,7 +763,7 @@ where *cop* is one of the following:
 
 left
 ****
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const a_double&`` *left*
 
@@ -742,7 +771,7 @@ It specifies the left operand in the comparison.
 
 right
 *****
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const a_double&`` *right*
 
@@ -750,7 +779,7 @@ It specifies the right operand in the comparison.
 
 if_true
 *******
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const a_double&`` *if_true*
 
@@ -759,7 +788,7 @@ of the comparison is true.
 
 if_false
 ********
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const a_double&`` *if_false*
 
