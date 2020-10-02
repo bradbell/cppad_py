@@ -57,6 +57,10 @@ Previous Years
     the sphinx build operation faster (by not reprocessing files
     that have not changed).
 
+#.  Use the 95% quantile, instead of maximum, absolute residual when
+    testing simulated fit in :ref:`numeric_covid_19_xam_py`.
+    This reduces the change of a random failure.
+
 09-30
 *****
 #.  The ``error_message`` routine was replaced by :ref:`exceptions<exception>`
