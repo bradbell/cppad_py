@@ -28,15 +28,11 @@ Children
    :maxdepth: 1
    :hidden:
 
-   a_double
-   vector
    cpp_fun
    sparse
    cpp_utility
    more_cpp
 
-#. a_double: :ref:`a_double`
-#. vector: :ref:`vector`
 #. cpp_fun: :ref:`cpp_fun`
 #. sparse: :ref:`sparse`
 #. cpp_utility: :ref:`cpp_utility`

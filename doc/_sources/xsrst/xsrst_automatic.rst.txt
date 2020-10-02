@@ -28,159 +28,159 @@ Table of Contents
 |
 | :ref:`3<library>` The Cppad Py Libraries`
 |
-|  |space| :ref:`3.1<py_lib>` The Python Library`
+|  |space| :ref:`3.1<a_double>` Cppad Py AD Scalars`
 |
-|  |space|  |space| :ref:`3.1.1<py_fun>` Cppad Py AD Functions`
+|  |space|  |space| :ref:`3.1.1<a_double_ctor>` The a_double Constructor`
+|  |space|  |space| :ref:`3.1.2<a_double_unary_op>` a_double Unary Plus and Minus`
 |
-|  |space|  |space|  |space| :ref:`3.1.1.1<py_independent>` Declare Independent Variables and Start Recording`
-|  |space|  |space|  |space|  |space| :ref:`3.1.1.1.1<fun_dynamic_xam_py>` Python: Using Dynamic Parameters: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.1.2<py_abort_recording>` Abort Recording`
-|  |space|  |space|  |space|  |space| :ref:`3.1.1.2.1<fun_abort_xam_py>` Python: Abort Recording a_double Operations: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.1.3<py_fun_ctor>` Stop Current Recording and Store Function Object`
-|  |space|  |space|  |space|  |space| :ref:`3.1.1.3.1<a_fun_xam_py>` Python: Purpose of a_fun Objects: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.1.4<py_fun_property>` Properties of a Function Object`
-|  |space|  |space|  |space|  |space| :ref:`3.1.1.4.1<fun_property_xam_py>` Python: d_fun Properties: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.1.5<py_fun_new_dynamic>` New Dynamic Parameters`
-|  |space|  |space|  |space| :ref:`3.1.1.6<py_fun_jacobian>` Jacobian of an AD Function`
-|  |space|  |space|  |space|  |space| :ref:`3.1.1.6.1<fun_jacobian_xam_py>` Python: Dense Jacobian Using AD: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.1.7<py_fun_hessian>` Hessian of an AD Function`
-|  |space|  |space|  |space|  |space| :ref:`3.1.1.7.1<fun_hessian_xam_py>` Python: Dense Hessian Using AD: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.1.8<py_fun_forward>` Forward Mode AD`
-|  |space|  |space|  |space|  |space| :ref:`3.1.1.8.1<fun_forward_xam_py>` Python: Forward Mode AD: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.1.9<py_fun_reverse>` Reverse Mode AD`
-|  |space|  |space|  |space|  |space| :ref:`3.1.1.9.1<fun_reverse_xam_py>` Python: Reverse Mode AD: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.1.10<py_fun_optimize>` Optimize an AD Function`
-|  |space|  |space|  |space|  |space| :ref:`3.1.1.10.1<fun_optimize_xam_py>` Python: Optimize an d_fun: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.1.11<py_fun_json>` Json Representation of AD Computation Graph`
+|  |space|  |space|  |space| :ref:`3.1.2.1<a_double_unary_op_xam_cpp>` C++: a_double Unary Plus and Minus: Example and Test`
+|  |space|  |space|  |space| :ref:`3.1.2.2<a_double_unary_op_xam_py>` Python: a_double Unary Plus and Minus: Example and Test`
 |
-|  |space|  |space|  |space|  |space| :ref:`3.1.1.11.1<fun_to_json_xam_py>` Python to_json: Example and Test`
-|  |space|  |space|  |space|  |space| :ref:`3.1.1.11.2<fun_from_json_xam_py>` Python from_json: Example and Test`
+|  |space|  |space| :ref:`3.1.3<a_double_property>` Properties of an a_double Object`
 |
-|  |space|  |space| :ref:`3.1.2<py_sparse>` Python Sparsity Routines`
+|  |space|  |space|  |space| :ref:`3.1.3.1<a_double_property_xam_cpp>` C++: a_double Properties: Example and Test`
+|  |space|  |space|  |space| :ref:`3.1.3.2<a_double_property_xam_py>` Python: a_double Properties: Example and Test`
 |
-|  |space|  |space|  |space| :ref:`3.1.2.1<py_sparse_rc>` Sparsity Patterns`
-|  |space|  |space|  |space|  |space| :ref:`3.1.2.1.1<sparse_rc_xam_py>` Python: Sparsity Patterns: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.2.2<py_sparse_rcv>` Sparse Matrices`
-|  |space|  |space|  |space|  |space| :ref:`3.1.2.2.1<sparse_rcv_xam_py>` Python: Sparsity Patterns: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.2.3<py_jac_sparsity>` Jacobian Sparsity Patterns`
-|  |space|  |space|  |space|  |space| :ref:`3.1.2.3.1<sparse_jac_pattern_xam_py>` Python: Jacobian Sparsity Patterns: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.2.4<py_hes_sparsity>` Hessian Sparsity Patterns`
-|  |space|  |space|  |space|  |space| :ref:`3.1.2.4.1<sparse_hes_pattern_xam_py>` Python: Hessian Sparsity Patterns: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.2.5<py_sparse_jac>` Computing Sparse Jacobians`
-|  |space|  |space|  |space|  |space| :ref:`3.1.2.5.1<sparse_jac_xam_py>` Python: Computing Sparse Jacobians: Example and Test`
-|  |space|  |space|  |space| :ref:`3.1.2.6<py_sparse_hes>` Computing Sparse Hessians`
-|  |space|  |space|  |space|  |space| :ref:`3.1.2.6.1<sparse_hes_xam_py>` Python: Hessian Sparsity Patterns: Example and Test`
+|  |space|  |space| :ref:`3.1.4<a_double_binary>` a_double Binary Operators with an AD Result`
 |
-|  |space|  |space| :ref:`3.1.3<py_utility>` Python Utilities`
+|  |space|  |space|  |space| :ref:`3.1.4.1<a_double_binary_xam_cpp>` C++: a_double Binary Operators With AD Result: Example and Test`
+|  |space|  |space|  |space| :ref:`3.1.4.2<a_double_binary_xam_py>` Python: a_double Binary Operators With AD Result: Example and Test`
 |
-|  |space|  |space|  |space| :ref:`3.1.3.1<numpy2vec>` Convert a Numpy Array to a cppad_py Vector`
-|  |space|  |space|  |space| :ref:`3.1.3.2<vec2numpy>` Convert a cppad_py Vector to a Numpy Array`
+|  |space|  |space| :ref:`3.1.5<a_double_compare>` a_double Comparison Operators`
 |
-|  |space|  |space| :ref:`3.1.4<more_py>` Steps To Add More Python Functions`
+|  |space|  |space|  |space| :ref:`3.1.5.1<a_double_compare_xam_cpp>` C++: a_double Comparison Operators: Example and Test`
+|  |space|  |space|  |space| :ref:`3.1.5.2<a_double_compare_xam_py>` Python: a_double Comparison Operators: Example and Test`
 |
-|  |space| :ref:`3.2<cpp_lib>` The C++ Library`
+|  |space|  |space| :ref:`3.1.6<a_double_assign>` a_double Assignment Operators`
 |
-|  |space|  |space| :ref:`3.2.1<a_double>` Cppad Py AD Scalars`
+|  |space|  |space|  |space| :ref:`3.1.6.1<a_double_assign_xam_cpp>` C++: a_double Assignment Operators: Example and Test`
+|  |space|  |space|  |space| :ref:`3.1.6.2<a_double_assign_xam_py>` Python: a_double Assignment Operators: Example and Test`
 |
-|  |space|  |space|  |space| :ref:`3.2.1.1<a_double_ctor>` The a_double Constructor`
-|  |space|  |space|  |space| :ref:`3.2.1.2<a_double_unary_op>` a_double Unary Plus and Minus`
+|  |space|  |space| :ref:`3.1.7<a_double_unary_fun>` Unary Functions with AD Result`
 |
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.2.1<a_double_unary_op_xam_cpp>` C++: a_double Unary Plus and Minus: Example and Test`
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.2.2<a_double_unary_op_xam_py>` Python: a_double Unary Plus and Minus: Example and Test`
+|  |space|  |space|  |space| :ref:`3.1.7.1<a_double_unary_fun_xam_cpp>` C++: a_double Unary Functions with AD Result: Example and Test`
+|  |space|  |space|  |space| :ref:`3.1.7.2<a_double_unary_fun_xam_py>` Python: a_double Unary Functions with AD Result: Example and Test`
 |
-|  |space|  |space|  |space| :ref:`3.2.1.3<a_double_property>` Properties of an a_double Object`
+|  |space|  |space| :ref:`3.1.8<a_double_cond_assign>` AD Conditional Assignment`
 |
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.3.1<a_double_property_xam_cpp>` C++: a_double Properties: Example and Test`
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.3.2<a_double_property_xam_py>` Python: a_double Properties: Example and Test`
+|  |space|  |space|  |space| :ref:`3.1.8.1<a_double_cond_assign_xam_cpp>` C++: a_double Conditional Assignment: Example and Test`
+|  |space|  |space|  |space| :ref:`3.1.8.2<a_double_cond_assign_xam_py>` Python: a_double Conditional Assignment: Example and Test`
 |
-|  |space|  |space|  |space| :ref:`3.2.1.4<a_double_binary>` a_double Binary Operators with an AD Result`
+|  |space| :ref:`3.2<vector>` Cppad Py Vectors`
 |
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.4.1<a_double_binary_xam_cpp>` C++: a_double Binary Operators With AD Result: Example and Test`
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.4.2<a_double_binary_xam_py>` Python: a_double Binary Operators With AD Result: Example and Test`
+|  |space|  |space| :ref:`3.2.1<vector_ctor>` Cppad Py Vector Constructors`
+|  |space|  |space| :ref:`3.2.2<vector_size>` Size of a Vector`
 |
-|  |space|  |space|  |space| :ref:`3.2.1.5<a_double_compare>` a_double Comparison Operators`
+|  |space|  |space|  |space| :ref:`3.2.2.1<vector_size_xam_cpp>` C++: Size of Vectors: Example and Test`
+|  |space|  |space|  |space| :ref:`3.2.2.2<vector_size_xam_py>` Python: Size of Vectors: Example and Test`
 |
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.5.1<a_double_compare_xam_cpp>` C++: a_double Comparison Operators: Example and Test`
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.5.2<a_double_compare_xam_py>` Python: a_double Comparison Operators: Example and Test`
+|  |space|  |space| :ref:`3.2.3<vector_set_get>` Setting and Getting Vector Elements`
 |
-|  |space|  |space|  |space| :ref:`3.2.1.6<a_double_assign>` a_double Assignment Operators`
+|  |space|  |space|  |space| :ref:`3.2.3.1<vector_set_get_xam_cpp>` C++: Setting and Getting Vector Elements: Example and Test`
+|  |space|  |space|  |space| :ref:`3.2.3.2<vector_set_get_xam_py>` Python: Setting and Getting Vector Elements: Example and Test`
 |
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.6.1<a_double_assign_xam_cpp>` C++: a_double Assignment Operators: Example and Test`
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.6.2<a_double_assign_xam_py>` Python: a_double Assignment Operators: Example and Test`
+|  |space| :ref:`3.3<py_lib>` The Python Library`
 |
-|  |space|  |space|  |space| :ref:`3.2.1.7<a_double_unary_fun>` Unary Functions with AD Result`
+|  |space|  |space| :ref:`3.3.1<py_fun>` Cppad Py AD Functions`
 |
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.7.1<a_double_unary_fun_xam_cpp>` C++: a_double Unary Functions with AD Result: Example and Test`
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.7.2<a_double_unary_fun_xam_py>` Python: a_double Unary Functions with AD Result: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.1.1<py_independent>` Declare Independent Variables and Start Recording`
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.1.1<fun_dynamic_xam_py>` Python: Using Dynamic Parameters: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.1.2<py_abort_recording>` Abort Recording`
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.2.1<fun_abort_xam_py>` Python: Abort Recording a_double Operations: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.1.3<py_fun_ctor>` Stop Current Recording and Store Function Object`
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.3.1<a_fun_xam_py>` Python: Purpose of a_fun Objects: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.1.4<py_fun_property>` Properties of a Function Object`
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.4.1<fun_property_xam_py>` Python: d_fun Properties: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.1.5<py_fun_new_dynamic>` New Dynamic Parameters`
+|  |space|  |space|  |space| :ref:`3.3.1.6<py_fun_jacobian>` Jacobian of an AD Function`
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.6.1<fun_jacobian_xam_py>` Python: Dense Jacobian Using AD: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.1.7<py_fun_hessian>` Hessian of an AD Function`
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.7.1<fun_hessian_xam_py>` Python: Dense Hessian Using AD: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.1.8<py_fun_forward>` Forward Mode AD`
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.8.1<fun_forward_xam_py>` Python: Forward Mode AD: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.1.9<py_fun_reverse>` Reverse Mode AD`
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.9.1<fun_reverse_xam_py>` Python: Reverse Mode AD: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.1.10<py_fun_optimize>` Optimize an AD Function`
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.10.1<fun_optimize_xam_py>` Python: Optimize an d_fun: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.1.11<py_fun_json>` Json Representation of AD Computation Graph`
 |
-|  |space|  |space|  |space| :ref:`3.2.1.8<a_double_cond_assign>` AD Conditional Assignment`
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.11.1<fun_to_json_xam_py>` Python to_json: Example and Test`
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.11.2<fun_from_json_xam_py>` Python from_json: Example and Test`
 |
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.8.1<a_double_cond_assign_xam_cpp>` C++: a_double Conditional Assignment: Example and Test`
-|  |space|  |space|  |space|  |space| :ref:`3.2.1.8.2<a_double_cond_assign_xam_py>` Python: a_double Conditional Assignment: Example and Test`
+|  |space|  |space| :ref:`3.3.2<py_sparse>` Python Sparsity Routines`
 |
-|  |space|  |space| :ref:`3.2.2<vector>` Cppad Py Vectors`
+|  |space|  |space|  |space| :ref:`3.3.2.1<py_sparse_rc>` Sparsity Patterns`
+|  |space|  |space|  |space|  |space| :ref:`3.3.2.1.1<sparse_rc_xam_py>` Python: Sparsity Patterns: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.2.2<py_sparse_rcv>` Sparse Matrices`
+|  |space|  |space|  |space|  |space| :ref:`3.3.2.2.1<sparse_rcv_xam_py>` Python: Sparsity Patterns: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.2.3<py_jac_sparsity>` Jacobian Sparsity Patterns`
+|  |space|  |space|  |space|  |space| :ref:`3.3.2.3.1<sparse_jac_pattern_xam_py>` Python: Jacobian Sparsity Patterns: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.2.4<py_hes_sparsity>` Hessian Sparsity Patterns`
+|  |space|  |space|  |space|  |space| :ref:`3.3.2.4.1<sparse_hes_pattern_xam_py>` Python: Hessian Sparsity Patterns: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.2.5<py_sparse_jac>` Computing Sparse Jacobians`
+|  |space|  |space|  |space|  |space| :ref:`3.3.2.5.1<sparse_jac_xam_py>` Python: Computing Sparse Jacobians: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.2.6<py_sparse_hes>` Computing Sparse Hessians`
+|  |space|  |space|  |space|  |space| :ref:`3.3.2.6.1<sparse_hes_xam_py>` Python: Hessian Sparsity Patterns: Example and Test`
 |
-|  |space|  |space|  |space| :ref:`3.2.2.1<vector_ctor>` Cppad Py Vector Constructors`
-|  |space|  |space|  |space| :ref:`3.2.2.2<vector_size>` Size of a Vector`
+|  |space|  |space| :ref:`3.3.3<py_utility>` Python Utilities`
 |
-|  |space|  |space|  |space|  |space| :ref:`3.2.2.2.1<vector_size_xam_cpp>` C++: Size of Vectors: Example and Test`
-|  |space|  |space|  |space|  |space| :ref:`3.2.2.2.2<vector_size_xam_py>` Python: Size of Vectors: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.3.1<numpy2vec>` Convert a Numpy Array to a cppad_py Vector`
+|  |space|  |space|  |space| :ref:`3.3.3.2<vec2numpy>` Convert a cppad_py Vector to a Numpy Array`
 |
-|  |space|  |space|  |space| :ref:`3.2.2.3<vector_set_get>` Setting and Getting Vector Elements`
+|  |space|  |space| :ref:`3.3.4<more_py>` Steps To Add More Python Functions`
 |
-|  |space|  |space|  |space|  |space| :ref:`3.2.2.3.1<vector_set_get_xam_cpp>` C++: Setting and Getting Vector Elements: Example and Test`
-|  |space|  |space|  |space|  |space| :ref:`3.2.2.3.2<vector_set_get_xam_py>` Python: Setting and Getting Vector Elements: Example and Test`
+|  |space| :ref:`3.4<cpp_lib>` The C++ Library`
 |
-|  |space|  |space| :ref:`3.2.3<cpp_fun>` Cppad Py AD Functions`
+|  |space|  |space| :ref:`3.4.1<cpp_fun>` Cppad Py AD Functions`
 |
-|  |space|  |space|  |space| :ref:`3.2.3.1<cpp_independent>` Declare Independent Variables and Start Recording`
-|  |space|  |space|  |space|  |space| :ref:`3.2.3.1.1<fun_dynamic_xam_cpp>` C++: Using Dynamic Parameters: Example and Test`
-|  |space|  |space|  |space| :ref:`3.2.3.2<cpp_abort_recording>` Abort Recording`
-|  |space|  |space|  |space|  |space| :ref:`3.2.3.2.1<fun_abort_xam_cpp>` C++: Abort Recording a_double Operations: Example and Test`
-|  |space|  |space|  |space| :ref:`3.2.3.3<cpp_fun_ctor>` Stop Current Recording and Store Function Object`
-|  |space|  |space|  |space| :ref:`3.2.3.4<cpp_fun_property>` Properties of a Function Object`
-|  |space|  |space|  |space|  |space| :ref:`3.2.3.4.1<fun_property_xam_cpp>` C++: function Properties: Example and Test`
-|  |space|  |space|  |space| :ref:`3.2.3.5<cpp_fun_new_dynamic>` Change The Dynamic Parameters`
-|  |space|  |space|  |space| :ref:`3.2.3.6<cpp_fun_jacobian>` Jacobian of an AD Function`
-|  |space|  |space|  |space|  |space| :ref:`3.2.3.6.1<fun_jacobian_xam_cpp>` C++: Dense Jacobian Using AD: Example and Test`
-|  |space|  |space|  |space| :ref:`3.2.3.7<cpp_fun_hessian>` Hessian of an AD Function`
-|  |space|  |space|  |space|  |space| :ref:`3.2.3.7.1<fun_hessian_xam_cpp>` C++: Dense Hessian Using AD: Example and Test`
-|  |space|  |space|  |space| :ref:`3.2.3.8<cpp_fun_forward>` Forward Mode AD`
-|  |space|  |space|  |space|  |space| :ref:`3.2.3.8.1<fun_forward_xam_cpp>` C++: Forward Mode AD: Example and Test`
-|  |space|  |space|  |space| :ref:`3.2.3.9<cpp_fun_reverse>` Reverse Mode AD`
-|  |space|  |space|  |space|  |space| :ref:`3.2.3.9.1<fun_reverse_xam_cpp>` C++: Reverse Mode AD: Example and Test`
-|  |space|  |space|  |space| :ref:`3.2.3.10<cpp_fun_optimize>` Optimize an AD Function`
-|  |space|  |space|  |space|  |space| :ref:`3.2.3.10.1<fun_optimize_xam_cpp>` C++: Optimize an d_fun: Example and Test`
-|  |space|  |space|  |space| :ref:`3.2.3.11<cpp_fun_json>` Json Representation of AD Computational Graph`
+|  |space|  |space|  |space| :ref:`3.4.1.1<cpp_independent>` Declare Independent Variables and Start Recording`
+|  |space|  |space|  |space|  |space| :ref:`3.4.1.1.1<fun_dynamic_xam_cpp>` C++: Using Dynamic Parameters: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.1.2<cpp_abort_recording>` Abort Recording`
+|  |space|  |space|  |space|  |space| :ref:`3.4.1.2.1<fun_abort_xam_cpp>` C++: Abort Recording a_double Operations: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.1.3<cpp_fun_ctor>` Stop Current Recording and Store Function Object`
+|  |space|  |space|  |space| :ref:`3.4.1.4<cpp_fun_property>` Properties of a Function Object`
+|  |space|  |space|  |space|  |space| :ref:`3.4.1.4.1<fun_property_xam_cpp>` C++: function Properties: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.1.5<cpp_fun_new_dynamic>` Change The Dynamic Parameters`
+|  |space|  |space|  |space| :ref:`3.4.1.6<cpp_fun_jacobian>` Jacobian of an AD Function`
+|  |space|  |space|  |space|  |space| :ref:`3.4.1.6.1<fun_jacobian_xam_cpp>` C++: Dense Jacobian Using AD: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.1.7<cpp_fun_hessian>` Hessian of an AD Function`
+|  |space|  |space|  |space|  |space| :ref:`3.4.1.7.1<fun_hessian_xam_cpp>` C++: Dense Hessian Using AD: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.1.8<cpp_fun_forward>` Forward Mode AD`
+|  |space|  |space|  |space|  |space| :ref:`3.4.1.8.1<fun_forward_xam_cpp>` C++: Forward Mode AD: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.1.9<cpp_fun_reverse>` Reverse Mode AD`
+|  |space|  |space|  |space|  |space| :ref:`3.4.1.9.1<fun_reverse_xam_cpp>` C++: Reverse Mode AD: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.1.10<cpp_fun_optimize>` Optimize an AD Function`
+|  |space|  |space|  |space|  |space| :ref:`3.4.1.10.1<fun_optimize_xam_cpp>` C++: Optimize an d_fun: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.1.11<cpp_fun_json>` Json Representation of AD Computational Graph`
 |
-|  |space|  |space|  |space|  |space| :ref:`3.2.3.11.1<fun_to_json_xam_cpp>` C++: to_json: Example and Test`
-|  |space|  |space|  |space|  |space| :ref:`3.2.3.11.2<fun_from_json_xam_cpp>` C++: from_json: Example and Test`
+|  |space|  |space|  |space|  |space| :ref:`3.4.1.11.1<fun_to_json_xam_cpp>` C++: to_json: Example and Test`
+|  |space|  |space|  |space|  |space| :ref:`3.4.1.11.2<fun_from_json_xam_cpp>` C++: from_json: Example and Test`
 |
-|  |space|  |space| :ref:`3.2.4<sparse>` Cppad Py Sparse Calculation`
+|  |space|  |space| :ref:`3.4.2<sparse>` Cppad Py Sparse Calculation`
 |
-|  |space|  |space|  |space| :ref:`3.2.4.1<cpp_sparse_rc>` Sparsity Patterns`
-|  |space|  |space|  |space|  |space| :ref:`3.2.4.1.1<sparse_rc_xam_cpp>` C++: Sparsity Patterns: Example and Test`
-|  |space|  |space|  |space| :ref:`3.2.4.2<cpp_sparse_rcv>` Sparse Matrices`
-|  |space|  |space|  |space|  |space| :ref:`3.2.4.2.1<sparse_rcv_xam_cpp>` C++: Sparsity Patterns: Example and Test`
-|  |space|  |space|  |space| :ref:`3.2.4.3<cpp_jac_sparsity>` Jacobian Sparsity Patterns`
-|  |space|  |space|  |space|  |space| :ref:`3.2.4.3.1<sparse_jac_pattern_xam_cpp>` C++: Jacobian Sparsity Patterns: Example and Test`
-|  |space|  |space|  |space| :ref:`3.2.4.4<cpp_sparsity>` Hessian Sparsity Patterns`
-|  |space|  |space|  |space|  |space| :ref:`3.2.4.4.1<sparse_hes_pattern_xam_cpp>` C++: Hessian Sparsity Patterns: Example and Test`
-|  |space|  |space|  |space| :ref:`3.2.4.5<cpp_sparse_jac>` Computing Sparse Jacobians`
-|  |space|  |space|  |space|  |space| :ref:`3.2.4.5.1<sparse_jac_xam_cpp>` C++: Computing Sparse Jacobians: Example and Test`
-|  |space|  |space|  |space| :ref:`3.2.4.6<cpp_sparse_hes>` Computing Sparse Hessians`
-|  |space|  |space|  |space|  |space| :ref:`3.2.4.6.1<sparse_hes_xam_cpp>` C++: Hessian Sparsity Patterns: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.2.1<cpp_sparse_rc>` Sparsity Patterns`
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.1.1<sparse_rc_xam_cpp>` C++: Sparsity Patterns: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.2.2<cpp_sparse_rcv>` Sparse Matrices`
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.2.1<sparse_rcv_xam_cpp>` C++: Sparsity Patterns: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.2.3<cpp_jac_sparsity>` Jacobian Sparsity Patterns`
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.3.1<sparse_jac_pattern_xam_cpp>` C++: Jacobian Sparsity Patterns: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.2.4<cpp_sparsity>` Hessian Sparsity Patterns`
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.4.1<sparse_hes_pattern_xam_cpp>` C++: Hessian Sparsity Patterns: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.2.5<cpp_sparse_jac>` Computing Sparse Jacobians`
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.5.1<sparse_jac_xam_cpp>` C++: Computing Sparse Jacobians: Example and Test`
+|  |space|  |space|  |space| :ref:`3.4.2.6<cpp_sparse_hes>` Computing Sparse Hessians`
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.6.1<sparse_hes_xam_cpp>` C++: Hessian Sparsity Patterns: Example and Test`
 |
-|  |space|  |space| :ref:`3.2.5<cpp_utility>` C++ Utilities`
+|  |space|  |space| :ref:`3.4.3<cpp_utility>` C++ Utilities`
 |
-|  |space|  |space|  |space| :ref:`3.2.5.1<vec2cppad_double>` Convert an a_double Vector to a CppAD::AD<double> Vector`
-|  |space|  |space|  |space| :ref:`3.2.5.2<vec2a_double>` Convert a CppAD::AD<double> Vector to an a_double Vector`
-|  |space|  |space|  |space| :ref:`3.2.5.3<exception>` Exception Handling`
+|  |space|  |space|  |space| :ref:`3.4.3.1<vec2cppad_double>` Convert an a_double Vector to a CppAD::AD<double> Vector`
+|  |space|  |space|  |space| :ref:`3.4.3.2<vec2a_double>` Convert a CppAD::AD<double> Vector to an a_double Vector`
+|  |space|  |space|  |space| :ref:`3.4.3.3<exception>` Exception Handling`
 |
-|  |space|  |space|  |space|  |space| :ref:`3.2.5.3.1<exception_xam_cpp>` C++: Cppad Py Exception Handling: Example and Test`
-|  |space|  |space|  |space|  |space| :ref:`3.2.5.3.2<exception_xam_py>` Python: Cppad Py Exception Handling: Example and Test`
+|  |space|  |space|  |space|  |space| :ref:`3.4.3.3.1<exception_xam_cpp>` C++: Cppad Py Exception Handling: Example and Test`
+|  |space|  |space|  |space|  |space| :ref:`3.4.3.3.2<exception_xam_py>` Python: Cppad Py Exception Handling: Example and Test`
 |
-|  |space|  |space| :ref:`3.2.6<more_cpp>` Steps To Add More C++ Functions`
+|  |space|  |space| :ref:`3.4.4<more_cpp>` Steps To Add More C++ Functions`
 |
 | :ref:`4<xsrst_py>` Extract Sphinx RST`
 |

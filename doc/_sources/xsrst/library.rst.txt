@@ -28,9 +28,13 @@ Children
    :maxdepth: 1
    :hidden:
 
+   a_double
+   vector
    py_lib
    cpp_lib
 
+#. a_double: :ref:`a_double`
+#. vector: :ref:`vector`
 #. py_lib: :ref:`py_lib`
 #. cpp_lib: :ref:`cpp_lib`
 

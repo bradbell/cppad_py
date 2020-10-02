@@ -487,7 +487,7 @@ because it is constant with respect to the unknown parameters.</p>
 <span id="numeric-covid-19-xam-py-random-seed"></span><span id="index-17"></span><h3>Random Seed<a class="headerlink" href="#random-seed" title="Permalink to this headline">¶</a></h3>
 <p>This is the random seed used to simulate noise in the data.
 If this value is zero, the system clock is used to choose the random seed.</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">random_seed</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">random_seed</span> <span class="o">=</span> <span class="mi">20821659074</span>
 </pre></div>
 </div>
 </div>
@@ -1021,8 +1021,8 @@ a table is printed with the following columns is also printed:</p>
     <span class="k">if</span> <span class="n">display_fit</span> <span class="p">:</span>
         <span class="n">display_fit_results</span><span class="p">(</span><span class="n">D_data</span><span class="p">,</span> <span class="n">x_fit</span><span class="p">,</span> <span class="n">x_lower</span><span class="p">,</span> <span class="n">x_upper</span><span class="p">,</span> <span class="n">std_error</span><span class="p">)</span>
     <span class="c1">#</span>
-    <span class="c1"># check that all the data residuals an less than 3.0</span>
-    <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">any</span><span class="p">(</span> <span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> <span class="n">data_residual</span> <span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">4.0</span> <span class="p">)</span> <span class="p">:</span>
+    <span class="c1"># check that 95% of the absolute residuals are less than 3.0</span>
+    <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span> <span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> <span class="n">data_residual</span> <span class="p">),</span> <span class="mf">95.0</span> <span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">3.0</span> <span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;covid_19_xam: a weighted data residual &gt;= 4.0&#39;</span><span class="p">)</span>
         <span class="n">ok</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="c1">#</span>

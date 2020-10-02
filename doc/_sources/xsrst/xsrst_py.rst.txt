@@ -216,16 +216,14 @@ relative to the top git repository directory.
 
 root_section
 ------------
-If there is only one section in the *root_file* it is called
-the *root_section*; i.e., it is the top section in that table of contents.
-If there is more than one section in the *root_file*,
-the file must have a
-:ref:`begin_cmd.parent_section` and it is the *root_section*.
+If there is only one section in the *root_file*,
+the corresponding *section_name* is the *root_section* .
+If there is more than one section in the *root_file*, the file must have a
+:ref:`begin_cmd.parent_section` and the corresponding *section_name*
+is the *root_section*.
 The file *sphinx_dir* :code:`/index.rst` must contain the line
 
-|tab| ``xsrst/`` *section_name*
-
-where *section_name* is the name of the *root_section*.
+|tab| ``xsrst/`` *root_section*
 
 .. meta::
    :keywords: sphinx_dir
@@ -240,12 +238,11 @@ The command line argument *sphinx_dir* is a sub-directory,
 of the top git repository directory.
 The  sphinx ``conf.py``, ``index.rst``, *spelling*, and *keyword*
 files are located in this directory.
-Any files that have names ending in ``.rst``,
-and that are in the directory *sphinx_dir* :code:`/xsrst`,
-are removed at the beginning of execution of ``xsrst.py``.
+The sub-directory *sphinx_dir* :code:`/xsrst` is managed by ``xsrst`` .
 All the ``.rst`` files in *sphinx_dir* :code:`/xsrst`
-were extracted from the source code the last time that ``xsrst.py``
-was executed.
+were extracted from the source code and correspond to
+last time that ``xsrst.py`` was executed.
+Files that do not change are not updated (to speed up the processing).
 
 .. meta::
    :keywords: example, configuration, files

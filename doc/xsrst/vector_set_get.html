@@ -100,25 +100,19 @@
 <li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="a_double.html">a_double</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="vector.html">vector</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="vector_ctor.html">vector_ctor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vector_size.html">vector_size</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">vector_set_get</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vector_set_get_xam_cpp.html">vector_set_get_xam_cpp</a></li>
+<li class="toctree-l5"><a class="reference internal" href="vector_set_get_xam_py.html">vector_set_get_xam_py</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="a_double.html">a_double</a></li>
-<li class="toctree-l4 current"><a class="reference internal" href="vector.html">vector</a><ul class="current">
-<li class="toctree-l5"><a class="reference internal" href="vector_ctor.html">vector_ctor</a></li>
-<li class="toctree-l5"><a class="reference internal" href="vector_size.html">vector_size</a></li>
-<li class="toctree-l5 current"><a class="current reference internal" href="#">vector_set_get</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="vector_set_get_xam_cpp.html">vector_set_get_xam_cpp</a></li>
-<li class="toctree-l6"><a class="reference internal" href="vector_set_get_xam_py.html">vector_set_get_xam_py</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cpp_utility.html">cpp_utility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="cpp_lib.html">cpp_lib</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
@@ -175,8 +169,6 @@
         
           <li><a href="library.html">library</a> &raquo;</li>
         
-          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
-        
           <li><a href="vector.html">vector</a> &raquo;</li>
         
       <li>vector_set_get</li>
@@ -229,7 +221,7 @@ vector. It must be one of the following types:
 </div>
 <div class="section" id="i">
 <span id="vector-set-get-i"></span><span id="index-3"></span><h3>i<a class="headerlink" href="#i" title="Permalink to this headline">¶</a></h3>
-<p>This argument has prototype</p>
+<p>This argument has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">size_t</span></code> <em>i</em></div>
 </div>
@@ -237,28 +229,28 @@ vector. It must be one of the following types:
 </div>
 <div class="section" id="u">
 <span id="vector-set-get-u"></span><span id="index-4"></span><h3>u<a class="headerlink" href="#u" title="Permalink to this headline">¶</a></h3>
-<p>The object <em>u</em> has prototype</p>
+<p>The object <em>u</em> has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">vec_</span></code> <em>element_type</em> <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> <em>u</em></div>
 </div>
 </div>
 <div class="section" id="x">
 <span id="vector-set-get-x"></span><span id="index-5"></span><h3>x<a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h3>
-<p>The argument <em>x</em> has prototype</p>
+<p>The argument <em>x</em> has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span></code> <em>element_type</em> <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> <em>x</em></div>
 </div>
 </div>
 <div class="section" id="v">
 <span id="vector-set-get-v"></span><span id="index-6"></span><h3>v<a class="headerlink" href="#v" title="Permalink to this headline">¶</a></h3>
-<p>The object <em>v</em> has the following prototype</p>
+<p>The object <em>v</em> has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">vec_</span></code> <em>element_type</em> <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> <em>v</em></div>
 </div>
 </div>
 <div class="section" id="y">
 <span id="vector-set-get-y"></span><span id="index-7"></span><h3>y<a class="headerlink" href="#y" title="Permalink to this headline">¶</a></h3>
-<p>The result <em>y</em> has prototype</p>
+<p>The result <em>y</em> has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <em>element_type</em> <em>y</em></div>
 </div>

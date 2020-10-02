@@ -14,6 +14,8 @@ vector_ctor
 Cppad Py Vector Constructors
 ############################
 - :ref:`vector_ctor.syntax`
+    - :ref:`vector_ctor.syntax.c++`
+    - :ref:`vector_ctor.syntax.python`
 - :ref:`vector_ctor.purpose`
 - :ref:`vector_ctor.n`
 - :ref:`vector_ctor.vec_bool`
@@ -32,6 +34,29 @@ Cppad Py Vector Constructors
 Syntax
 ******
 
+.. meta::
+   :keywords: c++
+
+.. index:: c++
+
+.. _vector_ctor.syntax.c++:
+
+C++
+===
+| ``cppad_py::vec_bool``     *bv* ( *n* )
+| ``cppad_py::vec_int``      *iv* ( *n* )
+| ``cppad_py::vec_double``   *dv* ( *n* )
+| ``cppad_py::vec_a_double`` *av* ( *n* )
+
+.. meta::
+   :keywords: python
+
+.. index:: python
+
+.. _vector_ctor.syntax.python:
+
+Python
+======
 | *bv* =  ``cppad_py.vec_bool`` ( *n* )
 | *iv* =  ``cppad_py.vec_int`` ( *n* )
 | *dv* =  ``cppad_py.vec_double`` ( *n* )
@@ -59,6 +84,7 @@ n
 *
 The argument *n* is a non-negative integer with default value zero;
 i.e., if it is not present, zero is used.
+(It has c++ prototype ``size_t`` *n* .)
 
 .. meta::
    :keywords: vec_bool
@@ -102,7 +128,8 @@ This result *bv* is a vector with elements of type ``double``
 
 vec_a_double
 ************
-This result ``av`` is a vector with elements of type :ref:`a_double<a_double>`.
+This result ``av`` is a vector with elements of type
+:ref:`a_double<a_double>`.
 
 .. meta::
    :keywords: example

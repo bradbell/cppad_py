@@ -92,25 +92,19 @@
 <li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="a_double.html">a_double</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="vector.html">vector</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="vector_ctor.html">vector_ctor</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="vector_size.html">vector_size</a><ul class="current">
+<li class="toctree-l5 current"><a class="current reference internal" href="#">vector_size_xam_cpp</a></li>
+<li class="toctree-l5"><a class="reference internal" href="vector_size_xam_py.html">vector_size_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="vector_set_get.html">vector_set_get</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="a_double.html">a_double</a></li>
-<li class="toctree-l4 current"><a class="reference internal" href="vector.html">vector</a><ul class="current">
-<li class="toctree-l5"><a class="reference internal" href="vector_ctor.html">vector_ctor</a></li>
-<li class="toctree-l5 current"><a class="reference internal" href="vector_size.html">vector_size</a><ul class="current">
-<li class="toctree-l6 current"><a class="current reference internal" href="#">vector_size_xam_cpp</a></li>
-<li class="toctree-l6"><a class="reference internal" href="vector_size_xam_py.html">vector_size_xam_py</a></li>
-</ul>
-</li>
-<li class="toctree-l5"><a class="reference internal" href="vector_set_get.html">vector_set_get</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cpp_utility.html">cpp_utility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="cpp_lib.html">cpp_lib</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
@@ -167,8 +161,6 @@
         
           <li><a href="library.html">library</a> &raquo;</li>
         
-          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
-        
           <li><a href="vector.html">vector</a> &raquo;</li>
         
           <li><a href="vector_size.html">vector_size</a> &raquo;</li>
@@ -202,7 +194,6 @@
 <span class="cp"># include &lt;cppad/py/cppad_py.hpp&gt;</span>
 
 <span class="kt">bool</span> <span class="nf">vector_size_xam</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">using</span> <span class="n">cppad_py</span><span class="o">::</span><span class="n">a_double</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">cppad_py</span><span class="o">::</span><span class="n">vec_bool</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">cppad_py</span><span class="o">::</span><span class="n">vec_int</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">cppad_py</span><span class="o">::</span><span class="n">vec_double</span><span class="p">;</span>
@@ -212,9 +203,9 @@
     <span class="kt">bool</span> <span class="n">ok</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
     <span class="c1">//------------------------------------------------------------------------</span>
     <span class="c1">// create vectors</span>
-    <span class="n">vec_bool</span> <span class="n">bv</span> <span class="o">=</span> <span class="n">vec_bool</span><span class="p">();</span>
-    <span class="n">vec_int</span> <span class="n">iv</span> <span class="o">=</span> <span class="n">vec_int</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-    <span class="n">vec_double</span> <span class="n">dv</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">vec_bool</span>     <span class="n">bv</span><span class="p">;</span>
+    <span class="n">vec_int</span>      <span class="n">iv</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">vec_double</span>   <span class="n">dv</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
     <span class="n">vec_a_double</span> <span class="n">av</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
     <span class="c1">//</span>
     <span class="c1">// check size of vectors</span>

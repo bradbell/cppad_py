@@ -6,6 +6,8 @@
   <meta charset="utf-8">
   <meta content="a_double_ctor, the, a_double, constructor" name="keywords" />
 <meta content="syntax" name="keywords" />
+<meta content="c++" name="keywords" />
+<meta content="python" name="keywords" />
 <meta content="purpose" name="keywords" />
 <meta content="d" name="keywords" />
 <meta content="a_other" name="keywords" />
@@ -98,26 +100,20 @@
 <li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="a_double.html">a_double</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">a_double_ctor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_unary_op.html">a_double_unary_op</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_property.html">a_double_property</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_binary.html">a_double_binary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_compare.html">a_double_compare</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_assign.html">a_double_assign</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_unary_fun.html">a_double_unary_fun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_cond_assign.html">a_double_cond_assign</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vector.html">vector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="a_double.html">a_double</a><ul class="current">
-<li class="toctree-l5 current"><a class="current reference internal" href="#">a_double_ctor</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_unary_op.html">a_double_unary_op</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_property.html">a_double_property</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_binary.html">a_double_binary</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_compare.html">a_double_compare</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_assign.html">a_double_assign</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_unary_fun.html">a_double_unary_fun</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_cond_assign.html">a_double_cond_assign</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="vector.html">vector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cpp_utility.html">cpp_utility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="cpp_lib.html">cpp_lib</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
@@ -174,8 +170,6 @@
         
           <li><a href="library.html">library</a> &raquo;</li>
         
-          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
-        
           <li><a href="a_double.html">a_double</a> &raquo;</li>
         
       <li>a_double_ctor</li>
@@ -204,7 +198,14 @@
 <div class="section" id="the-a-double-constructor">
 <span id="id1"></span><h2>The a_double Constructor<a class="headerlink" href="#the-a-double-constructor" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="#a-double-ctor-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#a-double-ctor-syntax"><span class="std std-ref">Syntax</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#a-double-ctor-syntax-c"><span class="std std-ref">C++</span></a></p></li>
+<li><p><a class="reference internal" href="#a-double-ctor-syntax-python"><span class="std std-ref">Python</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
 <li><p><a class="reference internal" href="#a-double-ctor-purpose"><span class="std std-ref">Purpose</span></a></p></li>
 <li><p><a class="reference internal" href="#a-double-ctor-d"><span class="std std-ref">d</span></a></p></li>
 <li><p><a class="reference internal" href="#a-double-ctor-a-other"><span class="std std-ref">a_other</span></a></p></li>
@@ -213,20 +214,31 @@
 </ul>
 <div class="section" id="syntax">
 <span id="a-double-ctor-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="c">
+<span id="a-double-ctor-syntax-c"></span><span id="index-2"></span><h4>C++<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cppad_py::a_double</span></code> <em>ad</em> ()</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cppad_py::a_double</span></code> <em>ad</em> ( <em>d</em> )</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cppad_py::a_double</span></code> <em>ad</em> ( <em>a_other</em> )</div>
+</div>
+</div>
+<div class="section" id="python">
+<span id="a-double-ctor-syntax-python"></span><span id="index-3"></span><h4>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
 <div class="line"><em>ad</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.a_double</span></code> ()</div>
 <div class="line"><em>ad</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.a_double</span></code> ( <em>d</em> )</div>
 <div class="line"><em>ad</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.a_double</span></code> ( <em>a_other</em> )</div>
 </div>
 </div>
+</div>
 <div class="section" id="purpose">
-<span id="a-double-ctor-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-ctor-purpose"></span><span id="index-4"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 <p>Creates a <code class="docutils literal notranslate"><span class="pre">cppad_py::a_double</span></code> object that can be use
 to track floating point operations and perform algorithmic differentiation.</p>
 </div>
 <div class="section" id="d">
-<span id="a-double-ctor-d"></span><span id="index-3"></span><h3>d<a class="headerlink" href="#d" title="Permalink to this headline">¶</a></h3>
-<p>This argument has prototype</p>
+<span id="a-double-ctor-d"></span><span id="index-5"></span><h3>d<a class="headerlink" href="#d" title="Permalink to this headline">¶</a></h3>
+<p>This argument has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">double&amp;</span></code> <em>d</em></div>
 </div>
@@ -234,8 +246,8 @@ to track floating point operations and perform algorithmic differentiation.</p>
 a constant function equal to <em>d</em> .</p>
 </div>
 <div class="section" id="a-other">
-<span id="a-double-ctor-a-other"></span><span id="index-4"></span><h3>a_other<a class="headerlink" href="#a-other" title="Permalink to this headline">¶</a></h3>
-<p>This argument has prototype</p>
+<span id="a-double-ctor-a-other"></span><span id="index-6"></span><h3>a_other<a class="headerlink" href="#a-other" title="Permalink to this headline">¶</a></h3>
+<p>This argument has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>a_other</em></div>
 </div>
@@ -243,11 +255,11 @@ a constant function equal to <em>d</em> .</p>
 of the independent variables as <em>a_other</em> .</p>
 </div>
 <div class="section" id="ad">
-<span id="a-double-ctor-ad"></span><span id="index-5"></span><h3>ad<a class="headerlink" href="#ad" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-ctor-ad"></span><span id="index-7"></span><h3>ad<a class="headerlink" href="#ad" title="Permalink to this headline">¶</a></h3>
 <p>is the <code class="docutils literal notranslate"><span class="pre">a_double</span></code> object that is constructed.</p>
 </div>
 <div class="section" id="example">
-<span id="a-double-ctor-example"></span><span id="index-6"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-ctor-example"></span><span id="index-8"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p>All of the other <code class="docutils literal notranslate"><span class="pre">a_double</span></code> examples use an <code class="docutils literal notranslate"><span class="pre">a_double</span></code>
 constructor.</p>
 <hr class="docutils" />

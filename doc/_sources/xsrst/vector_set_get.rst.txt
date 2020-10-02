@@ -57,7 +57,7 @@ vector. It must be one of the following types:
 
 i
 *
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``size_t`` *i*
 
@@ -72,7 +72,7 @@ It must be between zero and the size of the vector minus one.
 
 u
 *
-The object *u* has prototype
+The object *u* has c++ prototype
 
 | |tab| ``vec_`` *element_type* ``&`` *u*
 
@@ -85,7 +85,7 @@ The object *u* has prototype
 
 x
 *
-The argument *x* has prototype
+The argument *x* has c++ prototype
 
 | |tab| ``const`` *element_type* ``&`` *x*
 
@@ -98,7 +98,7 @@ The argument *x* has prototype
 
 v
 *
-The object *v* has the following prototype
+The object *v* has c++ prototype
 
 | |tab| ``const vec_`` *element_type* ``&`` *v*
 
@@ -111,7 +111,7 @@ The object *v* has the following prototype
 
 y
 *
-The result *y* has prototype
+The result *y* has c++ prototype
 
 | |tab| *element_type* *y*
 

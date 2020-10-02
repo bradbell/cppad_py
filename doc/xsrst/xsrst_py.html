@@ -369,14 +369,13 @@ make cppad_py.pdf
 relative to the top git repository directory.</p>
 <div class="section" id="root-section">
 <span id="xsrst-py-command-line-arguments-root-file-root-section"></span><span id="index-10"></span><h5>root_section<a class="headerlink" href="#root-section" title="Permalink to this headline">¶</a></h5>
-<p>If there is only one section in the <em>root_file</em> it is called
-the <em>root_section</em>; i.e., it is the top section in that table of contents.
-If there is more than one section in the <em>root_file</em>,
-the file must have a
-<a class="reference internal" href="begin_cmd.html#begin-cmd-parent-section"><span class="std std-ref">Parent Section</span></a> and it is the <em>root_section</em>.
+<p>If there is only one section in the <em>root_file</em>,
+the corresponding <em>section_name</em> is the <em>root_section</em> .
+If there is more than one section in the <em>root_file</em>, the file must have a
+<a class="reference internal" href="begin_cmd.html#begin-cmd-parent-section"><span class="std std-ref">Parent Section</span></a> and the corresponding <em>section_name</em>
+is the <em>root_section</em>.
 The file <em>sphinx_dir</em> <code class="code docutils literal notranslate"><span class="pre">/index.rst</span></code> must contain the line</p>
-<p>        <code class="docutils literal notranslate"><span class="pre">xsrst/</span></code> <em>section_name</em></p>
-<p>where <em>section_name</em> is the name of the <em>root_section</em>.</p>
+<p>        <code class="docutils literal notranslate"><span class="pre">xsrst/</span></code> <em>root_section</em></p>
 </div>
 </div>
 <div class="section" id="sphinx-dir">
@@ -385,12 +384,11 @@ The file <em>sphinx_dir</em> <code class="code docutils literal notranslate"><sp
 of the top git repository directory.
 The  sphinx <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>, <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>, <em>spelling</em>, and <em>keyword</em>
 files are located in this directory.
-Any files that have names ending in <code class="docutils literal notranslate"><span class="pre">.rst</span></code>,
-and that are in the directory <em>sphinx_dir</em> <code class="code docutils literal notranslate"><span class="pre">/xsrst</span></code>,
-are removed at the beginning of execution of <code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code>.
+The sub-directory <em>sphinx_dir</em> <code class="code docutils literal notranslate"><span class="pre">/xsrst</span></code> is managed by <code class="docutils literal notranslate"><span class="pre">xsrst</span></code> .
 All the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files in <em>sphinx_dir</em> <code class="code docutils literal notranslate"><span class="pre">/xsrst</span></code>
-were extracted from the source code the last time that <code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code>
-was executed.</p>
+were extracted from the source code and correspond to
+last time that <code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code> was executed.
+Files that do not change are not updated (to speed up the processing).</p>
 <div class="section" id="example-configuration-files">
 <span id="xsrst-py-command-line-arguments-sphinx-dir-example-configuration-files"></span><span id="index-12"></span><h5>Example Configuration Files<a class="headerlink" href="#example-configuration-files" title="Permalink to this headline">¶</a></h5>
 <div class="line-block">

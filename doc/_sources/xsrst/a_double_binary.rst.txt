@@ -14,7 +14,10 @@ a_double_binary
 a_double Binary Operators with an AD Result
 ###########################################
 - :ref:`a_double_binary.syntax`
+    - :ref:`a_double_binary.syntax.python`
+    - :ref:`a_double_binary.syntax.c++`
 - :ref:`a_double_binary.op`
+- :ref:`a_double_binary.fun`
 - :ref:`a_double_binary.ax`
 - :ref:`a_double_binary.ay`
 - :ref:`a_double_binary.y`
@@ -31,9 +34,31 @@ a_double Binary Operators with an AD Result
 Syntax
 ******
 
+.. meta::
+   :keywords: python
+
+.. index:: python
+
+.. _a_double_binary.syntax.python:
+
+Python
+======
 | *az* = *ax* *op* *ay*
 | *az* = *ax* *op* *y*
 | *az* = *y* *op* *ax*
+
+.. meta::
+   :keywords: c++
+
+.. index:: c++
+
+.. _a_double_binary.syntax.c++:
+
+C++
+===
+| *az* = *ax* *op* *ay*
+| *az* = *ax* *op* *y*
+| *az* = *fun* ( *y* , *ax* )
 
 .. meta::
    :keywords: op
@@ -50,7 +75,27 @@ subtraction ``-`` ,
 multiplication ``*`` ,
 division ``/`` , or
 exponentiation ``**`` .
-Note that exponentiation is a function is c++ and an operator in python.
+Note that exponentiation in c++ is special and always has the function syntax;
+i.e.,
+
+| *az* = *pow* ( *ax* , *ay* )
+| *az* = *pow* ( *ax* , *y* )
+| *az* = *pow* ( *y* , *ax* )
+
+.. meta::
+   :keywords: fun
+
+.. index:: fun
+
+.. _a_double_binary.fun:
+
+fun
+***
+This function is one of the following:
+``radd`` (right addition) ,
+``rsub`` (right subtraction) ,
+``rmul`` (right multiplication) ,
+``rdiv`` (right division).
 
 .. meta::
    :keywords: ax
@@ -61,7 +106,7 @@ Note that exponentiation is a function is c++ and an operator in python.
 
 ax
 **
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const a_double&`` *ax*
 
@@ -74,7 +119,7 @@ This object has prototype
 
 ay
 **
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const a_double&`` *ay*
 
@@ -87,7 +132,7 @@ This object has prototype
 
 y
 *
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const double&`` *y*
 
@@ -100,7 +145,7 @@ This object has prototype
 
 az
 **
-The result has prototype
+The result has c++ prototype
 
 | |tab| ``a_double`` *az*
 

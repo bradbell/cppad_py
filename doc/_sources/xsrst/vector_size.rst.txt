@@ -54,7 +54,7 @@ The object *v* has one of the following prototypes:
 
 n
 *
-The result has prototype
+The result has c++ prototype
 
 | |tab| ``size_t`` *n*
 

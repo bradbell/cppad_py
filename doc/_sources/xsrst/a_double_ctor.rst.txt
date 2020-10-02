@@ -14,6 +14,8 @@ a_double_ctor
 The a_double Constructor
 ########################
 - :ref:`a_double_ctor.syntax`
+    - :ref:`a_double_ctor.syntax.c++`
+    - :ref:`a_double_ctor.syntax.python`
 - :ref:`a_double_ctor.purpose`
 - :ref:`a_double_ctor.d`
 - :ref:`a_double_ctor.a_other`
@@ -30,6 +32,28 @@ The a_double Constructor
 Syntax
 ******
 
+.. meta::
+   :keywords: c++
+
+.. index:: c++
+
+.. _a_double_ctor.syntax.c++:
+
+C++
+===
+| ``cppad_py::a_double`` *ad* ()
+| ``cppad_py::a_double`` *ad* ( *d* )
+| ``cppad_py::a_double`` *ad* ( *a_other* )
+
+.. meta::
+   :keywords: python
+
+.. index:: python
+
+.. _a_double_ctor.syntax.python:
+
+Python
+======
 | *ad* =  ``cppad_py.a_double`` ()
 | *ad* =  ``cppad_py.a_double`` ( *d* )
 | *ad* =  ``cppad_py.a_double`` ( *a_other* )
@@ -55,7 +79,7 @@ to track floating point operations and perform algorithmic differentiation.
 
 d
 *
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const double&`` *d*
 
@@ -71,7 +95,7 @@ a constant function equal to *d* .
 
 a_other
 *******
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const a_double&`` *a_other*
 

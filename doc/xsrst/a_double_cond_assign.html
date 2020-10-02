@@ -101,30 +101,24 @@
 <li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="a_double.html">a_double</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="a_double_ctor.html">a_double_ctor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_unary_op.html">a_double_unary_op</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_property.html">a_double_property</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_binary.html">a_double_binary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_compare.html">a_double_compare</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_assign.html">a_double_assign</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_unary_fun.html">a_double_unary_fun</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">a_double_cond_assign</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="a_double_cond_assign_xam_cpp.html">a_double_cond_assign_xam_cpp</a></li>
+<li class="toctree-l5"><a class="reference internal" href="a_double_cond_assign_xam_py.html">a_double_cond_assign_xam_py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vector.html">vector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="a_double.html">a_double</a><ul class="current">
-<li class="toctree-l5"><a class="reference internal" href="a_double_ctor.html">a_double_ctor</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_unary_op.html">a_double_unary_op</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_property.html">a_double_property</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_binary.html">a_double_binary</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_compare.html">a_double_compare</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_assign.html">a_double_assign</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_unary_fun.html">a_double_unary_fun</a></li>
-<li class="toctree-l5 current"><a class="current reference internal" href="#">a_double_cond_assign</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="a_double_cond_assign_xam_cpp.html">a_double_cond_assign_xam_cpp</a></li>
-<li class="toctree-l6"><a class="reference internal" href="a_double_cond_assign_xam_py.html">a_double_cond_assign_xam_py</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="vector.html">vector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cpp_utility.html">cpp_utility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="cpp_lib.html">cpp_lib</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
@@ -180,8 +174,6 @@
           <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
         
           <li><a href="library.html">library</a> &raquo;</li>
-        
-          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
         
           <li><a href="a_double.html">a_double</a> &raquo;</li>
         
@@ -247,14 +239,14 @@ The <code class="docutils literal notranslate"><span class="pre">cond_assign</sp
 </div>
 <div class="section" id="target">
 <span id="a-double-cond-assign-target"></span><span id="index-3"></span><h3>target<a class="headerlink" href="#target" title="Permalink to this headline">¶</a></h3>
-<p>This object has prototype</p>
+<p>This object has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">a_double&amp;</span></code> <em>target</em></div>
 </div>
 </div>
 <div class="section" id="cop">
 <span id="a-double-cond-assign-cop"></span><span id="index-4"></span><h3>cop<a class="headerlink" href="#cop" title="Permalink to this headline">¶</a></h3>
-<p>This argument has prototype</p>
+<p>This argument has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*cop</span></code></div>
 </div>
@@ -265,8 +257,8 @@ The <code class="docutils literal notranslate"><span class="pre">cond_assign</sp
 <p>where <em>cop</em> is one of the following:</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 88%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><em>cop</em></p></td>
@@ -292,7 +284,7 @@ The <code class="docutils literal notranslate"><span class="pre">cond_assign</sp
 </div>
 <div class="section" id="left">
 <span id="a-double-cond-assign-left"></span><span id="index-5"></span><h3>left<a class="headerlink" href="#left" title="Permalink to this headline">¶</a></h3>
-<p>This argument has prototype</p>
+<p>This argument has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>left</em></div>
 </div>
@@ -300,7 +292,7 @@ The <code class="docutils literal notranslate"><span class="pre">cond_assign</sp
 </div>
 <div class="section" id="right">
 <span id="a-double-cond-assign-right"></span><span id="index-6"></span><h3>right<a class="headerlink" href="#right" title="Permalink to this headline">¶</a></h3>
-<p>This argument has prototype</p>
+<p>This argument has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>right</em></div>
 </div>
@@ -308,7 +300,7 @@ The <code class="docutils literal notranslate"><span class="pre">cond_assign</sp
 </div>
 <div class="section" id="if-true">
 <span id="a-double-cond-assign-if-true"></span><span id="index-7"></span><h3>if_true<a class="headerlink" href="#if-true" title="Permalink to this headline">¶</a></h3>
-<p>This argument has prototype</p>
+<p>This argument has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>if_true</em></div>
 </div>
@@ -317,7 +309,7 @@ of the comparison is true.</p>
 </div>
 <div class="section" id="if-false">
 <span id="a-double-cond-assign-if-false"></span><span id="index-8"></span><h3>if_false<a class="headerlink" href="#if-false" title="Permalink to this headline">¶</a></h3>
-<p>This argument has prototype</p>
+<p>This argument has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>if_false</em></div>
 </div>

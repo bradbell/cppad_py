@@ -424,7 +424,7 @@ If this value is zero, the system clock is used to choose the random seed.
 
 .. code-block:: py
 
-    random_seed = 0
+    random_seed = 20821659074
 
 .. meta::
    :keywords: random, start

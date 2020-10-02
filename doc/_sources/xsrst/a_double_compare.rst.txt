@@ -30,7 +30,6 @@ a_double Comparison Operators
 
 Syntax
 ******
-
 | *b* = *ax* *op* *ay*
 | *b* = *ax* *op* *y*
 
@@ -60,7 +59,7 @@ The binary operator *op* is one of the following:
 
 ax
 **
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const a_double&`` *ax*
 
@@ -73,7 +72,7 @@ This object has prototype
 
 ay
 **
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const a_double&`` *ay*
 
@@ -86,7 +85,7 @@ This object has prototype
 
 y
 *
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const double&`` *y*
 
@@ -99,7 +98,7 @@ This object has prototype
 
 b
 *
-The result has prototype
+The result has c++ prototype
 
 | |tab| ``bool`` *b*
 

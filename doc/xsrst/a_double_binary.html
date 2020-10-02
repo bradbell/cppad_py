@@ -6,7 +6,10 @@
   <meta charset="utf-8">
   <meta content="a_double_binary, a_double, binary, operators, with, an, ad, result" name="keywords" />
 <meta content="syntax" name="keywords" />
+<meta content="python" name="keywords" />
+<meta content="c++" name="keywords" />
 <meta content="op" name="keywords" />
+<meta content="fun" name="keywords" />
 <meta content="ax" name="keywords" />
 <meta content="ay" name="keywords" />
 <meta content="y" name="keywords" />
@@ -99,30 +102,24 @@
 <li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="a_double.html">a_double</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="a_double_ctor.html">a_double_ctor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_unary_op.html">a_double_unary_op</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_property.html">a_double_property</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">a_double_binary</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="a_double_binary_xam_cpp.html">a_double_binary_xam_cpp</a></li>
+<li class="toctree-l5"><a class="reference internal" href="a_double_binary_xam_py.html">a_double_binary_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_compare.html">a_double_compare</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_assign.html">a_double_assign</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_unary_fun.html">a_double_unary_fun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="a_double_cond_assign.html">a_double_cond_assign</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vector.html">vector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="a_double.html">a_double</a><ul class="current">
-<li class="toctree-l5"><a class="reference internal" href="a_double_ctor.html">a_double_ctor</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_unary_op.html">a_double_unary_op</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_property.html">a_double_property</a></li>
-<li class="toctree-l5 current"><a class="current reference internal" href="#">a_double_binary</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="a_double_binary_xam_cpp.html">a_double_binary_xam_cpp</a></li>
-<li class="toctree-l6"><a class="reference internal" href="a_double_binary_xam_py.html">a_double_binary_xam_py</a></li>
-</ul>
-</li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_compare.html">a_double_compare</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_assign.html">a_double_assign</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_unary_fun.html">a_double_unary_fun</a></li>
-<li class="toctree-l5"><a class="reference internal" href="a_double_cond_assign.html">a_double_cond_assign</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="vector.html">vector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cpp_utility.html">cpp_utility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="cpp_lib.html">cpp_lib</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
@@ -179,8 +176,6 @@
         
           <li><a href="library.html">library</a> &raquo;</li>
         
-          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
-        
           <li><a href="a_double.html">a_double</a> &raquo;</li>
         
       <li>a_double_binary</li>
@@ -209,8 +204,16 @@
 <div class="section" id="a-double-binary-operators-with-an-ad-result">
 <span id="id1"></span><h2>a_double Binary Operators with an AD Result<a class="headerlink" href="#a-double-binary-operators-with-an-ad-result" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="#a-double-binary-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#a-double-binary-syntax"><span class="std std-ref">Syntax</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#a-double-binary-syntax-python"><span class="std std-ref">Python</span></a></p></li>
+<li><p><a class="reference internal" href="#a-double-binary-syntax-c"><span class="std std-ref">C++</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
 <li><p><a class="reference internal" href="#a-double-binary-op"><span class="std std-ref">op</span></a></p></li>
+<li><p><a class="reference internal" href="#a-double-binary-fun"><span class="std std-ref">fun</span></a></p></li>
 <li><p><a class="reference internal" href="#a-double-binary-ax"><span class="std std-ref">ax</span></a></p></li>
 <li><p><a class="reference internal" href="#a-double-binary-ay"><span class="std std-ref">ay</span></a></p></li>
 <li><p><a class="reference internal" href="#a-double-binary-y"><span class="std std-ref">y</span></a></p></li>
@@ -219,46 +222,71 @@
 </ul>
 <div class="section" id="syntax">
 <span id="a-double-binary-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="python">
+<span id="a-double-binary-syntax-python"></span><span id="index-2"></span><h4>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
 <div class="line"><em>az</em> = <em>ax</em> <em>op</em> <em>ay</em></div>
 <div class="line"><em>az</em> = <em>ax</em> <em>op</em> <em>y</em></div>
 <div class="line"><em>az</em> = <em>y</em> <em>op</em> <em>ax</em></div>
 </div>
 </div>
+<div class="section" id="c">
+<span id="a-double-binary-syntax-c"></span><span id="index-3"></span><h4>C++<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><em>az</em> = <em>ax</em> <em>op</em> <em>ay</em></div>
+<div class="line"><em>az</em> = <em>ax</em> <em>op</em> <em>y</em></div>
+<div class="line"><em>az</em> = <em>fun</em> ( <em>y</em> , <em>ax</em> )</div>
+</div>
+</div>
+</div>
 <div class="section" id="op">
-<span id="a-double-binary-op"></span><span id="index-2"></span><h3>op<a class="headerlink" href="#op" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-binary-op"></span><span id="index-4"></span><h3>op<a class="headerlink" href="#op" title="Permalink to this headline">¶</a></h3>
 <p>The binary operator <em>op</em> is one of the following:
 addition <code class="docutils literal notranslate"><span class="pre">+</span></code> ,
 subtraction <code class="docutils literal notranslate"><span class="pre">-</span></code> ,
 multiplication <code class="docutils literal notranslate"><span class="pre">*</span></code> ,
 division <code class="docutils literal notranslate"><span class="pre">/</span></code> , or
 exponentiation <code class="docutils literal notranslate"><span class="pre">**</span></code> .
-Note that exponentiation is a function is c++ and an operator in python.</p>
+Note that exponentiation in c++ is special and always has the function syntax;
+i.e.,</p>
+<div class="line-block">
+<div class="line"><em>az</em> = <em>pow</em> ( <em>ax</em> , <em>ay</em> )</div>
+<div class="line"><em>az</em> = <em>pow</em> ( <em>ax</em> , <em>y</em> )</div>
+<div class="line"><em>az</em> = <em>pow</em> ( <em>y</em> , <em>ax</em> )</div>
+</div>
+</div>
+<div class="section" id="fun">
+<span id="a-double-binary-fun"></span><span id="index-5"></span><h3>fun<a class="headerlink" href="#fun" title="Permalink to this headline">¶</a></h3>
+<p>This function is one of the following:
+<code class="docutils literal notranslate"><span class="pre">radd</span></code> (right addition) ,
+<code class="docutils literal notranslate"><span class="pre">rsub</span></code> (right subtraction) ,
+<code class="docutils literal notranslate"><span class="pre">rmul</span></code> (right multiplication) ,
+<code class="docutils literal notranslate"><span class="pre">rdiv</span></code> (right division).</p>
 </div>
 <div class="section" id="ax">
-<span id="a-double-binary-ax"></span><span id="index-3"></span><h3>ax<a class="headerlink" href="#ax" title="Permalink to this headline">¶</a></h3>
-<p>This object has prototype</p>
+<span id="a-double-binary-ax"></span><span id="index-6"></span><h3>ax<a class="headerlink" href="#ax" title="Permalink to this headline">¶</a></h3>
+<p>This object has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>ax</em></div>
 </div>
 </div>
 <div class="section" id="ay">
-<span id="a-double-binary-ay"></span><span id="index-4"></span><h3>ay<a class="headerlink" href="#ay" title="Permalink to this headline">¶</a></h3>
-<p>This object has prototype</p>
+<span id="a-double-binary-ay"></span><span id="index-7"></span><h3>ay<a class="headerlink" href="#ay" title="Permalink to this headline">¶</a></h3>
+<p>This object has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>ay</em></div>
 </div>
 </div>
 <div class="section" id="y">
-<span id="a-double-binary-y"></span><span id="index-5"></span><h3>y<a class="headerlink" href="#y" title="Permalink to this headline">¶</a></h3>
-<p>This object has prototype</p>
+<span id="a-double-binary-y"></span><span id="index-8"></span><h3>y<a class="headerlink" href="#y" title="Permalink to this headline">¶</a></h3>
+<p>This object has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">double&amp;</span></code> <em>y</em></div>
 </div>
 </div>
 <div class="section" id="az">
-<span id="a-double-binary-az"></span><span id="index-6"></span><h3>az<a class="headerlink" href="#az" title="Permalink to this headline">¶</a></h3>
-<p>The result has prototype</p>
+<span id="a-double-binary-az"></span><span id="index-9"></span><h3>az<a class="headerlink" href="#az" title="Permalink to this headline">¶</a></h3>
+<p>The result has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">a_double</span></code> <em>az</em></div>
 </div>
@@ -266,7 +294,7 @@ Note that exponentiation is a function is c++ and an operator in python.</p>
 </div>
 </div>
 <div class="section" id="example">
-<span id="a-double-binary-example"></span><span id="index-7"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-binary-example"></span><span id="index-10"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="a_double_binary_xam_cpp.html#id1"><span class="std std-ref">c++</span></a>,
 <a class="reference internal" href="a_double_binary_xam_py.html#id1"><span class="std std-ref">python</span></a>.</p>
 <hr class="docutils" />

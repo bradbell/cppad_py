@@ -29,7 +29,6 @@ a_double Assignment Operators
 
 Syntax
 ******
-
 | *ax* *op* *ay*
 | *aw* *op* *y*
 
@@ -45,14 +44,14 @@ op
 The assignment operator *op* is one of the following:
 
 .. csv-table::
-    :widths: 2, 30
+    :widths: 20, 20, 20
 
-    *op* , Meaning
-    ``=`` , simple assignment
-    ``+=`` , *ax* = *ax* + ( *ay* ``or`` *y* )
-    ``-=`` , *ax* = *ax* - ( *ay* ``or`` *y* )
-    ``*=`` , *ax* = *ax* ``*`` *ay* ``or`` *y* )
-    ``/=`` , *ax* = *ax* ``/`` *ay* ``or`` *y* )
+    *op*   , *ax* Syntax       , *aw* Syntax
+    ``=``  , *ax* = *ay*       , *aw* = *y*
+    ``+=`` , *ax* = *ax* + *ay*, *aw* = *aw* + *y*
+    ``-=`` , *ax* = *ax* - *ay*, *aw* = *aw* - *y*
+    ``*=`` , *ax* = *ax* * *ay*, *aw* = *aw* * *y*
+    ``/=`` , *ax* = *ax* / *ay*, *aw* = *aw* / *y*
 
 .. meta::
    :keywords: ax
@@ -63,7 +62,7 @@ The assignment operator *op* is one of the following:
 
 ax
 **
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const a_double&`` *ax*
 
@@ -76,7 +75,7 @@ This object has prototype
 
 ay
 **
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``a_double&`` *ay*
 
@@ -89,7 +88,7 @@ This object has prototype
 
 y
 *
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``const double&`` *y*
 

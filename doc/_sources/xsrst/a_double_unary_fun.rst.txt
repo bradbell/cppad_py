@@ -28,7 +28,6 @@ Unary Functions with AD Result
 
 Syntax
 ******
-
 | *ay* = *ax* . *fun* ()
 
 .. meta::
@@ -84,11 +83,11 @@ asinh, acosh, atanh, expm1, and log1p to this list.
 
 ay
 **
-The result object has prototype
+The result object has c++ prototype
 
 | |tab| ``a_double`` *ay*
 
-and is the specified function evaluated at the specified argument; i.e.,
+and is the value of the function *fun* evaluated at the argument *ax*; i.e.,
 
 | |tab| *ay* = *fun* ( *ax* )
 

@@ -6,6 +6,8 @@
   <meta charset="utf-8">
   <meta content="vector_ctor, cppad, py, vector, constructors" name="keywords" />
 <meta content="syntax" name="keywords" />
+<meta content="c++" name="keywords" />
+<meta content="python" name="keywords" />
 <meta content="purpose" name="keywords" />
 <meta content="n" name="keywords" />
 <meta content="vec_bool" name="keywords" />
@@ -100,21 +102,15 @@
 <li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="a_double.html">a_double</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="vector.html">vector</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">vector_ctor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vector_size.html">vector_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vector_set_get.html">vector_set_get</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="a_double.html">a_double</a></li>
-<li class="toctree-l4 current"><a class="reference internal" href="vector.html">vector</a><ul class="current">
-<li class="toctree-l5 current"><a class="current reference internal" href="#">vector_ctor</a></li>
-<li class="toctree-l5"><a class="reference internal" href="vector_size.html">vector_size</a></li>
-<li class="toctree-l5"><a class="reference internal" href="vector_set_get.html">vector_set_get</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cpp_utility.html">cpp_utility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="cpp_lib.html">cpp_lib</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
@@ -171,8 +167,6 @@
         
           <li><a href="library.html">library</a> &raquo;</li>
         
-          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
-        
           <li><a href="vector.html">vector</a> &raquo;</li>
         
       <li>vector_ctor</li>
@@ -201,7 +195,14 @@
 <div class="section" id="cppad-py-vector-constructors">
 <span id="id1"></span><h2>Cppad Py Vector Constructors<a class="headerlink" href="#cppad-py-vector-constructors" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="#vector-ctor-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#vector-ctor-syntax"><span class="std std-ref">Syntax</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#vector-ctor-syntax-c"><span class="std std-ref">C++</span></a></p></li>
+<li><p><a class="reference internal" href="#vector-ctor-syntax-python"><span class="std std-ref">Python</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
 <li><p><a class="reference internal" href="#vector-ctor-purpose"><span class="std std-ref">Purpose</span></a></p></li>
 <li><p><a class="reference internal" href="#vector-ctor-n"><span class="std std-ref">n</span></a></p></li>
 <li><p><a class="reference internal" href="#vector-ctor-vec-bool"><span class="std std-ref">vec_bool</span></a></p></li>
@@ -212,6 +213,17 @@
 </ul>
 <div class="section" id="syntax">
 <span id="vector-ctor-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="c">
+<span id="vector-ctor-syntax-c"></span><span id="index-2"></span><h4>C++<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cppad_py::vec_bool</span></code>     <em>bv</em> ( <em>n</em> )</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cppad_py::vec_int</span></code>      <em>iv</em> ( <em>n</em> )</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cppad_py::vec_double</span></code>   <em>dv</em> ( <em>n</em> )</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cppad_py::vec_a_double</span></code> <em>av</em> ( <em>n</em> )</div>
+</div>
+</div>
+<div class="section" id="python">
+<span id="vector-ctor-syntax-python"></span><span id="index-3"></span><h4>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
 <div class="line"><em>bv</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.vec_bool</span></code> ( <em>n</em> )</div>
 <div class="line"><em>iv</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.vec_int</span></code> ( <em>n</em> )</div>
@@ -219,33 +231,36 @@
 <div class="line"><em>av</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.vec_a_double</span></code> ( <em>n</em> )</div>
 </div>
 </div>
+</div>
 <div class="section" id="purpose">
-<span id="vector-ctor-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<span id="vector-ctor-purpose"></span><span id="index-4"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 <p>Creates a vector with <em>n</em> elements.</p>
 </div>
 <div class="section" id="n">
-<span id="vector-ctor-n"></span><span id="index-3"></span><h3>n<a class="headerlink" href="#n" title="Permalink to this headline">¶</a></h3>
+<span id="vector-ctor-n"></span><span id="index-5"></span><h3>n<a class="headerlink" href="#n" title="Permalink to this headline">¶</a></h3>
 <p>The argument <em>n</em> is a non-negative integer with default value zero;
-i.e., if it is not present, zero is used.</p>
+i.e., if it is not present, zero is used.
+(It has c++ prototype <code class="docutils literal notranslate"><span class="pre">size_t</span></code> <em>n</em> .)</p>
 </div>
 <div class="section" id="vec-bool">
-<span id="vector-ctor-vec-bool"></span><span id="index-4"></span><h3>vec_bool<a class="headerlink" href="#vec-bool" title="Permalink to this headline">¶</a></h3>
+<span id="vector-ctor-vec-bool"></span><span id="index-6"></span><h3>vec_bool<a class="headerlink" href="#vec-bool" title="Permalink to this headline">¶</a></h3>
 <p>This result <em>bv</em> is a vector with elements of type <code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
 </div>
 <div class="section" id="vec-int">
-<span id="vector-ctor-vec-int"></span><span id="index-5"></span><h3>vec_int<a class="headerlink" href="#vec-int" title="Permalink to this headline">¶</a></h3>
+<span id="vector-ctor-vec-int"></span><span id="index-7"></span><h3>vec_int<a class="headerlink" href="#vec-int" title="Permalink to this headline">¶</a></h3>
 <p>This result <em>bv</em> is a vector with elements of type <code class="docutils literal notranslate"><span class="pre">int</span></code></p>
 </div>
 <div class="section" id="vec-double">
-<span id="vector-ctor-vec-double"></span><span id="index-6"></span><h3>vec_double<a class="headerlink" href="#vec-double" title="Permalink to this headline">¶</a></h3>
+<span id="vector-ctor-vec-double"></span><span id="index-8"></span><h3>vec_double<a class="headerlink" href="#vec-double" title="Permalink to this headline">¶</a></h3>
 <p>This result <em>bv</em> is a vector with elements of type <code class="docutils literal notranslate"><span class="pre">double</span></code></p>
 </div>
 <div class="section" id="vec-a-double">
-<span id="vector-ctor-vec-a-double"></span><span id="index-7"></span><h3>vec_a_double<a class="headerlink" href="#vec-a-double" title="Permalink to this headline">¶</a></h3>
-<p>This result <code class="docutils literal notranslate"><span class="pre">av</span></code> is a vector with elements of type <a class="reference internal" href="a_double.html#id1"><span class="std std-ref">a_double</span></a>.</p>
+<span id="vector-ctor-vec-a-double"></span><span id="index-9"></span><h3>vec_a_double<a class="headerlink" href="#vec-a-double" title="Permalink to this headline">¶</a></h3>
+<p>This result <code class="docutils literal notranslate"><span class="pre">av</span></code> is a vector with elements of type
+<a class="reference internal" href="a_double.html#id1"><span class="std std-ref">a_double</span></a>.</p>
 </div>
 <div class="section" id="example">
-<span id="vector-ctor-example"></span><span id="index-8"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="vector-ctor-example"></span><span id="index-10"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p>All of the other vector examples use the vector constructors.</p>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/vector.xsrst</span></code></p>

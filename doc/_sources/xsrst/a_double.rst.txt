@@ -48,4 +48,4 @@ Children
 
 ----
 
-xsrst input file: ``lib/cplusplus/cplusplus.xsrst``
+xsrst input file: ``lib/library.xsrst``

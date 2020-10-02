@@ -16,7 +16,7 @@ C++: Size of Vectors: Example and Test
 
 
 .. literalinclude:: ../../example/cplusplus/vector_size_xam.cpp
-    :lines: 11-37
+    :lines: 11-36
     :language: cpp
 
 ----

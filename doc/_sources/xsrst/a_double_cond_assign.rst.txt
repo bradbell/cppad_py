@@ -32,7 +32,6 @@ AD Conditional Assignment
 
 Syntax
 ******
-
 | *target* . ``cond_assign`` ( *cop* , *left* , *right* , *if_true* , *if_false* )
 
 .. meta::
@@ -69,7 +68,7 @@ The ``cond_assign`` does this.
 
 target
 ******
-This object has prototype
+This object has c++ prototype
 
 | |tab| ``a_double&`` *target*
 
@@ -82,7 +81,7 @@ This object has prototype
 
 cop
 ***
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const char *cop``
 
@@ -93,7 +92,7 @@ The comparison is
 where *cop* is one of the following:
 
 .. csv-table::
-    :widths: 3, 21
+    :widths: 10, 10
 
     *cop* ,
     ``<`` , less than
@@ -111,7 +110,7 @@ where *cop* is one of the following:
 
 left
 ****
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const a_double&`` *left*
 
@@ -126,7 +125,7 @@ It specifies the left operand in the comparison.
 
 right
 *****
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const a_double&`` *right*
 
@@ -141,7 +140,7 @@ It specifies the right operand in the comparison.
 
 if_true
 *******
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const a_double&`` *if_true*
 
@@ -157,7 +156,7 @@ of the comparison is true.
 
 if_false
 ********
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``const a_double&`` *if_false*
 
