@@ -23,10 +23,19 @@ Cppad Py Vector Constructors
 Syntax
 ******
 
-| *bv* =  ``cppad_py.vec_bool`` ( *n* )
-| *iv* =  ``cppad_py.vec_int`` ( *n* )
-| *dv* =  ``cppad_py.vec_double`` ( *n* )
-| *av* =  ``cppad_py.vec_a_double`` ( *n* )
+C++
+===
+| ``vec_bool``     *bv* =  ``vec_bool`` ( *n* )
+| ``vec_int``      *iv* =  ``vec_int`` ( *n* )
+| ``vec_double``   *dv* =  ``vec_double`` ( *n* )
+| ``vec_a_double`` *av* =  ``vec_a_double`` ( *n* )
+
+Python
+======
+| *bv* =  ``vec_bool`` ( *n* )
+| *iv* =  ``vec_int`` ( *n* )
+| *dv* =  ``vec_double`` ( *n* )
+| *av* =  ``vec_a_double`` ( *n* )
 
 Purpose
 *******
@@ -36,6 +45,7 @@ n
 *
 The argument *n* is a non-negative integer with default value zero;
 i.e., if it is not present, zero is used.
+(It has c++ prototype ``size_t`` *n* .)
 
 vec_bool
 ********
@@ -51,7 +61,8 @@ This result *bv* is a vector with elements of type ``double``
 
 vec_a_double
 ************
-This result ``av`` is a vector with elements of type :ref:`a_double<a_double>`.
+This result ``av`` is a vector with elements of type
+:ref:`a_double<a_double>`.
 
 Example
 *******
@@ -85,7 +96,7 @@ The object *v* has one of the following prototypes:
 
 n
 *
-The result has prototype
+The result has c++ prototype
 
 | |tab| ``size_t`` *n*
 
@@ -128,7 +139,7 @@ vector. It must be one of the following types:
 
 i
 *
-This argument has prototype
+This argument has c++ prototype
 
 | |tab| ``size_t`` *i*
 
@@ -136,25 +147,25 @@ It must be between zero and the size of the vector minus one.
 
 u
 *
-The object *u* has prototype
+The object *u* has c++ prototype
 
 | |tab| ``vec_`` *element_type* ``&`` *u*
 
 x
 *
-The argument *x* has prototype
+The argument *x* has c++ prototype
 
 | |tab| ``const`` *element_type* ``&`` *x*
 
 v
 *
-The object *v* has the following prototype
+The object *v* has c++ prototype
 
 | |tab| ``const vec_`` *element_type* ``&`` *v*
 
 y
 *
-The result *y* has prototype
+The result *y* has c++ prototype
 
 | |tab| *element_type* *y*
 
