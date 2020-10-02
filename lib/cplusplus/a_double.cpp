@@ -93,9 +93,9 @@ Syntax
 
 C++
 ===
-| ``a_double`` *ad* ()
-| ``a_double`` *ad* ( *d* )
-| ``a_double`` *ad* ( *a_other* )
+| ``cppad_py::a_double`` *ad* ()
+| ``cppad_py::a_double`` *ad* ( *d* )
+| ``cppad_py::a_double`` *ad* ( *a_other* )
 
 
 Python
