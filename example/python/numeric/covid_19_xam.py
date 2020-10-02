@@ -283,7 +283,7 @@ beta_bar_sim      =  2.0   # baseline value for beta
 # This is the random seed used to simulate noise in the data.
 # If this value is zero, the system clock is used to choose the random seed.
 # {xsrst_code py}
-random_seed = 0
+random_seed = 20821659074
 # {xsrst_code}
 #
 # Random Start
@@ -793,8 +793,8 @@ def covid_19_xam(call_count = 0) :
     if display_fit :
         display_fit_results(D_data, x_fit, x_lower, x_upper, std_error)
     #
-    # check that all the data residuals an less than 3.0
-    if numpy.any( numpy.abs( data_residual ) >= 4.0 ) :
+    # check that 95% of the absolute residuals are less than 3.0
+    if numpy.percentile( numpy.abs( data_residual ), 95.0 ) >= 3.0 :
         print('covid_19_xam: a weighted data residual >= 4.0')
         ok = False
     #

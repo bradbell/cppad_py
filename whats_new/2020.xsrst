@@ -56,10 +56,19 @@ can be installed at the same time
 
 10-02
 *****
-The library documentation that is for both c++ and python was improved.
-To be specific, both the c++ and python syntax was included.
-Also these sections were moved from children of :ref:`cpp_lib`
-to children of :ref:`library`.
+#.  The library documentation that is for both c++ and python was improved.
+    To be specific, both the c++ and python syntax was included.
+    Also these sections were moved from children of :ref:`cpp_lib`
+    to children of :ref:`library`.
+
+#.  The :ref:`xsrst_py` utility has been improved. To be specific, it no
+    longer overwrites ``*.rst`` files that have not changed. This makes
+    the sphinx build operation faster (by not reprocessing files
+    that have not changed).
+
+#.  Use the 95% quantile, instead of maximum, absolute residual when
+    testing simulated fit in :ref:`numeric_covid_19_xam_py`.
+    This reduces the change of a random failure.
 
 09-30
 *****

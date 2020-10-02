@@ -118,16 +118,15 @@ relative to the top git repository directory.
 
 root_section
 ------------
-If there is only one section in the *root_file* it is called
-the *root_section*; i.e., it is the top section in that table of contents.
-If there is more than one section in the *root_file*,
-the file must have a
-:ref:`begin_cmd.parent_section` and it is the *root_section*.
+If there is only one section in the *root_file*,
+the corresponding *section_name* is the *root_section* .
+If there is more than one section in the *root_file*, the file must have a
+:ref:`begin_cmd.parent_section` and the corresponding *section_name*
+is the *root_section*.
 The file *sphinx_dir* :code:`/index.rst` must contain the line
 
-|tab| ``xsrst/`` *section_name*
+|tab| ``xsrst/`` *root_section*
 
-where *section_name* is the name of the *root_section*.
 
 sphinx_dir
 ==========
@@ -135,12 +134,11 @@ The command line argument *sphinx_dir* is a sub-directory,
 of the top git repository directory.
 The  sphinx ``conf.py``, ``index.rst``, *spelling*, and *keyword*
 files are located in this directory.
-Any files that have names ending in ``.rst``,
-and that are in the directory *sphinx_dir* :code:`/xsrst`,
-are removed at the beginning of execution of ``xsrst.py``.
+The sub-directory *sphinx_dir* :code:`/xsrst` is managed by ``xsrst`` .
 All the ``.rst`` files in *sphinx_dir* :code:`/xsrst`
-were extracted from the source code the last time that ``xsrst.py``
-was executed.
+were extracted from the source code and correspond to
+last time that ``xsrst.py`` was executed.
+Files that do not change are not updated (to speed up the processing).
 
 Example Configuration Files
 ---------------------------
@@ -752,6 +750,8 @@ import re
 import os
 import pdb
 import spellchecker
+import shutil
+import filecmp
 # ---------------------------------------------------------------------------
 def replace_section_number(file_data, section_number) :
     pattern   = '\n{xsrst_section_number}'
@@ -834,8 +834,8 @@ def table_of_contents(target, section_info, level, count, section_index) :
         content  += f':ref:`{section_number}<{section_name}>` '
         content  += section_title + '`\n'
     # --------------------------------------------------------------------
-    # replace {xsrst_section_number} in output_dir/section_name.rst
-    file_name = output_dir + '/' + section_name + '.rst'
+    # replace {xsrst_section_number} in xsrst_dir/section_name.rst
+    file_name = tmp_dir + '/' + section_name + '.rst'
     file_ptr  = open(file_name, 'r')
     file_data = file_ptr.read()
     file_ptr.close()
@@ -1883,7 +1883,6 @@ def compute_output(
     list_children,
     pseudo_heading,
     jump_table,
-    output_dir,
     section_name,
     line_increment,
 ) :
@@ -2050,11 +2049,12 @@ def compute_output(
 # -----------------------------------------------------------------------------
 # write file corresponding to a section
 def write_file(
+    tmp_dir,
     section_name,
     rst_output,
 ) :
     # open output file
-    file_out = output_dir + '/' + section_name + '.rst'
+    file_out = tmp_dir + '/' + section_name + '.rst'
     file_ptr = open(file_out, 'w')
     file_ptr.write(rst_output)
     file_ptr.close()
@@ -2126,16 +2126,16 @@ for file_name in ['conf.py', 'index.rst'] :
         msg += 'in sphinx_dir = ' + sphinx_dir
         sys_exit(msg)
 #
-# remove all *.rst files from output directory so only new ones remain aftet
-# this program finishes
-output_dir = sphinx_dir + '/xsrst'
-if os.path.isdir(output_dir) :
-    for file_name in os.listdir(output_dir) :
-        if file_name.endswith('.rst') :
-            file_path = output_dir + "/" + file_name
-            os.remove(file_path)
-else :
-    os.mkdir(output_dir)
+# xsrist_dir
+xsrst_dir = sphinx_dir + '/xsrst'
+if not os.path.isdir(xsrst_dir) :
+    os.mkdir(xsrst_dir)
+#
+# tmp_dir
+tmp_dir = xsrst_dir + '/tmp'
+if os.path.isdir(tmp_dir) :
+    shutil.rmtree(tmp_dir)
+os.mkdir(tmp_dir)
 #
 # spell_checker
 spell_list           = file2list(spell_path)
@@ -2326,12 +2326,12 @@ while 0 < len(file_info_stack) :
             list_children,
             pseudo_heading,
             jump_table,
-            output_dir,
             section_name,
             line_increment,
         )
         # ---------------------------------------------------------------
         write_file(
+            tmp_dir,
             section_name,
             rst_output,
         )
@@ -2359,7 +2359,7 @@ if target == 'html' :
     output_data += '*************\n'
     output_data += '* :ref:`genindex`\n'
 #
-file_out    = output_dir + '/' + 'xsrst_automatic.rst'
+file_out    = tmp_dir + '/' + 'xsrst_automatic.rst'
 file_ptr    = open(file_out, 'w')
 file_ptr.write(output_data)
 file_ptr.close()
@@ -2385,7 +2385,24 @@ if match_line == None :
     msg += 'is missing from the toctree command in\n'
     msg += index_file
     sys_exit(msg)
-#
-# table
+# -----------------------------------------------------------------------------
+# overwrite xsrst files that have changed and then remove temporary files
+tmp_list   = os.listdir(tmp_dir)
+xsrst_list = os.listdir(xsrst_dir)
+for name in tmp_list :
+    src = tmp_dir + '/' + name
+    des = xsrst_dir + '/' + name
+    if name.endswith('.rst') :
+        if name not in xsrst_list :
+           shutil.copyfile(src, des)
+        else :
+            if not filecmp.cmp(src, des, shallow=False) :
+                os.replace(src, des)
+for name in xsrst_list :
+    if name.endswith('.rst') :
+        if name not in tmp_list :
+            os.remove( xsrst_dir + '/' + name )
+shutil.rmtree(tmp_dir)
+# ----------------------------------------------------------------------------
 print('xsrst.py: OK')
 sys.exit(0)
