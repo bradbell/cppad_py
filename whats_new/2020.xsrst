@@ -47,10 +47,15 @@ Previous Years
 
 10-02
 *****
-The library documentation that is for both c++ and python was improved.
-To be specific, both the c++ and python syntax was included.
-Also these sections were moved from children of :ref:`cpp_lib`
-to children of :ref:`library`.
+#.  The library documentation that is for both c++ and python was improved.
+    To be specific, both the c++ and python syntax was included.
+    Also these sections were moved from children of :ref:`cpp_lib`
+    to children of :ref:`library`.
+
+#.  The :ref:`xsrst_py` utility has been improved. To be specific, it no
+    longer overwrites ``*.rst`` files that have not changed. This makes
+    the sphinx build operation faster (by not reprocessing files
+    that have not changed).
 
 09-30
 *****
