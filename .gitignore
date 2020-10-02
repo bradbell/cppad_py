@@ -2,10 +2,13 @@
 /git_commit.sh
 junk
 junk.*
+# soft links to ignore
+/build
 # directories to ignore
-# /doc/
-/build/
+/build.debug/
+/build.release/
 /dist/
+# /doc/ ignored on master branch
 /cppad_py/
 /cppad_py.egg-info/
 /new.*/
@@ -15,6 +18,7 @@ junk.*
 # extensions to ignore
 *.log
 *.swp
+*.tmp
 # files and directories created to run python examples
 /example/python/check_all.py
 __pycache__/
@@ -22,4 +26,3 @@ __pycache__/
 # files created by swig
 /lib/python/cppad_py/cppad_py_swig_wrap.cpp
 /lib/python/cppad_py/swig.py
-
