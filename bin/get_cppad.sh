@@ -64,7 +64,7 @@ extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
 # The debug version has more error messaging while the release
 # version runs faster.
 # {xsrst_code sh}
-build_type='release'
+build_type='debug'
 # {xsrst_code}
 #
 # cppad_prefix
@@ -78,6 +78,17 @@ build_type='release'
 # This subdirectory ``build.`` *build_type*
 # is used to compile and test the software and a soft link is created from
 # ``build`` to this subdirectory.
+#
+# include_mixed
+# =============
+# This flag is true (false) if we are (are not)
+# including the python cppad_mixed interface.
+include_mixed='false'
+# If it is true, the install script ``bin/get_cppad_mixed.sh``
+# should be used to install Cppad together with the all the other cppad_mixed
+# requirements.
+# Otherwise, ``bin/get_cppad.sh`` should be used to install Cppad
+# and
 #
 # Warning
 # *******

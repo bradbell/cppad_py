@@ -115,8 +115,27 @@ sed -i bin/run_cmake.sh \
     -e "s|^for_hes_sparsity=.*|for_hes_sparsity='yes'|" \
 #
 # supress call to cppad_mixed build_type.sh
-sed -i bin/example/install.sh \
-    -e "s|bin/build_type.sh .*|:|"
+sed -i bin/example_install.sh \
+    -e 's|bin/build_type.sh .*|:|' \
+    -e 's|bin/install_$pkg.sh $build_type|bin/install_$pkg.sh|'
+#
+# make cppad_mixed destructor virtual
+sed -i include/cppad/mixed/base_class.hpp \
+    -e 's|[~]cppad_mixed(void);|virtual &|'
+#
+# make cppad_mixed a shared library
+sed -i src/CMakeLists.txt \
+    -e 's|ADD_LIBRARY(cppad_mixed|& SHARED|'
+#
+# make ipopt library a shared library
+sed -i bin/install_ipopt.sh \
+    -e 's| *--disable-shared||' \
+    -e 's|^\(\t*\)$debug_flags|\1--enable-shared \\\n&|'
+#
+# need to like all externals when build shared libraries
+sed -i cholesky/CMakeLists.txt \
+    -e 's|\t${suitesparse_library_path_list}|\t${gsl_library_path_list}\n&|' \
+    -e 's|\t${suitesparse_library_path_list}|\t${ipopt_library_path_list}\n&|'
 # -----------------------------------------------------------------------------
 # cppad_mixed example install
 echo_eval bin/example_install.sh use

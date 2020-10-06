@@ -9,7 +9,9 @@
 #   -D CMAKE_VERBOSE_MAKEFILE=value \
 #   -D CMAKE_BUILD_TYPE=value \
 #   -D cppad_prefix=value  \
-#   -D extra_cxx_flags=value
+#   -D extra_cxx_flags=value \
+#   -D include_mixed=value \
+#   ..
 #
 # -----------------------------------------------------------------------------
 # preamble
@@ -167,6 +169,17 @@ IF( cxx_has_stdlib )
 ELSE( cxx_has_stdlib )
     MESSAGE(STATUS "cxx_has_stdlib = \"false\"" )
 ENDIF( cxx_has_stdlib )
+# -----------------------------------------------------------------------------
+# include_mixed
+cmake_argument(
+    include_mixed FALSE BOOL "include the python cppad_mixed interface"
+)
+IF( include_mixed )
+    SET(extra_cxx_flags "${extra_cxx_flags} -D INCLUDE_MIXED=1" )
+ELSE( include_mixed )
+    SET(extra_cxx_flags "${extra_cxx_flags} -D INCLUDE_MIXED=0" )
+ENDIF( include_mixed )
+# -----------------------------------------------------------------------------
 #
 # Initialize list of tests as empty (added to by sub-directories below)
 SET(check_depends "")

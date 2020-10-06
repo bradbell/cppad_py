@@ -58,6 +58,15 @@ if not match :
 build_type = match.group(1)
 if build_type != 'debug' and build_type != 'release' :
     sys_exit('build_type is not debug or release in bin/get_cppad.sh')
+#
+# include_mixed
+pattern = r"\ninclude_mixed='([^']*)'"
+match   = re.search(pattern, string)
+if not match :
+    sys_exit('cannot find include_mixed in bin/get_cppad.sh')
+include_mixed = match.group(1)
+if include_mixed != 'true' and include_mixed != 'false' :
+    sys_exit('include_mixed is not true or false in bin/get_cppad.sh')
 # -----------------------------------------------------------------------------
 # check for $HOME in cppad_prefix
 index = cppad_prefix.find('$HOME')
@@ -122,6 +131,7 @@ command = [
     "-D", "CMAKE_BUILD_TYPE=" + build_type,
     "-D", "cppad_prefix="     + cppad_prefix,
     "-D", "extra_cxx_flags="  + extra_cxx_flags,
+    "-D", "include_mixed="    + include_mixed,
     ".."
 ]
 try :
@@ -170,6 +180,18 @@ if cxx_has_stdlib :
     extra_compile_args.append('-stdlib=libc++')
 else :
     extra_link_args = list()
+if include_mixed :
+    eigen_dir           = cppad_prefix + '/eigen/include'
+    extra_compile_args += [ '-D', 'INCLUDE_MIXED=1' , '-isystem' , eigen_dir ]
+    extra_link_args    += [
+        '-lcppad_mixed', '-lipopt',
+        '-lgsl', '-lgslcblas',  '-lm',
+        '-lcholmod' , '-lamd' , '-lcamd' , '-lcolamd' , '-lccolamd' ,
+        '-lsuitesparseconfig'
+    ]
+else :
+    extra_compile_args += [ '-D', 'INCLUDE_MIXED=0' ]
+#
 undef_macros        = list()
 if build_type == 'debug' :
     extra_compile_args.append( '-O0' )

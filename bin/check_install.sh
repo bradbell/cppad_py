@@ -31,13 +31,13 @@ fi
 echo "build_type=$build_type"
 echo "cppad_prefix=$cppad_prefix"
 # ---------------------------------------------------------------------------
-# remove old cppad_py
-list=$(find -L $cppad_prefix -name 'cppad_py')
-for dir in cppad_py $list
+# remove old cppad_py and xsrst.py
+list=$(find -L $cppad_prefix -name 'cppad_py' -or -name 'xsrst.py' )
+for name in cppad_py $list
 do
-    if [ -e "$dir" ]
+    if [ -e "$name" ]
     then
-        echo_eval rm -r $dir
+        echo_eval rm -r $name
     fi
 done
 #

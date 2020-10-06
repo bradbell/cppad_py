@@ -22,6 +22,7 @@
 # include <cppad/py/fun.hpp>
 # include <cppad/py/vector.hpp>
 # include <cppad/py/assert.hpp>
+# include <cppad/py/mixed.hpp>
 %}
 
 /*
@@ -66,6 +67,7 @@ Swig ``cppad_py`` module.
 %include <cppad/py/sparse.hpp>
 %include <cppad/py/fun.hpp>
 %include <cppad/py/assert.hpp>
+%include <cppad/py/mixed.hpp>
 
 %extend cppad_py::a_double {
         cppad_py::a_double __radd__(const double& d) const

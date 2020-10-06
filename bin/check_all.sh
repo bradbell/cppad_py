@@ -78,7 +78,7 @@ echo_eval bin/build_type.sh
 if  ls $cppad_prefix/lib/libcppad_lib.* >& /dev/null
 then
     LD_LIBRARY_PATH="$cppad_prefix/lib:$LD_LIBRARY_PATH"
-elif  ls $cppad_prefix/lib64/libcppad_lib.\* >& /dev/null
+elif  ls $cppad_prefix/lib64/libcppad_lib.* >& /dev/null
 then
     LD_LIBRARY_PATH="$cppad_prefix/lib64:$LD_LIBRARY_PATH"
 else
@@ -147,6 +147,8 @@ then
         sed -i $logfile -e '/warning.*_FORTIFY_SOURCE/d'
     fi
 fi
+# CppAD uses asserts to make sure this this is not a problem
+sed -i $logfile -e "/match_op.hpp:.*warning: ‘arg_match\[[01]\]’/d"
 #
 if grep -i 'warning' $logfile
 then
