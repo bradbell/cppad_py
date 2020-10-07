@@ -41,8 +41,8 @@
 # {xsrst_end get_cppad_mixed_sh}
 # ---------------------------------------------------------------------------
 web_page='https://github.com/bradbell/cppad_mixed.git'
-hash_key='ff01eae21963706b975ac63c73286b0e43b6a686'
-version='20200831'
+hash_key='e2855dc995a26c5803f6eb3115eca4fe073c6b57'
+version='20201006'
 # --------------------------------------------------------------------------
 name='bin/get_cppad_mixed.sh'
 if [ $0 != $name ]
@@ -116,26 +116,7 @@ sed -i bin/run_cmake.sh \
 #
 # supress call to cppad_mixed build_type.sh
 sed -i bin/example_install.sh \
-    -e 's|bin/build_type.sh .*|:|' \
-    -e 's|bin/install_$pkg.sh $build_type|bin/install_$pkg.sh|'
-#
-# make cppad_mixed destructor virtual
-sed -i include/cppad/mixed/base_class.hpp \
-    -e 's|[~]cppad_mixed(void);|virtual &|'
-#
-# make cppad_mixed a shared library
-sed -i src/CMakeLists.txt \
-    -e 's|ADD_LIBRARY(cppad_mixed|& SHARED|'
-#
-# make ipopt library a shared library
-sed -i bin/install_ipopt.sh \
-    -e 's| *--disable-shared||' \
-    -e 's|^\(\t*\)$debug_flags|\1--enable-shared \\\n&|'
-#
-# need to like all externals when build shared libraries
-sed -i cholesky/CMakeLists.txt \
-    -e 's|\t${suitesparse_library_path_list}|\t${gsl_library_path_list}\n&|' \
-    -e 's|\t${suitesparse_library_path_list}|\t${ipopt_library_path_list}\n&|'
+    -e 's|bin/build_type.sh .*|:|'
 # -----------------------------------------------------------------------------
 # cppad_mixed example install
 echo_eval bin/example_install.sh use
