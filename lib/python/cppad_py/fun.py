@@ -135,7 +135,7 @@ class a_fun :
     #
     def __init__(self, f) :
         # type swig.a_fun
-        self.af = cppad_py.swig.a_fun(f.f)
+        self.af = cppad_py.cppad_swig.a_fun(f.f)
     #
     # size_domain
     def size_domain(self) :

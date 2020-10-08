@@ -49,7 +49,7 @@ Swig ``cppad_py`` module.
 {xsrst_end module}
 */
 # ifdef SWIGPYTHON
-%module swig
+%module cppad_swig
 # endif
 /* ------------------------------------------------------------------------- */
 

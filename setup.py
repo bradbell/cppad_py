@@ -198,7 +198,7 @@ if build_type == 'debug' :
     extra_compile_args.append( '-g')
     undef_macros = [ 'NDEBUG', '_FORTIFY_SOURCE' ]
 #
-cppad_py_extension_name   = 'cppad_py/_swig'
+cppad_py_extension_name   = 'cppad_py/_cppad_swig'
 extension_module          = Extension(
     cppad_py_extension_name                               ,
     cppad_py_extension_sources                            ,
@@ -264,7 +264,7 @@ if not (pip_distribution or src_distribution) :
     for dname in os.listdir('build') :
         if dname.startswith('lib.') and dname.endswith('-' + python_version):
             for fname in os.listdir('build/' + dname + '/cppad_py' ) :
-                if fname.startswith('_swig.') :
+                if fname.startswith('_cppad_swig.') :
                     src_file = 'build/' + dname + '/cppad_py/' + fname
                     dst_file = 'cppad_py/' + fname
                     shutil.copyfile(src_file, dst_file)

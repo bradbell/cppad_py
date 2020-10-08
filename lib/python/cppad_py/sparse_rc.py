@@ -159,7 +159,7 @@ class sparse_rc :
     """Python interface to CppAD::sparse_rc"""
     #
     def __init__(self) :
-        self.rc = cppad_py.swig.sparse_rc()
+        self.rc = cppad_py.cppad_swig.sparse_rc()
     #
     # resize
     def resize(self, nr, nc, nnz) :

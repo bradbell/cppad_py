@@ -109,4 +109,4 @@ def d_fun_ctor(ax, ay) :
     av       = cppad_py.utility.numpy2vec(ay, dtype, ay.size, syntax, 'ay')
     #
     # call d_fun and return result
-    return cppad_py.swig.d_fun(au, av)
+    return cppad_py.cppad_swig.d_fun(au, av)

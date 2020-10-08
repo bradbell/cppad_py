@@ -98,7 +98,7 @@ def independent(x, dynamic = None) :
     if dynamic is None :
         syntax   = 'independent(x)'
         u = cppad_py.utility.numpy2vec(x, dtype, nx, syntax, 'x')
-        av = cppad_py.swig.independent(u)
+        av = cppad_py.cppad_swig.independent(u)
         ax = cppad_py.utility.vec2numpy(av, av.size());
         return ax
     #
@@ -106,7 +106,7 @@ def independent(x, dynamic = None) :
     syntax   = 'independent(x, dynamic)'
     u = cppad_py.utility.numpy2vec(x, dtype, nx, syntax, 'x')
     v = cppad_py.utility.numpy2vec(dynamic, dtype, nd, syntax, 'dynamic')
-    a_both   = cppad_py.swig.independent(u, v)
+    a_both   = cppad_py.cppad_swig.independent(u, v)
     ax       = numpy.empty(nx,       dtype=cppad_py.a_double)
     adynamic = numpy.empty(nd, dtype=cppad_py.a_double)
     # use copy constructor so a separate copy is made for numpy arrays
