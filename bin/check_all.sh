@@ -119,18 +119,7 @@ echo_eval_log check_copyright.sh
 bin/check_tab.sh
 echo_eval_log bin/check_xsrst.sh
 echo_eval_log bin/run_sphinx.sh html
-# -----------------------------------------------------------------------------
-if [ "$build_type" == 'release' ]
-then
-    setup_args='build_ext'
-elif [ "$build_type" == 'debug' ]
-then
-    setup_args='build_ext --debug'
-else
-    echo 'bin/check_all.sh: build_type in bin/get_cppad.sh not debug or release'
-    exit_code 1
-fi
-echo_eval_log python3 setup.py $setup_args
+echo_eval_log bin/local_build.py
 echo_eval_log cd build
 echo_eval_log make check
 echo_eval_log cd ../example/python
