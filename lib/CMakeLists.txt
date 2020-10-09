@@ -5,6 +5,11 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
+# used cmake --help-policy CMP<nnnn> to get description of each policy
+CMAKE_POLICY(SET CMP0078 NEW)
+CMAKE_POLICY(SET CMP0086 NEW)
+INCLUDE(UseSWIG)
+#
 # Initialize check for this directory
 SET(check_lib_depends "")
 #
@@ -16,28 +21,42 @@ INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_BINARY_DIR} )
 # https://cmake.org/Wiki/BuildingWinDLL
 include (GenerateExportHeader)
 #
-# cppad_py_lib (library used by sub-directories below)
-ADD_LIBRARY(cppad_py_lib SHARED
+# cppad_swig
+SET_PROPERTY(SOURCE cppad_py_swig.i PROPERTY CPLUSPLUS ON)
+SWIG_ADD_LIBRARY(cppad_swig
+    TYPE SHARED
+    LANGUAGE python
+    OUTPUT_DIR  ${CMAKE_CURRENT_BINARY_DIR}
+    OUTFILE_DIR cplusplus
+    SOURCES
+    cppad_py_swig.i
     cplusplus/a_double.cpp
     cplusplus/fun.cpp
     cplusplus/sparse.cpp
     cplusplus/cppad_vec.cpp
     cplusplus/mixed.cpp
 )
-# The file cppad_py_lib_export.h, in the current binary directory, will
+#
+# The file cppad_swig_export.h, in the current binary directory, will
 # define the symbol CPPAD_PY_LIB_PUBLIC. This symbol should be used to
-# export cppad_py_lib, when it is being compiled, and import it when
-# cppad_py_lib is being linked.
-GENERATE_EXPORT_HEADER( cppad_py_lib
-    BASE_NAME           cppad_py_lib
+# export cppad_swig, when it is being compiled, and import it when
+# cppad_swig is being linked.
+GENERATE_EXPORT_HEADER( cppad_swig
+    BASE_NAME           cppad_swig
     EXPORT_MACRO_NAME   CPPAD_PY_LIB_PUBLIC
-    EXPORT_FILE_NAME    cppad_py_lib_export.h
+    EXPORT_FILE_NAME    cppad_swig_export.h
     STATIC_DEFINE       CPPAD_PY_LIB_BUILT_AS_STATIC
 )
 #
 # additional flags for compiling cppad_py library
-SET_TARGET_PROPERTIES(
-    cppad_py_lib PROPERTIES COMPILE_FLAGS "${cppad_cxx_flags}"
+SET_TARGET_PROPERTIES(cppad_swig
+    PROPERTIES COMPILE_FLAGS "${cppad_cxx_flags}"
+)
+#
+# libraries that cppad_swig depends on
+TARGET_LINK_LIBRARIES(cppad_swig
+    ${cppad_lib_path}
+    ${Python_LIBRARIES}
 )
 #
 IF( NOT( "${check_lib_depends}" STREQUAL "" ) )

@@ -9,7 +9,7 @@
 # ifdef SWIG
 # define CPPAD_PY_LIB_PUBLIC
 # else
-# include <cppad_py_lib_export.h>
+# include <cppad_swig_export.h>
 # endif
 
 %include "std_string.i"
@@ -44,7 +44,7 @@ Is a source code language.
 Note that in C++, the library functions are in
 the ``cppad_py`` namespace,
 while in the Python language is accessed through the
-Swig ``cppad_py`` module.
+Swig ``cppad_py.`` module.
 
 {xsrst_end module}
 */

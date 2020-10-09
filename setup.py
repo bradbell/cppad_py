@@ -19,6 +19,14 @@ src_distribution = 'sdist' in sys.argv
 # Examples and tests are not included in pip distribution
 pip_distribution = not os.path.isfile( 'example/python/check_all.py.in' )
 # -----------------------------------------------------------------------------
+# python_version
+python_major_version = sys.version_info.major
+python_minor_version = sys.version_info.minor
+if python_major_version != 2 and python_major_version != 3 :
+    msg  = 'python major version number '
+    msg += str( python_major_version ) + ' is not 2 or 3'
+    sys_exit(msg)
+# -----------------------------------------------------------------------------
 # CMakeLists.txt settings
 #
 # cppad_py_version
@@ -78,6 +86,7 @@ cppad_include_file = cppad_prefix + '/include/cppad/cppad.hpp'
 flag = 0
 if not os.path.isfile( cppad_include_file ) :
     command = [ 'bin/get_cppad.sh' ]
+    print('command =', command)
     flag = subprocess.call(command)
 if flag != 0 or not os.path.isfile( cppad_include_file ) :
     msg  = 'Cannot find ' + cppad_include_file + '\n'
@@ -86,23 +95,6 @@ if flag != 0 or not os.path.isfile( cppad_include_file ) :
 # -----------------------------------------------------------------------------
 def quote_str(s) :
     return "'" + s + "'"
-# -----------------------------------------------------------------------------
-# Use swig directly (instead of through setup which seems to have trouble).
-# This creates the files cppad_py_swig_wrap.cpp and swig.py in the
-# lib/python/cppad_py directory.
-command = [
-    'swig',
-    '-c++',
-    '-python',
-    '-I./include',
-    '-o', 'lib/python/cppad_py/cppad_py_swig_wrap.cpp',
-    'lib/cppad_py_swig.i'
-]
-flag    = subprocess.call(command)
-if flag != 0 :
-    sys_exit('swig command failed')
-else :
-    print('swig command OK')
 # -----------------------------------------------------------------------------
 # Run cmake to configure C++ library for testing,
 if pip_distribution :
@@ -120,7 +112,6 @@ if pip_distribution :
     fp      = open('CMakeLists.txt', 'w')
     fp.write(fp_data)
     fp.close()
-
 if not os.path.isdir('build') :
     os.mkdir('build')
 os.chdir('build')
@@ -128,6 +119,7 @@ if os.path.isfile( 'CMakeCache.txt' ) :
     os.remove('CMakeCache.txt')
 command = [
     "cmake",
+    "-D", "CMAKE_VERBOSE_MAKEFILE=1",
     "-D", "CMAKE_BUILD_TYPE=" + build_type,
     "-D", "cppad_prefix="     + cppad_prefix,
     "-D", "extra_cxx_flags="  + extra_cxx_flags,
@@ -135,6 +127,7 @@ command = [
     ".."
 ]
 try :
+    print('command =', command)
     output = subprocess.check_output(command, stderr=subprocess.STDOUT)
 except subprocess.CalledProcessError as process_error:
     output = str(process_error.output, 'utf-8')
@@ -161,13 +154,62 @@ if match == None :
 cppad_lib_path = match.group(1)
 index          = cppad_lib_path.rfind('/')
 cppad_lib_dir  = cppad_lib_path[ : index ]
+# -----------------------------------------------------------------------------
+# Run make
+command = [ 'make' ]
+try :
+    print('command =', command)
+    output = subprocess.check_output(command, stderr=subprocess.STDOUT)
+except subprocess.CalledProcessError as process_error:
+    output = str(process_error.output, 'utf-8')
+    print(output)
+    sys_exit('make command failed')
+else :
+    print('make command OK')
+output = str(output, 'utf-8')
+print(output)
 #
 os.chdir('..')
+# -----------------------------------------------------------------------------
+# copy cppad_swig.py to lib/python/cppad_py
+shutil.copyfile('build/lib/cppad_swig.py', 'lib/python/cppad_py/cppad_swig.py')
+# -----------------------------------------------------------------------------
+# create cppad_py
+#
+# remove old cppad_py directory
+if os.path.exists('cppad_py') :
+    shutil.rmtree('cppad_py')
+#
+# copy lib/python/cppad_py directory
+shutil.copytree('lib/python/cppad_py', 'cppad_py');
+#
+# copy _cppad_swig.*
+count = 0
+for fname in os.listdir('build/lib') :
+    if fname.startswith('_cppad_swig.') :
+            src_file = 'build/lib/' + fname
+            dst_file = 'cppad_py/' + fname
+            shutil.copyfile(src_file, dst_file)
+            shutil.copymode(src_file, dst_file)
+            count = count + 1
+if count != 1 :
+    msg  = "setup.py: warning: can't find build/lib/_cppad_swig.* library\n"
+    msg += 'it should have bee created by make command in build'
+    sys.exit(msg)
+#
+# create python_version
+python_version = str(python_major_version) +"."+ str(python_minor_version)
+file_ptr = open('cppad_py/python_version', 'w')
+file_ptr.write(python_version + '\n')
+file_ptr.close()
 # -----------------------------------------------------------------------------
 # extension_sources
 # Note that cppad_py_swig_wrap.cpp is not really a source file and
 # is overwritten by the swig command above.
-cppad_py_extension_sources = [ 'lib/python/cppad_py/cppad_py_swig_wrap.cpp' ]
+cppad_py_extension_sources = list()
+for name in os.listdir('build/lib/cplusplus') :
+    if name.endswith('.cxx') :
+        cppad_py_extension_sources.append( 'build/lib/cplusplus/' + name)
 for name in os.listdir('lib/cplusplus') :
     if name.endswith('.cpp') :
         cppad_py_extension_sources.append( 'lib/cplusplus/' + name)
@@ -234,46 +276,12 @@ if not (pip_distribution or src_distribution) :
     sed_in      = open('example/python/check_all.py.in', 'r')
     sed_out     = open('example/python/check_all.py',    'w')
     command = [ 'sed', '-e', sed_cmd ]
+    print('command =', command)
     flag = subprocess.call(command, stdin=sed_in, stdout=sed_out )
     if flag != 0 :
         sys_exit('failed to create example/python/check_all.py')
     # -----------------------------------------------------------------------
-    # create the directory ./cppad_py for testing purposes
     #
-    # initialize cppad_py directory as a copy of lib/python/cppad_py
-    if os.path.exists('cppad_py') :
-        shutil.rmtree('cppad_py')
-    shutil.copytree('lib/python/cppad_py', 'cppad_py');
-    #
-    # python_version
-    python_major_version = sys.version_info.major
-    python_minor_version = sys.version_info.minor
-    if python_major_version != 2 and python_major_version != 3 :
-        msg  = 'python major version number '
-        msg += str( python_major_version ) + ' is not 2 or 3'
-        sys_exit(msg)
-    #
-    # cppad_py/python_version
-    python_version = str(python_major_version) +"."+ str(python_minor_version)
-    file_ptr = open('cppad_py/python_version', 'w')
-    file_ptr.write(python_version + '\n')
-    file_ptr.close()
-    #
-    # copy swig extension library to cppad_py
-    count = 0
-    for dname in os.listdir('build') :
-        if dname.startswith('lib.') and dname.endswith('-' + python_version):
-            for fname in os.listdir('build/' + dname + '/cppad_py' ) :
-                if fname.startswith('_cppad_swig.') :
-                    src_file = 'build/' + dname + '/cppad_py/' + fname
-                    dst_file = 'cppad_py/' + fname
-                    shutil.copyfile(src_file, dst_file)
-                    shutil.copymode(src_file, dst_file)
-                    count = count + 1
-    if count != 1 :
-        msg  = "setup.py: warning: can't find swig library to copy for "
-        msg += 'local testing of cppad_py.'
-        print(msg)
 # -----------------------------------------------------------------------------
 print('If you get a message that the CppAD object library is missing, try:')
 print('    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:' + cppad_lib_dir )

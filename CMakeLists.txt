@@ -108,9 +108,28 @@ ENDMACRO(add_to_list)
 # -----------------------------------------------------------------------------
 # make sure we have Swig available
 FIND_PACKAGE(SWIG)
-IF( NOT SWIG_FOUND )
-    MESSAGE(FATAL_ERROR "Aborting because cmake cannot find Swig")
-ENDIF( NOT SWIG_FOUND )
+IF( SWIG_FOUND )
+    MESSAGE(STATUS "Found swig ${SWIG_VERSION}")
+ELSE( SWIG_FOUND )
+    MESSAGE(FATAL_ERROR "Cannot find Swig")
+ENDIF( SWIG_FOUND )
+# -----------------------------------------------------------------------------
+# find python
+FIND_PACKAGE(Python COMPONENTS Interpreter Development)
+IF ( Python_Interpreter_FOUND )
+    print_variable(Python_INTERPRETER_ID)
+    print_variable(Python_STDLIB)
+    print_variable(Python_SITELIB)
+ELSE ( Python_Interpreter_FOUND )
+    MESSAGE(FATAL_ERROR "Cannot find python interpreter")
+ENDIF ( Python_Interpreter_FOUND )
+IF ( Python_Development_FOUND )
+    print_variable(Python_LIBRARIES)
+    print_variable(Python_INCLUDE_DIRS)
+    INCLUDE_DIRECTORIES(${Python_INCLUDE_DIRS})
+ELSE ( Python_Development_FOUND )
+    MESSAGE(FATAL_ERROR "Cannot find python interpreter")
+ENDIF ( Python_Development_FOUND )
 # -----------------------------------------------------------------------------
 # print important system variables
 print_variable(CMAKE_BINARY_DIR)
@@ -180,7 +199,6 @@ ELSE( include_mixed )
     SET(extra_cxx_flags "${extra_cxx_flags} -D INCLUDE_MIXED=0" )
 ENDIF( include_mixed )
 # -----------------------------------------------------------------------------
-#
 # Initialize list of tests as empty (added to by sub-directories below)
 SET(check_depends "")
 #
@@ -195,3 +213,4 @@ ENDIF( "${check_depends}" STREQUAL "" )
 # Add the check target
 ADD_CUSTOM_TARGET(check DEPENDS ${check_depends})
 MESSAGE(STATUS "make check: available")
+# -----------------------------------------------------------------------------

@@ -19,7 +19,9 @@ SET_TARGET_PROPERTIES(
 # link in cppad_py and cppad_lib libraries
 TARGET_LINK_LIBRARIES(
     example_cplusplus_check_all
-    cppad_py_lib ${cppad_lib_path}
+    cppad_swig
+    ${cppad_lib_path}
+    ${PYTHON_LIBRARIES}
 )
 #
 # check_example_cplusplus
