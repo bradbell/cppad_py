@@ -40,9 +40,10 @@
 #
 # {xsrst_end get_cppad_mixed_sh}
 # ---------------------------------------------------------------------------
+# CppAD mixed version information
 web_page='https://github.com/bradbell/cppad_mixed.git'
-hash_key='e2855dc995a26c5803f6eb3115eca4fe073c6b57'
-version='20201006'
+hash_key='c48f69eb78a5e9483d5bee3dc5477a6cdb902f18'
+version='20201010'
 # --------------------------------------------------------------------------
 name='bin/get_cppad_mixed.sh'
 if [ $0 != $name ]
@@ -69,6 +70,20 @@ eval $cmd
 cmd=`grep '^cppad_prefix=' bin/get_cppad.sh`
 eval $cmd
 #
+# include_mixed
+cmd=`grep '^include_mixed=' bin/get_cppad.sh`
+eval $cmd
+if [ "$include_mixed" == 'false' ]
+then
+    echo "$name: Must use bin/get_cppad.sh when include_mixed is false"
+    exit 1
+fi
+if [ "$include_mixed" != 'true' ]
+then
+    echo "$name: include_mixed is not true or false in bin/get_cppad.sh."
+    exit 1
+fi
+# ---------------------------------------------------------------------------
 echo_eval bin/build_type.sh
 # ---------------------------------------------------------------------------
 # cd into build/external

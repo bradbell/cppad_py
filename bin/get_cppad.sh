@@ -64,7 +64,7 @@ extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
 # The debug version has more error messaging while the release
 # version runs faster.
 # {xsrst_code sh}
-build_type='release'
+build_type='debug'
 # {xsrst_code}
 #
 # cppad_prefix
@@ -83,7 +83,7 @@ build_type='release'
 # =============
 # This flag is true (false) if we are (are not)
 # including the python cppad_mixed interface.
-include_mixed='false'
+include_mixed='true'
 # If it is true, the install script ``bin/get_cppad_mixed.sh``
 # should be used to install Cppad together with the all the other cppad_mixed
 # requirements.
@@ -118,6 +118,11 @@ test_cppad='false'
 #
 # {xsrst_end get_cppad_sh}
 # -----------------------------------------------------------------------------
+# CppAD version information
+remote_repo='https://github.com/coin-or/CppAD.git'
+cppad_version='20200210'
+hash_code='69d069212c039e1fecc5aba0a7ed2b0b331fe047'
+# -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
     echo $*
@@ -129,11 +134,18 @@ then
     echo "bin/get_cppad.sh: must be executed from its parent directory"
     exit 1
 fi
-# -----------------------------------------------------------------------------
-# CppAD version information
-remote_repo='https://github.com/coin-or/CppAD.git'
-cppad_version='20200210'
-hash_code='69d069212c039e1fecc5aba0a7ed2b0b331fe047'
+if [ "$include_mixed" == 'true' ]
+then
+    msg='bin/get_cppad.sh: Must use bin/get_cppad_mixed.sh '
+    msg="$msg  when include_mixed is true"
+    echo $msg
+    exit 1
+fi
+if [ "$include_mixed" != 'false' ]
+then
+    echo 'bin/get_cppad.sh: include_mixed is not true or false'
+    exit 1
+fi
 # -----------------------------------------------------------------------------
 if ! echo $cppad_prefix | grep '^/' > /dev/null
 then
