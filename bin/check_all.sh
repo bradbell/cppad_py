@@ -119,7 +119,7 @@ echo_eval_log check_copyright.sh
 bin/check_tab.sh
 echo_eval_log bin/check_xsrst.sh
 echo_eval_log bin/run_sphinx.sh html
-echo_eval_log bin/local_build.py
+echo_eval_log bin/build_local.py
 echo_eval_log cd build
 echo_eval_log make check
 echo_eval_log cd ../example/python

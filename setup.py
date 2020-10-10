@@ -96,7 +96,7 @@ if flag != 0 or not os.path.isfile( cppad_include_file ) :
 def quote_str(s) :
     return "'" + s + "'"
 # -----------------------------------------------------------------------------
-# bin/local_build.py
+# bin/build_local.py
 if pip_distribution :
     # Only using cmake to determine if -stdlib=libc++ is available
     # and the location of the cppad_lib library
@@ -112,18 +112,18 @@ if pip_distribution :
     fp      = open('CMakeLists.txt', 'w')
     fp.write(fp_data)
     fp.close()
-command = [ 'bin/local_build.py' ]
+command = [ 'bin/build_local.py' ]
 try :
     print(" ".join(command))
     output = subprocess.check_output(command, stderr=subprocess.STDOUT)
 except subprocess.CalledProcessError as process_error:
     output = str(process_error.output, 'utf-8')
     print(output)
-    sys_exit('bin/local_build.py: Error')
+    sys_exit('bin/build_local.py: Error')
 else :
     output = str(output, 'utf-8')
     print(output)
-    print('bin/local_build.py: OK')
+    print('bin/build_local.py: OK')
 #
 # cxx_has_stdlib
 fp      = open('build/cxx_has_stdlib')
@@ -205,22 +205,6 @@ setup_result = setup(
     package_dir  = { 'cppad_py' : 'lib/python/cppad_py' },
     scripts      = [ 'bin/xsrst.py' ],
 )
-# ---------------------------------------------------------------------------
-if not (pip_distribution or src_distribution) :
-    # -----------------------------------------------------------------------
-    # in example/python use check_all.py.in to create check_all.py
-    # (this is used for local testing)
-    top_srcdir  = os.getcwd()
-    sed_cmd     = 's|@CMAKE_SOURCE_DIR@|' + top_srcdir + '|'
-    sed_in      = open('example/python/check_all.py.in', 'r')
-    sed_out     = open('example/python/check_all.py',    'w')
-    command = [ 'sed', '-e', sed_cmd ]
-    print(" ".join(command) )
-    flag = subprocess.call(command, stdin=sed_in, stdout=sed_out )
-    if flag != 0 :
-        sys_exit('failed to create example/python/check_all.py')
-    # -----------------------------------------------------------------------
-    #
 # -----------------------------------------------------------------------------
 print('If you get a message that the CppAD object library is missing, try:')
 print('    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:' + cppad_lib_dir )

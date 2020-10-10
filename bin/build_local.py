@@ -12,12 +12,12 @@ import sys
 import subprocess
 import shutil
 def sys_exit(msg) :
-    sys.exit( 'local_build.py: ' + msg )
+    sys.exit( 'build_local.py: ' + msg )
 # -----------------------------------------------------------------------------
 # Checks
 #
-if sys.argv[0] != 'bin/local_build.py' :
-    sys.exit('usage: bin/local_build.py')
+if sys.argv[0] != 'bin/build_local.py' :
+    sys.exit('usage: bin/build_local.py')
 #
 if len(sys.argv) != 1 :
     sys.exit('program does not expect command line arguments')
@@ -138,5 +138,5 @@ if count != 1 :
     msg += 'it should have bee created by make command in build'
     sys.exit(msg)
 # -----------------------------------------------------------------------------
-print('local_build: OK')
+print('build_local: OK')
 sys.exit(0)
