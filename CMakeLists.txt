@@ -166,8 +166,9 @@ STRING(FIND "${cppad_lib_path}" "${cppad_prefix}" result)
 IF( NOT ${result} EQUAL "0" )
     MESSAGE(FATAL_ERROR "can't find cppad object library below ${cppad_prefix}")
 ENDIF( NOT ${result} EQUAL "0" )
+#
 # The message below about value of cppad_lib_path is used by setup.py
-MESSAGE(STATUS "cppad_lib_path = \"${cppad_lib_path}\"")
+print_variable(cppad_lib_path)
 # -----------------------------------------------------------------------------
 # extra_cxx_flags
 cmake_argument(extra_cxx_flags "" STRING
@@ -182,12 +183,13 @@ INCLUDE_DIRECTORIES( "${CMAKE_SOURCE_DIR}/include" )
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-stdlib=libc++" cxx_has_stdlib)
 IF( cxx_has_stdlib )
-    MESSAGE(STATUS "cxx_has_stdlib = \"true\"" )
+    SET(cxx_has_stdlib "true")
     SET(CMAKE_SHARED_LINKER_LFAGS "-stdlib=libc++")
     SET(extra_cxx_flags "${extra_cxx_flags} --stdlib=libc++")
 ELSE( cxx_has_stdlib )
-    MESSAGE(STATUS "cxx_has_stdlib = \"false\"" )
+    SET(cxx_has_stdlib "false")
 ENDIF( cxx_has_stdlib )
+print_variable(cxx_has_stdlib)
 # -----------------------------------------------------------------------------
 # include_mixed
 cmake_argument(
@@ -214,3 +216,5 @@ ENDIF( "${check_depends}" STREQUAL "" )
 ADD_CUSTOM_TARGET(check DEPENDS ${check_depends})
 MESSAGE(STATUS "make check: available")
 # -----------------------------------------------------------------------------
+FILE(WRITE "${CMAKE_BINARY_DIR}/cppad_lib_path" "${cppad_lib_path}")
+FILE(WRITE "${CMAKE_BINARY_DIR}/cxx_has_stdlib" "${cxx_has_stdlib}")

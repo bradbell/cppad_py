@@ -86,7 +86,7 @@ cppad_include_file = cppad_prefix + '/include/cppad/cppad.hpp'
 flag = 0
 if not os.path.isfile( cppad_include_file ) :
     command = [ 'bin/get_cppad.sh' ]
-    print('command =', command)
+    print(" ".join(command))
     flag = subprocess.call(command)
 if flag != 0 or not os.path.isfile( cppad_include_file ) :
     msg  = 'Cannot find ' + cppad_include_file + '\n'
@@ -96,7 +96,7 @@ if flag != 0 or not os.path.isfile( cppad_include_file ) :
 def quote_str(s) :
     return "'" + s + "'"
 # -----------------------------------------------------------------------------
-# Run cmake to configure C++ library for testing,
+# bin/local_build.py
 if pip_distribution :
     # Only using cmake to determine if -stdlib=libc++ is available
     # and the location of the cppad_lib library
@@ -112,96 +112,35 @@ if pip_distribution :
     fp      = open('CMakeLists.txt', 'w')
     fp.write(fp_data)
     fp.close()
-if not os.path.isdir('build') :
-    os.mkdir('build')
-os.chdir('build')
-if os.path.isfile( 'CMakeCache.txt' ) :
-    os.remove('CMakeCache.txt')
-command = [
-    "cmake",
-    "-D", "CMAKE_VERBOSE_MAKEFILE=1",
-    "-D", "CMAKE_BUILD_TYPE=" + build_type,
-    "-D", "cppad_prefix="     + cppad_prefix,
-    "-D", "extra_cxx_flags="  + extra_cxx_flags,
-    "-D", "include_mixed="    + include_mixed,
-    ".."
-]
+command = [ 'bin/local_build.py' ]
 try :
-    print('command =', command)
+    print(" ".join(command))
     output = subprocess.check_output(command, stderr=subprocess.STDOUT)
 except subprocess.CalledProcessError as process_error:
     output = str(process_error.output, 'utf-8')
     print(output)
-    sys_exit('cmake command failed')
+    sys_exit('bin/local_build.py: Error')
 else :
-    print('cmake command OK')
-output = str(output, 'utf-8')
+    output = str(output, 'utf-8')
+    print(output)
+    print('bin/local_build.py: OK')
 #
 # cxx_has_stdlib
-print(output)
-if output.find('cxx_has_stdlib = "true"') != -1 :
+fp      = open('build/cxx_has_stdlib')
+fp_data = fp.read()
+if fp_data == 'true' :
     cxx_has_stdlib = True
-elif output.find('cxx_has_stdlib = "false"') != -1 :
+elif fp_data == 'false' :
     cxx_has_stdlib = False
 else :
-    sys_exit('cannot find cxx_has_stdlib value in cmake output')
+    msg = 'build/cxx_has_stdlib: contents is not "true" or "false"'
+    sys_exit(msg)
 #
 # cppad_lib_dir
-pattern = r'cppad_lib_path = "([^"]*)"'
-match   = re.search(pattern, output)
-if match == None :
-    sys_exit('cannot find cppad_lib_path value in cmake output')
-cppad_lib_path = match.group(1)
+fp             = open('build/cppad_lib_path')
+cppad_lib_path = fp.read()
 index          = cppad_lib_path.rfind('/')
 cppad_lib_dir  = cppad_lib_path[ : index ]
-# -----------------------------------------------------------------------------
-# Run make
-command = [ 'make' ]
-try :
-    print('command =', command)
-    output = subprocess.check_output(command, stderr=subprocess.STDOUT)
-except subprocess.CalledProcessError as process_error:
-    output = str(process_error.output, 'utf-8')
-    print(output)
-    sys_exit('make command failed')
-else :
-    print('make command OK')
-output = str(output, 'utf-8')
-print(output)
-#
-os.chdir('..')
-# -----------------------------------------------------------------------------
-# copy cppad_swig.py to lib/python/cppad_py
-shutil.copyfile('build/lib/cppad_swig.py', 'lib/python/cppad_py/cppad_swig.py')
-# -----------------------------------------------------------------------------
-# create cppad_py
-#
-# remove old cppad_py directory
-if os.path.exists('cppad_py') :
-    shutil.rmtree('cppad_py')
-#
-# copy lib/python/cppad_py directory
-shutil.copytree('lib/python/cppad_py', 'cppad_py');
-#
-# copy _cppad_swig.*
-count = 0
-for fname in os.listdir('build/lib') :
-    if fname.startswith('_cppad_swig.') :
-            src_file = 'build/lib/' + fname
-            dst_file = 'cppad_py/' + fname
-            shutil.copyfile(src_file, dst_file)
-            shutil.copymode(src_file, dst_file)
-            count = count + 1
-if count != 1 :
-    msg  = "setup.py: warning: can't find build/lib/_cppad_swig.* library\n"
-    msg += 'it should have bee created by make command in build'
-    sys.exit(msg)
-#
-# create python_version
-python_version = str(python_major_version) +"."+ str(python_minor_version)
-file_ptr = open('cppad_py/python_version', 'w')
-file_ptr.write(python_version + '\n')
-file_ptr.close()
 # -----------------------------------------------------------------------------
 # extension_sources
 # Note that cppad_py_swig_wrap.cpp is not really a source file and
@@ -276,7 +215,7 @@ if not (pip_distribution or src_distribution) :
     sed_in      = open('example/python/check_all.py.in', 'r')
     sed_out     = open('example/python/check_all.py',    'w')
     command = [ 'sed', '-e', sed_cmd ]
-    print('command =', command)
+    print(" ".join(command) )
     flag = subprocess.call(command, stdin=sed_in, stdout=sed_out )
     if flag != 0 :
         sys_exit('failed to create example/python/check_all.py')

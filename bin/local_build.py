@@ -100,7 +100,7 @@ else :
 # Run make
 command = [ 'make' ]
 try :
-    print('command =', " ".join(command))
+    print(" ".join(command))
     output = subprocess.check_output(command, stderr=subprocess.STDOUT)
 except subprocess.CalledProcessError as process_error:
     output = str(process_error.output, 'utf-8')
@@ -118,11 +118,11 @@ os.chdir('..')
 if os.path.exists('cppad_py') :
     shutil.rmtree('cppad_py')
 #
+# copy cppad_swig.py to lib/python/cppad_py
+shutil.copyfile('build/lib/cppad_swig.py', 'lib/python/cppad_py/cppad_swig.py')
+#
 # copy lib/python/cppad_py directory
 shutil.copytree('lib/python/cppad_py', 'cppad_py');
-#
-# copy cppad_swig.py to cppad_py
-shutil.copyfile('build/lib/cppad_swig.py', 'cppad_py/cppad_swig.py')
 #
 # copy _cppad_swig.*
 count = 0
