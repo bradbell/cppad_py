@@ -11,8 +11,25 @@ import os
 import sys
 import subprocess
 import shutil
+# -----------------------------------------------------------------------------
 def sys_exit(msg) :
     sys.exit( 'build_local.py: ' + msg )
+#
+def sys_command(command_list) :
+    command_str = " ".join(command_list)
+    try :
+        print(command_str)
+        output = subprocess.check_output(
+            command_list, stderr=subprocess.STDOUT
+        )
+    except subprocess.CalledProcessError as process_error:
+        output = str(process_error.output, 'utf-8')
+        print(output)
+        sys_exit(command_list[0] , ': Error')
+    else :
+        output = str(output, 'utf-8')
+        print(output)
+        print(command_list[0] , ': OK')
 # -----------------------------------------------------------------------------
 # Checks
 #
@@ -76,7 +93,7 @@ if not os.path.isdir('build') :
 os.chdir('build')
 if os.path.isfile( 'CMakeCache.txt' ) :
     os.remove('CMakeCache.txt')
-command = [
+command_list = [
     "cmake",
     "-D", "CMAKE_VERBOSE_MAKEFILE=1",
     "-D", "CMAKE_BUILD_TYPE=" + build_type,
@@ -85,31 +102,11 @@ command = [
     "-D", "include_mixed="    + include_mixed,
     ".."
 ]
-try :
-    print('command =', " ".join(command) )
-    output = subprocess.check_output(command, stderr=subprocess.STDOUT)
-except subprocess.CalledProcessError as process_error:
-    output = str(process_error.output, 'utf-8')
-    print(output)
-    sys_exit('cmake command Error')
-else :
-    output = str(output, 'utf-8')
-    print(output)
-    print('cmake command OK')
+sys_command(command_list)
 # -----------------------------------------------------------------------------
 # Run make
-command = [ 'make' ]
-try :
-    print(" ".join(command))
-    output = subprocess.check_output(command, stderr=subprocess.STDOUT)
-except subprocess.CalledProcessError as process_error:
-    output = str(process_error.output, 'utf-8')
-    print(output)
-    sys_exit('make command Error')
-else :
-    output = str(output, 'utf-8')
-    print(output)
-    print('make command OK')
+command_list = [ 'make' ]
+sys_command(command_list)
 os.chdir('..')
 # -----------------------------------------------------------------------------
 # create cppad_py

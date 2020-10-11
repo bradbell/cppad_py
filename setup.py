@@ -13,8 +13,26 @@ import sys
 import subprocess
 import shutil
 from setuptools import setup, Extension
+# -----------------------------------------------------------------------------
 def sys_exit(msg) :
     sys.exit( 'setup.py: ' + msg )
+#
+def sys_command(command_list) :
+    command_str = " ".join(command_list)
+    try :
+        print(command_str)
+        output = subprocess.check_output(
+            command_list, stderr=subprocess.STDOUT
+        )
+    except subprocess.CalledProcessError as process_error:
+        output = str(process_error.output, 'utf-8')
+        print(output)
+        sys_exit(command_list[0] , ': Error')
+    else :
+        output = str(output, 'utf-8')
+        print(output)
+        print(command_list[0] , ': OK')
+# -----------------------------------------------------------------------------
 src_distribution = 'sdist' in sys.argv
 # Examples and tests are not included in pip distribution
 pip_distribution = not os.path.isfile( 'example/python/check_all.py.in' )
@@ -83,19 +101,13 @@ if index >= 0 :
 # -----------------------------------------------------------------------------
 # check if we need to install a local copy of cppad
 cppad_include_file = cppad_prefix + '/include/cppad/cppad.hpp'
-flag = 0
 if not os.path.isfile( cppad_include_file ) :
-    command = [ 'bin/get_cppad.sh' ]
-    print(" ".join(command))
-    flag = subprocess.call(command)
-if flag != 0 or not os.path.isfile( cppad_include_file ) :
     msg  = 'Cannot find ' + cppad_include_file + '\n'
-    msg += 'and bin/get_cppad.sh could not create it.'
+    if include_mixed == 'true' :
+        msg += 'use bin/get_cppad_mixed.sh to create it'
+    else :
+        msg += 'use bin/get_cppad_sh to create it'
     sys_exit(msg)
-# -----------------------------------------------------------------------------
-def quote_str(s) :
-    return "'" + s + "'"
-# -----------------------------------------------------------------------------
 # bin/build_local.py
 if pip_distribution :
     # Only using cmake to determine if -stdlib=libc++ is available
@@ -112,18 +124,8 @@ if pip_distribution :
     fp      = open('CMakeLists.txt', 'w')
     fp.write(fp_data)
     fp.close()
-command = [ 'bin/build_local.py' ]
-try :
-    print(" ".join(command))
-    output = subprocess.check_output(command, stderr=subprocess.STDOUT)
-except subprocess.CalledProcessError as process_error:
-    output = str(process_error.output, 'utf-8')
-    print(output)
-    sys_exit('bin/build_local.py: Error')
-else :
-    output = str(output, 'utf-8')
-    print(output)
-    print('bin/build_local.py: OK')
+command_list = [ 'bin/build_local.py' ]
+sys_command(command_list)
 #
 # cxx_has_stdlib
 fp      = open('build/cxx_has_stdlib')
@@ -161,7 +163,7 @@ if cxx_has_stdlib :
     extra_compile_args.append('-stdlib=libc++')
 else :
     extra_link_args = list()
-if include_mixed :
+if include_mixed == 'true' :
     eigen_dir           = cppad_prefix + '/eigen/include'
     extra_compile_args += [ '-D', 'INCLUDE_MIXED=1' , '-isystem' , eigen_dir ]
     extra_link_args    += [
