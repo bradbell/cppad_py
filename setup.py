@@ -30,7 +30,8 @@ def sys_command(command_list) :
         sys_exit(command_list[0] , ': Error')
     else :
         output = str(output, 'utf-8')
-        print(output)
+        if len(output) > 0 :
+            print(output)
         print(command_list[0] , ': OK')
 # -----------------------------------------------------------------------------
 src_distribution = 'sdist' in sys.argv
@@ -137,26 +138,19 @@ elif fp_data == 'false' :
 else :
     msg = 'build/cxx_has_stdlib: contents is not "true" or "false"'
     sys_exit(msg)
-#
-# cppad_lib_dir
-fp             = open('build/cppad_lib_path')
-cppad_lib_path = fp.read()
-index          = cppad_lib_path.rfind('/')
-cppad_lib_dir  = cppad_lib_path[ : index ]
 # -----------------------------------------------------------------------------
 # extension_sources
-# Note that cppad_py_swig_wrap.cpp is not really a source file and
-# is overwritten by the swig command above.
+# Note that cppad_py_swigPYTHON_wrap.cxx is created by build_local.py
 cppad_py_extension_sources = list()
-for name in os.listdir('build/lib/cplusplus') :
-    if name.endswith('.cxx') :
-        cppad_py_extension_sources.append( 'build/lib/cplusplus/' + name)
+cppad_py_extension_sources.append( 'build/lib/cppad_py_swigPYTHON_wrap.cxx')
 for name in os.listdir('lib/cplusplus') :
     if name.endswith('.cpp') :
         cppad_py_extension_sources.append( 'lib/cplusplus/' + name)
 # -----------------------------------------------------------------------------
 # extension_module
-include_dirs     = [ cppad_prefix + '/include', 'include' ]
+include_dirs        = [ cppad_prefix + '/include', 'include' ]
+library_dirs        = [ cppad_prefix + '/lib', cppad_prefix + '/lib64' ]
+libraries           = [ 'cppad_lib' ]
 extra_compile_args  = extra_cxx_flags.split()
 if cxx_has_stdlib :
     extra_link_args = ['-stdlib=libc++' ]
@@ -165,15 +159,8 @@ else :
     extra_link_args = list()
 if include_mixed == 'true' :
     eigen_dir           = cppad_prefix + '/eigen/include'
-    extra_compile_args += [ '-D', 'INCLUDE_MIXED=1' , '-isystem' , eigen_dir ]
-    extra_link_args    += [
-        '-lcppad_mixed', '-lipopt',
-        '-lgsl', '-lgslcblas',  '-lm',
-        '-lcholmod' , '-lamd' , '-lcamd' , '-lcolamd' , '-lccolamd' ,
-        '-lsuitesparseconfig'
-    ]
-else :
-    extra_compile_args += [ '-D', 'INCLUDE_MIXED=0' ]
+    extra_compile_args += [ '-D', 'INCLUDE_MIXED' , '-isystem' , eigen_dir ]
+    libraries          += [ 'cppad_mixed', 'ipopt', 'gsl', 'cholmod' ]
 #
 undef_macros        = list()
 if build_type == 'debug' :
@@ -189,8 +176,8 @@ extension_module          = Extension(
     extra_compile_args = extra_compile_args               ,
     undef_macros       = undef_macros                     ,
     extra_link_args    = extra_link_args                  ,
-    library_dirs       = [ cppad_lib_dir ]                ,
-    libraries          = [ 'cppad_lib' ]                  ,
+    library_dirs       = library_dirs                     ,
+    libraries          = libraries                        ,
 )
 # -----------------------------------------------------------------------------
 # setup
@@ -204,14 +191,18 @@ setup_result = setup(
     url          = 'https://github.com/bradbell/cppad_py',
     ext_modules  = [ extension_module ],
     packages     = [ 'cppad_py' ],
-    package_dir  = { 'cppad_py' : 'lib/python/cppad_py' },
+    package_dir  = { 'cppad_py' : 'cppad_py' },
     scripts      = [ 'bin/xsrst.py' ],
 )
 # -----------------------------------------------------------------------------
-print('If you get a message that the CppAD object library is missing, try:')
-print('    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:' + cppad_lib_dir )
-print('If you have a Mac system, the following may fix this problem:')
-print('    export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:' + cppad_lib_dir )
+msg  = 'If you get a message that an object library is missing, try:\n\t'
+msg += 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:'
+msg += cppad_prefix + '/<libdir>\n'
+msg += 'where <libdir> is "lib" or "lib64" or both.\n'
+msg += 'If you have a Mac system, the following may fix this problem:\n\t'
+msg += 'export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:'
+msg += cppad_prefix + '/<libdir>\n'
+print(msg)
 print('setup.py: OK')
 sys.exit(0)
 # -----------------------------------------------------------------------------

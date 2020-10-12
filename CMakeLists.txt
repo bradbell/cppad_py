@@ -148,27 +148,19 @@ IF( NOT cppad_prefix )
     MESSAGE(FATAL_ERROR "cppad_prefix is not defined by cmake command line")
 ENDIF( NOT cppad_prefix )
 #
-# cppad include directory
+# cppad include directories
 IF(EXISTS ${cppad_prefix}/include)
     INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
+    INCLUDE_DIRECTORIES( SYSTEM  ${cppad_prefix}/eigen/include )
 ELSE(EXISTS ${cppad_prefix}/include)
     MESSAGE(FATAL_ERROR "cppad include direcotry not ${cppad_prefix}/include")
 ENDIF(EXISTS ${cppad_prefix}/include)
 #
-# cppad_library
-FIND_LIBRARY(
-    cppad_lib_path
-    "cppad_lib"
-    PATHS "${cppad_prefix}/lib"
-    NO_DEFAULT_PATH
+# cppad link directories
+LINK_DIRECTORIES(
+    ${cppad_prefix}/lib
+    ${cppad_prefix}/lib64
 )
-STRING(FIND "${cppad_lib_path}" "${cppad_prefix}" result)
-IF( NOT ${result} EQUAL "0" )
-    MESSAGE(FATAL_ERROR "can't find cppad object library below ${cppad_prefix}")
-ENDIF( NOT ${result} EQUAL "0" )
-#
-# The message below about value of cppad_lib_path is used by setup.py
-print_variable(cppad_lib_path)
 # -----------------------------------------------------------------------------
 # extra_cxx_flags
 cmake_argument(extra_cxx_flags "" STRING
@@ -196,9 +188,7 @@ cmake_argument(
     include_mixed FALSE BOOL "include the python cppad_mixed interface"
 )
 IF( include_mixed )
-    SET(extra_cxx_flags "${extra_cxx_flags} -D INCLUDE_MIXED=1" )
-ELSE( include_mixed )
-    SET(extra_cxx_flags "${extra_cxx_flags} -D INCLUDE_MIXED=0" )
+    SET(extra_cxx_flags "${extra_cxx_flags} -D INCLUDE_MIXED" )
 ENDIF( include_mixed )
 # -----------------------------------------------------------------------------
 # Initialize list of tests as empty (added to by sub-directories below)
@@ -216,5 +206,5 @@ ENDIF( "${check_depends}" STREQUAL "" )
 ADD_CUSTOM_TARGET(check DEPENDS ${check_depends})
 MESSAGE(STATUS "make check: available")
 # -----------------------------------------------------------------------------
-FILE(WRITE "${CMAKE_BINARY_DIR}/cppad_lib_path" "${cppad_lib_path}")
+# Incormation used by setup.py
 FILE(WRITE "${CMAKE_BINARY_DIR}/cxx_has_stdlib" "${cxx_has_stdlib}")

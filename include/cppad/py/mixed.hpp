@@ -1,6 +1,6 @@
 # ifndef CPPAD_PY_MIXED_HPP
 # define CPPAD_PY_MIXED_HPP
-# if INCLUDE_MIXED
+# ifdef INCLUDE_MIXED
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
             Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
@@ -47,7 +47,7 @@ public:
 // mixed class
 // ----------------------------------------------------------------------------
 // version of cppad_derived that is in the SWIG interface
-class CPPAD_PY_LIB_PUBLIC mixed {
+class mixed {
 private:
     // pointer to corresponding mixed_derived class
     mixed_derived* ptr_;
@@ -70,5 +70,5 @@ public:
     void test_warning(const char* message);
 };
 
-# endif
+# endif // INCLUDE_MIXED
 # endif

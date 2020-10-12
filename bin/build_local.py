@@ -17,19 +17,9 @@ def sys_exit(msg) :
 #
 def sys_command(command_list) :
     command_str = " ".join(command_list)
-    try :
-        print(command_str)
-        output = subprocess.check_output(
-            command_list, stderr=subprocess.STDOUT
-        )
-    except subprocess.CalledProcessError as process_error:
-        output = str(process_error.output, 'utf-8')
-        print(output)
-        sys_exit(command_list[0] , ': Error')
-    else :
-        output = str(output, 'utf-8')
-        print(output)
-        print(command_list[0] , ': OK')
+    print(command_str)
+    subprocess.run(command_list, check=True)
+    print(command_list[0] , ': OK')
 # -----------------------------------------------------------------------------
 # Checks
 #
@@ -81,58 +71,86 @@ index = cppad_prefix.find('$HOME')
 if index >= 0 :
     cppad_prefix = cppad_prefix.replace( '$HOME', os.environ['HOME'] )
 # -----------------------------------------------------------------------------
+# Set build and cppad_prefix to debug or release version
+command_list = ['bin/build_type.sh']
+sys_command(command_list)
+# -----------------------------------------------------------------------------
+# Check CppAD install
 cppad_include_file = cppad_prefix + '/include/cppad/cppad.hpp'
 if not os.path.isfile( cppad_include_file ) :
     msg  = 'Cannot find ' + cppad_include_file + '\n'
     msg += 'use bin/get_cppad.sh or bin/get_cppad_mixed.sh to create it.'
     sys_exit(msg)
 # -----------------------------------------------------------------------------
+# Run swig
+#
+# remove old cppad_py
+if os.path.exists('cppad_py') :
+    shutil.rmtree('cppad_py')
+#
+# copy lib/python/cppad_py to cppad_py
+shutil.copytree('lib/python/cppad_py', 'cppad_py');
+#
+# make cure build/lib exists
+for subdir in [ 'build', 'build/lib' ] :
+    if not os.path.isdir(subdir) :
+        os.mkdir(subdir)
+#
+# remove swig output files
+for file_out in [
+    'build/lib/cppad_py_swigPYTHON_wrap.cxx',
+    'cppad_py/cppad_swig.py'
+] :
+    if os.path.isfile(file_out) :
+        os.remove(file_out)
+#
+# swig command
+command_list = [ 'swig', '-c++', '-python', '-I./include' ]
+if include_mixed == 'true' :
+    command_list += [ '-DINCLUDE_MIXED' ]
+if build_type == 'release' :
+    command_list += [ '-DNDEBUG' ]
+command_list += [ '-o' , 'build/lib/cppad_py_swigPYTHON_wrap.cxx']
+command_list += [ '-outdir', 'cppad_py' ]
+command_list += [ 'lib/cppad_py_swig.i' ]
+#
+# run the command
+sys_command(command_list)
+# -----------------------------------------------------------------------------
 # Run cmake
-if not os.path.isdir('build') :
-    os.mkdir('build')
 os.chdir('build')
 if os.path.isfile( 'CMakeCache.txt' ) :
     os.remove('CMakeCache.txt')
 command_list = [
     "cmake",
     "-D", "CMAKE_VERBOSE_MAKEFILE=1",
-    "-D", "CMAKE_BUILD_TYPE=" + build_type,
-    "-D", "cppad_prefix="     + cppad_prefix,
+    "-D", "CMAKE_BUILD_TYPE="  + build_type,
+    "-D", "cppad_prefix="      + cppad_prefix,
     "-D", "extra_cxx_flags="  + extra_cxx_flags,
-    "-D", "include_mixed="    + include_mixed,
+    "-D", "include_mixed="     + include_mixed,
     ".."
 ]
 sys_command(command_list)
+os.chdir('..')
 # -----------------------------------------------------------------------------
 # Run make
+os.chdir('build')
 command_list = [ 'make' ]
 sys_command(command_list)
 os.chdir('..')
 # -----------------------------------------------------------------------------
-# create cppad_py
-#
-# remove old cppad_py directory
-if os.path.exists('cppad_py') :
-    shutil.rmtree('cppad_py')
-#
-# copy cppad_swig.py to lib/python/cppad_py
-shutil.copyfile('build/lib/cppad_swig.py', 'lib/python/cppad_py/cppad_swig.py')
-#
-# copy lib/python/cppad_py directory
-shutil.copytree('lib/python/cppad_py', 'cppad_py');
-#
-# copy _cppad_swig.*
+# copy build/lib/lib_cppad_swig.* to cppad_py/_cppad_swig.*
 count = 0
 for fname in os.listdir('build/lib') :
-    if fname.startswith('_cppad_swig.') :
+    if fname.startswith('lib_cppad_swig.') :
             src_file = 'build/lib/' + fname
-            dst_file = 'cppad_py/' + fname
+            dst_file = 'cppad_py/' + fname[3:]
             shutil.copyfile(src_file, dst_file)
             shutil.copymode(src_file, dst_file)
             count = count + 1
 if count != 1 :
-    msg  = "setup.py: warning: can't find build/lib/_cppad_swig.* library\n"
-    msg += 'it should have bee created by make command in build'
+    msg  = "build_local.py: warning: can't find build/lib/lib_cppad_swig.*"
+    msg += 'it should have bee created by "make" command in "build" directory'
     sys.exit(msg)
 # -----------------------------------------------------------------------------
 print('build_local: OK')

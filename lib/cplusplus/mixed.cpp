@@ -1,4 +1,4 @@
-# if INCLUDE_MIXED
+# ifdef INCLUDE_MIXED
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
             Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
@@ -102,4 +102,4 @@ void mixed::test_warning(const char* message)
 {   ptr_->warning( std::string(message) );
 }
 
-# endif
+# endif // INCLUDE_MIXED

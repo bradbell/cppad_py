@@ -6,9 +6,6 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 # used cmake --help-policy CMP<nnnn> to get description of each policy
-CMAKE_POLICY(SET CMP0078 NEW)
-CMAKE_POLICY(SET CMP0086 NEW)
-INCLUDE(UseSWIG)
 #
 # Initialize check for this directory
 SET(check_lib_depends "")
@@ -21,42 +18,39 @@ INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_BINARY_DIR} )
 # https://cmake.org/Wiki/BuildingWinDLL
 include (GenerateExportHeader)
 #
-# cppad_swig
-SET_PROPERTY(SOURCE cppad_py_swig.i PROPERTY CPLUSPLUS ON)
-SWIG_ADD_LIBRARY(cppad_swig
-    TYPE SHARED
-    LANGUAGE python
-    OUTPUT_DIR  ${CMAKE_CURRENT_BINARY_DIR}
-    OUTFILE_DIR cplusplus
-    SOURCES
-    cppad_py_swig.i
+# _cppad_swig
+# assume that swig has run with c++ output in ${CMAKE_CURRENT_BINARY_DIR}
+ADD_LIBRARY(_cppad_swig SHARED
     cplusplus/a_double.cpp
     cplusplus/fun.cpp
     cplusplus/sparse.cpp
     cplusplus/cppad_vec.cpp
     cplusplus/mixed.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/cppad_py_swigPYTHON_wrap.cxx
+)
+SET_TARGET_PROPERTIES(
+    _cppad_swig PROPERTIES COMPILE_FLAGS "${extra_cxx_flags}"
+)
+#
+# libraries that cppad_swig depends on
+TARGET_LINK_LIBRARIES(_cppad_swig
+    cppad_lib
+    cppad_mixed
+    ipopt
+    cholmod
+    gsl
+    ${Python_LIBRARIES}
 )
 #
 # The file cppad_swig_export.h, in the current binary directory, will
 # define the symbol CPPAD_PY_LIB_PUBLIC. This symbol should be used to
 # export cppad_swig, when it is being compiled, and import it when
 # cppad_swig is being linked.
-GENERATE_EXPORT_HEADER( cppad_swig
+GENERATE_EXPORT_HEADER(_cppad_swig
     BASE_NAME           cppad_swig
     EXPORT_MACRO_NAME   CPPAD_PY_LIB_PUBLIC
     EXPORT_FILE_NAME    cppad_swig_export.h
     STATIC_DEFINE       CPPAD_PY_LIB_BUILT_AS_STATIC
-)
-#
-# additional flags for compiling cppad_py library
-SET_TARGET_PROPERTIES(cppad_swig
-    PROPERTIES COMPILE_FLAGS "${cppad_cxx_flags}"
-)
-#
-# libraries that cppad_swig depends on
-TARGET_LINK_LIBRARIES(cppad_swig
-    ${cppad_lib_path}
-    ${Python_LIBRARIES}
 )
 #
 IF( NOT( "${check_lib_depends}" STREQUAL "" ) )
