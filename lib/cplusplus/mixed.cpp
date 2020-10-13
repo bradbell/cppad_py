@@ -17,12 +17,19 @@ mixed_derived::mixed_derived(
     size_t                                n_random      ,
     bool                                  quasi_fixed   ,
     bool                                  bool_sparsity ,
-    const  CppAD::mixed::d_sparse_rcv&    A_rcv         )
+    const  CppAD::mixed::d_sparse_rcv&    A_rcv         ,
+    PyObject*                             warning       )
 :
-cppad_mixed(
-    n_fixed, n_random, quasi_fixed, bool_sparsity, A_rcv
-)
+cppad_mixed( n_fixed, n_random, quasi_fixed, bool_sparsity, A_rcv ) ,
+warning_(warning)
 { }
+//
+// warning
+void mixed_derived::warning(const std::string& message)
+{   PyObject* arglist = Py_BuildValue("(s)", message.c_str() );
+    PyEval_CallObject(warning_, arglist);
+    Py_DECREF(arglist);
+}
 
 // ---------------------------------------------------------------------------
 // mixed class
@@ -33,31 +40,40 @@ mixed::mixed(
     size_t                         n_random      ,
     bool                           quasi_fixed   ,
     bool                           bool_sparsity ,
-    cppad_py::sparse_rcv&          A_rcv         )
-{   // copy_A_rc
+    cppad_py::sparse_rcv&          A_rcv         ,
+    PyObject*                      warning       )
+{   // --------------------------------------------------
+    // copy_A_rc
     size_t nr  = A_rcv.nr();
     size_t nc  = A_rcv.nc();
     size_t nnz = A_rcv.nnz();
     CppAD::mixed::sparse_rc copy_A_rc(nr, nc, nnz);
     for(size_t k = 0; k < nnz; ++k)
         copy_A_rc.set(k, A_rcv.row()[k], A_rcv.col()[k]);
+    // --------------------------------------------------
     // copy_A_rcv
     CppAD::mixed::d_sparse_rcv copy_A_rcv( copy_A_rc );
     for(size_t k = 0; k < nnz; ++k)
         copy_A_rcv.set(k, A_rcv.val()[k]);
+    // --------------------------------------------------
     // ptr_
     ptr_ = new mixed_derived(
         n_fixed,
         n_random,
         quasi_fixed,
         bool_sparsity,
-        copy_A_rcv
+        copy_A_rcv,
+        warning
     );
     assert( ptr_ != CPPAD_NULL );
 }
 // destructor
 mixed::~mixed(void)
 {   delete ptr_;
+}
+// post_warning
+void mixed::post_warning(const char* message)
+{   ptr_->warning( std::string(message) );
 }
 
 # endif // INCLUDE_MIXED

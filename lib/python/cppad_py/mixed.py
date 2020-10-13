@@ -29,7 +29,8 @@ class mixed :
     | |tab| *n_random* ,
     | |tab| *quasi_fixed* ,
     | |tab| *bool_sparsity* ,
-    | |tab| *A_rcv*
+    | |tab| *A_rcv* ,
+    | |tab| *warning*
     | )
 
     mixed_obj
@@ -64,6 +65,26 @@ class mixed :
     where :math:`\hat{u} ( \theta )` is the
     optimal random effects as a function of the fixed effects.
 
+    warning
+    *******
+    is a python function that gets called when *mixed_obj*
+    has a warning to report.
+    It's *message* argument is an `str` describing the warning.
+
+    Syntax
+    ======
+    | *warning* ( *message* )
+
+    post_warning
+    ************
+    is a mixed class member function that calls the *warning* function.
+    It's *message* argument is an `str` describing the warning.
+    It's main purpose is for testing.
+
+    Syntax
+    ======
+    | *mixed_obj* . ``post_warning`` ( *message* )
+
     {xsrst_children
       example/python/mixed/ctor_xam.py
     }
@@ -76,8 +97,12 @@ class mixed :
     """
     #
     def __init__(
-        self, n_fixed, n_random, quasi_newton, bool_sparsity, A_rcv
+        self, n_fixed, n_random, quasi_newton, bool_sparsity, A_rcv, warning
     ) :
         self.obj = cppad_py.cppad_swig.mixed(
-            n_fixed, n_random, quasi_newton, bool_sparsity, A_rcv.rcv
+            n_fixed, n_random, quasi_newton, bool_sparsity, A_rcv.rcv, warning
         )
+    def warning(self, message) :
+        self.obj.warning(message)
+    def post_warning(self, message) :
+        self.obj.post_warning(message)
