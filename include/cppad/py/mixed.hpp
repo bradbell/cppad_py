@@ -36,6 +36,8 @@ public:
     );
     // warning
     void warning(const std::string& warning);
+    // fatal_error
+    void fatal_error(const std::string& warning);
 };
 # endif
 
@@ -62,6 +64,8 @@ public:
     ~mixed(void);
     // post_warning
     void post_warning(const char* message);
+    // post_fatal_error
+    void post_fatal_error(const char* message);
 };
 
 # endif // INCLUDE_MIXED

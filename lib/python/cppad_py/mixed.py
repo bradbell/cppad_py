@@ -77,13 +77,24 @@ class mixed :
 
     post_warning
     ************
-    is a mixed class member function that calls the *warning* function.
+    is a mixed class member function posts a warning.
     It's *message* argument is an `str` describing the warning.
     It's main purpose is for testing.
 
     Syntax
     ======
     | *mixed_obj* . ``post_warning`` ( *message* )
+
+    post_fatal_error
+    ****************
+    is a mixed class member function that posts a fatal error.
+    It's *message* argument is an `str` describing the fatal error.
+    A call to this function will raise a python ``RuntimeError`` with
+    the specified message.  It's main purpose is for testing.
+
+    Syntax
+    ======
+    | *mixed_obj* . ``post_fatal_error`` ( *message* )
 
     {xsrst_children
       example/python/mixed/ctor_xam.py
@@ -106,3 +117,5 @@ class mixed :
         self.obj.warning(message)
     def post_warning(self, message) :
         self.obj.post_warning(message)
+    def post_fatal_error(self, message) :
+        self.obj.post_fatal_error(message)

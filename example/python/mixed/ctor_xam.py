@@ -31,10 +31,15 @@ def ctor_xam() :
         warning
     )
     mixed_obj.post_warning('Testing warning')
+    try :
+        mixed_obj.post_fatal_error('Testing fatal error')
+    except RuntimeError as error :
+        if str(error) == 'Testing fatal error' :
+            ok_list.append(True)
     #
-    ok = len(ok_list) == 1
-    if ok :
-        ok = ok and ok_list[0] == True
+    ok = len(ok_list) == 2
+    for i in range( len(ok_list) ) :
+        ok = ok and ok_list[i] == True
     return ok
 #
 # END SOURCE

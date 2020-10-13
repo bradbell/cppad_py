@@ -30,6 +30,12 @@ void mixed_derived::warning(const std::string& message)
     PyEval_CallObject(warning_, arglist);
     Py_DECREF(arglist);
 }
+//
+// fatal_error
+void mixed_derived::fatal_error(const std::string& message)
+{   // swig exceptions are set up to catch std::runtime_error
+    throw std::runtime_error(message);
+}
 
 // ---------------------------------------------------------------------------
 // mixed class
@@ -74,6 +80,10 @@ mixed::~mixed(void)
 // post_warning
 void mixed::post_warning(const char* message)
 {   ptr_->warning( std::string(message) );
+}
+// post_fatal_error
+void mixed::post_fatal_error(const char* message)
+{   ptr_->fatal_error( std::string(message) );
 }
 
 # endif // INCLUDE_MIXED
