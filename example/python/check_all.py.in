@@ -25,6 +25,8 @@ def run_test(module_name, fun_name) :
 # -----------------------------------------------------------------------------
 mixed_list = [
     'ctor_xam',
+    'warning_xam',
+    'fatal_error_xam',
 ]
 os.chdir('mixed')
 for name in mixed_list :

@@ -5,6 +5,19 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
+"""
+{xsrst_begin_parent py_mixed}
+
+Python: Laplace Approximation of Mixed Effects Models
+#####################################################
+
+Children
+********
+{xsrst_child_list
+}
+
+{xsrst_end py_mixed}
+"""
 import cppad_py
 import numpy
 class mixed :
@@ -68,33 +81,7 @@ class mixed :
     warning
     *******
     is a python function that gets called when *mixed_obj*
-    has a warning to report.
-    It's *message* argument is an `str` describing the warning.
-
-    Syntax
-    ======
-    | *warning* ( *message* )
-
-    post_warning
-    ************
-    is a mixed class member function posts a warning.
-    It's *message* argument is an `str` describing the warning.
-    It's main purpose is for testing.
-
-    Syntax
-    ======
-    | *mixed_obj* . ``post_warning`` ( *message* )
-
-    post_fatal_error
-    ****************
-    is a mixed class member function that posts a fatal error.
-    It's *message* argument is an `str` describing the fatal error.
-    A call to this function will raise a python ``RuntimeError`` with
-    the specified message.  It's main purpose is for testing.
-
-    Syntax
-    ======
-    | *mixed_obj* . ``post_fatal_error`` ( *message* )
+    has a warning to report; see :ref:`py_mixed_warning`.
 
     {xsrst_children
       example/python/mixed/ctor_xam.py
@@ -113,9 +100,75 @@ class mixed :
         self.obj = cppad_py.cppad_swig.mixed(
             n_fixed, n_random, quasi_newton, bool_sparsity, A_rcv.rcv, warning
         )
+    """
+    -------------------------------------------------------------------------
+    {xsrst_begin py_mixed_warning}
+    {xsrst_spell
+        obj
+    }
+
+    Mixed Class Warnings
+    ####################
+
+    Syntax
+    ******
+    | *warning* ( *message* )
+    | *mixed_obj* . ``post_warning`` ( *message* )
+
+    warning
+    *******
+    This is the :ref:`py_mixed_ctor.warning` argument to the  mixed class
+    constructor.
+    It's *message* argument is an `str` describing the warning.
+
+    post_warning
+    ************
+    is a mixed class member function that posts a warning.
+    It's *message* argument is an `str` describing the warning.
+    It's main purpose is for testing.
+
+    {xsrst_children
+      example/python/mixed/warning_xam.py
+    }
+    Example
+    *******
+    :ref:`mixed_warning_xam_py<mixed_warning_xam_py>`
+
+    {xsrst_end py_mixed_warning}
+    -------------------------------------------------------------------------
+    """
     def warning(self, message) :
         self.obj.warning(message)
     def post_warning(self, message) :
         self.obj.post_warning(message)
+    """
+    {xsrst_begin py_mixed_fatal_error}
+    {xsrst_spell
+        obj
+    }
+
+    Mixed Class Fatal Errors
+    ########################
+
+    Syntax
+    ******
+    | *mixed_obj* . ``post_fatal_error`` ( *message* )
+
+    post_fatal_error
+    ****************
+    is a mixed class member function that posts a fatal error.
+    It's *message* argument is an `str` describing the error.
+    A call to this function will raise a python ``RuntimeError`` with
+    the specified message.  It's main purpose is for testing.
+
+    {xsrst_children
+      example/python/mixed/fatal_error_xam.py
+    }
+    Example
+    *******
+    :ref:`mixed_fatal_error_xam_py<mixed_fatal_error_xam_py>`
+
+    {xsrst_end py_mixed_fatal_error}
+    """
     def post_fatal_error(self, message) :
         self.obj.post_fatal_error(message)
