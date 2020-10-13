@@ -17,6 +17,8 @@ No Parent Result
 
 The file ``children.py`` does not contain a begin parent command
 and hence all the sections in that file are children of this section.
+The source code for this example is indented similar to the
+:ref:`indent_exam`.
 
 .. meta::
    :keywords: children.py, file
