@@ -43,4 +43,5 @@ from cppad_py.sparse_jac      import d_fun_sparse_jac_for
 from cppad_py.sparse_jac      import d_fun_sparse_jac_rev
 from cppad_py.sparse_rc       import sparse_rc
 from cppad_py.sparse_rcv      import sparse_rcv
+from cppad_py.mixed           import mixed
 # END_SORT_THIS_LINE_MINUS_1

@@ -18,6 +18,7 @@ Children
     lib/python/cppad_py/fun.py
     lib/python/cppad_py/sparse.xsrst
     lib/python/cppad_py/utility.xsrst
+    lib/python/cppad_py/mixed.py
     lib/python/cppad_py/more_py.xsrst
 }
 

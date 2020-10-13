@@ -22,8 +22,6 @@
 # ifndef SWIG
 // class derived from CppAD::mixed::cppad_mixed and not in SWIG interface
 class CPPAD_PY_LIB_PUBLIC mixed_derived : public cppad_mixed {
-    PyObject*  fatal_error_;
-    PyObject*  warning_;
 public:
     // ctor
     mixed_derived(
@@ -31,14 +29,8 @@ public:
         size_t                             n_random      ,
         bool                               quasi_fixed   ,
         bool                               bool_sparsity ,
-        const  CppAD::mixed::d_sparse_rcv& A_rcv         ,
-        PyObject*                          fatal_error   ,
-        PyObject*                          warning
+        const CppAD::mixed::d_sparse_rcv&  A_rcv
     );
-    // warning
-    void fatal_error(const std::string& message);
-    // warning
-    void warning(const std::string& message);
 };
 # endif
 
@@ -58,16 +50,10 @@ public:
         size_t                         n_random      ,
         bool                           quasi_fixed   ,
         bool                           bool_sparsity ,
-        const  cppad_py::sparse_rcv&   A_rcv         ,
-        PyObject*                      fatal_error   ,
-        PyObject*                      warning
+        cppad_py::sparse_rcv&          A_rcv
     );
     // destructor
     ~mixed(void);
-    // test_fatal_error
-    void test_fatal_error(const char* message);
-    // test_warning
-    void test_warning(const char* message);
 };
 
 # endif // INCLUDE_MIXED

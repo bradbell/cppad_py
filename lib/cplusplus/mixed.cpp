@@ -17,42 +17,12 @@ mixed_derived::mixed_derived(
     size_t                                n_random      ,
     bool                                  quasi_fixed   ,
     bool                                  bool_sparsity ,
-    const  CppAD::mixed::d_sparse_rcv&    A_rcv         ,
-    PyObject*                             fatal_error   ,
-    PyObject*                             warning       )
-    :
-    cppad_mixed(
-        n_fixed, n_random, quasi_fixed, bool_sparsity, A_rcv
-    ) ,
-    fatal_error_(fatal_error) ,
-    warning_(warning)
-    {   if( ! PyCallable_Check(fatal_error_) )
-        {   PyErr_SetString(
-                PyExc_RuntimeError, "mixed ctor: fatal_error is not callable"
-            );
-        }
-        if( ! PyCallable_Check(warning_) )
-        {   PyErr_SetString(
-                PyExc_RuntimeError, "mixed ctor: warning is not callable"
-            );
-        }
-    }
-
-// fatal_error
-void mixed_derived::fatal_error(const std::string& message)
-{   PyObject* arglist = Py_BuildValue("(s)", message.c_str() );
-    PyEval_CallObject(fatal_error_, arglist);
-    Py_DECREF(arglist);
-    PyErr_SetString(
-        PyExc_RuntimeError, "mixed: fatal_error should not return"
-    );
-}
-// warning
-void mixed_derived::warning(const std::string& message)
-{   PyObject* arglist = Py_BuildValue("(s)", message.c_str() );
-    PyEval_CallObject(warning_, arglist);
-    Py_DECREF(arglist);
-}
+    const  CppAD::mixed::d_sparse_rcv&    A_rcv         )
+:
+cppad_mixed(
+    n_fixed, n_random, quasi_fixed, bool_sparsity, A_rcv
+)
+{ }
 
 // ---------------------------------------------------------------------------
 // mixed class
@@ -63,43 +33,31 @@ mixed::mixed(
     size_t                         n_random      ,
     bool                           quasi_fixed   ,
     bool                           bool_sparsity ,
-    const  cppad_py::sparse_rcv&   A_rcv         ,
-    PyObject*                      fatal_error   ,
-    PyObject*                      warning       )
-{   // tmp_rc
+    cppad_py::sparse_rcv&          A_rcv         )
+{   // copy_A_rc
     size_t nr  = A_rcv.nr();
     size_t nc  = A_rcv.nc();
     size_t nnz = A_rcv.nnz();
-    CppAD::mixed::sparse_rc tmp_rc(nr, nc, nnz);
+    CppAD::mixed::sparse_rc copy_A_rc(nr, nc, nnz);
     for(size_t k = 0; k < nnz; ++k)
-        tmp_rc.set(k, A_rcv.row()[k], A_rcv.col()[k]);
-    // tmp_rcv
-    CppAD::mixed::d_sparse_rcv tmp_rcv( tmp_rc );
+        copy_A_rc.set(k, A_rcv.row()[k], A_rcv.col()[k]);
+    // copy_A_rcv
+    CppAD::mixed::d_sparse_rcv copy_A_rcv( copy_A_rc );
     for(size_t k = 0; k < nnz; ++k)
-        tmp_rcv.set(k, A_rcv.val()[k]);
+        copy_A_rcv.set(k, A_rcv.val()[k]);
     // ptr_
     ptr_ = new mixed_derived(
         n_fixed,
         n_random,
         quasi_fixed,
         bool_sparsity,
-        tmp_rcv,
-        fatal_error,
-        warning
+        copy_A_rcv
     );
     assert( ptr_ != CPPAD_NULL );
 }
 // destructor
 mixed::~mixed(void)
 {   delete ptr_;
-}
-// test_fatal_error
-void mixed::test_fatal_error(const char* message)
-{   ptr_->fatal_error( std::string(message) );
-}
-// test_warning
-void mixed::test_warning(const char* message)
-{   ptr_->warning( std::string(message) );
 }
 
 # endif // INCLUDE_MIXED
