@@ -54,6 +54,14 @@ Change the install process so it both a debug and release version of
 :ref:`cppad_prefix<get_cppad_sh.settings.build_type.cppad_prefix>`
 can be installed at the same time
 
+
+10-13
+*****
+The :ref:`xsrst_py` utility would crash if a section had :ref:`child_cmd`
+and was :ref:`indented<xsrst_py.indentation>`.
+This has been fixed
+>>>>>>> master
+
 10-02
 *****
 #.  The library documentation that is for both c++ and python was improved.

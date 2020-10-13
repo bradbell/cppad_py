@@ -21,27 +21,29 @@ because ``children.py`` does not have a
 {xsrst_end no_parent_exam}
 ------------------------------------------------------------------------------
 # BEGIN_SRC
-{xsrst_begin no_parent_res}
+    {xsrst_begin no_parent_res}
 
-No Parent Result
-################
-The file ``children.py`` does not contain a begin parent command
-and hence all the sections in that file are children of this section.
+    No Parent Result
+    ################
+    The file ``children.py`` does not contain a begin parent command
+    and hence all the sections in that file are children of this section.
+    The source code for this example is indented similar to the
+    :ref:`indent_exam`.
 
-children.py File
-****************
-Go to the heading :ref:`This File<children_exam.this_file>` in
-the children_exam section linked below:
+    children.py File
+    ****************
+    Go to the heading :ref:`This File<children_exam.this_file>` in
+    the children_exam section linked below:
 
-Child Link children.py
-**********************
-{xsrst_child_link
-        sphinx/test_in/children.py
-}
+    Child Link children.py
+    **********************
+    {xsrst_child_link
+            sphinx/test_in/children.py
+    }
 
-Example
-*******
-:ref:`no_parent_exam`
+    Example
+    *******
+    :ref:`no_parent_exam`
 
-{xsrst_end no_parent_res}
+    {xsrst_end no_parent_res}
 # END_SRC
