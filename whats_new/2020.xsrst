@@ -45,6 +45,12 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+10-13
+*****
+The :ref:`xsrst_py` utility would crash if a section had :ref:`child_cmd`
+and was :ref:`indented<xsrst_py.indentation>`.
+This has been fixed
+
 10-02
 *****
 #.  The library documentation that is for both c++ and python was improved.

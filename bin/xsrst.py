@@ -2246,6 +2246,13 @@ while 0 < len(file_info_stack) :
             file_in,
             section_name,
         )
+        # ---------------------------------------------------------------
+        # num_remove, indent_ch
+        num_remove = indent_to_remove(
+            section_data,
+            file_in,
+            section_name
+        )
         # ----------------------------------------------------------------
         # process spell commands
         # do after suspend and before other commands to help ignore sections
@@ -2272,13 +2279,6 @@ while 0 < len(file_info_stack) :
                 'parent_file'    : file_in,
                 'parent_section' : section_index,
             } )
-        # ---------------------------------------------------------------
-        # num_remove, indent_ch
-        num_remove = indent_to_remove(
-            section_data,
-            file_in,
-            section_name
-        )
         # ----------------------------------------------------------------
         # remove characters on same line as {xsrst_code}
         section_data = isolate_code_command(
