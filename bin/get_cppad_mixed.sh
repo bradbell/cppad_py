@@ -131,7 +131,8 @@ sed -i bin/run_cmake.sh \
 #
 # supress call to cppad_mixed build_type.sh
 sed -i bin/example_install.sh \
-    -e 's|bin/build_type.sh .*|:|'
+    -e 's|bin/build_type.sh .*|:|' \
+    -e 's|for cmd in check speed install|for cmd in install|'
 # -----------------------------------------------------------------------------
 # cppad_mixed example install
 echo_eval bin/example_install.sh use
