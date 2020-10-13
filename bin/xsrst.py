@@ -1857,6 +1857,10 @@ def process_headings(
             next_start   = next_newline + 1
             next_newline = section_data.find('\n', next_start)
     #
+    if len(heading_list) == 0 :
+        msg = 'There are no headings in this section'
+        sys_exit(msg, fname=file_in, sname=section_name)
+    #
     i = 0
     while punctuation[i] in punctuation_used :
         i += 1
