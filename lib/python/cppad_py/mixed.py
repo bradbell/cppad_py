@@ -6,7 +6,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 """
-{xsrst_begin_parent py_mixed}
+{xsrst_begin_parent mixed}
 .. include:: ../preamble.rst
 
 Python: Laplace Approximation of Mixed Effects Models
@@ -17,13 +17,13 @@ Children
 {xsrst_child_list
 }
 
-{xsrst_end py_mixed}
+{xsrst_end mixed}
 """
 import cppad_py
 import numpy
 class mixed :
     """
-    {xsrst_begin py_mixed_ctor}
+    {xsrst_begin mixed_ctor}
     .. include:: ../preamble.rst
     {xsrst_spell
         obj
@@ -94,7 +94,7 @@ class mixed :
     warning
     *******
     is a python function that gets called when *mixed_obj*
-    has a warning to report; see :ref:`py_mixed_warning`.
+    has a warning to report; see :ref:`mixed_warning`.
     The default value for *A_rcv* is ``None`` which corresponds to
     ignoring all warning messages.
 
@@ -111,7 +111,7 @@ class mixed :
     theta
     ======
     is a numpy vector with ``float`` elements and size
-    :ref:`n_fixed<py_mixed_ctor.n_fixed>`.
+    :ref:`n_fixed<mixed_ctor.n_fixed>`.
 
     vec
     ===
@@ -142,7 +142,7 @@ class mixed :
     *******
     :ref:`mixed_ctor_xam_py<mixed_ctor_xam_py>`
 
-    {xsrst_end py_mixed_ctor}
+    {xsrst_end mixed_ctor}
     -------------------------------------------------------------------------
     """
     #
@@ -180,7 +180,7 @@ class mixed :
         )
     """
     -------------------------------------------------------------------------
-    {xsrst_begin py_mixed_warning}
+    {xsrst_begin mixed_warning}
     .. include:: ../preamble.rst
     {xsrst_spell
         obj
@@ -196,7 +196,7 @@ class mixed :
 
     warning
     *******
-    This is the :ref:`py_mixed_ctor.warning` argument to the  mixed class
+    This is the :ref:`mixed_ctor.warning` argument to the  mixed class
     constructor.
     It's *message* argument is an `str` describing the warning.
 
@@ -213,7 +213,7 @@ class mixed :
     *******
     :ref:`mixed_warning_xam_py<mixed_warning_xam_py>`
 
-    {xsrst_end py_mixed_warning}
+    {xsrst_end mixed_warning}
     -------------------------------------------------------------------------
     """
     def warning(self, message) :
@@ -221,7 +221,7 @@ class mixed :
     def post_warning(self, message) :
         self.obj.post_warning(message)
     """
-    {xsrst_begin py_mixed_fatal_error}
+    {xsrst_begin mixed_fatal_error}
     .. include:: ../preamble.rst
     {xsrst_spell
         obj
@@ -248,7 +248,7 @@ class mixed :
     *******
     :ref:`mixed_fatal_error_xam_py<mixed_fatal_error_xam_py>`
 
-    {xsrst_end py_mixed_fatal_error}
+    {xsrst_end mixed_fatal_error}
     """
     def post_fatal_error(self, message) :
         self.obj.post_fatal_error(message)
