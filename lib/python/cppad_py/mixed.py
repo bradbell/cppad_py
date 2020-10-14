@@ -7,6 +7,7 @@
 # -----------------------------------------------------------------------------
 """
 {xsrst_begin_parent py_mixed}
+.. include:: ../preamble.rst
 
 Python: Laplace Approximation of Mixed Effects Models
 #####################################################
@@ -30,6 +31,7 @@ class mixed :
         bool
         rcv
         \hat
+        \cdots
     }
 
     Mixed Class Constructor
@@ -43,7 +45,8 @@ class mixed :
     | |tab| *quasi_fixed* ,
     | |tab| *bool_sparsity* ,
     | |tab| *A_rcv* ,
-    | |tab| *warning*
+    | |tab| *warning* ,
+    | |tab| *fix_likelihood*
     | )
 
     mixed_obj
@@ -83,6 +86,44 @@ class mixed :
     is a python function that gets called when *mixed_obj*
     has a warning to report; see :ref:`py_mixed_warning`.
 
+    fix_likelihood
+    **************
+    is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
+    of the part of the likelihood that does not depend on the
+    random effects.
+
+    Syntax
+    ======
+    *vec* = *fix_likelihood* . ``forward`` (0, *theta* )
+
+    theta
+    ======
+    is a numpy vector with ``float`` elements and size
+    :ref:`n_fixed<py_mixed_ctor.n_fixed>`.
+
+    vec
+    ===
+    is a numpy vector with ``float`` elements and size *s*.
+    Using :math:`v` for the vector *vec* and
+    :math:`z` for the data that is independent of the random effects,
+    the fixed effects negative log likelihood is
+
+    .. math::
+
+        - \log [ \B{p} ( z | \theta ) \B{p} ( \theta ) ]
+        =
+        v_0 + | v_1 | + \cdots + | v_{s-1} |
+
+    Note tha :math:`v_0` is assumed to be a smooth w.r.t
+    the vector of fixed effects :math:`\theta`.
+
+    Empty Function
+    ==============
+    If all the data depends on the random effect
+    and there is no prior for :math:`\theta`, you can use the default
+    constructor for *fix_likelihood*; i.e.,
+    *fix_likelihood* = ``cppad_py.d_fun()``.
+
     {xsrst_children
       example/python/mixed/ctor_xam.py
     }
@@ -95,14 +136,28 @@ class mixed :
     """
     #
     def __init__(
-        self, n_fixed, n_random, quasi_newton, bool_sparsity, A_rcv, warning
+        self,
+        n_fixed,
+        n_random,
+        quasi_newton,
+        bool_sparsity,
+        A_rcv,
+        warning,
+        fix_likelihood,
     ) :
         self.obj = cppad_py.cppad_swig.mixed(
-            n_fixed, n_random, quasi_newton, bool_sparsity, A_rcv.rcv, warning
+            n_fixed,
+            n_random,
+            quasi_newton,
+            bool_sparsity,
+            A_rcv.rcv,
+            warning,
+            fix_likelihood.f,
         )
     """
     -------------------------------------------------------------------------
     {xsrst_begin py_mixed_warning}
+    .. include:: ../preamble.rst
     {xsrst_spell
         obj
     }
@@ -143,6 +198,7 @@ class mixed :
         self.obj.post_warning(message)
     """
     {xsrst_begin py_mixed_fatal_error}
+    .. include:: ../preamble.rst
     {xsrst_spell
         obj
     }

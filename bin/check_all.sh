@@ -122,24 +122,37 @@ echo_eval_log bin/run_sphinx.sh html
 echo_eval_log bin/build_local.py
 echo_eval_log cd build
 echo_eval_log make check
-echo_eval_log cd ../example/python
-echo_eval_log python3 check_all.py
-echo_eval_log cd ../..
+echo_eval_log cd ..
+echo_eval_log python3 example/python/check_all.py
 echo_eval_log bin/check_install.sh
+# -----------------------------------------------------------------------------
+# check for warnings
+#
+# The FORTIFY_SOURCE has been undefined but the warning persists
+cat << EOF > $tmpfile
+/warning.*_FORTIFY_SOURCE/! b end
+s|warning||g
+s|\$| (not a problem)|
+: end
+EOF
 #
 if [ "$build_type" == 'debug' ]
 then
-    if grep 'warning.*_FORTIFY_SOURCE' $logfile > /dev/null
-    then
-        count=$(grep 'warning.*_FORTIFY_SOURCE' $logfile | wc -l)
-        echo "$count warinings about _FORTIFY_SOURCE deleted from check_all.log"
-        sed -i $logfile -e '/warning.*_FORTIFY_SOURCE/d'
-    fi
+    sed -i $logfile -f $tmpfile
 fi
-# CppAD uses asserts to make sure this this is not a problem
-sed -i $logfile -e "/match_op.hpp:.*warning: ‘arg_match\[[01]\]’/d"
 #
-if grep -i 'warning' $logfile
+# CppAD uses asserts to make sure this this is not a problem
+cat << EOF > $tmpfile
+/match_op.hpp:.*warning: ‘arg_match\[[01]\]’/! b end
+s|warning||g
+s|\$| (not a problem)|
+: end
+EOF
+sed -i $logfile -f $tmpfile
+#
+# check_all.py runs example/python/mixed/warning_xam.py
+# and should output 'warning_xam: OK'
+if sed -e '/warning_xam: OK/d' $logfile | grep -i 'warning'
 then
     echo 'check_all.sh: Error: see warnings in check_all.log'
     exit_code 1

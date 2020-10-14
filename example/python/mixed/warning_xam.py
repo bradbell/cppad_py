@@ -22,13 +22,15 @@ def warning_xam() :
     def warning(message) :
         if message == 'Testing warning' :
             ok_list.append(True)
+    fix_likelihood = cppad_py.d_fun()
     mixed_obj = cppad_py.mixed(
         n_fixed,
         n_random,
         quasi_fixed,
         bool_sparsity,
         A_rcv,
-        warning
+        warning,
+        fix_likelihood
     )
     mixed_obj.post_warning('Testing warning')
     #

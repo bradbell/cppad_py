@@ -8,8 +8,10 @@
 import sys
 import os
 top_srcdir = '@CMAKE_SOURCE_DIR@'
+cur_srcdir = '@CMAKE_CURRENT_SOURCE_DIR@'
 sys.path.insert(0, top_srcdir)
 sys.path.insert(0, '.')
+os.chdir(cur_srcdir)
 error_count = 0
 # -----------------------------------------------------------------------------
 def run_test(module_name, fun_name) :
@@ -23,17 +25,18 @@ def run_test(module_name, fun_name) :
         print('python: ' + name + ': Error')
     return ok
 # -----------------------------------------------------------------------------
-mixed_list = [
-    'ctor_xam',
-    'warning_xam',
-    'fatal_error_xam',
-]
-os.chdir('mixed')
-for name in mixed_list :
-    ok = run_test(name, name)
-    if not ok :
-        error_count += 1
-os.chdir('..')
+if '@include_mixed@' == 'true' :
+    mixed_list = [
+        'ctor_xam',
+        'warning_xam',
+        'fatal_error_xam',
+    ]
+    os.chdir('mixed')
+    for name in mixed_list :
+        ok = run_test(name, name)
+        if not ok :
+            error_count += 1
+    os.chdir('..')
 # -----------------------------------------------------------------------------
 core_list = [
     'a_double_cond_assign_xam',

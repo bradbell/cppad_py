@@ -20,13 +20,15 @@ def ctor_xam() :
     A_rcv         = cppad_py.sparse_rcv(empty_pattern)
     def warning(message) :
         pass
+    fix_likelihood = cppad_py.d_fun()
     mixed_obj = cppad_py.mixed(
         n_fixed,
         n_random,
         quasi_fixed,
         bool_sparsity,
         A_rcv,
-        warning
+        warning,
+        fix_likelihood
     )
     return ok
 #

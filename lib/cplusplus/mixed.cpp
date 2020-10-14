@@ -13,15 +13,17 @@
 // ---------------------------------------------------------------------------
 // ctor
 mixed_derived::mixed_derived(
-    size_t                                n_fixed       ,
-    size_t                                n_random      ,
-    bool                                  quasi_fixed   ,
-    bool                                  bool_sparsity ,
-    const  CppAD::mixed::d_sparse_rcv&    A_rcv         ,
-    PyObject*                             warning       )
+    size_t                                n_fixed        ,
+    size_t                                n_random       ,
+    bool                                  quasi_fixed    ,
+    bool                                  bool_sparsity  ,
+    const  CppAD::mixed::d_sparse_rcv&    A_rcv          ,
+    PyObject*                             warning        ,
+    cppad_py::d_fun&                      fix_likelihood )
 :
 cppad_mixed( n_fixed, n_random, quasi_fixed, bool_sparsity, A_rcv ) ,
-warning_(warning)
+warning_(warning)                                                   ,
+fix_likelihood_(fix_likelihood)
 { }
 //
 // warning
@@ -42,14 +44,15 @@ void mixed_derived::fatal_error(const std::string& message)
 // ---------------------------------------------------------------------------
 // ctor
 mixed::mixed(
-    size_t                         n_fixed       ,
-    size_t                         n_random      ,
-    bool                           quasi_fixed   ,
-    bool                           bool_sparsity ,
-    cppad_py::sparse_rcv&          A_rcv         ,
-    PyObject*                      warning       )
+    size_t                         n_fixed          ,
+    size_t                         n_random         ,
+    bool                           quasi_fixed      ,
+    bool                           bool_sparsity    ,
+    cppad_py::sparse_rcv&          A_rcv            ,
+    PyObject*                      warning          ,
+    cppad_py::d_fun&               fix_likelihood   )
 {   // --------------------------------------------------
-    // copy_A_rc
+    // copy_A_rc as CppAD::mixed::sparse_rc
     size_t nr  = A_rcv.nr();
     size_t nc  = A_rcv.nc();
     size_t nnz = A_rcv.nnz();
@@ -57,7 +60,7 @@ mixed::mixed(
     for(size_t k = 0; k < nnz; ++k)
         copy_A_rc.set(k, A_rcv.row()[k], A_rcv.col()[k]);
     // --------------------------------------------------
-    // copy_A_rcv
+    // copy_A_rcv as CppAD::mixed::sparse_rcv
     CppAD::mixed::d_sparse_rcv copy_A_rcv( copy_A_rc );
     for(size_t k = 0; k < nnz; ++k)
         copy_A_rcv.set(k, A_rcv.val()[k]);
@@ -69,7 +72,8 @@ mixed::mixed(
         quasi_fixed,
         bool_sparsity,
         copy_A_rcv,
-        warning
+        warning,
+        fix_likelihood
     );
     assert( ptr_ != CPPAD_NULL );
 }

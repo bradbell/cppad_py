@@ -15,6 +15,7 @@
 # endif
 # include <cppad/py/sparse.hpp>
 # include <cppad/py/public_lib.hpp>
+# include <cppad/py/fun.hpp>
 
 // ---------------------------------------------------------------------------
 // cppad_derived class
@@ -23,16 +24,18 @@
 // class derived from CppAD::mixed::cppad_mixed and not in SWIG interface
 class CPPAD_PY_LIB_PUBLIC mixed_derived : public cppad_mixed {
 private:
-    PyObject* warning_;
+    PyObject*        warning_;
+    cppad_py::d_fun& fix_likelihood_;
 public:
     // ctor
     mixed_derived(
-        size_t                             n_fixed       ,
-        size_t                             n_random      ,
-        bool                               quasi_fixed   ,
-        bool                               bool_sparsity ,
-        const CppAD::mixed::d_sparse_rcv&  A_rcv         ,
-        PyObject*                          warning
+        size_t                             n_fixed         ,
+        size_t                             n_random        ,
+        bool                               quasi_fixed     ,
+        bool                               bool_sparsity   ,
+        const CppAD::mixed::d_sparse_rcv&  A_rcv           ,
+        PyObject*                          warning         ,
+        cppad_py::d_fun&                   fix_likelihood
     );
     // warning
     void warning(const std::string& warning);
@@ -53,12 +56,13 @@ private:
 public:
     // ctor
     mixed(
-        size_t                         n_fixed       ,
-        size_t                         n_random      ,
-        bool                           quasi_fixed   ,
-        bool                           bool_sparsity ,
-        cppad_py::sparse_rcv&          A_rcv         ,
-        PyObject*                      warning
+        size_t                         n_fixed         ,
+        size_t                         n_random        ,
+        bool                           quasi_fixed     ,
+        bool                           bool_sparsity   ,
+        cppad_py::sparse_rcv&          A_rcv           ,
+        PyObject*                      warning         ,
+        cppad_py::d_fun&               fix_likelihood
     );
     // destructor
     ~mixed(void);
