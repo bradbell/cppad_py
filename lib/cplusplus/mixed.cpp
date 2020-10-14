@@ -15,17 +15,17 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 // ---------------------------------------------------------------------------
 // ctor
 mixed_derived::mixed_derived(
-    size_t                                n_fixed        ,
-    size_t                                n_random       ,
-    bool                                  quasi_fixed    ,
-    bool                                  bool_sparsity  ,
-    const  CppAD::mixed::d_sparse_rcv&    A_rcv          ,
-    PyObject*                             warning        ,
-    d_fun&                                fix_likelihood )
+    size_t                                n_fixed          ,
+    size_t                                n_random         ,
+    bool                                  quasi_fixed      ,
+    bool                                  bool_sparsity    ,
+    const  CppAD::mixed::d_sparse_rcv&    A_rcv            ,
+    PyObject*                             warning          ,
+    d_fun&                                d_fix_likelihood )
 :
 cppad_mixed( n_fixed, n_random, quasi_fixed, bool_sparsity, A_rcv ) ,
 warning_(warning)                                                   ,
-fix_likelihood_(fix_likelihood)
+a_fix_likelihood_(d_fix_likelihood)
 { }
 //
 // warning
@@ -39,6 +39,17 @@ void mixed_derived::warning(const std::string& message)
 void mixed_derived::fatal_error(const std::string& message)
 {   // swig exceptions are set up to catch std::runtime_error
     throw std::runtime_error(message);
+}
+//
+// fix_likelihood
+CppAD::vector< CppAD::AD<double> > mixed_derived::fix_likelihood(
+    const CppAD::vector< CppAD::AD<double> >& fixed_vec )
+{   CppAD::vector< CppAD::AD<double> > result;
+    size_t n_result = a_fix_likelihood_.size_range();
+    if( n_result == 0 )
+        return result;
+    result = a_fix_likelihood_.a_ptr_->Forward(0, fixed_vec);
+    return result;
 }
 
 // ---------------------------------------------------------------------------

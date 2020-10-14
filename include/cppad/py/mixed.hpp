@@ -27,7 +27,7 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 class CPPAD_PY_LIB_PUBLIC mixed_derived : public cppad_mixed {
 private:
     PyObject*        warning_;
-    cppad_py::d_fun& fix_likelihood_;
+    a_fun            a_fix_likelihood_;
 public:
     // ctor
     mixed_derived(
@@ -43,6 +43,10 @@ public:
     void warning(const std::string& warning);
     // fatal_error
     void fatal_error(const std::string& warning);
+    // fix_likelihood
+    CppAD::vector< CppAD::AD<double> > fix_likelihood(
+        const CppAD::vector< CppAD::AD<double> >& fixed_vec
+    );
 };
 # endif
 

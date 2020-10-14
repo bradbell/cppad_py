@@ -35,13 +35,10 @@ std::vector<a_double> independent(
 // abort_recording
 CPPAD_PY_LIB_PUBLIC void abort_recording(void);
 
-// forward declare a_fun as a class
-class a_fun;
-
 // ---------------------------------------------------------------------------
 // Swig class that acts the same as CppAD::ADFun<double>
 class CPPAD_PY_LIB_PUBLIC d_fun
-{   friend a_fun;
+{   friend class a_fun;
     //
     // private members are not in Swig interface
     private:
@@ -121,7 +118,8 @@ class CPPAD_PY_LIB_PUBLIC d_fun
 // ---------------------------------------------------------------------------
 // Swig class that acts like CppAD::ADFun<a_double>
 class CPPAD_PY_LIB_PUBLIC a_fun
-{   //
+{   friend class mixed_derived;
+    //
     // private members are not in Swig interface
     private:
     // ADFun<a_double, double> representation
