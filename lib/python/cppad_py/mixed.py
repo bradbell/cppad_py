@@ -39,7 +39,7 @@ class mixed :
 
     Syntax
     ******
-    The order of the arugments in the follwoing syntax does not matter
+    The order of the arguments in the following syntax does not matter
     and all of the parameters have default values.
 
     | *mixed_obj* =  ``cppad_py.mixed`` (
@@ -96,7 +96,7 @@ class mixed :
     is a python function that gets called when *mixed_obj*
     has a warning to report; see :ref:`py_mixed_warning`.
     The default value for *A_rcv* is ``None`` which corresponds to
-    ignorning all warning messages.
+    ignoring all warning messages.
 
     fix_likelihood
     **************

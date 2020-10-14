@@ -8,6 +8,8 @@
 ----------------------------------------------------------------------------- */
 # include <cppad/py/mixed.hpp>
 
+namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
+
 // ---------------------------------------------------------------------------
 // mixed_derived class
 // ---------------------------------------------------------------------------
@@ -19,7 +21,7 @@ mixed_derived::mixed_derived(
     bool                                  bool_sparsity  ,
     const  CppAD::mixed::d_sparse_rcv&    A_rcv          ,
     PyObject*                             warning        ,
-    cppad_py::d_fun&                      fix_likelihood )
+    d_fun&                                fix_likelihood )
 :
 cppad_mixed( n_fixed, n_random, quasi_fixed, bool_sparsity, A_rcv ) ,
 warning_(warning)                                                   ,
@@ -48,9 +50,9 @@ mixed::mixed(
     size_t                         n_random         ,
     bool                           quasi_fixed      ,
     bool                           bool_sparsity    ,
-    cppad_py::sparse_rcv&          A_rcv            ,
+    sparse_rcv&                    A_rcv            ,
     PyObject*                      warning          ,
-    cppad_py::d_fun&               fix_likelihood   )
+    d_fun&                         fix_likelihood   )
 {   // --------------------------------------------------
     // copy_A_rc as CppAD::mixed::sparse_rc
     size_t nr  = A_rcv.nr();
@@ -89,5 +91,7 @@ void mixed::post_warning(const char* message)
 void mixed::post_fatal_error(const char* message)
 {   ptr_->fatal_error( std::string(message) );
 }
+
+} // END_CPPAD_PY_NAMESPACE
 
 # endif // INCLUDE_MIXED

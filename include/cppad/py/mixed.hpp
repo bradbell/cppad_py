@@ -17,6 +17,8 @@
 # include <cppad/py/public_lib.hpp>
 # include <cppad/py/fun.hpp>
 
+namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
+
 // ---------------------------------------------------------------------------
 // cppad_derived class
 // ---------------------------------------------------------------------------
@@ -71,6 +73,8 @@ public:
     // post_fatal_error
     void post_fatal_error(const char* message);
 };
+
+} // END_CPPAD_PY_NAMESPACE
 
 # endif // INCLUDE_MIXED
 # endif
