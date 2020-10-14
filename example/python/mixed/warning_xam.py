@@ -12,26 +12,11 @@ def warning_xam() :
     import cppad_py
     #
     ok_list       = list()
-    #
-    n_fixed       = 1
-    n_random      = 2
-    quasi_fixed   = True
-    bool_sparsity = False
-    empty_pattern = cppad_py.sparse_rc()
-    A_rcv         = cppad_py.sparse_rcv(empty_pattern)
-    def warning(message) :
+    def my_warning(message) :
         if message == 'Testing warning' :
             ok_list.append(True)
-    fix_likelihood = cppad_py.d_fun()
-    mixed_obj = cppad_py.mixed(
-        n_fixed,
-        n_random,
-        quasi_fixed,
-        bool_sparsity,
-        A_rcv,
-        warning,
-        fix_likelihood
-    )
+    #
+    mixed_obj = cppad_py.mixed(n_fixed = 1, warning = my_warning)
     mixed_obj.post_warning('Testing warning')
     #
     ok = len(ok_list) == 1

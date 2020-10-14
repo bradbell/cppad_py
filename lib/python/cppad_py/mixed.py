@@ -39,14 +39,17 @@ class mixed :
 
     Syntax
     ******
+    The order of the arugments in the follwoing syntax does not matter
+    and all of the parameters have default values.
+
     | *mixed_obj* =  ``cppad_py.mixed`` (
-    | |tab| *n_fixed* ,
-    | |tab| *n_random* ,
-    | |tab| *quasi_fixed* ,
-    | |tab| *bool_sparsity* ,
-    | |tab| *A_rcv* ,
-    | |tab| *warning* ,
-    | |tab| *fix_likelihood*
+    | |tab| ``n_fixed`` = *n_fixed* ,
+    | |tab| ``n_random`` = *n_random* ,
+    | |tab| ``quasi_fixed`` = *quasi_fixed* ,
+    | |tab| ``bool_sparsity`` = *bool_sparsity* ,
+    | |tab| ``A_rcv`` = *A_rcv* ,
+    | |tab| ``warning`` = *warning* ,
+    | |tab| ``fix_likelihood`` = *fix_likelihood*
     | )
 
     mixed_obj
@@ -56,22 +59,27 @@ class mixed :
     n_fixed
     *******
     is a positive integer specifying the number of fixed effects in the model.
+    The default value for *n_fixed* is zero, which is not valid,
+    hence this parameter must be specified.
 
     n_random
     ********
     is a non-negative integer specifying the number of random effects
-    in the model (zero is OK).
+    in the model.
+    The default value for *n_random* is zero.
 
     quasi_fixed
     ***********
     is True (False) if a quasi-Newton method (Newton method) is used to
     optimize the fixed effects. The Newton method requires computation
     of second derivatives.
+    The default value for *quasi_fixed* is ``False``.
 
     bool_sparsity
     *************
     is True (False) if CppAD should use boolean sparsity patterns
     (set sparsity patterns) for its internal calculations
+    The default value for *quasi_fixed* is ``False``.
 
     A_rcv
     *****
@@ -80,11 +88,15 @@ class mixed :
     :math:`A \cdot \hat{u} ( \theta ) = 0`
     where :math:`\hat{u} ( \theta )` is the
     optimal random effects as a function of the fixed effects.
+    The default value for *A_rcv* is ``None`` which corresponds to
+    no random constraints.
 
     warning
     *******
     is a python function that gets called when *mixed_obj*
     has a warning to report; see :ref:`py_mixed_warning`.
+    The default value for *A_rcv* is ``None`` which corresponds to
+    ignorning all warning messages.
 
     fix_likelihood
     **************
@@ -117,12 +129,11 @@ class mixed :
     Note tha :math:`v_0` is assumed to be a smooth w.r.t
     the vector of fixed effects :math:`\theta`.
 
-    Empty Function
-    ==============
-    If all the data depends on the random effect
-    and there is no prior for :math:`\theta`, you can use the default
-    constructor for *fix_likelihood*; i.e.,
-    *fix_likelihood* = ``cppad_py.d_fun()``.
+    Default
+    =======
+    The default value for *fix_likelihood* is ``None``.
+    This corresponds to all the data depending on the random effect
+    no prior for the fixed effects :math:`\theta`.
 
     {xsrst_children
       example/python/mixed/ctor_xam.py
@@ -137,18 +148,31 @@ class mixed :
     #
     def __init__(
         self,
-        n_fixed,
-        n_random,
-        quasi_newton,
-        bool_sparsity,
-        A_rcv,
-        warning,
-        fix_likelihood,
+        n_fixed          = 0,
+        n_random         = 0,
+        quasi_fixed      = False,
+        bool_sparsity    = False,
+        A_rcv            = None,
+        warning          = None,
+        fix_likelihood   = None,
     ) :
+        def ignore_warning ():
+            return
+        if n_fixed == 0 :
+            raise RuntimeError('cppad_py.mixed: n_fixed is zero')
+        if n_random < 0 :
+            raise RuntimeError('cppad_py.mixed: n_random is less than zero')
+        if A_rcv is None :
+            empty_pattern = cppad_py.sparse_rc()
+            A_rcv         = cppad_py.sparse_rcv( empty_pattern )
+        if warning is None :
+            warning = ignore_warning
+        if fix_likelihood is None :
+            fix_likelihood = cppad_py.d_fun()
         self.obj = cppad_py.cppad_swig.mixed(
             n_fixed,
             n_random,
-            quasi_newton,
+            quasi_fixed,
             bool_sparsity,
             A_rcv.rcv,
             warning,

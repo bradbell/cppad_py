@@ -13,24 +13,7 @@ def fatal_error_xam() :
     #
     ok_list       = list()
     #
-    n_fixed       = 1
-    n_random      = 2
-    quasi_fixed   = True
-    bool_sparsity = False
-    empty_pattern = cppad_py.sparse_rc()
-    A_rcv         = cppad_py.sparse_rcv(empty_pattern)
-    def warning(message) :
-        pass
-    fix_likelihood = cppad_py.d_fun()
-    mixed_obj = cppad_py.mixed(
-        n_fixed,
-        n_random,
-        quasi_fixed,
-        bool_sparsity,
-        A_rcv,
-        warning,
-        fix_likelihood
-    )
+    mixed_obj = cppad_py.mixed(n_fixed = 2)
     try :
         mixed_obj.post_fatal_error('Testing fatal error')
     except RuntimeError as error :
