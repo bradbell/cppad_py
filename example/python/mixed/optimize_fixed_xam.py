@@ -5,32 +5,39 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# mixed warning
+# mixed optimize_fixed
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
-def warning_xam() :
+def optimize_fixed_xam() :
     import cppad_py
     import numpy
+    ok         = True
     #
-    ok_list = list()
-    def my_warning(message) :
-        if message == 'Testing warning' :
-            ok_list.append(True)
+    theta_true = 2.0
     #
-    fixed_init = numpy.array( [ 1 ], dtype=float )
-    mixed_obj  = cppad_py.mixed(
-        fixed_init = fixed_init, warning = my_warning
+    theta      = numpy.array([ 1 ], dtype=float )
+    atheta     = cppad_py.independent(theta)
+    aprior     = (atheta[0] - theta_true) * (atheta[0] - theta_true) / 2.0
+    avec       = numpy.array( [ aprior ] )
+    fun        = cppad_py.d_fun(atheta, avec)
+    #
+    mixed_obj = cppad_py.mixed(
+        fixed_init = theta ,
+        fix_likelihood = fun,
     )
-    mixed_obj.post_warning('Testing warning')
     #
-    ok = len(ok_list) == 1
-    for i in range( len(ok_list) ) :
-        ok = ok and ok_list[i] == True
+    options  = 'Integer print_level 0\n' # suppress optimizer trace
+    options += 'String  sb    yes\n'     # suppress optimizer banner
+    solution  = mixed_obj.optimize_fixed(
+        fixed_ipopt_options = options
+    )
+    theta_opt = solution.fixed_opt[0]
+    ok        = ok and abs( theta_true - theta_opt ) < 1e-10
     return ok
 #
 # END SOURCE
 '''
-{xsrst_begin mixed_warning_xam_py}
+{xsrst_begin mixed_optimize_fixed_xam_py}
 
 .. include:: ../preamble.rst
 
@@ -40,5 +47,5 @@ Python: Mixed Class Warnings: Example and Test
   # BEGIN SOURCE
   # END SOURCE
 }
-{xsrst_end mixed_warning_xam_py}
+{xsrst_end mixed_optimize_fixed_xam_py}
 '''

@@ -10,10 +10,12 @@
 # BEGIN SOURCE
 def fatal_error_xam() :
     import cppad_py
+    import numpy
     #
     ok_list       = list()
     #
-    mixed_obj = cppad_py.mixed(n_fixed = 2)
+    fixed_init = numpy.array( [ 1 ], dtype=float )
+    mixed_obj  = cppad_py.mixed(fixed_init = fixed_init)
     try :
         mixed_obj.post_fatal_error('Testing fatal error')
     except RuntimeError as error :

@@ -10,9 +10,11 @@
 # BEGIN SOURCE
 def ctor_xam() :
     import cppad_py
-    ok            = True
+    import numpy
+    ok         = True
     #
-    mixed_obj = cppad_py.mixed(n_fixed = 1)
+    fixed_init = numpy.array( [ 1 ], dtype=float )
+    mixed_obj  = cppad_py.mixed(fixed_init = fixed_init)
     return ok
 #
 # END SOURCE

@@ -72,8 +72,8 @@ private:
 public:
     // ctor
     mixed(
-        size_t                         n_fixed         ,
-        size_t                         n_random        ,
+        const std::vector<double>&     fixed_init      ,
+        const std::vector<double>&     random_init     ,
         bool                           quasi_fixed     ,
         bool                           bool_sparsity   ,
         cppad_py::sparse_rcv&          A_rcv           ,

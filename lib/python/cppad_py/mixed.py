@@ -22,11 +22,12 @@ Children
 import cppad_py
 import numpy
 class fixed_solution :
-   def __init__( self, fixed_opt, fixed_lag, fix_con_lag, ran_con_lag ):
-        self.fixed_opt   = cppad_py.utility.vec2numpy( fixed_opt )
-        self.fixed_lag   = cppad_py.utility.vec2numpy( fixed_lag )
-        self.fix_con_lag = cppad_py.utility.vec2numpy( fix_con_lag )
-        self.ran_con_lag = cppad_py.utility.vec2numpy( ran_con_lag )
+   def __init__(self, n_fixed, n_random, n_fix_con, n_ran_con,
+        fixed_opt, fixed_lag, fix_con_lag, ran_con_lag ):
+        self.fixed_opt   = cppad_py.utility.vec2numpy( fixed_opt , n_fixed )
+        self.fixed_lag   = cppad_py.utility.vec2numpy( fixed_lag , n_fixed )
+        self.fix_con_lag = cppad_py.utility.vec2numpy( fix_con_lag , n_fix_con )
+        self.ran_con_lag = cppad_py.utility.vec2numpy( ran_con_lag , n_ran_con )
 
 class mixed :
     """
@@ -34,6 +35,7 @@ class mixed :
     {xsrst_begin mixed_ctor}
     .. include:: ../preamble.rst
     {xsrst_spell
+        init
         obj
         bool
         rcv
@@ -55,16 +57,31 @@ class mixed :
     *********
     We refer to the value returned by this constructor as *mixed_obj*.
 
+    fixed_init
+    **********
+    is a numpy vector with ``float`` elements.
+    It specifies a value of the fixed effects for which the
+    likelihood and prior functions can be evaluated and is used to
+    initialize *mixed_obj*.
+    The default value for this argument ``None`` corresponds
+    to the empty vector and is not valid.
+
+    random_vec
+    **********
+    is a numpy vector with ``float`` elements.
+    It specifies a value of the random effects for which the
+    likelihood and prior functions can be evaluated and is used to
+    initialize *mixed_obj*.
+    The default value for this argument ``None`` corresponds
+    to the empty vector; i.e., no random effects.
+
     n_fixed
     *******
-    is a positive integer specifying the number of fixed effects in the model.
-    The default value 0 is not valid
-    (hence this parameter must be specified).
+    is the length of the vector *fixed_init* and must not be zero.
 
     n_random
     ********
-    is a non-negative integer specifying the number of random effects
-    in the model.
+    is the length of the vector *random_init* and can be zero.
 
     quasi_fixed
     ***********
@@ -143,8 +160,8 @@ class mixed :
         self,
     # BEGIN_MIXED_CTOR
     # mixed_obj = cppad_py.mixed(
-        n_fixed          = 0,
-        n_random         = 0,
+        fixed_init       = None,
+        random_init      = None,
         quasi_fixed      = False,
         bool_sparsity    = False,
         A_rcv            = None,
@@ -153,28 +170,48 @@ class mixed :
     # )
     # END_MIXED_CTOR
     ) :
-        self.n_fixed        = n_fixed
-        self.n_random       = n_random
+        def numpy2std(vec, name) :
+            # numpy2vec will check the length and report errors
+            dtype = float
+            shape = len(vec)
+            context = 'cppad_mixed: ctor: ' + name
+            vec = cppad_py.utility.numpy2vec(vec, dtype, shape, context, name)
+            return vec
+        #
+        if fixed_init is None :
+            raise RuntimeError('cppad_py.mixed: fixed_init is None')
+        else :
+            fixed_init = numpy2std(fixed_init, 'fixed_init')
+        #
+        if random_init is None :
+            random_init = cppad_py.vec_double(0)
+        else :
+            random_init = numpy2std(random_init, 'random_init')
+        #
+        self.n_fixed        = len(fixed_init)
+        self.n_random       = len(random_init)
+        self.n_fix_con      = 0 # 2DO: fix when fix conratint function added
         self.A_rcv          = A_rcv
         #
         def ignore_warning ():
             return
         #
-        if n_fixed == 0 :
+        if self.n_fixed == 0 :
             raise RuntimeError('cppad_py.mixed: n_fixed is zero')
-        if n_random < 0 :
+        if self.n_random < 0 :
             raise RuntimeError('cppad_py.mixed: n_random is less than zero')
         if A_rcv is None :
             empty_pattern = cppad_py.sparse_rc()
             A_rcv         = cppad_py.sparse_rcv( empty_pattern )
+            self.A_rcv    = A_rcv
         if warning is None :
             warning = ignore_warning
         if fix_likelihood is None :
             fix_likelihood = cppad_py.d_fun()
         #
         self.obj = cppad_py.cppad_swig.mixed(
-            n_fixed,
-            n_random,
+            fixed_init,
+            random_init,
             quasi_fixed,
             bool_sparsity,
             A_rcv.rcv,
@@ -265,6 +302,7 @@ class mixed :
         iter
         cppad
         rcv
+        \infty
     }
 
     Optimize Fixed Effects
@@ -279,8 +317,18 @@ class mixed :
 
     Purpose
     *******
-    This routine maximizes the Laplace Approximation for the likelihood
-    of the data and priors given the fixed effects.
+    This routine maximizes, with respect to the fixed effect :math:`\theta`,
+    the Laplace approximation for the likelihood of the data and fixed effects.
+
+    .. math::
+        \B{p} ( z | \theta ) \B{p} ( \theta ) \int_{-\infty}^{+\infty}
+            \B{p} ( y | \theta , u ) \B{p}( u | \theta ) \B{d} u
+
+    If there are no random effects,
+    there is no Laplace approximation of the integral above, and
+    this routine maximizes :math:`\B{p} ( z | \theta ) \B{p} ( \theta )` ;
+    see :ref:`fix_likelihood<mixed_ctor.fix_likelihood>`.
+
 
     Argument Types
     **************
@@ -409,6 +457,13 @@ class mixed :
     Its length is the same as the random constrain matrix :math"`A` ; see
     :ref:`A_rcv<mixed_ctor.A_rcv>`.
 
+    {xsrst_children
+      example/python/mixed/optimize_fixed_xam.py
+    }
+    Example
+    *******
+    :ref:`mixed_optimize_fixed_xam_py<mixed_optimize_fixed_xam_py>`
+
     {xsrst_end optimize_fixed}
     """
     def optimize_fixed(
@@ -438,21 +493,24 @@ class mixed :
             context = 'optimize_fixed: ' + name
             return cppad_py.utility.numpy2vec(vec, dtype, shape, context, name)
         #
+        n_fixed   = self.n_fixed
+        n_random  = self.n_random
+        n_fix_con = self.n_fix_con
+        n_ran_con = self.A_rcv.nr()
+        #
         # adjust limits that are None
         if fixed_lower is None :
-            fixed_lower = - numpy_infinity( self.n_fixed )
+            fixed_lower = - numpy_infinity( n_fixed )
         if fixed_upper is None :
-            fixed_upper = +  numpy_infinity( self.n_fixed )
+            fixed_upper = +  numpy_infinity( n_fixed )
         if fix_constraint_lower is None :
-            # 2DO: fix length once fixed constraint is added to constructor
-            fix_constraint_lower = -  numpy_infinity( 0 )
+            fix_constraint_lower = -  numpy_infinity( n_fix_con )
         if fix_constraint_upper is None :
-            # 2DO: fix length once fixed constraint is added to constructor
-            fix_constraint_upper = +  numpy_infinity( 0 )
+            fix_constraint_upper = +  numpy_infinity( n_fix_con )
         if random_lower is None :
-            random_lower = - numpy_infinity( self.n_random )
+            random_lower = - numpy_infinity( n_random )
         if random_upper is None :
-            random_upper = + numpy_infinity( self.n_random )
+            random_upper = + numpy_infinity( n_random )
         #
         # adjust other arguments that are None
         if fixed_ipopt_options is None :
@@ -467,18 +525,17 @@ class mixed :
             fixed_scale = fixed_in
         #
         # convert vectors from numpy to std
-        fixed_lower = numpy2std(fixed_lower, self.n_fixed, 'fixed_lower')
-        fixed_upper = numpy2std(fixed_upper, self.n_fixed, 'fixed_upper')
-        fixed_scale   = numpy2std(fixed_scale, self.n_fixed, 'fixed_scale')
-        fixed_in      = numpy2std(fixed_in, self.n_fixed, 'fixed_in')
-        random_lower  = numpy2std(random_lower, self.n_random, 'random_lower')
-        random_upper  = numpy2std(random_upper, self.n_random, 'random_upper')
-        random_in     = numpy2std(random_in, self.n_random, 'random_in')
-        # 2DO: fix length once fixed constraint is added to constructor
+        fixed_lower   = numpy2std(fixed_lower, n_fixed, 'fixed_lower')
+        fixed_upper   = numpy2std(fixed_upper, n_fixed, 'fixed_upper')
+        fixed_scale   = numpy2std(fixed_scale, n_fixed, 'fixed_scale')
+        fixed_in      = numpy2std(fixed_in, n_fixed, 'fixed_in')
+        random_lower  = numpy2std(random_lower, n_random, 'random_lower')
+        random_upper  = numpy2std(random_upper, n_random, 'random_upper')
+        random_in     = numpy2std(random_in, n_random, 'random_in')
         fix_constraint_lower = \
-            numpy2std(fix_constraint_lower, 0, 'fix_constraint_lower')
+            numpy2std(fix_constraint_lower, n_fix_con, 'fix_constraint_lower')
         fix_constraint_upper = \
-            numpy2std(fix_constraint_upper, 0, 'fix_constraint_upper')
+            numpy2std(fix_constraint_upper, n_fix_con, 'fix_constraint_upper')
         #
         # call the c++ object
         solution_tmp = self.obj.optimize_fixed(
@@ -495,6 +552,10 @@ class mixed :
             random_in,
         )
         solution = fixed_solution(
+            n_fixed,
+            n_random,
+            n_fix_con,
+            n_ran_con,
             solution_tmp.fixed_opt,
             solution_tmp.fixed_lag,
             solution_tmp.fix_con_lag,

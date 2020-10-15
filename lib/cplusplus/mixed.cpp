@@ -58,14 +58,16 @@ CppAD::vector< CppAD::AD<double> > mixed_derived::fix_likelihood(
 // ---------------------------------------------------------------------------
 // ctor
 mixed::mixed(
-    size_t                         n_fixed          ,
-    size_t                         n_random         ,
+    const std::vector<double>&     fixed_init       ,
+    const std::vector<double>&     random_init      ,
     bool                           quasi_fixed      ,
     bool                           bool_sparsity    ,
     sparse_rcv&                    A_rcv            ,
     PyObject*                      warning          ,
     d_fun&                         fix_likelihood   )
-{   // --------------------------------------------------
+{   size_t n_fixed  = fixed_init.size();
+    size_t n_random = random_init.size();
+    // --------------------------------------------------
     // copy_A_rc as CppAD::mixed::sparse_rc
     size_t nr  = A_rcv.nr();
     size_t nc  = A_rcv.nc();
@@ -90,6 +92,10 @@ mixed::mixed(
         fix_likelihood
     );
     assert( ptr_ != CPPAD_NULL );
+    CppAD::vector<double> fixed_vec  = d_vec_std2cppad(fixed_init);
+    CppAD::vector<double> random_vec = d_vec_std2cppad(random_init);
+    //
+    ptr_->initialize(fixed_vec, random_vec);
 }
 // destructor
 mixed::~mixed(void)
