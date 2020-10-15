@@ -10,6 +10,18 @@
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 /*
 -------------------------------------------------------------------------------
+{xsrst_begin_parent convert_vec}
+
+Conversion Between std::vector<a_double> and CppAD::vector< AD<double> >
+########################################################################
+
+Children
+********
+{xsrst_child_list
+}
+
+{xsrst_end convert_vec}
+-------------------------------------------------------------------------------
 {xsrst_begin vec2cppad_double}
 
 .. include:: ../preamble.rst

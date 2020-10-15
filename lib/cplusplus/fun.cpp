@@ -8,7 +8,7 @@
 # include <cppad/cppad.hpp>
 # include <cppad/py/fun.hpp>
 # include <cppad/py/assert.hpp>
-# include <cppad/py/cppad_vec.hpp>
+# include <cppad/py/convert_vec.hpp>
 
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 

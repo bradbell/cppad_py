@@ -29,7 +29,7 @@ the return value is a message describing the error.
 Python Exceptions
 =================
 The type of the exception is ``RuntimeError``.
-If ``err`` is the exception, ``str(err)`` is
+If *err* is the exception, ``str`` (*err*) is
 a message describing the error.
 
 

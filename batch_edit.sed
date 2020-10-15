@@ -14,12 +14,13 @@
 # '
 # list of files and or directories that are moved to new names
 # move_paths='
-#   bin/local_build.py
+#   lib/cplusplus/cppad_vec.cpp
+#   include/cppad/py/cppad_vec.hpp
 # '
 # list of sed commands that map old file and directory names to new names.
 # The characters @s, @d, @n get converted to a space, dollar sign, new line.
 # move_seds='
-#   s|local_build|build_local|
+#   s|cppad_vec|convert_vec|
 # '
 # list of files that get edited by the extra_seds command
 # extra_files='
@@ -31,4 +32,5 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|local_build|build_local|g
+s|cppad_vec|convert_vec|g
+s|CPPAD_VEC|CONVERT_VEC|g

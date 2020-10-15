@@ -53,7 +53,7 @@ C++ Utilities
 Children
 ********
 {xsrst_child_list
-    lib/cplusplus/cppad_vec.cpp
+    lib/cplusplus/convert_vec.cpp
     include/cppad/py/assert.hpp
 }
 
