@@ -277,7 +277,7 @@ d_fun::d_fun(
         return;
 
     // copy and convert from Swig vector to Cppad vectors
-    std::vector< CppAD::AD<double> > ax_copy(n), ay_copy(m);
+    CppAD::vector< CppAD::AD<double> > ax_copy(n), ay_copy(m);
     for(size_t j = 0; j < n; j++)
         ax_copy[j] = *( ax[j].ptr() );
     for(size_t i = 0; i < m; i++)
@@ -478,7 +478,7 @@ void a_fun::new_dynamic(const std::vector<a_double>& adynamic)
         adynamic.size() == a_ptr_->size_dyn_ind() ,
         "cppad_py::a_fun::new_dynamic adynamic.size() error"
     );
-    std::vector< CppAD::AD<double> > au = vec2cppad_double(adynamic);
+    CppAD::vector< CppAD::AD<double> > au = vec2cppad_double(adynamic);
     a_ptr_->new_dynamic(au);
     return;
 }
@@ -567,8 +567,8 @@ std::vector<a_double> a_fun::jacobian(const std::vector<a_double>& ax)
         ax.size() == a_ptr_->Domain() ,
         "cppad_py::a_fun::jacobian ax.size() error"
     );
-    std::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
-    std::vector< CppAD::AD<double> > av = a_ptr_->Jacobian(au);
+    CppAD::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
+    CppAD::vector< CppAD::AD<double> > av = a_ptr_->Jacobian(au);
     return vec2a_double(av);
 }
 /*
@@ -687,9 +687,9 @@ std::vector<a_double> a_fun::hessian(
         "cppad_py::d_fun::hessian:: w.size() error"
     );
     //
-    std::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
-    std::vector< CppAD::AD<double> > av = vec2cppad_double(aw);
-    std::vector< CppAD::AD<double> > az = a_ptr_->Hessian(au, av);
+    CppAD::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
+    CppAD::vector< CppAD::AD<double> > av = vec2cppad_double(aw);
+    CppAD::vector< CppAD::AD<double> > az = a_ptr_->Hessian(au, av);
     return vec2a_double(az);
 }
 /*
@@ -813,8 +813,8 @@ std::vector<a_double> a_fun::forward(int p, const std::vector<a_double>& axp)
         axp.size() == a_ptr_->Domain() ,
         "cppad_py::a_fun::forward axp.size() error"
     );
-    std::vector< CppAD::AD<double> > aup = vec2cppad_double(axp);
-    std::vector< CppAD::AD<double> > avp =  a_ptr_->Forward(p, aup);
+    CppAD::vector< CppAD::AD<double> > aup = vec2cppad_double(axp);
+    CppAD::vector< CppAD::AD<double> > avp =  a_ptr_->Forward(p, aup);
     return vec2a_double(avp);
 }
 /*
@@ -944,8 +944,8 @@ std::vector<a_double> a_fun::reverse(int q, const std::vector<a_double>& ayq)
         ayq.size() == q * a_ptr_->Range() ,
         "cppad_py::a_fun::reverse yq.size() error"
     );
-    std::vector< CppAD::AD<double> > avq = vec2cppad_double(ayq);
-    std::vector< CppAD::AD<double> > auq =  a_ptr_->Reverse(q, avq);
+    CppAD::vector< CppAD::AD<double> > avq = vec2cppad_double(ayq);
+    CppAD::vector< CppAD::AD<double> > auq =  a_ptr_->Reverse(q, avq);
     return vec2a_double(auq);
 }
 /*

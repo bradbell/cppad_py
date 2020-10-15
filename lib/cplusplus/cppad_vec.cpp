@@ -18,8 +18,8 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
     cppad
 }
 
-Convert an a_double Vector to a CppAD::AD<double> Vector
-########################################################
+Convert std::vector<a_double> to CppAD::vector< AD<double> >
+############################################################
 
 Syntax
 ******
@@ -38,10 +38,10 @@ Prototype
 */
 
 // BEGIN_VEC2CPPAD_DOUBLE
-std::vector< CppAD::AD<double> >
+CppAD::vector< CppAD::AD<double> >
 vec2cppad_double(const std::vector<a_double>& v_in )
 // END_VEC2CPPAD_DOUBLE
-{   std::vector< CppAD::AD<double> > v_out( v_in.size() );
+{   CppAD::vector< CppAD::AD<double> > v_out( v_in.size() );
     for(size_t i = 0; i < v_in.size(); ++i)
         v_out[i] = *( v_in[i].ptr() );
     return v_out;
@@ -56,8 +56,8 @@ vec2cppad_double(const std::vector<a_double>& v_in )
     cppad
 }
 
-Convert a CppAD::AD<double> Vector to an a_double Vector
-########################################################
+Convert a CppAD::vector< AD<double> > to std::vector<a_double>
+##############################################################
 
 Syntax
 ******
@@ -77,7 +77,7 @@ Prototype
 
 // BEGIN_VEC2A_DOUBLE
 std::vector<a_double>
-vec2a_double(const std::vector< CppAD::AD<double> >& v_in )
+vec2a_double(const CppAD::vector< CppAD::AD<double> >& v_in )
 // END_VEC2A_DOUBLE
 {   std::vector<a_double> v_out( v_in.size() );
     for(size_t i = 0; i < v_in.size(); ++i)
