@@ -41,18 +41,18 @@ Syntax
 Prototype
 *********
 {xsrst_file
-    // BEGIN_VEC2CPPAD_DOUBLE
-    // END_VEC2CPPAD_DOUBLE
+    // BEGIN_AD_VEC_STD2CPPAD
+    // END_AD_VEC_STD2CPPAD
 }
 
 {xsrst_end ad_vec_std2cppad}
 -------------------------------------------------------------------------------
 */
 
-// BEGIN_VEC2CPPAD_DOUBLE
+// BEGIN_AD_VEC_STD2CPPAD
 CppAD::vector< CppAD::AD<double> >
 ad_vec_std2cppad(const std::vector<a_double>& v_in )
-// END_VEC2CPPAD_DOUBLE
+// END_AD_VEC_STD2CPPAD
 {   CppAD::vector< CppAD::AD<double> > v_out( v_in.size() );
     for(size_t i = 0; i < v_in.size(); ++i)
         v_out[i] = *( v_in[i].ptr() );
@@ -79,21 +79,97 @@ Syntax
 Prototype
 *********
 {xsrst_file
-    // BEGIN_VEC2A_DOUBLE
-    // END_VEC2A_DOUBLE
+    // BEGIN_AD_VEC_CPPAD2STD
+    // END_AD_VEC_CPPAD2STD
 }
 
 {xsrst_end ad_vec_cppad2std}
 -------------------------------------------------------------------------------
 */
 
-// BEGIN_VEC2A_DOUBLE
+// BEGIN_AD_VEC_CPPAD2STD
 std::vector<a_double>
 ad_vec_cppad2std(const CppAD::vector< CppAD::AD<double> >& v_in )
-// END_VEC2A_DOUBLE
+// END_AD_VEC_CPPAD2STD
 {   std::vector<a_double> v_out( v_in.size() );
     for(size_t i = 0; i < v_in.size(); ++i)
         *(v_out[i].ptr()) = v_in[i];
+    return v_out;
+}
+/*
+-------------------------------------------------------------------------------
+{xsrst_begin d_vec_std2cppad}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+    cppad
+}
+
+Convert double Vector From Standard to CppAD
+############################################
+
+Syntax
+******
+
+| *v_out* =  ``cppad_py::d_vec_std2cppad`` ( ``v_in`` )
+
+Prototype
+*********
+{xsrst_file
+    // BEGIN_D_VEC_STD2CPPAD
+    // END_D_VEC_STD2CPPAD
+}
+
+{xsrst_end d_vec_std2cppad}
+-------------------------------------------------------------------------------
+*/
+
+// BEGIN_D_VEC_STD2CPPAD
+CppAD::vector<double>
+d_vec_std2cppad(const std::vector<double>& v_in )
+// END_D_VEC_STD2CPPAD
+{   CppAD::vector<double> v_out( v_in.size() );
+    for(size_t i = 0; i < v_in.size(); ++i)
+        v_out[i] = v_in[i];
+    return v_out;
+}
+/*
+-------------------------------------------------------------------------------
+{xsrst_begin d_vec_cppad2std}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+    cppad
+}
+
+Convert double Vector From CppAD to Standard
+############################################
+
+Syntax
+******
+
+| *v_out* =  ``cppad_py::d_vec_cppad2std`` ( ``v_in`` )
+
+Prototype
+*********
+{xsrst_file
+    // BEGIN_D_VEC_CPPAD2STD
+    // END_D_VEC_CPPAD2STD
+}
+
+{xsrst_end d_vec_cppad2std}
+-------------------------------------------------------------------------------
+*/
+
+// BEGIN_D_VEC_CPPAD2STD
+std::vector<double>
+d_vec_cppad2std(const CppAD::vector<double>& v_in )
+// END_D_VEC_CPPAD2STD
+{   std::vector<double> v_out( v_in.size() );
+    for(size_t i = 0; i < v_in.size(); ++i)
+        v_out[i] = v_in[i];
     return v_out;
 }
 

@@ -20,6 +20,13 @@ namespace cppad_py {
     std::vector<a_double>
     ad_vec_cppad2std(const CppAD::vector< CppAD::AD<double> >& v_in );
     //
+    // d_vec_std2cppad
+    CppAD::vector<double>
+    d_vec_std2cppad(const std::vector<double>& v_in );
+    //
+    // d_vec_cppad2std
+    std::vector<double>
+    d_vec_cppad2std(const CppAD::vector<double>& v_in );
 }
 
 # endif
