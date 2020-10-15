@@ -14,8 +14,6 @@
 # '
 # list of files and or directories that are moved to new names
 # move_paths='
-#   lib/cplusplus/cppad_vec.cpp
-#   include/cppad/py/cppad_vec.hpp
 # '
 # list of sed commands that map old file and directory names to new names.
 # The characters @s, @d, @n get converted to a space, dollar sign, new line.
@@ -32,5 +30,5 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|cppad_vec|convert_vec|g
-s|CPPAD_VEC|CONVERT_VEC|g
+s|vec2cppad_double|ad_vec_std2cppad|
+s|vec2a_double|ad_vec_cppad2std|

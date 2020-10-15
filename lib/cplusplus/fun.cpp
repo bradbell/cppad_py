@@ -478,7 +478,7 @@ void a_fun::new_dynamic(const std::vector<a_double>& adynamic)
         adynamic.size() == a_ptr_->size_dyn_ind() ,
         "cppad_py::a_fun::new_dynamic adynamic.size() error"
     );
-    CppAD::vector< CppAD::AD<double> > au = vec2cppad_double(adynamic);
+    CppAD::vector< CppAD::AD<double> > au = ad_vec_std2cppad(adynamic);
     a_ptr_->new_dynamic(au);
     return;
 }
@@ -567,9 +567,9 @@ std::vector<a_double> a_fun::jacobian(const std::vector<a_double>& ax)
         ax.size() == a_ptr_->Domain() ,
         "cppad_py::a_fun::jacobian ax.size() error"
     );
-    CppAD::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
+    CppAD::vector< CppAD::AD<double> > au = ad_vec_std2cppad(ax);
     CppAD::vector< CppAD::AD<double> > av = a_ptr_->Jacobian(au);
-    return vec2a_double(av);
+    return ad_vec_cppad2std(av);
 }
 /*
 ------------------------------------------------------------------------------
@@ -687,10 +687,10 @@ std::vector<a_double> a_fun::hessian(
         "cppad_py::d_fun::hessian:: w.size() error"
     );
     //
-    CppAD::vector< CppAD::AD<double> > au = vec2cppad_double(ax);
-    CppAD::vector< CppAD::AD<double> > av = vec2cppad_double(aw);
+    CppAD::vector< CppAD::AD<double> > au = ad_vec_std2cppad(ax);
+    CppAD::vector< CppAD::AD<double> > av = ad_vec_std2cppad(aw);
     CppAD::vector< CppAD::AD<double> > az = a_ptr_->Hessian(au, av);
-    return vec2a_double(az);
+    return ad_vec_cppad2std(az);
 }
 /*
 ------------------------------------------------------------------------------
@@ -813,9 +813,9 @@ std::vector<a_double> a_fun::forward(int p, const std::vector<a_double>& axp)
         axp.size() == a_ptr_->Domain() ,
         "cppad_py::a_fun::forward axp.size() error"
     );
-    CppAD::vector< CppAD::AD<double> > aup = vec2cppad_double(axp);
+    CppAD::vector< CppAD::AD<double> > aup = ad_vec_std2cppad(axp);
     CppAD::vector< CppAD::AD<double> > avp =  a_ptr_->Forward(p, aup);
-    return vec2a_double(avp);
+    return ad_vec_cppad2std(avp);
 }
 /*
 -------------------------------------------------------------------------------
@@ -944,9 +944,9 @@ std::vector<a_double> a_fun::reverse(int q, const std::vector<a_double>& ayq)
         ayq.size() == q * a_ptr_->Range() ,
         "cppad_py::a_fun::reverse yq.size() error"
     );
-    CppAD::vector< CppAD::AD<double> > avq = vec2cppad_double(ayq);
+    CppAD::vector< CppAD::AD<double> > avq = ad_vec_std2cppad(ayq);
     CppAD::vector< CppAD::AD<double> > auq =  a_ptr_->Reverse(q, avq);
-    return vec2a_double(auq);
+    return ad_vec_cppad2std(auq);
 }
 /*
 ------------------------------------------------------------------------------

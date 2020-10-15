@@ -12,13 +12,13 @@
 
 namespace cppad_py {
     //
-    // vec2cppad_double
+    // ad_vec_std2cppad
     CppAD::vector< CppAD::AD<double> >
-    vec2cppad_double(const std::vector<a_double>& v_in );
+    ad_vec_std2cppad(const std::vector<a_double>& v_in );
     //
-    // vec2a_double
+    // ad_vec_cppad2std
     std::vector<a_double>
-    vec2a_double(const CppAD::vector< CppAD::AD<double> >& v_in );
+    ad_vec_cppad2std(const CppAD::vector< CppAD::AD<double> >& v_in );
     //
 }
 

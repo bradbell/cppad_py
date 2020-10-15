@@ -12,8 +12,8 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 -------------------------------------------------------------------------------
 {xsrst_begin_parent convert_vec}
 
-Conversion Between std::vector<a_double> and CppAD::vector< AD<double> >
-########################################################################
+Convert From Standard Vectors to CppAD Vectors
+##############################################
 
 Children
 ********
@@ -22,7 +22,7 @@ Children
 
 {xsrst_end convert_vec}
 -------------------------------------------------------------------------------
-{xsrst_begin vec2cppad_double}
+{xsrst_begin ad_vec_std2cppad}
 
 .. include:: ../preamble.rst
 
@@ -30,13 +30,13 @@ Children
     cppad
 }
 
-Convert std::vector<a_double> to CppAD::vector< AD<double> >
-############################################################
+Convert AD Vector From Standard to CppAD
+########################################
 
 Syntax
 ******
 
-| *v_out* =  ``cppad_py::vec2cppad_double`` ( ``v_in`` )
+| *v_out* =  ``cppad_py::ad_vec_std2cppad`` ( ``v_in`` )
 
 Prototype
 *********
@@ -45,13 +45,13 @@ Prototype
     // END_VEC2CPPAD_DOUBLE
 }
 
-{xsrst_end vec2cppad_double}
+{xsrst_end ad_vec_std2cppad}
 -------------------------------------------------------------------------------
 */
 
 // BEGIN_VEC2CPPAD_DOUBLE
 CppAD::vector< CppAD::AD<double> >
-vec2cppad_double(const std::vector<a_double>& v_in )
+ad_vec_std2cppad(const std::vector<a_double>& v_in )
 // END_VEC2CPPAD_DOUBLE
 {   CppAD::vector< CppAD::AD<double> > v_out( v_in.size() );
     for(size_t i = 0; i < v_in.size(); ++i)
@@ -60,7 +60,7 @@ vec2cppad_double(const std::vector<a_double>& v_in )
 }
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin vec2a_double}
+{xsrst_begin ad_vec_cppad2std}
 
 .. include:: ../preamble.rst
 
@@ -68,13 +68,13 @@ vec2cppad_double(const std::vector<a_double>& v_in )
     cppad
 }
 
-Convert a CppAD::vector< AD<double> > to std::vector<a_double>
-##############################################################
+Convert AD Vector From CppAD to Standard
+########################################
 
 Syntax
 ******
 
-| *v_out* =  ``cppad_py::vec2a_double`` ( ``v_in`` )
+| *v_out* =  ``cppad_py::ad_vec_cppad2std`` ( ``v_in`` )
 
 Prototype
 *********
@@ -83,13 +83,13 @@ Prototype
     // END_VEC2A_DOUBLE
 }
 
-{xsrst_end vec2a_double}
+{xsrst_end ad_vec_cppad2std}
 -------------------------------------------------------------------------------
 */
 
 // BEGIN_VEC2A_DOUBLE
 std::vector<a_double>
-vec2a_double(const CppAD::vector< CppAD::AD<double> >& v_in )
+ad_vec_cppad2std(const CppAD::vector< CppAD::AD<double> >& v_in )
 // END_VEC2A_DOUBLE
 {   std::vector<a_double> v_out( v_in.size() );
     for(size_t i = 0; i < v_in.size(); ++i)
