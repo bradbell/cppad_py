@@ -7,6 +7,7 @@
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
 # include <cppad/py/mixed.hpp>
+# include <cppad/py/convert_vec.hpp>
 
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
@@ -101,6 +102,57 @@ void mixed::post_warning(const char* message)
 // post_fatal_error
 void mixed::post_fatal_error(const char* message)
 {   ptr_->fatal_error( std::string(message) );
+}
+// optimize_fixed
+fixed_solution mixed::optimize_fixed(
+    const char*                fixed_ipopt_options    ,
+    const char*                random_ipopt_options   ,
+    const std::vector<double>& fixed_lower            ,
+    const std::vector<double>& fixed_upper            ,
+    const std::vector<double>& fix_constraint_lower   ,
+    const std::vector<double>& fix_constraint_upper   ,
+    const std::vector<double>& fixed_scale            ,
+    const std::vector<double>& fixed_in               ,
+    const std::vector<double>& random_lower           ,
+    const std::vector<double>& random_upper           ,
+    const std::vector<double>& random_in              )
+{   typedef CppAD::vector<double>        c_vector;
+    typedef CppAD::mixed::fixed_solution c_fixed_solution;
+    //
+    std::string c_fixed_ipopt_options  = fixed_ipopt_options;
+    std::string c_random_ipopt_options = random_ipopt_options;
+    //
+    c_vector c_fixed_lower          = d_vec_std2cppad(fixed_lower);
+    c_vector c_fixed_upper          = d_vec_std2cppad(fixed_upper);
+    c_vector c_fix_constraint_lower = d_vec_std2cppad(fix_constraint_lower);
+    c_vector c_fix_constraint_upper = d_vec_std2cppad(fix_constraint_upper);
+    c_vector c_fixed_scale          = d_vec_std2cppad(fixed_scale);
+    c_vector c_fixed_in             = d_vec_std2cppad(fixed_in);
+    c_vector c_random_lower         = d_vec_std2cppad(random_lower);
+    c_vector c_random_upper         = d_vec_std2cppad(random_upper);
+    c_vector c_random_in            = d_vec_std2cppad(random_in);
+    //
+    c_fixed_solution c_solution= ptr_->optimize_fixed(
+        c_fixed_ipopt_options  ,
+        c_random_ipopt_options ,
+        c_fixed_lower          ,
+        c_fixed_upper          ,
+        c_fix_constraint_lower ,
+        c_fix_constraint_upper ,
+        c_fixed_scale          ,
+        c_fixed_in             ,
+        c_random_lower         ,
+        c_random_upper         ,
+        c_random_in
+    );
+    //
+    fixed_solution solution;
+    solution.fixed_opt   = d_vec_cppad2std( c_solution.fixed_opt );
+    solution.fixed_lag   = d_vec_cppad2std( c_solution.fixed_lag );
+    solution.fix_con_lag = d_vec_cppad2std( c_solution.fix_con_lag );
+    solution.ran_con_lag = d_vec_cppad2std( c_solution.ran_con_lag );
+    //
+    return solution;
 }
 
 } // END_CPPAD_PY_NAMESPACE

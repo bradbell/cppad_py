@@ -50,6 +50,16 @@ public:
 };
 # endif
 
+// ---------------------------------------------------------------------------
+// fixed_solution class
+// ---------------------------------------------------------------------------
+struct fixed_solution {
+    std::vector<double> fixed_opt;
+    std::vector<double> fixed_lag;
+    std::vector<double> fix_con_lag;
+    std::vector<double> ran_con_lag;
+};
+
 
 // ----------------------------------------------------------------------------
 // mixed class
@@ -76,6 +86,20 @@ public:
     void post_warning(const char* message);
     // post_fatal_error
     void post_fatal_error(const char* message);
+    // optimize_fixed
+    fixed_solution optimize_fixed(
+        const char*                fixed_ipopt_options    ,
+        const char*                random_ipopt_options   ,
+        const std::vector<double>& fixed_lower            ,
+        const std::vector<double>& fixed_upper            ,
+        const std::vector<double>& fix_constraint_lower   ,
+        const std::vector<double>& fix_constraint_upper   ,
+        const std::vector<double>& fixed_scale            ,
+        const std::vector<double>& fixed_in               ,
+        const std::vector<double>& random_lower           ,
+        const std::vector<double>& random_upper           ,
+        const std::vector<double>& random_in
+    );
 };
 
 } // END_CPPAD_PY_NAMESPACE
