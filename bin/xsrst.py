@@ -1503,8 +1503,14 @@ def spell_command(
                 msg += ', section = ' + section_name
                 print(msg)
                 first_spell_error = False
+            # line_number
+            offset = itr.start()
+            match  = pattern['line'].search(section_tmp[offset :] )
+            assert match
+            line_number = match.group(1)
             double_word = itr.group(0).strip()
             msg         = 'double word error: "' + double_word + '"'
+            msg        += ', line ' + line_number
             print(msg)
         double_used[word_lower]  = True
         special_used[word_lower] = True

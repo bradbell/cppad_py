@@ -12,6 +12,46 @@
 Python: Laplace Approximation of Mixed Effects Models
 #####################################################
 
+Notation
+********
+
+theta
+=====
+We use :math:`\theta` to denote a value for the fixed effects vector.
+
+u
+=
+We use :math:`u` to denote a value for the random effects vector.
+
+z
+=
+We use :math:`z` to denote
+the data that does not depend on the random effects.
+
+y
+=
+We use :math:`y` to denote
+the data that depends on the random effects.
+
+p(theta)
+========
+We use :math:`\B{p} ( \theta )` to denote the prior density for :math:`\theta`.
+
+p(z|theta)
+==========
+We use :math:`\B{p} (z | \theta )` to denote the density of :math:`z`
+given :math:`\theta`.
+
+p(u|theta)
+==========
+We use :math:`\B{p} (u | \theta )` to denote the density of :math:`u`
+given :math:`\theta`.
+
+p(y|theta,u)
+============
+We use :math:`\B{p} (y | \theta , u)` to denote the density of :math:`y`
+given :math:`\theta` and :math:`u`.
+
 Children
 ********
 {xsrst_child_list
@@ -323,7 +363,62 @@ class mixed :
         self.obj.post_fatal_error(message)
     """
     -------------------------------------------------------------------------
-    {xsrst_begin optimize_fixed}
+    {xsrst_begin mixed_fix_likelihood}
+    {xsrst_spell
+        \cdots
+    }
+
+    Fixed Effects Likelihood
+    ########################
+
+    Syntax
+    ******
+    *v* = *fix_likelihood* . ``forward`` (0, *theta* )
+
+
+    fix_likelihood
+    ***************
+    is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
+    of the fixed effect likelihood.
+    The negative log of the fixed effects likelihood is
+
+    .. math::
+
+        g( \theta )
+        =
+        v_0 ( \theta ) + | v_1 ( \theta)  | + \cdots + | v_{m-1} ( \theta ) |
+        =
+        - \log [ \B{p} ( z | \theta ) \B{p} ( \theta ) ]
+
+    The functions :math:`v_i ( \theta )` for :math:`i = 0 , \ldots , m-1`
+    are assumed to be a smooth w.r.t the vector :math:`\theta`.
+
+    theta
+    *****
+    is a numpy vector with ``float`` elements and size
+    :ref:`n_fixed<mixed_ctor.n_fixed>`
+    containing a value for the fixed effects.
+
+    v
+    *
+    is a numpy vector with ``float`` elements and size *m*.
+
+    None
+    ****
+    The value *fix_likelihood* = ``None``
+    corresponds to the fixed effect likelihood
+    being constant w.r.t. :math:`\theta`.
+
+    {xsrst_children
+        example/python/mixed/fix_likelihood_xam.py
+    }
+    Example
+    *******
+    :ref:`mixed_fix_likelihood_xam_py<mixed_fix_likelihood_xam_py>`
+
+    {xsrst_end mixed_fix_likelihood}
+    -------------------------------------------------------------------------
+    {xsrst_begin mixed_optimize_fixed}
     .. include:: ../preamble.rst
     {xsrst_spell
         ipopt
@@ -487,13 +582,13 @@ class mixed :
     :ref:`A_rcv<mixed_ctor.A_rcv>`.
 
     {xsrst_children
-      example/python/mixed/optimize_fixed_xam.py
+        example/python/mixed/optimize_fixed_xam.py
     }
     Example
     *******
     :ref:`mixed_optimize_fixed_xam_py<mixed_optimize_fixed_xam_py>`
 
-    {xsrst_end optimize_fixed}
+    {xsrst_end mixed_optimize_fixed}
     """
     def optimize_fixed(
         self,

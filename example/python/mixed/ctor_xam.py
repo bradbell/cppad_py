@@ -23,8 +23,8 @@ def ctor_xam() :
 
 .. include:: ../preamble.rst
 
-Python: Mixed Class Constructor: Example and Test
-#################################################
+Mixed Class Constructor: Example and Test
+#########################################
 {xsrst_file
   # BEGIN SOURCE
   # END SOURCE

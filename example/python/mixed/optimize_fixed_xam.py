@@ -17,17 +17,17 @@ def optimize_fixed_xam() :
     #
     theta      = numpy.array([ 1 ], dtype=float )
     atheta     = cppad_py.independent(theta)
-    aprior     = (atheta[0] - theta_true) * (atheta[0] - theta_true) / 2.0
-    avec       = numpy.array( [ aprior ] )
-    fun        = cppad_py.d_fun(atheta, avec)
+    fix_like   = (atheta[0] - theta_true) * (atheta[0] - theta_true) / 2.0
+    av         = numpy.array( [ fix_like ] )
+    fun        = cppad_py.d_fun(atheta, av)
     #
     mixed_obj = cppad_py.mixed(
         fixed_init = theta ,
         fix_likelihood = fun,
     )
     #
-    options  = 'Integer print_level 0\n' # suppress optimizer trace
-    options += 'String  sb    yes\n'     # suppress optimizer banner
+    options  = 'String  sb    yes\n'     # suppress optimizer banner
+    options += 'Integer print_level 0\n' # suppress optimizer trace
     solution  = mixed_obj.optimize_fixed(
         fixed_ipopt_options = options
     )

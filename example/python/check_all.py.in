@@ -30,6 +30,7 @@ if '@include_mixed@' == 'true' :
         'ctor_xam',
         'warning_xam',
         'fatal_error_xam',
+        'fix_likelihood_xam',
         'optimize_fixed_xam',
     ]
     os.chdir('mixed')

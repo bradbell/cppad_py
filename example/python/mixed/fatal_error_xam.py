@@ -33,8 +33,8 @@ def fatal_error_xam() :
 
 .. include:: ../preamble.rst
 
-Python: Mixed Class fatal_error: Example and Test
-#################################################
+Mixed Class fatal_error: Example and Test
+#########################################
 
 {xsrst_file
   # BEGIN SOURCE
