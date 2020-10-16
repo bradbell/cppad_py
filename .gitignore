@@ -20,6 +20,7 @@ junk.*
 *.swp
 *.tmp
 # files and directories created to run python examples
+/example/python/mixed/debug.out
 /example/python/check_all.py
 __pycache__/
 #

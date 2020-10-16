@@ -24,10 +24,12 @@ def fix_likelihood_xam() :
     atheta     = cppad_py.independent(theta)
     #
     # - log[ p(theta) ]
-    ap_theta = 0.5 * ( (atheta[0] - mean_theta ) / std )**2
+    ares     = ( atheta[0] - mean_theta ) / std
+    ap_theta = 0.5 * ares * ares
     #
     # - log[ p(z|theta)
-    ap_z_theta = 0.5 * ( (z - atheta[0]) / std )**2
+    ares       = ( z  - atheta[0] ) / std
+    ap_z_theta = 0.5 * ares * ares
     #
     # - log[ p(z|theta) p(theta) ]
     av_0 = ap_z_theta + ap_theta

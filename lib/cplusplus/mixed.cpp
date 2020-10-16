@@ -8,6 +8,7 @@
 ----------------------------------------------------------------------------- */
 # include <cppad/py/mixed.hpp>
 # include <cppad/py/convert_vec.hpp>
+# include <cppad/mixed/exception.hpp>
 
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
@@ -104,21 +105,33 @@ mixed::mixed(
         copy_A_rcv.set(k, A_rcv.val()[k]);
     // --------------------------------------------------
     // ptr_
-    ptr_ = new mixed_derived(
-        n_fixed,
-        n_random,
-        quasi_fixed,
-        bool_sparsity,
-        copy_A_rcv,
-        warning,
-        fix_likelihood,
-        ran_likelihood
-    );
-    assert( ptr_ != CPPAD_NULL );
-    CppAD::vector<double> fixed_vec  = d_vec_std2cppad(fixed_init);
-    CppAD::vector<double> random_vec = d_vec_std2cppad(random_init);
-    //
-    ptr_->initialize(fixed_vec, random_vec);
+    try
+    {   ptr_ = new mixed_derived(
+            n_fixed,
+            n_random,
+            quasi_fixed,
+            bool_sparsity,
+            copy_A_rcv,
+            warning,
+            fix_likelihood,
+            ran_likelihood
+        );
+        assert( ptr_ != CPPAD_NULL );
+    }
+    catch( CppAD::mixed::exception& e )
+    {   std::string message = e.message("mixed_ctor before initialize");
+        throw std::runtime_error(message);
+    }
+    try
+    {   CppAD::vector<double> fixed_vec  = d_vec_std2cppad(fixed_init);
+        CppAD::vector<double> random_vec = d_vec_std2cppad(random_init);
+        //
+        ptr_->initialize(fixed_vec, random_vec);
+    }
+    catch( CppAD::mixed::exception& e )
+    {   std::string message = e.message("mixed_ctor during initialize");
+        throw std::runtime_error(message);
+    }
 }
 // destructor
 mixed::~mixed(void)

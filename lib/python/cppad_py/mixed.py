@@ -9,8 +9,8 @@
 {xsrst_begin_parent mixed}
 .. include:: ../preamble.rst
 
-Python: Laplace Approximation of Mixed Effects Models
-#####################################################
+Laplace Approximation of Mixed Effects Models
+#############################################
 
 Notation
 ********
@@ -364,6 +364,7 @@ class mixed :
     """
     -------------------------------------------------------------------------
     {xsrst_begin mixed_fix_likelihood}
+    .. include:: ../preamble.rst
     {xsrst_spell
         \cdots
     }
