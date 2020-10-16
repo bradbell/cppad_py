@@ -198,8 +198,8 @@ The word 'initialization' was added to the xsrst dictionary.
 07-05
 *****
 
-#.  The :ref:`prototype<ad_vec_cppad2std.prototype>` for ``vec2a_double``
-    was the same as for :ref:`ad_vec_std2cppad<vec2cppad_double>`.
+#.  The :ref:`prototype<ad_vec_cppad2std.syntax>` for ``vec2a_double``
+    was the same as for :ref:`d_vec_std2cppad<d_vec_cppad2std>`.
     This has been fixed.
 #.  The limits for the :ref:`fun_from_json_xam_py<fun_from_json_xam_py>` and :ref:`fun_to_json_xam_py<fun_to_json_xam_py>`
     example code were incorrect (this has been fixed).

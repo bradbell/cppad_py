@@ -22,11 +22,13 @@ mixed_derived::mixed_derived(
     bool                                  bool_sparsity    ,
     const  CppAD::mixed::d_sparse_rcv&    A_rcv            ,
     PyObject*                             warning          ,
-    d_fun&                                d_fix_likelihood )
+    d_fun&                                d_fix_likelihood ,
+    d_fun&                                d_ran_likelihood )
 :
 cppad_mixed( n_fixed, n_random, quasi_fixed, bool_sparsity, A_rcv ) ,
 warning_(warning)                                                   ,
-a_fix_likelihood_(d_fix_likelihood)
+a_fix_likelihood_(d_fix_likelihood)                                 ,
+a_ran_likelihood_(d_ran_likelihood)
 { }
 //
 // warning
@@ -52,6 +54,25 @@ CppAD::vector< CppAD::AD<double> > mixed_derived::fix_likelihood(
     result = a_fix_likelihood_.a_ptr_->Forward(0, fixed_vec);
     return result;
 }
+//
+// ran_likelihood
+CppAD::vector< CppAD::AD<double> > mixed_derived::ran_likelihood(
+    const CppAD::vector< CppAD::AD<double> >& fixed_vec ,
+    const CppAD::vector< CppAD::AD<double> >& random_vec )
+{   CppAD::vector< CppAD::AD<double> > result;
+    size_t n_result = a_ran_likelihood_.size_range();
+    if( n_result == 0 )
+        return result;
+    size_t n_fixed  = fixed_vec.size();
+    size_t n_random = random_vec.size();
+    CppAD::vector< CppAD::AD<double> > both(n_fixed + n_random);
+    for(size_t j = 0; j < n_fixed; ++j)
+        both[j] = fixed_vec[j];
+    for(size_t j = 0; j < n_random; ++j)
+        both[j + n_fixed] = random_vec[j];
+    result = a_ran_likelihood_.a_ptr_->Forward(0, both);
+    return result;
+}
 
 // ---------------------------------------------------------------------------
 // mixed class
@@ -64,7 +85,8 @@ mixed::mixed(
     bool                           bool_sparsity    ,
     sparse_rcv&                    A_rcv            ,
     PyObject*                      warning          ,
-    d_fun&                         fix_likelihood   )
+    d_fun&                         fix_likelihood   ,
+    d_fun&                         ran_likelihood   )
 {   size_t n_fixed  = fixed_init.size();
     size_t n_random = random_init.size();
     // --------------------------------------------------
@@ -89,7 +111,8 @@ mixed::mixed(
         bool_sparsity,
         copy_A_rcv,
         warning,
-        fix_likelihood
+        fix_likelihood,
+        ran_likelihood
     );
     assert( ptr_ != CPPAD_NULL );
     CppAD::vector<double> fixed_vec  = d_vec_std2cppad(fixed_init);

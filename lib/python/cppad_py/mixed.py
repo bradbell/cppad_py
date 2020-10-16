@@ -109,42 +109,67 @@ class mixed :
     has a warning to report; see :ref:`mixed_warning`.
     The value ``None`` corresponds to ignoring all warning messages.
 
-    fix_likelihood
-    **************
+    fix_likelihood (ran_likelihood)
+    *******************************
     is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-    of the part of the likelihood that does not depend on the
-    random effects.
+    of the fixed (random) part of the likelihood.
 
     Syntax
     ======
-    *vec* = *fix_likelihood* . ``forward`` (0, *theta* )
+    | *fix_like* = *fix_likelihood* . ``forward`` (0, *theta* )
+    | *ran_like* = *ran_likelihood* . ``forward`` (0, *theta_u* )
 
     theta
     ======
     is a numpy vector with ``float`` elements and size
     :ref:`n_fixed<mixed_ctor.n_fixed>`.
 
-    vec
-    ===
-    is a numpy vector with ``float`` elements and size *s*.
-    Using :math:`v` for the vector *vec* and
+    u
+    =
+    is a numpy vector with ``float`` elements and size
+    :ref:`n_random<mixed_ctor.n_random>`.
+
+    theta_u
+    =======
+    is a numpy vector with ``float`` elements and size
+    *n_fixed* + *n_random*.
+    The first *n_fixed* elements are the fixed effects *theta*
+    and the last *n_random* elements are the random effect *u*.
+
+    fix_like (ran_like)
+    ===================
+    is a numpy vector with ``float`` elements and size *s* (size 1).
+    We use :math:`f` ( :math:`r` ) for the vector *fix_like* ( *ran_like* ),
     :math:`z` for the data that is independent of the random effects,
-    the fixed effects negative log likelihood is
+    :math:`y`' for the other data,
+
+    Negative Log-Likelihood
+    +++++++++++++++++++++++
+    The fixed effects negative log likelihood is
 
     .. math::
 
         - \log [ \B{p} ( z | \theta ) \B{p} ( \theta ) ]
         =
-        v_0 + | v_1 | + \cdots + | v_{s-1} |
+        f_0 + | f_1 | + \cdots + | f_{s-1} |
 
-    Note tha :math:`v_0` is assumed to be a smooth w.r.t
-    the vector of fixed effects :math:`\theta`.
+    The random effects negative log likelihood is
+
+    .. math::
+
+        - \log [ \B{p} ( y | \theta , u ) \B{p} ( u | \theta ) ]
+        =
+        r_0
+
+
+    The vectors :math:`f` and :math:`r` are assumed to be a smooth
+    functions w.r.t the vectors :math:`\theta` and :math:`u` .
 
     Default
     =======
-    The value *fix_likelihood* equal ``None``.
-    corresponds to all the data depending on the random effect
-    no prior for the fixed effects :math:`\theta`.
+    The value *fix_likelihood* ( *ran_likelihood*) equal ``None``.
+    corresponds to the fixed effect likelihood (random effect likelihood)
+    being constant w.r.t. :math:`\theta` ( w.r.t :math:`\theta , u` ).
 
     {xsrst_children
       example/python/mixed/ctor_xam.py
@@ -167,6 +192,7 @@ class mixed :
         A_rcv            = None,
         warning          = None,
         fix_likelihood   = None,
+        ran_likelihood   = None,
     # )
     # END_MIXED_CTOR
     ) :
@@ -208,6 +234,8 @@ class mixed :
             warning = ignore_warning
         if fix_likelihood is None :
             fix_likelihood = cppad_py.d_fun()
+        if ran_likelihood is None :
+            ran_likelihood = cppad_py.d_fun()
         #
         self.obj = cppad_py.cppad_swig.mixed(
             fixed_init,
@@ -217,6 +245,7 @@ class mixed :
             A_rcv.rcv,
             warning,
             fix_likelihood.f,
+            ran_likelihood.f,
         )
     """
     -------------------------------------------------------------------------
@@ -327,7 +356,7 @@ class mixed :
     If there are no random effects,
     there is no Laplace approximation of the integral above, and
     this routine maximizes :math:`\B{p} ( z | \theta ) \B{p} ( \theta )` ;
-    see :ref:`fix_likelihood<mixed_ctor.fix_likelihood>`.
+    see :ref:`fix_likelihood<mixed_ctor.fix_likelihood_(ran_likelihood)>`.
 
 
     Argument Types
