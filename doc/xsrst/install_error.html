@@ -10,6 +10,7 @@
 <meta content="permissions" name="keywords" />
 <meta content="cppad, library, missing" name="keywords" />
 <meta content="fortify, source" name="keywords" />
+<meta content="match_op.hpp" name="keywords" />
 <meta content="unsolved" name="keywords" />
 <meta content="travis" name="keywords" />
 
@@ -193,6 +194,7 @@
 </li>
 <li><p><a class="reference internal" href="#install-error-cppad-library-missing"><span class="std std-ref">CppAD Library Missing</span></a></p></li>
 <li><p><a class="reference internal" href="#install-error-fortify-source"><span class="std std-ref">Fortify Source</span></a></p></li>
+<li><p><a class="reference internal" href="#install-error-match-op-hpp"><span class="std std-ref">match_op.hpp</span></a></p></li>
 <li><dl class="simple">
 <dt><a class="reference internal" href="#install-error-unsolved"><span class="std std-ref">Unsolved</span></a></dt><dd><ul>
 <li><p><a class="reference internal" href="#install-error-unsolved-travis"><span class="std std-ref">Travis</span></a></p></li>
@@ -252,13 +254,22 @@ you may get the following warning during the build:</p>
 <p>This is a problem with the python setuptools,
 one can un-define a macro, but it does not remove a original definition.</p>
 </div>
+<div class="section" id="match-op-hpp">
+<span id="install-error-match-op-hpp"></span><span id="index-6"></span><h3>match_op.hpp<a class="headerlink" href="#match-op-hpp" title="Permalink to this headline">¶</a></h3>
+<p>You may get the following warning during the build:</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">match_op.hpp:213:26:</span> <span class="pre">warning:</span> <span class="pre">‘arg_match[0]’</span> <span class="pre">may</span> <span class="pre">be</span> <span class="pre">used</span> <span class="pre">uninitialized</span></code></div>
+</div>
+<p>This is a problem with g++ warnings,
+an assert is used to make sure that this is not a problem.</p>
+</div>
 <div class="section" id="unsolved">
-<span id="install-error-unsolved"></span><span id="index-6"></span><h3>Unsolved<a class="headerlink" href="#unsolved" title="Permalink to this headline">¶</a></h3>
+<span id="install-error-unsolved"></span><span id="index-7"></span><h3>Unsolved<a class="headerlink" href="#unsolved" title="Permalink to this headline">¶</a></h3>
 <p>If you know how to fix and of he errors below, please open an
 <a class="reference external" href="https://github.com/bradbell/cppad_py/issues">issue</a>
 and put your solution there.</p>
 <div class="section" id="travis">
-<span id="install-error-unsolved-travis"></span><span id="index-7"></span><h4>Travis<a class="headerlink" href="#travis" title="Permalink to this headline">¶</a></h4>
+<span id="install-error-unsolved-travis"></span><span id="index-8"></span><h4>Travis<a class="headerlink" href="#travis" title="Permalink to this headline">¶</a></h4>
 <p>The following message occurs on a Travis system of unknown configuration;
 i.e., it has not been reproduced outside of Travis.</p>
 <div class="line-block">

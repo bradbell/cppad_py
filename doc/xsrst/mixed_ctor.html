@@ -7,7 +7,7 @@
   <meta content="mixed_ctor, mixed, class, constructor" name="keywords" />
 <meta content="syntax" name="keywords" />
 <meta content="mixed_obj" name="keywords" />
-<meta content="fixed_init" name="keywords" />
+<meta content="fixed_init, (random_init)" name="keywords" />
 <meta content="random_vec" name="keywords" />
 <meta content="n_fixed" name="keywords" />
 <meta content="n_random" name="keywords" />
@@ -215,7 +215,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#mixed-ctor-syntax"><span class="std std-ref">Syntax</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-ctor-mixed-obj"><span class="std std-ref">mixed_obj</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-fixed-init"><span class="std std-ref">fixed_init</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-fixed-init-random-init"><span class="std std-ref">fixed_init (random_init)</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-ctor-random-vec"><span class="std std-ref">random_vec</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-ctor-n-fixed"><span class="std std-ref">n_fixed</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-ctor-n-random"><span class="std std-ref">n_random</span></a></p></li>
@@ -246,14 +246,14 @@
 <span id="mixed-ctor-mixed-obj"></span><span id="index-2"></span><h3>mixed_obj<a class="headerlink" href="#mixed-obj" title="Permalink to this headline">¶</a></h3>
 <p>We refer to the value returned by this constructor as <em>mixed_obj</em>.</p>
 </div>
-<div class="section" id="fixed-init">
-<span id="mixed-ctor-fixed-init"></span><span id="index-3"></span><h3>fixed_init<a class="headerlink" href="#fixed-init" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="fixed-init-random-init">
+<span id="mixed-ctor-fixed-init-random-init"></span><span id="index-3"></span><h3>fixed_init (random_init)<a class="headerlink" href="#fixed-init-random-init" title="Permalink to this headline">¶</a></h3>
 <p>is a numpy vector with <code class="docutils literal notranslate"><span class="pre">float</span></code> elements.
-It specifies a value of the fixed effects for which the
+It specifies a value of the fixed effects (random effects) for which the
 likelihood and prior functions can be evaluated and is used to
 initialize <em>mixed_obj</em>.
 The default value for this argument <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds
-to the empty vector and is not valid.</p>
+to the empty vector and is not valid for <em>fixed_init</em>.</p>
 </div>
 <div class="section" id="random-vec">
 <span id="mixed-ctor-random-vec"></span><span id="index-4"></span><h3>random_vec<a class="headerlink" href="#random-vec" title="Permalink to this headline">¶</a></h3>

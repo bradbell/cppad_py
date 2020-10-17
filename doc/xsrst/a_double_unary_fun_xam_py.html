@@ -205,12 +205,13 @@
     <span class="c1"># ---------------------------------------------------------------------</span>
     <span class="c1">#</span>
     <span class="c1"># abs</span>
+    <span class="c1"># numpy syntax does not work for this function</span>
     <span class="n">a1</span>   <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">a_double</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
     <span class="n">abs1</span> <span class="o">=</span> <span class="n">a1</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
     <span class="n">ok</span>   <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">abs1</span> <span class="o">==</span> <span class="mf">1.0</span>
     <span class="c1"># fabs</span>
     <span class="n">a1</span>   <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">a_double</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-    <span class="n">abs1</span> <span class="o">=</span> <span class="n">a1</span><span class="o">.</span><span class="n">fabs</span><span class="p">()</span>
+    <span class="n">abs1</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span> <span class="n">a1</span> <span class="p">)</span>
     <span class="n">ok</span>   <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">abs1</span> <span class="o">==</span> <span class="mf">1.0</span>
     <span class="c1">#</span>
     <span class="c1"># pi/4</span>
@@ -218,14 +219,14 @@
     <span class="c1">#</span>
     <span class="c1"># sqrt(2)</span>
     <span class="n">atmp</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">a_double</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
-    <span class="n">r2</span> <span class="o">=</span> <span class="n">atmp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">atmp</span> <span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># sin(pi/4)  * sqrt(2) = 1.0</span>
     <span class="n">atmp</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">*</span> <span class="n">pi_4</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span>
     <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">atmp</span><span class="o">.</span><span class="n">near_equal</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># cos(pi/4)  * sqrt(2) = 1.0</span>
-    <span class="n">atmp</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">*</span> <span class="n">pi_4</span><span class="o">.</span><span class="n">cos</span><span class="p">()</span>
+    <span class="n">atmp</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="n">pi_4</span> <span class="p">)</span>
     <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">atmp</span><span class="o">.</span><span class="n">near_equal</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># tan(pi/4)  = 1.0</span>

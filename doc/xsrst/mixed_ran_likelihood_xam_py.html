@@ -291,7 +291,7 @@ it equal to zero, the optimal fixed effects
     <span class="c1"># - log[ p(y|theta,u) ] (dropping terms that are constant w.r.t. theta)</span>
     <span class="n">ares</span>          <span class="o">=</span> <span class="p">(</span> <span class="n">y</span>  <span class="o">-</span> <span class="n">y_bar</span> <span class="o">-</span> <span class="n">au</span> <span class="p">)</span>
     <span class="n">ap_y_theta_u</span>  <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ares</span> <span class="o">*</span> <span class="n">ares</span> <span class="o">/</span> <span class="n">atheta</span>
-    <span class="n">ap_y_theta_u</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">atheta</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>
+    <span class="n">ap_y_theta_u</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span> <span class="n">atheta</span> <span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># - log[ p(u|theta) ] (dropping terms that are constant w.r.t. theta)</span>
     <span class="n">ares</span>          <span class="o">=</span> <span class="n">au</span> <span class="o">/</span> <span class="n">sigma</span>
@@ -315,8 +315,6 @@ it equal to zero, the optimal fixed effects
     <span class="n">options</span>  <span class="o">=</span> <span class="s1">&#39;String  sb    yes</span><span class="se">\n</span><span class="s1">&#39;</span>     <span class="c1"># suppress optimizer banner</span>
     <span class="n">options</span> <span class="o">+=</span> <span class="s1">&#39;Integer print_level 0</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="c1"># suppress optimizer trace</span>
     <span class="n">solution</span>  <span class="o">=</span> <span class="n">mixed_obj</span><span class="o">.</span><span class="n">optimize_fixed</span><span class="p">(</span>
-        <span class="n">fixed_in</span>             <span class="o">=</span> <span class="n">theta_u</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="p">,</span>
-        <span class="n">random_in</span>            <span class="o">=</span> <span class="n">theta_u</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="p">,</span>
         <span class="n">fixed_ipopt_options</span>  <span class="o">=</span> <span class="n">options</span>      <span class="p">,</span>
         <span class="n">random_ipopt_options</span> <span class="o">=</span> <span class="n">options</span>      <span class="p">,</span>
     <span class="p">)</span>

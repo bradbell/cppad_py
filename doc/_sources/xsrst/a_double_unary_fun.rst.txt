@@ -14,6 +14,8 @@ a_double_unary_fun
 Unary Functions with AD Result
 ##############################
 - :ref:`a_double_unary_fun.syntax`
+    - :ref:`a_double_unary_fun.syntax.c++`
+    - :ref:`a_double_unary_fun.syntax.python`
 - :ref:`a_double_unary_fun.ax`
 - :ref:`a_double_unary_fun.fun`
 - :ref:`a_double_unary_fun.ay`
@@ -28,7 +30,29 @@ Unary Functions with AD Result
 
 Syntax
 ******
+
+.. meta::
+   :keywords: c++
+
+.. index:: c++
+
+.. _a_double_unary_fun.syntax.c++:
+
+C++
+===
+*ay* = *ax* . *fun* ()
+
+.. meta::
+   :keywords: python
+
+.. index:: python
+
+.. _a_double_unary_fun.syntax.python:
+
+Python
+======
 | *ay* = *ax* . *fun* ()
+| *ay* = ``numpy`` . *fun* ( *ax* )
 
 .. meta::
    :keywords: ax
@@ -71,6 +95,8 @@ of  following value:
 ``sqrt`` ,
 ``tan`` ,
 ``tanh`` .
+The ``numpy`` version of the python syntax does not work with the ``abs``
+function.
 2DO: Add the C++11 functions
 asinh, acosh, atanh, expm1, and log1p to this list.
 

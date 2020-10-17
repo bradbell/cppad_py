@@ -49,7 +49,7 @@ Syntax
 ******
 
 .. literalinclude:: ../../lib/python/cppad_py/mixed.py
-    :lines: 610-622
+    :lines: 613-625
     :language: py
 
 .. meta::
@@ -144,7 +144,9 @@ fixed_in (random_in)
 ********************
 has length *n_fixed* (*n_random*) and is the initial value used during
 optimization of the fixed (random) effects.
-The value ``None`` corresponds to a vector of zeros.
+If this value is ``None`` for *fixed_in* (*random_in*) the value
+*fixed_init* (*random_init*) is used; see
+:ref:`mixed_ctor.fixed_init_(random_init)`.
 
 .. meta::
    :keywords: fixed_scale

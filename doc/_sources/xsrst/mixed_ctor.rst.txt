@@ -15,7 +15,7 @@ Mixed Class Constructor
 #######################
 - :ref:`mixed_ctor.syntax`
 - :ref:`mixed_ctor.mixed_obj`
-- :ref:`mixed_ctor.fixed_init`
+- :ref:`mixed_ctor.fixed_init_(random_init)`
 - :ref:`mixed_ctor.random_vec`
 - :ref:`mixed_ctor.n_fixed`
 - :ref:`mixed_ctor.n_random`
@@ -53,20 +53,20 @@ mixed_obj
 We refer to the value returned by this constructor as *mixed_obj*.
 
 .. meta::
-   :keywords: fixed_init
+   :keywords: fixed_init, (random_init)
 
-.. index:: fixed_init
+.. index:: fixed_init, (random_init)
 
-.. _mixed_ctor.fixed_init:
+.. _mixed_ctor.fixed_init_(random_init):
 
-fixed_init
-**********
+fixed_init (random_init)
+************************
 is a numpy vector with ``float`` elements.
-It specifies a value of the fixed effects for which the
+It specifies a value of the fixed effects (random effects) for which the
 likelihood and prior functions can be evaluated and is used to
 initialize *mixed_obj*.
 The default value for this argument ``None`` corresponds
-to the empty vector and is not valid.
+to the empty vector and is not valid for *fixed_init*.
 
 .. meta::
    :keywords: random_vec

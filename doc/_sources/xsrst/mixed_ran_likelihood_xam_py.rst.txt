@@ -118,7 +118,7 @@ it equal to zero, the optimal fixed effects
 
 
 .. literalinclude:: ../../example/python/mixed/ran_likelihood_xam.py
-    :lines: 100-158
+    :lines: 100-156
     :language: py
 
 ----
