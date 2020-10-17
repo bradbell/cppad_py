@@ -12,6 +12,11 @@
 Laplace Approximation of Mixed Effects Models
 #############################################
 
+Under Construction
+******************
+This class is under construction and it's API may change.
+Check :ref:`whats_new_2020` for any changes.
+
 Notation
 ********
 

@@ -45,14 +45,16 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
-mixed branch
-************
-
-10-01
+10-16
 =====
-Change the install process so it both a debug and release version of
-:ref:`cppad_prefix<get_cppad_sh.settings.build_type.cppad_prefix>`
-can be installed at the same time
+#.  Add the :ref:`mixed` class an make it optional during the install process;
+    see :ref:`include_mixed<get_cppad_sh.settings.include_mixed>`.
+    This class is under construction and its API may change.
+    Check this page for such changes.
+
+#.  Change the install process so both a debug and release version of
+    :ref:`cppad_prefix<get_cppad_sh.settings.build_type.cppad_prefix>`
+    can be installed at the same time
 
 
 10-13
@@ -60,7 +62,6 @@ can be installed at the same time
 The :ref:`xsrst_py` utility would crash if a section had :ref:`child_cmd`
 and was :ref:`indented<xsrst_py.indentation>`.
 This has been fixed
->>>>>>> master
 
 10-02
 *****
