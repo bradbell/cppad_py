@@ -32,6 +32,11 @@ exit_code() {
     then
         sed -i bin/get_cppad.sh -e "s|^build_type *=.*|build_type='release'|"
     fi
+    if [ "$include_mixed" == 'true' ]
+    then
+        sed -i bin/get_cppad.sh \
+            -e "s|^include_mixed *=.*|include_mixed='false'|"
+    fi
     if [ -e $tmpfile ]
     then
         rm $tmpfile
@@ -46,13 +51,21 @@ then
 fi
 if [ "$1" != 'debug' ] && [ "$1" != 'release' ]
 then
-    echo 'usage: bin/check_all.sh (debug|release)'
+    echo 'usage: bin/check_all.sh (debug|release) include_mixed'
+    echo 'where include_mixed is true or false'
+    exit_code 1
+fi
+if [ "$2" != 'true' ] && [ "$2" != 'false' ]
+then
+    echo 'usage: bin/check_all.sh (debug|release) include_mixed'
+    echo 'where include_mixed is true or false'
     exit_code 1
 fi
 # -----------------------------------------------------------------------------
 eval $(grep '^build_type *=' bin/get_cppad.sh)
 eval $(grep '^cppad_prefix *=' bin/get_cppad.sh)
 eval $(grep '^extra_cxx_flags *=' bin/get_cppad.sh)
+eval $(grep '^include_mixed *=' bin/get_cppad.sh)
 #
 if ! echo $cppad_prefix | grep '^/' > /dev/null
 then
@@ -60,10 +73,11 @@ then
     cppad_prefix="$(pwd)/$cppad_prefix"
 fi
 # -----------------------------------------------------------------------------
-# set build_type
-if [ "$build_type" != 'release' ]
+# set build_type, include_mixed
+if [ "$build_type" != 'release' ] || [ "$include_mixed" != 'false' ]
 then
-    echo 'build_type in bin/get_cppad.sh is not release'
+    echo 'check_all.sh: build type in bin/get_cppad.sh is not release'
+    echo 'or include_mixed is not false.'
     echo 'This has been fixed, you should be able to just re-run this script.'
     exit_code 1
 fi
@@ -72,6 +86,12 @@ then
     # This change will be undone by the exit_code function
     sed -i bin/get_cppad.sh -e "s|^build_type *=.*|build_type='debug'|"
     build_type='debug'
+fi
+if [ "$2" == 'true' ]
+then
+    # This change will be undone by the exit_code function
+    sed -i bin/get_cppad.sh -e "s|^include_mixed *=.*|include_mixed='true'|"
+    include_mixed='true'
 fi
 echo_eval bin/build_type.sh
 # -----------------------------------------------------------------------------

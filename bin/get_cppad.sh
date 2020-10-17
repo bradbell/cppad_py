@@ -15,7 +15,6 @@
 #
 # {xsrst_spell
 #   cppad
-#   yyyymmdd
 #   cxx
 #   usr
 #   Wno
@@ -89,15 +88,7 @@ include_mixed='false'
 # If it is true, the install script ``bin/get_cppad_mixed.sh``
 # should be used to install Cppad together with the all the other cppad_mixed
 # requirements.
-# Otherwise, ``bin/get_cppad.sh`` should be used to install Cppad
-# and
-#
-# Warning
-# *******
-# If you used the ``debug`` build type you may get the following warning
-# from the compiler (because the optimization is totally turned off):
-#
-# | |tab| ``warning _FORTIFY_SOURCE requires compiling with optimization``
+# Otherwise, ``bin/get_cppad.sh`` should be used to install Cppad.
 #
 # test_cppad
 # ==========
@@ -110,11 +101,11 @@ test_cppad='false'
 #
 # Caching
 # *******
-# This procedure cashes previous builds so that when you re-run
-# this script it does not re-do all the work.
+# This script and ``bin/get_cppad_mixed.sh`` cache previous builds so that
+# when you re-run the script it does not re-do all the work.
 # If you have trouble, try deleting the directory
 #
-# | |tab| ``build/cppad`` - *yyyymmdd* . ``git``
+# | |tab| ``build/external``
 #
 # and re-running this script.
 #

@@ -629,7 +629,15 @@ Unary Functions with AD Result
 
 Syntax
 ******
+
+C++
+===
+*ay* = *ax* . *fun* ()
+
+Python
+======
 | *ay* = *ax* . *fun* ()
+| *ay* = ``numpy`` . *fun* ( *ax* )
 
 ax
 **
@@ -658,6 +666,8 @@ of  following value:
 ``sqrt`` ,
 ``tan`` ,
 ``tanh`` .
+The ``numpy`` version of the python syntax does not work with the ``abs``
+function.
 2DO: Add the C++11 functions
 asinh, acosh, atanh, expm1, and log1p to this list.
 

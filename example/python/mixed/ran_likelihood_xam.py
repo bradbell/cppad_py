@@ -119,7 +119,7 @@ def ran_likelihood_xam() :
     # - log[ p(y|theta,u) ] (dropping terms that are constant w.r.t. theta)
     ares          = ( y  - y_bar - au )
     ap_y_theta_u  = 0.5 * ares * ares / atheta
-    ap_y_theta_u += 0.5 * atheta.log()
+    ap_y_theta_u += 0.5 * numpy.log( atheta )
     #
     # - log[ p(u|theta) ] (dropping terms that are constant w.r.t. theta)
     ares          = au / sigma
@@ -143,8 +143,6 @@ def ran_likelihood_xam() :
     options  = 'String  sb    yes\n'     # suppress optimizer banner
     options += 'Integer print_level 0\n' # suppress optimizer trace
     solution  = mixed_obj.optimize_fixed(
-        fixed_in             = theta_u[0:1] ,
-        random_in            = theta_u[1:2] ,
         fixed_ipopt_options  = options      ,
         random_ipopt_options = options      ,
     )

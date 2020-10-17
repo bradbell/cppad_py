@@ -34,7 +34,7 @@ SET_TARGET_PROPERTIES(
 #
 # mixed_libraries
 IF( include_mixed )
-    SET(mixed_libraries "cppad_mixed ipopt cholmod gsl")
+    SET(mixed_libraries cppad_mixed ipopt cholmod gsl)
 ELSE( include_mixed )
     SET(mixed_libraries "")
 ENDIF( include_mixed )

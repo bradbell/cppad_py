@@ -21,6 +21,8 @@
     sudo
     pytest
     libcppad
+    hpp
+    uninitialized
 }
 
 Error Messages During Installation
@@ -75,6 +77,15 @@ you may get the following warning during the build:
 
 This is a problem with the python setuptools,
 one can un-define a macro, but it does not remove a original definition.
+
+match_op.hpp
+************
+You may get the following warning during the build:
+
+| |tab| ``match_op.hpp:213:26: warning: ‘arg_match[0]’ may be used uninitialized``
+
+This is a problem with g++ warnings,
+an assert is used to make sure that this is not a problem.
 
 Unsolved
 ********

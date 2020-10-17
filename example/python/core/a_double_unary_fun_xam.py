@@ -18,12 +18,13 @@ def a_double_unary_fun_xam() :
     # ---------------------------------------------------------------------
     #
     # abs
+    # numpy syntax does not work for this function
     a1   = cppad_py.a_double(-1.0)
     abs1 = a1.abs()
     ok   = ok and abs1 == 1.0
     # fabs
     a1   = cppad_py.a_double(1.0)
-    abs1 = a1.fabs()
+    abs1 = numpy.fabs( a1 )
     ok   = ok and abs1 == 1.0
     #
     # pi/4
@@ -31,14 +32,14 @@ def a_double_unary_fun_xam() :
     #
     # sqrt(2)
     atmp = cppad_py.a_double(2.0)
-    r2 = atmp.sqrt()
+    r2 = numpy.sqrt( atmp )
     #
     # sin(pi/4)  * sqrt(2) = 1.0
     atmp = r2 * pi_4.sin()
     ok = ok and atmp.near_equal(a1)
     #
     # cos(pi/4)  * sqrt(2) = 1.0
-    atmp = r2 * pi_4.cos()
+    atmp = r2 * numpy.cos( pi_4 )
     ok = ok and atmp.near_equal(a1)
     #
     # tan(pi/4)  = 1.0

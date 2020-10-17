@@ -101,14 +101,14 @@ class mixed :
     *********
     We refer to the value returned by this constructor as *mixed_obj*.
 
-    fixed_init
-    **********
+    fixed_init (random_init)
+    ************************
     is a numpy vector with ``float`` elements.
-    It specifies a value of the fixed effects for which the
+    It specifies a value of the fixed effects (random effects) for which the
     likelihood and prior functions can be evaluated and is used to
     initialize *mixed_obj*.
     The default value for this argument ``None`` corresponds
-    to the empty vector and is not valid.
+    to the empty vector and is not valid for *fixed_init*.
 
     random_vec
     **********
@@ -198,23 +198,23 @@ class mixed :
             vec = cppad_py.utility.numpy2vec(vec, dtype, shape, context, name)
             return vec
         #
+        def ignore_warning ():
+            return
+        #
         if fixed_init is None :
             raise RuntimeError('cppad_py.mixed: fixed_init is None')
-        else :
-            fixed_init = numpy2std(fixed_init, 'fixed_init')
-        #
         if random_init is None :
-            random_init = cppad_py.vec_double(0)
-        else :
-            random_init = numpy2std(random_init, 'random_init')
+            random_init = numpy.array( [], dtype='float' )
         #
         self.n_fixed        = len(fixed_init)
         self.n_random       = len(random_init)
         self.n_fix_con      = 0 # 2DO: fix when fix conratint function added
+        self.fixed_init     = fixed_init
+        self.random_init    = random_init
         self.A_rcv          = A_rcv
         #
-        def ignore_warning ():
-            return
+        fixed_init  = numpy2std(fixed_init, 'fixed_init')
+        random_init = numpy2std(random_init, 'random_init')
         #
         if self.n_fixed == 0 :
             raise RuntimeError('cppad_py.mixed: n_fixed is zero')
@@ -441,6 +441,7 @@ class mixed :
         cppad
         rcv
         \infty
+        init
     }
 
     Optimize Fixed Effects
@@ -497,7 +498,9 @@ class mixed :
     ********************
     has length *n_fixed* (*n_random*) and is the initial value used during
     optimization of the fixed (random) effects.
-    The value ``None`` corresponds to a vector of zeros.
+    If this value is ``None`` for *fixed_in* (*random_in*) the value
+    *fixed_init* (*random_init*) is used; see
+    :ref:`mixed_ctor.fixed_init_(random_init)`.
 
     fixed_scale
     ***********
@@ -656,9 +659,9 @@ class mixed :
         if random_ipopt_options is None :
             random_ipopt_options = ''
         if fixed_in is None :
-            fixed_in = numpy.zeros(n_fixed, dtype=float)
+            fixed_in = self.fixed_init
         if random_in is None :
-            random_in = numpy.zeros(n_random, dtype=float)
+            random_in = self.random_init
         if fixed_scale is None :
             fixed_scale = fixed_in
         #

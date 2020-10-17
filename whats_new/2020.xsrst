@@ -33,6 +33,7 @@
     dir
     mcs
     url
+    init
 }
 
 CppAD Py Changes During 2020
@@ -45,8 +46,27 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+10-17
+*****
+#.  The default value (corresponding to ``None``)
+    for :ref:`mixed_optimize_fixed.fixed_in_(random_in)` in ``optimize_fixed``
+    was changed from zero to *fixed_init* (*random_init*).
+    The :ref:`mixed_ran_likelihood_xam_py` example was changed to use this
+    default.
+
+#.  There was a problem linking the needed libraries when
+    :ref:`include_mixed<get_cppad_sh.settings.include_mixed>` was true.
+    This has been fixed.
+
+#.  The :ref:`install_error.match_op.hpp` warning was added to the
+    install errors section.
+
+#.  The :ref:`numpy syntax<a_double_unary_fun.syntax.python>` was added
+    to the documentation python syntax for ``a_double`` unary functions;
+    for an example see :ref:`a_double_unary_fun_xam_py`.
+
 10-16
-=====
+*****
 #.  Add the :ref:`mixed` class an make it optional during the install process;
     see :ref:`include_mixed<get_cppad_sh.settings.include_mixed>`.
     This class is under construction and its API may change.
