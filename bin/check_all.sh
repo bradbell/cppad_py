@@ -150,9 +150,10 @@ s|\$| (not a problem)|
 EOF
 sed -i $logfile -f $tmpfile
 #
-# check_all.py runs example/python/mixed/warning_xam.py
-# and should output 'warning_xam: OK'
-if sed -e '/warning_xam: OK/d' $logfile | grep -i 'warning'
+# check_all.py and run_sphins.sh run example/python/mixed/warning_xam.py
+# and output 'warning_xam: OK', 'mixed_warning'.
+if sed -e '/warning_xam: OK/d' -e '/mixed_warning/d'  $logfile | \
+    grep -i 'warning'
 then
     echo 'check_all.sh: Error: see warnings in check_all.log'
     exit_code 1
