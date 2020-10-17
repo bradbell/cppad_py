@@ -80,7 +80,6 @@ class mixed :
         bool
         rcv
         \hat
-        \cdots
     }
 
     Mixed Class Constructor
@@ -149,67 +148,17 @@ class mixed :
     has a warning to report; see :ref:`mixed_warning`.
     The value ``None`` corresponds to ignoring all warning messages.
 
-    fix_likelihood (ran_likelihood)
+    fix_likelihood
     *******************************
     is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-    of the fixed (random) part of the likelihood.
+    of the fixed effects likelihood; see
+    :ref:`mixed_fix_likelihood`.
 
-    Syntax
-    ======
-    | *fix_like* = *fix_likelihood* . ``forward`` (0, *theta* )
-    | *ran_like* = *ran_likelihood* . ``forward`` (0, *theta_u* )
-
-    theta
-    ======
-    is a numpy vector with ``float`` elements and size
-    :ref:`n_fixed<mixed_ctor.n_fixed>`.
-
-    u
-    =
-    is a numpy vector with ``float`` elements and size
-    :ref:`n_random<mixed_ctor.n_random>`.
-
-    theta_u
-    =======
-    is a numpy vector with ``float`` elements and size
-    *n_fixed* + *n_random*.
-    The first *n_fixed* elements are the fixed effects *theta*
-    and the last *n_random* elements are the random effect *u*.
-
-    fix_like (ran_like)
-    ===================
-    is a numpy vector with ``float`` elements and size *s* (size 1).
-    We use :math:`f` ( :math:`r` ) for the vector *fix_like* ( *ran_like* ),
-    :math:`z` for the data that is independent of the random effects,
-    :math:`y`' for the other data,
-
-    Negative Log-Likelihood
-    +++++++++++++++++++++++
-    The fixed effects negative log likelihood is
-
-    .. math::
-
-        - \log [ \B{p} ( z | \theta ) \B{p} ( \theta ) ]
-        =
-        f_0 + | f_1 | + \cdots + | f_{s-1} |
-
-    The random effects negative log likelihood is
-
-    .. math::
-
-        - \log [ \B{p} ( y | \theta , u ) \B{p} ( u | \theta ) ]
-        =
-        r_0
-
-
-    The vectors :math:`f` and :math:`r` are assumed to be a smooth
-    functions w.r.t the vectors :math:`\theta` and :math:`u` .
-
-    Default
-    =======
-    The value *fix_likelihood* ( *ran_likelihood*) equal ``None``.
-    corresponds to the fixed effect likelihood (random effect likelihood)
-    being constant w.r.t. :math:`\theta` ( w.r.t :math:`\theta , u` ).
+    ran_likelihood
+    *******************************
+    is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
+    of the random effects likelihood; see
+    :ref:`mixed_ran_likelihood`.
 
     {xsrst_children
       example/python/mixed/ctor_xam.py
@@ -380,7 +329,7 @@ class mixed :
     fix_likelihood
     ***************
     is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-    of the fixed effect likelihood.
+    of the fixed effects likelihood.
     The negative log of the fixed effects likelihood is
 
     .. math::
@@ -407,7 +356,7 @@ class mixed :
     None
     ****
     The value *fix_likelihood* = ``None``
-    corresponds to the fixed effect likelihood
+    corresponds to the fixed effects likelihood
     being constant w.r.t. :math:`\theta`.
 
     {xsrst_children
@@ -418,6 +367,65 @@ class mixed :
     :ref:`mixed_fix_likelihood_xam_py<mixed_fix_likelihood_xam_py>`
 
     {xsrst_end mixed_fix_likelihood}
+    -------------------------------------------------------------------------
+    {xsrst_begin mixed_ran_likelihood}
+    .. include:: ../preamble.rst
+
+    Random Effects Likelihood
+    #########################
+
+    Syntax
+    ******
+    *v* = *ran_likelihood* . ``forward`` (0, *theta* , *u* )
+
+
+    ran_likelihood
+    ***************
+    is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
+    of the random effects likelihood.
+    The negative log of the random effects likelihood is
+
+    .. math::
+
+        f( \theta , u )
+        =
+        v_0 ( \theta , u )
+        =
+        - \log [ \B{p} ( y | \theta , u ) \B{p} ( u | \theta ) ]
+
+    The function :math:`v_0 ( \theta , u )`
+    is assumed to be a smooth w.r.t the vector :math:`( \theta , u )`.
+
+    theta
+    *****
+    is a numpy vector with ``float`` elements and size
+    :ref:`n_fixed<mixed_ctor.n_fixed>`
+    containing a value for the fixed effects.
+
+    u
+    *
+    is a numpy vector with ``float`` elements and size
+    :ref:`n_random<mixed_ctor.n_random>`
+    containing a value for the random effects.
+
+    v
+    *
+    is a numpy vector with ``float`` elements and size 1.
+
+    None
+    ****
+    The value *ran_likelihood* = ``None``
+    corresponds to the random effects likelihood
+    being constant w.r.t. :math:`( \theta , u )`.
+
+    {xsrst_children
+        example/python/mixed/ran_likelihood_xam.py
+    }
+    Example
+    *******
+    :ref:`mixed_ran_likelihood_xam_py<mixed_ran_likelihood_xam_py>`
+
+    {xsrst_end mixed_ran_likelihood}
     -------------------------------------------------------------------------
     {xsrst_begin mixed_optimize_fixed}
     .. include:: ../preamble.rst
@@ -452,7 +460,7 @@ class mixed :
     If there are no random effects,
     there is no Laplace approximation of the integral above, and
     this routine maximizes :math:`\B{p} ( z | \theta ) \B{p} ( \theta )` ;
-    see :ref:`fix_likelihood<mixed_ctor.fix_likelihood_(ran_likelihood)>`.
+    see :ref:`mixed_fix_likelihood`.
 
 
     Argument Types
@@ -540,7 +548,7 @@ class mixed :
 
     nlp_scaling_method
     ==================
-    THe objective and constraint functions are automatically scaled by
+    The objective and constraint functions are automatically scaled by
     cppad_mixed and it is an error to specify this option.
 
     random_ipopt_options
