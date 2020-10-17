@@ -54,7 +54,9 @@ Previous Years
 
 #.  Change the install process so both a debug and release version of
     :ref:`cppad_prefix<get_cppad_sh.settings.build_type.cppad_prefix>`
-    can be installed at the same time
+    can be installed at the same time.
+
+#. Some of the install steps in :ref:`setup_py` have changed.
 
 
 10-13
