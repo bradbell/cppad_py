@@ -287,7 +287,22 @@
 <div class="line">        <a class="reference internal" href="numpy2vec.html#id1"><span class="std std-ref">3.3.3.1</span></a> Convert a Numpy Array to a cppad_py Vector`</div>
 <div class="line">        <a class="reference internal" href="vec2numpy.html#id1"><span class="std std-ref">3.3.3.2</span></a> Convert a cppad_py Vector to a Numpy Array`</div>
 <div class="line"><br /></div>
-<div class="line">     <a class="reference internal" href="more_py.html#id1"><span class="std std-ref">3.3.4</span></a> Steps To Add More Python Functions`</div>
+<div class="line">     <a class="reference internal" href="mixed.html#id1"><span class="std std-ref">3.3.4</span></a> Laplace Approximation of Mixed Effects Models`</div>
+<div class="line"><br /></div>
+<div class="line">        <a class="reference internal" href="mixed_ctor.html#id1"><span class="std std-ref">3.3.4.1</span></a> Mixed Class Constructor`</div>
+<div class="line">           <a class="reference internal" href="mixed_ctor_xam_py.html#id1"><span class="std std-ref">3.3.4.1.1</span></a> Mixed Class Constructor: Example and Test`</div>
+<div class="line">        <a class="reference internal" href="mixed_warning.html#id1"><span class="std std-ref">3.3.4.2</span></a> Mixed Class Warnings`</div>
+<div class="line">           <a class="reference internal" href="mixed_warning_xam_py.html#id1"><span class="std std-ref">3.3.4.2.1</span></a> Python: Mixed Class Warnings: Example and Test`</div>
+<div class="line">        <a class="reference internal" href="mixed_fatal_error.html#id1"><span class="std std-ref">3.3.4.3</span></a> Mixed Class Fatal Errors`</div>
+<div class="line">           <a class="reference internal" href="mixed_fatal_error_xam_py.html#id1"><span class="std std-ref">3.3.4.3.1</span></a> Mixed Class fatal_error: Example and Test`</div>
+<div class="line">        <a class="reference internal" href="mixed_fix_likelihood.html#id1"><span class="std std-ref">3.3.4.4</span></a> Fixed Effects Likelihood`</div>
+<div class="line">           <a class="reference internal" href="mixed_fix_likelihood_xam_py.html#id1"><span class="std std-ref">3.3.4.4.1</span></a> Mixed Class fix_likelihood: Example and Test`</div>
+<div class="line">        <a class="reference internal" href="mixed_ran_likelihood.html#id1"><span class="std std-ref">3.3.4.5</span></a> Random Effects Likelihood`</div>
+<div class="line">           <a class="reference internal" href="mixed_ran_likelihood_xam_py.html#id1"><span class="std std-ref">3.3.4.5.1</span></a> Mixed Class ran_likelihood: Example and Test`</div>
+<div class="line">        <a class="reference internal" href="mixed_optimize_fixed.html#id1"><span class="std std-ref">3.3.4.6</span></a> Optimize Fixed Effects`</div>
+<div class="line">           <a class="reference internal" href="mixed_optimize_fixed_xam_py.html#id1"><span class="std std-ref">3.3.4.6.1</span></a> Python: Mixed Class Warnings: Example and Test`</div>
+<div class="line"><br /></div>
+<div class="line">     <a class="reference internal" href="more_py.html#id1"><span class="std std-ref">3.3.5</span></a> Steps To Add More Python Functions`</div>
 <div class="line"><br /></div>
 <div class="line">  <a class="reference internal" href="cpp_lib.html#id1"><span class="std std-ref">3.4</span></a> The C++ Library`</div>
 <div class="line"><br /></div>
@@ -333,12 +348,17 @@
 <div class="line"><br /></div>
 <div class="line">     <a class="reference internal" href="cpp_utility.html#id1"><span class="std std-ref">3.4.3</span></a> C++ Utilities`</div>
 <div class="line"><br /></div>
-<div class="line">        <a class="reference internal" href="vec2cppad_double.html#id1"><span class="std std-ref">3.4.3.1</span></a> Convert an a_double Vector to a CppAD::AD&lt;double&gt; Vector`</div>
-<div class="line">        <a class="reference internal" href="vec2a_double.html#id1"><span class="std std-ref">3.4.3.2</span></a> Convert a CppAD::AD&lt;double&gt; Vector to an a_double Vector`</div>
-<div class="line">        <a class="reference internal" href="exception.html#id1"><span class="std std-ref">3.4.3.3</span></a> Exception Handling`</div>
+<div class="line">        <a class="reference internal" href="convert_vec.html#id1"><span class="std std-ref">3.4.3.1</span></a> Convert From Standard Vectors to CppAD Vectors`</div>
 <div class="line"><br /></div>
-<div class="line">           <a class="reference internal" href="exception_xam_cpp.html#id1"><span class="std std-ref">3.4.3.3.1</span></a> C++: Cppad Py Exception Handling: Example and Test`</div>
-<div class="line">           <a class="reference internal" href="exception_xam_py.html#id1"><span class="std std-ref">3.4.3.3.2</span></a> Python: Cppad Py Exception Handling: Example and Test`</div>
+<div class="line">           <a class="reference internal" href="ad_vec_std2cppad.html#id1"><span class="std std-ref">3.4.3.1.1</span></a> Convert AD Vector From Standard to CppAD`</div>
+<div class="line">           <a class="reference internal" href="ad_vec_cppad2std.html#id1"><span class="std std-ref">3.4.3.1.2</span></a> Convert AD Vector From CppAD to Standard`</div>
+<div class="line">           <a class="reference internal" href="d_vec_std2cppad.html#id1"><span class="std std-ref">3.4.3.1.3</span></a> Convert double Vector From Standard to CppAD`</div>
+<div class="line">           <a class="reference internal" href="d_vec_cppad2std.html#id1"><span class="std std-ref">3.4.3.1.4</span></a> Convert double Vector From CppAD to Standard`</div>
+<div class="line"><br /></div>
+<div class="line">        <a class="reference internal" href="exception.html#id1"><span class="std std-ref">3.4.3.2</span></a> Exception Handling`</div>
+<div class="line"><br /></div>
+<div class="line">           <a class="reference internal" href="exception_xam_cpp.html#id1"><span class="std std-ref">3.4.3.2.1</span></a> C++: Cppad Py Exception Handling: Example and Test`</div>
+<div class="line">           <a class="reference internal" href="exception_xam_py.html#id1"><span class="std std-ref">3.4.3.2.2</span></a> Python: Cppad Py Exception Handling: Example and Test`</div>
 <div class="line"><br /></div>
 <div class="line">     <a class="reference internal" href="more_cpp.html#id1"><span class="std std-ref">3.4.4</span></a> Steps To Add More C++ Functions`</div>
 <div class="line"><br /></div>

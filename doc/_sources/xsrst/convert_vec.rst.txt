@@ -1,0 +1,41 @@
+!!!!!!!!!!!
+convert_vec
+!!!!!!!!!!!
+
+.. meta::
+   :keywords: convert_vec, convert, from, standard, vectors, to, cppad, vectors
+
+.. index:: convert_vec, convert, from, standard, vectors, to, cppad, vectors
+
+.. _convert_vec:
+
+Convert From Standard Vectors to CppAD Vectors
+##############################################
+- :ref:`convert_vec.children`
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _convert_vec.children:
+
+Children
+********
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   ad_vec_std2cppad
+   ad_vec_cppad2std
+   d_vec_std2cppad
+   d_vec_cppad2std
+
+#. ad_vec_std2cppad: :ref:`ad_vec_std2cppad`
+#. ad_vec_cppad2std: :ref:`ad_vec_cppad2std`
+#. d_vec_std2cppad: :ref:`d_vec_std2cppad`
+#. d_vec_cppad2std: :ref:`d_vec_cppad2std`
+
+----
+
+xsrst input file: ``lib/cplusplus/convert_vec.cpp``

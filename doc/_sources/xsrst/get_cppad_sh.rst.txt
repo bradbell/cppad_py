@@ -19,7 +19,11 @@ Get Cppad
     - :ref:`get_cppad_sh.settings.cppad_prefix`
     - :ref:`get_cppad_sh.settings.extra_cxx_flags`
     - :ref:`get_cppad_sh.settings.build_type`
-    - :ref:`get_cppad_sh.settings.test_cppad`
+        - :ref:`get_cppad_sh.settings.build_type.cppad_prefix`
+        - :ref:`get_cppad_sh.settings.build_type.build`
+    - :ref:`get_cppad_sh.settings.include_mixed`
+- :ref:`get_cppad_sh.warning`
+    - :ref:`get_cppad_sh.warning.test_cppad`
 - :ref:`get_cppad_sh.caching`
 
 .. meta::
@@ -44,8 +48,6 @@ Top Source Directory
 ********************
 This program must be run from the
 :ref:`top_source_directory<setup_py.download.top_source_directory>`.
-Each time it is run it removes the old ``build`` directory and
-starts over.
 
 .. meta::
    :keywords: settings
@@ -74,6 +76,10 @@ it may include the shell variable ``$HOME`` but no other variables:
 .. code-block:: sh
 
     cppad_prefix="$HOME/prefix/cppad"
+
+If this prefix does no start with ``/``, it is relative to the
+:ref:`top_source_directory<setup_py.download.top_source_directory>`.
+Note that ``$HOME`` starts with ``/``.
 
 .. meta::
    :keywords: extra_cxx_flags
@@ -109,6 +115,63 @@ version runs faster.
 
     build_type='release'
 
+.. meta::
+   :keywords: cppad_prefix
+
+.. index:: cppad_prefix
+
+.. _get_cppad_sh.settings.build_type.cppad_prefix:
+
+cppad_prefix
+------------
+The actual prefix used for the install is
+*cppad_prefix* ``.`` *build_type*
+and a soft link is created from *cppad_prefix* to this directory.
+
+.. meta::
+   :keywords: build
+
+.. index:: build
+
+.. _get_cppad_sh.settings.build_type.build:
+
+build
+-----
+This subdirectory ``build.`` *build_type*
+is used to compile and test the software and a soft link is created from
+``build`` to this subdirectory.
+
+.. meta::
+   :keywords: include_mixed
+
+.. index:: include_mixed
+
+.. _get_cppad_sh.settings.include_mixed:
+
+include_mixed
+=============
+This flag is true (false) if we are (are not)
+including the python cppad_mixed interface.
+
+.. code-block:: sh
+
+    include_mixed='false'
+
+If it is true, the install script ``bin/get_cppad_mixed.sh``
+should be used to install Cppad together with the all the other cppad_mixed
+requirements.
+Otherwise, ``bin/get_cppad.sh`` should be used to install Cppad
+and
+
+.. meta::
+   :keywords: warning
+
+.. index:: warning
+
+.. _get_cppad_sh.warning:
+
+Warning
+*******
 If you used the ``debug`` build type you may get the following warning
 from the compiler (because the optimization is totally turned off):
 
@@ -119,7 +182,7 @@ from the compiler (because the optimization is totally turned off):
 
 .. index:: test_cppad
 
-.. _get_cppad_sh.settings.test_cppad:
+.. _get_cppad_sh.warning.test_cppad:
 
 test_cppad
 ==========

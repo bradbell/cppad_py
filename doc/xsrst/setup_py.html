@@ -236,7 +236,7 @@
 </div>
 <div class="section" id="install-using-pip">
 <span id="setup-py-install-using-pip"></span><span id="index-3"></span><h3>Install Using Pip<a class="headerlink" href="#install-using-pip" title="Permalink to this headline">¶</a></h3>
-<p>There is a preliminary version of cppad_py available using <code class="docutils literal notranslate"><span class="pre">pip</span></code> .
+<p>There is an old version of cppad_py available using <code class="docutils literal notranslate"><span class="pre">pip</span></code> .
 To install for you entire system use:</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-i</span> <span class="pre">https://test.pypi.org/simple/</span> <span class="pre">cppad_py</span></code></div>
@@ -266,13 +266,18 @@ referred to as your top source directory.</p>
 </div>
 <div class="section" id="configure">
 <span id="setup-py-configure"></span><span id="index-7"></span><h3>Configure<a class="headerlink" href="#configure" title="Permalink to this headline">¶</a></h3>
-<p>Before running <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> or <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code> ,
+<p>Before running <code class="docutils literal notranslate"><span class="pre">setup_py</span></code> or <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code> ,
 you should check and possibly change the
 <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings"><span class="std std-ref">settings</span></a> in <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code> .</p>
 </div>
 <div class="section" id="get-cppad">
 <span id="setup-py-get-cppad"></span><span id="index-8"></span><h3>Get cppad<a class="headerlink" href="#get-cppad" title="Permalink to this headline">¶</a></h3>
-<p>The next step is to get a copy of cppad using <a class="reference internal" href="get_cppad_sh.html#id1"><span class="std std-ref">get_cppad_sh</span></a>.</p>
+<p>The next step is to get a copy of cppad using
+<a class="reference internal" href="get_cppad_sh.html#id1"><span class="std std-ref">get_cppad_sh</span></a>.
+If you want to use the <a class="reference internal" href="mixed.html#id1"><span class="std std-ref">Laplace Approximation of Mixed Effects Models</span></a> class, you will have to set
+<a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-include-mixed"><span class="std std-ref">include_mixed</span></a> to true
+and use <code class="docutils literal notranslate"><span class="pre">bin/get_cppad_mixed.sh</span></code> to install cppad and other
+non-standard requirements.</p>
 </div>
 <div class="section" id="test">
 <span id="setup-py-test"></span><span id="index-9"></span><h3>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h3>
@@ -290,8 +295,7 @@ works on your system.</p>
 <p>The next step is to test the cppad_py on your system by executing
 the following commands starting in <em>top_srcdir</em> :</p>
 <div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">example/python</span></code></div>
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">check_all.py</span></code></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">example/python/check_all.py</span></code></div>
 </div>
 </div>
 <div class="section" id="setup-py-test-c">
@@ -302,7 +306,7 @@ you can also test the cppad_py c++ interface
 starting in <em>top_srcdir</em> :</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">build</span></code></div>
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">check_lib_cplusplus</span></code></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">check_example</span></code></div>
 </div>
 </div>
 <div class="section" id="import">

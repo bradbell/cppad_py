@@ -28,12 +28,10 @@ Children
    :maxdepth: 1
    :hidden:
 
-   vec2cppad_double
-   vec2a_double
+   convert_vec
    exception
 
-#. vec2cppad_double: :ref:`vec2cppad_double`
-#. vec2a_double: :ref:`vec2a_double`
+#. convert_vec: :ref:`convert_vec`
 #. exception: :ref:`exception`
 
 ----

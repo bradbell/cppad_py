@@ -69,7 +69,7 @@ External Requirements
 
 Install Using Pip
 *****************
-There is a preliminary version of cppad_py available using ``pip`` .
+There is an old version of cppad_py available using ``pip`` .
 To install for you entire system use:
 
 | |tab| ``pip install -i https://test.pypi.org/simple/ cppad_py``
@@ -130,7 +130,7 @@ referred to as your top source directory.
 
 Configure
 *********
-Before running ``setup.py`` or ``bin/get_cppad.sh`` ,
+Before running ``setup_py`` or ``bin/get_cppad.sh`` ,
 you should check and possibly change the
 :ref:`settings<get_cppad_sh.settings>` in ``bin/get_cppad.sh`` .
 
@@ -143,7 +143,12 @@ you should check and possibly change the
 
 Get cppad
 *********
-The next step is to get a copy of cppad using :ref:`get_cppad_sh<get_cppad_sh>`.
+The next step is to get a copy of cppad using
+:ref:`get_cppad_sh<get_cppad_sh>`.
+If you want to use the :ref:`mixed` class, you will have to set
+:ref:`include_mixed<get_cppad_sh.settings.include_mixed>` to true
+and use ``bin/get_cppad_mixed.sh`` to install cppad and other
+non-standard requirements.
 
 .. meta::
    :keywords: test
@@ -182,8 +187,7 @@ python
 The next step is to test the cppad_py on your system by executing
 the following commands starting in *top_srcdir* :
 
-| |tab| ``cd example/python``
-| |tab| ``python check_all.py``
+| |tab| ``python example/python/check_all.py``
 
 .. meta::
    :keywords: c++
@@ -200,7 +204,7 @@ you can also test the cppad_py c++ interface
 starting in *top_srcdir* :
 
 | |tab| ``cd build``
-| |tab| ``make check_lib_cplusplus``
+| |tab| ``make check_example``
 
 .. meta::
    :keywords: import

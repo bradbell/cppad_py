@@ -1,0 +1,491 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="mixed_optimize_fixed, optimize, fixed, effects" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="purpose" name="keywords" />
+<meta content="argument, types" name="keywords" />
+<meta content="limits" name="keywords" />
+<meta content="fixed_lower, (fixed_upper)" name="keywords" />
+<meta content="fix_constraint_lower, (fix_constraint_upper)" name="keywords" />
+<meta content="random_lower, (random_upper)" name="keywords" />
+<meta content="fixed_in, (random_in)" name="keywords" />
+<meta content="fixed_scale" name="keywords" />
+<meta content="fixed_ipopt_options" name="keywords" />
+<meta content="string" name="keywords" />
+<meta content="integer" name="keywords" />
+<meta content="numeric" name="keywords" />
+<meta content="derivative_test" name="keywords" />
+<meta content="hessian_approximation" name="keywords" />
+<meta content="max_iter" name="keywords" />
+<meta content="nlp_scaling_method" name="keywords" />
+<meta content="random_ipopt_options" name="keywords" />
+<meta content="solution" name="keywords" />
+<meta content="fixed_opt" name="keywords" />
+<meta content="fixed_lag" name="keywords" />
+<meta content="fix_con_lag" name="keywords" />
+<meta content="ran_con_lag" name="keywords" />
+<meta content="example" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mixed_optimize_fixed &mdash; cppad_py  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mixed_optimize_fixed_xam_py" href="mixed_optimize_fixed_xam_py.html" />
+    <link rel="prev" title="mixed_ran_likelihood_xam_py" href="mixed_ran_likelihood_xam_py.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="xsrst_automatic.html">Table of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xsrst_automatic.html#link-to-index">Link to Index</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="a_double.html">a_double</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vector.html">vector</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="py_lib.html">py_lib</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="py_fun.html">py_fun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_sparse.html">py_sparse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_utility.html">py_utility</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="mixed.html">mixed</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="mixed_ctor.html">mixed_ctor</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_warning.html">mixed_warning</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_fatal_error.html">mixed_fatal_error</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_fix_likelihood.html">mixed_fix_likelihood</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_ran_likelihood.html">mixed_ran_likelihood</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">mixed_optimize_fixed</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="mixed_optimize_fixed_xam_py.html">mixed_optimize_fixed_xam_py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="more_py.html">more_py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cpp_lib.html">cpp_lib</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="library.html">library</a> &raquo;</li>
+        
+          <li><a href="py_lib.html">py_lib</a> &raquo;</li>
+        
+          <li><a href="mixed.html">mixed</a> &raquo;</li>
+        
+      <li>mixed_optimize_fixed</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/mixed_optimize_fixed.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mixed-optimize-fixed">
+<h1>mixed_optimize_fixed<a class="headerlink" href="#mixed-optimize-fixed" title="Permalink to this headline">¶</a></h1>
+<p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
+<div class="section" id="optimize-fixed-effects">
+<span id="id1"></span><h2>Optimize Fixed Effects<a class="headerlink" href="#optimize-fixed-effects" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-purpose"><span class="std std-ref">Purpose</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-argument-types"><span class="std std-ref">Argument Types</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#mixed-optimize-fixed-limits"><span class="std std-ref">Limits</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-limits-fixed-lower-fixed-upper"><span class="std std-ref">fixed_lower (fixed_upper)</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-limits-fix-constraint-lower-fix-constraint-upper"><span class="std std-ref">fix_constraint_lower (fix_constraint_upper)</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-limits-random-lower-random-upper"><span class="std std-ref">random_lower (random_upper)</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-in-random-in"><span class="std std-ref">fixed_in (random_in)</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-scale"><span class="std std-ref">fixed_scale</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#mixed-optimize-fixed-fixed-ipopt-options"><span class="std std-ref">fixed_ipopt_options</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-ipopt-options-string"><span class="std std-ref">String</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-ipopt-options-integer"><span class="std std-ref">Integer</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-ipopt-options-numeric"><span class="std std-ref">Numeric</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-ipopt-options-derivative-test"><span class="std std-ref">derivative_test</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-ipopt-options-hessian-approximation"><span class="std std-ref">hessian_approximation</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-ipopt-options-max-iter"><span class="std std-ref">max_iter</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-ipopt-options-nlp-scaling-method"><span class="std std-ref">nlp_scaling_method</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-random-ipopt-options"><span class="std std-ref">random_ipopt_options</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#mixed-optimize-fixed-solution"><span class="std std-ref">solution</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-solution-fixed-opt"><span class="std std-ref">fixed_opt</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-solution-fixed-lag"><span class="std std-ref">fixed_lag</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-solution-fix-con-lag"><span class="std std-ref">fix_con_lag</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-solution-ran-con-lag"><span class="std std-ref">ran_con_lag</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-example"><span class="std std-ref">Example</span></a></p></li>
+</ul>
+<div class="section" id="syntax">
+<span id="mixed-optimize-fixed-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># solution = mixed_obj.optimize_fixed(</span>
+        <span class="n">fixed_ipopt_options</span>  <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
+        <span class="n">random_ipopt_options</span> <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
+        <span class="n">fixed_lower</span>          <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
+        <span class="n">fixed_upper</span>          <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
+        <span class="n">fix_constraint_lower</span> <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
+        <span class="n">fix_constraint_upper</span> <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
+        <span class="n">fixed_scale</span>          <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
+        <span class="n">fixed_in</span>             <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
+        <span class="n">random_lower</span>         <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
+        <span class="n">random_upper</span>         <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
+        <span class="n">random_in</span>            <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
+    <span class="c1"># )</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="purpose">
+<span id="mixed-optimize-fixed-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<p>This routine maximizes, with respect to the fixed effect <span class="math notranslate nohighlight">\(\theta\)</span>,
+the Laplace approximation for the likelihood of the data and fixed effects.</p>
+<div class="math notranslate nohighlight">
+\[\B{p} ( z | \theta ) \B{p} ( \theta ) \int_{-\infty}^{+\infty}
+    \B{p} ( y | \theta , u ) \B{p}( u | \theta ) \B{d} u\]</div>
+<p>If there are no random effects,
+there is no Laplace approximation of the integral above, and
+this routine maximizes <span class="math notranslate nohighlight">\(\B{p} ( z | \theta ) \B{p} ( \theta )\)</span> ;
+see <a class="reference internal" href="mixed_fix_likelihood.html#id1"><span class="std std-ref">Fixed Effects Likelihood</span></a>.</p>
+</div>
+<div class="section" id="argument-types">
+<span id="mixed-optimize-fixed-argument-types"></span><span id="index-3"></span><h3>Argument Types<a class="headerlink" href="#argument-types" title="Permalink to this headline">¶</a></h3>
+<p>The arguments <em>fixed_ipopt_options</em> and <em>random_ipopt_options</em>
+have type <code class="docutils literal notranslate"><span class="pre">str</span></code>.  All the other arguments are
+numpy vectors with elements of type <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</div>
+<div class="section" id="limits">
+<span id="mixed-optimize-fixed-limits"></span><span id="index-4"></span><h3>Limits<a class="headerlink" href="#limits" title="Permalink to this headline">¶</a></h3>
+<p>As a lower (upper) limit, the value <code class="docutils literal notranslate"><span class="pre">None</span></code> is minus (plus) infinity;
+i.e., no lower (upper) limit.</p>
+<div class="section" id="fixed-lower-fixed-upper">
+<span id="mixed-optimize-fixed-limits-fixed-lower-fixed-upper"></span><span id="index-5"></span><h4>fixed_lower (fixed_upper)<a class="headerlink" href="#fixed-lower-fixed-upper" title="Permalink to this headline">¶</a></h4>
+<p>has length <em>n_fixed</em> and is the lower (upper) limit for the fixed effects.</p>
+</div>
+<div class="section" id="fix-constraint-lower-fix-constraint-upper">
+<span id="mixed-optimize-fixed-limits-fix-constraint-lower-fix-constraint-upper"></span><span id="index-6"></span><h4>fix_constraint_lower (fix_constraint_upper)<a class="headerlink" href="#fix-constraint-lower-fix-constraint-upper" title="Permalink to this headline">¶</a></h4>
+<p>has length equal to the return value for the fixed effects constraint
+function and is the corresponding lower (upper) limit.</p>
+</div>
+<div class="section" id="random-lower-random-upper">
+<span id="mixed-optimize-fixed-limits-random-lower-random-upper"></span><span id="index-7"></span><h4>random_lower (random_upper)<a class="headerlink" href="#random-lower-random-upper" title="Permalink to this headline">¶</a></h4>
+<p>has length <em>n_random</em> and is the lower (upper) limit for the random effects.
+(The Laplace approximation assumes these constraints are not active.)</p>
+</div>
+</div>
+<div class="section" id="fixed-in-random-in">
+<span id="mixed-optimize-fixed-fixed-in-random-in"></span><span id="index-8"></span><h3>fixed_in (random_in)<a class="headerlink" href="#fixed-in-random-in" title="Permalink to this headline">¶</a></h3>
+<p>has length <em>n_fixed</em> (<em>n_random</em>) and is the initial value used during
+optimization of the fixed (random) effects.
+The value <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds to a vector of zeros.</p>
+</div>
+<div class="section" id="fixed-scale">
+<span id="mixed-optimize-fixed-fixed-scale"></span><span id="index-9"></span><h3>fixed_scale<a class="headerlink" href="#fixed-scale" title="Permalink to this headline">¶</a></h3>
+<p>has length <em>n_fixed</em> and is the value of the fixed at which the
+fixed effect objective is scaled so its derivative is near one.
+The value <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds to <em>fixed_scale</em> equal to <em>fixed_in</em>.</p>
+</div>
+<div class="section" id="fixed-ipopt-options">
+<span id="mixed-optimize-fixed-fixed-ipopt-options"></span><span id="index-10"></span><h3>fixed_ipopt_options<a class="headerlink" href="#fixed-ipopt-options" title="Permalink to this headline">¶</a></h3>
+<p>This contains the options for optimizing the fixed effects.
+Each line of an options argument corresponds to an ipopt option
+and is terminated by a <code class="docutils literal notranslate"><span class="pre">\n</span></code> character.
+Each line has three non-empty tokens separated by one or more spaces.
+The first token in each line is <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Integer</span></code>, or <code class="docutils literal notranslate"><span class="pre">Numeric</span></code>;
+see below.</p>
+<div class="section" id="string">
+<span id="mixed-optimize-fixed-fixed-ipopt-options-string"></span><span id="index-11"></span><h4>String<a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h4>
+<p>An Ipopt string option is specifies with the following syntax:
+<cite>String`</cite> <em>name</em> <em>value</em></p>
+</div>
+<div class="section" id="integer">
+<span id="mixed-optimize-fixed-fixed-ipopt-options-integer"></span><span id="index-12"></span><h4>Integer<a class="headerlink" href="#integer" title="Permalink to this headline">¶</a></h4>
+<p>An Ipopt integer option is specifies with the following syntax:
+<cite>Integer`</cite> <em>name</em> <em>value</em></p>
+</div>
+<div class="section" id="numeric">
+<span id="mixed-optimize-fixed-fixed-ipopt-options-numeric"></span><span id="index-13"></span><h4>Numeric<a class="headerlink" href="#numeric" title="Permalink to this headline">¶</a></h4>
+<p>An Ipopt numeric option is specifies with the following syntax:
+<cite>Numeric`</cite> <em>name</em> <em>value</em></p>
+</div>
+<div class="section" id="derivative-test">
+<span id="mixed-optimize-fixed-fixed-ipopt-options-derivative-test"></span><span id="index-14"></span><h4>derivative_test<a class="headerlink" href="#derivative-test" title="Permalink to this headline">¶</a></h4>
+<p>If the string option is <code class="docutils literal notranslate"><span class="pre">derivative_test</span></code>, <em>value</em> can be
+<code class="docutils literal notranslate"><span class="pre">none</span></code>, <code class="docutils literal notranslate"><span class="pre">first-order</span></code>, <code class="docutils literal notranslate"><span class="pre">second-order</span></code>, <code class="docutils literal notranslate"><span class="pre">only-second-order</span></code>.
+If second order derivatives are tested,
+<a class="reference internal" href="mixed_ctor.html#mixed-ctor-quasi-fixed"><span class="std std-ref">quasi_fixed</span></a> must be false.
+In addition to the standard ipopt options above, <em>value</em> can be
+<code class="docutils literal notranslate"><span class="pre">adaptive</span></code> or <code class="docutils literal notranslate"><span class="pre">trace-adaptive</span></code> which uses a special derivative
+tester that adapts its step sizes for each argument component.</p>
+</div>
+<div class="section" id="hessian-approximation">
+<span id="mixed-optimize-fixed-fixed-ipopt-options-hessian-approximation"></span><span id="index-15"></span><h4>hessian_approximation<a class="headerlink" href="#hessian-approximation" title="Permalink to this headline">¶</a></h4>
+<p>If <em>quasi_fixed</em> is true, this string option (if present) must have value
+<code class="docutils literal notranslate"><span class="pre">limit_memory</span></code>.</p>
+</div>
+<div class="section" id="max-iter">
+<span id="mixed-optimize-fixed-fixed-ipopt-options-max-iter"></span><span id="index-16"></span><h4>max_iter<a class="headerlink" href="#max-iter" title="Permalink to this headline">¶</a></h4>
+<p>This integer option has a special <em>value</em> -1.
+In this case ipopt is run with <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> equal to zero,
+and the return solution corresponds to the input value of the
+fixed effects.</p>
+</div>
+<div class="section" id="nlp-scaling-method">
+<span id="mixed-optimize-fixed-fixed-ipopt-options-nlp-scaling-method"></span><span id="index-17"></span><h4>nlp_scaling_method<a class="headerlink" href="#nlp-scaling-method" title="Permalink to this headline">¶</a></h4>
+<p>The objective and constraint functions are automatically scaled by
+cppad_mixed and it is an error to specify this option.</p>
+</div>
+</div>
+<div class="section" id="random-ipopt-options">
+<span id="mixed-optimize-fixed-random-ipopt-options"></span><span id="index-18"></span><h3>random_ipopt_options<a class="headerlink" href="#random-ipopt-options" title="Permalink to this headline">¶</a></h3>
+<p>This contains the options for optimizing the fixed effects.
+It has the same format as <em>fixed_ipopt_options</em>, but does
+not have the special exceptions to the normal Ipopt options; e.g.,
+<code class="docutils literal notranslate"><span class="pre">adaptive</span></code> is not available as a <code class="docutils literal notranslate"><span class="pre">derivative_test</span></code> <em>value</em>.</p>
+</div>
+<div class="section" id="solution">
+<span id="mixed-optimize-fixed-solution"></span><span id="index-19"></span><h3>solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
+<p>The return value <em>solution</em> has the following fields:</p>
+<div class="section" id="fixed-opt">
+<span id="mixed-optimize-fixed-solution-fixed-opt"></span><span id="index-20"></span><h4>fixed_opt<a class="headerlink" href="#fixed-opt" title="Permalink to this headline">¶</a></h4>
+<p>The value <em>solution</em> . <code class="docutils literal notranslate"><span class="pre">fixed_opt</span></code> is a numpy vector with length
+<em>n_fixed</em> containing the final value of the fixed effects
+(after optimization).
+If the <em>max_iter</em> is -1, it is equal to <em>fixed_in</em>.</p>
+</div>
+<div class="section" id="fixed-lag">
+<span id="mixed-optimize-fixed-solution-fixed-lag"></span><span id="index-21"></span><h4>fixed_lag<a class="headerlink" href="#fixed-lag" title="Permalink to this headline">¶</a></h4>
+<p>The value <em>solution</em> . <code class="docutils literal notranslate"><span class="pre">fixed_lag</span></code> is a numpy vector with length
+<em>n_fixed</em> containing the Lagrange multipliers for
+the fixed effects lower (upper) bounds if it is greater than (less than)
+zero.</p>
+</div>
+<div class="section" id="fix-con-lag">
+<span id="mixed-optimize-fixed-solution-fix-con-lag"></span><span id="index-22"></span><h4>fix_con_lag<a class="headerlink" href="#fix-con-lag" title="Permalink to this headline">¶</a></h4>
+<p>The value <em>solution</em> . <code class="docutils literal notranslate"><span class="pre">fix_con_lag</span></code> is a Lagrange multipliers for
+the fixed effects lower (upper) bounds if it is greater than (less than).
+Its length is the same as the return value for the fixed effects constraint
+function.</p>
+</div>
+<div class="section" id="ran-con-lag">
+<span id="mixed-optimize-fixed-solution-ran-con-lag"></span><span id="index-23"></span><h4>ran_con_lag<a class="headerlink" href="#ran-con-lag" title="Permalink to this headline">¶</a></h4>
+<p>The value <em>solution</em> . <code class="docutils literal notranslate"><span class="pre">ran_con_lag</span></code> is a Lagrange multipliers for the
+rand effects constraint function.
+Its length is the same as the random constrain matrix :math”<cite>A</cite> ; see
+<a class="reference internal" href="mixed_ctor.html#mixed-ctor-a-rcv"><span class="std std-ref">A_rcv</span></a>.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+<div class="section" id="example">
+<span id="mixed-optimize-fixed-example"></span><span id="index-24"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="mixed_optimize_fixed_xam_py.html#id1"><span class="std std-ref">mixed_optimize_fixed_xam_py</span></a></p>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/python/cppad_py/mixed.py</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mixed_optimize_fixed_xam_py.html" class="btn btn-neutral float-right" title="mixed_optimize_fixed_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mixed_ran_likelihood_xam_py.html" class="btn btn-neutral float-left" title="mixed_ran_likelihood_xam_py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

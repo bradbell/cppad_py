@@ -1,0 +1,47 @@
+!!!!!!!!!!!!!!!!
+ad_vec_cppad2std
+!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: ad_vec_cppad2std, convert, ad, vector, from, cppad, to, standard
+
+.. index:: ad_vec_cppad2std, convert, ad, vector, from, cppad, to, standard
+
+.. _ad_vec_cppad2std:
+
+Convert AD Vector From CppAD to Standard
+########################################
+- :ref:`ad_vec_cppad2std.syntax`
+- :ref:`ad_vec_cppad2std.prototype`
+
+.. meta::
+   :keywords: syntax
+
+.. index:: syntax
+
+.. _ad_vec_cppad2std.syntax:
+
+Syntax
+******
+
+| *v_out* =  ``cppad_py::ad_vec_cppad2std`` ( ``v_in`` )
+
+.. meta::
+   :keywords: prototype
+
+.. index:: prototype
+
+.. _ad_vec_cppad2std.prototype:
+
+Prototype
+*********
+
+.. literalinclude:: ../../lib/cplusplus/convert_vec.cpp
+    :lines: 91-92
+    :language: cpp
+
+----
+
+xsrst input file: ``lib/cplusplus/convert_vec.cpp``

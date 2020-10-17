@@ -344,7 +344,7 @@ was added to the <code class="docutils literal notranslate"><span class="pre">li
         <span class="n">adynamic</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="n">a_ptr_</span><span class="o">-&gt;</span><span class="n">size_dyn_ind</span><span class="p">()</span> <span class="p">,</span>
         <span class="s">&quot;cppad_py::a_fun::new_dynamic adynamic.size() error&quot;</span>
     <span class="p">);</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">CppAD</span><span class="o">::</span><span class="n">AD</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">au</span> <span class="o">=</span> <span class="n">vec2cppad_double</span><span class="p">(</span><span class="n">adynamic</span><span class="p">);</span>
+    <span class="n">CppAD</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">CppAD</span><span class="o">::</span><span class="n">AD</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">au</span> <span class="o">=</span> <span class="n">ad_vec_std2cppad</span><span class="p">(</span><span class="n">adynamic</span><span class="p">);</span>
     <span class="n">a_ptr_</span><span class="o">-&gt;</span><span class="n">new_dynamic</span><span class="p">(</span><span class="n">au</span><span class="p">);</span>
     <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>

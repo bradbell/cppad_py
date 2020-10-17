@@ -1,0 +1,47 @@
+!!!!!!!!!!!!!!!
+d_vec_std2cppad
+!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: d_vec_std2cppad, convert, double, vector, from, standard, to, cppad
+
+.. index:: d_vec_std2cppad, convert, double, vector, from, standard, to, cppad
+
+.. _d_vec_std2cppad:
+
+Convert double Vector From Standard to CppAD
+############################################
+- :ref:`d_vec_std2cppad.syntax`
+- :ref:`d_vec_std2cppad.prototype`
+
+.. meta::
+   :keywords: syntax
+
+.. index:: syntax
+
+.. _d_vec_std2cppad.syntax:
+
+Syntax
+******
+
+| *v_out* =  ``cppad_py::d_vec_std2cppad`` ( ``v_in`` )
+
+.. meta::
+   :keywords: prototype
+
+.. index:: prototype
+
+.. _d_vec_std2cppad.prototype:
+
+Prototype
+*********
+
+.. literalinclude:: ../../lib/cplusplus/convert_vec.cpp
+    :lines: 129-130
+    :language: cpp
+
+----
+
+xsrst input file: ``lib/cplusplus/convert_vec.cpp``

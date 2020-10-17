@@ -4,13 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta content="vec2cppad_double, convert, an, a_double, vector, to, cppad::ad&lt;double&gt;, vector" name="keywords" />
-<meta content="syntax" name="keywords" />
-<meta content="prototype" name="keywords" />
+  <meta content="mixed_ctor_xam_py, mixed, class, constructor:, example, test" name="keywords" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>vec2cppad_double &mdash; cppad_py  documentation</title>
+  <title>mixed_ctor_xam_py &mdash; cppad_py  documentation</title>
   
 
   
@@ -41,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="vec2a_double" href="vec2a_double.html" />
-    <link rel="prev" title="cpp_utility" href="cpp_utility.html" /> 
+    <link rel="next" title="mixed_warning" href="mixed_warning.html" />
+    <link rel="prev" title="mixed_ctor" href="mixed_ctor.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,19 +94,26 @@
 <li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="a_double.html">a_double</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vector.html">vector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
-<li class="toctree-l4 current"><a class="reference internal" href="cpp_utility.html">cpp_utility</a><ul class="current">
-<li class="toctree-l5 current"><a class="current reference internal" href="#">vec2cppad_double</a></li>
-<li class="toctree-l5"><a class="reference internal" href="vec2a_double.html">vec2a_double</a></li>
-<li class="toctree-l5"><a class="reference internal" href="exception.html">exception</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="py_lib.html">py_lib</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="py_fun.html">py_fun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_sparse.html">py_sparse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_utility.html">py_utility</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="mixed.html">mixed</a><ul class="current">
+<li class="toctree-l5 current"><a class="reference internal" href="mixed_ctor.html">mixed_ctor</a><ul class="current">
+<li class="toctree-l6 current"><a class="current reference internal" href="#">mixed_ctor_xam_py</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_warning.html">mixed_warning</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_fatal_error.html">mixed_fatal_error</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_fix_likelihood.html">mixed_fix_likelihood</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_ran_likelihood.html">mixed_ran_likelihood</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_optimize_fixed.html">mixed_optimize_fixed</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="more_py.html">more_py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cpp_lib.html">cpp_lib</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
@@ -165,17 +170,19 @@
         
           <li><a href="library.html">library</a> &raquo;</li>
         
-          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
+          <li><a href="py_lib.html">py_lib</a> &raquo;</li>
         
-          <li><a href="cpp_utility.html">cpp_utility</a> &raquo;</li>
+          <li><a href="mixed.html">mixed</a> &raquo;</li>
         
-      <li>vec2cppad_double</li>
+          <li><a href="mixed_ctor.html">mixed_ctor</a> &raquo;</li>
+        
+      <li>mixed_ctor_xam_py</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/xsrst/vec2cppad_double.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/xsrst/mixed_ctor_xam_py.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -188,31 +195,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="vec2cppad-double">
-<h1>vec2cppad_double<a class="headerlink" href="#vec2cppad-double" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="mixed-ctor-xam-py">
+<h1>mixed_ctor_xam_py<a class="headerlink" href="#mixed-ctor-xam-py" title="Permalink to this headline">¶</a></h1>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
-<div class="section" id="convert-an-a-double-vector-to-a-cppad-ad-double-vector">
-<span id="id1"></span><h2>Convert an a_double Vector to a CppAD::AD&lt;double&gt; Vector<a class="headerlink" href="#convert-an-a-double-vector-to-a-cppad-ad-double-vector" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="#vec2cppad-double-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#vec2cppad-double-prototype"><span class="std std-ref">Prototype</span></a></p></li>
-</ul>
-<div class="section" id="syntax">
-<span id="vec2cppad-double-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
-<div class="line-block">
-<div class="line"><em>v_out</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py::vec2cppad_double</span></code> ( <code class="docutils literal notranslate"><span class="pre">v_in</span></code> )</div>
-</div>
-</div>
-<div class="section" id="prototype">
-<span id="vec2cppad-double-prototype"></span><span id="index-2"></span><h3>Prototype<a class="headerlink" href="#prototype" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">CppAD</span><span class="o">::</span><span class="n">AD</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&gt;</span>
-<span class="n">vec2cppad_double</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">a_double</span><span class="o">&gt;&amp;</span> <span class="n">v_in</span> <span class="p">)</span>
+<div class="section" id="mixed-class-constructor-example-and-test">
+<span id="id1"></span><h2>Mixed Class Constructor: Example and Test<a class="headerlink" href="#mixed-class-constructor-example-and-test" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ctor_xam</span><span class="p">()</span> <span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">cppad_py</span>
+    <span class="kn">import</span> <span class="nn">numpy</span>
+    <span class="n">ok</span>         <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1">#</span>
+    <span class="n">fixed_init</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span> <span class="mi">1</span> <span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span> <span class="p">)</span>
+    <span class="n">mixed_obj</span>  <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">mixed</span><span class="p">(</span><span class="n">fixed_init</span> <span class="o">=</span> <span class="n">fixed_init</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ok</span>
+<span class="c1">#</span>
 </pre></div>
 </div>
 <hr class="docutils" />
-<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/cppad_vec.cpp</span></code></p>
-</div>
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">example/python/mixed/ctor_xam.py</span></code></p>
 </div>
 </div>
 
@@ -224,10 +225,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="vec2a_double.html" class="btn btn-neutral float-right" title="vec2a_double" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mixed_warning.html" class="btn btn-neutral float-right" title="mixed_warning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cpp_utility.html" class="btn btn-neutral float-left" title="cpp_utility" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mixed_ctor.html" class="btn btn-neutral float-left" title="mixed_ctor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

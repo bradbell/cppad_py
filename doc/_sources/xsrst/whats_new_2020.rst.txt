@@ -14,6 +14,7 @@ whats_new_2020
 CppAD Py Changes During 2020
 ############################
 - :ref:`whats_new_2020.previous_years`
+    - :ref:`whats_new_2020.previous_years.10-16`
 - :ref:`whats_new_2020.10-13`
 - :ref:`whats_new_2020.10-02`
 - :ref:`whats_new_2020.09-30`
@@ -69,6 +70,21 @@ CppAD Py Changes During 2020
 Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
+
+.. _whats_new_2020.previous_years.10-16:
+
+10-16
+=====
+#.  Add the :ref:`mixed` class an make it optional during the install process;
+    see :ref:`include_mixed<get_cppad_sh.settings.include_mixed>`.
+    This class is under construction and its API may change.
+    Check this page for such changes.
+
+#.  Change the install process so both a debug and release version of
+    :ref:`cppad_prefix<get_cppad_sh.settings.build_type.cppad_prefix>`
+    can be installed at the same time.
+
+#. Some of the install steps in :ref:`setup_py` have changed.
 
 .. _whats_new_2020.10-13:
 
@@ -240,8 +256,8 @@ The word 'initialization' was added to the xsrst dictionary.
 07-05
 *****
 
-#.  The :ref:`prototype<vec2a_double.prototype>` for ``vec2a_double``
-    was the same as for :ref:`vec2cppad_double<vec2cppad_double>`.
+#.  The :ref:`prototype<ad_vec_cppad2std.syntax>` for ``vec2a_double``
+    was the same as for :ref:`d_vec_std2cppad<d_vec_cppad2std>`.
     This has been fixed.
 #.  The limits for the :ref:`fun_from_json_xam_py<fun_from_json_xam_py>` and :ref:`fun_to_json_xam_py<fun_to_json_xam_py>`
     example code were incorrect (this has been fixed).

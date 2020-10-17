@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="mixed_ctor, mixed, class, constructor" name="keywords" />
+<meta content="syntax" name="keywords" />
+<meta content="mixed_obj" name="keywords" />
+<meta content="fixed_init" name="keywords" />
+<meta content="random_vec" name="keywords" />
+<meta content="n_fixed" name="keywords" />
+<meta content="n_random" name="keywords" />
+<meta content="quasi_fixed" name="keywords" />
+<meta content="bool_sparsity" name="keywords" />
+<meta content="a_rcv" name="keywords" />
+<meta content="warning" name="keywords" />
+<meta content="fix_likelihood" name="keywords" />
+<meta content="ran_likelihood" name="keywords" />
+<meta content="example" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mixed_ctor &mdash; cppad_py  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mixed_ctor_xam_py" href="mixed_ctor_xam_py.html" />
+    <link rel="prev" title="mixed" href="mixed.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cppad_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="xsrst_automatic.html">Table of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xsrst_automatic.html#link-to-index">Link to Index</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="cppad_py.html">cppad_py</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_py.html">setup_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric_xam.html">numeric_xam</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="a_double.html">a_double</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vector.html">vector</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="py_lib.html">py_lib</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="py_fun.html">py_fun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_sparse.html">py_sparse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_utility.html">py_utility</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="mixed.html">mixed</a><ul class="current">
+<li class="toctree-l5 current"><a class="current reference internal" href="#">mixed_ctor</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="mixed_ctor_xam_py.html">mixed_ctor_xam_py</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_warning.html">mixed_warning</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_fatal_error.html">mixed_fatal_error</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_fix_likelihood.html">mixed_fix_likelihood</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_ran_likelihood.html">mixed_ran_likelihood</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_optimize_fixed.html">mixed_optimize_fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="more_py.html">more_py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cpp_lib.html">cpp_lib</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_2020.html">whats_new_2020</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cppad_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="cppad_py.html">cppad_py</a> &raquo;</li>
+        
+          <li><a href="library.html">library</a> &raquo;</li>
+        
+          <li><a href="py_lib.html">py_lib</a> &raquo;</li>
+        
+          <li><a href="mixed.html">mixed</a> &raquo;</li>
+        
+      <li>mixed_ctor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/xsrst/mixed_ctor.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mixed-ctor">
+<h1>mixed_ctor<a class="headerlink" href="#mixed-ctor" title="Permalink to this headline">¶</a></h1>
+<p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
+<div class="section" id="mixed-class-constructor">
+<span id="id1"></span><h2>Mixed Class Constructor<a class="headerlink" href="#mixed-class-constructor" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#mixed-ctor-syntax"><span class="std std-ref">Syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-mixed-obj"><span class="std std-ref">mixed_obj</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-fixed-init"><span class="std std-ref">fixed_init</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-random-vec"><span class="std std-ref">random_vec</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-n-fixed"><span class="std std-ref">n_fixed</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-n-random"><span class="std std-ref">n_random</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-quasi-fixed"><span class="std std-ref">quasi_fixed</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-bool-sparsity"><span class="std std-ref">bool_sparsity</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-a-rcv"><span class="std std-ref">A_rcv</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-warning"><span class="std std-ref">warning</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-fix-likelihood"><span class="std std-ref">fix_likelihood</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-ran-likelihood"><span class="std std-ref">ran_likelihood</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-example"><span class="std std-ref">Example</span></a></p></li>
+</ul>
+<div class="section" id="syntax">
+<span id="mixed-ctor-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># mixed_obj = cppad_py.mixed(</span>
+        <span class="n">fixed_init</span>       <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">random_init</span>      <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">quasi_fixed</span>      <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">bool_sparsity</span>    <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">A_rcv</span>            <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">warning</span>          <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">fix_likelihood</span>   <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ran_likelihood</span>   <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="c1"># )</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mixed-obj">
+<span id="mixed-ctor-mixed-obj"></span><span id="index-2"></span><h3>mixed_obj<a class="headerlink" href="#mixed-obj" title="Permalink to this headline">¶</a></h3>
+<p>We refer to the value returned by this constructor as <em>mixed_obj</em>.</p>
+</div>
+<div class="section" id="fixed-init">
+<span id="mixed-ctor-fixed-init"></span><span id="index-3"></span><h3>fixed_init<a class="headerlink" href="#fixed-init" title="Permalink to this headline">¶</a></h3>
+<p>is a numpy vector with <code class="docutils literal notranslate"><span class="pre">float</span></code> elements.
+It specifies a value of the fixed effects for which the
+likelihood and prior functions can be evaluated and is used to
+initialize <em>mixed_obj</em>.
+The default value for this argument <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds
+to the empty vector and is not valid.</p>
+</div>
+<div class="section" id="random-vec">
+<span id="mixed-ctor-random-vec"></span><span id="index-4"></span><h3>random_vec<a class="headerlink" href="#random-vec" title="Permalink to this headline">¶</a></h3>
+<p>is a numpy vector with <code class="docutils literal notranslate"><span class="pre">float</span></code> elements.
+It specifies a value of the random effects for which the
+likelihood and prior functions can be evaluated and is used to
+initialize <em>mixed_obj</em>.
+The default value for this argument <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds
+to the empty vector; i.e., no random effects.</p>
+</div>
+<div class="section" id="n-fixed">
+<span id="mixed-ctor-n-fixed"></span><span id="index-5"></span><h3>n_fixed<a class="headerlink" href="#n-fixed" title="Permalink to this headline">¶</a></h3>
+<p>is the length of the vector <em>fixed_init</em> and must not be zero.</p>
+</div>
+<div class="section" id="n-random">
+<span id="mixed-ctor-n-random"></span><span id="index-6"></span><h3>n_random<a class="headerlink" href="#n-random" title="Permalink to this headline">¶</a></h3>
+<p>is the length of the vector <em>random_init</em> and can be zero.</p>
+</div>
+<div class="section" id="quasi-fixed">
+<span id="mixed-ctor-quasi-fixed"></span><span id="index-7"></span><h3>quasi_fixed<a class="headerlink" href="#quasi-fixed" title="Permalink to this headline">¶</a></h3>
+<p>is True (False) if a quasi-Newton method (Newton method) is used to
+optimize the fixed effects. The Newton method requires computation
+of second derivatives.</p>
+</div>
+<div class="section" id="bool-sparsity">
+<span id="mixed-ctor-bool-sparsity"></span><span id="index-8"></span><h3>bool_sparsity<a class="headerlink" href="#bool-sparsity" title="Permalink to this headline">¶</a></h3>
+<p>is True (False) if CppAD should use boolean sparsity patterns
+(set sparsity patterns) for its internal calculations</p>
+</div>
+<div class="section" id="a-rcv">
+<span id="mixed-ctor-a-rcv"></span><span id="index-9"></span><h3>A_rcv<a class="headerlink" href="#a-rcv" title="Permalink to this headline">¶</a></h3>
+<p>Is a <a class="reference internal" href="py_sparse_rcv.html#id1"><span class="std std-ref">sparse_rcv</span></a> representation of the
+random constraint matrix <span class="math notranslate nohighlight">\(A\)</span>; i.e.
+<span class="math notranslate nohighlight">\(A \cdot \hat{u} ( \theta ) = 0\)</span>
+where <span class="math notranslate nohighlight">\(\hat{u} ( \theta )\)</span> is the
+optimal random effects as a function of the fixed effects.
+The value <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds to no random constraints.</p>
+</div>
+<div class="section" id="warning">
+<span id="mixed-ctor-warning"></span><span id="index-10"></span><h3>warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h3>
+<p>is a python function that gets called when <em>mixed_obj</em>
+has a warning to report; see <a class="reference internal" href="mixed_warning.html#id1"><span class="std std-ref">Mixed Class Warnings</span></a>.
+The value <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds to ignoring all warning messages.</p>
+</div>
+<div class="section" id="fix-likelihood">
+<span id="mixed-ctor-fix-likelihood"></span><span id="index-11"></span><h3>fix_likelihood<a class="headerlink" href="#fix-likelihood" title="Permalink to this headline">¶</a></h3>
+<p>is a <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> representation
+of the fixed effects likelihood; see
+<a class="reference internal" href="mixed_fix_likelihood.html#id1"><span class="std std-ref">Fixed Effects Likelihood</span></a>.</p>
+</div>
+<div class="section" id="ran-likelihood">
+<span id="mixed-ctor-ran-likelihood"></span><span id="index-12"></span><h3>ran_likelihood<a class="headerlink" href="#ran-likelihood" title="Permalink to this headline">¶</a></h3>
+<p>is a <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> representation
+of the random effects likelihood; see
+<a class="reference internal" href="mixed_ran_likelihood.html#id1"><span class="std std-ref">Random Effects Likelihood</span></a>.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="example">
+<span id="mixed-ctor-example"></span><span id="index-13"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="mixed_ctor_xam_py.html#id1"><span class="std std-ref">mixed_ctor_xam_py</span></a></p>
+<hr class="docutils" />
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/python/cppad_py/mixed.py</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mixed_ctor_xam_py.html" class="btn btn-neutral float-right" title="mixed_ctor_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mixed.html" class="btn btn-neutral float-left" title="mixed" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

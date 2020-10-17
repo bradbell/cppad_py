@@ -11,6 +11,10 @@
 <meta content="cppad_prefix" name="keywords" />
 <meta content="extra_cxx_flags" name="keywords" />
 <meta content="build_type" name="keywords" />
+<meta content="cppad_prefix" name="keywords" />
+<meta content="build" name="keywords" />
+<meta content="include_mixed" name="keywords" />
+<meta content="warning" name="keywords" />
 <meta content="test_cppad" name="keywords" />
 <meta content="caching" name="keywords" />
 
@@ -190,8 +194,22 @@
 <dt><a class="reference internal" href="#get-cppad-sh-settings"><span class="std std-ref">Settings</span></a></dt><dd><ul>
 <li><p><a class="reference internal" href="#get-cppad-sh-settings-cppad-prefix"><span class="std std-ref">cppad_prefix</span></a></p></li>
 <li><p><a class="reference internal" href="#get-cppad-sh-settings-extra-cxx-flags"><span class="std std-ref">extra_cxx_flags</span></a></p></li>
-<li><p><a class="reference internal" href="#get-cppad-sh-settings-build-type"><span class="std std-ref">build_type</span></a></p></li>
-<li><p><a class="reference internal" href="#get-cppad-sh-settings-test-cppad"><span class="std std-ref">test_cppad</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#get-cppad-sh-settings-build-type"><span class="std std-ref">build_type</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#get-cppad-sh-settings-build-type-cppad-prefix"><span class="std std-ref">cppad_prefix</span></a></p></li>
+<li><p><a class="reference internal" href="#get-cppad-sh-settings-build-type-build"><span class="std std-ref">build</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#get-cppad-sh-settings-include-mixed"><span class="std std-ref">include_mixed</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#get-cppad-sh-warning"><span class="std std-ref">Warning</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#get-cppad-sh-warning-test-cppad"><span class="std std-ref">test_cppad</span></a></p></li>
 </ul>
 </dd>
 </dl>
@@ -205,9 +223,7 @@
 <div class="section" id="top-source-directory">
 <span id="get-cppad-sh-top-source-directory"></span><span id="index-2"></span><h3>Top Source Directory<a class="headerlink" href="#top-source-directory" title="Permalink to this headline">¶</a></h3>
 <p>This program must be run from the
-<a class="reference internal" href="setup_py.html#setup-py-download-top-source-directory"><span class="std std-ref">top_source_directory</span></a>.
-Each time it is run it removes the old <code class="docutils literal notranslate"><span class="pre">build</span></code> directory and
-starts over.</p>
+<a class="reference internal" href="setup_py.html#setup-py-download-top-source-directory"><span class="std std-ref">top_source_directory</span></a>.</p>
 </div>
 <div class="section" id="settings">
 <span id="get-cppad-sh-settings"></span><span id="index-3"></span><h3>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h3>
@@ -220,6 +236,9 @@ it may include the shell variable <code class="docutils literal notranslate"><sp
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">cppad_prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/prefix/cppad&quot;</span>
 </pre></div>
 </div>
+<p>If this prefix does no start with <code class="docutils literal notranslate"><span class="pre">/</span></code>, it is relative to the
+<a class="reference internal" href="setup_py.html#setup-py-download-top-source-directory"><span class="std std-ref">top_source_directory</span></a>.
+Note that <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> starts with <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
 </div>
 <div class="section" id="extra-cxx-flags">
 <span id="get-cppad-sh-settings-extra-cxx-flags"></span><span id="index-5"></span><h4>extra_cxx_flags<a class="headerlink" href="#extra-cxx-flags" title="Permalink to this headline">¶</a></h4>
@@ -238,14 +257,42 @@ version runs faster.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">build_type</span><span class="o">=</span><span class="s1">&#39;release&#39;</span>
 </pre></div>
 </div>
+<div class="section" id="get-cppad-sh-settings-build-type-cppad-prefix">
+<span id="index-7"></span><span id="id2"></span><h5>cppad_prefix<a class="headerlink" href="#get-cppad-sh-settings-build-type-cppad-prefix" title="Permalink to this headline">¶</a></h5>
+<p>The actual prefix used for the install is
+<em>cppad_prefix</em> <code class="docutils literal notranslate"><span class="pre">.</span></code> <em>build_type</em>
+and a soft link is created from <em>cppad_prefix</em> to this directory.</p>
+</div>
+<div class="section" id="build">
+<span id="get-cppad-sh-settings-build-type-build"></span><span id="index-8"></span><h5>build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h5>
+<p>This subdirectory <code class="docutils literal notranslate"><span class="pre">build.</span></code> <em>build_type</em>
+is used to compile and test the software and a soft link is created from
+<code class="docutils literal notranslate"><span class="pre">build</span></code> to this subdirectory.</p>
+</div>
+</div>
+<div class="section" id="include-mixed">
+<span id="get-cppad-sh-settings-include-mixed"></span><span id="index-9"></span><h4>include_mixed<a class="headerlink" href="#include-mixed" title="Permalink to this headline">¶</a></h4>
+<p>This flag is true (false) if we are (are not)
+including the python cppad_mixed interface.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">include_mixed</span><span class="o">=</span><span class="s1">&#39;false&#39;</span>
+</pre></div>
+</div>
+<p>If it is true, the install script <code class="docutils literal notranslate"><span class="pre">bin/get_cppad_mixed.sh</span></code>
+should be used to install Cppad together with the all the other cppad_mixed
+requirements.
+Otherwise, <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code> should be used to install Cppad
+and</p>
+</div>
+</div>
+<div class="section" id="warning">
+<span id="get-cppad-sh-warning"></span><span id="index-10"></span><h3>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h3>
 <p>If you used the <code class="docutils literal notranslate"><span class="pre">debug</span></code> build type you may get the following warning
 from the compiler (because the optimization is totally turned off):</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">warning</span> <span class="pre">_FORTIFY_SOURCE</span> <span class="pre">requires</span> <span class="pre">compiling</span> <span class="pre">with</span> <span class="pre">optimization</span></code></div>
 </div>
-</div>
 <div class="section" id="test-cppad">
-<span id="get-cppad-sh-settings-test-cppad"></span><span id="index-7"></span><h4>test_cppad<a class="headerlink" href="#test-cppad" title="Permalink to this headline">¶</a></h4>
+<span id="get-cppad-sh-warning-test-cppad"></span><span id="index-11"></span><h4>test_cppad<a class="headerlink" href="#test-cppad" title="Permalink to this headline">¶</a></h4>
 <p>This must be must <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> .
 Cppad has a huge test suite and this can take a significant amount of time,
 but it may be useful if you have problems.</p>
@@ -255,7 +302,7 @@ but it may be useful if you have problems.</p>
 </div>
 </div>
 <div class="section" id="caching">
-<span id="get-cppad-sh-caching"></span><span id="index-8"></span><h3>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h3>
+<span id="get-cppad-sh-caching"></span><span id="index-12"></span><h3>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h3>
 <p>This procedure cashes previous builds so that when you re-run
 this script it does not re-do all the work.
 If you have trouble, try deleting the directory</p>

@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="cpp_lib" href="cpp_lib.html" />
-    <link rel="prev" title="vec2numpy" href="vec2numpy.html" /> 
+    <link rel="prev" title="mixed_optimize_fixed_xam_py" href="mixed_optimize_fixed_xam_py.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -110,6 +110,7 @@
 <li class="toctree-l4"><a class="reference internal" href="py_fun.html">py_fun</a></li>
 <li class="toctree-l4"><a class="reference internal" href="py_sparse.html">py_sparse</a></li>
 <li class="toctree-l4"><a class="reference internal" href="py_utility.html">py_utility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mixed.html">mixed</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">more_py</a></li>
 </ul>
 </li>
@@ -287,7 +288,7 @@ was changed to handle dynamic parameters as follows:</p>
     <span class="k">if</span> <span class="n">dynamic</span> <span class="ow">is</span> <span class="kc">None</span> <span class="p">:</span>
         <span class="n">syntax</span>   <span class="o">=</span> <span class="s1">&#39;independent(x)&#39;</span>
         <span class="n">u</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">utility</span><span class="o">.</span><span class="n">numpy2vec</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">nx</span><span class="p">,</span> <span class="n">syntax</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">)</span>
-        <span class="n">av</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">swig</span><span class="o">.</span><span class="n">independent</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">av</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">cppad_swig</span><span class="o">.</span><span class="n">independent</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">utility</span><span class="o">.</span><span class="n">vec2numpy</span><span class="p">(</span><span class="n">av</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">size</span><span class="p">());</span>
         <span class="k">return</span> <span class="n">ax</span>
     <span class="c1">#</span>
@@ -295,7 +296,7 @@ was changed to handle dynamic parameters as follows:</p>
     <span class="n">syntax</span>   <span class="o">=</span> <span class="s1">&#39;independent(x, dynamic)&#39;</span>
     <span class="n">u</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">utility</span><span class="o">.</span><span class="n">numpy2vec</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">nx</span><span class="p">,</span> <span class="n">syntax</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">)</span>
     <span class="n">v</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">utility</span><span class="o">.</span><span class="n">numpy2vec</span><span class="p">(</span><span class="n">dynamic</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">nd</span><span class="p">,</span> <span class="n">syntax</span><span class="p">,</span> <span class="s1">&#39;dynamic&#39;</span><span class="p">)</span>
-    <span class="n">a_both</span>   <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">swig</span><span class="o">.</span><span class="n">independent</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">a_both</span>   <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">cppad_swig</span><span class="o">.</span><span class="n">independent</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
     <span class="n">ax</span>       <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span>       <span class="n">dtype</span><span class="o">=</span><span class="n">cppad_py</span><span class="o">.</span><span class="n">a_double</span><span class="p">)</span>
     <span class="n">adynamic</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">nd</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">cppad_py</span><span class="o">.</span><span class="n">a_double</span><span class="p">)</span>
     <span class="c1"># use copy constructor so a separate copy is made for numpy arrays</span>
@@ -386,7 +387,7 @@ Once the tests were working, the changes where checked into using
         <a href="cpp_lib.html" class="btn btn-neutral float-right" title="cpp_lib" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vec2numpy.html" class="btn btn-neutral float-left" title="vec2numpy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mixed_optimize_fixed_xam_py.html" class="btn btn-neutral float-left" title="mixed_optimize_fixed_xam_py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

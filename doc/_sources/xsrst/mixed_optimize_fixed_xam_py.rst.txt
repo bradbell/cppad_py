@@ -1,0 +1,24 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!
+mixed_optimize_fixed_xam_py
+!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: mixed_optimize_fixed_xam_py, python:, mixed, class, warnings:, example, test
+
+.. index:: mixed_optimize_fixed_xam_py, python:, mixed, class, warnings:, example, test
+
+.. _mixed_optimize_fixed_xam_py:
+
+Python: Mixed Class Warnings: Example and Test
+##############################################
+
+
+.. literalinclude:: ../../example/python/mixed/optimize_fixed_xam.py
+    :lines: 11-37
+    :language: py
+
+----
+
+xsrst input file: ``example/python/mixed/optimize_fixed_xam.py``
