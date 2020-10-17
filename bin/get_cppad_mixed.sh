@@ -135,7 +135,7 @@ sed -i bin/example_install.sh \
     -e 's|for cmd in check speed install|for cmd in install|'
 # -----------------------------------------------------------------------------
 # cppad_mixed example install
-echo_eval bin/example_install.sh use
+echo_eval bin/example_install.sh replace
 #
 # -----------------------------------------------------------------------------
 echo 'get_cppad_mixed.sh: OK'
