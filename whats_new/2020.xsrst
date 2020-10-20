@@ -46,6 +46,11 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+10-19
+*****
+Add the non linear constraint functions of the fixed effects
+to the mixed class; see :ref:`mixed_fix_constraint`.
+
 10-17
 *****
 #.  The default value (corresponding to ``None``)

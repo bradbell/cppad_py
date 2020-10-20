@@ -24,11 +24,13 @@ mixed_derived::mixed_derived(
     const  CppAD::mixed::d_sparse_rcv&    A_rcv            ,
     PyObject*                             warning          ,
     d_fun&                                d_fix_likelihood ,
+    d_fun&                                d_fix_constraint ,
     d_fun&                                d_ran_likelihood )
 :
 cppad_mixed( n_fixed, n_random, quasi_fixed, bool_sparsity, A_rcv ) ,
 warning_(warning)                                                   ,
 a_fix_likelihood_(d_fix_likelihood)                                 ,
+a_fix_constraint_(d_fix_constraint)                                 ,
 a_ran_likelihood_(d_ran_likelihood)
 { }
 //
@@ -53,6 +55,17 @@ CppAD::vector< CppAD::AD<double> > mixed_derived::fix_likelihood(
     if( n_result == 0 )
         return result;
     result = a_fix_likelihood_.a_ptr_->Forward(0, fixed_vec);
+    return result;
+}
+//
+// fix_constraint
+CppAD::vector< CppAD::AD<double> > mixed_derived::fix_constraint(
+    const CppAD::vector< CppAD::AD<double> >& fixed_vec )
+{   CppAD::vector< CppAD::AD<double> > result;
+    size_t n_result = a_fix_constraint_.size_range();
+    if( n_result == 0 )
+        return result;
+    result = a_fix_constraint_.a_ptr_->Forward(0, fixed_vec);
     return result;
 }
 //
@@ -87,6 +100,7 @@ mixed::mixed(
     sparse_rcv&                    A_rcv            ,
     PyObject*                      warning          ,
     d_fun&                         fix_likelihood   ,
+    d_fun&                         fix_constraint   ,
     d_fun&                         ran_likelihood   )
 {   size_t n_fixed  = fixed_init.size();
     size_t n_random = random_init.size();
@@ -114,6 +128,7 @@ mixed::mixed(
             copy_A_rcv,
             warning,
             fix_likelihood,
+            fix_constraint,
             ran_likelihood
         );
         assert( ptr_ != CPPAD_NULL );

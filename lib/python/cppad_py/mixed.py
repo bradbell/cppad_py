@@ -145,7 +145,7 @@ class mixed :
     :math:`A \cdot \hat{u} ( \theta ) = 0`
     where :math:`\hat{u} ( \theta )` is the
     optimal random effects as a function of the fixed effects.
-    The value ``None`` corresponds to no random constraints.
+    The value ``None`` corresponds to no random constraint.
 
     warning
     *******
@@ -158,6 +158,12 @@ class mixed :
     is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
     of the fixed effects likelihood; see
     :ref:`mixed_fix_likelihood`.
+
+    fix_constraint
+    *******************************
+    is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
+    of the fixed effects constraint; see
+    :ref:`mixed_fix_constraint`.
 
     ran_likelihood
     *******************************
@@ -186,6 +192,7 @@ class mixed :
         A_rcv            = None,
         warning          = None,
         fix_likelihood   = None,
+        fix_constraint   = None,
         ran_likelihood   = None,
     # )
     # END_MIXED_CTOR
@@ -208,10 +215,13 @@ class mixed :
         #
         self.n_fixed        = len(fixed_init)
         self.n_random       = len(random_init)
-        self.n_fix_con      = 0 # 2DO: fix when fix conratint function added
         self.fixed_init     = fixed_init
         self.random_init    = random_init
         self.A_rcv          = A_rcv
+        if fix_constraint is None :
+            self.n_fix_con  = 0
+        else :
+            self.n_fix_con  = fix_constraint.size_range()
         #
         fixed_init  = numpy2std(fixed_init, 'fixed_init')
         random_init = numpy2std(random_init, 'random_init')
@@ -228,6 +238,8 @@ class mixed :
             warning = ignore_warning
         if fix_likelihood is None :
             fix_likelihood = cppad_py.d_fun()
+        if fix_constraint is None :
+            fix_constraint = cppad_py.d_fun()
         if ran_likelihood is None :
             ran_likelihood = cppad_py.d_fun()
         #
@@ -239,6 +251,7 @@ class mixed :
             A_rcv.rcv,
             warning,
             fix_likelihood.f,
+            fix_constraint.f,
             ran_likelihood.f,
         )
     """
@@ -373,6 +386,50 @@ class mixed :
 
     {xsrst_end mixed_fix_likelihood}
     -------------------------------------------------------------------------
+    {xsrst_begin mixed_fix_constraint}
+    .. include:: ../preamble.rst
+
+    Fixed Effects Constraint Function
+    #################################
+
+    Syntax
+    ******
+    *c* = *fix_constraint* . ``forward`` (0, *theta* )
+
+
+    fix_constraint
+    ***************
+    is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
+    of the fixed effects constraint function :math:`c( \theta )`.
+    The functions :math:`c_i ( \theta )` for :math:`i = 0 , \ldots , m-1`
+    are assumed to be a smooth w.r.t the vector :math:`\theta`.
+
+    theta
+    *****
+    is a numpy vector with ``float`` elements and size
+    :ref:`n_fixed<mixed_ctor.n_fixed>`
+    containing a value for the fixed effects.
+
+    c
+    *
+    is a numpy vector with ``float`` elements and size *m*.
+
+    None
+    ****
+    The value *fix_constraint* = ``None``
+    corresponds to not fixed effects constraint function; i.e.,
+    :math:`m = 0`.
+
+    {xsrst_children
+        example/python/mixed/fix_constraint_xam.py
+    }
+    Example
+    *******
+    :ref:`mixed_fix_constraint_xam_py<mixed_fix_constraint_xam_py>`
+
+    {xsrst_end mixed_fix_constraint}
+    -------------------------------------------------------------------------
+    -------------------------------------------------------------------------
     {xsrst_begin mixed_ran_likelihood}
     .. include:: ../preamble.rst
 
@@ -468,7 +525,6 @@ class mixed :
     this routine maximizes :math:`\B{p} ( z | \theta ) \B{p} ( \theta )` ;
     see :ref:`mixed_fix_likelihood`.
 
-
     Argument Types
     **************
     The arguments *fixed_ipopt_options* and *random_ipopt_options*
@@ -492,7 +548,7 @@ class mixed :
     random_lower (random_upper)
     ===========================
     has length *n_random* and is the lower (upper) limit for the random effects.
-    (The Laplace approximation assumes these constraints are not active.)
+    (The Laplace approximation assumes these bounds are not active.)
 
     fixed_in (random_in)
     ********************
@@ -556,7 +612,7 @@ class mixed :
 
     nlp_scaling_method
     ==================
-    The objective and constraint functions are automatically scaled by
+    The objective and constraint function are automatically scaled by
     cppad_mixed and it is an error to specify this option.
 
     random_ipopt_options

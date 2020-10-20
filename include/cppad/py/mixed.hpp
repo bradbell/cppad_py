@@ -28,6 +28,7 @@ class CPPAD_PY_LIB_PUBLIC mixed_derived : public cppad_mixed {
 private:
     PyObject*        warning_;
     a_fun            a_fix_likelihood_;
+    a_fun            a_fix_constraint_;
     a_fun            a_ran_likelihood_;
 public:
     // ctor
@@ -39,6 +40,7 @@ public:
         const CppAD::mixed::d_sparse_rcv&  A_rcv           ,
         PyObject*                          warning         ,
         cppad_py::d_fun&                   fix_likelihood  ,
+        cppad_py::d_fun&                   fix_constraint  ,
         cppad_py::d_fun&                   ran_likelihood
     );
     // warning
@@ -47,6 +49,10 @@ public:
     void fatal_error(const std::string& warning);
     // fix_likelihood
     CppAD::vector< CppAD::AD<double> > fix_likelihood(
+        const CppAD::vector< CppAD::AD<double> >& fixed_vec
+    );
+    // fix_constraint
+    CppAD::vector< CppAD::AD<double> > fix_constraint(
         const CppAD::vector< CppAD::AD<double> >& fixed_vec
     );
     // ran_likelihood
@@ -86,6 +92,7 @@ public:
         cppad_py::sparse_rcv&          A_rcv           ,
         PyObject*                      warning         ,
         cppad_py::d_fun&               fix_likelihood  ,
+        cppad_py::d_fun&               fix_constraint  ,
         cppad_py::d_fun&               ran_likelihood
     );
     // destructor
