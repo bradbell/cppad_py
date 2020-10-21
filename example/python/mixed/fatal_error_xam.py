@@ -26,15 +26,14 @@ def fatal_error_xam() :
     for i in range( len(ok_list) ) :
         ok = ok and ok_list[i] == True
     return ok
-#
 # END SOURCE
 '''
 {xsrst_begin mixed_fatal_error_xam_py}
 
 .. include:: ../preamble.rst
 
-Mixed Class fatal_error: Example and Test
-#########################################
+fatal_error: Example and Test
+#############################
 
 {xsrst_file
   # BEGIN SOURCE

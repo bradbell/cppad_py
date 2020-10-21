@@ -15,8 +15,8 @@
 
 .. include:: ../preamble.rst
 
-Mixed Class fix_likelihood: Example and Test
-############################################
+fix_likelihood: Example and Test
+################################
 
 
 p(z|theta)
@@ -92,28 +92,28 @@ def fix_likelihood_xam() :
     # value of theta at which we will record fix_likelihood( theta )
     theta      = numpy.array([ theta_bar ], dtype=float )
     #
-    # indpeendent variables during the recording
+    # independent variables during the recording
     atheta     = cppad_py.independent(theta)
     #
     # - log[ p(theta) ] (dropping terms that are constant w.r.t theta)
-    ares     = ( atheta[0] - theta_bar ) / sigma
-    ap_theta = 0.5 * ares * ares
+    atmp     = ( atheta[0] - theta_bar ) / sigma
+    ap_theta = 0.5 * atmp * atmp
     #
     # - log[ p(z|theta) ] (dropping terms that are constant w.r.t. theta)
-    ares       = ( z  - atheta[0] ) / sigma
-    ap_z_theta = 0.5 * ares * ares
+    atmp       = ( z  - atheta[0] ) / sigma
+    ap_z_theta = 0.5 * atmp * atmp
     #
     # - log[ p(z|theta) p(theta) ]
     av_0 = ap_z_theta + ap_theta
     #
     # function mapping theta -> v
     av   = numpy.array( [ av_0 ] )
-    fun  = cppad_py.d_fun(atheta, av)
+    f    = cppad_py.d_fun(atheta, av)
     #
     # mixed_obj
     mixed_obj = cppad_py.mixed(
         fixed_init     = theta ,
-        fix_likelihood = fun,
+        fix_likelihood = f,
     )
     #
     # optimize_fixed

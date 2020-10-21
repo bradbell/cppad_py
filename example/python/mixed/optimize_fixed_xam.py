@@ -17,13 +17,13 @@ def optimize_fixed_xam() :
     #
     theta      = numpy.array([ 1 ], dtype=float )
     atheta     = cppad_py.independent(theta)
-    fix_like   = (atheta[0] - theta_true) * (atheta[0] - theta_true) / 2.0
-    av         = numpy.array( [ fix_like ] )
-    fun        = cppad_py.d_fun(atheta, av)
+    av_0       = (atheta[0] - theta_true) * (atheta[0] - theta_true) / 2.0
+    av         = numpy.array( [ av_0 ] )
+    f          = cppad_py.d_fun(atheta, av)
     #
     mixed_obj = cppad_py.mixed(
         fixed_init = theta ,
-        fix_likelihood = fun,
+        fix_likelihood = f,
     )
     #
     options  = 'String  sb    yes\n'     # suppress optimizer banner
@@ -34,15 +34,14 @@ def optimize_fixed_xam() :
     theta_opt = solution.fixed_opt[0]
     ok        = ok and abs( theta_true - theta_opt ) < 1e-10
     return ok
-#
 # END SOURCE
 '''
 {xsrst_begin mixed_optimize_fixed_xam_py}
 
 .. include:: ../preamble.rst
 
-Python: Mixed Class Warnings: Example and Test
-##############################################
+Optimize Fixed Effects: Example and Test
+########################################
 {xsrst_file
   # BEGIN SOURCE
   # END SOURCE

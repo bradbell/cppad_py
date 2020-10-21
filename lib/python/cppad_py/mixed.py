@@ -352,7 +352,7 @@ class mixed :
 
     .. math::
 
-        g( \theta )
+        f( \theta )
         =
         v_0 ( \theta ) + | v_1 ( \theta)  | + \cdots + | v_{m-1} ( \theta ) |
         =
@@ -387,6 +387,9 @@ class mixed :
     {xsrst_end mixed_fix_likelihood}
     -------------------------------------------------------------------------
     {xsrst_begin mixed_fix_constraint}
+    {xsrst_spell
+        \cdots
+    }
     .. include:: ../preamble.rst
 
     Fixed Effects Constraint Function
@@ -394,14 +397,20 @@ class mixed :
 
     Syntax
     ******
-    *c* = *fix_constraint* . ``forward`` (0, *theta* )
+    *v* = *fix_constraint* . ``forward`` (0, *theta* )
 
 
     fix_constraint
     ***************
     is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-    of the fixed effects constraint function :math:`c( \theta )`.
-    The functions :math:`c_i ( \theta )` for :math:`i = 0 , \ldots , m-1`
+    of the fixed effects constraint function
+
+    .. math::
+        g( \theta )
+        =
+        [ v_0 ( \theta ) , \cdots , v_{m-1} ( \theta ) ]^\R{T}
+
+    The functions :math:`v_i ( \theta )` for :math:`i = 0 , \ldots , m-1`
     are assumed to be a smooth w.r.t the vector :math:`\theta`.
 
     theta
@@ -410,7 +419,7 @@ class mixed :
     :ref:`n_fixed<mixed_ctor.n_fixed>`
     containing a value for the fixed effects.
 
-    c
+    v
     *
     is a numpy vector with ``float`` elements and size *m*.
 
@@ -428,7 +437,6 @@ class mixed :
     :ref:`mixed_fix_constraint_xam_py<mixed_fix_constraint_xam_py>`
 
     {xsrst_end mixed_fix_constraint}
-    -------------------------------------------------------------------------
     -------------------------------------------------------------------------
     {xsrst_begin mixed_ran_likelihood}
     .. include:: ../preamble.rst
@@ -449,7 +457,7 @@ class mixed :
 
     .. math::
 
-        f( \theta , u )
+        r( \theta , u )
         =
         v_0 ( \theta , u )
         =
@@ -501,8 +509,8 @@ class mixed :
         init
     }
 
-    Optimize Fixed Effects
-    ######################
+    Optimize The Fixed Effects
+    ##########################
 
     Syntax
     ******
@@ -524,6 +532,8 @@ class mixed :
     there is no Laplace approximation of the integral above, and
     this routine maximizes :math:`\B{p} ( z | \theta ) \B{p} ( \theta )` ;
     see :ref:`mixed_fix_likelihood`.
+    It also is not data, this routine maximizes :math:`\B{p} ( \theta )`.
+
 
     Argument Types
     **************
@@ -542,8 +552,10 @@ class mixed :
 
     fix_constraint_lower (fix_constraint_upper)
     ===========================================
-    has length equal to the return value for the fixed effects constraint
-    function and is the corresponding lower (upper) limit.
+    has length equal to the
+    :ref:`py_fun_property.size_range` for the
+    :ref:`mixed_fix_constraint`
+    and is the corresponding lower (upper) limit.
 
     random_lower (random_upper)
     ===========================

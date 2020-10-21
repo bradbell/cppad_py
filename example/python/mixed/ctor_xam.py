@@ -16,7 +16,6 @@ def ctor_xam() :
     fixed_init = numpy.array( [ 1 ], dtype=float )
     mixed_obj  = cppad_py.mixed(fixed_init = fixed_init)
     return ok
-#
 # END SOURCE
 '''
 {xsrst_begin mixed_ctor_xam_py}

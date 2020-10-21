@@ -15,8 +15,8 @@
 
 .. include:: ../preamble.rst
 
-Mixed Class fix_constraint: Example and Test
-############################################
+fix_constraint: Example and Test
+################################
 
 Random Effects
 **************
@@ -28,7 +28,7 @@ For this example, the fixed likelihood is
 
 .. math::
 
-    g( \theta ) = \left( \theta - 1 )^2
+    f( \theta ) = \left( \theta - 1 )^2
 
 fix_constraint
 **************
@@ -36,20 +36,20 @@ For this example, the fixed constraint is
 
 .. math::
 
-    c( \theta ) = \left( \theta + 2)^2
+    g( \theta ) = \left( \theta + 2)^2
 
 Fixed Constraint Bounds
 ***********************
 For this example, there is no fixed constraint upper bound
-and the lower bound is :math:`c_L \leq c(\theta)`
+and the lower bound is :math:`g^L \leq g(\theta)`
 
 Optimal Fixed Effects
 *********************
-If :math:`c_L \leq c(1) = 9`, the optimal value for the fixed effects is
+If :math:`g^L \leq g(1) = 9`, the optimal value for the fixed effects is
 :math:`\hat{\theta} = 1`.
 Otherwise, the optimal value satisfies the equation
-:math:`c ( \hat{\theta} ) = c_L`; i.e,
-:math:`\hat{\theta} = \sqrt{c_L} - 2`.
+:math:`c ( \hat{\theta} ) = g^L`; i.e,
+:math:`\hat{\theta} = \sqrt{g^L} - 2`.
 
 {xsrst_end mixed_fix_constraint_xam_py}
 '''
@@ -59,8 +59,8 @@ def fix_constraint_xam() :
     import numpy
     ok         = True
     #
-    c_L        = 10.0
-    theta_hat  = numpy.sqrt(c_L) - 2
+    g_L        = 10.0
+    theta_hat  = numpy.sqrt(g_L) - 2
     #
     # value of theta at which we will record fix_likelihood( theta )
     theta      = numpy.array([ 0 ], dtype=float )
@@ -69,20 +69,20 @@ def fix_constraint_xam() :
     atheta  = cppad_py.independent(theta)
     av_0    =  ( atheta[0] - 1.0 ) * ( atheta[0] - 1.0 )
     av      = numpy.array( [ av_0 ] )
-    gfun    = cppad_py.d_fun(atheta, av)
+    f       = cppad_py.d_fun(atheta, av)
     #
     # fix_constraint
     atheta  = cppad_py.independent(theta)
     av_0    =  ( atheta[0] + 2.0 ) * ( atheta[0] + 2.0 )
-    av      = numpy.array( [ av_0 ] )
-    cfun    = cppad_py.d_fun(atheta, av)
+    av      = numpy.array( [ ag_v ] )
+    g       = cppad_py.d_fun(atheta, av)
     #
     #
     # mixed_obj
     mixed_obj = cppad_py.mixed(
         fixed_init     = theta ,
-        fix_likelihood = gfun,
-        fix_constraint = cfun,
+        fix_likelihood = f,
+        fix_constraint = g,
     )
     #
     # optimize_fixed
@@ -90,7 +90,7 @@ def fix_constraint_xam() :
     options += 'Integer print_level 0\n' # suppress optimizer trace
     solution  = mixed_obj.optimize_fixed(
         fixed_ipopt_options  = options,
-        fix_constraint_lower = numpy.array( [c_L], dtype=float)
+        fix_constraint_lower = numpy.array( [g_L], dtype=float)
     )
     #
     # optimal value for theta

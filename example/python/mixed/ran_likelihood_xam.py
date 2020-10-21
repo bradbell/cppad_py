@@ -15,8 +15,8 @@
 
 .. include:: ../preamble.rst
 
-Mixed Class ran_likelihood: Example and Test
-############################################
+ran_likelihood: Example and Test
+################################
 
 p(y|theta, u)
 *************
@@ -46,14 +46,14 @@ standard deviation :math:`\sigma`; i.e.
     +
     \frac{1}{2} u^2 / \sigma^2
 
-p(z|theta)
+p(y|theta)
 **********
-For this example, Laplace approximation is equal to :math:`\B{p}(z|\theta)`
+For this example, Laplace approximation is equal to :math:`\B{p}(y|\theta)`
 i.e, it is exact. Furthermore,
 
 .. math::
 
-    - \log[ \B{p}(z|\theta) ]
+    - \log[ \B{p}(y|\theta) ]
     =
     \log \left[ \sqrt{ 2 \pi ( \theta + \sigma^2) } \right]
     +
@@ -109,7 +109,7 @@ def ran_likelihood_xam() :
     # value of theta and u at which we will record ran_likelihood( theta , u)
     theta_u  = numpy.array([ sigma*sigma, 0.0 ], dtype=float)
     #
-    # indpeendent variables during the recording
+    # independent variables during the recording
     atheta_u = cppad_py.independent(theta_u)
     #
     # split out theta and u
@@ -117,26 +117,26 @@ def ran_likelihood_xam() :
     au       = atheta_u[1]
     #
     # - log[ p(y|theta,u) ] (dropping terms that are constant w.r.t. theta)
-    ares          = ( y  - y_bar - au )
-    ap_y_theta_u  = 0.5 * ares * ares / atheta
+    atmp          = ( y  - y_bar - au )
+    ap_y_theta_u  = 0.5 * atmp * atmp / atheta
     ap_y_theta_u += 0.5 * numpy.log( atheta )
     #
     # - log[ p(u|theta) ] (dropping terms that are constant w.r.t. theta)
-    ares          = au / sigma
-    ap_u_theta    = 0.5 * ares * ares
+    atmp          = au / sigma
+    ap_u_theta    = 0.5 * atmp * atmp
     #
     # - log[ p(y|theta, u) p(u|theta) ]
     av_0 = ap_y_theta_u + ap_u_theta
     #
     # function mapping (theta,u) -> v
     av   = numpy.array( [ av_0 ] )
-    fun  = cppad_py.d_fun(atheta_u, av)
+    r    = cppad_py.d_fun(atheta_u, av)
     #
     # mixed_obj
     mixed_obj = cppad_py.mixed(
         fixed_init     = theta_u[0:1] ,
         random_init    = theta_u[1:2] ,
-        ran_likelihood = fun,
+        ran_likelihood = r,
     )
     #
     # optimize_fixed
