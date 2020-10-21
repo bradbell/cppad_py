@@ -667,11 +667,14 @@ class mixed :
     :ref:`A_rcv<mixed_ctor.A_rcv>`.
 
     {xsrst_children
-        example/python/mixed/optimize_fixed_xam.py
+        example/python/mixed/optimize_fixed_1.py
+        example/python/mixed/optimize_fixed_2.py
     }
-    Example
-    *******
-    :ref:`mixed_optimize_fixed_xam_py<mixed_optimize_fixed_xam_py>`
+    Examples
+    ********
+
+    - :ref:`mixed_optimize_fixed_1_py`
+    - :ref:`mixed_optimize_fixed_2_py`
 
     {xsrst_end mixed_optimize_fixed}
     """

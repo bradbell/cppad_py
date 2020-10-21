@@ -74,7 +74,7 @@ def fix_constraint_xam() :
     # fix_constraint
     atheta  = cppad_py.independent(theta)
     av_0    =  ( atheta[0] + 2.0 ) * ( atheta[0] + 2.0 )
-    av      = numpy.array( [ ag_v ] )
+    av      = numpy.array( [ av_0] )
     g       = cppad_py.d_fun(atheta, av)
     #
     #

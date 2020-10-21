@@ -8,7 +8,7 @@
 # mixed optimize_fixed
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
-def optimize_fixed_xam() :
+def optimize_fixed_1() :
     import cppad_py
     import numpy
     ok         = True
@@ -36,15 +36,15 @@ def optimize_fixed_xam() :
     return ok
 # END SOURCE
 '''
-{xsrst_begin mixed_optimize_fixed_xam_py}
+{xsrst_begin mixed_optimize_fixed_1_py}
 
 .. include:: ../preamble.rst
 
-Optimize Fixed Effects: Example and Test
-########################################
+A Very Simple Optimize Fixed Effects: Example and Test
+######################################################
 {xsrst_file
   # BEGIN SOURCE
   # END SOURCE
 }
-{xsrst_end mixed_optimize_fixed_xam_py}
+{xsrst_end mixed_optimize_fixed_1_py}
 '''

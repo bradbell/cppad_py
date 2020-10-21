@@ -33,7 +33,8 @@ if '@include_mixed@' == 'true' :
         'fix_likelihood_xam',
         'fix_constraint_xam',
         'ran_likelihood_xam',
-        'optimize_fixed_xam',
+        'optimize_fixed_1',
+        "optimize_fixed_2",
     ]
     os.chdir('mixed')
     for name in mixed_list :

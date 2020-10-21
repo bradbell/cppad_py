@@ -46,6 +46,10 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+10-21
+*****
+Add a second :ref:`optimize_fixed example<mixed_optimize_fixed.examples>`.
+
 10-19
 *****
 Add the non linear constraint functions of the fixed effects
