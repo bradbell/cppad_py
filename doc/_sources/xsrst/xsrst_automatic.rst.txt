@@ -132,15 +132,19 @@ Table of Contents
 |  |space|  |space|  |space| :ref:`3.3.4.1<mixed_ctor>` Mixed Class Constructor`
 |  |space|  |space|  |space|  |space| :ref:`3.3.4.1.1<mixed_ctor_xam_py>` Mixed Class Constructor: Example and Test`
 |  |space|  |space|  |space| :ref:`3.3.4.2<mixed_warning>` Mixed Class Warnings`
-|  |space|  |space|  |space|  |space| :ref:`3.3.4.2.1<mixed_warning_xam_py>` Python: Mixed Class Warnings: Example and Test`
+|  |space|  |space|  |space|  |space| :ref:`3.3.4.2.1<mixed_warning_xam_py>` Warnings: Example and Test`
 |  |space|  |space|  |space| :ref:`3.3.4.3<mixed_fatal_error>` Mixed Class Fatal Errors`
-|  |space|  |space|  |space|  |space| :ref:`3.3.4.3.1<mixed_fatal_error_xam_py>` Mixed Class fatal_error: Example and Test`
+|  |space|  |space|  |space|  |space| :ref:`3.3.4.3.1<mixed_fatal_error_xam_py>` fatal_error: Example and Test`
 |  |space|  |space|  |space| :ref:`3.3.4.4<mixed_fix_likelihood>` Fixed Effects Likelihood`
-|  |space|  |space|  |space|  |space| :ref:`3.3.4.4.1<mixed_fix_likelihood_xam_py>` Mixed Class fix_likelihood: Example and Test`
-|  |space|  |space|  |space| :ref:`3.3.4.5<mixed_ran_likelihood>` Random Effects Likelihood`
-|  |space|  |space|  |space|  |space| :ref:`3.3.4.5.1<mixed_ran_likelihood_xam_py>` Mixed Class ran_likelihood: Example and Test`
-|  |space|  |space|  |space| :ref:`3.3.4.6<mixed_optimize_fixed>` Optimize Fixed Effects`
-|  |space|  |space|  |space|  |space| :ref:`3.3.4.6.1<mixed_optimize_fixed_xam_py>` Python: Mixed Class Warnings: Example and Test`
+|  |space|  |space|  |space|  |space| :ref:`3.3.4.4.1<mixed_fix_likelihood_xam_py>` fix_likelihood: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.4.5<mixed_fix_constraint>` Fixed Effects Constraint Function`
+|  |space|  |space|  |space|  |space| :ref:`3.3.4.5.1<mixed_fix_constraint_xam_py>` fix_constraint: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.4.6<mixed_ran_likelihood>` Random Effects Likelihood`
+|  |space|  |space|  |space|  |space| :ref:`3.3.4.6.1<mixed_ran_likelihood_xam_py>` ran_likelihood: Example and Test`
+|  |space|  |space|  |space| :ref:`3.3.4.7<mixed_optimize_fixed>` Optimize The Fixed Effects`
+|
+|  |space|  |space|  |space|  |space| :ref:`3.3.4.7.1<mixed_optimize_fixed_1_py>` A Very Simple Optimize Fixed Effects: Example and Test`
+|  |space|  |space|  |space|  |space| :ref:`3.3.4.7.2<mixed_optimize_fixed_2_py>` The Ipopt Example Problem: Example and Test`
 |
 |  |space|  |space| :ref:`3.3.5<more_py>` Steps To Add More Python Functions`
 |

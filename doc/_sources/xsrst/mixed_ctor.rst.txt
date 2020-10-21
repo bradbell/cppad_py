@@ -24,6 +24,7 @@ Mixed Class Constructor
 - :ref:`mixed_ctor.a_rcv`
 - :ref:`mixed_ctor.warning`
 - :ref:`mixed_ctor.fix_likelihood`
+- :ref:`mixed_ctor.fix_constraint`
 - :ref:`mixed_ctor.ran_likelihood`
 - :ref:`mixed_ctor.example`
 
@@ -38,7 +39,7 @@ Syntax
 ******
 
 .. literalinclude:: ../../lib/python/cppad_py/mixed.py
-    :lines: 181-190
+    :lines: 187-197
     :language: py
 
 .. meta::
@@ -145,7 +146,7 @@ random constraint matrix :math:`A`; i.e.
 :math:`A \cdot \hat{u} ( \theta ) = 0`
 where :math:`\hat{u} ( \theta )` is the
 optimal random effects as a function of the fixed effects.
-The value ``None`` corresponds to no random constraints.
+The value ``None`` corresponds to no random constraint.
 
 .. meta::
    :keywords: warning
@@ -172,6 +173,19 @@ fix_likelihood
 is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
 of the fixed effects likelihood; see
 :ref:`mixed_fix_likelihood`.
+
+.. meta::
+   :keywords: fix_constraint
+
+.. index:: fix_constraint
+
+.. _mixed_ctor.fix_constraint:
+
+fix_constraint
+*******************************
+is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
+of the fixed effects constraint; see
+:ref:`mixed_fix_constraint`.
 
 .. meta::
    :keywords: ran_likelihood

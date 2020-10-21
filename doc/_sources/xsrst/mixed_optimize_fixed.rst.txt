@@ -5,14 +5,14 @@ mixed_optimize_fixed
 .. include:: ../preamble.rst
 
 .. meta::
-   :keywords: mixed_optimize_fixed, optimize, fixed, effects
+   :keywords: mixed_optimize_fixed, optimize, the, fixed, effects
 
-.. index:: mixed_optimize_fixed, optimize, fixed, effects
+.. index:: mixed_optimize_fixed, optimize, the, fixed, effects
 
 .. _mixed_optimize_fixed:
 
-Optimize Fixed Effects
-######################
+Optimize The Fixed Effects
+##########################
 - :ref:`mixed_optimize_fixed.syntax`
 - :ref:`mixed_optimize_fixed.purpose`
 - :ref:`mixed_optimize_fixed.argument_types`
@@ -36,7 +36,7 @@ Optimize Fixed Effects
     - :ref:`mixed_optimize_fixed.solution.fixed_lag`
     - :ref:`mixed_optimize_fixed.solution.fix_con_lag`
     - :ref:`mixed_optimize_fixed.solution.ran_con_lag`
-- :ref:`mixed_optimize_fixed.example`
+- :ref:`mixed_optimize_fixed.examples`
 
 .. meta::
    :keywords: syntax
@@ -49,7 +49,7 @@ Syntax
 ******
 
 .. literalinclude:: ../../lib/python/cppad_py/mixed.py
-    :lines: 613-625
+    :lines: 684-696
     :language: py
 
 .. meta::
@@ -72,6 +72,7 @@ If there are no random effects,
 there is no Laplace approximation of the integral above, and
 this routine maximizes :math:`\B{p} ( z | \theta ) \B{p} ( \theta )` ;
 see :ref:`mixed_fix_likelihood`.
+It also is not data, this routine maximizes :math:`\B{p} ( \theta )`.
 
 .. meta::
    :keywords: argument, types
@@ -118,8 +119,10 @@ has length *n_fixed* and is the lower (upper) limit for the fixed effects.
 
 fix_constraint_lower (fix_constraint_upper)
 ===========================================
-has length equal to the return value for the fixed effects constraint
-function and is the corresponding lower (upper) limit.
+has length equal to the
+:ref:`py_fun_property.size_range` for the
+:ref:`mixed_fix_constraint`
+and is the corresponding lower (upper) limit.
 
 .. meta::
    :keywords: random_lower, (random_upper)
@@ -131,7 +134,7 @@ function and is the corresponding lower (upper) limit.
 random_lower (random_upper)
 ===========================
 has length *n_random* and is the lower (upper) limit for the random effects.
-(The Laplace approximation assumes these constraints are not active.)
+(The Laplace approximation assumes these bounds are not active.)
 
 .. meta::
    :keywords: fixed_in, (random_in)
@@ -265,7 +268,7 @@ fixed effects.
 
 nlp_scaling_method
 ==================
-The objective and constraint functions are automatically scaled by
+The objective and constraint function are automatically scaled by
 cppad_mixed and it is an error to specify this option.
 
 .. meta::
@@ -353,18 +356,21 @@ Its length is the same as the random constrain matrix :math"`A` ; see
    :maxdepth: 1
    :hidden:
 
-   mixed_optimize_fixed_xam_py
+   mixed_optimize_fixed_1_py
+   mixed_optimize_fixed_2_py
 
 .. meta::
-   :keywords: example
+   :keywords: examples
 
-.. index:: example
+.. index:: examples
 
-.. _mixed_optimize_fixed.example:
+.. _mixed_optimize_fixed.examples:
 
-Example
-*******
-:ref:`mixed_optimize_fixed_xam_py<mixed_optimize_fixed_xam_py>`
+Examples
+********
+
+- :ref:`mixed_optimize_fixed_1_py`
+- :ref:`mixed_optimize_fixed_2_py`
 
 ----
 

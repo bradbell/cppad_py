@@ -5,18 +5,18 @@ mixed_fatal_error_xam_py
 .. include:: ../preamble.rst
 
 .. meta::
-   :keywords: mixed_fatal_error_xam_py, mixed, class, fatal_error:, example, test
+   :keywords: mixed_fatal_error_xam_py, fatal_error:, example, test
 
-.. index:: mixed_fatal_error_xam_py, mixed, class, fatal_error:, example, test
+.. index:: mixed_fatal_error_xam_py, fatal_error:, example, test
 
 .. _mixed_fatal_error_xam_py:
 
-Mixed Class fatal_error: Example and Test
-#########################################
+fatal_error: Example and Test
+#############################
 
 
 .. literalinclude:: ../../example/python/mixed/fatal_error_xam.py
-    :lines: 11-29
+    :lines: 11-28
     :language: py
 
 ----

@@ -157,6 +157,7 @@ Children
    mixed_warning
    mixed_fatal_error
    mixed_fix_likelihood
+   mixed_fix_constraint
    mixed_ran_likelihood
    mixed_optimize_fixed
 
@@ -164,6 +165,7 @@ Children
 #. mixed_warning: :ref:`mixed_warning`
 #. mixed_fatal_error: :ref:`mixed_fatal_error`
 #. mixed_fix_likelihood: :ref:`mixed_fix_likelihood`
+#. mixed_fix_constraint: :ref:`mixed_fix_constraint`
 #. mixed_ran_likelihood: :ref:`mixed_ran_likelihood`
 #. mixed_optimize_fixed: :ref:`mixed_optimize_fixed`
 

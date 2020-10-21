@@ -16,7 +16,7 @@ Mixed Class Constructor: Example and Test
 
 
 .. literalinclude:: ../../example/python/mixed/ctor_xam.py
-    :lines: 11-19
+    :lines: 11-18
     :language: py
 
 ----

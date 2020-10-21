@@ -47,7 +47,7 @@ The negative log of the random effects likelihood is
 
 .. math::
 
-    f( \theta , u )
+    r( \theta , u )
     =
     v_0 ( \theta , u )
     =

@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta content="mixed_fatal_error_xam_py, mixed, class, fatal_error:, example, test" name="keywords" />
+  <meta content="mixed_fatal_error_xam_py, fatal_error:, example, test" name="keywords" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -106,6 +106,7 @@
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_fix_likelihood.html">mixed_fix_likelihood</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_fix_constraint.html">mixed_fix_constraint</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_ran_likelihood.html">mixed_ran_likelihood</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_optimize_fixed.html">mixed_optimize_fixed</a></li>
 </ul>
@@ -199,8 +200,8 @@
 <h1>mixed_fatal_error_xam_py<a class="headerlink" href="#mixed-fatal-error-xam-py" title="Permalink to this headline">¶</a></h1>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
-<div class="section" id="mixed-class-fatal-error-example-and-test">
-<span id="id1"></span><h2>Mixed Class fatal_error: Example and Test<a class="headerlink" href="#mixed-class-fatal-error-example-and-test" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fatal-error-example-and-test">
+<span id="id1"></span><h2>fatal_error: Example and Test<a class="headerlink" href="#fatal-error-example-and-test" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fatal_error_xam</span><span class="p">()</span> <span class="p">:</span>
     <span class="kn">import</span> <span class="nn">cppad_py</span>
     <span class="kn">import</span> <span class="nn">numpy</span>
@@ -219,7 +220,6 @@
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">ok_list</span><span class="p">)</span> <span class="p">)</span> <span class="p">:</span>
         <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">ok_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="n">ok</span>
-<span class="c1">#</span>
 </pre></div>
 </div>
 <hr class="docutils" />

@@ -5,17 +5,17 @@ mixed_ran_likelihood_xam_py
 .. include:: ../preamble.rst
 
 .. meta::
-   :keywords: mixed_ran_likelihood_xam_py, mixed, class, ran_likelihood:, example, test
+   :keywords: mixed_ran_likelihood_xam_py, ran_likelihood:, example, test
 
-.. index:: mixed_ran_likelihood_xam_py, mixed, class, ran_likelihood:, example, test
+.. index:: mixed_ran_likelihood_xam_py, ran_likelihood:, example, test
 
 .. _mixed_ran_likelihood_xam_py:
 
-Mixed Class ran_likelihood: Example and Test
-############################################
+ran_likelihood: Example and Test
+################################
 - :ref:`mixed_ran_likelihood_xam_py.p(y|theta,_u)`
 - :ref:`mixed_ran_likelihood_xam_py.p(u|theta)`
-- :ref:`mixed_ran_likelihood_xam_py.p(z|theta)`
+- :ref:`mixed_ran_likelihood_xam_py.p(y|theta)`
 - :ref:`mixed_ran_likelihood_xam_py.optimal_fixed_effects`
 
 .. meta::
@@ -61,20 +61,20 @@ standard deviation :math:`\sigma`; i.e.
     \frac{1}{2} u^2 / \sigma^2
 
 .. meta::
-   :keywords: p(z|theta)
+   :keywords: p(y|theta)
 
-.. index:: p(z|theta)
+.. index:: p(y|theta)
 
-.. _mixed_ran_likelihood_xam_py.p(z|theta):
+.. _mixed_ran_likelihood_xam_py.p(y|theta):
 
-p(z|theta)
+p(y|theta)
 **********
-For this example, Laplace approximation is equal to :math:`\B{p}(z|\theta)`
+For this example, Laplace approximation is equal to :math:`\B{p}(y|\theta)`
 i.e, it is exact. Furthermore,
 
 .. math::
 
-    - \log[ \B{p}(z|\theta) ]
+    - \log[ \B{p}(y|\theta) ]
     =
     \log \left[ \sqrt{ 2 \pi ( \theta + \sigma^2) } \right]
     +

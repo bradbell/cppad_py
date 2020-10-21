@@ -16,6 +16,7 @@
 <meta content="a_rcv" name="keywords" />
 <meta content="warning" name="keywords" />
 <meta content="fix_likelihood" name="keywords" />
+<meta content="fix_constraint" name="keywords" />
 <meta content="ran_likelihood" name="keywords" />
 <meta content="example" name="keywords" />
 
@@ -119,6 +120,7 @@
 <li class="toctree-l5"><a class="reference internal" href="mixed_warning.html">mixed_warning</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_fatal_error.html">mixed_fatal_error</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_fix_likelihood.html">mixed_fix_likelihood</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_fix_constraint.html">mixed_fix_constraint</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_ran_likelihood.html">mixed_ran_likelihood</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_optimize_fixed.html">mixed_optimize_fixed</a></li>
 </ul>
@@ -224,6 +226,7 @@
 <li><p><a class="reference internal" href="#mixed-ctor-a-rcv"><span class="std std-ref">A_rcv</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-ctor-warning"><span class="std std-ref">warning</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-ctor-fix-likelihood"><span class="std std-ref">fix_likelihood</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ctor-fix-constraint"><span class="std std-ref">fix_constraint</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-ctor-ran-likelihood"><span class="std std-ref">ran_likelihood</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-ctor-example"><span class="std std-ref">Example</span></a></p></li>
 </ul>
@@ -237,6 +240,7 @@
         <span class="n">A_rcv</span>            <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">warning</span>          <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">fix_likelihood</span>   <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">fix_constraint</span>   <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ran_likelihood</span>   <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="c1"># )</span>
 </pre></div>
@@ -290,7 +294,7 @@ random constraint matrix <span class="math notranslate nohighlight">\(A\)</span>
 <span class="math notranslate nohighlight">\(A \cdot \hat{u} ( \theta ) = 0\)</span>
 where <span class="math notranslate nohighlight">\(\hat{u} ( \theta )\)</span> is the
 optimal random effects as a function of the fixed effects.
-The value <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds to no random constraints.</p>
+The value <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds to no random constraint.</p>
 </div>
 <div class="section" id="warning">
 <span id="mixed-ctor-warning"></span><span id="index-10"></span><h3>warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h3>
@@ -304,8 +308,14 @@ The value <code class="docutils literal notranslate"><span class="pre">None</spa
 of the fixed effects likelihood; see
 <a class="reference internal" href="mixed_fix_likelihood.html#id1"><span class="std std-ref">Fixed Effects Likelihood</span></a>.</p>
 </div>
+<div class="section" id="fix-constraint">
+<span id="mixed-ctor-fix-constraint"></span><span id="index-12"></span><h3>fix_constraint<a class="headerlink" href="#fix-constraint" title="Permalink to this headline">¶</a></h3>
+<p>is a <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> representation
+of the fixed effects constraint; see
+<a class="reference internal" href="mixed_fix_constraint.html#id1"><span class="std std-ref">Fixed Effects Constraint Function</span></a>.</p>
+</div>
 <div class="section" id="ran-likelihood">
-<span id="mixed-ctor-ran-likelihood"></span><span id="index-12"></span><h3>ran_likelihood<a class="headerlink" href="#ran-likelihood" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-ran-likelihood"></span><span id="index-13"></span><h3>ran_likelihood<a class="headerlink" href="#ran-likelihood" title="Permalink to this headline">¶</a></h3>
 <p>is a <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> representation
 of the random effects likelihood; see
 <a class="reference internal" href="mixed_ran_likelihood.html#id1"><span class="std std-ref">Random Effects Likelihood</span></a>.</p>
@@ -313,7 +323,7 @@ of the random effects likelihood; see
 </div>
 </div>
 <div class="section" id="example">
-<span id="mixed-ctor-example"></span><span id="index-13"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-example"></span><span id="index-14"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="mixed_ctor_xam_py.html#id1"><span class="std std-ref">mixed_ctor_xam_py</span></a></p>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/python/cppad_py/mixed.py</span></code></p>

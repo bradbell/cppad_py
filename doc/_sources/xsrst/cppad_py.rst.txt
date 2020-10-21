@@ -19,7 +19,7 @@ cppad_py
 
 A C++ Object Library and Python Interface to CppAD
 ##################################################
-- :ref:`cppad_py.version_2020.10.17`
+- :ref:`cppad_py.version_2020.10.21`
 - :ref:`cppad_py.git_repository`
 - :ref:`cppad_py.purpose`
 - :ref:`cppad_py.getting_started`
@@ -29,13 +29,13 @@ A C++ Object Library and Python Interface to CppAD
 - :ref:`cppad_py.children`
 
 .. meta::
-   :keywords: version, 2020.10.17
+   :keywords: version, 2020.10.21
 
-.. index:: version, 2020.10.17
+.. index:: version, 2020.10.21
 
-.. _cppad_py.version_2020.10.17:
+.. _cppad_py.version_2020.10.21:
 
-Version 2020.10.17
+Version 2020.10.21
 ******************
 
 .. meta::

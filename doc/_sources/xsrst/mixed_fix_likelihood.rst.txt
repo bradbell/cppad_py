@@ -46,7 +46,7 @@ The negative log of the fixed effects likelihood is
 
 .. math::
 
-    g( \theta )
+    f( \theta )
     =
     v_0 ( \theta ) + | v_1 ( \theta)  | + \cdots + | v_{m-1} ( \theta ) |
     =

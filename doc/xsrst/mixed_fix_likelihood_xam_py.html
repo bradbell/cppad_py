@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta content="mixed_fix_likelihood_xam_py, mixed, class, fix_likelihood:, example, test" name="keywords" />
+  <meta content="mixed_fix_likelihood_xam_py, fix_likelihood:, example, test" name="keywords" />
 <meta content="p(z|theta)" name="keywords" />
 <meta content="p(theta)" name="keywords" />
 <meta content="optimal, fixed, effects" name="keywords" />
@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="mixed_ran_likelihood" href="mixed_ran_likelihood.html" />
+    <link rel="next" title="mixed_fix_constraint" href="mixed_fix_constraint.html" />
     <link rel="prev" title="mixed_fix_likelihood" href="mixed_fix_likelihood.html" /> 
 </head>
 
@@ -109,6 +109,7 @@
 <li class="toctree-l6 current"><a class="current reference internal" href="#">mixed_fix_likelihood_xam_py</a></li>
 </ul>
 </li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_fix_constraint.html">mixed_fix_constraint</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_ran_likelihood.html">mixed_ran_likelihood</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_optimize_fixed.html">mixed_optimize_fixed</a></li>
 </ul>
@@ -202,8 +203,8 @@
 <h1>mixed_fix_likelihood_xam_py<a class="headerlink" href="#mixed-fix-likelihood-xam-py" title="Permalink to this headline">¶</a></h1>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
-<div class="section" id="mixed-class-fix-likelihood-example-and-test">
-<span id="id1"></span><h2>Mixed Class fix_likelihood: Example and Test<a class="headerlink" href="#mixed-class-fix-likelihood-example-and-test" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fix-likelihood-example-and-test">
+<span id="id1"></span><h2>fix_likelihood: Example and Test<a class="headerlink" href="#fix-likelihood-example-and-test" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#mixed-fix-likelihood-xam-py-p-z-theta"><span class="std std-ref">p(z|theta)</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-fix-likelihood-xam-py-p-theta"><span class="std std-ref">p(theta)</span></a></p></li>
@@ -264,28 +265,28 @@ it equal to zero, the optimal fixed effects
     <span class="c1"># value of theta at which we will record fix_likelihood( theta )</span>
     <span class="n">theta</span>      <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">theta_bar</span> <span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span> <span class="p">)</span>
     <span class="c1">#</span>
-    <span class="c1"># indpeendent variables during the recording</span>
+    <span class="c1"># independent variables during the recording</span>
     <span class="n">atheta</span>     <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">independent</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># - log[ p(theta) ] (dropping terms that are constant w.r.t theta)</span>
-    <span class="n">ares</span>     <span class="o">=</span> <span class="p">(</span> <span class="n">atheta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">theta_bar</span> <span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
-    <span class="n">ap_theta</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ares</span> <span class="o">*</span> <span class="n">ares</span>
+    <span class="n">atmp</span>     <span class="o">=</span> <span class="p">(</span> <span class="n">atheta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">theta_bar</span> <span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
+    <span class="n">ap_theta</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">atmp</span> <span class="o">*</span> <span class="n">atmp</span>
     <span class="c1">#</span>
     <span class="c1"># - log[ p(z|theta) ] (dropping terms that are constant w.r.t. theta)</span>
-    <span class="n">ares</span>       <span class="o">=</span> <span class="p">(</span> <span class="n">z</span>  <span class="o">-</span> <span class="n">atheta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
-    <span class="n">ap_z_theta</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ares</span> <span class="o">*</span> <span class="n">ares</span>
+    <span class="n">atmp</span>       <span class="o">=</span> <span class="p">(</span> <span class="n">z</span>  <span class="o">-</span> <span class="n">atheta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
+    <span class="n">ap_z_theta</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">atmp</span> <span class="o">*</span> <span class="n">atmp</span>
     <span class="c1">#</span>
     <span class="c1"># - log[ p(z|theta) p(theta) ]</span>
     <span class="n">av_0</span> <span class="o">=</span> <span class="n">ap_z_theta</span> <span class="o">+</span> <span class="n">ap_theta</span>
     <span class="c1">#</span>
     <span class="c1"># function mapping theta -&gt; v</span>
     <span class="n">av</span>   <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span> <span class="n">av_0</span> <span class="p">]</span> <span class="p">)</span>
-    <span class="n">fun</span>  <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">d_fun</span><span class="p">(</span><span class="n">atheta</span><span class="p">,</span> <span class="n">av</span><span class="p">)</span>
+    <span class="n">f</span>    <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">d_fun</span><span class="p">(</span><span class="n">atheta</span><span class="p">,</span> <span class="n">av</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># mixed_obj</span>
     <span class="n">mixed_obj</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">mixed</span><span class="p">(</span>
         <span class="n">fixed_init</span>     <span class="o">=</span> <span class="n">theta</span> <span class="p">,</span>
-        <span class="n">fix_likelihood</span> <span class="o">=</span> <span class="n">fun</span><span class="p">,</span>
+        <span class="n">fix_likelihood</span> <span class="o">=</span> <span class="n">f</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># optimize_fixed</span>
@@ -318,7 +319,7 @@ it equal to zero, the optimal fixed effects
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mixed_ran_likelihood.html" class="btn btn-neutral float-right" title="mixed_ran_likelihood" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mixed_fix_constraint.html" class="btn btn-neutral float-right" title="mixed_fix_constraint" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="mixed_fix_likelihood.html" class="btn btn-neutral float-left" title="mixed_fix_likelihood" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

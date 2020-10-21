@@ -5,14 +5,14 @@ mixed_fix_likelihood_xam_py
 .. include:: ../preamble.rst
 
 .. meta::
-   :keywords: mixed_fix_likelihood_xam_py, mixed, class, fix_likelihood:, example, test
+   :keywords: mixed_fix_likelihood_xam_py, fix_likelihood:, example, test
 
-.. index:: mixed_fix_likelihood_xam_py, mixed, class, fix_likelihood:, example, test
+.. index:: mixed_fix_likelihood_xam_py, fix_likelihood:, example, test
 
 .. _mixed_fix_likelihood_xam_py:
 
-Mixed Class fix_likelihood: Example and Test
-############################################
+fix_likelihood: Example and Test
+################################
 - :ref:`mixed_fix_likelihood_xam_py.p(z|theta)`
 - :ref:`mixed_fix_likelihood_xam_py.p(theta)`
 - :ref:`mixed_fix_likelihood_xam_py.optimal_fixed_effects`

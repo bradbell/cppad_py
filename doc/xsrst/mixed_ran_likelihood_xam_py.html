@@ -4,10 +4,10 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta content="mixed_ran_likelihood_xam_py, mixed, class, ran_likelihood:, example, test" name="keywords" />
+  <meta content="mixed_ran_likelihood_xam_py, ran_likelihood:, example, test" name="keywords" />
 <meta content="p(y|theta, , u)" name="keywords" />
 <meta content="p(u|theta)" name="keywords" />
-<meta content="p(z|theta)" name="keywords" />
+<meta content="p(y|theta)" name="keywords" />
 <meta content="optimal, fixed, effects" name="keywords" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -107,6 +107,7 @@
 <li class="toctree-l5"><a class="reference internal" href="mixed_warning.html">mixed_warning</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_fatal_error.html">mixed_fatal_error</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_fix_likelihood.html">mixed_fix_likelihood</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_fix_constraint.html">mixed_fix_constraint</a></li>
 <li class="toctree-l5 current"><a class="reference internal" href="mixed_ran_likelihood.html">mixed_ran_likelihood</a><ul class="current">
 <li class="toctree-l6 current"><a class="current reference internal" href="#">mixed_ran_likelihood_xam_py</a></li>
 </ul>
@@ -203,12 +204,12 @@
 <h1>mixed_ran_likelihood_xam_py<a class="headerlink" href="#mixed-ran-likelihood-xam-py" title="Permalink to this headline">¶</a></h1>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
-<div class="section" id="mixed-class-ran-likelihood-example-and-test">
-<span id="id1"></span><h2>Mixed Class ran_likelihood: Example and Test<a class="headerlink" href="#mixed-class-ran-likelihood-example-and-test" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ran-likelihood-example-and-test">
+<span id="id1"></span><h2>ran_likelihood: Example and Test<a class="headerlink" href="#ran-likelihood-example-and-test" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#mixed-ran-likelihood-xam-py-p-y-theta-u"><span class="std std-ref">p(y|theta, u)</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-ran-likelihood-xam-py-p-u-theta"><span class="std std-ref">p(u|theta)</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ran-likelihood-xam-py-p-z-theta"><span class="std std-ref">p(z|theta)</span></a></p></li>
+<li><p><a class="reference internal" href="#mixed-ran-likelihood-xam-py-p-y-theta"><span class="std std-ref">p(y|theta)</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-ran-likelihood-xam-py-optimal-fixed-effects"><span class="std std-ref">Optimal Fixed Effects</span></a></p></li>
 </ul>
 <div class="section" id="p-y-theta-u">
@@ -235,12 +236,12 @@ standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>;
 +
 \frac{1}{2} u^2 / \sigma^2\]</div>
 </div>
-<div class="section" id="p-z-theta">
-<span id="mixed-ran-likelihood-xam-py-p-z-theta"></span><span id="index-3"></span><h3>p(z|theta)<a class="headerlink" href="#p-z-theta" title="Permalink to this headline">¶</a></h3>
-<p>For this example, Laplace approximation is equal to <span class="math notranslate nohighlight">\(\B{p}(z|\theta)\)</span>
+<div class="section" id="p-y-theta">
+<span id="mixed-ran-likelihood-xam-py-p-y-theta"></span><span id="index-3"></span><h3>p(y|theta)<a class="headerlink" href="#p-y-theta" title="Permalink to this headline">¶</a></h3>
+<p>For this example, Laplace approximation is equal to <span class="math notranslate nohighlight">\(\B{p}(y|\theta)\)</span>
 i.e, it is exact. Furthermore,</p>
 <div class="math notranslate nohighlight">
-\[- \log[ \B{p}(z|\theta) ]
+\[- \log[ \B{p}(y|\theta) ]
 =
 \log \left[ \sqrt{ 2 \pi ( \theta + \sigma^2) } \right]
 +
@@ -281,7 +282,7 @@ it equal to zero, the optimal fixed effects
     <span class="c1"># value of theta and u at which we will record ran_likelihood( theta , u)</span>
     <span class="n">theta_u</span>  <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">sigma</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="c1">#</span>
-    <span class="c1"># indpeendent variables during the recording</span>
+    <span class="c1"># independent variables during the recording</span>
     <span class="n">atheta_u</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">independent</span><span class="p">(</span><span class="n">theta_u</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># split out theta and u</span>
@@ -289,26 +290,26 @@ it equal to zero, the optimal fixed effects
     <span class="n">au</span>       <span class="o">=</span> <span class="n">atheta_u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="c1">#</span>
     <span class="c1"># - log[ p(y|theta,u) ] (dropping terms that are constant w.r.t. theta)</span>
-    <span class="n">ares</span>          <span class="o">=</span> <span class="p">(</span> <span class="n">y</span>  <span class="o">-</span> <span class="n">y_bar</span> <span class="o">-</span> <span class="n">au</span> <span class="p">)</span>
-    <span class="n">ap_y_theta_u</span>  <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ares</span> <span class="o">*</span> <span class="n">ares</span> <span class="o">/</span> <span class="n">atheta</span>
+    <span class="n">atmp</span>          <span class="o">=</span> <span class="p">(</span> <span class="n">y</span>  <span class="o">-</span> <span class="n">y_bar</span> <span class="o">-</span> <span class="n">au</span> <span class="p">)</span>
+    <span class="n">ap_y_theta_u</span>  <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">atmp</span> <span class="o">*</span> <span class="n">atmp</span> <span class="o">/</span> <span class="n">atheta</span>
     <span class="n">ap_y_theta_u</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span> <span class="n">atheta</span> <span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># - log[ p(u|theta) ] (dropping terms that are constant w.r.t. theta)</span>
-    <span class="n">ares</span>          <span class="o">=</span> <span class="n">au</span> <span class="o">/</span> <span class="n">sigma</span>
-    <span class="n">ap_u_theta</span>    <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ares</span> <span class="o">*</span> <span class="n">ares</span>
+    <span class="n">atmp</span>          <span class="o">=</span> <span class="n">au</span> <span class="o">/</span> <span class="n">sigma</span>
+    <span class="n">ap_u_theta</span>    <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">atmp</span> <span class="o">*</span> <span class="n">atmp</span>
     <span class="c1">#</span>
     <span class="c1"># - log[ p(y|theta, u) p(u|theta) ]</span>
     <span class="n">av_0</span> <span class="o">=</span> <span class="n">ap_y_theta_u</span> <span class="o">+</span> <span class="n">ap_u_theta</span>
     <span class="c1">#</span>
     <span class="c1"># function mapping (theta,u) -&gt; v</span>
     <span class="n">av</span>   <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span> <span class="n">av_0</span> <span class="p">]</span> <span class="p">)</span>
-    <span class="n">fun</span>  <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">d_fun</span><span class="p">(</span><span class="n">atheta_u</span><span class="p">,</span> <span class="n">av</span><span class="p">)</span>
+    <span class="n">r</span>    <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">d_fun</span><span class="p">(</span><span class="n">atheta_u</span><span class="p">,</span> <span class="n">av</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># mixed_obj</span>
     <span class="n">mixed_obj</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">mixed</span><span class="p">(</span>
         <span class="n">fixed_init</span>     <span class="o">=</span> <span class="n">theta_u</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="p">,</span>
         <span class="n">random_init</span>    <span class="o">=</span> <span class="n">theta_u</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="p">,</span>
-        <span class="n">ran_likelihood</span> <span class="o">=</span> <span class="n">fun</span><span class="p">,</span>
+        <span class="n">ran_likelihood</span> <span class="o">=</span> <span class="n">r</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># optimize_fixed</span>

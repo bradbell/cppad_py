@@ -14,6 +14,8 @@ whats_new_2020
 CppAD Py Changes During 2020
 ############################
 - :ref:`whats_new_2020.previous_years`
+- :ref:`whats_new_2020.10-21`
+- :ref:`whats_new_2020.10-19`
 - :ref:`whats_new_2020.10-17`
 - :ref:`whats_new_2020.10-16`
 - :ref:`whats_new_2020.10-13`
@@ -71,6 +73,19 @@ CppAD Py Changes During 2020
 Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
+
+.. _whats_new_2020.10-21:
+
+10-21
+*****
+Add a second :ref:`optimize_fixed example<mixed_optimize_fixed.examples>`.
+
+.. _whats_new_2020.10-19:
+
+10-19
+*****
+Add the non linear constraint functions of the fixed effects
+to the mixed class; see :ref:`mixed_fix_constraint`.
 
 .. _whats_new_2020.10-17:
 
