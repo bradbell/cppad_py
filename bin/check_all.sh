@@ -161,15 +161,6 @@ then
     sed -i $logfile -f $tmpfile
 fi
 #
-# CppAD uses asserts to make sure this this is not a problem
-cat << EOF > $tmpfile
-/match_op.hpp:.*warning: ‘arg_match\[[01]\]’/! b end
-s|warning||g
-s|\$| (not a problem)|
-: end
-EOF
-sed -i $logfile -f $tmpfile
-#
 # check_all.py and run_sphins.sh run example/python/mixed/warning_xam.py
 # and output 'warning_xam: OK', 'mixed_warning'.
 if sed -e '/warning_xam: OK/d' -e '/mixed_warning/d'  $logfile | \

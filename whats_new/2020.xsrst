@@ -48,7 +48,9 @@ Previous Years
 
 10-21
 *****
-Add a second :ref:`optimize_fixed example<mixed_optimize_fixed.examples>`.
+#.  Add a second :ref:`optimize_fixed example<mixed_optimize_fixed.examples>`.
+
+#.  Advance to cppad-20201021 (this fixes a warning on some compilers).
 
 10-19
 *****
