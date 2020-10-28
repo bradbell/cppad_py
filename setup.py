@@ -27,7 +27,7 @@ def sys_command(command_list) :
     except subprocess.CalledProcessError as process_error:
         output = str(process_error.output, 'utf-8')
         print(output)
-        sys_exit(command_list[0] , ': Error')
+        sys_exit(command_list[0] + ': Error')
     else :
         output = str(output, 'utf-8')
         if len(output) > 0 :
@@ -231,14 +231,13 @@ sys.exit(0)
 # External Requirements
 # *********************
 
-# #. `python <https://www.python.org/>`_ version 3.
 # #. `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_
-# #. `c++ <https://en.wikipedia.org/wiki/C++>`_.
+# #. `python <https://www.python.org/>`_ version 3
+# #. `numpy <https://numpy.org/>`_
 # #. `cmake <https://cmake.org>`_
-# #. `git <https://git-scm.com/>`_.
-# #. `swig <http://www.swig.org/>`_:
-#    `issue 3 <https://github.com/bradbell/cppad_py/issues/3>`_.
-# #. `numpy <http://www.numpy.org/>`_.
+# #. `swig <http://www.swig.org/>`_
+# #. `c++ <https://en.wikipedia.org/wiki/C++>`_
+# #. `git <https://git-scm.com/>`_
 #
 # Install Using Pip
 # *****************
@@ -318,7 +317,7 @@ sys.exit(0)
 # If you are in the *top_srcdir* directory,
 # you should be able to import cppad_py using the following commands:
 #
-# | |tab| ``python``
+# | |tab| ``python3``
 # | |tab| ``import cppad_py``
 # | |tab| ``quit`` ()
 #
@@ -328,7 +327,7 @@ sys.exit(0)
 # *******
 # Use the following command to build and install cppad_py:
 #
-# | |tab| ``python setup.py install --prefix`` = *prefix*
+# | |tab| ``python3 setup.py install --prefix`` = *prefix*
 #
 # This will install ``cppad_py`` in the directory
 #
@@ -347,7 +346,7 @@ sys.exit(0)
 # is in your python path.
 # Once it is, you should be able to execute the following commands:
 #
-# | |tab| ``python``
+# | |tab| ``python3``
 # | |tab| ``import sys``
 # | |tab| ``print(sys.path`` )
 # | |tab| ``quit`` ()

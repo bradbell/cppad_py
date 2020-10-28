@@ -157,8 +157,14 @@ fi
 echo_eval cd build/external
 # -----------------------------------------------------------------------------
 # clone cppad repository directory
-echo_eval git clone $remote_repo cppad-$cppad_version.git
-echo_eval cd cppad-$cppad_version.git
+if [ ! -e cppad.git ]
+then
+    echo_eval git clone $remote_repo cppad.git
+fi
+echo_eval cd cppad.git
+git reset --hard
+echo_eval git checkout master
+echo_eval git pull
 echo_eval git checkout --quiet $hash_code
 check=`grep '^SET(cppad_version' CMakeLists.txt | \
         sed -e 's|^[^"]*"\([^"]*\)".*|\1|'`

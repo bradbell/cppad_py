@@ -46,6 +46,16 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+10-28
+*****
+#.  Improve the :ref:`setup.py<setup_py>` install instructions.
+    To be specific, change ``python`` to ``python3`` and edit the
+    :ref:`external requirements<setup_py.external_requirements>`.
+
+#.  Improve the :ref:`get_cppad_sh` script so that it gets and updates
+    posted to the remote repository (since the previous run of the script).
+
+
 10-21
 *****
 #.  Add a second :ref:`optimize_fixed example<mixed_optimize_fixed.examples>`.
