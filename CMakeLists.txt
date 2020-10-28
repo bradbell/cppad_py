@@ -20,6 +20,7 @@ SET(CMAKE_LEGACY_CYGWIN_WIN32 0) # remove when version below >= 2.8.4
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 SET(cppad_py_version "2020.10.28")
 PROJECT(cppad_py)
+CMAKE_POLICY(SET CMP0042 NEW)
 # =============================================================================
 # MACROS
 # =============================================================================
