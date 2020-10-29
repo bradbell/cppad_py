@@ -33,6 +33,7 @@ def sys_command(command_list) :
         if len(output) > 0 :
             print(output)
         print(command_list[0] , ': OK')
+    return output
 # -----------------------------------------------------------------------------
 src_distribution = 'sdist' in sys.argv
 # Examples and tests are not included in pip distribution
@@ -194,6 +195,14 @@ setup_result = setup(
     package_dir  = { 'cppad_py' : 'cppad_py' },
     scripts      = [ 'bin/xsrst.py' ],
 )
+# -----------------------------------------------------------------------------
+# 2DO: figure out when setup.py install not puttin cppad_py in python_path ?
+command_list  = [ 'find', '-L',  cppad_prefix, '-name', 'site-packages' ]
+python_path   = sys_command( command_list ).replace('\n', '')
+if not os.path.isdir( python_path + '/cppad_py' ) :
+    command_list  = [ 'find', '-L', python_path , '-name', 'cppad_py' ]
+    cppad_py_path = sys_command( command_list ).replace('\n', '')
+    shutil.copytree( cppad_py_path, python_path + '/cppad_py' )
 # -----------------------------------------------------------------------------
 msg  = 'If you get a message that an object library is missing, try:\n\t'
 msg += 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:'

@@ -46,6 +46,19 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+10-29
+*****
+# . The :ref:`get_cppad_sh.settings.cppad_libdir` setting was
+    added to ``bin/get_cppad.sh``.
+    This fixed a problem on some systems where ``bin/get_cppad.sh``
+    and ``bin/get_cppad_mixed.sh`` might install the cppad library
+    in two different locations and confuse the setup procedure.
+
+#.  Fix a problem with ``setup.py`` where it sometimes puts the distribution
+    in ``site-packages/cppad_py-`` *version* ``.egg/cppad_py`` instead of
+    ``site-packages/cppad_py``. This may have something to do with the
+    install egg being a directory instead of a zip file.
+
 10-28
 *****
 #.  Improve the :ref:`setup.py<setup_py>` install instructions.

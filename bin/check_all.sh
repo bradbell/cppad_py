@@ -95,16 +95,26 @@ then
 fi
 echo_eval bin/build_type.sh
 # -----------------------------------------------------------------------------
-if  ls $cppad_prefix/lib/libcppad_lib.* >& /dev/null
+path=$(find -L "$cppad_prefix" -name 'libcppad_lib.*' | head -1 | \
+    sed -e 's|/libcppad_lib[.].*||' )
+if  [ "$path" == '' ]
 then
-    LD_LIBRARY_PATH="$cppad_prefix/lib:$LD_LIBRARY_PATH"
-elif  ls $cppad_prefix/lib64/libcppad_lib.* >& /dev/null
-then
-    LD_LIBRARY_PATH="$cppad_prefix/lib64:$LD_LIBRARY_PATH"
-else
-    echo 'check_all.sh: cannot find libcppad_lib.* re-run bin/get_cppad.sh ?'
+    echo "check_all.sh: cannot find $cppad_prefix/*/libcppad_lib.*"
+    if [ "$build_type" == 'debug' ]
+    then
+        echo 'Change build_type to debug in bin/get_cppad.sh'
+    fi
+    if [ "$include_mixed" == 'true' ]
+    then
+        echo 'Change include_mixed to true in bin/get_cppad.sh'
+        echo 're-run bin/get_cppad_mixed.sh ?'
+    else
+        echo 're-run bin/get_cppad.sh ?'
+    fi
     exit_code 1
 fi
+export LD_LIBRARY_PATH="$path"
+echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
 # -----------------------------------------------------------------------------
 # clean out old distribution
 if [ -d 'cppad_py' ]

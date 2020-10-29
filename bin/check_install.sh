@@ -32,8 +32,11 @@ echo "build_type=$build_type"
 echo "cppad_prefix=$cppad_prefix"
 # ---------------------------------------------------------------------------
 # remove old cppad_py and xsrst.py
-list=$(find -L $cppad_prefix -name 'cppad_py' -or -name 'xsrst.py' )
-for name in cppad_py $list
+list=$(find -L $cppad_prefix \
+    -name 'cppad_py' -or   \
+    -name 'cppad_py-*' -or \
+    -name 'xsrst.py' )
+for name in dist cppad_py.egg-info cppad_py $list
 do
     if [ -e "$name" ]
     then
@@ -56,11 +59,6 @@ then
     exit 1
 fi
 # ---------------------------------------------------------------------------
-cppad_path=`echo 'import numpy; print(numpy.__file__)' | python | sed \
-    -e 's|/numpy/__init__.py||' \
-    -e "s|^/.*/\(lib[^.]*\)/python|$cppad_prefix/\1/python|"`
-PYTHONPATH="$cppad_path:$PYTHONPATH"
-# ---------------------------------------------------------------------------
 # install new version
 if [ "$build_type" == 'debug' ]
 then
@@ -68,10 +66,17 @@ then
 else
     build_flag=''
 fi
-echo_eval $python setup.py build_ext $build_flag install \
-    --prefix=$cppad_prefix
+echo_eval $python setup.py $build_flag install --prefix=$cppad_prefix
 echo_eval rm -r cppad_py
 # ---------------------------------------------------------------------------
+dir=$(find -L "$cppad_prefix" -name 'site-packages')
+export PYTHONPATH="$dir"
+dir=$(find -L "$cppad_prefix" -name 'libcppad_lib.*' | head -1 | \
+    sed -e 's|/libcppad_lib[.].*||' )
+export LD_LIBRARY_PATH="$dir"
+echo "PYTHONPATH=$PYTHONPATH"
+echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
+#
 cat << EOF > check_install.py
 import cppad_py
 print( 'import cppad_py: OK')

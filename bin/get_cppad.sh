@@ -18,6 +18,7 @@
 #   cxx
 #   usr
 #   Wno
+#   libdir
 # }
 #
 # Get Cppad
@@ -47,6 +48,13 @@ cppad_prefix="$HOME/prefix/cppad"
 # If this prefix does no start with ``/``, it is relative to the
 # :ref:`top_source_directory<setup_py.download.top_source_directory>`.
 # Note that ``$HOME`` starts with ``/``.
+#
+# cppad_libdir
+# ============
+# The sub-directory of cppad_prefix where libraries are installed.
+# (xsrst_code sh)
+cppad_libdir='lib64'
+# (xsrst_code)
 #
 # extra_cxx_flags
 # ===============
@@ -197,12 +205,14 @@ fi
 cat << EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
     -D cppad_prefix="$cppad_prefix"  \\
+    -D cmake_install_libdirs="$cppad_libdir"  \\
     -D cppad_cxx_flags="$extra_cxx_flags" \\
     -D cppad_debug_which=$cppad_debug_which \\
     ..
 EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
     -D cppad_prefix="$cppad_prefix"  \
+    -D cmake_install_libdirs="$cppad_libdir"  \
     -D cppad_cxx_flags="$extra_cxx_flags" \
     -D cppad_debug_which=$cppad_debug_which \
     ..

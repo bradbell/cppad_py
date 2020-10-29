@@ -70,6 +70,10 @@ eval $cmd
 cmd=`grep '^cppad_prefix=' bin/get_cppad.sh`
 eval $cmd
 #
+# cppad_libdir
+cmd=`grep '^cppad_libdir=' bin/get_cppad.sh`
+eval $cmd
+#
 # include_mixed
 cmd=`grep '^include_mixed=' bin/get_cppad.sh`
 eval $cmd
@@ -124,7 +128,7 @@ sed -i bin/run_cmake.sh \
     -e "s|^eigen_prefix=.*|eigen_prefix='$cppad_prefix/eigen'|" \
     -e "s|^ipopt_prefix=.*|ipopt_prefix='$cppad_prefix'|" \
     -e "s|^extra_cxx_flags=.*|extra_cxx_flags='$extra_cxx_flags'|" \
-    -e "s|^cmake_libdir=.*|cmake_libdir='lib64'|" \
+    -e "s|^cmake_libdir=.*|cmake_libdir=$cppad_libdir|" \
     -e "s|^ldlt_cholmod=.*|ldlt_cholmod='yes'|" \
     -e "s|^optimize_cppad_function=.*|optimize_cppad_function='$optimize'|" \
     -e "s|^for_hes_sparsity=.*|for_hes_sparsity='yes'|" \
