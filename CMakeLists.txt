@@ -214,4 +214,6 @@ ADD_CUSTOM_TARGET(check DEPENDS ${check_depends})
 MESSAGE(STATUS "make check: available")
 # -----------------------------------------------------------------------------
 # Incormation used by setup.py
-FILE(WRITE "${CMAKE_BINARY_DIR}/cxx_has_stdlib" "${cxx_has_stdlib}")
+FILE(WRITE "${CMAKE_BINARY_DIR}/cxx_has_stdlib"     "${cxx_has_stdlib}")
+FILE(WRITE "${CMAKE_BINARY_DIR}/cmake_cxx_compiler" "${CMAKE_CXX_COMPILER}")
+# -----------------------------------------------------------------------------

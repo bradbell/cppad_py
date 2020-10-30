@@ -17,7 +17,7 @@ from setuptools import setup, Extension
 def sys_exit(msg) :
     sys.exit( 'setup.py: ' + msg )
 #
-def sys_command(command_list) :
+def sys_command(command_list, cmakelists_txt=None) :
     command_str = " ".join(command_list)
     try :
         print(command_str)
@@ -25,6 +25,11 @@ def sys_command(command_list) :
             command_list, stderr=subprocess.STDOUT
         )
     except subprocess.CalledProcessError as process_error:
+        if not (cmakelists_txt is None) :
+            # used during cmake command which is run in build directory
+            fp = open('../CMakeLists.txt', 'w')
+            fp.write(cmakelists_txt)
+            fp.close()
         output = str(process_error.output, 'utf-8')
         print(output)
         sys_exit(command_list[0] + ': Error')
@@ -161,10 +166,9 @@ command_list += [ 'lib/cppad_py_swig.i' ]
 # run the command
 sys_command(command_list)
 # -----------------------------------------------------------------------------
-# cxx_has_stdlib
+# Run cmake to get cxx_has_stdlib, cmake_cxx_compiler
 #
-# Only using cmake to determine if -stdlib=libc++ is available
-# so remove all SUB_DIRECTORY commands in CMakeLists.txt
+# Do not needd cmake subdirectories for this purpose
 fp      = open('CMakeLists.txt', 'r')
 data_in = fp.read()
 fp.close()
@@ -193,7 +197,8 @@ command_list = [
     "-D", "include_mixed="     + include_mixed,
     ".."
 ]
-sys_command(command_list)
+# pass data_in so CMakeLists.txt can be restored before exit if command fails
+sys_command(command_list, cmakelists_txt = data_in)
 os.chdir('..')
 #
 # restore CMAkeLists.tst
@@ -201,9 +206,15 @@ fp = open('CMakeLists.txt', 'w')
 fp.write(data_in)
 fp.close()
 #
+# cmake_cxx_compiler
+fp = open('build/cmake_cxx_compiler')
+cmake_cxx_compiler = fp.read()
+fp.close()
+#
 # cxx_has_stdlib
 fp      = open('build/cxx_has_stdlib')
 fp_data = fp.read()
+fp.close()
 if fp_data == 'true' :
     cxx_has_stdlib = True
 elif fp_data == 'false' :
@@ -252,6 +263,8 @@ extension_module          = Extension(
     library_dirs       = library_dirs                     ,
     libraries          = libraries                        ,
 )
+#
+os.environ['CC'] = cmake_cxx_compiler
 # -----------------------------------------------------------------------------
 # setup
 setup_result = setup(
