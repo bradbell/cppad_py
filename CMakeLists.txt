@@ -9,6 +9,7 @@
 #   -D CMAKE_VERBOSE_MAKEFILE=value \
 #   -D CMAKE_BUILD_TYPE=value \
 #   -D cppad_prefix=value  \
+#   -D cppad_libdir=value  \
 #   -D extra_cxx_flags=value \
 #   -D include_mixed=value \
 #   ..
@@ -138,7 +139,7 @@ print_variable(CMAKE_VERBOSE_MAKEFILE)
 print_variable(CMAKE_CXX_FLAGS)
 print_variable(CMAKE_BUILD_TYPE)
 # -----------------------------------------------------------------------------
-# cppad_prefix, corresponding include directories and library
+# cppad_prefix, corresponding to include directories and libraries
 IF ( cppad_prefix )
     IF( cppad_prefix MATCHES "^[^/].*" )
         SET(cppad_prefix "${CMAKE_SOURCE_DIR}/${cppad_prefix}")
@@ -148,7 +149,15 @@ cmake_argument(cppad_prefix NOTFOUND PATH "prefix used to install Cppad" )
 IF( NOT cppad_prefix )
     MESSAGE(FATAL_ERROR "cppad_prefix is not defined by cmake command line")
 ENDIF( NOT cppad_prefix )
-#
+# -----------------------------------------------------------------------------
+# cppad_libdir corresponding to libraries
+cmake_argument(cppad_libdir NOTFOUND PATH
+    "added to cppad_prefix for library installs"
+ )
+IF( NOT cppad_libdir )
+    MESSAGE(FATAL_ERROR "cppad_libdir is not defined by cmake command line")
+ENDIF( NOT cppad_libdir )
+# -----------------------------------------------------------------------------
 # cppad include directories
 IF(EXISTS ${cppad_prefix}/include)
     INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
@@ -157,11 +166,8 @@ ELSE(EXISTS ${cppad_prefix}/include)
     MESSAGE(FATAL_ERROR "cppad include direcotry not ${cppad_prefix}/include")
 ENDIF(EXISTS ${cppad_prefix}/include)
 #
-# cppad link directories
-LINK_DIRECTORIES(
-    ${cppad_prefix}/lib
-    ${cppad_prefix}/lib64
-)
+# cppad library directories
+LINK_DIRECTORIES( ${cppad_prefix}/${cppad_libdir} )
 # -----------------------------------------------------------------------------
 # extra_cxx_flags
 cmake_argument(extra_cxx_flags "" STRING

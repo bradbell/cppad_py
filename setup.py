@@ -32,12 +32,13 @@ def sys_command(command_list) :
         output = str(output, 'utf-8')
         if len(output) > 0 :
             print(output)
-        print(command_list[0] , ': OK')
+        print(command_list[0] + ': OK')
     return output
 # -----------------------------------------------------------------------------
-src_distribution = 'sdist' in sys.argv
+install_distribution = 'install' in sys.argv
+src_distribution     = 'sdist' in sys.argv
 # Examples and tests are not included in pip distribution
-pip_distribution = not os.path.isfile( 'example/python/check_all.py.in' )
+pip_distribution     = not os.path.isfile( 'example/python/check_all.py.in' )
 # -----------------------------------------------------------------------------
 # python_version
 python_major_version = sys.version_info.major
@@ -78,6 +79,13 @@ if not match :
     sys_exit('cannot find cppad_prefix in bin/get_cppad.sh')
 cppad_prefix = match.group(1)
 #
+# cppad_prefix
+pattern = '''\ncppad_libdir=['"]([^'"]*)['"]'''
+match   = re.search(pattern, string)
+if not match :
+    sys_exit('cannot find cppad_libdir in bin/get_cppad.sh')
+cppad_libdir = match.group(1)
+#
 # build_type
 pattern = r"\nbuild_type='([^']*)'"
 match   = re.search(pattern, string)
@@ -100,6 +108,16 @@ if include_mixed != 'true' and include_mixed != 'false' :
 index = cppad_prefix.find('$HOME')
 if index >= 0 :
     cppad_prefix = cppad_prefix.replace( '$HOME', os.environ['HOME'] )
+# -----------------------------------------------------------------------------
+if install_distribution and os.path.isdir(cppad_prefix) :
+    # remove old distribution
+    command_list  = [ 'find', '-L',  cppad_prefix, '-name', 'site-packages' ]
+    output_list   = sys_command( command_list ).split('\n')
+    for dir_name in output_list :
+        dir_name = dir_name.strip()
+        if len(dir_name) > 0 :
+            print('remove ' + dir_name)
+            shutil.rmtree(dir_name)
 # -----------------------------------------------------------------------------
 # check if we need to install a local copy of cppad
 cppad_include_file = cppad_prefix + '/include/cppad/cppad.hpp'
@@ -150,7 +168,7 @@ for name in os.listdir('lib/cplusplus') :
 # -----------------------------------------------------------------------------
 # extension_module
 include_dirs        = [ cppad_prefix + '/include', 'include' ]
-library_dirs        = [ cppad_prefix + '/lib', cppad_prefix + '/lib64' ]
+library_dirs        = [ cppad_prefix + '/' + cppad_libdir ]
 libraries           = [ 'cppad_lib' ]
 extra_compile_args  = extra_cxx_flags.split()
 if cxx_has_stdlib :
@@ -196,13 +214,15 @@ setup_result = setup(
     scripts      = [ 'bin/xsrst.py' ],
 )
 # -----------------------------------------------------------------------------
-# 2DO: figure out when setup.py install not puttin cppad_py in python_path ?
-command_list  = [ 'find', '-L',  cppad_prefix, '-name', 'site-packages' ]
-python_path   = sys_command( command_list ).replace('\n', '')
-if not os.path.isdir( python_path + '/cppad_py' ) :
-    command_list  = [ 'find', '-L', python_path , '-name', 'cppad_py' ]
-    cppad_py_path = sys_command( command_list ).replace('\n', '')
-    shutil.copytree( cppad_py_path, python_path + '/cppad_py' )
+# 2DO: figure out why setup.py install not putting cppad_py in python_path ?
+if install_distribution :
+    command_list  = [ 'find', '-L',  cppad_prefix, '-name', 'site-packages' ]
+    python_path   = sys_command( command_list ).replace('\n', '')
+    print('python_path =', python_path)
+    if not os.path.isdir( python_path + '/cppad_py' ) :
+        command_list  = [ 'find', '-L', python_path , '-name', 'cppad_py' ]
+        cppad_py_path = sys_command( command_list ).replace('\n', '')
+        shutil.copytree( cppad_py_path, python_path + '/cppad_py' )
 # -----------------------------------------------------------------------------
 msg  = 'If you get a message that an object library is missing, try:\n\t'
 msg += 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:'
@@ -227,6 +247,7 @@ sys.exit(0)
 #   srcdir
 #   cmake
 #   pypi
+#   libdir
 # }
 #
 # Configure and Build the cppad_py Python Module
@@ -235,7 +256,7 @@ sys.exit(0)
 # Syntax
 # ******
 #
-# | ``python setup.py build_ext``
+# | ``python3 setup.py install --prefix=`` *prefix*
 #
 # External Requirements
 # *********************
@@ -259,6 +280,7 @@ sys.exit(0)
 #   install_error.xsrst
 #   bin/get_cppad.sh
 # }
+#
 # Install Errors
 # **************
 # If you get an error message during the install procedure above,
@@ -293,6 +315,14 @@ sys.exit(0)
 # and use ``bin/get_cppad_mixed.sh`` to install cppad and other
 # non-standard requirements.
 #
+# Python Path
+# ***********
+# Make sure the following directory is in your ``PYTHONPATH``:
+#
+# | |tab| *prefix* ``/`` *lib* ``/python`` *major* . *minor* ``/site_packages``
+#
+# Once it is, you should be able to execute the following commands:
+#
 # Test
 # ****
 # These steps are optional if you already know that cppad_py
@@ -302,14 +332,14 @@ sys.exit(0)
 # ==============
 # Build the Python cppad_py module using the command:
 #
-# | |tab| ``python setup.py build_ext``
+# | |tab| ``bin/build_local.py``
 #
 # python
 # ======
 # The next step is to test the cppad_py on your system by executing
 # the following commands starting in *top_srcdir* :
 #
-# | |tab| ``python example/python/check_all.py``
+# | |tab| ``python3 example/python/check_all.py``
 #
 # c++
 # ===
@@ -340,20 +370,11 @@ sys.exit(0)
 #
 # This will install ``cppad_py`` in the directory
 #
-# | |tab| *prefix* ``/`` *lib* ``/python`` *major* . *minor* ``/site_packages/cppad_py``
+# | |tab| *prefix* ``/`` *libdir* ``/python`` *major* . *minor* ``/site_packages/cppad_py``
 #
-# where *lib* is ``lib`` or ``lib64`` ,
+# where *libdir* is :ref:``cppad_libdir<get_cppad_sh.settings.cppad_libdir>`` ,
 # *major* ( *minor* ) is the major (minor)
 # version of *python* .
-#
-# Python Path
-# ***********
-# Check that the directory
-#
-# | |tab| *prefix* ``/`` *lib* ``/python`` *major* . *minor* ``/site_packages``
-#
-# is in your python path.
-# Once it is, you should be able to execute the following commands:
 #
 # | |tab| ``python3``
 # | |tab| ``import sys``

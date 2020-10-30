@@ -34,6 +34,13 @@ if len(sys.argv) != 1 :
 fp      = open('bin/get_cppad.sh', 'r')
 string  = fp.read()
 #
+# cppad_libdir
+pattern = r"\ncppad_libdir='([^']*)'"
+match   = re.search(pattern, string)
+if not match :
+    sys_exit('cannot find cppad_libdir in bin/get_cppad.sh')
+cppad_libdir = match.group(1)
+#
 # extra_cxx_flags
 pattern = r"\nextra_cxx_flags='([^']*)'"
 match   = re.search(pattern, string)
@@ -117,7 +124,7 @@ command_list += [ 'lib/cppad_py_swig.i' ]
 # run the command
 sys_command(command_list)
 # -----------------------------------------------------------------------------
-# Run cmake
+# Run cmake (remove old cache first)
 os.chdir('build')
 if os.path.isfile( 'CMakeCache.txt' ) :
     os.remove('CMakeCache.txt')
@@ -126,7 +133,8 @@ command_list = [
     "-D", "CMAKE_VERBOSE_MAKEFILE=1",
     "-D", "CMAKE_BUILD_TYPE="  + build_type,
     "-D", "cppad_prefix="      + cppad_prefix,
-    "-D", "extra_cxx_flags="  + extra_cxx_flags,
+    "-D", "cppad_libdir="      + cppad_libdir,
+    "-D", "extra_cxx_flags="   + extra_cxx_flags,
     "-D", "include_mixed="     + include_mixed,
     ".."
 ]

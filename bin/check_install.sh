@@ -60,13 +60,7 @@ then
 fi
 # ---------------------------------------------------------------------------
 # install new version
-if [ "$build_type" == 'debug' ]
-then
-    build_flag='--debug'
-else
-    build_flag=''
-fi
-echo_eval $python setup.py $build_flag install --prefix=$cppad_prefix
+echo_eval $python setup.py install --prefix=$cppad_prefix
 echo_eval rm -r cppad_py
 # ---------------------------------------------------------------------------
 dir=$(find -L "$cppad_prefix" -name 'site-packages')
