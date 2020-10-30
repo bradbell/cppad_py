@@ -35,8 +35,8 @@ https://github.com/bradbell/cppad_py
 Purpose
 *******
 
-#.  Provide a connection from Python
-    to the Algorithmic Differentiation (AD) package Cppad; see :ref:`py_lib<py_lib>`.
+#.  Provide a connection from Python to the
+    Algorithmic Differentiation (AD) package Cppad; see :ref:`py_lib<py_lib>`.
 #.  Provide an AD object library; see :ref:`cpp_lib<cpp_lib>`.
 #.  Provide a concrete example of how
     `cppad_swig <https://github.com/bradbell/cppad_swig>`_
@@ -44,12 +44,15 @@ Purpose
 
 Getting Started
 ***************
-The following is a good place to get started using cppad_py:
-:ref:`python<fun_jacobian_xam_py>`.
+After you :ref:`configure<setup_py.configure>` and
+:ref:`install<setup_py.install>` cppad_py,
+the following example is a good place to get started using it:
+:ref:`fun_jacobian_xam_py`.
 
 Numerical Examples
 ******************
-The following is a link to some numerical examples: :ref:`numeric_xam<numeric_xam>`.
+The following is a link to some numerical examples:
+:ref:`numeric_xam<numeric_xam>`.
 
 C++ Function Speed
 ******************

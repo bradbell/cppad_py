@@ -124,10 +124,13 @@ command_list += [ 'lib/cppad_py_swig.i' ]
 # run the command
 sys_command(command_list)
 # -----------------------------------------------------------------------------
-# Run cmake (remove old cache first)
+# Run cmake
+#
+# remove cache file from a previous run
 os.chdir('build')
 if os.path.isfile( 'CMakeCache.txt' ) :
     os.remove('CMakeCache.txt')
+#
 command_list = [
     "cmake",
     "-D", "CMAKE_VERBOSE_MAKEFILE=1",

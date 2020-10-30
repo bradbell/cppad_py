@@ -2,6 +2,7 @@
 /git_commit.sh
 junk
 junk.*
+/lib/python/cppad_py/cppad_swig.py
 # soft links to ignore
 /build
 # directories to ignore

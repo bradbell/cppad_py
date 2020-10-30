@@ -128,24 +128,78 @@ if not os.path.isfile( cppad_include_file ) :
     else :
         msg += 'use bin/get_cppad_sh to create it'
     sys_exit(msg)
-# bin/build_local.py
-if pip_distribution :
-    # Only using cmake to determine if -stdlib=libc++ is available
-    # and the location of the cppad_lib library
-    # so remove all SUB_DIRECTORY commands in CMakeLists.txt
-    fp      = open('CMakeLists.txt', 'r')
-    fp_data = fp.read()
-    fp.close()
-    pattern = r'\n(ADD_SUBDIRECTORY\([^(]*\))'
-    fp_data = re.sub(pattern, r'\n# \1', fp_data)
-    pattern = r'FATAL_ERROR ("no correctnes checks are available")'
-    fp_data = re.sub(pattern, r'STATUS \1', fp_data)
-    #
-    fp      = open('CMakeLists.txt', 'w')
-    fp.write(fp_data)
-    fp.close()
-command_list = [ 'bin/build_local.py' ]
+# -----------------------------------------------------------------------------
+# Run swig
+#
+# remove old cppad_py (possibly created by build_local.py)
+if os.path.exists('cppad_py') :
+    shutil.rmtree('cppad_py')
+#
+# make cure build/lib exists
+for subdir in [ 'build', 'build/lib' ] :
+    if not os.path.isdir(subdir) :
+        os.mkdir(subdir)
+#
+# remove swig output files
+for file_out in [
+    'build/lib/cppad_py_swigPYTHON_wrap.cxx',
+    'lib/python/cppad_py/cppad_swig.py'
+] :
+    if os.path.isfile(file_out) :
+        os.remove(file_out)
+#
+# swig command
+command_list = [ 'swig', '-c++', '-python', '-I./include' ]
+if include_mixed == 'true' :
+    command_list += [ '-DINCLUDE_MIXED' ]
+if build_type == 'release' :
+    command_list += [ '-DNDEBUG' ]
+command_list += [ '-o' , 'build/lib/cppad_py_swigPYTHON_wrap.cxx']
+command_list += [ '-outdir', 'lib/python/cppad_py' ]
+command_list += [ 'lib/cppad_py_swig.i' ]
+#
+# run the command
 sys_command(command_list)
+# -----------------------------------------------------------------------------
+# cxx_has_stdlib
+#
+# Only using cmake to determine if -stdlib=libc++ is available
+# so remove all SUB_DIRECTORY commands in CMakeLists.txt
+fp      = open('CMakeLists.txt', 'r')
+data_in = fp.read()
+fp.close()
+pattern  = r'\n(ADD_SUBDIRECTORY\([^(]*\))'
+data_out = re.sub(pattern, r'\n# \1', data_in)
+pattern  = r'FATAL_ERROR ("no correctnes checks are available")'
+data_out = re.sub(pattern, r'STATUS \1', data_out)
+#
+fp      = open('CMakeLists.txt', 'w')
+fp.write(data_out)
+fp.close()
+#
+# remove cache file from a previous run
+os.chdir('build')
+if os.path.isfile( 'CMakeCache.txt' ) :
+    os.remove('CMakeCache.txt')
+#
+# run cmake
+command_list = [
+    "cmake",
+    "-D", "CMAKE_VERBOSE_MAKEFILE=1",
+    "-D", "CMAKE_BUILD_TYPE="  + build_type,
+    "-D", "cppad_prefix="      + cppad_prefix,
+    "-D", "cppad_libdir="      + cppad_libdir,
+    "-D", "extra_cxx_flags="   + extra_cxx_flags,
+    "-D", "include_mixed="     + include_mixed,
+    ".."
+]
+sys_command(command_list)
+os.chdir('..')
+#
+# restore CMAkeLists.tst
+fp = open('CMakeLists.txt', 'w')
+fp.write(data_in)
+fp.close()
 #
 # cxx_has_stdlib
 fp      = open('build/cxx_has_stdlib')
@@ -210,7 +264,7 @@ setup_result = setup(
     url          = 'https://github.com/bradbell/cppad_py',
     ext_modules  = [ extension_module ],
     packages     = [ 'cppad_py' ],
-    package_dir  = { 'cppad_py' : 'cppad_py' },
+    package_dir  = { 'cppad_py' : 'lib/python/cppad_py' },
     scripts      = [ 'bin/xsrst.py' ],
 )
 # -----------------------------------------------------------------------------
@@ -328,9 +382,9 @@ sys.exit(0)
 # These steps are optional if you already know that cppad_py
 # works on your system.
 #
-# Build cppad_py
+# build_local.py
 # ==============
-# Build the Python cppad_py module using the command:
+# Build a local copy of the Python cppad_py module using the command:
 #
 # | |tab| ``bin/build_local.py``
 #
