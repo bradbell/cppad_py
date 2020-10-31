@@ -46,10 +46,15 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+10-31
+*****
+Fix some problems with the macOS install when
+:ref:`include_fixed<get_cppad_sh.settings.include_mixed>` is true.
+
 10-30
 *****
 The :ref:`install command<setup_py.install>` no longer creates
-a local copy of ``cppad_py`` for testing. (On some systems the
+a local copy of ``cppad_py`` for testing. (On macOS systems the
 local copy would cause problems during the install.)
 The :ref:`setup_py.test.build_local.py` still builds the local
 copy for testing.

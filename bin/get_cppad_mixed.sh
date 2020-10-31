@@ -42,8 +42,8 @@
 # ---------------------------------------------------------------------------
 # CppAD mixed version information
 web_page='https://github.com/bradbell/cppad_mixed.git'
-hash_key='276c570c683448e14d71715a4be483a95a7c4b4f'
-version='20201021'
+hash_key='64fb94ea6b484bf4dd2dc06ae94ea565c38b2a7b'
+version='20201031'
 # --------------------------------------------------------------------------
 name='bin/get_cppad_mixed.sh'
 if [ $0 != $name ]
@@ -116,27 +116,35 @@ then
 fi
 if [ "$build_type" == 'release' ]
 then
-    optmize='yes'
+    optimize='yes'
 else
-    optmize='no'
+    optimize='no'
 fi
 # install options
-sed -i bin/run_cmake.sh \
+echo 'edit build/external/cppad_mixed.git/bin/run_cmake.sh.sh'
+sed \
     -e "s|^verbose_makefile=.*|verbose_makefile='no'|" \
     -e "s|^build_type=.*|build_type='$build_type'|" \
     -e "s|^cppad_prefix=.*|cppad_prefix='$cppad_prefix'|" \
     -e "s|^eigen_prefix=.*|eigen_prefix='$cppad_prefix/eigen'|" \
     -e "s|^ipopt_prefix=.*|ipopt_prefix='$cppad_prefix'|" \
     -e "s|^extra_cxx_flags=.*|extra_cxx_flags='$extra_cxx_flags'|" \
-    -e "s|^cmake_libdir=.*|cmake_libdir=$cppad_libdir|" \
+    -e "s|^cmake_libdir=.*|cmake_libdir='$cppad_libdir'|" \
     -e "s|^ldlt_cholmod=.*|ldlt_cholmod='yes'|" \
     -e "s|^optimize_cppad_function=.*|optimize_cppad_function='$optimize'|" \
     -e "s|^for_hes_sparsity=.*|for_hes_sparsity='yes'|" \
+    bin/run_cmake.sh > run_cmake.$$
+mv run_cmake.$$ bin/run_cmake.sh
+chmod +x bin/run_cmake.sh
 #
 # supress call to cppad_mixed build_type.sh
-sed -i bin/example_install.sh \
+echo 'edit build/external/cppad_mixed.git/bin/example_install.sh'
+sed \
     -e 's|bin/build_type.sh .*|:|' \
-    -e 's|for cmd in check speed install|for cmd in install|'
+    -e 's|for cmd in check speed install|for cmd in install|' \
+    bin/example_install.sh > example_install.$$
+mv example_install.$$ bin/example_install.sh
+chmod +x bin/example_install.sh
 # -----------------------------------------------------------------------------
 # cppad_mixed example install
 echo_eval bin/example_install.sh replace
