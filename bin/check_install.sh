@@ -35,6 +35,20 @@ echo "build_type=$build_type"
 echo "cppad_prefix=$cppad_prefix"
 echo "cppad_libdir=$cppad_libdir"
 # ---------------------------------------------------------------------------
+# LD_LIBRARY_PATH
+# PYTHONPATH
+cat << EOF > check_install.py
+import sys
+minor = sys.version_info.minor
+print( minor )
+sys.exit(0)
+EOF
+minor=$(python check_install.py)
+export LD_LIBRARY_PATH="${cppad_prefix}/${cppad_libdir}"
+export PYTHONPATH="$LD_LIBRARY_PATH/python3.$minor/site-packages"
+echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
+echo "PYTHONPATH=$PYTHONPATH"
+# ---------------------------------------------------------------------------
 # remove old cppad_py and xsrst.py
 if [ -e "$cppad_prefix" ]
 then
@@ -50,18 +64,6 @@ then
         fi
     done
 fi
-# ---------------------------------------------------------------------------
-# PYTHONPATH
-# LD_LIBRARY_PATH
-cat << EOF > check_install.py
-import sys
-minor = sys.version_info.minor
-print( minor )
-sys.exit(0)
-EOF
-minor=$(python check_install.py)
-export LD_LIBRARY_PATH="${cppad_prefix}/${cppad_libdir}"
-export PYTHONPATH="$LD_LIBRARY_PATH/python3.$minor/site-packages"
 # ---------------------------------------------------------------------------
 # check_install.py
 cat << EOF > check_install.py

@@ -42,8 +42,8 @@
 # ---------------------------------------------------------------------------
 # CppAD mixed version information
 web_page='https://github.com/bradbell/cppad_mixed.git'
-hash_key='64fb94ea6b484bf4dd2dc06ae94ea565c38b2a7b'
-version='20201031'
+hash_key='82b8760d83e5af640b3aa3e0682f912e68b73498'
+version='20201103'
 # --------------------------------------------------------------------------
 name='bin/get_cppad_mixed.sh'
 if [ $0 != $name ]
@@ -125,9 +125,7 @@ echo 'edit build/external/cppad_mixed.git/bin/run_cmake.sh.sh'
 sed \
     -e "s|^verbose_makefile=.*|verbose_makefile='no'|" \
     -e "s|^build_type=.*|build_type='$build_type'|" \
-    -e "s|^cppad_prefix=.*|cppad_prefix='$cppad_prefix'|" \
-    -e "s|^eigen_prefix=.*|eigen_prefix='$cppad_prefix/eigen'|" \
-    -e "s|^ipopt_prefix=.*|ipopt_prefix='$cppad_prefix'|" \
+    -e "s|^cmake_install_prefix=.*|cmake_install_prefix='$cppad_prefix'|" \
     -e "s|^extra_cxx_flags=.*|extra_cxx_flags='$extra_cxx_flags'|" \
     -e "s|^cmake_libdir=.*|cmake_libdir='$cppad_libdir'|" \
     -e "s|^ldlt_cholmod=.*|ldlt_cholmod='yes'|" \
