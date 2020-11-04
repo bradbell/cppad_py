@@ -191,6 +191,10 @@ then
     echo_eval mkdir build
 fi
 echo_eval cd build
+if [ -e CMakeCache.txt ]
+then
+    rm CMakeCache.txt
+fi
 #
 # run cppad cmake command
 if [ "$build_type" == 'debug' ]
@@ -205,14 +209,14 @@ else
 fi
 cat << EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
-    -D cmake_install_prefix="$cmake_install_prefix"  \\
+    -D cppad_prefix="$cmake_install_prefix"  \\
     -D cmake_install_libdirs="$cppad_libdir"  \\
     -D cppad_cxx_flags="$extra_cxx_flags" \\
     -D cppad_debug_which=$cppad_debug_which \\
     ..
 EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
-    -D cmake_install_prefix="$cmake_install_prefix"  \
+    -D cppad_prefix="$cmake_install_prefix"  \
     -D cmake_install_libdirs="$cppad_libdir"  \
     -D cppad_cxx_flags="$extra_cxx_flags" \
     -D cppad_debug_which=$cppad_debug_which \

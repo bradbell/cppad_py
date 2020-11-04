@@ -46,6 +46,15 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+11-04
+*****
+The install prefix for cppad in ``bin/get_cppad.sh``
+is called *cmake_install_prefix* in cppad_py,
+but it is called *cppad_prefix* in cppad.
+The cmake command in ``bin/get_cppad.sh`` has been
+fixed to account for this.
+
+
 11-03
 *****
 The install prefix name was changed from *cppad_prefix* to
