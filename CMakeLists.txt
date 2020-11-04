@@ -139,7 +139,7 @@ print_variable(CMAKE_VERBOSE_MAKEFILE)
 print_variable(CMAKE_CXX_FLAGS)
 print_variable(CMAKE_BUILD_TYPE)
 # -----------------------------------------------------------------------------
-# cppad_prefix, corresponding to include directories and libraries
+# cppad_prefix
 IF ( cppad_prefix )
     IF( cppad_prefix MATCHES "^[^/].*" )
         SET(cppad_prefix "${CMAKE_SOURCE_DIR}/${cppad_prefix}")
@@ -150,7 +150,7 @@ IF( NOT cppad_prefix )
     MESSAGE(FATAL_ERROR "cppad_prefix is not defined by cmake command line")
 ENDIF( NOT cppad_prefix )
 # -----------------------------------------------------------------------------
-# cppad_libdir corresponding to libraries
+# cppad_libdir
 cmake_argument(cppad_libdir NOTFOUND PATH
     "added to cppad_prefix for library installs"
  )
@@ -158,6 +158,7 @@ IF( NOT cppad_libdir )
     MESSAGE(FATAL_ERROR "cppad_libdir is not defined by cmake command line")
 ENDIF( NOT cppad_libdir )
 # -----------------------------------------------------------------------------
+# set pkg-config information about gsl, eigen3, ipopt, cppad
 # cppad include directories
 IF(EXISTS ${cppad_prefix}/include)
     INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
