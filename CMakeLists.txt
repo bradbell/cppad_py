@@ -133,6 +133,19 @@ ELSE ( Python_Development_FOUND )
     MESSAGE(FATAL_ERROR "Cannot find python interpreter")
 ENDIF ( Python_Development_FOUND )
 # -----------------------------------------------------------------------------
+# set pkg-config information about cppad_mixed
+FIND_PACKAGE(PkgConfig)
+pkg_check_modules( cppad_mixed QUIET cppad_mixed )
+IF( cppad_mixed_FOUND )
+    MESSAGE(STATUS "Found cppad_mixed.pc file")
+ELSE( cppad_mixed_FOUND )
+    MESSAGE(STATUS "Cannot find cppad_mixed.pc file")
+    MESSAGE(FATAL_ERROR  "PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH}")
+ENDIF( cppad_mixed_FOUND )
+#
+INCLUDE_DIRECTORIES( ${cppad_mixed_INCLUDE_DIRS} )
+LINK_DIRECTORIES( ${cppad_mixed_LIBRARY_DIRS} )
+# -----------------------------------------------------------------------------
 # print important system variables
 print_variable(CMAKE_BINARY_DIR)
 print_variable(CMAKE_VERBOSE_MAKEFILE)
@@ -157,18 +170,6 @@ cmake_argument(cppad_libdir NOTFOUND PATH
 IF( NOT cppad_libdir )
     MESSAGE(FATAL_ERROR "cppad_libdir is not defined by cmake command line")
 ENDIF( NOT cppad_libdir )
-# -----------------------------------------------------------------------------
-# set pkg-config information about gsl, eigen3, ipopt, cppad
-# cppad include directories
-IF(EXISTS ${cppad_prefix}/include)
-    INCLUDE_DIRECTORIES( ${cppad_prefix}/include )
-    INCLUDE_DIRECTORIES( SYSTEM  ${cppad_prefix}/eigen/include )
-ELSE(EXISTS ${cppad_prefix}/include)
-    MESSAGE(FATAL_ERROR "cppad include direcotry not ${cppad_prefix}/include")
-ENDIF(EXISTS ${cppad_prefix}/include)
-#
-# cppad library directories
-LINK_DIRECTORIES( ${cppad_prefix}/${cppad_libdir} )
 # -----------------------------------------------------------------------------
 # extra_cxx_flags
 cmake_argument(extra_cxx_flags "" STRING

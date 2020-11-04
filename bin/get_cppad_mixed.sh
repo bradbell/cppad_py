@@ -42,7 +42,7 @@
 # ---------------------------------------------------------------------------
 # CppAD mixed version information
 web_page='https://github.com/bradbell/cppad_mixed.git'
-hash_key='eaaf6062a68708f3ee140fa8ab37a24f15c331ea'
+hash_key='578b906c1b3e5eea9194f2fc2f34213e48de0688'
 version='20201103'
 # --------------------------------------------------------------------------
 name='bin/get_cppad_mixed.sh'
