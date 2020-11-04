@@ -66,24 +66,24 @@ include_mixed = match.group(1)
 if include_mixed != 'true' and include_mixed != 'false' :
     sys_exit('include_mixed is not true or false in bin/get_cppad.sh')
 #
-# cppad_prefix
-pattern = '''\ncppad_prefix=['"]([^'"]*)['"]'''
+# cmake_install_prefix
+pattern = '''\ncmake_install_prefix=['"]([^'"]*)['"]'''
 match   = re.search(pattern, string)
 if not match :
-    sys_exit('cannot find cppad_prefix in bin/get_cppad.sh')
-cppad_prefix = match.group(1)
+    sys_exit('cannot find cmake_install_prefix in bin/get_cppad.sh')
+cmake_install_prefix = match.group(1)
 #
-# check for $HOME in cppad_prefix
-index = cppad_prefix.find('$HOME')
+# check for $HOME in cmake_install_prefix
+index = cmake_install_prefix.find('$HOME')
 if index >= 0 :
-    cppad_prefix = cppad_prefix.replace( '$HOME', os.environ['HOME'] )
+    cmake_install_prefix = cmake_install_prefix.replace( '$HOME', os.environ['HOME'] )
 # -----------------------------------------------------------------------------
-# Set build and cppad_prefix to debug or release version
+# Set build and cmake_install_prefix to debug or release version
 command_list = ['bin/build_type.sh']
 sys_command(command_list)
 # -----------------------------------------------------------------------------
 # Check CppAD install
-cppad_include_file = cppad_prefix + '/include/cppad/cppad.hpp'
+cppad_include_file = cmake_install_prefix + '/include/cppad/cppad.hpp'
 if not os.path.isfile( cppad_include_file ) :
     msg  = 'Cannot find ' + cppad_include_file + '\n'
     msg += 'use bin/get_cppad.sh or bin/get_cppad_mixed.sh to create it.'
@@ -134,11 +134,11 @@ if os.path.isfile( 'CMakeCache.txt' ) :
 command_list = [
     "cmake",
     "-D", "CMAKE_VERBOSE_MAKEFILE=1",
-    "-D", "CMAKE_BUILD_TYPE="  + build_type,
-    "-D", "cppad_prefix="      + cppad_prefix,
-    "-D", "cppad_libdir="      + cppad_libdir,
-    "-D", "extra_cxx_flags="   + extra_cxx_flags,
-    "-D", "include_mixed="     + include_mixed,
+    "-D", "CMAKE_BUILD_TYPE="          + build_type,
+    "-D", "cmake_install_prefix="      + cmake_install_prefix,
+    "-D", "cppad_libdir="              + cppad_libdir,
+    "-D", "extra_cxx_flags="           + extra_cxx_flags,
+    "-D", "include_mixed="             + include_mixed,
     ".."
 ]
 sys_command(command_list)

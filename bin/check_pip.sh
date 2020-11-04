@@ -28,14 +28,14 @@ then
 fi
 python='python3'
 # ---------------------------------------------------------------------------
-eval $(grep '^cppad_prefix *=' bin/get_cppad.sh)
+eval $(grep '^cmake_install_prefix *=' bin/get_cppad.sh)
 #
-if  ls $cppad_prefix/lib/libcppad_lib.* >& /dev/null
+if  ls $cmake_install_prefix/lib/libcppad_lib.* >& /dev/null
 then
-    LD_LIBRARY_PATH="$cppad_prefix/lib:$LD_LIBRARY_PATH"
-elif  ls $cppad_prefix/lib64/libcppad_lib.\* >& /dev/null
+    LD_LIBRARY_PATH="$cmake_install_prefix/lib:$LD_LIBRARY_PATH"
+elif  ls $cmake_install_prefix/lib64/libcppad_lib.\* >& /dev/null
 then
-    LD_LIBRARY_PATH="$cppad_prefix/lib64:$LD_LIBRARY_PATH"
+    LD_LIBRARY_PATH="$cmake_install_prefix/lib64:$LD_LIBRARY_PATH"
 else
     echo 'check_all.sh: cannot find libcppad_lib.* re-run bin/get_cppad.sh ?'
     exit 1

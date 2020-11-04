@@ -30,5 +30,4 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|vec2cppad_double|ad_vec_std2cppad|
-s|vec2a_double|ad_vec_cppad2std|
+s|cppad_prefix|cmake_install_prefix|g

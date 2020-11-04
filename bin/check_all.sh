@@ -63,14 +63,14 @@ then
 fi
 # -----------------------------------------------------------------------------
 eval $(grep '^build_type *=' bin/get_cppad.sh)
-eval $(grep '^cppad_prefix *=' bin/get_cppad.sh)
+eval $(grep '^cmake_install_prefix *=' bin/get_cppad.sh)
 eval $(grep '^extra_cxx_flags *=' bin/get_cppad.sh)
 eval $(grep '^include_mixed *=' bin/get_cppad.sh)
 #
-if ! echo $cppad_prefix | grep '^/' > /dev/null
+if ! echo $cmake_install_prefix | grep '^/' > /dev/null
 then
-    # convert cppad_prefix to an absolute path
-    cppad_prefix="$(pwd)/$cppad_prefix"
+    # convert cmake_install_prefix to an absolute path
+    cmake_install_prefix="$(pwd)/$cmake_install_prefix"
 fi
 # -----------------------------------------------------------------------------
 # set build_type, include_mixed
@@ -95,11 +95,11 @@ then
 fi
 echo_eval bin/build_type.sh
 # -----------------------------------------------------------------------------
-path=$(find -L "$cppad_prefix" -name 'libcppad_lib.*' | head -1 | \
+path=$(find -L "$cmake_install_prefix" -name 'libcppad_lib.*' | head -1 | \
     sed -e 's|/libcppad_lib[.].*||' )
 if  [ "$path" == '' ]
 then
-    echo "check_all.sh: cannot find $cppad_prefix/*/libcppad_lib.*"
+    echo "check_all.sh: cannot find $cmake_install_prefix/*/libcppad_lib.*"
     if [ "$build_type" == 'debug' ]
     then
         echo 'Change build_type to debug in bin/get_cppad.sh'

@@ -19,6 +19,7 @@
 #   usr
 #   Wno
 #   libdir
+#   cmake
 # }
 #
 # Get Cppad
@@ -37,13 +38,13 @@
 # ********
 # If you change any of these settings, you must re-run ``get_cppad.sh`` .
 #
-# cppad_prefix
-# ============
-# This prefix is used to install CppAD may be a local director; e.g.,
-# ``build/prefix`` or an absolute path; e.g., ``/usr/local`` ,
-# it may include the shell variable ``$HOME`` but no other variables:
+# cmake_install_prefix
+# ====================
+# This prefix is used to install cppad_py. It may be a local directory; e.g.,
+# ``build/prefix`` or an absolute path; e.g., ``/usr/local``.
+# It may include the shell variable ``$HOME`` but no other variables:
 # {xsrst_code sh}
-cppad_prefix="$HOME/prefix/cppad"
+cmake_install_prefix="$HOME/prefix/cppad"
 # {xsrst_code}
 # If this prefix does no start with ``/``, it is relative to the
 # :ref:`top_source_directory<setup_py.download.top_source_directory>`.
@@ -51,7 +52,7 @@ cppad_prefix="$HOME/prefix/cppad"
 #
 # cppad_libdir
 # ============
-# The sub-directory of cppad_prefix where libraries are installed.
+# The sub-directory of cmake_install_prefix where libraries are installed.
 # (xsrst_code sh)
 cppad_libdir='lib64'
 # (xsrst_code)
@@ -74,11 +75,11 @@ extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
 build_type='release'
 # {xsrst_code}
 #
-# cppad_prefix
-# ------------
+# cmake_install_prefix
+# --------------------
 # The actual prefix used for the install is
-# *cppad_prefix* ``.`` *build_type*
-# and a soft link is created from *cppad_prefix* to this directory.
+# *cmake_install_prefix* ``.`` *build_type*
+# and a soft link is created from *cmake_install_prefix* to this directory.
 #
 # build
 # -----
@@ -148,13 +149,13 @@ then
     exit 1
 fi
 # -----------------------------------------------------------------------------
-if ! echo $cppad_prefix | grep '^/' > /dev/null
+if ! echo $cmake_install_prefix | grep '^/' > /dev/null
 then
-    # convert cppad_prefix to an absolute path
-    cppad_prefix="$(pwd)/$cppad_prefix"
+    # convert cmake_install_prefix to an absolute path
+    cmake_install_prefix="$(pwd)/$cmake_install_prefix"
 fi
 # -----------------------------------------------------------------------------
-# create links to proper version of cppad_prefix and build
+# create links to proper version of cmake_install_prefix and build
 echo_eval bin/build_type.sh
 # -----------------------------------------------------------------------------
 # change into the build/external
@@ -204,14 +205,14 @@ else
 fi
 cat << EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
-    -D cppad_prefix="$cppad_prefix"  \\
+    -D cmake_install_prefix="$cmake_install_prefix"  \\
     -D cmake_install_libdirs="$cppad_libdir"  \\
     -D cppad_cxx_flags="$extra_cxx_flags" \\
     -D cppad_debug_which=$cppad_debug_which \\
     ..
 EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
-    -D cppad_prefix="$cppad_prefix"  \
+    -D cmake_install_prefix="$cmake_install_prefix"  \
     -D cmake_install_libdirs="$cppad_libdir"  \
     -D cppad_cxx_flags="$extra_cxx_flags" \
     -D cppad_debug_which=$cppad_debug_which \

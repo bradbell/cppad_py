@@ -77,14 +77,14 @@ if not match :
     sys_exit('cannot find extra_cxx_flags in bin/get_cppad.sh')
 extra_cxx_flags = match.group(1)
 #
-# cppad_prefix
-pattern = '''\ncppad_prefix=['"]([^'"]*)['"]'''
+# cmake_install_prefix
+pattern = '''\ncmake_install_prefix=['"]([^'"]*)['"]'''
 match   = re.search(pattern, string)
 if not match :
-    sys_exit('cannot find cppad_prefix in bin/get_cppad.sh')
-cppad_prefix = match.group(1)
+    sys_exit('cannot find cmake_install_prefix in bin/get_cppad.sh')
+cmake_install_prefix = match.group(1)
 #
-# cppad_prefix
+# cmake_install_prefix
 pattern = '''\ncppad_libdir=['"]([^'"]*)['"]'''
 match   = re.search(pattern, string)
 if not match :
@@ -109,14 +109,14 @@ include_mixed = match.group(1)
 if include_mixed != 'true' and include_mixed != 'false' :
     sys_exit('include_mixed is not true or false in bin/get_cppad.sh')
 # -----------------------------------------------------------------------------
-# check for $HOME in cppad_prefix
-index = cppad_prefix.find('$HOME')
+# check for $HOME in cmake_install_prefix
+index = cmake_install_prefix.find('$HOME')
 if index >= 0 :
-    cppad_prefix = cppad_prefix.replace( '$HOME', os.environ['HOME'] )
+    cmake_install_prefix = cmake_install_prefix.replace( '$HOME', os.environ['HOME'] )
 # -----------------------------------------------------------------------------
-if install_distribution and os.path.isdir(cppad_prefix) :
+if install_distribution and os.path.isdir(cmake_install_prefix) :
     # remove old distribution
-    command_list  = [ 'find', '-L',  cppad_prefix, '-name', 'site-packages' ]
+    command_list  = [ 'find', '-L',  cmake_install_prefix, '-name', 'site-packages' ]
     output_list   = sys_command( command_list ).split('\n')
     for dir_name in output_list :
         dir_name = dir_name.strip()
@@ -125,7 +125,7 @@ if install_distribution and os.path.isdir(cppad_prefix) :
             shutil.rmtree(dir_name)
 # -----------------------------------------------------------------------------
 # check if we need to install a local copy of cppad
-cppad_include_file = cppad_prefix + '/include/cppad/cppad.hpp'
+cppad_include_file = cmake_install_prefix + '/include/cppad/cppad.hpp'
 if not os.path.isfile( cppad_include_file ) :
     msg  = 'Cannot find ' + cppad_include_file + '\n'
     if include_mixed == 'true' :
@@ -190,11 +190,11 @@ if os.path.isfile( 'CMakeCache.txt' ) :
 command_list = [
     "cmake",
     "-D", "CMAKE_VERBOSE_MAKEFILE=1",
-    "-D", "CMAKE_BUILD_TYPE="  + build_type,
-    "-D", "cppad_prefix="      + cppad_prefix,
-    "-D", "cppad_libdir="      + cppad_libdir,
-    "-D", "extra_cxx_flags="   + extra_cxx_flags,
-    "-D", "include_mixed="     + include_mixed,
+    "-D", "CMAKE_BUILD_TYPE="          + build_type,
+    "-D", "cmake_install_prefix="      + cmake_install_prefix,
+    "-D", "cppad_libdir="              + cppad_libdir,
+    "-D", "extra_cxx_flags="           + extra_cxx_flags,
+    "-D", "include_mixed="             + include_mixed,
     ".."
 ]
 # pass data_in so CMakeLists.txt can be restored before exit if command fails
@@ -232,8 +232,8 @@ for name in os.listdir('lib/cplusplus') :
         cppad_py_extension_sources.append( 'lib/cplusplus/' + name)
 # -----------------------------------------------------------------------------
 # extension_module
-include_dirs        = [ cppad_prefix + '/include', 'include' ]
-library_dirs        = [ cppad_prefix + '/' + cppad_libdir ]
+include_dirs        = [ cmake_install_prefix + '/include', 'include' ]
+library_dirs        = [ cmake_install_prefix + '/' + cppad_libdir ]
 libraries           = [ 'cppad_lib' ]
 extra_compile_args  = extra_cxx_flags.split()
 if cxx_has_stdlib :
@@ -242,7 +242,7 @@ if cxx_has_stdlib :
 else :
     extra_link_args = list()
 if include_mixed == 'true' :
-    eigen_dir           = cppad_prefix + '/eigen/include'
+    eigen_dir           = cmake_install_prefix + '/eigen/include'
     extra_compile_args += [ '-D', 'INCLUDE_MIXED' , '-isystem' , eigen_dir ]
     libraries          += [ 'cppad_mixed', 'ipopt', 'gsl', 'cholmod' ]
 #
@@ -283,7 +283,7 @@ setup_result = setup(
 # -----------------------------------------------------------------------------
 # 2DO: figure out why setup.py install not putting cppad_py in python_path ?
 if install_distribution :
-    command_list  = [ 'find', '-L',  cppad_prefix, '-name', 'site-packages' ]
+    command_list  = [ 'find', '-L',  cmake_install_prefix, '-name', 'site-packages' ]
     python_path   = sys_command( command_list ).replace('\n', '')
     print('python_path =', python_path)
     if not os.path.isdir( python_path + '/cppad_py' ) :
@@ -293,11 +293,11 @@ if install_distribution :
 # -----------------------------------------------------------------------------
 msg  = 'If you get a message that an object library is missing, try:\n\t'
 msg += 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:'
-msg += cppad_prefix + '/<libdir>\n'
+msg += cmake_install_prefix + '/<libdir>\n'
 msg += 'where <libdir> is "lib" or "lib64" or both.\n'
 msg += 'If you have a Mac system, the following may fix this problem:\n\t'
 msg += 'export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:'
-msg += cppad_prefix + '/<libdir>\n'
+msg += cmake_install_prefix + '/<libdir>\n'
 print(msg)
 print('setup.py: OK')
 sys.exit(0)

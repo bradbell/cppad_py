@@ -19,21 +19,21 @@ then
 fi
 # -----------------------------------------------------------------------------
 eval $(grep '^build_type *=' bin/get_cppad.sh)
-eval $(grep '^cppad_prefix *=' bin/get_cppad.sh)
+eval $(grep '^cmake_install_prefix *=' bin/get_cppad.sh)
 if [ "$build_type" != 'debug' ] && [ "$build_type" != 'release' ]
 then
     echo 'build_type.sh: build_type in get_cppad.sh is not debug or release'
     exit 1
 fi
-if ! echo $cppad_prefix | grep '^/' > /dev/null
+if ! echo $cmake_install_prefix | grep '^/' > /dev/null
 then
-    # convert cppad_prefix to an absolute path
-    cppad_prefix="$(pwd)/$cppad_prefix"
+    # convert cmake_install_prefix to an absolute path
+    cmake_install_prefix="$(pwd)/$cmake_install_prefix"
 fi
 echo "build_type=$build_type"
-echo "cppad_prefix=$cppad_prefix"
+echo "cmake_install_prefix=$cmake_install_prefix"
 # -----------------------------------------------------------------------------
-for target in $cppad_prefix build
+for target in $cmake_install_prefix build
 do
     # link target to target.build_type
     if [ ! -d "$target.$build_type" ]

@@ -36,7 +36,7 @@
 # ********
 # This scripts uses the
 # :ref:`get_cppad.sh settings<get_cppad_sh.settings>` for
-# *cppad_prefix* , *extra_cxx_flags*, and *build_type* .
+# *cmake_install_prefix* , *extra_cxx_flags*, and *build_type* .
 #
 # {xsrst_end get_cppad_mixed_sh}
 # ---------------------------------------------------------------------------
@@ -66,8 +66,8 @@ eval $cmd
 cmd=`grep '^extra_cxx_flags=' bin/get_cppad.sh`
 eval $cmd
 #
-# cppad_prefix
-cmd=`grep '^cppad_prefix=' bin/get_cppad.sh`
+# cmake_install_prefix
+cmd=`grep '^cmake_install_prefix=' bin/get_cppad.sh`
 eval $cmd
 #
 # cppad_libdir
@@ -125,7 +125,7 @@ echo 'edit build/external/cppad_mixed.git/bin/run_cmake.sh.sh'
 sed \
     -e "s|^verbose_makefile=.*|verbose_makefile='no'|" \
     -e "s|^build_type=.*|build_type='$build_type'|" \
-    -e "s|^cmake_install_prefix=.*|cmake_install_prefix='$cppad_prefix'|" \
+    -e "s|^cmake_install_prefix=.*|cmake_install_prefix='$cmake_install_prefix'|" \
     -e "s|^extra_cxx_flags=.*|extra_cxx_flags='$extra_cxx_flags'|" \
     -e "s|^cmake_libdir=.*|cmake_libdir='$cppad_libdir'|" \
     -e "s|^ldlt_cholmod=.*|ldlt_cholmod='yes'|" \

@@ -19,6 +19,7 @@
     dir
     \chapter
     \paragraph
+    cmake
 }
 
 .. include:: ../preamble.rst
@@ -73,8 +74,8 @@ Requirements
 ************
 -   ``pip install --user pyspellchecker``
 -   ``pip install --user sphinx``
--   The directory *cppad_prefix* ``/bin`` must be in your execution path
-    where *cppad_prefix* is the install prefix for cppad.
+-   The directory *cmake_install_prefix* ``/bin`` must be in your execution path
+    where *cmake_install_prefix* is the install prefix for cppad.
 
 Notation
 ********

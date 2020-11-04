@@ -46,6 +46,11 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+11-03
+*****
+The install prefix name was changed from *cppad_prefix* to
+:ref:`cmake_install_prefix<get_cppad_sh.settings.cmake_install_prefix>`.
+
 10-31
 *****
 Fix some problems with the macOS install when
@@ -120,7 +125,7 @@ to the mixed class; see :ref:`mixed_fix_constraint`.
     Check this page for such changes.
 
 #.  Change the install process so both a debug and release version of
-    :ref:`cppad_prefix<get_cppad_sh.settings.build_type.cppad_prefix>`
+    :ref:`cmake_install_prefix<get_cppad_sh.settings.build_type.cmake_install_prefix>`
     can be installed at the same time.
 
 #. Some of the install steps in :ref:`setup_py` have changed.

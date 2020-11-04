@@ -8,7 +8,7 @@
 # cmake \
 #   -D CMAKE_VERBOSE_MAKEFILE=value \
 #   -D CMAKE_BUILD_TYPE=value \
-#   -D cppad_prefix=value  \
+#   -D cmake_install_prefix=value  \
 #   -D cppad_libdir=value  \
 #   -D extra_cxx_flags=value \
 #   -D include_mixed=value \
@@ -152,20 +152,20 @@ print_variable(CMAKE_VERBOSE_MAKEFILE)
 print_variable(CMAKE_CXX_FLAGS)
 print_variable(CMAKE_BUILD_TYPE)
 # -----------------------------------------------------------------------------
-# cppad_prefix
-IF ( cppad_prefix )
-    IF( cppad_prefix MATCHES "^[^/].*" )
-        SET(cppad_prefix "${CMAKE_SOURCE_DIR}/${cppad_prefix}")
-    ENDIF( cppad_prefix MATCHES "^[^/].*" )
-ENDIF ( cppad_prefix )
-cmake_argument(cppad_prefix NOTFOUND PATH "prefix used to install Cppad" )
-IF( NOT cppad_prefix )
-    MESSAGE(FATAL_ERROR "cppad_prefix is not defined by cmake command line")
-ENDIF( NOT cppad_prefix )
+# cmake_install_prefix
+IF ( cmake_install_prefix )
+    IF( cmake_install_prefix MATCHES "^[^/].*" )
+        SET(cmake_install_prefix "${CMAKE_SOURCE_DIR}/${cmake_install_prefix}")
+    ENDIF( cmake_install_prefix MATCHES "^[^/].*" )
+ENDIF ( cmake_install_prefix )
+cmake_argument(cmake_install_prefix NOTFOUND PATH "prefix used to install Cppad" )
+IF( NOT cmake_install_prefix )
+    MESSAGE(FATAL_ERROR "cmake_install_prefix is not defined by cmake command line")
+ENDIF( NOT cmake_install_prefix )
 # -----------------------------------------------------------------------------
 # cppad_libdir
 cmake_argument(cppad_libdir NOTFOUND PATH
-    "added to cppad_prefix for library installs"
+    "added to cmake_install_prefix for library installs"
  )
 IF( NOT cppad_libdir )
     MESSAGE(FATAL_ERROR "cppad_libdir is not defined by cmake command line")

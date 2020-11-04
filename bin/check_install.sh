@@ -20,19 +20,19 @@ fi
 # build_type
 eval $(grep '^build_type *=' bin/get_cppad.sh)
 #
-# cppad_prefix
-eval $(grep '^cppad_prefix *=' bin/get_cppad.sh)
-if ! echo $cppad_prefix | grep '^/' > /dev/null
+# cmake_install_prefix
+eval $(grep '^cmake_install_prefix *=' bin/get_cppad.sh)
+if ! echo $cmake_install_prefix | grep '^/' > /dev/null
 then
-    # convert cppad_prefix to an absolute path
-    cppad_prefix="$(pwd)/$cppad_prefix"
+    # convert cmake_install_prefix to an absolute path
+    cmake_install_prefix="$(pwd)/$cmake_install_prefix"
 fi
 #
 # cppad_libdir
 eval $(grep '^cppad_libdir *=' bin/get_cppad.sh)
 #
 echo "build_type=$build_type"
-echo "cppad_prefix=$cppad_prefix"
+echo "cmake_install_prefix=$cmake_install_prefix"
 echo "cppad_libdir=$cppad_libdir"
 # ---------------------------------------------------------------------------
 # LD_LIBRARY_PATH
@@ -44,15 +44,15 @@ print( minor )
 sys.exit(0)
 EOF
 minor=$(python check_install.py)
-export LD_LIBRARY_PATH="${cppad_prefix}/${cppad_libdir}"
+export LD_LIBRARY_PATH="${cmake_install_prefix}/${cppad_libdir}"
 export PYTHONPATH="$LD_LIBRARY_PATH/python3.$minor/site-packages"
 echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
 echo "PYTHONPATH=$PYTHONPATH"
 # ---------------------------------------------------------------------------
 # remove old cppad_py and xsrst.py
-if [ -e "$cppad_prefix" ]
+if [ -e "$cmake_install_prefix" ]
 then
-    list=$(find -L "$cppad_prefix" \
+    list=$(find -L "$cmake_install_prefix" \
         -name 'cppad_py' -or   \
         -name 'cppad_py-*' -or \
         -name 'xsrst.py' )
@@ -88,12 +88,12 @@ then
 fi
 # ---------------------------------------------------------------------------
 # install new version
-echo_eval python3 setup.py install --prefix=$cppad_prefix
+echo_eval python3 setup.py install --prefix=$cmake_install_prefix
 # ---------------------------------------------------------------------------
 echo_eval python3 check_install.py
 rm check_install.py
 # ---------------------------------------------------------------------------
-cppad_path="$cppad_prefix/bin"
+cppad_path="$cmake_install_prefix/bin"
 PATH="$cppad_path:$PATH"
 if ! which xsrst.py >& /dev/null
 then
