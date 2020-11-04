@@ -14,6 +14,11 @@ whats_new_2020
 CppAD Py Changes During 2020
 ############################
 - :ref:`whats_new_2020.previous_years`
+- :ref:`whats_new_2020.11-03`
+- :ref:`whats_new_2020.10-31`
+- :ref:`whats_new_2020.10-30`
+- :ref:`whats_new_2020.10-29`
+- :ref:`whats_new_2020.10-28`
 - :ref:`whats_new_2020.10-21`
 - :ref:`whats_new_2020.10-19`
 - :ref:`whats_new_2020.10-17`
@@ -74,11 +79,63 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+.. _whats_new_2020.11-03:
+
+11-03
+*****
+The install prefix name was changed from *cppad_prefix* to
+:ref:`cmake_install_prefix<get_cppad_sh.settings.cmake_install_prefix>`.
+
+.. _whats_new_2020.10-31:
+
+10-31
+*****
+Fix some problems with the macOS install when
+:ref:`include_fixed<get_cppad_sh.settings.include_mixed>` is true.
+
+.. _whats_new_2020.10-30:
+
+10-30
+*****
+The :ref:`install command<setup_py.install>` no longer creates
+a local copy of ``cppad_py`` for testing. (On macOS systems the
+local copy would cause problems during the install.)
+The :ref:`setup_py.test.build_local.py` still builds the local
+copy for testing.
+
+.. _whats_new_2020.10-29:
+
+10-29
+*****
+# . The :ref:`get_cppad_sh.settings.cppad_libdir` setting was
+    added to ``bin/get_cppad.sh``.
+    This fixed a problem on some systems where ``bin/get_cppad.sh``
+    and ``bin/get_cppad_mixed.sh`` might install the cppad library
+    in two different locations and confuse the setup procedure.
+
+#.  Fix a problem with ``setup.py`` where it sometimes puts the distribution
+    in ``site-packages/cppad_py-`` *version* ``.egg/cppad_py`` instead of
+    ``site-packages/cppad_py``. This may have something to do with the
+    install egg being a directory instead of a zip file.
+
+.. _whats_new_2020.10-28:
+
+10-28
+*****
+#.  Improve the :ref:`setup.py<setup_py>` install instructions.
+    To be specific, change ``python`` to ``python3`` and edit the
+    :ref:`external requirements<setup_py.external_requirements>`.
+
+#.  Improve the :ref:`get_cppad_sh` script so that it gets and updates
+    posted to the remote repository (since the previous run of the script).
+
 .. _whats_new_2020.10-21:
 
 10-21
 *****
-Add a second :ref:`optimize_fixed example<mixed_optimize_fixed.examples>`.
+#.  Add a second :ref:`optimize_fixed example<mixed_optimize_fixed.examples>`.
+
+#.  Advance to cppad-20201021 (this fixes a warning on some compilers).
 
 .. _whats_new_2020.10-19:
 
@@ -118,7 +175,7 @@ to the mixed class; see :ref:`mixed_fix_constraint`.
     Check this page for such changes.
 
 #.  Change the install process so both a debug and release version of
-    :ref:`cppad_prefix<get_cppad_sh.settings.build_type.cppad_prefix>`
+    :ref:`cmake_install_prefix<get_cppad_sh.settings.build_type.cmake_install_prefix>`
     can be installed at the same time.
 
 #. Some of the install steps in :ref:`setup_py` have changed.

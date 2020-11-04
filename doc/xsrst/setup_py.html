@@ -13,13 +13,13 @@
 <meta content="top, source, directory" name="keywords" />
 <meta content="configure" name="keywords" />
 <meta content="get, cppad" name="keywords" />
+<meta content="python, path" name="keywords" />
 <meta content="test" name="keywords" />
-<meta content="build, cppad_py" name="keywords" />
+<meta content="build_local.py" name="keywords" />
 <meta content="python" name="keywords" />
 <meta content="c++" name="keywords" />
 <meta content="import" name="keywords" />
 <meta content="install" name="keywords" />
-<meta content="python, path" name="keywords" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -202,9 +202,10 @@
 </li>
 <li><p><a class="reference internal" href="#setup-py-configure"><span class="std std-ref">Configure</span></a></p></li>
 <li><p><a class="reference internal" href="#setup-py-get-cppad"><span class="std std-ref">Get cppad</span></a></p></li>
+<li><p><a class="reference internal" href="#setup-py-python-path"><span class="std std-ref">Python Path</span></a></p></li>
 <li><dl class="simple">
 <dt><a class="reference internal" href="#setup-py-test"><span class="std std-ref">Test</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#setup-py-test-build-cppad-py"><span class="std std-ref">Build cppad_py</span></a></p></li>
+<li><p><a class="reference internal" href="#setup-py-test-build-local-py"><span class="std std-ref">build_local.py</span></a></p></li>
 <li><p><a class="reference internal" href="#setup-py-test-python"><span class="std std-ref">python</span></a></p></li>
 <li><p><a class="reference internal" href="#setup-py-test-c"><span class="std std-ref">c++</span></a></p></li>
 <li><p><a class="reference internal" href="#setup-py-test-import"><span class="std std-ref">import</span></a></p></li>
@@ -213,25 +214,23 @@
 </dl>
 </li>
 <li><p><a class="reference internal" href="#setup-py-install"><span class="std std-ref">Install</span></a></p></li>
-<li><p><a class="reference internal" href="#setup-py-python-path"><span class="std std-ref">Python Path</span></a></p></li>
 </ul>
 <div class="section" id="syntax">
 <span id="setup-py-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build_ext</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">setup.py</span> <span class="pre">install</span> <span class="pre">--prefix=</span></code> <em>prefix</em></div>
 </div>
 </div>
 <div class="section" id="external-requirements">
 <span id="setup-py-external-requirements"></span><span id="index-2"></span><h3>External Requirements<a class="headerlink" href="#external-requirements" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="https://www.python.org/">python</a> version 3.</p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">bash</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/C++">c++</a>.</p></li>
+<li><p><a class="reference external" href="https://www.python.org/">python</a> version 3</p></li>
+<li><p><a class="reference external" href="https://numpy.org/">numpy</a></p></li>
 <li><p><a class="reference external" href="https://cmake.org">cmake</a></p></li>
-<li><p><a class="reference external" href="https://git-scm.com/">git</a>.</p></li>
-<li><p><a class="reference external" href="http://www.swig.org/">swig</a>:
-<a class="reference external" href="https://github.com/bradbell/cppad_py/issues/3">issue 3</a>.</p></li>
-<li><p><a class="reference external" href="http://www.numpy.org/">numpy</a>.</p></li>
+<li><p><a class="reference external" href="http://www.swig.org/">swig</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/C++">c++</a></p></li>
+<li><p><a class="reference external" href="https://git-scm.com/">git</a></p></li>
 </ol>
 </div>
 <div class="section" id="install-using-pip">
@@ -279,27 +278,35 @@ If you want to use the <a class="reference internal" href="mixed.html#id1"><span
 and use <code class="docutils literal notranslate"><span class="pre">bin/get_cppad_mixed.sh</span></code> to install cppad and other
 non-standard requirements.</p>
 </div>
+<div class="section" id="python-path">
+<span id="setup-py-python-path"></span><span id="index-9"></span><h3>Python Path<a class="headerlink" href="#python-path" title="Permalink to this headline">¶</a></h3>
+<p>Make sure the following directory is in your <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>:</p>
+<div class="line-block">
+<div class="line">        <em>prefix</em> <code class="docutils literal notranslate"><span class="pre">/</span></code> <em>lib</em> <code class="docutils literal notranslate"><span class="pre">/python</span></code> <em>major</em> . <em>minor</em> <code class="docutils literal notranslate"><span class="pre">/site_packages</span></code></div>
+</div>
+<p>Once it is, you should be able to execute the following commands:</p>
+</div>
 <div class="section" id="test">
-<span id="setup-py-test"></span><span id="index-9"></span><h3>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h3>
+<span id="setup-py-test"></span><span id="index-10"></span><h3>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h3>
 <p>These steps are optional if you already know that cppad_py
 works on your system.</p>
-<div class="section" id="build-cppad-py">
-<span id="setup-py-test-build-cppad-py"></span><span id="index-10"></span><h4>Build cppad_py<a class="headerlink" href="#build-cppad-py" title="Permalink to this headline">¶</a></h4>
-<p>Build the Python cppad_py module using the command:</p>
+<div class="section" id="build-local-py">
+<span id="setup-py-test-build-local-py"></span><span id="index-11"></span><h4>build_local.py<a class="headerlink" href="#build-local-py" title="Permalink to this headline">¶</a></h4>
+<p>Build a local copy of the Python cppad_py module using the command:</p>
 <div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build_ext</span></code></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">bin/build_local.py</span></code></div>
 </div>
 </div>
 <div class="section" id="setup-py-test-python">
-<span id="index-11"></span><span id="id2"></span><h4>python<a class="headerlink" href="#setup-py-test-python" title="Permalink to this headline">¶</a></h4>
+<span id="index-12"></span><span id="id2"></span><h4>python<a class="headerlink" href="#setup-py-test-python" title="Permalink to this headline">¶</a></h4>
 <p>The next step is to test the cppad_py on your system by executing
 the following commands starting in <em>top_srcdir</em> :</p>
 <div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">example/python/check_all.py</span></code></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">example/python/check_all.py</span></code></div>
 </div>
 </div>
 <div class="section" id="setup-py-test-c">
-<span id="index-12"></span><span id="id3"></span><h4>c++<a class="headerlink" href="#setup-py-test-c" title="Permalink to this headline">¶</a></h4>
+<span id="index-13"></span><span id="id3"></span><h4>c++<a class="headerlink" href="#setup-py-test-c" title="Permalink to this headline">¶</a></h4>
 <p>After <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> has run,
 you can also test the cppad_py c++ interface
 <a class="reference internal" href="cpp_lib.html#id1"><span class="std std-ref">cpp_lib</span></a> on your system by executing the following commands
@@ -310,11 +317,11 @@ starting in <em>top_srcdir</em> :</p>
 </div>
 </div>
 <div class="section" id="import">
-<span id="setup-py-test-import"></span><span id="index-13"></span><h4>import<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h4>
+<span id="setup-py-test-import"></span><span id="index-14"></span><h4>import<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h4>
 <p>If you are in the <em>top_srcdir</em> directory,
 you should be able to import cppad_py using the following commands:</p>
 <div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">python</span></code></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">python3</span></code></div>
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">cppad_py</span></code></div>
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">quit</span></code> ()</div>
 </div>
@@ -322,29 +329,20 @@ you should be able to import cppad_py using the following commands:</p>
 </div>
 </div>
 <div class="section" id="install">
-<span id="setup-py-install"></span><span id="index-14"></span><h3>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
+<span id="setup-py-install"></span><span id="index-15"></span><h3>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
 <p>Use the following command to build and install cppad_py:</p>
 <div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span> <span class="pre">--prefix</span></code> = <em>prefix</em></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">setup.py</span> <span class="pre">install</span> <span class="pre">--prefix</span></code> = <em>prefix</em></div>
 </div>
 <p>This will install <code class="docutils literal notranslate"><span class="pre">cppad_py</span></code> in the directory</p>
 <div class="line-block">
-<div class="line">        <em>prefix</em> <code class="docutils literal notranslate"><span class="pre">/</span></code> <em>lib</em> <code class="docutils literal notranslate"><span class="pre">/python</span></code> <em>major</em> . <em>minor</em> <code class="docutils literal notranslate"><span class="pre">/site_packages/cppad_py</span></code></div>
+<div class="line">        <em>prefix</em> <code class="docutils literal notranslate"><span class="pre">/</span></code> <em>libdir</em> <code class="docutils literal notranslate"><span class="pre">/python</span></code> <em>major</em> . <em>minor</em> <code class="docutils literal notranslate"><span class="pre">/site_packages/cppad_py</span></code></div>
 </div>
-<p>where <em>lib</em> is <code class="docutils literal notranslate"><span class="pre">lib</span></code> or <code class="docutils literal notranslate"><span class="pre">lib64</span></code> ,
+<p>where <em>libdir</em> is :ref:<code class="docutils literal notranslate"><span class="pre">cppad_libdir&lt;get_cppad_sh.settings.cppad_libdir&gt;</span></code> ,
 <em>major</em> ( <em>minor</em> ) is the major (minor)
 version of <em>python</em> .</p>
-</div>
-<div class="section" id="python-path">
-<span id="setup-py-python-path"></span><span id="index-15"></span><h3>Python Path<a class="headerlink" href="#python-path" title="Permalink to this headline">¶</a></h3>
-<p>Check that the directory</p>
 <div class="line-block">
-<div class="line">        <em>prefix</em> <code class="docutils literal notranslate"><span class="pre">/</span></code> <em>lib</em> <code class="docutils literal notranslate"><span class="pre">/python</span></code> <em>major</em> . <em>minor</em> <code class="docutils literal notranslate"><span class="pre">/site_packages</span></code></div>
-</div>
-<p>is in your python path.
-Once it is, you should be able to execute the following commands:</p>
-<div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">python</span></code></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">python3</span></code></div>
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sys</span></code></div>
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">print(sys.path</span></code> )</div>
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">quit</span></code> ()</div>

@@ -16,10 +16,11 @@ Get Cppad
 - :ref:`get_cppad_sh.syntax`
 - :ref:`get_cppad_sh.top_source_directory`
 - :ref:`get_cppad_sh.settings`
-    - :ref:`get_cppad_sh.settings.cppad_prefix`
+    - :ref:`get_cppad_sh.settings.cmake_install_prefix`
+    - :ref:`get_cppad_sh.settings.cppad_libdir`
     - :ref:`get_cppad_sh.settings.extra_cxx_flags`
     - :ref:`get_cppad_sh.settings.build_type`
-        - :ref:`get_cppad_sh.settings.build_type.cppad_prefix`
+        - :ref:`get_cppad_sh.settings.build_type.cmake_install_prefix`
         - :ref:`get_cppad_sh.settings.build_type.build`
     - :ref:`get_cppad_sh.settings.include_mixed`
     - :ref:`get_cppad_sh.settings.test_cppad`
@@ -60,25 +61,39 @@ Settings
 If you change any of these settings, you must re-run ``get_cppad.sh`` .
 
 .. meta::
-   :keywords: cppad_prefix
+   :keywords: cmake_install_prefix
 
-.. index:: cppad_prefix
+.. index:: cmake_install_prefix
 
-.. _get_cppad_sh.settings.cppad_prefix:
+.. _get_cppad_sh.settings.cmake_install_prefix:
 
-cppad_prefix
-============
-This prefix is used to install CppAD may be a local director; e.g.,
-``build/prefix`` or an absolute path; e.g., ``/usr/local`` ,
-it may include the shell variable ``$HOME`` but no other variables:
+cmake_install_prefix
+====================
+This prefix is used to install cppad_py. It may be a local directory; e.g.,
+``build/prefix`` or an absolute path; e.g., ``/usr/local``.
+It may include the shell variable ``$HOME`` but no other variables:
 
 .. code-block:: sh
 
-    cppad_prefix="$HOME/prefix/cppad"
+    cmake_install_prefix="$HOME/prefix/cppad"
 
 If this prefix does no start with ``/``, it is relative to the
 :ref:`top_source_directory<setup_py.download.top_source_directory>`.
 Note that ``$HOME`` starts with ``/``.
+
+.. meta::
+   :keywords: cppad_libdir
+
+.. index:: cppad_libdir
+
+.. _get_cppad_sh.settings.cppad_libdir:
+
+cppad_libdir
+============
+The sub-directory of cmake_install_prefix where libraries are installed.
+(xsrst_code sh)
+cppad_libdir='lib64'
+(xsrst_code)
 
 .. meta::
    :keywords: extra_cxx_flags
@@ -115,17 +130,17 @@ version runs faster.
     build_type='release'
 
 .. meta::
-   :keywords: cppad_prefix
+   :keywords: cmake_install_prefix
 
-.. index:: cppad_prefix
+.. index:: cmake_install_prefix
 
-.. _get_cppad_sh.settings.build_type.cppad_prefix:
+.. _get_cppad_sh.settings.build_type.cmake_install_prefix:
 
-cppad_prefix
-------------
+cmake_install_prefix
+--------------------
 The actual prefix used for the install is
-*cppad_prefix* ``.`` *build_type*
-and a soft link is created from *cppad_prefix* to this directory.
+*cmake_install_prefix* ``.`` *build_type*
+and a soft link is created from *cmake_install_prefix* to this directory.
 
 .. meta::
    :keywords: build

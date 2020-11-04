@@ -21,13 +21,13 @@ Configure and Build the cppad_py Python Module
     - :ref:`setup_py.download.top_source_directory`
 - :ref:`setup_py.configure`
 - :ref:`setup_py.get_cppad`
+- :ref:`setup_py.python_path`
 - :ref:`setup_py.test`
-    - :ref:`setup_py.test.build_cppad_py`
+    - :ref:`setup_py.test.build_local.py`
     - :ref:`setup_py.test.python`
     - :ref:`setup_py.test.c++`
     - :ref:`setup_py.test.import`
 - :ref:`setup_py.install`
-- :ref:`setup_py.python_path`
 
 .. meta::
    :keywords: syntax
@@ -39,7 +39,7 @@ Configure and Build the cppad_py Python Module
 Syntax
 ******
 
-| ``python setup.py build_ext``
+| ``python3 setup.py install --prefix=`` *prefix*
 
 .. meta::
    :keywords: external, requirements
@@ -51,14 +51,13 @@ Syntax
 External Requirements
 *********************
 
-#. `python <https://www.python.org/>`_ version 3.
 #. `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_
-#. `c++ <https://en.wikipedia.org/wiki/C++>`_.
+#. `python <https://www.python.org/>`_ version 3
+#. `numpy <https://numpy.org/>`_
 #. `cmake <https://cmake.org>`_
-#. `git <https://git-scm.com/>`_.
-#. `swig <http://www.swig.org/>`_:
-   `issue 3 <https://github.com/bradbell/cppad_py/issues/3>`_.
-#. `numpy <http://www.numpy.org/>`_.
+#. `swig <http://www.swig.org/>`_
+#. `c++ <https://en.wikipedia.org/wiki/C++>`_
+#. `git <https://git-scm.com/>`_
 
 .. meta::
    :keywords: install, using, pip
@@ -151,6 +150,21 @@ and use ``bin/get_cppad_mixed.sh`` to install cppad and other
 non-standard requirements.
 
 .. meta::
+   :keywords: python, path
+
+.. index:: python, path
+
+.. _setup_py.python_path:
+
+Python Path
+***********
+Make sure the following directory is in your ``PYTHONPATH``:
+
+| |tab| *prefix* ``/`` *lib* ``/python`` *major* . *minor* ``/site_packages``
+
+Once it is, you should be able to execute the following commands:
+
+.. meta::
    :keywords: test
 
 .. index:: test
@@ -163,17 +177,17 @@ These steps are optional if you already know that cppad_py
 works on your system.
 
 .. meta::
-   :keywords: build, cppad_py
+   :keywords: build_local.py
 
-.. index:: build, cppad_py
+.. index:: build_local.py
 
-.. _setup_py.test.build_cppad_py:
+.. _setup_py.test.build_local.py:
 
-Build cppad_py
+build_local.py
 ==============
-Build the Python cppad_py module using the command:
+Build a local copy of the Python cppad_py module using the command:
 
-| |tab| ``python setup.py build_ext``
+| |tab| ``bin/build_local.py``
 
 .. meta::
    :keywords: python
@@ -187,7 +201,7 @@ python
 The next step is to test the cppad_py on your system by executing
 the following commands starting in *top_srcdir* :
 
-| |tab| ``python example/python/check_all.py``
+| |tab| ``python3 example/python/check_all.py``
 
 .. meta::
    :keywords: c++
@@ -218,7 +232,7 @@ import
 If you are in the *top_srcdir* directory,
 you should be able to import cppad_py using the following commands:
 
-| |tab| ``python``
+| |tab| ``python3``
 | |tab| ``import cppad_py``
 | |tab| ``quit`` ()
 
@@ -235,33 +249,17 @@ Install
 *******
 Use the following command to build and install cppad_py:
 
-| |tab| ``python setup.py install --prefix`` = *prefix*
+| |tab| ``python3 setup.py install --prefix`` = *prefix*
 
 This will install ``cppad_py`` in the directory
 
-| |tab| *prefix* ``/`` *lib* ``/python`` *major* . *minor* ``/site_packages/cppad_py``
+| |tab| *prefix* ``/`` *libdir* ``/python`` *major* . *minor* ``/site_packages/cppad_py``
 
-where *lib* is ``lib`` or ``lib64`` ,
+where *libdir* is :ref:``cppad_libdir<get_cppad_sh.settings.cppad_libdir>`` ,
 *major* ( *minor* ) is the major (minor)
 version of *python* .
 
-.. meta::
-   :keywords: python, path
-
-.. index:: python, path
-
-.. _setup_py.python_path:
-
-Python Path
-***********
-Check that the directory
-
-| |tab| *prefix* ``/`` *lib* ``/python`` *major* . *minor* ``/site_packages``
-
-is in your python path.
-Once it is, you should be able to execute the following commands:
-
-| |tab| ``python``
+| |tab| ``python3``
 | |tab| ``import sys``
 | |tab| ``print(sys.path`` )
 | |tab| ``quit`` ()
