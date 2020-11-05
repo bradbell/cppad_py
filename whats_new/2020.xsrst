@@ -46,6 +46,11 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+11-05
+*****
+Advance to cppad_mixed-20201105.
+This fixes some problems with it's install in Mac OS.
+
 11-04
 *****
 The install prefix for cppad in ``bin/get_cppad.sh``
