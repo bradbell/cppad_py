@@ -121,9 +121,9 @@ if [ -d 'cppad_py' ]
 then
     echo_eval_log rm -r cppad_py
 fi
-if [ -d "$HOME/prefix/cppad_py" ]
+if [ -d "$HOME/prefix/cppad_py.$build_type" ]
 then
-    echo_eval_log rm -r "$HOME/prefix/cppad_py"
+    echo_eval_log rm -r "$HOME/prefix/cppad_py.$build_type"
 fi
 if echo 'import cppad_py' | python >& /dev/null
 then

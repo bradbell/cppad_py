@@ -53,13 +53,13 @@ cmake_install_prefix="$HOME/prefix/cppad"
 # cppad_libdir
 # ============
 # The sub-directory of cmake_install_prefix where libraries are installed.
-# (xsrst_code sh)
+# {xsrst_code sh}
 cppad_libdir='lib64'
-# (xsrst_code)
+# {xsrst_code}
 #
 # extra_cxx_flags
 # ===============
-# Extra compiler false used when compiling c++ code not including the
+# Extra compiler flags used when compiling c++ code not including the
 # debugging and optimization flags.
 # The ones below are example flags are used by g++:
 # {xsrst_code sh}
