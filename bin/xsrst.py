@@ -2079,7 +2079,7 @@ if not os.path.isdir('.git') :
 #
 # check number of command line arguments
 if len(sys.argv) != 5 and len(sys.argv) != 6 :
-    usage  = 'bin/xsrst.py root_file sphinx_dir spelling keyword'
+    usage  = 'bin/xsrst.py target root_file sphinx_dir spelling keyword'
     usage += ' [line_increment]'
     sys_exit(usage)
 #
