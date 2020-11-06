@@ -48,9 +48,12 @@ Previous Years
 
 11-06
 *****
-The install with
-:ref:`include_mixed<get_cpapd_sh.settings.include_mixed>` false was broken
-by the changes on 11-03. This has been fixed.
+#.  The install with
+    :ref:`include_mixed<get_cppad_sh.settings.include_mixed>` false was broken
+    by the changes on 11-03. This has been fixed.
+
+#.  The installation and testing instructions in :ref:`setup.py<setup_py>`
+    were brought up to date and improved.
 
 11-05
 *****

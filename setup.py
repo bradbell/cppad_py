@@ -316,6 +316,7 @@ sys.exit(0)
 #   pypi
 #   libdir
 #   pkgconfig
+#   matplotlib
 # }
 #
 # Configure and Build the cppad_py Python Module
@@ -336,18 +337,6 @@ sys.exit(0)
 # #. `swig <http://www.swig.org/>`_
 # #. `c++ <https://en.wikipedia.org/wiki/C++>`_
 # #. `git <https://git-scm.com/>`_
-#
-# Install Using Pip
-# *****************
-# There is an old version of cppad_py available using ``pip`` .
-# To install for you entire system use:
-#
-# | |tab| ``pip install -i https://test.pypi.org/simple/ cppad_py``
-#
-# {xsrst_children
-#   install_error.xsrst
-#   bin/get_cppad.sh
-# }
 #
 # Install Errors
 # **************
@@ -404,10 +393,29 @@ sys.exit(0)
 #
 # | |tab| *prefix/lib/* ``python`` *major* . *minor* ``/site-packages``
 #
+# Install
+# *******
+# Use the following command to build and install cppad_py:
+#
+# | |tab| ``python3 setup.py install --prefix`` = *prefix*
+#
+# This will install ``cppad_py`` in the directory
+#
+# | |tab| *prefix/lib/* ``python`` *major.minor* ``/site-packages/cppad_py``
+#
+# where *lib* is :ref:`cppad_libdir<get_cppad_sh.settings.cppad_libdir>` ,
+# *major* ( *minor* ) is the major (minor)
+# version of *python* .
+#
 # Test
 # ****
-# These steps are optional if you already know that cppad_py
-# works on your system.
+# These steps are optional and used to test that cppad_py
+# works on your system before installing it.
+# They do not yet work on mac OS.
+# The following packages are additional requirements to execute these steps:
+# `scipy <https://scipy.org/>`_
+# `matplotlib <https://matplotlib.org/>`_.
+#
 #
 # build_local.py
 # ==============
@@ -443,19 +451,19 @@ sys.exit(0)
 #
 # We need to install cppad_py so you can import it from any directory.
 #
-# Install
-# *******
-# Use the following command to build and install cppad_py:
+# Install Using Pip
+# *****************
+# There is an old version of cppad_py available using ``pip`` .
+# To install for you entire system use:
 #
-# | |tab| ``python3 setup.py install --prefix`` = *prefix*
+# | |tab| ``pip install -i https://test.pypi.org/simple/ cppad_py``
 #
-# This will install ``cppad_py`` in the directory
-#
-# | |tab| *prefix/lib/* ``python`` *major.minor* ``/site-packages/cppad_py``
-#
-# where *lib* is :ref:`cppad_libdir<get_cppad_sh.settings.cppad_libdir>` ,
-# *major* ( *minor* ) is the major (minor)
-# version of *python* .
+# Children
+# ********
+# {xsrst_child_list
+#   install_error.xsrst
+#   bin/get_cppad.sh
+# }
 #
 # {xsrst_end setup_py}
 # -----------------------------------------------------------------------------
