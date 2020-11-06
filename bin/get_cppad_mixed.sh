@@ -70,10 +70,6 @@ eval $cmd
 cmd=`grep '^cmake_install_prefix=' bin/get_cppad.sh`
 eval $cmd
 #
-# cppad_libdir
-cmd=`grep '^cppad_libdir=' bin/get_cppad.sh`
-eval $cmd
-#
 # include_mixed
 cmd=`grep '^include_mixed=' bin/get_cppad.sh`
 eval $cmd
@@ -87,6 +83,8 @@ then
     echo "$name: include_mixed is not true or false in bin/get_cppad.sh."
     exit 1
 fi
+# ---------------------------------------------------------------------------
+libdir=$(bin/libdir.py)
 # ---------------------------------------------------------------------------
 echo_eval bin/build_type.sh
 # ---------------------------------------------------------------------------
@@ -127,7 +125,7 @@ sed \
     -e "s|^build_type=.*|build_type='$build_type'|" \
     -e "s|^cmake_install_prefix=.*|cmake_install_prefix='$cmake_install_prefix'|" \
     -e "s|^extra_cxx_flags=.*|extra_cxx_flags='$extra_cxx_flags'|" \
-    -e "s|^cmake_libdir=.*|cmake_libdir='$cppad_libdir'|" \
+    -e "s|^cmake_libdir=.*|cmake_libdir='$libdir'|" \
     -e "s|^ldlt_cholmod=.*|ldlt_cholmod='yes'|" \
     -e "s|^optimize_cppad_function=.*|optimize_cppad_function='$optimize'|" \
     -e "s|^for_hes_sparsity=.*|for_hes_sparsity='yes'|" \

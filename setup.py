@@ -79,12 +79,8 @@ if not match :
     sys_exit('cannot find cmake_install_prefix in bin/get_cppad.sh')
 cmake_install_prefix = match.group(1)
 #
-# cmake_install_prefix
-pattern = '''\ncppad_libdir=['"]([^'"]*)['"]'''
-match   = re.search(pattern, string)
-if not match :
-    sys_exit('cannot find cppad_libdir in bin/get_cppad.sh')
-cppad_libdir = match.group(1)
+# cppad_libdir
+cppad_libdir = sys_command( [ 'bin/libdir.py' ] )
 #
 # build_type
 pattern = r"\nbuild_type='([^']*)'"
@@ -273,11 +269,10 @@ if install_distribution :
 # -----------------------------------------------------------------------------
 msg  = 'If you get a message that an object library is missing, try:\n\t'
 msg += 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:'
-msg += cmake_install_prefix + '/<libdir>\n'
-msg += 'where <libdir> is "lib" or "lib64" or both.\n'
-msg += 'If you have a Mac system, the following may fix this problem:\n\t'
+msg += cmake_install_prefix + '/' + cppad_libdir
+msg += '\nIf you have a Mac system, the following may fix this problem:\n\t'
 msg += 'export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:'
-msg += cmake_install_prefix + '/<libdir>\n'
+msg += cmake_install_prefix + '/' + cppad_libdir + '\n'
 print(msg)
 print('setup.py: OK')
 sys.exit(0)

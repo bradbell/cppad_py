@@ -11,6 +11,7 @@ import os
 import sys
 import subprocess
 import shutil
+import sysconfig
 # -----------------------------------------------------------------------------
 def sys_exit(msg) :
     sys.exit( 'build_local.py: ' + msg )
@@ -35,11 +36,11 @@ fp      = open('bin/get_cppad.sh', 'r')
 string  = fp.read()
 #
 # cppad_libdir
-pattern = r"\ncppad_libdir='([^']*)'"
-match   = re.search(pattern, string)
-if not match :
-    sys_exit('cannot find cppad_libdir in bin/get_cppad.sh')
-cppad_libdir = match.group(1)
+stdlib = sysconfig.get_paths()['stdlib']
+stdlib = stdlib.split('/')
+assert 2 <= len( stdlib )
+assert stdlib[-1].startswith( 'python' )
+cppad_libdir = stdlib[-2]
 #
 # extra_cxx_flags
 pattern = r"\nextra_cxx_flags='([^']*)'"

@@ -29,7 +29,7 @@ then
 fi
 #
 # cppad_libdir
-eval $(grep '^cppad_libdir *=' bin/get_cppad.sh)
+cppad_libdir=$(bin/libdir.py)
 #
 echo "build_type=$build_type"
 echo "cmake_install_prefix=$cmake_install_prefix"
@@ -90,7 +90,7 @@ fi
 # install new version
 echo_eval python3 setup.py install --prefix=$cmake_install_prefix
 # ---------------------------------------------------------------------------
-echo_eval python3 check_install.py
+echo_eval python3 example/python/check_all.py
 rm check_install.py
 # ---------------------------------------------------------------------------
 cppad_path="$cmake_install_prefix/bin"
