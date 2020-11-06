@@ -107,7 +107,43 @@ MACRO(add_to_list variable_list constant_value )
         SET( ${variable_list} ${${variable_list}} ${constant_value} )
     ENDIF( "${${variable_list}}" STREQUAL "" )
 ENDMACRO(add_to_list)
+# =============================================================================
+# Comamnd Line Arguments
+# =============================================================================
+# cmake_install_prefix
+IF ( cmake_install_prefix )
+    IF( cmake_install_prefix MATCHES "^[^/].*" )
+        SET(cmake_install_prefix "${CMAKE_SOURCE_DIR}/${cmake_install_prefix}")
+    ENDIF( cmake_install_prefix MATCHES "^[^/].*" )
+ENDIF ( cmake_install_prefix )
+cmake_argument(cmake_install_prefix NOTFOUND PATH "prefix used to install Cppad" )
+IF( NOT cmake_install_prefix )
+    MESSAGE(FATAL_ERROR "cmake_install_prefix is not defined by cmake command line")
+ENDIF( NOT cmake_install_prefix )
 # -----------------------------------------------------------------------------
+# cppad_libdir
+cmake_argument(cppad_libdir NOTFOUND PATH
+    "added to cmake_install_prefix for library installs"
+ )
+IF( NOT cppad_libdir )
+    MESSAGE(FATAL_ERROR "cppad_libdir is not defined by cmake command line")
+ENDIF( NOT cppad_libdir )
+# -----------------------------------------------------------------------------
+# extra_cxx_flags
+cmake_argument(extra_cxx_flags "" STRING
+    "Flags, added to CMAKE_CXX_FLAGS, used when compiling cppad_py code."
+)
+# -----------------------------------------------------------------------------
+# include_mixed
+cmake_argument(
+    include_mixed FALSE BOOL "include the python cppad_mixed interface"
+)
+IF( include_mixed )
+    SET(extra_cxx_flags "${extra_cxx_flags} -D INCLUDE_MIXED" )
+ENDIF( include_mixed )
+# =============================================================================
+# Find Installed Packages Information
+# =============================================================================
 # make sure we have Swig available
 FIND_PACKAGE(SWIG)
 IF( SWIG_FOUND )
@@ -135,46 +171,33 @@ ENDIF ( Python_Development_FOUND )
 # -----------------------------------------------------------------------------
 # set pkg-config information about cppad_mixed
 FIND_PACKAGE(PkgConfig)
-pkg_check_modules( cppad_mixed QUIET cppad_mixed )
-IF( cppad_mixed_FOUND )
-    MESSAGE(STATUS "Found cppad_mixed.pc file")
-ELSE( cppad_mixed_FOUND )
-    MESSAGE(STATUS "Cannot find cppad_mixed.pc file")
-    MESSAGE(FATAL_ERROR  "PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH}")
-ENDIF( cppad_mixed_FOUND )
-#
-INCLUDE_DIRECTORIES( ${cppad_mixed_INCLUDE_DIRS} )
-LINK_DIRECTORIES( ${cppad_mixed_LIBRARY_DIRS} )
+IF( include_mixed )
+    pkg_check_modules( cppad_mixed QUIET cppad_mixed )
+    IF( cppad_mixed_FOUND )
+        MESSAGE(STATUS "Found cppad_mixed.pc file")
+    ELSE( cppad_mixed_FOUND )
+        MESSAGE(STATUS "Cannot find cppad_mixed.pc file")
+        MESSAGE(FATAL_ERROR  "PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH}")
+    ENDIF( cppad_mixed_FOUND )
+    INCLUDE_DIRECTORIES( ${cppad_mixed_INCLUDE_DIRS} )
+    LINK_DIRECTORIES( ${cppad_mixed_LIBRARY_DIRS} )
+ELSE( include_mixed )
+    pkg_check_modules( cppad QUIET cppad )
+    IF( cppad_FOUND )
+        MESSAGE(STATUS "Found cppad.pc file")
+    ELSE( cppad_FOUND )
+        MESSAGE(STATUS "Cannot find cppad.pc file")
+        MESSAGE(FATAL_ERROR  "PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH}")
+    ENDIF( cppad_FOUND )
+    INCLUDE_DIRECTORIES( ${cppad_INCLUDE_DIRS} )
+    LINK_DIRECTORIES( ${cppad_LIBRARY_DIRS} )
+ENDIF( include_mixed )
 # -----------------------------------------------------------------------------
 # print important system variables
 print_variable(CMAKE_BINARY_DIR)
 print_variable(CMAKE_VERBOSE_MAKEFILE)
 print_variable(CMAKE_CXX_FLAGS)
 print_variable(CMAKE_BUILD_TYPE)
-# -----------------------------------------------------------------------------
-# cmake_install_prefix
-IF ( cmake_install_prefix )
-    IF( cmake_install_prefix MATCHES "^[^/].*" )
-        SET(cmake_install_prefix "${CMAKE_SOURCE_DIR}/${cmake_install_prefix}")
-    ENDIF( cmake_install_prefix MATCHES "^[^/].*" )
-ENDIF ( cmake_install_prefix )
-cmake_argument(cmake_install_prefix NOTFOUND PATH "prefix used to install Cppad" )
-IF( NOT cmake_install_prefix )
-    MESSAGE(FATAL_ERROR "cmake_install_prefix is not defined by cmake command line")
-ENDIF( NOT cmake_install_prefix )
-# -----------------------------------------------------------------------------
-# cppad_libdir
-cmake_argument(cppad_libdir NOTFOUND PATH
-    "added to cmake_install_prefix for library installs"
- )
-IF( NOT cppad_libdir )
-    MESSAGE(FATAL_ERROR "cppad_libdir is not defined by cmake command line")
-ENDIF( NOT cppad_libdir )
-# -----------------------------------------------------------------------------
-# extra_cxx_flags
-cmake_argument(extra_cxx_flags "" STRING
-    "Flags, added to CMAKE_CXX_FLAGS, used when compiling cppad_py code."
-)
 # -----------------------------------------------------------------------------
 # directory for including <cppad/py/cppad_py.hpp>
 INCLUDE_DIRECTORIES( "${CMAKE_SOURCE_DIR}/include" )
@@ -191,14 +214,6 @@ ELSE( cxx_has_stdlib )
     SET(cxx_has_stdlib "false")
 ENDIF( cxx_has_stdlib )
 print_variable(cxx_has_stdlib)
-# -----------------------------------------------------------------------------
-# include_mixed
-cmake_argument(
-    include_mixed FALSE BOOL "include the python cppad_mixed interface"
-)
-IF( include_mixed )
-    SET(extra_cxx_flags "${extra_cxx_flags} -D INCLUDE_MIXED" )
-ENDIF( include_mixed )
 # -----------------------------------------------------------------------------
 # Initialize list of tests as empty (added to by sub-directories below)
 SET(check_depends "")
