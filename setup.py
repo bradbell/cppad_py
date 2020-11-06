@@ -17,7 +17,7 @@ from setuptools import setup, Extension
 def sys_exit(msg) :
     sys.exit( 'setup.py: ' + msg )
 #
-def sys_command(command_list, cmakelists_txt=None) :
+def sys_command(command_list) :
     command_str = " ".join(command_list)
     try :
         print(command_str)
@@ -25,11 +25,6 @@ def sys_command(command_list, cmakelists_txt=None) :
             command_list, stderr=subprocess.STDOUT
         )
     except subprocess.CalledProcessError as process_error:
-        if not (cmakelists_txt is None) :
-            # used during cmake command which is run in build directory
-            fp = open('../CMakeLists.txt', 'w')
-            fp.write(cmakelists_txt)
-            fp.close()
         output = str(process_error.output, 'utf-8')
         print(output)
         sys_exit(command_list[0] + ': Error')
@@ -109,6 +104,9 @@ include_mixed = match.group(1)
 if include_mixed != 'true' and include_mixed != 'false' :
     sys_exit('include_mixed is not true or false in bin/get_cppad.sh')
 # -----------------------------------------------------------------------------
+# Set prefix soft link for this build_type
+sys_command( [ 'bin/build_type.sh' ] )
+# -----------------------------------------------------------------------------
 # check for $HOME in cmake_install_prefix
 index = cmake_install_prefix.find('$HOME')
 if index >= 0 :
@@ -166,20 +164,7 @@ command_list += [ 'lib/cppad_py_swig.i' ]
 # run the command
 sys_command(command_list)
 # -----------------------------------------------------------------------------
-# Run cmake to get cxx_has_stdlib, cmake_cxx_compiler
-#
-# Do not needd cmake subdirectories for this purpose
-fp      = open('CMakeLists.txt', 'r')
-data_in = fp.read()
-fp.close()
-pattern  = r'\n(ADD_SUBDIRECTORY\([^(]*\))'
-data_out = re.sub(pattern, r'\n# \1', data_in)
-pattern  = r'FATAL_ERROR ("no correctnes checks are available")'
-data_out = re.sub(pattern, r'STATUS \1', data_out)
-#
-fp      = open('CMakeLists.txt', 'w')
-fp.write(data_out)
-fp.close()
+# Run cmake to get cxx_has_stdlib, cmake_cxx_compiler, and check_all.py
 #
 # remove cache file from a previous run
 os.chdir('build')
@@ -198,13 +183,8 @@ command_list = [
     ".."
 ]
 # pass data_in so CMakeLists.txt can be restored before exit if command fails
-sys_command(command_list, cmakelists_txt = data_in)
+sys_command(command_list)
 os.chdir('..')
-#
-# restore CMAkeLists.tst
-fp = open('CMakeLists.txt', 'w')
-fp.write(data_in)
-fp.close()
 #
 # cmake_cxx_compiler
 fp = open('build/cmake_cxx_compiler')
