@@ -315,6 +315,7 @@ sys.exit(0)
 #   cmake
 #   pypi
 #   libdir
+#   pkgconfig
 # }
 #
 # Configure and Build the cppad_py Python Module
@@ -382,13 +383,26 @@ sys.exit(0)
 # and use ``bin/get_cppad_mixed.sh`` to install cppad and other
 # non-standard requirements.
 #
-# Python Path
-# ***********
+# LD_LIBRARY_PATH
+# ***************
+# Make sure the following directory is in your ``LD_LIBRARY_PATH``
+# (in mac OS this path is called ``DYLD_LIBRARY_PATH``):
+#
+# | |tab| *prefix/lib*
+#
+# where *lib* is :ref:`cppad_libdir<get_cppad_sh.settings.cppad_libdir>`.
+#
+# PKG_CONFIG_PATH
+# ***************
+# Make sure the following directory is in your ``PKG_CONFIG_PATH``:
+#
+# | |tab| *prefix/lib/* ``pkgconfig``
+#
+# PYTHONPATH
+# **********
 # Make sure the following directory is in your ``PYTHONPATH``:
 #
-# | |tab| *prefix* ``/`` *lib* ``/python`` *major* . *minor* ``/site_packages``
-#
-# Once it is, you should be able to execute the following commands:
+# | |tab| *prefix/lib/* ``python`` *major* . *minor* ``/site-packages``
 #
 # Test
 # ****
@@ -437,16 +451,11 @@ sys.exit(0)
 #
 # This will install ``cppad_py`` in the directory
 #
-# | |tab| *prefix* ``/`` *libdir* ``/python`` *major* . *minor* ``/site_packages/cppad_py``
+# | |tab| *prefix/lib/* ``python`` *major.minor* ``/site-packages/cppad_py``
 #
-# where *libdir* is :ref:``cppad_libdir<get_cppad_sh.settings.cppad_libdir>`` ,
+# where *lib* is :ref:`cppad_libdir<get_cppad_sh.settings.cppad_libdir>` ,
 # *major* ( *minor* ) is the major (minor)
 # version of *python* .
-#
-# | |tab| ``python3``
-# | |tab| ``import sys``
-# | |tab| ``print(sys.path`` )
-# | |tab| ``quit`` ()
 #
 # {xsrst_end setup_py}
 # -----------------------------------------------------------------------------

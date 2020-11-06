@@ -93,7 +93,7 @@ then
     sed -i bin/get_cppad.sh -e "s|^include_mixed *=.*|include_mixed='true'|"
     include_mixed='true'
 fi
-echo_eval bin/build_type.sh
+echo_eval_log bin/build_type.sh
 # -----------------------------------------------------------------------------
 path=$(find -L "$cmake_install_prefix" -name 'libcppad_lib.*' | head -1 | \
     sed -e 's|/libcppad_lib[.].*||' )
@@ -138,11 +138,11 @@ then
 fi
 if ls build | grep '^lib\.' > /dev/null
 then
-    echo_eval rm -r "build/lib.*"
+    echo_eval_log rm -r "build/lib.*"
 fi
 if ls build | grep '^temp\.' > /dev/null
 then
-    echo_eval rm -r "build/temp.*"
+    echo_eval_log rm -r "build/temp.*"
 fi
 # -----------------------------------------------------------------------------
 echo_eval_log check_copyright.sh
