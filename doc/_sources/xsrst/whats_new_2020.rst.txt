@@ -14,6 +14,9 @@ whats_new_2020
 CppAD Py Changes During 2020
 ############################
 - :ref:`whats_new_2020.previous_years`
+- :ref:`whats_new_2020.11-06`
+- :ref:`whats_new_2020.11-05`
+- :ref:`whats_new_2020.11-04`
 - :ref:`whats_new_2020.11-03`
 - :ref:`whats_new_2020.10-31`
 - :ref:`whats_new_2020.10-30`
@@ -78,6 +81,34 @@ CppAD Py Changes During 2020
 Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
+
+.. _whats_new_2020.11-06:
+
+11-06
+*****
+#.  The install with
+    :ref:`include_mixed<get_cppad_sh.settings.include_mixed>` false was broken
+    by the changes on 11-03. This has been fixed.
+
+#.  The installation and testing instructions in :ref:`setup.py<setup_py>`
+    were brought up to date and improved.
+
+.. _whats_new_2020.11-05:
+
+11-05
+*****
+Advance to cppad_mixed-20201105.
+This fixes some problems with it's install in Mac OS.
+
+.. _whats_new_2020.11-04:
+
+11-04
+*****
+The install prefix for cppad in ``bin/get_cppad.sh``
+is called *cmake_install_prefix* in cppad_py,
+but it is called *cppad_prefix* in cppad.
+The cmake command in ``bin/get_cppad.sh`` has been
+fixed to account for this.
 
 .. _whats_new_2020.11-03:
 

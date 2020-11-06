@@ -15,19 +15,22 @@ Configure and Build the cppad_py Python Module
 ##############################################
 - :ref:`setup_py.syntax`
 - :ref:`setup_py.external_requirements`
-- :ref:`setup_py.install_using_pip`
 - :ref:`setup_py.install_errors`
 - :ref:`setup_py.download`
     - :ref:`setup_py.download.top_source_directory`
 - :ref:`setup_py.configure`
 - :ref:`setup_py.get_cppad`
-- :ref:`setup_py.python_path`
+- :ref:`setup_py.ld_library_path`
+- :ref:`setup_py.pkg_config_path`
+- :ref:`setup_py.pythonpath`
+- :ref:`setup_py.install`
 - :ref:`setup_py.test`
     - :ref:`setup_py.test.build_local.py`
     - :ref:`setup_py.test.python`
     - :ref:`setup_py.test.c++`
     - :ref:`setup_py.test.import`
-- :ref:`setup_py.install`
+- :ref:`setup_py.install_using_pip`
+- :ref:`setup_py.children`
 
 .. meta::
    :keywords: syntax
@@ -58,27 +61,6 @@ External Requirements
 #. `swig <http://www.swig.org/>`_
 #. `c++ <https://en.wikipedia.org/wiki/C++>`_
 #. `git <https://git-scm.com/>`_
-
-.. meta::
-   :keywords: install, using, pip
-
-.. index:: install, using, pip
-
-.. _setup_py.install_using_pip:
-
-Install Using Pip
-*****************
-There is an old version of cppad_py available using ``pip`` .
-To install for you entire system use:
-
-| |tab| ``pip install -i https://test.pypi.org/simple/ cppad_py``
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   install_error
-   get_cppad_sh
 
 .. meta::
    :keywords: install, errors
@@ -150,19 +132,67 @@ and use ``bin/get_cppad_mixed.sh`` to install cppad and other
 non-standard requirements.
 
 .. meta::
-   :keywords: python, path
+   :keywords: ld_library_path
 
-.. index:: python, path
+.. index:: ld_library_path
 
-.. _setup_py.python_path:
+.. _setup_py.ld_library_path:
 
-Python Path
-***********
+LD_LIBRARY_PATH
+***************
+Make sure the following directory is in your ``LD_LIBRARY_PATH``
+(in mac OS this path is called ``DYLD_LIBRARY_PATH``):
+
+| |tab| *prefix/lib*
+
+where *lib* is :ref:`cppad_libdir<get_cppad_sh.settings.cppad_libdir>`.
+
+.. meta::
+   :keywords: pkg_config_path
+
+.. index:: pkg_config_path
+
+.. _setup_py.pkg_config_path:
+
+PKG_CONFIG_PATH
+***************
+Make sure the following directory is in your ``PKG_CONFIG_PATH``:
+
+| |tab| *prefix/lib/* ``pkgconfig``
+
+.. meta::
+   :keywords: pythonpath
+
+.. index:: pythonpath
+
+.. _setup_py.pythonpath:
+
+PYTHONPATH
+**********
 Make sure the following directory is in your ``PYTHONPATH``:
 
-| |tab| *prefix* ``/`` *lib* ``/python`` *major* . *minor* ``/site_packages``
+| |tab| *prefix/lib/* ``python`` *major* . *minor* ``/site-packages``
 
-Once it is, you should be able to execute the following commands:
+.. meta::
+   :keywords: install
+
+.. index:: install
+
+.. _setup_py.install:
+
+Install
+*******
+Use the following command to build and install cppad_py:
+
+| |tab| ``python3 setup.py install --prefix`` = *prefix*
+
+This will install ``cppad_py`` in the directory
+
+| |tab| *prefix/lib/* ``python`` *major.minor* ``/site-packages/cppad_py``
+
+where *lib* is :ref:`cppad_libdir<get_cppad_sh.settings.cppad_libdir>` ,
+*major* ( *minor* ) is the major (minor)
+version of *python* .
 
 .. meta::
    :keywords: test
@@ -173,8 +203,12 @@ Once it is, you should be able to execute the following commands:
 
 Test
 ****
-These steps are optional if you already know that cppad_py
-works on your system.
+These steps are optional and used to test that cppad_py
+works on your system before installing it.
+They do not yet work on mac OS.
+The following packages are additional requirements to execute these steps:
+`scipy <https://scipy.org/>`_
+`matplotlib <https://matplotlib.org/>`_.
 
 .. meta::
    :keywords: build_local.py
@@ -239,30 +273,37 @@ you should be able to import cppad_py using the following commands:
 We need to install cppad_py so you can import it from any directory.
 
 .. meta::
-   :keywords: install
+   :keywords: install, using, pip
 
-.. index:: install
+.. index:: install, using, pip
 
-.. _setup_py.install:
+.. _setup_py.install_using_pip:
 
-Install
-*******
-Use the following command to build and install cppad_py:
+Install Using Pip
+*****************
+There is an old version of cppad_py available using ``pip`` .
+To install for you entire system use:
 
-| |tab| ``python3 setup.py install --prefix`` = *prefix*
+| |tab| ``pip install -i https://test.pypi.org/simple/ cppad_py``
 
-This will install ``cppad_py`` in the directory
+.. meta::
+   :keywords: children
 
-| |tab| *prefix* ``/`` *libdir* ``/python`` *major* . *minor* ``/site_packages/cppad_py``
+.. index:: children
 
-where *libdir* is :ref:``cppad_libdir<get_cppad_sh.settings.cppad_libdir>`` ,
-*major* ( *minor* ) is the major (minor)
-version of *python* .
+.. _setup_py.children:
 
-| |tab| ``python3``
-| |tab| ``import sys``
-| |tab| ``print(sys.path`` )
-| |tab| ``quit`` ()
+Children
+********
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   install_error
+   get_cppad_sh
+
+#. install_error: :ref:`install_error`
+#. get_cppad_sh: :ref:`get_cppad_sh`
 
 ----
 
