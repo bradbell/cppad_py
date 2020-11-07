@@ -378,19 +378,20 @@ sys.exit(0)
 # **********
 # Make sure the following directory is in your ``PYTHONPATH``:
 #
-# | |tab| *prefix/lib/* ``python`` *major* . *minor* ``/site-packages``
+# | |tab| *prefix/libdir/* ``python3.`` *minor* ``/site-packages``
+#
+# where *minor* is the minor version corresponding to ``python3``.
 #
 # Install
 # *******
 # Use the following command to build and install cppad_py:
 #
-# | |tab| ``python3 setup.py install --prefix`` = *prefix*
+# | |tab| ``python3 setup.py install --prefix=`` *prefix*
 #
 # This will install ``cppad_py`` in the directory
 #
-# | |tab| *prefix/libdir/* ``python`` *major.minor* ``/site-packages/cppad_py``
+# | |tab| *prefix/libdir/* ``python3.`` *minor* ``/site-packages/cppad_py``
 #
-# where *major* ( *minor* ) is the major (minor) version of *python* .
 # The following command can be used to test the installed version of
 # cppad_py:
 #
@@ -424,9 +425,10 @@ sys.exit(0)
 #
 # | |tab| ``python3 example/python/check_all.py``
 #
-# This test will use the local copy of ``cppad_py``, directory below
-# the *top_srcdir* directory, if it is available. You can test the
-# installed version by removing the *top_srcdir/* ``cppad_py`` directory.
+# This test will use the local copy of *top_srcdir/* ``cppad_py``
+# if it is available. You can test the installed version,
+# if it is available, by removing the directory *top_srcdir/* ``cppad_py``
+# and re-executing the command above.
 #
 # c++
 # ===
