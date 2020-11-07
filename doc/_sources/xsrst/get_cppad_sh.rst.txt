@@ -17,7 +17,6 @@ Get Cppad
 - :ref:`get_cppad_sh.top_source_directory`
 - :ref:`get_cppad_sh.settings`
     - :ref:`get_cppad_sh.settings.cmake_install_prefix`
-    - :ref:`get_cppad_sh.settings.cppad_libdir`
     - :ref:`get_cppad_sh.settings.extra_cxx_flags`
     - :ref:`get_cppad_sh.settings.build_type`
         - :ref:`get_cppad_sh.settings.build_type.cmake_install_prefix`
@@ -82,20 +81,6 @@ If this prefix does no start with ``/``, it is relative to the
 Note that ``$HOME`` starts with ``/``.
 
 .. meta::
-   :keywords: cppad_libdir
-
-.. index:: cppad_libdir
-
-.. _get_cppad_sh.settings.cppad_libdir:
-
-cppad_libdir
-============
-The sub-directory of cmake_install_prefix where libraries are installed.
-(xsrst_code sh)
-cppad_libdir='lib64'
-(xsrst_code)
-
-.. meta::
    :keywords: extra_cxx_flags
 
 .. index:: extra_cxx_flags
@@ -104,7 +89,7 @@ cppad_libdir='lib64'
 
 extra_cxx_flags
 ===============
-Extra compiler false used when compiling c++ code not including the
+Extra compiler flags used when compiling c++ code not including the
 debugging and optimization flags.
 The ones below are example flags are used by g++:
 

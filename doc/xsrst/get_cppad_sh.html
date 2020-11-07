@@ -9,7 +9,6 @@
 <meta content="top, source, directory" name="keywords" />
 <meta content="settings" name="keywords" />
 <meta content="cmake_install_prefix" name="keywords" />
-<meta content="cppad_libdir" name="keywords" />
 <meta content="extra_cxx_flags" name="keywords" />
 <meta content="build_type" name="keywords" />
 <meta content="cmake_install_prefix" name="keywords" />
@@ -193,7 +192,6 @@
 <li><dl class="simple">
 <dt><a class="reference internal" href="#get-cppad-sh-settings"><span class="std std-ref">Settings</span></a></dt><dd><ul>
 <li><p><a class="reference internal" href="#get-cppad-sh-settings-cmake-install-prefix"><span class="std std-ref">cmake_install_prefix</span></a></p></li>
-<li><p><a class="reference internal" href="#get-cppad-sh-settings-cppad-libdir"><span class="std std-ref">cppad_libdir</span></a></p></li>
 <li><p><a class="reference internal" href="#get-cppad-sh-settings-extra-cxx-flags"><span class="std std-ref">extra_cxx_flags</span></a></p></li>
 <li><dl class="simple">
 <dt><a class="reference internal" href="#get-cppad-sh-settings-build-type"><span class="std std-ref">build_type</span></a></dt><dd><ul>
@@ -235,16 +233,9 @@ It may include the shell variable <code class="docutils literal notranslate"><sp
 <a class="reference internal" href="setup_py.html#setup-py-download-top-source-directory"><span class="std std-ref">top_source_directory</span></a>.
 Note that <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> starts with <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
 </div>
-<div class="section" id="cppad-libdir">
-<span id="get-cppad-sh-settings-cppad-libdir"></span><span id="index-5"></span><h4>cppad_libdir<a class="headerlink" href="#cppad-libdir" title="Permalink to this headline">¶</a></h4>
-<p>The sub-directory of cmake_install_prefix where libraries are installed.
-(xsrst_code sh)
-cppad_libdir=’lib64’
-(xsrst_code)</p>
-</div>
 <div class="section" id="extra-cxx-flags">
-<span id="get-cppad-sh-settings-extra-cxx-flags"></span><span id="index-6"></span><h4>extra_cxx_flags<a class="headerlink" href="#extra-cxx-flags" title="Permalink to this headline">¶</a></h4>
-<p>Extra compiler false used when compiling c++ code not including the
+<span id="get-cppad-sh-settings-extra-cxx-flags"></span><span id="index-5"></span><h4>extra_cxx_flags<a class="headerlink" href="#extra-cxx-flags" title="Permalink to this headline">¶</a></h4>
+<p>Extra compiler flags used when compiling c++ code not including the
 debugging and optimization flags.
 The ones below are example flags are used by g++:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">extra_cxx_flags</span><span class="o">=</span><span class="s1">&#39;-Wall -pedantic-errors -Wno-unused-result -std=c++11&#39;</span>
@@ -252,7 +243,7 @@ The ones below are example flags are used by g++:</p>
 </div>
 </div>
 <div class="section" id="build-type">
-<span id="get-cppad-sh-settings-build-type"></span><span id="index-7"></span><h4>build_type<a class="headerlink" href="#build-type" title="Permalink to this headline">¶</a></h4>
+<span id="get-cppad-sh-settings-build-type"></span><span id="index-6"></span><h4>build_type<a class="headerlink" href="#build-type" title="Permalink to this headline">¶</a></h4>
 <p>This must be must <code class="docutils literal notranslate"><span class="pre">debug</span></code> or <code class="docutils literal notranslate"><span class="pre">release</span></code> .
 The debug version has more error messaging while the release
 version runs faster.</p>
@@ -260,20 +251,20 @@ version runs faster.</p>
 </pre></div>
 </div>
 <div class="section" id="get-cppad-sh-settings-build-type-cmake-install-prefix">
-<span id="index-8"></span><span id="id2"></span><h5>cmake_install_prefix<a class="headerlink" href="#get-cppad-sh-settings-build-type-cmake-install-prefix" title="Permalink to this headline">¶</a></h5>
+<span id="index-7"></span><span id="id2"></span><h5>cmake_install_prefix<a class="headerlink" href="#get-cppad-sh-settings-build-type-cmake-install-prefix" title="Permalink to this headline">¶</a></h5>
 <p>The actual prefix used for the install is
 <em>cmake_install_prefix</em> <code class="docutils literal notranslate"><span class="pre">.</span></code> <em>build_type</em>
 and a soft link is created from <em>cmake_install_prefix</em> to this directory.</p>
 </div>
 <div class="section" id="build">
-<span id="get-cppad-sh-settings-build-type-build"></span><span id="index-9"></span><h5>build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h5>
+<span id="get-cppad-sh-settings-build-type-build"></span><span id="index-8"></span><h5>build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h5>
 <p>This subdirectory <code class="docutils literal notranslate"><span class="pre">build.</span></code> <em>build_type</em>
 is used to compile and test the software and a soft link is created from
 <code class="docutils literal notranslate"><span class="pre">build</span></code> to this subdirectory.</p>
 </div>
 </div>
 <div class="section" id="include-mixed">
-<span id="get-cppad-sh-settings-include-mixed"></span><span id="index-10"></span><h4>include_mixed<a class="headerlink" href="#include-mixed" title="Permalink to this headline">¶</a></h4>
+<span id="get-cppad-sh-settings-include-mixed"></span><span id="index-9"></span><h4>include_mixed<a class="headerlink" href="#include-mixed" title="Permalink to this headline">¶</a></h4>
 <p>This flag is true (false) if we are (are not)
 including the python cppad_mixed interface.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">include_mixed</span><span class="o">=</span><span class="s1">&#39;false&#39;</span>
@@ -285,7 +276,7 @@ requirements.
 Otherwise, <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code> should be used to install Cppad.</p>
 </div>
 <div class="section" id="test-cppad">
-<span id="get-cppad-sh-settings-test-cppad"></span><span id="index-11"></span><h4>test_cppad<a class="headerlink" href="#test-cppad" title="Permalink to this headline">¶</a></h4>
+<span id="get-cppad-sh-settings-test-cppad"></span><span id="index-10"></span><h4>test_cppad<a class="headerlink" href="#test-cppad" title="Permalink to this headline">¶</a></h4>
 <p>This must be must <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> .
 Cppad has a huge test suite and this can take a significant amount of time,
 but it may be useful if you have problems.</p>
@@ -295,7 +286,7 @@ but it may be useful if you have problems.</p>
 </div>
 </div>
 <div class="section" id="caching">
-<span id="get-cppad-sh-caching"></span><span id="index-12"></span><h3>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h3>
+<span id="get-cppad-sh-caching"></span><span id="index-11"></span><h3>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h3>
 <p>This script and <code class="docutils literal notranslate"><span class="pre">bin/get_cppad_mixed.sh</span></code> cache previous builds so that
 when you re-run the script it does not re-do all the work.
 If you have trouble, try deleting the directory</p>

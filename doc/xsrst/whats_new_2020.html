@@ -239,7 +239,13 @@
 <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-include-mixed"><span class="std std-ref">include_mixed</span></a> false was broken
 by the changes on 11-03. This has been fixed.</p></li>
 <li><p>The installation and testing instructions in <a class="reference internal" href="setup_py.html#id1"><span class="std std-ref">setup.py</span></a>
-were brought up to date and improved.</p></li>
+were brought up to date and improved.
+This includes discussion of the following environment variables:
+<a class="reference internal" href="setup_py.html#setup-py-ld-library-path"><span class="std std-ref">LD_LIBRARY_PATH</span></a>,
+<a class="reference internal" href="setup_py.html#setup-py-pkg-config-path"><span class="std std-ref">PKG_CONFIG_PATH</span></a>,
+<a class="reference internal" href="setup_py.html#setup-py-pythonpath"><span class="std std-ref">PYTHONPATH</span></a>.</p></li>
+<li><p>The setting <em>cppad_lib</em> was changed to the automatically determined
+value <a class="reference internal" href="setup_py.html#setup-py-libdir"><span class="std std-ref">libdir</span></a>.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-11-05">
@@ -276,8 +282,7 @@ copy for testing.</p>
 <div class="section" id="whats-new-2020-10-29">
 <span id="id8"></span><h3>10-29<a class="headerlink" href="#whats-new-2020-10-29" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
-<dt># . The <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-cppad-libdir"><span class="std std-ref">cppad_libdir</span></a> setting was</dt><dd><p>added to <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code>.
-This fixed a problem on some systems where <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code>
+<dt># . The <em>cppad_libdir</em> setting was added to <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code>.</dt><dd><p>This fixed a problem on some systems where <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code>
 and <code class="docutils literal notranslate"><span class="pre">bin/get_cppad_mixed.sh</span></code> might install the cppad library
 in two different locations and confuse the setup procedure.</p>
 </dd>

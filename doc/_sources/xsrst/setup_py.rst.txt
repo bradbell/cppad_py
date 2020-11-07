@@ -20,6 +20,8 @@ Configure and Build the cppad_py Python Module
     - :ref:`setup_py.download.top_source_directory`
 - :ref:`setup_py.configure`
 - :ref:`setup_py.get_cppad`
+- :ref:`setup_py.prefix`
+- :ref:`setup_py.libdir`
 - :ref:`setup_py.ld_library_path`
 - :ref:`setup_py.pkg_config_path`
 - :ref:`setup_py.pythonpath`
@@ -100,7 +102,7 @@ Use the following command to download the current version of cppad_py:
 Top Source Directory
 ====================
 The directory you choose for *top_srcdir* is
-referred to as your top source directory.
+referred to as your *top_srcdir* directory.
 
 .. meta::
    :keywords: configure
@@ -132,6 +134,35 @@ and use ``bin/get_cppad_mixed.sh`` to install cppad and other
 non-standard requirements.
 
 .. meta::
+   :keywords: prefix
+
+.. index:: prefix
+
+.. _setup_py.prefix:
+
+prefix
+******
+The value *prefix* is the prefix where cppad_py will be installed.
+This is determined by the command line argument to ``setup.py``.
+
+.. meta::
+   :keywords: libdir
+
+.. index:: libdir
+
+.. _setup_py.libdir:
+
+libdir
+******
+The value *libdir* is the suffix (after the prefix)
+where the libraries will be installed.
+This can be determined by running the command:
+
+.. code-block:: sh
+
+      bin/libdir.py ; echo
+
+.. meta::
    :keywords: ld_library_path
 
 .. index:: ld_library_path
@@ -143,9 +174,7 @@ LD_LIBRARY_PATH
 Make sure the following directory is in your ``LD_LIBRARY_PATH``
 (in mac OS this path is called ``DYLD_LIBRARY_PATH``):
 
-| |tab| *prefix/lib*
-
-where *lib* is :ref:`cppad_libdir<get_cppad_sh.settings.cppad_libdir>`.
+| |tab| *prefix/libdir*
 
 .. meta::
    :keywords: pkg_config_path
@@ -158,7 +187,7 @@ PKG_CONFIG_PATH
 ***************
 Make sure the following directory is in your ``PKG_CONFIG_PATH``:
 
-| |tab| *prefix/lib/* ``pkgconfig``
+| |tab| *prefix/libdir/* ``pkgconfig``
 
 .. meta::
    :keywords: pythonpath
@@ -188,11 +217,18 @@ Use the following command to build and install cppad_py:
 
 This will install ``cppad_py`` in the directory
 
-| |tab| *prefix/lib/* ``python`` *major.minor* ``/site-packages/cppad_py``
+| |tab| *prefix/libdir/* ``python`` *major.minor* ``/site-packages/cppad_py``
 
-where *lib* is :ref:`cppad_libdir<get_cppad_sh.settings.cppad_libdir>` ,
-*major* ( *minor* ) is the major (minor)
-version of *python* .
+where *major* ( *minor* ) is the major (minor) version of *python* .
+The following command can be used to test the installed version of
+cppad_py:
+
+| |tab| ``python3 example/python/check_all.py``
+
+The following packages are additional requirements to execute
+``check_all.py``:
+`scipy <https://scipy.org/>`_
+`matplotlib <https://matplotlib.org/>`_.
 
 .. meta::
    :keywords: test
@@ -206,9 +242,6 @@ Test
 These steps are optional and used to test that cppad_py
 works on your system before installing it.
 They do not yet work on mac OS.
-The following packages are additional requirements to execute these steps:
-`scipy <https://scipy.org/>`_
-`matplotlib <https://matplotlib.org/>`_.
 
 .. meta::
    :keywords: build_local.py
@@ -222,6 +255,8 @@ build_local.py
 Build a local copy of the Python cppad_py module using the command:
 
 | |tab| ``bin/build_local.py``
+
+This will create the *top_srcdir/* ``cppad_py`` directory.
 
 .. meta::
    :keywords: python
@@ -237,6 +272,10 @@ the following commands starting in *top_srcdir* :
 
 | |tab| ``python3 example/python/check_all.py``
 
+This test will use the local copy of ``cppad_py``, directory below
+the *top_srcdir* directory, if it is available. You can test the
+installed version by removing the *top_srcdir/* ``cppad_py`` directory.
+
 .. meta::
    :keywords: c++
 
@@ -246,7 +285,7 @@ the following commands starting in *top_srcdir* :
 
 c++
 ===
-After ``setup.py`` has run,
+After ``bin/build_local.py`` has run,
 you can also test the cppad_py c++ interface
 :ref:`cpp_lib<cpp_lib>` on your system by executing the following commands
 starting in *top_srcdir* :
@@ -269,8 +308,6 @@ you should be able to import cppad_py using the following commands:
 | |tab| ``python3``
 | |tab| ``import cppad_py``
 | |tab| ``quit`` ()
-
-We need to install cppad_py so you can import it from any directory.
 
 .. meta::
    :keywords: install, using, pip
