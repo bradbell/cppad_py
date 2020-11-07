@@ -28,12 +28,12 @@ then
     cmake_install_prefix="$(pwd)/$cmake_install_prefix"
 fi
 #
-# cppad_libdir
-cppad_libdir=$(bin/libdir.py)
+# libdir
+libdir=$(bin/libdir.py)
 #
 echo "build_type=$build_type"
 echo "cmake_install_prefix=$cmake_install_prefix"
-echo "cppad_libdir=$cppad_libdir"
+echo "libdir=$libdir"
 # ---------------------------------------------------------------------------
 # LD_LIBRARY_PATH
 # PYTHONPATH
@@ -44,7 +44,7 @@ print( minor )
 sys.exit(0)
 EOF
 minor=$(python check_install.py)
-export LD_LIBRARY_PATH="${cmake_install_prefix}/${cppad_libdir}"
+export LD_LIBRARY_PATH="${cmake_install_prefix}/${libdir}"
 export PYTHONPATH="$LD_LIBRARY_PATH/python3.$minor/site-packages"
 echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
 echo "PYTHONPATH=$PYTHONPATH"

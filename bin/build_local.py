@@ -35,13 +35,6 @@ if len(sys.argv) != 1 :
 fp      = open('bin/get_cppad.sh', 'r')
 string  = fp.read()
 #
-# cppad_libdir
-stdlib = sysconfig.get_paths()['stdlib']
-stdlib = stdlib.split('/')
-assert 2 <= len( stdlib )
-assert stdlib[-1].startswith( 'python' )
-cppad_libdir = stdlib[-2]
-#
 # extra_cxx_flags
 pattern = r"\nextra_cxx_flags='([^']*)'"
 match   = re.search(pattern, string)
@@ -137,7 +130,6 @@ command_list = [
     "-D", "CMAKE_VERBOSE_MAKEFILE=1",
     "-D", "CMAKE_BUILD_TYPE="          + build_type,
     "-D", "cmake_install_prefix="      + cmake_install_prefix,
-    "-D", "cppad_libdir="              + cppad_libdir,
     "-D", "extra_cxx_flags="           + extra_cxx_flags,
     "-D", "include_mixed="             + include_mixed,
     ".."

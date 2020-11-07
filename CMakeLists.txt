@@ -9,7 +9,6 @@
 #   -D CMAKE_VERBOSE_MAKEFILE=value \
 #   -D CMAKE_BUILD_TYPE=value \
 #   -D cmake_install_prefix=value  \
-#   -D cppad_libdir=value  \
 #   -D extra_cxx_flags=value \
 #   -D include_mixed=value \
 #   ..
@@ -120,14 +119,6 @@ cmake_argument(cmake_install_prefix NOTFOUND PATH "prefix used to install Cppad"
 IF( NOT cmake_install_prefix )
     MESSAGE(FATAL_ERROR "cmake_install_prefix is not defined by cmake command line")
 ENDIF( NOT cmake_install_prefix )
-# -----------------------------------------------------------------------------
-# cppad_libdir
-cmake_argument(cppad_libdir NOTFOUND PATH
-    "added to cmake_install_prefix for library installs"
- )
-IF( NOT cppad_libdir )
-    MESSAGE(FATAL_ERROR "cppad_libdir is not defined by cmake command line")
-ENDIF( NOT cppad_libdir )
 # -----------------------------------------------------------------------------
 # extra_cxx_flags
 cmake_argument(extra_cxx_flags "" STRING

@@ -146,7 +146,7 @@ then
     # convert cmake_install_prefix to an absolute path
     cmake_install_prefix="$(pwd)/$cmake_install_prefix"
 fi
-cppad_libdir=$(bin/libdir.py)
+libdir=$(bin/libdir.py)
 # -----------------------------------------------------------------------------
 # create links to proper version of cmake_install_prefix and build
 echo_eval bin/build_type.sh
@@ -203,14 +203,14 @@ fi
 cat << EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
     -D cppad_prefix="$cmake_install_prefix"  \\
-    -D cmake_install_libdirs="$cppad_libdir"  \\
+    -D cmake_install_libdirs="$libdir"  \\
     -D cppad_cxx_flags="$extra_cxx_flags" \\
     -D cppad_debug_which=$cppad_debug_which \\
     ..
 EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
     -D cppad_prefix="$cmake_install_prefix"  \
-    -D cmake_install_libdirs="$cppad_libdir"  \
+    -D cmake_install_libdirs="$libdir"  \
     -D cppad_cxx_flags="$extra_cxx_flags" \
     -D cppad_debug_which=$cppad_debug_which \
     ..

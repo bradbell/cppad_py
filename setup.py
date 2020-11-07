@@ -79,8 +79,8 @@ if not match :
     sys_exit('cannot find cmake_install_prefix in bin/get_cppad.sh')
 cmake_install_prefix = match.group(1)
 #
-# cppad_libdir
-cppad_libdir = sys_command( [ 'bin/libdir.py' ] )
+# libdir
+libdir = sys_command( [ 'bin/libdir.py' ] )
 #
 # build_type
 pattern = r"\nbuild_type='([^']*)'"
@@ -173,7 +173,6 @@ command_list = [
     "-D", "CMAKE_VERBOSE_MAKEFILE=1",
     "-D", "CMAKE_BUILD_TYPE="          + build_type,
     "-D", "cmake_install_prefix="      + cmake_install_prefix,
-    "-D", "cppad_libdir="              + cppad_libdir,
     "-D", "extra_cxx_flags="           + extra_cxx_flags,
     "-D", "include_mixed="             + include_mixed,
     ".."
@@ -209,7 +208,7 @@ for name in os.listdir('lib/cplusplus') :
 # -----------------------------------------------------------------------------
 # extension_module
 include_dirs        = [ cmake_install_prefix + '/include', 'include' ]
-library_dirs        = [ cmake_install_prefix + '/' + cppad_libdir ]
+library_dirs        = [ cmake_install_prefix + '/' + libdir ]
 libraries           = [ 'cppad_lib' ]
 extra_compile_args  = extra_cxx_flags.split()
 if cxx_has_stdlib :
@@ -269,10 +268,10 @@ if install_distribution :
 # -----------------------------------------------------------------------------
 msg  = 'If you get a message that an object library is missing, try:\n\t'
 msg += 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:'
-msg += cmake_install_prefix + '/' + cppad_libdir
+msg += cmake_install_prefix + '/' + libdir
 msg += '\nIf you have a Mac system, the following may fix this problem:\n\t'
 msg += 'export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:'
-msg += cmake_install_prefix + '/' + cppad_libdir + '\n'
+msg += cmake_install_prefix + '/' + libdir + '\n'
 print(msg)
 print('setup.py: OK')
 sys.exit(0)
