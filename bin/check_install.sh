@@ -43,8 +43,9 @@ minor = sys.version_info.minor
 print( minor )
 sys.exit(0)
 EOF
-minor=$(python check_install.py)
+minor=$(python3 check_install.py)
 export LD_LIBRARY_PATH="${cmake_install_prefix}/${libdir}"
+export DYLD_LIBRARY_PATH="$LD_LIBRARY_PATH"
 export PYTHONPATH="$LD_LIBRARY_PATH/python3.$minor/site-packages"
 echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
 echo "PYTHONPATH=$PYTHONPATH"

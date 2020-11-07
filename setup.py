@@ -329,7 +329,7 @@ sys.exit(0)
 # Top Source Directory
 # ====================
 # The directory you choose for *top_srcdir* is
-# referred to as your top source directory.
+# referred to as your *top_srcdir* directory.
 #
 # Configure
 # *********
@@ -391,15 +391,22 @@ sys.exit(0)
 # | |tab| *prefix/libdir/* ``python`` *major.minor* ``/site-packages/cppad_py``
 #
 # where *major* ( *minor* ) is the major (minor) version of *python* .
+# The following command can be used to test the installed version of
+# cppad_py:
+#
+# | |tab| ``python3 example/python/check_all.py``
+#
+# The following packages are additional requirements to execute
+# ``check_all.py``:
+# `scipy <https://scipy.org/>`_
+# `matplotlib <https://matplotlib.org/>`_.
+#
 #
 # Test
 # ****
 # These steps are optional and used to test that cppad_py
 # works on your system before installing it.
 # They do not yet work on mac OS.
-# The following packages are additional requirements to execute these steps:
-# `scipy <https://scipy.org/>`_
-# `matplotlib <https://matplotlib.org/>`_.
 #
 #
 # build_local.py
@@ -408,12 +415,18 @@ sys.exit(0)
 #
 # | |tab| ``bin/build_local.py``
 #
+# This will create the *top_srcdir/* ``cppad_py`` directory.
+#
 # python
 # ======
 # The next step is to test the cppad_py on your system by executing
 # the following commands starting in *top_srcdir* :
 #
 # | |tab| ``python3 example/python/check_all.py``
+#
+# This test will use the local copy of ``cppad_py``, directory below
+# the *top_srcdir* directory, if it is available. You can test the
+# installed version by removing the *top_srcdir/* ``cppad_py`` directory.
 #
 # c++
 # ===
