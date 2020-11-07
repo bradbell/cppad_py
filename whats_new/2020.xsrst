@@ -34,6 +34,7 @@
     mcs
     url
     init
+    libdir
 }
 
 CppAD Py Changes During 2020
@@ -54,6 +55,13 @@ Previous Years
 
 #.  The installation and testing instructions in :ref:`setup.py<setup_py>`
     were brought up to date and improved.
+    This includes discussion of the following environment variables:
+    :ref:`LD_LIBRARY_PATH<setup_py.LD_LIBRARY_PATH>`,
+    :ref:`PKG_CONFIG_PATH<setup_py.PKG_CONFIG_PATH>`,
+    :ref:`PYTHONPATH<setup_py.PYTHONPATH>`.
+
+#.  The setting *cppad_lib* was changed to the automatically determined
+    value :ref:`libdir<setup_py.libdir>`.
 
 11-05
 *****
@@ -88,8 +96,7 @@ copy for testing.
 
 10-29
 *****
-# . The :ref:`get_cppad_sh.settings.cppad_libdir` setting was
-    added to ``bin/get_cppad.sh``.
+# . The *cppad_libdir* setting was added to ``bin/get_cppad.sh``.
     This fixed a problem on some systems where ``bin/get_cppad.sh``
     and ``bin/get_cppad_mixed.sh`` might install the cppad library
     in two different locations and confuse the setup procedure.

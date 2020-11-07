@@ -18,7 +18,6 @@
 #   cxx
 #   usr
 #   Wno
-#   libdir
 #   cmake
 # }
 #
@@ -49,13 +48,6 @@ cmake_install_prefix="$HOME/prefix/cppad"
 # If this prefix does no start with ``/``, it is relative to the
 # :ref:`top_source_directory<setup_py.download.top_source_directory>`.
 # Note that ``$HOME`` starts with ``/``.
-#
-# cppad_libdir
-# ============
-# The sub-directory of cmake_install_prefix where libraries are installed.
-# {xsrst_code sh}
-cppad_libdir='lib64'
-# {xsrst_code}
 #
 # extra_cxx_flags
 # ===============
@@ -154,6 +146,7 @@ then
     # convert cmake_install_prefix to an absolute path
     cmake_install_prefix="$(pwd)/$cmake_install_prefix"
 fi
+cppad_libdir=$(bin/libdir.py)
 # -----------------------------------------------------------------------------
 # create links to proper version of cmake_install_prefix and build
 echo_eval bin/build_type.sh

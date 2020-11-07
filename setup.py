@@ -347,20 +347,33 @@ sys.exit(0)
 # and use ``bin/get_cppad_mixed.sh`` to install cppad and other
 # non-standard requirements.
 #
+# prefix
+# ******
+# The value *prefix* is the prefix where cppad_py will be installed.
+# This is determined by the command line argument to ``setup.py``.
+#
+# libdir
+# ******
+# The value *libdir* is the suffix (after the prefix)
+# where the libraries will be installed.
+# This can be determined by running the command:
+# {xsrst_code sh}
+#   bin/libdir.py ; echo
+# {xsrst_code}
+#
 # LD_LIBRARY_PATH
 # ***************
 # Make sure the following directory is in your ``LD_LIBRARY_PATH``
 # (in mac OS this path is called ``DYLD_LIBRARY_PATH``):
 #
-# | |tab| *prefix/lib*
+# | |tab| *prefix/libdir*
 #
-# where *lib* is :ref:`cppad_libdir<get_cppad_sh.settings.cppad_libdir>`.
 #
 # PKG_CONFIG_PATH
 # ***************
 # Make sure the following directory is in your ``PKG_CONFIG_PATH``:
 #
-# | |tab| *prefix/lib/* ``pkgconfig``
+# | |tab| *prefix/libdir/* ``pkgconfig``
 #
 # PYTHONPATH
 # **********
@@ -376,11 +389,9 @@ sys.exit(0)
 #
 # This will install ``cppad_py`` in the directory
 #
-# | |tab| *prefix/lib/* ``python`` *major.minor* ``/site-packages/cppad_py``
+# | |tab| *prefix/libdir/* ``python`` *major.minor* ``/site-packages/cppad_py``
 #
-# where *lib* is :ref:`cppad_libdir<get_cppad_sh.settings.cppad_libdir>` ,
-# *major* ( *minor* ) is the major (minor)
-# version of *python* .
+# where *major* ( *minor* ) is the major (minor) version of *python* .
 #
 # Test
 # ****
@@ -407,7 +418,7 @@ sys.exit(0)
 #
 # c++
 # ===
-# After ``setup.py`` has run,
+# After ``bin/build_local.py`` has run,
 # you can also test the cppad_py c++ interface
 # :ref:`cpp_lib<cpp_lib>` on your system by executing the following commands
 # starting in *top_srcdir* :
@@ -423,8 +434,6 @@ sys.exit(0)
 # | |tab| ``python3``
 # | |tab| ``import cppad_py``
 # | |tab| ``quit`` ()
-#
-# We need to install cppad_py so you can import it from any directory.
 #
 # Install Using Pip
 # *****************
