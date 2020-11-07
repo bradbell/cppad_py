@@ -96,7 +96,7 @@ copy for testing.
 
 10-29
 *****
-# . The *cppad_libdir* setting was added to ``bin/get_cppad.sh``.
+#.  The *cppad_libdir* setting was added to ``bin/get_cppad.sh``.
     This fixed a problem on some systems where ``bin/get_cppad.sh``
     and ``bin/get_cppad_mixed.sh`` might install the cppad library
     in two different locations and confuse the setup procedure.
