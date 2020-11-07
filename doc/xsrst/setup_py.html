@@ -311,21 +311,21 @@ This can be determined by running the command:</p>
 <span id="setup-py-pythonpath"></span><span id="index-12"></span><h3>PYTHONPATH<a class="headerlink" href="#pythonpath" title="Permalink to this headline">¶</a></h3>
 <p>Make sure the following directory is in your <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>:</p>
 <div class="line-block">
-<div class="line">        <em>prefix/lib/</em> <code class="docutils literal notranslate"><span class="pre">python</span></code> <em>major</em> . <em>minor</em> <code class="docutils literal notranslate"><span class="pre">/site-packages</span></code></div>
+<div class="line">        <em>prefix/libdir/</em> <code class="docutils literal notranslate"><span class="pre">python3.</span></code> <em>minor</em> <code class="docutils literal notranslate"><span class="pre">/site-packages</span></code></div>
 </div>
+<p>where <em>minor</em> is the minor version corresponding to <code class="docutils literal notranslate"><span class="pre">python3</span></code>.</p>
 </div>
 <div class="section" id="install">
 <span id="setup-py-install"></span><span id="index-13"></span><h3>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
 <p>Use the following command to build and install cppad_py:</p>
 <div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">setup.py</span> <span class="pre">install</span> <span class="pre">--prefix</span></code> = <em>prefix</em></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">setup.py</span> <span class="pre">install</span> <span class="pre">--prefix=</span></code> <em>prefix</em></div>
 </div>
 <p>This will install <code class="docutils literal notranslate"><span class="pre">cppad_py</span></code> in the directory</p>
 <div class="line-block">
-<div class="line">        <em>prefix/libdir/</em> <code class="docutils literal notranslate"><span class="pre">python</span></code> <em>major.minor</em> <code class="docutils literal notranslate"><span class="pre">/site-packages/cppad_py</span></code></div>
+<div class="line">        <em>prefix/libdir/</em> <code class="docutils literal notranslate"><span class="pre">python3.</span></code> <em>minor</em> <code class="docutils literal notranslate"><span class="pre">/site-packages/cppad_py</span></code></div>
 </div>
-<p>where <em>major</em> ( <em>minor</em> ) is the major (minor) version of <em>python</em> .
-The following command can be used to test the installed version of
+<p>The following command can be used to test the installed version of
 cppad_py:</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">example/python/check_all.py</span></code></div>
@@ -355,9 +355,10 @@ the following commands starting in <em>top_srcdir</em> :</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">example/python/check_all.py</span></code></div>
 </div>
-<p>This test will use the local copy of <code class="docutils literal notranslate"><span class="pre">cppad_py</span></code>, directory below
-the <em>top_srcdir</em> directory, if it is available. You can test the
-installed version by removing the <em>top_srcdir/</em> <code class="docutils literal notranslate"><span class="pre">cppad_py</span></code> directory.</p>
+<p>This test will use the local copy of <em>top_srcdir/</em> <code class="docutils literal notranslate"><span class="pre">cppad_py</span></code>
+if it is available. You can test the installed version,
+if it is available, by removing the directory <em>top_srcdir/</em> <code class="docutils literal notranslate"><span class="pre">cppad_py</span></code>
+and re-executing the command above.</p>
 </div>
 <div class="section" id="setup-py-test-c">
 <span id="index-17"></span><span id="id3"></span><h4>c++<a class="headerlink" href="#setup-py-test-c" title="Permalink to this headline">¶</a></h4>
