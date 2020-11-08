@@ -355,9 +355,9 @@ Begin and End Commands
 
 Syntax
 ******
-- ``{xsrst_begin_parent`` *section_name* :code:`}`
-- ``{xsrst_begin``        *section_name* :code:`}`
-- ``{xsrst_end``          *section_name* :code:`}`
+- ``{xsrst_begin_parent`` *section_name*\ :code:`}`
+- ``{xsrst_begin``        *section_name*\ :code:`}`
+- ``{xsrst_end``          *section_name*\ :code:`}`
 
 Section
 *******
@@ -378,8 +378,9 @@ Output File
 ***********
 The output file corresponding to *section_name* is
 
-|tab| :ref:`sphinx_dir<xsrst_py.command_line_arguments.sphinx_dir>`
-``/xsrst/`` *section_name* ``.rst``
+| |tab| *sphinx_dir*\ ``/xsrst/``\ *section_name*\ ``.rst``
+
+see :ref:`sphinx_dir<xsrst_py.command_line_arguments.sphinx_dir>`
 
 Parent Section
 **************
