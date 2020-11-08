@@ -83,7 +83,7 @@ Size of a Vector
 
 Syntax
 ******
-*n* = *v* . ``size`` ()
+*n* = *v*\ ``.size`` ()
 
 v
 *
@@ -149,19 +149,19 @@ u
 *
 The object *u* has c++ prototype
 
-| |tab| ``vec_`` *element_type* ``&`` *u*
+| |tab| ``vec_``\ *element_type*\ ``&`` *u*
 
 x
 *
 The argument *x* has c++ prototype
 
-| |tab| ``const`` *element_type* ``&`` *x*
+| |tab| ``const`` *element_type*\ ``&`` *x*
 
 v
 *
 The object *v* has c++ prototype
 
-| |tab| ``const vec_`` *element_type* ``&`` *v*
+| |tab| ``const vec_``\ *element_type*\ ``&`` *v*
 
 y
 *
