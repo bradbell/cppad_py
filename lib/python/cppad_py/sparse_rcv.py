@@ -24,15 +24,15 @@
 # ******
 #
 # | *matrix* =  ``cppad_py::sparse_rcv`` ( *pattern* )
-# | *nr* = *matrix* . ``nr`` ()
-# | *nc* = *matrix* . ``nc`` ()
-# | *nnz* =  ``matrix`` . *nnz* ()
-# | *matrix* . ``put`` ( *k* , *v* )
-# | *row* = *matrix* . ``row`` ()
-# | *col* = *matrix* . ``col`` ()
-# | *val* = *matrix* . ``val`` ()
-# | *row_major* = *matrix* . ``row_major`` ()
-# | *col_major* = *matrix* . ``col_major`` ()
+# | *nr* = *matrix*\ ``.nr()``
+# | *nc* = *matrix*\ ``.nc()``
+# | *nnz* =  *matrix*\ ``.nnz()``
+# | *matrix*\ ``.put`` ( *k* , *v* )
+# | *row* = *matrix*\ ``.row()``
+# | *col* = *matrix*\ ``.col()``
+# | *val* = *matrix*\ ``.val()``
+# | *row_major* = *matrix*\ ``.row_major()``
+# | *col_major* = *matrix*\ ``.col_major()``
 #
 # pattern
 # *******

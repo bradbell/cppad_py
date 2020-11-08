@@ -24,7 +24,7 @@
 # ******
 #
 # | *work* =  ``cppad_py.sparse_hes_work`` ()
-# | *n_sweep* = *f* . ``sparse_hes`` ( *subset* , *x* , *r* , *pattern* , *work* )
+# | *n_sweep* = *f*\ ``.sparse_hes`` ( *subset* , *x* , *r* , *pattern* , *work* )
 #
 # Purpose
 # *******
@@ -121,7 +121,7 @@
 # After a call to ``sparse_hes``
 # the zero order coefficients correspond to
 #
-# | |tab| *f* . ``forward(0`` , *x* )
+# | |tab| *f*\ ``.forward(0`` , *x* )
 #
 # All the other forward mode coefficients are unspecified.
 #
