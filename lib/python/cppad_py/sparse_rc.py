@@ -23,16 +23,16 @@
 # Syntax
 # ******
 #
-# | *pattern* =  ``cppad_py.sparse_rc`` ()
-# | *pattern* . ``resize`` ( *nr* , *nc* , *nnz* )
-# | *nr* = *pattern* . ``nr`` ()
-# | *nc* = *pattern* . ``nc`` ()
-# | *nnz* = *pattern* . ``nnz`` ()
-# | *pattern* . ``put`` ( *k* , *r* , *c* )
-# | *row* = *pattern* . ``row`` ()
-# | *col* = *pattern* . ``col`` ()
-# | *row_major* = *pattern* . ``row_major`` ()
-# | *col_major* = *pattern* . ``col_major`` ()
+# | *pattern* =  ``cppad_py.sparse_rc()``
+# | *pattern*\ ``.resize`` ( *nr* , *nc* , *nnz* )
+# | *nr* = *pattern*\ ``.nr()``
+# | *nc* = *pattern*\ ``.nc()``
+# | *nnz* = *pattern*\ ``.nnz()``
+# | *pattern*\ ``.put`` ( *k* , *r* , *c* )
+# | *row* = *pattern*\ ``.row()``
+# | *col* = *pattern*\ ``.col()``
+# | *row_major* = *pattern*\ ``.row_major()``
+# | *col_major* = *pattern*\ ``.col_major()``
 #
 # pattern
 # *******
