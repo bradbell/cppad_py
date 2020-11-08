@@ -49,13 +49,18 @@ Previous Years
 
 11-08
 *****
-Where appropriate, reduce the spacing between italic and literal font; e.g.,
+#.  Change setup.py :ref:`local build<setup_py.local_build>` and test instructions so they work on Mac OS.
 
-| |tab| *prefix/libdir* ``/python3.`` *minor* ``/site-packages/cppad_py``
+#.  Fix ``bin/get_cppad_mixed.sh`` so that it is not necessary to set
+    LD_LIBRARY_PATH or PKG_CONFIG_PATH before running it.
 
-was changed to
+#.  Where appropriate, reduce the spacing between italic and literal font; e.g.,
 
-| |tab| *prefix/libdir*\ ``/python3.``\ *minor* ``/site-packages/cppad_py``
+    | |tab| *prefix/libdir* ``/python3.`` *minor* ``/site-packages/cppad_py``
+
+    was changed to
+
+    | |tab| *prefix/libdir*\ ``/python3.``\ *minor* ``/site-packages/cppad_py``
 
 
 11-06
@@ -102,7 +107,7 @@ Fix some problems with the macOS install when
 The :ref:`install command<setup_py.install>` no longer creates
 a local copy of ``cppad_py`` for testing. (On macOS systems the
 local copy would cause problems during the install.)
-The :ref:`setup_py.test.build_local.py` still builds the local
+The :ref:`setup_py.local_build` still builds the local
 copy for testing.
 
 10-29
@@ -454,8 +459,7 @@ The newer Mac systems seems to require that one use
 ``-stdlib=libc++`` compile and link flag.
 The install has been changed to check for and adapt to this condition.
 In addition, :ref:`setup_py<setup_py>` now runs the ``cmake`` command; i.e.,
-the user no longer needs to run ``cmake`` to test the
-:ref:`c++<setup_py.test.c++>` library.
+the user no longer needs to run ``cmake`` to test the C++ library.
 
 04-23
 *****
@@ -523,7 +527,7 @@ Add an :ref:`install_error<install_error>` section to the documentation.
 #.  The dynamic parameter argument was missing from the
     :ref:`syntax<py_independent.syntax>` for the python version
     of the ``independent`` function.  This has been fixed.
-#.  Improve the :ref:`test<setup_py.test>` and :ref:`install<setup_py.install>`
+#.  Improve the test and :ref:`install<setup_py.install>`
     discussion in ``setup.py`` .
 
 04-10

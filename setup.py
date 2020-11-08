@@ -291,6 +291,7 @@ sys.exit(0)
 #   libdir
 #   pkgconfig
 #   matplotlib
+#   bdist
 # }
 #
 # Configure and Build the cppad_py Python Module
@@ -382,72 +383,52 @@ sys.exit(0)
 #
 # where *minor* is the minor version corresponding to ``python3``.
 #
+#
+# Local Build
+# ***********
+# You can build a local copy of the Python cppad_py module using the
+# command in the *top_srcdir* :
+#
+# | |tab| ``python3 setup.py bdist``
+#
+# This will create the directory
+#
+# | |tab| ``build/lib.``\ *name*\ ``/cppad_py``
+#
+# where *name* identifies your system and version of python.
+# The next step is to copy this directory to the *top_srcdir* using the command
+#
+# | |tab| ``cp -r build/lib.``\ *name*\ ``/cppad_py cppad_py``
+#
+# check_all.py
+# ************
+# The following packages are additional requirements to execute
+# the test program ``check_all.py``:
+# `scipy <https://scipy.org/>`_
+# `matplotlib <https://matplotlib.org/>`_.
+# You can run this test by executing the following command in the *top_srcdir*
+# directory:
+#
+# | |tab| ``python3 example/python/check_all.py``
+#
+# This test will use the local copy of *top_srcdir/*\ ``cppad_py``
+# if it is available. You can test the installed version,
+# if it is available, by removing the directory *top_srcdir/*\ ``cppad_py``
+# and re-executing the command above.
+#
+#
 # Install
 # *******
 # Use the following command to build and install cppad_py:
 #
 # | |tab| ``python3 setup.py install --prefix=`` *prefix*
 #
-# This will install ``cppad_py`` in the directory
+# This will install cppad_py in the directory
 #
 # | |tab| *prefix/libdir*\ ``/python3.``\ *minor* ``/site-packages/cppad_py``
 #
-# The following command can be used to test the installed version of
-# cppad_py:
-#
-# | |tab| ``python3 example/python/check_all.py``
-#
-# The following packages are additional requirements to execute
-# ``check_all.py``:
-# `scipy <https://scipy.org/>`_
-# `matplotlib <https://matplotlib.org/>`_.
-#
-#
-# Test
-# ****
-# These steps are optional and used to test that cppad_py
-# works on your system before installing it.
-# They do not yet work on mac OS.
-#
-#
-# build_local.py
-# ==============
-# Build a local copy of the Python cppad_py module using the command:
-#
-# | |tab| ``bin/build_local.py``
-#
-# This will create the *top_srcdir/* ``cppad_py`` directory.
-#
-# python
-# ======
-# The next step is to test the cppad_py on your system by executing
-# the following commands starting in *top_srcdir* :
-#
-# | |tab| ``python3 example/python/check_all.py``
-#
-# This test will use the local copy of *top_srcdir/* ``cppad_py``
-# if it is available. You can test the installed version,
-# if it is available, by removing the directory *top_srcdir/* ``cppad_py``
-# and re-executing the command above.
-#
-# c++
-# ===
-# After ``bin/build_local.py`` has run,
-# you can also test the cppad_py c++ interface
-# :ref:`cpp_lib<cpp_lib>` on your system by executing the following commands
-# starting in *top_srcdir* :
-#
-# | |tab| ``cd build``
-# | |tab| ``make check_example``
-#
-# import
-# ======
-# If you are in the *top_srcdir* directory,
-# you should be able to import cppad_py using the following commands:
-#
-# | |tab| ``python3``
-# | |tab| ``import cppad_py``
-# | |tab| ``quit`` ()
+# The ``check_all.py`` script can be used to test the installed version of
+# cppad_py; see above.
 #
 # Install Using Pip
 # *****************

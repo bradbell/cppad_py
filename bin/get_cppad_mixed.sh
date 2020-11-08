@@ -84,7 +84,13 @@ then
     exit 1
 fi
 # ---------------------------------------------------------------------------
+minor=$(echo "import sys; print(sys.version_info.minor)" | python3)
+# ---------------------------------------------------------------------------
 libdir=$(bin/libdir.py)
+export LD_LIBRARY_PATH="$cmake_install_prefix/$libdir"
+export DYLD_LIBRARY_PATH="$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="$LD_LIBRARY_PATH/pkgconfig"
+export PYTHONPATH="$LD_LIBRARY_PATH/python3.$minor/site-packages"
 # ---------------------------------------------------------------------------
 echo_eval bin/build_type.sh
 # ---------------------------------------------------------------------------

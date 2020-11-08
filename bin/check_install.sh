@@ -37,13 +37,7 @@ echo "libdir=$libdir"
 # ---------------------------------------------------------------------------
 # LD_LIBRARY_PATH
 # PYTHONPATH
-cat << EOF > check_install.py
-import sys
-minor = sys.version_info.minor
-print( minor )
-sys.exit(0)
-EOF
-minor=$(python3 check_install.py)
+minor=$(echo "import sys; print(sys.version_info.minor)" | python3)
 export LD_LIBRARY_PATH="${cmake_install_prefix}/${libdir}"
 export DYLD_LIBRARY_PATH="$LD_LIBRARY_PATH"
 export PYTHONPATH="$LD_LIBRARY_PATH/python3.$minor/site-packages"
@@ -87,12 +81,12 @@ then
     echo '  which xsrst.py'
     exit 1
 fi
+rm check_install.py
 # ---------------------------------------------------------------------------
 # install new version
 echo_eval python3 setup.py install --prefix=$cmake_install_prefix
 # ---------------------------------------------------------------------------
 echo_eval python3 example/python/check_all.py
-rm check_install.py
 # ---------------------------------------------------------------------------
 cppad_path="$cmake_install_prefix/bin"
 PATH="$cppad_path:$PATH"
