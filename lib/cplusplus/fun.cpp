@@ -433,7 +433,7 @@ Change The Dynamic Parameters
 Syntax
 ******
 
-| *f* . ``new_dynamic`` ( *dynamic* )
+| *f*\ ``.new_dynamic`` ( *dynamic* )
 
 f
 *
@@ -498,7 +498,7 @@ Jacobian of an AD Function
 
 Syntax
 ******
-*J* = *f* . ``jacobian`` ( *x* )
+*J* = *f*\ ``.jacobian`` ( *x* )
 
 f
 *
@@ -585,7 +585,7 @@ Hessian of an AD Function
 
 Syntax
 ******
-*H* = *f* . ``hessian`` ( *x* , *w* )
+*H* = *f*\ ``.hessian`` ( *x* , *w* )
 
 f
 *
@@ -708,7 +708,7 @@ Forward Mode AD
 
 Syntax
 ******
-*yp* = *f* . ``forward`` ( *p* , *xp* )
+*yp* = *f*\ ``.forward`` ( *p* , *xp* )
 
 Taylor Coefficient
 ******************
@@ -833,7 +833,7 @@ Reverse Mode AD
 
 Syntax
 ******
-*xq* = *f* . ``reverse`` ( *q* , *yq* )
+*xq* = *f*\ ``.reverse`` ( *q* , *yq* )
 
 f
 *
@@ -962,7 +962,7 @@ Optimize an AD Function
 
 Syntax
 ******
-*f* . ``optimize`` ()
+*f*\ ``.optimize`` ()
 
 Purpose
 *******
@@ -1006,8 +1006,8 @@ Json Representation of AD Computational Graph
 Syntax
 ******
 
-| *json* = *f* . ``to_json`` ()
-| *f* . ``from_json`` ()
+| *json* = *f*\ ``.to_json`` ()
+| *f*\ ``.from_json`` ()
 
 f
 *
