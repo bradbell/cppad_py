@@ -207,9 +207,9 @@ def check_rosen3_step(fun, ti, yi, h) :
 #
 # ok
 # **
-# This is true if the function *fun* . ``f`` *t* , *y* )
-# and the partials *fun* . ``f_t`` ( *t* , *y* ) ,
-# *fun* . ``f_y`` ( *t* , *y* ) agree.
+# This is true if the function *fun*\ ``.f`` *t* , *y* )
+# and the partials *fun*\ ``.f_t`` ( *t* , *y* ) ,
+# *fun*\ ``.f_y`` ( *t* , *y* ) agree.
 # Otherwise AD has detected an error in these functions.
 #
 # {xsrst_children
