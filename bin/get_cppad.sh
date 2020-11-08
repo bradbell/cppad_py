@@ -70,12 +70,17 @@ build_type='release'
 # cmake_install_prefix
 # --------------------
 # The actual prefix used for the install is
-# *cmake_install_prefix* ``.`` *build_type*
+#
+# | |tab| *cmake_install_prefix.build_type*
+#
 # and a soft link is created from *cmake_install_prefix* to this directory.
 #
 # build
 # -----
-# This subdirectory ``build.`` *build_type*
+# The subdirectory
+#
+# | |tab| ``build.``\ *build_type*
+#
 # is used to compile and test the software and a soft link is created from
 # ``build`` to this subdirectory.
 #
