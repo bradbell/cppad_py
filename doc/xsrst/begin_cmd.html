@@ -33,11 +33,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -198,9 +198,9 @@
 <div class="section" id="syntax">
 <span id="begin-cmd-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_begin_parent</span></code> <em>section_name</em> <code class="code docutils literal notranslate"><span class="pre">}</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_begin</span></code>        <em>section_name</em> <code class="code docutils literal notranslate"><span class="pre">}</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_end</span></code>          <em>section_name</em> <code class="code docutils literal notranslate"><span class="pre">}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_begin_parent</span></code> <em>section_name</em><code class="code docutils literal notranslate"><span class="pre">}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_begin</span></code>        <em>section_name</em><code class="code docutils literal notranslate"><span class="pre">}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_end</span></code>          <em>section_name</em><code class="code docutils literal notranslate"><span class="pre">}</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="section">
@@ -221,8 +221,10 @@ The section name is also added to the html keyword meta data.</p>
 <div class="section" id="output-file">
 <span id="begin-cmd-output-file"></span><span id="index-4"></span><h3>Output File<a class="headerlink" href="#output-file" title="Permalink to this headline">¶</a></h3>
 <p>The output file corresponding to <em>section_name</em> is</p>
-<p>        <a class="reference internal" href="xsrst_py.html#xsrst-py-command-line-arguments-sphinx-dir"><span class="std std-ref">sphinx_dir</span></a>
-<code class="docutils literal notranslate"><span class="pre">/xsrst/</span></code> <em>section_name</em> <code class="docutils literal notranslate"><span class="pre">.rst</span></code></p>
+<div class="line-block">
+<div class="line">        <em>sphinx_dir</em><code class="docutils literal notranslate"><span class="pre">/xsrst/</span></code><em>section_name</em><code class="docutils literal notranslate"><span class="pre">.rst</span></code></div>
+</div>
+<p>see <a class="reference internal" href="xsrst_py.html#xsrst-py-command-line-arguments-sphinx-dir"><span class="std std-ref">sphinx_dir</span></a></p>
 </div>
 <div class="section" id="parent-section">
 <span id="begin-cmd-parent-section"></span><span id="index-5"></span><h3>Parent Section<a class="headerlink" href="#parent-section" title="Permalink to this headline">¶</a></h3>

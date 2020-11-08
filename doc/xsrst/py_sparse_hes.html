@@ -39,11 +39,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -227,7 +227,7 @@
 <span id="py-sparse-hes-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><em>work</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.sparse_hes_work</span></code> ()</div>
-<div class="line"><em>n_sweep</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">sparse_hes</span></code> ( <em>subset</em> , <em>x</em> , <em>r</em> , <em>pattern</em> , <em>work</em> )</div>
+<div class="line"><em>n_sweep</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.sparse_hes</span></code> ( <em>subset</em> , <em>x</em> , <em>r</em> , <em>pattern</em> , <em>work</em> )</div>
 </div>
 </div>
 <div class="section" id="purpose">
@@ -322,7 +322,7 @@ for all the variables in the operation sequence..
 After a call to <code class="docutils literal notranslate"><span class="pre">sparse_hes</span></code>
 the zero order coefficients correspond to</p>
 <div class="line-block">
-<div class="line">        <em>f</em> . <code class="docutils literal notranslate"><span class="pre">forward(0</span></code> , <em>x</em> )</div>
+<div class="line">        <em>f</em><code class="docutils literal notranslate"><span class="pre">.forward(0</span></code> , <em>x</em> )</div>
 </div>
 <p>All the other forward mode coefficients are unspecified.</p>
 <div class="toctree-wrapper compound">

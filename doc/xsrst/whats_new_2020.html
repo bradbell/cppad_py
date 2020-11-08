@@ -29,11 +29,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -175,6 +175,7 @@
 <span id="id1"></span><h2>CppAD Py Changes During 2020<a class="headerlink" href="#cppad-py-changes-during-2020" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#whats-new-2020-previous-years"><span class="std std-ref">Previous Years</span></a></p></li>
+<li><p><a class="reference internal" href="#whats-new-2020-11-08"><span class="std std-ref">11-08</span></a></p></li>
 <li><p><a class="reference internal" href="#whats-new-2020-11-06"><span class="std std-ref">11-06</span></a></p></li>
 <li><p><a class="reference internal" href="#whats-new-2020-11-05"><span class="std std-ref">11-05</span></a></p></li>
 <li><p><a class="reference internal" href="#whats-new-2020-11-04"><span class="std std-ref">11-04</span></a></p></li>
@@ -232,8 +233,25 @@
 <span id="whats-new-2020-previous-years"></span><span id="index-1"></span><h3>Previous Years<a class="headerlink" href="#previous-years" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="whats_new_2018.html#id1"><span class="std std-ref">whats_new_2018</span></a></p>
 </div>
+<div class="section" id="whats-new-2020-11-08">
+<span id="id2"></span><h3>11-08<a class="headerlink" href="#whats-new-2020-11-08" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>Change setup.py <a class="reference internal" href="setup_py.html#setup-py-local-build"><span class="std std-ref">local build</span></a> and test instructions so they work on Mac OS.</p></li>
+<li><p>Fix <code class="docutils literal notranslate"><span class="pre">bin/get_cppad_mixed.sh</span></code> so that it is not necessary to set
+LD_LIBRARY_PATH or PKG_CONFIG_PATH before running it.</p></li>
+<li><p>Where appropriate, reduce the spacing between italic and literal font; e.g.,</p>
+<div class="line-block">
+<div class="line">        <em>prefix/libdir</em> <code class="docutils literal notranslate"><span class="pre">/python3.</span></code> <em>minor</em> <code class="docutils literal notranslate"><span class="pre">/site-packages/cppad_py</span></code></div>
+</div>
+<p>was changed to</p>
+<div class="line-block">
+<div class="line">        <em>prefix/libdir</em><code class="docutils literal notranslate"><span class="pre">/python3.</span></code><em>minor</em> <code class="docutils literal notranslate"><span class="pre">/site-packages/cppad_py</span></code></div>
+</div>
+</li>
+</ol>
+</div>
 <div class="section" id="whats-new-2020-11-06">
-<span id="id2"></span><h3>11-06<a class="headerlink" href="#whats-new-2020-11-06" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h3>11-06<a class="headerlink" href="#whats-new-2020-11-06" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>The install with
 <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-include-mixed"><span class="std std-ref">include_mixed</span></a> false was broken
@@ -249,12 +267,12 @@ value <a class="reference internal" href="setup_py.html#setup-py-libdir"><span c
 </ol>
 </div>
 <div class="section" id="whats-new-2020-11-05">
-<span id="id3"></span><h3>11-05<a class="headerlink" href="#whats-new-2020-11-05" title="Permalink to this headline">¶</a></h3>
+<span id="id4"></span><h3>11-05<a class="headerlink" href="#whats-new-2020-11-05" title="Permalink to this headline">¶</a></h3>
 <p>Advance to cppad_mixed-20201105.
 This fixes some problems with it’s install in Mac OS.</p>
 </div>
 <div class="section" id="whats-new-2020-11-04">
-<span id="id4"></span><h3>11-04<a class="headerlink" href="#whats-new-2020-11-04" title="Permalink to this headline">¶</a></h3>
+<span id="id5"></span><h3>11-04<a class="headerlink" href="#whats-new-2020-11-04" title="Permalink to this headline">¶</a></h3>
 <p>The install prefix for cppad in <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code>
 is called <em>cmake_install_prefix</em> in cppad_py,
 but it is called <em>cppad_prefix</em> in cppad.
@@ -262,32 +280,30 @@ The cmake command in <code class="docutils literal notranslate"><span class="pre
 fixed to account for this.</p>
 </div>
 <div class="section" id="whats-new-2020-11-03">
-<span id="id5"></span><h3>11-03<a class="headerlink" href="#whats-new-2020-11-03" title="Permalink to this headline">¶</a></h3>
+<span id="id6"></span><h3>11-03<a class="headerlink" href="#whats-new-2020-11-03" title="Permalink to this headline">¶</a></h3>
 <p>The install prefix name was changed from <em>cppad_prefix</em> to
 <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-cmake-install-prefix"><span class="std std-ref">cmake_install_prefix</span></a>.</p>
 </div>
 <div class="section" id="whats-new-2020-10-31">
-<span id="id6"></span><h3>10-31<a class="headerlink" href="#whats-new-2020-10-31" title="Permalink to this headline">¶</a></h3>
+<span id="id7"></span><h3>10-31<a class="headerlink" href="#whats-new-2020-10-31" title="Permalink to this headline">¶</a></h3>
 <p>Fix some problems with the macOS install when
 <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-include-mixed"><span class="std std-ref">include_fixed</span></a> is true.</p>
 </div>
 <div class="section" id="whats-new-2020-10-30">
-<span id="id7"></span><h3>10-30<a class="headerlink" href="#whats-new-2020-10-30" title="Permalink to this headline">¶</a></h3>
+<span id="id8"></span><h3>10-30<a class="headerlink" href="#whats-new-2020-10-30" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="setup_py.html#setup-py-install"><span class="std std-ref">install command</span></a> no longer creates
 a local copy of <code class="docutils literal notranslate"><span class="pre">cppad_py</span></code> for testing. (On macOS systems the
 local copy would cause problems during the install.)
-The <a class="reference internal" href="setup_py.html#setup-py-test-build-local-py"><span class="std std-ref">build_local.py</span></a> still builds the local
+The <a class="reference internal" href="setup_py.html#setup-py-local-build"><span class="std std-ref">Local Build</span></a> still builds the local
 copy for testing.</p>
 </div>
 <div class="section" id="whats-new-2020-10-29">
-<span id="id8"></span><h3>10-29<a class="headerlink" href="#whats-new-2020-10-29" title="Permalink to this headline">¶</a></h3>
-<dl class="simple">
-<dt># . The <em>cppad_libdir</em> setting was added to <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code>.</dt><dd><p>This fixed a problem on some systems where <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code>
-and <code class="docutils literal notranslate"><span class="pre">bin/get_cppad_mixed.sh</span></code> might install the cppad library
-in two different locations and confuse the setup procedure.</p>
-</dd>
-</dl>
+<span id="id9"></span><h3>10-29<a class="headerlink" href="#whats-new-2020-10-29" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
+<li><p>The <em>cppad_libdir</em> setting was added to <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code>.
+This fixed a problem on some systems where <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code>
+and <code class="docutils literal notranslate"><span class="pre">bin/get_cppad_mixed.sh</span></code> might install the cppad library
+in two different locations and confuse the setup procedure.</p></li>
 <li><p>Fix a problem with <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> where it sometimes puts the distribution
 in <code class="docutils literal notranslate"><span class="pre">site-packages/cppad_py-</span></code> <em>version</em> <code class="docutils literal notranslate"><span class="pre">.egg/cppad_py</span></code> instead of
 <code class="docutils literal notranslate"><span class="pre">site-packages/cppad_py</span></code>. This may have something to do with the
@@ -295,7 +311,7 @@ install egg being a directory instead of a zip file.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-10-28">
-<span id="id9"></span><h3>10-28<a class="headerlink" href="#whats-new-2020-10-28" title="Permalink to this headline">¶</a></h3>
+<span id="id10"></span><h3>10-28<a class="headerlink" href="#whats-new-2020-10-28" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Improve the <a class="reference internal" href="setup_py.html#id1"><span class="std std-ref">setup.py</span></a> install instructions.
 To be specific, change <code class="docutils literal notranslate"><span class="pre">python</span></code> to <code class="docutils literal notranslate"><span class="pre">python3</span></code> and edit the
@@ -305,19 +321,19 @@ posted to the remote repository (since the previous run of the script).</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-10-21">
-<span id="id10"></span><h3>10-21<a class="headerlink" href="#whats-new-2020-10-21" title="Permalink to this headline">¶</a></h3>
+<span id="id11"></span><h3>10-21<a class="headerlink" href="#whats-new-2020-10-21" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Add a second <a class="reference internal" href="mixed_optimize_fixed.html#mixed-optimize-fixed-examples"><span class="std std-ref">optimize_fixed example</span></a>.</p></li>
 <li><p>Advance to cppad-20201021 (this fixes a warning on some compilers).</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-10-19">
-<span id="id11"></span><h3>10-19<a class="headerlink" href="#whats-new-2020-10-19" title="Permalink to this headline">¶</a></h3>
+<span id="id12"></span><h3>10-19<a class="headerlink" href="#whats-new-2020-10-19" title="Permalink to this headline">¶</a></h3>
 <p>Add the non linear constraint functions of the fixed effects
 to the mixed class; see <a class="reference internal" href="mixed_fix_constraint.html#id1"><span class="std std-ref">Fixed Effects Constraint Function</span></a>.</p>
 </div>
 <div class="section" id="whats-new-2020-10-17">
-<span id="id12"></span><h3>10-17<a class="headerlink" href="#whats-new-2020-10-17" title="Permalink to this headline">¶</a></h3>
+<span id="id13"></span><h3>10-17<a class="headerlink" href="#whats-new-2020-10-17" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>The default value (corresponding to <code class="docutils literal notranslate"><span class="pre">None</span></code>)
 for <a class="reference internal" href="mixed_optimize_fixed.html#mixed-optimize-fixed-fixed-in-random-in"><span class="std std-ref">fixed_in (random_in)</span></a> in <code class="docutils literal notranslate"><span class="pre">optimize_fixed</span></code>
@@ -335,7 +351,7 @@ for an example see <a class="reference internal" href="a_double_unary_fun_xam_py
 </ol>
 </div>
 <div class="section" id="whats-new-2020-10-16">
-<span id="id13"></span><h3>10-16<a class="headerlink" href="#whats-new-2020-10-16" title="Permalink to this headline">¶</a></h3>
+<span id="id14"></span><h3>10-16<a class="headerlink" href="#whats-new-2020-10-16" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Add the <a class="reference internal" href="mixed.html#id1"><span class="std std-ref">Laplace Approximation of Mixed Effects Models</span></a> class an make it optional during the install process;
 see <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-include-mixed"><span class="std std-ref">include_mixed</span></a>.
@@ -348,13 +364,13 @@ can be installed at the same time.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-10-13">
-<span id="id14"></span><h3>10-13<a class="headerlink" href="#whats-new-2020-10-13" title="Permalink to this headline">¶</a></h3>
+<span id="id15"></span><h3>10-13<a class="headerlink" href="#whats-new-2020-10-13" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="xsrst_py.html#id1"><span class="std std-ref">Extract Sphinx RST</span></a> utility would crash if a section had <a class="reference internal" href="child_cmd.html#id1"><span class="std std-ref">Children Commands</span></a>
 and was <a class="reference internal" href="xsrst_py.html#xsrst-py-indentation"><span class="std std-ref">indented</span></a>.
 This has been fixed</p>
 </div>
 <div class="section" id="whats-new-2020-10-02">
-<span id="id15"></span><h3>10-02<a class="headerlink" href="#whats-new-2020-10-02" title="Permalink to this headline">¶</a></h3>
+<span id="id16"></span><h3>10-02<a class="headerlink" href="#whats-new-2020-10-02" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>The library documentation that is for both c++ and python was improved.
 To be specific, both the c++ and python syntax was included.
@@ -370,7 +386,7 @@ This reduces the change of a random failure.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-09-30">
-<span id="id16"></span><h3>09-30<a class="headerlink" href="#whats-new-2020-09-30" title="Permalink to this headline">¶</a></h3>
+<span id="id17"></span><h3>09-30<a class="headerlink" href="#whats-new-2020-09-30" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">error_message</span></code> routine was replaced by <a class="reference internal" href="exception.html#id1"><span class="std std-ref">exceptions</span></a>
 (<code class="docutils literal notranslate"><span class="pre">error_message</span></code> was not thread safe).
@@ -381,7 +397,7 @@ messages (cppad error messages still require using the debug version).</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-09-14">
-<span id="id17"></span><h3>09-14<a class="headerlink" href="#whats-new-2020-09-14" title="Permalink to this headline">¶</a></h3>
+<span id="id18"></span><h3>09-14<a class="headerlink" href="#whats-new-2020-09-14" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>xsrst: the <a class="reference internal" href="xsrst_py.html#xsrst-py-command-line-arguments-target"><span class="std std-ref">target</span></a>
 command line argument was added and the section numbers were removed
@@ -397,7 +413,7 @@ for the parent come before its children.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-09-13">
-<span id="id18"></span><h3>09-13<a class="headerlink" href="#whats-new-2020-09-13" title="Permalink to this headline">¶</a></h3>
+<span id="id19"></span><h3>09-13<a class="headerlink" href="#whats-new-2020-09-13" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>The text <code class="docutils literal notranslate"><span class="pre">xsrst:</span></code> was added to the beginning of each whats new item
 (see below) that only pertained to the <a class="reference internal" href="xsrst_py.html#id1"><span class="std std-ref">xsrst.py</span></a> program.</p></li>
@@ -413,7 +429,7 @@ command line syntax.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-09-12">
-<span id="id19"></span><h3>09-12<a class="headerlink" href="#whats-new-2020-09-12" title="Permalink to this headline">¶</a></h3>
+<span id="id20"></span><h3>09-12<a class="headerlink" href="#whats-new-2020-09-12" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>xsrst: A table of contents that only contains section titles,
 not headings within a section, was added.</p></li>
@@ -423,7 +439,7 @@ can not begin with <code class="docutils literal notranslate"><span class="pre">
 </ol>
 </div>
 <div class="section" id="whats-new-2020-07-31">
-<span id="id20"></span><h3>07-31<a class="headerlink" href="#whats-new-2020-07-31" title="Permalink to this headline">¶</a></h3>
+<span id="id21"></span><h3>07-31<a class="headerlink" href="#whats-new-2020-07-31" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>xsrst: An empty line at beginning of xsrst input file was causing it to crash
 (this has been fixed).</p></li>
@@ -435,12 +451,12 @@ the first heading under the title <a class="reference internal" href="cppad_py.h
 </ol>
 </div>
 <div class="section" id="whats-new-2020-07-30">
-<span id="id21"></span><h3>07-30<a class="headerlink" href="#whats-new-2020-07-30" title="Permalink to this headline">¶</a></h3>
+<span id="id22"></span><h3>07-30<a class="headerlink" href="#whats-new-2020-07-30" title="Permalink to this headline">¶</a></h3>
 <p>xsrst: The words ‘anl’, ‘dir’, ‘mcs’ were removed from the xsrst dictionary.
 The word ‘initialization’ was added to the xsrst dictionary.</p>
 </div>
 <div class="section" id="whats-new-2020-07-29">
-<span id="id22"></span><h3>07-29<a class="headerlink" href="#whats-new-2020-07-29" title="Permalink to this headline">¶</a></h3>
+<span id="id23"></span><h3>07-29<a class="headerlink" href="#whats-new-2020-07-29" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>xsrst: Add the optional command line argument
 <a class="reference internal" href="xsrst_py.html#xsrst-py-command-line-arguments-line-increment"><span class="std std-ref">line_increment</span></a>.
@@ -451,7 +467,7 @@ Fix <a class="reference internal" href="file_cmd.html#id1"><span class="std std-
 </ol>
 </div>
 <div class="section" id="whats-new-2020-07-28">
-<span id="id23"></span><h3>07-28<a class="headerlink" href="#whats-new-2020-07-28" title="Permalink to this headline">¶</a></h3>
+<span id="id24"></span><h3>07-28<a class="headerlink" href="#whats-new-2020-07-28" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>xsrst: Move version number from the title in <a class="reference internal" href="cppad_py.html#id1"><span class="std std-ref">cppad_py</span></a> to
 the documentation navigation side bar.</p></li>
@@ -466,7 +482,7 @@ and <em>spell_file</em> to
 </ol>
 </div>
 <div class="section" id="whats-new-2020-07-25">
-<span id="id24"></span><h3>07-25<a class="headerlink" href="#whats-new-2020-07-25" title="Permalink to this headline">¶</a></h3>
+<span id="id25"></span><h3>07-25<a class="headerlink" href="#whats-new-2020-07-25" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>xsrst: Install <a class="reference internal" href="xsrst_py.html#id1"><span class="std std-ref">xsrst.py</span></a> during the
 <a class="reference internal" href="setup_py.html#setup-py-install"><span class="std std-ref">install</span></a> procedure
@@ -480,7 +496,7 @@ headings from the <a class="reference internal" href="../genindex.html"><span cl
 </ol>
 </div>
 <div class="section" id="whats-new-2020-07-24">
-<span id="id25"></span><h3>07-24<a class="headerlink" href="#whats-new-2020-07-24" title="Permalink to this headline">¶</a></h3>
+<span id="id26"></span><h3>07-24<a class="headerlink" href="#whats-new-2020-07-24" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>xsrst: Add the <a class="reference internal" href="xsrst_py.html#id1"><span class="std std-ref">xsrst.py</span></a> program
 which extracts sphinx <code class="docutils literal notranslate"><span class="pre">*.rst</span></code> files from source code.
@@ -492,7 +508,7 @@ which are mostly sphinx rst with a few extra xsrst commands.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-07-18">
-<span id="id26"></span><h3>07-18<a class="headerlink" href="#whats-new-2020-07-18" title="Permalink to this headline">¶</a></h3>
+<span id="id27"></span><h3>07-18<a class="headerlink" href="#whats-new-2020-07-18" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>The experimental <code class="docutils literal notranslate"><span class="pre">bin/xsrst.py</span></code> program was added.
 This program runs its tests and builds its documentation
@@ -504,7 +520,7 @@ sphinx.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-07-05">
-<span id="id27"></span><h3>07-05<a class="headerlink" href="#whats-new-2020-07-05" title="Permalink to this headline">¶</a></h3>
+<span id="id28"></span><h3>07-05<a class="headerlink" href="#whats-new-2020-07-05" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>The <a class="reference internal" href="ad_vec_cppad2std.html#ad-vec-cppad2std-syntax"><span class="std std-ref">prototype</span></a> for <code class="docutils literal notranslate"><span class="pre">vec2a_double</span></code>
 was the same as for <a class="reference internal" href="d_vec_cppad2std.html#id1"><span class="std std-ref">d_vec_std2cppad</span></a>.
@@ -516,12 +532,12 @@ to_json was changed to from_json</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-05-17">
-<span id="id28"></span><h3>05-17<a class="headerlink" href="#whats-new-2020-05-17" title="Permalink to this headline">¶</a></h3>
+<span id="id29"></span><h3>05-17<a class="headerlink" href="#whats-new-2020-05-17" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">abs</span></code> <a class="reference internal" href="a_double_unary_fun.html#id1"><span class="std std-ref">a_double_unary_fun</span></a> was added
 (works the same as the <code class="docutils literal notranslate"><span class="pre">fabs</span></code> function).</p>
 </div>
 <div class="section" id="whats-new-2020-05-16">
-<span id="id29"></span><h3>05-16<a class="headerlink" href="#whats-new-2020-05-16" title="Permalink to this headline">¶</a></h3>
+<span id="id30"></span><h3>05-16<a class="headerlink" href="#whats-new-2020-05-16" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>A discussion of some subtle issues,
 when interpolation is used to define an ODE,
@@ -532,13 +548,13 @@ SEIRWD model.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-05-15">
-<span id="id30"></span><h3>05-15<a class="headerlink" href="#whats-new-2020-05-15" title="Permalink to this headline">¶</a></h3>
+<span id="id31"></span><h3>05-15<a class="headerlink" href="#whats-new-2020-05-15" title="Permalink to this headline">¶</a></h3>
 <p>The file <code class="docutils literal notranslate"><span class="pre">ode_solve.py</span></code> was moved to <code class="docutils literal notranslate"><span class="pre">ode_multi_step.py</span></code>
 and <a class="reference internal" href="numeric_ode_multi_step.html#id1"><span class="std std-ref">numeric_ode_multi_step</span></a> was extended to allow for different ODE solvers
 (steppers).</p>
 </div>
 <div class="section" id="whats-new-2020-05-14">
-<span id="id31"></span><h3>05-14<a class="headerlink" href="#whats-new-2020-05-14" title="Permalink to this headline">¶</a></h3>
+<span id="id32"></span><h3>05-14<a class="headerlink" href="#whats-new-2020-05-14" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>The example semi-stiff integrator <a class="reference internal" href="numeric_rosen3_step.html#id1"><span class="std std-ref">numeric_rosen3_step</span></a> was added.</p></li>
 <li><p>The example file <code class="docutils literal notranslate"><span class="pre">runge4.py</span></code> was moved to <code class="docutils literal notranslate"><span class="pre">ode_solve.py</span></code>
@@ -552,7 +568,7 @@ AD inversion of matrices.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-05-12">
-<span id="id32"></span><h3>05-12<a class="headerlink" href="#whats-new-2020-05-12" title="Permalink to this headline">¶</a></h3>
+<span id="id33"></span><h3>05-12<a class="headerlink" href="#whats-new-2020-05-12" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>More improvements to were made to
 <a class="reference internal" href="numeric_covid_19_xam_py.html#id1"><span class="std std-ref">covid-19</span></a> example.</p></li>
@@ -563,14 +579,14 @@ added to the SEIRWD model using a W compartment (Will die compartment).</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-05-09">
-<span id="id33"></span><h3>05-09<a class="headerlink" href="#whats-new-2020-05-09" title="Permalink to this headline">¶</a></h3>
+<span id="id34"></span><h3>05-09<a class="headerlink" href="#whats-new-2020-05-09" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="numeric_covid_19_xam_py.html#id1"><span class="std std-ref">covid-19_modeling_example</span></a> application
 of AD is changing on a regular basis, so the details of the
 changes will no longer be tracked in this file, just see current
 example if you are interested.</p>
 </div>
 <div class="section" id="whats-new-2020-05-08">
-<span id="id34"></span><h3>05-08<a class="headerlink" href="#whats-new-2020-05-08" title="Permalink to this headline">¶</a></h3>
+<span id="id35"></span><h3>05-08<a class="headerlink" href="#whats-new-2020-05-08" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">numeric_seirs_fit_xam.py</span></code> example was renamed
 <a class="reference internal" href="numeric_covid_19_xam_py.html#id1"><span class="std std-ref">numeric_covid_19_xam_py</span></a>.
@@ -588,7 +604,7 @@ of the optimal parameters.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-05-07">
-<span id="id35"></span><h3>05-07<a class="headerlink" href="#whats-new-2020-05-07" title="Permalink to this headline">¶</a></h3>
+<span id="id36"></span><h3>05-07<a class="headerlink" href="#whats-new-2020-05-07" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>The function <code class="docutils literal notranslate"><span class="pre">scipy.misc.factorial</span></code>
 has been deprecated so change it to
@@ -604,7 +620,7 @@ capabilities.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-05-06">
-<span id="id36"></span><h3>05-06<a class="headerlink" href="#whats-new-2020-05-06" title="Permalink to this headline">¶</a></h3>
+<span id="id37"></span><h3>05-06<a class="headerlink" href="#whats-new-2020-05-06" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Add the following utility examples:
 <a class="reference internal" href="numeric_optimize_fun_class.html#id1"><span class="std std-ref">numeric_optimize_fun_class</span></a>,
@@ -619,50 +635,49 @@ install instructions for the Mac.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-05-05">
-<span id="id37"></span><h3>05-05<a class="headerlink" href="#whats-new-2020-05-05" title="Permalink to this headline">¶</a></h3>
+<span id="id38"></span><h3>05-05<a class="headerlink" href="#whats-new-2020-05-05" title="Permalink to this headline">¶</a></h3>
 <p>Add the <a class="reference internal" href="numeric_runge4_step_xam_py.html#id1"><span class="std std-ref">numeric_runge4_step_xam_py</span></a> example.</p>
 </div>
 <div class="section" id="whats-new-2020-05-04">
-<span id="id38"></span><h3>05-04<a class="headerlink" href="#whats-new-2020-05-04" title="Permalink to this headline">¶</a></h3>
+<span id="id39"></span><h3>05-04<a class="headerlink" href="#whats-new-2020-05-04" title="Permalink to this headline">¶</a></h3>
 <p>Add the <a class="reference internal" href="numeric_optimize_fun_xam_py.html#id1"><span class="std std-ref">numeric_optimize_fun_xam_py</span></a> example.</p>
 </div>
 <div class="section" id="whats-new-2020-04-28">
-<span id="id39"></span><h3>04-28<a class="headerlink" href="#whats-new-2020-04-28" title="Permalink to this headline">¶</a></h3>
+<span id="id40"></span><h3>04-28<a class="headerlink" href="#whats-new-2020-04-28" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="py_fun_json.html#py-fun-json-from-json"><span class="std std-ref">f_from_json()</span></a> function was added.
 In addition, the
 <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-f-empty-function"><span class="std std-ref">empty_function</span></a> constructor was added.</p>
 </div>
 <div class="section" id="whats-new-2020-04-27">
-<span id="id40"></span><h3>04-27<a class="headerlink" href="#whats-new-2020-04-27" title="Permalink to this headline">¶</a></h3>
+<span id="id41"></span><h3>04-27<a class="headerlink" href="#whats-new-2020-04-27" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> program now installs a separate copy of CppAD
 and provides instructions at the end for modifying your
 <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> ; see
 <a class="reference internal" href="install_error.html#install-error-cppad-library-missing"><span class="std std-ref">cppad_library_missing</span></a>.</p>
 </div>
 <div class="section" id="whats-new-2020-04-26">
-<span id="id41"></span><h3>04-26<a class="headerlink" href="#whats-new-2020-04-26" title="Permalink to this headline">¶</a></h3>
+<span id="id42"></span><h3>04-26<a class="headerlink" href="#whats-new-2020-04-26" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> program was modified to try to automatically solve the
 <a class="reference internal" href="install_error.html#install-error-cppad-library-missing"><span class="std std-ref">cppad_library_missing</span></a> problem.</p>
 </div>
 <div class="section" id="whats-new-2020-04-25">
-<span id="id42"></span><h3>04-25<a class="headerlink" href="#whats-new-2020-04-25" title="Permalink to this headline">¶</a></h3>
+<span id="id43"></span><h3>04-25<a class="headerlink" href="#whats-new-2020-04-25" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="py_fun_json.html#py-fun-json-to-json"><span class="std std-ref">f_to_json()</span></a> function was added.</p>
 </div>
 <div class="section" id="whats-new-2020-04-24">
-<span id="id43"></span><h3>04-24<a class="headerlink" href="#whats-new-2020-04-24" title="Permalink to this headline">¶</a></h3>
+<span id="id44"></span><h3>04-24<a class="headerlink" href="#whats-new-2020-04-24" title="Permalink to this headline">¶</a></h3>
 <p>The newer Mac systems seems to require that one use
 <code class="docutils literal notranslate"><span class="pre">-stdlib=libc++</span></code> compile and link flag.
 The install has been changed to check for and adapt to this condition.
 In addition, <a class="reference internal" href="setup_py.html#id1"><span class="std std-ref">setup_py</span></a> now runs the <code class="docutils literal notranslate"><span class="pre">cmake</span></code> command; i.e.,
-the user no longer needs to run <code class="docutils literal notranslate"><span class="pre">cmake</span></code> to test the
-<a class="reference internal" href="setup_py.html#setup-py-test-c"><span class="std std-ref">c++</span></a> library.</p>
+the user no longer needs to run <code class="docutils literal notranslate"><span class="pre">cmake</span></code> to test the C++ library.</p>
 </div>
 <div class="section" id="whats-new-2020-04-23">
-<span id="id44"></span><h3>04-23<a class="headerlink" href="#whats-new-2020-04-23" title="Permalink to this headline">¶</a></h3>
+<span id="id45"></span><h3>04-23<a class="headerlink" href="#whats-new-2020-04-23" title="Permalink to this headline">¶</a></h3>
 <p>Add an <a class="reference internal" href="install_error.html#id1"><span class="std std-ref">install_error</span></a> section to the documentation.</p>
 </div>
 <div class="section" id="whats-new-2020-04-22">
-<span id="id45"></span><h3>04-22<a class="headerlink" href="#whats-new-2020-04-22" title="Permalink to this headline">¶</a></h3>
+<span id="id46"></span><h3>04-22<a class="headerlink" href="#whats-new-2020-04-22" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Instructions were added for
 <a class="reference internal" href="setup_py.html#setup-py-install-using-pip"><span class="std std-ref">installing_using_pip</span></a>.</p></li>
@@ -681,7 +696,7 @@ is a numpy array of <code class="docutils literal notranslate"><span class="pre"
 </ol>
 </div>
 <div class="section" id="whats-new-2020-04-20">
-<span id="id46"></span><h3>04-20<a class="headerlink" href="#whats-new-2020-04-20" title="Permalink to this headline">¶</a></h3>
+<span id="id47"></span><h3>04-20<a class="headerlink" href="#whats-new-2020-04-20" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Move configuration setting from <a class="reference internal" href="setup_py.html#id1"><span class="std std-ref">setup_py</span></a> to
 <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings"><span class="std std-ref">bin/get_cppad_sh</span></a>.</p></li>
@@ -690,7 +705,7 @@ Install instructions for pip will be added soon.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-04-19">
-<span id="id47"></span><h3>04-19<a class="headerlink" href="#whats-new-2020-04-19" title="Permalink to this headline">¶</a></h3>
+<span id="id48"></span><h3>04-19<a class="headerlink" href="#whats-new-2020-04-19" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Move the python source that gets distributed from <code class="docutils literal notranslate"><span class="pre">lib/python</span></code>
 to <code class="docutils literal notranslate"><span class="pre">lib/python/cppad_py</span></code> so that more like a standard python package.</p></li>
@@ -699,7 +714,7 @@ some of the <code class="docutils literal notranslate"><span class="pre">setup.p
 </ol>
 </div>
 <div class="section" id="whats-new-2020-04-18">
-<span id="id48"></span><h3>04-18<a class="headerlink" href="#whats-new-2020-04-18" title="Permalink to this headline">¶</a></h3>
+<span id="id49"></span><h3>04-18<a class="headerlink" href="#whats-new-2020-04-18" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Change <em>yq</em> to <em>xq</em> , correct documentation,
 for <em>xq</em> in the
@@ -710,7 +725,7 @@ reverse mode documentation.</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-04-13">
-<span id="id49"></span><h3>04-13<a class="headerlink" href="#whats-new-2020-04-13" title="Permalink to this headline">¶</a></h3>
+<span id="id50"></span><h3>04-13<a class="headerlink" href="#whats-new-2020-04-13" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>The <em>z</em> =  <code class="docutils literal notranslate"><span class="pre">pow</span></code> ( <em>x</em> , <em>y</em> ) functions was added; see
 <a class="reference internal" href="a_double_binary.html#id1"><span class="std std-ref">a_double_binary</span></a>.</p></li>
@@ -720,7 +735,7 @@ and improve the notation in the
 </ol>
 </div>
 <div class="section" id="whats-new-2020-04-12">
-<span id="id50"></span><h3>04-12<a class="headerlink" href="#whats-new-2020-04-12" title="Permalink to this headline">¶</a></h3>
+<span id="id51"></span><h3>04-12<a class="headerlink" href="#whats-new-2020-04-12" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Add the <code class="docutils literal notranslate"><span class="pre">erf</span></code> function was added to the
 list of <code class="docutils literal notranslate"><span class="pre">a_double</span></code> unary <a class="reference internal" href="a_double_unary_fun.html#a-double-unary-fun-fun"><span class="std std-ref">fun</span></a>
@@ -728,12 +743,12 @@ that have been implemented.</p></li>
 <li><p>The dynamic parameter argument was missing from the
 <a class="reference internal" href="py_independent.html#py-independent-syntax"><span class="std std-ref">syntax</span></a> for the python version
 of the <code class="docutils literal notranslate"><span class="pre">independent</span></code> function.  This has been fixed.</p></li>
-<li><p>Improve the <a class="reference internal" href="setup_py.html#setup-py-test"><span class="std std-ref">test</span></a> and <a class="reference internal" href="setup_py.html#setup-py-install"><span class="std std-ref">install</span></a>
+<li><p>Improve the test and <a class="reference internal" href="setup_py.html#setup-py-install"><span class="std std-ref">install</span></a>
 discussion in <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> .</p></li>
 </ol>
 </div>
 <div class="section" id="whats-new-2020-04-10">
-<span id="id51"></span><h3>04-10<a class="headerlink" href="#whats-new-2020-04-10" title="Permalink to this headline">¶</a></h3>
+<span id="id52"></span><h3>04-10<a class="headerlink" href="#whats-new-2020-04-10" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Change the documentation display on the web using a more recent version of
 the documentation program <code class="docutils literal notranslate"><span class="pre">omhelp-20200130</span></code> .</p></li>

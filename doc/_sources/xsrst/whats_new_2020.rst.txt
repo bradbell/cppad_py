@@ -14,6 +14,7 @@ whats_new_2020
 CppAD Py Changes During 2020
 ############################
 - :ref:`whats_new_2020.previous_years`
+- :ref:`whats_new_2020.11-08`
 - :ref:`whats_new_2020.11-06`
 - :ref:`whats_new_2020.11-05`
 - :ref:`whats_new_2020.11-04`
@@ -82,6 +83,23 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+.. _whats_new_2020.11-08:
+
+11-08
+*****
+#.  Change setup.py :ref:`local build<setup_py.local_build>` and test instructions so they work on Mac OS.
+
+#.  Fix ``bin/get_cppad_mixed.sh`` so that it is not necessary to set
+    LD_LIBRARY_PATH or PKG_CONFIG_PATH before running it.
+
+#.  Where appropriate, reduce the spacing between italic and literal font; e.g.,
+
+    | |tab| *prefix/libdir* ``/python3.`` *minor* ``/site-packages/cppad_py``
+
+    was changed to
+
+    | |tab| *prefix/libdir*\ ``/python3.``\ *minor* ``/site-packages/cppad_py``
+
 .. _whats_new_2020.11-06:
 
 11-06
@@ -138,14 +156,14 @@ Fix some problems with the macOS install when
 The :ref:`install command<setup_py.install>` no longer creates
 a local copy of ``cppad_py`` for testing. (On macOS systems the
 local copy would cause problems during the install.)
-The :ref:`setup_py.test.build_local.py` still builds the local
+The :ref:`setup_py.local_build` still builds the local
 copy for testing.
 
 .. _whats_new_2020.10-29:
 
 10-29
 *****
-# . The *cppad_libdir* setting was added to ``bin/get_cppad.sh``.
+#.  The *cppad_libdir* setting was added to ``bin/get_cppad.sh``.
     This fixed a problem on some systems where ``bin/get_cppad.sh``
     and ``bin/get_cppad_mixed.sh`` might install the cppad library
     in two different locations and confuse the setup procedure.
@@ -560,8 +578,7 @@ The newer Mac systems seems to require that one use
 ``-stdlib=libc++`` compile and link flag.
 The install has been changed to check for and adapt to this condition.
 In addition, :ref:`setup_py<setup_py>` now runs the ``cmake`` command; i.e.,
-the user no longer needs to run ``cmake`` to test the
-:ref:`c++<setup_py.test.c++>` library.
+the user no longer needs to run ``cmake`` to test the C++ library.
 
 .. _whats_new_2020.04-23:
 
@@ -643,7 +660,7 @@ Add an :ref:`install_error<install_error>` section to the documentation.
 #.  The dynamic parameter argument was missing from the
     :ref:`syntax<py_independent.syntax>` for the python version
     of the ``independent`` function.  This has been fixed.
-#.  Improve the :ref:`test<setup_py.test>` and :ref:`install<setup_py.install>`
+#.  Improve the test and :ref:`install<setup_py.install>`
     discussion in ``setup.py`` .
 
 .. _whats_new_2020.04-10:

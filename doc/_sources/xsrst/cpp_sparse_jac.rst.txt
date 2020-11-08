@@ -37,8 +37,8 @@ Syntax
 ******
 
 | *work* =  ``cppad_py::sparse_jac_work`` ()
-| *n_sweep* = *f* . ``sparse_jac_for`` ( *subset* , *x* , *pattern* , *work* )
-| *n_sweep* = *f* . ``sparse_jac_rev`` ( *subset* , *x* , *pattern* , *work* )
+| *n_sweep* = *f*\ ``.sparse_jac_for`` ( *subset* , *x* , *pattern* , *work* )
+| *n_sweep* = *f*\ ``.sparse_jac_rev`` ( *subset* , *x* , *pattern* , *work* )
 
 .. meta::
    :keywords: purpose
@@ -97,7 +97,7 @@ f
 *
 This object has prototype
 
-| |tab| ``ADFun`` < *Base* > *f*
+| |tab| ``ADFun`` *<Base>* *f*
 
 Note that the Taylor coefficients stored in *f* are affected
 by this operation; see

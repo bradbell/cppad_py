@@ -27,7 +27,7 @@ Size of a Vector
 
 Syntax
 ******
-*n* = *v* . ``size`` ()
+*n* = *v*\ ``.size`` ()
 
 .. meta::
    :keywords: v

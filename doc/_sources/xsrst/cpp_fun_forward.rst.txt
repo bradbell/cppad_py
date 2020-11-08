@@ -34,7 +34,7 @@ Forward Mode AD
 
 Syntax
 ******
-*yp* = *f* . ``forward`` ( *p* , *xp* )
+*yp* = *f*\ ``.forward`` ( *p* , *xp* )
 
 .. meta::
    :keywords: taylor, coefficient

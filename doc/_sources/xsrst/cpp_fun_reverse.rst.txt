@@ -34,7 +34,7 @@ Reverse Mode AD
 
 Syntax
 ******
-*xq* = *f* . ``reverse`` ( *q* , *yq* )
+*xq* = *f*\ ``.reverse`` ( *q* , *yq* )
 
 .. meta::
    :keywords: f

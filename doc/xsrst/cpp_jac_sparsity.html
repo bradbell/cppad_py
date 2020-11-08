@@ -38,11 +38,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -228,8 +228,8 @@
 <div class="section" id="syntax">
 <span id="cpp-jac-sparsity-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><em>f</em> . <code class="docutils literal notranslate"><span class="pre">for_jac_sparsity</span></code> ( <em>pattern_in</em> , <em>pattern_out</em> )</div>
-<div class="line"><em>f</em> . <code class="docutils literal notranslate"><span class="pre">rev_jac_sparsity</span></code> ( <em>pattern_in</em> , <em>pattern_out</em> )</div>
+<div class="line"><em>f</em><code class="docutils literal notranslate"><span class="pre">.for_jac_sparsity</span></code> ( <em>pattern_in</em> , <em>pattern_out</em> )</div>
+<div class="line"><em>f</em><code class="docutils literal notranslate"><span class="pre">.rev_jac_sparsity</span></code> ( <em>pattern_in</em> , <em>pattern_out</em> )</div>
 </div>
 </div>
 <div class="section" id="purpose">
@@ -285,7 +285,7 @@ This is a sparsity pattern for <span class="math notranslate nohighlight">\(R\)<
 <span id="cpp-jac-sparsity-pattern-out"></span><span id="index-8"></span><h3>pattern_out<a class="headerlink" href="#pattern-out" title="Permalink to this headline">¶</a></h3>
 <p>This argument has prototype</p>
 <div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">sparse_rc</span></code> &lt; <em>SizeVector</em> &gt; <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> <em>pattern_out</em></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">sparse_rc&lt;</span></code><em>SizeVector</em><code class="docutils literal notranslate"><span class="pre">&gt;&amp;</span></code> <em>pattern_out</em></div>
 </div>
 <p>This input value of <em>pattern_out</em> does not matter.
 Upon return <em>pattern_out</em> is a sparsity pattern for

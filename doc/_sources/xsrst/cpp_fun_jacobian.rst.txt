@@ -29,7 +29,7 @@ Jacobian of an AD Function
 
 Syntax
 ******
-*J* = *f* . ``jacobian`` ( *x* )
+*J* = *f*\ ``.jacobian`` ( *x* )
 
 .. meta::
    :keywords: f

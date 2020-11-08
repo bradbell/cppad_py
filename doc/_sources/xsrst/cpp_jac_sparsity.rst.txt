@@ -34,8 +34,8 @@ Jacobian Sparsity Patterns
 Syntax
 ******
 
-| *f* . ``for_jac_sparsity`` ( *pattern_in* , *pattern_out* )
-| *f* . ``rev_jac_sparsity`` ( *pattern_in* , *pattern_out* )
+| *f*\ ``.for_jac_sparsity`` ( *pattern_in* , *pattern_out* )
+| *f*\ ``.rev_jac_sparsity`` ( *pattern_in* , *pattern_out* )
 
 .. meta::
    :keywords: purpose
@@ -145,7 +145,7 @@ pattern_out
 ***********
 This argument has prototype
 
-| |tab| ``sparse_rc`` < *SizeVector* > ``&`` *pattern_out*
+| |tab| ``sparse_rc<``\ *SizeVector*\ ``>&`` *pattern_out*
 
 This input value of *pattern_out* does not matter.
 Upon return *pattern_out* is a sparsity pattern for

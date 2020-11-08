@@ -33,8 +33,8 @@ Hessian Sparsity Patterns
 Syntax
 ******
 
-| *f* . ``for_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
-| *f* . ``rev_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
+| *f*\ ``.for_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
+| *f*\ ``.rev_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
 
 .. meta::
    :keywords: purpose
@@ -128,7 +128,7 @@ pattern_out
 ***********
 This argument has prototype
 
-| |tab| ``sparse_rc`` < *SizeVector* > ``&`` *pattern_out*
+| |tab| ``sparse_rc<``\ *SizeVector*\ ``>&`` *pattern_out*
 
 This input value of *pattern_out* does not matter.
 Upon return *pattern_out* is a sparsity pattern for

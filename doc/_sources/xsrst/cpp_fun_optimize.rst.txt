@@ -27,7 +27,7 @@ Optimize an AD Function
 
 Syntax
 ******
-*f* . ``optimize`` ()
+*f*\ ``.optimize`` ()
 
 .. meta::
    :keywords: purpose

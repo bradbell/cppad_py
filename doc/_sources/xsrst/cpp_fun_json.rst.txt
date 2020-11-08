@@ -30,8 +30,8 @@ Json Representation of AD Computational Graph
 Syntax
 ******
 
-| *json* = *f* . ``to_json`` ()
-| *f* . ``from_json`` ()
+| *json* = *f*\ ``.to_json`` ()
+| *f*\ ``.from_json`` ()
 
 .. meta::
    :keywords: f
