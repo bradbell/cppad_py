@@ -32,15 +32,15 @@ Syntax
 ******
 
 | *pattern* =  ``cppad_py::sparse_rc`` ()
-| *pattern* . ``resize`` ( *nr* , *nc* , *nnz* )
-| *nr* = *pattern* . ``nr`` ()
-| *nc* = *pattern* . ``nc`` ()
-| *nnz* = *pattern* . ``nnz`` ()
-| *pattern* . ``put`` ( *k* , *r* , *c* )
-| *row* = *pattern* . ``row`` ()
-| *col* = *pattern* . ``col`` ()
-| *row_major* = *pattern* . ``row_major`` ()
-| *col_major* = *pattern* . ``col_major`` ()
+| *pattern*\ ``.resize`` ( *nr* , *nc* , *nnz* )
+| *nr* = *pattern*\ ``.nr`` ()
+| *nc* = *pattern*\ ``.nc`` ()
+| *nnz* = *pattern*\ ``.nnz`` ()
+| *pattern*\ ``.put`` ( *k* , *r* , *c* )
+| *row* = *pattern*\ ``.row`` ()
+| *col* = *pattern*\ ``.col`` ()
+| *row_major* = *pattern*\ ``.row_major`` ()
+| *col_major* = *pattern*\ ``.col_major`` ()
 
 pattern
 *******
@@ -295,15 +295,15 @@ Syntax
 ******
 
 | *matrix* =  ``cppad_py::sparse_rcv`` ( *pattern* )
-| *nr* = *matrix* . ``nr`` ()
-| *nc* = *matrix* . ``nc`` ()
-| *nnz* =  ``matrix`` . *nnz* ()
-| *matrix* . ``put`` ( *k* , *v* )
-| *row* = *matrix* . ``row`` ()
-| *col* = *matrix* . ``col`` ()
-| *val* = *matrix* . ``val`` ()
-| *row_major* = *matrix* . ``row_major`` ()
-| *col_major* = *matrix* . ``col_major`` ()
+| *nr* = *matrix*\ ``.nr()``
+| *nc* = *matrix*\ ``.nc()``
+| *nnz* =  *matrix*\ ``.nnz()``
+| *matrix*\ ``.put`` ( *k* , *v* )
+| *row* = *matrix*\ ``.row()``
+| *col* = *matrix*\ ``.col()``
+| *val* = *matrix*\ ``.val()``
+| *row_major* = *matrix*\ ``.row_major()``
+| *col_major* = *matrix*\ ``.col_major()``
 
 pattern
 *******
@@ -542,8 +542,8 @@ Jacobian Sparsity Patterns
 Syntax
 ******
 
-| *f* . ``for_jac_sparsity`` ( *pattern_in* , *pattern_out* )
-| *f* . ``rev_jac_sparsity`` ( *pattern_in* , *pattern_out* )
+| *f*\ ``.for_jac_sparsity`` ( *pattern_in* , *pattern_out* )
+| *f*\ ``.rev_jac_sparsity`` ( *pattern_in* , *pattern_out* )
 
 Purpose
 *******
@@ -604,7 +604,7 @@ pattern_out
 ***********
 This argument has prototype
 
-| |tab| ``sparse_rc`` < *SizeVector* > ``&`` *pattern_out*
+| |tab| ``sparse_rc<``\ *SizeVector*\ ``>&`` *pattern_out*
 
 This input value of *pattern_out* does not matter.
 Upon return *pattern_out* is a sparsity pattern for
@@ -673,8 +673,8 @@ Hessian Sparsity Patterns
 Syntax
 ******
 
-| *f* . ``for_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
-| *f* . ``rev_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
+| *f*\ ``.for_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
+| *f*\ ``.rev_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
 
 Purpose
 *******
@@ -726,7 +726,7 @@ pattern_out
 ***********
 This argument has prototype
 
-| |tab| ``sparse_rc`` < *SizeVector* > ``&`` *pattern_out*
+| |tab| ``sparse_rc<``\ *SizeVector*\ ``>&`` *pattern_out*
 
 This input value of *pattern_out* does not matter.
 Upon return *pattern_out* is a sparsity pattern for
@@ -843,8 +843,8 @@ Syntax
 ******
 
 | *work* =  ``cppad_py::sparse_jac_work`` ()
-| *n_sweep* = *f* . ``sparse_jac_for`` ( *subset* , *x* , *pattern* , *work* )
-| *n_sweep* = *f* . ``sparse_jac_rev`` ( *subset* , *x* , *pattern* , *work* )
+| *n_sweep* = *f*\ ``.sparse_jac_for`` ( *subset* , *x* , *pattern* , *work* )
+| *n_sweep* = *f*\ ``.sparse_jac_rev`` ( *subset* , *x* , *pattern* , *work* )
 
 Purpose
 *******
@@ -875,7 +875,7 @@ f
 *
 This object has prototype
 
-| |tab| ``ADFun`` < *Base* > *f*
+| |tab| ``ADFun`` *<Base>* *f*
 
 Note that the Taylor coefficients stored in *f* are affected
 by this operation; see
@@ -1034,7 +1034,7 @@ Syntax
 ******
 
 | *work* =  ``cppad_py::sparse_hes_work`` ()
-| *n_sweep* = *f* . ``sparse_hes`` ( *subset* , *x* , *r* , *pattern* , *work* )
+| *n_sweep* = *f*\ ``.sparse_hes`` ( *subset* , *x* , *r* , *pattern* , *work* )
 
 Purpose
 *******
@@ -1053,7 +1053,7 @@ f
 *
 This object has prototype
 
-| |tab| ``ADFun`` < *Base* > *f*
+| |tab| ``ADFun`` *<Base>* *f*
 
 Note that the Taylor coefficients stored in *f* are affected
 by this operation; see
