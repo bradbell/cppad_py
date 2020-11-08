@@ -50,7 +50,7 @@ def runge4_step(fun, ti, yi, h) :
 # This is a function that evaluates the ordinary differential equation
 # using the syntax
 #
-# | |tab| *yp* = *fun* . ``f`` *t* , *y* )
+# | |tab| *yp* = *fun*\ ``.f`` ( *t* , *y* )
 #
 # where *t* # is the current time,
 # *y* is the current value of :math:`y(t)`, and
