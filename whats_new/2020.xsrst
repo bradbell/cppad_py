@@ -47,6 +47,17 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+11-08
+*****
+Where appropriate, reduce the spacing between italic and literal font; e.g.,
+
+| |tab| *prefix/libdir* ``/python3.`` *minor* ``/site-packages/cppad_py``
+
+was changed to
+
+| |tab| *prefix/libdir*\ ``/python3.``\ *minor* ``/site-packages/cppad_py``
+
+
 11-06
 *****
 #.  The install with
