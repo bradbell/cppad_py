@@ -372,13 +372,13 @@ sys.exit(0)
 # ***************
 # Make sure the following directory is in your ``PKG_CONFIG_PATH``:
 #
-# | |tab| *prefix/libdir/* ``pkgconfig``
+# | |tab| *prefix/libdir/*\ ``pkgconfig``
 #
 # PYTHONPATH
 # **********
 # Make sure the following directory is in your ``PYTHONPATH``:
 #
-# | |tab| *prefix/libdir/* ``python3.`` *minor* ``/site-packages``
+# | |tab| *prefix/libdir*\ ``/python3.``\ *minor*\ ``/site-packages``
 #
 # where *minor* is the minor version corresponding to ``python3``.
 #
@@ -390,7 +390,7 @@ sys.exit(0)
 #
 # This will install ``cppad_py`` in the directory
 #
-# | |tab| *prefix/libdir/* ``python3.`` *minor* ``/site-packages/cppad_py``
+# | |tab| *prefix/libdir*\ ``/python3.``\ *minor* ``/site-packages/cppad_py``
 #
 # The following command can be used to test the installed version of
 # cppad_py:
