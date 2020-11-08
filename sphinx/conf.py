@@ -34,20 +34,21 @@ exclude_patterns = [
 ]
 
 # -- Options for HTML output -------------------------------------------------
-html_theme = 'sphinx_rtd_theme'
-html_theme_options = {
-    'navigation_depth' : -1   ,
-    'titles_only'      : True ,
-}
-# html_theme = 'insipid'
-# html_theme_options = {
-#     'strip_section_numbers' : True,
-#     'nosidebar'             : True,
-#     'body_centered'         : True,
-#     'body_max_width'        : None,
-#     'breadcrumbs'           : True,
-# }
-
+if True :
+    html_theme = 'sphinx_rtd_theme'
+    html_theme_options = {
+        'navigation_depth' : -1   ,
+        'titles_only'      : True ,
+    }
+else :
+    html_theme = 'insipid'
+    html_theme_options = {
+        'strip_section_numbers' : True,
+        'nosidebar'             : True,
+        'body_centered'         : True,
+        'body_max_width'        : None,
+        'breadcrumbs'           : True,
+    }
 # -- These folders are copied to the documentation's HTML output ------------
 # html_static_path = [ '_static' ]
 
