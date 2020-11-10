@@ -292,6 +292,7 @@ sys.exit(0)
 #   pkgconfig
 #   matplotlib
 #   bdist
+#   jre
 # }
 #
 # Configure and Build the cppad_py Python Module
@@ -300,7 +301,7 @@ sys.exit(0)
 # Syntax
 # ******
 #
-# | ``python3 setup.py install --prefix=`` *prefix*
+# | ``python3 setup.py install --prefix=``\ *prefix*
 #
 # External Requirements
 # *********************
@@ -312,6 +313,7 @@ sys.exit(0)
 # #. `swig <http://www.swig.org/>`_
 # #. `c++ <https://en.wikipedia.org/wiki/C++>`_
 # #. `git <https://git-scm.com/>`_
+# #. `jre <https://www.ibm.com/cloud/learn/jre>`_
 #
 # Install Errors
 # **************

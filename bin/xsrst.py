@@ -206,10 +206,19 @@ toctree
 =======
 The sphinx ``toctree`` directives are automatically generated
 for sections. The only such directive you should directly edit
-is in the file *sphinx_dir* :code:`/index.rst`.
-One entry in this file specifies the
+is in the file *sphinx_dir*\ ``/index.rst``
+
+index.rst
+---------
+First entry below ``toctree`` in the *sphinx_dir*\ ``/index.rst``
+file should be ``xsrst/xsrst_automatic``.
+This includes the automatically generated table of contents
+for the files extracted by xsrst.
+(The link anchor ``xsrst_table_of_contents``
+can be used to link to this section.)
+The second entry below ``toctree`` should be the
 :ref:`root_section<xsrst_py.command_line_arguments.root_file.root_section>`.
-Other entries are for ``.rst`` files that are not extracted by
+You may have other entries for ``.rst`` files that are not extracted by
 ``xsrst.py``.
 
 Parent Section
@@ -817,7 +826,7 @@ def table_of_contents(target, section_info, level, count, section_index) :
     section_title = section_info[section_index]['section_title']
     if level == 1 :
         assert section_index == 0
-        content  = '\n'
+        content  = '\n.. _xsrst_table_of_contents:\n\n'
         content += 'Table of Contents\n'
         content += '*****************\n'
         content += ':ref:`' + section_name + '`\n\n'
@@ -834,7 +843,7 @@ def table_of_contents(target, section_info, level, count, section_index) :
             if i + 1 < level - 1 :
                 section_number += '.'
         content  += f':ref:`{section_number}<{section_name}>` '
-        content  += section_title + '`\n'
+        content  += section_title + '\n'
     # --------------------------------------------------------------------
     # replace {xsrst_section_number} in xsrst_dir/section_name.rst
     file_name = tmp_dir + '/' + section_name + '.rst'

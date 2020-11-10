@@ -35,6 +35,7 @@
     url
     init
     libdir
+    backquote
 }
 
 CppAD Py Changes During 2020
@@ -46,6 +47,16 @@ CppAD Py Changes During 2020
 Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
+
+11-10
+*****
+#.  Remove an extra backquote \' that was placed at the end of each line
+    of the :ref:`table of contents<xsrst_table_of_contents>`.
+#.  Add more documentation for the
+    :ref:`index.rst<xsrst_py.table_of_contents.toctree.index.rst>` file
+    (including how to link to the table of contents).
+#.  The java runtime environment as add to the install
+    :ref:`requirements<setup_py.external_requirements>`.
 
 11-08
 *****
