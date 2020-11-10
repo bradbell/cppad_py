@@ -305,7 +305,6 @@ sys.exit(0)
 #
 # External Requirements
 # *********************
-
 # #. `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_
 # #. `python <https://www.python.org/>`_ version 3
 # #. `numpy <https://numpy.org/>`_
@@ -333,6 +332,8 @@ sys.exit(0)
 # ====================
 # The directory you choose for *top_srcdir* is
 # referred to as your *top_srcdir* directory.
+# I like to use ``cppad_py.git`` for my *top_srcdir* so it is different from
+# the ``cppad_py`` directory created by the instructions below.
 #
 # Configure
 # *********
@@ -365,26 +366,34 @@ sys.exit(0)
 #
 # LD_LIBRARY_PATH
 # ***************
-# Make sure the following directory is in your ``LD_LIBRARY_PATH``
-# (in mac OS this path is called ``DYLD_LIBRARY_PATH``):
+# Make sure the directory *prefix/libdir*
+# is in your ``LD_LIBRARY_PATH``
+# For example,
 #
-# | |tab| *prefix/libdir*
+# | |tab| ``export LD_LIBRARY_PATH=``\ *prefix/libdir*
 #
+# In mac OS ``LD_LIBRARY_PATH`` should be replaced by ``DYLD_LIBRARY_PATH``
+# (both above and below).
 #
 # PKG_CONFIG_PATH
 # ***************
-# Make sure the following directory is in your ``PKG_CONFIG_PATH``:
+# Make sure the directory *prefix/libdir/*\ ``pkgconfig``
+# is in your ``PKG_CONFIG_PATH``.
+# For example,
 #
-# | |tab| *prefix/libdir/*\ ``pkgconfig``
+# | |tab| ``export PKG_CONFIG_PATH=$LD_LIBRARY_PATH/pkgconfig``
 #
 # PYTHONPATH
 # **********
-# Make sure the following directory is in your ``PYTHONPATH``:
+# Make sure the directory
 #
 # | |tab| *prefix/libdir*\ ``/python3.``\ *minor*\ ``/site-packages``
 #
+# is in your ``PYTHONPATH``
 # where *minor* is the minor version corresponding to ``python3``.
+# For example,
 #
+# | |tab| ``export PYTHNPATH=$LD_LIBRARY_PATH/python3.``\ *minor*\ ``/site-packages``
 #
 # Local Build
 # ***********
