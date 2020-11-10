@@ -33,10 +33,14 @@ Children
    cpp_utility
    more_cpp
 
-#. cpp_fun: :ref:`cpp_fun`
-#. sparse: :ref:`sparse`
-#. cpp_utility: :ref:`cpp_utility`
-#. more_cpp: :ref:`more_cpp`
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "cpp_fun", :ref:`cpp_fun`
+    "sparse", :ref:`sparse`
+    "cpp_utility", :ref:`cpp_utility`
+    "more_cpp", :ref:`more_cpp`
 
 ----
 

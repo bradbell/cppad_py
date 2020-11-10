@@ -31,8 +31,12 @@ Children
    convert_vec
    exception
 
-#. convert_vec: :ref:`convert_vec`
-#. exception: :ref:`exception`
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "convert_vec", :ref:`convert_vec`
+    "exception", :ref:`exception`
 
 ----
 

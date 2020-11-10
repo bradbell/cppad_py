@@ -37,14 +37,18 @@ Children
    a_double_unary_fun
    a_double_cond_assign
 
-#. a_double_ctor: :ref:`a_double_ctor`
-#. a_double_unary_op: :ref:`a_double_unary_op`
-#. a_double_property: :ref:`a_double_property`
-#. a_double_binary: :ref:`a_double_binary`
-#. a_double_compare: :ref:`a_double_compare`
-#. a_double_assign: :ref:`a_double_assign`
-#. a_double_unary_fun: :ref:`a_double_unary_fun`
-#. a_double_cond_assign: :ref:`a_double_cond_assign`
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "a_double_ctor", :ref:`a_double_ctor`
+    "a_double_unary_op", :ref:`a_double_unary_op`
+    "a_double_property", :ref:`a_double_property`
+    "a_double_binary", :ref:`a_double_binary`
+    "a_double_compare", :ref:`a_double_compare`
+    "a_double_assign", :ref:`a_double_assign`
+    "a_double_unary_fun", :ref:`a_double_unary_fun`
+    "a_double_cond_assign", :ref:`a_double_cond_assign`
 
 ----
 

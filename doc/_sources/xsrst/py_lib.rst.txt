@@ -34,11 +34,15 @@ Children
    mixed
    more_py
 
-#. py_fun: :ref:`py_fun`
-#. py_sparse: :ref:`py_sparse`
-#. py_utility: :ref:`py_utility`
-#. mixed: :ref:`mixed`
-#. more_py: :ref:`more_py`
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "py_fun", :ref:`py_fun`
+    "py_sparse", :ref:`py_sparse`
+    "py_utility", :ref:`py_utility`
+    "mixed", :ref:`mixed`
+    "more_py", :ref:`more_py`
 
 ----
 

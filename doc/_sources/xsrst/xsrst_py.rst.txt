@@ -30,6 +30,7 @@ Extract Sphinx RST
     - :ref:`xsrst_py.command_line_arguments.line_increment`
 - :ref:`xsrst_py.table_of_contents`
     - :ref:`xsrst_py.table_of_contents.toctree`
+        - :ref:`xsrst_py.table_of_contents.toctree.index.rst`
     - :ref:`xsrst_py.table_of_contents.parent_section`
 - :ref:`xsrst_py.heading_links`
     - :ref:`xsrst_py.heading_links.section_level`
@@ -350,10 +351,26 @@ toctree
 =======
 The sphinx ``toctree`` directives are automatically generated
 for sections. The only such directive you should directly edit
-is in the file *sphinx_dir* :code:`/index.rst`.
-One entry in this file specifies the
+is in the file *sphinx_dir*\ ``/index.rst``
+
+.. meta::
+   :keywords: index.rst
+
+.. index:: index.rst
+
+.. _xsrst_py.table_of_contents.toctree.index.rst:
+
+index.rst
+---------
+First entry below ``toctree`` in the *sphinx_dir*\ ``/index.rst``
+file should be ``xsrst/xsrst_automatic``.
+This includes the automatically generated table of contents
+for the files extracted by xsrst.
+(The link anchor ``xsrst_table_of_contents``
+can be used to link to this section.)
+The second entry below ``toctree`` should be the
 :ref:`root_section<xsrst_py.command_line_arguments.root_file.root_section>`.
-Other entries are for ``.rst`` files that are not extracted by
+You may have other entries for ``.rst`` files that are not extracted by
 ``xsrst.py``.
 
 .. meta::

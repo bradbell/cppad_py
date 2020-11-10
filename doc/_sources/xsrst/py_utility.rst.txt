@@ -31,8 +31,12 @@ Children
    numpy2vec
    vec2numpy
 
-#. numpy2vec: :ref:`numpy2vec`
-#. vec2numpy: :ref:`vec2numpy`
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "numpy2vec", :ref:`numpy2vec`
+    "vec2numpy", :ref:`vec2numpy`
 
 ----
 

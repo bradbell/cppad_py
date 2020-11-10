@@ -19,7 +19,7 @@ cppad_py
 
 A C++ Object Library and Python Interface to CppAD
 ##################################################
-- :ref:`cppad_py.version_2020.11.8`
+- :ref:`cppad_py.version_2020.11.10`
 - :ref:`cppad_py.git_repository`
 - :ref:`cppad_py.purpose`
 - :ref:`cppad_py.getting_started`
@@ -29,13 +29,13 @@ A C++ Object Library and Python Interface to CppAD
 - :ref:`cppad_py.children`
 
 .. meta::
-   :keywords: version, 2020.11.8
+   :keywords: version, 2020.11.10
 
-.. index:: version, 2020.11.8
+.. index:: version, 2020.11.10
 
-.. _cppad_py.version_2020.11.8:
+.. _cppad_py.version_2020.11.10:
 
-Version 2020.11.8
+Version 2020.11.10
 ******************
 
 .. meta::
@@ -140,11 +140,15 @@ Children
    xsrst_py
    whats_new_2020
 
-#. setup_py: :ref:`setup_py`
-#. numeric_xam: :ref:`numeric_xam`
-#. library: :ref:`library`
-#. xsrst_py: :ref:`xsrst_py`
-#. whats_new_2020: :ref:`whats_new_2020`
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "setup_py", :ref:`setup_py`
+    "numeric_xam", :ref:`numeric_xam`
+    "library", :ref:`library`
+    "xsrst_py", :ref:`xsrst_py`
+    "whats_new_2020", :ref:`whats_new_2020`
 
 ----
 

@@ -31,10 +31,14 @@ Children
    d_vec_std2cppad
    d_vec_cppad2std
 
-#. ad_vec_std2cppad: :ref:`ad_vec_std2cppad`
-#. ad_vec_cppad2std: :ref:`ad_vec_cppad2std`
-#. d_vec_std2cppad: :ref:`d_vec_std2cppad`
-#. d_vec_cppad2std: :ref:`d_vec_cppad2std`
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "ad_vec_std2cppad", :ref:`ad_vec_std2cppad`
+    "ad_vec_cppad2std", :ref:`ad_vec_cppad2std`
+    "d_vec_std2cppad", :ref:`d_vec_std2cppad`
+    "d_vec_cppad2std", :ref:`d_vec_cppad2std`
 
 ----
 

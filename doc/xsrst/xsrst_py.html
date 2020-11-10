@@ -22,6 +22,7 @@
 <meta content="line_increment" name="keywords" />
 <meta content="table, contents" name="keywords" />
 <meta content="toctree" name="keywords" />
+<meta content="index.rst" name="keywords" />
 <meta content="parent, section" name="keywords" />
 <meta content="heading, links" name="keywords" />
 <meta content="section, level" name="keywords" />
@@ -248,7 +249,13 @@
 </li>
 <li><dl class="simple">
 <dt><a class="reference internal" href="#xsrst-py-table-of-contents"><span class="std std-ref">Table of Contents</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#xsrst-py-table-of-contents-toctree"><span class="std std-ref">toctree</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#xsrst-py-table-of-contents-toctree"><span class="std std-ref">toctree</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#xsrst-py-table-of-contents-toctree-index-rst"><span class="std std-ref">index.rst</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
 <li><p><a class="reference internal" href="#xsrst-py-table-of-contents-parent-section"><span class="std std-ref">Parent Section</span></a></p></li>
 </ul>
 </dd>
@@ -455,14 +462,23 @@ The table at the bottom of that file maps line numbers in
 <span id="xsrst-py-table-of-contents-toctree"></span><span id="index-17"></span><h4>toctree<a class="headerlink" href="#toctree" title="Permalink to this headline">¶</a></h4>
 <p>The sphinx <code class="docutils literal notranslate"><span class="pre">toctree</span></code> directives are automatically generated
 for sections. The only such directive you should directly edit
-is in the file <em>sphinx_dir</em> <code class="code docutils literal notranslate"><span class="pre">/index.rst</span></code>.
-One entry in this file specifies the
+is in the file <em>sphinx_dir</em><code class="docutils literal notranslate"><span class="pre">/index.rst</span></code></p>
+<div class="section" id="index-rst">
+<span id="xsrst-py-table-of-contents-toctree-index-rst"></span><span id="index-18"></span><h5>index.rst<a class="headerlink" href="#index-rst" title="Permalink to this headline">¶</a></h5>
+<p>First entry below <code class="docutils literal notranslate"><span class="pre">toctree</span></code> in the <em>sphinx_dir</em><code class="docutils literal notranslate"><span class="pre">/index.rst</span></code>
+file should be <code class="docutils literal notranslate"><span class="pre">xsrst/xsrst_automatic</span></code>.
+This includes the automatically generated table of contents
+for the files extracted by xsrst.
+(The link anchor <code class="docutils literal notranslate"><span class="pre">xsrst_table_of_contents</span></code>
+can be used to link to this section.)
+The second entry below <code class="docutils literal notranslate"><span class="pre">toctree</span></code> should be the
 <a class="reference internal" href="#xsrst-py-command-line-arguments-root-file-root-section"><span class="std std-ref">root_section</span></a>.
-Other entries are for <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files that are not extracted by
+You may have other entries for <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files that are not extracted by
 <code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code>.</p>
 </div>
+</div>
 <div class="section" id="parent-section">
-<span id="xsrst-py-table-of-contents-parent-section"></span><span id="index-18"></span><h4>Parent Section<a class="headerlink" href="#parent-section" title="Permalink to this headline">¶</a></h4>
+<span id="xsrst-py-table-of-contents-parent-section"></span><span id="index-19"></span><h4>Parent Section<a class="headerlink" href="#parent-section" title="Permalink to this headline">¶</a></h4>
 <p>A single input file may contain multiple
 <a class="reference internal" href="begin_cmd.html#begin-cmd-section"><span class="std std-ref">sections</span></a>.
 The first of these sections may use a
@@ -476,7 +492,7 @@ child command that included the file.</p>
 </div>
 </div>
 <div class="section" id="heading-links">
-<span id="xsrst-py-heading-links"></span><span id="index-19"></span><h3>Heading Links<a class="headerlink" href="#heading-links" title="Permalink to this headline">¶</a></h3>
+<span id="xsrst-py-heading-links"></span><span id="index-20"></span><h3>Heading Links<a class="headerlink" href="#heading-links" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>For each word in a heading,
 a link is included in the index from the word to the heading.</p></li>
@@ -489,7 +505,7 @@ of the current section; see the heading
 <a class="reference internal" href="#xsrst-py-heading-links-children"><span class="std std-ref">Children</span></a> below.</p></li>
 </ul>
 <div class="section" id="section-level">
-<span id="xsrst-py-heading-links-section-level"></span><span id="index-20"></span><h4>Section Level<a class="headerlink" href="#section-level" title="Permalink to this headline">¶</a></h4>
+<span id="xsrst-py-heading-links-section-level"></span><span id="index-21"></span><h4>Section Level<a class="headerlink" href="#section-level" title="Permalink to this headline">¶</a></h4>
 <p>Each <a class="reference internal" href="begin_cmd.html#begin-cmd-section"><span class="std std-ref">section</span></a> can have only one header at
 the first level which is a title for the section.
 The <a class="reference internal" href="begin_cmd.html#begin-cmd-section-name"><span class="std std-ref">section_name</span></a>
@@ -500,7 +516,7 @@ following will link to the title for <em>section_name</em>:</p>
 <p>where <em>linking_text</em> is the text the user sees.</p>
 </div>
 <div class="section" id="other-levels">
-<span id="xsrst-py-heading-links-other-levels"></span><span id="index-21"></span><h4>Other Levels<a class="headerlink" href="#other-levels" title="Permalink to this headline">¶</a></h4>
+<span id="xsrst-py-heading-links-other-levels"></span><span id="index-22"></span><h4>Other Levels<a class="headerlink" href="#other-levels" title="Permalink to this headline">¶</a></h4>
 <p>The label for linking a heading that is not at the first level
 is the label for the heading directly above it plus a dot character <code class="code docutils literal notranslate"><span class="pre">.</span></code>,
 plus a lower case version of the heading with spaces converted to
@@ -513,7 +529,7 @@ This identifies the links that should be checked
 to make sure they are still valid.</p>
 </div>
 <div class="section" id="children">
-<span id="xsrst-py-heading-links-children"></span><span id="index-22"></span><h4>Children<a class="headerlink" href="#children" title="Permalink to this headline">¶</a></h4>
+<span id="xsrst-py-heading-links-children"></span><span id="index-23"></span><h4>Children<a class="headerlink" href="#children" title="Permalink to this headline">¶</a></h4>
 <p>If a xsrst input file has a
 <a class="reference internal" href="#xsrst-py-table-of-contents-parent-section"><span class="std std-ref">parent section</span></a>
 the other sections in the file are children of the parent.</p>
@@ -529,12 +545,12 @@ at the end of the section.</p></li>
 <p>You can place a heading directly before the links to make them easier to find.</p>
 </div>
 <div class="section" id="example">
-<span id="xsrst-py-heading-links-example"></span><span id="index-23"></span><h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<span id="xsrst-py-heading-links-example"></span><span id="index-24"></span><h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="heading_exam.html#id1"><span class="std std-ref">Heading Example</span></a></p>
 </div>
 </div>
 <div class="section" id="indentation">
-<span id="xsrst-py-indentation"></span><span id="index-24"></span><h3>Indentation<a class="headerlink" href="#indentation" title="Permalink to this headline">¶</a></h3>
+<span id="xsrst-py-indentation"></span><span id="index-25"></span><h3>Indentation<a class="headerlink" href="#indentation" title="Permalink to this headline">¶</a></h3>
 <p>If there are a number of spaces before
 all of the xsrst documentation for a section,
 those characters are not included in the xsrst output.
@@ -543,17 +559,17 @@ xsrst so it is grouped with the proper code block in the source.
 An error message will result if
 you use tabs in the indentation.</p>
 <div class="section" id="xsrst-py-indentation-example">
-<span id="index-25"></span><span id="id2"></span><h4>Example<a class="headerlink" href="#xsrst-py-indentation-example" title="Permalink to this headline">¶</a></h4>
+<span id="index-26"></span><span id="id2"></span><h4>Example<a class="headerlink" href="#xsrst-py-indentation-example" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference internal" href="indent_exam.html#id1"><span class="std std-ref">Indent Example</span></a></p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="wish-list">
-<span id="xsrst-py-wish-list"></span><span id="index-26"></span><h3>Wish List<a class="headerlink" href="#wish-list" title="Permalink to this headline">¶</a></h3>
+<span id="xsrst-py-wish-list"></span><span id="index-27"></span><h3>Wish List<a class="headerlink" href="#wish-list" title="Permalink to this headline">¶</a></h3>
 <p>The following is a wish list for future improvements to <code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code>:</p>
 <div class="section" id="tabs">
-<span id="xsrst-py-wish-list-tabs"></span><span id="index-27"></span><h4>Tabs<a class="headerlink" href="#tabs" title="Permalink to this headline">¶</a></h4>
+<span id="xsrst-py-wish-list-tabs"></span><span id="index-28"></span><h4>Tabs<a class="headerlink" href="#tabs" title="Permalink to this headline">¶</a></h4>
 <p>Tabs in a code blocks get expanded to 8 spaces; see <a class="reference external" href="https://stackoverflow.com/questions/1686837/sphinx-documentation-tool-set-tab-width-in-output">stackoverflow</a>.
 It would be nice to have a way to control the size of tabs in the code blocks
 displayed by <a class="reference internal" href="code_cmd.html#id1"><span class="std std-ref">Code Command</span></a> and <a class="reference internal" href="file_cmd.html#id1"><span class="std std-ref">File Command</span></a>.
@@ -561,7 +577,7 @@ Perhaps it would be good to support tabs as a method for
 indenting xsrst input sections.</p>
 </div>
 <div class="section" id="module">
-<span id="xsrst-py-wish-list-module"></span><span id="index-28"></span><h4>Module<a class="headerlink" href="#module" title="Permalink to this headline">¶</a></h4>
+<span id="xsrst-py-wish-list-module"></span><span id="index-29"></span><h4>Module<a class="headerlink" href="#module" title="Permalink to this headline">¶</a></h4>
 <p>Convert the program into a python module and provide a pip distribution for it.
 It would at least be nice for cppad_py to install the <code class="docutils literal notranslate"><span class="pre">xsrst.py</span></code> program
 so that users would not have to copy it to a directory in
@@ -569,7 +585,7 @@ their execution path.</p>
 </div>
 </div>
 <div class="section" id="commands">
-<span id="xsrst-py-commands"></span><span id="index-29"></span><h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h3>
+<span id="xsrst-py-commands"></span><span id="index-30"></span><h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="begin_cmd.html#id1"><span class="std std-ref">Begin and End Commands</span></a></p></li>
 <li><p><a class="reference internal" href="child_cmd.html#id1"><span class="std std-ref">Children Commands</span></a></p></li>

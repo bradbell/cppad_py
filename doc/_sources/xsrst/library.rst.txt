@@ -33,10 +33,14 @@ Children
    py_lib
    cpp_lib
 
-#. a_double: :ref:`a_double`
-#. vector: :ref:`vector`
-#. py_lib: :ref:`py_lib`
-#. cpp_lib: :ref:`cpp_lib`
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "a_double", :ref:`a_double`
+    "vector", :ref:`vector`
+    "py_lib", :ref:`py_lib`
+    "cpp_lib", :ref:`cpp_lib`
 
 ----
 

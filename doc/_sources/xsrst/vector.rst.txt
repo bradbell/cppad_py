@@ -32,9 +32,13 @@ Children
    vector_size
    vector_set_get
 
-#. vector_ctor: :ref:`vector_ctor`
-#. vector_size: :ref:`vector_size`
-#. vector_set_get: :ref:`vector_set_get`
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "vector_ctor", :ref:`vector_ctor`
+    "vector_size", :ref:`vector_size`
+    "vector_set_get", :ref:`vector_set_get`
 
 ----
 

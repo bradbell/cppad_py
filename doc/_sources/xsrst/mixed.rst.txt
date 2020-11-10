@@ -161,13 +161,17 @@ Children
    mixed_ran_likelihood
    mixed_optimize_fixed
 
-#. mixed_ctor: :ref:`mixed_ctor`
-#. mixed_warning: :ref:`mixed_warning`
-#. mixed_fatal_error: :ref:`mixed_fatal_error`
-#. mixed_fix_likelihood: :ref:`mixed_fix_likelihood`
-#. mixed_fix_constraint: :ref:`mixed_fix_constraint`
-#. mixed_ran_likelihood: :ref:`mixed_ran_likelihood`
-#. mixed_optimize_fixed: :ref:`mixed_optimize_fixed`
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "mixed_ctor", :ref:`mixed_ctor`
+    "mixed_warning", :ref:`mixed_warning`
+    "mixed_fatal_error", :ref:`mixed_fatal_error`
+    "mixed_fix_likelihood", :ref:`mixed_fix_likelihood`
+    "mixed_fix_constraint", :ref:`mixed_fix_constraint`
+    "mixed_ran_likelihood", :ref:`mixed_ran_likelihood`
+    "mixed_optimize_fixed", :ref:`mixed_optimize_fixed`
 
 ----
 

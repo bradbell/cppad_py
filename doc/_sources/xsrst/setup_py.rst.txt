@@ -41,7 +41,7 @@ Configure and Build the cppad_py Python Module
 Syntax
 ******
 
-| ``python3 setup.py install --prefix=`` *prefix*
+| ``python3 setup.py install --prefix=``\ *prefix*
 
 .. meta::
    :keywords: external, requirements
@@ -60,6 +60,7 @@ External Requirements
 #. `swig <http://www.swig.org/>`_
 #. `c++ <https://en.wikipedia.org/wiki/C++>`_
 #. `git <https://git-scm.com/>`_
+#. `jre <https://www.ibm.com/cloud/learn/jre>`_
 
 .. meta::
    :keywords: install, errors
@@ -297,8 +298,12 @@ Children
    install_error
    get_cppad_sh
 
-#. install_error: :ref:`install_error`
-#. get_cppad_sh: :ref:`get_cppad_sh`
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "install_error", :ref:`install_error`
+    "get_cppad_sh", :ref:`get_cppad_sh`
 
 ----
 

@@ -35,12 +35,16 @@ Children
    cpp_sparse_jac
    cpp_sparse_hes
 
-#. cpp_sparse_rc: :ref:`cpp_sparse_rc`
-#. cpp_sparse_rcv: :ref:`cpp_sparse_rcv`
-#. cpp_jac_sparsity: :ref:`cpp_jac_sparsity`
-#. cpp_sparsity: :ref:`cpp_sparsity`
-#. cpp_sparse_jac: :ref:`cpp_sparse_jac`
-#. cpp_sparse_hes: :ref:`cpp_sparse_hes`
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "cpp_sparse_rc", :ref:`cpp_sparse_rc`
+    "cpp_sparse_rcv", :ref:`cpp_sparse_rcv`
+    "cpp_jac_sparsity", :ref:`cpp_jac_sparsity`
+    "cpp_sparsity", :ref:`cpp_sparsity`
+    "cpp_sparse_jac", :ref:`cpp_sparse_jac`
+    "cpp_sparse_hes", :ref:`cpp_sparse_hes`
 
 ----
 

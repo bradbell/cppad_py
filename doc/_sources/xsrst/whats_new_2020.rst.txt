@@ -14,6 +14,7 @@ whats_new_2020
 CppAD Py Changes During 2020
 ############################
 - :ref:`whats_new_2020.previous_years`
+- :ref:`whats_new_2020.11-10`
 - :ref:`whats_new_2020.11-08`
 - :ref:`whats_new_2020.11-06`
 - :ref:`whats_new_2020.11-05`
@@ -82,6 +83,23 @@ CppAD Py Changes During 2020
 Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
+
+.. _whats_new_2020.11-10:
+
+11-10
+*****
+#.  **API change** : the xsrst ``child_list`` command was changed to
+    :ref:`child_table<child_cmd.syntax.child_table>` and a table,
+    instead of a list, was used to display the names and corresponding titles.
+    In addition, the ``child_link`` command was changed to
+    :ref:`child_list<child_cmd.syntax.child_list>`.
+#.  Remove an extra backquote \' that was placed at the end of each line
+    of the :ref:`table of contents<xsrst_table_of_contents>`.
+#.  Add more documentation for the
+    :ref:`index.rst<xsrst_py.table_of_contents.toctree.index.rst>` file
+    (including how to link to the table of contents).
+#.  The java runtime environment as add to the install
+    :ref:`requirements<setup_py.external_requirements>`.
 
 .. _whats_new_2020.11-08:
 
