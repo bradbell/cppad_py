@@ -13,7 +13,7 @@ Children Commands
 #################
 - :ref:`child_cmd.syntax`
     - :ref:`child_cmd.syntax.children`
-    - :ref:`child_cmd.syntax.child_link`
+    - :ref:`child_cmd.syntax.child_list`
     - :ref:`child_cmd.syntax.child_table`
 - :ref:`child_cmd.purpose`
 - :ref:`child_cmd.file_names`
@@ -46,15 +46,15 @@ children
 | :code:`}`
 
 .. meta::
-   :keywords: child_link
+   :keywords: child_list
 
-.. index:: child_link
+.. index:: child_list
 
-.. _child_cmd.syntax.child_link:
+.. _child_cmd.syntax.child_list:
 
-child_link
+child_list
 ==========
-| ``{xsrst_child_link``
+| ``{xsrst_child_list``
 |   *file_1*
 |   ...
 |   *file_n*
@@ -118,7 +118,7 @@ that move files and automatically change references to them.
 
 Links
 *****
-The child link and table commands also place
+The child list and child table commands also place
 links to all the children of the current at the location of the command.
 The links are displayed using the title for each section.
 The child table command includes the section name next to the title.

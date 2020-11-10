@@ -425,9 +425,9 @@ children
 | :code:`}`
 
 
-child_link
+child_list
 ==========
-| ``{xsrst_child_link``
+| ``{xsrst_child_list``
 |   *file_1*
 |   ...
 |   *file_n*
@@ -464,7 +464,7 @@ that move files and automatically change references to them.
 
 Links
 *****
-The child link and table commands also place
+The child list and child table commands also place
 links to all the children of the current at the location of the command.
 The links are displayed using the title for each section.
 The child table command includes the section name next to the title.
@@ -532,7 +532,7 @@ the same word twice (next to each other) in the special word list.
 
 Example
 *******
-{xsrst_child_link
+{xsrst_child_list
    sphinx/test_in/spell.py
 }
 
@@ -561,7 +561,7 @@ spell checking.
 
 Example
 *******
-{xsrst_child_link
+{xsrst_child_list
    sphinx/test_in/suspend.py
 }
 
@@ -614,7 +614,7 @@ spell checking is done for these code blocks.
 
 Example
 *******
-{xsrst_child_link
+{xsrst_child_list
    sphinx/test_in/code.py
 }
 
@@ -690,7 +690,7 @@ Spell checking is **not** done for these code blocks.
 
 Example
 *******
-{xsrst_child_link
+{xsrst_child_list
    sphinx/test_in/file.cpp
 }
 
@@ -756,7 +756,7 @@ and the ``def`` token indented the same amount:
 
 Example
 *******
-{xsrst_child_link
+{xsrst_child_list
     sphinx/test_in/comment_ch.py
 }
 
@@ -1361,7 +1361,7 @@ def child_commands(
         return section_data, file_list, section_list
     match_tmp    = pattern['child'].search(section_data[match.end() :] )
     if match_tmp is not None :
-        msg = 'More than one children or child_link command in a section.'
+        msg = 'More than one children or child_list command in a section.'
         sys_exit(msg,
             fname=file_in,
             sname=section_name,
@@ -1369,7 +1369,7 @@ def child_commands(
             data=section_data[match.end():]
         )
     #
-    assert match.group(1) in [ 'children', 'child_link', 'child_table']
+    assert match.group(1) in [ 'children', 'child_list', 'child_table']
     command = match.group(1)
     replace = '\n{xsrst_' + command + '}\n'
     #
@@ -1940,7 +1940,7 @@ def compute_output(
         file_command           = line.startswith('{xsrst__file')
         label_command          = line.startswith('{xsrst_label')
         children_command       = line.startswith('{xsrst_children')
-        child_link_command     = line.startswith('{xsrst_child_link')
+        child_list_command     = line.startswith('{xsrst_child_list')
         child_table_command    = line.startswith('{xsrst_child_table')
         if section_number_command :
             rst_output += line
@@ -2002,7 +2002,7 @@ def compute_output(
             #
             rst_output += '\n'
             previous_empty = True
-        elif children_command or child_link_command or child_table_command:
+        elif children_command or child_list_command or child_table_command:
             assert not has_child_command
             assert len(list_children) > 0
             has_child_command = True
@@ -2206,7 +2206,7 @@ pattern['file_3']  = re.compile(
     r'\n[ \t]*\{xsrst_file' + lin + arg + arg + arg + r'[ \t]*\}' + lin
 )
 pattern['child']   = re.compile(
-    r'\n[ \t]*\{xsrst_(children|child_link|child_table)([^}]*)\}'
+    r'\n[ \t]*\{xsrst_(children|child_list|child_table)([^}]*)\}'
 )
 # -----------------------------------------------------------------------------
 # process each file in the list

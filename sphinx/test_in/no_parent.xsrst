@@ -37,7 +37,7 @@ because ``children.py`` does not have a
 
     Child Link children.py
     **********************
-    {xsrst_child_link
+    {xsrst_child_list
             sphinx/test_in/children.py
     }
 

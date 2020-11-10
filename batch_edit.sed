@@ -21,13 +21,14 @@
 # '
 # list of files that get edited by the extra_seds command
 # extra_files='
+#   sphinx/configure.xsrst
 # '
 # list of sed commands that are applied to the extra files,
 # after the other sed commands in this file.
 # The characters @s, @d, @n get converted to a space, dollar sign, new line.
 # extra_seds='
+#   s|child_link|child_list|g
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|child_list|child_table|g
-s|child_table_command |child_table_command|
+s|child_link|child_list|g
