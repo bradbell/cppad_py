@@ -2010,8 +2010,12 @@ def compute_output(
             rst_output += '\n'
             #
             if child_list_command :
+                rst_output += '.. csv-table::\n'
+                rst_output += '    :header:  "Name", "Title"\n'
+                rst_output += '    :widths: 20, 80\n\n'
                 for child in list_children :
-                    rst_output += '#. ' + child + ': :ref:`'+ child + '`\n'
+                    rst_output += '    "' + child + '"'
+                    rst_output += ', :ref:`' + child + '`\n'
                 rst_output += '\n'
             previous_empty = True
         else :

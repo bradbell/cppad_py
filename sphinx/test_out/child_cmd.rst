@@ -109,7 +109,11 @@ Example
 
    no_parent_exam
 
-#. no_parent_exam: :ref:`no_parent_exam`
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "no_parent_exam", :ref:`no_parent_exam`
 
 ----
 
