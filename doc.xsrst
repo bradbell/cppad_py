@@ -71,7 +71,7 @@ GNU General Public License version 3.0 or later see
 
 Children
 ********
-{xsrst_child_list
+{xsrst_child_table
     setup.py
     example/python/numeric/numeric.xsrst
     lib/library.xsrst

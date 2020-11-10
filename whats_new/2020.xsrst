@@ -50,6 +50,9 @@ Previous Years
 
 11-10
 *****
+#.  xsrst API change: the ``child_list`` command was changed to
+    :ref:`child_table<child_cmd.syntax.child_table>` and a table,
+    instead of a list, was used to display the names and corresponding titles.
 #.  Remove an extra backquote \' that was placed at the end of each line
     of the :ref:`table of contents<xsrst_table_of_contents>`.
 #.  Add more documentation for the

@@ -59,7 +59,7 @@ given :math:`\theta` and :math:`u`.
 
 Children
 ********
-{xsrst_child_list
+{xsrst_child_table
 }
 
 {xsrst_end mixed}

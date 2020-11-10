@@ -14,7 +14,7 @@ Python Sparsity Routines
 
 Children
 ********
-{xsrst_child_list
+{xsrst_child_table
     lib/python/cppad_py/sparse_rc.py
     lib/python/cppad_py/sparse_rcv.py
     lib/python/cppad_py/jac_sparsity.xsrst

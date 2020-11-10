@@ -18,7 +18,7 @@ Cppad Py AD Functions
 
 Children
 ********
-{xsrst_child_list
+{xsrst_child_table
     lib/cplusplus/fun.cpp
 }
 
@@ -37,7 +37,7 @@ Cppad Py Sparse Calculation
 
 Children
 ********
-{xsrst_child_list
+{xsrst_child_table
     lib/cplusplus/sparse.cpp
 }
 
@@ -52,7 +52,7 @@ C++ Utilities
 
 Children
 ********
-{xsrst_child_list
+{xsrst_child_table
     lib/cplusplus/convert_vec.cpp
     include/cppad/py/assert.hpp
 }

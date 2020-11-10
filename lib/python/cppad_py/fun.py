@@ -22,7 +22,7 @@
 #
 # Children
 # ********
-# {xsrst_child_list
+# {xsrst_child_table
 #   lib/python/cppad_py/independent.py
 #   lib/python/cppad_py/abort_recording.xsrst
 #   lib/python/cppad_py/fun_ctor.py

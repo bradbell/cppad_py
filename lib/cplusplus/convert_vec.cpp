@@ -17,7 +17,7 @@ Convert From Standard Vectors to CppAD Vectors
 
 Children
 ********
-{xsrst_child_list
+{xsrst_child_table
 }
 
 {xsrst_end convert_vec}

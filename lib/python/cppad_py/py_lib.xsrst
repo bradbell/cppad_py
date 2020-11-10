@@ -14,7 +14,7 @@ The Python Library
 
 Children
 ********
-{xsrst_child_list
+{xsrst_child_table
     lib/python/cppad_py/fun.py
     lib/python/cppad_py/sparse.xsrst
     lib/python/cppad_py/utility.xsrst

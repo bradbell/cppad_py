@@ -12,6 +12,9 @@ child_cmd
 Children Commands
 #################
 - :ref:`child_cmd.syntax`
+    - :ref:`child_cmd.syntax.children`
+    - :ref:`child_cmd.syntax.child_link`
+    - :ref:`child_cmd.syntax.child_table`
 - :ref:`child_cmd.purpose`
 - :ref:`child_cmd.file_names`
 - :ref:`child_cmd.links`
@@ -27,19 +30,46 @@ Children Commands
 Syntax
 ******
 
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _child_cmd.syntax.children:
+
+children
+========
 | ``{xsrst_children``
 |   *file_1*
 |   ...
 |   *file_n*
 | :code:`}`
-|
+
+.. meta::
+   :keywords: child_link
+
+.. index:: child_link
+
+.. _child_cmd.syntax.child_link:
+
+child_link
+==========
 | ``{xsrst_child_link``
 |   *file_1*
 |   ...
 |   *file_n*
 | :code:`}`
-|
-| ``{xsrst_child_list``
+
+.. meta::
+   :keywords: child_table
+
+.. index:: child_table
+
+.. _child_cmd.syntax.child_table:
+
+child_table
+===========
+| ``{xsrst_child_table``
 |   *file_1*
 |   ...
 |   *file_n*
@@ -88,10 +118,10 @@ that move files and automatically change references to them.
 
 Links
 *****
-The child link and list commands also place
+The child link and table commands also place
 links to all the children of the current at the location of the command.
 The links are displayed using the title for each section.
-The child list command includes the section name next to the title.
+The child table command includes the section name next to the title.
 You can place a heading directly before the links to make them easier to find.
 
 .. meta::

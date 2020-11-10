@@ -416,19 +416,26 @@ Children Commands
 Syntax
 ******
 
+children
+========
 | ``{xsrst_children``
 |   *file_1*
 |   ...
 |   *file_n*
 | :code:`}`
-|
+
+
+child_link
+==========
 | ``{xsrst_child_link``
 |   *file_1*
 |   ...
 |   *file_n*
 | :code:`}`
-|
-| ``{xsrst_child_list``
+
+child_table
+===========
+| ``{xsrst_child_table``
 |   *file_1*
 |   ...
 |   *file_n*
@@ -457,15 +464,15 @@ that move files and automatically change references to them.
 
 Links
 *****
-The child link and list commands also place
+The child link and table commands also place
 links to all the children of the current at the location of the command.
 The links are displayed using the title for each section.
-The child list command includes the section name next to the title.
+The child table command includes the section name next to the title.
 You can place a heading directly before the links to make them easier to find.
 
 Example
 *******
-{xsrst_child_list
+{xsrst_child_table
    sphinx/test_in/no_parent.xsrst
 }
 
@@ -1362,7 +1369,7 @@ def child_commands(
             data=section_data[match.end():]
         )
     #
-    assert match.group(1) in [ 'children', 'child_link', 'child_list']
+    assert match.group(1) in [ 'children', 'child_link', 'child_table']
     command = match.group(1)
     replace = '\n{xsrst_' + command + '}\n'
     #
@@ -1934,7 +1941,7 @@ def compute_output(
         label_command          = line.startswith('{xsrst_label')
         children_command       = line.startswith('{xsrst_children')
         child_link_command     = line.startswith('{xsrst_child_link')
-        child_list_command     = line.startswith('{xsrst_child_list')
+        child_table_command    = line.startswith('{xsrst_child_table')
         if section_number_command :
             rst_output += line
         elif jump_table_command :
@@ -1995,21 +2002,21 @@ def compute_output(
             #
             rst_output += '\n'
             previous_empty = True
-        elif children_command or child_link_command or child_list_command :
+        elif children_command or child_link_command or child_table_command:
             assert not has_child_command
             assert len(list_children) > 0
             has_child_command = True
             #
             rst_output += '.. toctree::\n'
             rst_output += '   :maxdepth: 1\n'
-            if children_command or child_list_command :
+            if children_command or child_table_command:
                 rst_output += '   :hidden:\n'
             rst_output += '\n'
             for child in list_children :
                 rst_output += '   ' + child + '\n'
             rst_output += '\n'
             #
-            if child_list_command :
+            if child_table_command:
                 rst_output += '.. csv-table::\n'
                 rst_output += '    :header:  "Name", "Title"\n'
                 rst_output += '    :widths: 20, 80\n\n'
@@ -2199,7 +2206,7 @@ pattern['file_3']  = re.compile(
     r'\n[ \t]*\{xsrst_file' + lin + arg + arg + arg + r'[ \t]*\}' + lin
 )
 pattern['child']   = re.compile(
-    r'\n[ \t]*\{xsrst_(children|child_link|child_list)([^}]*)\}'
+    r'\n[ \t]*\{xsrst_(children|child_link|child_table)([^}]*)\}'
 )
 # -----------------------------------------------------------------------------
 # process each file in the list

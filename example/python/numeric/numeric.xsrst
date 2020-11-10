@@ -14,7 +14,7 @@ Numerical Examples
 
 Children
 ********
-{xsrst_child_list
+{xsrst_child_table
     example/python/numeric/simple_inv.py
     example/python/numeric/runge4_step.py
     example/python/numeric/rosen3_step.py

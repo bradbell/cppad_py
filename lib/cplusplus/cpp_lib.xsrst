@@ -14,7 +14,7 @@ The C++ Library
 
 Children
 ********
-{xsrst_child_list
+{xsrst_child_table
     lib/cplusplus/cplusplus.xsrst
     lib/cplusplus/more_cpp.xsrst
 }

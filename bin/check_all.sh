@@ -62,10 +62,12 @@ then
     exit_code 1
 fi
 # -----------------------------------------------------------------------------
+# build_type, cmake_install_prefix, extra_cxx_flags, include_mxied, libdir
 eval $(grep '^build_type *=' bin/get_cppad.sh)
 eval $(grep '^cmake_install_prefix *=' bin/get_cppad.sh)
 eval $(grep '^extra_cxx_flags *=' bin/get_cppad.sh)
 eval $(grep '^include_mixed *=' bin/get_cppad.sh)
+libdir=$(bin/libdir.py)
 #
 if ! echo $cmake_install_prefix | grep '^/' > /dev/null
 then
@@ -73,7 +75,6 @@ then
     cmake_install_prefix="$(pwd)/$cmake_install_prefix"
 fi
 # -----------------------------------------------------------------------------
-# set build_type, include_mixed
 if [ "$build_type" != 'release' ] || [ "$include_mixed" != 'false' ]
 then
     echo 'check_all.sh: build type in bin/get_cppad.sh is not release'
@@ -95,35 +96,14 @@ then
 fi
 echo_eval_log bin/build_type.sh
 # -----------------------------------------------------------------------------
-path=$(find -L "$cmake_install_prefix" -name 'libcppad_lib.*' | head -1 | \
-    sed -e 's|/libcppad_lib[.].*||' )
-if  [ "$path" == '' ]
-then
-    echo "check_all.sh: cannot find $cmake_install_prefix/*/libcppad_lib.*"
-    if [ "$build_type" == 'debug' ]
-    then
-        echo 'Change build_type to debug in bin/get_cppad.sh'
-    fi
-    if [ "$include_mixed" == 'true' ]
-    then
-        echo 'Change include_mixed to true in bin/get_cppad.sh'
-        echo 're-run bin/get_cppad_mixed.sh ?'
-    else
-        echo 're-run bin/get_cppad.sh ?'
-    fi
-    exit_code 1
-fi
-export LD_LIBRARY_PATH="$path"
+export LD_LIBRARY_PATH="$cmake_install_prefix/$libdir"
 echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
 # -----------------------------------------------------------------------------
-# clean out old distribution
-if [ -d 'cppad_py' ]
+# clean out python distribution
+minor=$(echo "import sys; print(sys.version_info.minor)" | python3)
+if [ -e "$LD_LIBRARY_PATH/python3.$minor" ]
 then
-    echo_eval_log rm -r cppad_py
-fi
-if [ -d "$HOME/prefix/cppad_py.$build_type" ]
-then
-    echo_eval_log rm -r "$HOME/prefix/cppad_py.$build_type"
+    echo_eval_log rm -r "$LD_LIBRARY_PATH/python3.$minor"
 fi
 if echo 'import cppad_py' | python >& /dev/null
 then
