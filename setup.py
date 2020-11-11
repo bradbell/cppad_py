@@ -266,13 +266,6 @@ if install_distribution :
         cppad_py_path = sys_command( command_list ).replace('\n', '')
         shutil.copytree( cppad_py_path, python_path + '/cppad_py' )
 # -----------------------------------------------------------------------------
-msg  = 'If you get a message that an object library is missing, try:\n\t'
-msg += 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:'
-msg += cmake_install_prefix + '/' + libdir
-msg += '\nIf you have a Mac system, the following may fix this problem:\n\t'
-msg += 'export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:'
-msg += cmake_install_prefix + '/' + libdir + '\n'
-print(msg)
 print('setup.py: OK')
 sys.exit(0)
 # -----------------------------------------------------------------------------
@@ -292,8 +285,9 @@ sys.exit(0)
 #   pkgconfig
 #   matplotlib
 #   bdist
-#   jre
 #   grep
+#   cmd
+#   eval
 # }
 #
 # Configure and Build the cppad_py Python Module
@@ -313,9 +307,16 @@ sys.exit(0)
 # #. `swig <http://www.swig.org/>`_
 # #. `c++ <https://en.wikipedia.org/wiki/C++>`_
 # #. `git <https://git-scm.com/>`_
-# #. `jre <https://www.ibm.com/cloud/learn/jre>`_
 #
-# The following packages are additional requirements necessary to execute
+# Mac Os
+# ======
+# The Mac Os system has only been tested using
+# `brew <https://brew.sh>`_ to install extra packages not included with
+# the system.
+#
+# Testing
+# =======
+# The following are additional requirements necessary to execute
 # the test program ``check_all.py``:
 # `scipy <https://scipy.org/>`_
 # `matplotlib <https://matplotlib.org/>`_.
@@ -351,8 +352,14 @@ sys.exit(0)
 #
 # prefix
 # ******
-# The value *prefix* is the prefix where cppad_py will be installed.
-# This is determined by the command line argument to ``setup.py``.
+# We use *prefix* to denote the prefix where cppad_py will be installed.
+# This is the same as the value of
+# :ref:`cmake_install_prefix<get_cppad_sh.settings.cmake_install_prefix>` .
+# You can create a variable with this value using the command
+#
+# | |tab| ``cmd=$(grep '^cmake_install_prefix=' bin/get_cppad.sh)``
+# | |tab| ``eval $cmd``
+# | |tab| ``prefix="$cmake_install_prefix"``
 #
 # libdir
 # ******
@@ -362,17 +369,22 @@ sys.exit(0)
 # {xsrst_code sh}
 #   bin/libdir.py ; echo
 # {xsrst_code}
+# You can create a variable with this value using the command
+#
+# | |tab| ``libdir=$(bin/libdir.py)``
 #
 # LD_LIBRARY_PATH
 # ***************
 # Make sure the directory *prefix/libdir*
 # is in your ``LD_LIBRARY_PATH``
-# For example,
+# For example, if you set *prefix* and *libdir* as above,
 #
-# | |tab| ``export LD_LIBRARY_PATH=``\ *prefix/libdir*
+# | |tab| ``export LD_LIBRARY_PATH=$prefix/$libdir``
 #
 # In mac OS ``LD_LIBRARY_PATH`` should be replaced by ``DYLD_LIBRARY_PATH``
-# above and below.
+# above and below. For example,
+#
+# | |tab| ``export DYLD_LIBRARY_PATH=$prefix/$libdir``
 #
 # PKG_CONFIG_PATH
 # ***************
@@ -384,8 +396,13 @@ sys.exit(0)
 #
 # Local Build
 # ***********
+# You should first remove any previous local copy of the Python cppad_py
+# module (that might exist) using the command
+#
+# | |tab| ``rm -r build/lib.*``
+#
 # You can build a local copy of the Python cppad_py module using the
-# command in the *top_srcdir* :
+# following command in the *top_srcdir* :
 #
 # | |tab| ``python3 setup.py bdist``
 #
@@ -394,16 +411,20 @@ sys.exit(0)
 # | |tab| ``build/lib.``\ *name*\ ``/cppad_py``
 #
 # where *name* identifies your system and version of python.
-# You can find the value of *name* by executing the command
-# ``ls build | grep lib\.``.
-# The next step is to copy this directory to the *top_srcdir* using the command
+# For example, you can set a variable equal to the value of *name*
+# by executing the command
 #
-# | |tab| ``cp -r build/lib.``\ *name*\ ``/cppad_py cppad_py``
+# | |tab| ``name=$(ls build | grep '^lib\.' | sed -e 's|^lib\.||')``.
 #
-# You can test the local copy be executing the following commands in the
+# The next step is to copy the ``cppad_py`` directory to the
+# *top_srcdir* . For example,
+#
+# | |tab| ``cp -r build/lib.$name/cppad_py cppad_py``
+#
+# You can test the local copy by executing the following commands in the
 # *top_srcdir* directory:
 #
-# | |tab| ``export PYTHONPATH=""``
+# | |tab| ``PYTHONPATH=""``
 # | |tab| ``python3 example/python/check_all.py``
 #
 # This test will use the local copy of *top_srcdir/*\ ``cppad_py`` .
@@ -419,24 +440,31 @@ sys.exit(0)
 # where *minor* is the minor version corresponding to ``python3``.
 # For example,
 #
-# | |tab| ``export PYTHNPATH=$LD_LIBRARY_PATH/python3.``\ *minor*\ ``/site-packages``
+# | |tab| ``minor=$(echo "import sys;print(sys.version_info.minor)" | python3)``
+# | |tab| ``export PYTHONPATH=$LD_LIBRARY_PATH/python3.$minor/site-packages``
 #
 #
 # Install
 # *******
 # Use the following command to build and install cppad_py:
 #
-# | |tab| ``python3 setup.py install --prefix=``\ *prefix*
+# | |tab| ``python3 setup.py install --prefix=$prefix``
+#
+# (see :ref:`prefix<setup_py.prefix>` above for how to set this shell
+# variable).
 #
 # This will install cppad_py in the directory
 #
 # | |tab| *prefix/libdir*\ ``/python3.``\ *minor* ``/site-packages/cppad_py``
 #
-# You can test the installed version,
-# if it is available, by removing the directory *top_srcdir/*\ ``cppad_py``
-# and then executing the commands
+# It should also remove the directory *top_srcdir/*\ ``cppad_py``
+# (if it exists).
+# You can test the installed version by executing the command
 #
 # | |tab| ``python3 example/python/check_all.py``
+#
+# If the directory *top_srcdir/*\ ``cppad_py`` exists,
+# you will be testing the local version (instead of the installed version).
 #
 # Install Errors
 # **************

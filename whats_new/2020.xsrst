@@ -36,6 +36,8 @@
     init
     libdir
     backquote
+    hpp
+    libcppad
 }
 
 CppAD Py Changes During 2020
@@ -47,6 +49,11 @@ CppAD Py Changes During 2020
 Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
+
+11-11
+*****
+Improve the install instructions in :ref:`setup_py<setup_py>`
+and :ref:`install_error<install_error>`.
 
 11-10
 *****
@@ -171,8 +178,8 @@ to the mixed class; see :ref:`mixed_fix_constraint`.
     :ref:`include_mixed<get_cppad_sh.settings.include_mixed>` was true.
     This has been fixed.
 
-#.  The :ref:`install_error.match_op.hpp` warning was added to the
-    install errors section.
+#.  A ``match_op.hpp`` warning was added to the
+    install errors section (it has since been removed).
 
 #.  The :ref:`numpy syntax<a_double_unary_fun.syntax.python>` was added
     to the documentation python syntax for ``a_double`` unary functions;
@@ -436,8 +443,8 @@ example if you are interested.
     (The ``numeric_seirs_class`` was later replaced by
     :ref:`numeric_seirwd_model<numeric_seirwd_model>`.)
 #.  Add mention of using ``DYLD_LIBRARY_PATH`` in the
-    :ref:`cppad_library_missing<install_error.cppad_library_missing>`
-    install instructions for the Mac.
+    :ref:`libcppad_lib<install_error.libcppad_lib>`
+    install error instructions for the Mac.
 
 05-05
 *****
@@ -457,13 +464,14 @@ In addition, the
 *****
 The ``setup.py`` program now installs a separate copy of CppAD
 and provides instructions at the end for modifying your
-``LD_LIBRARY_PATH`` ; see
-:ref:`cppad_library_missing<install_error.cppad_library_missing>`.
+``LD_LIBRARY_PATH``. These instructions have been removed and placed
+in the setup.py documentation; see
+:ref:`LD_LIBRARY_PATH<setup_py.LD_LIBRARY_PATH>` .
 
 04-26
 *****
 The ``setup.py`` program was modified to try to automatically solve the
-:ref:`cppad_library_missing<install_error.cppad_library_missing>` problem.
+:ref:`libcppad_lib<install_error.libcppad_lib>` problem.
 
 04-25
 *****
