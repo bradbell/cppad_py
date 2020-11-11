@@ -15,7 +15,8 @@ Configure and Build the cppad_py Python Module
 ##############################################
 - :ref:`setup_py.syntax`
 - :ref:`setup_py.external_requirements`
-- :ref:`setup_py.install_errors`
+    - :ref:`setup_py.external_requirements.mac_os`
+    - :ref:`setup_py.external_requirements.testing`
 - :ref:`setup_py.download`
     - :ref:`setup_py.download.top_source_directory`
 - :ref:`setup_py.configure`
@@ -24,10 +25,10 @@ Configure and Build the cppad_py Python Module
 - :ref:`setup_py.libdir`
 - :ref:`setup_py.ld_library_path`
 - :ref:`setup_py.pkg_config_path`
-- :ref:`setup_py.pythonpath`
 - :ref:`setup_py.local_build`
-- :ref:`setup_py.check_all.py`
+- :ref:`setup_py.pythonpath`
 - :ref:`setup_py.install`
+- :ref:`setup_py.install_errors`
 - :ref:`setup_py.install_using_pip`
 - :ref:`setup_py.children`
 
@@ -52,7 +53,6 @@ Syntax
 
 External Requirements
 *********************
-
 #. `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_
 #. `python <https://www.python.org/>`_ version 3
 #. `numpy <https://numpy.org/>`_
@@ -60,22 +60,33 @@ External Requirements
 #. `swig <http://www.swig.org/>`_
 #. `c++ <https://en.wikipedia.org/wiki/C++>`_
 #. `git <https://git-scm.com/>`_
-#. `jre <https://www.ibm.com/cloud/learn/jre>`_
 
 .. meta::
-   :keywords: install, errors
+   :keywords: mac, os
 
-.. index:: install, errors
+.. index:: mac, os
 
-.. _setup_py.install_errors:
+.. _setup_py.external_requirements.mac_os:
 
-Install Errors
-**************
-If you get an error message during the install procedure above,
-or the one below, see :ref:`install_error<install_error>`.
-This will only install the release version.
-Installing a debug version is discussed below in the instructions
-for downloading and building from the source code.
+Mac Os
+======
+The Mac Os system has only been tested using
+`brew <https://brew.sh>`_ to install extra packages not included with
+the system.
+
+.. meta::
+   :keywords: testing
+
+.. index:: testing
+
+.. _setup_py.external_requirements.testing:
+
+Testing
+=======
+The following are additional requirements necessary to execute
+the test program ``check_all.py``:
+`scipy <https://scipy.org/>`_
+`matplotlib <https://matplotlib.org/>`_.
 
 .. meta::
    :keywords: download
@@ -101,6 +112,9 @@ Top Source Directory
 ====================
 The directory you choose for *top_srcdir* is
 referred to as your *top_srcdir* directory.
+We suggest you use ``cppad_py.git`` for my *top_srcdir*
+so it is different from the ``cppad_py`` directory
+created by the instructions below.
 
 .. meta::
    :keywords: configure
@@ -140,8 +154,14 @@ non-standard requirements.
 
 prefix
 ******
-The value *prefix* is the prefix where cppad_py will be installed.
-This is determined by the command line argument to ``setup.py``.
+We use *prefix* to denote the prefix where cppad_py will be installed.
+This is the same as the value of
+:ref:`cmake_install_prefix<get_cppad_sh.settings.cmake_install_prefix>` .
+You can create a variable with this value using the command
+
+| |tab| ``cmd=$(grep '^cmake_install_prefix=' bin/get_cppad.sh)``
+| |tab| ``eval $cmd``
+| |tab| ``prefix="$cmake_install_prefix"``
 
 .. meta::
    :keywords: libdir
@@ -160,6 +180,10 @@ This can be determined by running the command:
 
       bin/libdir.py ; echo
 
+You can create a variable with this value using the command
+
+| |tab| ``libdir=$(bin/libdir.py)``
+
 .. meta::
    :keywords: ld_library_path
 
@@ -169,10 +193,16 @@ This can be determined by running the command:
 
 LD_LIBRARY_PATH
 ***************
-Make sure the following directory is in your ``LD_LIBRARY_PATH``
-(in mac OS this path is called ``DYLD_LIBRARY_PATH``):
+Make sure the directory *prefix/libdir*
+is in your ``LD_LIBRARY_PATH``
+For example, if you set *prefix* and *libdir* as above,
 
-| |tab| *prefix/libdir*
+| |tab| ``export LD_LIBRARY_PATH=$prefix/$libdir``
+
+In mac OS ``LD_LIBRARY_PATH`` should be replaced by ``DYLD_LIBRARY_PATH``
+above and below. For example,
+
+| |tab| ``export DYLD_LIBRARY_PATH=$prefix/$libdir``
 
 .. meta::
    :keywords: pkg_config_path
@@ -183,24 +213,11 @@ Make sure the following directory is in your ``LD_LIBRARY_PATH``
 
 PKG_CONFIG_PATH
 ***************
-Make sure the following directory is in your ``PKG_CONFIG_PATH``:
+Make sure the directory *prefix/libdir/*\ ``pkgconfig``
+is in your ``PKG_CONFIG_PATH``.
+For example,
 
-| |tab| *prefix/libdir/*\ ``pkgconfig``
-
-.. meta::
-   :keywords: pythonpath
-
-.. index:: pythonpath
-
-.. _setup_py.pythonpath:
-
-PYTHONPATH
-**********
-Make sure the following directory is in your ``PYTHONPATH``:
-
-| |tab| *prefix/libdir*\ ``/python3.``\ *minor*\ ``/site-packages``
-
-where *minor* is the minor version corresponding to ``python3``.
+| |tab| ``export PKG_CONFIG_PATH=$LD_LIBRARY_PATH/pkgconfig``
 
 .. meta::
    :keywords: local, build
@@ -211,8 +228,13 @@ where *minor* is the minor version corresponding to ``python3``.
 
 Local Build
 ***********
+You should first remove any previous local copy of the Python cppad_py
+module (that might exist) using the command
+
+| |tab| ``rm -r build/lib.*``
+
 You can build a local copy of the Python cppad_py module using the
-command in the *top_srcdir* :
+following command in the *top_srcdir* :
 
 | |tab| ``python3 setup.py bdist``
 
@@ -221,32 +243,44 @@ This will create the directory
 | |tab| ``build/lib.``\ *name*\ ``/cppad_py``
 
 where *name* identifies your system and version of python.
-The next step is to copy this directory to the *top_srcdir* using the command
+For example, you can set a variable equal to the value of *name*
+by executing the command
 
-| |tab| ``cp -r build/lib.``\ *name*\ ``/cppad_py cppad_py``
+| |tab| ``name=$(ls build | grep '^lib\.' | sed -e 's|^lib\.||')``.
 
-.. meta::
-   :keywords: check_all.py
+The next step is to copy the ``cppad_py`` directory to the
+*top_srcdir* . For example,
 
-.. index:: check_all.py
+| |tab| ``cp -r build/lib.$name/cppad_py cppad_py``
 
-.. _setup_py.check_all.py:
+You can test the local copy by executing the following commands in the
+*top_srcdir* directory:
 
-check_all.py
-************
-The following packages are additional requirements to execute
-the test program ``check_all.py``:
-`scipy <https://scipy.org/>`_
-`matplotlib <https://matplotlib.org/>`_.
-You can run this test by executing the following command in the *top_srcdir*
-directory:
-
+| |tab| ``PYTHONPATH=""``
 | |tab| ``python3 example/python/check_all.py``
 
-This test will use the local copy of *top_srcdir/*\ ``cppad_py``
-if it is available. You can test the installed version,
-if it is available, by removing the directory *top_srcdir/*\ ``cppad_py``
-and re-executing the command above.
+This test will use the local copy of *top_srcdir/*\ ``cppad_py`` .
+
+.. meta::
+   :keywords: pythonpath
+
+.. index:: pythonpath
+
+.. _setup_py.pythonpath:
+
+PYTHONPATH
+**********
+In order to use the installed version of cppad_py,
+you must add the directory
+
+| |tab| *prefix/libdir*\ ``/python3.``\ *minor*\ ``/site-packages``
+
+to your ``PYTHONPATH``
+where *minor* is the minor version corresponding to ``python3``.
+For example,
+
+| |tab| ``minor=$(echo "import sys;print(sys.version_info.minor)" | python3)``
+| |tab| ``export PYTHONPATH=$LD_LIBRARY_PATH/python3.$minor/site-packages``
 
 .. meta::
    :keywords: install
@@ -259,14 +293,38 @@ Install
 *******
 Use the following command to build and install cppad_py:
 
-| |tab| ``python3 setup.py install --prefix=`` *prefix*
+| |tab| ``python3 setup.py install --prefix=$prefix``
+
+(see :ref:`prefix<setup_py.prefix>` above for how to set this shell
+variable).
 
 This will install cppad_py in the directory
 
 | |tab| *prefix/libdir*\ ``/python3.``\ *minor* ``/site-packages/cppad_py``
 
-The ``check_all.py`` script can be used to test the installed version of
-cppad_py; see above.
+It should also remove the directory *top_srcdir/*\ ``cppad_py``
+(if it exists).
+You can test the installed version by executing the command
+
+| |tab| ``python3 example/python/check_all.py``
+
+If the directory *top_srcdir/*\ ``cppad_py`` exists,
+you will be testing the local version (instead of the installed version).
+
+.. meta::
+   :keywords: install, errors
+
+.. index:: install, errors
+
+.. _setup_py.install_errors:
+
+Install Errors
+**************
+If you get an error message during the install procedure above,
+or the one below, see :ref:`install_error<install_error>`.
+This will only install the release version.
+Installing a debug version is discussed below in the instructions
+for downloading and building from the source code.
 
 .. meta::
    :keywords: install, using, pip
