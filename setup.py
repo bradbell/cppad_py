@@ -293,6 +293,7 @@ sys.exit(0)
 #   matplotlib
 #   bdist
 #   jre
+#   grep
 # }
 #
 # Configure and Build the cppad_py Python Module
@@ -314,13 +315,10 @@ sys.exit(0)
 # #. `git <https://git-scm.com/>`_
 # #. `jre <https://www.ibm.com/cloud/learn/jre>`_
 #
-# Install Errors
-# **************
-# If you get an error message during the install procedure above,
-# or the one below, see :ref:`install_error<install_error>`.
-# This will only install the release version.
-# Installing a debug version is discussed below in the instructions
-# for downloading and building from the source code.
+# The following packages are additional requirements necessary to execute
+# the test program ``check_all.py``:
+# `scipy <https://scipy.org/>`_
+# `matplotlib <https://matplotlib.org/>`_.
 #
 # Download
 # ********
@@ -332,8 +330,9 @@ sys.exit(0)
 # ====================
 # The directory you choose for *top_srcdir* is
 # referred to as your *top_srcdir* directory.
-# I like to use ``cppad_py.git`` for my *top_srcdir* so it is different from
-# the ``cppad_py`` directory created by the instructions below.
+# We suggest you use ``cppad_py.git`` for my *top_srcdir*
+# so it is different from the ``cppad_py`` directory
+# created by the instructions below.
 #
 # Configure
 # *********
@@ -373,7 +372,7 @@ sys.exit(0)
 # | |tab| ``export LD_LIBRARY_PATH=``\ *prefix/libdir*
 #
 # In mac OS ``LD_LIBRARY_PATH`` should be replaced by ``DYLD_LIBRARY_PATH``
-# (both above and below).
+# above and below.
 #
 # PKG_CONFIG_PATH
 # ***************
@@ -382,18 +381,6 @@ sys.exit(0)
 # For example,
 #
 # | |tab| ``export PKG_CONFIG_PATH=$LD_LIBRARY_PATH/pkgconfig``
-#
-# PYTHONPATH
-# **********
-# Make sure the directory
-#
-# | |tab| *prefix/libdir*\ ``/python3.``\ *minor*\ ``/site-packages``
-#
-# is in your ``PYTHONPATH``
-# where *minor* is the minor version corresponding to ``python3``.
-# For example,
-#
-# | |tab| ``export PYTHNPATH=$LD_LIBRARY_PATH/python3.``\ *minor*\ ``/site-packages``
 #
 # Local Build
 # ***********
@@ -407,39 +394,57 @@ sys.exit(0)
 # | |tab| ``build/lib.``\ *name*\ ``/cppad_py``
 #
 # where *name* identifies your system and version of python.
+# You can find the value of *name* by executing the command
+# ``ls build | grep lib\.``.
 # The next step is to copy this directory to the *top_srcdir* using the command
 #
 # | |tab| ``cp -r build/lib.``\ *name*\ ``/cppad_py cppad_py``
 #
-# check_all.py
-# ************
-# The following packages are additional requirements to execute
-# the test program ``check_all.py``:
-# `scipy <https://scipy.org/>`_
-# `matplotlib <https://matplotlib.org/>`_.
-# You can run this test by executing the following command in the *top_srcdir*
-# directory:
+# You can test the local copy be executing the following commands in the
+# *top_srcdir* directory:
 #
+# | |tab| ``export PYTHONPATH=""``
 # | |tab| ``python3 example/python/check_all.py``
 #
-# This test will use the local copy of *top_srcdir/*\ ``cppad_py``
-# if it is available. You can test the installed version,
-# if it is available, by removing the directory *top_srcdir/*\ ``cppad_py``
-# and re-executing the command above.
+# This test will use the local copy of *top_srcdir/*\ ``cppad_py`` .
+#
+# PYTHONPATH
+# **********
+# In order to use the installed version of cppad_py,
+# you must add the directory
+#
+# | |tab| *prefix/libdir*\ ``/python3.``\ *minor*\ ``/site-packages``
+#
+# to your ``PYTHONPATH``
+# where *minor* is the minor version corresponding to ``python3``.
+# For example,
+#
+# | |tab| ``export PYTHNPATH=$LD_LIBRARY_PATH/python3.``\ *minor*\ ``/site-packages``
 #
 #
 # Install
 # *******
 # Use the following command to build and install cppad_py:
 #
-# | |tab| ``python3 setup.py install --prefix=`` *prefix*
+# | |tab| ``python3 setup.py install --prefix=``\ *prefix*
 #
 # This will install cppad_py in the directory
 #
 # | |tab| *prefix/libdir*\ ``/python3.``\ *minor* ``/site-packages/cppad_py``
 #
-# The ``check_all.py`` script can be used to test the installed version of
-# cppad_py; see above.
+# You can test the installed version,
+# if it is available, by removing the directory *top_srcdir/*\ ``cppad_py``
+# and then executing the commands
+#
+# | |tab| ``python3 example/python/check_all.py``
+#
+# Install Errors
+# **************
+# If you get an error message during the install procedure above,
+# or the one below, see :ref:`install_error<install_error>`.
+# This will only install the release version.
+# Installing a debug version is discussed below in the instructions
+# for downloading and building from the source code.
 #
 # Install Using Pip
 # *****************
