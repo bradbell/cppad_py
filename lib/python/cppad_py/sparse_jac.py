@@ -24,8 +24,7 @@
 #
 # | *work* =  ``cppad_py.sparse_jac_work`` ()
 # | *n_sweep* = *f* . ``sparse_jac_for`` ( *subset* , *x* , *pattern* , *work* )
-#
-# *n_sweep* = *f* . ``sparse_jac_rev`` ( *subset* , *x* , *pattern* , *work* )
+# | *n_sweep* = *f* . ``sparse_jac_rev`` ( *subset* , *x* , *pattern* , *work* )
 #
 # Purpose
 # *******

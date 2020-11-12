@@ -585,20 +585,32 @@ class mixed :
     The first token in each line is ``String``, ``Integer``, or ``Numeric``;
     see below.
 
+    ipopt options
+    =============
+    See the `ipopt options <https://coin-or.github.io/Ipopt/OPTIONS.html>`_
+    documentation for a list of the options and how they affect the
+    optimization.
+
     String
     ======
-    An Ipopt string option is specifies with the following syntax:
-    `String`` *name* *value*
+    An Ipopt string option is specifies by a line containing
+    the following syntax:
+
+    | |tab| ``String`` *name* *value*
 
     Integer
     =======
-    An Ipopt integer option is specifies with the following syntax:
-    `Integer`` *name* *value*
+    An Ipopt integer option is specifies by a line containing
+    the following syntax:
+
+    | |tab| ``Integer`` *name* *value*
 
     Numeric
     =======
-    An Ipopt numeric option is specifies with the following syntax:
-    `Numeric`` *name* *value*
+    An Ipopt numeric option is specifies by a line containing
+    the following syntax:
+
+    | |tab| ``Numeric`` *name* *value*
 
     derivative_test
     ===============
@@ -629,7 +641,7 @@ class mixed :
 
     random_ipopt_options
     ********************
-    This contains the options for optimizing the fixed effects.
+    This contains the options for optimizing the random effects.
     It has the same format as *fixed_ipopt_options*, but does
     not have the special exceptions to the normal Ipopt options; e.g.,
     ``adaptive`` is not available as a ``derivative_test`` *value*.
