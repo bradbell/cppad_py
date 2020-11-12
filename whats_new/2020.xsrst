@@ -59,6 +59,8 @@ Previous Years
     :ref:`f <numeric_rosen3_step.fun.f>` ,
     :ref:`f_t <numeric_rosen3_step.fun.f_t>` , and
     :ref:`f_y <numeric_rosen3_step.fun.f_y>` .
+#.  Remove some extra space when a '.' character appears between the
+    change between italic and literal font.
 
 11-11
 *****

@@ -20,8 +20,9 @@ The Ipopt Example Problem: Example and Test
 
 Problem
 *******
-This optimization problem is take from the Ipopt documentation
-https://coin-or.github.io/Ipopt/INTERFACES.html.
+This optimization problem is take from the
+`ipopt interfaces <https://coin-or.github.io/Ipopt/INTERFACES.html>`_
+documentation.
 
 .. math::
 
