@@ -12,6 +12,9 @@
 
 .. comment: BEGIN_INDEX_RST
 
+A Python Interface To CppAD
+===========================
+
 .. toctree::
     xsrst/xsrst_automatic
     xsrst/cppad_py
