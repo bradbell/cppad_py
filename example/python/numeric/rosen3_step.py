@@ -162,20 +162,29 @@ def check_rosen3_step(fun, ti, yi, h) :
 # The type of the elements of *y*
 # can be ``float`` or ``ad_double`` .
 #
-# fun.f
-# =====
-# The syntax ``yp`` = ``fun`` . *f* ``t`` , ``y`` ) returns *yp* ,
-# the current function value :math:`f(t, y)`.
+# f
+# =
+# The syntax
 #
-# fun.f_t
-# =======
-# The syntax ``yp_t`` = ``fun`` . *f_t* ( ``t`` , ``y`` ) returns *yp_t* ,
-# the current partial value :math:`\partial_t f(t, y)`.
+# | |tab| *yp* = *fun* . ``f`` ( *t* , *y* )
 #
-# fun.f_y
-# =======
-# The syntax ``yp_y`` = ``fun`` . *f_y* ( ``t`` , ``y`` ) returns *yp_y* ,
-# the current partial value :math:`\partial_y f(t, y)`.
+# sets *yp* to the value of :math:`f(t, y)`.
+#
+# f_t
+# ===
+# The syntax
+#
+# | |tab| *yp_t* = *fun* . ``f_t`` ( *t* , *y* )
+#
+# set *yp_t* to the value of :math:`\partial_t f(t, y)`.
+#
+# f_y
+# ===
+# The syntax
+#
+# | |tab| *yp_y* = *fun* . ``f_y`` ( *t* , *y* )
+#
+# sets *yp_y* to the value of :math:`\partial_y f(t, y)`.
 #
 # ti
 # **

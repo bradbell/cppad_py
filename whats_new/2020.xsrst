@@ -38,6 +38,7 @@
     backquote
     hpp
     libcppad
+    ipopt
 }
 
 CppAD Py Changes During 2020
@@ -49,6 +50,15 @@ CppAD Py Changes During 2020
 Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
+
+11-12
+*****
+#.  Improve the :ref:`ipopt options
+    <mixed_optimize_fixed.fixed_ipopt_options.ipopt_options>` documentation.
+#.  Fix the font in the syntax for the rosen3_step functions
+    :ref:`f <numeric_rosen3_step.fun.f>` ,
+    :ref:`f_t <numeric_rosen3_step.fun.f_t>` , and
+    :ref:`f_y <numeric_rosen3_step.fun.f_y>` .
 
 11-11
 *****

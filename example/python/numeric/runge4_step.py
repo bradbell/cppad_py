@@ -52,7 +52,7 @@ def runge4_step(fun, ti, yi, h) :
 #
 # | |tab| *yp* = *fun*\ ``.f`` ( *t* , *y* )
 #
-# where *t* # is the current time,
+# where *t* is the current time,
 # *y* is the current value of :math:`y(t)`, and
 # *yp* is the current derivative :math:`y^{(1)} (t)`.
 # The type of the elements of *t* and *y*
