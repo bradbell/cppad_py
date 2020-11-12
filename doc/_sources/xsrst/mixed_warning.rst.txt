@@ -28,7 +28,7 @@ Mixed Class Warnings
 Syntax
 ******
 | *warning* ( *message* )
-| *mixed_obj* . ``post_warning`` ( *message* )
+| *mixed_obj*\ ``.post_warning`` ( *message* )
 
 .. meta::
    :keywords: warning

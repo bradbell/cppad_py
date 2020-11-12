@@ -229,9 +229,9 @@
 <span id="py-sparse-jac-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><em>work</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.sparse_jac_work</span></code> ()</div>
-<div class="line"><em>n_sweep</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">sparse_jac_for</span></code> ( <em>subset</em> , <em>x</em> , <em>pattern</em> , <em>work</em> )</div>
+<div class="line"><em>n_sweep</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.sparse_jac_for</span></code> ( <em>subset</em> , <em>x</em> , <em>pattern</em> , <em>work</em> )</div>
+<div class="line"><em>n_sweep</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.sparse_jac_rev</span></code> ( <em>subset</em> , <em>x</em> , <em>pattern</em> , <em>work</em> )</div>
 </div>
-<p><em>n_sweep</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">sparse_jac_rev</span></code> ( <em>subset</em> , <em>x</em> , <em>pattern</em> , <em>work</em> )</p>
 </div>
 <div class="section" id="purpose">
 <span id="py-sparse-jac-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
@@ -267,11 +267,11 @@ by this operation; see
 <span id="py-sparse-jac-subset"></span><span id="index-6"></span><h3>subset<a class="headerlink" href="#subset" title="Permalink to this headline">¶</a></h3>
 <p>This argument must have be a <a class="reference internal" href="py_sparse_rcv.html#py-sparse-rcv-matrix"><span class="std std-ref">matrix</span></a>
 returned by the <code class="docutils literal notranslate"><span class="pre">sparse_rcv</span></code> constructor.
-Its row size is <em>subset</em> . <code class="docutils literal notranslate"><span class="pre">nr</span></code> () == <em>m</em> ,
-and its column size is <em>subset</em> . <code class="docutils literal notranslate"><span class="pre">nc</span></code> () == <em>n</em> .
+Its row size is <em>subset</em><code class="docutils literal notranslate"><span class="pre">.nr</span></code> () == <em>m</em> ,
+and its column size is <em>subset</em><code class="docutils literal notranslate"><span class="pre">.nc</span></code> () == <em>n</em> .
 It specifies which elements of the Jacobian are computed.
 The input value of its value vector
-<em>subset</em> . <code class="docutils literal notranslate"><span class="pre">val</span></code> () does not matter.
+<em>subset</em><code class="docutils literal notranslate"><span class="pre">.val</span></code> () does not matter.
 Upon return it contains the value of the corresponding elements
 of the Jacobian.
 All of the row, column pairs in <em>subset</em> must also appear in
@@ -287,8 +287,8 @@ It specifies the point at which to evaluate the Jacobian <span class="math notra
 <span id="py-sparse-jac-pattern"></span><span id="index-8"></span><h3>pattern<a class="headerlink" href="#pattern" title="Permalink to this headline">¶</a></h3>
 <p>This argument must have be a <a class="reference internal" href="py_sparse_rc.html#py-sparse-rc-pattern"><span class="std std-ref">pattern</span></a>
 returned by the <code class="docutils literal notranslate"><span class="pre">sparse_rc</span></code> constructor.
-Its row size is <em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">nr</span></code> () == <em>m</em> ,
-and its column size is <em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">nc</span></code> () == <em>n</em> .
+Its row size is <em>pattern</em><code class="docutils literal notranslate"><span class="pre">.nr</span></code> () == <em>m</em> ,
+and its column size is <em>pattern</em><code class="docutils literal notranslate"><span class="pre">.nc</span></code> () == <em>n</em> .
 It is a sparsity pattern for the Jacobian <span class="math notranslate nohighlight">\(J(x)\)</span>.
 This argument is not used (and need not satisfy any conditions),
 when <a class="reference internal" href="#py-sparse-jac-work"><span class="std std-ref">work</span></a> is non-empty.</p>
@@ -300,13 +300,13 @@ when <a class="reference internal" href="#py-sparse-jac-work"><span class="std s
 <div class="line">        <em>work</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.sparse_jac_work</span></code> ()</div>
 </div>
 <p>We refer to its initial value,
-and its value after <em>work</em> . <code class="docutils literal notranslate"><span class="pre">clear</span></code> () , as empty.
+and its value after <em>work</em><code class="docutils literal notranslate"><span class="pre">.clear</span></code> () , as empty.
 If it is empty, information is stored in <em>work</em> .
 This can be used to reduce computation when
 a future call is for the same object <em>f</em> ,
 the same member function <code class="docutils literal notranslate"><span class="pre">sparse_jac_for</span></code> or <code class="docutils literal notranslate"><span class="pre">sparse_jac_rev</span></code> ,
 and the same subset of the Jacobian.
-If any of these values change, use <em>work</em> . <code class="docutils literal notranslate"><span class="pre">clear</span></code> () to
+If any of these values change, use <em>work</em><code class="docutils literal notranslate"><span class="pre">.clear</span></code> () to
 empty this structure.</p>
 </div>
 <div class="section" id="n-sweep">
@@ -327,7 +327,7 @@ for all the variables in the operation sequence..
 After a call to <code class="docutils literal notranslate"><span class="pre">sparse_jac_forward</span></code> or <code class="docutils literal notranslate"><span class="pre">sparse_jac_rev</span></code> ,
 the zero order coefficients correspond to</p>
 <div class="line-block">
-<div class="line">        <em>f</em> . <code class="docutils literal notranslate"><span class="pre">forward(0</span></code> , <em>x</em> )</div>
+<div class="line">        <em>f</em><code class="docutils literal notranslate"><span class="pre">.forward(0</span></code> , <em>x</em> )</div>
 </div>
 <p>All the other forward mode coefficients are unspecified.</p>
 <div class="toctree-wrapper compound">

@@ -23,6 +23,7 @@ Optimize The Fixed Effects
 - :ref:`mixed_optimize_fixed.fixed_in_(random_in)`
 - :ref:`mixed_optimize_fixed.fixed_scale`
 - :ref:`mixed_optimize_fixed.fixed_ipopt_options`
+    - :ref:`mixed_optimize_fixed.fixed_ipopt_options.ipopt_options`
     - :ref:`mixed_optimize_fixed.fixed_ipopt_options.string`
     - :ref:`mixed_optimize_fixed.fixed_ipopt_options.integer`
     - :ref:`mixed_optimize_fixed.fixed_ipopt_options.numeric`
@@ -49,7 +50,7 @@ Syntax
 ******
 
 .. literalinclude:: ../../lib/python/cppad_py/mixed.py
-    :lines: 684-696
+    :lines: 696-708
     :language: py
 
 .. meta::
@@ -181,6 +182,19 @@ The first token in each line is ``String``, ``Integer``, or ``Numeric``;
 see below.
 
 .. meta::
+   :keywords: ipopt, options
+
+.. index:: ipopt, options
+
+.. _mixed_optimize_fixed.fixed_ipopt_options.ipopt_options:
+
+ipopt options
+=============
+See the `ipopt options <https://coin-or.github.io/Ipopt/OPTIONS.html>`_
+documentation for a list of the options and how they affect the
+optimization.
+
+.. meta::
    :keywords: string
 
 .. index:: string
@@ -189,8 +203,10 @@ see below.
 
 String
 ======
-An Ipopt string option is specifies with the following syntax:
-`String`` *name* *value*
+An Ipopt string option is specifies by a line containing
+the following syntax:
+
+| |tab| ``String`` *name* *value*
 
 .. meta::
    :keywords: integer
@@ -201,8 +217,10 @@ An Ipopt string option is specifies with the following syntax:
 
 Integer
 =======
-An Ipopt integer option is specifies with the following syntax:
-`Integer`` *name* *value*
+An Ipopt integer option is specifies by a line containing
+the following syntax:
+
+| |tab| ``Integer`` *name* *value*
 
 .. meta::
    :keywords: numeric
@@ -213,8 +231,10 @@ An Ipopt integer option is specifies with the following syntax:
 
 Numeric
 =======
-An Ipopt numeric option is specifies with the following syntax:
-`Numeric`` *name* *value*
+An Ipopt numeric option is specifies by a line containing
+the following syntax:
+
+| |tab| ``Numeric`` *name* *value*
 
 .. meta::
    :keywords: derivative_test
@@ -280,7 +300,7 @@ cppad_mixed and it is an error to specify this option.
 
 random_ipopt_options
 ********************
-This contains the options for optimizing the fixed effects.
+This contains the options for optimizing the random effects.
 It has the same format as *fixed_ipopt_options*, but does
 not have the special exceptions to the normal Ipopt options; e.g.,
 ``adaptive`` is not available as a ``derivative_test`` *value*.
@@ -305,7 +325,7 @@ The return value *solution* has the following fields:
 
 fixed_opt
 =========
-The value *solution* . ``fixed_opt`` is a numpy vector with length
+The value *solution*\ ``.fixed_opt`` is a numpy vector with length
 *n_fixed* containing the final value of the fixed effects
 (after optimization).
 If the *max_iter* is -1, it is equal to *fixed_in*.
@@ -319,7 +339,7 @@ If the *max_iter* is -1, it is equal to *fixed_in*.
 
 fixed_lag
 =========
-The value *solution* . ``fixed_lag`` is a numpy vector with length
+The value *solution*\ ``.fixed_lag`` is a numpy vector with length
 *n_fixed* containing the Lagrange multipliers for
 the fixed effects lower (upper) bounds if it is greater than (less than)
 zero.
@@ -333,7 +353,7 @@ zero.
 
 fix_con_lag
 ===========
-The value *solution* . ``fix_con_lag`` is a Lagrange multipliers for
+The value *solution*\ ``.fix_con_lag`` is a Lagrange multipliers for
 the fixed effects lower (upper) bounds if it is greater than (less than).
 Its length is the same as the return value for the fixed effects constraint
 function.
@@ -347,7 +367,7 @@ function.
 
 ran_con_lag
 ===========
-The value *solution* . ``ran_con_lag`` is a Lagrange multipliers for the
+The value *solution*\ ``.ran_con_lag`` is a Lagrange multipliers for the
 rand effects constraint function.
 Its length is the same as the random constrain matrix :math"`A` ; see
 :ref:`A_rcv<mixed_ctor.A_rcv>`.

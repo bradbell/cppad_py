@@ -26,7 +26,7 @@ Mixed Class Fatal Errors
 
 Syntax
 ******
-| *mixed_obj* . ``post_fatal_error`` ( *message* )
+| *mixed_obj*\ ``.post_fatal_error`` ( *message* )
 
 .. meta::
    :keywords: post_fatal_error

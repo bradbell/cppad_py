@@ -250,7 +250,7 @@ representation of the function <span class="math notranslate nohighlight">\(f(x)
 <span id="numeric-optimize-fun-class-optimize-fun-objective-fun"></span><span id="index-6"></span><h4>objective_fun<a class="headerlink" href="#objective-fun" title="Permalink to this headline">¶</a></h4>
 <p>The syntax</p>
 <div class="line-block">
-<div class="line">        <em>y</em> = <em>optimize_fun</em> . <code class="docutils literal notranslate"><span class="pre">objective_fun</span></code> ( <em>x</em> )</div>
+<div class="line">        <em>y</em> = <em>optimize_fun</em><code class="docutils literal notranslate"><span class="pre">.objective_fun</span></code> ( <em>x</em> )</div>
 </div>
 <p>sets <span class="math notranslate nohighlight">\(y = f(x)\)</span> where
 <em>x</em> is a numpy vector with length <em>n</em>
@@ -260,7 +260,7 @@ and <em>y</em> is a scalar.</p>
 <span id="numeric-optimize-fun-class-optimize-fun-objective-grad"></span><span id="index-7"></span><h4>objective_grad<a class="headerlink" href="#objective-grad" title="Permalink to this headline">¶</a></h4>
 <p>The syntax</p>
 <div class="line-block">
-<div class="line">        <em>z</em> = <em>optimize_fun</em> . <code class="docutils literal notranslate"><span class="pre">objective_grad</span></code> ( <em>x</em> )</div>
+<div class="line">        <em>z</em> = <em>optimize_fun</em><code class="docutils literal notranslate"><span class="pre">.objective_grad</span></code> ( <em>x</em> )</div>
 </div>
 <p>sets <span class="math notranslate nohighlight">\(z = f^{(1)} (x)\)</span> where
 <em>x</em> and <em>z</em> are numpy vectors with length <em>n</em> .</p>
@@ -269,7 +269,7 @@ and <em>y</em> is a scalar.</p>
 <span id="numeric-optimize-fun-class-optimize-fun-objective-hess"></span><span id="index-8"></span><h4>objective_hess<a class="headerlink" href="#objective-hess" title="Permalink to this headline">¶</a></h4>
 <p>The syntax</p>
 <div class="line-block">
-<div class="line">        <em>h</em> = <em>optimize_fun</em> . <code class="docutils literal notranslate"><span class="pre">objective_hess</span></code> ( <em>x</em> )</div>
+<div class="line">        <em>h</em> = <em>optimize_fun</em><code class="docutils literal notranslate"><span class="pre">.objective_hess</span></code> ( <em>x</em> )</div>
 </div>
 <p>sets <span class="math notranslate nohighlight">\(h = f^{(2)} (x)\)</span> where
 <em>x</em> is a numpy vector with length <em>n</em>
@@ -279,7 +279,7 @@ and <em>h</em> is a numpy <em>n</em> by <em>n</em>  matrix.</p>
 <span id="numeric-optimize-fun-class-optimize-fun-constraint-fun"></span><span id="index-9"></span><h4>constraint_fun<a class="headerlink" href="#constraint-fun" title="Permalink to this headline">¶</a></h4>
 <p>The syntax</p>
 <div class="line-block">
-<div class="line">        <em>y</em> = <em>optimize_fun</em> . <code class="docutils literal notranslate"><span class="pre">constraint_fun</span></code> ( <em>x</em> )</div>
+<div class="line">        <em>y</em> = <em>optimize_fun</em><code class="docutils literal notranslate"><span class="pre">.constraint_fun</span></code> ( <em>x</em> )</div>
 </div>
 <p>sets <span class="math notranslate nohighlight">\(y = g(x)\)</span> where
 <em>x</em> ( <em>y</em> ) is a numpy vector with length
@@ -289,7 +289,7 @@ and <em>h</em> is a numpy <em>n</em> by <em>n</em>  matrix.</p>
 <span id="numeric-optimize-fun-class-optimize-fun-constraint-jac"></span><span id="index-10"></span><h4>constraint_jac<a class="headerlink" href="#constraint-jac" title="Permalink to this headline">¶</a></h4>
 <p>The syntax</p>
 <div class="line-block">
-<div class="line">        <em>J</em> = <em>optimize_fun</em> . <code class="docutils literal notranslate"><span class="pre">constraint_jac</span></code> ( <em>x</em> )</div>
+<div class="line">        <em>J</em> = <em>optimize_fun</em><code class="docutils literal notranslate"><span class="pre">.constraint_jac</span></code> ( <em>x</em> )</div>
 </div>
 <p>sets <span class="math notranslate nohighlight">\(J = g^{(1)} (x)\)</span> where
 <em>x</em> is a numpy vector with length <em>n</em>
@@ -299,7 +299,7 @@ and <em>J</em> is a numpy <em>m</em> by <em>n</em>  matrix.</p>
 <span id="numeric-optimize-fun-class-optimize-fun-constraint-hess"></span><span id="index-11"></span><h4>constraint_hess<a class="headerlink" href="#constraint-hess" title="Permalink to this headline">¶</a></h4>
 <p>The syntax</p>
 <div class="line-block">
-<div class="line">        <em>H</em> = <em>optimize_fun</em> . <code class="docutils literal notranslate"><span class="pre">constraint_hess</span></code> ( <em>x</em> , <em>v</em> )</div>
+<div class="line">        <em>H</em> = <em>optimize_fun</em><code class="docutils literal notranslate"><span class="pre">.constraint_hess</span></code> ( <em>x</em> , <em>v</em> )</div>
 </div>
 <p>sets</p>
 <div class="math notranslate nohighlight">

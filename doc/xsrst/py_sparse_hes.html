@@ -253,10 +253,10 @@ by this operation; see
 <p>This argument must have be a <a class="reference internal" href="py_sparse_rcv.html#py-sparse-rcv-matrix"><span class="std std-ref">matrix</span></a>
 returned by the <code class="docutils literal notranslate"><span class="pre">sparse_rcv</span></code> constructor.
 Its row size and column size is <em>n</em> ; i.e.,
-<em>subset</em> . <code class="docutils literal notranslate"><span class="pre">nr</span></code> () == <em>n</em> and <em>subset</em> . <code class="docutils literal notranslate"><span class="pre">nc</span></code> () == <em>n</em> .
+<em>subset</em><code class="docutils literal notranslate"><span class="pre">.nr</span></code> () == <em>n</em> and <em>subset</em><code class="docutils literal notranslate"><span class="pre">.nc</span></code> () == <em>n</em> .
 It specifies which elements of the Hessian are computed.
 The input value of its value vector
-<em>subset</em> . <code class="docutils literal notranslate"><span class="pre">val</span></code> () does not matter.
+<em>subset</em><code class="docutils literal notranslate"><span class="pre">.val</span></code> () does not matter.
 Upon return it contains the value of the corresponding elements
 of the Jacobian.
 All of the row, column pairs in <em>subset</em> must also appear in
@@ -280,7 +280,7 @@ i.e., <span class="math notranslate nohighlight">\(r_i\)</span> is the multiplie
 <p>This argument must have be a <a class="reference internal" href="py_sparse_rc.html#py-sparse-rc-pattern"><span class="std std-ref">pattern</span></a>
 returned by the <code class="docutils literal notranslate"><span class="pre">sparse_rc</span></code> constructor.
 Its row size and column sizes are <em>n</em> ; i.e.,
-<em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">nr</span></code> () == <em>n</em> and <em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">nc</span></code> () == <em>n</em> .
+<em>pattern</em><code class="docutils literal notranslate"><span class="pre">.nr</span></code> () == <em>n</em> and <em>pattern</em><code class="docutils literal notranslate"><span class="pre">.nc</span></code> () == <em>n</em> .
 It is a sparsity pattern for the Hessian <span class="math notranslate nohighlight">\(H(x)\)</span>.
 This argument is not used (and need not satisfy any conditions),
 when <a class="reference internal" href="#py-sparse-hes-work"><span class="std std-ref">work</span></a> is non-empty.</p>
@@ -292,12 +292,12 @@ when <a class="reference internal" href="#py-sparse-hes-work"><span class="std s
 <div class="line">        <em>work</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.sparse_hes_work</span></code> ()</div>
 </div>
 <p>We refer to its initial value,
-and its value after <em>work</em> . <code class="docutils literal notranslate"><span class="pre">clear</span></code> () , as empty.
+and its value after <em>work</em><code class="docutils literal notranslate"><span class="pre">.clear</span></code> () , as empty.
 If it is empty, information is stored in <em>work</em> .
 This can be used to reduce computation when
 a future call is for the same object <em>f</em> ,
 and the same subset of the Hessian.
-If either of these values change, use <em>work</em> . <code class="docutils literal notranslate"><span class="pre">clear</span></code> () to
+If either of these values change, use <em>work</em><code class="docutils literal notranslate"><span class="pre">.clear</span></code> () to
 empty this structure.</p>
 </div>
 <div class="section" id="n-sweep">

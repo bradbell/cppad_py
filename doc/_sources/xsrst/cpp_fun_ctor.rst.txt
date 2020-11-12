@@ -74,7 +74,7 @@ and must be the same as
 :ref:`ax<cpp_independent.ax>`
 returned by the previous call to ``independent`` ; i.e.,
 it must be the independent variable vector.
-We use the notation *n* = *ax* . ``size`` ()
+We use the notation *n* = *ax*\ ``.size`` ()
 to denote the number of independent variables.
 
 .. meta::
@@ -91,7 +91,7 @@ This argument has prototype
 | |tab| ``const vec_a_double&`` *ax*
 
 It specifies the dependent variables.
-We use the notation *m* = *ay* . ``size`` ()
+We use the notation *m* = *ay*\ ``.size`` ()
 to denote the number of dependent variables.
 
 .. meta::

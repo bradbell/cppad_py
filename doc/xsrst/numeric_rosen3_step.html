@@ -11,9 +11,9 @@
 <meta content="fun" name="keywords" />
 <meta content="t" name="keywords" />
 <meta content="y" name="keywords" />
-<meta content="fun.f" name="keywords" />
-<meta content="fun.f_t" name="keywords" />
-<meta content="fun.f_y" name="keywords" />
+<meta content="f" name="keywords" />
+<meta content="f_t" name="keywords" />
+<meta content="f_y" name="keywords" />
 <meta content="ti" name="keywords" />
 <meta content="yi" name="keywords" />
 <meta content="h" name="keywords" />
@@ -209,9 +209,9 @@
 <dt><a class="reference internal" href="#numeric-rosen3-step-fun"><span class="std std-ref">fun</span></a></dt><dd><ul>
 <li><p><a class="reference internal" href="#numeric-rosen3-step-fun-t"><span class="std std-ref">t</span></a></p></li>
 <li><p><a class="reference internal" href="#numeric-rosen3-step-fun-y"><span class="std std-ref">y</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-rosen3-step-fun-fun-f"><span class="std std-ref">fun.f</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-rosen3-step-fun-fun-f-t"><span class="std std-ref">fun.f_t</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-rosen3-step-fun-fun-f-y"><span class="std std-ref">fun.f_y</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-fun-f"><span class="std std-ref">f</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-fun-f-t"><span class="std std-ref">f_t</span></a></p></li>
+<li><p><a class="reference internal" href="#numeric-rosen3-step-fun-f-y"><span class="std std-ref">f_y</span></a></p></li>
 </ul>
 </dd>
 </dl>
@@ -268,20 +268,29 @@ It can be a <code class="docutils literal notranslate"><span class="pre">float</
 The type of the elements of <em>y</em>
 can be <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">ad_double</span></code> .</p>
 </div>
-<div class="section" id="fun-f">
-<span id="numeric-rosen3-step-fun-fun-f"></span><span id="index-7"></span><h4>fun.f<a class="headerlink" href="#fun-f" title="Permalink to this headline">¶</a></h4>
-<p>The syntax <code class="docutils literal notranslate"><span class="pre">yp</span></code> = <code class="docutils literal notranslate"><span class="pre">fun</span></code> . <em>f</em> <code class="docutils literal notranslate"><span class="pre">t</span></code> , <code class="docutils literal notranslate"><span class="pre">y</span></code> ) returns <em>yp</em> ,
-the current function value <span class="math notranslate nohighlight">\(f(t, y)\)</span>.</p>
+<div class="section" id="f">
+<span id="numeric-rosen3-step-fun-f"></span><span id="index-7"></span><h4>f<a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h4>
+<p>The syntax</p>
+<div class="line-block">
+<div class="line">        <em>yp</em> = <em>fun</em><code class="docutils literal notranslate"><span class="pre">.f</span></code> ( <em>t</em> , <em>y</em> )</div>
 </div>
-<div class="section" id="fun-f-t">
-<span id="numeric-rosen3-step-fun-fun-f-t"></span><span id="index-8"></span><h4>fun.f_t<a class="headerlink" href="#fun-f-t" title="Permalink to this headline">¶</a></h4>
-<p>The syntax <code class="docutils literal notranslate"><span class="pre">yp_t</span></code> = <code class="docutils literal notranslate"><span class="pre">fun</span></code> . <em>f_t</em> ( <code class="docutils literal notranslate"><span class="pre">t</span></code> , <code class="docutils literal notranslate"><span class="pre">y</span></code> ) returns <em>yp_t</em> ,
-the current partial value <span class="math notranslate nohighlight">\(\partial_t f(t, y)\)</span>.</p>
+<p>sets <em>yp</em> to the value of <span class="math notranslate nohighlight">\(f(t, y)\)</span>.</p>
 </div>
-<div class="section" id="fun-f-y">
-<span id="numeric-rosen3-step-fun-fun-f-y"></span><span id="index-9"></span><h4>fun.f_y<a class="headerlink" href="#fun-f-y" title="Permalink to this headline">¶</a></h4>
-<p>The syntax <code class="docutils literal notranslate"><span class="pre">yp_y</span></code> = <code class="docutils literal notranslate"><span class="pre">fun</span></code> . <em>f_y</em> ( <code class="docutils literal notranslate"><span class="pre">t</span></code> , <code class="docutils literal notranslate"><span class="pre">y</span></code> ) returns <em>yp_y</em> ,
-the current partial value <span class="math notranslate nohighlight">\(\partial_y f(t, y)\)</span>.</p>
+<div class="section" id="f-t">
+<span id="numeric-rosen3-step-fun-f-t"></span><span id="index-8"></span><h4>f_t<a class="headerlink" href="#f-t" title="Permalink to this headline">¶</a></h4>
+<p>The syntax</p>
+<div class="line-block">
+<div class="line">        <em>yp_t</em> = <em>fun</em><code class="docutils literal notranslate"><span class="pre">.f_t</span></code> ( <em>t</em> , <em>y</em> )</div>
+</div>
+<p>set <em>yp_t</em> to the value of <span class="math notranslate nohighlight">\(\partial_t f(t, y)\)</span>.</p>
+</div>
+<div class="section" id="f-y">
+<span id="numeric-rosen3-step-fun-f-y"></span><span id="index-9"></span><h4>f_y<a class="headerlink" href="#f-y" title="Permalink to this headline">¶</a></h4>
+<p>The syntax</p>
+<div class="line-block">
+<div class="line">        <em>yp_y</em> = <em>fun</em><code class="docutils literal notranslate"><span class="pre">.f_y</span></code> ( <em>t</em> , <em>y</em> )</div>
+</div>
+<p>sets <em>yp_y</em> to the value of <span class="math notranslate nohighlight">\(\partial_y f(t, y)\)</span>.</p>
 </div>
 </div>
 <div class="section" id="ti">

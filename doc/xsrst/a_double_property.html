@@ -221,11 +221,11 @@
 <div class="section" id="syntax">
 <span id="a-double-property-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><em>d</em> = <em>ad</em> . <code class="docutils literal notranslate"><span class="pre">value</span></code> ()</div>
-<div class="line"><em>p</em> = <em>ad</em> . <code class="docutils literal notranslate"><span class="pre">parameter</span></code> ()</div>
-<div class="line"><em>v</em> = <em>ad</em> . <code class="docutils literal notranslate"><span class="pre">variable</span></code> ()</div>
-<div class="line"><em>e</em> = <em>ad</em> . <code class="docutils literal notranslate"><span class="pre">near_equal</span></code> ( <em>aother</em> )</div>
-<div class="line"><em>ap</em> = <em>ad</em> . <code class="docutils literal notranslate"><span class="pre">var2par</span></code> ()</div>
+<div class="line"><em>d</em> = <em>ad</em><code class="docutils literal notranslate"><span class="pre">.value</span></code> ()</div>
+<div class="line"><em>p</em> = <em>ad</em><code class="docutils literal notranslate"><span class="pre">.parameter</span></code> ()</div>
+<div class="line"><em>v</em> = <em>ad</em><code class="docutils literal notranslate"><span class="pre">.variable</span></code> ()</div>
+<div class="line"><em>e</em> = <em>ad</em><code class="docutils literal notranslate"><span class="pre">.near_equal</span></code> ( <em>aother</em> )</div>
+<div class="line"><em>ap</em> = <em>ad</em><code class="docutils literal notranslate"><span class="pre">.var2par</span></code> ()</div>
 </div>
 </div>
 <div class="section" id="ad">
@@ -246,7 +246,7 @@
 <span id="a-double-property-value-restriction"></span><span id="index-4"></span><h4>Restriction<a class="headerlink" href="#restriction" title="Permalink to this headline">¶</a></h4>
 <p>The object <em>ad</em> must not depend on the
 <a class="reference internal" href="cpp_independent.html#id1"><span class="std std-ref">independent</span></a>
-variables when <em>ad</em> . <code class="docutils literal notranslate"><span class="pre">value</span></code> () is called.
+variables when <em>ad</em><code class="docutils literal notranslate"><span class="pre">.value</span></code> () is called.
 If it does depend on the independent variables,
 you will have to wait until the current recording is terminated
 before you can access its value; see

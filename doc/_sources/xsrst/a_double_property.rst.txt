@@ -32,11 +32,11 @@ Properties of an a_double Object
 
 Syntax
 ******
-| *d* = *ad* . ``value`` ()
-| *p* = *ad* . ``parameter`` ()
-| *v* = *ad* . ``variable`` ()
-| *e* = *ad* . ``near_equal`` ( *aother* )
-| *ap* = *ad* . ``var2par`` ()
+| *d* = *ad*\ ``.value`` ()
+| *p* = *ad*\ ``.parameter`` ()
+| *v* = *ad*\ ``.variable`` ()
+| *e* = *ad*\ ``.near_equal`` ( *aother* )
+| *ap* = *ad*\ ``.var2par`` ()
 
 .. meta::
    :keywords: ad
@@ -77,7 +77,7 @@ Restriction
 ===========
 The object *ad* must not depend on the
 :ref:`independent<cpp_independent>`
-variables when *ad* . ``value`` () is called.
+variables when *ad*\ ``.value`` () is called.
 If it does depend on the independent variables,
 you will have to wait until the current recording is terminated
 before you can access its value; see

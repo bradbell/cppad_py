@@ -19,9 +19,9 @@ One Third Order Rosenbrock ODE Step
 - :ref:`numeric_rosen3_step.fun`
     - :ref:`numeric_rosen3_step.fun.t`
     - :ref:`numeric_rosen3_step.fun.y`
-    - :ref:`numeric_rosen3_step.fun.fun.f`
-    - :ref:`numeric_rosen3_step.fun.fun.f_t`
-    - :ref:`numeric_rosen3_step.fun.fun.f_y`
+    - :ref:`numeric_rosen3_step.fun.f`
+    - :ref:`numeric_rosen3_step.fun.f_t`
+    - :ref:`numeric_rosen3_step.fun.f_y`
 - :ref:`numeric_rosen3_step.ti`
 - :ref:`numeric_rosen3_step.yi`
 - :ref:`numeric_rosen3_step.h`
@@ -114,40 +114,49 @@ The type of the elements of *y*
 can be ``float`` or ``ad_double`` .
 
 .. meta::
-   :keywords: fun.f
+   :keywords: f
 
-.. index:: fun.f
+.. index:: f
 
-.. _numeric_rosen3_step.fun.fun.f:
+.. _numeric_rosen3_step.fun.f:
 
-fun.f
-=====
-The syntax ``yp`` = ``fun`` . *f* ``t`` , ``y`` ) returns *yp* ,
-the current function value :math:`f(t, y)`.
+f
+=
+The syntax
 
-.. meta::
-   :keywords: fun.f_t
+| |tab| *yp* = *fun*\ ``.f`` ( *t* , *y* )
 
-.. index:: fun.f_t
-
-.. _numeric_rosen3_step.fun.fun.f_t:
-
-fun.f_t
-=======
-The syntax ``yp_t`` = ``fun`` . *f_t* ( ``t`` , ``y`` ) returns *yp_t* ,
-the current partial value :math:`\partial_t f(t, y)`.
+sets *yp* to the value of :math:`f(t, y)`.
 
 .. meta::
-   :keywords: fun.f_y
+   :keywords: f_t
 
-.. index:: fun.f_y
+.. index:: f_t
 
-.. _numeric_rosen3_step.fun.fun.f_y:
+.. _numeric_rosen3_step.fun.f_t:
 
-fun.f_y
-=======
-The syntax ``yp_y`` = ``fun`` . *f_y* ( ``t`` , ``y`` ) returns *yp_y* ,
-the current partial value :math:`\partial_y f(t, y)`.
+f_t
+===
+The syntax
+
+| |tab| *yp_t* = *fun*\ ``.f_t`` ( *t* , *y* )
+
+set *yp_t* to the value of :math:`\partial_t f(t, y)`.
+
+.. meta::
+   :keywords: f_y
+
+.. index:: f_y
+
+.. _numeric_rosen3_step.fun.f_y:
+
+f_y
+===
+The syntax
+
+| |tab| *yp_y* = *fun*\ ``.f_y`` ( *t* , *y* )
+
+sets *yp_y* to the value of :math:`\partial_y f(t, y)`.
 
 .. meta::
    :keywords: ti

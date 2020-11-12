@@ -270,11 +270,11 @@ by this operation; see
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">sparse_rcv&amp;</span></code> <em>subset</em></div>
 </div>
-<p>Its row size is <em>subset</em> . <code class="docutils literal notranslate"><span class="pre">nr</span></code> () == <em>m</em> ,
-and its column size is <em>subset</em> . <code class="docutils literal notranslate"><span class="pre">nc</span></code> () == <em>n</em> .
+<p>Its row size is <em>subset</em><code class="docutils literal notranslate"><span class="pre">.nr</span></code> () == <em>m</em> ,
+and its column size is <em>subset</em><code class="docutils literal notranslate"><span class="pre">.nc</span></code> () == <em>n</em> .
 It specifies which elements of the Jacobian are computed.
 The input value of its value vector
-<em>subset</em> . <code class="docutils literal notranslate"><span class="pre">val</span></code> () does not matter.
+<em>subset</em><code class="docutils literal notranslate"><span class="pre">.val</span></code> () does not matter.
 Upon return it contains the value of the corresponding elements
 of the Jacobian.
 All of the row, column pairs in <em>subset</em> must also appear in
@@ -295,8 +295,8 @@ It specifies the point at which to evaluate the Jacobian <span class="math notra
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">sparse_rc&amp;</span></code> <em>pattern</em></div>
 </div>
-<p>Its row size is <em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">nr</span></code> () == <em>m</em> ,
-and its column size is <em>pattern</em> . <code class="docutils literal notranslate"><span class="pre">nc</span></code> () == <em>n</em> .
+<p>Its row size is <em>pattern</em><code class="docutils literal notranslate"><span class="pre">.nr</span></code> () == <em>m</em> ,
+and its column size is <em>pattern</em><code class="docutils literal notranslate"><span class="pre">.nc</span></code> () == <em>n</em> .
 It is a sparsity pattern for the Jacobian <span class="math notranslate nohighlight">\(J(x)\)</span>.
 This argument is not used (and need not satisfy any conditions),
 when <a class="reference internal" href="#cpp-sparse-jac-work"><span class="std std-ref">work</span></a> is non-empty.</p>
@@ -308,13 +308,13 @@ when <a class="reference internal" href="#cpp-sparse-jac-work"><span class="std 
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">sparse_jac_work&amp;</span></code> <em>work</em></div>
 </div>
 <p>We refer to its initial value,
-and its value after <em>work</em> . <code class="docutils literal notranslate"><span class="pre">clear</span></code> () , as empty.
+and its value after <em>work</em><code class="docutils literal notranslate"><span class="pre">.clear</span></code> () , as empty.
 If it is empty, information is stored in <em>work</em> .
 This can be used to reduce computation when
 a future call is for the same object <em>f</em> ,
 the same member function <code class="docutils literal notranslate"><span class="pre">sparse_jac_for</span></code> or <code class="docutils literal notranslate"><span class="pre">sparse_jac_rev</span></code> ,
 and the same subset of the Jacobian.
-If any of these values change, use <em>work</em> . <code class="docutils literal notranslate"><span class="pre">clear</span></code> () to
+If any of these values change, use <em>work</em><code class="docutils literal notranslate"><span class="pre">.clear</span></code> () to
 empty this structure.</p>
 </div>
 <div class="section" id="n-sweep">
@@ -338,7 +338,7 @@ for all the variables in the operation sequence..
 After a call to <code class="docutils literal notranslate"><span class="pre">sparse_jac_forward</span></code> or <code class="docutils literal notranslate"><span class="pre">sparse_jac_rev</span></code> ,
 the zero order coefficients correspond to</p>
 <div class="line-block">
-<div class="line">        <em>f</em> . <code class="docutils literal notranslate"><span class="pre">forward(0</span></code> , <em>x</em> )</div>
+<div class="line">        <em>f</em><code class="docutils literal notranslate"><span class="pre">.forward(0</span></code> , <em>x</em> )</div>
 </div>
 <p>All the other forward mode coefficients are unspecified.</p>
 <div class="toctree-wrapper compound">

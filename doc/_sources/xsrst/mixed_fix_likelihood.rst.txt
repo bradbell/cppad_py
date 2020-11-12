@@ -29,7 +29,7 @@ Fixed Effects Likelihood
 
 Syntax
 ******
-*v* = *fix_likelihood* . ``forward`` (0, *theta* )
+*v* = *fix_likelihood*\ ``.forward`` (0, *theta* )
 
 .. meta::
    :keywords: fix_likelihood

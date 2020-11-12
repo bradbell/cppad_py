@@ -225,11 +225,11 @@
 <span id="cpp-fun-property-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">a_fun</span></code> <em>f</em> ( <em>f</em> )</div>
-<div class="line"><em>n</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">size_domain</span></code> ()</div>
-<div class="line"><em>m</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">size_range</span></code> ()</div>
-<div class="line"><em>v</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">size_var</span></code> ()</div>
-<div class="line"><em>p</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">size_op</span></code> ()</div>
-<div class="line"><em>q</em> = <em>f</em> . <code class="docutils literal notranslate"><span class="pre">size_order</span></code> ()</div>
+<div class="line"><em>n</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.size_domain</span></code> ()</div>
+<div class="line"><em>m</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.size_range</span></code> ()</div>
+<div class="line"><em>v</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.size_var</span></code> ()</div>
+<div class="line"><em>p</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.size_op</span></code> ()</div>
+<div class="line"><em>q</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.size_order</span></code> ()</div>
 </div>
 </div>
 <div class="section" id="f">
@@ -289,7 +289,7 @@ the dependent variables as a function of the independent variables.</p>
 for every variable in the operation sequence corresponding to <em>f</em> .
 These coefficients are computed by <a class="reference internal" href="cpp_fun_forward.html#id1"><span class="std std-ref">cpp_fun_forward</span></a>.
 This is different from the other function properties in that it can change
-after each call to <em>f</em> . <code class="docutils literal notranslate"><span class="pre">forward</span></code> ; see
+after each call to <em>f</em><code class="docutils literal notranslate"><span class="pre">.forward</span></code> ; see
 <a class="reference internal" href="cpp_fun_forward.html#cpp-fun-forward-p-size-order"><span class="std std-ref">size_order</span></a> in the forward mode section.
 The initial value for this property, when the object <em>f</em>
 or <em>af</em> is created, is zero.</p>

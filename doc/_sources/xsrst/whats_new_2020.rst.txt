@@ -14,6 +14,7 @@ whats_new_2020
 CppAD Py Changes During 2020
 ############################
 - :ref:`whats_new_2020.previous_years`
+- :ref:`whats_new_2020.11-12`
 - :ref:`whats_new_2020.11-11`
 - :ref:`whats_new_2020.11-10`
 - :ref:`whats_new_2020.11-08`
@@ -84,6 +85,19 @@ CppAD Py Changes During 2020
 Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
+
+.. _whats_new_2020.11-12:
+
+11-12
+*****
+#.  Improve the :ref:`ipopt options
+    <mixed_optimize_fixed.fixed_ipopt_options.ipopt_options>` documentation.
+#.  Fix the font in the syntax for the rosen3_step functions
+    :ref:`f <numeric_rosen3_step.fun.f>` ,
+    :ref:`f_t <numeric_rosen3_step.fun.f_t>` , and
+    :ref:`f_y <numeric_rosen3_step.fun.f_y>` .
+#.  Remove some extra space when a '.' character appears between the
+    change between italic and literal font.
 
 .. _whats_new_2020.11-11:
 

@@ -29,7 +29,7 @@ Fixed Effects Constraint Function
 
 Syntax
 ******
-*v* = *fix_constraint* . ``forward`` (0, *theta* )
+*v* = *fix_constraint*\ ``.forward`` (0, *theta* )
 
 .. meta::
    :keywords: fix_constraint

@@ -31,7 +31,7 @@ Hessian of an AD Function
 
 Syntax
 ******
-*H* = *f* . ``hessian`` ( *x* , *w* )
+*H* = *f*\ ``.hessian`` ( *x* , *w* )
 
 .. meta::
    :keywords: f

@@ -52,7 +52,7 @@ C++
 Python
 ======
 | *ay* = *ax* . *fun* ()
-| *ay* = ``numpy`` . *fun* ( *ax* )
+| *ay* = ``numpy.``\ *fun* ( *ax* )
 
 .. meta::
    :keywords: ax

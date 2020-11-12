@@ -32,7 +32,7 @@ AD Conditional Assignment
 
 Syntax
 ******
-| *target* . ``cond_assign`` ( *cop* , *left* , *right* , *if_true* , *if_false* )
+| *target*\ ``.cond_assign`` ( *cop* , *left* , *right* , *if_true* , *if_false* )
 
 .. meta::
    :keywords: purpose

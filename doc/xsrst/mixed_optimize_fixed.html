@@ -15,6 +15,7 @@
 <meta content="fixed_in, (random_in)" name="keywords" />
 <meta content="fixed_scale" name="keywords" />
 <meta content="fixed_ipopt_options" name="keywords" />
+<meta content="ipopt, options" name="keywords" />
 <meta content="string" name="keywords" />
 <meta content="integer" name="keywords" />
 <meta content="numeric" name="keywords" />
@@ -242,6 +243,7 @@
 <li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-scale"><span class="std std-ref">fixed_scale</span></a></p></li>
 <li><dl class="simple">
 <dt><a class="reference internal" href="#mixed-optimize-fixed-fixed-ipopt-options"><span class="std std-ref">fixed_ipopt_options</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-ipopt-options-ipopt-options"><span class="std std-ref">ipopt options</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-ipopt-options-string"><span class="std std-ref">String</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-ipopt-options-integer"><span class="std std-ref">Integer</span></a></p></li>
 <li><p><a class="reference internal" href="#mixed-optimize-fixed-fixed-ipopt-options-numeric"><span class="std std-ref">Numeric</span></a></p></li>
@@ -346,23 +348,38 @@ and is terminated by a <code class="docutils literal notranslate"><span class="p
 Each line has three non-empty tokens separated by one or more spaces.
 The first token in each line is <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Integer</span></code>, or <code class="docutils literal notranslate"><span class="pre">Numeric</span></code>;
 see below.</p>
+<div class="section" id="ipopt-options">
+<span id="mixed-optimize-fixed-fixed-ipopt-options-ipopt-options"></span><span id="index-11"></span><h4>ipopt options<a class="headerlink" href="#ipopt-options" title="Permalink to this headline">¶</a></h4>
+<p>See the <a class="reference external" href="https://coin-or.github.io/Ipopt/OPTIONS.html">ipopt options</a>
+documentation for a list of the options and how they affect the
+optimization.</p>
+</div>
 <div class="section" id="string">
-<span id="mixed-optimize-fixed-fixed-ipopt-options-string"></span><span id="index-11"></span><h4>String<a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h4>
-<p>An Ipopt string option is specifies with the following syntax:
-<cite>String`</cite> <em>name</em> <em>value</em></p>
+<span id="mixed-optimize-fixed-fixed-ipopt-options-string"></span><span id="index-12"></span><h4>String<a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h4>
+<p>An Ipopt string option is specifies by a line containing
+the following syntax:</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">String</span></code> <em>name</em> <em>value</em></div>
+</div>
 </div>
 <div class="section" id="integer">
-<span id="mixed-optimize-fixed-fixed-ipopt-options-integer"></span><span id="index-12"></span><h4>Integer<a class="headerlink" href="#integer" title="Permalink to this headline">¶</a></h4>
-<p>An Ipopt integer option is specifies with the following syntax:
-<cite>Integer`</cite> <em>name</em> <em>value</em></p>
+<span id="mixed-optimize-fixed-fixed-ipopt-options-integer"></span><span id="index-13"></span><h4>Integer<a class="headerlink" href="#integer" title="Permalink to this headline">¶</a></h4>
+<p>An Ipopt integer option is specifies by a line containing
+the following syntax:</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">Integer</span></code> <em>name</em> <em>value</em></div>
+</div>
 </div>
 <div class="section" id="numeric">
-<span id="mixed-optimize-fixed-fixed-ipopt-options-numeric"></span><span id="index-13"></span><h4>Numeric<a class="headerlink" href="#numeric" title="Permalink to this headline">¶</a></h4>
-<p>An Ipopt numeric option is specifies with the following syntax:
-<cite>Numeric`</cite> <em>name</em> <em>value</em></p>
+<span id="mixed-optimize-fixed-fixed-ipopt-options-numeric"></span><span id="index-14"></span><h4>Numeric<a class="headerlink" href="#numeric" title="Permalink to this headline">¶</a></h4>
+<p>An Ipopt numeric option is specifies by a line containing
+the following syntax:</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">Numeric</span></code> <em>name</em> <em>value</em></div>
+</div>
 </div>
 <div class="section" id="derivative-test">
-<span id="mixed-optimize-fixed-fixed-ipopt-options-derivative-test"></span><span id="index-14"></span><h4>derivative_test<a class="headerlink" href="#derivative-test" title="Permalink to this headline">¶</a></h4>
+<span id="mixed-optimize-fixed-fixed-ipopt-options-derivative-test"></span><span id="index-15"></span><h4>derivative_test<a class="headerlink" href="#derivative-test" title="Permalink to this headline">¶</a></h4>
 <p>If the string option is <code class="docutils literal notranslate"><span class="pre">derivative_test</span></code>, <em>value</em> can be
 <code class="docutils literal notranslate"><span class="pre">none</span></code>, <code class="docutils literal notranslate"><span class="pre">first-order</span></code>, <code class="docutils literal notranslate"><span class="pre">second-order</span></code>, <code class="docutils literal notranslate"><span class="pre">only-second-order</span></code>.
 If second order derivatives are tested,
@@ -372,57 +389,57 @@ In addition to the standard ipopt options above, <em>value</em> can be
 tester that adapts its step sizes for each argument component.</p>
 </div>
 <div class="section" id="hessian-approximation">
-<span id="mixed-optimize-fixed-fixed-ipopt-options-hessian-approximation"></span><span id="index-15"></span><h4>hessian_approximation<a class="headerlink" href="#hessian-approximation" title="Permalink to this headline">¶</a></h4>
+<span id="mixed-optimize-fixed-fixed-ipopt-options-hessian-approximation"></span><span id="index-16"></span><h4>hessian_approximation<a class="headerlink" href="#hessian-approximation" title="Permalink to this headline">¶</a></h4>
 <p>If <em>quasi_fixed</em> is true, this string option (if present) must have value
 <code class="docutils literal notranslate"><span class="pre">limit_memory</span></code>.</p>
 </div>
 <div class="section" id="max-iter">
-<span id="mixed-optimize-fixed-fixed-ipopt-options-max-iter"></span><span id="index-16"></span><h4>max_iter<a class="headerlink" href="#max-iter" title="Permalink to this headline">¶</a></h4>
+<span id="mixed-optimize-fixed-fixed-ipopt-options-max-iter"></span><span id="index-17"></span><h4>max_iter<a class="headerlink" href="#max-iter" title="Permalink to this headline">¶</a></h4>
 <p>This integer option has a special <em>value</em> -1.
 In this case ipopt is run with <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> equal to zero,
 and the return solution corresponds to the input value of the
 fixed effects.</p>
 </div>
 <div class="section" id="nlp-scaling-method">
-<span id="mixed-optimize-fixed-fixed-ipopt-options-nlp-scaling-method"></span><span id="index-17"></span><h4>nlp_scaling_method<a class="headerlink" href="#nlp-scaling-method" title="Permalink to this headline">¶</a></h4>
+<span id="mixed-optimize-fixed-fixed-ipopt-options-nlp-scaling-method"></span><span id="index-18"></span><h4>nlp_scaling_method<a class="headerlink" href="#nlp-scaling-method" title="Permalink to this headline">¶</a></h4>
 <p>The objective and constraint function are automatically scaled by
 cppad_mixed and it is an error to specify this option.</p>
 </div>
 </div>
 <div class="section" id="random-ipopt-options">
-<span id="mixed-optimize-fixed-random-ipopt-options"></span><span id="index-18"></span><h3>random_ipopt_options<a class="headerlink" href="#random-ipopt-options" title="Permalink to this headline">¶</a></h3>
-<p>This contains the options for optimizing the fixed effects.
+<span id="mixed-optimize-fixed-random-ipopt-options"></span><span id="index-19"></span><h3>random_ipopt_options<a class="headerlink" href="#random-ipopt-options" title="Permalink to this headline">¶</a></h3>
+<p>This contains the options for optimizing the random effects.
 It has the same format as <em>fixed_ipopt_options</em>, but does
 not have the special exceptions to the normal Ipopt options; e.g.,
 <code class="docutils literal notranslate"><span class="pre">adaptive</span></code> is not available as a <code class="docutils literal notranslate"><span class="pre">derivative_test</span></code> <em>value</em>.</p>
 </div>
 <div class="section" id="solution">
-<span id="mixed-optimize-fixed-solution"></span><span id="index-19"></span><h3>solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-optimize-fixed-solution"></span><span id="index-20"></span><h3>solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
 <p>The return value <em>solution</em> has the following fields:</p>
 <div class="section" id="fixed-opt">
-<span id="mixed-optimize-fixed-solution-fixed-opt"></span><span id="index-20"></span><h4>fixed_opt<a class="headerlink" href="#fixed-opt" title="Permalink to this headline">¶</a></h4>
-<p>The value <em>solution</em> . <code class="docutils literal notranslate"><span class="pre">fixed_opt</span></code> is a numpy vector with length
+<span id="mixed-optimize-fixed-solution-fixed-opt"></span><span id="index-21"></span><h4>fixed_opt<a class="headerlink" href="#fixed-opt" title="Permalink to this headline">¶</a></h4>
+<p>The value <em>solution</em><code class="docutils literal notranslate"><span class="pre">.fixed_opt</span></code> is a numpy vector with length
 <em>n_fixed</em> containing the final value of the fixed effects
 (after optimization).
 If the <em>max_iter</em> is -1, it is equal to <em>fixed_in</em>.</p>
 </div>
 <div class="section" id="fixed-lag">
-<span id="mixed-optimize-fixed-solution-fixed-lag"></span><span id="index-21"></span><h4>fixed_lag<a class="headerlink" href="#fixed-lag" title="Permalink to this headline">¶</a></h4>
-<p>The value <em>solution</em> . <code class="docutils literal notranslate"><span class="pre">fixed_lag</span></code> is a numpy vector with length
+<span id="mixed-optimize-fixed-solution-fixed-lag"></span><span id="index-22"></span><h4>fixed_lag<a class="headerlink" href="#fixed-lag" title="Permalink to this headline">¶</a></h4>
+<p>The value <em>solution</em><code class="docutils literal notranslate"><span class="pre">.fixed_lag</span></code> is a numpy vector with length
 <em>n_fixed</em> containing the Lagrange multipliers for
 the fixed effects lower (upper) bounds if it is greater than (less than)
 zero.</p>
 </div>
 <div class="section" id="fix-con-lag">
-<span id="mixed-optimize-fixed-solution-fix-con-lag"></span><span id="index-22"></span><h4>fix_con_lag<a class="headerlink" href="#fix-con-lag" title="Permalink to this headline">¶</a></h4>
-<p>The value <em>solution</em> . <code class="docutils literal notranslate"><span class="pre">fix_con_lag</span></code> is a Lagrange multipliers for
+<span id="mixed-optimize-fixed-solution-fix-con-lag"></span><span id="index-23"></span><h4>fix_con_lag<a class="headerlink" href="#fix-con-lag" title="Permalink to this headline">¶</a></h4>
+<p>The value <em>solution</em><code class="docutils literal notranslate"><span class="pre">.fix_con_lag</span></code> is a Lagrange multipliers for
 the fixed effects lower (upper) bounds if it is greater than (less than).
 Its length is the same as the return value for the fixed effects constraint
 function.</p>
 </div>
 <div class="section" id="ran-con-lag">
-<span id="mixed-optimize-fixed-solution-ran-con-lag"></span><span id="index-23"></span><h4>ran_con_lag<a class="headerlink" href="#ran-con-lag" title="Permalink to this headline">¶</a></h4>
-<p>The value <em>solution</em> . <code class="docutils literal notranslate"><span class="pre">ran_con_lag</span></code> is a Lagrange multipliers for the
+<span id="mixed-optimize-fixed-solution-ran-con-lag"></span><span id="index-24"></span><h4>ran_con_lag<a class="headerlink" href="#ran-con-lag" title="Permalink to this headline">¶</a></h4>
+<p>The value <em>solution</em><code class="docutils literal notranslate"><span class="pre">.ran_con_lag</span></code> is a Lagrange multipliers for the
 rand effects constraint function.
 Its length is the same as the random constrain matrix :math”<cite>A</cite> ; see
 <a class="reference internal" href="mixed_ctor.html#mixed-ctor-a-rcv"><span class="std std-ref">A_rcv</span></a>.</p>
@@ -431,7 +448,7 @@ Its length is the same as the random constrain matrix :math”<cite>A</cite> ; s
 </div>
 </div>
 <div class="section" id="examples">
-<span id="mixed-optimize-fixed-examples"></span><span id="index-24"></span><h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-optimize-fixed-examples"></span><span id="index-25"></span><h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="mixed_optimize_fixed_1_py.html#id1"><span class="std std-ref">A Very Simple Optimize Fixed Effects: Example and Test</span></a></p></li>
 <li><p><a class="reference internal" href="mixed_optimize_fixed_2_py.html#id1"><span class="std std-ref">The Ipopt Example Problem: Example and Test</span></a></p></li>
