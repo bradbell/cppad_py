@@ -16,7 +16,7 @@
 #
 # Syntax
 # ******
-# *J* = *f* . ``jacobian`` ( *x* )
+# *J* = *f*\ ``.jacobian`` ( *x* )
 #
 # f
 # *

@@ -23,8 +23,8 @@
 # ******
 #
 # | *work* =  ``cppad_py.sparse_jac_work`` ()
-# | *n_sweep* = *f* . ``sparse_jac_for`` ( *subset* , *x* , *pattern* , *work* )
-# | *n_sweep* = *f* . ``sparse_jac_rev`` ( *subset* , *x* , *pattern* , *work* )
+# | *n_sweep* = *f*\ ``.sparse_jac_for`` ( *subset* , *x* , *pattern* , *work* )
+# | *n_sweep* = *f*\ ``.sparse_jac_rev`` ( *subset* , *x* , *pattern* , *work* )
 #
 # Purpose
 # *******
@@ -63,11 +63,11 @@
 # ******
 # This argument must have be a :ref:`matrix<py_sparse_rcv.matrix>`
 # returned by the ``sparse_rcv`` constructor.
-# Its row size is *subset* . ``nr`` () == *m* ,
-# and its column size is *subset* . ``nc`` () == *n* .
+# Its row size is *subset*\ ``.nr`` () == *m* ,
+# and its column size is *subset*\ ``.nc`` () == *n* .
 # It specifies which elements of the Jacobian are computed.
 # The input value of its value vector
-# *subset* . ``val`` () does not matter.
+# *subset*\ ``.val`` () does not matter.
 # Upon return it contains the value of the corresponding elements
 # of the Jacobian.
 # All of the row, column pairs in *subset* must also appear in
@@ -83,8 +83,8 @@
 # *******
 # This argument must have be a :ref:`pattern<py_sparse_rc.pattern>`
 # returned by the ``sparse_rc`` constructor.
-# Its row size is *pattern* . ``nr`` () == *m* ,
-# and its column size is *pattern* . ``nc`` () == *n* .
+# Its row size is *pattern*\ ``.nr`` () == *m* ,
+# and its column size is *pattern*\ ``.nc`` () == *n* .
 # It is a sparsity pattern for the Jacobian :math:`J(x)`.
 # This argument is not used (and need not satisfy any conditions),
 # when :ref:`work<py_sparse_jac.work>` is non-empty.
@@ -96,13 +96,13 @@
 # | |tab| *work* =  ``cppad_py.sparse_jac_work`` ()
 #
 # We refer to its initial value,
-# and its value after *work* . ``clear`` () , as empty.
+# and its value after *work*\ ``.clear`` () , as empty.
 # If it is empty, information is stored in *work* .
 # This can be used to reduce computation when
 # a future call is for the same object *f* ,
 # the same member function ``sparse_jac_for`` or ``sparse_jac_rev`` ,
 # and the same subset of the Jacobian.
-# If any of these values change, use *work* . ``clear`` () to
+# If any of these values change, use *work*\ ``.clear`` () to
 # empty this structure.
 #
 # n_sweep
@@ -123,7 +123,7 @@
 # After a call to ``sparse_jac_forward`` or ``sparse_jac_rev`` ,
 # the zero order coefficients correspond to
 #
-# | |tab| *f* . ``forward(0`` , *x* )
+# | |tab| *f*\ ``.forward(0`` , *x* )
 #
 # All the other forward mode coefficients are unspecified.
 #

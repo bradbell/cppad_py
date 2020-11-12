@@ -18,11 +18,11 @@ Properties of a Function Object
 Syntax
 ******
 
-| *n* = *f* . ``size_domain`` ()
-| *m* = *f* . ``size_range`` ()
-| *v* = *f* . ``size_var`` ()
-| *p* = *f* . ``size_op`` ()
-| *q* = *f* . ``size_order`` ()
+| *n* = *f*\ ``.size_domain`` ()
+| *m* = *f*\ ``.size_range`` ()
+| *v* = *f*\ ``.size_var`` ()
+| *p* = *f*\ ``.size_op`` ()
+| *q* = *f*\ ``.size_order`` ()
 
 f
 *
@@ -66,7 +66,7 @@ and is the number of Taylor coefficients currently stored in *f* ,
 for every variable in the operation sequence corresponding to *f* .
 These coefficients are computed by :ref:`py_fun_forward<py_fun_forward>`.
 This is different from the other function properties in that it can change
-after each call to *f* . ``forward`` ; see
+after each call to *f*\ ``.forward`` ; see
 :ref:`size_order<py_fun_forward.p.size_order>` in the forward mode section.
 
 {xsrst_children

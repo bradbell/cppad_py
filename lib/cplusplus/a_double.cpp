@@ -220,11 +220,11 @@ Properties of an a_double Object
 
 Syntax
 ******
-| *d* = *ad* . ``value`` ()
-| *p* = *ad* . ``parameter`` ()
-| *v* = *ad* . ``variable`` ()
-| *e* = *ad* . ``near_equal`` ( *aother* )
-| *ap* = *ad* . ``var2par`` ()
+| *d* = *ad*\ ``.value`` ()
+| *p* = *ad*\ ``.parameter`` ()
+| *v* = *ad*\ ``.variable`` ()
+| *e* = *ad*\ ``.near_equal`` ( *aother* )
+| *ap* = *ad*\ ``.var2par`` ()
 
 ad
 **
@@ -244,7 +244,7 @@ Restriction
 ===========
 The object *ad* must not depend on the
 :ref:`independent<cpp_independent>`
-variables when *ad* . ``value`` () is called.
+variables when *ad*\ ``.value`` () is called.
 If it does depend on the independent variables,
 you will have to wait until the current recording is terminated
 before you can access its value; see
@@ -637,7 +637,7 @@ C++
 Python
 ======
 | *ay* = *ax* . *fun* ()
-| *ay* = ``numpy`` . *fun* ( *ax* )
+| *ay* = ``numpy.``\ *fun* ( *ax* )
 
 ax
 **
@@ -723,7 +723,7 @@ AD Conditional Assignment
 
 Syntax
 ******
-| *target* . ``cond_assign`` ( *cop* , *left* , *right* , *if_true* , *if_false* )
+| *target*\ ``.cond_assign`` ( *cop* , *left* , *right* , *if_true* , *if_false* )
 
 Purpose
 *******

@@ -16,7 +16,7 @@
 #
 # Syntax
 # ******
-# *H* = *f* . ``hessian`` ( *x* , *w* )
+# *H* = *f*\ ``.hessian`` ( *x* , *w* )
 #
 # f
 # *

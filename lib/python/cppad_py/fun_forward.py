@@ -22,7 +22,7 @@
 #
 # Syntax
 # ******
-# *yp* = *f* . ``forward`` ( *p* , *xp* )
+# *yp* = *f*\ ``.forward`` ( *p* , *xp* )
 #
 # Taylor Coefficient
 # ******************

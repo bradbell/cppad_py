@@ -19,8 +19,8 @@ Json Representation of AD Computation Graph
 Syntax
 ******
 
-| *json* = *f* . ``to_json`` ()
-| *f* . ``from_json(json`` )
+| *json* = *f*\ ``.to_json`` ()
+| *f*\ ``.from_json(json`` )
 
 f
 *

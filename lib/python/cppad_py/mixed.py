@@ -268,7 +268,7 @@ class mixed :
     Syntax
     ******
     | *warning* ( *message* )
-    | *mixed_obj* . ``post_warning`` ( *message* )
+    | *mixed_obj*\ ``.post_warning`` ( *message* )
 
     warning
     *******
@@ -308,7 +308,7 @@ class mixed :
 
     Syntax
     ******
-    | *mixed_obj* . ``post_fatal_error`` ( *message* )
+    | *mixed_obj*\ ``.post_fatal_error`` ( *message* )
 
     post_fatal_error
     ****************
@@ -341,7 +341,7 @@ class mixed :
 
     Syntax
     ******
-    *v* = *fix_likelihood* . ``forward`` (0, *theta* )
+    *v* = *fix_likelihood*\ ``.forward`` (0, *theta* )
 
 
     fix_likelihood
@@ -397,7 +397,7 @@ class mixed :
 
     Syntax
     ******
-    *v* = *fix_constraint* . ``forward`` (0, *theta* )
+    *v* = *fix_constraint*\ ``.forward`` (0, *theta* )
 
 
     fix_constraint
@@ -446,7 +446,7 @@ class mixed :
 
     Syntax
     ******
-    *v* = *ran_likelihood* . ``forward`` (0, *theta* , *u* )
+    *v* = *ran_likelihood*\ ``.forward`` (0, *theta* , *u* )
 
 
     ran_likelihood
@@ -652,28 +652,28 @@ class mixed :
 
     fixed_opt
     =========
-    The value *solution* . ``fixed_opt`` is a numpy vector with length
+    The value *solution*\ ``.fixed_opt`` is a numpy vector with length
     *n_fixed* containing the final value of the fixed effects
     (after optimization).
     If the *max_iter* is -1, it is equal to *fixed_in*.
 
     fixed_lag
     =========
-    The value *solution* . ``fixed_lag`` is a numpy vector with length
+    The value *solution*\ ``.fixed_lag`` is a numpy vector with length
     *n_fixed* containing the Lagrange multipliers for
     the fixed effects lower (upper) bounds if it is greater than (less than)
     zero.
 
     fix_con_lag
     ===========
-    The value *solution* . ``fix_con_lag`` is a Lagrange multipliers for
+    The value *solution*\ ``.fix_con_lag`` is a Lagrange multipliers for
     the fixed effects lower (upper) bounds if it is greater than (less than).
     Its length is the same as the return value for the fixed effects constraint
     function.
 
     ran_con_lag
     ===========
-    The value *solution* . ``ran_con_lag`` is a Lagrange multipliers for the
+    The value *solution*\ ``.ran_con_lag`` is a Lagrange multipliers for the
     rand effects constraint function.
     Its length is the same as the random constrain matrix :math"`A` ; see
     :ref:`A_rcv<mixed_ctor.A_rcv>`.

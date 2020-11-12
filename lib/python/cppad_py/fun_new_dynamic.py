@@ -16,7 +16,7 @@
 #
 # Syntax
 # ******
-# *f* . ``new_dynamic`` ( *dynamic* )
+# *f*\ ``.new_dynamic`` ( *dynamic* )
 #
 # f
 # *

@@ -166,7 +166,7 @@ def check_rosen3_step(fun, ti, yi, h) :
 # =
 # The syntax
 #
-# | |tab| *yp* = *fun* . ``f`` ( *t* , *y* )
+# | |tab| *yp* = *fun*\ ``.f`` ( *t* , *y* )
 #
 # sets *yp* to the value of :math:`f(t, y)`.
 #
@@ -174,7 +174,7 @@ def check_rosen3_step(fun, ti, yi, h) :
 # ===
 # The syntax
 #
-# | |tab| *yp_t* = *fun* . ``f_t`` ( *t* , *y* )
+# | |tab| *yp_t* = *fun*\ ``.f_t`` ( *t* , *y* )
 #
 # set *yp_t* to the value of :math:`\partial_t f(t, y)`.
 #
@@ -182,7 +182,7 @@ def check_rosen3_step(fun, ti, yi, h) :
 # ===
 # The syntax
 #
-# | |tab| *yp_y* = *fun* . ``f_y`` ( *t* , *y* )
+# | |tab| *yp_y* = *fun*\ ``.f_y`` ( *t* , *y* )
 #
 # sets *yp_y* to the value of :math:`\partial_y f(t, y)`.
 #

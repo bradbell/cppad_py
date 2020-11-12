@@ -887,11 +887,11 @@ This argument has prototype
 
 | |tab| ``sparse_rcv&`` *subset*
 
-Its row size is *subset* . ``nr`` () == *m* ,
-and its column size is *subset* . ``nc`` () == *n* .
+Its row size is *subset*\ ``.nr`` () == *m* ,
+and its column size is *subset*\ ``.nc`` () == *n* .
 It specifies which elements of the Jacobian are computed.
 The input value of its value vector
-*subset* . ``val`` () does not matter.
+*subset*\ ``.val`` () does not matter.
 Upon return it contains the value of the corresponding elements
 of the Jacobian.
 All of the row, column pairs in *subset* must also appear in
@@ -912,8 +912,8 @@ This argument has prototype
 
 | |tab| ``const sparse_rc&`` *pattern*
 
-Its row size is *pattern* . ``nr`` () == *m* ,
-and its column size is *pattern* . ``nc`` () == *n* .
+Its row size is *pattern*\ ``.nr`` () == *m* ,
+and its column size is *pattern*\ ``.nc`` () == *n* .
 It is a sparsity pattern for the Jacobian :math:`J(x)`.
 This argument is not used (and need not satisfy any conditions),
 when :ref:`work<cpp_sparse_jac.work>` is non-empty.
@@ -925,13 +925,13 @@ This argument has prototype
 | |tab| ``sparse_jac_work&`` *work*
 
 We refer to its initial value,
-and its value after *work* . ``clear`` () , as empty.
+and its value after *work*\ ``.clear`` () , as empty.
 If it is empty, information is stored in *work* .
 This can be used to reduce computation when
 a future call is for the same object *f* ,
 the same member function ``sparse_jac_for`` or ``sparse_jac_rev`` ,
 and the same subset of the Jacobian.
-If any of these values change, use *work* . ``clear`` () to
+If any of these values change, use *work*\ ``.clear`` () to
 empty this structure.
 
 n_sweep
@@ -955,7 +955,7 @@ for all the variables in the operation sequence..
 After a call to ``sparse_jac_forward`` or ``sparse_jac_rev`` ,
 the zero order coefficients correspond to
 
-| |tab| *f* . ``forward(0`` , *x* )
+| |tab| *f*\ ``.forward(0`` , *x* )
 
 All the other forward mode coefficients are unspecified.
 
@@ -1066,10 +1066,10 @@ This argument has prototype
 | |tab| ``sparse_rcv&`` *subset*
 
 Its row size and column size is *n* ; i.e.,
-*subset* . ``nr`` () == *n* and *subset* . ``nc`` () == *n* .
+*subset*\ ``.nr`` () == *n* and *subset*\ ``.nc`` () == *n* .
 It specifies which elements of the Hessian are computed.
 The input value of its value vector
-*subset* . ``val`` () does not matter.
+*subset*\ ``.val`` () does not matter.
 Upon return it contains the value of the corresponding elements
 of the Jacobian.
 All of the row, column pairs in *subset* must also appear in
@@ -1101,7 +1101,7 @@ This argument has prototype
 | |tab| ``const sparse_rc&`` *pattern*
 
 Its row size and column sizes are *n* ; i.e.,
-*pattern* . ``nr`` () == *n* and *pattern* . ``nc`` () == *n* .
+*pattern*\ ``.nr`` () == *n* and *pattern*\ ``.nc`` () == *n* .
 It is a sparsity pattern for the Hessian :math:`H(x)`.
 This argument is not used (and need not satisfy any conditions),
 when :ref:`work<cpp_sparse_hes.work>` is non-empty.
@@ -1113,12 +1113,12 @@ This argument has prototype
 | |tab| ``sparse_hes_work&`` *work*
 
 We refer to its initial value,
-and its value after *work* . ``clear`` () , as empty.
+and its value after *work*\ ``.clear`` () , as empty.
 If it is empty, information is stored in *work* .
 This can be used to reduce computation when
 a future call is for the same object *f* ,
 and the same subset of the Hessian.
-If either of these values change, use *work* . ``clear`` () to
+If either of these values change, use *work*\ ``.clear`` () to
 empty this structure.
 
 n_sweep
@@ -1143,7 +1143,7 @@ for all the variables in the operation sequence..
 After a call to ``sparse_hes``
 the zero order coefficients correspond to
 
-| |tab| *f* . ``forward(0`` , *x* )
+| |tab| *f*\ ``.forward(0`` , *x* )
 
 All the other forward mode coefficients are unspecified.
 

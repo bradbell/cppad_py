@@ -88,7 +88,7 @@ objective_fun
 =============
 The syntax
 
-| |tab| *y* = *optimize_fun* . ``objective_fun`` ( *x* )
+| |tab| *y* = *optimize_fun*\ ``.objective_fun`` ( *x* )
 
 sets :math:`y = f(x)` where
 *x* is a numpy vector with length *n*
@@ -98,7 +98,7 @@ objective_grad
 ==============
 The syntax
 
-| |tab| *z* = *optimize_fun* . ``objective_grad`` ( *x* )
+| |tab| *z* = *optimize_fun*\ ``.objective_grad`` ( *x* )
 
 sets :math:`z = f^{(1)} (x)` where
 *x* and *z* are numpy vectors with length *n* .
@@ -107,7 +107,7 @@ objective_hess
 ==============
 The syntax
 
-| |tab| *h* = *optimize_fun* . ``objective_hess`` ( *x* )
+| |tab| *h* = *optimize_fun*\ ``.objective_hess`` ( *x* )
 
 sets :math:`h = f^{(2)} (x)` where
 *x* is a numpy vector with length *n*
@@ -117,7 +117,7 @@ constraint_fun
 ==============
 The syntax
 
-| |tab| *y* = *optimize_fun* . ``constraint_fun`` ( *x* )
+| |tab| *y* = *optimize_fun*\ ``.constraint_fun`` ( *x* )
 
 sets :math:`y = g(x)` where
 *x* ( *y* ) is a numpy vector with length
@@ -127,7 +127,7 @@ constraint_jac
 ==============
 The syntax
 
-| |tab| *J* = *optimize_fun* . ``constraint_jac`` ( *x* )
+| |tab| *J* = *optimize_fun*\ ``.constraint_jac`` ( *x* )
 
 sets :math:`J = g^{(1)} (x)` where
 *x* is a numpy vector with length *n*
@@ -137,7 +137,7 @@ constraint_hess
 ===============
 The syntax
 
-| |tab| *H* = *optimize_fun* . ``constraint_hess`` ( *x* , *v* )
+| |tab| *H* = *optimize_fun*\ ``.constraint_hess`` ( *x* , *v* )
 
 sets
 

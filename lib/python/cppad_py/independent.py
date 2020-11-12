@@ -34,7 +34,7 @@
 # This argument is a numpy vector with ``float`` elements.
 # It specifies the number of independent variables
 # and their values during the recording.
-# We use *nx* = *x* . ``size``
+# We use *nx* = *x*\ ``.size``
 # to denote the number of independent variables.
 #
 # dynamic
@@ -42,7 +42,7 @@
 # This argument is a numpy vector with ``float`` elements.
 # It specifies the number of independent dynamic parameters
 # and their values during the recording.
-# We use *nd* = *dynamic* . ``size``
+# We use *nd* = *dynamic*\ ``.size``
 # to denote the number of independent dynamic parameters.
 #
 # ax

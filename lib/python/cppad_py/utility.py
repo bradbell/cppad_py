@@ -158,14 +158,14 @@ def numpy2vec(array, dtype, shape, context, name) :
 # **
 # This is an ``int`` equal to the number of rows in the array.
 # If the argument *nc* is not present, the array is a vector; i.e.,
-# ``len`` ( *array* . ``shape ) == 1`` .
+# ``len`` ( *array*\ ``.shape ) == 1`` .
 #
 # nc
 # **
 # If this argument is present,
 # it is an ``int`` equal to the number of columns in the array.
 # In this case the array is a matrix; i.e.,
-# ``len`` ( *array* . ``shape ) == 2`` .
+# ``len`` ( *array*\ ``.shape ) == 2`` .
 #
 # array
 # *****

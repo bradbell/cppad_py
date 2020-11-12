@@ -22,9 +22,9 @@
 # Syntax
 # ******
 #
-# | *f* . ``for_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
+# | *f*\ ``.for_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
 #
-# *f* . ``rev_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
+# *f*\ ``.rev_hes_sparsity`` ( *select_domain* , *select_range* , *pattern_out* )
 #
 # Purpose
 # *******

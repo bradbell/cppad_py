@@ -52,10 +52,10 @@
 # This argument must have be a :ref:`matrix<py_sparse_rcv.matrix>`
 # returned by the ``sparse_rcv`` constructor.
 # Its row size and column size is *n* ; i.e.,
-# *subset* . ``nr`` () == *n* and *subset* . ``nc`` () == *n* .
+# *subset*\ ``.nr`` () == *n* and *subset*\ ``.nc`` () == *n* .
 # It specifies which elements of the Hessian are computed.
 # The input value of its value vector
-# *subset* . ``val`` () does not matter.
+# *subset*\ ``.val`` () does not matter.
 # Upon return it contains the value of the corresponding elements
 # of the Jacobian.
 # All of the row, column pairs in *subset* must also appear in
@@ -79,7 +79,7 @@
 # This argument must have be a :ref:`pattern<py_sparse_rc.pattern>`
 # returned by the ``sparse_rc`` constructor.
 # Its row size and column sizes are *n* ; i.e.,
-# *pattern* . ``nr`` () == *n* and *pattern* . ``nc`` () == *n* .
+# *pattern*\ ``.nr`` () == *n* and *pattern*\ ``.nc`` () == *n* .
 # It is a sparsity pattern for the Hessian :math:`H(x)`.
 # This argument is not used (and need not satisfy any conditions),
 # when :ref:`work<py_sparse_hes.work>` is non-empty.
@@ -91,12 +91,12 @@
 # | |tab| *work* =  ``cppad_py.sparse_hes_work`` ()
 #
 # We refer to its initial value,
-# and its value after *work* . ``clear`` () , as empty.
+# and its value after *work*\ ``.clear`` () , as empty.
 # If it is empty, information is stored in *work* .
 # This can be used to reduce computation when
 # a future call is for the same object *f* ,
 # and the same subset of the Hessian.
-# If either of these values change, use *work* . ``clear`` () to
+# If either of these values change, use *work*\ ``.clear`` () to
 # empty this structure.
 #
 # n_sweep

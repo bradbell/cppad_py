@@ -31,4 +31,6 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|child_link|child_list|g
+s|\([a-zA-Z_]\)\* \. ``|\1*\\ ``.|g
+s|\([a-zA-Z_]\)`` \. \*|\1.``\\ *|g
+s|`` ()|()``|g

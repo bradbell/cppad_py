@@ -18,8 +18,8 @@ Jacobian Sparsity Patterns
 Syntax
 ******
 
-| *f* . ``for_jac_sparsity`` ( *pattern_in* , *pattern_out* )
-| *f* . ``rev_jac_sparsity`` ( *pattern_in* , *pattern_out* )
+| *f*\ ``.for_jac_sparsity`` ( *pattern_in* , *pattern_out* )
+| *f*\ ``.rev_jac_sparsity`` ( *pattern_in* , *pattern_out* )
 
 Purpose
 *******

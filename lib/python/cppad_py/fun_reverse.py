@@ -21,7 +21,7 @@
 #
 # Syntax
 # ******
-# *xq* = *f* . ``reverse`` ( *q* , *yq* )
+# *xq* = *f*\ ``.reverse`` ( *q* , *yq* )
 #
 # f
 # *
@@ -45,7 +45,7 @@
 # =======
 # This is the same function as
 # :ref:`x(t)<py_fun_forward.x(t)>` in the previous call to
-# *f* . ``forward`` .
+# *f*\ ``.forward`` .
 # We use :math:`S \in \B{R}^{n \times q}` to denote the Taylor coefficients
 # of :math:`X(t)`.
 #
@@ -53,7 +53,7 @@
 # =======
 # This is the same function as
 # :ref:`y(t)<py_fun_forward.y(t)>` in the previous call to
-# *f* . ``forward`` .
+# *f*\ ``.forward`` .
 # We use :math:`T \in \B{R}^{m \times q}` to denote the Taylor coefficients
 # of :math:`Y(t)`.
 # We also use the notation :math:`T(S)` to express the fact that

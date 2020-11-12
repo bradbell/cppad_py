@@ -49,7 +49,7 @@ This argument has prototype
 
 Its specifies the number of independent variables
 and their values during the recording.
-We use the notation *nx* = *x* . ``size`` ()
+We use the notation *nx* = *x*\ ``.size`` ()
 to denote the number of independent variables.
 
 dynamic
@@ -60,7 +60,7 @@ This argument has prototype
 
 Its specifies the number of independent dynamic parameters
 and their values during the recording.
-We use the notation *nd* = *dynamic* . ``size`` ()
+We use the notation *nd* = *dynamic*\ ``.size`` ()
 to denote the number of independent variables.
 
 ax
@@ -215,7 +215,7 @@ and must be the same as
 :ref:`ax<cpp_independent.ax>`
 returned by the previous call to ``independent`` ; i.e.,
 it must be the independent variable vector.
-We use the notation *n* = *ax* . ``size`` ()
+We use the notation *n* = *ax*\ ``.size`` ()
 to denote the number of independent variables.
 
 ay
@@ -225,7 +225,7 @@ This argument has prototype
 | |tab| ``const vec_a_double&`` *ax*
 
 It specifies the dependent variables.
-We use the notation *m* = *ay* . ``size`` ()
+We use the notation *m* = *ay*\ ``.size`` ()
 to denote the number of dependent variables.
 
 f
@@ -315,11 +315,11 @@ Syntax
 ******
 
 | ``a_fun`` *f* ( *f* )
-| *n* = *f* . ``size_domain`` ()
-| *m* = *f* . ``size_range`` ()
-| *v* = *f* . ``size_var`` ()
-| *p* = *f* . ``size_op`` ()
-| *q* = *f* . ``size_order`` ()
+| *n* = *f*\ ``.size_domain`` ()
+| *m* = *f*\ ``.size_range`` ()
+| *v* = *f*\ ``.size_var`` ()
+| *p* = *f*\ ``.size_op`` ()
+| *q* = *f*\ ``.size_order`` ()
 
 f
 *
@@ -378,7 +378,7 @@ and is the number of Taylor coefficients currently stored in *f* ,
 for every variable in the operation sequence corresponding to *f* .
 These coefficients are computed by :ref:`cpp_fun_forward<cpp_fun_forward>`.
 This is different from the other function properties in that it can change
-after each call to *f* . ``forward`` ; see
+after each call to *f*\ ``.forward`` ; see
 :ref:`size_order<cpp_fun_forward.p.size_order>` in the forward mode section.
 The initial value for this property, when the object *f*
 or *af* is created, is zero.
@@ -858,7 +858,7 @@ X(t), S
 =======
 This is the same function as
 :ref:`x(t)<cpp_fun_forward.x(t)>` in the previous call to
-*f* . ``forward`` .
+*f*\ ``.forward`` .
 We use :math:`S \in \B{R}^{n \times q}` to denote the Taylor coefficients
 of :math:`X(t)`.
 
@@ -866,7 +866,7 @@ Y(t), T
 =======
 This is the same function as
 :ref:`y(t)<cpp_fun_forward.y(t)>` in the previous call to
-*f* . ``forward`` .
+*f*\ ``.forward`` .
 We use :math:`T \in \B{R}^{m \times q}` to denote the Taylor coefficients
 of :math:`Y(t)`.
 We also use the notation :math:`T(S)` to express the fact that
