@@ -40,9 +40,9 @@ documentation.
 The starting point for the optimization is :math:`(1,5,5,1)`
 and the optimal solution is
 
-.. math:
+.. math::
 
-    (1.00000000, 4.74299963, 3.82114998, 1.37940829)
+    ( \; 1.00000000, \; 4.74299963, \; 3.82114998, \; 1.37940829 \; )
 
 {xsrst_file
   # BEGIN SOURCE
