@@ -37,6 +37,25 @@ The following message as also been seen:
 
 In this case try installing ``swig-python`` .
 
+cppad_py
+********
+If the error message below may occur while running ``check_all.py``
+
+| |tab| ``ModuleNotFoundError: No module named cppad_py``
+
+It means that the ``cppad_py`` directory can't be found.
+If you are testing the local copy, make sure that the directory
+
+| |tab| *top_src*\ ``/cppad_py``
+
+exists; see :ref:`local build <setup_py.local_build>` .
+If you are testing the installed version, make sure the directory
+
+| |tab| ``$PYTHONPATH/cppad_py``
+
+exists; see :ref:`PYTHONPATH <setup_py.pythonpath>` .
+
+
 libcppad_lib
 ************
 If the error message below occurs, it is because the CppAD library

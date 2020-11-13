@@ -61,6 +61,8 @@ Previous Years
     :ref:`f_y <numeric_rosen3_step.fun.f_y>` .
 #.  Remove some extra space when a '.' character appears between the
     change between italic and literal font.
+#.  Add an install error entry for when the
+    :ref:`cppad_py <install_error.cppad_py>` module can't be found.
 
 11-11
 *****
