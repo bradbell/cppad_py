@@ -1754,7 +1754,6 @@ def process_headings(
     next_newline     = section_data.find('\n', next_start)
     candidate_start  = None
     candidate_state  = 'empty'
-    jump_table       = ''
     while 0 <= next_newline :
         next_line = section_data[next_start : next_newline]
         next_line = pattern['line'].sub('', next_line)
@@ -1851,13 +1850,6 @@ def process_headings(
                     else :
                         index += ',' + word
             #
-            # jump_table entry for this heading
-            level       = len(heading_list) - 1
-            if 0 < level :
-                line        = (4 * (level - 1)) * ' ' + '- '
-                line       += ':ref:`' + label + '`\n'
-                jump_table += line
-            #
             cmd  = '\n{xsrst_label '
             cmd += index + ' '
             cmd += label + ' }'
@@ -1896,7 +1888,7 @@ def process_headings(
     pseudo_heading = line + section_name + '\n' + line + '\n'
     #
     section_title = heading_list[0]['text']
-    return section_data, section_title, pseudo_heading, jump_table
+    return section_data, section_title, pseudo_heading
 # -----------------------------------------------------------------------------
 # Compute output corresponding to a section.
 # This finishes all the xsrst processing that has been delayed to this point
@@ -1910,7 +1902,6 @@ def compute_output(
     section_data,
     list_children,
     pseudo_heading,
-    jump_table,
     section_name,
     line_increment,
 ) :
@@ -1925,6 +1916,15 @@ def compute_output(
     #
     # put pseudo heading at beginning of output
     rst_output = pseudo_heading
+    #
+    # put hidden toctree next
+    if len(list_children) > 0  :
+        rst_output += '.. toctree::\n'
+        rst_output += '   :maxdepth: 1\n'
+        rst_output += '   :hidden:\n\n'
+        for child in list_children :
+            rst_output += '   ' + child + '\n'
+        rst_output += '\n'
     #
     # now output the section data
     startline         = 0
@@ -1945,7 +1945,9 @@ def compute_output(
         if section_number_command :
             rst_output += line
         elif jump_table_command :
-            rst_output += jump_table + '\n'
+            rst_output += '.. contents::\n'
+            rst_output += '   :local:\n'
+            rst_output += '\n'
             previous_empty = True
         elif label_command :
             # --------------------------------------------------------
@@ -2007,15 +2009,12 @@ def compute_output(
             assert len(list_children) > 0
             has_child_command = True
             #
-            rst_output += '.. toctree::\n'
-            rst_output += '   :maxdepth: 1\n'
-            if children_command or child_table_command:
-                rst_output += '   :hidden:\n'
-            rst_output += '\n'
-            for child in list_children :
-                rst_output += '   ' + child + '\n'
-            rst_output += '\n'
-            #
+            if child_list_command:
+                rst_output += '\n'
+                for child in list_children :
+                    rst_output += '-  :ref:`' + child + '`\n'
+                rst_output += '\n'
+            previous_empty = True
             if child_table_command:
                 rst_output += '.. csv-table::\n'
                 rst_output += '    :header:  "Name", "Title"\n'
@@ -2329,7 +2328,7 @@ while 0 < len(file_info_stack) :
         )
         # ---------------------------------------------------------------
         # add labels and indices corresponding to headings
-        section_data, section_title, pseudo_heading, jump_table = \
+        section_data, section_title, pseudo_heading = \
         process_headings(
             pattern,
             section_data,
@@ -2357,7 +2356,6 @@ while 0 < len(file_info_stack) :
             section_data,
             list_children,
             pseudo_heading,
-            jump_table,
             section_name,
             line_increment,
         )
