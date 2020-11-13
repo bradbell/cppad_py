@@ -2,6 +2,13 @@
 exception
 !!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   exception_xam_cpp
+   exception_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,9 +20,8 @@ exception
 
 Exception Handling
 ##################
-- :ref:`exception.c++_exceptions`
-- :ref:`exception.python_exceptions`
-    - :ref:`exception.python_exceptions.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: c++, exceptions
@@ -43,13 +49,6 @@ Python Exceptions
 The type of the exception is ``RuntimeError``.
 If *err* is the exception, ``str`` (*err*) is
 a message describing the error.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   exception_xam_cpp
-   exception_xam_py
 
 .. meta::
    :keywords: example

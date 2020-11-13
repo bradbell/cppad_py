@@ -2,6 +2,13 @@
 cpp_fun_json
 !!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_to_json_xam_cpp
+   fun_from_json_xam_cpp
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,12 +20,8 @@ cpp_fun_json
 
 Json Representation of AD Computational Graph
 #############################################
-- :ref:`cpp_fun_json.syntax`
-- :ref:`cpp_fun_json.f`
-- :ref:`cpp_fun_json.json`
-- :ref:`cpp_fun_json.to_json`
-- :ref:`cpp_fun_json.from_json`
-- :ref:`cpp_fun_json.examples`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -85,13 +88,6 @@ In this case, *json* has prototype
 | |tab| ``const std::string&`` *json*
 
 and the function *f* so it corresponds to *json* .
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_to_json_xam_cpp
-   fun_from_json_xam_cpp
 
 .. meta::
    :keywords: examples

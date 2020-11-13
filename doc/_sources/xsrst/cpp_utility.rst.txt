@@ -2,6 +2,13 @@
 cpp_utility
 !!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   convert_vec
+   exception
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,7 +20,8 @@ cpp_utility
 
 C++ Utilities
 #############
-- :ref:`cpp_utility.children`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: children
@@ -24,13 +32,6 @@ C++ Utilities
 
 Children
 ********
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   convert_vec
-   exception
-
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

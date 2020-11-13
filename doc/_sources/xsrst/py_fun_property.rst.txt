@@ -2,6 +2,12 @@
 py_fun_property
 !!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_property_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,14 +19,8 @@ py_fun_property
 
 Properties of a Function Object
 ###############################
-- :ref:`py_fun_property.syntax`
-- :ref:`py_fun_property.f`
-- :ref:`py_fun_property.size_domain`
-- :ref:`py_fun_property.size_range`
-- :ref:`py_fun_property.size_var`
-- :ref:`py_fun_property.size_op`
-- :ref:`py_fun_property.size_order`
-- :ref:`py_fun_property.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -124,12 +124,6 @@ These coefficients are computed by :ref:`py_fun_forward<py_fun_forward>`.
 This is different from the other function properties in that it can change
 after each call to *f*\ ``.forward`` ; see
 :ref:`size_order<py_fun_forward.p.size_order>` in the forward mode section.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_property_xam_py
 
 .. meta::
    :keywords: example

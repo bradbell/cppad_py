@@ -2,6 +2,12 @@
 py_sparse_rc
 !!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   sparse_rc_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,21 +19,8 @@ py_sparse_rc
 
 Sparsity Patterns
 #################
-- :ref:`py_sparse_rc.syntax`
-- :ref:`py_sparse_rc.pattern`
-- :ref:`py_sparse_rc.nr`
-- :ref:`py_sparse_rc.nc`
-- :ref:`py_sparse_rc.nnz`
-- :ref:`py_sparse_rc.resize`
-- :ref:`py_sparse_rc.put`
-    - :ref:`py_sparse_rc.put.k`
-    - :ref:`py_sparse_rc.put.r`
-    - :ref:`py_sparse_rc.put.c`
-- :ref:`py_sparse_rc.row`
-- :ref:`py_sparse_rc.col`
-- :ref:`py_sparse_rc.row_major`
-- :ref:`py_sparse_rc.col_major`
-- :ref:`py_sparse_rc.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -250,12 +243,6 @@ and if *row* [ *col_major* [ *k* ] ] == *row* [ *col_major* [ *k* +1] ] ,
 
 This routine generates an assert if there are two entries with the same
 row and column values (if ``NDEBUG`` is not defined).
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   sparse_rc_xam_py
 
 .. meta::
    :keywords: example

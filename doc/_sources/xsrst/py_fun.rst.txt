@@ -2,30 +2,6 @@
 py_fun
 !!!!!!
 
-.. include:: ../preamble.rst
-
-.. meta::
-   :keywords: py_fun, cppad, py, ad, functions
-
-.. index:: py_fun, cppad, py, ad, functions
-
-.. _py_fun:
-
-Cppad Py AD Functions
-#####################
-- :ref:`py_fun.children`
-
-.. comment:  Files that have Python specific Implementation and Documentation
-
-.. meta::
-   :keywords: children
-
-.. index:: children
-
-.. _py_fun.children:
-
-Children
-********
 .. toctree::
    :maxdepth: 1
    :hidden:
@@ -42,6 +18,31 @@ Children
    py_fun_optimize
    py_fun_json
 
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: py_fun, cppad, py, ad, functions
+
+.. index:: py_fun, cppad, py, ad, functions
+
+.. _py_fun:
+
+Cppad Py AD Functions
+#####################
+.. contents::
+   :local:
+
+.. comment:  Files that have Python specific Implementation and Documentation
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _py_fun.children:
+
+Children
+********
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

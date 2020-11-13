@@ -2,6 +2,13 @@
 a_double_cond_assign
 !!!!!!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   a_double_cond_assign_xam_cpp
+   a_double_cond_assign_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,15 +20,8 @@ a_double_cond_assign
 
 AD Conditional Assignment
 #########################
-- :ref:`a_double_cond_assign.syntax`
-- :ref:`a_double_cond_assign.purpose`
-- :ref:`a_double_cond_assign.target`
-- :ref:`a_double_cond_assign.cop`
-- :ref:`a_double_cond_assign.left`
-- :ref:`a_double_cond_assign.right`
-- :ref:`a_double_cond_assign.if_true`
-- :ref:`a_double_cond_assign.if_false`
-- :ref:`a_double_cond_assign.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -162,13 +162,6 @@ This argument has c++ prototype
 
 It specifies the value assigned to *ad* if the result
 of the comparison is false.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   a_double_cond_assign_xam_cpp
-   a_double_cond_assign_xam_py
 
 .. meta::
    :keywords: example

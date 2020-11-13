@@ -13,16 +13,8 @@ vector_ctor
 
 Cppad Py Vector Constructors
 ############################
-- :ref:`vector_ctor.syntax`
-    - :ref:`vector_ctor.syntax.c++`
-    - :ref:`vector_ctor.syntax.python`
-- :ref:`vector_ctor.purpose`
-- :ref:`vector_ctor.n`
-- :ref:`vector_ctor.vec_bool`
-- :ref:`vector_ctor.vec_int`
-- :ref:`vector_ctor.vec_double`
-- :ref:`vector_ctor.vec_a_double`
-- :ref:`vector_ctor.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax

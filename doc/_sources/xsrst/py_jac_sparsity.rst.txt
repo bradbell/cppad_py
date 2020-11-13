@@ -2,6 +2,12 @@
 py_jac_sparsity
 !!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   sparse_jac_pattern_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,16 +19,8 @@ py_jac_sparsity
 
 Jacobian Sparsity Patterns
 ##########################
-- :ref:`py_jac_sparsity.syntax`
-- :ref:`py_jac_sparsity.purpose`
-    - :ref:`py_jac_sparsity.purpose.for_jac_sparsity`
-    - :ref:`py_jac_sparsity.purpose.rev_jac_sparsity`
-- :ref:`py_jac_sparsity.x`
-- :ref:`py_jac_sparsity.f`
-- :ref:`py_jac_sparsity.pattern_in`
-- :ref:`py_jac_sparsity.pattern_out`
-- :ref:`py_jac_sparsity.sparsity_for_entire_jacobian`
-- :ref:`py_jac_sparsity.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -156,12 +154,6 @@ Sparsity for Entire Jacobian
 Suppose that :math:`R` is the identity matrix.
 In this case, *pattern_out* is a sparsity pattern for
 :math:`F^{(1)} ( x )`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   sparse_jac_pattern_xam_py
 
 .. meta::
    :keywords: example

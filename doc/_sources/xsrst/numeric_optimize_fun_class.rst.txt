@@ -2,6 +2,12 @@
 numeric_optimize_fun_class
 !!!!!!!!!!!!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   numeric_optimize_fun_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,19 +19,8 @@ numeric_optimize_fun_class
 
 A Helper Class That Defines Functions Needed for Optimization
 #############################################################
-- :ref:`numeric_optimize_fun_class.syntax`
-- :ref:`numeric_optimize_fun_class.purpose`
-- :ref:`numeric_optimize_fun_class.objective_ad`
-- :ref:`numeric_optimize_fun_class.constraint_ad`
-- :ref:`numeric_optimize_fun_class.optimize_fun`
-    - :ref:`numeric_optimize_fun_class.optimize_fun.objective_fun`
-    - :ref:`numeric_optimize_fun_class.optimize_fun.objective_grad`
-    - :ref:`numeric_optimize_fun_class.optimize_fun.objective_hess`
-    - :ref:`numeric_optimize_fun_class.optimize_fun.constraint_fun`
-    - :ref:`numeric_optimize_fun_class.optimize_fun.constraint_jac`
-    - :ref:`numeric_optimize_fun_class.optimize_fun.constraint_hess`
-- :ref:`numeric_optimize_fun_class.example`
-- :ref:`numeric_optimize_fun_class.source_code`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -201,12 +196,6 @@ sets
 
 where *x* is a numpy vector with length *n*
 and *H* is a numpy *n* by *n*  matrix.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   numeric_optimize_fun_xam_py
 
 .. meta::
    :keywords: example

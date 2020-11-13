@@ -195,51 +195,51 @@
             
   <div class="section" id="numeric-ode-multi-step">
 <h1>numeric_ode_multi_step<a class="headerlink" href="#numeric-ode-multi-step" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="multiple-ode-steps">
 <span id="id1"></span><h2>Multiple Ode Steps<a class="headerlink" href="#multiple-ode-steps" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-purpose"><span class="std std-ref">Purpose</span></a></p></li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#numeric-ode-multi-step-one-step"><span class="std std-ref">one_step</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-one-step-t0"><span class="std std-ref">t0</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-one-step-y0"><span class="std std-ref">y0</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-one-step-t-step"><span class="std std-ref">t_step</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-one-step-y1"><span class="std std-ref">y1</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id3">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#purpose" id="id4">Purpose</a></p></li>
+<li><p><a class="reference internal" href="#one-step" id="id5">one_step</a></p>
+<ul>
+<li><p><a class="reference internal" href="#t0" id="id6">t0</a></p></li>
+<li><p><a class="reference internal" href="#y0" id="id7">y0</a></p></li>
+<li><p><a class="reference internal" href="#t-step" id="id8">t_step</a></p></li>
+<li><p><a class="reference internal" href="#y1" id="id9">y1</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#numeric-ode-multi-step-fun"><span class="std std-ref">fun</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-fun-fun-set-t-all-index-index"><span class="std std-ref">fun.set_t_all_index(index)</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-fun-fun-f-t-y"><span class="std std-ref">fun.f(t, y)</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-fun-one-step"><span class="std std-ref">one_step</span></a></p></li>
+<li><p><a class="reference internal" href="#fun" id="id10">fun</a></p>
+<ul>
+<li><p><a class="reference internal" href="#fun-set-t-all-index-index" id="id11">fun.set_t_all_index(index)</a></p></li>
+<li><p><a class="reference internal" href="#fun-f-t-y" id="id12">fun.f(t, y)</a></p></li>
+<li><p><a class="reference internal" href="#numeric-ode-multi-step-fun-one-step" id="id13">one_step</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-t-all"><span class="std std-ref">t_all</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-y-init"><span class="std std-ref">y_init</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-y-all"><span class="std std-ref">y_all</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-example"><span class="std std-ref">Example</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-ode-multi-step-source-code"><span class="std std-ref">Source Code</span></a></p></li>
+<li><p><a class="reference internal" href="#t-all" id="id14">t_all</a></p></li>
+<li><p><a class="reference internal" href="#y-init" id="id15">y_init</a></p></li>
+<li><p><a class="reference internal" href="#y-all" id="id16">y_all</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id17">Example</a></p></li>
+<li><p><a class="reference internal" href="#source-code" id="id18">Source Code</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="numeric-ode-multi-step-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-ode-multi-step-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id3">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <p><em>y_all</em> =  <code class="docutils literal notranslate"><span class="pre">ode_multi_step</span></code> ( <em>one_step</em> , <em>f</em> , <em>t_all</em> , <em>y_init</em> )</p>
 </div>
 <div class="section" id="purpose">
-<span id="numeric-ode-multi-step-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-ode-multi-step-purpose"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id4">Purpose</a><a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 <p>The routine can be used with <code class="docutils literal notranslate"><span class="pre">ad_double</span></code> to solve an initial
 value ODE</p>
 <div class="math notranslate nohighlight">
 \[y^{(1)} (t) = f( t , y )\]</div>
 </div>
 <div class="section" id="one-step">
-<span id="numeric-ode-multi-step-one-step"></span><span id="index-3"></span><h3>one_step<a class="headerlink" href="#one-step" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-ode-multi-step-one-step"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id5">one_step</a><a class="headerlink" href="#one-step" title="Permalink to this headline">¶</a></h3>
 <p>This routine executes one step of an ODE approximation method with the
 following syntax:</p>
 <div class="line-block">
@@ -248,26 +248,26 @@ following syntax:</p>
 <p>The elements of <em>y0</em> and the scalars above can be
 <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">a_double</span></code> .</p>
 <div class="section" id="t0">
-<span id="numeric-ode-multi-step-one-step-t0"></span><span id="index-4"></span><h4>t0<a class="headerlink" href="#t0" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-ode-multi-step-one-step-t0"></span><span id="index-4"></span><h4><a class="toc-backref" href="#id6">t0</a><a class="headerlink" href="#t0" title="Permalink to this headline">¶</a></h4>
 <p>is the initial time value for the step.</p>
 </div>
 <div class="section" id="y0">
-<span id="numeric-ode-multi-step-one-step-y0"></span><span id="index-5"></span><h4>y0<a class="headerlink" href="#y0" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-ode-multi-step-one-step-y0"></span><span id="index-5"></span><h4><a class="toc-backref" href="#id7">y0</a><a class="headerlink" href="#y0" title="Permalink to this headline">¶</a></h4>
 <p>is the initial value of <span class="math notranslate nohighlight">\(y(t)\)</span> for the step.</p>
 </div>
 <div class="section" id="t-step">
-<span id="numeric-ode-multi-step-one-step-t-step"></span><span id="index-6"></span><h4>t_step<a class="headerlink" href="#t-step" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-ode-multi-step-one-step-t-step"></span><span id="index-6"></span><h4><a class="toc-backref" href="#id8">t_step</a><a class="headerlink" href="#t-step" title="Permalink to this headline">¶</a></h4>
 <p>is the is the size of the step (in time).</p>
 </div>
 <div class="section" id="y1">
-<span id="numeric-ode-multi-step-one-step-y1"></span><span id="index-7"></span><h4>y1<a class="headerlink" href="#y1" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-ode-multi-step-one-step-y1"></span><span id="index-7"></span><h4><a class="toc-backref" href="#id9">y1</a><a class="headerlink" href="#y1" title="Permalink to this headline">¶</a></h4>
 <p>is the approximation for the ODE solution at time <em>t0</em> + <em>t_step</em> .</p>
 </div>
 </div>
 <div class="section" id="fun">
-<span id="numeric-ode-multi-step-fun"></span><span id="index-8"></span><h3>fun<a class="headerlink" href="#fun" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-ode-multi-step-fun"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id10">fun</a><a class="headerlink" href="#fun" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="fun-set-t-all-index-index">
-<span id="numeric-ode-multi-step-fun-fun-set-t-all-index-index"></span><span id="index-9"></span><h4>fun.set_t_all_index(index)<a class="headerlink" href="#fun-set-t-all-index-index" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-ode-multi-step-fun-fun-set-t-all-index-index"></span><span id="index-9"></span><h4><a class="toc-backref" href="#id11">fun.set_t_all_index(index)</a><a class="headerlink" href="#fun-set-t-all-index-index" title="Permalink to this headline">¶</a></h4>
 <p>Often, we use interpolation with knots to define <span class="math notranslate nohighlight">\(f(t, y)\)</span>.
 It is one of the subtitle issues of AD that even though values are the
 same, derivatives might not be the same; e.g.,
@@ -288,43 +288,41 @@ of each integration interval and before any of the other
 <em>fun</em> member functions.</p>
 </div>
 <div class="section" id="fun-f-t-y">
-<span id="numeric-ode-multi-step-fun-fun-f-t-y"></span><span id="index-10"></span><h4>fun.f(t, y)<a class="headerlink" href="#fun-f-t-y" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-ode-multi-step-fun-fun-f-t-y"></span><span id="index-10"></span><h4><a class="toc-backref" href="#id12">fun.f(t, y)</a><a class="headerlink" href="#fun-f-t-y" title="Permalink to this headline">¶</a></h4>
 <p>This call evaluates the function that defines the ODE</p>
 <div class="math notranslate nohighlight">
 \[y^{(1)} (t) = f [ t , y(t) ]\]</div>
 </div>
 <div class="section" id="numeric-ode-multi-step-fun-one-step">
-<span id="index-11"></span><span id="id2"></span><h4>one_step<a class="headerlink" href="#numeric-ode-multi-step-fun-one-step" title="Permalink to this headline">¶</a></h4>
+<span id="index-11"></span><span id="id2"></span><h4><a class="toc-backref" href="#id13">one_step</a><a class="headerlink" href="#numeric-ode-multi-step-fun-one-step" title="Permalink to this headline">¶</a></h4>
 <p>The routine <em>one_step</em> may put extra requirements on <em>fun</em> .</p>
 </div>
 </div>
 <div class="section" id="t-all">
-<span id="numeric-ode-multi-step-t-all"></span><span id="index-12"></span><h3>t_all<a class="headerlink" href="#t-all" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-ode-multi-step-t-all"></span><span id="index-12"></span><h3><a class="toc-backref" href="#id14">t_all</a><a class="headerlink" href="#t-all" title="Permalink to this headline">¶</a></h3>
 <p>This is a numpy vector of time values at which the solution is calculated.
 The type of its elements can be <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">ad_double</span></code> .
 It must be either monotone increasing or decreasing.</p>
 </div>
 <div class="section" id="y-init">
-<span id="numeric-ode-multi-step-y-init"></span><span id="index-13"></span><h3>y_init<a class="headerlink" href="#y-init" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-ode-multi-step-y-init"></span><span id="index-13"></span><h3><a class="toc-backref" href="#id15">y_init</a><a class="headerlink" href="#y-init" title="Permalink to this headline">¶</a></h3>
 <p>This is the value of <span class="math notranslate nohighlight">\(y(t)\)</span> at the initial time
 <em>t_all</em> [ 0 ] as a numpy vector.
 The type of its elements can be <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">ad_double</span></code> .</p>
 </div>
 <div class="section" id="y-all">
-<span id="numeric-ode-multi-step-y-all"></span><span id="index-14"></span><h3>y_all<a class="headerlink" href="#y-all" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-ode-multi-step-y-all"></span><span id="index-14"></span><h3><a class="toc-backref" href="#id16">y_all</a><a class="headerlink" href="#y-all" title="Permalink to this headline">¶</a></h3>
 <p>This is the approximate solution for <span class="math notranslate nohighlight">\(y(t)\)</span> at all of the
 times specified by <em>t_all</em> as a numpy array.
 The value <em>y_all</em> [ <em>i</em> , <em>j</em> ] is the value of the j-th
 component of <span class="math notranslate nohighlight">\(y(t)\)</span> at time <em>t_all</em> [ <em>i</em> ] .</p>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="example">
-<span id="numeric-ode-multi-step-example"></span><span id="index-15"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-ode-multi-step-example"></span><span id="index-15"></span><h3><a class="toc-backref" href="#id17">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="numeric_ode_multi_step_xam_py.html#id1"><span class="std std-ref">numeric_ode_multi_step_xam_py</span></a></p>
 </div>
 <div class="section" id="source-code">
-<span id="numeric-ode-multi-step-source-code"></span><span id="index-16"></span><h3>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-ode-multi-step-source-code"></span><span id="index-16"></span><h3><a class="toc-backref" href="#id18">Source Code</a><a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">import</span> <span class="nn">copy</span>
 <span class="k">def</span> <span class="nf">ode_multi_step</span><span class="p">(</span><span class="n">one_step</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">t_all</span><span class="p">,</span> <span class="n">y_init</span> <span class="p">)</span> <span class="p">:</span>

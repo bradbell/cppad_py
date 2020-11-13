@@ -189,64 +189,66 @@
             
   <div class="section" id="code-cmd">
 <h1>code_cmd<a class="headerlink" href="#code-cmd" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <div class="section" id="code-command">
 <span id="id1"></span><h2>Code Command<a class="headerlink" href="#code-command" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#code-cmd-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#code-cmd-purpose"><span class="std std-ref">Purpose</span></a></p></li>
-<li><p><a class="reference internal" href="#code-cmd-requirements"><span class="std std-ref">Requirements</span></a></p></li>
-<li><p><a class="reference internal" href="#code-cmd-language"><span class="std std-ref">language</span></a></p></li>
-<li><p><a class="reference internal" href="#code-cmd-rest-of-line"><span class="std std-ref">Rest of Line</span></a></p></li>
-<li><p><a class="reference internal" href="#code-cmd-spell-checking"><span class="std std-ref">Spell Checking</span></a></p></li>
-<li><p><a class="reference internal" href="#code-cmd-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#purpose" id="id3">Purpose</a></p></li>
+<li><p><a class="reference internal" href="#requirements" id="id4">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#language" id="id5">language</a></p></li>
+<li><p><a class="reference internal" href="#rest-of-line" id="id6">Rest of Line</a></p></li>
+<li><p><a class="reference internal" href="#spell-checking" id="id7">Spell Checking</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id8">Example</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="code-cmd-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="code-cmd-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_code</span></code> <em>language</em> <code class="code docutils literal notranslate"><span class="pre">}</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_code}</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="purpose">
-<span id="code-cmd-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<span id="code-cmd-purpose"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">Purpose</a><a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 <p>A code block, directly below in the current input file, begins with
 a line containing the first version ( <em>language</em> included version)
 of the command above.</p>
 </div>
 <div class="section" id="requirements">
-<span id="code-cmd-requirements"></span><span id="index-3"></span><h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
+<span id="code-cmd-requirements"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">Requirements</a><a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
 <p>Each code command ends with
 a line containing the second version of the command; i.e., <code class="docutils literal notranslate"><span class="pre">{xsrst_code}</span></code>.
 Hence there must be an even number of code commands.
 The back quote character ` can’t be in the same line as the commands.</p>
 </div>
 <div class="section" id="language">
-<span id="code-cmd-language"></span><span id="index-4"></span><h3>language<a class="headerlink" href="#language" title="Permalink to this headline">¶</a></h3>
+<span id="code-cmd-language"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">language</a><a class="headerlink" href="#language" title="Permalink to this headline">¶</a></h3>
 <p>A <em>language</em> is a non-empty sequence of non-space the characters.
 It is used to determine the source code language
 for highlighting the code block.</p>
 </div>
 <div class="section" id="rest-of-line">
-<span id="code-cmd-rest-of-line"></span><span id="index-5"></span><h3>Rest of Line<a class="headerlink" href="#rest-of-line" title="Permalink to this headline">¶</a></h3>
+<span id="code-cmd-rest-of-line"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">Rest of Line</a><a class="headerlink" href="#rest-of-line" title="Permalink to this headline">¶</a></h3>
 <p>Other characters on the same line as a code command
 are not included in the xsrst output.
 This enables one to begin or end a comment block
 without having the comment characters in the xsrst output.</p>
 </div>
 <div class="section" id="spell-checking">
-<span id="code-cmd-spell-checking"></span><span id="index-6"></span><h3>Spell Checking<a class="headerlink" href="#spell-checking" title="Permalink to this headline">¶</a></h3>
+<span id="code-cmd-spell-checking"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">Spell Checking</a><a class="headerlink" href="#spell-checking" title="Permalink to this headline">¶</a></h3>
 <p>Code blocks as usually small and
 spell checking is done for these code blocks.
 (Spell checking is not done for code blocks included using the
 <a class="reference internal" href="file_cmd.html#id1"><span class="std std-ref">file command</span></a> .)</p>
 </div>
 <div class="section" id="example">
-<span id="code-cmd-example"></span><span id="index-7"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="code_exam.html">code_exam</a></li>
+<span id="code-cmd-example"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="code_exam.html#id1"><span class="std std-ref">Code Example</span></a></p></li>
 </ul>
-</div>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">bin/xsrst.py</span></code></p>
 </div>

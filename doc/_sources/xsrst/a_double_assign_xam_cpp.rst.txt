@@ -13,6 +13,8 @@ a_double_assign_xam_cpp
 
 C++: a_double Assignment Operators: Example and Test
 ####################################################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../example/cplusplus/a_double_assign_xam.cpp

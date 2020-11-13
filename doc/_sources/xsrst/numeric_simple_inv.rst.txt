@@ -2,6 +2,12 @@
 numeric_simple_inv
 !!!!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   numeric_simple_inv_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,12 +19,8 @@ numeric_simple_inv
 
 An AD Compatible Matrix Inverse Routine
 #######################################
-- :ref:`numeric_simple_inv.syntax`
-- :ref:`numeric_simple_inv.purpose`
-- :ref:`numeric_simple_inv.a`
-- :ref:`numeric_simple_inv.ainv`
-- :ref:`numeric_simple_inv.example`
-- :ref:`numeric_simple_inv.source_code`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -59,12 +61,6 @@ The type of its elements can be ``float`` or ``a_double`` .
 Ainv
 ****
 This is the matrix inverse of *A* .
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   numeric_simple_inv_xam_py
 
 .. meta::
    :keywords: example

@@ -13,11 +13,8 @@ cpp_fun_new_dynamic
 
 Change The Dynamic Parameters
 #############################
-- :ref:`cpp_fun_new_dynamic.syntax`
-- :ref:`cpp_fun_new_dynamic.f`
-- :ref:`cpp_fun_new_dynamic.dynamic`
-- :ref:`cpp_fun_new_dynamic.size_order`
-- :ref:`cpp_fun_new_dynamic.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax

@@ -2,6 +2,12 @@
 cpp_fun_forward
 !!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_forward_xam_cpp
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,17 +19,8 @@ cpp_fun_forward
 
 Forward Mode AD
 ###############
-- :ref:`cpp_fun_forward.syntax`
-- :ref:`cpp_fun_forward.taylor_coefficient`
-- :ref:`cpp_fun_forward.f`
-- :ref:`cpp_fun_forward.f(x)`
-- :ref:`cpp_fun_forward.x(t)`
-- :ref:`cpp_fun_forward.y(t)`
-- :ref:`cpp_fun_forward.p`
-    - :ref:`cpp_fun_forward.p.size_order`
-- :ref:`cpp_fun_forward.xp`
-- :ref:`cpp_fun_forward.yp`
-- :ref:`cpp_fun_forward.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -180,12 +177,6 @@ the result has prototype
 
 respectively and its size is *m* .
 It is the *p*-th order Taylor coefficients for :math:`Y(t)`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_forward_xam_cpp
 
 .. meta::
    :keywords: example

@@ -13,6 +13,8 @@ sparse_rc_xam_cpp
 
 C++: Sparsity Patterns: Example and Test
 ########################################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../example/cplusplus/sparse_rc_xam.cpp

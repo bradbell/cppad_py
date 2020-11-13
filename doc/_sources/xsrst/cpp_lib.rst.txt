@@ -2,6 +2,15 @@
 cpp_lib
 !!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   cpp_fun
+   sparse
+   cpp_utility
+   more_cpp
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,7 +22,8 @@ cpp_lib
 
 The C++ Library
 ###############
-- :ref:`cpp_lib.children`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: children
@@ -24,15 +34,6 @@ The C++ Library
 
 Children
 ********
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   cpp_fun
-   sparse
-   cpp_utility
-   more_cpp
-
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

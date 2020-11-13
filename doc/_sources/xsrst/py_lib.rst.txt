@@ -2,6 +2,16 @@
 py_lib
 !!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   py_fun
+   py_sparse
+   py_utility
+   mixed
+   more_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,7 +23,8 @@ py_lib
 
 The Python Library
 ##################
-- :ref:`py_lib.children`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: children
@@ -24,16 +35,6 @@ The Python Library
 
 Children
 ********
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   py_fun
-   py_sparse
-   py_utility
-   mixed
-   more_py
-
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

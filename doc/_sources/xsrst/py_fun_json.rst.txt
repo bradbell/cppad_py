@@ -2,6 +2,13 @@
 py_fun_json
 !!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_to_json_xam_py
+   fun_from_json_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,12 +20,8 @@ py_fun_json
 
 Json Representation of AD Computation Graph
 ###########################################
-- :ref:`py_fun_json.syntax`
-- :ref:`py_fun_json.f`
-- :ref:`py_fun_json.json`
-- :ref:`py_fun_json.to_json`
-- :ref:`py_fun_json.from_json`
-- :ref:`py_fun_json.examples`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -81,13 +84,6 @@ from_json
 *********
 In this case, the argument *json* is constant and
 the function *f* is changed so it corresponds to *json* .
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_to_json_xam_py
-   fun_from_json_xam_py
 
 .. meta::
    :keywords: examples

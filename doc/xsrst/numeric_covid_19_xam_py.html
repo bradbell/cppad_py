@@ -203,53 +203,47 @@
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="example-fitting-an-seirwd-model-for-covid-19">
 <span id="id1"></span><h2>Example Fitting an SEIRWD Model for Covid-19<a class="headerlink" href="#example-fitting-an-seirwd-model-for-covid-19" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-covariates"><span class="std std-ref">Covariates</span></a></p></li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#numeric-covid-19-xam-py-model-ode"><span class="std std-ref">Model ODE</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-model-ode-beta-t"><span class="std std-ref">beta(t)</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-model-ode-other-rates"><span class="std std-ref">Other Rates</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-model-ode-initial-values"><span class="std std-ref">Initial Values</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-model-ode-ode-solver"><span class="std std-ref">Ode Solver</span></a></p></li>
+<li><p><a class="reference internal" href="#covariates" id="id2">Covariates</a></p></li>
+<li><p><a class="reference internal" href="#model-ode" id="id3">Model ODE</a></p>
+<ul>
+<li><p><a class="reference internal" href="#beta-t" id="id4">beta(t)</a></p></li>
+<li><p><a class="reference internal" href="#other-rates" id="id5">Other Rates</a></p></li>
+<li><p><a class="reference internal" href="#initial-values" id="id6">Initial Values</a></p></li>
+<li><p><a class="reference internal" href="#ode-solver" id="id7">Ode Solver</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#numeric-covid-19-xam-py-unknown-parameters"><span class="std std-ref">Unknown Parameters</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-unknown-parameters-maximum-likelihood"><span class="std std-ref">Maximum Likelihood</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-unknown-parameters-model-bounds"><span class="std std-ref">Model Bounds</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-unknown-parameters-actual-bounds"><span class="std std-ref">Actual Bounds</span></a></p></li>
+<li><p><a class="reference internal" href="#unknown-parameters" id="id8">Unknown Parameters</a></p>
+<ul>
+<li><p><a class="reference internal" href="#maximum-likelihood" id="id9">Maximum Likelihood</a></p></li>
+<li><p><a class="reference internal" href="#model-bounds" id="id10">Model Bounds</a></p></li>
+<li><p><a class="reference internal" href="#actual-bounds" id="id11">Actual Bounds</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#numeric-covid-19-xam-py-data"><span class="std std-ref">Data</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-data-sample-interval"><span class="std std-ref">sample_interval</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-data-data-file"><span class="std std-ref">data_file</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-data-coefficient-of-variation"><span class="std std-ref">Coefficient of Variation</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-data-simulation"><span class="std std-ref">Simulation</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-data-weighted-residuals"><span class="std std-ref">Weighted Residuals</span></a></p></li>
+<li><p><a class="reference internal" href="#data" id="id12">Data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#sample-interval" id="id13">sample_interval</a></p></li>
+<li><p><a class="reference internal" href="#data-file" id="id14">data_file</a></p></li>
+<li><p><a class="reference internal" href="#coefficient-of-variation" id="id15">Coefficient of Variation</a></p></li>
+<li><p><a class="reference internal" href="#simulation" id="id16">Simulation</a></p></li>
+<li><p><a class="reference internal" href="#weighted-residuals" id="id17">Weighted Residuals</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-random-seed"><span class="std std-ref">Random Seed</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-random-start"><span class="std std-ref">Random Start</span></a></p></li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#numeric-covid-19-xam-py-display-fit-results"><span class="std std-ref">Display Fit Results</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-display-fit-results-plot"><span class="std std-ref">Plot</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-display-fit-results-printout"><span class="std std-ref">Printout</span></a></p></li>
+<li><p><a class="reference internal" href="#random-seed" id="id18">Random Seed</a></p></li>
+<li><p><a class="reference internal" href="#random-start" id="id19">Random Start</a></p></li>
+<li><p><a class="reference internal" href="#display-fit-results" id="id20">Display Fit Results</a></p>
+<ul>
+<li><p><a class="reference internal" href="#plot" id="id21">Plot</a></p></li>
+<li><p><a class="reference internal" href="#printout" id="id22">Printout</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-debug-output"><span class="std std-ref">Debug Output</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-covid-19-xam-py-source-code"><span class="std std-ref">Source Code</span></a></p></li>
+<li><p><a class="reference internal" href="#debug-output" id="id23">Debug Output</a></p></li>
+<li><p><a class="reference internal" href="#source-code" id="id24">Source Code</a></p></li>
 </ul>
+</div>
 <div class="section" id="covariates">
-<span id="numeric-covid-19-xam-py-covariates"></span><span id="index-1"></span><h3>Covariates<a class="headerlink" href="#covariates" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-covid-19-xam-py-covariates"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Covariates</a><a class="headerlink" href="#covariates" title="Permalink to this headline">¶</a></h3>
 <p>In this example there are two covariates that
 affect the infectious rate <span class="math notranslate nohighlight">\(\beta\)</span>:
 social mobility <span class="math notranslate nohighlight">\(c_0 (t)\)</span>,
@@ -268,10 +262,10 @@ time zero. It is assumed here that the baseline condition corresponds
 to time zero.</p>
 </div>
 <div class="section" id="model-ode">
-<span id="numeric-covid-19-xam-py-model-ode"></span><span id="index-2"></span><h3>Model ODE<a class="headerlink" href="#model-ode" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-covid-19-xam-py-model-ode"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">Model ODE</a><a class="headerlink" href="#model-ode" title="Permalink to this headline">¶</a></h3>
 <p>We use the <a class="reference internal" href="numeric_seirwd_model.html#id1"><span class="std std-ref">seirwd</span></a> model and notation.</p>
 <div class="section" id="beta-t">
-<span id="numeric-covid-19-xam-py-model-ode-beta-t"></span><span id="index-3"></span><h4>beta(t)<a class="headerlink" href="#beta-t" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-model-ode-beta-t"></span><span id="index-3"></span><h4><a class="toc-backref" href="#id4">beta(t)</a><a class="headerlink" href="#beta-t" title="Permalink to this headline">¶</a></h4>
 <p>Our model for the infectious rate is</p>
 <div class="math notranslate nohighlight">
 \[\beta(t) = \bar{\beta} \exp[ m_0 c_0 (t) + m_1 c_1 (t) + m_2 c_2 (t) ]\]</div>
@@ -283,7 +277,7 @@ to all the covariates being zero.
 The covariate multipliers, and the baseline infectious rate, are unknown.</p>
 </div>
 <div class="section" id="other-rates">
-<span id="numeric-covid-19-xam-py-model-ode-other-rates"></span><span id="index-4"></span><h4>Other Rates<a class="headerlink" href="#other-rates" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-model-ode-other-rates"></span><span id="index-4"></span><h4><a class="toc-backref" href="#id5">Other Rates</a><a class="headerlink" href="#other-rates" title="Permalink to this headline">¶</a></h4>
 <p>The other rates
 <span class="math notranslate nohighlight">\(\alpha(t)\)</span>,
 <span class="math notranslate nohighlight">\(\sigma(t)\)</span>,
@@ -303,7 +297,7 @@ constant functions with known values:</p>
 <p>All of theses rates must be non-negative.</p>
 </div>
 <div class="section" id="initial-values">
-<span id="numeric-covid-19-xam-py-model-ode-initial-values"></span><span id="index-5"></span><h4>Initial Values<a class="headerlink" href="#initial-values" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-model-ode-initial-values"></span><span id="index-5"></span><h4><a class="toc-backref" href="#id6">Initial Values</a><a class="headerlink" href="#initial-values" title="Permalink to this headline">¶</a></h4>
 <p>The initial size of the Recovered group <span class="math notranslate nohighlight">\(R(0)\)</span>
 and of the Death group <span class="math notranslate nohighlight">\(D(0)\)</span> is zero.
 We use fraction of the total population for sizes, so the sum of the
@@ -323,7 +317,7 @@ expressed as a function of the other initial conditions:</p>
 \[S(0) = 1 - E(0) - I(0) - W(0)\]</div>
 </div>
 <div class="section" id="ode-solver">
-<span id="numeric-covid-19-xam-py-model-ode-ode-solver"></span><span id="index-6"></span><h4>Ode Solver<a class="headerlink" href="#ode-solver" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-model-ode-ode-solver"></span><span id="index-6"></span><h4><a class="toc-backref" href="#id7">Ode Solver</a><a class="headerlink" href="#ode-solver" title="Permalink to this headline">¶</a></h4>
 <p>There are two choices for <em>ode_method</em> ,
 the method used to solve the ODE:
 <a class="reference internal" href="numeric_runge4_step.html#id1"><span class="std std-ref">runge4</span></a> and
@@ -339,7 +333,7 @@ before it is sub-sampled using the
 </div>
 </div>
 <div class="section" id="unknown-parameters">
-<span id="numeric-covid-19-xam-py-unknown-parameters"></span><span id="index-7"></span><h3>Unknown Parameters<a class="headerlink" href="#unknown-parameters" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-covid-19-xam-py-unknown-parameters"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">Unknown Parameters</a><a class="headerlink" href="#unknown-parameters" title="Permalink to this headline">¶</a></h3>
 <p>The unknown parameter vector in this model is</p>
 <div class="math notranslate nohighlight">
 \[x = [ m_0, m_1, m_2, I(0), W(0), \bar{\beta} ]\]</div>
@@ -347,7 +341,7 @@ before it is sub-sampled using the
 </pre></div>
 </div>
 <div class="section" id="maximum-likelihood">
-<span id="numeric-covid-19-xam-py-unknown-parameters-maximum-likelihood"></span><span id="index-8"></span><h4>Maximum Likelihood<a class="headerlink" href="#maximum-likelihood" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-unknown-parameters-maximum-likelihood"></span><span id="index-8"></span><h4><a class="toc-backref" href="#id9">Maximum Likelihood</a><a class="headerlink" href="#maximum-likelihood" title="Permalink to this headline">¶</a></h4>
 <p>We use a Gaussian likelihood for each of the differences in the
 cumulative deaths. The unknown parameters are estimated by maximizing the
 product of these likelihoods; i.e., the differences are modeled as being
@@ -359,7 +353,7 @@ These derivatives are used during optimization as well as for
 computing the observed information matrix.</p>
 </div>
 <div class="section" id="model-bounds">
-<span id="numeric-covid-19-xam-py-unknown-parameters-model-bounds"></span><span id="index-9"></span><h4>Model Bounds<a class="headerlink" href="#model-bounds" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-unknown-parameters-model-bounds"></span><span id="index-9"></span><h4><a class="toc-backref" href="#id10">Model Bounds</a><a class="headerlink" href="#model-bounds" title="Permalink to this headline">¶</a></h4>
 <p>The infection rate <span class="math notranslate nohighlight">\(\beta(t)\)</span> must be non-negative; i.e.,</p>
 <div class="math notranslate nohighlight">
 \[0 \leq \bar{\beta} \exp[ m_0 c_0 (t) + m_1 c_1 (t) + m_2 c_2 (t) ]\]</div>
@@ -374,7 +368,7 @@ It is sufficient to enforce this constraint on the initial conditions; i.e.,</p>
 \end{array}\end{split}\]</div>
 </div>
 <div class="section" id="actual-bounds">
-<span id="numeric-covid-19-xam-py-unknown-parameters-actual-bounds"></span><span id="index-10"></span><h4>Actual Bounds<a class="headerlink" href="#actual-bounds" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-unknown-parameters-actual-bounds"></span><span id="index-10"></span><h4><a class="toc-backref" href="#id11">Actual Bounds</a><a class="headerlink" href="#actual-bounds" title="Permalink to this headline">¶</a></h4>
 <p>The following actual upper and lower bounds for the unknown parameters
 are used as an as an aid to the optimizer:</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="n">n_x</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_name</span><span class="p">)</span>
@@ -396,7 +390,7 @@ optimization problem.</p>
 </div>
 </div>
 <div class="section" id="data">
-<span id="numeric-covid-19-xam-py-data"></span><span id="index-11"></span><h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-covid-19-xam-py-data"></span><span id="index-11"></span><h3><a class="toc-backref" href="#id12">Data</a><a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <p>The data in this model is the cumulative number of deaths,
 as a fraction of the total population and as a function of time.
 We assume that new deaths are recorded for time intervals
@@ -404,7 +398,7 @@ and the cumulative deaths is the sum of these recordings.
 For this reason, we model the difference of the cumulative deaths
 between time points as independent.</p>
 <div class="section" id="sample-interval">
-<span id="numeric-covid-19-xam-py-data-sample-interval"></span><span id="index-12"></span><h4>sample_interval<a class="headerlink" href="#sample-interval" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-data-sample-interval"></span><span id="index-12"></span><h4><a class="toc-backref" href="#id13">sample_interval</a><a class="headerlink" href="#sample-interval" title="Permalink to this headline">¶</a></h4>
 <p>It is possible to sub-sample the data in order to reduce noise.
 The cumulative death data is just sub-sampled since the reduces noise by
 the summing the differences corresponding to a longer time period.
@@ -416,7 +410,7 @@ The <em>sample_interval</em> must be either one or a positive even integer
 </div>
 </div>
 <div class="section" id="data-file">
-<span id="numeric-covid-19-xam-py-data-data-file"></span><span id="index-13"></span><h4>data_file<a class="headerlink" href="#data-file" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-data-data-file"></span><span id="index-13"></span><h4><a class="toc-backref" href="#id14">data_file</a><a class="headerlink" href="#data-file" title="Permalink to this headline">¶</a></h4>
 <p>If the data file name is the empty string, the cumulative death data,
 and corresponding covariates, are simulated by the program.
 Otherwise, the data file must be a CSV file with the following columns:
@@ -430,7 +424,7 @@ cumulative death and corresponding covariates.</p>
 </div>
 </div>
 <div class="section" id="coefficient-of-variation">
-<span id="numeric-covid-19-xam-py-data-coefficient-of-variation"></span><span id="index-14"></span><h4>Coefficient of Variation<a class="headerlink" href="#coefficient-of-variation" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-data-coefficient-of-variation"></span><span id="index-14"></span><h4><a class="toc-backref" href="#id15">Coefficient of Variation</a><a class="headerlink" href="#coefficient-of-variation" title="Permalink to this headline">¶</a></h4>
 <p>This is the coefficient of variation for the differences
 in the cumulative death data as a fraction, not a percent.
 If this value is zero, a CV of zero is used for data simulation
@@ -447,7 +441,7 @@ sub-sampled using
 <a class="reference internal" href="#numeric-covid-19-xam-py-data-sample-interval"><span class="std std-ref">sample_interval</span></a>.</p>
 </div>
 <div class="section" id="simulation">
-<span id="numeric-covid-19-xam-py-data-simulation"></span><span id="index-15"></span><h4>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-data-simulation"></span><span id="index-15"></span><h4><a class="toc-backref" href="#id16">Simulation</a><a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h4>
 <p>If <em>data_file</em> is the empty string, the data is simulated using
 the following values for the
 <a class="reference internal" href="#numeric-covid-19-xam-py-unknown-parameters"><span class="std std-ref">unknown_parameters</span></a>:</p>
@@ -461,7 +455,7 @@ the following values for the
 </div>
 </div>
 <div class="section" id="weighted-residuals">
-<span id="numeric-covid-19-xam-py-data-weighted-residuals"></span><span id="index-16"></span><h4>Weighted Residuals<a class="headerlink" href="#weighted-residuals" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-data-weighted-residuals"></span><span id="index-16"></span><h4><a class="toc-backref" href="#id17">Weighted Residuals</a><a class="headerlink" href="#weighted-residuals" title="Permalink to this headline">¶</a></h4>
 <p>If <em>death_data_cv</em> is zero, <span class="math notranslate nohighlight">\(\lambda = 1\)</span>, otherwise
 <span class="math notranslate nohighlight">\(\lambda\)</span> is equal to</p>
 <div class="line-block">
@@ -484,7 +478,7 @@ because it is constant with respect to the unknown parameters.</p>
 </div>
 </div>
 <div class="section" id="random-seed">
-<span id="numeric-covid-19-xam-py-random-seed"></span><span id="index-17"></span><h3>Random Seed<a class="headerlink" href="#random-seed" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-covid-19-xam-py-random-seed"></span><span id="index-17"></span><h3><a class="toc-backref" href="#id18">Random Seed</a><a class="headerlink" href="#random-seed" title="Permalink to this headline">¶</a></h3>
 <p>This is the random seed used to simulate noise in the data.
 If this value is zero, the system clock is used to choose the random seed.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">random_seed</span> <span class="o">=</span> <span class="mi">20821659074</span>
@@ -492,7 +486,7 @@ If this value is zero, the system clock is used to choose the random seed.</p>
 </div>
 </div>
 <div class="section" id="random-start">
-<span id="numeric-covid-19-xam-py-random-start"></span><span id="index-18"></span><h3>Random Start<a class="headerlink" href="#random-start" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-covid-19-xam-py-random-start"></span><span id="index-18"></span><h3><a class="toc-backref" href="#id19">Random Start</a><a class="headerlink" href="#random-start" title="Permalink to this headline">¶</a></h3>
 <p>The optimizer needs a good starting point in order to succeed.
 This is the number of random points, between the lower and upper limits,
 that are checked. The point with the best objective value is chosen
@@ -502,14 +496,14 @@ as the starting point for the optimization.</p>
 </div>
 </div>
 <div class="section" id="display-fit-results">
-<span id="numeric-covid-19-xam-py-display-fit-results"></span><span id="index-19"></span><h3>Display Fit Results<a class="headerlink" href="#display-fit-results" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-covid-19-xam-py-display-fit-results"></span><span id="index-19"></span><h3><a class="toc-backref" href="#id20">Display Fit Results</a><a class="headerlink" href="#display-fit-results" title="Permalink to this headline">¶</a></h3>
 <p>If you set this variable to True,
 a printout and a plot of the fit results is generated.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">display_fit</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
 <div class="section" id="plot">
-<span id="numeric-covid-19-xam-py-display-fit-results-plot"></span><span id="index-20"></span><h4>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-display-fit-results-plot"></span><span id="index-20"></span><h4><a class="toc-backref" href="#id21">Plot</a><a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h4>
 <p>There are three plots all with time on the x-axis.
 The first contains the size for all the compartments, except S,
 as a fraction of the total population.
@@ -518,7 +512,7 @@ The third contains the weighted residuals corresponding to the death
 difference data.</p>
 </div>
 <div class="section" id="printout">
-<span id="numeric-covid-19-xam-py-display-fit-results-printout"></span><span id="index-21"></span><h4>Printout<a class="headerlink" href="#printout" title="Permalink to this headline">¶</a></h4>
+<span id="numeric-covid-19-xam-py-display-fit-results-printout"></span><span id="index-21"></span><h4><a class="toc-backref" href="#id22">Printout</a><a class="headerlink" href="#printout" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic">
 <li><p>The following statistics for the weighted data residuals is printed:
 the maximum, minimum, average, and average of square.</p></li>
@@ -577,14 +571,14 @@ a table is printed with the following columns is also printed:</p>
 </div>
 </div>
 <div class="section" id="debug-output">
-<span id="numeric-covid-19-xam-py-debug-output"></span><span id="index-22"></span><h3>Debug Output<a class="headerlink" href="#debug-output" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-covid-19-xam-py-debug-output"></span><span id="index-22"></span><h3><a class="toc-backref" href="#id23">Debug Output</a><a class="headerlink" href="#debug-output" title="Permalink to this headline">¶</a></h3>
 <p>If this flag is true a lot of debugging output is printed.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">debug_output</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="source-code">
-<span id="numeric-covid-19-xam-py-source-code"></span><span id="index-23"></span><h3>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-covid-19-xam-py-source-code"></span><span id="index-23"></span><h3><a class="toc-backref" href="#id24">Source Code</a><a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pdb</span> <span class="kn">import</span> <span class="n">set_trace</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">gridspec</span>

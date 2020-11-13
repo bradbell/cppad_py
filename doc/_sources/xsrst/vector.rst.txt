@@ -2,6 +2,14 @@
 vector
 !!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   vector_ctor
+   vector_size
+   vector_set_get
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,7 +21,8 @@ vector
 
 Cppad Py Vectors
 ################
-- :ref:`vector.children`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: children
@@ -24,14 +33,6 @@ Cppad Py Vectors
 
 Children
 ********
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   vector_ctor
-   vector_size
-   vector_set_get
-
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

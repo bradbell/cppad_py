@@ -2,6 +2,12 @@
 mixed_ran_likelihood
 !!!!!!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   mixed_ran_likelihood_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,13 +19,8 @@ mixed_ran_likelihood
 
 Random Effects Likelihood
 #########################
-- :ref:`mixed_ran_likelihood.syntax`
-- :ref:`mixed_ran_likelihood.ran_likelihood`
-- :ref:`mixed_ran_likelihood.theta`
-- :ref:`mixed_ran_likelihood.u`
-- :ref:`mixed_ran_likelihood.v`
-- :ref:`mixed_ran_likelihood.none`
-- :ref:`mixed_ran_likelihood.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -105,12 +106,6 @@ None
 The value *ran_likelihood* = ``None``
 corresponds to the random effects likelihood
 being constant w.r.t. :math:`( \theta , u )`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   mixed_ran_likelihood_xam_py
 
 .. meta::
    :keywords: example

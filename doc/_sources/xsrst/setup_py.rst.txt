@@ -2,6 +2,13 @@
 setup_py
 !!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   install_error
+   get_cppad_sh
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,24 +20,8 @@ setup_py
 
 Configure and Build the cppad_py Python Module
 ##############################################
-- :ref:`setup_py.syntax`
-- :ref:`setup_py.external_requirements`
-    - :ref:`setup_py.external_requirements.mac_os`
-    - :ref:`setup_py.external_requirements.testing`
-- :ref:`setup_py.download`
-    - :ref:`setup_py.download.top_source_directory`
-- :ref:`setup_py.configure`
-- :ref:`setup_py.get_cppad`
-- :ref:`setup_py.prefix`
-- :ref:`setup_py.libdir`
-- :ref:`setup_py.ld_library_path`
-- :ref:`setup_py.pkg_config_path`
-- :ref:`setup_py.local_build`
-- :ref:`setup_py.pythonpath`
-- :ref:`setup_py.install`
-- :ref:`setup_py.install_errors`
-- :ref:`setup_py.install_using_pip`
-- :ref:`setup_py.children`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -349,13 +340,6 @@ To install for you entire system use:
 
 Children
 ********
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   install_error
-   get_cppad_sh
-
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

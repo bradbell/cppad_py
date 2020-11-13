@@ -2,6 +2,12 @@
 file_cmd
 !!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   file_exam
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,14 +19,8 @@ file_cmd
 
 File Command
 ############
-- :ref:`file_cmd.syntax`
-- :ref:`file_cmd.purpose`
-- :ref:`file_cmd.white_space`
-- :ref:`file_cmd.file_name`
-- :ref:`file_cmd.start`
-- :ref:`file_cmd.stop`
-- :ref:`file_cmd.spell_checking`
-- :ref:`file_cmd.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -138,10 +138,8 @@ Spell checking is **not** done for these code blocks.
 
 Example
 *******
-.. toctree::
-   :maxdepth: 1
 
-   file_exam
+-  :ref:`file_exam`
 
 ----
 

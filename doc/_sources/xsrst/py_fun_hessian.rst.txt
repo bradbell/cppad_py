@@ -2,6 +2,12 @@
 py_fun_hessian
 !!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_hessian_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,14 +19,8 @@ py_fun_hessian
 
 Hessian of an AD Function
 #########################
-- :ref:`py_fun_hessian.syntax`
-- :ref:`py_fun_hessian.f`
-- :ref:`py_fun_hessian.f(x)`
-- :ref:`py_fun_hessian.g(x)`
-- :ref:`py_fun_hessian.x`
-- :ref:`py_fun_hessian.w`
-- :ref:`py_fun_hessian.h`
-- :ref:`py_fun_hessian.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -127,12 +127,6 @@ and *j* between zero and *n* -1 ,
 .. math::
 
    H [ i, j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_hessian_xam_py
 
 .. meta::
    :keywords: example

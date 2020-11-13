@@ -13,6 +13,8 @@ sparse_jac_pattern_xam_cpp
 
 C++: Jacobian Sparsity Patterns: Example and Test
 #################################################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../example/cplusplus/sparse_jac_pattern_xam.cpp

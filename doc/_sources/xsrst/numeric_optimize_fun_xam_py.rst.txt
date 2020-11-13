@@ -13,10 +13,8 @@ numeric_optimize_fun_xam_py
 
 Example Using optimize_fun_class with Scipy Optimization
 ########################################################
-- :ref:`numeric_optimize_fun_xam_py.reference`
-- :ref:`numeric_optimize_fun_xam_py.problem`
-- :ref:`numeric_optimize_fun_xam_py.trust_constr`
-- :ref:`numeric_optimize_fun_xam_py.source_code`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: reference

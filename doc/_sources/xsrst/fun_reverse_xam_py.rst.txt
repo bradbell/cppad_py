@@ -13,6 +13,8 @@ fun_reverse_xam_py
 
 Python: Reverse Mode AD: Example and Test
 #########################################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../example/python/core/fun_reverse_xam.py

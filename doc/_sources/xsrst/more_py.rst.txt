@@ -13,18 +13,8 @@ more_py
 
 Steps To Add More Python Functions
 ##################################
-- :ref:`more_py.purpose`
-- :ref:`more_py.documentation`
-    - :ref:`more_py.documentation.independent`
-    - :ref:`more_py.documentation.new_dynamic`
-    - :ref:`more_py.documentation.example`
-- :ref:`more_py.implementation`
-    - :ref:`more_py.implementation.independent`
-    - :ref:`more_py.implementation.new_dynamic`
-    - :ref:`more_py.implementation.fun_new_dynamic.py`
-    - :ref:`more_py.implementation.__init__.py`
-- :ref:`more_py.example`
-- :ref:`more_py.testing`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: purpose

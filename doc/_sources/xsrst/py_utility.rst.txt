@@ -2,6 +2,13 @@
 py_utility
 !!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   numpy2vec
+   vec2numpy
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,7 +20,8 @@ py_utility
 
 Python Utilities
 ################
-- :ref:`py_utility.children`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: children
@@ -24,13 +32,6 @@ Python Utilities
 
 Children
 ********
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   numpy2vec
-   vec2numpy
-
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

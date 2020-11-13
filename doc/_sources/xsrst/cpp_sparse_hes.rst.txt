@@ -2,6 +2,12 @@
 cpp_sparse_hes
 !!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   sparse_hes_xam_cpp
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,17 +19,8 @@ cpp_sparse_hes
 
 Computing Sparse Hessians
 #########################
-- :ref:`cpp_sparse_hes.syntax`
-- :ref:`cpp_sparse_hes.purpose`
-- :ref:`cpp_sparse_hes.f`
-- :ref:`cpp_sparse_hes.subset`
-- :ref:`cpp_sparse_hes.x`
-- :ref:`cpp_sparse_hes.r`
-- :ref:`cpp_sparse_hes.pattern`
-- :ref:`cpp_sparse_hes.work`
-- :ref:`cpp_sparse_hes.n_sweep`
-- :ref:`cpp_sparse_hes.uses_forward`
-- :ref:`cpp_sparse_hes.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -211,12 +208,6 @@ the zero order coefficients correspond to
 | |tab| *f*\ ``.forward(0`` , *x* )
 
 All the other forward mode coefficients are unspecified.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   sparse_hes_xam_cpp
 
 .. meta::
    :keywords: example

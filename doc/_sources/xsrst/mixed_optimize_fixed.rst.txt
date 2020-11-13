@@ -2,6 +2,13 @@
 mixed_optimize_fixed
 !!!!!!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   mixed_optimize_fixed_1_py
+   mixed_optimize_fixed_2_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,31 +20,8 @@ mixed_optimize_fixed
 
 Optimize The Fixed Effects
 ##########################
-- :ref:`mixed_optimize_fixed.syntax`
-- :ref:`mixed_optimize_fixed.purpose`
-- :ref:`mixed_optimize_fixed.argument_types`
-- :ref:`mixed_optimize_fixed.limits`
-    - :ref:`mixed_optimize_fixed.limits.fixed_lower_(fixed_upper)`
-    - :ref:`mixed_optimize_fixed.limits.fix_constraint_lower_(fix_constraint_upper)`
-    - :ref:`mixed_optimize_fixed.limits.random_lower_(random_upper)`
-- :ref:`mixed_optimize_fixed.fixed_in_(random_in)`
-- :ref:`mixed_optimize_fixed.fixed_scale`
-- :ref:`mixed_optimize_fixed.fixed_ipopt_options`
-    - :ref:`mixed_optimize_fixed.fixed_ipopt_options.ipopt_options`
-    - :ref:`mixed_optimize_fixed.fixed_ipopt_options.string`
-    - :ref:`mixed_optimize_fixed.fixed_ipopt_options.integer`
-    - :ref:`mixed_optimize_fixed.fixed_ipopt_options.numeric`
-    - :ref:`mixed_optimize_fixed.fixed_ipopt_options.derivative_test`
-    - :ref:`mixed_optimize_fixed.fixed_ipopt_options.hessian_approximation`
-    - :ref:`mixed_optimize_fixed.fixed_ipopt_options.max_iter`
-    - :ref:`mixed_optimize_fixed.fixed_ipopt_options.nlp_scaling_method`
-- :ref:`mixed_optimize_fixed.random_ipopt_options`
-- :ref:`mixed_optimize_fixed.solution`
-    - :ref:`mixed_optimize_fixed.solution.fixed_opt`
-    - :ref:`mixed_optimize_fixed.solution.fixed_lag`
-    - :ref:`mixed_optimize_fixed.solution.fix_con_lag`
-    - :ref:`mixed_optimize_fixed.solution.ran_con_lag`
-- :ref:`mixed_optimize_fixed.examples`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -203,7 +187,7 @@ optimization.
 
 String
 ======
-An Ipopt string option is specifies by a line containing
+An Ipopt string option is specified by a line containing
 the following syntax:
 
 | |tab| ``String`` *name* *value*
@@ -217,7 +201,7 @@ the following syntax:
 
 Integer
 =======
-An Ipopt integer option is specifies by a line containing
+An Ipopt integer option specified specifies by a line containing
 the following syntax:
 
 | |tab| ``Integer`` *name* *value*
@@ -231,7 +215,7 @@ the following syntax:
 
 Numeric
 =======
-An Ipopt numeric option is specifies by a line containing
+An Ipopt numeric option specified specifies by a line containing
 the following syntax:
 
 | |tab| ``Numeric`` *name* *value*
@@ -369,15 +353,8 @@ ran_con_lag
 ===========
 The value *solution*\ ``.ran_con_lag`` is a Lagrange multipliers for the
 rand effects constraint function.
-Its length is the same as the random constrain matrix :math"`A` ; see
+Its length is the same as the random constrain matrix :math:`A` ; see
 :ref:`A_rcv<mixed_ctor.A_rcv>`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   mixed_optimize_fixed_1_py
-   mixed_optimize_fixed_2_py
 
 .. meta::
    :keywords: examples

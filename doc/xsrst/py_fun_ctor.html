@@ -209,49 +209,49 @@
             
   <div class="section" id="py-fun-ctor">
 <h1>py_fun_ctor<a class="headerlink" href="#py-fun-ctor" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="stop-current-recording-and-store-function-object">
 <span id="id1"></span><h2>Stop Current Recording and Store Function Object<a class="headerlink" href="#stop-current-recording-and-store-function-object" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><dl class="simple">
-<dt><a class="reference internal" href="#py-fun-ctor-syntax"><span class="std std-ref">Syntax</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a></p></li>
-<li><p><a class="reference internal" href="#py-fun-ctor-syntax-a-fun"><span class="std std-ref">a_fun</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p>
+<ul>
+<li><p><a class="reference internal" href="#d-fun" id="id3">d_fun</a></p></li>
+<li><p><a class="reference internal" href="#a-fun" id="id4">a_fun</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><p><a class="reference internal" href="#py-fun-ctor-ax"><span class="std std-ref">ax</span></a></p></li>
-<li><p><a class="reference internal" href="#py-fun-ctor-ay"><span class="std std-ref">ay</span></a></p></li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#py-fun-ctor-f"><span class="std std-ref">f</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#py-fun-ctor-f-empty-function"><span class="std std-ref">Empty Function</span></a></p></li>
+<li><p><a class="reference internal" href="#ax" id="id5">ax</a></p></li>
+<li><p><a class="reference internal" href="#ay" id="id6">ay</a></p></li>
+<li><p><a class="reference internal" href="#f" id="id7">f</a></p>
+<ul>
+<li><p><a class="reference internal" href="#empty-function" id="id8">Empty Function</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><p><a class="reference internal" href="#py-fun-ctor-af"><span class="std std-ref">af</span></a></p></li>
-<li><p><a class="reference internal" href="#py-fun-ctor-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#af" id="id9">af</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id10">Example</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="py-fun-ctor-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-ctor-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="d-fun">
-<span id="py-fun-ctor-syntax-d-fun"></span><span id="index-2"></span><h4>d_fun<a class="headerlink" href="#d-fun" title="Permalink to this headline">¶</a></h4>
+<span id="py-fun-ctor-syntax-d-fun"></span><span id="index-2"></span><h4><a class="toc-backref" href="#id3">d_fun</a><a class="headerlink" href="#d-fun" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
 <div class="line"><em>f</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.d_fun</span></code> ( <em>ax</em> , <em>ay</em> )</div>
 <div class="line"><em>f</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.d_fun</span></code> ()</div>
 </div>
 </div>
 <div class="section" id="a-fun">
-<span id="py-fun-ctor-syntax-a-fun"></span><span id="index-3"></span><h4>a_fun<a class="headerlink" href="#a-fun" title="Permalink to this headline">¶</a></h4>
+<span id="py-fun-ctor-syntax-a-fun"></span><span id="index-3"></span><h4><a class="toc-backref" href="#id4">a_fun</a><a class="headerlink" href="#a-fun" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
 <div class="line"><em>af</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.a_fun</span></code> ( <em>f</em> )</div>
 </div>
 </div>
 </div>
 <div class="section" id="ax">
-<span id="py-fun-ctor-ax"></span><span id="index-4"></span><h3>ax<a class="headerlink" href="#ax" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-ctor-ax"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">ax</a><a class="headerlink" href="#ax" title="Permalink to this headline">¶</a></h3>
 <p>This argument must be the same as
 <a class="reference internal" href="py_independent.html#py-independent-ax"><span class="std std-ref">ax</span></a>
 returned by the previous call to <code class="docutils literal notranslate"><span class="pre">independent</span></code> ; i.e.,
@@ -260,14 +260,14 @@ We use <em>n</em>
 to denote the number of independent variables (the size of <em>ax</em> ).</p>
 </div>
 <div class="section" id="ay">
-<span id="py-fun-ctor-ay"></span><span id="index-5"></span><h3>ay<a class="headerlink" href="#ay" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-ctor-ay"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">ay</a><a class="headerlink" href="#ay" title="Permalink to this headline">¶</a></h3>
 <p>This argument is a numpy array with <code class="docutils literal notranslate"><span class="pre">a_double</span></code> elements.
 It specifies the dependent variables.
 We use <em>m</em>
 to denote the number of dependent variables (the size of <em>ay</em> ).</p>
 </div>
 <div class="section" id="f">
-<span id="py-fun-ctor-f"></span><span id="index-6"></span><h3>f<a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-ctor-f"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">f</a><a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
 <p>This result is a function object that
 has a representation for the floating point operations
 that mapped the independent variables <em>ax</em>
@@ -275,25 +275,23 @@ to the dependent variables <em>ay</em> .
 This object computes function and derivative values using
 <code class="docutils literal notranslate"><span class="pre">double</span></code></p>
 <div class="section" id="empty-function">
-<span id="py-fun-ctor-f-empty-function"></span><span id="index-7"></span><h4>Empty Function<a class="headerlink" href="#empty-function" title="Permalink to this headline">¶</a></h4>
+<span id="py-fun-ctor-f-empty-function"></span><span id="index-7"></span><h4><a class="toc-backref" href="#id8">Empty Function</a><a class="headerlink" href="#empty-function" title="Permalink to this headline">¶</a></h4>
 <p>In the case where <em>ax</em> and <em>ay</em> are not present
 the function is ‘empty’ and all its sizes are zero; see
 <a class="reference internal" href="cpp_fun_property.html#id1"><span class="std std-ref">cpp_fun_property</span></a>.</p>
 </div>
 </div>
 <div class="section" id="af">
-<span id="py-fun-ctor-af"></span><span id="index-8"></span><h3>af<a class="headerlink" href="#af" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-ctor-af"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id9">af</a><a class="headerlink" href="#af" title="Permalink to this headline">¶</a></h3>
 <p>This result is a function object that
 has a representation for the same function as <em>f</em> .
 This object computes function and derivative values using
 <code class="docutils literal notranslate"><span class="pre">a_double</span></code>
 Initially, there are not Taylor coefficient stored in <em>af</em> ; i.e.,
 <a class="reference internal" href="py_fun_property.html#py-fun-property-size-order"><span class="std std-ref">af_size_order()</span></a> is zero.</p>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="example">
-<span id="py-fun-ctor-example"></span><span id="index-9"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-ctor-example"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id10">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p>All of the examples use the <code class="docutils literal notranslate"><span class="pre">d_fun</span></code> constructor.
 The example <a class="reference internal" href="a_fun_xam_py.html#id1"><span class="std std-ref">a_fun_xam_py</span></a> demonstrates the purpose of
 <code class="docutils literal notranslate"><span class="pre">a_fun</span></code> objects.</p>

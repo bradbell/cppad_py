@@ -188,15 +188,17 @@
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="begin-and-end-commands">
 <span id="id1"></span><h2>Begin and End Commands<a class="headerlink" href="#begin-and-end-commands" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#begin-cmd-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#begin-cmd-section"><span class="std std-ref">Section</span></a></p></li>
-<li><p><a class="reference internal" href="#begin-cmd-section-name"><span class="std std-ref">section_name</span></a></p></li>
-<li><p><a class="reference internal" href="#begin-cmd-output-file"><span class="std std-ref">Output File</span></a></p></li>
-<li><p><a class="reference internal" href="#begin-cmd-parent-section"><span class="std std-ref">Parent Section</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#section" id="id3">Section</a></p></li>
+<li><p><a class="reference internal" href="#section-name" id="id4">section_name</a></p></li>
+<li><p><a class="reference internal" href="#output-file" id="id5">Output File</a></p></li>
+<li><p><a class="reference internal" href="#parent-section" id="id6">Parent Section</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="begin-cmd-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="begin-cmd-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_begin_parent</span></code> <em>section_name</em><code class="code docutils literal notranslate"><span class="pre">}</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">{xsrst_begin</span></code>        <em>section_name</em><code class="code docutils literal notranslate"><span class="pre">}</span></code></p></li>
@@ -204,13 +206,13 @@
 </ul>
 </div>
 <div class="section" id="section">
-<span id="begin-cmd-section"></span><span id="index-2"></span><h3>Section<a class="headerlink" href="#section" title="Permalink to this headline">¶</a></h3>
+<span id="begin-cmd-section"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">Section</a><a class="headerlink" href="#section" title="Permalink to this headline">¶</a></h3>
 <p>The start (end) of a section of the input file is indicated by a
 begin (end) command at the
 <a class="reference internal" href="xsrst_py.html#xsrst-py-notation-beginning-of-a-line"><span class="std std-ref">beginning of a line</span></a>.</p>
 </div>
 <div class="section" id="section-name">
-<span id="begin-cmd-section-name"></span><span id="index-3"></span><h3>section_name<a class="headerlink" href="#section-name" title="Permalink to this headline">¶</a></h3>
+<span id="begin-cmd-section-name"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">section_name</a><a class="headerlink" href="#section-name" title="Permalink to this headline">¶</a></h3>
 <p>The <em>section_name</em> is a non-empty sequence of the following characters:
 a-z, 0-9, and underbar <code class="docutils literal notranslate"><span class="pre">_</span></code>.
 It can not begin with the characters <code class="docutils literal notranslate"><span class="pre">xsrst_</span></code>.
@@ -219,7 +221,7 @@ to the first heading the section.
 The section name is also added to the html keyword meta data.</p>
 </div>
 <div class="section" id="output-file">
-<span id="begin-cmd-output-file"></span><span id="index-4"></span><h3>Output File<a class="headerlink" href="#output-file" title="Permalink to this headline">¶</a></h3>
+<span id="begin-cmd-output-file"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">Output File</a><a class="headerlink" href="#output-file" title="Permalink to this headline">¶</a></h3>
 <p>The output file corresponding to <em>section_name</em> is</p>
 <div class="line-block">
 <div class="line">        <em>sphinx_dir</em><code class="docutils literal notranslate"><span class="pre">/xsrst/</span></code><em>section_name</em><code class="docutils literal notranslate"><span class="pre">.rst</span></code></div>
@@ -227,7 +229,7 @@ The section name is also added to the html keyword meta data.</p>
 <p>see <a class="reference internal" href="xsrst_py.html#xsrst-py-command-line-arguments-sphinx-dir"><span class="std std-ref">sphinx_dir</span></a></p>
 </div>
 <div class="section" id="parent-section">
-<span id="begin-cmd-parent-section"></span><span id="index-5"></span><h3>Parent Section<a class="headerlink" href="#parent-section" title="Permalink to this headline">¶</a></h3>
+<span id="begin-cmd-parent-section"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">Parent Section</a><a class="headerlink" href="#parent-section" title="Permalink to this headline">¶</a></h3>
 <p>There can be at most one begin parent command in an input file.
 In this case it must be the first begin command in the file
 and there must be other sections in the file.

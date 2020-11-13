@@ -206,37 +206,41 @@
             
   <div class="section" id="cpp-fun-json">
 <h1>cpp_fun_json<a class="headerlink" href="#cpp-fun-json" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="json-representation-of-ad-computational-graph">
 <span id="id1"></span><h2>Json Representation of AD Computational Graph<a class="headerlink" href="#json-representation-of-ad-computational-graph" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#cpp-fun-json-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-json-f"><span class="std std-ref">f</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-json-json"><span class="std std-ref">json</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-json-to-json"><span class="std std-ref">to_json</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-json-from-json"><span class="std std-ref">from_json</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-json-examples"><span class="std std-ref">Examples</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#f" id="id3">f</a></p></li>
+<li><p><a class="reference internal" href="#json" id="id4">json</a></p></li>
+<li><p><a class="reference internal" href="#to-json" id="id5">to_json</a></p></li>
+<li><p><a class="reference internal" href="#from-json" id="id6">from_json</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id7">Examples</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="cpp-fun-json-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-json-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><em>json</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.to_json</span></code> ()</div>
 <div class="line"><em>f</em><code class="docutils literal notranslate"><span class="pre">.from_json</span></code> ()</div>
 </div>
 </div>
 <div class="section" id="f">
-<span id="cpp-fun-json-f"></span><span id="index-2"></span><h3>f<a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-json-f"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">f</a><a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
 <p>This is a <a class="reference internal" href="cpp_fun_ctor.html#cpp-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> object.</p>
 </div>
 <div class="section" id="json">
-<span id="cpp-fun-json-json"></span><span id="index-3"></span><h3>json<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-json-json"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">json</a><a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h3>
 <p>is a Json representation of the computation graph corresponding to
 <em>f</em> ; see the CppAD documentation for
 <a class="reference external" href="https://coin-or.github.io/CppAD/doc/json_ad_graph.htm">json_ad_graph</a>.</p>
 </div>
 <div class="section" id="to-json">
-<span id="cpp-fun-json-to-json"></span><span id="index-4"></span><h3>to_json<a class="headerlink" href="#to-json" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-json-to-json"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">to_json</a><a class="headerlink" href="#to-json" title="Permalink to this headline">¶</a></h3>
 <p>In this case, the function object <em>f</em> is <code class="docutils literal notranslate"><span class="pre">const</span></code> and
 the return value <em>json</em> has prototype</p>
 <div class="line-block">
@@ -244,17 +248,15 @@ the return value <em>json</em> has prototype</p>
 </div>
 </div>
 <div class="section" id="from-json">
-<span id="cpp-fun-json-from-json"></span><span id="index-5"></span><h3>from_json<a class="headerlink" href="#from-json" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-json-from-json"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">from_json</a><a class="headerlink" href="#from-json" title="Permalink to this headline">¶</a></h3>
 <p>In this case, <em>json</em> has prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">std::string&amp;</span></code> <em>json</em></div>
 </div>
 <p>and the function <em>f</em> so it corresponds to <em>json</em> .</p>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="examples">
-<span id="cpp-fun-json-examples"></span><span id="index-6"></span><h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-json-examples"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="fun_to_json_xam_cpp.html#id1"><span class="std std-ref">fun_to_json_xam_cpp</span></a>,
 <a class="reference internal" href="fun_from_json_xam_cpp.html#id1"><span class="std std-ref">fun_from_json_xam_cpp</span></a>.</p>
 <hr class="docutils" />

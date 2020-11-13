@@ -13,11 +13,8 @@ py_fun_new_dynamic
 
 New Dynamic Parameters
 ######################
-- :ref:`py_fun_new_dynamic.syntax`
-- :ref:`py_fun_new_dynamic.f`
-- :ref:`py_fun_new_dynamic.dynamic`
-    - :ref:`py_fun_new_dynamic.dynamic.size_order`
-- :ref:`py_fun_new_dynamic.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax

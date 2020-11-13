@@ -2,6 +2,13 @@
 no_parent_res
 !!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   children_exam
+   children_other
+
 .. meta::
    :keywords: no_parent_res, no, parent, result
 
@@ -11,9 +18,8 @@ no_parent_res
 
 No Parent Result
 ################
-- :ref:`no_parent_res.children.py_file`
-- :ref:`no_parent_res.child_link_children.py`
-- :ref:`no_parent_res.example`
+.. contents::
+   :local:
 
 The file ``children.py`` does not contain a begin parent command
 and hence all the sections in that file are children of this section.
@@ -41,11 +47,9 @@ the children_exam section linked below:
 
 Child Link children.py
 **********************
-.. toctree::
-   :maxdepth: 1
 
-   children_exam
-   children_other
+-  :ref:`children_exam`
+-  :ref:`children_other`
 
 .. meta::
    :keywords: example

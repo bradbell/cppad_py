@@ -2,6 +2,12 @@
 py_sparse_rcv
 !!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   sparse_rcv_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,21 +19,8 @@ py_sparse_rcv
 
 Sparse Matrices
 ###############
-- :ref:`py_sparse_rcv.syntax`
-- :ref:`py_sparse_rcv.pattern`
-- :ref:`py_sparse_rcv.matrix`
-- :ref:`py_sparse_rcv.nr`
-- :ref:`py_sparse_rcv.nc`
-- :ref:`py_sparse_rcv.nnz`
-- :ref:`py_sparse_rcv.put`
-    - :ref:`py_sparse_rcv.put.k`
-    - :ref:`py_sparse_rcv.put.v`
-- :ref:`py_sparse_rcv.row`
-- :ref:`py_sparse_rcv.col`
-- :ref:`py_sparse_rcv.val`
-- :ref:`py_sparse_rcv.row_major`
-- :ref:`py_sparse_rcv.col_major`
-- :ref:`py_sparse_rcv.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -246,12 +239,6 @@ and if *row* [ *col_major* [ *k* ] ] == *row* [ *col_major* [ *k* +1] ] ,
 
 This routine generates an assert if there are two entries with the same
 row and column values (if ``NDEBUG`` is not defined).
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   sparse_rcv_xam_py
 
 .. meta::
    :keywords: example

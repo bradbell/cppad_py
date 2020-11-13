@@ -2,6 +2,13 @@
 a_double_unary_op
 !!!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   a_double_unary_op_xam_cpp
+   a_double_unary_op_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,10 +20,8 @@ a_double_unary_op
 
 a_double Unary Plus and Minus
 #############################
-- :ref:`a_double_unary_op.syntax`
-- :ref:`a_double_unary_op.ax`
-- :ref:`a_double_unary_op.ay`
-- :ref:`a_double_unary_op.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -54,13 +59,6 @@ ay
 **
 If the operator is ``+`` , the result is equal to *ax* .
 If it is ``-`` , the result is the negative of *ax* .
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   a_double_unary_op_xam_cpp
-   a_double_unary_op_xam_py
 
 .. meta::
    :keywords: example

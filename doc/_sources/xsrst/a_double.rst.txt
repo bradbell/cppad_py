@@ -2,28 +2,6 @@
 a_double
 !!!!!!!!
 
-.. include:: ../preamble.rst
-
-.. meta::
-   :keywords: a_double, cppad, py, ad, scalars
-
-.. index:: a_double, cppad, py, ad, scalars
-
-.. _a_double:
-
-Cppad Py AD Scalars
-###################
-- :ref:`a_double.children`
-
-.. meta::
-   :keywords: children
-
-.. index:: children
-
-.. _a_double.children:
-
-Children
-********
 .. toctree::
    :maxdepth: 1
    :hidden:
@@ -37,6 +15,29 @@ Children
    a_double_unary_fun
    a_double_cond_assign
 
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: a_double, cppad, py, ad, scalars
+
+.. index:: a_double, cppad, py, ad, scalars
+
+.. _a_double:
+
+Cppad Py AD Scalars
+###################
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _a_double.children:
+
+Children
+********
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

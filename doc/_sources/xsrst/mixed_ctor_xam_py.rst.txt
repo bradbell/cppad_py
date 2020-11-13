@@ -13,6 +13,8 @@ mixed_ctor_xam_py
 
 Mixed Class Constructor: Example and Test
 #########################################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../example/python/mixed/ctor_xam.py

@@ -11,11 +11,8 @@ heading_res
 
 Heading Result
 ##############
-- :ref:`heading_res.second_level`
-    - :ref:`heading_res.second_level.third_level`
-- :ref:`heading_res.another_second_level`
-    - :ref:`heading_res.another_second_level.third_level`
-- :ref:`heading_res.links`
+.. contents::
+   :local:
 
 The label for this heading is the section name ``heading_res``.
 

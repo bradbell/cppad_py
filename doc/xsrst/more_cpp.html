@@ -198,38 +198,34 @@
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="steps-to-add-more-c-functions">
 <span id="id1"></span><h2>Steps To Add More C++ Functions<a class="headerlink" href="#steps-to-add-more-c-functions" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#more-cpp-purpose"><span class="std std-ref">Purpose</span></a></p></li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#more-cpp-include-file"><span class="std std-ref">Include File</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#more-cpp-include-file-independent"><span class="std std-ref">independent</span></a></p></li>
-<li><p><a class="reference internal" href="#more-cpp-include-file-new-dynamic"><span class="std std-ref">new_dynamic</span></a></p></li>
+<li><p><a class="reference internal" href="#purpose" id="id7">Purpose</a></p></li>
+<li><p><a class="reference internal" href="#include-file" id="id8">Include File</a></p>
+<ul>
+<li><p><a class="reference internal" href="#independent" id="id9">independent</a></p></li>
+<li><p><a class="reference internal" href="#new-dynamic" id="id10">new_dynamic</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#more-cpp-documentation"><span class="std std-ref">Documentation</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#more-cpp-documentation-independent"><span class="std std-ref">independent</span></a></p></li>
-<li><p><a class="reference internal" href="#more-cpp-documentation-new-dynamic"><span class="std std-ref">new_dynamic</span></a></p></li>
-<li><p><a class="reference internal" href="#more-cpp-documentation-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#documentation" id="id11">Documentation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#more-cpp-documentation-independent" id="id12">independent</a></p></li>
+<li><p><a class="reference internal" href="#more-cpp-documentation-new-dynamic" id="id13">new_dynamic</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id14">Example</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#more-cpp-implementation"><span class="std std-ref">Implementation</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#more-cpp-implementation-independent"><span class="std std-ref">independent</span></a></p></li>
-<li><p><a class="reference internal" href="#more-cpp-implementation-new-dynamic"><span class="std std-ref">new_dynamic</span></a></p></li>
+<li><p><a class="reference internal" href="#implementation" id="id15">Implementation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#more-cpp-implementation-independent" id="id16">independent</a></p></li>
+<li><p><a class="reference internal" href="#more-cpp-implementation-new-dynamic" id="id17">new_dynamic</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><p><a class="reference internal" href="#more-cpp-example"><span class="std std-ref">Example</span></a></p></li>
-<li><p><a class="reference internal" href="#more-cpp-testing"><span class="std std-ref">Testing</span></a></p></li>
+<li><p><a class="reference internal" href="#more-cpp-example" id="id18">Example</a></p></li>
+<li><p><a class="reference internal" href="#testing" id="id19">Testing</a></p></li>
 </ul>
+</div>
 <div class="section" id="purpose">
-<span id="more-cpp-purpose"></span><span id="index-1"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<span id="more-cpp-purpose"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id7">Purpose</a><a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 <p>This section outlines the steps for adding more CppAD functionality
 to cppad_py.
 This is done by example showing how the <a class="reference internal" href="cpp_fun_new_dynamic.html#id1"><span class="std std-ref">cpp_fun_new_dynamic</span></a> was added.
@@ -238,9 +234,9 @@ C++ function, <a class="reference internal" href="cpp_independent.html#id1"><spa
 and adding a new C++ function, <a class="reference internal" href="cpp_fun_new_dynamic.html#id1"><span class="std std-ref">cpp_fun_new_dynamic</span></a>.</p>
 </div>
 <div class="section" id="include-file">
-<span id="more-cpp-include-file"></span><span id="index-2"></span><h3>Include File<a class="headerlink" href="#include-file" title="Permalink to this headline">¶</a></h3>
+<span id="more-cpp-include-file"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id8">Include File</a><a class="headerlink" href="#include-file" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="independent">
-<span id="more-cpp-include-file-independent"></span><span id="index-3"></span><h4>independent<a class="headerlink" href="#independent" title="Permalink to this headline">¶</a></h4>
+<span id="more-cpp-include-file-independent"></span><span id="index-3"></span><h4><a class="toc-backref" href="#id9">independent</a><a class="headerlink" href="#independent" title="Permalink to this headline">¶</a></h4>
 <p>The include file <code class="docutils literal notranslate"><span class="pre">include/cppad/py/fun.hpp</span></code>
 was edited to add the following prototype:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CPPAD_PY_LIB_PUBLIC</span>
@@ -255,7 +251,7 @@ calling it is the first step in creating these objects.
 This is why its prototype is in the <code class="docutils literal notranslate"><span class="pre">fun.hpp</span></code> file.</p>
 </div>
 <div class="section" id="new-dynamic">
-<span id="more-cpp-include-file-new-dynamic"></span><span id="index-4"></span><h4>new_dynamic<a class="headerlink" href="#new-dynamic" title="Permalink to this headline">¶</a></h4>
+<span id="more-cpp-include-file-new-dynamic"></span><span id="index-4"></span><h4><a class="toc-backref" href="#id10">new_dynamic</a><a class="headerlink" href="#new-dynamic" title="Permalink to this headline">¶</a></h4>
 <p>The include file <code class="docutils literal notranslate"><span class="pre">include/cppad/py/fun.hpp</span></code>
 was edited to add the following member function to <code class="docutils literal notranslate"><span class="pre">d_fun</span></code> :</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">new_dynamic</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&amp;</span> <span class="n">dynamic</span><span class="p">);</span>
@@ -268,9 +264,9 @@ was edited to add the following member function to <code class="docutils literal
 </div>
 </div>
 <div class="section" id="documentation">
-<span id="more-cpp-documentation"></span><span id="index-5"></span><h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
+<span id="more-cpp-documentation"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id11">Documentation</a><a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="more-cpp-documentation-independent">
-<span id="index-6"></span><span id="id2"></span><h4>independent<a class="headerlink" href="#more-cpp-documentation-independent" title="Permalink to this headline">¶</a></h4>
+<span id="index-6"></span><span id="id2"></span><h4><a class="toc-backref" href="#id12">independent</a><a class="headerlink" href="#more-cpp-documentation-independent" title="Permalink to this headline">¶</a></h4>
 <p>The C++ file <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/fun.cpp</span></code>
 was edited to add the following syntax documentation:</p>
 <div class="line-block">
@@ -280,11 +276,11 @@ was edited to add the following syntax documentation:</p>
 <a class="reference internal" href="cpp_independent.html#cpp-independent-a-both"><span class="std std-ref">a_both</span></a>.</p>
 </div>
 <div class="section" id="more-cpp-documentation-new-dynamic">
-<span id="index-7"></span><span id="id3"></span><h4>new_dynamic<a class="headerlink" href="#more-cpp-documentation-new-dynamic" title="Permalink to this headline">¶</a></h4>
+<span id="index-7"></span><span id="id3"></span><h4><a class="toc-backref" href="#id13">new_dynamic</a><a class="headerlink" href="#more-cpp-documentation-new-dynamic" title="Permalink to this headline">¶</a></h4>
 <p>The <a class="reference internal" href="cpp_fun_new_dynamic.html#id1"><span class="std std-ref">cpp_fun_new_dynamic</span></a> documentation was added.</p>
 </div>
 <div class="section" id="example">
-<span id="more-cpp-documentation-example"></span><span id="index-8"></span><h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<span id="more-cpp-documentation-example"></span><span id="index-8"></span><h4><a class="toc-backref" href="#id14">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
 <p>The corresponding example file was added to the documentation,
 below the <a class="reference internal" href="cpp_independent.html#id1"><span class="std std-ref">cpp_independent</span></a> section, using the OMhelp commands:</p>
 <div class="line-block">
@@ -298,9 +294,9 @@ documentation.</p>
 </div>
 </div>
 <div class="section" id="implementation">
-<span id="more-cpp-implementation"></span><span id="index-9"></span><h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
+<span id="more-cpp-implementation"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id15">Implementation</a><a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="more-cpp-implementation-independent">
-<span id="index-10"></span><span id="id4"></span><h4>independent<a class="headerlink" href="#more-cpp-implementation-independent" title="Permalink to this headline">¶</a></h4>
+<span id="index-10"></span><span id="id4"></span><h4><a class="toc-backref" href="#id16">independent</a><a class="headerlink" href="#more-cpp-implementation-independent" title="Permalink to this headline">¶</a></h4>
 <p>The following function was added to the <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/fun.cpp</span></code> file:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">a_double</span><span class="o">&gt;</span> <span class="n">independent</span><span class="p">(</span>
     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&amp;</span> <span class="n">x</span>       <span class="p">,</span>
@@ -328,7 +324,7 @@ documentation.</p>
 </div>
 </div>
 <div class="section" id="more-cpp-implementation-new-dynamic">
-<span id="index-11"></span><span id="id5"></span><h4>new_dynamic<a class="headerlink" href="#more-cpp-implementation-new-dynamic" title="Permalink to this headline">¶</a></h4>
+<span id="index-11"></span><span id="id5"></span><h4><a class="toc-backref" href="#id17">new_dynamic</a><a class="headerlink" href="#more-cpp-implementation-new-dynamic" title="Permalink to this headline">¶</a></h4>
 <p>The following function
 was added to the <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/fun.cpp</span></code> file:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">d_fun</span><span class="o">::</span><span class="n">new_dynamic</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&amp;</span> <span class="n">dynamic</span><span class="p">)</span>
@@ -354,7 +350,7 @@ was added to the <code class="docutils literal notranslate"><span class="pre">li
 </div>
 </div>
 <div class="section" id="more-cpp-example">
-<span id="index-12"></span><span id="id6"></span><h3>Example<a class="headerlink" href="#more-cpp-example" title="Permalink to this headline">¶</a></h3>
+<span id="index-12"></span><span id="id6"></span><h3><a class="toc-backref" href="#id18">Example</a><a class="headerlink" href="#more-cpp-example" title="Permalink to this headline">¶</a></h3>
 <p>The file <code class="docutils literal notranslate"><span class="pre">example/cplusplus/fun_dynamic_xam.cpp</span></code> was added
 with the following contents:
 <a class="reference internal" href="fun_dynamic_xam_cpp.html#id1"><span class="std std-ref">fun_dynamic_xam_cpp</span></a>.
@@ -369,7 +365,7 @@ In addition, in the file <code class="docutils literal notranslate"><span class=
 <p>was added to the main program.</p>
 </div>
 <div class="section" id="testing">
-<span id="more-cpp-testing"></span><span id="index-13"></span><h3>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
+<span id="more-cpp-testing"></span><span id="index-13"></span><h3><a class="toc-backref" href="#id19">Testing</a><a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
 <p>You must do a git add for all of the new files before running
 <code class="docutils literal notranslate"><span class="pre">bin/check_all.sh</span></code> .
 After all the C++ changes above were implemented,

@@ -11,6 +11,8 @@ index_rst
 
 Example index.rst
 #################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../sphinx/index.rst

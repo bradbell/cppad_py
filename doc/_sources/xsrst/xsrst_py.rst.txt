@@ -2,50 +2,6 @@
 xsrst_py
 !!!!!!!!
 
-.. include:: ../preamble.rst
-
-.. meta::
-   :keywords: xsrst_py, extract, sphinx, rst
-
-.. index:: xsrst_py, extract, sphinx, rst
-
-.. _xsrst_py:
-
-Extract Sphinx RST
-##################
-- :ref:`xsrst_py.syntax`
-- :ref:`xsrst_py.purpose`
-- :ref:`xsrst_py.requirements`
-- :ref:`xsrst_py.notation`
-    - :ref:`xsrst_py.notation.white_space`
-    - :ref:`xsrst_py.notation.beginning_of_a_line`
-- :ref:`xsrst_py.command_line_arguments`
-    - :ref:`xsrst_py.command_line_arguments.target`
-    - :ref:`xsrst_py.command_line_arguments.root_file`
-        - :ref:`xsrst_py.command_line_arguments.root_file.root_section`
-    - :ref:`xsrst_py.command_line_arguments.sphinx_dir`
-        - :ref:`xsrst_py.command_line_arguments.sphinx_dir.example_configuration_files`
-    - :ref:`xsrst_py.command_line_arguments.spelling`
-    - :ref:`xsrst_py.command_line_arguments.keyword`
-    - :ref:`xsrst_py.command_line_arguments.line_increment`
-- :ref:`xsrst_py.table_of_contents`
-    - :ref:`xsrst_py.table_of_contents.toctree`
-        - :ref:`xsrst_py.table_of_contents.toctree.index.rst`
-    - :ref:`xsrst_py.table_of_contents.parent_section`
-- :ref:`xsrst_py.heading_links`
-    - :ref:`xsrst_py.heading_links.section_level`
-    - :ref:`xsrst_py.heading_links.other_levels`
-    - :ref:`xsrst_py.heading_links.children`
-    - :ref:`xsrst_py.heading_links.example`
-- :ref:`xsrst_py.indentation`
-    - :ref:`xsrst_py.indentation.example`
-- :ref:`xsrst_py.wish_list`
-    - :ref:`xsrst_py.wish_list.tabs`
-    - :ref:`xsrst_py.wish_list.module`
-- :ref:`xsrst_py.commands`
-
-.. The indentation examples are included by the child_cmd section.
-
 .. toctree::
    :maxdepth: 1
    :hidden:
@@ -60,6 +16,22 @@ Extract Sphinx RST
    heading_exam
    indent_exam
    configure
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: xsrst_py, extract, sphinx, rst
+
+.. index:: xsrst_py, extract, sphinx, rst
+
+.. _xsrst_py:
+
+Extract Sphinx RST
+##################
+.. contents::
+   :local:
+
+.. The indentation examples are included by the child_cmd section.
 
 .. meta::
    :keywords: syntax

@@ -2,6 +2,18 @@
 mixed
 !!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   mixed_ctor
+   mixed_warning
+   mixed_fatal_error
+   mixed_fix_likelihood
+   mixed_fix_constraint
+   mixed_ran_likelihood
+   mixed_optimize_fixed
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,17 +25,8 @@ mixed
 
 Laplace Approximation of Mixed Effects Models
 #############################################
-- :ref:`mixed.under_construction`
-- :ref:`mixed.notation`
-    - :ref:`mixed.notation.theta`
-    - :ref:`mixed.notation.u`
-    - :ref:`mixed.notation.z`
-    - :ref:`mixed.notation.y`
-    - :ref:`mixed.notation.p(theta)`
-    - :ref:`mixed.notation.p(z|theta)`
-    - :ref:`mixed.notation.p(u|theta)`
-    - :ref:`mixed.notation.p(y|theta,u)`
-- :ref:`mixed.children`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: under, construction
@@ -149,18 +152,6 @@ given :math:`\theta` and :math:`u`.
 
 Children
 ********
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   mixed_ctor
-   mixed_warning
-   mixed_fatal_error
-   mixed_fix_likelihood
-   mixed_fix_constraint
-   mixed_ran_likelihood
-   mixed_optimize_fixed
-
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

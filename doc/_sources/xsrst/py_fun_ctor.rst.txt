@@ -2,6 +2,12 @@
 py_fun_ctor
 !!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   a_fun_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,15 +19,8 @@ py_fun_ctor
 
 Stop Current Recording and Store Function Object
 ################################################
-- :ref:`py_fun_ctor.syntax`
-    - :ref:`py_fun_ctor.syntax.d_fun`
-    - :ref:`py_fun_ctor.syntax.a_fun`
-- :ref:`py_fun_ctor.ax`
-- :ref:`py_fun_ctor.ay`
-- :ref:`py_fun_ctor.f`
-    - :ref:`py_fun_ctor.f.empty_function`
-- :ref:`py_fun_ctor.af`
-- :ref:`py_fun_ctor.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -132,12 +131,6 @@ This object computes function and derivative values using
 ``a_double``
 Initially, there are not Taylor coefficient stored in *af* ; i.e.,
 :ref:`af_size_order()<py_fun_property.size_order>` is zero.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   a_fun_xam_py
 
 .. meta::
    :keywords: example

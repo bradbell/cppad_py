@@ -2,6 +2,12 @@
 cpp_sparsity
 !!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   sparse_hes_pattern_xam_cpp
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,15 +19,8 @@ cpp_sparsity
 
 Hessian Sparsity Patterns
 #########################
-- :ref:`cpp_sparsity.syntax`
-- :ref:`cpp_sparsity.purpose`
-- :ref:`cpp_sparsity.x`
-- :ref:`cpp_sparsity.f`
-- :ref:`cpp_sparsity.select_domain`
-- :ref:`cpp_sparsity.select_range`
-- :ref:`cpp_sparsity.pattern_out`
-- :ref:`cpp_sparsity.sparsity_for_component_wise_hessian`
-- :ref:`cpp_sparsity.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -147,12 +146,6 @@ Suppose that :math:`D` is the identity matrix,
 and only the *i*-th component of *r* is possibly non-zero.
 In this case, *pattern_out* is a sparsity pattern for
 :math:`F_i^{(2)} ( x )`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   sparse_hes_pattern_xam_cpp
 
 .. meta::
    :keywords: example

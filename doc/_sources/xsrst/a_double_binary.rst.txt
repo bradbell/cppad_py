@@ -2,6 +2,13 @@
 a_double_binary
 !!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   a_double_binary_xam_cpp
+   a_double_binary_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,16 +20,8 @@ a_double_binary
 
 a_double Binary Operators with an AD Result
 ###########################################
-- :ref:`a_double_binary.syntax`
-    - :ref:`a_double_binary.syntax.python`
-    - :ref:`a_double_binary.syntax.c++`
-- :ref:`a_double_binary.op`
-- :ref:`a_double_binary.fun`
-- :ref:`a_double_binary.ax`
-- :ref:`a_double_binary.ay`
-- :ref:`a_double_binary.y`
-- :ref:`a_double_binary.az`
-- :ref:`a_double_binary.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -148,13 +147,6 @@ az
 The result has c++ prototype
 
 | |tab| ``a_double`` *az*
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   a_double_binary_xam_cpp
-   a_double_binary_xam_py
 
 .. meta::
    :keywords: example

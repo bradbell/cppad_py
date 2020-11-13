@@ -2,6 +2,12 @@
 numeric_runge4_step
 !!!!!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   numeric_runge4_step_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,15 +19,8 @@ numeric_runge4_step
 
 One Fourth Order Runge-Kutta ODE Step
 #####################################
-- :ref:`numeric_runge4_step.syntax`
-- :ref:`numeric_runge4_step.purpose`
-- :ref:`numeric_runge4_step.fun`
-- :ref:`numeric_runge4_step.ti`
-- :ref:`numeric_runge4_step.yi`
-- :ref:`numeric_runge4_step.h`
-- :ref:`numeric_runge4_step.yf`
-- :ref:`numeric_runge4_step.example`
-- :ref:`numeric_runge4_step.source_code`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -122,12 +121,6 @@ as a numpy vector.
 This solution is 4-th order accurate in time :math:`t`; e.g., if
 :math:`y(t)` is a polynomial in :math:`t` of order four or lower,
 the solution has no truncation error, only round off error.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   numeric_runge4_step_xam_py
 
 .. meta::
    :keywords: example

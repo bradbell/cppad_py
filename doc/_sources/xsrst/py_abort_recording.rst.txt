@@ -2,6 +2,12 @@
 py_abort_recording
 !!!!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_abort_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,9 +19,8 @@ py_abort_recording
 
 Abort Recording
 ###############
-- :ref:`py_abort_recording.syntax`
-- :ref:`py_abort_recording.purpose`
-- :ref:`py_abort_recording.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -39,12 +44,6 @@ Purpose
 *******
 This aborts the current recording (if it exists)
 started by the most recent call to :ref:`independent<py_independent>`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_abort_xam_py
 
 .. meta::
    :keywords: example

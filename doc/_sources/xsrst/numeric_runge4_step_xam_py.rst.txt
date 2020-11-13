@@ -13,10 +13,8 @@ numeric_runge4_step_xam_py
 
 Example Computing Derivative A Runge-Kutta Ode Solution
 #######################################################
-- :ref:`numeric_runge4_step_xam_py.ode`
-- :ref:`numeric_runge4_step_xam_py.solution`
-- :ref:`numeric_runge4_step_xam_py.derivative_of_solution`
-- :ref:`numeric_runge4_step_xam_py.source_code`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: ode

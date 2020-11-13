@@ -13,6 +13,8 @@ exception_xam_py
 
 Python: Cppad Py Exception Handling: Example and Test
 #####################################################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../example/python/core/exception_xam.py

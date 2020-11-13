@@ -198,29 +198,33 @@
             
   <div class="section" id="a-double-cond-assign">
 <h1>a_double_cond_assign<a class="headerlink" href="#a-double-cond-assign" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="ad-conditional-assignment">
 <span id="id1"></span><h2>AD Conditional Assignment<a class="headerlink" href="#ad-conditional-assignment" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#a-double-cond-assign-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#a-double-cond-assign-purpose"><span class="std std-ref">Purpose</span></a></p></li>
-<li><p><a class="reference internal" href="#a-double-cond-assign-target"><span class="std std-ref">target</span></a></p></li>
-<li><p><a class="reference internal" href="#a-double-cond-assign-cop"><span class="std std-ref">cop</span></a></p></li>
-<li><p><a class="reference internal" href="#a-double-cond-assign-left"><span class="std std-ref">left</span></a></p></li>
-<li><p><a class="reference internal" href="#a-double-cond-assign-right"><span class="std std-ref">right</span></a></p></li>
-<li><p><a class="reference internal" href="#a-double-cond-assign-if-true"><span class="std std-ref">if_true</span></a></p></li>
-<li><p><a class="reference internal" href="#a-double-cond-assign-if-false"><span class="std std-ref">if_false</span></a></p></li>
-<li><p><a class="reference internal" href="#a-double-cond-assign-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#purpose" id="id3">Purpose</a></p></li>
+<li><p><a class="reference internal" href="#target" id="id4">target</a></p></li>
+<li><p><a class="reference internal" href="#cop" id="id5">cop</a></p></li>
+<li><p><a class="reference internal" href="#left" id="id6">left</a></p></li>
+<li><p><a class="reference internal" href="#right" id="id7">right</a></p></li>
+<li><p><a class="reference internal" href="#if-true" id="id8">if_true</a></p></li>
+<li><p><a class="reference internal" href="#if-false" id="id9">if_false</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id10">Example</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="a-double-cond-assign-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-cond-assign-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><em>target</em><code class="docutils literal notranslate"><span class="pre">.cond_assign</span></code> ( <em>cop</em> , <em>left</em> , <em>right</em> , <em>if_true</em> , <em>if_false</em> )</div>
 </div>
 </div>
 <div class="section" id="purpose">
-<span id="a-double-cond-assign-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-cond-assign-purpose"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">Purpose</a><a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 <p>The code</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">if</span></code> ( <em>left</em> <em>cop</em> <em>right</em> )</div>
@@ -238,14 +242,14 @@ calls to order zero <a class="reference internal" href="cpp_fun_forward.html#id1
 The <code class="docutils literal notranslate"><span class="pre">cond_assign</span></code> does this.</p>
 </div>
 <div class="section" id="target">
-<span id="a-double-cond-assign-target"></span><span id="index-3"></span><h3>target<a class="headerlink" href="#target" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-cond-assign-target"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">target</a><a class="headerlink" href="#target" title="Permalink to this headline">¶</a></h3>
 <p>This object has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">a_double&amp;</span></code> <em>target</em></div>
 </div>
 </div>
 <div class="section" id="cop">
-<span id="a-double-cond-assign-cop"></span><span id="index-4"></span><h3>cop<a class="headerlink" href="#cop" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-cond-assign-cop"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">cop</a><a class="headerlink" href="#cop" title="Permalink to this headline">¶</a></h3>
 <p>This argument has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*cop</span></code></div>
@@ -283,7 +287,7 @@ The <code class="docutils literal notranslate"><span class="pre">cond_assign</sp
 </table>
 </div>
 <div class="section" id="left">
-<span id="a-double-cond-assign-left"></span><span id="index-5"></span><h3>left<a class="headerlink" href="#left" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-cond-assign-left"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">left</a><a class="headerlink" href="#left" title="Permalink to this headline">¶</a></h3>
 <p>This argument has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>left</em></div>
@@ -291,7 +295,7 @@ The <code class="docutils literal notranslate"><span class="pre">cond_assign</sp
 <p>It specifies the left operand in the comparison.</p>
 </div>
 <div class="section" id="right">
-<span id="a-double-cond-assign-right"></span><span id="index-6"></span><h3>right<a class="headerlink" href="#right" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-cond-assign-right"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">right</a><a class="headerlink" href="#right" title="Permalink to this headline">¶</a></h3>
 <p>This argument has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>right</em></div>
@@ -299,7 +303,7 @@ The <code class="docutils literal notranslate"><span class="pre">cond_assign</sp
 <p>It specifies the right operand in the comparison.</p>
 </div>
 <div class="section" id="if-true">
-<span id="a-double-cond-assign-if-true"></span><span id="index-7"></span><h3>if_true<a class="headerlink" href="#if-true" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-cond-assign-if-true"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">if_true</a><a class="headerlink" href="#if-true" title="Permalink to this headline">¶</a></h3>
 <p>This argument has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>if_true</em></div>
@@ -308,18 +312,16 @@ The <code class="docutils literal notranslate"><span class="pre">cond_assign</sp
 of the comparison is true.</p>
 </div>
 <div class="section" id="if-false">
-<span id="a-double-cond-assign-if-false"></span><span id="index-8"></span><h3>if_false<a class="headerlink" href="#if-false" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-cond-assign-if-false"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id9">if_false</a><a class="headerlink" href="#if-false" title="Permalink to this headline">¶</a></h3>
 <p>This argument has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>if_false</em></div>
 </div>
 <p>It specifies the value assigned to <em>ad</em> if the result
 of the comparison is false.</p>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="example">
-<span id="a-double-cond-assign-example"></span><span id="index-9"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-cond-assign-example"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id10">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="a_double_cond_assign_xam_cpp.html#id1"><span class="std std-ref">c++</span></a>,
 <a class="reference internal" href="a_double_cond_assign_xam_py.html#id1"><span class="std std-ref">python</span></a>.</p>
 <hr class="docutils" />

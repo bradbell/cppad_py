@@ -13,8 +13,8 @@ ad_vec_cppad2std
 
 Convert AD Vector From CppAD to Standard
 ########################################
-- :ref:`ad_vec_cppad2std.syntax`
-- :ref:`ad_vec_cppad2std.prototype`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax

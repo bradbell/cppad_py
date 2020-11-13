@@ -2,6 +2,13 @@
 a_double_property
 !!!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   a_double_property_xam_cpp
+   a_double_property_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,15 +20,8 @@ a_double_property
 
 Properties of an a_double Object
 ################################
-- :ref:`a_double_property.syntax`
-- :ref:`a_double_property.ad`
-- :ref:`a_double_property.value`
-    - :ref:`a_double_property.value.restriction`
-- :ref:`a_double_property.parameter`
-- :ref:`a_double_property.variable`
-- :ref:`a_double_property.near_equal`
-- :ref:`a_double_property.var2par`
-- :ref:`a_double_property.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -159,13 +159,6 @@ It has the same value as *ad* and is sure to be a parameter
 ( *ad* may or may not be a variable).
 This can be useful when you want to access the value of *ad*
 while is a variable; :ref:`value<a_double_property.value>` above.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   a_double_property_xam_cpp
-   a_double_property_xam_py
 
 .. meta::
    :keywords: example

@@ -13,14 +13,8 @@ a_double_ctor
 
 The a_double Constructor
 ########################
-- :ref:`a_double_ctor.syntax`
-    - :ref:`a_double_ctor.syntax.c++`
-    - :ref:`a_double_ctor.syntax.python`
-- :ref:`a_double_ctor.purpose`
-- :ref:`a_double_ctor.d`
-- :ref:`a_double_ctor.a_other`
-- :ref:`a_double_ctor.ad`
-- :ref:`a_double_ctor.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax

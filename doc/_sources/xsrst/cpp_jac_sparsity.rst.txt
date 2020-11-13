@@ -2,6 +2,12 @@
 cpp_jac_sparsity
 !!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   sparse_jac_pattern_xam_cpp
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,16 +19,8 @@ cpp_jac_sparsity
 
 Jacobian Sparsity Patterns
 ##########################
-- :ref:`cpp_jac_sparsity.syntax`
-- :ref:`cpp_jac_sparsity.purpose`
-    - :ref:`cpp_jac_sparsity.purpose.for_jac_sparsity`
-    - :ref:`cpp_jac_sparsity.purpose.rev_jac_sparsity`
-- :ref:`cpp_jac_sparsity.x`
-- :ref:`cpp_jac_sparsity.f`
-- :ref:`cpp_jac_sparsity.pattern_in`
-- :ref:`cpp_jac_sparsity.pattern_out`
-- :ref:`cpp_jac_sparsity.sparsity_for_entire_jacobian`
-- :ref:`cpp_jac_sparsity.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -163,12 +161,6 @@ Sparsity for Entire Jacobian
 Suppose that :math:`R` is the identity matrix.
 In this case, *pattern_out* is a sparsity pattern for
 :math:`F^{(1)} ( x )`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   sparse_jac_pattern_xam_cpp
 
 .. meta::
    :keywords: example

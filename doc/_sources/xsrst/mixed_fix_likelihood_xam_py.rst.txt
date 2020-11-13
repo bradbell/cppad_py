@@ -13,9 +13,8 @@ mixed_fix_likelihood_xam_py
 
 fix_likelihood: Example and Test
 ################################
-- :ref:`mixed_fix_likelihood_xam_py.p(z|theta)`
-- :ref:`mixed_fix_likelihood_xam_py.p(theta)`
-- :ref:`mixed_fix_likelihood_xam_py.optimal_fixed_effects`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: p(z|theta)

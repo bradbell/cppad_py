@@ -13,17 +13,8 @@ get_cppad_sh
 
 Get Cppad
 #########
-- :ref:`get_cppad_sh.syntax`
-- :ref:`get_cppad_sh.top_source_directory`
-- :ref:`get_cppad_sh.settings`
-    - :ref:`get_cppad_sh.settings.cmake_install_prefix`
-    - :ref:`get_cppad_sh.settings.extra_cxx_flags`
-    - :ref:`get_cppad_sh.settings.build_type`
-        - :ref:`get_cppad_sh.settings.build_type.cmake_install_prefix`
-        - :ref:`get_cppad_sh.settings.build_type.build`
-    - :ref:`get_cppad_sh.settings.include_mixed`
-    - :ref:`get_cppad_sh.settings.test_cppad`
-- :ref:`get_cppad_sh.caching`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax

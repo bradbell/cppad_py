@@ -210,28 +210,32 @@
             
   <div class="section" id="mixed-ctor">
 <h1>mixed_ctor<a class="headerlink" href="#mixed-ctor" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="mixed-class-constructor">
 <span id="id1"></span><h2>Mixed Class Constructor<a class="headerlink" href="#mixed-class-constructor" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#mixed-ctor-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-mixed-obj"><span class="std std-ref">mixed_obj</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-fixed-init-random-init"><span class="std std-ref">fixed_init (random_init)</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-random-vec"><span class="std std-ref">random_vec</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-n-fixed"><span class="std std-ref">n_fixed</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-n-random"><span class="std std-ref">n_random</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-quasi-fixed"><span class="std std-ref">quasi_fixed</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-bool-sparsity"><span class="std std-ref">bool_sparsity</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-a-rcv"><span class="std std-ref">A_rcv</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-warning"><span class="std std-ref">warning</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-fix-likelihood"><span class="std std-ref">fix_likelihood</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-fix-constraint"><span class="std std-ref">fix_constraint</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-ran-likelihood"><span class="std std-ref">ran_likelihood</span></a></p></li>
-<li><p><a class="reference internal" href="#mixed-ctor-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#mixed-obj" id="id3">mixed_obj</a></p></li>
+<li><p><a class="reference internal" href="#fixed-init-random-init" id="id4">fixed_init (random_init)</a></p></li>
+<li><p><a class="reference internal" href="#random-vec" id="id5">random_vec</a></p></li>
+<li><p><a class="reference internal" href="#n-fixed" id="id6">n_fixed</a></p></li>
+<li><p><a class="reference internal" href="#n-random" id="id7">n_random</a></p></li>
+<li><p><a class="reference internal" href="#quasi-fixed" id="id8">quasi_fixed</a></p></li>
+<li><p><a class="reference internal" href="#bool-sparsity" id="id9">bool_sparsity</a></p></li>
+<li><p><a class="reference internal" href="#a-rcv" id="id10">A_rcv</a></p></li>
+<li><p><a class="reference internal" href="#warning" id="id11">warning</a></p></li>
+<li><p><a class="reference internal" href="#fix-likelihood" id="id12">fix_likelihood</a></p></li>
+<li><p><a class="reference internal" href="#fix-constraint" id="id13">fix_constraint</a></p></li>
+<li><p><a class="reference internal" href="#ran-likelihood" id="id14">ran_likelihood</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id15">Example</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="mixed-ctor-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># mixed_obj = cppad_py.mixed(</span>
         <span class="n">fixed_init</span>       <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">random_init</span>      <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -247,11 +251,11 @@
 </div>
 </div>
 <div class="section" id="mixed-obj">
-<span id="mixed-ctor-mixed-obj"></span><span id="index-2"></span><h3>mixed_obj<a class="headerlink" href="#mixed-obj" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-mixed-obj"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">mixed_obj</a><a class="headerlink" href="#mixed-obj" title="Permalink to this headline">¶</a></h3>
 <p>We refer to the value returned by this constructor as <em>mixed_obj</em>.</p>
 </div>
 <div class="section" id="fixed-init-random-init">
-<span id="mixed-ctor-fixed-init-random-init"></span><span id="index-3"></span><h3>fixed_init (random_init)<a class="headerlink" href="#fixed-init-random-init" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-fixed-init-random-init"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">fixed_init (random_init)</a><a class="headerlink" href="#fixed-init-random-init" title="Permalink to this headline">¶</a></h3>
 <p>is a numpy vector with <code class="docutils literal notranslate"><span class="pre">float</span></code> elements.
 It specifies a value of the fixed effects (random effects) for which the
 likelihood and prior functions can be evaluated and is used to
@@ -260,7 +264,7 @@ The default value for this argument <code class="docutils literal notranslate"><
 to the empty vector and is not valid for <em>fixed_init</em>.</p>
 </div>
 <div class="section" id="random-vec">
-<span id="mixed-ctor-random-vec"></span><span id="index-4"></span><h3>random_vec<a class="headerlink" href="#random-vec" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-random-vec"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">random_vec</a><a class="headerlink" href="#random-vec" title="Permalink to this headline">¶</a></h3>
 <p>is a numpy vector with <code class="docutils literal notranslate"><span class="pre">float</span></code> elements.
 It specifies a value of the random effects for which the
 likelihood and prior functions can be evaluated and is used to
@@ -269,26 +273,26 @@ The default value for this argument <code class="docutils literal notranslate"><
 to the empty vector; i.e., no random effects.</p>
 </div>
 <div class="section" id="n-fixed">
-<span id="mixed-ctor-n-fixed"></span><span id="index-5"></span><h3>n_fixed<a class="headerlink" href="#n-fixed" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-n-fixed"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">n_fixed</a><a class="headerlink" href="#n-fixed" title="Permalink to this headline">¶</a></h3>
 <p>is the length of the vector <em>fixed_init</em> and must not be zero.</p>
 </div>
 <div class="section" id="n-random">
-<span id="mixed-ctor-n-random"></span><span id="index-6"></span><h3>n_random<a class="headerlink" href="#n-random" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-n-random"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">n_random</a><a class="headerlink" href="#n-random" title="Permalink to this headline">¶</a></h3>
 <p>is the length of the vector <em>random_init</em> and can be zero.</p>
 </div>
 <div class="section" id="quasi-fixed">
-<span id="mixed-ctor-quasi-fixed"></span><span id="index-7"></span><h3>quasi_fixed<a class="headerlink" href="#quasi-fixed" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-quasi-fixed"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">quasi_fixed</a><a class="headerlink" href="#quasi-fixed" title="Permalink to this headline">¶</a></h3>
 <p>is True (False) if a quasi-Newton method (Newton method) is used to
 optimize the fixed effects. The Newton method requires computation
 of second derivatives.</p>
 </div>
 <div class="section" id="bool-sparsity">
-<span id="mixed-ctor-bool-sparsity"></span><span id="index-8"></span><h3>bool_sparsity<a class="headerlink" href="#bool-sparsity" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-bool-sparsity"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id9">bool_sparsity</a><a class="headerlink" href="#bool-sparsity" title="Permalink to this headline">¶</a></h3>
 <p>is True (False) if CppAD should use boolean sparsity patterns
 (set sparsity patterns) for its internal calculations</p>
 </div>
 <div class="section" id="a-rcv">
-<span id="mixed-ctor-a-rcv"></span><span id="index-9"></span><h3>A_rcv<a class="headerlink" href="#a-rcv" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-a-rcv"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id10">A_rcv</a><a class="headerlink" href="#a-rcv" title="Permalink to this headline">¶</a></h3>
 <p>Is a <a class="reference internal" href="py_sparse_rcv.html#id1"><span class="std std-ref">sparse_rcv</span></a> representation of the
 random constraint matrix <span class="math notranslate nohighlight">\(A\)</span>; i.e.
 <span class="math notranslate nohighlight">\(A \cdot \hat{u} ( \theta ) = 0\)</span>
@@ -297,33 +301,31 @@ optimal random effects as a function of the fixed effects.
 The value <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds to no random constraint.</p>
 </div>
 <div class="section" id="warning">
-<span id="mixed-ctor-warning"></span><span id="index-10"></span><h3>warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-warning"></span><span id="index-10"></span><h3><a class="toc-backref" href="#id11">warning</a><a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h3>
 <p>is a python function that gets called when <em>mixed_obj</em>
 has a warning to report; see <a class="reference internal" href="mixed_warning.html#id1"><span class="std std-ref">Mixed Class Warnings</span></a>.
 The value <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds to ignoring all warning messages.</p>
 </div>
 <div class="section" id="fix-likelihood">
-<span id="mixed-ctor-fix-likelihood"></span><span id="index-11"></span><h3>fix_likelihood<a class="headerlink" href="#fix-likelihood" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-fix-likelihood"></span><span id="index-11"></span><h3><a class="toc-backref" href="#id12">fix_likelihood</a><a class="headerlink" href="#fix-likelihood" title="Permalink to this headline">¶</a></h3>
 <p>is a <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> representation
 of the fixed effects likelihood; see
 <a class="reference internal" href="mixed_fix_likelihood.html#id1"><span class="std std-ref">Fixed Effects Likelihood</span></a>.</p>
 </div>
 <div class="section" id="fix-constraint">
-<span id="mixed-ctor-fix-constraint"></span><span id="index-12"></span><h3>fix_constraint<a class="headerlink" href="#fix-constraint" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-fix-constraint"></span><span id="index-12"></span><h3><a class="toc-backref" href="#id13">fix_constraint</a><a class="headerlink" href="#fix-constraint" title="Permalink to this headline">¶</a></h3>
 <p>is a <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> representation
 of the fixed effects constraint; see
 <a class="reference internal" href="mixed_fix_constraint.html#id1"><span class="std std-ref">Fixed Effects Constraint Function</span></a>.</p>
 </div>
 <div class="section" id="ran-likelihood">
-<span id="mixed-ctor-ran-likelihood"></span><span id="index-13"></span><h3>ran_likelihood<a class="headerlink" href="#ran-likelihood" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-ran-likelihood"></span><span id="index-13"></span><h3><a class="toc-backref" href="#id14">ran_likelihood</a><a class="headerlink" href="#ran-likelihood" title="Permalink to this headline">¶</a></h3>
 <p>is a <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> representation
 of the random effects likelihood; see
 <a class="reference internal" href="mixed_ran_likelihood.html#id1"><span class="std std-ref">Random Effects Likelihood</span></a>.</p>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="example">
-<span id="mixed-ctor-example"></span><span id="index-14"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="mixed-ctor-example"></span><span id="index-14"></span><h3><a class="toc-backref" href="#id15">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="mixed_ctor_xam_py.html#id1"><span class="std std-ref">mixed_ctor_xam_py</span></a></p>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/python/cppad_py/mixed.py</span></code></p>

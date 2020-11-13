@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="cppad_py, c++, object, library, python, interface, to, cppad" name="keywords" />
-<meta content="version, 2020.11.12" name="keywords" />
+<meta content="version, 2020.11.13" name="keywords" />
 <meta content="git, repository" name="keywords" />
 <meta content="purpose" name="keywords" />
 <meta content="getting, started" name="keywords" />
@@ -171,29 +171,33 @@
             
   <div class="section" id="cppad-py">
 <h1>cppad_py<a class="headerlink" href="#cppad-py" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="a-c-object-library-and-python-interface-to-cppad">
 <span id="id1"></span><h2>A C++ Object Library and Python Interface to CppAD<a class="headerlink" href="#a-c-object-library-and-python-interface-to-cppad" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#cppad-py-version-2020-11-12"><span class="std std-ref">Version 2020.11.12</span></a></p></li>
-<li><p><a class="reference internal" href="#cppad-py-git-repository"><span class="std std-ref">Git Repository</span></a></p></li>
-<li><p><a class="reference internal" href="#cppad-py-purpose"><span class="std std-ref">Purpose</span></a></p></li>
-<li><p><a class="reference internal" href="#cppad-py-getting-started"><span class="std std-ref">Getting Started</span></a></p></li>
-<li><p><a class="reference internal" href="#cppad-py-numerical-examples"><span class="std std-ref">Numerical Examples</span></a></p></li>
-<li><p><a class="reference internal" href="#cppad-py-c-function-speed"><span class="std std-ref">C++ Function Speed</span></a></p></li>
-<li><p><a class="reference internal" href="#cppad-py-license"><span class="std std-ref">License</span></a></p></li>
-<li><p><a class="reference internal" href="#cppad-py-children"><span class="std std-ref">Children</span></a></p></li>
+<li><p><a class="reference internal" href="#version-2020-11-13" id="id2">Version 2020.11.13</a></p></li>
+<li><p><a class="reference internal" href="#git-repository" id="id3">Git Repository</a></p></li>
+<li><p><a class="reference internal" href="#purpose" id="id4">Purpose</a></p></li>
+<li><p><a class="reference internal" href="#getting-started" id="id5">Getting Started</a></p></li>
+<li><p><a class="reference internal" href="#numerical-examples" id="id6">Numerical Examples</a></p></li>
+<li><p><a class="reference internal" href="#c-function-speed" id="id7">C++ Function Speed</a></p></li>
+<li><p><a class="reference internal" href="#license" id="id8">License</a></p></li>
+<li><p><a class="reference internal" href="#children" id="id9">Children</a></p></li>
 </ul>
-<div class="section" id="version-2020-11-12">
-<span id="cppad-py-version-2020-11-12"></span><span id="index-1"></span><h3>Version 2020.11.12<a class="headerlink" href="#version-2020-11-12" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="version-2020-11-13">
+<span id="cppad-py-version-2020-11-13"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Version 2020.11.13</a><a class="headerlink" href="#version-2020-11-13" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="git-repository">
-<span id="cppad-py-git-repository"></span><span id="index-2"></span><h3>Git Repository<a class="headerlink" href="#git-repository" title="Permalink to this headline">¶</a></h3>
+<span id="cppad-py-git-repository"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">Git Repository</a><a class="headerlink" href="#git-repository" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://github.com/bradbell/cppad_py">https://github.com/bradbell/cppad_py</a></p>
 </div>
 <div class="section" id="purpose">
-<span id="cppad-py-purpose"></span><span id="index-3"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<span id="cppad-py-purpose"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">Purpose</a><a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Provide a connection from Python to the
 Algorithmic Differentiation (AD) package Cppad; see <a class="reference internal" href="py_lib.html#id1"><span class="std std-ref">py_lib</span></a>.</p></li>
@@ -204,19 +208,19 @@ can be used to connect any scripting language to CppAD.</p></li>
 </ol>
 </div>
 <div class="section" id="getting-started">
-<span id="cppad-py-getting-started"></span><span id="index-4"></span><h3>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h3>
+<span id="cppad-py-getting-started"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">Getting Started</a><a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h3>
 <p>After you <a class="reference internal" href="setup_py.html#setup-py-configure"><span class="std std-ref">configure</span></a> and
 <a class="reference internal" href="setup_py.html#setup-py-install"><span class="std std-ref">install</span></a> cppad_py,
 the following example is a good place to get started using it:
 <a class="reference internal" href="fun_jacobian_xam_py.html#id1"><span class="std std-ref">Python: Dense Jacobian Using AD: Example and Test</span></a>.</p>
 </div>
 <div class="section" id="numerical-examples">
-<span id="cppad-py-numerical-examples"></span><span id="index-5"></span><h3>Numerical Examples<a class="headerlink" href="#numerical-examples" title="Permalink to this headline">¶</a></h3>
+<span id="cppad-py-numerical-examples"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">Numerical Examples</a><a class="headerlink" href="#numerical-examples" title="Permalink to this headline">¶</a></h3>
 <p>The following is a link to some numerical examples:
 <a class="reference internal" href="numeric_xam.html#id1"><span class="std std-ref">numeric_xam</span></a>.</p>
 </div>
 <div class="section" id="c-function-speed">
-<span id="cppad-py-c-function-speed"></span><span id="index-6"></span><h3>C++ Function Speed<a class="headerlink" href="#c-function-speed" title="Permalink to this headline">¶</a></h3>
+<span id="cppad-py-c-function-speed"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">C++ Function Speed</a><a class="headerlink" href="#c-function-speed" title="Permalink to this headline">¶</a></h3>
 <p>One can use Cppad Py to get faster function evaluation in scripting Python,
 when the sequence of floating point operations does not depend on the
 independent variables.
@@ -225,15 +229,13 @@ Once an <a class="reference internal" href="py_fun.html#id1"><span class="std st
 effectively evaluate the function in C++ instead of Python.</p>
 </div>
 <div class="section" id="license">
-<span id="cppad-py-license"></span><span id="index-7"></span><h3>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h3>
+<span id="cppad-py-license"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">License</a><a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h3>
 <p>This program is distributed under the terms of the
 GNU General Public License version 3.0 or later see
 <a class="reference external" href="http://www.gnu.org/licenses/gpl-3.0.txt">gpl-3.0.txt</a>.</p>
 </div>
 <div class="section" id="children">
-<span id="cppad-py-children"></span><span id="index-8"></span><h3>Children<a class="headerlink" href="#children" title="Permalink to this headline">¶</a></h3>
-<div class="toctree-wrapper compound">
-</div>
+<span id="cppad-py-children"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id9">Children</a><a class="headerlink" href="#children" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />

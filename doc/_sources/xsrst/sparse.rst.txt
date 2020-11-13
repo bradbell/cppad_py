@@ -2,28 +2,6 @@
 sparse
 !!!!!!
 
-.. include:: ../preamble.rst
-
-.. meta::
-   :keywords: sparse, cppad, py, sparse, calculation
-
-.. index:: sparse, cppad, py, sparse, calculation
-
-.. _sparse:
-
-Cppad Py Sparse Calculation
-###########################
-- :ref:`sparse.children`
-
-.. meta::
-   :keywords: children
-
-.. index:: children
-
-.. _sparse.children:
-
-Children
-********
 .. toctree::
    :maxdepth: 1
    :hidden:
@@ -35,6 +13,29 @@ Children
    cpp_sparse_jac
    cpp_sparse_hes
 
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: sparse, cppad, py, sparse, calculation
+
+.. index:: sparse, cppad, py, sparse, calculation
+
+.. _sparse:
+
+Cppad Py Sparse Calculation
+###########################
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _sparse.children:
+
+Children
+********
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

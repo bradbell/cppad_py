@@ -209,44 +209,42 @@
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="stop-current-recording-and-store-function-object">
 <span id="id1"></span><h2>Stop Current Recording and Store Function Object<a class="headerlink" href="#stop-current-recording-and-store-function-object" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><dl class="simple">
-<dt><a class="reference internal" href="#cpp-fun-ctor-syntax"><span class="std std-ref">Syntax</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#cpp-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-ctor-syntax-a-fun"><span class="std std-ref">a_fun</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p>
+<ul>
+<li><p><a class="reference internal" href="#d-fun" id="id3">d_fun</a></p></li>
+<li><p><a class="reference internal" href="#a-fun" id="id4">a_fun</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><p><a class="reference internal" href="#cpp-fun-ctor-ax"><span class="std std-ref">ax</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-ctor-ay"><span class="std std-ref">ay</span></a></p></li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#cpp-fun-ctor-f"><span class="std std-ref">f</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#cpp-fun-ctor-f-empty-function"><span class="std std-ref">Empty Function</span></a></p></li>
+<li><p><a class="reference internal" href="#ax" id="id5">ax</a></p></li>
+<li><p><a class="reference internal" href="#ay" id="id6">ay</a></p></li>
+<li><p><a class="reference internal" href="#f" id="id7">f</a></p>
+<ul>
+<li><p><a class="reference internal" href="#empty-function" id="id8">Empty Function</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><p><a class="reference internal" href="#cpp-fun-ctor-af"><span class="std std-ref">af</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-ctor-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#af" id="id9">af</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id10">Example</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="cpp-fun-ctor-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-ctor-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="d-fun">
-<span id="cpp-fun-ctor-syntax-d-fun"></span><span id="index-2"></span><h4>d_fun<a class="headerlink" href="#d-fun" title="Permalink to this headline">¶</a></h4>
+<span id="cpp-fun-ctor-syntax-d-fun"></span><span id="index-2"></span><h4><a class="toc-backref" href="#id3">d_fun</a><a class="headerlink" href="#d-fun" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
 <div class="line"><em>f</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py::d_fun</span></code> ( <em>ax</em> , <em>ay</em> )</div>
 </div>
 </div>
 <div class="section" id="a-fun">
-<span id="cpp-fun-ctor-syntax-a-fun"></span><span id="index-3"></span><h4>a_fun<a class="headerlink" href="#a-fun" title="Permalink to this headline">¶</a></h4>
+<span id="cpp-fun-ctor-syntax-a-fun"></span><span id="index-3"></span><h4><a class="toc-backref" href="#id4">a_fun</a><a class="headerlink" href="#a-fun" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
 <div class="line"><em>af</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py::a_fun</span></code> ( <em>f</em> )</div>
 </div>
 </div>
 </div>
 <div class="section" id="ax">
-<span id="cpp-fun-ctor-ax"></span><span id="index-4"></span><h3>ax<a class="headerlink" href="#ax" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-ctor-ax"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">ax</a><a class="headerlink" href="#ax" title="Permalink to this headline">¶</a></h3>
 <p>This argument has prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">vec_a_double&amp;</span></code> <em>ax</em></div>
@@ -259,7 +257,7 @@ We use the notation <em>n</em> = <em>ax</em><code class="docutils literal notran
 to denote the number of independent variables.</p>
 </div>
 <div class="section" id="ay">
-<span id="cpp-fun-ctor-ay"></span><span id="index-5"></span><h3>ay<a class="headerlink" href="#ay" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-ctor-ay"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">ay</a><a class="headerlink" href="#ay" title="Permalink to this headline">¶</a></h3>
 <p>This argument has prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">vec_a_double&amp;</span></code> <em>ax</em></div>
@@ -269,7 +267,7 @@ We use the notation <em>m</em> = <em>ay</em><code class="docutils literal notran
 to denote the number of dependent variables.</p>
 </div>
 <div class="section" id="f">
-<span id="cpp-fun-ctor-f"></span><span id="index-6"></span><h3>f<a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-ctor-f"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">f</a><a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
 <p>This result has prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">cppad_py::d_fun</span></code> <em>f</em></div>
@@ -279,14 +277,14 @@ that mapped the independent variables <em>ax</em>
 to the dependent variables <em>ay</em> .
 This object computes function and derivative values using <code class="docutils literal notranslate"><span class="pre">double</span></code> .</p>
 <div class="section" id="empty-function">
-<span id="cpp-fun-ctor-f-empty-function"></span><span id="index-7"></span><h4>Empty Function<a class="headerlink" href="#empty-function" title="Permalink to this headline">¶</a></h4>
+<span id="cpp-fun-ctor-f-empty-function"></span><span id="index-7"></span><h4><a class="toc-backref" href="#id8">Empty Function</a><a class="headerlink" href="#empty-function" title="Permalink to this headline">¶</a></h4>
 <p>In the case where <em>ax</em> and <em>ay</em> have size zero,
 the function is ‘empty’ and all its sizes are zero; see
 <a class="reference internal" href="cpp_fun_property.html#id1"><span class="std std-ref">cpp_fun_property</span></a>.</p>
 </div>
 </div>
 <div class="section" id="af">
-<span id="cpp-fun-ctor-af"></span><span id="index-8"></span><h3>af<a class="headerlink" href="#af" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-ctor-af"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id9">af</a><a class="headerlink" href="#af" title="Permalink to this headline">¶</a></h3>
 <p>This result has prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">cppad_py::a_fun</span></code> <em>af</em></div>
@@ -297,7 +295,7 @@ Initially, there are not Taylor coefficient stored in <em>af</em> ; i.e.,
 <a class="reference internal" href="cpp_fun_property.html#cpp-fun-property-size-order"><span class="std std-ref">af_size_order()</span></a> is zero.</p>
 </div>
 <div class="section" id="example">
-<span id="cpp-fun-ctor-example"></span><span id="index-9"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-ctor-example"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id10">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p>All of the examples use these constructors.</p>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/fun.cpp</span></code></p>

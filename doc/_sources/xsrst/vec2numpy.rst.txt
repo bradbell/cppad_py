@@ -13,11 +13,8 @@ vec2numpy
 
 Convert a cppad_py Vector to a Numpy Array
 ##########################################
-- :ref:`vec2numpy.syntax`
-- :ref:`vec2numpy.vec`
-- :ref:`vec2numpy.nr`
-- :ref:`vec2numpy.nc`
-- :ref:`vec2numpy.array`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax

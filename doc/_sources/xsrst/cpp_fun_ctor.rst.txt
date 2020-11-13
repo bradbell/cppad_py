@@ -13,15 +13,8 @@ cpp_fun_ctor
 
 Stop Current Recording and Store Function Object
 ################################################
-- :ref:`cpp_fun_ctor.syntax`
-    - :ref:`cpp_fun_ctor.syntax.d_fun`
-    - :ref:`cpp_fun_ctor.syntax.a_fun`
-- :ref:`cpp_fun_ctor.ax`
-- :ref:`cpp_fun_ctor.ay`
-- :ref:`cpp_fun_ctor.f`
-    - :ref:`cpp_fun_ctor.f.empty_function`
-- :ref:`cpp_fun_ctor.af`
-- :ref:`cpp_fun_ctor.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax

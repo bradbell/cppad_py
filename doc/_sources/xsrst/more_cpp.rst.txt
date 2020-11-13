@@ -13,19 +13,8 @@ more_cpp
 
 Steps To Add More C++ Functions
 ###############################
-- :ref:`more_cpp.purpose`
-- :ref:`more_cpp.include_file`
-    - :ref:`more_cpp.include_file.independent`
-    - :ref:`more_cpp.include_file.new_dynamic`
-- :ref:`more_cpp.documentation`
-    - :ref:`more_cpp.documentation.independent`
-    - :ref:`more_cpp.documentation.new_dynamic`
-    - :ref:`more_cpp.documentation.example`
-- :ref:`more_cpp.implementation`
-    - :ref:`more_cpp.implementation.independent`
-    - :ref:`more_cpp.implementation.new_dynamic`
-- :ref:`more_cpp.example`
-- :ref:`more_cpp.testing`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: purpose

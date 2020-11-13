@@ -208,22 +208,26 @@
             
   <div class="section" id="py-fun-property">
 <h1>py_fun_property<a class="headerlink" href="#py-fun-property" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="properties-of-a-function-object">
 <span id="id1"></span><h2>Properties of a Function Object<a class="headerlink" href="#properties-of-a-function-object" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#py-fun-property-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#py-fun-property-f"><span class="std std-ref">f</span></a></p></li>
-<li><p><a class="reference internal" href="#py-fun-property-size-domain"><span class="std std-ref">size_domain</span></a></p></li>
-<li><p><a class="reference internal" href="#py-fun-property-size-range"><span class="std std-ref">size_range</span></a></p></li>
-<li><p><a class="reference internal" href="#py-fun-property-size-var"><span class="std std-ref">size_var</span></a></p></li>
-<li><p><a class="reference internal" href="#py-fun-property-size-op"><span class="std std-ref">size_op</span></a></p></li>
-<li><p><a class="reference internal" href="#py-fun-property-size-order"><span class="std std-ref">size_order</span></a></p></li>
-<li><p><a class="reference internal" href="#py-fun-property-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#f" id="id3">f</a></p></li>
+<li><p><a class="reference internal" href="#size-domain" id="id4">size_domain</a></p></li>
+<li><p><a class="reference internal" href="#size-range" id="id5">size_range</a></p></li>
+<li><p><a class="reference internal" href="#size-var" id="id6">size_var</a></p></li>
+<li><p><a class="reference internal" href="#size-op" id="id7">size_op</a></p></li>
+<li><p><a class="reference internal" href="#size-order" id="id8">size_order</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id9">Example</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="py-fun-property-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-property-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><em>n</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.size_domain</span></code> ()</div>
 <div class="line"><em>m</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.size_range</span></code> ()</div>
@@ -233,28 +237,28 @@
 </div>
 </div>
 <div class="section" id="f">
-<span id="py-fun-property-f"></span><span id="index-2"></span><h3>f<a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-property-f"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">f</a><a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
 <p>This is either a
 <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> or
 <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-a-fun"><span class="std std-ref">a_fun</span></a> function object
 and is constant; i.e., not changed.</p>
 </div>
 <div class="section" id="size-domain">
-<span id="py-fun-property-size-domain"></span><span id="index-3"></span><h3>size_domain<a class="headerlink" href="#size-domain" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-property-size-domain"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">size_domain</a><a class="headerlink" href="#size-domain" title="Permalink to this headline">¶</a></h3>
 <p>The return value <em>n</em> is an <code class="docutils literal notranslate"><span class="pre">int</span></code>
 and is the size of the vector
 <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-ax"><span class="std std-ref">ax</span></a> in the function constructor; i.e.,
 the number of independent variables.</p>
 </div>
 <div class="section" id="size-range">
-<span id="py-fun-property-size-range"></span><span id="index-4"></span><h3>size_range<a class="headerlink" href="#size-range" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-property-size-range"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">size_range</a><a class="headerlink" href="#size-range" title="Permalink to this headline">¶</a></h3>
 <p>The return value <em>m</em> is an <code class="docutils literal notranslate"><span class="pre">int</span></code>
 and is the size of the vector
 <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-ay"><span class="std std-ref">ay</span></a> in the function constructor; i.e.,
 the number of dependent variables.</p>
 </div>
 <div class="section" id="size-var">
-<span id="py-fun-property-size-var"></span><span id="index-5"></span><h3>size_var<a class="headerlink" href="#size-var" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-property-size-var"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">size_var</a><a class="headerlink" href="#size-var" title="Permalink to this headline">¶</a></h3>
 <p>The return value <em>v</em> is an <code class="docutils literal notranslate"><span class="pre">int</span></code>
 and is the number of variables in the function.
 This includes the independent variables, dependent variables,
@@ -262,13 +266,13 @@ and any variables that are used to compute the dependent variables
 from the independent variables.</p>
 </div>
 <div class="section" id="size-op">
-<span id="py-fun-property-size-op"></span><span id="index-6"></span><h3>size_op<a class="headerlink" href="#size-op" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-property-size-op"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">size_op</a><a class="headerlink" href="#size-op" title="Permalink to this headline">¶</a></h3>
 <p>The return value <em>p</em> is an <code class="docutils literal notranslate"><span class="pre">int</span></code>
 and is the number of atomic operations that are used to express
 the dependent variables as a function of the independent variables.</p>
 </div>
 <div class="section" id="size-order">
-<span id="py-fun-property-size-order"></span><span id="index-7"></span><h3>size_order<a class="headerlink" href="#size-order" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-property-size-order"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">size_order</a><a class="headerlink" href="#size-order" title="Permalink to this headline">¶</a></h3>
 <p>The return value <em>q</em> is an <code class="docutils literal notranslate"><span class="pre">int</span></code>
 and is the number of Taylor coefficients currently stored in <em>f</em> ,
 for every variable in the operation sequence corresponding to <em>f</em> .
@@ -276,11 +280,9 @@ These coefficients are computed by <a class="reference internal" href="py_fun_fo
 This is different from the other function properties in that it can change
 after each call to <em>f</em><code class="docutils literal notranslate"><span class="pre">.forward</span></code> ; see
 <a class="reference internal" href="py_fun_forward.html#py-fun-forward-p-size-order"><span class="std std-ref">size_order</span></a> in the forward mode section.</p>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="example">
-<span id="py-fun-property-example"></span><span id="index-8"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="py-fun-property-example"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id9">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="fun_property_xam_py.html#id1"><span class="std std-ref">fun_property_xam_py</span></a></p>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/python/cppad_py/fun_property.xsrst</span></code></p>

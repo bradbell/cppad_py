@@ -13,29 +13,8 @@ numeric_covid_19_xam_py
 
 Example Fitting an SEIRWD Model for Covid-19
 ############################################
-- :ref:`numeric_covid_19_xam_py.covariates`
-- :ref:`numeric_covid_19_xam_py.model_ode`
-    - :ref:`numeric_covid_19_xam_py.model_ode.beta(t)`
-    - :ref:`numeric_covid_19_xam_py.model_ode.other_rates`
-    - :ref:`numeric_covid_19_xam_py.model_ode.initial_values`
-    - :ref:`numeric_covid_19_xam_py.model_ode.ode_solver`
-- :ref:`numeric_covid_19_xam_py.unknown_parameters`
-    - :ref:`numeric_covid_19_xam_py.unknown_parameters.maximum_likelihood`
-    - :ref:`numeric_covid_19_xam_py.unknown_parameters.model_bounds`
-    - :ref:`numeric_covid_19_xam_py.unknown_parameters.actual_bounds`
-- :ref:`numeric_covid_19_xam_py.data`
-    - :ref:`numeric_covid_19_xam_py.data.sample_interval`
-    - :ref:`numeric_covid_19_xam_py.data.data_file`
-    - :ref:`numeric_covid_19_xam_py.data.coefficient_of_variation`
-    - :ref:`numeric_covid_19_xam_py.data.simulation`
-    - :ref:`numeric_covid_19_xam_py.data.weighted_residuals`
-- :ref:`numeric_covid_19_xam_py.random_seed`
-- :ref:`numeric_covid_19_xam_py.random_start`
-- :ref:`numeric_covid_19_xam_py.display_fit_results`
-    - :ref:`numeric_covid_19_xam_py.display_fit_results.plot`
-    - :ref:`numeric_covid_19_xam_py.display_fit_results.printout`
-- :ref:`numeric_covid_19_xam_py.debug_output`
-- :ref:`numeric_covid_19_xam_py.source_code`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: covariates

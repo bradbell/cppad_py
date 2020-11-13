@@ -2,6 +2,12 @@
 mixed_warning
 !!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   mixed_warning_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,10 +19,8 @@ mixed_warning
 
 Mixed Class Warnings
 ####################
-- :ref:`mixed_warning.syntax`
-- :ref:`mixed_warning.warning`
-- :ref:`mixed_warning.post_warning`
-- :ref:`mixed_warning.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -55,12 +59,6 @@ post_warning
 is a mixed class member function that posts a warning.
 It's *message* argument is an `str` describing the warning.
 It's main purpose is for testing.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   mixed_warning_xam_py
 
 .. meta::
    :keywords: example

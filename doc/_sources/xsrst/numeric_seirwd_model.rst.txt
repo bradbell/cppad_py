@@ -2,6 +2,12 @@
 numeric_seirwd_model
 !!!!!!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   numeric_seirwd_model_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,20 +19,8 @@ numeric_seirwd_model
 
 A Susceptible Exposed Infectious Recovered and Death Model
 ##########################################################
-- :ref:`numeric_seirwd_model.purpose`
-- :ref:`numeric_seirwd_model.syntax`
-- :ref:`numeric_seirwd_model.notation`
-- :ref:`numeric_seirwd_model.ode`
-- :ref:`numeric_seirwd_model.method`
-- :ref:`numeric_seirwd_model.t_all`
-- :ref:`numeric_seirwd_model.p_all`
-    - :ref:`numeric_seirwd_model.p_all.alpha`
-- :ref:`numeric_seirwd_model.initial`
-- :ref:`numeric_seirwd_model.n_step`
-- :ref:`numeric_seirwd_model.seirwd_all`
-- :ref:`numeric_seirwd_model.conservation_of_mass`
-- :ref:`numeric_seirwd_model.example`
-- :ref:`numeric_seirwd_model.source_code`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: purpose
@@ -247,12 +241,6 @@ Conservation of Mass
 ********************
 Note that the sum of S, E, I, R, W, and D should be constant; i.e.,
 up to numerical accuracy, it not depend on time.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   numeric_seirwd_model_xam_py
 
 .. meta::
    :keywords: example

@@ -2,6 +2,15 @@
 library
 !!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   a_double
+   vector
+   py_lib
+   cpp_lib
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,7 +22,8 @@ library
 
 The Cppad Py Libraries
 ######################
-- :ref:`library.children`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: children
@@ -24,15 +34,6 @@ The Cppad Py Libraries
 
 Children
 ********
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   a_double
-   vector
-   py_lib
-   cpp_lib
-
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

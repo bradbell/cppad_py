@@ -2,6 +2,12 @@
 whats_new_2020
 !!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   whats_new_2018
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,67 +19,8 @@ whats_new_2020
 
 CppAD Py Changes During 2020
 ############################
-- :ref:`whats_new_2020.previous_years`
-- :ref:`whats_new_2020.11-12`
-- :ref:`whats_new_2020.11-11`
-- :ref:`whats_new_2020.11-10`
-- :ref:`whats_new_2020.11-08`
-- :ref:`whats_new_2020.11-06`
-- :ref:`whats_new_2020.11-05`
-- :ref:`whats_new_2020.11-04`
-- :ref:`whats_new_2020.11-03`
-- :ref:`whats_new_2020.10-31`
-- :ref:`whats_new_2020.10-30`
-- :ref:`whats_new_2020.10-29`
-- :ref:`whats_new_2020.10-28`
-- :ref:`whats_new_2020.10-21`
-- :ref:`whats_new_2020.10-19`
-- :ref:`whats_new_2020.10-17`
-- :ref:`whats_new_2020.10-16`
-- :ref:`whats_new_2020.10-13`
-- :ref:`whats_new_2020.10-02`
-- :ref:`whats_new_2020.09-30`
-- :ref:`whats_new_2020.09-14`
-- :ref:`whats_new_2020.09-13`
-- :ref:`whats_new_2020.09-12`
-- :ref:`whats_new_2020.07-31`
-- :ref:`whats_new_2020.07-30`
-- :ref:`whats_new_2020.07-29`
-- :ref:`whats_new_2020.07-28`
-- :ref:`whats_new_2020.07-25`
-- :ref:`whats_new_2020.07-24`
-- :ref:`whats_new_2020.07-18`
-- :ref:`whats_new_2020.07-05`
-- :ref:`whats_new_2020.05-17`
-- :ref:`whats_new_2020.05-16`
-- :ref:`whats_new_2020.05-15`
-- :ref:`whats_new_2020.05-14`
-- :ref:`whats_new_2020.05-12`
-- :ref:`whats_new_2020.05-09`
-- :ref:`whats_new_2020.05-08`
-- :ref:`whats_new_2020.05-07`
-- :ref:`whats_new_2020.05-06`
-- :ref:`whats_new_2020.05-05`
-- :ref:`whats_new_2020.05-04`
-- :ref:`whats_new_2020.04-28`
-- :ref:`whats_new_2020.04-27`
-- :ref:`whats_new_2020.04-26`
-- :ref:`whats_new_2020.04-25`
-- :ref:`whats_new_2020.04-24`
-- :ref:`whats_new_2020.04-23`
-- :ref:`whats_new_2020.04-22`
-- :ref:`whats_new_2020.04-20`
-- :ref:`whats_new_2020.04-19`
-- :ref:`whats_new_2020.04-18`
-- :ref:`whats_new_2020.04-13`
-- :ref:`whats_new_2020.04-12`
-- :ref:`whats_new_2020.04-10`
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   whats_new_2018
+.. contents::
+   :local:
 
 .. meta::
    :keywords: previous, years

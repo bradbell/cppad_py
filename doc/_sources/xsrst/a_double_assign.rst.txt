@@ -2,6 +2,13 @@
 a_double_assign
 !!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   a_double_assign_xam_cpp
+   a_double_assign_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,12 +20,8 @@ a_double_assign
 
 a_double Assignment Operators
 #############################
-- :ref:`a_double_assign.syntax`
-- :ref:`a_double_assign.op`
-- :ref:`a_double_assign.ax`
-- :ref:`a_double_assign.ay`
-- :ref:`a_double_assign.y`
-- :ref:`a_double_assign.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -91,13 +94,6 @@ y
 This object has c++ prototype
 
 | |tab| ``const double&`` *y*
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   a_double_assign_xam_cpp
-   a_double_assign_xam_py
 
 .. meta::
    :keywords: example

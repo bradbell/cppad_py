@@ -184,43 +184,45 @@
             
   <div class="section" id="numeric-simple-inv">
 <h1>numeric_simple_inv<a class="headerlink" href="#numeric-simple-inv" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="an-ad-compatible-matrix-inverse-routine">
 <span id="id1"></span><h2>An AD Compatible Matrix Inverse Routine<a class="headerlink" href="#an-ad-compatible-matrix-inverse-routine" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#numeric-simple-inv-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-simple-inv-purpose"><span class="std std-ref">Purpose</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-simple-inv-a"><span class="std std-ref">A</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-simple-inv-ainv"><span class="std std-ref">Ainv</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-simple-inv-example"><span class="std std-ref">Example</span></a></p></li>
-<li><p><a class="reference internal" href="#numeric-simple-inv-source-code"><span class="std std-ref">Source Code</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#purpose" id="id3">Purpose</a></p></li>
+<li><p><a class="reference internal" href="#a" id="id4">A</a></p></li>
+<li><p><a class="reference internal" href="#ainv" id="id5">Ainv</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id6">Example</a></p></li>
+<li><p><a class="reference internal" href="#source-code" id="id7">Source Code</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="numeric-simple-inv-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-simple-inv-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <p><em>Ainv</em> =  <code class="docutils literal notranslate"><span class="pre">simple_inv</span></code> ( <em>A</em> )</p>
 </div>
 <div class="section" id="purpose">
-<span id="numeric-simple-inv-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-simple-inv-purpose"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">Purpose</a><a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 <p>This routine can be used with <code class="docutils literal notranslate"><span class="pre">ad_double</span></code></p>
 </div>
 <div class="section" id="a">
-<span id="numeric-simple-inv-a"></span><h3>A<a class="headerlink" href="#a" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-simple-inv-a"></span><h3><a class="toc-backref" href="#id4">A</a><a class="headerlink" href="#a" title="Permalink to this headline">¶</a></h3>
 <p>This must be an invertible square matrix (no singular detection is done).
 The type of its elements can be <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">a_double</span></code> .</p>
 </div>
 <div class="section" id="ainv">
-<span id="numeric-simple-inv-ainv"></span><span id="index-3"></span><h3>Ainv<a class="headerlink" href="#ainv" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-simple-inv-ainv"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id5">Ainv</a><a class="headerlink" href="#ainv" title="Permalink to this headline">¶</a></h3>
 <p>This is the matrix inverse of <em>A</em> .</p>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="example">
-<span id="numeric-simple-inv-example"></span><span id="index-4"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-simple-inv-example"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id6">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="numeric_simple_inv_xam_py.html#id1"><span class="std std-ref">numeric_simple_inv_xam_py</span></a></p>
 </div>
 <div class="section" id="source-code">
-<span id="numeric-simple-inv-source-code"></span><span id="index-5"></span><h3>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
+<span id="numeric-simple-inv-source-code"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id7">Source Code</a><a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
 <p>When viewing the source code below it is important to know that
 optimizes out multiplication by the constant one while recording a function.
 It also optimizes out both addition and multiplication by the constant zero.</p>

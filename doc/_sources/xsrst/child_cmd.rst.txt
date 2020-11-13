@@ -2,6 +2,12 @@
 child_cmd
 !!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   no_parent_exam
+
 .. meta::
    :keywords: child_cmd, children, commands
 
@@ -11,14 +17,8 @@ child_cmd
 
 Children Commands
 #################
-- :ref:`child_cmd.syntax`
-    - :ref:`child_cmd.syntax.children`
-    - :ref:`child_cmd.syntax.child_list`
-    - :ref:`child_cmd.syntax.child_table`
-- :ref:`child_cmd.purpose`
-- :ref:`child_cmd.file_names`
-- :ref:`child_cmd.links`
-- :ref:`child_cmd.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -133,12 +133,6 @@ You can place a heading directly before the links to make them easier to find.
 
 Example
 *******
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   no_parent_exam
-
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

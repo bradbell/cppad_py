@@ -2,6 +2,12 @@
 numeric_ode_multi_step
 !!!!!!!!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   numeric_ode_multi_step_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,22 +19,8 @@ numeric_ode_multi_step
 
 Multiple Ode Steps
 ##################
-- :ref:`numeric_ode_multi_step.syntax`
-- :ref:`numeric_ode_multi_step.purpose`
-- :ref:`numeric_ode_multi_step.one_step`
-    - :ref:`numeric_ode_multi_step.one_step.t0`
-    - :ref:`numeric_ode_multi_step.one_step.y0`
-    - :ref:`numeric_ode_multi_step.one_step.t_step`
-    - :ref:`numeric_ode_multi_step.one_step.y1`
-- :ref:`numeric_ode_multi_step.fun`
-    - :ref:`numeric_ode_multi_step.fun.fun.set_t_all_index(index)`
-    - :ref:`numeric_ode_multi_step.fun.fun.f(t,_y)`
-    - :ref:`numeric_ode_multi_step.fun.one_step`
-- :ref:`numeric_ode_multi_step.t_all`
-- :ref:`numeric_ode_multi_step.y_init`
-- :ref:`numeric_ode_multi_step.y_all`
-- :ref:`numeric_ode_multi_step.example`
-- :ref:`numeric_ode_multi_step.source_code`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -221,12 +213,6 @@ This is the approximate solution for :math:`y(t)` at all of the
 times specified by *t_all* as a numpy array.
 The value *y_all* [ *i* , *j* ] is the value of the j-th
 component of :math:`y(t)` at time *t_all* [ *i* ] .
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   numeric_ode_multi_step_xam_py
 
 .. meta::
    :keywords: example

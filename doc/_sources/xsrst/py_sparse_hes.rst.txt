@@ -2,6 +2,12 @@
 py_sparse_hes
 !!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   sparse_hes_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,17 +19,8 @@ py_sparse_hes
 
 Computing Sparse Hessians
 #########################
-- :ref:`py_sparse_hes.syntax`
-- :ref:`py_sparse_hes.purpose`
-- :ref:`py_sparse_hes.f`
-- :ref:`py_sparse_hes.subset`
-- :ref:`py_sparse_hes.x`
-- :ref:`py_sparse_hes.r`
-- :ref:`py_sparse_hes.pattern`
-- :ref:`py_sparse_hes.work`
-- :ref:`py_sparse_hes.n_sweep`
-- :ref:`py_sparse_hes.uses_forward`
-- :ref:`py_sparse_hes.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -199,12 +196,6 @@ the zero order coefficients correspond to
 | |tab| *f*\ ``.forward(0`` , *x* )
 
 All the other forward mode coefficients are unspecified.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   sparse_hes_xam_py
 
 .. meta::
    :keywords: example

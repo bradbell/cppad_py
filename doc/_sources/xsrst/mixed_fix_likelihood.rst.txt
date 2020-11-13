@@ -2,6 +2,12 @@
 mixed_fix_likelihood
 !!!!!!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   mixed_fix_likelihood_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,12 +19,8 @@ mixed_fix_likelihood
 
 Fixed Effects Likelihood
 ########################
-- :ref:`mixed_fix_likelihood.syntax`
-- :ref:`mixed_fix_likelihood.fix_likelihood`
-- :ref:`mixed_fix_likelihood.theta`
-- :ref:`mixed_fix_likelihood.v`
-- :ref:`mixed_fix_likelihood.none`
-- :ref:`mixed_fix_likelihood.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -91,12 +93,6 @@ None
 The value *fix_likelihood* = ``None``
 corresponds to the fixed effects likelihood
 being constant w.r.t. :math:`\theta`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   mixed_fix_likelihood_xam_py
 
 .. meta::
    :keywords: example

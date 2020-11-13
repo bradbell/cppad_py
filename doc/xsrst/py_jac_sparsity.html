@@ -205,40 +205,42 @@
             
   <div class="section" id="py-jac-sparsity">
 <h1>py_jac_sparsity<a class="headerlink" href="#py-jac-sparsity" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="jacobian-sparsity-patterns">
 <span id="id1"></span><h2>Jacobian Sparsity Patterns<a class="headerlink" href="#jacobian-sparsity-patterns" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#py-jac-sparsity-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#py-jac-sparsity-purpose"><span class="std std-ref">Purpose</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#py-jac-sparsity-purpose-for-jac-sparsity"><span class="std std-ref">for_jac_sparsity</span></a></p></li>
-<li><p><a class="reference internal" href="#py-jac-sparsity-purpose-rev-jac-sparsity"><span class="std std-ref">rev_jac_sparsity</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#purpose" id="id3">Purpose</a></p>
+<ul>
+<li><p><a class="reference internal" href="#for-jac-sparsity" id="id4">for_jac_sparsity</a></p></li>
+<li><p><a class="reference internal" href="#rev-jac-sparsity" id="id5">rev_jac_sparsity</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><p><a class="reference internal" href="#py-jac-sparsity-x"><span class="std std-ref">x</span></a></p></li>
-<li><p><a class="reference internal" href="#py-jac-sparsity-f"><span class="std std-ref">f</span></a></p></li>
-<li><p><a class="reference internal" href="#py-jac-sparsity-pattern-in"><span class="std std-ref">pattern_in</span></a></p></li>
-<li><p><a class="reference internal" href="#py-jac-sparsity-pattern-out"><span class="std std-ref">pattern_out</span></a></p></li>
-<li><p><a class="reference internal" href="#py-jac-sparsity-sparsity-for-entire-jacobian"><span class="std std-ref">Sparsity for Entire Jacobian</span></a></p></li>
-<li><p><a class="reference internal" href="#py-jac-sparsity-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#x" id="id6">x</a></p></li>
+<li><p><a class="reference internal" href="#f" id="id7">f</a></p></li>
+<li><p><a class="reference internal" href="#pattern-in" id="id8">pattern_in</a></p></li>
+<li><p><a class="reference internal" href="#pattern-out" id="id9">pattern_out</a></p></li>
+<li><p><a class="reference internal" href="#sparsity-for-entire-jacobian" id="id10">Sparsity for Entire Jacobian</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id11">Example</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="py-jac-sparsity-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="py-jac-sparsity-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><em>f</em><code class="docutils literal notranslate"><span class="pre">.for_jac_sparsity</span></code> ( <em>pattern_in</em> , <em>pattern_out</em> )</div>
 <div class="line"><em>f</em><code class="docutils literal notranslate"><span class="pre">.rev_jac_sparsity</span></code> ( <em>pattern_in</em> , <em>pattern_out</em> )</div>
 </div>
 </div>
 <div class="section" id="purpose">
-<span id="py-jac-sparsity-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<span id="py-jac-sparsity-purpose"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">Purpose</a><a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 <p>We use <span class="math notranslate nohighlight">\(F : \B{R}^n \rightarrow \B{R}^m\)</span> to denote the
 function corresponding to the operation sequence stored in <em>f</em> .</p>
 <div class="section" id="for-jac-sparsity">
-<span id="py-jac-sparsity-purpose-for-jac-sparsity"></span><span id="index-3"></span><h4>for_jac_sparsity<a class="headerlink" href="#for-jac-sparsity" title="Permalink to this headline">¶</a></h4>
+<span id="py-jac-sparsity-purpose-for-jac-sparsity"></span><span id="index-3"></span><h4><a class="toc-backref" href="#id4">for_jac_sparsity</a><a class="headerlink" href="#for-jac-sparsity" title="Permalink to this headline">¶</a></h4>
 <p>Fix <span class="math notranslate nohighlight">\(R \in \B{R}^{n \times \ell}\)</span> and define the function</p>
 <div class="math notranslate nohighlight">
 \[J(x) = F^{(1)} ( x ) * R\]</div>
@@ -246,7 +248,7 @@ function corresponding to the operation sequence stored in <em>f</em> .</p>
 <code class="docutils literal notranslate"><span class="pre">for_jac_sparsity</span></code> computes a sparsity pattern for <span class="math notranslate nohighlight">\(J(x)\)</span>.</p>
 </div>
 <div class="section" id="rev-jac-sparsity">
-<span id="py-jac-sparsity-purpose-rev-jac-sparsity"></span><span id="index-4"></span><h4>rev_jac_sparsity<a class="headerlink" href="#rev-jac-sparsity" title="Permalink to this headline">¶</a></h4>
+<span id="py-jac-sparsity-purpose-rev-jac-sparsity"></span><span id="index-4"></span><h4><a class="toc-backref" href="#id5">rev_jac_sparsity</a><a class="headerlink" href="#rev-jac-sparsity" title="Permalink to this headline">¶</a></h4>
 <p>Fix <span class="math notranslate nohighlight">\(R \in \B{R}^{\ell \times m}\)</span> and define the function</p>
 <div class="math notranslate nohighlight">
 \[J(x) = R * F^{(1)} ( x )\]</div>
@@ -255,13 +257,13 @@ function corresponding to the operation sequence stored in <em>f</em> .</p>
 </div>
 </div>
 <div class="section" id="x">
-<span id="py-jac-sparsity-x"></span><span id="index-5"></span><h3>x<a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h3>
+<span id="py-jac-sparsity-x"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">x</a><a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h3>
 <p>Note that a sparsity pattern for <span class="math notranslate nohighlight">\(J(x)\)</span> corresponds to the
 operation sequence stored in <em>f</em> and does not depend on
 the argument <em>x</em> .</p>
 </div>
 <div class="section" id="f">
-<span id="py-jac-sparsity-f"></span><span id="index-6"></span><h3>f<a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
+<span id="py-jac-sparsity-f"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">f</a><a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
 <p>This object must have been returned by a previous call to the python
 <a class="reference internal" href="py_fun_ctor.html#id1"><span class="std std-ref">d_fun</span></a> constructor.
 The object <em>f</em> is not constant when using
@@ -272,13 +274,13 @@ is held in <em>f</em> for possible later use during
 reverse Hessian sparsity calculations.</p>
 </div>
 <div class="section" id="pattern-in">
-<span id="py-jac-sparsity-pattern-in"></span><span id="index-7"></span><h3>pattern_in<a class="headerlink" href="#pattern-in" title="Permalink to this headline">¶</a></h3>
+<span id="py-jac-sparsity-pattern-in"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">pattern_in</a><a class="headerlink" href="#pattern-in" title="Permalink to this headline">¶</a></h3>
 <p>This argument must have be a <a class="reference internal" href="py_sparse_rc.html#py-sparse-rc-pattern"><span class="std std-ref">pattern</span></a>
 returned by the <code class="docutils literal notranslate"><span class="pre">sparse_rc</span></code> constructor.
 It specifies the sparsity pattern for <span class="math notranslate nohighlight">\(R\)</span>.</p>
 </div>
 <div class="section" id="pattern-out">
-<span id="py-jac-sparsity-pattern-out"></span><span id="index-8"></span><h3>pattern_out<a class="headerlink" href="#pattern-out" title="Permalink to this headline">¶</a></h3>
+<span id="py-jac-sparsity-pattern-out"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id9">pattern_out</a><a class="headerlink" href="#pattern-out" title="Permalink to this headline">¶</a></h3>
 <p>This argument must have be a <a class="reference internal" href="py_sparse_rc.html#py-sparse-rc-pattern"><span class="std std-ref">pattern</span></a>
 returned by the <code class="docutils literal notranslate"><span class="pre">sparse_rc</span></code> constructor.
 This input value of <em>pattern_out</em> does not matter.
@@ -286,15 +288,13 @@ Upon return <em>pattern_out</em> is a sparsity pattern for
 <span class="math notranslate nohighlight">\(J(x)\)</span>.</p>
 </div>
 <div class="section" id="sparsity-for-entire-jacobian">
-<span id="py-jac-sparsity-sparsity-for-entire-jacobian"></span><span id="index-9"></span><h3>Sparsity for Entire Jacobian<a class="headerlink" href="#sparsity-for-entire-jacobian" title="Permalink to this headline">¶</a></h3>
+<span id="py-jac-sparsity-sparsity-for-entire-jacobian"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id10">Sparsity for Entire Jacobian</a><a class="headerlink" href="#sparsity-for-entire-jacobian" title="Permalink to this headline">¶</a></h3>
 <p>Suppose that <span class="math notranslate nohighlight">\(R\)</span> is the identity matrix.
 In this case, <em>pattern_out</em> is a sparsity pattern for
 <span class="math notranslate nohighlight">\(F^{(1)} ( x )\)</span>.</p>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="example">
-<span id="py-jac-sparsity-example"></span><span id="index-10"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="py-jac-sparsity-example"></span><span id="index-10"></span><h3><a class="toc-backref" href="#id11">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="sparse_jac_pattern_xam_py.html#id1"><span class="std std-ref">python</span></a></p>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/python/cppad_py/jac_sparsity.xsrst</span></code></p>

@@ -2,6 +2,12 @@
 mixed_ctor
 !!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   mixed_ctor_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,20 +19,8 @@ mixed_ctor
 
 Mixed Class Constructor
 #######################
-- :ref:`mixed_ctor.syntax`
-- :ref:`mixed_ctor.mixed_obj`
-- :ref:`mixed_ctor.fixed_init_(random_init)`
-- :ref:`mixed_ctor.random_vec`
-- :ref:`mixed_ctor.n_fixed`
-- :ref:`mixed_ctor.n_random`
-- :ref:`mixed_ctor.quasi_fixed`
-- :ref:`mixed_ctor.bool_sparsity`
-- :ref:`mixed_ctor.a_rcv`
-- :ref:`mixed_ctor.warning`
-- :ref:`mixed_ctor.fix_likelihood`
-- :ref:`mixed_ctor.fix_constraint`
-- :ref:`mixed_ctor.ran_likelihood`
-- :ref:`mixed_ctor.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -199,12 +193,6 @@ ran_likelihood
 is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
 of the random effects likelihood; see
 :ref:`mixed_ran_likelihood`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   mixed_ctor_xam_py
 
 .. meta::
    :keywords: example

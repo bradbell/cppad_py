@@ -13,6 +13,8 @@ fun_property_xam_cpp
 
 C++: function Properties: Example and Test
 ##########################################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../example/cplusplus/fun_property_xam.cpp

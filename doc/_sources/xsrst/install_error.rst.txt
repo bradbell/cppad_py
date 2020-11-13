@@ -13,13 +13,8 @@ install_error
 
 Error Messages During Installation
 ##################################
-- :ref:`install_error.swig`
-- :ref:`install_error.cppad_py`
-- :ref:`install_error.libcppad_lib`
-- :ref:`install_error.fortify_source`
-- :ref:`install_error.stdio.h`
-- :ref:`install_error.include_mixed`
-    - :ref:`install_error.include_mixed.java`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: swig

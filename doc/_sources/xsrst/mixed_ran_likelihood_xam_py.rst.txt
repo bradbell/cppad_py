@@ -13,10 +13,8 @@ mixed_ran_likelihood_xam_py
 
 ran_likelihood: Example and Test
 ################################
-- :ref:`mixed_ran_likelihood_xam_py.p(y|theta,_u)`
-- :ref:`mixed_ran_likelihood_xam_py.p(u|theta)`
-- :ref:`mixed_ran_likelihood_xam_py.p(y|theta)`
-- :ref:`mixed_ran_likelihood_xam_py.optimal_fixed_effects`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: p(y|theta, , u)

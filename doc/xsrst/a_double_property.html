@@ -198,28 +198,30 @@
             
   <div class="section" id="a-double-property">
 <h1>a_double_property<a class="headerlink" href="#a-double-property" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="properties-of-an-a-double-object">
 <span id="id1"></span><h2>Properties of an a_double Object<a class="headerlink" href="#properties-of-an-a-double-object" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#a-double-property-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#a-double-property-ad"><span class="std std-ref">ad</span></a></p></li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#a-double-property-value"><span class="std std-ref">value</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#a-double-property-value-restriction"><span class="std std-ref">Restriction</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#ad" id="id3">ad</a></p></li>
+<li><p><a class="reference internal" href="#value" id="id4">value</a></p>
+<ul>
+<li><p><a class="reference internal" href="#restriction" id="id5">Restriction</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><p><a class="reference internal" href="#a-double-property-parameter"><span class="std std-ref">parameter</span></a></p></li>
-<li><p><a class="reference internal" href="#a-double-property-variable"><span class="std std-ref">variable</span></a></p></li>
-<li><p><a class="reference internal" href="#a-double-property-near-equal"><span class="std std-ref">near_equal</span></a></p></li>
-<li><p><a class="reference internal" href="#a-double-property-var2par"><span class="std std-ref">var2par</span></a></p></li>
-<li><p><a class="reference internal" href="#a-double-property-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#parameter" id="id6">parameter</a></p></li>
+<li><p><a class="reference internal" href="#variable" id="id7">variable</a></p></li>
+<li><p><a class="reference internal" href="#near-equal" id="id8">near_equal</a></p></li>
+<li><p><a class="reference internal" href="#var2par" id="id9">var2par</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id10">Example</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="a-double-property-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-property-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><em>d</em> = <em>ad</em><code class="docutils literal notranslate"><span class="pre">.value</span></code> ()</div>
 <div class="line"><em>p</em> = <em>ad</em><code class="docutils literal notranslate"><span class="pre">.parameter</span></code> ()</div>
@@ -229,21 +231,21 @@
 </div>
 </div>
 <div class="section" id="ad">
-<span id="a-double-property-ad"></span><span id="index-2"></span><h3>ad<a class="headerlink" href="#ad" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-property-ad"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">ad</a><a class="headerlink" href="#ad" title="Permalink to this headline">¶</a></h3>
 <p>This object has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">a_double&amp;</span></code> <em>ad</em></div>
 </div>
 </div>
 <div class="section" id="value">
-<span id="a-double-property-value"></span><span id="index-3"></span><h3>value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-property-value"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">value</a><a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h3>
 <p>The result <em>d</em> has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">double</span></code> <em>d</em></div>
 </div>
 <p>It is the value of <em>ad</em> , as a constant function.</p>
 <div class="section" id="restriction">
-<span id="a-double-property-value-restriction"></span><span id="index-4"></span><h4>Restriction<a class="headerlink" href="#restriction" title="Permalink to this headline">¶</a></h4>
+<span id="a-double-property-value-restriction"></span><span id="index-4"></span><h4><a class="toc-backref" href="#id5">Restriction</a><a class="headerlink" href="#restriction" title="Permalink to this headline">¶</a></h4>
 <p>The object <em>ad</em> must not depend on the
 <a class="reference internal" href="cpp_independent.html#id1"><span class="std std-ref">independent</span></a>
 variables when <em>ad</em><code class="docutils literal notranslate"><span class="pre">.value</span></code> () is called.
@@ -254,7 +256,7 @@ before you can access its value; see
 </div>
 </div>
 <div class="section" id="parameter">
-<span id="a-double-property-parameter"></span><span id="index-5"></span><h3>parameter<a class="headerlink" href="#parameter" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-property-parameter"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">parameter</a><a class="headerlink" href="#parameter" title="Permalink to this headline">¶</a></h3>
 <p>The result <em>p</em> has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">bool</span></code> <em>p</em></div>
@@ -263,7 +265,7 @@ before you can access its value; see
 <em>ad</em> not depend on the independent variables.</p>
 </div>
 <div class="section" id="variable">
-<span id="a-double-property-variable"></span><span id="index-6"></span><h3>variable<a class="headerlink" href="#variable" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-property-variable"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">variable</a><a class="headerlink" href="#variable" title="Permalink to this headline">¶</a></h3>
 <p>The result <em>v</em> has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">bool</span></code> <em>v</em></div>
@@ -272,7 +274,7 @@ before you can access its value; see
 <em>ad</em> depends on the independent variables.</p>
 </div>
 <div class="section" id="near-equal">
-<span id="a-double-property-near-equal"></span><span id="index-7"></span><h3>near_equal<a class="headerlink" href="#near-equal" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-property-near-equal"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">near_equal</a><a class="headerlink" href="#near-equal" title="Permalink to this headline">¶</a></h3>
 <p>The argument <em>aother</em> ,
 and the result <em>e</em> , c++ have prototype</p>
 <div class="line-block">
@@ -289,7 +291,7 @@ To be specific, the result is</p>
 to the type <code class="docutils literal notranslate"><span class="pre">double</span></code> .</p>
 </div>
 <div class="section" id="var2par">
-<span id="a-double-property-var2par"></span><span id="index-8"></span><h3>var2par<a class="headerlink" href="#var2par" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-property-var2par"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id9">var2par</a><a class="headerlink" href="#var2par" title="Permalink to this headline">¶</a></h3>
 <p>The result has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">a_double</span></code> <em>ap</em></div>
@@ -298,11 +300,9 @@ to the type <code class="docutils literal notranslate"><span class="pre">double<
 ( <em>ad</em> may or may not be a variable).
 This can be useful when you want to access the value of <em>ad</em>
 while is a variable; <a class="reference internal" href="#a-double-property-value"><span class="std std-ref">value</span></a> above.</p>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="example">
-<span id="a-double-property-example"></span><span id="index-9"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-property-example"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id10">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="a_double_property_xam_cpp.html#id1"><span class="std std-ref">c++</span></a>,
 <a class="reference internal" href="a_double_property_xam_py.html#id1"><span class="std std-ref">python</span></a>.</p>
 <hr class="docutils" />

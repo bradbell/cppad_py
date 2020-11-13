@@ -2,6 +2,12 @@
 py_fun_jacobian
 !!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_jacobian_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,12 +19,8 @@ py_fun_jacobian
 
 Jacobian of an AD Function
 ##########################
-- :ref:`py_fun_jacobian.syntax`
-- :ref:`py_fun_jacobian.f`
-- :ref:`py_fun_jacobian.f(x)`
-- :ref:`py_fun_jacobian.x`
-- :ref:`py_fun_jacobian.j`
-- :ref:`py_fun_jacobian.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -95,12 +97,6 @@ and *j* between zero and *n* -1 ,
 .. math::
 
    J [ i,  j ] = \frac{ \partial f_i }{ \partial x_j } (x)
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_jacobian_xam_py
 
 .. meta::
    :keywords: example

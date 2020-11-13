@@ -2,6 +2,16 @@
 cppad_py
 !!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   setup_py
+   numeric_xam
+   library
+   xsrst_py
+   whats_new_2020
+
 .. include:: ../preamble.rst
 
 .. comment:  -------------------------------------------------------------
@@ -19,23 +29,17 @@ cppad_py
 
 A C++ Object Library and Python Interface to CppAD
 ##################################################
-- :ref:`cppad_py.version_2020.11.12`
-- :ref:`cppad_py.git_repository`
-- :ref:`cppad_py.purpose`
-- :ref:`cppad_py.getting_started`
-- :ref:`cppad_py.numerical_examples`
-- :ref:`cppad_py.c++_function_speed`
-- :ref:`cppad_py.license`
-- :ref:`cppad_py.children`
+.. contents::
+   :local:
 
 .. meta::
-   :keywords: version, 2020.11.12
+   :keywords: version, 2020.11.13
 
-.. index:: version, 2020.11.12
+.. index:: version, 2020.11.13
 
-.. _cppad_py.version_2020.11.12:
+.. _cppad_py.version_2020.11.13:
 
-Version 2020.11.12
+Version 2020.11.13
 ******************
 
 .. meta::
@@ -130,16 +134,6 @@ GNU General Public License version 3.0 or later see
 
 Children
 ********
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   setup_py
-   numeric_xam
-   library
-   xsrst_py
-   whats_new_2020
-
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

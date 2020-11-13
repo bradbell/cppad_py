@@ -205,32 +205,36 @@
             
   <div class="section" id="cpp-sparse-hes">
 <h1>cpp_sparse_hes<a class="headerlink" href="#cpp-sparse-hes" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="computing-sparse-hessians">
 <span id="id1"></span><h2>Computing Sparse Hessians<a class="headerlink" href="#computing-sparse-hessians" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#cpp-sparse-hes-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-sparse-hes-purpose"><span class="std std-ref">Purpose</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-sparse-hes-f"><span class="std std-ref">f</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-sparse-hes-subset"><span class="std std-ref">subset</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-sparse-hes-x"><span class="std std-ref">x</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-sparse-hes-r"><span class="std std-ref">r</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-sparse-hes-pattern"><span class="std std-ref">pattern</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-sparse-hes-work"><span class="std std-ref">work</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-sparse-hes-n-sweep"><span class="std std-ref">n_sweep</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-sparse-hes-uses-forward"><span class="std std-ref">Uses Forward</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-sparse-hes-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#purpose" id="id3">Purpose</a></p></li>
+<li><p><a class="reference internal" href="#f" id="id4">f</a></p></li>
+<li><p><a class="reference internal" href="#subset" id="id5">subset</a></p></li>
+<li><p><a class="reference internal" href="#x" id="id6">x</a></p></li>
+<li><p><a class="reference internal" href="#r" id="id7">r</a></p></li>
+<li><p><a class="reference internal" href="#pattern" id="id8">pattern</a></p></li>
+<li><p><a class="reference internal" href="#work" id="id9">work</a></p></li>
+<li><p><a class="reference internal" href="#n-sweep" id="id10">n_sweep</a></p></li>
+<li><p><a class="reference internal" href="#uses-forward" id="id11">Uses Forward</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id12">Example</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="cpp-sparse-hes-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-sparse-hes-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><em>work</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py::sparse_hes_work</span></code> ()</div>
 <div class="line"><em>n_sweep</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.sparse_hes</span></code> ( <em>subset</em> , <em>x</em> , <em>r</em> , <em>pattern</em> , <em>work</em> )</div>
 </div>
 </div>
 <div class="section" id="purpose">
-<span id="cpp-sparse-hes-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-sparse-hes-purpose"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">Purpose</a><a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 <p>We use <span class="math notranslate nohighlight">\(F : \B{R}^n \rightarrow \B{R}^m\)</span> to denote the
 function corresponding to <em>f</em> .
 Given a vector <span class="math notranslate nohighlight">\(r \in \B{R}^m\)</span>, define</p>
@@ -240,7 +244,7 @@ Given a vector <span class="math notranslate nohighlight">\(r \in \B{R}^m\)</spa
 of the Hessian <span class="math notranslate nohighlight">\(H(x)\)</span>.</p>
 </div>
 <div class="section" id="f">
-<span id="cpp-sparse-hes-f"></span><span id="index-3"></span><h3>f<a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-sparse-hes-f"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">f</a><a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
 <p>This object has prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">ADFun</span></code> <em>&lt;Base&gt;</em> <em>f</em></div>
@@ -250,7 +254,7 @@ by this operation; see
 <a class="reference internal" href="#cpp-sparse-hes-uses-forward"><span class="std std-ref">uses_forward</span></a> below.</p>
 </div>
 <div class="section" id="subset">
-<span id="cpp-sparse-hes-subset"></span><span id="index-4"></span><h3>subset<a class="headerlink" href="#subset" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-sparse-hes-subset"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">subset</a><a class="headerlink" href="#subset" title="Permalink to this headline">¶</a></h3>
 <p>This argument has prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">sparse_rcv&amp;</span></code> <em>subset</em></div>
@@ -266,7 +270,7 @@ All of the row, column pairs in <em>subset</em> must also appear in
 <em>pattern</em> ; i.e., they must be possibly non-zero.</p>
 </div>
 <div class="section" id="x">
-<span id="cpp-sparse-hes-x"></span><span id="index-5"></span><h3>x<a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-sparse-hes-x"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">x</a><a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h3>
 <p>This argument has prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">vec_double&amp;</span></code> <em>x</em></div>
@@ -275,7 +279,7 @@ All of the row, column pairs in <em>subset</em> must also appear in
 It specifies the point at which to evaluate the Hessian <span class="math notranslate nohighlight">\(H(x)\)</span>.</p>
 </div>
 <div class="section" id="r">
-<span id="cpp-sparse-hes-r"></span><span id="index-6"></span><h3>r<a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-sparse-hes-r"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">r</a><a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h3>
 <p>This argument has prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">vec_double&amp;</span></code> <em>r</em></div>
@@ -285,7 +289,7 @@ It specifies the multiplier for each component of <span class="math notranslate 
 i.e., <span class="math notranslate nohighlight">\(r_i\)</span> is the multiplier for <span class="math notranslate nohighlight">\(F_i (x)\)</span>.</p>
 </div>
 <div class="section" id="pattern">
-<span id="cpp-sparse-hes-pattern"></span><span id="index-7"></span><h3>pattern<a class="headerlink" href="#pattern" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-sparse-hes-pattern"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">pattern</a><a class="headerlink" href="#pattern" title="Permalink to this headline">¶</a></h3>
 <p>This argument has prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">sparse_rc&amp;</span></code> <em>pattern</em></div>
@@ -297,7 +301,7 @@ This argument is not used (and need not satisfy any conditions),
 when <a class="reference internal" href="#cpp-sparse-hes-work"><span class="std std-ref">work</span></a> is non-empty.</p>
 </div>
 <div class="section" id="work">
-<span id="cpp-sparse-hes-work"></span><span id="index-8"></span><h3>work<a class="headerlink" href="#work" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-sparse-hes-work"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id9">work</a><a class="headerlink" href="#work" title="Permalink to this headline">¶</a></h3>
 <p>This argument has prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">sparse_hes_work&amp;</span></code> <em>work</em></div>
@@ -312,7 +316,7 @@ If either of these values change, use <em>work</em><code class="docutils literal
 empty this structure.</p>
 </div>
 <div class="section" id="n-sweep">
-<span id="cpp-sparse-hes-n-sweep"></span><span id="index-9"></span><h3>n_sweep<a class="headerlink" href="#n-sweep" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-sparse-hes-n-sweep"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id10">n_sweep</a><a class="headerlink" href="#n-sweep" title="Permalink to this headline">¶</a></h3>
 <p>The return value <em>n_sweep</em> has prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>n_sweep</em></div>
@@ -326,7 +330,7 @@ not counting the zero order forward sweep,
 or combining multiple columns and rows into a single sweep.</p>
 </div>
 <div class="section" id="uses-forward">
-<span id="cpp-sparse-hes-uses-forward"></span><span id="index-10"></span><h3>Uses Forward<a class="headerlink" href="#uses-forward" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-sparse-hes-uses-forward"></span><span id="index-10"></span><h3><a class="toc-backref" href="#id11">Uses Forward</a><a class="headerlink" href="#uses-forward" title="Permalink to this headline">¶</a></h3>
 <p>After each call to <a class="reference internal" href="cpp_fun_forward.html#id1"><span class="std std-ref">cpp_fun_forward</span></a>,
 the object <em>f</em> contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
@@ -336,11 +340,9 @@ the zero order coefficients correspond to</p>
 <div class="line">        <em>f</em><code class="docutils literal notranslate"><span class="pre">.forward(0</span></code> , <em>x</em> )</div>
 </div>
 <p>All the other forward mode coefficients are unspecified.</p>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="example">
-<span id="cpp-sparse-hes-example"></span><span id="index-11"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-sparse-hes-example"></span><span id="index-11"></span><h3><a class="toc-backref" href="#id12">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="sparse_hes_xam_cpp.html#id1"><span class="std std-ref">sparse_hes_xam_cpp</span></a></p>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/sparse.cpp</span></code></p>

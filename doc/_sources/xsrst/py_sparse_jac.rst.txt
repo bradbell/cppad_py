@@ -2,6 +2,12 @@
 py_sparse_jac
 !!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   sparse_jac_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,18 +19,8 @@ py_sparse_jac
 
 Computing Sparse Jacobians
 ##########################
-- :ref:`py_sparse_jac.syntax`
-- :ref:`py_sparse_jac.purpose`
-- :ref:`py_sparse_jac.sparse_jac_for`
-- :ref:`py_sparse_jac.sparse_jac_rev`
-- :ref:`py_sparse_jac.f`
-- :ref:`py_sparse_jac.subset`
-- :ref:`py_sparse_jac.x`
-- :ref:`py_sparse_jac.pattern`
-- :ref:`py_sparse_jac.work`
-- :ref:`py_sparse_jac.n_sweep`
-- :ref:`py_sparse_jac.uses_forward`
-- :ref:`py_sparse_jac.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -210,12 +206,6 @@ the zero order coefficients correspond to
 | |tab| *f*\ ``.forward(0`` , *x* )
 
 All the other forward mode coefficients are unspecified.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   sparse_jac_xam_py
 
 .. meta::
    :keywords: example

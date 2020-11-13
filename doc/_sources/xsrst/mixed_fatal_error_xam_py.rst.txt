@@ -13,6 +13,8 @@ mixed_fatal_error_xam_py
 
 fatal_error: Example and Test
 #############################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../example/python/mixed/fatal_error_xam.py

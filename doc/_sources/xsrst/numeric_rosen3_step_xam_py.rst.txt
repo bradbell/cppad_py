@@ -13,11 +13,8 @@ numeric_rosen3_step_xam_py
 
 Example Computing Derivative A Rosenbrock Ode Solution
 ######################################################
-- :ref:`numeric_rosen3_step_xam_py.y(t,_x)`
-- :ref:`numeric_rosen3_step_xam_py.first_ode`
-- :ref:`numeric_rosen3_step_xam_py.second_ode`
-- :ref:`numeric_rosen3_step_xam_py.derivative_of_solution`
-- :ref:`numeric_rosen3_step_xam_py.source_code`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: y(t, , x)

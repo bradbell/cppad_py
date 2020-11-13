@@ -2,6 +2,12 @@
 suspend_cmd
 !!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   suspend_exam
+
 .. meta::
    :keywords: suspend_cmd, suspend, resume, commands
 
@@ -11,9 +17,8 @@ suspend_cmd
 
 Suspend and Resume Commands
 ###########################
-- :ref:`suspend_cmd.syntax`
-- :ref:`suspend_cmd.purpose`
-- :ref:`suspend_cmd.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -52,10 +57,8 @@ spell checking.
 
 Example
 *******
-.. toctree::
-   :maxdepth: 1
 
-   suspend_exam
+-  :ref:`suspend_exam`
 
 ----
 

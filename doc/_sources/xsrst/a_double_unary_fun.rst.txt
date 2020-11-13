@@ -2,6 +2,13 @@
 a_double_unary_fun
 !!!!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   a_double_unary_fun_xam_cpp
+   a_double_unary_fun_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,13 +20,8 @@ a_double_unary_fun
 
 Unary Functions with AD Result
 ##############################
-- :ref:`a_double_unary_fun.syntax`
-    - :ref:`a_double_unary_fun.syntax.c++`
-    - :ref:`a_double_unary_fun.syntax.python`
-- :ref:`a_double_unary_fun.ax`
-- :ref:`a_double_unary_fun.fun`
-- :ref:`a_double_unary_fun.ay`
-- :ref:`a_double_unary_fun.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -116,13 +118,6 @@ The result object has c++ prototype
 and is the value of the function *fun* evaluated at the argument *ax*; i.e.,
 
 | |tab| *ay* = *fun* ( *ax* )
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   a_double_unary_fun_xam_cpp
-   a_double_unary_fun_xam_py
 
 .. meta::
    :keywords: example

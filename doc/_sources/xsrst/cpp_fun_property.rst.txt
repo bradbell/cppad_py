@@ -2,6 +2,12 @@
 cpp_fun_property
 !!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_property_xam_cpp
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,14 +19,8 @@ cpp_fun_property
 
 Properties of a Function Object
 ###############################
-- :ref:`cpp_fun_property.syntax`
-- :ref:`cpp_fun_property.f`
-- :ref:`cpp_fun_property.size_domain`
-- :ref:`cpp_fun_property.size_range`
-- :ref:`cpp_fun_property.size_var`
-- :ref:`cpp_fun_property.size_op`
-- :ref:`cpp_fun_property.size_order`
-- :ref:`cpp_fun_property.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -142,12 +142,6 @@ after each call to *f*\ ``.forward`` ; see
 :ref:`size_order<cpp_fun_forward.p.size_order>` in the forward mode section.
 The initial value for this property, when the object *f*
 or *af* is created, is zero.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_property_xam_cpp
 
 .. meta::
    :keywords: example

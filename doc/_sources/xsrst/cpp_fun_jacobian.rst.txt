@@ -2,6 +2,12 @@
 cpp_fun_jacobian
 !!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_jacobian_xam_cpp
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,12 +19,8 @@ cpp_fun_jacobian
 
 Jacobian of an AD Function
 ##########################
-- :ref:`cpp_fun_jacobian.syntax`
-- :ref:`cpp_fun_jacobian.f`
-- :ref:`cpp_fun_jacobian.f(x)`
-- :ref:`cpp_fun_jacobian.x`
-- :ref:`cpp_fun_jacobian.j`
-- :ref:`cpp_fun_jacobian.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -104,12 +106,6 @@ and *j* between zero and *n* -1 ,
 .. math::
 
     J [ i * n + j ] = \frac{ \partial f_i }{ \partial x_j } (x)
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_jacobian_xam_cpp
 
 .. meta::
    :keywords: example

@@ -199,17 +199,19 @@
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="convert-a-numpy-array-to-a-cppad-py-vector">
 <span id="id1"></span><h2>Convert a Numpy Array to a cppad_py Vector<a class="headerlink" href="#convert-a-numpy-array-to-a-cppad-py-vector" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#numpy2vec-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#numpy2vec-array"><span class="std std-ref">array</span></a></p></li>
-<li><p><a class="reference internal" href="#numpy2vec-dtype"><span class="std std-ref">dtype</span></a></p></li>
-<li><p><a class="reference internal" href="#numpy2vec-shape"><span class="std std-ref">shape</span></a></p></li>
-<li><p><a class="reference internal" href="#numpy2vec-context"><span class="std std-ref">context</span></a></p></li>
-<li><p><a class="reference internal" href="#numpy2vec-name"><span class="std std-ref">name</span></a></p></li>
-<li><p><a class="reference internal" href="#numpy2vec-vec"><span class="std std-ref">vec</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#array" id="id3">array</a></p></li>
+<li><p><a class="reference internal" href="#dtype" id="id4">dtype</a></p></li>
+<li><p><a class="reference internal" href="#shape" id="id5">shape</a></p></li>
+<li><p><a class="reference internal" href="#context" id="id6">context</a></p></li>
+<li><p><a class="reference internal" href="#name" id="id7">name</a></p></li>
+<li><p><a class="reference internal" href="#vec" id="id8">vec</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="numpy2vec-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="numpy2vec-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><em>vec</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.utility.numpy2vec</span></code> (</div>
 <div class="line">        <em>array</em> , <em>dtype</em> , <em>shape</em> , <em>context</em> , <em>name</em></div>
@@ -217,38 +219,38 @@
 </div>
 </div>
 <div class="section" id="array">
-<span id="numpy2vec-array"></span><span id="index-2"></span><h3>array<a class="headerlink" href="#array" title="Permalink to this headline">¶</a></h3>
+<span id="numpy2vec-array"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">array</a><a class="headerlink" href="#array" title="Permalink to this headline">¶</a></h3>
 <p>This is either a vector (only one index) or a matrix
 (has two indices) that we are converting to a vector.
 If this array does not match the conditions below,
 an exception is raised with an appropriate error message.</p>
 </div>
 <div class="section" id="dtype">
-<span id="numpy2vec-dtype"></span><span id="index-3"></span><h3>dtype<a class="headerlink" href="#dtype" title="Permalink to this headline">¶</a></h3>
+<span id="numpy2vec-dtype"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">dtype</a><a class="headerlink" href="#dtype" title="Permalink to this headline">¶</a></h3>
 <p>This is the expected data type for the elements of the array.
 It must be one of the following:
 <code class="docutils literal notranslate"><span class="pre">bool</span></code> , <code class="docutils literal notranslate"><span class="pre">int</span></code> , <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">cppad_py.a_double</span></code> .</p>
 </div>
 <div class="section" id="shape">
-<span id="numpy2vec-shape"></span><span id="index-4"></span><h3>shape<a class="headerlink" href="#shape" title="Permalink to this headline">¶</a></h3>
+<span id="numpy2vec-shape"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">shape</a><a class="headerlink" href="#shape" title="Permalink to this headline">¶</a></h3>
 <p>This either a <code class="docutils literal notranslate"><span class="pre">int</span></code> or a tuple of <code class="docutils literal notranslate"><span class="pre">int</span></code> with length one or two.
 If it is an <code class="docutils literal notranslate"><span class="pre">int</span></code> , <em>array</em> is expected to be a vector.
 If it is a tuple with length one, <em>array</em> is expected to be a vector.
 Otherwise a matrix is expected.</p>
 </div>
 <div class="section" id="context">
-<span id="numpy2vec-context"></span><span id="index-5"></span><h3>context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h3>
+<span id="numpy2vec-context"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">context</a><a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h3>
 <p>This is the context that <em>array</em> appears in
 (often to syntax for some other operation).
 It is a <code class="docutils literal notranslate"><span class="pre">str</span></code> that is used for error reporting.</p>
 </div>
 <div class="section" id="name">
-<span id="numpy2vec-name"></span><span id="index-6"></span><h3>name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h3>
+<span id="numpy2vec-name"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">name</a><a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h3>
 <p>This is the name used for <em>array</em> in <em>context</em> .
 It is a <code class="docutils literal notranslate"><span class="pre">str</span></code> that is used for error reporting.</p>
 </div>
 <div class="section" id="vec">
-<span id="numpy2vec-vec"></span><span id="index-7"></span><h3>vec<a class="headerlink" href="#vec" title="Permalink to this headline">¶</a></h3>
+<span id="numpy2vec-vec"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">vec</a><a class="headerlink" href="#vec" title="Permalink to this headline">¶</a></h3>
 <p>This is the values of <em>array</em>
 as a vector is row major order.
 It has type <code class="docutils literal notranslate"><span class="pre">vec_double</span></code> if <em>dtype</em> is <code class="docutils literal notranslate"><span class="pre">float</span></code> ,

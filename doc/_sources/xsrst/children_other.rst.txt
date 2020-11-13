@@ -11,6 +11,8 @@ children_other
 
 Other Child
 ###########
+.. contents::
+   :local:
 
 This is the other child section in
 :ref:`this file<children_exam.this_file>`.

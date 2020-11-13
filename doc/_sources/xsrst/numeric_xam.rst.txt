@@ -2,28 +2,6 @@
 numeric_xam
 !!!!!!!!!!!
 
-.. include:: ../preamble.rst
-
-.. meta::
-   :keywords: numeric_xam, numerical, examples
-
-.. index:: numeric_xam, numerical, examples
-
-.. _numeric_xam:
-
-Numerical Examples
-##################
-- :ref:`numeric_xam.children`
-
-.. meta::
-   :keywords: children
-
-.. index:: children
-
-.. _numeric_xam.children:
-
-Children
-********
 .. toctree::
    :maxdepth: 1
    :hidden:
@@ -36,6 +14,29 @@ Children
    numeric_seirwd_model
    numeric_covid_19_xam_py
 
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: numeric_xam, numerical, examples
+
+.. index:: numeric_xam, numerical, examples
+
+.. _numeric_xam:
+
+Numerical Examples
+##################
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _numeric_xam.children:
+
+Children
+********
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

@@ -2,6 +2,12 @@
 cpp_sparse_rc
 !!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   sparse_rc_xam_cpp
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,21 +19,8 @@ cpp_sparse_rc
 
 Sparsity Patterns
 #################
-- :ref:`cpp_sparse_rc.syntax`
-- :ref:`cpp_sparse_rc.pattern`
-- :ref:`cpp_sparse_rc.nr`
-- :ref:`cpp_sparse_rc.nc`
-- :ref:`cpp_sparse_rc.nnz`
-- :ref:`cpp_sparse_rc.resize`
-- :ref:`cpp_sparse_rc.put`
-    - :ref:`cpp_sparse_rc.put.k`
-    - :ref:`cpp_sparse_rc.put.r`
-    - :ref:`cpp_sparse_rc.put.c`
-- :ref:`cpp_sparse_rc.row`
-- :ref:`cpp_sparse_rc.col`
-- :ref:`cpp_sparse_rc.row_major`
-- :ref:`cpp_sparse_rc.col_major`
-- :ref:`cpp_sparse_rc.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -287,12 +280,6 @@ and if *row* [ *col_major* [ *k* ] ] == *row* [ *col_major* [ *k* +1] ] ,
 
 This routine generates an assert if there are two entries with the same
 row and column values (if ``NDEBUG`` is not defined).
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   sparse_rc_xam_cpp
 
 .. meta::
    :keywords: example

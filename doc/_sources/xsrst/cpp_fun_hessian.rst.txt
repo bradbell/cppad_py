@@ -2,6 +2,12 @@
 cpp_fun_hessian
 !!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_hessian_xam_cpp
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,14 +19,8 @@ cpp_fun_hessian
 
 Hessian of an AD Function
 #########################
-- :ref:`cpp_fun_hessian.syntax`
-- :ref:`cpp_fun_hessian.f`
-- :ref:`cpp_fun_hessian.f(x)`
-- :ref:`cpp_fun_hessian.g(x)`
-- :ref:`cpp_fun_hessian.x`
-- :ref:`cpp_fun_hessian.w`
-- :ref:`cpp_fun_hessian.h`
-- :ref:`cpp_fun_hessian.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -140,12 +140,6 @@ and *j* between zero and *n* -1 ,
 .. math::
 
     H [ i * n + j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_hessian_xam_cpp
 
 .. meta::
    :keywords: example

@@ -13,6 +13,8 @@ fun_jacobian_xam_py
 
 Python: Dense Jacobian Using AD: Example and Test
 #################################################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../example/python/core/fun_jacobian_xam.py

@@ -2,6 +2,12 @@
 cpp_independent
 !!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_dynamic_xam_cpp
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,13 +19,8 @@ cpp_independent
 
 Declare Independent Variables and Start Recording
 #################################################
-- :ref:`cpp_independent.syntax`
-- :ref:`cpp_independent.purpose`
-- :ref:`cpp_independent.x`
-- :ref:`cpp_independent.dynamic`
-- :ref:`cpp_independent.ax`
-- :ref:`cpp_independent.a_both`
-- :ref:`cpp_independent.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -130,12 +131,6 @@ For *i* = 0 to *nd* -1
 | |tab| *a_both* [ *nx* + *i* ] == *dynamic* [ *i* ]
 
 is the *i*-th independent dynamic parameter.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_dynamic_xam_cpp
 
 .. meta::
    :keywords: example

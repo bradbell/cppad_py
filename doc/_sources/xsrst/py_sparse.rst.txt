@@ -2,28 +2,6 @@
 py_sparse
 !!!!!!!!!
 
-.. include:: ../preamble.rst
-
-.. meta::
-   :keywords: py_sparse, python, sparsity, routines
-
-.. index:: py_sparse, python, sparsity, routines
-
-.. _py_sparse:
-
-Python Sparsity Routines
-########################
-- :ref:`py_sparse.children`
-
-.. meta::
-   :keywords: children
-
-.. index:: children
-
-.. _py_sparse.children:
-
-Children
-********
 .. toctree::
    :maxdepth: 1
    :hidden:
@@ -35,6 +13,29 @@ Children
    py_sparse_jac
    py_sparse_hes
 
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: py_sparse, python, sparsity, routines
+
+.. index:: py_sparse, python, sparsity, routines
+
+.. _py_sparse:
+
+Python Sparsity Routines
+########################
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _py_sparse.children:
+
+Children
+********
 .. csv-table::
     :header:  "Name", "Title"
     :widths: 20, 80

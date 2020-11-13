@@ -2,6 +2,12 @@
 py_hes_sparsity
 !!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   sparse_hes_pattern_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,15 +19,8 @@ py_hes_sparsity
 
 Hessian Sparsity Patterns
 #########################
-- :ref:`py_hes_sparsity.syntax`
-- :ref:`py_hes_sparsity.purpose`
-- :ref:`py_hes_sparsity.x`
-- :ref:`py_hes_sparsity.f`
-- :ref:`py_hes_sparsity.select_domain`
-- :ref:`py_hes_sparsity.select_range`
-- :ref:`py_hes_sparsity.pattern_out`
-- :ref:`py_hes_sparsity.sparsity_for_component_wise_hessian`
-- :ref:`py_hes_sparsity.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -139,12 +138,6 @@ Suppose that :math:`D` is the identity matrix,
 and only the *i*-th component of *r* is possibly non-zero.
 In this case, *pattern_out* is a sparsity pattern for
 :math:`F_i^{(2)} ( x )`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   sparse_hes_pattern_xam_py
 
 .. meta::
    :keywords: example

@@ -2,6 +2,12 @@
 py_fun_forward
 !!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_forward_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,17 +19,8 @@ py_fun_forward
 
 Forward Mode AD
 ###############
-- :ref:`py_fun_forward.syntax`
-- :ref:`py_fun_forward.taylor_coefficient`
-- :ref:`py_fun_forward.f`
-- :ref:`py_fun_forward.f(x)`
-- :ref:`py_fun_forward.x(t)`
-- :ref:`py_fun_forward.y(t)`
-- :ref:`py_fun_forward.p`
-    - :ref:`py_fun_forward.p.size_order`
-- :ref:`py_fun_forward.xp`
-- :ref:`py_fun_forward.yp`
-- :ref:`py_fun_forward.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -167,12 +164,6 @@ yp
 The result is a numpy vector with ``float`` ( ``a_double`` ) elements
 and size *m* .
 It is the *p*-th order Taylor coefficients for :math:`Y(t)`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_forward_xam_py
 
 .. meta::
    :keywords: example

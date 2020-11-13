@@ -13,6 +13,8 @@ fun_dynamic_xam_cpp
 
 C++: Using Dynamic Parameters: Example and Test
 ###############################################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../example/cplusplus/fun_dynamic_xam.cpp

@@ -13,8 +13,8 @@ d_vec_std2cppad
 
 Convert double Vector From Standard to CppAD
 ############################################
-- :ref:`d_vec_std2cppad.syntax`
-- :ref:`d_vec_std2cppad.prototype`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax

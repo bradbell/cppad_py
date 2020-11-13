@@ -2,6 +2,12 @@
 cpp_fun_optimize
 !!!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_optimize_xam_cpp
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,10 +19,8 @@ cpp_fun_optimize
 
 Optimize an AD Function
 #######################
-- :ref:`cpp_fun_optimize.syntax`
-- :ref:`cpp_fun_optimize.purpose`
-- :ref:`cpp_fun_optimize.f`
-- :ref:`cpp_fun_optimize.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -57,12 +61,6 @@ This object is a
 :ref:`d_fun<cpp_fun_ctor.syntax.d_fun>`.
 Optimizing this *f* also optimizes the
 corresponding :ref:`a_fun<cpp_fun_ctor.syntax.a_fun>`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_optimize_xam_cpp
 
 .. meta::
    :keywords: example

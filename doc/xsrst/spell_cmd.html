@@ -188,18 +188,22 @@
             
   <div class="section" id="spell-cmd">
 <h1>spell_cmd<a class="headerlink" href="#spell-cmd" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <div class="section" id="spell-command">
 <span id="id1"></span><h2>Spell Command<a class="headerlink" href="#spell-command" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#spell-cmd-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#spell-cmd-purpose"><span class="std std-ref">Purpose</span></a></p></li>
-<li><p><a class="reference internal" href="#spell-cmd-spelling"><span class="std std-ref">spelling</span></a></p></li>
-<li><p><a class="reference internal" href="#spell-cmd-capital-letters"><span class="std std-ref">Capital Letters</span></a></p></li>
-<li><p><a class="reference internal" href="#spell-cmd-double-words"><span class="std std-ref">Double Words</span></a></p></li>
-<li><p><a class="reference internal" href="#spell-cmd-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#purpose" id="id3">Purpose</a></p></li>
+<li><p><a class="reference internal" href="#spelling" id="id4">spelling</a></p></li>
+<li><p><a class="reference internal" href="#capital-letters" id="id5">Capital Letters</a></p></li>
+<li><p><a class="reference internal" href="#double-words" id="id6">Double Words</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id7">Example</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="spell-cmd-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="spell-cmd-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">{xsrst_spell</span></code> <em>word_1</em> …  <em>word_n</em> <code class="code docutils literal notranslate"><span class="pre">}</span></code></p>
 <p>Here <em>word_1</em>, …, <em>word_n</em> is the special list of words for this section.
 In the syntax above the list of words is all in one line,
@@ -211,14 +215,14 @@ so that latex commands can be included in the spelling list.
 The rest of the characters in a word are lower case letters.</p>
 </div>
 <div class="section" id="purpose">
-<span id="spell-cmd-purpose"></span><span id="index-2"></span><h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<span id="spell-cmd-purpose"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">Purpose</a><a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 <p>You can specify a special list of words
 (not normally considered correct spelling)
 for the current section using the command above at the
 <a class="reference internal" href="xsrst_py.html#xsrst-py-notation-beginning-of-a-line"><span class="std std-ref">beginning of a line</span></a>.</p>
 </div>
 <div class="section" id="spelling">
-<span id="spell-cmd-spelling"></span><span id="index-3"></span><h3>spelling<a class="headerlink" href="#spelling" title="Permalink to this headline">¶</a></h3>
+<span id="spell-cmd-spelling"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">spelling</a><a class="headerlink" href="#spelling" title="Permalink to this headline">¶</a></h3>
 <p>The list of words in
 <a class="reference internal" href="xsrst_py.html#xsrst-py-command-line-arguments-spelling"><span class="std std-ref">spelling</span></a>
 are considered correct spellings for all sections.
@@ -226,7 +230,7 @@ The latex commands corresponding to the letters in the greek alphabet
 are automatically added to this list.</p>
 </div>
 <div class="section" id="capital-letters">
-<span id="spell-cmd-capital-letters"></span><span id="index-4"></span><h3>Capital Letters<a class="headerlink" href="#capital-letters" title="Permalink to this headline">¶</a></h3>
+<span id="spell-cmd-capital-letters"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">Capital Letters</a><a class="headerlink" href="#capital-letters" title="Permalink to this headline">¶</a></h3>
 <p>The case of the first letter does not matter when checking spelling;
 e.g., if <code class="docutils literal notranslate"><span class="pre">abcd</span></code> is <em>word_1</em> then <code class="docutils literal notranslate"><span class="pre">Abcd</span></code> will be considered a valid word.
 Each capital letter starts a new word; e.g., <cite>CamelCase</cite> is considered to
@@ -235,18 +239,16 @@ Single letter words are always correct and not included in the
 special word list; e.g., the word list entry <code class="docutils literal notranslate"><span class="pre">CppAD</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">Cpp</span></code>.</p>
 </div>
 <div class="section" id="double-words">
-<span id="spell-cmd-double-words"></span><span id="index-5"></span><h3>Double Words<a class="headerlink" href="#double-words" title="Permalink to this headline">¶</a></h3>
+<span id="spell-cmd-double-words"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">Double Words</a><a class="headerlink" href="#double-words" title="Permalink to this headline">¶</a></h3>
 <p>It is considered an error to have only white space between two occurrences
 of the same word. You can make an exception for this by entering
 the same word twice (next to each other) in the special word list.</p>
 </div>
 <div class="section" id="example">
-<span id="spell-cmd-example"></span><span id="index-6"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="spell_exam.html">spell_exam</a></li>
+<span id="spell-cmd-example"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="spell_exam.html#id1"><span class="std std-ref">Spell Example</span></a></p></li>
 </ul>
-</div>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">bin/xsrst.py</span></code></p>
 </div>

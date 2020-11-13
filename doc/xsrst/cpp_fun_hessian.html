@@ -207,26 +207,30 @@
             
   <div class="section" id="cpp-fun-hessian">
 <h1>cpp_fun_hessian<a class="headerlink" href="#cpp-fun-hessian" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="hessian-of-an-ad-function">
 <span id="id1"></span><h2>Hessian of an AD Function<a class="headerlink" href="#hessian-of-an-ad-function" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#cpp-fun-hessian-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-hessian-f"><span class="std std-ref">f</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-hessian-f-x"><span class="std std-ref">f(x)</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-hessian-g-x"><span class="std std-ref">g(x)</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-hessian-x"><span class="std std-ref">x</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-hessian-w"><span class="std std-ref">w</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-hessian-h"><span class="std std-ref">H</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-hessian-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#f" id="id3">f</a></p></li>
+<li><p><a class="reference internal" href="#f-x" id="id4">f(x)</a></p></li>
+<li><p><a class="reference internal" href="#g-x" id="id5">g(x)</a></p></li>
+<li><p><a class="reference internal" href="#x" id="id6">x</a></p></li>
+<li><p><a class="reference internal" href="#w" id="id7">w</a></p></li>
+<li><p><a class="reference internal" href="#h" id="id8">H</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id9">Example</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="cpp-fun-hessian-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-hessian-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <p><em>H</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.hessian</span></code> ( <em>x</em> , <em>w</em> )</p>
 </div>
 <div class="section" id="f">
-<span id="cpp-fun-hessian-f"></span><span id="index-2"></span><h3>f<a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-hessian-f"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">f</a><a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
 <p>This is either a
 <a class="reference internal" href="cpp_fun_ctor.html#cpp-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> or
 <a class="reference internal" href="cpp_fun_ctor.html#cpp-fun-ctor-syntax-a-fun"><span class="std std-ref">a_fun</span></a> function object.
@@ -236,7 +240,7 @@ correspond to the value of <em>x</em> .
 The other Taylor coefficients in <em>f</em> are unspecified.</p>
 </div>
 <div class="section" id="f-x">
-<span id="cpp-fun-hessian-f-x"></span><span id="index-3"></span><h3>f(x)<a class="headerlink" href="#f-x" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-hessian-f-x"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">f(x)</a><a class="headerlink" href="#f-x" title="Permalink to this headline">¶</a></h3>
 <p>We use the notation <span class="math notranslate nohighlight">\(f: \B{R}^n \rightarrow \B{R}^m\)</span>
 for the function corresponding to <em>f</em> .
 Note that <em>n</em> is the size of <a class="reference internal" href="cpp_fun_ctor.html#cpp-fun-ctor-ax"><span class="std std-ref">ax</span></a>
@@ -244,14 +248,14 @@ and <em>m</em> is the size of <a class="reference internal" href="cpp_fun_ctor.h
 in to the constructor for <em>f</em> .</p>
 </div>
 <div class="section" id="g-x">
-<span id="cpp-fun-hessian-g-x"></span><span id="index-4"></span><h3>g(x)<a class="headerlink" href="#g-x" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-hessian-g-x"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">g(x)</a><a class="headerlink" href="#g-x" title="Permalink to this headline">¶</a></h3>
 <p>We use the notation <span class="math notranslate nohighlight">\(g: \B{R}^n \rightarrow \B{R}\)</span>
 for the function defined by</p>
 <div class="math notranslate nohighlight">
 \[g(x) = \sum_{i=0}^{n-1} w_i f_i (x)\]</div>
 </div>
 <div class="section" id="x">
-<span id="cpp-fun-hessian-x"></span><span id="index-5"></span><h3>x<a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-hessian-x"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">x</a><a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h3>
 <p>If <em>f</em> is a <code class="docutils literal notranslate"><span class="pre">d_fun</span></code> or <code class="docutils literal notranslate"><span class="pre">a_fun</span></code> ,
 this argument has prototype</p>
 <div class="line-block">
@@ -263,7 +267,7 @@ It specifies the argument value at we are computing the Hessian
 <span class="math notranslate nohighlight">\(g^{(2)}(x)\)</span>.</p>
 </div>
 <div class="section" id="w">
-<span id="cpp-fun-hessian-w"></span><span id="index-6"></span><h3>w<a class="headerlink" href="#w" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-hessian-w"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">w</a><a class="headerlink" href="#w" title="Permalink to this headline">¶</a></h3>
 <p>If <em>f</em> is a <code class="docutils literal notranslate"><span class="pre">d_fun</span></code> or <code class="docutils literal notranslate"><span class="pre">a_fun</span></code> ,
 this argument has prototype</p>
 <div class="line-block">
@@ -274,7 +278,7 @@ this argument has prototype</p>
 It specifies the vector <em>w</em> in the definition of <span class="math notranslate nohighlight">\(g(x)\)</span> above.</p>
 </div>
 <div class="section" id="h">
-<span id="cpp-fun-hessian-h"></span><span id="index-7"></span><h3>H<a class="headerlink" href="#h" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-hessian-h"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">H</a><a class="headerlink" href="#h" title="Permalink to this headline">¶</a></h3>
 <p>If <em>f</em> is a <code class="docutils literal notranslate"><span class="pre">d_fun</span></code> or <code class="docutils literal notranslate"><span class="pre">a_fun</span></code> ,
 the result has prototype</p>
 <div class="line-block">
@@ -286,11 +290,9 @@ For <em>i</em> between zero and <em>n</em> -1
 and <em>j</em> between zero and <em>n</em> -1 ,</p>
 <div class="math notranslate nohighlight">
 \[H [ i * n + j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)\]</div>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="example">
-<span id="cpp-fun-hessian-example"></span><span id="index-8"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-hessian-example"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id9">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="fun_hessian_xam_cpp.html#id1"><span class="std std-ref">fun_hessian_xam_cpp</span></a></p>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/fun.cpp</span></code></p>

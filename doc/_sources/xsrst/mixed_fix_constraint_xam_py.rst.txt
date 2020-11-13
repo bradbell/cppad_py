@@ -13,11 +13,8 @@ mixed_fix_constraint_xam_py
 
 fix_constraint: Example and Test
 ################################
-- :ref:`mixed_fix_constraint_xam_py.random_effects`
-- :ref:`mixed_fix_constraint_xam_py.fix_likelihood`
-- :ref:`mixed_fix_constraint_xam_py.fix_constraint`
-- :ref:`mixed_fix_constraint_xam_py.fixed_constraint_bounds`
-- :ref:`mixed_fix_constraint_xam_py.optimal_fixed_effects`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: random, effects

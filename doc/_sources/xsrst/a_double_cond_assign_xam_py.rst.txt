@@ -13,6 +13,8 @@ a_double_cond_assign_xam_py
 
 Python: a_double Conditional Assignment: Example and Test
 #########################################################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../example/python/core/a_double_cond_assign_xam.py

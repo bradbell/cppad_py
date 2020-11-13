@@ -2,6 +2,12 @@
 py_fun_reverse
 !!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_reverse_xam_py
+
 .. include:: ../preamble.rst
 
 .. meta::
@@ -13,17 +19,8 @@ py_fun_reverse
 
 Reverse Mode AD
 ###############
-- :ref:`py_fun_reverse.syntax`
-- :ref:`py_fun_reverse.f`
-- :ref:`py_fun_reverse.notation`
-    - :ref:`py_fun_reverse.notation.f(x)`
-    - :ref:`py_fun_reverse.notation.x(t),_s`
-    - :ref:`py_fun_reverse.notation.y(t),_t`
-    - :ref:`py_fun_reverse.notation.g(t)`
-- :ref:`py_fun_reverse.q`
-- :ref:`py_fun_reverse.yq`
-- :ref:`py_fun_reverse.xq`
-- :ref:`py_fun_reverse.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -171,12 +168,6 @@ For 0 <= *j* < *n* and 0 <= *k* < *q* ,
 for the *j*-th component function; i.e.,
 the partial derivative of
 :math:`G(T(S))` w.r.t. :math:`S_j^{(k)} (t) / k !`.
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   fun_reverse_xam_py
 
 .. meta::
    :keywords: example

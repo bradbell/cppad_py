@@ -210,34 +210,36 @@
             
   <div class="section" id="cpp-fun-reverse">
 <h1>cpp_fun_reverse<a class="headerlink" href="#cpp-fun-reverse" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
 <div class="section" id="reverse-mode-ad">
 <span id="id1"></span><h2>Reverse Mode AD<a class="headerlink" href="#reverse-mode-ad" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#cpp-fun-reverse-syntax"><span class="std std-ref">Syntax</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-reverse-f"><span class="std std-ref">f</span></a></p></li>
-<li><dl class="simple">
-<dt><a class="reference internal" href="#cpp-fun-reverse-notation"><span class="std std-ref">Notation</span></a></dt><dd><ul>
-<li><p><a class="reference internal" href="#cpp-fun-reverse-notation-f-x"><span class="std std-ref">f(x)</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-reverse-notation-x-t-s"><span class="std std-ref">X(t), S</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-reverse-notation-y-t-t"><span class="std std-ref">Y(t), T</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-reverse-notation-g-t"><span class="std std-ref">G(T)</span></a></p></li>
+<li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
+<li><p><a class="reference internal" href="#f" id="id3">f</a></p></li>
+<li><p><a class="reference internal" href="#notation" id="id4">Notation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#f-x" id="id5">f(x)</a></p></li>
+<li><p><a class="reference internal" href="#x-t-s" id="id6">X(t), S</a></p></li>
+<li><p><a class="reference internal" href="#y-t-t" id="id7">Y(t), T</a></p></li>
+<li><p><a class="reference internal" href="#g-t" id="id8">G(T)</a></p></li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><p><a class="reference internal" href="#cpp-fun-reverse-q"><span class="std std-ref">q</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-reverse-yq"><span class="std std-ref">yq</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-reverse-xq"><span class="std std-ref">xq</span></a></p></li>
-<li><p><a class="reference internal" href="#cpp-fun-reverse-example"><span class="std std-ref">Example</span></a></p></li>
+<li><p><a class="reference internal" href="#q" id="id9">q</a></p></li>
+<li><p><a class="reference internal" href="#yq" id="id10">yq</a></p></li>
+<li><p><a class="reference internal" href="#xq" id="id11">xq</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id12">Example</a></p></li>
 </ul>
+</div>
 <div class="section" id="syntax">
-<span id="cpp-fun-reverse-syntax"></span><span id="index-1"></span><h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-reverse-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <p><em>xq</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.reverse</span></code> ( <em>q</em> , <em>yq</em> )</p>
 </div>
 <div class="section" id="f">
-<span id="cpp-fun-reverse-f"></span><span id="index-2"></span><h3>f<a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-reverse-f"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">f</a><a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
 <p>This is either a
 <a class="reference internal" href="cpp_fun_ctor.html#cpp-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> or
 <a class="reference internal" href="cpp_fun_ctor.html#cpp-fun-ctor-syntax-a-fun"><span class="std std-ref">a_fun</span></a> function object
@@ -245,9 +247,9 @@ and is effectively <code class="docutils literal notranslate"><span class="pre">
 (Some details that are not visible to the user may change.)</p>
 </div>
 <div class="section" id="notation">
-<span id="cpp-fun-reverse-notation"></span><span id="index-3"></span><h3>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-reverse-notation"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">Notation</a><a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="f-x">
-<span id="cpp-fun-reverse-notation-f-x"></span><span id="index-4"></span><h4>f(x)<a class="headerlink" href="#f-x" title="Permalink to this headline">¶</a></h4>
+<span id="cpp-fun-reverse-notation-f-x"></span><span id="index-4"></span><h4><a class="toc-backref" href="#id5">f(x)</a><a class="headerlink" href="#f-x" title="Permalink to this headline">¶</a></h4>
 <p>We use the notation <span class="math notranslate nohighlight">\(f: \B{R}^n \rightarrow \B{R}^m\)</span>
 for the function corresponding to <em>f</em> .
 Note that <em>n</em> is the size of <a class="reference internal" href="cpp_fun_ctor.html#cpp-fun-ctor-ax"><span class="std std-ref">ax</span></a>
@@ -255,7 +257,7 @@ and <em>m</em> is the size of <a class="reference internal" href="cpp_fun_ctor.h
 in to the constructor for <em>f</em> .</p>
 </div>
 <div class="section" id="x-t-s">
-<span id="cpp-fun-reverse-notation-x-t-s"></span><span id="index-5"></span><h4>X(t), S<a class="headerlink" href="#x-t-s" title="Permalink to this headline">¶</a></h4>
+<span id="cpp-fun-reverse-notation-x-t-s"></span><span id="index-5"></span><h4><a class="toc-backref" href="#id6">X(t), S</a><a class="headerlink" href="#x-t-s" title="Permalink to this headline">¶</a></h4>
 <p>This is the same function as
 <a class="reference internal" href="cpp_fun_forward.html#cpp-fun-forward-x-t"><span class="std std-ref">x(t)</span></a> in the previous call to
 <em>f</em><code class="docutils literal notranslate"><span class="pre">.forward</span></code> .
@@ -263,7 +265,7 @@ We use <span class="math notranslate nohighlight">\(S \in \B{R}^{n \times q}\)</
 of <span class="math notranslate nohighlight">\(X(t)\)</span>.</p>
 </div>
 <div class="section" id="y-t-t">
-<span id="cpp-fun-reverse-notation-y-t-t"></span><span id="index-6"></span><h4>Y(t), T<a class="headerlink" href="#y-t-t" title="Permalink to this headline">¶</a></h4>
+<span id="cpp-fun-reverse-notation-y-t-t"></span><span id="index-6"></span><h4><a class="toc-backref" href="#id7">Y(t), T</a><a class="headerlink" href="#y-t-t" title="Permalink to this headline">¶</a></h4>
 <p>This is the same function as
 <a class="reference internal" href="cpp_fun_forward.html#cpp-fun-forward-y-t"><span class="std std-ref">y(t)</span></a> in the previous call to
 <em>f</em><code class="docutils literal notranslate"><span class="pre">.forward</span></code> .
@@ -274,13 +276,13 @@ the Taylor coefficients for <span class="math notranslate nohighlight">\(Y(t)\)<
 Taylor coefficients of <span class="math notranslate nohighlight">\(X(t)\)</span>.</p>
 </div>
 <div class="section" id="g-t">
-<span id="cpp-fun-reverse-notation-g-t"></span><span id="index-7"></span><h4>G(T)<a class="headerlink" href="#g-t" title="Permalink to this headline">¶</a></h4>
+<span id="cpp-fun-reverse-notation-g-t"></span><span id="index-7"></span><h4><a class="toc-backref" href="#id8">G(T)</a><a class="headerlink" href="#g-t" title="Permalink to this headline">¶</a></h4>
 <p>We use the notation <span class="math notranslate nohighlight">\(G : \B{R}^{m \times p} \rightarrow \B{R}\)</span>
 for a function that the calling routine chooses.</p>
 </div>
 </div>
 <div class="section" id="q">
-<span id="cpp-fun-reverse-q"></span><span id="index-8"></span><h3>q<a class="headerlink" href="#q" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-reverse-q"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id9">q</a><a class="headerlink" href="#q" title="Permalink to this headline">¶</a></h3>
 <p>This argument has prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">int</span></code> <em>q</em></div>
@@ -294,7 +296,7 @@ the number of Taylor coefficient stored in <em>f</em> ; i.e.,
 <a class="reference internal" href="cpp_fun_property.html#cpp-fun-property-size-order"><span class="std std-ref">f_size_order()</span></a>.</p>
 </div>
 <div class="section" id="yq">
-<span id="cpp-fun-reverse-yq"></span><span id="index-9"></span><h3>yq<a class="headerlink" href="#yq" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-reverse-yq"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id10">yq</a><a class="headerlink" href="#yq" title="Permalink to this headline">¶</a></h3>
 <p>If <em>f</em> is a <code class="docutils literal notranslate"><span class="pre">d_fun</span></code> or <code class="docutils literal notranslate"><span class="pre">a_fun</span></code> ,
 this argument has prototype</p>
 <div class="line-block">
@@ -309,7 +311,7 @@ for the <em>i</em>-th component function; i.e.,
 the partial derivative of <span class="math notranslate nohighlight">\(G(T)\)</span> w.r.t. <span class="math notranslate nohighlight">\(Y_i^{(k)} (t) / k !\)</span>.</p>
 </div>
 <div class="section" id="xq">
-<span id="cpp-fun-reverse-xq"></span><span id="index-10"></span><h3>xq<a class="headerlink" href="#xq" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-reverse-xq"></span><span id="index-10"></span><h3><a class="toc-backref" href="#id11">xq</a><a class="headerlink" href="#xq" title="Permalink to this headline">¶</a></h3>
 <p>If <em>f</em> is a <code class="docutils literal notranslate"><span class="pre">d_fun</span></code> or <code class="docutils literal notranslate"><span class="pre">a_fun</span></code> ,
 the result has prototype</p>
 <div class="line-block">
@@ -323,11 +325,9 @@ For 0 &lt;= <em>j</em> &lt; <em>n</em> and 0 &lt;= <em>k</em> &lt; <em>q</em> ,
 for the <em>j</em>-th component function; i.e.,
 the partial derivative of
 <span class="math notranslate nohighlight">\(G(T(S))\)</span> w.r.t. <span class="math notranslate nohighlight">\(S_j^{(k)} (t) / k !\)</span>.</p>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="example">
-<span id="cpp-fun-reverse-example"></span><span id="index-11"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<span id="cpp-fun-reverse-example"></span><span id="index-11"></span><h3><a class="toc-backref" href="#id12">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="fun_reverse_xam_cpp.html#id1"><span class="std std-ref">fun_reverse_xam_cpp</span></a></p>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/fun.cpp</span></code></p>
