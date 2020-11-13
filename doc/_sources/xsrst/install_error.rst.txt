@@ -14,6 +14,7 @@ install_error
 Error Messages During Installation
 ##################################
 - :ref:`install_error.swig`
+- :ref:`install_error.cppad_py`
 - :ref:`install_error.libcppad_lib`
 - :ref:`install_error.fortify_source`
 - :ref:`install_error.stdio.h`
@@ -39,6 +40,31 @@ The following message as also been seen:
 | |tab| ``Error: Unable to find 'python.swg'``
 
 In this case try installing ``swig-python`` .
+
+.. meta::
+   :keywords: cppad_py
+
+.. index:: cppad_py
+
+.. _install_error.cppad_py:
+
+cppad_py
+********
+If the error message below may occur while running ``check_all.py``
+
+| |tab| ``ModuleNotFoundError: No module named cppad_py``
+
+It means that the ``cppad_py`` directory can't be found.
+If you are testing the local copy, make sure that the directory
+
+| |tab| *top_src*\ ``/cppad_py``
+
+exists; see :ref:`local build <setup_py.local_build>` .
+If you are testing the installed version, make sure the directory
+
+| |tab| ``$PYTHONPATH/cppad_py``
+
+exists; see :ref:`PYTHONPATH <setup_py.pythonpath>` .
 
 .. meta::
    :keywords: libcppad_lib

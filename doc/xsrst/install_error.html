@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta content="install_error, error, messages, during, installation" name="keywords" />
 <meta content="swig" name="keywords" />
+<meta content="cppad_py" name="keywords" />
 <meta content="libcppad_lib" name="keywords" />
 <meta content="fortify, source" name="keywords" />
 <meta content="stdio.h" name="keywords" />
@@ -183,6 +184,7 @@
 <span id="id1"></span><h2>Error Messages During Installation<a class="headerlink" href="#error-messages-during-installation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#install-error-swig"><span class="std std-ref">swig</span></a></p></li>
+<li><p><a class="reference internal" href="#install-error-cppad-py"><span class="std std-ref">cppad_py</span></a></p></li>
 <li><p><a class="reference internal" href="#install-error-libcppad-lib"><span class="std std-ref">libcppad_lib</span></a></p></li>
 <li><p><a class="reference internal" href="#install-error-fortify-source"><span class="std std-ref">Fortify Source</span></a></p></li>
 <li><p><a class="reference internal" href="#install-error-stdio-h"><span class="std std-ref">stdio.h</span></a></p></li>
@@ -207,8 +209,26 @@
 </div>
 <p>In this case try installing <code class="docutils literal notranslate"><span class="pre">swig-python</span></code> .</p>
 </div>
+<div class="section" id="cppad-py">
+<span id="install-error-cppad-py"></span><span id="index-2"></span><h3>cppad_py<a class="headerlink" href="#cppad-py" title="Permalink to this headline">¶</a></h3>
+<p>If the error message below may occur while running <code class="docutils literal notranslate"><span class="pre">check_all.py</span></code></p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">cppad_py</span></code></div>
+</div>
+<p>It means that the <code class="docutils literal notranslate"><span class="pre">cppad_py</span></code> directory can’t be found.
+If you are testing the local copy, make sure that the directory</p>
+<div class="line-block">
+<div class="line">        <em>top_src</em><code class="docutils literal notranslate"><span class="pre">/cppad_py</span></code></div>
+</div>
+<p>exists; see <a class="reference internal" href="setup_py.html#setup-py-local-build"><span class="std std-ref">local build</span></a> .
+If you are testing the installed version, make sure the directory</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">$PYTHONPATH/cppad_py</span></code></div>
+</div>
+<p>exists; see <a class="reference internal" href="setup_py.html#setup-py-pythonpath"><span class="std std-ref">PYTHONPATH</span></a> .</p>
+</div>
 <div class="section" id="libcppad-lib">
-<span id="install-error-libcppad-lib"></span><span id="index-2"></span><h3>libcppad_lib<a class="headerlink" href="#libcppad-lib" title="Permalink to this headline">¶</a></h3>
+<span id="install-error-libcppad-lib"></span><span id="index-3"></span><h3>libcppad_lib<a class="headerlink" href="#libcppad-lib" title="Permalink to this headline">¶</a></h3>
 <p>If the error message below occurs, it is because the CppAD library
 is not in your <a class="reference internal" href="setup_py.html#setup-py-ld-library-path"><span class="std std-ref">LD_LIBRARY_PATH</span></a> :</p>
 <div class="line-block">
@@ -217,7 +237,7 @@ is not in your <a class="reference internal" href="setup_py.html#setup-py-ld-lib
 <p>If you have a Mac, you may instead need to set <code class="docutils literal notranslate"><span class="pre">DYLD_LIBRARY_PATH</span></code> .</p>
 </div>
 <div class="section" id="fortify-source">
-<span id="install-error-fortify-source"></span><span id="index-3"></span><h3>Fortify Source<a class="headerlink" href="#fortify-source" title="Permalink to this headline">¶</a></h3>
+<span id="install-error-fortify-source"></span><span id="index-4"></span><h3>Fortify Source<a class="headerlink" href="#fortify-source" title="Permalink to this headline">¶</a></h3>
 <p>If you set <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-build-type"><span class="std std-ref">build_type</span></a> to <code class="docutils literal notranslate"><span class="pre">debug</span></code> ,
 you may get the following warning during the build:</p>
 <div class="line-block">
@@ -227,7 +247,7 @@ you may get the following warning during the build:</p>
 one can un-define a macro, but it does not remove a original definition.</p>
 </div>
 <div class="section" id="stdio-h">
-<span id="install-error-stdio-h"></span><span id="index-4"></span><h3>stdio.h<a class="headerlink" href="#stdio-h" title="Permalink to this headline">¶</a></h3>
+<span id="install-error-stdio-h"></span><span id="index-5"></span><h3>stdio.h<a class="headerlink" href="#stdio-h" title="Permalink to this headline">¶</a></h3>
 <p>On Mac Os the following error message may appear while running
 <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> :</p>
 <div class="line-block">
@@ -242,11 +262,11 @@ Try executing the command</p>
 <p>where <em>minor</em> is the minor version of python and then re-run <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> .</p>
 </div>
 <div class="section" id="include-mixed">
-<span id="install-error-include-mixed"></span><span id="index-5"></span><h3>include_mixed<a class="headerlink" href="#include-mixed" title="Permalink to this headline">¶</a></h3>
+<span id="install-error-include-mixed"></span><span id="index-6"></span><h3>include_mixed<a class="headerlink" href="#include-mixed" title="Permalink to this headline">¶</a></h3>
 <p>The following error messages may occur when
 <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-include-mixed"><span class="std std-ref">include_mixed</span></a> is true:</p>
 <div class="section" id="java">
-<span id="install-error-include-mixed-java"></span><span id="index-6"></span><h4>Java<a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h4>
+<span id="install-error-include-mixed-java"></span><span id="index-7"></span><h4>Java<a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h4>
 <p>On Mac Os the following error message may appear while running
 <code class="docutils literal notranslate"><span class="pre">bin/get_cppad_mixed.sh</span></code> :</p>
 <div class="line-block">
