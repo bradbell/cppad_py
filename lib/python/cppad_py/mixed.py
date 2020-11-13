@@ -593,21 +593,21 @@ class mixed :
 
     String
     ======
-    An Ipopt string option is specifies by a line containing
+    An Ipopt string option is specified by a line containing
     the following syntax:
 
     | |tab| ``String`` *name* *value*
 
     Integer
     =======
-    An Ipopt integer option is specifies by a line containing
+    An Ipopt integer option specified specifies by a line containing
     the following syntax:
 
     | |tab| ``Integer`` *name* *value*
 
     Numeric
     =======
-    An Ipopt numeric option is specifies by a line containing
+    An Ipopt numeric option specified specifies by a line containing
     the following syntax:
 
     | |tab| ``Numeric`` *name* *value*
@@ -675,7 +675,7 @@ class mixed :
     ===========
     The value *solution*\ ``.ran_con_lag`` is a Lagrange multipliers for the
     rand effects constraint function.
-    Its length is the same as the random constrain matrix :math"`A` ; see
+    Its length is the same as the random constrain matrix :math:`A` ; see
     :ref:`A_rcv<mixed_ctor.A_rcv>`.
 
     {xsrst_children
