@@ -28,7 +28,7 @@ For this example, the fixed likelihood is
 
 .. math::
 
-    f( \theta ) = \left( \theta - 1 )^2
+    f( \theta ) = ( \theta - 1 )^2
 
 fix_constraint
 **************
@@ -36,7 +36,7 @@ For this example, the fixed constraint is
 
 .. math::
 
-    g( \theta ) = \left( \theta + 2)^2
+    g( \theta ) = ( \theta + 2)^2
 
 Fixed Constraint Bounds
 ***********************

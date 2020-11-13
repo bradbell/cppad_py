@@ -78,7 +78,6 @@ it equal to zero, the optimal fixed effects
 
 .. math::
 
-    \begin{align*}
     0 & = ( \hat{\theta} + \sigma^2 )^{-1}
     -
     ( y - \bar{y} )^2 ( \hat{\theta} + \sigma^2 )^{-2}
@@ -87,7 +86,6 @@ it equal to zero, the optimal fixed effects
     ( y - \bar{y} )^2 ( \hat{\theta} + \sigma^2 )^{-1}
     \\
     \hat{\theta} & = (y - \bar{y})^2 - \sigma^2
-    \end{align*}
 
 {xsrst_file
     # BEGIN SOURCE

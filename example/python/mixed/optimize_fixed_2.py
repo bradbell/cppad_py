@@ -25,17 +25,17 @@ This optimization problem is take from the
 documentation.
 
 .. math::
+   :nowrap:
 
-    \begin{align}
+    \begin{align*}
     \R{minimize} \;
-        & x_0 x_3 ( x_0 + x_1 + x_2) + x_2
-        & & \R{w.r.t \;} x \in \B{R}^4
+        & x_0 x_3 ( x_0 + x_1 + x_2) + x_2 & \R{\; w.r.t \;} x \in \B{R}^4
     \\
     \R{subject \; to}  \;
         & 25 \leq  x_0 x_1 x_2 x_3 \\
         & 40 =  x_0^2 + x_1^2 + x_2^2 + x_3^2 \\
         & 1 \leq x \leq 5
-    \end{align}
+    \end{align*}
 
 The starting point for the optimization is :math:`(1,5,5,1)`
 and the optimal solution is

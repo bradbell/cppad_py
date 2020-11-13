@@ -65,12 +65,10 @@ it equal to zero, the optimal fixed effects
 
 .. math::
 
-    \begin{align*}
     0 & = \frac{ \hat{\theta} - \bar{\theta}}{ \sigma^2 }
         - \frac{z - \hat{\theta} }{ \sigma^2 }
     \\
     \hat{\theta} & = \frac{ \bar{\theta} + z }{2}
-    \end{align*}
 
 {xsrst_file
     # BEGIN SOURCE
