@@ -28,13 +28,14 @@ def run_test(module_name, fun_name) :
 if '@include_mixed@' == 'true' :
     mixed_list = [
         'ctor_xam',
-        'warning_xam',
         'fatal_error_xam',
-        'fix_likelihood_xam',
         'fix_constraint_xam',
-        'ran_likelihood_xam',
+        'fix_likelihood_xam',
         'optimize_fixed_1',
         "optimize_fixed_2",
+        "optimize_random_xam",
+        'ran_likelihood_xam',
+        'warning_xam',
     ]
     os.chdir('mixed')
     for name in mixed_list :

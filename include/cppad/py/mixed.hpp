@@ -115,6 +115,14 @@ public:
         const std::vector<double>& random_upper           ,
         const std::vector<double>& random_in
     );
+    // optimize_random
+    std::vector<double> optimize_random(
+        const char*                random_ipopt_options   ,
+        const std::vector<double>& fixed_vec              ,
+        const std::vector<double>& random_lower           ,
+        const std::vector<double>& random_upper           ,
+        const std::vector<double>& random_in
+    );
 };
 
 } // END_CPPAD_PY_NAMESPACE

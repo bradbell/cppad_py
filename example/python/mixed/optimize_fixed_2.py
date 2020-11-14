@@ -11,6 +11,7 @@
 {xsrst_begin mixed_optimize_fixed_2_py}
 {xsrst_spell
     ipopt
+    nowrap
 }
 
 .. include:: ../preamble.rst

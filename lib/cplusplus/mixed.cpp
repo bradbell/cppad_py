@@ -211,6 +211,33 @@ fixed_solution mixed::optimize_fixed(
     //
     return solution;
 }
+// optimize_random
+std::vector<double> mixed::optimize_random(
+    const char*                random_ipopt_options   ,
+    const std::vector<double>& fixed_vec              ,
+    const std::vector<double>& random_lower           ,
+    const std::vector<double>& random_upper           ,
+    const std::vector<double>& random_in              )
+{   typedef CppAD::vector<double>        c_vector;
+    //
+    std::string c_random_ipopt_options = random_ipopt_options;
+    //
+    c_vector c_fixed_vec            = d_vec_std2cppad(fixed_vec);
+    c_vector c_random_lower         = d_vec_std2cppad(random_lower);
+    c_vector c_random_upper         = d_vec_std2cppad(random_upper);
+    c_vector c_random_in            = d_vec_std2cppad(random_in);
+    //
+    c_vector c_random_out= ptr_->optimize_random(
+        c_random_ipopt_options ,
+        c_fixed_vec            ,
+        c_random_lower         ,
+        c_random_upper         ,
+        c_random_in
+    );
+    std::vector<double> random_out = d_vec_cppad2std(c_random_out);
+    //
+    return random_out;
+}
 
 } // END_CPPAD_PY_NAMESPACE
 

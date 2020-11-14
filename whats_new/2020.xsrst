@@ -51,6 +51,11 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+11-14
+*****
+Add :ref:`optimize_random <mixed_optimize_random>`
+the the mixed class operations.
+
 11-12
 *****
 #.  Improve the :ref:`ipopt options

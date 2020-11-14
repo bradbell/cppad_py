@@ -201,7 +201,7 @@ class mixed :
             # numpy2vec will check the length and report errors
             dtype = float
             shape = len(vec)
-            context = 'cppad_mixed: ctor: ' + name
+            context = 'cppad_py.mixed: ' + name
             vec = cppad_py.utility.numpy2vec(vec, dtype, shape, context, name)
             return vec
         #
@@ -532,7 +532,7 @@ class mixed :
     there is no Laplace approximation of the integral above, and
     this routine maximizes :math:`\B{p} ( z | \theta ) \B{p} ( \theta )` ;
     see :ref:`mixed_fix_likelihood`.
-    It also is not data, this routine maximizes :math:`\B{p} ( \theta )`.
+    It also is no data, this routine maximizes :math:`\B{p} ( \theta )`.
 
 
     Argument Types
@@ -547,18 +547,18 @@ class mixed :
     i.e., no lower (upper) limit.
 
     fixed_lower (fixed_upper)
-    =========================
+    *************************
     has length *n_fixed* and is the lower (upper) limit for the fixed effects.
 
     fix_constraint_lower (fix_constraint_upper)
-    ===========================================
+    *******************************************
     has length equal to the
     :ref:`py_fun_property.size_range` for the
     :ref:`mixed_fix_constraint`
     and is the corresponding lower (upper) limit.
 
     random_lower (random_upper)
-    ===========================
+    ***************************
     has length *n_random* and is the lower (upper) limit for the random effects.
     (The Laplace approximation assumes these bounds are not active.)
 
@@ -566,7 +566,7 @@ class mixed :
     ********************
     has length *n_fixed* (*n_random*) and is the initial value used during
     optimization of the fixed (random) effects.
-    If this value is ``None`` for *fixed_in* (*random_in*) the value
+    If *fixed_in* (*random_in*) is ``None``, the value
     *fixed_init* (*random_init*) is used; see
     :ref:`mixed_ctor.fixed_init_(random_init)`.
 
@@ -648,19 +648,20 @@ class mixed :
 
     solution
     ********
-    The return value *solution* has the following fields:
+    All the fields in the return value *solution*
+    are numpy vectors with elements of type ``float``.
 
     fixed_opt
     =========
-    The value *solution*\ ``.fixed_opt`` is a numpy vector with length
-    *n_fixed* containing the final value of the fixed effects
+    The value *solution*\ ``.fixed_opt`` has length
+    *n_fixed* and is the final value of the fixed effects
     (after optimization).
     If the *max_iter* is -1, it is equal to *fixed_in*.
 
     fixed_lag
     =========
-    The value *solution*\ ``.fixed_lag`` is a numpy vector with length
-    *n_fixed* containing the Lagrange multipliers for
+    The value *solution*\ ``.fixed_lag`` has length
+    *n_fixed* and is the Lagrange multipliers for
     the fixed effects lower (upper) bounds if it is greater than (less than)
     zero.
 
@@ -786,3 +787,131 @@ class mixed :
             solution_tmp.ran_con_lag
         )
         return solution
+    """
+    -------------------------------------------------------------------------
+    {xsrst_begin mixed_optimize_random}
+    .. include:: ../preamble.rst
+    {xsrst_spell
+        ipopt
+        init
+    }
+
+    Optimize The Random Effects
+    ###########################
+
+    Syntax
+    ******
+    {xsrst_file
+        # BEGIN_OPTIMIZE_RANDOM
+        # END_OPTIMIZE_RANDOM
+    }
+
+    Purpose
+    *******
+    Given a value for the fixed effects :math:`\theta`,
+    this routine maximizes the :ref:`mixed_ran_likelihood`
+    with respect to the fixed effect :math:`u`; i.e.,
+
+    .. math::
+
+        \B{p} ( y | \theta , u ) \B{p}( u | \theta )
+
+    If there is no data, this routine maximizes :math:`\B{p} ( u | \theta )`.
+
+
+    Argument Types
+    **************
+    The argument *random_ipopt_options*
+    has type ``str``.  All the other arguments are
+    numpy vectors with elements of type ``float``.
+
+    fixed_vec
+    *********
+    has length *n_fixed* and is the value of the fixed effects
+    :math:`\theta` in the objective function.
+    This vector can't be ``None``.
+
+    random_lower (random_upper)
+    ***************************
+    has length *n_random* and is the lower (upper) limit for the random effects.
+    As a lower (upper) limit, the value ``None`` is minus (plus) infinity;
+    i.e., no lower (upper) limit.
+
+    random_in
+    *********
+    has length *n_random* and is the initial value used during
+    optimization of the random effects.
+    If *random_in* is ``None`` the value *random_init* is used; see
+    :ref:`mixed_ctor.fixed_init_(random_init)`.
+
+    random_opt
+    **********
+    The return value *random_opt* is a numpy vector,
+    with length *n_random* an elements of type ``float``,
+    that maximizes the random likelihood with respect to the random effects.
+
+    Examples
+    ********
+
+    - :ref:`mixed_optimize_random`
+
+    {xsrst_end mixed_optimize_random}
+    """
+    def optimize_random(
+        self,
+    # BEGIN_OPTIMIZE_RANDOM
+    # random_opt = mixed_obj.optimize_random(
+        random_ipopt_options = None ,
+        fixed_vec            = None ,
+        random_lower         = None ,
+        random_upper         = None ,
+        random_in            = None ,
+    # )
+    # END_OPTIMIZE_RANDOM
+    ) :
+        def numpy_infinity(length) :
+            return numpy.ones(length, dtype=float) * numpy.inf
+        def numpy2std(vec, length, name) :
+            # numpy2vec will check the length and report errors
+            dtype = float
+            shape = length
+            context = 'cppad_py.mixed.optimize_random: ' + name
+            return cppad_py.utility.numpy2vec(vec, dtype, shape, context, name)
+        #
+        n_fixed   = self.n_fixed
+        n_random  = self.n_random
+        #
+        # fixed_vec
+        if fixed_vec is None :
+            msg = 'cppad_py.mixed.optimzie_random: fixed_vec is None'
+            raise RuntimeError(msg)
+        #
+        # adjust limits that are None
+        if random_lower is None :
+            random_lower = - numpy_infinity( n_random )
+        if random_upper is None :
+            random_upper = + numpy_infinity( n_random )
+        #
+        # adjust other arguments that are None
+        if random_ipopt_options is None :
+            random_ipopt_options = ''
+        if random_in is None :
+            random_in = self.random_init
+        #
+        # convert vectors from numpy to std
+        fixed_vec     = numpy2std(fixed_vec, n_fixed, 'fixed_vec')
+        random_lower  = numpy2std(random_lower, n_random, 'random_lower')
+        random_upper  = numpy2std(random_upper, n_random, 'random_upper')
+        random_in     = numpy2std(random_in, n_random, 'random_in')
+        #
+        # call the c++ object
+        random_opt = self.obj.optimize_random(
+            random_ipopt_options,
+            fixed_vec,
+            random_lower,
+            random_upper,
+            random_in,
+        )
+        #
+        random_opt = cppad_py.utility.vec2numpy( random_opt , n_random )
+        return random_opt

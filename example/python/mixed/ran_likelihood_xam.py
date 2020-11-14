@@ -114,12 +114,12 @@ def ran_likelihood_xam() :
     atheta   = atheta_u[0]
     au       = atheta_u[1]
     #
-    # - log[ p(y|theta,u) ] (dropping terms that are constant w.r.t. theta)
+    # - log[ p(y|theta,u) ] (dropping terms that are constant w.r.t. theta,u)
     atmp          = ( y  - y_bar - au )
     ap_y_theta_u  = 0.5 * atmp * atmp / atheta
     ap_y_theta_u += 0.5 * numpy.log( atheta )
     #
-    # - log[ p(u|theta) ] (dropping terms that are constant w.r.t. theta)
+    # - log[ p(u|theta) ] (dropping terms that are constant w.r.t. theta,u)
     atmp          = au / sigma
     ap_u_theta    = 0.5 * atmp * atmp
     #
