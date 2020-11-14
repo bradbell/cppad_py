@@ -61,24 +61,21 @@ rm xsrst.$$
 file_list=$(ls $test_dir/xsrst/*.rst | sed -e "s|^$test_dir/xsrst/||" )
 for file in $file_list
 do
-    if [ "$file" != 'xsrst_py.rst' ]
+    if [ ! -e sphinx/test_out/$file ]
     then
-        if [ ! -e sphinx/test_out/$file ]
-        then
-            echo "The output file sphinx/test_out/$file does not exist."
-            echo 'Check that the corresponding sections are correct and then:'
-            echo "    cp $test_dir/xsrst/$file sphinx/test_out/$file"
-            exit 1
-        elif ! diff sphinx/test_out/$file $test_dir/xsrst/$file
-        then
-            echo "$test_dir/xsrst/$file changed; above is output of"
-            echo "    diff sphinx/test_out/$file $test_dir/xsrst/$file"
-            echo 'If the new file is currect, replace old with new using:'
-            echo "    cp $test_dir/xsrst/$file sphinx/test_out/$file"
-            exit 1
-        else
-            echo "$file: OK"
-        fi
+        echo "The output file sphinx/test_out/$file does not exist."
+        echo 'Check that the corresponding sections are correct and then:'
+        echo "    cp $test_dir/xsrst/$file sphinx/test_out/$file"
+        exit 1
+    elif ! diff sphinx/test_out/$file $test_dir/xsrst/$file
+    then
+        echo "$test_dir/xsrst/$file changed; above is output of"
+        echo "    diff sphinx/test_out/$file $test_dir/xsrst/$file"
+        echo 'If the new file is currect, replace old with new using:'
+        echo "    cp $test_dir/xsrst/$file sphinx/test_out/$file"
+        exit 1
+    else
+        echo "$file: OK"
     fi
 done
 file_list=$(ls sphinx/test_out/*.rst | sed -e 's|^sphinx/test_out/||' )
