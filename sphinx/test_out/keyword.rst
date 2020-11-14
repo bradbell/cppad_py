@@ -11,6 +11,8 @@ keyword
 
 Example Keyword File
 ####################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../../sphinx/keyword

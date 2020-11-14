@@ -2,6 +2,12 @@
 suspend_exam
 !!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   suspend_res
+
 .. meta::
    :keywords: suspend_exam, suspend, example
 
@@ -11,6 +17,8 @@ suspend_exam
 
 Suspend Example
 ###############
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../../sphinx/test_in/suspend.py

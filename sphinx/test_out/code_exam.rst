@@ -2,6 +2,12 @@
 code_exam
 !!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   code_res
+
 .. meta::
    :keywords: code_exam, code, example
 
@@ -11,6 +17,8 @@ code_exam
 
 Code Example
 ############
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../../sphinx/test_in/code.py

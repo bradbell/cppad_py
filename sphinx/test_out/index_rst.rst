@@ -11,10 +11,12 @@ index_rst
 
 Example index.rst
 #################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../../sphinx/index.rst
-    :lines: 14-18
+    :lines: 14-21
     :language: rst
 
 ----

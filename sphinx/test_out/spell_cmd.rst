@@ -2,6 +2,12 @@
 spell_cmd
 !!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   spell_exam
+
 .. meta::
    :keywords: spell_cmd, spell, command
 
@@ -11,12 +17,8 @@ spell_cmd
 
 Spell Command
 #############
-- :ref:`spell_cmd.syntax`
-- :ref:`spell_cmd.purpose`
-- :ref:`spell_cmd.spelling`
-- :ref:`spell_cmd.capital_letters`
-- :ref:`spell_cmd.double_words`
-- :ref:`spell_cmd.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -105,10 +107,8 @@ the same word twice (next to each other) in the special word list.
 
 Example
 *******
-.. toctree::
-   :maxdepth: 1
 
-   spell_exam
+-  :ref:`spell_exam`
 
 ----
 

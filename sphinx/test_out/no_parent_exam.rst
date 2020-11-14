@@ -2,6 +2,12 @@
 no_parent_exam
 !!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   no_parent_res
+
 .. meta::
    :keywords: no_parent_exam, no, parent, example
 
@@ -11,6 +17,8 @@ no_parent_exam
 
 No Parent Example
 #################
+.. contents::
+   :local:
 
 All the sections in the file ``children.py``
 are children of the section below

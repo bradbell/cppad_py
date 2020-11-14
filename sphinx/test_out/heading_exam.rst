@@ -2,6 +2,12 @@
 heading_exam
 !!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   heading_res
+
 .. meta::
    :keywords: heading_exam, heading, example
 
@@ -11,7 +17,8 @@ heading_exam
 
 Heading Example
 ###############
-- :ref:`heading_exam.child_sections`
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../../sphinx/test_in/heading.py

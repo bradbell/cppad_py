@@ -11,8 +11,8 @@ file_res
 
 File Result
 ###########
-- :ref:`file_res.factorial`
-- :ref:`file_res.square`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: factorial

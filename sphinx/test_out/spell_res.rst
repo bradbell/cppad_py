@@ -11,9 +11,8 @@ spell_res
 
 Spell Result
 ############
-- :ref:`spell_res.text`
-- :ref:`spell_res.math`
-- :ref:`spell_res.double_words`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: text

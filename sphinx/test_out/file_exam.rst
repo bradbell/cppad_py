@@ -2,6 +2,12 @@
 file_exam
 !!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   file_res
+
 .. meta::
    :keywords: file_exam, file, example
 
@@ -11,6 +17,8 @@ file_exam
 
 File Example
 ############
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../../sphinx/test_in/file.cpp

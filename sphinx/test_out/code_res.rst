@@ -11,6 +11,8 @@ code_res
 
 Code Result
 ###########
+.. contents::
+   :local:
 
 .. code-block:: py
 

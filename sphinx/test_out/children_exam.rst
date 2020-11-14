@@ -11,8 +11,8 @@ children_exam
 
 Children Example
 ################
-- :ref:`children_exam.other_section`
-- :ref:`children_exam.this_file`
+.. contents::
+   :local:
 
 This file does not contain a begin parent command,
 so all its sections are children of the section that includes it.

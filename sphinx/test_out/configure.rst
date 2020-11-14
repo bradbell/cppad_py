@@ -2,6 +2,15 @@
 configure
 !!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   conf_py
+   index_rst
+   spelling
+   keyword
+
 .. meta::
    :keywords: configure, example, xsrst, configuration, files
 
@@ -11,14 +20,14 @@ configure
 
 Example xsrst Configuration Files
 #################################
+.. contents::
+   :local:
 
-.. toctree::
-   :maxdepth: 1
 
-   conf_py
-   index_rst
-   spelling
-   keyword
+-  :ref:`conf_py`
+-  :ref:`index_rst`
+-  :ref:`spelling`
+-  :ref:`keyword`
 
 ----
 

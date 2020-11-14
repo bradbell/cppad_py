@@ -12,6 +12,8 @@ indent_res
 =============
 Indent Result
 =============
+.. contents::
+   :local:
 
 .. code-block:: py
 

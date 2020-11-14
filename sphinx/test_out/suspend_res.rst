@@ -11,8 +11,8 @@ suspend_res
 
 Suspend Result
 ##############
-- :ref:`suspend_res.factorial`
-- :ref:`suspend_res.product`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: factorial

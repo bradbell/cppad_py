@@ -2,6 +2,12 @@
 comment_ch_cmd
 !!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   comment_ch_exam
+
 .. meta::
    :keywords: comment_ch_cmd, comment, character, command
 
@@ -11,12 +17,8 @@ comment_ch_cmd
 
 Comment Character Command
 #########################
-- :ref:`comment_ch_cmd.syntax`
-- :ref:`comment_ch_cmd.purpose`
-    - :ref:`comment_ch_cmd.purpose.ch`
-- :ref:`comment_ch_cmd.beginning_of_a_line`
-- :ref:`comment_ch_cmd.input_stream`
-- :ref:`comment_ch_cmd.example`
+.. contents::
+   :local:
 
 .. meta::
    :keywords: syntax
@@ -111,10 +113,8 @@ and the ``def`` token indented the same amount:
 
 Example
 *******
-.. toctree::
-   :maxdepth: 1
 
-   comment_ch_exam
+-  :ref:`comment_ch_exam`
 
 ----
 

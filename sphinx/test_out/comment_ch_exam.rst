@@ -2,6 +2,12 @@
 comment_ch_exam
 !!!!!!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   comment_ch_res
+
 .. meta::
    :keywords: comment_ch_exam, comment, character, example
 
@@ -12,6 +18,8 @@ comment_ch_exam
 =========================
 Comment Character Example
 =========================
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../../sphinx/test_in/comment_ch.py

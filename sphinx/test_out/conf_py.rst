@@ -11,6 +11,8 @@ conf_py
 
 Example conf.py
 ###############
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../../sphinx/conf.py

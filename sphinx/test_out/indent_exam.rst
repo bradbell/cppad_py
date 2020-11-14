@@ -2,6 +2,12 @@
 indent_exam
 !!!!!!!!!!!
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   indent_res
+
 .. meta::
    :keywords: indent_exam, indent, example
 
@@ -11,6 +17,8 @@ indent_exam
 
 Indent Example
 ##############
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../../sphinx/test_in/indent.py

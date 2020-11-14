@@ -11,6 +11,8 @@ spelling
 
 Example Spelling File
 #####################
+.. contents::
+   :local:
 
 
 .. literalinclude:: ../../../sphinx/spelling
