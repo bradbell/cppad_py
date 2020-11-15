@@ -285,6 +285,13 @@ d_fun::d_fun(
     // store the recording
     ptr_->Dependent(ax_copy, ay_copy);
 }
+// destructor
+d_fun::~d_fun(void)
+{   // desructor should not throw exception
+    assert( ptr_ != CPPAD_NULL );
+    delete ptr_;
+    ptr_ = CPPAD_NULL;
+}
 // --------------------------------------------------------------------------
 // constructor
 a_fun::a_fun(const d_fun& f)
@@ -297,6 +304,7 @@ a_fun::~a_fun(void)
 {   // desructor should not throw exception
     assert( a_ptr_ != CPPAD_NULL );
     delete a_ptr_;
+    a_ptr_ = CPPAD_NULL;
 }
 /*
 ------------------------------------------------------------------------------

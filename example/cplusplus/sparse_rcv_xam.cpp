@@ -22,7 +22,7 @@ bool sparse_rcv_xam(void) {
     //------------------------------------------------------------------------
     //
     // create sparsity pattern for n by n identity matrix
-    sparse_rc pattern = sparse_rc();
+    sparse_rc pattern;
     int n = 5;
     pattern.resize(n, n, n);
     for(int k = 0; k < n; k++) {
@@ -30,7 +30,7 @@ bool sparse_rcv_xam(void) {
     }
     //
     // create n by n sparse representation of identity matrix
-    sparse_rcv matrix = sparse_rcv(pattern);
+    sparse_rcv matrix(pattern);
     for(int k = 0; k < n; k++) {
         matrix.put(k, 1.0);
     }

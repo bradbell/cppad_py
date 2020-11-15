@@ -974,6 +974,7 @@ def init_spell_checker(spell_list) :
         'covariate',
         'covariates',
         'debug',
+        'destructor',
         'exponentiation',
         'identifiability',
         'initialize',

@@ -62,7 +62,7 @@ bool sparse_hes_pattern_xam(void) {
     //
     // loop over forward and reverse mode
     for(int mode = 0; mode < 2; mode++) {
-        sparse_rc pat_out = sparse_rc();
+        sparse_rc pat_out;
         if( mode == 0  ) {
             f.for_hes_sparsity(select_d, select_r, pat_out);
         }

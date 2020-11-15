@@ -70,12 +70,12 @@ bool sparse_hes_xam(void) {
     r[0] = 1.0;
     //
     // sparisty pattern for Hessian
-    sparse_rc pattern = sparse_rc();
+    sparse_rc pattern;
     f.for_hes_sparsity(select_d, select_r, pattern);
     //
     // compute all possibly non-zero entries in Hessian
     // (should only compute lower triangle becuase matrix is symmetric)
-    sparse_rcv subset = sparse_rcv(pattern);
+    sparse_rcv subset(pattern);
     //
     // work space used to save time for multiple calls
     sparse_hes_work work = cppad_py::sparse_hes_work();

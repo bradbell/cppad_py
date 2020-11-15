@@ -126,7 +126,8 @@ then
 fi
 # -----------------------------------------------------------------------------
 echo_eval_log check_copyright.sh
-bin/check_tab.sh
+echo_eval_log bin/check_if_0.sh
+echo_eval_log bin/check_tab.sh
 echo_eval_log bin/check_xsrst.sh
 echo_eval_log rm -r sphinx/xsrst
 echo_eval_log bin/run_sphinx.sh html

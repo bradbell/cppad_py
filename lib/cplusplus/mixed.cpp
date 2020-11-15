@@ -150,7 +150,10 @@ mixed::mixed(
 }
 // destructor
 mixed::~mixed(void)
-{   delete ptr_;
+{   // destructor should not throw exception
+    assert( ptr_ != CPPAD_NULL );
+    delete ptr_;
+    ptr_ = CPPAD_NULL;
 }
 // post_warning
 void mixed::post_warning(const char* message)

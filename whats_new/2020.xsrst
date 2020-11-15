@@ -39,6 +39,7 @@
     hpp
     libcppad
     ipopt
+    rcv
 }
 
 CppAD Py Changes During 2020
@@ -51,10 +52,19 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+11-15
+*****
+#.  Fix a memory leak in the destructor for a
+    :ref:`d_fun <py_fun_ctor.syntax.d_fun>` object.
+#.  The syntax for the c++ :ref:`sparse_rcv <cpp_sparse_rcv>`
+    and :ref:`sparse_rcv <cpp_sparse_rcv>` constructors has changed.
+    To be specific, they no longer use the assignment operator ``=`` .
+#.  Add the word ``destructor`` to the xsrst dictionary.
+
 11-14
 *****
 Add :ref:`optimize_random <mixed_optimize_random>`
-the the mixed class operations.
+the mixed class operations.
 
 11-12
 *****

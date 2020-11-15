@@ -27,6 +27,12 @@ class CPPAD_PY_LIB_PUBLIC sparse_rc
     // sparse_rc< std::vector<size_t> > representation
     CppAD::sparse_rc< std::vector<size_t> >* ptr_;
     // -----------------------------------------------------------------------
+    // forbidden default member functions
+    sparse_rc(const sparse_rc& other)
+    {   assert(false); }
+    void operator=(const sparse_rc& other)
+    {   assert(false); }
+    // -----------------------------------------------------------------------
     // public members not in Swig interface (see %ignore ptr)
     public:
     const CppAD::sparse_rc< std::vector<size_t> >* ptr(void) const;
@@ -65,6 +71,12 @@ class CPPAD_PY_LIB_PUBLIC sparse_rcv
     private:
     // CppAD::sparse_rc< std::vector<size_t> > representation
     CppAD::sparse_rcv< std::vector<size_t>, std::vector<double> >* ptr_;
+    // -----------------------------------------------------------------------
+    // forbidden default member functions
+    sparse_rcv(void)
+    {   assert(false); }
+    sparse_rcv(const sparse_rcv& other)
+    {   assert(false); }
     // -----------------------------------------------------------------------
     // public members not in Swig interface (see %ignore ptr)
     public:

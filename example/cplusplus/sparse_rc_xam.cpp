@@ -20,7 +20,7 @@ bool sparse_rc_xam(void) {
     //------------------------------------------------------------------------
     //
     // create a sparsity pattern
-    sparse_rc pattern = sparse_rc();
+    sparse_rc pattern;
     //
     int nr = 6;
     int nc = 5;

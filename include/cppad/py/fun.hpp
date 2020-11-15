@@ -45,10 +45,20 @@ class CPPAD_PY_LIB_PUBLIC d_fun
     // ADFun<double> representation
     CppAD::ADFun<double, double>* ptr_;
     // -----------------------------------------------------------------------
+    // forbidden default member functions
+    d_fun(void)
+    {   assert(false); }
+    d_fun(const d_fun& other)
+    {   assert(false); }
+    void operator=(const d_fun& other)
+    {   assert(false); }
+    // -----------------------------------------------------------------------
     // public members are in Swig interface
     public:
     // constrtuctor
     d_fun( const std::vector<a_double>& ax, const std::vector<a_double>& ay );
+    // destructor
+    ~d_fun(void);
     // properties
     int size_domain(void) const;
     int size_range(void) const;
@@ -124,6 +134,14 @@ class CPPAD_PY_LIB_PUBLIC a_fun
     private:
     // ADFun<a_double, double> representation
     CppAD::ADFun< CppAD::AD<double>, double>* a_ptr_;
+    // -----------------------------------------------------------------------
+    // forbidden default member functions
+    a_fun(void)
+    {   assert(false); }
+    a_fun(const a_fun& other)
+    {   assert(false); }
+    void operator=(const a_fun& other)
+    {   assert(false); }
     // -----------------------------------------------------------------------
     // public members are in Swig interface
     public:

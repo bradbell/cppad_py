@@ -31,7 +31,7 @@ Sparsity Patterns
 Syntax
 ******
 
-| *pattern* =  ``cppad_py::sparse_rc`` ()
+| ``cppad_py::sparse_rc`` pattern;
 | *pattern*\ ``.resize`` ( *nr* , *nc* , *nnz* )
 | *nr* = *pattern*\ ``.nr`` ()
 | *nc* = *pattern*\ ``.nc`` ()
@@ -215,6 +215,7 @@ sparse_rc::~sparse_rc(void)
 {   // destructor should not throw exception
     assert( ptr_ != CPPAD_NULL );
     delete ptr_;
+    ptr_ = CPPAD_NULL;
 }
 // resize
 void sparse_rc::resize(int nr, int nc, int nnz)
@@ -294,7 +295,7 @@ Sparse Matrices
 Syntax
 ******
 
-| *matrix* =  ``cppad_py::sparse_rcv`` ( *pattern* )
+| ``cppad_py::sparse_rcv`` *matrix* ( *pattern* )
 | *nr* = *matrix*\ ``.nr()``
 | *nc* = *matrix*\ ``.nc()``
 | *nnz* =  *matrix*\ ``.nnz()``
@@ -452,10 +453,10 @@ Example
 {xsrst_end cpp_sparse_rcv}
 */
 // ---------------------------------------------------------------------------
-// public member function not in Swig interface (see %ignore ptr)
+// public member functions not in Swig interface (see %ignore ptr)
 CppAD::sparse_rcv< std::vector<size_t> , std::vector<double> >*
     sparse_rcv::ptr(void)
-        {   return ptr_; }
+    {   return ptr_; }
 // ---------------------------------------------------------------------------
 // sparse_rcv ctor
 sparse_rcv::sparse_rcv(const sparse_rc& pattern)
@@ -469,6 +470,7 @@ sparse_rcv::~sparse_rcv(void)
 {   // destructor should not throw exception
     assert( ptr_ != CPPAD_NULL );
     delete ptr_;
+    ptr_ = CPPAD_NULL;
 }
 // number of rows in matrix
 int sparse_rcv::nr(void) const
@@ -983,6 +985,7 @@ sparse_jac_work::~sparse_jac_work(void)
 {   // destructor should not throw exception
     assert( ptr_ != CPPAD_NULL );
     delete ptr_;
+    ptr_ = CPPAD_NULL;
 }
 // sparse_jac_work clear
 void sparse_jac_work::clear(void)
@@ -1171,6 +1174,7 @@ sparse_hes_work::~sparse_hes_work(void)
 {   // destructor should not throw exception
     assert( ptr_ != CPPAD_NULL );
     delete ptr_;
+    ptr_ = CPPAD_NULL;
 }
 // sparse_hes_work clear
 void sparse_hes_work::clear(void)

@@ -48,7 +48,7 @@ bool sparse_jac_pattern_xam(void) {
     d_fun f(ax, ay);
     //
     // sparsity pattern for identity matrix
-    sparse_rc pat_in = sparse_rc();
+    sparse_rc pat_in;
     pat_in.resize(n, n, n);
     for(int k = 0; k < n; k++) {
         pat_in.put(k, k, k);
@@ -56,7 +56,7 @@ bool sparse_jac_pattern_xam(void) {
     //
     // loop over forward and reverse mode
     for(int mode = 0; mode < 2; mode++) {
-        sparse_rc pat_out = sparse_rc();
+        sparse_rc pat_out;
         if( mode == 0  ) {
             f.for_jac_sparsity(pat_in, pat_out);
         }
