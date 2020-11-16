@@ -5,11 +5,11 @@
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
-# include <cppad/py/convert_vec.hpp>
+# include <cppad/py/cpp_convert.hpp>
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin_parent convert_vec}
+{xsrst_begin_parent cpp_convert}
 {xsrst_spell
     cppad
 }
@@ -22,7 +22,7 @@ Children
 {xsrst_child_table
 }
 
-{xsrst_end convert_vec}
+{xsrst_end cpp_convert}
 -------------------------------------------------------------------------------
 {xsrst_begin ad_vec_std2cppad}
 

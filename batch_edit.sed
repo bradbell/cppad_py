@@ -14,10 +14,13 @@
 # '
 # list of files and or directories that are moved to new names
 # move_paths='
+#   include/cppad/py/convert_vec.hpp
+#   lib/cplusplus/convert_vec.cpp
 # '
 # list of sed commands that map old file and directory names to new names.
 # The characters @s, @d, @n get converted to a space, dollar sign, new line.
 # move_seds='
+#   s|convert_vec|cpp_convert|
 # '
 # list of files that get edited by the extra_seds command
 # extra_files='
@@ -31,6 +34,4 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|\([a-zA-Z_]\)\* \. ``|\1*\\ ``.|g
-s|\([a-zA-Z_]\)`` \. \*|\1.``\\ *|g
-s|`` ()|()``|g
+s|convert_vec|cpp_convert|g

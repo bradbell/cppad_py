@@ -7,7 +7,7 @@
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
 # include <cppad/py/mixed.hpp>
-# include <cppad/py/convert_vec.hpp>
+# include <cppad/py/cpp_convert.hpp>
 # include <cppad/mixed/exception.hpp>
 
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE

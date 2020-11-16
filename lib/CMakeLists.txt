@@ -24,7 +24,7 @@ ADD_LIBRARY(_cppad_swig SHARED
     cplusplus/a_double.cpp
     cplusplus/fun.cpp
     cplusplus/sparse.cpp
-    cplusplus/convert_vec.cpp
+    cplusplus/cpp_convert.cpp
     cplusplus/mixed.cpp
     ${CMAKE_CURRENT_BINARY_DIR}/cppad_py_swigPYTHON_wrap.cxx
 )
