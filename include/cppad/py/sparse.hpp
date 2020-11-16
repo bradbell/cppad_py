@@ -75,8 +75,6 @@ class CPPAD_PY_LIB_PUBLIC sparse_rcv
     // forbidden default member functions
     sparse_rcv(void)
     {   assert(false); }
-    sparse_rcv(const sparse_rcv& other)
-    {   assert(false); }
     // -----------------------------------------------------------------------
     // public members not in Swig interface (see %ignore ptr)
     public:
@@ -84,8 +82,9 @@ class CPPAD_PY_LIB_PUBLIC sparse_rcv
     // -----------------------------------------------------------------------
     // public members are in Swig interface
     public:
-    // constructor
+    // constructors
     sparse_rcv(const sparse_rc& pattern);
+    sparse_rcv(const sparse_rcv& other);
     // destructor
     ~sparse_rcv(void);
     // set k-th possibly non-zero value

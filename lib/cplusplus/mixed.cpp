@@ -113,7 +113,7 @@ mixed::mixed(
     for(size_t k = 0; k < nnz; ++k)
         copy_A_rc.set(k, A_rcv.row()[k], A_rcv.col()[k]);
     // --------------------------------------------------
-    // copy_A_rcv as CppAD::mixed::sparse_rcv
+    // copy_A_rcv as CppAD::mixed::d_sparse_rcv
     CppAD::mixed::d_sparse_rcv copy_A_rcv( copy_A_rc );
     for(size_t k = 0; k < nnz; ++k)
         copy_A_rcv.set(k, A_rcv.val()[k]);
@@ -241,6 +241,37 @@ std::vector<double> mixed::optimize_random(
     //
     return random_out;
 }
+// hes_fixed_obj
+sparse_rcv mixed::hes_fixed_obj(
+    const std::vector<double>& fixed_vec  ,
+    const std::vector<double>& random_opt )
+{   typedef CppAD::vector<double>        c_vector;
+    //
+    c_vector c_fixed_vec  = d_vec_std2cppad(fixed_vec);
+    c_vector c_random_opt = d_vec_std2cppad(random_opt);
+    //
+    CppAD::mixed::d_sparse_rcv c_result_rcv = ptr_->hes_fixed_obj(
+        c_fixed_vec  ,
+        c_random_opt
+    );
+    // --------------------------------------------------
+    // cppad_py::sparse_rc corresponding to result
+    size_t nr  = c_result_rcv.nr();
+    size_t nc  = c_result_rcv.nc();
+    size_t nnz = c_result_rcv.nnz();
+    sparse_rc result_rc;
+    result_rc.resize(nr, nc, nnz);
+    for(size_t k = 0; k < nnz; ++k)
+        result_rc.put(k, c_result_rcv.row()[k], c_result_rcv.col()[k]);
+    // --------------------------------------------------
+    // cppad_py::sparse_rcv corresponding to result
+    cppad_py::sparse_rcv result_rcv( result_rc );
+    for(size_t k = 0; k < nnz; ++k)
+        result_rcv.put(k, c_result_rcv.val()[k]);
+    //
+    return result_rcv;
+}
+
 
 } // END_CPPAD_PY_NAMESPACE
 

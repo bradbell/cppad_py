@@ -915,3 +915,123 @@ class mixed :
         #
         random_opt = cppad_py.utility.vec2numpy( random_opt , n_random )
         return random_opt
+    """
+    -------------------------------------------------------------------------
+    {xsrst_begin mixed_hes_fixed_obj}
+    .. include:: ../preamble.rst
+    {xsrst_spell
+        hes_obj_rcv
+        \hat
+        \infty
+    }
+
+    Hessian of Fixed Effects Objective
+    ##################################
+
+    Syntax
+    ******
+    {xsrst_file
+        # BEGIN_HES_FIXED_OBJ
+        # END_HES_FIXED_OBJ
+    }
+
+    Purpose
+    *******
+    Given a value for the fixed effects :math:`\theta`,
+    and the corresponding optimal value for the random effects
+    :math:`\hat{u} ( \theta )`.
+    This routine the hessian, with respect to the fixed effects,
+    of the negative log of the Laplace approximation for the
+    fixed effects objective
+
+    .. math::
+        \B{p} ( z | \theta ) \B{p} ( \theta ) \int_{-\infty}^{+\infty}
+            \B{p} ( y | \theta , u ) \B{p}( u | \theta ) \B{d} u
+
+    If there is no data,  and not random effects,
+    the return value is the Hessian of
+    :math:`- \log [ \B{p} ( \theta ) ]` .
+
+    Argument Types
+    **************
+    The arguments are numpy vectors with elements of type ``float``.
+
+    fixed_vec
+    *********
+    has length *n_fixed* and is the value of the fixed effects
+    :math:`\theta` at which the Hessian is evaluated.
+    This vector can't be ``None``.
+
+    random_opt
+    **********
+    has length *n_random* and is
+    the optional value for the random effects,
+    which is a function of the fixed effects and denoted by
+    :math:`\hat{u} ( \theta )` .
+    This vector can't be ``None``.
+
+    hes_fixed_obj_rcv
+    *****************
+    The return value *hes_fixed_obj_rcv* is a
+    :ref:`py_sparse_rcv <py_sparse_rcv>` matrix representation
+    of the Hessian.
+
+    Examples
+    ********
+    {xsrst_child_list
+        example/python/mixed/hes_fixed_obj_xam.py
+    }
+
+    {xsrst_end mixed_hes_fixed_obj}
+    """
+    def hes_fixed_obj(
+        self,
+    # BEGIN_HES_FIXED_OBJ
+    # hes_fixed_obj_rcv = mixed_obj.hes_fixed_obj(
+        fixed_vec            = None ,
+        random_opt           = None ,
+    # )
+    # END_HES_FIXED_OBJ
+    ) :
+        def numpy2std(vec, length, name) :
+            # numpy2vec will check the length and report errors
+            dtype = float
+            shape = length
+            context = 'cppad_py.hes_fixed_obj: ' + name
+            vec = cppad_py.utility.numpy2vec(vec, dtype, shape, context, name)
+            return vec
+        #
+        n_fixed   = self.n_fixed
+        n_random  = self.n_random
+        #
+        # fixed_vec
+        if fixed_vec is None :
+            msg = 'cppad_py.mixed.hes_fixed_obj: fixed_vec is None'
+            raise RuntimeError(msg)
+        #
+        # convert vectors from numpy to std
+        fixed_vec     = numpy2std(fixed_vec, n_fixed, 'fixed_vec')
+        random_opt    = numpy2std(random_opt, n_random, 'random_opt')
+        #
+        # call the c++ object
+        hes_fixed_obj_rcv = self.obj.hes_fixed_obj(
+            fixed_vec,
+            random_opt,
+        )
+        # hes_fixed_obj_rcv information
+        nr      = hes_fixed_obj_rcv.nr()
+        nc      = hes_fixed_obj_rcv.nc()
+        nnz     = hes_fixed_obj_rcv.nnz()
+        row     = hes_fixed_obj_rcv.row()
+        col     = hes_fixed_obj_rcv.col()
+        val     = hes_fixed_obj_rcv.val()
+        # convert from cppad_py.cppad_swig.sparse_rcv to cppad_py.sparse_rcv
+        result_rc = cppad_py.sparse_rc()
+        result_rc.resize(nr, nc, nnz)
+        for k in range(nnz) :
+            result_rc.put(k, row[k], col[k])
+        result_rcv = cppad_py.sparse_rcv( result_rc )
+        for k in range(nnz) :
+            result_rcv.put(k, val[k])
+        #
+        return result_rcv

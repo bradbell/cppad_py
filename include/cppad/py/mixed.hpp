@@ -123,7 +123,14 @@ public:
         const std::vector<double>& random_upper           ,
         const std::vector<double>& random_in
     );
+    // hes_fixed_obj
+    sparse_rcv hes_fixed_obj(
+        const std::vector<double>& fixed_vec  ,
+        const std::vector<double>& random_opt
+    );
+
 };
+
 
 } // END_CPPAD_PY_NAMESPACE
 

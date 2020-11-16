@@ -465,6 +465,22 @@ sparse_rcv::sparse_rcv(const sparse_rc& pattern)
     );
     CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
+sparse_rcv::sparse_rcv(const sparse_rcv& other)
+{   typedef std::vector<size_t> size_vector;
+    typedef std::vector<double> double_vector;
+    size_t nr  = other.nr();
+    size_t nc  = other.nc();
+    size_t nnz = other.nnz();
+    const std::vector<int>&    row = other.row();
+    const std::vector<int>&    col = other.col();
+    const std::vector<double>& val = other.val();
+    CppAD::sparse_rc<size_vector> pattern(nr, nc, nnz);
+    for(size_t k = 0; k < nnz; ++k)
+        pattern.set(k, size_t(row[k]), size_t(col[k]) );
+    ptr_ = new CppAD::sparse_rcv<size_vector, double_vector>( pattern );
+    for(size_t k = 0; k < nnz; ++k)
+        ptr_->set(k, val[k]);
+}
 // destructor
 sparse_rcv::~sparse_rcv(void)
 {   // destructor should not throw exception

@@ -31,6 +31,7 @@ if '@include_mixed@' == 'true' :
         'fatal_error_xam',
         'fix_constraint_xam',
         'fix_likelihood_xam',
+        'hes_fixed_obj_xam',
         'optimize_fixed_1',
         "optimize_fixed_2",
         "optimize_random_xam",

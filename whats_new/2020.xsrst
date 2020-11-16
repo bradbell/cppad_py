@@ -40,6 +40,7 @@
     libcppad
     ipopt
     rcv
+    hes_obj
 }
 
 CppAD Py Changes During 2020
@@ -60,11 +61,13 @@ Previous Years
     and :ref:`sparse_rcv <cpp_sparse_rcv>` constructors has changed.
     To be specific, they no longer use the assignment operator ``=`` .
 #.  Add the word ``destructor`` to the xsrst dictionary.
+#.  Add :ref:`hes_fixed_obj <mixed_hes_fixed_obj>`
+    to the mixed class operations.
 
 11-14
 *****
 Add :ref:`optimize_random <mixed_optimize_random>`
-the mixed class operations.
+to the mixed class operations.
 
 11-12
 *****
