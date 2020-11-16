@@ -148,6 +148,10 @@ Table of Contents
 |  |space|  |space|  |space|  |space| :ref:`3.3.4.7.1<mixed_optimize_fixed_1_py>` A Very Simple Optimize Fixed Effects: Example and Test
 |  |space|  |space|  |space|  |space| :ref:`3.3.4.7.2<mixed_optimize_fixed_2_py>` The Ipopt Example Problem: Example and Test
 |
+|  |space|  |space|  |space| :ref:`3.3.4.8<mixed_optimize_random>` Optimize The Random Effects
+|  |space|  |space|  |space| :ref:`3.3.4.9<mixed_hes_fixed_obj>` Hessian of Fixed Effects Objective
+|  |space|  |space|  |space|  |space| :ref:`3.3.4.9.1<mixed_hes_fixed_obj_xam_py>` ran_likelihood: Example and Test
+|
 |  |space|  |space| :ref:`3.3.5<more_py>` Steps To Add More Python Functions
 |
 |  |space| :ref:`3.4<cpp_lib>` The C++ Library

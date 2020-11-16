@@ -112,6 +112,8 @@
 <li class="toctree-l5"><a class="reference internal" href="mixed_fix_constraint.html">mixed_fix_constraint</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_ran_likelihood.html">mixed_ran_likelihood</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_optimize_fixed.html">mixed_optimize_fixed</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_optimize_random.html">mixed_optimize_random</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_hes_fixed_obj.html">mixed_hes_fixed_obj</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="more_py.html">more_py</a></li>
@@ -249,12 +251,10 @@ w.r.t <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
 it equal to zero, the optimal fixed effects
 <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> solves the equations</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{align*}
-0 &amp; = \frac{ \hat{\theta} - \bar{\theta}}{ \sigma^2 }
+\[\begin{split}0 &amp; = \frac{ \hat{\theta} - \bar{\theta}}{ \sigma^2 }
     - \frac{z - \hat{\theta} }{ \sigma^2 }
 \\
-\hat{\theta} &amp; = \frac{ \bar{\theta} + z }{2}
-\end{align*}\end{split}\]</div>
+\hat{\theta} &amp; = \frac{ \bar{\theta} + z }{2}\end{split}\]</div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fix_likelihood_xam</span><span class="p">()</span> <span class="p">:</span>
     <span class="kn">import</span> <span class="nn">cppad_py</span>
     <span class="kn">import</span> <span class="nn">numpy</span>

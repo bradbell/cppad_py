@@ -262,12 +262,12 @@
     <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
     <span class="c1">//</span>
     <span class="c1">// sparisty pattern for Hessian</span>
-    <span class="n">sparse_rc</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">sparse_rc</span><span class="p">();</span>
+    <span class="n">sparse_rc</span> <span class="n">pattern</span><span class="p">;</span>
     <span class="n">f</span><span class="p">.</span><span class="n">for_hes_sparsity</span><span class="p">(</span><span class="n">select_d</span><span class="p">,</span> <span class="n">select_r</span><span class="p">,</span> <span class="n">pattern</span><span class="p">);</span>
     <span class="c1">//</span>
     <span class="c1">// compute all possibly non-zero entries in Hessian</span>
     <span class="c1">// (should only compute lower triangle becuase matrix is symmetric)</span>
-    <span class="n">sparse_rcv</span> <span class="n">subset</span> <span class="o">=</span> <span class="n">sparse_rcv</span><span class="p">(</span><span class="n">pattern</span><span class="p">);</span>
+    <span class="n">sparse_rcv</span> <span class="n">subset</span><span class="p">(</span><span class="n">pattern</span><span class="p">);</span>
     <span class="c1">//</span>
     <span class="c1">// work space used to save time for multiple calls</span>
     <span class="n">sparse_hes_work</span> <span class="n">work</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">::</span><span class="n">sparse_hes_work</span><span class="p">();</span>

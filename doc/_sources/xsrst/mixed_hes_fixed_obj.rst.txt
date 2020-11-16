@@ -1,0 +1,129 @@
+!!!!!!!!!!!!!!!!!!!
+mixed_hes_fixed_obj
+!!!!!!!!!!!!!!!!!!!
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   mixed_hes_fixed_obj_xam_py
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: mixed_hes_fixed_obj, hessian, fixed, effects, objective
+
+.. index:: mixed_hes_fixed_obj, hessian, fixed, effects, objective
+
+.. _mixed_hes_fixed_obj:
+
+Hessian of Fixed Effects Objective
+##################################
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: syntax
+
+.. index:: syntax
+
+.. _mixed_hes_fixed_obj.syntax:
+
+Syntax
+******
+
+.. literalinclude:: ../../lib/python/cppad_py/mixed.py
+    :lines: 990-993
+    :language: py
+
+.. meta::
+   :keywords: purpose
+
+.. index:: purpose
+
+.. _mixed_hes_fixed_obj.purpose:
+
+Purpose
+*******
+Given a value for the fixed effects :math:`\theta`,
+and the corresponding optimal value for the random effects
+:math:`\hat{u} ( \theta )`.
+This routine the hessian, with respect to the fixed effects,
+of the negative log of the Laplace approximation for the
+fixed effects objective
+
+.. math::
+    \B{p} ( z | \theta ) \B{p} ( \theta ) \int_{-\infty}^{+\infty}
+        \B{p} ( y | \theta , u ) \B{p}( u | \theta ) \B{d} u
+
+If there is no data,  and not random effects,
+the return value is the Hessian of
+:math:`- \log [ \B{p} ( \theta ) ]` .
+
+.. meta::
+   :keywords: argument, types
+
+.. index:: argument, types
+
+.. _mixed_hes_fixed_obj.argument_types:
+
+Argument Types
+**************
+The arguments are numpy vectors with elements of type ``float``.
+
+.. meta::
+   :keywords: fixed_vec
+
+.. index:: fixed_vec
+
+.. _mixed_hes_fixed_obj.fixed_vec:
+
+fixed_vec
+*********
+has length *n_fixed* and is the value of the fixed effects
+:math:`\theta` at which the Hessian is evaluated.
+This vector can't be ``None``.
+
+.. meta::
+   :keywords: random_opt
+
+.. index:: random_opt
+
+.. _mixed_hes_fixed_obj.random_opt:
+
+random_opt
+**********
+has length *n_random* and is
+the optional value for the random effects,
+which is a function of the fixed effects and denoted by
+:math:`\hat{u} ( \theta )` .
+This vector can't be ``None``.
+
+.. meta::
+   :keywords: hes_fixed_obj_rcv
+
+.. index:: hes_fixed_obj_rcv
+
+.. _mixed_hes_fixed_obj.hes_fixed_obj_rcv:
+
+hes_fixed_obj_rcv
+*****************
+The return value *hes_fixed_obj_rcv* is a
+:ref:`py_sparse_rcv <py_sparse_rcv>` matrix representation
+of the Hessian.
+
+.. meta::
+   :keywords: examples
+
+.. index:: examples
+
+.. _mixed_hes_fixed_obj.examples:
+
+Examples
+********
+
+-  :ref:`mixed_hes_fixed_obj_xam_py`
+
+----
+
+xsrst input file: ``lib/python/cppad_py/mixed.py``

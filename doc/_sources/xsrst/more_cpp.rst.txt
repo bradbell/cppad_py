@@ -184,7 +184,7 @@ The following function
 was added to the ``lib/cplusplus/fun.cpp`` file:
 
 .. literalinclude:: ../../lib/cplusplus/fun.cpp
-    :lines: 468-484
+    :lines: 476-492
     :language: cpp
 
 A similar function was added to the ``a_fun`` class.

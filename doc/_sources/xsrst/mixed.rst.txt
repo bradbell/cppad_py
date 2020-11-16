@@ -13,6 +13,8 @@ mixed
    mixed_fix_constraint
    mixed_ran_likelihood
    mixed_optimize_fixed
+   mixed_optimize_random
+   mixed_hes_fixed_obj
 
 .. include:: ../preamble.rst
 
@@ -163,6 +165,8 @@ Children
     "mixed_fix_constraint", :ref:`mixed_fix_constraint`
     "mixed_ran_likelihood", :ref:`mixed_ran_likelihood`
     "mixed_optimize_fixed", :ref:`mixed_optimize_fixed`
+    "mixed_optimize_random", :ref:`mixed_optimize_random`
+    "mixed_hes_fixed_obj", :ref:`mixed_hes_fixed_obj`
 
 ----
 

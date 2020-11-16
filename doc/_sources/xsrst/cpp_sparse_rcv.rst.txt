@@ -32,7 +32,7 @@ Sparse Matrices
 Syntax
 ******
 
-| *matrix* =  ``cppad_py::sparse_rcv`` ( *pattern* )
+| ``cppad_py::sparse_rcv`` *matrix* ( *pattern* )
 | *nr* = *matrix*\ ``.nr()``
 | *nc* = *matrix*\ ``.nc()``
 | *nnz* =  *matrix*\ ``.nnz()``

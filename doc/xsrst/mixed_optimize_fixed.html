@@ -135,6 +135,8 @@
 <li class="toctree-l6"><a class="reference internal" href="mixed_optimize_fixed_2_py.html">mixed_optimize_fixed_2_py</a></li>
 </ul>
 </li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_optimize_random.html">mixed_optimize_random</a></li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_hes_fixed_obj.html">mixed_hes_fixed_obj</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="more_py.html">more_py</a></li>
@@ -233,13 +235,10 @@
 <li><p><a class="reference internal" href="#syntax" id="id3">Syntax</a></p></li>
 <li><p><a class="reference internal" href="#purpose" id="id4">Purpose</a></p></li>
 <li><p><a class="reference internal" href="#argument-types" id="id5">Argument Types</a></p></li>
-<li><p><a class="reference internal" href="#limits" id="id6">Limits</a></p>
-<ul>
+<li><p><a class="reference internal" href="#limits" id="id6">Limits</a></p></li>
 <li><p><a class="reference internal" href="#fixed-lower-fixed-upper" id="id7">fixed_lower (fixed_upper)</a></p></li>
 <li><p><a class="reference internal" href="#fix-constraint-lower-fix-constraint-upper" id="id8">fix_constraint_lower (fix_constraint_upper)</a></p></li>
 <li><p><a class="reference internal" href="#random-lower-random-upper" id="id9">random_lower (random_upper)</a></p></li>
-</ul>
-</li>
 <li><p><a class="reference internal" href="#fixed-in-random-in" id="id10">fixed_in (random_in)</a></p></li>
 <li><p><a class="reference internal" href="#fixed-scale" id="id11">fixed_scale</a></p></li>
 <li><p><a class="reference internal" href="#fixed-ipopt-options" id="id12">fixed_ipopt_options</a></p>
@@ -295,7 +294,7 @@ the Laplace approximation for the likelihood of the data and fixed effects.</p>
 there is no Laplace approximation of the integral above, and
 this routine maximizes <span class="math notranslate nohighlight">\(\B{p} ( z | \theta ) \B{p} ( \theta )\)</span> ;
 see <a class="reference internal" href="mixed_fix_likelihood.html#id1"><span class="std std-ref">Fixed Effects Likelihood</span></a>.
-It also is not data, this routine maximizes <span class="math notranslate nohighlight">\(\B{p} ( \theta )\)</span>.</p>
+It also is no data, this routine maximizes <span class="math notranslate nohighlight">\(\B{p} ( \theta )\)</span>.</p>
 </div>
 <div class="section" id="argument-types">
 <span id="mixed-optimize-fixed-argument-types"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id5">Argument Types</a><a class="headerlink" href="#argument-types" title="Permalink to this headline">¶</a></h3>
@@ -307,28 +306,28 @@ numpy vectors with elements of type <code class="docutils literal notranslate"><
 <span id="mixed-optimize-fixed-limits"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id6">Limits</a><a class="headerlink" href="#limits" title="Permalink to this headline">¶</a></h3>
 <p>As a lower (upper) limit, the value <code class="docutils literal notranslate"><span class="pre">None</span></code> is minus (plus) infinity;
 i.e., no lower (upper) limit.</p>
+</div>
 <div class="section" id="fixed-lower-fixed-upper">
-<span id="mixed-optimize-fixed-limits-fixed-lower-fixed-upper"></span><span id="index-5"></span><h4><a class="toc-backref" href="#id7">fixed_lower (fixed_upper)</a><a class="headerlink" href="#fixed-lower-fixed-upper" title="Permalink to this headline">¶</a></h4>
+<span id="mixed-optimize-fixed-fixed-lower-fixed-upper"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id7">fixed_lower (fixed_upper)</a><a class="headerlink" href="#fixed-lower-fixed-upper" title="Permalink to this headline">¶</a></h3>
 <p>has length <em>n_fixed</em> and is the lower (upper) limit for the fixed effects.</p>
 </div>
 <div class="section" id="fix-constraint-lower-fix-constraint-upper">
-<span id="mixed-optimize-fixed-limits-fix-constraint-lower-fix-constraint-upper"></span><span id="index-6"></span><h4><a class="toc-backref" href="#id8">fix_constraint_lower (fix_constraint_upper)</a><a class="headerlink" href="#fix-constraint-lower-fix-constraint-upper" title="Permalink to this headline">¶</a></h4>
+<span id="mixed-optimize-fixed-fix-constraint-lower-fix-constraint-upper"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id8">fix_constraint_lower (fix_constraint_upper)</a><a class="headerlink" href="#fix-constraint-lower-fix-constraint-upper" title="Permalink to this headline">¶</a></h3>
 <p>has length equal to the
 <a class="reference internal" href="py_fun_property.html#py-fun-property-size-range"><span class="std std-ref">size_range</span></a> for the
 <a class="reference internal" href="mixed_fix_constraint.html#id1"><span class="std std-ref">Fixed Effects Constraint Function</span></a>
 and is the corresponding lower (upper) limit.</p>
 </div>
 <div class="section" id="random-lower-random-upper">
-<span id="mixed-optimize-fixed-limits-random-lower-random-upper"></span><span id="index-7"></span><h4><a class="toc-backref" href="#id9">random_lower (random_upper)</a><a class="headerlink" href="#random-lower-random-upper" title="Permalink to this headline">¶</a></h4>
+<span id="mixed-optimize-fixed-random-lower-random-upper"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id9">random_lower (random_upper)</a><a class="headerlink" href="#random-lower-random-upper" title="Permalink to this headline">¶</a></h3>
 <p>has length <em>n_random</em> and is the lower (upper) limit for the random effects.
 (The Laplace approximation assumes these bounds are not active.)</p>
-</div>
 </div>
 <div class="section" id="fixed-in-random-in">
 <span id="mixed-optimize-fixed-fixed-in-random-in"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id10">fixed_in (random_in)</a><a class="headerlink" href="#fixed-in-random-in" title="Permalink to this headline">¶</a></h3>
 <p>has length <em>n_fixed</em> (<em>n_random</em>) and is the initial value used during
 optimization of the fixed (random) effects.
-If this value is <code class="docutils literal notranslate"><span class="pre">None</span></code> for <em>fixed_in</em> (<em>random_in</em>) the value
+If <em>fixed_in</em> (<em>random_in</em>) is <code class="docutils literal notranslate"><span class="pre">None</span></code>, the value
 <em>fixed_init</em> (<em>random_init</em>) is used; see
 <a class="reference internal" href="mixed_ctor.html#mixed-ctor-fixed-init-random-init"><span class="std std-ref">fixed_init (random_init)</span></a>.</p>
 </div>
@@ -413,18 +412,19 @@ not have the special exceptions to the normal Ipopt options; e.g.,
 </div>
 <div class="section" id="solution">
 <span id="mixed-optimize-fixed-solution"></span><span id="index-20"></span><h3><a class="toc-backref" href="#id22">solution</a><a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
-<p>The return value <em>solution</em> has the following fields:</p>
+<p>All the fields in the return value <em>solution</em>
+are numpy vectors with elements of type <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
 <div class="section" id="fixed-opt">
 <span id="mixed-optimize-fixed-solution-fixed-opt"></span><span id="index-21"></span><h4><a class="toc-backref" href="#id23">fixed_opt</a><a class="headerlink" href="#fixed-opt" title="Permalink to this headline">¶</a></h4>
-<p>The value <em>solution</em><code class="docutils literal notranslate"><span class="pre">.fixed_opt</span></code> is a numpy vector with length
-<em>n_fixed</em> containing the final value of the fixed effects
+<p>The value <em>solution</em><code class="docutils literal notranslate"><span class="pre">.fixed_opt</span></code> has length
+<em>n_fixed</em> and is the final value of the fixed effects
 (after optimization).
 If the <em>max_iter</em> is -1, it is equal to <em>fixed_in</em>.</p>
 </div>
 <div class="section" id="fixed-lag">
 <span id="mixed-optimize-fixed-solution-fixed-lag"></span><span id="index-22"></span><h4><a class="toc-backref" href="#id24">fixed_lag</a><a class="headerlink" href="#fixed-lag" title="Permalink to this headline">¶</a></h4>
-<p>The value <em>solution</em><code class="docutils literal notranslate"><span class="pre">.fixed_lag</span></code> is a numpy vector with length
-<em>n_fixed</em> containing the Lagrange multipliers for
+<p>The value <em>solution</em><code class="docutils literal notranslate"><span class="pre">.fixed_lag</span></code> has length
+<em>n_fixed</em> and is the Lagrange multipliers for
 the fixed effects lower (upper) bounds if it is greater than (less than)
 zero.</p>
 </div>

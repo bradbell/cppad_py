@@ -214,7 +214,7 @@
     <span class="c1">//------------------------------------------------------------------------</span>
     <span class="c1">//</span>
     <span class="c1">// create sparsity pattern for n by n identity matrix</span>
-    <span class="n">sparse_rc</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">sparse_rc</span><span class="p">();</span>
+    <span class="n">sparse_rc</span> <span class="n">pattern</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
     <span class="n">pattern</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -222,7 +222,7 @@
     <span class="p">}</span>
     <span class="c1">//</span>
     <span class="c1">// create n by n sparse representation of identity matrix</span>
-    <span class="n">sparse_rcv</span> <span class="n">matrix</span> <span class="o">=</span> <span class="n">sparse_rcv</span><span class="p">(</span><span class="n">pattern</span><span class="p">);</span>
+    <span class="n">sparse_rcv</span> <span class="n">matrix</span><span class="p">(</span><span class="n">pattern</span><span class="p">);</span>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">matrix</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
     <span class="p">}</span>

@@ -254,7 +254,7 @@
     <span class="c1">//</span>
     <span class="c1">// loop over forward and reverse mode</span>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">mode</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">mode</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">mode</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">sparse_rc</span> <span class="n">pat_out</span> <span class="o">=</span> <span class="n">sparse_rc</span><span class="p">();</span>
+        <span class="n">sparse_rc</span> <span class="n">pat_out</span><span class="p">;</span>
         <span class="k">if</span><span class="p">(</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span>  <span class="p">)</span> <span class="p">{</span>
             <span class="n">f</span><span class="p">.</span><span class="n">for_hes_sparsity</span><span class="p">(</span><span class="n">select_d</span><span class="p">,</span> <span class="n">select_r</span><span class="p">,</span> <span class="n">pat_out</span><span class="p">);</span>
         <span class="p">}</span>

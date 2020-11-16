@@ -4,17 +4,18 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta content="mixed_fix_likelihood, fixed, effects, likelihood" name="keywords" />
+  <meta content="mixed_hes_fixed_obj, hessian, fixed, effects, objective" name="keywords" />
 <meta content="syntax" name="keywords" />
-<meta content="fix_likelihood" name="keywords" />
-<meta content="theta" name="keywords" />
-<meta content="v" name="keywords" />
-<meta content="none" name="keywords" />
-<meta content="example" name="keywords" />
+<meta content="purpose" name="keywords" />
+<meta content="argument, types" name="keywords" />
+<meta content="fixed_vec" name="keywords" />
+<meta content="random_opt" name="keywords" />
+<meta content="hes_fixed_obj_rcv" name="keywords" />
+<meta content="examples" name="keywords" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mixed_fix_likelihood &mdash; cppad_py  documentation</title>
+  <title>mixed_hes_fixed_obj &mdash; cppad_py  documentation</title>
   
 
   
@@ -45,8 +46,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="mixed_fix_likelihood_xam_py" href="mixed_fix_likelihood_xam_py.html" />
-    <link rel="prev" title="mixed_fatal_error_xam_py" href="mixed_fatal_error_xam_py.html" /> 
+    <link rel="next" title="mixed_hes_fixed_obj_xam_py" href="mixed_hes_fixed_obj_xam_py.html" />
+    <link rel="prev" title="mixed_optimize_random" href="mixed_optimize_random.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -108,15 +109,15 @@
 <li class="toctree-l5"><a class="reference internal" href="mixed_ctor.html">mixed_ctor</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_warning.html">mixed_warning</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_fatal_error.html">mixed_fatal_error</a></li>
-<li class="toctree-l5 current"><a class="current reference internal" href="#">mixed_fix_likelihood</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="mixed_fix_likelihood_xam_py.html">mixed_fix_likelihood_xam_py</a></li>
-</ul>
-</li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_fix_likelihood.html">mixed_fix_likelihood</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_fix_constraint.html">mixed_fix_constraint</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_ran_likelihood.html">mixed_ran_likelihood</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_optimize_fixed.html">mixed_optimize_fixed</a></li>
 <li class="toctree-l5"><a class="reference internal" href="mixed_optimize_random.html">mixed_optimize_random</a></li>
-<li class="toctree-l5"><a class="reference internal" href="mixed_hes_fixed_obj.html">mixed_hes_fixed_obj</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">mixed_hes_fixed_obj</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="mixed_hes_fixed_obj_xam_py.html">mixed_hes_fixed_obj_xam_py</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="more_py.html">more_py</a></li>
@@ -183,13 +184,13 @@
         
           <li><a href="mixed.html">mixed</a> &raquo;</li>
         
-      <li>mixed_fix_likelihood</li>
+      <li>mixed_hes_fixed_obj</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/xsrst/mixed_fix_likelihood.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/xsrst/mixed_hes_fixed_obj.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -202,61 +203,78 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="mixed-fix-likelihood">
-<h1>mixed_fix_likelihood<a class="headerlink" href="#mixed-fix-likelihood" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="mixed-hes-fixed-obj">
+<h1>mixed_hes_fixed_obj<a class="headerlink" href="#mixed-hes-fixed-obj" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
-<div class="section" id="fixed-effects-likelihood">
-<span id="id1"></span><h2>Fixed Effects Likelihood<a class="headerlink" href="#fixed-effects-likelihood" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hessian-of-fixed-effects-objective">
+<span id="id1"></span><h2>Hessian of Fixed Effects Objective<a class="headerlink" href="#hessian-of-fixed-effects-objective" title="Permalink to this headline">¶</a></h2>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
-<li><p><a class="reference internal" href="#fix-likelihood" id="id3">fix_likelihood</a></p></li>
-<li><p><a class="reference internal" href="#theta" id="id4">theta</a></p></li>
-<li><p><a class="reference internal" href="#v" id="id5">v</a></p></li>
-<li><p><a class="reference internal" href="#none" id="id6">None</a></p></li>
-<li><p><a class="reference internal" href="#example" id="id7">Example</a></p></li>
+<li><p><a class="reference internal" href="#purpose" id="id3">Purpose</a></p></li>
+<li><p><a class="reference internal" href="#argument-types" id="id4">Argument Types</a></p></li>
+<li><p><a class="reference internal" href="#fixed-vec" id="id5">fixed_vec</a></p></li>
+<li><p><a class="reference internal" href="#random-opt" id="id6">random_opt</a></p></li>
+<li><p><a class="reference internal" href="#hes-fixed-obj-rcv" id="id7">hes_fixed_obj_rcv</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id8">Examples</a></p></li>
 </ul>
 </div>
 <div class="section" id="syntax">
-<span id="mixed-fix-likelihood-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
-<p><em>v</em> = <em>fix_likelihood</em><code class="docutils literal notranslate"><span class="pre">.forward</span></code> (0, <em>theta</em> )</p>
+<span id="mixed-hes-fixed-obj-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># hes_fixed_obj_rcv = mixed_obj.hes_fixed_obj(</span>
+        <span class="n">fixed_vec</span>            <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
+        <span class="n">random_opt</span>           <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
+    <span class="c1"># )</span>
+</pre></div>
 </div>
-<div class="section" id="fix-likelihood">
-<span id="mixed-fix-likelihood-fix-likelihood"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">fix_likelihood</a><a class="headerlink" href="#fix-likelihood" title="Permalink to this headline">¶</a></h3>
-<p>is a <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> representation
-of the fixed effects likelihood.
-The negative log of the fixed effects likelihood is</p>
+</div>
+<div class="section" id="purpose">
+<span id="mixed-hes-fixed-obj-purpose"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">Purpose</a><a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<p>Given a value for the fixed effects <span class="math notranslate nohighlight">\(\theta\)</span>,
+and the corresponding optimal value for the random effects
+<span class="math notranslate nohighlight">\(\hat{u} ( \theta )\)</span>.
+This routine the hessian, with respect to the fixed effects,
+of the negative log of the Laplace approximation for the
+fixed effects objective</p>
 <div class="math notranslate nohighlight">
-\[f( \theta )
-=
-v_0 ( \theta ) + | v_1 ( \theta)  | + \cdots + | v_{m-1} ( \theta ) |
-=
-- \log [ \B{p} ( z | \theta ) \B{p} ( \theta ) ]\]</div>
-<p>The functions <span class="math notranslate nohighlight">\(v_i ( \theta )\)</span> for <span class="math notranslate nohighlight">\(i = 0 , \ldots , m-1\)</span>
-are assumed to be a smooth w.r.t the vector <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+\[\B{p} ( z | \theta ) \B{p} ( \theta ) \int_{-\infty}^{+\infty}
+    \B{p} ( y | \theta , u ) \B{p}( u | \theta ) \B{d} u\]</div>
+<p>If there is no data,  and not random effects,
+the return value is the Hessian of
+<span class="math notranslate nohighlight">\(- \log [ \B{p} ( \theta ) ]\)</span> .</p>
 </div>
-<div class="section" id="theta">
-<span id="mixed-fix-likelihood-theta"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">theta</a><a class="headerlink" href="#theta" title="Permalink to this headline">¶</a></h3>
-<p>is a numpy vector with <code class="docutils literal notranslate"><span class="pre">float</span></code> elements and size
-<a class="reference internal" href="mixed_ctor.html#mixed-ctor-n-fixed"><span class="std std-ref">n_fixed</span></a>
-containing a value for the fixed effects.</p>
+<div class="section" id="argument-types">
+<span id="mixed-hes-fixed-obj-argument-types"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">Argument Types</a><a class="headerlink" href="#argument-types" title="Permalink to this headline">¶</a></h3>
+<p>The arguments are numpy vectors with elements of type <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
 </div>
-<div class="section" id="v">
-<span id="mixed-fix-likelihood-v"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">v</a><a class="headerlink" href="#v" title="Permalink to this headline">¶</a></h3>
-<p>is a numpy vector with <code class="docutils literal notranslate"><span class="pre">float</span></code> elements and size <em>m</em>.</p>
+<div class="section" id="fixed-vec">
+<span id="mixed-hes-fixed-obj-fixed-vec"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">fixed_vec</a><a class="headerlink" href="#fixed-vec" title="Permalink to this headline">¶</a></h3>
+<p>has length <em>n_fixed</em> and is the value of the fixed effects
+<span class="math notranslate nohighlight">\(\theta\)</span> at which the Hessian is evaluated.
+This vector can’t be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </div>
-<div class="section" id="none">
-<span id="mixed-fix-likelihood-none"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">None</a><a class="headerlink" href="#none" title="Permalink to this headline">¶</a></h3>
-<p>The value <em>fix_likelihood</em> = <code class="docutils literal notranslate"><span class="pre">None</span></code>
-corresponds to the fixed effects likelihood
-being constant w.r.t. <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+<div class="section" id="random-opt">
+<span id="mixed-hes-fixed-obj-random-opt"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">random_opt</a><a class="headerlink" href="#random-opt" title="Permalink to this headline">¶</a></h3>
+<p>has length <em>n_random</em> and is
+the optional value for the random effects,
+which is a function of the fixed effects and denoted by
+<span class="math notranslate nohighlight">\(\hat{u} ( \theta )\)</span> .
+This vector can’t be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </div>
-<div class="section" id="example">
-<span id="mixed-fix-likelihood-example"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="mixed_fix_likelihood_xam_py.html#id1"><span class="std std-ref">mixed_fix_likelihood_xam_py</span></a></p>
+<div class="section" id="hes-fixed-obj-rcv">
+<span id="mixed-hes-fixed-obj-hes-fixed-obj-rcv"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">hes_fixed_obj_rcv</a><a class="headerlink" href="#hes-fixed-obj-rcv" title="Permalink to this headline">¶</a></h3>
+<p>The return value <em>hes_fixed_obj_rcv</em> is a
+<a class="reference internal" href="py_sparse_rcv.html#id1"><span class="std std-ref">py_sparse_rcv</span></a> matrix representation
+of the Hessian.</p>
+</div>
+<div class="section" id="examples">
+<span id="mixed-hes-fixed-obj-examples"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="mixed_hes_fixed_obj_xam_py.html#id1"><span class="std std-ref">ran_likelihood: Example and Test</span></a></p></li>
+</ul>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/python/cppad_py/mixed.py</span></code></p>
 </div>
@@ -271,10 +289,10 @@ being constant w.r.t. <span class="math notranslate nohighlight">\(\theta\)</spa
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mixed_fix_likelihood_xam_py.html" class="btn btn-neutral float-right" title="mixed_fix_likelihood_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mixed_hes_fixed_obj_xam_py.html" class="btn btn-neutral float-right" title="mixed_hes_fixed_obj_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="mixed_fatal_error_xam_py.html" class="btn btn-neutral float-left" title="mixed_fatal_error_xam_py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mixed_optimize_random.html" class="btn btn-neutral float-left" title="mixed_optimize_random" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
