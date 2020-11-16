@@ -359,13 +359,13 @@ Python
 ======
 | *az* = *ax* *op* *ay*
 | *az* = *ax* *op* *y*
-| *az* = *y* *op* *ax*
+| *az* = *x* *op* *ay*
 
 C++
 ===
 | *az* = *ax* *op* *ay*
 | *az* = *ax* *op* *y*
-| *az* = *fun* ( *y* , *ax* )
+| *az* = *fun* ( *x* , *ax* )
 
 
 op
@@ -381,7 +381,7 @@ i.e.,
 
 | *az* = *pow* ( *ax* , *ay* )
 | *az* = *pow* ( *ax* , *y* )
-| *az* = *pow* ( *y* , *ax* )
+| *az* = *pow* ( *x* , *ay* )
 
 fun
 ***
@@ -409,20 +409,27 @@ This object has c++ prototype
 
 | |tab| ``const double&`` *y*
 
+
+x
+*
+This object has c++ prototype
+
+| |tab| ``const double&`` *x*
+
+
 az
 **
 The result has c++ prototype
 
 | |tab| ``a_double`` *az*
 
-{xsrst_children
-    example/cplusplus/a_double_binary_xam.cpp
-    example/python/core/a_double_binary_xam.py
-}
+
 Example
 *******
-:ref:`c++<a_double_binary_xam_cpp>`,
-:ref:`python<a_double_binary_xam_py>`.
+{xsrst_child_list
+    example/python/core/a_double_binary_xam.py
+    example/cplusplus/a_double_binary_xam.cpp
+}
 
 {xsrst_end a_double_binary}
 */
