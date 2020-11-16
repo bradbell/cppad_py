@@ -254,20 +254,7 @@ sparse_rcv mixed::hes_fixed_obj(
         c_fixed_vec  ,
         c_random_opt
     );
-    // --------------------------------------------------
-    // cppad_py::sparse_rc corresponding to result
-    size_t nr  = c_result_rcv.nr();
-    size_t nc  = c_result_rcv.nc();
-    size_t nnz = c_result_rcv.nnz();
-    sparse_rc result_rc;
-    result_rc.resize(nr, nc, nnz);
-    for(size_t k = 0; k < nnz; ++k)
-        result_rc.put(k, c_result_rcv.row()[k], c_result_rcv.col()[k]);
-    // --------------------------------------------------
-    // cppad_py::sparse_rcv corresponding to result
-    cppad_py::sparse_rcv result_rcv( result_rc );
-    for(size_t k = 0; k < nnz; ++k)
-        result_rcv.put(k, c_result_rcv.val()[k]);
+    cppad_py::sparse_rcv result_rcv( mixed2sparse_rcv( c_result_rcv ) );
     //
     return result_rcv;
 }

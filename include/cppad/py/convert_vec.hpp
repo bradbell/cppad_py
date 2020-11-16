@@ -7,6 +7,12 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 ---------------------------------------------------------------------------- */
+// These functions are not in swig interface
+//
+# ifdef INCLUDE_MIXED
+# include <cppad/mixed/cppad_mixed.hpp>
+# include <cppad/py/sparse.hpp>
+# endif
 # include <cppad/cppad.hpp>
 # include <cppad/py/a_double.hpp>
 
@@ -27,6 +33,12 @@ namespace cppad_py {
     // d_vec_cppad2std
     std::vector<double>
     d_vec_cppad2std(const CppAD::vector<double>& v_in );
+    //
+    // mixed2sparse_rcv
+# ifdef INCLUDE_MIXED
+    sparse_rcv
+    mixed2sparse_rcv(const CppAD::mixed::d_sparse_rcv& mixed_rcv);
+# endif
 }
 
 # endif

@@ -5,15 +5,17 @@
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
-# include <cppad/cppad.hpp>
-# include <cppad/py/a_double.hpp>
+# include <cppad/py/convert_vec.hpp>
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 /*
 -------------------------------------------------------------------------------
 {xsrst_begin_parent convert_vec}
+{xsrst_spell
+    cppad
+}
 
-Convert From Standard Vectors to CppAD Vectors
-##############################################
+Convert Objects Between cppad_mixed and cppad_py
+################################################
 
 Children
 ********
@@ -36,7 +38,7 @@ Convert AD Vector From Standard to CppAD
 Syntax
 ******
 
-| *v_out* =  ``cppad_py::ad_vec_std2cppad`` ( ``v_in`` )
+| *v_out* =  ``cppad_py::ad_vec_std2cppad`` ( *v_in* )
 
 Prototype
 *********
@@ -46,7 +48,6 @@ Prototype
 }
 
 {xsrst_end ad_vec_std2cppad}
--------------------------------------------------------------------------------
 */
 
 // BEGIN_AD_VEC_STD2CPPAD
@@ -74,7 +75,7 @@ Convert AD Vector From CppAD to Standard
 Syntax
 ******
 
-| *v_out* =  ``cppad_py::ad_vec_cppad2std`` ( ``v_in`` )
+| *v_out* =  ``cppad_py::ad_vec_cppad2std`` ( *v_in* )
 
 Prototype
 *********
@@ -84,7 +85,6 @@ Prototype
 }
 
 {xsrst_end ad_vec_cppad2std}
--------------------------------------------------------------------------------
 */
 
 // BEGIN_AD_VEC_CPPAD2STD
@@ -112,7 +112,7 @@ Convert double Vector From Standard to CppAD
 Syntax
 ******
 
-| *v_out* =  ``cppad_py::d_vec_std2cppad`` ( ``v_in`` )
+| *v_out* =  ``cppad_py::d_vec_std2cppad`` ( *v_in* )
 
 Prototype
 *********
@@ -122,7 +122,6 @@ Prototype
 }
 
 {xsrst_end d_vec_std2cppad}
--------------------------------------------------------------------------------
 */
 
 // BEGIN_D_VEC_STD2CPPAD
@@ -150,7 +149,7 @@ Convert double Vector From CppAD to Standard
 Syntax
 ******
 
-| *v_out* =  ``cppad_py::d_vec_cppad2std`` ( ``v_in`` )
+| *v_out* =  ``cppad_py::d_vec_cppad2std`` ( *v_in* )
 
 Prototype
 *********
@@ -160,7 +159,6 @@ Prototype
 }
 
 {xsrst_end d_vec_cppad2std}
--------------------------------------------------------------------------------
 */
 
 // BEGIN_D_VEC_CPPAD2STD
@@ -173,5 +171,60 @@ d_vec_cppad2std(const CppAD::vector<double>& v_in )
     return v_out;
 }
 
+/*
+-------------------------------------------------------------------------------
+{xsrst_begin mixed2sparse_rcv}
+{xsrst_spell
+    cppad
+    rcv
+}
+
+.. include:: ../preamble.rst
+
+Convert Sparse Matrix from cppad_mixed to cppad_py
+##################################################
+
+Syntax
+******
+
+| *sparse_out* = ``cppad_py::mixed2sparse_rcv`` ( *sparse_in* )
+
+Prototype
+*********
+{xsrst_file
+    // BEGIN_MIXED2SPARSE_RCV
+    // END_MIXED2SPARSE_RCV
+}
+
+Restriction
+***********
+This routine is only available when
+:ref:`include_mixed <get_cppad_sh.settings.include_mixed>` is true.
+
+{xsrst_end mixed2sparse_rcv}
+*/
+# ifdef INCLUDE_MIXED
+// BEGIN_MIXED2SPARSE_RCV
+sparse_rcv
+mixed2sparse_rcv(const CppAD::mixed::d_sparse_rcv& mixed_rcv)
+// END_MIXED2SPARSE_RCV
+{   size_t nr  = mixed_rcv.nr();
+    size_t nc  = mixed_rcv.nc();
+    size_t nnz = mixed_rcv.nnz();
+    sparse_rc result_rc;
+    result_rc.resize(nr, nc, nnz);
+    for(size_t k = 0; k < nnz; ++k)
+        result_rc.put(k, mixed_rcv.row()[k], mixed_rcv.col()[k]);
+    // --------------------------------------------------
+    // cppad_py::sparse_rcv corresponding to result
+    cppad_py::sparse_rcv result_rcv( result_rc );
+    for(size_t k = 0; k < nnz; ++k)
+        result_rcv.put(k, mixed_rcv.val()[k]);
+    //
+    return result_rcv;
+}
+# endif // INCLUDE_MIXED
 // ----------------------------------------------------------------------------
+
+
 } // END_CPPAD_PY_NAMESPACE
