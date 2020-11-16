@@ -5,7 +5,7 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# mixed ran_likelihood
+# mixed hes_fixed_obj_xam
 # -----------------------------------------------------------------------------
 '''
 {xsrst_begin mixed_hes_fixed_obj_xam_py}

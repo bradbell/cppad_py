@@ -20,18 +20,24 @@ name      = sys.argv[1]
 name_py   = name + '.py'
 # ---------------------------------------------------------------------------
 found_dir = None
-for local_dir in [ 'core', 'numeric', 'mixed' ] :
-    sub_dir = 'example/python/' + local_dir
-    if os.path.isfile( sub_dir + '/' + name_py ) :
+dir_list= [
+    'test/mixed',
+    'example/python/core',
+    'example/python/numeric',
+    'example/python/mixed',
+]
+for local_dir in dir_list :
+    if os.path.isfile( local_dir + '/' + name_py ) :
         if found_dir is None :
-            found_dir = sub_dir
+            found_dir = local_dir
         else :
             msg  = 'bin/test_one.sh: found two version of ' + name_py
-            msg += sub_dir + '/' + name_py + '\n'
+            msg += local_dir + '/' + name_py + '\n'
             msg += found_dir + '/' + name_py
             sys.exit(msg)
 if found_dir is None :
-    msg = 'could not find ' + name_py + ' below example/python'
+    msg  = 'could not find ' + name_py
+    msg += ' below example/python or test/python'
     sys.exit(msg)
 # ---------------------------------------------------------------------------
 def run_test(module_name, fun_name) :

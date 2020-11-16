@@ -956,7 +956,8 @@ class mixed :
     The argument *hes_fixed_obj_rcv* is a
     :ref:`py_sparse_rcv <py_sparse_rcv>` matrix.
     The input value of this argument does not matter.
-    Upon return it contains the Hessian.
+    Upon return it contains the lower triangle of the Hessian
+    (the Hessian is symmetric).
 
     fixed_vec
     *********
