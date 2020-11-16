@@ -65,11 +65,12 @@ class CPPAD_PY_LIB_PUBLIC sparse_rc
     // -----------------------------------------------------------------------
 };
 
-// Swig class that acts the same as CppAD::sparse_rcv< std::vector<size_t> >
+// Swig class that acts the same as
+// CppAD::sparse_rcv< std::vector<size_t>, std::vector<double> >
 class CPPAD_PY_LIB_PUBLIC sparse_rcv
 {   // private members are not in Swig interface
     private:
-    // CppAD::sparse_rc< std::vector<size_t> > representation
+    // CppAD representation
     CppAD::sparse_rcv< std::vector<size_t>, std::vector<double> >* ptr_;
     // -----------------------------------------------------------------------
     // forbidden default member functions

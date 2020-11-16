@@ -951,29 +951,28 @@ class mixed :
     the return value is the Hessian of
     :math:`- \log [ \B{p} ( \theta ) ]` .
 
-    Argument Types
-    **************
-    The arguments are numpy vectors with elements of type ``float``.
+    hes_fixed_obj_rcv
+    *****************
+    The argument *hes_fixed_obj_rcv* is a
+    :ref:`py_sparse_rcv <py_sparse_rcv>` matrix.
+    The input value of this argument does not matter.
+    Upon return it contains the Hessian.
 
     fixed_vec
     *********
-    has length *n_fixed* and is the value of the fixed effects
+    The argument *fixed_vec* is a numpy vector with ``float`` elements
+    and length *n_fixed*. It contains the value of the fixed effects
     :math:`\theta` at which the Hessian is evaluated.
     This vector can't be ``None``.
 
     random_opt
     **********
-    has length *n_random* and is
-    the optional value for the random effects,
+    The argument *random_opt* is a numpy vector with ``float`` elements
+    and length *n_random*.
+    It contains the optional value for the random effects,
     which is a function of the fixed effects and denoted by
     :math:`\hat{u} ( \theta )` .
     This vector can't be ``None``.
-
-    hes_fixed_obj_rcv
-    *****************
-    The return value *hes_fixed_obj_rcv* is a
-    :ref:`py_sparse_rcv <py_sparse_rcv>` matrix representation
-    of the Hessian.
 
     Examples
     ********
@@ -986,7 +985,8 @@ class mixed :
     def hes_fixed_obj(
         self,
     # BEGIN_HES_FIXED_OBJ
-    # hes_fixed_obj_rcv = mixed_obj.hes_fixed_obj(
+    # mixed_obj.hes_fixed_obj(
+        hes_fixed_obj_rcv    = None ,
         fixed_vec            = None ,
         random_opt           = None ,
     # )
@@ -1013,25 +1013,7 @@ class mixed :
         random_opt    = numpy2std(random_opt, n_random, 'random_opt')
         #
         # call the c++ object
-        hes_fixed_obj_rcv = self.obj.hes_fixed_obj(
+        hes_fixed_obj_rcv.rcv = self.obj.hes_fixed_obj(
             fixed_vec,
             random_opt,
         )
-        # hes_fixed_obj_rcv information
-        nr      = hes_fixed_obj_rcv.nr()
-        nc      = hes_fixed_obj_rcv.nc()
-        nnz     = hes_fixed_obj_rcv.nnz()
-        row     = hes_fixed_obj_rcv.row()
-        col     = hes_fixed_obj_rcv.col()
-        val     = hes_fixed_obj_rcv.val()
-        # convert from cppad_py.cppad_swig.sparse_rcv to cppad_py.sparse_rcv
-        result_rc = cppad_py.sparse_rc()
-        result_rc.resize(nr, nc, nnz)
-        for k in range(nnz) :
-            result_rc.put(k, row[k], col[k])
-        result_rcv = cppad_py.sparse_rcv()
-        result_rcv.pat( result_rc )
-        for k in range(nnz) :
-            result_rcv.put(k, val[k])
-        #
-        return result_rcv

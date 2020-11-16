@@ -55,16 +55,20 @@ Previous Years
 
 11-16
 *****
-**API change**: the :ref:`pat <py_sparse_rcv.pat>` member function was added
-to the ``sparse_rcv`` class and the constructor was change to have no
-arguments. The old syntax
+#.  **API change**: the :ref:`pat <py_sparse_rcv.pat>` member function
+    was added to the ``sparse_rcv`` class and the constructor was change to
+    have no arguments. The old syntax
 
-| |tab| *matrix* = ``cppad_py.sparse_rcv`` ( *pattern* )
+    | |tab| *matrix* = ``cppad_py.sparse_rcv`` ( *pattern* )
 
-will need to be changed to
+    will need to be changed to
 
-| |tab| *matrix* = ``cppad_py.sparse_rcv()``
-| |tab| *matrix*\ ``.pat`` ( *pattern* )
+    | |tab| *matrix* = ``cppad_py.sparse_rcv()``
+    | |tab| *matrix*\ ``.pat`` ( *pattern* )
+
+#.  The :ref:`hes_fixed_obj <mixed_hes_fixed_obj>` mixed class member function
+    syntax was changed to make the result an argument instead of return value.
+    This avoids having to make an extra copy of the sparse matrix.
 
 
 11-15

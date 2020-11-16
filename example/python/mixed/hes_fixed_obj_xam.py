@@ -142,7 +142,9 @@ def hes_fixed_obj_xam() :
     )
     #
     # hes_fixed_obj_rcv
-    hes_fixed_obj_rcv  = mixed_obj.hes_fixed_obj(
+    hes_fixed_obj_rcv = cppad_py.sparse_rcv()
+    mixed_obj.hes_fixed_obj(
+        hes_fixed_obj_rcv        ,
         fixed_vec  = theta       ,
         random_opt = random_opt  ,
     )
@@ -151,7 +153,6 @@ def hes_fixed_obj_xam() :
     term1 = (theta + sigma * sigma)
     term2 = (y - y_bar) * (y - y_bar)
     check = term2 / (term1 * term1 * term1)  - 0.5 / (term1 * term1 )
-    #
     #
     # check solution
     ok = ok and hes_fixed_obj_rcv.nr()     == 1
