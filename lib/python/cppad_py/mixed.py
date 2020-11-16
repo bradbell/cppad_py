@@ -231,8 +231,7 @@ class mixed :
         if self.n_random < 0 :
             raise RuntimeError('cppad_py.mixed: n_random is less than zero')
         if A_rcv is None :
-            empty_pattern = cppad_py.sparse_rc()
-            A_rcv         = cppad_py.sparse_rcv( empty_pattern )
+            A_rcv         = cppad_py.sparse_rcv()
             self.A_rcv    = A_rcv
         if warning is None :
             warning = ignore_warning
@@ -1030,7 +1029,8 @@ class mixed :
         result_rc.resize(nr, nc, nnz)
         for k in range(nnz) :
             result_rc.put(k, row[k], col[k])
-        result_rcv = cppad_py.sparse_rcv( result_rc )
+        result_rcv = cppad_py.sparse_rcv()
+        result_rcv.pat( result_rc )
         for k in range(nnz) :
             result_rcv.put(k, val[k])
         #

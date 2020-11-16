@@ -23,7 +23,8 @@
 # Syntax
 # ******
 #
-# | *matrix* =  ``cppad_py::sparse_rcv`` ( *pattern* )
+# | *matrix* =  ``cppad_py.sparse_rcv()``
+# | *matrix*.pat ( *pattern* )
 # | *nr* = *matrix*\ ``.nr()``
 # | *nc* = *matrix*\ ``.nc()``
 # | *nnz* =  *matrix*\ ``.nnz()``
@@ -34,22 +35,20 @@
 # | *row_major* = *matrix*\ ``.row_major()``
 # | *col_major* = *matrix*\ ``.col_major()``
 #
-# pattern
-# *******
-# This argument has prototype
-#
-# | |tab| ``const sparse_rc&`` *pattern*
-#
-# It specifies the number of rows, number of columns and
-# the possibly non-zero entries in the *matrix* .
-#
 # matrix
 # ******
-# This is a sparse matrix object with the sparsity specified by *pattern* .
-# Only the *val* vector can be changed. All other values returned by
-# *matrix* are fixed during the constructor and constant there after.
-# The *val* vector is only changed by the constructor
-# and the ``set`` function.
+# This result is used ot hold a sparse matrix.
+# It has zero row *nr*, zero columns *nc*, and zero non-zero values *nnz*
+# when it is first created.
+# It is constant except for the ``pat`` and ``put`` operations.
+#
+# pat
+# ***
+# This changes the sparsity pattern for the matrix to *pattern*.
+# The argument *pattern* is a ``cppad_py.sparse_rc`` object,
+# it is not changed, and it specifies *nr*, *nc*, *nnz*, *row*, and *col*.
+# The values in the *val* vector are unspecified after this operation.
+# The ``put`` operation can be used to set these values.
 #
 # nr
 # **
@@ -154,7 +153,12 @@ import numpy
 class sparse_rcv :
     """Python interface to CppAD::sparse_rc"""
     #
-    def __init__(self, pattern) :
+    def __init__(self) :
+        pattern  = cppad_py.cppad_swig.sparse_rc()
+        self.rcv = cppad_py.cppad_swig.sparse_rcv( pattern )
+    #
+    # pat
+    def pat(self, pattern) :
         # use undocumented fact that pattern.rc is vec_int version of sparsity
         self.rcv = cppad_py.cppad_swig.sparse_rcv(pattern.rc)
     #

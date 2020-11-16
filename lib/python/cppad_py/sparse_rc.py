@@ -37,6 +37,8 @@
 # pattern
 # *******
 # This result is used to hold a sparsity pattern for a matrix.
+# It has zero rows *nr*, zero columns *nc*, and zero non-zero values *nnz*
+# when it is first created.
 # It is constant
 # except during the ``resize`` and ``put`` operations.
 #

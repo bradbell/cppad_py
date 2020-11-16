@@ -16,6 +16,11 @@ def sparse_rcv_xam() :
     # initialize return variable
     ok = True
     # ---------------------------------------------------------------------
+    # create an empty matrix
+    matrix = cppad_py.sparse_rcv()
+    ok     = ok and matrix.nr()  == 0
+    ok     = ok and matrix.nc()  == 0
+    ok     = ok and matrix.nnz() == 0
     #
     # create sparsity pattern for n by n identity matrix
     pattern = cppad_py.sparse_rc()
@@ -24,13 +29,10 @@ def sparse_rcv_xam() :
     for k in range( n ) :
         pattern.put(k, k, k)
     #
-    #
     # create n by n sparse representation of identity matrix
-    # (temporarly use pattern.rc untile sparse_rcv wrapper is built)
-    matrix = cppad_py.sparse_rcv(pattern)
+    matrix.pat(pattern)
     for k in range( n ) :
         matrix.put(k, 1.0)
-    #
     #
     # row, column indices
     row = matrix.row()
@@ -42,7 +44,6 @@ def sparse_rcv_xam() :
         ok = ok and row[k] == k
         ok = ok and col[k] == k
         ok = ok and val[k] == 1.0
-    #
     #
     # For this case, row_major and col_major order are same as original order
     row_major = matrix.row_major()

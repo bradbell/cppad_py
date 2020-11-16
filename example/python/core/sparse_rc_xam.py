@@ -17,16 +17,17 @@ def sparse_rc_xam() :
     ok = True
     # ---------------------------------------------------------------------
     #
-    # create a sparsity pattern
+    # create an empty sparsity pattern
     pattern = cppad_py.sparse_rc()
+    ok      = ok and pattern.nr()  == 0
+    ok      = ok and pattern.nc()  == 0
+    ok      = ok and pattern.nnz() == 0
     #
+    # resize
     nr = 6
     nc = 5
     nnz = 4
-    #
-    # resize
     pattern.resize(nr, nc, nnz)
-    #
     ok = ok and pattern.nr()  == nr
     ok = ok and pattern.nc()  == nc
     ok = ok and pattern.nnz() == nnz
