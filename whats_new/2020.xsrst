@@ -69,6 +69,8 @@ Previous Years
 #.  The :ref:`hes_fixed_obj <mixed_hes_fixed_obj>` mixed class member function
     syntax was changed to make the result an argument instead of return value.
     This avoids having to make an extra copy of the sparse matrix.
+#.  Add :ref:`hes_random_obj <mixed_hes_random_obj>`
+    to the mixed class operations.
 
 
 11-15

@@ -128,6 +128,11 @@ public:
         const std::vector<double>& fixed_vec  ,
         const std::vector<double>& random_opt
     );
+    // hes_random_obj
+    sparse_rcv hes_random_obj(
+        const std::vector<double>& fixed_vec  ,
+        const std::vector<double>& random_vec
+    );
 
 };
 

@@ -936,10 +936,10 @@ class mixed :
 
     Purpose
     *******
-    Given a value for the fixed effects :math:`\theta`,
+    We are given a value for the fixed effects :math:`\theta`
     and the corresponding optimal value for the random effects
     :math:`\hat{u} ( \theta )`.
-    This routine the hessian, with respect to the fixed effects,
+    This routine computes the hessian, with respect to the fixed effects,
     of the negative log of the Laplace approximation for the
     fixed effects objective
 
@@ -1009,6 +1009,11 @@ class mixed :
             msg = 'cppad_py.mixed.hes_fixed_obj: fixed_vec is None'
             raise RuntimeError(msg)
         #
+        # random_opt
+        if random_opt is None :
+            msg = 'cppad_py.mixed.hes_fixed_obj: random_opt is None'
+            raise RuntimeError(msg)
+        #
         # convert vectors from numpy to std
         fixed_vec     = numpy2std(fixed_vec, n_fixed, 'fixed_vec')
         random_opt    = numpy2std(random_opt, n_random, 'random_opt')
@@ -1017,4 +1022,107 @@ class mixed :
         hes_fixed_obj_rcv.rcv = self.obj.hes_fixed_obj(
             fixed_vec,
             random_opt,
+        )
+    """
+    -------------------------------------------------------------------------
+    {xsrst_begin mixed_hes_random_obj}
+    .. include:: ../preamble.rst
+    {xsrst_spell
+        hes_obj_rcv
+    }
+
+    Hessian of Random Effects Objective
+    ###################################
+
+    Syntax
+    ******
+    {xsrst_file
+        # BEGIN_HES_RANDOM_OBJ
+        # END_HES_RANDOM_OBJ
+    }
+
+    Purpose
+    *******
+    We are given a value for the fixed effects :math:`\theta`,
+    and the corresponding random effects :math:`u` .
+    This routine the hessian, with respect to the random effects,
+    of the negative log of random effects objective; i.e.,
+    :ref:`ran_likelihood <mixed_ran_likelihood.ran_likelihood>`
+
+    .. math::
+        \B{p} ( y | \theta , u ) \B{p}( u | \theta ) \B{d} u
+
+    If there is no data, the return value is the Hessian of
+    :math:`- \log [ \B{p} ( u | \theta ) ]` w.r.t :math:`u` .
+
+    hes_random_obj_rcv
+    ******************
+    The argument *hes_random_obj_rcv* is a
+    :ref:`py_sparse_rcv <py_sparse_rcv>` matrix.
+    The input value of this argument does not matter.
+    Upon return it contains the lower triangle of the Hessian
+    (the Hessian is symmetric).
+
+    fixed_vec
+    *********
+    The argument *fixed_vec* is a numpy vector with ``float`` elements
+    and length *n_fixed*. It contains the value of the fixed effects
+    :math:`\theta` at which the Hessian is evaluated.
+    This vector can't be ``None``.
+
+    random_vec
+    **********
+    The argument *random_vec* is a numpy vector with ``float`` elements
+    and length *n_random*.
+    It contains the value for the random effects at which the Hessian
+    is evaluated.,
+    This vector can't be ``None``.
+
+    Examples
+    ********
+    {xsrst_child_list
+        example/python/mixed/hes_random_obj_xam.py
+    }
+
+    {xsrst_end mixed_hes_random_obj}
+    """
+    def hes_random_obj(
+        self,
+    # BEGIN_HES_RANDOM_OBJ
+    # mixed_obj.hes_random_obj(
+        hes_random_obj_rcv   = None ,
+        fixed_vec            = None ,
+        random_vec           = None ,
+    # )
+    # END_HES_RANDOM_OBJ
+    ) :
+        def numpy2std(vec, length, name) :
+            # numpy2vec will check the length and report errors
+            dtype = float
+            shape = length
+            context = 'cppad_py.hes_random_obj: ' + name
+            vec = cppad_py.utility.numpy2vec(vec, dtype, shape, context, name)
+            return vec
+        #
+        n_fixed   = self.n_fixed
+        n_random  = self.n_random
+        #
+        # fixed_vec
+        if fixed_vec is None :
+            msg = 'cppad_py.mixed.hes_random_obj: fixed_vec is None'
+            raise RuntimeError(msg)
+        #
+        # random_vec
+        if random_vec is None :
+            msg = 'cppad_py.mixed.hes_random_obj: random_vec is None'
+            raise RuntimeError(msg)
+        #
+        # convert vectors from numpy to std
+        fixed_vec     = numpy2std(fixed_vec, n_fixed, 'fixed_vec')
+        random_vec    = numpy2std(random_vec, n_random, 'random_vec')
+        #
+        # call the c++ object
+        hes_random_obj_rcv.rcv = self.obj.hes_random_obj(
+            fixed_vec,
+            random_vec,
         )

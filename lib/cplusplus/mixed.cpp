@@ -258,6 +258,23 @@ sparse_rcv mixed::hes_fixed_obj(
     //
     return result_rcv;
 }
+// hes_random_obj
+sparse_rcv mixed::hes_random_obj(
+    const std::vector<double>& fixed_vec  ,
+    const std::vector<double>& random_vec )
+{   typedef CppAD::vector<double>        c_vector;
+    //
+    c_vector c_fixed_vec  = d_vec_std2cppad(fixed_vec);
+    c_vector c_random_vec = d_vec_std2cppad(random_vec);
+    //
+    CppAD::mixed::d_sparse_rcv c_result_rcv = ptr_->hes_random_obj(
+        c_fixed_vec  ,
+        c_random_vec
+    );
+    cppad_py::sparse_rcv result_rcv( mixed2sparse_rcv( c_result_rcv ) );
+    //
+    return result_rcv;
+}
 
 
 } // END_CPPAD_PY_NAMESPACE

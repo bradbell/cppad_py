@@ -60,8 +60,8 @@ i.e, it is exact. Furthermore,
 Derivative
 **********
 For this example there is no fixed effects likelihood or constraints.
-Hence the derivative of the fixed effects objective is
-w.r.t the fixed effects :math:`\theta` is
+Hence the derivative of the fixed effects objective,
+w.r.t the fixed effects :math:`\theta`, is
 
 .. math::
 
