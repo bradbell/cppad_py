@@ -26,7 +26,7 @@ Convert double Vector From Standard to CppAD
 Syntax
 ******
 
-| *v_out* =  ``cppad_py::d_vec_std2cppad`` ( ``v_in`` )
+| *v_out* =  ``cppad_py::d_vec_std2cppad`` ( *v_in* )
 
 .. meta::
    :keywords: prototype
@@ -38,10 +38,10 @@ Syntax
 Prototype
 *********
 
-.. literalinclude:: ../../lib/cplusplus/convert_vec.cpp
-    :lines: 129-130
+.. literalinclude:: ../../lib/cplusplus/cpp_convert.cpp
+    :lines: 128-129
     :language: cpp
 
 ----
 
-xsrst input file: ``lib/cplusplus/convert_vec.cpp``
+xsrst input file: ``lib/cplusplus/cpp_convert.cpp``

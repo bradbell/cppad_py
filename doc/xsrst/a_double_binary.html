@@ -13,6 +13,7 @@
 <meta content="ax" name="keywords" />
 <meta content="ay" name="keywords" />
 <meta content="y" name="keywords" />
+<meta content="x" name="keywords" />
 <meta content="az" name="keywords" />
 <meta content="example" name="keywords" />
 
@@ -49,7 +50,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="a_double_binary_xam_cpp" href="a_double_binary_xam_cpp.html" />
+    <link rel="next" title="a_double_binary_xam_py" href="a_double_binary_xam_py.html" />
     <link rel="prev" title="a_double_property_xam_py" href="a_double_property_xam_py.html" /> 
 </head>
 
@@ -107,8 +108,8 @@
 <li class="toctree-l4"><a class="reference internal" href="a_double_unary_op.html">a_double_unary_op</a></li>
 <li class="toctree-l4"><a class="reference internal" href="a_double_property.html">a_double_property</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">a_double_binary</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="a_double_binary_xam_cpp.html">a_double_binary_xam_cpp</a></li>
 <li class="toctree-l5"><a class="reference internal" href="a_double_binary_xam_py.html">a_double_binary_xam_py</a></li>
+<li class="toctree-l5"><a class="reference internal" href="a_double_binary_xam_cpp.html">a_double_binary_xam_cpp</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="a_double_compare.html">a_double_compare</a></li>
@@ -218,8 +219,9 @@
 <li><p><a class="reference internal" href="#ax" id="id7">ax</a></p></li>
 <li><p><a class="reference internal" href="#ay" id="id8">ay</a></p></li>
 <li><p><a class="reference internal" href="#y" id="id9">y</a></p></li>
-<li><p><a class="reference internal" href="#az" id="id10">az</a></p></li>
-<li><p><a class="reference internal" href="#example" id="id11">Example</a></p></li>
+<li><p><a class="reference internal" href="#x" id="id10">x</a></p></li>
+<li><p><a class="reference internal" href="#az" id="id11">az</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id12">Example</a></p></li>
 </ul>
 </div>
 <div class="section" id="syntax">
@@ -229,7 +231,7 @@
 <div class="line-block">
 <div class="line"><em>az</em> = <em>ax</em> <em>op</em> <em>ay</em></div>
 <div class="line"><em>az</em> = <em>ax</em> <em>op</em> <em>y</em></div>
-<div class="line"><em>az</em> = <em>y</em> <em>op</em> <em>ax</em></div>
+<div class="line"><em>az</em> = <em>x</em> <em>op</em> <em>ay</em></div>
 </div>
 </div>
 <div class="section" id="c">
@@ -237,7 +239,7 @@
 <div class="line-block">
 <div class="line"><em>az</em> = <em>ax</em> <em>op</em> <em>ay</em></div>
 <div class="line"><em>az</em> = <em>ax</em> <em>op</em> <em>y</em></div>
-<div class="line"><em>az</em> = <em>fun</em> ( <em>y</em> , <em>ax</em> )</div>
+<div class="line"><em>az</em> = <em>fun</em> ( <em>x</em> , <em>ax</em> )</div>
 </div>
 </div>
 </div>
@@ -254,7 +256,7 @@ i.e.,</p>
 <div class="line-block">
 <div class="line"><em>az</em> = <em>pow</em> ( <em>ax</em> , <em>ay</em> )</div>
 <div class="line"><em>az</em> = <em>pow</em> ( <em>ax</em> , <em>y</em> )</div>
-<div class="line"><em>az</em> = <em>pow</em> ( <em>y</em> , <em>ax</em> )</div>
+<div class="line"><em>az</em> = <em>pow</em> ( <em>x</em> , <em>ay</em> )</div>
 </div>
 </div>
 <div class="section" id="fun">
@@ -286,17 +288,26 @@ i.e.,</p>
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">double&amp;</span></code> <em>y</em></div>
 </div>
 </div>
+<div class="section" id="x">
+<span id="a-double-binary-x"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id10">x</a><a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h3>
+<p>This object has c++ prototype</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">double&amp;</span></code> <em>x</em></div>
+</div>
+</div>
 <div class="section" id="az">
-<span id="a-double-binary-az"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id10">az</a><a class="headerlink" href="#az" title="Permalink to this headline">¶</a></h3>
+<span id="a-double-binary-az"></span><span id="index-10"></span><h3><a class="toc-backref" href="#id11">az</a><a class="headerlink" href="#az" title="Permalink to this headline">¶</a></h3>
 <p>The result has c++ prototype</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">a_double</span></code> <em>az</em></div>
 </div>
 </div>
 <div class="section" id="example">
-<span id="a-double-binary-example"></span><span id="index-10"></span><h3><a class="toc-backref" href="#id11">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="a_double_binary_xam_cpp.html#id1"><span class="std std-ref">c++</span></a>,
-<a class="reference internal" href="a_double_binary_xam_py.html#id1"><span class="std std-ref">python</span></a>.</p>
+<span id="a-double-binary-example"></span><span id="index-11"></span><h3><a class="toc-backref" href="#id12">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="a_double_binary_xam_py.html#id1"><span class="std std-ref">Python: a_double Binary Operators With AD Result: Example and Test</span></a></p></li>
+<li><p><a class="reference internal" href="a_double_binary_xam_cpp.html#id1"><span class="std std-ref">C++: a_double Binary Operators With AD Result: Example and Test</span></a></p></li>
+</ul>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/a_double.cpp</span></code></p>
 </div>
@@ -311,7 +322,7 @@ i.e.,</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="a_double_binary_xam_cpp.html" class="btn btn-neutral float-right" title="a_double_binary_xam_cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="a_double_binary_xam_py.html" class="btn btn-neutral float-right" title="a_double_binary_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="a_double_property_xam_py.html" class="btn btn-neutral float-left" title="a_double_property_xam_py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

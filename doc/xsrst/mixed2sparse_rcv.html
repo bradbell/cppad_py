@@ -4,15 +4,14 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta content="mixed_warning, mixed, class, warnings" name="keywords" />
+  <meta content="mixed2sparse_rcv, convert, sparse, matrix, from, cppad_mixed, to, cppad_py" name="keywords" />
 <meta content="syntax" name="keywords" />
-<meta content="warning" name="keywords" />
-<meta content="post_warning" name="keywords" />
-<meta content="example" name="keywords" />
+<meta content="prototype" name="keywords" />
+<meta content="restriction" name="keywords" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mixed_warning &mdash; cppad_py  documentation</title>
+  <title>mixed2sparse_rcv &mdash; cppad_py  documentation</title>
   
 
   
@@ -43,8 +42,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="mixed_warning_xam_py" href="mixed_warning_xam_py.html" />
-    <link rel="prev" title="mixed_ctor_xam_py" href="mixed_ctor_xam_py.html" /> 
+    <link rel="next" title="exception" href="exception.html" />
+    <link rel="prev" title="d_vec_cppad2std" href="d_vec_cppad2std.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,30 +97,25 @@
 <li class="toctree-l2 current"><a class="reference internal" href="library.html">library</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="a_double.html">a_double</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vector.html">vector</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="py_lib.html">py_lib</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="py_fun.html">py_fun</a></li>
-<li class="toctree-l4"><a class="reference internal" href="py_sparse.html">py_sparse</a></li>
-<li class="toctree-l4"><a class="reference internal" href="py_utility.html">py_utility</a></li>
-<li class="toctree-l4 current"><a class="reference internal" href="mixed.html">mixed</a><ul class="current">
-<li class="toctree-l5"><a class="reference internal" href="mixed_ctor.html">mixed_ctor</a></li>
-<li class="toctree-l5 current"><a class="current reference internal" href="#">mixed_warning</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="mixed_warning_xam_py.html">mixed_warning_xam_py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="cpp_utility.html">cpp_utility</a><ul class="current">
+<li class="toctree-l5 current"><a class="reference internal" href="cpp_convert.html">cpp_convert</a><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="ad_vec_std2cppad.html">ad_vec_std2cppad</a></li>
+<li class="toctree-l6"><a class="reference internal" href="ad_vec_cppad2std.html">ad_vec_cppad2std</a></li>
+<li class="toctree-l6"><a class="reference internal" href="d_vec_std2cppad.html">d_vec_std2cppad</a></li>
+<li class="toctree-l6"><a class="reference internal" href="d_vec_cppad2std.html">d_vec_cppad2std</a></li>
+<li class="toctree-l6 current"><a class="current reference internal" href="#">mixed2sparse_rcv</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="mixed_fatal_error.html">mixed_fatal_error</a></li>
-<li class="toctree-l5"><a class="reference internal" href="mixed_fix_likelihood.html">mixed_fix_likelihood</a></li>
-<li class="toctree-l5"><a class="reference internal" href="mixed_fix_constraint.html">mixed_fix_constraint</a></li>
-<li class="toctree-l5"><a class="reference internal" href="mixed_ran_likelihood.html">mixed_ran_likelihood</a></li>
-<li class="toctree-l5"><a class="reference internal" href="mixed_optimize_fixed.html">mixed_optimize_fixed</a></li>
-<li class="toctree-l5"><a class="reference internal" href="mixed_optimize_random.html">mixed_optimize_random</a></li>
-<li class="toctree-l5"><a class="reference internal" href="mixed_hes_fixed_obj.html">mixed_hes_fixed_obj</a></li>
-<li class="toctree-l5"><a class="reference internal" href="mixed_hes_random_obj.html">mixed_hes_random_obj</a></li>
+<li class="toctree-l5"><a class="reference internal" href="exception.html">exception</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="more_py.html">more_py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="cpp_lib.html">cpp_lib</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xsrst_py.html">xsrst_py</a></li>
@@ -178,17 +172,19 @@
         
           <li><a href="library.html">library</a> &raquo;</li>
         
-          <li><a href="py_lib.html">py_lib</a> &raquo;</li>
+          <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
         
-          <li><a href="mixed.html">mixed</a> &raquo;</li>
+          <li><a href="cpp_utility.html">cpp_utility</a> &raquo;</li>
         
-      <li>mixed_warning</li>
+          <li><a href="cpp_convert.html">cpp_convert</a> &raquo;</li>
+        
+      <li>mixed2sparse_rcv</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/xsrst/mixed_warning.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/xsrst/mixed2sparse_rcv.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -201,46 +197,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="mixed-warning">
-<h1>mixed_warning<a class="headerlink" href="#mixed-warning" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-</div>
+  <div class="section" id="mixed2sparse-rcv">
+<h1>mixed2sparse_rcv<a class="headerlink" href="#mixed2sparse-rcv" title="Permalink to this headline">¶</a></h1>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
-<div class="section" id="mixed-class-warnings">
-<span id="id1"></span><h2>Mixed Class Warnings<a class="headerlink" href="#mixed-class-warnings" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="convert-sparse-matrix-from-cppad-mixed-to-cppad-py">
+<span id="id1"></span><h2>Convert Sparse Matrix from cppad_mixed to cppad_py<a class="headerlink" href="#convert-sparse-matrix-from-cppad-mixed-to-cppad-py" title="Permalink to this headline">¶</a></h2>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
-<li><p><a class="reference internal" href="#warning" id="id3">warning</a></p></li>
-<li><p><a class="reference internal" href="#post-warning" id="id4">post_warning</a></p></li>
-<li><p><a class="reference internal" href="#example" id="id5">Example</a></p></li>
+<li><p><a class="reference internal" href="#prototype" id="id3">Prototype</a></p></li>
+<li><p><a class="reference internal" href="#restriction" id="id4">Restriction</a></p></li>
 </ul>
 </div>
 <div class="section" id="syntax">
-<span id="mixed-warning-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<span id="mixed2sparse-rcv-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><em>warning</em> ( <em>message</em> )</div>
-<div class="line"><em>mixed_obj</em><code class="docutils literal notranslate"><span class="pre">.post_warning</span></code> ( <em>message</em> )</div>
+<div class="line"><em>sparse_out</em> = <code class="docutils literal notranslate"><span class="pre">cppad_py::mixed2sparse_rcv</span></code> ( <em>sparse_in</em> )</div>
 </div>
 </div>
-<div class="section" id="warning">
-<span id="mixed-warning-warning"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">warning</a><a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h3>
-<p>This is the <a class="reference internal" href="mixed_ctor.html#mixed-ctor-warning"><span class="std std-ref">warning</span></a> argument to the  mixed class
-constructor.
-It’s <em>message</em> argument is an <cite>str</cite> describing the warning.</p>
+<div class="section" id="prototype">
+<span id="mixed2sparse-rcv-prototype"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">Prototype</a><a class="headerlink" href="#prototype" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">sparse_rcv</span>
+<span class="n">mixed2sparse_rcv</span><span class="p">(</span><span class="k">const</span> <span class="n">CppAD</span><span class="o">::</span><span class="n">mixed</span><span class="o">::</span><span class="n">d_sparse_rcv</span><span class="o">&amp;</span> <span class="n">mixed_rcv</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="post-warning">
-<span id="mixed-warning-post-warning"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">post_warning</a><a class="headerlink" href="#post-warning" title="Permalink to this headline">¶</a></h3>
-<p>is a mixed class member function that posts a warning.
-It’s <em>message</em> argument is an <cite>str</cite> describing the warning.
-It’s main purpose is for testing.</p>
 </div>
-<div class="section" id="example">
-<span id="mixed-warning-example"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="mixed_warning_xam_py.html#id1"><span class="std std-ref">mixed_warning_xam_py</span></a></p>
+<div class="section" id="restriction">
+<span id="mixed2sparse-rcv-restriction"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">Restriction</a><a class="headerlink" href="#restriction" title="Permalink to this headline">¶</a></h3>
+<p>This routine is only available when
+<a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-include-mixed"><span class="std std-ref">include_mixed</span></a> is true.</p>
 <hr class="docutils" />
-<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/python/cppad_py/mixed.py</span></code></p>
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/cpp_convert.cpp</span></code></p>
 </div>
 </div>
 </div>
@@ -253,10 +241,10 @@ It’s main purpose is for testing.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mixed_warning_xam_py.html" class="btn btn-neutral float-right" title="mixed_warning_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="exception.html" class="btn btn-neutral float-right" title="exception" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="mixed_ctor_xam_py.html" class="btn btn-neutral float-left" title="mixed_ctor_xam_py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="d_vec_cppad2std.html" class="btn btn-neutral float-left" title="d_vec_cppad2std" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -18,7 +18,7 @@ Python: d_fun Properties: Example and Test
 
 
 .. literalinclude:: ../../example/python/core/fun_property_xam.py
-    :lines: 11-79
+    :lines: 11-78
     :language: py
 
 ----

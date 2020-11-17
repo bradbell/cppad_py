@@ -1,5 +1,5 @@
 !!!!!!!!!!!
-convert_vec
+cpp_convert
 !!!!!!!!!!!
 
 .. toctree::
@@ -13,11 +13,11 @@ convert_vec
    mixed2sparse_rcv
 
 .. meta::
-   :keywords: convert_vec, convert, objects, between, cppad_mixed, cppad_py
+   :keywords: cpp_convert, convert, objects, between, cppad_mixed, cppad_py
 
-.. index:: convert_vec, convert, objects, between, cppad_mixed, cppad_py
+.. index:: cpp_convert, convert, objects, between, cppad_mixed, cppad_py
 
-.. _convert_vec:
+.. _cpp_convert:
 
 Convert Objects Between cppad_mixed and cppad_py
 ################################################
@@ -29,7 +29,7 @@ Convert Objects Between cppad_mixed and cppad_py
 
 .. index:: children
 
-.. _convert_vec.children:
+.. _cpp_convert.children:
 
 Children
 ********
@@ -45,4 +45,4 @@ Children
 
 ----
 
-xsrst input file: ``lib/cplusplus/convert_vec.cpp``
+xsrst input file: ``lib/cplusplus/cpp_convert.cpp``

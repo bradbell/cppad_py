@@ -44,7 +44,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="more_py" href="more_py.html" />
+    <link rel="next" title="mixed_hes_random_obj" href="mixed_hes_random_obj.html" />
     <link rel="prev" title="mixed_hes_fixed_obj" href="mixed_hes_fixed_obj.html" /> 
 </head>
 
@@ -116,6 +116,7 @@
 <li class="toctree-l6 current"><a class="current reference internal" href="#">mixed_hes_fixed_obj_xam_py</a></li>
 </ul>
 </li>
+<li class="toctree-l5"><a class="reference internal" href="mixed_hes_random_obj.html">mixed_hes_random_obj</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="more_py.html">more_py</a></li>
@@ -256,8 +257,8 @@ i.e, it is exact. Furthermore,</p>
 <div class="section" id="derivative">
 <span id="mixed-hes-fixed-obj-xam-py-derivative"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">Derivative</a><a class="headerlink" href="#derivative" title="Permalink to this headline">¶</a></h3>
 <p>For this example there is no fixed effects likelihood or constraints.
-Hence the derivative of the fixed effects objective is
-w.r.t the fixed effects <span class="math notranslate nohighlight">\(\theta\)</span> is</p>
+Hence the derivative of the fixed effects objective,
+w.r.t the fixed effects <span class="math notranslate nohighlight">\(\theta\)</span>, is</p>
 <div class="math notranslate nohighlight">
 \[\frac{1}{2} ( \theta + \sigma^2 )^{-1}
 -
@@ -324,7 +325,9 @@ w.r.t the fixed effects <span class="math notranslate nohighlight">\(\theta\)</s
     <span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># hes_fixed_obj_rcv</span>
-    <span class="n">hes_fixed_obj_rcv</span>  <span class="o">=</span> <span class="n">mixed_obj</span><span class="o">.</span><span class="n">hes_fixed_obj</span><span class="p">(</span>
+    <span class="n">hes_fixed_obj_rcv</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">sparse_rcv</span><span class="p">()</span>
+    <span class="n">mixed_obj</span><span class="o">.</span><span class="n">hes_fixed_obj</span><span class="p">(</span>
+        <span class="n">hes_fixed_obj_rcv</span>        <span class="p">,</span>
         <span class="n">fixed_vec</span>  <span class="o">=</span> <span class="n">theta</span>       <span class="p">,</span>
         <span class="n">random_opt</span> <span class="o">=</span> <span class="n">random_opt</span>  <span class="p">,</span>
     <span class="p">)</span>
@@ -333,7 +336,6 @@ w.r.t the fixed effects <span class="math notranslate nohighlight">\(\theta\)</s
     <span class="n">term1</span> <span class="o">=</span> <span class="p">(</span><span class="n">theta</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span>
     <span class="n">term2</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_bar</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_bar</span><span class="p">)</span>
     <span class="n">check</span> <span class="o">=</span> <span class="n">term2</span> <span class="o">/</span> <span class="p">(</span><span class="n">term1</span> <span class="o">*</span> <span class="n">term1</span> <span class="o">*</span> <span class="n">term1</span><span class="p">)</span>  <span class="o">-</span> <span class="mf">0.5</span> <span class="o">/</span> <span class="p">(</span><span class="n">term1</span> <span class="o">*</span> <span class="n">term1</span> <span class="p">)</span>
-    <span class="c1">#</span>
     <span class="c1">#</span>
     <span class="c1"># check solution</span>
     <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">hes_fixed_obj_rcv</span><span class="o">.</span><span class="n">nr</span><span class="p">()</span>     <span class="o">==</span> <span class="mi">1</span>
@@ -359,7 +361,7 @@ w.r.t the fixed effects <span class="math notranslate nohighlight">\(\theta\)</s
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="more_py.html" class="btn btn-neutral float-right" title="more_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mixed_hes_random_obj.html" class="btn btn-neutral float-right" title="mixed_hes_random_obj" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="mixed_hes_fixed_obj.html" class="btn btn-neutral float-left" title="mixed_hes_fixed_obj" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

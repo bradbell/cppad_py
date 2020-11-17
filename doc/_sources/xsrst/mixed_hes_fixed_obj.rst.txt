@@ -33,7 +33,7 @@ Syntax
 ******
 
 .. literalinclude:: ../../lib/python/cppad_py/mixed.py
-    :lines: 990-993
+    :lines: 989-993
     :language: py
 
 .. meta::
@@ -45,10 +45,10 @@ Syntax
 
 Purpose
 *******
-Given a value for the fixed effects :math:`\theta`,
+We are given a value for the fixed effects :math:`\theta`
 and the corresponding optimal value for the random effects
 :math:`\hat{u} ( \theta )`.
-This routine the hessian, with respect to the fixed effects,
+This routine computes the hessian, with respect to the fixed effects,
 of the negative log of the Laplace approximation for the
 fixed effects objective
 
@@ -61,15 +61,19 @@ the return value is the Hessian of
 :math:`- \log [ \B{p} ( \theta ) ]` .
 
 .. meta::
-   :keywords: argument, types
+   :keywords: hes_fixed_obj_rcv
 
-.. index:: argument, types
+.. index:: hes_fixed_obj_rcv
 
-.. _mixed_hes_fixed_obj.argument_types:
+.. _mixed_hes_fixed_obj.hes_fixed_obj_rcv:
 
-Argument Types
-**************
-The arguments are numpy vectors with elements of type ``float``.
+hes_fixed_obj_rcv
+*****************
+The argument *hes_fixed_obj_rcv* is a
+:ref:`py_sparse_rcv <py_sparse_rcv>` matrix.
+The input value of this argument does not matter.
+Upon return it contains the lower triangle of the Hessian
+(the Hessian is symmetric).
 
 .. meta::
    :keywords: fixed_vec
@@ -80,7 +84,8 @@ The arguments are numpy vectors with elements of type ``float``.
 
 fixed_vec
 *********
-has length *n_fixed* and is the value of the fixed effects
+The argument *fixed_vec* is a numpy vector with ``float`` elements
+and length *n_fixed*. It contains the value of the fixed effects
 :math:`\theta` at which the Hessian is evaluated.
 This vector can't be ``None``.
 
@@ -93,24 +98,12 @@ This vector can't be ``None``.
 
 random_opt
 **********
-has length *n_random* and is
-the optional value for the random effects,
+The argument *random_opt* is a numpy vector with ``float`` elements
+and length *n_random*.
+It contains the optional value for the random effects,
 which is a function of the fixed effects and denoted by
 :math:`\hat{u} ( \theta )` .
 This vector can't be ``None``.
-
-.. meta::
-   :keywords: hes_fixed_obj_rcv
-
-.. index:: hes_fixed_obj_rcv
-
-.. _mixed_hes_fixed_obj.hes_fixed_obj_rcv:
-
-hes_fixed_obj_rcv
-*****************
-The return value *hes_fixed_obj_rcv* is a
-:ref:`py_sparse_rcv <py_sparse_rcv>` matrix representation
-of the Hessian.
 
 .. meta::
    :keywords: examples

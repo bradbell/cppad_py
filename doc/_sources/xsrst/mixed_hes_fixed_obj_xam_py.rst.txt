@@ -88,8 +88,8 @@ i.e, it is exact. Furthermore,
 Derivative
 **********
 For this example there is no fixed effects likelihood or constraints.
-Hence the derivative of the fixed effects objective is
-w.r.t the fixed effects :math:`\theta` is
+Hence the derivative of the fixed effects objective,
+w.r.t the fixed effects :math:`\theta`, is
 
 .. math::
 
@@ -117,7 +117,7 @@ w.r.t the fixed effects :math:`\theta` we obtain the Hessian:
 
 
 .. literalinclude:: ../../example/python/mixed/hes_fixed_obj_xam.py
-    :lines: 92-163
+    :lines: 92-164
     :language: py
 
 ----

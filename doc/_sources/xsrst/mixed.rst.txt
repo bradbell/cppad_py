@@ -15,6 +15,7 @@ mixed
    mixed_optimize_fixed
    mixed_optimize_random
    mixed_hes_fixed_obj
+   mixed_hes_random_obj
 
 .. include:: ../preamble.rst
 
@@ -167,6 +168,7 @@ Children
     "mixed_optimize_fixed", :ref:`mixed_optimize_fixed`
     "mixed_optimize_random", :ref:`mixed_optimize_random`
     "mixed_hes_fixed_obj", :ref:`mixed_hes_fixed_obj`
+    "mixed_hes_random_obj", :ref:`mixed_hes_random_obj`
 
 ----
 

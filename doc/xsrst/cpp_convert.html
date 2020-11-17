@@ -4,11 +4,12 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta content="exception_xam_cpp, c++:, cppad, py, exception, handling:, example, test" name="keywords" />
+  <meta content="cpp_convert, convert, objects, between, cppad_mixed, cppad_py" name="keywords" />
+<meta content="children" name="keywords" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>exception_xam_cpp &mdash; cppad_py  documentation</title>
+  <title>cpp_convert &mdash; cppad_py  documentation</title>
   
 
   
@@ -39,8 +40,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="exception_xam_py" href="exception_xam_py.html" />
-    <link rel="prev" title="exception" href="exception.html" /> 
+    <link rel="next" title="ad_vec_std2cppad" href="ad_vec_std2cppad.html" />
+    <link rel="prev" title="cpp_utility" href="cpp_utility.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,12 +100,15 @@
 <li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="cpp_utility.html">cpp_utility</a><ul class="current">
-<li class="toctree-l5"><a class="reference internal" href="cpp_convert.html">cpp_convert</a></li>
-<li class="toctree-l5 current"><a class="reference internal" href="exception.html">exception</a><ul class="current">
-<li class="toctree-l6 current"><a class="current reference internal" href="#">exception_xam_cpp</a></li>
-<li class="toctree-l6"><a class="reference internal" href="exception_xam_py.html">exception_xam_py</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">cpp_convert</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="ad_vec_std2cppad.html">ad_vec_std2cppad</a></li>
+<li class="toctree-l6"><a class="reference internal" href="ad_vec_cppad2std.html">ad_vec_cppad2std</a></li>
+<li class="toctree-l6"><a class="reference internal" href="d_vec_std2cppad.html">d_vec_std2cppad</a></li>
+<li class="toctree-l6"><a class="reference internal" href="d_vec_cppad2std.html">d_vec_cppad2std</a></li>
+<li class="toctree-l6"><a class="reference internal" href="mixed2sparse_rcv.html">mixed2sparse_rcv</a></li>
 </ul>
 </li>
+<li class="toctree-l5"><a class="reference internal" href="exception.html">exception</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
@@ -170,15 +174,13 @@
         
           <li><a href="cpp_utility.html">cpp_utility</a> &raquo;</li>
         
-          <li><a href="exception.html">exception</a> &raquo;</li>
-        
-      <li>exception_xam_cpp</li>
+      <li>cpp_convert</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/xsrst/exception_xam_cpp.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/xsrst/cpp_convert.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -191,35 +193,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="exception-xam-cpp">
-<h1>exception_xam_cpp<a class="headerlink" href="#exception-xam-cpp" title="Permalink to this headline">¶</a></h1>
-<p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
-<span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
-<div class="section" id="c-cppad-py-exception-handling-example-and-test">
-<span id="id1"></span><h2>C++: Cppad Py Exception Handling: Example and Test<a class="headerlink" href="#c-cppad-py-exception-handling-example-and-test" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp"># include &lt;cstdio&gt;</span>
-<span class="cp"># include &lt;string&gt;</span>
-<span class="cp"># include &lt;cppad/py/cppad_py.hpp&gt;</span>
-
-<span class="kt">bool</span> <span class="nf">exception_xam</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
-    <span class="c1">//</span>
-    <span class="c1">// initialize return variable</span>
-    <span class="kt">bool</span> <span class="n">ok</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-    <span class="c1">//------------------------------------------------------------------------</span>
-    <span class="n">ok</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="k">try</span> <span class="p">{</span>
-        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;test message&quot;</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">string</span> <span class="n">stored_message</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">();</span>
-        <span class="n">ok</span> <span class="o">=</span> <span class="n">stored_message</span> <span class="o">==</span> <span class="s">&quot;test message&quot;</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span><span class="p">(</span> <span class="n">ok</span>  <span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
+  <div class="section" id="cpp-convert">
+<h1>cpp_convert<a class="headerlink" href="#cpp-convert" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
 </div>
+<div class="section" id="convert-objects-between-cppad-mixed-and-cppad-py">
+<span id="id1"></span><h2>Convert Objects Between cppad_mixed and cppad_py<a class="headerlink" href="#convert-objects-between-cppad-mixed-and-cppad-py" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#children" id="id2">Children</a></p></li>
+</ul>
+</div>
+<div class="section" id="children">
+<span id="cpp-convert-children"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Children</a><a class="headerlink" href="#children" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Title</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ad_vec_std2cppad</p></td>
+<td><p><a class="reference internal" href="ad_vec_std2cppad.html#id1"><span class="std std-ref">Convert AD Vector From Standard to CppAD</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ad_vec_cppad2std</p></td>
+<td><p><a class="reference internal" href="ad_vec_cppad2std.html#id1"><span class="std std-ref">Convert AD Vector From CppAD to Standard</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>d_vec_std2cppad</p></td>
+<td><p><a class="reference internal" href="d_vec_std2cppad.html#id1"><span class="std std-ref">Convert double Vector From Standard to CppAD</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>d_vec_cppad2std</p></td>
+<td><p><a class="reference internal" href="d_vec_cppad2std.html#id1"><span class="std std-ref">Convert double Vector From CppAD to Standard</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>mixed2sparse_rcv</p></td>
+<td><p><a class="reference internal" href="mixed2sparse_rcv.html#id1"><span class="std std-ref">Convert Sparse Matrix from cppad_mixed to cppad_py</span></a></p></td>
+</tr>
+</tbody>
+</table>
 <hr class="docutils" />
-<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">example/cplusplus/exception_xam.cpp</span></code></p>
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/cpp_convert.cpp</span></code></p>
+</div>
 </div>
 </div>
 
@@ -231,10 +248,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="exception_xam_py.html" class="btn btn-neutral float-right" title="exception_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ad_vec_std2cppad.html" class="btn btn-neutral float-right" title="ad_vec_std2cppad" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="exception.html" class="btn btn-neutral float-left" title="exception" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cpp_utility.html" class="btn btn-neutral float-left" title="cpp_utility" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

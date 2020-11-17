@@ -26,7 +26,7 @@ Convert AD Vector From Standard to CppAD
 Syntax
 ******
 
-| *v_out* =  ``cppad_py::ad_vec_std2cppad`` ( ``v_in`` )
+| *v_out* =  ``cppad_py::ad_vec_std2cppad`` ( *v_in* )
 
 .. meta::
    :keywords: prototype
@@ -38,10 +38,10 @@ Syntax
 Prototype
 *********
 
-.. literalinclude:: ../../lib/cplusplus/convert_vec.cpp
-    :lines: 53-54
+.. literalinclude:: ../../lib/cplusplus/cpp_convert.cpp
+    :lines: 54-55
     :language: cpp
 
 ----
 
-xsrst input file: ``lib/cplusplus/convert_vec.cpp``
+xsrst input file: ``lib/cplusplus/cpp_convert.cpp``

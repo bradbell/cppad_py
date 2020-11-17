@@ -6,8 +6,8 @@
   <meta charset="utf-8">
   <meta content="py_sparse_rcv, sparse, matrices" name="keywords" />
 <meta content="syntax" name="keywords" />
-<meta content="pattern" name="keywords" />
 <meta content="matrix" name="keywords" />
+<meta content="pat" name="keywords" />
 <meta content="nr" name="keywords" />
 <meta content="nc" name="keywords" />
 <meta content="nnz" name="keywords" />
@@ -219,8 +219,8 @@
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
-<li><p><a class="reference internal" href="#pattern" id="id3">pattern</a></p></li>
-<li><p><a class="reference internal" href="#matrix" id="id4">matrix</a></p></li>
+<li><p><a class="reference internal" href="#matrix" id="id3">matrix</a></p></li>
+<li><p><a class="reference internal" href="#pat" id="id4">pat</a></p></li>
 <li><p><a class="reference internal" href="#nr" id="id5">nr</a></p></li>
 <li><p><a class="reference internal" href="#nc" id="id6">nc</a></p></li>
 <li><p><a class="reference internal" href="#nnz" id="id7">nnz</a></p></li>
@@ -241,7 +241,8 @@
 <div class="section" id="syntax">
 <span id="py-sparse-rcv-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><em>matrix</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py::sparse_rcv</span></code> ( <em>pattern</em> )</div>
+<div class="line"><em>matrix</em> =  <code class="docutils literal notranslate"><span class="pre">cppad_py.sparse_rcv()</span></code></div>
+<div class="line"><em>matrix</em>.pat ( <em>pattern</em> )</div>
 <div class="line"><em>nr</em> = <em>matrix</em><code class="docutils literal notranslate"><span class="pre">.nr()</span></code></div>
 <div class="line"><em>nc</em> = <em>matrix</em><code class="docutils literal notranslate"><span class="pre">.nc()</span></code></div>
 <div class="line"><em>nnz</em> =  <em>matrix</em><code class="docutils literal notranslate"><span class="pre">.nnz()</span></code></div>
@@ -253,22 +254,20 @@
 <div class="line"><em>col_major</em> = <em>matrix</em><code class="docutils literal notranslate"><span class="pre">.col_major()</span></code></div>
 </div>
 </div>
-<div class="section" id="pattern">
-<span id="py-sparse-rcv-pattern"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">pattern</a><a class="headerlink" href="#pattern" title="Permalink to this headline">¶</a></h3>
-<p>This argument has prototype</p>
-<div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">sparse_rc&amp;</span></code> <em>pattern</em></div>
-</div>
-<p>It specifies the number of rows, number of columns and
-the possibly non-zero entries in the <em>matrix</em> .</p>
-</div>
 <div class="section" id="matrix">
-<span id="py-sparse-rcv-matrix"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">matrix</a><a class="headerlink" href="#matrix" title="Permalink to this headline">¶</a></h3>
-<p>This is a sparse matrix object with the sparsity specified by <em>pattern</em> .
-Only the <em>val</em> vector can be changed. All other values returned by
-<em>matrix</em> are fixed during the constructor and constant there after.
-The <em>val</em> vector is only changed by the constructor
-and the <code class="docutils literal notranslate"><span class="pre">set</span></code> function.</p>
+<span id="py-sparse-rcv-matrix"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">matrix</a><a class="headerlink" href="#matrix" title="Permalink to this headline">¶</a></h3>
+<p>This result is used ot hold a sparse matrix.
+It has zero row <em>nr</em>, zero columns <em>nc</em>, and zero non-zero values <em>nnz</em>
+when it is first created.
+It is constant except for the <code class="docutils literal notranslate"><span class="pre">pat</span></code> and <code class="docutils literal notranslate"><span class="pre">put</span></code> operations.</p>
+</div>
+<div class="section" id="pat">
+<span id="py-sparse-rcv-pat"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">pat</a><a class="headerlink" href="#pat" title="Permalink to this headline">¶</a></h3>
+<p>This changes the sparsity pattern for the matrix to <em>pattern</em>.
+The argument <em>pattern</em> is a <code class="docutils literal notranslate"><span class="pre">cppad_py.sparse_rc</span></code> object,
+it is not changed, and it specifies <em>nr</em>, <em>nc</em>, <em>nnz</em>, <em>row</em>, and <em>col</em>.
+The values in the <em>val</em> vector are unspecified after this operation.
+The <code class="docutils literal notranslate"><span class="pre">put</span></code> operation can be used to set these values.</p>
 </div>
 <div class="section" id="nr">
 <span id="py-sparse-rcv-nr"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">nr</a><a class="headerlink" href="#nr" title="Permalink to this headline">¶</a></h3>

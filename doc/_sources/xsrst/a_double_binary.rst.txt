@@ -6,8 +6,8 @@ a_double_binary
    :maxdepth: 1
    :hidden:
 
-   a_double_binary_xam_cpp
    a_double_binary_xam_py
+   a_double_binary_xam_cpp
 
 .. include:: ../preamble.rst
 
@@ -44,7 +44,7 @@ Python
 ======
 | *az* = *ax* *op* *ay*
 | *az* = *ax* *op* *y*
-| *az* = *y* *op* *ax*
+| *az* = *x* *op* *ay*
 
 .. meta::
    :keywords: c++
@@ -57,7 +57,7 @@ C++
 ===
 | *az* = *ax* *op* *ay*
 | *az* = *ax* *op* *y*
-| *az* = *fun* ( *y* , *ax* )
+| *az* = *fun* ( *x* , *ax* )
 
 .. meta::
    :keywords: op
@@ -79,7 +79,7 @@ i.e.,
 
 | *az* = *pow* ( *ax* , *ay* )
 | *az* = *pow* ( *ax* , *y* )
-| *az* = *pow* ( *y* , *ax* )
+| *az* = *pow* ( *x* , *ay* )
 
 .. meta::
    :keywords: fun
@@ -136,6 +136,19 @@ This object has c++ prototype
 | |tab| ``const double&`` *y*
 
 .. meta::
+   :keywords: x
+
+.. index:: x
+
+.. _a_double_binary.x:
+
+x
+*
+This object has c++ prototype
+
+| |tab| ``const double&`` *x*
+
+.. meta::
    :keywords: az
 
 .. index:: az
@@ -157,8 +170,9 @@ The result has c++ prototype
 
 Example
 *******
-:ref:`c++<a_double_binary_xam_cpp>`,
-:ref:`python<a_double_binary_xam_py>`.
+
+-  :ref:`a_double_binary_xam_py`
+-  :ref:`a_double_binary_xam_cpp`
 
 ----
 

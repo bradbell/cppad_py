@@ -210,16 +210,17 @@
     <span class="n">ok</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="c1"># ---------------------------------------------------------------------</span>
     <span class="c1">#</span>
-    <span class="c1"># create a sparsity pattern</span>
+    <span class="c1"># create an empty sparsity pattern</span>
     <span class="n">pattern</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">sparse_rc</span><span class="p">()</span>
+    <span class="n">ok</span>      <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">pattern</span><span class="o">.</span><span class="n">nr</span><span class="p">()</span>  <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">ok</span>      <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">pattern</span><span class="o">.</span><span class="n">nc</span><span class="p">()</span>  <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">ok</span>      <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">pattern</span><span class="o">.</span><span class="n">nnz</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
     <span class="c1">#</span>
+    <span class="c1"># resize</span>
     <span class="n">nr</span> <span class="o">=</span> <span class="mi">6</span>
     <span class="n">nc</span> <span class="o">=</span> <span class="mi">5</span>
     <span class="n">nnz</span> <span class="o">=</span> <span class="mi">4</span>
-    <span class="c1">#</span>
-    <span class="c1"># resize</span>
     <span class="n">pattern</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="n">nnz</span><span class="p">)</span>
-    <span class="c1">#</span>
     <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">pattern</span><span class="o">.</span><span class="n">nr</span><span class="p">()</span>  <span class="o">==</span> <span class="n">nr</span>
     <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">pattern</span><span class="o">.</span><span class="n">nc</span><span class="p">()</span>  <span class="o">==</span> <span class="n">nc</span>
     <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">pattern</span><span class="o">.</span><span class="n">nnz</span><span class="p">()</span> <span class="o">==</span> <span class="n">nnz</span>

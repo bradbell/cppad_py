@@ -251,7 +251,8 @@
     <span class="c1"># loop over forward and reverse mode</span>
     <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="mi">2</span> <span class="p">)</span> <span class="p">:</span>
         <span class="c1"># compute all possibly non-zero entries in Jacobian</span>
-        <span class="n">subset</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">sparse_rcv</span><span class="p">(</span><span class="n">pat_jac</span><span class="p">)</span>
+        <span class="n">subset</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">sparse_rcv</span><span class="p">()</span>
+        <span class="n">subset</span><span class="o">.</span><span class="n">pat</span><span class="p">(</span><span class="n">pat_jac</span><span class="p">)</span>
         <span class="c1"># work space used to save time for multiple calls</span>
         <span class="n">work</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">sparse_jac_work</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span>  <span class="p">:</span>

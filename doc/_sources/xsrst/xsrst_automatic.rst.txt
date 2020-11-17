@@ -45,8 +45,8 @@ Table of Contents
 |
 |  |space|  |space| :ref:`3.1.4<a_double_binary>` a_double Binary Operators with an AD Result
 |
-|  |space|  |space|  |space| :ref:`3.1.4.1<a_double_binary_xam_cpp>` C++: a_double Binary Operators With AD Result: Example and Test
-|  |space|  |space|  |space| :ref:`3.1.4.2<a_double_binary_xam_py>` Python: a_double Binary Operators With AD Result: Example and Test
+|  |space|  |space|  |space| :ref:`3.1.4.1<a_double_binary_xam_py>` Python: a_double Binary Operators With AD Result: Example and Test
+|  |space|  |space|  |space| :ref:`3.1.4.2<a_double_binary_xam_cpp>` C++: a_double Binary Operators With AD Result: Example and Test
 |
 |  |space|  |space| :ref:`3.1.5<a_double_compare>` a_double Comparison Operators
 |
@@ -151,6 +151,8 @@ Table of Contents
 |  |space|  |space|  |space| :ref:`3.3.4.8<mixed_optimize_random>` Optimize The Random Effects
 |  |space|  |space|  |space| :ref:`3.3.4.9<mixed_hes_fixed_obj>` Hessian of Fixed Effects Objective
 |  |space|  |space|  |space|  |space| :ref:`3.3.4.9.1<mixed_hes_fixed_obj_xam_py>` ran_likelihood: Example and Test
+|  |space|  |space|  |space| :ref:`3.3.4.10<mixed_hes_random_obj>` Hessian of Random Effects Objective
+|  |space|  |space|  |space|  |space| :ref:`3.3.4.10.1<mixed_hes_random_obj_xam_py>` ran_likelihood: Example and Test
 |
 |  |space|  |space| :ref:`3.3.5<more_py>` Steps To Add More Python Functions
 |
@@ -198,12 +200,13 @@ Table of Contents
 |
 |  |space|  |space| :ref:`3.4.3<cpp_utility>` C++ Utilities
 |
-|  |space|  |space|  |space| :ref:`3.4.3.1<convert_vec>` Convert From Standard Vectors to CppAD Vectors
+|  |space|  |space|  |space| :ref:`3.4.3.1<cpp_convert>` Convert Objects Between cppad_mixed and cppad_py
 |
 |  |space|  |space|  |space|  |space| :ref:`3.4.3.1.1<ad_vec_std2cppad>` Convert AD Vector From Standard to CppAD
 |  |space|  |space|  |space|  |space| :ref:`3.4.3.1.2<ad_vec_cppad2std>` Convert AD Vector From CppAD to Standard
 |  |space|  |space|  |space|  |space| :ref:`3.4.3.1.3<d_vec_std2cppad>` Convert double Vector From Standard to CppAD
 |  |space|  |space|  |space|  |space| :ref:`3.4.3.1.4<d_vec_cppad2std>` Convert double Vector From CppAD to Standard
+|  |space|  |space|  |space|  |space| :ref:`3.4.3.1.5<mixed2sparse_rcv>` Convert Sparse Matrix from cppad_mixed to cppad_py
 |
 |  |space|  |space|  |space| :ref:`3.4.3.2<exception>` Exception Handling
 |

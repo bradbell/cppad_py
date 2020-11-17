@@ -259,7 +259,8 @@
     <span class="c1">#</span>
     <span class="c1"># compute all possibly non-zero entries in Hessian</span>
     <span class="c1"># (should only compute lower triangle becuase matrix is symmetric)</span>
-    <span class="n">subset</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">sparse_rcv</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">sparse_rcv</span><span class="p">()</span>
+    <span class="n">subset</span><span class="o">.</span><span class="n">pat</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># work space used to save time for multiple calls</span>
     <span class="n">work</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">.</span><span class="n">sparse_hes_work</span><span class="p">()</span>
