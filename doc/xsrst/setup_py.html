@@ -8,7 +8,6 @@
 <meta content="syntax" name="keywords" />
 <meta content="external, requirements" name="keywords" />
 <meta content="mac, os" name="keywords" />
-<meta content="testing" name="keywords" />
 <meta content="download" name="keywords" />
 <meta content="top, source, directory" name="keywords" />
 <meta content="configure" name="keywords" />
@@ -18,8 +17,10 @@
 <meta content="ld_library_path" name="keywords" />
 <meta content="pkg_config_path" name="keywords" />
 <meta content="local, build" name="keywords" />
+<meta content="local, test" name="keywords" />
 <meta content="pythonpath" name="keywords" />
 <meta content="install" name="keywords" />
+<meta content="test, install" name="keywords" />
 <meta content="install, errors" name="keywords" />
 <meta content="install, using, pip" name="keywords" />
 <meta content="children" name="keywords" />
@@ -199,26 +200,27 @@
 <li><p><a class="reference internal" href="#external-requirements" id="id3">External Requirements</a></p>
 <ul>
 <li><p><a class="reference internal" href="#mac-os" id="id4">Mac Os</a></p></li>
-<li><p><a class="reference internal" href="#testing" id="id5">Testing</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#download" id="id6">Download</a></p>
+<li><p><a class="reference internal" href="#download" id="id5">Download</a></p>
 <ul>
-<li><p><a class="reference internal" href="#top-source-directory" id="id7">Top Source Directory</a></p></li>
+<li><p><a class="reference internal" href="#top-source-directory" id="id6">Top Source Directory</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#configure" id="id8">Configure</a></p></li>
-<li><p><a class="reference internal" href="#get-cppad" id="id9">Get cppad</a></p></li>
-<li><p><a class="reference internal" href="#prefix" id="id10">prefix</a></p></li>
-<li><p><a class="reference internal" href="#libdir" id="id11">libdir</a></p></li>
-<li><p><a class="reference internal" href="#ld-library-path" id="id12">LD_LIBRARY_PATH</a></p></li>
-<li><p><a class="reference internal" href="#pkg-config-path" id="id13">PKG_CONFIG_PATH</a></p></li>
-<li><p><a class="reference internal" href="#local-build" id="id14">Local Build</a></p></li>
+<li><p><a class="reference internal" href="#configure" id="id7">Configure</a></p></li>
+<li><p><a class="reference internal" href="#get-cppad" id="id8">Get cppad</a></p></li>
+<li><p><a class="reference internal" href="#prefix" id="id9">prefix</a></p></li>
+<li><p><a class="reference internal" href="#libdir" id="id10">libdir</a></p></li>
+<li><p><a class="reference internal" href="#ld-library-path" id="id11">LD_LIBRARY_PATH</a></p></li>
+<li><p><a class="reference internal" href="#pkg-config-path" id="id12">PKG_CONFIG_PATH</a></p></li>
+<li><p><a class="reference internal" href="#local-build" id="id13">Local Build</a></p></li>
+<li><p><a class="reference internal" href="#local-test" id="id14">Local Test</a></p></li>
 <li><p><a class="reference internal" href="#pythonpath" id="id15">PYTHONPATH</a></p></li>
 <li><p><a class="reference internal" href="#install" id="id16">Install</a></p></li>
-<li><p><a class="reference internal" href="#install-errors" id="id17">Install Errors</a></p></li>
-<li><p><a class="reference internal" href="#install-using-pip" id="id18">Install Using Pip</a></p></li>
-<li><p><a class="reference internal" href="#children" id="id19">Children</a></p></li>
+<li><p><a class="reference internal" href="#test-install" id="id17">Test Install</a></p></li>
+<li><p><a class="reference internal" href="#install-errors" id="id18">Install Errors</a></p></li>
+<li><p><a class="reference internal" href="#install-using-pip" id="id19">Install Using Pip</a></p></li>
+<li><p><a class="reference internal" href="#children" id="id20">Children</a></p></li>
 </ul>
 </div>
 <div class="section" id="syntax">
@@ -233,6 +235,7 @@
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">bash</a></p></li>
 <li><p><a class="reference external" href="https://www.python.org/">python</a> version 3</p></li>
 <li><p><a class="reference external" href="https://numpy.org/">numpy</a></p></li>
+<li><p><a class="reference external" href="https://scipy.org/">scipy</a></p></li>
 <li><p><a class="reference external" href="https://cmake.org">cmake</a></p></li>
 <li><p><a class="reference external" href="http://www.swig.org/">swig</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/C++">c++</a></p></li>
@@ -244,22 +247,15 @@
 <a class="reference external" href="https://brew.sh">brew</a> to install extra packages not included with
 the system.</p>
 </div>
-<div class="section" id="testing">
-<span id="setup-py-external-requirements-testing"></span><span id="index-4"></span><h4><a class="toc-backref" href="#id5">Testing</a><a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h4>
-<p>The following are additional requirements necessary to execute
-the test program <code class="docutils literal notranslate"><span class="pre">check_all.py</span></code>:
-<a class="reference external" href="https://scipy.org/">scipy</a>
-<a class="reference external" href="https://matplotlib.org/">matplotlib</a>.</p>
-</div>
 </div>
 <div class="section" id="download">
-<span id="setup-py-download"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">Download</a><a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h3>
+<span id="setup-py-download"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">Download</a><a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h3>
 <p>Use the following command to download the current version of cppad_py:</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/bradbell/cppad_py.git</span></code> <em>top_srcdir</em></div>
 </div>
 <div class="section" id="top-source-directory">
-<span id="setup-py-download-top-source-directory"></span><span id="index-6"></span><h4><a class="toc-backref" href="#id7">Top Source Directory</a><a class="headerlink" href="#top-source-directory" title="Permalink to this headline">¶</a></h4>
+<span id="setup-py-download-top-source-directory"></span><span id="index-5"></span><h4><a class="toc-backref" href="#id6">Top Source Directory</a><a class="headerlink" href="#top-source-directory" title="Permalink to this headline">¶</a></h4>
 <p>The directory you choose for <em>top_srcdir</em> is
 referred to as your <em>top_srcdir</em> directory.
 We suggest you use <code class="docutils literal notranslate"><span class="pre">cppad_py.git</span></code> for my <em>top_srcdir</em>
@@ -268,13 +264,13 @@ created by the instructions below.</p>
 </div>
 </div>
 <div class="section" id="configure">
-<span id="setup-py-configure"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">Configure</a><a class="headerlink" href="#configure" title="Permalink to this headline">¶</a></h3>
+<span id="setup-py-configure"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">Configure</a><a class="headerlink" href="#configure" title="Permalink to this headline">¶</a></h3>
 <p>Before running <code class="docutils literal notranslate"><span class="pre">setup_py</span></code> or <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code> ,
 you should check and possibly change the
 <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings"><span class="std std-ref">settings</span></a> in <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code> .</p>
 </div>
 <div class="section" id="get-cppad">
-<span id="setup-py-get-cppad"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id9">Get cppad</a><a class="headerlink" href="#get-cppad" title="Permalink to this headline">¶</a></h3>
+<span id="setup-py-get-cppad"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">Get cppad</a><a class="headerlink" href="#get-cppad" title="Permalink to this headline">¶</a></h3>
 <p>The next step is to get a copy of cppad using
 <a class="reference internal" href="get_cppad_sh.html#id1"><span class="std std-ref">get_cppad_sh</span></a>.
 If you want to use the <a class="reference internal" href="mixed.html#id1"><span class="std std-ref">Laplace Approximation of Mixed Effects Models</span></a> class, you will have to set
@@ -283,7 +279,7 @@ and use <code class="docutils literal notranslate"><span class="pre">bin/get_cpp
 non-standard requirements.</p>
 </div>
 <div class="section" id="prefix">
-<span id="setup-py-prefix"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id10">prefix</a><a class="headerlink" href="#prefix" title="Permalink to this headline">¶</a></h3>
+<span id="setup-py-prefix"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id9">prefix</a><a class="headerlink" href="#prefix" title="Permalink to this headline">¶</a></h3>
 <p>We use <em>prefix</em> to denote the prefix where cppad_py will be installed.
 This is the same as the value of
 <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-cmake-install-prefix"><span class="std std-ref">cmake_install_prefix</span></a> .
@@ -295,7 +291,7 @@ You can create a variable with this value using the command</p>
 </div>
 </div>
 <div class="section" id="libdir">
-<span id="setup-py-libdir"></span><span id="index-10"></span><h3><a class="toc-backref" href="#id11">libdir</a><a class="headerlink" href="#libdir" title="Permalink to this headline">¶</a></h3>
+<span id="setup-py-libdir"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id10">libdir</a><a class="headerlink" href="#libdir" title="Permalink to this headline">¶</a></h3>
 <p>The value <em>libdir</em> is the suffix (after the prefix)
 where the libraries will be installed.
 This can be determined by running the command:</p>
@@ -308,30 +304,30 @@ This can be determined by running the command:</p>
 </div>
 </div>
 <div class="section" id="ld-library-path">
-<span id="setup-py-ld-library-path"></span><span id="index-11"></span><h3><a class="toc-backref" href="#id12">LD_LIBRARY_PATH</a><a class="headerlink" href="#ld-library-path" title="Permalink to this headline">¶</a></h3>
+<span id="setup-py-ld-library-path"></span><span id="index-10"></span><h3><a class="toc-backref" href="#id11">LD_LIBRARY_PATH</a><a class="headerlink" href="#ld-library-path" title="Permalink to this headline">¶</a></h3>
 <p>Make sure the directory <em>prefix/libdir</em>
 is in your <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code>
 For example, if you set <em>prefix</em> and <em>libdir</em> as above,</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">LD_LIBRARY_PATH=$prefix/$libdir</span></code></div>
 </div>
-<p>In mac OS <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> should be replaced by <code class="docutils literal notranslate"><span class="pre">DYLD_LIBRARY_PATH</span></code>
-above and below. For example,</p>
+<p>In mac OS <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> should be replaced by <code class="docutils literal notranslate"><span class="pre">DYLD_LIBRARY_PATH</span></code> .
+For example,</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">DYLD_LIBRARY_PATH=$prefix/$libdir</span></code></div>
 </div>
 </div>
 <div class="section" id="pkg-config-path">
-<span id="setup-py-pkg-config-path"></span><span id="index-12"></span><h3><a class="toc-backref" href="#id13">PKG_CONFIG_PATH</a><a class="headerlink" href="#pkg-config-path" title="Permalink to this headline">¶</a></h3>
+<span id="setup-py-pkg-config-path"></span><span id="index-11"></span><h3><a class="toc-backref" href="#id12">PKG_CONFIG_PATH</a><a class="headerlink" href="#pkg-config-path" title="Permalink to this headline">¶</a></h3>
 <p>Make sure the directory <em>prefix/libdir/</em><code class="docutils literal notranslate"><span class="pre">pkgconfig</span></code>
 is in your <code class="docutils literal notranslate"><span class="pre">PKG_CONFIG_PATH</span></code>.
 For example,</p>
 <div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PKG_CONFIG_PATH=$LD_LIBRARY_PATH/pkgconfig</span></code></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PKG_CONFIG_PATH=$prefix/$libdir/pkgconfig</span></code></div>
 </div>
 </div>
 <div class="section" id="local-build">
-<span id="setup-py-local-build"></span><span id="index-13"></span><h3><a class="toc-backref" href="#id14">Local Build</a><a class="headerlink" href="#local-build" title="Permalink to this headline">¶</a></h3>
+<span id="setup-py-local-build"></span><span id="index-12"></span><h3><a class="toc-backref" href="#id13">Local Build</a><a class="headerlink" href="#local-build" title="Permalink to this headline">¶</a></h3>
 <p>You should first remove any previous local copy of the Python cppad_py
 module (that might exist) using the command</p>
 <div class="line-block">
@@ -350,20 +346,24 @@ following command in the <em>top_srcdir</em> :</p>
 For example, you can set a variable equal to the value of <em>name</em>
 by executing the command</p>
 <div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">name=$(ls</span> <span class="pre">build</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">'^lib\.'</span> <span class="pre">|</span> <span class="pre">sed</span> <span class="pre">-e</span> <span class="pre">'s|^lib\.||')</span></code>.</div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">name=$(ls</span> <span class="pre">build</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">'^lib\.'</span> <span class="pre">|</span> <span class="pre">sed</span> <span class="pre">-e</span> <span class="pre">'s|^lib\.||')</span></code></div>
 </div>
 <p>The next step is to copy the <code class="docutils literal notranslate"><span class="pre">cppad_py</span></code> directory to the
 <em>top_srcdir</em> . For example,</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">build/lib.$name/cppad_py</span> <span class="pre">cppad_py</span></code></div>
 </div>
+</div>
+<div class="section" id="local-test">
+<span id="setup-py-local-test"></span><span id="index-13"></span><h3><a class="toc-backref" href="#id14">Local Test</a><a class="headerlink" href="#local-test" title="Permalink to this headline">¶</a></h3>
 <p>You can test the local copy by executing the following commands in the
 <em>top_srcdir</em> directory:</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">PYTHONPATH=&quot;&quot;</span></code></div>
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">example/python/check_all.py</span></code></div>
 </div>
-<p>This test will use the local copy of <em>top_srcdir/</em><code class="docutils literal notranslate"><span class="pre">cppad_py</span></code> .</p>
+<p>This test will use the local copy of <em>top_srcdir/</em><code class="docutils literal notranslate"><span class="pre">cppad_py</span></code>
+create by the local build instructions directly above.</p>
 </div>
 <div class="section" id="pythonpath">
 <span id="setup-py-pythonpath"></span><span id="index-14"></span><h3><a class="toc-backref" href="#id15">PYTHONPATH</a><a class="headerlink" href="#pythonpath" title="Permalink to this headline">¶</a></h3>
@@ -377,7 +377,7 @@ where <em>minor</em> is the minor version corresponding to <code class="docutils
 For example,</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">minor=$(echo</span> <span class="pre">&quot;import</span> <span class="pre">sys;print(sys.version_info.minor)&quot;</span> <span class="pre">|</span> <span class="pre">python3)</span></code></div>
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PYTHONPATH=$LD_LIBRARY_PATH/python3.$minor/site-packages</span></code></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PYTHONPATH=$prefix/$libdir/python3.$minor/site-packages</span></code></div>
 </div>
 </div>
 <div class="section" id="install">
@@ -392,17 +392,20 @@ variable).</p>
 <div class="line-block">
 <div class="line">        <em>prefix/libdir</em><code class="docutils literal notranslate"><span class="pre">/python3.</span></code><em>minor</em> <code class="docutils literal notranslate"><span class="pre">/site-packages/cppad_py</span></code></div>
 </div>
-<p>It should also remove the directory <em>top_srcdir/</em><code class="docutils literal notranslate"><span class="pre">cppad_py</span></code>
-(if it exists).
-You can test the installed version by executing the command</p>
+</div>
+<div class="section" id="test-install">
+<span id="setup-py-test-install"></span><span id="index-16"></span><h3><a class="toc-backref" href="#id17">Test Install</a><a class="headerlink" href="#test-install" title="Permalink to this headline">¶</a></h3>
+<p>You can test the installed version by executing the command</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">example/python/check_all.py</span></code></div>
 </div>
 <p>If the directory <em>top_srcdir/</em><code class="docutils literal notranslate"><span class="pre">cppad_py</span></code> exists,
-you will be testing the local version (instead of the installed version).</p>
+you will be testing the local version, instead of the installed version.
+If this directory exists when # the install command is run,
+it is removed by the install command.</p>
 </div>
 <div class="section" id="install-errors">
-<span id="setup-py-install-errors"></span><span id="index-16"></span><h3><a class="toc-backref" href="#id17">Install Errors</a><a class="headerlink" href="#install-errors" title="Permalink to this headline">¶</a></h3>
+<span id="setup-py-install-errors"></span><span id="index-17"></span><h3><a class="toc-backref" href="#id18">Install Errors</a><a class="headerlink" href="#install-errors" title="Permalink to this headline">¶</a></h3>
 <p>If you get an error message during the install procedure above,
 or the one below, see <a class="reference internal" href="install_error.html#id1"><span class="std std-ref">install_error</span></a>.
 This will only install the release version.
@@ -410,7 +413,7 @@ Installing a debug version is discussed below in the instructions
 for downloading and building from the source code.</p>
 </div>
 <div class="section" id="install-using-pip">
-<span id="setup-py-install-using-pip"></span><span id="index-17"></span><h3><a class="toc-backref" href="#id18">Install Using Pip</a><a class="headerlink" href="#install-using-pip" title="Permalink to this headline">¶</a></h3>
+<span id="setup-py-install-using-pip"></span><span id="index-18"></span><h3><a class="toc-backref" href="#id19">Install Using Pip</a><a class="headerlink" href="#install-using-pip" title="Permalink to this headline">¶</a></h3>
 <p>There is an old version of cppad_py available using <code class="docutils literal notranslate"><span class="pre">pip</span></code> .
 To install for you entire system use:</p>
 <div class="line-block">
@@ -418,7 +421,7 @@ To install for you entire system use:</p>
 </div>
 </div>
 <div class="section" id="children">
-<span id="setup-py-children"></span><span id="index-18"></span><h3><a class="toc-backref" href="#id19">Children</a><a class="headerlink" href="#children" title="Permalink to this headline">¶</a></h3>
+<span id="setup-py-children"></span><span id="index-19"></span><h3><a class="toc-backref" href="#id20">Children</a><a class="headerlink" href="#children" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />

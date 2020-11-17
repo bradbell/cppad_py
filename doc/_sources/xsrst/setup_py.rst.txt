@@ -47,6 +47,7 @@ External Requirements
 #. `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_
 #. `python <https://www.python.org/>`_ version 3
 #. `numpy <https://numpy.org/>`_
+#. `scipy <https://scipy.org/>`_
 #. `cmake <https://cmake.org>`_
 #. `swig <http://www.swig.org/>`_
 #. `c++ <https://en.wikipedia.org/wiki/C++>`_
@@ -64,20 +65,6 @@ Mac Os
 The Mac Os system has only been tested using
 `brew <https://brew.sh>`_ to install extra packages not included with
 the system.
-
-.. meta::
-   :keywords: testing
-
-.. index:: testing
-
-.. _setup_py.external_requirements.testing:
-
-Testing
-=======
-The following are additional requirements necessary to execute
-the test program ``check_all.py``:
-`scipy <https://scipy.org/>`_
-`matplotlib <https://matplotlib.org/>`_.
 
 .. meta::
    :keywords: download
@@ -190,8 +177,8 @@ For example, if you set *prefix* and *libdir* as above,
 
 | |tab| ``export LD_LIBRARY_PATH=$prefix/$libdir``
 
-In mac OS ``LD_LIBRARY_PATH`` should be replaced by ``DYLD_LIBRARY_PATH``
-above and below. For example,
+In mac OS ``LD_LIBRARY_PATH`` should be replaced by ``DYLD_LIBRARY_PATH`` .
+For example,
 
 | |tab| ``export DYLD_LIBRARY_PATH=$prefix/$libdir``
 
@@ -208,7 +195,7 @@ Make sure the directory *prefix/libdir/*\ ``pkgconfig``
 is in your ``PKG_CONFIG_PATH``.
 For example,
 
-| |tab| ``export PKG_CONFIG_PATH=$LD_LIBRARY_PATH/pkgconfig``
+| |tab| ``export PKG_CONFIG_PATH=$prefix/$libdir/pkgconfig``
 
 .. meta::
    :keywords: local, build
@@ -237,20 +224,30 @@ where *name* identifies your system and version of python.
 For example, you can set a variable equal to the value of *name*
 by executing the command
 
-| |tab| ``name=$(ls build | grep '^lib\.' | sed -e 's|^lib\.||')``.
+| |tab| ``name=$(ls build | grep '^lib\.' | sed -e 's|^lib\.||')``
 
 The next step is to copy the ``cppad_py`` directory to the
 *top_srcdir* . For example,
 
 | |tab| ``cp -r build/lib.$name/cppad_py cppad_py``
 
+.. meta::
+   :keywords: local, test
+
+.. index:: local, test
+
+.. _setup_py.local_test:
+
+Local Test
+**********
 You can test the local copy by executing the following commands in the
 *top_srcdir* directory:
 
 | |tab| ``PYTHONPATH=""``
 | |tab| ``python3 example/python/check_all.py``
 
-This test will use the local copy of *top_srcdir/*\ ``cppad_py`` .
+This test will use the local copy of *top_srcdir/*\ ``cppad_py``
+create by the local build instructions directly above.
 
 .. meta::
    :keywords: pythonpath
@@ -271,7 +268,7 @@ where *minor* is the minor version corresponding to ``python3``.
 For example,
 
 | |tab| ``minor=$(echo "import sys;print(sys.version_info.minor)" | python3)``
-| |tab| ``export PYTHONPATH=$LD_LIBRARY_PATH/python3.$minor/site-packages``
+| |tab| ``export PYTHONPATH=$prefix/$libdir/python3.$minor/site-packages``
 
 .. meta::
    :keywords: install
@@ -293,14 +290,23 @@ This will install cppad_py in the directory
 
 | |tab| *prefix/libdir*\ ``/python3.``\ *minor* ``/site-packages/cppad_py``
 
-It should also remove the directory *top_srcdir/*\ ``cppad_py``
-(if it exists).
+.. meta::
+   :keywords: test, install
+
+.. index:: test, install
+
+.. _setup_py.test_install:
+
+Test Install
+************
 You can test the installed version by executing the command
 
 | |tab| ``python3 example/python/check_all.py``
 
 If the directory *top_srcdir/*\ ``cppad_py`` exists,
-you will be testing the local version (instead of the installed version).
+you will be testing the local version, instead of the installed version.
+If this directory exists when # the install command is run,
+it is removed by the install command.
 
 .. meta::
    :keywords: install, errors
