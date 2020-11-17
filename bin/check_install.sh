@@ -17,6 +17,7 @@ then
     echo "bin/check_install.sh: must be executed from its parent directory"
     exit 1
 fi
+# -----------------------------------------------------------------------------
 # build_type
 eval $(grep '^build_type *=' bin/get_cppad.sh)
 #
@@ -28,23 +29,11 @@ then
     cmake_install_prefix="$(pwd)/$cmake_install_prefix"
 fi
 #
-# libdir
-libdir=$(bin/libdir.py)
-#
 echo "build_type=$build_type"
 echo "cmake_install_prefix=$cmake_install_prefix"
-echo "libdir=$libdir"
-# ---------------------------------------------------------------------------
-# LD_LIBRARY_PATH
-# PYTHONPATH
-minor=$(echo "import sys; print(sys.version_info.minor)" | python3)
-export LD_LIBRARY_PATH="${cmake_install_prefix}/${libdir}"
-export DYLD_LIBRARY_PATH="$LD_LIBRARY_PATH"
-export PYTHONPATH="$LD_LIBRARY_PATH/python3.$minor/site-packages"
-echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
-echo "PYTHONPATH=$PYTHONPATH"
 # ---------------------------------------------------------------------------
 # remove old cppad_py and xsrst.py
+# ---------------------------------------------------------------------------
 if [ -e "$cmake_install_prefix" ]
 then
     list=$(find -L "$cmake_install_prefix" \
@@ -59,15 +48,8 @@ then
         fi
     done
 fi
-# ---------------------------------------------------------------------------
-# check_install.py
-cat << EOF > check_install.py
-import cppad_py
-print( 'import cppad_py: OK')
-EOF
-# ---------------------------------------------------------------------------
 #
-if python3 check_install.py >& /dev/null
+if echo 'import cppad_py' | python3 >& /dev/null
 then
     echo 'check_install.py: cannot remove old cppad_py in python path. Try'
     echo '    pip uninstall cppad_py'
@@ -81,19 +63,61 @@ then
     echo '  which xsrst.py'
     exit 1
 fi
-rm check_install.py
 # ---------------------------------------------------------------------------
-# install new version
-echo_eval python3 setup.py install --prefix=$cmake_install_prefix
+# Follow install instructions in setup.py
 # ---------------------------------------------------------------------------
-echo_eval python3 example/python/check_all.py
-# ---------------------------------------------------------------------------
-cppad_path="$cmake_install_prefix/bin"
-PATH="$cppad_path:$PATH"
-if ! which xsrst.py >& /dev/null
+#
+# prefix
+cmd=$(grep '^cmake_install_prefix=' bin/get_cppad.sh)
+eval $cmd
+prefix="$cmake_install_prefix"
+#
+# libdir
+libdir=$(bin/libdir.py)
+#
+# LD_LIBRARY_PATH
+if which brew >& /dev/null
 then
-    echo 'check_install.sh: cannot find xsrst.py in execution path'
-    echo "PATH=$PATH"
+    # This is a mac
+    export DYLD_LIBRARY_PATH="$prefix/$libdir"
+else
+    export LD_LIBRARY_PATH="$prefix/$libdir"
+fi
+#
+# PKGCONFIG_PATH
+export PKG_CONFIG_PATH="$prefix/$libdir/pkgconfig"
+#
+# Local Build
+if ls build/lib.* >& /dev/null
+then
+    rm -r build/lib.*
+fi
+python3 setup.py bdist
+name=$(ls build | grep '^lib\.' | sed -e 's|^lib\.||')
+cp -r build/lib.$name/cppad_py cppad_py
+#
+# Local Test
+PYTHONPATH=""
+python3 example/python/check_all.py
+#
+# PYTHONPATH
+minor=$(echo "import sys;print(sys.version_info.minor)" | python3)
+export PYTHONPATH=$LD_LIBRARY_PATH/python3.$minor/site-packages
+#
+# Install
+python3 setup.py install --prefix=$prefix
+#
+# Test Installed Version
+if [ -e cppad_py ]
+then
+    echo 'check_install.sh: setup.py did not remove local cppad_py directory'
+fi
+python3 example/python/check_all.py
+# ---------------------------------------------------------------------------
+xsrst_path="$cmake_install_prefix/bin/xsrst.py"
+if [ ! -x "$xsrst_path" ]
+then
+    echo "check_install.sh: $xsrst_path is not an executale file"
     exit 1
 fi
 # ---------------------------------------------------------------------------

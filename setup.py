@@ -283,7 +283,6 @@ sys.exit(0)
 #   pypi
 #   libdir
 #   pkgconfig
-#   matplotlib
 #   bdist
 #   grep
 #   cmd
@@ -303,6 +302,7 @@ sys.exit(0)
 # #. `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_
 # #. `python <https://www.python.org/>`_ version 3
 # #. `numpy <https://numpy.org/>`_
+# #. `scipy <https://scipy.org/>`_
 # #. `cmake <https://cmake.org>`_
 # #. `swig <http://www.swig.org/>`_
 # #. `c++ <https://en.wikipedia.org/wiki/C++>`_
@@ -313,13 +313,6 @@ sys.exit(0)
 # The Mac Os system has only been tested using
 # `brew <https://brew.sh>`_ to install extra packages not included with
 # the system.
-#
-# Testing
-# =======
-# The following are additional requirements necessary to execute
-# the test program ``check_all.py``:
-# `scipy <https://scipy.org/>`_
-# `matplotlib <https://matplotlib.org/>`_.
 #
 # Download
 # ********
@@ -414,20 +407,23 @@ sys.exit(0)
 # For example, you can set a variable equal to the value of *name*
 # by executing the command
 #
-# | |tab| ``name=$(ls build | grep '^lib\.' | sed -e 's|^lib\.||')``.
+# | |tab| ``name=$(ls build | grep '^lib\.' | sed -e 's|^lib\.||')``
 #
 # The next step is to copy the ``cppad_py`` directory to the
 # *top_srcdir* . For example,
 #
 # | |tab| ``cp -r build/lib.$name/cppad_py cppad_py``
 #
+# Local Test
+# **********
 # You can test the local copy by executing the following commands in the
 # *top_srcdir* directory:
 #
 # | |tab| ``PYTHONPATH=""``
 # | |tab| ``python3 example/python/check_all.py``
 #
-# This test will use the local copy of *top_srcdir/*\ ``cppad_py`` .
+# This test will use the local copy of *top_srcdir/*\ ``cppad_py``
+# create by the local build instructions directly above.
 #
 # PYTHONPATH
 # **********
@@ -457,14 +453,17 @@ sys.exit(0)
 #
 # | |tab| *prefix/libdir*\ ``/python3.``\ *minor* ``/site-packages/cppad_py``
 #
-# It should also remove the directory *top_srcdir/*\ ``cppad_py``
-# (if it exists).
+#
+# Test Install
+# ************
 # You can test the installed version by executing the command
 #
 # | |tab| ``python3 example/python/check_all.py``
 #
 # If the directory *top_srcdir/*\ ``cppad_py`` exists,
-# you will be testing the local version (instead of the installed version).
+# you will be testing the local version, instead of the installed version.
+# If this directory exists when # the install command is run,
+# it is removed by the install command.
 #
 # Install Errors
 # **************

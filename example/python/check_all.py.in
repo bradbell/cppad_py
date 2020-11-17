@@ -98,7 +98,7 @@ numeric_list = [
     'rosen3_step_xam',
     'ode_multi_step_xam',
     'seirwd_model_xam',
-    'covid_19_xam',
+    # 'covid_19_xam', is left out because it is slow and uses matplotlib
 ]
 os.chdir('numeric')
 for name in numeric_list :
