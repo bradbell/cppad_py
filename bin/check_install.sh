@@ -102,7 +102,7 @@ python3 example/python/check_all.py
 #
 # PYTHONPATH
 minor=$(echo "import sys;print(sys.version_info.minor)" | python3)
-export PYTHONPATH=$LD_LIBRARY_PATH/python3.$minor/site-packages
+export PYTHONPATH=$prefix/$libdir/python3.$minor/site-packages
 #
 # Install
 python3 setup.py install --prefix=$prefix

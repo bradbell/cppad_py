@@ -27,7 +27,7 @@ Error Messages During Installation
 swig
 ****
 If the error message below occurs, try installing
-`http://www.swig.org/ <swig>`_ on you system:
+`swig <http://www.swig.org/>`_ on you system:
 
 | |tab| ``FileNotFoundError: [Errno 2] No such file or directory: 'swig'``
 
@@ -39,11 +39,12 @@ In this case try installing ``swig-python`` .
 
 cppad_py
 ********
-If the error message below may occur while running ``check_all.py``
+If the error message
 
 | |tab| ``ModuleNotFoundError: No module named cppad_py``
 
-It means that the ``cppad_py`` directory can't be found.
+occurs while running ``python3 example/python/check_all.py`` ,
+it means that the ``cppad_py`` directory can't be found.
 If you are testing the local copy, make sure that the directory
 
 | |tab| *top_src*\ ``/cppad_py``
@@ -86,7 +87,7 @@ This error message probably indicates that you have not add the
 location where brew installs python libraries to you execution path.
 Try executing the command
 
-| |tab| ``PATH=/use/local/opt/python@3.``\ *minor*\ ``/bin:$PATH``
+| |tab| ``PATH="/usr/local/opt/python@3.``\ *minor*\ ``/bin:$PATH"``
 
 where *minor* is the minor version of python and then re-run ``setup.py`` .
 

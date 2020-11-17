@@ -374,8 +374,8 @@ sys.exit(0)
 #
 # | |tab| ``export LD_LIBRARY_PATH=$prefix/$libdir``
 #
-# In mac OS ``LD_LIBRARY_PATH`` should be replaced by ``DYLD_LIBRARY_PATH``
-# above and below. For example,
+# In mac OS ``LD_LIBRARY_PATH`` should be replaced by ``DYLD_LIBRARY_PATH`` .
+# For example,
 #
 # | |tab| ``export DYLD_LIBRARY_PATH=$prefix/$libdir``
 #
@@ -385,7 +385,7 @@ sys.exit(0)
 # is in your ``PKG_CONFIG_PATH``.
 # For example,
 #
-# | |tab| ``export PKG_CONFIG_PATH=$LD_LIBRARY_PATH/pkgconfig``
+# | |tab| ``export PKG_CONFIG_PATH=$prefix/$libdir/pkgconfig``
 #
 # Local Build
 # ***********
@@ -437,7 +437,7 @@ sys.exit(0)
 # For example,
 #
 # | |tab| ``minor=$(echo "import sys;print(sys.version_info.minor)" | python3)``
-# | |tab| ``export PYTHONPATH=$LD_LIBRARY_PATH/python3.$minor/site-packages``
+# | |tab| ``export PYTHONPATH=$prefix/$libdir/python3.$minor/site-packages``
 #
 #
 # Install
