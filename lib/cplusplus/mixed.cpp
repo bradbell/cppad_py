@@ -37,8 +37,9 @@ a_ran_likelihood_(d_ran_likelihood)
 // warning
 void mixed_derived::warning(const std::string& message)
 {   PyObject* arglist = Py_BuildValue("(s)", message.c_str() );
-    PyEval_CallObject(warning_, arglist);
+    PyObject* result  = PyObject_CallObject(warning_, arglist);
     Py_DECREF(arglist);
+    Py_DECREF(result);
 }
 //
 // fatal_error
