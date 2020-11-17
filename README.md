@@ -1,7 +1,7 @@
-# cppad\_py: A Python Connection to CppAD
+# cppad\_py: A Python Interface To CppAD
 
 ## Description
-A C++ Algorithmic Differentiation Object Library and Python Interface to CppAD
+A C++ Object Library and Python Interface to CppAD
 
 ## License
 <pre>
@@ -17,32 +17,14 @@ Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
 ## Covid-19
 A Covid-19 model, that is currently being improved,
 is included as an example; see
-[covid_19_xam](https://bradbell.github.io/cppad_py/doc/numeric_covid_19_xam.py.htm)
+[covid_19_xam](https://bradbell.github.io/cppad_py/doc/xsrst/numeric_covid_19_xam_py.html?highlight=covid%2019)
 
 ## Install
+[setup.py](https://bradbell.github.io/cppad_py/doc/xsrst/setup_py.html)
 
 ### Error
 If you get a warning or error message during the install process; see
-[install error](https://bradbell.github.io/cppad_py/doc/install_error.htm)
-
-### Pip
-You can use `pip` to install a release version of this package.
-
-#### Current Version
-The current `pip` version number number is `2020.4.25`.
-This corresponds to year 2020, month 4, and day 25,
-and the first release on that day.
-Note that this version only has the features up that date; see
-[whats_new](https://bradbell.github.io/cppad_py/doc/whats_new_2020.htm)
-
-#### Install Command
-```sh
-pip install -i https://test.pypi.org/simple/ cppad_py --verbose
-```
-
-### setup.py
-You can use `setup.py` to install a debug or release version of this package;
-see [setup.py](https://bradbell.github.io/cppad_py/doc/setup.py.htm)
+[install error](https://bradbell.github.io/cppad_py/doc/xsrst/install_error.html)
 
 ## Simple Example
 ```python
