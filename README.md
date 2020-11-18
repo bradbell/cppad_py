@@ -1,30 +1,14 @@
 # cppad\_py: A Python Interface To CppAD
 
-## Description
-A C++ Object Library and Python Interface to CppAD
-
-## License
-<pre>
-Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
-    This program is distributed under the terms of the
-    GNU General Public License version 3.0 or later see
-        https://www.gnu.org/licenses/gpl-3.0.txt
-</pre>
-
 ## Documentation
 <https://bradbell.github.io/cppad_py/doc>
 
-## Covid-19
-A Covid-19 model, that is currently being improved,
-is included as an example; see
-[covid_19_xam](https://bradbell.github.io/cppad_py/doc/xsrst/numeric_covid_19_xam_py.html?highlight=covid%2019)
+## Description
+This package contains the following:
 
-## Install
-[setup.py](https://bradbell.github.io/cppad_py/doc/xsrst/setup_py.html)
-
-### Error
-If you get a warning or error message during the install process; see
-[install error](https://bradbell.github.io/cppad_py/doc/xsrst/install_error.html)
+- A Python interface to Alogrithm Differentiation, AD.
+- A Python interface to optimizes a mixed effects Laplace Approximation
+- A C++ object library that can be used to connect scripting languages to AD
 
 ## Simple Example
 ```python
@@ -45,3 +29,23 @@ assert J[0,1] == 0.0
 assert J[1,0] == 0.0
 assert J[1,1] == 2.0 * x[1]
 ```
+
+## Covid-19
+A Covid-19 model, that is currently being improved,
+is included as an example; see
+[covid_19_xam](https://bradbell.github.io/cppad_py/doc/xsrst/numeric_covid_19_xam_py.html?highlight=covid%2019)
+
+## Install
+[setup.py](https://bradbell.github.io/cppad_py/doc/xsrst/setup_py.html)
+
+### Error
+If you get a warning or error message during the install process; see
+[install error](https://bradbell.github.io/cppad_py/doc/xsrst/install_error.html)
+
+## License
+<pre>
+Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+    This program is distributed under the terms of the
+    GNU General Public License version 3.0 or later see
+        https://www.gnu.org/licenses/gpl-3.0.txt
+</pre>
