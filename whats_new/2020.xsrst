@@ -55,6 +55,16 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+11-18
+*****
+#.  Remove under construction from the :ref:`mixed` class; i.e.,
+    it has reached a stable state.
+#.  Make a separate definition for the random and
+    :ref:`mixed.notation.fixed_effects_likelihood`.
+#.  Fix the definition of
+    :ref:`mixed_ctor.fixed_init.n_fixed` and
+    :ref:`mixed_ctor.random_init.n_random`.
+
 11-17
 *****
 #.  The :ref:`setup.py <setup_py>` script was improved.

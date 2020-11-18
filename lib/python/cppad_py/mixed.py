@@ -12,11 +12,6 @@
 Laplace Approximation of Mixed Effects Models
 #############################################
 
-Under Construction
-******************
-This class is under construction and it's API may change.
-Check :ref:`whats_new_2020` for any changes.
-
 Notation
 ********
 
@@ -56,6 +51,20 @@ p(y|theta,u)
 ============
 We use :math:`\B{p} (y | \theta , u)` to denote the density of :math:`y`
 given :math:`\theta` and :math:`u`.
+
+Fixed Effects Likelihood
+========================
+We refer to :math:`\B{p} (z | \theta ) \B{p} ( \theta )`
+as the fixed effects likelihood.
+The negative log of this, as function of :math:`\theta`, is computed by
+:ref:`mixed_ctor.fix_likelihood` .
+
+Random Effects Likelihood
+=========================
+We refer to :math:`\B{p} (y | \theta , u ) \B{p} ( u | \theta )`
+as the random effects likelihood.
+The negative log of this, as function of :math:`\theta, u`, is computed by
+:ref:`mixed_ctor.ran_likelihood` .
 
 Children
 ********
@@ -101,31 +110,31 @@ class mixed :
     *********
     We refer to the value returned by this constructor as *mixed_obj*.
 
-    fixed_init (random_init)
-    ************************
+    fixed_init
+    **********
     is a numpy vector with ``float`` elements.
-    It specifies a value of the fixed effects (random effects) for which the
+    It specifies a value of the fixed effects for which the
     likelihood and prior functions can be evaluated and is used to
     initialize *mixed_obj*.
-    The default value for this argument ``None`` corresponds
-    to the empty vector and is not valid for *fixed_init*.
+    This vector must be non-empty and the default value ``None`` is not valid.
 
-    random_vec
-    **********
+    n_fixed
+    =======
+    We use the notation *n_fixed* for the length of *fixed_init* .
+
+    random_init
+    ***********
     is a numpy vector with ``float`` elements.
     It specifies a value of the random effects for which the
     likelihood and prior functions can be evaluated and is used to
     initialize *mixed_obj*.
     The default value for this argument ``None`` corresponds
-    to the empty vector; i.e., no random effects.
-
-    n_fixed
-    *******
-    is the length of the vector *fixed_init* and must not be zero.
+    to the empty vector.
 
     n_random
-    ********
-    is the length of the vector *random_init* and can be zero.
+    ========
+    We use the notation *n_random* for the length of *random_init* .
+
 
     quasi_fixed
     ***********
@@ -154,22 +163,20 @@ class mixed :
     The value ``None`` corresponds to ignoring all warning messages.
 
     fix_likelihood
-    *******************************
-    is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-    of the fixed effects likelihood; see
-    :ref:`mixed_fix_likelihood`.
+    **************
+    see :ref:`mixed_fix_likelihood` .
+    The value ``None`` corresponds to no fixed effects likelihood.
 
     fix_constraint
-    *******************************
-    is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-    of the fixed effects constraint; see
-    :ref:`mixed_fix_constraint`.
+    **************
+    see :ref:`mixed_fix_constraint` .
+    The value ``None`` corresponds to no constraint function
+    for the fixed effects (one can still have bound constraints).
 
     ran_likelihood
-    *******************************
-    is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-    of the random effects likelihood; see
-    :ref:`mixed_ran_likelihood`.
+    **************
+    see :ref:`mixed_ran_likelihood` .
+    The value ``None`` corresponds to no random effects likelihood.
 
     {xsrst_children
       example/python/mixed/ctor_xam.py
@@ -346,8 +353,8 @@ class mixed :
     fix_likelihood
     ***************
     is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-    of the fixed effects likelihood.
-    The negative log of the fixed effects likelihood is
+    of the negative log of the
+    :ref:`fixed effects likelihood <mixed.notation.fixed_effects_likelihood>`
 
     .. math::
 
@@ -363,7 +370,7 @@ class mixed :
     theta
     *****
     is a numpy vector with ``float`` elements and size
-    :ref:`n_fixed<mixed_ctor.n_fixed>`
+    :ref:`mixed_ctor.fixed_init.n_fixed`
     containing a value for the fixed effects.
 
     v
@@ -411,11 +418,13 @@ class mixed :
 
     The functions :math:`v_i ( \theta )` for :math:`i = 0 , \ldots , m-1`
     are assumed to be a smooth w.r.t the vector :math:`\theta`.
+    The bounds for :math:`g( \theta )` are specified by
+    :ref:`mixed_optimize_fixed.fix_constraint_lower_(fix_constraint_upper)` .
 
     theta
     *****
     is a numpy vector with ``float`` elements and size
-    :ref:`n_fixed<mixed_ctor.n_fixed>`
+    :ref:`mixed_ctor.fixed_init.n_fixed`
     containing a value for the fixed effects.
 
     v
@@ -451,8 +460,8 @@ class mixed :
     ran_likelihood
     ***************
     is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-    of the random effects likelihood.
-    The negative log of the random effects likelihood is
+    of the negative log of the
+    :ref:`random effects likelihood <mixed.notation.random_effects_likelihood>`
 
     .. math::
 
@@ -468,13 +477,13 @@ class mixed :
     theta
     *****
     is a numpy vector with ``float`` elements and size
-    :ref:`n_fixed<mixed_ctor.n_fixed>`
+    :ref:`mixed_ctor.fixed_init.n_fixed`
     containing a value for the fixed effects.
 
     u
     *
     is a numpy vector with ``float`` elements and size
-    :ref:`n_random<mixed_ctor.n_random>`
+    :ref:`mixed_ctor.random_init.n_random`
     containing a value for the random effects.
 
     v
@@ -567,7 +576,7 @@ class mixed :
     optimization of the fixed (random) effects.
     If *fixed_in* (*random_in*) is ``None``, the value
     *fixed_init* (*random_init*) is used; see
-    :ref:`mixed_ctor.fixed_init_(random_init)`.
+    :ref:`mixed_ctor.fixed_init`, :ref:`mixed_ctor.random_init` .
 
     fixed_scale
     ***********
@@ -841,7 +850,7 @@ class mixed :
     has length *n_random* and is the initial value used during
     optimization of the random effects.
     If *random_in* is ``None`` the value *random_init* is used; see
-    :ref:`mixed_ctor.fixed_init_(random_init)`.
+    :ref:`mixed_ctor.random_init` .
 
     random_opt
     **********
