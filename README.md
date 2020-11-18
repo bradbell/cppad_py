@@ -4,11 +4,11 @@
 <https://bradbell.github.io/cppad_py/doc>
 
 ## Description
-This package contains the following:
+cppad\_py contains the following:
 
-- A Python interface to Alogrithm Differentiation, AD.
-- A Python interface to optimizes a mixed effects Laplace Approximation
-- A C++ object library that can be used to connect scripting languages to AD
+- A Python AD package (Algorithmic or Automatic Differentiation).
+- A Python mixed effects Laplace Approximation optimizer.
+- A C++ library that can be used to connect other scripting languages to AD
 
 ## Simple Example
 ```python
