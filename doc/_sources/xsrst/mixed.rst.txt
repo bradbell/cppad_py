@@ -32,18 +32,6 @@ Laplace Approximation of Mixed Effects Models
    :local:
 
 .. meta::
-   :keywords: under, construction
-
-.. index:: under, construction
-
-.. _mixed.under_construction:
-
-Under Construction
-******************
-This class is under construction and it's API may change.
-Check :ref:`whats_new_2020` for any changes.
-
-.. meta::
    :keywords: notation
 
 .. index:: notation
@@ -145,6 +133,34 @@ p(y|theta,u)
 ============
 We use :math:`\B{p} (y | \theta , u)` to denote the density of :math:`y`
 given :math:`\theta` and :math:`u`.
+
+.. meta::
+   :keywords: fixed, effects, likelihood
+
+.. index:: fixed, effects, likelihood
+
+.. _mixed.notation.fixed_effects_likelihood:
+
+Fixed Effects Likelihood
+========================
+We refer to :math:`\B{p} (z | \theta ) \B{p} ( \theta )`
+as the fixed effects likelihood.
+The negative log of this, as function of :math:`\theta`, is computed by
+:ref:`mixed_ctor.fix_likelihood` .
+
+.. meta::
+   :keywords: random, effects, likelihood
+
+.. index:: random, effects, likelihood
+
+.. _mixed.notation.random_effects_likelihood:
+
+Random Effects Likelihood
+=========================
+We refer to :math:`\B{p} (y | \theta , u ) \B{p} ( u | \theta )`
+as the random effects likelihood.
+The negative log of this, as function of :math:`\theta, u`, is computed by
+:ref:`mixed_ctor.ran_likelihood` .
 
 .. meta::
    :keywords: children

@@ -43,8 +43,8 @@ Syntax
 fix_likelihood
 ***************
 is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-of the fixed effects likelihood.
-The negative log of the fixed effects likelihood is
+of the negative log of the
+:ref:`fixed effects likelihood <mixed.notation.fixed_effects_likelihood>`
 
 .. math::
 
@@ -67,7 +67,7 @@ are assumed to be a smooth w.r.t the vector :math:`\theta`.
 theta
 *****
 is a numpy vector with ``float`` elements and size
-:ref:`n_fixed<mixed_ctor.n_fixed>`
+:ref:`mixed_ctor.fixed_init.n_fixed`
 containing a value for the fixed effects.
 
 .. meta::

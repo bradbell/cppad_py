@@ -33,7 +33,7 @@ Syntax
 ******
 
 .. literalinclude:: ../../lib/python/cppad_py/mixed.py
-    :lines: 1092-1096
+    :lines: 1101-1105
     :language: py
 
 .. meta::

@@ -7,9 +7,9 @@
   <meta content="mixed_ctor, mixed, class, constructor" name="keywords" />
 <meta content="syntax" name="keywords" />
 <meta content="mixed_obj" name="keywords" />
-<meta content="fixed_init, (random_init)" name="keywords" />
-<meta content="random_vec" name="keywords" />
+<meta content="fixed_init" name="keywords" />
 <meta content="n_fixed" name="keywords" />
+<meta content="random_init" name="keywords" />
 <meta content="n_random" name="keywords" />
 <meta content="quasi_fixed" name="keywords" />
 <meta content="bool_sparsity" name="keywords" />
@@ -223,10 +223,16 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
 <li><p><a class="reference internal" href="#mixed-obj" id="id3">mixed_obj</a></p></li>
-<li><p><a class="reference internal" href="#fixed-init-random-init" id="id4">fixed_init (random_init)</a></p></li>
-<li><p><a class="reference internal" href="#random-vec" id="id5">random_vec</a></p></li>
-<li><p><a class="reference internal" href="#n-fixed" id="id6">n_fixed</a></p></li>
+<li><p><a class="reference internal" href="#fixed-init" id="id4">fixed_init</a></p>
+<ul>
+<li><p><a class="reference internal" href="#n-fixed" id="id5">n_fixed</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#random-init" id="id6">random_init</a></p>
+<ul>
 <li><p><a class="reference internal" href="#n-random" id="id7">n_random</a></p></li>
+</ul>
+</li>
 <li><p><a class="reference internal" href="#quasi-fixed" id="id8">quasi_fixed</a></p></li>
 <li><p><a class="reference internal" href="#bool-sparsity" id="id9">bool_sparsity</a></p></li>
 <li><p><a class="reference internal" href="#a-rcv" id="id10">A_rcv</a></p></li>
@@ -257,31 +263,30 @@
 <span id="mixed-ctor-mixed-obj"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">mixed_obj</a><a class="headerlink" href="#mixed-obj" title="Permalink to this headline">¶</a></h3>
 <p>We refer to the value returned by this constructor as <em>mixed_obj</em>.</p>
 </div>
-<div class="section" id="fixed-init-random-init">
-<span id="mixed-ctor-fixed-init-random-init"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">fixed_init (random_init)</a><a class="headerlink" href="#fixed-init-random-init" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="fixed-init">
+<span id="mixed-ctor-fixed-init"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">fixed_init</a><a class="headerlink" href="#fixed-init" title="Permalink to this headline">¶</a></h3>
 <p>is a numpy vector with <code class="docutils literal notranslate"><span class="pre">float</span></code> elements.
-It specifies a value of the fixed effects (random effects) for which the
+It specifies a value of the fixed effects for which the
 likelihood and prior functions can be evaluated and is used to
 initialize <em>mixed_obj</em>.
-The default value for this argument <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds
-to the empty vector and is not valid for <em>fixed_init</em>.</p>
+This vector must be non-empty and the default value <code class="docutils literal notranslate"><span class="pre">None</span></code> is not valid.</p>
+<div class="section" id="n-fixed">
+<span id="mixed-ctor-fixed-init-n-fixed"></span><span id="index-4"></span><h4><a class="toc-backref" href="#id5">n_fixed</a><a class="headerlink" href="#n-fixed" title="Permalink to this headline">¶</a></h4>
+<p>We use the notation <em>n_fixed</em> for the length of <em>fixed_init</em> .</p>
 </div>
-<div class="section" id="random-vec">
-<span id="mixed-ctor-random-vec"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">random_vec</a><a class="headerlink" href="#random-vec" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="random-init">
+<span id="mixed-ctor-random-init"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">random_init</a><a class="headerlink" href="#random-init" title="Permalink to this headline">¶</a></h3>
 <p>is a numpy vector with <code class="docutils literal notranslate"><span class="pre">float</span></code> elements.
 It specifies a value of the random effects for which the
 likelihood and prior functions can be evaluated and is used to
 initialize <em>mixed_obj</em>.
 The default value for this argument <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds
-to the empty vector; i.e., no random effects.</p>
-</div>
-<div class="section" id="n-fixed">
-<span id="mixed-ctor-n-fixed"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">n_fixed</a><a class="headerlink" href="#n-fixed" title="Permalink to this headline">¶</a></h3>
-<p>is the length of the vector <em>fixed_init</em> and must not be zero.</p>
-</div>
+to the empty vector.</p>
 <div class="section" id="n-random">
-<span id="mixed-ctor-n-random"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">n_random</a><a class="headerlink" href="#n-random" title="Permalink to this headline">¶</a></h3>
-<p>is the length of the vector <em>random_init</em> and can be zero.</p>
+<span id="mixed-ctor-random-init-n-random"></span><span id="index-6"></span><h4><a class="toc-backref" href="#id7">n_random</a><a class="headerlink" href="#n-random" title="Permalink to this headline">¶</a></h4>
+<p>We use the notation <em>n_random</em> for the length of <em>random_init</em> .</p>
+</div>
 </div>
 <div class="section" id="quasi-fixed">
 <span id="mixed-ctor-quasi-fixed"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id8">quasi_fixed</a><a class="headerlink" href="#quasi-fixed" title="Permalink to this headline">¶</a></h3>
@@ -311,21 +316,19 @@ The value <code class="docutils literal notranslate"><span class="pre">None</spa
 </div>
 <div class="section" id="fix-likelihood">
 <span id="mixed-ctor-fix-likelihood"></span><span id="index-11"></span><h3><a class="toc-backref" href="#id12">fix_likelihood</a><a class="headerlink" href="#fix-likelihood" title="Permalink to this headline">¶</a></h3>
-<p>is a <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> representation
-of the fixed effects likelihood; see
-<a class="reference internal" href="mixed_fix_likelihood.html#id1"><span class="std std-ref">Fixed Effects Likelihood</span></a>.</p>
+<p>see <a class="reference internal" href="mixed_fix_likelihood.html#id1"><span class="std std-ref">Fixed Effects Likelihood</span></a> .
+The value <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds to no fixed effects likelihood.</p>
 </div>
 <div class="section" id="fix-constraint">
 <span id="mixed-ctor-fix-constraint"></span><span id="index-12"></span><h3><a class="toc-backref" href="#id13">fix_constraint</a><a class="headerlink" href="#fix-constraint" title="Permalink to this headline">¶</a></h3>
-<p>is a <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> representation
-of the fixed effects constraint; see
-<a class="reference internal" href="mixed_fix_constraint.html#id1"><span class="std std-ref">Fixed Effects Constraint Function</span></a>.</p>
+<p>see <a class="reference internal" href="mixed_fix_constraint.html#id1"><span class="std std-ref">Fixed Effects Constraint Function</span></a> .
+The value <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds to no constraint function
+for the fixed effects (one can still have bound constraints).</p>
 </div>
 <div class="section" id="ran-likelihood">
 <span id="mixed-ctor-ran-likelihood"></span><span id="index-13"></span><h3><a class="toc-backref" href="#id14">ran_likelihood</a><a class="headerlink" href="#ran-likelihood" title="Permalink to this headline">¶</a></h3>
-<p>is a <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> representation
-of the random effects likelihood; see
-<a class="reference internal" href="mixed_ran_likelihood.html#id1"><span class="std std-ref">Random Effects Likelihood</span></a>.</p>
+<p>see <a class="reference internal" href="mixed_ran_likelihood.html#id1"><span class="std std-ref">Random Effects Likelihood</span></a> .
+The value <code class="docutils literal notranslate"><span class="pre">None</span></code> corresponds to no random effects likelihood.</p>
 </div>
 <div class="section" id="example">
 <span id="mixed-ctor-example"></span><span id="index-14"></span><h3><a class="toc-backref" href="#id15">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>

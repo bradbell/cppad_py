@@ -52,6 +52,8 @@ of the fixed effects constraint function
 
 The functions :math:`v_i ( \theta )` for :math:`i = 0 , \ldots , m-1`
 are assumed to be a smooth w.r.t the vector :math:`\theta`.
+The bounds for :math:`g( \theta )` are specified by
+:ref:`mixed_optimize_fixed.fix_constraint_lower_(fix_constraint_upper)` .
 
 .. meta::
    :keywords: theta
@@ -63,7 +65,7 @@ are assumed to be a smooth w.r.t the vector :math:`\theta`.
 theta
 *****
 is a numpy vector with ``float`` elements and size
-:ref:`n_fixed<mixed_ctor.n_fixed>`
+:ref:`mixed_ctor.fixed_init.n_fixed`
 containing a value for the fixed effects.
 
 .. meta::

@@ -33,7 +33,7 @@ Syntax
 ******
 
 .. literalinclude:: ../../lib/python/cppad_py/mixed.py
-    :lines: 187-197
+    :lines: 194-204
     :language: py
 
 .. meta::
@@ -48,58 +48,57 @@ mixed_obj
 We refer to the value returned by this constructor as *mixed_obj*.
 
 .. meta::
-   :keywords: fixed_init, (random_init)
+   :keywords: fixed_init
 
-.. index:: fixed_init, (random_init)
+.. index:: fixed_init
 
-.. _mixed_ctor.fixed_init_(random_init):
+.. _mixed_ctor.fixed_init:
 
-fixed_init (random_init)
-************************
-is a numpy vector with ``float`` elements.
-It specifies a value of the fixed effects (random effects) for which the
-likelihood and prior functions can be evaluated and is used to
-initialize *mixed_obj*.
-The default value for this argument ``None`` corresponds
-to the empty vector and is not valid for *fixed_init*.
-
-.. meta::
-   :keywords: random_vec
-
-.. index:: random_vec
-
-.. _mixed_ctor.random_vec:
-
-random_vec
+fixed_init
 **********
 is a numpy vector with ``float`` elements.
-It specifies a value of the random effects for which the
+It specifies a value of the fixed effects for which the
 likelihood and prior functions can be evaluated and is used to
 initialize *mixed_obj*.
-The default value for this argument ``None`` corresponds
-to the empty vector; i.e., no random effects.
+This vector must be non-empty and the default value ``None`` is not valid.
 
 .. meta::
    :keywords: n_fixed
 
 .. index:: n_fixed
 
-.. _mixed_ctor.n_fixed:
+.. _mixed_ctor.fixed_init.n_fixed:
 
 n_fixed
-*******
-is the length of the vector *fixed_init* and must not be zero.
+=======
+We use the notation *n_fixed* for the length of *fixed_init* .
+
+.. meta::
+   :keywords: random_init
+
+.. index:: random_init
+
+.. _mixed_ctor.random_init:
+
+random_init
+***********
+is a numpy vector with ``float`` elements.
+It specifies a value of the random effects for which the
+likelihood and prior functions can be evaluated and is used to
+initialize *mixed_obj*.
+The default value for this argument ``None`` corresponds
+to the empty vector.
 
 .. meta::
    :keywords: n_random
 
 .. index:: n_random
 
-.. _mixed_ctor.n_random:
+.. _mixed_ctor.random_init.n_random:
 
 n_random
-********
-is the length of the vector *random_init* and can be zero.
+========
+We use the notation *n_random* for the length of *random_init* .
 
 .. meta::
    :keywords: quasi_fixed
@@ -163,10 +162,9 @@ The value ``None`` corresponds to ignoring all warning messages.
 .. _mixed_ctor.fix_likelihood:
 
 fix_likelihood
-*******************************
-is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-of the fixed effects likelihood; see
-:ref:`mixed_fix_likelihood`.
+**************
+see :ref:`mixed_fix_likelihood` .
+The value ``None`` corresponds to no fixed effects likelihood.
 
 .. meta::
    :keywords: fix_constraint
@@ -176,10 +174,10 @@ of the fixed effects likelihood; see
 .. _mixed_ctor.fix_constraint:
 
 fix_constraint
-*******************************
-is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-of the fixed effects constraint; see
-:ref:`mixed_fix_constraint`.
+**************
+see :ref:`mixed_fix_constraint` .
+The value ``None`` corresponds to no constraint function
+for the fixed effects (one can still have bound constraints).
 
 .. meta::
    :keywords: ran_likelihood
@@ -189,10 +187,9 @@ of the fixed effects constraint; see
 .. _mixed_ctor.ran_likelihood:
 
 ran_likelihood
-*******************************
-is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-of the random effects likelihood; see
-:ref:`mixed_ran_likelihood`.
+**************
+see :ref:`mixed_ran_likelihood` .
+The value ``None`` corresponds to no random effects likelihood.
 
 .. meta::
    :keywords: example

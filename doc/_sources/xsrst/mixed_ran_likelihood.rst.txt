@@ -43,8 +43,8 @@ Syntax
 ran_likelihood
 ***************
 is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
-of the random effects likelihood.
-The negative log of the random effects likelihood is
+of the negative log of the
+:ref:`random effects likelihood <mixed.notation.random_effects_likelihood>`
 
 .. math::
 
@@ -67,7 +67,7 @@ is assumed to be a smooth w.r.t the vector :math:`( \theta , u )`.
 theta
 *****
 is a numpy vector with ``float`` elements and size
-:ref:`n_fixed<mixed_ctor.n_fixed>`
+:ref:`mixed_ctor.fixed_init.n_fixed`
 containing a value for the fixed effects.
 
 .. meta::
@@ -80,7 +80,7 @@ containing a value for the fixed effects.
 u
 *
 is a numpy vector with ``float`` elements and size
-:ref:`n_random<mixed_ctor.n_random>`
+:ref:`mixed_ctor.random_init.n_random`
 containing a value for the random effects.
 
 .. meta::
