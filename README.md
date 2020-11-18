@@ -8,6 +8,7 @@ cppad\_py contains the following:
 
 - A Python AD package (Algorithmic or Automatic Differentiation).
 - A Python mixed effects Laplace Approximation optimizer.
+- A Python interface to Ipopt.
 - A C++ library that can be used to connect other scripting languages to AD
 
 ## Simple Example
