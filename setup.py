@@ -125,7 +125,7 @@ if not os.path.isfile( cppad_include_file ) :
     if include_mixed == 'true' :
         msg += 'use bin/get_cppad_mixed.sh to create it'
     else :
-        msg += 'use bin/get_cppad_sh to create it'
+        msg += 'use bin/get_cppad.sh to create it'
     sys_exit(msg)
 # -----------------------------------------------------------------------------
 # Run swig

@@ -19,10 +19,34 @@
     javac
     openjdk
     usr
+    cannot
 }
 
 Error Messages During Installation
 ##################################
+
+cppad_mixed.pc
+**************
+If the follow error message
+occurs while running :ref:`setup.py <setup_py>`
+
+| |tab| ``Cannot find ``\ *name*\ ``.pc``
+
+where *name* is ``cppad.pc`` or ``cppad_mixed.pc``,
+you probably did not set
+:ref:`PKG_CONFIG_PATH <setup_py.pkg_config_path>` correctly.
+
+symbolic link
+*************
+If the follow error message
+occurs while running :ref:`setup.py <setup_py>`
+
+| |tab| ``build_type.sh:`` *prefix*  ``is not a symbolic link``
+
+where *prefix* is the
+:ref:`get_cppad_sh.settings.cmake_install_prefix` in ``bin/get_cppad.sh`` ,
+try removing the *prefix* directory and re-running setup.py.
+
 
 swig
 ****
@@ -35,7 +59,7 @@ The following message as also been seen:
 
 | |tab| ``Error: Unable to find 'python.swg'``
 
-In this case try installing ``swig-python`` .
+In these cases try installing ``swig-python`` .
 
 cppad_py
 ********

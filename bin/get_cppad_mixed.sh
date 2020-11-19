@@ -42,8 +42,8 @@
 # ---------------------------------------------------------------------------
 # CppAD mixed version information
 web_page='https://github.com/bradbell/cppad_mixed.git'
-hash_key='04f49a57d5b74c56f64c962be03c1ea818c69dc7'
-version='20201105'
+hash_key='93c850caaf9ef1cb0f6b18e9918a87ed034a7d27'
+version='20201118'
 # --------------------------------------------------------------------------
 name='bin/get_cppad_mixed.sh'
 if [ $0 != $name ]

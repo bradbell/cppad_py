@@ -57,6 +57,13 @@ Previous Years
 
 11-18
 *****
+#.  Advance to cppad_mixed-2020118. This adds support for
+    mac using `port <https://www.macports.org>`_ to install packages.
+    The previous version assumed the mac was using
+    `brew <https://brew.sh>`_ to install packages.
+#.  Add a :ref:`install_error.symbolic_link` and
+    :ref:`install_error.cppad_mixed.pc` entries to the
+    list of install error messages.
 #.  Remove under construction from the :ref:`mixed` class; i.e.,
     it has reached a stable state.
 #.  Make a separate definition for the random and
