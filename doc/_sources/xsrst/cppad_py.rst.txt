@@ -33,13 +33,13 @@ A C++ Object Library and Python Interface to CppAD
    :local:
 
 .. meta::
-   :keywords: version, 2020.11.18
+   :keywords: version, 2020.11.19
 
-.. index:: version, 2020.11.18
+.. index:: version, 2020.11.19
 
-.. _cppad_py.version_2020.11.18:
+.. _cppad_py.version_2020.11.19:
 
-Version 2020.11.18
+Version 2020.11.19
 ******************
 
 .. meta::
