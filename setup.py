@@ -287,6 +287,7 @@ sys.exit(0)
 #   grep
 #   cmd
 #   eval
+#   pkg
 # }
 #
 # Configure and Build the cppad_py Python Module
@@ -307,12 +308,14 @@ sys.exit(0)
 # #. `swig <http://www.swig.org/>`_
 # #. `c++ <https://en.wikipedia.org/wiki/C++>`_
 # #. `git <https://git-scm.com/>`_
+# #. `pkg-config <https://www.freedesktop.org/wiki/Software/pkg-config>`_
 #
 # Mac Os
 # ======
 # The Mac Os system has only been tested using
-# `brew <https://brew.sh>`_ to install extra packages not included with
-# the system.
+# `brew <https://brew.sh>`_  and
+# `port <https://www.macports.org>`_
+# to install packages not included with the system.
 #
 # Download
 # ********

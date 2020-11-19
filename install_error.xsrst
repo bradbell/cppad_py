@@ -25,50 +25,63 @@
 Error Messages During Installation
 ##################################
 
-cppad_mixed.pc
-**************
-If the follow error message
-occurs while running :ref:`setup.py <setup_py>`
+numpy, scipy
+************
+The following error message may appear while
+while running ``python3 example/python/check_all.py`` ,
 
-| |tab| ``Cannot find ``\ *name*\ ``.pc``
+| |tab| ``module`` *name* ``has no attribute`` ...
 
-where *name* is ``cppad.pc`` or ``cppad_mixed.pc``,
-you probably did not set
+where *name* is ``numpy`` or ``scipy``.
+Try installing *name* using the command
+
+| |tab| ``pip3 install`` *name*
+
+cppad.pc, cppad_mixed.pc
+************************
+The following error message may appear
+while running :ref:`setup.py <setup_py>` ,
+
+| |tab| ``Cannot find`` *name*\ ``.pc``
+
+where *name* is ``cppad`` or ``cppad_mixed``.
+You probably did not set
 :ref:`PKG_CONFIG_PATH <setup_py.pkg_config_path>` correctly.
 
 symbolic link
 *************
-If the follow error message
-occurs while running :ref:`setup.py <setup_py>`
+The following error message may appear
+while running ``setup_py`` ,
 
 | |tab| ``build_type.sh:`` *prefix*  ``is not a symbolic link``
 
 where *prefix* is the
-:ref:`get_cppad_sh.settings.cmake_install_prefix` in ``bin/get_cppad.sh`` ,
-try removing the *prefix* directory and re-running setup.py.
-
+:ref:`get_cppad_sh.settings.cmake_install_prefix` in ``bin/get_cppad.sh``.
+Try removing the *prefix* directory and re-running setup.py.
 
 swig
 ****
-If the error message below occurs, try installing
-`swig <http://www.swig.org/>`_ on you system:
+The following error message may appear
+while running ``setup.py`` ,
 
 | |tab| ``FileNotFoundError: [Errno 2] No such file or directory: 'swig'``
 
-The following message as also been seen:
+Try installing `swig <http://www.swig.org/>`_ on you system:
+
+The following message has also been seen ,
 
 | |tab| ``Error: Unable to find 'python.swg'``
 
-In these cases try installing ``swig-python`` .
+Try installing ``swig-python`` .
 
 cppad_py
 ********
-If the error message
+The following error message may appear
+while running ``python3 example/python/check_all.py`` ,
 
 | |tab| ``ModuleNotFoundError: No module named cppad_py``
 
-occurs while running ``python3 example/python/check_all.py`` ,
-it means that the ``cppad_py`` directory can't be found.
+This means that the ``cppad_py`` directory can't be found.
 If you are testing the local copy, make sure that the directory
 
 | |tab| *top_src*\ ``/cppad_py``
@@ -83,17 +96,19 @@ exists; see :ref:`PYTHONPATH <setup_py.pythonpath>` .
 
 libcppad_lib
 ************
-If the error message below occurs, it is because the CppAD library
-is not in your :ref:`LD_LIBRARY_PATH<setup_py.LD_LIBRARY_PATH>` :
+The following error message may appear
+while running ``python3 example/python/check_all.py`` ,
 
 | |tab| ``ImportError: libcppad_lib.so`` ... ``can not open shared object file``
 
-If you have a Mac, you may instead need to set ``DYLD_LIBRARY_PATH`` .
+This means the CppAD library
+is not in your :ref:`LD_LIBRARY_PATH<setup_py.LD_LIBRARY_PATH>` .
+If you have a Mac, you will instead need to set ``DYLD_LIBRARY_PATH`` .
 
 Fortify Source
 **************
 If you set :ref:`build_type<get_cppad_sh.settings.build_type>` to ``debug`` ,
-you may get the following warning during the build:
+the following message may appear while running ``setup.py`` ,
 
 | |tab| ``#warning _FORTIFY_SOURCE requires compiling with optimization``
 
@@ -102,38 +117,37 @@ one can un-define a macro, but it does not remove a original definition.
 
 stdio.h
 *******
-On Mac Os the following error message may appear while running
-``setup.py`` :
+If you are using Mac Os with ``brew``,
+the following error message may appear while running ``setup.py`` ,
 
 | |tab| ``'stdio.h' file not found``
 
-This error message probably indicates that you have not add the
-location where brew installs python libraries to you execution path.
-Try executing the command
+If you get this error try using brew to install python3.
+Then add the location where brew installs python libraries
+to you execution path :
 
 | |tab| ``PATH="/usr/local/opt/python@3.``\ *minor*\ ``/bin:$PATH"``
 
-where *minor* is the minor version of python and then re-run ``setup.py`` .
+where *minor* is the minor version of python.
 
 include_mixed
 *************
-The following error messages may occur when
+The error messages below may occur when
 :ref:`include_mixed<get_cppad_sh.settings.include_mixed>` is true:
 
 Java
 ====
 On Mac Os the following error message may appear while running
-``bin/get_cppad_mixed.sh`` :
+``bin/get_cppad_mixed.sh`` ,
 
 | |tab| ``To use javac command-line tool you need to install a JDK.``
 
-This error message probably indicates that you have not added
+This indicates that you have not added
 the location where brew installs openjdk to you execution path.
 Try executing the command
 
 | |tab| ``PATH="/usr/local/opt/openjdk/bin:$PATH"``
 
-and then re-run ``bin/get_cppad_mixed.sh`` .
 
 
 
