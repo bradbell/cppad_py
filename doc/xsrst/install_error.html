@@ -5,9 +5,10 @@
 <head>
   <meta charset="utf-8">
   <meta content="install_error, error, messages, during, installation" name="keywords" />
-<meta content="cppad_mixed.pc" name="keywords" />
-<meta content="symbolic, link" name="keywords" />
 <meta content="swig" name="keywords" />
+<meta content="numpy, , scipy" name="keywords" />
+<meta content="cppad.pc, , cppad_mixed.pc" name="keywords" />
+<meta content="symbolic, link" name="keywords" />
 <meta content="cppad_py" name="keywords" />
 <meta content="libcppad_lib" name="keywords" />
 <meta content="fortify, source" name="keywords" />
@@ -186,63 +187,73 @@
 <span id="id1"></span><h2>Error Messages During Installation<a class="headerlink" href="#error-messages-during-installation" title="Permalink to this headline">¶</a></h2>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#cppad-mixed-pc" id="id3">cppad_mixed.pc</a></p></li>
-<li><p><a class="reference internal" href="#symbolic-link" id="id4">symbolic link</a></p></li>
-<li><p><a class="reference internal" href="#swig" id="id5">swig</a></p></li>
-<li><p><a class="reference internal" href="#cppad-py" id="id6">cppad_py</a></p></li>
-<li><p><a class="reference internal" href="#libcppad-lib" id="id7">libcppad_lib</a></p></li>
-<li><p><a class="reference internal" href="#fortify-source" id="id8">Fortify Source</a></p></li>
-<li><p><a class="reference internal" href="#stdio-h" id="id9">stdio.h</a></p></li>
-<li><p><a class="reference internal" href="#include-mixed" id="id10">include_mixed</a></p>
+<li><p><a class="reference internal" href="#swig" id="id3">swig</a></p></li>
+<li><p><a class="reference internal" href="#numpy-scipy" id="id4">numpy, scipy</a></p></li>
+<li><p><a class="reference internal" href="#cppad-pc-cppad-mixed-pc" id="id5">cppad.pc, cppad_mixed.pc</a></p></li>
+<li><p><a class="reference internal" href="#symbolic-link" id="id6">symbolic link</a></p></li>
+<li><p><a class="reference internal" href="#cppad-py" id="id7">cppad_py</a></p></li>
+<li><p><a class="reference internal" href="#libcppad-lib" id="id8">libcppad_lib</a></p></li>
+<li><p><a class="reference internal" href="#fortify-source" id="id9">Fortify Source</a></p></li>
+<li><p><a class="reference internal" href="#stdio-h" id="id10">stdio.h</a></p></li>
+<li><p><a class="reference internal" href="#include-mixed" id="id11">include_mixed</a></p>
 <ul>
-<li><p><a class="reference internal" href="#java" id="id11">Java</a></p></li>
+<li><p><a class="reference internal" href="#java" id="id12">Java</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="cppad-mixed-pc">
-<span id="install-error-cppad-mixed-pc"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id3">cppad_mixed.pc</a><a class="headerlink" href="#cppad-mixed-pc" title="Permalink to this headline">¶</a></h3>
-<p>If the follow error message
-occurs while running <a class="reference internal" href="setup_py.html#id1"><span class="std std-ref">setup.py</span></a></p>
+<div class="section" id="swig">
+<span id="install-error-swig"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id3">swig</a><a class="headerlink" href="#swig" title="Permalink to this headline">¶</a></h3>
+<p>The following error message may appear
+while running <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> ,</p>
 <div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">Cannot</span> <span class="pre">find</span> <span class="pre">``\</span> <span class="pre">*name*\</span> <span class="pre">``.pc</span></code></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">FileNotFoundError:</span> <span class="pre">[Errno</span> <span class="pre">2]</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory:</span> <span class="pre">'swig'</span></code></div>
 </div>
-<p>where <em>name</em> is <code class="docutils literal notranslate"><span class="pre">cppad.pc</span></code> or <code class="docutils literal notranslate"><span class="pre">cppad_mixed.pc</span></code>,
-you probably did not set
+<p>Try installing <a class="reference external" href="http://www.swig.org/">swig</a> on you system.</p>
+</div>
+<div class="section" id="numpy-scipy">
+<span id="install-error-numpy-scipy"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id4">numpy, scipy</a><a class="headerlink" href="#numpy-scipy" title="Permalink to this headline">¶</a></h3>
+<p>The following error message may appear while
+while running <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">example/python/check_all.py</span></code> ,</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">module</span></code> <em>name</em> <code class="docutils literal notranslate"><span class="pre">has</span> <span class="pre">no</span> <span class="pre">attribute</span></code> …</div>
+</div>
+<p>where <em>name</em> is <code class="docutils literal notranslate"><span class="pre">numpy</span></code> or <code class="docutils literal notranslate"><span class="pre">scipy</span></code>.
+Try installing <em>name</em> using the command</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span></code> <em>name</em></div>
+</div>
+</div>
+<div class="section" id="cppad-pc-cppad-mixed-pc">
+<span id="install-error-cppad-pc-cppad-mixed-pc"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id5">cppad.pc, cppad_mixed.pc</a><a class="headerlink" href="#cppad-pc-cppad-mixed-pc" title="Permalink to this headline">¶</a></h3>
+<p>The following error message may appear
+while running <a class="reference internal" href="setup_py.html#id1"><span class="std std-ref">setup.py</span></a> ,</p>
+<div class="line-block">
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">Cannot</span> <span class="pre">find</span></code> <em>name</em><code class="docutils literal notranslate"><span class="pre">.pc</span></code></div>
+</div>
+<p>where <em>name</em> is <code class="docutils literal notranslate"><span class="pre">cppad</span></code> or <code class="docutils literal notranslate"><span class="pre">cppad_mixed</span></code>.
+You probably did not set
 <a class="reference internal" href="setup_py.html#setup-py-pkg-config-path"><span class="std std-ref">PKG_CONFIG_PATH</span></a> correctly.</p>
 </div>
 <div class="section" id="symbolic-link">
-<span id="install-error-symbolic-link"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id4">symbolic link</a><a class="headerlink" href="#symbolic-link" title="Permalink to this headline">¶</a></h3>
-<p>If the follow error message
-occurs while running <a class="reference internal" href="setup_py.html#id1"><span class="std std-ref">setup.py</span></a></p>
+<span id="install-error-symbolic-link"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id6">symbolic link</a><a class="headerlink" href="#symbolic-link" title="Permalink to this headline">¶</a></h3>
+<p>The following error message may appear
+while running <code class="docutils literal notranslate"><span class="pre">setup_py</span></code> ,</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">build_type.sh:</span></code> <em>prefix</em>  <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span> <span class="pre">a</span> <span class="pre">symbolic</span> <span class="pre">link</span></code></div>
 </div>
 <p>where <em>prefix</em> is the
-<a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-cmake-install-prefix"><span class="std std-ref">cmake_install_prefix</span></a> in <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code> ,
-try removing the <em>prefix</em> directory and re-running setup.py.</p>
-</div>
-<div class="section" id="swig">
-<span id="install-error-swig"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id5">swig</a><a class="headerlink" href="#swig" title="Permalink to this headline">¶</a></h3>
-<p>If the error message below occurs, try installing
-<a class="reference external" href="http://www.swig.org/">swig</a> on you system:</p>
-<div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">FileNotFoundError:</span> <span class="pre">[Errno</span> <span class="pre">2]</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory:</span> <span class="pre">'swig'</span></code></div>
-</div>
-<p>The following message as also been seen:</p>
-<div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">Unable</span> <span class="pre">to</span> <span class="pre">find</span> <span class="pre">'python.swg'</span></code></div>
-</div>
-<p>In these cases try installing <code class="docutils literal notranslate"><span class="pre">swig-python</span></code> .</p>
+<a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-cmake-install-prefix"><span class="std std-ref">cmake_install_prefix</span></a> in <code class="docutils literal notranslate"><span class="pre">bin/get_cppad.sh</span></code>.
+Try removing the <em>prefix</em> directory and re-running setup.py.</p>
 </div>
 <div class="section" id="cppad-py">
-<span id="install-error-cppad-py"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id6">cppad_py</a><a class="headerlink" href="#cppad-py" title="Permalink to this headline">¶</a></h3>
-<p>If the error message</p>
+<span id="install-error-cppad-py"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id7">cppad_py</a><a class="headerlink" href="#cppad-py" title="Permalink to this headline">¶</a></h3>
+<p>The following error message may appear
+while running <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">example/python/check_all.py</span></code> ,</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">cppad_py</span></code></div>
 </div>
-<p>occurs while running <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">example/python/check_all.py</span></code> ,
-it means that the <code class="docutils literal notranslate"><span class="pre">cppad_py</span></code> directory can’t be found.
+<p>This means that the <code class="docutils literal notranslate"><span class="pre">cppad_py</span></code> directory can’t be found.
 If you are testing the local copy, make sure that the directory</p>
 <div class="line-block">
 <div class="line">        <em>top_src</em><code class="docutils literal notranslate"><span class="pre">/cppad_py</span></code></div>
@@ -255,18 +266,20 @@ If you are testing the installed version, make sure the directory</p>
 <p>exists; see <a class="reference internal" href="setup_py.html#setup-py-pythonpath"><span class="std std-ref">PYTHONPATH</span></a> .</p>
 </div>
 <div class="section" id="libcppad-lib">
-<span id="install-error-libcppad-lib"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id7">libcppad_lib</a><a class="headerlink" href="#libcppad-lib" title="Permalink to this headline">¶</a></h3>
-<p>If the error message below occurs, it is because the CppAD library
-is not in your <a class="reference internal" href="setup_py.html#setup-py-ld-library-path"><span class="std std-ref">LD_LIBRARY_PATH</span></a> :</p>
+<span id="install-error-libcppad-lib"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id8">libcppad_lib</a><a class="headerlink" href="#libcppad-lib" title="Permalink to this headline">¶</a></h3>
+<p>The following error message may appear
+while running <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">example/python/check_all.py</span></code> ,</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">ImportError:</span> <span class="pre">libcppad_lib.so</span></code> … <code class="docutils literal notranslate"><span class="pre">can</span> <span class="pre">not</span> <span class="pre">open</span> <span class="pre">shared</span> <span class="pre">object</span> <span class="pre">file</span></code></div>
 </div>
-<p>If you have a Mac, you may instead need to set <code class="docutils literal notranslate"><span class="pre">DYLD_LIBRARY_PATH</span></code> .</p>
+<p>This means the CppAD library
+is not in your <a class="reference internal" href="setup_py.html#setup-py-ld-library-path"><span class="std std-ref">LD_LIBRARY_PATH</span></a> .
+If you have a Mac, you will instead need to set <code class="docutils literal notranslate"><span class="pre">DYLD_LIBRARY_PATH</span></code> .</p>
 </div>
 <div class="section" id="fortify-source">
-<span id="install-error-fortify-source"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id8">Fortify Source</a><a class="headerlink" href="#fortify-source" title="Permalink to this headline">¶</a></h3>
+<span id="install-error-fortify-source"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id9">Fortify Source</a><a class="headerlink" href="#fortify-source" title="Permalink to this headline">¶</a></h3>
 <p>If you set <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-build-type"><span class="std std-ref">build_type</span></a> to <code class="docutils literal notranslate"><span class="pre">debug</span></code> ,
-you may get the following warning during the build:</p>
+the following message may appear while running <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> ,</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">#warning</span> <span class="pre">_FORTIFY_SOURCE</span> <span class="pre">requires</span> <span class="pre">compiling</span> <span class="pre">with</span> <span class="pre">optimization</span></code></div>
 </div>
@@ -274,38 +287,37 @@ you may get the following warning during the build:</p>
 one can un-define a macro, but it does not remove a original definition.</p>
 </div>
 <div class="section" id="stdio-h">
-<span id="install-error-stdio-h"></span><span id="index-7"></span><h3><a class="toc-backref" href="#id9">stdio.h</a><a class="headerlink" href="#stdio-h" title="Permalink to this headline">¶</a></h3>
-<p>On Mac Os the following error message may appear while running
-<code class="docutils literal notranslate"><span class="pre">setup.py</span></code> :</p>
+<span id="install-error-stdio-h"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id10">stdio.h</a><a class="headerlink" href="#stdio-h" title="Permalink to this headline">¶</a></h3>
+<p>If you are using Mac Os with <code class="docutils literal notranslate"><span class="pre">brew</span></code>,
+the following error message may appear while running <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> ,</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">'stdio.h'</span> <span class="pre">file</span> <span class="pre">not</span> <span class="pre">found</span></code></div>
 </div>
-<p>This error message probably indicates that you have not add the
-location where brew installs python libraries to you execution path.
-Try executing the command</p>
+<p>If you get this error try using brew to install python3.
+Then add the location where brew installs python libraries
+to you execution path :</p>
 <div class="line-block">
-<div class="line">        <code class="docutils literal notranslate"><span class="pre">PATH=&quot;/usr/local/opt/python&#64;3.</span></code><em>minor</em><code class="docutils literal notranslate"><span class="pre">/bin:$PATH&quot;</span></code></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">minor=$(echo</span> <span class="pre">&quot;import</span> <span class="pre">sys;print(sys.version_info.minor)&quot;</span> <span class="pre">|</span> <span class="pre">python3)</span></code></div>
+<div class="line">        <code class="docutils literal notranslate"><span class="pre">PATH=&quot;/usr/local/opt/python&#64;3.$minor/bin:$PATH&quot;</span></code></div>
 </div>
-<p>where <em>minor</em> is the minor version of python and then re-run <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> .</p>
 </div>
 <div class="section" id="include-mixed">
-<span id="install-error-include-mixed"></span><span id="index-8"></span><h3><a class="toc-backref" href="#id10">include_mixed</a><a class="headerlink" href="#include-mixed" title="Permalink to this headline">¶</a></h3>
-<p>The following error messages may occur when
+<span id="install-error-include-mixed"></span><span id="index-9"></span><h3><a class="toc-backref" href="#id11">include_mixed</a><a class="headerlink" href="#include-mixed" title="Permalink to this headline">¶</a></h3>
+<p>The error messages below may occur when
 <a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-include-mixed"><span class="std std-ref">include_mixed</span></a> is true:</p>
 <div class="section" id="java">
-<span id="install-error-include-mixed-java"></span><span id="index-9"></span><h4><a class="toc-backref" href="#id11">Java</a><a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h4>
+<span id="install-error-include-mixed-java"></span><span id="index-10"></span><h4><a class="toc-backref" href="#id12">Java</a><a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h4>
 <p>On Mac Os the following error message may appear while running
-<code class="docutils literal notranslate"><span class="pre">bin/get_cppad_mixed.sh</span></code> :</p>
+<code class="docutils literal notranslate"><span class="pre">bin/get_cppad_mixed.sh</span></code> ,</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">To</span> <span class="pre">use</span> <span class="pre">javac</span> <span class="pre">command-line</span> <span class="pre">tool</span> <span class="pre">you</span> <span class="pre">need</span> <span class="pre">to</span> <span class="pre">install</span> <span class="pre">a</span> <span class="pre">JDK.</span></code></div>
 </div>
-<p>This error message probably indicates that you have not added
+<p>This indicates that you have not added
 the location where brew installs openjdk to you execution path.
 Try executing the command</p>
 <div class="line-block">
 <div class="line">        <code class="docutils literal notranslate"><span class="pre">PATH=&quot;/usr/local/opt/openjdk/bin:$PATH&quot;</span></code></div>
 </div>
-<p>and then re-run <code class="docutils literal notranslate"><span class="pre">bin/get_cppad_mixed.sh</span></code> .</p>
 <hr class="docutils" />
 <p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">install_error.xsrst</span></code></p>
 </div>
