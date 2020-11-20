@@ -428,8 +428,8 @@ pow_int
 *******
 Exponentiation by an integer is an even more special case.
 Derivatives of the ``pow`` function will return ``nan``
-when the argument value is zero; e.g. the derivative of :math:`pow(x, 2)`
-at :math:`x = 0`
+when the argument value is zero; e.g. the derivative of
+:math:`\R{pow} (x, 2)` at :math:`x = 0`
 ( derivatives of the ``pow`` function work fine when :math:`x \ne 0` ).
 This is because the derivative of the log function at zero
 results in a division by zero.
