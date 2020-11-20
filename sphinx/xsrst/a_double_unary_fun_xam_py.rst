@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!
+a_double_unary_fun_xam_py
+!!!!!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: a_double_unary_fun_xam_py, python:, a_double, unary, functions, with, ad, result:, example, test
+
+.. index:: a_double_unary_fun_xam_py, python:, a_double, unary, functions, with, ad, result:, example, test
+
+.. _a_double_unary_fun_xam_py:
+
+Python: a_double Unary Functions with AD Result: Example and Test
+#################################################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/a_double_unary_fun_xam.py
+    :lines: 11-56
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/a_double_unary_fun_xam.py``

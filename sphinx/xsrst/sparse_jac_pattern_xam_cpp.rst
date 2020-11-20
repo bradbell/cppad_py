@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+sparse_jac_pattern_xam_cpp
+!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: sparse_jac_pattern_xam_cpp, c++:, jacobian, sparsity, patterns:, example, test
+
+.. index:: sparse_jac_pattern_xam_cpp, c++:, jacobian, sparsity, patterns:, example, test
+
+.. _sparse_jac_pattern_xam_cpp:
+
+C++: Jacobian Sparsity Patterns: Example and Test
+#################################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/cplusplus/sparse_jac_pattern_xam.cpp
+    :lines: 11-86
+    :language: cpp
+
+----
+
+xsrst input file: ``example/cplusplus/sparse_jac_pattern_xam.cpp``

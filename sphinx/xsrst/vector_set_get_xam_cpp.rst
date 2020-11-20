@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!!!!
+vector_set_get_xam_cpp
+!!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: vector_set_get_xam_cpp, c++:, setting, getting, vector, elements:, example, test
+
+.. index:: vector_set_get_xam_cpp, c++:, setting, getting, vector, elements:, example, test
+
+.. _vector_set_get_xam_cpp:
+
+C++: Setting and Getting Vector Elements: Example and Test
+##########################################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/cplusplus/vector_set_get_xam.cpp
+    :lines: 11-53
+    :language: cpp
+
+----
+
+xsrst input file: ``example/cplusplus/vector_set_get_xam.cpp``

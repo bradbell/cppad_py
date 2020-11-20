@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!!
+fun_from_json_xam_py
+!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: fun_from_json_xam_py, python, from_json:, example, test
+
+.. index:: fun_from_json_xam_py, python, from_json:, example, test
+
+.. _fun_from_json_xam_py:
+
+Python from_json: Example and Test
+##################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/fun_json_xam.py
+    :lines: 65-114
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/fun_json_xam.py``

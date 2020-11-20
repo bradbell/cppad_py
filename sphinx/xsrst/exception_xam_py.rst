@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!
+exception_xam_py
+!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: exception_xam_py, python:, cppad, py, exception, handling:, example, test
+
+.. index:: exception_xam_py, python:, cppad, py, exception, handling:, example, test
+
+.. _exception_xam_py:
+
+Python: Cppad Py Exception Handling: Example and Test
+#####################################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/exception_xam.py
+    :lines: 11-36
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/exception_xam.py``

@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!
+exception_xam_cpp
+!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: exception_xam_cpp, c++:, cppad, py, exception, handling:, example, test
+
+.. index:: exception_xam_cpp, c++:, cppad, py, exception, handling:, example, test
+
+.. _exception_xam_cpp:
+
+C++: Cppad Py Exception Handling: Example and Test
+##################################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/cplusplus/exception_xam.cpp
+    :lines: 11-29
+    :language: cpp
+
+----
+
+xsrst input file: ``example/cplusplus/exception_xam.cpp``

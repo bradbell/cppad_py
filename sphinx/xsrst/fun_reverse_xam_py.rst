@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!
+fun_reverse_xam_py
+!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: fun_reverse_xam_py, python:, reverse, mode, ad:, example, test
+
+.. index:: fun_reverse_xam_py, python:, reverse, mode, ad:, example, test
+
+.. _fun_reverse_xam_py:
+
+Python: Reverse Mode AD: Example and Test
+#########################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/fun_reverse_xam.py
+    :lines: 11-113
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/fun_reverse_xam.py``

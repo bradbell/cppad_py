@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!
+fun_forward_xam_cpp
+!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: fun_forward_xam_cpp, c++:, forward, mode, ad:, example, test
+
+.. index:: fun_forward_xam_cpp, c++:, forward, mode, ad:, example, test
+
+.. _fun_forward_xam_cpp:
+
+C++: Forward Mode AD: Example and Test
+######################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/cplusplus/fun_forward_xam.cpp
+    :lines: 11-91
+    :language: cpp
+
+----
+
+xsrst input file: ``example/cplusplus/fun_forward_xam.cpp``

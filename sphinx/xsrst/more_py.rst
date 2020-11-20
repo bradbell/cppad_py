@@ -1,0 +1,223 @@
+!!!!!!!
+more_py
+!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: more_py, steps, to, add, more, python, functions
+
+.. index:: more_py, steps, to, add, more, python, functions
+
+.. _more_py:
+
+Steps To Add More Python Functions
+##################################
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: purpose
+
+.. index:: purpose
+
+.. _more_py.purpose:
+
+Purpose
+*******
+This section outlines the steps for adding more python functionality
+to cppad_py.
+This is done by example showing how the :ref:`py_fun_new_dynamic<py_fun_new_dynamic>` was added.
+This example case was chosen because it required both changing one
+python function, :ref:`py_independent<py_independent>`,
+and adding a new python function, :ref:`py_fun_new_dynamic<py_fun_new_dynamic>`.
+
+.. meta::
+   :keywords: documentation
+
+.. index:: documentation
+
+.. _more_py.documentation:
+
+Documentation
+*************
+
+.. meta::
+   :keywords: independent
+
+.. index:: independent
+
+.. _more_py.documentation.independent:
+
+independent
+===========
+The python file ``lib/python/cppad_py/independent.py``
+was edited to add the following syntax documentation:
+
+| |tab| ( *ax* , *adynamic* ) =  ``cppad_py::independent`` ( *x* , *dynamic* )
+
+and the extra return value was documented; see
+:ref:`adynamic<py_independent.adynamic>`.
+
+.. meta::
+   :keywords: new_dynamic
+
+.. index:: new_dynamic
+
+.. _more_py.documentation.new_dynamic:
+
+new_dynamic
+===========
+The :ref:`cpp_fun_new_dynamic<cpp_fun_new_dynamic>` documentation was added
+in the file ``lib/python/cppad_py/fun_new_dynamic.py`` .
+In addition, the OMhelp command
+
+| |tab| ``%lib/python/cppad_py/fun_new_dynamic.py``
+
+was added to the file ``lib/python/cppad_py/fun.py`` .
+
+.. meta::
+   :keywords: example
+
+.. index:: example
+
+.. _more_py.documentation.example:
+
+Example
+=======
+An example file was added to the documentation,
+below the :ref:`py_independent<py_independent>` section, using the OMhelp commands:
+
+| |tab| { ``xsrst_dollar}children%``
+| |tab| |tab| ``example/python/core/fun_dynamic_xam.py``
+| |tab| ``%${xsrst_dollar`` }
+
+In addition, a reference to this example was added under the
+:ref:`example<py_independent.example>` heading in the ``independent``
+documentation.
+
+.. meta::
+   :keywords: implementation
+
+.. index:: implementation
+
+.. _more_py.implementation:
+
+Implementation
+**************
+
+.. meta::
+   :keywords: independent
+
+.. index:: independent
+
+.. _more_py.implementation.independent:
+
+independent
+===========
+The ``independent`` function in ``lib/python/cppad_py/independent.py``
+was changed to handle dynamic parameters as follows:
+
+.. literalinclude:: ../../lib/python/cppad_py/independent.py
+    :lines: 86-118
+    :language: py
+
+.. meta::
+   :keywords: new_dynamic
+
+.. index:: new_dynamic
+
+.. _more_py.implementation.new_dynamic:
+
+new_dynamic
+===========
+The following function declaration was added to the
+``d_fun`` class
+in the ``lib/python/cppad_py/fun.py`` file:
+
+.. code-block:: py
+
+        def new_dynamic(self, dynamic) :
+            return cppad_py.d_fun_new_dynamic(self.f, dynamic)
+
+A similar declaration was added to the ``a_fun`` class.
+
+.. meta::
+   :keywords: fun_new_dynamic.py
+
+.. index:: fun_new_dynamic.py
+
+.. _more_py.implementation.fun_new_dynamic.py:
+
+fun_new_dynamic.py
+==================
+The implementation of ``d_fun_new_dynamic`` and
+``a_fun_new_dynamic`` were added to the file
+``fun_new_dynamic.py``
+
+.. meta::
+   :keywords: __init__.py
+
+.. index:: __init__.py
+
+.. _more_py.implementation.__init__.py:
+
+__init__.py
+===========
+The following code was added to the file ``lib/python/cppad_py/__init__.py`` :
+
+| ``from cppad_py.fun_new_dynamic import a_fun_new_dynamic``
+| ``from cppad_py.fun_new_dynamic import d_fun_new_dynamic``
+
+.. meta::
+   :keywords: example
+
+.. index:: example
+
+.. _more_py.example:
+
+Example
+*******
+The file ``example/python/core/fun_dynamic_xam.py`` was added
+with the following contents:
+:ref:`fun_dynamic_xam_py<fun_dynamic_xam_py>`.
+In addition, in the file
+
+| |tab| ``example/python/check_all.py.in``
+
+the following text was added to the list of python example files.
+
+| |tab| ``'fun_dynamic_xam'`` ,
+| ``%``
+
+.. meta::
+   :keywords: testing
+
+.. index:: testing
+
+.. _more_py.testing:
+
+Testing
+*******
+You must do a git add for all of the new files before running
+``bin/check_all.sh``
+After all the changes above were implemented,
+``bin/check_all.sh`` was run and the changes were made
+until the warnings and errors were fixed.
+The command
+
+| |tab| ``grep 'fun_dynamic_xam' check_all.log``
+
+was used to make sure that the new python example / test was run.
+Note that the python files in ``cppad_py`` are copies of the
+python files in ``lib/python`` .
+So when you fix errors during testing, you need to fix the
+``lib/python`` file.
+Also note that if a particular step in ``bin/check_all.sh`` is failing,
+you can just re-run that step to see if a particular fix works.
+Once the tests were working, the changes where checked into using
+``git`` .
+
+----
+
+xsrst input file: ``lib/python/cppad_py/more_py.xsrst``

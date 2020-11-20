@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!
+fun_property_xam_py
+!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: fun_property_xam_py, python:, d_fun, properties:, example, test
+
+.. index:: fun_property_xam_py, python:, d_fun, properties:, example, test
+
+.. _fun_property_xam_py:
+
+Python: d_fun Properties: Example and Test
+##########################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/fun_property_xam.py
+    :lines: 11-78
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/fun_property_xam.py``

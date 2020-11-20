@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!
+sparse_rc_xam_py
+!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: sparse_rc_xam_py, python:, sparsity, patterns:, example, test
+
+.. index:: sparse_rc_xam_py, python:, sparsity, patterns:, example, test
+
+.. _sparse_rc_xam_py:
+
+Python: Sparsity Patterns: Example and Test
+###########################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/sparse_rc_xam.py
+    :lines: 11-59
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/sparse_rc_xam.py``

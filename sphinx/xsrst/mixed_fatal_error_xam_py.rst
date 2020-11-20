@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!!!!!!
+mixed_fatal_error_xam_py
+!!!!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: mixed_fatal_error_xam_py, fatal_error:, example, test
+
+.. index:: mixed_fatal_error_xam_py, fatal_error:, example, test
+
+.. _mixed_fatal_error_xam_py:
+
+fatal_error: Example and Test
+#############################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/mixed/fatal_error_xam.py
+    :lines: 11-28
+    :language: py
+
+----
+
+xsrst input file: ``example/python/mixed/fatal_error_xam.py``

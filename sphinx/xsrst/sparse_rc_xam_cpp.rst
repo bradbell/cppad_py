@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!
+sparse_rc_xam_cpp
+!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: sparse_rc_xam_cpp, c++:, sparsity, patterns:, example, test
+
+.. index:: sparse_rc_xam_cpp, c++:, sparsity, patterns:, example, test
+
+.. _sparse_rc_xam_cpp:
+
+C++: Sparsity Patterns: Example and Test
+########################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/cplusplus/sparse_rc_xam.cpp
+    :lines: 11-60
+    :language: cpp
+
+----
+
+xsrst input file: ``example/cplusplus/sparse_rc_xam.cpp``

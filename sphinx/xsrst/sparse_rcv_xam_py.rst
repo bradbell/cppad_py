@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!
+sparse_rcv_xam_py
+!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: sparse_rcv_xam_py, python:, sparsity, patterns:, example, test
+
+.. index:: sparse_rcv_xam_py, python:, sparsity, patterns:, example, test
+
+.. _sparse_rcv_xam_py:
+
+Python: Sparsity Patterns: Example and Test
+###########################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/sparse_rcv_xam.py
+    :lines: 11-57
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/sparse_rcv_xam.py``

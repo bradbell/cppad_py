@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!!!!!
+a_double_compare_xam_py
+!!!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: a_double_compare_xam_py, python:, a_double, comparison, operators:, example, test
+
+.. index:: a_double_compare_xam_py, python:, a_double, comparison, operators:, example, test
+
+.. _a_double_compare_xam_py:
+
+Python: a_double Comparison Operators: Example and Test
+#######################################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/a_double_compare_xam.py
+    :lines: 11-42
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/a_double_compare_xam.py``

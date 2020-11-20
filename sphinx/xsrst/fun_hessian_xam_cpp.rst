@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!
+fun_hessian_xam_cpp
+!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: fun_hessian_xam_cpp, c++:, dense, hessian, using, ad:, example, test
+
+.. index:: fun_hessian_xam_cpp, c++:, dense, hessian, using, ad:, example, test
+
+.. _fun_hessian_xam_cpp:
+
+C++: Dense Hessian Using AD: Example and Test
+#############################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/cplusplus/fun_hessian_xam.cpp
+    :lines: 11-78
+    :language: cpp
+
+----
+
+xsrst input file: ``example/cplusplus/fun_hessian_xam.cpp``

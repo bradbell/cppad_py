@@ -14,8 +14,10 @@ junk.*
 /cppad_py.egg-info/
 /new.*/
 /new/
-/sphinx/xsrst/
 /sphinx/_build/
+# Directory ignored by master but not by readthedocs
+# /sphinx/xsrst/
+#
 # extensions to ignore
 *.log
 *.swp

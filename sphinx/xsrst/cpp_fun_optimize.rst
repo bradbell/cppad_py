@@ -1,0 +1,78 @@
+!!!!!!!!!!!!!!!!
+cpp_fun_optimize
+!!!!!!!!!!!!!!!!
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_optimize_xam_cpp
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: cpp_fun_optimize, optimize, an, ad, function
+
+.. index:: cpp_fun_optimize, optimize, an, ad, function
+
+.. _cpp_fun_optimize:
+
+Optimize an AD Function
+#######################
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: syntax
+
+.. index:: syntax
+
+.. _cpp_fun_optimize.syntax:
+
+Syntax
+******
+*f*\ ``.optimize`` ()
+
+.. meta::
+   :keywords: purpose
+
+.. index:: purpose
+
+.. _cpp_fun_optimize.purpose:
+
+Purpose
+*******
+This reduces the number of operations
+(hence to time and memory) used to compute the function
+stored in *f*
+On the other hand, the optimization may take a significant amount
+of time and memory.
+
+.. meta::
+   :keywords: f
+
+.. index:: f
+
+.. _cpp_fun_optimize.f:
+
+f
+*
+This object is a
+:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>`.
+Optimizing this *f* also optimizes the
+corresponding :ref:`a_fun<cpp_fun_ctor.syntax.a_fun>`.
+
+.. meta::
+   :keywords: example
+
+.. index:: example
+
+.. _cpp_fun_optimize.example:
+
+Example
+*******
+:ref:`fun_optimize_xam_cpp<fun_optimize_xam_cpp>`
+
+----
+
+xsrst input file: ``lib/cplusplus/fun.cpp``

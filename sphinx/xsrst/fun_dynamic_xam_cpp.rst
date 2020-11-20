@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!
+fun_dynamic_xam_cpp
+!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: fun_dynamic_xam_cpp, c++:, using, dynamic, parameters:, example, test
+
+.. index:: fun_dynamic_xam_cpp, c++:, using, dynamic, parameters:, example, test
+
+.. _fun_dynamic_xam_cpp:
+
+C++: Using Dynamic Parameters: Example and Test
+###############################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/cplusplus/fun_dynamic_xam.cpp
+    :lines: 11-76
+    :language: cpp
+
+----
+
+xsrst input file: ``example/cplusplus/fun_dynamic_xam.cpp``

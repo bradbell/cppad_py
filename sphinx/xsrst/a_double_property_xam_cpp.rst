@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!
+a_double_property_xam_cpp
+!!!!!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: a_double_property_xam_cpp, c++:, a_double, properties:, example, test
+
+.. index:: a_double_property_xam_cpp, c++:, a_double, properties:, example, test
+
+.. _a_double_property_xam_cpp:
+
+C++: a_double Properties: Example and Test
+##########################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/cplusplus/a_double_property_xam.cpp
+    :lines: 11-35
+    :language: cpp
+
+----
+
+xsrst input file: ``example/cplusplus/a_double_property_xam.cpp``

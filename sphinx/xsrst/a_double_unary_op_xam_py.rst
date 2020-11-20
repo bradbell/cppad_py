@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!!!!!!
+a_double_unary_op_xam_py
+!!!!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: a_double_unary_op_xam_py, python:, a_double, unary, plus, minus:, example, test
+
+.. index:: a_double_unary_op_xam_py, python:, a_double, unary, plus, minus:, example, test
+
+.. _a_double_unary_op_xam_py:
+
+Python: a_double Unary Plus and Minus: Example and Test
+#######################################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/a_double_unary_op_xam.py
+    :lines: 11-27
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/a_double_unary_op_xam.py``

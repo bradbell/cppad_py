@@ -1,0 +1,61 @@
+!!!!!!!!!!!!!!!!!!
+py_abort_recording
+!!!!!!!!!!!!!!!!!!
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fun_abort_xam_py
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: py_abort_recording, abort, recording
+
+.. index:: py_abort_recording, abort, recording
+
+.. _py_abort_recording:
+
+Abort Recording
+###############
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: syntax
+
+.. index:: syntax
+
+.. _py_abort_recording.syntax:
+
+Syntax
+******
+``cppad_py.abort_recording`` ()
+
+.. meta::
+   :keywords: purpose
+
+.. index:: purpose
+
+.. _py_abort_recording.purpose:
+
+Purpose
+*******
+This aborts the current recording (if it exists)
+started by the most recent call to :ref:`independent<py_independent>`.
+
+.. meta::
+   :keywords: example
+
+.. index:: example
+
+.. _py_abort_recording.example:
+
+Example
+*******
+:ref:`python<fun_abort_xam_py>`
+
+----
+
+xsrst input file: ``lib/python/cppad_py/abort_recording.xsrst``

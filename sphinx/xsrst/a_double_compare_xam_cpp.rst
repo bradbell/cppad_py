@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!!!!!!
+a_double_compare_xam_cpp
+!!!!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: a_double_compare_xam_cpp, c++:, a_double, comparison, operators:, example, test
+
+.. index:: a_double_compare_xam_cpp, c++:, a_double, comparison, operators:, example, test
+
+.. _a_double_compare_xam_cpp:
+
+C++: a_double Comparison Operators: Example and Test
+####################################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/cplusplus/a_double_compare_xam.cpp
+    :lines: 11-43
+    :language: cpp
+
+----
+
+xsrst input file: ``example/cplusplus/a_double_compare_xam.cpp``

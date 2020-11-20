@@ -1,0 +1,64 @@
+!!!!!!
+py_fun
+!!!!!!
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   py_independent
+   py_abort_recording
+   py_fun_ctor
+   py_fun_property
+   py_fun_new_dynamic
+   py_fun_jacobian
+   py_fun_hessian
+   py_fun_forward
+   py_fun_reverse
+   py_fun_optimize
+   py_fun_json
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: py_fun, cppad, py, ad, functions
+
+.. index:: py_fun, cppad, py, ad, functions
+
+.. _py_fun:
+
+Cppad Py AD Functions
+#####################
+.. contents::
+   :local:
+
+.. comment:  Files that have Python specific Implementation and Documentation
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _py_fun.children:
+
+Children
+********
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "py_independent", :ref:`py_independent`
+    "py_abort_recording", :ref:`py_abort_recording`
+    "py_fun_ctor", :ref:`py_fun_ctor`
+    "py_fun_property", :ref:`py_fun_property`
+    "py_fun_new_dynamic", :ref:`py_fun_new_dynamic`
+    "py_fun_jacobian", :ref:`py_fun_jacobian`
+    "py_fun_hessian", :ref:`py_fun_hessian`
+    "py_fun_forward", :ref:`py_fun_forward`
+    "py_fun_reverse", :ref:`py_fun_reverse`
+    "py_fun_optimize", :ref:`py_fun_optimize`
+    "py_fun_json", :ref:`py_fun_json`
+
+----
+
+xsrst input file: ``lib/python/cppad_py/fun.py``

@@ -1,0 +1,78 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!
+numeric_simple_inv_xam_py
+!!!!!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: numeric_simple_inv_xam_py, example, computing, derivatives, matrix, inversion
+
+.. index:: numeric_simple_inv_xam_py, example, computing, derivatives, matrix, inversion
+
+.. _numeric_simple_inv_xam_py:
+
+Example Computing Derivatives of Matrix Inversion
+#################################################
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: problem
+
+.. index:: problem
+
+.. _numeric_simple_inv_xam_py.problem:
+
+Problem
+*******
+We define
+
+.. math::
+
+   A(x) = \left( \begin{array}{cc}
+   x_0 & x_1 \\
+   x_2 & x_3
+   \end{array} \right)
+
+It follows that
+
+.. math::
+
+   A^{-1}(x) =
+   \frac{1}{x_3 * x_0 - x_1 * x_2}
+   \left( \begin{array}{cc}
+   x_3 & - x_1 \\
+   - x_2 & x_0
+   \end{array} \right)
+
+We define
+
+.. math::
+
+   f(x) = (x_3 * x_0 - x_1 * x_2) [
+   A_{0,0}^{-1} (x),
+   A_{0,1}^{-1} (x),
+   A_{1,0}^{-1} (x),
+   A_{1,1}^{-1} (x)
+   ]
+   = [ x_3, -x_1, -x_2, x_0]
+
+The following example below check the derivative of :math:`f(x)`
+
+.. meta::
+   :keywords: source, code
+
+.. index:: source, code
+
+.. _numeric_simple_inv_xam_py.source_code:
+
+Source Code
+***********
+
+.. literalinclude:: ../../example/python/numeric/simple_inv_xam.py
+    :lines: 62-94
+    :language: py
+
+----
+
+xsrst input file: ``example/python/numeric/simple_inv_xam.py``

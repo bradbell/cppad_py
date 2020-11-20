@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!
+numeric_seirwd_model_xam_py
+!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: numeric_seirwd_model_xam_py, example, using, seris_model
+
+.. index:: numeric_seirwd_model_xam_py, example, using, seris_model
+
+.. _numeric_seirwd_model_xam_py:
+
+Example Using seris_model
+#########################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/numeric/seirwd_model_xam.py
+    :lines: 28-121
+    :language: py
+
+----
+
+xsrst input file: ``example/python/numeric/seirwd_model_xam.py``

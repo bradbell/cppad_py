@@ -1,0 +1,149 @@
+!!!!!!!!
+cppad_py
+!!!!!!!!
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   setup_py
+   numeric_xam
+   library
+   xsrst_py
+   whats_new_2020
+
+.. include:: ../preamble.rst
+
+.. comment:  -------------------------------------------------------------
+    default automatic indexing command for all cppad_py documentation
+
+.. comment:  -------------------------------------------------------------
+    Latex macros used throughout Cppad Py documentation
+
+.. meta::
+   :keywords: cppad_py, c++, object, library, python, interface, to, cppad
+
+.. index:: cppad_py, c++, object, library, python, interface, to, cppad
+
+.. _cppad_py:
+
+A C++ Object Library and Python Interface to CppAD
+##################################################
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: version, 2020.11.19
+
+.. index:: version, 2020.11.19
+
+.. _cppad_py.version_2020.11.19:
+
+Version 2020.11.19
+******************
+
+.. meta::
+   :keywords: git, repository
+
+.. index:: git, repository
+
+.. _cppad_py.git_repository:
+
+Git Repository
+**************
+https://github.com/bradbell/cppad_py
+
+.. meta::
+   :keywords: purpose
+
+.. index:: purpose
+
+.. _cppad_py.purpose:
+
+Purpose
+*******
+
+#.  Provide a connection from Python to the
+    Algorithmic Differentiation (AD) package Cppad; see :ref:`py_lib<py_lib>`.
+#.  Provide an AD object library; see :ref:`cpp_lib<cpp_lib>`.
+#.  Provide a concrete example of how
+    `cppad_swig <https://github.com/bradbell/cppad_swig>`_
+    can be used to connect any scripting language to CppAD.
+
+.. meta::
+   :keywords: getting, started
+
+.. index:: getting, started
+
+.. _cppad_py.getting_started:
+
+Getting Started
+***************
+After you :ref:`configure<setup_py.configure>` and
+:ref:`install<setup_py.install>` cppad_py,
+the following example is a good place to get started using it:
+:ref:`fun_jacobian_xam_py`.
+
+.. meta::
+   :keywords: numerical, examples
+
+.. index:: numerical, examples
+
+.. _cppad_py.numerical_examples:
+
+Numerical Examples
+******************
+The following is a link to some numerical examples:
+:ref:`numeric_xam<numeric_xam>`.
+
+.. meta::
+   :keywords: c++, function, speed
+
+.. index:: c++, function, speed
+
+.. _cppad_py.c++_function_speed:
+
+C++ Function Speed
+******************
+One can use Cppad Py to get faster function evaluation in scripting Python,
+when the sequence of floating point operations does not depend on the
+independent variables.
+Once an :ref:`py_fun<py_fun>` is recorded, zero order
+:ref:`forward_mode<py_fun_forward>` can be used to
+effectively evaluate the function in C++ instead of Python.
+
+.. meta::
+   :keywords: license
+
+.. index:: license
+
+.. _cppad_py.license:
+
+License
+*******
+This program is distributed under the terms of the
+GNU General Public License version 3.0 or later see
+`gpl-3.0.txt <http://www.gnu.org/licenses/gpl-3.0.txt>`_.
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _cppad_py.children:
+
+Children
+********
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "setup_py", :ref:`setup_py`
+    "numeric_xam", :ref:`numeric_xam`
+    "library", :ref:`library`
+    "xsrst_py", :ref:`xsrst_py`
+    "whats_new_2020", :ref:`whats_new_2020`
+
+----
+
+xsrst input file: ``doc.xsrst``

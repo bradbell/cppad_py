@@ -1,0 +1,44 @@
+!!!!!!!!!!
+py_utility
+!!!!!!!!!!
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   numpy2vec
+   vec2numpy
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: py_utility, python, utilities
+
+.. index:: py_utility, python, utilities
+
+.. _py_utility:
+
+Python Utilities
+################
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _py_utility.children:
+
+Children
+********
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "numpy2vec", :ref:`numpy2vec`
+    "vec2numpy", :ref:`vec2numpy`
+
+----
+
+xsrst input file: ``lib/python/cppad_py/utility.xsrst``

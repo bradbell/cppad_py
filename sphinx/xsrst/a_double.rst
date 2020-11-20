@@ -1,0 +1,56 @@
+!!!!!!!!
+a_double
+!!!!!!!!
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   a_double_ctor
+   a_double_unary_op
+   a_double_property
+   a_double_binary
+   a_double_compare
+   a_double_assign
+   a_double_unary_fun
+   a_double_cond_assign
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: a_double, cppad, py, ad, scalars
+
+.. index:: a_double, cppad, py, ad, scalars
+
+.. _a_double:
+
+Cppad Py AD Scalars
+###################
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _a_double.children:
+
+Children
+********
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "a_double_ctor", :ref:`a_double_ctor`
+    "a_double_unary_op", :ref:`a_double_unary_op`
+    "a_double_property", :ref:`a_double_property`
+    "a_double_binary", :ref:`a_double_binary`
+    "a_double_compare", :ref:`a_double_compare`
+    "a_double_assign", :ref:`a_double_assign`
+    "a_double_unary_fun", :ref:`a_double_unary_fun`
+    "a_double_cond_assign", :ref:`a_double_cond_assign`
+
+----
+
+xsrst input file: ``lib/library.xsrst``

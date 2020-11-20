@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!
+fun_jacobian_xam_py
+!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: fun_jacobian_xam_py, python:, dense, jacobian, using, ad:, example, test
+
+.. index:: fun_jacobian_xam_py, python:, dense, jacobian, using, ad:, example, test
+
+.. _fun_jacobian_xam_py:
+
+Python: Dense Jacobian Using AD: Example and Test
+#################################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/fun_jacobian_xam.py
+    :lines: 11-66
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/fun_jacobian_xam.py``

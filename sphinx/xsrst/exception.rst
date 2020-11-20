@@ -1,0 +1,67 @@
+!!!!!!!!!
+exception
+!!!!!!!!!
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   exception_xam_cpp
+   exception_xam_py
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: exception, exception, handling
+
+.. index:: exception, exception, handling
+
+.. _exception:
+
+Exception Handling
+##################
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: c++, exceptions
+
+.. index:: c++, exceptions
+
+.. _exception.c++_exceptions:
+
+C++ Exceptions
+==============
+The type of the exception is ``std::runtime_error``
+which is derived from ``std::exception`` .
+If the standard exception member function ``what()`` is called,
+the return value is a message describing the error.
+
+.. meta::
+   :keywords: python, exceptions
+
+.. index:: python, exceptions
+
+.. _exception.python_exceptions:
+
+Python Exceptions
+=================
+The type of the exception is ``RuntimeError``.
+If *err* is the exception, ``str`` (*err*) is
+a message describing the error.
+
+.. meta::
+   :keywords: example
+
+.. index:: example
+
+.. _exception.python_exceptions.example:
+
+Example
+*******
+:ref:`c++<exception_xam_cpp>`,
+:ref:`python<exception_xam_py>`.
+
+----
+
+xsrst input file: ``include/cppad/py/assert.hpp``

@@ -1,0 +1,48 @@
+!!!!!!!
+cpp_lib
+!!!!!!!
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   cpp_fun
+   sparse
+   cpp_utility
+   more_cpp
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: cpp_lib, the, c++, library
+
+.. index:: cpp_lib, the, c++, library
+
+.. _cpp_lib:
+
+The C++ Library
+###############
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _cpp_lib.children:
+
+Children
+********
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "cpp_fun", :ref:`cpp_fun`
+    "sparse", :ref:`sparse`
+    "cpp_utility", :ref:`cpp_utility`
+    "more_cpp", :ref:`more_cpp`
+
+----
+
+xsrst input file: ``lib/cplusplus/cpp_lib.xsrst``

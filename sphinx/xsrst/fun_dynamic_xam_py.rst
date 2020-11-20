@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!
+fun_dynamic_xam_py
+!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: fun_dynamic_xam_py, python:, using, dynamic, parameters:, example, test
+
+.. index:: fun_dynamic_xam_py, python:, using, dynamic, parameters:, example, test
+
+.. _fun_dynamic_xam_py:
+
+Python: Using Dynamic Parameters: Example and Test
+##################################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/fun_dynamic_xam.py
+    :lines: 11-57
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/fun_dynamic_xam.py``

@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!
+fun_optimize_xam_py
+!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: fun_optimize_xam_py, python:, optimize, an, d_fun:, example, test
+
+.. index:: fun_optimize_xam_py, python:, optimize, an, d_fun:, example, test
+
+.. _fun_optimize_xam_py:
+
+Python: Optimize an d_fun: Example and Test
+###########################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/fun_optimize_xam.py
+    :lines: 11-58
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/fun_optimize_xam.py``

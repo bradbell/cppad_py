@@ -1,0 +1,26 @@
+!!!!!!!!!!!!
+a_fun_xam_py
+!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: a_fun_xam_py, python:, purpose, a_fun, objects:, example, test
+
+.. index:: a_fun_xam_py, python:, purpose, a_fun, objects:, example, test
+
+.. _a_fun_xam_py:
+
+Python: Purpose of a_fun Objects: Example and Test
+##################################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/a_fun_xam.py
+    :lines: 9-57
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/a_fun_xam.py``

@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!
+a_double_unary_op_xam_cpp
+!!!!!!!!!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: a_double_unary_op_xam_cpp, c++:, a_double, unary, plus, minus:, example, test
+
+.. index:: a_double_unary_op_xam_cpp, c++:, a_double, unary, plus, minus:, example, test
+
+.. _a_double_unary_op_xam_cpp:
+
+C++: a_double Unary Plus and Minus: Example and Test
+####################################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/cplusplus/a_double_unary_op_xam.cpp
+    :lines: 11-28
+    :language: cpp
+
+----
+
+xsrst input file: ``example/cplusplus/a_double_unary_op_xam.cpp``

@@ -1,0 +1,48 @@
+!!!!!!!
+library
+!!!!!!!
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   a_double
+   vector
+   py_lib
+   cpp_lib
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: library, the, cppad, py, libraries
+
+.. index:: library, the, cppad, py, libraries
+
+.. _library:
+
+The Cppad Py Libraries
+######################
+.. contents::
+   :local:
+
+.. meta::
+   :keywords: children
+
+.. index:: children
+
+.. _library.children:
+
+Children
+********
+.. csv-table::
+    :header:  "Name", "Title"
+    :widths: 20, 80
+
+    "a_double", :ref:`a_double`
+    "vector", :ref:`vector`
+    "py_lib", :ref:`py_lib`
+    "cpp_lib", :ref:`cpp_lib`
+
+----
+
+xsrst input file: ``lib/library.xsrst``

@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!!!
+fun_abort_xam_cpp
+!!!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: fun_abort_xam_cpp, c++:, abort, recording, a_double, operations:, example, test
+
+.. index:: fun_abort_xam_cpp, c++:, abort, recording, a_double, operations:, example, test
+
+.. _fun_abort_xam_cpp:
+
+C++: Abort Recording a_double Operations: Example and Test
+##########################################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/cplusplus/fun_abort_xam.cpp
+    :lines: 11-56
+    :language: cpp
+
+----
+
+xsrst input file: ``example/cplusplus/fun_abort_xam.cpp``
