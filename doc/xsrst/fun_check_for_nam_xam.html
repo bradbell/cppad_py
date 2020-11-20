@@ -4,11 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta content="fun_to_json_xam_cpp, c++:, to_json:, example, test" name="keywords" />
+  <meta content="fun_check_for_nam_xam, c++:, check, for, nan, in, function, result:, example, test" name="keywords" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>fun_to_json_xam_cpp &mdash; cppad_py  documentation</title>
+  <title>fun_check_for_nam_xam &mdash; cppad_py  documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fun_from_json_xam_cpp" href="fun_from_json_xam_cpp.html" />
-    <link rel="prev" title="cpp_fun_json" href="cpp_fun_json.html" /> 
+    <link rel="next" title="sparse" href="sparse.html" />
+    <link rel="prev" title="cpp_check_for_nan" href="cpp_check_for_nan.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -107,12 +107,11 @@
 <li class="toctree-l5"><a class="reference internal" href="cpp_fun_forward.html">cpp_fun_forward</a></li>
 <li class="toctree-l5"><a class="reference internal" href="cpp_fun_reverse.html">cpp_fun_reverse</a></li>
 <li class="toctree-l5"><a class="reference internal" href="cpp_fun_optimize.html">cpp_fun_optimize</a></li>
-<li class="toctree-l5 current"><a class="reference internal" href="cpp_fun_json.html">cpp_fun_json</a><ul class="current">
-<li class="toctree-l6 current"><a class="current reference internal" href="#">fun_to_json_xam_cpp</a></li>
-<li class="toctree-l6"><a class="reference internal" href="fun_from_json_xam_cpp.html">fun_from_json_xam_cpp</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cpp_fun_json.html">cpp_fun_json</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="cpp_check_for_nan.html">cpp_check_for_nan</a><ul class="current">
+<li class="toctree-l6 current"><a class="current reference internal" href="#">fun_check_for_nam_xam</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="cpp_check_for_nan.html">cpp_check_for_nan</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
@@ -180,15 +179,15 @@
         
           <li><a href="cpp_fun.html">cpp_fun</a> &raquo;</li>
         
-          <li><a href="cpp_fun_json.html">cpp_fun_json</a> &raquo;</li>
+          <li><a href="cpp_check_for_nan.html">cpp_check_for_nan</a> &raquo;</li>
         
-      <li>fun_to_json_xam_cpp</li>
+      <li>fun_check_for_nam_xam</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/xsrst/fun_to_json_xam_cpp.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/xsrst/fun_check_for_nam_xam.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -201,57 +200,72 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="fun-to-json-xam-cpp">
-<h1>fun_to_json_xam_cpp<a class="headerlink" href="#fun-to-json-xam-cpp" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="fun-check-for-nam-xam">
+<h1>fun_check_for_nam_xam<a class="headerlink" href="#fun-check-for-nam-xam" title="Permalink to this headline">¶</a></h1>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
-<div class="section" id="c-to-json-example-and-test">
-<span id="id1"></span><h2>C++: to_json: Example and Test<a class="headerlink" href="#c-to-json-example-and-test" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">to_json_xam</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+<div class="section" id="c-check-for-nan-in-function-result-example-and-test">
+<span id="id1"></span><h2>C++: Check For Nan in Function Result: Example and Test<a class="headerlink" href="#c-check-for-nan-in-function-result-example-and-test" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp"># include &lt;cstdio&gt;</span>
+<span class="cp"># include &lt;cppad/py/cppad_py.hpp&gt;</span>
+<span class="cp"># include &lt;cppad/utility/nan.hpp&gt;</span>
+
+<span class="kt">bool</span> <span class="nf">fun_check_for_nan_xam</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">using</span> <span class="n">cppad_py</span><span class="o">::</span><span class="n">a_double</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">cppad_py</span><span class="o">::</span><span class="n">vec_double</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">cppad_py</span><span class="o">::</span><span class="n">vec_a_double</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">cppad_py</span><span class="o">::</span><span class="n">d_fun</span><span class="p">;</span>
-    <span class="k">using</span> <span class="n">cppad_py</span><span class="o">::</span><span class="n">a_fun</span><span class="p">;</span>
     <span class="c1">//</span>
     <span class="c1">// initialize return variable</span>
     <span class="kt">bool</span> <span class="n">ok</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
     <span class="c1">// ----------------------------------------------------------------------</span>
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// number of independent variables</span>
-    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// number of dependent variables</span>
+    <span class="kt">int</span> <span class="n">n_ind</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// number of independent variables</span>
+    <span class="kt">int</span> <span class="n">n_dep</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// number of dependent variables</span>
     <span class="c1">//</span>
     <span class="c1">// dimension some vectors</span>
-    <span class="n">vec_double</span> <span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
-    <span class="n">vec_a_double</span> <span class="n">ay</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+    <span class="n">vec_double</span> <span class="n">x</span><span class="p">(</span><span class="n">n_ind</span><span class="p">),</span> <span class="n">dx</span><span class="p">(</span><span class="n">n_ind</span><span class="p">),</span> <span class="n">ddx</span><span class="p">(</span><span class="n">n_ind</span><span class="p">);</span>
+    <span class="n">vec_double</span> <span class="n">y</span><span class="p">(</span><span class="n">n_dep</span><span class="p">),</span> <span class="n">dy</span><span class="p">(</span><span class="n">n_dep</span><span class="p">),</span> <span class="n">ddy</span><span class="p">(</span><span class="n">n_dep</span><span class="p">);</span>
+    <span class="n">vec_a_double</span> <span class="n">ay</span><span class="p">(</span><span class="n">n_dep</span><span class="p">);</span>
     <span class="c1">//</span>
     <span class="c1">// independent variables</span>
-    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>            <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
     <span class="n">vec_a_double</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">cppad_py</span><span class="o">::</span><span class="n">independent</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
     <span class="c1">//</span>
-    <span class="c1">// f(x) = [ x0 + x0, sin(x0) ]</span>
-    <span class="n">ay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-    <span class="n">ay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">sin</span><span class="p">();</span>
+    <span class="c1">// dependent variables</span>
+    <span class="n">ay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">2.0</span><span class="p">);</span>
+    <span class="n">ay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">pow_int</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="c1">//</span>
+    <span class="c1">// define f(x) = y</span>
     <span class="n">d_fun</span> <span class="n">f</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">);</span>
     <span class="c1">//</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">json</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">to_json</span><span class="p">();</span>
-    <span class="kt">size_t</span> <span class="n">pos</span>       <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">op_code</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">);</span>
-    <span class="kt">size_t</span> <span class="n">start</span>     <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="kt">size_t</span> <span class="n">end</span>       <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">op_code</span>      <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">atoi</span><span class="p">(</span> <span class="n">json</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">).</span><span class="n">c_str</span><span class="p">()</span> <span class="p">);</span>
-    <span class="n">ok</span>              <span class="o">&amp;=</span> <span class="n">op_code</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="n">pos</span>              <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">name</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="p">);</span>
-    <span class="n">start</span>            <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="p">);</span>
-    <span class="n">start</span>            <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="n">end</span>              <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
-    <span class="n">ok</span>              <span class="o">&amp;=</span> <span class="n">name</span> <span class="o">==</span> <span class="s">&quot;add&quot;</span> <span class="o">||</span> <span class="n">name</span> <span class="o">==</span> <span class="s">&quot;sin&quot;</span><span class="p">;</span>
+    <span class="c1">// Turn off checking for nan</span>
+    <span class="kt">bool</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">f</span><span class="p">.</span><span class="n">check_for_nan</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+    <span class="c1">//</span>
+    <span class="c1">// function values are not nan</span>
+    <span class="n">y</span>  <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="o">&amp;&amp;</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">;</span>   <span class="c1">// y[0] = f(x)</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="o">&amp;&amp;</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">;</span>   <span class="c1">// y[1] = f(x)</span>
+    <span class="c1">//</span>
+    <span class="c1">// Derivative of pow is nan. This would cause an assert</span>
+    <span class="c1">// if build_type were debug and check_for_nan were true.</span>
+    <span class="n">dx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+    <span class="n">dy</span>    <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dx</span><span class="p">);</span>
+    <span class="n">ok</span>    <span class="o">=</span> <span class="n">ok</span> <span class="o">&amp;&amp;</span> <span class="n">CppAD</span><span class="o">::</span><span class="n">isnan</span><span class="p">(</span> <span class="n">dy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">);</span>
+    <span class="n">ok</span>    <span class="o">=</span> <span class="n">ok</span> <span class="o">&amp;&amp;</span> <span class="n">dy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">;</span>          <span class="c1">// y[1] = f&#39;(x)</span>
+    <span class="c1">//</span>
+    <span class="c1">// Second derivative of pow is nan.</span>
+    <span class="n">ddx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+    <span class="n">ddy</span>    <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">ddx</span><span class="p">);</span>
+    <span class="n">ok</span>     <span class="o">=</span> <span class="n">ok</span> <span class="o">&amp;&amp;</span> <span class="n">CppAD</span><span class="o">::</span><span class="n">isnan</span><span class="p">(</span> <span class="n">ddy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">);</span>
+    <span class="n">ok</span>     <span class="o">=</span> <span class="n">ok</span> <span class="o">&amp;&amp;</span> <span class="n">ddy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">;</span>        <span class="c1">// ddy[1] = 1/2 * f&#39;(x)</span>
     <span class="c1">//</span>
     <span class="k">return</span><span class="p">(</span> <span class="n">ok</span>  <span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
-<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">example/cplusplus/fun_json_xam.cpp</span></code></p>
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">example/cplusplus/fun_check_for_nan_xam.cpp</span></code></p>
 </div>
 </div>
 
@@ -263,10 +277,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="fun_from_json_xam_cpp.html" class="btn btn-neutral float-right" title="fun_from_json_xam_cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sparse.html" class="btn btn-neutral float-right" title="sparse" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cpp_fun_json.html" class="btn btn-neutral float-left" title="cpp_fun_json" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cpp_check_for_nan.html" class="btn btn-neutral float-left" title="cpp_check_for_nan" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -17,6 +17,7 @@ cpp_fun
    cpp_fun_reverse
    cpp_fun_optimize
    cpp_fun_json
+   cpp_check_for_nan
 
 .. include:: ../preamble.rst
 
@@ -56,6 +57,7 @@ Children
     "cpp_fun_reverse", :ref:`cpp_fun_reverse`
     "cpp_fun_optimize", :ref:`cpp_fun_optimize`
     "cpp_fun_json", :ref:`cpp_fun_json`
+    "cpp_check_for_nan", :ref:`cpp_check_for_nan`
 
 ----
 

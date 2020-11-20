@@ -4,17 +4,15 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta content="py_fun_jacobian, jacobian, an, ad, function" name="keywords" />
+  <meta content="py_fun_check_for_nan, check, for, nan, in, function, object" name="keywords" />
 <meta content="syntax" name="keywords" />
 <meta content="f" name="keywords" />
-<meta content="f(x)" name="keywords" />
-<meta content="x" name="keywords" />
-<meta content="j" name="keywords" />
+<meta content="b" name="keywords" />
 <meta content="example" name="keywords" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>py_fun_jacobian &mdash; cppad_py  documentation</title>
+  <title>py_fun_check_for_nan &mdash; cppad_py  documentation</title>
   
 
   
@@ -45,8 +43,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fun_jacobian_xam_py" href="fun_jacobian_xam_py.html" />
-    <link rel="prev" title="py_fun_new_dynamic" href="py_fun_new_dynamic.html" /> 
+    <link rel="next" title="check_for_nan_xam_py" href="check_for_nan_xam_py.html" />
+    <link rel="prev" title="fun_property_xam_py" href="fun_property_xam_py.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -106,12 +104,12 @@
 <li class="toctree-l5"><a class="reference internal" href="py_abort_recording.html">py_abort_recording</a></li>
 <li class="toctree-l5"><a class="reference internal" href="py_fun_ctor.html">py_fun_ctor</a></li>
 <li class="toctree-l5"><a class="reference internal" href="py_fun_property.html">py_fun_property</a></li>
-<li class="toctree-l5"><a class="reference internal" href="py_fun_check_for_nan.html">py_fun_check_for_nan</a></li>
-<li class="toctree-l5"><a class="reference internal" href="py_fun_new_dynamic.html">py_fun_new_dynamic</a></li>
-<li class="toctree-l5 current"><a class="current reference internal" href="#">py_fun_jacobian</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="fun_jacobian_xam_py.html">fun_jacobian_xam_py</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">py_fun_check_for_nan</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="check_for_nan_xam_py.html">check_for_nan_xam_py</a></li>
 </ul>
 </li>
+<li class="toctree-l5"><a class="reference internal" href="py_fun_new_dynamic.html">py_fun_new_dynamic</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py_fun_jacobian.html">py_fun_jacobian</a></li>
 <li class="toctree-l5"><a class="reference internal" href="py_fun_hessian.html">py_fun_hessian</a></li>
 <li class="toctree-l5"><a class="reference internal" href="py_fun_forward.html">py_fun_forward</a></li>
 <li class="toctree-l5"><a class="reference internal" href="py_fun_reverse.html">py_fun_reverse</a></li>
@@ -186,13 +184,13 @@
         
           <li><a href="py_fun.html">py_fun</a> &raquo;</li>
         
-      <li>py_fun_jacobian</li>
+      <li>py_fun_check_for_nan</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/xsrst/py_fun_jacobian.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/xsrst/py_fun_check_for_nan.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -205,68 +203,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="py-fun-jacobian">
-<h1>py_fun_jacobian<a class="headerlink" href="#py-fun-jacobian" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="py-fun-check-for-nan">
+<h1>py_fun_check_for_nan<a class="headerlink" href="#py-fun-check-for-nan" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
 <span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
-<div class="section" id="jacobian-of-an-ad-function">
-<span id="id1"></span><h2>Jacobian of an AD Function<a class="headerlink" href="#jacobian-of-an-ad-function" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="check-for-nan-in-a-function-object">
+<span id="id1"></span><h2>Check for Nan in a Function Object<a class="headerlink" href="#check-for-nan-in-a-function-object" title="Permalink to this headline">¶</a></h2>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#syntax" id="id2">Syntax</a></p></li>
 <li><p><a class="reference internal" href="#f" id="id3">f</a></p></li>
-<li><p><a class="reference internal" href="#f-x" id="id4">f(x)</a></p></li>
-<li><p><a class="reference internal" href="#x" id="id5">x</a></p></li>
-<li><p><a class="reference internal" href="#j" id="id6">J</a></p></li>
-<li><p><a class="reference internal" href="#example" id="id7">Example</a></p></li>
+<li><p><a class="reference internal" href="#b" id="id4">b</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id5">Example</a></p></li>
 </ul>
 </div>
 <div class="section" id="syntax">
-<span id="py-fun-jacobian-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
-<p><em>J</em> = <em>f</em><code class="docutils literal notranslate"><span class="pre">.jacobian</span></code> ( <em>x</em> )</p>
+<span id="py-fun-check-for-nan-syntax"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><em>f</em><code class="docutils literal notranslate"><span class="pre">.check_for_nan</span></code> ( <em>b</em> )</div>
+</div>
 </div>
 <div class="section" id="f">
-<span id="py-fun-jacobian-f"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">f</a><a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
-<p>This is either a
+<span id="py-fun-check-for-nan-f"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">f</a><a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h3>
+<p>This is a
 <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-d-fun"><span class="std std-ref">d_fun</span></a> or
-<a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-a-fun"><span class="std std-ref">a_fun</span></a> function object.
-Upon return, the zero order
-<a class="reference internal" href="py_fun_forward.html#py-fun-forward-taylor-coefficient"><span class="std std-ref">taylor_coefficients</span></a>
-in <em>f</em> correspond to the value of <em>x</em> .
-The other Taylor coefficients in <em>f</em> are unspecified.</p>
+<a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-syntax-a-fun"><span class="std std-ref">a_fun</span></a> function object.</p>
 </div>
-<div class="section" id="f-x">
-<span id="py-fun-jacobian-f-x"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">f(x)</a><a class="headerlink" href="#f-x" title="Permalink to this headline">¶</a></h3>
-<p>We use the notation <span class="math notranslate nohighlight">\(f: \B{R}^n \rightarrow \B{R}^m\)</span>
-for the function corresponding to <em>f</em> .
-Note that <em>n</em> is the size of <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-ax"><span class="std std-ref">ax</span></a>
-and <em>m</em> is the size of <a class="reference internal" href="py_fun_ctor.html#py-fun-ctor-ay"><span class="std std-ref">ay</span></a>
-in to the constructor for <em>f</em> .</p>
-</div>
-<div class="section" id="x">
-<span id="py-fun-jacobian-x"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">x</a><a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h3>
-<p>If <em>f</em> is a <code class="docutils literal notranslate"><span class="pre">d_fun</span></code> or <code class="docutils literal notranslate"><span class="pre">a_fun</span></code> ,
-<em>x</em> is a numpy vector with <code class="docutils literal notranslate"><span class="pre">float</span></code> ( <code class="docutils literal notranslate"><span class="pre">a_double</span></code> ) elements
-and size <em>n</em> .
-It specifies the argument value at we are computing the Jacobian
-<span class="math notranslate nohighlight">\(f'(x)\)</span>.</p>
-</div>
-<div class="section" id="j">
-<span id="py-fun-jacobian-j"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">J</a><a class="headerlink" href="#j" title="Permalink to this headline">¶</a></h3>
-<p>The result is a numpy matrix with <code class="docutils literal notranslate"><span class="pre">float</span></code> ( <code class="docutils literal notranslate"><span class="pre">a_double</span></code> ) elements,
-<em>m</em> rows, and <code class="docutils literal notranslate"><span class="pre">n</span></code> columns.
-For <em>i</em> between zero and <em>m</em> -1
-and <em>j</em> between zero and <em>n</em> -1 ,</p>
-<div class="math notranslate nohighlight">
-\[J [ i,  j ] = \frac{ \partial f_i }{ \partial x_j } (x)\]</div>
+<div class="section" id="b">
+<span id="py-fun-check-for-nan-b"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">b</a><a class="headerlink" href="#b" title="Permalink to this headline">¶</a></h3>
+<p>The argument <em>b</em> is a <code class="docutils literal notranslate"><span class="pre">bool</span></code> .
+If <em>b</em> is true and
+<a class="reference internal" href="get_cppad_sh.html#get-cppad-sh-settings-build-type"><span class="std std-ref">build_type</span></a> is <code class="docutils literal notranslate"><span class="pre">debug</span></code> ,
+<em>f</em> will generate an assert when <code class="docutils literal notranslate"><span class="pre">nan</span></code> occurs
+in its function or derivative values.
+Otherwise, it will just pass back the <code class="docutils literal notranslate"><span class="pre">nan</span></code> values.</p>
 </div>
 <div class="section" id="example">
-<span id="py-fun-jacobian-example"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id7">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="fun_jacobian_xam_py.html#id1"><span class="std std-ref">fun_jacobian_xam_py</span></a></p>
+<span id="py-fun-check-for-nan-example"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="check_for_nan_xam_py.html#id1"><span class="std std-ref">Python: Example Turning of Checking For Nan</span></a></p></li>
+</ul>
 <hr class="docutils" />
-<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/python/cppad_py/fun_jacobian.py</span></code></p>
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/python/cppad_py/fun_check_for_nan.xsrst</span></code></p>
 </div>
 </div>
 </div>
@@ -279,10 +259,10 @@ and <em>j</em> between zero and <em>n</em> -1 ,</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="fun_jacobian_xam_py.html" class="btn btn-neutral float-right" title="fun_jacobian_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="check_for_nan_xam_py.html" class="btn btn-neutral float-right" title="check_for_nan_xam_py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="py_fun_new_dynamic.html" class="btn btn-neutral float-left" title="py_fun_new_dynamic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fun_property_xam_py.html" class="btn btn-neutral float-left" title="fun_property_xam_py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -80,6 +80,7 @@ i.e.,
 | *az* = *pow* ( *ax* , *ay* )
 | *az* = *pow* ( *ax* , *y* )
 | *az* = *pow* ( *x* , *ay* )
+| *az* = *pow_int* ( *ax* , *i* )
 
 .. meta::
    :keywords: fun
@@ -160,6 +161,38 @@ az
 The result has c++ prototype
 
 | |tab| ``a_double`` *az*
+
+.. meta::
+   :keywords: pow_int
+
+.. index:: pow_int
+
+.. _a_double_binary.pow_int:
+
+pow_int
+*******
+Exponentiation by an integer is an even more special case.
+Derivatives of the ``pow`` function will return ``nan``
+when the argument value is zero; e.g. the derivative of :math:`pow(x, 2)`
+at :math:`x = 0`
+( derivatives of the ``pow`` function work fine when :math:`x \ne 0` ).
+This is because the derivative of the log function at zero
+results in a division by zero.
+This ``nan`` can be avoided by using multiplication, instead of logs,
+to compute powers when the exponent is an integer.
+
+.. meta::
+   :keywords: i
+
+.. index:: i
+
+.. _a_double_binary.pow_int.i:
+
+i
+=
+The argument to the ``pow_int`` function has c++ prototype
+
+| |tab| ``const int&`` *i*
 
 .. meta::
    :keywords: example

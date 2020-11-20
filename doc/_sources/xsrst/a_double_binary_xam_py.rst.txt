@@ -18,7 +18,7 @@ Python: a_double Binary Operators With AD Result: Example and Test
 
 
 .. literalinclude:: ../../example/python/core/a_double_binary_xam.py
-    :lines: 11-63
+    :lines: 11-68
     :language: py
 
 ----

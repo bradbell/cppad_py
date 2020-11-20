@@ -93,21 +93,23 @@ Table of Contents
 |  |space|  |space|  |space|  |space| :ref:`3.3.1.3.1<a_fun_xam_py>` Python: Purpose of a_fun Objects: Example and Test
 |  |space|  |space|  |space| :ref:`3.3.1.4<py_fun_property>` Properties of a Function Object
 |  |space|  |space|  |space|  |space| :ref:`3.3.1.4.1<fun_property_xam_py>` Python: d_fun Properties: Example and Test
-|  |space|  |space|  |space| :ref:`3.3.1.5<py_fun_new_dynamic>` New Dynamic Parameters
-|  |space|  |space|  |space| :ref:`3.3.1.6<py_fun_jacobian>` Jacobian of an AD Function
-|  |space|  |space|  |space|  |space| :ref:`3.3.1.6.1<fun_jacobian_xam_py>` Python: Dense Jacobian Using AD: Example and Test
-|  |space|  |space|  |space| :ref:`3.3.1.7<py_fun_hessian>` Hessian of an AD Function
-|  |space|  |space|  |space|  |space| :ref:`3.3.1.7.1<fun_hessian_xam_py>` Python: Dense Hessian Using AD: Example and Test
-|  |space|  |space|  |space| :ref:`3.3.1.8<py_fun_forward>` Forward Mode AD
-|  |space|  |space|  |space|  |space| :ref:`3.3.1.8.1<fun_forward_xam_py>` Python: Forward Mode AD: Example and Test
-|  |space|  |space|  |space| :ref:`3.3.1.9<py_fun_reverse>` Reverse Mode AD
-|  |space|  |space|  |space|  |space| :ref:`3.3.1.9.1<fun_reverse_xam_py>` Python: Reverse Mode AD: Example and Test
-|  |space|  |space|  |space| :ref:`3.3.1.10<py_fun_optimize>` Optimize an AD Function
-|  |space|  |space|  |space|  |space| :ref:`3.3.1.10.1<fun_optimize_xam_py>` Python: Optimize an d_fun: Example and Test
-|  |space|  |space|  |space| :ref:`3.3.1.11<py_fun_json>` Json Representation of AD Computation Graph
+|  |space|  |space|  |space| :ref:`3.3.1.5<py_fun_check_for_nan>` Check for Nan in a Function Object
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.5.1<check_for_nan_xam_py>` Python: Example Turning of Checking For Nan
+|  |space|  |space|  |space| :ref:`3.3.1.6<py_fun_new_dynamic>` New Dynamic Parameters
+|  |space|  |space|  |space| :ref:`3.3.1.7<py_fun_jacobian>` Jacobian of an AD Function
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.7.1<fun_jacobian_xam_py>` Python: Dense Jacobian Using AD: Example and Test
+|  |space|  |space|  |space| :ref:`3.3.1.8<py_fun_hessian>` Hessian of an AD Function
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.8.1<fun_hessian_xam_py>` Python: Dense Hessian Using AD: Example and Test
+|  |space|  |space|  |space| :ref:`3.3.1.9<py_fun_forward>` Forward Mode AD
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.9.1<fun_forward_xam_py>` Python: Forward Mode AD: Example and Test
+|  |space|  |space|  |space| :ref:`3.3.1.10<py_fun_reverse>` Reverse Mode AD
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.10.1<fun_reverse_xam_py>` Python: Reverse Mode AD: Example and Test
+|  |space|  |space|  |space| :ref:`3.3.1.11<py_fun_optimize>` Optimize an AD Function
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.11.1<fun_optimize_xam_py>` Python: Optimize an d_fun: Example and Test
+|  |space|  |space|  |space| :ref:`3.3.1.12<py_fun_json>` Json Representation of AD Computation Graph
 |
-|  |space|  |space|  |space|  |space| :ref:`3.3.1.11.1<fun_to_json_xam_py>` Python to_json: Example and Test
-|  |space|  |space|  |space|  |space| :ref:`3.3.1.11.2<fun_from_json_xam_py>` Python from_json: Example and Test
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.12.1<fun_to_json_xam_py>` Python to_json: Example and Test
+|  |space|  |space|  |space|  |space| :ref:`3.3.1.12.2<fun_from_json_xam_py>` Python from_json: Example and Test
 |
 |  |space|  |space| :ref:`3.3.2<py_sparse>` Python Sparsity Routines
 |
@@ -182,6 +184,9 @@ Table of Contents
 |
 |  |space|  |space|  |space|  |space| :ref:`3.4.1.11.1<fun_to_json_xam_cpp>` C++: to_json: Example and Test
 |  |space|  |space|  |space|  |space| :ref:`3.4.1.11.2<fun_from_json_xam_cpp>` C++: from_json: Example and Test
+|
+|  |space|  |space|  |space| :ref:`3.4.1.12<cpp_check_for_nan>` Check For Nan In Function or Derivative Results
+|  |space|  |space|  |space|  |space| :ref:`3.4.1.12.1<fun_check_for_nam_xam>` C++: Check For Nan in Function Result: Example and Test
 |
 |  |space|  |space| :ref:`3.4.2<sparse>` Cppad Py Sparse Calculation
 |
