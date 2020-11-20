@@ -55,6 +55,11 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+11-19
+*****
+Advance to cppad_mixed-20201119. Also make version of cppad
+installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
+
 11-18
 *****
 #.  Advance to cppad_mixed-2020118. This adds support for
@@ -62,7 +67,7 @@ Previous Years
     The previous version assumed the mac was using
     `brew <https://brew.sh>`_ to install packages.
 #.  Add a :ref:`install_error.symbolic_link` and
-    :ref:`install_error.cppad_mixed.pc` entries to the
+    :ref:`install_error.cppad.pc,_cppad_mixed.pc` entries to the
     list of install error messages.
 #.  Remove under construction from the :ref:`mixed` class; i.e.,
     it has reached a stable state.

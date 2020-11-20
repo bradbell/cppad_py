@@ -12,7 +12,6 @@
 {xsrst_spell
     setuptools
     errno
-    swg
     libcppad
     stdio
     cppad
@@ -24,6 +23,15 @@
 
 Error Messages During Installation
 ##################################
+
+swig
+****
+The following error message may appear
+while running ``setup.py`` ,
+
+| |tab| ``FileNotFoundError: [Errno 2] No such file or directory: 'swig'``
+
+Try installing `swig <http://www.swig.org/>`_ on you system.
 
 numpy, scipy
 ************
@@ -59,20 +67,6 @@ where *prefix* is the
 :ref:`get_cppad_sh.settings.cmake_install_prefix` in ``bin/get_cppad.sh``.
 Try removing the *prefix* directory and re-running setup.py.
 
-swig
-****
-The following error message may appear
-while running ``setup.py`` ,
-
-| |tab| ``FileNotFoundError: [Errno 2] No such file or directory: 'swig'``
-
-Try installing `swig <http://www.swig.org/>`_ on you system:
-
-The following message has also been seen ,
-
-| |tab| ``Error: Unable to find 'python.swg'``
-
-Try installing ``swig-python`` .
 
 cppad_py
 ********
@@ -126,9 +120,9 @@ If you get this error try using brew to install python3.
 Then add the location where brew installs python libraries
 to you execution path :
 
-| |tab| ``PATH="/usr/local/opt/python@3.``\ *minor*\ ``/bin:$PATH"``
+| |tab| ``minor=$(echo "import sys;print(sys.version_info.minor)" | python3)``
+| |tab| ``PATH="/usr/local/opt/python@3.$minor/bin:$PATH"``
 
-where *minor* is the minor version of python.
 
 include_mixed
 *************
