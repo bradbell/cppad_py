@@ -1,0 +1,46 @@
+-------------------------------------------------------------------------------
+          cppad_py: A C++ Object Library and Python Interface to Cppad
+           Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+               GNU General Public License version 3.0 or later see
+                     https://www.gnu.org/licenses/gpl-3.0.txt
+-------------------------------------------------------------------------------
+{xsrst_begin py_fun_check_for_nan}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+    bool
+}
+
+Check for Nan in a Function Object
+##################################
+
+Syntax
+******
+
+| *f*\ ``.check_for_nan`` ( *b* )
+
+f
+*
+This is a
+:ref:`d_fun<py_fun_ctor.syntax.d_fun>` or
+:ref:`a_fun<py_fun_ctor.syntax.a_fun>` function object.
+
+b
+*
+The argument *b* is a ``bool`` .
+If *b* is true and
+:ref:`get_cppad_sh.settings.build_type` is ``debug`` ,
+*f* will generate an assert when ``nan`` occurs
+in its function or derivative values.
+Otherwise, it will just pass back the ``nan`` values.
+
+
+Example
+*******
+{xsrst_child_list
+    example/python/core/fun_check_for_nan_xam.py
+}
+
+{xsrst_end py_fun_check_for_nan}

@@ -350,6 +350,7 @@ a_double Binary Operators with an AD Result
     rsub
     rmul
     rdiv
+    \ne
 }
 
 Syntax
@@ -382,6 +383,7 @@ i.e.,
 | *az* = *pow* ( *ax* , *ay* )
 | *az* = *pow* ( *ax* , *y* )
 | *az* = *pow* ( *x* , *ay* )
+| *az* = *pow_int* ( *ax* , *i* )
 
 fun
 ***
@@ -409,7 +411,6 @@ This object has c++ prototype
 
 | |tab| ``const double&`` *y*
 
-
 x
 *
 This object has c++ prototype
@@ -422,6 +423,24 @@ az
 The result has c++ prototype
 
 | |tab| ``a_double`` *az*
+
+pow_int
+*******
+Exponentiation by an integer is an even more special case.
+Derivatives of the ``pow`` function will return ``nan``
+when the argument value is zero; e.g. the derivative of :math:`pow(x, 2)`
+at :math:`x = 0`
+( derivatives of the ``pow`` function work fine when :math:`x \ne 0` ).
+This is because the derivative of the log function at zero
+results in a division by zero.
+This ``nan`` can be avoided by using multiplication, instead of logs,
+to compute powers when the exponent is an integer.
+
+i
+=
+The argument to the ``pow_int`` function has c++ prototype
+
+| |tab| ``const int&`` *i*
 
 
 Example
@@ -474,6 +493,11 @@ a_double pow(const a_double& ad, const double& d)
 a_double pow(const double& d, const a_double& ad)
 {   a_double result;
     *result.ptr() = CppAD::pow( d, *ad.ptr() );
+    return result;
+}
+a_double pow_int(const a_double& ad, const int& i)
+{   a_double result;
+    *result.ptr() = CppAD::pow( *ad.ptr(), i );
     return result;
 }
 /*

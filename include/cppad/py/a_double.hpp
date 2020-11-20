@@ -152,6 +152,7 @@ a_double rdiv(const double& d, const a_double& ad);
 a_double  pow(const a_double& ax, const a_double& ay);
 a_double  pow(const a_double& ad, const double& d);
 a_double  pow(const double& d, const a_double& ad);
+a_double  pow_int(const a_double& ax, const int& i);
 
 } // END_CPPAD_PY_NAMESPACE
 

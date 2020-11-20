@@ -69,6 +69,7 @@ core_list = [
     'vector_set_get_xam',
     'fun_dynamic_xam',
     'fun_property_xam',
+    'fun_check_for_nan_xam',
     'fun_optimize_xam',
     'fun_jacobian_xam',
     'fun_hessian_xam',

@@ -55,6 +55,12 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+11-20
+*****
+Add the :ref:`f.check_for_nan <py_fun_check_for_nan>` and
+:ref:`a_double_binary.pow_int` functions.
+
+
 11-19
 *****
 Advance to cppad_mixed-20201119. Also make version of cppad

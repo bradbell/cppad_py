@@ -12,6 +12,7 @@ def a_double_binary_xam() :
     #
     import numpy
     from cppad_py import a_double
+    from cppad_py import pow_int
     ok = True
     a2 = a_double(2.0)
     a3 = a_double(3.0)
@@ -57,7 +58,11 @@ def a_double_binary_xam() :
     ok = ok and a9.near_equal( a_double(9.0) )
     ok = ok and a4.near_equal( a_double(4.0) )
     # ---------------------------------------------------------------------
-
+    # pow_int
+    a8 = pow_int(a2, 3)
+    a9 = pow_int(a3, 2)
+    ok = ok and a8.near_equal( a_double(8.0) )
+    ok = ok and a9.near_equal( a_double(9.0) )
     #
     return( ok )
 #
