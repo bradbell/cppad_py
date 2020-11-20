@@ -33,6 +33,13 @@ Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
 
+.. _whats_new_2020.11-20:
+
+11-20
+*****
+Add the :ref:`f.check_for_nan <py_fun_check_for_nan>` and
+:ref:`a_double_binary.pow_int` functions.
+
 .. _whats_new_2020.11-19:
 
 11-19

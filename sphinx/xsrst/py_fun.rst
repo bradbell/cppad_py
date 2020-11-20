@@ -10,6 +10,7 @@ py_fun
    py_abort_recording
    py_fun_ctor
    py_fun_property
+   py_fun_check_for_nan
    py_fun_new_dynamic
    py_fun_jacobian
    py_fun_hessian
@@ -51,6 +52,7 @@ Children
     "py_abort_recording", :ref:`py_abort_recording`
     "py_fun_ctor", :ref:`py_fun_ctor`
     "py_fun_property", :ref:`py_fun_property`
+    "py_fun_check_for_nan", :ref:`py_fun_check_for_nan`
     "py_fun_new_dynamic", :ref:`py_fun_new_dynamic`
     "py_fun_jacobian", :ref:`py_fun_jacobian`
     "py_fun_hessian", :ref:`py_fun_hessian`
