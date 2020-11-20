@@ -29,6 +29,7 @@ extern bool fun_hessian_xam(void);
 extern bool fun_forward_xam(void);
 extern bool fun_reverse_xam(void);
 extern bool fun_abort_xam(void);
+extern bool fun_check_for_nan_xam(void);
 extern bool sparse_rc_xam(void);
 extern bool sparse_rcv_xam(void);
 extern bool sparse_jac_pattern_xam(void);
@@ -78,13 +79,14 @@ int main(void)
     ok &= Run( fun_forward_xam,           "fun_forward_xam"         );
     ok &= Run( fun_reverse_xam,           "fun_reverse_xam"         );
     ok &= Run( fun_abort_xam,             "fun_abort_xam"           );
+    ok &= Run( fun_check_for_nan_xam,     "fun_check_for_nan_xam"   );
     ok &= Run( sparse_rc_xam,             "sparse_rc_xam" );
     ok &= Run( sparse_rcv_xam,            "sparse_rcv_xam" );
     ok &= Run( sparse_jac_pattern_xam,    "sparse_jac_pattern_xam" );
     ok &= Run( sparse_jac_xam,            "sparse_jac_xam" );
     ok &= Run( sparse_hes_xam,            "sparse_jac_xam" );
     ok &= Run( sparse_hes_pattern_xam,    "sparse_hes_pattern_xam" );
-    ok &= Run( exception_xam,         "error_message_xam" );
+    ok &= Run( exception_xam,             "error_message_xam" );
     //
     assert( ok || (Run_error_count > 0) );
 

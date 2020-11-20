@@ -1057,6 +1057,47 @@ std::string d_fun::to_json(void) const
 {   return ptr_->to_json(); }
 void d_fun::from_json(const std::string& json)
 {   return ptr_->from_json(json); }
+/*
+----------------------------------------------------------------------------
+{xsrst_begin cpp_check_for_nan}
 
+.. include:: ../preamble.rst
+
+Check For Nan In Function or Derivative Results
+###############################################
+
+Syntax
+******
+
+| *f*\ ``.check_for_nan``\ ( *b* )
+
+f
+*
+is a
+:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` function object.
+
+b
+*
+This argument has prototype
+
+| |tab| ``int`` *b*
+
+If *b* is true and
+:ref:`get_cppad_sh.settings.build_type` is ``debug`` ,
+*f* will generate an assert when ``nan`` occurs in its function
+or derivative values.
+Otherwise, it will just pass back the ``nan`` values.
+
+Example
+*******
+{xsrst_child_list
+    example/cplusplus/fun_check_for_nan_xam.cpp
+}
+
+{xsrst_end cpp_check_for_nan}
+*/
+void d_fun::check_for_nan(bool b)
+{   ptr_->check_for_nan(b);
+}
 
 } // END_CPPAD_PY_NAMESPACE

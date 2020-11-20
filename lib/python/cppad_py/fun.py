@@ -27,6 +27,7 @@
 #   lib/python/cppad_py/abort_recording.xsrst
 #   lib/python/cppad_py/fun_ctor.py
 #   lib/python/cppad_py/fun_property.xsrst
+#   lib/python/cppad_py/fun_check_for_nan.xsrst
 #   lib/python/cppad_py/fun_new_dynamic.py
 #   lib/python/cppad_py/fun_jacobian.py
 #   lib/python/cppad_py/fun_hessian.py
@@ -65,6 +66,10 @@ class d_fun :
     # size_order
     def size_order(self) :
         return self.f.size_order()
+    #
+    # check_for_nan
+    def check_for_nan(self, b) :
+        self.f.check_for_nan(b)
     #
     # new_dynamic
     def new_dynamic(self, dynamic) :

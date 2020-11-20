@@ -18,6 +18,7 @@ from cppad_py.cppad_swig import vec_a_double
 from cppad_py.cppad_swig import vec_bool
 from cppad_py.cppad_swig import vec_double
 from cppad_py.cppad_swig import vec_int
+from cppad_py.cppad_swig import pow_int
 # END_SORT_THIS_LINE_MINUS_1
 
 

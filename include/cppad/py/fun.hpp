@@ -65,6 +65,8 @@ class CPPAD_PY_LIB_PUBLIC d_fun
     int size_var(void) const;
     int size_op(void) const;
     int size_order(void) const;
+    // check_for_nan
+    void check_for_nan(bool b);
     // new_dynamic
     void new_dynamic(const std::vector<double>& dynamic);
     // forward
