@@ -4,12 +4,16 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta content="cpp_utility, c++, utilities" name="keywords" />
-<meta content="children" name="keywords" />
+  <meta content="cppad_error, converting, cppad, errors, to, python, exceptions" name="keywords" />
+<meta content="code" name="keywords" />
+<meta content="handler" name="keywords" />
+<meta content="c++, throw" name="keywords" />
+<meta content="python, raise" name="keywords" />
+<meta content="example" name="keywords" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>cpp_utility &mdash; cppad_py  documentation</title>
+  <title>cppad_error &mdash; cppad_py  documentation</title>
   
 
   
@@ -40,8 +44,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="cpp_convert" href="cpp_convert.html" />
-    <link rel="prev" title="sparse_hes_xam_cpp" href="sparse_hes_xam_cpp.html" /> 
+    <link rel="next" title="cppad_error_xam" href="cppad_error_xam.html" />
+    <link rel="prev" title="cpp_lib" href="cpp_lib.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,14 +101,13 @@
 <li class="toctree-l3"><a class="reference internal" href="vector.html">vector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="py_lib.html">py_lib</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="cpp_lib.html">cpp_lib</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="cppad_error.html">cppad_error</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">cpp_utility</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="cpp_convert.html">cpp_convert</a></li>
-<li class="toctree-l5"><a class="reference internal" href="exception.html">exception</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">cppad_error</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="cppad_error_xam.html">cppad_error_xam</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="cpp_fun.html">cpp_fun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sparse.html">sparse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cpp_utility.html">cpp_utility</a></li>
 <li class="toctree-l4"><a class="reference internal" href="more_cpp.html">more_cpp</a></li>
 </ul>
 </li>
@@ -166,13 +169,13 @@
         
           <li><a href="cpp_lib.html">cpp_lib</a> &raquo;</li>
         
-      <li>cpp_utility</li>
+      <li>cppad_error</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/xsrst/cpp_utility.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/xsrst/cppad_error.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -185,42 +188,77 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cpp-utility">
-<h1>cpp_utility<a class="headerlink" href="#cpp-utility" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="cppad-error">
+<h1>cppad_error<a class="headerlink" href="#cppad-error" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p class="hidden"><span class="math notranslate nohighlight">\(\newcommand{\B}[1]{ {\bf #1} }\)</span>
-<span class="math notranslate nohighlight">\(\newcommand{\R}[1]{ {\rm #1} }\)</span></p>
-<div class="section" id="c-utilities">
-<span id="id1"></span><h2>C++ Utilities<a class="headerlink" href="#c-utilities" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="converting-cppad-errors-to-python-exceptions">
+<span id="id1"></span><h2>Converting CppAD Errors To Python Exceptions<a class="headerlink" href="#converting-cppad-errors-to-python-exceptions" title="Permalink to this headline">¶</a></h2>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#children" id="id2">Children</a></p></li>
+<li><p><a class="reference internal" href="#code" id="id2">Code</a></p></li>
+<li><p><a class="reference internal" href="#handler" id="id3">handler</a></p></li>
+<li><p><a class="reference internal" href="#c-throw" id="id4">C++ throw</a></p></li>
+<li><p><a class="reference internal" href="#python-raise" id="id5">Python raise</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id6">Example</a></p></li>
 </ul>
 </div>
-<div class="section" id="children">
-<span id="cpp-utility-children"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Children</a><a class="headerlink" href="#children" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="code">
+<span id="cppad-error-code"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id2">Code</a><a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
+<p>The following CppAD error handler is created
+in the empty namespace corresponding to the <code class="docutils literal notranslate"><span class="pre">cppad_error.cpp</span></code> file:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CppAD</span><span class="o">::</span><span class="n">ErrorHandler</span> <span class="n">cppad_error</span><span class="p">(</span><span class="n">handler</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="handler">
+<span id="cppad-error-handler"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id3">handler</a><a class="headerlink" href="#handler" title="Permalink to this headline">¶</a></h3>
+<p>The error handler includes the following information in the exception message:</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Title</p></th>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>cpp_convert</p></td>
-<td><p><a class="reference internal" href="cpp_convert.html#id1"><span class="std std-ref">Convert Objects Between cppad_mixed and cppad_py</span></a></p></td>
+<tr class="row-even"><td><p><em>file</em></p></td>
+<td><p>The name of the CppAD file where the error occurred.</p></td>
 </tr>
-<tr class="row-odd"><td><p>exception</p></td>
-<td><p><a class="reference internal" href="exception.html#id1"><span class="std std-ref">Exception Handling</span></a></p></td>
+<tr class="row-odd"><td><p><em>line</em></p></td>
+<td><p>The line number in the file where the error occurred.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>exp</em></p></td>
+<td><p>The c++ logical expression that should have been true.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>msg</em></p></td>
+<td><p>A descriptive error message about the problem.</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="c-throw">
+<span id="cppad-error-c-throw"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id4">C++ throw</a><a class="headerlink" href="#c-throw" title="Permalink to this headline">¶</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">std::runtime_error</span></code> <em>cpp_err</em> is thrown with
+<em>cpp_err</em><code class="docutils literal notranslate"><span class="pre">.what()</span></code> a string containing the information above.</p>
+</div>
+<div class="section" id="python-raise">
+<span id="cppad-error-python-raise"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id5">Python raise</a><a class="headerlink" href="#python-raise" title="Permalink to this headline">¶</a></h3>
+<p>The swig wrapper for each call to CppAD will catch
+the <code class="docutils literal notranslate"><span class="pre">std::runtime_error</span></code> and raise a python
+<code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code> <em>py_err</em> where <code class="docutils literal notranslate"><span class="pre">str</span></code>( <em>py_err</em> )
+is a string containing the information above.</p>
+</div>
+<div class="section" id="example">
+<span id="cppad-error-example"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id6">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="cppad_error_xam.html#id1"><span class="std std-ref">Python: Example CppAD Error Message</span></a></p></li>
+</ul>
 <hr class="docutils" />
-<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/cplusplus.xsrst</span></code></p>
+<p>xsrst input file: <code class="docutils literal notranslate"><span class="pre">lib/cplusplus/cppad_error.cpp</span></code></p>
 </div>
 </div>
 </div>
@@ -233,10 +271,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cpp_convert.html" class="btn btn-neutral float-right" title="cpp_convert" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="cppad_error_xam.html" class="btn btn-neutral float-right" title="cppad_error_xam" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sparse_hes_xam_cpp.html" class="btn btn-neutral float-left" title="sparse_hes_xam_cpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cpp_lib.html" class="btn btn-neutral float-left" title="cpp_lib" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

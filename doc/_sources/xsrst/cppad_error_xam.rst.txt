@@ -1,0 +1,26 @@
+!!!!!!!!!!!!!!!
+cppad_error_xam
+!!!!!!!!!!!!!!!
+
+.. include:: ../preamble.rst
+
+.. meta::
+   :keywords: cppad_error_xam, python:, example, cppad, error, message
+
+.. index:: cppad_error_xam, python:, example, cppad, error, message
+
+.. _cppad_error_xam:
+
+Python: Example CppAD Error Message
+###################################
+.. contents::
+   :local:
+
+
+.. literalinclude:: ../../example/python/core/cppad_error_xam.py
+    :lines: 11-53
+    :language: py
+
+----
+
+xsrst input file: ``example/python/core/cppad_error_xam.py``

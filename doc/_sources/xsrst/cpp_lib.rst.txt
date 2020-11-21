@@ -6,6 +6,7 @@ cpp_lib
    :maxdepth: 1
    :hidden:
 
+   cppad_error
    cpp_fun
    sparse
    cpp_utility
@@ -38,6 +39,7 @@ Children
     :header:  "Name", "Title"
     :widths: 20, 80
 
+    "cppad_error", :ref:`cppad_error`
     "cpp_fun", :ref:`cpp_fun`
     "sparse", :ref:`sparse`
     "cpp_utility", :ref:`cpp_utility`

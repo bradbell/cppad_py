@@ -160,65 +160,67 @@ Table of Contents
 |
 |  |space| :ref:`3.4<cpp_lib>` The C++ Library
 |
-|  |space|  |space| :ref:`3.4.1<cpp_fun>` Cppad Py AD Functions
+|  |space|  |space| :ref:`3.4.1<cppad_error>` Converting CppAD Errors To Python Exceptions
+|  |space|  |space|  |space| :ref:`3.4.1.1<cppad_error_xam>` Python: Example CppAD Error Message
+|  |space|  |space| :ref:`3.4.2<cpp_fun>` Cppad Py AD Functions
 |
-|  |space|  |space|  |space| :ref:`3.4.1.1<cpp_independent>` Declare Independent Variables and Start Recording
-|  |space|  |space|  |space|  |space| :ref:`3.4.1.1.1<fun_dynamic_xam_cpp>` C++: Using Dynamic Parameters: Example and Test
-|  |space|  |space|  |space| :ref:`3.4.1.2<cpp_abort_recording>` Abort Recording
-|  |space|  |space|  |space|  |space| :ref:`3.4.1.2.1<fun_abort_xam_cpp>` C++: Abort Recording a_double Operations: Example and Test
-|  |space|  |space|  |space| :ref:`3.4.1.3<cpp_fun_ctor>` Stop Current Recording and Store Function Object
-|  |space|  |space|  |space| :ref:`3.4.1.4<cpp_fun_property>` Properties of a Function Object
-|  |space|  |space|  |space|  |space| :ref:`3.4.1.4.1<fun_property_xam_cpp>` C++: function Properties: Example and Test
-|  |space|  |space|  |space| :ref:`3.4.1.5<cpp_fun_new_dynamic>` Change The Dynamic Parameters
-|  |space|  |space|  |space| :ref:`3.4.1.6<cpp_fun_jacobian>` Jacobian of an AD Function
-|  |space|  |space|  |space|  |space| :ref:`3.4.1.6.1<fun_jacobian_xam_cpp>` C++: Dense Jacobian Using AD: Example and Test
-|  |space|  |space|  |space| :ref:`3.4.1.7<cpp_fun_hessian>` Hessian of an AD Function
-|  |space|  |space|  |space|  |space| :ref:`3.4.1.7.1<fun_hessian_xam_cpp>` C++: Dense Hessian Using AD: Example and Test
-|  |space|  |space|  |space| :ref:`3.4.1.8<cpp_fun_forward>` Forward Mode AD
-|  |space|  |space|  |space|  |space| :ref:`3.4.1.8.1<fun_forward_xam_cpp>` C++: Forward Mode AD: Example and Test
-|  |space|  |space|  |space| :ref:`3.4.1.9<cpp_fun_reverse>` Reverse Mode AD
-|  |space|  |space|  |space|  |space| :ref:`3.4.1.9.1<fun_reverse_xam_cpp>` C++: Reverse Mode AD: Example and Test
-|  |space|  |space|  |space| :ref:`3.4.1.10<cpp_fun_optimize>` Optimize an AD Function
-|  |space|  |space|  |space|  |space| :ref:`3.4.1.10.1<fun_optimize_xam_cpp>` C++: Optimize an d_fun: Example and Test
-|  |space|  |space|  |space| :ref:`3.4.1.11<cpp_fun_json>` Json Representation of AD Computational Graph
+|  |space|  |space|  |space| :ref:`3.4.2.1<cpp_independent>` Declare Independent Variables and Start Recording
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.1.1<fun_dynamic_xam_cpp>` C++: Using Dynamic Parameters: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.2.2<cpp_abort_recording>` Abort Recording
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.2.1<fun_abort_xam_cpp>` C++: Abort Recording a_double Operations: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.2.3<cpp_fun_ctor>` Stop Current Recording and Store Function Object
+|  |space|  |space|  |space| :ref:`3.4.2.4<cpp_fun_property>` Properties of a Function Object
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.4.1<fun_property_xam_cpp>` C++: function Properties: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.2.5<cpp_fun_new_dynamic>` Change The Dynamic Parameters
+|  |space|  |space|  |space| :ref:`3.4.2.6<cpp_fun_jacobian>` Jacobian of an AD Function
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.6.1<fun_jacobian_xam_cpp>` C++: Dense Jacobian Using AD: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.2.7<cpp_fun_hessian>` Hessian of an AD Function
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.7.1<fun_hessian_xam_cpp>` C++: Dense Hessian Using AD: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.2.8<cpp_fun_forward>` Forward Mode AD
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.8.1<fun_forward_xam_cpp>` C++: Forward Mode AD: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.2.9<cpp_fun_reverse>` Reverse Mode AD
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.9.1<fun_reverse_xam_cpp>` C++: Reverse Mode AD: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.2.10<cpp_fun_optimize>` Optimize an AD Function
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.10.1<fun_optimize_xam_cpp>` C++: Optimize an d_fun: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.2.11<cpp_fun_json>` Json Representation of AD Computational Graph
 |
-|  |space|  |space|  |space|  |space| :ref:`3.4.1.11.1<fun_to_json_xam_cpp>` C++: to_json: Example and Test
-|  |space|  |space|  |space|  |space| :ref:`3.4.1.11.2<fun_from_json_xam_cpp>` C++: from_json: Example and Test
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.11.1<fun_to_json_xam_cpp>` C++: to_json: Example and Test
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.11.2<fun_from_json_xam_cpp>` C++: from_json: Example and Test
 |
-|  |space|  |space|  |space| :ref:`3.4.1.12<cpp_check_for_nan>` Check For Nan In Function or Derivative Results
-|  |space|  |space|  |space|  |space| :ref:`3.4.1.12.1<fun_check_for_nam_xam>` C++: Check For Nan in Function Result: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.2.12<cpp_check_for_nan>` Check For Nan In Function or Derivative Results
+|  |space|  |space|  |space|  |space| :ref:`3.4.2.12.1<fun_check_for_nam_xam>` C++: Check For Nan in Function Result: Example and Test
 |
-|  |space|  |space| :ref:`3.4.2<sparse>` Cppad Py Sparse Calculation
+|  |space|  |space| :ref:`3.4.3<sparse>` Cppad Py Sparse Calculation
 |
-|  |space|  |space|  |space| :ref:`3.4.2.1<cpp_sparse_rc>` Sparsity Patterns
-|  |space|  |space|  |space|  |space| :ref:`3.4.2.1.1<sparse_rc_xam_cpp>` C++: Sparsity Patterns: Example and Test
-|  |space|  |space|  |space| :ref:`3.4.2.2<cpp_sparse_rcv>` Sparse Matrices
-|  |space|  |space|  |space|  |space| :ref:`3.4.2.2.1<sparse_rcv_xam_cpp>` C++: Sparsity Patterns: Example and Test
-|  |space|  |space|  |space| :ref:`3.4.2.3<cpp_jac_sparsity>` Jacobian Sparsity Patterns
-|  |space|  |space|  |space|  |space| :ref:`3.4.2.3.1<sparse_jac_pattern_xam_cpp>` C++: Jacobian Sparsity Patterns: Example and Test
-|  |space|  |space|  |space| :ref:`3.4.2.4<cpp_sparsity>` Hessian Sparsity Patterns
-|  |space|  |space|  |space|  |space| :ref:`3.4.2.4.1<sparse_hes_pattern_xam_cpp>` C++: Hessian Sparsity Patterns: Example and Test
-|  |space|  |space|  |space| :ref:`3.4.2.5<cpp_sparse_jac>` Computing Sparse Jacobians
-|  |space|  |space|  |space|  |space| :ref:`3.4.2.5.1<sparse_jac_xam_cpp>` C++: Computing Sparse Jacobians: Example and Test
-|  |space|  |space|  |space| :ref:`3.4.2.6<cpp_sparse_hes>` Computing Sparse Hessians
-|  |space|  |space|  |space|  |space| :ref:`3.4.2.6.1<sparse_hes_xam_cpp>` C++: Hessian Sparsity Patterns: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.3.1<cpp_sparse_rc>` Sparsity Patterns
+|  |space|  |space|  |space|  |space| :ref:`3.4.3.1.1<sparse_rc_xam_cpp>` C++: Sparsity Patterns: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.3.2<cpp_sparse_rcv>` Sparse Matrices
+|  |space|  |space|  |space|  |space| :ref:`3.4.3.2.1<sparse_rcv_xam_cpp>` C++: Sparsity Patterns: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.3.3<cpp_jac_sparsity>` Jacobian Sparsity Patterns
+|  |space|  |space|  |space|  |space| :ref:`3.4.3.3.1<sparse_jac_pattern_xam_cpp>` C++: Jacobian Sparsity Patterns: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.3.4<cpp_sparsity>` Hessian Sparsity Patterns
+|  |space|  |space|  |space|  |space| :ref:`3.4.3.4.1<sparse_hes_pattern_xam_cpp>` C++: Hessian Sparsity Patterns: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.3.5<cpp_sparse_jac>` Computing Sparse Jacobians
+|  |space|  |space|  |space|  |space| :ref:`3.4.3.5.1<sparse_jac_xam_cpp>` C++: Computing Sparse Jacobians: Example and Test
+|  |space|  |space|  |space| :ref:`3.4.3.6<cpp_sparse_hes>` Computing Sparse Hessians
+|  |space|  |space|  |space|  |space| :ref:`3.4.3.6.1<sparse_hes_xam_cpp>` C++: Hessian Sparsity Patterns: Example and Test
 |
-|  |space|  |space| :ref:`3.4.3<cpp_utility>` C++ Utilities
+|  |space|  |space| :ref:`3.4.4<cpp_utility>` C++ Utilities
 |
-|  |space|  |space|  |space| :ref:`3.4.3.1<cpp_convert>` Convert Objects Between cppad_mixed and cppad_py
+|  |space|  |space|  |space| :ref:`3.4.4.1<cpp_convert>` Convert Objects Between cppad_mixed and cppad_py
 |
-|  |space|  |space|  |space|  |space| :ref:`3.4.3.1.1<ad_vec_std2cppad>` Convert AD Vector From Standard to CppAD
-|  |space|  |space|  |space|  |space| :ref:`3.4.3.1.2<ad_vec_cppad2std>` Convert AD Vector From CppAD to Standard
-|  |space|  |space|  |space|  |space| :ref:`3.4.3.1.3<d_vec_std2cppad>` Convert double Vector From Standard to CppAD
-|  |space|  |space|  |space|  |space| :ref:`3.4.3.1.4<d_vec_cppad2std>` Convert double Vector From CppAD to Standard
-|  |space|  |space|  |space|  |space| :ref:`3.4.3.1.5<mixed2sparse_rcv>` Convert Sparse Matrix from cppad_mixed to cppad_py
+|  |space|  |space|  |space|  |space| :ref:`3.4.4.1.1<ad_vec_std2cppad>` Convert AD Vector From Standard to CppAD
+|  |space|  |space|  |space|  |space| :ref:`3.4.4.1.2<ad_vec_cppad2std>` Convert AD Vector From CppAD to Standard
+|  |space|  |space|  |space|  |space| :ref:`3.4.4.1.3<d_vec_std2cppad>` Convert double Vector From Standard to CppAD
+|  |space|  |space|  |space|  |space| :ref:`3.4.4.1.4<d_vec_cppad2std>` Convert double Vector From CppAD to Standard
+|  |space|  |space|  |space|  |space| :ref:`3.4.4.1.5<mixed2sparse_rcv>` Convert Sparse Matrix from cppad_mixed to cppad_py
 |
-|  |space|  |space|  |space| :ref:`3.4.3.2<exception>` Exception Handling
+|  |space|  |space|  |space| :ref:`3.4.4.2<exception>` Exception Handling
 |
-|  |space|  |space|  |space|  |space| :ref:`3.4.3.2.1<exception_xam_cpp>` C++: Cppad Py Exception Handling: Example and Test
-|  |space|  |space|  |space|  |space| :ref:`3.4.3.2.2<exception_xam_py>` Python: Cppad Py Exception Handling: Example and Test
+|  |space|  |space|  |space|  |space| :ref:`3.4.4.2.1<exception_xam_cpp>` C++: Cppad Py Exception Handling: Example and Test
+|  |space|  |space|  |space|  |space| :ref:`3.4.4.2.2<exception_xam_py>` Python: Cppad Py Exception Handling: Example and Test
 |
-|  |space|  |space| :ref:`3.4.4<more_cpp>` Steps To Add More C++ Functions
+|  |space|  |space| :ref:`3.4.5<more_cpp>` Steps To Add More C++ Functions
 |
 | :ref:`4<xsrst_py>` Extract Sphinx RST
 |

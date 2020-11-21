@@ -318,65 +318,67 @@
 <div class="line"><br /></div>
 <div class="line">  <a class="reference internal" href="cpp_lib.html#id1"><span class="std std-ref">3.4</span></a> The C++ Library</div>
 <div class="line"><br /></div>
-<div class="line">     <a class="reference internal" href="cpp_fun.html#id1"><span class="std std-ref">3.4.1</span></a> Cppad Py AD Functions</div>
+<div class="line">     <a class="reference internal" href="cppad_error.html#id1"><span class="std std-ref">3.4.1</span></a> Converting CppAD Errors To Python Exceptions</div>
+<div class="line">        <a class="reference internal" href="cppad_error_xam.html#id1"><span class="std std-ref">3.4.1.1</span></a> Python: Example CppAD Error Message</div>
+<div class="line">     <a class="reference internal" href="cpp_fun.html#id1"><span class="std std-ref">3.4.2</span></a> Cppad Py AD Functions</div>
 <div class="line"><br /></div>
-<div class="line">        <a class="reference internal" href="cpp_independent.html#id1"><span class="std std-ref">3.4.1.1</span></a> Declare Independent Variables and Start Recording</div>
-<div class="line">           <a class="reference internal" href="fun_dynamic_xam_cpp.html#id1"><span class="std std-ref">3.4.1.1.1</span></a> C++: Using Dynamic Parameters: Example and Test</div>
-<div class="line">        <a class="reference internal" href="cpp_abort_recording.html#id1"><span class="std std-ref">3.4.1.2</span></a> Abort Recording</div>
-<div class="line">           <a class="reference internal" href="fun_abort_xam_cpp.html#id1"><span class="std std-ref">3.4.1.2.1</span></a> C++: Abort Recording a_double Operations: Example and Test</div>
-<div class="line">        <a class="reference internal" href="cpp_fun_ctor.html#id1"><span class="std std-ref">3.4.1.3</span></a> Stop Current Recording and Store Function Object</div>
-<div class="line">        <a class="reference internal" href="cpp_fun_property.html#id1"><span class="std std-ref">3.4.1.4</span></a> Properties of a Function Object</div>
-<div class="line">           <a class="reference internal" href="fun_property_xam_cpp.html#id1"><span class="std std-ref">3.4.1.4.1</span></a> C++: function Properties: Example and Test</div>
-<div class="line">        <a class="reference internal" href="cpp_fun_new_dynamic.html#id1"><span class="std std-ref">3.4.1.5</span></a> Change The Dynamic Parameters</div>
-<div class="line">        <a class="reference internal" href="cpp_fun_jacobian.html#id1"><span class="std std-ref">3.4.1.6</span></a> Jacobian of an AD Function</div>
-<div class="line">           <a class="reference internal" href="fun_jacobian_xam_cpp.html#id1"><span class="std std-ref">3.4.1.6.1</span></a> C++: Dense Jacobian Using AD: Example and Test</div>
-<div class="line">        <a class="reference internal" href="cpp_fun_hessian.html#id1"><span class="std std-ref">3.4.1.7</span></a> Hessian of an AD Function</div>
-<div class="line">           <a class="reference internal" href="fun_hessian_xam_cpp.html#id1"><span class="std std-ref">3.4.1.7.1</span></a> C++: Dense Hessian Using AD: Example and Test</div>
-<div class="line">        <a class="reference internal" href="cpp_fun_forward.html#id1"><span class="std std-ref">3.4.1.8</span></a> Forward Mode AD</div>
-<div class="line">           <a class="reference internal" href="fun_forward_xam_cpp.html#id1"><span class="std std-ref">3.4.1.8.1</span></a> C++: Forward Mode AD: Example and Test</div>
-<div class="line">        <a class="reference internal" href="cpp_fun_reverse.html#id1"><span class="std std-ref">3.4.1.9</span></a> Reverse Mode AD</div>
-<div class="line">           <a class="reference internal" href="fun_reverse_xam_cpp.html#id1"><span class="std std-ref">3.4.1.9.1</span></a> C++: Reverse Mode AD: Example and Test</div>
-<div class="line">        <a class="reference internal" href="cpp_fun_optimize.html#id1"><span class="std std-ref">3.4.1.10</span></a> Optimize an AD Function</div>
-<div class="line">           <a class="reference internal" href="fun_optimize_xam_cpp.html#id1"><span class="std std-ref">3.4.1.10.1</span></a> C++: Optimize an d_fun: Example and Test</div>
-<div class="line">        <a class="reference internal" href="cpp_fun_json.html#id1"><span class="std std-ref">3.4.1.11</span></a> Json Representation of AD Computational Graph</div>
+<div class="line">        <a class="reference internal" href="cpp_independent.html#id1"><span class="std std-ref">3.4.2.1</span></a> Declare Independent Variables and Start Recording</div>
+<div class="line">           <a class="reference internal" href="fun_dynamic_xam_cpp.html#id1"><span class="std std-ref">3.4.2.1.1</span></a> C++: Using Dynamic Parameters: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_abort_recording.html#id1"><span class="std std-ref">3.4.2.2</span></a> Abort Recording</div>
+<div class="line">           <a class="reference internal" href="fun_abort_xam_cpp.html#id1"><span class="std std-ref">3.4.2.2.1</span></a> C++: Abort Recording a_double Operations: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_fun_ctor.html#id1"><span class="std std-ref">3.4.2.3</span></a> Stop Current Recording and Store Function Object</div>
+<div class="line">        <a class="reference internal" href="cpp_fun_property.html#id1"><span class="std std-ref">3.4.2.4</span></a> Properties of a Function Object</div>
+<div class="line">           <a class="reference internal" href="fun_property_xam_cpp.html#id1"><span class="std std-ref">3.4.2.4.1</span></a> C++: function Properties: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_fun_new_dynamic.html#id1"><span class="std std-ref">3.4.2.5</span></a> Change The Dynamic Parameters</div>
+<div class="line">        <a class="reference internal" href="cpp_fun_jacobian.html#id1"><span class="std std-ref">3.4.2.6</span></a> Jacobian of an AD Function</div>
+<div class="line">           <a class="reference internal" href="fun_jacobian_xam_cpp.html#id1"><span class="std std-ref">3.4.2.6.1</span></a> C++: Dense Jacobian Using AD: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_fun_hessian.html#id1"><span class="std std-ref">3.4.2.7</span></a> Hessian of an AD Function</div>
+<div class="line">           <a class="reference internal" href="fun_hessian_xam_cpp.html#id1"><span class="std std-ref">3.4.2.7.1</span></a> C++: Dense Hessian Using AD: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_fun_forward.html#id1"><span class="std std-ref">3.4.2.8</span></a> Forward Mode AD</div>
+<div class="line">           <a class="reference internal" href="fun_forward_xam_cpp.html#id1"><span class="std std-ref">3.4.2.8.1</span></a> C++: Forward Mode AD: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_fun_reverse.html#id1"><span class="std std-ref">3.4.2.9</span></a> Reverse Mode AD</div>
+<div class="line">           <a class="reference internal" href="fun_reverse_xam_cpp.html#id1"><span class="std std-ref">3.4.2.9.1</span></a> C++: Reverse Mode AD: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_fun_optimize.html#id1"><span class="std std-ref">3.4.2.10</span></a> Optimize an AD Function</div>
+<div class="line">           <a class="reference internal" href="fun_optimize_xam_cpp.html#id1"><span class="std std-ref">3.4.2.10.1</span></a> C++: Optimize an d_fun: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_fun_json.html#id1"><span class="std std-ref">3.4.2.11</span></a> Json Representation of AD Computational Graph</div>
 <div class="line"><br /></div>
-<div class="line">           <a class="reference internal" href="fun_to_json_xam_cpp.html#id1"><span class="std std-ref">3.4.1.11.1</span></a> C++: to_json: Example and Test</div>
-<div class="line">           <a class="reference internal" href="fun_from_json_xam_cpp.html#id1"><span class="std std-ref">3.4.1.11.2</span></a> C++: from_json: Example and Test</div>
+<div class="line">           <a class="reference internal" href="fun_to_json_xam_cpp.html#id1"><span class="std std-ref">3.4.2.11.1</span></a> C++: to_json: Example and Test</div>
+<div class="line">           <a class="reference internal" href="fun_from_json_xam_cpp.html#id1"><span class="std std-ref">3.4.2.11.2</span></a> C++: from_json: Example and Test</div>
 <div class="line"><br /></div>
-<div class="line">        <a class="reference internal" href="cpp_check_for_nan.html#id1"><span class="std std-ref">3.4.1.12</span></a> Check For Nan In Function or Derivative Results</div>
-<div class="line">           <a class="reference internal" href="fun_check_for_nam_xam.html#id1"><span class="std std-ref">3.4.1.12.1</span></a> C++: Check For Nan in Function Result: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_check_for_nan.html#id1"><span class="std std-ref">3.4.2.12</span></a> Check For Nan In Function or Derivative Results</div>
+<div class="line">           <a class="reference internal" href="fun_check_for_nam_xam.html#id1"><span class="std std-ref">3.4.2.12.1</span></a> C++: Check For Nan in Function Result: Example and Test</div>
 <div class="line"><br /></div>
-<div class="line">     <a class="reference internal" href="sparse.html#id1"><span class="std std-ref">3.4.2</span></a> Cppad Py Sparse Calculation</div>
+<div class="line">     <a class="reference internal" href="sparse.html#id1"><span class="std std-ref">3.4.3</span></a> Cppad Py Sparse Calculation</div>
 <div class="line"><br /></div>
-<div class="line">        <a class="reference internal" href="cpp_sparse_rc.html#id1"><span class="std std-ref">3.4.2.1</span></a> Sparsity Patterns</div>
-<div class="line">           <a class="reference internal" href="sparse_rc_xam_cpp.html#id1"><span class="std std-ref">3.4.2.1.1</span></a> C++: Sparsity Patterns: Example and Test</div>
-<div class="line">        <a class="reference internal" href="cpp_sparse_rcv.html#id1"><span class="std std-ref">3.4.2.2</span></a> Sparse Matrices</div>
-<div class="line">           <a class="reference internal" href="sparse_rcv_xam_cpp.html#id1"><span class="std std-ref">3.4.2.2.1</span></a> C++: Sparsity Patterns: Example and Test</div>
-<div class="line">        <a class="reference internal" href="cpp_jac_sparsity.html#id1"><span class="std std-ref">3.4.2.3</span></a> Jacobian Sparsity Patterns</div>
-<div class="line">           <a class="reference internal" href="sparse_jac_pattern_xam_cpp.html#id1"><span class="std std-ref">3.4.2.3.1</span></a> C++: Jacobian Sparsity Patterns: Example and Test</div>
-<div class="line">        <a class="reference internal" href="cpp_sparsity.html#id1"><span class="std std-ref">3.4.2.4</span></a> Hessian Sparsity Patterns</div>
-<div class="line">           <a class="reference internal" href="sparse_hes_pattern_xam_cpp.html#id1"><span class="std std-ref">3.4.2.4.1</span></a> C++: Hessian Sparsity Patterns: Example and Test</div>
-<div class="line">        <a class="reference internal" href="cpp_sparse_jac.html#id1"><span class="std std-ref">3.4.2.5</span></a> Computing Sparse Jacobians</div>
-<div class="line">           <a class="reference internal" href="sparse_jac_xam_cpp.html#id1"><span class="std std-ref">3.4.2.5.1</span></a> C++: Computing Sparse Jacobians: Example and Test</div>
-<div class="line">        <a class="reference internal" href="cpp_sparse_hes.html#id1"><span class="std std-ref">3.4.2.6</span></a> Computing Sparse Hessians</div>
-<div class="line">           <a class="reference internal" href="sparse_hes_xam_cpp.html#id1"><span class="std std-ref">3.4.2.6.1</span></a> C++: Hessian Sparsity Patterns: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_sparse_rc.html#id1"><span class="std std-ref">3.4.3.1</span></a> Sparsity Patterns</div>
+<div class="line">           <a class="reference internal" href="sparse_rc_xam_cpp.html#id1"><span class="std std-ref">3.4.3.1.1</span></a> C++: Sparsity Patterns: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_sparse_rcv.html#id1"><span class="std std-ref">3.4.3.2</span></a> Sparse Matrices</div>
+<div class="line">           <a class="reference internal" href="sparse_rcv_xam_cpp.html#id1"><span class="std std-ref">3.4.3.2.1</span></a> C++: Sparsity Patterns: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_jac_sparsity.html#id1"><span class="std std-ref">3.4.3.3</span></a> Jacobian Sparsity Patterns</div>
+<div class="line">           <a class="reference internal" href="sparse_jac_pattern_xam_cpp.html#id1"><span class="std std-ref">3.4.3.3.1</span></a> C++: Jacobian Sparsity Patterns: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_sparsity.html#id1"><span class="std std-ref">3.4.3.4</span></a> Hessian Sparsity Patterns</div>
+<div class="line">           <a class="reference internal" href="sparse_hes_pattern_xam_cpp.html#id1"><span class="std std-ref">3.4.3.4.1</span></a> C++: Hessian Sparsity Patterns: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_sparse_jac.html#id1"><span class="std std-ref">3.4.3.5</span></a> Computing Sparse Jacobians</div>
+<div class="line">           <a class="reference internal" href="sparse_jac_xam_cpp.html#id1"><span class="std std-ref">3.4.3.5.1</span></a> C++: Computing Sparse Jacobians: Example and Test</div>
+<div class="line">        <a class="reference internal" href="cpp_sparse_hes.html#id1"><span class="std std-ref">3.4.3.6</span></a> Computing Sparse Hessians</div>
+<div class="line">           <a class="reference internal" href="sparse_hes_xam_cpp.html#id1"><span class="std std-ref">3.4.3.6.1</span></a> C++: Hessian Sparsity Patterns: Example and Test</div>
 <div class="line"><br /></div>
-<div class="line">     <a class="reference internal" href="cpp_utility.html#id1"><span class="std std-ref">3.4.3</span></a> C++ Utilities</div>
+<div class="line">     <a class="reference internal" href="cpp_utility.html#id1"><span class="std std-ref">3.4.4</span></a> C++ Utilities</div>
 <div class="line"><br /></div>
-<div class="line">        <a class="reference internal" href="cpp_convert.html#id1"><span class="std std-ref">3.4.3.1</span></a> Convert Objects Between cppad_mixed and cppad_py</div>
+<div class="line">        <a class="reference internal" href="cpp_convert.html#id1"><span class="std std-ref">3.4.4.1</span></a> Convert Objects Between cppad_mixed and cppad_py</div>
 <div class="line"><br /></div>
-<div class="line">           <a class="reference internal" href="ad_vec_std2cppad.html#id1"><span class="std std-ref">3.4.3.1.1</span></a> Convert AD Vector From Standard to CppAD</div>
-<div class="line">           <a class="reference internal" href="ad_vec_cppad2std.html#id1"><span class="std std-ref">3.4.3.1.2</span></a> Convert AD Vector From CppAD to Standard</div>
-<div class="line">           <a class="reference internal" href="d_vec_std2cppad.html#id1"><span class="std std-ref">3.4.3.1.3</span></a> Convert double Vector From Standard to CppAD</div>
-<div class="line">           <a class="reference internal" href="d_vec_cppad2std.html#id1"><span class="std std-ref">3.4.3.1.4</span></a> Convert double Vector From CppAD to Standard</div>
-<div class="line">           <a class="reference internal" href="mixed2sparse_rcv.html#id1"><span class="std std-ref">3.4.3.1.5</span></a> Convert Sparse Matrix from cppad_mixed to cppad_py</div>
+<div class="line">           <a class="reference internal" href="ad_vec_std2cppad.html#id1"><span class="std std-ref">3.4.4.1.1</span></a> Convert AD Vector From Standard to CppAD</div>
+<div class="line">           <a class="reference internal" href="ad_vec_cppad2std.html#id1"><span class="std std-ref">3.4.4.1.2</span></a> Convert AD Vector From CppAD to Standard</div>
+<div class="line">           <a class="reference internal" href="d_vec_std2cppad.html#id1"><span class="std std-ref">3.4.4.1.3</span></a> Convert double Vector From Standard to CppAD</div>
+<div class="line">           <a class="reference internal" href="d_vec_cppad2std.html#id1"><span class="std std-ref">3.4.4.1.4</span></a> Convert double Vector From CppAD to Standard</div>
+<div class="line">           <a class="reference internal" href="mixed2sparse_rcv.html#id1"><span class="std std-ref">3.4.4.1.5</span></a> Convert Sparse Matrix from cppad_mixed to cppad_py</div>
 <div class="line"><br /></div>
-<div class="line">        <a class="reference internal" href="exception.html#id1"><span class="std std-ref">3.4.3.2</span></a> Exception Handling</div>
+<div class="line">        <a class="reference internal" href="exception.html#id1"><span class="std std-ref">3.4.4.2</span></a> Exception Handling</div>
 <div class="line"><br /></div>
-<div class="line">           <a class="reference internal" href="exception_xam_cpp.html#id1"><span class="std std-ref">3.4.3.2.1</span></a> C++: Cppad Py Exception Handling: Example and Test</div>
-<div class="line">           <a class="reference internal" href="exception_xam_py.html#id1"><span class="std std-ref">3.4.3.2.2</span></a> Python: Cppad Py Exception Handling: Example and Test</div>
+<div class="line">           <a class="reference internal" href="exception_xam_cpp.html#id1"><span class="std std-ref">3.4.4.2.1</span></a> C++: Cppad Py Exception Handling: Example and Test</div>
+<div class="line">           <a class="reference internal" href="exception_xam_py.html#id1"><span class="std std-ref">3.4.4.2.2</span></a> Python: Cppad Py Exception Handling: Example and Test</div>
 <div class="line"><br /></div>
-<div class="line">     <a class="reference internal" href="more_cpp.html#id1"><span class="std std-ref">3.4.4</span></a> Steps To Add More C++ Functions</div>
+<div class="line">     <a class="reference internal" href="more_cpp.html#id1"><span class="std std-ref">3.4.5</span></a> Steps To Add More C++ Functions</div>
 <div class="line"><br /></div>
 </div>
 <div class="line"><a class="reference internal" href="xsrst_py.html#id1"><span class="std std-ref">4</span></a> Extract Sphinx RST</div>
