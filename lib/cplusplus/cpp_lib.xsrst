@@ -15,6 +15,7 @@ The C++ Library
 Children
 ********
 {xsrst_child_table
+    lib/cplusplus/cppad_error.cpp
     lib/cplusplus/cplusplus.xsrst
     lib/cplusplus/more_cpp.xsrst
 }

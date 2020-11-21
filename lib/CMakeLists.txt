@@ -21,6 +21,7 @@ include (GenerateExportHeader)
 # _cppad_swig
 # assume that swig has run with c++ output in ${CMAKE_CURRENT_BINARY_DIR}
 ADD_LIBRARY(_cppad_swig SHARED
+    cplusplus/cppad_error.cpp
     cplusplus/a_double.cpp
     cplusplus/fun.cpp
     cplusplus/sparse.cpp

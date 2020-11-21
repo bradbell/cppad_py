@@ -57,9 +57,13 @@ Previous Years
 
 11-20
 *****
-Add the :ref:`f.check_for_nan <py_fun_check_for_nan>` and
-:ref:`a_double_binary.pow_int` functions.
-
+#.  Add the :ref:`f.check_for_nan <py_fun_check_for_nan>` and
+    :ref:`a_double_binary.pow_int` functions.
+#.  CppAD errors were not being translated to python exceptions
+    (except for :ref:`mixed <mixed>` class operations).
+    This has been fixed; see :ref:`cppad_error` .
+#.  More error detection and reporting when numpy vectors
+    or matrices do not have the correct dimensions.
 
 11-19
 *****
