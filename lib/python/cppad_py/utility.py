@@ -97,13 +97,18 @@ def numpy2vec(array, dtype, shape, context, name) :
         nr     = shape[0]
         nc     = shape[1]
     #
-    if vector and len(array.shape) != 1 :
-        msg = context + ': ' + name + ' is not a vector'
-    elif len(array.shape) != 2 :
-        msg = context + ': ' + name + ' is not a matrix'
-    #
     if array.shape[0] != nr :
         msg = context + ': ' + name + '.shape[0] is not ' + str(nr)
+        raise RuntimeError(msg)
+    #
+    if vector :
+        if  len(array.shape) != 1 :
+            msg = context + ': ' + name + ' is not a vector'
+            raise RuntimeError(msg)
+    else :
+        if len(array.shape) != 2 :
+            msg = context + ': ' + name + ' is not a matrix'
+            raise RuntimeError(msg)
     #
     if dtype == bool :
         vec = cppad_py.vec_bool(nr * nc)
@@ -121,6 +126,7 @@ def numpy2vec(array, dtype, shape, context, name) :
     else :
         if array.shape[1] != nc :
             msg = context + ': ' + name + '.shape[1] is not ' + str(nc)
+            raise RuntimeError(msg)
         #
         for i in range(nr) :
             for j in range(nc):
