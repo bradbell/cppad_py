@@ -111,18 +111,27 @@ one can un-define a macro, but it does not remove a original definition.
 
 stdio.h
 *******
-If you are using Mac Os with ``brew``,
+If you are using Mac OS,
 the following error message may appear while running ``setup.py`` ,
 
 | |tab| ``'stdio.h' file not found``
 
-If you get this error try using brew to install python3.
+This is a problem with the Mac system and the solutions keep changing; see
+`stdio.h <https://stackoverflow.com/questions/19580758/gcc-fatal-error-stdio-h-no-such-file-or-directory>`_
+
+If the solutions in the link above do not work
+and you are using ``brew``,
+try using brew to install python3.
 Then add the location where brew installs python libraries
 to you execution path :
 
 | |tab| ``minor=$(echo "import sys;print(sys.version_info.minor)" | python3)``
 | |tab| ``PATH="/usr/local/opt/python@3.$minor/bin:$PATH"``
 
+If your are using ``port`` , try the following :
+
+| |tab| ``minor=$(echo "import sys;print(sys.version_info.minor)" | python3)``
+| |tab| ``"/opt/local/Library/Frameworks/Python.framework/Versions/3.$minor/bin:$PATH"``
 
 include_mixed
 *************
@@ -131,7 +140,7 @@ The error messages below may occur when
 
 Java
 ====
-On Mac Os the following error message may appear while running
+On Mac OS the following error message may appear while running
 ``bin/get_cppad_mixed.sh`` ,
 
 | |tab| ``To use javac command-line tool you need to install a JDK.``

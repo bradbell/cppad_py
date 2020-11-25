@@ -43,10 +43,11 @@ do
         printf 'include_mixed = %s\n' $include_mixed >> double_check.log
         #
         # change bin/get_cppad.sh to requested configuration
-        sed -i bin/get_cppad.sh \
-            -e "s|^build_type=.*|build_type='$build_type'|"
-        sed -i bin/get_cppad.sh \
-            -e "s|^include_mixed=.*|include_mixed='$include_mixed'|"
+        sed -i.bak \
+            -e "s|^build_type=.*|build_type='$build_type'|" \
+            -e "s|^include_mixed=.*|include_mixed='$include_mixed'|" \
+            bin/get_cppad.sh
+        rm bin/get_cppad.sh.bak
         #
         # get external requirements
         if [ "$include_mixed" == 'true' ]
@@ -58,10 +59,11 @@ do
             bin/get_cppad.sh >> double_check.log
         fi
         # change bin/get_cppad.sh back to standard configuration
-        sed -i bin/get_cppad.sh \
-            -e "s|^build_type=.*|build_type='release'|"
-        sed -i bin/get_cppad.sh \
-            -e "s|^include_mixed=.*|include_mixed='false'|"
+        sed -i.bak \
+            -e "s|^build_type=.*|build_type='release'|" \
+            -e "s|^include_mixed=.*|include_mixed='false'|" \
+            bin/get_cppad.sh
+        rm bin/get_cppad.sh.bak
         #
         # run test for this configuration
         bin/check_all.sh $build_type $include_mixed
