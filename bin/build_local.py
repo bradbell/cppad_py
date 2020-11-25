@@ -18,9 +18,21 @@ def sys_exit(msg) :
 #
 def sys_command(command_list) :
     command_str = " ".join(command_list)
-    print(command_str)
-    subprocess.run(command_list, check=True)
-    print(command_list[0] , ': OK')
+    try :
+        print(command_str)
+        output = subprocess.check_output(
+            command_list, stderr=subprocess.STDOUT
+        )
+    except subprocess.CalledProcessError as process_error:
+        output = str(process_error.output, 'utf-8')
+        print(output)
+        sys_exit(command_list[0] + ': Error')
+    else :
+        output = str(output, 'utf-8')
+        if len(output) > 0 :
+            print(output)
+        print(command_list[0] + ': OK')
+    return output
 # -----------------------------------------------------------------------------
 # Checks
 #
@@ -72,6 +84,9 @@ index = cmake_install_prefix.find('$HOME')
 if index >= 0 :
     cmake_install_prefix = cmake_install_prefix.replace( '$HOME', os.environ['HOME'] )
 # -----------------------------------------------------------------------------
+# libdir
+libdir = sys_command( [ 'bin/libdir.py' ] )
+# -----------------------------------------------------------------------------
 # Set build and cmake_install_prefix to debug or release version
 command_list = ['bin/build_type.sh']
 sys_command(command_list)
@@ -119,6 +134,10 @@ command_list += [ 'lib/cppad_py_swig.i' ]
 sys_command(command_list)
 # -----------------------------------------------------------------------------
 # Run cmake
+#
+# cmake needs PKG_CONFIG_PATH
+os.environ['PKG_CONFIG_PATH'] = \
+    cmake_install_prefix + '/' + libdir + '/pkgconfig'
 #
 # remove cache file from a previous run
 os.chdir('build')

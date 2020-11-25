@@ -74,8 +74,9 @@ Requirements
 ************
 -   ``pip install --user pyspellchecker``
 -   ``pip install --user sphinx``
--   The directory *cmake_install_prefix* ``/bin`` must be in your execution path
-    where *cmake_install_prefix* is the install prefix for cppad.
+-   ``pip install --user sphinx-rtd-theme``
+-   The directory *cmake_install_prefix*\ ``/bin`` must be in your execution
+    path where *cmake_install_prefix* is the prefix used to instal cppad_py.
 
 Notation
 ********

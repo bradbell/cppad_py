@@ -33,17 +33,10 @@ SET_TARGET_PROPERTIES(
     _cppad_swig PROPERTIES COMPILE_FLAGS "${extra_cxx_flags}"
 )
 #
-# mixed_libraries
-IF( include_mixed )
-    SET(mixed_libraries cppad_mixed ipopt cholmod gsl)
-ELSE( include_mixed )
-    SET(mixed_libraries "")
-ENDIF( include_mixed )
-#
 # libraries that cppad_swig depends on
 TARGET_LINK_LIBRARIES(_cppad_swig
-    cppad_lib
-    ${mixed_libraries}
+    ${cppad_mixed_LIBRARIES}
+    ${cppad_LIBRARIES}
     ${Python_LIBRARIES}
 )
 #

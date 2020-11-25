@@ -79,9 +79,6 @@ if not match :
     sys_exit('cannot find cmake_install_prefix in bin/get_cppad.sh')
 cmake_install_prefix = match.group(1)
 #
-# libdir
-libdir = sys_command( [ 'bin/libdir.py' ] )
-#
 # build_type
 pattern = r"\nbuild_type='([^']*)'"
 match   = re.search(pattern, string)
@@ -99,6 +96,9 @@ if not match :
 include_mixed = match.group(1)
 if include_mixed != 'true' and include_mixed != 'false' :
     sys_exit('include_mixed is not true or false in bin/get_cppad.sh')
+# ----------------------------------------------------------------------------
+# libdir
+libdir = sys_command( [ 'bin/libdir.py' ] )
 # -----------------------------------------------------------------------------
 # Set prefix soft link for this build_type
 sys_command( [ 'bin/build_type.sh' ] )

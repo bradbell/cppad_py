@@ -17,9 +17,9 @@
 # preamble
 # Suppress warnging that WIN32 not defined on cygwin
 SET(CMAKE_LEGACY_CYGWIN_WIN32 0) # remove when version below >= 2.8.4
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
-SET(cppad_py_version "2020.11.20")
+CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 PROJECT(cppad_py)
+SET(cppad_py_version "2020.11.20")
 CMAKE_POLICY(SET CMP0042 NEW)
 # =============================================================================
 # MACROS
@@ -162,6 +162,15 @@ ENDIF ( Python_Development_FOUND )
 # -----------------------------------------------------------------------------
 # set pkg-config information about cppad_mixed
 FIND_PACKAGE(PkgConfig)
+pkg_check_modules( cppad QUIET cppad )
+IF( cppad_FOUND )
+    MESSAGE(STATUS "Found cppad.pc file")
+ELSE( cppad_FOUND )
+    MESSAGE(STATUS "Cannot find cppad.pc file")
+    MESSAGE(FATAL_ERROR  "PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH}")
+ENDIF( cppad_FOUND )
+INCLUDE_DIRECTORIES( ${cppad_INCLUDE_DIRS} )
+LINK_DIRECTORIES( ${cppad_LIBRARY_DIRS} )
 IF( include_mixed )
     pkg_check_modules( cppad_mixed QUIET cppad_mixed )
     IF( cppad_mixed_FOUND )
@@ -173,16 +182,9 @@ IF( include_mixed )
     INCLUDE_DIRECTORIES( ${cppad_mixed_INCLUDE_DIRS} )
     LINK_DIRECTORIES( ${cppad_mixed_LIBRARY_DIRS} )
 ELSE( include_mixed )
-    pkg_check_modules( cppad QUIET cppad )
-    IF( cppad_FOUND )
-        MESSAGE(STATUS "Found cppad.pc file")
-    ELSE( cppad_FOUND )
-        MESSAGE(STATUS "Cannot find cppad.pc file")
-        MESSAGE(FATAL_ERROR  "PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH}")
-    ENDIF( cppad_FOUND )
-    INCLUDE_DIRECTORIES( ${cppad_INCLUDE_DIRS} )
-    LINK_DIRECTORIES( ${cppad_LIBRARY_DIRS} )
+    SET(cppad_mixed_LIBRARIES "")
 ENDIF( include_mixed )
+print_variable(cppad_mixed_LIBRARIES)
 # -----------------------------------------------------------------------------
 # print important system variables
 print_variable(CMAKE_BINARY_DIR)
