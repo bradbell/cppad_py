@@ -19,37 +19,55 @@
     openjdk
     usr
     cannot
+    cholmod
+    suitesparse
+    pkg
 }
 
 Error Messages During Installation
 ##################################
 
-swig
-****
-The following error message may appear
-while running ``setup.py`` ,
+get_cppad_mixed.sh
+******************
+On Mac OS the following error messages may appear while running
+``bin/get_cppad_mixed.sh`` :
 
+Java
+====
+| |tab| ``To use javac command-line tool you need to install a JDK.``
+
+This indicates that you have not added
+the location where brew installs openjdk to you execution path.
+Try executing the command
+
+| |tab| ``PATH="/usr/local/opt/openjdk/bin:$PATH"``
+
+cholmod.h
+=========
+| |tab| ``cannot find cholmod.h``
+
+The suitesparse package does not have pkg-config support,
+hence cppad_mixed searches a set of directories for ``cholmod.h``
+(which is part of suitesparse).
+It you get this message, find out where ``cholmod.h`` is installed
+on your system and open an issue about this on the
+`cppad_py issues <https://github.com/bradbell/cppad_py/issues>`_ page.
+
+---------------------------------------------------------------------------
+
+setup.py
+********
+The following error messages may appear
+while running ``setup.py`` :
+
+swig
+====
 | |tab| ``FileNotFoundError: [Errno 2] No such file or directory: 'swig'``
 
 Try installing `swig <http://www.swig.org/>`_ on you system.
 
-numpy, scipy
-************
-The following error message may appear while
-while running ``python3 example/python/check_all.py`` ,
-
-| |tab| ``module`` *name* ``has no attribute`` ...
-
-where *name* is ``numpy`` or ``scipy``.
-Try installing *name* using the command
-
-| |tab| ``pip3 install`` *name*
-
 cppad.pc, cppad_mixed.pc
-************************
-The following error message may appear
-while running :ref:`setup.py <setup_py>` ,
-
+========================
 | |tab| ``Cannot find`` *name*\ ``.pc``
 
 where *name* is ``cppad`` or ``cppad_mixed``.
@@ -57,63 +75,24 @@ You probably did not set
 :ref:`PKG_CONFIG_PATH <setup_py.pkg_config_path>` correctly.
 
 symbolic link
-*************
-The following error message may appear
-while running ``setup_py`` ,
-
+=============
 | |tab| ``build_type.sh:`` *prefix*  ``is not a symbolic link``
 
 where *prefix* is the
 :ref:`get_cppad_sh.settings.cmake_install_prefix` in ``bin/get_cppad.sh``.
 Try removing the *prefix* directory and re-running setup.py.
 
-
-cppad_py
-********
-The following error message may appear
-while running ``python3 example/python/check_all.py`` ,
-
-| |tab| ``ModuleNotFoundError: No module named cppad_py``
-
-This means that the ``cppad_py`` directory can't be found.
-If you are testing the local copy, make sure that the directory
-
-| |tab| *top_src*\ ``/cppad_py``
-
-exists; see :ref:`local build <setup_py.local_build>` .
-If you are testing the installed version, make sure the directory
-
-| |tab| ``$PYTHONPATH/cppad_py``
-
-exists; see :ref:`PYTHONPATH <setup_py.pythonpath>` .
-
-
-libcppad_lib
-************
-The following error message may appear
-while running ``python3 example/python/check_all.py`` ,
-
-| |tab| ``ImportError: libcppad_lib.so`` ... ``can not open shared object file``
-
-This means the CppAD library
-is not in your :ref:`LD_LIBRARY_PATH<setup_py.LD_LIBRARY_PATH>` .
-If you have a Mac, you will instead need to set ``DYLD_LIBRARY_PATH`` .
-
 Fortify Source
-**************
-If you set :ref:`build_type<get_cppad_sh.settings.build_type>` to ``debug`` ,
-the following message may appear while running ``setup.py`` ,
-
+==============
 | |tab| ``#warning _FORTIFY_SOURCE requires compiling with optimization``
 
 This is a problem with the python setuptools,
 one can un-define a macro, but it does not remove a original definition.
+It only happens when :ref:`build_type<get_cppad_sh.settings.build_type>`
+to ``debug`` .
 
 stdio.h
-*******
-If you are using Mac OS,
-the following error message may appear while running ``setup.py`` ,
-
+=======
 | |tab| ``'stdio.h' file not found``
 
 This is a problem with the Mac system and the solutions keep changing; see
@@ -133,24 +112,47 @@ If your are using ``port`` , try the following :
 | |tab| ``minor=$(echo "import sys;print(sys.version_info.minor)" | python3)``
 | |tab| ``"/opt/local/Library/Frameworks/Python.framework/Versions/3.$minor/bin:$PATH"``
 
-include_mixed
-*************
-The error messages below may occur when
-:ref:`include_mixed<get_cppad_sh.settings.include_mixed>` is true:
+---------------------------------------------------------------------------
 
-Java
-====
-On Mac OS the following error message may appear while running
-``bin/get_cppad_mixed.sh`` ,
+check_all.py
+************
+The following error messages may appear while
+while running ``python3 example/python/check_all.py`` :
 
-| |tab| ``To use javac command-line tool you need to install a JDK.``
+numpy, scipy
+============
+| |tab| ``module`` *name* ``has no attribute`` ...
 
-This indicates that you have not added
-the location where brew installs openjdk to you execution path.
-Try executing the command
+where *name* is ``numpy`` or ``scipy``.
+Try installing *name* using the command
 
-| |tab| ``PATH="/usr/local/opt/openjdk/bin:$PATH"``
+| |tab| ``pip3 install`` *name*
 
+
+cppad_py
+========
+| |tab| ``ModuleNotFoundError: No module named cppad_py``
+
+This means that the ``cppad_py`` directory can't be found.
+If you are testing the local copy, make sure that the directory
+
+| |tab| *top_src*\ ``/cppad_py``
+
+exists; see :ref:`local build <setup_py.local_build>` .
+If you are testing the installed version, make sure the directory
+
+| |tab| ``$PYTHONPATH/cppad_py``
+
+exists; see :ref:`PYTHONPATH <setup_py.pythonpath>` .
+
+
+libcppad_lib
+============
+| |tab| ``ImportError: libcppad_lib.so`` ... ``can not open shared object file``
+
+This means the CppAD library
+is not in your :ref:`LD_LIBRARY_PATH<setup_py.LD_LIBRARY_PATH>` .
+If you have a Mac, you will instead need to set ``DYLD_LIBRARY_PATH`` .
 
 
 

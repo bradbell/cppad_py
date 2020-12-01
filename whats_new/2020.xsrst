@@ -43,6 +43,7 @@
     hes_obj
     matplotlib
     Eval
+    cholmod
 }
 
 CppAD Py Changes During 2020
@@ -54,6 +55,20 @@ CppAD Py Changes During 2020
 Previous Years
 **************
 :ref:`whats_new_2018<whats_new_2018>`
+
+12-01
+*****
+#.  Advance to cppad_mixed-20201130.
+    This fixes a problem installing on the Mac with port.
+    To be specific, the directory $code /opt/local$$ is searched
+    when looking for $code cholmod.h$$.
+    It also gives better error messaging during the install procedure.
+#.  Group the install error messages under the program being run;
+    i.e., :ref:`install_error.get_cppad_mixed.sh` ,
+    i.e., :ref:`install_error.setup.py` ,
+    i.e., :ref:`install_error.check_all.py` .
+#.  Added a discussion of the :ref:`install_error.get_cppad_mixed.sh.cholmod.h`
+    error message.
 
 11-20
 *****
@@ -76,8 +91,8 @@ installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
     mac using `port <https://www.macports.org>`_ to install packages.
     The previous version assumed the mac was using
     `brew <https://brew.sh>`_ to install packages.
-#.  Add a :ref:`install_error.symbolic_link` and
-    :ref:`install_error.cppad.pc,_cppad_mixed.pc` entries to the
+#.  Add a :ref:`install_error.setup.py.symbolic_link` and
+    :ref:`install_error.setup.py.cppad.pc,_cppad_mixed.pc` entries to the
     list of install error messages.
 #.  Remove under construction from the :ref:`mixed` class; i.e.,
     it has reached a stable state.
@@ -150,7 +165,8 @@ to the mixed class operations.
 #.  Remove some extra space when a '.' character appears between the
     change between italic and literal font.
 #.  Add an install error entry for when the
-    :ref:`cppad_py <install_error.cppad_py>` module can't be found.
+    :ref:`cppad_py <install_error.check_all.py.cppad_py>`
+    module can't be found.
 
 11-11
 *****
@@ -545,7 +561,7 @@ example if you are interested.
     (The ``numeric_seirs_class`` was later replaced by
     :ref:`numeric_seirwd_model<numeric_seirwd_model>`.)
 #.  Add mention of using ``DYLD_LIBRARY_PATH`` in the
-    :ref:`libcppad_lib<install_error.libcppad_lib>`
+    :ref:`libcppad_lib<install_error.check_all.py.libcppad_lib>`
     install error instructions for the Mac.
 
 05-05
@@ -573,7 +589,7 @@ in the setup.py documentation; see
 04-26
 *****
 The ``setup.py`` program was modified to try to automatically solve the
-:ref:`libcppad_lib<install_error.libcppad_lib>` problem.
+:ref:`install_error.check_all.py.libcppad_lib` problem.
 
 04-25
 *****
