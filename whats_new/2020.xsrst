@@ -60,8 +60,8 @@ Previous Years
 *****
 #.  Advance to cppad_mixed-20201130.
     This fixes a problem installing on the Mac with port.
-    To be specific, the directory $code /opt/local$$ is searched
-    when looking for $code cholmod.h$$.
+    To be specific, the directory ``/opt/local`` is searched
+    when looking for ``cholmod.h`` .
     It also gives better error messaging during the install procedure.
 #.  Group the install error messages under the program being run;
     i.e., :ref:`install_error.get_cppad_mixed.sh` ,
