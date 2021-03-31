@@ -5,7 +5,7 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin whats_new_2021}
+{xsrst_begin release_notes}
 
 .. include:: ../preamble.rst
 
@@ -13,15 +13,16 @@
     cppad
 }
 
-CppAD Py Changes During 2021
-############################
+CppAD Py Release Notes By Year
+##############################
 
-03-31
-*****
-#.  Move the source code for externals from ``build/external`` to
-    ``external/``\ *build_type* where *build_type* is ``debug`` or ``release``.
-#.  Advance to cppad_mixed-20210302.
-    This changes the cppad_mixed install so that it uses
-    ``external/``\ *build_type* for its externals.
+{xsrst_children
+    whats_new/2021.xsrst
+    whats_new/2020.xsrst
+    whats_new/2018.xsrst
+}
+:ref:`2021<whats_new_2021>`
+:ref:`2020<whats_new_2020>`
+:ref:`2018<whats_new_2018>`
 
-{xsrst_end whats_new_2021}
+{xsrst_end release_notes}
