@@ -1,0 +1,36 @@
+-------------------------------------------------------------------------------
+          cppad_py: A C++ Object Library and Python Interface to Cppad
+           Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
+               This program is distributed under the terms of the
+               GNU General Public License version 3.0 or later see
+                     https://www.gnu.org/licenses/gpl-3.0.txt
+-------------------------------------------------------------------------------
+{xsrst_begin whats_new_2021}
+
+.. include:: ../preamble.rst
+
+{xsrst_spell
+    cppad
+}
+
+CppAD Py Changes During 2021
+############################
+
+{xsrst_children
+    whats_new/2020.xsrst
+    whats_new/2018.xsrst
+}
+Previous Years
+**************
+:ref:`whats_new_2020<whats_new_2020>`
+:ref:`whats_new_2018<whats_new_2018>`
+
+03-31
+*****
+#.  Move the source code for externals from ``build/external`` to
+    ``external/``\ *build_type* where *build_type* is ``debug`` or ``release``.
+#.  Advance to cppad_mixed-20210302.
+    This changes the cppad_mixed install so that it uses
+    ``external/``\ *build_type* for its externals.
+
+{xsrst_end whats_new_2021}

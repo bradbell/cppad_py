@@ -6,20 +6,34 @@ junk.*
 # soft links to ignore
 /build
 # directories to ignore
+#
+# build directories that /build links to
 /build.debug/
 /build.release/
-/dist/
-/doc/
+#
+# directory used for local testing
 /cppad_py/
+#
+# directories used by setup.py 
 /cppad_py.egg-info/
+/dist/
+#
+# direcotry where externals are built
+/external/
+#
+# directories used to stash files
 /new.*/
 /new/
+#
+# directories use to build sphinx documentation
 /sphinx/xsrst/
 /sphinx/_build/
+#
 # extensions to ignore
 *.log
 *.swp
 *.tmp
+#
 # files and directories created to run python examples
 /example/python/mixed/debug.out
 /example/python/check_all.py

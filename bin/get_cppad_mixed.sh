@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell$seanet.com)
+#          Copyright (C) 2017-21 Bradley M. Bell (bradbell$seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -42,8 +42,8 @@
 # ---------------------------------------------------------------------------
 # CppAD mixed version information
 web_page='https://github.com/bradbell/cppad_mixed.git'
-hash_key='383f2b20e787b8cdffca1c1b68e6b2f40c6282ee'
-version='20201201'
+hash_key='4f2eb6fb266bd61b13ffee808f6dde6f7a7ff6eb'
+version='20210302'
 # --------------------------------------------------------------------------
 name='bin/get_cppad_mixed.sh'
 if [ $0 != $name ]
@@ -94,12 +94,12 @@ export PYTHONPATH="$LD_LIBRARY_PATH/python3.$minor/site-packages"
 # ---------------------------------------------------------------------------
 echo_eval bin/build_type.sh
 # ---------------------------------------------------------------------------
-# cd into build/external
-if [ ! -e build/external ]
+# cd into external/$build_type
+if [ ! -e external/$build_type ]
 then
-    mkdir build/external
+    mkdir -p external/$build_type
 fi
-echo_eval cd build/external
+echo_eval cd external/$build_type
 # --------------------------------------------------------------------------
 # clone cppad_mixed.git
 if [ ! -e cppad_mixed.git ]

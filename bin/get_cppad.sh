@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell$seanet.com)
+#          Copyright (C) 2017-21 Bradley M. Bell (bradbell$seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -157,12 +157,12 @@ libdir=$(bin/libdir.py)
 # create links to proper version of cmake_install_prefix and build
 echo_eval bin/build_type.sh
 # -----------------------------------------------------------------------------
-# change into the build/external
-if [ ! -e build/external ]
+# change into the external/build_type
+if [ ! -e external/$build_type ]
 then
-    mkdir build/external
+    mkdir -p external/$build_type
 fi
-echo_eval cd build/external
+echo_eval cd external/$build_type
 # -----------------------------------------------------------------------------
 # clone cppad repository directory
 if [ ! -e cppad.git ]

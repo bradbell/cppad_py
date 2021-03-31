@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
           cppad_py: A C++ Object Library and Python Interface to Cppad
-           Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+           Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
@@ -76,7 +76,7 @@ Children
     example/python/numeric/numeric.xsrst
     lib/library.xsrst
     bin/xsrst.py
-    whats_new/2020.xsrst
+    whats_new/2021.xsrst
 }
 
 {xsrst_end cppad_py}
