@@ -120,8 +120,8 @@ test_cppad='false'
 # CppAD version information
 # Use same version as in cppad_mixed.git/bin/install_cppad.sh
 remote_repo='https://github.com/coin-or/CppAD.git'
-cppad_version='20201021'
-hash_code='ab1d7188b97c2a3a34cb071e86284a004a1d9dd4'
+cppad_version='20210428'
+hash_code='403f5737d9718314afd1e10424809a4be83e863d'
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {

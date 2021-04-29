@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell$seanet.com)
+#          Copyright (C) 2017-21 Bradley M. Bell (bradbell$seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -16,6 +16,13 @@ if [ "$0" != "bin/build_type.sh" ]
 then
     echo "bin/build_type.sh: must be executed from its parent directory"
     exit 1
+fi
+# -----------------------------------------------------------------------------
+kernel=$(uname -s)
+if [[ "$kernel" =~ MSYS.* ]]
+then
+    echo 'Warning: MSYS does not suppor symbolic links'
+    exit 0
 fi
 # -----------------------------------------------------------------------------
 eval $(grep '^build_type *=' bin/get_cppad.sh)

@@ -76,7 +76,7 @@ Children
     example/python/numeric/numeric.xsrst
     lib/library.xsrst
     bin/xsrst.py
-    whats_new/2021.xsrst
+    whats_new/release_notes.xsrst
 }
 
 {xsrst_end cppad_py}

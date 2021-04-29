@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -80,6 +80,7 @@ then
     echo 'check_all.sh: build type in bin/get_cppad.sh is not release'
     echo 'or include_mixed is not false.'
     echo 'This has been fixed, you should be able to just re-run this script.'
+    # The exit_code function makes fix mentioned above
     exit_code 1
 fi
 if [ "$1" == 'debug' ]
@@ -104,6 +105,10 @@ minor=$(echo "import sys; print(sys.version_info.minor)" | python3)
 if [ -e "$LD_LIBRARY_PATH/python3.$minor" ]
 then
     echo_eval_log rm -r "$LD_LIBRARY_PATH/python3.$minor"
+fi
+if [ -e cppad_py ]
+then
+    echo_eval rm -r cppad_py
 fi
 if echo 'import cppad_py' | python >& /dev/null
 then

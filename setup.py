@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -288,6 +288,8 @@ sys.exit(0)
 #   cmd
 #   eval
 #   pkg
+#   msys
+#   cygwin
 # }
 #
 # Configure and Build the cppad_py Python Module
@@ -381,6 +383,10 @@ sys.exit(0)
 # For example,
 #
 # | |tab| ``export DYLD_LIBRARY_PATH=$prefix/$libdir``
+#
+# In msys and cygwin you must adjust ``PATH`` instead:
+#
+# | |tab| ``export PATH=$prefix/$libdir:$PATH``
 #
 # PKG_CONFIG_PATH
 # ***************

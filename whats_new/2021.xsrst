@@ -11,19 +11,22 @@
 
 {xsrst_spell
     cppad
+    msys
+    cygwin
 }
 
 CppAD Py Changes During 2021
 ############################
 
-{xsrst_children
-    whats_new/2020.xsrst
-    whats_new/2018.xsrst
-}
-Previous Years
-**************
-:ref:`whats_new_2020<whats_new_2020>`
-:ref:`whats_new_2018<whats_new_2018>`
+04-29
+*****
+#. Advance to cppad-20210428.
+   This fixes some problems with the install of cppad_py on msys and cygwin.
+   The :ref:`check_for_nan_xam_py` was modified because the new version
+   of exponentiation handles more cases.
+
+#. Adapt the install for msys to the fact that soft links do not work on that
+   system.
 
 03-31
 *****
