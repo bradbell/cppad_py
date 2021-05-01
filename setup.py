@@ -471,7 +471,7 @@ sys.exit(0)
 #
 # If the directory *top_srcdir/*\ ``cppad_py`` exists,
 # you will be testing the local version, instead of the installed version.
-# If this directory exists when # the install command is run,
+# If this directory exists when the install command is run,
 # it is removed by the install command.
 #
 # Install Errors
