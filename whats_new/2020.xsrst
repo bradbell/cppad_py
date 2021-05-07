@@ -419,8 +419,7 @@ The word 'initialization' was added to the xsrst dictionary.
 07-25
 *****
 #.  xsrst: Install :ref:`xsrst.py<xsrst_py>` during the
-    :ref:`install<setup_py.install>` procedure
-    (not yet available from ``pip``).
+    :ref:`install<setup_py.install>` procedure.
 #.  xsrst: Add a :ref:`purpose<xsrst_py.purpose>` paragraph to xsrst documentation.
 #.  Move the ``*.omh`` files to ``*.xsrst`` files (they have been converted
     from omhelp input files to xsrst input files).
@@ -603,8 +602,8 @@ Add an :ref:`install_error<install_error>` section to the documentation.
 04-22
 *****
 
-#.  Instructions were added for
-    :ref:`installing_using_pip<setup_py.install_using_pip>`.
+#.  Instructions were added for installing using pip
+    (this install was not kept up to date and has been removed).
 #.  The binary operators were extended to include *x* ``op`` *ay* where:
     *x* is a double (python ``float`` ),
     *ay* is an ``a_double`` ,

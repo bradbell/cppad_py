@@ -13,10 +13,20 @@
     cppad
     msys
     cygwin
+    setuptools
 }
 
 CppAD Py Changes During 2021
 ############################
+
+05-07
+*****
+#. The python-setuptools were added to the
+   :ref:`setup_py.external_requirements`.
+#. An example of installing external requirements was added for the
+   :ref:`setup_py.cygwin`.
+#. This install using pip has not been kept up to date an hence its
+   instructions were removed.
 
 04-29
 *****

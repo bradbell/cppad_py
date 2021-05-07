@@ -280,7 +280,6 @@ sys.exit(0)
 #   cppad
 #   srcdir
 #   cmake
-#   pypi
 #   libdir
 #   pkgconfig
 #   bdist
@@ -290,6 +289,11 @@ sys.exit(0)
 #   pkg
 #   msys
 #   cygwin
+#   gcc
+#   devel
+#   setuptools
+#   lapack
+#   libopenblas
 # }
 #
 # Configure and Build the cppad_py Python Module
@@ -303,14 +307,15 @@ sys.exit(0)
 # External Requirements
 # *********************
 # #. `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_
-# #. `python <https://www.python.org/>`_ version 3
-# #. `numpy <https://numpy.org/>`_
-# #. `scipy <https://scipy.org/>`_
 # #. `cmake <https://cmake.org>`_
 # #. `swig <http://www.swig.org/>`_
 # #. `c++ <https://en.wikipedia.org/wiki/C++>`_
 # #. `git <https://git-scm.com/>`_
 # #. `pkg-config <https://www.freedesktop.org/wiki/Software/pkg-config>`_
+# #. `python <https://www.python.org/>`_ version 3
+# #. `python-numpy <https://numpy.org/>`_
+# #. `python-scipy <https://scipy.org/>`_
+# #. `python-setuptools <https://scipy.org/>`_
 #
 # Mac Os
 # ======
@@ -474,20 +479,20 @@ sys.exit(0)
 # If this directory exists when the install command is run,
 # it is removed by the install command.
 #
-# Install Errors
-# **************
-# If you get an error message during the install procedure above,
-# or the one below, see :ref:`install_error<install_error>`.
-# This will only install the release version.
-# Installing a debug version is discussed below in the instructions
-# for downloading and building from the source code.
-#
-# Install Using Pip
-# *****************
-# There is an old version of cppad_py available using ``pip`` .
-# To install for you entire system use:
-#
-# | |tab| ``pip install -i https://test.pypi.org/simple/ cppad_py``
+# Cygwin
+# ******
+# A cygwin install, on 2021-05-06 and with
+# :ref:`include_mixed<get_cppad_sh.settings.include_mixed>` false,
+# completed successfully by doing the following:
+# First the following packages were added to the default set installed by the
+# cygwin ``setup-x86_64`` program:
+# gcc-core, gcc-g++, gcc-fortran,
+# python3-devel, python-pip-wheel, python-setuptools-wheel,
+# lapack-devel, libopenblas,
+# git, vim, cmake, make, swig.
+# Then the ``pip3`` program was used to install numpy and scipy.
+# Then the install instructions above were used to install and test
+# cppad_py.
 #
 # Children
 # ********
