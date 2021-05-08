@@ -89,7 +89,7 @@ build_type='release'
 # This flag is true (false) if we are (are not)
 # including the python cppad_mixed interface.
 # {xsrst_code sh}
-include_mixed='false'
+include_mixed='true'
 # {xsrst_code}
 # If it is true, the install script ``bin/get_cppad_mixed.sh``
 # should be used to install Cppad together with the all the other cppad_mixed
@@ -118,10 +118,10 @@ test_cppad='false'
 # {xsrst_end get_cppad_sh}
 # -----------------------------------------------------------------------------
 # CppAD version information
-# Use same version as in cppad_mixed.git/bin/install_cppad.sh
+# Use same cppad_version and has_code as in cppad_mixed.git/bin/install_cppad.sh
 remote_repo='https://github.com/coin-or/CppAD.git'
-cppad_version='20210428'
-hash_code='403f5737d9718314afd1e10424809a4be83e863d'
+cppad_version='20210430'
+hash_code='241d9e18ecad02082b6cd64bef201be141ff31a9'
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {

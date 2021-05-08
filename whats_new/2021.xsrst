@@ -27,6 +27,8 @@ CppAD Py Changes During 2021
    :ref:`setup_py.cygwin`.
 #. This install using pip has not been kept up to date an hence its
    instructions were removed.
+#. Advance to cppad_mixed-20210507.
+   This should fix some problems with the install on msys and cygwin.
 
 04-29
 *****

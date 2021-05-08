@@ -42,8 +42,8 @@
 # ---------------------------------------------------------------------------
 # CppAD mixed version information
 web_page='https://github.com/bradbell/cppad_mixed.git'
-hash_key='4f2eb6fb266bd61b13ffee808f6dde6f7a7ff6eb'
-version='20210302'
+hash_key='e8b917a13905d39b90ebc3957ed961a42c4bfa9b '
+version='20210507'
 # --------------------------------------------------------------------------
 name='bin/get_cppad_mixed.sh'
 if [ $0 != $name ]
@@ -94,12 +94,12 @@ export PYTHONPATH="$LD_LIBRARY_PATH/python3.$minor/site-packages"
 # ---------------------------------------------------------------------------
 echo_eval bin/build_type.sh
 # ---------------------------------------------------------------------------
-# cd into external/$build_type
-if [ ! -e external/$build_type ]
+# cd into external
+if [ ! -e external ]
 then
-    mkdir -p external/$build_type
+    mkdir external
 fi
-echo_eval cd external/$build_type
+echo_eval cd external
 # --------------------------------------------------------------------------
 # clone cppad_mixed.git
 if [ ! -e cppad_mixed.git ]
@@ -116,6 +116,7 @@ check=`grep '^SET(cppad_mixed_version' CMakeLists.txt | \
 if [ "$version" != "$check" ]
 then
     echo 'install_cppad_mixed.sh: version number does not agree with hash_key'
+    echo "version=$version, check=$check"
     exit 1
 fi
 if [ "$build_type" == 'release' ]
