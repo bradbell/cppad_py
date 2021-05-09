@@ -98,10 +98,10 @@ if include_mixed != 'true' and include_mixed != 'false' :
     sys_exit('include_mixed is not true or false in bin/get_cppad.sh')
 # ----------------------------------------------------------------------------
 # libdir
-libdir = sys_command( [ 'bin/libdir.py' ] )
+libdir = sys_command( [ 'python3', 'bin/libdir.py' ] )
 # -----------------------------------------------------------------------------
 # Set prefix soft link for this build_type
-sys_command( [ 'bin/build_type.sh' ] )
+sys_command( [ 'bash', 'bin/build_type.sh' ] )
 # -----------------------------------------------------------------------------
 # check for $HOME in cmake_install_prefix
 index = cmake_install_prefix.find('$HOME')
@@ -294,6 +294,9 @@ sys.exit(0)
 #   setuptools
 #   lapack
 #   libopenblas
+#   pacman
+#   mingw
+#   cygpath
 # }
 #
 # Configure and Build the cppad_py Python Module
@@ -316,13 +319,6 @@ sys.exit(0)
 # #. `python-numpy <https://numpy.org/>`_
 # #. `python-scipy <https://scipy.org/>`_
 # #. `python-setuptools <https://scipy.org/>`_
-#
-# Mac Os
-# ======
-# The Mac Os system has only been tested using
-# `brew <https://brew.sh>`_  and
-# `port <https://www.macports.org>`_
-# to install packages not included with the system.
 #
 # Download
 # ********
@@ -479,6 +475,13 @@ sys.exit(0)
 # If this directory exists when the install command is run,
 # it is removed by the install command.
 #
+# Mac Os
+# ******
+# The Mac Os system has only been tested using
+# `brew <https://brew.sh>`_  and
+# `port <https://www.macports.org>`_
+# to install packages not included with the system.
+#
 # Cygwin
 # ******
 # A cygwin install, on 2021-05-06 and with
@@ -493,6 +496,19 @@ sys.exit(0)
 # Then the ``pip3`` program was used to install numpy and scipy.
 # Then the install instructions above were used to install and test
 # cppad_py.
+#
+# Msys2
+# *****
+# A msys2 install with,
+# :ref:`include_mixed<get_cppad_sh.settings.include_mixed>` false,
+# was attempted on 2021-05-09.
+# First the following packages were installed using pacman:
+# vim, git, make, cmake, swig.
+# Next the mingw-w64-x86_64 version of following packages were installed using
+# pacman:  python, python-scipy, python-setuptools, gcc
+# The problem is that setup.py is mixing windows and unix paths.
+# An attempt was made to fix the environment variables using ``cygpath``
+# utility, but other related problems still persisted.
 #
 # Children
 # ********

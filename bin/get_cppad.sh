@@ -89,7 +89,7 @@ build_type='release'
 # This flag is true (false) if we are (are not)
 # including the python cppad_mixed interface.
 # {xsrst_code sh}
-include_mixed='true'
+include_mixed='false'
 # {xsrst_code}
 # If it is true, the install script ``bin/get_cppad_mixed.sh``
 # should be used to install Cppad together with the all the other cppad_mixed

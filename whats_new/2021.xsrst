@@ -19,6 +19,10 @@
 CppAD Py Changes During 2021
 ############################
 
+05-09
+*****
+#. Add discussion of installing cppad_py on :ref:`setup_py.msys2` systems.
+
 05-07
 *****
 #. The python-setuptools were added to the
