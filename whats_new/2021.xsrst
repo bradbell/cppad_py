@@ -19,6 +19,13 @@
 CppAD Py Changes During 2021
 ############################
 
+05-11
+*****
+In cygwin install,
+with :ref:`get_cppad_sh.settings.include_mixed` true,
+has been improved so that it works with cygwin.
+This included advancing to cppad_mixed-20210511.
+
 05-09
 *****
 #. Add discussion of installing cppad_py on :ref:`setup_py.msys2` systems.

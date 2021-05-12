@@ -297,6 +297,10 @@ sys.exit(0)
 #   pacman
 #   mingw
 #   cygpath
+#   wget
+#   gsl
+#   suitesparse
+#   cholmod
 # }
 #
 # Configure and Build the cppad_py Python Module
@@ -319,6 +323,20 @@ sys.exit(0)
 # #. `python-numpy <https://numpy.org/>`_
 # #. `python-scipy <https://scipy.org/>`_
 # #. `python-setuptools <https://scipy.org/>`_
+#
+# Include Mixed Effects Modeling
+# ==============================
+# If :ref:`get_cppad_sh.settings.include_mixed` is true,
+# the external packages listed below are also required.
+# Note that, for most cases, ``get_cppad_mixed.sh``
+# will get all the required packages.
+#
+# #. The `wget <https://www.gnu.org/software/wget>`_ program.
+# #. A fortran compiler.
+# #. The `gsl <http://gnuwin32.sourceforge.net/packages/gsl.htm>`_ library
+#    including its development headers.
+# #. `suitesparse <http://faculty.cse.tamu.edu/davis/SuiteSparse%suitesparse>`_
+#    package. Note that only cholmod is really required from suitesparse.
 #
 # Download
 # ********
@@ -385,9 +403,8 @@ sys.exit(0)
 #
 # | |tab| ``export DYLD_LIBRARY_PATH=$prefix/$libdir``
 #
-# In msys and cygwin you must adjust ``PATH`` instead:
-#
-# | |tab| ``export PATH=$prefix/$libdir:$PATH``
+# In msys2 and cygwin you do not need to set ``LD_LIBRARY_PATH`` because
+# static, instead of dynamic, libraries are used.
 #
 # PKG_CONFIG_PATH
 # ***************
