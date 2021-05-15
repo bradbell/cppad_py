@@ -43,7 +43,7 @@
 # ``build/prefix`` or an absolute path; e.g., ``/usr/local``.
 # It may include the shell variable ``$HOME`` but no other variables:
 # {xsrst_code sh}
-cmake_install_prefix="$HOME/prefix/cppad"
+cmake_install_prefix="$HOME/prefix/cppad_py"
 # {xsrst_code}
 # If this prefix does no start with ``/``, it is relative to the
 # :ref:`top_source_directory<setup_py.download.top_source_directory>`.

@@ -5,6 +5,7 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
+
 {xsrst_begin whats_new_2021}
 
 .. include:: ../preamble.rst
@@ -18,6 +19,14 @@
 
 CppAD Py Changes During 2021
 ############################
+#. Advance to cppad_mixed-20210515.
+   This avoids running the cppad_mixed tests during ``bin/get_cppad_mixed.sh``
+#. Change the default :ref:`get_cppad_sh.settings.cmake_install_prefix` from
+   ``$HOME/prefix/cppad`` to ``$HOME/prefix/cppad_py``.
+
+05-15
+*****
+
 
 05-11
 *****
