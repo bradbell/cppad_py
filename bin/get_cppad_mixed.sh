@@ -125,8 +125,10 @@ then
 else
     optimize='no'
 fi
-# install options
-echo 'edit build/external/cppad_mixed.git/bin/run_cmake.sh.sh'
+#
+# transfer cppad_py install options to cppad_mixed run_cmake.sh
+dir=$(pwd)
+echo "edit $dir/bin/run_cmake.sh"
 sed \
     -e "s|^verbose_makefile=.*|verbose_makefile='no'|" \
     -e "s|^build_type=.*|build_type='$build_type'|" \
@@ -139,6 +141,31 @@ sed \
     bin/run_cmake.sh > run_cmake.$$
 mv run_cmake.$$ bin/run_cmake.sh
 chmod +x bin/run_cmake.sh
+#
+# check edit
+list="
+    ^verbose_makefile='no'
+    ^build_type='$build_type'
+    ^cmake_install_prefix='$cmake_install_prefix'
+    ^cmake_libdir='$libdir'
+    ^ldlt_cholmod='yes'
+    ^optimize_cppad_function='$optimize'
+    ^for_hes_sparsity='yes'
+"
+for pattern in $list
+do
+    if ! grep "$pattern" bin/run_cmake.sh > /dev/null
+    then
+        echo "get_cppad_mixed.sh: Edit of $dir/bin/run_cmake.sh failed"
+        exit 1
+    fi
+done
+# $extra_cxx_flags my have spaces in it
+if ! grep "^extra_cxx_flags='$extra_cxx_flags'"  bin/run_cmake.sh > /dev/null
+then
+    echo "get_cppad_mixed.sh: Edit of $dir/bin/run_cmake.sh failed"
+    exit 1
+fi
 #
 # supress call to cppad_mixed build_type.sh
 echo 'edit build/external/cppad_mixed.git/bin/example_install.sh'
