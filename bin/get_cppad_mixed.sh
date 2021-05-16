@@ -42,7 +42,7 @@
 # ---------------------------------------------------------------------------
 # CppAD mixed version information
 web_page='https://github.com/bradbell/cppad_mixed.git'
-hash_key='7ec4ecf922f58fa78608db7907fb557a4dba3f92'
+hash_key='56ce3bdecfa933fc396416f3ff75e6b969b0b4d4'
 version='20210515'
 # --------------------------------------------------------------------------
 name='bin/get_cppad_mixed.sh'
@@ -125,7 +125,7 @@ then
 else
     optimize='no'
 fi
-#
+# ----------------------------------------------------------------------------
 # transfer cppad_py install options to cppad_mixed run_cmake.sh
 dir=$(pwd)
 echo "edit $dir/bin/run_cmake.sh"
@@ -166,19 +166,12 @@ then
     echo "get_cppad_mixed.sh: Edit of $dir/bin/run_cmake.sh failed"
     exit 1
 fi
-#
-# supress call to cppad_mixed build_type.sh
-echo 'edit build/external/cppad_mixed.git/bin/example_install.sh'
-sed \
-    -e 's|bin/build_type.sh .*|:|' \
-    -e 's|for cmd in check speed install|for cmd in install|' \
-    bin/example_install.sh > example_install.$$
-mv example_install.$$ bin/example_install.sh
-chmod +x bin/example_install.sh
+# -----------------------------------------------------------------------------
 # -----------------------------------------------------------------------------
 # cppad_mixed example install
 run_test='false'
-echo_eval bin/example_install.sh $run_test
+replace='false'
+echo_eval bin/example_install.sh $run_test $replace
 #
 # -----------------------------------------------------------------------------
 echo 'get_cppad_mixed.sh: OK'
