@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -319,6 +319,18 @@ The following is a wish list for future improvements to ``xsrst.py``:
 
 .. _stackoverflow: https://stackoverflow.com/questions/1686837/
    sphinx-documentation-tool-set-tab-width-in-output
+
+Subset Documentation
+====================
+Have a way to specify subsets of the documentation by a group name.
+For example ``{xsrst_begin`` `section_name group_1 group_2}` would say that
+this documentation should be included if `group_1` or `group_2`
+is specified by the ``xsrst`` command line.
+If not groups were specified, all groups would be included.
+
+Spelling
+========
+Automatically ignore more words that are sphinx or latex commands.
 
 Tabs
 ====
