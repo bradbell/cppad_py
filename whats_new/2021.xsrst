@@ -20,6 +20,12 @@
 CppAD Py Changes During 2021
 ############################
 
+07-17
+*****
+The script ``example/python/check_all.py`` did not work with python 3.9.5 on
+Fedora. The problem was fixed by using absolute paths instead of the
+current directory ``./`` in the python path.
+
 06-02
 *****
 Add :ref:`xsrst_py.wish_list.subset_documentation` to the wish list.

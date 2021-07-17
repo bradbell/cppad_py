@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -14,7 +14,7 @@ sys.path.insert(0, '.')
 error_count = 0
 # -----------------------------------------------------------------------------
 def run_test(module_name, fun_name) :
-    namespace = {} # not needed in Python 2
+    namespace = {}
     exec( 'import ' + module_name,                         namespace )
     exec( 'ok = '   + module_name + '.' + fun_name + '()', namespace )
     ok = namespace['ok']
@@ -24,8 +24,9 @@ def run_test(module_name, fun_name) :
         print('python: ' + name + ': Error')
     return ok
 # -----------------------------------------------------------------------------
-os.chdir(top_srcdir + '/test/mixed')
 if '@include_mixed@' == 'true' :
+    os.chdir(top_srcdir + '/test/mixed')
+    sys.path[0] = os.getcwd()
     test_list = [
         'hes_fixed_obj',
     ]
@@ -33,9 +34,10 @@ if '@include_mixed@' == 'true' :
         ok = run_test(name, name)
         if not ok :
             error_count += 1
-os.chdir(cur_srcdir)
 # -----------------------------------------------------------------------------
 if '@include_mixed@' == 'true' :
+    os.chdir(cur_srcdir + '/mixed')
+    sys.path[0] = os.getcwd()
     mixed_list = [
         'ctor_xam',
         'fatal_error_xam',
@@ -49,13 +51,13 @@ if '@include_mixed@' == 'true' :
         'ran_likelihood_xam',
         'warning_xam',
     ]
-    os.chdir('mixed')
     for name in mixed_list :
         ok = run_test(name, name)
         if not ok :
             error_count += 1
-    os.chdir('..')
 # -----------------------------------------------------------------------------
+os.chdir(cur_srcdir + '/core')
+sys.path[0] = os.getcwd()
 core_list = [
     'a_double_cond_assign_xam',
     'a_double_property_xam',
@@ -85,13 +87,13 @@ core_list = [
     'sparse_hes_pattern_xam',
     'exception_xam',
 ]
-os.chdir('core')
 for name in core_list :
     ok = run_test(name, name)
     if not ok :
         error_count += 1
-os.chdir('..')
 # -----------------------------------------------------------------------------
+os.chdir(cur_srcdir + '/numeric')
+sys.path[0] = os.getcwd()
 numeric_list = [
     'simple_inv_xam',
     'optimize_fun_xam',
@@ -101,12 +103,10 @@ numeric_list = [
     'seirwd_model_xam',
     # 'covid_19_xam', is left out because it is slow and uses matplotlib
 ]
-os.chdir('numeric')
 for name in numeric_list :
     ok = run_test(name, name)
     if not ok :
         error_count += 1
-os.chdir('..')
 # -----------------------------------------------------------------------------
 if error_count > 0 :
     print('python: check_all: error_count = ', error_count)

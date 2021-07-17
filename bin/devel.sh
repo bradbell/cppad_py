@@ -34,6 +34,7 @@ ignore_files='
     sphinx/_static/css/custom.css
     sphinx/test_out/
     sphinx/spelling
+    sphinx/test_out/*.rst
 '
 # ----------------------------------------------------------------------------
 echo "copyright_owner=$copyright_owner"

@@ -508,6 +508,32 @@ The following is a wish list for future improvements to ``xsrst.py``:
    sphinx-documentation-tool-set-tab-width-in-output
 
 .. meta::
+   :keywords: subset, documentation
+
+.. index:: subset, documentation
+
+.. _xsrst_py.wish_list.subset_documentation:
+
+Subset Documentation
+====================
+Have a way to specify subsets of the documentation by a group name.
+For example ``{xsrst_begin`` `section_name group_1 group_2}` would say that
+this documentation should be included if `group_1` or `group_2`
+is specified by the ``xsrst`` command line.
+If not groups were specified, all groups would be included.
+
+.. meta::
+   :keywords: spelling
+
+.. index:: spelling
+
+.. _xsrst_py.wish_list.spelling:
+
+Spelling
+========
+Automatically ignore more words that are sphinx or latex commands.
+
+.. meta::
    :keywords: tabs
 
 .. index:: tabs
