@@ -20,6 +20,11 @@
 CppAD Py Changes During 2021
 ############################
 
+08-08
+*****
+The :ref:`xsrst_py`` spell checker was changed to automatically
+ignore web addresses that begin with ``http://`` for ``https://``.
+
 07-17
 *****
 The script ``example/python/check_all.py`` did not work with python 3.9.5 on

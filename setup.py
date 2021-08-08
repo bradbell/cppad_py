@@ -276,7 +276,6 @@ sys.exit(0)
 # .. include:: ../preamble.rst
 #
 # {xsrst_spell
-#   bradbell
 #   cppad
 #   srcdir
 #   cmake

@@ -32,9 +32,6 @@ xsrst
 rst
 #
 # example words in sphinx commands
-http
-https
-www
 html
 github
 csv

@@ -1488,6 +1488,7 @@ def spell_command(
     section_tmp = pattern['file_2'].sub('', section_tmp)
     section_tmp = pattern['file_3'].sub('', section_tmp)
     section_tmp = pattern['child'].sub('', section_tmp)
+    section_tmp = pattern['http'].sub('', section_tmp)
     #
     # command with section names and headings as arguments
     section_tmp = pattern['ref_1'].sub('', section_tmp)
@@ -2191,7 +2192,7 @@ index_list = list()
 for regexp in file2list(keyword_path) :
     index_list.append( re.compile( regexp ) )
 #
-# regular expresssions used for spell command
+# regular expresssions only used for spell command
 pattern = dict()
 pattern['word']        = re.compile( r'[\\A-Za-z][a-z]*' )
 pattern['double_word'] = re.compile( r'\s+([\\A-Za-z][a-z]*)\s+\1[^a-z]' )
@@ -2199,6 +2200,7 @@ pattern['ref_1']       = re.compile( r':ref:`[^\n<`]+`' )
 pattern['url_1']       = re.compile( r'`<[^\n>`]+>`_' )
 pattern['ref_2']       = re.compile( r':ref:`([^\n<`]+)<[^\n>`]+>`' )
 pattern['url_2']       = re.compile( r'`([^\n<`]+)<[^\n>`]+>`_' )
+pattern['http']        = re.compile( r'(https|http)://[A-Za-z0-9_/.]*' )
 #
 # regular expressions corresponding to xsrst commands
 pattern['line']    = re.compile(r'\{xsrst_line ([0-9]+)@')
