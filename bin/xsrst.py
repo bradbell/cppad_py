@@ -1489,6 +1489,7 @@ def spell_command(
     section_tmp = pattern['file_3'].sub('', section_tmp)
     section_tmp = pattern['child'].sub('', section_tmp)
     section_tmp = pattern['http'].sub('', section_tmp)
+    section_tmp = pattern['directive'].sub('', section_tmp)
     #
     # command with section names and headings as arguments
     section_tmp = pattern['ref_1'].sub('', section_tmp)
@@ -2201,6 +2202,7 @@ pattern['url_1']       = re.compile( r'`<[^\n>`]+>`_' )
 pattern['ref_2']       = re.compile( r':ref:`([^\n<`]+)<[^\n>`]+>`' )
 pattern['url_2']       = re.compile( r'`([^\n<`]+)<[^\n>`]+>`_' )
 pattern['http']        = re.compile( r'(https|http)://[A-Za-z0-9_/.]*' )
+pattern['directive']   = re.compile( r'\n[ ]*[.][.][ ]+[a-z-]+::' )
 #
 # regular expressions corresponding to xsrst commands
 pattern['line']    = re.compile(r'\{xsrst_line ([0-9]+)@')

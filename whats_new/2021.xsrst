@@ -22,8 +22,10 @@ CppAD Py Changes During 2021
 
 08-08
 *****
-The :ref:`xsrst_py`` spell checker was changed to automatically
+The :ref:`xsrst_py` spell checker was changed to automatically
 ignore web addresses that begin with ``http://`` for ``https://``.
+It was also changed to automatically ignore sphinx directives;
+e.g. ``.. csv-table::``.
 
 07-17
 *****
