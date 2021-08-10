@@ -948,16 +948,17 @@ def remove_line_numbers(pattern, data_in) :
 # ---------------------------------------------------------------------------
 def init_spell_checker(spell_list) :
     remove_from_dictionary = [
+        # BEGIN_SORT_THIS_LINE_PLUS_1
         'af',
         'anl',
         'ap',
         'av',
         'bv',
-        'dv',
         'cg',
         'cpp',
         'dep',
         'dir',
+        'dv',
         'exp',
         'gcc',
         'hes',
@@ -966,37 +967,39 @@ def init_spell_checker(spell_list) :
         'jac',
         'len',
         'mcs',
-        'nr',
         'nc',
         'nd',
+        'nr',
         'op',
         'prt',
         'ptr',
-        'rel',
         'rc',
+        'rel',
         'sim',
         'std',
         'thier',
         'var',
         'vec',
-        'yi',
         'xp',
+        'yi',
+        # END_SORT_THIS_LINE_MINUS_1
     ]
     add_to_dictionary = [
+        # BEGIN_SORT_THIS_LINE_PLUS_1
         'aborts',
         'covariate',
         'covariates',
         'debug',
         'destructor',
         'exponentiation',
+        'hessians',
         'identifiability',
+        'initialization',
         'initialize',
         'initialized',
+        'invertible',
         'jacobian',
         'jacobians',
-        'hessians',
-        'initialization',
-        'invertible',
         'likelihoods',
         'messaging',
         'modeled',
@@ -1006,34 +1009,44 @@ def init_spell_checker(spell_list) :
         'piecewise',
         'unary',
         'unicode',
-        'wikipedia',
         'wiki',
+        'wikipedia',
+        # END_SORT_THIS_LINE_MINUS_1
         #
         # greek letter latex commands
+        # BEGIN_SORT_THIS_LINE_PLUS_1
         r'\alpha',
         r'\beta',
-        r'\gamma',
+        r'\chi',
         r'\delta',
         r'\epsilon',
-        r'\zeta',
         r'\eta',
-        r'\theta',
+        r'\gamma',
         r'\iota',
         r'\kappa',
         r'\lambda',
         r'\mu',
         r'\nu',
-        r'\xi',
+        r'\omega',
         r'\omicron',
+        r'\phi',
         r'\pi',
+        r'\psi',
         r'\rho',
         r'\sigma',
         r'\tau',
+        r'\theta',
         r'\upsilon',
-        r'\phi',
-        r'\chi',
-        r'\psi',
-        r'\omega',
+        r'\xi',
+        r'\zeta',
+        # END_SORT_THIS_LINE_MINUS_1
+        #
+        # common latex commands
+        # BEGIN_SORT_THIS_LINE_PLUS_1
+        r'\exp',
+        r'\log',
+        r'\rightarrow',
+        # END_SORT_THIS_LINE_MINUS_1
     ]
     #
     spell_checker = spellchecker.SpellChecker(distance=1)
