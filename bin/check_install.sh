@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -47,6 +47,10 @@ then
             echo_eval rm -r $name
         fi
     done
+fi
+if [ -e $HOME/bin/xsrst.py ]
+then
+    echo_eval rm -r $HOME/bin/xsrst.py
 fi
 #
 if echo 'import cppad_py' | python3 >& /dev/null
@@ -120,6 +124,9 @@ then
     echo "check_install.sh: $xsrst_path is not an executale file"
     exit 1
 fi
+# ---------------------------------------------------------------------------
+# replace bin/xsrst.py with current development version
+echo_eval cp bin/xsrst.py $HOME/bin/xsrst.py
 # ---------------------------------------------------------------------------
 echo 'check_install.sh: OK'
 exit 0
