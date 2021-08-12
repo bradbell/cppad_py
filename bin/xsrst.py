@@ -1442,7 +1442,8 @@ def child_commands(
         if match is None :
             msg  = 'The file ' + child_file + '\n'
             msg += 'in the ' + command + ' command does not contain any '
-            msg += 'begin commands'
+            msg += 'begin commands.\n'
+            msg += 'Note the restrictions on the characters in a section name.'
             sys_exit(msg,
                 fname=file_in, sname=section_name, line=child_line
             )
