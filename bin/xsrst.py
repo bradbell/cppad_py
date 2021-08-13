@@ -786,6 +786,10 @@ import spellchecker
 import shutil
 import filecmp
 # ---------------------------------------------------------------------------
+# global variables
+# ---------------------------------------------------------------------------
+pattern_line = re.compile(r'\{xsrst_line ([0-9]+)@')
+# ---------------------------------------------------------------------------
 # functions
 # ---------------------------------------------------------------------------
 def replace_section_number(file_data, section_number) :
@@ -1090,7 +1094,7 @@ def sys_exit(msg, fname=None, sname=None, match=None, data=None, line=None) :
         assert fname != None
         assert data != None
         assert line == None
-        match_line  = pattern['line'].search( data[match.start() :] )
+        match_line  = pattern_line.search( data[match.start() :] )
         assert match_line
         line = match_line.group(1)
     if line != None :
@@ -2234,7 +2238,7 @@ def main() :
     pattern['directive']   = re.compile( r'\n[ ]*[.][.][ ]+[a-z-]+::' )
     #
     # regular expressions corresponding to xsrst commands
-    pattern['line']    = re.compile(r'\{xsrst_line ([0-9]+)@')
+    pattern['line']    = pattern_line
     pattern['suspend'] = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
     pattern['resume']  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
     pattern['code']    = re.compile(
