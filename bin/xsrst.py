@@ -776,6 +776,8 @@ Example
 {xsrst_end comment_ch_cmd}
 """
 # ---------------------------------------------------------------------------
+# imports
+# ---------------------------------------------------------------------------
 import sys
 import re
 import os
@@ -783,6 +785,43 @@ import pdb
 import spellchecker
 import shutil
 import filecmp
+# ----------------------------------------------------------------------------
+# global variables
+# ----------------------------------------------------------------------------
+# regular expresssions only used for spell command
+pattern = dict()
+pattern['word']        = re.compile( r'[\\A-Za-z][a-z]*' )
+pattern['double_word'] = re.compile( r'\s+([\\A-Za-z][a-z]*)\s+\1[^a-z]' )
+pattern['ref_1']       = re.compile( r':ref:`[^\n<`]+`' )
+pattern['url_1']       = re.compile( r'`<[^\n>`]+>`_' )
+pattern['ref_2']       = re.compile( r':ref:`([^\n<`]+)<[^\n>`]+>`' )
+pattern['url_2']       = re.compile( r'`([^\n<`]+)<[^\n>`]+>`_' )
+pattern['http']        = re.compile( r'(https|http)://[A-Za-z0-9_/.]*' )
+pattern['directive']   = re.compile( r'\n[ ]*[.][.][ ]+[a-z-]+::' )
+#
+# regular expressions corresponding to xsrst commands
+pattern['line']    = re.compile(r'\{xsrst_line ([0-9]+)@')
+pattern['suspend'] = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
+pattern['resume']  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
+pattern['code']    = re.compile(
+    r'\n[^\n`]*\{xsrst_code([^}]*)\}[^\n`]*'
+)
+pattern['spell']   = re.compile(
+    r'\n[ \t]*\{xsrst_spell([^}]*)\}'
+)
+arg = r'([^{]*)\{xsrst_line ([0-9]+)@\n'
+lin = r'[ \t]*\{xsrst_line ([0-9]+)@\n'
+pattern['file_2']  = re.compile(
+    r'\n[ \t]*\{xsrst_file' + lin + arg + arg + r'[ \t]*\}' + lin
+)
+pattern['file_3']  = re.compile(
+    r'\n[ \t]*\{xsrst_file' + lin + arg + arg + arg + r'[ \t]*\}' + lin
+)
+pattern['child']   = re.compile(
+    r'\n[ \t]*\{xsrst_(children|child_list|child_table)([^}]*)\}'
+)
+# ---------------------------------------------------------------------------
+# functions
 # ---------------------------------------------------------------------------
 def replace_section_number(file_data, section_number) :
     pattern   = '\n{xsrst_section_number}'
@@ -2210,39 +2249,6 @@ spell_checker        = init_spell_checker(spell_list)
 index_list = list()
 for regexp in file2list(keyword_path) :
     index_list.append( re.compile( regexp ) )
-#
-# regular expresssions only used for spell command
-pattern = dict()
-pattern['word']        = re.compile( r'[\\A-Za-z][a-z]*' )
-pattern['double_word'] = re.compile( r'\s+([\\A-Za-z][a-z]*)\s+\1[^a-z]' )
-pattern['ref_1']       = re.compile( r':ref:`[^\n<`]+`' )
-pattern['url_1']       = re.compile( r'`<[^\n>`]+>`_' )
-pattern['ref_2']       = re.compile( r':ref:`([^\n<`]+)<[^\n>`]+>`' )
-pattern['url_2']       = re.compile( r'`([^\n<`]+)<[^\n>`]+>`_' )
-pattern['http']        = re.compile( r'(https|http)://[A-Za-z0-9_/.]*' )
-pattern['directive']   = re.compile( r'\n[ ]*[.][.][ ]+[a-z-]+::' )
-#
-# regular expressions corresponding to xsrst commands
-pattern['line']    = re.compile(r'\{xsrst_line ([0-9]+)@')
-pattern['suspend'] = re.compile( r'\n[ \t]*\{xsrst_suspend\}' )
-pattern['resume']  = re.compile( r'\n[ \t]*\{xsrst_resume\}' )
-pattern['code']    = re.compile(
-    r'\n[^\n`]*\{xsrst_code([^}]*)\}[^\n`]*'
-)
-pattern['spell']   = re.compile(
-    r'\n[ \t]*\{xsrst_spell([^}]*)\}'
-)
-arg = r'([^{]*)\{xsrst_line ([0-9]+)@\n'
-lin = r'[ \t]*\{xsrst_line ([0-9]+)@\n'
-pattern['file_2']  = re.compile(
-    r'\n[ \t]*\{xsrst_file' + lin + arg + arg + r'[ \t]*\}' + lin
-)
-pattern['file_3']  = re.compile(
-    r'\n[ \t]*\{xsrst_file' + lin + arg + arg + arg + r'[ \t]*\}' + lin
-)
-pattern['child']   = re.compile(
-    r'\n[ \t]*\{xsrst_(children|child_list|child_table)([^}]*)\}'
-)
 # -----------------------------------------------------------------------------
 # process each file in the list
 section_info     = list()
