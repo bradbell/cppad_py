@@ -1965,6 +1965,7 @@ def process_headings(
 # after all the sections have been output and replaced during the
 # table_of_contents computation.
 def compute_output(
+    num_remove,
     pattern,
     sphinx_dir,
     file_in,
@@ -2250,165 +2251,167 @@ index_list = list()
 for regexp in file2list(keyword_path) :
     index_list.append( re.compile( regexp ) )
 # -----------------------------------------------------------------------------
-# process each file in the list
-section_info     = list()
-file_info_stack  = list()
-file_info_done   = list()
-info = {
-    'file_in'        : root_file,
-    'parent_file'    : None,
-    'parent_section' : None,
-}
-file_info_stack.append(info)
-while 0 < len(file_info_stack) :
-    # pop first element is stack so that order in pdf file and
-    # table of contents is correct
-    info  = file_info_stack.pop(0)
-    #
-    for info_tmp in file_info_done :
-        if info_tmp['file_in'] == info['file_in'] :
-            msg  = 'The file ' + info['file_in'] + ' is included twice\n'
-            msg += 'Once in ' + info_tmp['parent_file'] + '\n'
-            msg += 'and again in ' + info['parent_file'] + '\n'
-            sys_exit(msg)
-    file_info_done.append(info)
-    #
-    file_in              = info['file_in']
-    parent_file          = info['parent_file']
-    parent_file_section  = info['parent_section']
-    assert os.path.isfile(file_in)
-    #
-    # get xsrst docuemntation in this file
-    this_file_info = file2file_info(
-        section_info,
-        file_in,
-    )
-    #
-    # determine index of parent section for this file
-    this_file_parent_section_index = None
-    for i in range( len(this_file_info) ) :
-        if this_file_info[i]['is_parent'] :
-            this_file_parent_section_index = len(section_info) + i
-    if this_file_parent_section_index :
-        if len(this_file_info) < 2 :
-            msg  = 'xsrst_begin_parent appreas in a file with only one section'
-            sys_exit(msg, fname=file_in, sname=section_name)
-    #
-    # add this files sections to section_info
-    for i_file in range( len(this_file_info) ) :
-        # ----------------------------------------------------------------
-        # section_name, section_data
-        section_name = this_file_info[i_file]['section_name']
-        section_data = this_file_info[i_file]['section_data']
-        is_parent    = this_file_info[i_file]['is_parent']
-        if is_parent or this_file_parent_section_index is None :
-            parent_section = parent_file_section
-        else :
-            parent_section = this_file_parent_section_index
-        #
-        section_info.append( {
-            'section_name'   : section_name,
-            'file_in'        : file_in,
-            'parent_section' : parent_section
-        } )
-        # ----------------------------------------------------------------
-        # process suspend commands
-        section_data = suspend_command(
-            pattern,
-            section_data,
-            file_in,
-            section_name,
-        )
-        # ---------------------------------------------------------------
-        # num_remove, indent_ch
-        num_remove = indent_to_remove(
-            section_data,
-            file_in,
-            section_name
-        )
-        # ----------------------------------------------------------------
-        # process spell commands
-        # do after suspend and before other commands to help ignore sections
-        # of text that do not need spell checking
-        section_data = spell_command(
-            pattern,
-            section_data,
-            file_in,
-            section_name,
-            spell_checker,
-        )
-        # ----------------------------------------------------------------
-        # process child command
-        section_data, child_file, child_section = child_commands(
-            pattern,
-            section_data,
-            file_in,
-            section_name,
-        )
-        section_index = len(section_info) - 1
-        for file_tmp in child_file :
-            file_info_stack.append( {
-                'file_in'        : file_tmp,
-                'parent_file'    : file_in,
-                'parent_section' : section_index,
-            } )
-        # ----------------------------------------------------------------
-        # remove characters on same line as {xsrst_code}
-        section_data = isolate_code_command(
-            pattern,
-            section_data,
-            file_in,
-            section_name,
-        )
-        # ---------------------------------------------------------------
-        # file command: convert start and stop to line numbers
-        section_data = convert_file_command(
-            pattern,
-            section_data,
-            file_in,
-            section_name,
-        )
-        # ---------------------------------------------------------------
-        # add labels and indices corresponding to headings
-        section_data, section_title, pseudo_heading = \
-        process_headings(
-            pattern,
-            section_data,
-            num_remove,
-            file_in,
-            section_name,
-            index_list,
-        )
-        # section title is used by table_of_contents
-        section_info[section_index]['section_title'] = section_title
-        # ----------------------------------------------------------------
-        # list_children
-        # first section in each file may need to add to child list
-        list_children = list()
-        if is_parent :
-            for i in range( len(this_file_info) ) :
-                if i != i_file :
-                    list_children.append(  this_file_info[i]['section_name'] )
-        list_children = list_children + child_section
-        # ---------------------------------------------------------------
-        rst_output = compute_output(
-            pattern,
-            sphinx_dir,
-            file_in,
-            section_data,
-            list_children,
-            pseudo_heading,
-            section_name,
-            line_increment,
-        )
-        # ---------------------------------------------------------------
-        write_file(
-            tmp_dir,
-            section_name,
-            rst_output,
-        )
-# -----------------------------------------------------------------------------
 def main() :
+    # -------------------------------------------------------------------------
+    # process each file in the list
+    section_info     = list()
+    file_info_stack  = list()
+    file_info_done   = list()
+    info = {
+        'file_in'        : root_file,
+        'parent_file'    : None,
+        'parent_section' : None,
+    }
+    file_info_stack.append(info)
+    while 0 < len(file_info_stack) :
+        # pop first element is stack so that order in pdf file and
+        # table of contents is correct
+        info  = file_info_stack.pop(0)
+        #
+        for info_tmp in file_info_done :
+            if info_tmp['file_in'] == info['file_in'] :
+                msg  = 'The file ' + info['file_in'] + ' is included twice\n'
+                msg += 'Once in ' + info_tmp['parent_file'] + '\n'
+                msg += 'and again in ' + info['parent_file'] + '\n'
+                sys_exit(msg)
+        file_info_done.append(info)
+        #
+        file_in              = info['file_in']
+        parent_file          = info['parent_file']
+        parent_file_section  = info['parent_section']
+        assert os.path.isfile(file_in)
+        #
+        # get xsrst docuemntation in this file
+        this_file_info = file2file_info(
+            section_info,
+            file_in,
+        )
+        #
+        # determine index of parent section for this file
+        this_file_parent_section_index = None
+        for i in range( len(this_file_info) ) :
+            if this_file_info[i]['is_parent'] :
+                this_file_parent_section_index = len(section_info) + i
+        if this_file_parent_section_index :
+            if len(this_file_info) < 2 :
+                msg  = 'xsrst_begin_parent appreas in a file '
+                msg += 'that only has one section; i.e., no children.'
+                sys_exit(msg, fname=file_in, sname=section_name)
+        #
+        # add this files sections to section_info
+        for i_file in range( len(this_file_info) ) :
+            # ----------------------------------------------------------------
+            # section_name, section_data
+            section_name = this_file_info[i_file]['section_name']
+            section_data = this_file_info[i_file]['section_data']
+            is_parent    = this_file_info[i_file]['is_parent']
+            if is_parent or this_file_parent_section_index is None :
+                parent_section = parent_file_section
+            else :
+                parent_section = this_file_parent_section_index
+            #
+            section_info.append( {
+                'section_name'   : section_name,
+                'file_in'        : file_in,
+                'parent_section' : parent_section
+            } )
+            # ----------------------------------------------------------------
+            # process suspend commands
+            section_data = suspend_command(
+                pattern,
+                section_data,
+                file_in,
+                section_name,
+            )
+            # ---------------------------------------------------------------
+            # num_remove, indent_ch
+            num_remove = indent_to_remove(
+                section_data,
+                file_in,
+                section_name
+            )
+            # ----------------------------------------------------------------
+            # process spell commands
+            # do after suspend and before other commands to help ignore
+            # sections of text that do not need spell checking
+            section_data = spell_command(
+                pattern,
+                section_data,
+                file_in,
+                section_name,
+                spell_checker,
+            )
+            # ----------------------------------------------------------------
+            # process child command
+            section_data, child_file, child_section = child_commands(
+                pattern,
+                section_data,
+                file_in,
+                section_name,
+            )
+            section_index = len(section_info) - 1
+            for file_tmp in child_file :
+                file_info_stack.append( {
+                    'file_in'        : file_tmp,
+                    'parent_file'    : file_in,
+                    'parent_section' : section_index,
+                } )
+            # ----------------------------------------------------------------
+            # remove characters on same line as {xsrst_code}
+            section_data = isolate_code_command(
+                pattern,
+                section_data,
+                file_in,
+                section_name,
+            )
+            # ---------------------------------------------------------------
+            # file command: convert start and stop to line numbers
+            section_data = convert_file_command(
+                pattern,
+                section_data,
+                file_in,
+                section_name,
+            )
+            # ---------------------------------------------------------------
+            # add labels and indices corresponding to headings
+            section_data, section_title, pseudo_heading = \
+            process_headings(
+                pattern,
+                section_data,
+                num_remove,
+                file_in,
+                section_name,
+                index_list,
+            )
+            # section title is used by table_of_contents
+            section_info[section_index]['section_title'] = section_title
+            # ----------------------------------------------------------------
+            # list_children
+            # first section in each file may need to add to child list
+            list_children = list()
+            if is_parent :
+                for i in range( len(this_file_info) ) :
+                    if i != i_file :
+                        list_children.append(this_file_info[i]['section_name'])
+            list_children = list_children + child_section
+            # ---------------------------------------------------------------
+            rst_output = compute_output(
+                num_remove,
+                pattern,
+                sphinx_dir,
+                file_in,
+                section_data,
+                list_children,
+                pseudo_heading,
+                section_name,
+                line_increment,
+            )
+            # ---------------------------------------------------------------
+            write_file(
+                tmp_dir,
+                section_name,
+                rst_output,
+            )
     # -------------------------------------------------------------------------
     # xstst_automatic.rst
     output_data = '.. include:: ../preamble.rst\n'
@@ -2449,9 +2452,9 @@ def main() :
     assert section_info[0]['parent_section'] is None
     section_name = section_info[0]['section_name']
     #
-    pattern  = r'\n[ \t]*xsrst/'
-    pattern += section_name.replace('.', '[.]')
-    match_line = re.search(pattern, file_data)
+    pattern_tmp  = r'\n[ \t]*xsrst/'
+    pattern_tmp += section_name.replace('.', '[.]')
+    match_line = re.search(pattern_tmp, file_data)
     if match_line == None :
         msg  = 'The first section in the root_file is ' + section_name + '\n'
         msg += 'The following line:\n'
