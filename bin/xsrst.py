@@ -877,7 +877,9 @@ def replace_section_number(file_data, section_number) :
 # ---------------------------------------------------------------------------
 # create table of contents and replace '{xsrst_section_number}' commands
 # in *.rst files.
-def table_of_contents(target, section_info, level, count, section_index) :
+def table_of_contents(
+    tmp_dir, target, section_info, level, count, section_index
+) :
     assert level >= 1
     assert len(count) == level-1
     #
@@ -923,7 +925,7 @@ def table_of_contents(target, section_info, level, count, section_index) :
         if section_info[child_index]['parent_section'] == section_index :
             child_count[-1] += 1
             child_content += table_of_contents(
-                target, section_info, level + 1, child_count, child_index
+            tmp_dir, target, section_info, level + 1, child_count, child_index
             )
     #
     # if the number of children greater than one, put a blank line before
@@ -2166,92 +2168,91 @@ def write_file(
 # =============================================================================
 # main program
 # =============================================================================
-# check working directory
-if not os.path.isdir('.git') :
-    msg = 'must be executed from to top directory for this git repository\n'
-    sys_exit(msg)
-#
-# check number of command line arguments
-if len(sys.argv) != 5 and len(sys.argv) != 6 :
-    usage  = 'bin/xsrst.py target root_file sphinx_dir spelling keyword'
-    usage += ' [line_increment]'
-    sys_exit(usage)
-#
-# target
-target = sys.argv[1]
-if target != 'html' and target != 'pdf' :
-    msg  = 'target = ' + target + '\n'
-    msg += 'is not "html" or "pdf"'
-    sys_exit(msg)
-#
-# root_file
-root_file = sys.argv[2]
-if not os.path.isfile(root_file) :
-    msg  = 'root_file = ' + root_file + '\n'
-    msg += 'is not a file'
-    sys_exit(msg)
-#
-# sphinx_dir
-sphinx_dir      = sys.argv[3]
-if not os.path.isdir(sphinx_dir) :
-    msg  = 'sphinx_dir = ' + sphinx_dir + '\n'
-    msg += 'is not a sub-directory of current working directory'
-    sys_exit(msg)
-#
-# spelling
-spelling   = sys.argv[4]
-spell_path = sphinx_dir + '/' + spelling
-if not os.path.isfile(spell_path) :
-    msg  = 'sphinx_dir/spelling = ' + spell_path + '\n'
-    msg += 'is not a file'
-    sys_exit(msg)
-#
-# keyword
-keyword      = sys.argv[5]
-keyword_path = sphinx_dir + '/' + keyword
-if not os.path.isfile(keyword_path) :
-    msg  = 'sphinx_dir/keyword = ' + keyword_path + '\n'
-    msg += 'is not a file'
-    sys_exit(msg)
-#
-# line_increment
-if len(sys.argv) == 6 :
-    line_increment = 0
-else :
-    line_increment = int(sys.argv[7])
-    if line_increment < 1 :
-        msg += 'line_increment is not a positive integer'
-        sys_exit(msg)
-#
-# check for conf.y, index.rst
-for file_name in ['conf.py', 'index.rst'] :
-    file_path = sphinx_dir + '/' + file_name
-    if not os.path.isfile( file_path ) :
-        msg  = 'can not find the file ' + file_name + '\n'
-        msg += 'in sphinx_dir = ' + sphinx_dir
-        sys_exit(msg)
-#
-# xsrist_dir
-xsrst_dir = sphinx_dir + '/xsrst'
-if not os.path.isdir(xsrst_dir) :
-    os.mkdir(xsrst_dir)
-#
-# tmp_dir
-tmp_dir = xsrst_dir + '/tmp'
-if os.path.isdir(tmp_dir) :
-    shutil.rmtree(tmp_dir)
-os.mkdir(tmp_dir)
-#
-# spell_checker
-spell_list           = file2list(spell_path)
-spell_checker        = init_spell_checker(spell_list)
-#
-# index_list
-index_list = list()
-for regexp in file2list(keyword_path) :
-    index_list.append( re.compile( regexp ) )
-# -----------------------------------------------------------------------------
 def main() :
+    # check working directory
+    if not os.path.isdir('.git') :
+        msg = 'must be executed from to top directory for a git repository'
+        sys_exit(msg)
+    #
+    # check number of command line arguments
+    if len(sys.argv) != 5 and len(sys.argv) != 6 :
+        usage  = 'bin/xsrst.py target root_file sphinx_dir spelling keyword'
+        usage += ' [line_increment]'
+        sys_exit(usage)
+    #
+    # target
+    target = sys.argv[1]
+    if target != 'html' and target != 'pdf' :
+        msg  = 'target = ' + target + '\n'
+        msg += 'is not "html" or "pdf"'
+        sys_exit(msg)
+    #
+    # root_file
+    root_file = sys.argv[2]
+    if not os.path.isfile(root_file) :
+        msg  = 'root_file = ' + root_file + '\n'
+        msg += 'is not a file'
+        sys_exit(msg)
+    #
+    # sphinx_dir
+    sphinx_dir      = sys.argv[3]
+    if not os.path.isdir(sphinx_dir) :
+        msg  = 'sphinx_dir = ' + sphinx_dir + '\n'
+        msg += 'is not a sub-directory of current working directory'
+        sys_exit(msg)
+    #
+    # spelling
+    spelling   = sys.argv[4]
+    spell_path = sphinx_dir + '/' + spelling
+    if not os.path.isfile(spell_path) :
+        msg  = 'sphinx_dir/spelling = ' + spell_path + '\n'
+        msg += 'is not a file'
+        sys_exit(msg)
+    #
+    # keyword
+    keyword      = sys.argv[5]
+    keyword_path = sphinx_dir + '/' + keyword
+    if not os.path.isfile(keyword_path) :
+        msg  = 'sphinx_dir/keyword = ' + keyword_path + '\n'
+        msg += 'is not a file'
+        sys_exit(msg)
+    #
+    # line_increment
+    if len(sys.argv) == 6 :
+        line_increment = 0
+    else :
+        line_increment = int(sys.argv[7])
+        if line_increment < 1 :
+            msg += 'line_increment is not a positive integer'
+            sys_exit(msg)
+    #
+    # check for conf.y, index.rst
+    for file_name in ['conf.py', 'index.rst'] :
+        file_path = sphinx_dir + '/' + file_name
+        if not os.path.isfile( file_path ) :
+            msg  = 'can not find the file ' + file_name + '\n'
+            msg += 'in sphinx_dir = ' + sphinx_dir
+            sys_exit(msg)
+    #
+    # xsrist_dir
+    xsrst_dir = sphinx_dir + '/xsrst'
+    if not os.path.isdir(xsrst_dir) :
+        os.mkdir(xsrst_dir)
+    #
+    # tmp_dir
+    tmp_dir = xsrst_dir + '/tmp'
+    if os.path.isdir(tmp_dir) :
+        shutil.rmtree(tmp_dir)
+    os.mkdir(tmp_dir)
+    #
+    # spell_checker
+    spell_list           = file2list(spell_path)
+    spell_checker        = init_spell_checker(spell_list)
+    #
+    # index_list
+    index_list = list()
+    for regexp in file2list(keyword_path) :
+        index_list.append( re.compile( regexp ) )
     # -------------------------------------------------------------------------
     # process each file in the list
     section_info     = list()
@@ -2427,7 +2428,7 @@ def main() :
     count         = list()
     section_index = 0
     output_data  += table_of_contents(
-        target, section_info, level, count, section_index
+        tmp_dir, target, section_info, level, count, section_index
     )
     if target == 'html' :
         # Link to Index
