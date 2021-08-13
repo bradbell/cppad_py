@@ -29,10 +29,11 @@ because ``children.py`` does not have a
     :lines: 24-48
     :language: rst
 
-.. toctree::
-   :maxdepth: 1
+.. csv-table::
+    :header: "Child", "Title"
+    :widths: 20, 80
 
-   no_parent_res
+    "no_parent_res", :ref:`no_parent_res`
 
 ----
 

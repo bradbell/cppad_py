@@ -26,10 +26,11 @@ Comment Character Example
     :lines: 25-42
     :language: py
 
-.. toctree::
-   :maxdepth: 1
+.. csv-table::
+    :header: "Child", "Title"
+    :widths: 20, 80
 
-   comment_ch_res
+    "comment_ch_res", :ref:`comment_ch_res`
 
 ----
 

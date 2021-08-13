@@ -20,6 +20,16 @@
 CppAD Py Changes During 2021
 ############################
 
+08-12
+*****
+The :ref:`xsrst<xsrst_py>` navigation frame on the left would have a
+duplicate entry for each child of a section that started with
+
+| ``{xsrst_begin_parent`` *section_name* ``}``
+
+This has been fixed. In addition, the list of children for this case
+are now in a table.
+
 08-08
 *****
 The :ref:`xsrst_py` spell checker was changed to automatically

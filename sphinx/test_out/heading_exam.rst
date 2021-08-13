@@ -39,10 +39,11 @@ The heading above (Child Sections) is an example heading for the
 of a
 :ref:`parent section<xsrst_py.table_of_contents.parent_section>`.
 
-.. toctree::
-   :maxdepth: 1
+.. csv-table::
+    :header: "Child", "Title"
+    :widths: 20, 80
 
-   heading_res
+    "heading_res", :ref:`heading_res`
 
 ----
 

@@ -25,10 +25,11 @@ File Example
     :lines: 23-59
     :language: cpp
 
-.. toctree::
-   :maxdepth: 1
+.. csv-table::
+    :header: "Child", "Title"
+    :widths: 20, 80
 
-   file_res
+    "file_res", :ref:`file_res`
 
 ----
 

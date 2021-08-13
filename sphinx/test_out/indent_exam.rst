@@ -25,10 +25,11 @@ Indent Example
     :lines: 23-39
     :language: py
 
-.. toctree::
-   :maxdepth: 1
+.. csv-table::
+    :header: "Child", "Title"
+    :widths: 20, 80
 
-   indent_res
+    "indent_res", :ref:`indent_res`
 
 ----
 

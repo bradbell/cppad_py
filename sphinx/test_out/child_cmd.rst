@@ -134,7 +134,7 @@ You can place a heading directly before the links to make them easier to find.
 Example
 *******
 .. csv-table::
-    :header:  "Name", "Title"
+    :header:  "Child", "Title"
     :widths: 20, 80
 
     "no_parent_exam", :ref:`no_parent_exam`

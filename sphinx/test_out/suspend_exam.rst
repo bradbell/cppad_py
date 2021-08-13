@@ -25,10 +25,11 @@ Suspend Example
     :lines: 23-60
     :language: py
 
-.. toctree::
-   :maxdepth: 1
+.. csv-table::
+    :header: "Child", "Title"
+    :widths: 20, 80
 
-   suspend_res
+    "suspend_res", :ref:`suspend_res`
 
 ----
 

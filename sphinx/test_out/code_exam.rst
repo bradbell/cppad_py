@@ -25,10 +25,11 @@ Code Example
     :lines: 23-38
     :language: py
 
-.. toctree::
-   :maxdepth: 1
+.. csv-table::
+    :header: "Child", "Title"
+    :widths: 20, 80
 
-   code_res
+    "code_res", :ref:`code_res`
 
 ----
 

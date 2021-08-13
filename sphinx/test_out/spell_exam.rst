@@ -25,10 +25,11 @@ Spell Example
     :lines: 23-68
     :language: py
 
-.. toctree::
-   :maxdepth: 1
+.. csv-table::
+    :header: "Child", "Title"
+    :widths: 20, 80
 
-   spell_res
+    "spell_res", :ref:`spell_res`
 
 ----
 

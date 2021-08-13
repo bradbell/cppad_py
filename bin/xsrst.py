@@ -2047,7 +2047,7 @@ def compute_output(
             previous_empty = True
             if child_table_command:
                 rst_output += '.. csv-table::\n'
-                rst_output += '    :header:  "Name", "Title"\n'
+                rst_output += '    :header:  "Child", "Title"\n'
                 rst_output += '    :widths: 20, 80\n\n'
                 for child in list_children :
                     rst_output += '    "' + child + '"'
@@ -2082,11 +2082,15 @@ def compute_output(
     if not previous_empty :
         rst_output += '\n'
     #
+    # If there is no child command in this seciton, automatically generate
+    # links to the child sections at the end of the section.
     if len(list_children) > 0 and not has_child_command :
-        rst_output += '.. toctree::\n'
-        rst_output += '   :maxdepth: 1\n\n'
+        rst_output += '.. csv-table::\n'
+        rst_output += '    :header: "Child", "Title"\n'
+        rst_output += '    :widths: 20, 80\n\n'
         for child in list_children :
-            rst_output += '   ' + child + '\n'
+            rst_output += '    "' + child + '"'
+            rst_output += ', :ref:`' + child + '`\n'
         rst_output += '\n'
     #
     # sphinx transition
