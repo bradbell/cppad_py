@@ -2408,73 +2408,76 @@ while 0 < len(file_info_stack) :
             rst_output,
         )
 # -----------------------------------------------------------------------------
-# xstst_automatic.rst
-output_data = '.. include:: ../preamble.rst\n'
-#
-if target == 'pdf' :
-    # The top level heading is not included in pdf output
-    output_data += '\n'
-    output_data += 'Dummy Heading\n'
-    output_data += '#############\n'
-#
-# Table of Contents
-level         = 1
-count         = list()
-section_index = 0
-output_data  += table_of_contents(
-    target, section_info, level, count, section_index
-)
-if target == 'html' :
-    # Link to Index
-    output_data += '\n'
-    output_data += 'Link to Index\n'
-    output_data += '*************\n'
-    output_data += '* :ref:`genindex`\n'
-#
-file_out    = tmp_dir + '/' + 'xsrst_automatic.rst'
-file_ptr    = open(file_out, 'w')
-file_ptr.write(output_data)
-file_ptr.close()
-# -----------------------------------------------------------------------------
-# check section_name is in index.rst
-index_file   = sphinx_dir + '/index.rst'
-file_ptr     = open(index_file, 'r')
-file_data    = file_ptr.read()
-file_ptr.close()
-#
-# section_info[0] corresponds to the root section
-assert section_info[0]['file_in'] == root_file
-assert section_info[0]['parent_section'] is None
-section_name = section_info[0]['section_name']
-#
-pattern  = r'\n[ \t]*xsrst/'
-pattern += section_name.replace('.', '[.]')
-match_line = re.search(pattern, file_data)
-if match_line == None :
-    msg  = 'The first section in the root_file is ' + section_name + '\n'
-    msg += 'The following line:\n'
-    msg += '    xsrst/' + section_name + '\n'
-    msg += 'is missing from the toctree command in\n'
-    msg += index_file
-    sys_exit(msg)
-# -----------------------------------------------------------------------------
-# overwrite xsrst files that have changed and then remove temporary files
-tmp_list   = os.listdir(tmp_dir)
-xsrst_list = os.listdir(xsrst_dir)
-for name in tmp_list :
-    src = tmp_dir + '/' + name
-    des = xsrst_dir + '/' + name
-    if name.endswith('.rst') :
-        if name not in xsrst_list :
-           shutil.copyfile(src, des)
-        else :
-            if not filecmp.cmp(src, des, shallow=False) :
-                os.replace(src, des)
-for name in xsrst_list :
-    if name.endswith('.rst') :
-        if name not in tmp_list :
-            os.remove( xsrst_dir + '/' + name )
-shutil.rmtree(tmp_dir)
-# ----------------------------------------------------------------------------
+def main() :
+    # -------------------------------------------------------------------------
+    # xstst_automatic.rst
+    output_data = '.. include:: ../preamble.rst\n'
+    #
+    if target == 'pdf' :
+        # The top level heading is not included in pdf output
+        output_data += '\n'
+        output_data += 'Dummy Heading\n'
+        output_data += '#############\n'
+    #
+    # Table of Contents
+    level         = 1
+    count         = list()
+    section_index = 0
+    output_data  += table_of_contents(
+        target, section_info, level, count, section_index
+    )
+    if target == 'html' :
+        # Link to Index
+        output_data += '\n'
+        output_data += 'Link to Index\n'
+        output_data += '*************\n'
+        output_data += '* :ref:`genindex`\n'
+    #
+    file_out    = tmp_dir + '/' + 'xsrst_automatic.rst'
+    file_ptr    = open(file_out, 'w')
+    file_ptr.write(output_data)
+    file_ptr.close()
+    # -------------------------------------------------------------------------
+    # check section_name is in index.rst
+    index_file   = sphinx_dir + '/index.rst'
+    file_ptr     = open(index_file, 'r')
+    file_data    = file_ptr.read()
+    file_ptr.close()
+    #
+    # section_info[0] corresponds to the root section
+    assert section_info[0]['file_in'] == root_file
+    assert section_info[0]['parent_section'] is None
+    section_name = section_info[0]['section_name']
+    #
+    pattern  = r'\n[ \t]*xsrst/'
+    pattern += section_name.replace('.', '[.]')
+    match_line = re.search(pattern, file_data)
+    if match_line == None :
+        msg  = 'The first section in the root_file is ' + section_name + '\n'
+        msg += 'The following line:\n'
+        msg += '    xsrst/' + section_name + '\n'
+        msg += 'is missing from the toctree command in\n'
+        msg += index_file
+        sys_exit(msg)
+    # -------------------------------------------------------------------------
+    # overwrite xsrst files that have changed and then remove temporary files
+    tmp_list   = os.listdir(tmp_dir)
+    xsrst_list = os.listdir(xsrst_dir)
+    for name in tmp_list :
+        src = tmp_dir + '/' + name
+        des = xsrst_dir + '/' + name
+        if name.endswith('.rst') :
+            if name not in xsrst_list :
+               shutil.copyfile(src, des)
+            else :
+                if not filecmp.cmp(src, des, shallow=False) :
+                    os.replace(src, des)
+    for name in xsrst_list :
+        if name.endswith('.rst') :
+            if name not in tmp_list :
+                os.remove( xsrst_dir + '/' + name )
+    shutil.rmtree(tmp_dir)
+    # -------------------------------------------------------------------------
+main()
 print('xsrst.py: OK')
 sys.exit(0)
