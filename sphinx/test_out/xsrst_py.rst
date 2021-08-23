@@ -331,7 +331,7 @@ is in the file *sphinx_dir*\ ``/index.rst``
 
 .. index:: index.rst
 
-.. _xsrst_py.table_of_contents.toctree.index.rst:
+.. _xsrst_py.table_of_contents.toctree.index_rst:
 
 index.rst
 ---------

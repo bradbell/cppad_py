@@ -31,7 +31,7 @@ The source code for this example is indented similar to the
 
 .. index:: children.py, file
 
-.. _no_parent_res.children.py_file:
+.. _no_parent_res.children_py_file:
 
 children.py File
 ****************
@@ -43,7 +43,7 @@ the children_exam section linked below:
 
 .. index:: child, link, children.py
 
-.. _no_parent_res.child_link_children.py:
+.. _no_parent_res.child_link_children_py:
 
 Child Link children.py
 **********************

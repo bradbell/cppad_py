@@ -236,8 +236,8 @@ If there is no begin parent command in a file,
 all the sections in the file are children of the section containing the
 child command that included the file.
 
-Heading Links
-*************
+Links to Headings
+*****************
 - For each word in a heading,
   a link is included in the index from the word to the heading.
 
@@ -249,35 +249,40 @@ Heading Links
 
 - Headings can also be used to help find links to children
   of the current section; see the heading
-  :ref:`xsrst_py.heading_links.children` below.
+  :ref:`xsrst_py.links_to_headings.children` below.
 
-Section Level
-=============
+First Level
+===========
 Each :ref:`section<begin_cmd.section>` can have only one header at
 the first level which is a title for the section.
 The :ref:`section_name<begin_cmd.section_name>`
 is automatically used
 as a label for linking the title for a section; i.e., the
-following will link to the title for *section_name*:
+following two inputs will link to the title for *section_name*:
 
-|tab| ``:ref:``  ` *linking_text* :code:`<` *section_name* :code:`>` `
+1.  ``:ref:``\ \` *section_name*\ \`
+2.  ``:ref:``\ \`*linking_text*\ ``<``\ *section_name*\ ``>``\ \`
 
-where *linking_text* is the text the user sees.
+The *linking_text* in the second syntax is the text the user sees.
+The linking text for the first syntax is the title for the Section,
+not the *section_name* (which is used as an abbreviated title).
 
-Other Levels
+Other.Levels
 ============
-The label for linking a heading that is not at the first level
-is the label for the heading directly above it plus a dot character :code:`.`,
-plus a lower case version of the heading with spaces converted to
+The label for linking a heading that is not at the first level is the label
+for the heading directly above it plus a period character :code:`.`,
+plus a lower case version of the heading with spaces and periods converted to
 underbars :code:`_`. For example, the label for the heading for this
 paragraph is
 
-|tab| ``xsrst_py.headers_and_links.other_levels``.
+|tab| ``xsrst_py.links_to_headings.other_levels``
 
 This may seem verbose, but it helps keep the links up to date.
 If a heading changes, all the links to that heading will break.
 This identifies the links that should be checked
 to make sure they are still valid.
+Note that one uses the *section_name* ``xsrst_py``
+and not the title ``extract_sphinx_rst``.
 
 Children
 ========
@@ -1868,10 +1873,12 @@ def process_headings(
             for level in range( len(heading_list) ) :
                 if level == 0 :
                     label = section_name.lower().replace(' ', '_')
+                    label = label.replace('.', '_')
                     assert label == section_name
                 else :
                     heading = heading_list[level]
-                    label += '.' + heading['text'].lower().replace(' ', '_')
+                    text   = heading['text'].lower().replace(' ', '_')
+                    label += '.' + text.replace('.', '_')
             # include section link as link to first heading
             if len(heading_list) == 1 :
                 index = section_name

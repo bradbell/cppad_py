@@ -15,10 +15,17 @@
     msys
     cygwin
     setuptools
+    underbars
 }
 
 CppAD Py Changes During 2021
 ############################
+
+08-23
+*****
+The links for periods in a heading are now converted to underbars
+(so that periods are only between levels); see
+:ref:`Other.Levels<xsrst_py.links_to_headings.other_levels>` .
 
 08-12
 *****
