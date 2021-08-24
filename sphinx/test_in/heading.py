@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -19,7 +19,7 @@ Heading Example
 Child Sections
 **************
 The heading above (Child Sections) is an example heading for the
-:ref:`children<xsrst_py.heading_links.children>`
+:ref:`children<xsrst_py.links_to_headings.children>`
 of a
 :ref:`parent section<xsrst_py.table_of_contents.parent_section>`.
 
