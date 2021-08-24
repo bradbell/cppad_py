@@ -23,9 +23,11 @@ CppAD Py Changes During 2021
 
 08-23
 *****
+**API Change**\ :
 The links for periods in a heading are now converted to underbars
 (so that periods are only between levels); see
 :ref:`Other.Levels<xsrst_py.links_to_headings.other_levels>` .
+This is an API change for :ref:`xsrst.py<xsrst_py>`.
 
 08-12
 *****
