@@ -368,14 +368,14 @@ all the sections in the file are children of the section containing the
 child command that included the file.
 
 .. meta::
-   :keywords: heading, links
+   :keywords: links, to, headings
 
-.. index:: heading, links
+.. index:: links, to, headings
 
-.. _xsrst_py.heading_links:
+.. _xsrst_py.links_to_headings:
 
-Heading Links
-*************
+Links to Headings
+*****************
 - For each word in a heading,
   a link is included in the index from the word to the heading.
 
@@ -387,56 +387,61 @@ Heading Links
 
 - Headings can also be used to help find links to children
   of the current section; see the heading
-  :ref:`xsrst_py.heading_links.children` below.
+  :ref:`xsrst_py.links_to_headings.children` below.
 
 .. meta::
-   :keywords: section, level
+   :keywords: first, level
 
-.. index:: section, level
+.. index:: first, level
 
-.. _xsrst_py.heading_links.section_level:
+.. _xsrst_py.links_to_headings.first_level:
 
-Section Level
-=============
+First Level
+===========
 Each :ref:`section<begin_cmd.section>` can have only one header at
 the first level which is a title for the section.
 The :ref:`section_name<begin_cmd.section_name>`
 is automatically used
 as a label for linking the title for a section; i.e., the
-following will link to the title for *section_name*:
+following two inputs will link to the title for *section_name*:
 
-|tab| ``:ref:``  ` *linking_text* :code:`<` *section_name* :code:`>` `
+1.  ``:ref:``\ \` *section_name*\ \`
+2.  ``:ref:``\ \`*linking_text*\ ``<``\ *section_name*\ ``>``\ \`
 
-where *linking_text* is the text the user sees.
+The *linking_text* in the second syntax is the text the user sees.
+The linking text for the first syntax is the title for the Section,
+not the *section_name* (which is used as an abbreviated title).
 
 .. meta::
-   :keywords: other, levels
+   :keywords: other.levels
 
-.. index:: other, levels
+.. index:: other.levels
 
-.. _xsrst_py.heading_links.other_levels:
+.. _xsrst_py.links_to_headings.other_levels:
 
-Other Levels
+Other.Levels
 ============
-The label for linking a heading that is not at the first level
-is the label for the heading directly above it plus a dot character :code:`.`,
-plus a lower case version of the heading with spaces converted to
+The label for linking a heading that is not at the first level is the label
+for the heading directly above it plus a period character :code:`.`,
+plus a lower case version of the heading with spaces and periods converted to
 underbars :code:`_`. For example, the label for the heading for this
 paragraph is
 
-|tab| ``xsrst_py.headers_and_links.other_levels``.
+|tab| ``xsrst_py.links_to_headings.other_levels``
 
 This may seem verbose, but it helps keep the links up to date.
 If a heading changes, all the links to that heading will break.
 This identifies the links that should be checked
 to make sure they are still valid.
+Note that one uses the *section_name* ``xsrst_py``
+and not the title ``extract_sphinx_rst``.
 
 .. meta::
    :keywords: children
 
 .. index:: children
 
-.. _xsrst_py.heading_links.children:
+.. _xsrst_py.links_to_headings.children:
 
 Children
 ========
@@ -459,7 +464,7 @@ You can place a heading directly before the links to make them easier to find.
 
 .. index:: example
 
-.. _xsrst_py.heading_links.example:
+.. _xsrst_py.links_to_headings.example:
 
 Example
 =======
