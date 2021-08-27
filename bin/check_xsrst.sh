@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -26,7 +26,6 @@ fi
 echo_eval mkdir -p $test_dir
 list='
     conf.py
-    index.rst
     preamble.rst
     spelling
     keyword
@@ -39,8 +38,6 @@ done
 echo "sed -i $test_dir/conf.py -e s|^project *=.*|project = 'xsrst'|"
 sed -i $test_dir/conf.py -e "s|^project *=.*|project = 'xsrst'|"
 #
-echo "sed -i $test_dir/index.rst -e s|xsrst/cppad_py|xsrst/xsrst_py|"
-sed -i $test_dir/index.rst -e "s|xsrst/cppad_py|xsrst/xsrst_py|"
 # -----------------------------------------------------------------------------
 echo "bin/xsrst.py html bin/xsrst.py $test_dir spelling keyword"
 if ! bin/xsrst.py html bin/xsrst.py $test_dir spelling  keyword 2> xsrst.$$

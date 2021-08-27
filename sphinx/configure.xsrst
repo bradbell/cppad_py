@@ -5,7 +5,6 @@ Example xsrst Configuration Files
 
 {xsrst_child_list
     sphinx/conf.py
-    sphinx/index.rst
     sphinx/spelling
     sphinx/keyword
 }

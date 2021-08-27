@@ -37,9 +37,8 @@ Table of Contents
 | :ref:`10<configure>` Example xsrst Configuration Files
 |
 |  |space| :ref:`10.1<conf_py>` Example conf.py
-|  |space| :ref:`10.2<index_rst>` Example index.rst
-|  |space| :ref:`10.3<spelling>` Example Spelling File
-|  |space| :ref:`10.4<keyword>` Example Keyword File
+|  |space| :ref:`10.2<spelling>` Example Spelling File
+|  |space| :ref:`10.3<keyword>` Example Keyword File
 |
 
 Link to Index

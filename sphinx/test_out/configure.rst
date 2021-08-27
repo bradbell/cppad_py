@@ -7,7 +7,6 @@ configure
    :hidden:
 
    conf_py
-   index_rst
    spelling
    keyword
 
@@ -25,7 +24,6 @@ Example xsrst Configuration Files
 
 
 -  :ref:`conf_py`
--  :ref:`index_rst`
 -  :ref:`spelling`
 -  :ref:`keyword`
 

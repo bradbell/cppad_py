@@ -182,24 +182,6 @@ The command line argument *root_file* is the name of a file,
 relative to the top git repository directory.
 
 .. meta::
-   :keywords: root_section
-
-.. index:: root_section
-
-.. _xsrst_py.command_line_arguments.root_file.root_section:
-
-root_section
-------------
-If there is only one section in the *root_file*,
-the corresponding *section_name* is the *root_section* .
-If there is more than one section in the *root_file*, the file must have a
-:ref:`begin_cmd.parent_section` and the corresponding *section_name*
-is the *root_section*.
-The file *sphinx_dir* :code:`/index.rst` must contain the line
-
-|tab| ``xsrst/`` *root_section*
-
-.. meta::
    :keywords: sphinx_dir
 
 .. index:: sphinx_dir
@@ -210,8 +192,10 @@ sphinx_dir
 ==========
 The command line argument *sphinx_dir* is a sub-directory,
 of the top git repository directory.
-The  sphinx ``conf.py``, ``index.rst``, *spelling*, and *keyword*
+The  sphinx ``conf.py``, *spelling*, and *keyword*
 files are located in this directory.
+The file ``index.rst`` in this directory will be overwritten
+each time ``xsrst.py`` is run.
 The sub-directory *sphinx_dir* :code:`/xsrst` is managed by ``xsrst`` .
 All the ``.rst`` files in *sphinx_dir* :code:`/xsrst`
 were extracted from the source code and correspond to
@@ -229,7 +213,6 @@ Example Configuration Files
 ---------------------------
 
 | |tab| conf.py: :ref:`conf_py`
-| |tab| index.rst: :ref:`index_rst`
 | |tab| keyword: :ref:`keyword`
 | |tab| spelling: :ref:`spelling`
 
@@ -323,28 +306,7 @@ Table of Contents
 toctree
 =======
 The sphinx ``toctree`` directives are automatically generated
-for sections. The only such directive you should directly edit
-is in the file *sphinx_dir*\ ``/index.rst``
-
-.. meta::
-   :keywords: index.rst
-
-.. index:: index.rst
-
-.. _xsrst_py.table_of_contents.toctree.index_rst:
-
-index.rst
----------
-First entry below ``toctree`` in the *sphinx_dir*\ ``/index.rst``
-file should be ``xsrst/xsrst_automatic``.
-This includes the automatically generated table of contents
-for the files extracted by xsrst.
-(The link anchor ``xsrst_table_of_contents``
-can be used to link to this section.)
-The second entry below ``toctree`` should be the
-:ref:`root_section<xsrst_py.command_line_arguments.root_file.root_section>`.
-You may have other entries for ``.rst`` files that are not extracted by
-``xsrst.py``.
+for sections.
 
 .. meta::
    :keywords: parent, section

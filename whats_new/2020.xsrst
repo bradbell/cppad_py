@@ -175,8 +175,7 @@ and :ref:`install_error<install_error>`.
     :ref:`child_list<child_cmd.syntax.child_list>`.
 #.  Remove an extra backquote \' that was placed at the end of each line
     of the :ref:`table of contents<xsrst_table_of_contents>`.
-#.  Add more documentation for the
-    :ref:`index.rst<xsrst_py.table_of_contents.toctree.index_rst>` file
+#.  Add more documentation for the ``index.rst`` file
     (including how to link to the table of contents).
 #.  The java runtime environment as add to the install
     :ref:`requirements<setup_py.external_requirements>`.

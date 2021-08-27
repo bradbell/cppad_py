@@ -19,7 +19,7 @@ junk.*
 # directory used for local testing
 /cppad_py/
 #
-# directories used by setup.py 
+# directories used by setup.py
 /cppad_py.egg-info/
 /dist/
 #
