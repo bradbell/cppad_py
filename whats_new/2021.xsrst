@@ -29,6 +29,9 @@ CppAD Py Changes During 2021
     (it is now automatically generated).
 2.  The :ref:`preamble.rst<preamble_rst>` example file was added to the
     ``xsrst.py`` documentation.
+3.  Fix an error in the ``xsrst.py`` double word error message. To be specific,
+    line number was wrong and an extra character was included in the
+    double word.
 
 08-23
 *****

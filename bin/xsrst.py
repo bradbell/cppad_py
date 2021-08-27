@@ -1484,6 +1484,8 @@ def spell_command(
         start        = match_spell.start()
         end          = match_spell.end()
         section_data = section_data[: start] + section_data[end :]
+    # This suppress reporting \ \ as a double word error
+    double_used['\\'] = True
     #
     # version of section_data with certain commands removed
     section_tmp = section_data
@@ -1533,7 +1535,7 @@ def spell_command(
             special_used[word_lower] = True
     #
     # check for double word errors
-    for itr in pattern['double_word'].finditer(section_data) :
+    for itr in pattern['double_word'].finditer(section_tmp) :
         word_lower = itr.group(1).lower()
         if not word_lower in double_used :
             if first_spell_error :
@@ -1546,7 +1548,8 @@ def spell_command(
             match  = pattern['line'].search(section_tmp[offset :] )
             assert match
             line_number = match.group(1)
-            double_word = itr.group(0).strip()
+            # first and last character in pattern is not part of double word
+            double_word = itr.group(0)[1 : -1]
             msg         = 'double word error: "' + double_word + '"'
             msg        += ', line ' + line_number
             print(msg)
@@ -2210,13 +2213,15 @@ def main() :
     # regular expresssions only used for spell command
     pattern = dict()
     pattern['word']        = re.compile( r'[\\A-Za-z][a-z]*' )
-    pattern['double_word'] = re.compile( r'\s+([\\A-Za-z][a-z]*)\s+\1[^a-z]' )
     pattern['ref_1']       = re.compile( r':ref:`[^\n<`]+`' )
     pattern['url_1']       = re.compile( r'`<[^\n>`]+>`_' )
     pattern['ref_2']       = re.compile( r':ref:`([^\n<`]+)<[^\n>`]+>`' )
     pattern['url_2']       = re.compile( r'`([^\n<`]+)<[^\n>`]+>`_' )
     pattern['http']        = re.compile( r'(https|http)://[A-Za-z0-9_/.]*' )
     pattern['directive']   = re.compile( r'\n[ ]*[.][.][ ]+[a-z-]+::' )
+    pattern['double_word'] = re.compile(
+        r'[^a-zA-Z]([\\A-Za-z][a-z]*)\s+\1[^a-z]'
+    )
     #
     # regular expressions corresponding to xsrst commands
     pattern['line']    = pattern_line
