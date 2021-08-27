@@ -8,6 +8,7 @@
 junk
 junk.*
 /lib/python/cppad_py/cppad_swig.py
+/sphinx/index.rst
 # soft links to ignore
 /build
 # directories to ignore

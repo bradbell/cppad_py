@@ -87,14 +87,7 @@ do
     fi
 done
 # -----------------------------------------------------------------------------
-echo_eval cd $test_dir
-if ! make html
-then
-    echo 'bin/check_xsrst.sh: see errors above during the command'
-    echo "    cd $test_dir"
-    echo '    make html'
-    exit 1
-fi
+echo_eval sphinx-build -b html $test_dir $test_dir/doc
 # -----------------------------------------------------------------------------
 echo "$0: OK"
 exit 0
