@@ -3,22 +3,22 @@ conf_py
 !!!!!!!
 
 .. meta::
-   :keywords: conf_py, example, conf.py
+   :keywords: conf_py, the, conf.py, example, file
 
-.. index:: conf_py, example, conf.py
+.. index:: conf_py, the, conf.py, example, file
 
 .. _conf_py:
 
-Example conf.py
-###############
+The conf.py Example File
+########################
 .. contents::
    :local:
 
 
 .. literalinclude:: ../../../sphinx/conf.py
-    :lines: 14-71
+    :lines: 2-58
     :language: py
 
 ----
 
-xsrst input file: ``sphinx/conf.py``
+xsrst input file: ``sphinx/configure.xsrst``

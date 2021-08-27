@@ -9,6 +9,7 @@ configure
    conf_py
    spelling
    keyword
+   preamble_rst
 
 .. meta::
    :keywords: configure, example, xsrst, configuration, files
@@ -22,10 +23,14 @@ Example xsrst Configuration Files
 .. contents::
    :local:
 
+.. csv-table::
+    :header: "Child", "Title"
+    :widths: 20, 80
 
--  :ref:`conf_py`
--  :ref:`spelling`
--  :ref:`keyword`
+    "conf_py", :ref:`conf_py`
+    "spelling", :ref:`spelling`
+    "keyword", :ref:`keyword`
+    "preamble_rst", :ref:`preamble_rst`
 
 ----
 

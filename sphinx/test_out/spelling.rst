@@ -3,21 +3,21 @@ spelling
 !!!!!!!!
 
 .. meta::
-   :keywords: spelling, example, spelling, file
+   :keywords: spelling, the, spelling, example, file
 
-.. index:: spelling, example, spelling, file
+.. index:: spelling, the, spelling, example, file
 
 .. _spelling:
 
-Example Spelling File
-#####################
+The spelling Example File
+#########################
 .. contents::
    :local:
 
 
 .. literalinclude:: ../../../sphinx/spelling
-    :lines: 13-83
+    :lines: 2-73
 
 ----
 
-xsrst input file: ``sphinx/spelling``
+xsrst input file: ``sphinx/configure.xsrst``

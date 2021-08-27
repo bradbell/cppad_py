@@ -1,19 +1,6 @@
-# {xsrst_comment_ch #}
-# {xsrst_begin conf_py}
-# {xsrst_spell conf}
+# BEGIN conf.py
 #
-# Example conf.py
-# ###############
-#
-# {xsrst_file
-#   # BEGIN_CONF_PY
-#   # END_CONF_PY
-# }
-# {xsrst_end conf_py}
-# # BEGIN_CONF_PY
-# Configuration file for the Sphinx documentation builder.
-#
-# For conf.py documentation see
+# The conf.py documentation is in
 # http://www.sphinx-doc.org/en/master/config
 #
 # -- Path setup --------------------------------------------------------------
@@ -60,7 +47,7 @@ html_css_files = [
 
 # -- Latex commands used by all sections -------------------------------------
 latex_elements = {
-    'preamble' :  
+    'preamble' :
         r'\newcommand{\B}[1]{{\bf #1}} '  + '\n' +
         r'\newcommand{\R}[1]{{\rm #1}} '  + '\n' +
         r'\renewcommand{\thesection}{{\hspace{-1em}}}'        + '\n' +
@@ -69,4 +56,4 @@ latex_elements = {
         ''
     ,
 }
-# END_CONF_PY
+# END conf.py

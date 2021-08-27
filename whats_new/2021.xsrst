@@ -23,10 +23,12 @@ CppAD Py Changes During 2021
 
 08-26
 *****
-The user no longer needs to create the ``xsrst.py``
-input file ``index.rst``
-in the :ref:`xsrst_py.command_line_arguments.sphinx_dir` directory
-(it is now automatically generated).
+1.  The user no longer needs to create the ``xsrst.py``
+    input file ``index.rst``
+    in the :ref:`xsrst_py.command_line_arguments.sphinx_dir` directory
+    (it is now automatically generated).
+2.  The :ref:`preamble.rst<preamble_rst>` example file was added to the
+    ``xsrst.py`` documentation.
 
 08-23
 *****

@@ -1,3 +1,4 @@
+.. comment BEGIN preamble.rst
 
 .. |space| unicode:: 0xA0
 .. |tab| replace:: |space| |space| |space| |space|
@@ -11,3 +12,5 @@
     :math:`\newcommand{\R}[1]{ {\rm #1} }`
 
 .. comment END_LATEX_MACROS
+
+.. comment END preamble.rst

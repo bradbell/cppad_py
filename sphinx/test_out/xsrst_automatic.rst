@@ -36,9 +36,10 @@ Table of Contents
 |  |space| :ref:`9.1<indent_res>` Indent Result
 | :ref:`10<configure>` Example xsrst Configuration Files
 |
-|  |space| :ref:`10.1<conf_py>` Example conf.py
-|  |space| :ref:`10.2<spelling>` Example Spelling File
-|  |space| :ref:`10.3<keyword>` Example Keyword File
+|  |space| :ref:`10.1<conf_py>` The conf.py Example File
+|  |space| :ref:`10.2<spelling>` The spelling Example File
+|  |space| :ref:`10.3<keyword>` The keyword Example File
+|  |space| :ref:`10.4<preamble_rst>` The preamble.rst Example File
 |
 
 Link to Index

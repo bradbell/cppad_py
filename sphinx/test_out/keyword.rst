@@ -3,21 +3,21 @@ keyword
 !!!!!!!
 
 .. meta::
-   :keywords: keyword, example, keyword, file
+   :keywords: keyword, the, keyword, example, file
 
-.. index:: keyword, example, keyword, file
+.. index:: keyword, the, keyword, example, file
 
 .. _keyword:
 
-Example Keyword File
-####################
+The keyword Example File
+########################
 .. contents::
    :local:
 
 
 .. literalinclude:: ../../../sphinx/keyword
-    :lines: 13-18
+    :lines: 2-7
 
 ----
 
-xsrst input file: ``sphinx/keyword``
+xsrst input file: ``sphinx/configure.xsrst``
