@@ -21,6 +21,13 @@
 CppAD Py Changes During 2021
 ############################
 
+08-29
+*****
+There was an bug that prevented the
+:ref`xsrst_py.command_line_arguments.line_increment`
+command line argument from being used.
+This has been fixed.
+
 08-26
 *****
 1.  The user no longer needs to create the ``xsrst.py``

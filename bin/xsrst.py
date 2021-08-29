@@ -2129,7 +2129,7 @@ def main() :
         sys_exit(msg)
     #
     # check number of command line arguments
-    if len(sys.argv) != 5 and len(sys.argv) != 6 :
+    if len(sys.argv) != 6 and len(sys.argv) != 7 :
         usage  = 'bin/xsrst.py target root_file sphinx_dir spelling keyword'
         usage += ' [line_increment]'
         sys_exit(usage)
@@ -2175,7 +2175,7 @@ def main() :
     if len(sys.argv) == 6 :
         line_increment = 0
     else :
-        line_increment = int(sys.argv[7])
+        line_increment = int(sys.argv[6])
         if line_increment < 1 :
             msg += 'line_increment is not a positive integer'
             sys_exit(msg)
