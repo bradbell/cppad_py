@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -89,7 +89,6 @@ class mixed :
     {xsrst_begin mixed_ctor}
     .. include:: ../preamble.rst
     {xsrst_spell
-        init
         obj
         bool
         rcv
@@ -514,7 +513,6 @@ class mixed :
         cppad
         rcv
         \infty
-        init
     }
 
     Optimize The Fixed Effects
@@ -801,7 +799,6 @@ class mixed :
     .. include:: ../preamble.rst
     {xsrst_spell
         ipopt
-        init
     }
 
     Optimize The Random Effects

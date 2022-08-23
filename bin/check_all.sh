@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -130,11 +130,14 @@ then
     echo_eval_log rm -r "build/temp.*"
 fi
 # -----------------------------------------------------------------------------
+if [ -e sphinx/xsrst ]
+then
+    echo_eval_log rm -r sphinx/xsrst
+fi
 echo_eval_log check_copyright.sh
 echo_eval_log bin/check_if_0.sh
 echo_eval_log bin/check_tab.sh
 echo_eval_log bin/check_xsrst.sh
-echo_eval_log rm -r sphinx/xsrst
 echo_eval_log bin/run_sphinx.sh html
 echo_eval_log bin/build_local.py
 echo_eval_log cd build

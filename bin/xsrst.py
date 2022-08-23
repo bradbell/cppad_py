@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -9,8 +9,12 @@
 """
 {xsrst_begin_parent xsrst_py}
 {xsrst_spell
+    configurable
+    rtd
+    pdf
+    cd
+    indenting
     underbars
-    conf
     toctree
     stackoverflow
     pyspellchecker
@@ -474,6 +478,9 @@ Example
 # ---------------------------------------------------------------------------
 """
 {xsrst_begin spell_cmd}
+{xsrst_spell
+    abcd
+}
 
 Spell Command
 #############
@@ -616,6 +623,9 @@ Example
 # ---------------------------------------------------------------------------
 """
 {xsrst_begin file_cmd}
+{xsrst_spell
+    occurence
+}
 
 .. include:: ../preamble.rst
 
@@ -692,6 +702,10 @@ Example
 # ----------------------------------------------------------------------------
 """
 {xsrst_begin comment_ch_cmd}
+{xsrst_spell
+    occurence
+    ch
+}
 
 Comment Character Command
 #########################
@@ -765,6 +779,7 @@ import pdb
 import spellchecker
 import shutil
 import filecmp
+import string
 # ---------------------------------------------------------------------------
 # global variables
 # ---------------------------------------------------------------------------
@@ -1039,7 +1054,12 @@ def init_spell_checker(spell_list) :
         # END_SORT_THIS_LINE_MINUS_1
     ]
     #
+    # single letter words
+    for ch in string.ascii_lowercase :
+        add_to_dictionary.append(ch)
+    #
     spell_checker = spellchecker.SpellChecker(distance=1)
+    remove_from_dictionary = spell_checker.known(remove_from_dictionary)
     spell_checker.word_frequency.remove_words(remove_from_dictionary)
     spell_checker.word_frequency.load_words(add_to_dictionary)
     spell_checker.word_frequency.load_words(spell_list)

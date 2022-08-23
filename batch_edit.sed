@@ -21,7 +21,6 @@
 # '
 # list of files that get edited by the extra_seds command
 # extra_files='
-#   sphinx/configure.xsrst
 # '
 # list of sed commands that are applied to the extra files,
 # after the other sed commands in this file.
@@ -30,10 +29,15 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|\.heading_links\.|.links_to_headings.|g
-s|`install_error\.\([a-z_]*\)\.\([a-z_]*\)`|`install_error.\1_\2`|
-s|`install_error\.\([a-z_]*\)\.\([a-z_]*\)\.|`install_error.\1_\2.|
-s|<install_error\.\([a-z_]*\)\.\([a-z_]*\)\.|<install_error.\1_\2.|
-s|\.cholmod\.h`|.cholmod_h`|
-s|\.cppad\.pc,_cppad_mixed\.pc|.cppad_pc,_cppad_mixed_pc|
-s|\.index.rst>|.index_rst>|
+/^[# ]    *az$/d
+/^[# ]    *cannot$/d
+/^[# ]    *cond$/d
+/^[# ]    *downloads$/d
+/^[# ]    *eval$/d
+/^[# ]    *init$/d
+/^[# ]    *inv$/d
+/^[# ]    *optimizer$/d
+/^[# ]    *pacman$/d
+/^[# ]    *resize$/d
+/^[# ]    *url$/d
+/^[# ]    *usr$/d

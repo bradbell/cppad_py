@@ -1,5 +1,30 @@
 # BEGIN spelling
 #
+# words needed for new verison of spell checker
+asymptotic
+boolean
+compilers
+conf
+deprecated
+fortran
+interpolated
+Laplace
+multipliers
+msg
+nlp
+operand
+overwrites
+quantile
+rl
+runtime
+scalars
+sh
+sparsity
+src
+th
+truncation
+tuple
+#
 # standard mathematical abbreviations
 grad
 hess

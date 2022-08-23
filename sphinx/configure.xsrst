@@ -8,9 +8,6 @@ Example xsrst Configuration Files
 {xsrst_end configure}
 -----------------------------------------------------------------------------
 {xsrst_begin conf_py}
-{xsrst_spell
-    conf
-}
 
 The conf.py Example File
 ########################
