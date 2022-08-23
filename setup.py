@@ -298,6 +298,9 @@ sys.exit(0)
 #   gsl
 #   suitesparse
 #   cholmod
+#   rm
+#   ls
+#   cp
 # }
 #
 # Configure and Build the cppad_py Python Module

@@ -12,6 +12,8 @@
 # .. include:: ../preamble.rst
 #
 # {xsrst_spell
+#   lcr
+#   cv
 #   covid
 #   seirwd
 #   sim

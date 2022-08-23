@@ -16,7 +16,6 @@
 # {xsrst_spell
 #   cppad
 #   cxx
-#   usr
 #   Wno
 #   cmake
 # }

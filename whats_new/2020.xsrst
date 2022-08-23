@@ -39,8 +39,9 @@
     rcv
     hes_obj
     matplotlib
-    Eval
     cholmod
+    pdf
+    gh
 }
 
 CppAD Py Changes During 2020
