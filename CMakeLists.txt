@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -18,7 +18,7 @@
 # Suppress warnging that WIN32 not defined on cygwin
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 PROJECT(cppad_py)
-SET(cppad_py_version "2021.8.29")
+SET(cppad_py_version "2022.8.23")
 CMAKE_POLICY(SET CMP0042 NEW)
 # =============================================================================
 # MACROS
