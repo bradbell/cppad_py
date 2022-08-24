@@ -32,8 +32,8 @@ a message describing the error.
 
 
 {xrst_toc_hidden
-    example/cplusplus/exception_xam.cpp
-    example/python/core/exception_xam.py
+   example/cplusplus/exception_xam.cpp
+   example/python/core/exception_xam.py
 }
 Example
 *******
@@ -44,9 +44,9 @@ Example
 */
 
 # define CPPAD_PY_ASSERT_UNKNOWN(exp) \
-{   if( ! ( exp ) ) throw std::runtime_error( #exp " is false in " __FILE__ ); }
+{  if( ! ( exp ) ) throw std::runtime_error( #exp " is false in " __FILE__ ); }
 
 # define CPPAD_PY_ASSERT_KNOWN(exp, msg) \
-{   if( ! ( exp ) ) throw std::runtime_error(msg); }
+{  if( ! ( exp ) ) throw std::runtime_error(msg); }
 
 # endif

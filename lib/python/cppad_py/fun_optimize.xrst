@@ -33,7 +33,7 @@ Optimizing this *f* also optimizes the
 corresponding :ref:`a_fun<py_fun_ctor@syntax@a_fun>`.
 
 {xrst_toc_hidden
-    example/python/core/fun_optimize_xam.py
+   example/python/core/fun_optimize_xam.py
 }
 Example
 *******

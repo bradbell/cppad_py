@@ -9,22 +9,22 @@
 import numpy
 import copy
 def ode_multi_step(one_step, fun, t_all, y_init ) :
-    dtype      = type(y_init[0])
-    n_var      = y_init.size
-    n_step     = t_all.size - 1
-    y_all      = numpy.empty( (n_step+1, n_var), dtype = dtype  )
-    y1         = y_init
-    t1         = t_all[0]
-    y_all[0,:] = y1
-    for i in range(n_step) :
-        fun.set_t_all_index(i)
-        y0            = y1
-        t0            = t1
-        t1            = t_all[i+1]
-        t_step        = t1 - t0
-        y1            = one_step(fun, t0, y0, t_step)
-        y_all[i+1,:]  = copy.copy(y1)
-    return y_all
+   dtype      = type(y_init[0])
+   n_var      = y_init.size
+   n_step     = t_all.size - 1
+   y_all      = numpy.empty( (n_step+1, n_var), dtype = dtype  )
+   y1         = y_init
+   t1         = t_all[0]
+   y_all[0,:] = y1
+   for i in range(n_step) :
+      fun.set_t_all_index(i)
+      y0            = y1
+      t0            = t1
+      t1            = t_all[i+1]
+      t_step        = t1 - t0
+      y1            = one_step(fun, t0, y0, t_step)
+      y_all[i+1,:]  = copy.copy(y1)
+   return y_all
 # END_ODE_MULTI_STEP
 #
 # {xrst_comment_ch #}
@@ -132,7 +132,7 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
 # component of :math:`y(t)` at time *t_all* [ *i* ] .
 #
 # {xrst_toc_hidden
-#   example/python/numeric/ode_multi_step_xam.py
+#  example/python/numeric/ode_multi_step_xam.py
 # }
 # Example
 # *******
@@ -141,8 +141,8 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
 # Source Code
 # ***********
 # {xrst_literal
-#   # BEGIN_ODE_MULTI_STEP
-#   # END_ODE_MULTI_STEP
+#  # BEGIN_ODE_MULTI_STEP
+#  # END_ODE_MULTI_STEP
 # }
 #
 # {xrst_end numeric_ode_multi_step}

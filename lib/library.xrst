@@ -8,7 +8,7 @@
 {xrst_begin_parent library}
 
 {xrst_spell
-    cppad
+   cppad
 }
 
 The Cppad Py Libraries
@@ -17,8 +17,8 @@ The Cppad Py Libraries
 Children
 ********
 {xrst_toc_table
-    lib/python/cppad_py/py_lib.xrst
-    lib/cplusplus/cpp_lib.xrst
+   lib/python/cppad_py/py_lib.xrst
+   lib/cplusplus/cpp_lib.xrst
 }
 
 {xrst_end library}
@@ -26,7 +26,7 @@ Children
 {xrst_begin a_double}
 
 {xrst_spell
-    cppad
+   cppad
 }
 
 Cppad Py AD Scalars
@@ -35,7 +35,7 @@ Cppad Py AD Scalars
 Children
 ********
 {xrst_toc_table
-    lib/cplusplus/a_double.cpp
+   lib/cplusplus/a_double.cpp
 }
 
 {xrst_end a_double}
@@ -43,7 +43,7 @@ Children
 {xrst_begin vector}
 
 {xrst_spell
-    cppad
+   cppad
 }
 
 Cppad Py Vectors
@@ -52,7 +52,7 @@ Cppad Py Vectors
 Children
 ********
 {xrst_toc_table
-    lib/cplusplus/vector.xrst
+   lib/cplusplus/vector.xrst
 }
 
 {xrst_end vector}

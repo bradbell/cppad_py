@@ -8,11 +8,11 @@
 {xrst_begin vector_ctor}
 
 {xrst_spell
-    cppad
-    av
-    bv
-    bool
-    dv
+   cppad
+   av
+   bv
+   bool
+   dv
 }
 
 Cppad Py Vector Constructors
@@ -71,7 +71,7 @@ All of the other vector examples use the vector constructors.
 {xrst_begin vector_size}
 
 {xrst_spell
-    bool
+   bool
 }
 
 Size of a Vector
@@ -100,8 +100,8 @@ i.e., it is a positive integer.
 Its value is the number of elements in the vector *v* .
 
 {xrst_toc_hidden
-    example/cplusplus/vector_size_xam.cpp
-    example/python/core/vector_size_xam.py
+   example/cplusplus/vector_size_xam.cpp
+   example/python/core/vector_size_xam.py
 }
 Example
 *******
@@ -113,7 +113,7 @@ Example
 {xrst_begin vector_set_get}
 
 {xrst_spell
-    bool
+   bool
 }
 
 Setting and Getting Vector Elements
@@ -164,8 +164,8 @@ The result *y* has c++ prototype
 | |tab| *element_type* *y*
 
 {xrst_toc_hidden
-    example/cplusplus/vector_set_get_xam.cpp
-    example/python/core/vector_set_get_xam.py
+   example/cplusplus/vector_set_get_xam.cpp
+   example/python/core/vector_set_get_xam.py
 }
 Example
 *******

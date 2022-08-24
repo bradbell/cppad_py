@@ -10,9 +10,9 @@
 # {xrst_begin py_fun_forward}
 #
 # {xrst_spell
-#   xp
-#   yp
-#   xp
+#  xp
+#  yp
+#  xp
 # }
 #
 # Forward Mode AD
@@ -92,7 +92,7 @@
 # It is the *p*-th order Taylor coefficients for :math:`Y(t)`.
 #
 # {xrst_toc_hidden
-#   example/python/core/fun_forward_xam.py
+#  example/python/core/fun_forward_xam.py
 # }
 # Example
 # *******
@@ -105,48 +105,48 @@ import numpy
 # ----------------------------------------------------------------------------
 # This function is used by forward in d_fun class to implement syntax above
 def d_fun_forward(f, p, xp) :
-    """
-    yp = f.forward(p, xp)
-    given Taylor coefficients for X(t), compute Taylor coefficients for
-    Y(t) = f(X(t)).
-    """
-    #
-    n = f.size_domain()
-    m = f.size_range()
-    #
-    # convert x -> u
-    dtype    = float
-    syntax   = 'f.forward(p, xp)'
-    u = cppad_py.utility.numpy2vec(xp, dtype, n, syntax, 'xp')
-    #
-    # call forward
-    v =  f.forward(p, u)
-    #
-    # convert v -> yp
-    yp = cppad_py.utility.vec2numpy(v, m)
-    #
-    return yp
+   """
+   yp = f.forward(p, xp)
+   given Taylor coefficients for X(t), compute Taylor coefficients for
+   Y(t) = f(X(t)).
+   """
+   #
+   n = f.size_domain()
+   m = f.size_range()
+   #
+   # convert x -> u
+   dtype    = float
+   syntax   = 'f.forward(p, xp)'
+   u = cppad_py.utility.numpy2vec(xp, dtype, n, syntax, 'xp')
+   #
+   # call forward
+   v =  f.forward(p, u)
+   #
+   # convert v -> yp
+   yp = cppad_py.utility.vec2numpy(v, m)
+   #
+   return yp
 # ----------------------------------------------------------------------------
 # This function is used by forward in a_fun class to implement syntax above
 def a_fun_forward(af, p, axp) :
-    """
-    ayp = af.forward(p, axp)
-    given Taylor coefficients for X(t), compute Taylor coefficients for
-    Y(t) = f(X(t)).
-    """
-    #
-    n = af.size_domain()
-    m = af.size_range()
-    #
-    # convert x -> u
-    dtype    = cppad_py.a_double
-    syntax   = 'af.forward(p, axp)'
-    au = cppad_py.utility.numpy2vec(axp, dtype, n, syntax, 'axp')
-    #
-    # call forward
-    av =  af.forward(p, au)
-    #
-    # convert av -> ayp
-    ayp = cppad_py.utility.vec2numpy(av, m)
-    #
-    return ayp
+   """
+   ayp = af.forward(p, axp)
+   given Taylor coefficients for X(t), compute Taylor coefficients for
+   Y(t) = f(X(t)).
+   """
+   #
+   n = af.size_domain()
+   m = af.size_range()
+   #
+   # convert x -> u
+   dtype    = cppad_py.a_double
+   syntax   = 'af.forward(p, axp)'
+   au = cppad_py.utility.numpy2vec(axp, dtype, n, syntax, 'axp')
+   #
+   # call forward
+   av =  af.forward(p, au)
+   #
+   # convert av -> ayp
+   ayp = cppad_py.utility.vec2numpy(av, m)
+   #
+   return ayp

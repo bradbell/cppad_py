@@ -9,21 +9,21 @@
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
 def a_double_unary_op_xam() :
-    #
-    import numpy
-    import cppad_py
-    #
-    # initialize return variable
-    ok = True
-    # ---------------------------------------------------------------------
-    a2 = cppad_py.a_double(2.0)
-    aplus2 = + a2
-    a2_minus = - a2
-    #
-    ok = ok and aplus2 == 2.0
-    ok = ok and a2_minus == -2.0
-    #
-    return( ok )
+   #
+   import numpy
+   import cppad_py
+   #
+   # initialize return variable
+   ok = True
+   # ---------------------------------------------------------------------
+   a2 = cppad_py.a_double(2.0)
+   aplus2 = + a2
+   a2_minus = - a2
+   #
+   ok = ok and aplus2 == 2.0
+   ok = ok and a2_minus == -2.0
+   #
+   return( ok )
 #
 # END SOURCE
 #
@@ -36,8 +36,8 @@ def a_double_unary_op_xam() :
 # Python: a_double Unary Plus and Minus: Example and Test
 # #######################################################
 # {xrst_literal
-#   # BEGIN SOURCE
-#   # END SOURCE
+#  # BEGIN SOURCE
+#  # END SOURCE
 # }
 # {xrst_end a_double_unary_op_xam_py}
 #

@@ -1,8 +1,8 @@
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
-            Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
-                This program is distributed under the terms of the
-                GNU General Public License version 3.0 or later see
+         Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
+            This program is distributed under the terms of the
+            GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
 # include <cppad/cppad.hpp>
@@ -18,8 +18,8 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 {xrst_begin cpp_sparse_rc}
 
 {xrst_spell
-    nnz
-    cppad
+   nnz
+   cppad
 }
 
 Sparsity Patterns
@@ -187,7 +187,7 @@ This routine generates an assert if there are two entries with the same
 row and column values (if ``NDEBUG`` is not defined).
 
 {xrst_toc_hidden
-    example/cplusplus/sparse_rc_xam.cpp
+   example/cplusplus/sparse_rc_xam.cpp
 }
 Example
 *******
@@ -198,90 +198,90 @@ Example
 // ---------------------------------------------------------------------------
 // public member function not in Swig interface (see %ignore ptr)
 const CppAD::sparse_rc< std::vector<size_t> >* sparse_rc::ptr(void) const
-{   return ptr_; }
+{  return ptr_; }
 CppAD::sparse_rc< std::vector<size_t> >* sparse_rc::ptr(void)
-{   return ptr_; }
+{  return ptr_; }
 // ---------------------------------------------------------------------------
 // sparse_rc ctor
 sparse_rc::sparse_rc(void)
-{   ptr_ = new CppAD::sparse_rc< std::vector<size_t> >();
-    CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{  ptr_ = new CppAD::sparse_rc< std::vector<size_t> >();
+   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 // destructor
 sparse_rc::~sparse_rc(void)
-{   // destructor should not throw exception
-    assert( ptr_ != CPPAD_NULL );
-    delete ptr_;
-    ptr_ = CPPAD_NULL;
+{  // destructor should not throw exception
+   assert( ptr_ != CPPAD_NULL );
+   delete ptr_;
+   ptr_ = CPPAD_NULL;
 }
 // resize
 void sparse_rc::resize(int nr, int nc, int nnz)
-{   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
-    ptr_->resize(nr, nc, nnz);
-    return;
+{  CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+   ptr_->resize(nr, nc, nnz);
+   return;
 }
 // number of rows in matrix
 int sparse_rc::nr(void) const
-{   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
-    return ptr_->nr();
+{  CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+   return ptr_->nr();
 }
 // number of columns in matrix
 int sparse_rc::nc(void) const
-{   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
-    return ptr_->nc();
+{  CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+   return ptr_->nc();
 }
 // number of possibley non-zero elements in matrix
 int sparse_rc::nnz(void) const
-{   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
-    return ptr_->nnz();
+{  CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+   return ptr_->nnz();
 }
 // set row and column for a possibly non-zero element
 void sparse_rc::put(int k, int r, int c)
-{   ptr_->set(k, r, c);
-    return;
+{  ptr_->set(k, r, c);
+   return;
 }
 // row indices
 std::vector<int> sparse_rc::row(void) const
-{   size_t nnz = ptr_->nnz();
-    std::vector<int> row(nnz);
-    for(size_t k = 0; k < nnz; k++)
-        row[k] = static_cast<int>( ptr_->row()[k] );
-    return row;
+{  size_t nnz = ptr_->nnz();
+   std::vector<int> row(nnz);
+   for(size_t k = 0; k < nnz; k++)
+      row[k] = static_cast<int>( ptr_->row()[k] );
+   return row;
 }
 // col indices
 std::vector<int> sparse_rc::col(void) const
-{   size_t nnz = ptr_->nnz();
-    std::vector<int> col(nnz);
-    for(size_t k = 0; k < nnz; k++)
-        col[k] = static_cast<int>( ptr_->col()[k] );
-    return col;
+{  size_t nnz = ptr_->nnz();
+   std::vector<int> col(nnz);
+   for(size_t k = 0; k < nnz; k++)
+      col[k] = static_cast<int>( ptr_->col()[k] );
+   return col;
 }
 // row_major
 std::vector<int> sparse_rc::row_major(void) const
-{   size_t nnz = ptr_->nnz();
-    std::vector<size_t> row_major = ptr_->row_major();
-    std::vector<int> result(nnz);
-    for(size_t k = 0; k < nnz; k++)
-        result[k] = static_cast<int>( row_major[k] );
-    return result;
+{  size_t nnz = ptr_->nnz();
+   std::vector<size_t> row_major = ptr_->row_major();
+   std::vector<int> result(nnz);
+   for(size_t k = 0; k < nnz; k++)
+      result[k] = static_cast<int>( row_major[k] );
+   return result;
 }
 // col_major
 std::vector<int> sparse_rc::col_major(void) const
-{   size_t nnz = ptr_->nnz();
-    std::vector<size_t> col_major = ptr_->col_major();
-    std::vector<int> result(nnz);
-    for(size_t k = 0; k < nnz; k++)
-        result[k] = static_cast<int>( col_major[k] );
-    return result;
+{  size_t nnz = ptr_->nnz();
+   std::vector<size_t> col_major = ptr_->col_major();
+   std::vector<int> result(nnz);
+   for(size_t k = 0; k < nnz; k++)
+      result[k] = static_cast<int>( col_major[k] );
+   return result;
 }
 /*
 -------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_rcv}
 
 {xrst_spell
-    rcv
-    nnz
-    cppad
+   rcv
+   nnz
+   cppad
 }
 
 Sparse Matrices
@@ -439,7 +439,7 @@ This routine generates an assert if there are two entries with the same
 row and column values (if ``NDEBUG`` is not defined).
 
 {xrst_toc_hidden
-    example/cplusplus/sparse_rcv_xam.cpp
+   example/cplusplus/sparse_rcv_xam.cpp
 }
 Example
 *******
@@ -450,95 +450,95 @@ Example
 // ---------------------------------------------------------------------------
 // public member functions not in Swig interface (see %ignore ptr)
 CppAD::sparse_rcv< std::vector<size_t> , std::vector<double> >*
-    sparse_rcv::ptr(void)
-    {   return ptr_; }
+   sparse_rcv::ptr(void)
+   {  return ptr_; }
 // ---------------------------------------------------------------------------
 // sparse_rcv ctor
 sparse_rcv::sparse_rcv(const sparse_rc& pattern)
-{   ptr_ = new CppAD::sparse_rcv< std::vector<size_t> , std::vector<double> >(
-        *pattern.ptr()
-    );
-    CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{  ptr_ = new CppAD::sparse_rcv< std::vector<size_t> , std::vector<double> >(
+      *pattern.ptr()
+   );
+   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 sparse_rcv::sparse_rcv(const sparse_rcv& other)
-{   typedef std::vector<size_t> size_vector;
-    typedef std::vector<double> double_vector;
-    size_t nr  = other.nr();
-    size_t nc  = other.nc();
-    size_t nnz = other.nnz();
-    const std::vector<int>&    row = other.row();
-    const std::vector<int>&    col = other.col();
-    const std::vector<double>& val = other.val();
-    CppAD::sparse_rc<size_vector> pattern(nr, nc, nnz);
-    for(size_t k = 0; k < nnz; ++k)
-        pattern.set(k, size_t(row[k]), size_t(col[k]) );
-    ptr_ = new CppAD::sparse_rcv<size_vector, double_vector>( pattern );
-    for(size_t k = 0; k < nnz; ++k)
-        ptr_->set(k, val[k]);
+{  typedef std::vector<size_t> size_vector;
+   typedef std::vector<double> double_vector;
+   size_t nr  = other.nr();
+   size_t nc  = other.nc();
+   size_t nnz = other.nnz();
+   const std::vector<int>&    row = other.row();
+   const std::vector<int>&    col = other.col();
+   const std::vector<double>& val = other.val();
+   CppAD::sparse_rc<size_vector> pattern(nr, nc, nnz);
+   for(size_t k = 0; k < nnz; ++k)
+      pattern.set(k, size_t(row[k]), size_t(col[k]) );
+   ptr_ = new CppAD::sparse_rcv<size_vector, double_vector>( pattern );
+   for(size_t k = 0; k < nnz; ++k)
+      ptr_->set(k, val[k]);
 }
 // destructor
 sparse_rcv::~sparse_rcv(void)
-{   // destructor should not throw exception
-    assert( ptr_ != CPPAD_NULL );
-    delete ptr_;
-    ptr_ = CPPAD_NULL;
+{  // destructor should not throw exception
+   assert( ptr_ != CPPAD_NULL );
+   delete ptr_;
+   ptr_ = CPPAD_NULL;
 }
 // number of rows in matrix
 int sparse_rcv::nr(void) const
-{   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
-    return ptr_->nr();
+{  CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+   return ptr_->nr();
 }
 // number of columns in matrix
 int sparse_rcv::nc(void) const
-{   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
-    return ptr_->nc();
+{  CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+   return ptr_->nc();
 }
 // number of possibley non-zero elements in matrix
 int sparse_rcv::nnz(void) const
-{   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
-    return ptr_->nnz();
+{  CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+   return ptr_->nnz();
 }
 // set row and column for a possibly non-zero element
 void sparse_rcv::put(int k, double v)
-{   ptr_->set(k, v);
-    return;
+{  ptr_->set(k, v);
+   return;
 }
 // row indices
 std::vector<int> sparse_rcv::row(void) const
-{   size_t nnz = ptr_->nnz();
-    std::vector<int> row(nnz);
-    for(size_t k = 0; k < nnz; k++)
-        row[k] = static_cast<int>( ptr_->row()[k] );
-    return row;
+{  size_t nnz = ptr_->nnz();
+   std::vector<int> row(nnz);
+   for(size_t k = 0; k < nnz; k++)
+      row[k] = static_cast<int>( ptr_->row()[k] );
+   return row;
 }
 // col indices
 std::vector<int> sparse_rcv::col(void) const
-{   size_t nnz = ptr_->nnz();
-    std::vector<int> col(nnz);
-    for(size_t k = 0; k < nnz; k++)
-        col[k] = static_cast<int>( ptr_->col()[k] );
-    return col;
+{  size_t nnz = ptr_->nnz();
+   std::vector<int> col(nnz);
+   for(size_t k = 0; k < nnz; k++)
+      col[k] = static_cast<int>( ptr_->col()[k] );
+   return col;
 }
 // values
 std::vector<double> sparse_rcv::val(void) const
-{   return ptr_->val(); }
+{  return ptr_->val(); }
 // row_major
 std::vector<int> sparse_rcv::row_major(void) const
-{   size_t nnz = ptr_->nnz();
-    std::vector<size_t> row_major = ptr_->row_major();
-    std::vector<int> result(nnz);
-    for(size_t k = 0; k < nnz; k++)
-        result[k] = static_cast<int>( row_major[k] );
-    return result;
+{  size_t nnz = ptr_->nnz();
+   std::vector<size_t> row_major = ptr_->row_major();
+   std::vector<int> result(nnz);
+   for(size_t k = 0; k < nnz; k++)
+      result[k] = static_cast<int>( row_major[k] );
+   return result;
 }
 // col_major
 std::vector<int> sparse_rcv::col_major(void) const
-{   size_t nnz = ptr_->nnz();
-    std::vector<size_t> col_major = ptr_->col_major();
-    std::vector<int> result(nnz);
-    for(size_t k = 0; k < nnz; k++)
-        result[k] = static_cast<int>( col_major[k] );
-    return result;
+{  size_t nnz = ptr_->nnz();
+   std::vector<size_t> col_major = ptr_->col_major();
+   std::vector<int> result(nnz);
+   for(size_t k = 0; k < nnz; k++)
+      result[k] = static_cast<int>( col_major[k] );
+   return result;
 }
 // ----------------------------------------------------------------------------
 /*
@@ -567,7 +567,7 @@ Fix :math:`R \in \B{R}^{n \times \ell}` and define the function
 
 .. math::
 
-    J(x) = F^{(1)} ( x ) * R
+   J(x) = F^{(1)} ( x ) * R
 
 Given a sparsity pattern for :math:`R`,
 ``for_jac_sparsity`` computes a sparsity pattern for :math:`J(x)`.
@@ -578,7 +578,7 @@ Fix :math:`R \in \B{R}^{\ell \times m}` and define the function
 
 .. math::
 
-    J(x) = R * F^{(1)} ( x )
+   J(x) = R * F^{(1)} ( x )
 
 Given a sparsity pattern for :math:`R`,
 ``rev_jac_sparsity`` computes a sparsity pattern for :math:`J(x)`.
@@ -628,7 +628,7 @@ In this case, *pattern_out* is a sparsity pattern for
 :math:`F^{(1)} ( x )`.
 
 {xrst_toc_hidden
-    example/cplusplus/sparse_jac_pattern_xam.cpp
+   example/cplusplus/sparse_jac_pattern_xam.cpp
 }
 Example
 *******
@@ -637,43 +637,43 @@ Example
 {xrst_end cpp_jac_sparsity}
 */
 void d_fun::for_jac_sparsity(
-    const sparse_rc&  pattern_in    ,
-    sparse_rc&        pattern_out   )
-{   const CppAD::sparse_rc< std::vector<size_t> >* ptr_in  = pattern_in.ptr();
-    CppAD::sparse_rc< std::vector<size_t> >*       ptr_out = pattern_out.ptr();
-    bool transpose     = false;
-    bool dependency    = false;
-    bool internal_bool = false;
-    ptr_->for_jac_sparsity(
-        *ptr_in, transpose, dependency, internal_bool, *ptr_out
-    );
-    CPPAD_PY_ASSERT_UNKNOWN( ptr_->size_forward_bool() == 0 );
-    CPPAD_PY_ASSERT_UNKNOWN( ptr_->size_forward_set() != 0 );
-    // free stored forward pattern
-    ptr_->size_forward_set(0);
-    //
-    return;
+   const sparse_rc&  pattern_in    ,
+   sparse_rc&        pattern_out   )
+{  const CppAD::sparse_rc< std::vector<size_t> >* ptr_in  = pattern_in.ptr();
+   CppAD::sparse_rc< std::vector<size_t> >*       ptr_out = pattern_out.ptr();
+   bool transpose     = false;
+   bool dependency    = false;
+   bool internal_bool = false;
+   ptr_->for_jac_sparsity(
+      *ptr_in, transpose, dependency, internal_bool, *ptr_out
+   );
+   CPPAD_PY_ASSERT_UNKNOWN( ptr_->size_forward_bool() == 0 );
+   CPPAD_PY_ASSERT_UNKNOWN( ptr_->size_forward_set() != 0 );
+   // free stored forward pattern
+   ptr_->size_forward_set(0);
+   //
+   return;
 }
 void d_fun::rev_jac_sparsity(
-    const sparse_rc&  pattern_in    ,
-    sparse_rc&        pattern_out   )
-{   const CppAD::sparse_rc< std::vector<size_t> >* ptr_in  = pattern_in.ptr();
-    CppAD::sparse_rc< std::vector<size_t> >*       ptr_out = pattern_out.ptr();
-    bool transpose     = false;
-    bool dependency    = false;
-    bool internal_bool = false;
-    ptr_->rev_jac_sparsity(
-        *ptr_in, transpose, dependency, internal_bool, *ptr_out
-    );
-    return;
+   const sparse_rc&  pattern_in    ,
+   sparse_rc&        pattern_out   )
+{  const CppAD::sparse_rc< std::vector<size_t> >* ptr_in  = pattern_in.ptr();
+   CppAD::sparse_rc< std::vector<size_t> >*       ptr_out = pattern_out.ptr();
+   bool transpose     = false;
+   bool dependency    = false;
+   bool internal_bool = false;
+   ptr_->rev_jac_sparsity(
+      *ptr_in, transpose, dependency, internal_bool, *ptr_out
+   );
+   return;
 }
 // ----------------------------------------------------------------------------
 /*
 {xrst_begin cpp_sparsity}
 
 {xrst_spell
-    hes
-    bool
+   hes
+   bool
 }
 
 Hessian Sparsity Patterns
@@ -694,7 +694,7 @@ Fix a diagonal matrix :math:`D \in \B{R}^{n \times n}`, fix a vector
 
 .. math::
 
-    H(x) = D (r^\R{T} F)^{(2)} ( x ) D
+   H(x) = D (r^\R{T} F)^{(2)} ( x ) D
 
 Given a sparsity pattern for :math:`D` and :math:`r`,
 these routines compute a sparsity pattern for :math:`H(x)`.
@@ -749,7 +749,7 @@ In this case, *pattern_out* is a sparsity pattern for
 :math:`F_i^{(2)} ( x )`.
 
 {xrst_toc_hidden
-    example/cplusplus/sparse_hes_pattern_xam.cpp
+   example/cplusplus/sparse_hes_pattern_xam.cpp
 }
 Example
 *******
@@ -758,89 +758,89 @@ Example
 {xrst_end cpp_sparsity}
 */
 void d_fun::for_hes_sparsity(
-    const std::vector<bool>& select_domain ,
-    const std::vector<bool>& select_range  ,
-    sparse_rc&               pattern_out   )
-{   CppAD::sparse_rc< std::vector<size_t> >* ptr_out = pattern_out.ptr();
-    bool internal_bool = false;
-    ptr_->for_hes_sparsity(
-        select_domain, select_range, internal_bool, *ptr_out
-    );
-    return;
+   const std::vector<bool>& select_domain ,
+   const std::vector<bool>& select_range  ,
+   sparse_rc&               pattern_out   )
+{  CppAD::sparse_rc< std::vector<size_t> >* ptr_out = pattern_out.ptr();
+   bool internal_bool = false;
+   ptr_->for_hes_sparsity(
+      select_domain, select_range, internal_bool, *ptr_out
+   );
+   return;
 }
 void d_fun::rev_hes_sparsity(
-    const std::vector<bool>& select_domain ,
-    const std::vector<bool>& select_range  ,
-    sparse_rc&               pattern_out   )
-{   CPPAD_PY_ASSERT_KNOWN(
-        select_domain.size() == ptr_->Domain() ,
-        "rev_hes_sparsity: select_domain does not have proper size"
-    );
-    CPPAD_PY_ASSERT_KNOWN(
-        select_range.size() == ptr_->Range() ,
-        "rev_hes_sparsity: select_range does not have proper size"
-    );
-    typedef std::vector<size_t> vec_size_t;
-    CppAD::sparse_rc<vec_size_t>* ptr_out = pattern_out.ptr();
-    //
-    // count the number of domain components present
-    size_t n        = select_domain.size();
-    size_t n_subset = 0;
-    for(size_t j = 0; j < n; j++)
-        if( select_domain[j] )
-            ++n_subset;
-    //
-    // compute forward Jacobian sparsity with R a diagonal matrix
-    // that only includes the specified subset of the domain vector
-    CppAD::sparse_rc<vec_size_t> pattern_R;
-    pattern_R.resize(n, n_subset, n_subset);
-    vec_size_t subset2domain(n_subset);
-    size_t ell = 0;
-    for(size_t j = 0; j < n; j++)
-    {   if( select_domain[j] )
-        {   pattern_R.set(j, j, ell);
-            subset2domain[ell] = j;
-            ++ell;
-        }
-    }
-    bool transpose     = false;
-    bool dependency    = false;
-    bool internal_bool = false;
-    CppAD::sparse_rc<vec_size_t> pattern_jac;
-    ptr_->for_jac_sparsity(
-        pattern_R, transpose, dependency, internal_bool, pattern_jac
-    );
-    CPPAD_PY_ASSERT_UNKNOWN( ptr_->size_forward_bool() == 0 );
-    CPPAD_PY_ASSERT_UNKNOWN( ptr_->size_forward_set() != 0 );
-    //
-    // CppAD's version of rev_hes_sparsity computes a sparsity pattern for
-    // R^T (r^T * F)^{(2)} (x)
-    CppAD::sparse_rc<vec_size_t> pattern_hes;
-    ptr_->rev_hes_sparsity(
-        select_range, transpose, internal_bool, pattern_hes
-    );
-    //
-    // map row indices from subset used to speed calculation to
-    // entire set of domain indices
-    size_t nnz = pattern_hes.nnz();
-    const vec_size_t& row( pattern_hes.row() );
-    const vec_size_t& col( pattern_hes.col() );
-    ptr_out->resize(n, n, nnz);
-    for(size_t k = 0; k < nnz; k++)
-        ptr_out->set(k, subset2domain[ row[k] ], col[k] );
-    //
-    // free memory used for forward sparstiy pattern
-    ptr_->size_forward_set(0);
-    //
-    return;
+   const std::vector<bool>& select_domain ,
+   const std::vector<bool>& select_range  ,
+   sparse_rc&               pattern_out   )
+{  CPPAD_PY_ASSERT_KNOWN(
+      select_domain.size() == ptr_->Domain() ,
+      "rev_hes_sparsity: select_domain does not have proper size"
+   );
+   CPPAD_PY_ASSERT_KNOWN(
+      select_range.size() == ptr_->Range() ,
+      "rev_hes_sparsity: select_range does not have proper size"
+   );
+   typedef std::vector<size_t> vec_size_t;
+   CppAD::sparse_rc<vec_size_t>* ptr_out = pattern_out.ptr();
+   //
+   // count the number of domain components present
+   size_t n        = select_domain.size();
+   size_t n_subset = 0;
+   for(size_t j = 0; j < n; j++)
+      if( select_domain[j] )
+         ++n_subset;
+   //
+   // compute forward Jacobian sparsity with R a diagonal matrix
+   // that only includes the specified subset of the domain vector
+   CppAD::sparse_rc<vec_size_t> pattern_R;
+   pattern_R.resize(n, n_subset, n_subset);
+   vec_size_t subset2domain(n_subset);
+   size_t ell = 0;
+   for(size_t j = 0; j < n; j++)
+   {  if( select_domain[j] )
+      {  pattern_R.set(j, j, ell);
+         subset2domain[ell] = j;
+         ++ell;
+      }
+   }
+   bool transpose     = false;
+   bool dependency    = false;
+   bool internal_bool = false;
+   CppAD::sparse_rc<vec_size_t> pattern_jac;
+   ptr_->for_jac_sparsity(
+      pattern_R, transpose, dependency, internal_bool, pattern_jac
+   );
+   CPPAD_PY_ASSERT_UNKNOWN( ptr_->size_forward_bool() == 0 );
+   CPPAD_PY_ASSERT_UNKNOWN( ptr_->size_forward_set() != 0 );
+   //
+   // CppAD's version of rev_hes_sparsity computes a sparsity pattern for
+   // R^T (r^T * F)^{(2)} (x)
+   CppAD::sparse_rc<vec_size_t> pattern_hes;
+   ptr_->rev_hes_sparsity(
+      select_range, transpose, internal_bool, pattern_hes
+   );
+   //
+   // map row indices from subset used to speed calculation to
+   // entire set of domain indices
+   size_t nnz = pattern_hes.nnz();
+   const vec_size_t& row( pattern_hes.row() );
+   const vec_size_t& col( pattern_hes.col() );
+   ptr_out->resize(n, n, nnz);
+   for(size_t k = 0; k < nnz; k++)
+      ptr_out->set(k, subset2domain[ row[k] ], col[k] );
+   //
+   // free memory used for forward sparstiy pattern
+   ptr_->size_forward_set(0);
+   //
+   return;
 }
 /*
 ------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_jac}
 
 {xrst_spell
-    rcv
-    cppad
+   rcv
+   cppad
 }
 
 Computing Sparse Jacobians
@@ -861,7 +861,7 @@ The syntax above takes advantage of sparsity when computing the Jacobian
 
 .. math::
 
-    J(x) = F^{(1)} (x)
+   J(x) = F^{(1)} (x)
 
 In the sparse case, this should be faster and take less memory than
 :ref:`cpp_fun_jacobian`.
@@ -967,7 +967,7 @@ the zero order coefficients correspond to
 All the other forward mode coefficients are unspecified.
 
 {xrst_toc_hidden
-    example/cplusplus/sparse_jac_xam.cpp
+   example/cplusplus/sparse_jac_xam.cpp
 }
 Example
 *******
@@ -978,59 +978,59 @@ Example
 // ---------------------------------------------------------------------------
 // public member function not in Swig interface (see %ignore ptr)
 CppAD::sparse_jac_work* sparse_jac_work::ptr(void)
-{   return ptr_; }
+{  return ptr_; }
 //
 // sparse_jac_work ctor
 sparse_jac_work::sparse_jac_work(void)
-{   ptr_ = new CppAD::sparse_jac_work();
-    CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{  ptr_ = new CppAD::sparse_jac_work();
+   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 // sparse_jac_work destructor
 sparse_jac_work::~sparse_jac_work(void)
-{   // destructor should not throw exception
-    assert( ptr_ != CPPAD_NULL );
-    delete ptr_;
-    ptr_ = CPPAD_NULL;
+{  // destructor should not throw exception
+   assert( ptr_ != CPPAD_NULL );
+   delete ptr_;
+   ptr_ = CPPAD_NULL;
 }
 // sparse_jac_work clear
 void sparse_jac_work::clear(void)
-{   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
-    ptr_->clear();
-    return;
+{  CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+   ptr_->clear();
+   return;
 }
 // sparse_jac_for
 int d_fun::sparse_jac_for(
-    sparse_rcv&                subset   ,
-    const std::vector<double>& x        ,
-    const sparse_rc&           pattern  ,
-    sparse_jac_work&           work     )
-{   size_t      group_max = 1;
-    std::string coloring  = "cppad";
-    size_t n_sweep = ptr_->sparse_jac_for(
-        group_max, x, *subset.ptr(), *pattern.ptr(), coloring, *work.ptr()
-    );
-    return int(n_sweep);
+   sparse_rcv&                subset   ,
+   const std::vector<double>& x        ,
+   const sparse_rc&           pattern  ,
+   sparse_jac_work&           work     )
+{  size_t      group_max = 1;
+   std::string coloring  = "cppad";
+   size_t n_sweep = ptr_->sparse_jac_for(
+      group_max, x, *subset.ptr(), *pattern.ptr(), coloring, *work.ptr()
+   );
+   return int(n_sweep);
 }
 // sparse_jac_rev
 int d_fun::sparse_jac_rev(
-    sparse_rcv&                subset   ,
-    const std::vector<double>& x        ,
-    const sparse_rc&           pattern  ,
-    sparse_jac_work&           work     )
-{   std::string coloring  = "cppad";
-    size_t n_sweep = ptr_->sparse_jac_rev(
-        x, *subset.ptr(), *pattern.ptr(), coloring, *work.ptr()
-    );
-    return int(n_sweep);
+   sparse_rcv&                subset   ,
+   const std::vector<double>& x        ,
+   const sparse_rc&           pattern  ,
+   sparse_jac_work&           work     )
+{  std::string coloring  = "cppad";
+   size_t n_sweep = ptr_->sparse_jac_rev(
+      x, *subset.ptr(), *pattern.ptr(), coloring, *work.ptr()
+   );
+   return int(n_sweep);
 }
 /*
 ------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_hes}
 
 {xrst_spell
-    rcv
-    hes
-    cppad
+   rcv
+   hes
+   cppad
 }
 
 Computing Sparse Hessians
@@ -1050,7 +1050,7 @@ Given a vector :math:`r \in \B{R}^m`, define
 
 .. math::
 
-    H(x) = (r^\R{T} F)^{(2)} ( x )
+   H(x) = (r^\R{T} F)^{(2)} ( x )
 
 This routine takes advantage of sparsity when computing elements
 of the Hessian :math:`H(x)`.
@@ -1154,7 +1154,7 @@ the zero order coefficients correspond to
 All the other forward mode coefficients are unspecified.
 
 {xrst_toc_hidden
-    example/cplusplus/sparse_hes_xam.cpp
+   example/cplusplus/sparse_hes_xam.cpp
 }
 Example
 *******
@@ -1165,38 +1165,38 @@ Example
 // ---------------------------------------------------------------------------
 // public member function not in Swig interface (see %ignore ptr)
 CppAD::sparse_hes_work* sparse_hes_work::ptr(void)
-{   return ptr_; }
+{  return ptr_; }
 //
 // sparse_hes_work ctor
 sparse_hes_work::sparse_hes_work(void)
-{   ptr_ = new CppAD::sparse_hes_work();
-    CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+{  ptr_ = new CppAD::sparse_hes_work();
+   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
 }
 // sparse_hes_work destructor
 sparse_hes_work::~sparse_hes_work(void)
-{   // destructor should not throw exception
-    assert( ptr_ != CPPAD_NULL );
-    delete ptr_;
-    ptr_ = CPPAD_NULL;
+{  // destructor should not throw exception
+   assert( ptr_ != CPPAD_NULL );
+   delete ptr_;
+   ptr_ = CPPAD_NULL;
 }
 // sparse_hes_work clear
 void sparse_hes_work::clear(void)
-{   CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
-    ptr_->clear();
-    return;
+{  CPPAD_PY_ASSERT_UNKNOWN( ptr_ != CPPAD_NULL );
+   ptr_->clear();
+   return;
 }
 // sparse_hes
 int d_fun::sparse_hes(
-    sparse_rcv&                subset   ,
-    const std::vector<double>& x        ,
-    const std::vector<double>& r        ,
-    const sparse_rc&           pattern  ,
-    sparse_hes_work&           work     )
-{   std::string coloring  = "cppad.symmetric";
-    size_t n_sweep = ptr_->sparse_hes(
-        x, r, *subset.ptr(), *pattern.ptr(), coloring, *work.ptr()
-    );
-    return int(n_sweep);
+   sparse_rcv&                subset   ,
+   const std::vector<double>& x        ,
+   const std::vector<double>& r        ,
+   const sparse_rc&           pattern  ,
+   sparse_hes_work&           work     )
+{  std::string coloring  = "cppad.symmetric";
+   size_t n_sweep = ptr_->sparse_hes(
+      x, r, *subset.ptr(), *pattern.ptr(), coloring, *work.ptr()
+   );
+   return int(n_sweep);
 }
 
 } // END_CPPAD_PY_NAMESPACE

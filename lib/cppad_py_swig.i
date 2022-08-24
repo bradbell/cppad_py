@@ -1,8 +1,8 @@
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
-            Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
-                This program is distributed under the terms of the
-                GNU General Public License version 3.0 or later see
+         Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
+            This program is distributed under the terms of the
+            GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
 /* cppad_py_swig.i */
@@ -29,8 +29,8 @@
 {xrst_begin module}
 
 {xrst_spell
-    cppad
-    namespace
+   cppad
+   namespace
 }
 
 C++ and Python Modules
@@ -57,7 +57,7 @@ Swig ``cppad_py.`` module.
 %exception {
      try { $action }
      catch (std::runtime_error& e) {
-            SWIG_exception(SWIG_RuntimeError, const_cast<char*>( e.what() ) );
+         SWIG_exception(SWIG_RuntimeError, const_cast<char*>( e.what() ) );
      }
 }
 
@@ -68,35 +68,35 @@ Swig ``cppad_py.`` module.
 %include <cppad/py/mixed.hpp>
 
 %extend cppad_py::a_double {
-        cppad_py::a_double __radd__(const double& d) const
-        {       cppad_py::a_double result;
-                return radd(d, *($self));
-        }
-        cppad_py::a_double __rsub__(const double& d) const
-        {       cppad_py::a_double result;
-                return rsub(d, *($self));
-        }
-        cppad_py::a_double __rmul__(const double& d) const
-        {       cppad_py::a_double result;
-                return rmul(d, *($self));
-        }
-        cppad_py::a_double __rtruediv__(const double& d) const
-        {       cppad_py::a_double result;
-                return rdiv(d, *($self));
-        }
-        /* pow is an operator in python but not c++ */
-        cppad_py::a_double __rpow__(const double& d) const
-        {       cppad_py::a_double result;
-                return pow(d, *($self));
-        }
-        cppad_py::a_double __pow__(const double& d) const
-        {       cppad_py::a_double result;
-                return pow(*($self), d);
-        }
-        cppad_py::a_double __pow__(const a_double& ad) const
-        {       cppad_py::a_double result;
-                return pow(*($self), ad);
-        }
+      cppad_py::a_double __radd__(const double& d) const
+      {       cppad_py::a_double result;
+            return radd(d, *($self));
+      }
+      cppad_py::a_double __rsub__(const double& d) const
+      {       cppad_py::a_double result;
+            return rsub(d, *($self));
+      }
+      cppad_py::a_double __rmul__(const double& d) const
+      {       cppad_py::a_double result;
+            return rmul(d, *($self));
+      }
+      cppad_py::a_double __rtruediv__(const double& d) const
+      {       cppad_py::a_double result;
+            return rdiv(d, *($self));
+      }
+      /* pow is an operator in python but not c++ */
+      cppad_py::a_double __rpow__(const double& d) const
+      {       cppad_py::a_double result;
+            return pow(d, *($self));
+      }
+      cppad_py::a_double __pow__(const double& d) const
+      {       cppad_py::a_double result;
+            return pow(*($self), d);
+      }
+      cppad_py::a_double __pow__(const a_double& ad) const
+      {       cppad_py::a_double result;
+            return pow(*($self), ad);
+      }
 }
 
 namespace std {

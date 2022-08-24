@@ -10,56 +10,56 @@
 logfile=`pwd`/check_all.log
 tmpfile=`pwd`/check_all.tmp
 echo_eval_log() {
-    echo "$* >> check_all.log"
-    echo $* >> $logfile
-    if ! eval $* >& $tmpfile
-    then
-        if grep -i 'error' $tmpfile
-        then
-            echo 'check_all.sh: errors above are in check_all.log'
-        else
-            echo 'check_all.sh: see check_all.log for errors'
-        fi
-        cat $tmpfile >> $logfile
-        exit_code 1
-    fi
-    cat $tmpfile >> $logfile
+   echo "$* >> check_all.log"
+   echo $* >> $logfile
+   if ! eval $* >& $tmpfile
+   then
+      if grep -i 'error' $tmpfile
+      then
+         echo 'check_all.sh: errors above are in check_all.log'
+      else
+         echo 'check_all.sh: see check_all.log for errors'
+      fi
+      cat $tmpfile >> $logfile
+      exit_code 1
+   fi
+   cat $tmpfile >> $logfile
 }
 # -----------------------------------------------------------------------------
 # cleanup and exit with specified code
 exit_code() {
-    if [ "$build_type" == 'debug' ]
-    then
-        sed -i bin/get_cppad.sh -e "s|^build_type *=.*|build_type='release'|"
-    fi
-    if [ "$include_mixed" == 'true' ]
-    then
-        sed -i bin/get_cppad.sh \
-            -e "s|^include_mixed *=.*|include_mixed='false'|"
-    fi
-    if [ -e $tmpfile ]
-    then
-        rm $tmpfile
-    fi
-    exit $1
+   if [ "$build_type" == 'debug' ]
+   then
+      sed -i bin/get_cppad.sh -e "s|^build_type *=.*|build_type='release'|"
+   fi
+   if [ "$include_mixed" == 'true' ]
+   then
+      sed -i bin/get_cppad.sh \
+         -e "s|^include_mixed *=.*|include_mixed='false'|"
+   fi
+   if [ -e $tmpfile ]
+   then
+      rm $tmpfile
+   fi
+   exit $1
 }
 # -----------------------------------------------------------------------------
 if [ "$0" != "bin/check_all.sh" ]
 then
-    echo "bin/check_all.sh: must be executed from its parent directory"
-    exit_code 1
+   echo "bin/check_all.sh: must be executed from its parent directory"
+   exit_code 1
 fi
 if [ "$1" != 'debug' ] && [ "$1" != 'release' ]
 then
-    echo 'usage: bin/check_all.sh (debug|release) include_mixed'
-    echo 'where include_mixed is true or false'
-    exit_code 1
+   echo 'usage: bin/check_all.sh (debug|release) include_mixed'
+   echo 'where include_mixed is true or false'
+   exit_code 1
 fi
 if [ "$2" != 'true' ] && [ "$2" != 'false' ]
 then
-    echo 'usage: bin/check_all.sh (debug|release) include_mixed'
-    echo 'where include_mixed is true or false'
-    exit_code 1
+   echo 'usage: bin/check_all.sh (debug|release) include_mixed'
+   echo 'where include_mixed is true or false'
+   exit_code 1
 fi
 # -----------------------------------------------------------------------------
 # build_type, cmake_install_prefix, extra_cxx_flags, include_mxied, libdir
@@ -71,29 +71,29 @@ libdir=$(bin/libdir.py)
 #
 if ! echo $cmake_install_prefix | grep '^/' > /dev/null
 then
-    # convert cmake_install_prefix to an absolute path
-    cmake_install_prefix="$(pwd)/$cmake_install_prefix"
+   # convert cmake_install_prefix to an absolute path
+   cmake_install_prefix="$(pwd)/$cmake_install_prefix"
 fi
 # -----------------------------------------------------------------------------
 if [ "$build_type" != 'release' ] || [ "$include_mixed" != 'false' ]
 then
-    echo 'check_all.sh: build type in bin/get_cppad.sh is not release'
-    echo 'or include_mixed is not false.'
-    echo 'This has been fixed, you should be able to just re-run this script.'
-    # The exit_code function makes fix mentioned above
-    exit_code 1
+   echo 'check_all.sh: build type in bin/get_cppad.sh is not release'
+   echo 'or include_mixed is not false.'
+   echo 'This has been fixed, you should be able to just re-run this script.'
+   # The exit_code function makes fix mentioned above
+   exit_code 1
 fi
 if [ "$1" == 'debug' ]
 then
-    # This change will be undone by the exit_code function
-    sed -i bin/get_cppad.sh -e "s|^build_type *=.*|build_type='debug'|"
-    build_type='debug'
+   # This change will be undone by the exit_code function
+   sed -i bin/get_cppad.sh -e "s|^build_type *=.*|build_type='debug'|"
+   build_type='debug'
 fi
 if [ "$2" == 'true' ]
 then
-    # This change will be undone by the exit_code function
-    sed -i bin/get_cppad.sh -e "s|^include_mixed *=.*|include_mixed='true'|"
-    include_mixed='true'
+   # This change will be undone by the exit_code function
+   sed -i bin/get_cppad.sh -e "s|^include_mixed *=.*|include_mixed='true'|"
+   include_mixed='true'
 fi
 echo_eval_log bin/build_type.sh
 # -----------------------------------------------------------------------------
@@ -104,35 +104,35 @@ echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
 minor=$(echo "import sys; print(sys.version_info.minor)" | python3)
 if [ -e "$LD_LIBRARY_PATH/python3.$minor" ]
 then
-    echo_eval_log rm -r "$LD_LIBRARY_PATH/python3.$minor"
+   echo_eval_log rm -r "$LD_LIBRARY_PATH/python3.$minor"
 fi
 if [ -e cppad_py ]
 then
-    echo_eval rm -r cppad_py
+   echo_eval rm -r cppad_py
 fi
 if echo 'import cppad_py' | python >& /dev/null
 then
-    echo 'y' | pip uninstall cppad_py
+   echo 'y' | pip uninstall cppad_py
 fi
 # -----------------------------------------------------------------------------
 # clean out old informaiton
 if [ -e $logfile ]
 then
-    echo "rm check_all.log"
-    rm $logfile
+   echo "rm check_all.log"
+   rm $logfile
 fi
 if ls build | grep '^lib\.' > /dev/null
 then
-    echo_eval_log rm -r "build/lib.*"
+   echo_eval_log rm -r "build/lib.*"
 fi
 if ls build | grep '^temp\.' > /dev/null
 then
-    echo_eval_log rm -r "build/temp.*"
+   echo_eval_log rm -r "build/temp.*"
 fi
 # -----------------------------------------------------------------------------
 if [ -e sphinx/xsrst ]
 then
-    echo_eval_log rm -r sphinx/xsrst
+   echo_eval_log rm -r sphinx/xsrst
 fi
 echo_eval_log check_copyright.sh
 echo_eval_log bin/check_if_0.sh
@@ -157,16 +157,16 @@ EOF
 #
 if [ "$build_type" == 'debug' ]
 then
-    sed -i $logfile -f $tmpfile
+   sed -i $logfile -f $tmpfile
 fi
 #
 # check_all.py and run_sphins.sh run example/python/mixed/warning_xam.py
 # and output 'warning_xam: OK', 'mixed_warning'.
 if sed -e '/warning_xam: OK/d' -e '/mixed_warning/d'  $logfile | \
-    grep -i 'warning'
+   grep -i 'warning'
 then
-    echo 'check_all.sh: Error: see warnings in check_all.log'
-    exit_code 1
+   echo 'check_all.sh: Error: see warnings in check_all.log'
+   exit_code 1
 fi
 # -----------------------------------------------------------------------------
 rm $tmpfile

@@ -13,7 +13,7 @@ Python Utilities
 Children
 ********
 {xrst_toc_table
-    lib/python/cppad_py/utility.py
+   lib/python/cppad_py/utility.py
 }
 
 {xrst_end py_utility}

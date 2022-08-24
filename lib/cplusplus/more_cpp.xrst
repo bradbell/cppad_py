@@ -8,13 +8,13 @@
 {xrst_begin more_cpp}
 
 {xrst_spell
-    cppad
-    hpp
-    cplusplus
-    mhelp
-    bool
-    grep
-    adynamic
+   cppad
+   hpp
+   cplusplus
+   mhelp
+   bool
+   grep
+   adynamic
 }
 
 Steps To Add More C++ Functions
@@ -37,10 +37,10 @@ independent
 The include file ``include/cppad/py/fun.hpp``
 was edited to add the following prototype:
 {xrst_code cpp}
-    CPPAD_PY_LIB_PUBLIC
-    std::vector<a_double> independent(
-        const std::vector<double>& x, const std::vector<double>& dynamic
-    );
+   CPPAD_PY_LIB_PUBLIC
+   std::vector<a_double> independent(
+      const std::vector<double>& x, const std::vector<double>& dynamic
+   );
 {xrst_code}
 The ``independent`` function is not part of the
 ``d_fun`` or ``a_fun`` class, but
@@ -52,11 +52,11 @@ new_dynamic
 The include file ``include/cppad/py/fun.hpp``
 was edited to add the following member function to ``d_fun`` :
 {xrst_code cpp}
-    void new_dynamic(const std::vector<double>& dynamic);
+   void new_dynamic(const std::vector<double>& dynamic);
 {xrst_code}
 The following member function was added to ``a_fun`` :
 {xrst_code cpp}
-    void new_dynamic(const std::vector<a_double>& adynamic);
+   void new_dynamic(const std::vector<a_double>& adynamic);
 {xrst_code}
 
 Documentation
@@ -96,9 +96,9 @@ independent
 ===========
 The following function was added to the ``lib/cplusplus/fun.cpp`` file:
 {xrst_literal
-    // BEGIN_A_BOTH_INDEPENDENT_SOURCE
-    // END_A_BOTH_INDEPENDENT_SOURCE
-    lib/cplusplus/fun.cpp
+   // BEGIN_A_BOTH_INDEPENDENT_SOURCE
+   // END_A_BOTH_INDEPENDENT_SOURCE
+   lib/cplusplus/fun.cpp
 }
 
 new_dynamic
@@ -106,9 +106,9 @@ new_dynamic
 The following function
 was added to the ``lib/cplusplus/fun.cpp`` file:
 {xrst_literal
-    // BEGIN_NEW_DYNAMIC_SOURCE
-    // END_NEW_DYNAMIC_SOURCE
-    lib/cplusplus/fun.cpp
+   // BEGIN_NEW_DYNAMIC_SOURCE
+   // END_NEW_DYNAMIC_SOURCE
+   lib/cplusplus/fun.cpp
 }
 A similar function was added to the ``a_fun`` class.
 

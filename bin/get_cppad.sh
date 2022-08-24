@@ -12,10 +12,10 @@
 # {xrst_begin get_cppad_sh}
 #
 # {xrst_spell
-#   cppad
-#   cxx
-#   Wno
-#   cmake
+#  cppad
+#  cxx
+#  Wno
+#  cmake
 # }
 #
 # Get Cppad
@@ -122,32 +122,32 @@ hash_code='241d9e18ecad02082b6cd64bef201be141ff31a9'
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
-    echo $*
-    eval $*
+   echo $*
+   eval $*
 }
 # -----------------------------------------------------------------------------
 if [ "$0" != "bin/get_cppad.sh" ]
 then
-    echo "bin/get_cppad.sh: must be executed from its parent directory"
-    exit 1
+   echo "bin/get_cppad.sh: must be executed from its parent directory"
+   exit 1
 fi
 if [ "$include_mixed" == 'true' ]
 then
-    msg='bin/get_cppad.sh: Must use bin/get_cppad_mixed.sh '
-    msg="$msg  when include_mixed is true"
-    echo $msg
-    exit 1
+   msg='bin/get_cppad.sh: Must use bin/get_cppad_mixed.sh '
+   msg="$msg  when include_mixed is true"
+   echo $msg
+   exit 1
 fi
 if [ "$include_mixed" != 'false' ]
 then
-    echo 'bin/get_cppad.sh: include_mixed is not true or false'
-    exit 1
+   echo 'bin/get_cppad.sh: include_mixed is not true or false'
+   exit 1
 fi
 # -----------------------------------------------------------------------------
 if ! echo $cmake_install_prefix | grep '^/' > /dev/null
 then
-    # convert cmake_install_prefix to an absolute path
-    cmake_install_prefix="$(pwd)/$cmake_install_prefix"
+   # convert cmake_install_prefix to an absolute path
+   cmake_install_prefix="$(pwd)/$cmake_install_prefix"
 fi
 libdir=$(bin/libdir.py)
 # -----------------------------------------------------------------------------
@@ -157,14 +157,14 @@ echo_eval bin/build_type.sh
 # change into the external/build_type
 if [ ! -e external/$build_type ]
 then
-    mkdir -p external/$build_type
+   mkdir -p external/$build_type
 fi
 echo_eval cd external/$build_type
 # -----------------------------------------------------------------------------
 # clone cppad repository directory
 if [ ! -e cppad.git ]
 then
-    echo_eval git clone $remote_repo cppad.git
+   echo_eval git clone $remote_repo cppad.git
 fi
 echo_eval cd cppad.git
 git reset --hard
@@ -172,56 +172,56 @@ echo_eval git checkout master
 echo_eval git pull --ff-only
 echo_eval git checkout --quiet $hash_code
 check=`grep '^SET(cppad_version' CMakeLists.txt | \
-        sed -e 's|^[^"]*"\([^"]*\)".*|\1|'`
+      sed -e 's|^[^"]*"\([^"]*\)".*|\1|'`
 if [ "$check" != "$cppad_version" ]
 then
-    echo "get_cppad.sh: cppad_version = $cppad_version"
-    echo "cppad_version in cppad-$cppad_version.git/CMakeLists.txt = $check"
-    exit 1
+   echo "get_cppad.sh: cppad_version = $cppad_version"
+   echo "cppad_version in cppad-$cppad_version.git/CMakeLists.txt = $check"
+   exit 1
 fi
 # -----------------------------------------------------------------------------
 # build cppad
 # cppad build directory
 if [ ! -e build ]
 then
-    echo_eval mkdir build
+   echo_eval mkdir build
 fi
 echo_eval cd build
 if [ -e CMakeCache.txt ]
 then
-    rm CMakeCache.txt
+   rm CMakeCache.txt
 fi
 #
 # run cppad cmake command
 if [ "$build_type" == 'debug' ]
 then
-    cppad_debug_which='debug_all'
+   cppad_debug_which='debug_all'
 elif [ "$build_type" == 'release' ]
 then
-    cppad_debug_which='debug_none'
+   cppad_debug_which='debug_none'
 else
-    echo 'bin/get_cppad.sh: build type is not debug or release'
-    exit 1
+   echo 'bin/get_cppad.sh: build type is not debug or release'
+   exit 1
 fi
 cat << EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
-    -D cppad_prefix="$cmake_install_prefix"  \\
-    -D cmake_install_libdirs="$libdir"  \\
-    -D cppad_cxx_flags="$extra_cxx_flags" \\
-    -D cppad_debug_which=$cppad_debug_which \\
-    ..
+   -D cppad_prefix="$cmake_install_prefix"  \\
+   -D cmake_install_libdirs="$libdir"  \\
+   -D cppad_cxx_flags="$extra_cxx_flags" \\
+   -D cppad_debug_which=$cppad_debug_which \\
+   ..
 EOF
 cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
-    -D cppad_prefix="$cmake_install_prefix"  \
-    -D cmake_install_libdirs="$libdir"  \
-    -D cppad_cxx_flags="$extra_cxx_flags" \
-    -D cppad_debug_which=$cppad_debug_which \
-    ..
+   -D cppad_prefix="$cmake_install_prefix"  \
+   -D cmake_install_libdirs="$libdir"  \
+   -D cppad_cxx_flags="$extra_cxx_flags" \
+   -D cppad_debug_which=$cppad_debug_which \
+   ..
 #
 # run check
 if [ "$test_cppad" == 'true' ]
 then
-    make check
+   make check
 fi
 #
 # install

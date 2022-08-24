@@ -10,37 +10,37 @@ import numpy
 import cppad_py
 
 class optimize_fun_class :
-    def __init__(self, objective_ad, constraint_ad=None) :
-        self.objective_ad  = objective_ad
-        self.constraint_ad = constraint_ad
-    #
-    def objective_fun(self, x) :
-        # objective as a vector
-        y = self.objective_ad.forward(0, x)
-        return y[0]
-    #
-    def objective_grad(self, x) :
-        # Jacobian as a matrix
-        J = self.objective_ad.jacobian(x)
-        # change to a vector
-        return J.flatten()
-    #
-    def objective_hess(self, x) :
-        w = numpy.array( [ 1.0 ] )
-        H = self.objective_ad.hessian(x, w)
-        return H
-    #
-    def constraint_fun(self, x) :
-        return self.constraint_ad.forward(0, x)
-    #
-    def constraint_jac(self, x) :
-        # Jacobian as a matrix
-        J = self.constraint_ad.jacobian(x)
-        return J
-    #
-    def constraint_hess(self, x, v) :
-        H = self.constraint_ad.hessian(x, v)
-        return H
+   def __init__(self, objective_ad, constraint_ad=None) :
+      self.objective_ad  = objective_ad
+      self.constraint_ad = constraint_ad
+   #
+   def objective_fun(self, x) :
+      # objective as a vector
+      y = self.objective_ad.forward(0, x)
+      return y[0]
+   #
+   def objective_grad(self, x) :
+      # Jacobian as a matrix
+      J = self.objective_ad.jacobian(x)
+      # change to a vector
+      return J.flatten()
+   #
+   def objective_hess(self, x) :
+      w = numpy.array( [ 1.0 ] )
+      H = self.objective_ad.hessian(x, w)
+      return H
+   #
+   def constraint_fun(self, x) :
+      return self.constraint_ad.forward(0, x)
+   #
+   def constraint_jac(self, x) :
+      # Jacobian as a matrix
+      J = self.constraint_ad.jacobian(x)
+      return J
+   #
+   def constraint_hess(self, x, v) :
+      H = self.constraint_ad.hessian(x, v)
+      return H
 # END_PYTHON
 """
 {xrst_begin numeric_optimize_fun_class}
@@ -58,10 +58,10 @@ This class is an aid solving optimization problems of the form
 
 .. math::
 
-    \begin{array}{rl}
-    {\rm minimize}       & f(x) \; {\rm w.r.t} \; x \\
-    {\rm subject \; to}  & a \leq g(x) \leq b \\
-    \end{array}
+   \begin{array}{rl}
+   {\rm minimize}       & f(x) \; {\rm w.r.t} \; x \\
+   {\rm subject \; to}  & a \leq g(x) \leq b \\
+   \end{array}
 
 where :math:`x` is a vector,
 :math:`f(x)` is a scalar, and
@@ -141,13 +141,13 @@ sets
 
 .. math::
 
-    H = \sum_{i=0}^{m-1} v_k g_i^{(2)} (x)
+   H = \sum_{i=0}^{m-1} v_k g_i^{(2)} (x)
 
 where *x* is a numpy vector with length *n*
 and *H* is a numpy *n* by *n*  matrix.
 
 {xrst_toc_hidden
-    example/python/numeric/optimize_fun_xam.py
+   example/python/numeric/optimize_fun_xam.py
 }
 Example
 *******
@@ -156,8 +156,8 @@ Example
 Source Code
 ***********
 {xrst_literal
-    # BEGIN_PYTHON
-    # END_PYTHON
+   # BEGIN_PYTHON
+   # END_PYTHON
 }
 
 {xrst_end numeric_optimize_fun_class}

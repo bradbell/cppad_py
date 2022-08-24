@@ -46,14 +46,14 @@ version='20220519'
 name='bin/get_cppad_mixed.sh'
 if [ $0 != $name ]
 then
-    echo "$name: must be executed from its parent directory"
-    exit 1
+   echo "$name: must be executed from its parent directory"
+   exit 1
 fi
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
-    echo $*
-    eval $*
+   echo $*
+   eval $*
 }
 # --------------------------------------------------------------------------
 # build_type
@@ -73,13 +73,13 @@ cmd=`grep '^include_mixed=' bin/get_cppad.sh`
 eval $cmd
 if [ "$include_mixed" == 'false' ]
 then
-    echo "$name: Must use bin/get_cppad.sh when include_mixed is false"
-    exit 1
+   echo "$name: Must use bin/get_cppad.sh when include_mixed is false"
+   exit 1
 fi
 if [ "$include_mixed" != 'true' ]
 then
-    echo "$name: include_mixed is not true or false in bin/get_cppad.sh."
-    exit 1
+   echo "$name: include_mixed is not true or false in bin/get_cppad.sh."
+   exit 1
 fi
 # ---------------------------------------------------------------------------
 minor=$(echo "import sys; print(sys.version_info.minor)" | python3)
@@ -95,14 +95,14 @@ echo_eval bin/build_type.sh
 # cd into external
 if [ ! -e external ]
 then
-    mkdir external
+   mkdir external
 fi
 echo_eval cd external
 # --------------------------------------------------------------------------
 # clone cppad_mixed.git
 if [ ! -e cppad_mixed.git ]
 then
-    echo_eval git clone $web_page cppad_mixed.git
+   echo_eval git clone $web_page cppad_mixed.git
 fi
 cd cppad_mixed.git
 git reset --hard
@@ -110,59 +110,59 @@ echo_eval git checkout master
 echo_eval git pull --ff-only
 echo_eval git checkout --quiet $hash_key
 check=`grep '^SET(cppad_mixed_version' CMakeLists.txt | \
-    sed -e 's|^[^"]*"\([^"]*\).*|\1|'`
+   sed -e 's|^[^"]*"\([^"]*\).*|\1|'`
 if [ "$version" != "$check" ]
 then
-    echo 'install_cppad_mixed.sh: version number does not agree with hash_key'
-    echo "version=$version, check=$check"
-    exit 1
+   echo 'install_cppad_mixed.sh: version number does not agree with hash_key'
+   echo "version=$version, check=$check"
+   exit 1
 fi
 if [ "$build_type" == 'release' ]
 then
-    optimize='yes'
+   optimize='yes'
 else
-    optimize='no'
+   optimize='no'
 fi
 # ----------------------------------------------------------------------------
 # transfer cppad_py install options to cppad_mixed run_cmake.sh
 dir=$(pwd)
 echo "edit $dir/bin/run_cmake.sh"
 sed \
-    -e "s|^verbose_makefile=.*|verbose_makefile='no'|" \
-    -e "s|^build_type=.*|build_type='$build_type'|" \
-    -e "s|^cmake_install_prefix=.*|cmake_install_prefix='$cmake_install_prefix'|" \
-    -e "s|^extra_cxx_flags=.*|extra_cxx_flags='$extra_cxx_flags'|" \
-    -e "s|^cmake_libdir=.*|cmake_libdir='$libdir'|" \
-    -e "s|^ldlt_cholmod=.*|ldlt_cholmod='yes'|" \
-    -e "s|^optimize_cppad_function=.*|optimize_cppad_function='$optimize'|" \
-    -e "s|^for_hes_sparsity=.*|for_hes_sparsity='yes'|" \
-    bin/run_cmake.sh > run_cmake.$$
+   -e "s|^verbose_makefile=.*|verbose_makefile='no'|" \
+   -e "s|^build_type=.*|build_type='$build_type'|" \
+   -e "s|^cmake_install_prefix=.*|cmake_install_prefix='$cmake_install_prefix'|" \
+   -e "s|^extra_cxx_flags=.*|extra_cxx_flags='$extra_cxx_flags'|" \
+   -e "s|^cmake_libdir=.*|cmake_libdir='$libdir'|" \
+   -e "s|^ldlt_cholmod=.*|ldlt_cholmod='yes'|" \
+   -e "s|^optimize_cppad_function=.*|optimize_cppad_function='$optimize'|" \
+   -e "s|^for_hes_sparsity=.*|for_hes_sparsity='yes'|" \
+   bin/run_cmake.sh > run_cmake.$$
 mv run_cmake.$$ bin/run_cmake.sh
 chmod +x bin/run_cmake.sh
 #
 # check edit
 list="
-    ^verbose_makefile='no'
-    ^build_type='$build_type'
-    ^cmake_install_prefix='$cmake_install_prefix'
-    ^cmake_libdir='$libdir'
-    ^ldlt_cholmod='yes'
-    ^optimize_cppad_function='$optimize'
-    ^for_hes_sparsity='yes'
+   ^verbose_makefile='no'
+   ^build_type='$build_type'
+   ^cmake_install_prefix='$cmake_install_prefix'
+   ^cmake_libdir='$libdir'
+   ^ldlt_cholmod='yes'
+   ^optimize_cppad_function='$optimize'
+   ^for_hes_sparsity='yes'
 "
 for pattern in $list
 do
-    if ! grep "$pattern" bin/run_cmake.sh > /dev/null
-    then
-        echo "get_cppad_mixed.sh: Edit of $dir/bin/run_cmake.sh failed"
-        exit 1
-    fi
+   if ! grep "$pattern" bin/run_cmake.sh > /dev/null
+   then
+      echo "get_cppad_mixed.sh: Edit of $dir/bin/run_cmake.sh failed"
+      exit 1
+   fi
 done
 # $extra_cxx_flags my have spaces in it
 if ! grep "^extra_cxx_flags='$extra_cxx_flags'"  bin/run_cmake.sh > /dev/null
 then
-    echo "get_cppad_mixed.sh: Edit of $dir/bin/run_cmake.sh failed"
-    exit 1
+   echo "get_cppad_mixed.sh: Edit of $dir/bin/run_cmake.sh failed"
+   exit 1
 fi
 # -----------------------------------------------------------------------------
 # cppad_mixed example install

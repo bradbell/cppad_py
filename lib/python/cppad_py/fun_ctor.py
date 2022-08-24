@@ -10,8 +10,8 @@
 # {xrst_begin py_fun_ctor}
 #
 # {xrst_spell
-#   cppad
-#   af
+#  cppad
+#  af
 # }
 #
 # Stop Current Recording and Store Function Object
@@ -72,7 +72,7 @@
 # :ref:`af_size_order()<py_fun_property@size_order>` is zero.
 #
 # {xrst_toc_hidden
-#   example/python/core/a_fun_xam.py
+#  example/python/core/a_fun_xam.py
 # }
 # Example
 # *******
@@ -87,24 +87,24 @@ import cppad_py
 #
 # This function is used by __init__ in d_fun class to implement syntax above:
 def d_fun_ctor(ax, ay) :
-    """
-    d_fun(ax, ay)
-    Stop recording a_double operations and
-    create an AD function object that maps ax -> ay.
-    """
-    #
-    # This case is used to pass the default constructor through swig
-    if type(ax) == type(None) or type(ay) == type(None) :
-        # python version of defualt consructor does not specify ax or ay
-        assert type(ax) == type(None) and type(ay) == type(None)
-        ax = numpy.empty(0, dtype = cppad_py.a_double)
-        ay = numpy.empty(0, dtype = cppad_py.a_double)
-    #
-    # convert ax -> au, ay -> av
-    dtype    = cppad_py.a_double
-    syntax   = 'd_fun(ax, ay)'
-    au       = cppad_py.utility.numpy2vec(ax, dtype, ax.size, syntax, 'ax')
-    av       = cppad_py.utility.numpy2vec(ay, dtype, ay.size, syntax, 'ay')
-    #
-    # call d_fun and return result
-    return cppad_py.cppad_swig.d_fun(au, av)
+   """
+   d_fun(ax, ay)
+   Stop recording a_double operations and
+   create an AD function object that maps ax -> ay.
+   """
+   #
+   # This case is used to pass the default constructor through swig
+   if type(ax) == type(None) or type(ay) == type(None) :
+      # python version of defualt consructor does not specify ax or ay
+      assert type(ax) == type(None) and type(ay) == type(None)
+      ax = numpy.empty(0, dtype = cppad_py.a_double)
+      ay = numpy.empty(0, dtype = cppad_py.a_double)
+   #
+   # convert ax -> au, ay -> av
+   dtype    = cppad_py.a_double
+   syntax   = 'd_fun(ax, ay)'
+   au       = cppad_py.utility.numpy2vec(ax, dtype, ax.size, syntax, 'ax')
+   av       = cppad_py.utility.numpy2vec(ay, dtype, ay.size, syntax, 'ay')
+   #
+   # call d_fun and return result
+   return cppad_py.cppad_swig.d_fun(au, av)

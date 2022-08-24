@@ -8,9 +8,9 @@
 {xrst_begin py_sparse_jac}
 
 {xrst_spell
-    jacobians
-    rcv
-    cppad
+   jacobians
+   rcv
+   cppad
 }
 
 Computing Sparse Jacobians
@@ -31,7 +31,7 @@ The syntax above takes advantage of sparsity when computing the Jacobian
 
 .. math::
 
-    J(x) = F^{(1)} (x)
+   J(x) = F^{(1)} (x)
 
 In the sparse case, this should be faster and take less memory than
 :ref:`py_fun_jacobian`.
@@ -125,7 +125,7 @@ the zero order coefficients correspond to
 All the other forward mode coefficients are unspecified.
 
 {xrst_toc_hidden
-    example/python/core/sparse_jac_xam.py
+   example/python/core/sparse_jac_xam.py
 }
 Example
 *******

@@ -8,10 +8,10 @@
 {xrst_begin more_py}
 
 {xrst_spell
-    cppad
-    adynamic
-    mhelp
-    grep
+   cppad
+   adynamic
+   mhelp
+   grep
 }
 
 Steps To Add More Python Functions
@@ -70,9 +70,9 @@ independent
 The ``independent`` function in ``lib/python/cppad_py/independent.py``
 was changed to handle dynamic parameters as follows:
 {xrst_literal
-    # BEGIN_INDEPENDENT_SOURCE
-    # END_INDEPENDENT_SOURCE
-    lib/python/cppad_py/independent.py
+   # BEGIN_INDEPENDENT_SOURCE
+   # END_INDEPENDENT_SOURCE
+   lib/python/cppad_py/independent.py
 }
 
 new_dynamic
@@ -81,8 +81,8 @@ The following function declaration was added to the
 ``d_fun`` class
 in the ``lib/python/cppad_py/fun.py`` file:
 {xrst_code py}
-    def new_dynamic(self, dynamic) :
-        return cppad_py.d_fun_new_dynamic(self.f, dynamic)
+   def new_dynamic(self, dynamic) :
+      return cppad_py.d_fun_new_dynamic(self.f, dynamic)
 {xrst_code}
 A similar declaration was added to the ``a_fun`` class.
 

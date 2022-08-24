@@ -30,7 +30,7 @@ Fix :math:`R \in \B{R}^{n \times \ell}` and define the function
 
 .. math::
 
-    J(x) = F^{(1)} ( x ) * R
+   J(x) = F^{(1)} ( x ) * R
 
 Given a sparsity pattern for :math:`R`,
 ``for_jac_sparsity`` computes a sparsity pattern for :math:`J(x)`.
@@ -41,7 +41,7 @@ Fix :math:`R \in \B{R}^{\ell \times m}` and define the function
 
 .. math::
 
-    J(x) = R * F^{(1)} ( x )
+   J(x) = R * F^{(1)} ( x )
 
 Given a sparsity pattern for :math:`R`,
 ``rev_jac_sparsity`` computes a sparsity pattern for :math:`J(x)`.
@@ -84,7 +84,7 @@ In this case, *pattern_out* is a sparsity pattern for
 :math:`F^{(1)} ( x )`.
 
 {xrst_toc_hidden
-    example/python/core/sparse_jac_pattern_xam.py
+   example/python/core/sparse_jac_pattern_xam.py
 }
 Example
 *******

@@ -12,10 +12,10 @@
 # {xrst_begin py_independent}
 #
 # {xrst_spell
-#   cppad
-#   adynamic
-#   nx
-#   nd
+#  cppad
+#  adynamic
+#  nx
+#  nd
 # }
 #
 # Declare Independent Variables and Start Recording
@@ -70,7 +70,7 @@
 # by calling :ref:`abort_recording<py_abort_recording>`.
 #
 # {xrst_toc_hidden
-#   example/python/core/fun_dynamic_xam.py
+#  example/python/core/fun_dynamic_xam.py
 # }
 # Example
 # *******
@@ -84,34 +84,34 @@
 import cppad_py
 import numpy
 def independent(x, dynamic = None) :
-    """
-    ax = independent(x)
-    creates the indepedent numpy vector ax, with value equal numpy vector x,
-    and starts recording a_double operations.
-    """
-    # convert x -> u
-    dtype    = float
-    #
-    nx = x.size
-    if dynamic is None :
-        syntax   = 'independent(x)'
-        u = cppad_py.utility.numpy2vec(x, dtype, nx, syntax, 'x')
-        av = cppad_py.cppad_swig.independent(u)
-        ax = cppad_py.utility.vec2numpy(av, av.size());
-        return ax
-    #
-    nd       = dynamic.size
-    syntax   = 'independent(x, dynamic)'
-    u = cppad_py.utility.numpy2vec(x, dtype, nx, syntax, 'x')
-    v = cppad_py.utility.numpy2vec(dynamic, dtype, nd, syntax, 'dynamic')
-    a_both   = cppad_py.cppad_swig.independent(u, v)
-    ax       = numpy.empty(nx,       dtype=cppad_py.a_double)
-    adynamic = numpy.empty(nd, dtype=cppad_py.a_double)
-    # use copy constructor so a separate copy is made for numpy arrays
-    for i in range(nx) :
-        ax[i] = cppad_py.a_double( a_both[i] )
-    for i in range(nd) :
-        adynamic[i] = cppad_py.a_double( a_both[nx + i] )
-    #
-    return (ax, adynamic)
+   """
+   ax = independent(x)
+   creates the indepedent numpy vector ax, with value equal numpy vector x,
+   and starts recording a_double operations.
+   """
+   # convert x -> u
+   dtype    = float
+   #
+   nx = x.size
+   if dynamic is None :
+      syntax   = 'independent(x)'
+      u = cppad_py.utility.numpy2vec(x, dtype, nx, syntax, 'x')
+      av = cppad_py.cppad_swig.independent(u)
+      ax = cppad_py.utility.vec2numpy(av, av.size());
+      return ax
+   #
+   nd       = dynamic.size
+   syntax   = 'independent(x, dynamic)'
+   u = cppad_py.utility.numpy2vec(x, dtype, nx, syntax, 'x')
+   v = cppad_py.utility.numpy2vec(dynamic, dtype, nd, syntax, 'dynamic')
+   a_both   = cppad_py.cppad_swig.independent(u, v)
+   ax       = numpy.empty(nx,       dtype=cppad_py.a_double)
+   adynamic = numpy.empty(nd, dtype=cppad_py.a_double)
+   # use copy constructor so a separate copy is made for numpy arrays
+   for i in range(nx) :
+      ax[i] = cppad_py.a_double( a_both[i] )
+   for i in range(nd) :
+      adynamic[i] = cppad_py.a_double( a_both[nx + i] )
+   #
+   return (ax, adynamic)
 # END_INDEPENDENT_SOURCE

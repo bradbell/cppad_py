@@ -70,7 +70,7 @@
 #    H [ i, j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
 #
 # {xrst_toc_hidden
-#   example/python/core/fun_hessian_xam.py
+#  example/python/core/fun_hessian_xam.py
 # }
 # Example
 # *******
@@ -83,46 +83,46 @@ import numpy
 # -----------------------------------------------------------------------------
 # This function is used by hessian in d_fun class to implement syntax above
 def d_fun_hessian(f, x, w) :
-    """
-    H = f.hessian(x, w)
-    computes Hessian of a function corresponding a sum of the components of f
-    """
-    #
-    n = f.size_domain()
-    m = f.size_range()
-    #
-    # convert x -> u, w -> v
-    dtype    = float
-    syntax   = 'f.hessian(x, w)'
-    u = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
-    v = cppad_py.utility.numpy2vec(w, dtype, m, syntax, 'w')
-    #
-    # call hessian
-    z =  f.hessian(u, v)
-    #
-    H = cppad_py.utility.vec2numpy(z, n, n)
-    #
-    return H
+   """
+   H = f.hessian(x, w)
+   computes Hessian of a function corresponding a sum of the components of f
+   """
+   #
+   n = f.size_domain()
+   m = f.size_range()
+   #
+   # convert x -> u, w -> v
+   dtype    = float
+   syntax   = 'f.hessian(x, w)'
+   u = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
+   v = cppad_py.utility.numpy2vec(w, dtype, m, syntax, 'w')
+   #
+   # call hessian
+   z =  f.hessian(u, v)
+   #
+   H = cppad_py.utility.vec2numpy(z, n, n)
+   #
+   return H
 # -----------------------------------------------------------------------------
 # This function is used by hessian in d_fun class to implement syntax above
 def a_fun_hessian(af, ax, aw) :
-    """
-    aH = af.hessian(ax, aw)
-    computes Hessian of a function corresponding a sum of the components of af
-    """
-    #
-    n = af.size_domain()
-    m = af.size_range()
-    #
-    # convert x -> u, w -> v
-    dtype    = cppad_py.a_double
-    syntax   = 'f.hessian(x, w)'
-    au = cppad_py.utility.numpy2vec(ax, dtype, n, syntax, 'ax')
-    av = cppad_py.utility.numpy2vec(aw, dtype, m, syntax, 'aw')
-    #
-    # call hessian
-    az =  af.hessian(au, av)
-    #
-    aH = cppad_py.utility.vec2numpy(az, n, n)
-    #
-    return aH
+   """
+   aH = af.hessian(ax, aw)
+   computes Hessian of a function corresponding a sum of the components of af
+   """
+   #
+   n = af.size_domain()
+   m = af.size_range()
+   #
+   # convert x -> u, w -> v
+   dtype    = cppad_py.a_double
+   syntax   = 'f.hessian(x, w)'
+   au = cppad_py.utility.numpy2vec(ax, dtype, n, syntax, 'ax')
+   av = cppad_py.utility.numpy2vec(aw, dtype, m, syntax, 'aw')
+   #
+   # call hessian
+   az =  af.hessian(au, av)
+   #
+   aH = cppad_py.utility.vec2numpy(az, n, n)
+   #
+   return aH

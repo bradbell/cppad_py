@@ -8,28 +8,28 @@
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
-    echo $*
-    eval $*
+   echo $*
+   eval $*
 }
 # -----------------------------------------------------------------------------
 if [ "$0" != 'bin/run_sphinx.sh' ]
 then
-    echo 'must execut bin/run_sphinx.sh from its parent directory'
-    exit 1
+   echo 'must execut bin/run_sphinx.sh from its parent directory'
+   exit 1
 fi
 # -----------------------------------------------------------------------------
 if [ "$1" != 'html' ] && [ "$1" != 'pdf' ]
 then
-    echo 'usage: bin/run_sphinx (html|pdf)'
-    exit 1
+   echo 'usage: bin/run_sphinx (html|pdf)'
+   exit 1
 fi
 target="$1"
 # -----------------------------------------------------------------------------
 project='cppad_py'
 if ! grep "{xrst_begin $project}" doc.xrst > /dev/null
 then
-    echo "can not find {xrst_begin $project} in doc.xrst"
-    exit 1
+   echo "can not find {xrst_begin $project} in doc.xrst"
+   exit 1
 fi
 # -----------------------------------------------------------------------------
 # xsrst

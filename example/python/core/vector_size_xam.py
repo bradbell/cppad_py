@@ -9,26 +9,26 @@
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
 def vector_size_xam() :
-    #
-    import numpy
-    import cppad_py
-    #
-    # initialize return variable
-    ok = True
-    # ---------------------------------------------------------------------
-    # create vectors
-    bv = cppad_py.vec_bool()
-    iv = cppad_py.vec_int(1)
-    dv = cppad_py.vec_double(2)
-    av = cppad_py.vec_a_double(3)
-    #
-    # check size of vectors
-    ok = ok and bv.size() == 0
-    ok = ok and iv.size() == 1
-    ok = ok and dv.size() == 2
-    ok = ok and av.size() == 3
-    #
-    return( ok )
+   #
+   import numpy
+   import cppad_py
+   #
+   # initialize return variable
+   ok = True
+   # ---------------------------------------------------------------------
+   # create vectors
+   bv = cppad_py.vec_bool()
+   iv = cppad_py.vec_int(1)
+   dv = cppad_py.vec_double(2)
+   av = cppad_py.vec_a_double(3)
+   #
+   # check size of vectors
+   ok = ok and bv.size() == 0
+   ok = ok and iv.size() == 1
+   ok = ok and dv.size() == 2
+   ok = ok and av.size() == 3
+   #
+   return( ok )
 #
 # END SOURCE
 #
@@ -41,8 +41,8 @@ def vector_size_xam() :
 # Python: Size of Vectors: Example and Test
 # #########################################
 # {xrst_literal
-#   # BEGIN SOURCE
-#   # END SOURCE
+#  # BEGIN SOURCE
+#  # END SOURCE
 # }
 # {xrst_end vector_size_xam_py}
 #

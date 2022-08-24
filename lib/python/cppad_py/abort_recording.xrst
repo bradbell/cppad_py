@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------------
-        cppad_py: A C++ Object Library and Python Interface to Cppad
+      cppad_py: A C++ Object Library and Python Interface to Cppad
          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
              This program is distributed under the terms of the
              GNU General Public License version 3.0 or later see
@@ -8,7 +8,7 @@
 {xrst_begin py_abort_recording}
 
 {xrst_spell
-    cppad
+   cppad
 }
 
 Abort Recording
@@ -24,7 +24,7 @@ This aborts the current recording (if it exists)
 started by the most recent call to :ref:`independent<py_independent>`.
 
 {xrst_toc_hidden
-    example/python/core/fun_abort_xam.py
+   example/python/core/fun_abort_xam.py
 }
 Example
 *******

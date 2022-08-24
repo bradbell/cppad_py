@@ -68,7 +68,7 @@ after each call to *f*\ ``.forward`` ; see
 :ref:`size_order<py_fun_forward@p@size_order>` in the forward mode section.
 
 {xrst_toc_hidden
-    example/python/core/fun_property_xam.py
+   example/python/core/fun_property_xam.py
 }
 Example
 *******

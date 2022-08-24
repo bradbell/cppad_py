@@ -10,9 +10,9 @@
 # {xrst_begin py_sparse_rcv}
 #
 # {xrst_spell
-#   rcv
-#   nnz
-#   cppad
+#  rcv
+#  nnz
+#  cppad
 # }
 #
 # Sparse Matrices
@@ -138,7 +138,7 @@
 # row and column values (if ``NDEBUG`` is not defined).
 #
 # {xrst_toc_hidden
-#   example/python/core/sparse_rcv_xam.py
+#  example/python/core/sparse_rcv_xam.py
 # }
 # Example
 # *******
@@ -149,64 +149,64 @@
 import cppad_py
 import numpy
 class sparse_rcv :
-    """Python interface to CppAD::sparse_rc"""
-    #
-    def __init__(self) :
-        pattern  = cppad_py.cppad_swig.sparse_rc()
-        self.rcv = cppad_py.cppad_swig.sparse_rcv( pattern )
-    #
-    # pat
-    def pat(self, pattern) :
-        # use undocumented fact that pattern.rc is vec_int version of sparsity
-        self.rcv = cppad_py.cppad_swig.sparse_rcv(pattern.rc)
-    #
-    # nr
-    def nr(self) :
-        return self.rcv.nr()
-    #
-    # nc
-    def nc(self) :
-        return self.rcv.nc()
-    #
-    # nnz
-    def nnz(self) :
-        return self.rcv.nnz()
-    #
-    # put
-    def put(self, k, v) :
-        self.rcv.put(k, v)
-    #
-    # row
-    def row(self) :
-        vec   = self.rcv.row()
-        assert vec.size() == self.rcv.nnz()
-        array = cppad_py.utility.vec2numpy(vec, vec.size() )
-        return array
-    #
-    # col
-    def col(self) :
-        vec   = self.rcv.col()
-        assert vec.size() == self.rcv.nnz()
-        array = cppad_py.utility.vec2numpy(vec, vec.size() )
-        return array
-    #
-    # val
-    def val(self) :
-        vec   = self.rcv.val()
-        assert vec.size() == self.rcv.nnz()
-        array = cppad_py.utility.vec2numpy(vec, vec.size() )
-        return array
-    #
-    # row_major
-    def row_major(self) :
-        vec   = self.rcv.row_major()
-        assert vec.size() == self.rcv.nnz()
-        array = cppad_py.utility.vec2numpy(vec, vec.size() )
-        return array
-    #
-    # col_major
-    def col_major(self) :
-        vec   = self.rcv.col_major()
-        assert vec.size() == self.rcv.nnz()
-        array = cppad_py.utility.vec2numpy(vec, vec.size() )
-        return array
+   """Python interface to CppAD::sparse_rc"""
+   #
+   def __init__(self) :
+      pattern  = cppad_py.cppad_swig.sparse_rc()
+      self.rcv = cppad_py.cppad_swig.sparse_rcv( pattern )
+   #
+   # pat
+   def pat(self, pattern) :
+      # use undocumented fact that pattern.rc is vec_int version of sparsity
+      self.rcv = cppad_py.cppad_swig.sparse_rcv(pattern.rc)
+   #
+   # nr
+   def nr(self) :
+      return self.rcv.nr()
+   #
+   # nc
+   def nc(self) :
+      return self.rcv.nc()
+   #
+   # nnz
+   def nnz(self) :
+      return self.rcv.nnz()
+   #
+   # put
+   def put(self, k, v) :
+      self.rcv.put(k, v)
+   #
+   # row
+   def row(self) :
+      vec   = self.rcv.row()
+      assert vec.size() == self.rcv.nnz()
+      array = cppad_py.utility.vec2numpy(vec, vec.size() )
+      return array
+   #
+   # col
+   def col(self) :
+      vec   = self.rcv.col()
+      assert vec.size() == self.rcv.nnz()
+      array = cppad_py.utility.vec2numpy(vec, vec.size() )
+      return array
+   #
+   # val
+   def val(self) :
+      vec   = self.rcv.val()
+      assert vec.size() == self.rcv.nnz()
+      array = cppad_py.utility.vec2numpy(vec, vec.size() )
+      return array
+   #
+   # row_major
+   def row_major(self) :
+      vec   = self.rcv.row_major()
+      assert vec.size() == self.rcv.nnz()
+      array = cppad_py.utility.vec2numpy(vec, vec.size() )
+      return array
+   #
+   # col_major
+   def col_major(self) :
+      vec   = self.rcv.col_major()
+      assert vec.size() == self.rcv.nnz()
+      array = cppad_py.utility.vec2numpy(vec, vec.size() )
+      return array

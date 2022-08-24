@@ -8,17 +8,17 @@
 {xrst_begin install_error}
 
 {xrst_spell
-    pc
-    setuptools
-    errno
-    libcppad
-    stdio
-    cppad
-    javac
-    openjdk
-    cholmod
-    suitesparse
-    pkg
+   pc
+   setuptools
+   errno
+   libcppad
+   stdio
+   cppad
+   javac
+   openjdk
+   cholmod
+   suitesparse
+   pkg
 }
 
 Error Messages During Installation

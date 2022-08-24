@@ -8,15 +8,15 @@
 {xrst_begin cppad_py}
 
 .. comment:  -------------------------------------------------------------
-    default automatic indexing command for all cppad_py documentation
+   default automatic indexing command for all cppad_py documentation
 
 .. comment:  -------------------------------------------------------------
-    Latex macros used throughout Cppad Py documentation
+   Latex macros used throughout Cppad Py documentation
 
 {xrst_spell
-    cppad
-    txt
-    gpl
+   cppad
+   txt
+   gpl
 }
 
 A C++ Object Library and Python Interface to CppAD
@@ -32,12 +32,12 @@ https://github.com/bradbell/cppad_py
 Purpose
 *******
 
-#.  Provide a connection from Python to the
-    Algorithmic Differentiation (AD) package Cppad; see :ref:`py_lib`.
-#.  Provide an AD object library; see :ref:`cpp_lib`.
-#.  Provide a concrete example of how
-    `cppad_swig <https://github.com/bradbell/cppad_swig>`_
-    can be used to connect any scripting language to CppAD.
+#. Provide a connection from Python to the
+   Algorithmic Differentiation (AD) package Cppad; see :ref:`py_lib`.
+#. Provide an AD object library; see :ref:`cpp_lib`.
+#. Provide a concrete example of how
+   `cppad_swig <https://github.com/bradbell/cppad_swig>`_
+   can be used to connect any scripting language to CppAD.
 
 Getting Started
 ***************
@@ -69,10 +69,10 @@ GNU General Public License version 3.0 or later see
 Children
 ********
 {xrst_toc_table
-    setup.py
-    example/python/numeric/numeric.xrst
-    lib/library.xrst
-    whats_new/release_notes.xrst
+   setup.py
+   example/python/numeric/numeric.xrst
+   lib/library.xrst
+   whats_new/release_notes.xrst
 }
 
 {xrst_end cppad_py}

@@ -8,14 +8,14 @@
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
-    echo $*
-    eval $*
+   echo $*
+   eval $*
 }
 # -----------------------------------------------------------------------------
 if [ "$0" != "bin/check_install.sh" ]
 then
-    echo "bin/check_install.sh: must be executed from its parent directory"
-    exit 1
+   echo "bin/check_install.sh: must be executed from its parent directory"
+   exit 1
 fi
 # -----------------------------------------------------------------------------
 # build_type
@@ -25,8 +25,8 @@ eval $(grep '^build_type *=' bin/get_cppad.sh)
 eval $(grep '^cmake_install_prefix *=' bin/get_cppad.sh)
 if ! echo $cmake_install_prefix | grep '^/' > /dev/null
 then
-    # convert cmake_install_prefix to an absolute path
-    cmake_install_prefix="$(pwd)/$cmake_install_prefix"
+   # convert cmake_install_prefix to an absolute path
+   cmake_install_prefix="$(pwd)/$cmake_install_prefix"
 fi
 #
 echo "build_type=$build_type"
@@ -46,10 +46,10 @@ libdir=$(bin/libdir.py)
 # LD_LIBRARY_PATH
 if which brew >& /dev/null
 then
-    # This is a mac
-    export DYLD_LIBRARY_PATH="$prefix/$libdir"
+   # This is a mac
+   export DYLD_LIBRARY_PATH="$prefix/$libdir"
 else
-    export LD_LIBRARY_PATH="$prefix/$libdir"
+   export LD_LIBRARY_PATH="$prefix/$libdir"
 fi
 #
 # PKGCONFIG_PATH
@@ -58,7 +58,7 @@ export PKG_CONFIG_PATH="$prefix/$libdir/pkgconfig"
 # Local Build
 if ls build/lib.* >& /dev/null
 then
-    rm -r build/lib.*
+   rm -r build/lib.*
 fi
 python3 setup.py bdist
 name=$(ls build | grep '^lib\.' | sed -e 's|^lib\.||')
@@ -78,7 +78,7 @@ python3 setup.py install --prefix=$prefix
 # Test Installed Version
 if [ -e cppad_py ]
 then
-    echo 'check_install.sh: setup.py did not remove local cppad_py directory'
+   echo 'check_install.sh: setup.py did not remove local cppad_py directory'
 fi
 python3 example/python/check_all.py
 # ---------------------------------------------------------------------------

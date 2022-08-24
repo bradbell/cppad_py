@@ -1,8 +1,8 @@
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
-            Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
-                This program is distributed under the terms of the
-                GNU General Public License version 3.0 or later see
+         Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
+            This program is distributed under the terms of the
+            GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
 # include <cppad/cppad.hpp>
@@ -17,9 +17,9 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 {xrst_begin cpp_independent}
 
 {xrst_spell
-    cppad
-    nx
-    nd
+   cppad
+   nx
+   nd
 }
 
 Declare Independent Variables and Start Recording
@@ -94,7 +94,7 @@ For *i* = 0 to *nd* -1
 is the *i*-th independent dynamic parameter.
 
 {xrst_toc_hidden
-    example/cplusplus/fun_dynamic_xam.cpp
+   example/cplusplus/fun_dynamic_xam.cpp
 }
 Example
 *******
@@ -106,40 +106,40 @@ return syntax.
 {xrst_end cpp_independent}
 */
 std::vector<a_double> independent(const std::vector<double>& x)
-{   using CppAD::AD;
-    size_t n = x.size();
-    CppAD::vector< AD<double> > ax(n);
-    for(size_t j = 0; j < n; j++)
-        ax[j] = x[j];
-    CppAD::Independent(ax);
-    std::vector<a_double> result(n);
-    // use a_double( *AD<double> ) constructor in this assignment loop
-    for(size_t j = 0; j < n; j++)
-        result[j] =  &ax[j] ;
-    return result;
+{  using CppAD::AD;
+   size_t n = x.size();
+   CppAD::vector< AD<double> > ax(n);
+   for(size_t j = 0; j < n; j++)
+      ax[j] = x[j];
+   CppAD::Independent(ax);
+   std::vector<a_double> result(n);
+   // use a_double( *AD<double> ) constructor in this assignment loop
+   for(size_t j = 0; j < n; j++)
+      result[j] =  &ax[j] ;
+   return result;
 }
 // BEGIN_A_BOTH_INDEPENDENT_SOURCE
 std::vector<a_double> independent(
-    const std::vector<double>& x       ,
-    const std::vector<double>& dynamic )
-{   using CppAD::AD;
-    size_t nx = x.size();
-    size_t nd = dynamic.size();
-    CppAD::vector< AD<double> > ax(nx), adynamic(nd);
-    for(size_t j = 0; j < nx; j++)
-        ax[j] = x[j];
-    for(size_t j = 0; j < nd; j++)
-        adynamic[j] = dynamic[j];
-    size_t abort_op_index = 0;
-    size_t record_compare = false;
-    CppAD::Independent(ax, abort_op_index, record_compare, adynamic);
-    std::vector<a_double> a_both(nx + nd);
-    // use a_double( *AD<double> ) constructor in these assignment loops
-    for(size_t j = 0; j < nx; j++)
-        a_both[j] =  &ax[j] ;
-    for(size_t j = 0; j < nd; j++)
-        a_both[nx + j] =  &adynamic[j] ;
-    return a_both;
+   const std::vector<double>& x       ,
+   const std::vector<double>& dynamic )
+{  using CppAD::AD;
+   size_t nx = x.size();
+   size_t nd = dynamic.size();
+   CppAD::vector< AD<double> > ax(nx), adynamic(nd);
+   for(size_t j = 0; j < nx; j++)
+      ax[j] = x[j];
+   for(size_t j = 0; j < nd; j++)
+      adynamic[j] = dynamic[j];
+   size_t abort_op_index = 0;
+   size_t record_compare = false;
+   CppAD::Independent(ax, abort_op_index, record_compare, adynamic);
+   std::vector<a_double> a_both(nx + nd);
+   // use a_double( *AD<double> ) constructor in these assignment loops
+   for(size_t j = 0; j < nx; j++)
+      a_both[j] =  &ax[j] ;
+   for(size_t j = 0; j < nd; j++)
+      a_both[nx + j] =  &adynamic[j] ;
+   return a_both;
 }
 // END_A_BOTH_INDEPENDENT_SOURCE
 /*
@@ -147,7 +147,7 @@ std::vector<a_double> independent(
 {xrst_begin cpp_abort_recording}
 
 {xrst_spell
-    cppad
+   cppad
 }
 
 Abort Recording
@@ -163,7 +163,7 @@ This aborts the current recording (if it exists)
 started by the most recent call to :ref:`independent<cpp_independent>`.
 
 {xrst_toc_hidden
-    example/cplusplus/fun_abort_xam.cpp
+   example/cplusplus/fun_abort_xam.cpp
 }
 Example
 *******
@@ -172,15 +172,15 @@ Example
 {xrst_end cpp_abort_recording}
 */
 void abort_recording(void)
-{   CppAD::AD<double>::abort_recording();
+{  CppAD::AD<double>::abort_recording();
 }
 /*
 -------------------------------------------------------------------------------
 {xrst_begin cpp_fun_ctor}
 
 {xrst_spell
-    af
-    cppad
+   af
+   cppad
 }
 
 Stop Current Recording and Store Function Object
@@ -258,54 +258,54 @@ All of the examples use these constructors.
 */
 // d_fun(ax, ay)
 d_fun::d_fun(
-    const std::vector<a_double>& ax ,
-    const std::vector<a_double>& ay )
-{   ptr_ = new CppAD::ADFun<double>();
-    size_t n = ax.size();
-    size_t m = ay.size();
-    CPPAD_PY_ASSERT_UNKNOWN(
-        ( (n == 0 ) && (m == 0) ) || ( (n != 0) && (m != 0) )
-    );
-    // check for default constructor
-    if( n == 0 )
-        return;
+   const std::vector<a_double>& ax ,
+   const std::vector<a_double>& ay )
+{  ptr_ = new CppAD::ADFun<double>();
+   size_t n = ax.size();
+   size_t m = ay.size();
+   CPPAD_PY_ASSERT_UNKNOWN(
+      ( (n == 0 ) && (m == 0) ) || ( (n != 0) && (m != 0) )
+   );
+   // check for default constructor
+   if( n == 0 )
+      return;
 
-    // copy and convert from Swig vector to Cppad vectors
-    CppAD::vector< CppAD::AD<double> > ax_copy(n), ay_copy(m);
-    for(size_t j = 0; j < n; j++)
-        ax_copy[j] = *( ax[j].ptr() );
-    for(size_t i = 0; i < m; i++)
-        ay_copy[i] = *( ay[i].ptr() );
-    // store the recording
-    ptr_->Dependent(ax_copy, ay_copy);
+   // copy and convert from Swig vector to Cppad vectors
+   CppAD::vector< CppAD::AD<double> > ax_copy(n), ay_copy(m);
+   for(size_t j = 0; j < n; j++)
+      ax_copy[j] = *( ax[j].ptr() );
+   for(size_t i = 0; i < m; i++)
+      ay_copy[i] = *( ay[i].ptr() );
+   // store the recording
+   ptr_->Dependent(ax_copy, ay_copy);
 }
 // destructor
 d_fun::~d_fun(void)
-{   // desructor should not throw exception
-    assert( ptr_ != CPPAD_NULL );
-    delete ptr_;
-    ptr_ = CPPAD_NULL;
+{  // desructor should not throw exception
+   assert( ptr_ != CPPAD_NULL );
+   delete ptr_;
+   ptr_ = CPPAD_NULL;
 }
 // --------------------------------------------------------------------------
 // constructor
 a_fun::a_fun(const d_fun& f)
-{   a_ptr_ = new CppAD::ADFun< CppAD::AD<double>, double>();
-    CPPAD_PY_ASSERT_UNKNOWN( a_ptr_ != CPPAD_NULL );
-    *a_ptr_ = f.ptr_->base2ad();
+{  a_ptr_ = new CppAD::ADFun< CppAD::AD<double>, double>();
+   CPPAD_PY_ASSERT_UNKNOWN( a_ptr_ != CPPAD_NULL );
+   *a_ptr_ = f.ptr_->base2ad();
 }
 // destructor
 a_fun::~a_fun(void)
-{   // desructor should not throw exception
-    assert( a_ptr_ != CPPAD_NULL );
-    delete a_ptr_;
-    a_ptr_ = CPPAD_NULL;
+{  // desructor should not throw exception
+   assert( a_ptr_ != CPPAD_NULL );
+   delete a_ptr_;
+   a_ptr_ = CPPAD_NULL;
 }
 /*
 ------------------------------------------------------------------------------
 {xrst_begin cpp_fun_property}
 
 {xrst_spell
-    af
+   af
 }
 
 Properties of a Function Object
@@ -384,7 +384,7 @@ The initial value for this property, when the object *f*
 or *af* is created, is zero.
 
 {xrst_toc_hidden
-    example/cplusplus/fun_property_xam.cpp
+   example/cplusplus/fun_property_xam.cpp
 }
 Example
 *******
@@ -394,33 +394,33 @@ Example
 */
 // size_domain
 int d_fun::size_domain(void) const
-{   return ptr_->Domain(); }
+{  return ptr_->Domain(); }
 int a_fun::size_domain(void) const
-{   return a_ptr_->Domain(); }
+{  return a_ptr_->Domain(); }
 //
 // size_range
 int d_fun::size_range(void) const
-{   return ptr_->Range(); }
+{  return ptr_->Range(); }
 int a_fun::size_range(void) const
-{   return a_ptr_->Range(); }
+{  return a_ptr_->Range(); }
 //
 // size_var
 int d_fun::size_var(void) const
-{   return ptr_->size_var(); }
+{  return ptr_->size_var(); }
 int a_fun::size_var(void) const
-{   return a_ptr_->size_var(); }
+{  return a_ptr_->size_var(); }
 //
 // size_op
 int d_fun::size_op(void) const
-{   return ptr_->size_op(); }
+{  return ptr_->size_op(); }
 int a_fun::size_op(void) const
-{   return a_ptr_->size_op(); }
+{  return a_ptr_->size_op(); }
 //
 // size_order
 int d_fun::size_order(void) const
-{   return ptr_->size_order(); }
+{  return ptr_->size_order(); }
 int a_fun::size_order(void) const
-{   return a_ptr_->size_order(); }
+{  return a_ptr_->size_order(); }
 /*
 ------------------------------------------------------------------------------
 {xrst_begin cpp_fun_new_dynamic}
@@ -464,21 +464,21 @@ See :ref:`fun_dynamic_xam_cpp`.
 */
 // BEGIN_NEW_DYNAMIC_SOURCE
 void d_fun::new_dynamic(const std::vector<double>& dynamic)
-{   CPPAD_PY_ASSERT_KNOWN(
-        dynamic.size() == ptr_->size_dyn_ind() ,
-        "cppad_py::d_fun::new_dynamic dynamic.size() error"
-    );
-    ptr_->new_dynamic(dynamic);
-    return;
+{  CPPAD_PY_ASSERT_KNOWN(
+      dynamic.size() == ptr_->size_dyn_ind() ,
+      "cppad_py::d_fun::new_dynamic dynamic.size() error"
+   );
+   ptr_->new_dynamic(dynamic);
+   return;
 }
 void a_fun::new_dynamic(const std::vector<a_double>& adynamic)
-{   CPPAD_PY_ASSERT_KNOWN(
-        adynamic.size() == a_ptr_->size_dyn_ind() ,
-        "cppad_py::a_fun::new_dynamic adynamic.size() error"
-    );
-    CppAD::vector< CppAD::AD<double> > au = ad_vec_std2cppad(adynamic);
-    a_ptr_->new_dynamic(au);
-    return;
+{  CPPAD_PY_ASSERT_KNOWN(
+      adynamic.size() == a_ptr_->size_dyn_ind() ,
+      "cppad_py::a_fun::new_dynamic adynamic.size() error"
+   );
+   CppAD::vector< CppAD::AD<double> > au = ad_vec_std2cppad(adynamic);
+   a_ptr_->new_dynamic(au);
+   return;
 }
 // END_NEW_DYNAMIC_SOURCE
 
@@ -540,10 +540,10 @@ and *j* between zero and *n* -1 ,
 
 .. math::
 
-    J [ i * n + j ] = \frac{ \partial f_i }{ \partial x_j } (x)
+   J [ i * n + j ] = \frac{ \partial f_i }{ \partial x_j } (x)
 
 {xrst_toc_hidden
-    example/cplusplus/fun_jacobian_xam.cpp
+   example/cplusplus/fun_jacobian_xam.cpp
 }
 Example
 *******
@@ -552,20 +552,20 @@ Example
 {xrst_end cpp_fun_jacobian}
 */
 std::vector<double> d_fun::jacobian(const std::vector<double>& x)
-{   CPPAD_PY_ASSERT_KNOWN(
-        x.size() == ptr_->Domain() ,
-        "cppad_py::d_fun::jacobian x.size() error"
-    );
-    return ptr_->Jacobian(x);
+{  CPPAD_PY_ASSERT_KNOWN(
+      x.size() == ptr_->Domain() ,
+      "cppad_py::d_fun::jacobian x.size() error"
+   );
+   return ptr_->Jacobian(x);
 }
 std::vector<a_double> a_fun::jacobian(const std::vector<a_double>& ax)
-{   CPPAD_PY_ASSERT_KNOWN(
-        ax.size() == a_ptr_->Domain() ,
-        "cppad_py::a_fun::jacobian ax.size() error"
-    );
-    CppAD::vector< CppAD::AD<double> > au = ad_vec_std2cppad(ax);
-    CppAD::vector< CppAD::AD<double> > av = a_ptr_->Jacobian(au);
-    return ad_vec_cppad2std(av);
+{  CPPAD_PY_ASSERT_KNOWN(
+      ax.size() == a_ptr_->Domain() ,
+      "cppad_py::a_fun::jacobian ax.size() error"
+   );
+   CppAD::vector< CppAD::AD<double> > au = ad_vec_std2cppad(ax);
+   CppAD::vector< CppAD::AD<double> > av = a_ptr_->Jacobian(au);
+   return ad_vec_cppad2std(av);
 }
 /*
 ------------------------------------------------------------------------------
@@ -606,7 +606,7 @@ for the function defined by
 
 .. math::
 
-    g(x) = \sum_{i=0}^{n-1} w_i f_i (x)
+   g(x) = \sum_{i=0}^{n-1} w_i f_i (x)
 
 x
 *
@@ -645,10 +645,10 @@ and *j* between zero and *n* -1 ,
 
 .. math::
 
-    H [ i * n + j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
+   H [ i * n + j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
 
 {xrst_toc_hidden
-    example/cplusplus/fun_hessian_xam.cpp
+   example/cplusplus/fun_hessian_xam.cpp
 }
 Example
 *******
@@ -657,42 +657,42 @@ Example
 {xrst_end cpp_fun_hessian}
 */
 std::vector<double> d_fun::hessian(
-    const std::vector<double>& x  ,
-    const std::vector<double>& w  )
-{   CPPAD_PY_ASSERT_KNOWN(
-        x.size() == ptr_->Domain() ,
-        "cppad_py::d_fun::hessian:: x.size() error"
-    );
-    CPPAD_PY_ASSERT_KNOWN(
-        w.size() == ptr_->Range() ,
-        "cppad_py::d_fun::hessian:: w.size() error"
-    );
-    return ptr_->Hessian(x, w);
+   const std::vector<double>& x  ,
+   const std::vector<double>& w  )
+{  CPPAD_PY_ASSERT_KNOWN(
+      x.size() == ptr_->Domain() ,
+      "cppad_py::d_fun::hessian:: x.size() error"
+   );
+   CPPAD_PY_ASSERT_KNOWN(
+      w.size() == ptr_->Range() ,
+      "cppad_py::d_fun::hessian:: w.size() error"
+   );
+   return ptr_->Hessian(x, w);
 }
 std::vector<a_double> a_fun::hessian(
-    const std::vector<a_double>& ax  ,
-    const std::vector<a_double>& aw  )
-{   CPPAD_PY_ASSERT_KNOWN(
-        ax.size() == a_ptr_->Domain() ,
-        "cppad_py::d_fun::hessian:: x.size() error"
-    );
-    CPPAD_PY_ASSERT_KNOWN(
-        aw.size() == a_ptr_->Range() ,
-        "cppad_py::d_fun::hessian:: w.size() error"
-    );
-    //
-    CppAD::vector< CppAD::AD<double> > au = ad_vec_std2cppad(ax);
-    CppAD::vector< CppAD::AD<double> > av = ad_vec_std2cppad(aw);
-    CppAD::vector< CppAD::AD<double> > az = a_ptr_->Hessian(au, av);
-    return ad_vec_cppad2std(az);
+   const std::vector<a_double>& ax  ,
+   const std::vector<a_double>& aw  )
+{  CPPAD_PY_ASSERT_KNOWN(
+      ax.size() == a_ptr_->Domain() ,
+      "cppad_py::d_fun::hessian:: x.size() error"
+   );
+   CPPAD_PY_ASSERT_KNOWN(
+      aw.size() == a_ptr_->Range() ,
+      "cppad_py::d_fun::hessian:: w.size() error"
+   );
+   //
+   CppAD::vector< CppAD::AD<double> > au = ad_vec_std2cppad(ax);
+   CppAD::vector< CppAD::AD<double> > av = ad_vec_std2cppad(aw);
+   CppAD::vector< CppAD::AD<double> > az = a_ptr_->Hessian(au, av);
+   return ad_vec_cppad2std(az);
 }
 /*
 ------------------------------------------------------------------------------
 {xrst_begin cpp_fun_forward}
 
 {xrst_spell
-    xp
-    yp
+   xp
+   yp
 }
 
 Forward Mode AD
@@ -711,7 +711,7 @@ and evaluated at :math:`t = 0`; i.e.,
 
 .. math::
 
-    g^{(p)} (0) /  p !
+   g^{(p)} (0) /  p !
 
 f
 *
@@ -785,7 +785,7 @@ respectively and its size is *m* .
 It is the *p*-th order Taylor coefficients for :math:`Y(t)`.
 
 {xrst_toc_hidden
-    example/cplusplus/fun_forward_xam.cpp
+   example/cplusplus/fun_forward_xam.cpp
 }
 Example
 *******
@@ -794,28 +794,28 @@ Example
 {xrst_end cpp_fun_forward}
 */
 std::vector<double> d_fun::forward(int p, const std::vector<double>& xp)
-{   CPPAD_PY_ASSERT_KNOWN(
-        xp.size() == ptr_->Domain() ,
-        "cppad_py::d_fun::forward xp.size() error"
-    );
-    return ptr_->Forward(p, xp);
+{  CPPAD_PY_ASSERT_KNOWN(
+      xp.size() == ptr_->Domain() ,
+      "cppad_py::d_fun::forward xp.size() error"
+   );
+   return ptr_->Forward(p, xp);
 }
 std::vector<a_double> a_fun::forward(int p, const std::vector<a_double>& axp)
-{   CPPAD_PY_ASSERT_KNOWN(
-        axp.size() == a_ptr_->Domain() ,
-        "cppad_py::a_fun::forward axp.size() error"
-    );
-    CppAD::vector< CppAD::AD<double> > aup = ad_vec_std2cppad(axp);
-    CppAD::vector< CppAD::AD<double> > avp =  a_ptr_->Forward(p, aup);
-    return ad_vec_cppad2std(avp);
+{  CPPAD_PY_ASSERT_KNOWN(
+      axp.size() == a_ptr_->Domain() ,
+      "cppad_py::a_fun::forward axp.size() error"
+   );
+   CppAD::vector< CppAD::AD<double> > aup = ad_vec_std2cppad(axp);
+   CppAD::vector< CppAD::AD<double> > avp =  a_ptr_->Forward(p, aup);
+   return ad_vec_cppad2std(avp);
 }
 /*
 -------------------------------------------------------------------------------
 {xrst_begin cpp_fun_reverse}
 
 {xrst_spell
-    xq
-    yq
+   xq
+   yq
 }
 
 Reverse Mode AD
@@ -914,7 +914,7 @@ the partial derivative of
 :math:`G(T(S))` w.r.t. :math:`S_j^{(k)} (t) / k !`.
 
 {xrst_toc_hidden
-    example/cplusplus/fun_reverse_xam.cpp
+   example/cplusplus/fun_reverse_xam.cpp
 }
 Example
 *******
@@ -923,20 +923,20 @@ Example
 {xrst_end cpp_fun_reverse}
 */
 std::vector<double> d_fun::reverse(int q, const std::vector<double>& yq)
-{   CPPAD_PY_ASSERT_KNOWN(
-        yq.size() == q * ptr_->Range() ,
-        "cppad_py::d_fun::reverse yq.size() error"
-    );
-    return ptr_->Reverse(q, yq);
+{  CPPAD_PY_ASSERT_KNOWN(
+      yq.size() == q * ptr_->Range() ,
+      "cppad_py::d_fun::reverse yq.size() error"
+   );
+   return ptr_->Reverse(q, yq);
 }
 std::vector<a_double> a_fun::reverse(int q, const std::vector<a_double>& ayq)
-{   CPPAD_PY_ASSERT_KNOWN(
-        ayq.size() == q * a_ptr_->Range() ,
-        "cppad_py::a_fun::reverse yq.size() error"
-    );
-    CppAD::vector< CppAD::AD<double> > avq = ad_vec_std2cppad(ayq);
-    CppAD::vector< CppAD::AD<double> > auq =  a_ptr_->Reverse(q, avq);
-    return ad_vec_cppad2std(auq);
+{  CPPAD_PY_ASSERT_KNOWN(
+      ayq.size() == q * a_ptr_->Range() ,
+      "cppad_py::a_fun::reverse yq.size() error"
+   );
+   CppAD::vector< CppAD::AD<double> > avq = ad_vec_std2cppad(ayq);
+   CppAD::vector< CppAD::AD<double> > auq =  a_ptr_->Reverse(q, avq);
+   return ad_vec_cppad2std(auq);
 }
 /*
 ------------------------------------------------------------------------------
@@ -968,7 +968,7 @@ Optimizing this *f* also optimizes the
 corresponding :ref:`a_fun<cpp_fun_ctor@syntax@a_fun>`.
 
 {xrst_toc_hidden
-    example/cplusplus/fun_optimize_xam.cpp
+   example/cplusplus/fun_optimize_xam.cpp
 }
 Example
 *******
@@ -977,13 +977,13 @@ Example
 {xrst_end cpp_fun_optimize}
 */
 void d_fun::optimize(void)
-{   ptr_->optimize(); }
+{  ptr_->optimize(); }
 /*
 ----------------------------------------------------------------------------
 {xrst_begin cpp_fun_json}
 
 {xrst_spell
-    json
+   json
 }
 
 Json Representation of AD Computational Graph
@@ -1021,7 +1021,7 @@ In this case, *json* has prototype
 and the function *f* so it corresponds to *json* .
 
 {xrst_toc_hidden
-    example/cplusplus/fun_json_xam.cpp
+   example/cplusplus/fun_json_xam.cpp
 }
 Examples
 ********
@@ -1032,9 +1032,9 @@ Examples
 */
 // to_json
 std::string d_fun::to_json(void) const
-{   return ptr_->to_json(); }
+{  return ptr_->to_json(); }
 void d_fun::from_json(const std::string& json)
-{   return ptr_->from_json(json); }
+{  return ptr_->from_json(json); }
 /*
 ----------------------------------------------------------------------------
 {xrst_begin cpp_check_for_nan}
@@ -1067,13 +1067,13 @@ Otherwise, it will just pass back the ``nan`` values.
 Example
 *******
 {xrst_toc_list
-    example/cplusplus/fun_check_for_nan_xam.cpp
+   example/cplusplus/fun_check_for_nan_xam.cpp
 }
 
 {xrst_end cpp_check_for_nan}
 */
 void d_fun::check_for_nan(bool b)
-{   ptr_->check_for_nan(b);
+{  ptr_->check_for_nan(b);
 }
 
 } // END_CPPAD_PY_NAMESPACE

@@ -7,12 +7,12 @@
 # -----------------------------------------------------------------------------
 # BEGIN_RUNGE4_STEP
 def runge4_step(fun, ti, yi, h) :
-    k1     = h * fun.f(ti,           yi)
-    k2     = h * fun.f(ti + h / 2.0, yi + k1 / 2.0)
-    k3     = h * fun.f(ti + h / 2.0, yi + k2 / 2.0)
-    k4     = h * fun.f(ti + h,       yi + k3 )
-    yf     = yi + (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0
-    return yf
+   k1     = h * fun.f(ti,           yi)
+   k2     = h * fun.f(ti + h / 2.0, yi + k1 / 2.0)
+   k3     = h * fun.f(ti + h / 2.0, yi + k2 / 2.0)
+   k4     = h * fun.f(ti + h,       yi + k3 )
+   yf     = yi + (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0
+   return yf
 # END_RUNGE4_STEP
 #
 # {xrst_comment_ch #}
@@ -20,11 +20,11 @@ def runge4_step(fun, ti, yi, h) :
 # {xrst_begin numeric_runge4_step}
 #
 # {xrst_spell
-#   runge
-#   kutta
-#   yf
-#   yi
-#   yp
+#  runge
+#  kutta
+#  yf
+#  yi
+#  yp
 # }
 #
 # One Fourth Order Runge-Kutta ODE Step
@@ -82,7 +82,7 @@ def runge4_step(fun, ti, yi, h) :
 # the solution has no truncation error, only round off error.
 #
 # {xrst_toc_hidden
-#   example/python/numeric/runge4_step_xam.py
+#  example/python/numeric/runge4_step_xam.py
 # }
 # Example
 # *******
@@ -91,8 +91,8 @@ def runge4_step(fun, ti, yi, h) :
 # Source Code
 # ***********
 # {xrst_literal
-#   # BEGIN_RUNGE4_STEP
-#   # END_RUNGE4_STEP
+#  # BEGIN_RUNGE4_STEP
+#  # END_RUNGE4_STEP
 # }
 #
 # {xrst_end numeric_runge4_step}

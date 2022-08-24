@@ -10,8 +10,8 @@
 # {xrst_begin py_sparse_jac}
 #
 # {xrst_spell
-#   rcv
-#   cppad
+#  rcv
+#  cppad
 # }
 #
 # Computing Sparse Jacobians
@@ -126,7 +126,7 @@
 # All the other forward mode coefficients are unspecified.
 #
 # {xrst_toc_hidden
-#   example/python/core/sparse_jac_xam.py
+#  example/python/core/sparse_jac_xam.py
 # }
 # Example
 # *******
@@ -138,23 +138,23 @@
 # sparsity pattern (sparse matrix)
 import cppad_py
 def d_fun_sparse_jac_for(f, subset, x, pattern, work) :
-    """
-    n_sweep = f.sparse_jac_for(subset, x, pattern, work)
-    """
-    n       = f.size_domain()
-    m       = f.size_range()
-    dtype   = float
-    syntax  = 'f.sparse_jac_for(subset, x, pattern, work)'
-    u       = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
-    f.sparse_jac_for(subset.rcv, u, pattern.rc, work)
+   """
+   n_sweep = f.sparse_jac_for(subset, x, pattern, work)
+   """
+   n       = f.size_domain()
+   m       = f.size_range()
+   dtype   = float
+   syntax  = 'f.sparse_jac_for(subset, x, pattern, work)'
+   u       = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
+   f.sparse_jac_for(subset.rcv, u, pattern.rc, work)
 #
 def d_fun_sparse_jac_rev(f, subset, x, pattern, work) :
-    """
-    n_sweep = f.sparse_jac_rev(subset, x, pattern, work)
-    """
-    n       = f.size_domain()
-    m       = f.size_range()
-    dtype   = float
-    syntax  = 'f.sparse_jac_rev(subset, x, pattern, work)'
-    u       = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
-    f.sparse_jac_rev(subset.rcv, u, pattern.rc, work)
+   """
+   n_sweep = f.sparse_jac_rev(subset, x, pattern, work)
+   """
+   n       = f.size_domain()
+   m       = f.size_range()
+   dtype   = float
+   syntax  = 'f.sparse_jac_rev(subset, x, pattern, work)'
+   u       = cppad_py.utility.numpy2vec(x, dtype, n, syntax, 'x')
+   f.sparse_jac_rev(subset.rcv, u, pattern.rc, work)

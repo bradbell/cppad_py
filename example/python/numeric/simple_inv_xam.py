@@ -9,7 +9,7 @@
 #
 # {xrst_begin numeric_simple_inv_xam_py}
 # {xrst_spell
-#   cc
+#  cc
 # }
 #
 # Example Computing Derivatives of Matrix Inversion
@@ -54,8 +54,8 @@
 # Source Code
 # ***********
 # {xrst_literal
-#   # BEGIN_PYTHON
-#   # END_PYTHON
+#  # BEGIN_PYTHON
+#  # END_PYTHON
 # }
 # {xrst_end numeric_simple_inv_xam_py}
 #
@@ -64,33 +64,33 @@ import numpy
 import cppad_py
 from simple_inv import simple_inv
 def simple_inv_xam() :
-    ok = True
-    x  = numpy.array( [1.0, 2.0, 3.0, 4.0] )
-    ax = cppad_py.independent(x)
-    #
-    # create the matrix [ [x_0, x_1], [x_2, x_3] ]
-    aA = numpy.reshape(ax, (2,2), order='C' )
-    #
-    # compute inverse of A
-    aAinv = simple_inv(aA)
-    #
-    # create f(x)
-    ay = numpy.reshape(aAinv, 4, order='C' )
-    ay = (ax[3] * ax[0] - ax[1] * ax[2]) * ay
-    f  = cppad_py.d_fun(ax, ay)
-    #
-    # evaluate the derivative f'(x)
-    J      = f.jacobian(x)
-    #
-    # Check the derivative
-    check      = numpy.zeros( (4, 4) )
-    check[0,3] =  1.0
-    check[1,1] = -1.0
-    check[2,2] = -1.0
-    check[3,0] =  1.0
-    #
-    eps99 = 99.0 * numpy.finfo(float).eps
-    ok   &= numpy.all( numpy.fabs(J - check) < eps99 )
-    return ok
+   ok = True
+   x  = numpy.array( [1.0, 2.0, 3.0, 4.0] )
+   ax = cppad_py.independent(x)
+   #
+   # create the matrix [ [x_0, x_1], [x_2, x_3] ]
+   aA = numpy.reshape(ax, (2,2), order='C' )
+   #
+   # compute inverse of A
+   aAinv = simple_inv(aA)
+   #
+   # create f(x)
+   ay = numpy.reshape(aAinv, 4, order='C' )
+   ay = (ax[3] * ax[0] - ax[1] * ax[2]) * ay
+   f  = cppad_py.d_fun(ax, ay)
+   #
+   # evaluate the derivative f'(x)
+   J      = f.jacobian(x)
+   #
+   # Check the derivative
+   check      = numpy.zeros( (4, 4) )
+   check[0,3] =  1.0
+   check[1,1] = -1.0
+   check[2,2] = -1.0
+   check[3,0] =  1.0
+   #
+   eps99 = 99.0 * numpy.finfo(float).eps
+   ok   &= numpy.all( numpy.fabs(J - check) < eps99 )
+   return ok
 
 # END_PYTHON

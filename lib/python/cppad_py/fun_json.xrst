@@ -8,7 +8,7 @@
 {xrst_begin py_fun_json}
 
 {xrst_spell
-    json
+   json
 }
 
 Json Representation of AD Computation Graph
@@ -42,7 +42,7 @@ In this case, the argument *json* is constant and
 the function *f* is changed so it corresponds to *json* .
 
 {xrst_toc_hidden
-    example/python/core/fun_json_xam.py
+   example/python/core/fun_json_xam.py
 }
 Examples
 ********

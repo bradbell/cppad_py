@@ -13,19 +13,19 @@
 # include <cppad/py/cppad_py.hpp>
 
 bool exception_xam(void) {
-    using std::string;
-    //
-    // initialize return variable
-    bool ok = true;
-    //------------------------------------------------------------------------
-    ok = false;
-    try {
-        throw std::runtime_error("test message");
-    } catch (std::runtime_error& e) {
-        string stored_message = e.what();
-        ok = stored_message == "test message";
-    }
-    return( ok  );
+   using std::string;
+   //
+   // initialize return variable
+   bool ok = true;
+   //------------------------------------------------------------------------
+   ok = false;
+   try {
+      throw std::runtime_error("test message");
+   } catch (std::runtime_error& e) {
+      string stored_message = e.what();
+      ok = stored_message == "test message";
+   }
+   return( ok  );
 }
 // END SOURCE
 // -----------------------------------------------------------------------------
@@ -33,13 +33,13 @@ bool exception_xam(void) {
 {xrst_begin exception_xam_cpp}
 
 {xrst_spell
-    cppad
+   cppad
 }
 C++: Cppad Py Exception Handling: Example and Test
 ##################################################
 {xrst_literal
-    // BEGIN SOURCE
-    // END SOURCE
+   // BEGIN SOURCE
+   // END SOURCE
 }
 {xrst_end exception_xam_cpp}
 */

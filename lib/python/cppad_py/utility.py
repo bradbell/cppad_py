@@ -13,8 +13,8 @@ import cppad_py
 # {xrst_begin numpy2vec}
 #
 # {xrst_spell
-#   cppad
-#   bool
+#  cppad
+#  bool
 # }
 #
 # Convert a Numpy Array to a cppad_py Vector
@@ -68,75 +68,75 @@ import cppad_py
 # {xrst_end numpy2vec}
 # -----------------------------------------------------------------------------
 def numpy2vec(array, dtype, shape, context, name) :
-    #
-    # dtype
-    assert dtype in [bool, int, float, cppad_py.a_double]
-    # -------------------------------------------------------------------------
-    #
-    if not isinstance(array, numpy.ndarray) :
-        msg = context + ': ' + name + ' is not an numpy.ndarray'
-        raise NotImplementedError(msg)
-    if not array.dtype == dtype :
-        msg = context + ': ' + name + '.dtype is not ' + str(dtype)
-        raise NotImplementedError(msg)
-    #
-    # vector, nr, nc
-    if isinstance(shape, int) :
-        vector = True
-        nr     = shape
-        nc     = 1
-    elif len(shape) == 1 :
-        vector = True
-        nr     = shape[0]
-        nc     = 1
-    else :
-        assert len(shape) == 2
-        vector = False
-        nr     = shape[0]
-        nc     = shape[1]
-    #
-    if array.shape[0] != nr :
-        msg = context + ': ' + name + '.shape[0] is not ' + str(nr)
-        raise RuntimeError(msg)
-    #
-    if vector :
-        if  len(array.shape) != 1 :
-            msg = context + ': ' + name + ' is not a vector'
-            raise RuntimeError(msg)
-    else :
-        if len(array.shape) != 2 :
-            msg = context + ': ' + name + ' is not a matrix'
-            raise RuntimeError(msg)
-    #
-    if dtype == bool :
-        vec = cppad_py.vec_bool(nr * nc)
-    if dtype == int :
-        vec = cppad_py.vec_int(nr * nc)
-    if dtype == float :
-        vec = cppad_py.vec_double(nr * nc)
-    if dtype == cppad_py.a_double :
-        vec = cppad_py.vec_a_double(nr * nc)
-    #
-    if vector :
-        for i in range(nr) :
+   #
+   # dtype
+   assert dtype in [bool, int, float, cppad_py.a_double]
+   # -------------------------------------------------------------------------
+   #
+   if not isinstance(array, numpy.ndarray) :
+      msg = context + ': ' + name + ' is not an numpy.ndarray'
+      raise NotImplementedError(msg)
+   if not array.dtype == dtype :
+      msg = context + ': ' + name + '.dtype is not ' + str(dtype)
+      raise NotImplementedError(msg)
+   #
+   # vector, nr, nc
+   if isinstance(shape, int) :
+      vector = True
+      nr     = shape
+      nc     = 1
+   elif len(shape) == 1 :
+      vector = True
+      nr     = shape[0]
+      nc     = 1
+   else :
+      assert len(shape) == 2
+      vector = False
+      nr     = shape[0]
+      nc     = shape[1]
+   #
+   if array.shape[0] != nr :
+      msg = context + ': ' + name + '.shape[0] is not ' + str(nr)
+      raise RuntimeError(msg)
+   #
+   if vector :
+      if  len(array.shape) != 1 :
+         msg = context + ': ' + name + ' is not a vector'
+         raise RuntimeError(msg)
+   else :
+      if len(array.shape) != 2 :
+         msg = context + ': ' + name + ' is not a matrix'
+         raise RuntimeError(msg)
+   #
+   if dtype == bool :
+      vec = cppad_py.vec_bool(nr * nc)
+   if dtype == int :
+      vec = cppad_py.vec_int(nr * nc)
+   if dtype == float :
+      vec = cppad_py.vec_double(nr * nc)
+   if dtype == cppad_py.a_double :
+      vec = cppad_py.vec_a_double(nr * nc)
+   #
+   if vector :
+      for i in range(nr) :
+         # must copy data so vec can manage its own memory
+         vec[i] = dtype( array[i] )
+   else :
+      if array.shape[1] != nc :
+         msg = context + ': ' + name + '.shape[1] is not ' + str(nc)
+         raise RuntimeError(msg)
+      #
+      for i in range(nr) :
+         for j in range(nc):
             # must copy data so vec can manage its own memory
-            vec[i] = dtype( array[i] )
-    else :
-        if array.shape[1] != nc :
-            msg = context + ': ' + name + '.shape[1] is not ' + str(nc)
-            raise RuntimeError(msg)
-        #
-        for i in range(nr) :
-            for j in range(nc):
-                # must copy data so vec can manage its own memory
-                vec[i * nc + j] = dtype( array[i, j] )
-    #
-    return vec
+            vec[i * nc + j] = dtype( array[i, j] )
+   #
+   return vec
 # -----------------------------------------------------------------------------
 # {xrst_begin vec2numpy}
 #
 # {xrst_spell
-#   cppad
+#  cppad
 # }
 #
 # Convert a cppad_py Vector to a Numpy Array
@@ -178,29 +178,29 @@ def numpy2vec(array, dtype, shape, context, name) :
 # {xrst_end vec2numpy}
 # -----------------------------------------------------------------------------
 def vec2numpy(vec, nr, nc = None) :
-    # dtype
-    if type(vec) == cppad_py.vec_int :
-        dtype = int
-    elif type(vec) == cppad_py.vec_double :
-        dtype = float
-    else :
-        assert type(vec) == cppad_py.vec_a_double
-        dtype = cppad_py.a_double
-    #
-    if nc == None :
-        assert vec.size() == nr
-        array = numpy.empty(nr, dtype)
-        for i in range(nr) :
+   # dtype
+   if type(vec) == cppad_py.vec_int :
+      dtype = int
+   elif type(vec) == cppad_py.vec_double :
+      dtype = float
+   else :
+      assert type(vec) == cppad_py.vec_a_double
+      dtype = cppad_py.a_double
+   #
+   if nc == None :
+      assert vec.size() == nr
+      array = numpy.empty(nr, dtype)
+      for i in range(nr) :
+         # when dtype is cppad_py.a_double we need a copy of vec[i]
+         # so that is does not get deleted when vec is deleted
+         array[i] = dtype( vec[i] )
+   else :
+      assert vec.size() == nr * nc
+      array = numpy.empty( (nr, nc), dtype)
+      for i in range(nr) :
+         for j in range(nc) :
             # when dtype is cppad_py.a_double we need a copy of vec[i]
             # so that is does not get deleted when vec is deleted
-            array[i] = dtype( vec[i] )
-    else :
-        assert vec.size() == nr * nc
-        array = numpy.empty( (nr, nc), dtype)
-        for i in range(nr) :
-            for j in range(nc) :
-                # when dtype is cppad_py.a_double we need a copy of vec[i]
-                # so that is does not get deleted when vec is deleted
-                array[i, j] = dtype( vec[i * nc + j] )
-    #
-    return array
+            array[i, j] = dtype( vec[i * nc + j] )
+   #
+   return array

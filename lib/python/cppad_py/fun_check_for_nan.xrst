@@ -8,7 +8,7 @@
 {xrst_begin py_fun_check_for_nan}
 
 {xrst_spell
-    bool
+   bool
 }
 
 Check for Nan in a Function Object
@@ -38,7 +38,7 @@ Otherwise, it will just pass back the ``nan`` values.
 Example
 *******
 {xrst_toc_list
-    example/python/core/fun_check_for_nan_xam.py
+   example/python/core/fun_check_for_nan_xam.py
 }
 
 {xrst_end py_fun_check_for_nan}

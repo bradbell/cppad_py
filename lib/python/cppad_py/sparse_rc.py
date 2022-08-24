@@ -10,8 +10,8 @@
 # {xrst_begin py_sparse_rc}
 #
 # {xrst_spell
-#   nnz
-#   cppad
+#  nnz
+#  cppad
 # }
 #
 # Sparsity Patterns
@@ -144,7 +144,7 @@
 # row and column values (if ``NDEBUG`` is not defined).
 #
 # {xrst_toc_hidden
-#   example/python/core/sparse_rc_xam.py
+#  example/python/core/sparse_rc_xam.py
 # }
 # Example
 # *******
@@ -155,55 +155,55 @@
 import cppad_py
 import numpy
 class sparse_rc :
-    """Python interface to CppAD::sparse_rc"""
-    #
-    def __init__(self) :
-        self.rc = cppad_py.cppad_swig.sparse_rc()
-    #
-    # resize
-    def resize(self, nr, nc, nnz) :
-        self.rc.resize(nr, nc, nnz)
-    #
-    # nr
-    def nr(self) :
-        return self.rc.nr()
-    #
-    # nc
-    def nc(self) :
-        return self.rc.nc()
-    #
-    # nnz
-    def nnz(self) :
-        return self.rc.nnz()
-    #
-    # put
-    def put(self, k, r, c) :
-        self.rc.put(k, r, c)
-    #
-    # row
-    def row(self) :
-        vec   = self.rc.row()
-        assert vec.size() == self.rc.nnz()
-        array = cppad_py.utility.vec2numpy(vec, vec.size() )
-        return array
-    #
-    # col
-    def col(self) :
-        vec   = self.rc.col()
-        assert vec.size() == self.rc.nnz()
-        array = cppad_py.utility.vec2numpy(vec, vec.size() )
-        return array
-    #
-    # row_major
-    def row_major(self) :
-        vec   = self.rc.row_major()
-        assert vec.size() == self.rc.nnz()
-        array = cppad_py.utility.vec2numpy(vec, vec.size() )
-        return array
-    #
-    # col_major
-    def col_major(self) :
-        vec   = self.rc.col_major()
-        assert vec.size() == self.rc.nnz()
-        array = cppad_py.utility.vec2numpy(vec, vec.size() )
-        return array
+   """Python interface to CppAD::sparse_rc"""
+   #
+   def __init__(self) :
+      self.rc = cppad_py.cppad_swig.sparse_rc()
+   #
+   # resize
+   def resize(self, nr, nc, nnz) :
+      self.rc.resize(nr, nc, nnz)
+   #
+   # nr
+   def nr(self) :
+      return self.rc.nr()
+   #
+   # nc
+   def nc(self) :
+      return self.rc.nc()
+   #
+   # nnz
+   def nnz(self) :
+      return self.rc.nnz()
+   #
+   # put
+   def put(self, k, r, c) :
+      self.rc.put(k, r, c)
+   #
+   # row
+   def row(self) :
+      vec   = self.rc.row()
+      assert vec.size() == self.rc.nnz()
+      array = cppad_py.utility.vec2numpy(vec, vec.size() )
+      return array
+   #
+   # col
+   def col(self) :
+      vec   = self.rc.col()
+      assert vec.size() == self.rc.nnz()
+      array = cppad_py.utility.vec2numpy(vec, vec.size() )
+      return array
+   #
+   # row_major
+   def row_major(self) :
+      vec   = self.rc.row_major()
+      assert vec.size() == self.rc.nnz()
+      array = cppad_py.utility.vec2numpy(vec, vec.size() )
+      return array
+   #
+   # col_major
+   def col_major(self) :
+      vec   = self.rc.col_major()
+      assert vec.size() == self.rc.nnz()
+      array = cppad_py.utility.vec2numpy(vec, vec.size() )
+      return array

@@ -12,7 +12,7 @@ image_link='https://bradbell.github.io/cppad_py'
 # List of files, besides CMakeLists.txt, that have have a copy of the
 # version number (can be empty).
 version_files='
-    doc.xrst
+   doc.xrst
 '
 #
 # List of special files, for this repository, that the devel tools ignore.
@@ -20,21 +20,21 @@ version_files='
 # Files that are created by a program, and checked into the repository,
 # should also be in this list.
 ignore_files='
-    bin/dock_cppad_py.sh
-    .gitignore
-    batch_edit.sed
-    bin/devel.sh
-    MANIFEST.in
-    sphinx/Makefile
-    sphinx/conf.py
-    sphinx/configure.xrst
-    sphinx/index.rst
-    sphinx/keyword
-    sphinx/preamble.rst
-    sphinx/_static/css/custom.css
-    sphinx/test_out/
-    sphinx/spelling
-    sphinx/test_out/*.rst
+   bin/dock_cppad_py.sh
+   .gitignore
+   batch_edit.sed
+   bin/devel.sh
+   MANIFEST.in
+   sphinx/Makefile
+   sphinx/conf.py
+   sphinx/configure.xrst
+   sphinx/index.rst
+   sphinx/keyword
+   sphinx/preamble.rst
+   sphinx/_static/css/custom.css
+   sphinx/test_out/
+   sphinx/spelling
+   sphinx/test_out/*.rst
 '
 # ----------------------------------------------------------------------------
 echo "copyright_owner=$copyright_owner"

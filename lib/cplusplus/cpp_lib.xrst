@@ -13,9 +13,9 @@ The C++ Library
 Children
 ********
 {xrst_toc_table
-    lib/cplusplus/cppad_error.cpp
-    lib/cplusplus/cplusplus.xrst
-    lib/cplusplus/more_cpp.xrst
+   lib/cplusplus/cppad_error.cpp
+   lib/cplusplus/cplusplus.xrst
+   lib/cplusplus/more_cpp.xrst
 }
 
 {xrst_end cpp_lib}

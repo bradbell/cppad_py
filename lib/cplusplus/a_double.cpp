@@ -1,8 +1,8 @@
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
-            Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
-                This program is distributed under the terms of the
-                GNU General Public License version 3.0 or later see
+         Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
+            This program is distributed under the terms of the
+            GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
 ----------------------------------------------------------------------------- */
 # include <cppad/cppad.hpp>
@@ -16,44 +16,44 @@
 // binary operators with ad results
 # define BINARY_OP_AD_RESULT(op) \
 a_double a_double::operator op(const a_double& ad) const \
-{   a_double result; \
-    *result.ptr() = *ptr() op *ad.ptr(); \
-    return result; \
+{  a_double result; \
+   *result.ptr() = *ptr() op *ad.ptr(); \
+   return result; \
 }\
 a_double a_double::operator op(const double& d) const \
-{   a_double result; \
-    *result.ptr() = *ptr() op d; \
-    return result; \
+{  a_double result; \
+   *result.ptr() = *ptr() op d; \
+   return result; \
 }
 
 // comparison operators
 # define COMPARISON_OP(op) \
 bool a_double::operator op(const a_double& ad) const \
-{   bool result =  *ptr() op *ad.ptr(); \
-    return result; \
+{  bool result =  *ptr() op *ad.ptr(); \
+   return result; \
 }\
 bool a_double::operator op(const double& d) const \
-{   bool result =  *ptr() op d; \
-    return result; \
+{  bool result =  *ptr() op d; \
+   return result; \
 }
 
 // compound assignment operators
 # define ASSIGNMENT_OP(op) \
 a_double a_double::operator op(const a_double& ad)\
-{   *ptr() op *ad.ptr(); \
-    return *this; \
+{  *ptr() op *ad.ptr(); \
+   return *this; \
 }\
 a_double a_double::operator op(const double& d)\
-{   *ptr() op d; \
-    return *this; \
+{  *ptr() op d; \
+   return *this; \
 }
 
 // unary functions with ad results
 # define UNARY_FUN_AD_RESULT(fun) \
 a_double a_double::fun(void) const \
-{   a_double result; \
-    *result.ptr() = CppAD::fun( *ptr() ); \
-    return result; \
+{  a_double result; \
+   *result.ptr() = CppAD::fun( *ptr() ); \
+   return result; \
 }
 // ---------------------------------------------------------------------------
 
@@ -64,23 +64,23 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 // ---------------------------------------------------------------------------
 // pointer to this as an AD<double> object
 CppAD::AD<double>* a_double::ptr(void)
-{   return reinterpret_cast< CppAD::AD<double>* >( & data_ );
+{  return reinterpret_cast< CppAD::AD<double>* >( & data_ );
 }
 // const version of pointer to this as an AD<double> object
 const CppAD::AD<double>* a_double::ptr(void) const
-{   return reinterpret_cast< const CppAD::AD<double>* >( & data_ );
+{  return reinterpret_cast< const CppAD::AD<double>* >( & data_ );
 }
 // ctor from CppAD::AD<double>
 a_double::a_double(const CppAD::AD<double>* a_ptr)
-{   CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
-    new ( & data_ ) CppAD::AD<double>(*a_ptr);
+{  CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+   new ( & data_ ) CppAD::AD<double>(*a_ptr);
 }
 /*
 -------------------------------------------------------------------------------
 {xrst_begin a_double_ctor}
 
 {xrst_spell
-    cppad
+   cppad
 }
 
 The a_double Constructor
@@ -139,19 +139,19 @@ constructor.
 */
 // default a_double ctor
 a_double::a_double(void)
-{   // placement version of new operator uses this->data_ for memory
-    CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
-    new ( & data_ ) CppAD::AD<double>();
+{  // placement version of new operator uses this->data_ for memory
+   CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+   new ( & data_ ) CppAD::AD<double>();
 }
 // a_double ctor from double
 a_double::a_double(const double& d)
-{   CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
-    new ( & data_ ) CppAD::AD<double>(d);
+{  CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+   new ( & data_ ) CppAD::AD<double>(d);
 }
 // ctor from a_double
 a_double::a_double(const a_double& ad)
-{   CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
-    new ( & data_ ) CppAD::AD<double>(*ad.ptr());
+{  CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
+   new ( & data_ ) CppAD::AD<double>(*ad.ptr());
 }
 // a_double destructor
 a_double::~a_double(void)
@@ -182,8 +182,8 @@ If the operator is ``+`` , the result is equal to *ax* .
 If it is ``-`` , the result is the negative of *ax* .
 
 {xrst_toc_hidden
-    example/cplusplus/a_double_unary_op_xam.cpp
-    example/python/core/a_double_unary_op_xam.py
+   example/cplusplus/a_double_unary_op_xam.cpp
+   example/python/core/a_double_unary_op_xam.py
 }
 Example
 *******
@@ -193,20 +193,20 @@ Example
 {xrst_end a_double_unary_op}
 */
 const a_double& a_double::operator+(void) const
-{   return *this; }
+{  return *this; }
 a_double a_double::operator-(void) const
-{   a_double result;
-    *result.ptr() = - *ptr();
-    return result;
+{  a_double result;
+   *result.ptr() = - *ptr();
+   return result;
 }
 /*
 -------------------------------------------------------------------------------
 {xrst_begin a_double_property}
 
 {xrst_spell
-    bool
-    aother
-    ap
+   bool
+   aother
+   ap
 }
 
 Properties of an a_double Object
@@ -275,7 +275,7 @@ To be specific, the result is
 
 .. math::
 
-    | d - o | \leq 100 \; \varepsilon \; ( |d| + |o| )
+   | d - o | \leq 100 \; \varepsilon \; ( |d| + |o| )
 
 where *d* and *o* are the value corresponding to
 *ad* and *aother* and
@@ -294,8 +294,8 @@ This can be useful when you want to access the value of *ad*
 while is a variable; :ref:`value<a_double_property@value>` above.
 
 {xrst_toc_hidden
-    example/cplusplus/a_double_property_xam.cpp
-    example/python/core/a_double_property_xam.py
+   example/cplusplus/a_double_property_xam.cpp
+   example/python/core/a_double_property_xam.py
 }
 Example
 *******
@@ -305,29 +305,29 @@ Example
 {xrst_end a_double_property}
 */
 double a_double::value(void) const
-{   double result = CppAD::Value( *ptr() );
-    return result;
+{  double result = CppAD::Value( *ptr() );
+   return result;
 }
 bool a_double::parameter(void) const
-{   bool result = CppAD::Parameter( *ptr() );
-    return result;
+{  bool result = CppAD::Parameter( *ptr() );
+   return result;
 }
 bool a_double::variable(void) const
-{   bool result = CppAD::Variable( *ptr() );
-    return result;
+{  bool result = CppAD::Variable( *ptr() );
+   return result;
 }
 bool a_double::near_equal(const a_double& aother)
-{   double d       = CppAD::Value( CppAD::Var2Par( *ptr() ) );
-    double o       = CppAD::Value( CppAD::Var2Par( *aother.ptr() ) );
-    double diff    = std::fabs( d - o );
-    double eps     = std::numeric_limits<double>::epsilon();
-    double sum_abs = std::fabs(d) + std::fabs(o);
-    return diff <= 100.0 * eps * sum_abs;
+{  double d       = CppAD::Value( CppAD::Var2Par( *ptr() ) );
+   double o       = CppAD::Value( CppAD::Var2Par( *aother.ptr() ) );
+   double diff    = std::fabs( d - o );
+   double eps     = std::numeric_limits<double>::epsilon();
+   double sum_abs = std::fabs(d) + std::fabs(o);
+   return diff <= 100.0 * eps * sum_abs;
 }
 a_double a_double::var2par() const
-{   a_double result;
-    *result.ptr() = CppAD::Var2Par( *ptr() );
-    return result;
+{  a_double result;
+   *result.ptr() = CppAD::Var2Par( *ptr() );
+   return result;
 }
 /*
 -------------------------------------------------------------------------------
@@ -337,10 +337,10 @@ a_double Binary Operators with an AD Result
 ###########################################
 
 {xrst_spell
-    radd
-    rsub
-    rmul
-    rdiv
+   radd
+   rsub
+   rmul
+   rdiv
 }
 
 Syntax
@@ -436,8 +436,8 @@ The argument to the ``pow_int`` function has c++ prototype
 Example
 *******
 {xrst_toc_list
-    example/python/core/a_double_binary_xam.py
-    example/cplusplus/a_double_binary_xam.cpp
+   example/python/core/a_double_binary_xam.py
+   example/cplusplus/a_double_binary_xam.cpp
 }
 
 {xrst_end a_double_binary}
@@ -449,46 +449,46 @@ BINARY_OP_AD_RESULT(/)
 //
 // binary operators when right operand is a double
 a_double radd(const double& d, const a_double& ad)
-{   a_double result;
-    *result.ptr() = d + *ad.ptr();
-    return result;
+{  a_double result;
+   *result.ptr() = d + *ad.ptr();
+   return result;
 }
 a_double rsub(const double& d, const a_double& ad)
-{   a_double result;
-    *result.ptr() = d - *ad.ptr();
-    return result;
+{  a_double result;
+   *result.ptr() = d - *ad.ptr();
+   return result;
 }
 a_double rmul(const double& d, const a_double& ad)
-{   a_double result;
-    *result.ptr() = d * *ad.ptr();
-    return result;
+{  a_double result;
+   *result.ptr() = d * *ad.ptr();
+   return result;
 }
 a_double rdiv(const double& d, const a_double& ad)
-{   a_double result;
-    *result.ptr() = d / *ad.ptr();
-    return result;
+{  a_double result;
+   *result.ptr() = d / *ad.ptr();
+   return result;
 }
 //
 // pow (operator in python but not c++)
 a_double pow(const a_double& ax, const a_double& ay)
-{   a_double result;
-    *result.ptr() = CppAD::pow( *ax.ptr(), *ay.ptr() );
-    return result;
+{  a_double result;
+   *result.ptr() = CppAD::pow( *ax.ptr(), *ay.ptr() );
+   return result;
 }
 a_double pow(const a_double& ad, const double& d)
-{   a_double result;
-    *result.ptr() = CppAD::pow( *ad.ptr(), d );
-    return result;
+{  a_double result;
+   *result.ptr() = CppAD::pow( *ad.ptr(), d );
+   return result;
 }
 a_double pow(const double& d, const a_double& ad)
-{   a_double result;
-    *result.ptr() = CppAD::pow( d, *ad.ptr() );
-    return result;
+{  a_double result;
+   *result.ptr() = CppAD::pow( d, *ad.ptr() );
+   return result;
 }
 a_double pow_int(const a_double& ad, const int& i)
-{   a_double result;
-    *result.ptr() = CppAD::pow( *ad.ptr(), i );
-    return result;
+{  a_double result;
+   *result.ptr() = CppAD::pow( *ad.ptr(), i );
+   return result;
 }
 /*
 -------------------------------------------------------------------------------
@@ -498,7 +498,7 @@ a_double Comparison Operators
 #############################
 
 {xrst_spell
-    bool
+   bool
 }
 
 Syntax
@@ -541,8 +541,8 @@ The result has c++ prototype
 | |tab| ``bool`` *b*
 
 {xrst_toc_hidden
-    example/cplusplus/a_double_compare_xam.cpp
-    example/python/core/a_double_compare_xam.py
+   example/cplusplus/a_double_compare_xam.cpp
+   example/python/core/a_double_compare_xam.py
 }
 Example
 *******
@@ -577,14 +577,14 @@ op
 The assignment operator *op* is one of the following:
 
 .. csv-table::
-    :widths: 20, 20, 20
+   :widths: 20, 20, 20
 
-    *op*   , *ax* Syntax       , *aw* Syntax
-    ``=``  , *ax* = *ay*       , *aw* = *y*
-    ``+=`` , *ax* = *ax* + *ay*, *aw* = *aw* + *y*
-    ``-=`` , *ax* = *ax* - *ay*, *aw* = *aw* - *y*
-    ``*=`` , *ax* = *ax* * *ay*, *aw* = *aw* * *y*
-    ``/=`` , *ax* = *ax* / *ay*, *aw* = *aw* / *y*
+   *op*   , *ax* Syntax       , *aw* Syntax
+   ``=``  , *ax* = *ay*       , *aw* = *y*
+   ``+=`` , *ax* = *ax* + *ay*, *aw* = *aw* + *y*
+   ``-=`` , *ax* = *ax* - *ay*, *aw* = *aw* - *y*
+   ``*=`` , *ax* = *ax* * *ay*, *aw* = *aw* * *y*
+   ``/=`` , *ax* = *ax* / *ay*, *aw* = *aw* / *y*
 
 ax
 **
@@ -605,8 +605,8 @@ This object has c++ prototype
 | |tab| ``const double&`` *y*
 
 {xrst_toc_hidden
-    example/cplusplus/a_double_assign_xam.cpp
-    example/python/core/a_double_assign_xam.py
+   example/cplusplus/a_double_assign_xam.cpp
+   example/python/core/a_double_assign_xam.py
 }
 Example
 *******
@@ -625,18 +625,18 @@ ASSIGNMENT_OP(/=)
 {xrst_begin a_double_unary_fun}
 
 {xrst_spell
-    acos
-    asin
-    atan
-    exp
-    fabs
-    sqrt
-    tanh
-    asinh
-    acosh
-    atanh
-    expm
-    erf
+   acos
+   asin
+   atan
+   exp
+   fabs
+   sqrt
+   tanh
+   asinh
+   acosh
+   atanh
+   expm
+   erf
 }
 
 Unary Functions with AD Result
@@ -697,8 +697,8 @@ and is the value of the function *fun* evaluated at the argument *ax*; i.e.,
 | |tab| *ay* = *fun* ( *ax* )
 
 {xrst_toc_hidden
-    example/cplusplus/a_double_unary_fun_xam.cpp
-    example/python/core/a_double_unary_fun_xam.py
+   example/cplusplus/a_double_unary_fun_xam.cpp
+   example/python/core/a_double_unary_fun_xam.py
 }
 Example
 *******
@@ -774,14 +774,14 @@ The comparison is
 where *cop* is one of the following:
 
 .. csv-table::
-    :widths: 10, 10
+   :widths: 10, 10
 
-    *cop* ,
-    ``<`` , less than
-    ``<=`` , less than or equal
-    ``==`` , equal
-    ``>=`` , greater than or equal
-    ``>`` , greater than
+   *cop* ,
+   ``<`` , less than
+   ``<=`` , less than or equal
+   ``==`` , equal
+   ``>=`` , greater than or equal
+   ``>`` , greater than
 
 left
 ****
@@ -818,8 +818,8 @@ It specifies the value assigned to *ad* if the result
 of the comparison is false.
 
 {xrst_toc_hidden
-    example/cplusplus/a_double_cond_assign_xam.cpp
-    example/python/core/a_double_cond_assign_xam.py
+   example/cplusplus/a_double_cond_assign_xam.cpp
+   example/python/core/a_double_cond_assign_xam.py
 }
 Example
 *******
@@ -829,43 +829,43 @@ Example
 {xrst_end a_double_cond_assign}
 */
 void a_double::cond_assign(
-    const char*     cop       ,
-    const a_double& left      ,
-    const a_double& right     ,
-    const a_double& if_true   ,
-    const a_double& if_false  )
-{   std::string cop_string(cop);
-    if( cop_string == "<" )
-    {   *ptr() = CppAD::CondExpLt(
-            *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
-        );
-    }
-    else if( cop_string == "<=" )
-    {   *ptr() = CppAD::CondExpLe(
-            *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
-        );
-    }
-    else if( cop_string == "==" )
-    {   *ptr() = CppAD::CondExpEq(
-            *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
-        );
-    }
-    else if( cop_string == ">=" )
-    {   *ptr() = CppAD::CondExpGe(
-            *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
-        );
-    }
-    else if( cop_string == ">" )
-    {   *ptr() = CppAD::CondExpGt(
-            *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
-        );
-    }
-    else
-    {   std::string message = "a_double::cond_assing:: cop = '";
-        message += cop;
-        message += "' is not a valid comparison operator";
-        CPPAD_PY_ASSERT_KNOWN(false, message.c_str());
-    }
+   const char*     cop       ,
+   const a_double& left      ,
+   const a_double& right     ,
+   const a_double& if_true   ,
+   const a_double& if_false  )
+{  std::string cop_string(cop);
+   if( cop_string == "<" )
+   {  *ptr() = CppAD::CondExpLt(
+         *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+      );
+   }
+   else if( cop_string == "<=" )
+   {  *ptr() = CppAD::CondExpLe(
+         *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+      );
+   }
+   else if( cop_string == "==" )
+   {  *ptr() = CppAD::CondExpEq(
+         *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+      );
+   }
+   else if( cop_string == ">=" )
+   {  *ptr() = CppAD::CondExpGe(
+         *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+      );
+   }
+   else if( cop_string == ">" )
+   {  *ptr() = CppAD::CondExpGt(
+         *left.ptr(), *right.ptr(), *if_true.ptr(), *if_false.ptr()
+      );
+   }
+   else
+   {  std::string message = "a_double::cond_assing:: cop = '";
+      message += cop;
+      message += "' is not a valid comparison operator";
+      CPPAD_PY_ASSERT_KNOWN(false, message.c_str());
+   }
 }
 // --------------------------------------------------------------------------
 } // END_CPPAD_PY_NAMESPACE
