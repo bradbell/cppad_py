@@ -33,7 +33,7 @@ then
 fi
 # -----------------------------------------------------------------------------
 # xsrst
-xrst --target $target doc.xrst
+xrst --target $target --output doc doc.xrst
 # -----------------------------------------------------------------------------
 echo 'run_sphinx.sh: OK'
 exit 0

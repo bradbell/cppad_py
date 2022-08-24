@@ -7,6 +7,7 @@
 /git_commit.sh
 /lib/python/cppad_py/cppad_swig.py
 /sphinx/index.rst
+/sphinx/conf.py
 temp
 temp.*
 # soft links to ignore
