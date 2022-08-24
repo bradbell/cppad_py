@@ -25,15 +25,6 @@ do
    if grep $'\t' $file > /dev/null
    then
       echo "$file has a tabs"
-      read -p "Try to convert them to spaces [y/n] ?" response
-      if [ "$response" == 'y' ]
-      then
-         echo_eval tab2space.sh $file
-      elif [ "$response" != 'n' ]
-      then
-         echo 'response was not y or n'
-         exit 1
-      fi
       ok='no'
    fi
 done

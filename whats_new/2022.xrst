@@ -5,23 +5,24 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xrst_begin release_notes}
 
+{xrst_begin whats_new_2022}
 {xrst_spell
+   xsrst
 }
 
-CppAD Py Release Notes By Year
-##############################
+CppAD Py Changes During 2022
+############################
 
-{xrst_toc_hidden
-   whats_new/2022.xrst
-   whats_new/2021.xrst
-   whats_new/2020.xrst
-   whats_new/2018.xrst
-}
-:ref:`2021<whats_new_2022>` ,
-:ref:`2021<whats_new_2021>` ,
-:ref:`2020<whats_new_2020>` ,
-:ref:`2018<whats_new_2018>`
+08-24
+*****
+1. Convert from using ``bin/xsrst.py`` to using xrst_
+   (a separate package started with xsrst.py).
+   In addition, remove the documentation and source code corresponding
+   to xsrst.py from this package.
+2. Change number of spaces corresponding to an indent from 4 to 3
+   (this works better with sphinx).
 
-{xrst_end release_notes}
+.. _xrst: https://bradbell.github.io/xrst
+
+{xrst_end whats_new_2022}
