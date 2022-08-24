@@ -10,6 +10,7 @@
 .. include:: ../preamble.rst
 
 {xsrst_spell
+    cmd
     omhelp
     erf
     xq
@@ -167,10 +168,10 @@ and :ref:`install_error<install_error>`.
 11-10
 *****
 #.  **API change** : the xsrst ``child_list`` command was changed to
-    :ref:`child_table<child_cmd.syntax.child_table>` and a table,
+    child_table and a table,
     instead of a list, was used to display the names and corresponding titles.
     In addition, the ``child_link`` command was changed to
-    :ref:`child_list<child_cmd.syntax.child_list>`.
+    child_list.
 #.  Remove an extra backquote \' that was placed at the end of each line
     of the :ref:`table of contents<xsrst_table_of_contents>`.
 #.  Add more documentation for the ``index.rst`` file
@@ -309,8 +310,8 @@ to the mixed class; see :ref:`mixed_fix_constraint`.
 
 10-13
 *****
-The :ref:`xsrst_py` utility would crash if a section had :ref:`child_cmd`
-and was :ref:`indented<xsrst_py.indentation>`.
+The xsrst.py utility would crash if a section had child_cmd
+and was indented.
 This has been fixed
 
 10-02
@@ -320,7 +321,7 @@ This has been fixed
     Also these sections were moved from children of :ref:`cpp_lib`
     to children of :ref:`library`.
 
-#.  The :ref:`xsrst_py` utility has been improved. To be specific, it no
+#.  The xsrst.py utility has been improved. To be specific, it no
     longer overwrites ``*.rst`` files that have not changed. This makes
     the sphinx build operation faster (by not reprocessing files
     that have not changed).
@@ -341,7 +342,7 @@ This has been fixed
 
 09-14
 *****
-#.  xsrst: the :ref:`target<xsrst_py.command_line_arguments.target>`
+#.  xsrst: the target
     command line argument was added and the section numbers were removed
     from the html output. This was done so that adding or removing one
     section does not cause changes in the github pages for all the other
@@ -350,14 +351,14 @@ This has been fixed
     Furthermore, the table of contents uses the section number for the
     link so that the title is easier to read.
 
-#.  xsrst: A :ref:`begin_parent<begin_cmd.parent_section>` must be the first
+#.  xsrst: A begin_parent must be the first
     begin command in a file. This restriction is new and makes the pdf output
     for the parent come before its children.
 
 09-13
 *****
 #.  The text ``xsrst:`` was added to the beginning of each whats new item
-    (see below) that only pertained to the :ref:`xsrst.py<xsrst_py>` program.
+    (see below) that only pertained to the xsrst.py program.
 #.  xsrst: The order of the sections in the pdf file and the
     table of contents was corrected.
 #.  xsrst: Put spaces around table of contents levels that have more that one
@@ -365,7 +366,7 @@ This has been fixed
     because the root section stands out has having not number in front of it.
 #.  The latex numbering of sections is incorrect, so change them to the
     corresponding xsrst section numbers in both the html and pdf output.
-#.  xsrst: Correct position of :ref:`sphinx_dir<xsrst_py.syntax>` in the
+#.  xsrst: Correct position of sphinx_dir in the
     command line syntax.
 
 09-12
@@ -373,7 +374,7 @@ This has been fixed
 #.  xsrst: A table of contents that only contains section titles,
     not headings within a section, was added.
 #.  xsrst: The following restriction was added: a
-    :ref:`section_name<begin_cmd.section_name>`
+    section_name
     can not begin with ``xsrst_``.
 
 07-31
@@ -394,39 +395,39 @@ The word 'initialization' was added to the xsrst dictionary.
 07-29
 *****
 #.  xsrst: Add the optional command line argument
-    :ref:`line_increment<xsrst_py.command_line_arguments.line_increment>`.
+    line_increment.
     This is an aid for finding the source of errors and warnings
     reported by sphinx.
 #.  xsrst: Sometimes xsrst would not recognize a command that came directly after a
-    Fix :ref:`file_cmd`. This has been fixed.
+    Fix file_cmd. This has been fixed.
 
 07-28
 *****
 #.  xsrst: Move version number from the title in :ref:`cppad_py<cppad_py>` to
     the documentation navigation side bar.
-#.  xsrst: Add the :ref:`configure` section.
-#.  xsrst: The :ref:`xsrst begin command<begin_cmd>` was not recognized
+#.  xsrst: Add the configure section.
+#.  xsrst: The xsrst begin command was not recognized
     at the beginning of a file
     (when there is no new line before it). This has been fixed.
 #.  xsrst: Change the *index_file* to
-    :ref:`keyword<xsrst_py.command_line_arguments.keyword>`
+    keyword
     and *spell_file* to
-    :ref:`spelling<xsrst_py.command_line_arguments.spelling>`
+    spelling
 
 07-25
 *****
-#.  xsrst: Install :ref:`xsrst.py<xsrst_py>` during the
+#.  xsrst: Install xsrst.py during the
     :ref:`install<setup_py.install>` procedure.
-#.  xsrst: Add a :ref:`purpose<xsrst_py.purpose>` paragraph to xsrst documentation.
+#.  xsrst: Add a purpose paragraph to xsrst documentation.
 #.  Move the ``*.omh`` files to ``*.xsrst`` files (they have been converted
     from omhelp input files to xsrst input files).
-#.  xsrst: Change the :ref:`keyword<xsrst_py.command_line_arguments.keyword>`
+#.  xsrst: Change the keyword
     to use python regular expressions and remove the whats new month-day
     headings from the :ref:`index<genindex>`.
 
 07-24
 *****
-#.  xsrst: Add the :ref:`xsrst.py<xsrst_py>` program
+#.  xsrst: Add the xsrst.py program
     which extracts sphinx ``*.rst`` files from source code.
     This program is not yet installed but you can use it by placing
     the script ``bin/xsrst.py`` in your execution path.

@@ -74,7 +74,6 @@ Children
     setup.py
     example/python/numeric/numeric.xrst
     lib/library.xrst
-    bin/xsrst.py
     whats_new/release_notes.xrst
 }
 

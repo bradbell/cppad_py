@@ -16,6 +16,7 @@
     cygwin
     setuptools
     underbars
+    dir
 }
 
 CppAD Py Changes During 2021
@@ -32,9 +33,9 @@ This has been fixed.
 *****
 1.  The user no longer needs to create the ``xsrst.py``
     input file ``index.rst``
-    in the :ref:`xsrst_py.command_line_arguments.sphinx_dir` directory
+    in the sphinx_dir directory
     (it is now automatically generated).
-2.  The :ref:`preamble.rst<preamble_rst>` example file was added to the
+2.  The preamble.rst example file was added to the
     ``xsrst.py`` documentation.
 3.  Fix an error in the ``xsrst.py`` double word error message. To be specific,
     line number was wrong and an extra character was included in the
@@ -45,12 +46,12 @@ This has been fixed.
 **API Change**\ :
 The links for periods in a heading are now converted to underbars
 (so that periods are only between levels); see
-:ref:`Other.Levels<xsrst_py.links_to_headings.other_levels>` .
-This is an API change for :ref:`xsrst.py<xsrst_py>`.
+Other.Levels .
+This is an API change for xsrst.py.
 
 08-12
 *****
-The :ref:`xsrst<xsrst_py>` navigation frame on the left would have a
+The xsrst navigation frame on the left would have a
 duplicate entry for each child of a section that started with
 
 | ``{xsrst_begin_parent`` *section_name* ``}``
@@ -60,7 +61,7 @@ are now in a table.
 
 08-08
 *****
-The :ref:`xsrst_py` spell checker was changed to automatically
+The xsrst.py spell checker was changed to automatically
 ignore web addresses that begin with ``http://`` for ``https://``.
 It was also changed to automatically ignore sphinx directives;
 e.g. ``.. csv-table::``.
@@ -73,7 +74,7 @@ current directory ``./`` in the python path.
 
 06-02
 *****
-Add :ref:`xsrst_py.wish_list.subset_documentation` to the wish list.
+Add subset documentation to the wish list.
 
 05-15
 *****
