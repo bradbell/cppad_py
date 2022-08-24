@@ -1,15 +1,13 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin py_fun_jacobian}
-#
-# .. include:: ../preamble.rst
+# {xrst_begin py_fun_jacobian}
 #
 # Jacobian of an AD Function
 # ##########################
@@ -21,10 +19,10 @@
 # f
 # *
 # This is either a
-# :ref:`d_fun<py_fun_ctor.syntax.d_fun>` or
-# :ref:`a_fun<py_fun_ctor.syntax.a_fun>` function object.
+# :ref:`d_fun<py_fun_ctor@syntax@d_fun>` or
+# :ref:`a_fun<py_fun_ctor@syntax@a_fun>` function object.
 # Upon return, the zero order
-# :ref:`taylor_coefficients<py_fun_forward.taylor_coefficient>`
+# :ref:`taylor_coefficients<py_fun_forward@taylor_coefficient>`
 # in *f* correspond to the value of *x* .
 # The other Taylor coefficients in *f* are unspecified.
 #
@@ -32,8 +30,8 @@
 # ****
 # We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
 # for the function corresponding to *f* .
-# Note that *n* is the size of :ref:`ax<py_fun_ctor.ax>`
-# and *m* is the size of :ref:`ay<py_fun_ctor.ay>`
+# Note that *n* is the size of :ref:`ax<py_fun_ctor@ax>`
+# and *m* is the size of :ref:`ay<py_fun_ctor@ay>`
 # in to the constructor for *f* .
 #
 # x
@@ -55,14 +53,14 @@
 #
 #    J [ i,  j ] = \frac{ \partial f_i }{ \partial x_j } (x)
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/core/fun_jacobian_xam.py
 # }
 # Example
 # *******
-# :ref:`fun_jacobian_xam_py<fun_jacobian_xam_py>`
+# :ref:`fun_jacobian_xam_py`
 #
-# {xsrst_end py_fun_jacobian}
+# {xrst_end py_fun_jacobian}
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy

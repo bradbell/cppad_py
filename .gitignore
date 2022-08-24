@@ -32,8 +32,7 @@ temp.*
 /new/
 #
 # directories use to build sphinx documentation on master branch
-/sphinx/xsrst/
-/sphinx/_build/
+/sphinx/rst/
 #
 # extensions to ignore
 *.log

@@ -77,11 +77,9 @@ a_double::a_double(const CppAD::AD<double>* a_ptr)
 }
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin a_double_ctor}
+{xrst_begin a_double_ctor}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
 }
 
@@ -136,7 +134,7 @@ Example
 All of the other ``a_double`` examples use an ``a_double``
 constructor.
 
-{xsrst_end a_double_ctor}
+{xrst_end a_double_ctor}
 -------------------------------------------------------------------------------
 */
 // default a_double ctor
@@ -159,14 +157,12 @@ a_double::a_double(const a_double& ad)
 a_double::~a_double(void)
 { }
 /*
-{xsrst_begin a_double_unary_op}
-
-.. include:: ../preamble.rst
+{xrst_begin a_double_unary_op}
 
 a_double Unary Plus and Minus
 #############################
 
-{xsrst_spell
+{xrst_spell
 }
 
 Syntax
@@ -185,7 +181,7 @@ ay
 If the operator is ``+`` , the result is equal to *ax* .
 If it is ``-`` , the result is the negative of *ax* .
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/a_double_unary_op_xam.cpp
     example/python/core/a_double_unary_op_xam.py
 }
@@ -194,7 +190,7 @@ Example
 :ref:`c++<a_double_unary_op_xam_cpp>`,
 :ref:`python<a_double_unary_op_xam_py>`.
 
-{xsrst_end a_double_unary_op}
+{xrst_end a_double_unary_op}
 */
 const a_double& a_double::operator+(void) const
 {   return *this; }
@@ -205,11 +201,9 @@ a_double a_double::operator-(void) const
 }
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin a_double_property}
+{xrst_begin a_double_property}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     bool
     aother
     ap
@@ -248,7 +242,7 @@ variables when *ad*\ ``.value`` () is called.
 If it does depend on the independent variables,
 you will have to wait until the current recording is terminated
 before you can access its value; see
-:ref:`var2par<a_double_property.var2par>` below.
+:ref:`var2par<a_double_property@var2par>` below.
 
 parameter
 *********
@@ -297,9 +291,9 @@ The result has c++ prototype
 It has the same value as *ad* and is sure to be a parameter
 ( *ad* may or may not be a variable).
 This can be useful when you want to access the value of *ad*
-while is a variable; :ref:`value<a_double_property.value>` above.
+while is a variable; :ref:`value<a_double_property@value>` above.
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/a_double_property_xam.cpp
     example/python/core/a_double_property_xam.py
 }
@@ -308,7 +302,7 @@ Example
 :ref:`c++<a_double_property_xam_cpp>`,
 :ref:`python<a_double_property_xam_py>`.
 
-{xsrst_end a_double_property}
+{xrst_end a_double_property}
 */
 double a_double::value(void) const
 {   double result = CppAD::Value( *ptr() );
@@ -337,19 +331,16 @@ a_double a_double::var2par() const
 }
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin a_double_binary}
-
-.. include:: ../preamble.rst
+{xrst_begin a_double_binary}
 
 a_double Binary Operators with an AD Result
 ###########################################
 
-{xsrst_spell
+{xrst_spell
     radd
     rsub
     rmul
     rdiv
-    \ne
 }
 
 Syntax
@@ -444,12 +435,12 @@ The argument to the ``pow_int`` function has c++ prototype
 
 Example
 *******
-{xsrst_child_list
+{xrst_toc_list
     example/python/core/a_double_binary_xam.py
     example/cplusplus/a_double_binary_xam.cpp
 }
 
-{xsrst_end a_double_binary}
+{xrst_end a_double_binary}
 */
 BINARY_OP_AD_RESULT(+)
 BINARY_OP_AD_RESULT(-)
@@ -501,14 +492,12 @@ a_double pow_int(const a_double& ad, const int& i)
 }
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin a_double_compare}
-
-.. include:: ../preamble.rst
+{xrst_begin a_double_compare}
 
 a_double Comparison Operators
 #############################
 
-{xsrst_spell
+{xrst_spell
     bool
 }
 
@@ -551,7 +540,7 @@ The result has c++ prototype
 
 | |tab| ``bool`` *b*
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/a_double_compare_xam.cpp
     example/python/core/a_double_compare_xam.py
 }
@@ -560,7 +549,7 @@ Example
 :ref:`c++<a_double_compare_xam_cpp>`,
 :ref:`python<a_double_compare_xam_py>`.
 
-{xsrst_end a_double_compare}
+{xrst_end a_double_compare}
 */
 COMPARISON_OP(<)
 COMPARISON_OP(<=)
@@ -570,14 +559,12 @@ COMPARISON_OP(==)
 COMPARISON_OP(!=)
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin a_double_assign}
-
-.. include:: ../preamble.rst
+{xrst_begin a_double_assign}
 
 a_double Assignment Operators
 #############################
 
-{xsrst_spell
+{xrst_spell
 }
 
 Syntax
@@ -617,7 +604,7 @@ This object has c++ prototype
 
 | |tab| ``const double&`` *y*
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/a_double_assign_xam.cpp
     example/python/core/a_double_assign_xam.py
 }
@@ -626,7 +613,7 @@ Example
 :ref:`c++<a_double_assign_xam_cpp>`,
 :ref:`python<a_double_assign_xam_py>`.
 
-{xsrst_end a_double_assign}
+{xrst_end a_double_assign}
 */
 ASSIGNMENT_OP(=)
 ASSIGNMENT_OP(+=)
@@ -635,11 +622,9 @@ ASSIGNMENT_OP(*=)
 ASSIGNMENT_OP(/=)
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin a_double_unary_fun}
+{xrst_begin a_double_unary_fun}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     acos
     asin
     atan
@@ -711,7 +696,7 @@ and is the value of the function *fun* evaluated at the argument *ax*; i.e.,
 
 | |tab| *ay* = *fun* ( *ax* )
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/a_double_unary_fun_xam.cpp
     example/python/core/a_double_unary_fun_xam.py
 }
@@ -720,7 +705,7 @@ Example
 :ref:`c++<a_double_unary_fun_xam_cpp>`,
 :ref:`python<a_double_unary_fun_xam_py>`.
 
-{xsrst_end a_double_unary_fun}
+{xrst_end a_double_unary_fun}
 */
 UNARY_FUN_AD_RESULT(abs)
 UNARY_FUN_AD_RESULT(acos)
@@ -740,11 +725,9 @@ UNARY_FUN_AD_RESULT(tanh)
 
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin a_double_cond_assign}
+{xrst_begin a_double_cond_assign}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
 }
 
 AD Conditional Assignment
@@ -764,12 +747,12 @@ The code
 | |tab| |tab| *target* = *if_false*
 
 records either the true or false case depending on the value
-of *left* and *right* ; see :ref:`cpp_fun_ctor<cpp_fun_ctor>`.
+of *left* and *right* ; see :ref:`cpp_fun_ctor`.
 If *left* or *right* is a
-:ref:`variable<a_double_property.variable>`,
+:ref:`variable<a_double_property@variable>`,
 it may be desirable to switch between *if_true* and *if_false*
 depending of the value of the independent variable during
-calls to order zero :ref:`cpp_fun_forward<cpp_fun_forward>`.
+calls to order zero :ref:`cpp_fun_forward`.
 The ``cond_assign`` does this.
 
 target
@@ -834,7 +817,7 @@ This argument has c++ prototype
 It specifies the value assigned to *ad* if the result
 of the comparison is false.
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/a_double_cond_assign_xam.cpp
     example/python/core/a_double_cond_assign_xam.py
 }
@@ -843,7 +826,7 @@ Example
 :ref:`c++<a_double_cond_assign_xam_cpp>`,
 :ref:`python<a_double_cond_assign_xam_py>`.
 
-{xsrst_end a_double_cond_assign}
+{xrst_end a_double_cond_assign}
 */
 void a_double::cond_assign(
     const char*     cop       ,

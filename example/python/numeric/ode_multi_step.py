@@ -27,13 +27,11 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
     return y_all
 # END_ODE_MULTI_STEP
 #
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin numeric_ode_multi_step}
+# {xrst_begin numeric_ode_multi_step}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 # }
 #
 # Multiple Ode Steps
@@ -133,18 +131,18 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
 # The value *y_all* [ *i* , *j* ] is the value of the j-th
 # component of :math:`y(t)` at time *t_all* [ *i* ] .
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/numeric/ode_multi_step_xam.py
 # }
 # Example
 # *******
-# :ref:`numeric_ode_multi_step_xam_py<numeric_ode_multi_step_xam_py>`
+# :ref:`numeric_ode_multi_step_xam_py`
 #
 # Source Code
 # ***********
-# {xsrst_file
+# {xrst_literal
 #   # BEGIN_ODE_MULTI_STEP
 #   # END_ODE_MULTI_STEP
 # }
 #
-# {xsrst_end numeric_ode_multi_step}
+# {xrst_end numeric_ode_multi_step}

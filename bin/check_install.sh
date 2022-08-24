@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -31,42 +31,6 @@ fi
 #
 echo "build_type=$build_type"
 echo "cmake_install_prefix=$cmake_install_prefix"
-# ---------------------------------------------------------------------------
-# remove old cppad_py and xsrst.py
-# ---------------------------------------------------------------------------
-if [ -e "$cmake_install_prefix" ]
-then
-    list=$(find -L "$cmake_install_prefix" \
-        -name 'cppad_py' -or   \
-        -name 'cppad_py-*' -or \
-        -name 'xsrst.py' )
-    for name in dist cppad_py.egg-info cppad_py $list
-    do
-        if [ -e "$name" ]
-        then
-            echo_eval rm -r $name
-        fi
-    done
-fi
-if [ -e $HOME/bin/xsrst.py ]
-then
-    echo_eval rm -r $HOME/bin/xsrst.py
-fi
-#
-if echo 'import cppad_py' | python3 >& /dev/null
-then
-    echo 'check_install.py: cannot remove old cppad_py in python path. Try'
-    echo '    pip uninstall cppad_py'
-    echo '    bin/check_install.sh'
-    exit 1
-fi
-if which xsrst.py >& /dev/null
-then
-    echo 'check_install.py: cannot remove old xsrst.py in execution path.'
-    echo 'Use the following command to see where it is:'
-    echo '  which xsrst.py'
-    exit 1
-fi
 # ---------------------------------------------------------------------------
 # Follow install instructions in setup.py
 # ---------------------------------------------------------------------------
@@ -117,16 +81,6 @@ then
     echo 'check_install.sh: setup.py did not remove local cppad_py directory'
 fi
 python3 example/python/check_all.py
-# ---------------------------------------------------------------------------
-xsrst_path="$cmake_install_prefix/bin/xsrst.py"
-if [ ! -x "$xsrst_path" ]
-then
-    echo "check_install.sh: $xsrst_path is not an executale file"
-    exit 1
-fi
-# ---------------------------------------------------------------------------
-# replace bin/xsrst.py with current development version
-echo_eval cp bin/xsrst.py $HOME/bin/xsrst.py
 # ---------------------------------------------------------------------------
 echo 'check_install.sh: OK'
 exit 0

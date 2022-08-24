@@ -1,17 +1,15 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin py_sparse_hes}
+# {xrst_begin py_sparse_hes}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   rcv
 #   hes
 #   cppad
@@ -45,11 +43,11 @@
 # :ref:`d_fun<py_fun_ctor>` constructor.
 # Note that the Taylor coefficients stored in *f* are affected
 # by this operation; see
-# :ref:`uses_forward<py_sparse_hes.uses_forward>` below.
+# :ref:`uses_forward<py_sparse_hes@uses_forward>` below.
 #
 # subset
 # ******
-# This argument must have be a :ref:`matrix<py_sparse_rcv.matrix>`
+# This argument must have be a :ref:`matrix<py_sparse_rcv@matrix>`
 # returned by the ``sparse_rcv`` constructor.
 # Its row size and column size is *n* ; i.e.,
 # *subset*\ ``.nr`` () == *n* and *subset*\ ``.nc`` () == *n* .
@@ -76,13 +74,13 @@
 #
 # pattern
 # *******
-# This argument must have be a :ref:`pattern<py_sparse_rc.pattern>`
+# This argument must have be a :ref:`pattern<py_sparse_rc@pattern>`
 # returned by the ``sparse_rc`` constructor.
 # Its row size and column sizes are *n* ; i.e.,
 # *pattern*\ ``.nr`` () == *n* and *pattern*\ ``.nc`` () == *n* .
 # It is a sparsity pattern for the Hessian :math:`H(x)`.
 # This argument is not used (and need not satisfy any conditions),
-# when :ref:`work<py_sparse_hes.work>` is non-empty.
+# when :ref:`work<py_sparse_hes@work>` is non-empty.
 #
 # work
 # ****
@@ -115,7 +113,7 @@
 #
 # Uses Forward
 # ************
-# After each call to :ref:`py_fun_forward<py_fun_forward>`,
+# After each call to :ref:`py_fun_forward`,
 # the object *f* contains the corresponding Taylor coefficients
 # for all the variables in the operation sequence..
 # After a call to ``sparse_hes``
@@ -125,14 +123,14 @@
 #
 # All the other forward mode coefficients are unspecified.
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/core/sparse_hes_xam.py
 # }
 # Example
 # *******
-# :ref:`sparse_hes_xam_py<sparse_hes_xam_py>`
+# :ref:`sparse_hes_xam_py`
 #
-# {xsrst_end py_sparse_hes}
+# {xrst_end py_sparse_hes}
 # -----------------------------------------------------------------------------
 # undocumented fact: pattern.rc (subset.rcv) is vec_int version of
 # sparsity pattern (sparse matrix)

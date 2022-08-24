@@ -5,11 +5,9 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin cpp_fun}
+{xrst_begin cpp_fun}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
 }
 
@@ -18,17 +16,15 @@ Cppad Py AD Functions
 
 Children
 ********
-{xsrst_child_table
+{xrst_toc_table
     lib/cplusplus/fun.cpp
 }
 
-{xsrst_end cpp_fun}
+{xrst_end cpp_fun}
 -------------------------------------------------------------------------------
-{xsrst_begin sparse}
+{xrst_begin sparse}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
 }
 
@@ -37,25 +33,23 @@ Cppad Py Sparse Calculation
 
 Children
 ********
-{xsrst_child_table
+{xrst_toc_table
     lib/cplusplus/sparse.cpp
 }
 
-{xsrst_end sparse}
+{xrst_end sparse}
 -------------------------------------------------------------------------------
-{xsrst_begin cpp_utility}
-
-.. include:: ../preamble.rst
+{xrst_begin cpp_utility}
 
 C++ Utilities
 #############
 
 Children
 ********
-{xsrst_child_table
+{xrst_toc_table
     lib/cplusplus/cpp_convert.cpp
     include/cppad/py/assert.hpp
 }
 
-{xsrst_end cpp_utility}
+{xrst_end cpp_utility}
 -------------------------------------------------------------------------------

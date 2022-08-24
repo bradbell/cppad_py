@@ -29,8 +29,8 @@ Spell Example
     :header: "Child", "Title"
     :widths: 20, 80
 
-    "spell_res", :ref:`spell_res`
+    "spell_res", :ref:`@spell_res`
 
 ----
 
-xsrst input file: ``sphinx/test_in/spell.py``
+xrst input file: ``sphinx/test_in/spell.py``

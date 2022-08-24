@@ -42,8 +42,8 @@ var
 vec
 xam
 #
-# example words in xsrst commands
-xsrst
+# example words in xrst commands
+xrst
 rst
 #
 # example words in sphinx commands

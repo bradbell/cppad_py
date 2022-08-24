@@ -5,11 +5,9 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin_parent library}
+{xrst_begin_parent library}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
 }
 
@@ -18,18 +16,16 @@ The Cppad Py Libraries
 
 Children
 ********
-{xsrst_child_table
+{xrst_toc_table
     lib/python/cppad_py/py_lib.xrst
     lib/cplusplus/cpp_lib.xrst
 }
 
-{xsrst_end library}
+{xrst_end library}
 -------------------------------------------------------------------------------
-{xsrst_begin a_double}
+{xrst_begin a_double}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
 }
 
@@ -38,17 +34,15 @@ Cppad Py AD Scalars
 
 Children
 ********
-{xsrst_child_table
+{xrst_toc_table
     lib/cplusplus/a_double.cpp
 }
 
-{xsrst_end a_double}
+{xrst_end a_double}
 -------------------------------------------------------------------------------
-{xsrst_begin vector}
+{xrst_begin vector}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
 }
 
@@ -57,8 +51,8 @@ Cppad Py Vectors
 
 Children
 ********
-{xsrst_child_table
+{xrst_toc_table
     lib/cplusplus/vector.xrst
 }
 
-{xsrst_end vector}
+{xrst_end vector}

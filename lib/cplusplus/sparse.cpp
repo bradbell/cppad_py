@@ -15,11 +15,9 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin cpp_sparse_rc}
+{xrst_begin cpp_sparse_rc}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     nnz
     cppad
 }
@@ -188,14 +186,14 @@ and if *row* [ *col_major* [ *k* ] ] == *row* [ *col_major* [ *k* +1] ] ,
 This routine generates an assert if there are two entries with the same
 row and column values (if ``NDEBUG`` is not defined).
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/sparse_rc_xam.cpp
 }
 Example
 *******
-:ref:`sparse_rc_xam_cpp<sparse_rc_xam_cpp>`
+:ref:`sparse_rc_xam_cpp`
 
-{xsrst_end cpp_sparse_rc}
+{xrst_end cpp_sparse_rc}
 */
 // ---------------------------------------------------------------------------
 // public member function not in Swig interface (see %ignore ptr)
@@ -278,11 +276,9 @@ std::vector<int> sparse_rc::col_major(void) const
 }
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin cpp_sparse_rcv}
+{xrst_begin cpp_sparse_rcv}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     rcv
     nnz
     cppad
@@ -442,14 +438,14 @@ and if *row* [ *col_major* [ *k* ] ] == *row* [ *col_major* [ *k* +1] ] ,
 This routine generates an assert if there are two entries with the same
 row and column values (if ``NDEBUG`` is not defined).
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/sparse_rcv_xam.cpp
 }
 Example
 *******
-:ref:`sparse_rcv_xam_cpp<sparse_rcv_xam_cpp>`
+:ref:`sparse_rcv_xam_cpp`
 
-{xsrst_end cpp_sparse_rcv}
+{xrst_end cpp_sparse_rcv}
 */
 // ---------------------------------------------------------------------------
 // public member functions not in Swig interface (see %ignore ptr)
@@ -546,11 +542,9 @@ std::vector<int> sparse_rcv::col_major(void) const
 }
 // ----------------------------------------------------------------------------
 /*
-{xsrst_begin cpp_jac_sparsity}
+{xrst_begin cpp_jac_sparsity}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
 }
 
 Jacobian Sparsity Patterns
@@ -614,7 +608,7 @@ The argument *pattern_in* has prototype
 
 | |tab| ``const sparse_rc&`` *pattern_in*
 
-see :ref:`cpp_sparse_rc<cpp_sparse_rc>`.
+see :ref:`cpp_sparse_rc`.
 This is a sparsity pattern for :math:`R`.
 
 pattern_out
@@ -633,14 +627,14 @@ Suppose that :math:`R` is the identity matrix.
 In this case, *pattern_out* is a sparsity pattern for
 :math:`F^{(1)} ( x )`.
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/sparse_jac_pattern_xam.cpp
 }
 Example
 *******
 :ref:`c++<sparse_jac_pattern_xam_cpp>`
 
-{xsrst_end cpp_jac_sparsity}
+{xrst_end cpp_jac_sparsity}
 */
 void d_fun::for_jac_sparsity(
     const sparse_rc&  pattern_in    ,
@@ -675,11 +669,9 @@ void d_fun::rev_jac_sparsity(
 }
 // ----------------------------------------------------------------------------
 /*
-{xsrst_begin cpp_sparsity}
+{xrst_begin cpp_sparsity}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     hes
     bool
 }
@@ -756,14 +748,14 @@ and only the *i*-th component of *r* is possibly non-zero.
 In this case, *pattern_out* is a sparsity pattern for
 :math:`F_i^{(2)} ( x )`.
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/sparse_hes_pattern_xam.cpp
 }
 Example
 *******
 :ref:`c++<sparse_hes_pattern_xam_cpp>`
 
-{xsrst_end cpp_sparsity}
+{xrst_end cpp_sparsity}
 */
 void d_fun::for_hes_sparsity(
     const std::vector<bool>& select_domain ,
@@ -844,11 +836,9 @@ void d_fun::rev_hes_sparsity(
 }
 /*
 ------------------------------------------------------------------------------
-{xsrst_begin cpp_sparse_jac}
+{xrst_begin cpp_sparse_jac}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     rcv
     cppad
 }
@@ -874,18 +864,18 @@ The syntax above takes advantage of sparsity when computing the Jacobian
     J(x) = F^{(1)} (x)
 
 In the sparse case, this should be faster and take less memory than
-:ref:`cpp_fun_jacobian<cpp_fun_jacobian>`.
+:ref:`cpp_fun_jacobian`.
 We use the notation :math:`J_{i,j} (x)` to denote the partial of
 :math:`F_i (x)` with respect to :math:`x_j`.
 
 sparse_jac_for
 **************
-This function uses first order forward mode sweeps :ref:`cpp_fun_forward<cpp_fun_forward>`
+This function uses first order forward mode sweeps :ref:`cpp_fun_forward`
 to compute multiple columns of the Jacobian at the same time.
 
 sparse_jac_rev
 **************
-This function uses first order reverse mode sweeps :ref:`cpp_fun_reverse<cpp_fun_reverse>`
+This function uses first order reverse mode sweeps :ref:`cpp_fun_reverse`
 to compute multiple rows of the Jacobian at the same time.
 
 f
@@ -896,7 +886,7 @@ This object has prototype
 
 Note that the Taylor coefficients stored in *f* are affected
 by this operation; see
-:ref:`uses_forward<cpp_sparse_jac.uses_forward>` below.
+:ref:`uses_forward<cpp_sparse_jac@uses_forward>` below.
 
 subset
 ******
@@ -933,7 +923,7 @@ Its row size is *pattern*\ ``.nr`` () == *m* ,
 and its column size is *pattern*\ ``.nc`` () == *n* .
 It is a sparsity pattern for the Jacobian :math:`J(x)`.
 This argument is not used (and need not satisfy any conditions),
-when :ref:`work<cpp_sparse_jac.work>` is non-empty.
+when :ref:`work<cpp_sparse_jac@work>` is non-empty.
 
 work
 ****
@@ -966,7 +956,7 @@ or combining multiple columns (rows) into a single sweep.
 
 Uses Forward
 ************
-After each call to :ref:`cpp_fun_forward<cpp_fun_forward>`,
+After each call to :ref:`cpp_fun_forward`,
 the object *f* contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
 After a call to ``sparse_jac_forward`` or ``sparse_jac_rev`` ,
@@ -976,14 +966,14 @@ the zero order coefficients correspond to
 
 All the other forward mode coefficients are unspecified.
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/sparse_jac_xam.cpp
 }
 Example
 *******
-:ref:`sparse_jac_xam_cpp<sparse_jac_xam_cpp>`
+:ref:`sparse_jac_xam_cpp`
 
-{xsrst_end cpp_sparse_jac}
+{xrst_end cpp_sparse_jac}
 */
 // ---------------------------------------------------------------------------
 // public member function not in Swig interface (see %ignore ptr)
@@ -1035,11 +1025,9 @@ int d_fun::sparse_jac_rev(
 }
 /*
 ------------------------------------------------------------------------------
-{xsrst_begin cpp_sparse_hes}
+{xrst_begin cpp_sparse_hes}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     rcv
     hes
     cppad
@@ -1075,7 +1063,7 @@ This object has prototype
 
 Note that the Taylor coefficients stored in *f* are affected
 by this operation; see
-:ref:`uses_forward<cpp_sparse_hes.uses_forward>` below.
+:ref:`uses_forward<cpp_sparse_hes@uses_forward>` below.
 
 subset
 ******
@@ -1122,7 +1110,7 @@ Its row size and column sizes are *n* ; i.e.,
 *pattern*\ ``.nr`` () == *n* and *pattern*\ ``.nc`` () == *n* .
 It is a sparsity pattern for the Hessian :math:`H(x)`.
 This argument is not used (and need not satisfy any conditions),
-when :ref:`work<cpp_sparse_hes.work>` is non-empty.
+when :ref:`work<cpp_sparse_hes@work>` is non-empty.
 
 work
 ****
@@ -1155,7 +1143,7 @@ or combining multiple columns and rows into a single sweep.
 
 Uses Forward
 ************
-After each call to :ref:`cpp_fun_forward<cpp_fun_forward>`,
+After each call to :ref:`cpp_fun_forward`,
 the object *f* contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
 After a call to ``sparse_hes``
@@ -1165,14 +1153,14 @@ the zero order coefficients correspond to
 
 All the other forward mode coefficients are unspecified.
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/sparse_hes_xam.cpp
 }
 Example
 *******
-:ref:`sparse_hes_xam_cpp<sparse_hes_xam_cpp>`
+:ref:`sparse_hes_xam_cpp`
 
-{xsrst_end cpp_sparse_hes}
+{xrst_end cpp_sparse_hes}
 */
 // ---------------------------------------------------------------------------
 // public member function not in Swig interface (see %ignore ptr)

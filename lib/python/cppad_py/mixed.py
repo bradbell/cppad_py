@@ -6,9 +6,7 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 """
-{xsrst_begin_parent mixed}
-.. include:: ../preamble.rst
-
+{xrst_begin_parent mixed}
 Laplace Approximation of Mixed Effects Models
 #############################################
 
@@ -57,21 +55,21 @@ Fixed Effects Likelihood
 We refer to :math:`\B{p} (z | \theta ) \B{p} ( \theta )`
 as the fixed effects likelihood.
 The negative log of this, as function of :math:`\theta`, is computed by
-:ref:`mixed_ctor.fix_likelihood` .
+:ref:`mixed_ctor@fix_likelihood` .
 
 Random Effects Likelihood
 =========================
 We refer to :math:`\B{p} (y | \theta , u ) \B{p} ( u | \theta )`
 as the random effects likelihood.
 The negative log of this, as function of :math:`\theta, u`, is computed by
-:ref:`mixed_ctor.ran_likelihood` .
+:ref:`mixed_ctor@ran_likelihood` .
 
 Children
 ********
-{xsrst_child_table
+{xrst_toc_table
 }
 
-{xsrst_end mixed}
+{xrst_end mixed}
 """
 import cppad_py
 import numpy
@@ -86,13 +84,11 @@ class fixed_solution :
 class mixed :
     """
     -------------------------------------------------------------------------
-    {xsrst_begin mixed_ctor}
-    .. include:: ../preamble.rst
-    {xsrst_spell
+    {xrst_begin mixed_ctor}
+    {xrst_spell
         obj
         bool
         rcv
-        \hat
     }
 
     Mixed Class Constructor
@@ -100,7 +96,7 @@ class mixed :
 
     Syntax
     ******
-    {xsrst_file
+    {xrst_literal
         # BEGIN_MIXED_CTOR
         # END_MIXED_CTOR
     }
@@ -158,33 +154,33 @@ class mixed :
     warning
     *******
     is a python function that gets called when *mixed_obj*
-    has a warning to report; see :ref:`mixed_warning`.
+    has a warning to report; see :ref:`@mixed_warning`.
     The value ``None`` corresponds to ignoring all warning messages.
 
     fix_likelihood
     **************
-    see :ref:`mixed_fix_likelihood` .
+    see :ref:`@mixed_fix_likelihood` .
     The value ``None`` corresponds to no fixed effects likelihood.
 
     fix_constraint
     **************
-    see :ref:`mixed_fix_constraint` .
+    see :ref:`@mixed_fix_constraint` .
     The value ``None`` corresponds to no constraint function
     for the fixed effects (one can still have bound constraints).
 
     ran_likelihood
     **************
-    see :ref:`mixed_ran_likelihood` .
+    see :ref:`@mixed_ran_likelihood` .
     The value ``None`` corresponds to no random effects likelihood.
 
-    {xsrst_children
+    {xrst_toc_hidden
       example/python/mixed/ctor_xam.py
     }
     Example
     *******
-    :ref:`mixed_ctor_xam_py<mixed_ctor_xam_py>`
+    :ref:`mixed_ctor_xam_py`
 
-    {xsrst_end mixed_ctor}
+    {xrst_end mixed_ctor}
     """
     #
     def __init__(
@@ -261,9 +257,8 @@ class mixed :
         )
     """
     -------------------------------------------------------------------------
-    {xsrst_begin mixed_warning}
-    .. include:: ../preamble.rst
-    {xsrst_spell
+    {xrst_begin mixed_warning}
+    {xrst_spell
         obj
     }
 
@@ -277,7 +272,7 @@ class mixed :
 
     warning
     *******
-    This is the :ref:`mixed_ctor.warning` argument to the  mixed class
+    This is the :ref:`mixed_ctor@warning` argument to the  mixed class
     constructor.
     It's *message* argument is an `str` describing the warning.
 
@@ -287,14 +282,14 @@ class mixed :
     It's *message* argument is an `str` describing the warning.
     It's main purpose is for testing.
 
-    {xsrst_children
+    {xrst_toc_hidden
       example/python/mixed/warning_xam.py
     }
     Example
     *******
-    :ref:`mixed_warning_xam_py<mixed_warning_xam_py>`
+    :ref:`mixed_warning_xam_py`
 
-    {xsrst_end mixed_warning}
+    {xrst_end mixed_warning}
     """
     def warning(self, message) :
         self.obj.warning(message)
@@ -302,9 +297,8 @@ class mixed :
         self.obj.post_warning(message)
     """
     -------------------------------------------------------------------------
-    {xsrst_begin mixed_fatal_error}
-    .. include:: ../preamble.rst
-    {xsrst_spell
+    {xrst_begin mixed_fatal_error}
+    {xrst_spell
         obj
     }
 
@@ -322,23 +316,21 @@ class mixed :
     A call to this function will raise a python ``RuntimeError`` with
     the specified message.  It's main purpose is for testing.
 
-    {xsrst_children
+    {xrst_toc_hidden
       example/python/mixed/fatal_error_xam.py
     }
     Example
     *******
-    :ref:`mixed_fatal_error_xam_py<mixed_fatal_error_xam_py>`
+    :ref:`mixed_fatal_error_xam_py`
 
-    {xsrst_end mixed_fatal_error}
+    {xrst_end mixed_fatal_error}
     """
     def post_fatal_error(self, message) :
         self.obj.post_fatal_error(message)
     """
     -------------------------------------------------------------------------
-    {xsrst_begin mixed_fix_likelihood}
-    .. include:: ../preamble.rst
-    {xsrst_spell
-        \cdots
+    {xrst_begin mixed_fix_likelihood}
+    {xrst_spell
     }
 
     Fixed Effects Likelihood
@@ -351,9 +343,9 @@ class mixed :
 
     fix_likelihood
     ***************
-    is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
+    is a :ref:`d_fun<py_fun_ctor@syntax@d_fun>` representation
     of the negative log of the
-    :ref:`fixed effects likelihood <mixed.notation.fixed_effects_likelihood>`
+    :ref:`fixed effects likelihood <mixed@notation@fixed_effects_likelihood>`
 
     .. math::
 
@@ -369,7 +361,7 @@ class mixed :
     theta
     *****
     is a numpy vector with ``float`` elements and size
-    :ref:`mixed_ctor.fixed_init.n_fixed`
+    :ref:`mixed_ctor@fixed_init@n_fixed`
     containing a value for the fixed effects.
 
     v
@@ -382,21 +374,18 @@ class mixed :
     corresponds to the fixed effects likelihood
     being constant w.r.t. :math:`\theta`.
 
-    {xsrst_children
+    {xrst_toc_hidden
         example/python/mixed/fix_likelihood_xam.py
     }
     Example
     *******
-    :ref:`mixed_fix_likelihood_xam_py<mixed_fix_likelihood_xam_py>`
+    :ref:`mixed_fix_likelihood_xam_py`
 
-    {xsrst_end mixed_fix_likelihood}
+    {xrst_end mixed_fix_likelihood}
     -------------------------------------------------------------------------
-    {xsrst_begin mixed_fix_constraint}
-    {xsrst_spell
-        \cdots
+    {xrst_begin mixed_fix_constraint}
+    {xrst_spell
     }
-    .. include:: ../preamble.rst
-
     Fixed Effects Constraint Function
     #################################
 
@@ -407,7 +396,7 @@ class mixed :
 
     fix_constraint
     ***************
-    is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
+    is a :ref:`d_fun<py_fun_ctor@syntax@d_fun>` representation
     of the fixed effects constraint function
 
     .. math::
@@ -418,12 +407,12 @@ class mixed :
     The functions :math:`v_i ( \theta )` for :math:`i = 0 , \ldots , m-1`
     are assumed to be a smooth w.r.t the vector :math:`\theta`.
     The bounds for :math:`g( \theta )` are specified by
-    :ref:`mixed_optimize_fixed.fix_constraint_lower_(fix_constraint_upper)` .
+    :ref:`mixed_optimize_fixed@fix_constraint_lower_(fix_constraint_upper)` .
 
     theta
     *****
     is a numpy vector with ``float`` elements and size
-    :ref:`mixed_ctor.fixed_init.n_fixed`
+    :ref:`mixed_ctor@fixed_init@n_fixed`
     containing a value for the fixed effects.
 
     v
@@ -436,18 +425,16 @@ class mixed :
     corresponds to not fixed effects constraint function; i.e.,
     :math:`m = 0`.
 
-    {xsrst_children
+    {xrst_toc_hidden
         example/python/mixed/fix_constraint_xam.py
     }
     Example
     *******
-    :ref:`mixed_fix_constraint_xam_py<mixed_fix_constraint_xam_py>`
+    :ref:`mixed_fix_constraint_xam_py`
 
-    {xsrst_end mixed_fix_constraint}
+    {xrst_end mixed_fix_constraint}
     -------------------------------------------------------------------------
-    {xsrst_begin mixed_ran_likelihood}
-    .. include:: ../preamble.rst
-
+    {xrst_begin mixed_ran_likelihood}
     Random Effects Likelihood
     #########################
 
@@ -458,9 +445,9 @@ class mixed :
 
     ran_likelihood
     ***************
-    is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` representation
+    is a :ref:`d_fun<py_fun_ctor@syntax@d_fun>` representation
     of the negative log of the
-    :ref:`random effects likelihood <mixed.notation.random_effects_likelihood>`
+    :ref:`random effects likelihood <mixed@notation@random_effects_likelihood>`
 
     .. math::
 
@@ -476,13 +463,13 @@ class mixed :
     theta
     *****
     is a numpy vector with ``float`` elements and size
-    :ref:`mixed_ctor.fixed_init.n_fixed`
+    :ref:`mixed_ctor@fixed_init@n_fixed`
     containing a value for the fixed effects.
 
     u
     *
     is a numpy vector with ``float`` elements and size
-    :ref:`mixed_ctor.random_init.n_random`
+    :ref:`mixed_ctor@random_init@n_random`
     containing a value for the random effects.
 
     v
@@ -495,24 +482,21 @@ class mixed :
     corresponds to the random effects likelihood
     being constant w.r.t. :math:`( \theta , u )`.
 
-    {xsrst_children
+    {xrst_toc_hidden
         example/python/mixed/ran_likelihood_xam.py
     }
     Example
     *******
-    :ref:`mixed_ran_likelihood_xam_py<mixed_ran_likelihood_xam_py>`
+    :ref:`mixed_ran_likelihood_xam_py`
 
-    {xsrst_end mixed_ran_likelihood}
+    {xrst_end mixed_ran_likelihood}
     -------------------------------------------------------------------------
-    {xsrst_begin mixed_optimize_fixed}
-    .. include:: ../preamble.rst
-    {xsrst_spell
+    {xrst_begin mixed_optimize_fixed}
+    {xrst_spell
         ipopt
-        \n
         iter
         cppad
         rcv
-        \infty
     }
 
     Optimize The Fixed Effects
@@ -520,7 +504,7 @@ class mixed :
 
     Syntax
     ******
-    {xsrst_file
+    {xrst_literal
         # BEGIN_OPTIMIZE_FIXED
         # END_OPTIMIZE_FIXED
     }
@@ -537,7 +521,7 @@ class mixed :
     If there are no random effects,
     there is no Laplace approximation of the integral above, and
     this routine maximizes :math:`\B{p} ( z | \theta ) \B{p} ( \theta )` ;
-    see :ref:`mixed_fix_likelihood`.
+    see :ref:`@mixed_fix_likelihood`.
     It also is no data, this routine maximizes :math:`\B{p} ( \theta )`.
 
 
@@ -559,8 +543,8 @@ class mixed :
     fix_constraint_lower (fix_constraint_upper)
     *******************************************
     has length equal to the
-    :ref:`py_fun_property.size_range` for the
-    :ref:`mixed_fix_constraint`
+    :ref:`py_fun_property@size_range` for the
+    :ref:`@mixed_fix_constraint`
     and is the corresponding lower (upper) limit.
 
     random_lower (random_upper)
@@ -574,7 +558,7 @@ class mixed :
     optimization of the fixed (random) effects.
     If *fixed_in* (*random_in*) is ``None``, the value
     *fixed_init* (*random_init*) is used; see
-    :ref:`mixed_ctor.fixed_init`, :ref:`mixed_ctor.random_init` .
+    :ref:`mixed_ctor@fixed_init`, :ref:`mixed_ctor@random_init` .
 
     fixed_scale
     ***********
@@ -623,7 +607,7 @@ class mixed :
     If the string option is ``derivative_test``, *value* can be
     ``none``, ``first-order``, ``second-order``, ``only-second-order``.
     If second order derivatives are tested,
-    :ref:`quasi_fixed<mixed_ctor.quasi_fixed>` must be false.
+    :ref:`quasi_fixed<mixed_ctor@quasi_fixed>` must be false.
     In addition to the standard ipopt options above, *value* can be
     ``adaptive`` or ``trace-adaptive`` which uses a special derivative
     tester that adapts its step sizes for each argument component.
@@ -683,19 +667,19 @@ class mixed :
     The value *solution*\ ``.ran_con_lag`` is a Lagrange multipliers for the
     rand effects constraint function.
     Its length is the same as the random constrain matrix :math:`A` ; see
-    :ref:`A_rcv<mixed_ctor.A_rcv>`.
+    :ref:`A_rcv<mixed_ctor@A_rcv>`.
 
-    {xsrst_children
+    {xrst_toc_hidden
         example/python/mixed/optimize_fixed_1.py
         example/python/mixed/optimize_fixed_2.py
     }
     Examples
     ********
 
-    - :ref:`mixed_optimize_fixed_1_py`
-    - :ref:`mixed_optimize_fixed_2_py`
+    - :ref:`@mixed_optimize_fixed_1_py`
+    - :ref:`@mixed_optimize_fixed_2_py`
 
-    {xsrst_end mixed_optimize_fixed}
+    {xrst_end mixed_optimize_fixed}
     """
     def optimize_fixed(
         self,
@@ -795,9 +779,8 @@ class mixed :
         return solution
     """
     -------------------------------------------------------------------------
-    {xsrst_begin mixed_optimize_random}
-    .. include:: ../preamble.rst
-    {xsrst_spell
+    {xrst_begin mixed_optimize_random}
+    {xrst_spell
         ipopt
     }
 
@@ -806,7 +789,7 @@ class mixed :
 
     Syntax
     ******
-    {xsrst_file
+    {xrst_literal
         # BEGIN_OPTIMIZE_RANDOM
         # END_OPTIMIZE_RANDOM
     }
@@ -814,7 +797,7 @@ class mixed :
     Purpose
     *******
     Given a value for the fixed effects :math:`\theta`,
-    this routine maximizes the :ref:`mixed_ran_likelihood`
+    this routine maximizes the :ref:`@mixed_ran_likelihood`
     with respect to the fixed effect :math:`u`; i.e.,
 
     .. math::
@@ -847,7 +830,7 @@ class mixed :
     has length *n_random* and is the initial value used during
     optimization of the random effects.
     If *random_in* is ``None`` the value *random_init* is used; see
-    :ref:`mixed_ctor.random_init` .
+    :ref:`mixed_ctor@random_init` .
 
     random_opt
     **********
@@ -858,9 +841,9 @@ class mixed :
     Examples
     ********
 
-    - :ref:`mixed_optimize_random`
+    - :ref:`@mixed_optimize_random`
 
-    {xsrst_end mixed_optimize_random}
+    {xrst_end mixed_optimize_random}
     """
     def optimize_random(
         self,
@@ -922,12 +905,9 @@ class mixed :
         return random_opt
     """
     -------------------------------------------------------------------------
-    {xsrst_begin mixed_hes_fixed_obj}
-    .. include:: ../preamble.rst
-    {xsrst_spell
-        hes_obj_rcv
-        \hat
-        \infty
+    {xrst_begin mixed_hes_fixed_obj}
+    {xrst_spell
+        hes obj rcv
     }
 
     Hessian of Fixed Effects Objective
@@ -935,7 +915,7 @@ class mixed :
 
     Syntax
     ******
-    {xsrst_file
+    {xrst_literal
         # BEGIN_HES_FIXED_OBJ
         # END_HES_FIXED_OBJ
     }
@@ -983,11 +963,11 @@ class mixed :
 
     Examples
     ********
-    {xsrst_child_list
+    {xrst_toc_list
         example/python/mixed/hes_fixed_obj_xam.py
     }
 
-    {xsrst_end mixed_hes_fixed_obj}
+    {xrst_end mixed_hes_fixed_obj}
     """
     def hes_fixed_obj(
         self,
@@ -1031,10 +1011,9 @@ class mixed :
         )
     """
     -------------------------------------------------------------------------
-    {xsrst_begin mixed_hes_random_obj}
-    .. include:: ../preamble.rst
-    {xsrst_spell
-        hes_obj_rcv
+    {xrst_begin mixed_hes_random_obj}
+    {xrst_spell
+        hes obj rcv
     }
 
     Hessian of Random Effects Objective
@@ -1042,7 +1021,7 @@ class mixed :
 
     Syntax
     ******
-    {xsrst_file
+    {xrst_literal
         # BEGIN_HES_RANDOM_OBJ
         # END_HES_RANDOM_OBJ
     }
@@ -1053,7 +1032,7 @@ class mixed :
     and the corresponding random effects :math:`u` .
     This routine the hessian, with respect to the random effects,
     of the negative log of random effects objective; i.e.,
-    :ref:`ran_likelihood <mixed_ran_likelihood.ran_likelihood>`
+    :ref:`ran_likelihood <mixed_ran_likelihood@ran_likelihood>`
 
     .. math::
         \B{p} ( y | \theta , u ) \B{p}( u | \theta ) \B{d} u
@@ -1086,11 +1065,11 @@ class mixed :
 
     Examples
     ********
-    {xsrst_child_list
+    {xrst_toc_list
         example/python/mixed/hes_random_obj_xam.py
     }
 
-    {xsrst_end mixed_hes_random_obj}
+    {xrst_end mixed_hes_random_obj}
     """
     def hes_random_obj(
         self,

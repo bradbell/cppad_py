@@ -1,17 +1,15 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin py_fun_forward}
+# {xrst_begin py_fun_forward}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   xp
 #   yp
 #   xp
@@ -38,20 +36,20 @@
 # f
 # *
 # This is either a
-# :ref:`d_fun<py_fun_ctor.syntax.d_fun>` or
-# :ref:`a_fun<py_fun_ctor.syntax.a_fun>` function object.
+# :ref:`d_fun<py_fun_ctor@syntax@d_fun>` or
+# :ref:`a_fun<py_fun_ctor@syntax@a_fun>` function object.
 # Note that its state is changed by this operation because
 # all the Taylor coefficient that it calculates for every
 # variable in recording are stored.
 # See more discussion of this fact under the heading
-# :ref:`p<py_fun_forward.p>` below.
+# :ref:`p<py_fun_forward@p>` below.
 #
 # f(x)
 # ****
 # We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
 # for the function corresponding to *f* .
-# Note that *n* is the size of :ref:`ax<py_fun_ctor.ax>`
-# and *m* is the size of :ref:`ay<py_fun_ctor.ay>`
+# Note that *n* is the size of :ref:`ax<py_fun_ctor@ax>`
+# and *m* is the size of :ref:`ay<py_fun_ctor@ay>`
 # in to the constructor for *f* .
 #
 # X(t)
@@ -78,7 +76,7 @@
 # size_order
 # ==========
 # After this call,
-# :ref:`f_size_order()<py_fun_property.size_order>` is *p* +1 .
+# :ref:`f_size_order()<py_fun_property@size_order>` is *p* +1 .
 #
 # xp
 # **
@@ -93,14 +91,14 @@
 # and size *m* .
 # It is the *p*-th order Taylor coefficients for :math:`Y(t)`.
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/core/fun_forward_xam.py
 # }
 # Example
 # *******
-# :ref:`fun_forward_xam_py<fun_forward_xam_py>`
+# :ref:`fun_forward_xam_py`
 #
-# {xsrst_end py_fun_forward}
+# {xrst_end py_fun_forward}
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy

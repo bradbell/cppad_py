@@ -1,57 +1,57 @@
 -----------------------------------------------------------------------------
-{xsrst_begin_parent configure}
+{xrst_begin_parent configure}
 
-Example xsrst Configuration Files
+Example xrst Configuration Files
 #################################
 
 
-{xsrst_end configure}
+{xrst_end configure}
 -----------------------------------------------------------------------------
-{xsrst_begin conf_py}
+{xrst_begin conf_py}
 
 The conf.py Example File
 ########################
-{xsrst_file
+{xrst_literal
     # BEGIN conf.py
     # END conf.py
     sphinx/conf.py
 }
 
-{xsrst_end conf_py}
+{xrst_end conf_py}
 -----------------------------------------------------------------------------
-{xsrst_begin spelling}
+{xrst_begin spelling}
 
 The spelling Example File
 #########################
-{xsrst_file
+{xrst_literal
     # BEGIN spelling
     # END spelling
     sphinx/spelling
 }
 
-{xsrst_end spelling}
+{xrst_end spelling}
 -----------------------------------------------------------------------------
-{xsrst_begin keyword}
+{xrst_begin keyword}
 
 The keyword Example File
 ########################
-{xsrst_file
+{xrst_literal
     # BEGIN keyword
     # END keyword
     sphinx/keyword
 }
 
-{xsrst_end keyword}
+{xrst_end keyword}
 -----------------------------------------------------------------------------
-{xsrst_begin preamble_rst}
+{xrst_begin preamble_rst}
 
 The preamble.rst Example File
 #############################
-{xsrst_file
+{xrst_literal
     comment BEGIN preamble.rst
     comment END preamble.rst
     sphinx/preamble.rst
 }
 
-{xsrst_end preamble_rst}
+{xrst_end preamble_rst}
 -----------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -8,12 +8,9 @@
 # mixed ran_likelihood
 # -----------------------------------------------------------------------------
 '''
-{xsrst_begin mixed_ran_likelihood_xam_py}
-{xsrst_spell
-    \hat
+{xrst_begin mixed_ran_likelihood_xam_py}
+{xrst_spell
 }
-
-.. include:: ../preamble.rst
 
 ran_likelihood: Example and Test
 ################################
@@ -87,12 +84,12 @@ it equal to zero, the optimal fixed effects
     \\
     \hat{\theta} & = (y - \bar{y})^2 - \sigma^2
 
-{xsrst_file
+{xrst_literal
     # BEGIN SOURCE
     # END SOURCE
 }
 
-{xsrst_end mixed_ran_likelihood_xam_py}
+{xrst_end mixed_ran_likelihood_xam_py}
 '''
 # BEGIN SOURCE
 def ran_likelihood_xam() :

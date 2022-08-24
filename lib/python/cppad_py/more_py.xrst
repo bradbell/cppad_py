@@ -5,11 +5,9 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin more_py}
+{xrst_begin more_py}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
     adynamic
     mhelp
@@ -23,10 +21,10 @@ Purpose
 *******
 This section outlines the steps for adding more python functionality
 to cppad_py.
-This is done by example showing how the :ref:`py_fun_new_dynamic<py_fun_new_dynamic>` was added.
+This is done by example showing how the :ref:`py_fun_new_dynamic` was added.
 This example case was chosen because it required both changing one
-python function, :ref:`py_independent<py_independent>`,
-and adding a new python function, :ref:`py_fun_new_dynamic<py_fun_new_dynamic>`.
+python function, :ref:`py_independent`,
+and adding a new python function, :ref:`py_fun_new_dynamic`.
 
 Documentation
 *************
@@ -39,11 +37,11 @@ was edited to add the following syntax documentation:
 | |tab| ( *ax* , *adynamic* ) =  ``cppad_py::independent`` ( *x* , *dynamic* )
 
 and the extra return value was documented; see
-:ref:`adynamic<py_independent.adynamic>`.
+:ref:`adynamic<py_independent@adynamic>`.
 
 new_dynamic
 ===========
-The :ref:`cpp_fun_new_dynamic<cpp_fun_new_dynamic>` documentation was added
+The :ref:`cpp_fun_new_dynamic` documentation was added
 in the file ``lib/python/cppad_py/fun_new_dynamic.py`` .
 In addition, the OMhelp command
 
@@ -54,14 +52,14 @@ was added to the file ``lib/python/cppad_py/fun.py`` .
 Example
 =======
 An example file was added to the documentation,
-below the :ref:`py_independent<py_independent>` section, using the OMhelp commands:
+below the :ref:`py_independent` section, using the OMhelp commands:
 
-| |tab| { ``xsrst_dollar}children%``
+| |tab| { ``xrst_dollar}children%``
 | |tab| |tab| ``example/python/core/fun_dynamic_xam.py``
-| |tab| ``%${xsrst_dollar`` }
+| |tab| ``%${xrst_dollar`` }
 
 In addition, a reference to this example was added under the
-:ref:`example<py_independent.example>` heading in the ``independent``
+:ref:`example<py_independent@example>` heading in the ``independent``
 documentation.
 
 Implementation
@@ -71,7 +69,7 @@ independent
 ===========
 The ``independent`` function in ``lib/python/cppad_py/independent.py``
 was changed to handle dynamic parameters as follows:
-{xsrst_file
+{xrst_literal
     # BEGIN_INDEPENDENT_SOURCE
     # END_INDEPENDENT_SOURCE
     lib/python/cppad_py/independent.py
@@ -82,10 +80,10 @@ new_dynamic
 The following function declaration was added to the
 ``d_fun`` class
 in the ``lib/python/cppad_py/fun.py`` file:
-{xsrst_code py}
+{xrst_code py}
     def new_dynamic(self, dynamic) :
         return cppad_py.d_fun_new_dynamic(self.f, dynamic)
-{xsrst_code}
+{xrst_code}
 A similar declaration was added to the ``a_fun`` class.
 
 fun_new_dynamic.py
@@ -105,7 +103,7 @@ Example
 *******
 The file ``example/python/core/fun_dynamic_xam.py`` was added
 with the following contents:
-:ref:`fun_dynamic_xam_py<fun_dynamic_xam_py>`.
+:ref:`fun_dynamic_xam_py`.
 In addition, in the file
 
 | |tab| ``example/python/check_all.py.in``
@@ -136,4 +134,4 @@ you can just re-run that step to see if a particular fix works.
 Once the tests were working, the changes where checked into using
 ``git`` .
 
-{xsrst_end more_py}
+{xrst_end more_py}

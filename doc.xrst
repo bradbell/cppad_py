@@ -5,9 +5,7 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin cppad_py}
-
-.. include:: ../preamble.rst
+{xrst_begin cppad_py}
 
 .. comment:  -------------------------------------------------------------
     default automatic indexing command for all cppad_py documentation
@@ -15,7 +13,7 @@
 .. comment:  -------------------------------------------------------------
     Latex macros used throughout Cppad Py documentation
 
-{xsrst_spell
+{xrst_spell
     cppad
     txt
     gpl
@@ -35,30 +33,30 @@ Purpose
 *******
 
 #.  Provide a connection from Python to the
-    Algorithmic Differentiation (AD) package Cppad; see :ref:`py_lib<py_lib>`.
-#.  Provide an AD object library; see :ref:`cpp_lib<cpp_lib>`.
+    Algorithmic Differentiation (AD) package Cppad; see :ref:`py_lib`.
+#.  Provide an AD object library; see :ref:`cpp_lib`.
 #.  Provide a concrete example of how
     `cppad_swig <https://github.com/bradbell/cppad_swig>`_
     can be used to connect any scripting language to CppAD.
 
 Getting Started
 ***************
-After you :ref:`configure<setup_py.configure>` and
-:ref:`install<setup_py.install>` cppad_py,
+After you :ref:`configure<setup_py@configure>` and
+:ref:`install<setup_py@install>` cppad_py,
 the following example is a good place to get started using it:
-:ref:`fun_jacobian_xam_py`.
+:ref:`@fun_jacobian_xam_py`.
 
 Numerical Examples
 ******************
 The following is a link to some numerical examples:
-:ref:`numeric_xam<numeric_xam>`.
+:ref:`numeric_xam`.
 
 C++ Function Speed
 ******************
 One can use Cppad Py to get faster function evaluation in scripting Python,
 when the sequence of floating point operations does not depend on the
 independent variables.
-Once an :ref:`py_fun<py_fun>` is recorded, zero order
+Once an :ref:`py_fun` is recorded, zero order
 :ref:`forward_mode<py_fun_forward>` can be used to
 effectively evaluate the function in C++ instead of Python.
 
@@ -70,11 +68,11 @@ GNU General Public License version 3.0 or later see
 
 Children
 ********
-{xsrst_child_table
+{xrst_toc_table
     setup.py
     example/python/numeric/numeric.xrst
     lib/library.xrst
     whats_new/release_notes.xrst
 }
 
-{xsrst_end cppad_py}
+{xrst_end cppad_py}

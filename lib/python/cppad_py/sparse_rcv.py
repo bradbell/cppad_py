@@ -1,17 +1,15 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin py_sparse_rcv}
+# {xrst_begin py_sparse_rcv}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   rcv
 #   nnz
 #   cppad
@@ -139,14 +137,14 @@
 # This routine generates an assert if there are two entries with the same
 # row and column values (if ``NDEBUG`` is not defined).
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/core/sparse_rcv_xam.py
 # }
 # Example
 # *******
-# :ref:`sparse_rcv_xam_py<sparse_rcv_xam_py>`
+# :ref:`sparse_rcv_xam_py`
 #
-# {xsrst_end py_sparse_rcv}
+# {xrst_end py_sparse_rcv}
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy

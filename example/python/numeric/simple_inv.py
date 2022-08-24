@@ -72,13 +72,11 @@ def simple_inv(A) :
     return Ainv
 # END_PYTHON
 #
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin numeric_simple_inv}
+# {xrst_begin numeric_simple_inv}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   ainv
 # }
 #
@@ -102,21 +100,21 @@ def simple_inv(A) :
 # ****
 # This is the matrix inverse of *A* .
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/numeric/simple_inv_xam.py
 # }
 # Example
 # *******
-# :ref:`numeric_simple_inv_xam_py<numeric_simple_inv_xam_py>`
+# :ref:`numeric_simple_inv_xam_py`
 #
 # Source Code
 # ***********
 # When viewing the source code below it is important to know that
 # optimizes out multiplication by the constant one while recording a function.
 # It also optimizes out both addition and multiplication by the constant zero.
-# {xsrst_file
+# {xrst_literal
 #   # BEGIN_PYTHON
 #   # END_PYTHON
 # }
 #
-# {xsrst_end numeric_simple_inv}
+# {xrst_end numeric_simple_inv}

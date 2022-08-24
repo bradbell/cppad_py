@@ -29,7 +29,7 @@ Spell Command
 
 Syntax
 ******
-``{xsrst_spell`` *word_1* ...  *word_n* :code:`}`
+``\{xrst_spell`` *word_1* ...  *word_n* :code:`}`
 
 Here *word_1*, ..., *word_n* is the special list of words for this section.
 In the syntax above the list of words is all in one line,
@@ -52,7 +52,7 @@ Purpose
 You can specify a special list of words
 (not normally considered correct spelling)
 for the current section using the command above at the
-:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
+:ref:`beginning of a line<xrst_py@notation@beginning_of_a_line>`.
 
 .. meta::
    :keywords: spelling
@@ -64,7 +64,7 @@ for the current section using the command above at the
 spelling
 ********
 The list of words in
-:ref:`spelling<xsrst_py.command_line_arguments.spelling>`
+:ref:`spelling<xrst_py@command_line_arguments@spelling>`
 are considered correct spellings for all sections.
 The latex commands corresponding to the letters in the greek alphabet
 are automatically added to this list.
@@ -108,8 +108,8 @@ the same word twice (next to each other) in the special word list.
 Example
 *******
 
--  :ref:`spell_exam`
+-  :ref:`@spell_exam`
 
 ----
 
-xsrst input file: ``bin/xsrst.py``
+xrst input file: ``bin/xrst.py``

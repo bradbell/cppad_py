@@ -24,7 +24,7 @@ No Parent Result
 The file ``children.py`` does not contain a begin parent command
 and hence all the sections in that file are children of this section.
 The source code for this example is indented similar to the
-:ref:`indent_exam`.
+:ref:`@indent_exam`.
 
 .. meta::
    :keywords: children.py, file
@@ -35,7 +35,7 @@ The source code for this example is indented similar to the
 
 children.py File
 ****************
-Go to the heading :ref:`This File<children_exam.this_file>` in
+Go to the heading :ref:`This File<children_exam@this_file>` in
 the children_exam section linked below:
 
 .. meta::
@@ -48,8 +48,8 @@ the children_exam section linked below:
 Child Link children.py
 **********************
 
--  :ref:`children_exam`
--  :ref:`children_other`
+-  :ref:`@children_exam`
+-  :ref:`@children_other`
 
 .. meta::
    :keywords: example
@@ -60,8 +60,8 @@ Child Link children.py
 
 Example
 *******
-:ref:`no_parent_exam`
+:ref:`@no_parent_exam`
 
 ----
 
-xsrst input file: ``sphinx/test_in/no_parent.xrst``
+xrst input file: ``sphinx/test_in/no_parent.xrst``

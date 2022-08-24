@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -48,19 +48,17 @@ def vector_set_get_xam() :
 #
 # END SOURCE
 #
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin vector_set_get_xam_py}
+# {xrst_begin vector_set_get_xam_py}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 # }
 # Python: Setting and Getting Vector Elements: Example and Test
 # #############################################################
-# {xsrst_file
+# {xrst_literal
 #   # BEGIN SOURCE
 #   # END SOURCE
 # }
-# {xsrst_end vector_set_get_xam_py}
+# {xrst_end vector_set_get_xam_py}
 #

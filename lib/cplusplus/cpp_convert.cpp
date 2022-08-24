@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
-            Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+            Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
@@ -9,8 +9,8 @@
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin_parent cpp_convert}
-{xsrst_spell
+{xrst_begin_parent cpp_convert}
+{xrst_spell
     cppad
 }
 
@@ -19,16 +19,14 @@ Convert Objects Between cppad_mixed and cppad_py
 
 Children
 ********
-{xsrst_child_table
+{xrst_toc_table
 }
 
-{xsrst_end cpp_convert}
+{xrst_end cpp_convert}
 -------------------------------------------------------------------------------
-{xsrst_begin ad_vec_std2cppad}
+{xrst_begin ad_vec_std2cppad}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
 }
 
@@ -42,12 +40,12 @@ Syntax
 
 Prototype
 *********
-{xsrst_file
+{xrst_literal
     // BEGIN_AD_VEC_STD2CPPAD
     // END_AD_VEC_STD2CPPAD
 }
 
-{xsrst_end ad_vec_std2cppad}
+{xrst_end ad_vec_std2cppad}
 */
 
 // BEGIN_AD_VEC_STD2CPPAD
@@ -61,11 +59,9 @@ ad_vec_std2cppad(const std::vector<a_double>& v_in )
 }
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin ad_vec_cppad2std}
+{xrst_begin ad_vec_cppad2std}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
 }
 
@@ -79,12 +75,12 @@ Syntax
 
 Prototype
 *********
-{xsrst_file
+{xrst_literal
     // BEGIN_AD_VEC_CPPAD2STD
     // END_AD_VEC_CPPAD2STD
 }
 
-{xsrst_end ad_vec_cppad2std}
+{xrst_end ad_vec_cppad2std}
 */
 
 // BEGIN_AD_VEC_CPPAD2STD
@@ -98,11 +94,9 @@ ad_vec_cppad2std(const CppAD::vector< CppAD::AD<double> >& v_in )
 }
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin d_vec_std2cppad}
+{xrst_begin d_vec_std2cppad}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
 }
 
@@ -116,12 +110,12 @@ Syntax
 
 Prototype
 *********
-{xsrst_file
+{xrst_literal
     // BEGIN_D_VEC_STD2CPPAD
     // END_D_VEC_STD2CPPAD
 }
 
-{xsrst_end d_vec_std2cppad}
+{xrst_end d_vec_std2cppad}
 */
 
 // BEGIN_D_VEC_STD2CPPAD
@@ -135,11 +129,9 @@ d_vec_std2cppad(const std::vector<double>& v_in )
 }
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin d_vec_cppad2std}
+{xrst_begin d_vec_cppad2std}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
 }
 
@@ -153,12 +145,12 @@ Syntax
 
 Prototype
 *********
-{xsrst_file
+{xrst_literal
     // BEGIN_D_VEC_CPPAD2STD
     // END_D_VEC_CPPAD2STD
 }
 
-{xsrst_end d_vec_cppad2std}
+{xrst_end d_vec_cppad2std}
 */
 
 // BEGIN_D_VEC_CPPAD2STD
@@ -173,13 +165,11 @@ d_vec_cppad2std(const CppAD::vector<double>& v_in )
 
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin mixed2sparse_rcv}
-{xsrst_spell
+{xrst_begin mixed2sparse_rcv}
+{xrst_spell
     cppad
     rcv
 }
-
-.. include:: ../preamble.rst
 
 Convert Sparse Matrix from cppad_mixed to cppad_py
 ##################################################
@@ -191,7 +181,7 @@ Syntax
 
 Prototype
 *********
-{xsrst_file
+{xrst_literal
     // BEGIN_MIXED2SPARSE_RCV
     // END_MIXED2SPARSE_RCV
 }
@@ -199,9 +189,9 @@ Prototype
 Restriction
 ***********
 This routine is only available when
-:ref:`include_mixed <get_cppad_sh.settings.include_mixed>` is true.
+:ref:`include_mixed <get_cppad_sh@settings@include_mixed>` is true.
 
-{xsrst_end mixed2sparse_rcv}
+{xrst_end mixed2sparse_rcv}
 */
 # ifdef INCLUDE_MIXED
 // BEGIN_MIXED2SPARSE_RCV

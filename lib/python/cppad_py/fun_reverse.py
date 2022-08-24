@@ -1,17 +1,15 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin py_fun_reverse}
+# {xrst_begin py_fun_reverse}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   xq
 #   yq
 # }
@@ -26,8 +24,8 @@
 # f
 # *
 # This is either a
-# :ref:`d_fun<py_fun_ctor.syntax.d_fun>` or
-# :ref:`a_fun<py_fun_ctor.syntax.a_fun>` function object
+# :ref:`d_fun<py_fun_ctor@syntax@d_fun>` or
+# :ref:`a_fun<py_fun_ctor@syntax@a_fun>` function object
 # and is effectively constant; i.e., not changed.
 #
 # Notation
@@ -37,14 +35,14 @@
 # ====
 # We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
 # for the function corresponding to *f* .
-# Note that *n* is the size of :ref:`ax<py_fun_ctor.ax>`
-# and *m* is the size of :ref:`ay<py_fun_ctor.ay>`
+# Note that *n* is the size of :ref:`ax<py_fun_ctor@ax>`
+# and *m* is the size of :ref:`ay<py_fun_ctor@ay>`
 # in to the constructor for *f* .
 #
 # X(t), S
 # =======
 # This is the same function as
-# :ref:`x(t)<py_fun_forward.x(t)>` in the previous call to
+# :ref:`x(t)<py_fun_forward@x(t)>` in the previous call to
 # *f*\ ``.forward`` .
 # We use :math:`S \in \B{R}^{n \times q}` to denote the Taylor coefficients
 # of :math:`X(t)`.
@@ -52,7 +50,7 @@
 # Y(t), T
 # =======
 # This is the same function as
-# :ref:`y(t)<py_fun_forward.y(t)>` in the previous call to
+# :ref:`y(t)<py_fun_forward@y(t)>` in the previous call to
 # *f*\ ``.forward`` .
 # We use :math:`T \in \B{R}^{m \times q}` to denote the Taylor coefficients
 # of :math:`Y(t)`.
@@ -72,7 +70,7 @@
 # that we are computing the derivative with respect to.
 # It must be greater than zero, and less than or equal
 # the number of Taylor coefficient stored in *f* ; i.e.,
-# :ref:`f_size_order()<py_fun_property.size_order>`.
+# :ref:`f_size_order()<py_fun_property@size_order>`.
 #
 # yq
 # **
@@ -96,14 +94,14 @@
 # the partial derivative of
 # :math:`G(T(S))` w.r.t. :math:`S_j^{(k)} (t) / k !`.
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/core/fun_reverse_xam.py
 # }
 # Example
 # *******
-# :ref:`fun_reverse_xam_py<fun_reverse_xam_py>`
+# :ref:`fun_reverse_xam_py`
 #
-# {xsrst_end py_fun_reverse}
+# {xrst_end py_fun_reverse}
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy

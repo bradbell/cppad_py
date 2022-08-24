@@ -5,19 +5,17 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin cpp_lib}
-
-.. include:: ../preamble.rst
+{xrst_begin cpp_lib}
 
 The C++ Library
 ###############
 
 Children
 ********
-{xsrst_child_table
+{xrst_toc_table
     lib/cplusplus/cppad_error.cpp
     lib/cplusplus/cplusplus.xrst
     lib/cplusplus/more_cpp.xrst
 }
 
-{xsrst_end cpp_lib}
+{xrst_end cpp_lib}

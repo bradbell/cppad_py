@@ -5,16 +5,14 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin numeric_xam}
-
-.. include:: ../preamble.rst
+{xrst_begin numeric_xam}
 
 Numerical Examples
 ##################
 
 Children
 ********
-{xsrst_child_table
+{xrst_toc_table
     example/python/numeric/simple_inv.py
     example/python/numeric/runge4_step.py
     example/python/numeric/rosen3_step.py
@@ -24,4 +22,4 @@ Children
     example/python/numeric/covid_19_xam.py
 }
 
-{xsrst_end numeric_xam}
+{xrst_end numeric_xam}

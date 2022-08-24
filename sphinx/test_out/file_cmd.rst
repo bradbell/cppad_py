@@ -8,8 +8,6 @@ file_cmd
 
    file_exam
 
-.. include:: ../preamble.rst
-
 .. meta::
    :keywords: file_cmd, file, command
 
@@ -32,12 +30,12 @@ File Command
 Syntax
 ******
 
-| ``{xsrst_file``
+| ``\{xrst_literal``
 | |tab| *start*
 | |tab| *stop*
 | :code:`}`
 |
-| ``{xsrst_file``
+| ``\{xrst_literal``
 | |tab| *start*
 | |tab| *stop*
 | |tab| *file_name*
@@ -54,7 +52,7 @@ Purpose
 *******
 A code block, from any where in any file,
 is included by the command above at the
-:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
+:ref:`beginning of a line<xrst_py@notation@beginning_of_a_line>`.
 
 .. meta::
    :keywords: white, space
@@ -81,7 +79,7 @@ file_name
 If *file_name* is not in the syntax,
 the code block is in the current input file.
 Otherwise, the code block is in *file_name*.
-This file name is relative to the directory where ``xsrst.py``
+This file name is relative to the directory where ``xrst.py``
 is executed; i.e., the top directory for this git repository.
 This may seem verbose, but it makes it easier to write scripts
 that move files and automatically change references to them.
@@ -139,8 +137,8 @@ Spell checking is **not** done for these code blocks.
 Example
 *******
 
--  :ref:`file_exam`
+-  :ref:`@file_exam`
 
 ----
 
-xsrst input file: ``bin/xsrst.py``
+xrst input file: ``bin/xrst.py``

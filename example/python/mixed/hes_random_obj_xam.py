@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -8,13 +8,9 @@
 # mixed hes_random_obj_xam
 # -----------------------------------------------------------------------------
 '''
-{xsrst_begin mixed_hes_random_obj_xam_py}
-{xsrst_spell
-    \cdots
-    \mod
+{xrst_begin mixed_hes_random_obj_xam_py}
+{xrst_spell
 }
-
-.. include:: ../preamble.rst
 
 ran_likelihood: Example and Test
 ################################
@@ -57,15 +53,14 @@ w.r.t the random effects :math:`u_{i+1 \mod m}` we obtain
 
 .. math::
 
-    \theta_i
 
 
-{xsrst_file
+{xrst_literal
     # BEGIN SOURCE
     # END SOURCE
 }
 
-{xsrst_end mixed_hes_random_obj_xam_py}
+{xrst_end mixed_hes_random_obj_xam_py}
 '''
 # BEGIN SOURCE
 def hes_random_obj_xam() :

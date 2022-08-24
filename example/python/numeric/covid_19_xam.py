@@ -5,13 +5,11 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin numeric_covid_19_xam_py}
+# {xrst_begin numeric_covid_19_xam_py}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   lcr
 #   cv
 #   covid
@@ -75,14 +73,14 @@
 # :math:`\chi(t)`,
 # :math:`\delta(t)`,
 # constant functions with known values:
-# {xsrst_code py}
+# {xrst_code py}
 alpha_known  = 0.95
 sigma_known  = 0.2
 gamma_known  = 0.1
 chi_known    = 0.1
 xi_known     = 0.00
 delta_known  = 0.2
-# {xsrst_code}
+# {xrst_code}
 # All of theses rates must be non-negative.
 #
 # Initial Values
@@ -119,11 +117,11 @@ delta_known  = 0.2
 # In addition, we can choose *ode_n_step* ,
 # the number of step to take for each time interval in *t_all* ,
 # before it is sub-sampled using the
-# :ref:`sample_interval<numeric_covid_19_xam_py.data.sample_interval>`.
-# {xsrst_code py}
+# :ref:`sample_interval<numeric_covid_19_xam_py@data@sample_interval>`.
+# {xrst_code py}
 ode_method = 'runge4'
 ode_n_step = 4
-# {xsrst_code}
+# {xrst_code}
 #
 # Unknown Parameters
 # ******************
@@ -133,9 +131,9 @@ ode_n_step = 4
 #
 #    x = [ m_0, m_1, m_2, I(0), W(0), \bar{\beta} ]
 #
-# {xsrst_code py}
+# {xrst_code py}
 x_name = [ 'm_mobility', 'm_testing', 'm_stime', 'I(0)', 'W(0)', 'beta_bar' ]
-# {xsrst_code}
+# {xrst_code}
 #
 # Maximum Likelihood
 # ==================
@@ -173,19 +171,19 @@ x_name = [ 'm_mobility', 'm_testing', 'm_stime', 'I(0)', 'W(0)', 'beta_bar' ]
 # =============
 # The following actual upper and lower bounds for the unknown parameters
 # are used as an as an aid to the optimizer:
-# {xsrst_file
+# {xrst_literal
 #   # BEGIN_ACTUAL_BOUNDS
 #   # END_ACTUAL_BOUNDS
 # }
 # where *x_sim* is the
-# :ref:`simulation<numeric_covid_19_xam_py.data.simulation>` value
+# :ref:`simulation<numeric_covid_19_xam_py@data@simulation>` value
 # for the unknown parameters and *actual_bound_factor* is chosen below.
 # The problem has not really been solved if bounds,
 # other than the model bounds above, are active at the solution of the
 # optimization problem.
-# {xsrst_code py}
+# {xrst_code py}
 actual_bound_factor = 5.0
-# {xsrst_code}
+# {xrst_code}
 #
 # Data
 # ****
@@ -204,9 +202,9 @@ actual_bound_factor = 5.0
 # The covariate data is averaged over the sample interval.
 # The *sample_interval* must be either one or a positive even integer
 # (even so an original data point corresponds to the center of the interval).
-# {xsrst_code py}
+# {xrst_code py}
 sample_interval = 1
-# {xsrst_code}
+# {xrst_code}
 #
 # data_file
 # =========
@@ -216,11 +214,11 @@ sample_interval = 1
 # *day* , *death* , *mobility* , *testing* .
 # In this case the data file is used for the
 # cumulative death and corresponding covariates.
-# {xsrst_code py}
+# {xrst_code py}
 data_file = '/home/bradbell/Downloads/561.csv'         # Pennsylvania
 data_file = '/home/bradbell/trash/covid_19/seirwd.csv' # New York
 data_file = ''                                         # empty string
-# {xsrst_code}
+# {xrst_code}
 #
 # Coefficient of Variation
 # ========================
@@ -232,26 +230,26 @@ data_file = ''                                         # empty string
 # identified using perfect data.
 # For real data (when *data_file* is not empty)
 # this value should be adjusted so that the average residual has variance one.
-# {xsrst_code py}
+# {xrst_code py}
 death_data_cv = 0.25
-# {xsrst_code}
+# {xrst_code}
 # Note this is the noise level in the original data before it is
 # sub-sampled using
-# :ref:`sample_interval<numeric_covid_19_xam_py.data.sample_interval>`.
+# :ref:`sample_interval<numeric_covid_19_xam_py@data@sample_interval>`.
 #
 # Simulation
 # ==========
 # If *data_file* is the empty string, the data is simulated using
 # the following values for the
-# :ref:`unknown_parameters<numeric_covid_19_xam_py.unknown_parameters>`:
-# {xsrst_code py}
+# :ref:`unknown_parameters<numeric_covid_19_xam_py@unknown_parameters>`:
+# {xrst_code py}
 m_mobility_sim    =   1.0  # m_0
 m_testing_sim     = - 1.0  # m_1
 m_stime_sim       = - 1.0  # m_2
 I0_sim            =  2e-5  # I(0)
 W0_sim            =  2e-5  # W(0)
 beta_bar_sim      =  2.0   # baseline value for beta
-# {xsrst_code}
+# {xrst_code}
 #
 # Weighted Residuals
 # ==================
@@ -282,9 +280,9 @@ beta_bar_sim      =  2.0   # baseline value for beta
 # ***********
 # This is the random seed used to simulate noise in the data.
 # If this value is zero, the system clock is used to choose the random seed.
-# {xsrst_code py}
+# {xrst_code py}
 random_seed = 20821659074
-# {xsrst_code}
+# {xrst_code}
 #
 # Random Start
 # ************
@@ -292,17 +290,17 @@ random_seed = 20821659074
 # This is the number of random points, between the lower and upper limits,
 # that are checked. The point with the best objective value is chosen
 # as the starting point for the optimization.
-# {xsrst_code py}
+# {xrst_code py}
 n_random_start = 4000
-# {xsrst_code}
+# {xrst_code}
 #
 # Display Fit Results
 # *******************
 # If you set this variable to True,
 # a printout and a plot of the fit results is generated.
-# {xsrst_code py}
+# {xrst_code py}
 display_fit = False
-# {xsrst_code}
+# {xrst_code}
 #
 # Plot
 # ====
@@ -344,18 +342,18 @@ display_fit = False
 # Debug Output
 # ************
 # If this flag is true a lot of debugging output is printed.
-# {xsrst_code py}
+# {xrst_code py}
 debug_output = False
-# {xsrst_code}
+# {xrst_code}
 #
 # Source Code
 # ***********
-# {xsrst_file
+# {xrst_literal
 #   # BEGIN_PYTHON
 #   # END_PYTHON
 # }
 #
-# {xsrst_end numeric_covid_19_xam_py}
+# {xrst_end numeric_covid_19_xam_py}
 # BEGIN_PYTHON
 from pdb import set_trace
 from matplotlib import pyplot

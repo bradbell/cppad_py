@@ -44,4 +44,4 @@ square
 
 ----
 
-xsrst input file: ``sphinx/test_in/file.cpp``
+xrst input file: ``sphinx/test_in/file.cpp``

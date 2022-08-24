@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
-            Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+            Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
@@ -14,11 +14,9 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin cpp_independent}
+{xrst_begin cpp_independent}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
     nx
     nd
@@ -35,7 +33,7 @@ Syntax
 
 Purpose
 *******
-This starts recording :ref:`a_double<a_double>` operations.
+This starts recording :ref:`a_double` operations.
 This recording is terminated, and the information is stored,
 by calling the :ref:`d_fun_constructor<cpp_fun_ctor>`.
 It can be terminated, and the information is lost,
@@ -95,17 +93,17 @@ For *i* = 0 to *nd* -1
 
 is the *i*-th independent dynamic parameter.
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/fun_dynamic_xam.cpp
 }
 Example
 *******
 Most of the c++ ``d_fun`` examples use the *ax*
 return syntax.
-The :ref:`fun_dynamic_xam_cpp<fun_dynamic_xam_cpp>` example uses the *a_both*
+The :ref:`fun_dynamic_xam_cpp` example uses the *a_both*
 return syntax.
 
-{xsrst_end cpp_independent}
+{xrst_end cpp_independent}
 */
 std::vector<a_double> independent(const std::vector<double>& x)
 {   using CppAD::AD;
@@ -146,11 +144,9 @@ std::vector<a_double> independent(
 // END_A_BOTH_INDEPENDENT_SOURCE
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin cpp_abort_recording}
+{xrst_begin cpp_abort_recording}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
 }
 
@@ -166,25 +162,23 @@ Purpose
 This aborts the current recording (if it exists)
 started by the most recent call to :ref:`independent<cpp_independent>`.
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/fun_abort_xam.cpp
 }
 Example
 *******
 :ref:`c++<fun_abort_xam_cpp>`.
 
-{xsrst_end cpp_abort_recording}
+{xrst_end cpp_abort_recording}
 */
 void abort_recording(void)
 {   CppAD::AD<double>::abort_recording();
 }
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin cpp_fun_ctor}
+{xrst_begin cpp_fun_ctor}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     af
     cppad
 }
@@ -212,7 +206,7 @@ This argument has prototype
 | |tab| ``const vec_a_double&`` *ax*
 
 and must be the same as
-:ref:`ax<cpp_independent.ax>`
+:ref:`ax<cpp_independent@ax>`
 returned by the previous call to ``independent`` ; i.e.,
 it must be the independent variable vector.
 We use the notation *n* = *ax*\ ``.size`` ()
@@ -243,7 +237,7 @@ Empty Function
 ==============
 In the case where *ax* and *ay* have size zero,
 the function is 'empty' and all its sizes are zero; see
-:ref:`cpp_fun_property<cpp_fun_property>`.
+:ref:`cpp_fun_property`.
 
 af
 **
@@ -254,13 +248,13 @@ This result has prototype
 It has a representation of the same function as *f* .
 This object computes function and derivative values using ``a_double`` .
 Initially, there are not Taylor coefficient stored in *af* ; i.e.,
-:ref:`af_size_order()<cpp_fun_property.size_order>` is zero.
+:ref:`af_size_order()<cpp_fun_property@size_order>` is zero.
 
 Example
 *******
 All of the examples use these constructors.
 
-{xsrst_end cpp_fun_ctor}
+{xrst_end cpp_fun_ctor}
 */
 // d_fun(ax, ay)
 d_fun::d_fun(
@@ -308,11 +302,9 @@ a_fun::~a_fun(void)
 }
 /*
 ------------------------------------------------------------------------------
-{xsrst_begin cpp_fun_property}
+{xrst_begin cpp_fun_property}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     af
 }
 
@@ -332,8 +324,8 @@ Syntax
 f
 *
 This is either a
-:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` or
-:ref:`a_fun<cpp_fun_ctor.syntax.a_fun>` function object
+:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@syntax@a_fun>` function object
 and is ``const`` .
 
 size_domain
@@ -343,7 +335,7 @@ The return value has prototype
 | |tab| ``int`` *n*
 
 and is the size of the vector
-:ref:`ax<cpp_fun_ctor.ax>` in the function constructor; i.e.,
+:ref:`ax<cpp_fun_ctor@ax>` in the function constructor; i.e.,
 the number of independent variables.
 
 size_range
@@ -353,7 +345,7 @@ The return value has prototype
 | |tab| ``int`` *m*
 
 and is the size of the vector
-:ref:`ay<cpp_fun_ctor.ay>` in the function constructor; i.e.,
+:ref:`ay<cpp_fun_ctor@ay>` in the function constructor; i.e.,
 the number of dependent variables.
 
 size_var
@@ -384,21 +376,21 @@ The return value has prototype
 
 and is the number of Taylor coefficients currently stored in *f* ,
 for every variable in the operation sequence corresponding to *f* .
-These coefficients are computed by :ref:`cpp_fun_forward<cpp_fun_forward>`.
+These coefficients are computed by :ref:`cpp_fun_forward`.
 This is different from the other function properties in that it can change
 after each call to *f*\ ``.forward`` ; see
-:ref:`size_order<cpp_fun_forward.p.size_order>` in the forward mode section.
+:ref:`size_order<cpp_fun_forward@p@size_order>` in the forward mode section.
 The initial value for this property, when the object *f*
 or *af* is created, is zero.
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/fun_property_xam.cpp
 }
 Example
 *******
-:ref:`fun_property_xam_cpp<fun_property_xam_cpp>`
+:ref:`fun_property_xam_cpp`
 
-{xsrst_end cpp_fun_property}
+{xrst_end cpp_fun_property}
 */
 // size_domain
 int d_fun::size_domain(void) const
@@ -431,9 +423,7 @@ int a_fun::size_order(void) const
 {   return a_ptr_->size_order(); }
 /*
 ------------------------------------------------------------------------------
-{xsrst_begin cpp_fun_new_dynamic}
-
-.. include:: ../preamble.rst
+{xrst_begin cpp_fun_new_dynamic}
 
 Change The Dynamic Parameters
 #############################
@@ -446,8 +436,8 @@ Syntax
 f
 *
 This is either a
-:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` or
-:ref:`a_fun<cpp_fun_ctor.syntax.a_fun>` function object.
+:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@syntax@a_fun>` function object.
 
 dynamic
 *******
@@ -458,19 +448,19 @@ this argument has prototype
 | |tab| ``const vec_a_double&`` *dynamic*
 
 and its size must be the same as the size of
-:ref:`dynamic<cpp_independent.dynamic>` in the corresponding call to
+:ref:`dynamic<cpp_independent@dynamic>` in the corresponding call to
 ``independent`` .
 It specifies new values for the dynamic parameters in *f* .
 
 size_order
 **********
 After this call
-:ref:`f_size_order()<cpp_fun_property.size_order>` is zero.
+:ref:`f_size_order()<cpp_fun_property@size_order>` is zero.
 
 Example
 *******
-See :ref:`fun_dynamic_xam_cpp<fun_dynamic_xam_cpp>`.
-{xsrst_end cpp_fun_new_dynamic}
+See :ref:`fun_dynamic_xam_cpp`.
+{xrst_end cpp_fun_new_dynamic}
 */
 // BEGIN_NEW_DYNAMIC_SOURCE
 void d_fun::new_dynamic(const std::vector<double>& dynamic)
@@ -494,11 +484,9 @@ void a_fun::new_dynamic(const std::vector<a_double>& adynamic)
 
 /*
 ------------------------------------------------------------------------------
-{xsrst_begin cpp_fun_jacobian}
+{xrst_begin cpp_fun_jacobian}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
 }
 
 Jacobian of an AD Function
@@ -511,10 +499,10 @@ Syntax
 f
 *
 This is either a
-:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` or
-:ref:`a_fun<cpp_fun_ctor.syntax.a_fun>` function object.
+:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@syntax@a_fun>` function object.
 Upon return, the zero order
-:ref:`taylor_coefficients<cpp_fun_forward.taylor_coefficient>` in *f*
+:ref:`taylor_coefficients<cpp_fun_forward@taylor_coefficient>` in *f*
 correspond to the value of *x* .
 The other Taylor coefficients in *f* are unspecified.
 
@@ -522,8 +510,8 @@ f(x)
 ****
 We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
 for the function corresponding to *f* .
-Note that *n* is the size of :ref:`ax<cpp_fun_ctor.ax>`
-and *m* is the size of :ref:`ay<cpp_fun_ctor.ay>`
+Note that *n* is the size of :ref:`ax<cpp_fun_ctor@ax>`
+and *m* is the size of :ref:`ay<cpp_fun_ctor@ay>`
 in to the constructor for *f* .
 
 x
@@ -554,14 +542,14 @@ and *j* between zero and *n* -1 ,
 
     J [ i * n + j ] = \frac{ \partial f_i }{ \partial x_j } (x)
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/fun_jacobian_xam.cpp
 }
 Example
 *******
-:ref:`fun_jacobian_xam_cpp<fun_jacobian_xam_cpp>`
+:ref:`fun_jacobian_xam_cpp`
 
-{xsrst_end cpp_fun_jacobian}
+{xrst_end cpp_fun_jacobian}
 */
 std::vector<double> d_fun::jacobian(const std::vector<double>& x)
 {   CPPAD_PY_ASSERT_KNOWN(
@@ -581,11 +569,9 @@ std::vector<a_double> a_fun::jacobian(const std::vector<a_double>& ax)
 }
 /*
 ------------------------------------------------------------------------------
-{xsrst_begin cpp_fun_hessian}
+{xrst_begin cpp_fun_hessian}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
 }
 
 Hessian of an AD Function
@@ -598,10 +584,10 @@ Syntax
 f
 *
 This is either a
-:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` or
-:ref:`a_fun<cpp_fun_ctor.syntax.a_fun>` function object.
+:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@syntax@a_fun>` function object.
 Upon return, the zero order
-:ref:`taylor_coefficients<cpp_fun_forward.taylor_coefficient>` in *f*
+:ref:`taylor_coefficients<cpp_fun_forward@taylor_coefficient>` in *f*
 correspond to the value of *x* .
 The other Taylor coefficients in *f* are unspecified.
 
@@ -609,8 +595,8 @@ f(x)
 ****
 We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
 for the function corresponding to *f* .
-Note that *n* is the size of :ref:`ax<cpp_fun_ctor.ax>`
-and *m* is the size of :ref:`ay<cpp_fun_ctor.ay>`
+Note that *n* is the size of :ref:`ax<cpp_fun_ctor@ax>`
+and *m* is the size of :ref:`ay<cpp_fun_ctor@ay>`
 in to the constructor for *f* .
 
 g(x)
@@ -661,14 +647,14 @@ and *j* between zero and *n* -1 ,
 
     H [ i * n + j ] = \frac{ \partial^2 g }{ \partial x_i \partial x_j } (x)
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/fun_hessian_xam.cpp
 }
 Example
 *******
-:ref:`fun_hessian_xam_cpp<fun_hessian_xam_cpp>`
+:ref:`fun_hessian_xam_cpp`
 
-{xsrst_end cpp_fun_hessian}
+{xrst_end cpp_fun_hessian}
 */
 std::vector<double> d_fun::hessian(
     const std::vector<double>& x  ,
@@ -702,11 +688,9 @@ std::vector<a_double> a_fun::hessian(
 }
 /*
 ------------------------------------------------------------------------------
-{xsrst_begin cpp_fun_forward}
+{xrst_begin cpp_fun_forward}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     xp
     yp
 }
@@ -732,20 +716,20 @@ and evaluated at :math:`t = 0`; i.e.,
 f
 *
 This is either a
-:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` or
-:ref:`a_fun<cpp_fun_ctor.syntax.a_fun>` function object.
+:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@syntax@a_fun>` function object.
 Note that its state is changed by this operation because
 all the Taylor coefficient that it calculates for every
 variable in recording are stored.
 See more discussion of this fact under the heading
-:ref:`p<cpp_fun_forward.p>` below.
+:ref:`p<cpp_fun_forward@p>` below.
 
 f(x)
 ****
 We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
 for the function corresponding to *f* .
-Note that *n* is the size of :ref:`ax<cpp_fun_ctor.ax>`
-and *m* is the size of :ref:`ay<cpp_fun_ctor.ay>`
+Note that *n* is the size of :ref:`ax<cpp_fun_ctor@ax>`
+and *m* is the size of :ref:`ay<cpp_fun_ctor@ay>`
 in to the constructor for *f* .
 
 X(t)
@@ -776,7 +760,7 @@ and for every variable in the recording, will be stored in *f* .
 size_order
 ==========
 After this call,
-:ref:`f_size_order()<cpp_fun_property.size_order>` is *p* +1 .
+:ref:`f_size_order()<cpp_fun_property@size_order>` is *p* +1 .
 
 xp
 **
@@ -800,14 +784,14 @@ the result has prototype
 respectively and its size is *m* .
 It is the *p*-th order Taylor coefficients for :math:`Y(t)`.
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/fun_forward_xam.cpp
 }
 Example
 *******
-:ref:`fun_forward_xam_cpp<fun_forward_xam_cpp>`
+:ref:`fun_forward_xam_cpp`
 
-{xsrst_end cpp_fun_forward}
+{xrst_end cpp_fun_forward}
 */
 std::vector<double> d_fun::forward(int p, const std::vector<double>& xp)
 {   CPPAD_PY_ASSERT_KNOWN(
@@ -827,11 +811,9 @@ std::vector<a_double> a_fun::forward(int p, const std::vector<a_double>& axp)
 }
 /*
 -------------------------------------------------------------------------------
-{xsrst_begin cpp_fun_reverse}
+{xrst_begin cpp_fun_reverse}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     xq
     yq
 }
@@ -846,8 +828,8 @@ Syntax
 f
 *
 This is either a
-:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` or
-:ref:`a_fun<cpp_fun_ctor.syntax.a_fun>` function object
+:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@syntax@a_fun>` function object
 and is effectively ``const`` .
 (Some details that are not visible to the user may change.)
 
@@ -858,14 +840,14 @@ f(x)
 ====
 We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
 for the function corresponding to *f* .
-Note that *n* is the size of :ref:`ax<cpp_fun_ctor.ax>`
-and *m* is the size of :ref:`ay<cpp_fun_ctor.ay>`
+Note that *n* is the size of :ref:`ax<cpp_fun_ctor@ax>`
+and *m* is the size of :ref:`ay<cpp_fun_ctor@ay>`
 in to the constructor for *f* .
 
 X(t), S
 =======
 This is the same function as
-:ref:`x(t)<cpp_fun_forward.x(t)>` in the previous call to
+:ref:`x(t)<cpp_fun_forward@x(t)>` in the previous call to
 *f*\ ``.forward`` .
 We use :math:`S \in \B{R}^{n \times q}` to denote the Taylor coefficients
 of :math:`X(t)`.
@@ -873,7 +855,7 @@ of :math:`X(t)`.
 Y(t), T
 =======
 This is the same function as
-:ref:`y(t)<cpp_fun_forward.y(t)>` in the previous call to
+:ref:`y(t)<cpp_fun_forward@y(t)>` in the previous call to
 *f*\ ``.forward`` .
 We use :math:`T \in \B{R}^{m \times q}` to denote the Taylor coefficients
 of :math:`Y(t)`.
@@ -898,7 +880,7 @@ that we are computing the derivative with respect to.
 It must be greater than zero, and
 less than or equal
 the number of Taylor coefficient stored in *f* ; i.e.,
-:ref:`f_size_order()<cpp_fun_property.size_order>`.
+:ref:`f_size_order()<cpp_fun_property@size_order>`.
 
 yq
 **
@@ -931,14 +913,14 @@ for the *j*-th component function; i.e.,
 the partial derivative of
 :math:`G(T(S))` w.r.t. :math:`S_j^{(k)} (t) / k !`.
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/fun_reverse_xam.cpp
 }
 Example
 *******
-:ref:`fun_reverse_xam_cpp<fun_reverse_xam_cpp>`
+:ref:`fun_reverse_xam_cpp`
 
-{xsrst_end cpp_fun_reverse}
+{xrst_end cpp_fun_reverse}
 */
 std::vector<double> d_fun::reverse(int q, const std::vector<double>& yq)
 {   CPPAD_PY_ASSERT_KNOWN(
@@ -958,11 +940,9 @@ std::vector<a_double> a_fun::reverse(int q, const std::vector<a_double>& ayq)
 }
 /*
 ------------------------------------------------------------------------------
-{xsrst_begin cpp_fun_optimize}
+{xrst_begin cpp_fun_optimize}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
 }
 
 Optimize an AD Function
@@ -983,28 +963,26 @@ of time and memory.
 f
 *
 This object is a
-:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>`.
+:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>`.
 Optimizing this *f* also optimizes the
-corresponding :ref:`a_fun<cpp_fun_ctor.syntax.a_fun>`.
+corresponding :ref:`a_fun<cpp_fun_ctor@syntax@a_fun>`.
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/fun_optimize_xam.cpp
 }
 Example
 *******
-:ref:`fun_optimize_xam_cpp<fun_optimize_xam_cpp>`
+:ref:`fun_optimize_xam_cpp`
 
-{xsrst_end cpp_fun_optimize}
+{xrst_end cpp_fun_optimize}
 */
 void d_fun::optimize(void)
 {   ptr_->optimize(); }
 /*
 ----------------------------------------------------------------------------
-{xsrst_begin cpp_fun_json}
+{xrst_begin cpp_fun_json}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     json
 }
 
@@ -1019,7 +997,7 @@ Syntax
 
 f
 *
-This is a :ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` object.
+This is a :ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` object.
 
 json
 ****
@@ -1042,15 +1020,15 @@ In this case, *json* has prototype
 
 and the function *f* so it corresponds to *json* .
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/fun_json_xam.cpp
 }
 Examples
 ********
-:ref:`fun_to_json_xam_cpp<fun_to_json_xam_cpp>`,
-:ref:`fun_from_json_xam_cpp<fun_from_json_xam_cpp>`.
+:ref:`fun_to_json_xam_cpp`,
+:ref:`fun_from_json_xam_cpp`.
 
-{xsrst_end cpp_fun_json}
+{xrst_end cpp_fun_json}
 */
 // to_json
 std::string d_fun::to_json(void) const
@@ -1059,9 +1037,7 @@ void d_fun::from_json(const std::string& json)
 {   return ptr_->from_json(json); }
 /*
 ----------------------------------------------------------------------------
-{xsrst_begin cpp_check_for_nan}
-
-.. include:: ../preamble.rst
+{xrst_begin cpp_check_for_nan}
 
 Check For Nan In Function or Derivative Results
 ###############################################
@@ -1074,7 +1050,7 @@ Syntax
 f
 *
 is a
-:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>` function object.
+:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` function object.
 
 b
 *
@@ -1083,18 +1059,18 @@ This argument has prototype
 | |tab| ``int`` *b*
 
 If *b* is true and
-:ref:`get_cppad_sh.settings.build_type` is ``debug`` ,
+:ref:`get_cppad_sh@settings@build_type` is ``debug`` ,
 *f* will generate an assert when ``nan`` occurs in its function
 or derivative values.
 Otherwise, it will just pass back the ``nan`` values.
 
 Example
 *******
-{xsrst_child_list
+{xrst_toc_list
     example/cplusplus/fun_check_for_nan_xam.cpp
 }
 
-{xsrst_end cpp_check_for_nan}
+{xrst_end cpp_check_for_nan}
 */
 void d_fun::check_for_nan(bool b)
 {   ptr_->check_for_nan(b);

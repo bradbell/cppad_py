@@ -23,7 +23,7 @@ No Parent Example
 All the sections in the file ``children.py``
 are children of the section below
 because ``children.py`` does not have a
-:ref:`parent section<begin_cmd.parent_section>`:
+:ref:`parent section<begin_cmd@parent_section>`:
 
 .. literalinclude:: ../../../sphinx/test_in/no_parent.xrst
     :lines: 24-48
@@ -33,8 +33,8 @@ because ``children.py`` does not have a
     :header: "Child", "Title"
     :widths: 20, 80
 
-    "no_parent_res", :ref:`no_parent_res`
+    "no_parent_res", :ref:`@no_parent_res`
 
 ----
 
-xsrst input file: ``sphinx/test_in/no_parent.xrst``
+xrst input file: ``sphinx/test_in/no_parent.xrst``

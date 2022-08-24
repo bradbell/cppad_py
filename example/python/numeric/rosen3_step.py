@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -105,13 +105,11 @@ def check_rosen3_step(fun, ti, yi, h) :
     return ok
 # END_CHECK_ROSEN3_STEP
 #
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin numeric_rosen3_step}
+# {xrst_begin numeric_rosen3_step}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   rosenbrock
 #   yf
 #   yi
@@ -221,28 +219,28 @@ def check_rosen3_step(fun, ti, yi, h) :
 # *fun*\ ``.f_y`` ( *t* , *y* ) agree.
 # Otherwise AD has detected an error in these functions.
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/numeric/rosen3_step_xam.py
 # }
 # Example
 # *******
-# :ref:`numeric_rosen3_step_xam_py<numeric_rosen3_step_xam_py>`
+# :ref:`numeric_rosen3_step_xam_py`
 #
 # Source Code
 # ***********
 #
 # rosen3_step
 # ===========
-# {xsrst_file
+# {xrst_literal
 #   # BEGIN_ROSEN3_STEP
 #   # END_ROSEN3_STEP
 # }
 #
 # check_rosen3_step
 # =================
-# {xsrst_file
+# {xrst_literal
 #   # BEGIN_CHECK_ROSEN3_STEP
 #   # END_CHECK_ROSEN3_STEP
 # }
 #
-# {xsrst_end numeric_rosen3_step}
+# {xrst_end numeric_rosen3_step}

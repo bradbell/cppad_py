@@ -25,8 +25,8 @@ and the remaining text lines up with the ``def`` below:
             return 1
         return n * factorial(n-1)
 
-:ref:`comment_ch_exam`
+:ref:`@comment_ch_exam`
 
 ----
 
-xsrst input file: ``sphinx/test_in/comment_ch.py``
+xrst input file: ``sphinx/test_in/comment_ch.py``

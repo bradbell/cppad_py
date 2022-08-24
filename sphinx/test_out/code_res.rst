@@ -21,8 +21,8 @@ Code Result
             return 1
         return n * factorial(n-1)
 
-:ref:`code_exam`
+:ref:`@code_exam`
 
 ----
 
-xsrst input file: ``sphinx/test_in/code.py``
+xrst input file: ``sphinx/test_in/code.py``

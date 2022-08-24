@@ -5,11 +5,9 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin vector_ctor}
+{xrst_begin vector_ctor}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
     av
     bv
@@ -62,19 +60,17 @@ This result *bv* is a vector with elements of type ``double``
 vec_a_double
 ************
 This result ``av`` is a vector with elements of type
-:ref:`a_double<a_double>`.
+:ref:`a_double`.
 
 Example
 *******
 All of the other vector examples use the vector constructors.
 
-{xsrst_end vector_ctor}
+{xrst_end vector_ctor}
 -------------------------------------------------------------------------------
-{xsrst_begin vector_size}
+{xrst_begin vector_size}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     bool
 }
 
@@ -103,7 +99,7 @@ The result has c++ prototype
 i.e., it is a positive integer.
 Its value is the number of elements in the vector *v* .
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/vector_size_xam.cpp
     example/python/core/vector_size_xam.py
 }
@@ -112,13 +108,11 @@ Example
 :ref:`c++<vector_size_xam_cpp>`,
 :ref:`python<vector_size_xam_py>`.
 
-{xsrst_end vector_size}
+{xrst_end vector_size}
 -------------------------------------------------------------------------------
-{xsrst_begin vector_set_get}
+{xrst_begin vector_set_get}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     bool
 }
 
@@ -169,7 +163,7 @@ The result *y* has c++ prototype
 
 | |tab| *element_type* *y*
 
-{xsrst_children
+{xrst_toc_hidden
     example/cplusplus/vector_set_get_xam.cpp
     example/python/core/vector_set_get_xam.py
 }
@@ -178,4 +172,4 @@ Example
 :ref:`c++<vector_set_get_xam_cpp>`,
 :ref:`python<vector_set_get_xam_py>`.
 
-{xsrst_end vector_set_get}
+{xrst_end vector_set_get}

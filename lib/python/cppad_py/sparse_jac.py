@@ -1,17 +1,15 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin py_sparse_jac}
+# {xrst_begin py_sparse_jac}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   rcv
 #   cppad
 # }
@@ -37,18 +35,18 @@
 #    J(x) = F^{(1)} (x)
 #
 # In the sparse case, this should be faster and take less memory than
-# :ref:`py_fun_jacobian<py_fun_jacobian>`.
+# :ref:`py_fun_jacobian`.
 # We use the notation :math:`J_{i,j} (x)` to denote the partial of
 # :math:`F_i (x)` with respect to :math:`x_j`.
 #
 # sparse_jac_for
 # **************
-# This function uses first order forward mode sweeps :ref:`py_fun_forward<py_fun_forward>`
+# This function uses first order forward mode sweeps :ref:`py_fun_forward`
 # to compute multiple columns of the Jacobian at the same time.
 #
 # sparse_jac_rev
 # **************
-# This function uses first order reverse mode sweeps :ref:`py_fun_reverse<py_fun_reverse>`
+# This function uses first order reverse mode sweeps :ref:`py_fun_reverse`
 # to compute multiple rows of the Jacobian at the same time.
 #
 # f
@@ -57,11 +55,11 @@
 # :ref:`d_fun<py_fun_ctor>` constructor.
 # Note that the Taylor coefficients stored in *f* are affected
 # by this operation; see
-# :ref:`uses_forward<py_sparse_jac.uses_forward>` below.
+# :ref:`uses_forward<py_sparse_jac@uses_forward>` below.
 #
 # subset
 # ******
-# This argument must have be a :ref:`matrix<py_sparse_rcv.matrix>`
+# This argument must have be a :ref:`matrix<py_sparse_rcv@matrix>`
 # returned by the ``sparse_rcv`` constructor.
 # Its row size is *subset*\ ``.nr`` () == *m* ,
 # and its column size is *subset*\ ``.nc`` () == *n* .
@@ -81,13 +79,13 @@
 #
 # pattern
 # *******
-# This argument must have be a :ref:`pattern<py_sparse_rc.pattern>`
+# This argument must have be a :ref:`pattern<py_sparse_rc@pattern>`
 # returned by the ``sparse_rc`` constructor.
 # Its row size is *pattern*\ ``.nr`` () == *m* ,
 # and its column size is *pattern*\ ``.nc`` () == *n* .
 # It is a sparsity pattern for the Jacobian :math:`J(x)`.
 # This argument is not used (and need not satisfy any conditions),
-# when :ref:`work<py_sparse_jac.work>` is non-empty.
+# when :ref:`work<py_sparse_jac@work>` is non-empty.
 #
 # work
 # ****
@@ -117,7 +115,7 @@
 #
 # Uses Forward
 # ************
-# After each call to :ref:`py_fun_forward<py_fun_forward>`,
+# After each call to :ref:`py_fun_forward`,
 # the object *f* contains the corresponding Taylor coefficients
 # for all the variables in the operation sequence..
 # After a call to ``sparse_jac_forward`` or ``sparse_jac_rev`` ,
@@ -127,14 +125,14 @@
 #
 # All the other forward mode coefficients are unspecified.
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/core/sparse_jac_xam.py
 # }
 # Example
 # *******
-# :ref:`sparse_jac_xam_py<sparse_jac_xam_py>`
+# :ref:`sparse_jac_xam_py`
 #
-# {xsrst_end py_sparse_jac}
+# {xrst_end py_sparse_jac}
 # -----------------------------------------------------------------------------
 # undocumented fact: pattern.rc (subset.rcv) is vec_int version of
 # sparsity pattern (sparse matrix)

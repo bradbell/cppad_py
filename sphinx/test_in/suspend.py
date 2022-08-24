@@ -1,28 +1,28 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
 """
-{xsrst_begin_parent suspend_exam}
+{xrst_begin_parent suspend_exam}
 
 Suspend Example
 ###############
 
-{xsrst_file
+{xrst_literal
     # BEGIN_SRC
     # END_SRC
 }
 
-{xsrst_end suspend_exam}
+{xrst_end suspend_exam}
 """
 # ----------------------------------------------------------------------------
 # BEGIN_SRC
 """
-{xsrst_begin suspend_res}
-{xsrst_spell
+{xrst_begin suspend_res}
+{xrst_spell
     iterable
 }
 
@@ -32,19 +32,19 @@ Suspend Result
 Factorial
 *********
 *f* = ``factorial(`` *positive_integer* ``)``
-{xsrst_suspend}
+{xrst_suspend}
 """
 def factorial(n) :
     if n == 1 :
         return 1
     return n * factorial(n-1)
 """
-{xsrst_resume}
+{xrst_resume}
 
 Product
 *******
 *p* = ``product(`` *iterable* ``)``
-{xsrst_suspend}
+{xrst_suspend}
 """
 def product(itr) :
     p = 1.0
@@ -52,10 +52,10 @@ def product(itr) :
         p *= v
     return p
 """
-{xsrst_resume}
+{xrst_resume}
 
-:ref:`suspend_exam`
+:ref:`@suspend_exam`
 
-{xsrst_end suspend_res}
+{xrst_end suspend_res}
 """
 # END_SRC

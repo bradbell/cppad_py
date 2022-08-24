@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -8,13 +8,11 @@
 # mixed optimize_fixed
 # -----------------------------------------------------------------------------
 '''
-{xsrst_begin mixed_optimize_fixed_2_py}
-{xsrst_spell
+{xrst_begin mixed_optimize_fixed_2_py}
+{xrst_spell
     ipopt
     nowrap
 }
-
-.. include:: ../preamble.rst
 
 The Ipopt Example Problem: Example and Test
 ###########################################
@@ -45,11 +43,11 @@ and the optimal solution is
 
     ( \; 1.00000000, \; 4.74299963, \; 3.82114998, \; 1.37940829 \; )
 
-{xsrst_file
+{xrst_literal
   # BEGIN SOURCE
   # END SOURCE
 }
-{xsrst_end mixed_optimize_fixed_2_py}
+{xrst_end mixed_optimize_fixed_2_py}
 '''
 # BEGIN SOURCE
 def optimize_fixed_2() :

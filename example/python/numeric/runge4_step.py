@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -15,13 +15,11 @@ def runge4_step(fun, ti, yi, h) :
     return yf
 # END_RUNGE4_STEP
 #
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin numeric_runge4_step}
+# {xrst_begin numeric_runge4_step}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   runge
 #   kutta
 #   yf
@@ -83,18 +81,18 @@ def runge4_step(fun, ti, yi, h) :
 # :math:`y(t)` is a polynomial in :math:`t` of order four or lower,
 # the solution has no truncation error, only round off error.
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/numeric/runge4_step_xam.py
 # }
 # Example
 # *******
-# :ref:`numeric_runge4_step_xam_py<numeric_runge4_step_xam_py>`
+# :ref:`numeric_runge4_step_xam_py`
 #
 # Source Code
 # ***********
-# {xsrst_file
+# {xrst_literal
 #   # BEGIN_RUNGE4_STEP
 #   # END_RUNGE4_STEP
 # }
 #
-# {xsrst_end numeric_runge4_step}
+# {xrst_end numeric_runge4_step}

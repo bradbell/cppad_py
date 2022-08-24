@@ -22,8 +22,8 @@ Indent Result
             return 1
         return n * factorial(n-1)
 
-:ref:`indent_exam`
+:ref:`@indent_exam`
 
 ----
 
-xsrst input file: ``sphinx/test_in/indent.py``
+xrst input file: ``sphinx/test_in/indent.py``

@@ -23,7 +23,7 @@ Spell Result
 
 Text
 ****
-The words ``iterable`` and ``xsrst`` are not the dictionary,
+The words ``iterable`` and ``xrst`` are not the dictionary,
 so we have included them in the spelling command for this section.
 
 .. meta::
@@ -38,7 +38,7 @@ Math
 The latex commands for greek letters
 are automatically included as correct spelling.
 The ``\rm`` command is included by the
-:ref:`spelling<xsrst_py.command_line_arguments.spelling>`.
+:ref:`spelling<xrst_py@command_line_arguments@spelling>`.
 The other latex commands in this section, ``\cos`` and ``\sin``,
 have been included in the spelling command for this section.
 An alternative would be to add them to the *spelling* file
@@ -63,8 +63,8 @@ no no would be an error if there
 were not two occurrences of :code:`no` next to each other in the
 spelling command for this section.
 
-:ref:`spell_exam`
+:ref:`@spell_exam`
 
 ----
 
-xsrst input file: ``sphinx/test_in/spell.py``
+xrst input file: ``sphinx/test_in/spell.py``

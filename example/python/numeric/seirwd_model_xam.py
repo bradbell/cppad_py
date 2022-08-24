@@ -1,29 +1,27 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin numeric_seirwd_model_xam_py}
+# {xrst_begin numeric_seirwd_model_xam_py}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   seris
 # }
 #
 # Example Using seris_model
 # #########################
 #
-# {xsrst_file
+# {xrst_literal
 #   # BEGIN_PYTHON
 #   # END_PYTHON
 # }
 #
-# {xsrst_end numeric_seirwd_model_xam_py}
+# {xrst_end numeric_seirwd_model_xam_py}
 # BEGIN_PYTHON
 import numpy
 from seirwd_model import seirwd_model

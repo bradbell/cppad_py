@@ -2,8 +2,6 @@
 begin_cmd
 !!!!!!!!!
 
-.. include:: ../preamble.rst
-
 .. meta::
    :keywords: begin_cmd, begin, end, commands
 
@@ -25,9 +23,9 @@ Begin and End Commands
 
 Syntax
 ******
-- ``{xsrst_begin_parent`` *section_name*\ :code:`}`
-- ``{xsrst_begin``        *section_name*\ :code:`}`
-- ``{xsrst_end``          *section_name*\ :code:`}`
+- ``\{xrst_begin_parent`` *section_name*\ :code:`}`
+- ``\{xrst_begin``        *section_name*\ :code:`}`
+- ``\{xrst_end``          *section_name*\ :code:`}`
 
 .. meta::
    :keywords: section
@@ -40,7 +38,7 @@ Section
 *******
 The start (end) of a section of the input file is indicated by a
 begin (end) command at the
-:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
+:ref:`beginning of a line<xrst_py@notation@beginning_of_a_line>`.
 
 .. meta::
    :keywords: section_name
@@ -53,7 +51,7 @@ section_name
 ************
 The *section_name* is a non-empty sequence of the following characters:
 a-z, 0-9, and underbar ``_``.
-It can not begin with the characters ``xsrst_``.
+It can not begin with the characters ``xrst_``.
 A link is included in the index under the section name
 to the first heading the section.
 The section name is also added to the html keyword meta data.
@@ -69,9 +67,9 @@ Output File
 ***********
 The output file corresponding to *section_name* is
 
-| |tab| *sphinx_dir*\ ``/xsrst/``\ *section_name*\ ``.rst``
+| |tab| *sphinx_dir*\ ``/xrst/``\ *section_name*\ ``.rst``
 
-see :ref:`sphinx_dir<xsrst_py.command_line_arguments.sphinx_dir>`
+see :ref:`sphinx_dir<xrst_py@command_line_arguments@sphinx_dir>`
 
 .. meta::
    :keywords: parent, section
@@ -95,4 +93,4 @@ of the section that included this file using a :ref:`child command<child_cmd>`.
 
 ----
 
-xsrst input file: ``bin/xsrst.py``
+xrst input file: ``bin/xrst.py``

@@ -39,7 +39,7 @@ Syntax
 
 children
 ========
-| ``{xsrst_children``
+| ``\{xrst_toc_hidden``
 |   *file_1*
 |   ...
 |   *file_n*
@@ -54,7 +54,7 @@ children
 
 child_list
 ==========
-| ``{xsrst_child_list``
+| ``\{xrst_toc_list``
 |   *file_1*
 |   ...
 |   *file_n*
@@ -69,7 +69,7 @@ child_list
 
 child_table
 ===========
-| ``{xsrst_child_table``
+| ``\{xrst_toc_table``
 |   *file_1*
 |   ...
 |   *file_n*
@@ -85,12 +85,12 @@ child_table
 Purpose
 *******
 A section can specify a set of files for which the
-:ref:`parent section<begin_cmd.parent_section>` of each file
+:ref:`parent section<begin_cmd@parent_section>` of each file
 is a child of the current section.
 (If there is not parent section in a file,
 all the sections in the file are children of the current section.)
 This is done using the commands above at the
-:ref:`beginning of a line<xsrst_py.notation.beginning_of_a_line>`.
+:ref:`beginning of a line<xrst_py@notation@beginning_of_a_line>`.
 
 .. meta::
    :keywords: file, names
@@ -104,7 +104,7 @@ File Names
 A new line character must precede and follow each
 of the file names *file_1* ... *file_n*.
 Leading and trailing white space is not included in the names
-The file names are  relative to the directory where ``xsrst.py``
+The file names are  relative to the directory where ``xrst.py``
 is executed; i.e., the top directory for this git repository.
 This may seem verbose, but it makes it easier to write scripts
 that move files and automatically change references to them.
@@ -137,8 +137,8 @@ Example
     :header:  "Child", "Title"
     :widths: 20, 80
 
-    "no_parent_exam", :ref:`no_parent_exam`
+    "no_parent_exam", :ref:`@no_parent_exam`
 
 ----
 
-xsrst input file: ``bin/xsrst.py``
+xrst input file: ``bin/xrst.py``

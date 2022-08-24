@@ -35,16 +35,16 @@ Heading Example
 Child Sections
 **************
 The heading above (Child Sections) is an example heading for the
-:ref:`children<xsrst_py.links_to_headings.children>`
+:ref:`children<xrst_py@links_to_headings@children>`
 of a
-:ref:`parent section<xsrst_py.table_of_contents.parent_section>`.
+:ref:`parent section<xrst_py@table_of_contents@parent_section>`.
 
 .. csv-table::
     :header: "Child", "Title"
     :widths: 20, 80
 
-    "heading_res", :ref:`heading_res`
+    "heading_res", :ref:`@heading_res`
 
 ----
 
-xsrst input file: ``sphinx/test_in/heading.py``
+xrst input file: ``sphinx/test_in/heading.py``

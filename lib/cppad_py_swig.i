@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
-            Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+            Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
@@ -26,11 +26,9 @@
 %}
 
 /*
-{xsrst_begin module}
+{xrst_begin module}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
     namespace
 }
@@ -46,7 +44,7 @@ the ``cppad_py`` namespace,
 while in the Python language is accessed through the
 Swig ``cppad_py.`` module.
 
-{xsrst_end module}
+{xrst_end module}
 */
 # ifdef SWIGPYTHON
 %module cppad_swig

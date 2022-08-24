@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -8,13 +8,11 @@
 import numpy
 import cppad_py
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin numpy2vec}
+# {xrst_begin numpy2vec}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   cppad
 #   bool
 # }
@@ -67,7 +65,7 @@ import cppad_py
 # It has type ``vec_double`` if *dtype* is ``float`` ,
 # and ``vec_a_double`` if *dtype* is ``a_double`` .
 #
-# {xsrst_end numpy2vec}
+# {xrst_end numpy2vec}
 # -----------------------------------------------------------------------------
 def numpy2vec(array, dtype, shape, context, name) :
     #
@@ -135,11 +133,9 @@ def numpy2vec(array, dtype, shape, context, name) :
     #
     return vec
 # -----------------------------------------------------------------------------
-# {xsrst_begin vec2numpy}
+# {xrst_begin vec2numpy}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   cppad
 # }
 #
@@ -179,7 +175,7 @@ def numpy2vec(array, dtype, shape, context, name) :
 # Note that this array can be used after the vector *vec* drops
 # out of scope (is deleted).
 #
-# {xsrst_end vec2numpy}
+# {xrst_end vec2numpy}
 # -----------------------------------------------------------------------------
 def vec2numpy(vec, nr, nc = None) :
     # dtype

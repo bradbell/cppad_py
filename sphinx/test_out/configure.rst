@@ -12,13 +12,13 @@ configure
    preamble_rst
 
 .. meta::
-   :keywords: configure, example, xsrst, configuration, files
+   :keywords: configure, example, xrst, configuration, files
 
-.. index:: configure, example, xsrst, configuration, files
+.. index:: configure, example, xrst, configuration, files
 
 .. _configure:
 
-Example xsrst Configuration Files
+Example xrst Configuration Files
 #################################
 .. contents::
    :local:
@@ -27,11 +27,11 @@ Example xsrst Configuration Files
     :header: "Child", "Title"
     :widths: 20, 80
 
-    "conf_py", :ref:`conf_py`
-    "spelling", :ref:`spelling`
-    "keyword", :ref:`keyword`
-    "preamble_rst", :ref:`preamble_rst`
+    "conf_py", :ref:`@conf_py`
+    "spelling", :ref:`@spelling`
+    "keyword", :ref:`@keyword`
+    "preamble_rst", :ref:`@preamble_rst`
 
 ----
 
-xsrst input file: ``sphinx/configure.xrst``
+xrst input file: ``sphinx/configure.xrst``

@@ -5,11 +5,9 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin whats_new_2018}
+{xrst_begin whats_new_2018}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
     cmake
     ind
@@ -23,29 +21,29 @@ Cppad Py Changes During 2018
 11-10
 *****
 
-#.  Added the :ref:`dynamic<py_independent.dynamic>`
+#.  Added the :ref:`dynamic<py_independent@dynamic>`
     argument to the ``independent`` function and the
     :ref:`f_new_dynamic<py_fun_new_dynamic>` function.
-#.  Added the sections :ref:`more_cpp<more_cpp>` and :ref:`more_py<more_py>`.
+#.  Added the sections :ref:`more_cpp` and :ref:`more_py`.
 
 11-09
 *****
 Include binary operations where first operand is an ``a_double``
 and second operand is a ``double`` ; see
-:ref:`a_double_binary<a_double_binary>`,
-:ref:`a_double_compare<a_double_compare>`, and
-:ref:`a_double_assign<a_double_assign>`.
+:ref:`a_double_binary`,
+:ref:`a_double_compare`, and
+:ref:`a_double_assign`.
 
 11-07
 *****
 
 #.  Advance to cppad-20181106 (must re-run ``bin/get_cppad.sh`` ).
-#.  The :ref:`a_fun<py_fun_ctor.syntax.a_fun>` objects were added.
+#.  The :ref:`a_fun<py_fun_ctor@syntax@a_fun>` objects were added.
     This support all the operations that
-    :ref:`d_fun<py_fun_ctor.syntax.d_fun>` support all the
-    :ref:`py_fun<py_fun>` operations with the exception of
+    :ref:`d_fun<py_fun_ctor@syntax@d_fun>` support all the
+    :ref:`py_fun` operations with the exception of
     :ref:`optimize<py_fun_optimize>`.
-    The :ref:`py_sparse<py_sparse>` operations are not yet supported.
+    The :ref:`py_sparse` operations are not yet supported.
 
 11-05
 *****
@@ -61,11 +59,11 @@ and second operand is a ``double`` ; see
 *****
 
 #.  Change ``cppad_cxx_flags`` to
-    :ref:`extra_cxx_flags<get_cppad_sh.settings.extra_cxx_flags>` in the user
+    :ref:`extra_cxx_flags<get_cppad_sh@settings@extra_cxx_flags>` in the user
     configuration settings.
     Also remove ``swig_cxx_flags`` from these user settings
     (set automatically).
-#.  Improve the install instructions; see :ref:`setup_py<setup_py>`.
+#.  Improve the install instructions; see :ref:`setup_py`.
 
 07-31
 *****
@@ -74,7 +72,7 @@ and second operand is a ``double`` ; see
     which was not specific to cppad_py,
     has been removed.
 #.  A change to ``setup.py`` was making the
-    :ref:`get_cppad_sh<get_cppad_sh>` script fail.
+    :ref:`get_cppad_sh` script fail.
     This has been fixed.
 #.  The python tests are no run in ``example/python``
     (not copied to the build directory).
@@ -88,7 +86,7 @@ because it now contains both major and minor version numbers.
 07-19
 *****
 Add ``-std=c++11`` to the default compile flags in
-:ref:`setup_py<setup_py>`.
+:ref:`setup_py`.
 Add ``-py3`` to the ``swig`` builds
 when running ``setup.py`` using Python 3; see
 `swig python 3
@@ -99,44 +97,44 @@ when running ``setup.py`` using Python 3; see
 
 #.  Better error reporting for type and size errors in
     ``numpy.array`` arguments to ``cppad_py`` functions using
-    :ref:`numpy2vec<numpy2vec>`.
+    :ref:`numpy2vec`.
 #.  Finish converting all vectors and matrices in
-    :ref:`py_lib<py_lib>` to numpy arrays.
-    Note the :ref:`py_utility<py_utility>` routines do the conversion.
+    :ref:`py_lib` to numpy arrays.
+    Note the :ref:`py_utility` routines do the conversion.
 
 07-14
 *****
 
 #.  Continue conversion of python library to using ``numpy.array`` ; see
-    :ref:`py_fun_forward<py_fun_forward>`, :ref:`py_fun_reverse<py_fun_reverse>`.
-#.  Add the :ref:`f_size_order()<py_fun_property.size_order>` function.
+    :ref:`py_fun_forward`, :ref:`py_fun_reverse`.
+#.  Add the :ref:`f_size_order()<py_fun_property@size_order>` function.
 
 07-13
 *****
 Continue conversion of python library to using ``numpy.array`` ; see
-:ref:`py_fun_jacobian<py_fun_jacobian>`, :ref:`py_fun_hessian<py_fun_hessian>`.
+:ref:`py_fun_jacobian`, :ref:`py_fun_hessian`.
 
 07-12
 *****
 
 #.  Continue conversion of python library to using ``numpy.array`` ; see
-    :ref:`py_independent<py_independent>`, :ref:`py_fun_ctor<py_fun_ctor>`.
+    :ref:`py_independent`, :ref:`py_fun_ctor`.
 #.  Add the file ``cppad_py/python_major_version`` which contains
     the major version of python that this build of ``cppad_py`` is for.
-#.  Automatically use :ref:`build_type<get_cppad_sh.settings.build_type>`
+#.  Automatically use :ref:`build_type<get_cppad_sh@settings@build_type>`
     control how setup.py compiles C++
     (one used to use flags on setup.py command line).
 #.  setup.py was using the git repository version of Cppad instead of the
-    one installed in ``build/prefix`` by :ref:`get_cppad_sh<get_cppad_sh>`.
+    one installed in ``build/prefix`` by :ref:`get_cppad_sh`.
     This has been fixed.
-#.  Change ``size_ind`` to :ref:`size_domain<py_fun_property.size_domain>`
-    and ``size_dep`` to :ref:`size_range<py_fun_property.size_range>`.
+#.  Change ``size_ind`` to :ref:`size_domain<py_fun_property@size_domain>`
+    and ``size_dep`` to :ref:`size_range<py_fun_property@size_range>`.
 
 07-10
 *****
 Start conversion of python library from using
 ``vector`` to using ``numpy.array`` ; see
-:ref:`py_independent<py_independent>`.
+:ref:`py_independent`.
 
 07-08
 *****
@@ -144,10 +142,10 @@ Start conversion of python library from using
 #.  Advanced to ``cppad-20180703`` .
 #.  Fix the following warning:
     ``catching polymorphic type class 'std::runtime_error' by value`` .
-#.  Suppress the following warning when running :ref:`setup_py<setup_py>`:
+#.  Suppress the following warning when running :ref:`setup_py`:
     ``clearing an object of non-trivial type class 'cppad_py::a_double'`` ;
     see `swig issue 1259 <https://github.com/swig/swig/issues/1259>`_.
-#.  Move all settings to :ref:`setup_py<setup_py>` and run ``cmake`` from there.
+#.  Move all settings to :ref:`setup_py` and run ``cmake`` from there.
 #.  The file ``cppad_py/__init__.py`` was not being created.
     This has been fixed.
 
@@ -160,4 +158,4 @@ Change build of Python module to use Python 3
 *****
 Birthday when Cppad Py was first extracted from Cppad Swig.
 
-{xsrst_end whats_new_2018}
+{xrst_end whats_new_2018}

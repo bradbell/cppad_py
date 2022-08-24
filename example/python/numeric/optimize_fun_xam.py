@@ -5,13 +5,11 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin numeric_optimize_fun_xam_py}
+# {xrst_begin numeric_optimize_fun_xam_py}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   constr
 #   cr
 #   ipopt
@@ -55,12 +53,12 @@
 #
 # Source Code
 # ***********
-# {xsrst_file
+# {xrst_literal
 #   # BEGIN_PYTHON
 #   # END_PYTHON
 # }
 #
-# {xsrst_end numeric_optimize_fun_xam_py}
+# {xrst_end numeric_optimize_fun_xam_py}
 # BEGIN_PYTHON
 def optimize_fun_xam() :
     #

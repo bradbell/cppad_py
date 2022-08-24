@@ -1,19 +1,17 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 # initialize cppad_py
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin py_independent}
+# {xrst_begin py_independent}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   cppad
 #   adynamic
 #   nx
@@ -65,22 +63,22 @@
 #
 # Purpose
 # *******
-# This starts a recording of the :ref:`a_double<a_double>` operations.
+# This starts a recording of the :ref:`a_double` operations.
 # This recording is terminated, and the information is stored,
 # by calling the :ref:`d_fun_constructor<py_fun_ctor>`.
 # It is terminated, and the information is lost,
 # by calling :ref:`abort_recording<py_abort_recording>`.
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/core/fun_dynamic_xam.py
 # }
 # Example
 # *******
 # Most of the python ``d_fun`` examples use this function.
-# The :ref:`fun_dynamic_xam_py<fun_dynamic_xam_py>` uses the syntax that includes
+# The :ref:`fun_dynamic_xam_py` uses the syntax that includes
 # dynamic parameters.
 #
-# {xsrst_end py_independent}
+# {xrst_end py_independent}
 # -----------------------------------------------------------------------------
 # BEGIN_INDEPENDENT_SOURCE
 import cppad_py

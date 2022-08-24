@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -28,16 +28,14 @@ def fatal_error_xam() :
     return ok
 # END SOURCE
 '''
-{xsrst_begin mixed_fatal_error_xam_py}
-
-.. include:: ../preamble.rst
+{xrst_begin mixed_fatal_error_xam_py}
 
 fatal_error: Example and Test
 #############################
 
-{xsrst_file
+{xrst_literal
   # BEGIN SOURCE
   # END SOURCE
 }
-{xsrst_end mixed_fatal_error_xam_py}
+{xrst_end mixed_fatal_error_xam_py}
 '''

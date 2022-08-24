@@ -6,11 +6,9 @@
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 
-{xsrst_begin whats_new_2021}
+{xrst_begin whats_new_2021}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
     msys
     cygwin
@@ -25,19 +23,19 @@ CppAD Py Changes During 2021
 08-29
 *****
 There was an bug that prevented the
-:ref`xsrst_py.command_line_arguments.line_increment`
+:ref`xrst_py.command_line_arguments.line_increment`
 command line argument from being used.
 This has been fixed.
 
 08-26
 *****
-1.  The user no longer needs to create the ``xsrst.py``
+1.  The user no longer needs to create the ``xrst.py``
     input file ``index.rst``
     in the sphinx_dir directory
     (it is now automatically generated).
 2.  The preamble.rst example file was added to the
-    ``xsrst.py`` documentation.
-3.  Fix an error in the ``xsrst.py`` double word error message. To be specific,
+    ``xrst.py`` documentation.
+3.  Fix an error in the ``xrst.py`` double word error message. To be specific,
     line number was wrong and an extra character was included in the
     double word.
 
@@ -47,21 +45,21 @@ This has been fixed.
 The links for periods in a heading are now converted to underbars
 (so that periods are only between levels); see
 Other.Levels .
-This is an API change for xsrst.py.
+This is an API change for xrst.py.
 
 08-12
 *****
-The xsrst navigation frame on the left would have a
+The xrst navigation frame on the left would have a
 duplicate entry for each child of a section that started with
 
-| ``{xsrst_begin_parent`` *section_name* ``}``
+| ``\{xrst_begin_parent`` *section_name* ``}``
 
 This has been fixed. In addition, the list of children for this case
 are now in a table.
 
 08-08
 *****
-The xsrst.py spell checker was changed to automatically
+The xrst.py spell checker was changed to automatically
 ignore web addresses that begin with ``http://`` for ``https://``.
 It was also changed to automatically ignore sphinx directives;
 e.g. ``.. csv-table::``.
@@ -81,27 +79,27 @@ Add subset documentation to the wish list.
 #. Advance to cppad_mixed-20210515.
    This avoids running the cppad_mixed tests during ``bin/get_cppad_mixed.sh``.
    It also fixes a problem what cppad_mixed optimizes ADFun objects.
-#. Change the default :ref:`get_cppad_sh.settings.cmake_install_prefix` from
+#. Change the default :ref:`get_cppad_sh@settings@cmake_install_prefix` from
    ``$HOME/prefix/cppad`` to ``$HOME/prefix/cppad_py``.
 
 
 05-11
 *****
 In cygwin install,
-with :ref:`get_cppad_sh.settings.include_mixed` true,
+with :ref:`get_cppad_sh@settings@include_mixed` true,
 has been improved so that it works with cygwin.
 This included advancing to cppad_mixed-20210511.
 
 05-09
 *****
-#. Add discussion of installing cppad_py on :ref:`setup_py.msys2` systems.
+#. Add discussion of installing cppad_py on :ref:`setup_py@msys2` systems.
 
 05-07
 *****
 #. The python-setuptools were added to the
-   :ref:`setup_py.external_requirements`.
+   :ref:`setup_py@external_requirements`.
 #. An example of installing external requirements was added for the
-   :ref:`setup_py.cygwin`.
+   :ref:`setup_py@cygwin`.
 #. This install using pip has not been kept up to date an hence its
    instructions were removed.
 #. Advance to cppad_mixed-20210507.
@@ -111,7 +109,7 @@ This included advancing to cppad_mixed-20210511.
 *****
 #. Advance to cppad-20210428.
    This fixes some problems with the install of cppad_py on msys and cygwin.
-   The :ref:`check_for_nan_xam_py` was modified because the new version
+   The :ref:`@check_for_nan_xam_py` was modified because the new version
    of exponentiation handles more cases.
 
 #. Adapt the install for msys to the fact that soft links do not work on that
@@ -125,4 +123,4 @@ This included advancing to cppad_mixed-20210511.
     This changes the cppad_mixed install so that it uses
     ``external/``\ *build_type* for its externals.
 
-{xsrst_end whats_new_2021}
+{xrst_end whats_new_2021}

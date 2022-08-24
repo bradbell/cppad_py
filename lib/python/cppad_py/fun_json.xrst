@@ -5,11 +5,9 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin py_fun_json}
+{xrst_begin py_fun_json}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     json
 }
 
@@ -24,7 +22,7 @@ Syntax
 
 f
 *
-This is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>` function object.
+This is a :ref:`d_fun<py_fun_ctor@syntax@d_fun>` function object.
 
 json
 ****
@@ -43,12 +41,12 @@ from_json
 In this case, the argument *json* is constant and
 the function *f* is changed so it corresponds to *json* .
 
-{xsrst_children
+{xrst_toc_hidden
     example/python/core/fun_json_xam.py
 }
 Examples
 ********
-:ref:`fun_to_json_xam_py<fun_to_json_xam_py>`,
-:ref:`fun_from_json_xam_py<fun_from_json_xam_py>`.
+:ref:`fun_to_json_xam_py`,
+:ref:`fun_from_json_xam_py`.
 
-{xsrst_end py_fun_json}
+{xrst_end py_fun_json}

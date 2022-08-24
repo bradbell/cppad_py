@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -188,13 +188,11 @@ def seirwd_model(method, t_all, p_all, initial, n_step = 1) :
     return seirwd_all
 # END_PYTHON
 #
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin numeric_seirwd_model}
+# {xrst_begin numeric_seirwd_model}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   seirwd
 #   runge
 #   rcll
@@ -339,18 +337,18 @@ def seirwd_model(method, t_all, p_all, initial, n_step = 1) :
 # Note that the sum of S, E, I, R, W, and D should be constant; i.e.,
 # up to numerical accuracy, it not depend on time.
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/numeric/seirwd_model_xam.py
 # }
 # Example
 # *******
-# :ref:`numeric_seirwd_model_xam_py<numeric_seirwd_model_xam_py>`
+# :ref:`numeric_seirwd_model_xam_py`
 #
 # Source Code
 # ***********
-# {xsrst_file
+# {xrst_literal
 #   # BEGIN_PYTHON
 #   # END_PYTHON
 # }
 #
-# {xsrst_end numeric_seirwd_model}
+# {xrst_end numeric_seirwd_model}

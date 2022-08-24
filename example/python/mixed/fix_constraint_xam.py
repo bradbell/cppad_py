@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -8,12 +8,9 @@
 # mixed fix_constraint
 # -----------------------------------------------------------------------------
 '''
-{xsrst_begin mixed_fix_constraint_xam_py}
-{xsrst_spell
-    \hat
+{xrst_begin mixed_fix_constraint_xam_py}
+{xrst_spell
 }
-
-.. include:: ../preamble.rst
 
 fix_constraint: Example and Test
 ################################
@@ -51,7 +48,7 @@ Otherwise, the optimal value satisfies the equation
 :math:`c ( \hat{\theta} ) = g^L`; i.e,
 :math:`\hat{\theta} = \sqrt{g^L} - 2`.
 
-{xsrst_end mixed_fix_constraint_xam_py}
+{xrst_end mixed_fix_constraint_xam_py}
 '''
 # BEGIN SOURCE
 def fix_constraint_xam() :

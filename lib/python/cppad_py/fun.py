@@ -5,13 +5,11 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin py_fun}
+# {xrst_begin py_fun}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   cppad
 # }
 #
@@ -22,7 +20,7 @@
 #
 # Children
 # ********
-# {xsrst_child_table
+# {xrst_toc_table
 #   lib/python/cppad_py/independent.py
 #   lib/python/cppad_py/abort_recording.xrst
 #   lib/python/cppad_py/fun_ctor.py
@@ -37,7 +35,7 @@
 #   lib/python/cppad_py/fun_json.xrst
 # }
 #
-# {xsrst_end py_fun}
+# {xrst_end py_fun}
 import cppad_py
 # ----------------------------------------------------------------------------
 class d_fun :

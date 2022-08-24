@@ -71,18 +71,18 @@ The label for this heading is
 Links
 *****
 These links would also work from any other section because the
-:ref:`section_name<begin_cmd.section_name>`
+:ref:`section_name<begin_cmd@section_name>`
 (which is ``heading_res`` in this case)
 is included at the beginning of the target for the link:
 
-1. :ref:`heading_res`
-2. :ref:`heading_res.second_level`
-3. :ref:`heading_res.second_level.third_level`
-4. :ref:`heading_res.another_second_level`
-5. :ref:`heading_res.another_second_level.third_level`
+1. :ref:`@heading_res`
+2. :ref:`heading_res@second_level`
+3. :ref:`heading_res@second_level@third_level`
+4. :ref:`heading_res@another_second_level`
+5. :ref:`heading_res@another_second_level@third_level`
 
-:ref:`heading_exam`
+:ref:`@heading_exam`
 
 ----
 
-xsrst input file: ``sphinx/test_in/heading.py``
+xrst input file: ``sphinx/test_in/heading.py``

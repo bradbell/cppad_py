@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -43,9 +43,7 @@ class optimize_fun_class :
         return H
 # END_PYTHON
 """
-{xsrst_begin numeric_optimize_fun_class}
-
-.. include:: ../preamble.rst
+{xrst_begin numeric_optimize_fun_class}
 
 A Helper Class That Defines Functions Needed for Optimization
 #############################################################
@@ -73,7 +71,7 @@ We use :math:`n`, :math:`m` for the length of the vectors
 
 objective_ad
 ************
-This is a :ref:`d_fun<py_fun_ctor.syntax.d_fun>`
+This is a :ref:`d_fun<py_fun_ctor@syntax@d_fun>`
 representation of the function :math:`f(x)`.
 
 constraint_ad
@@ -148,19 +146,19 @@ sets
 where *x* is a numpy vector with length *n*
 and *H* is a numpy *n* by *n*  matrix.
 
-{xsrst_children
+{xrst_toc_hidden
     example/python/numeric/optimize_fun_xam.py
 }
 Example
 *******
-:ref:`numeric_optimize_fun_xam_py<numeric_optimize_fun_xam_py>`
+:ref:`numeric_optimize_fun_xam_py`
 
 Source Code
 ***********
-{xsrst_file
+{xrst_literal
     # BEGIN_PYTHON
     # END_PYTHON
 }
 
-{xsrst_end numeric_optimize_fun_class}
+{xrst_end numeric_optimize_fun_class}
 """

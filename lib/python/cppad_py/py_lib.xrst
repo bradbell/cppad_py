@@ -5,16 +5,14 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin py_lib}
-
-.. include:: ../preamble.rst
+{xrst_begin py_lib}
 
 The Python Library
 ##################
 
 Children
 ********
-{xsrst_child_table
+{xrst_toc_table
     lib/python/cppad_py/fun.py
     lib/python/cppad_py/sparse.xrst
     lib/python/cppad_py/utility.xrst
@@ -22,4 +20,4 @@ Children
     lib/python/cppad_py/more_py.xrst
 }
 
-{xsrst_end py_lib}
+{xrst_end py_lib}

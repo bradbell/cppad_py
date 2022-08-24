@@ -5,13 +5,11 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin py_sparse_rc}
+# {xrst_begin py_sparse_rc}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   nnz
 #   cppad
 # }
@@ -145,14 +143,14 @@
 # This routine generates an assert if there are two entries with the same
 # row and column values (if ``NDEBUG`` is not defined).
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/core/sparse_rc_xam.py
 # }
 # Example
 # *******
-# :ref:`sparse_rc_xam_py<sparse_rc_xam_py>`
+# :ref:`sparse_rc_xam_py`
 #
-# {xsrst_end py_sparse_rc}
+# {xrst_end py_sparse_rc}
 # -----------------------------------------------------------------------------
 import cppad_py
 import numpy

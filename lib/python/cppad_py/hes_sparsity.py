@@ -1,17 +1,15 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin py_hes_sparsity}
+# {xrst_begin py_hes_sparsity}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   hes
 #   bool
 # }
@@ -67,7 +65,7 @@
 #
 # pattern_out
 # ***********
-# This argument must have be a :ref:`pattern<py_sparse_rc.pattern>`
+# This argument must have be a :ref:`pattern<py_sparse_rc@pattern>`
 # returned by the ``sparse_rc`` constructor.
 # This input value of *pattern_out* does not matter.
 # Upon return *pattern_out* is a sparsity pattern for
@@ -80,14 +78,14 @@
 # In this case, *pattern_out* is a sparsity pattern for
 # :math:`F_i^{(2)} ( x )`.
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/core/sparse_hes_pattern_xam.py
 # }
 # Example
 # *******
 # :ref:`python<sparse_hes_pattern_xam_py>`
 #
-# {xsrst_end py_hes_sparsity}
+# {xrst_end py_hes_sparsity}
 # -----------------------------------------------------------------------------
 # undocumented fact: pattern.rc is vec_int version of sparsity pattern
 from cppad_py.utility import numpy2vec

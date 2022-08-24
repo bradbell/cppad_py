@@ -5,11 +5,9 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin py_fun_property}
+{xrst_begin py_fun_property}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
 }
 
 Properties of a Function Object
@@ -27,22 +25,22 @@ Syntax
 f
 *
 This is either a
-:ref:`d_fun<py_fun_ctor.syntax.d_fun>` or
-:ref:`a_fun<py_fun_ctor.syntax.a_fun>` function object
+:ref:`d_fun<py_fun_ctor@syntax@d_fun>` or
+:ref:`a_fun<py_fun_ctor@syntax@a_fun>` function object
 and is constant; i.e., not changed.
 
 size_domain
 ***********
 The return value *n* is an ``int``
 and is the size of the vector
-:ref:`ax<py_fun_ctor.ax>` in the function constructor; i.e.,
+:ref:`ax<py_fun_ctor@ax>` in the function constructor; i.e.,
 the number of independent variables.
 
 size_range
 **********
 The return value *m* is an ``int``
 and is the size of the vector
-:ref:`ay<py_fun_ctor.ay>` in the function constructor; i.e.,
+:ref:`ay<py_fun_ctor@ay>` in the function constructor; i.e.,
 the number of dependent variables.
 
 size_var
@@ -64,16 +62,16 @@ size_order
 The return value *q* is an ``int``
 and is the number of Taylor coefficients currently stored in *f* ,
 for every variable in the operation sequence corresponding to *f* .
-These coefficients are computed by :ref:`py_fun_forward<py_fun_forward>`.
+These coefficients are computed by :ref:`py_fun_forward`.
 This is different from the other function properties in that it can change
 after each call to *f*\ ``.forward`` ; see
-:ref:`size_order<py_fun_forward.p.size_order>` in the forward mode section.
+:ref:`size_order<py_fun_forward@p@size_order>` in the forward mode section.
 
-{xsrst_children
+{xrst_toc_hidden
     example/python/core/fun_property_xam.py
 }
 Example
 *******
-:ref:`fun_property_xam_py<fun_property_xam_py>`
+:ref:`fun_property_xam_py`
 
-{xsrst_end py_fun_property}
+{xrst_end py_fun_property}

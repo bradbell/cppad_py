@@ -44,4 +44,4 @@ This File
 
 ----
 
-xsrst input file: ``sphinx/test_in/children.py``
+xrst input file: ``sphinx/test_in/children.py``

@@ -5,11 +5,9 @@
              GNU General Public License version 3.0 or later see
                    https://www.gnu.org/licenses/gpl-3.0.txt
 -----------------------------------------------------------------------------
-{xsrst_begin py_abort_recording}
+{xrst_begin py_abort_recording}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
 }
 
@@ -25,11 +23,11 @@ Purpose
 This aborts the current recording (if it exists)
 started by the most recent call to :ref:`independent<py_independent>`.
 
-{xsrst_children
+{xrst_toc_hidden
     example/python/core/fun_abort_xam.py
 }
 Example
 *******
 :ref:`python<fun_abort_xam_py>`
 
-{xsrst_end py_abort_recording}
+{xrst_end py_abort_recording}

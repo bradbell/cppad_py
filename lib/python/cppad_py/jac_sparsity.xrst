@@ -5,11 +5,9 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin py_jac_sparsity}
+{xrst_begin py_jac_sparsity}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
 }
 
 Jacobian Sparsity Patterns
@@ -67,13 +65,13 @@ reverse Hessian sparsity calculations.
 
 pattern_in
 **********
-This argument must have be a :ref:`pattern<py_sparse_rc.pattern>`
+This argument must have be a :ref:`pattern<py_sparse_rc@pattern>`
 returned by the ``sparse_rc`` constructor.
 It specifies the sparsity pattern for :math:`R`.
 
 pattern_out
 ***********
-This argument must have be a :ref:`pattern<py_sparse_rc.pattern>`
+This argument must have be a :ref:`pattern<py_sparse_rc@pattern>`
 returned by the ``sparse_rc`` constructor.
 This input value of *pattern_out* does not matter.
 Upon return *pattern_out* is a sparsity pattern for
@@ -85,11 +83,11 @@ Suppose that :math:`R` is the identity matrix.
 In this case, *pattern_out* is a sparsity pattern for
 :math:`F^{(1)} ( x )`.
 
-{xsrst_children
+{xrst_toc_hidden
     example/python/core/sparse_jac_pattern_xam.py
 }
 Example
 *******
 :ref:`python<sparse_jac_pattern_xam_py>`
 
-{xsrst_end py_jac_sparsity}
+{xrst_end py_jac_sparsity}

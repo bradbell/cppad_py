@@ -36,8 +36,8 @@ Product
 *******
 *p* = ``product(`` *iterable* ``)``
 
-:ref:`suspend_exam`
+:ref:`@suspend_exam`
 
 ----
 
-xsrst input file: ``sphinx/test_in/suspend.py``
+xrst input file: ``sphinx/test_in/suspend.py``

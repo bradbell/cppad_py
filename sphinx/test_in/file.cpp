@@ -1,22 +1,22 @@
 // --------------------------------------------------------------------------
 //         cppad_py: A C++ Object Library and Python Interface to Cppad
-//          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+//          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 //              This program is distributed under the terms of the
 //              GNU General Public License version 3.0 or later see
 //                    https://www.gnu.org/licenses/gpl-3.0.txt
 /*
 ------------------------------------------------------------------------------
-{xsrst_begin_parent file_exam}
+{xrst_begin_parent file_exam}
 
 File Example
 ############
 
-{xsrst_file
+{xrst_literal
     // BEGIN_SRC
     // END_SRC
 }
 
-{xsrst_end file_exam}
+{xrst_end file_exam}
 ------------------------------------------------------------------------------
 */
 // BEGIN_SRC
@@ -35,26 +35,26 @@ template<class T> square(const T& x)
 }
 /*
 ------------------------------------------------------------------------------
-{xsrst_begin file_res}
+{xrst_begin file_res}
 
 File Result
 ###########
 
 factorial
 *********
-{xsrst_file
+{xrst_literal
     // BEGIN_FACTORIAL
     // END_FACTORIAL
 }
 
 square
 ******
-{xsrst_file
+{xrst_literal
     // BEGIN_SQUARE
     // END_SQUARE
 }
 
-{xsrst_end file_res}
+{xrst_end file_res}
 ------------------------------------------------------------------------------
 */
 // END_SRC

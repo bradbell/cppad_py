@@ -7,11 +7,9 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 #
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin get_cppad_mixed_sh}
-#
-# .. include:: ../preamble.rst
+# {xrst_begin get_cppad_mixed_sh}
 #
 # Get cppad_mixed
 # ###############
@@ -23,22 +21,22 @@
 # Top Source Directory
 # ********************
 # This program must be run from the
-# :ref:`top_source_directory<setup_py.download.top_source_directory>`.
+# :ref:`top_source_directory<setup_py@download@top_source_directory>`.
 #
 # Purpose
 # *******
 # If you are going to use the python ``cppad_mixed`` module,
 # you will need to run this script to install the corresponding
 # C++ module. This script includes the installation of cppad so it is not
-# necessary to also run :ref:`get_cppad.sh<get_cppad.sh>`.
+# necessary to also run :ref:`get_cppad@sh<get_cppad@sh>`.
 #
 # Settings
 # ********
 # This scripts uses the
-# :ref:`get_cppad.sh settings<get_cppad_sh.settings>` for
+# :ref:`get_cppad@sh settings<get_cppad_sh@settings>` for
 # *cmake_install_prefix* , *extra_cxx_flags*, and *build_type* .
 #
-# {xsrst_end get_cppad_mixed_sh}
+# {xrst_end get_cppad_mixed_sh}
 # ---------------------------------------------------------------------------
 # CppAD mixed version information
 web_page='https://github.com/bradbell/cppad_mixed.git'

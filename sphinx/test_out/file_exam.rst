@@ -29,8 +29,8 @@ File Example
     :header: "Child", "Title"
     :widths: 20, 80
 
-    "file_res", :ref:`file_res`
+    "file_res", :ref:`@file_res`
 
 ----
 
-xsrst input file: ``sphinx/test_in/file.cpp``
+xrst input file: ``sphinx/test_in/file.cpp``

@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 //         cppad_py: A C++ Object Library and Python Interface to Cppad
-//          Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
+//          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 //              This program is distributed under the terms of the
 //              GNU General Public License version 3.0 or later see
 //                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -70,18 +70,16 @@ bool fun_check_for_nan_xam(void) {
 // END SOURCE
 // -----------------------------------------------------------------------------
 /*
-{xsrst_begin fun_check_for_nam_xam}
+{xrst_begin fun_check_for_nam_xam}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
 }
 C++: Check For Nan in Function Result: Example and Test
 #######################################################
-{xsrst_file
+{xrst_literal
     // BEGIN SOURCE
     // END SOURCE
 }
-{xsrst_end fun_check_for_nam_xam}
+{xrst_end fun_check_for_nam_xam}
 */
 //

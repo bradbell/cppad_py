@@ -7,13 +7,11 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 #
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin get_cppad_sh}
+# {xrst_begin get_cppad_sh}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   cppad
 #   cxx
 #   Wno
@@ -30,7 +28,7 @@
 # Top Source Directory
 # ********************
 # This program must be run from the
-# :ref:`top_source_directory<setup_py.download.top_source_directory>`.
+# :ref:`top_source_directory<setup_py@download@top_source_directory>`.
 #
 # Settings
 # ********
@@ -41,11 +39,11 @@
 # This prefix is used to install cppad_py. It may be a local directory; e.g.,
 # ``build/prefix`` or an absolute path; e.g., ``/usr/local``.
 # It may include the shell variable ``$HOME`` but no other variables:
-# {xsrst_code sh}
+# {xrst_code sh}
 cmake_install_prefix="$HOME/prefix/cppad_py"
-# {xsrst_code}
+# {xrst_code}
 # If this prefix does no start with ``/``, it is relative to the
-# :ref:`top_source_directory<setup_py.download.top_source_directory>`.
+# :ref:`top_source_directory<setup_py@download@top_source_directory>`.
 # Note that ``$HOME`` starts with ``/``.
 #
 # extra_cxx_flags
@@ -53,18 +51,18 @@ cmake_install_prefix="$HOME/prefix/cppad_py"
 # Extra compiler flags used when compiling c++ code not including the
 # debugging and optimization flags.
 # The ones below are example flags are used by g++:
-# {xsrst_code sh}
+# {xrst_code sh}
 extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
-# {xsrst_code}
+# {xrst_code}
 #
 # build_type
 # ==========
 # This must be must ``debug`` or ``release`` .
 # The debug version has more error messaging while the release
 # version runs faster.
-# {xsrst_code sh}
+# {xrst_code sh}
 build_type='release'
-# {xsrst_code}
+# {xrst_code}
 #
 # cmake_install_prefix
 # --------------------
@@ -87,9 +85,9 @@ build_type='release'
 # =============
 # This flag is true (false) if we are (are not)
 # including the python cppad_mixed interface.
-# {xsrst_code sh}
+# {xrst_code sh}
 include_mixed='false'
-# {xsrst_code}
+# {xrst_code}
 # If it is true, the install script ``bin/get_cppad_mixed.sh``
 # should be used to install Cppad together with the all the other cppad_mixed
 # requirements.
@@ -100,9 +98,9 @@ include_mixed='false'
 # This must be must ``true`` or ``false`` .
 # Cppad has a huge test suite and this can take a significant amount of time,
 # but it may be useful if you have problems.
-# {xsrst_code sh}
+# {xrst_code sh}
 test_cppad='false'
-# {xsrst_code}
+# {xrst_code}
 #
 # Caching
 # *******
@@ -114,7 +112,7 @@ test_cppad='false'
 #
 # and re-running this script.
 #
-# {xsrst_end get_cppad_sh}
+# {xrst_end get_cppad_sh}
 # -----------------------------------------------------------------------------
 # CppAD version information
 # Use same cppad_version and has_code as in cppad_mixed.git/bin/install_cppad.sh

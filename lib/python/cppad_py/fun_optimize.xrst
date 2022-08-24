@@ -5,11 +5,9 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin py_fun_optimize}
+{xrst_begin py_fun_optimize}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
 }
 
 Optimize an AD Function
@@ -30,15 +28,15 @@ of time and memory.
 f
 *
 This is a
-:ref:`d_fun<cpp_fun_ctor.syntax.d_fun>`.
+:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>`.
 Optimizing this *f* also optimizes the
-corresponding :ref:`a_fun<py_fun_ctor.syntax.a_fun>`.
+corresponding :ref:`a_fun<py_fun_ctor@syntax@a_fun>`.
 
-{xsrst_children
+{xrst_toc_hidden
     example/python/core/fun_optimize_xam.py
 }
 Example
 *******
-:ref:`fun_optimize_xam_py<fun_optimize_xam_py>`
+:ref:`fun_optimize_xam_py`
 
-{xsrst_end py_fun_optimize}
+{xrst_end py_fun_optimize}

@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 //         cppad_py: A C++ Object Library and Python Interface to Cppad
-//          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+//          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 //              This program is distributed under the terms of the
 //              GNU General Public License version 3.0 or later see
 //                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -59,20 +59,18 @@ bool to_json_xam(void) {
 }
 // END_TO_JSON_XAM
 /*
-{xsrst_begin fun_to_json_xam_cpp}
+{xrst_begin fun_to_json_xam_cpp}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     json
 }
 C++: to_json: Example and Test
 ##############################
-{xsrst_file
+{xrst_literal
     // BEGIN_TO_JSON_XAM
     // END_TO_JSON_XAM
 }
-{xsrst_end fun_to_json_xam_cpp}
+{xrst_end fun_to_json_xam_cpp}
 -----------------------------------------------------------------------------
 */
 // BEGIN_FROM_JSON_XAM
@@ -138,20 +136,18 @@ bool from_json_xam(void) {
 // END_FROM_JSON_XAM
 // --------------------------------------------------------------------------
 /*
-{xsrst_begin fun_from_json_xam_cpp}
+{xrst_begin fun_from_json_xam_cpp}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     json
 }
 C++: from_json: Example and Test
 ################################
-{xsrst_file
+{xrst_literal
     // BEGIN_FROM_JSON_XAM
     // END_FROM_JSON_XAM
 }
-{xsrst_end fun_from_json_xam_cpp}
+{xrst_end fun_from_json_xam_cpp}
 */
 // ==========================================================================
 } // end empty namespace

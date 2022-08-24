@@ -29,8 +29,8 @@ Indent Example
     :header: "Child", "Title"
     :widths: 20, 80
 
-    "indent_res", :ref:`indent_res`
+    "indent_res", :ref:`@indent_res`
 
 ----
 
-xsrst input file: ``sphinx/test_in/indent.py``
+xrst input file: ``sphinx/test_in/indent.py``

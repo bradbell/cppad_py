@@ -29,8 +29,8 @@ Suspend Example
     :header: "Child", "Title"
     :widths: 20, 80
 
-    "suspend_res", :ref:`suspend_res`
+    "suspend_res", :ref:`@suspend_res`
 
 ----
 
-xsrst input file: ``sphinx/test_in/suspend.py``
+xrst input file: ``sphinx/test_in/suspend.py``

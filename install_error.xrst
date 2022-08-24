@@ -5,11 +5,9 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-{xsrst_begin install_error}
+{xrst_begin install_error}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     pc
     setuptools
     errno
@@ -71,14 +69,14 @@ cppad.pc, cppad_mixed.pc
 
 where *name* is ``cppad`` or ``cppad_mixed``.
 You probably did not set
-:ref:`PKG_CONFIG_PATH <setup_py.pkg_config_path>` correctly.
+:ref:`PKG_CONFIG_PATH <setup_py@pkg_config_path>` correctly.
 
 symbolic link
 =============
 | |tab| ``build_type.sh:`` *prefix*  ``is not a symbolic link``
 
 where *prefix* is the
-:ref:`get_cppad_sh.settings.cmake_install_prefix` in ``bin/get_cppad.sh``.
+:ref:`get_cppad_sh@settings@cmake_install_prefix` in ``bin/get_cppad.sh``.
 Try removing the *prefix* directory and re-running setup.py.
 
 Fortify Source
@@ -87,7 +85,7 @@ Fortify Source
 
 This is a problem with the python setuptools,
 one can un-define a macro, but it does not remove a original definition.
-It only happens when :ref:`build_type<get_cppad_sh.settings.build_type>`
+It only happens when :ref:`build_type<get_cppad_sh@settings@build_type>`
 to ``debug`` .
 
 stdio.h
@@ -115,7 +113,7 @@ If your are using ``port`` , try the following :
 
 check_all.py
 ************
-The following error messages may appear while
+The following error messages may appear
 while running ``python3 example/python/check_all.py`` :
 
 numpy, scipy
@@ -137,12 +135,12 @@ If you are testing the local copy, make sure that the directory
 
 | |tab| *top_src*\ ``/cppad_py``
 
-exists; see :ref:`local build <setup_py.local_build>` .
+exists; see :ref:`local build <setup_py@local_build>` .
 If you are testing the installed version, make sure the directory
 
 | |tab| ``$PYTHONPATH/cppad_py``
 
-exists; see :ref:`PYTHONPATH <setup_py.pythonpath>` .
+exists; see :ref:`PYTHONPATH <setup_py@pythonpath>` .
 
 
 libcppad_lib
@@ -150,9 +148,9 @@ libcppad_lib
 | |tab| ``ImportError: libcppad_lib.so`` ... ``can not open shared object file``
 
 This means the CppAD library
-is not in your :ref:`LD_LIBRARY_PATH<setup_py.LD_LIBRARY_PATH>` .
+is not in your :ref:`LD_LIBRARY_PATH<setup_py@LD_LIBRARY_PATH>` .
 If you have a Mac, you will instead need to set ``DYLD_LIBRARY_PATH`` .
 
 
 
-{xsrst_end install_error}
+{xrst_end install_error}

@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 //         cppad_py: A C++ Object Library and Python Interface to Cppad
-//          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+//          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 //              This program is distributed under the terms of the
 //              GNU General Public License version 3.0 or later see
 //                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -61,18 +61,16 @@ bool sparse_rc_xam(void) {
 // END SOURCE
 //
 /*
-{xsrst_begin sparse_rc_xam_cpp}
+{xrst_begin sparse_rc_xam_cpp}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
 }
 C++: Sparsity Patterns: Example and Test
 ########################################
-{xsrst_file
+{xrst_literal
     // BEGIN SOURCE
     // END SOURCE
 }
-{xsrst_end sparse_rc_xam_cpp}
+{xrst_end sparse_rc_xam_cpp}
 */
 //

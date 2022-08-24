@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
            cppad_py: A C++ Object Library and Python Interface to Cppad
-            Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+            Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
                 This program is distributed under the terms of the
                 GNU General Public License version 3.0 or later see
                       https://www.gnu.org/licenses/gpl-3.0.txt
@@ -10,8 +10,8 @@
 # include <cppad/utility/to_string.hpp>
 
 /*
-{xsrst_begin cppad_error}
-{xsrst_spell
+{xrst_begin cppad_error}
+{xrst_spell
     namespace
     cppad
     exp
@@ -24,9 +24,9 @@ Code
 ****
 The following CppAD error handler is created
 in the empty namespace corresponding to the ``cppad_error.cpp`` file:
-{xsrst_code cpp}
+{xrst_code cpp}
     CppAD::ErrorHandler cppad_error(handler);
-{xsrst_code}
+{xrst_code}
 
 handler
 *******
@@ -55,12 +55,12 @@ is a string containing the information above.
 
 Example
 *******
-{xsrst_child_list
+{xrst_toc_list
     example/python/core/cppad_error_xam.py
 }
 
 
-{xsrst_end cppad_error}
+{xrst_end cppad_error}
 */
 namespace { // BEGIN_EMPTY_NAMESPACE
     void handler(

@@ -5,45 +5,45 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # ----------------------------------------------------------------------------
-{xsrst_begin_parent no_parent_exam}
+{xrst_begin_parent no_parent_exam}
 
 No Parent Example
 #################
 All the sections in the file ``children.py``
 are children of the section below
 because ``children.py`` does not have a
-:ref:`parent section<begin_cmd.parent_section>`:
-{xsrst_file
+:ref:`parent section<begin_cmd@parent_section>`:
+{xrst_literal
     # BEGIN_SRC
     # END_SRC
 }
 
-{xsrst_end no_parent_exam}
+{xrst_end no_parent_exam}
 ------------------------------------------------------------------------------
 # BEGIN_SRC
-    {xsrst_begin no_parent_res}
+    {xrst_begin no_parent_res}
 
     No Parent Result
     ################
     The file ``children.py`` does not contain a begin parent command
     and hence all the sections in that file are children of this section.
     The source code for this example is indented similar to the
-    :ref:`indent_exam`.
+    :ref:`@indent_exam`.
 
     children.py File
     ****************
-    Go to the heading :ref:`This File<children_exam.this_file>` in
+    Go to the heading :ref:`This File<children_exam@this_file>` in
     the children_exam section linked below:
 
     Child Link children.py
     **********************
-    {xsrst_child_list
+    {xrst_toc_list
             sphinx/test_in/children.py
     }
 
     Example
     *******
-    :ref:`no_parent_exam`
+    :ref:`@no_parent_exam`
 
-    {xsrst_end no_parent_res}
+    {xrst_end no_parent_res}
 # END_SRC

@@ -5,17 +5,15 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin release_notes}
+{xrst_begin release_notes}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
 }
 
 CppAD Py Release Notes By Year
 ##############################
 
-{xsrst_children
+{xrst_toc_hidden
     whats_new/2021.xrst
     whats_new/2020.xrst
     whats_new/2018.xrst
@@ -24,4 +22,4 @@ CppAD Py Release Notes By Year
 :ref:`2020<whats_new_2020>`
 :ref:`2018<whats_new_2018>`
 
-{xsrst_end release_notes}
+{xrst_end release_notes}

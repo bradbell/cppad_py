@@ -1,17 +1,15 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xsrst_comment_ch #}
+# {xrst_comment_ch #}
 #
-# {xsrst_begin py_fun_ctor}
+# {xrst_begin py_fun_ctor}
 #
-# .. include:: ../preamble.rst
-#
-# {xsrst_spell
+# {xrst_spell
 #   cppad
 #   af
 # }
@@ -36,7 +34,7 @@
 # ax
 # **
 # This argument must be the same as
-# :ref:`ax<py_independent.ax>`
+# :ref:`ax<py_independent@ax>`
 # returned by the previous call to ``independent`` ; i.e.,
 # it must be the independent variable vector.
 # We use *n*
@@ -62,7 +60,7 @@
 # ==============
 # In the case where *ax* and *ay* are not present
 # the function is 'empty' and all its sizes are zero; see
-# :ref:`cpp_fun_property<cpp_fun_property>`.
+# :ref:`cpp_fun_property`.
 #
 # af
 # **
@@ -71,18 +69,18 @@
 # This object computes function and derivative values using
 # ``a_double``
 # Initially, there are not Taylor coefficient stored in *af* ; i.e.,
-# :ref:`af_size_order()<py_fun_property.size_order>` is zero.
+# :ref:`af_size_order()<py_fun_property@size_order>` is zero.
 #
-# {xsrst_children
+# {xrst_toc_hidden
 #   example/python/core/a_fun_xam.py
 # }
 # Example
 # *******
 # All of the examples use the ``d_fun`` constructor.
-# The example :ref:`a_fun_xam_py<a_fun_xam_py>` demonstrates the purpose of
+# The example :ref:`a_fun_xam_py` demonstrates the purpose of
 # ``a_fun`` objects.
 #
-# {xsrst_end py_fun_ctor}
+# {xrst_end py_fun_ctor}
 # -----------------------------------------------------------------------------
 import numpy
 import cppad_py

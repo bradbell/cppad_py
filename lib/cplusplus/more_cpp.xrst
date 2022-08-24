@@ -5,11 +5,9 @@
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin more_cpp}
+{xrst_begin more_cpp}
 
-.. include:: ../preamble.rst
-
-{xsrst_spell
+{xrst_spell
     cppad
     hpp
     cplusplus
@@ -26,10 +24,10 @@ Purpose
 *******
 This section outlines the steps for adding more CppAD functionality
 to cppad_py.
-This is done by example showing how the :ref:`cpp_fun_new_dynamic<cpp_fun_new_dynamic>` was added.
+This is done by example showing how the :ref:`cpp_fun_new_dynamic` was added.
 This example case was chosen because it required both changing one
-C++ function, :ref:`cpp_independent<cpp_independent>`,
-and adding a new C++ function, :ref:`cpp_fun_new_dynamic<cpp_fun_new_dynamic>`.
+C++ function, :ref:`cpp_independent`,
+and adding a new C++ function, :ref:`cpp_fun_new_dynamic`.
 
 Include File
 ************
@@ -38,12 +36,12 @@ independent
 ===========
 The include file ``include/cppad/py/fun.hpp``
 was edited to add the following prototype:
-{xsrst_code cpp}
+{xrst_code cpp}
     CPPAD_PY_LIB_PUBLIC
     std::vector<a_double> independent(
         const std::vector<double>& x, const std::vector<double>& dynamic
     );
-{xsrst_code}
+{xrst_code}
 The ``independent`` function is not part of the
 ``d_fun`` or ``a_fun`` class, but
 calling it is the first step in creating these objects.
@@ -53,13 +51,13 @@ new_dynamic
 ===========
 The include file ``include/cppad/py/fun.hpp``
 was edited to add the following member function to ``d_fun`` :
-{xsrst_code cpp}
+{xrst_code cpp}
     void new_dynamic(const std::vector<double>& dynamic);
-{xsrst_code}
+{xrst_code}
 The following member function was added to ``a_fun`` :
-{xsrst_code cpp}
+{xrst_code cpp}
     void new_dynamic(const std::vector<a_double>& adynamic);
-{xsrst_code}
+{xrst_code}
 
 Documentation
 *************
@@ -72,23 +70,23 @@ was edited to add the following syntax documentation:
 | |tab| *a_both* =  ``cppad_py::independent`` ( *x* , *dynamic* )
 
 and the corresponding return value was documented; see
-:ref:`a_both<cpp_independent.a_both>`.
+:ref:`a_both<cpp_independent@a_both>`.
 
 new_dynamic
 ===========
-The :ref:`cpp_fun_new_dynamic<cpp_fun_new_dynamic>` documentation was added.
+The :ref:`cpp_fun_new_dynamic` documentation was added.
 
 Example
 =======
 The corresponding example file was added to the documentation,
-below the :ref:`cpp_independent<cpp_independent>` section, using the OMhelp commands:
+below the :ref:`cpp_independent` section, using the OMhelp commands:
 
-| |tab| { ``xsrst_dollar}children%``
+| |tab| { ``xrst_dollar}children%``
 | |tab| |tab| ``example/cplusplus/fun_dynamic_xam.cpp``
-| |tab| ``%${xsrst_dollar`` }
+| |tab| ``%${xrst_dollar`` }
 
 In addition, a reference to this example was added under the
-:ref:`example<cpp_independent.example>` heading in the ``independent``
+:ref:`example<cpp_independent@example>` heading in the ``independent``
 documentation.
 
 Implementation
@@ -97,7 +95,7 @@ Implementation
 independent
 ===========
 The following function was added to the ``lib/cplusplus/fun.cpp`` file:
-{xsrst_file
+{xrst_literal
     // BEGIN_A_BOTH_INDEPENDENT_SOURCE
     // END_A_BOTH_INDEPENDENT_SOURCE
     lib/cplusplus/fun.cpp
@@ -107,7 +105,7 @@ new_dynamic
 ===========
 The following function
 was added to the ``lib/cplusplus/fun.cpp`` file:
-{xsrst_file
+{xrst_literal
     // BEGIN_NEW_DYNAMIC_SOURCE
     // END_NEW_DYNAMIC_SOURCE
     lib/cplusplus/fun.cpp
@@ -118,7 +116,7 @@ Example
 *******
 The file ``example/cplusplus/fun_dynamic_xam.cpp`` was added
 with the following contents:
-:ref:`fun_dynamic_xam_cpp<fun_dynamic_xam_cpp>`.
+:ref:`fun_dynamic_xam_cpp`.
 In addition, in the file ``example/cplusplus/check_all.cpp`` :
 
 | |tab| ``extern bool fun_optimize_xam(void);``
@@ -146,4 +144,4 @@ you can just re-run that step to see if a particular fix works.
 Once the C++ tests were working, the changes where checked into using
 ``git`` .
 
-{xsrst_end more_cpp}
+{xrst_end more_cpp}

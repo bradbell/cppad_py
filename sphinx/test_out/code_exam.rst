@@ -29,8 +29,8 @@ Code Example
     :header: "Child", "Title"
     :widths: 20, 80
 
-    "code_res", :ref:`code_res`
+    "code_res", :ref:`@code_res`
 
 ----
 
-xsrst input file: ``sphinx/test_in/code.py``
+xrst input file: ``sphinx/test_in/code.py``

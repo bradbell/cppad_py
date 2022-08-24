@@ -30,8 +30,8 @@ Comment Character Example
     :header: "Child", "Title"
     :widths: 20, 80
 
-    "comment_ch_res", :ref:`comment_ch_res`
+    "comment_ch_res", :ref:`@comment_ch_res`
 
 ----
 
-xsrst input file: ``sphinx/test_in/comment_ch.py``
+xrst input file: ``sphinx/test_in/comment_ch.py``
