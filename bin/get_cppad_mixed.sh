@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-21 Bradley M. Bell (bradbell$seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell$seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -42,8 +42,8 @@
 # ---------------------------------------------------------------------------
 # CppAD mixed version information
 web_page='https://github.com/bradbell/cppad_mixed.git'
-hash_key='56ce3bdecfa933fc396416f3ff75e6b969b0b4d4'
-version='20210515'
+hash_key='bf05548b74dcf0df3f5af4ee5a3b6ee54383c6ed'
+version='20220519'
 # --------------------------------------------------------------------------
 name='bin/get_cppad_mixed.sh'
 if [ $0 != $name ]
@@ -166,7 +166,6 @@ then
     echo "get_cppad_mixed.sh: Edit of $dir/bin/run_cmake.sh failed"
     exit 1
 fi
-# -----------------------------------------------------------------------------
 # -----------------------------------------------------------------------------
 # cppad_mixed example install
 run_test='false'
