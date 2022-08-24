@@ -26,14 +26,14 @@ fi
 target="$1"
 # -----------------------------------------------------------------------------
 project='cppad_py'
-if ! grep "{xrst_begin $project}" doc.xrst > /dev/null
+if ! grep "{xrst_begin $project}" cppad_py.xrst > /dev/null
 then
-   echo "can not find {xrst_begin $project} in doc.xrst"
+   echo "can not find {xrst_begin $project} in cppad_py.xrst"
    exit 1
 fi
 # -----------------------------------------------------------------------------
 # xsrst
-xrst --target $target --output doc doc.xrst
+xrst --target $target --output doc cppad_py.xrst
 # -----------------------------------------------------------------------------
 echo 'run_sphinx.sh: OK'
 exit 0

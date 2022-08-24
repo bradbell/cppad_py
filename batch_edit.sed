@@ -14,10 +14,12 @@
 # '
 # list of files and or directories that are moved to new names
 # move_paths='
+#  doc.xrst
 # '
 # list of sed commands that map old file and directory names to new names.
 # The characters @s, @d, @n get converted to a space, dollar sign, new line.
 # move_seds='
+#  s|doc.xrst|cppad_py.xrst|
 # '
 # list of files that get edited by the extra_seds command
 # extra_files='
@@ -29,15 +31,4 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-/^[# ]    *az$/d
-/^[# ]    *cannot$/d
-/^[# ]    *cond$/d
-/^[# ]    *downloads$/d
-/^[# ]    *eval$/d
-/^[# ]    *init$/d
-/^[# ]    *inv$/d
-/^[# ]    *optimizer$/d
-/^[# ]    *pacman$/d
-/^[# ]    *resize$/d
-/^[# ]    *url$/d
-/^[# ]    *usr$/d
+s|doc.xrst|cppad_py.xrst|

@@ -34,14 +34,14 @@ assert J[1,1] == 2.0 * x[1]
 ## Covid-19
 A Covid-19 model, that is currently being improved,
 is included as an example; see
-[covid_19_xam](https://bradbell.github.io/cppad_py/doc.xrst/numeric_covid_19_xam_py.html?highlight=covid%2019)
+[covid_19_xam](https://bradbell.github.io/cppad_py/cppad_py.xrst/numeric_covid_19_xam_py.html?highlight=covid%2019)
 
 ## Install
-[setup.py](https://bradbell.github.io/cppad_py/doc.xrst/setup_py.html)
+[setup.py](https://bradbell.github.io/cppad_py/cppad_py.xrst/setup_py.html)
 
 ### Error
 If you get a warning or error message during the install process; see
-[install error](https://bradbell.github.io/cppad_py/doc.xrst/install_error.html)
+[install error](https://bradbell.github.io/cppad_py/cppad_py.xrst/install_error.html)
 
 ## License
 <pre>
