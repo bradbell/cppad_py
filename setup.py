@@ -530,7 +530,7 @@ sys.exit(0)
 # Children
 # ********
 # {xsrst_child_table
-#   install_error.xsrst
+#   install_error.xrst
 #   bin/get_cppad.sh
 # }
 #

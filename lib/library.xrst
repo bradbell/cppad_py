@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
           cppad_py: A C++ Object Library and Python Interface to Cppad
-           Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+           Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
@@ -19,8 +19,8 @@ The Cppad Py Libraries
 Children
 ********
 {xsrst_child_table
-    lib/python/cppad_py/py_lib.xsrst
-    lib/cplusplus/cpp_lib.xsrst
+    lib/python/cppad_py/py_lib.xrst
+    lib/cplusplus/cpp_lib.xrst
 }
 
 {xsrst_end library}
@@ -58,7 +58,7 @@ Cppad Py Vectors
 Children
 ********
 {xsrst_child_table
-    lib/cplusplus/vector.xsrst
+    lib/cplusplus/vector.xrst
 }
 
 {xsrst_end vector}

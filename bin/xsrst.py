@@ -37,7 +37,7 @@ Extract Sphinx RST
 {xsrst_children
     sphinx/test_in/heading.py
     sphinx/test_in/indent.py
-    sphinx/configure.xsrst
+    sphinx/configure.xrst
 }
 
 Syntax
@@ -470,7 +470,7 @@ You can place a heading directly before the links to make them easier to find.
 Example
 *******
 {xsrst_child_table
-   sphinx/test_in/no_parent.xsrst
+   sphinx/test_in/no_parent.xrst
 }
 
 {xsrst_end child_cmd}
@@ -2041,7 +2041,7 @@ def compute_output(
             index = file_name.rfind('.')
             if 0 <= index and index + 1 < len(file_name) :
                 extension = file_name[index + 1 :]
-                if extension == 'xsrst' :
+                if extension == 'xrst' :
                     extension = 'rst'
                 elif extension == 'hpp' :
                     extension = 'cpp' # pygments does not recognize hpp ?

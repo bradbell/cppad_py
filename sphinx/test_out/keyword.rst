@@ -20,4 +20,4 @@ The keyword Example File
 
 ----
 
-xsrst input file: ``sphinx/configure.xsrst``
+xsrst input file: ``sphinx/configure.xrst``

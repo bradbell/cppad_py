@@ -64,4 +64,4 @@ Example
 
 ----
 
-xsrst input file: ``sphinx/test_in/no_parent.xsrst``
+xsrst input file: ``sphinx/test_in/no_parent.xrst``

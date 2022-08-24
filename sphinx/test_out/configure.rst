@@ -34,4 +34,4 @@ Example xsrst Configuration Files
 
 ----
 
-xsrst input file: ``sphinx/configure.xsrst``
+xsrst input file: ``sphinx/configure.xrst``

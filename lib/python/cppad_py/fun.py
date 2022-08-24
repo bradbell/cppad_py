@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -24,17 +24,17 @@
 # ********
 # {xsrst_child_table
 #   lib/python/cppad_py/independent.py
-#   lib/python/cppad_py/abort_recording.xsrst
+#   lib/python/cppad_py/abort_recording.xrst
 #   lib/python/cppad_py/fun_ctor.py
-#   lib/python/cppad_py/fun_property.xsrst
-#   lib/python/cppad_py/fun_check_for_nan.xsrst
+#   lib/python/cppad_py/fun_property.xrst
+#   lib/python/cppad_py/fun_check_for_nan.xrst
 #   lib/python/cppad_py/fun_new_dynamic.py
 #   lib/python/cppad_py/fun_jacobian.py
 #   lib/python/cppad_py/fun_hessian.py
 #   lib/python/cppad_py/fun_forward.py
 #   lib/python/cppad_py/fun_reverse.py
-#   lib/python/cppad_py/fun_optimize.xsrst
-#   lib/python/cppad_py/fun_json.xsrst
+#   lib/python/cppad_py/fun_optimize.xrst
+#   lib/python/cppad_py/fun_json.xrst
 # }
 #
 # {xsrst_end py_fun}

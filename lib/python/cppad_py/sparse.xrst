@@ -1,21 +1,26 @@
 -------------------------------------------------------------------------------
           cppad_py: A C++ Object Library and Python Interface to Cppad
-           Copyright (C) 2017-20 Bradley M. Bell (bradbell@seanet.com)
+           Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
                This program is distributed under the terms of the
                GNU General Public License version 3.0 or later see
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
-{xsrst_begin py_utility}
+{xsrst_begin py_sparse}
 
 .. include:: ../preamble.rst
 
-Python Utilities
-################
+Python Sparsity Routines
+########################
 
 Children
 ********
 {xsrst_child_table
-    lib/python/cppad_py/utility.py
+    lib/python/cppad_py/sparse_rc.py
+    lib/python/cppad_py/sparse_rcv.py
+    lib/python/cppad_py/jac_sparsity.xrst
+    lib/python/cppad_py/hes_sparsity.py
+    lib/python/cppad_py/sparse_jac.py
+    lib/python/cppad_py/sparse_hes.py
 }
 
-{xsrst_end py_utility}
+{xsrst_end py_sparse}

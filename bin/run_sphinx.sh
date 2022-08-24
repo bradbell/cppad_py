@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # -----------------------------------------------------------------------------
 #         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-21 Bradley M. Bell (bradbell@seanet.com)
+#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
 #              This program is distributed under the terms of the
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
@@ -38,14 +38,14 @@ then
 fi
 # -----------------------------------------------------------------------------
 project='cppad_py'
-if ! grep "{xsrst_begin $project}" doc.xsrst > /dev/null
+if ! grep "{xsrst_begin $project}" doc.xrst > /dev/null
 then
-    echo "can not find {xsrst_begin $project} in doc.xsrst"
+    echo "can not find {xsrst_begin $project} in doc.xrst"
     exit 1
 fi
 # -----------------------------------------------------------------------------
 # xsrst
-echo_eval bin/xsrst.py $target doc.xsrst sphinx spelling keyword
+echo_eval bin/xsrst.py $target doc.xrst sphinx spelling keyword
 # -----------------------------------------------------------------------------
 # html
 # -----------------------------------------------------------------------------

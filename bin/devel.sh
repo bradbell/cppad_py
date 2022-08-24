@@ -12,7 +12,7 @@ image_link='https://bradbell.github.io/cppad_py'
 # List of files, besides CMakeLists.txt, that have have a copy of the
 # version number (can be empty).
 version_files='
-    doc.xsrst
+    doc.xrst
 '
 #
 # List of special files, for this repository, that the devel tools ignore.
@@ -27,7 +27,7 @@ ignore_files='
     MANIFEST.in
     sphinx/Makefile
     sphinx/conf.py
-    sphinx/configure.xsrst
+    sphinx/configure.xrst
     sphinx/index.rst
     sphinx/keyword
     sphinx/preamble.rst

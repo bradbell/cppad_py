@@ -72,10 +72,10 @@ Children
 ********
 {xsrst_child_table
     setup.py
-    example/python/numeric/numeric.xsrst
-    lib/library.xsrst
+    example/python/numeric/numeric.xrst
+    lib/library.xrst
     bin/xsrst.py
-    whats_new/release_notes.xsrst
+    whats_new/release_notes.xrst
 }
 
 {xsrst_end cppad_py}
