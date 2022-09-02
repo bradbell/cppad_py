@@ -12,7 +12,7 @@ image_link='https://bradbell.github.io/cppad_py'
 # List of files, besides CMakeLists.txt, that have have a copy of the
 # version number (can be empty).
 version_files='
-   doc.xrst
+   cppad_py.xrst
 '
 #
 # List of special files, for this repository, that the devel tools ignore.
