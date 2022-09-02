@@ -96,9 +96,9 @@ independent
 ===========
 The following function was added to the ``lib/cplusplus/fun.cpp`` file:
 {xrst_literal
+   lib/cplusplus/fun.cpp
    // BEGIN_A_BOTH_INDEPENDENT_SOURCE
    // END_A_BOTH_INDEPENDENT_SOURCE
-   lib/cplusplus/fun.cpp
 }
 
 new_dynamic
@@ -106,9 +106,9 @@ new_dynamic
 The following function
 was added to the ``lib/cplusplus/fun.cpp`` file:
 {xrst_literal
+   lib/cplusplus/fun.cpp
    // BEGIN_NEW_DYNAMIC_SOURCE
    // END_NEW_DYNAMIC_SOURCE
-   lib/cplusplus/fun.cpp
 }
 A similar function was added to the ``a_fun`` class.
 

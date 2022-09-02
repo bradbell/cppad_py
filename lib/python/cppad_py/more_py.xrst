@@ -70,9 +70,9 @@ independent
 The ``independent`` function in ``lib/python/cppad_py/independent.py``
 was changed to handle dynamic parameters as follows:
 {xrst_literal
+   lib/python/cppad_py/independent.py
    # BEGIN_INDEPENDENT_SOURCE
    # END_INDEPENDENT_SOURCE
-   lib/python/cppad_py/independent.py
 }
 
 new_dynamic
