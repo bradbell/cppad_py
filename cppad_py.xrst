@@ -23,7 +23,7 @@ A C++ Object Library and Python Interface to CppAD
 ##################################################
 
 Version 2022.9.2
-******************
+****************
 
 Git Repository
 **************
@@ -41,10 +41,10 @@ Purpose
 
 Getting Started
 ***************
-After you :ref:`configure<setup_py@configure>` and
-:ref:`install<setup_py@install>` cppad_py,
+After you :ref:`configure<setup_py@Configure>` and
+:ref:`install<setup_py@Install>` cppad_py,
 the following example is a good place to get started using it:
-:ref:`@fun_jacobian_xam_py`.
+:ref:`fun_jacobian_xam_py-0`.
 
 Numerical Examples
 ******************

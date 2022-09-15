@@ -134,9 +134,9 @@ Files that do not change are not updated (to speed up the processing).
 Example Configuration Files
 ---------------------------
 
-| |tab| conf.py: :ref:`@conf_py`
-| |tab| keyword: :ref:`@keyword`
-| |tab| spelling: :ref:`@spelling`
+| |tab| conf.py: :ref:`conf_py-0`
+| |tab| keyword: :ref:`keyword-0`
+| |tab| spelling: :ref:`spelling-0`
 
 
 spelling
@@ -276,7 +276,7 @@ You can place a heading directly before the links to make them easier to find.
 
 Example
 =======
-:ref:`@heading_exam`
+:ref:`heading_exam-0`
 
 Indentation
 ***********
@@ -290,7 +290,7 @@ you use tabs in the indentation.
 
 Example
 =======
-- :ref:`@indent_exam`
+- :ref:`indent_exam-0`
 
 Wish List
 *********
@@ -315,7 +315,7 @@ Tabs
 ====
 Tabs in a code blocks get expanded to 8 spaces; see stackoverflow_.
 It would be nice to have a way to control the size of tabs in the code blocks
-displayed by :ref:`@code_cmd` and :ref:`@file_cmd`.
+displayed by :ref:`code_cmd-0` and :ref:`file_cmd-0`.
 Perhaps it would be good to support tabs as a method for
 indenting xrst input sections.
 
@@ -331,13 +331,13 @@ their execution path.
 
 Commands
 ********
-- :ref:`@begin_cmd`
-- :ref:`@child_cmd`
-- :ref:`@spell_cmd`
-- :ref:`@suspend_cmd`
-- :ref:`@code_cmd`
-- :ref:`@file_cmd`
-- :ref:`@comment_ch_cmd`
+- :ref:`begin_cmd-0`
+- :ref:`child_cmd-0`
+- :ref:`spell_cmd-0`
+- :ref:`suspend_cmd-0`
+- :ref:`code_cmd-0`
+- :ref:`file_cmd-0`
+- :ref:`comment_ch_cmd-0`
 
 {xrst_end xrst_py}
 """
@@ -721,7 +721,7 @@ between ``xrst_comment_ch`` and *ch*.
 Leading and trailing white space around *ch* is ignored.
 There can be only one occurence of this command within a file,
 it's effect lasts for the entire file, and
-it must come before the first :ref:`@begin_cmd` in the file.
+it must come before the first :ref:`begin_cmd-0` in the file.
 
 
 Beginning of a Line

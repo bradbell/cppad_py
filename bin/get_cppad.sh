@@ -28,7 +28,7 @@
 # Top Source Directory
 # ********************
 # This program must be run from the
-# :ref:`top_source_directory<setup_py@download@top_source_directory>`.
+# :ref:`top_source_directory<setup_py@Download@Top Source Directory>`.
 #
 # Settings
 # ********
@@ -43,7 +43,7 @@
 cmake_install_prefix="$HOME/prefix/cppad_py"
 # {xrst_code}
 # If this prefix does no start with ``/``, it is relative to the
-# :ref:`top_source_directory<setup_py@download@top_source_directory>`.
+# :ref:`top_source_directory<setup_py@Download@Top Source Directory>`.
 # Note that ``$HOME`` starts with ``/``.
 #
 # extra_cxx_flags

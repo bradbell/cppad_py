@@ -22,14 +22,14 @@ Syntax
 f
 *
 This is a
-:ref:`d_fun<py_fun_ctor@syntax@d_fun>` or
-:ref:`a_fun<py_fun_ctor@syntax@a_fun>` function object.
+:ref:`d_fun<py_fun_ctor@Syntax@d_fun>` or
+:ref:`a_fun<py_fun_ctor@Syntax@a_fun>` function object.
 
 b
 *
 The argument *b* is a ``bool`` .
 If *b* is true and
-:ref:`get_cppad_sh@settings@build_type` is ``debug`` ,
+:ref:`get_cppad_sh@Settings@build_type` is ``debug`` ,
 *f* will generate an assert when ``nan`` occurs
 in its function or derivative values.
 Otherwise, it will just pass back the ``nan`` values.

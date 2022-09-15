@@ -19,8 +19,8 @@
 # f
 # *
 # This is either a
-# :ref:`d_fun<py_fun_ctor@syntax@d_fun>` or
-# :ref:`a_fun<py_fun_ctor@syntax@a_fun>`.
+# :ref:`d_fun<py_fun_ctor@Syntax@d_fun>` or
+# :ref:`a_fun<py_fun_ctor@Syntax@a_fun>`.
 # The independent :ref:`dynamic<py_independent@dynamic>` parameters
 # are changed to have the specified values.
 # The other dynamic parameters are then computed.

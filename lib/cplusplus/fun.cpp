@@ -324,8 +324,8 @@ Syntax
 f
 *
 This is either a
-:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` or
-:ref:`a_fun<cpp_fun_ctor@syntax@a_fun>` function object
+:ref:`d_fun<cpp_fun_ctor@Syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@Syntax@a_fun>` function object
 and is ``const`` .
 
 size_domain
@@ -436,8 +436,8 @@ Syntax
 f
 *
 This is either a
-:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` or
-:ref:`a_fun<cpp_fun_ctor@syntax@a_fun>` function object.
+:ref:`d_fun<cpp_fun_ctor@Syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@Syntax@a_fun>` function object.
 
 dynamic
 *******
@@ -499,10 +499,10 @@ Syntax
 f
 *
 This is either a
-:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` or
-:ref:`a_fun<cpp_fun_ctor@syntax@a_fun>` function object.
+:ref:`d_fun<cpp_fun_ctor@Syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@Syntax@a_fun>` function object.
 Upon return, the zero order
-:ref:`taylor_coefficients<cpp_fun_forward@taylor_coefficient>` in *f*
+:ref:`taylor_coefficients<cpp_fun_forward@Taylor Coefficient>` in *f*
 correspond to the value of *x* .
 The other Taylor coefficients in *f* are unspecified.
 
@@ -584,10 +584,10 @@ Syntax
 f
 *
 This is either a
-:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` or
-:ref:`a_fun<cpp_fun_ctor@syntax@a_fun>` function object.
+:ref:`d_fun<cpp_fun_ctor@Syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@Syntax@a_fun>` function object.
 Upon return, the zero order
-:ref:`taylor_coefficients<cpp_fun_forward@taylor_coefficient>` in *f*
+:ref:`taylor_coefficients<cpp_fun_forward@Taylor Coefficient>` in *f*
 correspond to the value of *x* .
 The other Taylor coefficients in *f* are unspecified.
 
@@ -716,8 +716,8 @@ and evaluated at :math:`t = 0`; i.e.,
 f
 *
 This is either a
-:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` or
-:ref:`a_fun<cpp_fun_ctor@syntax@a_fun>` function object.
+:ref:`d_fun<cpp_fun_ctor@Syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@Syntax@a_fun>` function object.
 Note that its state is changed by this operation because
 all the Taylor coefficient that it calculates for every
 variable in recording are stored.
@@ -828,8 +828,8 @@ Syntax
 f
 *
 This is either a
-:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` or
-:ref:`a_fun<cpp_fun_ctor@syntax@a_fun>` function object
+:ref:`d_fun<cpp_fun_ctor@Syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@Syntax@a_fun>` function object
 and is effectively ``const`` .
 (Some details that are not visible to the user may change.)
 
@@ -847,7 +847,7 @@ in to the constructor for *f* .
 X(t), S
 =======
 This is the same function as
-:ref:`x(t)<cpp_fun_forward@x(t)>` in the previous call to
+:ref:`x(t)<cpp_fun_forward@X(t)>` in the previous call to
 *f*\ ``.forward`` .
 We use :math:`S \in \B{R}^{n \times q}` to denote the Taylor coefficients
 of :math:`X(t)`.
@@ -855,7 +855,7 @@ of :math:`X(t)`.
 Y(t), T
 =======
 This is the same function as
-:ref:`y(t)<cpp_fun_forward@y(t)>` in the previous call to
+:ref:`y(t)<cpp_fun_forward@Y(t)>` in the previous call to
 *f*\ ``.forward`` .
 We use :math:`T \in \B{R}^{m \times q}` to denote the Taylor coefficients
 of :math:`Y(t)`.
@@ -963,9 +963,9 @@ of time and memory.
 f
 *
 This object is a
-:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>`.
+:ref:`d_fun<cpp_fun_ctor@Syntax@d_fun>`.
 Optimizing this *f* also optimizes the
-corresponding :ref:`a_fun<cpp_fun_ctor@syntax@a_fun>`.
+corresponding :ref:`a_fun<cpp_fun_ctor@Syntax@a_fun>`.
 
 {xrst_toc_hidden
    example/cplusplus/fun_optimize_xam.cpp
@@ -997,7 +997,7 @@ Syntax
 
 f
 *
-This is a :ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` object.
+This is a :ref:`d_fun<cpp_fun_ctor@Syntax@d_fun>` object.
 
 json
 ****
@@ -1050,7 +1050,7 @@ Syntax
 f
 *
 is a
-:ref:`d_fun<cpp_fun_ctor@syntax@d_fun>` function object.
+:ref:`d_fun<cpp_fun_ctor@Syntax@d_fun>` function object.
 
 b
 *
@@ -1059,7 +1059,7 @@ This argument has prototype
 | |tab| ``int`` *b*
 
 If *b* is true and
-:ref:`get_cppad_sh@settings@build_type` is ``debug`` ,
+:ref:`get_cppad_sh@Settings@build_type` is ``debug`` ,
 *f* will generate an assert when ``nan`` occurs in its function
 or derivative values.
 Otherwise, it will just pass back the ``nan`` values.

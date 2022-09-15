@@ -154,23 +154,23 @@ class mixed :
    warning
    *******
    is a python function that gets called when *mixed_obj*
-   has a warning to report; see :ref:`@mixed_warning`.
+   has a warning to report; see :ref:`mixed_warning-0`.
    The value ``None`` corresponds to ignoring all warning messages.
 
    fix_likelihood
    **************
-   see :ref:`@mixed_fix_likelihood` .
+   see :ref:`mixed_fix_likelihood-0` .
    The value ``None`` corresponds to no fixed effects likelihood.
 
    fix_constraint
    **************
-   see :ref:`@mixed_fix_constraint` .
+   see :ref:`mixed_fix_constraint-0` .
    The value ``None`` corresponds to no constraint function
    for the fixed effects (one can still have bound constraints).
 
    ran_likelihood
    **************
-   see :ref:`@mixed_ran_likelihood` .
+   see :ref:`mixed_ran_likelihood-0` .
    The value ``None`` corresponds to no random effects likelihood.
 
    {xrst_toc_hidden
@@ -342,10 +342,10 @@ class mixed :
 
 
    fix_likelihood
-   ***************
-   is a :ref:`d_fun<py_fun_ctor@syntax@d_fun>` representation
+   **************
+   is a :ref:`d_fun<py_fun_ctor@Syntax@d_fun>` representation
    of the negative log of the
-   :ref:`fixed effects likelihood <mixed@notation@fixed_effects_likelihood>`
+   :ref:`fixed effects likelihood <mixed@Notation@Fixed Effects Likelihood>`
 
    .. math::
 
@@ -395,8 +395,8 @@ class mixed :
 
 
    fix_constraint
-   ***************
-   is a :ref:`d_fun<py_fun_ctor@syntax@d_fun>` representation
+   **************
+   is a :ref:`d_fun<py_fun_ctor@Syntax@d_fun>` representation
    of the fixed effects constraint function
 
    .. math::
@@ -407,7 +407,7 @@ class mixed :
    The functions :math:`v_i ( \theta )` for :math:`i = 0 , \ldots , m-1`
    are assumed to be a smooth w.r.t the vector :math:`\theta`.
    The bounds for :math:`g( \theta )` are specified by
-   :ref:`mixed_optimize_fixed@fix_constraint_lower_(fix_constraint_upper)` .
+   :ref:`mixed_optimize_fixed@fix_constraint_lower (fix_constraint_upper)` .
 
    theta
    *****
@@ -444,10 +444,10 @@ class mixed :
 
 
    ran_likelihood
-   ***************
-   is a :ref:`d_fun<py_fun_ctor@syntax@d_fun>` representation
+   **************
+   is a :ref:`d_fun<py_fun_ctor@Syntax@d_fun>` representation
    of the negative log of the
-   :ref:`random effects likelihood <mixed@notation@random_effects_likelihood>`
+   :ref:`random effects likelihood <mixed@Notation@Random Effects Likelihood>`
 
    .. math::
 
@@ -521,7 +521,7 @@ class mixed :
    If there are no random effects,
    there is no Laplace approximation of the integral above, and
    this routine maximizes :math:`\B{p} ( z | \theta ) \B{p} ( \theta )` ;
-   see :ref:`@mixed_fix_likelihood`.
+   see :ref:`mixed_fix_likelihood-0`.
    It also is no data, this routine maximizes :math:`\B{p} ( \theta )`.
 
 
@@ -532,7 +532,7 @@ class mixed :
    numpy vectors with elements of type ``float``.
 
    Limits
-   *******
+   ******
    As a lower (upper) limit, the value ``None`` is minus (plus) infinity;
    i.e., no lower (upper) limit.
 
@@ -544,7 +544,7 @@ class mixed :
    *******************************************
    has length equal to the
    :ref:`py_fun_property@size_range` for the
-   :ref:`@mixed_fix_constraint`
+   :ref:`mixed_fix_constraint-0`
    and is the corresponding lower (upper) limit.
 
    random_lower (random_upper)
@@ -676,8 +676,8 @@ class mixed :
    Examples
    ********
 
-   - :ref:`@mixed_optimize_fixed_1_py`
-   - :ref:`@mixed_optimize_fixed_2_py`
+   - :ref:`mixed_optimize_fixed_1_py-0`
+   - :ref:`mixed_optimize_fixed_2_py-0`
 
    {xrst_end mixed_optimize_fixed}
    """
@@ -797,7 +797,7 @@ class mixed :
    Purpose
    *******
    Given a value for the fixed effects :math:`\theta`,
-   this routine maximizes the :ref:`@mixed_ran_likelihood`
+   this routine maximizes the :ref:`mixed_ran_likelihood-0`
    with respect to the fixed effect :math:`u`; i.e.,
 
    .. math::
@@ -841,7 +841,7 @@ class mixed :
    Examples
    ********
 
-   - :ref:`@mixed_optimize_random`
+   - :ref:`mixed_optimize_random-0`
 
    {xrst_end mixed_optimize_random}
    """

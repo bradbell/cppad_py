@@ -36,8 +36,8 @@
 # f
 # *
 # This is either a
-# :ref:`d_fun<py_fun_ctor@syntax@d_fun>` or
-# :ref:`a_fun<py_fun_ctor@syntax@a_fun>` function object.
+# :ref:`d_fun<py_fun_ctor@Syntax@d_fun>` or
+# :ref:`a_fun<py_fun_ctor@Syntax@a_fun>` function object.
 # Note that its state is changed by this operation because
 # all the Taylor coefficient that it calculates for every
 # variable in recording are stored.

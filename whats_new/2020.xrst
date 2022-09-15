@@ -65,7 +65,7 @@ CppAD Py Changes During 2020
    :ref:`a_double_binary@pow_int` functions.
 #. CppAD errors were not being translated to python exceptions
    (except for :ref:`mixed <mixed>` class operations).
-   This has been fixed; see :ref:`@cppad_error` .
+   This has been fixed; see :ref:`cppad_error-0` .
 #. More error detection and reporting when numpy vectors
    or matrices do not have the correct dimensions.
 
@@ -80,13 +80,13 @@ installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
    mac using `port <https://www.macports.org>`_ to install packages.
    The previous version assumed the mac was using
    `brew <https://brew.sh>`_ to install packages.
-#. Add a :ref:`install_error@setup.py@symbolic_link` and
-   :ref:`install_error@setup.py@cppad.pc,_cppad_mixed.pc` entries to the
+#. Add a :ref:`install_error@setup.py@symbolic link` and
+   :ref:`install_error@setup.py@cppad.pc, cppad_mixed.pc` entries to the
    list of install error messages.
-#. Remove under construction from the :ref:`@mixed` class; i.e.,
+#. Remove under construction from the :ref:`mixed-0` class; i.e.,
    it has reached a stable state.
 #. Make a separate definition for the random and
-   :ref:`mixed@notation@fixed_effects_likelihood`.
+   :ref:`mixed@Notation@Fixed Effects Likelihood`.
 #. Fix the definition of
    :ref:`mixed_ctor@fixed_init@n_fixed` and
    :ref:`mixed_ctor@random_init@n_random`.
@@ -101,8 +101,8 @@ installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
       -  The python matplotlib module is no longer required because is was
          only used by the covid 19 example.
       -  Separate headings were created for
-         :ref:`local testing <setup_py@local_test>` and
-         :ref:`install testing <setup_py@test_install>`.
+         :ref:`local testing <setup_py@Local Test>` and
+         :ref:`install testing <setup_py@Test Install>`.
 
 #. The ``PyEval_CallObject`` function was deprecated in python3.9.
    It's use was converted to ``PyObject_CallObject`` to avoid this warning.
@@ -130,7 +130,7 @@ installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
 11-15
 *****
 #. Fix a memory leak in the destructor for a
-   :ref:`d_fun <py_fun_ctor@syntax@d_fun>` object.
+   :ref:`d_fun <py_fun_ctor@Syntax@d_fun>` object.
 #. The syntax for the c++ :ref:`sparse_rcv <cpp_sparse_rcv>`
    and :ref:`sparse_rcv <cpp_sparse_rcv>` constructors has changed.
    To be specific, they no longer use the assignment operator ``=`` .
@@ -146,7 +146,7 @@ to the mixed class operations.
 11-12
 *****
 #. Improve the :ref:`ipopt options
-   <mixed_optimize_fixed@fixed_ipopt_options@ipopt_options>` documentation.
+   <mixed_optimize_fixed@fixed_ipopt_options@ipopt options>` documentation.
 #. Fix the font in the syntax for the rosen3_step functions
    :ref:`f <numeric_rosen3_step@fun@f>` ,
    :ref:`f_t <numeric_rosen3_step@fun@f_t>` , and
@@ -170,15 +170,15 @@ and :ref:`install_error`.
    In addition, the ``child_link`` command was changed to
    child_list.
 #. Remove an extra backquote \' that was placed at the end of each line
-   of the :ref:`@xrst_table_of_contents`.
+   of the :ref:`xrst_table_of_contents-0`.
 #. Add more documentation for the ``index.rst`` file
    (including how to link to the table of contents).
 #. The java runtime environment as add to the install
-   :ref:`requirements<setup_py@external_requirements>`.
+   :ref:`requirements<setup_py@External Requirements>`.
 
 11-08
 *****
-#. Change setup.py :ref:`local build<setup_py@local_build>` and test instructions so they work on Mac OS.
+#. Change setup.py :ref:`local build<setup_py@Local Build>` and test instructions so they work on Mac OS.
 
 #. Fix ``bin/get_cppad_mixed.sh`` so that it is not necessary to set
    LD_LIBRARY_PATH or PKG_CONFIG_PATH before running it.
@@ -195,7 +195,7 @@ and :ref:`install_error`.
 11-06
 *****
 #. The install with
-   :ref:`include_mixed<get_cppad_sh@settings@include_mixed>` false was broken
+   :ref:`include_mixed<get_cppad_sh@Settings@include_mixed>` false was broken
    by the changes on 11-03. This has been fixed.
 
 #. The installation and testing instructions in :ref:`setup@py<setup_py>`
@@ -224,19 +224,19 @@ fixed to account for this.
 11-03
 *****
 The install prefix name was changed from *cppad_prefix* to
-:ref:`cmake_install_prefix<get_cppad_sh@settings@cmake_install_prefix>`.
+:ref:`cmake_install_prefix<get_cppad_sh@Settings@cmake_install_prefix>`.
 
 10-31
 *****
 Fix some problems with the macOS install when
-:ref:`include_fixed<get_cppad_sh@settings@include_mixed>` is true.
+:ref:`include_fixed<get_cppad_sh@Settings@include_mixed>` is true.
 
 10-30
 *****
-The :ref:`install command<setup_py@install>` no longer creates
+The :ref:`install command<setup_py@Install>` no longer creates
 a local copy of ``cppad_py`` for testing. (On macOS systems the
 local copy would cause problems during the install.)
-The :ref:`setup_py@local_build` still builds the local
+The :ref:`setup_py@Local Build` still builds the local
 copy for testing.
 
 10-29
@@ -255,54 +255,54 @@ copy for testing.
 *****
 #. Improve the :ref:`setup@py<setup_py>` install instructions.
    To be specific, change ``python`` to ``python3`` and edit the
-   :ref:`external requirements<setup_py@external_requirements>`.
+   :ref:`external requirements<setup_py@External Requirements>`.
 
-#. Improve the :ref:`@get_cppad_sh` script so that it gets and updates
+#. Improve the :ref:`get_cppad_sh-0` script so that it gets and updates
    posted to the remote repository (since the previous run of the script).
 
 
 10-21
 *****
-#. Add a second :ref:`optimize_fixed example<mixed_optimize_fixed@examples>`.
+#. Add a second :ref:`optimize_fixed example<mixed_optimize_fixed@Examples>`.
 
 #. Advance to cppad-20201021 (this fixes a warning on some compilers).
 
 10-19
 *****
 Add the non linear constraint functions of the fixed effects
-to the mixed class; see :ref:`@mixed_fix_constraint`.
+to the mixed class; see :ref:`mixed_fix_constraint-0`.
 
 10-17
 *****
 #. The default value (corresponding to ``None``)
-   for :ref:`mixed_optimize_fixed@fixed_in_(random_in)` in ``optimize_fixed``
+   for :ref:`mixed_optimize_fixed@fixed_in (random_in)` in ``optimize_fixed``
    was changed from zero to *fixed_init* (*random_init*).
-   The :ref:`@mixed_ran_likelihood_xam_py` example was changed to use this
+   The :ref:`mixed_ran_likelihood_xam_py-0` example was changed to use this
    default.
 
 #. There was a problem linking the needed libraries when
-   :ref:`include_mixed<get_cppad_sh@settings@include_mixed>` was true.
+   :ref:`include_mixed<get_cppad_sh@Settings@include_mixed>` was true.
    This has been fixed.
 
 #. A ``match_op.hpp`` warning was added to the
    install errors section (it has since been removed).
 
-#. The :ref:`numpy syntax<a_double_unary_fun@syntax@python>` was added
+#. The :ref:`numpy syntax<a_double_unary_fun@Syntax@Python>` was added
    to the documentation python syntax for ``a_double`` unary functions;
-   for an example see :ref:`@a_double_unary_fun_xam_py`.
+   for an example see :ref:`a_double_unary_fun_xam_py-0`.
 
 10-16
 *****
-#. Add the :ref:`@mixed` class an make it optional during the install process;
-   see :ref:`include_mixed<get_cppad_sh@settings@include_mixed>`.
+#. Add the :ref:`mixed-0` class an make it optional during the install process;
+   see :ref:`include_mixed<get_cppad_sh@Settings@include_mixed>`.
    This class is under construction and its API may change.
    Check this page for such changes.
 
 #. Change the install process so both a debug and release version of
-   :ref:`cmake_install_prefix<get_cppad_sh@settings@build_type@cmake_install_prefix>`
+   :ref:`cmake_install_prefix<get_cppad_sh@Settings@build_type@cmake_install_prefix>`
    can be installed at the same time.
 
-#. Some of the install steps in :ref:`@setup_py` have changed.
+#. Some of the install steps in :ref:`setup_py-0` have changed.
 
 
 10-13
@@ -315,8 +315,8 @@ This has been fixed
 *****
 #. The library documentation that is for both c++ and python was improved.
    To be specific, both the c++ and python syntax was included.
-   Also these sections were moved from children of :ref:`@cpp_lib`
-   to children of :ref:`@library`.
+   Also these sections were moved from children of :ref:`cpp_lib-0`
+   to children of :ref:`library-0`.
 
 #. The xrst.py utility has been improved. To be specific, it no
    longer overwrites ``*.rst`` files that have not changed. This makes
@@ -324,7 +324,7 @@ This has been fixed
    that have not changed).
 
 #. Use the 95% quantile, instead of maximum, absolute residual when
-   testing simulated fit in :ref:`@numeric_covid_19_xam_py`.
+   testing simulated fit in :ref:`numeric_covid_19_xam_py-0`.
    This reduces the change of a random failure.
 
 09-30
@@ -414,7 +414,7 @@ The word 'initialization' was added to the xrst dictionary.
 07-25
 *****
 #. xrst: Install xrst.py during the
-   :ref:`install<setup_py@install>` procedure.
+   :ref:`install<setup_py@Install>` procedure.
 #. xrst: Add a purpose paragraph to xrst documentation.
 #. Move the ``*.omh`` files to ``*.xrst`` files (they have been converted
    from omhelp input files to xrst input files).
@@ -446,7 +446,7 @@ The word 'initialization' was added to the xrst dictionary.
 07-05
 *****
 
-#. The :ref:`prototype<ad_vec_cppad2std@syntax>` for ``vec2a_double``
+#. The :ref:`prototype<ad_vec_cppad2std@Syntax>` for ``vec2a_double``
    was the same as for :ref:`d_vec_std2cppad<d_vec_cppad2std>`.
    This has been fixed.
 #. The limits for the :ref:`fun_from_json_xam_py` and :ref:`fun_to_json_xam_py`
@@ -563,7 +563,7 @@ Add the :ref:`numeric_optimize_fun_xam_py` example.
 *****
 The :ref:`f_from_json()<py_fun_json@from_json>` function was added.
 In addition, the
-:ref:`empty_function<py_fun_ctor@f@empty_function>` constructor was added.
+:ref:`empty_function<py_fun_ctor@f@Empty Function>` constructor was added.
 
 04-27
 *****
@@ -616,7 +616,7 @@ Add an :ref:`install_error` section to the documentation.
 *****
 
 #. Move configuration setting from :ref:`setup_py` to
-   :ref:`bin/get_cppad_sh<get_cppad_sh@settings>`.
+   :ref:`bin/get_cppad_sh<get_cppad_sh@Settings>`.
 #. First version that installs using ``pip`` .
    Install instructions for pip will be added soon.
 
@@ -636,7 +636,7 @@ Add an :ref:`install_error` section to the documentation.
    :ref:`c++<cpp_fun_reverse@xq>` and :ref:`python<py_fun_reverse@xq>`
    reverse mode documentation.
 #. Remove the ``--inplace`` option from the
-   :ref:`syntax<setup_py@syntax>` for building the cppad_py python module.
+   :ref:`syntax<setup_py@Syntax>` for building the cppad_py python module.
 
 04-13
 *****
@@ -654,9 +654,9 @@ Add an :ref:`install_error` section to the documentation.
    list of ``a_double`` unary :ref:`fun<a_double_unary_fun@fun>`
    that have been implemented.
 #. The dynamic parameter argument was missing from the
-   :ref:`syntax<py_independent@syntax>` for the python version
+   :ref:`syntax<py_independent@Syntax>` for the python version
    of the ``independent`` function.  This has been fixed.
-#. Improve the test and :ref:`install<setup_py@install>`
+#. Improve the test and :ref:`install<setup_py@Install>`
    discussion in ``setup.py`` .
 
 04-10
@@ -664,6 +664,6 @@ Add an :ref:`install_error` section to the documentation.
 
 #. Change the documentation display on the web using a more recent version of
    the documentation program ``omhelp-20200130`` .
-#. Add :ref:`caching<get_cppad_sh@caching>` to the Cppad install.
+#. Add :ref:`caching<get_cppad_sh@Caching>` to the Cppad install.
 
 {xrst_end whats_new_2020}

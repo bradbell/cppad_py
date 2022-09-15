@@ -59,7 +59,7 @@ below the :ref:`py_independent` section, using the OMhelp commands:
 | |tab| ``%${xrst_dollar`` }
 
 In addition, a reference to this example was added under the
-:ref:`example<py_independent@example>` heading in the ``independent``
+:ref:`example<py_independent@Example>` heading in the ``independent``
 documentation.
 
 Implementation

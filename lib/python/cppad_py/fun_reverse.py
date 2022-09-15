@@ -24,8 +24,8 @@
 # f
 # *
 # This is either a
-# :ref:`d_fun<py_fun_ctor@syntax@d_fun>` or
-# :ref:`a_fun<py_fun_ctor@syntax@a_fun>` function object
+# :ref:`d_fun<py_fun_ctor@Syntax@d_fun>` or
+# :ref:`a_fun<py_fun_ctor@Syntax@a_fun>` function object
 # and is effectively constant; i.e., not changed.
 #
 # Notation
@@ -42,7 +42,7 @@
 # X(t), S
 # =======
 # This is the same function as
-# :ref:`x(t)<py_fun_forward@x(t)>` in the previous call to
+# :ref:`x(t)<py_fun_forward@X(t)>` in the previous call to
 # *f*\ ``.forward`` .
 # We use :math:`S \in \B{R}^{n \times q}` to denote the Taylor coefficients
 # of :math:`X(t)`.
@@ -50,7 +50,7 @@
 # Y(t), T
 # =======
 # This is the same function as
-# :ref:`y(t)<py_fun_forward@y(t)>` in the previous call to
+# :ref:`y(t)<py_fun_forward@Y(t)>` in the previous call to
 # *f*\ ``.forward`` .
 # We use :math:`T \in \B{R}^{m \times q}` to denote the Taylor coefficients
 # of :math:`Y(t)`.

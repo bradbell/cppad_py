@@ -19,10 +19,10 @@
 # f
 # *
 # This is either a
-# :ref:`d_fun<py_fun_ctor@syntax@d_fun>` or
-# :ref:`a_fun<py_fun_ctor@syntax@a_fun>` function object.
+# :ref:`d_fun<py_fun_ctor@Syntax@d_fun>` or
+# :ref:`a_fun<py_fun_ctor@Syntax@a_fun>` function object.
 # Upon return, the zero order
-# :ref:`taylor_coefficients<py_fun_forward@taylor_coefficient>`
+# :ref:`taylor_coefficients<py_fun_forward@Taylor Coefficient>`
 # in *f* correspond to the value of *x* .
 # The other Taylor coefficients in *f* are unspecified.
 #

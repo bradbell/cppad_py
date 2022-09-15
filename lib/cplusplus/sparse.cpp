@@ -886,7 +886,7 @@ This object has prototype
 
 Note that the Taylor coefficients stored in *f* are affected
 by this operation; see
-:ref:`uses_forward<cpp_sparse_jac@uses_forward>` below.
+:ref:`uses_forward<cpp_sparse_jac@Uses Forward>` below.
 
 subset
 ******
@@ -1063,7 +1063,7 @@ This object has prototype
 
 Note that the Taylor coefficients stored in *f* are affected
 by this operation; see
-:ref:`uses_forward<cpp_sparse_hes@uses_forward>` below.
+:ref:`uses_forward<cpp_sparse_hes@Uses Forward>` below.
 
 subset
 ******

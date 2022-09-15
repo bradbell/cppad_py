@@ -38,9 +38,9 @@ and second operand is a ``double`` ; see
 *****
 
 #. Advance to cppad-20181106 (must re-run ``bin/get_cppad.sh`` ).
-#. The :ref:`a_fun<py_fun_ctor@syntax@a_fun>` objects were added.
+#. The :ref:`a_fun<py_fun_ctor@Syntax@a_fun>` objects were added.
    This support all the operations that
-   :ref:`d_fun<py_fun_ctor@syntax@d_fun>` support all the
+   :ref:`d_fun<py_fun_ctor@Syntax@d_fun>` support all the
    :ref:`py_fun` operations with the exception of
    :ref:`optimize<py_fun_optimize>`.
    The :ref:`py_sparse` operations are not yet supported.
@@ -59,7 +59,7 @@ and second operand is a ``double`` ; see
 *****
 
 #. Change ``cppad_cxx_flags`` to
-   :ref:`extra_cxx_flags<get_cppad_sh@settings@extra_cxx_flags>` in the user
+   :ref:`extra_cxx_flags<get_cppad_sh@Settings@extra_cxx_flags>` in the user
    configuration settings.
    Also remove ``swig_cxx_flags`` from these user settings
    (set automatically).
@@ -121,7 +121,7 @@ Continue conversion of python library to using ``numpy.array`` ; see
    :ref:`py_independent`, :ref:`py_fun_ctor`.
 #. Add the file ``cppad_py/python_major_version`` which contains
    the major version of python that this build of ``cppad_py`` is for.
-#. Automatically use :ref:`build_type<get_cppad_sh@settings@build_type>`
+#. Automatically use :ref:`build_type<get_cppad_sh@Settings@build_type>`
    control how setup.py compiles C++
    (one used to use flags on setup.py command line).
 #. setup.py was using the git repository version of Cppad instead of the

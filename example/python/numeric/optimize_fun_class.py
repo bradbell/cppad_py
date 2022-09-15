@@ -71,7 +71,7 @@ We use :math:`n`, :math:`m` for the length of the vectors
 
 objective_ad
 ************
-This is a :ref:`d_fun<py_fun_ctor@syntax@d_fun>`
+This is a :ref:`d_fun<py_fun_ctor@Syntax@d_fun>`
 representation of the function :math:`f(x)`.
 
 constraint_ad

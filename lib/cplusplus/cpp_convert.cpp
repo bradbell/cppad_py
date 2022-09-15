@@ -189,7 +189,7 @@ Prototype
 Restriction
 ***********
 This routine is only available when
-:ref:`include_mixed <get_cppad_sh@settings@include_mixed>` is true.
+:ref:`include_mixed <get_cppad_sh@Settings@include_mixed>` is true.
 
 {xrst_end mixed2sparse_rcv}
 */

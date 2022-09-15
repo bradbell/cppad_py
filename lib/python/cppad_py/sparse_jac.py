@@ -55,7 +55,7 @@
 # :ref:`d_fun<py_fun_ctor>` constructor.
 # Note that the Taylor coefficients stored in *f* are affected
 # by this operation; see
-# :ref:`uses_forward<py_sparse_jac@uses_forward>` below.
+# :ref:`uses_forward<py_sparse_jac@Uses Forward>` below.
 #
 # subset
 # ******

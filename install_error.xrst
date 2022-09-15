@@ -69,14 +69,14 @@ cppad.pc, cppad_mixed.pc
 
 where *name* is ``cppad`` or ``cppad_mixed``.
 You probably did not set
-:ref:`PKG_CONFIG_PATH <setup_py@pkg_config_path>` correctly.
+:ref:`PKG_CONFIG_PATH <setup_py@PKG_CONFIG_PATH>` correctly.
 
 symbolic link
 =============
 | |tab| ``build_type.sh:`` *prefix*  ``is not a symbolic link``
 
 where *prefix* is the
-:ref:`get_cppad_sh@settings@cmake_install_prefix` in ``bin/get_cppad.sh``.
+:ref:`get_cppad_sh@Settings@cmake_install_prefix` in ``bin/get_cppad.sh``.
 Try removing the *prefix* directory and re-running setup.py.
 
 Fortify Source
@@ -85,7 +85,7 @@ Fortify Source
 
 This is a problem with the python setuptools,
 one can un-define a macro, but it does not remove a original definition.
-It only happens when :ref:`build_type<get_cppad_sh@settings@build_type>`
+It only happens when :ref:`build_type<get_cppad_sh@Settings@build_type>`
 to ``debug`` .
 
 stdio.h
@@ -135,12 +135,12 @@ If you are testing the local copy, make sure that the directory
 
 | |tab| *top_src*\ ``/cppad_py``
 
-exists; see :ref:`local build <setup_py@local_build>` .
+exists; see :ref:`local build <setup_py@Local Build>` .
 If you are testing the installed version, make sure the directory
 
 | |tab| ``$PYTHONPATH/cppad_py``
 
-exists; see :ref:`PYTHONPATH <setup_py@pythonpath>` .
+exists; see :ref:`PYTHONPATH <setup_py@PYTHONPATH>` .
 
 
 libcppad_lib

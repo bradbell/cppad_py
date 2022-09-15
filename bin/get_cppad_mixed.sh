@@ -21,7 +21,7 @@
 # Top Source Directory
 # ********************
 # This program must be run from the
-# :ref:`top_source_directory<setup_py@download@top_source_directory>`.
+# :ref:`top_source_directory<setup_py@Download@Top Source Directory>`.
 #
 # Purpose
 # *******
@@ -33,7 +33,7 @@
 # Settings
 # ********
 # This scripts uses the
-# :ref:`get_cppad@sh settings<get_cppad_sh@settings>` for
+# :ref:`get_cppad@sh settings<get_cppad_sh@Settings>` for
 # *cmake_install_prefix* , *extra_cxx_flags*, and *build_type* .
 #
 # {xrst_end get_cppad_mixed_sh}

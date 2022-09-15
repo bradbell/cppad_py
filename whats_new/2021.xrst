@@ -79,27 +79,27 @@ Add subset documentation to the wish list.
 #. Advance to cppad_mixed-20210515.
    This avoids running the cppad_mixed tests during ``bin/get_cppad_mixed.sh``.
    It also fixes a problem what cppad_mixed optimizes ADFun objects.
-#. Change the default :ref:`get_cppad_sh@settings@cmake_install_prefix` from
+#. Change the default :ref:`get_cppad_sh@Settings@cmake_install_prefix` from
    ``$HOME/prefix/cppad`` to ``$HOME/prefix/cppad_py``.
 
 
 05-11
 *****
 In cygwin install,
-with :ref:`get_cppad_sh@settings@include_mixed` true,
+with :ref:`get_cppad_sh@Settings@include_mixed` true,
 has been improved so that it works with cygwin.
 This included advancing to cppad_mixed-20210511.
 
 05-09
 *****
-#. Add discussion of installing cppad_py on :ref:`setup_py@msys2` systems.
+#. Add discussion of installing cppad_py on :ref:`setup_py@Msys2` systems.
 
 05-07
 *****
 #. The python-setuptools were added to the
-   :ref:`setup_py@external_requirements`.
+   :ref:`setup_py@External Requirements`.
 #. An example of installing external requirements was added for the
-   :ref:`setup_py@cygwin`.
+   :ref:`setup_py@Cygwin`.
 #. This install using pip has not been kept up to date an hence its
    instructions were removed.
 #. Advance to cppad_mixed-20210507.
@@ -109,7 +109,7 @@ This included advancing to cppad_mixed-20210511.
 *****
 #. Advance to cppad-20210428.
    This fixes some problems with the install of cppad_py on msys and cygwin.
-   The :ref:`@check_for_nan_xam_py` was modified because the new version
+   The :ref:`check_for_nan_xam_py-0` was modified because the new version
    of exponentiation handles more cases.
 
 #. Adapt the install for msys to the fact that soft links do not work on that
