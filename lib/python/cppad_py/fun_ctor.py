@@ -5,9 +5,9 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# {xrst_comment_ch #}
 #
 # {xrst_begin py_fun_ctor}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 #  cppad

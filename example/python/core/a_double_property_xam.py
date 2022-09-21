@@ -34,9 +34,9 @@ def a_double_property_xam() :
 #
 # END SOURCE
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin a_double_property_xam_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 # }

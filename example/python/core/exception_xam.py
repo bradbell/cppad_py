@@ -36,9 +36,9 @@ def exception_xam() :
 #
 # END SOURCE
 # -----------------------------------------------------------------------------
-# {xrst_comment_ch #}
 #
 # {xrst_begin exception_xam_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 #  cppad

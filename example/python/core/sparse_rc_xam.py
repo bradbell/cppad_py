@@ -59,9 +59,9 @@ def sparse_rc_xam() :
 #
 # END SOURCE
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin sparse_rc_xam_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 # }

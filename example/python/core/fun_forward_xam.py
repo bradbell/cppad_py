@@ -82,9 +82,9 @@ def fun_forward_xam() :
 #
 # END SOURCE
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin fun_forward_xam_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 # }

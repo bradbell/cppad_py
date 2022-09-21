@@ -27,9 +27,9 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
    return y_all
 # END_ODE_MULTI_STEP
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin numeric_ode_multi_step}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 # }

@@ -44,9 +44,9 @@ def to_json_xam() :
    return ok
 # END_TO_JSON_XAM
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin fun_to_json_xam_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 #  json
@@ -113,6 +113,7 @@ def from_json_xam() :
 # END_FROM_JSON_XAM
 #
 # {xrst_begin fun_from_json_xam_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 #  json

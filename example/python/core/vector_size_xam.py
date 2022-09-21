@@ -32,9 +32,9 @@ def vector_size_xam() :
 #
 # END SOURCE
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin vector_size_xam_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 # }

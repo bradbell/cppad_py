@@ -72,9 +72,9 @@ def simple_inv(A) :
    return Ainv
 # END_PYTHON
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin numeric_simple_inv}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 #  ainv

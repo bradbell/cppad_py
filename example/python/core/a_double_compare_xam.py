@@ -42,9 +42,9 @@ def a_double_compare_xam() :
 #
 # END SOURCE
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin a_double_compare_xam_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 # }

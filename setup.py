@@ -268,9 +268,9 @@ if install_distribution :
 print('setup.py: OK')
 sys.exit(0)
 # -----------------------------------------------------------------------------
-# {xrst_comment_ch #}
 #
 # {xrst_begin setup_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 #  cppad

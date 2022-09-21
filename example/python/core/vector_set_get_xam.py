@@ -48,9 +48,9 @@ def vector_set_get_xam() :
 #
 # END SOURCE
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin vector_set_get_xam_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 # }

@@ -7,9 +7,9 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin get_cppad_sh}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 #  cppad

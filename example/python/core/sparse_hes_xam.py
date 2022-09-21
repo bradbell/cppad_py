@@ -98,9 +98,9 @@ def sparse_hes_xam() :
 #
 # END SOURCE
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin sparse_hes_xam_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 # }

@@ -57,9 +57,9 @@ def fun_dynamic_xam() :
    return ok
 # END SOURCE
 # -----------------------------------------------------------------------------
-# {xrst_comment_ch #}
 #
 # {xrst_begin fun_dynamic_xam_py}
+# {xrst_comment_ch #}
 #
 # Python: Using Dynamic Parameters: Example and Test
 # ##################################################

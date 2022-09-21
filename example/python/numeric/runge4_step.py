@@ -15,9 +15,9 @@ def runge4_step(fun, ti, yi, h) :
    return yf
 # END_RUNGE4_STEP
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin numeric_runge4_step}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 #  runge

@@ -53,9 +53,9 @@ def cppad_error_xam() :
 #
 # END SOURCE
 # -----------------------------------------------------------------------------
-# {xrst_comment_ch #}
 #
 # {xrst_begin cppad_error_xam}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 # }

@@ -113,9 +113,9 @@ def fun_reverse_xam() :
 #
 # END SOURCE
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin fun_reverse_xam_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 # }

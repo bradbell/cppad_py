@@ -105,9 +105,9 @@ def check_rosen3_step(fun, ti, yi, h) :
    return ok
 # END_CHECK_ROSEN3_STEP
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin numeric_rosen3_step}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 #  rosenbrock

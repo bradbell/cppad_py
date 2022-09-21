@@ -8,9 +8,9 @@
 import numpy
 import cppad_py
 # -----------------------------------------------------------------------------
-# {xrst_comment_ch #}
 #
 # {xrst_begin numpy2vec}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 #  cppad
@@ -134,6 +134,7 @@ def numpy2vec(array, dtype, shape, context, name) :
    return vec
 # -----------------------------------------------------------------------------
 # {xrst_begin vec2numpy}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 #  cppad

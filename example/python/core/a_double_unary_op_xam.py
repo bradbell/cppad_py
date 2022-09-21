@@ -27,9 +27,9 @@ def a_double_unary_op_xam() :
 #
 # END SOURCE
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin a_double_unary_op_xam_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 # }

@@ -188,9 +188,9 @@ def seirwd_model(method, t_all, p_all, initial, n_step = 1) :
    return seirwd_all
 # END_PYTHON
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin numeric_seirwd_model}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 #  seirwd

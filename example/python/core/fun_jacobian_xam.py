@@ -66,9 +66,9 @@ def fun_jacobian_xam() :
 #
 # END SOURCE
 #
-# {xrst_comment_ch #}
 #
 # {xrst_begin fun_jacobian_xam_py}
+# {xrst_comment_ch #}
 #
 # {xrst_spell
 # }
