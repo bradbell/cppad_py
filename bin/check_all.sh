@@ -137,7 +137,7 @@ fi
 echo_eval_log check_copyright.sh
 echo_eval_log bin/check_if_0.sh
 echo_eval_log bin/check_tab.sh
-echo_eval_log bin/run_sphinx.sh html
+echo_eval_log bin/run_xrst.sh html
 echo_eval_log bin/build_local.py
 echo_eval_log cd build
 echo_eval_log make check

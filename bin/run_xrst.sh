@@ -12,15 +12,15 @@ echo_eval() {
    eval $*
 }
 # -----------------------------------------------------------------------------
-if [ "$0" != 'bin/run_sphinx.sh' ]
+if [ "$0" != 'bin/run_xrst.sh' ]
 then
-   echo 'must execut bin/run_sphinx.sh from its parent directory'
+   echo 'must execut bin/run_xrst.sh from its parent directory'
    exit 1
 fi
 # -----------------------------------------------------------------------------
 if [ "$1" != 'html' ] && [ "$1" != 'pdf' ]
 then
-   echo 'usage: bin/run_sphinx (html|pdf)'
+   echo 'usage: bin/run_xrst (html|pdf)'
    exit 1
 fi
 target="$1"
@@ -35,5 +35,5 @@ fi
 # xsrst
 xrst --target $target --output doc cppad_py.xrst
 # -----------------------------------------------------------------------------
-echo 'run_sphinx.sh: OK'
+echo 'run_xrst.sh: OK'
 exit 0
