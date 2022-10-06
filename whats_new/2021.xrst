@@ -7,15 +7,18 @@
 -------------------------------------------------------------------------------
 
 {xrst_begin whats_new_2021}
-
 {xrst_spell
    cppad
-   msys
+   csv
    cygwin
+   dir
+   externals
+   msys
+   rst
    setuptools
    underbars
-   dir
 }
+
 
 CppAD Py Changes During 2021
 ############################

@@ -102,8 +102,6 @@ def sparse_hes_xam() :
 # {xrst_begin sparse_hes_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: Hessian Sparsity Patterns: Example and Test
 # ###################################################
 # {xrst_literal

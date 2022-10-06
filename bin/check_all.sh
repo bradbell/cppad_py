@@ -162,7 +162,12 @@ fi
 #
 # check_all.py and run_sphins.sh run example/python/mixed/warning_xam.py
 # and output 'warning_xam: OK', 'mixed_warning'.
-if sed -e '/warning_xam: OK/d' -e '/mixed_warning/d'  $logfile | \
+if sed \
+   -e '/warning_xam: OK/d' \
+   -e '/setup.py install is deprecated/d' \
+   -e '/easy_install command is deprecated/d' \
+   -e '/warnings.warn(/d' \
+   $logfile | \
    grep -i 'warning'
 then
    echo 'check_all.sh: Error: see warnings in check_all.log'

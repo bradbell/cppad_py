@@ -36,8 +36,6 @@ def vector_size_xam() :
 # {xrst_begin vector_size_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: Size of Vectors: Example and Test
 # #########################################
 # {xrst_literal

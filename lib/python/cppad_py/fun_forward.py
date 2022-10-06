@@ -7,13 +7,13 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin py_fun_forward}
+# {xrst_spell
+#     factorial
+#     xp
+#     yp
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  xp
-#  yp
-#  xp
-# }
 #
 # Forward Mode AD
 # ###############

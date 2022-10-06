@@ -270,35 +270,40 @@ sys.exit(0)
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin setup_py}
+# {xrst_spell
+#     bdist
+#     cholmod
+#     cmake
+#     cmd
+#     config
+#     cp
+#     cppad
+#     cygpath
+#     cygwin
+#     devel
+#     fortran
+#     gcc
+#     grep
+#     gsl
+#     lapack
+#     libdir
+#     libopenblas
+#     ls
+#     mingw
+#     msys
+#     pacman
+#     pkg
+#     pkgconfig
+#     rm
+#     scipy
+#     setuptools
+#     srcdir
+#     suitesparse
+#     unix
+#     wget
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  cppad
-#  srcdir
-#  cmake
-#  libdir
-#  pkgconfig
-#  bdist
-#  grep
-#  cmd
-#  pkg
-#  msys
-#  cygwin
-#  gcc
-#  devel
-#  setuptools
-#  lapack
-#  libopenblas
-#  mingw
-#  cygpath
-#  wget
-#  gsl
-#  suitesparse
-#  cholmod
-#  rm
-#  ls
-#  cp
-# }
 #
 # Configure and Build the cppad_py Python Module
 # ##############################################

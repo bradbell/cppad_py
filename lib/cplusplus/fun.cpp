@@ -15,12 +15,12 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 /*
 -------------------------------------------------------------------------------
 {xrst_begin cpp_independent}
-
 {xrst_spell
    cppad
-   nx
    nd
+   nx
 }
+
 
 Declare Independent Variables and Start Recording
 #################################################
@@ -145,10 +145,10 @@ std::vector<a_double> independent(
 /*
 -------------------------------------------------------------------------------
 {xrst_begin cpp_abort_recording}
-
 {xrst_spell
    cppad
 }
+
 
 Abort Recording
 ###############
@@ -177,11 +177,11 @@ void abort_recording(void)
 /*
 -------------------------------------------------------------------------------
 {xrst_begin cpp_fun_ctor}
-
 {xrst_spell
    af
    cppad
 }
+
 
 Stop Current Recording and Store Function Object
 ################################################
@@ -303,10 +303,11 @@ a_fun::~a_fun(void)
 /*
 ------------------------------------------------------------------------------
 {xrst_begin cpp_fun_property}
-
 {xrst_spell
    af
+   var
 }
+
 
 Properties of a Function Object
 ###############################
@@ -486,8 +487,6 @@ void a_fun::new_dynamic(const std::vector<a_double>& adynamic)
 ------------------------------------------------------------------------------
 {xrst_begin cpp_fun_jacobian}
 
-{xrst_spell
-}
 
 Jacobian of an AD Function
 ##########################
@@ -571,8 +570,6 @@ std::vector<a_double> a_fun::jacobian(const std::vector<a_double>& ax)
 ------------------------------------------------------------------------------
 {xrst_begin cpp_fun_hessian}
 
-{xrst_spell
-}
 
 Hessian of an AD Function
 #########################
@@ -689,11 +686,12 @@ std::vector<a_double> a_fun::hessian(
 /*
 ------------------------------------------------------------------------------
 {xrst_begin cpp_fun_forward}
-
 {xrst_spell
+   factorial
    xp
    yp
 }
+
 
 Forward Mode AD
 ###############
@@ -812,11 +810,11 @@ std::vector<a_double> a_fun::forward(int p, const std::vector<a_double>& axp)
 /*
 -------------------------------------------------------------------------------
 {xrst_begin cpp_fun_reverse}
-
 {xrst_spell
    xq
    yq
 }
+
 
 Reverse Mode AD
 ###############
@@ -942,8 +940,6 @@ std::vector<a_double> a_fun::reverse(int q, const std::vector<a_double>& ayq)
 ------------------------------------------------------------------------------
 {xrst_begin cpp_fun_optimize}
 
-{xrst_spell
-}
 
 Optimize an AD Function
 #######################
@@ -981,10 +977,10 @@ void d_fun::optimize(void)
 /*
 ----------------------------------------------------------------------------
 {xrst_begin cpp_fun_json}
-
 {xrst_spell
    json
 }
+
 
 Json Representation of AD Computational Graph
 #############################################

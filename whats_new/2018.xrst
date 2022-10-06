@@ -6,14 +6,17 @@
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 {xrst_begin whats_new_2018}
-
 {xrst_spell
-   cppad
    cmake
-   ind
-   dep
+   cppad
    cxx
+   dep
+   ind
+   operand
+   runtime
+   xam
 }
+
 
 Cppad Py Changes During 2018
 ############################

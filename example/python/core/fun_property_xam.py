@@ -82,8 +82,6 @@ def fun_property_xam() :
 # {xrst_begin fun_property_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: d_fun Properties: Example and Test
 # ##########################################
 # {xrst_literal

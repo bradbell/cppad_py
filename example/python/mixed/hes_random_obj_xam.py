@@ -9,8 +9,6 @@
 # -----------------------------------------------------------------------------
 '''
 {xrst_begin mixed_hes_random_obj_xam_py}
-{xrst_spell
-}
 
 ran_likelihood: Example and Test
 ################################

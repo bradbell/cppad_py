@@ -70,8 +70,6 @@ bool fun_jacobian_xam(void) {
 /*
 {xrst_begin fun_jacobian_xam_cpp}
 
-{xrst_spell
-}
 C++: Dense Jacobian Using AD: Example and Test
 ##############################################
 {xrst_literal

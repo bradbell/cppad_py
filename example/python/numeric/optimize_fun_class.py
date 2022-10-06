@@ -44,6 +44,11 @@ class optimize_fun_class :
 # END_PYTHON
 """
 {xrst_begin numeric_optimize_fun_class}
+{xrst_spell
+   hess
+   jac
+   rl
+}
 
 A Helper Class That Defines Functions Needed for Optimization
 #############################################################

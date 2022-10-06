@@ -6,13 +6,14 @@
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 {xrst_begin more_py}
-
 {xrst_spell
-   cppad
    adynamic
-   mhelp
+   cppad
    grep
+   mhelp
+   xam
 }
+
 
 Steps To Add More Python Functions
 ##################################

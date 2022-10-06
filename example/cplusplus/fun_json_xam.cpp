@@ -60,10 +60,10 @@ bool to_json_xam(void) {
 // END_TO_JSON_XAM
 /*
 {xrst_begin fun_to_json_xam_cpp}
-
 {xrst_spell
    json
 }
+
 C++: to_json: Example and Test
 ##############################
 {xrst_literal
@@ -137,10 +137,10 @@ bool from_json_xam(void) {
 // --------------------------------------------------------------------------
 /*
 {xrst_begin fun_from_json_xam_cpp}
-
 {xrst_spell
    json
 }
+
 C++: from_json: Example and Test
 ################################
 {xrst_literal

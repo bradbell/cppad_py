@@ -9,8 +9,6 @@
 # -----------------------------------------------------------------------------
 '''
 {xrst_begin mixed_fix_likelihood_xam_py}
-{xrst_spell
-}
 
 fix_likelihood: Example and Test
 ################################

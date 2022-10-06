@@ -68,8 +68,6 @@ bool a_double_cond_assign_xam(void) {
 /*
 {xrst_begin a_double_cond_assign_xam_cpp}
 
-{xrst_spell
-}
 C++: a_double Conditional Assignment: Example and Test
 ######################################################
 {xrst_literal

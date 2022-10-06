@@ -68,17 +68,31 @@ cp -r build/lib.$name/cppad_py cppad_py
 PYTHONPATH=""
 python3 example/python/check_all.py
 #
-# PYTHONPATH
-minor=$(echo "import sys;print(sys.version_info.minor)" | python3)
-export PYTHONPATH=$prefix/$libdir/python3.$minor/site-packages
-#
 # Install
 python3 setup.py install --prefix=$prefix
 #
-# Test Installed Version
+# PYTHONPATH
+minor=$(echo "import sys;print(sys.version_info.minor)" | python3)
+dir="$prefix/$libdir/python3.$minor/site-packages"
+if [ -d $dir ]
+then
+   export PYTHONPATH="$dir"
+else
+   dir="$prefix/local/$libdir/python3.$minor/site-packages"
+   if [ -d $dir ]
+   then
+      export PYTHONPATH="$dir"
+   else
+      echo 'Cannot find sitepackages'
+      exit 1
+   fi
+fi
+#
+# check installed version
 if [ -e cppad_py ]
 then
    echo 'check_install.sh: setup.py did not remove local cppad_py directory'
+   exit 1
 fi
 python3 example/python/check_all.py
 # ---------------------------------------------------------------------------

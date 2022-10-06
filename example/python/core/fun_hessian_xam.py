@@ -79,8 +79,6 @@ def fun_hessian_xam() :
 # {xrst_begin fun_hessian_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: Dense Hessian Using AD: Example and Test
 # ################################################
 # {xrst_literal

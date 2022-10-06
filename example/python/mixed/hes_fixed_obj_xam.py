@@ -9,6 +9,9 @@
 # -----------------------------------------------------------------------------
 '''
 {xrst_begin mixed_hes_fixed_obj_xam_py}
+{xrst_spell
+   laplace
+}
 
 ran_likelihood: Example and Test
 ################################

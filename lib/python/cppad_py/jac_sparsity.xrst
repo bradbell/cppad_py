@@ -6,9 +6,10 @@
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 {xrst_begin py_jac_sparsity}
-
 {xrst_spell
+   jac
 }
+
 
 Jacobian Sparsity Patterns
 ##########################

@@ -56,8 +56,6 @@ def fun_abort_xam() :
 # {xrst_begin fun_abort_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: Abort Recording a_double Operations: Example and Test
 # #############################################################
 # {xrst_literal

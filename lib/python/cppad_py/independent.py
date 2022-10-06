@@ -9,14 +9,14 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin py_independent}
+# {xrst_spell
+#     adynamic
+#     cppad
+#     nd
+#     nx
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  cppad
-#  adynamic
-#  nx
-#  nd
-# }
 #
 # Declare Independent Variables and Start Recording
 # #################################################

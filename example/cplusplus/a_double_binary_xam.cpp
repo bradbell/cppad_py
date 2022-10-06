@@ -65,8 +65,6 @@ bool a_double_binary_xam(void) {
 /*
 {xrst_begin a_double_binary_xam_cpp}
 
-{xrst_spell
-}
 C++: a_double Binary Operators With AD Result: Example and Test
 ###############################################################
 {xrst_literal

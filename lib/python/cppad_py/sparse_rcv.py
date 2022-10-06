@@ -7,13 +7,13 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin py_sparse_rcv}
+# {xrst_spell
+#     cppad
+#     nnz
+#     rcv
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  rcv
-#  nnz
-#  cppad
-# }
 #
 # Sparse Matrices
 # ###############

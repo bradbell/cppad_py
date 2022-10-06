@@ -86,8 +86,6 @@ def fun_forward_xam() :
 # {xrst_begin fun_forward_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: Forward Mode AD: Example and Test
 # #########################################
 # {xrst_literal

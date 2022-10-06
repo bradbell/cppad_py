@@ -81,8 +81,6 @@ bool fun_hessian_xam(void) {
 /*
 {xrst_begin fun_hessian_xam_cpp}
 
-{xrst_spell
-}
 C++: Dense Hessian Using AD: Example and Test
 #############################################
 {xrst_literal

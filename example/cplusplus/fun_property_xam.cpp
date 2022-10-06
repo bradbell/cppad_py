@@ -90,8 +90,6 @@ bool fun_property_xam(void) {
 /*
 {xrst_begin fun_property_xam_cpp}
 
-{xrst_spell
-}
 C++: function Properties: Example and Test
 ##########################################
 {xrst_literal

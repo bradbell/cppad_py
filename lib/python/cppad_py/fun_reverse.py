@@ -7,12 +7,12 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin py_fun_reverse}
+# {xrst_spell
+#     xq
+#     yq
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  xq
-#  yq
-# }
 #
 # Reverse Mode AD
 # ###############

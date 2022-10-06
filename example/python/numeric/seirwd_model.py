@@ -190,13 +190,15 @@ def seirwd_model(method, t_all, p_all, initial, n_step = 1) :
 #
 #
 # {xrst_begin numeric_seirwd_model}
+# {xrst_spell
+#     interpolated
+#     linearly
+#     rcll
+#     runge
+#     seirwd
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  seirwd
-#  runge
-#  rcll
-# }
 #
 # A Susceptible Exposed Infectious Recovered and Death Model
 # ##########################################################

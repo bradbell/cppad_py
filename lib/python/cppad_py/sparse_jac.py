@@ -7,12 +7,13 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin py_sparse_jac}
+# {xrst_spell
+#     cppad
+#     jac
+#     rcv
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  rcv
-#  cppad
-# }
 #
 # Computing Sparse Jacobians
 # ##########################

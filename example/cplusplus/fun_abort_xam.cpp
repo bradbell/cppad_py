@@ -59,8 +59,6 @@ bool fun_abort_xam(void) {
 /*
 {xrst_begin fun_abort_xam_cpp}
 
-{xrst_spell
-}
 C++: Abort Recording a_double Operations: Example and Test
 ##########################################################
 {xrst_literal

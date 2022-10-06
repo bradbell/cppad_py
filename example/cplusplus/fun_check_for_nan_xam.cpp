@@ -72,8 +72,6 @@ bool fun_check_for_nan_xam(void) {
 /*
 {xrst_begin fun_check_for_nam_xam}
 
-{xrst_spell
-}
 C++: Check For Nan in Function Result: Example and Test
 #######################################################
 {xrst_literal

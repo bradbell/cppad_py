@@ -7,12 +7,12 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin py_sparse_rc}
+# {xrst_spell
+#     cppad
+#     nnz
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  nnz
-#  cppad
-# }
 #
 # Sparsity Patterns
 # #################

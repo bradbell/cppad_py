@@ -12,9 +12,11 @@
 /*
 {xrst_begin cppad_error}
 {xrst_spell
-   namespace
    cppad
    exp
+   msg
+   namespace
+   runtime
 }
 
 Converting CppAD Errors To Python Exceptions

@@ -109,8 +109,6 @@ bool sparse_hes_xam(void) {
 /*
 {xrst_begin sparse_hes_xam_cpp}
 
-{xrst_spell
-}
 C++: Hessian Sparsity Patterns: Example and Test
 ################################################
 {xrst_literal

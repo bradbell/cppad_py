@@ -94,8 +94,6 @@ bool fun_forward_xam(void) {
 /*
 {xrst_begin fun_forward_xam_cpp}
 
-{xrst_spell
-}
 C++: Forward Mode AD: Example and Test
 ######################################
 {xrst_literal

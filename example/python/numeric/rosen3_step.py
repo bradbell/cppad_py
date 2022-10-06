@@ -107,16 +107,16 @@ def check_rosen3_step(fun, ti, yi, h) :
 #
 #
 # {xrst_begin numeric_rosen3_step}
+# {xrst_spell
+#     rosenbrock
+#     shampine
+#     truncation
+#     yf
+#     yi
+#     yp
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  rosenbrock
-#  yf
-#  yi
-#  yp
-#  shampine
-#  rosenbrock
-# }
 #
 # One Third Order Rosenbrock ODE Step
 # ###################################

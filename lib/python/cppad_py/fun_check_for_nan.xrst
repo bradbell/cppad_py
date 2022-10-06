@@ -6,10 +6,10 @@
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 {xrst_begin py_fun_check_for_nan}
-
 {xrst_spell
    bool
 }
+
 
 Check for Nan in a Function Object
 ##################################

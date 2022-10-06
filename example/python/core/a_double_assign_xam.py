@@ -40,8 +40,6 @@ def a_double_assign_xam() :
 # {xrst_begin a_double_assign_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: a_double Assignment Operators: Example and Test
 # #######################################################
 # {xrst_literal

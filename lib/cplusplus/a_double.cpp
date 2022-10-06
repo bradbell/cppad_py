@@ -78,10 +78,10 @@ a_double::a_double(const CppAD::AD<double>* a_ptr)
 /*
 -------------------------------------------------------------------------------
 {xrst_begin a_double_ctor}
-
 {xrst_spell
    cppad
 }
+
 
 The a_double Constructor
 ########################
@@ -162,8 +162,6 @@ a_double::~a_double(void)
 a_double Unary Plus and Minus
 #############################
 
-{xrst_spell
-}
 
 Syntax
 ******
@@ -202,12 +200,13 @@ a_double a_double::operator-(void) const
 /*
 -------------------------------------------------------------------------------
 {xrst_begin a_double_property}
-
 {xrst_spell
-   bool
    aother
    ap
+   bool
+   var
 }
+
 
 Properties of an a_double Object
 ################################
@@ -332,16 +331,16 @@ a_double a_double::var2par() const
 /*
 -------------------------------------------------------------------------------
 {xrst_begin a_double_binary}
+{xrst_spell
+   radd
+   rdiv
+   rmul
+   rsub
+}
 
 a_double Binary Operators with an AD Result
 ###########################################
 
-{xrst_spell
-   radd
-   rsub
-   rmul
-   rdiv
-}
 
 Syntax
 ******
@@ -493,13 +492,13 @@ a_double pow_int(const a_double& ad, const int& i)
 /*
 -------------------------------------------------------------------------------
 {xrst_begin a_double_compare}
+{xrst_spell
+   bool
+}
 
 a_double Comparison Operators
 #############################
 
-{xrst_spell
-   bool
-}
 
 Syntax
 ******
@@ -564,8 +563,6 @@ COMPARISON_OP(!=)
 a_double Assignment Operators
 #############################
 
-{xrst_spell
-}
 
 Syntax
 ******
@@ -623,21 +620,22 @@ ASSIGNMENT_OP(/=)
 /*
 -------------------------------------------------------------------------------
 {xrst_begin a_double_unary_fun}
-
 {xrst_spell
    acos
+   acosh
    asin
+   asinh
    atan
+   atanh
+   erf
    exp
+   expm
    fabs
+   sinh
    sqrt
    tanh
-   asinh
-   acosh
-   atanh
-   expm
-   erf
 }
+
 
 Unary Functions with AD Result
 ##############################
@@ -726,9 +724,10 @@ UNARY_FUN_AD_RESULT(tanh)
 /*
 -------------------------------------------------------------------------------
 {xrst_begin a_double_cond_assign}
-
 {xrst_spell
+   operand
 }
+
 
 AD Conditional Assignment
 #########################

@@ -16,11 +16,11 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 /*
 -------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_rc}
-
 {xrst_spell
-   nnz
    cppad
+   nnz
 }
+
 
 Sparsity Patterns
 #################
@@ -277,12 +277,12 @@ std::vector<int> sparse_rc::col_major(void) const
 /*
 -------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_rcv}
-
 {xrst_spell
-   rcv
-   nnz
    cppad
+   nnz
+   rcv
 }
+
 
 Sparse Matrices
 ###############
@@ -543,9 +543,10 @@ std::vector<int> sparse_rcv::col_major(void) const
 // ----------------------------------------------------------------------------
 /*
 {xrst_begin cpp_jac_sparsity}
-
 {xrst_spell
+   jac
 }
+
 
 Jacobian Sparsity Patterns
 ##########################
@@ -670,11 +671,11 @@ void d_fun::rev_jac_sparsity(
 // ----------------------------------------------------------------------------
 /*
 {xrst_begin cpp_sparsity}
-
 {xrst_spell
-   hes
    bool
+   hes
 }
+
 
 Hessian Sparsity Patterns
 #########################
@@ -837,11 +838,12 @@ void d_fun::rev_hes_sparsity(
 /*
 ------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_jac}
-
 {xrst_spell
-   rcv
    cppad
+   jac
+   rcv
 }
+
 
 Computing Sparse Jacobians
 ##########################
@@ -1026,12 +1028,13 @@ int d_fun::sparse_jac_rev(
 /*
 ------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_hes}
-
 {xrst_spell
-   rcv
-   hes
    cppad
+   hes
+   multiplier
+   rcv
 }
+
 
 Computing Sparse Hessians
 #########################

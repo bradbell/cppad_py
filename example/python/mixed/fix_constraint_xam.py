@@ -9,8 +9,6 @@
 # -----------------------------------------------------------------------------
 '''
 {xrst_begin mixed_fix_constraint_xam_py}
-{xrst_spell
-}
 
 fix_constraint: Example and Test
 ################################

@@ -7,11 +7,12 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin numeric_rosen3_step_xam_py}
+# {xrst_spell
+#     rl
+#     rosenbrock
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  rosenbrock
-# }
 #
 # Example Computing Derivative A Rosenbrock Ode Solution
 # ######################################################

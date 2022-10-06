@@ -10,6 +10,7 @@
 '''
 {xrst_begin mixed_ran_likelihood_xam_py}
 {xrst_spell
+   laplace
 }
 
 ran_likelihood: Example and Test

@@ -72,8 +72,6 @@ def a_double_binary_xam() :
 # {xrst_begin a_double_binary_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: a_double Binary Operators With AD Result: Example and Test
 # ##################################################################
 # {xrst_literal

@@ -6,14 +6,14 @@
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 {xrst_begin vector_ctor}
-
 {xrst_spell
-   cppad
    av
-   bv
    bool
+   bv
+   cppad
    dv
 }
+
 
 Cppad Py Vector Constructors
 ############################
@@ -69,10 +69,10 @@ All of the other vector examples use the vector constructors.
 {xrst_end vector_ctor}
 -------------------------------------------------------------------------------
 {xrst_begin vector_size}
-
 {xrst_spell
    bool
 }
+
 
 Size of a Vector
 ################
@@ -111,10 +111,10 @@ Example
 {xrst_end vector_size}
 -------------------------------------------------------------------------------
 {xrst_begin vector_set_get}
-
 {xrst_spell
    bool
 }
+
 
 Setting and Getting Vector Elements
 ###################################

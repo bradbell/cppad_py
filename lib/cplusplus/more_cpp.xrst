@@ -6,16 +6,18 @@
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 {xrst_begin more_cpp}
-
 {xrst_spell
-   cppad
-   hpp
-   cplusplus
-   mhelp
-   bool
-   grep
    adynamic
+   bool
+   cplusplus
+   cppad
+   extern
+   grep
+   hpp
+   mhelp
+   xam
 }
+
 
 Steps To Add More C++ Functions
 ###############################

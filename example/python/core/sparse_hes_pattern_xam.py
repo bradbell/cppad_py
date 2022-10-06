@@ -89,8 +89,6 @@ def sparse_hes_pattern_xam() :
 # {xrst_begin sparse_hes_pattern_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: Hessian Sparsity Patterns: Example and Test
 # ###################################################
 # {xrst_literal

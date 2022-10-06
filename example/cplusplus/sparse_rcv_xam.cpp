@@ -62,8 +62,6 @@ bool sparse_rcv_xam(void) {
 /*
 {xrst_begin sparse_rcv_xam_cpp}
 
-{xrst_spell
-}
 C++: Sparsity Patterns: Example and Test
 ########################################
 {xrst_literal

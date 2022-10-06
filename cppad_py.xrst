@@ -6,6 +6,12 @@
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 {xrst_begin cppad_py}
+{xrst_spell
+   cppad
+   gpl
+   macros
+   txt
+}
 
 .. comment:  -------------------------------------------------------------
    default automatic indexing command for all cppad_py documentation
@@ -13,11 +19,6 @@
 .. comment:  -------------------------------------------------------------
    Latex macros used throughout Cppad Py documentation
 
-{xrst_spell
-   cppad
-   txt
-   gpl
-}
 
 A C++ Object Library and Python Interface to CppAD
 ##################################################

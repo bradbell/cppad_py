@@ -7,13 +7,14 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin numeric_optimize_fun_xam_py}
+# {xrst_spell
+#     constr
+#     cr
+#     ipopt
+#     scipy
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  constr
-#  cr
-#  ipopt
-# }
 #
 # Example Using optimize_fun_class with Scipy Optimization
 # ########################################################

@@ -65,8 +65,6 @@ bool fun_optimize_xam(void) {
 /*
 {xrst_begin fun_optimize_xam_cpp}
 
-{xrst_spell
-}
 C++: Optimize an d_fun: Example and Test
 ########################################
 {xrst_literal

@@ -122,8 +122,6 @@ bool fun_reverse_xam(void) {
 /*
 {xrst_begin fun_reverse_xam_cpp}
 
-{xrst_spell
-}
 C++: Reverse Mode AD: Example and Test
 ######################################
 {xrst_literal

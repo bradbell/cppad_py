@@ -65,8 +65,6 @@ def a_double_cond_assign_xam() :
 # {xrst_begin a_double_cond_assign_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: a_double Conditional Assignment: Example and Test
 # #########################################################
 # {xrst_literal

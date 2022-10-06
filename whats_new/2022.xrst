@@ -9,10 +9,15 @@
 {xrst_begin whats_new_2022}
 {xrst_spell
    xsrst
+   pyspellchecker
 }
 
 CppAD Py Changes During 2022
 ############################
+
+10-06
+*****
+Adapt to new xrst-2022.10.5 and pyspellchecker-0.7.0.
 
 08-24
 *****

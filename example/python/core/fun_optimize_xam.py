@@ -62,8 +62,6 @@ def fun_optimize_xam() :
 # {xrst_begin fun_optimize_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: Optimize an d_fun: Example and Test
 # ###########################################
 # {xrst_literal

@@ -6,10 +6,10 @@
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 {xrst_begin_parent library}
-
 {xrst_spell
    cppad
 }
+
 
 The Cppad Py Libraries
 ######################
@@ -24,10 +24,11 @@ Children
 {xrst_end library}
 -------------------------------------------------------------------------------
 {xrst_begin a_double}
-
 {xrst_spell
    cppad
+   scalars
 }
+
 
 Cppad Py AD Scalars
 ###################
@@ -41,10 +42,10 @@ Children
 {xrst_end a_double}
 -------------------------------------------------------------------------------
 {xrst_begin vector}
-
 {xrst_spell
    cppad
 }
+
 
 Cppad Py Vectors
 ################

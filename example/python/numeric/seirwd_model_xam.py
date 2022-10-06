@@ -7,11 +7,11 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin numeric_seirwd_model_xam_py}
+# {xrst_spell
+#     seris
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  seris
-# }
 #
 # Example Using seris_model
 # #########################

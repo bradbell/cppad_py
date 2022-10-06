@@ -52,8 +52,6 @@ def vector_set_get_xam() :
 # {xrst_begin vector_set_get_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: Setting and Getting Vector Elements: Example and Test
 # #############################################################
 # {xrst_literal

@@ -46,8 +46,6 @@ def a_double_compare_xam() :
 # {xrst_begin a_double_compare_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: a_double Comparison Operators: Example and Test
 # #######################################################
 # {xrst_literal

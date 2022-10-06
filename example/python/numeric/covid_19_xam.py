@@ -7,20 +7,24 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin numeric_covid_19_xam_py}
+# {xrst_spell
+#     bradbell
+#     covariance
+#     covid
+#     csv
+#     cv
+#     lcr
+#     multiplier
+#     optimizer
+#     rel
+#     runge
+#     seirwd
+#     sim
+#     sqrt
+#     stime
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  lcr
-#  cv
-#  covid
-#  seirwd
-#  sim
-#  rel
-#  runge
-#  sqrt
-#  stime
-#  bradbell
-# }
 #
 # Example Fitting an SEIRWD Model for Covid-19
 # ############################################

@@ -74,11 +74,11 @@ def simple_inv(A) :
 #
 #
 # {xrst_begin numeric_simple_inv}
+# {xrst_spell
+#     ainv
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  ainv
-# }
 #
 # An AD Compatible Matrix Inverse Routine
 # #######################################

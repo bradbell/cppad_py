@@ -61,8 +61,6 @@ def sparse_rcv_xam() :
 # {xrst_begin sparse_rcv_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: Sparsity Patterns: Example and Test
 # ###########################################
 # {xrst_literal

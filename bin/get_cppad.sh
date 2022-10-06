@@ -9,14 +9,16 @@
 #
 #
 # {xrst_begin get_cppad_sh}
+# {xrst_spell
+#     caching
+#     cmake
+#     cppad
+#     cxx
+#     usr
+#     wno
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  cppad
-#  cxx
-#  Wno
-#  cmake
-# }
 #
 # Get Cppad
 # #########

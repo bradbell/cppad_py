@@ -6,20 +6,25 @@
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
 {xrst_begin install_error}
-
 {xrst_spell
-   pc
-   setuptools
-   errno
-   libcppad
-   stdio
-   cppad
-   javac
-   openjdk
    cholmod
-   suitesparse
+   config
+   cppad
+   errno
+   frameworks
+   javac
+   libcppad
+   openjdk
+   pc
    pkg
+   scipy
+   setuptools
+   src
+   stdio
+   suitesparse
+   usr
 }
+
 
 Error Messages During Installation
 ##################################

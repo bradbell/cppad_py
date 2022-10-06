@@ -57,8 +57,6 @@ def cppad_error_xam() :
 # {xrst_begin cppad_error_xam}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: Example CppAD Error Message
 # ###################################
 # {xrst_literal

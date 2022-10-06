@@ -7,13 +7,14 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin py_sparse_hes}
+# {xrst_spell
+#     cppad
+#     hes
+#     multiplier
+#     rcv
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  rcv
-#  hes
-#  cppad
-# }
 #
 # Computing Sparse Hessians
 # #########################

@@ -6,10 +6,10 @@
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 {xrst_begin cpp_fun}
-
 {xrst_spell
    cppad
 }
+
 
 Cppad Py AD Functions
 #####################
@@ -23,10 +23,10 @@ Children
 {xrst_end cpp_fun}
 -------------------------------------------------------------------------------
 {xrst_begin sparse}
-
 {xrst_spell
    cppad
 }
+
 
 Cppad Py Sparse Calculation
 ###########################

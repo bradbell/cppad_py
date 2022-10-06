@@ -6,41 +6,56 @@
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 {xrst_begin whats_new_2020}
-
 {xrst_spell
-   cmd
-   omhelp
-   erf
-   xq
-   yq
-   inplace
-   stdlib
-   libc
+   anl
+   backquote
+   caching
+   cholmod
    cmake
-   json
+   cmd
+   compilers
+   covariance
+   covid
    cppad
+   dir
+   erf
+   fabs
+   factorial
+   gh
+   github
+   hes
+   hpp
+   inplace
+   integrator
+   ipopt
+   italic
+   json
+   libc
+   libcppad
+   libdir
+   matplotlib
+   mcs
+   misc
+   obj
+   omh
+   omhelp
+   overwrites
+   quantile
+   rcv
+   rst
+   runge
+   runtime
+   scipy
    seirs
    seirwd
-   covid
-   fabs
-   runge
+   stdlib
    steppers
-   misc
-   omh
-   anl
-   dir
-   mcs
-   libdir
-   backquote
-   hpp
-   libcppad
-   ipopt
-   rcv
-hes obj
-   matplotlib
-   cholmod
-   gh
+   var
+   xam
+   xq
+   yq
 }
+
 
 CppAD Py Changes During 2020
 ############################

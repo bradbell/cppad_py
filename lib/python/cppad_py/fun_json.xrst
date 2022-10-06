@@ -6,10 +6,10 @@
                      https://www.gnu.org/licenses/gpl-3.0.txt
 -------------------------------------------------------------------------------
 {xrst_begin py_fun_json}
-
 {xrst_spell
    json
 }
+
 
 Json Representation of AD Computation Graph
 ###########################################

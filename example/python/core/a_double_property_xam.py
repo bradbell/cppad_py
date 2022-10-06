@@ -38,8 +38,6 @@ def a_double_property_xam() :
 # {xrst_begin a_double_property_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: a_double Properties: Example and Test
 # #############################################
 # {xrst_literal

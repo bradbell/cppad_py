@@ -70,8 +70,6 @@ def fun_jacobian_xam() :
 # {xrst_begin fun_jacobian_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: Dense Jacobian Using AD: Example and Test
 # #################################################
 # {xrst_literal

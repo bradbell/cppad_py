@@ -39,8 +39,6 @@ bool vector_size_xam(void) {
 /*
 {xrst_begin vector_size_xam_cpp}
 
-{xrst_spell
-}
 C++: Size of Vectors: Example and Test
 ######################################
 {xrst_literal

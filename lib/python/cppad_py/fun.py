@@ -7,11 +7,11 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin py_fun}
+# {xrst_spell
+#     cppad
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  cppad
-# }
 #
 # Cppad Py AD Functions
 # #####################

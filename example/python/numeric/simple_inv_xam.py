@@ -7,10 +7,10 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin numeric_simple_inv_xam_py}
-# {xrst_comment_ch #}
 # {xrst_spell
-#  cc
+#     cc
 # }
+# {xrst_comment_ch #}
 #
 # Example Computing Derivatives of Matrix Inversion
 # #################################################

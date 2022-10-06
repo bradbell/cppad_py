@@ -7,12 +7,12 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin py_fun_ctor}
+# {xrst_spell
+#     af
+#     cppad
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  cppad
-#  af
-# }
 #
 # Stop Current Recording and Store Function Object
 # ################################################

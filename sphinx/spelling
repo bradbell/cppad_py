@@ -1,99 +1,16 @@
-# BEGIN spelling
-#
-# words needed for new verison of spell checker
-asymptotic
-boolean
-compilers
-conf
-deprecated
-fortran
-interpolated
-Laplace
-multipliers
-msg
-nlp
-operand
-overwrites
-quantile
-rl
-runtime
-scalars
-sh
-sparsity
-src
-th
-truncation
-tuple
-#
-# standard mathematical abbreviations
-grad
-hess
-sinh
-#
-# example words special for this projext
-ctor
-jac
-nc
-nr
-op
-jac
-rc
-var
-vec
-xam
-#
-# example words in xrst commands
-xrst
-rst
-#
-# example words in sphinx commands
-html
-github
-csv
-#
-# example python commands
-dict
-dtype
-len
-numpy
-py
-scipy
-str
-sys
-#
-# example c++ commands
-extern
 const
 cpp
+init
+nan
+nc
+nr
+numpy
+op
+py
+rc
+sh
+sparsity
 std
-#
-# example latex commands
-\bar
-\begin
-\bf
-\cdot
-\circ
-\dot
-\ell
-\end
-\exp
-\frac
-\geq
-\int
-\in
-\ldots
-\leq
-\log
-\left
-\mbox
-\newcommand
-\partial
-\prod
-\right
-\rightarrow
-\rm
-\sqrt
-\sum
-\times
-\varepsilon
-# END spelling
+str
+th
+vec

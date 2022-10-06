@@ -17,15 +17,16 @@ def runge4_step(fun, ti, yi, h) :
 #
 #
 # {xrst_begin numeric_runge4_step}
+# {xrst_spell
+#     kutta
+#     runge
+#     truncation
+#     yf
+#     yi
+#     yp
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  runge
-#  kutta
-#  yf
-#  yi
-#  yp
-# }
 #
 # One Fourth Order Runge-Kutta ODE Step
 # #####################################

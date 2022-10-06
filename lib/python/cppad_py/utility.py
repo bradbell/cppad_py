@@ -10,12 +10,14 @@ import cppad_py
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin numpy2vec}
+# {xrst_spell
+#     bool
+#     cppad
+#     dtype
+#     tuple
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  cppad
-#  bool
-# }
 #
 # Convert a Numpy Array to a cppad_py Vector
 # ##########################################
@@ -134,11 +136,12 @@ def numpy2vec(array, dtype, shape, context, name) :
    return vec
 # -----------------------------------------------------------------------------
 # {xrst_begin vec2numpy}
+# {xrst_spell
+#     cppad
+#     len
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  cppad
-# }
 #
 # Convert a cppad_py Vector to a Numpy Array
 # ##########################################

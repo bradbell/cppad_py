@@ -46,11 +46,11 @@ def to_json_xam() :
 #
 #
 # {xrst_begin fun_to_json_xam_py}
+# {xrst_spell
+#     json
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  json
-# }
 # Python to_json: Example and Test
 # ################################
 # {xrst_literal
@@ -113,11 +113,11 @@ def from_json_xam() :
 # END_FROM_JSON_XAM
 #
 # {xrst_begin fun_from_json_xam_py}
+# {xrst_spell
+#     json
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  json
-# }
 # Python from_json: Example and Test
 # ##################################
 # {xrst_literal

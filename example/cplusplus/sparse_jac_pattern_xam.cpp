@@ -89,8 +89,6 @@ bool sparse_jac_pattern_xam(void) {
 /*
 {xrst_begin sparse_jac_pattern_xam_cpp}
 
-{xrst_spell
-}
 C++: Jacobian Sparsity Patterns: Example and Test
 #################################################
 {xrst_literal

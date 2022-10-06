@@ -64,8 +64,6 @@ def fun_check_for_nan_xam() :
 # {xrst_begin check_for_nan_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: Example Turning of Checking For Nan
 # ###########################################
 # {xrst_literal

@@ -7,12 +7,13 @@
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin numeric_runge4_step_xam_py}
+# {xrst_spell
+#     kutta
+#     rl
+#     runge
+# }
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-#  runge
-#  kutta
-# }
 #
 # Example Computing Derivative A Runge-Kutta Ode Solution
 # #######################################################

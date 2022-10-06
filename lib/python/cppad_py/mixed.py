@@ -7,6 +7,9 @@
 # -----------------------------------------------------------------------------
 """
 {xrst_begin_parent mixed}
+{xrst_spell
+   laplace
+}
 Laplace Approximation of Mixed Effects Models
 #############################################
 
@@ -86,8 +89,9 @@ class mixed :
    -------------------------------------------------------------------------
    {xrst_begin mixed_ctor}
    {xrst_spell
-      obj
       bool
+      boolean
+      obj
       rcv
    }
 
@@ -300,6 +304,7 @@ class mixed :
    {xrst_begin mixed_fatal_error}
    {xrst_spell
       obj
+      runtime
    }
 
    Mixed Class Fatal Errors
@@ -330,8 +335,6 @@ class mixed :
    """
    -------------------------------------------------------------------------
    {xrst_begin mixed_fix_likelihood}
-   {xrst_spell
-   }
 
    Fixed Effects Likelihood
    ########################
@@ -384,8 +387,6 @@ class mixed :
    {xrst_end mixed_fix_likelihood}
    -------------------------------------------------------------------------
    {xrst_begin mixed_fix_constraint}
-   {xrst_spell
-   }
    Fixed Effects Constraint Function
    #################################
 
@@ -493,9 +494,12 @@ class mixed :
    -------------------------------------------------------------------------
    {xrst_begin mixed_optimize_fixed}
    {xrst_spell
+      cppad
       ipopt
       iter
-      cppad
+      lagrange
+      laplace
+      nlp
       rcv
    }
 
@@ -907,7 +911,10 @@ class mixed :
    -------------------------------------------------------------------------
    {xrst_begin mixed_hes_fixed_obj}
    {xrst_spell
-      hes obj rcv
+      hes
+      laplace
+      obj
+      rcv
    }
 
    Hessian of Fixed Effects Objective
@@ -1013,7 +1020,9 @@ class mixed :
    -------------------------------------------------------------------------
    {xrst_begin mixed_hes_random_obj}
    {xrst_spell
-      hes obj rcv
+      hes
+      obj
+      rcv
    }
 
    Hessian of Random Effects Objective

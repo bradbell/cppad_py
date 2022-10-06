@@ -60,8 +60,6 @@ def a_double_unary_fun_xam() :
 # {xrst_begin a_double_unary_fun_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: a_double Unary Functions with AD Result: Example and Test
 # #################################################################
 # {xrst_literal

@@ -56,8 +56,6 @@ bool vector_set_get_xam(void) {
 /*
 {xrst_begin vector_set_get_xam_cpp}
 
-{xrst_spell
-}
 C++: Setting and Getting Vector Elements: Example and Test
 ##########################################################
 {xrst_literal

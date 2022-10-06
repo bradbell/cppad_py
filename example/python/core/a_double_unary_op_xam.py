@@ -31,8 +31,6 @@ def a_double_unary_op_xam() :
 # {xrst_begin a_double_unary_op_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: a_double Unary Plus and Minus: Example and Test
 # #######################################################
 # {xrst_literal

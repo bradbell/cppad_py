@@ -84,8 +84,6 @@ def sparse_jac_pattern_xam() :
 # {xrst_begin sparse_jac_pattern_xam_py}
 # {xrst_comment_ch #}
 #
-# {xrst_spell
-# }
 # Python: Jacobian Sparsity Patterns: Example and Test
 # ####################################################
 # {xrst_literal
