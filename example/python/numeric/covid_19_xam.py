@@ -50,7 +50,7 @@
 #
 # Model ODE
 # *********
-# We use the :ref:`seirwd<numeric_seirwd_model>` model and notation.
+# We use the :ref:`seirwd<numeric_seirwd_model-name>` model and notation.
 #
 # beta(t)
 # =======
@@ -116,8 +116,8 @@ delta_known  = 0.2
 # ==========
 # There are two choices for *ode_method* ,
 # the method used to solve the ODE:
-# :ref:`runge4<numeric_runge4_step>` and
-# :ref:`rosen3<numeric_rosen3_step>`.
+# :ref:`runge4<numeric_runge4_step-name>` and
+# :ref:`rosen3<numeric_rosen3_step-name>`.
 # In addition, we can choose *ode_n_step* ,
 # the number of step to take for each time interval in *t_all* ,
 # before it is sub-sampled using the

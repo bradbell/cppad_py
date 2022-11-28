@@ -105,7 +105,7 @@ def simple_inv(A) :
 # }
 # Example
 # *******
-# :ref:`numeric_simple_inv_xam_py`
+# :ref:`numeric_simple_inv_xam_py-name`
 #
 # Source Code
 # ***********

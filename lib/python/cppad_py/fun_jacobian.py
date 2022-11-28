@@ -58,7 +58,7 @@
 # }
 # Example
 # *******
-# :ref:`fun_jacobian_xam_py`
+# :ref:`fun_jacobian_xam_py-name`
 #
 # {xrst_end py_fun_jacobian}
 # -----------------------------------------------------------------------------

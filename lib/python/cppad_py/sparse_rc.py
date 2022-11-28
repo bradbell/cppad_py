@@ -148,7 +148,7 @@
 # }
 # Example
 # *******
-# :ref:`sparse_rc_xam_py`
+# :ref:`sparse_rc_xam_py-name`
 #
 # {xrst_end py_sparse_rc}
 # -----------------------------------------------------------------------------

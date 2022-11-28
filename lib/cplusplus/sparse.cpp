@@ -191,7 +191,7 @@ row and column values (if ``NDEBUG`` is not defined).
 }
 Example
 *******
-:ref:`sparse_rc_xam_cpp`
+:ref:`sparse_rc_xam_cpp-name`
 
 {xrst_end cpp_sparse_rc}
 */
@@ -443,7 +443,7 @@ row and column values (if ``NDEBUG`` is not defined).
 }
 Example
 *******
-:ref:`sparse_rcv_xam_cpp`
+:ref:`sparse_rcv_xam_cpp-name`
 
 {xrst_end cpp_sparse_rcv}
 */
@@ -609,7 +609,7 @@ The argument *pattern_in* has prototype
 
 | |tab| ``const sparse_rc&`` *pattern_in*
 
-see :ref:`cpp_sparse_rc`.
+see :ref:`cpp_sparse_rc-name`.
 This is a sparsity pattern for :math:`R`.
 
 pattern_out
@@ -633,7 +633,7 @@ In this case, *pattern_out* is a sparsity pattern for
 }
 Example
 *******
-:ref:`c++<sparse_jac_pattern_xam_cpp>`
+:ref:`c++<sparse_jac_pattern_xam_cpp-name>`
 
 {xrst_end cpp_jac_sparsity}
 */
@@ -754,7 +754,7 @@ In this case, *pattern_out* is a sparsity pattern for
 }
 Example
 *******
-:ref:`c++<sparse_hes_pattern_xam_cpp>`
+:ref:`c++<sparse_hes_pattern_xam_cpp-name>`
 
 {xrst_end cpp_sparsity}
 */
@@ -866,18 +866,18 @@ The syntax above takes advantage of sparsity when computing the Jacobian
    J(x) = F^{(1)} (x)
 
 In the sparse case, this should be faster and take less memory than
-:ref:`cpp_fun_jacobian`.
+:ref:`cpp_fun_jacobian-name`.
 We use the notation :math:`J_{i,j} (x)` to denote the partial of
 :math:`F_i (x)` with respect to :math:`x_j`.
 
 sparse_jac_for
 **************
-This function uses first order forward mode sweeps :ref:`cpp_fun_forward`
+This function uses first order forward mode sweeps :ref:`cpp_fun_forward-name`
 to compute multiple columns of the Jacobian at the same time.
 
 sparse_jac_rev
 **************
-This function uses first order reverse mode sweeps :ref:`cpp_fun_reverse`
+This function uses first order reverse mode sweeps :ref:`cpp_fun_reverse-name`
 to compute multiple rows of the Jacobian at the same time.
 
 f
@@ -958,7 +958,7 @@ or combining multiple columns (rows) into a single sweep.
 
 Uses Forward
 ************
-After each call to :ref:`cpp_fun_forward`,
+After each call to :ref:`cpp_fun_forward-name`,
 the object *f* contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
 After a call to ``sparse_jac_forward`` or ``sparse_jac_rev`` ,
@@ -973,7 +973,7 @@ All the other forward mode coefficients are unspecified.
 }
 Example
 *******
-:ref:`sparse_jac_xam_cpp`
+:ref:`sparse_jac_xam_cpp-name`
 
 {xrst_end cpp_sparse_jac}
 */
@@ -1146,7 +1146,7 @@ or combining multiple columns and rows into a single sweep.
 
 Uses Forward
 ************
-After each call to :ref:`cpp_fun_forward`,
+After each call to :ref:`cpp_fun_forward-name`,
 the object *f* contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
 After a call to ``sparse_hes``
@@ -1161,7 +1161,7 @@ All the other forward mode coefficients are unspecified.
 }
 Example
 *******
-:ref:`sparse_hes_xam_cpp`
+:ref:`sparse_hes_xam_cpp-name`
 
 {xrst_end cpp_sparse_hes}
 */

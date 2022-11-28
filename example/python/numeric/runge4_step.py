@@ -87,7 +87,7 @@ def runge4_step(fun, ti, yi, h) :
 # }
 # Example
 # *******
-# :ref:`numeric_runge4_step_xam_py`
+# :ref:`numeric_runge4_step_xam_py-name`
 #
 # Source Code
 # ***********

@@ -33,7 +33,7 @@ then
 fi
 # -----------------------------------------------------------------------------
 # xsrst
-xrst --target $target --output doc cppad_py.xrst
+xrst --target $target --output_dir doc
 # -----------------------------------------------------------------------------
 echo 'run_xrst.sh: OK'
 exit 0

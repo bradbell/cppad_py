@@ -112,7 +112,7 @@ This included advancing to cppad_mixed-20210511.
 *****
 #. Advance to cppad-20210428.
    This fixes some problems with the install of cppad_py on msys and cygwin.
-   The :ref:`check_for_nan_xam_py-0` was modified because the new version
+   The :ref:`check_for_nan_xam_py-title` was modified because the new version
    of exponentiation handles more cases.
 
 #. Adapt the install for msys to the fact that soft links do not work on that

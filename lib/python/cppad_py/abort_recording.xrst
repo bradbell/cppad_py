@@ -21,13 +21,13 @@ Syntax
 Purpose
 *******
 This aborts the current recording (if it exists)
-started by the most recent call to :ref:`independent<py_independent>`.
+started by the most recent call to :ref:`independent<py_independent-name>`.
 
 {xrst_toc_hidden
    example/python/core/fun_abort_xam.py
 }
 Example
 *******
-:ref:`python<fun_abort_xam_py>`
+:ref:`python<fun_abort_xam_py-name>`
 
 {xrst_end py_abort_recording}

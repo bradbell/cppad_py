@@ -99,7 +99,7 @@
 # }
 # Example
 # *******
-# :ref:`fun_reverse_xam_py`
+# :ref:`fun_reverse_xam_py-name`
 #
 # {xrst_end py_fun_reverse}
 # -----------------------------------------------------------------------------

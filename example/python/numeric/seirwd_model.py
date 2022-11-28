@@ -262,8 +262,8 @@ def seirwd_model(method, t_all, p_all, initial, n_step = 1) :
 # method
 # ******
 # This ``str`` must be either ``runge4`` or ``rosen3`` .
-# It determines if :ref:`runge4_step<numeric_runge4_step>` or
-# :ref:`rosen3_step<numeric_rosen3_step>` is used to solve the ODE.
+# It determines if :ref:`runge4_step<numeric_runge4_step-name>` or
+# :ref:`rosen3_step<numeric_rosen3_step-name>` is used to solve the ODE.
 #
 # t_all
 # *****
@@ -344,7 +344,7 @@ def seirwd_model(method, t_all, p_all, initial, n_step = 1) :
 # }
 # Example
 # *******
-# :ref:`numeric_seirwd_model_xam_py`
+# :ref:`numeric_seirwd_model_xam_py-name`
 #
 # Source Code
 # ***********

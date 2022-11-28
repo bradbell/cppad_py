@@ -156,7 +156,7 @@ and *H* is a numpy *n* by *n*  matrix.
 }
 Example
 *******
-:ref:`numeric_optimize_fun_xam_py`
+:ref:`numeric_optimize_fun_xam_py-name`
 
 Source Code
 ***********

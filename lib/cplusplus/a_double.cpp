@@ -185,8 +185,8 @@ If it is ``-`` , the result is the negative of *ax* .
 }
 Example
 *******
-:ref:`c++<a_double_unary_op_xam_cpp>`,
-:ref:`python<a_double_unary_op_xam_py>`.
+:ref:`c++<a_double_unary_op_xam_cpp-name>`,
+:ref:`python<a_double_unary_op_xam_py-name>`.
 
 {xrst_end a_double_unary_op}
 */
@@ -236,7 +236,7 @@ It is the value of *ad* , as a constant function.
 Restriction
 ===========
 The object *ad* must not depend on the
-:ref:`independent<cpp_independent>`
+:ref:`independent<cpp_independent-name>`
 variables when *ad*\ ``.value`` () is called.
 If it does depend on the independent variables,
 you will have to wait until the current recording is terminated
@@ -298,8 +298,8 @@ while is a variable; :ref:`value<a_double_property@value>` above.
 }
 Example
 *******
-:ref:`c++<a_double_property_xam_cpp>`,
-:ref:`python<a_double_property_xam_py>`.
+:ref:`c++<a_double_property_xam_cpp-name>`,
+:ref:`python<a_double_property_xam_py-name>`.
 
 {xrst_end a_double_property}
 */
@@ -545,8 +545,8 @@ The result has c++ prototype
 }
 Example
 *******
-:ref:`c++<a_double_compare_xam_cpp>`,
-:ref:`python<a_double_compare_xam_py>`.
+:ref:`c++<a_double_compare_xam_cpp-name>`,
+:ref:`python<a_double_compare_xam_py-name>`.
 
 {xrst_end a_double_compare}
 */
@@ -607,8 +607,8 @@ This object has c++ prototype
 }
 Example
 *******
-:ref:`c++<a_double_assign_xam_cpp>`,
-:ref:`python<a_double_assign_xam_py>`.
+:ref:`c++<a_double_assign_xam_cpp-name>`,
+:ref:`python<a_double_assign_xam_py-name>`.
 
 {xrst_end a_double_assign}
 */
@@ -700,8 +700,8 @@ and is the value of the function *fun* evaluated at the argument *ax*; i.e.,
 }
 Example
 *******
-:ref:`c++<a_double_unary_fun_xam_cpp>`,
-:ref:`python<a_double_unary_fun_xam_py>`.
+:ref:`c++<a_double_unary_fun_xam_cpp-name>`,
+:ref:`python<a_double_unary_fun_xam_py-name>`.
 
 {xrst_end a_double_unary_fun}
 */
@@ -746,12 +746,12 @@ The code
 | |tab| |tab| *target* = *if_false*
 
 records either the true or false case depending on the value
-of *left* and *right* ; see :ref:`cpp_fun_ctor`.
+of *left* and *right* ; see :ref:`cpp_fun_ctor-name`.
 If *left* or *right* is a
 :ref:`variable<a_double_property@variable>`,
 it may be desirable to switch between *if_true* and *if_false*
 depending of the value of the independent variable during
-calls to order zero :ref:`cpp_fun_forward`.
+calls to order zero :ref:`cpp_fun_forward-name`.
 The ``cond_assign`` does this.
 
 target
@@ -822,8 +822,8 @@ of the comparison is false.
 }
 Example
 *******
-:ref:`c++<a_double_cond_assign_xam_cpp>`,
-:ref:`python<a_double_cond_assign_xam_py>`.
+:ref:`c++<a_double_cond_assign_xam_cpp-name>`,
+:ref:`python<a_double_cond_assign_xam_py-name>`.
 
 {xrst_end a_double_cond_assign}
 */

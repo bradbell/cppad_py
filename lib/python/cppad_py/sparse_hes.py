@@ -41,7 +41,7 @@
 # f
 # *
 # This object must have been returned by a previous call to the python
-# :ref:`d_fun<py_fun_ctor>` constructor.
+# :ref:`d_fun<py_fun_ctor-name>` constructor.
 # Note that the Taylor coefficients stored in *f* are affected
 # by this operation; see
 # :ref:`uses_forward<py_sparse_hes@Uses Forward>` below.
@@ -114,7 +114,7 @@
 #
 # Uses Forward
 # ************
-# After each call to :ref:`py_fun_forward`,
+# After each call to :ref:`py_fun_forward-name`,
 # the object *f* contains the corresponding Taylor coefficients
 # for all the variables in the operation sequence..
 # After a call to ``sparse_hes``
@@ -129,7 +129,7 @@
 # }
 # Example
 # *******
-# :ref:`sparse_hes_xam_py`
+# :ref:`sparse_hes_xam_py-name`
 #
 # {xrst_end py_sparse_hes}
 # -----------------------------------------------------------------------------

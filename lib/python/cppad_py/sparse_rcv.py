@@ -142,7 +142,7 @@
 # }
 # Example
 # *******
-# :ref:`sparse_rcv_xam_py`
+# :ref:`sparse_rcv_xam_py-name`
 #
 # {xrst_end py_sparse_rcv}
 # -----------------------------------------------------------------------------

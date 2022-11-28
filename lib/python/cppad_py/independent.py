@@ -63,11 +63,11 @@
 #
 # Purpose
 # *******
-# This starts a recording of the :ref:`a_double` operations.
+# This starts a recording of the :ref:`a_double-name` operations.
 # This recording is terminated, and the information is stored,
-# by calling the :ref:`d_fun_constructor<py_fun_ctor>`.
+# by calling the :ref:`d_fun_constructor<py_fun_ctor-name>`.
 # It is terminated, and the information is lost,
-# by calling :ref:`abort_recording<py_abort_recording>`.
+# by calling :ref:`abort_recording<py_abort_recording-name>`.
 #
 # {xrst_toc_hidden
 #  example/python/core/fun_dynamic_xam.py
@@ -75,7 +75,7 @@
 # Example
 # *******
 # Most of the python ``d_fun`` examples use this function.
-# The :ref:`fun_dynamic_xam_py` uses the syntax that includes
+# The :ref:`fun_dynamic_xam_py-name` uses the syntax that includes
 # dynamic parameters.
 #
 # {xrst_end py_independent}

@@ -41,7 +41,7 @@
 #
 # Example
 # *******
-# See :ref:`fun_dynamic_xam_py`
+# See :ref:`fun_dynamic_xam_py-name`
 #
 # {xrst_end py_fun_new_dynamic}
 # -----------------------------------------------------------------------------

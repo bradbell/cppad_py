@@ -363,8 +363,8 @@ sys.exit(0)
 # Get cppad
 # *********
 # The next step is to get a copy of cppad using
-# :ref:`get_cppad_sh`.
-# If you want to use the :ref:`mixed-0` class, you will have to set
+# :ref:`get_cppad_sh-name`.
+# If you want to use the :ref:`mixed-title` class, you will have to set
 # :ref:`include_mixed<get_cppad_sh@Settings@include_mixed>` to true
 # and use ``bin/get_cppad_mixed.sh`` to install cppad and other
 # non-standard requirements.

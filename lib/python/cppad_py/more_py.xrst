@@ -22,10 +22,10 @@ Purpose
 *******
 This section outlines the steps for adding more python functionality
 to cppad_py.
-This is done by example showing how the :ref:`py_fun_new_dynamic` was added.
+This is done by example showing how the :ref:`py_fun_new_dynamic-name` was added.
 This example case was chosen because it required both changing one
-python function, :ref:`py_independent`,
-and adding a new python function, :ref:`py_fun_new_dynamic`.
+python function, :ref:`py_independent-name`,
+and adding a new python function, :ref:`py_fun_new_dynamic-name`.
 
 Documentation
 *************
@@ -42,7 +42,7 @@ and the extra return value was documented; see
 
 new_dynamic
 ===========
-The :ref:`cpp_fun_new_dynamic` documentation was added
+The :ref:`cpp_fun_new_dynamic-name` documentation was added
 in the file ``lib/python/cppad_py/fun_new_dynamic.py`` .
 In addition, the OMhelp command
 
@@ -53,7 +53,7 @@ was added to the file ``lib/python/cppad_py/fun.py`` .
 Example
 =======
 An example file was added to the documentation,
-below the :ref:`py_independent` section, using the OMhelp commands:
+below the :ref:`py_independent-name` section, using the OMhelp commands:
 
 | |tab| { ``xrst_dollar}children%``
 | |tab| |tab| ``example/python/core/fun_dynamic_xam.py``
@@ -104,7 +104,7 @@ Example
 *******
 The file ``example/python/core/fun_dynamic_xam.py`` was added
 with the following contents:
-:ref:`fun_dynamic_xam_py`.
+:ref:`fun_dynamic_xam_py-name`.
 In addition, in the file
 
 | |tab| ``example/python/check_all.py.in``

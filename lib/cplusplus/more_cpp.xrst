@@ -26,10 +26,10 @@ Purpose
 *******
 This section outlines the steps for adding more CppAD functionality
 to cppad_py.
-This is done by example showing how the :ref:`cpp_fun_new_dynamic` was added.
+This is done by example showing how the :ref:`cpp_fun_new_dynamic-name` was added.
 This example case was chosen because it required both changing one
-C++ function, :ref:`cpp_independent`,
-and adding a new C++ function, :ref:`cpp_fun_new_dynamic`.
+C++ function, :ref:`cpp_independent-name`,
+and adding a new C++ function, :ref:`cpp_fun_new_dynamic-name`.
 
 Include File
 ************
@@ -76,12 +76,12 @@ and the corresponding return value was documented; see
 
 new_dynamic
 ===========
-The :ref:`cpp_fun_new_dynamic` documentation was added.
+The :ref:`cpp_fun_new_dynamic-name` documentation was added.
 
 Example
 =======
 The corresponding example file was added to the documentation,
-below the :ref:`cpp_independent` section, using the OMhelp commands:
+below the :ref:`cpp_independent-name` section, using the OMhelp commands:
 
 | |tab| { ``xrst_dollar}children%``
 | |tab| |tab| ``example/cplusplus/fun_dynamic_xam.cpp``
@@ -118,7 +118,7 @@ Example
 *******
 The file ``example/cplusplus/fun_dynamic_xam.cpp`` was added
 with the following contents:
-:ref:`fun_dynamic_xam_cpp`.
+:ref:`fun_dynamic_xam_cpp-name`.
 In addition, in the file ``example/cplusplus/check_all.cpp`` :
 
 | |tab| ``extern bool fun_optimize_xam(void);``

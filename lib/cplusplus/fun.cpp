@@ -33,11 +33,11 @@ Syntax
 
 Purpose
 *******
-This starts recording :ref:`a_double` operations.
+This starts recording :ref:`a_double-name` operations.
 This recording is terminated, and the information is stored,
-by calling the :ref:`d_fun_constructor<cpp_fun_ctor>`.
+by calling the :ref:`d_fun_constructor<cpp_fun_ctor-name>`.
 It can be terminated, and the information is lost,
-by calling :ref:`abort_recording<cpp_abort_recording>`.
+by calling :ref:`abort_recording<cpp_abort_recording-name>`.
 
 x
 *
@@ -100,7 +100,7 @@ Example
 *******
 Most of the c++ ``d_fun`` examples use the *ax*
 return syntax.
-The :ref:`fun_dynamic_xam_cpp` example uses the *a_both*
+The :ref:`fun_dynamic_xam_cpp-name` example uses the *a_both*
 return syntax.
 
 {xrst_end cpp_independent}
@@ -160,14 +160,14 @@ Syntax
 Purpose
 *******
 This aborts the current recording (if it exists)
-started by the most recent call to :ref:`independent<cpp_independent>`.
+started by the most recent call to :ref:`independent<cpp_independent-name>`.
 
 {xrst_toc_hidden
    example/cplusplus/fun_abort_xam.cpp
 }
 Example
 *******
-:ref:`c++<fun_abort_xam_cpp>`.
+:ref:`c++<fun_abort_xam_cpp-name>`.
 
 {xrst_end cpp_abort_recording}
 */
@@ -237,7 +237,7 @@ Empty Function
 ==============
 In the case where *ax* and *ay* have size zero,
 the function is 'empty' and all its sizes are zero; see
-:ref:`cpp_fun_property`.
+:ref:`cpp_fun_property-name`.
 
 af
 **
@@ -377,7 +377,7 @@ The return value has prototype
 
 and is the number of Taylor coefficients currently stored in *f* ,
 for every variable in the operation sequence corresponding to *f* .
-These coefficients are computed by :ref:`cpp_fun_forward`.
+These coefficients are computed by :ref:`cpp_fun_forward-name`.
 This is different from the other function properties in that it can change
 after each call to *f*\ ``.forward`` ; see
 :ref:`size_order<cpp_fun_forward@p@size_order>` in the forward mode section.
@@ -389,7 +389,7 @@ or *af* is created, is zero.
 }
 Example
 *******
-:ref:`fun_property_xam_cpp`
+:ref:`fun_property_xam_cpp-name`
 
 {xrst_end cpp_fun_property}
 */
@@ -460,7 +460,7 @@ After this call
 
 Example
 *******
-See :ref:`fun_dynamic_xam_cpp`.
+See :ref:`fun_dynamic_xam_cpp-name`.
 {xrst_end cpp_fun_new_dynamic}
 */
 // BEGIN_NEW_DYNAMIC_SOURCE
@@ -546,7 +546,7 @@ and *j* between zero and *n* -1 ,
 }
 Example
 *******
-:ref:`fun_jacobian_xam_cpp`
+:ref:`fun_jacobian_xam_cpp-name`
 
 {xrst_end cpp_fun_jacobian}
 */
@@ -649,7 +649,7 @@ and *j* between zero and *n* -1 ,
 }
 Example
 *******
-:ref:`fun_hessian_xam_cpp`
+:ref:`fun_hessian_xam_cpp-name`
 
 {xrst_end cpp_fun_hessian}
 */
@@ -787,7 +787,7 @@ It is the *p*-th order Taylor coefficients for :math:`Y(t)`.
 }
 Example
 *******
-:ref:`fun_forward_xam_cpp`
+:ref:`fun_forward_xam_cpp-name`
 
 {xrst_end cpp_fun_forward}
 */
@@ -916,7 +916,7 @@ the partial derivative of
 }
 Example
 *******
-:ref:`fun_reverse_xam_cpp`
+:ref:`fun_reverse_xam_cpp-name`
 
 {xrst_end cpp_fun_reverse}
 */
@@ -968,7 +968,7 @@ corresponding :ref:`a_fun<cpp_fun_ctor@Syntax@a_fun>`.
 }
 Example
 *******
-:ref:`fun_optimize_xam_cpp`
+:ref:`fun_optimize_xam_cpp-name`
 
 {xrst_end cpp_fun_optimize}
 */
@@ -1021,8 +1021,8 @@ and the function *f* so it corresponds to *json* .
 }
 Examples
 ********
-:ref:`fun_to_json_xam_cpp`,
-:ref:`fun_from_json_xam_cpp`.
+:ref:`fun_to_json_xam_cpp-name`,
+:ref:`fun_from_json_xam_cpp-name`.
 
 {xrst_end cpp_fun_json}
 */

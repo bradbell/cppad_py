@@ -63,7 +63,7 @@ size_order
 The return value *q* is an ``int``
 and is the number of Taylor coefficients currently stored in *f* ,
 for every variable in the operation sequence corresponding to *f* .
-These coefficients are computed by :ref:`py_fun_forward`.
+These coefficients are computed by :ref:`py_fun_forward-name`.
 This is different from the other function properties in that it can change
 after each call to *f*\ ``.forward`` ; see
 :ref:`size_order<py_fun_forward@p@size_order>` in the forward mode section.
@@ -73,6 +73,6 @@ after each call to *f*\ ``.forward`` ; see
 }
 Example
 *******
-:ref:`fun_property_xam_py`
+:ref:`fun_property_xam_py-name`
 
 {xrst_end py_fun_property}

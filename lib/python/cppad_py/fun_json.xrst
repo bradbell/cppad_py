@@ -46,7 +46,7 @@ the function *f* is changed so it corresponds to *json* .
 }
 Examples
 ********
-:ref:`fun_to_json_xam_py`,
-:ref:`fun_from_json_xam_py`.
+:ref:`fun_to_json_xam_py-name`,
+:ref:`fun_from_json_xam_py-name`.
 
 {xrst_end py_fun_json}

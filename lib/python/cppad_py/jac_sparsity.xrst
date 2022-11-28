@@ -56,7 +56,7 @@ the argument *x* .
 f
 *
 This object must have been returned by a previous call to the python
-:ref:`d_fun<py_fun_ctor>` constructor.
+:ref:`d_fun<py_fun_ctor-name>` constructor.
 The object *f* is not constant when using
 ``for_jac_sparsity`` .
 After a call to ``for_jac_sparsity`` , a sparsity pattern
@@ -89,6 +89,6 @@ In this case, *pattern_out* is a sparsity pattern for
 }
 Example
 *******
-:ref:`python<sparse_jac_pattern_xam_py>`
+:ref:`python<sparse_jac_pattern_xam_py-name>`
 
 {xrst_end py_jac_sparsity}

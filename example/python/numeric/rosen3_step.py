@@ -224,7 +224,7 @@ def check_rosen3_step(fun, ti, yi, h) :
 # }
 # Example
 # *******
-# :ref:`numeric_rosen3_step_xam_py`
+# :ref:`numeric_rosen3_step_xam_py-name`
 #
 # Source Code
 # ***********

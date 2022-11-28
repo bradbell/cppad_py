@@ -137,7 +137,7 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
 # }
 # Example
 # *******
-# :ref:`numeric_ode_multi_step_xam_py`
+# :ref:`numeric_ode_multi_step_xam_py-name`
 #
 # Source Code
 # ***********

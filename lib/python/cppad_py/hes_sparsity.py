@@ -47,7 +47,7 @@
 # f
 # *
 # This object must have been returned by a previous call to the python
-# :ref:`d_fun<py_fun_ctor>` constructor.
+# :ref:`d_fun<py_fun_ctor-name>` constructor.
 #
 # select_domain
 # *************
@@ -83,7 +83,7 @@
 # }
 # Example
 # *******
-# :ref:`python<sparse_hes_pattern_xam_py>`
+# :ref:`python<sparse_hes_pattern_xam_py-name>`
 #
 # {xrst_end py_hes_sparsity}
 # -----------------------------------------------------------------------------

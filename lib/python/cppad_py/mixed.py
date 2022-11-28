@@ -148,7 +148,7 @@ class mixed :
 
    A_rcv
    *****
-   Is a :ref:`sparse_rcv<py_sparse_rcv>` representation of the
+   Is a :ref:`sparse_rcv<py_sparse_rcv-name>` representation of the
    random constraint matrix :math:`A`; i.e.
    :math:`A \cdot \hat{u} ( \theta ) = 0`
    where :math:`\hat{u} ( \theta )` is the
@@ -158,23 +158,23 @@ class mixed :
    warning
    *******
    is a python function that gets called when *mixed_obj*
-   has a warning to report; see :ref:`mixed_warning-0`.
+   has a warning to report; see :ref:`mixed_warning-title`.
    The value ``None`` corresponds to ignoring all warning messages.
 
    fix_likelihood
    **************
-   see :ref:`mixed_fix_likelihood-0` .
+   see :ref:`mixed_fix_likelihood-title` .
    The value ``None`` corresponds to no fixed effects likelihood.
 
    fix_constraint
    **************
-   see :ref:`mixed_fix_constraint-0` .
+   see :ref:`mixed_fix_constraint-title` .
    The value ``None`` corresponds to no constraint function
    for the fixed effects (one can still have bound constraints).
 
    ran_likelihood
    **************
-   see :ref:`mixed_ran_likelihood-0` .
+   see :ref:`mixed_ran_likelihood-title` .
    The value ``None`` corresponds to no random effects likelihood.
 
    {xrst_toc_hidden
@@ -182,7 +182,7 @@ class mixed :
    }
    Example
    *******
-   :ref:`mixed_ctor_xam_py`
+   :ref:`mixed_ctor_xam_py-name`
 
    {xrst_end mixed_ctor}
    """
@@ -291,7 +291,7 @@ class mixed :
    }
    Example
    *******
-   :ref:`mixed_warning_xam_py`
+   :ref:`mixed_warning_xam_py-name`
 
    {xrst_end mixed_warning}
    """
@@ -326,7 +326,7 @@ class mixed :
    }
    Example
    *******
-   :ref:`mixed_fatal_error_xam_py`
+   :ref:`mixed_fatal_error_xam_py-name`
 
    {xrst_end mixed_fatal_error}
    """
@@ -382,7 +382,7 @@ class mixed :
    }
    Example
    *******
-   :ref:`mixed_fix_likelihood_xam_py`
+   :ref:`mixed_fix_likelihood_xam_py-name`
 
    {xrst_end mixed_fix_likelihood}
    -------------------------------------------------------------------------
@@ -431,7 +431,7 @@ class mixed :
    }
    Example
    *******
-   :ref:`mixed_fix_constraint_xam_py`
+   :ref:`mixed_fix_constraint_xam_py-name`
 
    {xrst_end mixed_fix_constraint}
    -------------------------------------------------------------------------
@@ -488,7 +488,7 @@ class mixed :
    }
    Example
    *******
-   :ref:`mixed_ran_likelihood_xam_py`
+   :ref:`mixed_ran_likelihood_xam_py-name`
 
    {xrst_end mixed_ran_likelihood}
    -------------------------------------------------------------------------
@@ -525,7 +525,7 @@ class mixed :
    If there are no random effects,
    there is no Laplace approximation of the integral above, and
    this routine maximizes :math:`\B{p} ( z | \theta ) \B{p} ( \theta )` ;
-   see :ref:`mixed_fix_likelihood-0`.
+   see :ref:`mixed_fix_likelihood-title`.
    It also is no data, this routine maximizes :math:`\B{p} ( \theta )`.
 
 
@@ -548,7 +548,7 @@ class mixed :
    *******************************************
    has length equal to the
    :ref:`py_fun_property@size_range` for the
-   :ref:`mixed_fix_constraint-0`
+   :ref:`mixed_fix_constraint-title`
    and is the corresponding lower (upper) limit.
 
    random_lower (random_upper)
@@ -680,8 +680,8 @@ class mixed :
    Examples
    ********
 
-   - :ref:`mixed_optimize_fixed_1_py-0`
-   - :ref:`mixed_optimize_fixed_2_py-0`
+   - :ref:`mixed_optimize_fixed_1_py-title`
+   - :ref:`mixed_optimize_fixed_2_py-title`
 
    {xrst_end mixed_optimize_fixed}
    """
@@ -801,7 +801,7 @@ class mixed :
    Purpose
    *******
    Given a value for the fixed effects :math:`\theta`,
-   this routine maximizes the :ref:`mixed_ran_likelihood-0`
+   this routine maximizes the :ref:`mixed_ran_likelihood-title`
    with respect to the fixed effect :math:`u`; i.e.,
 
    .. math::
@@ -845,7 +845,7 @@ class mixed :
    Examples
    ********
 
-   - :ref:`mixed_optimize_random-0`
+   - :ref:`mixed_optimize_random-title`
 
    {xrst_end mixed_optimize_random}
    """
@@ -947,7 +947,7 @@ class mixed :
    hes_fixed_obj_rcv
    *****************
    The argument *hes_fixed_obj_rcv* is a
-   :ref:`py_sparse_rcv <py_sparse_rcv>` matrix.
+   :ref:`py_sparse_rcv <py_sparse_rcv-name>` matrix.
    The input value of this argument does not matter.
    Upon return it contains the lower triangle of the Hessian
    (the Hessian is symmetric).
@@ -1052,7 +1052,7 @@ class mixed :
    hes_random_obj_rcv
    ******************
    The argument *hes_random_obj_rcv* is a
-   :ref:`py_sparse_rcv <py_sparse_rcv>` matrix.
+   :ref:`py_sparse_rcv <py_sparse_rcv-name>` matrix.
    The input value of this argument does not matter.
    Upon return it contains the lower triangle of the Hessian
    (the Hessian is symmetric).

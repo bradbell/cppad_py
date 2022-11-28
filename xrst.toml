@@ -1,0 +1,49 @@
+[project_name]
+data = 'cppad_py'
+
+[root_file]
+default = 'cppad_py.xrst'
+
+[preamble]
+rst_substitution = '''
+.. |space| unicode:: 0xA0
+.. |tab| replace:: |space| |space| |space|
+'''
+latex_macro = [
+   '\newcommand{\B}[1]{ {\bf #1} }' ,
+   '\newcommand{\R}[1]{ {\rm #1} }' ,
+]
+
+[project_dictionary]
+data = [
+   '''
+      const
+      cpp
+      init
+      nan
+      nc
+      nr
+      numpy
+      op
+      py
+      rc
+      sh
+      sparsity
+      std
+      str
+      th
+      vec
+   '''
+]
+
+[not_in_index]
+data = [
+   # words to exclude from the index
+   '''
+      a
+      and
+      of
+   ''',
+   # exclude whats new mm-dd headings used by whats new sections for each year
+   '[0-9][0-9]-[0-9][0-9]',
+]

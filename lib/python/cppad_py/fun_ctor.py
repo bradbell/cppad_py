@@ -60,7 +60,7 @@
 # ==============
 # In the case where *ax* and *ay* are not present
 # the function is 'empty' and all its sizes are zero; see
-# :ref:`cpp_fun_property`.
+# :ref:`cpp_fun_property-name`.
 #
 # af
 # **
@@ -77,7 +77,7 @@
 # Example
 # *******
 # All of the examples use the ``d_fun`` constructor.
-# The example :ref:`a_fun_xam_py` demonstrates the purpose of
+# The example :ref:`a_fun_xam_py-name` demonstrates the purpose of
 # ``a_fun`` objects.
 #
 # {xrst_end py_fun_ctor}

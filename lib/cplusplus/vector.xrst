@@ -60,7 +60,7 @@ This result *bv* is a vector with elements of type ``double``
 vec_a_double
 ************
 This result ``av`` is a vector with elements of type
-:ref:`a_double`.
+:ref:`a_double-name`.
 
 Example
 *******
@@ -105,8 +105,8 @@ Its value is the number of elements in the vector *v* .
 }
 Example
 *******
-:ref:`c++<vector_size_xam_cpp>`,
-:ref:`python<vector_size_xam_py>`.
+:ref:`c++<vector_size_xam_cpp-name>`,
+:ref:`python<vector_size_xam_py-name>`.
 
 {xrst_end vector_size}
 -------------------------------------------------------------------------------
@@ -169,7 +169,7 @@ The result *y* has c++ prototype
 }
 Example
 *******
-:ref:`c++<vector_set_get_xam_cpp>`,
-:ref:`python<vector_set_get_xam_py>`.
+:ref:`c++<vector_set_get_xam_cpp-name>`,
+:ref:`python<vector_set_get_xam_py-name>`.
 
 {xrst_end vector_set_get}
