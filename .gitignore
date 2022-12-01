@@ -1,7 +1,4 @@
 # Directory where gh-pages branch stores documentation.
-# This entry is (is not) commented out on the gh-pages (master) branch.
-# All the other entries in this file are the same on both branches.
-/doc/
 #
 # files to ignore
 /git_commit.sh
@@ -29,9 +26,6 @@ temp.*
 # directories used to stash files
 /new.*/
 /new/
-#
-# directories use to build sphinx documentation on master branch
-/rst/
 #
 # extensions to ignore
 *.log

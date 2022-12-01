@@ -1,6 +1,12 @@
 [project_name]
 data = 'cppad_py'
 
+[directory]
+project_directory = '.'
+html_directory    = 'build/html'
+rst_directory     = 'build/rst'
+pdf_directory     = 'build/pdf'
+
 [root_file]
 default = 'cppad_py.xrst'
 
