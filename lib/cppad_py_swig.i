@@ -26,7 +26,7 @@
 %}
 
 /*
-{xrst_begin module}
+@xrst_begin module@
 
 {xrst_spell
    cppad

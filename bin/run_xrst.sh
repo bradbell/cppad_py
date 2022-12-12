@@ -25,15 +25,14 @@ then
 fi
 target="$1"
 # -----------------------------------------------------------------------------
-project='cppad_py'
-if ! grep "{xrst_begin $project}" cppad_py.xrst > /dev/null
-then
-   echo "can not find {xrst_begin $project} in cppad_py.xrst"
-   exit 1
-fi
-# -----------------------------------------------------------------------------
 # xsrst
-xrst --target $target
+if [ "$target" == 'html' ]
+then
+   xrst
+else
+   xrst --target tex
+   make -C build/tex cppad_py.pdf
+fi
 # -----------------------------------------------------------------------------
 echo 'run_xrst.sh: OK'
 exit 0

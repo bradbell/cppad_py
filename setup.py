@@ -534,6 +534,7 @@ sys.exit(0)
 # {xrst_toc_table
 #  install_error.xrst
 #  bin/get_cppad.sh
+#  bin/get_cppad_mixed.sh
 # }
 #
 # {xrst_end setup_py}

@@ -5,13 +5,14 @@ data = 'cppad_py'
 project_directory = '.'
 html_directory    = 'build/html'
 rst_directory     = 'build/rst'
-pdf_directory     = 'build/pdf'
+tex_directory     = 'build/tex'
 
 [root_file]
 default = 'cppad_py.xrst'
 
-[preamble]
-rst_substitution = '''
+[include_all]
+rst_epilog = ''
+rst_prolog = '''
 .. |space| unicode:: 0xA0
 .. |tab| replace:: |space| |space| |space|
 '''

@@ -844,8 +844,9 @@ class mixed :
 
    Examples
    ********
-
-   - :ref:`mixed_optimize_random-title`
+   {xrst_toc_list
+      example/python/mixed/optimize_random_xam.py
+   }
 
    {xrst_end mixed_optimize_random}
    """

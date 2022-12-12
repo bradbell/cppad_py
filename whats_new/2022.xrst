@@ -15,6 +15,12 @@
 CppAD Py Changes During 2022
 ############################
 
+12-12
+*****
+#. Adapt to xrst-2022.12.12.
+#. Include :ref:`get_cppad_mixed_sh-name` and
+   :ref:`mixed_optimize_random_xam_py-name` in this documentation.
+
 11-28
 *****
 Adapt to xrst-2022.11.28.

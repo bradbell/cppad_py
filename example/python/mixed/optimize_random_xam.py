@@ -54,7 +54,7 @@ w.r.t :math:`u`:
    \frac{1}{2} ( u - y )^2 + \frac{1}{2} (u - \theta )^2
 
 Taking the derivative w.r.t. :math:`u` and setting
-it equal to zero, the optimal ranomd effects,
+it equal to zero, the optimal random effects,
 as a function of the fixed effects,
 :math:`\hat{u} ( \theta )` solves the equations
 
