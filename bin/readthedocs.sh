@@ -44,7 +44,7 @@ build:
       post_install:
          - pip install furo
       post_build:
-         - cp rst/_sources/*.txt rst/_build/html/_sources
+         - cp build/html/_sources/*.txt rst/_build/html/_sources
 
 sphinx:
    configuration: rst/conf.py
@@ -80,9 +80,6 @@ if [ -e ./rst ]
 then
    echo_eval rm -r ./rst
 fi
-# note the build/rst/_sources was moved to build/html/_soruces
-echo_eval cp -r ./build/rst ./rst
-echo_eval cp -r ./build/html/_sources ./rst/_sources
 #
 # git delete
 delete_list=$(git status -s | grep '^ D ' | sed -e 's|^ D ||')
