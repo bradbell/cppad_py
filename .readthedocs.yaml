@@ -6,14 +6,8 @@ build:
       python: "3.10"
    commands:
       #
-      # furo html theme
-      - pip install furo pyspellchecker
-      #
-      # pyspellchecker, toml
-      - pip install pyspellchecker toml
-      #
       # xrst
-      - pip install --index-url https://test.pypi.org/simple/ xrst
+      - pip install xrst
       #
       # build/html
       - xrst --page_source --html_theme furo
