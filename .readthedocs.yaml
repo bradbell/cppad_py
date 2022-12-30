@@ -6,8 +6,11 @@ build:
       python: "3.10"
    commands:
       #
-      # furo
-      - pip install furo
+      # furo html theme
+      - pip install furo pyspellchecker
+      #
+      # import spellchecker
+      - pip install pyspellchecker
       #
       # xrst
       - pip install --index-url https://test.pypi.org/simple/ xrst
