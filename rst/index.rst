@@ -2,6 +2,7 @@
 
 cppad_py
 ########
+Text to test readthedocs
 
 .. toctree::
    :maxdepth: 1
