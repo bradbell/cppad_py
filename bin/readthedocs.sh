@@ -44,7 +44,7 @@ build:
       post_install:
          - pip install furo
       post_build:
-         - cp build/html/_sources/*.txt rst/_build/html/_sources
+         - cp rst/_sources/*.txt rst/_build/html/_sources
 
 sphinx:
    configuration: rst/conf.py
@@ -95,7 +95,7 @@ list=$(git status -s)
 if [ "$list" != '' ]
 then
    echo "The following will commit the rst file changes:"
-   echo "   git commit -m '$run_branck: advance rst files to version $version'"
+   echo "   git commit -m '$run_branch: advance rst files to version $version'"
 fi
 # -----------------------------------------------------------------------------
 echo 'readthedocs.sh: OK'
