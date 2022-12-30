@@ -39,22 +39,33 @@ then
    exit 1
 fi
 # -----------------------------------------------------------------------------
+file_list='.nojekyll .gitignore .readthedocs.yaml'
 if ! git show-ref $doc_branch > /dev/null
 then
+cat << EOF > .readthedocs.yaml
+version: 2
+build:
+   os: "ubuntu-20.04"
+   tools:
+      python: "3.10"
+   jobs:
+      post_build:
+         - cp rst/_sources/*.txt build/html/_sources
+EOF
 cat << EOF
-readthedocs.sh: Cannot file the $doc_branch branch.
-Start with a copy of the remote repository with no extra files; i.e.,
-      git status -s
-is empty. Then use the following commands to create the $doc_branch branch:
+readthedocs.sh: git cannot find the $doc_branch branch.
+Use the following commands to create it:
 
    git checkout --orphan $doc_branch
    git reset --hard
+
    git show $run_branch:.gitignore > .gitignore
-   touch .nojekyll
    sed -i .gitignore -e 's|^/rst/$|# &|'
 
-   git add .nojekyll .gitignore
-   git commit -m 'create $doc_branch branch' .nojekyll .gitignore
+   touch .nojekyll
+
+   git add $file_list
+   git commit -m 'create $doc_branch branch' $file_list
    git checkout $run_branch
 EOF
    exit 1
@@ -75,19 +86,21 @@ if [ -e $dir ]
 then
    echo_eval rm -r $dir
 fi
-xrst --page_source --rst_only
+echo_eval xrst --page_source --rst_only
 if [ ! -e $dir ]
 then
-   echo "readthedocs.sh: expected xrst to create the $dir directory"
+   echo "readthedocs.sh: xrst did not create the $dir directory"
    exit 1
 fi
-echo_eval rm -r $dir/.doctrees
 # -----------------------------------------------------------------------------
-# branch
+# version
+version=$(version.sh get)
+# -----------------------------------------------------------------------------
+# doc_branch
 echo_eval git checkout $doc_branch
 #
 # ./rst
-if [ ! -d ./rst ]
+if [ -e ./rst ]
 then
    echo_eval rm -r ./rst
 fi
@@ -112,10 +125,7 @@ list=$(git status -s)
 if [ "$list" != '' ]
 then
    echo "Currently in $doc_branch branch. The following will commit changes"
-   if [ "$first_version" == 'yes' ]
-   then
-      echo "   git commit -m '$doc_branch: advance to version $version'"
-   fi
+   echo "   git commit -m '$doc_branch: advance to version $version'"
 fi
 # -----------------------------------------------------------------------------
 echo 'readthedocs.sh: OK'
