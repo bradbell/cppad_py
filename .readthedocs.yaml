@@ -8,10 +8,7 @@ build:
       post_install:
          - pip install furo
       post_build:
-         - pwd
-         - find . -name '_sources'
          - cp rst/_sources/*.txt rst/_build/html/_sources
-         - grep readthedocs rst/_build/html/index.html
 
 sphinx:
    configuration: rst/conf.py
