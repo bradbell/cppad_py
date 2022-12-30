@@ -1,0 +1,18 @@
+lines 5-20 of file: lib/python/cppad_py/py_lib.xrst
+
+{xrst_begin py_lib}
+
+The Python Library
+##################
+
+Children
+********
+{xrst_toc_table
+   lib/python/cppad_py/fun.py
+   lib/python/cppad_py/sparse.xrst
+   lib/python/cppad_py/utility.xrst
+   lib/python/cppad_py/mixed.py
+   lib/python/cppad_py/more_py.xrst
+}
+
+{xrst_end py_lib}

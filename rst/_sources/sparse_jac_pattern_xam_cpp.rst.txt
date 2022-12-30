@@ -1,0 +1,11 @@
+lines 87-95 of file: example/cplusplus/sparse_jac_pattern_xam.cpp
+
+{xrst_begin sparse_jac_pattern_xam_cpp}
+
+C++: Jacobian Sparsity Patterns: Example and Test
+#################################################
+{xrst_literal
+   // BEGIN SOURCE
+   // END SOURCE
+}
+{xrst_end sparse_jac_pattern_xam_cpp}

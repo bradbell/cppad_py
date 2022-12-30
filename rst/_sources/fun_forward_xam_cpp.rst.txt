@@ -1,0 +1,11 @@
+lines 92-100 of file: example/cplusplus/fun_forward_xam.cpp
+
+{xrst_begin fun_forward_xam_cpp}
+
+C++: Forward Mode AD: Example and Test
+######################################
+{xrst_literal
+   // BEGIN SOURCE
+   // END SOURCE
+}
+{xrst_end fun_forward_xam_cpp}

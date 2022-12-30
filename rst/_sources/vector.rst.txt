@@ -1,0 +1,18 @@
+lines 41-56 of file: lib/library.xrst
+
+{xrst_begin vector}
+{xrst_spell
+   cppad
+}
+
+
+Cppad Py Vectors
+################
+
+Children
+********
+{xrst_toc_table
+   lib/cplusplus/vector.xrst
+}
+
+{xrst_end vector}

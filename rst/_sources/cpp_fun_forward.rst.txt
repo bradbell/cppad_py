@@ -1,0 +1,107 @@
+lines 685-789 of file: lib/cplusplus/fun.cpp
+
+{xrst_begin cpp_fun_forward}
+{xrst_spell
+   factorial
+   xp
+   yp
+}
+
+
+Forward Mode AD
+###############
+
+Syntax
+******
+*yp* = *f*\ ``.forward`` ( *p* , *xp* )
+
+Taylor Coefficient
+******************
+For a function :math:`g(t)` of a scalar argument :math:`t \in \B{R}`,
+the *p*-th order Taylor coefficient is its
+``p`` -th order derivative divided by *p* factorial
+and evaluated at :math:`t = 0`; i.e.,
+
+.. math::
+
+   g^{(p)} (0) /  p !
+
+f
+*
+This is either a
+:ref:`d_fun<cpp_fun_ctor@Syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@Syntax@a_fun>` function object.
+Note that its state is changed by this operation because
+all the Taylor coefficient that it calculates for every
+variable in recording are stored.
+See more discussion of this fact under the heading
+:ref:`p<cpp_fun_forward@p>` below.
+
+f(x)
+****
+We use the notation :math:`f: \B{R}^n \rightarrow \B{R}^m`
+for the function corresponding to *f* .
+Note that *n* is the size of :ref:`ax<cpp_fun_ctor@ax>`
+and *m* is the size of :ref:`ay<cpp_fun_ctor@ay>`
+in to the constructor for *f* .
+
+X(t)
+****
+We use the notation :math:`X : \B{R} \rightarrow \B{R}^n`
+for a function that the calling routine chooses.
+
+Y(t)
+****
+We define the function :math:`Y : \B{R} \rightarrow \B{R}^n`
+by :math:`Y(t) = f(X(t))`.
+
+p
+*
+This argument has prototype
+
+| |tab| ``int`` *p*
+
+and is non-negative.
+It is the order of the Taylor coefficient being calculated.
+If there was no call to ``forward`` for this *f* ,
+the value of *p* must be zero.
+Otherwise, it must be between zero and one greater that its
+value for the previous call using this *f* .
+After this call, the Taylor coefficients for orders zero though *p* ,
+and for every variable in the recording, will be stored in *f* .
+
+size_order
+==========
+After this call,
+:ref:`f_size_order()<cpp_fun_property@size_order>` is *p* +1 .
+
+xp
+**
+If *f* is a ``d_fun`` or ``a_fun`` ,
+this argument has prototype
+
+| |tab| ``const vec_double&`` *xp*
+| |tab| ``const vec_a_double&`` *xp*
+
+respectively and its size must be *n* .
+It specifies the *p*-th order Taylor coefficients for *X(t* ) .
+
+yp
+**
+If *f* is a ``d_fun`` or ``a_fun`` ,
+the result has prototype
+
+| |tab| ``vec_double&`` *yp*
+| |tab| ``vec_a_double&`` *yp*
+
+respectively and its size is *m* .
+It is the *p*-th order Taylor coefficients for :math:`Y(t)`.
+
+{xrst_toc_hidden
+   example/cplusplus/fun_forward_xam.cpp
+}
+Example
+*******
+:ref:`fun_forward_xam_cpp-name`
+
+{xrst_end cpp_fun_forward}

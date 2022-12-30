@@ -1,0 +1,30 @@
+lines 301-328 of file: lib/python/cppad_py/mixed.py
+
+   {xrst_begin mixed_fatal_error}
+   {xrst_spell
+      obj
+      runtime
+   }
+
+   Mixed Class Fatal Errors
+   ########################
+
+   Syntax
+   ******
+   | *mixed_obj*\ ``.post_fatal_error`` ( *message* )
+
+   post_fatal_error
+   ****************
+   is a mixed class member function that posts a fatal error.
+   It's *message* argument is an `str` describing the error.
+   A call to this function will raise a python ``RuntimeError`` with
+   the specified message.  It's main purpose is for testing.
+
+   {xrst_toc_hidden
+      example/python/mixed/fatal_error_xam.py
+   }
+   Example
+   *******
+   :ref:`mixed_fatal_error_xam_py-name`
+
+   {xrst_end mixed_fatal_error}

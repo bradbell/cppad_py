@@ -1,0 +1,11 @@
+lines 79-87 of file: example/cplusplus/fun_hessian_xam.cpp
+
+{xrst_begin fun_hessian_xam_cpp}
+
+C++: Dense Hessian Using AD: Example and Test
+#############################################
+{xrst_literal
+   // BEGIN SOURCE
+   // END SOURCE
+}
+{xrst_end fun_hessian_xam_cpp}

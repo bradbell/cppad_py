@@ -1,0 +1,109 @@
+lines 8-114 of file: bin/get_cppad.sh
+
+# {xrst_begin get_cppad_sh}
+# {xrst_spell
+#     caching
+#     cmake
+#     cppad
+#     cxx
+#     usr
+#     wno
+# }
+# {xrst_comment_ch #}
+#
+#
+# Get Cppad
+# #########
+#
+# Syntax
+# ******
+# ``bin/get_cppad.sh``
+#
+# Top Source Directory
+# ********************
+# This program must be run from the
+# :ref:`top_source_directory<setup_py@Download@Top Source Directory>`.
+#
+# Settings
+# ********
+# If you change any of these settings, you must re-run ``get_cppad.sh`` .
+#
+# cmake_install_prefix
+# ====================
+# This prefix is used to install cppad_py. It may be a local directory; e.g.,
+# ``build/prefix`` or an absolute path; e.g., ``/usr/local``.
+# It may include the shell variable ``$HOME`` but no other variables:
+# {xrst_code sh}
+cmake_install_prefix="$HOME/prefix/cppad_py"
+# {xrst_code}
+# If this prefix does no start with ``/``, it is relative to the
+# :ref:`top_source_directory<setup_py@Download@Top Source Directory>`.
+# Note that ``$HOME`` starts with ``/``.
+#
+# extra_cxx_flags
+# ===============
+# Extra compiler flags used when compiling c++ code not including the
+# debugging and optimization flags.
+# The ones below are example flags are used by g++:
+# {xrst_code sh}
+extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
+# {xrst_code}
+#
+# build_type
+# ==========
+# This must be must ``debug`` or ``release`` .
+# The debug version has more error messaging while the release
+# version runs faster.
+# {xrst_code sh}
+build_type='release'
+# {xrst_code}
+#
+# cmake_install_prefix
+# --------------------
+# The actual prefix used for the install is
+#
+# | |tab| *cmake_install_prefix.build_type*
+#
+# and a soft link is created from *cmake_install_prefix* to this directory.
+#
+# build
+# -----
+# The subdirectory
+#
+# | |tab| ``build.``\ *build_type*
+#
+# is used to compile and test the software and a soft link is created from
+# ``build`` to this subdirectory.
+#
+# include_mixed
+# =============
+# This flag is true (false) if we are (are not)
+# including the python cppad_mixed interface.
+# {xrst_code sh}
+include_mixed='false'
+# {xrst_code}
+# If it is true, the install script ``bin/get_cppad_mixed.sh``
+# should be used to install Cppad together with the all the other cppad_mixed
+# requirements.
+# Otherwise, ``bin/get_cppad.sh`` should be used to install Cppad.
+#
+# test_cppad
+# ==========
+# This must be must ``true`` or ``false`` .
+# Cppad has a huge test suite and this can take a significant amount of time,
+# but it may be useful if you have problems.
+# {xrst_code sh}
+test_cppad='false'
+# {xrst_code}
+#
+# Caching
+# *******
+# This script and ``bin/get_cppad_mixed.sh`` cache previous builds so that
+# when you re-run the script it does not re-do all the work.
+# If you have trouble, try deleting the directory
+#
+# | |tab| ``build/external``
+#
+# and re-running this script.
+#
+# {xrst_end get_cppad_sh}

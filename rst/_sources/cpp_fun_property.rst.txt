@@ -1,0 +1,92 @@
+lines 302-391 of file: lib/cplusplus/fun.cpp
+
+{xrst_begin cpp_fun_property}
+{xrst_spell
+   af
+   var
+}
+
+
+Properties of a Function Object
+###############################
+
+Syntax
+******
+
+| ``a_fun`` *f* ( *f* )
+| *n* = *f*\ ``.size_domain`` ()
+| *m* = *f*\ ``.size_range`` ()
+| *v* = *f*\ ``.size_var`` ()
+| *p* = *f*\ ``.size_op`` ()
+| *q* = *f*\ ``.size_order`` ()
+
+f
+*
+This is either a
+:ref:`d_fun<cpp_fun_ctor@Syntax@d_fun>` or
+:ref:`a_fun<cpp_fun_ctor@Syntax@a_fun>` function object
+and is ``const`` .
+
+size_domain
+***********
+The return value has prototype
+
+| |tab| ``int`` *n*
+
+and is the size of the vector
+:ref:`ax<cpp_fun_ctor@ax>` in the function constructor; i.e.,
+the number of independent variables.
+
+size_range
+**********
+The return value has prototype
+
+| |tab| ``int`` *m*
+
+and is the size of the vector
+:ref:`ay<cpp_fun_ctor@ay>` in the function constructor; i.e.,
+the number of dependent variables.
+
+size_var
+********
+The return value has prototype
+
+| |tab| ``int`` *v*
+
+and is the number of variables in the function.
+This includes the independent variables, dependent variables,
+and any variables that are used to compute the dependent variables
+from the independent variables.
+
+size_op
+*******
+The return value has prototype
+
+| |tab| ``int`` *p*
+
+and is the number of atomic operations that are used to express
+the dependent variables as a function of the independent variables.
+
+size_order
+**********
+The return value has prototype
+
+| |tab| ``int`` *q*
+
+and is the number of Taylor coefficients currently stored in *f* ,
+for every variable in the operation sequence corresponding to *f* .
+These coefficients are computed by :ref:`cpp_fun_forward-name`.
+This is different from the other function properties in that it can change
+after each call to *f*\ ``.forward`` ; see
+:ref:`size_order<cpp_fun_forward@p@size_order>` in the forward mode section.
+The initial value for this property, when the object *f*
+or *af* is created, is zero.
+
+{xrst_toc_hidden
+   example/cplusplus/fun_property_xam.cpp
+}
+Example
+*******
+:ref:`fun_property_xam_cpp-name`
+
+{xrst_end cpp_fun_property}

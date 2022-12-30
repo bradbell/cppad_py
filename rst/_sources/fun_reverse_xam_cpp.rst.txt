@@ -1,0 +1,11 @@
+lines 120-128 of file: example/cplusplus/fun_reverse_xam.cpp
+
+{xrst_begin fun_reverse_xam_cpp}
+
+C++: Reverse Mode AD: Example and Test
+######################################
+{xrst_literal
+   // BEGIN SOURCE
+   // END SOURCE
+}
+{xrst_end fun_reverse_xam_cpp}

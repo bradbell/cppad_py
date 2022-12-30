@@ -1,0 +1,11 @@
+lines 68-76 of file: example/cplusplus/fun_jacobian_xam.cpp
+
+{xrst_begin fun_jacobian_xam_cpp}
+
+C++: Dense Jacobian Using AD: Example and Test
+##############################################
+{xrst_literal
+   // BEGIN SOURCE
+   // END SOURCE
+}
+{xrst_end fun_jacobian_xam_cpp}

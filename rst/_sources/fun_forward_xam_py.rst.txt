@@ -1,0 +1,12 @@
+lines 83-92 of file: example/python/core/fun_forward_xam.py
+
+# {xrst_begin fun_forward_xam_py}
+# {xrst_comment_ch #}
+#
+# Python: Forward Mode AD: Example and Test
+# #########################################
+# {xrst_literal
+#  # BEGIN SOURCE
+#  # END SOURCE
+# }
+# {xrst_end fun_forward_xam_py}

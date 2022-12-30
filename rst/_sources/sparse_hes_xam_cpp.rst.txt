@@ -1,0 +1,11 @@
+lines 107-115 of file: example/cplusplus/sparse_hes_xam.cpp
+
+{xrst_begin sparse_hes_xam_cpp}
+
+C++: Hessian Sparsity Patterns: Example and Test
+################################################
+{xrst_literal
+   // BEGIN SOURCE
+   // END SOURCE
+}
+{xrst_end sparse_hes_xam_cpp}

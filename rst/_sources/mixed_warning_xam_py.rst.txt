@@ -1,0 +1,11 @@
+lines 29-37 of file: example/python/mixed/warning_xam.py
+
+{xrst_begin mixed_warning_xam_py}
+
+Warnings: Example and Test
+##########################
+{xrst_literal
+  # BEGIN SOURCE
+  # END SOURCE
+}
+{xrst_end mixed_warning_xam_py}

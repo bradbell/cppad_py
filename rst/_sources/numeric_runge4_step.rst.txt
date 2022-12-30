@@ -1,0 +1,83 @@
+lines 16-96 of file: example/python/numeric/runge4_step.py
+
+# {xrst_begin numeric_runge4_step}
+# {xrst_spell
+#     kutta
+#     runge
+#     truncation
+#     yf
+#     yi
+#     yp
+# }
+# {xrst_comment_ch #}
+#
+#
+# One Fourth Order Runge-Kutta ODE Step
+# #####################################
+#
+# Syntax
+# ******
+# *yf* =  ``runge4_step`` ( *fun* , *ti* , *yi* , *h* )
+#
+# Purpose
+# *******
+# The routine can be used with ``ad_double``
+# to solve the initial value ODE
+#
+# .. math::
+#
+#    y^{(1)} (t)  = f( t , y )
+#
+# fun
+# ***
+# This is a function that evaluates the ordinary differential equation
+# using the syntax
+#
+# | |tab| *yp* = *fun*\ ``.f`` ( *t* , *y* )
+#
+# where *t* is the current time,
+# *y* is the current value of :math:`y(t)`, and
+# *yp* is the current derivative :math:`y^{(1)} (t)`.
+# The type of the elements of *t* and *y*
+# can be ``float`` or ``ad_double`` .
+#
+# ti
+# **
+# This is the initial time for the Runge-Kutta step.
+# It can have type ``float`` or ``a_double`` .
+#
+# yi
+# **
+# This is the numpy vector containing the
+# value of :math:`y(t)` at the initial time.
+# The type of its elements can be ``float`` or ``a_double`` .
+#
+# h
+# *
+# This is the step size in time; i.e., the time at the end of the step
+# minus the initial time.
+# It can have type ``float`` or ``a_double`` .
+#
+# yf
+# **
+# This is the approximate solution for :math:`y(t)` at the final time
+# as a numpy vector.
+# This solution is 4-th order accurate in time :math:`t`; e.g., if
+# :math:`y(t)` is a polynomial in :math:`t` of order four or lower,
+# the solution has no truncation error, only round off error.
+#
+# {xrst_toc_hidden
+#  example/python/numeric/runge4_step_xam.py
+# }
+# Example
+# *******
+# :ref:`numeric_runge4_step_xam_py-name`
+#
+# Source Code
+# ***********
+# {xrst_literal
+#  # BEGIN_RUNGE4_STEP
+#  # END_RUNGE4_STEP
+# }
+#
+# {xrst_end numeric_runge4_step}

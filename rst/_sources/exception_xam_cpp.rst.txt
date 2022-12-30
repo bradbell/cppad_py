@@ -1,0 +1,14 @@
+lines 30-41 of file: example/cplusplus/exception_xam.cpp
+
+{xrst_begin exception_xam_cpp}
+{xrst_spell
+   cppad
+}
+
+C++: Cppad Py Exception Handling: Example and Test
+##################################################
+{xrst_literal
+   // BEGIN SOURCE
+   // END SOURCE
+}
+{xrst_end exception_xam_cpp}

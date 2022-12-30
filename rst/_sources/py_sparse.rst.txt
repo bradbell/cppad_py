@@ -1,0 +1,19 @@
+lines 5-21 of file: lib/python/cppad_py/sparse.xrst
+
+{xrst_begin py_sparse}
+
+Python Sparsity Routines
+########################
+
+Children
+********
+{xrst_toc_table
+   lib/python/cppad_py/sparse_rc.py
+   lib/python/cppad_py/sparse_rcv.py
+   lib/python/cppad_py/jac_sparsity.xrst
+   lib/python/cppad_py/hes_sparsity.py
+   lib/python/cppad_py/sparse_jac.py
+   lib/python/cppad_py/sparse_hes.py
+}
+
+{xrst_end py_sparse}

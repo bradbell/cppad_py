@@ -1,0 +1,18 @@
+lines 5-20 of file: lib/cplusplus/cplusplus.xrst
+
+{xrst_begin cpp_fun}
+{xrst_spell
+   cppad
+}
+
+
+Cppad Py AD Functions
+#####################
+
+Children
+********
+{xrst_toc_table
+   lib/cplusplus/fun.cpp
+}
+
+{xrst_end cpp_fun}

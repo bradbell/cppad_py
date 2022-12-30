@@ -1,0 +1,51 @@
+lines 976-1024 of file: lib/cplusplus/fun.cpp
+
+{xrst_begin cpp_fun_json}
+{xrst_spell
+   json
+}
+
+
+Json Representation of AD Computational Graph
+#############################################
+
+Syntax
+******
+
+| *json* = *f*\ ``.to_json`` ()
+| *f*\ ``.from_json`` ()
+
+f
+*
+This is a :ref:`d_fun<cpp_fun_ctor@Syntax@d_fun>` object.
+
+json
+****
+is a Json representation of the computation graph corresponding to
+*f* ; see the CppAD documentation for
+`json_ad_graph <https://coin-or.github.io/CppAD/doc/json_ad_graph.htm>`_.
+
+to_json
+*******
+In this case, the function object *f* is ``const`` and
+the return value *json* has prototype
+
+| |tab| ``std::string`` *json*
+
+from_json
+*********
+In this case, *json* has prototype
+
+| |tab| ``const std::string&`` *json*
+
+and the function *f* so it corresponds to *json* .
+
+{xrst_toc_hidden
+   example/cplusplus/fun_json_xam.cpp
+}
+Examples
+********
+:ref:`fun_to_json_xam_cpp-name`,
+:ref:`fun_from_json_xam_cpp-name`.
+
+{xrst_end cpp_fun_json}

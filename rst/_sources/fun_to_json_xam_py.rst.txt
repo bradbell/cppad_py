@@ -1,0 +1,15 @@
+lines 45-57 of file: example/python/core/fun_json_xam.py
+
+# {xrst_begin fun_to_json_xam_py}
+# {xrst_spell
+#     json
+# }
+# {xrst_comment_ch #}
+#
+# Python to_json: Example and Test
+# ################################
+# {xrst_literal
+#  # BEGIN_TO_JSON_XAM
+#  # END_TO_JSON_XAM
+# }
+# {xrst_end fun_to_json_xam_py}

@@ -1,0 +1,15 @@
+lines 39-51 of file: lib/cplusplus/cplusplus.xrst
+
+{xrst_begin cpp_utility}
+
+C++ Utilities
+#############
+
+Children
+********
+{xrst_toc_table
+   lib/cplusplus/cpp_convert.cpp
+   include/cppad/py/assert.hpp
+}
+
+{xrst_end cpp_utility}

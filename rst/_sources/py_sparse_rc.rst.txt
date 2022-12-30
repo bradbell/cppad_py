@@ -1,0 +1,147 @@
+lines 6-150 of file: lib/python/cppad_py/sparse_rc.py
+
+# {xrst_begin py_sparse_rc}
+# {xrst_spell
+#     cppad
+#     nnz
+# }
+# {xrst_comment_ch #}
+#
+#
+# Sparsity Patterns
+# #################
+#
+# Syntax
+# ******
+#
+# | *pattern* =  ``cppad_py.sparse_rc()``
+# | *pattern*\ ``.resize`` ( *nr* , *nc* , *nnz* )
+# | *nr* = *pattern*\ ``.nr()``
+# | *nc* = *pattern*\ ``.nc()``
+# | *nnz* = *pattern*\ ``.nnz()``
+# | *pattern*\ ``.put`` ( *k* , *r* , *c* )
+# | *row* = *pattern*\ ``.row()``
+# | *col* = *pattern*\ ``.col()``
+# | *row_major* = *pattern*\ ``.row_major()``
+# | *col_major* = *pattern*\ ``.col_major()``
+#
+# pattern
+# *******
+# This result is used to hold a sparsity pattern for a matrix.
+# It has zero rows *nr*, zero columns *nc*, and zero non-zero values *nnz*
+# when it is first created.
+# It is constant
+# except during the ``resize`` and ``put`` operations.
+#
+# nr
+# **
+# This argument is a non-negative ``int``
+# and is the number of rows in the sparsity pattern.
+# The function ``nr()`` returns the value of
+# *nr* in the previous ``resize`` operation.
+#
+# nc
+# **
+# This argument is a non-negative ``int``
+# and is the number of columns in the sparsity pattern.
+# The function ``nc()`` returns the value of
+# *nc* in the previous ``resize`` operation.
+#
+# nnz
+# ***
+# This argument is a non-negative ``int``
+# and is the number of possibly non-zero
+# index pairs in the sparsity pattern.
+# The function ``nnz()`` returns the value of
+# *nnz* in the previous ``resize`` operation.
+#
+# resize
+# ******
+# The current sparsity pattern is lost and a new one is started
+# with the specified parameters.
+# After each ``resize`` , the elements in the *row*
+# and *col* vectors should be assigned using ``put`` .
+#
+# put
+# ***
+# This function sets the values
+#
+# | |tab| *row* [ *k* ] = *r*
+# | |tab| *col* [ *k* ] = *c*
+#
+# (The name ``set`` is used by Cppad, but not used here,
+# because ``set`` it is a built-in name in Python.)
+#
+# k
+# =
+# This argument is a non-negative ``int``
+# and must be less than *nnz* .
+#
+# r
+# =
+# This argument is a non-negative ``int``
+# and must be less than *nr* .
+# It specifies the value assigned to *row* [ *k* ] .
+#
+# c
+# =
+# This argument is a non-negative ``int``
+# and must be less than *nc* .
+# It specifies the value assigned to *col* [ *k* ] .
+#
+# row
+# ***
+# This result is a numpy vector with ``int`` elements
+# and its size is *nnz* .
+# For *k* = 0, ... , *nnz* -1 ,
+# *row* [ *k* ] is the row index for the *k*-th possibly non-zero
+# entry in the matrix.
+#
+# col
+# ***
+# This result is a numpy vector with ``int`` elements
+# and its size is *nnz* .
+# For *k* = 0, ... , *nnz* -1 ,
+# *col* [ *k* ] is the column index for the *k*-th possibly non-zero
+# entry in the matrix.
+#
+# row_major
+# *********
+# This result is a numpy vector with ``int`` elements
+# and its size *nnz* .
+# It sorts the sparsity pattern in row-major order.
+# To be specific,
+#
+# | |tab| *col* [ *row_major* [ *k* ] ] <= *col* [ *row_major* [ *k* +1] ]
+#
+# and if *col* [ *row_major* [ *k* ] ] == *col* [ *row_major* [ *k* +1] ] ,
+#
+# | |tab| *row* [ *row_major* [ *k* ] ] < *row* [ *row_major* [ *k* +1] ]
+#
+# This routine generates an assert if there are two entries with the same
+# row and column values (if ``NDEBUG`` is not defined).
+#
+# col_major
+# *********
+# This result is a numpy vector with ``int`` elements
+# and its size *nnz* .
+# It sorts the sparsity pattern in column-major order.
+# To be specific,
+#
+# | |tab| *row* [ *col_major* [ *k* ] ] <= *row* [ *col_major* [ *k* +1] ]
+#
+# and if *row* [ *col_major* [ *k* ] ] == *row* [ *col_major* [ *k* +1] ] ,
+#
+# | |tab| *col* [ *col_major* [ *k* ] ] < *col* [ *col_major* [ *k* +1] ]
+#
+# This routine generates an assert if there are two entries with the same
+# row and column values (if ``NDEBUG`` is not defined).
+#
+# {xrst_toc_hidden
+#  example/python/core/sparse_rc_xam.py
+# }
+# Example
+# *******
+# :ref:`sparse_rc_xam_py-name`
+#
+# {xrst_end py_sparse_rc}

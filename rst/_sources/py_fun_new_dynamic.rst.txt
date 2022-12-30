@@ -1,0 +1,40 @@
+lines 6-43 of file: lib/python/cppad_py/fun_new_dynamic.py
+
+# {xrst_begin py_fun_new_dynamic}
+# {xrst_comment_ch #}
+#
+# New Dynamic Parameters
+# ######################
+#
+# Syntax
+# ******
+# *f*\ ``.new_dynamic`` ( *dynamic* )
+#
+# f
+# *
+# This is either a
+# :ref:`d_fun<py_fun_ctor@Syntax@d_fun>` or
+# :ref:`a_fun<py_fun_ctor@Syntax@a_fun>`.
+# The independent :ref:`dynamic<py_independent@dynamic>` parameters
+# are changed to have the specified values.
+# The other dynamic parameters are then computed.
+#
+# dynamic
+# *******
+# If *f* is a ``d_fun`` ( ``a_fun`` ) object,
+# *dynamic* is a numpy vector with ``float`` ( ``a_double`` )
+# elements and its size must be the same as the size of
+# :ref:`dynamic<py_independent@dynamic>` in the corresponding call to
+# ``independent`` .
+# It specifies new values for the dynamic parameters in *f* .
+#
+# size_order
+# ==========
+# After this call,
+# :ref:`f_size_order()<py_fun_property@size_order>` is zero.
+#
+# Example
+# *******
+# See :ref:`fun_dynamic_xam_py-name`
+#
+# {xrst_end py_fun_new_dynamic}

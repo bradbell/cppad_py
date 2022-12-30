@@ -1,0 +1,41 @@
+lines 8-46 of file: example/python/mixed/fix_constraint_xam.py
+
+{xrst_begin mixed_fix_constraint_xam_py}
+
+fix_constraint: Example and Test
+################################
+
+Random Effects
+**************
+For this example there is no random effects.
+
+fix_likelihood
+**************
+For this example, the fixed likelihood is
+
+.. math::
+
+   f( \theta ) = ( \theta - 1 )^2
+
+fix_constraint
+**************
+For this example, the fixed constraint is
+
+.. math::
+
+   g( \theta ) = ( \theta + 2)^2
+
+Fixed Constraint Bounds
+***********************
+For this example, there is no fixed constraint upper bound
+and the lower bound is :math:`g^L \leq g(\theta)`
+
+Optimal Fixed Effects
+*********************
+If :math:`g^L \leq g(1) = 9`, the optimal value for the fixed effects is
+:math:`\hat{\theta} = 1`.
+Otherwise, the optimal value satisfies the equation
+:math:`c ( \hat{\theta} ) = g^L`; i.e,
+:math:`\hat{\theta} = \sqrt{g^L} - 2`.
+
+{xrst_end mixed_fix_constraint_xam_py}

@@ -1,0 +1,194 @@
+lines 492-683 of file: lib/python/cppad_py/mixed.py
+
+   {xrst_begin mixed_optimize_fixed}
+   {xrst_spell
+      cppad
+      ipopt
+      iter
+      lagrange
+      laplace
+      nlp
+      rcv
+   }
+
+   Optimize The Fixed Effects
+   ##########################
+
+   Syntax
+   ******
+   {xrst_literal
+      # BEGIN_OPTIMIZE_FIXED
+      # END_OPTIMIZE_FIXED
+   }
+
+   Purpose
+   *******
+   This routine maximizes, with respect to the fixed effect :math:`\theta`,
+   the Laplace approximation for the likelihood of the data and fixed effects.
+
+   .. math::
+      \B{p} ( z | \theta ) \B{p} ( \theta ) \int_{-\infty}^{+\infty}
+         \B{p} ( y | \theta , u ) \B{p}( u | \theta ) \B{d} u
+
+   If there are no random effects,
+   there is no Laplace approximation of the integral above, and
+   this routine maximizes :math:`\B{p} ( z | \theta ) \B{p} ( \theta )` ;
+   see :ref:`mixed_fix_likelihood-title`.
+   It also is no data, this routine maximizes :math:`\B{p} ( \theta )`.
+
+
+   Argument Types
+   **************
+   The arguments *fixed_ipopt_options* and *random_ipopt_options*
+   have type ``str``.  All the other arguments are
+   numpy vectors with elements of type ``float``.
+
+   Limits
+   ******
+   As a lower (upper) limit, the value ``None`` is minus (plus) infinity;
+   i.e., no lower (upper) limit.
+
+   fixed_lower (fixed_upper)
+   *************************
+   has length *n_fixed* and is the lower (upper) limit for the fixed effects.
+
+   fix_constraint_lower (fix_constraint_upper)
+   *******************************************
+   has length equal to the
+   :ref:`py_fun_property@size_range` for the
+   :ref:`mixed_fix_constraint-title`
+   and is the corresponding lower (upper) limit.
+
+   random_lower (random_upper)
+   ***************************
+   has length *n_random* and is the lower (upper) limit for the random effects.
+   (The Laplace approximation assumes these bounds are not active.)
+
+   fixed_in (random_in)
+   ********************
+   has length *n_fixed* (*n_random*) and is the initial value used during
+   optimization of the fixed (random) effects.
+   If *fixed_in* (*random_in*) is ``None``, the value
+   *fixed_init* (*random_init*) is used; see
+   :ref:`mixed_ctor@fixed_init`, :ref:`mixed_ctor@random_init` .
+
+   fixed_scale
+   ***********
+   has length *n_fixed* and is the value of the fixed at which the
+   fixed effect objective is scaled so its derivative is near one.
+   The value ``None`` corresponds to *fixed_scale* equal to *fixed_in*.
+
+   fixed_ipopt_options
+   *******************
+   This contains the options for optimizing the fixed effects.
+   Each line of an options argument corresponds to an ipopt option
+   and is terminated by a ``\n`` character.
+   Each line has three non-empty tokens separated by one or more spaces.
+   The first token in each line is ``String``, ``Integer``, or ``Numeric``;
+   see below.
+
+   ipopt options
+   =============
+   See the `ipopt options <https://coin-or.github.io/Ipopt/OPTIONS.html>`_
+   documentation for a list of the options and how they affect the
+   optimization.
+
+   String
+   ======
+   An Ipopt string option is specified by a line containing
+   the following syntax:
+
+   | |tab| ``String`` *name* *value*
+
+   Integer
+   =======
+   An Ipopt integer option specified specifies by a line containing
+   the following syntax:
+
+   | |tab| ``Integer`` *name* *value*
+
+   Numeric
+   =======
+   An Ipopt numeric option specified specifies by a line containing
+   the following syntax:
+
+   | |tab| ``Numeric`` *name* *value*
+
+   derivative_test
+   ===============
+   If the string option is ``derivative_test``, *value* can be
+   ``none``, ``first-order``, ``second-order``, ``only-second-order``.
+   If second order derivatives are tested,
+   :ref:`quasi_fixed<mixed_ctor@quasi_fixed>` must be false.
+   In addition to the standard ipopt options above, *value* can be
+   ``adaptive`` or ``trace-adaptive`` which uses a special derivative
+   tester that adapts its step sizes for each argument component.
+
+   hessian_approximation
+   =====================
+   If *quasi_fixed* is true, this string option (if present) must have value
+   ``limit_memory``.
+
+   max_iter
+   ========
+   This integer option has a special *value* -1.
+   In this case ipopt is run with ``max_iter`` equal to zero,
+   and the return solution corresponds to the input value of the
+   fixed effects.
+
+   nlp_scaling_method
+   ==================
+   The objective and constraint function are automatically scaled by
+   cppad_mixed and it is an error to specify this option.
+
+   random_ipopt_options
+   ********************
+   This contains the options for optimizing the random effects.
+   It has the same format as *fixed_ipopt_options*, but does
+   not have the special exceptions to the normal Ipopt options; e.g.,
+   ``adaptive`` is not available as a ``derivative_test`` *value*.
+
+   solution
+   ********
+   All the fields in the return value *solution*
+   are numpy vectors with elements of type ``float``.
+
+   fixed_opt
+   =========
+   The value *solution*\ ``.fixed_opt`` has length
+   *n_fixed* and is the final value of the fixed effects
+   (after optimization).
+   If the *max_iter* is -1, it is equal to *fixed_in*.
+
+   fixed_lag
+   =========
+   The value *solution*\ ``.fixed_lag`` has length
+   *n_fixed* and is the Lagrange multipliers for
+   the fixed effects lower (upper) bounds if it is greater than (less than)
+   zero.
+
+   fix_con_lag
+   ===========
+   The value *solution*\ ``.fix_con_lag`` is a Lagrange multipliers for
+   the fixed effects lower (upper) bounds if it is greater than (less than).
+   Its length is the same as the return value for the fixed effects constraint
+   function.
+
+   ran_con_lag
+   ===========
+   The value *solution*\ ``.ran_con_lag`` is a Lagrange multipliers for the
+   rand effects constraint function.
+   Its length is the same as the random constrain matrix :math:`A` ; see
+   :ref:`A_rcv<mixed_ctor@A_rcv>`.
+
+   {xrst_toc_hidden
+      example/python/mixed/optimize_fixed_1.py
+      example/python/mixed/optimize_fixed_2.py
+   }
+   Examples
+   ********
+
+   - :ref:`mixed_optimize_fixed_1_py-title`
+   - :ref:`mixed_optimize_fixed_2_py-title`
+
+   {xrst_end mixed_optimize_fixed}

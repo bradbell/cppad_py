@@ -1,0 +1,12 @@
+lines 28-37 of file: example/python/mixed/fatal_error_xam.py
+
+{xrst_begin mixed_fatal_error_xam_py}
+
+fatal_error: Example and Test
+#############################
+
+{xrst_literal
+  # BEGIN SOURCE
+  # END SOURCE
+}
+{xrst_end mixed_fatal_error_xam_py}

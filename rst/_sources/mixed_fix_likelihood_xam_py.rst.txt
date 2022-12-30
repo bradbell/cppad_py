@@ -1,0 +1,65 @@
+lines 8-70 of file: example/python/mixed/fix_likelihood_xam.py
+
+{xrst_begin mixed_fix_likelihood_xam_py}
+
+fix_likelihood: Example and Test
+################################
+
+
+p(z|theta)
+**********
+In this example math:`z` given :math:`( \theta )`
+is distributed normally with mean :math:`\theta`
+and standard deviation :math:`\sigma`; i.e.
+
+.. math::
+
+   - \log [ \B{p} ( z | \theta ) ]
+   =
+   \log \left[ \sigma  \sqrt{ 2 \pi } \right]
+   +
+   \frac{1}{2} \left( \frac{z - \theta}{ \sigma } \right)^2
+
+p(theta)
+********
+In this example, the prior for :math:`\theta`
+is a normal with mean :math:`\bar{\theta}` and
+standard deviation :math:`\sigma`; i.e.
+
+.. math::
+
+   - \log [ \B{p} ( \theta ) ]
+   =
+   \log \left[ \sigma  \sqrt{ 2 \pi } \right]
+   +
+   \frac{1}{2} \left( \frac{\theta - \bar{\theta}}{ \sigma } \right)^2
+
+Optimal Fixed Effects
+*********************
+For this example there is no random effects likelihood or constraints.
+Hence the optimal fixed effects minimizes the following expression
+w.r.t :math:`\theta`:
+
+.. math::
+
+   \frac{1}{2} \left( \frac{z - \theta}{ \sigma } \right)^2
+   +
+   \frac{1}{2} \left( \frac{\theta - \bar{\theta}}{ \sigma } \right)^2
+
+Taking the derivative w.r.t. :math:`\theta` and setting
+it equal to zero, the optimal fixed effects
+:math:`\hat{\theta}` solves the equations
+
+.. math::
+
+   0 & = \frac{ \hat{\theta} - \bar{\theta}}{ \sigma^2 }
+      - \frac{z - \hat{\theta} }{ \sigma^2 }
+   \\
+   \hat{\theta} & = \frac{ \bar{\theta} + z }{2}
+
+{xrst_literal
+   # BEGIN SOURCE
+   # END SOURCE
+}
+
+{xrst_end mixed_fix_likelihood_xam_py}

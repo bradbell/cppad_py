@@ -1,0 +1,15 @@
+lines 37-49 of file: example/python/core/exception_xam.py
+
+# {xrst_begin exception_xam_py}
+# {xrst_spell
+#     cppad
+# }
+# {xrst_comment_ch #}
+#
+# Python: Cppad Py Exception Handling: Example and Test
+# #####################################################
+# {xrst_literal
+#  # BEGIN SOURCE
+#  # END SOURCE
+# }
+# {xrst_end exception_xam_py}

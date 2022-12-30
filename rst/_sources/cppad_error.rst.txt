@@ -1,0 +1,55 @@
+lines 10-62 of file: lib/cplusplus/cppad_error.cpp
+
+{xrst_begin cppad_error}
+{xrst_spell
+   cppad
+   exp
+   msg
+   namespace
+   runtime
+}
+
+Converting CppAD Errors To Python Exceptions
+############################################
+
+Code
+****
+The following CppAD error handler is created
+in the empty namespace corresponding to the ``cppad_error.cpp`` file:
+{xrst_code cpp}
+   CppAD::ErrorHandler cppad_error(handler);
+{xrst_code}
+
+handler
+*******
+The error handler includes the following information in the exception message:
+
+.. csv-table::
+   :header: Label, Description
+   :widths: 10, 90
+
+   *file* , The name of the CppAD file where the error occurred.
+   *line* , The line number in the file where the error occurred.
+   *exp*  , The c++ logical expression that should have been true.
+   *msg*  , A descriptive error message about the problem.
+
+C++ throw
+*********
+A ``std::runtime_error`` *cpp_err* is thrown with
+*cpp_err*\ ``.what()`` a string containing the information above.
+
+Python raise
+************
+The swig wrapper for each call to CppAD will catch
+the ``std::runtime_error`` and raise a python
+``RuntimeError`` *py_err* where ``str``\ ( *py_err* )
+is a string containing the information above.
+
+Example
+*******
+{xrst_toc_list
+   example/python/core/cppad_error_xam.py
+}
+
+
+{xrst_end cppad_error}

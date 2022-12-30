@@ -1,0 +1,96 @@
+lines 542-635 of file: lib/cplusplus/sparse.cpp
+
+{xrst_begin cpp_jac_sparsity}
+{xrst_spell
+   jac
+}
+
+
+Jacobian Sparsity Patterns
+##########################
+
+Syntax
+******
+
+| *f*\ ``.for_jac_sparsity`` ( *pattern_in* , *pattern_out* )
+| *f*\ ``.rev_jac_sparsity`` ( *pattern_in* , *pattern_out* )
+
+Purpose
+*******
+We use :math:`F : \B{R}^n \rightarrow \B{R}^m` to denote the
+function corresponding to the operation sequence stored in *f* .
+
+for_jac_sparsity
+================
+Fix :math:`R \in \B{R}^{n \times \ell}` and define the function
+
+.. math::
+
+   J(x) = F^{(1)} ( x ) * R
+
+Given a sparsity pattern for :math:`R`,
+``for_jac_sparsity`` computes a sparsity pattern for :math:`J(x)`.
+
+rev_jac_sparsity
+================
+Fix :math:`R \in \B{R}^{\ell \times m}` and define the function
+
+.. math::
+
+   J(x) = R * F^{(1)} ( x )
+
+Given a sparsity pattern for :math:`R`,
+``rev_jac_sparsity`` computes a sparsity pattern for :math:`J(x)`.
+
+x
+*
+Note that a sparsity pattern for :math:`J(x)` corresponds to the
+operation sequence stored in *f* and does not depend on
+the argument *x* .
+
+f
+*
+The object *f* has prototype
+
+| |tab| ``d_fun`` *f*
+
+The object *f* is not ``const`` when using
+``for_jac_sparsity`` .
+After a call to ``for_jac_sparsity`` , a sparsity pattern
+for each of the variables in the operation sequence
+is held in *f* for possible later use during
+reverse Hessian sparsity calculations.
+
+pattern_in
+**********
+The argument *pattern_in* has prototype
+
+| |tab| ``const sparse_rc&`` *pattern_in*
+
+see :ref:`cpp_sparse_rc-name`.
+This is a sparsity pattern for :math:`R`.
+
+pattern_out
+***********
+This argument has prototype
+
+| |tab| ``sparse_rc<``\ *SizeVector*\ ``>&`` *pattern_out*
+
+This input value of *pattern_out* does not matter.
+Upon return *pattern_out* is a sparsity pattern for
+:math:`J(x)`.
+
+Sparsity for Entire Jacobian
+****************************
+Suppose that :math:`R` is the identity matrix.
+In this case, *pattern_out* is a sparsity pattern for
+:math:`F^{(1)} ( x )`.
+
+{xrst_toc_hidden
+   example/cplusplus/sparse_jac_pattern_xam.cpp
+}
+Example
+*******
+:ref:`c++<sparse_jac_pattern_xam_cpp-name>`
+
+{xrst_end cpp_jac_sparsity}

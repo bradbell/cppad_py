@@ -1,0 +1,89 @@
+lines 5-91 of file: lib/python/cppad_py/jac_sparsity.xrst
+
+{xrst_begin py_jac_sparsity}
+{xrst_spell
+   jac
+}
+
+
+Jacobian Sparsity Patterns
+##########################
+
+Syntax
+******
+
+| *f*\ ``.for_jac_sparsity`` ( *pattern_in* , *pattern_out* )
+| *f*\ ``.rev_jac_sparsity`` ( *pattern_in* , *pattern_out* )
+
+Purpose
+*******
+We use :math:`F : \B{R}^n \rightarrow \B{R}^m` to denote the
+function corresponding to the operation sequence stored in *f* .
+
+for_jac_sparsity
+================
+Fix :math:`R \in \B{R}^{n \times \ell}` and define the function
+
+.. math::
+
+   J(x) = F^{(1)} ( x ) * R
+
+Given a sparsity pattern for :math:`R`,
+``for_jac_sparsity`` computes a sparsity pattern for :math:`J(x)`.
+
+rev_jac_sparsity
+================
+Fix :math:`R \in \B{R}^{\ell \times m}` and define the function
+
+.. math::
+
+   J(x) = R * F^{(1)} ( x )
+
+Given a sparsity pattern for :math:`R`,
+``rev_jac_sparsity`` computes a sparsity pattern for :math:`J(x)`.
+
+x
+*
+Note that a sparsity pattern for :math:`J(x)` corresponds to the
+operation sequence stored in *f* and does not depend on
+the argument *x* .
+
+f
+*
+This object must have been returned by a previous call to the python
+:ref:`d_fun<py_fun_ctor-name>` constructor.
+The object *f* is not constant when using
+``for_jac_sparsity`` .
+After a call to ``for_jac_sparsity`` , a sparsity pattern
+for each of the variables in the operation sequence
+is held in *f* for possible later use during
+reverse Hessian sparsity calculations.
+
+pattern_in
+**********
+This argument must have be a :ref:`pattern<py_sparse_rc@pattern>`
+returned by the ``sparse_rc`` constructor.
+It specifies the sparsity pattern for :math:`R`.
+
+pattern_out
+***********
+This argument must have be a :ref:`pattern<py_sparse_rc@pattern>`
+returned by the ``sparse_rc`` constructor.
+This input value of *pattern_out* does not matter.
+Upon return *pattern_out* is a sparsity pattern for
+:math:`J(x)`.
+
+Sparsity for Entire Jacobian
+****************************
+Suppose that :math:`R` is the identity matrix.
+In this case, *pattern_out* is a sparsity pattern for
+:math:`F^{(1)} ( x )`.
+
+{xrst_toc_hidden
+   example/python/core/sparse_jac_pattern_xam.py
+}
+Example
+*******
+:ref:`python<sparse_jac_pattern_xam_py-name>`
+
+{xrst_end py_jac_sparsity}

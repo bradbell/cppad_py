@@ -1,0 +1,69 @@
+lines 6-72 of file: lib/python/cppad_py/mixed.py
+
+{xrst_begin_parent mixed}
+{xrst_spell
+   laplace
+}
+Laplace Approximation of Mixed Effects Models
+#############################################
+
+Notation
+********
+
+theta
+=====
+We use :math:`\theta` to denote a value for the fixed effects vector.
+
+u
+=
+We use :math:`u` to denote a value for the random effects vector.
+
+z
+=
+We use :math:`z` to denote
+the data that does not depend on the random effects.
+
+y
+=
+We use :math:`y` to denote
+the data that depends on the random effects.
+
+p(theta)
+========
+We use :math:`\B{p} ( \theta )` to denote the prior density for :math:`\theta`.
+
+p(z|theta)
+==========
+We use :math:`\B{p} (z | \theta )` to denote the density of :math:`z`
+given :math:`\theta`.
+
+p(u|theta)
+==========
+We use :math:`\B{p} (u | \theta )` to denote the density of :math:`u`
+given :math:`\theta`.
+
+p(y|theta,u)
+============
+We use :math:`\B{p} (y | \theta , u)` to denote the density of :math:`y`
+given :math:`\theta` and :math:`u`.
+
+Fixed Effects Likelihood
+========================
+We refer to :math:`\B{p} (z | \theta ) \B{p} ( \theta )`
+as the fixed effects likelihood.
+The negative log of this, as function of :math:`\theta`, is computed by
+:ref:`mixed_ctor@fix_likelihood` .
+
+Random Effects Likelihood
+=========================
+We refer to :math:`\B{p} (y | \theta , u ) \B{p} ( u | \theta )`
+as the random effects likelihood.
+The negative log of this, as function of :math:`\theta, u`, is computed by
+:ref:`mixed_ctor@ran_likelihood` .
+
+Children
+********
+{xrst_toc_table
+}
+
+{xrst_end mixed}

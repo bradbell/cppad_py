@@ -1,0 +1,47 @@
+lines 5-49 of file: lib/python/cppad_py/fun_json.xrst
+
+{xrst_begin py_fun_json}
+{xrst_spell
+   json
+}
+
+
+Json Representation of AD Computation Graph
+###########################################
+
+Syntax
+******
+
+| *json* = *f*\ ``.to_json`` ()
+| *f*\ ``.from_json(json`` )
+
+f
+*
+This is a :ref:`d_fun<py_fun_ctor@Syntax@d_fun>` function object.
+
+json
+****
+is a ``str`` containing
+a Json representation of the computation graph corresponding to
+*f* ; see the CppAD documentation for
+`json_ad_graph <https://coin-or.github.io/CppAD/doc/json_ad_graph.htm>`_.
+
+to_json
+*******
+In this case, the function object *f* is constant and
+the return value *json* is created.
+
+from_json
+*********
+In this case, the argument *json* is constant and
+the function *f* is changed so it corresponds to *json* .
+
+{xrst_toc_hidden
+   example/python/core/fun_json_xam.py
+}
+Examples
+********
+:ref:`fun_to_json_xam_py-name`,
+:ref:`fun_from_json_xam_py-name`.
+
+{xrst_end py_fun_json}

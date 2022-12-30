@@ -1,0 +1,172 @@
+lines 276-445 of file: lib/cplusplus/sparse.cpp
+
+{xrst_begin cpp_sparse_rcv}
+{xrst_spell
+   cppad
+   nnz
+   rcv
+}
+
+
+Sparse Matrices
+###############
+
+Syntax
+******
+
+| ``cppad_py::sparse_rcv`` *matrix* ( *pattern* )
+| *nr* = *matrix*\ ``.nr()``
+| *nc* = *matrix*\ ``.nc()``
+| *nnz* =  *matrix*\ ``.nnz()``
+| *matrix*\ ``.put`` ( *k* , *v* )
+| *row* = *matrix*\ ``.row()``
+| *col* = *matrix*\ ``.col()``
+| *val* = *matrix*\ ``.val()``
+| *row_major* = *matrix*\ ``.row_major()``
+| *col_major* = *matrix*\ ``.col_major()``
+
+pattern
+*******
+This argument has prototype
+
+| |tab| ``const sparse_rc&`` *pattern*
+
+It specifies the number of rows, number of columns and
+the possibly non-zero entries in the *matrix* .
+
+matrix
+******
+This is a sparse matrix object with the sparsity specified by *pattern* .
+Only the *val* vector can be changed. All other values returned by
+*matrix* are fixed during the constructor and constant there after.
+The *val* vector is only changed by the constructor
+and the ``set`` function.
+
+nr
+**
+This return value has prototype
+
+| |tab| ``int`` *nr*
+
+and is the number of rows in the matrix.
+
+nc
+**
+This return value has prototype
+
+| |tab| ``int`` *nc*
+
+and is the number of columns in the matrix.
+
+nnz
+***
+This return value has prototype
+
+| |tab| ``int`` *nnz*
+
+and is the number of possibly non-zero values in the matrix.
+
+put
+***
+This function sets the value
+
+| |tab| *val* [ *k* ] = *v*
+
+(The name ``set`` is used by Cppad, but not used here,
+because ``set`` it is a built-in name in Python.)
+
+k
+=
+This argument has type
+
+| |tab| ``int`` *k*
+
+and must be non-negative and less than *nnz* .
+
+v
+=
+This argument has type
+
+| |tab| ``double`` *v*
+
+It specifies the value assigned to *val* [ *k* ] .
+
+row
+***
+This result has type
+
+| |tab| ``vec_int`` *row*
+
+and its size is *nnz* .
+For *k* = 0, ... , *nnz* -1 ,
+*row* [ *k* ] is the row index for the *k*-th possibly non-zero
+entry in the matrix.
+
+col
+***
+This result has type
+
+| |tab| ``vec_int`` *col*
+
+and its size is *nnz* .
+For *k* = 0, ... , *nnz* -1 ,
+*col* [ *k* ] is the column index for the *k*-th possibly non-zero
+entry in the matrix.
+
+val
+***
+This result has type
+
+| |tab| ``vec_double`` *val*
+
+and its size is *nnz* .
+For *k* = 0, ... , *nnz* -1 ,
+*val* [ *k* ] is the value of the *k*-th possibly non-zero
+entry in the matrix (the value may be zero).
+
+row_major
+*********
+This vector has prototype
+
+| |tab| ``vec_int`` *row_major*
+
+and its size *nnz* .
+It sorts the sparsity pattern in row-major order.
+To be specific,
+
+| |tab| *col* [ *row_major* [ *k* ] ] <= *col* [ *row_major* [ *k* +1] ]
+
+and if *col* [ *row_major* [ *k* ] ] == *col* [ *row_major* [ *k* +1] ] ,
+
+| |tab| *row* [ *row_major* [ *k* ] ] < *row* [ *row_major* [ *k* +1] ]
+
+This routine generates an assert if there are two entries with the same
+row and column values (if ``NDEBUG`` is not defined).
+
+col_major
+*********
+This vector has prototype
+
+| |tab| ``vec_int`` *col_major*
+
+and its size *nnz* .
+It sorts the sparsity pattern in column-major order.
+To be specific,
+
+| |tab| *row* [ *col_major* [ *k* ] ] <= *row* [ *col_major* [ *k* +1] ]
+
+and if *row* [ *col_major* [ *k* ] ] == *row* [ *col_major* [ *k* +1] ] ,
+
+| |tab| *col* [ *col_major* [ *k* ] ] < *col* [ *col_major* [ *k* +1] ]
+
+This routine generates an assert if there are two entries with the same
+row and column values (if ``NDEBUG`` is not defined).
+
+{xrst_toc_hidden
+   example/cplusplus/sparse_rcv_xam.cpp
+}
+Example
+*******
+:ref:`sparse_rcv_xam_cpp-name`
+
+{xrst_end cpp_sparse_rcv}
