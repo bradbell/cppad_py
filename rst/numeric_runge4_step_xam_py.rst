@@ -84,6 +84,6 @@ to the j-th component of the vector :math:`x` is
 Source Code
 ***********
 
-.. literalinclude:: ../../example/python/numeric/runge4_step_xam.py
+.. literalinclude:: ../example/python/numeric/runge4_step_xam.py
    :lines: 62-123
    :language: py

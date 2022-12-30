@@ -159,7 +159,7 @@ The value *libdir* is the suffix (after the prefix)
 where the libraries will be installed.
 This can be determined by running the command:
 
-.. literalinclude:: ../../setup.py
+.. literalinclude:: ../setup.py
    :lines: 386-386
    :language: sh
 

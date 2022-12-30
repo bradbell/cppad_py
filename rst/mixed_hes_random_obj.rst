@@ -28,7 +28,7 @@ Hessian of Random Effects Objective
 Syntax
 ******
 
-.. literalinclude:: ../../lib/python/cppad_py/mixed.py
+.. literalinclude:: ../lib/python/cppad_py/mixed.py
    :lines: 1084-1088
    :language: py
 

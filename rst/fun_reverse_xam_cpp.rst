@@ -18,6 +18,6 @@ fun_reverse_xam_cpp
 C++: Reverse Mode AD: Example and Test
 ######################################
 
-.. literalinclude:: ../../example/cplusplus/fun_reverse_xam.cpp
+.. literalinclude:: ../example/cplusplus/fun_reverse_xam.cpp
    :lines: 8-116
    :language: cpp

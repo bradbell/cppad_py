@@ -18,6 +18,6 @@ fun_abort_xam_py
 Python: Abort Recording a_double Operations: Example and Test
 #############################################################
 
-.. literalinclude:: ../../example/python/core/fun_abort_xam.py
+.. literalinclude:: ../example/python/core/fun_abort_xam.py
    :lines: 8-49
    :language: py

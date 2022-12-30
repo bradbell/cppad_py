@@ -18,6 +18,6 @@ vector_size_xam_py
 Python: Size of Vectors: Example and Test
 #########################################
 
-.. literalinclude:: ../../example/python/core/vector_size_xam.py
+.. literalinclude:: ../example/python/core/vector_size_xam.py
    :lines: 8-29
    :language: py

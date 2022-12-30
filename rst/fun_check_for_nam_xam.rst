@@ -18,6 +18,6 @@ fun_check_for_nam_xam
 C++: Check For Nan in Function Result: Example and Test
 #######################################################
 
-.. literalinclude:: ../../example/cplusplus/fun_check_for_nan_xam.cpp
+.. literalinclude:: ../example/cplusplus/fun_check_for_nan_xam.cpp
    :lines: 8-66
    :language: cpp

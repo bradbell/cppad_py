@@ -18,6 +18,6 @@ sparse_jac_pattern_xam_py
 Python: Jacobian Sparsity Patterns: Example and Test
 ####################################################
 
-.. literalinclude:: ../../example/python/core/sparse_jac_pattern_xam.py
+.. literalinclude:: ../example/python/core/sparse_jac_pattern_xam.py
    :lines: 8-77
    :language: py

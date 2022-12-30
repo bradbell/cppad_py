@@ -40,6 +40,6 @@ Syntax
 Prototype
 *********
 
-.. literalinclude:: ../../lib/cplusplus/cpp_convert.cpp
+.. literalinclude:: ../lib/cplusplus/cpp_convert.cpp
    :lines: 49-50
    :language: cpp

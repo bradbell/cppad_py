@@ -82,6 +82,6 @@ methods.
 Source Code
 ***********
 
-.. literalinclude:: ../../example/python/numeric/optimize_fun_xam.py
+.. literalinclude:: ../example/python/numeric/optimize_fun_xam.py
    :lines: 61-144
    :language: py

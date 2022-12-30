@@ -18,6 +18,6 @@ fun_hessian_xam_cpp
 C++: Dense Hessian Using AD: Example and Test
 #############################################
 
-.. literalinclude:: ../../example/cplusplus/fun_hessian_xam.cpp
+.. literalinclude:: ../example/cplusplus/fun_hessian_xam.cpp
    :lines: 8-75
    :language: cpp

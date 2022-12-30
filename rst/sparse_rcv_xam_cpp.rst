@@ -18,6 +18,6 @@ sparse_rcv_xam_cpp
 C++: Sparsity Patterns: Example and Test
 ########################################
 
-.. literalinclude:: ../../example/cplusplus/sparse_rcv_xam.cpp
+.. literalinclude:: ../example/cplusplus/sparse_rcv_xam.cpp
    :lines: 8-56
    :language: cpp

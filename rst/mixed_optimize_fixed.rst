@@ -28,7 +28,7 @@ Optimize The Fixed Effects
 Syntax
 ******
 
-.. literalinclude:: ../../lib/python/cppad_py/mixed.py
+.. literalinclude:: ../lib/python/cppad_py/mixed.py
    :lines: 688-700
    :language: py
 

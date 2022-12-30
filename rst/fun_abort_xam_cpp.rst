@@ -18,6 +18,6 @@ fun_abort_xam_cpp
 C++: Abort Recording a_double Operations: Example and Test
 ##########################################################
 
-.. literalinclude:: ../../example/cplusplus/fun_abort_xam.cpp
+.. literalinclude:: ../example/cplusplus/fun_abort_xam.cpp
    :lines: 8-53
    :language: cpp

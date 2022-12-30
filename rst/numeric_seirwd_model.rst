@@ -259,7 +259,7 @@ Example
 Source Code
 ***********
 
-.. literalinclude:: ../../example/python/numeric/seirwd_model.py
+.. literalinclude:: ../example/python/numeric/seirwd_model.py
    :lines: 6-185
    :language: py
 

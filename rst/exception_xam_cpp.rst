@@ -18,6 +18,6 @@ exception_xam_cpp
 C++: Cppad Py Exception Handling: Example and Test
 ##################################################
 
-.. literalinclude:: ../../example/cplusplus/exception_xam.cpp
+.. literalinclude:: ../example/cplusplus/exception_xam.cpp
    :lines: 8-26
    :language: cpp

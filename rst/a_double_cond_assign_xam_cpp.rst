@@ -18,6 +18,6 @@ a_double_cond_assign_xam_cpp
 C++: a_double Conditional Assignment: Example and Test
 ######################################################
 
-.. literalinclude:: ../../example/cplusplus/a_double_cond_assign_xam.cpp
+.. literalinclude:: ../example/cplusplus/a_double_cond_assign_xam.cpp
    :lines: 8-62
    :language: cpp

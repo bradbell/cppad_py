@@ -18,6 +18,6 @@ fun_dynamic_xam_py
 Python: Using Dynamic Parameters: Example and Test
 ##################################################
 
-.. literalinclude:: ../../example/python/core/fun_dynamic_xam.py
+.. literalinclude:: ../example/python/core/fun_dynamic_xam.py
    :lines: 8-54
    :language: py

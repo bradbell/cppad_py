@@ -114,6 +114,6 @@ it equal to zero, the optimal fixed effects
    \\
    \hat{\theta} & = (y - \bar{y})^2 - \sigma^2
 
-.. literalinclude:: ../../example/python/mixed/ran_likelihood_xam.py
+.. literalinclude:: ../example/python/mixed/ran_likelihood_xam.py
    :lines: 93-149
    :language: py

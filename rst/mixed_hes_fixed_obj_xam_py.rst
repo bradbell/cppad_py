@@ -117,6 +117,6 @@ w.r.t the fixed effects :math:`\theta` we obtain the Hessian:
    -
    \frac{1}{2} ( \theta + \sigma^2 )^{-2}
 
-.. literalinclude:: ../../example/python/mixed/hes_fixed_obj_xam.py
+.. literalinclude:: ../example/python/mixed/hes_fixed_obj_xam.py
    :lines: 90-162
    :language: py

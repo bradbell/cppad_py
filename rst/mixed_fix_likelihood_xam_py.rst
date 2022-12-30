@@ -90,6 +90,6 @@ it equal to zero, the optimal fixed effects
    \\
    \hat{\theta} & = \frac{ \bar{\theta} + z }{2}
 
-.. literalinclude:: ../../example/python/mixed/fix_likelihood_xam.py
+.. literalinclude:: ../example/python/mixed/fix_likelihood_xam.py
    :lines: 73-122
    :language: py

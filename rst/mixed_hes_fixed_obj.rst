@@ -28,7 +28,7 @@ Hessian of Fixed Effects Objective
 Syntax
 ******
 
-.. literalinclude:: ../../lib/python/cppad_py/mixed.py
+.. literalinclude:: ../lib/python/cppad_py/mixed.py
    :lines: 980-984
    :language: py
 

@@ -18,6 +18,6 @@ a_double_unary_fun_xam_py
 Python: a_double Unary Functions with AD Result: Example and Test
 #################################################################
 
-.. literalinclude:: ../../example/python/core/a_double_unary_fun_xam.py
+.. literalinclude:: ../example/python/core/a_double_unary_fun_xam.py
    :lines: 8-53
    :language: py

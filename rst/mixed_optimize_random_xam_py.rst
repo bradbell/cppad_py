@@ -87,6 +87,6 @@ as a function of the fixed effects,
    \\
    \hat{u} ( \theta ) & = \frac{y + \theta}{2}
 
-.. literalinclude:: ../../example/python/mixed/optimize_random_xam.py
+.. literalinclude:: ../example/python/mixed/optimize_random_xam.py
    :lines: 72-126
    :language: py

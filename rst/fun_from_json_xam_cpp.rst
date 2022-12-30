@@ -18,6 +18,6 @@ fun_from_json_xam_cpp
 C++: from_json: Example and Test
 ################################
 
-.. literalinclude:: ../../example/cplusplus/fun_json_xam.cpp
+.. literalinclude:: ../example/cplusplus/fun_json_xam.cpp
    :lines: 74-132
    :language: cpp

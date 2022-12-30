@@ -82,7 +82,7 @@ When viewing the source code below it is important to know that
 optimizes out multiplication by the constant one while recording a function.
 It also optimizes out both addition and multiplication by the constant zero.
 
-.. literalinclude:: ../../example/python/numeric/simple_inv.py
+.. literalinclude:: ../example/python/numeric/simple_inv.py
    :lines: 6-69
    :language: py
 

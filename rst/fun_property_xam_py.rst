@@ -18,6 +18,6 @@ fun_property_xam_py
 Python: d_fun Properties: Example and Test
 ##########################################
 
-.. literalinclude:: ../../example/python/core/fun_property_xam.py
+.. literalinclude:: ../example/python/core/fun_property_xam.py
    :lines: 8-75
    :language: py

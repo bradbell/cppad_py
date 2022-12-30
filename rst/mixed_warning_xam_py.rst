@@ -18,6 +18,6 @@ mixed_warning_xam_py
 Warnings: Example and Test
 ##########################
 
-.. literalinclude:: ../../example/python/mixed/warning_xam.py
+.. literalinclude:: ../example/python/mixed/warning_xam.py
    :lines: 8-26
    :language: py

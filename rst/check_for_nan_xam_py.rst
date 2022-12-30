@@ -18,6 +18,6 @@ check_for_nan_xam_py
 Python: Example Turning of Checking For Nan
 ###########################################
 
-.. literalinclude:: ../../example/python/core/fun_check_for_nan_xam.py
+.. literalinclude:: ../example/python/core/fun_check_for_nan_xam.py
    :lines: 8-57
    :language: py

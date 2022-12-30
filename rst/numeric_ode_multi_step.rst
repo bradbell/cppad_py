@@ -231,7 +231,7 @@ Example
 Source Code
 ***********
 
-.. literalinclude:: ../../example/python/numeric/ode_multi_step.py
+.. literalinclude:: ../example/python/numeric/ode_multi_step.py
    :lines: 6-24
    :language: py
 

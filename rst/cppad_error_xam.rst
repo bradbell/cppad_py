@@ -18,6 +18,6 @@ cppad_error_xam
 Python: Example CppAD Error Message
 ###################################
 
-.. literalinclude:: ../../example/python/core/cppad_error_xam.py
+.. literalinclude:: ../example/python/core/cppad_error_xam.py
    :lines: 8-50
    :language: py

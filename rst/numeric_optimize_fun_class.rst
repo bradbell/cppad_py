@@ -214,7 +214,7 @@ Example
 Source Code
 ***********
 
-.. literalinclude:: ../../example/python/numeric/optimize_fun_class.py
+.. literalinclude:: ../example/python/numeric/optimize_fun_class.py
    :lines: 6-40
    :language: py
 

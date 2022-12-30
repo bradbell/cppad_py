@@ -18,6 +18,6 @@ numeric_seirwd_model_xam_py
 Example Using seris_model
 #########################
 
-.. literalinclude:: ../../example/python/numeric/seirwd_model_xam.py
+.. literalinclude:: ../example/python/numeric/seirwd_model_xam.py
    :lines: 23-116
    :language: py

@@ -30,7 +30,7 @@ Code
 The following CppAD error handler is created
 in the empty namespace corresponding to the ``cppad_error.cpp`` file:
 
-.. literalinclude:: ../../lib/cplusplus/cppad_error.cpp
+.. literalinclude:: ../lib/cplusplus/cppad_error.cpp
    :lines: 27-27
    :language: cpp
 

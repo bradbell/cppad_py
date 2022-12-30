@@ -139,7 +139,7 @@ Example
 Source Code
 ***********
 
-.. literalinclude:: ../../example/python/numeric/runge4_step.py
+.. literalinclude:: ../example/python/numeric/runge4_step.py
    :lines: 6-12
    :language: py
 

@@ -18,6 +18,6 @@ sparse_hes_xam_cpp
 C++: Hessian Sparsity Patterns: Example and Test
 ################################################
 
-.. literalinclude:: ../../example/cplusplus/sparse_hes_xam.cpp
+.. literalinclude:: ../example/cplusplus/sparse_hes_xam.cpp
    :lines: 8-103
    :language: cpp

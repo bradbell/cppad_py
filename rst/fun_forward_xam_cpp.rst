@@ -18,6 +18,6 @@ fun_forward_xam_cpp
 C++: Forward Mode AD: Example and Test
 ######################################
 
-.. literalinclude:: ../../example/cplusplus/fun_forward_xam.cpp
+.. literalinclude:: ../example/cplusplus/fun_forward_xam.cpp
    :lines: 8-88
    :language: cpp

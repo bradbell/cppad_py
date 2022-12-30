@@ -95,7 +95,7 @@ The other rates
 :math:`\delta(t)`,
 constant functions with known values:
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 78-83
    :language: py
 
@@ -151,7 +151,7 @@ the number of step to take for each time interval in *t_all* ,
 before it is sub-sampled using the
 :ref:`sample_interval<numeric_covid_19_xam_py@Data@sample_interval>`.
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 123-124
    :language: py
 
@@ -170,7 +170,7 @@ The unknown parameter vector in this model is
 
    x = [ m_0, m_1, m_2, I(0), W(0), \bar{\beta} ]
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 136-136
    :language: py
 
@@ -232,7 +232,7 @@ Actual Bounds
 The following actual upper and lower bounds for the unknown parameters
 are used as an as an aid to the optimizer:
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 721-725
    :language: py
 
@@ -243,7 +243,7 @@ The problem has not really been solved if bounds,
 other than the model bounds above, are active at the solution of the
 optimization problem.
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 186-186
    :language: py
 
@@ -279,7 +279,7 @@ The covariate data is averaged over the sample interval.
 The *sample_interval* must be either one or a positive even integer
 (even so an original data point corresponds to the center of the interval).
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 207-207
    :language: py
 
@@ -299,7 +299,7 @@ Otherwise, the data file must be a CSV file with the following columns:
 In this case the data file is used for the
 cumulative death and corresponding covariates.
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 219-221
    :language: py
 
@@ -321,7 +321,7 @@ identified using perfect data.
 For real data (when *data_file* is not empty)
 this value should be adjusted so that the average residual has variance one.
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 235-235
    :language: py
 
@@ -342,7 +342,7 @@ If *data_file* is the empty string, the data is simulated using
 the following values for the
 :ref:`unknown_parameters<numeric_covid_19_xam_py@Unknown Parameters>`:
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 247-252
    :language: py
 
@@ -390,7 +390,7 @@ Random Seed
 This is the random seed used to simulate noise in the data.
 If this value is zero, the system clock is used to choose the random seed.
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 285-285
    :language: py
 
@@ -408,7 +408,7 @@ This is the number of random points, between the lower and upper limits,
 that are checked. The point with the best objective value is chosen
 as the starting point for the optimization.
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 295-295
    :language: py
 
@@ -424,7 +424,7 @@ Display Fit Results
 If you set this variable to True,
 a printout and a plot of the fit results is generated.
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 303-303
    :language: py
 
@@ -490,7 +490,7 @@ Debug Output
 ************
 If this flag is true a lot of debugging output is printed.
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 347-347
    :language: py
 
@@ -504,6 +504,6 @@ If this flag is true a lot of debugging output is printed.
 Source Code
 ***********
 
-.. literalinclude:: ../../example/python/numeric/covid_19_xam.py
+.. literalinclude:: ../example/python/numeric/covid_19_xam.py
    :lines: 359-830
    :language: py

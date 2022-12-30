@@ -28,7 +28,7 @@ Mixed Class Constructor
 Syntax
 ******
 
-.. literalinclude:: ../../lib/python/cppad_py/mixed.py
+.. literalinclude:: ../lib/python/cppad_py/mixed.py
    :lines: 190-200
    :language: py
 

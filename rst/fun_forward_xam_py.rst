@@ -18,6 +18,6 @@ fun_forward_xam_py
 Python: Forward Mode AD: Example and Test
 #########################################
 
-.. literalinclude:: ../../example/python/core/fun_forward_xam.py
+.. literalinclude:: ../example/python/core/fun_forward_xam.py
    :lines: 8-79
    :language: py

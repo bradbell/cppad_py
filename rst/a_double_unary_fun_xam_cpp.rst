@@ -18,6 +18,6 @@ a_double_unary_fun_xam_cpp
 C++: a_double Unary Functions with AD Result: Example and Test
 ##############################################################
 
-.. literalinclude:: ../../example/cplusplus/a_double_unary_fun_xam.cpp
+.. literalinclude:: ../example/cplusplus/a_double_unary_fun_xam.cpp
    :lines: 8-52
    :language: cpp

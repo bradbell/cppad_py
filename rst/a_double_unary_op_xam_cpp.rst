@@ -18,6 +18,6 @@ a_double_unary_op_xam_cpp
 C++: a_double Unary Plus and Minus: Example and Test
 ####################################################
 
-.. literalinclude:: ../../example/cplusplus/a_double_unary_op_xam.cpp
+.. literalinclude:: ../example/cplusplus/a_double_unary_op_xam.cpp
    :lines: 8-25
    :language: cpp

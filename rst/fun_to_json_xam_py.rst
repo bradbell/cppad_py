@@ -18,6 +18,6 @@ fun_to_json_xam_py
 Python to_json: Example and Test
 ################################
 
-.. literalinclude:: ../../example/python/core/fun_json_xam.py
+.. literalinclude:: ../example/python/core/fun_json_xam.py
    :lines: 8-41
    :language: py

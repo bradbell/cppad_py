@@ -18,6 +18,6 @@ mixed_optimize_fixed_1_py
 A Very Simple Optimize Fixed Effects: Example and Test
 ######################################################
 
-.. literalinclude:: ../../example/python/mixed/optimize_fixed_1.py
+.. literalinclude:: ../example/python/mixed/optimize_fixed_1.py
    :lines: 8-33
    :language: py

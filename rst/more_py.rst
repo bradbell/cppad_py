@@ -120,7 +120,7 @@ independent
 The ``independent`` function in ``lib/python/cppad_py/independent.py``
 was changed to handle dynamic parameters as follows:
 
-.. literalinclude:: ../../lib/python/cppad_py/independent.py
+.. literalinclude:: ../lib/python/cppad_py/independent.py
    :lines: 81-113
    :language: py
 
@@ -137,7 +137,7 @@ The following function declaration was added to the
 ``d_fun`` class
 in the ``lib/python/cppad_py/fun.py`` file:
 
-.. literalinclude:: ../../lib/python/cppad_py/more_py.xrst
+.. literalinclude:: ../lib/python/cppad_py/more_py.xrst
    :lines: 82-83
    :language: py
 

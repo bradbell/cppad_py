@@ -65,7 +65,7 @@ This prefix is used to install cppad_py. It may be a local directory; e.g.,
 ``build/prefix`` or an absolute path; e.g., ``/usr/local``.
 It may include the shell variable ``$HOME`` but no other variables:
 
-.. literalinclude:: ../../bin/get_cppad.sh
+.. literalinclude:: ../bin/get_cppad.sh
    :lines: 42-42
    :language: sh
 
@@ -86,7 +86,7 @@ Extra compiler flags used when compiling c++ code not including the
 debugging and optimization flags.
 The ones below are example flags are used by g++:
 
-.. literalinclude:: ../../bin/get_cppad.sh
+.. literalinclude:: ../bin/get_cppad.sh
    :lines: 54-54
    :language: sh
 
@@ -103,7 +103,7 @@ This must be must ``debug`` or ``release`` .
 The debug version has more error messaging while the release
 version runs faster.
 
-.. literalinclude:: ../../bin/get_cppad.sh
+.. literalinclude:: ../bin/get_cppad.sh
    :lines: 63-63
    :language: sh
 
@@ -150,7 +150,7 @@ include_mixed
 This flag is true (false) if we are (are not)
 including the python cppad_mixed interface.
 
-.. literalinclude:: ../../bin/get_cppad.sh
+.. literalinclude:: ../bin/get_cppad.sh
    :lines: 88-88
    :language: sh
 
@@ -172,7 +172,7 @@ This must be must ``true`` or ``false`` .
 Cppad has a huge test suite and this can take a significant amount of time,
 but it may be useful if you have problems.
 
-.. literalinclude:: ../../bin/get_cppad.sh
+.. literalinclude:: ../bin/get_cppad.sh
    :lines: 101-101
    :language: sh
 

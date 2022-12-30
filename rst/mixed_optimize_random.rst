@@ -28,7 +28,7 @@ Optimize The Random Effects
 Syntax
 ******
 
-.. literalinclude:: ../../lib/python/cppad_py/mixed.py
+.. literalinclude:: ../lib/python/cppad_py/mixed.py
    :lines: 853-859
    :language: py
 

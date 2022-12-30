@@ -75,6 +75,6 @@ w.r.t the random effects :math:`u_{i+1 \mod m}` we obtain
 
 .. math::
 
-.. literalinclude:: ../../example/python/mixed/hes_random_obj_xam.py
+.. literalinclude:: ../example/python/mixed/hes_random_obj_xam.py
    :lines: 61-125
    :language: py

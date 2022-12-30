@@ -18,6 +18,6 @@ a_double_unary_op_xam_py
 Python: a_double Unary Plus and Minus: Example and Test
 #######################################################
 
-.. literalinclude:: ../../example/python/core/a_double_unary_op_xam.py
+.. literalinclude:: ../example/python/core/a_double_unary_op_xam.py
    :lines: 8-24
    :language: py

@@ -18,6 +18,6 @@ a_double_binary_xam_cpp
 C++: a_double Binary Operators With AD Result: Example and Test
 ###############################################################
 
-.. literalinclude:: ../../example/cplusplus/a_double_binary_xam.cpp
+.. literalinclude:: ../example/cplusplus/a_double_binary_xam.cpp
    :lines: 8-59
    :language: cpp

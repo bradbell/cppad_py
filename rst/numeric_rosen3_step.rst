@@ -245,7 +245,7 @@ Source Code
 rosen3_step
 ===========
 
-.. literalinclude:: ../../example/python/numeric/rosen3_step.py
+.. literalinclude:: ../example/python/numeric/rosen3_step.py
    :lines: 6-53
    :language: py
 
@@ -259,7 +259,7 @@ rosen3_step
 check_rosen3_step
 =================
 
-.. literalinclude:: ../../example/python/numeric/rosen3_step.py
+.. literalinclude:: ../example/python/numeric/rosen3_step.py
    :lines: 56-102
    :language: py
 

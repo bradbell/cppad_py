@@ -71,6 +71,6 @@ The following example below check the derivative of :math:`f(x)`
 Source Code
 ***********
 
-.. literalinclude:: ../../example/python/numeric/simple_inv_xam.py
+.. literalinclude:: ../example/python/numeric/simple_inv_xam.py
    :lines: 60-92
    :language: py

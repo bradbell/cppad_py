@@ -18,6 +18,6 @@ a_fun_xam_py
 Python: Purpose of a_fun Objects: Example and Test
 ##################################################
 
-.. literalinclude:: ../../example/python/core/a_fun_xam.py
+.. literalinclude:: ../example/python/core/a_fun_xam.py
    :lines: 6-54
    :language: py

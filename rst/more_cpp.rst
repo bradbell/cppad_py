@@ -56,7 +56,7 @@ independent
 The include file ``include/cppad/py/fun.hpp``
 was edited to add the following prototype:
 
-.. literalinclude:: ../../lib/cplusplus/more_cpp.xrst
+.. literalinclude:: ../lib/cplusplus/more_cpp.xrst
    :lines: 39-42
    :language: cpp
 
@@ -77,13 +77,13 @@ new_dynamic
 The include file ``include/cppad/py/fun.hpp``
 was edited to add the following member function to ``d_fun`` :
 
-.. literalinclude:: ../../lib/cplusplus/more_cpp.xrst
+.. literalinclude:: ../lib/cplusplus/more_cpp.xrst
    :lines: 54-54
    :language: cpp
 
 The following member function was added to ``a_fun`` :
 
-.. literalinclude:: ../../lib/cplusplus/more_cpp.xrst
+.. literalinclude:: ../lib/cplusplus/more_cpp.xrst
    :lines: 58-58
    :language: cpp
 
@@ -166,7 +166,7 @@ independent
 ===========
 The following function was added to the ``lib/cplusplus/fun.cpp`` file:
 
-.. literalinclude:: ../../lib/cplusplus/fun.cpp
+.. literalinclude:: ../lib/cplusplus/fun.cpp
    :lines: 119-140
    :language: cpp
 
@@ -182,7 +182,7 @@ new_dynamic
 The following function
 was added to the ``lib/cplusplus/fun.cpp`` file:
 
-.. literalinclude:: ../../lib/cplusplus/fun.cpp
+.. literalinclude:: ../lib/cplusplus/fun.cpp
    :lines: 464-480
    :language: cpp
 

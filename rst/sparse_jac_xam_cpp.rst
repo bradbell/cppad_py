@@ -18,6 +18,6 @@ sparse_jac_xam_cpp
 C++: Computing Sparse Jacobians: Example and Test
 #################################################
 
-.. literalinclude:: ../../example/cplusplus/sparse_jac_xam.cpp
+.. literalinclude:: ../example/cplusplus/sparse_jac_xam.cpp
    :lines: 8-98
    :language: cpp

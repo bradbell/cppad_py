@@ -51,6 +51,6 @@ and the optimal solution is
 
    ( \; 1.00000000, \; 4.74299963, \; 3.82114998, \; 1.37940829 \; )
 
-.. literalinclude:: ../../example/python/mixed/optimize_fixed_2.py
+.. literalinclude:: ../example/python/mixed/optimize_fixed_2.py
    :lines: 50-95
    :language: py

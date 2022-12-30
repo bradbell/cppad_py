@@ -18,6 +18,6 @@ sparse_rcv_xam_py
 Python: Sparsity Patterns: Example and Test
 ###########################################
 
-.. literalinclude:: ../../example/python/core/sparse_rcv_xam.py
+.. literalinclude:: ../example/python/core/sparse_rcv_xam.py
    :lines: 8-54
    :language: py

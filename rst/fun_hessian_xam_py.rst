@@ -18,6 +18,6 @@ fun_hessian_xam_py
 Python: Dense Hessian Using AD: Example and Test
 ################################################
 
-.. literalinclude:: ../../example/python/core/fun_hessian_xam.py
+.. literalinclude:: ../example/python/core/fun_hessian_xam.py
    :lines: 8-72
    :language: py
