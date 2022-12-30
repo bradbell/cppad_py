@@ -4,7 +4,7 @@ data = 'cppad_py'
 [directory]
 project_directory = '.'
 html_directory    = 'build/html'
-rst_directory     = 'rst'
+rst_directory     = 'build/rst'
 tex_directory     = 'build/tex'
 
 [root_file]

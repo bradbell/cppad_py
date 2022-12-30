@@ -4,11 +4,17 @@ build:
    os: "ubuntu-20.04"
    tools:
       python: "3.10"
-   jobs:
-      post_install:
-         - pip install furo
-      post_build:
-         - cp rst/_sources/*.txt rst/_build/html/_sources
-
-sphinx:
-   configuration: rst/conf.py
+   commands:
+      #
+      # furo
+      - pip install furo
+      #
+      # xrst
+      - pip install --index-url https://test.pypi.org/simple/ xrst
+      #
+      # build/html
+      - xrst --page_source --html_theme furo
+      #
+      # _readthedocs/html
+      - mkdir _readthedocs
+      - cp -r build/html _readthedocs/html
