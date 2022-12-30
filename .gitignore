@@ -5,13 +5,15 @@
 /lib/python/cppad_py/cppad_swig.py
 temp
 temp.*
-# soft links to ignore
-/build
-# directories to ignore
 #
-# build directories that /build links to
+# soft links to build directory
+/build
+# directories that /build links to
 /build.debug/
 /build.release/
+#
+# directory used by readthedocs branch
+/rst/
 #
 # directory used for local testing
 /cppad_py/
