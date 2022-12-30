@@ -1,7 +1,7 @@
 # cppad\_py: A Python Interface To CppAD
 
 ## Documentation
-https://bradbell.github.io/cppad_py
+https://cppad-py.readthedocs.io
 
 ## Description
 cppad\_py contains the following:
