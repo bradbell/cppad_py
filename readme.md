@@ -31,11 +31,6 @@ assert J[1,0] == 0.0
 assert J[1,1] == 2.0 * x[1]
 ```
 
-## Covid-19
-A Covid-19 model, that is currently being improved,
-is included as an example; see
-[covid_19_xam](https://bradbell.github.io/cppad_py/cppad_py.xrst/numeric_covid_19_xam_py.html?highlight=covid%2019)
-
 ## Install
 [setup.py](https://bradbell.github.io/cppad_py/cppad_py.xrst/setup_py.html)
 
@@ -45,8 +40,7 @@ If you get a warning or error message during the install process; see
 
 ## License
 <pre>
-Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
-    This program is distributed under the terms of the
-    GNU General Public License version 3.0 or later see
-        https://www.gnu.org/licenses/gpl-3.0.txt
+SPDX-License-Identifier: GPL-3.0-or-later
+SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
+SPDX-FileContributor: 2017-22 Bradley M. Bell
 </pre>
