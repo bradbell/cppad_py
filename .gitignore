@@ -12,9 +12,6 @@ temp.*
 /build.debug/
 /build.release/
 #
-# directory used by readthedocs branch
-/rst/
-#
 # directory used for local testing
 /cppad_py/
 #
