@@ -4,7 +4,7 @@
 # SPDX-FileContributor: 2017-22 Bradley M. Bell
 # ----------------------------------------------------------------------------
 run_branch='master'
-doc_branch='temp'
+doc_branch='readthedocs'
 # -----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
@@ -49,8 +49,10 @@ build:
    tools:
       python: "3.10"
    jobs:
+      post_install:
+         - pip install furo
       post_build:
-         - cp rst/_sources/*.txt build/html/_sources
+         - cp rst/_sources/*.txt rst/_build/html/_sources
 EOF
 cat << EOF
 readthedocs.sh: git cannot find the $doc_branch branch.
