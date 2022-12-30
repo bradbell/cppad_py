@@ -9,8 +9,8 @@ build:
       # furo html theme
       - pip install furo pyspellchecker
       #
-      # import spellchecker
-      - pip install pyspellchecker
+      # pyspellchecker, toml
+      - pip install pyspellchecker toml
       #
       # xrst
       - pip install --index-url https://test.pypi.org/simple/ xrst
