@@ -1,11 +1,8 @@
 #! /bin/bash -e
-# -----------------------------------------------------------------------------
-#         cppad_py: A C++ Object Library and Python Interface to Cppad
-#          Copyright (C) 2017-22 Bradley M. Bell (bradbell@seanet.com)
-#              This program is distributed under the terms of the
-#              GNU General Public License version 3.0 or later see
-#                    https://www.gnu.org/licenses/gpl-3.0.txt
-# -----------------------------------------------------------------------------
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
+# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# ----------------------------------------------------------------------------
 run_branch='master'
 doc_branch='temp'
 # -----------------------------------------------------------------------------
@@ -46,28 +43,30 @@ if ! git show-ref $doc_branch > /dev/null
 then
 cat << EOF
 readthedocs.sh: Cannot file the $doc_branch branch.
-Then use the following commands to create the $doc_branch branch:
+Start with a copy of the remote repository with no extra files; i.e.,
+      git status -s
+is empty. Then use the following commands to create the $doc_branch branch:
 
-	git checkout --orphan $doc_branch
-	git reset --hard
-	git show $run_branch:.gitignore > .gitignore
-	touch .nojekyll
-	sed -i .gitignore -e 's|^/rst/$|# &|'
+   git checkout --orphan $doc_branch
+   git reset --hard
+   git show $run_branch:.gitignore > .gitignore
+   touch .nojekyll
+   sed -i .gitignore -e 's|^/rst/$|# &|'
 
-	git add .nojekyll .gitignore
-	git commit -m 'create $doc_branch branch' .nojekyll .gitignore
-	git checkout $run_branch
+   git add .nojekyll .gitignore
+   git commit -m 'create $doc_branch branch' .nojekyll .gitignore
+   git checkout $run_branch
 EOF
-	exit 1
+   exit 1
 fi
 if ! git show-ref --heads --quiet $doc_branch
 then
-	echo "Cannot find local copy of the following $doc_branch branche"
-	git show-ref | grep $doc_branch
+   echo "Cannot find local copy of the following $doc_branch branch"
+   git show-ref | grep $doc_branch
     echo 'Perhaps the following would create the local copy ?'
     echo "  git checkout -b $doc_branch origin/$doc_branch"
     echo "  git checkout $run_branch"
-	exit 1
+   exit 1
 fi
 # -----------------------------------------------------------------------------
 # xsrst
@@ -82,12 +81,13 @@ then
    echo "readthedocs.sh: expected xrst to create the $dir directory"
    exit 1
 fi
+echo_eval rm -r $dir/.doctrees
 # -----------------------------------------------------------------------------
 # branch
 echo_eval git checkout $doc_branch
 #
 # ./rst
-if [  -e ./rst ]
+if [ ! -d ./rst ]
 then
    echo_eval rm -r ./rst
 fi
@@ -111,11 +111,11 @@ fi
 list=$(git status -s)
 if [ "$list" != '' ]
 then
-	echo "Currently in $doc_branch branch. The following will commit changes"
-	if [ "$first_version" == 'yes' ]
-	then
-		echo "	git commit -m '$doc_branch: advance to version $version'"
-	fi
+   echo "Currently in $doc_branch branch. The following will commit changes"
+   if [ "$first_version" == 'yes' ]
+   then
+      echo "   git commit -m '$doc_branch: advance to version $version'"
+   fi
 fi
 # -----------------------------------------------------------------------------
 echo 'readthedocs.sh: OK'
