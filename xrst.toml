@@ -10,6 +10,11 @@ tex_directory     = 'build/tex'
 [root_file]
 default = 'cppad_py.xrst'
 
+[input_files]
+data = [
+   [ 'bin/input_files.sh' ]
+]
+
 [include_all]
 rst_epilog = ''
 rst_prolog = '''

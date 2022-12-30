@@ -26,6 +26,7 @@ ignore_files='
    batch_edit.sed
    bin/devel.sh
    bin/dock_cppad_py.sh
+   bin/input_files.sh
    readme.md
    sphinx/Makefile
    sphinx/_static/css/custom.css

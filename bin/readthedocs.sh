@@ -52,7 +52,7 @@ EOF
 # -----------------------------------------------------------------------------
 # xsrst
 dir_list='
-   ./build/rst
+   ./rst
    ./build/html
 '
 for dir in $dir_list
@@ -75,11 +75,6 @@ done
 # version
 version=$(version.sh get)
 # -----------------------------------------------------------------------------
-# ./rst
-if [ -e ./rst ]
-then
-   echo_eval rm -r ./rst
-fi
 #
 # git delete
 delete_list=$(git status -s | grep '^ D ' | sed -e 's|^ D ||')
@@ -99,8 +94,8 @@ fi
 list=$(git status -s)
 if [ "$list" != '' ]
 then
-   echo "Currently in $doc_branch branch. The following will commit changes"
-   echo "   git commit -m '$doc_branch: advance to version $version'"
+   echo "The following will commit the rst file changes:"
+   echo "   git commit -m '$run_branck: advance rst files to version $version'"
 fi
 # -----------------------------------------------------------------------------
 echo 'readthedocs.sh: OK'
