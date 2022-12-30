@@ -44,7 +44,7 @@ build:
       post_install:
          - pip install furo
       post_build:
-         - cp _sources/*.txt _build/html/_sources
+         - cp rst/_sources/*.txt rst/_build/html/_sources
 
 sphinx:
    configuration: rst/conf.py
