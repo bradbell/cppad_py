@@ -1,0 +1,24 @@
+lines 94-115 of file: lib/cplusplus/cpp_convert.cpp
+
+{xrst_begin d_vec_std2cppad}
+{xrst_spell
+   cppad
+}
+
+
+Convert double Vector From Standard to CppAD
+############################################
+
+Syntax
+******
+
+| *v_out* =  ``cppad_py::d_vec_std2cppad`` ( *v_in* )
+
+Prototype
+*********
+{xrst_literal
+   // BEGIN_D_VEC_STD2CPPAD
+   // END_D_VEC_STD2CPPAD
+}
+
+{xrst_end d_vec_std2cppad}

@@ -1,0 +1,11 @@
+lines 54-62 of file: example/cplusplus/vector_set_get_xam.cpp
+
+{xrst_begin vector_set_get_xam_cpp}
+
+C++: Setting and Getting Vector Elements: Example and Test
+##########################################################
+{xrst_literal
+   // BEGIN SOURCE
+   // END SOURCE
+}
+{xrst_end vector_set_get_xam_cpp}

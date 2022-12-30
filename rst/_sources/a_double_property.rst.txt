@@ -1,0 +1,105 @@
+lines 199-301 of file: lib/cplusplus/a_double.cpp
+
+{xrst_begin a_double_property}
+{xrst_spell
+   aother
+   ap
+   bool
+   var
+}
+
+
+Properties of an a_double Object
+################################
+
+Syntax
+******
+| *d* = *ad*\ ``.value`` ()
+| *p* = *ad*\ ``.parameter`` ()
+| *v* = *ad*\ ``.variable`` ()
+| *e* = *ad*\ ``.near_equal`` ( *aother* )
+| *ap* = *ad*\ ``.var2par`` ()
+
+ad
+**
+This object has c++ prototype
+
+| |tab| ``const a_double&`` *ad*
+
+value
+*****
+The result *d* has c++ prototype
+
+| |tab| ``double`` *d*
+
+It is the value of *ad* , as a constant function.
+
+Restriction
+===========
+The object *ad* must not depend on the
+:ref:`independent<cpp_independent-name>`
+variables when *ad*\ ``.value`` () is called.
+If it does depend on the independent variables,
+you will have to wait until the current recording is terminated
+before you can access its value; see
+:ref:`var2par<a_double_property@var2par>` below.
+
+parameter
+*********
+The result *p* has c++ prototype
+
+| |tab| ``bool`` *p*
+
+It is true if *ad* represent a constant functions; i.e.,
+*ad* not depend on the independent variables.
+
+variable
+********
+The result *v* has c++ prototype
+
+| |tab| ``bool`` *v*
+
+It is true if *ad* is not a constant function; i.e.,
+*ad* depends on the independent variables.
+
+near_equal
+**********
+The argument *aother* ,
+and the result *e* , c++ have prototype
+
+| |tab| ``const a_double&`` *aother*
+| |tab| ``bool`` *e*
+
+The result is true if *ad* is nearly equal to *aother* .
+To be specific, the result is
+
+.. math::
+
+   | d - o | \leq 100 \; \varepsilon \; ( |d| + |o| )
+
+where *d* and *o* are the value corresponding to
+*ad* and *aother* and
+:math:`\varepsilon` is machine epsilon corresponding
+to the type ``double`` .
+
+var2par
+*******
+The result has c++ prototype
+
+| |tab| ``a_double`` *ap*
+
+It has the same value as *ad* and is sure to be a parameter
+( *ad* may or may not be a variable).
+This can be useful when you want to access the value of *ad*
+while is a variable; :ref:`value<a_double_property@value>` above.
+
+{xrst_toc_hidden
+   example/cplusplus/a_double_property_xam.cpp
+   example/python/core/a_double_property_xam.py
+}
+Example
+*******
+:ref:`c++<a_double_property_xam_cpp-name>`,
+:ref:`python<a_double_property_xam_py-name>`.
+
+{xrst_end a_double_property}

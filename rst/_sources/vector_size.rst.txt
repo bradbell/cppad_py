@@ -1,0 +1,43 @@
+lines 68-108 of file: lib/cplusplus/vector.xrst
+
+{xrst_begin vector_size}
+{xrst_spell
+   bool
+}
+
+
+Size of a Vector
+################
+
+Syntax
+******
+*n* = *v*\ ``.size`` ()
+
+v
+*
+The object *v* has one of the following prototypes:
+
+| |tab| ``const vec_bool&`` *v*
+| |tab| ``const vec_int&`` *v*
+| |tab| ``const vec_double&`` *v*
+| |tab| ``const vec_a_double&`` *v*
+
+n
+*
+The result has c++ prototype
+
+| |tab| ``size_t`` *n*
+
+i.e., it is a positive integer.
+Its value is the number of elements in the vector *v* .
+
+{xrst_toc_hidden
+   example/cplusplus/vector_size_xam.cpp
+   example/python/core/vector_size_xam.py
+}
+Example
+*******
+:ref:`c++<vector_size_xam_cpp-name>`,
+:ref:`python<vector_size_xam_py-name>`.
+
+{xrst_end vector_size}

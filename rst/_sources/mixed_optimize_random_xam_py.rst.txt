@@ -1,0 +1,64 @@
+lines 8-69 of file: example/python/mixed/optimize_random_xam.py
+
+{xrst_begin mixed_optimize_random_xam_py}
+{xrst_spell
+}
+
+optimize_random: Example and Test
+#################################
+
+p(y|theta, u)
+*************
+In this example math:`y` given :math:`( \theta , u )`
+is distributed normally with mean :math:`u`
+and variance one; i.e.,
+
+.. math::
+
+   - \log [ \B{p} ( y | \theta , u ) ]
+   =
+   \log \left[ \sqrt{ 2 \pi } \right]
+   +
+   \frac{1}{2} ( y - u )^2
+
+
+p(u|theta)
+**********
+In this example, the prior for :math:`u` given :math:`\theta`
+is a normal with mean :math:`\theta` and  variance one; i.e.
+
+.. math::
+
+   - \log [ \B{p} ( u | \theta ) ]
+   =
+   \log \left[ \sqrt{ 2 \pi } \right]
+   +
+   \frac{1}{2} (u - \theta )^2
+
+Optimal Random Effects
+**********************
+Given a value for the fixed effects :math:`\theta`,
+the optimal random effects minimizes the following expression
+w.r.t :math:`u`:
+
+.. math::
+
+   \frac{1}{2} ( u - y )^2 + \frac{1}{2} (u - \theta )^2
+
+Taking the derivative w.r.t. :math:`u` and setting
+it equal to zero, the optimal random effects,
+as a function of the fixed effects,
+:math:`\hat{u} ( \theta )` solves the equations
+
+.. math::
+
+   0 & = \hat{u} ( \theta ) - y + \hat{u} ( \theta ) - \theta
+   \\
+   \hat{u} ( \theta ) & = \frac{y + \theta}{2}
+
+{xrst_literal
+   # BEGIN SOURCE
+   # END SOURCE
+}
+
+{xrst_end mixed_optimize_random_xam_py}

@@ -1,0 +1,65 @@
+lines 110-172 of file: lib/cplusplus/vector.xrst
+
+{xrst_begin vector_set_get}
+{xrst_spell
+   bool
+}
+
+
+Setting and Getting Vector Elements
+###################################
+
+Syntax
+******
+
+| *u* [ *i* ] = *x*
+| *y* = *v* [ *i* ]
+
+element_type
+************
+We use *element_type* to denote the type of elements in the
+vector. It must be one of the following types:
+``bool`` , ``int`` , ``double`` , ``a_double`` .
+
+i
+*
+This argument has c++ prototype
+
+| |tab| ``size_t`` *i*
+
+It must be between zero and the size of the vector minus one.
+
+u
+*
+The object *u* has c++ prototype
+
+| |tab| ``vec_``\ *element_type*\ ``&`` *u*
+
+x
+*
+The argument *x* has c++ prototype
+
+| |tab| ``const`` *element_type*\ ``&`` *x*
+
+v
+*
+The object *v* has c++ prototype
+
+| |tab| ``const vec_``\ *element_type*\ ``&`` *v*
+
+y
+*
+The result *y* has c++ prototype
+
+| |tab| *element_type* *y*
+
+{xrst_toc_hidden
+   example/cplusplus/vector_set_get_xam.cpp
+   example/python/core/vector_set_get_xam.py
+}
+Example
+*******
+:ref:`c++<vector_set_get_xam_cpp-name>`,
+:ref:`python<vector_set_get_xam_py-name>`.
+
+{xrst_end vector_set_get}

@@ -1,0 +1,32 @@
+lines 6-35 of file: lib/python/cppad_py/fun.py
+
+# {xrst_begin py_fun}
+# {xrst_spell
+#     cppad
+# }
+# {xrst_comment_ch #}
+#
+#
+# Cppad Py AD Functions
+# #####################
+#
+# .. comment:  Files that have Python specific Implementation and Documentation
+#
+# Children
+# ********
+# {xrst_toc_table
+#  lib/python/cppad_py/independent.py
+#  lib/python/cppad_py/abort_recording.xrst
+#  lib/python/cppad_py/fun_ctor.py
+#  lib/python/cppad_py/fun_property.xrst
+#  lib/python/cppad_py/fun_check_for_nan.xrst
+#  lib/python/cppad_py/fun_new_dynamic.py
+#  lib/python/cppad_py/fun_jacobian.py
+#  lib/python/cppad_py/fun_hessian.py
+#  lib/python/cppad_py/fun_forward.py
+#  lib/python/cppad_py/fun_reverse.py
+#  lib/python/cppad_py/fun_optimize.xrst
+#  lib/python/cppad_py/fun_json.xrst
+# }
+#
+# {xrst_end py_fun}

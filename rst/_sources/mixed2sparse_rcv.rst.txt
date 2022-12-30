@@ -1,0 +1,29 @@
+lines 165-191 of file: lib/cplusplus/cpp_convert.cpp
+
+{xrst_begin mixed2sparse_rcv}
+{xrst_spell
+   cppad
+   rcv
+}
+
+Convert Sparse Matrix from cppad_mixed to cppad_py
+##################################################
+
+Syntax
+******
+
+| *sparse_out* = ``cppad_py::mixed2sparse_rcv`` ( *sparse_in* )
+
+Prototype
+*********
+{xrst_literal
+   // BEGIN_MIXED2SPARSE_RCV
+   // END_MIXED2SPARSE_RCV
+}
+
+Restriction
+***********
+This routine is only available when
+:ref:`include_mixed <get_cppad_sh@Settings@include_mixed>` is true.
+
+{xrst_end mixed2sparse_rcv}

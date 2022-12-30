@@ -1,0 +1,63 @@
+lines 1019-1079 of file: lib/python/cppad_py/mixed.py
+
+   {xrst_begin mixed_hes_random_obj}
+   {xrst_spell
+      hes
+      obj
+      rcv
+   }
+
+   Hessian of Random Effects Objective
+   ###################################
+
+   Syntax
+   ******
+   {xrst_literal
+      # BEGIN_HES_RANDOM_OBJ
+      # END_HES_RANDOM_OBJ
+   }
+
+   Purpose
+   *******
+   We are given a value for the fixed effects :math:`\theta`,
+   and the corresponding random effects :math:`u` .
+   This routine the hessian, with respect to the random effects,
+   of the negative log of random effects objective; i.e.,
+   :ref:`ran_likelihood <mixed_ran_likelihood@ran_likelihood>`
+
+   .. math::
+      \B{p} ( y | \theta , u ) \B{p}( u | \theta ) \B{d} u
+
+   If there is no data, the return value is the Hessian of
+   :math:`- \log [ \B{p} ( u | \theta ) ]` w.r.t :math:`u` .
+
+   hes_random_obj_rcv
+   ******************
+   The argument *hes_random_obj_rcv* is a
+   :ref:`py_sparse_rcv <py_sparse_rcv-name>` matrix.
+   The input value of this argument does not matter.
+   Upon return it contains the lower triangle of the Hessian
+   (the Hessian is symmetric).
+
+   fixed_vec
+   *********
+   The argument *fixed_vec* is a numpy vector with ``float`` elements
+   and length *n_fixed*. It contains the value of the fixed effects
+   :math:`\theta` at which the Hessian is evaluated.
+   This vector can't be ``None``.
+
+   random_vec
+   **********
+   The argument *random_vec* is a numpy vector with ``float`` elements
+   and length *n_random*.
+   It contains the value for the random effects at which the Hessian
+   is evaluated.,
+   This vector can't be ``None``.
+
+   Examples
+   ********
+   {xrst_toc_list
+      example/python/mixed/hes_random_obj_xam.py
+   }
+
+   {xrst_end mixed_hes_random_obj}

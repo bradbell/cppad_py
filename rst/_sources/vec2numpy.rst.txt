@@ -1,0 +1,47 @@
+lines 135-179 of file: lib/python/cppad_py/utility.py
+
+# {xrst_begin vec2numpy}
+# {xrst_spell
+#     cppad
+#     len
+# }
+# {xrst_comment_ch #}
+#
+#
+# Convert a cppad_py Vector to a Numpy Array
+# ##########################################
+#
+# Syntax
+# ******
+#
+# | *array* =  ``cppad_py.utility.vec2numpy`` ( *vec* , *nr* )
+# | *array* =  ``cppad_py.utility.vec2numpy`` ( *vec* , *nr* , *nc* )
+#
+# vec
+# ***
+# This must have one of the following types:
+# ``cppad_py.vec_int`` ,
+# ``cppad_py.vec_double`` ,
+# ``vec_py.vec_a_double`` .
+# with size equal to *nr* ``*`` *nc* .
+#
+# nr
+# **
+# This is an ``int`` equal to the number of rows in the array.
+# If the argument *nc* is not present, the array is a vector; i.e.,
+# ``len`` ( *array*\ ``.shape ) == 1`` .
+#
+# nc
+# **
+# If this argument is present,
+# it is an ``int`` equal to the number of columns in the array.
+# In this case the array is a matrix; i.e.,
+# ``len`` ( *array*\ ``.shape ) == 2`` .
+#
+# array
+# *****
+# This is the array corresponding to *vec* in row major order.
+# Note that this array can be used after the vector *vec* drops
+# out of scope (is deleted).
+#
+# {xrst_end vec2numpy}

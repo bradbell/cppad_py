@@ -1,0 +1,28 @@
+lines 5-30 of file: lib/python/cppad_py/abort_recording.xrst
+
+{xrst_begin py_abort_recording}
+{xrst_spell
+   cppad
+}
+
+
+Abort Recording
+###############
+
+Syntax
+******
+``cppad_py.abort_recording`` ()
+
+Purpose
+*******
+This aborts the current recording (if it exists)
+started by the most recent call to :ref:`independent<py_independent-name>`.
+
+{xrst_toc_hidden
+   example/python/core/fun_abort_xam.py
+}
+Example
+*******
+:ref:`python<fun_abort_xam_py-name>`
+
+{xrst_end py_abort_recording}

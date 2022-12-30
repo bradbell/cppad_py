@@ -1,0 +1,73 @@
+lines 5-75 of file: lib/python/cppad_py/fun_property.xrst
+
+{xrst_begin py_fun_property}
+{xrst_spell
+   var
+}
+
+
+Properties of a Function Object
+###############################
+
+Syntax
+******
+
+| *n* = *f*\ ``.size_domain`` ()
+| *m* = *f*\ ``.size_range`` ()
+| *v* = *f*\ ``.size_var`` ()
+| *p* = *f*\ ``.size_op`` ()
+| *q* = *f*\ ``.size_order`` ()
+
+f
+*
+This is either a
+:ref:`d_fun<py_fun_ctor@Syntax@d_fun>` or
+:ref:`a_fun<py_fun_ctor@Syntax@a_fun>` function object
+and is constant; i.e., not changed.
+
+size_domain
+***********
+The return value *n* is an ``int``
+and is the size of the vector
+:ref:`ax<py_fun_ctor@ax>` in the function constructor; i.e.,
+the number of independent variables.
+
+size_range
+**********
+The return value *m* is an ``int``
+and is the size of the vector
+:ref:`ay<py_fun_ctor@ay>` in the function constructor; i.e.,
+the number of dependent variables.
+
+size_var
+********
+The return value *v* is an ``int``
+and is the number of variables in the function.
+This includes the independent variables, dependent variables,
+and any variables that are used to compute the dependent variables
+from the independent variables.
+
+size_op
+*******
+The return value *p* is an ``int``
+and is the number of atomic operations that are used to express
+the dependent variables as a function of the independent variables.
+
+size_order
+**********
+The return value *q* is an ``int``
+and is the number of Taylor coefficients currently stored in *f* ,
+for every variable in the operation sequence corresponding to *f* .
+These coefficients are computed by :ref:`py_fun_forward-name`.
+This is different from the other function properties in that it can change
+after each call to *f*\ ``.forward`` ; see
+:ref:`size_order<py_fun_forward@p@size_order>` in the forward mode section.
+
+{xrst_toc_hidden
+   example/python/core/fun_property_xam.py
+}
+Example
+*******
+:ref:`fun_property_xam_py-name`
+
+{xrst_end py_fun_property}

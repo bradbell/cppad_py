@@ -1,0 +1,35 @@
+lines 261-293 of file: lib/python/cppad_py/mixed.py
+
+   {xrst_begin mixed_warning}
+   {xrst_spell
+      obj
+   }
+
+   Mixed Class Warnings
+   ####################
+
+   Syntax
+   ******
+   | *warning* ( *message* )
+   | *mixed_obj*\ ``.post_warning`` ( *message* )
+
+   warning
+   *******
+   This is the :ref:`mixed_ctor@warning` argument to the  mixed class
+   constructor.
+   It's *message* argument is an `str` describing the warning.
+
+   post_warning
+   ************
+   is a mixed class member function that posts a warning.
+   It's *message* argument is an `str` describing the warning.
+   It's main purpose is for testing.
+
+   {xrst_toc_hidden
+      example/python/mixed/warning_xam.py
+   }
+   Example
+   *******
+   :ref:`mixed_warning_xam_py-name`
+
+   {xrst_end mixed_warning}

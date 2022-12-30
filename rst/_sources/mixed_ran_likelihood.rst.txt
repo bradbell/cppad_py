@@ -1,0 +1,58 @@
+lines 435-490 of file: lib/python/cppad_py/mixed.py
+
+   {xrst_begin mixed_ran_likelihood}
+   Random Effects Likelihood
+   #########################
+
+   Syntax
+   ******
+   *v* = *ran_likelihood*\ ``.forward`` (0, *theta* , *u* )
+
+
+   ran_likelihood
+   **************
+   is a :ref:`d_fun<py_fun_ctor@Syntax@d_fun>` representation
+   of the negative log of the
+   :ref:`random effects likelihood <mixed@Notation@Random Effects Likelihood>`
+
+   .. math::
+
+      r( \theta , u )
+      =
+      v_0 ( \theta , u )
+      =
+      - \log [ \B{p} ( y | \theta , u ) \B{p} ( u | \theta ) ]
+
+   The function :math:`v_0 ( \theta , u )`
+   is assumed to be a smooth w.r.t the vector :math:`( \theta , u )`.
+
+   theta
+   *****
+   is a numpy vector with ``float`` elements and size
+   :ref:`mixed_ctor@fixed_init@n_fixed`
+   containing a value for the fixed effects.
+
+   u
+   *
+   is a numpy vector with ``float`` elements and size
+   :ref:`mixed_ctor@random_init@n_random`
+   containing a value for the random effects.
+
+   v
+   *
+   is a numpy vector with ``float`` elements and size 1.
+
+   None
+   ****
+   The value *ran_likelihood* = ``None``
+   corresponds to the random effects likelihood
+   being constant w.r.t. :math:`( \theta , u )`.
+
+   {xrst_toc_hidden
+      example/python/mixed/ran_likelihood_xam.py
+   }
+   Example
+   *******
+   :ref:`mixed_ran_likelihood_xam_py-name`
+
+   {xrst_end mixed_ran_likelihood}

@@ -1,0 +1,14 @@
+lines 59-70 of file: example/cplusplus/fun_json_xam.cpp
+
+{xrst_begin fun_to_json_xam_cpp}
+{xrst_spell
+   json
+}
+
+C++: to_json: Example and Test
+##############################
+{xrst_literal
+   // BEGIN_TO_JSON_XAM
+   // END_TO_JSON_XAM
+}
+{xrst_end fun_to_json_xam_cpp}

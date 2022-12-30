@@ -1,0 +1,24 @@
+lines 59-80 of file: lib/cplusplus/cpp_convert.cpp
+
+{xrst_begin ad_vec_cppad2std}
+{xrst_spell
+   cppad
+}
+
+
+Convert AD Vector From CppAD to Standard
+########################################
+
+Syntax
+******
+
+| *v_out* =  ``cppad_py::ad_vec_cppad2std`` ( *v_in* )
+
+Prototype
+*********
+{xrst_literal
+   // BEGIN_AD_VEC_CPPAD2STD
+   // END_AD_VEC_CPPAD2STD
+}
+
+{xrst_end ad_vec_cppad2std}

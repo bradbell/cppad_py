@@ -1,0 +1,47 @@
+lines 73-117 of file: example/python/numeric/simple_inv.py
+
+# {xrst_begin numeric_simple_inv}
+# {xrst_spell
+#     ainv
+# }
+# {xrst_comment_ch #}
+#
+#
+# An AD Compatible Matrix Inverse Routine
+# #######################################
+#
+# Syntax
+# ******
+# *Ainv* =  ``simple_inv`` ( *A* )
+#
+# Purpose
+# *******
+# This routine can be used with ``ad_double``
+#
+# A
+# *
+# This must be an invertible square matrix (no singular detection is done).
+# The type of its elements can be ``float`` or ``a_double`` .
+#
+# Ainv
+# ****
+# This is the matrix inverse of *A* .
+#
+# {xrst_toc_hidden
+#  example/python/numeric/simple_inv_xam.py
+# }
+# Example
+# *******
+# :ref:`numeric_simple_inv_xam_py-name`
+#
+# Source Code
+# ***********
+# When viewing the source code below it is important to know that
+# optimizes out multiplication by the constant one while recording a function.
+# It also optimizes out both addition and multiplication by the constant zero.
+# {xrst_literal
+#  # BEGIN_PYTHON
+#  # END_PYTHON
+# }
+#
+# {xrst_end numeric_simple_inv}

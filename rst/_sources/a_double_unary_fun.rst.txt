@@ -1,0 +1,87 @@
+lines 619-703 of file: lib/cplusplus/a_double.cpp
+
+{xrst_begin a_double_unary_fun}
+{xrst_spell
+   acos
+   acosh
+   asin
+   asinh
+   atan
+   atanh
+   erf
+   exp
+   expm
+   fabs
+   sinh
+   sqrt
+   tanh
+}
+
+
+Unary Functions with AD Result
+##############################
+
+Syntax
+******
+
+C++
+===
+*ay* = *ax* . *fun* ()
+
+Python
+======
+| *ay* = *ax* . *fun* ()
+| *ay* = ``numpy.``\ *fun* ( *ax* )
+
+ax
+**
+This object has prototype
+
+| |tab| ``const a_double&`` *ax*
+
+This is the argument for the function evaluation.
+
+fun
+***
+This specifies which function is being evaluated and is one
+of  following value:
+``abs`` ,
+``acos`` ,
+``asin`` ,
+``atan`` ,
+``cos`` ,
+``cosh`` ,
+``erf`` ,
+``exp`` ,
+``fabs`` ,
+``log`` ,
+``sin`` ,
+``sinh`` ,
+``sqrt`` ,
+``tan`` ,
+``tanh`` .
+The ``numpy`` version of the python syntax does not work with the ``abs``
+function.
+2DO: Add the C++11 functions
+asinh, acosh, atanh, expm1, and log1p to this list.
+
+ay
+**
+The result object has c++ prototype
+
+| |tab| ``a_double`` *ay*
+
+and is the value of the function *fun* evaluated at the argument *ax*; i.e.,
+
+| |tab| *ay* = *fun* ( *ax* )
+
+{xrst_toc_hidden
+   example/cplusplus/a_double_unary_fun_xam.cpp
+   example/python/core/a_double_unary_fun_xam.py
+}
+Example
+*******
+:ref:`c++<a_double_unary_fun_xam_cpp-name>`,
+:ref:`python<a_double_unary_fun_xam_py-name>`.
+
+{xrst_end a_double_unary_fun}

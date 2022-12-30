@@ -1,0 +1,18 @@
+lines 22-37 of file: lib/cplusplus/cplusplus.xrst
+
+{xrst_begin sparse}
+{xrst_spell
+   cppad
+}
+
+
+Cppad Py Sparse Calculation
+###########################
+
+Children
+********
+{xrst_toc_table
+   lib/cplusplus/sparse.cpp
+}
+
+{xrst_end sparse}

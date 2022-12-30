@@ -1,0 +1,12 @@
+lines 60-69 of file: example/python/core/sparse_rc_xam.py
+
+# {xrst_begin sparse_rc_xam_py}
+# {xrst_comment_ch #}
+#
+# Python: Sparsity Patterns: Example and Test
+# ###########################################
+# {xrst_literal
+#  # BEGIN SOURCE
+#  # END SOURCE
+# }
+# {xrst_end sparse_rc_xam_py}

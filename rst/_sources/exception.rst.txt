@@ -1,0 +1,34 @@
+lines 12-43 of file: include/cppad/py/assert.hpp
+
+{xrst_begin exception}
+{xrst_spell
+   runtime
+}
+
+Exception Handling
+##################
+
+C++ Exceptions
+==============
+The type of the exception is ``std::runtime_error``
+which is derived from ``std::exception`` .
+If the standard exception member function ``what()`` is called,
+the return value is a message describing the error.
+
+Python Exceptions
+=================
+The type of the exception is ``RuntimeError``.
+If *err* is the exception, ``str`` (*err*) is
+a message describing the error.
+
+
+{xrst_toc_hidden
+   example/cplusplus/exception_xam.cpp
+   example/python/core/exception_xam.py
+}
+Example
+*******
+:ref:`c++<exception_xam_cpp-name>`,
+:ref:`python<exception_xam_py-name>`.
+
+{xrst_end exception}

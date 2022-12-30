@@ -1,0 +1,12 @@
+lines 61-70 of file: example/python/core/fun_check_for_nan_xam.py
+
+# {xrst_begin check_for_nan_xam_py}
+# {xrst_comment_ch #}
+#
+# Python: Example Turning of Checking For Nan
+# ###########################################
+# {xrst_literal
+#  # BEGIN SOURCE
+#  # END SOURCE
+# }
+# {xrst_end check_for_nan_xam_py}

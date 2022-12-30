@@ -1,0 +1,12 @@
+lines 76-85 of file: example/python/core/fun_hessian_xam.py
+
+# {xrst_begin fun_hessian_xam_py}
+# {xrst_comment_ch #}
+#
+# Python: Dense Hessian Using AD: Example and Test
+# ################################################
+# {xrst_literal
+#  # BEGIN SOURCE
+#  # END SOURCE
+# }
+# {xrst_end fun_hessian_xam_py}

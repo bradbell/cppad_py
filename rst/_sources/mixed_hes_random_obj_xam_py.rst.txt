@@ -1,0 +1,53 @@
+lines 8-58 of file: example/python/mixed/hes_random_obj_xam.py
+
+{xrst_begin mixed_hes_random_obj_xam_py}
+
+ran_likelihood: Example and Test
+################################
+
+p(u|theta)
+**********
+In this example there is not date and
+
+.. math::
+
+   - \log [ \B{p} ( u | \theta ]
+   =
+   \theta_0 u_0 u_1 + \theta_1 u_1 u_2 + \cdots + \theta_{m-1} u_{m-1} u_0
+
+where :math:`m` is the number of fixed and random effects.
+
+
+Derivative
+**********
+For this example there is no data.
+Hence the partial of the random effects objective,
+w.r.t the random effect :math:`u_i` is
+
+.. math::
+
+   \theta_i u_{i+1 \mod m} + \theta_{i-1 \mod m} u_{i-1 \mod m}
+
+
+Hessian
+*******
+Taking the partial of the expression above
+w.r.t the random effects :math:`u_{i-1 \mod m}` we obtain
+
+.. math::
+
+   \theta_{i-1 \mod m}
+
+Taking the partial of the expression above
+w.r.t the random effects :math:`u_{i+1 \mod m}` we obtain
+
+.. math::
+
+
+
+{xrst_literal
+   # BEGIN SOURCE
+   # END SOURCE
+}
+
+{xrst_end mixed_hes_random_obj_xam_py}

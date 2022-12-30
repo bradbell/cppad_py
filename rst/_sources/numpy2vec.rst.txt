@@ -1,0 +1,61 @@
+lines 9-67 of file: lib/python/cppad_py/utility.py
+
+# {xrst_begin numpy2vec}
+# {xrst_spell
+#     bool
+#     cppad
+#     dtype
+#     tuple
+# }
+# {xrst_comment_ch #}
+#
+#
+# Convert a Numpy Array to a cppad_py Vector
+# ##########################################
+#
+# Syntax
+# ******
+#
+# | *vec* =  ``cppad_py.utility.numpy2vec`` (
+# | |tab| *array* , *dtype* , *shape* , *context* , *name*
+# | )
+#
+# array
+# *****
+# This is either a vector (only one index) or a matrix
+# (has two indices) that we are converting to a vector.
+# If this array does not match the conditions below,
+# an exception is raised with an appropriate error message.
+#
+# dtype
+# *****
+# This is the expected data type for the elements of the array.
+# It must be one of the following:
+# ``bool`` , ``int`` , ``float`` or ``cppad_py.a_double`` .
+#
+# shape
+# *****
+# This either a ``int`` or a tuple of ``int`` with length one or two.
+# If it is an ``int`` , *array* is expected to be a vector.
+# If it is a tuple with length one, *array* is expected to be a vector.
+# Otherwise a matrix is expected.
+#
+# context
+# *******
+# This is the context that *array* appears in
+# (often to syntax for some other operation).
+# It is a ``str`` that is used for error reporting.
+#
+# name
+# ****
+# This is the name used for *array* in *context* .
+# It is a ``str`` that is used for error reporting.
+#
+# vec
+# ***
+# This is the values of *array*
+# as a vector is row major order.
+# It has type ``vec_double`` if *dtype* is ``float`` ,
+# and ``vec_a_double`` if *dtype* is ``a_double`` .
+#
+# {xrst_end numpy2vec}
