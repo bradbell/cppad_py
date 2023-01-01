@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # cmake \
 #  -D CMAKE_VERBOSE_MAKEFILE=value \
@@ -15,7 +15,7 @@
 # Suppress warnging that WIN32 not defined on cygwin
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 PROJECT(cppad_py)
-SET(cppad_py_version "2022.12.30")
+SET(cppad_py_version "2023.1.1")
 CMAKE_POLICY(SET CMP0042 NEW)
 # =============================================================================
 # MACROS
