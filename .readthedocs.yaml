@@ -18,4 +18,5 @@ build:
       #
       # _readthedocs/html
       - mkdir _readthedocs
+      - rm -r build/html/.doctrees
       - cp -r build/html _readthedocs/html
