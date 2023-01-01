@@ -10,7 +10,11 @@ build:
       - pip install xrst
       #
       # build/html
-      - xrst --page_source --html_theme furo
+      - xrst
+         --page_source
+         --html_theme furo
+         --group_list default
+         --index_page_name cppad_py
       #
       # _readthedocs/html
       - mkdir _readthedocs

@@ -32,15 +32,8 @@ assert J[1,1] == 2.0 * x[1]
 ```
 
 ## Install
-[setup.py](https://bradbell.github.io/cppad_py/cppad_py.xrst/setup_py.html)
+[setup.py](https://cppad-py.readthedocs.io/en/latest/setup_py.htm)
 
 ### Error
 If you get a warning or error message during the install process; see
-[install error](https://bradbell.github.io/cppad_py/cppad_py.xrst/install_error.html)
-
-## License
-<pre>
-SPDX-License-Identifier: GPL-3.0-or-later
-SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-SPDX-FileContributor: 2017-22 Bradley M. Bell
-</pre>
+[install error](https://cppad-py.readthedocs.io/en/latest/install_error.htm)

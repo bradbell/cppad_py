@@ -21,24 +21,15 @@ version_files='
 # should also be in this list.
 # BEGIN_SORT_THIS_LINE_PLUS_2
 ignore_files='
-   .gitignore
-   MANIFEST.in
-   batch_edit.sed
-   bin/devel.sh
-   bin/dock_cppad_py.sh
-   bin/input_files.sh
-   readme.md
-   sphinx/Makefile
-   sphinx/_static/css/custom.css
-   sphinx/conf.py
-   sphinx/configure.xrst
-   sphinx/index.rst
-   sphinx/keyword
-   sphinx/preamble.rst
-   sphinx/spelling
-   sphinx/test_out/
-   sphinx/test_out/*.rst
-   xrst.toml
+   /.gitignore
+   /.readthedocs.yaml
+   /MANIFEST.in
+   /batch_edit.sed
+   /bin/devel.sh
+   /bin/dock_cppad_py.sh
+   /bin/input_files.sh
+   /readme.md
+   /xrst.toml
 '
 # END_SORT_THIS_LINE_MINUS_2
 # ----------------------------------------------------------------------------
