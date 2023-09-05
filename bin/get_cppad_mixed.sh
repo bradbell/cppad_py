@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 #
 #
@@ -42,8 +42,8 @@
 # ---------------------------------------------------------------------------
 # CppAD mixed version information
 web_page='https://github.com/bradbell/cppad_mixed.git'
-hash_key='bf05548b74dcf0df3f5af4ee5a3b6ee54383c6ed'
-version='20220519'
+hash_key='134126527cbf8f9bfe9125ff9cc645cd3425f29e'
+version='20230112'
 # --------------------------------------------------------------------------
 name='bin/get_cppad_mixed.sh'
 if [ $0 != $name ]

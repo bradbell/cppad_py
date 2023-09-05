@@ -13,7 +13,7 @@
 # -----------------------------------------------------------------------------
 # preamble
 # Suppress warnging that WIN32 not defined on cygwin
-CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
 PROJECT(cppad_py)
 SET(cppad_py_version "2023.1.1")
 CMAKE_POLICY(SET CMP0042 NEW)

@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 {xrst_begin more_cpp}
 {xrst_spell
@@ -11,7 +11,6 @@
    extern
    grep
    hpp
-   mhelp
    xam
 }
 
@@ -77,13 +76,10 @@ The :ref:`cpp_fun_new_dynamic-name` documentation was added.
 
 Example
 =======
-The corresponding example file was added to the documentation,
-below the :ref:`cpp_independent-name` section, using the OMhelp commands:
-
-| |tab| { ``xrst_dollar}children%``
-| |tab| |tab| ``example/cplusplus/fun_dynamic_xam.cpp``
-| |tab| ``%${xrst_dollar`` }
-
+The example file
+``example/cplusplus/fun_dynamic_xam.cpp``
+was added to the documentation,
+below the :ref:`cpp_independent-name` section.
 In addition, a reference to this example was added under the
 :ref:`example<cpp_independent@Example>` heading in the ``independent``
 documentation.

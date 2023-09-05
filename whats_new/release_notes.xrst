@@ -1,22 +1,41 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-{xrst_begin release_notes}
+{xrst_begin_parent release_notes}
 
 
 CppAD Py Release Notes By Year
 ##############################
 
-{xrst_toc_hidden
+{xrst_toc_hidden after
    whats_new/2022.xrst
    whats_new/2021.xrst
    whats_new/2020.xrst
    whats_new/2018.xrst
 }
+:ref:`2023<whats_new_2023-name>` ,
 :ref:`2022<whats_new_2022-name>` ,
 :ref:`2021<whats_new_2021-name>` ,
 :ref:`2020<whats_new_2020-name>` ,
 :ref:`2018<whats_new_2018-name>`
 
 {xrst_end release_notes}
+# -----------------------------------------------------------------------------
+{xrst_begin whats_new_2023}
+{xrst_spell
+   cppad
+   mhelp
+}
+
+CppAD Py Changes During 2023
+############################
+
+09-05
+*****
+#. Fix some documentation errors that a newer version of xrst detected.
+   These errors were in the :ref:`more_cpp-name` and :ref:`more_py-name`
+   and were OMhelp commands that did not convert to xrst properly.
+#. Advance cppad_mixed from 20220519 to 20230112.
+
+{xrst_end whats_new_2023}

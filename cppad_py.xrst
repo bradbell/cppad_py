@@ -35,7 +35,7 @@ Purpose
    Algorithmic Differentiation (AD) package Cppad; see :ref:`py_lib-name`.
 #. Provide an AD object library; see :ref:`cpp_lib-name`.
 #. Provide a concrete example of how
-   `cppad_swig <https://github.com/bradbell/cppad_swig>`_
+   `swig <https://www.swig.org>`_
    can be used to connect any scripting language to CppAD.
 
 Getting Started

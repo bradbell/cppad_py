@@ -1,13 +1,12 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 {xrst_begin more_py}
 {xrst_spell
    adynamic
    cppad
    grep
-   mhelp
    xam
 }
 
@@ -41,21 +40,15 @@ new_dynamic
 ===========
 The :ref:`cpp_fun_new_dynamic-name` documentation was added
 in the file ``lib/python/cppad_py/fun_new_dynamic.py`` .
-In addition, the OMhelp command
-
-| |tab| ``%lib/python/cppad_py/fun_new_dynamic.py``
-
-was added to the file ``lib/python/cppad_py/fun.py`` .
+In addition, this file
+was added to the file list in ``lib/python/cppad_py/fun.py`` .
 
 Example
 =======
-An example file was added to the documentation,
-below the :ref:`py_independent-name` section, using the OMhelp commands:
-
-| |tab| { ``xrst_dollar}children%``
-| |tab| |tab| ``example/python/core/fun_dynamic_xam.py``
-| |tab| ``%${xrst_dollar`` }
-
+The example file
+``example/python/core/fun_dynamic_xam.py``
+was added to the documentation,
+below the :ref:`py_independent-name` section.
 In addition, a reference to this example was added under the
 :ref:`example<py_independent@Example>` heading in the ``independent``
 documentation.
