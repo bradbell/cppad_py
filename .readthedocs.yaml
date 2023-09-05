@@ -22,8 +22,8 @@ build:
       - xrst
          --page_source
          --html_theme sphinx_book_theme
-         --group_list default user
-         --index_page_name user-guide
+         --group_list default
+         --index_page_name cppad_py
          --suppress_spell_warnings
       #
       # _readthedocs/html
