@@ -32,8 +32,8 @@ assert J[1,1] == 2.0 * x[1]
 ```
 
 ## Install
-[setup.py](https://cppad-py.readthedocs.io/en/latest/setup_py.htm)
+[setup.py](https://cppad-py.readthedocs.io/en/latest/setup_py.html)
 
 ### Error
 If you get a warning or error message during the install process; see
-[install error](https://cppad-py.readthedocs.io/en/latest/install_error.htm)
+[install error](https://cppad-py.readthedocs.io/en/latest/install_error.html)
