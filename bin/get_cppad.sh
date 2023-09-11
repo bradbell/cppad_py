@@ -1,10 +1,9 @@
-#! /bin/bash -e
+#! /usr/bin/env bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-#
-#
+set -e -u
 # {xrst_begin get_cppad_sh}
 # {xrst_spell
 #     caching
@@ -13,16 +12,19 @@
 #     cxx
 #     usr
 #     wno
+#     makefile
+#     rm
 # }
 # {xrst_comment_ch #}
 #
 #
-# Get Cppad
-# #########
+# Get or Remove Cppad
+# ###################
 #
 # Syntax
 # ******
-# ``bin/get_cppad.sh``
+# | |tab| ``bin/get_cppad.sh``
+# | |tab| ``bin/rm_cppad.sh``
 #
 # Top Source Directory
 # ********************
@@ -31,19 +33,25 @@
 #
 # Settings
 # ********
-# If you change any of these settings, you must re-run ``get_cppad.sh`` .
+# If you change any of these settings, you must re-run ``get_cppad.sh``
+# (or ``get_cppad_mixed.sh`` if *include_mixed* is true ).
 #
 # cmake_install_prefix
 # ====================
-# This prefix is used to install cppad_py. It may be a local directory; e.g.,
-# ``build/prefix`` or an absolute path; e.g., ``/usr/local``.
-# It may include the shell variable ``$HOME`` but no other variables:
+# This prefix is used to install cppad_py.
 # {xrst_code sh}
 cmake_install_prefix="$HOME/prefix/cppad_py"
 # {xrst_code}
-# If this prefix does no start with ``/``, it is relative to the
-# :ref:`top_source_directory<setup_py@Download@Top Source Directory>`.
-# Note that ``$HOME`` starts with ``/``.
+#
+# #.  If this prefix starts with ''/'' ,
+#     it is an absolute path; e.g., ``/usr/local``.
+# #.  If it does not start with ``/`` , it is relative to the
+#     :ref:`top_source_directory<setup_py@Download@Top Source Directory>`.
+# #.  It may include the shell variable ``$HOME`` but no other variables;
+#     e.g; ``$HOME/prefix`` .
+#     Note that ``$HOME`` starts with ``/`` .
+# #.  The case where the prefix ends with ``/.local`` is a special case
+#     (because it is used by ``pip install --user`` *package* ).
 #
 # extra_cxx_flags
 # ===============
@@ -65,7 +73,9 @@ build_type='release'
 #
 # cmake_install_prefix
 # --------------------
-# The actual prefix used for the install is
+# If *cmake_install_prefix* ends with ``/.local`` ,
+# it is the actual install prefix.
+# Otherwise, the actual prefix used for the install is
 #
 # | |tab| *cmake_install_prefix.build_type*
 #
@@ -101,13 +111,21 @@ include_mixed='false'
 test_cppad='false'
 # {xrst_code}
 #
+# verbose_makefile
+# ================
+# This flag is true (false) a verbose version of the build description
+# will (will not) be printed.
+# {xrst_code sh}
+verbose_makefile='false'
+# {xrst_code}
+#
 # Caching
 # *******
 # This script and ``bin/get_cppad_mixed.sh`` cache previous builds so that
 # when you re-run the script it does not re-do all the work.
 # If you have trouble, try deleting the directory
 #
-# | |tab| ``build/external``
+# | |tab| ``external/cppad.git``
 #
 # and re-running this script.
 #
@@ -142,7 +160,13 @@ then
    echo 'bin/get_cppad.sh: include_mixed is not true or false'
    exit 1
 fi
+if [ "$build_type" != 'debug' ] && [ "$build_type" != 'release' ]
+then
+   echo 'get_cppad.sh: build_type is not debug or release'
+   exit 1
+fi
 # -----------------------------------------------------------------------------
+# libdir
 if ! echo $cmake_install_prefix | grep '^/' > /dev/null
 then
    # convert cmake_install_prefix to an absolute path
@@ -150,15 +174,31 @@ then
 fi
 libdir=$(bin/libdir.py)
 # -----------------------------------------------------------------------------
-# create links to proper version of cmake_install_prefix and build
-echo_eval bin/build_type.sh
-# -----------------------------------------------------------------------------
-# change into the external/build_type
-if [ ! -e external/$build_type ]
+# cmake_install_prefix, cmake_install_prefix.$build_type
+if ! echo $cmake_install_prefix | grep '/[.]local' > /dev/null
 then
-   mkdir -p external/$build_type
+   if [ ! -d $cmake_install_prefix.$build_type ]
+   then
+      mkdir -p $cmake_install_prefix.$build_type
+   fi
+   if [ -e $cmake_install_prefix ] || [ -L $cmake_install_prefix ]
+   then
+      if [ ! -L $cmake_install_prefix ]
+      then
+         echo "get_cppad.sh: $cmake_install_prefix is not a symbolic link"
+         exit 1
+      fi
+      echo_eval rm $cmake_install_prefix
+   fi
+   echo_eval ln -s $cmake_install_prefix.$build_type $cmake_install_prefix
 fi
-echo_eval cd external/$build_type
+# -----------------------------------------------------------------------------
+# change into the external
+if [ ! -e external ]
+then
+   mkdir external
+fi
+echo_eval cd external
 # -----------------------------------------------------------------------------
 # clone cppad repository directory
 if [ ! -e cppad.git ]
@@ -179,13 +219,12 @@ then
    exit 1
 fi
 # -----------------------------------------------------------------------------
-# build cppad
-# cppad build directory
-if [ ! -e build ]
+# external/cppad.git/build/$build_type
+if [ ! -e build/$build_type ]
 then
-   echo_eval mkdir build
+   echo_eval mkdir -p build/$build_type
 fi
-echo_eval cd build
+echo_eval cd build/$build_type
 if [ -e CMakeCache.txt ]
 then
    rm CMakeCache.txt
@@ -203,19 +242,19 @@ else
    exit 1
 fi
 cat << EOF
-cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
+cmake -B . -S ../.. \\
+   -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \\
    -D cppad_prefix="$cmake_install_prefix"  \\
    -D cmake_install_libdirs="$libdir"  \\
    -D cppad_cxx_flags="$extra_cxx_flags" \\
-   -D cppad_debug_which=$cppad_debug_which \\
-   ..
+   -D cppad_debug_which=$cppad_debug_which
 EOF
-cmake -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
+cmake -B . -S ../.. \
+   -D CMAKE_VERBOSE_MAKEFILE="$verbose_makefile" \
    -D cppad_prefix="$cmake_install_prefix"  \
    -D cmake_install_libdirs="$libdir"  \
    -D cppad_cxx_flags="$extra_cxx_flags" \
-   -D cppad_debug_which=$cppad_debug_which \
-   ..
+   -D cppad_debug_which=$cppad_debug_which
 #
 # run check
 if [ "$test_cppad" == 'true' ]
