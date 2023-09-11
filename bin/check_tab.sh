@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
@@ -15,7 +15,7 @@ then
    exit 1
 fi
 # -----------------------------------------------------------------------------
-list=`git ls-files | sed -e '/^sphinx\/Makefile$/d'`
+list=(git ls-files)
 ok='yes'
 for file in $list
 do

@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # bash function that echos and executes a command
 logfile=`pwd`/check_all.log
@@ -127,10 +127,6 @@ then
    echo_eval_log rm -r "build/temp.*"
 fi
 # -----------------------------------------------------------------------------
-if [ -e sphinx/xsrst ]
-then
-   echo_eval_log rm -r sphinx/xsrst
-fi
 echo_eval_log check_copyright.sh
 echo_eval_log bin/check_if_0.sh
 echo_eval_log bin/check_tab.sh
