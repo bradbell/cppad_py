@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 {xrst_begin py_fun_json}
 {xrst_spell
@@ -43,7 +43,7 @@ the function *f* is changed so it corresponds to *json* .
 }
 Examples
 ********
-:ref:`fun_to_json_xam_py-name`,
-:ref:`fun_from_json_xam_py-name`.
+:ref:`fun_to_json_xam.py-name`,
+:ref:`fun_from_json_xam.py-name`.
 
 {xrst_end py_fun_json}

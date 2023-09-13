@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # BEGIN_RUNGE4_STEP
 def runge4_step(fun, ti, yi, h) :
@@ -84,7 +84,7 @@ def runge4_step(fun, ti, yi, h) :
 # }
 # Example
 # *******
-# :ref:`numeric_runge4_step_xam_py-name`
+# :ref:`numeric_runge4_step_xam.py-name`
 #
 # Source Code
 # ***********

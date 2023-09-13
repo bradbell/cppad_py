@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # mixed optimize_random
 # -----------------------------------------------------------------------------
 """
-{xrst_begin mixed_optimize_random_xam_py}
+{xrst_begin mixed_optimize_random_xam.py}
 {xrst_spell
 }
 
@@ -66,7 +66,7 @@ as a function of the fixed effects,
    # END SOURCE
 }
 
-{xrst_end mixed_optimize_random_xam_py}
+{xrst_end mixed_optimize_random_xam.py}
 """
 # BEGIN SOURCE
 def optimize_random_xam() :

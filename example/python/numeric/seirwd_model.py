@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # BEGIN_PYTHON
 import numpy
@@ -341,7 +341,7 @@ def seirwd_model(method, t_all, p_all, initial, n_step = 1) :
 # }
 # Example
 # *******
-# :ref:`numeric_seirwd_model_xam_py-name`
+# :ref:`numeric_seirwd_model_xam.py-name`
 #
 # Source Code
 # ***********

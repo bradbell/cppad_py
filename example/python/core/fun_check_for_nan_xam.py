@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # check_for_nan
 # -----------------------------------------------------------------------------
@@ -58,7 +58,7 @@ def fun_check_for_nan_xam() :
 # END SOURCE
 # -----------------------------------------------------------------------------
 #
-# {xrst_begin check_for_nan_xam_py}
+# {xrst_begin check_for_nan_xam.py}
 # {xrst_comment_ch #}
 #
 # Python: Example Turning of Checking For Nan
@@ -67,4 +67,4 @@ def fun_check_for_nan_xam() :
 #  # BEGIN SOURCE
 #  # END SOURCE
 # }
-# {xrst_end check_for_nan_xam_py}
+# {xrst_end check_for_nan_xam.py}

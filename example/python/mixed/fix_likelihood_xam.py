@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # mixed fix_likelihood
 # -----------------------------------------------------------------------------
 '''
-{xrst_begin mixed_fix_likelihood_xam_py}
+{xrst_begin mixed_fix_likelihood_xam.py}
 
 fix_likelihood: Example and Test
 ################################
@@ -67,7 +67,7 @@ it equal to zero, the optimal fixed effects
    # END SOURCE
 }
 
-{xrst_end mixed_fix_likelihood_xam_py}
+{xrst_end mixed_fix_likelihood_xam.py}
 '''
 # BEGIN SOURCE
 def fix_likelihood_xam() :

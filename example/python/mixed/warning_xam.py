@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # mixed warning
 # -----------------------------------------------------------------------------
@@ -26,7 +26,7 @@ def warning_xam() :
    return ok
 # END SOURCE
 '''
-{xrst_begin mixed_warning_xam_py}
+{xrst_begin mixed_warning_xam.py}
 
 Warnings: Example and Test
 ##########################
@@ -34,5 +34,5 @@ Warnings: Example and Test
   # BEGIN SOURCE
   # END SOURCE
 }
-{xrst_end mixed_warning_xam_py}
+{xrst_end mixed_warning_xam.py}
 '''

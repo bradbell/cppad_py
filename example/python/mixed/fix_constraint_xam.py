@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # mixed fix_constraint
 # -----------------------------------------------------------------------------
 '''
-{xrst_begin mixed_fix_constraint_xam_py}
+{xrst_begin mixed_fix_constraint_xam.py}
 
 fix_constraint: Example and Test
 ################################
@@ -43,7 +43,7 @@ Otherwise, the optimal value satisfies the equation
 :math:`c ( \hat{\theta} ) = g^L`; i.e,
 :math:`\hat{\theta} = \sqrt{g^L} - 2`.
 
-{xrst_end mixed_fix_constraint_xam_py}
+{xrst_end mixed_fix_constraint_xam.py}
 '''
 # BEGIN SOURCE
 def fix_constraint_xam() :

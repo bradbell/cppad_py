@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # mixed optimize_fixed
 # -----------------------------------------------------------------------------
 '''
-{xrst_begin mixed_optimize_fixed_2_py}
+{xrst_begin mixed_optimize_fixed_2.py}
 {xrst_spell
    ipopt
    nowrap
@@ -44,7 +44,7 @@ and the optimal solution is
   # BEGIN SOURCE
   # END SOURCE
 }
-{xrst_end mixed_optimize_fixed_2_py}
+{xrst_end mixed_optimize_fixed_2.py}
 '''
 # BEGIN SOURCE
 def optimize_fixed_2() :

@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 #
-# {xrst_begin numeric_seirwd_model_xam_py}
+# {xrst_begin numeric_seirwd_model_xam.py}
 # {xrst_spell
 #     seris
 # }
@@ -18,7 +18,7 @@
 #  # END_PYTHON
 # }
 #
-# {xrst_end numeric_seirwd_model_xam_py}
+# {xrst_end numeric_seirwd_model_xam.py}
 # BEGIN_PYTHON
 import numpy
 from seirwd_model import seirwd_model

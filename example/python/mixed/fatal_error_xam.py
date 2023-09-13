@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # mixed fatal_error
 # -----------------------------------------------------------------------------
@@ -25,7 +25,7 @@ def fatal_error_xam() :
    return ok
 # END SOURCE
 '''
-{xrst_begin mixed_fatal_error_xam_py}
+{xrst_begin mixed_fatal_error_xam.py}
 
 fatal_error: Example and Test
 #############################
@@ -34,5 +34,5 @@ fatal_error: Example and Test
   # BEGIN SOURCE
   # END SOURCE
 }
-{xrst_end mixed_fatal_error_xam_py}
+{xrst_end mixed_fatal_error_xam.py}
 '''

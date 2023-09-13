@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # mixed optimize_fixed
 # -----------------------------------------------------------------------------
@@ -33,7 +33,7 @@ def optimize_fixed_1() :
    return ok
 # END SOURCE
 '''
-{xrst_begin mixed_optimize_fixed_1_py}
+{xrst_begin mixed_optimize_fixed_1.py}
 
 A Very Simple Optimize Fixed Effects: Example and Test
 ######################################################
@@ -41,5 +41,5 @@ A Very Simple Optimize Fixed Effects: Example and Test
   # BEGIN SOURCE
   # END SOURCE
 }
-{xrst_end mixed_optimize_fixed_1_py}
+{xrst_end mixed_optimize_fixed_1.py}
 '''

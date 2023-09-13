@@ -24,7 +24,7 @@ Cppad Py Changes During 2018
 #. Added the :ref:`dynamic<py_independent@dynamic>`
    argument to the ``independent`` function and the
    :ref:`f_new_dynamic<py_fun_new_dynamic-name>` function.
-#. Added the sections :ref:`more_cpp-name` and :ref:`more_py-name`.
+#. Added the sections :ref:`more_cpp-name` and :ref:`more.py-name`.
 
 11-09
 *****
@@ -63,7 +63,7 @@ and second operand is a ``double`` ; see
    configuration settings.
    Also remove ``swig_cxx_flags`` from these user settings
    (set automatically).
-#. Improve the install instructions; see :ref:`setup_py-name`.
+#. Improve the install instructions; see :ref:`setup.py-name`.
 
 07-31
 *****
@@ -86,7 +86,7 @@ because it now contains both major and minor version numbers.
 07-19
 *****
 Add ``-std=c++11`` to the default compile flags in
-:ref:`setup_py-name`.
+:ref:`setup.py-name`.
 Add ``-py3`` to the ``swig`` builds
 when running ``setup.py`` using Python 3; see
 `swig python 3
@@ -142,10 +142,10 @@ Start conversion of python library from using
 #. Advanced to ``cppad-20180703`` .
 #. Fix the following warning:
    ``catching polymorphic type class 'std::runtime_error' by value`` .
-#. Suppress the following warning when running :ref:`setup_py-name`:
+#. Suppress the following warning when running :ref:`setup.py-name`:
    ``clearing an object of non-trivial type class 'cppad_py::a_double'`` ;
    see `swig issue 1259 <https://github.com/swig/swig/issues/1259>`_.
-#. Move all settings to :ref:`setup_py-name` and run ``cmake`` from there.
+#. Move all settings to :ref:`setup.py-name` and run ``cmake`` from there.
 #. The file ``cppad_py/__init__.py`` was not being created.
    This has been fixed.
 

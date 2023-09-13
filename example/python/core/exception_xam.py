@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # exception
 # -----------------------------------------------------------------------------
@@ -34,7 +34,7 @@ def exception_xam() :
 # END SOURCE
 # -----------------------------------------------------------------------------
 #
-# {xrst_begin exception_xam_py}
+# {xrst_begin exception_xam.py}
 # {xrst_spell
 #     cppad
 # }
@@ -46,5 +46,5 @@ def exception_xam() :
 #  # BEGIN SOURCE
 #  # END SOURCE
 # }
-# {xrst_end exception_xam_py}
+# {xrst_end exception_xam.py}
 #

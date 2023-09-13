@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # mixed ran_likelihood
 # -----------------------------------------------------------------------------
 '''
-{xrst_begin mixed_ran_likelihood_xam_py}
+{xrst_begin mixed_ran_likelihood_xam.py}
 {xrst_spell
    laplace
 }
@@ -87,7 +87,7 @@ it equal to zero, the optimal fixed effects
    # END SOURCE
 }
 
-{xrst_end mixed_ran_likelihood_xam_py}
+{xrst_end mixed_ran_likelihood_xam.py}
 '''
 # BEGIN SOURCE
 def ran_likelihood_xam() :

@@ -92,14 +92,14 @@ This included advancing to cppad_mixed-20210511.
 
 05-09
 *****
-#. Add discussion of installing cppad_py on :ref:`setup_py@Msys2` systems.
+#. Add discussion of installing cppad_py on :ref:`setup.py@Msys2` systems.
 
 05-07
 *****
 #. The python-setuptools were added to the
-   :ref:`setup_py@External Requirements`.
+   :ref:`setup.py@External Requirements`.
 #. An example of installing external requirements was added for the
-   :ref:`setup_py@Cygwin`.
+   :ref:`setup.py@Cygwin`.
 #. This install using pip has not been kept up to date an hence its
    instructions were removed.
 #. Advance to cppad_mixed-20210507.
@@ -109,7 +109,7 @@ This included advancing to cppad_mixed-20210511.
 *****
 #. Advance to cppad-20210428.
    This fixes some problems with the install of cppad_py on msys and cygwin.
-   The :ref:`check_for_nan_xam_py-title` was modified because the new version
+   The :ref:`check_for_nan_xam.py-title` was modified because the new version
    of exponentiation handles more cases.
 
 #. Adapt the install for msys to the fact that soft links do not work on that

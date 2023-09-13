@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # vector size()
 # -----------------------------------------------------------------------------
@@ -30,7 +30,7 @@ def vector_size_xam() :
 # END SOURCE
 #
 #
-# {xrst_begin vector_size_xam_py}
+# {xrst_begin vector_size_xam.py}
 # {xrst_comment_ch #}
 #
 # Python: Size of Vectors: Example and Test
@@ -39,5 +39,5 @@ def vector_size_xam() :
 #  # BEGIN SOURCE
 #  # END SOURCE
 # }
-# {xrst_end vector_size_xam_py}
+# {xrst_end vector_size_xam.py}
 #

@@ -266,7 +266,7 @@ print('setup.py: OK')
 sys.exit(0)
 # -----------------------------------------------------------------------------
 #
-# {xrst_begin setup_py}
+# {xrst_begin setup.py}
 # {xrst_spell
 #     bdist
 #     cholmod
@@ -472,7 +472,7 @@ sys.exit(0)
 #
 # | |tab| ``python3 setup.py install --prefix=$prefix``
 #
-# (see :ref:`prefix<setup_py@prefix>` above for how to set this shell
+# (see :ref:`prefix<setup.py@prefix>` above for how to set this shell
 # variable).
 #
 # This will install cppad_py in the directory
@@ -534,5 +534,5 @@ sys.exit(0)
 #  bin/get_cppad_mixed.sh
 # }
 #
-# {xrst_end setup_py}
+# {xrst_end setup.py}
 # -----------------------------------------------------------------------------

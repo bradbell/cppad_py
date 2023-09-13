@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-{xrst_begin cppad_py}
+{xrst_begin cppad.py}
 {xrst_spell
    cppad
    gpl
@@ -40,10 +40,10 @@ Purpose
 
 Getting Started
 ***************
-After you :ref:`configure<setup_py@Configure>` and
-:ref:`install<setup_py@Install>` cppad_py,
+After you :ref:`configure<setup.py@Configure>` and
+:ref:`install<setup.py@Install>` cppad_py,
 the following example is a good place to get started using it:
-:ref:`fun_jacobian_xam_py-title`.
+:ref:`fun_jacobian_xam.py-title`.
 
 Numerical Examples
 ******************
@@ -74,4 +74,4 @@ Children
    whats_new/release_notes.xrst
 }
 
-{xrst_end cppad_py}
+{xrst_end cppad.py}

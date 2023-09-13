@@ -41,7 +41,7 @@ CppAD Py Changes During 2023
 09-05
 *****
 #. Fix some documentation errors that a newer version of xrst detected.
-   These errors were in the :ref:`more_cpp-name` and :ref:`more_py-name`
+   These errors were in the :ref:`more_cpp-name` and :ref:`more.py-name`
    and were OMhelp commands that did not convert to xrst properly.
 #. Advance cppad_mixed from 20220519 to 20230112.
 

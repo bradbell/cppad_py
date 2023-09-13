@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-{xrst_begin more_py}
+{xrst_begin more.py}
 {xrst_spell
    adynamic
    cppad
@@ -94,7 +94,7 @@ Example
 *******
 The file ``example/python/core/fun_dynamic_xam.py`` was added
 with the following contents:
-:ref:`fun_dynamic_xam_py-name`.
+:ref:`fun_dynamic_xam.py-name`.
 In addition, in the file
 
 | |tab| ``example/python/check_all.py.in``
@@ -125,4 +125,4 @@ you can just re-run that step to see if a particular fix works.
 Once the tests were working, the changes where checked into using
 ``git`` .
 
-{xrst_end more_py}
+{xrst_end more.py}

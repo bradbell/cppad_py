@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # d_fun json
 # -----------------------------------------------------------------------------
@@ -42,7 +42,7 @@ def to_json_xam() :
 # END_TO_JSON_XAM
 #
 #
-# {xrst_begin fun_to_json_xam_py}
+# {xrst_begin fun_to_json_xam.py}
 # {xrst_spell
 #     json
 # }
@@ -54,7 +54,7 @@ def to_json_xam() :
 #  # BEGIN_TO_JSON_XAM
 #  # END_TO_JSON_XAM
 # }
-# {xrst_end fun_to_json_xam_py}
+# {xrst_end fun_to_json_xam.py}
 # -----------------------------------------------------------------------------
 # BEGIN_FROM_JSON_XAM
 def from_json_xam() :
@@ -109,7 +109,7 @@ def from_json_xam() :
    return ok
 # END_FROM_JSON_XAM
 #
-# {xrst_begin fun_from_json_xam_py}
+# {xrst_begin fun_from_json_xam.py}
 # {xrst_spell
 #     json
 # }
@@ -121,7 +121,7 @@ def from_json_xam() :
 #  # BEGIN_FROM_JSON_XAM
 #  # END_FROM_JSON_XAM
 # }
-# {xrst_end fun_from_json_xam_py}
+# {xrst_end fun_from_json_xam.py}
 # -----------------------------------------------------------------------------
 def fun_json_xam() :
    ok  = to_json_xam()

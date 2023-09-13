@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # a_double properties
 # -----------------------------------------------------------------------------
@@ -32,7 +32,7 @@ def a_double_property_xam() :
 # END SOURCE
 #
 #
-# {xrst_begin a_double_property_xam_py}
+# {xrst_begin a_double_property_xam.py}
 # {xrst_comment_ch #}
 #
 # Python: a_double Properties: Example and Test
@@ -41,5 +41,5 @@ def a_double_property_xam() :
 #  # BEGIN SOURCE
 #  # END SOURCE
 # }
-# {xrst_end a_double_property_xam_py}
+# {xrst_end a_double_property_xam.py}
 #

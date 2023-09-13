@@ -26,7 +26,7 @@
 # Top Source Directory
 # ********************
 # This program must be run from the
-# :ref:`top_source_directory<setup_py@Download@Top Source Directory>`.
+# :ref:`top_source_directory<setup.py@Download@Top Source Directory>`.
 #
 # Purpose
 # *******

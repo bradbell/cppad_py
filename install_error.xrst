@@ -71,7 +71,7 @@ cppad.pc, cppad_mixed.pc
 
 where *name* is ``cppad`` or ``cppad_mixed``.
 You probably did not set
-:ref:`PKG_CONFIG_PATH <setup_py@PKG_CONFIG_PATH>` correctly.
+:ref:`PKG_CONFIG_PATH <setup.py@PKG_CONFIG_PATH>` correctly.
 
 symbolic link
 =============
@@ -137,12 +137,12 @@ If you are testing the local copy, make sure that the directory
 
 | |tab| *top_src*\ ``/cppad_py``
 
-exists; see :ref:`local build <setup_py@Local Build>` .
+exists; see :ref:`local build <setup.py@Local Build>` .
 If you are testing the installed version, make sure the directory
 
 | |tab| ``$PYTHONPATH/cppad_py``
 
-exists; see :ref:`PYTHONPATH <setup_py@PYTHONPATH>` .
+exists; see :ref:`PYTHONPATH <setup.py@PYTHONPATH>` .
 
 
 libcppad_lib
@@ -150,7 +150,7 @@ libcppad_lib
 | |tab| ``ImportError: libcppad_lib.so`` ... ``can not open shared object file``
 
 This means the CppAD library
-is not in your :ref:`LD_LIBRARY_PATH<setup_py@LD_LIBRARY_PATH>` .
+is not in your :ref:`LD_LIBRARY_PATH<setup.py@LD_LIBRARY_PATH>` .
 If you have a Mac, you will instead need to set ``DYLD_LIBRARY_PATH`` .
 
 

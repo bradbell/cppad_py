@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 #
 # {xrst_begin py_fun_ctor}
@@ -74,7 +74,7 @@
 # Example
 # *******
 # All of the examples use the ``d_fun`` constructor.
-# The example :ref:`a_fun_xam_py-name` demonstrates the purpose of
+# The example :ref:`a_fun_xam.py-name` demonstrates the purpose of
 # ``a_fun`` objects.
 #
 # {xrst_end py_fun_ctor}

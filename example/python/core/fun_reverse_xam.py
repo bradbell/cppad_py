@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # reverse
 # -----------------------------------------------------------------------------
@@ -111,7 +111,7 @@ def fun_reverse_xam() :
 # END SOURCE
 #
 #
-# {xrst_begin fun_reverse_xam_py}
+# {xrst_begin fun_reverse_xam.py}
 # {xrst_comment_ch #}
 #
 # Python: Reverse Mode AD: Example and Test
@@ -120,5 +120,5 @@ def fun_reverse_xam() :
 #  # BEGIN SOURCE
 #  # END SOURCE
 # }
-# {xrst_end fun_reverse_xam_py}
+# {xrst_end fun_reverse_xam.py}
 #

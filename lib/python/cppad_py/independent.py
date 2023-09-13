@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # initialize cppad_py
 # -----------------------------------------------------------------------------
@@ -72,7 +72,7 @@
 # Example
 # *******
 # Most of the python ``d_fun`` examples use this function.
-# The :ref:`fun_dynamic_xam_py-name` uses the syntax that includes
+# The :ref:`fun_dynamic_xam.py-name` uses the syntax that includes
 # dynamic parameters.
 #
 # {xrst_end py_independent}

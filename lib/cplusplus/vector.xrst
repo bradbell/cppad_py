@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 {xrst_begin vector_ctor}
 {xrst_spell
@@ -103,7 +103,7 @@ Its value is the number of elements in the vector *v* .
 Example
 *******
 :ref:`c++<vector_size_xam_cpp-name>`,
-:ref:`python<vector_size_xam_py-name>`.
+:ref:`python<vector_size_xam.py-name>`.
 
 {xrst_end vector_size}
 -------------------------------------------------------------------------------
@@ -167,6 +167,6 @@ The result *y* has c++ prototype
 Example
 *******
 :ref:`c++<vector_set_get_xam_cpp-name>`,
-:ref:`python<vector_set_get_xam_py-name>`.
+:ref:`python<vector_set_get_xam.py-name>`.
 
 {xrst_end vector_set_get}

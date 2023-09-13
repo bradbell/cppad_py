@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # abort_recording
 # -----------------------------------------------------------------------------
@@ -50,7 +50,7 @@ def fun_abort_xam() :
 # END SOURCE
 #
 #
-# {xrst_begin fun_abort_xam_py}
+# {xrst_begin fun_abort_xam.py}
 # {xrst_comment_ch #}
 #
 # Python: Abort Recording a_double Operations: Example and Test
@@ -59,5 +59,5 @@ def fun_abort_xam() :
 #  # BEGIN SOURCE
 #  # END SOURCE
 # }
-# {xrst_end fun_abort_xam_py}
+# {xrst_end fun_abort_xam.py}
 #

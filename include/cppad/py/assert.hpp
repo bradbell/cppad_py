@@ -2,7 +2,7 @@
 # define CPPAD_PY_ERROR_HPP
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 # include <exception>
 # include <string>
@@ -38,7 +38,7 @@ a message describing the error.
 Example
 *******
 :ref:`c++<exception_xam_cpp-name>`,
-:ref:`python<exception_xam_py-name>`.
+:ref:`python<exception_xam.py-name>`.
 
 {xrst_end exception}
 */

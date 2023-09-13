@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # mixed hes_fixed_obj_xam
 # -----------------------------------------------------------------------------
 '''
-{xrst_begin mixed_hes_fixed_obj_xam_py}
+{xrst_begin mixed_hes_fixed_obj_xam.py}
 {xrst_spell
    laplace
 }
@@ -84,7 +84,7 @@ w.r.t the fixed effects :math:`\theta` we obtain the Hessian:
    # END SOURCE
 }
 
-{xrst_end mixed_hes_fixed_obj_xam_py}
+{xrst_end mixed_hes_fixed_obj_xam.py}
 '''
 # BEGIN SOURCE
 def hes_fixed_obj_xam() :

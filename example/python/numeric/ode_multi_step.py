@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # BEGIN_ODE_MULTI_STEP
 import numpy
@@ -134,7 +134,7 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
 # }
 # Example
 # *******
-# :ref:`numeric_ode_multi_step_xam_py-name`
+# :ref:`numeric_ode_multi_step_xam.py-name`
 #
 # Source Code
 # ***********

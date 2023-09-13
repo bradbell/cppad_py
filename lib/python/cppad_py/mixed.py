@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 """
 {xrst_begin_parent mixed}
@@ -179,7 +179,7 @@ class mixed :
    }
    Example
    *******
-   :ref:`mixed_ctor_xam_py-name`
+   :ref:`mixed_ctor_xam.py-name`
 
    {xrst_end mixed_ctor}
    """
@@ -288,7 +288,7 @@ class mixed :
    }
    Example
    *******
-   :ref:`mixed_warning_xam_py-name`
+   :ref:`mixed_warning_xam.py-name`
 
    {xrst_end mixed_warning}
    """
@@ -323,7 +323,7 @@ class mixed :
    }
    Example
    *******
-   :ref:`mixed_fatal_error_xam_py-name`
+   :ref:`mixed_fatal_error_xam.py-name`
 
    {xrst_end mixed_fatal_error}
    """
@@ -379,7 +379,7 @@ class mixed :
    }
    Example
    *******
-   :ref:`mixed_fix_likelihood_xam_py-name`
+   :ref:`mixed_fix_likelihood_xam.py-name`
 
    {xrst_end mixed_fix_likelihood}
    -------------------------------------------------------------------------
@@ -428,7 +428,7 @@ class mixed :
    }
    Example
    *******
-   :ref:`mixed_fix_constraint_xam_py-name`
+   :ref:`mixed_fix_constraint_xam.py-name`
 
    {xrst_end mixed_fix_constraint}
    -------------------------------------------------------------------------
@@ -485,7 +485,7 @@ class mixed :
    }
    Example
    *******
-   :ref:`mixed_ran_likelihood_xam_py-name`
+   :ref:`mixed_ran_likelihood_xam.py-name`
 
    {xrst_end mixed_ran_likelihood}
    -------------------------------------------------------------------------
@@ -677,8 +677,8 @@ class mixed :
    Examples
    ********
 
-   - :ref:`mixed_optimize_fixed_1_py-title`
-   - :ref:`mixed_optimize_fixed_2_py-title`
+   - :ref:`mixed_optimize_fixed_1.py-title`
+   - :ref:`mixed_optimize_fixed_2.py-title`
 
    {xrst_end mixed_optimize_fixed}
    """

@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # mixed hes_random_obj_xam
 # -----------------------------------------------------------------------------
 '''
-{xrst_begin mixed_hes_random_obj_xam_py}
+{xrst_begin mixed_hes_random_obj_xam.py}
 
 ran_likelihood: Example and Test
 ################################
@@ -55,7 +55,7 @@ w.r.t the random effects :math:`u_{i+1 \mod m}` we obtain
    # END SOURCE
 }
 
-{xrst_end mixed_hes_random_obj_xam_py}
+{xrst_end mixed_hes_random_obj_xam.py}
 '''
 # BEGIN SOURCE
 def hes_random_obj_xam() :

@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 #
 # {xrst_begin py_fun_reverse}
@@ -96,7 +96,7 @@
 # }
 # Example
 # *******
-# :ref:`fun_reverse_xam_py-name`
+# :ref:`fun_reverse_xam.py-name`
 #
 # {xrst_end py_fun_reverse}
 # -----------------------------------------------------------------------------

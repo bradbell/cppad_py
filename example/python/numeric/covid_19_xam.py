@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 #
-# {xrst_begin numeric_covid_19_xam_py}
+# {xrst_begin numeric_covid_19_xam.py}
 # {xrst_spell
 #     bradbell
 #     covariance
@@ -118,7 +118,7 @@ delta_known  = 0.2
 # In addition, we can choose *ode_n_step* ,
 # the number of step to take for each time interval in *t_all* ,
 # before it is sub-sampled using the
-# :ref:`sample_interval<numeric_covid_19_xam_py@Data@sample_interval>`.
+# :ref:`sample_interval<numeric_covid_19_xam.py@Data@sample_interval>`.
 # {xrst_code py}
 ode_method = 'runge4'
 ode_n_step = 4
@@ -177,7 +177,7 @@ x_name = [ 'm_mobility', 'm_testing', 'm_stime', 'I(0)', 'W(0)', 'beta_bar' ]
 #  # END_ACTUAL_BOUNDS
 # }
 # where *x_sim* is the
-# :ref:`simulation<numeric_covid_19_xam_py@Data@Simulation>` value
+# :ref:`simulation<numeric_covid_19_xam.py@Data@Simulation>` value
 # for the unknown parameters and *actual_bound_factor* is chosen below.
 # The problem has not really been solved if bounds,
 # other than the model bounds above, are active at the solution of the
@@ -236,13 +236,13 @@ death_data_cv = 0.25
 # {xrst_code}
 # Note this is the noise level in the original data before it is
 # sub-sampled using
-# :ref:`sample_interval<numeric_covid_19_xam_py@Data@sample_interval>`.
+# :ref:`sample_interval<numeric_covid_19_xam.py@Data@sample_interval>`.
 #
 # Simulation
 # ==========
 # If *data_file* is the empty string, the data is simulated using
 # the following values for the
-# :ref:`unknown_parameters<numeric_covid_19_xam_py@Unknown Parameters>`:
+# :ref:`unknown_parameters<numeric_covid_19_xam.py@Unknown Parameters>`:
 # {xrst_code py}
 m_mobility_sim    =   1.0  # m_0
 m_testing_sim     = - 1.0  # m_1
@@ -354,7 +354,7 @@ debug_output = False
 #  # END_PYTHON
 # }
 #
-# {xrst_end numeric_covid_19_xam_py}
+# {xrst_end numeric_covid_19_xam.py}
 # BEGIN_PYTHON
 from pdb import set_trace
 from matplotlib import pyplot
