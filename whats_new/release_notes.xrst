@@ -26,6 +26,7 @@ CppAD Py Release Notes By Year
 {xrst_spell
    cppad
    mhelp
+   uninstall
 }
 
 CppAD Py Changes During 2023
@@ -33,7 +34,9 @@ CppAD Py Changes During 2023
 
 09-13
 *****
-Advance to cppad_mixed-20230913.
+#. Advance to cppad_mixed-20230913.
+#. Add the uninstall scripts
+   :ref:`rm_cppad.sh-name` and :ref:`rm_cppad_mixed.sh-name` .
 
 09-05
 *****

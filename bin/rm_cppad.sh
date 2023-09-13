@@ -9,6 +9,7 @@
 #     uninstall
 #     cppad
 #     rm
+#     cmake
 # }
 # {xrst_comment_ch #}
 #
@@ -26,8 +27,17 @@
 # :ref:`get_cppad_sh@Settings@cmake_install_prefix` and
 # :ref:`get_cppad_sh@Settings@build_type` have not changed.
 #
+# If there is a ``cppad_py`` python package installed below
+# *cmake_install_prefix*, it  will also be remove.
+#
 # {xrst_end rm_cppad.sh}
 # ----------------------------------------------------------------------------
+# bash function that echos and executes a command
+echo_eval() {
+	echo $*
+	eval $*
+}
+# -----------------------------------------------------------------------------
 set -e -u
 #
 # cmake_install_prefix
@@ -49,6 +59,24 @@ build_dir="external/cppad.git/build/$build_type"
 pushd $build_dir
 make uninstall
 popd
+#
+# cppad_py python package files
+list=$(find -L $cmake_install_prefix -regex '.*/cppad_py[^/]*.egg')
+if [ "$list" != '' ]
+then
+   for file in $list
+   do
+      echo_eval rm -r $file
+   done
+fi
+list=$(find -L $cmake_install_prefix -regex '.*/site-packages/cppad_py')
+if [ "$list" != '' ]
+then
+   for dir in $list
+   do
+      echo_eval rm -r $dir
+   done
+fi
 #
 if [ ! -L $cmake_install_prefix ]
 then
