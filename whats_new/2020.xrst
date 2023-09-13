@@ -393,7 +393,7 @@ This has been fixed
    (this has been fixed).
 #. xrst: Putting version number in the documentation navigation side bar
    changes every gh-pages file when version changes. Move it to
-   the first heading under the title :ref:`cppad.py-name`
+   the first heading under the title :ref:`cppad_py-name`
 #. xrst: spell checking is not done for a *url* of the form
    \` < *url* > \`_ or \` *text* < *url* > \`_.
 
@@ -413,7 +413,7 @@ The word 'initialization' was added to the xrst dictionary.
 
 07-28
 *****
-#. xrst: Move version number from the title in :ref:`cppad.py-name` to
+#. xrst: Move version number from the title in :ref:`cppad_py-name` to
    the documentation navigation side bar.
 #. xrst: Add the configure section.
 #. xrst: The xrst begin command was not recognized
