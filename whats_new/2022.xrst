@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 
 {xrst_begin whats_new_2022}
@@ -15,7 +15,7 @@ CppAD Py Changes During 2022
 12-12
 *****
 #. Adapt to xrst-2022.12.12.
-#. Include :ref:`get_cppad_mixed_sh-name` and
+#. Include :ref:`get_cppad_mixed.sh-name` and
    :ref:`mixed_optimize_random_xam_py-name` in this documentation.
 
 11-28

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 # include <cppad/cppad.hpp>
 # include <cppad/py/fun.hpp>
@@ -1052,7 +1052,7 @@ This argument has prototype
 | |tab| ``int`` *b*
 
 If *b* is true and
-:ref:`get_cppad_sh@Settings@build_type` is ``debug`` ,
+:ref:`get_cppad.sh@Settings@build_type` is ``debug`` ,
 *f* will generate an assert when ``nan`` occurs in its function
 or derivative values.
 Otherwise, it will just pass back the ``nan`` values.

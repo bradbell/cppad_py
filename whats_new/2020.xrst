@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 {xrst_begin whats_new_2020}
 {xrst_spell
@@ -208,7 +208,7 @@ and :ref:`install_error-name`.
 11-06
 *****
 #. The install with
-   :ref:`include_mixed<get_cppad_sh@Settings@include_mixed>` false was broken
+   :ref:`include_mixed<get_cppad.sh@Settings@include_mixed>` false was broken
    by the changes on 11-03. This has been fixed.
 
 #. The installation and testing instructions in :ref:`setup@py<setup_py-name>`
@@ -237,12 +237,12 @@ fixed to account for this.
 11-03
 *****
 The install prefix name was changed from *cppad_prefix* to
-:ref:`cmake_install_prefix<get_cppad_sh@Settings@cmake_install_prefix>`.
+:ref:`cmake_install_prefix<get_cppad.sh@Settings@cmake_install_prefix>`.
 
 10-31
 *****
 Fix some problems with the macOS install when
-:ref:`include_fixed<get_cppad_sh@Settings@include_mixed>` is true.
+:ref:`include_fixed<get_cppad.sh@Settings@include_mixed>` is true.
 
 10-30
 *****
@@ -270,7 +270,7 @@ copy for testing.
    To be specific, change ``python`` to ``python3`` and edit the
    :ref:`external requirements<setup_py@External Requirements>`.
 
-#. Improve the :ref:`get_cppad_sh-title` script so that it gets and updates
+#. Improve the :ref:`get_cppad.sh-title` script so that it gets and updates
    posted to the remote repository (since the previous run of the script).
 
 
@@ -294,7 +294,7 @@ to the mixed class; see :ref:`mixed_fix_constraint-title`.
    default.
 
 #. There was a problem linking the needed libraries when
-   :ref:`include_mixed<get_cppad_sh@Settings@include_mixed>` was true.
+   :ref:`include_mixed<get_cppad.sh@Settings@include_mixed>` was true.
    This has been fixed.
 
 #. A ``match_op.hpp`` warning was added to the
@@ -307,12 +307,12 @@ to the mixed class; see :ref:`mixed_fix_constraint-title`.
 10-16
 *****
 #. Add the :ref:`mixed-title` class an make it optional during the install process;
-   see :ref:`include_mixed<get_cppad_sh@Settings@include_mixed>`.
+   see :ref:`include_mixed<get_cppad.sh@Settings@include_mixed>`.
    This class is under construction and its API may change.
    Check this page for such changes.
 
 #. Change the install process so both a debug and release version of
-   :ref:`cmake_install_prefix<get_cppad_sh@Settings@build_type@cmake_install_prefix>`
+   :ref:`cmake_install_prefix<get_cppad.sh@Settings@build_type@cmake_install_prefix>`
    can be installed at the same time.
 
 #. Some of the install steps in :ref:`setup_py-title` have changed.
@@ -629,7 +629,7 @@ Add an :ref:`install_error-name` section to the documentation.
 *****
 
 #. Move configuration setting from :ref:`setup_py-name` to
-   :ref:`bin/get_cppad_sh<get_cppad_sh@Settings>`.
+   :ref:`bin/get_cppad_sh<get_cppad.sh@Settings>`.
 #. First version that installs using ``pip`` .
    Install instructions for pip will be added soon.
 
@@ -677,6 +677,6 @@ Add an :ref:`install_error-name` section to the documentation.
 
 #. Change the documentation display on the web using a more recent version of
    the documentation program ``omhelp-20200130`` .
-#. Add :ref:`caching<get_cppad_sh@Caching>` to the Cppad install.
+#. Add :ref:`caching<get_cppad.sh@Caching>` to the Cppad install.
 
 {xrst_end whats_new_2020}

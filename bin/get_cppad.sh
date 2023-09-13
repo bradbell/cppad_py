@@ -4,7 +4,7 @@
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 set -e -u
-# {xrst_begin get_cppad_sh}
+# {xrst_begin get_cppad.sh}
 # {xrst_spell
 #     caching
 #     cmake
@@ -136,7 +136,7 @@ verbose_makefile='false'
 #     bin/rm_cppad.sh
 # }
 #
-# {xrst_end get_cppad_sh}
+# {xrst_end get_cppad.sh}
 # -----------------------------------------------------------------------------
 # CppAD version information
 # Use same cppad_version and has_code as in cppad_mixed.git/bin/install_cppad.sh

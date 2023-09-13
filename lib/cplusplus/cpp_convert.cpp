@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 # include <cppad/py/cpp_convert.hpp>
 namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
@@ -186,7 +186,7 @@ Prototype
 Restriction
 ***********
 This routine is only available when
-:ref:`include_mixed <get_cppad_sh@Settings@include_mixed>` is true.
+:ref:`include_mixed <get_cppad.sh@Settings@include_mixed>` is true.
 
 {xrst_end mixed2sparse_rcv}
 */

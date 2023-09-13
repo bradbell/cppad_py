@@ -23,10 +23,10 @@
 # Purpose
 # *******
 # This will remove any files that were installed by
-# :ref:`get_cppad_mixed_sh-name` .
+# :ref:`get_cppad_mixed.sh-name` .
 # This assumes that the values of
-# :ref:`get_cppad_sh@Settings@cmake_install_prefix` and
-# :ref:`get_cppad_sh@Settings@build_type` have not changed.
+# :ref:`get_cppad.sh@Settings@cmake_install_prefix` and
+# :ref:`get_cppad.sh@Settings@build_type` have not changed.
 #
 # If there is a ``cppad_py`` python package installed below
 # *cmake_install_prefix*, it  will also be remove.

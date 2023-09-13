@@ -5,7 +5,7 @@
 # ----------------------------------------------------------------------------
 #
 #
-# {xrst_begin get_cppad_mixed_sh}
+# {xrst_begin get_cppad_mixed.sh}
 # {xrst_spell
 #     cppad
 #     cmake
@@ -33,12 +33,12 @@
 # If you are going to use the python ``cppad_mixed`` module,
 # you will need to run this script to install the corresponding
 # C++ module. This script includes the installation of cppad so it is not
-# necessary to also run :ref:`get_cppad_sh-name`.
+# necessary to also run :ref:`get_cppad.sh-name`.
 #
 # Settings
 # ********
 # This scripts uses the
-# :ref:`get_cppad_sh settings<get_cppad_sh@Settings>` for
+# :ref:`get_cppad_sh settings<get_cppad.sh@Settings>` for
 # *cmake_install_prefix* , *extra_cxx_flags*, and *build_type* .
 #
 # Uninstall
@@ -47,7 +47,7 @@
 #     bin/rm_cppad_mixed.sh
 # }
 #
-# {xrst_end get_cppad_mixed_sh}
+# {xrst_end get_cppad_mixed.sh}
 # ---------------------------------------------------------------------------
 # CppAD mixed version information
 web_page='https://github.com/bradbell/cppad_mixed.git'

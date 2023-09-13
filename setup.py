@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # extra flags to supress wanings in swig code
 import glob
@@ -325,7 +325,7 @@ sys.exit(0)
 #
 # Include Mixed Effects Modeling
 # ==============================
-# If :ref:`get_cppad_sh@Settings@include_mixed` is true,
+# If :ref:`get_cppad.sh@Settings@include_mixed` is true,
 # the external packages listed below are also required.
 # Note that, for most cases, ``get_cppad_mixed.sh``
 # will get all the required packages.
@@ -355,14 +355,14 @@ sys.exit(0)
 # *********
 # Before running ``setup_py`` or ``bin/get_cppad.sh`` ,
 # you should check and possibly change the
-# :ref:`settings<get_cppad_sh@Settings>` in ``bin/get_cppad.sh`` .
+# :ref:`settings<get_cppad.sh@Settings>` in ``bin/get_cppad.sh`` .
 #
 # Get cppad
 # *********
 # The next step is to get a copy of cppad using
-# :ref:`get_cppad_sh-name`.
+# :ref:`get_cppad.sh-name`.
 # If you want to use the :ref:`mixed-title` class, you will have to set
-# :ref:`include_mixed<get_cppad_sh@Settings@include_mixed>` to true
+# :ref:`include_mixed<get_cppad.sh@Settings@include_mixed>` to true
 # and use ``bin/get_cppad_mixed.sh`` to install cppad and other
 # non-standard requirements.
 #
@@ -370,7 +370,7 @@ sys.exit(0)
 # ******
 # We use *prefix* to denote the prefix where cppad_py will be installed.
 # This is the same as the value of
-# :ref:`cmake_install_prefix<get_cppad_sh@Settings@cmake_install_prefix>` .
+# :ref:`cmake_install_prefix<get_cppad.sh@Settings@cmake_install_prefix>` .
 # You can create a variable with this value using the command
 #
 # | |tab| ``cmd=$(grep '^cmake_install_prefix=' bin/get_cppad.sh)``
@@ -501,7 +501,7 @@ sys.exit(0)
 # Cygwin
 # ******
 # A cygwin install, on 2021-05-06 and with
-# :ref:`include_mixed<get_cppad_sh@Settings@include_mixed>` false,
+# :ref:`include_mixed<get_cppad.sh@Settings@include_mixed>` false,
 # completed successfully by doing the following:
 # First the following packages were added to the default set installed by the
 # cygwin ``setup-x86_64`` program:
@@ -516,7 +516,7 @@ sys.exit(0)
 # Msys2
 # *****
 # A msys2 install with,
-# :ref:`include_mixed<get_cppad_sh@Settings@include_mixed>` false,
+# :ref:`include_mixed<get_cppad.sh@Settings@include_mixed>` false,
 # was attempted on 2021-05-09.
 # First the following packages were installed using pacman:
 # vim, git, make, cmake, swig.
