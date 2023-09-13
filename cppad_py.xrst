@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-{xrst_begin cppad.py}
+{xrst_begin cppad_py}
 {xrst_spell
    cppad
    gpl
@@ -74,4 +74,4 @@ Children
    whats_new/release_notes.xrst
 }
 
-{xrst_end cppad.py}
+{xrst_end cppad_py}
