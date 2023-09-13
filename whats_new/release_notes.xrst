@@ -31,6 +31,10 @@ CppAD Py Release Notes By Year
 CppAD Py Changes During 2023
 ############################
 
+09-13
+*****
+Advance to cppad_mixed-20230913.
+
 09-05
 *****
 #. Fix some documentation errors that a newer version of xrst detected.

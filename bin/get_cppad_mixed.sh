@@ -10,6 +10,8 @@
 #     cppad
 #     cmake
 #     cxx
+#     rm
+#     uninstall
 # }
 # {xrst_comment_ch #}
 #
@@ -19,6 +21,7 @@
 # Syntax
 # ******
 # ``bin/get_cppad_mixed.sh``
+# ``bin/rm_cppad_mixed.sh``
 #
 # Top Source Directory
 # ********************
@@ -38,12 +41,18 @@
 # :ref:`get_cppad_sh settings<get_cppad_sh@Settings>` for
 # *cmake_install_prefix* , *extra_cxx_flags*, and *build_type* .
 #
+# Uninstall
+# *********
+# {xrst_toc_table
+#     bin/rm_cppad_mixed.sh
+# }
+#
 # {xrst_end get_cppad_mixed_sh}
 # ---------------------------------------------------------------------------
 # CppAD mixed version information
 web_page='https://github.com/bradbell/cppad_mixed.git'
-hash_key='134126527cbf8f9bfe9125ff9cc645cd3425f29e'
-version='20230112'
+hash_key='1a3f3c75b02be9f013fed53a8e4bcd28e6430bd7'
+version='20230913'
 # --------------------------------------------------------------------------
 name='bin/get_cppad_mixed.sh'
 if [ $0 != $name ]
@@ -69,6 +78,11 @@ eval $cmd
 # cmake_install_prefix
 cmd=`grep '^cmake_install_prefix=' bin/get_cppad.sh`
 eval $cmd
+if ! echo $cmake_install_prefix | grep '^/' > /dev/null
+then
+   # convert cmake_install_prefix to an absolute path
+   cmake_install_prefix="$(pwd)/$cmake_install_prefix"
+fi
 #
 # include_mixed
 cmd=`grep '^include_mixed=' bin/get_cppad.sh`

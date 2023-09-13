@@ -14,6 +14,7 @@ set -e -u
 #     wno
 #     makefile
 #     rm
+#     uninstall
 # }
 # {xrst_comment_ch #}
 #
@@ -129,6 +130,12 @@ verbose_makefile='false'
 #
 # and re-running this script.
 #
+# Uninstall
+# *********
+# {xrst_toc_table
+#     bin/rm_cppad.sh
+# }
+#
 # {xrst_end get_cppad_sh}
 # -----------------------------------------------------------------------------
 # CppAD version information
@@ -166,41 +173,27 @@ then
    exit 1
 fi
 # -----------------------------------------------------------------------------
-# libdir
+# cmake_install_prefix
 if ! echo $cmake_install_prefix | grep '^/' > /dev/null
 then
    # convert cmake_install_prefix to an absolute path
    cmake_install_prefix="$(pwd)/$cmake_install_prefix"
 fi
+#
+# libdir
 libdir=$(bin/libdir.py)
+#
+# cmake_install_prefix: link
+bin/build_type.sh
 # -----------------------------------------------------------------------------
-# cmake_install_prefix, cmake_install_prefix.$build_type
-if ! echo $cmake_install_prefix | grep '/[.]local' > /dev/null
-then
-   if [ ! -d $cmake_install_prefix.$build_type ]
-   then
-      mkdir -p $cmake_install_prefix.$build_type
-   fi
-   if [ -e $cmake_install_prefix ] || [ -L $cmake_install_prefix ]
-   then
-      if [ ! -L $cmake_install_prefix ]
-      then
-         echo "get_cppad.sh: $cmake_install_prefix is not a symbolic link"
-         exit 1
-      fi
-      echo_eval rm $cmake_install_prefix
-   fi
-   echo_eval ln -s $cmake_install_prefix.$build_type $cmake_install_prefix
-fi
-# -----------------------------------------------------------------------------
-# change into the external
+# external
 if [ ! -e external ]
 then
    mkdir external
 fi
 echo_eval cd external
-# -----------------------------------------------------------------------------
-# clone cppad repository directory
+#
+# external/cppad.git
 if [ ! -e cppad.git ]
 then
    echo_eval git clone $remote_repo cppad.git
@@ -218,7 +211,7 @@ then
    echo "cppad_version in cppad-$cppad_version.git/CMakeLists.txt = $check"
    exit 1
 fi
-# -----------------------------------------------------------------------------
+#
 # external/cppad.git/build/$build_type
 if [ ! -e build/$build_type ]
 then
@@ -230,7 +223,7 @@ then
    rm CMakeCache.txt
 fi
 #
-# run cppad cmake command
+# cmake
 if [ "$build_type" == 'debug' ]
 then
    cppad_debug_which='debug_all'
