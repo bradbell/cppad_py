@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 // fun_dynamid
 // -----------------------------------------------------------------------------
@@ -74,7 +74,7 @@ bool fun_dynamic_xam(void) {
 // END SOURCE
 //
 /*
-{xrst_begin fun_dynamic_xam_cpp}
+{xrst_begin fun_dynamic_xam.cpp}
 
 C++: Using Dynamic Parameters: Example and Test
 ###############################################
@@ -82,6 +82,6 @@ C++: Using Dynamic Parameters: Example and Test
    // BEGIN SOURCE
    // END SOURCE
 }
-{xrst_end fun_dynamic_xam_cpp}
+{xrst_end fun_dynamic_xam.cpp}
 */
 //

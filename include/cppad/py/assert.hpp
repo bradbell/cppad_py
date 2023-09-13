@@ -37,7 +37,7 @@ a message describing the error.
 }
 Example
 *******
-:ref:`c++<exception_xam_cpp-name>`,
+:ref:`c++<exception_xam.cpp-name>`,
 :ref:`python<exception_xam.py-name>`.
 
 {xrst_end exception}

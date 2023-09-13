@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 // for_hes_sparsity, rev_hes_sparsity
 // -----------------------------------------------------------------------------
@@ -90,7 +90,7 @@ bool sparse_hes_pattern_xam(void) {
 // END SOURCE
 //
 /*
-{xrst_begin sparse_hes_pattern_xam_cpp}
+{xrst_begin sparse_hes_pattern_xam.cpp}
 
 C++: Hessian Sparsity Patterns: Example and Test
 ################################################
@@ -98,6 +98,6 @@ C++: Hessian Sparsity Patterns: Example and Test
    // BEGIN SOURCE
    // END SOURCE
 }
-{xrst_end sparse_hes_pattern_xam_cpp}
+{xrst_end sparse_hes_pattern_xam.cpp}
 */
 //

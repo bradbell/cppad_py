@@ -182,7 +182,7 @@ If it is ``-`` , the result is the negative of *ax* .
 }
 Example
 *******
-:ref:`c++<a_double_unary_op_xam_cpp-name>`,
+:ref:`c++<a_double_unary_op_xam.cpp-name>`,
 :ref:`python<a_double_unary_op_xam.py-name>`.
 
 {xrst_end a_double_unary_op}
@@ -295,7 +295,7 @@ while is a variable; :ref:`value<a_double_property@value>` above.
 }
 Example
 *******
-:ref:`c++<a_double_property_xam_cpp-name>`,
+:ref:`c++<a_double_property_xam.cpp-name>`,
 :ref:`python<a_double_property_xam.py-name>`.
 
 {xrst_end a_double_property}
@@ -542,7 +542,7 @@ The result has c++ prototype
 }
 Example
 *******
-:ref:`c++<a_double_compare_xam_cpp-name>`,
+:ref:`c++<a_double_compare_xam.cpp-name>`,
 :ref:`python<a_double_compare_xam.py-name>`.
 
 {xrst_end a_double_compare}
@@ -604,7 +604,7 @@ This object has c++ prototype
 }
 Example
 *******
-:ref:`c++<a_double_assign_xam_cpp-name>`,
+:ref:`c++<a_double_assign_xam.cpp-name>`,
 :ref:`python<a_double_assign_xam.py-name>`.
 
 {xrst_end a_double_assign}
@@ -697,7 +697,7 @@ and is the value of the function *fun* evaluated at the argument *ax*; i.e.,
 }
 Example
 *******
-:ref:`c++<a_double_unary_fun_xam_cpp-name>`,
+:ref:`c++<a_double_unary_fun_xam.cpp-name>`,
 :ref:`python<a_double_unary_fun_xam.py-name>`.
 
 {xrst_end a_double_unary_fun}
@@ -819,7 +819,7 @@ of the comparison is false.
 }
 Example
 *******
-:ref:`c++<a_double_cond_assign_xam_cpp-name>`,
+:ref:`c++<a_double_cond_assign_xam.cpp-name>`,
 :ref:`python<a_double_cond_assign_xam.py-name>`.
 
 {xrst_end a_double_cond_assign}

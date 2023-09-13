@@ -464,7 +464,7 @@ The word 'initialization' was added to the xrst dictionary.
    This has been fixed.
 #. The limits for the :ref:`fun_from_json_xam.py-name` and :ref:`fun_to_json_xam.py-name`
    example code were incorrect (this has been fixed).
-#. The in :ref:`fun_from_json_xam_cpp-name` the title was corrected; to be specific,
+#. The in :ref:`fun_from_json_xam.cpp-name` the title was corrected; to be specific,
    to_json was changed to from_json
 
 05-17

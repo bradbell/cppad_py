@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 // optimize
 // -----------------------------------------------------------------------------
@@ -60,7 +60,7 @@ bool fun_optimize_xam(void) {
 // END SOURCE
 // -----------------------------------------------------------------------------
 /*
-{xrst_begin fun_optimize_xam_cpp}
+{xrst_begin fun_optimize_xam.cpp}
 
 C++: Optimize an d_fun: Example and Test
 ########################################
@@ -68,6 +68,6 @@ C++: Optimize an d_fun: Example and Test
    // BEGIN SOURCE
    // END SOURCE
 }
-{xrst_end fun_optimize_xam_cpp}
+{xrst_end fun_optimize_xam.cpp}
 */
 //

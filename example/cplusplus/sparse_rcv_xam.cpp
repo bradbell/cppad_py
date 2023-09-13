@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 // sparse_rcv
 // -----------------------------------------------------------------------------
@@ -57,7 +57,7 @@ bool sparse_rcv_xam(void) {
 // END SOURCE
 //
 /*
-{xrst_begin sparse_rcv_xam_cpp}
+{xrst_begin sparse_rcv_xam.cpp}
 
 C++: Sparsity Patterns: Example and Test
 ########################################
@@ -65,6 +65,6 @@ C++: Sparsity Patterns: Example and Test
    // BEGIN SOURCE
    // END SOURCE
 }
-{xrst_end sparse_rcv_xam_cpp}
+{xrst_end sparse_rcv_xam.cpp}
 */
 //

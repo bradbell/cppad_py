@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 // vector size()
 // -----------------------------------------------------------------------------
@@ -34,7 +34,7 @@ bool vector_size_xam(void) {
 // END SOURCE
 //
 /*
-{xrst_begin vector_size_xam_cpp}
+{xrst_begin vector_size_xam.cpp}
 
 C++: Size of Vectors: Example and Test
 ######################################
@@ -42,6 +42,6 @@ C++: Size of Vectors: Example and Test
    // BEGIN SOURCE
    // END SOURCE
 }
-{xrst_end vector_size_xam_cpp}
+{xrst_end vector_size_xam.cpp}
 */
 //

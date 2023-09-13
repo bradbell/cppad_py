@@ -102,7 +102,7 @@ Its value is the number of elements in the vector *v* .
 }
 Example
 *******
-:ref:`c++<vector_size_xam_cpp-name>`,
+:ref:`c++<vector_size_xam.cpp-name>`,
 :ref:`python<vector_size_xam.py-name>`.
 
 {xrst_end vector_size}
@@ -166,7 +166,7 @@ The result *y* has c++ prototype
 }
 Example
 *******
-:ref:`c++<vector_set_get_xam_cpp-name>`,
+:ref:`c++<vector_set_get_xam.cpp-name>`,
 :ref:`python<vector_set_get_xam.py-name>`.
 
 {xrst_end vector_set_get}

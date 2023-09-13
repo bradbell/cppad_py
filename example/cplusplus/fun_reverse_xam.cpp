@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 // reverse
 // -----------------------------------------------------------------------------
@@ -117,7 +117,7 @@ bool fun_reverse_xam(void) {
 // END SOURCE
 //
 /*
-{xrst_begin fun_reverse_xam_cpp}
+{xrst_begin fun_reverse_xam.cpp}
 
 C++: Reverse Mode AD: Example and Test
 ######################################
@@ -125,6 +125,6 @@ C++: Reverse Mode AD: Example and Test
    // BEGIN SOURCE
    // END SOURCE
 }
-{xrst_end fun_reverse_xam_cpp}
+{xrst_end fun_reverse_xam.cpp}
 */
 //

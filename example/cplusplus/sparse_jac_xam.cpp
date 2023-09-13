@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 // for_jac_sparsity, rev_jac_sparsity
 // -----------------------------------------------------------------------------
@@ -99,7 +99,7 @@ bool sparse_jac_xam(void) {
 // END SOURCE
 //
 /*
-{xrst_begin sparse_jac_xam_cpp}
+{xrst_begin sparse_jac_xam.cpp}
 
 C++: Computing Sparse Jacobians: Example and Test
 #################################################
@@ -107,6 +107,6 @@ C++: Computing Sparse Jacobians: Example and Test
    // BEGIN SOURCE
    // END SOURCE
 }
-{xrst_end sparse_jac_xam_cpp}
+{xrst_end sparse_jac_xam.cpp}
 */
 //

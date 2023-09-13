@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 // jacobian
 // -----------------------------------------------------------------------------
@@ -65,7 +65,7 @@ bool fun_jacobian_xam(void) {
 // END SOURCE
 //
 /*
-{xrst_begin fun_jacobian_xam_cpp}
+{xrst_begin fun_jacobian_xam.cpp}
 
 C++: Dense Jacobian Using AD: Example and Test
 ##############################################
@@ -73,6 +73,6 @@ C++: Dense Jacobian Using AD: Example and Test
    // BEGIN SOURCE
    // END SOURCE
 }
-{xrst_end fun_jacobian_xam_cpp}
+{xrst_end fun_jacobian_xam.cpp}
 */
 //

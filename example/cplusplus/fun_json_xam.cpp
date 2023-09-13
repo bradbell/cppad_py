@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 // d_fun properties
 // -----------------------------------------------------------------------------
@@ -56,7 +56,7 @@ bool to_json_xam(void) {
 }
 // END_TO_JSON_XAM
 /*
-{xrst_begin fun_to_json_xam_cpp}
+{xrst_begin fun_to_json_xam.cpp}
 {xrst_spell
    json
 }
@@ -67,7 +67,7 @@ C++: to_json: Example and Test
    // BEGIN_TO_JSON_XAM
    // END_TO_JSON_XAM
 }
-{xrst_end fun_to_json_xam_cpp}
+{xrst_end fun_to_json_xam.cpp}
 -----------------------------------------------------------------------------
 */
 // BEGIN_FROM_JSON_XAM
@@ -133,7 +133,7 @@ bool from_json_xam(void) {
 // END_FROM_JSON_XAM
 // --------------------------------------------------------------------------
 /*
-{xrst_begin fun_from_json_xam_cpp}
+{xrst_begin fun_from_json_xam.cpp}
 {xrst_spell
    json
 }
@@ -144,7 +144,7 @@ C++: from_json: Example and Test
    // BEGIN_FROM_JSON_XAM
    // END_FROM_JSON_XAM
 }
-{xrst_end fun_from_json_xam_cpp}
+{xrst_end fun_from_json_xam.cpp}
 */
 // ==========================================================================
 } // end empty namespace

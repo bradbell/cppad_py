@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-{xrst_begin more_cpp}
+{xrst_begin more.cpp}
 {xrst_spell
    adynamic
    bool
@@ -111,7 +111,7 @@ Example
 *******
 The file ``example/cplusplus/fun_dynamic_xam.cpp`` was added
 with the following contents:
-:ref:`fun_dynamic_xam_cpp-name`.
+:ref:`fun_dynamic_xam.cpp-name`.
 In addition, in the file ``example/cplusplus/check_all.cpp`` :
 
 | |tab| ``extern bool fun_optimize_xam(void);``
@@ -139,4 +139,4 @@ you can just re-run that step to see if a particular fix works.
 Once the C++ tests were working, the changes where checked into using
 ``git`` .
 
-{xrst_end more_cpp}
+{xrst_end more.cpp}

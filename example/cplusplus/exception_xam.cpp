@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 // exception
 // -----------------------------------------------------------------------------
@@ -27,7 +27,7 @@ bool exception_xam(void) {
 // END SOURCE
 // -----------------------------------------------------------------------------
 /*
-{xrst_begin exception_xam_cpp}
+{xrst_begin exception_xam.cpp}
 {xrst_spell
    cppad
 }
@@ -38,6 +38,6 @@ C++: Cppad Py Exception Handling: Example and Test
    // BEGIN SOURCE
    // END SOURCE
 }
-{xrst_end exception_xam_cpp}
+{xrst_end exception_xam.cpp}
 */
 //

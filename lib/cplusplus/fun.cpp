@@ -97,7 +97,7 @@ Example
 *******
 Most of the c++ ``d_fun`` examples use the *ax*
 return syntax.
-The :ref:`fun_dynamic_xam_cpp-name` example uses the *a_both*
+The :ref:`fun_dynamic_xam.cpp-name` example uses the *a_both*
 return syntax.
 
 {xrst_end cpp_independent}
@@ -164,7 +164,7 @@ started by the most recent call to :ref:`independent<cpp_independent-name>`.
 }
 Example
 *******
-:ref:`c++<fun_abort_xam_cpp-name>`.
+:ref:`c++<fun_abort_xam.cpp-name>`.
 
 {xrst_end cpp_abort_recording}
 */
@@ -386,7 +386,7 @@ or *af* is created, is zero.
 }
 Example
 *******
-:ref:`fun_property_xam_cpp-name`
+:ref:`fun_property_xam.cpp-name`
 
 {xrst_end cpp_fun_property}
 */
@@ -457,7 +457,7 @@ After this call
 
 Example
 *******
-See :ref:`fun_dynamic_xam_cpp-name`.
+See :ref:`fun_dynamic_xam.cpp-name`.
 {xrst_end cpp_fun_new_dynamic}
 */
 // BEGIN_NEW_DYNAMIC_SOURCE
@@ -543,7 +543,7 @@ and *j* between zero and *n* -1 ,
 }
 Example
 *******
-:ref:`fun_jacobian_xam_cpp-name`
+:ref:`fun_jacobian_xam.cpp-name`
 
 {xrst_end cpp_fun_jacobian}
 */
@@ -646,7 +646,7 @@ and *j* between zero and *n* -1 ,
 }
 Example
 *******
-:ref:`fun_hessian_xam_cpp-name`
+:ref:`fun_hessian_xam.cpp-name`
 
 {xrst_end cpp_fun_hessian}
 */
@@ -784,7 +784,7 @@ It is the *p*-th order Taylor coefficients for :math:`Y(t)`.
 }
 Example
 *******
-:ref:`fun_forward_xam_cpp-name`
+:ref:`fun_forward_xam.cpp-name`
 
 {xrst_end cpp_fun_forward}
 */
@@ -913,7 +913,7 @@ the partial derivative of
 }
 Example
 *******
-:ref:`fun_reverse_xam_cpp-name`
+:ref:`fun_reverse_xam.cpp-name`
 
 {xrst_end cpp_fun_reverse}
 */
@@ -965,7 +965,7 @@ corresponding :ref:`a_fun<cpp_fun_ctor@Syntax@a_fun>`.
 }
 Example
 *******
-:ref:`fun_optimize_xam_cpp-name`
+:ref:`fun_optimize_xam.cpp-name`
 
 {xrst_end cpp_fun_optimize}
 */
@@ -1018,8 +1018,8 @@ and the function *f* so it corresponds to *json* .
 }
 Examples
 ********
-:ref:`fun_to_json_xam_cpp-name`,
-:ref:`fun_from_json_xam_cpp-name`.
+:ref:`fun_to_json_xam.cpp-name`,
+:ref:`fun_from_json_xam.cpp-name`.
 
 {xrst_end cpp_fun_json}
 */

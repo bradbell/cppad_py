@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 # include <cppad/cppad.hpp>
 # include <cppad/py/sparse.hpp>
@@ -188,7 +188,7 @@ row and column values (if ``NDEBUG`` is not defined).
 }
 Example
 *******
-:ref:`sparse_rc_xam_cpp-name`
+:ref:`sparse_rc_xam.cpp-name`
 
 {xrst_end cpp_sparse_rc}
 */
@@ -440,7 +440,7 @@ row and column values (if ``NDEBUG`` is not defined).
 }
 Example
 *******
-:ref:`sparse_rcv_xam_cpp-name`
+:ref:`sparse_rcv_xam.cpp-name`
 
 {xrst_end cpp_sparse_rcv}
 */
@@ -630,7 +630,7 @@ In this case, *pattern_out* is a sparsity pattern for
 }
 Example
 *******
-:ref:`c++<sparse_jac_pattern_xam_cpp-name>`
+:ref:`c++<sparse_jac_pattern_xam.cpp-name>`
 
 {xrst_end cpp_jac_sparsity}
 */
@@ -751,7 +751,7 @@ In this case, *pattern_out* is a sparsity pattern for
 }
 Example
 *******
-:ref:`c++<sparse_hes_pattern_xam_cpp-name>`
+:ref:`c++<sparse_hes_pattern_xam.cpp-name>`
 
 {xrst_end cpp_sparsity}
 */
@@ -970,7 +970,7 @@ All the other forward mode coefficients are unspecified.
 }
 Example
 *******
-:ref:`sparse_jac_xam_cpp-name`
+:ref:`sparse_jac_xam.cpp-name`
 
 {xrst_end cpp_sparse_jac}
 */
@@ -1158,7 +1158,7 @@ All the other forward mode coefficients are unspecified.
 }
 Example
 *******
-:ref:`sparse_hes_xam_cpp-name`
+:ref:`sparse_hes_xam.cpp-name`
 
 {xrst_end cpp_sparse_hes}
 */
