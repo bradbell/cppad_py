@@ -1,0 +1,18 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
+# ----------------------------------------------------------------------------
+# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
+#
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name         = "cppad_py"
+version      = "2023.09.19"
+authors      = [ {name = "Bradley M. Bell", email = "bradbell@seanet.com"} ]
+description  = "A C++ Object Library and Python Interface to CppAD"
+readme       = "readme.md"
+keywords     = [ "cppad", "AD", "differentiation", "algorithmic", "automatic" ]
+dependencies =  [ "numpy", "scipy" ]

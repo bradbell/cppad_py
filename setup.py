@@ -1,0 +1,178 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
+# ----------------------------------------------------------------------------
+r"""
+{xrst_begin setup.py}
+{xrst_spell
+   cd
+   dist
+   gz
+   cppad
+}
+
+Install cppad_py Python Module
+##############################
+
+See Also
+********
+:ref:`old_setup.py-name`
+
+Simple Case
+***********
+In the simple case, :ref:`get_cppad.sh@Settings@include_mixed` is false.
+In this case the following procedure should install cppad_py:
+
+#. bin/get_cppad.sh
+#. git clone https://github.com/bradbell/cppad_py.git cppad_py.git
+#. cd cppad_py.git
+#. python -m build
+#. pip install dist/cppad_py-\*.tar.gz
+
+You should now be able to execute the following example:
+{xrst_literal
+   readme.md
+   # BEGIN PYTHON
+   # END PYTHON
+}
+
+{xrst_end setup.py}
+"""
+# ----------------------------------------------------------------------------
+import sys
+import re
+import os
+#
+from setuptools                       import setup, Extension
+from setuptools.command.build_ext     import build_ext
+# -----------------------------------------------------------------------------
+# bin/get_cppad.sh settings
+#
+# file_data
+file_obj   = open('bin/get_cppad.sh', 'r')
+file_data  = file_obj.read()
+file_obj.close()
+#
+# extra_cxx_flags
+pattern = r"\nextra_cxx_flags='([^']*)'"
+match   = re.search(pattern, file_data)
+if not match :
+   sys.exit('cannot find extra_cxx_flags in bin/get_cppad.sh')
+extra_cxx_flags = match.group(1)
+#
+# cmake_install_prefix
+pattern = '''\ncmake_install_prefix=['"]([^'"]*)['"]'''
+match   = re.search(pattern, file_data)
+if not match :
+   sys.exit('cannot find cmake_install_prefix in bin/get_cppad.sh')
+cmake_install_prefix = match.group(1)
+#
+# build_type
+pattern = r"\nbuild_type='([^']*)'"
+match   = re.search(pattern, file_data)
+if not match :
+   sys.exit('cannot find build_type in bin/get_cppad.sh')
+build_type = match.group(1)
+if build_type != 'debug' and build_type != 'release' :
+   sys.exit('build_type is not debug or release in bin/get_cppad.sh')
+#
+# include_mixed
+pattern = r"\ninclude_mixed='([^']*)'"
+match   = re.search(pattern, file_data)
+if not match :
+   sys.exit('cannot find include_mixed in bin/get_cppad.sh')
+include_mixed = match.group(1)
+if include_mixed != 'true' and include_mixed != 'false' :
+   sys.exit('include_mixed is not true or false in bin/get_cppad.sh')
+# ----------------------------------------------------------------------------
+# cmake_install_prefix
+pattern = r'$HOME'
+replace = os.environ['HOME']
+cmake_install_prefix = cmake_install_prefix.replace(pattern, replace)
+#
+# swig_opts
+swig_opts = [ '-c++', '-I./include', '-outdir', 'lib/python/cppad_py' ]
+if include_mixed == 'true' :
+   swig_opts += [ '-DINCLUDE_MIXED' ]
+if build_type == 'release' :
+   swig_opts += [ '-DNDEBUG' ]
+#
+# extension_sources
+extension_sources = [ 'lib/cppad_py_swig.i' ]
+for name in os.listdir('lib/cplusplus') :
+   if name.endswith('.cpp' ) :
+      extension_sources.append( 'lib/cplusplus/' + name)
+#
+# include_dirs
+include_dirs  = [ cmake_install_prefix + '/include', 'include' ]
+#
+# library_dirs
+library_dirs = list()
+for lib in [ 'lib' , 'lib64' ] :
+   directory = f'{cmake_install_prefix}/{lib}'
+   if os.path.isdir( directory ) :
+      library_dirs.append(directory)
+#
+# libraries
+libraries = [ 'cppad_lib' ]
+if include_mixed == 'true' :
+   libraries += [ 'cppad_mixed', 'ipopt', 'gsl', 'cholmod' ]
+#
+# extra_link_args
+extra_link_args = list()
+for directory in library_dirs :
+   extra_link_args.append( f'-Wl,-rpath={directory}' )
+#
+# extra_compile_args
+if extra_cxx_flags == '' :
+   extra_compile_args = list()
+else :
+   extra_compile_args = extra_cxx_flags.split()
+if include_mixed == 'true' :
+   extra_compile_args += [ '-D', 'INCLUDE_MIXED' ]
+extra_compile_args += extra_link_args
+#
+# ext_module
+extension_module = Extension(
+   '_cppad_swig',
+   sources            = extension_sources,
+   swig_opts          = swig_opts,
+   include_dirs       = include_dirs,
+   library_dirs       = library_dirs,
+   libraries          = libraries,
+   extra_compile_args = extra_compile_args,
+   extra_link_args    = extra_link_args,
+)
+#
+# my_build_ext
+# Build extensions before python or cppad_swig.py will be missing.
+# see https://github.com/yanqd0/swig-python-demo
+class my_build_ext(build_ext):
+   def run(self):
+      super(build_ext, self).run()
+      #
+      # 2DO: fix code above so the followin kludge is not needed:
+      # pip installs _cppad_swig.*.so file # in site-packages
+      # instead of site-packages/cppad_py
+      file_name = 'lib/python/cppad_py/cppad_swig.py'
+      file_obj  = open(file_name, 'r')
+      file_data = file_obj.read()
+      file_obj.close()
+      pattern   = r'\nif.*:\n( *from [.] import _cppad_swig)'
+      replace   = r'\nif False :\n\1'
+      file_data = re.sub(pattern, replace, file_data)
+      file_obj  = open(file_name, 'w')
+      file_obj.write(file_data)
+      file_obj.close()
+# ----------------------------------------------------------------------------
+#
+# setup
+setup(
+   url          = 'https://cppad-py.readthedocs.io',
+   ext_modules  = [ extension_module ],
+   packages     = [ 'cppad_py' ],
+   package_dir  = { 'cppad_py' : 'lib/python/cppad_py' },
+   cmdclass     = {
+      'build_ext' : my_build_ext,
+   }
+)

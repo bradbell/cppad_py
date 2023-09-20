@@ -3,6 +3,7 @@
 # files to ignore
 /git_commit.sh
 /lib/python/cppad_py/cppad_swig.py
+/lib/cppad_py_swig_wrap.cpp
 temp
 temp.*
 #

@@ -158,6 +158,7 @@ fi
 if sed \
    -e '/warning_xam: OK/d' \
    -e '/setup.py install is deprecated/d' \
+   -e '/you can list .license. under .dynamic./d' \
    -e '/easy_install command is deprecated/d' \
    -e '/warnings.warn(/d' \
    $logfile | \

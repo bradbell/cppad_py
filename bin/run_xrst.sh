@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
@@ -25,7 +25,10 @@ target="$1"
 # xsrst
 if [ "$target" == 'html' ]
 then
-   xrst
+   xrst \
+      --target html \
+      --html_theme sphinx_rtd_theme \
+      --local_toc
 else
    xrst --target tex
    make -C build/tex cppad_py.pdf

@@ -13,6 +13,7 @@ cppad\_py contains the following:
 
 ## Simple Example
 ```python
+# BEGIN PYTHON
 import numpy
 import cppad_py
 x    = numpy.array( [ 1, 2], dtype = float)
@@ -29,6 +30,7 @@ assert J[0,0] == 2.0 * x[0]
 assert J[0,1] == 0.0
 assert J[1,0] == 0.0
 assert J[1,1] == 2.0 * x[1]
+# END PYTHON
 ```
 
 ## Install

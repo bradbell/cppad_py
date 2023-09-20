@@ -242,7 +242,7 @@ os.environ['CC'] = cmake_cxx_compiler
 setup_result = setup(
    name         = 'cppad_py',
    version      = cppad_py_version,
-   license      = 'GPL3',
+   license      = 'GPL-3.0-or-later',
    description  = 'A C++ Object Library and Python Interface to CppAD',
    author       = 'Bradley M. Bell',
    author_email = 'bradbell@seanet.com',
@@ -302,8 +302,12 @@ sys.exit(0)
 # {xrst_comment_ch #}
 #
 #
-# Configure and Build the cppad_py Python Module
-# ##############################################
+# Old Configure and Build the cppad_py Python Module
+# ##################################################
+#
+# See Also
+# ********
+# :ref:`setup.py-name`
 #
 # Syntax
 # ******

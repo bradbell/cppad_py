@@ -40,8 +40,7 @@ Purpose
 
 Getting Started
 ***************
-After you :ref:`configure<old_setup.py@Configure>` and
-:ref:`install<old_setup.py@Install>` cppad_py,
+After you :ref:`install<setup.py-name>` cppad_py,
 the following example is a good place to get started using it:
 :ref:`fun_jacobian_xam.py-title`.
 
@@ -68,6 +67,7 @@ GNU General Public License version 3.0 or later see
 Children
 ********
 {xrst_toc_table
+   setup.py
    old_setup.py
    example/python/numeric/numeric.xrst
    lib/library.xrst

@@ -27,13 +27,23 @@ CppAD Py Release Notes By Year
    cppad
    mhelp
    uninstall
+   mm
+   dd
 }
 
 CppAD Py Changes During 2023
 ############################
 
-09-13
+mm-dd
 *****
+
+09-20
+=====
+Move the old setup.py to :ref:`old_setup.py-name` and create a new version
+of :ref:`setup.py-name` .
+
+09-13
+=====
 #. Advance to cppad_mixed-20230913.
 #. Add the uninstall scripts
    :ref:`rm_cppad.sh-name` and :ref:`rm_cppad_mixed.sh-name` .
@@ -41,7 +51,7 @@ CppAD Py Changes During 2023
    \*_sh -> \*.sh, \*_py -> \*.py, and \*_cpp -> \*.cpp .
 
 09-05
-*****
+=====
 #. Fix some documentation errors that a newer version of xrst detected.
    These errors were in the :ref:`more.cpp-name` and :ref:`more.py-name`
    and were OMhelp commands that did not convert to xrst properly.
