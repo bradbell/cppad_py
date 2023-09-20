@@ -30,7 +30,7 @@ set -e -u
 # Top Source Directory
 # ********************
 # This program must be run from the
-# :ref:`top_source_directory<setup.py@Download@Top Source Directory>`.
+# :ref:`top_source_directory<old_setup.py@Download@Top Source Directory>`.
 #
 # Settings
 # ********
@@ -47,7 +47,7 @@ cmake_install_prefix="$HOME/prefix/cppad_py"
 # #.  If this prefix starts with ''/'' ,
 #     it is an absolute path; e.g., ``/usr/local``.
 # #.  If it does not start with ``/`` , it is relative to the
-#     :ref:`top_source_directory<setup.py@Download@Top Source Directory>`.
+#     :ref:`top_source_directory<old_setup.py@Download@Top Source Directory>`.
 # #.  It may include the shell variable ``$HOME`` but no other variables;
 #     e.g; ``$HOME/prefix`` .
 #     Note that ``$HOME`` starts with ``/`` .

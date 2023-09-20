@@ -63,7 +63,7 @@ and second operand is a ``double`` ; see
    configuration settings.
    Also remove ``swig_cxx_flags`` from these user settings
    (set automatically).
-#. Improve the install instructions; see :ref:`setup.py-name`.
+#. Improve the install instructions; see :ref:`old_setup.py-name`.
 
 07-31
 *****
@@ -71,7 +71,7 @@ and second operand is a ``double`` ; see
 #. The general purpose Swig example ``swig_xam`` ,
    which was not specific to cppad_py,
    has been removed.
-#. A change to ``setup.py`` was making the
+#. A change to ``old_setup.py`` was making the
    :ref:`get_cppad.sh-name` script fail.
    This has been fixed.
 #. The python tests are no run in ``example/python``
@@ -86,9 +86,9 @@ because it now contains both major and minor version numbers.
 07-19
 *****
 Add ``-std=c++11`` to the default compile flags in
-:ref:`setup.py-name`.
+:ref:`old_setup.py-name`.
 Add ``-py3`` to the ``swig`` builds
-when running ``setup.py`` using Python 3; see
+when running ``old_setup.py`` using Python 3; see
 `swig python 3
 <http://www.swig.org/Doc1.3/Python.html#Python_python3support>`_.
 
@@ -122,9 +122,9 @@ Continue conversion of python library to using ``numpy.array`` ; see
 #. Add the file ``cppad_py/python_major_version`` which contains
    the major version of python that this build of ``cppad_py`` is for.
 #. Automatically use :ref:`build_type<get_cppad.sh@Settings@build_type>`
-   control how setup.py compiles C++
-   (one used to use flags on setup.py command line).
-#. setup.py was using the git repository version of Cppad instead of the
+   control how old_setup.py compiles C++
+   (one used to use flags on old_setup.py command line).
+#. old_setup.py was using the git repository version of Cppad instead of the
    one installed in ``build/prefix`` by :ref:`get_cppad.sh-name`.
    This has been fixed.
 #. Change ``size_ind`` to :ref:`size_domain<py_fun_property@size_domain>`
@@ -142,10 +142,10 @@ Start conversion of python library from using
 #. Advanced to ``cppad-20180703`` .
 #. Fix the following warning:
    ``catching polymorphic type class 'std::runtime_error' by value`` .
-#. Suppress the following warning when running :ref:`setup.py-name`:
+#. Suppress the following warning when running :ref:`old_setup.py-name`:
    ``clearing an object of non-trivial type class 'cppad_py::a_double'`` ;
    see `swig issue 1259 <https://github.com/swig/swig/issues/1259>`_.
-#. Move all settings to :ref:`setup.py-name` and run ``cmake`` from there.
+#. Move all settings to :ref:`old_setup.py-name` and run ``cmake`` from there.
 #. The file ``cppad_py/__init__.py`` was not being created.
    This has been fixed.
 

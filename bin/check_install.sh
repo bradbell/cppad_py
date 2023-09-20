@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # bash function that echos and executes a command
 echo_eval() {
@@ -29,7 +29,7 @@ fi
 echo "build_type=$build_type"
 echo "cmake_install_prefix=$cmake_install_prefix"
 # ---------------------------------------------------------------------------
-# Follow install instructions in setup.py
+# Follow install instructions in old_setup.py
 # ---------------------------------------------------------------------------
 #
 # prefix
@@ -57,7 +57,7 @@ if ls build/lib.* >& /dev/null
 then
    rm -r build/lib.*
 fi
-python3 setup.py bdist
+python3 old_setup.py bdist
 name=$(ls build | grep '^lib\.' | sed -e 's|^lib\.||')
 cp -r build/lib.$name/cppad_py cppad_py
 #
@@ -66,7 +66,7 @@ PYTHONPATH=""
 python3 example/python/check_all.py
 #
 # Install
-python3 setup.py install --prefix=$prefix
+python3 old_setup.py install --prefix=$prefix
 #
 # PYTHONPATH
 minor=$(echo "import sys;print(sys.version_info.minor)" | python3)
@@ -88,7 +88,7 @@ fi
 # check installed version
 if [ -e cppad_py ]
 then
-   echo 'check_install.sh: setup.py did not remove local cppad_py directory'
+   echo 'check_install.sh: old_setup.py did not remove local cppad_py directory'
    exit 1
 fi
 python3 example/python/check_all.py

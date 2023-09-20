@@ -92,14 +92,14 @@ This included advancing to cppad_mixed-20210511.
 
 05-09
 *****
-#. Add discussion of installing cppad_py on :ref:`setup.py@Msys2` systems.
+#. Add discussion of installing cppad_py on :ref:`old_setup.py@Msys2` systems.
 
 05-07
 *****
 #. The python-setuptools were added to the
-   :ref:`setup.py@External Requirements`.
+   :ref:`old_setup.py@External Requirements`.
 #. An example of installing external requirements was added for the
-   :ref:`setup.py@Cygwin`.
+   :ref:`old_setup.py@Cygwin`.
 #. This install using pip has not been kept up to date an hence its
    instructions were removed.
 #. Advance to cppad_mixed-20210507.

@@ -1,7 +1,7 @@
 #! /bin/bash -e
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 version=`grep '^SET(cppad_py_version' CMakeLists.txt | \
       sed -e 's|^[^"]*"\([^"]*\)".*|\1|'`
@@ -75,7 +75,7 @@ fi
 # pip install --no-binary :all:
 # --global-option build --global-option --debug PACKAGE
 #
-echo_eval python setup.py sdist
+echo_eval python old_setup.py sdist
 echo_eval cd dist
 echo_eval pip install --prefix="$HOME/prefix/cppad_py" \
    cppad_py-$version.tar.gz

@@ -2,7 +2,7 @@
 # define CPPAD_PY_PUBLIC_LIB_HPP
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 
 // The file included below is automatically created by lib/CMakeLists.txt.
@@ -13,7 +13,7 @@
 // the setup tools.
 # define CPPAD_PY_LIB_PUBLIC
 
-// speical definition used to try and get ../../../setup.py to work.
+// speical definition used to try and get ../../../old_setup.py to work.
 // # define CPPAD_PY_LIB_PUBLIC
 
 # endif

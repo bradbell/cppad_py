@@ -67,7 +67,7 @@ CppAD Py Changes During 2020
    It also gives better error messaging during the install procedure.
 #. Group the install error messages under the program being run;
    i.e., :ref:`install_error@get_cppad_mixed.sh` ,
-   i.e., :ref:`install_error@setup.py` ,
+   i.e., :ref:`install_error@old_setup.py` ,
    i.e., :ref:`install_error@check_all.py` .
 #. Added a discussion of the :ref:`install_error@get_cppad_mixed.sh@cholmod.h`
    error message.
@@ -93,8 +93,8 @@ installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
    mac using `port <https://www.macports.org>`_ to install packages.
    The previous version assumed the mac was using
    `brew <https://brew.sh>`_ to install packages.
-#. Add a :ref:`install_error@setup.py@symbolic link` and
-   :ref:`install_error@setup.py@cppad.pc, cppad_mixed.pc` entries to the
+#. Add a :ref:`install_error@old_setup.py@symbolic link` and
+   :ref:`install_error@old_setup.py@cppad.pc, cppad_mixed.pc` entries to the
    list of install error messages.
 #. Remove under construction from the :ref:`mixed-title` class; i.e.,
    it has reached a stable state.
@@ -106,7 +106,7 @@ installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
 
 11-17
 *****
-#. The :ref:`setup@py <setup.py-name>` script was improved.
+#. The :ref:`setup@py <old_setup.py-name>` script was improved.
    To be specific:
 
       -  The :ref:`covid 19 example <numeric_covid_19_xam.py-name>` was removed
@@ -114,8 +114,8 @@ installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
       -  The python matplotlib module is no longer required because is was
          only used by the covid 19 example.
       -  Separate headings were created for
-         :ref:`local testing <setup.py@Local Test>` and
-         :ref:`install testing <setup.py@Test Install>`.
+         :ref:`local testing <old_setup.py@Local Test>` and
+         :ref:`install testing <old_setup.py@Test Install>`.
 
 #. The ``PyEval_CallObject`` function was deprecated in python3.9.
    It's use was converted to ``PyObject_CallObject`` to avoid this warning.
@@ -172,7 +172,7 @@ to the mixed class operations.
 
 11-11
 *****
-Improve the install instructions in :ref:`setup.py-name`
+Improve the install instructions in :ref:`old_setup.py-name`
 and :ref:`install_error-name`.
 
 11-10
@@ -187,11 +187,11 @@ and :ref:`install_error-name`.
 #. Add more documentation for the ``index.rst`` file
    (including how to link to the table of contents).
 #. The java runtime environment as add to the install
-   :ref:`requirements<setup.py@External Requirements>`.
+   :ref:`requirements<old_setup.py@External Requirements>`.
 
 11-08
 *****
-#. Change setup.py :ref:`local build<setup.py@Local Build>` and test instructions so they work on Mac OS.
+#. Change old_setup.py :ref:`local build<old_setup.py@Local Build>` and test instructions so they work on Mac OS.
 
 #. Fix ``bin/get_cppad_mixed.sh`` so that it is not necessary to set
    LD_LIBRARY_PATH or PKG_CONFIG_PATH before running it.
@@ -211,15 +211,15 @@ and :ref:`install_error-name`.
    :ref:`include_mixed<get_cppad.sh@Settings@include_mixed>` false was broken
    by the changes on 11-03. This has been fixed.
 
-#. The installation and testing instructions in :ref:`setup@py<setup.py-name>`
+#. The installation and testing instructions in :ref:`setup@py<old_setup.py-name>`
    were brought up to date and improved.
    This includes discussion of the following environment variables:
-   :ref:`LD_LIBRARY_PATH<setup.py@LD_LIBRARY_PATH>`,
-   :ref:`PKG_CONFIG_PATH<setup.py@PKG_CONFIG_PATH>`,
-   :ref:`PYTHONPATH<setup.py@PYTHONPATH>`.
+   :ref:`LD_LIBRARY_PATH<old_setup.py@LD_LIBRARY_PATH>`,
+   :ref:`PKG_CONFIG_PATH<old_setup.py@PKG_CONFIG_PATH>`,
+   :ref:`PYTHONPATH<old_setup.py@PYTHONPATH>`.
 
 #. The setting *cppad_lib* was changed to the automatically determined
-   value :ref:`libdir<setup.py@libdir>`.
+   value :ref:`libdir<old_setup.py@libdir>`.
 
 11-05
 *****
@@ -246,10 +246,10 @@ Fix some problems with the macOS install when
 
 10-30
 *****
-The :ref:`install command<setup.py@Install>` no longer creates
+The :ref:`install command<old_setup.py@Install>` no longer creates
 a local copy of ``cppad_py`` for testing. (On macOS systems the
 local copy would cause problems during the install.)
-The :ref:`setup.py@Local Build` still builds the local
+The :ref:`old_setup.py@Local Build` still builds the local
 copy for testing.
 
 10-29
@@ -259,16 +259,16 @@ copy for testing.
    and ``bin/get_cppad_mixed.sh`` might install the cppad library
    in two different locations and confuse the setup procedure.
 
-#. Fix a problem with ``setup.py`` where it sometimes puts the distribution
+#. Fix a problem with ``old_setup.py`` where it sometimes puts the distribution
    in ``site-packages/cppad_py-`` *version* ``.egg/cppad_py`` instead of
    ``site-packages/cppad_py``. This may have something to do with the
    install egg being a directory instead of a zip file.
 
 10-28
 *****
-#. Improve the :ref:`setup@py<setup.py-name>` install instructions.
+#. Improve the :ref:`setup@py<old_setup.py-name>` install instructions.
    To be specific, change ``python`` to ``python3`` and edit the
-   :ref:`external requirements<setup.py@External Requirements>`.
+   :ref:`external requirements<old_setup.py@External Requirements>`.
 
 #. Improve the :ref:`get_cppad.sh-title` script so that it gets and updates
    posted to the remote repository (since the previous run of the script).
@@ -315,7 +315,7 @@ to the mixed class; see :ref:`mixed_fix_constraint-title`.
    :ref:`cmake_install_prefix<get_cppad.sh@Settings@build_type@cmake_install_prefix>`
    can be installed at the same time.
 
-#. Some of the install steps in :ref:`setup.py-title` have changed.
+#. Some of the install steps in :ref:`old_setup.py-title` have changed.
 
 
 10-13
@@ -427,7 +427,7 @@ The word 'initialization' was added to the xrst dictionary.
 07-25
 *****
 #. xrst: Install xrst.py during the
-   :ref:`install<setup.py@Install>` procedure.
+   :ref:`install<old_setup.py@Install>` procedure.
 #. xrst: Add a purpose paragraph to xrst documentation.
 #. Move the ``*.omh`` files to ``*.xrst`` files (they have been converted
    from omhelp input files to xrst input files).
@@ -580,15 +580,15 @@ In addition, the
 
 04-27
 *****
-The ``setup.py`` program now installs a separate copy of CppAD
+The ``old_setup.py`` program now installs a separate copy of CppAD
 and provides instructions at the end for modifying your
 ``LD_LIBRARY_PATH``. These instructions have been removed and placed
-in the setup.py documentation; see
-:ref:`LD_LIBRARY_PATH<setup.py@LD_LIBRARY_PATH>` .
+in the old_setup.py documentation; see
+:ref:`LD_LIBRARY_PATH<old_setup.py@LD_LIBRARY_PATH>` .
 
 04-26
 *****
-The ``setup.py`` program was modified to try to automatically solve the
+The ``old_setup.py`` program was modified to try to automatically solve the
 :ref:`install_error@check_all.py@libcppad_lib` problem.
 
 04-25
@@ -600,7 +600,7 @@ The :ref:`f_to_json()<py_fun_json@to_json>` function was added.
 The newer Mac systems seems to require that one use
 ``-stdlib=libc++`` compile and link flag.
 The install has been changed to check for and adapt to this condition.
-In addition, :ref:`setup.py-name` now runs the ``cmake`` command; i.e.,
+In addition, :ref:`old_setup.py-name` now runs the ``cmake`` command; i.e.,
 the user no longer needs to run ``cmake`` to test the C++ library.
 
 04-23
@@ -628,7 +628,7 @@ Add an :ref:`install_error-name` section to the documentation.
 04-20
 *****
 
-#. Move configuration setting from :ref:`setup.py-name` to
+#. Move configuration setting from :ref:`old_setup.py-name` to
    :ref:`bin/get_cppad_sh<get_cppad.sh@Settings>`.
 #. First version that installs using ``pip`` .
    Install instructions for pip will be added soon.
@@ -639,7 +639,7 @@ Add an :ref:`install_error-name` section to the documentation.
 #. Move the python source that gets distributed from ``lib/python``
    to ``lib/python/cppad_py`` so that more like a standard python package.
 #. Drop support for python2. It is not consistent with python3 in
-   some of the ``setup.py`` actions.
+   some of the ``old_setup.py`` actions.
 
 04-18
 *****
@@ -649,7 +649,7 @@ Add an :ref:`install_error-name` section to the documentation.
    :ref:`c++<cpp_fun_reverse@xq>` and :ref:`python<py_fun_reverse@xq>`
    reverse mode documentation.
 #. Remove the ``--inplace`` option from the
-   :ref:`syntax<setup.py@Syntax>` for building the cppad_py python module.
+   :ref:`syntax<old_setup.py@Syntax>` for building the cppad_py python module.
 
 04-13
 *****
@@ -669,8 +669,8 @@ Add an :ref:`install_error-name` section to the documentation.
 #. The dynamic parameter argument was missing from the
    :ref:`syntax<py_independent@Syntax>` for the python version
    of the ``independent`` function.  This has been fixed.
-#. Improve the test and :ref:`install<setup.py@Install>`
-   discussion in ``setup.py`` .
+#. Improve the test and :ref:`install<old_setup.py@Install>`
+   discussion in ``old_setup.py`` .
 
 04-10
 *****

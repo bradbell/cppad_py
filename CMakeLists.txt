@@ -192,7 +192,7 @@ print_variable(CMAKE_BUILD_TYPE)
 INCLUDE_DIRECTORIES( "${CMAKE_SOURCE_DIR}/include" )
 # -----------------------------------------------------------------------------
 # cxx_has_stdlib
-# The message below about value of cxx_has_stdlib is used by setup.py
+# The message below about value of cxx_has_stdlib is used by old_setup.py
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-stdlib=libc++" cxx_has_stdlib)
 IF( cxx_has_stdlib )
@@ -219,7 +219,7 @@ ENDIF( "${check_depends}" STREQUAL "" )
 ADD_CUSTOM_TARGET(check DEPENDS ${check_depends})
 MESSAGE(STATUS "make check: available")
 # -----------------------------------------------------------------------------
-# Incormation used by setup.py
+# Incormation used by old_setup.py
 FILE(WRITE "${CMAKE_BINARY_DIR}/cxx_has_stdlib"     "${cxx_has_stdlib}")
 FILE(WRITE "${CMAKE_BINARY_DIR}/cmake_cxx_compiler" "${CMAKE_CXX_COMPILER}")
 # -----------------------------------------------------------------------------

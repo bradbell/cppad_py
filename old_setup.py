@@ -12,7 +12,7 @@ import shutil
 from setuptools import setup, Extension
 # -----------------------------------------------------------------------------
 def sys_exit(msg) :
-   sys.exit( 'setup.py: ' + msg )
+   sys.exit( 'old_setup.py: ' + msg )
 #
 def sys_command(command_list) :
    command_str = " ".join(command_list)
@@ -252,7 +252,7 @@ setup_result = setup(
    package_dir  = { 'cppad_py' : 'lib/python/cppad_py' },
 )
 # -----------------------------------------------------------------------------
-# 2DO: figure out why setup.py install not putting cppad_py in python_path ?
+# 2DO: figure out why old_setup.py install not putting cppad_py in python_path ?
 if install_distribution :
    command_list  = [ 'find', '-L',  cmake_install_prefix, '-name', 'site-packages' ]
    python_path   = sys_command( command_list ).replace('\n', '')
@@ -262,11 +262,11 @@ if install_distribution :
       cppad_py_path = sys_command( command_list ).replace('\n', '')
       shutil.copytree( cppad_py_path, python_path + '/cppad_py' )
 # -----------------------------------------------------------------------------
-print('setup.py: OK')
+print('old_setup.py: OK')
 sys.exit(0)
 # -----------------------------------------------------------------------------
 #
-# {xrst_begin setup.py}
+# {xrst_begin old_setup.py}
 # {xrst_spell
 #     bdist
 #     cholmod
@@ -308,7 +308,7 @@ sys.exit(0)
 # Syntax
 # ******
 #
-# | ``python3 setup.py install --prefix=``\ *prefix*
+# | ``python3 old_setup.py install --prefix=``\ *prefix*
 #
 # External Requirements
 # *********************
@@ -423,7 +423,7 @@ sys.exit(0)
 # You can build a local copy of the Python cppad_py module using the
 # following command in the *top_srcdir* :
 #
-# | |tab| ``python3 setup.py bdist``
+# | |tab| ``python3 old_setup.py bdist``
 #
 # This will create the directory
 #
@@ -470,9 +470,9 @@ sys.exit(0)
 # *******
 # Use the following command to build and install cppad_py:
 #
-# | |tab| ``python3 setup.py install --prefix=$prefix``
+# | |tab| ``python3 old_setup.py install --prefix=$prefix``
 #
-# (see :ref:`prefix<setup.py@prefix>` above for how to set this shell
+# (see :ref:`prefix<old_setup.py@prefix>` above for how to set this shell
 # variable).
 #
 # This will install cppad_py in the directory
@@ -522,7 +522,7 @@ sys.exit(0)
 # vim, git, make, cmake, swig.
 # Next the mingw-w64-x86_64 version of following packages were installed using
 # pacman:  python, python-scipy, python-setuptools, gcc
-# The problem is that setup.py is mixing windows and unix paths.
+# The problem is that old_setup.py is mixing windows and unix paths.
 # An attempt was made to fix the environment variables using ``cygpath``
 # utility, but other related problems still persisted.
 #
@@ -534,5 +534,5 @@ sys.exit(0)
 #  bin/get_cppad_mixed.sh
 # }
 #
-# {xrst_end setup.py}
+# {xrst_end old_setup.py}
 # -----------------------------------------------------------------------------
