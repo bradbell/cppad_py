@@ -21,7 +21,8 @@ See Also
 Simple Case
 ***********
 In the simple case, :ref:`get_cppad.sh@Settings@include_mixed` is false.
-In this case the following procedure should install cppad_py:
+If :ref:`get_cppad.sh@Settings@build_type` is debug (release),
+cppad_py will run slower (faster) and do more (less) error detection.
 
 #. bin/get_cppad.sh
 #. git clone https://github.com/bradbell/cppad_py.git cppad_py.git
@@ -128,9 +129,15 @@ if extra_cxx_flags == '' :
    extra_compile_args = list()
 else :
    extra_compile_args = extra_cxx_flags.split()
+extra_compile_args += [ '-Wno-array-bounds' ]
 if include_mixed == 'true' :
    extra_compile_args += [ '-D', 'INCLUDE_MIXED' ]
 extra_compile_args += extra_link_args
+#
+# undef_macros
+undef_macros        = list()
+if build_type == 'debug' :
+   undef_macros = [ 'NDEBUG' ]
 #
 # ext_module
 extension_module = Extension(
@@ -142,6 +149,7 @@ extension_module = Extension(
    libraries          = libraries,
    extra_compile_args = extra_compile_args,
    extra_link_args    = extra_link_args,
+   undef_macros       = undef_macros,
 )
 #
 # my_build_ext
