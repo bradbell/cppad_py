@@ -18,6 +18,13 @@ See Also
 ********
 :ref:`old_setup.py-name`
 
+Requirements
+************
+{xrst_toc_table
+   bin/get_cppad.sh
+   bin/get_cppad_mixed.sh
+}
+
 Simple Case
 ***********
 In the simple case, :ref:`get_cppad.sh@Settings@include_mixed` is false.
@@ -28,7 +35,7 @@ cppad_py will run slower (faster) and do more (less) error detection.
 #. git clone https://github.com/bradbell/cppad_py.git cppad_py.git
 #. cd cppad_py.git
 #. python3 -m build
-#. pip install dist/cppad_py-\*.tar.gz
+#. pip install dist/cppad_py-\*.tar.gz --user
 
 If you use this form of the install,
 you will not be able to use any of the :ref:`mixed-name` routines.
@@ -48,7 +55,7 @@ In the mixed case, :ref:`get_cppad.sh@Settings@include_mixed` is true.
 #. git clone https://github.com/bradbell/cppad_py.git cppad_py.git
 #. cd cppad_py.git
 #. python3 -m build
-#. pip install dist/cppad_py-\*.tar.gz
+#. pip install dist/cppad_py-\*.tar.gz --user
 
 If you use this form of the install,
 you will be able to use any of the :ref:`mixed-name` routines.

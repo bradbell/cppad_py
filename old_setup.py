@@ -530,12 +530,10 @@ sys.exit(0)
 # An attempt was made to fix the environment variables using ``cygpath``
 # utility, but other related problems still persisted.
 #
-# Children
-# ********
+# Errors
+# ******
 # {xrst_toc_table
 #  install_error.xrst
-#  bin/get_cppad.sh
-#  bin/get_cppad_mixed.sh
 # }
 #
 # {xrst_end old_setup.py}

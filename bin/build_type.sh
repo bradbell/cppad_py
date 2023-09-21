@@ -44,44 +44,24 @@ fi
 echo "cmake_install_prefix=$cmake_install_prefix"
 #
 # cmake_install_prefix: link
-if ! echo $cmake_install_prefix | grep '/[.]local' > /dev/null
-then
-   if [ ! -d $cmake_install_prefix.$build_type ]
+# build: link
+for dir in "$cmake_install_prefix" build
+do
+   if [ ! -d $dir.$build_type ]
    then
-      mkdir -p $cmake_install_prefix.$build_type
+      mkdir -p $dir.$build_type
    fi
-   if [ -e $cmake_install_prefix ] || [ -L $cmake_install_prefix ]
+   if [ -e $dir ] || [ -L $dir ]
    then
-      if [ ! -L $cmake_install_prefix ]
+      if [ ! -L $dir ]
       then
-         echo "build_typs.sh: $cmake_install_prefix is not a symbolic link"
+         echo "build_typs.sh: $dir is not a symbolic link"
          exit 1
       fi
-      echo_eval rm $cmake_install_prefix
+      echo_eval rm $dir
    fi
-   echo_eval ln -s $cmake_install_prefix.$build_type $cmake_install_prefix
-   #
-   echo "$cmake_install_prefix -> $cmake_install_prefix.$build_type"
-else
-   echo "$cmake_install_prefix"
-fi
-#
-# build: link
-if [ ! -d build.$build_type ]
-then
-   mkdir -p build.$build_type
-fi
-if [ -e build ] || [ -L build ]
-then
-   if [ ! -L build ]
-   then
-      echo "build_typs.sh: build is not a symbolic link"
-      exit 1
-   fi
-   echo_eval rm build
-fi
-echo_eval ln -s build.$build_type build
-echo "build -> build.$build_type"
+   echo_eval ln -s $dir.$build_type $dir
+done
 # -----------------------------------------------------------------------------
 echo 'build_type.sh: OK'
 exit 0

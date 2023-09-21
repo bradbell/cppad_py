@@ -1,8 +1,9 @@
-#! /bin/bash -e
+#! /usr/bin/env bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
+set -e -u
 # bash function that echos and executes a command
 echo_eval() {
    echo $*
@@ -15,24 +16,20 @@ then
    exit 1
 fi
 # -----------------------------------------------------------------------------
-if [ "$1" != 'html' ] && [ "$1" != 'pdf' ]
+if [ "$#" != 0 ]
 then
-   echo 'usage: bin/run_xrst (html|pdf)'
+   echo 'bin/run_xrst.sh does not expect any arguments'
    exit 1
 fi
-target="$1"
 # -----------------------------------------------------------------------------
-# xsrst
-if [ "$target" == 'html' ]
+if [ -e build/html ]
 then
-   xrst \
-      --target html \
-      --html_theme sphinx_rtd_theme \
-      --local_toc
-else
-   xrst --target tex
-   make -C build/tex cppad_py.pdf
+   rm -r build/html
 fi
+xrst \
+   --target html \
+   --html_theme sphinx_rtd_theme \
+   --local_toc
 # -----------------------------------------------------------------------------
 echo 'run_xrst.sh: OK'
 exit 0

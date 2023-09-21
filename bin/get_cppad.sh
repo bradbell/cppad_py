@@ -10,6 +10,7 @@ set -e -u
 #     cmake
 #     cppad
 #     cxx
+#     dist
 #     usr
 #     wno
 #     makefile
@@ -39,7 +40,10 @@ set -e -u
 #
 # cmake_install_prefix
 # ====================
-# This prefix is used to install cppad_py.
+# This prefix is used to install cppad and cppad_mixed.
+# The :ref:`old_setup.py-name` script also uses this prefix to install
+# cppad_py. The new :ref:`setup.py-name` script installs cppad_py
+# using ``pip`` , so its prefix is set independently.
 # {xrst_code sh}
 cmake_install_prefix="$HOME/prefix/cppad_py"
 # {xrst_code}
@@ -51,8 +55,6 @@ cmake_install_prefix="$HOME/prefix/cppad_py"
 # #.  It may include the shell variable ``$HOME`` but no other variables;
 #     e.g; ``$HOME/prefix`` .
 #     Note that ``$HOME`` starts with ``/`` .
-# #.  The case where the prefix ends with ``/.local`` is a special case
-#     (because it is used by ``pip install --user`` *package* ).
 #
 # extra_cxx_flags
 # ===============
@@ -74,13 +76,13 @@ build_type='release'
 #
 # cmake_install_prefix
 # --------------------
-# If *cmake_install_prefix* ends with ``/.local`` ,
-# it is the actual install prefix.
-# Otherwise, the actual prefix used for the install is
+# The actual prefix used for the install is
 #
 # | |tab| *cmake_install_prefix.build_type*
 #
 # and a soft link is created from *cmake_install_prefix* to this directory.
+# This way you can switch between testing debug and release without rebuilding
+# the code installed by ``bin/get_cppad.sh`` or ``bin/get_cppad_mixed.sh`` .
 #
 # build
 # -----
@@ -88,8 +90,10 @@ build_type='release'
 #
 # | |tab| ``build.``\ *build_type*
 #
-# is used to compile and test the software and a soft link is created from
-# ``build`` to this subdirectory.
+# is used by :ref:`old_setup.py-name` to compile and test the software and
+# a soft link is created from ``build`` to this subdirectory.
+# The new :ref:`setup.py-name` uses the ``dist`` directory to build the
+# cppad_py package.
 #
 # include_mixed
 # =============
@@ -122,7 +126,7 @@ verbose_makefile='false'
 #
 # Caching
 # *******
-# This script and ``bin/get_cppad_mixed.sh`` cache previous builds so that
+# This script caches previous builds so that
 # when you re-run the script it does not re-do all the work.
 # If you have trouble, try deleting the directory
 #

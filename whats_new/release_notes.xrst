@@ -37,6 +37,14 @@ CppAD Py Changes During 2023
 mm-dd
 *****
 
+09-21
+=====
+Improve and update the :ref:`get_cppad.sh-name`
+and `get_cppad_mixed.sh-name` documentation.
+Of particular interest is how
+:ref:`get_cppad.sh@Settings@cmake_install_prefix` relates
+to the prefix used by the new :ref:`setup.py-name` .
+
 09-20
 =====
 Move the old setup.py to :ref:`old_setup.py-name` and create a new version

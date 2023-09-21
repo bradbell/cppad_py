@@ -7,6 +7,7 @@
 #
 # {xrst_begin get_cppad_mixed.sh}
 # {xrst_spell
+#     caching
 #     cppad
 #     cmake
 #     cxx
@@ -40,6 +41,17 @@
 # This scripts uses the
 # :ref:`get_cppad_sh settings<get_cppad.sh@Settings>` for
 # *cmake_install_prefix* , *extra_cxx_flags*, and *build_type* .
+#
+# Caching
+# *******
+# This script caches previous builds so that
+# when you re-run the script it does not re-do all the work.
+# If you have trouble, try deleting the directory
+#
+# | |tab| ``external/cppad_mixed.git``
+#
+# and re-running this script.
+#
 #
 # Uninstall
 # *********
