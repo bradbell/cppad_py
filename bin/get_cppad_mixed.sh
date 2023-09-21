@@ -183,9 +183,23 @@ fi
 # -----------------------------------------------------------------------------
 # cppad_mixed example install
 run_test='false'
-replace='false'
+replace='true'
 echo_eval bin/example_install.sh $run_test $replace
-#
+# -----------------------------------------------------------------------------
+# cmake_install_prefix/include/Eigen
+target="$cmake_install_prefix/eigen/include/eigen3/Eigen"
+link_name="$cmake_install_prefix/include/Eigen"
+if [ ! -d $target ]
+then
+   echo "get_cppad_mixed.sh: expected directory $target"
+   exit 1
+fi
+if [ -e "$link_name" ]
+then
+   rm $link_name
+fi
+ln -s $target $link_name
+ls -l $link_name
 # -----------------------------------------------------------------------------
 echo 'get_cppad_mixed.sh: OK'
 exit 0

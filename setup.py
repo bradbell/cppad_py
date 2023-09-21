@@ -27,15 +27,31 @@ cppad_py will run slower (faster) and do more (less) error detection.
 #. bin/get_cppad.sh
 #. git clone https://github.com/bradbell/cppad_py.git cppad_py.git
 #. cd cppad_py.git
-#. python -m build
+#. python3 -m build
 #. pip install dist/cppad_py-\*.tar.gz
 
+If you use this form of the install,
+you will not be able to use any of the :ref:`mixed-name` routines.
 You should now be able to execute the following example:
 {xrst_literal
    readme.md
    # BEGIN PYTHON
    # END PYTHON
 }
+
+
+Mixed Case
+**********
+In the mixed case, :ref:`get_cppad.sh@Settings@include_mixed` is true.
+
+#. bin/get_cppad_mixed.sh
+#. git clone https://github.com/bradbell/cppad_py.git cppad_py.git
+#. cd cppad_py.git
+#. python3 -m build
+#. pip install dist/cppad_py-\*.tar.gz
+
+If you use this form of the install,
+you will be able to use any of the :ref:`mixed-name` routines.
 
 {xrst_end setup.py}
 """
