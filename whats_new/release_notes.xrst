@@ -38,11 +38,13 @@ mm-dd
 
 09-21
 =====
-Improve and update the :ref:`get_cppad.sh-name`
-and `get_cppad_mixed.sh-name` documentation.
-Of particular interest is how
-:ref:`get_cppad.sh@Settings@cmake_install_prefix` relates
-to the prefix used by the new :ref:`setup.py-name` .
+#. Improve and update the :ref:`get_cppad.sh-name`
+   and `get_cppad_mixed.sh-name` documentation.
+   Of particular interest is how
+   :ref:`get_cppad.sh@Settings@cmake_install_prefix` relates
+   to the prefix used by the new :ref:`setup.py-name` .
+#. Fix some import resolution problems with the new :ref:`setup.py-name`
+   when :ref:`get_cppad.sh@Settings@include_mixed` is true.
 
 09-20
 =====

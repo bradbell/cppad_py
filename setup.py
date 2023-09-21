@@ -67,7 +67,7 @@ import re
 import os
 #
 from setuptools                       import setup, Extension
-from setuptools.command.build_ext     import build_ext
+from setuptools.command.build_py      import build_py
 # -----------------------------------------------------------------------------
 # bin/get_cppad.sh settings
 #
@@ -137,24 +137,28 @@ for lib in [ 'lib' , 'lib64' ] :
       library_dirs.append(directory)
 #
 # libraries
-libraries = [ 'cppad_lib' ]
+libraries = list()
 if include_mixed == 'true' :
    libraries += [ 'cppad_mixed', 'ipopt', 'gsl', 'cholmod' ]
+libraries += [ 'cppad_lib' ]
 #
 # extra_link_args
 extra_link_args = list()
 for directory in library_dirs :
    extra_link_args.append( f'-Wl,-rpath={directory}' )
+for lib in libraries :
+   extra_link_args.append( f'-l{lib}' )
+#
+# libraries
+# Theese values are now in extra_link_args
+libraries    = list()
 #
 # extra_compile_args
-if extra_cxx_flags == '' :
-   extra_compile_args = list()
-else :
+extra_compile_args = [ '-Wno-array-bounds' ]
+if extra_cxx_flags != '' :
    extra_compile_args = extra_cxx_flags.split()
-extra_compile_args += [ '-Wno-array-bounds' ]
 if include_mixed == 'true' :
    extra_compile_args += [ '-D', 'INCLUDE_MIXED' ]
-extra_compile_args += extra_link_args
 #
 # undef_macros
 undef_macros        = list()
@@ -174,17 +178,21 @@ extension_module = Extension(
    undef_macros       = undef_macros,
 )
 #
-# my_build_ext
-# Build extensions before python or cppad_swig.py will be missing.
+# my_build_py
+# Build extensions before python or cppad_swig.py will not be current;
 # see https://github.com/yanqd0/swig-python-demo
-class my_build_ext(build_ext):
+class my_build_py(build_py):
    def run(self):
-      super(build_ext, self).run()
       #
-      # 2DO: fix code above so the followin kludge is not needed:
-      # pip installs _cppad_swig.*.so file # in site-packages
-      # instead of site-packages/cppad_py
+      # file_name
       file_name = 'lib/python/cppad_py/cppad_swig.py'
+      #
+      # build_ext first to create file_name which is needed by build_py.
+      self.run_command('build_ext')
+      #
+      # 2DO: fix setup.py so the following kludge is not needed because
+      # pip installs _cppad_swig.*.so file in site-packages instead of
+      # site-packages/cppad_py (where swig expects it to be).
       file_obj  = open(file_name, 'r')
       file_data = file_obj.read()
       file_obj.close()
@@ -194,6 +202,9 @@ class my_build_ext(build_ext):
       file_obj  = open(file_name, 'w')
       file_obj.write(file_data)
       file_obj.close()
+      #
+      # build_py
+      super(build_py, self).run()
 # ----------------------------------------------------------------------------
 #
 # setup
@@ -203,6 +214,6 @@ setup(
    packages     = [ 'cppad_py' ],
    package_dir  = { 'cppad_py' : 'lib/python/cppad_py' },
    cmdclass     = {
-      'build_ext' : my_build_ext,
+      'build_py' : my_build_py,
    }
 )
