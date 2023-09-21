@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 import numpy
 import cppad_py
@@ -9,7 +9,6 @@ import cppad_py
 # {xrst_begin numpy2vec}
 # {xrst_spell
 #     bool
-#     cppad
 #     dtype
 #     tuple
 # }
@@ -134,7 +133,6 @@ def numpy2vec(array, dtype, shape, context, name) :
 # -----------------------------------------------------------------------------
 # {xrst_begin vec2numpy}
 # {xrst_spell
-#     cppad
 #     len
 # }
 # {xrst_comment_ch #}

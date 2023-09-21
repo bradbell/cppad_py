@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 /* cppad_py_swig.i */
 # ifdef SWIG
@@ -26,7 +26,6 @@
 @xrst_begin module@
 
 {xrst_spell
-   cppad
    namespace
 }
 

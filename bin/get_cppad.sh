@@ -8,7 +8,6 @@ set -e -u
 # {xrst_spell
 #     caching
 #     cmake
-#     cppad
 #     cxx
 #     dist
 #     usr
@@ -20,7 +19,7 @@ set -e -u
 # {xrst_comment_ch #}
 #
 #
-# Get or Remove Cppad
+# Get or Remove CppAD
 # ###################
 #
 # Syntax
@@ -103,14 +102,14 @@ build_type='release'
 include_mixed='false'
 # {xrst_code}
 # If it is true, the install script ``bin/get_cppad_mixed.sh``
-# should be used to install Cppad together with the all the other cppad_mixed
+# should be used to install CppAD together with the all the other cppad_mixed
 # requirements.
-# Otherwise, ``bin/get_cppad.sh`` should be used to install Cppad.
+# Otherwise, ``bin/get_cppad.sh`` should be used to install CppAD.
 #
 # test_cppad
 # ==========
 # This must be must ``true`` or ``false`` .
-# Cppad has a huge test suite and this can take a significant amount of time,
+# CppAD has a huge test suite and this can take a significant amount of time,
 # but it may be useful if you have problems.
 # {xrst_code sh}
 test_cppad='false'

@@ -5,7 +5,6 @@
 #
 # {xrst_begin py_sparse_rc}
 # {xrst_spell
-#     cppad
 #     nnz
 # }
 # {xrst_comment_ch #}
@@ -72,7 +71,7 @@
 # | |tab| *row* [ *k* ] = *r*
 # | |tab| *col* [ *k* ] = *c*
 #
-# (The name ``set`` is used by Cppad, but not used here,
+# (The name ``set`` is used by CppAD, but not used here,
 # because ``set`` it is a built-in name in Python.)
 #
 # k

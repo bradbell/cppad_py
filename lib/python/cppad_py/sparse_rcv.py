@@ -5,7 +5,6 @@
 #
 # {xrst_begin py_sparse_rcv}
 # {xrst_spell
-#     cppad
 #     nnz
 #     rcv
 # }
@@ -66,7 +65,7 @@
 #
 # | |tab| *val* [ *k* ] = *v*
 #
-# (The name ``set`` is used by Cppad, but not used here,
+# (The name ``set`` is used by CppAD, but not used here,
 # because ``set`` it is a built-in name in Python.)
 #
 # k

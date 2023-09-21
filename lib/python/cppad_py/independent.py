@@ -8,7 +8,6 @@
 # {xrst_begin py_independent}
 # {xrst_spell
 #     adynamic
-#     cppad
 #     nd
 #     nx
 # }

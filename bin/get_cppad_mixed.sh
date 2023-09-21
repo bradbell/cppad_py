@@ -8,7 +8,6 @@
 # {xrst_begin get_cppad_mixed.sh}
 # {xrst_spell
 #     caching
-#     cppad
 #     cmake
 #     cxx
 #     rm

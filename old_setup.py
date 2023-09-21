@@ -274,7 +274,6 @@ sys.exit(0)
 #     cmd
 #     config
 #     cp
-#     cppad
 #     cygpath
 #     cygwin
 #     devel

@@ -13,7 +13,6 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 -------------------------------------------------------------------------------
 {xrst_begin cpp_independent}
 {xrst_spell
-   cppad
    nd
    nx
 }
@@ -143,7 +142,6 @@ std::vector<a_double> independent(
 -------------------------------------------------------------------------------
 {xrst_begin cpp_abort_recording}
 {xrst_spell
-   cppad
 }
 
 
@@ -176,7 +174,6 @@ void abort_recording(void)
 {xrst_begin cpp_fun_ctor}
 {xrst_spell
    af
-   cppad
 }
 
 
@@ -267,7 +264,7 @@ d_fun::d_fun(
    if( n == 0 )
       return;
 
-   // copy and convert from Swig vector to Cppad vectors
+   // copy and convert from Swig vector to CppAD vectors
    CppAD::vector< CppAD::AD<double> > ax_copy(n), ay_copy(m);
    for(size_t j = 0; j < n; j++)
       ax_copy[j] = *( ax[j].ptr() );

@@ -1,14 +1,13 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 {xrst_begin cpp_fun}
 {xrst_spell
-   cppad
 }
 
 
-Cppad Py AD Functions
+CppAD Py AD Functions
 #####################
 
 Children
@@ -21,11 +20,10 @@ Children
 -------------------------------------------------------------------------------
 {xrst_begin sparse}
 {xrst_spell
-   cppad
 }
 
 
-Cppad Py Sparse Calculation
+CppAD Py Sparse Calculation
 ###########################
 
 Children

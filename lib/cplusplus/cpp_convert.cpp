@@ -8,7 +8,6 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 -------------------------------------------------------------------------------
 {xrst_begin_parent cpp_convert}
 {xrst_spell
-   cppad
 }
 
 Convert Objects Between cppad_mixed and cppad_py
@@ -23,7 +22,6 @@ Children
 -------------------------------------------------------------------------------
 {xrst_begin ad_vec_std2cppad}
 {xrst_spell
-   cppad
 }
 
 
@@ -58,7 +56,6 @@ ad_vec_std2cppad(const std::vector<a_double>& v_in )
 -------------------------------------------------------------------------------
 {xrst_begin ad_vec_cppad2std}
 {xrst_spell
-   cppad
 }
 
 
@@ -93,7 +90,6 @@ ad_vec_cppad2std(const CppAD::vector< CppAD::AD<double> >& v_in )
 -------------------------------------------------------------------------------
 {xrst_begin d_vec_std2cppad}
 {xrst_spell
-   cppad
 }
 
 
@@ -128,7 +124,6 @@ d_vec_std2cppad(const std::vector<double>& v_in )
 -------------------------------------------------------------------------------
 {xrst_begin d_vec_cppad2std}
 {xrst_spell
-   cppad
 }
 
 
@@ -164,7 +159,6 @@ d_vec_cppad2std(const CppAD::vector<double>& v_in )
 -------------------------------------------------------------------------------
 {xrst_begin mixed2sparse_rcv}
 {xrst_spell
-   cppad
    rcv
 }
 

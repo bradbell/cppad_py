@@ -76,7 +76,6 @@ a_double::a_double(const CppAD::AD<double>* a_ptr)
 -------------------------------------------------------------------------------
 {xrst_begin a_double_ctor}
 {xrst_spell
-   cppad
 }
 
 

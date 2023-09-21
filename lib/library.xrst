@@ -1,14 +1,13 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 {xrst_begin_parent library}
 {xrst_spell
-   cppad
 }
 
 
-The Cppad Py Libraries
+The CppAD Py Libraries
 ######################
 
 Children
@@ -22,12 +21,11 @@ Children
 -------------------------------------------------------------------------------
 {xrst_begin a_double}
 {xrst_spell
-   cppad
    scalars
 }
 
 
-Cppad Py AD Scalars
+CppAD Py AD Scalars
 ###################
 
 Children
@@ -40,11 +38,10 @@ Children
 -------------------------------------------------------------------------------
 {xrst_begin vector}
 {xrst_spell
-   cppad
 }
 
 
-Cppad Py Vectors
+CppAD Py Vectors
 ################
 
 Children

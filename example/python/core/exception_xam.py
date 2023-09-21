@@ -36,11 +36,10 @@ def exception_xam() :
 #
 # {xrst_begin exception_xam.py}
 # {xrst_spell
-#     cppad
 # }
 # {xrst_comment_ch #}
 #
-# Python: Cppad Py Exception Handling: Example and Test
+# Python: CppAD Py Exception Handling: Example and Test
 # #####################################################
 # {xrst_literal
 #  # BEGIN SOURCE

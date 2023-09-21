@@ -491,7 +491,6 @@ class mixed :
    -------------------------------------------------------------------------
    {xrst_begin mixed_optimize_fixed}
    {xrst_spell
-      cppad
       ipopt
       iter
       lagrange

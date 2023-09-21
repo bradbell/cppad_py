@@ -4,7 +4,6 @@
 # ----------------------------------------------------------------------------
 {xrst_begin cppad_py}
 {xrst_spell
-   cppad
    gpl
    macros
    txt
@@ -14,7 +13,7 @@
    default automatic indexing command for all cppad_py documentation
 
 .. comment:  -------------------------------------------------------------
-   Latex macros used throughout Cppad Py documentation
+   Latex macros used throughout CppAD Py documentation
 
 
 A C++ Object Library and Python Interface to CppAD
@@ -32,7 +31,7 @@ Purpose
 *******
 
 #. Provide a connection from Python to the
-   Algorithmic Differentiation (AD) package Cppad; see :ref:`py_lib-name`.
+   Algorithmic Differentiation (AD) package CppAD; see :ref:`py_lib-name`.
 #. Provide an AD object library; see :ref:`cpp_lib-name`.
 #. Provide a concrete example of how
    `swig <https://www.swig.org>`_
@@ -51,7 +50,7 @@ The following is a link to some numerical examples:
 
 C++ Function Speed
 ******************
-One can use Cppad Py to get faster function evaluation in scripting Python,
+One can use CppAD Py to get faster function evaluation in scripting Python,
 when the sequence of floating point operations does not depend on the
 independent variables.
 Once an :ref:`py_fun-name` is recorded, zero order

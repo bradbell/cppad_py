@@ -13,7 +13,6 @@
    compilers
    covariance
    covid
-   cppad
    dir
    erf
    fabs
@@ -677,6 +676,6 @@ Add an :ref:`install_error-name` section to the documentation.
 
 #. Change the documentation display on the web using a more recent version of
    the documentation program ``omhelp-20200130`` .
-#. Add :ref:`caching<get_cppad.sh@Caching>` to the Cppad install.
+#. Add :ref:`caching<get_cppad.sh@Caching>` to the CppAD install.
 
 {xrst_end whats_new_2020}

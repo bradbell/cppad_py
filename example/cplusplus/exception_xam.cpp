@@ -29,10 +29,9 @@ bool exception_xam(void) {
 /*
 {xrst_begin exception_xam.cpp}
 {xrst_spell
-   cppad
 }
 
-C++: Cppad Py Exception Handling: Example and Test
+C++: CppAD Py Exception Handling: Example and Test
 ##################################################
 {xrst_literal
    // BEGIN SOURCE

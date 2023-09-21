@@ -14,7 +14,6 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 -------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_rc}
 {xrst_spell
-   cppad
    nnz
 }
 
@@ -93,7 +92,7 @@ This function sets the values
 | |tab| *row* [ *k* ] = *r*
 | |tab| *col* [ *k* ] = *c*
 
-(The name ``set`` is used by Cppad, but not used here,
+(The name ``set`` is used by CppAD, but not used here,
 because ``set`` it is a built-in name in Python.)
 
 k
@@ -275,7 +274,6 @@ std::vector<int> sparse_rc::col_major(void) const
 -------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_rcv}
 {xrst_spell
-   cppad
    nnz
    rcv
 }
@@ -345,7 +343,7 @@ This function sets the value
 
 | |tab| *val* [ *k* ] = *v*
 
-(The name ``set`` is used by Cppad, but not used here,
+(The name ``set`` is used by CppAD, but not used here,
 because ``set`` it is a built-in name in Python.)
 
 k
@@ -836,7 +834,6 @@ void d_fun::rev_hes_sparsity(
 ------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_jac}
 {xrst_spell
-   cppad
    jac
    rcv
 }
@@ -1026,7 +1023,6 @@ int d_fun::sparse_jac_rev(
 ------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_hes}
 {xrst_spell
-   cppad
    hes
    multiplier
    rcv

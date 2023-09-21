@@ -62,7 +62,7 @@ ENDMACRO(print_variable)
 #  BOOL, if the variable only has the values true or false.
 #
 # ${description}: (in)
-# Is a description of how the variable affects the Cppad install procedure.
+# Is a description of how the variable affects the CppAD install procedure.
 MACRO(cmake_argument variable default type description)
    IF( NOT ( ${type} STREQUAL "STRING" ) )
    IF( NOT ( ${type} STREQUAL "PATH" ) )
@@ -111,7 +111,7 @@ IF ( cmake_install_prefix )
       SET(cmake_install_prefix "${CMAKE_SOURCE_DIR}/${cmake_install_prefix}")
    ENDIF( cmake_install_prefix MATCHES "^[^/].*" )
 ENDIF ( cmake_install_prefix )
-cmake_argument(cmake_install_prefix NOTFOUND PATH "prefix used to install Cppad" )
+cmake_argument(cmake_install_prefix NOTFOUND PATH "prefix used to install CppAD" )
 IF( NOT cmake_install_prefix )
    MESSAGE(FATAL_ERROR "cmake_install_prefix is not defined by cmake command line")
 ENDIF( NOT cmake_install_prefix )

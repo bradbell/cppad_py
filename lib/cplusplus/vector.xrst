@@ -7,12 +7,11 @@
    av
    bool
    bv
-   cppad
    dv
 }
 
 
-Cppad Py Vector Constructors
+CppAD Py Vector Constructors
 ############################
 
 Syntax

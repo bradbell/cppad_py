@@ -7,7 +7,6 @@
 # {xrst_begin rm_cppad_mixed.sh}
 # {xrst_spell
 #     uninstall
-#     cppad
 #     rm
 #     cmake
 # }

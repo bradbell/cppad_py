@@ -8,7 +8,6 @@ r"""
    cd
    dist
    gz
-   cppad
 }
 
 Install cppad_py Python Module

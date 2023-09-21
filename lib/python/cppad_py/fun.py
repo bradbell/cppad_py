@@ -1,16 +1,15 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 #
 # {xrst_begin py_fun}
 # {xrst_spell
-#     cppad
 # }
 # {xrst_comment_ch #}
 #
 #
-# Cppad Py AD Functions
+# CppAD Py AD Functions
 # #####################
 #
 # .. comment:  Files that have Python specific Implementation and Documentation
