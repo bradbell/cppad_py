@@ -36,7 +36,7 @@ Execute the following shell commands::
    # possibly change some settings in bin/get_cppad.sh
    bin/get_cppad.sh
    python3 -m build
-   pip install dist/cppad_py-\*.tar.gz --user
+   pip install dist/cppad_py-*.tar.gz --user
 
 If you use this form of the install,
 you will not be able to use any of the :ref:`mixed-name` routines.
@@ -58,7 +58,7 @@ Execute the following shell commands::
    # possibly change some settings in bin/get_cppad.sh
    bin/get_cppad_mixed.sh
    python3 -m build
-   pip install dist/cppad_py-\*.tar.gz --user
+   pip install dist/cppad_py-*.tar.gz --user
 
 If you use this form of the install,
 you will be able to use any of the :ref:`mixed-name` routines.
