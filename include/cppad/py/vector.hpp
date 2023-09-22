@@ -1,8 +1,8 @@
-# ifndef CPPAD_PY_A_VECTOR_HPP
-# define CPPAD_PY_A_VECTOR_HPP
+# ifndef CPPAD_PY_VECTOR_HPP
+# define CPPAD_PY_VECTOR_HPP
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 # include <vector>
 # include <cppad/py/a_double.hpp>

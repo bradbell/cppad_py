@@ -130,6 +130,7 @@ fi
 echo_eval_log check_copyright.sh
 echo_eval_log bin/check_if_0.sh
 echo_eval_log bin/check_tab.sh
+echo_eval_log bin/check_guard.sh
 echo_eval_log bin/run_xrst.sh
 echo_eval_log bin/build_local.py
 echo_eval_log cd build

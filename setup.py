@@ -158,6 +158,7 @@ for lib in libraries :
 libraries    = list()
 #
 # extra_compile_args
+# gcc seems to give a wrong result checking array bounds during compile
 extra_compile_args = [ '-Wno-array-bounds' ]
 if extra_cxx_flags != '' :
    extra_compile_args += extra_cxx_flags.split()
