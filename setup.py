@@ -149,7 +149,7 @@ libraries += [ 'cppad_lib' ]
 # extra_link_args
 extra_link_args = list()
 for directory in library_dirs :
-   extra_link_args.append( f'-Wl,-rpath={directory}' )
+   extra_link_args.append( f'-Wl,-rpath,{directory}' )
 for lib in libraries :
    extra_link_args.append( f'-l{lib}' )
 #
