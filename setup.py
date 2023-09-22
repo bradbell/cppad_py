@@ -31,9 +31,10 @@ If :ref:`get_cppad.sh@Settings@build_type` is debug (release),
 cppad_py will run slower (faster) and do more (less) error detection.
 Execute the following shell commands::
 
-   bin/get_cppad.sh
    git clone https://github.com/bradbell/cppad_py.git cppad_py.git
    cd cppad_py.git
+   # possibly change some settings in bin/get_cppad.sh
+   bin/get_cppad.sh
    python3 -m build
    pip install dist/cppad_py-\*.tar.gz --user
 
@@ -52,9 +53,10 @@ Mixed Case
 In the mixed case, :ref:`get_cppad.sh@Settings@include_mixed` is true.
 Execute the following shell commands::
 
-   bin/get_cppad_mixed.sh
    git clone https://github.com/bradbell/cppad_py.git cppad_py.git
    cd cppad_py.git
+   # possibly change some settings in bin/get_cppad.sh
+   bin/get_cppad_mixed.sh
    python3 -m build
    pip install dist/cppad_py-\*.tar.gz --user
 
