@@ -44,6 +44,7 @@ Children
 {xrst_toc_table
    lib/cplusplus/cpp_convert.cpp
    include/cppad/py/assert.hpp
+   lib/cplusplus/build_type.cpp
 }
 
 {xrst_end cpp_utility}

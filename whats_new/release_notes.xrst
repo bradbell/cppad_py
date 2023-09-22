@@ -45,6 +45,8 @@ mm-dd
    to the prefix used by the new :ref:`setup.py-name` .
 #. Fix some import resolution problems with the new :ref:`setup.py-name`
    when :ref:`get_cppad.sh@Settings@include_mixed` is true.
+#. Add the :ref:`build_type-name` function. This will be used to exclude
+   certain error detection tests when using a release build.
 
 09-20
 =====

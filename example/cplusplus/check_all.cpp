@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-// SPDX-FileContributor: 2017-22 Bradley M. Bell
+// SPDX-FileContributor: 2017-23 Bradley M. Bell
 // ----------------------------------------------------------------------------
 
 // system includes
@@ -34,6 +34,7 @@ extern bool sparse_hes_pattern_xam(void);
 extern bool sparse_jac_xam(void);
 extern bool sparse_hes_xam(void);
 extern bool exception_xam(void);
+extern bool build_type_xam(void);
 
 namespace {
    // function that runs one test
@@ -84,6 +85,7 @@ int main(void)
    ok &= Run( sparse_hes_xam,            "sparse_jac_xam" );
    ok &= Run( sparse_hes_pattern_xam,    "sparse_hes_pattern_xam" );
    ok &= Run( exception_xam,             "error_message_xam" );
+   ok &= Run( build_type_xam,            "build_type_xam" );
    //
    assert( ok || (Run_error_count > 0) );
 

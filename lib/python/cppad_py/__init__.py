@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # initialize cppad_py
 # -----------------------------------------------------------------------------
@@ -16,6 +16,7 @@ from cppad_py.cppad_swig import vec_bool
 from cppad_py.cppad_swig import vec_double
 from cppad_py.cppad_swig import vec_int
 from cppad_py.cppad_swig import pow_int
+from cppad_py.cppad_swig import build_type
 # END_SORT_THIS_LINE_MINUS_1
 
 

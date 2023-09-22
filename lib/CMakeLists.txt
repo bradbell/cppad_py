@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # used cmake --help-policy CMP<nnnn> to get description of each policy
 #
@@ -18,6 +18,7 @@ include (GenerateExportHeader)
 # _cppad_swig
 # assume that swig has run with c++ output in ${CMAKE_CURRENT_BINARY_DIR}
 ADD_LIBRARY(_cppad_swig SHARED
+   cplusplus/build_type.cpp
    cplusplus/cppad_error.cpp
    cplusplus/a_double.cpp
    cplusplus/fun.cpp
