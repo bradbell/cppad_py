@@ -160,7 +160,7 @@ libraries    = list()
 # extra_compile_args
 extra_compile_args = [ '-Wno-array-bounds' ]
 if extra_cxx_flags != '' :
-   extra_compile_args = extra_cxx_flags.split()
+   extra_compile_args += extra_cxx_flags.split()
 if include_mixed == 'true' :
    extra_compile_args += [ '-D', 'INCLUDE_MIXED' ]
 #
