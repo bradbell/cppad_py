@@ -29,12 +29,13 @@ Simple Case
 In the simple case, :ref:`get_cppad.sh@Settings@include_mixed` is false.
 If :ref:`get_cppad.sh@Settings@build_type` is debug (release),
 cppad_py will run slower (faster) and do more (less) error detection.
+Execute the following shell commands::
 
-#. bin/get_cppad.sh
-#. git clone https://github.com/bradbell/cppad_py.git cppad_py.git
-#. cd cppad_py.git
-#. python3 -m build
-#. pip install dist/cppad_py-\*.tar.gz --user
+   bin/get_cppad.sh
+   git clone https://github.com/bradbell/cppad_py.git cppad_py.git
+   cd cppad_py.git
+   python3 -m build
+   pip install dist/cppad_py-\*.tar.gz --user
 
 If you use this form of the install,
 you will not be able to use any of the :ref:`mixed-name` routines.
@@ -49,12 +50,13 @@ You should now be able to execute the following example:
 Mixed Case
 **********
 In the mixed case, :ref:`get_cppad.sh@Settings@include_mixed` is true.
+Execute the following shell commands::
 
-#. bin/get_cppad_mixed.sh
-#. git clone https://github.com/bradbell/cppad_py.git cppad_py.git
-#. cd cppad_py.git
-#. python3 -m build
-#. pip install dist/cppad_py-\*.tar.gz --user
+   bin/get_cppad_mixed.sh
+   git clone https://github.com/bradbell/cppad_py.git cppad_py.git
+   cd cppad_py.git
+   python3 -m build
+   pip install dist/cppad_py-\*.tar.gz --user
 
 If you use this form of the install,
 you will be able to use any of the :ref:`mixed-name` routines.
