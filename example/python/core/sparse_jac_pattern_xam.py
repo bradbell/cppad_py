@@ -89,3 +89,5 @@ def sparse_jac_pattern_xam() :
 # }
 # {xrst_end sparse_jac_pattern_xam.py}
 #
+def test_sparse_jac_pattern_xam() :
+   assert sparse_jac_pattern_xam()

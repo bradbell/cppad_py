@@ -107,3 +107,5 @@ def sparse_hes_xam() :
 # }
 # {xrst_end sparse_hes_xam.py}
 #
+def test_sparse_hes_xam() :
+   assert sparse_hes_xam()

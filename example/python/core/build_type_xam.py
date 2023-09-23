@@ -30,3 +30,5 @@ def build_type_xam() :
 # }
 # {xrst_end build_type_xam.py}
 #
+def test_build_type_xam() :
+   assert build_type_xam()

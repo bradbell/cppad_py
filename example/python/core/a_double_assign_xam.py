@@ -45,3 +45,5 @@ def a_double_assign_xam() :
 # }
 # {xrst_end a_double_assign_xam.py}
 #
+def test_a_double_assign_xam() :
+   assert a_double_assign_xam()

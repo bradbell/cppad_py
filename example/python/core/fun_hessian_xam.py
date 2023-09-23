@@ -84,3 +84,5 @@ def fun_hessian_xam() :
 # }
 # {xrst_end fun_hessian_xam.py}
 #
+def test_fun_hessian_xam() :
+   assert fun_hessian_xam()

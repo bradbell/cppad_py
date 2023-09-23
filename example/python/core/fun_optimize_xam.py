@@ -67,3 +67,5 @@ def fun_optimize_xam() :
 # }
 # {xrst_end fun_optimize_xam.py}
 #
+def test_fun_optimize_xam() :
+   assert fun_optimize_xam()

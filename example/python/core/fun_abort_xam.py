@@ -61,3 +61,5 @@ def fun_abort_xam() :
 # }
 # {xrst_end fun_abort_xam.py}
 #
+def test_fun_abort_xam() :
+   assert fun_abort_xam()

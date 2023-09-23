@@ -65,3 +65,5 @@ def fun_dynamic_xam() :
 #  # END SOURCE
 # }
 # {xrst_end fun_dynamic_xam.py}
+def test_fun_dynamic_xam() :
+   assert fun_dynamic_xam()

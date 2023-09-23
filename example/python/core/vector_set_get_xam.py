@@ -57,3 +57,5 @@ def vector_set_get_xam() :
 # }
 # {xrst_end vector_set_get_xam.py}
 #
+def test_vector_set_get_xam() :
+   assert vector_set_get_xam()

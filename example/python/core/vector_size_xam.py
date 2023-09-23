@@ -41,3 +41,5 @@ def vector_size_xam() :
 # }
 # {xrst_end vector_size_xam.py}
 #
+def test_vector_size_xam() :
+   assert vector_size_xam()

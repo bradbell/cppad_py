@@ -75,3 +75,5 @@ def fun_jacobian_xam() :
 # }
 # {xrst_end fun_jacobian_xam.py}
 #
+def test_fun_jacobian_xam() :
+   assert fun_jacobian_xam()

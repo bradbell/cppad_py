@@ -36,3 +36,5 @@ def a_double_unary_op_xam() :
 # }
 # {xrst_end a_double_unary_op_xam.py}
 #
+def test_a_double_unary_op_xam() :
+   assert a_double_unary_op_xam()

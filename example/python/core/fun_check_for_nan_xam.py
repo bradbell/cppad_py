@@ -68,3 +68,5 @@ def fun_check_for_nan_xam() :
 #  # END SOURCE
 # }
 # {xrst_end check_for_nan_xam.py}
+def test_fun_check_for_nan_xam() :
+   assert fun_check_for_nan_xam()

@@ -122,3 +122,5 @@ def fun_reverse_xam() :
 # }
 # {xrst_end fun_reverse_xam.py}
 #
+def test_fun_reverse_xam() :
+   assert fun_reverse_xam()

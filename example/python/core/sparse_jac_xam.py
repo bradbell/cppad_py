@@ -103,3 +103,5 @@ def sparse_jac_xam() :
 # }
 # {xrst_end sparse_jac_xam.py}
 #
+def test_sparse_jac_xam() :
+   assert sparse_jac_xam()

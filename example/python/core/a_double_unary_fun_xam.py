@@ -65,3 +65,5 @@ def a_double_unary_fun_xam() :
 # }
 # {xrst_end a_double_unary_fun_xam.py}
 #
+def test_a_double_unary_fun_xam() :
+   assert a_double_unary_fun_xam()

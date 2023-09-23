@@ -127,3 +127,5 @@ def fun_json_xam() :
    ok  = to_json_xam()
    ok &= from_json_xam()
    return ok
+def test_fun_json_xam() :
+   assert fun_json_xam()

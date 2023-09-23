@@ -66,3 +66,5 @@ def sparse_rcv_xam() :
 # }
 # {xrst_end sparse_rcv_xam.py}
 #
+def test_sparse_rcv_xam() :
+   assert sparse_rcv_xam()

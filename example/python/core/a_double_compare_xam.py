@@ -51,3 +51,5 @@ def a_double_compare_xam() :
 # }
 # {xrst_end a_double_compare_xam.py}
 #
+def test_a_double_compare_xam() :
+   assert a_double_compare_xam()

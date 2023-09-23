@@ -68,3 +68,5 @@ def sparse_rc_xam() :
 # }
 # {xrst_end sparse_rc_xam.py}
 #
+def test_sparse_rc_xam() :
+   assert sparse_rc_xam()

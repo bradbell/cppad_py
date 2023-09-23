@@ -65,3 +65,5 @@ def a_fun_xam() :
 #  # END SOURCE
 # }
 # {xrst_end a_fun_xam.py}
+def test_a_fun_xam() :
+   assert a_fun_xam()

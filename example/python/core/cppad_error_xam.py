@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # cppad_error
 # -----------------------------------------------------------------------------
@@ -12,6 +12,10 @@ def cppad_error_xam() :
    #
    # initialize return variable
    ok = True
+   # ---------------------------------------------------------------------
+   # CppAD only detects and reports the error below when NDEBUG is noi defined
+   if cppad_py.build_type() == 'release' :
+      return ok
    # ---------------------------------------------------------------------
    n_ind = 1 # number of independent variables
    n_dep = 2 # number of dependent variables
@@ -61,3 +65,5 @@ def cppad_error_xam() :
 #  # END SOURCE
 # }
 # {xrst_end cppad_error_xam}
+def test_cppad_error_xam() :
+   assert cppad_error_xam()

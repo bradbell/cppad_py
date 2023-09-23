@@ -43,3 +43,5 @@ def a_double_property_xam() :
 # }
 # {xrst_end a_double_property_xam.py}
 #
+def test_a_double_property_xam() :
+   assert a_double_property_xam()

@@ -91,3 +91,5 @@ def fun_forward_xam() :
 # }
 # {xrst_end fun_forward_xam.py}
 #
+def test_fun_forward_xam() :
+   assert fun_forward_xam()

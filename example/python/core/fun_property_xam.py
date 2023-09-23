@@ -87,3 +87,5 @@ def fun_property_xam() :
 # }
 # {xrst_end fun_property_xam.py}
 #
+def test_fun_property_xam() :
+   assert fun_property_xam()

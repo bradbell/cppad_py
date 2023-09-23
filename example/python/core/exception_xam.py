@@ -47,3 +47,5 @@ def exception_xam() :
 # }
 # {xrst_end exception_xam.py}
 #
+def test_exception_xam() :
+   assert exception_xam()
