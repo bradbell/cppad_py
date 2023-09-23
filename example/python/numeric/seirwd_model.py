@@ -142,7 +142,7 @@ class fun_class :
       return J
 # -----------------------------------------------------------------------------
 # check the fun derivatives required by rosen3_step
-def test_fun_derivatives(t_all, p_all, initial) :
+def check_fun_derivatives(t_all, p_all, initial) :
    ok     = True
    n_step = 1
    fun  = fun_class(t_all, p_all, n_step)

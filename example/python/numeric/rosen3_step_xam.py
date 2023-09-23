@@ -126,7 +126,7 @@ class second_fun_class :
       return numpy.zeros( ny, dtype=type(y[0]) )
 # ---------------------------------------------------------------------------
 # Check derivative claculations in first_fun_class and second_fun_class
-def test_derivative() :
+def check_derivative() :
    ok       = True
    nx       = 3
    eps99    = 99.0 * numpy.finfo(float).eps
@@ -142,7 +142,7 @@ def test_derivative() :
    ok       = ok and check_rosen3_step(fun_1, t_start, y_start, t_step)
    return ok
 
-def test_case(case) :
+def check_case(case) :
    ok    = True
    nx    = 3
    eps99 = 99.0 * numpy.finfo(float).eps
@@ -197,9 +197,9 @@ def test_case(case) :
 # ---------------------------------------------------------------------------
 def rosen3_step_xam() :
    ok = True
-   ok = ok and test_derivative()
-   ok = ok and test_case(1)
-   ok = ok and test_case(2)
+   ok = ok and check_derivative()
+   ok = ok and check_case(1)
+   ok = ok and check_case(2)
    return ok
 
 # END_PYTHON

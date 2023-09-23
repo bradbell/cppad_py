@@ -22,7 +22,7 @@
 # BEGIN_PYTHON
 import numpy
 from seirwd_model import seirwd_model
-from seirwd_model import test_fun_derivatives
+from seirwd_model import check_fun_derivatives
 #
 def check_method(method) :
    ok    = True
@@ -64,7 +64,7 @@ def check_method(method) :
    # check derivatives in seirwd_model needed when method is rosen3
    # (This is not part of the User API for seirwd_model)
    if method == 'rosen3' :
-      ok = ok and test_fun_derivatives(t_all, p_all, initial)
+      ok = ok and check_fun_derivatives(t_all, p_all, initial)
    #
    # solve the ODE
    seirwd_all = seirwd_model(method, t_all, p_all, initial)
