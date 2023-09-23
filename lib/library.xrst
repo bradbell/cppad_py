@@ -66,9 +66,11 @@ Examples
 
 .. list-table::
    :widths: auto
+   :header-rows: 1
 
-   *  -  build_type
-      - :ref:`documentation<build_type-name>`
+   *  -  Feature
+      -  Git Commit
+   *  -  :ref:`build_type-name`
       - `2023-09-22 <https://github.com/bradbell/cppad_py/commit/c02bd5c602>`_
 
 
