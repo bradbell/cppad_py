@@ -28,6 +28,7 @@ CppAD Py Release Notes By Year
    uninstall
    mm
    dd
+   pytest
 }
 
 CppAD Py Changes During 2023
@@ -48,6 +49,7 @@ mm-dd
 #. Add the :ref:`build_type-name` function. This will be used to exclude
    certain error detection tests when using a release build.
 #. Combine the more.cpp and more.py into the :ref:`new_feature-name` page.
+#. Add pytest testing of the new :ref:`setup.py-name` install.
 
 09-20
 =====

@@ -8,6 +8,11 @@ r"""
    cd
    dist
    gz
+   pyproject
+   toml
+   grep
+   pytest
+   xam
 }
 
 Install cppad_py Python Module
@@ -24,6 +29,14 @@ Requirements
    bin/get_cppad_mixed.sh
 }
 
+version
+*******
+We use version below for the value of version in the pyproject.toml file
+(not including the quotes).
+You can determine this value with the following command::
+
+   grep '^version *=' pyproject.toml
+
 Simple Case
 ***********
 In the simple case, :ref:`get_cppad.sh@Settings@include_mixed` is false.
@@ -36,16 +49,25 @@ Execute the following shell commands::
    # possibly change some settings in bin/get_cppad.sh
    bin/get_cppad.sh
    python3 -m build
-   pip install dist/cppad_py-*.tar.gz --user
+   pip install dist/cppad_py-version.gz
 
 If you use this form of the install,
 you will not be able to use any of the :ref:`mixed-name` routines.
+
+Example
+=======
 You should now be able to execute the following example:
 {xrst_literal
    readme.md
    # BEGIN PYTHON
    # END PYTHON
 }
+
+Testing
+=======
+The following command will test this install::
+
+   pytest example/python/core/*_xam.py
 
 
 Mixed Case
@@ -58,10 +80,16 @@ Execute the following shell commands::
    # possibly change some settings in bin/get_cppad.sh
    bin/get_cppad_mixed.sh
    python3 -m build
-   pip install dist/cppad_py-*.tar.gz --user
+   pip install dist/cppad_py-version.tar.gz --user
 
 If you use this form of the install,
 you will be able to use any of the :ref:`mixed-name` routines.
+
+Testing
+=======
+The following command will test this install::
+
+   pytest example/python/*/*_xam.py
 
 {xrst_end setup.py}
 """
