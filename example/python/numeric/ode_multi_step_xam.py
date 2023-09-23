@@ -138,3 +138,5 @@ def ode_multi_step_xam() :
 
    return ok
 # END_PYTHON
+def test_ode_multi_step_xam() :
+   assert ode_multi_step_xam()

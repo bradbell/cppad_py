@@ -122,3 +122,5 @@ def runge4_step_xam() :
 
    return ok
 # END_PYTHON
+def test_runge4_step_xam() :
+   assert runge4_step_xam()

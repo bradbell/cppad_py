@@ -143,3 +143,5 @@ def optimize_fun_xam() :
    ok = ok and numpy.all( abs(rel_error) < 1e-5 )
    return ok
 # END_PYTHON
+def test_optimize_fun_xam() :
+   assert optimize_fun_xam()

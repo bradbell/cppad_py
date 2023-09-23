@@ -91,3 +91,5 @@ def simple_inv_xam() :
    return ok
 
 # END_PYTHON
+def test_simple_inv_xam() :
+   assert simple_inv_xam()

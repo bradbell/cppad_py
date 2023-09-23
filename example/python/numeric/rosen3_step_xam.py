@@ -203,3 +203,5 @@ def rosen3_step_xam() :
    return ok
 
 # END_PYTHON
+def test_rosen3_step_xam() :
+   assert rosen3_step_xam()

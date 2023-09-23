@@ -115,3 +115,5 @@ def seirwd_model_xam() :
    return ok
 
 # END_PYTHON
+def test_seirwd_model_xam() :
+   assert seirwd_model_xam()

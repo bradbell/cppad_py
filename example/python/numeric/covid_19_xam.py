@@ -829,3 +829,7 @@ def covid_19_xam(call_count = 0) :
    #
    return ok
 # END_PYTHON
+def test_covid_19_xam() :
+   # Do not test this example becasue it is slow and uses matplotlib.
+   # assert covid_19_xam()
+   assert True
