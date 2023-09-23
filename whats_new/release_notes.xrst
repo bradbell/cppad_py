@@ -47,6 +47,7 @@ mm-dd
    when :ref:`get_cppad.sh@Settings@include_mixed` is true.
 #. Add the :ref:`build_type-name` function. This will be used to exclude
    certain error detection tests when using a release build.
+#. Combine the more.cpp and more.py into the :ref:`new_feature-name` page.
 
 09-20
 =====
@@ -64,7 +65,7 @@ of :ref:`setup.py-name` .
 09-05
 =====
 #. Fix some documentation errors that a newer version of xrst detected.
-   These errors were in the :ref:`more.cpp-name` and :ref:`more.py-name`
+   These errors were in the more.cpp and more.py
    and were OMhelp commands that did not convert to xrst properly.
 #. Advance cppad_mixed from 20220519 to 20230112.
 

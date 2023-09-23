@@ -23,7 +23,8 @@ CppAD Py Changes During 2018
 #. Added the :ref:`dynamic<py_independent@dynamic>`
    argument to the ``independent`` function and the
    :ref:`f_new_dynamic<py_fun_new_dynamic-name>` function.
-#. Added the sections :ref:`more.cpp-name` and :ref:`more.py-name`.
+#. Added the sections more.cpp and more.py.
+   These have been replaced by :ref:`new_feature-name` .
 
 11-09
 *****

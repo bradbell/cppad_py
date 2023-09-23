@@ -51,3 +51,25 @@ Children
 }
 
 {xrst_end vector}
+-------------------------------------------------------------------------------
+{xrst_begin new_feature}
+{xrst_spell
+}
+
+
+Add New Features to cppad_py
+############################
+
+
+Examples
+********
+
+.. list-table::
+   :widths: auto
+
+   *  -  build_type
+      - :ref:`documentation<build_type-name>`
+      - `2023-09-22 <https://github.com/bradbell/cppad_py/commit/c02bd5c602>`_
+
+
+{xrst_end new_feature}
