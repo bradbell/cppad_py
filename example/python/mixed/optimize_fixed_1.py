@@ -32,7 +32,7 @@ def optimize_fixed_1() :
    ok        = ok and abs( theta_true - theta_opt ) < 1e-10
    return ok
 # END SOURCE
-'''
+r'''
 {xrst_begin mixed_optimize_fixed_1.py}
 
 A Very Simple Optimize Fixed Effects: Example and Test
@@ -43,3 +43,5 @@ A Very Simple Optimize Fixed Effects: Example and Test
 }
 {xrst_end mixed_optimize_fixed_1.py}
 '''
+def test_optimize_fixed_1() :
+   assert optimize_fixed_1()

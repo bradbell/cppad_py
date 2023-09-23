@@ -14,7 +14,7 @@ def ctor_xam() :
    mixed_obj  = cppad_py.mixed(fixed_init = fixed_init)
    return ok
 # END SOURCE
-'''
+r'''
 {xrst_begin mixed_ctor_xam.py}
 
 Mixed Class Constructor: Example and Test
@@ -25,3 +25,5 @@ Mixed Class Constructor: Example and Test
 }
 {xrst_end mixed_ctor_xam.py}
 '''
+def test_ctor_xam() :
+   assert ctor_xam()

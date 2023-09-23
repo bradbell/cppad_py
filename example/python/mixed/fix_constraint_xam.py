@@ -4,7 +4,7 @@
 # ----------------------------------------------------------------------------
 # mixed fix_constraint
 # -----------------------------------------------------------------------------
-'''
+r'''
 {xrst_begin mixed_fix_constraint_xam.py}
 
 fix_constraint: Example and Test
@@ -92,3 +92,5 @@ def fix_constraint_xam() :
    ok = ok and abs(theta_opt / theta_hat - 1.0 ) < 1e-9
    return ok
 # END SOURCE
+def test_fix_constraint_xam() :
+   assert fix_constraint_xam()

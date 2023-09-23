@@ -25,7 +25,7 @@ def warning_xam() :
       ok = ok and ok_list[i] == True
    return ok
 # END SOURCE
-'''
+r'''
 {xrst_begin mixed_warning_xam.py}
 
 Warnings: Example and Test
@@ -36,3 +36,5 @@ Warnings: Example and Test
 }
 {xrst_end mixed_warning_xam.py}
 '''
+def test_warning_xam() :
+   assert warning_xam()

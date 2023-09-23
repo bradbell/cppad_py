@@ -4,7 +4,7 @@
 # ----------------------------------------------------------------------------
 # mixed hes_fixed_obj_xam
 # -----------------------------------------------------------------------------
-'''
+r'''
 {xrst_begin mixed_hes_fixed_obj_xam.py}
 {xrst_spell
    laplace
@@ -161,3 +161,5 @@ def hes_fixed_obj_xam() :
    ok = ok and abs( hes_fixed_obj_rcv.val()[0] / check - 1.0 ) < 1e-8
    return ok
 # END SOURCE
+def test_hes_fixed_obj_xam() :
+   assert hes_fixed_obj_xam()

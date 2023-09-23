@@ -24,7 +24,7 @@ def fatal_error_xam() :
       ok = ok and ok_list[i] == True
    return ok
 # END SOURCE
-'''
+r'''
 {xrst_begin mixed_fatal_error_xam.py}
 
 fatal_error: Example and Test
@@ -36,3 +36,5 @@ fatal_error: Example and Test
 }
 {xrst_end mixed_fatal_error_xam.py}
 '''
+def test_fatal_error_xam() :
+   assert fatal_error_xam()

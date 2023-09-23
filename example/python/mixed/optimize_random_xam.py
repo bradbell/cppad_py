@@ -4,7 +4,7 @@
 # ----------------------------------------------------------------------------
 # mixed optimize_random
 # -----------------------------------------------------------------------------
-"""
+r'''
 {xrst_begin mixed_optimize_random_xam.py}
 {xrst_spell
 }
@@ -67,7 +67,7 @@ as a function of the fixed effects,
 }
 
 {xrst_end mixed_optimize_random_xam.py}
-"""
+'''
 # BEGIN SOURCE
 def optimize_random_xam() :
    import cppad_py
@@ -125,3 +125,5 @@ def optimize_random_xam() :
    ok = ok and abs( random_opt[0] / u_hat - 1.0) < 1e-8
    return ok
 # END SOURCE
+def test_optimize_random_xam() :
+   assert optimize_random_xam()

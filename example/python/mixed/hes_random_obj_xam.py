@@ -4,7 +4,7 @@
 # ----------------------------------------------------------------------------
 # mixed hes_random_obj_xam
 # -----------------------------------------------------------------------------
-'''
+r'''
 {xrst_begin mixed_hes_random_obj_xam.py}
 
 ran_likelihood: Example and Test
@@ -124,3 +124,5 @@ def hes_random_obj_xam() :
          ok = False
    return ok
 # END SOURCE
+def test_hes_random_obj_xam() :
+   assert hes_random_obj_xam()

@@ -4,7 +4,7 @@
 # ----------------------------------------------------------------------------
 # mixed optimize_fixed
 # -----------------------------------------------------------------------------
-'''
+r'''
 {xrst_begin mixed_optimize_fixed_2.py}
 {xrst_spell
    ipopt
@@ -94,3 +94,5 @@ def optimize_fixed_2() :
    ok      = ok and numpy.all( numpy.abs( x_opt - x_check ) < 1e-7 )
    return ok
 # END SOURCE
+def test_optimize_fixed_2() :
+   assert optimize_fixed_2()

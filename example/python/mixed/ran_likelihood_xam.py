@@ -4,7 +4,7 @@
 # ----------------------------------------------------------------------------
 # mixed ran_likelihood
 # -----------------------------------------------------------------------------
-'''
+r'''
 {xrst_begin mixed_ran_likelihood_xam.py}
 {xrst_spell
    laplace
@@ -148,3 +148,5 @@ def ran_likelihood_xam() :
    ok = ok and abs(theta_opt / theta_hat - 1.0) < 1e-8
    return ok
 # END SOURCE
+def test_ran_likelihood_xam() :
+   assert ran_likelihood_xam()

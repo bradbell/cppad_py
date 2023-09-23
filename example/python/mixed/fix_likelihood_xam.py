@@ -4,7 +4,7 @@
 # ----------------------------------------------------------------------------
 # mixed fix_likelihood
 # -----------------------------------------------------------------------------
-'''
+r'''
 {xrst_begin mixed_fix_likelihood_xam.py}
 
 fix_likelihood: Example and Test
@@ -121,3 +121,5 @@ def fix_likelihood_xam() :
    ok = ok and abs( theta_opt - theta_hat ) < 1e-10
    return ok
 # END SOURCE
+def test_fix_likelihood_xam() :
+   assert fix_likelihood_xam()
