@@ -29,11 +29,4 @@
 # '
 # ----------------------------------------------------------------------------
 # Put other sed commands below here and without # at start of line
-s|Cppad|CppAD|g
-/{xrst_spell/! b end
-: loop
-N
-/}/! b loop
-s|\n#* *cppad\n|\n|
-#
-: end
+s|get_cppad[.]sh@Settings@|install_settings.py@|

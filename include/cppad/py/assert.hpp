@@ -18,14 +18,14 @@ Exception Handling
 ##################
 
 C++ Exceptions
-==============
+**************
 The type of the exception is ``std::runtime_error``
 which is derived from ``std::exception`` .
 If the standard exception member function ``what()`` is called,
 the return value is a message describing the error.
 
 Python Exceptions
-=================
+*****************
 The type of the exception is ``RuntimeError``.
 If *err* is the exception, ``str`` (*err*) is
 a message describing the error.

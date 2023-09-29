@@ -207,7 +207,7 @@ and :ref:`install_error-name`.
 11-06
 *****
 #. The install with
-   :ref:`include_mixed<get_cppad.sh@Settings@include_mixed>` false was broken
+   :ref:`include_mixed<install_settings.py@include_mixed>` false was broken
    by the changes on 11-03. This has been fixed.
 
 #. The installation and testing instructions in :ref:`setup@py<old_setup.py-name>`
@@ -236,12 +236,12 @@ fixed to account for this.
 11-03
 *****
 The install prefix name was changed from *cppad_prefix* to
-:ref:`cmake_install_prefix<get_cppad.sh@Settings@cmake_install_prefix>`.
+:ref:`cmake_install_prefix<install_settings.py@cmake_install_prefix>`.
 
 10-31
 *****
 Fix some problems with the macOS install when
-:ref:`include_fixed<get_cppad.sh@Settings@include_mixed>` is true.
+:ref:`include_fixed<install_settings.py@include_mixed>` is true.
 
 10-30
 *****
@@ -293,7 +293,7 @@ to the mixed class; see :ref:`mixed_fix_constraint-title`.
    default.
 
 #. There was a problem linking the needed libraries when
-   :ref:`include_mixed<get_cppad.sh@Settings@include_mixed>` was true.
+   :ref:`include_mixed<install_settings.py@include_mixed>` was true.
    This has been fixed.
 
 #. A ``match_op.hpp`` warning was added to the
@@ -306,12 +306,12 @@ to the mixed class; see :ref:`mixed_fix_constraint-title`.
 10-16
 *****
 #. Add the :ref:`mixed-title` class an make it optional during the install process;
-   see :ref:`include_mixed<get_cppad.sh@Settings@include_mixed>`.
+   see :ref:`include_mixed<install_settings.py@include_mixed>`.
    This class is under construction and its API may change.
    Check this page for such changes.
 
 #. Change the install process so both a debug and release version of
-   :ref:`cmake_install_prefix<get_cppad.sh@Settings@build_type@cmake_install_prefix>`
+   :ref:`cmake_install_prefix<install_settings.py@build_type@cmake_install_prefix>`
    can be installed at the same time.
 
 #. Some of the install steps in :ref:`old_setup.py-title` have changed.

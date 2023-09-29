@@ -8,9 +8,6 @@
 # {xrst_begin get_cppad_mixed.sh}
 # {xrst_spell
 #     caching
-#     cmake
-#     cxx
-#     rm
 #     uninstall
 # }
 # {xrst_comment_ch #}
@@ -21,7 +18,6 @@
 # Syntax
 # ******
 # ``bin/get_cppad_mixed.sh``
-# ``bin/rm_cppad_mixed.sh``
 #
 # Top Source Directory
 # ********************
@@ -37,9 +33,7 @@
 #
 # Settings
 # ********
-# This scripts uses the
-# :ref:`get_cppad.sh-name` for
-# *cmake_install_prefix* , *extra_cxx_flags*, and *build_type* .
+# This scripts uses the settings in :ref:`install_settings.py-name` .
 #
 # Caching
 # *******

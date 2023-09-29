@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-{xrst_begin cppad_py}
+{xrst_begin_parent cppad_py}
 {xrst_spell
    gpl
    macros
@@ -65,12 +65,25 @@ GNU General Public License version 3.0 or later see
 
 Children
 ********
-{xrst_toc_table
-   setup.py
-   old_setup.py
+{xrst_toc_table after
    example/python/numeric/numeric.xrst
    lib/library.xrst
    whats_new/release_notes.xrst
 }
 
 {xrst_end cppad_py}
+-------------------------------------------------------------------------------
+{xrst_begin install}
+
+Installing cppad_py
+###################
+
+{xrst_toc_table
+   bin/install_settings.py
+   bin/get_cppad.sh
+   bin/get_cppad_mixed.sh
+   setup.py
+   old_setup.py
+}
+
+{xrst_end install}

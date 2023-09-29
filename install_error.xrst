@@ -77,7 +77,7 @@ symbolic link
 | |tab| ``build_type.sh:`` *prefix*  ``is not a symbolic link``
 
 where *prefix* is the
-:ref:`get_cppad.sh@Settings@cmake_install_prefix` in ``bin/get_cppad.sh``.
+:ref:`install_settings.py@cmake_install_prefix` in ``bin/get_cppad.sh``.
 Try removing the *prefix* directory and re-running old_setup.py.
 
 Fortify Source
@@ -86,7 +86,7 @@ Fortify Source
 
 This is a problem with the python setuptools,
 one can un-define a macro, but it does not remove a original definition.
-It only happens when :ref:`build_type<get_cppad.sh@Settings@build_type>`
+It only happens when :ref:`build_type<install_settings.py@build_type>`
 to ``debug`` .
 
 stdio.h

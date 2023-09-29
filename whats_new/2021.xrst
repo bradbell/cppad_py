@@ -78,14 +78,14 @@ Add subset documentation to the wish list.
 #. Advance to cppad_mixed-20210515.
    This avoids running the cppad_mixed tests during ``bin/get_cppad_mixed.sh``.
    It also fixes a problem what cppad_mixed optimizes ADFun objects.
-#. Change the default :ref:`get_cppad.sh@Settings@cmake_install_prefix` from
+#. Change the default :ref:`install_settings.py@cmake_install_prefix` from
    ``$HOME/prefix/cppad`` to ``$HOME/prefix/cppad_py``.
 
 
 05-11
 *****
 In cygwin install,
-with :ref:`get_cppad.sh@Settings@include_mixed` true,
+with :ref:`install_settings.py@include_mixed` true,
 has been improved so that it works with cygwin.
 This included advancing to cppad_mixed-20210511.
 

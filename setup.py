@@ -22,13 +22,6 @@ See Also
 ********
 :ref:`old_setup.py-name`
 
-Requirements
-************
-{xrst_toc_table
-   bin/get_cppad.sh
-   bin/get_cppad_mixed.sh
-}
-
 version
 *******
 We use version below for the value of version in the pyproject.toml file
@@ -39,14 +32,14 @@ You can determine this value with the following command::
 
 Simple Case
 ***********
-In the simple case, :ref:`get_cppad.sh@Settings@include_mixed` is false.
-If :ref:`get_cppad.sh@Settings@build_type` is debug (release),
+In the simple case, :ref:`install_settings.py@include_mixed` is false.
+If :ref:`install_settings.py@build_type` is debug (release),
 cppad_py will run slower (faster) and do more (less) error detection.
 Execute the following shell commands::
 
    git clone https://github.com/bradbell/cppad_py.git cppad_py.git
    cd cppad_py.git
-   # possibly change some settings in bin/get_cppad.sh
+   # possibly change some settings in bin/install_settings.py
    bin/get_cppad.sh
    python3 -m build
    pip install dist/cppad_py-version.gz
@@ -72,12 +65,12 @@ The following command will test this install::
 
 Mixed Case
 **********
-In the mixed case, :ref:`get_cppad.sh@Settings@include_mixed` is true.
+In the mixed case, :ref:`install_settings.py@include_mixed` is true.
 Execute the following shell commands::
 
    git clone https://github.com/bradbell/cppad_py.git cppad_py.git
    cd cppad_py.git
-   # possibly change some settings in bin/get_cppad.sh
+   # possibly change some settings in bin/install_settings.py
    bin/get_cppad_mixed.sh
    python3 -m build
    pip install dist/cppad_py-version.tar.gz --user

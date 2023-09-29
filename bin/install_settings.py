@@ -4,12 +4,142 @@
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
+r'''
+{xrst_begin install_settings.py}
+{xrst_spell
+   getcwd
+   cmake
+   usr
+   cxx
+   Wno
+   dist
+   makefile
+}
+
+Settings Used by Install and Test Scripts
+#########################################
+
+Syntax
+******
+The syntax cases below must be executed from the top source directory;
+i.e., the directory that cppad_py was cloned into.
+
+Python
+======
+{xrst_code py}
+sys.path.insert(0, os.getcwd() + '/bin')
+import install_settings
+install_settings = install_settings.install_settings()
+sys.path.pop(0)
+{xrst_code}
+This sets install_settings to a python dictionary that has a key-value
+pair for of the settings listed below.
+
+Bash
+====
+{xrst_code sh}
+eval $(bin/install_settings.py)
+{xrst_code}
+This sets a bash variable to its value for
+each of the settings listed below.
+
+
+
+cmake_install_prefix
+********************
+This prefix is used to install cppad and cppad_mixed.
+The :ref:`old_setup.py-name` script also uses this prefix to install
+cppad_py. The new :ref:`setup.py-name` installs cppad_py
+using ``pip`` , so its prefix is set independently.
+{xrst_code py}'''
 cmake_install_prefix = '$HOME/prefix/cppad_py'
-extra_cxx_flags      = '-Wall -pedantic-errors -Wno-unused-result -std=c++11'
-build_type           = 'release'
-include_mixed        = 'false'
-test_cppad           = 'false'
-verbose_makefile     = 'false'
+r'''{xrst_code}
+
+#.  If this prefix starts with ''/'' ,
+    it is an absolute path; e.g., ``/usr/local``.
+#.  If it does not start with ``/`` , it is relative to the
+    :ref:`top_source_directory<old_setup.py@Download@Top Source Directory>`.
+#.  It may include the shell variable ``$HOME`` but no other variables;
+    e.g; ``$HOME/prefix`` .
+    Note that ``$HOME`` starts with ``/`` .
+
+If value for this key is converted to an absolute path and if present,
+``$HOME`` is expanded.
+
+extra_cxx_flags
+***************
+Extra compiler flags used when compiling c++ code not including the
+debugging and optimization flags.
+The ones below are example flags are used by g++:
+{xrst_code py}'''
+extra_cxx_flags = '-Wall -pedantic-errors -Wno-unused-result -std=c++11'
+r'''{xrst_code}
+
+build_type
+**********
+This must be must ``debug`` or ``release`` .
+The debug version has more error messaging while the release
+version runs faster.
+{xrst_code py}'''
+build_type = 'release'
+r'''{xrst_code}
+If the *build_type* is not debug or release, install_settings.py will
+terminate with an error message.
+
+cmake_install_prefix
+====================
+The actual prefix used for the install is
+
+| |tab| *cmake_install_prefix.build_type*
+
+and a soft link is created from *cmake_install_prefix* to this directory.
+This way you can switch between testing debug and release without re-running
+`bin/get_cppad.sh`` or ``bin/get_cppad_mixed.sh`` .
+
+build
+=====
+The subdirectory
+
+| |tab| ``build.``\ *build_type*
+
+is used by :ref:`old_setup.py-name` to compile and test the software and
+a soft link is created from ``build`` to this subdirectory.
+The new :ref:`setup.py-name` uses the ``dist`` directory to build the
+cppad_py package.
+
+include_mixed
+*************
+This flag is true (false) if we are (are not)
+including the python cppad_mixed interface.
+{xrst_code py}'''
+include_mixed = 'false'
+r'''{xrst_code}
+If it is true, the install script ``bin/get_cppad_mixed.sh``
+must be used to install CppAD together with the all the other cppad_mixed
+requirements.
+Otherwise, ``bin/get_cppad.sh`` should be used to install CppAD.
+If the *include_mixed* is not true or false, install_settings.py will
+terminate with an error message.
+
+test_cppad
+**********
+This must be must true or false .
+CppAD has a huge test suite and this can take a significant amount of time,
+but it may be useful if you have problems.
+{xrst_code py}'''
+test_cppad = 'false'
+r'''{xrst_code}
+
+verbose_makefile
+****************
+This flag is true (false) a verbose version of the build description
+will (will not) be printed.
+{xrst_code py}'''
+verbose_makefile = 'false'
+r'''{xrst_code}
+
+{xrst_end install_settings.py}
+'''
 #
 # imports
 import os

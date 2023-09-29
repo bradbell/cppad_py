@@ -4,124 +4,34 @@
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 set -e -u
+#
 # {xrst_begin get_cppad.sh}
 # {xrst_spell
 #     caching
-#     cmake
-#     cxx
-#     dist
-#     usr
-#     wno
-#     makefile
-#     rm
 #     uninstall
 # }
 # {xrst_comment_ch #}
 #
-#
-# Get or Remove CppAD
-# ###################
+# Get cppad
+# #########
 #
 # Syntax
 # ******
-# | |tab| ``bin/get_cppad.sh``
-# | |tab| ``bin/rm_cppad.sh``
+# ``bin/get_cppad.sh``
 #
 # Top Source Directory
 # ********************
 # This program must be run from the
 # :ref:`top_source_directory<old_setup.py@Download@Top Source Directory>`.
 #
+# Purpose
+# *******
+# If you are not using  the python ``cppad_mixed`` module,
+# you can use this script install cppad.
+#
 # Settings
 # ********
-# If you change any of these settings, you must re-run ``get_cppad.sh``
-# (or ``get_cppad_mixed.sh`` if *include_mixed* is true ).
-#
-# cmake_install_prefix
-# ====================
-# This prefix is used to install cppad and cppad_mixed.
-# The :ref:`old_setup.py-name` script also uses this prefix to install
-# cppad_py. The new :ref:`setup.py-name` script installs cppad_py
-# using ``pip`` , so its prefix is set independently.
-# {xrst_code sh}
-cmake_install_prefix="$HOME/prefix/cppad_py"
-# {xrst_code}
-#
-# #.  If this prefix starts with ''/'' ,
-#     it is an absolute path; e.g., ``/usr/local``.
-# #.  If it does not start with ``/`` , it is relative to the
-#     :ref:`top_source_directory<old_setup.py@Download@Top Source Directory>`.
-# #.  It may include the shell variable ``$HOME`` but no other variables;
-#     e.g; ``$HOME/prefix`` .
-#     Note that ``$HOME`` starts with ``/`` .
-#
-# extra_cxx_flags
-# ===============
-# Extra compiler flags used when compiling c++ code not including the
-# debugging and optimization flags.
-# The ones below are example flags are used by g++:
-# {xrst_code sh}
-extra_cxx_flags='-Wall -pedantic-errors -Wno-unused-result -std=c++11'
-# {xrst_code}
-#
-# build_type
-# ==========
-# This must be must ``debug`` or ``release`` .
-# The debug version has more error messaging while the release
-# version runs faster.
-# {xrst_code sh}
-build_type='release'
-# {xrst_code}
-#
-# cmake_install_prefix
-# --------------------
-# The actual prefix used for the install is
-#
-# | |tab| *cmake_install_prefix.build_type*
-#
-# and a soft link is created from *cmake_install_prefix* to this directory.
-# This way you can switch between testing debug and release without rebuilding
-# the code installed by ``bin/get_cppad.sh`` or ``bin/get_cppad_mixed.sh`` .
-#
-# build
-# -----
-# The subdirectory
-#
-# | |tab| ``build.``\ *build_type*
-#
-# is used by :ref:`old_setup.py-name` to compile and test the software and
-# a soft link is created from ``build`` to this subdirectory.
-# The new :ref:`setup.py-name` uses the ``dist`` directory to build the
-# cppad_py package.
-#
-# include_mixed
-# =============
-# This flag is true (false) if we are (are not)
-# including the python cppad_mixed interface.
-# {xrst_code sh}
-include_mixed='true'
-# {xrst_code}
-# If it is true, the install script ``bin/get_cppad_mixed.sh``
-# should be used to install CppAD together with the all the other cppad_mixed
-# requirements.
-# Otherwise, ``bin/get_cppad.sh`` should be used to install CppAD.
-#
-# test_cppad
-# ==========
-# This must be must ``true`` or ``false`` .
-# CppAD has a huge test suite and this can take a significant amount of time,
-# but it may be useful if you have problems.
-# {xrst_code sh}
-test_cppad='false'
-# {xrst_code}
-#
-# verbose_makefile
-# ================
-# This flag is true (false) a verbose version of the build description
-# will (will not) be printed.
-# {xrst_code sh}
-verbose_makefile='false'
-# {xrst_code}
+# This scripts uses the settings in :ref:`install_settings.py-name` .
 #
 # Caching
 # *******
@@ -133,6 +43,7 @@ verbose_makefile='false'
 #
 # and re-running this script.
 #
+#
 # Uninstall
 # *********
 # {xrst_toc_table
@@ -141,7 +52,7 @@ verbose_makefile='false'
 #
 # {xrst_end get_cppad.sh}
 #
-# Overwrite settings using bin/install_settings.py
+# include_mixed, build_type, cmake_install_prefix
 eval $(bin/install_settings.py)
 # -----------------------------------------------------------------------------
 # CppAD version information
@@ -179,12 +90,6 @@ then
    exit 1
 fi
 # -----------------------------------------------------------------------------
-# cmake_install_prefix
-if ! echo $cmake_install_prefix | grep '^/' > /dev/null
-then
-   # convert cmake_install_prefix to an absolute path
-   cmake_install_prefix="$(pwd)/$cmake_install_prefix"
-fi
 #
 # libdir
 libdir=$(bin/libdir.py)

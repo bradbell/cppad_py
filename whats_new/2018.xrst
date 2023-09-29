@@ -59,7 +59,7 @@ and second operand is a ``double`` ; see
 *****
 
 #. Change ``cppad_cxx_flags`` to
-   :ref:`extra_cxx_flags<get_cppad.sh@Settings@extra_cxx_flags>` in the user
+   :ref:`extra_cxx_flags<install_settings.py@extra_cxx_flags>` in the user
    configuration settings.
    Also remove ``swig_cxx_flags`` from these user settings
    (set automatically).
@@ -121,7 +121,7 @@ Continue conversion of python library to using ``numpy.array`` ; see
    :ref:`py_independent-name`, :ref:`py_fun_ctor-name`.
 #. Add the file ``cppad_py/python_major_version`` which contains
    the major version of python that this build of ``cppad_py`` is for.
-#. Automatically use :ref:`build_type<get_cppad.sh@Settings@build_type>`
+#. Automatically use :ref:`build_type<install_settings.py@build_type>`
    control how old_setup.py compiles C++
    (one used to use flags on old_setup.py command line).
 #. old_setup.py was using the git repository version of CppAD instead of the
