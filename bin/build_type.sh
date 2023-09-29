@@ -26,21 +26,10 @@ then
 fi
 #
 # build_type
-eval $(grep '^build_type *=' bin/get_cppad.sh)
-if [ "$build_type" != 'debug' ] && [ "$build_type" != 'release' ]
-then
-   echo 'build_type.sh: build_type in get_cppad.sh is not debug or release'
-   exit 1
-fi
-echo "build_type=$build_type"
-#
 # cmake_install_prefix
-eval $(grep '^cmake_install_prefix *=' bin/get_cppad.sh)
-if ! echo $cmake_install_prefix | grep '^/' > /dev/null
-then
-   # convert cmake_install_prefix to an absolute path
-   cmake_install_prefix="$(pwd)/$cmake_install_prefix"
-fi
+eval $(bin/install_settings.py)
+#
+echo "build_type=$build_type"
 echo "cmake_install_prefix=$cmake_install_prefix"
 #
 # cmake_install_prefix: link

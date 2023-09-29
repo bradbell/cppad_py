@@ -35,12 +35,7 @@
 set -e -u
 #
 # cmake_install_prefix
-eval $(grep '^cmake_install_prefix *=' bin/get_cppad.sh)
-if ! echo $cmake_install_prefix | grep '^/' > /dev/null
-then
-   # convert cmake_install_prefix to an absolute path
-   cmake_install_prefix="$(pwd)/$cmake_install_prefix"
-fi
+eval $(bin/install_settings.py)
 echo "cmake_install_prefix=$cmake_install_prefix"
 #
 # cppad_py python package files

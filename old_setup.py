@@ -57,42 +57,24 @@ if not match :
 cppad_py_version = match.group(1)
 fp.close()
 # -----------------------------------------------------------------------------
-# bin/get_cppad.sh settings
 #
-fp      = open('bin/get_cppad.sh', 'r')
-string  = fp.read()
+# install_settings
+sys.path.insert(0, os.getcwd() + '/bin')
+import install_settings
+install_settings = install_settings.install_settings()
+sys.path.pop(0)
 #
 # extra_cxx_flags
-pattern = r"\nextra_cxx_flags='([^']*)'"
-match   = re.search(pattern, string)
-if not match :
-   sys_exit('cannot find extra_cxx_flags in bin/get_cppad.sh')
-extra_cxx_flags = match.group(1)
+extra_cxx_flags = install_settings['extra_cxx_flags']
 #
 # cmake_install_prefix
-pattern = '''\ncmake_install_prefix=['"]([^'"]*)['"]'''
-match   = re.search(pattern, string)
-if not match :
-   sys_exit('cannot find cmake_install_prefix in bin/get_cppad.sh')
-cmake_install_prefix = match.group(1)
+cmake_install_prefix = install_settings['cmake_install_prefix']
 #
 # build_type
-pattern = r"\nbuild_type='([^']*)'"
-match   = re.search(pattern, string)
-if not match :
-   sys_exit('cannot find build_type in bin/get_cppad.sh')
-build_type = match.group(1)
-if build_type != 'debug' and build_type != 'release' :
-   sys_exit('build_type is not debug or release in bin/get_cppad.sh')
+build_type = install_settings['build_type']
 #
 # include_mixed
-pattern = r"\ninclude_mixed='([^']*)'"
-match   = re.search(pattern, string)
-if not match :
-   sys_exit('cannot find include_mixed in bin/get_cppad.sh')
-include_mixed = match.group(1)
-if include_mixed != 'true' and include_mixed != 'false' :
-   sys_exit('include_mixed is not true or false in bin/get_cppad.sh')
+include_mixed = install_settings['include_mixed']
 # ----------------------------------------------------------------------------
 # libdir
 libdir = sys_command( [ 'python3', 'bin/libdir.py' ] )
@@ -120,9 +102,9 @@ cppad_include_file = cmake_install_prefix + '/include/cppad/cppad.hpp'
 if not os.path.isfile( cppad_include_file ) :
    msg  = 'Cannot find ' + cppad_include_file + '\n'
    if include_mixed == 'true' :
-      msg += 'use bin/get_cppad_mixed.sh to create it'
+      msg += 'use bin/get_cppad_mixed.sh to create it ?'
    else :
-      msg += 'use bin/get_cppad.sh to create it'
+      msg += 'use bin/get_cppad.sh to create it ?'
    sys_exit(msg)
 # -----------------------------------------------------------------------------
 # Run swig

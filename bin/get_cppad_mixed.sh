@@ -38,7 +38,7 @@
 # Settings
 # ********
 # This scripts uses the
-# :ref:`get_cppad_sh settings<get_cppad.sh@Settings>` for
+# :ref:`get_cppad.sh-name` for
 # *cmake_install_prefix* , *extra_cxx_flags*, and *build_type* .
 #
 # Caching
@@ -78,36 +78,8 @@ echo_eval() {
    eval $*
 }
 # --------------------------------------------------------------------------
-# build_type
-cmd=`grep '^build_type=' bin/get_cppad.sh`
-eval $cmd
-#
-# extra_cxx_flags
-cmd=`grep '^extra_cxx_flags=' bin/get_cppad.sh`
-eval $cmd
-#
-# cmake_install_prefix
-cmd=`grep '^cmake_install_prefix=' bin/get_cppad.sh`
-eval $cmd
-if ! echo $cmake_install_prefix | grep '^/' > /dev/null
-then
-   # convert cmake_install_prefix to an absolute path
-   cmake_install_prefix="$(pwd)/$cmake_install_prefix"
-fi
-#
-# include_mixed
-cmd=`grep '^include_mixed=' bin/get_cppad.sh`
-eval $cmd
-if [ "$include_mixed" == 'false' ]
-then
-   echo "$name: Must use bin/get_cppad.sh when include_mixed is false"
-   exit 1
-fi
-if [ "$include_mixed" != 'true' ]
-then
-   echo "$name: include_mixed is not true or false in bin/get_cppad.sh."
-   exit 1
-fi
+# build_type, extra_cxx_flags, cmake_install_prefix, include_mixed
+eval $(bin/install_settings.py)
 # ---------------------------------------------------------------------------
 minor=$(echo "import sys; print(sys.version_info.minor)" | python3)
 # ---------------------------------------------------------------------------

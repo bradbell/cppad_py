@@ -99,7 +99,7 @@ build_type='release'
 # This flag is true (false) if we are (are not)
 # including the python cppad_mixed interface.
 # {xrst_code sh}
-include_mixed='false'
+include_mixed='true'
 # {xrst_code}
 # If it is true, the install script ``bin/get_cppad_mixed.sh``
 # should be used to install CppAD together with the all the other cppad_mixed
@@ -140,6 +140,9 @@ verbose_makefile='false'
 # }
 #
 # {xrst_end get_cppad.sh}
+#
+# Overwrite settings using bin/install_settings.py
+eval $(bin/install_settings.py)
 # -----------------------------------------------------------------------------
 # CppAD version information
 # Use same cppad_version and has_code as in cppad_mixed.git/bin/install_cppad.sh

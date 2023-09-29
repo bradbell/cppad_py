@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
-# SPDX-FileContributor: 2017-22 Bradley M. Bell
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 import re
 import os
@@ -39,47 +39,25 @@ if sys.argv[0] != 'bin/build_local.py' :
 if len(sys.argv) != 1 :
    sys.exit('program does not expect command line arguments')
 # -----------------------------------------------------------------------------
-# bin/get_cppad.sh settings
 #
-fp      = open('bin/get_cppad.sh', 'r')
-string  = fp.read()
+# install_settings
+sys.path.insert(0, os.getcwd() + '/bin')
+import install_settings
+install_settings = install_settings.install_settings()
+sys.path.pop(0)
 #
 # extra_cxx_flags
-pattern = r"\nextra_cxx_flags='([^']*)'"
-match   = re.search(pattern, string)
-if not match :
-   sys_exit('cannot find extra_cxx_flags in bin/get_cppad.sh')
-extra_cxx_flags = match.group(1)
+extra_cxx_flags = install_settings['extra_cxx_flags']
 #
 # build_type
-pattern = r"\nbuild_type='([^']*)'"
-match   = re.search(pattern, string)
-if not match :
-   sys_exit('cannot find build_type in bin/get_cppad.sh')
-build_type = match.group(1)
-if build_type != 'debug' and build_type != 'release' :
-   sys_exit('build_type is not debug or release in bin/get_cppad.sh')
+build_type = install_settings['build_type']
 #
 # include_mixed
-pattern = r"\ninclude_mixed='([^']*)'"
-match   = re.search(pattern, string)
-if not match :
-   sys_exit('cannot find include_mixed in bin/get_cppad.sh')
-include_mixed = match.group(1)
-if include_mixed != 'true' and include_mixed != 'false' :
-   sys_exit('include_mixed is not true or false in bin/get_cppad.sh')
+include_mixed = install_settings['include_mixed']
 #
 # cmake_install_prefix
-pattern = '''\ncmake_install_prefix=['"]([^'"]*)['"]'''
-match   = re.search(pattern, string)
-if not match :
-   sys_exit('cannot find cmake_install_prefix in bin/get_cppad.sh')
-cmake_install_prefix = match.group(1)
+cmake_install_prefix = install_settings['cmake_install_prefix']
 #
-# check for $HOME in cmake_install_prefix
-index = cmake_install_prefix.find('$HOME')
-if index >= 0 :
-   cmake_install_prefix = cmake_install_prefix.replace( '$HOME', os.environ['HOME'] )
 # -----------------------------------------------------------------------------
 # libdir
 libdir = sys_command( [ 'bin/libdir.py' ] )

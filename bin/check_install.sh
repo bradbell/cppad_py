@@ -15,16 +15,8 @@ then
    exit 1
 fi
 # -----------------------------------------------------------------------------
-# build_type
-eval $(grep '^build_type *=' bin/get_cppad.sh)
-#
-# cmake_install_prefix
-eval $(grep '^cmake_install_prefix *=' bin/get_cppad.sh)
-if ! echo $cmake_install_prefix | grep '^/' > /dev/null
-then
-   # convert cmake_install_prefix to an absolute path
-   cmake_install_prefix="$(pwd)/$cmake_install_prefix"
-fi
+# build_type, cmake_install_prefix
+eval $(bin/install_settings.py)
 #
 echo "build_type=$build_type"
 echo "cmake_install_prefix=$cmake_install_prefix"
@@ -33,8 +25,6 @@ echo "cmake_install_prefix=$cmake_install_prefix"
 # ---------------------------------------------------------------------------
 #
 # prefix
-cmd=$(grep '^cmake_install_prefix=' bin/get_cppad.sh)
-eval $cmd
 prefix="$cmake_install_prefix"
 #
 # libdir

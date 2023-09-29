@@ -1,7 +1,9 @@
-#! /bin/bash -e
+#! /usr/bin/env bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
+# ----------------------------------------------------------------------------
+set -e -u
 # ----------------------------------------------------------------------------
 # bash function that echos and executes a command
 logfile=`pwd`/check_all.log
@@ -27,12 +29,13 @@ echo_eval_log() {
 exit_code() {
    if [ "$build_type" == 'debug' ]
    then
-      sed -i bin/get_cppad.sh -e "s|^build_type *=.*|build_type='release'|"
+      sed -i bin/install_settings.py \
+         -e "s|^build_type\( *\)=.*|build_type\1= 'release'|"
    fi
    if [ "$include_mixed" == 'true' ]
    then
-      sed -i bin/get_cppad.sh \
-         -e "s|^include_mixed *=.*|include_mixed='false'|"
+      sed -i bin/install_settings.py \
+         -e "s|^include_mixed\( *\)=.*|include_mixed\1= 'false'|"
    fi
    if [ -e $tmpfile ]
    then
@@ -41,6 +44,12 @@ exit_code() {
    exit $1
 }
 # -----------------------------------------------------------------------------
+if [ "$#" != 2 ]
+then
+   echo 'usage: bin/check_all.sh (debug|release) include_mixed'
+   echo 'where include_mixed is true or false'
+   exit_code 1
+fi
 if [ "$0" != "bin/check_all.sh" ]
 then
    echo "bin/check_all.sh: must be executed from its parent directory"
@@ -59,22 +68,15 @@ then
    exit_code 1
 fi
 # -----------------------------------------------------------------------------
-# build_type, cmake_install_prefix, extra_cxx_flags, include_mxied, libdir
-eval $(grep '^build_type *=' bin/get_cppad.sh)
-eval $(grep '^cmake_install_prefix *=' bin/get_cppad.sh)
-eval $(grep '^extra_cxx_flags *=' bin/get_cppad.sh)
-eval $(grep '^include_mixed *=' bin/get_cppad.sh)
+# build_type, cmake_install_prefix, extra_cxx_flags, include_mixed
+eval $(bin/install_settings.py)
+#
+# libdir
 libdir=$(bin/libdir.py)
 #
-if ! echo $cmake_install_prefix | grep '^/' > /dev/null
-then
-   # convert cmake_install_prefix to an absolute path
-   cmake_install_prefix="$(pwd)/$cmake_install_prefix"
-fi
-# -----------------------------------------------------------------------------
 if [ "$build_type" != 'release' ] || [ "$include_mixed" != 'false' ]
 then
-   echo 'check_all.sh: build type in bin/get_cppad.sh is not release'
+   echo 'check_all.sh: build type in bin/install_settings.py is not release'
    echo 'or include_mixed is not false.'
    echo 'This has been fixed, you should be able to just re-run this script.'
    # The exit_code function makes fix mentioned above
@@ -83,15 +85,19 @@ fi
 if [ "$1" == 'debug' ]
 then
    # This change will be undone by the exit_code function
-   sed -i bin/get_cppad.sh -e "s|^build_type *=.*|build_type='debug'|"
+   sed -i bin/install_settings.py \
+      -e "s|^build_type\( *\)=.*|build_type\1= 'debug'|"
    build_type='debug'
 fi
 if [ "$2" == 'true' ]
 then
    # This change will be undone by the exit_code function
-   sed -i bin/get_cppad.sh -e "s|^include_mixed *=.*|include_mixed='true'|"
+   sed -i bin/install_settings.py  \
+      -e "s|^include_mixed\( *\)=.*|include_mixed\1= 'true'|"
    include_mixed='true'
 fi
+#
+# prefix, build
 echo_eval_log bin/build_type.sh
 # -----------------------------------------------------------------------------
 export LD_LIBRARY_PATH="$cmake_install_prefix/$libdir"
