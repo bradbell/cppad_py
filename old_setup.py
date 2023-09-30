@@ -274,7 +274,6 @@ sys.exit(0)
 #     rm
 #     scipy
 #     setuptools
-#     srcdir
 #     suitesparse
 #     unix
 #     wget
@@ -323,17 +322,9 @@ sys.exit(0)
 #
 # Download
 # ********
-# Use the following command to download the current version of cppad_py:
+# Use the following command to download the current version of cppad_py::
 #
-# | |tab| ``git clone https://github.com/bradbell/cppad_py.git`` *top_srcdir*
-#
-# Top Source Directory
-# ====================
-# The directory you choose for *top_srcdir* is
-# referred to as your *top_srcdir* directory.
-# We suggest you use ``cppad_py.git`` for my *top_srcdir*
-# so it is different from the ``cppad_py`` directory
-# created by the instructions below.
+#  git clone https://github.com/bradbell/cppad_py.git cppad_py.git
 #
 # Configure
 # *********
@@ -404,7 +395,7 @@ sys.exit(0)
 # | |tab| ``rm -r build/lib.*``
 #
 # You can build a local copy of the Python cppad_py module using the
-# following command in the *top_srcdir* :
+# following command in the cppad_py.git directory:
 #
 # | |tab| ``python3 old_setup.py bdist``
 #
@@ -419,19 +410,19 @@ sys.exit(0)
 # | |tab| ``name=$(ls build | grep '^lib\.' | sed -e 's|^lib\.||')``
 #
 # The next step is to copy the ``cppad_py`` directory to the
-# *top_srcdir* . For example,
+# cppad_py.git directory. For example,
 #
 # | |tab| ``cp -r build/lib.$name/cppad_py cppad_py``
 #
 # Local Test
 # **********
 # You can test the local copy by executing the following commands in the
-# *top_srcdir* directory:
+# cppad_py.git directory:
 #
 # | |tab| ``PYTHONPATH=""``
 # | |tab| ``python3 example/python/check_all.py``
 #
-# This test will use the local copy of *top_srcdir/*\ ``cppad_py``
+# This test will use the local copy of ``cppad_py.git/cppad_py``
 # create by the local build instructions directly above.
 #
 # PYTHONPATH
@@ -469,7 +460,7 @@ sys.exit(0)
 #
 # | |tab| ``python3 example/python/check_all.py``
 #
-# If the directory *top_srcdir/*\ ``cppad_py`` exists,
+# If the directory ``cppad_py.git/cppad_py`` exists,
 # you will be testing the local version, instead of the installed version.
 # If this directory exists when the install command is run,
 # it is removed by the install command.

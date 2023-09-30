@@ -42,6 +42,12 @@ mm-dd
 Move the install settings from :ref:`get_cppad.sh-name` to
 :ref:`install_settings.py-name` .
 
+09-30
+=====
+In documentation, change the name 'top source directory' to
+:ref:`setup.py@cppad_py.git` . (It is simpler to use one directory
+name and be explicit.)
+
 09-21
 =====
 #. Improve and update the :ref:`get_cppad.sh-name`

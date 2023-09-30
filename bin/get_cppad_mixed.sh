@@ -21,8 +21,7 @@
 #
 # Top Source Directory
 # ********************
-# This program must be run from the
-# :ref:`top_source_directory<old_setup.py@Download@Top Source Directory>`.
+# This program must be run from the :ref:`setup.py@cppad_py.git` directory.
 #
 # Purpose
 # *******

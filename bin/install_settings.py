@@ -63,7 +63,7 @@ r'''{xrst_code}
 #.  If this prefix starts with ''/'' ,
     it is an absolute path; e.g., ``/usr/local``.
 #.  If it does not start with ``/`` , it is relative to the
-    :ref:`top_source_directory<old_setup.py@Download@Top Source Directory>`.
+    :ref:`setup.py@cppad_py.git` directory.
 #.  It may include the shell variable ``$HOME`` but no other variables;
     e.g; ``$HOME/prefix`` .
     Note that ``$HOME`` starts with ``/`` .
