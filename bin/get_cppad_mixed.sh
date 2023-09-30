@@ -19,8 +19,8 @@
 # ******
 # ``bin/get_cppad_mixed.sh``
 #
-# Top Source Directory
-# ********************
+# cppad_mixed.git
+# ***************
 # This program must be run from the :ref:`setup.py@cppad_py.git` directory.
 #
 # Purpose
@@ -44,6 +44,29 @@
 #
 # and re-running this script.
 #
+# example_install
+# ***************
+# The file names below are relative to the
+# ``cppad_py.git/external/cppad_mixed.git`` directory;
+# see :ref:`setup.py@cppad_py.git`
+#
+# ..  csv-table::
+#     :header-rows: 1
+#
+#     File, Purpose
+#     bin/example_install.sh, install script that comes with cppad_mixed
+#     example_install.log, log of example_install.sh actions
+#     example_install.err, log of example_install.sh errors
+#
+# get_cppad_mixed.log
+# *******************
+# The example_install.log file (see above) is copied to
+# ``cppad_py.git/get_cppad_mixed.log`` .
+#
+# get_cppad_mixed.err
+# *******************
+# The example_install.err file (see above) is copied to
+# ``cppad_py.git/get_cppad_mixed.err`` .
 #
 # Uninstall
 # *********
@@ -70,6 +93,14 @@ echo_eval() {
    echo $*
    eval $*
 }
+# ----------------------------------------------------------------------------
+for file in 'get_cppad_mixed.log' 'get_cppad_mixed.err'
+do
+   if [ -e $file ]
+   then
+      echo_eval rm $file
+   fi
+done
 # --------------------------------------------------------------------------
 # build_type, extra_cxx_flags, cmake_install_prefix, include_mixed
 eval $(bin/install_settings.py)
@@ -160,7 +191,24 @@ fi
 # cppad_mixed example install
 run_test='false'
 replace='true'
-echo_eval bin/example_install.sh $run_test $replace
+if echo_eval bin/example_install.sh $run_test $replace
+then
+   ok='yes'
+else
+   ok='no'
+fi
+# get_cppad_mixed.log
+echo_eval cp example_install.log ../../get_cppad_mixed.log
+#
+# get_cppad_mixed.err
+echo_eval cp example_install.err ../../get_cppad_mixed.err
+#
+if [ "$ok" == 'no' ]
+then
+   echo 'external/cppad_mixed.git/bin/example_install.sh: Error'
+   echo 'see get_cppad_mixed.log and get_cppad_mixed.err'
+   exit 1
+fi
 # -----------------------------------------------------------------------------
 # cmake_install_prefix/include/Eigen
 target="$cmake_install_prefix/eigen/include/eigen3/Eigen"

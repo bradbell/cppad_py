@@ -19,8 +19,8 @@ set -e -u
 # ******
 # ``bin/get_cppad.sh``
 #
-# Top Source Directory
-# ********************
+# cppad_py.git
+# ************
 # This program must be run from the :ref:`setup.py@cppad_py.git` directory.
 #
 # Purpose
@@ -41,7 +41,6 @@ set -e -u
 # | |tab| ``external/cppad.git``
 #
 # and re-running this script.
-#
 #
 # Uninstall
 # *********

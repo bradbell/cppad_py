@@ -9,6 +9,7 @@ temp.*
 #
 # soft links to build directory
 /build
+#
 # directories that /build links to
 /build.debug/
 /build.release/
@@ -28,7 +29,8 @@ temp.*
 /new/
 #
 # extensions to ignore
-*.log
+/*.err
+/*.log
 *.swp
 *.tmp
 #
