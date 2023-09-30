@@ -79,10 +79,10 @@ Installing cppad_py
 ###################
 
 {xrst_toc_table
+   setup.py
    bin/install_settings.py
    bin/get_cppad.sh
    bin/get_cppad_mixed.sh
-   setup.py
    old_setup.py
 }
 

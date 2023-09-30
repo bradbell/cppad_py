@@ -1,4 +1,5 @@
 include include/cppad/py/*.hpp
 include bin/get_cppad.sh
+include bin/install_settings.py
 include lib/cppad_py_swig.i
-include CMakeLists.txt 
+include CMakeLists.txt

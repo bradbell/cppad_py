@@ -628,7 +628,8 @@ Add an :ref:`install_error-name` section to the documentation.
 *****
 
 #. Move configuration setting from :ref:`old_setup.py-name` to
-   :ref:`bin/get_cppad_sh<get_cppad.sh@Settings>`.
+   bin/get_setup.sh. They have since been moved to
+   :ref:`install_settings.py-name` .
 #. First version that installs using ``pip`` .
    Install instructions for pip will be added soon.
 

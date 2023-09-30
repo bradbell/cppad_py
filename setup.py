@@ -93,45 +93,25 @@ import os
 #
 from setuptools                       import setup, Extension
 from setuptools.command.build_py      import build_py
-# -----------------------------------------------------------------------------
-# bin/get_cppad.sh settings
+# ----------------------------------------------------------------------------
 #
-# file_data
-file_obj   = open('bin/get_cppad.sh', 'r')
-file_data  = file_obj.read()
-file_obj.close()
+# install_settings
+sys.path.insert(0, os.getcwd() + '/bin')
+import install_settings
+install_settings = install_settings.install_settings()
+sys.path.pop(0)
 #
 # extra_cxx_flags
-pattern = r"\nextra_cxx_flags='([^']*)'"
-match   = re.search(pattern, file_data)
-if not match :
-   sys.exit('cannot find extra_cxx_flags in bin/get_cppad.sh')
-extra_cxx_flags = match.group(1)
+extra_cxx_flags = install_settings['extra_cxx_flags']
 #
 # cmake_install_prefix
-pattern = '''\ncmake_install_prefix=['"]([^'"]*)['"]'''
-match   = re.search(pattern, file_data)
-if not match :
-   sys.exit('cannot find cmake_install_prefix in bin/get_cppad.sh')
-cmake_install_prefix = match.group(1)
+cmake_install_prefix = install_settings['cmake_install_prefix']
 #
 # build_type
-pattern = r"\nbuild_type='([^']*)'"
-match   = re.search(pattern, file_data)
-if not match :
-   sys.exit('cannot find build_type in bin/get_cppad.sh')
-build_type = match.group(1)
-if build_type != 'debug' and build_type != 'release' :
-   sys.exit('build_type is not debug or release in bin/get_cppad.sh')
+build_type = install_settings['build_type']
 #
 # include_mixed
-pattern = r"\ninclude_mixed='([^']*)'"
-match   = re.search(pattern, file_data)
-if not match :
-   sys.exit('cannot find include_mixed in bin/get_cppad.sh')
-include_mixed = match.group(1)
-if include_mixed != 'true' and include_mixed != 'false' :
-   sys.exit('include_mixed is not true or false in bin/get_cppad.sh')
+include_mixed = install_settings['include_mixed']
 # ----------------------------------------------------------------------------
 # cmake_install_prefix
 pattern = r'$HOME'

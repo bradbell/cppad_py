@@ -46,26 +46,25 @@ exit_code() {
 # -----------------------------------------------------------------------------
 if [ "$#" != 2 ]
 then
-   echo 'usage: bin/check_all.sh (debug|release) include_mixed'
-   echo 'where include_mixed is true or false'
-   exit_code 1
+   echo 'usage: bin/check_all.sh build_type include_mixed'
+   echo 'where build_type is debug or release'
+   echo 'and include_mixed is true or false'
+   exit 1
 fi
 if [ "$0" != "bin/check_all.sh" ]
 then
    echo "bin/check_all.sh: must be executed from its parent directory"
-   exit_code 1
+   exit 1
 fi
 if [ "$1" != 'debug' ] && [ "$1" != 'release' ]
 then
-   echo 'usage: bin/check_all.sh (debug|release) include_mixed'
-   echo 'where include_mixed is true or false'
-   exit_code 1
+   echo 'in/check_all.sh: first argument, build_type, is not debug or release'
+   exit 1
 fi
 if [ "$2" != 'true' ] && [ "$2" != 'false' ]
 then
-   echo 'usage: bin/check_all.sh (debug|release) include_mixed'
-   echo 'where include_mixed is true or false'
-   exit_code 1
+   echo 'bin/check_all.sh: second argument, include_mixed, is not true or false'
+   exit 1
 fi
 # -----------------------------------------------------------------------------
 # build_type, cmake_install_prefix, extra_cxx_flags, include_mixed

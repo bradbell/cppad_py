@@ -253,7 +253,6 @@ sys.exit(0)
 #     bdist
 #     cholmod
 #     cmake
-#     cmd
 #     config
 #     cp
 #     cygpath
@@ -338,9 +337,9 @@ sys.exit(0)
 #
 # Configure
 # *********
-# Before running ``setup_py`` or ``bin/get_cppad.sh`` ,
-# you should check and possibly change the
-# :ref:`settings<get_cppad.sh@Settings>` in ``bin/get_cppad.sh`` .
+# Before running ``old_setup_py`` or ``bin/get_cppad.sh`` ,
+# you should check and possibly change the settings in
+# :ref:`install_settings.py-name` .
 #
 # Get cppad
 # *********
@@ -355,11 +354,10 @@ sys.exit(0)
 # ******
 # We use *prefix* to denote the prefix where cppad_py will be installed.
 # This is the same as the value of
-# :ref:`cmake_install_prefix<install_settings.py@cmake_install_prefix>` .
+# :ref:`install_settings.py@cmake_install_prefix` .
 # You can create a variable with this value using the command
 #
-# | |tab| ``cmd=$(grep '^cmake_install_prefix=' bin/get_cppad.sh)``
-# | |tab| ``eval $cmd``
+# | |tab| ``eval $(bin/install_settings.py)``
 # | |tab| ``prefix="$cmake_install_prefix"``
 #
 # libdir
