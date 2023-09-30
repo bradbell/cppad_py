@@ -37,7 +37,7 @@ version
 We use version for its value in the pyproject.toml file
 (not including the quotes).
 You can set the shell variable version to
-this value with the following commands::
+this value, and see the value, with the following commands::
 
    eval $(grep '^version *=' pyproject.toml | sed -e 's| ||g')
    echo $version

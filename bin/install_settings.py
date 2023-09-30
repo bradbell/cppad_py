@@ -18,32 +18,37 @@ r'''
 
 Settings Used by Install and Test Scripts
 #########################################
+You must edit the file ``bin/install_settings.py``
+to change these settings from their default values.
 
 Syntax
 ******
-The syntax cases below must be executed from the top source directory;
+The syntax cases below must be executed from the
+:ref:`setup.py@cppad_py.git` directory;
 i.e., the directory that cppad_py was cloned into.
 
 Python
 ======
+This sets install_settings to a python dictionary that has a key-value
+pair for of the settings listed below:
 {xrst_code py}
 sys.path.insert(0, os.getcwd() + '/bin')
 import install_settings
 install_settings = install_settings.install_settings()
 sys.path.pop(0)
 {xrst_code}
-This sets install_settings to a python dictionary that has a key-value
-pair for of the settings listed below.
 
 Bash
 ====
+This prints the value for each of the install settings:
+{xrst_code sh}
+bin/install_settings.py
+{xrst_code}
+This sets a bash variable to its value for
+each of the install settings:
 {xrst_code sh}
 eval $(bin/install_settings.py)
 {xrst_code}
-This sets a bash variable to its value for
-each of the settings listed below.
-
-
 
 cmake_install_prefix
 ********************
