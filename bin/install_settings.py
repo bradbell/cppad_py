@@ -60,22 +60,22 @@ using ``pip`` , so its prefix is set independently.
 cmake_install_prefix = '$HOME/prefix/cppad_py'
 r'''{xrst_code}
 
-#.  If this prefix starts with ''/'' ,
-    it is an absolute path; e.g., ``/usr/local``.
-#.  If it does not start with ``/`` , it is relative to the
-    :ref:`setup.py@cppad_py.git` directory.
-#.  It may include the shell variable ``$HOME`` but no other variables;
-    e.g; ``$HOME/prefix`` .
-    Note that ``$HOME`` starts with ``/`` .
-
-If value for this key is converted to an absolute path and if present,
-``$HOME`` is expanded.
+#. If this prefix starts with ''/'' ,
+   it is an absolute path; e.g., ``/usr/local``.
+#. If it does not start with ``/`` , it is relative to the
+   :ref:`setup.py@cppad_py.git` directory.
+   The install_settings return value for cmake_install prefix will be
+   the corresponding absolute path.
+#. It may include the shell variable ``$HOME`` but no other variables;
+   e.g; ``$HOME/prefix`` .
+   The install_settings return value for cmake_install prefix will have
+   ``$HOME`` expanded to an absolute path.
 
 extra_cxx_flags
 ***************
 Extra compiler flags used when compiling c++ code not including the
 debugging and optimization flags.
-The ones below are example flags are used by g++:
+The ones below are example flags used by g++:
 {xrst_code py}'''
 extra_cxx_flags = '-Wall -pedantic-errors -Wno-unused-result -std=c++11'
 r'''{xrst_code}
@@ -142,6 +142,8 @@ will (will not) be printed.
 {xrst_code py}'''
 verbose_makefile = 'false'
 r'''{xrst_code}
+If the *verbose_makefile* is not true or false, install_settings.py will
+terminate with an error message.
 
 {xrst_end install_settings.py}
 '''
@@ -158,6 +160,11 @@ if build_type != 'debug' and build_type != 'release' :
 # include_mixed
 if include_mixed != 'true' and include_mixed != 'false' :
    msg = 'install_settings.py: include_mixed is not true or false'
+   sys.exit(msg)
+#
+# verbose_makefile
+if verbose_makefile != 'true' and verbose_makefile != 'false' :
+   msg = 'install_settings.py: verbose_makefile is not true or false'
    sys.exit(msg)
 #
 # cmake_install_prefix
