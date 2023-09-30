@@ -22,34 +22,50 @@ See Also
 ********
 :ref:`old_setup.py-name`
 
-version
-*******
-We use version below for the value of version in the pyproject.toml file
-(not including the quotes).
-You can determine this value with the following command::
-
-   grep '^version *=' pyproject.toml
-
-Simple Case
-***********
-In the simple case, :ref:`install_settings.py@include_mixed` is false.
-If :ref:`install_settings.py@build_type` is debug (release),
-cppad_py will run slower (faster) and do more (less) error detection.
-Execute the following shell commands::
+cppad_py.git
+************
+To begin the install process,
+create the cppad_py.git directory and make it the current
+working directory as follows::
 
    git clone https://github.com/bradbell/cppad_py.git cppad_py.git
    cd cppad_py.git
-   # possibly change some settings in bin/install_settings.py
+
+
+version
+*******
+We use version for its value in the pyproject.toml file
+(not including the quotes).
+You can set the shell variable version to
+this value with the following commands::
+
+   eval $(grep '^version *=' pyproject.toml | sed -e 's| ||g')
+   echo $version
+
+Simple Case
+***********
+In the simple case,
+the install setting :ref:`install_settings.py@include_mixed` is false.
+After possibly changing some of the other settings in
+:ref:`install_settings.py-name`, execute the following commands::
+
    bin/get_cppad.sh
    python3 -m build
-   pip install dist/cppad_py-version.gz
+   pip install dist/cppad_py-$version.gz
 
+You may need to add ``--user`` of specify some other install
+prefix in the pip command above.
 If you use this form of the install,
 you will not be able to use any of the :ref:`mixed-name` routines.
 
 Example
 =======
-You should now be able to execute the following example:
+If you place the Python Code below in the file ``temp.py`` ,
+the following command should execute without error::
+
+   python3 temp.py
+
+Python Code:
 {xrst_literal
    readme.md
    # BEGIN PYTHON
@@ -66,14 +82,12 @@ The following command will test this install::
 Mixed Case
 **********
 In the mixed case, :ref:`install_settings.py@include_mixed` is true.
-Execute the following shell commands::
+After possibly changing some of the other settings in
+:ref:`install_settings.py-name`, execute the following commands::
 
-   git clone https://github.com/bradbell/cppad_py.git cppad_py.git
-   cd cppad_py.git
-   # possibly change some settings in bin/install_settings.py
    bin/get_cppad_mixed.sh
    python3 -m build
-   pip install dist/cppad_py-version.tar.gz --user
+   pip install dist/cppad_py-$version.tar.gz
 
 If you use this form of the install,
 you will be able to use any of the :ref:`mixed-name` routines.
