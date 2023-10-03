@@ -46,7 +46,7 @@ this value, and see the value, with the following commands::
 System Dependencies
 *******************
 The following command will use your system package manage to
-install some packages required by cppad_py:
+install some packages required by cppad_py::
 
    bin/system_depend.sh
 
