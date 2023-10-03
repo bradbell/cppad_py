@@ -15,4 +15,8 @@ authors      = [ {name = "Bradley M. Bell", email = "bradbell@seanet.com"} ]
 description  = "A C++ Object Library and Python Interface to CppAD"
 readme       = "readme.md"
 keywords     = [ "cppad", "AD", "differentiation", "algorithmic", "automatic" ]
-dependencies =  [ "numpy", "scipy" ]
+#
+# scipy and matplotlib are only requried when include_mixed is true;
+# see bin/install_settings.py.
+# Perhaps the proper way to handel this is to create a mixed subpackage.
+dependencies = [ "pytest", "numpy", "scipy", "matplotlib" ]

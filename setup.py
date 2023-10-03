@@ -7,6 +7,7 @@ r"""
 {xrst_spell
    cd
    dist
+   dependencies
    gz
    pyproject
    toml
@@ -42,6 +43,13 @@ this value, and see the value, with the following commands::
    eval $(grep '^version *=' pyproject.toml | sed -e 's| ||g')
    echo $version
 
+System Dependencies
+*******************
+The following command will use your system package manage to
+install some packages required by cppad_py:
+
+   bin/system_depend.sh
+
 Simple Case
 ***********
 In the simple case,
@@ -51,7 +59,7 @@ After possibly changing some of the other settings in
 
    bin/get_cppad.sh
    python3 -m build
-   pip install dist/cppad_py-$version.gz
+   pip install dist/cppad_py-$version.tar.gz
 
 You may need to add ``--user`` of specify some other install
 prefix in the pip command above.

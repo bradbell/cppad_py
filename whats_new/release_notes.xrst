@@ -29,6 +29,9 @@ CppAD Py Release Notes By Year
    mm
    dd
    pytest
+   scipy
+   matplotlib
+   gz
 }
 
 CppAD Py Changes During 2023
@@ -36,6 +39,18 @@ CppAD Py Changes During 2023
 
 mm-dd
 *****
+
+10-03
+=====
+#. Installing :ref:`setup.py@System Dependencies` was added to the
+   setup.py install instructions.
+#. The file optimize_fun_class.py had the warning:
+   `invalid escape sequence \;` . This has been fixed.
+#. The pytest, scipy, and matplotlib requirements were missing and have been
+   add to the :ref:`setup.py-name` install.
+#. The setup.py :ref:`setup.py@Simple Case` was corrected by changing
+   cppad_py-$version.gz to cppad_py-$version.tar.gz .
+
 
 09-30
 =====

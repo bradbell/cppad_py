@@ -39,7 +39,7 @@ class optimize_fun_class :
       H = self.constraint_ad.hessian(x, v)
       return H
 # END_PYTHON
-"""
+r"""
 {xrst_begin numeric_optimize_fun_class}
 {xrst_spell
    hess
