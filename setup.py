@@ -2,8 +2,8 @@
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-r"""
-{xrst_begin setup.py}
+r'''
+{xrst_begin_parent setup.py}
 {xrst_spell
    cd
    dist
@@ -22,6 +22,11 @@ Install cppad_py Python Module
 See Also
 ********
 :ref:`old_setup.py-name`
+
+Errors
+******
+If you encounter an error during this process,
+see :ref:`setup.py.error-name` .
 
 cppad_py.git
 ************
@@ -45,7 +50,7 @@ this value, and see the value, with the following commands::
 
 System Dependencies
 *******************
-The following command will use your system package manage to
+The following command will use your system package manager to
 install some packages required by cppad_py::
 
    bin/system_depend.sh
@@ -107,7 +112,7 @@ The following command will test this install::
    pytest example/python/*/*_xam.py
 
 {xrst_end setup.py}
-"""
+'''
 # ----------------------------------------------------------------------------
 import sys
 import re
@@ -236,7 +241,6 @@ class my_build_py(build_py):
       #
       # build_py
       super(build_py, self).run()
-# ----------------------------------------------------------------------------
 #
 # setup
 setup(
@@ -248,3 +252,55 @@ setup(
       'build_py' : my_build_py,
    }
 )
+# ----------------------------------------------------------------------------
+r'''
+{xrst_begin setup.py.error}
+{xrst_spell
+   cholmod
+   homebrew
+   suitesparse
+   cxx
+   Wno
+   var
+}
+
+setup.py Error Messages
+#######################
+
+cholmod.h
+*********
+This message can only occur when
+:ref:`install_settings.py@include_mixed` is true.
+
+Message
+=======
+
+| |tab| ... fatal error: 'cholmod.h' file not found
+| |tab| # include <cholmod.h>
+
+Solution
+========
+If you get this message, find out where ``cholmod.h`` is on your system.
+For example, if you are using homebrew on the Mac, the following command
+will find cholmod.h::
+
+   find -L $HOMEBREW_PREFIX -name 'cholmod.h'
+
+On one system, the result of this command was::
+
+   /opt/homebrew/include/cholmod.h
+   /opt/homebrew/var/homebrew/linked/suite-sparse/include/cholmod.h
+   /opt/homebrew/opt/suite-sparse/include/cholmod.h
+   /opt/homebrew/opt/suitesparse/include/cholmod.h
+   /opt/homebrew/Cellar/suite-sparse/7.1.0/include/cholmod.h
+
+So cholmod was installed in the /opt/homebrew/include directory.
+Changing :ref:`install_settings.py@extra_cxx_flags` as follows
+solved the problem::
+
+   extra_cxx_flags  = '-Wall -pedantic-errors -Wno-unused-result -std=c++11'
+   extra_cxx_flags += '-I /opt/homebrew/include'
+
+
+{xrst_end setup.py.error}
+'''

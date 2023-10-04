@@ -65,10 +65,10 @@ CppAD Py Changes During 2020
    when looking for ``cholmod.h`` .
    It also gives better error messaging during the install procedure.
 #. Group the install error messages under the program being run;
-   i.e., :ref:`install_error@get_cppad_mixed.sh` ,
-   i.e., :ref:`install_error@old_setup.py` ,
-   i.e., :ref:`install_error@check_all.py` .
-#. Added a discussion of the :ref:`install_error@get_cppad_mixed.sh@cholmod.h`
+   i.e., :ref:`old_setup.py.error@get_cppad_mixed.sh` ,
+   i.e., :ref:`old_setup.py.error@old_setup.py` ,
+   i.e., :ref:`old_setup.py.error@check_all.py` .
+#. Added a discussion of the :ref:`old_setup.py.error@get_cppad_mixed.sh@cholmod.h`
    error message.
 
 11-20
@@ -92,8 +92,8 @@ installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
    mac using `port <https://www.macports.org>`_ to install packages.
    The previous version assumed the mac was using
    `brew <https://brew.sh>`_ to install packages.
-#. Add a :ref:`install_error@old_setup.py@symbolic link` and
-   :ref:`install_error@old_setup.py@cppad.pc, cppad_mixed.pc` entries to the
+#. Add a :ref:`old_setup.py.error@old_setup.py@symbolic link` and
+   :ref:`old_setup.py.error@old_setup.py@cppad.pc, cppad_mixed.pc` entries to the
    list of install error messages.
 #. Remove under construction from the :ref:`mixed-title` class; i.e.,
    it has reached a stable state.
@@ -166,13 +166,13 @@ to the mixed class operations.
 #. Remove some extra space when a '.' character appears between the
    change between italic and literal font.
 #. Add an install error entry for when the
-   :ref:`cppad_py <install_error@check_all.py@cppad_py>`
+   :ref:`cppad_py <old_setup.py.error@check_all.py@cppad_py>`
    module can't be found.
 
 11-11
 *****
 Improve the install instructions in :ref:`old_setup.py-name`
-and :ref:`install_error-name`.
+and :ref:`old_setup.py.error-name`.
 
 11-10
 *****
@@ -560,7 +560,7 @@ example if you are interested.
    (The ``numeric_seirs_class`` was later replaced by
    :ref:`numeric_seirwd_model-name`.)
 #. Add mention of using ``DYLD_LIBRARY_PATH`` in the
-   :ref:`libcppad_lib<install_error@check_all.py@libcppad_lib>`
+   :ref:`libcppad_lib<old_setup.py.error@check_all.py@libcppad_lib>`
    install error instructions for the Mac.
 
 05-05
@@ -588,7 +588,7 @@ in the old_setup.py documentation; see
 04-26
 *****
 The ``old_setup.py`` program was modified to try to automatically solve the
-:ref:`install_error@check_all.py@libcppad_lib` problem.
+:ref:`old_setup.py.error@check_all.py@libcppad_lib` problem.
 
 04-25
 *****
@@ -604,7 +604,7 @@ the user no longer needs to run ``cmake`` to test the C++ library.
 
 04-23
 *****
-Add an :ref:`install_error-name` section to the documentation.
+Add an :ref:`old_setup.py.error-name` section to the documentation.
 
 04-22
 *****

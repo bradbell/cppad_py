@@ -40,6 +40,12 @@ CppAD Py Changes During 2023
 mm-dd
 *****
 
+10-04
+=====
+The :ref:`setup.py.error-name` page was added
+and the old ``install_error`` page was moved to
+:ref:`old_setup.py.error-name` .
+
 10-03
 =====
 #. Installing :ref:`setup.py@System Dependencies` was added to the
