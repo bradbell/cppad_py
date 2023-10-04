@@ -299,7 +299,7 @@ Changing :ref:`install_settings.py@extra_cxx_flags` as follows
 solved the problem::
 
    extra_cxx_flags  = '-Wall -pedantic-errors -Wno-unused-result -std=c++11'
-   extra_cxx_flags += '-I /opt/homebrew/include'
+   extra_cxx_flags += ' ' + '-I /opt/homebrew/include'
 
 
 {xrst_end setup.py.error}
