@@ -21,7 +21,7 @@ build:
       # Suppress spell warnings because readthdocs uses a different dictionry.
       - xrst
          --page_source
-         --html_theme sphinx_book_theme
+         --html_theme furo
          --group_list default
          --index_page_name cppad_py
          --suppress_spell_warnings
