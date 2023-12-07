@@ -4,6 +4,12 @@
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 set -e -u
+# -----------------------------------------------------------------------------
+# bash function that echos and executes a command
+echo_eval() {
+	echo $*
+	eval $*
+}
 # ----------------------------------------------------------------------------
 # bash function that echos and executes a command
 logfile=`pwd`/check_all.log

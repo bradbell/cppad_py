@@ -33,6 +33,13 @@
 # {xrst_end rm_cppad_mixed.sh}
 # ----------------------------------------------------------------------------
 set -e -u
+# -----------------------------------------------------------------------------
+# bash function that echos and executes a command
+echo_eval() {
+	echo $*
+	eval $*
+}
+# -----------------------------------------------------------------------------
 #
 # cmake_install_prefix
 eval $(bin/install_settings.py)
