@@ -24,14 +24,13 @@ CppAD Py Release Notes By Year
 # -----------------------------------------------------------------------------
 {xrst_begin whats_new_2023}
 {xrst_spell
-   mhelp
-   uninstall
-   mm
    dd
+   gz
+   matplotlib
+   mhelp
+   mm
    pytest
    scipy
-   matplotlib
-   gz
 }
 
 CppAD Py Changes During 2023

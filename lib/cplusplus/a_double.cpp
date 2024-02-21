@@ -75,8 +75,6 @@ a_double::a_double(const CppAD::AD<double>* a_ptr)
 /*
 -------------------------------------------------------------------------------
 {xrst_begin a_double_ctor}
-{xrst_spell
-}
 
 
 The a_double Constructor
@@ -328,6 +326,8 @@ a_double a_double::var2par() const
 -------------------------------------------------------------------------------
 {xrst_begin a_double_binary}
 {xrst_spell
+   az
+   op
    radd
    rdiv
    rmul
@@ -490,6 +490,7 @@ a_double pow_int(const a_double& ad, const int& i)
 {xrst_begin a_double_compare}
 {xrst_spell
    bool
+   op
 }
 
 a_double Comparison Operators
@@ -555,6 +556,10 @@ COMPARISON_OP(!=)
 /*
 -------------------------------------------------------------------------------
 {xrst_begin a_double_assign}
+{xrst_spell
+   aw
+   op
+}
 
 a_double Assignment Operators
 #############################
@@ -623,13 +628,12 @@ ASSIGNMENT_OP(/=)
    asinh
    atan
    atanh
+   cos
    erf
    exp
    expm
    fabs
-   sinh
    sqrt
-   tanh
 }
 
 
@@ -720,9 +724,6 @@ UNARY_FUN_AD_RESULT(tanh)
 /*
 -------------------------------------------------------------------------------
 {xrst_begin a_double_cond_assign}
-{xrst_spell
-   operand
-}
 
 
 AD Conditional Assignment

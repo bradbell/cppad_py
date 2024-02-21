@@ -7,12 +7,13 @@ r'''
 {xrst_spell
    cd
    dist
-   dependencies
+   eval
+   grep
    gz
    pyproject
-   toml
-   grep
    pytest
+   sed
+   toml
    xam
 }
 
@@ -257,11 +258,11 @@ r'''
 {xrst_begin setup.py.error}
 {xrst_spell
    cholmod
+   cxx
    homebrew
    suitesparse
-   cxx
-   Wno
    var
+   wno
 }
 
 setup.py Error Messages

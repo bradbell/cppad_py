@@ -3,9 +3,6 @@
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 {xrst_begin py_fun_json}
-{xrst_spell
-   json
-}
 
 
 Json Representation of AD Computation Graph

@@ -3,8 +3,6 @@
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 {xrst_begin cpp_fun}
-{xrst_spell
-}
 
 
 CppAD Py AD Functions
@@ -19,8 +17,6 @@ Children
 {xrst_end cpp_fun}
 -------------------------------------------------------------------------------
 {xrst_begin sparse}
-{xrst_spell
-}
 
 
 CppAD Py Sparse Calculation

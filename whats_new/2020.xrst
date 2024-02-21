@@ -6,25 +6,20 @@
 {xrst_spell
    anl
    backquote
-   caching
    cholmod
    cmake
    cmd
-   compilers
-   covariance
    covid
    dir
    erf
+   eval
    fabs
-   factorial
    gh
    github
    hes
    hpp
    inplace
-   integrator
    ipopt
-   italic
    json
    libc
    libcppad
@@ -32,13 +27,15 @@
    matplotlib
    mcs
    misc
+   multi
    obj
    omh
    omhelp
-   overwrites
+   op
    pdf
    quantile
    rcv
+   rosen
    rst
    runge
    runtime
@@ -46,7 +43,7 @@
    seirs
    seirwd
    stdlib
-   steppers
+   url
    var
    xam
    xq

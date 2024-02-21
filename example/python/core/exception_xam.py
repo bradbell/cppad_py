@@ -35,8 +35,6 @@ def exception_xam() :
 # -----------------------------------------------------------------------------
 #
 # {xrst_begin exception_xam.py}
-# {xrst_spell
-# }
 # {xrst_comment_ch #}
 #
 # Python: CppAD Py Exception Handling: Example and Test

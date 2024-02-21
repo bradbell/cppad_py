@@ -5,7 +5,9 @@
 #
 # {xrst_begin py_sparse_rc}
 # {xrst_spell
+#     col
 #     nnz
+#     resize
 # }
 # {xrst_comment_ch #}
 #

@@ -3,8 +3,6 @@
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 {xrst_begin_parent library}
-{xrst_spell
-}
 
 
 The CppAD Py Libraries
@@ -20,9 +18,6 @@ Children
 {xrst_end library}
 -------------------------------------------------------------------------------
 {xrst_begin a_double}
-{xrst_spell
-   scalars
-}
 
 
 CppAD Py AD Scalars
@@ -37,8 +32,6 @@ Children
 {xrst_end a_double}
 -------------------------------------------------------------------------------
 {xrst_begin vector}
-{xrst_spell
-}
 
 
 CppAD Py Vectors
@@ -53,8 +46,6 @@ Children
 {xrst_end vector}
 -------------------------------------------------------------------------------
 {xrst_begin new_feature}
-{xrst_spell
-}
 
 
 Add New Features to cppad_py

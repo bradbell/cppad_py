@@ -105,9 +105,11 @@ def check_rosen3_step(fun, ti, yi, h) :
 #
 # {xrst_begin numeric_rosen3_step}
 # {xrst_spell
+#     june
+#     ok
 #     rosenbrock
 #     shampine
-#     truncation
+#     vol
 #     yf
 #     yi
 #     yp

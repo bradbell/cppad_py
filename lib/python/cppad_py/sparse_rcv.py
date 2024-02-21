@@ -5,8 +5,10 @@
 #
 # {xrst_begin py_sparse_rcv}
 # {xrst_spell
+#     col
 #     nnz
-#     rcv
+#     ot
+#     val
 # }
 # {xrst_comment_ch #}
 #

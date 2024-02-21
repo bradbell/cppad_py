@@ -6,14 +6,13 @@
 # {xrst_begin numeric_covid_19_xam.py}
 # {xrst_spell
 #     bradbell
-#     covariance
-#     covid
 #     csv
 #     cv
+#     gaussian
 #     lcr
-#     multiplier
-#     optimizer
+#     pennsylvania
 #     rel
+#     rosen
 #     runge
 #     seirwd
 #     sim

@@ -6,8 +6,6 @@
 #
 # {xrst_begin rm_cppad.sh}
 # {xrst_spell
-#     uninstall
-#     rm
 #     cmake
 # }
 # {xrst_comment_ch #}

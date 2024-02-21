@@ -5,9 +5,8 @@
 #
 # {xrst_begin py_sparse_hes}
 # {xrst_spell
-#     hes
-#     multiplier
 #     rcv
+#     val
 # }
 # {xrst_comment_ch #}
 #

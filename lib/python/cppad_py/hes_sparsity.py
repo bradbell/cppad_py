@@ -6,7 +6,6 @@
 # {xrst_begin py_hes_sparsity}
 # {xrst_spell
 #     bool
-#     hes
 # }
 # {xrst_comment_ch #}
 #

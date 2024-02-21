@@ -6,8 +6,6 @@
 # -----------------------------------------------------------------------------
 r'''
 {xrst_begin mixed_optimize_random_xam.py}
-{xrst_spell
-}
 
 optimize_random: Example and Test
 #################################

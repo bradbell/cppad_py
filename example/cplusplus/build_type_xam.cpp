@@ -23,8 +23,6 @@ bool build_type_xam(void) {
 // -----------------------------------------------------------------------------
 /*
 {xrst_begin build_type_xam.cpp}
-{xrst_spell
-}
 
 C++: CppAD Py build_type: Example and Test
 ##########################################

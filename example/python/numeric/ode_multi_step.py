@@ -26,9 +26,6 @@ def ode_multi_step(one_step, fun, t_all, y_init ) :
 #
 #
 # {xrst_begin numeric_ode_multi_step}
-# {xrst_spell
-#     scalars
-# }
 # {xrst_comment_ch #}
 #
 #

@@ -5,7 +5,6 @@
 #
 # {xrst_begin py_fun_forward}
 # {xrst_spell
-#     factorial
 #     xp
 #     yp
 # }

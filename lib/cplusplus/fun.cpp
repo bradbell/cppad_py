@@ -141,8 +141,6 @@ std::vector<a_double> independent(
 /*
 -------------------------------------------------------------------------------
 {xrst_begin cpp_abort_recording}
-{xrst_spell
-}
 
 
 Abort Recording
@@ -299,6 +297,7 @@ a_fun::~a_fun(void)
 {xrst_begin cpp_fun_property}
 {xrst_spell
    af
+   op
    var
 }
 
@@ -681,7 +680,6 @@ std::vector<a_double> a_fun::hessian(
 ------------------------------------------------------------------------------
 {xrst_begin cpp_fun_forward}
 {xrst_spell
-   factorial
    xp
    yp
 }
@@ -971,9 +969,6 @@ void d_fun::optimize(void)
 /*
 ----------------------------------------------------------------------------
 {xrst_begin cpp_fun_json}
-{xrst_spell
-   json
-}
 
 
 Json Representation of AD Computational Graph

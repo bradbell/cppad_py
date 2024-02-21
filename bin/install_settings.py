@@ -7,13 +7,16 @@
 r'''
 {xrst_begin install_settings.py}
 {xrst_spell
-   getcwd
    cmake
-   usr
    cxx
-   Wno
    dist
+   eval
+   getcwd
    makefile
+   os
+   sys
+   usr
+   wno
 }
 
 Settings Used by Install and Test Scripts

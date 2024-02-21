@@ -7,7 +7,6 @@
 # {xrst_spell
 #     kutta
 #     rl
-#     runge
 # }
 # {xrst_comment_ch #}
 #

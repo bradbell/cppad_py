@@ -8,7 +8,6 @@
    cxx
    dep
    ind
-   operand
    runtime
    xam
 }

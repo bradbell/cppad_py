@@ -16,8 +16,6 @@ def runge4_step(fun, ti, yi, h) :
 # {xrst_begin numeric_runge4_step}
 # {xrst_spell
 #     kutta
-#     runge
-#     truncation
 #     yf
 #     yi
 #     yp

@@ -3,8 +3,6 @@
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 {xrst_begin py_abort_recording}
-{xrst_spell
-}
 
 
 Abort Recording

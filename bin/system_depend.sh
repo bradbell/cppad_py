@@ -4,9 +4,6 @@
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 # {xrst_begin system_depend.sh}
-# {xrst_spell
-#     dependencies
-# }
 # {xrst_comment_ch #}
 #
 # Use System Package Manager to Install Some Dependencies

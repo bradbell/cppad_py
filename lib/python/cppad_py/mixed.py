@@ -495,6 +495,7 @@ class mixed :
       iter
       lagrange
       laplace
+      max
       nlp
       rcv
    }
@@ -908,9 +909,7 @@ class mixed :
    -------------------------------------------------------------------------
    {xrst_begin mixed_hes_fixed_obj}
    {xrst_spell
-      hes
       laplace
-      obj
       rcv
    }
 
@@ -1017,8 +1016,6 @@ class mixed :
    -------------------------------------------------------------------------
    {xrst_begin mixed_hes_random_obj}
    {xrst_spell
-      hes
-      obj
       rcv
    }
 

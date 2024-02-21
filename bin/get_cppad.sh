@@ -6,10 +6,6 @@
 set -e -u
 #
 # {xrst_begin get_cppad.sh}
-# {xrst_spell
-#     caching
-#     uninstall
-# }
 # {xrst_comment_ch #}
 #
 # Get cppad

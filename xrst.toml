@@ -31,6 +31,7 @@ latex_macro = [
    '\newcommand{\R}[1]{ {\rm #1} }' ,
 ]
 
+# BEGIN_SORT_THIS_LINE_PLUS_4
 [project_dictionary]
 data = [
    '''
@@ -38,21 +39,20 @@ data = [
       cpp
       cppad
       init
-      nan
+      int
       nc
       nr
       numpy
-      op
       py
       rc
-      sh
-      sparsity
       std
       str
+      taylor
       th
       vec
    '''
 ]
+# END_SORT_THIS_LINE_MINUS_3
 
 [not_in_index]
 data = [

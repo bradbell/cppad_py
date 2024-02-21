@@ -258,6 +258,7 @@ sys.exit(0)
 #     cygpath
 #     cygwin
 #     devel
+#     eval
 #     fortran
 #     gcc
 #     grep
@@ -265,16 +266,18 @@ sys.exit(0)
 #     lapack
 #     libdir
 #     libopenblas
-#     ls
 #     mingw
 #     msys
+#     os
 #     pacman
 #     pkg
 #     pkgconfig
 #     rm
 #     scipy
+#     sed
 #     setuptools
 #     suitesparse
+#     sys
 #     unix
 #     wget
 # }
@@ -514,7 +517,6 @@ r'''
    cholmod
    config
    errno
-   frameworks
    javac
    libcppad
    openjdk
@@ -525,6 +527,8 @@ r'''
    src
    stdio
    suitesparse
+   sys
+   un
    usr
 }
 

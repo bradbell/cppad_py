@@ -5,8 +5,8 @@
 #
 # {xrst_begin py_sparse_jac}
 # {xrst_spell
-#     jac
 #     rcv
+#     val
 # }
 # {xrst_comment_ch #}
 #

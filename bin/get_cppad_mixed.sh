@@ -6,10 +6,6 @@
 #
 #
 # {xrst_begin get_cppad_mixed.sh}
-# {xrst_spell
-#     caching
-#     uninstall
-# }
 # {xrst_comment_ch #}
 #
 # Get cppad_mixed

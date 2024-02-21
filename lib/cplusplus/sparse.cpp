@@ -14,7 +14,9 @@ namespace cppad_py { // BEGIN_CPPAD_PY_NAMESPACE
 -------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_rc}
 {xrst_spell
+   col
    nnz
+   resize
 }
 
 
@@ -274,8 +276,9 @@ std::vector<int> sparse_rc::col_major(void) const
 -------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_rcv}
 {xrst_spell
+   col
    nnz
-   rcv
+   val
 }
 
 
@@ -538,9 +541,6 @@ std::vector<int> sparse_rcv::col_major(void) const
 // ----------------------------------------------------------------------------
 /*
 {xrst_begin cpp_jac_sparsity}
-{xrst_spell
-   jac
-}
 
 
 Jacobian Sparsity Patterns
@@ -834,8 +834,8 @@ void d_fun::rev_hes_sparsity(
 ------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_jac}
 {xrst_spell
-   jac
    rcv
+   val
 }
 
 
@@ -1023,9 +1023,8 @@ int d_fun::sparse_jac_rev(
 ------------------------------------------------------------------------------
 {xrst_begin cpp_sparse_hes}
 {xrst_spell
-   hes
-   multiplier
    rcv
+   val
 }
 
 
