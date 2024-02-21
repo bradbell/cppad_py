@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
+# SPDX-FileContributor: 2017-23 Bradley M. Bell
+# ----------------------------------------------------------------------------
+{xrst_begin whats_new_2024}
+{xrst_spell
+   dd
+   mm
+   yy
+   yyyy
+}
+
+CppAD Py Changes During 2024
+############################
+
+mm-dd
+*****
+
+02-21
+=====
+For each year, change the web page name ``whats_new_``\ *yy*
+to *yyyy* where *yy* and *yyyy* identify the year. In addition, change the
+title for these pages to Release Notes for the corresponding year.
+This breaks old links to these web pages.
+For example, the old link to the heading directly above would have been::
+
+   https://cppad-py.readthedocs.io/whats_new_24.html#whats-new-24-mm-dd-02-21
+
+Its new link, which is much shorter, is::
+
+   https://cppad-py.readthedocs.io//2024.html#mm-dd-02-21
+
+
+{xrst_end whats_new_2024}

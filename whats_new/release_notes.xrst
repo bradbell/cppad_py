@@ -2,106 +2,25 @@
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-{xrst_begin_parent release_notes}
+{xrst_begin release_notes}
 
 
-CppAD Py Release Notes By Year
-##############################
+CppAD Py Release Notes
+######################
 
-{xrst_toc_hidden after
+{xrst_toc_hidden
+   whats_new/2024.xrst
+   whats_new/2023.xrst
    whats_new/2022.xrst
    whats_new/2021.xrst
    whats_new/2020.xrst
    whats_new/2018.xrst
 }
-:ref:`2023<whats_new_2023-name>` ,
+:ref:`2023<whats_new_2024-name>` ,
+:ref:`2022<whats_new_2023-name>` ,
 :ref:`2022<whats_new_2022-name>` ,
 :ref:`2021<whats_new_2021-name>` ,
 :ref:`2020<whats_new_2020-name>` ,
 :ref:`2018<whats_new_2018-name>`
 
 {xrst_end release_notes}
-# -----------------------------------------------------------------------------
-{xrst_begin whats_new_2023}
-{xrst_spell
-   dd
-   gz
-   matplotlib
-   mhelp
-   mm
-   pytest
-   scipy
-}
-
-CppAD Py Changes During 2023
-############################
-
-mm-dd
-*****
-
-10-04
-=====
-The :ref:`setup.py.error-name` page was added
-and the old ``install_error`` page was moved to
-:ref:`old_setup.py.error-name` .
-
-10-03
-=====
-#. Installing :ref:`setup.py@System Dependencies` was added to the
-   setup.py install instructions.
-#. The file optimize_fun_class.py had the warning:
-   `invalid escape sequence \;` . This has been fixed.
-#. The pytest, scipy, and matplotlib requirements were missing and have been
-   add to the :ref:`setup.py-name` install.
-#. The setup.py :ref:`setup.py@Simple Case` was corrected by changing
-   cppad_py-$version.gz to cppad_py-$version.tar.gz .
-
-
-09-30
-=====
-#. In documentation, change the name 'top source directory' to
-   :ref:`setup.py@cppad_py.git` . (It is simpler to use one directory
-   name and be explicit.)
-#. Add discussion of :ref:`get_cppad_mixed.sh@example_install` to
-   get_cppad_mixed.sh .
-
-09-29
-*****
-Move the install settings from :ref:`get_cppad.sh-name` to
-:ref:`install_settings.py-name` .
-
-09-21
-=====
-#. Improve and update the :ref:`get_cppad.sh-name`
-   and `get_cppad_mixed.sh-name` documentation.
-   Of particular interest is how
-   :ref:`install_settings.py@cmake_install_prefix` relates
-   to the prefix used by the new :ref:`setup.py-name` .
-#. Fix some import resolution problems with the new :ref:`setup.py-name`
-   when :ref:`install_settings.py@include_mixed` is true.
-#. Add the :ref:`build_type-name` function. This will be used to exclude
-   certain error detection tests when using a release build.
-#. Combine the more.cpp and more.py into the :ref:`new_feature-name` page.
-#. Add pytest testing of the new :ref:`setup.py-name` install.
-
-09-20
-=====
-Move the old setup.py to :ref:`old_setup.py-name` and create a new version
-of :ref:`setup.py-name` .
-
-09-13
-=====
-#. Advance to cppad_mixed-20230913.
-#. Add the uninstall scripts
-   :ref:`rm_cppad.sh-name` and :ref:`rm_cppad_mixed.sh-name` .
-#. Change xrst page names from
-   \*_sh -> \*.sh, \*_py -> \*.py, and \*_cpp -> \*.cpp .
-
-09-05
-=====
-#. Fix some documentation errors that a newer version of xrst detected.
-   These errors were in the more.cpp and more.py
-   and were OMhelp commands that did not convert to xrst properly.
-#. Advance cppad_mixed from 20220519 to 20230112.
-
-{xrst_end whats_new_2023}
