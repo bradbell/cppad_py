@@ -16,11 +16,11 @@ CppAD Py Release Notes
    whats_new/2020.xrst
    whats_new/2018.xrst
 }
-:ref:`2023<whats_new_2024-name>` ,
-:ref:`2022<whats_new_2023-name>` ,
-:ref:`2022<whats_new_2022-name>` ,
-:ref:`2021<whats_new_2021-name>` ,
-:ref:`2020<whats_new_2020-name>` ,
-:ref:`2018<whats_new_2018-name>`
+:ref:`2023-name` ,
+:ref:`2022-name` ,
+:ref:`2022-name` ,
+:ref:`2021-name` ,
+:ref:`2020-name` ,
+:ref:`2018-name`
 
 {xrst_end release_notes}

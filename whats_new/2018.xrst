@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-{xrst_begin whats_new_2018}
+{xrst_begin 2018}
 {xrst_spell
    mm
    dd
@@ -15,8 +15,8 @@
 }
 
 
-CppAD Py Changes During 2018
-############################
+Release Notes for 2018
+######################
 
 mm-dd
 *****
@@ -162,4 +162,4 @@ Change build of Python module to use Python 3
 =====
 Birthday when CppAD Py was first extracted from CppAD Swig.
 
-{xrst_end whats_new_2018}
+{xrst_end 2018}

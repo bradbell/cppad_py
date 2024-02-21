@@ -3,7 +3,7 @@
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 
-{xrst_begin whats_new_2022}
+{xrst_begin 2022}
 {xrst_spell
    mm
    dd
@@ -11,8 +11,8 @@
    xsrst
 }
 
-CppAD Py Changes During 2022
-############################
+Release Notes for 2022
+######################
 
 mm-dd
 *****
@@ -42,4 +42,4 @@ Adapt to new xrst-2022.10.5 and pyspellchecker-0.7.0.
 
 .. _xrst: https://bradbell.github.io/xrst
 
-{xrst_end whats_new_2022}
+{xrst_end 2022}

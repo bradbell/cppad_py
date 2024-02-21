@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-{xrst_begin whats_new_2020}
+{xrst_begin 2020}
 {xrst_spell
    mm
    dd
@@ -53,8 +53,8 @@
 }
 
 
-CppAD Py Changes During 2020
-############################
+Release Notes for 2020
+######################
 
 mm-dd
 *****
@@ -681,4 +681,4 @@ Add an :ref:`old_setup.py.error-name` section to the documentation.
    the documentation program ``omhelp-20200130`` .
 #. Add :ref:`caching<get_cppad.sh@Caching>` to the CppAD install.
 
-{xrst_end whats_new_2020}
+{xrst_end 2020}

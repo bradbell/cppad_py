@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-{xrst_begin whats_new_2024}
+{xrst_begin 2024}
 {xrst_spell
    dd
    mm
@@ -10,8 +10,8 @@
    yyyy
 }
 
-CppAD Py Changes During 2024
-############################
+Release Notes for 2024
+######################
 
 mm-dd
 *****
@@ -34,4 +34,4 @@ mm-dd
       https://cppad-py.readthedocs.io//2024.html#mm-dd-02-21
 
 
-{xrst_end whats_new_2024}
+{xrst_end 2024}

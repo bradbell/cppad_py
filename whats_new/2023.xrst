@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-{xrst_begin whats_new_2023}
+{xrst_begin 2023}
 {xrst_spell
    dd
    gz
@@ -13,8 +13,8 @@
    scipy
 }
 
-CppAD Py Changes During 2023
-############################
+Release Notes for 2023
+######################
 
 mm-dd
 *****
@@ -84,4 +84,4 @@ of :ref:`setup.py-name` .
    and were OMhelp commands that did not convert to xrst properly.
 #. Advance cppad_mixed from 20220519 to 20230112.
 
-{xrst_end whats_new_2023}
+{xrst_end 2023}

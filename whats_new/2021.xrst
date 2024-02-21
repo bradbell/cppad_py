@@ -3,7 +3,7 @@
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
 
-{xrst_begin whats_new_2021}
+{xrst_begin 2021}
 {xrst_spell
    mm
    dd
@@ -17,8 +17,8 @@
 }
 
 
-CppAD Py Changes During 2021
-############################
+Release Notes for 2021
+######################
 
 mm-dd
 *****
@@ -126,4 +126,4 @@ This included advancing to cppad_mixed-20210511.
    This changes the cppad_mixed install so that it uses
    ``external/``\ *build_type* for its externals.
 
-{xrst_end whats_new_2021}
+{xrst_end 2021}
