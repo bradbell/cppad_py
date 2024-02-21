@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Bradley M. Bell <bradbell@seanet.com>
 # SPDX-FileContributor: 2017-23 Bradley M. Bell
 # ----------------------------------------------------------------------------
-"""
+r"""
 {xrst_begin_parent mixed}
 {xrst_spell
    laplace
@@ -82,7 +82,7 @@ class fixed_solution :
       self.ran_con_lag = cppad_py.utility.vec2numpy( ran_con_lag , n_ran_con )
 
 class mixed :
-   """
+   r"""
    -------------------------------------------------------------------------
    {xrst_begin mixed_ctor}
    {xrst_spell
@@ -256,7 +256,7 @@ class mixed :
          fix_constraint.f,
          ran_likelihood.f,
       )
-   """
+   r"""
    -------------------------------------------------------------------------
    {xrst_begin mixed_warning}
    {xrst_spell
@@ -296,7 +296,7 @@ class mixed :
       self.obj.warning(message)
    def post_warning(self, message) :
       self.obj.post_warning(message)
-   """
+   r"""
    -------------------------------------------------------------------------
    {xrst_begin mixed_fatal_error}
    {xrst_spell
@@ -329,7 +329,7 @@ class mixed :
    """
    def post_fatal_error(self, message) :
       self.obj.post_fatal_error(message)
-   """
+   r"""
    -------------------------------------------------------------------------
    {xrst_begin mixed_fix_likelihood}
 
@@ -778,7 +778,7 @@ class mixed :
          solution_tmp.ran_con_lag
       )
       return solution
-   """
+   r"""
    -------------------------------------------------------------------------
    {xrst_begin mixed_optimize_random}
    {xrst_spell
@@ -905,7 +905,7 @@ class mixed :
       #
       random_opt = cppad_py.utility.vec2numpy( random_opt , n_random )
       return random_opt
-   """
+   r"""
    -------------------------------------------------------------------------
    {xrst_begin mixed_hes_fixed_obj}
    {xrst_spell
@@ -1012,7 +1012,7 @@ class mixed :
          fixed_vec,
          random_opt,
       )
-   """
+   r"""
    -------------------------------------------------------------------------
    {xrst_begin mixed_hes_random_obj}
    {xrst_spell
