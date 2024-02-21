@@ -5,6 +5,8 @@
 
 {xrst_begin whats_new_2022}
 {xrst_spell
+   mm
+   dd
    pyspellchecker
    xsrst
 }
@@ -12,22 +14,25 @@
 CppAD Py Changes During 2022
 ############################
 
-12-12
+mm-dd
 *****
+
+12-12
+=====
 #. Adapt to xrst-2022.12.12.
 #. Include :ref:`get_cppad_mixed.sh-name` and
    :ref:`mixed_optimize_random_xam.py-name` in this documentation.
 
 11-28
-*****
+=====
 Adapt to xrst-2022.11.28.
 
 10-06
-*****
+=====
 Adapt to new xrst-2022.10.5 and pyspellchecker-0.7.0.
 
 08-24
-*****
+=====
 1. Convert from using ``bin/xsrst.py`` to using xrst_
    (a separate package started with xsrst.py).
    In addition, remove the documentation and source code corresponding

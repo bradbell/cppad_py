@@ -4,6 +4,8 @@
 # ----------------------------------------------------------------------------
 {xrst_begin whats_new_2020}
 {xrst_spell
+   mm
+   dd
    anl
    backquote
    cholmod
@@ -54,8 +56,11 @@
 CppAD Py Changes During 2020
 ############################
 
-12-01
+mm-dd
 *****
+
+12-01
+=====
 #. Advance to cppad_mixed-20201130.
    This fixes a problem installing on the Mac with port.
    To be specific, the directory ``/opt/local`` is searched
@@ -69,7 +74,7 @@ CppAD Py Changes During 2020
    error message.
 
 11-20
-*****
+=====
 #. Add the :ref:`f@check_for_nan <py_fun_check_for_nan-name>` and
    :ref:`a_double_binary@pow_int` functions.
 #. CppAD errors were not being translated to python exceptions
@@ -79,12 +84,12 @@ CppAD Py Changes During 2020
    or matrices do not have the correct dimensions.
 
 11-19
-*****
+=====
 Advance to cppad_mixed-20201119. Also make version of cppad
 installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
 
 11-18
-*****
+=====
 #. Advance to cppad_mixed-2020118. This adds support for
    mac using `port <https://www.macports.org>`_ to install packages.
    The previous version assumed the mac was using
@@ -101,7 +106,7 @@ installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
    :ref:`mixed_ctor@random_init@n_random`.
 
 11-17
-*****
+=====
 #. The :ref:`setup@py <old_setup.py-name>` script was improved.
    To be specific:
 
@@ -117,7 +122,7 @@ installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
    It's use was converted to ``PyObject_CallObject`` to avoid this warning.
 
 11-16
-*****
+=====
 #. **API change**: the :ref:`pat <py_sparse_rcv@pat>` member function
    was added to the ``sparse_rcv`` class and the constructor was change to
    have no arguments. The old syntax
@@ -137,7 +142,7 @@ installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
 
 
 11-15
-*****
+=====
 #. Fix a memory leak in the destructor for a
    :ref:`d_fun <py_fun_ctor@Syntax@d_fun>` object.
 #. The syntax for the c++ :ref:`sparse_rcv <cpp_sparse_rcv-name>`
@@ -148,12 +153,12 @@ installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
    to the mixed class operations.
 
 11-14
-*****
+=====
 Add :ref:`optimize_random <mixed_optimize_random-name>`
 to the mixed class operations.
 
 11-12
-*****
+=====
 #. Improve the :ref:`ipopt options
    <mixed_optimize_fixed@fixed_ipopt_options@ipopt options>` documentation.
 #. Fix the font in the syntax for the rosen3_step functions
@@ -167,12 +172,12 @@ to the mixed class operations.
    module can't be found.
 
 11-11
-*****
+=====
 Improve the install instructions in :ref:`old_setup.py-name`
 and :ref:`old_setup.py.error-name`.
 
 11-10
-*****
+=====
 #. **API change** : the xrst ``child_list`` command was changed to
    child_table and a table,
    instead of a list, was used to display the names and corresponding titles.
@@ -186,7 +191,7 @@ and :ref:`old_setup.py.error-name`.
    :ref:`requirements<old_setup.py@External Requirements>`.
 
 11-08
-*****
+=====
 #. Change old_setup.py :ref:`local build<old_setup.py@Local Build>` and test instructions so they work on Mac OS.
 
 #. Fix ``bin/get_cppad_mixed.sh`` so that it is not necessary to set
@@ -202,7 +207,7 @@ and :ref:`old_setup.py.error-name`.
 
 
 11-06
-*****
+=====
 #. The install with
    :ref:`include_mixed<install_settings.py@include_mixed>` false was broken
    by the changes on 11-03. This has been fixed.
@@ -218,12 +223,12 @@ and :ref:`old_setup.py.error-name`.
    value :ref:`libdir<old_setup.py@libdir>`.
 
 11-05
-*****
+=====
 Advance to cppad_mixed-20201105.
 This fixes some problems with it's install in Mac OS.
 
 11-04
-*****
+=====
 The install prefix for cppad in ``bin/get_cppad.sh``
 is called *cmake_install_prefix* in cppad_py,
 but it is called *cppad_prefix* in cppad.
@@ -231,17 +236,17 @@ The cmake command in ``bin/get_cppad.sh`` has been
 fixed to account for this.
 
 11-03
-*****
+=====
 The install prefix name was changed from *cppad_prefix* to
 :ref:`cmake_install_prefix<install_settings.py@cmake_install_prefix>`.
 
 10-31
-*****
+=====
 Fix some problems with the macOS install when
 :ref:`include_fixed<install_settings.py@include_mixed>` is true.
 
 10-30
-*****
+=====
 The :ref:`install command<old_setup.py@Install>` no longer creates
 a local copy of ``cppad_py`` for testing. (On macOS systems the
 local copy would cause problems during the install.)
@@ -249,7 +254,7 @@ The :ref:`old_setup.py@Local Build` still builds the local
 copy for testing.
 
 10-29
-*****
+=====
 #. The *cppad_libdir* setting was added to ``bin/get_cppad.sh``.
    This fixed a problem on some systems where ``bin/get_cppad.sh``
    and ``bin/get_cppad_mixed.sh`` might install the cppad library
@@ -261,7 +266,7 @@ copy for testing.
    install egg being a directory instead of a zip file.
 
 10-28
-*****
+=====
 #. Improve the :ref:`setup@py<old_setup.py-name>` install instructions.
    To be specific, change ``python`` to ``python3`` and edit the
    :ref:`external requirements<old_setup.py@External Requirements>`.
@@ -271,18 +276,18 @@ copy for testing.
 
 
 10-21
-*****
+=====
 #. Add a second :ref:`optimize_fixed example<mixed_optimize_fixed@Examples>`.
 
 #. Advance to cppad-20201021 (this fixes a warning on some compilers).
 
 10-19
-*****
+=====
 Add the non linear constraint functions of the fixed effects
 to the mixed class; see :ref:`mixed_fix_constraint-title`.
 
 10-17
-*****
+=====
 #. The default value (corresponding to ``None``)
    for :ref:`mixed_optimize_fixed@fixed_in (random_in)` in ``optimize_fixed``
    was changed from zero to *fixed_init* (*random_init*).
@@ -301,7 +306,7 @@ to the mixed class; see :ref:`mixed_fix_constraint-title`.
    for an example see :ref:`a_double_unary_fun_xam.py-title`.
 
 10-16
-*****
+=====
 #. Add the :ref:`mixed-title` class an make it optional during the install process;
    see :ref:`include_mixed<install_settings.py@include_mixed>`.
    This class is under construction and its API may change.
@@ -315,13 +320,13 @@ to the mixed class; see :ref:`mixed_fix_constraint-title`.
 
 
 10-13
-*****
+=====
 The xrst.py utility would crash if a section had child_cmd
 and was indented.
 This has been fixed
 
 10-02
-*****
+=====
 #. The library documentation that is for both c++ and python was improved.
    To be specific, both the c++ and python syntax was included.
    Also these sections were moved from children of :ref:`cpp_lib-title`
@@ -337,7 +342,7 @@ This has been fixed
    This reduces the change of a random failure.
 
 09-30
-*****
+=====
 #. The ``error_message`` routine was replaced by :ref:`exceptions<exception-name>`
    (``error_message`` was not thread safe).
    This is a change to the API, you will have to use exceptions objects
@@ -347,7 +352,7 @@ This has been fixed
    messages (cppad error messages still require using the debug version).
 
 09-14
-*****
+=====
 #. xrst: the target
    command line argument was added and the section numbers were removed
    from the html output. This was done so that adding or removing one
@@ -362,7 +367,7 @@ This has been fixed
    for the parent come before its children.
 
 09-13
-*****
+=====
 #. The text ``xrst:`` was added to the beginning of each whats new item
    (see below) that only pertained to the xrst.py program.
 #. xrst: The order of the sections in the pdf file and the
@@ -376,7 +381,7 @@ This has been fixed
    command line syntax.
 
 09-12
-*****
+=====
 #. xrst: A table of contents that only contains section titles,
    not headings within a section, was added.
 #. xrst: The following restriction was added: a
@@ -384,7 +389,7 @@ This has been fixed
    can not begin with ``xrst_``.
 
 07-31
-*****
+=====
 #. xrst: An empty line at beginning of xrst input file was causing it to crash
    (this has been fixed).
 #. xrst: Putting version number in the documentation navigation side bar
@@ -394,12 +399,12 @@ This has been fixed
    \` < *url* > \`_ or \` *text* < *url* > \`_.
 
 07-30
-*****
+=====
 xrst: The words 'anl', 'dir', 'mcs' were removed from the xrst dictionary.
 The word 'initialization' was added to the xrst dictionary.
 
 07-29
-*****
+=====
 #. xrst: Add the optional command line argument
    line_increment.
    This is an aid for finding the source of errors and warnings
@@ -408,7 +413,7 @@ The word 'initialization' was added to the xrst dictionary.
    Fix file_cmd. This has been fixed.
 
 07-28
-*****
+=====
 #. xrst: Move version number from the title in :ref:`cppad_py-name` to
    the documentation navigation side bar.
 #. xrst: Add the configure section.
@@ -421,7 +426,7 @@ The word 'initialization' was added to the xrst dictionary.
    spelling
 
 07-25
-*****
+=====
 #. xrst: Install xrst.py during the
    :ref:`install<old_setup.py@Install>` procedure.
 #. xrst: Add a purpose paragraph to xrst documentation.
@@ -432,7 +437,7 @@ The word 'initialization' was added to the xrst dictionary.
    headings from the :ref:`index<genindex>`.
 
 07-24
-*****
+=====
 #. xrst: Add the xrst.py program
    which extracts sphinx ``*.rst`` files from source code.
    This program is not yet installed but you can use it by placing
@@ -442,7 +447,7 @@ The word 'initialization' was added to the xrst dictionary.
 #. Use xrst and sphinx to generate this documentation for cppad_py.
 
 07-18
-*****
+=====
 
 #. The experimental ``bin/xrst.py`` program was added.
    This program runs its tests and builds its documentation
@@ -453,7 +458,7 @@ The word 'initialization' was added to the xrst dictionary.
    (with tab stops at multiples of 4 spaces).
 
 07-05
-*****
+=====
 
 #. The :ref:`prototype<ad_vec_cppad2std@Syntax>` for ``vec2a_double``
    was the same as for :ref:`d_vec_std2cppad<d_vec_cppad2std-name>`.
@@ -464,12 +469,12 @@ The word 'initialization' was added to the xrst dictionary.
    to_json was changed to from_json
 
 05-17
-*****
+=====
 The ``abs`` :ref:`a_double_unary_fun-name` was added
 (works the same as the ``fabs`` function).
 
 05-16
-*****
+=====
 
 #. A discussion of some subtle issues,
    when interpolation is used to define an ODE,
@@ -479,13 +484,13 @@ The ``abs`` :ref:`a_double_unary_fun-name` was added
    SEIRWD model.
 
 05-15
-*****
+=====
 The file ``ode_solve.py`` was moved to ``ode_multi_step.py``
 and :ref:`numeric_ode_multi_step-name` was extended to allow for different ODE solvers
 (steppers).
 
 05-14
-*****
+=====
 
 #. The example semi-stiff integrator :ref:`numeric_rosen3_step-name` was added.
 #. The example file ``runge4.py`` was moved to ``ode_solve.py``
@@ -498,7 +503,7 @@ and :ref:`numeric_ode_multi_step-name` was extended to allow for different ODE s
    :ref:`covid-19<numeric_covid_19_xam.py-name>` example.
 
 05-12
-*****
+=====
 
 #. More improvements to were made to
    :ref:`covid-19<numeric_covid_19_xam.py-name>` example.
@@ -508,14 +513,14 @@ and :ref:`numeric_ode_multi_step-name` was extended to allow for different ODE s
    added to the SEIRWD model using a W compartment (Will die compartment).
 
 05-09
-*****
+=====
 The :ref:`covid-19_modeling_example<numeric_covid_19_xam.py-name>` application
 of AD is changing on a regular basis, so the details of the
 changes will no longer be tracked in this file, just see current
 example if you are interested.
 
 05-08
-*****
+=====
 
 #. The ``numeric_seirs_fit_xam.py`` example was renamed
    :ref:`numeric_covid_19_xam.py-name`.
@@ -532,7 +537,7 @@ example if you are interested.
    of the optimal parameters.
 
 05-07
-*****
+=====
 
 #. The function ``scipy.misc.factorial``
    has been deprecated so change it to
@@ -547,7 +552,7 @@ example if you are interested.
    capabilities.
 
 05-06
-*****
+=====
 
 #. Add the following utility examples:
    :ref:`numeric_optimize_fun_class-name`,
@@ -561,21 +566,21 @@ example if you are interested.
    install error instructions for the Mac.
 
 05-05
-*****
+=====
 Add the :ref:`numeric_runge4_step_xam.py-name` example.
 
 05-04
-*****
+=====
 Add the :ref:`numeric_optimize_fun_xam.py-name` example.
 
 04-28
-*****
+=====
 The :ref:`f_from_json()<py_fun_json@from_json>` function was added.
 In addition, the
 :ref:`empty_function<py_fun_ctor@f@Empty Function>` constructor was added.
 
 04-27
-*****
+=====
 The ``old_setup.py`` program now installs a separate copy of CppAD
 and provides instructions at the end for modifying your
 ``LD_LIBRARY_PATH``. These instructions have been removed and placed
@@ -583,16 +588,16 @@ in the old_setup.py documentation; see
 :ref:`LD_LIBRARY_PATH<old_setup.py@LD_LIBRARY_PATH>` .
 
 04-26
-*****
+=====
 The ``old_setup.py`` program was modified to try to automatically solve the
 :ref:`old_setup.py.error@check_all.py@libcppad_lib` problem.
 
 04-25
-*****
+=====
 The :ref:`f_to_json()<py_fun_json@to_json>` function was added.
 
 04-24
-*****
+=====
 The newer Mac systems seems to require that one use
 ``-stdlib=libc++`` compile and link flag.
 The install has been changed to check for and adapt to this condition.
@@ -600,11 +605,11 @@ In addition, :ref:`old_setup.py-name` now runs the ``cmake`` command; i.e.,
 the user no longer needs to run ``cmake`` to test the C++ library.
 
 04-23
-*****
+=====
 Add an :ref:`old_setup.py.error-name` section to the documentation.
 
 04-22
-*****
+=====
 
 #. Instructions were added for installing using pip
    (this install was not kept up to date and has been removed).
@@ -622,7 +627,7 @@ Add an :ref:`old_setup.py.error-name` section to the documentation.
    is a numpy array of ``a_double`` .
 
 04-20
-*****
+=====
 
 #. Move configuration setting from :ref:`old_setup.py-name` to
    bin/get_setup.sh. They have since been moved to
@@ -631,7 +636,7 @@ Add an :ref:`old_setup.py.error-name` section to the documentation.
    Install instructions for pip will be added soon.
 
 04-19
-*****
+=====
 
 #. Move the python source that gets distributed from ``lib/python``
    to ``lib/python/cppad_py`` so that more like a standard python package.
@@ -639,7 +644,7 @@ Add an :ref:`old_setup.py.error-name` section to the documentation.
    some of the ``old_setup.py`` actions.
 
 04-18
-*****
+=====
 
 #. Change *yq* to *xq* , correct documentation,
    for *xq* in the
@@ -649,7 +654,7 @@ Add an :ref:`old_setup.py.error-name` section to the documentation.
    :ref:`syntax<old_setup.py@Syntax>` for building the cppad_py python module.
 
 04-13
-*****
+=====
 
 #. The *z* =  ``pow`` ( *x* , *y* ) functions was added; see
    :ref:`a_double_binary-name`.
@@ -658,7 +663,7 @@ Add an :ref:`old_setup.py.error-name` section to the documentation.
    :ref:`near_equal<a_double_property@near_equal>` notation.
 
 04-12
-*****
+=====
 
 #. Add the ``erf`` function was added to the
    list of ``a_double`` unary :ref:`fun<a_double_unary_fun@fun>`
@@ -670,7 +675,7 @@ Add an :ref:`old_setup.py.error-name` section to the documentation.
    discussion in ``old_setup.py`` .
 
 04-10
-*****
+=====
 
 #. Change the documentation display on the web using a more recent version of
    the documentation program ``omhelp-20200130`` .

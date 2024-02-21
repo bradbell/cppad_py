@@ -18,17 +18,20 @@ mm-dd
 
 02-21
 =====
-For each year, change the web page name ``whats_new_``\ *yy*
-to *yyyy* where *yy* and *yyyy* identify the year. In addition, change the
-title for these pages to Release Notes for the corresponding year.
-This breaks old links to these web pages.
-For example, the old link to the heading directly above would have been::
+#. Advance to cppad-20240000.3 and cppad_mixed-20240214.
 
-   https://cppad-py.readthedocs.io/whats_new_24.html#whats-new-24-mm-dd-02-21
+#  Under Construction:
+   For each year, change the web page name ``whats_new_``\ *yy*
+   to *yyyy* where *yy* and *yyyy* identify the year. In addition, change the
+   title for these pages to Release Notes for the corresponding year.
+   This breaks old links to these web pages.
+   For example, the old link to the heading directly above would have been::
 
-Its new link, which is much shorter, is::
+      https://cppad-py.readthedocs.io/whats_new_24.html#whats-new-24-mm-dd-02-21
 
-   https://cppad-py.readthedocs.io//2024.html#mm-dd-02-21
+   Its new link, which is much shorter, is::
+
+      https://cppad-py.readthedocs.io//2024.html#mm-dd-02-21
 
 
 {xrst_end whats_new_2024}

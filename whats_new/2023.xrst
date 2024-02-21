@@ -46,7 +46,7 @@ and the old ``install_error`` page was moved to
    get_cppad_mixed.sh .
 
 09-29
-*****
+=====
 Move the install settings from :ref:`get_cppad.sh-name` to
 :ref:`install_settings.py-name` .
 

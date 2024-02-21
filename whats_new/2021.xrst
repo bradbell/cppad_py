@@ -5,6 +5,8 @@
 
 {xrst_begin whats_new_2021}
 {xrst_spell
+   mm
+   dd
    csv
    cygwin
    dir
@@ -18,15 +20,18 @@
 CppAD Py Changes During 2021
 ############################
 
-08-29
+mm-dd
 *****
+
+08-29
+=====
 There was an bug that prevented the
 :ref`xrst_py.command_line_arguments.line_increment`
 command line argument from being used.
 This has been fixed.
 
 08-26
-*****
+=====
 1. The user no longer needs to create the ``xrst.py``
    input file ``index.rst``
    in the sphinx_dir directory
@@ -38,7 +43,7 @@ This has been fixed.
    double word.
 
 08-23
-*****
+=====
 **API Change**\ :
 The links for periods in a heading are now converted to underbars
 (so that periods are only between levels); see
@@ -46,7 +51,7 @@ Other.Levels .
 This is an API change for xrst.py.
 
 08-12
-*****
+=====
 The xrst navigation frame on the left would have a
 duplicate entry for each child of a section that started with
 
@@ -56,24 +61,24 @@ This has been fixed. In addition, the list of children for this case
 are now in a table.
 
 08-08
-*****
+=====
 The xrst.py spell checker was changed to automatically
 ignore web addresses that begin with ``http://`` for ``https://``.
 It was also changed to automatically ignore sphinx directives;
 e.g. ``.. csv-table::``.
 
 07-17
-*****
+=====
 The script ``example/python/check_all.py`` did not work with python 3.9.5 on
 Fedora. The problem was fixed by using absolute paths instead of the
 current directory ``./`` in the python path.
 
 06-02
-*****
+=====
 Add subset documentation to the wish list.
 
 05-15
-*****
+=====
 #. Advance to cppad_mixed-20210515.
    This avoids running the cppad_mixed tests during ``bin/get_cppad_mixed.sh``.
    It also fixes a problem what cppad_mixed optimizes ADFun objects.
@@ -82,18 +87,18 @@ Add subset documentation to the wish list.
 
 
 05-11
-*****
+=====
 In cygwin install,
 with :ref:`install_settings.py@include_mixed` true,
 has been improved so that it works with cygwin.
 This included advancing to cppad_mixed-20210511.
 
 05-09
-*****
+=====
 #. Add discussion of installing cppad_py on :ref:`old_setup.py@Msys2` systems.
 
 05-07
-*****
+=====
 #. The python-setuptools were added to the
    :ref:`old_setup.py@External Requirements`.
 #. An example of installing external requirements was added for the
@@ -104,7 +109,7 @@ This included advancing to cppad_mixed-20210511.
    This should fix some problems with the install on msys and cygwin.
 
 04-29
-*****
+=====
 #. Advance to cppad-20210428.
    This fixes some problems with the install of cppad_py on msys and cygwin.
    The :ref:`check_for_nan_xam.py-title` was modified because the new version
@@ -114,7 +119,7 @@ This included advancing to cppad_mixed-20210511.
    system.
 
 03-31
-*****
+=====
 #. Move the source code for externals from ``build/external`` to
    ``external/``\ *build_type* where *build_type* is ``debug`` or ``release``.
 #. Advance to cppad_mixed-20210302.
