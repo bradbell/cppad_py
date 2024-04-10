@@ -12,9 +12,6 @@
 #     lcr
 #     pennsylvania
 #     rel
-#     rosen
-#     runge
-#     seirwd
 #     sim
 #     sqrt
 #     stime

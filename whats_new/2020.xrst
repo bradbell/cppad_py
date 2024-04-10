@@ -4,50 +4,40 @@
 # ----------------------------------------------------------------------------
 {xrst_begin 2020}
 {xrst_spell
-   mm
-   dd
    anl
    backquote
    cholmod
    cmake
    cmd
-   covid
+   dd
    dir
    erf
    eval
    fabs
    gh
    github
-   hes
    hpp
    inplace
    ipopt
-   json
    libc
    libcppad
    libdir
    matplotlib
    mcs
    misc
-   multi
-   obj
+   mm
    omh
    omhelp
    op
    pdf
    quantile
-   rcv
-   rosen
    rst
-   runge
    runtime
    scipy
    seirs
-   seirwd
    stdlib
    url
    var
-   xam
    xq
    yq
 }

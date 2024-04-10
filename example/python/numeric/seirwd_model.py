@@ -189,8 +189,6 @@ def seirwd_model(method, t_all, p_all, initial, n_step = 1) :
 # {xrst_begin numeric_seirwd_model}
 # {xrst_spell
 #     rcll
-#     rosen
-#     runge
 # }
 # {xrst_comment_ch #}
 #

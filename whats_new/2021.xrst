@@ -5,11 +5,11 @@
 
 {xrst_begin 2021}
 {xrst_spell
-   mm
-   dd
    csv
    cygwin
+   dd
    dir
+   mm
    msys
    rst
    setuptools

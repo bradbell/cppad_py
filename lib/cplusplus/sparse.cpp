@@ -668,7 +668,6 @@ void d_fun::rev_jac_sparsity(
 {xrst_begin cpp_sparsity}
 {xrst_spell
    bool
-   hes
 }
 
 

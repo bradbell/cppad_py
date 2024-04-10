@@ -89,7 +89,6 @@ class mixed :
       bool
       boolean
       obj
-      rcv
    }
 
    Mixed Class Constructor
@@ -910,7 +909,6 @@ class mixed :
    {xrst_begin mixed_hes_fixed_obj}
    {xrst_spell
       laplace
-      rcv
    }
 
    Hessian of Fixed Effects Objective
@@ -1015,9 +1013,6 @@ class mixed :
    r"""
    -------------------------------------------------------------------------
    {xrst_begin mixed_hes_random_obj}
-   {xrst_spell
-      rcv
-   }
 
    Hessian of Random Effects Objective
    ###################################
