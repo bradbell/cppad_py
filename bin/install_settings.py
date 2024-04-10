@@ -94,15 +94,20 @@ r'''{xrst_code}
 If the *build_type* is not debug or release, install_settings.py will
 terminate with an error message.
 
-cmake_install_prefix
-====================
-The actual prefix used for the install is
+symbolic_link
+*************
+This must be must ``true`` or ``false`` .
+If it is ``true`` ,
+the actual prefix used for the install is
 
 | |tab| *cmake_install_prefix.build_type*
 
 and a soft link is created from *cmake_install_prefix* to this directory.
 This way you can switch between testing debug and release without re-running
 `bin/get_cppad.sh`` or ``bin/get_cppad_mixed.sh`` .
+{xrst_code py}'''
+symbolic_link = 'true'
+r'''{xrst_code}
 
 build
 =====
@@ -200,6 +205,7 @@ if __name__ == '__main__' :
    output  = f"cmake_install_prefix='{cmake_install_prefix}'\n"
    output += f"extra_cxx_flags='{extra_cxx_flags}'\n"
    output += f"build_type='{build_type}'\n"
+   output += f"symbolic_link='{symbolic_link}'\n"
    output += f"include_mixed='{include_mixed}'\n"
    output += f"test_cppad='{test_cppad}'\n"
    output += f"verbose_makefile='{verbose_makefile}'\n"

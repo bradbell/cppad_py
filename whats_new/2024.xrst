@@ -16,6 +16,12 @@ Release Notes for 2024
 mm-dd
 *****
 
+04-10
+=====
+The :ref:`install_settings.py@symbolic_link` flag was added
+to the install settings.
+This used to always be true, but now it is an option.
+
 02-21
 =====
 #. Advance to cppad-20240000.3 and cppad_mixed-20240214.

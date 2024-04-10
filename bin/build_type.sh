@@ -16,6 +16,16 @@ then
 fi
 # -----------------------------------------------------------------------------
 #
+# build_type
+# symbolic_link
+# cmake_install_prefix
+eval $(bin/install_settings.py)
+#
+if [ "$symbolic_link" == 'false' ]
+then
+   exit 0
+fi
+#
 # MSYS
 # No symbolic links on MSYS systems
 kernel=$(uname -s)
@@ -24,10 +34,6 @@ then
    echo 'Warning: MSYS does not suppor symbolic links'
    exit 0
 fi
-#
-# build_type
-# cmake_install_prefix
-eval $(bin/install_settings.py)
 #
 echo "build_type=$build_type"
 echo "cmake_install_prefix=$cmake_install_prefix"

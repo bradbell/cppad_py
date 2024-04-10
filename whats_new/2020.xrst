@@ -174,7 +174,7 @@ and :ref:`old_setup.py.error-name`.
    In addition, the ``child_link`` command was changed to
    child_list.
 #. Remove an extra backquote \' that was placed at the end of each line
-   of the :ref:`xrst_table_of_contents-title`.
+   of the :ref:`xrst_contents-title`.
 #. Add more documentation for the ``index.rst`` file
    (including how to link to the table of contents).
 #. The java runtime environment as add to the install
@@ -303,7 +303,7 @@ to the mixed class; see :ref:`mixed_fix_constraint-title`.
    Check this page for such changes.
 
 #. Change the install process so both a debug and release version of
-   :ref:`cmake_install_prefix<install_settings.py@build_type@cmake_install_prefix>`
+   :ref:`install_settings.py@cmake_install_prefix`
    can be installed at the same time.
 
 #. Some of the install steps in :ref:`old_setup.py-title` have changed.
