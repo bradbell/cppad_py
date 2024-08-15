@@ -10,7 +10,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name         = "cppad_py"
-version      = '2024.4.10'
+version      = '2024.8.15'
 authors      = [ {name = "Bradley M. Bell", email = "bradbell@seanet.com"} ]
 description  = "A C++ Object Library and Python Interface to CppAD"
 readme       = "readme.md"
