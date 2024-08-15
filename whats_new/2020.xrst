@@ -100,11 +100,11 @@ installed by bin/get_cppad.sh the same as by bin/get_cppad_mixed.sh .
 #. The :ref:`setup@py <old_setup.py-name>` script was improved.
    To be specific:
 
-      -  The :ref:`covid 19 example <numeric_covid_19_xam.py-name>` was removed
+      #. The :ref:`covid 19 example <numeric_covid_19_xam.py-name>` was removed
          from the automatic testing because it is slow.
-      -  The python matplotlib module is no longer required because is was
+      #. The python matplotlib module is no longer required because is was
          only used by the covid 19 example.
-      -  Separate headings were created for
+      #. Separate headings were created for
          :ref:`local testing <old_setup.py@Local Test>` and
          :ref:`install testing <old_setup.py@Test Install>`.
 
